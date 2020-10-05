@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>788280</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8a7f8a28c14f5cea0dbd13bbc3ab70f4</srcmd5>
+    <version>2019.05</version>
+    <time>1601919405</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with new C++ compilers, add boost_include.diff
+- Use memoryperjob constraint instead of %limit_build macro.
+</comment>
+    <requestid>839140</requestid>
+  </revision>
 </revisionlist>

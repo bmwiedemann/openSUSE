@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:10:59 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with new C++ compilers, add boost_include.diff
+
+-------------------------------------------------------------------
+Thu Aug 20 09:03:01 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memoryperjob constraint instead of %limit_build macro.
+
+-------------------------------------------------------------------
 Sun Mar 22 07:56:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require libboost_thread-devel for building openscad.

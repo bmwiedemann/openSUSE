@@ -1,0 +1,22 @@
+diff -ur openscad-2019.05/src/import.cc openscad-2019.05_fix/src/import.cc
+--- openscad-2019.05/src/import.cc	2019-03-31 06:14:41.000000000 +0200
++++ openscad-2019.05_fix/src/import.cc	2020-10-02 12:34:14.840331047 +0200
+@@ -50,7 +50,6 @@
+ #include <boost/assign/std/vector.hpp>
+ using namespace boost::assign; // bring 'operator+=()' into scope
+ 
+-#include <boost/detail/endian.hpp>
+ #include <cstdint>
+ 
+ extern PolySet * import_amf(std::string, const Location &loc);
+diff -ur openscad-2019.05/src/parser.y openscad-2019.05_fix/src/parser.y
+--- openscad-2019.05/src/parser.y	2019-04-07 17:45:27.000000000 +0200
++++ openscad-2019.05_fix/src/parser.y	2020-10-02 11:58:27.114794108 +0200
+@@ -35,6 +35,7 @@
+ #else
+ #include <unistd.h>
+ #endif
++#include <stack>
+ 
+ #include "FileModule.h"
+ #include "UserModule.h"

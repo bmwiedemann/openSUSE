@@ -1,7 +1,7 @@
 #
 # spec file for package openscad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,10 @@ Release:        0
 Summary:        Programmers Solid 3D CAD Modeller
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
-Url:            https://www.openscad.org/
+URL:            https://www.openscad.org/
 Source:         https://files.openscad.org/%{name}-%{version}.src.tar.gz
+#PATCH-FIX-UPSTREAM remove and add an include line to fix build
+Patch1:         boost_include.diff
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  eigen3-devel
@@ -39,7 +41,6 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libcgal-devel
 BuildRequires:  libqscintilla-qt5-devel
 BuildRequires:  libspnav-devel
-BuildRequires:  memory-constraints
 BuildRequires:  opencsg-devel
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -59,10 +60,10 @@ aspects, e.g. modelling of machine parts.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch1 -p1
 
 %build
-qmake-qt5 PREFIX=%{_prefix} QMAKE_CXXFLAGS="%{optflags}" CONFIG+=qopenglwidget
-%limit_build -m 2200
+qmake-qt5 PREFIX=%{_prefix} QMAKE_CXXFLAGS="%{optflags}" CONFIG+=qopenglwidget CONFIG+=c++14
 make %{?_smp_mflags}
 
 %install
