@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        0.8.3
+Version:        0.9.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -25,6 +25,13 @@ Group:          System/Packages
 URL:            https://github.com/openSUSE/%{name}
 Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  help2man
+BuildRequires:  perl
+BuildRequires:  perl(Config::Tiny)
+BuildRequires:  perl(LWP)
+BuildRequires:  perl(LWP::Protocol::https)
+BuildRequires:  perl(URI)
+BuildRequires:  perl(XML::LibXML)
 Requires:       perl
 Requires:       perl(Config::Tiny)
 Requires:       perl(LWP)
@@ -39,14 +46,25 @@ OBS Package Installer (CLI)
 %setup -q
 
 %build
+help2man ./opi > opi.8.gz
+gzip opi.8.gz
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 install %{name} %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_datadir}/metadata
+cp org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metadata
+mkdir -p %{buildroot}%{_datadir}/man/man8
+cp opi.8.gz %{buildroot}%{_datadir}/man/man8
 
 %files
 %license LICENSE
 %doc README.md screenshot.png
 %{_bindir}/%{name}
+%dir %{_datadir}/metadata
+%{_datadir}/metadata/org.openSUSE.opi.appdata.xml
+%dir %{_datadir}/man
+%dir %{_datadir}/man/man8
+%{_datadir}/man/man8/opi.8.gz
 
 %changelog

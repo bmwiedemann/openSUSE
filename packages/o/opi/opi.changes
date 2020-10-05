@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  3 14:06:15 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Version 0.9.0
+  * Added
+    - Help (-h, --help) and version (-v, --version) option
+  * Changed
+    - Filter out -devel, -docs and -lang packages
+    - Don't show i586 packages on x86_64 system
+
+-------------------------------------------------------------------
 Sat Jul 25 12:29:41 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.8.3
