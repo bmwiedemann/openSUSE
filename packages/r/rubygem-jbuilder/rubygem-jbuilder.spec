@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-jbuilder
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 %define mod_name jbuilder
 %define mod_full_name %{mod_name}-%{version}
