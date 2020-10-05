@@ -16,28 +16,29 @@
 #
 
 
-%define mod_name parser
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-parser
-Version:        2.7.1.4
+Version:        2.7.1.5
 Release:        0
-Summary:        A Ruby parser written in pure Ruby
-License:        MIT
-Group:          Development/Languages/Ruby
-URL:            https://github.com/whitequark/parser
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name parser
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-# FIXME: use proper Requires(pre/post/preun/...)
+URL:            https://github.com/whitequark/parser
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        A Ruby parser written in pure Ruby
+License:        MIT
+Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
 %description
