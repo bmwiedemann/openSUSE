@@ -73,7 +73,7 @@ applications that want to make use of libnauty.
 rm -f makefile
 autoreconf -fi
 export CFLAGS="%optflags -Wno-unused"
-%configure --disable-popcnt
+%configure --disable-popcnt --disable-clz
 %make_build
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 27 19:34:39 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable lzcnt instruction to make build reproducible (boo#1100677)
+
+-------------------------------------------------------------------
 Mon Sep  7 12:37:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.1

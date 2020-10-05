@@ -47,4 +47,12 @@
     <comment>- Update to release 2.7.1</comment>
     <requestid>832790</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bdc02cdfb7fb392305ddc357f33c5241</srcmd5>
+    <version>2.7.1</version>
+    <time>1601919672</time>
+    <user>dimstar_suse</user>
+    <comment>Disable lzcnt instruction to make build reproducible (boo#1100677) (forwarded request 838119 from bmwiedemann)</comment>
+    <requestid>839307</requestid>
+  </revision>
 </revisionlist>
