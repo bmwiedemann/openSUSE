@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-aes_key_wrap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-aes_key_wrap
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 %define mod_name aes_key_wrap
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/tomdalling/aes_key_wrap
+URL:            https://github.com/tomdalling/aes_key_wrap
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby implementation of AES Key Wrap, a.k.a RFC 3394, a.k.a NIST
@@ -48,7 +48,7 @@ A Ruby implementation of AES Key Wrap, a.k.a RFC 3394, a.k.a NIST Key Wrap.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.txt README.md" \
+  --doc-files="CHANGELOG.md LICENSE.txt README.md" \
   -f
 
 %gem_packages
