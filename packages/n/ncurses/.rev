@@ -2944,4 +2944,12 @@
     in the former which could be called from SIGTSTP handler (Debian</comment>
     <requestid>820866</requestid>
   </revision>
+  <revision rev="177" vrev="8">
+    <srcmd5>0eaa6ea8ebcd530fbe23da68f30fabcb</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1601996915</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836006</requestid>
+  </revision>
 </revisionlist>

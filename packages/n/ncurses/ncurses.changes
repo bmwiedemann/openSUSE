@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:51:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200912
+  + add configure-check for systre/tre with mingw configuration, to get
+    the library-dependencies as seen in msys2 configuration for mingw64.
+  + build-fixes for the win32-driver configuration.
+  + use more defensive binary mode setting for Win32 (Juergen Pfeifer).
+- Add ncurses patch 20200907
+  + fix regression in setupterm validating non-empty $TERM (report by
+    Soren Tempel).
+- Add ncurses patch 20200906
+  + merge/adapt in-progress work by Juergen Pfeifer for new version of
+    win32-driver.
+  + correct description of vt330/vt340 (Ross Combs).
+
+-------------------------------------------------------------------
+Tue Sep  1 07:20:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200831
+  + build-fix for awk-scripts modified for win32-driver (report by Werner
+    Fink).
+- Drop workaround patch awk-scripts.patch as now upstream fixed
+
+-------------------------------------------------------------------
+Mon Aug 31 13:56:18 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch awk-scripts.patch as workaround for patch 20200829
+
+-------------------------------------------------------------------
+Mon Aug 31 08:47:56 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200829
+  + remove a redundant NCURSES_EXPORT as a build-fix for "Maarten
+    Anonymous".
+  + merge/adapt in-progress work by Juergen Pfeifer for new version of
+    win32-driver.
+  + modify configure script, moving gcc -Werror options to EXTRA_CFLAGS
+    to avoid breaking configure-checks (adapted from ongoing work on
+    mawk and lynx).
+  > errate for terminfo.src (report by Florian Weimer):
+  + correct icl6404 csr
+  + correct ti916 cup
+  + improve ndr9500
+- Refresh patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Aug 24 06:47:44 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200822
+  + improve version-number extraction in MKlib_gen.sh
+  + make the test-package for manpages installable by adjusting the
+    man_db.renames file.
+  + correct an off-by-one loop-limit in convert_strings function
+    (report by Yue Tai).
+  + add CF_SHARED_OPTS cases for HPE NonStop systems (Randall S Becker).
+  + modify CF_SHARED_OPTS case for NetBSD to use the same "-shared"
+    option for the non-rpath case as for the rpath case, to allow gcc to
+    provide suitable runtime initialization (report by Rajeev V Pillai).
+
+-------------------------------------------------------------------
+Wed Aug 19 06:43:29 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Disable wgetch-events as it is deprecated and breaks build of
+  other packages
+
+-------------------------------------------------------------------
+Tue Aug 18 06:44:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200817
+  + reduce build-warnings by excluding ncurses-internals from deprecation
+    warnings.
+  + mark wgetch-events feature as deprecated.
+  + add definition for $(LIBS) to ncurses/Makefile.in, to simplify builds
+    using the string-hacks option.
+  + prevent KEY_EVENT from appearing in curses.h unless the configure
+    option --enable-wgetch-events is used (report by Werner Fink).
+
+-------------------------------------------------------------------
+Mon Aug 17 08:08:37 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200816
+  + amend tic/infocmp check to allow for the respective tool's absence
+    (report by Steve Wills, cf: 20200808).
+  + improved some of the build-scripts with shellcheck
+  + filter out -MT/-MD/-MTd/-MDd options in script for Visual Studio C++
+    (discussion with "Maarten Anonymous").
+
+-------------------------------------------------------------------
+Tue Aug 11 09:09:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200808
+  + improve discussion of the system's tic utility when used as part
+    of cross-compiling (discussion with Keith Marshall).
+  + modify configuration checks for build-time tic/infocmp to use
+    AC_CHECK_TOOL. That can still be overridden by --with-tic-path and
+    --with-infocmp-path when fallbacks are used, but even if not using
+    fallbacks, the improved check may help with cross-compiling
+    (discussion with Keith Marshall).
+  + other build-fixes for Ada95 with MinGW.
+  + modify Ada95 source-generation utility to write to a file given as
+    parameter rather than to the standard output, allowing builds with
+    MinGW.
+
+-------------------------------------------------------------------
+Mon Aug  3 08:36:51 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200801
+  + remove remaining parts of checks for ISC Unix (cf: 20121006).
+  + add user32.lib to LDFLAGS for Visual Studio C++ configuration
+    (discussion with "Maarten Anonymous").
+  + modify MKkey_defs.sh to hide ncurses' definition of KEY_EVENTS to
+    reduce Visual Studio C++ redefinition warnings.
+  + improve/update checks for external functions in test/configure
+
+-------------------------------------------------------------------
+Mon Jul 27 09:42:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200725
+  + set LINK_TESTS in CF_SHARED_OPTS for msvc (patch by
+    "Maarten Anonymous")
+  + improved workaround for redefinition-warnings for KEY_EVENT.
+  + improve man/term.5 section on legacy storage format (report by
+    Florian Weimer).
+
+-------------------------------------------------------------------
+Mon Jul 20 10:51:35 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200718
+  + reduce redefinition-warnings for KEY_EVENT when building with Visual
+    Studio C++.
+  + define NCURSES_STATIC when compiling programs to link with static
+    libraries, to work with MinGW vs Visual Studio C++.
+  > additional changes for building with Visual Studio C++ and msys2
+    (reports/patches by "Maarten Anonymous")
+  + modify c++/Makefile.in to set the current directory while compiling
+    the main program, so the linker can find related objects.
+  + several changes to allow the c++/demo program to compile/link.
+  + change an ifdef in test-directory, to use VC++ wide-character funcs.
+
+-------------------------------------------------------------------
 Mon Jul 13 09:20:28 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200711

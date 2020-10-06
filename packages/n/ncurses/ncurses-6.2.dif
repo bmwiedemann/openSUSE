@@ -1,6 +1,6 @@
 ---
  aclocal.m4                   |   40 ++++++------
- configure                    |   41 +++++++-----
+ configure                    |   40 ++++++------
  include/curses.h.in          |    3 
  include/termcap.h.in         |    2 
  include/tic.h                |    4 -
@@ -11,17 +11,17 @@
  ncurses/Makefile.in          |    2 
  ncurses/curses.priv.h        |    2 
  ncurses/run_cmd.sh           |   11 +++
- ncurses/tinfo/MKfallback.sh  |    6 +
+ ncurses/tinfo/MKfallback.sh  |   10 ++-
  ncurses/tinfo/access.c       |   28 ++++++++
  ncurses/tinfo/lib_setup.c    |    3 
  ncurses/tinfo/read_entry.c   |    2 
  ncurses/tinfo/read_termcap.c |   21 ++++--
  progs/Makefile.in            |    4 -
  test/test.priv.h             |    4 -
- 19 files changed, 248 insertions(+), 77 deletions(-)
+ 19 files changed, 249 insertions(+), 79 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2020-03-09 09:17:28.745300221 +0000
++++ aclocal.m4	2020-08-31 12:06:53.682411288 +0000
 @@ -617,7 +617,7 @@ AC_MSG_CHECKING([for size of bool])
  AC_CACHE_VAL(cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5409,12 +5409,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5476,12 +5476,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5424,7 +5427,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5491,7 +5494,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5464,7 +5467,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5531,7 +5534,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5473,23 +5476,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5540,23 +5543,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5498,7 +5501,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5565,7 +5568,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5508,18 +5511,18 @@ CF_EOF
+@@ -5575,18 +5578,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5539,9 +5542,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5606,9 +5609,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5561,6 +5564,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5628,6 +5631,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -150,8 +150,8 @@
  esac
  done
 --- configure
-+++ configure	2020-03-09 09:17:28.749300145 +0000
-@@ -5621,7 +5621,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2020-08-31 12:06:53.686411216 +0000
+@@ -5636,7 +5636,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,7 +160,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -14224,12 +14224,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14401,12 +14401,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -178,7 +178,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -14239,7 +14242,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14416,7 +14419,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -187,7 +187,7 @@
  CF_EOF
  fi
  
-@@ -14279,7 +14282,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14456,7 +14459,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -196,7 +196,7 @@
  CF_EOF
  fi
  
-@@ -14288,23 +14291,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14465,23 +14468,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -226,7 +226,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -14313,7 +14316,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14490,7 +14493,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -235,7 +235,7 @@
  							then
  								continue
  							fi
-@@ -14323,18 +14326,18 @@ CF_EOF
+@@ -14500,18 +14503,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -257,7 +257,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14354,9 +14357,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14531,9 +14534,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -270,7 +270,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -14376,6 +14379,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14553,6 +14556,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -278,16 +278,8 @@
  	;;
  esac
  done
-@@ -25961,6 +25965,7 @@ if test "$with_termlib" != no ; then
- 		TINFO_LDFLAGS="-L${LIB_DIR}"
- 		SHLIB_LIST="$SHLIB_LIST -l${TINFO_LIB_SUFFIX}"
- 	fi
-+	TINFO_ARGS="$TINFO_ARGS -L${LIB_DIR} -l${LIB_NAME}${DFT_ARG_SUFFIX}"
- else
- 	# the next lines are needed for linking libtic over libncurses
- 	TINFO_NAME=${LIB_NAME}
 --- include/curses.h.in
-+++ include/curses.h.in	2020-03-09 09:17:28.749300145 +0000
++++ include/curses.h.in	2020-08-31 12:06:53.686411216 +0000
 @@ -186,6 +186,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
  typedef @cf_cv_typeof_mmask_t@ mmask_t;
  #endif
@@ -299,7 +291,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2020-03-09 09:17:28.749300145 +0000
++++ include/termcap.h.in	2020-08-31 12:06:53.686411216 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -310,7 +302,7 @@
  
  #undef  NCURSES_OSPEED 
 --- include/tic.h
-+++ include/tic.h	2020-03-09 09:17:28.749300145 +0000
++++ include/tic.h	2020-08-31 12:06:53.686411216 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
   */
  
@@ -327,7 +319,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2020-03-09 09:17:28.749300145 +0000
++++ man/man_db.renames	2020-08-31 12:06:53.686411216 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -345,7 +337,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2020-03-09 09:17:28.749300145 +0000
++++ man/ncurses.3x	2020-08-31 12:06:53.686411216 +0000
 @@ -140,6 +140,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
@@ -358,7 +350,7 @@
  called \fIwindows\fR, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2020-03-09 09:17:28.749300145 +0000
++++ misc/gen-pkgconfig.in	2020-08-31 12:06:53.686411216 +0000
 @@ -92,6 +92,9 @@ do
  	-specs*) # ignore linker specs-files which were used to build library
  		continue
@@ -399,7 +391,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2020-03-09 09:17:28.753300070 +0000
++++ misc/terminfo.src	2020-08-31 12:06:53.690411143 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -783,19 +775,19 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2020-03-09 09:17:28.753300070 +0000
-@@ -229,7 +229,7 @@ $(DESTDIR)$(libdir) :
++++ ncurses/Makefile.in	2020-08-31 12:06:53.690411143 +0000
+@@ -230,7 +230,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
  ./fallback.c : $(tinfo)/MKfallback.sh
--	$(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) $(TIC_PATH) $(INFOCMP_PATH) $(FALLBACK_LIST) >$@
-+	$(SHELL) -e $(srcdir)/run_cmd.sh $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) $(TIC_PATH) $(INFOCMP_PATH) $(FALLBACK_LIST) >$@
+-	$(SHELL) -e $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
++	$(SHELL) -e $(srcdir)/run_cmd.sh $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
  
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/curses.priv.h
-+++ ncurses/curses.priv.h	2020-03-09 09:17:28.753300070 +0000
-@@ -2250,6 +2250,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
++++ ncurses/curses.priv.h	2020-08-31 12:06:53.690411143 +0000
+@@ -2277,6 +2277,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
  extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
  extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
  extern NCURSES_EXPORT(int) _nc_access (const char *, int);
@@ -805,7 +797,7 @@
  extern NCURSES_EXPORT(int) _nc_freewin (WINDOW *);
  extern NCURSES_EXPORT(int) _nc_getenv_num (const char *);
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2020-03-09 09:17:28.753300070 +0000
++++ ncurses/run_cmd.sh	2020-08-31 12:06:53.690411143 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -819,22 +811,40 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2020-03-09 09:17:28.753300070 +0000
-@@ -72,6 +72,12 @@ else
++++ ncurses/tinfo/MKfallback.sh	2020-08-31 12:06:53.690411143 +0000
+@@ -74,6 +74,12 @@ else
  	tmp_info=
  fi
  
 +if test -n "$TERMINFO" -a -d "$TERMINFO" ; then
-+	infocmp_path="$infocmp_path -v1 -A $TERMINFO"
++	infocmp_args="-v1 -A $TERMINFO"
 +else
-+	infocmp_path="$infocmp_path -v1"
++	infocmp_args="-v1"
 +fi
 +
  cat <<EOF
  /* This file was generated by $0 */
  
+@@ -95,7 +101,7 @@ EOF
+ 	for x in "$@"
+ 	do
+ 		echo "/* $x */"
+-		"$infocmp_path" -E "$x" | sed -e 's/\<short\>/NCURSES_INT2/g'
++		"$infocmp_path" $infocmp_args -E "$x" | sed -e 's/\<short\>/NCURSES_INT2/g'
+ 	done
+ 
+ 	cat <<EOF
+@@ -106,7 +112,7 @@ EOF
+ 	for x in "$@"
+ 	do
+ 		echo "$comma /* $x */"
+-		"$infocmp_path" -e "$x"
++		"$infocmp_path" $infocmp_args -e "$x"
+ 		comma=","
+ 	done
+ 
 --- ncurses/tinfo/access.c
-+++ ncurses/tinfo/access.c	2020-03-09 09:17:28.753300070 +0000
++++ ncurses/tinfo/access.c	2020-08-31 12:06:53.690411143 +0000
 @@ -31,6 +31,10 @@
   *  Author: Thomas E. Dickey                                                *
   ****************************************************************************/
@@ -878,8 +888,8 @@
  _nc_access(const char *path, int mode)
  {
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2020-03-09 09:17:28.753300070 +0000
-@@ -605,6 +605,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
++++ ncurses/tinfo/lib_setup.c	2020-08-31 12:06:53.690411143 +0000
+@@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
      } else if ((env = getenv("TERM")) != 0) {
@@ -890,7 +900,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- ncurses/tinfo/read_entry.c
-+++ ncurses/tinfo/read_entry.c	2020-03-09 09:17:28.753300070 +0000
++++ ncurses/tinfo/read_entry.c	2020-08-31 12:06:53.690411143 +0000
 @@ -552,6 +552,7 @@ _nc_read_file_entry(const char *const fi
      FILE *fp = 0;
      int code;
@@ -908,7 +918,7 @@
      return (code);
  }
 --- ncurses/tinfo/read_termcap.c
-+++ ncurses/tinfo/read_termcap.c	2020-03-09 09:17:28.753300070 +0000
++++ ncurses/tinfo/read_termcap.c	2020-08-31 12:06:53.690411143 +0000
 @@ -323,14 +323,18 @@ _nc_getent(
  	     */
  	    if (fd >= 0) {
@@ -955,11 +965,11 @@
      }
      if (copied != 0)
 --- progs/Makefile.in
-+++ progs/Makefile.in	2020-07-07 09:13:53.548391492 +0000
-@@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS) -DNCURSES_ST
++++ progs/Makefile.in	2020-08-31 12:06:53.690411143 +0000
+@@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
- CFLAGS_DEBUG	= $(CCFLAGS) @CC_G_OPT@ -DTRACE
- CFLAGS_PROFILE	= $(CCFLAGS) -pg
+ CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
+ CFLAGS_PROFILE	= $(CCFLAGS) -DNCURSES_STATIC -pg
 -CFLAGS_SHARED	= $(CCFLAGS) @CC_SHARED_OPTS@
 +CFLAGS_SHARED	= $(CCFLAGS) -fPIE
  
@@ -975,8 +985,8 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2020-03-09 09:17:28.753300070 +0000
-@@ -1001,12 +1001,12 @@ extern char *_nc_strstr(const char *, co
++++ test/test.priv.h	2020-08-31 12:06:53.690411143 +0000
+@@ -1024,12 +1024,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
