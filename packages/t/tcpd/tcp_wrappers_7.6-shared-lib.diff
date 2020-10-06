@@ -8,7 +8,7 @@
 +	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ=weak_symbols.o \
  	NETGROUP=-DNETGROUP TLI= \
 -	EXTRA_CFLAGS="-fPIC -DSYS_ERRLIST_DEFINED -DINET6=1 -Dss_family=__ss_family" all
-+	EXTRA_CFLAGS="-fPIC -DSYS_ERRLIST_DEFINED -DINET6=1 -Dss_family=__ss_family -DHAVE_WEAKSYMS -D_REENTRANT" all
++	EXTRA_CFLAGS="-fPIC -DHAVE_STRERROR -DINET6=1 -Dss_family=__ss_family -DHAVE_WEAKSYMS -D_REENTRANT" all
  
  # This is good for many SYSV+BSD hybrids with NIS, probably also for HP-UX 7.x.
  hpux hpux8 hpux9 hpux10:

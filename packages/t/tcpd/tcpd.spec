@@ -1,7 +1,7 @@
 #
 # spec file for package tcpd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A security wrapper for TCP daemons
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
-Url:            ftp://ftp.porcupine.org/pub/security/index.html
+URL:            ftp://ftp.porcupine.org/pub/security/index.html
 Source:         ftp://ftp.porcupine.org/pub/security/tcp_wrappers_%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         tcp_wrappers_%{version}.diff
