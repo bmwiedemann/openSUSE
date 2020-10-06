@@ -16,17 +16,16 @@
 #
 
 
-%define libsepol_ver 3.0
+%define libsepol_ver 3.1
 Name:           checkpolicy
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux policy compiler
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux
-Source0:        https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
 Source1:        checkpolicy-tests.tar.gz
-Patch0:         extern_te_assert_t.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libselinux-devel
@@ -68,7 +67,6 @@ to use checkpolicy from Python.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 make clean

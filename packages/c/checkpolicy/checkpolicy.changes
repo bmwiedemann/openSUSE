@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:31:15 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * checkpolicy treats invalid characters as an error - might break rare use
+    cases (intentionally)
+  * Drop extern_te_assert_t.patch, is upstream
+
+-------------------------------------------------------------------
 Tue Mar  3 12:19:40 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0
