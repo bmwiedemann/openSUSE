@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
