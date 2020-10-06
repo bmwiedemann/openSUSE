@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct  6 03:09:48 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.58
+   see /usr/share/doc/packages/perl-Digest-MD5/Changes
+
+  2.58 Mon Oct 5 2020
+  - Update repo location.
+  - Update recent changelog entries. Let's see if that's enough to make metacpan happy.
+
+  2.57 Mon Oct 5 2020
+  - Merge change submitted to blead - https://github.com/Perl/perl5/commit/ee9ac1cd8eb988fea70841eae211b11355711416
+
+  2.56 Mon Oct 5 2020
+  - Github CI Perl 5.6..5.32
+  - Fixup MANIFEST/MANIFEST.SKIP/.gitignore
+  - Enable strict and warnings on all code. Drop vars.pm - https://github.com/Dual-Life/digest-md5/pull/11
+  - Preserve OPTIMIZE in hints/irix_6.pl - https://github.com/Dual-Life/digest-md5/pull/14
+  - Don't return context buffer if there isn't one - https://github.com/Dual-Life/digest-md5/pull/12
+  - Silence possible loss of data warnings on Win32 - https://github.com/Dual-Life/digest-md5/pull/13
+
+  2.55 Wed Mar 9 2016
+
+-------------------------------------------------------------------
 Fri Mar 11 10:01:27 UTC 2016 - coolo@suse.com
 
 - updated to 2.55
