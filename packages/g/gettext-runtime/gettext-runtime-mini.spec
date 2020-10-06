@@ -20,9 +20,11 @@
 %bcond_without mini
 
 Name:           gettext-runtime-mini
-Version:        0.20.2
+Version:        0.21
 Release:        0
+BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 # To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
 #BuildRequires: fdupes
 %if %{without mini}
@@ -70,6 +72,9 @@ Patch6:         gettext-dont-test-gnulib.patch
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
 # PATCH-FIX-SUSE Bug boo#1106843
 Patch13:        reproducible.patch
+# PATCH-FEATURE bsc#1165138
+Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
 
 %description
 This package contains the intl library as well as tools that ease the
@@ -158,9 +163,13 @@ This package provides headers and static libraries for libtextstyle
 %patch6 -p1
 %patch11 -p1
 %patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
 %build
 %define _lto_cflags %{nil}
+# expect a couple "You should update your `aclocal.m4' by running aclocal."
+autoreconf -fiv
 #sh autogen.sh
 export CFLAGS="%{optflags} -pipe -W -Wall -Dgcc_is_lint"
 export CXXFLAGS="$CFLAGS -Dgcc_is_lint"

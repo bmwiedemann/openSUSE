@@ -17,7 +17,7 @@
 
 
 Name:           gettext-java
-Version:        0.20.2
+Version:        0.21
 Release:        0
 Summary:        Java Support for Native Language Support (NLS)
 License:        LGPL-2.1-or-later
