@@ -17,7 +17,7 @@
 
 
 Name:           bison
-Version:        3.6.4
+Version:        3.7.2
 Release:        0
 Summary:        The GNU Parser Generator
 License:        GPL-3.0-or-later
