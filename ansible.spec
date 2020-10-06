@@ -117,8 +117,10 @@ Requires:       python-paramiko
 Requires:       python-six
 Requires:       python2-cryptography
 Requires:       sshpass
-%endif  # Requires for RHEL 7
-%endif  # Requires for RHEL 8
+# end of Requires for RHEL 7
+%endif
+# end of Requires for RHEL 8
+%endif
 # Bundled provides
 Provides:       bundled(python-backports-ssl_match_hostname) = 3.7.0.1
 Provides:       bundled(python-distro) = 1.4.0
@@ -220,7 +222,7 @@ Recommends:     %{python}-six
 Recommends:     sshpass
 %endif
 Name:           ansible
-Version:        2.9.13
+Version:        2.9.14
 Release:        0
 Summary:        SSH-based configuration management, deployment, and task execution system
 License:        GPL-3.0-or-later
