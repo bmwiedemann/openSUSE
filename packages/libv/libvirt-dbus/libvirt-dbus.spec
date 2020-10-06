@@ -24,15 +24,19 @@ License:        LGPL-2.1-or-later
 URL:            https://libvirt.org/
 Source0:        https://libvirt.org/sources/dbus/%{name}-%{version}.tar.xz
 Source1:        system-user-%{name}.conf
+# PATCH-FIX-UPSTREAM
+Patch:          libvirt-dbus-systemd.diff
 BuildRequires:  gcc
-BuildRequires:  glib2-devel
-BuildRequires:  libvirt-devel
-BuildRequires:  libvirt-glib-devel
 BuildRequires:  meson
 BuildRequires:  polkit
 BuildRequires:  python3-docutils
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libvirt)
+BuildRequires:  pkgconfig(libvirt-glib-1.0)
+BuildRequires:  pkgconfig(systemd)
 Requires:       polkit
+Requires:       user(libvirtdbus)
 
 %description
 This package provides D-Bus API for libvirt
@@ -45,10 +49,10 @@ Summary:        System user for libvirt-dbus
 System user for libvirt-dbus.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%meson
+%meson -Dinit_script=systemd
 %meson_build
 %sysusers_generate_pre %{SOURCE1} system-user-%{name}
 
@@ -56,12 +60,26 @@ System user for libvirt-dbus.
 %meson_install
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
+ln -s service %{buildroot}%{_sbindir}/rclibvirt-dbus
+
+%pre
+%service_add_pre libvirt-dbus.service
+
+%post
+%service_add_post libvirt-dbus.service
+
+%preun
+%service_del_preun libvirt-dbus.service
+
+%postun
+%service_del_postun libvirt-dbus.service
 
 %pre -n system-user-%{name} -f system-user-%{name}.pre
 
 %files
 %doc AUTHORS.rst NEWS.rst
 %license COPYING
+%{_sbindir}/rclibvirt-dbus
 %{_sbindir}/libvirt-dbus
 %{_datadir}/dbus-1/services/org.libvirt.service
 %{_datadir}/dbus-1/system-services/org.libvirt.service
@@ -69,6 +87,8 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 %{_datadir}/dbus-1/interfaces/org.libvirt.*.xml
 %{_datadir}/polkit-1/rules.d/libvirt-dbus.rules
 %{_mandir}/man8/libvirt-dbus.8%{?ext_man}
+%{_unitdir}/libvirt-dbus.service
+%{_userunitdir}/libvirt-dbus.service
 
 %files -n system-user-%{name}
 %{_sysusersdir}/system-user-%{name}.conf
