@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sun Sep  6 17:38:16 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Add opl.patch to fix the build with GCC 10
+
+-------------------------------------------------------------------
+Fri Jul 17 18:17:03 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- build the released version again
+- dynamically generate to wrapper to adjust libexecdir renamings
+- add https://en.opensuse.org/openSUSE:AppStore support
+
+-------------------------------------------------------------------
+Mon Jun 11 20:55:22 UTC 2018 - mardnh@gmx.de
+
+- Update to version 2.1.20130907+hg1123
+- Remove patch:
+  * fix-gcc-6.patch (fixed upstream)
+- Add patch:
+  * opentyrian-obey-cflags.patch
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Thu Aug 11 22:04:50 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-gcc-6.patch
+- Some cleanup of the spec file
+
+-------------------------------------------------------------------
+Fri Dec 25 16:33:52 UTC 2015 - mailaender@opensuse.org
+
+- split game assets for licensing reasons
+
+-------------------------------------------------------------------
+Thu Aug  6 14:26:29 UTC 2015 - mailaender@opensuse.org
+
+- use source urls
+- add man page
+- use upstream icons and desktop files
+
+-------------------------------------------------------------------
+Tue Mar 26 15:25:39 UTC 2013 - joop.boonen@opensuse.org
+
+- Corrected the License
+
+-------------------------------------------------------------------
+Tue Jan 24 11:45:45 UTC 2012 - prusnak@opensuse.org
+
+- updated to hg build 995
+
+-------------------------------------------------------------------
+Sat Jul  2 15:50:06 UTC 2011 - jengelh@medozas.de
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)
+
+-------------------------------------------------------------------
+Tue Jun 30 22:54:28 CEST 2009 - prusnak@suse.cz
+
+- created package (SVN revision 949)
+
