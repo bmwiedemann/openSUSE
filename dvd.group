@@ -93,6 +93,7 @@
     <package name="akonadi-search-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akonadi-server-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="akonadi-server-sqlite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akregator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="akregator-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="alpine" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -151,19 +152,7 @@
     <package name="arpwatch-ethercodes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="as10k1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="aspell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="aspell-en" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-pt_PT" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="aspell-ru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="aspell-spell" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="at" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="at-spi2-atk-common" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -949,6 +938,7 @@
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="ibus-pinyin" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-array" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ibus-table-chinese-cangjie" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2570,6 +2560,7 @@
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpython2_7-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpyzy-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqb100" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libqca-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3278,6 +3269,7 @@
     <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="opencc" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openconnect-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3865,7 +3857,7 @@
     <package name="python3-trio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-urwid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-xdg" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python3-xdg" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python3-zope.component" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.configuration" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python3-zope.deferredimport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3883,6 +3875,8 @@
     <package name="python38-dbm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="pyzy-db-android" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="pyzy-db-open-phrase" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-arm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4581,6 +4575,7 @@
     <package name="speedcrunch" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="splix" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="spu-tools" supportstatus="unsupported"/> <!-- reason: dvd:spu-tools -->
+    <package name="sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="squashfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="squid" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="sshfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
