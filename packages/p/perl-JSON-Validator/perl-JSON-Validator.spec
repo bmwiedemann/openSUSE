@@ -17,7 +17,7 @@
 
 
 Name:           perl-JSON-Validator
-Version:        4.04
+Version:        4.05
 Release:        0
 %define cpan_name JSON-Validator
 Summary:        Validate data against a JSON schema
