@@ -1,0 +1,51 @@
+Index: fedora-policy/policy/modules/contrib/rpm.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/rpm.fc
++++ fedora-policy/policy/modules/contrib/rpm.fc
+@@ -17,6 +17,10 @@
+ /usr/bin/repoquery		--	gen_context(system_u:object_r:rpm_exec_t,s0)		
+ /usr/bin/zif 			--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ 
++/usr/sbin/zypp-refresh		--	gen_context(system_u:object_r:rpm_exec_t,s0)
++/usr/bin/zypper			--	gen_context(system_u:object_r:rpm_exec_t,s0)
++
++
+ /usr/libexec/packagekitd	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /usr/libexec/yumDBUSBackend.py	--	gen_context(system_u:object_r:rpm_exec_t,s0)
+ /usr/libexec/pegasus/pycmpiLMI_Software-cimprovagt  --  gen_context(system_u:object_r:rpm_exec_t,s0)
+@@ -54,6 +58,8 @@ ifdef(`distro_redhat', `
+ /var/cache/yum(/.*)?			gen_context(system_u:object_r:rpm_var_cache_t,s0)
+ /var/cache/dnf(/.*)?			gen_context(system_u:object_r:rpm_var_cache_t,s0)
+ 
++/var/cache/zypp(/.*)?			gen_context(system_u:object_r:rpm_var_cache_t,s0)
++
+ /var/lib/alternatives(/.*)?		gen_context(system_u:object_r:rpm_var_lib_t,s0)
+ /var/lib/PackageKit(/.*)?		gen_context(system_u:object_r:rpm_var_lib_t,s0)
+ /var/lib/rpm(/.*)?			gen_context(system_u:object_r:rpm_var_lib_t,s0)
+Index: fedora-policy/policy/modules/contrib/rpm.if
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/rpm.if
++++ fedora-policy/policy/modules/contrib/rpm.if
+@@ -431,8 +431,10 @@ interface(`rpm_named_filetrans',`
+ 	logging_log_named_filetrans($1, rpm_log_t, file, "yum.log")
+ 	logging_log_named_filetrans($1, rpm_log_t, file, "hawkey.log")
+ 	logging_log_named_filetrans($1, rpm_log_t, file, "up2date")
++	logging_log_named_filetrans($1, rpm_log_t, file, "zypper.log")
+ 	files_var_filetrans($1, rpm_var_cache_t, dir, "dnf")
+ 	files_var_filetrans($1, rpm_var_cache_t, dir, "yum")
++	files_var_filetrans($1, rpm_var_cache_t, dir, "zypp")
+ 	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "dnf")
+ 	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "yum")
+ 	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "rpm")
+Index: fedora-policy/policy/modules/kernel/files.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/kernel/files.fc
++++ fedora-policy/policy/modules/kernel/files.fc
+@@ -67,6 +67,7 @@ ifdef(`distro_suse',`
+ /etc/sysconfig/ipvsadm.*                --      gen_context(system_u:object_r:system_conf_t,s0)
+ /etc/sysconfig/system-config-firewall.* --      gen_context(system_u:object_r:system_conf_t,s0)
+ /etc/yum\.repos\.d(/.*)?                        gen_context(system_u:object_r:system_conf_t,s0)
++/etc/zypp(/.*)?                        		gen_context(system_u:object_r:system_conf_t,s0)
+ /etc/ostree/remotes.d(/.*)?                      gen_context(system_u:object_r:system_conf_t,s0)
+ 
+ /ostree/repo(/.*)?                      gen_context(system_u:object_r:system_conf_t,s0)

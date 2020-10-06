@@ -1,0 +1,9 @@
+addFilter("W: non-conffile-in-etc.*")
+addFilter("W: zero-length /etc/selinux/.*")
+addFilter("W: hidden-file-or-dir /etc/selinux/minimum/.policy.sha512")
+addFilter("W: hidden-file-or-dir /etc/selinux/targeted/.policy.sha512")
+addFilter("W: hidden-file-or-dir /etc/selinux/mls/.policy.sha512")
+addFilter("W: files-duplicate")
+addFilter("E: files-duplicated-waste")
+addFilter("W: zero-length")
+

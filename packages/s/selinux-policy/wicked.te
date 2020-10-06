@@ -1,0 +1,524 @@
+policy_module(wicked, 1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type wicked_t;
+type wicked_exec_t;
+init_daemon_domain(wicked_t, wicked_exec_t)
+
+type wicked_initrc_exec_t;
+init_script_file(wicked_initrc_exec_t)
+
+type wicked_unit_file_t;
+systemd_unit_file(wicked_unit_file_t)
+
+type wicked_etc_t;
+files_config_file(wicked_etc_t)
+
+type wicked_etc_rw_t;
+files_config_file(wicked_etc_rw_t)
+
+#type wicked_log_t;
+#logging_log_file(wicked_log_t)
+
+type wicked_tmp_t;
+files_tmp_file(wicked_tmp_t)
+
+type wicked_var_lib_t;
+files_type(wicked_var_lib_t)
+
+type wicked_var_run_t;
+files_pid_file(wicked_var_run_t)
+
+#type wpa_cli_t;
+#type wpa_cli_exec_t;
+#init_system_domain(wpa_cli_t, wpa_cli_exec_t)
+
+########################################
+#
+# Local policy
+#
+
+# wicked will ptrace itself if gdb is installed
+# and it receives a unexpected signal (rh bug #204161)
+allow wicked_t self:capability { fowner chown fsetid kill setgid setuid sys_admin sys_nice dac_read_search dac_override net_admin net_raw net_bind_service ipc_lock sys_chroot };
+dontaudit wicked_t self:capability sys_tty_config;
+
+allow wicked_t self:bpf { map_create map_read map_write prog_load prog_run };
+
+ifdef(`hide_broken_symptoms',`
+	# caused by some bogus kernel code
+	dontaudit wicked_t self:capability sys_module;
+')
+# alternatively allow with
+# kernel_load_module( wicked_t )
+
+allow wicked_t self:process { getcap setcap setpgid getsched setsched signal_perms };
+
+allow wicked_t self:process setfscreate;
+selinux_validate_context(wicked_t)
+
+tunable_policy(`deny_ptrace',`',`
+	allow wicked_t self:capability sys_ptrace;
+	allow wicked_t self:process ptrace;
+')
+
+allow wicked_t self:fifo_file rw_fifo_file_perms;
+allow wicked_t self:unix_dgram_socket { sendto create_socket_perms };
+allow wicked_t self:unix_stream_socket{ create_stream_socket_perms connectto };
+allow wicked_t self:netlink_generic_socket create_socket_perms;
+allow wicked_t self:netlink_route_socket create_netlink_socket_perms;
+allow wicked_t self:netlink_xfrm_socket create_netlink_socket_perms;
+allow wicked_t self:netlink_socket create_socket_perms;
+allow wicked_t self:netlink_kobject_uevent_socket create_socket_perms;
+allow wicked_t self:tcp_socket create_stream_socket_perms;
+allow wicked_t self:tun_socket { create_socket_perms relabelfrom relabelto };
+allow wicked_t self:udp_socket create_socket_perms;
+allow wicked_t self:packet_socket create_socket_perms;
+allow wicked_t self:rawip_socket create_socket_perms;
+allow wicked_t self:socket create_socket_perms;
+
+tunable_policy(`deny_bluetooth',`',`
+    allow wicked_t self:bluetooth_socket create_stream_socket_perms;
+')
+
+#allow wicked_t wpa_cli_t:unix_dgram_socket sendto;
+
+can_exec(wicked_t, wicked_exec_t)
+#wicd
+# can_exec(wicked_t, wpa_cli_exec_t)
+
+list_dirs_pattern(wicked_t, wicked_initrc_exec_t, wicked_initrc_exec_t)
+read_files_pattern(wicked_t, wicked_initrc_exec_t, wicked_initrc_exec_t)
+read_lnk_files_pattern(wicked_t, wicked_initrc_exec_t, wicked_initrc_exec_t)
+
+list_dirs_pattern(wicked_t, wicked_etc_t, wicked_etc_t)
+read_files_pattern(wicked_t, wicked_etc_t, wicked_etc_t)
+read_lnk_files_pattern(wicked_t, wicked_etc_t, wicked_etc_t)
+
+read_lnk_files_pattern(wicked_t, wicked_etc_rw_t, wicked_etc_rw_t)
+manage_dirs_pattern(wicked_t, wicked_etc_rw_t, wicked_etc_rw_t)
+manage_files_pattern(wicked_t, wicked_etc_rw_t, wicked_etc_rw_t)
+filetrans_pattern(wicked_t, wicked_etc_t, wicked_etc_rw_t, { dir file })
+
+#allow wicked_t wicked_log_t:dir setattr_dir_perms;
+#append_files_pattern(wicked_t, wicked_log_t, wicked_log_t)
+#create_files_pattern(wicked_t, wicked_log_t, wicked_log_t)
+#setattr_files_pattern(wicked_t, wicked_log_t, wicked_log_t)
+#logging_log_filetrans(wicked_t, wicked_log_t, file)
+
+can_exec(wicked_t, wicked_tmp_t)
+manage_files_pattern(wicked_t, wicked_tmp_t, wicked_tmp_t)
+manage_sock_files_pattern(wicked_t, wicked_tmp_t, wicked_tmp_t)
+files_tmp_filetrans(wicked_t, wicked_tmp_t, { sock_file file })
+
+manage_dirs_pattern(wicked_t, wicked_var_lib_t, wicked_var_lib_t)
+manage_files_pattern(wicked_t, wicked_var_lib_t, wicked_var_lib_t)
+manage_lnk_files_pattern(wicked_t, wicked_var_lib_t, wicked_var_lib_t)
+files_var_lib_filetrans(wicked_t, wicked_var_lib_t, { dir file lnk_file })
+
+manage_dirs_pattern(wicked_t, wicked_var_run_t, wicked_var_run_t)
+manage_files_pattern(wicked_t, wicked_var_run_t, wicked_var_run_t)
+manage_sock_files_pattern(wicked_t, wicked_var_run_t, wicked_var_run_t)
+files_pid_filetrans(wicked_t, wicked_var_run_t, { dir file sock_file })
+
+kernel_read_system_state(wicked_t)
+kernel_read_network_state(wicked_t)
+kernel_read_kernel_sysctls(wicked_t)
+kernel_request_load_module(wicked_t)
+kernel_read_debugfs(wicked_t)
+kernel_rw_net_sysctls(wicked_t)
+kernel_dontaudit_setsched(wicked_t)
+kernel_signull(wicked_t)
+
+corenet_ib_manage_subnet_unlabeled_endports(wicked_t)
+corenet_ib_access_unlabeled_pkeys(wicked_t)
+corenet_all_recvfrom_netlabel(wicked_t)
+corenet_tcp_sendrecv_generic_if(wicked_t)
+corenet_udp_sendrecv_generic_if(wicked_t)
+corenet_raw_sendrecv_generic_if(wicked_t)
+corenet_tcp_sendrecv_generic_node(wicked_t)
+corenet_udp_sendrecv_generic_node(wicked_t)
+corenet_raw_sendrecv_generic_node(wicked_t)
+corenet_tcp_sendrecv_all_ports(wicked_t)
+corenet_udp_sendrecv_all_ports(wicked_t)
+corenet_udp_bind_generic_node(wicked_t)
+corenet_udp_bind_isakmp_port(wicked_t)
+corenet_udp_bind_dhcpc_port(wicked_t)
+corenet_tcp_connect_all_ports(wicked_t)
+corenet_sendrecv_isakmp_server_packets(wicked_t)
+corenet_sendrecv_dhcpc_server_packets(wicked_t)
+corenet_sendrecv_all_client_packets(wicked_t)
+corenet_rw_tun_tap_dev(wicked_t)
+corenet_getattr_ppp_dev(wicked_t)
+
+dev_access_check_sysfs(wicked_t)
+dev_rw_sysfs(wicked_t)
+dev_write_sysfs_dirs(wicked_t)
+dev_read_rand(wicked_t)
+dev_read_urand(wicked_t)
+dev_dontaudit_getattr_generic_blk_files(wicked_t)
+dev_getattr_all_chr_files(wicked_t)
+dev_rw_wireless(wicked_t)
+
+fs_getattr_all_fs(wicked_t)
+fs_search_auto_mountpoints(wicked_t)
+fs_list_inotifyfs(wicked_t)
+fs_read_nsfs_files(wicked_t)
+
+mls_file_read_all_levels(wicked_t)
+
+selinux_dontaudit_search_fs(wicked_t)
+
+corecmd_exec_shell(wicked_t)
+corecmd_exec_bin(wicked_t)
+
+domain_use_interactive_fds(wicked_t)
+domain_read_all_domains_state(wicked_t)
+
+files_read_etc_runtime_files(wicked_t)
+files_read_system_conf_files(wicked_t)
+files_read_usr_src_files(wicked_t)
+files_read_isid_type_files(wicked_t)
+
+storage_getattr_fixed_disk_dev(wicked_t)
+
+term_open_unallocated_ttys(wicked_t)
+
+init_read_utmp(wicked_t)
+init_dontaudit_write_utmp(wicked_t)
+init_domtrans_script(wicked_t)
+init_signull_script(wicked_t)
+init_signal_script(wicked_t)
+init_sigkill_script(wicked_t)
+
+auth_use_nsswitch(wicked_t)
+
+libs_exec_ldconfig(wicked_t)
+
+logging_send_syslog_msg(wicked_t)
+logging_send_audit_msgs(wicked_t)
+
+miscfiles_read_generic_certs(wicked_t)
+
+seutil_read_config(wicked_t)
+seutil_run_setfiles(wicked_t, system_r)
+
+sysnet_domtrans_ifconfig(wicked_t)
+sysnet_domtrans_dhcpc(wicked_t)
+sysnet_signal_dhcpc(wicked_t)
+sysnet_signull_dhcpc(wicked_t)
+sysnet_read_dhcpc_pid(wicked_t)
+sysnet_read_dhcp_config(wicked_t)
+sysnet_delete_dhcpc_pid(wicked_t)
+sysnet_kill_dhcpc(wicked_t)
+sysnet_read_dhcpc_state(wicked_t)
+sysnet_delete_dhcpc_state(wicked_t)
+sysnet_search_dhcp_state(wicked_t)
+# in /etc created by wicked will be labelled net_conf_t.
+sysnet_manage_config(wicked_t)
+sysnet_filetrans_named_content(wicked_t)
+sysnet_filetrans_net_conf(wicked_t)
+
+systemd_machined_read_pid_files(wicked_t)
+
+term_use_unallocated_ttys(wicked_t)
+
+userdom_stream_connect(wicked_t)
+userdom_dontaudit_use_unpriv_user_fds(wicked_t)
+userdom_dontaudit_use_user_ttys(wicked_t)
+# Read gnome-keyring
+userdom_read_home_certs(wicked_t)
+userdom_read_user_home_content_files(wicked_t)
+userdom_dgram_send(wicked_t)
+
+hostname_exec(wicked_t)
+wicked_systemctl(wicked_t)
+
+sysnet_manage_config_dirs(wicked_t)
+
+#tunable_policy(`use_nfs_home_dirs',`
+#    fs_read_nfs_files(wicked_t)
+#')
+#
+#tunable_policy(`use_samba_home_dirs',`
+#    fs_read_cifs_files(wicked_t)
+#')
+
+optional_policy(`
+	avahi_domtrans(wicked_t)
+	avahi_kill(wicked_t)
+	avahi_signal(wicked_t)
+	avahi_signull(wicked_t)
+	avahi_dbus_chat(wicked_t)
+')
+
+optional_policy(`
+	packagekit_dbus_chat(wicked_t)
+')
+
+optional_policy(`
+    firewalld_dbus_chat(wicked_t)
+')
+
+optional_policy(`
+    wicked_dbus_chat(wicked_t)
+')
+
+optional_policy(`
+	bind_domtrans(wicked_t)
+	bind_manage_cache(wicked_t)
+	bind_kill(wicked_t)
+	bind_signal(wicked_t)
+	bind_signull(wicked_t)
+')
+
+optional_policy(`
+	bluetooth_dontaudit_read_helper_state(wicked_t)
+')
+
+optional_policy(`
+	consoletype_exec(wicked_t)
+')
+
+optional_policy(`
+	cron_read_system_job_lib_files(wicked_t)
+')
+
+optional_policy(`
+	chronyd_domtrans_chronyc(wicked_t)
+	chronyd_domtrans(wicked_t)
+')
+
+optional_policy(`
+	dbus_system_domain(wicked_t, wicked_exec_t)
+
+	init_dbus_chat(wicked_t)
+
+	optional_policy(`
+		consolekit_dbus_chat(wicked_t)
+		consolekit_read_pid_files(wicked_t)
+	')
+')
+
+optional_policy(`
+	dnsmasq_read_pid_files(wicked_t)
+	dnsmasq_dbus_chat(wicked_t)
+	dnsmasq_delete_pid_files(wicked_t)
+	dnsmasq_domtrans(wicked_t)
+	dnsmasq_initrc_domtrans(wicked_t)
+	dnsmasq_kill(wicked_t)
+	dnsmasq_signal(wicked_t)
+	dnsmasq_signull(wicked_t)
+	dnsmasq_systemctl(wicked_t)
+')
+
+optional_policy(`
+    dnssec_trigger_domtrans(wicked_t)
+    dnssec_trigger_signull(wicked_t)
+    dnssec_trigger_sigkill(wicked_t)
+')
+
+optional_policy(`
+    fcoe_dgram_send_fcoemon(wicked_t)
+')
+
+optional_policy(`
+	hal_write_log(wicked_t)
+')
+
+optional_policy(`
+	howl_signal(wicked_t)
+')
+
+optional_policy(`
+	gnome_dontaudit_search_config(wicked_t)
+')
+
+optional_policy(`
+    iscsid_domtrans(wicked_t)
+')
+
+optional_policy(`
+    iodined_domtrans(wicked_t)
+')
+
+optional_policy(`
+	ipsec_domtrans_mgmt(wicked_t)
+	ipsec_kill_mgmt(wicked_t)
+	ipsec_signal_mgmt(wicked_t)
+	ipsec_signull_mgmt(wicked_t)
+	ipsec_domtrans(wicked_t)
+	ipsec_kill(wicked_t)
+	ipsec_signal(wicked_t)
+	ipsec_signull(wicked_t)
+')
+
+optional_policy(`
+	iptables_domtrans(wicked_t)
+')
+
+optional_policy(`
+	l2tpd_domtrans(wicked_t)
+    l2tpd_sigkill(wicked_t)
+    l2tpd_signal(wicked_t)
+    l2tpd_signull(wicked_t)
+')
+
+optional_policy(`
+    lldpad_dgram_send(wicked_t)
+')
+
+optional_policy(`
+    kdump_dontaudit_inherited_kdumpctl_tmp_pipes(wicked_t)
+')
+
+optional_policy(`
+	netutils_exec_ping(wicked_t)
+    netutils_exec(wicked_t)
+')
+
+optional_policy(`
+	nscd_domtrans(wicked_t)
+	nscd_signal(wicked_t)
+	nscd_signull(wicked_t)
+	nscd_kill(wicked_t)
+	nscd_initrc_domtrans(wicked_t)
+	nscd_systemctl(wicked_t)
+')
+
+optional_policy(`
+	# Dispatcher starting and stoping ntp
+	ntp_initrc_domtrans(wicked_t)
+	ntp_systemctl(wicked_t)
+')
+
+optional_policy(`
+	modutils_domtrans_kmod(wicked_t)
+')
+
+optional_policy(`
+	openvpn_read_config(wicked_t)
+	openvpn_domtrans(wicked_t)
+	openvpn_kill(wicked_t)
+	openvpn_signal(wicked_t)
+	openvpn_signull(wicked_t)
+	openvpn_stream_connect(wicked_t)
+	openvpn_noatsecure(wicked_t)
+')
+
+optional_policy(`
+	policykit_dbus_chat(wicked_t)
+	policykit_domtrans_auth(wicked_t)
+	policykit_read_lib(wicked_t)
+	policykit_read_reload(wicked_t)
+	userdom_read_all_users_state(wicked_t)
+')
+
+optional_policy(`
+	polipo_systemctl(wicked_t)
+')
+
+optional_policy(`
+	ppp_initrc_domtrans(wicked_t)
+	ppp_domtrans(wicked_t)
+	ppp_manage_pid_files(wicked_t)
+	ppp_kill(wicked_t)
+	ppp_signal(wicked_t)
+	ppp_signull(wicked_t)
+	ppp_read_config(wicked_t)
+	ppp_systemctl(wicked_t)
+')
+
+optional_policy(`
+	rpm_exec(wicked_t)
+	rpm_read_db(wicked_t)
+	rpm_dontaudit_manage_db(wicked_t)
+')
+
+optional_policy(`
+    samba_service_status(wicked_t)
+')
+
+optional_policy(`
+	seutil_sigchld_newrole(wicked_t)
+')
+
+optional_policy(`
+	sysnet_manage_dhcpc_state(wicked_t)
+')
+
+optional_policy(`
+	systemd_write_inhibit_pipes(wicked_t)
+	systemd_read_logind_sessions_files(wicked_t)
+	systemd_dbus_chat_logind(wicked_t)
+	systemd_dbus_chat_hostnamed(wicked_t)
+    systemd_hostnamed_manage_config(wicked_t)
+')
+
+optional_policy(`
+    ssh_basic_client_template(wicked, wicked_t, system_r)
+    term_use_generic_ptys(wicked_ssh_t)
+    modutils_domtrans_kmod(wicked_ssh_t)
+    dbus_connect_system_bus(wicked_ssh_t)
+    dbus_system_bus_client(wicked_ssh_t)
+
+    wicked_dbus_chat(wicked_ssh_t)
+')
+
+optional_policy(`
+	udev_exec(wicked_t)
+	udev_read_db(wicked_t)
+	udev_read_pid_files(wicked_t)
+')
+
+optional_policy(`
+	vpn_domtrans(wicked_t)
+	vpn_kill(wicked_t)
+	vpn_signal(wicked_t)
+	vpn_signull(wicked_t)
+	vpn_relabelfrom_tun_socket(wicked_t)
+')
+
+optional_policy(`
+	openfortivpn_domtrans(wicked_t)
+	openfortivpn_sigkill(wicked_t)
+	openfortivpn_signal(wicked_t)
+	openfortivpn_signull(wicked_t)
+')
+
+optional_policy(`
+	openvswitch_stream_connect(wicked_t)
+')
+
+optional_policy(`
+	virt_dbus_chat(wicked_t)
+')
+
+#tunable_policy(`use_ecryptfs_home_dirs',`
+#fs_manage_ecryptfs_files(wicked_t)
+#')
+
+########################################
+#
+# wpa_cli local policy
+#
+
+#allow wpa_cli_t self:capability { dac_read_search  };
+#allow wpa_cli_t self:unix_dgram_socket create_socket_perms;
+#
+#allow wpa_cli_t wicked_t:unix_dgram_socket sendto;
+#
+#manage_sock_files_pattern(wpa_cli_t, wicked_tmp_t, wicked_tmp_t)
+#files_tmp_filetrans(wpa_cli_t, wicked_tmp_t, sock_file)
+#
+#list_dirs_pattern(wpa_cli_t, wicked_var_run_t, wicked_var_run_t)
+#rw_sock_files_pattern(wpa_cli_t, wicked_var_run_t, wicked_var_run_t)
+#
+#init_dontaudit_use_fds(wpa_cli_t)
+#init_use_script_ptys(wpa_cli_t)
+#
+#term_dontaudit_use_console(wpa_cli_t)

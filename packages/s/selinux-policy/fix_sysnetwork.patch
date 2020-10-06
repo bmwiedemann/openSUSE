@@ -1,0 +1,13 @@
+Index: fedora-policy/policy/modules/system/sysnetwork.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/system/sysnetwork.fc
++++ fedora-policy/policy/modules/system/sysnetwork.fc
+@@ -102,6 +102,8 @@ ifdef(`distro_debian',`
+ /var/run/network(/.*)?	gen_context(system_u:object_r:net_conf_t,s0)
+ ')
+ 
++/var/run/netconfig(/.*)?	gen_context(system_u:object_r:net_conf_t,s0)
++
+ /var/run/netns	-d 		gen_context(system_u:object_r:ifconfig_var_run_t,s0)
+ /var/run/netns/[^/]+       	<<none>>
+ 

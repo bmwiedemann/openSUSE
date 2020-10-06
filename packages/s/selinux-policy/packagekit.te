@@ -1,0 +1,38 @@
+policy_module(packagekit,1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type packagekit_t;
+type packagekit_exec_t;
+init_daemon_domain(packagekit_t,packagekit_exec_t)
+
+type packagekit_unit_file_t;
+systemd_unit_file(packagekit_unit_file_t)
+
+type packagekit_var_lib_t;
+files_type(packagekit_var_lib_t)
+
+unconfined_dbus_chat(packagekit_t)
+init_dbus_chat(packagekit_t)
+optional_policy(`
+	policykit_dbus_chat(packagekit_t)
+')
+
+optional_policy(`
+	unconfined_domain(packagekit_t)
+')
+
+optional_policy(`
+	snapper_dbus_chat(packagekit_t)
+')
+
+optional_policy(`
+	systemd_dbus_chat_logind(packagekit_t)
+')
+
+optional_policy(`
+	rpm_transition_script(packagekit_t,system_r)
+')

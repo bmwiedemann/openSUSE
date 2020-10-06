@@ -1,0 +1,46 @@
+Index: fedora-policy/policy/modules/roles/unconfineduser.te
+===================================================================
+--- fedora-policy.orig/policy/modules/roles/unconfineduser.te
++++ fedora-policy/policy/modules/roles/unconfineduser.te
+@@ -120,6 +120,11 @@ tunable_policy(`unconfined_dyntrans_all'
+     domain_dyntrans(unconfined_t)
+ ')
+ 
++# FIXME this is probably caused by some wierd PAM interaction
++corecmd_entrypoint_all_executables(unconfined_t)
++# FIXME sddm JITs some code, requiring execmod on user_tmp_t. Check how to disable this behaviour in sddm/qtdeclarative
++files_execmod_tmp(unconfined_t)
++
+ optional_policy(`
+ 	gen_require(`
+ 		type unconfined_t;
+@@ -210,6 +215,10 @@ optional_policy(`
+ ')
+ 
+ optional_policy(`
++    cron_system_spool_entrypoint(unconfined_t)
++')
++
++optional_policy(`
+ 	chrome_role_notrans(unconfined_r, unconfined_t)
+ 
+ 	tunable_policy(`unconfined_chrome_sandbox_transition',`
+@@ -244,6 +253,18 @@ optional_policy(`
+ 	dbus_stub(unconfined_t)
+ 
+ 	optional_policy(`
++		accountsd_dbus_chat(unconfined_dbusd_t)
++	')
++
++	optional_policy(`
++		networkmanager_dbus_chat(unconfined_dbusd_t)
++	')
++
++	optional_policy(`
++		systemd_dbus_chat_logind(unconfined_dbusd_t)
++	')
++
++	optional_policy(`
+ 		bluetooth_dbus_chat(unconfined_t)
+ 	')
+ 

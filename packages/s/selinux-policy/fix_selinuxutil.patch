@@ -1,0 +1,26 @@
+Index: fedora-policy/policy/modules/system/selinuxutil.te
+===================================================================
+--- fedora-policy.orig/policy/modules/system/selinuxutil.te	2020-02-19 09:36:25.444182470 +0000
++++ fedora-policy/policy/modules/system/selinuxutil.te	2020-02-24 07:57:26.556813139 +0000
+@@ -238,6 +238,10 @@ ifdef(`hide_broken_symptoms',`
+ ')
+ 
+ optional_policy(`
++	packagekit_read_write_fifo(load_policy_t)
++')
++
++optional_policy(`
+ 	portage_dontaudit_use_fds(load_policy_t)
+ ')
+ 
+@@ -613,6 +617,10 @@ logging_send_audit_msgs(setfiles_t)
+ logging_send_syslog_msg(setfiles_t)
+ 
+ optional_policy(`
++	packagekit_read_write_fifo(setfiles_t)
++')
++
++optional_policy(`
+     cloudform_dontaudit_write_cloud_log(setfiles_t)
+ ')
+ 

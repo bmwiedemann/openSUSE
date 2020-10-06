@@ -1,0 +1,40 @@
+## <summary>A temporary policy for packagekit.</summary>
+
+########################################
+## <summary>
+##	Allow reading of fifo files
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to mange files
+##	</summary>
+## </param>
+#
+interface(`packagekit_read_write_fifo',`
+	gen_require(`
+		type packagekit_t;
+	')
+
+	allow $1 packagekit_t:fifo_file rw_inherited_fifo_file_perms;
+')
+
+########################################
+## <summary>
+##      Send and receive messages from
+##      packagekit over dbus.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed access.
+##      </summary>
+## </param>
+#
+interface(`packagekit_dbus_chat',`
+        gen_require(`
+                type packagekit_t;
+                class dbus send_msg;
+        ')
+
+        allow $1 packagekit_t:dbus send_msg;
+        allow packagekit_t $1:dbus send_msg;
+')

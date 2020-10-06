@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/accountsd.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/accountsd.fc
++++ fedora-policy/policy/modules/contrib/accountsd.fc
+@@ -1,6 +1,7 @@
+ /usr/lib/systemd/system/accountsd.*  --              gen_context(system_u:object_r:accountsd_unit_file_t,s0)
+ 
+ /usr/libexec/accounts-daemon	--	gen_context(system_u:object_r:accountsd_exec_t,s0)
++/usr/lib/accounts-daemon	--	gen_context(system_u:object_r:accountsd_exec_t,s0)
+ 
+ /usr/lib/accountsservice/accounts-daemon	--	gen_context(system_u:object_r:accountsd_exec_t,s0)
+ 

@@ -1,0 +1,15 @@
+Index: fedora-policy/policy/modules/contrib/automount.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/automount.te
++++ fedora-policy/policy/modules/contrib/automount.te
+@@ -154,6 +154,10 @@ optional_policy(`
+ ')
+ 
+ optional_policy(`
++	networkmanager_read_pid_files(automount_t)
++')
++
++optional_policy(`
+ 	fstools_domtrans(automount_t)
+ ')
+ 

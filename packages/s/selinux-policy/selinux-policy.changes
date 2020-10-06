@@ -1,0 +1,611 @@
+-------------------------------------------------------------------
+Thu Sep  3 07:47:52 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop BuildRequires for python, python-xml. It's not needed anymore
+
+-------------------------------------------------------------------
+Tue Sep  1 12:31:17 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Drop fix_dbus.patch_orig, was included by accident
+- Drop segenxml_interpreter.patch, not used anymore
+
+-------------------------------------------------------------------
+Tue Aug 11 14:25:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- macros.selinux-policy: move rpm-state directory to /run and
+  make sure it exists 
+
+-------------------------------------------------------------------
+Wed Aug  5 11:29:05 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Cleanup spec file and follow more closely Fedora
+- Label /sys/kernel/uevent_helper with tmpfiles.d/selinux-policy.conf
+- Move config to /etc/selinux/config and create during %post install
+  to be compatible with upstream and documentation.
+- Add RPM macros for SELinux (macros.selinux-policy)
+- Install booleans.subs_dist
+- Remove unused macros
+- Sync make/install macros with Fedora spec file
+- Introduce sandbox sub-package
+
+-------------------------------------------------------------------
+Wed Jul 29 13:47:57 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add policycoreutils-devel as BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 17 08:30:52 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20200717. Refreshed
+  * fix_fwupd.patch
+  * fix_hadoop.patch
+  * fix_init.patch
+  * fix_irqbalance.patch
+  * fix_logrotate.patch
+  * fix_nagios.patch
+  * fix_networkmanager.patch
+  * fix_postfix.patch
+  * fix_sysnetwork.patch
+  * fix_systemd.patch
+  * fix_thunderbird.patch
+  * fix_unconfined.patch
+  * fix_unprivuser.patch
+  * selinux-policy.spec
+- Added update.sh to make updating easier
+
+-------------------------------------------------------------------
+Tue Jul 14 13:18:43 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated fix_unconfineduser.patch to allow unconfined_dbusd_t access
+  to accountsd dbus
+- New patch:
+  * fix_nis.patch
+- Updated patches:
+  * fix_postfix.patch: Transition is done in distribution specific script
+
+-------------------------------------------------------------------
+Tue Jun  2 14:45:37 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Added module for wicked
+- New patches:
+  * fix_authlogin.patch
+  * fix_screen.patch
+  * fix_unprivuser.patch
+  * fix_rpm.patch
+  * fix_apache.patch
+
+-------------------------------------------------------------------
+Thu Mar 26 09:51:45 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Added module for rtorrent
+- Enable snapper module in minimum policy to reduce issues on BTRFS
+  Updated fix_snapper.patch to prevent relabling of snapshot
+
+-------------------------------------------------------------------
+Mon Mar  9 09:01:22 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- New patches:
+  * fix_accountsd.patch
+  * fix_automount.patch
+  * fix_colord.patch
+  * fix_mcelog.patch
+  * fix_sslh.patch
+  * fix_nagios.patch
+  * fix_openvpn.patch
+  * fix_cron.patch
+  * fix_usermanage.patch
+  * fix_smartmon.patch
+  * fix_geoclue.patch
+  * suse_specific.patch
+  Default systems should now work without selinuxuser_execmod
+- Removed xdm_entrypoint_pam.patch, necessary change is in
+  fix_unconfineduser.patch
+- Enable SUSE specific settings again
+
+-------------------------------------------------------------------
+Wed Feb 19 09:21:24 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
+
+- Update to version 20200219
+  Refreshed fix_hadoop.patch
+  Updated 
+  * fix_dbus.patch
+  * fix_hadoop.patch
+  * fix_nscd.patch
+  * fix_xserver.patch
+  Renamed postfix_paths.patch to fix_postfix.patch
+  Added
+  * fix_init.patch
+  * fix_locallogin.patch
+  * fix_policykit.patch
+  * fix_iptables.patch
+  * fix_irqbalance.patch
+  * fix_ntp.patch
+  * fix_fwupd.patch
+  * fix_firewalld.patch
+  * fix_logrotate.patch
+  * fix_selinuxutil.patch
+  * fix_corecommand.patch
+  * fix_snapper.patch
+  * fix_systemd.patch
+  * fix_unconfined.patch
+  * fix_unconfineduser.patch
+  * fix_chronyd.patch
+  * fix_networkmanager.patch
+  * xdm_entrypoint_pam.patch
+- Removed modules minimum_temp_fixes and targeted_temp_fixes
+  from the corresponding policies
+- Reduced default module list of minimum policy by removing
+  apache inetd nis postfix mta modules
+- Adding/removing necessary pam config automatically 
+- Minimum and targeted policy: Enable domain_can_mmap_files by default
+- Targeted policy: Disable selinuxuser_execmem, selinuxuser_execmod and
+  selinuxuser_execstack to have safe defaults
+
+-------------------------------------------------------------------
+Mon Aug  9 12:11:28 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Moved back to fedora policy (20190802)
+- Removed spec file conditionals for old SELinux userland
+- Removed config.tgz
+- Removed patches:
+  * label_sysconfig.selinux.patch
+  * label_var_run_rsyslog.patch
+  * suse_additions_obs.patch
+  * suse_additions_sslh.patch
+  * suse_modifications_apache.patch
+  * suse_modifications_cron.patch
+  * suse_modifications_getty.patch
+  * suse_modifications_logging.patch
+  * suse_modifications_ntp.patch
+  * suse_modifications_usermanage.patch
+  * suse_modifications_virt.patch
+  * suse_modifications_xserver.patch
+  * sysconfig_network_scripts.patch
+  * segenxml_interpreter.patch
+- Added patches:
+  * fix_djbdns.patch
+  * fix_dbus.patch
+  * fix_gift.patch
+  * fix_java.patch
+  * fix_hadoop.patch
+  * fix_thunderbird.patch
+  * postfix_paths.patch
+  * fix_nscd.patch
+  * fix_sysnetwork.patch
+  * fix_logging.patch
+  * fix_xserver.patch
+  * fix_miscfiles.patch
+  to fix problems with the coresponding modules
+- Added sedoctool.patch to prevent build failures
+- This also adds three modules:
+  * packagekit.(te|if|fc)
+    Basic (currently permissive) module for packagekit
+  * minimum_temp_fixes.(te|if|fc)
+    and
+  * targeted_temp_fixes.(te|if|fc)
+    both are currently necessary to get the systems to boot in 
+    enforcing mode. Most of them obviosly stem from mislabeled
+    files, so this needs to be worked through and then removed
+    eventually
+  Also selinuxuser_execstack, selinuxuser_execmod and 
+  domain_can_mmap_files need to be enabled. Especially the first
+  two are bad and should be removed ASAP
+
+-------------------------------------------------------------------
+Thu Jul 11 12:29:29 UTC 2019 -  <jsegitz@suse.com>
+
+- Update to refpolicy 20190609. New modules for stubby and several
+  systemd updates, including initial support for systemd --user
+  sessions.
+  Refreshed
+  * label_var_run_rsyslog.patch
+  * suse_modifications_cron.patch
+  * suse_modifications_logging.patch
+  * suse_modifications_ntp.patch
+  * suse_modifications_usermanage.patch
+  * suse_modifications_xserver.patch
+  * sysconfig_network_scripts.patch
+
+-------------------------------------------------------------------
+Mon Feb  4 07:59:49 UTC 2019 - jsegitz@suse.com
+
+- Update to refpolicy 20190201. New modules for chromium, hostapd,
+  and sigrok and minor fixes for existing modules.
+  Refreshed suse_modifications_usermanage.patch
+
+-------------------------------------------------------------------
+Wed Nov 28 15:18:28 UTC 2018 - jsegitz@suse.com
+
+- Change default state to disabled and disable SELinux after 
+  uninstallation of policy to prevent unbootable system 
+  (bsc#1108949, bsc#1109590)
+
+-------------------------------------------------------------------
+Tue Nov 27 15:20:03 UTC 2018 - jsegitz@suse.com
+
+- Use refpolicy 20180701 as a base
+- Dropped patches
+  * allow-local_login_t-read-shadow.patch
+  * dont_use_xmllint_in_make_conf.patch
+  * label_sysconfig.selinux-policy.patch
+  * policy-rawhide-base.patch
+  * policy-rawhide-contrib.patch
+  * suse_modifications_authlogin.patch
+  * suse_modifications_dbus.patch
+  * suse_modifications_glusterfs.patch
+  * suse_modifications_ipsec.patch
+  * suse_modifications_passenger.patch
+  * suse_modifications_policykit.patch
+  * suse_modifications_postfix.patch
+  * suse_modifications_rtkit.patch
+  * suse_modifications_selinuxutil.patch
+  * suse_modifications_ssh.patch
+  * suse_modifications_staff.patch
+  * suse_modifications_stapserver.patch
+  * suse_modifications_systemd.patch
+  * suse_modifications_unconfined.patch
+  * suse_modifications_unconfineduser.patch
+  * suse_modifications_unprivuser.patch
+  * systemd-tmpfiles.patch
+  * type_transition_contrib.patch
+  * type_transition_file_class.patch
+  * useradd-netlink_selinux_socket.patch
+  * xconsole.patch
+  Rebased the other patches to apply to refpolicy
+- Added segenxml_interpreter.patch to not use env in shebang
+- Added rpmlintrc to surpress duplicate file warnings
+
+-------------------------------------------------------------------
+Mon Mar 26 13:18:34 UTC 2018 - rgoldwyn@suse.com
+
+- Add overlayfs as xattr capable (bsc#1073741)
+  * add-overlayfs-as-xattr-capable.patch
+
+-------------------------------------------------------------------
+Tue Dec 12 09:07:31 UTC 2017 - jsegitz@suse.com
+
+- Added
+  * suse_modifications_glusterfs.patch
+  * suse_modifications_passenger.patch
+  * suse_modifications_stapserver.patch
+  to modify module name to make the current tools happy
+
+-------------------------------------------------------------------
+Wed Nov 29 13:20:22 UTC 2017 - rbrown@suse.com
+
+- Repair erroneous changes introduced with %_fillupdir macro
+
+-------------------------------------------------------------------
+Thu Nov 23 13:53:09 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+
+-------------------------------------------------------------------
+Wed Mar 15 21:50:32 UTC 2017 - mwilck@suse.com
+
+- POLCYVER depends both on the libsemanage/policycoreutils version
+  and the kernel. The former is more important for us, kernel seems
+  to have all necessary features in Leap 42.1 already.
+
+- Replaced = runtime dependencies on checkpolicy/policycoreutils 
+  with "=". 2.5 policy is not supposed to work with 2.3 tools,
+  The runtime policy tools need to be same the policy was built with.
+
+-------------------------------------------------------------------
+Wed Mar 15 15:16:20 UTC 2017 - mwilck@suse.com
+
+- Changes required by policycoreutils update to 2.5
+  * lots of spec file content needs to be conditional on
+    policycoreutils version.
+
+- Specific policycoreutils 2.5 related changes:
+  * modules moved from /etc/selinux to /var/lib/selinux
+  (https://github.com/SELinuxProject/selinux/wiki/Policy-Store-Migration)
+  * module path now includes includes priority. Users override default
+  policies by setting higher priority. Thus installed policy modules can be
+  fully verified by RPM.
+  * Installed modules have a different format and path.
+  Raw bzip2 doesn't suffice to create them any more, but we can process them
+  all in a single semodule -i command.
+
+- Policy version depends on kernel / distro version  
+  * do not touch policy.<version>, rather fail if it's not created
+
+- Enabled building mls policy for Leap (not for SLES)
+
+- Other
+  * Bug: "sandbox.disabled" should be "sandbox.pp.disabled" for old policycoreutils
+  * Bug: (minimum) additional modules that need to be activated: postfix
+  (required by apache), plymouthd (required by getty)
+  * Cleanup: /etc -> %{sysconfdir} etc.
+
+-------------------------------------------------------------------
+Thu Aug 13 08:14:34 UTC 2015 - jsegitz@novell.com
+
+- fixed missing role assignment in cron_unconfined_role
+
+-------------------------------------------------------------------
+Tue Aug 11 08:36:17 UTC 2015 - jsegitz@novell.com
+
+- Updated suse_modifications_ipsec.patch, removed dontaudits for 
+  ipsec_mgmt_t and granted matching permissions
+
+-------------------------------------------------------------------
+Wed Aug  5 11:31:24 UTC 2015 - jsegitz@novell.com
+
+- Added suse_modifications_ipsec.patch to grant additional privileges
+  to ipsec_mgmt_t
+
+-------------------------------------------------------------------
+Tue Jul 21 14:56:07 UTC 2015 - jsegitz@novell.com
+
+- Minor changes for CC evaluation. Allow reading of /dev/random
+  and ipc_lock for dbus and dhcp
+
+-------------------------------------------------------------------
+Wed Jun 24 08:27:30 UTC 2015 - jsegitz@novell.com
+
+- Transition from unconfined user to cron admin type
+- Allow systemd_timedated_t to talk to unconfined dbus for minimal
+  policy (bsc#932826)
+- Allow hostnamectl to set the hostname (bsc#933764)
+
+-------------------------------------------------------------------
+Wed May 20 14:05:04 UTC 2015 - jsegitz@novell.com
+
+- Removed ability of staff_t and user_t to use svirt. Will reenable
+  this later on with a policy upgrade
+  Added suse_modifications_staff.patch
+
+-------------------------------------------------------------------
+Wed Feb 25 11:38:44 UTC 2015 - jsegitz@novell.com
+
+- Added dont_use_xmllint_in_make_conf.patch to remove xmllint usage
+  in make conf. This currently breaks manual builds. 
+- Added BuildRequires for libxml2-tools to enable xmllint checks 
+  once the issue mentioned above is solved
+
+-------------------------------------------------------------------
+Thu Jan 29 09:56:40 UTC 2015 - jsegitz@novell.com
+
+- adjusted suse_modifications_ntp to match SUSE chroot paths
+
+-------------------------------------------------------------------
+Wed Jan 28 09:37:06 UTC 2015 - jsegitz@novell.com
+
+- Added 
+  * suse_additions_obs.patch to allow local builds by OBS
+  * suse_additions_sslh.patch to confine sslh
+- Added suse_modifications_cron.patch to adjust crontabs contexts
+- Modified suse_modifications_postfix.patch to match SUSE paths
+- Modified suse_modifications_ssh.patch to bring boolean
+  sshd_forward_ports back
+- Modified 
+  * suse_modifications_dbus.patch
+  * suse_modifications_unprivuser.patch
+  * suse_modifications_xserver.patch
+  to allow users to be confined
+- Added
+  * suse_modifications_apache.patch 
+  * suse_modifications_ntp.patch
+  and modified
+  * suse_modifications_xserver.patch
+  to fix labels on startup scripts used by systemd
+- Removed unused and incorrect interface dev_create_all_dev_nodes
+  from systemd-tmpfiles.patch
+- Removed BuildRequire for selinux-policy-devel
+
+-------------------------------------------------------------------
+Fri Jan 23 15:52:02 UTC 2015 - jsegitz@novell.com
+
+- Major cleanup of the spec file
+
+-------------------------------------------------------------------
+Fri Jan 23 11:44:52 UTC 2015 - jsegitz@novell.com
+
+- removed suse_minimal_cc.patch and splitted them into
+  * suse_modifications_dbus.patch
+  * suse_modifications_policykit.patch
+  * suse_modifications_postfix.patch
+  * suse_modifications_rtkit.patch
+  * suse_modifications_unconfined.patch
+  * suse_modifications_systemd.patch
+  * suse_modifications_unconfineduser.patch
+  * suse_modifications_selinuxutil.patch
+  * suse_modifications_logging.patch
+  * suse_modifications_getty.patch
+  * suse_modifications_authlogin.patch
+  * suse_modifications_xserver.patch
+  * suse_modifications_ssh.patch
+  * suse_modifications_usermanage.patch
+- Added suse_modifications_virt.patch to enable svirt on s390x
+
+-------------------------------------------------------------------
+Sat Nov 08 19:17:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in post script
+
+-------------------------------------------------------------------
+Thu Sep 18 09:06:09 UTC 2014 - jsegitz@suse.com
+
+Redid changes done by vcizek@suse.com in SLE12 package
+
+- disable build of MLS policy
+- removed outdated description files 
+  * Alan_Rouse-openSUSE_with_SELinux.txt
+  * Alan_Rouse-Policy_Development_Process.txt
+
+-------------------------------------------------------------------
+Mon Sep  8 09:08:19 UTC 2014 - jsegitz@suse.com
+
+- removed remove_duplicate_filetrans_pattern_rules.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 11:22:02 UTC 2014 - jsegitz@suse.com
+
+- Updated policy to include everything up until 20140730 (refpolicy and
+  fedora rawhide improvements). Rebased all patches that are still
+  necessary
+- Removed permissivedomains.pp. Doesn't work with the new policy
+- modified spec file so that all modifications for distro=redhat and
+  distro=suse will be used. 
+- added selinux-policy-rpmlintrc to suppress some warnings that aren't
+  valid for this package
+- added suse_minimal_cc.patch to create a suse specific module to prevent
+  errors while using the minimum policy. Will rework them in the proper
+  places once the minimum policy is reworked to really only confine a 
+  minimal set of domains.
+
+-------------------------------------------------------------------
+Tue Sep  2 13:31:58 UTC 2014 - vcizek@suse.com
+
+- removed source files which were not used
+  * modules-minimum.conf, modules-mls.conf, modules-targeted.conf,
+    permissivedomains.fc, permissivedomains.if, permissivedomains.te,
+    seusers, seusers-mls, seusers-targeted, users_extra-mls,
+    users_extra-targeted
+
+-------------------------------------------------------------------
+Mon Jun  2 12:08:40 UTC 2014 - vcizek@suse.com
+
+- remove duplicate filetrans_pattern rules
+  * fixes build with libsepol-2.3
+  * added remove_duplicate_filetrans_pattern_rules.patch
+
+-------------------------------------------------------------------
+Mon Dec  9 13:57:18 UTC 2013 - vcizek@suse.com
+
+- enable build of mls and targeted policies
+- fixes to the minimum policy:
+- label /var/run/rsyslog correctly
+  * label_var_run_rsyslog.patch
+- allow systemd-tmpfiles to create devices
+  * systemd-tmpfiles.patch
+- add rules for sysconfig
+  * correctly label /dev/.sysconfig/network
+  * added sysconfig_network_scripts.patch
+- run restorecon and fixfiles only if if selinux is enabled
+- fix console login
+  * allow-local_login_t-read-shadow.patch
+- allow rsyslog to write to xconsole
+  * xconsole.patch
+- useradd needs to call selinux_check_access (via pam_rootok)
+  * useradd-netlink_selinux_socket.patch
+
+-------------------------------------------------------------------
+Mon Aug 12 02:08:15 CEST 2013 - ro@suse.de
+
+- fix build on factory: newer rpm does not allow to mark
+  non-directories as dir anymore (like symlinks in this case) 
+
+-------------------------------------------------------------------
+Thu Jul 11 11:00:14 UTC 2013 - coolo@suse.com
+
+- install COPYING
+
+-------------------------------------------------------------------
+Fri Mar 22 11:52:43 UTC 2013 - vcizek@suse.com
+
+- switch to Fedora as upstream
+- added patches:
+  * policy-rawhide-base.patch
+  * policy-rawhide-contrib.patch
+  * type_transition_file_class.patch
+  * type_transition_contrib.patch
+  * label_sysconfig.selinux-policy.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 13:40:27 UTC 2012 - vcizek@suse.com
+
+- bump up policy version to 27, due to recent libsepol update
+- dropped currently unused policy-rawhide.patch
+- fix installing of file_contexts (this enables restorecond to run properly)
+- Recommends: audit and setools
+
+-------------------------------------------------------------------
+Mon Dec 10 15:47:13 UTC 2012 - meissner@suse.com
+
+- mark included files in source
+
+-------------------------------------------------------------------
+Mon Oct 22 18:47:00 UTC 2012 - vcizek@suse.com
+
+- update to 2.20120725
+- added selinux-policy-run_sepolgen_during_build.patch
+- renamed patch with SUSE-specific policy to selinux-policy-SUSE.patch
+- dropped policygentool and OLPC stuff
+
+-------------------------------------------------------------------
+Wed May  9 10:01:26 UTC 2012 - coolo@suse.com
+
+- patch license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri May 21 16:05:49 CEST 2010 - prusnak@suse.cz
+
+- use policy created by Alan Rouse
+
+-------------------------------------------------------------------
+Sat Apr 10 23:45:17 PDT 2010 - justinmattock@gmail.com
+
+- Adjust selinux-policy.spec so that the policy
+  source tree is put in /usr/share/doc/packages/selinux-*
+  so users can build the policy [bnc#582404]
+
+-------------------------------------------------------------------
+Wed Apr  7 09:59:43 UTC 2010 - thomas@novell.com
+
+- fixed fileperms of /etc/selinux/config to be 644 to allow
+  libselinux to read from it (bnc#582399)
+  this is also the default file mode in fedora 12
+
+-------------------------------------------------------------------
+Fri Jun 26 12:19:07 CEST 2009 - thomas@novell.com
+
+- added config file for /etc/selinux/
+
+-------------------------------------------------------------------
+Wed Jan 14 14:20:23 CET 2009 - prusnak@suse.cz
+
+- updated to version 2008.12.10
+  * Fix consistency of audioentropy and iscsi module naming.
+  * Debian file context fix for xen from Russell Coker.
+  * Xserver MLS fix from Eamon Walsh.
+  * Add omapi port for dhcpcd.
+  * Deprecate per-role templates and rolemap support.
+  * Implement user-based access control for use as role separations.
+  * Move shared library calls from individual modules to the domain module.
+  * Enable open permission checks policy capability.
+  * Remove hierarchy from portage module as it is not a good example of hieararchy.
+  * Remove enableaudit target from modular build as semodule -DB supplants it.
+  * Added modules:
+    - milter (Paul Howarth)
+
+-------------------------------------------------------------------
+Thu Oct 16 16:08:32 CEST 2008 - prusnak@suse.cz
+
+- updated to version 2008.10.14
+  * Debian update for NetworkManager/wpa_supplicant from Martin Orr.
+  * Logrotate and Bind updates from Vaclav Ovsik.
+  * Init script file and domain support.
+  * Glibc 2.7 fix from Vaclav Ovsik.
+  * Samba/winbind update from Mike Edenfield.
+  * Policy size optimization with a non-security file attribute from James Carter.
+  * Database labeled networking update from KaiGai Kohei.
+  * Several misc changes from the Fedora policy, cherry picked by David Hardeman.
+  * Large whitespace fix from Dominick Grift.
+  * Pam_mount fix for local login from Stefan Schulze Frielinghaus.
+  * Issuing commands to upstart is over a datagram socket, not the initctl named pipe.
+  * Updated init_telinit() to match.
+  * Added modules:
+    - cyphesis (Dan Walsh)
+    - memcached (Dan Walsh)
+    - oident (Dominick Grift)
+    - w3c (Dan Walsh)
+
+-------------------------------------------------------------------
+Tue Jul 22 11:57:34 CEST 2008 - prusnak@suse.cz
+
+- initial version 2008.07.02 from tresys
+

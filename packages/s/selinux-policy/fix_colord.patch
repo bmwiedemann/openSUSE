@@ -1,0 +1,13 @@
+Index: fedora-policy/policy/modules/contrib/colord.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/colord.fc
++++ fedora-policy/policy/modules/contrib/colord.fc
+@@ -6,6 +6,8 @@
+ 
+ /usr/libexec/colord	--	gen_context(system_u:object_r:colord_exec_t,s0)
+ /usr/libexec/colord-sane	--	gen_context(system_u:object_r:colord_exec_t,s0)
++/usr/lib/colord	--	gen_context(system_u:object_r:colord_exec_t,s0)
++/usr/lib/colord-sane	--	gen_context(system_u:object_r:colord_exec_t,s0)
+ 
+ /usr/lib/systemd/system/colord.*  -- gen_context(system_u:object_r:colord_unit_file_t,s0)
+ 

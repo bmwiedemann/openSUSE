@@ -1,0 +1,43 @@
+Index: fedora-policy/policy/modules/services/xserver.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/services/xserver.fc
++++ fedora-policy/policy/modules/services/xserver.fc
+@@ -71,6 +71,7 @@ HOME_DIR/\.dmrc.*	--	gen_context(system_
+ /etc/X11/[wxg]dm/Xsession --	gen_context(system_u:object_r:xsession_exec_t,s0)
+ /etc/X11/wdm(/.*)?		gen_context(system_u:object_r:xdm_rw_etc_t,s0)
+ /etc/X11/wdm/Xsetup.*	--	gen_context(system_u:object_r:xsession_exec_t,s0)
++/etc/X11/xdm/Xsetup	--	gen_context(system_u:object_r:xsession_exec_t,s0)
+ /etc/X11/wdm/Xstartup.*	--	gen_context(system_u:object_r:xsession_exec_t,s0)
+ /etc/X11/Xsession[^/]*	--	gen_context(system_u:object_r:xsession_exec_t,s0)
+ 
+@@ -102,6 +103,7 @@ HOME_DIR/\.dmrc.*	--	gen_context(system_
+ 
+ /usr/bin/sddm         	--	gen_context(system_u:object_r:xdm_exec_t,s0)
+ /usr/bin/sddm-greeter  	--	gen_context(system_u:object_r:xdm_exec_t,s0)
++/usr/lib/sddm/sddm-helper  	--	gen_context(system_u:object_r:xdm_exec_t,s0)
+ /usr/bin/gpe-dm		--	gen_context(system_u:object_r:xdm_exec_t,s0)
+ /usr/bin/iceauth	--	gen_context(system_u:object_r:iceauth_exec_t,s0)
+ /usr/bin/razor-lightdm-.*    --  gen_context(system_u:object_r:xdm_exec_t,s0)
+@@ -135,6 +137,7 @@ HOME_DIR/\.dmrc.*	--	gen_context(system_
+ /usr/X11R6/lib/X11/xkb	-d	gen_context(system_u:object_r:xkb_var_lib_t,s0)
+ /usr/X11R6/lib/X11/xkb/.* --	gen_context(system_u:object_r:xkb_var_lib_t,s0)
+ 
++/usr/lib/X11/display-manager 	-- 	gen_context(system_u:object_r:xdm_exec_t,s0)
+ ifndef(`distro_debian',`
+ /usr/var/[xgkw]dm(/.*)?		gen_context(system_u:object_r:xserver_log_t,s0)
+ ')
+Index: fedora-policy/policy/modules/services/xserver.te
+===================================================================
+--- fedora-policy.orig/policy/modules/services/xserver.te
++++ fedora-policy/policy/modules/services/xserver.te
+@@ -477,6 +477,10 @@ userdom_delete_user_home_content_files(x
+ userdom_signull_unpriv_users(xdm_t)
+ userdom_dontaudit_read_admin_home_lnk_files(xdm_t)
+ 
++files_manage_generic_pids_symlinks(xdm_t)
++userdom_manage_user_home_content_dirs(xdm_t)
++userdom_manage_user_home_content_files(xdm_t)
++
+ # Allow gdm to run gdm-binary
+ can_exec(xdm_t, xdm_exec_t)
+ can_exec(xdm_t, xsession_exec_t)

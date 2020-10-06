@@ -1,0 +1,9 @@
+Index: fedora-policy/policy/modules/contrib/gift.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/gift.te	2019-08-05 09:39:48.645670248 +0200
++++ fedora-policy/policy/modules/contrib/gift.te	2019-08-05 10:05:44.787808191 +0200
+@@ -113,4 +113,3 @@ files_read_etc_runtime_files(giftd_t)
+ sysnet_dns_name_resolve(giftd_t)
+ 
+ userdom_use_inherited_user_terminals(giftd_t)
+-userdom_home_manager(gitd_t)

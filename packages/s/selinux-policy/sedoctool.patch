@@ -1,0 +1,22 @@
+Index: fedora-policy/support/sedoctool.py
+===================================================================
+--- fedora-policy.orig/support/sedoctool.py
++++ fedora-policy/support/sedoctool.py
+@@ -810,7 +810,7 @@ if booleans:
+ 	namevalue_list = []
+ 	if os.path.exists(booleans):
+ 		try:
+-			conf = open(booleans, 'r')
++			conf = open(booleans, 'r', errors='replace')
+ 		except:
+ 			error("Could not open booleans file for reading")
+ 
+@@ -831,7 +831,7 @@ if modules:
+ 	namevalue_list = []
+ 	if os.path.exists(modules):
+ 		try:
+-			conf = open(modules, 'r')
++			conf = open(modules, 'r', errors='replace')
+ 		except:
+ 			error("Could not open modules file for reading")
+ 		namevalue_list = get_conf(conf)	

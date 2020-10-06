@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/system/miscfiles.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/system/miscfiles.fc	2019-08-05 09:39:39.117510678 +0200
++++ fedora-policy/policy/modules/system/miscfiles.fc	2019-08-22 12:44:01.678484113 +0200
+@@ -46,6 +46,7 @@ ifdef(`distro_redhat',`
+ /usr/man(/.*)?			gen_context(system_u:object_r:man_t,s0)
+ 
+ /usr/share/ca-certificates(/.*)?	gen_context(system_u:object_r:cert_t,s0)
++/var/lib/ca-certificates(/.*)?	gen_context(system_u:object_r:cert_t,s0)
+ /usr/share/fonts(/.*)?		gen_context(system_u:object_r:fonts_t,s0)
+ /usr/share/ghostscript/fonts(/.*)? gen_context(system_u:object_r:fonts_t,s0)
+ /usr/share/locale(/.*)?		gen_context(system_u:object_r:locale_t,s0)

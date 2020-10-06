@@ -1,0 +1,36 @@
+Index: fedora-policy/policy/modules/contrib/cron.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/cron.fc
++++ fedora-policy/policy/modules/contrib/cron.fc
+@@ -34,7 +34,7 @@
+ 
+ /var/spool/cron			-d	gen_context(system_u:object_r:user_cron_spool_t,s0)
+ #/var/spool/cron/root		--	gen_context(system_u:object_r:sysadm_cron_spool_t,s0)
+-/var/spool/cron/USER   	--  gen_context(system_u:object_r:user_cron_spool_t,s0)
++/var/spool/cron/tabs/USER   	--  gen_context(system_u:object_r:user_cron_spool_t,s0)
+ 
+ /var/spool/cron/crontabs 	-d	gen_context(system_u:object_r:cron_spool_t,s0)
+ /var/spool/cron/crontabs/.*	--	<<none>>
+@@ -69,9 +69,3 @@ ifdef(`distro_gentoo',`
+ /var/spool/cron/lastrun		-d	gen_context(system_u:object_r:crond_tmp_t,s0)
+ /var/spool/cron/lastrun/[^/]*	--	<<none>>
+ ')
+-
+-ifdef(`distro_suse', `
+-/var/spool/cron/lastrun		-d	gen_context(system_u:object_r:crond_tmp_t,s0)
+-/var/spool/cron/lastrun/[^/]*	--	<<none>>
+-/var/spool/cron/tabs		-d	gen_context(system_u:object_r:cron_spool_t,s0)
+-')
+Index: fedora-policy/policy/modules/contrib/cron.if
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/cron.if
++++ fedora-policy/policy/modules/contrib/cron.if
+@@ -1031,7 +1031,7 @@ interface(`cron_generic_log_filetrans_lo
+ #
+ interface(`cron_system_spool_entrypoint',`
+ 	gen_require(`
+-		attribute system_cron_spool_t;
++		type system_cron_spool_t;
+ 	')
+ 	allow $1 system_cron_spool_t:file entrypoint;
+ ')

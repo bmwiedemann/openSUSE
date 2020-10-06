@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/system/iptables.te
+===================================================================
+--- fedora-policy.orig/policy/modules/system/iptables.te	2020-02-19 09:36:25.440182406 +0000
++++ fedora-policy/policy/modules/system/iptables.te	2020-02-21 12:19:23.060595602 +0000
+@@ -76,6 +76,7 @@ kernel_read_kernel_sysctls(iptables_t)
+ kernel_read_usermodehelper_state(iptables_t)
+ kernel_use_fds(iptables_t)
+ kernel_rw_net_sysctls(iptables_t)
++kernel_rw_pipes(iptables_t)
+ kernel_search_network_sysctl(iptables_t)
+ 
+ 

@@ -1,0 +1,29 @@
+Index: fedora-policy/policy/modules/admin/usermanage.te
+===================================================================
+--- fedora-policy.orig/policy/modules/admin/usermanage.te
++++ fedora-policy/policy/modules/admin/usermanage.te
+@@ -226,6 +226,7 @@ allow groupadd_t self:unix_dgram_socket
+ allow groupadd_t self:unix_stream_socket create_stream_socket_perms;
+ allow groupadd_t self:unix_dgram_socket sendto;
+ allow groupadd_t self:unix_stream_socket connectto;
++allow groupadd_t self:netlink_selinux_socket create_socket_perms;
+ 
+ fs_getattr_xattr_fs(groupadd_t)
+ fs_search_auto_mountpoints(groupadd_t)
+@@ -529,6 +530,7 @@ allow useradd_t self:unix_dgram_socket c
+ allow useradd_t self:unix_stream_socket create_stream_socket_perms;
+ allow useradd_t self:unix_dgram_socket sendto;
+ allow useradd_t self:unix_stream_socket connectto;
++allow useradd_t self:netlink_selinux_socket create_socket_perms;
+ 
+ manage_dirs_pattern(useradd_t, useradd_var_run_t, useradd_var_run_t)
+ manage_files_pattern(useradd_t, useradd_var_run_t, useradd_var_run_t)
+@@ -537,6 +539,8 @@ files_pid_filetrans(useradd_t, useradd_v
+ # for getting the number of groups
+ kernel_read_kernel_sysctls(useradd_t)
+ 
++selinux_compute_access_vector(useradd_t)
++
+ corecmd_exec_shell(useradd_t)
+ # Execute /usr/bin/{passwd,chfn,chsh} and /usr/sbin/{useradd,vipw}.
+ corecmd_exec_bin(useradd_t)

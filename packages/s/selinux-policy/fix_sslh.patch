@@ -1,0 +1,33 @@
+Index: fedora-policy/policy/modules/contrib/sslh.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/sslh.te
++++ fedora-policy/policy/modules/contrib/sslh.te
+@@ -28,6 +28,7 @@ gen_tunable(sslh_can_bind_any_port, fals
+ type sslh_t;
+ type sslh_exec_t;
+ init_daemon_domain(sslh_t, sslh_exec_t)
++init_nnp_daemon_domain(sslh_t)
+ 
+ type sslh_config_t;
+ files_config_file(sslh_config_t)
+@@ -90,6 +91,7 @@ tunable_policy(`sslh_can_connect_any_por
+     # allow sslh to connect to any port
+     corenet_tcp_sendrecv_all_ports(sslh_t) 
+     corenet_tcp_connect_all_ports(sslh_t)
++    corenet_tcp_connect_all_ports(sslh_t)
+ ')
+ 
+ tunable_policy(`sslh_can_bind_any_port',`
+Index: fedora-policy/policy/modules/contrib/sslh.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/sslh.fc
++++ fedora-policy/policy/modules/contrib/sslh.fc
+@@ -4,6 +4,8 @@
+ /etc/rc\.d/init\.d/sslh 	--	gen_context(system_u:object_r:sslh_initrc_exec_t,s0)
+ /etc/sslh(/.*)?                         gen_context(system_u:object_r:sslh_config_t,s0)
+ /etc/sslh\.cfg 			-- 	gen_context(system_u:object_r:sslh_config_t,s0)
++/etc/conf\.d/sslh               --      gen_context(system_u:object_r:sslh_config_t,s0)
++/etc/default/sslh               --      gen_context(system_u:object_r:sslh_config_t,s0)
+ /etc/sysconfig/sslh		-- 	gen_context(system_u:object_r:sslh_config_t,s0)
+ /usr/lib/systemd/system/sslh.*  --	gen_context(system_u:object_r:sslh_unit_file_t,s0)
+ /var/run/sslh.* 			gen_context(system_u:object_r:sslh_var_run_t,s0)

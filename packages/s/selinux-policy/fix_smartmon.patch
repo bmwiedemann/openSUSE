@@ -1,0 +1,9 @@
+Index: fedora-policy/policy/modules/contrib/smartmon.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/smartmon.fc
++++ fedora-policy/policy/modules/contrib/smartmon.fc
+@@ -5,3 +5,4 @@
+ /var/run/smartd\.pid	--	gen_context(system_u:object_r:fsdaemon_var_run_t,s0)
+ 
+ /var/lib/smartmontools(/.*)?	gen_context(system_u:object_r:fsdaemon_var_lib_t,s0)
++/var/lib/smartmontools/smartd_opts      --      gen_context(system_u:object_r:etc_t,s0)

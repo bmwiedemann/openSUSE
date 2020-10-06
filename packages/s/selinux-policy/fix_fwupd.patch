@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/fwupd.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/fwupd.fc
++++ fedora-policy/policy/modules/contrib/fwupd.fc
+@@ -4,6 +4,7 @@
+ /etc/pki/(fwupd|fwupd-metadata)(/.*)?		gen_context(system_u:object_r:fwupd_cert_t,s0)
+ 
+ /usr/libexec/fwupd/fwupd		--	gen_context(system_u:object_r:fwupd_exec_t,s0)
++/usr/lib/fwupd/fwupd			--	gen_context(system_u:object_r:fwupd_exec_t,s0)
+ 
+ /var/cache/app-info(/.*)?		gen_context(system_u:object_r:fwupd_cache_t,s0)
+ /var/cache/fwupd(/.*)?			gen_context(system_u:object_r:fwupd_cache_t,s0)
