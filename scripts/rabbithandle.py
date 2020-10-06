@@ -47,6 +47,7 @@ for line in watchtail(sys.stdin):
         info = 'Delete '+package
     if not 'user' in change and 'sender' in change:
         change['user'] = change['sender']
+    author = change['user']
     if 'requestid' in change:
         info += ' via SR '+change['requestid']+"\n\n"+obsbase+'/request/show/'+change['requestid']+"\n"
         rqobj = get_request(osc.conf.config['apiurl'], change['requestid'])
@@ -54,6 +55,7 @@ for line in watchtail(sys.stdin):
         user2 = rqobj.creator
         if 'user' in change and user2 != change['user']:
             change['user'] = user2 + ' + ' + change['user']
+            author = user2
     else:
         info += "\n\n"
         if 'rev' in change:
@@ -67,6 +69,8 @@ for line in watchtail(sys.stdin):
     if 'rev' in change:
         obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
         commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
+    os.environ['GIT_AUTHOR_NAME'] = author
+    os.environ['GIT_AUTHOR_EMAIL'] = ''
     if commitdate:
         os.environ['GIT_AUTHOR_DATE'] = commitdate
         os.environ['GIT_COMMITTER_DATE'] = commitdate
