@@ -40,7 +40,7 @@ for line in watchtail(sys.stdin):
     if change['project'] != 'openSUSE:Factory':
         continue
     package = change['package']
-    commitdate = None
+    commitdate = int(change['time'])
     if 'rev' in change:
         info = 'Update '+package+' to rev '+change['rev']
     else:
