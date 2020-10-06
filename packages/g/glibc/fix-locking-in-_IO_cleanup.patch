@@ -5,10 +5,10 @@ the stdio streams anywhere.  This fixes a conformance issue and potential
 heap corruption during exit.  The test nptl/tst-stdio1 is removed as that
 was expecting the problematic behaviour.
 
-Index: glibc-2.31/libio/genops.c
+Index: glibc-2.32/libio/genops.c
 ===================================================================
---- glibc-2.31.orig/libio/genops.c
-+++ glibc-2.31/libio/genops.c
+--- glibc-2.32.orig/libio/genops.c
++++ glibc-2.32/libio/genops.c
 @@ -682,7 +682,7 @@ _IO_adjust_column (unsigned start, const
  libc_hidden_def (_IO_adjust_column)
  
@@ -114,10 +114,10 @@ Index: glibc-2.31/libio/genops.c
  
    /* We currently don't have a reliable mechanism for making sure that
       C++ static destructors are executed in the correct order.
-Index: glibc-2.31/libio/libioP.h
+Index: glibc-2.32/libio/libioP.h
 ===================================================================
---- glibc-2.31.orig/libio/libioP.h
-+++ glibc-2.31/libio/libioP.h
+--- glibc-2.32.orig/libio/libioP.h
++++ glibc-2.32/libio/libioP.h
 @@ -487,7 +487,6 @@ extern int _IO_new_do_write (FILE *, con
  extern int _IO_old_do_write (FILE *, const char *, size_t);
  extern int _IO_wdo_write (FILE *, const wchar_t *, size_t);
@@ -126,22 +126,22 @@ Index: glibc-2.31/libio/libioP.h
  extern int _IO_flush_all (void);
  libc_hidden_proto (_IO_flush_all)
  extern int _IO_cleanup (void);
-Index: glibc-2.31/nptl/Makefile
+Index: glibc-2.32/sysdeps/pthread/Makefile
 ===================================================================
---- glibc-2.31.orig/nptl/Makefile
-+++ glibc-2.31/nptl/Makefile
-@@ -295,7 +295,7 @@ tests = tst-attr1 tst-attr2 tst-attr3 ts
- 	tst-signal6 \
- 	tst-exec1 tst-exec2 tst-exec3 tst-exec4 tst-exec5 \
- 	tst-exit1 tst-exit2 tst-exit3 \
--	tst-stdio1 tst-stdio2 \
-+	tst-stdio2 \
- 	tst-stack1 tst-stack2 tst-stack3 tst-stack4 tst-pthread-getattr \
- 	tst-pthread-attr-affinity tst-pthread-mutexattr \
- 	tst-unload \
-Index: glibc-2.31/nptl/tst-stdio1.c
+--- glibc-2.32.orig/sysdeps/pthread/Makefile
++++ glibc-2.32/sysdeps/pthread/Makefile
+@@ -99,7 +99,7 @@ tests += tst-cnd-basic tst-mtx-trylock t
+ 	 tst-signal4 tst-signal5 tst-signal6 tst-signal8 \
+ 	 tst-spin1 tst-spin2 tst-spin3 tst-spin4 \
+ 	 tst-stack1 \
+-	 tst-stdio1 tst-stdio2 \
++	 tst-stdio2 \
+ 	 tst-pt-sysconf \
+ 	 tst-pt-tls1 tst-pt-tls2 \
+ 	 tst-tsd1 tst-tsd2 tst-tsd5 tst-tsd6 \
+Index: glibc-2.32/sysdeps/pthread/tst-stdio1.c
 ===================================================================
---- glibc-2.31.orig/nptl/tst-stdio1.c
+--- glibc-2.32.orig/sysdeps/pthread/tst-stdio1.c
 +++ /dev/null
 @@ -1,56 +0,0 @@
 -/* Copyright (C) 2002-2020 Free Software Foundation, Inc.

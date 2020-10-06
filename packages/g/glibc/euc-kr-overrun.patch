@@ -20,23 +20,24 @@ the buffer end.
  4 files changed, 58 insertions(+), 9 deletions(-)
  create mode 100644 iconvdata/bug-iconv13.c
 
-Index: glibc-2.30/iconvdata/Makefile
+Index: glibc-2.32/iconvdata/Makefile
 ===================================================================
---- glibc-2.30.orig/iconvdata/Makefile
-+++ glibc-2.30/iconvdata/Makefile
-@@ -73,7 +73,7 @@ modules.so := $(addsuffix .so, $(modules
+--- glibc-2.32.orig/iconvdata/Makefile
++++ glibc-2.32/iconvdata/Makefile
+@@ -73,7 +73,8 @@ modules.so := $(addsuffix .so, $(modules
  ifeq (yes,$(build-shared))
  tests = bug-iconv1 bug-iconv2 tst-loading tst-e2big tst-iconv4 bug-iconv4 \
  	tst-iconv6 bug-iconv5 bug-iconv6 tst-iconv7 bug-iconv8 bug-iconv9 \
--	bug-iconv10 bug-iconv11 bug-iconv12
-+	bug-iconv10 bug-iconv11 bug-iconv12 bug-iconv13
+-	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4
++	bug-iconv10 bug-iconv11 bug-iconv12 tst-iconv-big5-hkscs-to-2ucs4 \
++	bug-iconv13
  ifeq ($(have-thread-library),yes)
  tests += bug-iconv3
  endif
-Index: glibc-2.30/iconvdata/bug-iconv13.c
+Index: glibc-2.32/iconvdata/bug-iconv13.c
 ===================================================================
 --- /dev/null
-+++ glibc-2.30/iconvdata/bug-iconv13.c
++++ glibc-2.32/iconvdata/bug-iconv13.c
 @@ -0,0 +1,53 @@
 +/* bug 24973: Test EUC-KR module
 +   Copyright (C) 2019 Free Software Foundation, Inc.
@@ -91,10 +92,10 @@ Index: glibc-2.30/iconvdata/bug-iconv13.c
 +}
 +
 +#include <support/test-driver.c>
-Index: glibc-2.30/iconvdata/euc-kr.c
+Index: glibc-2.32/iconvdata/euc-kr.c
 ===================================================================
---- glibc-2.30.orig/iconvdata/euc-kr.c
-+++ glibc-2.30/iconvdata/euc-kr.c
+--- glibc-2.32.orig/iconvdata/euc-kr.c
++++ glibc-2.32/iconvdata/euc-kr.c
 @@ -80,11 +80,7 @@ euckr_from_ucs4 (uint32_t ch, unsigned c
  									      \
      if (ch <= 0x9f)							      \
@@ -108,10 +109,10 @@ Index: glibc-2.30/iconvdata/euc-kr.c
        {									      \
  	/* This is illegal.  */						      \
  	STANDARD_FROM_LOOP_ERR_HANDLER (1);				      \
-Index: glibc-2.30/iconvdata/ksc5601.h
+Index: glibc-2.32/iconvdata/ksc5601.h
 ===================================================================
---- glibc-2.30.orig/iconvdata/ksc5601.h
-+++ glibc-2.30/iconvdata/ksc5601.h
+--- glibc-2.32.orig/iconvdata/ksc5601.h
++++ glibc-2.32/iconvdata/ksc5601.h
 @@ -50,15 +50,15 @@ ksc5601_to_ucs4 (const unsigned char **s
    unsigned char ch2;
    int idx;

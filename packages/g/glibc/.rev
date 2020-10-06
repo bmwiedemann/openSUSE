@@ -2328,4 +2328,15 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   (bsc#1171878, BZ #26130) (forwarded request 816574 from Andreas_Schwab)</comment>
     <requestid>816575</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>95ae596f43edd3c7ea557beaf838ec0c</srcmd5>
+    <version>2.32</version>
+    <time>1601996884</time>
+    <user>dimstar_suse</user>
+    <comment>- Keep nsswitch.conf in /etc for SLES15
+- syslog-locking.patch: Correct locking and cancellation cleanup in syslog
+  functions (bsc#1172085, BZ #26100)
+- ifunc-fma4.patch: x86-64: Fix FMA4 detection in ifunc (BZ #26534) (forwarded request 832940 from Andreas_Schwab)</comment>
+    <requestid>832941</requestid>
+  </revision>
 </revisionlist>
