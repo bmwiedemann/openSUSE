@@ -16,15 +16,15 @@
 #
 
 
-%define libsepol_ver 3.0
+%define libsepol_ver 3.1
 Name:           libselinux
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
 Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
@@ -100,7 +100,7 @@ necessary to develop your own software using libselinux.
 
 %build
 %define _lto_cflags %{nil}
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags}"
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition"
 
 %install
 mkdir -p %{buildroot}/%{_lib}

@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define libsepol_ver 3.0
+%define libsepol_ver 3.1
 Name:           libselinux-bindings
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux runtime library and simple utilities
 License:        SUSE-Public-Domain
@@ -83,10 +83,10 @@ language.
 
 %build
 %define _lto_cflags %{nil}
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src swigify V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src pywrap V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags}" -C src rubywrap V=1
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src V=1
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src swigify V=1
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src pywrap V=1
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src rubywrap V=1
 
 %install
 make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install V=1

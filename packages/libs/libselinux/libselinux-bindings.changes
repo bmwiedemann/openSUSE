@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:24:20 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1:
+  * selinux/flask.h, selinux/av_permissions.h and sepol/policydb/flask.h were
+    removed. All userspace object managers should have been updated to use the
+    dynamic class/perm mapping support.
+
+    Use string_to_security_class(3) and string_to_av_perm(3) to map the class
+    and permission names to their policy values, or selinux_set_mapping(3) to
+    create a mapping from class and permission index values used by the
+    application to the policy values.
+  * Removed restrictions in libsepol and checkpolicy that required all declared
+    initial SIDs to be assigned a context.
+  * Support for new policy capability genfs_seclabel_symlinks
+  * selinuxfs is mounted with noexec and nosuid
+  * `security_compute_user()` was deprecated
+  * Refreshed python3.8-compat.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 11:13:12 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0
