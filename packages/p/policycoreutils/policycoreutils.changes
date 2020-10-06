@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:00:45 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Add get_os_version.patch
+  get_os_version is implemented in a very RH/Fedora specific way.
+  Ensure that it returns a valid string for SUSE by changing the 
+  default. Also remove the RH specific logic when generating HTML
+  versions of the SELinux documentation
+
+-------------------------------------------------------------------
+Wed Jul 29 13:09:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Align more with Fedora spec file to get rid of python dependencies
+  in the core system
+  - create new python-utils sub-package
+  - move some tools to devel sub-package
+- Cleanup dependencies
+
+-------------------------------------------------------------------
+Fri Jul 17 09:35:08 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Proper default permissions for newrole (4755)
+
+-------------------------------------------------------------------
+Tue Jul 14 08:28:44 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * New `setfiles -E` option - treat conflicting specifications as errors, such
+    as where two hardlinks for the same inode have different contexts.
+  * `setsebool -V` reports errors from commit phase
+  * matchpathcon related interfaces are deprecated
+  * New `restorecon -x` option which prevents it from crossing file system
+  * boundaries.
+  * `sepolgen-ifgen` parses a gen_tunable statement as bool
+  * Removed Requires for python3-ipy as the ipaddress module is used. No
+    requires for python-ipaddress as it's assumed this is used only on recent
+    systems
+  * Drop chcat_join.patch, is upstream
+
+-------------------------------------------------------------------
 Thu Jun  4 10:13:21 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass the right value for LIBEXECDIR to make / make install

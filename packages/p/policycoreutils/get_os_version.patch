@@ -1,0 +1,31 @@
+Index: policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/__init__.py
+===================================================================
+--- policycoreutils-3.1.orig/selinux-python-3.1/sepolicy/sepolicy/__init__.py
++++ policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/__init__.py
+@@ -1226,7 +1226,8 @@ def get_os_version():
+     elif os_version[0:2] == "el":
+         os_version = "RHEL" + os_version[2:]
+     else:
+-        os_version = ""
++        # make SUSE the default return value on SUSE systems
++        os_version = "SUSE"
+ 
+     return os_version
+ 
+Index: policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/manpage.py
+===================================================================
+--- policycoreutils-3.1.orig/selinux-python-3.1/sepolicy/sepolicy/manpage.py
++++ policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/manpage.py
+@@ -192,11 +192,7 @@ class HTMLManPages:
+         self.old_path = path + "/"
+         self.new_path = self.old_path + self.os_version + "/"
+ 
+-        if self.os_version in fedora_releases or self.os_version in rhel_releases:
+-            self.__gen_html_manpages()
+-        else:
+-            print("SELinux HTML man pages can not be generated for this %s" % os_version)
+-            exit(1)
++        self.__gen_html_manpages()
+ 
+     def __gen_html_manpages(self):
+         self._write_html_manpage()

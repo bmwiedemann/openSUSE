@@ -449,4 +449,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment></comment>
     <requestid>811387</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c2b322c6ff43af44cfa26285e4cf2d59</srcmd5>
+    <version>3.1</version>
+    <time>1601996896</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835124</requestid>
+  </revision>
 </revisionlist>
