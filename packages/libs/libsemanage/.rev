@@ -417,4 +417,12 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>811388</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>2f65c3b3275d006832870c1bf23c17dc</srcmd5>
+    <version>3.1</version>
+    <time>1601996812</time>
+    <user>dimstar_suse</user>
+    <comment>please stage with updated gcc to prevent build failures</comment>
+    <requestid>832092</requestid>
+  </revision>
 </revisionlist>

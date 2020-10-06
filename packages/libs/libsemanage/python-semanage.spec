@@ -18,14 +18,17 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/SELinuxProject/selinux
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/libsemanage-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/libsemanage-%{version}.tar.gz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
+# For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
+# Patch0:         libsemanage-update-map-file.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  audit-devel
 BuildRequires:  bison
@@ -53,8 +56,8 @@ grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 %define _lto_cflags %{nil}
 make %{?_smp_mflags} clean
 %{python_expand # loop over possible pythons
-make -j1 PYTHON=$python CFLAGS="%{optflags}" swigify
-make -j1 PYTHON=$python CFLAGS="%{optflags}" \
+make -j1 PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition" swigify
+make -j1 PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition" \
          LIBDIR="%{_libdir}" \
          LIBEXECDIR="%{_libexecdir}" \
          SHLIBDIR="%{_lib}" \
