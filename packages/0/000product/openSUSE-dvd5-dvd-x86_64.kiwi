@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201004" schemaversion="4.1">
+<image name="OBS__openSUSE___20201005" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201004</productvar>
+      <productvar name="VERSION">20201005</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201004,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201005,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201004/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201005/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -97,6 +97,7 @@
       <repopackage name="akonadi-search-lang"/>
       <repopackage name="akonadi-server"/>
       <repopackage name="akonadi-server-lang"/>
+      <repopackage name="akonadi-server-sqlite"/>
       <repopackage name="akregator"/>
       <repopackage name="akregator-lang"/>
       <repopackage name="alpine"/>
@@ -161,19 +162,7 @@
       <repopackage name="arpwatch-ethercodes"/>
       <repopackage name="as10k1"/>
       <repopackage name="aspell"/>
-      <repopackage name="aspell-cs"/>
-      <repopackage name="aspell-da"/>
-      <repopackage name="aspell-de"/>
-      <repopackage name="aspell-el"/>
       <repopackage name="aspell-en"/>
-      <repopackage name="aspell-es"/>
-      <repopackage name="aspell-fr"/>
-      <repopackage name="aspell-hu"/>
-      <repopackage name="aspell-it"/>
-      <repopackage name="aspell-pl"/>
-      <repopackage name="aspell-pt_BR"/>
-      <repopackage name="aspell-pt_PT"/>
-      <repopackage name="aspell-ru"/>
       <repopackage name="aspell-spell"/>
       <repopackage name="at"/>
       <repopackage name="at-spi2-atk-common"/>
@@ -983,6 +972,7 @@
       <repopackage name="ibus-m17n"/>
       <repopackage name="ibus-mozc"/>
       <repopackage name="ibus-mozc-candidate-window"/>
+      <repopackage name="ibus-pinyin"/>
       <repopackage name="ibus-table"/>
       <repopackage name="ibus-table-chinese-array"/>
       <repopackage name="ibus-table-chinese-cangjie"/>
@@ -2603,6 +2593,7 @@
       <repopackage name="libpwquality1-32bit" arch="x86_64"/>
       <repopackage name="libpython2_7-1_0"/>
       <repopackage name="libpython3_8-1_0"/>
+      <repopackage name="libpyzy-1_0-0"/>
       <repopackage name="libqalculate21"/>
       <repopackage name="libqb100"/>
       <repopackage name="libqca-qt5"/>
@@ -3525,6 +3516,7 @@
       <repopackage name="openafs-client"/>
       <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
+      <repopackage name="opencc"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
       <repopackage name="openconnect-bash-completion"/>
@@ -4173,6 +4165,8 @@
       <repopackage name="python38-dbm"/>
       <repopackage name="python38-doc"/>
       <repopackage name="python38-tk"/>
+      <repopackage name="pyzy-db-android"/>
+      <repopackage name="pyzy-db-open-phrase"/>
       <repopackage name="qalculate-data"/>
       <repopackage name="qemu"/>
       <repopackage name="qemu-arm"/>
@@ -4882,6 +4876,7 @@
       <repopackage name="speedcrunch"/>
       <repopackage name="splix"/>
       <repopackage name="spu-tools"/>
+      <repopackage name="sqlite3"/>
       <repopackage name="squashfs"/>
       <repopackage name="squid"/>
       <repopackage name="sshfs"/>
