@@ -1,0 +1,23 @@
+From 4212289ad89fb02073afd745fb59960aa07715c7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Matthias=20Mail=C3=A4nder?=
+ <Mailaender@users.noreply.github.com>
+Date: Sun, 27 Sep 2020 18:02:18 +0200
+Subject: [PATCH] Use standards compliant desktop categories.
+
+---
+ data/info.olasagasti.revelation.desktop.in.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/mime/info.olasagasti.revelation.desktop.in.in b/data/mime/info.olasagasti.revelation.desktop.in.in
+index 55277ed..27a0e73 100644
+--- a/data/mime/info.olasagasti.revelation.desktop.in.in
++++ b/data/mime/info.olasagasti.revelation.desktop.in.in
+@@ -7,7 +7,7 @@ Exec=revelation
+ Icon=info.olasagasti.revelation
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;Utility;
++Categories=GNOME;GTK;System;Security;
+ StartupNotify=true
+ MimeType=application/x-revelation;
+ 

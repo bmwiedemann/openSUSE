@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Sep 27 21:26:57 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 0.5.3
+- Add desktop.patch to upstream changes
+
+-------------------------------------------------------------------
+Fri Sep  4 16:03:33 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Drop appdata.patch and file-open.patch
+- Update to version 0.5.2
+
+-------------------------------------------------------------------
+Mon Oct  3 17:47:02 UTC 2016 - mailaender@opensuse.org
+
+- Add appdata.patch for https://en.opensuse.org/openSUSE:AppStore
+- Add file-open.patch to resolve automatic DB opening issues.
+
+-------------------------------------------------------------------
+Mon May  2 20:02:19 UTC 2016 - mailaender@opensuse.org
+
+- Add missing runtime dependency python-gconf (fixes boo#972104).
+
+-------------------------------------------------------------------
+Wed Feb 17 11:39:56 UTC 2016 - dimstar@opensuse.org
+
+- .spec file cleanup / reorganisation.
+
+-------------------------------------------------------------------
+Tue Feb  2 20:43:26 UTC 2016 - mailaender@opensuse.org
+
+- Add missing dependency python-cracklib
+
+-------------------------------------------------------------------
+Thu Aug 23 11:58:13 UTC 2012 - mailaender@opensuse.org
+
+- Update to 0.4.14
+
+-------------------------------------------------------------------
+Sat Dec 24 2011 - mailaender@opensuse.org
+
+- Update to 0.4.12
+
+-------------------------------------------------------------------
+Tue Mar 06 2007 - wberrier@novell.com
+- Update to 0.4.11
+- Adapt for suse and buildservice (fix dep names, add additional files, 
+  fix desktop file)
