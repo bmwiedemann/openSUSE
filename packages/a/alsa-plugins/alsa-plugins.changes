@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:25:11 CEST 2020 - tiwai@suse.de
+
+- Placeholder for SLE15-SP3 sync: jsc#SLE-11987
+  no functional changes at all
+
+-------------------------------------------------------------------
 Wed May  6 14:24:46 CEST 2020 - tiwai@suse.de
 
 - Split plugins in alsa-plugin package to each subpackage

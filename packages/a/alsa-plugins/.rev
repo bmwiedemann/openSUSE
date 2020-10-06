@@ -813,4 +813,13 @@
     <comment></comment>
     <requestid>800736</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>91165ed6abb2ec0215996b35ceb359f6</srcmd5>
+    <version>1.2.2</version>
+    <time>1601996949</time>
+    <user>dimstar_suse</user>
+    <comment>- Placeholder for SLE15-SP3 sync: jsc#SLE-11987
+  no functional changes at all</comment>
+    <requestid>839642</requestid>
+  </revision>
 </revisionlist>
