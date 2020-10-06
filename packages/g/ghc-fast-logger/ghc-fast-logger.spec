@@ -19,7 +19,7 @@
 %global pkg_name fast-logger
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A fast logging system
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ BuildRequires:  ghc-hspec-devel
 %endif
 
 %description
-A fast logging system.
+A fast logging system for Haskell.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
