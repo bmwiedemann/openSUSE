@@ -1,0 +1,12 @@
+diff -ruN a/fabio/brukerimage.py b/fabio/brukerimage.py
+--- a/fabio/brukerimage.py	2020-05-11 13:36:31.000000000 +0700
++++ b/fabio/brukerimage.py	2020-09-07 14:29:30.082161283 +0700
+@@ -289,7 +289,7 @@
+         Write a bruker image
+ 
+         """
+-        if numpy.issubdtype(self.data.dtype, float):
++        if numpy.issubdtype(self.data.dtype, numpy.floating):
+             if "LINEAR" in self.header:
+                 try:
+                     slope, offset = self.header["LINEAR"].split(None, 1)
