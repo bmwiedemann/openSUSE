@@ -29,6 +29,7 @@ Source0:        http://khapplications.darktech.org/zips/manpageeditor/%{oname}-%
 # PATCH-FIX-OPENSUSE vs. various errors & warnings about desktop files.
 Patch1:         manpageeditor-desktop-warnings.diff
 
+BuildRequires:  aspell-devel
 BuildRequires:  ctags
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -50,7 +51,8 @@ Create, edit, import, preview man-pages.
 %patch1
 
 %build
-%configure 
+%configure \
+           --enable-aspell
 
 %install
 %make_install
