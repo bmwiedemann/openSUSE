@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 08:33:23 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add upstream patch qtwebkit-5.212.0_pre20200309-bison-3.7.patch
+  in order to fix build with a recent bison.
+
+-------------------------------------------------------------------
 Sat Mar 14 22:51:36 UTC 2020 - Markus S <kamikazow@opensuse.org>
 
 - Use Ninja with CMake to improve build times by circa 300%

@@ -505,4 +505,13 @@ This fixes the missing pkgconfig(Qt5WebKit*) Provides and the rpmlint error. (fo
   * qt5.15-workaround.patch</comment>
     <requestid>789353</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>7f285b486df60d60379f1f8ca88da1ad</srcmd5>
+    <version>5.212~alpha4</version>
+    <time>1601996927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch qtwebkit-5.212.0_pre20200309-bison-3.7.patch
+  in order to fix build with a recent bison. (forwarded request 836470 from marxin)</comment>
+    <requestid>836474</requestid>
+  </revision>
 </revisionlist>
