@@ -1,7 +1,7 @@
 #
 # spec file for package adlmidi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-3.0-only AND GPL-2.0-or-later
 URL:            https://bisqwit.iki.fi/source/adlmidi.html
 #Git-Clone:     https://github.com/bisqwit/adlmidi.git
 Source:         https://bisqwit.iki.fi/src/arch/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM
+Patch1:         adlmidi-fix-arm.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sdl2)
@@ -35,6 +37,7 @@ OPL3 emulation (FM synthesis).
 
 %prep
 %setup -q
+%patch1 -p1
 sed -i 's|-march=native||' Makefile
 
 %build
