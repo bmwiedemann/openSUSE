@@ -1,7 +1,7 @@
 #
 # spec file for package dpkg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@ Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Url:            http://www.debian.org
+URL:            http://www.debian.org
 Source0:        http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
 Source3:        sensible-editor
 # PATCH-FIX-OPENSUSE replace debian with opensuse. replace macros. update-alternatives temp directories' path and name from dpkg* to rpm*.
 Patch1:         update-alternatives-suse.patch
 # PATCH-FIX-SUSE: tar of Leap 42.{2,3} does not recognize --sort=name, --clamp-mtime options
 Patch2:         drop-tar-option.patch
+Patch3:         ncurses-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -87,6 +88,7 @@ Libraries and header files for dpkg.
 %if 0%{?suse_version} == 1315
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

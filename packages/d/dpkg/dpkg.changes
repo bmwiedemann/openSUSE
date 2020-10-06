@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 13:39:24 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add ncurses-fix.patch in order to fix ncurses issue.
+
+-------------------------------------------------------------------
 Fri Aug  2 06:58:54 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
