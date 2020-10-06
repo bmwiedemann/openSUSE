@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-screensaver
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cinnamon-screensaver
-Version:        4.4.1
+Version:        4.6.0
 Release:        0
 Summary:        Cinnamon screensaver and locker
 License:        GPL-2.0-or-later
@@ -26,12 +26,10 @@ URL:            https://github.com/linuxmint/cinnamon-screensaver
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE cinnamon-screensaver-suse-pam.patch -- Use SUSE-specific PAM configuration.
 Patch0:         %{name}-suse-pam.patch
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.4
@@ -44,7 +42,6 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 Requires:       iso-country-flags-png
-Requires:       libcinnamon-desktop-data
 Requires:       python3-cairo
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
@@ -65,15 +62,11 @@ Cinnamon Desktop.
 %patch0 -p1
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-  --libexecdir=%{_libexecdir}/%{name}/ \
-  --disable-static                     \
-  --disable-schemas-compile
-make %{?_smp_mflags} V=1
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 # Remove development files as they're not really there to be used.
 rm -rf %{buildroot}%{_libdir}/libcscreensaver.so \
@@ -101,11 +94,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING*
-%doc AUTHORS README debian/changelog
+%doc AUTHORS README.md debian/changelog
 %config %{_sysconfdir}/pam.d/cinnamon-screensaver
 %{_bindir}/%{name}
 %{_bindir}/%{name}-command
-%{_libexecdir}/%{name}/
+%{_libexecdir}/%{name}-pam-helper
 %{_datadir}/%{name}/
 %{_libdir}/libcscreensaver.so*
 %{_libdir}/girepository-1.0/CScreensaver-1.0.typelib
