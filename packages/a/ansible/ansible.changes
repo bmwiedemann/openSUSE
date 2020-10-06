@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 04:36:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to version 2.9.14 with many small improvements and bug fixes,
+  most notably:
+  * kubectl - connection plugin now redact kubectl_token and 
+    kubectl_password in console log (CVE-2020-1753).
+- avoid trailing comments after %endif
+
+-------------------------------------------------------------------
 Tue Sep  1 08:44:17 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to version 2.9.13 with many bug fixes, most notably:
