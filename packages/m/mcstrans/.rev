@@ -191,4 +191,12 @@
     <comment></comment>
     <requestid>781810</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2ef28c31e36413e763127e00630015ce</srcmd5>
+    <version>3.1</version>
+    <time>1601996857</time>
+    <user>dimstar_suse</user>
+    <comment>please stage with updated gcc to prevent build failures</comment>
+    <requestid>832094</requestid>
+  </revision>
 </revisionlist>
