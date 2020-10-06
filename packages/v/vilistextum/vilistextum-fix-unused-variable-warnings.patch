@@ -1,0 +1,52 @@
+diff -ur vilistextum-2.6.9.orig/src/fileio.c vilistextum-2.6.9/src/fileio.c
+--- vilistextum-2.6.9.orig/src/fileio.c	2006-04-22 18:42:26.000000000 +0200
++++ vilistextum-2.6.9/src/fileio.c	2019-10-07 15:27:08.866014317 +0200
+@@ -61,9 +61,6 @@
+ #ifdef MULTIBYTE
+ void convert_string(char *str, CHAR *converted_string)
+ {
+-	size_t result=(size_t)(-1);
+-	/*wchar_t outstring[33];  */
+-	/*wchar_t ret; */
+ 	iconv_t conv;
+ 	char output[DEF_STR_LEN];
+ 	char *inp, *outp;
+@@ -88,7 +85,8 @@
+ 	if ((conv = iconv_open("utf-8", "char"))==(iconv_t)(-1))
+ 		{	fprintf(stderr, "convert_string: iconv_open failed. Can't convert from %s to UTF-8.\n", getenv("LC_CTYPE")); exit(1); }
+ 
+-	result = iconv(conv, &inp, &insize, &outp, &outsize);
++	errno = 0;
++	iconv(conv, &inp, &insize, &outp, &outsize);
+ 	fehlernr = errno;
+ 
+ 	if (fehlernr==E2BIG) { fprintf(stderr, "errno==E2BIG\n"); }
+@@ -185,7 +183,6 @@
+ 	int fehlernr=0; /* tmp variable for errno */
+ 	static int i=0;
+ 	int j=0,k; 
+-	size_t result=(size_t)(-1);
+ 	wchar_t outstring[33]; 
+ 	iconv_t conv;
+ 	char input[33], output[33];
+@@ -216,9 +213,9 @@
+ 		
+ 		input[j] = c;
+ 		
+-		errno=0;
++		errno = 0;
+ 		insize = j+1;
+-		result = iconv(conv, &inp, &insize, &outp, &outsize);
++		iconv(conv, &inp, &insize, &outp, &outsize);
+ 		fehlernr = errno;
+ 
+ 		if (fehlernr==E2BIG) { fprintf(stderr, "read_char: errno==E2BIG\n"); }
+@@ -237,7 +234,7 @@
+ 		/* valid character found */
+ 		else if (fehlernr==0) {
+ 			/* printf("\n1: c=%d ; %d\n",c,c); */
+-				result = mbstowcs(outstring, output, strlen(output));
++				mbstowcs(outstring, output, strlen(output));
+ 				if (convert_character(outstring[0], tmpstr)) {
+ 					c = outstring[0];
+ 					/* printf("2: c=%d ; %d\n",c,c); */
