@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 25 13:25:50 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add ncurses-fix.patch in order to fix ncurses failure.
+
+-------------------------------------------------------------------
 Tue May  5 20:07:10 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Add $HOME aliases to fix regression after dropping /etc/bash.bashrc
