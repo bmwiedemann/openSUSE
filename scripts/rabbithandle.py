@@ -82,8 +82,8 @@ for line in watchtail(sys.stdin):
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
     count += 1
-    if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
-        subprocess.call(["git", "push"])
+    #if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
+    #    subprocess.call(["git", "push"])
     try:
         os.unlink(".pkglock")
     except:
