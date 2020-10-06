@@ -15,11 +15,11 @@ requires.
  dir.c | 29 +++++++++++++++++++++++++++--
  1 file changed, 27 insertions(+), 2 deletions(-)
 
-Index: kbuild-0.1.9998svn3110/src/kmk/dir.c
+Index: kbuild-0.1.9998svn3427/src/kmk/dir.c
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/src/kmk/dir.c
-+++ kbuild-0.1.9998svn3110/src/kmk/dir.c
-@@ -1465,6 +1465,32 @@ static int dir_exists_p (const char *dir
+--- kbuild-0.1.9998svn3427.orig/src/kmk/dir.c
++++ kbuild-0.1.9998svn3427/src/kmk/dir.c
+@@ -1559,6 +1559,32 @@ static int dir_exists_p (const char *dir
  }
  #endif
  
@@ -52,9 +52,9 @@ Index: kbuild-0.1.9998svn3110/src/kmk/dir.c
  void
  dir_setup_glob (glob_t *gl)
  {
-@@ -1472,15 +1498,11 @@ dir_setup_glob (glob_t *gl)
+@@ -1566,15 +1592,11 @@ dir_setup_glob (glob_t *gl)
    gl->gl_readdir = read_dirstream;
-   gl->gl_closedir = ansi_free;
+   gl->gl_closedir = free;
    gl->gl_stat = local_stat;
 -#ifdef __EMX__ /* The FreeBSD implementation actually uses gl_lstat!! */
 -  gl->gl_lstat = local_stat;

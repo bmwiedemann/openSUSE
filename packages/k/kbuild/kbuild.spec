@@ -16,7 +16,7 @@
 #
 
 
-%define _svnrev 3110
+%define _svnrev 3427
 Name:           kbuild
 Version:        0.1.9998svn%{_svnrev}
 Release:        0
@@ -26,8 +26,6 @@ Group:          Development/Tools/Building
 URL:            https://svn.netlabs.org/kbuild
 Source0:        %{name}-%{version}.tar.bz2
 Patch0:         kbuild-man.diff
-# PATCH-FIX-UPSTREAM speilicke@suse.com: Import local implementation if KMK
-Patch1:         kbuild-glob.patch
 Patch2:         kbuild-dummy_noreturn.diff
 Patch5:         kbuild-pthread.diff
 Patch6:         kbuild-timestamps.diff
@@ -35,13 +33,10 @@ Patch7:         kbuild-armv7l.diff
 Patch8:         kbuild-wrong-memset.patch
 Patch9:         ppc64le.patch
 Patch10:        aarch64.patch
-Patch11:        kbuild-gcc7.patch
-Patch12:        use-alloca.patch
 Patch13:        glob-lstat.patch
-Patch14:        glob-interface.patch
-Patch15:        gcc10-fno-common-fix.patch
 BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  byacc
 BuildRequires:  flex
 BuildRequires:  libacl-devel
 BuildRequires:  makeinfo
@@ -63,7 +58,6 @@ The goals of the kBuild framework:
 %prep
 %setup -q
 %patch0
-%patch1 -p1
 %patch2
 %patch5 -p1
 %patch6 -p1
@@ -71,14 +65,10 @@ The goals of the kBuild framework:
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
-%patch12
 %patch13 -p1
-%patch14 -p1
-%patch15 -p1
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 cat > SvnInfo.kmk << EOF
 KBUILD_SVN_REV := %{_svnrev}
 KBUILD_SVN_URL := http://svn.netlabs.org/repos/kbuild/trunk

@@ -2,12 +2,12 @@ Index: src/kmk/kmkbuiltin/expr.c
 ===================================================================
 --- src/kmk/kmkbuiltin/expr.c.orig
 +++ src/kmk/kmkbuiltin/expr.c
-@@ -311,6 +311,8 @@ eval6(void)
+@@ -317,6 +317,8 @@ eval6(PEXPRINSTANCE pThis)
  		return v;
  	} else {
- 		error();
-+        /* dummy return in order to make the build checks happy (this will never be reached) */
-+        return NULL;
+ 		error(pThis);
++	        /* dummy return in order to make the build checks happy (this will never be reached) */
++	        return NULL;
  	}
  	/* NOTREACHED */
  }
