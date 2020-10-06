@@ -19,18 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-moto
-Version:        1.3.14
+Version:        1.3.16
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
 URL:            https://github.com/spulec/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
-Patch0:         unpin-reqs.patch
-Patch1:         dynabodbstreams.patch
-Patch2:         iot-1.patch
-Patch3:         iot-2.patch
-Patch4:         iot-3.patch
-Patch5:         lambdas.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -122,7 +116,7 @@ rm -r tests/test_awslambda/
 # skipped tests require network connection
 export BOTO_CONFIG=/dev/null
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-nosetests-%{$python_bin_suffix} -sv ./tests/ -e "(test_invoke_requestresponse_function|test_context_manager|test_decorator_start_and_stop|test_invoke_function_from_sns|test_passthrough_requests)"
+nosetests-%{$python_bin_suffix} -sv ./tests/ -e "(test_invoke_requestresponse_function|test_context_manager|test_decorator_start_and_stop|test_invoke_function_from_sns|test_passthrough_requests|test_list_jobs|test_submit_job|test_put_subscription_filter_with_lambda)"
 }
 
 %post
