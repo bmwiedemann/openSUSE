@@ -439,4 +439,16 @@
     scroll wheel events to scroll the scrollback buffer, instead send</comment>
     <requestid>839497</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ebd35641d7f70fc8742332182d705ff</srcmd5>
+    <version>0.19.1</version>
+    <time>1601997061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.1:
+  * hints kitten: Add an ip type for easy selection of IP addresses (#3009)
+  * Fix a regression that caused a segfault when using
+    scrollback_pager_history_size and it needs to be expanded (#3011)
+  * Fix update available notifications repeating (#3006)</comment>
+    <requestid>839727</requestid>
+  </revision>
 </revisionlist>
