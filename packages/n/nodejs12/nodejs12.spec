@@ -29,14 +29,6 @@ Name:           nodejs12
 Version:        12.18.4
 Release:        0
 
-# bundled ( "pkg", "version" )
-%define bundled() %{lua: \
-    local pkg=rpm.expand("%1"); \
-    local ver=rpm.expand("%2"); \
-    if (not(string.sub(ver, 0, 2) == '\{\{' and string.sub(ver, -2) == '\}\}' )) then \
-        print("Provides:  bundled(" .. pkg .. ") = " .. ver) \
-    end }
-
 %define node_version_number 12
 
 %if %node_version_number >= 12
@@ -247,25 +239,25 @@ BuildRequires:  openssl-devel >= %{openssl_req_ver}
 
 %endif
 %else
-%{bundled openssl 1.1.1g}
+Provides:       bundled(openssl) = 1.1.1g
 %endif
 
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.10.0
 %else
-%{bundled libcares2  1.16.0}
+Provides:       bundled(libcares2) = 1.16.0
 %endif
 
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 64
 %else
-%{bundled icu    67.1}
+Provides:       bundled(icu) = 67.1
 %endif
 
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-%{bundled nghttp2 1.41.0}
+Provides:       bundled(nghttp2) = 1.41.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -302,16 +294,13 @@ Requires:       openssl1
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# NOTE: If version is not present (not replaced), it means it's not bundled and
-#       it will removed by the macro during rpm processing
-%{bundled uvwasi 0.0.9}
-%{bundled libuv  1.38.0}
-%{bundled v8     7.8.279.23}
-%{bundled brotli 1.0.7}
-%{bundled http-parser 2.9.3}
-%{bundled nghttp3 {{bundled_nghttp3_version}}}
-%{bundled llhttp  2.1.2}
-%{bundled ngtcp2  {{bundled_ngtcp2_version}}}
+Provides:       bundled(brotli) = 1.0.7
+Provides:       bundled(http-parser) = 2.9.3
+Provides:       bundled(libuv) = 1.38.0
+Provides:       bundled(uvwasi) = 0.0.9
+Provides:       bundled(v8) = 7.8.279.23
+
+Provides:       bundled(llhttp) = 2.1.2
 
 Provides:       bundled(node-acorn) = 7.1.1
 Provides:       bundled(node-acorn-class-fields) = 0.3.1
@@ -356,7 +345,6 @@ Recommends:     python3
 %else
 Recommends:     python
 %endif
-%{bundled npm 6.14.6}
 Provides:       bundled(node-JSONStream) = 1.3.5
 Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 4.2.1
@@ -819,11 +807,11 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %if %{node_version_number} == 6
 # Update NPM
 rm -r deps/npm
-tar Jxvf %{SOURCE10}
+tar Jxf %{SOURCE10}
 %endif
 
 %if %{node_version_number} >= 10
-tar Jxvf %{SOURCE11}
+tar Jxf %{SOURCE11}
 %endif
 
 %patch3 -p1

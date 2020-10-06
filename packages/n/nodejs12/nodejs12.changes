@@ -5,7 +5,9 @@ Wed Sep 23 18:28:20 UTC 2020 - Adam Majer <adam.majer@suse.de>
   * deps:
     + update llhttp to 2.1.2 (bsc#1176605, CVE-2020-8201)
     + fs.realpath.native may cause buffer overflow
-    (bsc#1176605, CVE-2020-8252)
+    (bsc#1176589, CVE-2020-8252)
+- fix_ci_tests.patch: re-add missing debug symbol removal before
+  running unit tests
 
 -------------------------------------------------------------------
 Mon Aug 10 16:36:26 UTC 2020 - Adam Majer <adam.majer@suse.de>
