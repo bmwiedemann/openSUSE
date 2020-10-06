@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:49:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.1:
+  * hints kitten: Add an ip type for easy selection of IP addresses (#3009)
+  * Fix a regression that caused a segfault when using
+    scrollback_pager_history_size and it needs to be expanded (#3011)
+  * Fix update available notifications repeating (#3006)
+
+-------------------------------------------------------------------
 Mon Oct  5 07:32:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.0:
