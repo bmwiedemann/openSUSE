@@ -17,7 +17,7 @@
 
 
 Name:           jasper
-Version:        2.0.21
+Version:        2.0.22
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        SUSE-Public-Domain
@@ -25,8 +25,6 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source2:        baselibs.conf
-# https://github.com/jasper-software/jasper/issues/247
-Patch0:         jasper-2.0.21-glut.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -78,7 +76,6 @@ image compression standard Part 1.
 
 %prep
 %setup -q -n %{name}-version-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
