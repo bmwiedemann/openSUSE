@@ -1,7 +1,7 @@
 #
 # spec file for package ratslap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,15 @@
 %define version_unconverted 0.2.3
 
 Name:           ratslap
-Version:        0.2.3
+Version:        0.4.1
 Release:        0
 Summary:        Linux configuration tool for Logitech mice
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://gitlab.com/krayon/ratslap
-Source:         https://gitlab.com/krayon/ratslap/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/krayon/ratslap/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  gcc
 BuildRequires:  libusb-1_0-devel
-BuildRequires:  xz
 
 %description
 RatSlap provides a way to configure configurable Logitech mice from
@@ -37,19 +36,22 @@ within Linux.
 Currently, only G300/G300S is supported.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
+CREATION=`stat -c '%%Y' %{SOURCE0}`
+DATE=`date --date="@$CREATION" '+%%F %T%z'`
+MONTH=`date --date="@$CREATION" '+%m'`
+YEAR=`date --date="@$CREATION" '+%Y'`
 make manpage.1 ratslap \
 	CARCH_FLAG=' ' \
 	OPT_FLAGS="%{optflags}" \
 	MAJVER="%{version}" \
 	APPBRANCH="release" \
 	APPVER="%{version}" \
-	BUILD_DATE="2019-02-05 14:46:45+0000" \
-	BUILD_MONTH="02" \
-	BUILD_YEAR="2019" \
+	BUILD_DATE="$DATE" \
+	BUILD_MONTH="$MONTH" \
+	BUILD_YEAR="$YEAR" \
 	BUILD_COMMIT="n/a"
 
 %install
@@ -60,8 +62,7 @@ install -m 0755 ratslap %{buildroot}/%{_bindir}
 install -m 0644 manpage.1 %{buildroot}/%{_mandir}/man1/ratslap.1
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS.creole CONTRIBUTING.creole README.creole
+%doc AUTHORS.md CONTRIBUTING.md README.md
 %license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1.gz
