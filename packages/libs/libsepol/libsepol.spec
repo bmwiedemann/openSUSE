@@ -17,15 +17,14 @@
 
 
 Name:           libsepol
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch1:         remove_cil_mem_error_handler.patch
 BuildRequires:  flex
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -87,12 +86,10 @@ policies.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 %define _lto_cflags %{nil}
-%global optflags %{optflags} -fcommon
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags}
 
 %install
