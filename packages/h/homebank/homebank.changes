@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Sep 30 13:16:51 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 5.4.3:
+  * change: remove deprecated GtkAction/GtkUIManager for
+    rep_balance
+  * change: harmonization of dialog dimension with aspect
+    ratio
+  * change: split list column now follow same width rule
+    than other list
+  * change: updated the file statistics: added tags, currencies,
+    template, scheduled
+  * change: updated the welcome dialog: added icon, relayout, show
+    next time checkbox
+  * change: reworked and improved the new file assistant
+  * change: prefixed template created from the register
+  * wish  : #1861759 search "Manage Accounts"
+  * wish  : #1861432 merge tags
+  * wish  : #1860905 sort by amount in budget report
+  * wish  : #1851733 Reports/Vehicle Cost Report filtered dropdown
+  * wish  : #1851729 multi line scheduled post
+  * wish  : #1851718 popup menu on transaction list
+  * wish  : #1847907 add reconcile data when export as CSV
+  * wish  : #1829597 view split transaction detail from the register
+    (expand or other)
+  * wish  : #1810621 mass prefill assignment from the register
+  * bugfix: double click on scheduled list total line was faulty
+    reactive
+  * wish  : #1886299 export to csv/clipboard 1st column title
+    naming
+  * wish  : #1886181 default preference or remind for import
+    similar date gap
+  * wish  : #1880386 revert ease to combine expense/income in
+    splits dialog
+  * wish  : #1882081 add a gtk font size override Edit
+  * wish  : #1871383 increase exchange rate size
+  * wish  : #1869112 "Export CSV" feature for the "Show all..."
+    transactions view
+  * wish  : #1837550 export transaction from account as CSV with
+    every split line 
+  * bugfix: delete tag was partially working
+  * bugfix: your accounts list was not refreshed after new
+    file or import
+  * bugfix: #1870476 typo: Your
+  * bugfix: #1870433 default backup path folder not initialized
+    with wallet folder
+  * bugfix: #1869727 typo: assigment
+  * bugfix: #1868185 search not finding amounts with more than 3
+    digits dollar amount
+  * bugfix: #1867392 delete tooltip not translated in
+    scheduled/template dialog
+  * bugfix: #1865361 txn dialog template list switch sort order
+    on each save
+  * bugfix: #1865083 when moving a transaction a 'changed' icon
+    isn't displayed against the 'from' account
+  * bugfix: #1864176 'Restore backup' doesn't open default
+    backup folder
+  * bugfix: #1864089 missing icons for "Case sensitive" and
+    "Regular expression in the assignment dialog
+  * bugfix: #1863484 scheduled 'stop after' cannot be removed
+  * bugfix: #1862769 manage schedule/template and quicksearch
+    behavior
+  * bugfix: #1862677 add and keep FROM register reset the date
+  * bugfix: #1862540 win: currency symbol detection fail leads
+    to crash
+  * bugfix: #1862436 win: incorrect display of russian ruble
+    currency symbol
+  * bugfix: #1858675 import/export budget mixup if subcategory
+    has same name
+
+-------------------------------------------------------------------
 Tue Mar 10 14:06:06 UTC 2020 - malcolmlewis@opensuse.org
 
 - Update to version 5.3.2:
