@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-utils
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,9 @@ Source2:        sound-extra.service
 Source5:        load-sound-modules.sh
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
 BuildRequires:  alsa-topology-devel
+%endif
 BuildRequires:  fftw3-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  ncurses-devel
