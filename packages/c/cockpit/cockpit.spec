@@ -40,11 +40,6 @@
 
 %define _hardened_build 1
 
-# build basic packages like cockpit-bridge
-%define build_basic 1
-# build optional extensions like cockpit-machines
-%define build_optional 1
-
 %define __lib lib
 
 %if 0%{?rhel}
@@ -63,7 +58,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        228
+Version:        229
 %if %{defined wip}
 Release:        1.%{wip}%{?dist}
 Source0:        cockpit-%{version}.tar.xz
@@ -75,6 +70,23 @@ Source1:       cockpit.pam
 Source2:       cockpit-rpmlintrc
 Source99:      README.packaging
 
+# in RHEL the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
+# and cockpit-appstream (building optional packages like cockpit-{machines,pcp})
+%if 0%{?rhel}
+
+%if "%{name}" == "cockpit"
+%define build_basic 1
+%define build_optional 0
+%else
+%define build_basic 0
+%define build_optional 1
+%endif
+
+%else
+%define build_basic 1
+%define build_optional 1
+%endif
+
 BuildRequires: gcc
 BuildRequires: pkgconfig(gio-unix-2.0)
 BuildRequires: pkgconfig(json-glib-1.0)
@@ -85,7 +97,7 @@ BuildRequires: autoconf automake
 BuildRequires: make
 BuildRequires: /usr/bin/python3
 BuildRequires: gettext >= 0.19.7
-%if 0%{?build_optional}
+%if 0%{?build_basic}
 BuildRequires: libssh-devel >= 0.8.5
 %endif
 BuildRequires: openssl-devel
@@ -157,6 +169,9 @@ exec 2>&1
     --docdir=%_defaultdocdir/%{name} \
 %endif
     --with-pamdir='%{pamdir}' \
+%if 0%{?build_basic} == 0
+    --disable-ssh \
+%endif
     %{?vdo_on_demand:--with-vdo-package='"vdo"'}
 make -j4 %{?extra_flags} all
 
@@ -248,12 +263,13 @@ find %{buildroot}%{_datadir}/cockpit/playground -type f >> tests.list
 %if 0%{?build_basic} == 0
 for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd tuned users; do
     rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
+    rm -rf %{buildroot}/usr/src/debug/%{_datadir}/cockpit/$pkg
     rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
 done
 for data in doc locale man pixmaps polkit-1; do
     rm -r %{buildroot}/%{_datadir}/$data
 done
-for lib in systemd tmpfiles.d firewalld; do
+for lib in systemd tmpfiles.d; do
     rm -r %{buildroot}/%{_prefix}/%{__lib}/$lib
 done
 for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-desktop; do
@@ -268,7 +284,7 @@ rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
 # when not building optional packages, remove their files
 %if 0%{?build_optional} == 0
 for pkg in apps dashboard machines packagekit pcp playground storaged; do
-    rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg
+    rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg %{buildroot}/usr/src/debug/%{_datadir}/cockpit/$pkg
 done
 # files from -tests
 rm -r %{buildroot}/%{_prefix}/%{__lib}/cockpit-test-assets
@@ -420,7 +436,7 @@ Recommends: (reportd >= 0.7.1 if abrt)
 %endif
 # NPM modules which are also available as packages
 Provides: bundled(js-jquery) = 3.5.1
-Provides: bundled(js-moment) = 2.27.0
+Provides: bundled(js-moment) = 2.28.0
 Provides: bundled(nodejs-flot) = 0.8.3
 Provides: bundled(xstatic-bootstrap-datepicker-common) = 1.9.0
 Provides: bundled(xstatic-patternfly-common) = 3.59.5
