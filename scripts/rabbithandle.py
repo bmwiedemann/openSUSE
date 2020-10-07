@@ -75,11 +75,9 @@ for line in watchtail(sys.stdin):
     os.environ['GIT_AUTHOR_EMAIL'] = ''
     if commitdate:
         os.environ['GIT_AUTHOR_DATE'] = commitdate
-        os.environ['GIT_COMMITTER_DATE'] = commitdate
         print("set commitdate "+commitdate)
     else:
         os.environ.pop('GIT_AUTHOR_DATE', None)
-        os.environ.pop('GIT_COMMITTER_DATE', None)
     time.sleep(1)
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
