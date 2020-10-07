@@ -23,9 +23,9 @@
 %endif
 %define major_ver 4.13
 %define qt5_version 5.12.0
-%define tar_version 4.13.1
+%define tar_version 4.13.2
 Name:           libqt5-creator
-Version:        4.13.1
+Version:        4.13.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -46,6 +46,8 @@ Patch0:         0001-Fix-build-with-openSUSE-clang9-package.patch
 Patch1:         fix-application-output.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Disable-some-plugins.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         0001-Don-t-rely-on-clang-include-and-binary-copies.patch
 BuildRequires:  cmake
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{qt5_version}
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt5_version}

@@ -794,4 +794,15 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>835679</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>72affe7a58218ccb616d77cc2fb511df</srcmd5>
+    <version>4.13.2</version>
+    <time>1602073092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.13.2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.2.md
+- Add patch to avoid relying on non-existent clang file copies (boo#1176888)
+  * 0001-Don-t-rely-on-clang-include-and-binary-copies.patch</comment>
+    <requestid>839890</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  1 18:18:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.13.2
+  https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.13.2.md
+- Add patch to avoid relying on non-existent clang file copies (boo#1176888)
+  * 0001-Don-t-rely-on-clang-include-and-binary-copies.patch
+
+-------------------------------------------------------------------
 Thu Sep 17 09:23:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.13.1
