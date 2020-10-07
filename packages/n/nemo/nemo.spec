@@ -56,7 +56,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xapp) >= 1.0.4
-Requires:       %{name}-lang
 Requires:       desktop-file-utils >= 0.7
 Requires:       glib2-tools
 Requires:       gvfs >= 1.3.2
@@ -65,6 +64,7 @@ Requires:       python3
 Requires:       shared-mime-info >= 0.50
 Recommends:     gdk-pixbuf-loader-rsvg
 Recommends:     gvfs-backends
+Recommends:     %{name}-lang
 Suggests:       xdg-user-dirs
 Suggests:       xplayer
 Suggests:       xreader
