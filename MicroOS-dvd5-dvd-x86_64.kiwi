@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201005" schemaversion="4.1">
+<image name="OBS__MicroOS___20201006" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201005</productvar>
+      <productvar name="VERSION">20201006</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201005,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201006,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201005/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201006/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1251,7 +1251,6 @@
       <repopackage name="python3-appdirs" arch="x86_64"/>
       <repopackage name="python3-asn1crypto" arch="x86_64"/>
       <repopackage name="python3-attrs" arch="x86_64"/>
-      <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-Babel" arch="x86_64"/>
       <repopackage name="python3-blinker" arch="x86_64"/>
       <repopackage name="python3-certifi" arch="x86_64"/>
@@ -1261,24 +1260,20 @@
       <repopackage name="python3-configobj" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-cryptography" arch="x86_64"/>
-      <repopackage name="python3-decorator" arch="x86_64"/>
       <repopackage name="python3-ecdsa" arch="x86_64"/>
       <repopackage name="python3-gobject" arch="x86_64"/>
       <repopackage name="python3-gobject-cairo" arch="x86_64"/>
       <repopackage name="python3-gobject-Gdk" arch="x86_64"/>
       <repopackage name="python3-idna" arch="x86_64"/>
-      <repopackage name="python3-ipy" arch="x86_64"/>
       <repopackage name="python3-Jinja2" arch="x86_64"/>
       <repopackage name="python3-jsonpatch" arch="x86_64"/>
       <repopackage name="python3-jsonpointer" arch="x86_64"/>
       <repopackage name="python3-jsonschema" arch="x86_64"/>
       <repopackage name="python3-ldb" arch="x86_64"/>
       <repopackage name="python3-MarkupSafe" arch="x86_64"/>
-      <repopackage name="python3-networkx" arch="x86_64"/>
       <repopackage name="python3-oauthlib" arch="x86_64"/>
       <repopackage name="python3-ordered-set" arch="x86_64"/>
       <repopackage name="python3-packaging" arch="x86_64"/>
-      <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-py" arch="x86_64"/>
       <repopackage name="python3-pyasn1" arch="x86_64"/>
       <repopackage name="python3-pycparser" arch="x86_64"/>
@@ -1290,9 +1285,6 @@
       <repopackage name="python3-pytz" arch="x86_64"/>
       <repopackage name="python3-PyYAML" arch="x86_64"/>
       <repopackage name="python3-requests" arch="x86_64"/>
-      <repopackage name="python3-selinux" arch="x86_64"/>
-      <repopackage name="python3-semanage" arch="x86_64"/>
-      <repopackage name="python3-setools" arch="x86_64"/>
       <repopackage name="python3-setuptools" arch="x86_64"/>
       <repopackage name="python3-six" arch="x86_64"/>
       <repopackage name="python3-talloc" arch="x86_64"/>

@@ -754,8 +754,86 @@ unsorted:
   - asm5-examples 
   - asm5-javadoc 
   - asn1c 
+  - aspell-af 
+  - aspell-agal 
+  - aspell-am 
+  - aspell-ar 
+  - aspell-ast 
+  - aspell-az 
+  - aspell-be 
+  - aspell-bg 
+  - aspell-bn 
+  - aspell-br 
+  - aspell-ca 
+  - aspell-csb 
+  - aspell-cy 
   - aspell-devel 
+  - aspell-eo 
+  - aspell-et 
+  - aspell-fa 
+  - aspell-fi 
+  - aspell-fo 
+  - aspell-fy 
+  - aspell-ga 
+  - aspell-gd 
+  - aspell-gl 
+  - aspell-grc 
+  - aspell-gu 
+  - aspell-gv 
+  - aspell-he 
+  - aspell-hi 
+  - aspell-hil 
+  - aspell-hr 
+  - aspell-hsb 
+  - aspell-hus 
+  - aspell-hy 
+  - aspell-ia 
+  - aspell-id 
+  - aspell-is 
   - aspell-ispell 
+  - aspell-kn 
+  - aspell-ku 
+  - aspell-ky 
+  - aspell-la 
+  - aspell-lt 
+  - aspell-lv 
+  - aspell-mg 
+  - aspell-mi 
+  - aspell-mk 
+  - aspell-ml 
+  - aspell-mn 
+  - aspell-mr 
+  - aspell-ms 
+  - aspell-mt 
+  - aspell-nb 
+  - aspell-nds 
+  - aspell-nl 
+  - aspell-nn 
+  - aspell-ny 
+  - aspell-or 
+  - aspell-pa 
+  - aspell-qu 
+  - aspell-ro 
+  - aspell-rw 
+  - aspell-sc 
+  - aspell-sk 
+  - aspell-sl 
+  - aspell-sr 
+  - aspell-sv 
+  - aspell-sw 
+  - aspell-ta 
+  - aspell-te 
+  - aspell-tet 
+  - aspell-tk 
+  - aspell-tl 
+  - aspell-tn 
+  - aspell-tr 
+  - aspell-uk 
+  - aspell-uz 
+  - aspell-vi 
+  - aspell-wa 
+  - aspell-yi 
+  - aspell-zu 
   - assertj-core 
   - assertj-core-javadoc 
   - assimp-devel 
@@ -16797,6 +16875,7 @@ unsorted:
   - openttd-dedicated 
   - openttd-opengfx 
   - openttd-openmsx 
+  - opentyrian 
   - openucx-tools: [x86_64] 
   - openvas-smb 
   - openvdb-devel 
@@ -19014,6 +19093,7 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
   - policycoreutils-newrole 
+  - policycoreutils-python-utils 
   - polkit-devel 
   - polkit-doc 
   - polkit-whitelisting 
@@ -20466,6 +20546,7 @@ unsorted:
   - python3-django-allauth 
   - python3-django-appconf 
   - python3-django-assets 
+  - python3-django-attachments 
   - python3-django-auth-ldap 
   - python3-django-avatar 
   - python3-django-axes 
@@ -20491,6 +20572,7 @@ unsorted:
   - python3-django-extra-views 
   - python3-django-filter 
   - python3-django-formtools 
+  - python3-django-geoposition 
   - python3-django-grappelli 
   - python3-django-gravatar2 
   - python3-django-guardian 
@@ -20502,14 +20584,17 @@ unsorted:
   - python3-django-js-asset 
   - python3-django-json-widget 
   - python3-django-jsonfield 
+  - python3-django-localflavor 
   - python3-django-mailer 
   - python3-django-mailman3 
   - python3-django-minio-storage 
   - python3-django-model-utils 
+  - python3-django-multiselectfield 
   - python3-django-nine 
   - python3-django-nose 
   - python3-django-oauth-toolkit 
   - python3-django-oidc-provider 
+  - python3-django-parler 
   - python3-django-pglocks 
   - python3-django-phonenumber-field 
   - python3-django-picklefield 
@@ -20648,6 +20733,7 @@ unsorted:
   - python3-extratools 
   - python3-ez_setup 
   - python3-ezdxf 
+  - python3-fabio 
   - python3-factory_boy 
   - python3-fake-useragent 
   - python3-fakeredis 
@@ -20922,7 +21008,7 @@ unsorted:
   - python3-ipa_hbac 
   - python3-ipdb 
   - python3-iptables 
-  - python3-ipy: [i586] 
+  - python3-ipy 
   - python3-ipydatawidgets 
   - python3-ipyevents 
   - python3-ipykernel 
@@ -21818,6 +21904,7 @@ unsorted:
   - python3-pytest-astropy-header 
   - python3-pytest-asyncio 
   - python3-pytest-attrib 
+  - python3-pytest-base-url 
   - python3-pytest-bdd 
   - python3-pytest-benchmark 
   - python3-pytest-black 
@@ -22008,6 +22095,7 @@ unsorted:
   - python3-quantum-blackbird 
   - python3-queuelib 
   - python3-quicktions 
+  - python3-quimb: [x86_64] 
   - python3-radon 
   - python3-raet 
   - python3-random2 
@@ -22972,6 +23060,8 @@ unsorted:
   - retroarch-assets 
   - retroarch-joypad-autoconfig 
   - reuse 
+  - revelation 
+  - revelation-lang 
   - reveng 
   - rfb 
   - rfbplaymacro 
@@ -25313,6 +25403,13 @@ unsorted:
   - segment 
   - segment-javadoc 
   - segv_handler 
+  - selinux-policy 
+  - selinux-policy-devel 
+  - selinux-policy-doc 
+  - selinux-policy-minimum 
+  - selinux-policy-mls 
+  - selinux-policy-sandbox 
+  - selinux-policy-targeted 
   - selinux-tools: [i586] 
   - semantik 
   - sendfax 
@@ -34705,6 +34802,7 @@ unsorted:
   - vifm 
   - vifm-colors 
   - vigra-devel 
+  - vilistextum 
   - vim-bootstrap 
   - vim-completion-golang 
   - vim-fzf 

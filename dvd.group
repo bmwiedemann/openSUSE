@@ -152,7 +152,19 @@
     <package name="arpwatch-ethercodes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="as10k1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="aspell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-cs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-da" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-de" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-el" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="aspell-en" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-es" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-fr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-hu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-it" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-pl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-pt_BR" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-pt_PT" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aspell-ru" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="aspell-spell" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="at" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="at-spi2-atk-common" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -5549,7 +5561,6 @@
     <package name="python3-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python3-ipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-libguestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python3-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
