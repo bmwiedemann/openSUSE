@@ -3459,4 +3459,51 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>833405</requestid>
   </revision>
+  <revision rev="387" vrev="3">
+    <srcmd5>a08e59a3605e758dd40e56ef2d2439cf</srcmd5>
+    <version>1.20.9</version>
+    <time>1602072987</time>
+    <user>dimstar_suse</user>
+    <comment>- n_xorg-wrapper-anybody.patch
+  * replace default config /etc/X11/Xwrapper, which allows
+    anybody to use the wrapper, by a patch for the code, i.e.
+      # rootonly, console, anybody
+      allowed_users=anybody
+      # yes, no, auto
+      needs_root_rights=auto
+    is now the default without any Xwrapper config
+    (needs_root_rights=auto was already the default before)
+
+- u_xorg-wrapper-Xserver-Options-Whitelist-Filter.patch
+  * replaced by improved version written by Matthias Gerstner of
+    our security team
+    + simplified the option parsing code a bit
+    + changed the &quot;ignore forbidden argument&quot; logic into an &quot;abort
+      on forbidden argument&quot; logic. This is safer and avoids 
+      surprises on the user's end that could occur if the desired
+      command line arguments aren't effective but the Xorg server is
+      still started.
+    + tried to adjust to the coding style present in the file 
+      (mostly the function name)
+    + added some logic to apply the option filtering only to 
+      non-root users when Xorg is actually started as root. This
+      should allow for full flexibility if root calls the wrapper or
+      if the Xorg server only runs with user privileges.
+
+- U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch,
+  U_Revert-linux-Fix-platform-device-PCI-detection-for-c.patch,
+  U_Revert-linux-Fix-platform-device-probe-for-DT-based-.patch,
+  U_Revert-linux-Make-platform-device-probe-less-fragile.patch
+  * fix Xserver startup on Raspberry Pi 3 (boo#1176203) 
+
+- n_xorg-wrapper-rename-Xorg.patch
+  * moved Xorg to Xorg.bin and Xorg.sh to Xorg (boo#1175867)
+- change default for needs_root_rights to auto in Xwrapper.config
+  (boo#1175867)
+
+- reenabled SUID wrapper for TW (boo#1175867)
+- u_xorg-wrapper-Xserver-Options-Whitelist-Filter.patch
+  * Xserver option whitelist filter (boo#1175867)</comment>
+    <requestid>838746</requestid>
+  </revision>
 </revisionlist>

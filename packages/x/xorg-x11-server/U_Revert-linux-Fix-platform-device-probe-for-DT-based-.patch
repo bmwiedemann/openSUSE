@@ -1,0 +1,60 @@
+From 4b6fce5975c2f931a0478cf4deeec97529b05eb6 Mon Sep 17 00:00:00 2001
+From: Olivier Fourdan <ofourdan@redhat.com>
+Date: Tue, 8 Sep 2020 10:01:55 +0200
+Subject: [PATCH] Revert "linux: Fix platform device probe for DT-based PCI"
+
+This reverts commit 249a12c54a9316b089bd22683c011519348496df.
+
+https://gitlab.freedesktop.org/xorg/xserver/-/issues/1068
+---
+ config/udev.c | 27 +--------------------------
+ 1 file changed, 1 insertion(+), 26 deletions(-)
+
+diff --git a/config/udev.c b/config/udev.c
+index b00d90237..14409549b 100644
+--- a/config/udev.c
++++ b/config/udev.c
+@@ -464,31 +464,6 @@ config_udev_fini(void)
+ 
+ #ifdef CONFIG_UDEV_KMS
+ 
+-/* Find the last occurrence of the needle in haystack */
+-static char *strrstr(const char *haystack, const char *needle)
+-{
+-    char *prev, *last, *tmp;
+-
+-    prev = strstr(haystack, needle);
+-    if (!prev)
+-        return NULL;
+-
+-    last = prev;
+-    tmp = prev + 1;
+-
+-    while (tmp) {
+-        last = strstr(tmp, needle);
+-        if (!last)
+-            return prev;
+-        else {
+-            prev = last;
+-            tmp = prev + 1;
+-        }
+-    }
+-
+-    return last;
+-}
+-
+ static void
+ config_udev_odev_setup_attribs(struct udev_device *udev_device, const char *path, const char *syspath,
+                                int major, int minor,
+@@ -503,7 +478,7 @@ config_udev_odev_setup_attribs(struct udev_device *udev_device, const char *path
+     attribs->minor = minor;
+ 
+     value = udev_device_get_property_value(udev_device, "ID_PATH");
+-    if (value && (str = strrstr(value, "pci-"))) {
++    if (value && (str = strstr(value, "pci-"))) {
+         attribs->busid = XNFstrdup(str);
+         attribs->busid[3] = ':';
+     }
+-- 
+2.16.4
+

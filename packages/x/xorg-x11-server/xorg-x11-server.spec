@@ -26,19 +26,18 @@
 %define have_wayland 1
 %endif
 
-%define build_suid_wrapper 0
-
-%if 0%{!?build_suid_wrapper:1}
-%ifarch s390 s390x
-%define build_suid_wrapper 0
-%else
-%if 0%{?suse_version} >= 1330
 %define build_suid_wrapper 1
-%define suid_wrapper_dir %{_libexecdir}
-%else
-%define build_suid_wrapper 0
-%endif
-%endif
+
+%if 0%{?build_suid_wrapper:1}
+  %ifarch s390 s390x
+    %define build_suid_wrapper 0
+  %else
+    %if 0%{?suse_version} >= 1550
+      %define suid_wrapper_dir %{_bindir}
+    %else
+      %define build_suid_wrapper 0
+    %endif
+  %endif
 %endif
 
 Name:           xorg-x11-server
@@ -213,6 +212,9 @@ Patch6:         N_fix-dpi-values.diff
 Patch7:         N_Install-Avoid-failure-on-wrapper-installation.patch
 Patch8:         u_xorg-wrapper-Drop-supplemental-group-IDs.patch
 Patch9:         u_xorg-wrapper-build-Build-position-independent-code.patch
+Patch10:        u_xorg-wrapper-Xserver-Options-Whitelist-Filter.patch
+Patch11:        n_xorg-wrapper-rename-Xorg.patch
+Patch12:        n_xorg-wrapper-anybody.patch
 Patch100:       u_01-Improved-ConfineToShape.patch
 Patch101:       u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grabbing-a-shaped-window.patch
 # PATCH-FIX-UPSTREAM u_x86emu-include-order.patch schwab@suse.de -- Change include order to avoid conflict with system header, remove duplicate definitions
@@ -250,6 +252,11 @@ Patch1505:      U_xwayland-Allow-passing-a-fd.patch
 
 Patch1600:      U_glamor_egl-Reject-OpenGL-2.1-early-on.patch
 Patch1700:      U_xfree86_take_second_ref_for_xcursor.patch
+
+Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
+Patch1802:      U_Revert-linux-Fix-platform-device-probe-for-DT-based-.patch
+Patch1803:      U_Revert-linux-Fix-platform-device-PCI-detection-for-c.patch
+Patch1804:      U_Revert-linux-Make-platform-device-probe-less-fragile.patch
 
 %description
 This package contains the X.Org Server.
@@ -300,8 +307,6 @@ Summary:        Xserver SUID Wrapper
 Group:          System/X11/Servers/XF86_4
 PreReq:         permissions
 Requires:       xorg-x11-server == %{version}
-Provides:       xorg-x11-server-wayland = 7.6_%{version}
-Obsoletes:      xorg-x11-server-wayland < 7.6_%{version}
 
 %description wrapper
 This package contains an SUID wrapper for the Xserver.
@@ -372,6 +377,9 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
 #
 %patch100 -p1
 #%patch101 -p1
@@ -400,6 +408,10 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1505 -p1
 %patch1600 -p1
 %patch1700 -p1
+%patch1801 -p1
+%patch1802 -p1
+%patch1803 -p1
+%patch1804 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -483,6 +495,12 @@ chmod u-s %{buildroot}%{_bindir}/Xorg
 %if 0%{?pci_ids_dir:1}
 %__mkdir_p %{buildroot}%{pci_ids_dir}
 install -m 644 %{S:6} %{buildroot}%{pci_ids_dir}
+%endif
+%if 0%{?build_suid_wrapper} == 1
+mv %{buildroot}%{_bindir}/Xorg \
+   %{buildroot}%{_bindir}/Xorg.bin
+mv %{buildroot}%{_bindir}/Xorg.sh \
+   %{buildroot}%{_bindir}/Xorg
 %endif
 ln -snf Xorg %{buildroot}%{_bindir}/X
 %if 0%{?suse_version} > 1120
@@ -607,7 +625,7 @@ fi
 %ifnarch s390 s390x
 %{_bindir}/Xorg
 %if 0%{?build_suid_wrapper} == 1
-%{suid_wrapper_dir}/Xorg
+%{_bindir}/Xorg.bin
 %endif
 %{_bindir}/X
 
