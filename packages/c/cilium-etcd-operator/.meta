@@ -1,6 +1,0 @@
-<package name="cilium-etcd-operator" project="openSUSE:Factory">
-  <title> Operator to manage Cilium's etcd cluster</title>
-  <description>Cilium uses etcd as one of supported kv store. This operator help
-provide easy etcd cluster management for cilium</description>
-  <devel project="devel:kubic" package="cilium-etcd-operator"/>
-</package>
