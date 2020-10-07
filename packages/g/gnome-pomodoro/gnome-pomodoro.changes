@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:42:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18.0:
+  * Support for GNOME Shell 3.38
+  * Removed ayatana-appindicator3 support
+  * Added Norwegian translation
+  * Added Finnish translation
+  * Updated Indonesian translation
+  * Updated Chinese translation
+  * Updated Russian translation
+  * Updated French translation
+
+-------------------------------------------------------------------
 Mon Jun 15 13:35:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(ayatana-appindicator3-0.1) BuildRequires:

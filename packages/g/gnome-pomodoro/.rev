@@ -187,4 +187,20 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>816397</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>61429c7a43f0d2528040a55459aab381</srcmd5>
+    <version>0.18.0</version>
+    <time>1602073018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  * Support for GNOME Shell 3.38
+  * Removed ayatana-appindicator3 support
+  * Added Norwegian translation
+  * Added Finnish translation
+  * Updated Indonesian translation
+  * Updated Chinese translation
+  * Updated Russian translation
+  * Updated French translation (forwarded request 839499 from jubalh)</comment>
+    <requestid>839600</requestid>
+  </revision>
 </revisionlist>
