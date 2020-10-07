@@ -1762,7 +1762,6 @@ unsorted:
   - cilium-cni: [x86_64] 
   - cilium-devel: [x86_64] # devel package of opensuse_kubic:cilium-k8s-yaml 
   - cilium-docker: [x86_64] 
-  - cilium-etcd-operator 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cimple 
@@ -5137,8 +5136,6 @@ unsorted:
   - gmic-bash-completion 
   - gmic-zart 
   - gmime-devel 
-  - gmime2_6-devel 
-  - gmime2_6-sharp 
   - gmmlib-devel: [x86_64] 
   - gmock 
   - gmp-devel 
@@ -6546,7 +6543,6 @@ unsorted:
   - jack 
   - jack-32bit: [x86_64] 
   - jack-rack 
-  - jackEQ 
   - jack_capture 
   - jackson 
   - jackson-annotations 
@@ -6609,7 +6605,6 @@ unsorted:
   - jameica 
   - jameica-devel 
   - jameica-javadoc 
-  - jamin 
   - janino 
   - janino-javadoc 
   - jansi 
@@ -7111,6 +7106,10 @@ unsorted:
   - kamerka-lang 
   - kamoso 
   - kamoso-lang 
+  - kanidm: [x86_64] 
+  - kanidm-clients: [x86_64] 
+  - kanidm-server: [x86_64] 
+  - kanidm-unixd-clients: [x86_64] 
   - kanjipad 
   - kapidox 
   - kapman 
@@ -10059,8 +10058,6 @@ unsorted:
   - libgme0-32bit: [x86_64] 
   - libgmic-devel 
   - libgmic1 
-  - libgmime-2_6-0 
-  - libgmime-2_6-0-32bit: [x86_64] 
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
@@ -15626,7 +15623,6 @@ unsorted:
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
-  - nautilus-deja-dup 
   - nautilus-devel 
   - nautilus-eiciel 
   - nautilus-extension-actions 
@@ -22331,6 +22327,7 @@ unsorted:
   - python3-splinter 
   - python3-spotipy 
   - python3-spyder-kernels 
+  - python3-spyder-notebook 
   - python3-spyder-terminal 
   - python3-spyder-unittest 
   - python3-sqlalchemy-migrate 
@@ -25647,6 +25644,7 @@ unsorted:
   - snack 
   - snakeyaml 
   - snakeyaml-javadoc 
+  - snallygaster 
   - snapper-testsuite 
   - snappy-devel 
   - snd 
@@ -25784,7 +25782,6 @@ unsorted:
   - spyder-lang 
   - spyder-line-profiler 
   - spyder-memory-profiler 
-  - spyder-notebook 
   - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
@@ -34382,7 +34379,6 @@ unsorted:
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GExiv2-0_10 
-  - typelib-1_0-GMime-2_6 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
   - typelib-1_0-GPaste-1_0 
@@ -35446,6 +35442,7 @@ unsorted:
   - xorg-x11-libs 
   - xorg-x11-server-Xspice: [x86_64] 
   - xorg-x11-server-source 
+  - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
   - xorgxrdp 
   - xorriso-tcltk 
