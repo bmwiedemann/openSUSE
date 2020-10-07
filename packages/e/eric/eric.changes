@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:53:18 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 20.10
+  - bug fixes
+  - Editor
+    -- added an outline widget showing the structure of the editor
+       source code and allowing to navigate in the code
+  - Python Disassembly Viewer
+    -- added a tool to visualize the Python byte code generated
+       from a Python source file
+    -- added a viewer to visualize Python byte code generated from
+       a Python traceback of an exception as an additional tab of
+       the debug viewer
+    -- added capability to show information about a code object
+  - Third Party packages
+    -- updated Pygments to 2.7.0
+    -- updated coverage.py to 5.3.0
+    -- removed th no longer needed 'enum' package
+  - Various
+    -- changed the code to not rely on the Qt Resource system
+       anymore (no .qrc files and no use of pyrcc5 anymore)
+
+- Update to version 20.9
+  - bug fixes
+  - File Browser
+    -- changed it to react upon changed files if their contents is
+       shown Tasks
+    -- added separate task categories for 'Test' and
+       'Documentation' tasks
+  - Mercurial Interface
+    -- removed the interface for the deprecated 'fetch' extension
+  - VCS Interfaces
+    -- added a configuration option to disable the VCS toolbars
+
+-------------------------------------------------------------------
 Sun Aug 16 11:23:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.8
