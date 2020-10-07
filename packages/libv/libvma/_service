@@ -6,7 +6,7 @@
     <param name="exclude">.git</param>
     <param name="filename">libvma</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
-    <param name="revision">6a69f4613bb3c5dc840367fc17fce2fb20636246</param>
+    <param name="revision">0ed40128ffc08626300fe6e6ee80ace632b75cf4</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libvma*.tar</param>
