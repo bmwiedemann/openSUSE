@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:28:20 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.10.0
+  - This release adds the config option announceLANAddresses to enable
+    (the default) or disable announcing private (RFC1918) LAN IP addresses
+    to global discovery. 
+
+-------------------------------------------------------------------
 Tue Sep  8 16:38:38 UTC 2020 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.9.0
