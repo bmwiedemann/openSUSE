@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct  5 13:50:24 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.0.1
+  * Added
+    -  Detection of Alpine Linux
+    -  Detection of CloudLinux
+    -  Detection of Kali Linux
+    -  Detection of Linux Mint
+    -  Detection of macOS Big Sur (11.0)
+    -  Detection of Pop!_OS
+    -  Detection of PHP 7.4
+    -  Malware detection tool: Microsoft Defender ATP
+    -  New flag: --slow-warning to allow tests more time before showing a warning
+    -  Test TIME-3185 to check systemd-timesyncd synchronized time
+    -  rsh host file permissions
+  * Changed
+    - Added option for LOCKED accounts and bugfix for older bash versions
+    - Presence check for grub.d added
+    - Added support for certificates in DER format
+    - Added data to report
+    - Redirect errors (e.g. when swap is not encrypted)
+    - Don't grep nonexistant modprobe.d files
+    - Set initial firewall state
+    - Corrected text on screen
+    - Handle zipped kernel configuration correctly
+    - Improved version detection for non-symlinked kernel
+    - Extended detection of BitDefender
+    - Find more time synchronization commands
+    - Corrected detection of time peers
+    - Fix: hostid generation routine would sometimes show too short IDs
+    - Fix: language detection
+    - Generic improvements for macOS
+    - German translation updated
+    - End-of-life database updated
+
+-------------------------------------------------------------------
 Thu Jun 18 12:17:36 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.0 
