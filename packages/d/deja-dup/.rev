@@ -495,4 +495,38 @@ So preferably for 13.1 as well.</comment>
     parsers. (forwarded request 832592 from iznogood)</comment>
     <requestid>832687</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>de9b27eccc7acc73c01703469bfe7974</srcmd5>
+    <version>42.4</version>
+    <time>1602073011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 42.4:
+  * Redesign the main window and preferences to follow GNOME
+    design patterns
+  * Add welcome state for first time use (with slightly guided
+    backup/restore)
+  * Add an in-app browse &amp;amp; restore interface
+  * Drop nautilus plugin, in preference of above new
+    browse interface
+  * Drop deprecated backends (GOA, S3, GCS, OpenStack, and Rackspace)
+  * Use &quot;Déjà Dup Backups&quot; instead of &quot;Déjà Dup Backup Tool&quot;
+    as full name
+  * Drop &quot;Version&quot; key from desktop files, which broke some parsers
+  * Adds a button to reset your Google authorization in
+    the preferences
+  * Warn users before they restore files that we can't write to
+  * Fix automatic backups not firing for removable storage drives,
+    which got broken during the 41.x development cycle
+  * Automatically exclude folders that follow the cachedir spec
+    (i.e. that have a CACHEDIR.TAG file in them), and same if
+    they have a .deja-dup-ignore file
+  * Use a symbolic back icon in header (vs a full color icon)
+  * Stop the restore confirmation screen from growing too big
+    if you are restoring a lot of files
+  * Mount partitions specified in /etc/fstab if necessary
+  * When selecting an internal drive as a Local Folder, treat it
+    as a removable drive, so that we will mount if necessary
+  * Exclude /dev by default (forwarded request 838780 from polslinux)</comment>
+    <requestid>839598</requestid>
+  </revision>
 </revisionlist>

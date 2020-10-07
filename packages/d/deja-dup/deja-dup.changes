@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 30 12:45:06 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 42.4:
+  * Redesign the main window and preferences to follow GNOME
+    design patterns
+  * Add welcome state for first time use (with slightly guided
+    backup/restore)
+  * Add an in-app browse & restore interface
+  * Drop nautilus plugin, in preference of above new
+    browse interface
+  * Drop deprecated backends (GOA, S3, GCS, OpenStack, and Rackspace)
+  * Use "Déjà Dup Backups" instead of "Déjà Dup Backup Tool"
+    as full name
+  * Drop "Version" key from desktop files, which broke some parsers
+  * Adds a button to reset your Google authorization in
+    the preferences
+  * Warn users before they restore files that we can't write to
+  * Fix automatic backups not firing for removable storage drives,
+    which got broken during the 41.x development cycle
+  * Automatically exclude folders that follow the cachedir spec
+    (i.e. that have a CACHEDIR.TAG file in them), and same if
+    they have a .deja-dup-ignore file
+  * Use a symbolic back icon in header (vs a full color icon)
+  * Stop the restore confirmation screen from growing too big
+    if you are restoring a lot of files
+  * Mount partitions specified in /etc/fstab if necessary
+  * When selecting an internal drive as a Local Folder, treat it
+    as a removable drive, so that we will mount if necessary
+  * Exclude /dev by default
+
+-------------------------------------------------------------------
 Sat Sep  5 22:07:32 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.7:
