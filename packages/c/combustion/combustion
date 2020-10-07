@@ -89,6 +89,13 @@ if ! [ -d "${config_mount}/combustion" ]; then
 	exit 0
 fi
 
+# ignition-mount.service mounts stuff below /sysroot in ExecStart and umounts
+# it on ExecStop, failing if umounting fails. This conflicts with the
+# mounts/umounts done by combustion. Ignition is already done, so just stop it.
+if systemctl --quiet is-active ignition-mount.service; then
+	systemctl stop ignition-mount.service
+fi
+
 # Copy config
 mkdir "${exchangedir}"
 config_dir="${exchangedir}/config"
@@ -125,20 +132,29 @@ if [ -r /etc/resolv.conf ]; then
 	fi
 fi
 
-# t-u doesn't allow running arbitrary commands and
-# also ignores the shell's exit code, so DIY.
-if ! chroot /sysroot transactional-update shell <<EOF; then
-	cd "${config_dir}"
-	chmod a+x script
-	./script
-	echo \$? > "${exchangedir}/retval"
+if [ -x /sysroot/usr/sbin/transactional-update ]; then
+	# t-u doesn't allow running arbitrary commands and
+	# also ignores the shell's exit code, so DIY.
+	if ! chroot /sysroot transactional-update shell <<EOF; then
+		cd "${config_dir}"
+		chmod a+x script
+		./script
+		echo \$? > "${exchangedir}/retval"
 EOF
-	echo "transactional-update failed"
-	exit 1
-fi
+		echo "transactional-update failed"
+		exit 1
+	fi
 
-if [ "$(cat "${exchangedir}/retval")" -ne 0 ]; then
-	echo "Command failed, rolling back"
-	chroot /sysroot transactional-update --no-selfupdate rollback
-	exit 1
+	if ! [ -e "${exchangedir}/retval" ] || [ "$(cat "${exchangedir}/retval")" -ne 0 ]; then
+		echo "Command failed, rolling back"
+		chroot /sysroot transactional-update --no-selfupdate rollback
+		exit 1
+	fi
+else
+	mount -o remount,rw /sysroot
+	if ! chroot /sysroot sh -e -c "cd '${config_dir}'; chmod a+x script; ./script"; then
+		echo "Command failed"
+		exit 1
+	fi
+	chroot /sysroot snapper --no-dbus create -d "After combustion configuration" || :
 fi

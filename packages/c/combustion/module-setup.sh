@@ -8,7 +8,7 @@ install() {
 	inst_simple "${moddir}/combustion.rules" "/etc/udev/rules.d/70-combustion.rules"
 	mkdir -p "${initdir}/${systemdsystemunitdir}/initrd.target.requires/"
 	ln_r "../combustion.service" "${systemdsystemunitdir}/initrd.target.requires/combustion.service"
-	inst_multiple awk chroot findmnt 
+	inst_multiple awk chroot findmnt rmdir
 	inst_simple "${moddir}/combustion" "/usr/bin/combustion"
 
 	# Wait up to 10s (30s on aarch64) for the config drive
