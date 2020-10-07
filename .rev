@@ -1034,4 +1034,13 @@
     <comment></comment>
     <requestid>838539</requestid>
   </revision>
+  <revision rev="126" vrev="3">
+    <srcmd5>7e9e49b1e39ad2e4a9b3b70b3fddd9d3</srcmd5>
+    <version>1.2.3</version>
+    <time>1602073079</time>
+    <user>dimstar_suse</user>
+    <comment>- Conditionally add buildreq alsa-topology-devel to fix build
+  errors</comment>
+    <requestid>839641</requestid>
+  </revision>
 </revisionlist>

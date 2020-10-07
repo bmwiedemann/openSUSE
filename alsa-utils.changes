@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:39:42 CEST 2020 - tiwai@suse.de
+
+- Conditionally add buildreq alsa-topology-devel to fix build
+  errors
+
+-------------------------------------------------------------------
 Tue Sep 29 12:46:19 CEST 2020 - tiwai@suse.de
 
 - Fix the directory to save asound.state again to /var/lib/alsa,
