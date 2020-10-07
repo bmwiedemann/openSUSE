@@ -31,7 +31,7 @@
   boo#1162853: '20200312'
   boo#1163655: '20200218'
   boo#1163766: '20200414'
-  boo#1164313: '20201004'
+  boo#1164313: '20201005'
   boo#1166657: '20200405'
   boo#1167245: '20200327'
   boo#1167332: '20200319'
@@ -41,7 +41,7 @@
   boo#1168371: '20200331'
   boo#1168629: '20200415'
   boo#1168849: '20200428'
-  boo#1169797: '20201004'
+  boo#1169797: '20201005'
   boo#1169855: '20200814'
   boo#1169874: '20200501'
   boo#1170553: '20200511'
@@ -55,7 +55,7 @@
   boo#1171556: '20200511'
   boo#1171714: '20200602'
   boo#1171870: '20200517'
-  boo#1172013: '20201004'
+  boo#1172013: '20201005'
   boo#1172071: '20200523'
   boo#1172291: '20200528'
   boo#1172430: '20200810'
@@ -70,12 +70,12 @@
   boo#1173440: '20200628'
   boo#1173769: '20200710'
   boo#1173791: '20200726'
-  boo#1174068: '20201004'
+  boo#1174068: '20201005'
   boo#1174069: '20200714'
   boo#1174071: '20200714'
   boo#1174424: '20200729'
   boo#1174499: '20200728'
-  boo#1174680: '20201004'
+  boo#1174680: '20201005'
   boo#1174797: '20200805'
   boo#1175108: '20200831'
   boo#1175238: '20200911'
@@ -87,18 +87,18 @@
   boo#1175907: '20201003'
   boo#1176002: '20200902'
   boo#1176064: '20200901'
-  boo#1176158: '20201004'
+  boo#1176158: '20201005'
   boo#1176168: '20200917'
-  boo#1176383: '20201004'
+  boo#1176383: '20201005'
   boo#1176450: '20200928'
   boo#1176549: '20200917'
-  boo#1176553: '20201004'
+  boo#1176553: '20201005'
   boo#1176554: '20200916'
-  boo#1176701: '20201004'
+  boo#1176701: '20201005'
   boo#1176714: '20200923'
   boo#1176715: '20200923'
   boo#1176839: '20201004'
-  boo#1176841: '20201004'
+  boo#1176841: '20201005'
   boo#1176894: '20200923'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
@@ -158,7 +158,7 @@
   poo#65986: '20200422'
   poo#66022: '20200422'
   poo#66083: '20200517'
-  poo#66099: '20201004'
+  poo#66099: '20201005'
   poo#66105: '20200514'
   poo#66111: '20200602'
   poo#66149: '20200824'
@@ -166,7 +166,7 @@
   poo#66331: '20200710'
   poo#66373: '20200502'
   poo#66580: '20200627'
-  poo#66784: '20201004'
+  poo#66784: '20201005'
   poo#66967: '20200802'
   poo#67183: '20200622'
   poo#67216: '20200526'
@@ -192,18 +192,18 @@
   poo#69994: '20200919'
   poo#70090: '20200823'
   poo#70231: '20200829'
-  poo#70336: '20201004'
+  poo#70336: '20201005'
   poo#70387: '20200910'
   poo#70597: '20200916'
   poo#70897: '20200910'
   poo#70912: '20200911'
   poo#71008: '20201004'
-  poo#71344: '20201004'
-  poo#71374: '20201004'
+  poo#71344: '20201005'
+  poo#71374: '20201005'
   poo#71503: '20201004'
-  poo#71782: '20201004'
-  poo#71929: '20201004'
-  poo#71932: '20201004'
+  poo#71782: '20201005'
+  poo#71929: '20201005'
+  poo#71932: '20201005'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -227,7 +227,7 @@ pkglistgen-scopes = target rings
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cpio,cracklib,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,flex,gawk,gcc,gcc9,gcc10,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,m4,make,meson,mpc,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python3:base,python38:base,python3-base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,tclap
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,cpio,cracklib,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,flex,gawk,gcc,gcc9,gcc10,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,m4,make,makedepend,meson,mpc,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python3:base,python38:base,python3-base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcl,tcpd,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,tclap
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -247,7 +247,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20201005</value>
+    <value>20201006</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -465,10 +465,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20201005'
 published: '20201004'
 publishing: '20201004'
-testing: '20201004'
+testing: '20201005'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

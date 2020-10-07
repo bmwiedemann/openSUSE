@@ -1,8 +1,8 @@
-Index: kbuild-0.1.9998svn3110/kBuild/env.sh
+Index: kbuild-0.1.9998svn3427/kBuild/env.sh
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/kBuild/env.sh
-+++ kbuild-0.1.9998svn3110/kBuild/env.sh
-@@ -395,6 +395,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
+--- kbuild-0.1.9998svn3427.orig/kBuild/env.sh
++++ kbuild-0.1.9998svn3427/kBuild/env.sh
+@@ -413,6 +413,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
          sparc64|sparcv9)
              KBUILD_HOST_ARCH='sparc64'
              ;;
@@ -12,26 +12,26 @@ Index: kbuild-0.1.9998svn3110/kBuild/env.sh
  
          *)  echo "$0: unknown cpu/arch - $KBUILD_HOST_ARCH" 1>&${ERR_REDIR}
              sleep 1
-Index: kbuild-0.1.9998svn3110/kBuild/header.kmk
+Index: kbuild-0.1.9998svn3427/kBuild/header.kmk
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/kBuild/header.kmk
-+++ kbuild-0.1.9998svn3110/kBuild/header.kmk
+--- kbuild-0.1.9998svn3427.orig/kBuild/header.kmk
++++ kbuild-0.1.9998svn3427/kBuild/header.kmk
 @@ -197,8 +197,8 @@ KBUILD_BLD_TYPES := release profile debu
  # build types. (PORTME)
  #
  KBUILD_OSES      := darwin dos dragonfly freebsd gnuhurd gnukfbsd gnuknbsd haiku l4 linux netbsd nt openbsd os2 solaris win os-agnostic
--KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k ppc64le mips32 mips64 ppc32 ppc64 s390 s390x sh32 sh64 sparc32 sparc64
--KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 ppc64le mips64 ppc64 s390x sh64 sparc64
-+KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k ppc64le mips32 mips64 ppc32 ppc64 s390 s390x aarch64 sh32 sh64 sparc32 sparc64
-+KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 ppc64le mips64 ppc64 s390x aarch64 sh64 sparc64
+-KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k mips32 mips64 ppc32 ppc64 ppc64le s390 s390x sh32 sh64 sparc32 sparc64 x32
+-KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 mips64 ppc64 ppc64le s390x sh64 sparc64 x32
++KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 aarch64 hppa32 hppa64 ia64 m68k mips32 mips64 ppc32 ppc64 ppc64le s390 s390x sh32 sh64 sparc32 sparc64 x32
++KBUILD_ARCHES_64 := amd64 alpha arm64 aarch64 hppa64 ia64 mips64 ppc64 ppc64le s390x sh64 sparc64 x32
  KBUILD_ARCHES_32 := x86 arm32 hppa32 m68k mips32 ppc32 s390 sh32 sparc32
  
  
-Index: kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
+Index: kbuild-0.1.9998svn3427/src/lib/kStuff/include/k/kDefs.h
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/src/lib/kStuff/include/k/kDefs.h
-+++ kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
-@@ -160,6 +160,8 @@
+--- kbuild-0.1.9998svn3427.orig/src/lib/kStuff/include/k/kDefs.h
++++ kbuild-0.1.9998svn3427/src/lib/kStuff/include/k/kDefs.h
+@@ -164,6 +164,8 @@
  #define K_ARCH_ARM_64           ( 5 | K_ARCH_BIT_64 | K_ARCH_END_BI)
  /** Motorola 68000 (32-bit). */
  #define K_ARCH_M68K             ( 6 | K_ARCH_BIT_32 | K_ARCH_END_BIG)
@@ -40,7 +40,7 @@ Index: kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
  /** 32-bit MIPS. */
  #define K_ARCH_MIPS_32          ( 7 | K_ARCH_BIT_32 | K_ARCH_END_BI)
  /** 64-bit MIPS. */
-@@ -206,8 +208,10 @@
+@@ -210,8 +212,10 @@
  #  define K_ARCH    K_ARCH_ALPHA
  # elif defined(__arm__) || defined(__arm32__)
  #  define K_ARCH    K_ARCH_ARM_32

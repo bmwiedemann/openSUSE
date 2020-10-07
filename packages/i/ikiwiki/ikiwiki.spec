@@ -101,8 +101,8 @@ make pure_install DESTDIR=%{buildroot}
 sed -e '1{/^#!/d}' -i \
     %{buildroot}%{_sysconfdir}/ikiwiki/auto.setup \
     %{buildroot}%{_sysconfdir}/ikiwiki/auto-blog.setup \
-    %{buildroot}%{_libexecdir}/ikiwiki/plugins/proxy.py \
-    %{buildroot}%{_libexecdir}/ikiwiki/plugins/rst
+    %{buildroot}%{_prefix}/lib/ikiwiki/plugins/proxy.py \
+    %{buildroot}%{_prefix}/lib/ikiwiki/plugins/rst
 
 %find_lang %{name}
 %fdupes %{buildroot}
@@ -121,7 +121,7 @@ sed -e '1{/^#!/d}' -i \
 %{_sbindir}/ikiwiki-mass-rebuild
 %{_mandir}/man1/ikiwiki*
 %{_mandir}/man8/ikiwiki*
-%{_libexecdir}/ikiwiki
+%{_prefix}/lib/ikiwiki
 %{_datadir}/ikiwiki
 %dir %{_sysconfdir}/ikiwiki
 %config(noreplace)%{_sysconfdir}/ikiwiki/wikilist
@@ -134,8 +134,8 @@ sed -e '1{/^#!/d}' -i \
 
 %files w3m
 %doc README.w3m
-%dir %{_libexecdir}/w3m
-%dir %{_libexecdir}/w3m/cgi-bin
-%{_libexecdir}/w3m/cgi-bin/ikiwiki-w3m.cgi
+%dir %{_prefix}/lib/w3m
+%dir %{_prefix}/lib/w3m/cgi-bin
+%{_prefix}/lib/w3m/cgi-bin/ikiwiki-w3m.cgi
 
 %changelog

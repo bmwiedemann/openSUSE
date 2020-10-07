@@ -1,0 +1,64 @@
+Index: fedora-policy/policy/modules/contrib/snapper.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/snapper.te
++++ fedora-policy/policy/modules/contrib/snapper.te
+@@ -18,6 +18,9 @@ files_config_file(snapperd_conf_t)
+ type snapperd_data_t;
+ files_type(snapperd_data_t)
+ 
++type snapperd_tmp_t;
++files_tmp_file(snapperd_tmp_t)
++
+ ########################################
+ #
+ # snapperd local policy
+@@ -43,6 +46,10 @@ allow snapperd_t snapperd_data_t:dir { r
+ allow snapperd_t snapperd_data_t:file relabelfrom;
+ snapper_filetrans_named_content(snapperd_t)
+ 
++allow snapperd_t snapperd_tmp_t:file manage_file_perms;
++allow snapperd_t snapperd_tmp_t:dir manage_dir_perms;
++files_tmp_filetrans(snapperd_t, snapperd_tmp_t, { file dir })
++
+ kernel_setsched(snapperd_t)
+ 
+ domain_read_all_domains_state(snapperd_t)
+@@ -73,6 +80,10 @@ storage_raw_read_fixed_disk(snapperd_t)
+ auth_use_nsswitch(snapperd_t)
+ 
+ optional_policy(`
++	packagekit_dbus_chat(snapperd_t)
++')
++
++optional_policy(`
+     cron_system_entry(snapperd_t, snapperd_exec_t)
+ ')
+ 
+Index: fedora-policy/policy/modules/contrib/snapper.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/snapper.fc
++++ fedora-policy/policy/modules/contrib/snapper.fc
+@@ -7,9 +7,17 @@
+ 
+ /var/log/snapper\.log.* --  gen_context(system_u:object_r:snapperd_log_t,s0)
+ 
+-/mnt/(.*/)?\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
+-/\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
+-/usr/\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
+-/var/\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
+-/etc/\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
+-HOME_ROOT/(.*/)?\.snapshots(/.*)?   gen_context(system_u:object_r:snapperd_data_t,s0)
++/mnt/(.*/)?\.snapshots(/.*)?   		gen_context(system_u:object_r:snapperd_data_t,s0)
++/\.snapshots(/.*)?   			gen_context(system_u:object_r:snapperd_data_t,s0)
++/usr/\.snapshots(/.*)?   		gen_context(system_u:object_r:snapperd_data_t,s0)
++/var/\.snapshots(/.*)?   		gen_context(system_u:object_r:snapperd_data_t,s0)
++/etc/\.snapshots(/.*)?   		gen_context(system_u:object_r:snapperd_data_t,s0)
++HOME_ROOT/(.*/)?\.snapshots(/.*)?   	gen_context(system_u:object_r:snapperd_data_t,s0)
++
++# ensure that the snapshots itself aren't relabled
++/mnt/(.*/)?\.snapshots/[^/]*/snapshot(/.*)?   		<<none>>
++/\.snapshots/[^/]*/snapshot(/.*)?   			<<none>>
++/usr/\.snapshots/[^/]*/snapshot(/.*)?   		<<none>>
++/var/\.snapshots/[^/]*/snapshot(/.*)?   		<<none>>
++/etc/\.snapshots/[^/]*/snapshot(/.*)?   		<<none>>
++HOME_ROOT/(.*/)?\.snapshots/[^/]*/snapshot(/.*)?   	<<none>>

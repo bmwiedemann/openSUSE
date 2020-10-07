@@ -48,6 +48,7 @@ BuildRequires:  gpm-devel
 %else
 BuildRequires:  gpm
 %endif
+BuildRequires:  makedepend
 %define terminfo() %{_datadir}/%{0}/%{1}
 %define tabset()   %{_datadir}/%{0}/%{1}
 # bug437293
@@ -317,6 +318,10 @@ mv tack-* tack
 %patch0 -p0 -b .p0
 
 %build
+#
+# Do not run auto(re)conf here as this will fail later on ncurses
+# is build with special autoconf based on autoconf-2.13 at upstream 
+#
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 #
 # Note that there is a test if the system call poll(2) really works
@@ -503,7 +508,7 @@ mv tack-* tack
 %endif
 	--enable-ext-colors	\
 	--enable-weak-symbols	\
-	--enable-wgetch-events	\
+	--disable-wgetch-events	\
 	--enable-pthreads-eintr	\
 	--enable-string-hacks	\
 	--prefix=%{_prefix}	\
@@ -534,6 +539,7 @@ mv tack-* tack
     #  It has been verified several times that this works.
     #
     c=$(grep '^ *$ *\./configure' config.log)
+    make depend
     make -C c++ etip.h
     make %{?_smp_mflags}
     #
@@ -580,6 +586,7 @@ mv tack-* tack
     #
     find -name fallback.o -print -delete
     cp fallback.c.build ncurses/fallback.c
+    make depend
     make -C c++ etip.h
     make %{?_smp_mflags}
 %else
@@ -675,6 +682,7 @@ mv tack-* tack
     find -name fallback.o -print -delete
     cp fallback.c.build ncurses/fallback.c
 %endif
+    make depend
     make -C c++ etip.h
     make %{?_smp_mflags}
     sed -ri 's@^(LDFLAGS=)$@\1-L\\${libdir}@
@@ -736,6 +744,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     find -name fallback.o -print -delete
     cp fallback.c.build ncurses/fallback.c
 %endif
+    make depend
     make -C c++ etip.h
     make %{?_smp_mflags}
     # must not use %jobs here (would lead to: ln: ncurses.h already exists)
@@ -809,6 +818,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
     find -name fallback.o -print -delete
     cp fallback.c.build ncurses/fallback.c
 %endif
+    make depend
     make -C c++ etip.h
     make %{?_smp_mflags}
     sed -ri 's@^(LDFLAGS=)$@\1-L\\${libdir}@

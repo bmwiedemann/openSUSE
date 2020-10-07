@@ -1,0 +1,9 @@
+diff --git a/dselect/keyoverride b/dselect/keyoverride
+index 35967ff..91a8c0c 100644
+--- a/dselect/keyoverride
++++ b/dselect/keyoverride
+@@ -56,3 +56,4 @@ KEY_SRIGHT	Shift Right
+ KEY_SPREVIOUS	Shift Previous
+ KEY_MAX		[elide]
+ KEY_MIN		[elide]
++KEY_EVENT	[elide]

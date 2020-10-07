@@ -1,0 +1,55 @@
+Index: fedora-policy/policy/modules/kernel/corecommands.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/kernel/corecommands.fc
++++ fedora-policy/policy/modules/kernel/corecommands.fc
+@@ -86,7 +86,10 @@ ifdef(`distro_redhat',`
+ 
+ /etc/mail/make			--	gen_context(system_u:object_r:bin_t,s0)
+ 
+-/etc/mcelog/.*-error-trigger	--	gen_context(system_u:object_r:bin_t,s0)
++
++/etc/netconfig.d/.*		--	gen_context(system_u:object_r:bin_t,s0)
++
++/etc/mcelog/.*-error.*-trigger	--	gen_context(system_u:object_r:bin_t,s0)
+ /etc/mcelog/.*\.local		--	gen_context(system_u:object_r:bin_t,s0)
+ /etc/mcelog/.*\.setup		--	gen_context(system_u:object_r:bin_t,s0)
+ 
+@@ -251,6 +254,21 @@ ifdef(`distro_gentoo',`
+ /usr/lib/emacsen-common/.*		gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/gimp/.*/plug-ins(/.*)?		gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/gnome-settings-daemon/.* --	gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-settings-daemon-3.0/.* --	gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-calculator-search-provider --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-control-center-search-provider --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-photos-thumbnailer --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-rr-debug --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-session-binary --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-session-check-accelerated --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-session-check-accelerated-gles-helper --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-session-check-accelerated-gl-helper --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-session-failed --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-software-cmd --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-software-restarter --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-terminal-migration --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-terminal-server --        gen_context(system_u:object_r:bin_t,s0)
++/usr/lib/gnome-tweak-tool-lid-inhibitor --        gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/gvfs/.*		--	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/ipsec/.*		--	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/kde4/libexec/.*	--	gen_context(system_u:object_r:bin_t,s0)
+@@ -313,6 +331,8 @@ ifdef(`distro_gentoo',`
+ 
+ /usr/lib/xen/bin(/.*)?			gen_context(system_u:object_r:bin_t,s0)
+ /usr/libexec(/.*)?			gen_context(system_u:object_r:bin_t,s0)
++# also covers /usr/lib64/libexec due to equivalency rule '/usr/lib64 /usr/lib'
++/usr/lib/libexec(/.*)?			gen_context(system_u:object_r:bin_t,s0)
+ 
+ /usr/libexec/git-core/git-shell	--	gen_context(system_u:object_r:shell_exec_t,s0)
+ /usr/libexec/cockpit-agent      --  gen_context(system_u:object_r:shell_exec_t,s0)
+@@ -391,6 +411,7 @@ ifdef(`distro_debian',`
+ /usr/lib/gdm3/.*		--	gen_context(system_u:object_r:bin_t,s0)
+ /usr/lib/udisks/.*		--	gen_context(system_u:object_r:bin_t,s0)
+ ')
++/usr/lib/gdm/.*		--	gen_context(system_u:object_r:bin_t,s0)
+ 
+ ifdef(`distro_gentoo', `
+ /usr/.*-.*-linux-gnu/gcc-bin/.*(/.*)?	gen_context(system_u:object_r:bin_t,s0)

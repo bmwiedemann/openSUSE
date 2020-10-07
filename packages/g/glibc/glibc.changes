@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:00:33 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Keep nsswitch.conf in /etc for SLES15
+- syslog-locking.patch: Correct locking and cancellation cleanup in syslog
+  functions (bsc#1172085, BZ #26100)
+- ifunc-fma4.patch: x86-64: Fix FMA4 detection in ifunc (BZ #26534)
+
+-------------------------------------------------------------------
+Thu Aug  6 08:08:04 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.32
+  * Unicode 13.0.0 Support
+  * New locale added: ckb_IQ
+  * The GNU C Library now loads audit modules listed in the DT_AUDIT and
+    DT_DEPAUDIT dynamic section entries of the main executable
+  * powerpc64le supports IEEE128 long double libm/libc redirects when
+    using the -mabi=ieeelongdouble to compile C code on supported GCC
+    toolchains
+  * To help detect buffer overflows and other out-of-bounds accesses
+    several APIs have been annotated with GCC 'access' attribute
+  * On Linux, functions the pthread_attr_setsigmask_np and
+    pthread_attr_getsigmask_np have been added
+  * The GNU C Library now provides the header file <sys/single_threaded.h>
+    which declares the variable __libc_single_threaded
+  * The functions sigabbrev_np and sigdescr_np have been added
+  * The functions strerrorname_np and strerrordesc_np have been added
+  * AArch64 now supports standard branch protection security hardening
+    in glibc when it is built with a GCC that is configured with
+    --enable-standard-branch-protection (or if -mbranch-protection=standard
+    flag is passed when building both GCC target libraries and glibc,
+    in either case a custom GCC is needed)
+  * The deprecated <sys/sysctl.h> header and the sysctl function have been
+    removed
+  * The sstk function is no longer available to newly linked binaries
+  * The legacy signal handling functions siginterrupt, sigpause, sighold,
+    sigrelse, sigignore and sigset, and the sigmask macro have been
+    deprecated
+  * ldconfig now defaults to the new format for ld.so.cache
+  * The deprecated arrays sys_siglist, _sys_siglist, and sys_sigabbrev
+    are no longer available to newly linked binaries, and their declarations
+    have been removed from <string.h>
+  * The deprecated symbols sys_errlist, _sys_errlist, sys_nerr, and _sys_nerr
+    are no longer available to newly linked binaries, and their declarations
+    have been removed from from <stdio.h>
+  * Both strerror and strerror_l now share the same internal buffer in the
+    calling thread, meaning that the returned string pointer may be invalided
+    or contents might be overwritten on subsequent calls in the same thread or
+    if the thread is terminated
+  * Using weak references to libpthread functions such as pthread_create
+    or pthread_key_create to detect the singled-threaded nature of a
+    program is an obsolescent feature
+  * The "files" NSS module no longer supports the "key" database (used for
+    secure RPC)
+  * The __morecore and __after_morecore_hook malloc hooks and the default
+    implementation __default_morecore have been deprecated
+  * The hesiod NSS module has been deprecated and will be removed in a
+    future version of glibc
+  * CVE-2016-10228: An infinite loop has been fixed in the iconv program when
+    invoked with the -c option and when processing invalid multi-byte input
+    sequences
+  * CVE-2020-10029: Trigonometric functions on x86 targets suffered from stack
+    corruption when they were passed a pseudo-zero argument
+  * CVE-2020-1752: A use-after-free vulnerability in the glob function when
+    expanding ~user has been fixed.
+  * CVE-2020-6096: A signed comparison vulnerability in the ARMv7 memcpy and
+    memmove functions has been fixed
+- riscv-syscall-clobber.patch, ldbl-96-rem-pio2l.patch,
+  long-double-alias.patch: Removed
+
+-------------------------------------------------------------------
 Tue Jun 23 08:32:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - long-double-alias.patch: Fix build with GCC 10 when long double = double

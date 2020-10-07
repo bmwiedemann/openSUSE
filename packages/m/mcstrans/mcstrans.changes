@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:34:48 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * fix memory leak in new_context_str
+
+-------------------------------------------------------------------
 Tue Mar  3 12:26:40 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Update to version 3.0

@@ -28,7 +28,7 @@ BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
 Requires:       mono
 URL:            http://www.gnu.org/software/gettext/
-Version:        0.20.2
+Version:        0.21
 Release:        0
 Summary:        Native Language Support (NLS) for C#
 License:        LGPL-2.1-or-later

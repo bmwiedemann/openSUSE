@@ -1,0 +1,30 @@
+Index: fedora-policy/policy/modules/contrib/apache.if
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/apache.if
++++ fedora-policy/policy/modules/contrib/apache.if
+@@ -1967,3 +1967,25 @@ interface(`apache_ioctl_stream_sockets',
+ 
+     allow $1 httpd_t:unix_stream_socket ioctl;
+ ')
++
++#######################################
++## <summary>
++##  Allow the specified domain to execute
++##  httpd_sys_content_t and manage httpd_sys_rw_content_t
++## </summary>
++## <param name="domain">
++##  <summary>
++##  Domain allowed access.
++##  </summary>
++## </param>
++#
++interface(`apache_exec_sys_content',`
++    gen_require(`
++        type httpd_sys_content_t;
++	type httpd_sys_rw_content_t;
++    ')
++
++    apache_manage_sys_content_rw($1)
++    filetrans_pattern($1, httpd_sys_content_t, httpd_sys_rw_content_t, { file dir lnk_file })
++    can_exec($1, httpd_sys_content_t)
++')

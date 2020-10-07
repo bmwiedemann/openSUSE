@@ -1,0 +1,82 @@
+Index: fedora-policy/policy/modules/system/init.te
+===================================================================
+--- fedora-policy.orig/policy/modules/system/init.te
++++ fedora-policy/policy/modules/system/init.te
+@@ -257,6 +257,7 @@ corecmd_exec_bin(init_t)
+ corenet_all_recvfrom_netlabel(init_t)
+ corenet_tcp_bind_all_ports(init_t)
+ corenet_udp_bind_all_ports(init_t)
++corenet_udp_bind_generic_node(init_t)
+ 
+ dev_create_all_files(init_t)
+ dev_create_all_chr_files(init_t)
+@@ -378,6 +379,7 @@ logging_manage_audit_config(init_t)
+ logging_create_syslog_netlink_audit_socket(init_t)
+ logging_write_var_log_dirs(init_t)
+ logging_manage_var_log_symlinks(init_t)
++logging_dgram_accept(init_t)
+ 
+ seutil_read_config(init_t)
+ seutil_read_login_config(init_t)
+@@ -427,10 +429,15 @@ ifdef(`distro_redhat',`
+ corecmd_shell_domtrans(init_t, initrc_t)
+ 
+ storage_raw_rw_fixed_disk(init_t)
++storage_raw_read_removable_device(init_t)
+ 
+ sysnet_read_dhcpc_state(init_t)
+ 
+ optional_policy(`
++	networkmanager_initrc_read_lnk_files(init_t)
++')
++
++optional_policy(`
+     bootloader_domtrans(init_t)
+ ')
+ 
+@@ -544,7 +551,7 @@ tunable_policy(`init_create_dirs',`
+ allow init_t self:system all_system_perms;
+ allow init_t self:system module_load;
+ allow init_t self:unix_dgram_socket { create_socket_perms sendto };
+-allow init_t self:process { setkeycreate setsockcreate setfscreate setrlimit setexec };
++allow init_t self:process { setkeycreate setsockcreate setfscreate setrlimit setexec execmem };
+ allow init_t self:process { getcap setcap };
+ allow init_t self:unix_stream_socket { create_stream_socket_perms connectto recvfrom };
+ allow init_t self:netlink_kobject_uevent_socket create_socket_perms; 
+@@ -606,6 +613,7 @@ files_delete_all_spool_sockets(init_t)
+ files_create_var_lib_dirs(init_t)
+ files_create_var_lib_symlinks(init_t)
+ files_read_var_lib_symlinks(init_t)
++files_read_var_files(init_t)
+ files_manage_urandom_seed(init_t)
+ files_list_locks(init_t)
+ files_list_spool(init_t)
+@@ -698,6 +706,7 @@ systemd_write_inherited_logind_sessions_
+ create_sock_files_pattern(init_t, init_sock_file_type, init_sock_file_type)
+ 
+ create_dirs_pattern(init_t, var_log_t, var_log_t)
++files_manage_var_files(init_t)
+ 
+ auth_use_nsswitch(init_t)
+ auth_rw_login_records(init_t)
+@@ -1543,6 +1552,8 @@ optional_policy(`
+ 
+ optional_policy(`
+ 	postfix_list_spool(initrc_t)
++	#allow init_t postfix_map_exec_t:file { open read execute execute_no_trans ioctl };
++	postfix_domtrans_map(init_t)
+ ')
+ 
+ optional_policy(`
+Index: fedora-policy/policy/modules/system/init.if
+===================================================================
+--- fedora-policy.orig/policy/modules/system/init.if
++++ fedora-policy/policy/modules/system/init.if
+@@ -3205,6 +3205,7 @@ interface(`init_filetrans_named_content'
+ 	files_etc_filetrans($1, machineid_t, file, "machine-id" )
+ 	files_pid_filetrans($1, initctl_t, fifo_file, "fifo" )
+ 	init_pid_filetrans($1, systemd_unit_file_t, dir, "generator")
++	init_pid_filetrans($1, systemd_unit_file_t, dir, "generator.late")
+ 	init_pid_filetrans($1, systemd_unit_file_t, dir, "system")
+ ')
+ 

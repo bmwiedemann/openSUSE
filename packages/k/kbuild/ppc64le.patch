@@ -4,11 +4,11 @@
  src/lib/k/kDefs.h |   16 ++++++++++------
  3 files changed, 16 insertions(+), 9 deletions(-)
 
-Index: kbuild-0.1.9998svn3110/kBuild/env.sh
+Index: kbuild-0.1.9998svn3427/kBuild/env.sh
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/kBuild/env.sh
-+++ kbuild-0.1.9998svn3110/kBuild/env.sh
-@@ -368,6 +368,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
+--- kbuild-0.1.9998svn3427.orig/kBuild/env.sh
++++ kbuild-0.1.9998svn3427/kBuild/env.sh
+@@ -386,6 +386,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
          m68k)
              KBUILD_HOST_ARCH='m68k'
              ;;
@@ -18,22 +18,22 @@ Index: kbuild-0.1.9998svn3110/kBuild/env.sh
          mips32|mips)
              KBUILD_HOST_ARCH='mips32'
              ;;
-Index: kbuild-0.1.9998svn3110/kBuild/header.kmk
+Index: kbuild-0.1.9998svn3427/kBuild/header.kmk
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/kBuild/header.kmk
-+++ kbuild-0.1.9998svn3110/kBuild/header.kmk
+--- kbuild-0.1.9998svn3427.orig/kBuild/header.kmk
++++ kbuild-0.1.9998svn3427/kBuild/header.kmk
 @@ -197,8 +197,8 @@ KBUILD_BLD_TYPES := release profile debu
  # build types. (PORTME)
  #
  KBUILD_OSES      := darwin dos dragonfly freebsd gnuhurd gnukfbsd gnuknbsd haiku l4 linux netbsd nt openbsd os2 solaris win os-agnostic
--KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k mips32 mips64 ppc32 ppc64 s390 s390x sh32 sh64 sparc32 sparc64
--KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 mips64 ppc64 s390x sh64 sparc64
-+KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k ppc64le mips32 mips64 ppc32 ppc64 s390 s390x sh32 sh64 sparc32 sparc64
-+KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 ppc64le mips64 ppc64 s390x sh64 sparc64
+-KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k mips32 mips64 ppc32 ppc64 s390 s390x sh32 sh64 sparc32 sparc64 x32
+-KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 mips64 ppc64 s390x sh64 sparc64 x32
++KBUILD_ARCHES    := x86 amd64 noarch alpha arm32 arm64 hppa32 hppa64 ia64 m68k mips32 mips64 ppc32 ppc64 ppc64le s390 s390x sh32 sh64 sparc32 sparc64 x32
++KBUILD_ARCHES_64 := amd64 alpha arm64 hppa64 ia64 mips64 ppc64 ppc64le s390x sh64 sparc64 x32
  KBUILD_ARCHES_32 := x86 arm32 hppa32 m68k mips32 ppc32 s390 sh32 sparc32
  
  
-@@ -515,7 +515,7 @@ endif
+@@ -522,7 +522,7 @@ endif
  KBUILD_DEVTOOLS_TRG ?= $(KBUILD_DEVTOOLS)/$(KBUILD_TARGET).$(KBUILD_TARGET_ARCH)
  KBUILD_DEVTOOLS_HST ?= $(KBUILD_DEVTOOLS)/$(KBUILD_HOST).$(KBUILD_HOST_ARCH)
  
@@ -42,11 +42,11 @@ Index: kbuild-0.1.9998svn3110/kBuild/header.kmk
   ifeq ($(KBUILD_TARGET_ARCH),amd64)
    KBUILD_DEVTOOLS_TRG_ALT ?= $(KBUILD_DEVTOOLS)/$(KBUILD_TARGET).x86
   else ifeq ($(KBUILD_TARGET_ARCH),hppa64)
-Index: kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
+Index: kbuild-0.1.9998svn3427/src/lib/kStuff/include/k/kDefs.h
 ===================================================================
---- kbuild-0.1.9998svn3110.orig/src/lib/kStuff/include/k/kDefs.h
-+++ kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
-@@ -172,20 +172,22 @@
+--- kbuild-0.1.9998svn3427.orig/src/lib/kStuff/include/k/kDefs.h
++++ kbuild-0.1.9998svn3427/src/lib/kStuff/include/k/kDefs.h
+@@ -176,20 +176,22 @@
  #define K_ARCH_POWERPC_32       ( 9 | K_ARCH_BIT_32 | K_ARCH_END_BI)
  /** 64-bit PowerPC. */
  #define K_ARCH_POWERPC_64       ( 9 | K_ARCH_BIT_64 | K_ARCH_END_BI)
@@ -74,7 +74,7 @@ Index: kbuild-0.1.9998svn3110/src/lib/kStuff/include/k/kDefs.h
  /** @} */
  
  
-@@ -216,8 +218,10 @@
+@@ -220,8 +222,10 @@
  #  define K_ARCH    K_ARCH_MIPS_64
  # elif defined(__mips__)
  #  define K_ARCH    K_ARCH_MIPS_32

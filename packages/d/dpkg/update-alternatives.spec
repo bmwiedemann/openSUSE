@@ -1,7 +1,7 @@
 #
 # spec file for package update-alternatives
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later
 Group:          System/Management
-Url:            http://ftp.de.debian.org/debian/pool/main/d/dpkg/
+URL:            http://ftp.de.debian.org/debian/pool/main/d/dpkg/
 Source0:        http://ftp.de.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.tar.xz
 Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch

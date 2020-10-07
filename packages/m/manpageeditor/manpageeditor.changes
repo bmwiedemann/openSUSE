@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:34:35 UTC 2020 - pgajdos@suse.com
+
+- depend on aspell, it will not be removed from factory
+  (sorry for noise)
+
+-------------------------------------------------------------------
 Fri Oct  2 15:16:37 UTC 2020 - pgajdos@suse.com
 
 - remove dependency on aspell, it is going to be removed from

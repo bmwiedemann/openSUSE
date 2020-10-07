@@ -1,0 +1,35 @@
+Index: fedora-policy/policy/modules/contrib/nscd.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/nscd.fc
++++ fedora-policy/policy/modules/contrib/nscd.fc
+@@ -8,8 +8,10 @@
+ /var/log/nscd\.log.*	--	gen_context(system_u:object_r:nscd_log_t,s0)
+ 
+ /var/run/nscd\.pid	--	gen_context(system_u:object_r:nscd_var_run_t,s0)
+-/var/run/\.nscd_socket	-s	gen_context(system_u:object_r:nscd_var_run_t,s0)
++/var/run/nscd/socket		-s	gen_context(system_u:object_r:nscd_var_run_t,s0)
+ 
++/var/lib/nscd(/.*)?		gen_context(system_u:object_r:nscd_var_run_t,s0)
+ /var/run/nscd(/.*)?		gen_context(system_u:object_r:nscd_var_run_t,s0)
+ 
+ /usr/lib/systemd/system/nscd\.service -- gen_context(system_u:object_r:nscd_unit_file_t,s0)
++
+Index: fedora-policy/policy/modules/contrib/nscd.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/nscd.te
++++ fedora-policy/policy/modules/contrib/nscd.te
+@@ -127,6 +127,14 @@ userdom_dontaudit_use_unpriv_user_fds(ns
+ userdom_dontaudit_search_user_home_dirs(nscd_t)
+ 
+ optional_policy(`
++	networkmanager_read_pid_files(nscd_t)
++')
++
++optional_policy(`
++	wicked_read_pid_files(nscd_t)
++')
++
++optional_policy(`
+ 	accountsd_dontaudit_rw_fifo_file(nscd_t)
+ ')
+ 

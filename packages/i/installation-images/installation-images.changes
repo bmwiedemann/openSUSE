@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Tue Oct 6 10:17:39 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#428
+- include all of xorg-x11-server
+- 16.22
+
+--------------------------------------------------------------------
+Tue Oct 6 08:55:07 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#427
+- ensure /proc is mounted in chroot environments (bsc#1176972)
+- 16.21
+
+--------------------------------------------------------------------
+Thu Oct 1 11:16:25 UTC 2020 - jlopez@suse.com
+
+- merge gh#openSUSE/installation-images#426
+- Extra yast module for common criteria (boo#1176982)
+- 16.20
+
+--------------------------------------------------------------------
 Fri Sep 25 10:10:32 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#424
@@ -12498,4 +12519,5 @@ Mon Oct 18 18:10:45 CEST 1999 - snwint@suse.de
 Wed Oct 13 18:37:47 CEST 1999 - snwint@suse.de
 
 - package created
+
 

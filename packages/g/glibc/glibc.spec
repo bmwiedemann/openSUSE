@@ -131,7 +131,7 @@ BuildArch:      i686
  %define powerpc_optimize_cpu_power6 0
  %define powerpc_optimize_cpu_power7 0
  %define powerpc_optimize_cpu_cell 0
-%endif # ppc, ppc64
+%endif
 # glibc requires at least kernel 3.2
 %define enablekernel 3.2
 # some architectures need a newer kernel
@@ -148,7 +148,7 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.31
+Version:        2.32
 Release:        0
 %if !%{build_snapshot}
 %define git_id 0a8262a1b2
@@ -259,12 +259,10 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM riscv: Avoid clobbering register parameters in syscall
-Patch1000:      riscv-syscall-clobber.patch
-# PATCH-FIX-UPSTREAM Avoid ldbl-96 stack corruption from range reduction of pseudo-zero (CVE-2020-10029, BZ #25487)
-Patch1001:      ldbl-96-rem-pio2l.patch
-# PATCH-FIX-UPSTREAM Fix build with GCC 10 when long double = double
-Patch1002:      long-double-alias.patch
+# PATCH-FIX-UPSTREAM Correct locking and cancellation cleanup in syslog functions (BZ #26100)
+Patch1000:      syslog-locking.patch
+# PATCH-FIX-UPSTREAM x86-64: Fix FMA4 detection in ifunc (BZ #26534)
+Patch1001:      ifunc-fma4.patch
 
 ### 
 # Patches awaiting upstream approval
@@ -454,7 +452,7 @@ are not essential but recommend to use.
 makedb: A program to create a database for nss
 
 %lang_package
-%endif # main
+%endif
 
 %prep
 %setup -n glibc-%{version} -q -a 4
@@ -479,7 +477,6 @@ makedb: A program to create a database for nss
 
 %patch1000 -p1
 %patch1001 -p1
-%patch1002 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -689,8 +686,8 @@ configure_and_build_glibc() {
 	%if %{powerpc_optimize_cpu_cell}
 		configure_and_build_glibc ppc-cell-be "$BuildFlags -mcpu=cell"
 	%endif
-	%endif # %{build_variants}
-%endif # optimize_power
+	%endif
+%endif
 
 #
 # Build html documentation
@@ -811,7 +808,7 @@ cc-base/elf/ldconfig -vn $destdir
 	    cc-base/elf/ldconfig -vn %{buildroot}/%{_lib}/power6x
 	fi
 	%endif
-%endif # optimize_power
+%endif
 
 # Install locales
 %if %{build_locales}
@@ -842,7 +839,11 @@ rm -rf %{buildroot}%{_datadir}/locale/*/
 # Miscelanna:
 
 install -m 644 %{SOURCE7} %{buildroot}/etc
+%if %suse_version > 1500
 install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/etc/nsswitch.conf
+%else
+install -m 644 %{SOURCE5} %{buildroot}/etc
+%endif
 
 mkdir -p %{buildroot}/etc/default
 install -m 644 nis/nss %{buildroot}/etc/default/
@@ -933,7 +934,7 @@ rm -rf %{buildroot}%{_libdir}/audit
 rm -rf %{buildroot}%{_infodir} %{buildroot}%{_prefix}/share/i18n
 rm -f %{buildroot}%{_bindir}/makedb %{buildroot}/var/lib/misc/Makefile
 rm -f %{buildroot}%{_sbindir}/nscd
-%endif # i686
+%endif
 
 %ifnarch i686
 # /var/lib/misc is incompatible with transactional updates (bsc#1138726)
@@ -942,7 +943,7 @@ mv %{buildroot}/var/lib/misc/Makefile %{buildroot}%{_prefix}/share/misc/Makefile
 ln -s %{_prefix}/share/misc/Makefile.makedb %{buildroot}/var/lib/misc/Makefile
 %endif
 
-%endif # !utils
+%endif
 
 # LSB
 %ifarch %ix86
@@ -964,7 +965,7 @@ ln -sf /%{_lib}/ld.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-s390.so.3
 ln -sf /%{_lib}/ld64.so.1 $RPM_BUILD_ROOT/%{_lib}/ld-lsb-s390x.so.3
 %endif
 
-%else # !main
+%else
 
 %if %{build_utils}
 
@@ -982,9 +983,9 @@ rm -rf %{buildroot}/sbin %{buildroot}%{_includedir}
 rm %{buildroot}/%{_lib}/lp64d %{buildroot}%{_libdir}/lp64d
 %endif
 
-%endif # utils
+%endif
 
-%endif # !main
+%endif
 
 %if %{build_main}
 
@@ -1090,8 +1091,12 @@ exit 0
 %config /etc/ld.so.conf
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/ld.so.cache
 %config(noreplace) /etc/rpc
+%if %suse_version > 1500
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/nsswitch.conf
 %{_prefix}/etc/nsswitch.conf
+%else
+%verify(not md5 size mtime) %config(noreplace) /etc/nsswitch.conf
+%endif
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /etc/gai.conf
 %doc posix/gai.conf
 %config(noreplace) /etc/default/nss
@@ -1211,7 +1216,7 @@ exit 0
 	%if %{powerpc_optimize_cpu_cell}
 		%{optimized_libs ppc-cell-be}
 	%endif
-%endif # optimize_power
+%endif
 %dir %attr(0700,root,root) /var/cache/ldconfig
 /sbin/ldconfig
 %{_bindir}/gencat
@@ -1319,7 +1324,7 @@ exit 0
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/hosts
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/services
 %attr(0600,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /var/lib/nscd/netgroup
-%endif # !i686
+%endif
 
 %if %{build_profile}
 %files profile
@@ -1346,9 +1351,9 @@ exit 0
 /var/lib/misc/Makefile
 
 %files lang -f libc.lang
-%endif # !i686
+%endif
 
-%endif # main
+%endif
 
 %if %{build_utils}
 %files -n glibc-utils
@@ -1364,6 +1369,6 @@ exit 0
 %{_bindir}/sotruss
 %{_bindir}/xtrace
 %{_bindir}/pldd
-%endif # utils
+%endif
 
 %changelog

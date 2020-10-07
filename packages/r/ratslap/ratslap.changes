@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 29 05:38:43 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 0.4.1
+  * QB#113 - Configure DPI #[1-4], DPI Default and * DPI Shift values
+  * QB#125 - Error assigning Num+
+  * QB#126 - Doco should generate HTML versions
+  * QB#128 - Unrecognised keys silently ignored
+  * QB#129 - Add missing keys
+  * Documentation fixes
+  * Fixed recommendations by LGTM (GitHub #22)
+  * Add automatic code scanning (CodeQL)
+  * `dpishift` fix (fixes GitHub #23)
+
+-------------------------------------------------------------------
 Mon Feb 11 18:00:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim future aims.

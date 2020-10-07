@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:58:10 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
 Thu Jul 30 07:57:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.20200202.3

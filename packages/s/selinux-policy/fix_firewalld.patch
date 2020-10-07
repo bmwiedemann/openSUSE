@@ -1,0 +1,42 @@
+Index: fedora-policy/policy/modules/contrib/firewalld.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/firewalld.te	2020-02-24 08:16:03.798820784 +0000
++++ fedora-policy/policy/modules/contrib/firewalld.te	2020-02-24 08:18:03.164764310 +0000
+@@ -129,6 +129,7 @@ optional_policy(`
+ ')
+ 
+ optional_policy(`
++	iptables_manage_var_lib_files(firewalld_t)
+ 	iptables_domtrans(firewalld_t)
+ 	iptables_read_var_run(firewalld_t)
+ ')
+Index: fedora-policy/policy/modules/system/iptables.if
+===================================================================
+--- fedora-policy.orig/policy/modules/system/iptables.if	2020-02-19 09:36:25.440182406 +0000
++++ fedora-policy/policy/modules/system/iptables.if	2020-02-24 08:17:53.076600108 +0000
+@@ -2,6 +2,25 @@
+ 
+ ########################################
+ ## <summary>
++##	Allow management of iptables_var_lib_t files
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed to mange files
++##	</summary>
++## </param>
++#
++interface(`iptables_manage_var_lib_files',`
++	gen_require(`
++		type iptables_var_lib_t;
++	')
++
++	manage_dirs_pattern($1, iptables_var_lib_t, iptables_var_lib_t)
++	manage_files_pattern($1, iptables_var_lib_t, iptables_var_lib_t)
++')
++
++########################################
++## <summary>
+ ##	Execute iptables in the iptables domain.
+ ## </summary>
+ ## <param name="domain">

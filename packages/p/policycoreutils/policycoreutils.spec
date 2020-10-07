@@ -17,13 +17,13 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.0
-%define libsemanage_ver  3.0
-%define libselinux_ver   3.0
+%define libsepol_ver     3.1
+%define libsemanage_ver  3.1
+%define libselinux_ver   3.1
 %define setools_ver      4.1.1
-%define tstamp           20191204
+%define tstamp           20200710
 Name:           policycoreutils
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{ts
 Source9:        newrole.pam
 Patch0:         make_targets.patch
 Patch1:         run_init_use_pam_keyinit.patch
-Patch2:         chcat_join.patch
+Patch2:         get_os_version.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -61,25 +61,13 @@ BuildRequires:  polkit
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-setools >= %{setools_ver}
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
-Requires:       checkpolicy
 Requires:       gawk
 Requires:       libsepol1 >= %{libsepol_ver}
-Requires:       python3-%{name}
-Requires:       python3-ipy
-Requires:       python3-networkx
-Requires:       python3-selinux
-Requires:       python3-semanage
 Requires:       rpm
+Requires:       selinux-tools
 Requires:       util-linux
-# we need selinuxenabled
-Requires(post): selinux-tools
-Requires(pre):  %fillup_prereq
-Requires(pre):  permissions
-Obsoletes:      policycoreutils-python
-%{?systemd_requires}
 
 %description
 policycoreutils contains the policy core utilities that are required
@@ -102,14 +90,27 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       checkpolicy
 Requires:       python3-audit >= %{libaudit_ver}
 Requires:       python3-selinux
+Requires:       python3-semanage
 Requires:       python3-setools >= %{setools_ver}
 Requires:       python3-setuptools
 Provides:       policycoreutils-python = %{version}-%{release}
 Obsoletes:      policycoreutils-python < %{version}
+BuildArch:      noarch
 
 %description -n python3-%{name}
 The python-policycoreutils package contains the interfaces that can be used
 by python in an SELinux environment.
+
+%package python-utils
+Summary:        SELinux policy core python utilities
+Group:          Productivity/Security
+Requires:       python3-policycoreutils = %{version}-%{release}
+BuildArch:      noarch
+Obsoletes:      policycoreutils-python
+
+%description python-utils
+The policycoreutils-python-utils package contains the management tools
+use to manage an SELinux environment.
 
 %package devel
 Summary:        SELinux policy core policy devel utilities
@@ -134,7 +135,10 @@ The sandbox package contains the scripts to create graphical sandboxes.
 Summary:        The newrole application for RBAC/MLS
 Group:          Productivity/Security
 Requires:       %{name} = %{version}
-Requires(pre):  permissions
+# we need both, else permissions could be de-installed
+# and verify failed
+Requires:       permissions
+Requires(post): permissions
 
 %description newrole
 RBAC/MLS policy machines require newrole as a way of changing the role
@@ -188,7 +192,6 @@ install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/security/console.apps/selin
 rm -f %{buildroot}%{_mandir}/ru/man8/genhomedircon.8.gz
 ln -sf consolehelper %{buildroot}%{_bindir}/system-config-selinux
 ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
-mkdir -p %{buildroot}%{_fillupdir}/
 mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
 mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 cp %{python3_sitearch}/setools/perm_map %{buildroot}%{_localstatedir}/lib/sepolgen
@@ -210,10 +213,6 @@ rm %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui \
 %endif
 cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
 
-%post -n python3-%{name}
-selinuxenabled && [ -f %{_datadir}/selinux/devel/include/build.conf ] && %{_bindir}/sepolgen-ifgen 2>/dev/null
-exit 0
-
 %post newrole
 %set_permissions %{_bindir}/newrole
 
@@ -224,21 +223,12 @@ exit 0
 /sbin/restorecon
 /sbin/setfiles
 /sbin/restorecon_xattr
-%{_bindir}/audit2allow
-%{_bindir}/audit2why
-%{_bindir}/chcat
-%{_bindir}/sepolgen
-%{_bindir}/sepolgen-ifgen
-%{_bindir}/sepolgen-ifgen-attr-helper
-%{_bindir}/sepolicy
 %{_bindir}/semodule_expand
 %{_bindir}/semodule_link
 %{_bindir}/semodule_package
 %{_bindir}/semodule_unpackage
-%{_sbindir}/semanage
 %{_sbindir}/fixfiles
 %{_sbindir}/load_policy
-%dir %{_localstatedir}/lib/sepolgen
 %dir %{_libexecdir}/selinux
 %dir %{_libexecdir}/selinux/hll
 %{_libexecdir}/selinux/hll/pp
@@ -251,19 +241,44 @@ exit 0
 %{_bindir}/secon
 %config(noreplace) %{_sysconfdir}/pam.d/run_init
 %config(noreplace) %{_sysconfdir}/sestatus.conf
-%{_mandir}/man8/*
-%{_mandir}/ru/man8/*
+%{_mandir}/man8/fixfiles.8%{?ext_man}
+%{_mandir}/man8/genhomedircon.8%{?ext_man}
+%{_mandir}/man8/load_policy.8%{?ext_man}
+%{_mandir}/man8/open_init_pty.8%{?ext_man}
+%{_mandir}/man8/restorecon.8%{?ext_man}
+%{_mandir}/man8/restorecon_xattr.8%{?ext_man}
+%{_mandir}/man8/run_init.8%{?ext_man}
+%{_mandir}/man8/semodule.8%{?ext_man}
+%{_mandir}/man8/semodule_expand.8%{?ext_man}
+%{_mandir}/man8/semodule_link.8%{?ext_man}
+%{_mandir}/man8/semodule_package.8%{?ext_man}
+%{_mandir}/man8/semodule_unpackage.8%{?ext_man}
+%{_mandir}/man8/sestatus.8%{?ext_man}
+%{_mandir}/man8/setfiles.8%{?ext_man}
+%{_mandir}/man8/setsebool.8%{?ext_man}
+%{_mandir}/ru/man8/fixfiles.8%{?ext_man}
+%{_mandir}/ru/man8/genhomedircon.8%{?ext_man}
+%{_mandir}/ru/man8/load_policy.8%{?ext_man}
+%{_mandir}/ru/man8/open_init_pty.8%{?ext_man}
+%{_mandir}/ru/man8/restorecon.8%{?ext_man}
+%{_mandir}/ru/man8/restorecon_xattr.8%{?ext_man}
+%{_mandir}/ru/man8/run_init.8%{?ext_man}
+%{_mandir}/ru/man8/semodule.8%{?ext_man}
+%{_mandir}/ru/man8/semodule_expand.8%{?ext_man}
+%{_mandir}/ru/man8/semodule_link.8%{?ext_man}
+%{_mandir}/ru/man8/semodule_package.8%{?ext_man}
+%{_mandir}/ru/man8/semodule_unpackage.8%{?ext_man}
+%{_mandir}/ru/man8/sepolgen.8%{?ext_man}
+%{_mandir}/ru/man8/sestatus.8%{?ext_man}
+%{_mandir}/ru/man8/setfiles.8%{?ext_man}
+%{_mandir}/ru/man8/setsebool.8%{?ext_man}
 %{_mandir}/man5/selinux_config.5%{?ext_man}
 %{_mandir}/man5/sestatus.conf.5%{?ext_man}
 %{_mandir}/ru/man5/selinux_config.5%{?ext_man}
 %{_mandir}/ru/man5/sestatus.conf.5%{?ext_man}
 %{_mandir}/man1/secon.1%{?ext_man}
-%{_mandir}/man1/audit2allow.1%{?ext_man}
-%{_mandir}/man1/audit2why.1%{?ext_man}
 %{_mandir}/ru/man1/secon.1%{?ext_man}
-%{_mandir}/ru/man1/audit2allow.1%{?ext_man}
-%{_mandir}/ru/man1/audit2why.1%{?ext_man}
-%{_datadir}/bash-completion/completions/*
+%{_datadir}/bash-completion/completions/setsebool
 
 %files -n python3-%{name}
 %{python3_sitelib}/*
@@ -271,12 +286,52 @@ exit 0
 
 %files lang -f %{name}.lang
 
+%files python-utils
+%{_bindir}/audit2allow
+%{_bindir}/audit2why
+%{_bindir}/chcat
+%{_sbindir}/semanage
+%{_mandir}/man1/audit2allow.1%{?ext_man}
+%{_mandir}/ru/man1/audit2allow.1%{?ext_man}
+%{_mandir}/man1/audit2why.1%{?ext_man}
+%{_mandir}/ru/man1/audit2why.1%{?ext_man}
+%{_mandir}/man8/chcat.8%{?ext_man}
+%{_mandir}/ru/man8/chcat.8%{?ext_man}
+%{_mandir}/man8/semanage*.8%{?ext_man}
+%{_mandir}/ru/man8/semanage*.8%{?ext_man}
+%{_datadir}/bash-completion/completions/semanage
+
 %files devel
+%{_bindir}/sepolgen
+%{_bindir}/sepolgen-ifgen
+%{_bindir}/sepolgen-ifgen-attr-helper
+%{_bindir}/sepolicy
+%{_mandir}/man8/sepolicy-booleans.8%{?ext_man}
+%{_mandir}/man8/sepolicy-communicate.8%{?ext_man}
+%{_mandir}/man8/sepolicy-generate.8%{?ext_man}
+%{_mandir}/man8/sepolicy-gui.8%{?ext_man}
+%{_mandir}/man8/sepolicy-interface.8%{?ext_man}
+%{_mandir}/man8/sepolicy-manpage.8%{?ext_man}
+%{_mandir}/man8/sepolicy-network.8%{?ext_man}
+%{_mandir}/man8/sepolicy-transition.8%{?ext_man}
+%{_mandir}/man8/sepolicy.8%{?ext_man}
+%{_mandir}/man8/sepolgen.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-booleans.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-communicate.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-generate.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-gui.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-interface.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-manpage.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-network.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy-transition.8%{?ext_man}
+%{_mandir}/ru/man8/sepolicy.8%{?ext_man}
+%{_mandir}/ru/man8/sepolgen.8%{?ext_man}
 %dir %{_localstatedir}/lib/sepolgen
 %{_localstatedir}/lib/sepolgen/perm_map
+%{_datadir}/bash-completion/completions/sepolicy
 
 %files newrole
-%verify(not mode) %attr(0755,root,root) %{_bindir}/newrole
+%verify(not mode) %attr(4755,root,root) %{_bindir}/newrole
 %{_mandir}/man1/newrole.1%{?ext_man}
 %{_mandir}/ru/man1/newrole.1%{?ext_man}
 %config(noreplace) %{_sysconfdir}/pam.d/newrole

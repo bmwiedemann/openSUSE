@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:39:58 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * Add support for new polcap genfs_seclabel_symlinks
+  * Initialize the multiple_decls field of the cil db
+  * Return error when identifier declared as both type and attribute
+  * Write CIL default MLS rules on separate lines
+  * Sort portcon rules consistently
+  * Remove leftovers of cil_mem_error_handler
+  * Drop remove_cil_mem_error_handler.patch, is included
+
+-------------------------------------------------------------------
 Mon Apr 27 19:35:18 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable -fcommon in order to fix boo#1160874.

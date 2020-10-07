@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  6 03:08:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.84
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.84    2020-10-05      Add some more versions of MacOS;
+                          Note change of name Mac OS X -> MacOS, but don't
+                            change the module name for backward compatibility;
+                          Add MSYS (reported by perl in MinGW environments)
+
+-------------------------------------------------------------------
 Sun Feb 16 03:09:04 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.83

@@ -17,15 +17,18 @@
 
 
 Name:           libsemanage
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux policy management library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        semanage.conf
+# PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
+# For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
+#Patch0:         libsemanage-update-map-file.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -96,13 +99,14 @@ grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 %build
 %define _lto_cflags %{nil}
 make %{?_smp_mflags} clean
-make -j1 CFLAGS="%{optflags}" CC="gcc"
-make -j1 CFLAGS="%{optflags}" LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_lib}" CC="gcc" all
+make -j1 CFLAGS="%{optflags} -fno-semantic-interposition" CC="gcc"
+make -j1 CFLAGS="%{optflags} -fno-semantic-interposition" LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_lib}" CC="gcc" all
 
 %install
 mkdir -p %{buildroot}/%{_lib}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
+mkdir -p %{buildroot}%{_localstatedir}/lib/selinux
 %make_install LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_libdir}"
 ln -sf  %{_libdir}/libsemanage.so.1 %{buildroot}/%{_libdir}/libsemanage.so
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
@@ -116,6 +120,7 @@ cp %{SOURCE2} %{buildroot}%{_sysconfdir}/selinux/semanage.conf
 %dir %{_sysconfdir}/selinux
 %config(noreplace) %{_sysconfdir}/selinux/semanage.conf
 %{_libdir}/libsemanage.so.*
+%dir %{_localstatedir}/lib/selinux
 
 %files devel
 %{_libdir}/libsemanage.so

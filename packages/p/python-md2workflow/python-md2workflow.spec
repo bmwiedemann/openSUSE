@@ -28,8 +28,6 @@ Source:         https://github.com/openSUSE/md2workflow/archive/%{version}.tar.g
 Source1:        LICENSE
 Source2:        suse-prod.conf
 Source3:        suse-devel.conf
-Source4:        suse-staging.conf
-Source5:        suse-lutoslawski.conf
 Source6:        opensuse-prod.conf
 BuildRequires:  %{python_module icalendar}
 BuildRequires:  %{python_module jira}
@@ -83,7 +81,7 @@ Redmine plugin for md2workflow
 
 %setup -q -n md2workflow-%{version}
 echo `pwd`
-cp %{_sourcedir}/{suse-prod,suse-devel,suse-staging,suse-lutoslawski,opensuse-prod}.conf  config/
+cp %{_sourcedir}/{suse-prod,suse-devel,opensuse-prod}.conf  config/
 cp %{_sourcedir}/LICENSE LICENSE
 
 %build

@@ -324,4 +324,12 @@
     (bsc#1176605, CVE-2020-8252)</comment>
     <requestid>837372</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>313e360323febcf6144e8e5b3835492e</srcmd5>
+    <version>12.18.4</version>
+    <time>1601996959</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839612</requestid>
+  </revision>
 </revisionlist>

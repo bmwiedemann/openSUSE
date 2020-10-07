@@ -356,4 +356,12 @@
     <comment></comment>
     <requestid>798515</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>a816d3dcc0526cb1289f5a71c6abd44a</srcmd5>
+    <version>3.1</version>
+    <time>1601996837</time>
+    <user>dimstar_suse</user>
+    <comment>please stage with updated gcc to prevent build failures</comment>
+    <requestid>832093</requestid>
+  </revision>
 </revisionlist>

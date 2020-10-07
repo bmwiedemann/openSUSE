@@ -54,4 +54,24 @@
     <comment></comment>
     <requestid>801245</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d22bb39600a17b55ab6da5678f0a804b</srcmd5>
+    <version>1.3.16</version>
+    <time>1601997100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.16:
+- Update to 1.3.15:
+  * Many various updates see CHANGELOG.md
+- Drop merged patches
+  * dynabodbstreams.patch
+  * iot-1.patch
+  * iot-2.patch
+  * iot-3.patch
+  * lambdas.patch
+- Remove no longer needed patch
+  * unpin-reqs.patch
+- Exclude 3 failing tests (docker related)
+</comment>
+    <requestid>839752</requestid>
+  </revision>
 </revisionlist>

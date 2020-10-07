@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 14 12:47:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- tcp_wrappers_7.6-shared-lib.diff: Linux has STRERROR not SYS_ERRLIST
+  [bsc#1175272]
+
+-------------------------------------------------------------------
 Tue Sep 24 08:25:45 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Add tcp_wrappers_7.6-ipv6.fix.fix3.diff in order to fix

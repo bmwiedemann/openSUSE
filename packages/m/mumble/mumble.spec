@@ -16,8 +16,7 @@
 #
 
 
-#%%define snapshot rc2
-%define ver 1.3.2
+%define ver 1.3.3
 %if 0%{?fedora_version}
 %bcond_without ice
 %else

@@ -1,0 +1,24 @@
+Index: fedora-policy/policy/modules/contrib/nagios.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/nagios.fc
++++ fedora-policy/policy/modules/contrib/nagios.fc
+@@ -24,6 +24,7 @@
+ /var/log/pnp4nagios(/.*)?                   gen_context(system_u:object_r:nagios_log_t,s0)
+ 
+ /var/lib/pnp4nagios(/.*)?               gen_context(system_u:object_r:nagios_var_lib_t,s0)
++/var/lib/nagios(/.*)?               gen_context(system_u:object_r:nagios_var_lib_t,s0)
+ 
+ /var/run/nagios.*					gen_context(system_u:object_r:nagios_var_run_t,s0)
+ 
+Index: fedora-policy/policy/modules/contrib/nagios.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/nagios.te
++++ fedora-policy/policy/modules/contrib/nagios.te
+@@ -157,6 +157,7 @@ allow nagios_t nagios_spool_t:file map;
+ manage_files_pattern(nagios_t, nagios_var_lib_t, nagios_var_lib_t)
+ manage_fifo_files_pattern(nagios_t, nagios_var_lib_t, nagios_var_lib_t)
+ manage_dirs_pattern(nagios_t, nagios_var_lib_t, nagios_var_lib_t)
++manage_sock_files_pattern(nagios_t, nagios_var_lib_t, nagios_var_lib_t)
+ files_var_lib_filetrans(nagios_t, nagios_var_lib_t, { dir file fifo_file })
+ 
+ kernel_read_system_state(nagios_t)

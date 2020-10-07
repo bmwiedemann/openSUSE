@@ -1,0 +1,44 @@
+/usr/lib/systemd/system/packagekit.*  --  gen_context(system_u:object_r:packagekit_unit_file_t,s0)
+
+/usr/bin/packagekit                   --  gen_context(system_u:object_r:packagekit_exec_t,s0)
+
+#/var/lib/PackageKit(/.*)?                 gen_context(system_u:object_r:packagekit_var_lib_t,s0)
+
+/usr/bin/pkcon                  	--  gen_context(system_u:object_r:packagekit_exec_t,s0)
+/usr/bin/pkmon				--  gen_context(system_u:object_r:packagekit_exec_t,s0)
+/usr/lib/packagekit-direct             --  gen_context(system_u:object_r:packagekit_exec_t,s0)
+/usr/lib/packagekitd                   --  gen_context(system_u:object_r:packagekit_exec_t,s0)
+/usr/lib/pk-offline-update                   --  gen_context(system_u:object_r:packagekit_exec_t,s0)
+
+#/etc/PackageKit
+#/etc/dbus-1/system.d/org.freedesktop.PackageKit.conf
+#/usr/lib/tmpfiles.d
+#/usr/lib/tmpfiles.d/PackageKit.conf
+#/usr/lib64/packagekit-backend
+#/usr/lib64/packagekit-backend/libpk_backend_dummy.so
+#/usr/sbin/rcpackagekit
+#/usr/sbin/rcpackagekit-offline-update
+#/usr/share/PackageKit
+#/usr/share/PackageKit/helpers
+#/usr/share/PackageKit/helpers/test_spawn
+#/usr/share/PackageKit/helpers/test_spawn/search-name.sh
+#/usr/share/PackageKit/packagekit-background.sh
+#/usr/share/PackageKit/pk-upgrade-distro.sh
+#/usr/share/PackageKit/transactions.db
+#/usr/share/bash-completion/completions/pkcon
+#/usr/share/dbus-1/interfaces/org.freedesktop.PackageKit.Transaction.xml
+#/usr/share/dbus-1/interfaces/org.freedesktop.PackageKit.xml
+#/usr/share/dbus-1/system-services/org.freedesktop.PackageKit.service
+#/usr/share/doc/packages/PackageKit
+#/usr/share/doc/packages/PackageKit/AUTHORS
+#/usr/share/doc/packages/PackageKit/HACKING
+#/usr/share/doc/packages/PackageKit/NEWS
+#/usr/share/doc/packages/PackageKit/README
+#/usr/share/doc/packages/PackageKit/org.freedesktop.packagekit.rules
+#/usr/share/licenses/PackageKit
+#/usr/share/licenses/PackageKit/COPYING
+#/usr/share/man/man1/pkcon.1.gz
+#/usr/share/man/man1/pkmon.1.gz
+#/usr/share/polkit-1/actions/org.freedesktop.packagekit.policy
+#/var/cache/PackageKit
+

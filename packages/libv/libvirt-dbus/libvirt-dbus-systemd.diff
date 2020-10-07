@@ -1,0 +1,185 @@
+From 2c80b903e0522f992c8ae34a3a54bcdb4a9eb4fe Mon Sep 17 00:00:00 2001
+From: Katerina Koukiou <kkoukiou@redhat.com>
+Date: Fri, 28 Aug 2020 14:23:54 +0200
+Subject: [PATCH] meson: generate systemd unit file for libvirt-dbus
+
+Reviewed-by: Pavel Hrdina <phrdina@redhat.com>
+Signed-off-by: Katerina Koukiou <kkoukiou@redhat.com>
+---
+ data/session/libvirt-dbus.service.in        |  9 +++++++++
+ data/session/meson.build                    | 14 +++++++++++++-
+ data/session/org.libvirt-systemd.service.in |  4 ++++
+ data/system/libvirt-dbus.service.in         | 12 ++++++++++++
+ data/system/meson.build                     | 14 +++++++++++++-
+ data/system/org.libvirt-systemd.service.in  |  5 +++++
+ libvirt-dbus.spec.in                        |  5 ++++-
+ meson.build                                 | 14 ++++++++++++++
+ meson_options.txt                           |  1 +
+ 9 files changed, 75 insertions(+), 3 deletions(-)
+ create mode 100644 data/session/libvirt-dbus.service.in
+ create mode 100644 data/session/org.libvirt-systemd.service.in
+ create mode 100644 data/system/libvirt-dbus.service.in
+ create mode 100644 data/system/org.libvirt-systemd.service.in
+
+diff --git a/data/session/libvirt-dbus.service.in b/data/session/libvirt-dbus.service.in
+new file mode 100644
+index 0000000..5d377ff
+--- /dev/null
++++ b/data/session/libvirt-dbus.service.in
+@@ -0,0 +1,9 @@
++[Unit]
++Description=Libvirt DBus Service
++
++[Service]
++BusName=org.libvirt
++ExecStart=@sbindir@/libvirt-dbus --session
++
++[Install]
++Alias=org.libvirt.service
+diff --git a/data/session/meson.build b/data/session/meson.build
+index 240fcef..b3663a3 100644
+--- a/data/session/meson.build
++++ b/data/session/meson.build
+@@ -1,6 +1,18 @@
++if init_script == 'systemd'
++    configure_file(
++        configuration: conf,
++        input: 'libvirt-dbus.service.in',
++        output: 'libvirt-dbus.service',
++        install_dir: systemd_user_unit_dir,
++    )
++    dbus_service_in = 'org.libvirt-systemd.service.in'
++else
++    dbus_service_in = 'org.libvirt.service.in'
++endif
++
+ configure_file(
+     configuration: conf,
+-    input: 'org.libvirt.service.in',
++    input: dbus_service_in,
+     output: 'org.libvirt.service',
+     install_dir: dbus_services_dir,
+ )
+diff --git a/data/session/org.libvirt-systemd.service.in b/data/session/org.libvirt-systemd.service.in
+new file mode 100644
+index 0000000..12b3f00
+--- /dev/null
++++ b/data/session/org.libvirt-systemd.service.in
+@@ -0,0 +1,4 @@
++[D-BUS Service]
++Name=org.libvirt
++Exec=/bin/false
++SystemdService=libvirt-dbus.service
+diff --git a/data/system/libvirt-dbus.service.in b/data/system/libvirt-dbus.service.in
+new file mode 100644
+index 0000000..9654571
+--- /dev/null
++++ b/data/system/libvirt-dbus.service.in
+@@ -0,0 +1,12 @@
++[Unit]
++Description=Libvirt DBus Service
++
++[Service]
++BusName=org.libvirt
++DynamicUser=yes
++User=@SYSTEM_USER@
++Group=@SYSTEM_USER@
++ExecStart=@sbindir@/libvirt-dbus --system
++
++[Install]
++Alias=org.libvirt.service
+diff --git a/data/system/meson.build b/data/system/meson.build
+index 74f1949..a75cabb 100644
+--- a/data/system/meson.build
++++ b/data/system/meson.build
+@@ -1,6 +1,18 @@
++if init_script == 'systemd'
++    configure_file(
++        configuration: conf,
++        input: 'libvirt-dbus.service.in',
++        output: 'libvirt-dbus.service',
++        install_dir: systemd_system_unit_dir,
++    )
++    dbus_service_in = 'org.libvirt-systemd.service.in'
++else
++    dbus_service_in = 'org.libvirt.service.in'
++endif
++
+ configure_file(
+     configuration: conf,
+-    input: 'org.libvirt.service.in',
++    input: dbus_service_in,
+     output: 'org.libvirt.service',
+     install_dir: dbus_system_services_dir,
+ )
+diff --git a/data/system/org.libvirt-systemd.service.in b/data/system/org.libvirt-systemd.service.in
+new file mode 100644
+index 0000000..ba260b2
+--- /dev/null
++++ b/data/system/org.libvirt-systemd.service.in
+@@ -0,0 +1,5 @@
++[D-BUS Service]
++Name=org.libvirt
++Exec=/bin/false
++User=@SYSTEM_USER@
++SystemdService=libvirt-dbus.service
+diff --git a/libvirt-dbus.spec.in b/libvirt-dbus.spec.in
+index 4e6ff85..a35e0f9 100644
+--- a/libvirt-dbus.spec.in
++++ b/libvirt-dbus.spec.in
+@@ -40,7 +40,8 @@ This package provides D-Bus API for libvirt
+ %autosetup
+ 
+ %build
+-%meson
++%meson \
++    -Dinit_script=systemd
+ %meson_build
+ 
+ %install
+@@ -57,6 +58,8 @@ exit 0
+ %doc AUTHORS.rst NEWS.rst
+ %license COPYING
+ %{_sbindir}/libvirt-dbus
++%{_unitdir}/libvirt-dbus.service
++%{_prefix}/lib/systemd/user/libvirt-dbus.service
+ %{_datadir}/dbus-1/services/org.libvirt.service
+ %{_datadir}/dbus-1/system-services/org.libvirt.service
+ %{_datadir}/dbus-1/system.d/org.libvirt.conf
+diff --git a/meson.build b/meson.build
+index e765ed6..939b716 100644
+--- a/meson.build
++++ b/meson.build
+@@ -12,6 +12,20 @@ project(
+ prefix = get_option('prefix')
+ datadir = prefix / get_option('datadir')
+ sbindir = prefix / get_option('sbindir')
++if get_option('init_script') == 'check'
++    if find_program('systemctl', required: false).found()
++        init_script = 'systemd'
++    else
++        init_script = 'other'
++    endif
++else
++    init_script = get_option('init_script')
++endif
++if init_script == 'systemd'
++    systemd_dep = dependency('systemd')
++    systemd_user_unit_dir = systemd_dep.get_pkgconfig_variable('systemduserunitdir')
++    systemd_system_unit_dir = systemd_dep.get_pkgconfig_variable('systemdsystemunitdir')
++endif
+ 
+ opt_dirs = [
+     'dbus_interfaces',
+diff --git a/meson_options.txt b/meson_options.txt
+index 36e8065..41d348f 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,3 +4,4 @@ option('dbus_system_policies', type: 'string', value: 'dbus-1/system.d', descrip
+ option('dbus_interfaces', type: 'string', value: 'dbus-1/interfaces', description: 'D-Bus interfaces directory')
+ option('polkit_rules', type: 'string', value: 'polkit-1/rules.d', description: 'polkit rules directory')
+ option('system_user', type: 'string', value: 'libvirtdbus', description: 'username to run system instance as')
++option('init_script', type: 'combo', choices: ['systemd', 'other', 'check'], value: 'check', description: 'Style of init script to install')
+-- 
+2.26.2
+

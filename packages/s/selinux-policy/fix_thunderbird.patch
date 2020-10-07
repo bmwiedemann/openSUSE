@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/thunderbird.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/thunderbird.te
++++ fedora-policy/policy/modules/contrib/thunderbird.te
+@@ -139,7 +139,6 @@ optional_policy(`
+ optional_policy(`
+ 	gnome_stream_connect_gconf(thunderbird_t)
+ 	gnome_domtrans_gconfd(thunderbird_t)
+-	gnome_manage_generic_home_content(thunderbird_t)
+ ')
+ 
+ optional_policy(`

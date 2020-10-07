@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:00:57 UTC 2020 - psimons@suse.com
+
+- Update fast-logger to version 3.0.2.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:49 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

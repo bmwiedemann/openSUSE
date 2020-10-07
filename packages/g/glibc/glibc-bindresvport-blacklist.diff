@@ -1,7 +1,7 @@
-Index: glibc-2.27/sunrpc/bindrsvprt.c
+Index: glibc-2.32/inet/bindresvport.c
 ===================================================================
---- glibc-2.27.orig/sunrpc/bindrsvprt.c
-+++ glibc-2.27/sunrpc/bindrsvprt.c
+--- glibc-2.32.orig/inet/bindresvport.c
++++ glibc-2.32/inet/bindresvport.c
 @@ -29,6 +29,9 @@
   *   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   */

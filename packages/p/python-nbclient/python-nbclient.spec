@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-async_generator
-Requires:       python-jupyter-client >= 6.1.0
+Requires:       python-jupyter-client >= 6.1.5
 Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
 Requires:       python-traitlets >= 4.2
@@ -38,7 +38,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module jupyter-client >= 6.1.0}
+BuildRequires:  %{python_module jupyter-client >= 6.1.5}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat >= 5.0}
 BuildRequires:  %{python_module nest-asyncio}

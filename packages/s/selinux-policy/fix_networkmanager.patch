@@ -1,0 +1,58 @@
+Index: fedora-policy/policy/modules/contrib/networkmanager.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/networkmanager.te
++++ fedora-policy/policy/modules/contrib/networkmanager.te
+@@ -236,6 +236,9 @@ userdom_read_home_certs(NetworkManager_t
+ userdom_read_user_home_content_files(NetworkManager_t)
+ userdom_dgram_send(NetworkManager_t)
+ 
++hostname_exec(NetworkManager_t)
++networkmanager_systemctl(NetworkManager_t)
++
+ tunable_policy(`use_nfs_home_dirs',`
+     fs_read_nfs_files(NetworkManager_t)
+ ')
+@@ -253,6 +256,14 @@ optional_policy(`
+ ')
+ 
+ optional_policy(`
++	packagekit_dbus_chat(NetworkManager_t)
++')
++
++optional_policy(`
++    networkmanager_dbus_chat(NetworkManager_t)
++')
++
++optional_policy(`
+ 	bind_domtrans(NetworkManager_t)
+ 	bind_manage_cache(NetworkManager_t)
+ 	bind_kill(NetworkManager_t)
+Index: fedora-policy/policy/modules/contrib/networkmanager.if
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/networkmanager.if
++++ fedora-policy/policy/modules/contrib/networkmanager.if
+@@ -114,6 +114,24 @@ interface(`networkmanager_initrc_domtran
+         init_labeled_script_domtrans($1, NetworkManager_initrc_exec_t)
+ ')
+ 
++#######################################
++## <summary>
++##      Allow reading of NetworkManager link files
++## </summary>
++## <param name="domain">
++##      <summary>
++##      Domain allowed to read the links
++##      </summary>
++## </param>
++#
++interface(`networkmanager_initrc_read_lnk_files',`
++        gen_require(`
++                type NetworkManager_initrc_exec_t;
++        ')
++
++	read_lnk_files_pattern($1, NetworkManager_initrc_exec_t, NetworkManager_initrc_exec_t)
++')
++
+ ########################################
+ ## <summary>
+ ##	Execute NetworkManager server in the NetworkManager domain.

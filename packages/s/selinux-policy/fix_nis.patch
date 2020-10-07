@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/nis.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/nis.te
++++ fedora-policy/policy/modules/contrib/nis.te
+@@ -78,6 +78,7 @@ manage_files_pattern(ypbind_t, ypbind_va
+ files_pid_filetrans(ypbind_t, ypbind_var_run_t, file)
+ 
+ manage_files_pattern(ypbind_t, var_yp_t, var_yp_t)
++manage_dirs_pattern(ypbind_t, var_yp_t, var_yp_t)
+ 
+ kernel_read_system_state(ypbind_t)
+ kernel_read_kernel_sysctls(ypbind_t)

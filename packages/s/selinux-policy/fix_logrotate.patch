@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/logrotate.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/logrotate.te
++++ fedora-policy/policy/modules/contrib/logrotate.te
+@@ -107,6 +107,7 @@ files_var_lib_filetrans(logrotate_t, log
+ 
+ kernel_read_system_state(logrotate_t)
+ kernel_read_kernel_sysctls(logrotate_t)
++files_manage_mounttab(logrotate_t)
+ 
+ dev_read_urand(logrotate_t)
+ dev_read_sysfs(logrotate_t)

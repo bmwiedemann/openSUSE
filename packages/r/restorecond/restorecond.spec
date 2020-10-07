@@ -16,15 +16,15 @@
 #
 
 
-%define libselinux_ver   3.0
+%define libselinux_ver   3.1
 Name:           restorecond
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Daemon to restore SELinux contexts
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux.git
-Source0:        https://github.com/SELinuxProject/selinux/releases/download/20191204/restorecond-%{version}.tar.gz
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/20200710/restorecond-%{version}.tar.gz
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libselinux-devel >= %{libselinux_ver}
 Requires:       libselinux1 >= %{libselinux_ver}
@@ -41,7 +41,7 @@ export CFLAGS="%optflags"
 %make_build LSPP_PRIV=y all
 
 %install
-make DESTDIR=%{buildroot} SHLIBDIR=/%{_lib} install
+make DESTDIR=%{buildroot} SHLIBDIR=/%{_lib} SYSTEMDSYSTEMUNITDIR=%{_unitdir} SYSTEMDUSERUNITDIR=%{_userunitdir} install
 rm %{buildroot}%{_sysconfdir}/rc.d/init.d/restorecond
 ln -s /sbin/service %{buildroot}%{_sbindir}/rcrestorecond
 
@@ -62,6 +62,7 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcrestorecond
 %config(noreplace) %{_sysconfdir}/selinux/restorecond_user.conf
 %{_sysconfdir}/xdg/autostart/restorecond.desktop
 %{_unitdir}/restorecond.service
+%{_userunitdir}/restorecond_user.service
 
 %{_sbindir}/restorecond
 %{_sbindir}/rcrestorecond

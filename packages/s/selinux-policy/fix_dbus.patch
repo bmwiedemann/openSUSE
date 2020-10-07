@@ -1,0 +1,12 @@
+Index: fedora-policy/policy/modules/contrib/dbus.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/dbus.te	2020-02-25 08:22:02.846623845 +0000
++++ fedora-policy/policy/modules/contrib/dbus.te	2020-02-25 08:22:31.991108418 +0000
+@@ -80,6 +80,7 @@ read_lnk_files_pattern(system_dbusd_t, d
+ manage_dirs_pattern(system_dbusd_t, system_dbusd_tmp_t, system_dbusd_tmp_t)
+ manage_files_pattern(system_dbusd_t, system_dbusd_tmp_t, system_dbusd_tmp_t)
+ files_tmp_filetrans(system_dbusd_t, system_dbusd_tmp_t, { file dir })
++allow system_dbusd_t system_dbusd_tmp_t:file execute;
+ 
+ manage_files_pattern(system_dbusd_t, system_dbusd_tmpfs_t, system_dbusd_tmpfs_t)
+ manage_dirs_pattern(system_dbusd_t, system_dbusd_tmpfs_t, system_dbusd_tmpfs_t)

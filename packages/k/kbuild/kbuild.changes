@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  1 10:40:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add byacc to BuildRequires fixes problems with bison 3.7 (bsc#1175268)
+
+-------------------------------------------------------------------
+Mon Aug 31 18:46:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to svn3427:
+  * 3 years of changes, see http://trac.netlabs.org/kbuild/timeline
+- remove patches:
+  gcc10-fno-common-fix.patch, glob-interface.patch,
+  use-alloca.patch, kbuild-gcc7.patch, kbuild-glob.patch, 
+  strsignal.patch: upstream or obsolete
+
+-------------------------------------------------------------------
+Mon Aug 31 14:25:14 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- strsignal.patch: use strsignal instead of sys_siglist (bsc#1175268)
+
+-------------------------------------------------------------------
 Fri Apr  3 05:46:51 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add gcc10-fno-common-fix.patch in order to fix boo#1160274.

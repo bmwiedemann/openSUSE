@@ -1,0 +1,39 @@
+Index: fedora-policy/policy/modules/contrib/ntp.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/ntp.fc	2020-02-21 15:59:23.349556504 +0000
++++ fedora-policy/policy/modules/contrib/ntp.fc	2020-02-21 16:01:41.591761350 +0000
+@@ -16,7 +16,6 @@
+ 
+ /usr/lib/systemd/system/ntpd.*               --      gen_context(system_u:object_r:ntpd_unit_file_t,s0)
+ 
+-/var/lib/ntp(/.*)?	gen_context(system_u:object_r:ntp_drift_t,s0)
+ /var/lib/sntp(/.*)?	gen_context(system_u:object_r:ntp_drift_t,s0)
+ /var/lib/sntp-kod(/.*)?	gen_context(system_u:object_r:ntp_drift_t,s0)
+ 
+@@ -25,3 +24,26 @@
+ /var/log/xntpd.*	--	gen_context(system_u:object_r:ntpd_log_t,s0)
+ 
+ /var/run/ntpd\.pid	--	gen_context(system_u:object_r:ntpd_var_run_t,s0)
++
++/var/lib/ntp                           gen_context(system_u:object_r:root_t,s0)
++/var/lib/ntp/kod                       gen_context(system_u:object_r:etc_runtime_t,s0)
++/var/lib/ntp/dev                       gen_context(system_u:object_r:device_t,s0)
++/var/lib/ntp/etc                       gen_context(system_u:object_r:etc_t,s0)
++/var/lib/ntp/etc/ntpd.*\.conf.*        --      gen_context(system_u:object_r:ntp_conf_t,s0)
++/var/lib/ntp/etc/ntp/crypto(/.*)?      --      gen_context(system_u:object_r:ntpd_key_t,s0)
++/var/lib/ntp/etc/ntp/data(/.*)?        --      gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/etc/ntp/keys              --      gen_context(system_u:object_r:ntpd_key_t,s0)
++/var/lib/ntp/etc/ntp/step-tickers.*    --      gen_context(system_u:object_r:ntp_conf_t,s0)
++/var/lib/ntp/etc/ntp.conf.iburst       --      gen_context(system_u:object_r:ntp_conf_t,s0)
++/var/lib/ntp/var                       gen_context(system_u:object_r:var_t,s0)
++/var/lib/ntp/var/lib                   gen_context(system_u:object_r:var_lib_t,s0)
++/var/lib/ntp/var/run                   gen_context(system_u:object_r:var_run_t,s0)
++/var/lib/ntp/var/lib/ntp(/.*)?         gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/var/lib/sntp(/.*)?        gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/var/lib/sntp-kod(/.*)?    gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/drift                     gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/drift/ntp.drift           --      gen_context(system_u:object_r:ntp_drift_t,s0)
++/var/lib/ntp/var/log/ntp.*             --      gen_context(system_u:object_r:ntpd_log_t,s0)
++/var/lib/ntp/var/log/ntpstats(/.*)?    gen_context(system_u:object_r:ntpd_log_t,s0)
++/var/lib/ntp/var/log/xntpd.*           --      gen_context(system_u:object_r:ntpd_log_t,s0)
++/var/lib/ntp/var/run/ntpd\.pid         --      gen_context(system_u:object_r:ntpd_var_run_t,s0)

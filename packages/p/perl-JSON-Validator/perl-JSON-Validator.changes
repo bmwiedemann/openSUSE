@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  6 03:12:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.05
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.05 2020-10-06T06:29:31+0900
+   - Errors are now reported in a predictable order #223
+     Contributor: David Cantrell
+
+-------------------------------------------------------------------
 Mon Sep 28 03:09:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.04

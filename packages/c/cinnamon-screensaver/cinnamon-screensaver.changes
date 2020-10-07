@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 22 19:10:16 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.6.0.
+  * autotools: make the icons directory less terrible to install
+  * Handle custom-screensaver-command gsettings config
+  * Stop supporting older gtk versions
+  * build: port to meson
+  * remove autotools build system
+  * src/binfiles: delete this as it is no longer used
+  * build: Use a custom command to run gdbus-codegen.
+
+-------------------------------------------------------------------
 Mon Mar 16 15:03:25 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - update version 4.4.1

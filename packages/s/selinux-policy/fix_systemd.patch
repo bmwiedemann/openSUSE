@@ -1,0 +1,26 @@
+Index: fedora-policy/policy/modules/system/systemd.te
+===================================================================
+--- fedora-policy.orig/policy/modules/system/systemd.te
++++ fedora-policy/policy/modules/system/systemd.te
+@@ -332,6 +332,10 @@ userdom_manage_user_tmp_chr_files(system
+ xserver_dbus_chat(systemd_logind_t)
+ 
+ optional_policy(`
++	packagekit_dbus_chat(systemd_logind_t)
++')
++
++optional_policy(`
+ 	apache_read_tmp_files(systemd_logind_t)
+ ')
+ 
+@@ -823,6 +827,10 @@ optional_policy(`
+         dbus_connect_system_bus(systemd_hostnamed_t)
+ ')
+ 
++optional_policy(`
++	nscd_unconfined(systemd_hostnamed_t)
++')
++
+ #######################################
+ #
+ # rfkill policy

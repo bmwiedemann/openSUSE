@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 15 14:27:05 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Use proper macros for SYSTEMDSYSTEMUNITDIR and SYSTEMDUSERUNITDIR
+
+-------------------------------------------------------------------
+Tue Jul 14 08:32:09 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1
+  * `restorecond_user.service` - new systemd user service which runs
+    `restorecond -u`
+
+-------------------------------------------------------------------
 Tue May 12 06:50:33 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
 
 - Use %{_unitdir} for the location of the .service file 

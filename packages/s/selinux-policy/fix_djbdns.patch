@@ -1,0 +1,33 @@
+Index: fedora-policy/policy/modules/contrib/djbdns.te
+===================================================================
+--- fedora-policy.orig/policy/modules/contrib/djbdns.te	2019-08-05 09:39:48.641670181 +0200
++++ fedora-policy/policy/modules/contrib/djbdns.te	2019-08-05 09:53:08.383084236 +0200
+@@ -24,28 +24,6 @@ allow djbdns_domain self:fifo_file rw_fi
+ allow djbdns_domain self:tcp_socket create_stream_socket_perms;
+ allow djbdns_domain self:udp_socket create_socket_perms;
+ 
+-corenet_all_recvfrom_unlabeled(djbdns_domain)
+-corenet_all_recvfrom_netlabel(djbdns_domain)
+-corenet_tcp_sendrecv_generic_if(djbdns_domain)
+-corenet_udp_sendrecv_generic_if(djbdns_domain)
+-corenet_tcp_sendrecv_generic_node(djbdns_domain)
+-corenet_udp_sendrecv_generic_node(djbdns_domain)
+-corenet_tcp_sendrecv_all_ports(djbdns_domain)
+-corenet_udp_sendrecv_all_ports(djbdns_domain)
+-corenet_tcp_bind_generic_node(djbdns_domain)
+-corenet_udp_bind_generic_node(djbdns_domain)
+-
+-corenet_sendrecv_dns_server_packets(djbdns_domain)
+-corenet_tcp_bind_dns_port(djbdns_domain)
+-corenet_udp_bind_dns_port(djbdns_domain)
+-
+-corenet_sendrecv_dns_client_packets(djbdns_domain)
+-corenet_tcp_connect_dns_port(djbdns_domain)
+-
+-corenet_sendrecv_generic_server_packets(djbdns_domain)
+-corenet_tcp_bind_generic_port(djbdns_domain)
+-corenet_udp_bind_generic_port(djbdns_domain)
+-
+ files_search_var(djbdns_domain)
+ 
+ daemontools_ipc_domain(djbdns_axfrdns_t)

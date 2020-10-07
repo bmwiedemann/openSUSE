@@ -1,0 +1,48 @@
+Index: fedora-policy/policy/modules/system/logging.fc
+===================================================================
+--- fedora-policy.orig/policy/modules/system/logging.fc
++++ fedora-policy/policy/modules/system/logging.fc
+@@ -3,6 +3,8 @@
+ /etc/rsyslog.conf		gen_context(system_u:object_r:syslog_conf_t,s0)
+ /etc/syslog.conf		gen_context(system_u:object_r:syslog_conf_t,s0)
+ /etc/rsyslog.d(/.*)?		gen_context(system_u:object_r:syslog_conf_t,s0)
++/var/run/rsyslog/additional-log-sockets.conf 	--		gen_context(system_u:object_r:syslog_conf_t,s0)
++/run/rsyslog/additional-log-sockets.conf 	--		gen_context(system_u:object_r:syslog_conf_t,s0)
+ /etc/audit(/.*)?		gen_context(system_u:object_r:auditd_etc_t,mls_systemhigh)
+ /etc/rc\.d/init\.d/auditd --	gen_context(system_u:object_r:auditd_initrc_exec_t,s0)
+ /etc/rc\.d/init\.d/rsyslog --	gen_context(system_u:object_r:syslogd_initrc_exec_t,s0)
+@@ -83,6 +85,7 @@ ifdef(`distro_redhat',`
+ /var/run/syslogd\.pid	--	gen_context(system_u:object_r:syslogd_var_run_t,mls_systemhigh)
+ /var/run/syslog-ng.ctl	--	gen_context(system_u:object_r:syslogd_var_run_t,s0)
+ /var/run/syslog-ng(/.*)?	gen_context(system_u:object_r:syslogd_var_run_t,s0)
++/var/run/rsyslog(/.*)?		gen_context(system_u:object_r:syslogd_var_run_t,s0)
+ /var/run/systemd/journal/syslog	-s	gen_context(system_u:object_r:devlog_t,mls_systemhigh)
+ 
+ /var/spool/audit(/.*)?		gen_context(system_u:object_r:audit_spool_t,mls_systemhigh)
+Index: fedora-policy/policy/modules/system/logging.if
+===================================================================
+--- fedora-policy.orig/policy/modules/system/logging.if
++++ fedora-policy/policy/modules/system/logging.if
+@@ -1686,3 +1686,22 @@ interface(`logging_dgram_send',`
+ 
+ 	allow $1 syslogd_t:unix_dgram_socket sendto;
+ ')
++
++########################################
++## <summary>
++##	Accept a message to syslogd over a unix domain
++##	datagram socket.
++## </summary>
++## <param name="domain">
++##	<summary>
++##	Domain allowed access.
++##	</summary>
++## </param>
++#
++interface(`logging_dgram_accept',`
++	gen_require(`
++		type syslogd_t;
++	')
++
++	allow $1 syslogd_t:unix_dgram_socket accept;
++')

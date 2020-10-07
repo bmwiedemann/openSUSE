@@ -17,13 +17,13 @@
 
 
 Name:           mcstrans
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/SELinuxProject/selinux/wiki
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20191204/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
 Patch0:         %{name}-writepid.patch
 Patch1:         add_includes.patch
 BuildRequires:  aaa_base
