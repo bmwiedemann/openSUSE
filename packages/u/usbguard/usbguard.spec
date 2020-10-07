@@ -34,7 +34,6 @@ Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
 BuildRequires:  asciidoc
-BuildRequires:  aspell
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

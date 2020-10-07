@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:12:06 UTC 2020 - pgajdos@suse.com
+
+- drop useless build dependency on aspell (aspell is going to be
+  removed from tumbleweed)
+
+-------------------------------------------------------------------
 Thu Jul  9 12:57:34 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - disable system call filtering in systemd service file for Leap 15.X (boo#1173750)
