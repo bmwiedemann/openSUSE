@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2011 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,6 +41,8 @@ Source4:        X11-displaymanagers-%{name}
 Source5:        gdmflexiserver
 Source6:        50-suse-defaults.conf
 Source7:        users.conf
+Source8:        lightdm.pam
+Source9:        lightdm-autologin.pam
 # PATCH-FEATURE-OPENSUSE lightdm-sysconfig-support.patch gber@opensuse.org -- Adds support for reading configuration options from /etc/sysconfig/displaymanager and /etc/sysconfig/windowmanager
 Patch0:         lightdm-sysconfig-support.patch
 # PATCH-FEATURE-OPENSUSE lightdm-xauthlocalhostname-support.patch boo#796230 gber@opensuse.org -- Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the session in case the hostname changes
@@ -218,9 +220,18 @@ rm -rf %{buildroot}%{_datadir}/help/
 
 # xdm and xdm-np are used instead.
 rm %{buildroot}%{_sysconfdir}/pam.d/lightdm \
-  %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin
-ln -sf %{_sysconfdir}/pam.d/xdm %{buildroot}%{_sysconfdir}/pam.d/lightdm
-ln -sf %{_sysconfdir}/pam.d/xdm-np %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin
+   %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin \
+   %{buildroot}%{_sysconfdir}/pam.d/lightdm-greeter
+%if 0%{?suse_version} >= 1550
+  mkdir -p %{buildroot}%{_distconfdir}/pam.d
+  install %{SOURCE8} %{buildroot}%{_distconfdir}/pam.d/lightdm
+  install %{SOURCE9} %{buildroot}%{_distconfdir}/pam.d/lightdm-autologin
+  install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/lightdm-greeter
+%else
+  install %{SOURCE8} %{buildroot}%{_sysconfdir}/pam.d/lightdm
+  install %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/lightdm-autologin
+  install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/lightdm-greeter
+%endif
 
 ln data/lightdm.conf data/lightdm.conf.example
 
@@ -236,7 +247,6 @@ install -d %{buildroot}%{_localstatedir}/lib/lightdm-data
 install -d %{buildroot}%{_localstatedir}/log/lightdm
 install -d %{buildroot}%{rundir}/lightdm
 
-install -Dpm 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/pam.d/lightdm-greeter
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/X11/displaymanagers/lightdm
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
@@ -253,6 +263,15 @@ install -Dpm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/lightdm/users.conf
 %{_sbindir}/groupadd -r lightdm 2> /dev/null || :
 %{_sbindir}/useradd -r -g lightdm -s /bin/false -c "LightDM daemon" \
   -d %{_localstatedir}/lib/lightdm lightdm 2> /dev/null || :
+for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+done
+
+%posttrans
+# Migration to /usr/etc.
+for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
+  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+done
 
 %post
 # Special trick: migrate users from lxdm to lightdm
@@ -300,9 +319,15 @@ fi
 %dir %{_sysconfdir}/lightdm/
 %config(noreplace) %{_sysconfdir}/lightdm/users.conf
 %config(noreplace) %{_sysconfdir}/lightdm/keys.conf
+%if 0%{?suse_version} >= 1550
+%{_distconfdir}/pam.d/lightdm
+%{_distconfdir}/pam.d/lightdm-autologin
+%{_distconfdir}/pam.d/lightdm-greeter
+%else
 %config %{_sysconfdir}/pam.d/lightdm
 %config %{_sysconfdir}/pam.d/lightdm-autologin
 %config %{_sysconfdir}/pam.d/lightdm-greeter
+%endif
 %config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.DisplayManager.conf
 %dir %{_prefix}/lib/X11/displaymanagers/
 %{_prefix}/lib/X11/displaymanagers/lightdm

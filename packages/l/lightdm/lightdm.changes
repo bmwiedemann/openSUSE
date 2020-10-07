@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:35:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fixup pam stack a bit more (boo#1176338):
+  + Do not create hardlinks between lightdm pam files and xdm's pam
+    files, but install explicit lightdm pam stack that @includes
+    xdm. This has the advantage that, if an admin creates
+    /etc/pam.d/xdm, we will follow this right away. With the
+    hardlinks, the /usr/etc/pam.d/xdm would still be used, which
+    might not be the expected outcome.
+
+-------------------------------------------------------------------
+Thu Sep 17 12:12:31 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Follow XDM's change of moving the default pam config file to
+  /usr/etc (boo#1176338).
+- Add pre/posttrans scripts to ensure user modified
+  /etc/pam.d/lightdm* survives our move to /usr/etc (and user
+  modification in /etc/pam.d wins over /usr/etc/pam.d).
+
+-------------------------------------------------------------------
 Tue Jul  7 09:32:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
