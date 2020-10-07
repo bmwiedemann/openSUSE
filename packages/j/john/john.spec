@@ -33,6 +33,8 @@ Source6:        mailer.8
 Source7:        relbench.8
 Source8:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz
 Source9:        https://www.openwall.com/john/k/%{jumboversion}.tar.xz.sign
+# PATCH-FIX-UPSTREAM cl-device.patch gh#openwall/john#4331
+Patch0:         cl-device.patch
 BuildRequires:  dos2unix
 BuildRequires:  gmp-devel
 BuildRequires:  libpcap-devel
@@ -53,6 +55,7 @@ number of other hash types are supported to that end.
 cd %{jumboversion} && cp -a ./* ..
 cd ..
 rm -r %{jumboversion}
+%patch0 -p1
 # adapt the configs
 perl -pi -e "s#Wordlist = (.*)#Wordlist = %{johndir}/password.lst#g" $RPM_BUILD_DIR/%{name}-%{version}/run/john.conf
 perl -pi -e 's#^(\#define JOHN_SYSTEMWIDE_EXEC)\s.+$#$1\t\"%{johndir}\"#g' $RPM_BUILD_DIR/%{name}-%{version}/src/params.h

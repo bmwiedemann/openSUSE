@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 18:02:51 UTC 2020 - simmphonie@opensuse.org
+
+- Add cl-device.patch to handle systems that already defined
+  CL_DEVICE_TOPOLOGY_AMD  gh#4331
+
+-------------------------------------------------------------------
 Fri Jun 12 08:06:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building with gcc10
