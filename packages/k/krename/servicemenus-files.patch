@@ -2,7 +2,7 @@ diff -uNr a/src/servicemenus/krename_all_nonrec.desktop b/src/servicemenus_new/k
 --- a/src/servicemenus/krename_all_nonrec.desktop	2009-09-05 19:13:29.000000000 +0300
 +++ b/src/servicemenus_new/krename_all_nonrec.desktop	2011-01-30 22:08:29.037391236 +0200
 @@ -1,10 +1,10 @@
- # Sending all kinds of file to Krename
+ # Sending all kinds of file to KRename
  [Desktop Entry]
  Type=Service
 +Name=Rename with KRename
@@ -20,7 +20,7 @@ diff -uNr a/src/servicemenus/krename_dir_rec.desktop b/src/servicemenus_new/kren
 --- a/src/servicemenus/krename_dir_rec.desktop	2009-09-05 19:13:29.000000000 +0300
 +++ b/src/servicemenus_new/krename_dir_rec.desktop	2011-01-30 22:08:41.257147523 +0200
 @@ -1,10 +1,10 @@
- # Sending all kinds of files recursively from a directory to Krename
+ # Sending all kinds of files recursively from a directory to KRename
  [Desktop Entry]
  Type=Service
 +Name=Rename with KRename (with subfolders)

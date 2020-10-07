@@ -17,7 +17,7 @@
 
 
 Name:           krename
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        A Batch Renamer by KDE
 License:        GPL-2.0-or-later
@@ -28,16 +28,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%
 Patch0:         servicemenus-files.patch
 # PATCH-FIX-UPSTREAM remove-gplv2-code.diff dmueller@suse.de -- Remove GPLv2 only code (only used for self-testing)
 Patch1:         remove-gplv2-code.diff
-# PATCH-FIX-UPSTREAM -- add support for exiv2 >= 0.27
-Patch2:         0001-Use-cmakedefine01-instead-of-macro_bool_to_01.patch
-Patch3:         0002-Fix-building-against-exiv2-0.27.patch
-Patch4:         0003-Fix-the-previous-commits-and-the-build-with-exiv2-0..patch
-# PATCH-FIX-OPENSUSE
-Patch5:         lower-minimum-cmake-version.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         use-local-cmake-modules-first.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         Close-the-app-if-the-progress-dialog-is-closed.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
 BuildRequires:  libexiv2-devel

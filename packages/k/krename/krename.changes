@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  6 12:40:20 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 5.0.1:
+  * Escape/unescape filenames with special characters (kde#391291)
+  * Close the app if the progress dialog is closed (kde#395084)
+  * Fix building against exiv2-0.27
+  * Fix build with taglib and ECM >= 5.72.0
+  * Make icons look sharp with HiDPI (kde#418112)
+- Drop patches merged upstream:
+  * 0001-Use-cmakedefine01-instead-of-macro_bool_to_01.patch
+  * 0002-Fix-building-against-exiv2-0.27.patch
+  * 0003-Fix-the-previous-commits-and-the-build-with-exiv2-0..patch
+  * use-local-cmake-modules-first.patch
+  * Close-the-app-if-the-progress-dialog-is-closed.patch
+- Drop lower-minimum-cmake-version.patch, Leap 42.3 is no longer
+  supported
+- Refresh servicemenus-files.patch
+
+-------------------------------------------------------------------
 Fri Oct  2 05:27:00 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Close-the-app-if-the-progress-dialog-is-closed.patch to fix
