@@ -48,4 +48,19 @@
   * no obvious changelog</comment>
     <requestid>730656</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f98d01961f060a578043348232088d9c</srcmd5>
+    <version>0.99.0</version>
+    <time>1602073109</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.99.0:
+  * Backwards incompatible change:
+    + new records will have unspecified fields that are nullable set to Null
+  * change default input encoding from 'ascii' to 'utf-8'
+  * improve unicode support
+  * default field case is now upper
+  * FieldnameList is used to support both upper- and lower-case field checks
+  * fix memo block size changing to default when copying</comment>
+    <requestid>839909</requestid>
+  </revision>
 </revisionlist>

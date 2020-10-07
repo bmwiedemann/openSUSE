@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:23:16 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.99.0:
+  * Backwards incompatible change:
+    + new records will have unspecified fields that are nullable set to Null
+  * change default input encoding from 'ascii' to 'utf-8'
+  * improve unicode support
+  * default field case is now upper
+  * FieldnameList is used to support both upper- and lower-case field checks
+  * fix memo block size changing to default when copying 
+
+-------------------------------------------------------------------
 Fri Sep 13 09:45:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.98.3:
