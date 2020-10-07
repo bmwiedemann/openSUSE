@@ -32,6 +32,8 @@ Patch0:         linphone-fix-pkgconfig.patch
 Patch1:         linphone-build-readline.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         reproducible.patch
+# PATCH-FIX-OPENSUSE linphone-link-soci-sqlite3.patch -- force linking to libsoci_sqlite3 so that RPM finds the requirement boo#1140595 -- code@bnavigator.de
+Patch3:         linphone-link-soci-sqlite3.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -177,7 +179,8 @@ with high speed connections as well as 28k modems.
   -DENABLE_LDAP=ON             \
   -DENABLE_TOOLS=OFF           \
   -DENABLE_STRICT=OFF          \
-  -DENABLE_STATIC=OFF
+  -DENABLE_STATIC=OFF          \
+  -DCMAKE_LINK_WHAT_YOU_USE=ON
 %cmake_build
 
 %install
