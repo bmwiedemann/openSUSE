@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:02:24 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.23
+  * Generate simple.xml with denylist 6042974 508527d 37db75b 6879879 59b902a
+    568d58d 6ed34f3 5959d6f 5d67a28 394d9a8 ed7bc8d e938846 3aa670e 0d90da4
+    e4dd6d1
+  * Accept xdigits only for Unicode typing a440942
+  * Update emoji-parser with CLDR emoji annotation release-31-0-1 9a9f828
+  * Update ibusunicodegen.h with unicode-ucd 13.0.0 e10fc89
+  * Delete deprecated ENABLE_APPINDICATOR_ENGINE_ICON check aa3a9f0
+  * Fix SEGV 02105c4 f591381
+  * Fix some errors in ibus-desktop-testing-runner 7b0d091 8da0167
+  * Refactor source files 0b9d936 0ad5e9a
+  * Fix string formats in translatable strings 7caead1 f8c468a ce865f6
+  * Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name (Carlos
+    Garnacho) 8ce2520
+  * Skip parsing of compose sequence with invalid keysyms (Neil Shepperd)
+    0da3cec
+  * Tell Pango about the engine language in the candidate panel (Aaron Muir
+    Hamilton) 3f098dc 79a09f1
+  * Fix for several error spotted by static analyzer (ntfs.hard) 00adea6
+  * Remove glib_check_version() in gtk immodule (Changwoo Ryu) 5765bfd
+  * Build the Emoji dictionaries in parallel (Changwoo Ryu) 59d0de4
+  * Update translation
+- Drop 0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch,
+  ibus-use-wayland-display-for-socket-name.patch,
+  ibus-socket-name-compatibility.patch. Merged by upstream
+
+-------------------------------------------------------------------
+Thu Sep 24 07:01:32 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus.spec: Drop the is_opensuse macro to eliminate the
+  difference between SLE-15 and openSUSE-Leap (jsc#SLE-11653).
+
+-------------------------------------------------------------------
+Sat Sep 19 17:35:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Move xim.d files to /usr/etc when available, which is
+  currently Tumbleweed only (boo#1176431)
+
+-------------------------------------------------------------------
 Tue May 12 07:32:41 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add ibus-socket-name-compatibility.patch: Compatibility for

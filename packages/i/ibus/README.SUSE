@@ -4,11 +4,11 @@ How to start using ibus
 English:
 
 0:Note: ibus don't support QT3 immodule,
-If you use qt3-base applications, modify your /etc/X11/xim.d/ibus to
+If you use qt3-base applications, modify your /usr/etc/X11/xim.d/ibus to
 export QT_IM_MODULE=xim
 
 1.openSUSE can start ibus automatically when your locale is set to en, zh_TW, zh_CN, zh_HK, zh_SG, ko_KR and ja_JP.
-The setup script is a link in /etc/X11/xim.d/YOUR-LOCALE/40-ibus which link to /etc/X11/xim.d/ibus. 
+The setup script is a link in /usr/etc/X11/xim.d/YOUR-LOCALE/40-ibus which link to /usr/etc/X11/xim.d/ibus. 
 The number "40" makes ibus have priority over other input-method (e.g 50-scim or 90-xcin ).
 If you prefer not using ibus, mv 40-ibus to 80-ibus (for example). Or see 2.
 
@@ -22,27 +22,27 @@ copy this file to ~/.xim, then you can use ibus next login X.
 
 3.You want to use your own input-method other than system setting
 (1)System setting:
-Edit /etc/sysconfig/language , set INPUT_METHOD="scim-bridge", or whatever you want,Make sure your start-up script is put in /etc/X11/xim.d/ with same name ypu mention.
+Edit /etc/sysconfig/language , set INPUT_METHOD="scim-bridge", or whatever you want,Make sure your start-up script is put in /usr/etc/X11/xim.d/ with same name ypu mention.
 (2)For specific language setting:
-Link a start-up script in /etc/X11/xim.d/ to your locale with a higher priority (smaller number), eg
-ln -s /etc/X11/xim.d/scim-bridge /etc/X11/xim.d/zh_TW/20-scim-bridge
+Link a start-up script in /usr/etc/X11/xim.d/ to your locale with a higher priority (smaller number), eg
+ln -s /usr/etc/X11/xim.d/scim-bridge /usr/etc/X11/xim.d/zh_TW/20-scim-bridge
 (3)Personal setting:
 Edit ~/.profile add
-export INPUT_METHOD="scim-bridge" or whatever script in /etc/X11/xim.d/
+export INPUT_METHOD="scim-bridge" or whatever script in /usr/etc/X11/xim.d/
 or white your own ~/.xim, see ~/.xim.template for more informations.
 
 4.Bug report or any suggestion to
-http://code.google.com/p/ibus/
+https://github.com/ibus/ibus/issues
 
 
 Chinese:
 
 0:注意：ibus 不支援 QT3 immodule,
-若您使用 qt3-based 應用程式，請修改 /etc/X11/xim.d/ibus 設定
+若您使用 qt3-based 應用程式，請修改 /usr/etc/X11/xim.d/ibus 設定
 export QT_IM_MODULE=xim
 
 1.當您使用的語系是en 或zh_*時，SuSE 會自動啟動ibus
-啟動的script是/etc/X11/xim.d/YOUR-LOCALE/40-ibus，這是一個到上層目錄ibus的連結
+啟動的script是/usr/etc/X11/xim.d/YOUR-LOCALE/40-ibus，這是一個到上層目錄ibus的連結
 "40"這個數字使他的優先順序高於90-xcin及50-scim
 如果您不喜歡這個順序，修改連結的名稱為(例如：80-ibus)，或參考2.
 
@@ -57,16 +57,16 @@ export INPUT_METHOD="ibus"
 3.如果您想要自己選擇輸入法而非使用系統設定
 (1)全系統設定：
 編輯 /etc/sysconfig/language, 設定 INPUT_METHOD="ibus" 或其他你想用的輸入法，
-請注意你的啟動程序必須位於 /etc/X11/xim.d/，並和您指定的名稱相同
+請注意你的啟動程序必須位於 /usr/etc/X11/xim.d/，並和您指定的名稱相同
 (2)針對特定語言：
 將您的啟動程序連結到你的語系中，並前置較高的優先順序(較小數字)，例如
-ln -s /etc/X11/xim.d/ibus /etc/X11/xim.d/zh_TW/20-ibus
+ln -s /usr/etc/X11/xim.d/ibus /usr/etc/X11/xim.d/zh_TW/20-ibus
 (3)個人設定：
 編輯 ~/.profile 加入
-export INPUT_METHOD="ibus" 或其他在 /etc/X11/xim.d/ 的啟動程序
+export INPUT_METHOD="ibus" 或其他在 /usr/etc/X11/xim.d/ 的啟動程序
 或自行編寫啟動程序 ~/.xim，請參考 ~/.xim.template
 
 5.臭蟲回報或建議請至
-http://code.google.com/p/ibus/
+https://github.com/ibus/ibus/issues
 
 

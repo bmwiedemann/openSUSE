@@ -18,9 +18,14 @@
 
 %define with_wayland 1
 %define with_emoji 1
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define use_usretc 1
+%endif
 
 Name:           ibus
-Version:        1.5.22
+Version:        1.5.23
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -54,15 +59,6 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
-# PATCH-FIX-UPSTREAM alarrosa@suse.com
-# Remove unnecessary qt5 dependency https://github.com/ibus/ibus/pull/2194
-Patch13:        0001-Replace-the-Qt-check-for-appindicator-engine-icon-wi.patch
-# PATCH-FIX-UPSTREAM ibus-use-wayland-display-for-socket-name.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse.com
-# Use WAYLAND_DISPLAY on Wayland sessions to make up IBus socket name
-Patch14:        ibus-use-wayland-display-for-socket-name.patch
-# PATCH-FIX-UPSTREAM ibus-socket-name-compatibility.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse
-# Compatibility workaround for ibus-use-wayland-display-for-socket-name.patch
-Patch15:        ibus-socket-name-compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -108,11 +104,6 @@ BuildRequires:  pkgconfig(wayland-client) >= 1.2.0
 %if %{with_emoji}
 BuildRequires:  unicode-emoji
 BuildRequires:  pkgconfig(cldr-emoji-annotation)
-%endif
-# PATCH-FEATURE-SLE FATE#319095 qzhao@suse.com
-# Add conflict with fcitx to keep old IMF for people who update from SLE-12 SP0 to SP1.
-%if !0%{?is_opensuse}
-Conflicts:      fcitx
 %endif
 
 %description
@@ -201,14 +192,9 @@ sed -i 1i"SYS_LIB=%{_lib}" xim.d-ibus-121
 cp -r %{SOURCE10} .
 cp -r %{SOURCE11} .
 
-%if !0%{?is_opensuse}
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
-%endif
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
 
 %build
 autoreconf -fi
@@ -239,15 +225,15 @@ make %{?_smp_mflags}
 %make_install
 
 # autostart
-mkdir -p %{buildroot}%{_sysconfdir}/X11/xim.d/
-install -m 644 xim.d-ibus-121 %{buildroot}%{_sysconfdir}/X11/xim.d/ibus
+mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
+install -m 644 xim.d-ibus-121 %{buildroot}%{_distconfdir}/X11/xim.d/ibus
 mkdir -p %{buildroot}%{_bindir}
 install -c -m 0755 ibus-autostart %{buildroot}%{_bindir}/ibus-autostart
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 install -c -m 0644 ibus-autostart.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/ibus-autostart.desktop
 
 PRIORITY=40
-pushd %{buildroot}%{_sysconfdir}/X11/xim.d/
+pushd %{buildroot}%{_distconfdir}/X11/xim.d/
     for lang in am ar as bn el fa gu he hi hr ja ka kk kn ko lo ml my \
                 pa ru sk vi zh_TW zh_CN zh_HK zh_SG \
                 de fr it es nl cs pl da nn nb fi en sv
@@ -307,7 +293,13 @@ dconf update
 %doc AUTHORS README README.SUSE xim.ibus.suse.template
 %license COPYING
 %{_rpmmacrodir}/macros.ibus
+%if %{defined use_usretc}
+%dir %{_distconfdir}/X11
+%dir %{_distconfdir}/X11/xim.d
+%{_distconfdir}/X11/xim.d/*
+%else
 %config %{_sysconfdir}/X11/xim.d/*
+%endif
 %{_bindir}/ibus
 %{_bindir}/ibus-autostart
 %{_bindir}/ibus-daemon
