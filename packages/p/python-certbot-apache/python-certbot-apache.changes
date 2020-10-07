@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:42:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.9.0
+  * The problem causing the Apache plugin in the Certbot snap on ARM systems to
+    fail to load the Augeas library it depends on has been fixed.
+
+-------------------------------------------------------------------
 Fri Aug 21 08:41:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.7.0
