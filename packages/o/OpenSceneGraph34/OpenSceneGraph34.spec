@@ -55,7 +55,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel
+BuildRequires:  wxWidgets-devel < 3.1
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
