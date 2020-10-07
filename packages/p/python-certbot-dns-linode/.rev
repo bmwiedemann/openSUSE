@@ -106,4 +106,12 @@
   * The Linode DNS plugin now waits 120 seconds for DNS propagation, instead of 1200.</comment>
     <requestid>828470</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eae9926c87d9380210b5e7ac6fbc2446</srcmd5>
+    <version>1.9.0</version>
+    <time>1602073155</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>839990</requestid>
+  </revision>
 </revisionlist>
