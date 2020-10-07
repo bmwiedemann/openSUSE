@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 26 18:09:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix openSUSE:Leap:15.1:Update failure: Qt3DAnimation is only 
+  built for Qt >= 5.10
+
+-------------------------------------------------------------------
 Mon Sep 14 15:53:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 5.15.1

@@ -16,6 +16,14 @@
 #
 
 
+# This definition is for projects which include the PyQt5 packages in recent
+# versions but use default (old) Qt libraries e.g. from Leap, which does not
+# have Qt >= 5.10. In that case, no Qt3DAnimation module will be built per
+# sip %%If directives in the sip/Qt3DAnimation/*.sip files
+%if %{pkg_vcmp libQt53DAnimation-devel >= 5.10}
+%define have_qt3danimation 1
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qt3d-qt5
 Version:        5.15.1
@@ -85,6 +93,7 @@ cp -r sip build_%{$python_bin_suffix}
 %build
 %{python_expand pushd build_%{$python_bin_suffix}
 $python configure.py \
+    -w \
     --no-dist-info \
     --no-stubs \
     --qmake=%{_bindir}/qmake-qt5
@@ -106,7 +115,7 @@ cp -r examples %{buildroot}%{_docdir}/%{name}
 %license LICENSE
 %doc NEWS README
 %dir %{python_sitearch}/PyQt5/
-%{python_sitearch}/PyQt5/Qt3DAnimation.so
+%{?have_qt3danimation:%{python_sitearch}/PyQt5/Qt3DAnimation.so}
 %{python_sitearch}/PyQt5/Qt3DCore.so
 %{python_sitearch}/PyQt5/Qt3DExtras.so
 %{python_sitearch}/PyQt5/Qt3DInput.so
@@ -121,7 +130,7 @@ cp -r examples %{buildroot}%{_docdir}/%{name}
 
 %files -n %{name}-sip
 %license LICENSE
-%{_datadir}/sip/PyQt5/Qt3DAnimation/
+%{?have_qt3danimation:%{_datadir}/sip/PyQt5/Qt3DAnimation/}
 %{_datadir}/sip/PyQt5/Qt3DCore/
 %{_datadir}/sip/PyQt5/Qt3DExtras/
 %{_datadir}/sip/PyQt5/Qt3DInput/

@@ -47,4 +47,15 @@
 </comment>
     <requestid>834341</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3b7583ba7b2a655562bb16384c424823</srcmd5>
+    <version>5.15.1</version>
+    <time>1602073024</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openSUSE:Leap:15.1:Update failure: Qt3DAnimation is only 
+  built for Qt &gt;= 5.10
+
+This is for backports derived from Factory. No effect on Tumbleweed.</comment>
+    <requestid>839653</requestid>
+  </revision>
 </revisionlist>
