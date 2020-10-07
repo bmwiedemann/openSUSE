@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct  6 09:09:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 20.09.27:
+  Regressions In Version 20.09.13:
+  * Fixed setting color alpha (opacity) to 0 in Open Other >
+    Color and Open Other > Text.
+  * Fixed a possible crash when using Center bias in the Crop: Source filter.
+  Text: Rich Video Filter:
+  * Fixed incorrect font size in export on Windows when the system Settings > Display > 
+    Scale and layout is higher than 100% (High DPI).
+  * Fixed problems when Export > Video > Parallel processing is on.
+  * Added collpase & expand buttons to the editor’s toolbar.
+  * Added an Overflow parameter to allow text longer (taller) than the rectangle.
+  * Added Paste Text Only to the editor’s menu to faciliate pasting from a word processor
+    or web browser without applying the source formatting.
+  * Fixed the Scroll Up and Scroll Down presets when the background is not transparent.
+  * Added a Lower Third preset to Text: Rich.
+  Other:
+  * Fixed the actual workspace layout may not match the currently selected layout when
+  restarting after a crash.
+  * Fixed Filters and Keyframes broken on Source clip after changing Settings > Video 
+  Mode.
+
+-------------------------------------------------------------------
 Mon Sep 21 21:10:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 20.09.13:
