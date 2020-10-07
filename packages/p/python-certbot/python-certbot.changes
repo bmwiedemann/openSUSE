@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:15:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.9.0
+  * certbot-auto was deprecated on all systems except for those based on Debian or RHEL.
+  * Update the packaging instructions to promote usage of python -m pytest to test Certbot
+    instead of the deprecated python setup.py test setuptools approach.
+  * Reduced CLI logging when handling some kinds of errors.
+  * The minimum version of the acme library required by Certbot was corrected.
+    In the previous release, Certbot said it required acme>=1.6.0 when it
+    actually required acme>=1.8.0 to properly support removing contact
+    information from an ACME account.
+
+-------------------------------------------------------------------
+Mon Sep 28 13:57:39 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.8.0
+  + Added
+    * Added the ability to remove email and phone contact
+      information from an account
+    * using update_account --register-unsafely-without-email
+  + Changed
+    * Support for Python 3.5 has been removed.
+  + Fixed
+    * The problem causing the Apache plugin in the Certbot snap on
+      ARM systems to
+    * fail to load the Augeas library it depends on has been fixed.
+    * The acme library can now tell the ACME server to clear
+      contact information by passing an empty
+    * tuple to the contact field of a Registration message.
+    * Fixed the *** stack smashing detected *** error in the
+      Certbot snap on some systems.
+    * More details about these changes can be found on our GitHub
+      repo.
+- Add certbot keyring and hash file
+
+-------------------------------------------------------------------
 Fri Aug 21 08:37:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.7.0
