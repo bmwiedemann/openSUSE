@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:20:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.2.0 
+  * Add explicit Windows to Select
+  * Fix missing Windows definitions in nested expressions
+
+-------------------------------------------------------------------
 Sat Jan 25 18:30:16 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.1.0 - 2020-01-25
