@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-# TODO: This turns on distro-specific policies.
 # There are almost no SUSE specific modifications available in the policy, so we utilize the
 # ones used by redhat and include also the SUSE specific ones (see sed statement below)
 %define distro redhat
@@ -33,7 +32,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20200717
+Version:        20200910
 Release:        0
 Source:         fedora-policy.%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -65,7 +64,6 @@ Source52:       users-minimum
 
 Source60:       selinux-policy.conf
 
-Source90:       selinux-policy-rpmlintrc
 Source91:       Makefile.devel
 Source92:       customizable_types
 #Source93:       config.tgz
@@ -123,7 +121,7 @@ Patch039:       fix_cron.patch
 Patch040:       fix_usermanage.patch
 Patch041:       fix_smartmon.patch
 Patch042:       fix_geoclue.patch
-Patch043:       suse_specific.patch
+#Patch043:       suse_specific.patch
 Patch044:       fix_authlogin.patch
 Patch045:       fix_screen.patch
 Patch046:       fix_unprivuser.patch
@@ -154,6 +152,7 @@ Recommends:     selinux-tools
 # for audit2allow
 Recommends:     python3-policycoreutils
 Recommends:     policycoreutils-python-utils
+Recommends:     container-selinux
 
 %define common_params DISTRO=%{distro} UBAC=%{ubac} DIRECT_INITRC=n MONOLITHIC=%{monolithic} MLS_CATS=1024 MCS_CATS=1024
 
@@ -351,7 +350,6 @@ creating other policies.
 %dir %{_datadir}/selinux/packages
 %dir %{_sysconfdir}/selinux
 %ghost %config(noreplace) %{_sysconfdir}/selinux/config
-#%ghost %{_sysconfdir}/sysconfig/selinux-policy
 %{_tmpfilesdir}/selinux-policy.conf
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
 
@@ -426,7 +424,7 @@ exit 0
 %patch040 -p1
 %patch041 -p1
 %patch042 -p1
-%patch043 -p1
+#% patch043 -p1
 %patch044 -p1
 %patch045 -p1
 %patch046 -p1
@@ -442,8 +440,6 @@ find . -type f -exec sed -i -e "s/distro_suse/distro_redhat/" \{\} \;
 %install
 mkdir -p %{buildroot}%{_sysconfdir}/selinux
 touch %{buildroot}%{_sysconfdir}/selinux/config
-#mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-#touch %{buildroot}%{_sysconfdir}/sysconfig/selinux-policy
 mkdir -p %{buildroot}%{_tmpfilesdir}
 cp %{SOURCE60} %{buildroot}%{_tmpfilesdir}
 
@@ -512,11 +508,10 @@ mv %{buildroot}%{_datadir}/selinux/targeted/include %{buildroot}%{_datadir}/seli
 install -m 644 selinux_config/Makefile.devel %{buildroot}%{_datadir}/selinux/devel/Makefile
 install -m 644 doc/example.* %{buildroot}%{_datadir}/selinux/devel/
 install -m 644 doc/policy.* %{buildroot}%{_datadir}/selinux/devel/
-#XXX what's missing for html?
-#%{_bindir}/sepolicy manpage -a -p %{buildroot}%{_datadir}/man/man8/ -w -r %{buildroot}
-#mkdir %{buildroot}%{_datadir}/selinux/devel/html
-#mv %{buildroot}%{_datadir}/man/man8/*.html %{buildroot}%{_datadir}/selinux/devel/html
-#mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/devel/html
+%{_bindir}/sepolicy manpage -a -p %{buildroot}%{_datadir}/man/man8/ -w -r %{buildroot}
+mkdir %{buildroot}%{_datadir}/selinux/devel/html
+mv %{buildroot}%{_datadir}/man/man8/*.html %{buildroot}%{_datadir}/selinux/devel/html
+mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/devel/html
 
 %post
 if [ ! -s %{_sysconfdir}/selinux/config ]; then
@@ -525,7 +520,6 @@ if [ ! -s %{_sysconfdir}/selinux/config ]; then
     if [ -f  %{_sysconfdir}/sysconfig/selinux-policy ]; then
 	mv %{_sysconfdir}/sysconfig/selinux-policy %{_sysconfdir}/selinux/config
     else
-	# XXX right default for SELINUXTYPE?
 	echo "
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
@@ -594,7 +588,10 @@ SELinux policy development and man page package
 %files devel
 %defattr(-,root,root,-)
 %doc %{_datadir}/man/ru/man8/*
+%doc %{_datadir}/man/man8/*
 %dir %{_datadir}/selinux/devel
+%dir %{_datadir}/selinux/devel/html/
+%doc %{_datadir}/selinux/devel/html/*
 %dir %{_datadir}/selinux/devel/include
 %{_datadir}/selinux/devel/include/*
 %{_datadir}/selinux/devel/Makefile

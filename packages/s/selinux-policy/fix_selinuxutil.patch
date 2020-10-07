@@ -24,3 +24,16 @@ Index: fedora-policy/policy/modules/system/selinuxutil.te
      cloudform_dontaudit_write_cloud_log(setfiles_t)
  ')
  
+Index: fedora-policy/policy/modules/system/selinuxutil.if
+===================================================================
+--- fedora-policy.orig/policy/modules/system/selinuxutil.if
++++ fedora-policy/policy/modules/system/selinuxutil.if
+@@ -777,6 +777,8 @@ interface(`seutil_dontaudit_read_config'
+ 
+ 	dontaudit $1 selinux_config_t:dir search_dir_perms;
+ 	dontaudit $1 selinux_config_t:file read_file_perms;
++	# /etc/selinux/config was a link to /etc/sysconfig/selinux-policy, ignore read attemps
++	dontaudit $1 selinux_config_t:lnk_file read_lnk_file_perms;
+ ')
+ 
+ ########################################

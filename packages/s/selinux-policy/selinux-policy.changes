@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 10 07:16:50 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20200910. Refreshed
+  * fix_authlogin.patch
+  * fix_nagios.patch
+  * fix_systemd.patch
+  * fix_usermanage.patch
+- Delete suse_specific.patch, moved content into fix_selinuxutil.patch
+- Cleanup of booleans-* presets
+  * Enabled
+    user_rw_noexattrfile
+    unconfined_chrome_sandbox_transition
+    unconfined_mozilla_plugin_transition
+    for the minimal policy
+  * Disabled
+    xserver_object_manager
+    for the MLS policy
+  * Disabled
+    openvpn_enable_homedirs
+    privoxy_connect_any
+    selinuxuser_direct_dri_enabled
+    selinuxuser_ping (aka user_ping)
+    squid_connect_any
+    telepathy_tcp_connect_generic_network_ports
+    for the targeted policy
+  Change your local config if you need them
+- Build HTML version of manpages for the -devel package
+
+-------------------------------------------------------------------
 Thu Sep  3 07:47:52 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop BuildRequires for python, python-xml. It's not needed anymore

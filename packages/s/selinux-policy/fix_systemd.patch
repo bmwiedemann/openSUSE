@@ -13,7 +13,7 @@ Index: fedora-policy/policy/modules/system/systemd.te
  	apache_read_tmp_files(systemd_logind_t)
  ')
  
-@@ -823,6 +827,10 @@ optional_policy(`
+@@ -828,6 +832,10 @@ optional_policy(`
          dbus_connect_system_bus(systemd_hostnamed_t)
  ')
  
