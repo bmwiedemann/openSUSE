@@ -1,0 +1,17 @@
+# You should not need to edit this file. Instead, use a drop-in file as described in:
+#   /usr/lib/systemd/system/kanidmd.service.d/custom.conf
+
+[Unit]
+Description=Kanidm Identity Server
+After=chronyd.service ntpd.service network-online.target
+Before=radiusd.service
+
+[Service]
+Type=simple
+DynamicUser=yes
+UMask=0027
+StateDirectory=kanidmd
+ExecStart=/usr/sbin/kanidmd server -c /etc/kanidm/server.toml
+
+[Install]
+WantedBy=multi-user.target
