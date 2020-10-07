@@ -325,4 +325,13 @@ Error is masked due to || : (forwarded request 141997 from dimstar)</comment>
     <comment>- Don't install SuSEfirewall2 service files, it's gone. (forwarded request 823195 from kukuk)</comment>
     <requestid>824637</requestid>
   </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>da8e0fa0c22ee1b441c52d2e10230063</srcmd5>
+    <version>0.8.2</version>
+    <time>1602073199</time>
+    <user>dimstar_suse</user>
+    <comment>- drop explicit buildreq for libosip2, already have libosip2-devel 
+- mark COPYING as license, drop defattr lines (forwarded request 839973 from oertel)</comment>
+    <requestid>839974</requestid>
+  </revision>
 </revisionlist>

@@ -51,7 +51,6 @@ Patch1:         siproxd-log.c.patch
 Patch2:         siproxd.plugin_fix_bogus_via.c.patch
 Patch3:         siproxd-multiple-definition.patch
 BuildRequires:  docbook-utils
-BuildRequires:  libosip2
 BuildRequires:  libosip2-devel
 BuildRequires:  libtool
 %if %suse_version > 1220
@@ -167,8 +166,8 @@ getent passwd %{siproxduser} >/dev/null || \
 %service_del_preun siproxd.service
 
 %files
-%defattr(-,root,root)
-%doc COPYING README AUTHORS ChangeLog syslog-ng.conf.addon
+%license COPYING
+%doc README AUTHORS ChangeLog syslog-ng.conf.addon
 %doc doc/siproxd.conf.example doc/siproxd_passwd.cfg doc/FAQ doc/KNOWN_BUGS doc/sample_*
 %attr(0755,root,root) %{_libdir}/%{name}/
 %{_sbindir}/rc%name
@@ -194,7 +193,6 @@ getent passwd %{siproxduser} >/dev/null || \
 %endif
 
 %files doc
-%defattr(-,root,root)
 %doc doc/html/* doc/pdf/*
 
 %changelog
