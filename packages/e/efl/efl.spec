@@ -75,6 +75,8 @@ Summary:        Enlightenment Foundation Libraries - set of libraries used (not 
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
 URL:            https://git.enlightenment.org/core/efl.git
 Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{version}.tar.xz
+# Do not enable NEON on armv6/armv7
+Patch1:         efl-no-neon.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -111,11 +113,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwebp)
-%if 0%{?luajit_present}
-BuildRequires:  pkgconfig(luajit)
-%else
-BuildRequires:  pkgconfig(lua5.1)
-%endif
 BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pixman-1)
@@ -142,9 +139,6 @@ BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang
-%if 0%{?luajit_present}
-Recommends:     elua = %{version}
-%endif
 Provides:       ecore = %{version}
 Obsoletes:      ecore < %{version}
 Provides:       edje = %{version}
@@ -169,7 +163,6 @@ Provides:       ethumb = %{version}
 Obsoletes:      ethumb < %{version}
 Provides:       evas = %{version}
 Obsoletes:      evas < %{version}
-
 Provides:       libecore%{sover} = %{version}
 Obsoletes:      libecore%{sover} < %{version}
 Provides:       libector%{sover} = %{version}
@@ -219,6 +212,14 @@ Obsoletes:      libethumb_client%{sover} < %{version}
 Provides:       libevas%{sover} = %{version}
 Obsoletes:      libevas%{sover} < %{version}
 %{?systemd_requires}
+%if 0%{?luajit_present}
+BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua5.1)
+%endif
+%if 0%{?luajit_present}
+Recommends:     elua = %{version}
+%endif
 %if %{build_doc}
 BuildRequires:  doxygen
 %endif
@@ -288,11 +289,6 @@ Requires:       pkgconfig(libpulse)
 Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
 Requires:       pkgconfig(libudev)
-%if 0%{?luajit_present}
-Requires:       pkgconfig(luajit)
-%else
-Requires:       pkgconfig(lua5.1)
-%endif
 Requires:       pkgconfig(openssl)
 Requires:       pkgconfig(pixman-1)
 Requires:       pkgconfig(sdl)
@@ -342,6 +338,11 @@ Obsoletes:      %{?mageia:%{_lib}}eo-devel < %{version}
 Obsoletes:      %{?mageia:%{_lib}}ethumb-devel < %{version}
 Obsoletes:      %{?mageia:%{_lib}}evas-devel < %{version}
 Obsoletes:      %{?mageia:%{_lib}}evas-generic-loaders-devel < %{version}
+%if 0%{?luajit_present}
+Requires:       pkgconfig(luajit)
+%else
+Requires:       pkgconfig(lua5.1)
+%endif
 %if %{xine_present}
 Requires:       pkgconfig(libxine)
 %endif
@@ -450,7 +451,7 @@ Version:        0.21.0
 Release:        0
 Summary:        Default Enlightenment theme
 License:        BSD-2-Clause AND LGPL-2.1-only
-Conflicts:      otherproviders(enlightenment-theme-dft)
+Conflicts:      enlightenment-theme-dft
 Provides:       enlightenment-theme = 0.1
 Provides:       enlightenment-theme-dft
 

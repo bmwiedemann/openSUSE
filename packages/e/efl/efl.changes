@@ -4,6 +4,12 @@ Thu Sep  3 10:34:14 UTC 2020 - Tomas Cech <sleep_walker@opensuse.org>
 - split out ecore_imf-module-scim to reduce dependencies of base efl package
 
 -------------------------------------------------------------------
+Mon Aug 31 15:26:52 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable NEON on armv6/7:
+  * efl-no-neon.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 00:41:17 UTC 2020 - Simon Lees <simonf.lees@suse.com>
 
 - 1.24.3
