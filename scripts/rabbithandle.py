@@ -60,15 +60,17 @@ for line in watchtail(sys.stdin):
         info += "\n\n"
         if 'rev' in change:
             info += obsbase+'/package/rdiff/'+change['project']+'/'+package+'?linkrev=base&rev='+change['rev']+"\n";
+            try:
+                obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
+                commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
+            except urllib.error.HTTPError:
+                pass
     if 'user' in change:
         info += 'by user '+change['user']+"\n"
     if 'comment' in change:
         info += change['comment']
     info += '\n'
     print(info);
-    if 'rev' in change:
-        obsrev = get_source_rev(osc.conf.config['apiurl'], "openSUSE:Factory", package, change['rev'])
-        commitdate = datetime.datetime.utcfromtimestamp(int(obsrev["time"])).strftime("%Y-%m-%dT%H:%M:%S")
     os.environ['GIT_AUTHOR_NAME'] = author
     os.environ['GIT_AUTHOR_EMAIL'] = ''
     if commitdate:
