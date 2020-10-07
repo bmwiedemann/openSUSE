@@ -25,8 +25,10 @@ URL:            https://github.com/eiskaltdcpp/eiskaltdcpp
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}.firewalld
 Patch0:         ru.ts.patch
+BuildRequires:  aspell-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  libattr-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libidn-devel
@@ -46,6 +48,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(bzip2)
+Requires:       aspell
 
 %description
 EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC
@@ -71,18 +74,14 @@ clients. This is the Qt frontend.
 
 %build
 %cmake -LA \
-       -DUSE_ASPELL=OFF \
-       -DWITH_SOUNDS=ON \
-       -DUSE_MINIUPNP=ON \
-       -Dlinguas="*"
+       -DJSONRPC_DAEMON=OFF \
+       -DWITH_EXAMPLES=OFF
 %cmake_build
 
 %install
 %cmake_install
 install -Dm644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %fdupes %{buildroot}
-rm %{buildroot}%{_bindir}/%{name}-daemon
-rm %{buildroot}%{_mandir}/man?/%{name}-daemon.?%{ext_man}
 
 %find_lang --with-qt lib%{name} %{name}.lang
 
@@ -102,7 +101,6 @@ rm %{buildroot}%{_mandir}/man?/%{name}-daemon.?%{ext_man}
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/emoticons
-%{_datadir}/%{name}/examples
 %{_datadir}/%{name}/luascripts
 %{_datadir}/%{name}/sounds
 %dir %{_datadir}/%{name}/qt

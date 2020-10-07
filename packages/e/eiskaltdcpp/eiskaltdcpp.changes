@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 18:10:12 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Readd aspell support and add Requires:aspell.
+- Add BuildRequires:git (cmake script checks it).
+- Remove additional cmake options that were default.
+- Correct disable PHP daemon backand via cmake option JSONRPC_DAEMON.
+- Disable examples via cmake option to remove requires: bash, php, sh.
+
+-------------------------------------------------------------------
 Fri Oct  2 15:31:23 UTC 2020 - pgajdos@suse.com
 
 - Don't depend on aspell, it will be removed from Factory.
