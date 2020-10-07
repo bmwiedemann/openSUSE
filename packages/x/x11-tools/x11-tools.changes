@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:21:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- xim script: also consider files below /usr/etc/X11/xim.d (boo#1176431)
+
+-------------------------------------------------------------------
+Thu Sep 24 12:51:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Upgrade old RPM constructs.
+
+-------------------------------------------------------------------
+Wed Sep 23 16:28:35 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- i18n.template: moved example for user specific LANG setting 
+  from .profile (bash package) to .i18n skeleton file (boo#1158724)
+
+-------------------------------------------------------------------
+Thu Sep 10 21:15:12 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved xim files to /usr/etc; xinit is already prepared for this
+  (boo#1176431)
+
+-------------------------------------------------------------------
 Wed Oct 24 12:48:26 UTC 2018 - sndirsch@suse.com
 
 - remove hostname's '-f' option since it may fail or - even worse -

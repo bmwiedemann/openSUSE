@@ -12,7 +12,7 @@
 # the Free Software Foundation.
 
 
-# usually, /etc/X11/xim is used to start a default input method.
+# usually, {/usr,}/etc/X11/xim is used to start a default input method.
 
 # If want to change the default, you have the following options:
 #
@@ -27,20 +27,20 @@
 #       This changes the default only for one user.
 #    
 #    The possible values for the variable INPUT_METHOD are the names
-#    of the scripts which exist in the directory /etc/X11/xim.d/
-#    for example if a script /etc/X11/xim.d/scim exists,
+#    of the scripts which exist in the directory {/usr,}/etc/X11/xim.d/
+#    for example if a script {/usr,}/etc/X11/xim.d/scim exists,
 #    and INPUT_METHOD is set to "scim", this script will be tried first
 #    to start an input method and only if this fails other input methods
 #    will be tried.
 #
 #    3) If you don't like the behaviour of any of the available
-#       scripts in /etc/X11/xim.d, you can write your own script
+#       scripts in {/usr,}/etc/X11/xim.d, you can write your own script
 #       containing the necessary lines to start your preferred input
 #       method and save it as ~/.xim. If a file ~/.xim exists, only
 #       this file is sourced to start an input method and nothing
 #       else.
 #       Usually you need only a few lines, the systemwide
-#       file to start an input method, /etc/X11/xim, is only so
+#       file to start an input method, {/usr,}/etc/X11/xim, is only so
 #       complicated because it tries to find a nice default depending
 #       on the language and the installed input methods.
 # 
@@ -54,7 +54,7 @@
 #       export QT_IM_MODULE=scim
 #       scim -d 
 
-echo "/etc/X11/xim: Checking whether an input method should be started."
+echo "$0: Checking whether an input method should be started."
 
 #
 # Get variables from the user environment which might influence the start
@@ -66,9 +66,13 @@ adduserenv () {
     : ${HOSTNAME:=$(hostname)}
     # Use ~/.i18n
     if test -e "$HOME/.i18n"; then
-	echo "/etc/X11/xim: Checking whether an input method is specified in $HOME/.i18n."
+	echo "$0: Checking whether an input method is specified in $HOME/.i18n."
 	eval $(set +u +e
-	       . /etc/profile.d/lang.sh < /dev/null > /dev/null 2>&1
+	       if [ -r /etc/profile.d/lang.sh ]; then
+		   . /etc/profile.d/lang.sh < /dev/null > /dev/null 2>&1
+	       elif [ -r /usr/etc/profile.d/lang.sh ]; then
+		   . /usr/etc/profile.d/lang.sh < /dev/null > /dev/null 2>&1
+	       fi
 	       for cur in $var; do
 		   test -n "${!cur}" && echo export $cur=${!cur}
 	       done)
@@ -78,7 +82,7 @@ adduserenv () {
     case "$SHELL" in
     */sh|*/ash|*/bash|*/ksh|*/mksh|*/pdksh|*/zsh)
 	if test -s "$HOME/.profile" ; then
-	    echo "/etc/X11/xim: Checking whether an input method is specified in $HOME/.profile."
+	    echo "$0: Checking whether an input method is specified in $HOME/.profile."
 	    eval $(export HOSTNAME
 		   (echo . "'$HOME/.profile' < /dev/null > /dev/null 2>&1"
 		    echo "set +u +e"
@@ -90,7 +94,7 @@ adduserenv () {
 	;;
     */csh|*/tcsh)
 	if test -s "$HOME/.login" ; then
-	    echo "/etc/X11/xim: Checking whether an input method is specified in $HOME/.login."
+	    echo "$0: Checking whether an input method is specified in $HOME/.login."
 	    eval $(export HOSTNAME
 		   (echo onintr -
 		    echo source "'$HOME/.login' < /dev/null >& /dev/null"
@@ -129,7 +133,7 @@ gnome_ibus_workaround () {
 # The test for $GDM_LANG needs to be changed slightly as soon as other
 # displaymanager also pass a second argument to Xsession.
 if test -n "$GDM_LANG" ; then
-    echo "/etc/X11/xim: use GDM_LANG=$GDM_LANG"
+    echo "$0: use GDM_LANG=$GDM_LANG"
     adduserenv INPUT_METHOD
 else
     adduserenv LANG LC_CTYPE LC_ALL INPUT_METHOD
@@ -157,8 +161,18 @@ if [ "$INPUT_METHOD" != "" ]; then
 	else
 	    echo "Start of $INPUT_METHOD failed."
 	fi
+    elif [ -r "/usr/etc/X11/xim.d/$INPUT_METHOD" ] ; then
+        echo "sourcing /usr/etc/X11/xim.d/$INPUT_METHOD"
+	. /usr/etc/X11/xim.d/$INPUT_METHOD
+        if [ "$?" = "0" ]; then
+	    echo "Start of $INPUT_METHOD succeeded."
+		gnome_ibus_workaround $INPUT_METHOD
+	    return 0;
+	else
+	    echo "Start of $INPUT_METHOD failed."
+	fi
     else
-        echo "/etc/X11/xim.d/$INPUT_METHOD does not exist."
+        echo "{/usr,}/etc/X11/xim.d/$INPUT_METHOD does not exist."
     fi
 else
     echo "INPUT_METHOD is not set or empty (no user selected input method)."
@@ -198,6 +212,27 @@ for subdir in $subdirlist ; do
    fi
 done
 
+for subdir in $subdirlist ; do
+   if [ -d /usr/etc/X11/xim.d/$subdir ] ; then
+       echo "Checking for a default input method in /usr/etc/X11/xim.d/$subdir/"
+       for im in /usr/etc/X11/xim.d/$subdir/* ; do
+           if [ -r $im ] ; then
+	       echo "sourcing $im ..."
+	       . $im
+	       if [ "$?" = "0" ]; then
+	           echo "$im started sucessfully"
+			gnome_ibus_workaround $im
+		   return 0
+	       else
+	           echo "$im failed"
+		   im_failed=1
+	       fi
+	   fi
+       done
+   fi
+done
+
+
 if [ "$im_failed" = 0 ] ; then
     echo "There is no default input method for the current locale."
 else
@@ -208,4 +243,9 @@ fi
 # the dummy input method "none" to get reasonable default settings
 # of the relevant environment variables:
 
-. /etc/X11/xim.d/none
+if [ -r /etc/X11/xim.d/none ]; then
+    . /etc/X11/xim.d/none
+elif [ -r /usr/etc/X11/xim.d/none ]; then
+    . /usr/etc/X11/xim.d/none
+fi
+

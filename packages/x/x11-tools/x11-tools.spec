@@ -1,7 +1,7 @@
 #
 # spec file for package x11-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@
 %endif
 
 Name:           x11-tools
-PreReq:         %fillup_prereq
+Requires(post): %fillup_prereq
 Provides:       3ddiag
 Provides:       xf86tools
 Obsoletes:      3ddiag
@@ -41,51 +41,55 @@ Source35:       nvidia-pre-install
 Source36:       nvidia-post-uninstall
 Source37:       i18n.template
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Some useful tools for the X Window System.
-
-
-
-Authors:
---------
-    Stefan Dirsch <sndirsch@suse.de>
-    Ludwig Nussel <lnussel@suse.de>
 
 %prep
 
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/bin/
-install -m 755 $RPM_SOURCE_DIR/xf86debug      $RPM_BUILD_ROOT/usr/bin
-mkdir -p $RPM_BUILD_ROOT/etc/X11/xim.d
-install -m 644 $RPM_SOURCE_DIR/xim  $RPM_BUILD_ROOT/etc/X11
-install -m 644 $RPM_SOURCE_DIR/none $RPM_BUILD_ROOT/etc/X11/xim.d
-mkdir -p $RPM_BUILD_ROOT/etc/skel
-install -m 644 $RPM_SOURCE_DIR/xim.template $RPM_BUILD_ROOT/etc/skel/.xim.template
-install -m 644 %{S:37} $RPM_BUILD_ROOT/etc/skel/.i18n
-mkdir -p  $RPM_BUILD_ROOT%{_fillupdir}/
-install -c -m 644 $RPM_SOURCE_DIR/sysconfig.language-%{name} $RPM_BUILD_ROOT%{_fillupdir}/
-mkdir -p $RPM_BUILD_ROOT/usr/lib/nvidia
-install -m 755 $RPM_SOURCE_DIR/nvidia-pre-install \
-  $RPM_BUILD_ROOT/usr/lib/nvidia/pre-install
-install -m 755 $RPM_SOURCE_DIR/nvidia-post-uninstall \
-  $RPM_BUILD_ROOT/usr/lib/nvidia/post-uninstall
+mkdir -p %{buildroot}/usr/bin/
+install -m 755 %{_sourcedir}/xf86debug      %{buildroot}/usr/bin
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}/%{_distconfdir}/X11/xim.d
+install -m 644 %{_sourcedir}/xim  %{buildroot}/%{_distconfdir}/X11
+install -m 644 %{_sourcedir}/none %{buildroot}/%{_distconfdir}/X11/xim.d
+%else
+mkdir -p %{buildroot}/etc/X11/xim.d
+install -m 644 %{_sourcedir}/xim  %{buildroot}/etc/X11
+install -m 644 %{_sourcedir}/none %{buildroot}/etc/X11/xim.d
+%endif
+mkdir -p %{buildroot}/etc/skel
+install -m 644 %{_sourcedir}/xim.template %{buildroot}/etc/skel/.xim.template
+install -m 644 %{S:37} %{buildroot}/etc/skel/.i18n
+mkdir -p  %{buildroot}/%{_fillupdir}/
+install -c -m 644 %{_sourcedir}/sysconfig.language-%{name} %{buildroot}/%{_fillupdir}/
+mkdir -p %{buildroot}/usr/lib/nvidia
+install -m 755 %{_sourcedir}/nvidia-pre-install \
+  %{buildroot}/usr/lib/nvidia/pre-install
+install -m 755 %{_sourcedir}/nvidia-post-uninstall \
+  %{buildroot}/usr/lib/nvidia/post-uninstall
 
 %post
 %{fillup_only -an language}
 
 %files
-%defattr(-, root, root)
-%dir /etc/X11/xim.d
 %dir /usr/lib/nvidia
 /usr/bin/xf86debug
 /usr/lib/nvidia/pre-install
 /usr/lib/nvidia/post-uninstall
+%if 0%{?suse_version} >= 1550
+%{_distconfdir}/X11
+%{_distconfdir}/X11/xim
+%dir %{_distconfdir}/X11/xim.d
+%{_distconfdir}/X11/xim.d/*
+%else
 /etc/X11/xim
+%dir /etc/X11/xim.d
 /etc/X11/xim.d/*
+%endif
 /etc/skel/.xim.template
 /etc/skel/.i18n
 %{_fillupdir}/sysconfig.language-%{name}
