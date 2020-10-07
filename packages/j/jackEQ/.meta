@@ -1,8 +1,0 @@
-<package name="jackEQ" project="openSUSE:Factory">
-  <title>JACK Equalization Tool for Live Performance</title>
-  <description>jackEQ is a tool for routing and manipulating audio from and to
-multiple input/output sources.	It runs in the JACK Audio Connection
-Kit and uses LADSPA for its back-end DSP work.	jackEQ is designed
-specifically for live performance.</description>
-  <devel project="multimedia:apps" package="jackEQ"/>
-</package>
