@@ -1,4 +1,326 @@
 -------------------------------------------------------------------
+Tue Oct 06 10:17:04 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Changes for 23.1.1:
+  * erts: inet:setopts([{active,once}]) wakes up IO polling thread
+    unnecessarily, leading to lock contention and visibly higher
+    CPU utilization.
+  * erts: Two bugs in the ERTS internal thread wakeup functionality
+    have been fixed. These bugs mainly hit when all threads in the
+    system tried to go to sleep. When the bugs were triggered,
+    certain operations were delayed until a thread woke up due to
+    some other reason. Most important operations effected were code
+    loading, persistent term updates, and memory deallocation.
+  * erts: Fixed bug in ets:select_replace/2 on compressed tables
+    that could produce faulty results or VM crash. Bug exists since
+    OTP 20.
+  * erts: When compiling Erlang/OTP on macOS using Xcode 12, the
+    performance of the BEAM interpreter would be degraded.
+  * erts: As of OTP 22, the allocator specific memory carrier pools
+    were replaced by a node global carrier pool. This unfortunately
+    caused substantial memory fragmentation in some cases due to
+    long lived data being spread into carriers used by allocators
+    mainly handling short lived data. A new command line argument
+    +M<S>cp has been introduced with which one can enable the old
+    behavior as well as configuring other behaviors for the carrier
+    pools. In order to configure the old behavior, with allocator
+    specific carrier pools for all allocators, pass +Mucp :
+    (including the colon character) as a command line argument to
+    erl when starting the Erlang system. The default configuration
+    for carrier pools will be changed to +Mucp : some time in the
+    future, but not in this patch.
+  * os_mon: The configuration parameter
+    memsup_improved_system_memory_data has been introduced. It can
+    be used to modify the result returned by
+    memsup:get_system_memory_data(). For more information see the
+    memsup documentation. Note that the configuration parameter is
+    intended to be removed in OTP 24 and the modified result is
+    intended to be used as of OTP 24.
+  * ssh: Fix decoder bug.
+  * compiler: Fixed a performance bug that could be triggered by
+    tuple matching in very large functions.
+  * public_key: Fix the issue that pem_decode will crash with an
+    invalid input.
+- Changes for 23.1:
+  * kernel: A fallback has been implemented for file:sendfile when
+    using inet_backend socket
+  * kernel: Make default TCP distribution honour option backlog in
+    inet_dist_listen_options.
+  * kernel: Raw option handling for the experimental gen_tcp_socket
+    backend was broken so that all raw options were ignored by for
+    example gen_tcp:listen/2, a bug that now has been fixed.
+    Reported by Jan Uhlig.
+  * kernel: Accept fails with inet-backend socket.
+  * kernel: Fixed various minor errors in the socket backend of
+    gen_tcp.
+  * kernel: Correct disk_log:truncate/1 to count the header. Also
+    correct the documentation to state that disk_log:truncate/1 can
+    be used with external disk logs.
+  * kernel: Fix erl_epmd:port_please/2,3 type specs to include all
+    possible error values.
+  * kernel: Fix erl -erl_epmd_port to work properly. Before this
+    fix it did not work at all.
+  * kernel: Fix typespec for internal function
+    erlang:seq_trace_info/1 to allow term() as returned label. This
+    in turn fixes so that calls to seq_trace:get_token/1 can be
+    correctly analyzer by dialyzer.
+  * kernel: Fix erroneous double registration of processes in pg
+    when distribution is dynamically started.
+  * kernel: Make (use of) the socket registry optional (still
+    enabled by default). Its now possible to build OTP with the
+    socket registry turned off, turn it off by setting an
+    environment variable and controlling in runtime (via function
+    calls and arguments when creating sockets).
+  * kernel: erl -remsh nodename no longer requires the hostname to
+    be given when used together with dynamic nodenames.
+  * observer: Fix graph windows flickering on windows.
+  * mnesia: FIx mnesia delete object handling in transaction
+    storage. In a transaction mnesia:read/1 could indicate that
+    exiting objects did not exist after another object was deleted.
+  * mnesia: Fixed crash during startup, which could happen if a
+    table was deleted on another node.
+  * stdlib: The functions digraph:in_edges/2 and
+    digraph:out_edges/2 would return false edges if called for a
+    vertex that had a '_' atom in its name term.
+  * stdlib: filelib:wildcard("not-a-directory/..") should return an
+    empty list. On Windows it returned "not-a-directory/..".
+  * stdlib: Fix the typespec of shell_docs:render to use the
+    correct type for an MFA.
+  * stdlib: Fix uri_string:recompose/1 when host is present but
+    input path is not absolute. This change prevents the recompose
+    operation to change the top level domain of the host when the
+    path does not start with a slash.
+  * stdlib: The epp module would return a badly formed error term
+    when an 'if' preprocessor directive referenced an undefined
+    symbol. epp:format_error/1 would crash when called with the bad
+    error term.
+  * stdlib: lists:sublist(List, Start, Len) failed with an
+    exception if Start > length(List) + 1 even though it is
+    explicitly documented that "It is not an error for Start+Len to
+    exceed the length of the list".
+  * tools: Correct the Xref analysis locals_not_used to find
+    functions called exclusively from on_load functions.
+  * erts: Update the documentation of the abstract format to use
+    ANNO instead of LINE.
+  * erts: The emulator will no longer revert to the default number
+    of schedulers when running under a CPU quota lower than 1 CPU.
+  * erts: Fixed a problem with crash dumps. When a process that
+    contained reference to literals internally created by the
+    runtime system (such as the tuple returned by os:type/0), the
+    literal would not be included in the crash dump and the
+    crashdump viewer would complain about the heap being
+    incomplete.
+  * erts: Fix configure detection of PGO for clang.
+  * erts: The to_erl program has been fixed to correctly interpret
+    newline as only newline and not newline+return. This bug would
+    cause the terminal to behave strangely when using lines longer
+    than the terminal size.
+  * erts: A race condition when changing process priority by
+    calling process_flag(priority, Prio) could cause elevation of
+    priority for a system task to be ignored. This bug hit if the
+    system task was scheduled on the process calling process_flag()
+    at the same time as the priority was changed. The bug is quite
+    harmless and should hit very seldom if ever.
+  * erts: Adjust /bin/sh to /system/bin/sh in scripts when
+    installing on Android.
+  * erts: In rare circumstances, when loading a BEAM file generated
+    by an alternative code generator (not the Erlang compiler in
+    OTP) or from handwritten or patched BEAM code, the loader could
+    do an unsafe optimization.
+  * erts: A memory and file descriptor leak in socket has been
+    fixed. (When a newly opened socket that had not entered the fd
+    into the VM's poll set (neither received, sent, accepted nor
+    connected) was abandoned without closing (process died), after
+    assigning a different controlling process, then a memory block
+    and the file descriptor could be leaked.)
+  * erts: The documentation of statistics(run_queue) erroneously
+    stated that it returns the total length of all normal run
+    queues when it is the total length of all normal and dirty CPU
+    run queues that is returned. The documentation has been updated
+    to reflect the actual behavior.
+  * erts: Changes in order to build on the Haiku operating system.
+    Thanks to Calvin Buckley
+  * erts: When building the inet driver on Windows, there where
+    many compiler warnings regarding type casting (used when
+    calling the debug macro). This has now been resolved.
+  * erts: Make (use of) the socket registry optional (still enabled
+    by default). Its now possible to build OTP with the socket
+    registry turned off, turn it off by setting an environment
+    variable and controlling in runtime (via function calls and
+    arguments when creating sockets).
+  * erts: Change default filename encoding on android to UTF-8.
+  * erts: Clarification of the format of the atom cache header used
+    by the distribution.
+  * erl_docgen: Repaired lost function "since" versions in the
+    right margin of the module reference HTML documentation.
+  * erl_docgen: Remove erlang compilation warnings and trailing
+    whitespaces.
+  * ftp: Avoid timing issue when setting active once on a socket
+    that is being closed by the peer.
+  * ftp: Avoid timing issue when setting active once on a socket
+    that is being closed by the peer.
+  * dialyzer: In rare circumstance, dialyzer wold crash when
+    analyzing a list comprehension.
+  * eunit: Fixed compiler warning.
+  * snmp: For agent fix PrivParams for SNMPv3 USM with AES privacy,
+    as earlier fixed for the manager in OTP_16541.
+  * snmp: The SNMP Agent missed to re-activate datagram reception
+    in an odd timeout case and went deaf. This bug has been fixed.
+  * snmp: Use of deprecated functions in example 2 has been removed
+    (no more compiler warnings).
+  * snmp: A file descriptor leak has been plugged. When calling the
+    reconfigure function of a mib, it opened the config file(s) but
+    never closed them on successful read.
+  * asn1: Changes in order to build on the Haiku operating system.
+    Thanks to Calvin Buckley
+  * syntax_tools: Minor documentation fix of erl_syntax:operator/1.
+  * erl_interface: Fix erl_interface on windows to be compiled with
+    correct flags to make internal primitives reentrant.
+  * erl_interface: Fixed ei_get_type to set *size to zero for
+    floats, pids, port and refs according to documentation.
+  * erl_interface: Fix ei_connect when using a dynamic node name to
+    force usage of distribution version 6. This bug caused erl_call
+    -R -address to not work properly.
+  * erl_interface: Changes in order to build on the Haiku operating
+    system. Thanks to Calvin Buckley
+  * erl_interface: The ei API for decoding/encoding terms is not
+    fully 64-bit compatible since terms that have a representation
+    on the external term format larger than 2 GB cannot be handled.
+  * ssl: If a passive socket is created, ssl:recv/2,3 is never
+    called and then the peer closes the socket the controlling
+    process will no longer receive an active close message.
+  * ssl: Data deliver with ssl:recv/2,3 could fail for when using
+    packet mode. This has been fixed by correcting the flow control
+    handling of passive sockets when packet mode is used.
+  * ssl: This change fixes a potential man-in-the-middle
+    vulnerability when the ssl client is configured to
+    automatically handle session tickets ({session_tickets, auto}).
+  * ssl: Fix the internal handling of options 'verify' and
+    'verify_fun'. This change fixes a vulnerability when setting
+    the ssl option 'verify' to verify_peer in a continued handshake
+    won't take any effect resulting in the acceptance of expired
+    peer certificates.
+  * ssl: This change fixes the handling of stateless session
+    tickets when anti-replay is enabled.
+  * ssl: Fix a crash due to the faulty handling of stateful session
+    tickets received by servers expecting stateless session
+    tickets. This change also improves the handling of
+    faulty/invalid tickets.
+  * ssl: Correct flow ctrl checks from OTP-16764 to work as
+    intended. Probably will not have a noticeable affect but will
+    make connections more well behaved under some circumstances.
+  * ssl: Distribution over TLS could exhibit livelock-like
+    behaviour when there is a constant stream of distribution
+    messages. Distribution data is now chunked every 16 Mb to avoid
+    that.
+  * ssl: Implement the cookie extension for TLS 1.3.
+  * ssl: Experimental OCSP client support.
+  * ssl: TLS 1.0 -TLS-1.2 sessions tables now have a absolute max
+    value instead of using a shrinking mechanism when reaching the
+    limit. To avoid out of memory problems under heavy load
+    situations. Note that this change infers that implementations
+    of ssl_session_cache_api needs to implement the size function
+    (introduce in OTP 19) for session reuse to be optimally
+    utilized.
+  * os_mon: memsup now returns the correct amount of system memory
+    on macOS.
+  * os_mon: Fix memsup:get_os_wordsize/0 to return the current size
+    on aarch64.
+  * ssh: Fixed a bug when a message to ssh-agent was divided into
+    separate packets.
+  * ssh: Fix a bug that could crash the cli server if a too large
+    cli-window was requested from the client.
+  * ssh: Increased test coverage.
+  * ssh: A chapter about hardening the OTP SSH is added to the
+    User's Guide.
+  * ssh: The internal Diffie-Hellman high level API for key
+    generation was slow in old and by OpenSSL now unsupported
+    cryptolib versions (1.0.1 and earlier). If such a cryptolib is
+    used anyhow, the low-level API is used internally in the crypto
+    application.
+  * ssh: A new timeout is defined for daemons: hello_timeout. The
+    timeout is supposed to be used as a simple DoS attack
+    protection. It closes an incoming TCP-connection if no valid
+    first SSH message is received from the client within the
+    timeout limit after the TCP initial connection setup. The
+    initial value is 30s by compatibility reasons, but could be
+    lowered if needed, for example in the code or in a config file.
+  * inets: Clarify the handling of percent encoded characters in
+    http client.
+  * inets: fix crash for undefined port in uri.
+  * inets: Avoid timing issue when setting active once on a socket
+    that is being closed by the peer.
+  * inets: Handle message body of response with 1XX status code as
+    next http message.
+  * inets: Fix a crash in http server when setopts is called on a
+    socket closed by the peer.
+  * inets: A vulnerability in the httpd module (inets application)
+    regarding directory traversal that was introduced in OTP 22.3.1
+    and corrected in OTP 22.3.4.6. It was also introduced in OTP
+    23.0 and corrected in OTP 23.1 The vulnerability is registered
+    as CVE-2020-25623 (boo#1177354) The vulnerability is only exposed
+    if the http server (httpd) in the inets application is used. The
+    vulnerability makes it possible to read arbitrary files which
+    the Erlang system has read access to with for example a
+    specially prepared http request.
+  * inets: Add support of PATCH method in mod_esi.
+  * compiler: If the update of a map with the 'Map#{Key := Value}'
+    syntax failed, the line number in the stack backtrace could be
+    incorrect.
+  * compiler: Fixed a performance bug that slowed down compilation
+    of modules with deeply nested terms.
+  * compiler: The compiler could in rare circumstances do an an
+    unsafe optimization that would result in a matching of a nested
+    map pattern would fail to match.
+  * compiler: Fixed a bug in the validator that caused it to reject
+    valid code.
+  * public_key: Fixed an insignificant whitespace issue when
+    decoding PEM file.
+  * public_key: Experimental OCSP client support.
+  * public_key: Use user returned path validation error for
+    selfsigned cert. It allows users of the ssl application to
+    customize the generated TLS alert, within the range of defined
+    alerts.
+  * public_key: add API function to retrieve the subject-ID of an
+    X509 certificate
+  * runtime_tools: Fixed a crash in appmon_info triggered by trying
+    to read port info from a port that was in the process of
+    terminating. appmon_info is used by observer to get information
+    from the observed node.
+  * megaco: The expected number of warnings when (yecc) generating
+    v2 and v3 (text) parser's was incorrect.
+  * hipe: Fixed a warning issued when building the hipe
+    application.
+  * odbc: Changes in order to build on the Haiku operating system.
+    Thanks to Calvin Buckley
+  * crypto: Fix type spec bug in crypto for crypto_init and
+    crypto:one_time
+  * crypto: The deprecation message for crypto:rand_uniform/2
+    indicated a non-existent function. The correct one
+    (rand:uniform/1) is now suggested.
+  * crypto: Implemented a workaround to allow fallback from using
+    the EVP API for Diffie-Hellman key generation
+  * crypto: The internal Diffie-Hellman high level API for key
+    generation was slow in old and by OpenSSL now unsupported
+    cryptolib versions (1.0.1 and earlier). If such a cryptolib is
+    used anyhow, the low-level API is used internally in the crypto
+    application.
+  * sasl: Make release_handler more resilient against exiting
+    processes during upgrade.
+- Changes for 23.0.4:
+  * stdlib: When a temporary child of a simple_one_for_one
+    supervisor died, the internal state of the supervisor would be
+    corrupted in a way that would cause the supervisor to retain
+    the start arguments for subsequent children started by the
+    supervisor, causing unnecessary growth of the supervisor's
+    heap. There state corruption could potentially cause other
+    problems as well.
+  * erts: The ERTS internal I/O poll implementation could get into
+    an inconsistent state causing input events to be ignored.
+  * megaco: The v2 and v3 parsers could not properly decode some
+    IPv6 addresses.
+
+-------------------------------------------------------------------
 Mon Aug 24 10:20:01 UTC 2020 - Gabriele Santomaggio <g.santomaggio@gmail.com>
 
 - Changes for 23.0.3:
