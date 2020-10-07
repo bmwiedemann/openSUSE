@@ -1,7 +1,7 @@
 #
 # spec file for package xmodmap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} >= 1550
+%define UsrEtcMove 1
+%endif
 
 Name:           xmodmap
 Version:        1.0.10
@@ -22,7 +26,7 @@ Release:        0
 Summary:        Utility to modify keymaps and pointer button mappings in X
 License:        MIT
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Source1:        Xmodmap.template
 Source2:        Xmodmap.remote.template
@@ -50,14 +54,25 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+%if 0%{?UsrEtcMove}
+install -m0644 -D %{SOURCE1} %{buildroot}%{_distconfdir}/X11/Xmodmap
+install -m0644 -D %{SOURCE2} %{buildroot}%{_distconfdir}/X11/Xmodmap.remote
+%else
 install -m0644 -D %{SOURCE1} %{buildroot}%{_sysconfdir}/X11/Xmodmap
 install -m0644 -D %{SOURCE2} %{buildroot}%{_sysconfdir}/X11/Xmodmap.remote
+%endif
 
 %files
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog COPYING README.md
+%if 0%{?UsrEtcMove}
+%dir %{_distconfdir}/X11
+%{_distconfdir}/X11/Xmodmap
+%{_distconfdir}/X11/Xmodmap.remote
+%else
 %config %{_sysconfdir}/X11/Xmodmap
 %config %{_sysconfdir}/X11/Xmodmap.remote
+%endif
 %{_bindir}/xmodmap
 %{_mandir}/man1/xmodmap.1%{?ext_man}
 

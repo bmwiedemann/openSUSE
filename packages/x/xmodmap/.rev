@@ -67,4 +67,16 @@
     fixes &amp; janitorial cleanups.</comment>
     <requestid>677967</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d9750dac1a99bc051a2f20857167e5eb</srcmd5>
+    <version>1.0.10</version>
+    <time>1602072968</time>
+    <user>dimstar_suse</user>
+    <comment>- reenabled move to /usr/etc/X11 for Tumbleweed (boo#1173053)
+
+- reverted move to /usr/etc/X11 for now (boo#1173053, comment#3)
+
+- moved Xmodmap files to /usr/etc/X11 (boo#1173053)</comment>
+    <requestid>833264</requestid>
+  </revision>
 </revisionlist>
