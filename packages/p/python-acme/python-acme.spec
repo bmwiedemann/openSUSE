@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define libname acme
 Name:           python-%{libname}
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0

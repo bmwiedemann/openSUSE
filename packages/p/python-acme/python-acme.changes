@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:05:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 1.9.0
+  * sync with the main certbot package
+
+-------------------------------------------------------------------
+Mon Sep 28 13:48:23 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 1.8.0
+  * Support for Python 3.5 has been removed.
+  * The acme library can now tell the ACME server to clear contact information by passing an empty
+    tuple to the contact field of a Registration message.
+
+-------------------------------------------------------------------
 Fri Aug 21 08:28:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.7.0
