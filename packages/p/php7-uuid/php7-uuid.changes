@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:03:59 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Upgraded to version 1.2.0
+  * raise warnings on bad input value with PHP 7
+  * promote warnings to ValueError with PHP 8
+  * add type hinting with PHP 8
+  * fix bug #66982 uuid_mac checks wrong bit/byte for valid MAC address 
+
+-------------------------------------------------------------------
 Fri Nov 29 08:36:03 UTC 2019 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Upgraded to version 1.1.0

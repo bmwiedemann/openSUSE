@@ -1,7 +1,7 @@
 #
 # spec file for package php7-uuid
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pkg_name    uuid
 #
 Name:           php7-uuid
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        PHP UUID support functions
 License:        LGPL-2.1-only
@@ -57,7 +57,7 @@ CXXFLAGS="%{optflags}"
 export CFLAGS
 export CXXFLAGS
 ../configure --with-%{pkg_name}=%{_usr} --with-libdir=%{_lib}
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -81,7 +81,6 @@ fi
 
 
 %files
-%defattr(-,root,root,-)
 %{_libdir}/%{php_name}/extensions/%{pkg_name}.so
 %config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/%{pkg_name}.ini
 %license LICENSE
