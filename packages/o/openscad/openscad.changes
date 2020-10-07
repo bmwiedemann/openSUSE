@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 12:05:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- openGL is required but Arm uses openGL ES, so exclude %arm
+  and aarch64
+
+-------------------------------------------------------------------
 Fri Oct  2 08:10:59 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build with new C++ compilers, add boost_include.diff

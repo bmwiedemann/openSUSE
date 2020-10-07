@@ -51,6 +51,8 @@ BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
+# With v2019.05, openGL is required but Arm uses openGL ES
+ExcludeArch:    %arm aarch64
 
 %description
 OpenSCAD is a software for creating solid 3D CAD objects. It does not
