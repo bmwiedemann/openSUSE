@@ -1,8 +1,0 @@
-<package name="jamin" project="openSUSE:Factory">
-  <title>JACK Audio Mastering Interface</title>
-  <description>JAMin is the JACK Audio Connection Kit (JACK) audio mastering
-interface.  JAMin is designed to perform professional audio mastering
-of stereo input streams.  It uses LADSPA for digital signal processing
-(DSP).</description>
-  <devel project="multimedia:apps" package="jamin"/>
-</package>
