@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 19:15:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.1:
+  - async operations via aiohttp
+- Add avoid_network_tests.patch to skip over network requiring
+  test (gh#dask/gcsfs#292).
+
+-------------------------------------------------------------------
 Mon Apr  6 13:52:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.6.1

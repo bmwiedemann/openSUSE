@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>791799</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>412af59f036cc16ec06d32a40418e4a3</srcmd5>
+    <version>0.7.1</version>
+    <time>1602073107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.1:
+  - async operations via aiohttp
+- Add avoid_network_tests.patch to skip over network requiring
+  test (gh#dask/gcsfs#292).
+</comment>
+    <requestid>839893</requestid>
+  </revision>
 </revisionlist>

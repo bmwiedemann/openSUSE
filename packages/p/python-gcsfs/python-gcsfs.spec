@@ -19,18 +19,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-gcsfs
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/dask/gcsfs
 Source:         https://files.pythonhosted.org/packages/source/g/gcsfs/gcsfs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM avoid_network_tests.patch gh#dask/gcsfs#292 mcepl@suse.com
+# skip tests which require network connection
+Patch0:         avoid_network_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-aiohttp
 Requires:       python-decorator
-Requires:       python-fsspec >= 0.6.0
+Requires:       python-fsspec >= 0.8.0
 Requires:       python-google-auth >= 1.2
 Requires:       python-google-auth-oauthlib
 Requires:       python-requests
@@ -38,9 +42,10 @@ Recommends:     dask
 Recommends:     python-gcsfs-fuse = %{version}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module fsspec >= 0.6.0}
+BuildRequires:  %{python_module fsspec >= 0.8.0}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module google-auth >= 1.2}
 BuildRequires:  %{python_module google-auth-oauthlib}
@@ -69,6 +74,7 @@ This package provides the optional FUSE interface.
 
 %prep
 %setup -q -n gcsfs-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -79,7 +85,7 @@ This package provides the optional FUSE interface.
 
 %check
 # Tests test_map_simple, test_map_with_data and test_map_clear_empty require a network connection
-%pytest -k "not (test_map_simple or test_map_with_data or test_map_clear_empty)" gcsfs
+%pytest -k "not network" gcsfs/tests
 
 %files %{python_files}
 %doc README.rst
