@@ -1,0 +1,107 @@
+diff -u -r ../old/etc/X11/xinit/xinitrc ./etc/X11/xinit/xinitrc
+--- ../old/etc/X11/xinit/xinitrc	2020-08-23 17:36:47.813664000 +0200
++++ ./etc/X11/xinit/xinitrc	2020-09-08 12:57:08.577438000 +0200
+@@ -27,7 +27,11 @@
+ # Source common code shared between the
+ # X session and X init scripts
+ #
+-. /etc/X11/xinit/xinitrc.common
++if [ -r /etc/X11/xinit/xinitrc.common ]; then
++    . /etc/X11/xinit/xinitrc.common
++elif [ -r /usr/etc/X11/xinit/xinitrc.common ]; then
++    . /usr/etc/X11/xinit/xinitrc.common
++fi
+ 
+ #
+ # Special for twm
+diff -u -r ../old/etc/X11/xinit/xinitrc.common ./etc/X11/xinit/xinitrc.common
+--- ../old/etc/X11/xinit/xinitrc.common	2020-03-24 12:39:54.076007000 +0100
++++ ./etc/X11/xinit/xinitrc.common	2020-09-08 12:56:59.193451000 +0200
+@@ -1,4 +1,4 @@
+-# /etc/X11/xinit/xinitrc.common
++# /usr/etc/X11/xinit/xinitrc.common
+ #
+ # Common code used in X session and X init scripts.
+ # File shall be sourced but not executed by the scripts.
+@@ -15,6 +15,7 @@
+ # Some common user and system files,
+ #
+     XETCDIR=/etc/X11
++ XUSRETCDIR=/usr/etc/X11
+   xdefaults=$HOME/.Xdefaults
+  xresources=$HOME/.Xresources
+     xmodmap=$HOME/.Xmodmap
+@@ -37,9 +38,15 @@
+ #
+ # Run user xinit scripts.
+ #
+-for script in /etc/X11/xinit/xinitrc.d/*; do
++for script in /usr/etc/X11/xinit/xinitrc.d/* \
++              /etc/X11/xinit/xinitrc.d/*; do
+     test -e $script || continue
+     test -d $script && continue
++    # higher priority for /etc/X11/xinit/xinitrc.d ...
++    if echo $script | grep -q ^/usr; then
++        sname=$(basename $script)
++        test -e /etc/X11/xinit/xinitrc.d/$sname && continue
++    fi
+     case "$script" in
+ 	.*)		continue ;;
+ 	*.rpm*)		continue ;;
+@@ -140,7 +147,11 @@
+ #
+ # Start the XIM server
+ #
+-XIMFILE=/etc/X11/xim
++if [ -r /etc/X11/xim ]; then
++    XIMFILE=/etc/X11/xim
++elif [ -r /usr/etc/X11/xim ]; then
++    XIMFILE=/usr/etc/X11/xim
++fi
+ test -r $HOME/.xim && XIMFILE=$HOME/.xim
+ test -r $XIMFILE   && source $XIMFILE
+ 
+@@ -167,12 +178,16 @@
+     # apply system's xkb first
+     if test -s $XETCDIR/Xkbmap; then
+         test -r $XETCDIR/Xkbmap && cat $XETCDIR/Xkbmap | xkbcomp - $DISPLAY
++    elif test -s $XUSRETCDIR/Xkbmap; then
++        test -r $XUSRETCDIR/Xkbmap && cat $XUSRETCDIR/Xkbmap | xkbcomp - $DISPLAY
+     fi
+     test -r "$xkbmap"  && cat "$xkbmap" | xkbcomp - $DISPLAY
+ elif test -s "$xmodmap"; then
+     test -r "$xmodmap" && xmodmap "$xmodmap"
+ elif test -s $XETCDIR/Xkbmap ; then
+     test -r $XETCDIR/Xkbmap && cat $XETCDIR/Xkbmap | xkbcomp - $DISPLAY
++elif test -s $XUSRETCDIR/Xkbmap ; then
++    test -r $XUSRETCDIR/Xkbmap && cat $XUSRETCDIR/Xkbmap | xkbcomp - $DISPLAY
+ fi
+ 
+ #
+@@ -182,6 +197,9 @@
+     if test -r $XETCDIR/Xresources ; then
+ 	xrdb -nocpp -load   -retain $XETCDIR/Xresources
+ 	xrdb -I$HOME -merge "$xdefaults"
++    elif test -r $XUSRETCDIR/Xresources ; then
++        xrdb -nocpp -load   -retain $XUSRETCDIR/Xresources
++        xrdb -I$HOME -merge "$xdefaults"
+     else
+ 	xrdb -I$HOME -load -retain "$xdefaults"
+     fi
+@@ -192,11 +210,16 @@
+     if test -r $XETCDIR/Xresources ; then
+ 	xrdb -nocpp -load  -retain $XETCDIR/Xresources
+ 	xrdb -I$HOME -merge "$xresources"
++    elif test -r $XUSRETCDIR/Xresources ; then
++        xrdb -nocpp -load  -retain $XUSRETCDIR/Xresources
++        xrdb -I$HOME -merge "$xresources"
+     else
+ 	xrdb -I$HOME -load -retain "$xresources"
+     fi
+ elif test -r $XETCDIR/Xresources ; then
+     xrdb -nocpp -load -retain $XETCDIR/Xresources
++elif test -r $XUSRETCDIR/Xresources ; then
++    xrdb -nocpp -load -retain $XUSRETCDIR/Xresources
+ fi
+ 
+ # prevent gnome-session from failing (boo#1163262)

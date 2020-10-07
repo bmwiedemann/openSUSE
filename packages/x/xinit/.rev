@@ -286,4 +286,12 @@
     <comment>- xinitrc: SuSE --&gt; SUSE (boo#1175123)</comment>
     <requestid>828808</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>7f47da595cfc22d513d193eac137a385</srcmd5>
+    <version>1.4.1</version>
+    <time>1602072985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839756</requestid>
+  </revision>
 </revisionlist>

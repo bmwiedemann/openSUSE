@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Oct  4 09:47:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Properly track the compatibility symlink
+
+-------------------------------------------------------------------
+Tue Sep  8 23:09:02 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- simplified UsrEtcMove enable/disable logic in specfile 
+
+-------------------------------------------------------------------
+Tue Sep  8 11:36:36 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- xinit-tarball.patch/xinit.spec
+  * reenabled move to /usr/etc/X11/xinit
+  * fixed remaining issues mentioned in boo#1173052, comment#6
+    and boo#1176212, comment#7
+
+-------------------------------------------------------------------
+Tue Sep  8 09:44:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- reverted move to /usr/etc/X11/xinit for now (boo#1173052, comment#6)
+
+-------------------------------------------------------------------
+Sat Sep  5 02:48:39 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved xinit files to /usr/etc/X11/xinit and removed xinitrc
+  skeleton (boo#1173052) 
+- xinit-tarball.patch
+  * adjust tarball contenct to /usr/etc move (boo#1173052)
+
+-------------------------------------------------------------------
 Sun Aug 23 15:38:01 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - xinitrc: SuSE --> SUSE (boo#1175123) 

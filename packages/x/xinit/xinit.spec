@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} >= 1550
+%define UsrEtcMove 1
+%endif
+
 Name:           xinit
 Version:        1.4.1
 Release:        0
@@ -32,6 +36,7 @@ Patch1:         xinit-client-session.patch
 Patch2:         xinit-suse.patch
 Patch3:         xinit-tolerant-hostname-changes.patch
 Patch4:         xinit-nolonger-unset-dbus-session.patch
+Patch5:         xinit-tarball.patch
 # needed for patch0
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -62,16 +67,25 @@ terminate.
 
 %prep
 %setup -q
+%if 0%{?UsrEtcMove}
+sed -i 's+/etc/X11+%{_libexecdir}+' %{PATCH0}
+%endif
 %patch0 -p0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+### patch is applied later in %install section
+#%patch5 -p0
 # needed for patch0
 autoreconf -fi
 
 %build
+%if 0%{?UsrEtcMove}
+%configure --with-xinitdir=%{_libexecdir}/xinit
+%else
 %configure
+%endif
 make %{?_smp_mflags}
 %{__cc} %{optflags} -o keygen %{SOURCE2}
 
@@ -81,15 +95,35 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_mandir}/man1
 install -m 0711 keygen %{buildroot}%{_bindir}/keygen
 pushd %{buildroot}
 tar xf %{SOURCE1}
+%if 0%{?UsrEtcMove}
+patch -p0 < %{PATCH5}
+mkdir -p %{buildroot}%{_libexecdir}/xinit
+mv etc/X11/xinit/{xinitrc,xserverrc} %{buildroot}%{_libexecdir}/xinit
+mkdir -p usr/etc/X11/xinit/xinitrc.d
+mv etc/X11/Xresources usr/etc/X11
+mv etc/X11/xinit/xinitrc.common usr/etc/X11/xinit
+# Compatibility symlink for user xinitrc files
+ln -s /usr/etc/X11/xinit/xinitrc.common etc/X11/xinit/xinitrc.common
+rmdir etc/X11/xinit/xinitrc.d
+%endif
 popd
-install -D %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc %{buildroot}%{_sysconfdir}/skel/.xinitrc.template
 
 %files
 %defattr(-,root,root)
 %doc ChangeLog COPYING README.md
+%if 0%{?UsrEtcMove}
+%dir %{_distconfdir}/X11
+%{_distconfdir}/X11/xinit/
+%{_distconfdir}/X11/Xresources
+%dir %{_libexecdir}/xinit
+%attr(0755,root,root) %{_libexecdir}/xinit/xinitrc
+%attr(0755,root,root) %{_libexecdir}/xinit/xserverrc
+%dir %{_sysconfdir}/X11/xinit/
+%config %{_sysconfdir}/X11/xinit/xinitrc.common
+%else
 %config %{_sysconfdir}/X11/xinit/
 %config %{_sysconfdir}/X11/Xresources
-%config %{_sysconfdir}/skel/.xinitrc.template
+%endif
 %{_bindir}/keygen
 %{_bindir}/startx
 %{_bindir}/xinit
