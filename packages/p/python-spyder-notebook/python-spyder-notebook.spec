@@ -29,17 +29,20 @@ URL:            https://github.com/spyder-ide/spyder-notebook
 Source0:        https://files.pythonhosted.org/packages/source/s/spyder-notebook/spyder-notebook-%{version}.tar.gz
 # ... but only the GitHub archive provides the unit tests
 Source1:        https://github.com/spyder-ide/spyder-notebook/archive/v%{version}.tar.gz#/spyder-notebook-%{version}-gh.tar.gz
-# PATCH-FIX-OPENSUSE https://github.com/pytest-dev/pytest-qt/issues/319
-Patch0:         spyder-notebook-destroyqtwidgets.patch
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-QtPy
 Requires:       python-nbformat
 Requires:       python-notebook >= 4.3
 Requires:       python-psutil
 Requires:       python-requests
 Requires:       spyder >= 4.1
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+Provides:       spyder-notebook = %{version}-%{release}
+Obsoletes:      spyder-notebook < %{version}-%{release}
+Provides:       spyder3-notebook = %{version}-%{release}
+Obsoletes:      spyder3-notebook < %{version}-%{release}
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module flaky}
@@ -55,23 +58,9 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  spyder >= 4.1
 BuildRequires:  xdpyinfo
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
-Spyder, the Scientific Python Development Environment, is an
-IDE for researchers, engineers and data analysts.
-
-This package contains the plugin that allows Spyder to control
-breakpoints.
-
-%package    -n spyder-notebook
-Summary:        Jupyter Notebook plugin for the Spyder IDE
-Group:          Development/Languages/Python
-Provides:       spyder3-notebook = %{version}
-Obsoletes:      spyder3-notebook < %{version}
-
-%description -n spyder-notebook
 Spyder, the Scientific Python Development Environment, is an
 IDE for researchers, engineers and data analysts.
 
@@ -85,7 +74,6 @@ tar --strip-components=1 -xzf %{SOURCE1} \
     spyder-notebook-%{version}/spyder_notebook/tests \
     spyder-notebook-%{version}/spyder_notebook/utils/tests \
     spyder-notebook-%{version}/spyder_notebook/widgets/tests
-%patch0 -p1
 sed -i 's/\r$//' CHANGELOG.md README.md
 chmod -x spyder_notebook/utils/templates/welcome-dark.html
 
@@ -108,8 +96,7 @@ export QTWEBENGINE_DISABLE_SANDBOX=1
 # rest of deselcted test_plugin tests: passing but produces XIO errors with xvfb at the end
 %pytest -k "not (test_plugin and (shutdown or register or close or save))"
 
-# Caution: Package name is not singlespec ready
-%files -n spyder-notebook -f spyder_notebook-%{python_bin_suffix}.lang
+%files %{python_files} -f spyder_notebook-%{python_bin_suffix}.lang
 %doc CHANGELOG.md README.md
 %license LICENSE
 %dir %{python_sitelib}/spyder_notebook
