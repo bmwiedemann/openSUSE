@@ -1,0 +1,11 @@
+--- deps/Framework/include/opengl/OpenGlDef.h.orig	2020-10-06 15:16:07.558436331 +0200
++++ deps/Framework/include/opengl/OpenGlDef.h	2020-10-06 15:16:17.962536297 +0200
+@@ -40,7 +40,7 @@
+ #include <GL/gl.h>
+ #include <GL/glu.h>
+ #elif defined(GLES_COMPATIBILITY)
+-#include <EGL/egl.h>
++// #include <EGL/egl.h>
+ #include <GLES3/gl3.h>
+ #endif
+ 

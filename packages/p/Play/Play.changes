@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Oct  6 14:32:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with openGL ES:
+  * fix-aarch64.patch
+
+-------------------------------------------------------------------
+Tue Oct 06 13:17:46 UTC 2020 - guillaume.gardet@opensuse.org
+
+- Update to version 0~git20201003:
+  * Allow getting block providers from OpticalMedia.
+  * Fix memory leak that can happen when failing to create an optical media.
+  * Disable dual layer detection when getting disc id.
+  * Remove dead code.
+  * Fetch all tags in Travis.
+  * Add missing blending formulae in D3D9.
+  * Add missing blending formulae in OGL.
+  * Save/load module states in a nicer manner.
+  * Fix find predicate.
+  * Save/Load Timrman state.
+  * Add SaveState and LoadState in Module interface.
+  * Keep track of allocated timers.
+  * Enable textures on lines.
+  * Remove useless assert.
+  * Fix code style.
+  * Implement line rendering in Vulkan.
+  * Scan timer list in reverse order.
+  * Return an error when no timer is found.
+  * IOP timer 3 can also count on hblank.
+  * Improve formatting.
+  * Set some defaults when creating an input profile.
+  * Make Config All work on pad 2.
+  * Allow unbound buttons to be saved and loaded properly.
+  * Use enum.
+  * Fix build.
+  * Rename BindingModel to InputBindingModel.
+  * Handle SetMainMode in PADMAN HLE.
+  * Cleanup.
+  * Handle multiple pads in PADMAN HLE.
+  * Only process pad 1 in HLE PADMAN.
+  * Update both pads in PH_GenericInput.
+  * Allow defining bindings for pad 2.
+  * Move Amazon S3 client in Framework submodule.
+  * Add missing pixel format.
+  * Write out current directory when ChDir is called.
+  * Add way to change the system's language.
+  * Cleanup.
+  * Remove some old style pointer handling.
+  * Update Framework submodule.
+  * Style fix
+  * Fix filter logic
+  * Make sure we only filter repeat CIFS mounts
+  * Add CIFS mount support for Android clients
+  * Tidy up the code.
+  * Mask ADDR field from DMAtags.
+  * Request Legacy External Storage on Android.
+  * Update Framework submodule.
+  * Sign app only if not building a pull request.
+  * Send app for notarization by Apple.
+  * Sign macOS executable.
+  * Import macOS dev id certificate in TravisCI.
+  * Use TravisCI's homebrew addon.
+  * Rename macosx to macos.
+  * Code style fix.
+  * Update CodeGen submodule.
+  * Disable NSOpenGLContext thread assertions.
+  * Build using Xcode 11.6 for macOS on Travis.
+  * Take into account DSAY not being a multiple of page height.
+  * Add Espgaluda transfer invalidation range test.
+  * Fix crash that can occur when trying to delete covers.
+  * Update Android build environment.
+
+-------------------------------------------------------------------
 Tue Aug 25 19:27:10 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200825:

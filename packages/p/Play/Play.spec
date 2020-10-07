@@ -17,14 +17,14 @@
 
 
 Name:           Play
-Version:        0~git20200825
+Version:        0~git20201003
 Release:        0
 Summary:        Play! - PlayStation 2 Emulator
 License:        MIT
 Group:          System/Emulators/Other
 URL:            http://purei.org
 Source:         %{name}-%{version}.tar.xz
-
+Patch0:         fix-aarch64.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  boost-devel
@@ -51,6 +51,7 @@ This package is for RetroArch/libretro front-end.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 mkdir build
