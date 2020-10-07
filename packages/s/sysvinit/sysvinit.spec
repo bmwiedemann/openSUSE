@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SCVER  1.20
-%define SIVER  2.96
-%define START  0.63
+%define SIVER  2.97
+%define START  0.65
 Version:        %{SIVER}
 Release:        0
 Summary:        SysV-Style init
@@ -29,15 +28,14 @@ Group:          System/Base
 BuildRequires:  blog-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
-Url:            https://savannah.nongnu.org/projects/sysvinit/
-Source:         sysvinit-%{SIVER}.tar.xz
+URL:            https://savannah.nongnu.org/projects/sysvinit/
+Source:         http://download.savannah.nongnu.org/releases/sysvinit/sysvinit-%{SIVER}.tar.xz
 Source1:        https://github.com/bitstreamout/killproc/archive/v%{KPVER}.tar.gz#/killproc-%{KPVER}.tar.gz
-Source2:        startpar-%{START}.tar.xz
+Source2:        http://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz
 Patch:          %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch
 Patch9:         %{name}-2.90-no-kill.patch
 Patch50:        startpar-0.58.dif
-Patch51:        startpar-sysmacros.patch
 
 %description
 System V style init programs by Miquel van Smoorenburg that control the
@@ -56,7 +54,7 @@ Requires:       blog
 
 %description tools
 Helper tools from sysvinit that support booting, including but not exclusive
-to startpar, killproc and pidof. System V init specific programs are in the 
+to startpar and killproc. System V init specific programs are in the 
 sysvinit package.
 
 %prep
@@ -76,7 +74,6 @@ ln -t../%{name}-%{SIVER}/doc/killproc README.md
 popd
 pushd ../startpar-%{START}
 %patch50
-%patch51 -p1
 popd
 %_fixowner .
 %_fixgroup .
@@ -106,26 +103,26 @@ popd
 # Remove files not packed:
 #
   rm -vf %{buildroot}/usr/include/initreq.h
+# pidof is part of procps-ng; let's remove the symlinks to killproc5 here
+rm -f %{buildroot}{/sbin,/bin,%{_mandir}/man8}/pidof{,.8}
 
 %files tools
 %defattr (-,root,root,755)
 %license COPYING COPYRIGHT
 %doc doc/Propaganda doc/Changelog doc/killproc
-/bin/pidof
 /bin/usleep
 /bin/fsync
-/bin/startpar
 /sbin/fstab-decode
 /sbin/checkproc
 /sbin/pidofproc
 /sbin/killproc
 /sbin/killall5
-/sbin/pidof
 /sbin/startproc
 /sbin/rvmtab
 /sbin/vhangup
 /sbin/mkill
 /sbin/start_daemon
+%{_bindir}/startpar
 %doc %{_mandir}/man1/usleep.1.gz
 %doc %{_mandir}/man1/fsync.1.gz
 %doc %{_mandir}/man1/startpar.1.gz
@@ -134,7 +131,6 @@ popd
 %doc %{_mandir}/man8/pidofproc.8.gz
 %doc %{_mandir}/man8/killall5.8.gz
 %doc %{_mandir}/man8/killproc.8.gz
-%doc %{_mandir}/man8/pidof.8.gz
 %doc %{_mandir}/man8/startproc.8.gz
 %doc %{_mandir}/man8/start_daemon.8.gz
 %doc %{_mandir}/man8/rvmtab.8.gz

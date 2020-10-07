@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Aug 26 12:42:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop /bin/pidof and /sbin/pidof, including corresponding man
+  page: let's switch to pidof as provided by procps-ng.
+
+-------------------------------------------------------------------
+Tue Aug 25 14:45:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to sysvinit 2.97:
+  * Check $(ROOT) filesystem for libcrypt instead of a hardcoded
+    path to /usr.
+  * Code clean-up and making sure we avoid freeing unused memory.
+  * Added shell script which converts systemd unit files into
+    init.d style scripts.
+  * Allow init to load configuration data from files stored in
+    /etc/inittab.d/
+  * Allow shutdown time to be specified in the format +hh:mm. This
+    is in addition to the existing formats such as hh:mm, +m, and
+    "now".
+  * Fixed typos in manual pages.
+- Update startpar to 0.65:
+  + Make sure startpar testsuite can find insserv executable in
+    /usr/sbin or /sbin.
+  + Added PREFIX variable to Makefile and testsuite to make
+    location of startpar and insserv more flexible.
+- Rebase sysvinit-2.90.dif.
+- Drop SCVER defines: not used in any place.
+- Drop startpar-sysmacros.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Sep 18 07:45:38 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Update to sysvinit 2.96

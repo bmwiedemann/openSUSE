@@ -2,8 +2,10 @@
  src/Makefile |   27 +++++++++------------------
  1 file changed, 9 insertions(+), 18 deletions(-)
 
---- src/Makefile
-+++ src/Makefile	2019-06-17 13:24:27.189649266 +0000
+Index: src/Makefile
+===================================================================
+--- src/Makefile.orig
++++ src/Makefile
 @@ -9,7 +9,7 @@
  #
  
@@ -44,9 +46,9 @@
  MANDB	:=
  endif
  
-@@ -202,13 +198,8 @@ install:	all
- 		done
+@@ -205,13 +201,8 @@ install:	all
  		# $(INSTALL_DIR) $(ROOT)/etc/
+ 		$(INSTALL_DIR) $(ROOT)/etc/inittab.d
  		# $(INSTALL_EXEC) ../doc/initscript.sample $(ROOT)/etc/
 -		ln -sf halt $(ROOT)/sbin/reboot
 -		ln -sf halt $(ROOT)/sbin/poweroff

@@ -1,28 +1,12 @@
----
- Makefile |    6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
-
---- Makefile
-+++ Makefile	2019-06-17 13:48:36.894736888 +0000
-@@ -11,10 +11,9 @@ mandir		= /usr/share/man
- man1dir		= $(mandir)/man1
- 
- SRCS		= startpar.c makeboot.c proc.c
+diff -ur -p0 startpar-0.65/Makefile startpar/Makefile
+--- Makefile	2020-07-07 02:04:06.000000000 +0200
++++ Makefile	2020-08-25 17:03:05.687028264 +0200
+@@ -15 +14,0 @@ SRCS		= startpar.c makeboot.c proc.c
 -CXXSRCS         = compiletest.cc
- HDRS		= makeboot.h proc.h
- REST		= COPYING Makefile startpar.1
+@@ -18 +17 @@ REST		= COPYING Makefile startpar.1
 -OBJS		= $(SRCS:.c=.o) $(CXXSRCS:.cc=.o)
 +OBJS		= $(SRCS:.c=.o)
- 
- STARTPAR        := $(shell pwd)/startpar
- TARBALL	        = $(PACKAGE)-$(VERSION).tar.xz
-@@ -45,8 +44,7 @@ ifeq ($(MAKECMDGOALS),makeboot)
- CFLAGS += -DTEST
- endif
- 
+@@ -50,2 +49 @@ endif
 -SOURCEFILES= compiletest.cc \
 -	     CHANGELOG \
 +SOURCEFILES= CHANGELOG \
-              COPYING \
-              makeboot.c \
-              makeboot.h \
