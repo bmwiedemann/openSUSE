@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct  5 20:16:12 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.29.0:
+  * Use pandas.testing (GH#4138) jakirkham
+  * Fix a few typos (GH#4131) Pav A
+  * Return right away in Cluster.close if cluster is already closed
+    (GH#4116) Tom Rochette
+  * Update async doc with example on .compute() vs client.compute()
+    (GH#4137) Benjamin Zaitlen
+  * Correctly tear down LoopRunner in Client (GH#4112) Sergey Kozlov
+  * Simplify Client._graph_to_futures() (GH#4127) Mads
+    R. B. Kristensen
+  * Cleanup new exception traceback (GH#4125) Krishan Bhasin
+  * Stop writing config files by default (GH#4123) Matthew Rocklin
+
+- changes from version 2.28.0:
+  * Fix SSL connection_args for progressbar connect (GH#4122) jennalc
+
+-------------------------------------------------------------------
 Sat Sep 19 15:08:52 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.27.0:
