@@ -805,4 +805,78 @@
     <comment></comment>
     <requestid>830260</requestid>
   </revision>
+  <revision rev="84" vrev="10">
+    <srcmd5>904198bb4e45459fe6715711925f0d7e</srcmd5>
+    <version>1.1.12</version>
+    <time>1602072982</time>
+    <user>dimstar_suse</user>
+    <comment>- removed /etc/X11/xdm/Keyboard.map since it meanwhile has been
+  replaced by /usr/share/systemd/kbd-model-map (used by YaST)
+
+- Don't create the compat symlinks in /etc on the fly, track them
+  properly as %config
+
+- /etc/X11/xdm/scripts/11-ssh-agent
+  * ssh-askpass now moved to /usr/libexec/ssh (boo#1175991) 
+
+- moved xdm/xdm-np PAM files to /usr/etc/pam.d, since lightdm has
+  been adjusted meanwhile
+
+- Switch to /usr/bin/pidof dependency, provided by procps-ng.
+
+- fixes in xdm-tarball.patch
+  * /usr/lib/X11/display-manager: fixes sddm, which didn't use 
+    xdm_reload_files in xdm_start_proc() of 
+    /usr/lib/X11/displaymanagers/sddm (boo#1173049)
+
+- fixes in xdm-tarball.patch
+  * symlink also $XDMDIR/xinitrc.common in /etc/X11/xinit; it
+    is still often sourced in old ~/.xinitrc user files ...
+
+- fixes in xdm-tarball.patch 
+  * fixed include path for generic Xresources in xdm's Xresources file
+  * fixed $XDMDIR in Xsession, so sys.xsession can be found
+  * sys.xsession: fixed syntax error in code, which reads 
+    additional xdm scripts
+  * display-manager: also symlink Xstartup and Xreset in 
+    /etc/X11/xdm (needed by lighdm)
+
+- specfile: 
+  * for now use again /etc/pam.d for xdm/xdm-np PAM files instead
+    of /usr/etc/pam.d (using the latter resulted in
+    &quot;authentificataion failure&quot; with lightdm)
+
+- reenabled move to /usr/etc/X11/xdm; updated xdm-tarball.patch
+  (includes changes from xinit-UsrEtcMove.patch) [boo#1176212]
+
+- xinit-UsrEtcMove.patch
+  * changes needed with xinitrc moving to %{_libexecdir}/xinit and
+    xinitrc.common moving to /usr/etc/X11/xinit/
+
+- reverted move to /usr/etc/X11/xdm for now due to boo#1176212
+
+- updated xdm-tarball.patch
+  * adjusted for changes in xmodmap and xinit (boo#1173049) 
+
+- xdm-tarball.patch
+  * /usr/etc changes still needed for xdm.tar.bz2; will need
+    more changes once xmodmap and xinit files are also moved to
+    /usr/etc (boo#1173049)
+
+- move /etc/X11/xdm --&gt; /usr/etc/X11/xdm and
+  /etc/pam.d -&gt; /usr/etc/pam.d; still TODO: adjust scripts in 
+  xdm.tar.bz2 (boo#1173049)
+
+- more cleanup
+  * no longer support sle12; adjusted xdm.tar.bz2 and
+    applied xdm-with-update-alternative.patch to this tarball
+
+- cleanup
+  * get rid of xdm-fallbacks.tar.bz2, which wasn't used any longer
+    since SUSE 12.1
+  * no longer support systmed based OSes like SUSE &lt; 12.1 and sle11;
+    removed therefore also xdm-consolekit.diff
+  * no longer support sle11</comment>
+    <requestid>839607</requestid>
+  </revision>
 </revisionlist>
