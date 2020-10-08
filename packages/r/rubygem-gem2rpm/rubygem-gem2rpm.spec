@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-gem2rpm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@
 %bcond_with     ruby25
 %bcond_with     ruby26
 %bcond_with     ruby27
+%bcond_with     ruby30
 %bcond_with     rubinius25
 
 Name:           rubygem-gem2rpm
@@ -730,6 +731,65 @@ fi
 %files -n ruby2.7-rubygem-gem2rpm-doc
 %defattr(-,root,root,-)
 %doc %{_libdir}/ruby/gems/2.7.0/doc/gem2rpm-%{version}
+%endif
+%endif
+
+%if %{with ruby30}
+%package -n ruby3.0-rubygem-gem2rpm
+Summary:        Generate rpm specfiles from gems
+Group:          Development/Languages/Ruby
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+
+%description -n ruby3.0-rubygem-gem2rpm
+Generate source rpms and rpm spec files from a Ruby Gem.
+The spec file tries to follow the gem as closely as possible
+
+%package -n ruby3.0-rubygem-gem2rpm-doc
+Summary:        RDoc documentation for %{mod_name}
+Group:          Development/Languages/Ruby
+Requires:       ruby3.0-rubygem-gem2rpm = %{version}
+
+%description -n ruby3.0-rubygem-gem2rpm-doc
+Documentation generated at gem installation time.
+Usually in RDoc and RI formats.
+
+
+%post -n ruby3.0-rubygem-gem2rpm
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.0-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm-%{version}   gem2rpm-%{version}   %{_bindir}/gem2rpm.ruby3.0-%{version} %{mod_weight}
+/usr/sbin/update-alternatives --install \
+    %{_bindir}/gem2rpm.ruby3.0 gem2rpm.ruby3.0 %{_bindir}/gem2rpm.ruby3.0-%{version} %{mod_weight}
+
+%preun -n ruby3.0-rubygem-gem2rpm
+if [ "$1" = 0 ] ; then
+    /usr/sbin/update-alternatives --remove gem2rpm          %{_bindir}/gem2rpm.ruby3.0-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.0-%{version}
+    /usr/sbin/update-alternatives --remove gem2rpm.ruby3.0  %{_bindir}/gem2rpm.ruby3.0-%{version}
+fi
+
+%files -n ruby3.0-rubygem-gem2rpm
+%defattr(-,root,root,-)
+%{_docdir}/ruby3.0-rubygem-gem2rpm
+#{_bindir}/gem2rpm-opensuse
+%{_bindir}/gem2rpm.ruby3.0-%{version}
+%ghost %{_bindir}/gem2rpm.ruby3.0
+%ghost %{_bindir}/gem2rpm-%{version}
+%ghost %{_bindir}/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm
+%ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.0
+%ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+# cache file
+%{_libdir}/ruby/gems/3.0.0/cache/gem2rpm-%{version}.gem
+%{_libdir}/ruby/gems/3.0.0/gems/gem2rpm-%{version}
+%{_libdir}/ruby/gems/3.0.0/specifications/gem2rpm-%{version}.gemspec
+
+%if %{with docs}
+%files -n ruby3.0-rubygem-gem2rpm-doc
+%defattr(-,root,root,-)
+%doc %{_libdir}/ruby/gems/3.0.0/doc/gem2rpm-%{version}
 %endif
 %endif
 
