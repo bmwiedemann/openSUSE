@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 16 17:55:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.11.1:
+  * For complete list of changes see:
+    https://git.kernel.org/pub/scm/utils/dash/dash.git/log/?qt=range&q=v0.5.10..v0.5.11.1
+
+-------------------------------------------------------------------
 Tue Mar 31 11:29:51 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon to %optflags in order to fix boo#1160260.

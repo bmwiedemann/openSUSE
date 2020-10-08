@@ -18,7 +18,7 @@
 
 
 Name:           dash
-Version:        0.5.10
+Version:        0.5.11.1
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause
@@ -52,6 +52,6 @@ ln -s %{_bindir}/dash %{buildroot}/bin/dash
 %doc ChangeLog
 %{_bindir}/dash
 /bin/dash
-%{_mandir}/man1/dash.1%{ext_man}
+%{_mandir}/man1/dash.1%{?ext_man}
 
 %changelog
