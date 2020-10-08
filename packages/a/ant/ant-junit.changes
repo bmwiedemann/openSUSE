@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:38:21 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.10.9
+  * Security fix: [bsc#1177180, CVE-2020-11979]
+    - Insecure temporary file vulnerability
+  * Fixed bugs:
+    - The ftp task could throw a NullPointerException if an
+      error occured.
+    - Propertyset now also sees in-scope local properties.
+    - Replaced ReaderInputStream with the version of Apache
+      Commons IO due to problems with surrogate pairs.
+    - <fixcrlf> will no longer remove the temporary file it
+      just created before writing to it.
+    - <sshexec> and <scp> didn't deal with wildcard hostnames
+      in shs config files properly.
+  * Other changes:
+    - Ant will no longer log a warning if it doesn't find tools.jar.
+    - The <jar> task accepts now a nested <indexjarsmapper>
+      element that can be used to perform custom filename
+      transformations for the <indexjars> archives.
+    - Added a new PropertyEnumerator interface that extensions can
+      provide if they are managing properties unknown to the Ant project.
+    - Added some special code to support GraalVM JavaScript as
+      javax.script scripting engine for JavaScript. In particular we
+      relax some security settings of GraalVM so that scripts can access
+      Ant objects.
+    - Also Ant enables Nashorn compatibility mode by default, you can
+      disable that by setting the magic Ant property
+      ant.disable.graal.nashorn.compat to true.
+    - If the magic property ant.tmpdir hasn't been set and Ant can
+      control the permissions of directories it creates it will create an
+      owner-owned temporary directory unaccessible to others as default
+      tempdir as soon as a temporary file is created for the first time.
+
+-------------------------------------------------------------------
 Thu May 14 17:31:18 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update to 1.10.8

@@ -23,7 +23,7 @@
 %bcond_with junit5
 %bcond_with antlr
 Name:           ant
-Version:        1.10.8
+Version:        1.10.9
 Release:        0
 Summary:        Java-based build tool
 License:        Apache-2.0

@@ -24,7 +24,7 @@
 %bcond_with junit5
 %bcond_with antlr
 Name:           ant-junit
-Version:        1.10.8
+Version:        1.10.9
 Release:        0
 Summary:        Optional junit tasks for ant
 License:        Apache-2.0

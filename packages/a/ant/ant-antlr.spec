@@ -24,7 +24,7 @@
 %bcond_with junit5
 %bcond_without antlr
 Name:           ant-antlr
-Version:        1.10.8
+Version:        1.10.9
 Release:        0
 Summary:        Antlr Task for ant
 License:        Apache-2.0
