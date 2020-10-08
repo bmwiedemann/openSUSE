@@ -67,4 +67,15 @@
 - Move python-futures from BuildRequires to Requires as it is a runtime dependency</comment>
     <requestid>829782</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f1ced80144a6cc6249c783836451689</srcmd5>
+    <version>0.0.50</version>
+    <time>1602155533</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.0.50
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 839786 from glaubitz)</comment>
+    <requestid>839848</requestid>
+  </revision>
 </revisionlist>

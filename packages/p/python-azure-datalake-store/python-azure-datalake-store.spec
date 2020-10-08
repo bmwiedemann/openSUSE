@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-datalake-store
-Version:        0.0.49
+Version:        0.0.50
 Release:        0
 Summary:        Microsoft Azure Data Lake Store Client Library
 License:        MIT

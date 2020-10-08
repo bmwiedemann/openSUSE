@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  5 09:20:52 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 0.0.50
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+
+-------------------------------------------------------------------
 Wed Aug 26 12:51:11 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
   + Version 0.0.49
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 - Move python-futures from BuildRequires to Requires as it is a runtime dependency
 
 -------------------------------------------------------------------
@@ -13,7 +21,7 @@ Mon Jan  6 15:45:29 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - New upstream release
   + Version 0.0.48
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 
 -------------------------------------------------------------------
 Fri Oct  4 12:13:06 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -21,7 +29,7 @@ Fri Oct  4 12:13:06 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - New upstream release
   + Version 0.0.47
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 - Add python-requires to BuildRequires for Python 2.x
 - Drop patch to support older versions of setuptools as
   SLE-12 is now shipping with a recent enough version
@@ -33,7 +41,7 @@ Thu Apr 11 11:48:00 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 - New upstream release
   + Version 0.0.44
   + For detailed information about changes see the
-    HISTORY.txt file provided with this package
+    HISTORY.rst file provided with this package
 - Bump minimum version for namespace packages
   to 3.0.0 in BuildRequires and Requires
 - Remove python-devel package from BuildRequires
