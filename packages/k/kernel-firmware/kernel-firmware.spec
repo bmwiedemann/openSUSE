@@ -1,7 +1,7 @@
 #
 # spec file for package kernel-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __ksyms_path ^/lib/firmware
-%define version_unconverted 20200916
+%define version_unconverted 20201005
 
 Name:           kernel-firmware
-Version:        20200916
+Version:        20201005
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -40,8 +40,6 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       %{name}-rpmlintrc
-# Revert AMDGPU Picasso firmware due to regression (bsc#1174278)
-Source100:      amdgpu-picasso-887d2a103c2b.tar.xz
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -92,6 +90,9 @@ Obsoletes:      qlogic-firmware
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 
+# Force bzip2 instead of lzma compression (bsc#1176981)
+%define _binary_payload w9.bzdio
+
 %description
 This package contains the raw uncompressed firmware files for Linux kernel
 drivers.  This package is provided only for compatibility with older kernels
@@ -122,8 +123,8 @@ Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 Requires:       %{name}-amdgpu = %{version}
-Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-atheros = %{version}
+Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-bluetooth = %{version}
 Requires:       %{name}-bnx2 = %{version}
 Requires:       %{name}-brcm = %{version}
@@ -5675,7 +5676,7 @@ various USB WiFi / Ethernet drivers.
 
 
 %prep
-%setup -q -a 100
+%setup -q
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

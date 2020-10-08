@@ -88,6 +88,7 @@ vxge:		network
 brcmsmac:	brcm
 brcmfmac:	brcm
 tda7706:	media
+ti-vpe:		media
 wl1251:		ti
 wl12xx:		ti		wl12xx wl12xx_sdio wl12xx_spi
 wl18xx:		ti		wl18xx wlcore

@@ -64,6 +64,9 @@ BuildArch:      noarch
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 
+# Force bzip2 instead of lzma compression (bsc#1176981)
+%define _binary_payload w9.bzdio
+
 %description
 This package contains the raw uncompressed firmware files for Linux kernel
 drivers.  This package is provided only for compatibility with older kernels

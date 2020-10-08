@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:34:51 CEST 2020 - tiwai@suse.de
+
+- Placeholder for SLE15-SP3 package sync:
+  bsc#1143331, bsc#1160204, bsc#1154395 bsc#1155307, jsc#SLE-8379
+
+-------------------------------------------------------------------
+Mon Oct 05 17:23:04 UTC 2020 - tiwai@suse.com
+
+- Update to version 20201005 (git commit 58d41d0facca):
+  * ice: Add comms package file for Intel E800 series driver
+  * copy-firmware: Always write Link: entries
+  * amdgpu: update vega20 firmware for 20.40
+  * amdgpu: update vega12 firmware for 20.40
+  * amdgpu: update vega10 firmware for 20.40
+  * amdgpu: update renoir firmware for 20.40
+  * amdgpu: update raven2 firmware for 20.40
+  * amdgpu: update raven firmware for 20.40
+  * amdgpu: update picasso firmware for 20.40
+  * amdgpu: update navi14 firmware for 20.40
+  * amdgpu: update navi12 firmware for 20.40
+  * amdgpu: update navi10 firmware for 20.40
+  * linux-firmware: Add new VPDMA firmware 1b8.bin
+  * QCA : Updated firmware files for WCN3991
+- Drop the AMDGPU Picasso workaround (bsc#1174278)
+
+-------------------------------------------------------------------
+Thu Oct 01 08:53:02 UTC 2020 - tiwai@suse.com
+
+- Update to version 20200928 (git commit b78a66c909c7):
+  * linux-firmware: Update firmware for Cadence MHDP8546 DP bridge
+  * linux-firmware: Update firmware patch for Intel Bluetooth 7265 (D1)
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.1312
+  * linux-firmware: nvidia: move firmware symlinks to WHENCE
+  * linux-firmware: move i915 firmware symlinks to WHENCE
+  * linux-firmware: move iwlwifi-7265D-10.ucode symlink to WHENCE
+  * linux-firmware: Update Marvell Switchdev firmware with ABI changes
+
+-------------------------------------------------------------------
+Fri Sep 25 19:06:56 CEST 2020 - tiwai@suse.de
+
+- Force bzip2 compression for compatibility (boo#1176981):
+  for keeping the compatibility with older distros (like Leap 15.1)
+  that can't deal with lzma-compressed rpm files
+
+-------------------------------------------------------------------
 Mon Sep 21 09:30:03 UTC 2020 - tiwai@suse.com
 
 - Update to version 20200916 (git commit 00a84c516078):
