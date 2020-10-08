@@ -85,4 +85,16 @@
     CHANGELOG.md file provided with this package (forwarded request 827604 from glaubitz)</comment>
     <requestid>827657</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6fdb7457ffb641f4e89e360f377a6275</srcmd5>
+    <version>15.0.0</version>
+    <time>1602155555</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 15.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 839797 from glaubitz)</comment>
+    <requestid>839859</requestid>
+  </revision>
 </revisionlist>
