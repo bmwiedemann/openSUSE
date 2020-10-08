@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 29 03:07:32 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.006
+   see /usr/share/doc/packages/perl-File-HomeDir/Changes
+
+  1.006	2020-09-28
+      - re-release with minor fixes to cover modern toolchain
+      - apply fix for RT#128096 reported by ANDK, thank you Andreas
+
+-------------------------------------------------------------------
 Thu May  3 05:20:11 UTC 2018 - coolo@suse.com
 
 - updated to 1.004
