@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 19 03:13:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.01
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.01      2020-09-18 17:51:10Z
+      - Add rel filter to find_link() (GH#305) (Julien Fiegehenn)
+      - Fix typos (GH#304) (Ferenc Erki)
+
+-------------------------------------------------------------------
 Wed Jun 10 03:10:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.00

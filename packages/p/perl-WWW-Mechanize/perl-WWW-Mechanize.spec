@@ -17,7 +17,7 @@
 
 
 Name:           perl-WWW-Mechanize
-Version:        2.00
+Version:        2.01
 Release:        0
 %define cpan_name WWW-Mechanize
 Summary:        Handy web browsing in a Perl object
@@ -46,9 +46,13 @@ BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent) >= 6.45
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::Memory::Cycle) >= 1.06
 BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(Test::NoWarnings) >= 1.04
 BuildRequires:  perl(Test::Output)
+BuildRequires:  perl(Test::Taint) >= 1.08
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
