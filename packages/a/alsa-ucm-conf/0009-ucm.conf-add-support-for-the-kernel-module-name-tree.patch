@@ -1,0 +1,179 @@
+From d001c8de287f9fa3ce1814fb1c0804390576a19e Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 22 Jun 2020 17:52:54 +0200
+Subject: [PATCH 09/51] ucm.conf: add support for the kernel module name tree
+
+It seems that some ASoC drivers (mainly created from the DT tree)
+does not offer any good identification for the common part.
+This change adds the sysfs kernel module name lookup to
+module/<KernelModuleName>.conf .
+
+Also, modularize V1, V2Name, V2Module blocks. The V1 compatibility
+is turned off by default now.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/ucm.conf | 112 ++++++++++++++++++++++++++++++++++++++++------------------
+ 1 file changed, 77 insertions(+), 35 deletions(-)
+
+diff --git a/ucm2/ucm.conf b/ucm2/ucm.conf
+index 29bef5c96c00..ec8287817a5a 100644
+--- a/ucm2/ucm.conf
++++ b/ucm2/ucm.conf
+@@ -13,76 +13,118 @@
+ 
+ Syntax 3
+ 
++Define.V1 ""		# non-empty string to enable ucm v1 paths
++Define.V2Module yes	# empty string to disable
++Define.V2Name yes	# empty string to disable
++
+ If.driver {
+ 	Condition {
+ 		Type String
+ 		Empty "${CardNumber}"
+ 	}
+ 	True {
+-
+ 		#
+-		# The last probed path for no-hw-card:
++		# The probed path for no-hw-card:
+ 		#
+ 		#   ucm2/${OpenName}/${OpenName}.conf
+-		#   ucm/${OpenName}/${OpenName}.conf
+ 		#
+-
+ 		UseCasePath {
+ 			legacy {
+ 				Directory "${OpenName}"
+ 				File "${OpenName}.conf"
+ 			}
+-			v1_legacy {
+-				Version 1
+-				Directory "${OpenName}"
+-				File "${OpenName}.conf"
+-			}
+ 		}
+-
+ 	}
+ 	False {
+ 
+ 		#
+-		# The last probed path when hw-card is found:
++		# The probed path when hw-card is found:
+ 		#
++		#   ucm2/${KernelModule}/${KernelModule}.conf
+ 		#   ucm2/${CardDriver}/${CardLongName}.conf
+ 		#   ucm2/${CardDriver}/${CardDriver}.conf
+-		#   ucm/${CardLongName}/${CardLongName}.conf
+-		#   ucm/${CardName}/${CardName}.conf or \
+-		#			ucm/${OpenName}/${OpenName}.conf
+ 		#
+ 
+-		UseCasePath {
+-			longname {
+-				Directory "${CardDriver}"
+-				File "${CardLongName}.conf"
+-			}
+-			driver {
+-				Directory "${CardDriver}"
+-				File "${CardDriver}.conf"
++		If.V2Module {
++			Condition {
++				Type String
++				Empty "${var:V2Module}"
+ 			}
+-			v1_longname {
+-				Version 1
+-				Directory "${CardLongName}"
+-				File "${CardLongName}.conf"
++			False {
++				Define.KernelModulePath "class/sound/card${CardNumber}/device/driver"
++				Define.KernelModule "${sys:$KernelModulePath}"
++				UseCasePath.module {
++					Directory "module"
++					File "${var:KernelModule}.conf"
++				}
+ 			}
+ 		}
+-
+-		If.hw {
++		If.V2Name {
+ 			Condition {
+ 				Type String
+-				Haystack "${OpenName}.conf"
+-				Needle "hw:"
++				Empty "${var:V2Name}"
++			}
++			False.UseCasePath {
++				longname {
++					Directory "${CardDriver}"
++					File "${CardLongName}.conf"
++				}
++				driver {
++					Directory "${CardDriver}"
++					File "${CardDriver}.conf"
++				}
+ 			}
+-			True {
+-				UseCasePath.v1_cardnamme {
++		}
++	}
++}
++
++If.V1 {
++	Condition {
++		Type String
++		Empty "${var:V1}"
++	}
++	False.If.v1_driver {
++		Condition {
++			Type String
++			Empty "${CardNumber}"
++		}
++		True {
++			#
++			# The probed path for no-hw-card:
++			#
++			#   ucm/${OpenName}/${OpenName}.conf
++			#
++			UseCasePath.v1_legacy {
++				Version 1
++				Directory "${OpenName}"
++				File "${OpenName}.conf"
++			}
++		}
++		False {
++			#
++			# The ucm v1 probed path when hw-card is found:
++			#
++			#   ucm/${CardLongName}/${CardLongName}.conf
++			#   ucm/${CardName}/${CardName}.conf or \
++			#			ucm/${OpenName}/${OpenName}.conf
++			#
++			UseCasePath.v1_longname {
++				Version 1
++				Directory "${CardLongName}"
++				File "${CardLongName}.conf"
++			}
++			If.v1_hw {
++				Condition {
++					Type String
++					Haystack "${OpenName}"
++					Needle "hw:"
++				}
++				True.UseCasePath.v1_cardnamme {
+ 					Version 1
+ 					Directory "${CardName}"
+ 					File "${CardName}.conf"
+ 				}
+-			}
+-			False {
+-				UseCasePath.v1_openname {
++				False.UseCasePath.v1_openname {
+ 					Version 1
+ 					Directory "${OpenName}"
+ 					File "${OpenName}.conf"
+-- 
+2.16.4
+

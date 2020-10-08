@@ -1,0 +1,308 @@
+From 8069e4df01bd5d18b78110e0aa3f0f149683f62a Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 25 Jun 2020 17:05:25 +0200
+Subject: [PATCH 24/51] VEYRON-I2C: move to Rockchip/max98090 tree
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/Rockchip/max98090/HiFi.conf           | 119 +++++++++++++++++++++++++++++
+ ucm2/Rockchip/max98090/max98090.conf       |   8 ++
+ ucm2/VEYRON-I2S/HiFi.conf                  | 119 -----------------------------
+ ucm2/VEYRON-I2S/VEYRON-I2S.conf            |   8 --
+ ucm2/module/snd_soc_rockchip_max98090.conf |   1 +
+ 5 files changed, 128 insertions(+), 127 deletions(-)
+ create mode 100644 ucm2/Rockchip/max98090/HiFi.conf
+ create mode 100644 ucm2/Rockchip/max98090/max98090.conf
+ delete mode 100644 ucm2/VEYRON-I2S/HiFi.conf
+ delete mode 100644 ucm2/VEYRON-I2S/VEYRON-I2S.conf
+ create mode 120000 ucm2/module/snd_soc_rockchip_max98090.conf
+
+diff --git a/ucm2/Rockchip/max98090/HiFi.conf b/ucm2/Rockchip/max98090/HiFi.conf
+new file mode 100644
+index 000000000000..bed87c54cbd9
+--- /dev/null
++++ b/ucm2/Rockchip/max98090/HiFi.conf
+@@ -0,0 +1,119 @@
++SectionVerb {
++	Value {
++		MinBufferLevel "512"
++	}
++
++	EnableSequence [
++		cset "name='Left Speaker Mixer Left DAC Switch' on"
++		cset "name='Right Speaker Mixer Right DAC Switch' on"
++		cset "name='Headphone Left Switch' off"
++		cset "name='Headphone Right Switch' off"
++		cset "name='Digital EQ 3 Band Switch' off"
++		cset "name='Digital EQ 5 Band Switch' off"
++		cset "name='Digital EQ 7 Band Switch' off"
++		cset "name='Biquad Switch' off"
++		cset "name='Filter Mode' Music"
++		cset "name='ADC Oversampling Rate' 0"
++
++		cset "name='DMIC Mux' DMIC"
++		cset "name='MIC2 Mux' IN34"
++		cset "name='Right ADC Mixer MIC2 Switch' on"
++		cset "name='Left ADC Mixer MIC2 Switch' on"
++		cset "name='MIC2 Volume' 20"
++		cset "name='Headset Mic Switch' off"
++		cset "name='Int Mic Switch' on"
++
++		cset "name='ADCR Boost Volume' 4"
++		cset "name='ADCL Boost Volume' 4"
++		cset "name='ADCR Volume' 11"
++		cset "name='ADCL Volume' 11"
++
++		cset "name='Left Speaker Mixer Left DAC Switch' on"
++		cset "name='Right Speaker Mixer Right DAC Switch' on"
++		cset "name='Speaker Left Mixer Volume' 2"
++		cset "name='Speaker Right Mixer Volume' 2"
++		cset "name='Record Path DC Blocking' on"
++		cset "name='Playback Path DC Blocking' on"
++
++		cset "name='Speaker Left Switch' on"
++		cset "name='Speaker Right Switch' on"
++		cset "name='Speaker Switch' on"
++	]
++}
++
++SectionDevice."Speaker" {
++	Comment "Speaker"
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
++
++	EnableSequence [
++		cset "name='Speaker Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Speaker Switch' off"
++	]
++}
++
++SectionDevice."Mic" {
++	Comment "Internal Microphone"
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++
++	EnableSequence [
++		cset "name='Int Mic Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Int Mic Switch' off"
++	]
++}
++
++SectionDevice."Headphones" {
++	Comment "Headphones"
++
++	Value {
++		PlaybackPriority 200
++		PlaybackPCM "hw:${CardId}"
++	}
++
++	EnableSequence [
++		cset "name='Speaker Switch' off"
++		cset "name='Headphone Left Switch' on"
++		cset "name='Headphone Right Switch' on"
++	]
++	DisableSequence [
++		cset "name='Headphone Left Switch' off"
++		cset "name='Headphone Right Switch' off"
++		cset "name='Speaker Switch' on"
++	]
++}
++
++SectionDevice."Headset" {
++	Comment "Headset Microphone"
++
++	Value {
++		CapturePriority 200
++		CapturePCM "hw:${CardId}"
++	}
++
++	EnableSequence [
++		cset "name='Int Mic Switch' off"
++		cset "name='DMIC Mux' ADC"
++		cset "name='Headset Mic Switch' on"
++		cset "name='Record Path DC Blocking' on"
++	]
++
++	DisableSequence [
++		cset "name='Headset Mic Switch' off"
++		cset "name='DMIC Mux' DMIC"
++		cset "name='Int Mic Switch' on"
++		cset "name='Record Path DC Blocking' off"
++	]
++}
+diff --git a/ucm2/Rockchip/max98090/max98090.conf b/ucm2/Rockchip/max98090/max98090.conf
+new file mode 100644
+index 000000000000..9e482a07fd58
+--- /dev/null
++++ b/ucm2/Rockchip/max98090/max98090.conf
+@@ -0,0 +1,8 @@
++Syntax 2
++
++Comment "Rockchip Veyron card"
++
++SectionUseCase."HiFi" {
++	File "/Rockchip/max98090/HiFi.conf"
++	Comment "Default"
++}
+diff --git a/ucm2/VEYRON-I2S/HiFi.conf b/ucm2/VEYRON-I2S/HiFi.conf
+deleted file mode 100644
+index bed87c54cbd9..000000000000
+--- a/ucm2/VEYRON-I2S/HiFi.conf
++++ /dev/null
+@@ -1,119 +0,0 @@
+-SectionVerb {
+-	Value {
+-		MinBufferLevel "512"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Left Speaker Mixer Left DAC Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC Switch' on"
+-		cset "name='Headphone Left Switch' off"
+-		cset "name='Headphone Right Switch' off"
+-		cset "name='Digital EQ 3 Band Switch' off"
+-		cset "name='Digital EQ 5 Band Switch' off"
+-		cset "name='Digital EQ 7 Band Switch' off"
+-		cset "name='Biquad Switch' off"
+-		cset "name='Filter Mode' Music"
+-		cset "name='ADC Oversampling Rate' 0"
+-
+-		cset "name='DMIC Mux' DMIC"
+-		cset "name='MIC2 Mux' IN34"
+-		cset "name='Right ADC Mixer MIC2 Switch' on"
+-		cset "name='Left ADC Mixer MIC2 Switch' on"
+-		cset "name='MIC2 Volume' 20"
+-		cset "name='Headset Mic Switch' off"
+-		cset "name='Int Mic Switch' on"
+-
+-		cset "name='ADCR Boost Volume' 4"
+-		cset "name='ADCL Boost Volume' 4"
+-		cset "name='ADCR Volume' 11"
+-		cset "name='ADCL Volume' 11"
+-
+-		cset "name='Left Speaker Mixer Left DAC Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC Switch' on"
+-		cset "name='Speaker Left Mixer Volume' 2"
+-		cset "name='Speaker Right Mixer Volume' 2"
+-		cset "name='Record Path DC Blocking' on"
+-		cset "name='Playback Path DC Blocking' on"
+-
+-		cset "name='Speaker Left Switch' on"
+-		cset "name='Speaker Right Switch' on"
+-		cset "name='Speaker Switch' on"
+-	]
+-}
+-
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Speaker Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Speaker Switch' off"
+-	]
+-}
+-
+-SectionDevice."Mic" {
+-	Comment "Internal Microphone"
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Int Mic Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Int Mic Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackPriority 200
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Speaker Switch' off"
+-		cset "name='Headphone Left Switch' on"
+-		cset "name='Headphone Right Switch' on"
+-	]
+-	DisableSequence [
+-		cset "name='Headphone Left Switch' off"
+-		cset "name='Headphone Right Switch' off"
+-		cset "name='Speaker Switch' on"
+-	]
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "Headset Microphone"
+-
+-	Value {
+-		CapturePriority 200
+-		CapturePCM "hw:${CardId}"
+-	}
+-
+-	EnableSequence [
+-		cset "name='Int Mic Switch' off"
+-		cset "name='DMIC Mux' ADC"
+-		cset "name='Headset Mic Switch' on"
+-		cset "name='Record Path DC Blocking' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Mic Switch' off"
+-		cset "name='DMIC Mux' DMIC"
+-		cset "name='Int Mic Switch' on"
+-		cset "name='Record Path DC Blocking' off"
+-	]
+-}
+diff --git a/ucm2/VEYRON-I2S/VEYRON-I2S.conf b/ucm2/VEYRON-I2S/VEYRON-I2S.conf
+deleted file mode 100644
+index 670f15b821e0..000000000000
+--- a/ucm2/VEYRON-I2S/VEYRON-I2S.conf
++++ /dev/null
+@@ -1,8 +0,0 @@
+-Syntax 2
+-
+-Comment "Rockchip Veyron card"
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/module/snd_soc_rockchip_max98090.conf b/ucm2/module/snd_soc_rockchip_max98090.conf
+new file mode 120000
+index 000000000000..10efb8a1442f
+--- /dev/null
++++ b/ucm2/module/snd_soc_rockchip_max98090.conf
+@@ -0,0 +1 @@
++../Rockchip/max98090/max98090.conf
+\ No newline at end of file
+-- 
+2.16.4
+

@@ -1,0 +1,43 @@
+From 368f10bdc3dbfd4f83ab348b54b8455f08fd1a9e Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Mon, 17 Aug 2020 11:28:04 +0800
+Subject: [PATCH 42/51] HDA-Intel: HiFi-dual: Fix the Rear Mic's Jack name
+
+On the LENOVO P520 (dual codecs machine), the Jack name of Rear Mic is
+"Rear Mic Jack" instead of "Mic Jack".
+
+Below is picked from alsa-info.txt on the LENOVO p520 machine:
+	control.18 {
+		iface CARD
+		name 'Rear Mic Jack'
+		value true
+		comment {
+			access read
+			type BOOLEAN
+			count 1
+		}
+	}
+
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/46
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HiFi-dual.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/HDA-Intel/HiFi-dual.conf b/ucm2/HDA-Intel/HiFi-dual.conf
+index 2eb74ee7a0c7..cff948efee91 100644
+--- a/ucm2/HDA-Intel/HiFi-dual.conf
++++ b/ucm2/HDA-Intel/HiFi-dual.conf
+@@ -96,7 +96,7 @@ SectionDevice."Mic2" {
+ 		CapturePriority 300
+ 		CapturePCM "hw:${CardId}"
+ 		JackHWMute "Line2"
+-		JackControl "Mic Jack"
++		JackControl "Rear Mic Jack"
+ 	}
+ 
+ 	ConflictingDevice [
+-- 
+2.16.4
+

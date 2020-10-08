@@ -1,0 +1,50 @@
+From 6b0216d7b9ed5094a7bf28e6f643d90dd7e6fa62 Mon Sep 17 00:00:00 2001
+From: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Date: Thu, 11 Jun 2020 17:46:07 +0300
+Subject: [PATCH 10/51] sof-hda-dsp: make Headphone Playback Switch conditional
+
+The Headphone Playback Switch control is not present in all
+HDA codecs. Allow the Headphones definition to work also on
+such systems.
+
+Signed-off-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 3b54d4a2ccfa..127948844d67 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -17,13 +17,20 @@ SectionVerb {
+ SectionDevice."Headphones" {
+ 	Comment "Headphones"
+ 
+-	EnableSequence [
+-		cset "name='Headphone Playback Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headphone Playback Switch' off"
+-	]
++	If.headphone_switch {
++		Condition {
++			Type ControlExists
++			Control "name='Headphone Playback Switch'"
++		}
++		True {
++			EnableSequence [
++				cset "name='Headphone Playback Switch' on"
++			]
++			DisableSequence [
++				cset "name='Headphone Playback Switch' off"
++			]
++		}
++	}
+ 
+ 	Value {
+ 		PlaybackPriority 200
+-- 
+2.16.4
+

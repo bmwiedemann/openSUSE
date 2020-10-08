@@ -1,0 +1,129 @@
+From 1072c6d68e69ac432b411557237effa2dcc869cc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 24 Jun 2020 11:15:42 +0200
+Subject: [PATCH 16/51] sof-soundwire: cleanups recommended by the
+ ucm-validator
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-soundwire/RT1308-1.conf | 1 -
+ ucm2/sof-soundwire/RT1308-2.conf | 1 -
+ ucm2/sof-soundwire/RT5682.conf   | 4 +---
+ ucm2/sof-soundwire/RT700.conf    | 7 ++-----
+ ucm2/sof-soundwire/RT711.conf    | 4 +---
+ ucm2/sof-soundwire/RT715.conf    | 1 -
+ 6 files changed, 4 insertions(+), 14 deletions(-)
+
+diff --git a/ucm2/sof-soundwire/RT1308-1.conf b/ucm2/sof-soundwire/RT1308-1.conf
+index da2eeaee0294..6da5b7e30a5f 100644
+--- a/ucm2/sof-soundwire/RT1308-1.conf
++++ b/ucm2/sof-soundwire/RT1308-1.conf
+@@ -18,6 +18,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 	      PlaybackPriority 100
+ 	      PlaybackPCM "hw:${CardId},2"
+-	      PlaybackChannels "2"
+ 	}
+ }
+diff --git a/ucm2/sof-soundwire/RT1308-2.conf b/ucm2/sof-soundwire/RT1308-2.conf
+index 3484b7038b82..f88cb819d6a3 100644
+--- a/ucm2/sof-soundwire/RT1308-2.conf
++++ b/ucm2/sof-soundwire/RT1308-2.conf
+@@ -25,6 +25,5 @@ SectionDevice."Speaker" {
+ 	Value {
+ 	      PlaybackPriority 100
+ 	      PlaybackPCM "hw:${CardId},2"
+-	      PlaybackChannels "2"
+ 	}
+ }
+diff --git a/ucm2/sof-soundwire/RT5682.conf b/ucm2/sof-soundwire/RT5682.conf
+index 2a63bf2f610a..95a251dbe4fa 100644
+--- a/ucm2/sof-soundwire/RT5682.conf
++++ b/ucm2/sof-soundwire/RT5682.conf
+@@ -26,8 +26,7 @@ If.RT5682 {
+ 
+ 			Value {
+ 			      PlaybackPriority 200
+-			      PlaybackPCM "hw:${CardId},0"
+-			      PlaybackChannels "2"
++			      PlaybackPCM "hw:${CardId}"
+ 			      JackControl "Headphone Jack"
+ 			}
+ 		}
+@@ -54,7 +53,6 @@ If.RT5682 {
+ 			Value {
+ 				CapturePriority 200
+ 			     	CapturePCM "hw:${CardId},1"
+-			      	CaptureChannels "2"
+ 			      	JackControl "Headset Mic Jack"
+ 			}
+ 		}
+diff --git a/ucm2/sof-soundwire/RT700.conf b/ucm2/sof-soundwire/RT700.conf
+index 9fe532c3c528..d2df46377710 100644
+--- a/ucm2/sof-soundwire/RT700.conf
++++ b/ucm2/sof-soundwire/RT700.conf
+@@ -25,8 +25,7 @@ If.RT700 {
+ 
+ 			Value {
+ 			      PlaybackPriority 200
+-			      PlaybackPCM "hw:${CardId},0"
+-			      PlaybackChannels "2"
++			      PlaybackPCM "hw:${CardId}"
+ 			      JackControl "Headphone Jack"
+ 			}
+ 		}
+@@ -48,8 +47,7 @@ If.RT700 {
+ 
+ 			Value {
+ 			      PlaybackPriority 100
+-			      PlaybackPCM "hw:${CardId},0"
+-			      PlaybackChannels "2"
++			      PlaybackPCM "hw:${CardId}"
+ 			}
+ 		}
+ 
+@@ -67,7 +65,6 @@ If.RT700 {
+ 			Value {
+ 				CapturePriority 200
+ 			     	CapturePCM "hw:${CardId},1"
+-			      	CaptureChannels "2"
+ 			      	JackControl "Headset Mic Jack"
+ 			}
+ 		}
+diff --git a/ucm2/sof-soundwire/RT711.conf b/ucm2/sof-soundwire/RT711.conf
+index 11a504ab6916..12b48ed4b4a8 100644
+--- a/ucm2/sof-soundwire/RT711.conf
++++ b/ucm2/sof-soundwire/RT711.conf
+@@ -21,8 +21,7 @@ If.RT711 {
+ 
+ 			Value {
+ 			      PlaybackPriority 200
+-			      PlaybackPCM "hw:${CardId},0"
+-			      PlaybackChannels "2"
++			      PlaybackPCM "hw:${CardId}"
+ 			      JackControl "Headphone Jack"
+ 			}
+ 		}
+@@ -41,7 +40,6 @@ If.RT711 {
+ 			Value {
+ 				CapturePriority 200
+ 			     	CapturePCM "hw:${CardId},1"
+-			      	CaptureChannels "2"
+ 			      	JackControl "Headset Mic Jack"
+ 				CaptureSwitch "PGA2.0 2 Master Capture Switch"
+ 				CaptureVolume "PGA2.0 2 Master Capture Volume"
+diff --git a/ucm2/sof-soundwire/RT715.conf b/ucm2/sof-soundwire/RT715.conf
+index 2b8d89d3e0b5..d1734adc4fb5 100644
+--- a/ucm2/sof-soundwire/RT715.conf
++++ b/ucm2/sof-soundwire/RT715.conf
+@@ -22,7 +22,6 @@ If.RT715 {
+ 			Value {
+ 			      CapturePriority 100
+ 			      CapturePCM "hw:${CardId},4"
+-			      CaptureChannels "2"
+ 			      CaptureSwitch "PGA5.0 5 Master Capture Switch"
+ 			      CaptureVolume "PGA5.0 5 Master Capture Volume"
+ 			}
+-- 
+2.16.4
+

@@ -1,0 +1,50 @@
+From db3a362d7523ef30a1640a76f2e460ce582f82fc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 18 Aug 2020 16:00:31 +0200
+Subject: [PATCH 37/51] update ucm2/README.md - more kernel module lookup
+ clarifications
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/README.md | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/ucm2/README.md b/ucm2/README.md
+index b5a4196e50e8..3f07548a8aef 100644
+--- a/ucm2/README.md
++++ b/ucm2/README.md
+@@ -12,7 +12,12 @@ configurations. They contain files included from other UCMs.
+ 
+ UCM master configuration path lookup is defined in the top level
+ ucm.conf file. This file allows custom directory layout. The new
+-ucm2 layout is based on the driver name.
++ucm2 layout is based on the kernel module driver name with the
++ALSA driver name fallback.
++
++The lookup configuration:
++
++  https://git.alsa-project.org/?p=alsa-ucm-conf.git;a=blob;f=ucm2/ucm.conf
+ 
+ Example paths:
+ 
+@@ -21,8 +26,15 @@ Example paths:
+ - TwoCardsMix/TwoCardsMix.conf
+ -- virtual UCM from two soundcards
+ 
+-Note: For the driver configurations, use always the real driver name
+-not the ucm card name configuration paths!
++Note: For the driver configurations, use always the real kernel driver
++name or the ALSA driver name - not the ucm card name configuration paths!
++
++The kernel driver name is obtained using sysfs like (last
++part of the path is used from the symlink):
++
++````
++  /sys/class/sound/card0/device/driver
++````
+ 
+ The driver name can be obtained using procfs like:
+ 
+-- 
+2.16.4
+

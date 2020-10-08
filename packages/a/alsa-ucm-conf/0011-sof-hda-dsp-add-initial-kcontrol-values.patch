@@ -1,0 +1,45 @@
+From 450bebd628975ffab153978b80f1493100910e53 Mon Sep 17 00:00:00 2001
+From: Libin Yang <libin.yang@intel.com>
+Date: Thu, 21 May 2020 03:45:16 -0400
+Subject: [PATCH 11/51] sof-hda-dsp: add initial kcontrol values
+
+This patch adds the initial values of sof-hda-dsp card.
+
+Signed-off-by: Libin Yang <libin.yang@intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/sof-hda-dsp.conf | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/ucm2/sof-hda-dsp/sof-hda-dsp.conf b/ucm2/sof-hda-dsp/sof-hda-dsp.conf
+index af966ef83011..24d0359f304f 100644
+--- a/ucm2/sof-hda-dsp/sof-hda-dsp.conf
++++ b/ucm2/sof-hda-dsp/sof-hda-dsp.conf
+@@ -4,3 +4,24 @@ SectionUseCase."HiFi" {
+ 	File "HiFi.conf"
+ 	Comment "Play HiFi quality Music"
+ }
++
++# the kcontrols initial values, which will be set by `alsactl init`
++
++BootSequence [
++	cset "name='Master Playback Volume' 80"
++	cset "name='Headphone Playback Volume' 80"
++	cset "name='Speaker Playback Volume' 80"
++	cset "name='Auto-Mute Mode' off"
++]
++
++If.Dmic0 {
++	Condition {
++		Type ControlExists
++		Control "name='Dmic0 Capture Volume'"
++	}
++	True {
++		BootSequence [
++			cset "name='Dmic0 Capture Volume' 70"
++		]
++	}
++}
+-- 
+2.16.4
+

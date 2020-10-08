@@ -1,0 +1,212 @@
+From b2110f65246c8442002294125d1f0314728f93de Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 25 Jun 2020 17:32:40 +0200
+Subject: [PATCH 26/51] GoogleNyan: move to Tegra/max98090
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/GoogleNyan/GoogleNyan.conf         |  6 ---
+ ucm2/GoogleNyan/HiFi.conf               | 73 ---------------------------------
+ ucm2/Tegra/max98090/HiFi.conf           | 73 +++++++++++++++++++++++++++++++++
+ ucm2/Tegra/max98090/max98090.conf       |  6 +++
+ ucm2/module/snd_soc_tegra_max98090.conf |  1 +
+ 5 files changed, 80 insertions(+), 79 deletions(-)
+ delete mode 100644 ucm2/GoogleNyan/GoogleNyan.conf
+ delete mode 100644 ucm2/GoogleNyan/HiFi.conf
+ create mode 100644 ucm2/Tegra/max98090/HiFi.conf
+ create mode 100644 ucm2/Tegra/max98090/max98090.conf
+ create mode 120000 ucm2/module/snd_soc_tegra_max98090.conf
+
+diff --git a/ucm2/GoogleNyan/GoogleNyan.conf b/ucm2/GoogleNyan/GoogleNyan.conf
+deleted file mode 100644
+index 33f22cc80aec..000000000000
+--- a/ucm2/GoogleNyan/GoogleNyan.conf
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 2
+-Comment "Nyan internal card"
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/GoogleNyan/HiFi.conf b/ucm2/GoogleNyan/HiFi.conf
+deleted file mode 100644
+index 542859160b4c..000000000000
+--- a/ucm2/GoogleNyan/HiFi.conf
++++ /dev/null
+@@ -1,73 +0,0 @@
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='Left Speaker Mixer Left DAC Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC Switch' on"
+-		cset "name='Headphone Left Switch' on"
+-		cset "name='Headphone Right Switch' on"
+-		cset "name='Digital EQ 3 Band Switch' off"
+-		cset "name='Digital EQ 5 Band Switch' off"
+-		cset "name='Digital EQ 7 Band Switch' off"
+-		cset "name='Biquad Switch' off"
+-		cset "name='Filter Mode' Music"
+-		cset "name='ADC Oversampling Rate' 0"
+-		cset "name='DMIC Mux' DMIC"
+-		cset "name='MIC2 Mux' IN34"
+-		cset "name='Right ADC Mixer MIC2 Switch' on"
+-		cset "name='Left ADC Mixer MIC2 Switch' on"
+-		cset "name='MIC2 Volume' 10"
+-		cset "name='MIC2 Boost Volume' 0"
+-		cset "name='Mic Jack Switch' off"
+-		cset "name='Int Mic Switch' on"
+-		cset "name='ADCR Boost Volume' 4"
+-		cset "name='ADCL Boost Volume' 4"
+-		cset "name='ADCR Volume' 11"
+-		cset "name='ADCL Volume' 11"
+-		cset "name='Left Speaker Mixer Left DAC Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC Switch' on"
+-		cset "name='Speaker Left Mixer Volume' 2"
+-		cset "name='Speaker Right Mixer Volume' 2"
+-		cset "name='Record Path DC Blocking' on"
+-		cset "name='Playback Path DC Blocking' on"
+-		cset "name='Headphone Left Switch' on"
+-		cset "name='Headphone Right Switch' on"
+-		cset "name='Headphones Switch' off"
+-		cset "name='Speaker Left Switch' on"
+-		cset "name='Speaker Right Switch' on"
+-		cset "name='Speakers Switch' on"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-	EnableSequence [
+-		cset "name='Speakers Switch' off"
+-		cset "name='Headphones Switch' on"
+-	]
+-	DisableSequence [
+-		cset "name='Headphones Switch' off"
+-		cset "name='Speakers Switch' on"
+-	]
+-}
+-
+-SectionDevice."Mic" {
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-		#CaptureControl "MIC2"
+-	}
+-	EnableSequence [
+-		cset "name='Int Mic Switch' off"
+-		cset "name='DMIC Mux' ADC"
+-		cset "name='Mic Jack Switch' on"
+-		cset "name='Record Path DC Blocking' on"
+-	]
+-	DisableSequence [
+-		cset "name='Mic Jack Switch' off"
+-		cset "name='DMIC Mux' DMIC"
+-		cset "name='Int Mic Switch' on"
+-		cset "name='Record Path DC Blocking' off"
+-	]
+-}
+diff --git a/ucm2/Tegra/max98090/HiFi.conf b/ucm2/Tegra/max98090/HiFi.conf
+new file mode 100644
+index 000000000000..542859160b4c
+--- /dev/null
++++ b/ucm2/Tegra/max98090/HiFi.conf
+@@ -0,0 +1,73 @@
++SectionVerb {
++	EnableSequence [
++		cset "name='Left Speaker Mixer Left DAC Switch' on"
++		cset "name='Right Speaker Mixer Right DAC Switch' on"
++		cset "name='Headphone Left Switch' on"
++		cset "name='Headphone Right Switch' on"
++		cset "name='Digital EQ 3 Band Switch' off"
++		cset "name='Digital EQ 5 Band Switch' off"
++		cset "name='Digital EQ 7 Band Switch' off"
++		cset "name='Biquad Switch' off"
++		cset "name='Filter Mode' Music"
++		cset "name='ADC Oversampling Rate' 0"
++		cset "name='DMIC Mux' DMIC"
++		cset "name='MIC2 Mux' IN34"
++		cset "name='Right ADC Mixer MIC2 Switch' on"
++		cset "name='Left ADC Mixer MIC2 Switch' on"
++		cset "name='MIC2 Volume' 10"
++		cset "name='MIC2 Boost Volume' 0"
++		cset "name='Mic Jack Switch' off"
++		cset "name='Int Mic Switch' on"
++		cset "name='ADCR Boost Volume' 4"
++		cset "name='ADCL Boost Volume' 4"
++		cset "name='ADCR Volume' 11"
++		cset "name='ADCL Volume' 11"
++		cset "name='Left Speaker Mixer Left DAC Switch' on"
++		cset "name='Right Speaker Mixer Right DAC Switch' on"
++		cset "name='Speaker Left Mixer Volume' 2"
++		cset "name='Speaker Right Mixer Volume' 2"
++		cset "name='Record Path DC Blocking' on"
++		cset "name='Playback Path DC Blocking' on"
++		cset "name='Headphone Left Switch' on"
++		cset "name='Headphone Right Switch' on"
++		cset "name='Headphones Switch' off"
++		cset "name='Speaker Left Switch' on"
++		cset "name='Speaker Right Switch' on"
++		cset "name='Speakers Switch' on"
++	]
++}
++
++SectionDevice."Headphones" {
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
++	EnableSequence [
++		cset "name='Speakers Switch' off"
++		cset "name='Headphones Switch' on"
++	]
++	DisableSequence [
++		cset "name='Headphones Switch' off"
++		cset "name='Speakers Switch' on"
++	]
++}
++
++SectionDevice."Mic" {
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++		#CaptureControl "MIC2"
++	}
++	EnableSequence [
++		cset "name='Int Mic Switch' off"
++		cset "name='DMIC Mux' ADC"
++		cset "name='Mic Jack Switch' on"
++		cset "name='Record Path DC Blocking' on"
++	]
++	DisableSequence [
++		cset "name='Mic Jack Switch' off"
++		cset "name='DMIC Mux' DMIC"
++		cset "name='Int Mic Switch' on"
++		cset "name='Record Path DC Blocking' off"
++	]
++}
+diff --git a/ucm2/Tegra/max98090/max98090.conf b/ucm2/Tegra/max98090/max98090.conf
+new file mode 100644
+index 000000000000..7ec416dc85e0
+--- /dev/null
++++ b/ucm2/Tegra/max98090/max98090.conf
+@@ -0,0 +1,6 @@
++Syntax 2
++Comment "Nyan internal card"
++SectionUseCase."HiFi" {
++	File "/Tegra/max98090/HiFi.conf"
++	Comment "Default"
++}
+diff --git a/ucm2/module/snd_soc_tegra_max98090.conf b/ucm2/module/snd_soc_tegra_max98090.conf
+new file mode 120000
+index 000000000000..406747c12aec
+--- /dev/null
++++ b/ucm2/module/snd_soc_tegra_max98090.conf
+@@ -0,0 +1 @@
++../Tegra/max98090/max98090.conf
+\ No newline at end of file
+-- 
+2.16.4
+

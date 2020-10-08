@@ -1,0 +1,28 @@
+From 9ec8e7fb7c12cc144462fa923d0383e2212baebf Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Wed, 22 Jul 2020 14:25:15 +0800
+Subject: [PATCH 40/51] amd/renoir/acp: Add Syntax 3 in the
+ module/lib/Linked.conf
+
+Otherwise the alsalib will report:
+parser.c: Syntax field not found in xxx.conf
+
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/module/lib/linked.conf | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ucm2/module/lib/linked.conf b/ucm2/module/lib/linked.conf
+index d7656a8806f1..ca93c52dcb2b 100644
+--- a/ucm2/module/lib/linked.conf
++++ b/ucm2/module/lib/linked.conf
+@@ -1,3 +1,5 @@
++Syntax 3
++
+ ValueDefaults {
+ 	Linked 1
+ }
+-- 
+2.16.4
+

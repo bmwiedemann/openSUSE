@@ -1,0 +1,184 @@
+From 6b8518c431cac18a825bd7342875f54b44cb7afc Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 25 Jun 2020 16:06:37 +0200
+Subject: [PATCH 20/51] DAISY-I2S: move to Samsung/snow/snow.conf
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/DAISY-I2S/DAISY-I2S.conf |  8 ------
+ ucm2/DAISY-I2S/HiFi.conf      | 56 -----------------------------------------
+ ucm2/Samsung/snow/HiFi.conf   | 58 +++++++++++++++++++++++++++++++++++++++++++
+ ucm2/Samsung/snow/snow.conf   |  8 ++++++
+ ucm2/module/snd_soc_snow.conf |  1 +
+ 5 files changed, 67 insertions(+), 64 deletions(-)
+ delete mode 100644 ucm2/DAISY-I2S/DAISY-I2S.conf
+ delete mode 100644 ucm2/DAISY-I2S/HiFi.conf
+ create mode 100644 ucm2/Samsung/snow/HiFi.conf
+ create mode 100644 ucm2/Samsung/snow/snow.conf
+ create mode 120000 ucm2/module/snd_soc_snow.conf
+
+diff --git a/ucm2/DAISY-I2S/DAISY-I2S.conf b/ucm2/DAISY-I2S/DAISY-I2S.conf
+deleted file mode 100644
+index 040db6379b34..000000000000
+--- a/ucm2/DAISY-I2S/DAISY-I2S.conf
++++ /dev/null
+@@ -1,8 +0,0 @@
+-Syntax 2
+-
+-Comment "Daisy internal card"
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/DAISY-I2S/HiFi.conf b/ucm2/DAISY-I2S/HiFi.conf
+deleted file mode 100644
+index 877f6ff02937..000000000000
+--- a/ucm2/DAISY-I2S/HiFi.conf
++++ /dev/null
+@@ -1,56 +0,0 @@
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='Left Speaker Mixer Left DAC1 Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC1 Switch' on"
+-		cset "name='Left Headphone Mixer Left DAC1 Switch' on"
+-		cset "name='Right Headphone Mixer Right DAC1 Switch' on"
+-		cset "name='DMIC1 Left Capture Switch' on"
+-		cset "name='DMIC1 Right Capture Switch' on"
+-		cset "name='MIC2 External Mic Switch' on"
+-		cset "name='Left ADC Mixer MIC2 Switch' on"
+-		cset "name='Right ADC Mixer MIC2 Switch' on"
+-		cset "name='EQ1 Mode' Default"
+-		cset "name='DAI1 Filter Mode' Music"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	EnableSequence [
+-		cset "name='EQ1 Switch' off"
+-		cset "name='Left Headphone Mixer Left DAC1 Switch' on"
+-		cset "name='Right Headphone Mixer Right DAC1 Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='EQ1 Mode' Default"
+-		cset "name='EQ1 Switch' on"
+-		cset "name='Left Speaker Mixer Left DAC1 Switch' on"
+-		cset "name='Right Speaker Mixer Right DAC1 Switch' on"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-}
+-
+-SectionDevice."Mic" {
+-	EnableSequence [
+-		cset "name='DMIC1 Left Capture Switch' off"
+-		cset "name='DMIC1 Right Capture Switch' off"
+-		cset "name='Left ADC Mixer MIC2 Switch' on"
+-		cset "name='Right ADC Mixer MIC2 Switch' on"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Left ADC Mixer MIC2 Switch' off"
+-		cset "name='Right ADC Mixer MIC2 Switch' off"
+-		cset "name='DMIC1 Left Capture Switch' on"
+-		cset "name='DMIC1 Right Capture Switch' on"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/Samsung/snow/HiFi.conf b/ucm2/Samsung/snow/HiFi.conf
+new file mode 100644
+index 000000000000..c278ad669f2f
+--- /dev/null
++++ b/ucm2/Samsung/snow/HiFi.conf
+@@ -0,0 +1,58 @@
++# It's configuration for DAISY-I2S, update for another hw!
++
++SectionVerb {
++	EnableSequence [
++		cset "name='Left Speaker Mixer Left DAC1 Switch' on"
++		cset "name='Right Speaker Mixer Right DAC1 Switch' on"
++		cset "name='Left Headphone Mixer Left DAC1 Switch' on"
++		cset "name='Right Headphone Mixer Right DAC1 Switch' on"
++		cset "name='DMIC1 Left Capture Switch' on"
++		cset "name='DMIC1 Right Capture Switch' on"
++		cset "name='MIC2 External Mic Switch' on"
++		cset "name='Left ADC Mixer MIC2 Switch' on"
++		cset "name='Right ADC Mixer MIC2 Switch' on"
++		cset "name='EQ1 Mode' Default"
++		cset "name='DAI1 Filter Mode' Music"
++	]
++}
++
++SectionDevice."Headphones" {
++	EnableSequence [
++		cset "name='EQ1 Switch' off"
++		cset "name='Left Headphone Mixer Left DAC1 Switch' on"
++		cset "name='Right Headphone Mixer Right DAC1 Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='EQ1 Mode' Default"
++		cset "name='EQ1 Switch' on"
++		cset "name='Left Speaker Mixer Left DAC1 Switch' on"
++		cset "name='Right Speaker Mixer Right DAC1 Switch' on"
++	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
++}
++
++SectionDevice."Mic" {
++	EnableSequence [
++		cset "name='DMIC1 Left Capture Switch' off"
++		cset "name='DMIC1 Right Capture Switch' off"
++		cset "name='Left ADC Mixer MIC2 Switch' on"
++		cset "name='Right ADC Mixer MIC2 Switch' on"
++	]
++
++	DisableSequence [
++		cset "name='Left ADC Mixer MIC2 Switch' off"
++		cset "name='Right ADC Mixer MIC2 Switch' off"
++		cset "name='DMIC1 Left Capture Switch' on"
++		cset "name='DMIC1 Right Capture Switch' on"
++	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/Samsung/snow/snow.conf b/ucm2/Samsung/snow/snow.conf
+new file mode 100644
+index 000000000000..aea4710ff8a4
+--- /dev/null
++++ b/ucm2/Samsung/snow/snow.conf
+@@ -0,0 +1,8 @@
++Syntax 3
++
++Comment "Internal card"
++
++SectionUseCase."HiFi" {
++	File "/Samsung/snow/HiFi.conf"
++	Comment "Default"
++}
+diff --git a/ucm2/module/snd_soc_snow.conf b/ucm2/module/snd_soc_snow.conf
+new file mode 120000
+index 000000000000..f6fcdce5f0ce
+--- /dev/null
++++ b/ucm2/module/snd_soc_snow.conf
+@@ -0,0 +1 @@
++../Samsung/snow/snow.conf
+\ No newline at end of file
+-- 
+2.16.4
+

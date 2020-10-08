@@ -1,0 +1,32 @@
+From d3ffca2f9846afcc046a4253d914afe905a1a382 Mon Sep 17 00:00:00 2001
+From: jacobopantoja <jacobopantoja@gmail.com>
+Date: Thu, 6 Aug 2020 13:53:07 +0200
+Subject: [PATCH 41/51] Correct conflicting mic in max98090
+
+'mic' was conflicting 'mic' instead of 'headset', thus preventing correct configuration regarding microphones.
+
+With this corrected, introducing a headset enables 'headset' mic and disables internal 'mic', whereas releasing the headset disables 'headset' mic and enables internal 'mic'
+
+BugLink: https://github.com/alsa-project/alsa-ucm-conf/pull/43
+From: acobopantoja@gmail.com
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/max98090/InternalMic.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/codecs/max98090/InternalMic.conf b/ucm2/codecs/max98090/InternalMic.conf
+index 01967a65e8e0..25056f5c28da 100644
+--- a/ucm2/codecs/max98090/InternalMic.conf
++++ b/ucm2/codecs/max98090/InternalMic.conf
+@@ -8,7 +8,7 @@ SectionDevice."Mic" {
+ 	}
+ 
+ 	ConflictingDevice [
+-		"Mic"
++		"Headset"
+ 	]
+ 
+ 	EnableSequence [
+-- 
+2.16.4
+

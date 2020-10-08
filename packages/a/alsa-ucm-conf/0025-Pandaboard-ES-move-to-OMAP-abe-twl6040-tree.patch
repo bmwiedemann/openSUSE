@@ -1,0 +1,1239 @@
+From 634e84bb5f5630140c3be4eb30347de2af44128c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 25 Jun 2020 17:09:56 +0200
+Subject: [PATCH 25/51] Pandaboard(ES): move to OMAP/abe-twl6040 tree
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/OMAP/abe-twl6040/FMAnalog.conf       | 45 +++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/HiFi.conf           | 56 ++++++++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/HiFiLP.conf         | 46 +++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/Record.conf         | 47 ++++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/Voice.conf          | 46 +++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/VoiceCall.conf      | 67 +++++++++++++++++++++++++++++++
+ ucm2/OMAP/abe-twl6040/abe-twl6040.conf    | 43 ++++++++++++++++++++
+ ucm2/PandaBoard/FMAnalog.conf             | 45 ---------------------
+ ucm2/PandaBoard/HiFi.conf                 | 56 --------------------------
+ ucm2/PandaBoard/HiFiLP.conf               | 46 ---------------------
+ ucm2/PandaBoard/PandaBoard.conf           | 43 --------------------
+ ucm2/PandaBoard/Record.conf               | 47 ----------------------
+ ucm2/PandaBoard/Voice.conf                | 46 ---------------------
+ ucm2/PandaBoard/VoiceCall.conf            | 67 -------------------------------
+ ucm2/PandaBoardES/FMAnalog.conf           | 45 ---------------------
+ ucm2/PandaBoardES/HiFi.conf               | 56 --------------------------
+ ucm2/PandaBoardES/HiFiLP.conf             | 46 ---------------------
+ ucm2/PandaBoardES/PandaBoardES.conf       | 43 --------------------
+ ucm2/PandaBoardES/Record.conf             | 46 ---------------------
+ ucm2/PandaBoardES/Voice.conf              | 46 ---------------------
+ ucm2/PandaBoardES/VoiceCall.conf          | 67 -------------------------------
+ ucm2/module/snd_soc_omap_abe_twl6040.conf |  1 +
+ 22 files changed, 351 insertions(+), 699 deletions(-)
+ create mode 100644 ucm2/OMAP/abe-twl6040/FMAnalog.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/HiFi.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/HiFiLP.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/Record.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/Voice.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/VoiceCall.conf
+ create mode 100644 ucm2/OMAP/abe-twl6040/abe-twl6040.conf
+ delete mode 100644 ucm2/PandaBoard/FMAnalog.conf
+ delete mode 100644 ucm2/PandaBoard/HiFi.conf
+ delete mode 100644 ucm2/PandaBoard/HiFiLP.conf
+ delete mode 100644 ucm2/PandaBoard/PandaBoard.conf
+ delete mode 100644 ucm2/PandaBoard/Record.conf
+ delete mode 100644 ucm2/PandaBoard/Voice.conf
+ delete mode 100644 ucm2/PandaBoard/VoiceCall.conf
+ delete mode 100644 ucm2/PandaBoardES/FMAnalog.conf
+ delete mode 100644 ucm2/PandaBoardES/HiFi.conf
+ delete mode 100644 ucm2/PandaBoardES/HiFiLP.conf
+ delete mode 100644 ucm2/PandaBoardES/PandaBoardES.conf
+ delete mode 100644 ucm2/PandaBoardES/Record.conf
+ delete mode 100644 ucm2/PandaBoardES/Voice.conf
+ delete mode 100644 ucm2/PandaBoardES/VoiceCall.conf
+ create mode 120000 ucm2/module/snd_soc_omap_abe_twl6040.conf
+
+diff --git a/ucm2/OMAP/abe-twl6040/FMAnalog.conf b/ucm2/OMAP/abe-twl6040/FMAnalog.conf
+new file mode 100644
+index 000000000000..fa819771d6a1
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/FMAnalog.conf
+@@ -0,0 +1,45 @@
++# Use case Configurationfor TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		cset "name='AMIC_UL PDM Switch' 1"
++		cset "name='MUX_UL00' 9"
++		cset "name='MUX_UL01' 10"
++		cset "name='Capture Volume' 4"
++	]
++
++
++	DisableSequence [
++		cset "name='AMIC_UL PDM Switch' 0"
++		cset "name='MUX_UL00' 0"
++		cset "name='MUX_UL01' 0"
++		cset "name='Capture Volume' 0"
++	]
++
++	# Optional TQ
++	Value {
++		TQ "Music"
++	}
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Analog Left Capture Route' 2"
++		cset "name='Analog Right Capture Route' 2"
++		cset "name='Capture Preamplifier Volume' 2"
++	]
++
++	DisableSequence [
++		cset "name='Analog Left Capture Route' 3"
++		cset "name='Analog Right Capture Route' 3"
++		cset "name='Capture Preamplifier Volume' 0"
++	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/HiFi.conf b/ucm2/OMAP/abe-twl6040/HiFi.conf
+new file mode 100644
+index 000000000000..597c32621c81
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/HiFi.conf
+@@ -0,0 +1,56 @@
++# Use case Configuration for TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		cset "name='DL1 Mixer Multimedia' 1"
++		cset "name='Sidetone Mixer Playback' 1"
++		cset "name='DL1 PDM Switch' 1"
++		cset "name='DL1 Media Playback Volume' 90,90"
++		cset "name='SDT DL Volume' 120"
++
++		cset "name='Headset Left Playback' 1"
++		cset "name='Headset Right Playback' 1"
++		cset "name='Headset Playback Volume' 13"
++	]
++
++	DisableSequence [
++		cset "name='DL1 Mixer Multimedia' 0"
++		cset "name='Sidetone Mixer Playback' 0"
++		cset "name='DL1 PDM Switch' 0"
++		cset "name='DL1 Media Playback Volume' 0,0"
++		cset "name='SDT DL Volume' 0"
++
++		cset "name='Headset Right Playback' 0"
++		cset "name='Headset Left Playback' 0"
++		cset "name='Headset Playback Volume' 0"
++	]
++
++ 	# Optional TQ
++	Value {
++		TQ "Music"
++	}
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Headset Left Playback' 1"
++		cset "name='Headset Right Playback' 1"
++		cset "name='Headset Playback Volume' 13"
++	]
++
++	DisableSequence [
++		cset "name='Headset Right Playback' 0"
++		cset "name='Headset Left Playback' 0"
++		cset "name='Headset Playback Volume' 0"
++	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++		# PlaybackVolume "name='DL1 Media Playback Volume' 90,90"
++		# PlaybackSwitch "name='DL1 PDM Switch' 1"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/HiFiLP.conf b/ucm2/OMAP/abe-twl6040/HiFiLP.conf
+new file mode 100644
+index 000000000000..481f2384daf5
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/HiFiLP.conf
+@@ -0,0 +1,46 @@
++# Use case Configuration for TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		cset "name='DL1 Mixer Multimedia' 1"
++		cset "name='Sidetone Mixer Playback' 1"
++		cset "name='DL1 PDM Switch' 1"
++		cset "name='DL1 Media Playback Volume' 90,90"
++		cset "name='SDT DL Volume' 120"
++	]
++
++	DisableSequence [
++		cset "name='DL1 Mixer Multimedia' 0"
++		cset "name='Sidetone Mixer Playback' 0"
++		cset "name='DL1 PDM Switch' 0"
++		cset "name='DL1 Media Playback Volume' 0,0"
++		cset "name='SDT DL Volume' 0"
++	]
++
++	# Optional TQ
++	Value {
++		TQ "Music"
++	}
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Headset Left Playback' 1"
++		cset "name='Headset Right Playback' 1"
++		cset "name='Headset Playback Volume' 13"
++	]
++
++	DisableSequence [
++		cset "name='Headset Right Playback' 0"
++		cset "name='Headset Left Playback' 0"
++		cset "name='Headset Playback Volume' 0"
++	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},6"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/Record.conf b/ucm2/OMAP/abe-twl6040/Record.conf
+new file mode 100644
+index 000000000000..042e5cea53ee
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/Record.conf
+@@ -0,0 +1,47 @@
++# Use case Configuration for TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		# No more AMIC PDM Switch in current kernels
++		#cset "name='AMIC_UL PDM Switch' 1"
++		cset "name='MUX_UL00' 9"
++		cset "name='MUX_UL01' 10"
++		cset "name='Capture Volume' 4"
++	]
++
++	DisableSequence [
++		# No more AMIC PDM Switch in current kernels
++		#cset "name='AMIC_UL PDM Switch' 0"
++		cset "name='MUX_UL00' 0"
++		cset "name='MUX_UL01' 0"
++		cset "name='Capture Volume' 0"
++	]
++
++	# Optional TQ
++	Value {
++		TQ "Music"
++	}
++
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Analog Left Capture Route' 0"
++		cset "name='Analog Right Capture Route' 0"
++		cset "name='Capture Preamplifier Volume' 2"
++	]
++
++	DisableSequence [
++		cset "name='Analog Left Capture Route' 3"
++		cset "name='Analog Right Capture Route' 3"
++		cset "name='Capture Preamplifier Volume' 0"
++	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/Voice.conf b/ucm2/OMAP/abe-twl6040/Voice.conf
+new file mode 100644
+index 000000000000..3eaffb4f1e73
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/Voice.conf
+@@ -0,0 +1,46 @@
++# Use case Configuration for TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		cset "name='DL1 Mixer Voice' 1"
++		cset "name='Sidetone Mixer Playback' 1"
++		cset "name='DL1 PDM Switch' 1"
++		cset "name='DL1 Voice Playback Volume' 90,90"
++		cset "name='SDT DL Volume' 120"
++	]
++
++	DisableSequence [
++		cset "name='DL1 Mixer Voice' 0"
++		cset "name='Sidetone Mixer Playback' 0"
++		cset "name='DL1 PDM Switch' 0"
++		cset "name='DL1 Voice Playback Volume' 0,0"
++		cset "name='SDT DL Volume' 0"
++	]
++
++	# Optional TQ
++	Value {
++		TQ "Voice"
++	}
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Headset Left Playback' 1"
++		cset "name='Headset Right Playback' 1"
++		cset "name='Headset Playback Volume' 13"
++	]
++
++	DisableSequence [
++		cset "name='Headset Right Playback' 0"
++		cset "name='Headset Left Playback' 0"
++		cset "name='Headset Playback Volume' 0"
++	]
++
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},2"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/VoiceCall.conf b/ucm2/OMAP/abe-twl6040/VoiceCall.conf
+new file mode 100644
+index 000000000000..4e82e7af093c
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/VoiceCall.conf
+@@ -0,0 +1,67 @@
++# Use case Configuration for TI PandaBoard(ES) HiFi Music
++# By Liam Girdwood <lrg@slimlogic.co.uk>
++
++SectionVerb {
++	EnableSequence [
++		cset "name='AMIC_UL PDM Switch' 1"
++		cset "name='Sidetone Mixer Capture' 1"
++		cset "name='MUX_VX0' 9"
++		cset "name='MUX_VX1' 10"
++		cset "name='DL1 Mixer Voice' 1"
++		cset "name='Sidetone Mixer Playback' 1"
++		cset "name='DL1 PDM Switch' 1"
++		cset "name='DL1 Voice Playback Volume' 90,90"
++		cset "name='Capture Volume' 4"
++		cset "name='Capture Mixer Voice Capture' 90,90"
++		cset "name='SDT DL Volume' 120"
++	]
++
++
++	DisableSequence [
++		cset "name='AMIC_UL PDM Switch' 0"
++		cset "name='Sidetone Mixer Capture' 0"
++		cset "name='MUX_VX0' 0"
++		cset "name='MUX_VX1' 0"
++		cset "name='DL1 Mixer Voice' 0"
++		cset "name='Sidetone Mixer Playback' 0"
++		cset "name='DL1 PDM Switch' 0"
++		cset "name='DL1 Voice Playback Volume' 0,0"
++		cset "name='Capture Volume' 0"
++		cset "name='DL1 Voice Playback Volume' 0,0"
++		cset "name='SDT DL Volume' 0"
++	]
++
++	# Optional TQ
++	Value {
++		TQ "Voice"
++	}
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++	
++	EnableSequence [
++		cset "name='Analog Left Capture Route' 0"
++		cset "name='Analog Right Capture Route' 0"
++		cset "name='Capture Preamplifier Volume' 2"
++		cset "name='Headset Left Playback' 1"
++		cset "name='Headset Right Playback' 1"
++		cset "name='Headset Playback Volume' 13"
++	]
++
++	DisableSequence [
++		cset "name='Analog Left Capture Route' 3"
++		cset "name='Analog Right Capture Route' 3"
++		cset "name='Capture Preamplifier Volume' 0"
++		cset "name='Headset Right Playback' 0"
++		cset "name='Headset Left Playback' 0"
++		cset "name='Headset Playback Volume' 0"
++	]
++
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId},2"
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId},2"
++	}
++}
+diff --git a/ucm2/OMAP/abe-twl6040/abe-twl6040.conf b/ucm2/OMAP/abe-twl6040/abe-twl6040.conf
+new file mode 100644
+index 000000000000..199408f875fd
+--- /dev/null
++++ b/ucm2/OMAP/abe-twl6040/abe-twl6040.conf
+@@ -0,0 +1,43 @@
++# UCM configuration for PandaBoard(ES)
++
++Syntax 2
++
++SectionUseCase."Record" {
++	File "/OMAP/abe-twl6040/Record.conf"
++	Comment "Record"
++}
++
++SectionUseCase."HiFi" {
++	File "/OMAP/abe-twl6040/HiFi.conf"
++	Comment "Play HiFi quality Music"
++}
++
++SectionUseCase."HiFi_Low_Power" {
++	File "/OMAP/abe-twl6040/HiFiLP.conf"
++	Comment "Play HiFi quality Music in Low Power Mode"
++}
++
++SectionUseCase."Voice" {
++	File "/OMAP/abe-twl6040/Voice.conf"
++	Comment "Playback Voice quality"
++}
++
++SectionUseCase."Voice_Low_Power" {
++	File "/OMAP/abe-twl6040/Voice.conf"
++	Comment "Playback Voice quality in Low Power Mode"
++}
++
++SectionUseCase."Voice_Call" {
++	File "/OMAP/abe-twl6040/VoiceCall.conf"
++	Comment "Capture and Playback in Voice quality"
++}
++
++SectionUseCase."Voice_Call_IP" {
++	File "/OMAP/abe-twl6040/VoiceCall.conf"
++	Comment "Capture and Playback in Voice quality"
++}
++
++SectionUseCase."FM_Analog_Radio" {
++	File "/OMAP/abe-twl6040/FMAnalog.conf"
++ 	Comment "Capture FM Analog Radio"
++}
+diff --git a/ucm2/PandaBoard/FMAnalog.conf b/ucm2/PandaBoard/FMAnalog.conf
+deleted file mode 100644
+index 1764de9da81c..000000000000
+--- a/ucm2/PandaBoard/FMAnalog.conf
++++ /dev/null
+@@ -1,45 +0,0 @@
+-# Use case Configurationfor TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='MUX_UL00' 9"
+-		cset "name='MUX_UL01' 10"
+-		cset "name='Capture Volume' 4"
+-	]
+-
+-
+-	DisableSequence [
+-		cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='MUX_UL00' 0"
+-		cset "name='MUX_UL01' 0"
+-		cset "name='Capture Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 2"
+-		cset "name='Analog Right Capture Route' 2"
+-		cset "name='Capture Preamplifier Volume' 2"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/PandaBoard/HiFi.conf b/ucm2/PandaBoard/HiFi.conf
+deleted file mode 100644
+index 5420fa6e26a0..000000000000
+--- a/ucm2/PandaBoard/HiFi.conf
++++ /dev/null
+@@ -1,56 +0,0 @@
+-# Use case Configuration for TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Multimedia' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Media Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Multimedia' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Media Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+- 	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-		# PlaybackVolume "name='DL1 Media Playback Volume' 90,90"
+-		# PlaybackSwitch "name='DL1 PDM Switch' 1"
+-	}
+-}
+diff --git a/ucm2/PandaBoard/HiFiLP.conf b/ucm2/PandaBoard/HiFiLP.conf
+deleted file mode 100644
+index 45c828949e20..000000000000
+--- a/ucm2/PandaBoard/HiFiLP.conf
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# Use case Configuration for TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Multimedia' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Media Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Multimedia' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Media Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},6"
+-	}
+-}
+diff --git a/ucm2/PandaBoard/PandaBoard.conf b/ucm2/PandaBoard/PandaBoard.conf
+deleted file mode 100644
+index b7fbba14219c..000000000000
+--- a/ucm2/PandaBoard/PandaBoard.conf
++++ /dev/null
+@@ -1,43 +0,0 @@
+-# UCM configuration for PandaBoard
+-
+-Syntax 2
+-
+-SectionUseCase."Record" {
+-	File "Record.conf"
+-	Comment "Record"
+-}
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Play HiFi quality Music"
+-}
+-
+-SectionUseCase."HiFi_Low_Power" {
+-	File "HiFiLP.conf"
+-	Comment "Play HiFi quality Music in Low Power Mode"
+-}
+-
+-SectionUseCase."Voice" {
+-	File "Voice.conf"
+-	Comment "Playback Voice quality"
+-}
+-
+-SectionUseCase."Voice_Low_Power" {
+-	File "Voice.conf"
+-	Comment "Playback Voice quality in Low Power Mode"
+-}
+-
+-SectionUseCase."Voice_Call" {
+-	File "VoiceCall.conf"
+-	Comment "Capture and Playback in Voice quality"
+-}
+-
+-SectionUseCase."Voice_Call_IP" {
+-	File "VoiceCall.conf"
+-	Comment "Capture and Playback in Voice quality"
+-}
+-
+-SectionUseCase."FM_Analog_Radio" {
+-	File "FMAnalog.conf"
+- 	Comment "Capture FM Analog Radio"
+-}
+diff --git a/ucm2/PandaBoard/Record.conf b/ucm2/PandaBoard/Record.conf
+deleted file mode 100644
+index 4a3e477cac7c..000000000000
+--- a/ucm2/PandaBoard/Record.conf
++++ /dev/null
+@@ -1,47 +0,0 @@
+-# Use case Configuration for TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		# No more AMIC PDM Switch in current kernels
+-		#cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='MUX_UL00' 9"
+-		cset "name='MUX_UL01' 10"
+-		cset "name='Capture Volume' 4"
+-	]
+-
+-	DisableSequence [
+-		# No more AMIC PDM Switch in current kernels
+-		#cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='MUX_UL00' 0"
+-		cset "name='MUX_UL01' 0"
+-		cset "name='Capture Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 0"
+-		cset "name='Analog Right Capture Route' 0"
+-		cset "name='Capture Preamplifier Volume' 2"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/PandaBoard/Voice.conf b/ucm2/PandaBoard/Voice.conf
+deleted file mode 100644
+index 59cf13c3c632..000000000000
+--- a/ucm2/PandaBoard/Voice.conf
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# Use case Configuration for TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Voice' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Voice Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Voice' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Voice"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},2"
+-	}
+-}
+diff --git a/ucm2/PandaBoard/VoiceCall.conf b/ucm2/PandaBoard/VoiceCall.conf
+deleted file mode 100644
+index e92af35c2711..000000000000
+--- a/ucm2/PandaBoard/VoiceCall.conf
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# Use case Configuration for TI PandaBoard HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='Sidetone Mixer Capture' 1"
+-		cset "name='MUX_VX0' 9"
+-		cset "name='MUX_VX1' 10"
+-		cset "name='DL1 Mixer Voice' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Voice Playback Volume' 90,90"
+-		cset "name='Capture Volume' 4"
+-		cset "name='Capture Mixer Voice Capture' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-
+-	DisableSequence [
+-		cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='Sidetone Mixer Capture' 0"
+-		cset "name='MUX_VX0' 0"
+-		cset "name='MUX_VX1' 0"
+-		cset "name='DL1 Mixer Voice' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='Capture Volume' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Voice"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoard 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 0"
+-		cset "name='Analog Right Capture Route' 0"
+-		cset "name='Capture Preamplifier Volume' 2"
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId},2"
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},2"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/FMAnalog.conf b/ucm2/PandaBoardES/FMAnalog.conf
+deleted file mode 100644
+index e7eef1f3be48..000000000000
+--- a/ucm2/PandaBoardES/FMAnalog.conf
++++ /dev/null
+@@ -1,45 +0,0 @@
+-# Use case Configurationfor TI PandaBoardES HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='MUX_UL00' 9"
+-		cset "name='MUX_UL01' 10"
+-		cset "name='Capture Volume' 4"
+-	]
+-
+-
+-	DisableSequence [
+-		cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='MUX_UL00' 0"
+-		cset "name='MUX_UL01' 0"
+-		cset "name='Capture Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 2"
+-		cset "name='Analog Right Capture Route' 2"
+-		cset "name='Capture Preamplifier Volume' 2"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/HiFi.conf b/ucm2/PandaBoardES/HiFi.conf
+deleted file mode 100644
+index 99b3cb440e37..000000000000
+--- a/ucm2/PandaBoardES/HiFi.conf
++++ /dev/null
+@@ -1,56 +0,0 @@
+-# Use case Configuration for TI PandaBoardES HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Multimedia' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Media Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Multimedia' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Media Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+- 	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-		# PlaybackVolume "name='DL1 Media Playback Volume' 90,90"
+-		# PlaybackSwitch "name='DL1 PDM Switch' 1"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/HiFiLP.conf b/ucm2/PandaBoardES/HiFiLP.conf
+deleted file mode 100644
+index ccde316ca66c..000000000000
+--- a/ucm2/PandaBoardES/HiFiLP.conf
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# Use case Configuration for TI PandaBoardES HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Multimedia' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Media Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Multimedia' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Media Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},6"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/PandaBoardES.conf b/ucm2/PandaBoardES/PandaBoardES.conf
+deleted file mode 100644
+index 946c2cff7cef..000000000000
+--- a/ucm2/PandaBoardES/PandaBoardES.conf
++++ /dev/null
+@@ -1,43 +0,0 @@
+-# UCM configuration for PandaBoardES
+-
+-Syntax 2
+-
+-SectionUseCase."Record" {
+-	File "Record.conf"
+-	Comment "Record"
+-}
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Play HiFi quality Music"
+-}
+-
+-SectionUseCase."HiFi_Low_Power" {
+-	File "HiFiLP.conf"
+-	Comment "Play HiFi quality Music in Low Power Mode"
+-}
+-
+-SectionUseCase."Voice" {
+-	File "Voice.conf"
+-	Comment "Playback Voice quality."
+-}
+-
+-SectionUseCase."Voice_Low_Power" {
+-	File "Voice.conf"
+-	Comment "Playback Voice quality in Low Power Mode"
+-}
+-
+-SectionUseCase."Voice_Call" {
+-	File "VoiceCall.conf"
+-	Comment "Capture and Playback in Voice quality"
+-}
+-
+-SectionUseCase."Voice_Call_IP" {
+-	File "VoiceCall.conf"
+-	Comment "Capture and Playback in Voice quality"
+-}
+-
+-SectionUseCase."FM_Analog_Radio" {
+-	File "FMAnalog.conf"
+-	Comment "Capture FM Analog Radio"
+-}
+diff --git a/ucm2/PandaBoardES/Record.conf b/ucm2/PandaBoardES/Record.conf
+deleted file mode 100644
+index 15cb311bfa22..000000000000
+--- a/ucm2/PandaBoardES/Record.conf
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		# No more AMIC PDM Switch in current kernels
+-		#cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='MUX_UL00' 9"
+-		cset "name='MUX_UL01' 10"
+-		cset "name='Capture Volume' 4"
+-	]
+-
+-	DisableSequence [
+-		# No more AMIC PDM Switch in current kernels
+-		#cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='MUX_UL00' 0"
+-		cset "name='MUX_UL01' 0"
+-		cset "name='Capture Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Music"
+-	}
+-
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 0"
+-		cset "name='Analog Right Capture Route' 0"
+-		cset "name='Capture Preamplifier Volume' 2"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/Voice.conf b/ucm2/PandaBoardES/Voice.conf
+deleted file mode 100644
+index b290d75996d1..000000000000
+--- a/ucm2/PandaBoardES/Voice.conf
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# Use case Configuration for TI PandaBoardES HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='DL1 Mixer Voice' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Voice Playback Volume' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-	DisableSequence [
+-		cset "name='DL1 Mixer Voice' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ
+-	Value {
+-		TQ "Voice"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},2"
+-	}
+-}
+diff --git a/ucm2/PandaBoardES/VoiceCall.conf b/ucm2/PandaBoardES/VoiceCall.conf
+deleted file mode 100644
+index ce3991b505aa..000000000000
+--- a/ucm2/PandaBoardES/VoiceCall.conf
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# Use case Configuration for TI PandaBoardES HiFi Music
+-# By Liam Girdwood <lrg@slimlogic.co.uk>
+-
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='AMIC_UL PDM Switch' 1"
+-		cset "name='Sidetone Mixer Capture' 1"
+-		cset "name='MUX_VX0' 9"
+-		cset "name='MUX_VX1' 10"
+-		cset "name='DL1 Mixer Voice' 1"
+-		cset "name='Sidetone Mixer Playback' 1"
+-		cset "name='DL1 PDM Switch' 1"
+-		cset "name='DL1 Voice Playback Volume' 90,90"
+-		cset "name='Capture Volume' 4"
+-		cset "name='Capture Mixer Voice Capture' 90,90"
+-		cset "name='SDT DL Volume' 120"
+-	]
+-
+-
+-	DisableSequence [
+-		cset "name='AMIC_UL PDM Switch' 0"
+-		cset "name='Sidetone Mixer Capture' 0"
+-		cset "name='MUX_VX0' 0"
+-		cset "name='MUX_VX1' 0"
+-		cset "name='DL1 Mixer Voice' 0"
+-		cset "name='Sidetone Mixer Playback' 0"
+-		cset "name='DL1 PDM Switch' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='Capture Volume' 0"
+-		cset "name='DL1 Voice Playback Volume' 0,0"
+-		cset "name='SDT DL Volume' 0"
+-	]
+-
+-	# Optional TQ and ALSA PCMs
+-	Value {
+-		TQ "Voice"
+-	}
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "PandaBoardES 3.5mm Headset"
+-	
+-	EnableSequence [
+-		cset "name='Analog Left Capture Route' 0"
+-		cset "name='Analog Right Capture Route' 0"
+-		cset "name='Capture Preamplifier Volume' 2"
+-		cset "name='Headset Left Playback' 1"
+-		cset "name='Headset Right Playback' 1"
+-		cset "name='Headset Playback Volume' 13"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Analog Left Capture Route' 3"
+-		cset "name='Analog Right Capture Route' 3"
+-		cset "name='Capture Preamplifier Volume' 0"
+-		cset "name='Headset Right Playback' 0"
+-		cset "name='Headset Left Playback' 0"
+-		cset "name='Headset Playback Volume' 0"
+-	]
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId},2"
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},2"		
+-	}
+-}
+diff --git a/ucm2/module/snd_soc_omap_abe_twl6040.conf b/ucm2/module/snd_soc_omap_abe_twl6040.conf
+new file mode 120000
+index 000000000000..0e70a9e351a0
+--- /dev/null
++++ b/ucm2/module/snd_soc_omap_abe_twl6040.conf
+@@ -0,0 +1 @@
++../OMAP/abe-twl6040/abe-twl6040.conf
+\ No newline at end of file
+-- 
+2.16.4
+

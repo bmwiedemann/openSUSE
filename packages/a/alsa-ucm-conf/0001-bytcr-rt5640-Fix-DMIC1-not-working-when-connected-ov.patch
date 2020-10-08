@@ -1,0 +1,61 @@
+From f047a91f82e87fee3533b01329521a68ac4eea23 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Mon, 8 Jun 2020 22:21:40 +0200
+Subject: [PATCH 01/51] bytcr-rt5640: Fix DMIC1 not working when connected over
+ AIF2
+
+The RT5640 codec has 2 ADC-s which are caled the Stereo ADC and the
+Mono ADC (even though the mono ADC seems to be stereo too?). The Stereo
+ADC is connected to the AIF1 interface of the codec and the Mono ADC
+to the AIF2 interface.
+
+Almost all X86 BYT/CHT design use the AIF1 interface, but a few models
+use the AIF2 interface. For this reason the IN?-InternalMic.conf bits
+not only select/enable the microphone input on the Stereo ADC, but
+also on the Mono ADC, so that the analog mic. inputs also work in devices
+using the AIF2 interface.
+
+Before this commit DigitalMics.conf was only setting up the DMIC input
+on the Stereo ADC and not on the Mono ADC, causing DMIC1 to not work
+when connected over AIF2.
+
+This commit adds selecting / enabling DMIC1 on the Mono ADC.
+This fixes the internal microphone not working on the Toshiba Encore WT10A.
+
+Note that for devices which use the AIF1 interface this is a no-op since
+the AIF1 interface is not connected to anything, there is no complete
+chain so DAPM will not enable any of the elements in the chain.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/codecs/rt5640/DigitalMics.conf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/ucm2/codecs/rt5640/DigitalMics.conf b/ucm2/codecs/rt5640/DigitalMics.conf
+index 503c4a9cd7bf..fdd412f5e323 100644
+--- a/ucm2/codecs/rt5640/DigitalMics.conf
++++ b/ucm2/codecs/rt5640/DigitalMics.conf
+@@ -6,6 +6,9 @@ SectionDevice."Mic" {
+ 	]
+ 
+ 	EnableSequence [
++		cset "name='Mono ADC MIXL ADC2 Switch' on"
++		cset "name='Mono ADC MIXR ADC2 Switch' on"
++		cset "name='Mono ADC Capture Switch' on"
+ 		cset "name='Stereo ADC MIXL ADC2 Switch' on"
+ 		cset "name='Stereo ADC MIXR ADC2 Switch' on"
+ 		cset "name='Internal Mic Switch' on"
+@@ -13,6 +16,9 @@ SectionDevice."Mic" {
+ 	]
+ 
+ 	DisableSequence [
++		cset "name='Mono ADC MIXL ADC2 Switch' off"
++		cset "name='Mono ADC MIXR ADC2 Switch' off"
++		cset "name='Mono ADC Capture Switch' off"
+ 		cset "name='Stereo ADC MIXL ADC2 Switch' off"
+ 		cset "name='Stereo ADC MIXR ADC2 Switch' off"
+ 		cset "name='Internal Mic Switch' off"
+-- 
+2.16.4
+

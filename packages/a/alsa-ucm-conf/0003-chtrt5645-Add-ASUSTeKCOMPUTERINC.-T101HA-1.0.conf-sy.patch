@@ -1,0 +1,30 @@
+From 2ac33b010c7c493066592a093d422a67e8df0bf6 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Mon, 8 Jun 2020 22:21:42 +0200
+Subject: [PATCH 03/51] chtrt5645: Add ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+ symlink to chtrt5645-dmic1.conf
+
+The Asus T101HA uses a digital mic connected to the dmic1 pin, rather then
+the default analog mic on in2 (just like the Asus T100HA).
+
+Add a long name symlink to chtrt5645-dmic1.conf for this, so that
+the right config is used.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 120000 ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+
+diff --git a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf b/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+new file mode 120000
+index 000000000000..b4d2816229b4
+--- /dev/null
++++ b/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+@@ -0,0 +1 @@
++chtrt5645-dmic1.conf
+\ No newline at end of file
+-- 
+2.16.4
+

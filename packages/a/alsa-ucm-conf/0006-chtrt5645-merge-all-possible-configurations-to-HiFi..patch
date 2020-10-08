@@ -1,0 +1,631 @@
+From fe3b0bdc2f43c3a615f4aa7c724aac17a782259c Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 16 Jun 2020 11:33:01 +0200
+Subject: [PATCH 06/51] chtrt5645: merge all possible configurations to
+ HiFi.conf
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ .../ASUSTeKCOMPUTERINC.-T100HAN-1.0-T100HAN.conf   |   1 -
+ .../chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0.conf |   1 -
+ ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf |   1 -
+ ucm2/chtrt5645/HiFi-dmic1.conf                     | 113 --------------------
+ ucm2/chtrt5645/HiFi-dmic2.conf                     | 115 ---------------------
+ ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf   | 110 --------------------
+ ucm2/chtrt5645/HiFi.conf                           | 108 ++++++++++++++++++-
+ ...ENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216.conf |   1 -
+ .../MEDION-E1239TMD60568-0.1-Wingman.conf          |   1 -
+ ...TECLAST-X80Pro-Defaultstring-CherryTrailCR.conf |   1 -
+ ucm2/chtrt5645/chtrt5645-dmic1.conf                |   6 --
+ ucm2/chtrt5645/chtrt5645-dmic2.conf                |   6 --
+ .../chtrt5645-mono-speaker-analog-mic.conf         |   6 --
+ ucm2/chtrt5645/chtrt5645.conf                      |   1 +
+ ucm2/chtrt5645/gpd-win-pocket-rt5645.conf          |   1 -
+ 15 files changed, 107 insertions(+), 365 deletions(-)
+ delete mode 120000 ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0-T100HAN.conf
+ delete mode 120000 ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0.conf
+ delete mode 120000 ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+ delete mode 100644 ucm2/chtrt5645/HiFi-dmic1.conf
+ delete mode 100644 ucm2/chtrt5645/HiFi-dmic2.conf
+ delete mode 100644 ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+ delete mode 120000 ucm2/chtrt5645/LENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216.conf
+ delete mode 120000 ucm2/chtrt5645/MEDION-E1239TMD60568-0.1-Wingman.conf
+ delete mode 120000 ucm2/chtrt5645/TECLAST-X80Pro-Defaultstring-CherryTrailCR.conf
+ delete mode 100644 ucm2/chtrt5645/chtrt5645-dmic1.conf
+ delete mode 100644 ucm2/chtrt5645/chtrt5645-dmic2.conf
+ delete mode 100644 ucm2/chtrt5645/chtrt5645-mono-speaker-analog-mic.conf
+ delete mode 120000 ucm2/chtrt5645/gpd-win-pocket-rt5645.conf
+
+diff --git a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0-T100HAN.conf b/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0-T100HAN.conf
+deleted file mode 120000
+index b4d2816229b4..000000000000
+--- a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0-T100HAN.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-dmic1.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0.conf b/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0.conf
+deleted file mode 120000
+index b4d2816229b4..000000000000
+--- a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T100HAN-1.0.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-dmic1.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf b/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
+deleted file mode 120000
+index b4d2816229b4..000000000000
+--- a/ucm2/chtrt5645/ASUSTeKCOMPUTERINC.-T101HA-1.0.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-dmic1.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/HiFi-dmic1.conf b/ucm2/chtrt5645/HiFi-dmic1.conf
+deleted file mode 100644
+index f28783f39b7f..000000000000
+--- a/ucm2/chtrt5645/HiFi-dmic1.conf
++++ /dev/null
+@@ -1,113 +0,0 @@
+-SectionVerb {
+-	# ALSA PCM
+-	Value {
+-		TQ "HiFi"
+-	}
+-
+-	Include.ce.File "/codecs/rt5645/EnableSeq.conf"
+-	Include.cd.File "/codecs/rt5645/DisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Stereo1 ADC1 Mux' 1"
+-		cset "name='I2S2 Func Switch' on"
+-		# 3/12 the headphone mic tends to be quite loud
+-		cset "name='IN1 Boost' 3"
+-		# 8/8 the internal analog mic tends to be quite soft
+-		cset "name='IN2 Boost' 8"
+-	]
+-
+-	If.Controls {
+-		Condition {
+-			Type ControlExists
+-			Control "name='media0_in Gain 0 Switch'"
+-		}
+-		Before.EnableSequence "0"
+-		True {
+-			Include.pe.File "/platforms/bytcr/PlatformEnableSeq.conf"
+-			Include.pd.File "/platforms/bytcr/PlatformDisableSeq.conf"
+-		}
+-	}
+-}
+-
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-
+-	ConflictingDevice [
+-		"Headphones"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/SpeakerEnableSeq.conf"
+-
+-	DisableSequence [
+-		cset "name='Ext Spk Switch' off"
+-		cset "name='Speaker Channel Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackPriority 200
+-		PlaybackPCM "hw:${CardId}"
+-		JackControl "Headphone Jack"
+-	}
+-
+-	ConflictingDevice [
+-		"Speaker"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/HeadphonesEnableSeq.conf"
+-
+-	DisableSequence [
+-		cset "name='Headphone Switch' off"
+-		cset "name='Headphone Channel Switch' off"
+-	]
+-}
+-
+-SectionDevice."Mic" {
+-	Comment "Internal Microphone"
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-
+-	Include.e.File "/codecs/rt5645/DigitalMicEnableSeq.conf"
+-	Include.d.File "/codecs/rt5645/DigitalMicDisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Stereo1 DMIC Mux' DMIC1"
+-		cset "name='Stereo1 ADC2 Mux' DMIC"
+-		cset "name='Mono ADC L2 Mux' DMIC"
+-		cset "name='Mono ADC R2 Mux' DMIC"
+-	]
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "Headset Microphone"
+-
+-	Value {
+-		CapturePriority 200
+-		CapturePCM "hw:${CardId}"
+-		JackControl "Headset Mic Jack"
+-	}
+-
+-	Include.e.File "/codecs/rt5645/HSMicEnableSeq.conf"
+-	Include.d.File "/codecs/rt5645/HSMicDisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Sto1 ADC MIXL ADC2 Switch' off"
+-		cset "name='Sto1 ADC MIXR ADC2 Switch' off"
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
+-		cset "name='Mono ADC MIXL ADC2 Switch' off"
+-		cset "name='Mono ADC MIXR ADC2 Switch' off"
+-	]
+-}
+diff --git a/ucm2/chtrt5645/HiFi-dmic2.conf b/ucm2/chtrt5645/HiFi-dmic2.conf
+deleted file mode 100644
+index 1407e9caf09e..000000000000
+--- a/ucm2/chtrt5645/HiFi-dmic2.conf
++++ /dev/null
+@@ -1,115 +0,0 @@
+-SectionVerb {
+-	# ALSA PCM
+-	Value {
+-		TQ "HiFi"
+-	}
+-
+-	Include.ce.File "/codecs/rt5645/EnableSeq.conf"
+-	Include.cd.File "/codecs/rt5645/DisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Stereo1 ADC1 Mux' 1"
+-		cset "name='I2S2 Func Switch' on"
+-		# 3/12 the headphone mic tends to be quite loud
+-		cset "name='IN1 Boost' 3"
+-		# 8/8 the internal analog mic tends to be quite soft
+-		cset "name='IN2 Boost' 8"
+-	]
+-
+-	If.Controls {
+-		Condition {
+-			Type ControlExists
+-			Control "name='media0_in Gain 0 Switch'"
+-		}
+-		Before.EnableSequence "0"
+-		True {
+-			Include.pe.File "/platforms/bytcr/PlatformEnableSeq.conf"
+-			Include.pd.File "/platforms/bytcr/PlatformDisableSeq.conf"
+-		}
+-	}
+-}
+-
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-
+-	ConflictingDevice [
+-		"Headphones"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/SpeakerEnableSeq.conf"
+-
+-	DisableSequence [
+-		cset "name='Ext Spk Switch' off"
+-		cset "name='Speaker Channel Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackPriority 200
+-		PlaybackPCM "hw:${CardId}"
+-		JackControl "Headphone Jack"
+-	}
+-
+-	ConflictingDevice [
+-		"Speaker"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/HeadphonesEnableSeq.conf"
+-
+-	DisableSequence [
+-		cset "name='Headphone Switch' off"
+-		cset "name='Headphone Channel Switch' off"
+-	]
+-}
+-
+-SectionDevice."Mic" {
+-	Comment "Internal Microphone"
+-
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-
+-	Include.e.File "/codecs/rt5645/DigitalMicEnableSeq.conf"
+-	Include.d.File "/codecs/rt5645/DigitalMicDisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Stereo1 DMIC Mux' DMIC2"
+-		cset "name='Stereo1 ADC2 Mux' DMIC"
+-		cset "name='Mono DMIC L Mux' DMIC2"
+-		cset "name='Mono DMIC R Mux' DMIC2"
+-		cset "name='Mono ADC L2 Mux' DMIC"
+-		cset "name='Mono ADC R2 Mux' DMIC"
+-	]
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "Headset Microphone"
+-
+-	Value {
+-		CapturePriority 200
+-		CapturePCM "hw:${CardId}"
+-		JackControl "Headset Mic Jack"
+-	}
+-
+-	Include.e.File "/codecs/rt5645/HSMicEnableSeq.conf"
+-	Include.d.File "/codecs/rt5645/HSMicDisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Sto1 ADC MIXL ADC2 Switch' off"
+-		cset "name='Sto1 ADC MIXR ADC2 Switch' off"
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
+-		cset "name='Mono ADC MIXL ADC2 Switch' off"
+-		cset "name='Mono ADC MIXR ADC2 Switch' off"
+-	]
+-}
+diff --git a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf b/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
+deleted file mode 100644
+index 7794cae15ccd..000000000000
+--- a/ucm2/chtrt5645/HiFi-mono-speaker-analog-mic.conf
++++ /dev/null
+@@ -1,110 +0,0 @@
+-SectionVerb {
+-	# ALSA PCM
+-	Value {
+-		TQ "HiFi"
+-	}
+-
+-	Include.ce.File "/codecs/rt5645/EnableSeq.conf"
+-	Include.cd.File "/codecs/rt5645/DisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Stereo1 ADC1 Mux' 1"
+-		cset "name='I2S2 Func Switch' on"
+-		# 3/12 the headphone mic tends to be quite loud
+-		cset "name='IN1 Boost' 3"
+-		cset "name='IN2 Boost' 8"
+-	]
+-
+-	If.Controls {
+-		Condition {
+-			Type ControlExists
+-			Control "name='media0_in Gain 0 Switch'"
+-		}
+-		Before.EnableSequence "0"
+-		True {
+-			Include.pe.File "/platforms/bytcr/PlatformEnableSeq.conf"
+-			Include.pd.File "/platforms/bytcr/PlatformDisableSeq.conf"
+-		}
+-	}
+-}
+-
+-SectionDevice."Speaker" {
+-	Comment "Speaker"
+-
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-
+-	ConflictingDevice [
+-		"Headphones"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/SpeakerEnableSeq.conf"
+-
+-	EnableSequence [
+-		# Monospeaker: Mix right to left
+-		cset "name='Stereo DAC MIXL DAC R1 Switch' 1"
+-		cset "name='Stereo DAC MIXR DAC R1 Switch' 0"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Ext Spk Switch' off"
+-		cset "name='Speaker Channel Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headphones" {
+-	Comment "Headphones"
+-
+-	Value {
+-		PlaybackPriority 200
+-		PlaybackPCM "hw:${CardId}"
+-		JackControl "Headphone Jack"
+-	}
+-
+-	ConflictingDevice [
+-		"Speaker"
+-	]
+-
+-	Include.e.File "/codecs/rt5645/HeadphonesEnableSeq.conf"
+-
+-	EnableSequence [
+-		# Undo monospeaker mixing
+-		cset "name='Stereo DAC MIXL DAC R1 Switch' 0"
+-		cset "name='Stereo DAC MIXR DAC R1 Switch' 1"
+-	]
+-
+-	DisableSequence [
+-		cset "name='Headphone Switch' off"
+-		cset "name='Headphone Channel Switch' off"
+-	]
+-}
+-
+-Include.amic {
+-	File "/codecs/rt5645/AnalogMic.conf"
+-	Before.SectionDevice "Headset"
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "Headset Microphone"
+-
+-	Value {
+-		CapturePriority 200
+-		CapturePCM "hw:${CardId}"
+-		JackControl "Headset Mic Jack"
+-	}
+-
+-	Include.e.File "/codecs/rt5645/HSMicEnableSeq.conf"
+-	Include.d.File "/codecs/rt5645/HSMicDisableSeq.conf"
+-
+-	EnableSequence [
+-		cset "name='Sto1 ADC MIXL ADC2 Switch' off"
+-		cset "name='Sto1 ADC MIXR ADC2 Switch' off"
+-
+-		cset "name='Mono ADC MIXL ADC1 Switch' on"
+-		cset "name='Mono ADC MIXR ADC1 Switch' on"
+-		cset "name='Mono ADC MIXL ADC2 Switch' off"
+-		cset "name='Mono ADC MIXR ADC2 Switch' off"
+-	]
+-}
+diff --git a/ucm2/chtrt5645/HiFi.conf b/ucm2/chtrt5645/HiFi.conf
+index 1adc9fcb21fe..fb8636d8ffac 100644
+--- a/ucm2/chtrt5645/HiFi.conf
++++ b/ucm2/chtrt5645/HiFi.conf
+@@ -1,3 +1,42 @@
++Define.MonoSpeaker ""
++Define.AnalogMic "yes"
++Define.DigitalMic ""
++
++If.cfg-dmic1 {
++	Condition {
++		Type Regex
++		String "${CardLongName}"
++		Regex "(ASUSTeK.*T100HAN|ASUSTeK.*T101HA)"
++	}
++	True {
++		Define.AnalogMic ""
++		Define.DigitalMic "DMIC1"
++	}
++}
++
++If.cfg-dmic2 {
++	Condition {
++		Type Regex
++		String "${CardLongName}"
++		Regex "(LENOVO.*LenovoMIIX320|MEDION.*Wingman)"
++	}
++	True {
++		Define.AnalogMic ""
++		Define.DigitalMic "DMIC2"
++	}
++}
++
++If.cfg-mspk {
++	Condition {
++		Type Regex
++		String "${CardLongName}"
++		Regex "(gpd-win-pocket-rt5645|TECLAST-X80Pro)"
++	}
++	True {
++		Define.MonoSpeaker "yes"
++	}
++}
++
+ SectionVerb {
+ 	# ALSA PCM
+ 	Value {
+@@ -43,6 +82,20 @@ SectionDevice."Speaker" {
+ 
+ 	Include.e.File "/codecs/rt5645/SpeakerEnableSeq.conf"
+ 
++	If.mspk {
++		Condition {
++			Type String
++			Empty "${var:MonoSpeaker}"
++		}
++		False {
++			EnableSequence [
++				# Monospeaker: Mix right to left
++				cset "name='Stereo DAC MIXL DAC R1 Switch' 1"
++				cset "name='Stereo DAC MIXR DAC R1 Switch' 0"
++			]
++		}
++	}
++
+ 	DisableSequence [
+ 		cset "name='Ext Spk Switch' off"
+ 		cset "name='Speaker Channel Switch' off"
+@@ -70,9 +123,60 @@ SectionDevice."Headphones" {
+ 	]
+ }
+ 
+-Include.amic {
+-	File "/codecs/rt5645/AnalogMic.conf"
++If.amic {
++	Condition {
++		Type String
++		Empty "${var:AnalogMic}"
++	}
++	Before.SectionDevice "Headset"
++	False.Include.amic.File "/codecs/rt5645/AnalogMic.conf"
++}
++
++If.dmic {
++	Condition {
++		Type String
++		Empty "${var:DigitalMic}"
++	}
+ 	Before.SectionDevice "Headset"
++	False {
++		SectionDevice."Mic" {
++			Comment "Internal Microphone"
++
++			Value {
++				CapturePriority 100
++				CapturePCM "hw:${CardId}"
++			}
++
++			Include.e.File "/codecs/rt5645/DigitalMicEnableSeq.conf"
++			Include.d.File "/codecs/rt5645/DigitalMicDisableSeq.conf"
++
++			EnableSequence [
++				cset "name='Stereo1 ADC2 Mux' DMIC"
++				cset "name='Mono ADC L2 Mux' DMIC"
++				cset "name='Mono ADC R2 Mux' DMIC"
++			]
++
++			If.dmic2 {
++				Condition {
++					Type String
++					String1 "${var:DigitalMic}"
++					String2 "DMIC1"
++				}
++				True {
++					EnableSequence [
++						cset "name='Stereo1 DMIC Mux' DMIC1"
++					]
++				}
++				False {
++					EnableSequence [
++						cset "name='Stereo1 DMIC Mux' DMIC2"
++						cset "name='Mono DMIC L Mux' DMIC2"
++						cset "name='Mono DMIC R Mux' DMIC2"
++					]
++				}
++			}
++		}
++	}
+ }
+ 
+ SectionDevice."Headset" {
+diff --git a/ucm2/chtrt5645/LENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216.conf b/ucm2/chtrt5645/LENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216.conf
+deleted file mode 120000
+index 7823e312498e..000000000000
+--- a/ucm2/chtrt5645/LENOVO-80XF-LenovoMIIX320_10ICR-LNVNB161216.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-dmic2.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/MEDION-E1239TMD60568-0.1-Wingman.conf b/ucm2/chtrt5645/MEDION-E1239TMD60568-0.1-Wingman.conf
+deleted file mode 120000
+index 7823e312498e..000000000000
+--- a/ucm2/chtrt5645/MEDION-E1239TMD60568-0.1-Wingman.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-dmic2.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/TECLAST-X80Pro-Defaultstring-CherryTrailCR.conf b/ucm2/chtrt5645/TECLAST-X80Pro-Defaultstring-CherryTrailCR.conf
+deleted file mode 120000
+index 578d55abf0cf..000000000000
+--- a/ucm2/chtrt5645/TECLAST-X80Pro-Defaultstring-CherryTrailCR.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-mono-speaker-analog-mic.conf
+\ No newline at end of file
+diff --git a/ucm2/chtrt5645/chtrt5645-dmic1.conf b/ucm2/chtrt5645/chtrt5645-dmic1.conf
+deleted file mode 100644
+index 60c3b50ac1a3..000000000000
+--- a/ucm2/chtrt5645/chtrt5645-dmic1.conf
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 3
+-Comment "Intel SoC Audio Device"
+-SectionUseCase."HiFi" {
+-	File "HiFi-dmic1.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/chtrt5645/chtrt5645-dmic2.conf b/ucm2/chtrt5645/chtrt5645-dmic2.conf
+deleted file mode 100644
+index e94451651d3b..000000000000
+--- a/ucm2/chtrt5645/chtrt5645-dmic2.conf
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 3
+-Comment "Intel SoC Audio Device"
+-SectionUseCase."HiFi" {
+-	File "HiFi-dmic2.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/chtrt5645/chtrt5645-mono-speaker-analog-mic.conf b/ucm2/chtrt5645/chtrt5645-mono-speaker-analog-mic.conf
+deleted file mode 100644
+index 10d9a9e63726..000000000000
+--- a/ucm2/chtrt5645/chtrt5645-mono-speaker-analog-mic.conf
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Syntax 3
+-Comment "Intel SoC Audio Device"
+-SectionUseCase."HiFi" {
+-	File "HiFi-mono-speaker-analog-mic.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/chtrt5645/chtrt5645.conf b/ucm2/chtrt5645/chtrt5645.conf
+index 63f135b3fc3a..2904bb589613 100644
+--- a/ucm2/chtrt5645/chtrt5645.conf
++++ b/ucm2/chtrt5645/chtrt5645.conf
+@@ -1,5 +1,6 @@
+ Syntax 3
+ Comment "Intel SoC Audio Device"
++
+ SectionUseCase."HiFi" {
+ 	File "HiFi.conf"
+ 	Comment "Default"
+diff --git a/ucm2/chtrt5645/gpd-win-pocket-rt5645.conf b/ucm2/chtrt5645/gpd-win-pocket-rt5645.conf
+deleted file mode 120000
+index 578d55abf0cf..000000000000
+--- a/ucm2/chtrt5645/gpd-win-pocket-rt5645.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtrt5645-mono-speaker-analog-mic.conf
+\ No newline at end of file
+-- 
+2.16.4
+

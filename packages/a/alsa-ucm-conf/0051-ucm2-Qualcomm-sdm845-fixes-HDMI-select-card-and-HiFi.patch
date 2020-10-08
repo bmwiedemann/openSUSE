@@ -1,0 +1,30 @@
+From 3048ff7b15a922985499fa04b12b6abe929b8e4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?An=C3=ADbal=20Lim=C3=B3n?= <anibal.limon@linaro.org>
+Date: Mon, 31 Aug 2020 17:25:13 -0500
+Subject: [PATCH 51/51] ucm2: Qualcomm sdm845 fixes HDMI select card and HiFi
+ set DigitalVol
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Aníbal Limón <anibal.limon@linaro.org>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/Qualcomm/sdm845/HiFi.conf | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/ucm2/Qualcomm/sdm845/HiFi.conf b/ucm2/Qualcomm/sdm845/HiFi.conf
+index 1ef57c1e6019..2537acd1c1e0 100644
+--- a/ucm2/Qualcomm/sdm845/HiFi.conf
++++ b/ucm2/Qualcomm/sdm845/HiFi.conf
+@@ -35,5 +35,7 @@ SectionDevice."Speaker" {
+ 	Value {
+ 		PlaybackPriority 100
+ 		PlaybackPCM "hw:${CardId},1"
++		PlaybackVolume "RX1 Digital Volume"
++		PlaybackVolume "RX2 Digital Volume"
+ 	}
+ }
+-- 
+2.16.4
+

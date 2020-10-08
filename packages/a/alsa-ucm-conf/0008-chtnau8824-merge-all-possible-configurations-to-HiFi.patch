@@ -1,0 +1,114 @@
+From 7fde5c213a91d407ece28de144612f9566487de1 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Mon, 22 Jun 2020 17:51:09 +0200
+Subject: [PATCH 08/51] chtnau8824: merge all possible configurations to
+ HiFi.conf
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtnau8824/HiFi-mono.conf                     | 27 ----------------------
+ ucm2/chtnau8824/HiFi.conf                          | 14 ++++++++++-
+ .../PIPO-W2S-Defaultstring-CherryTrailCR.conf      |  1 -
+ ucm2/chtnau8824/chtnau8824-mono.conf               |  8 -------
+ .../cube-i1_TF-Defaultstring-CherryTrailCR.conf    |  1 -
+ 5 files changed, 13 insertions(+), 38 deletions(-)
+ delete mode 100644 ucm2/chtnau8824/HiFi-mono.conf
+ delete mode 120000 ucm2/chtnau8824/PIPO-W2S-Defaultstring-CherryTrailCR.conf
+ delete mode 100644 ucm2/chtnau8824/chtnau8824-mono.conf
+ delete mode 120000 ucm2/chtnau8824/cube-i1_TF-Defaultstring-CherryTrailCR.conf
+
+diff --git a/ucm2/chtnau8824/HiFi-mono.conf b/ucm2/chtnau8824/HiFi-mono.conf
+deleted file mode 100644
+index 6d899ce6fc69..000000000000
+--- a/ucm2/chtnau8824/HiFi-mono.conf
++++ /dev/null
+@@ -1,27 +0,0 @@
+-
+-SectionVerb {
+-
+-	Value {
+-		TQ "HiFi"
+-	}
+-
+-	Include.e.File "/codecs/nau8824/EnableSeq.conf"
+-
+-	If.Controls {
+-		Condition {
+-			Type ControlExists
+-			Control "name='media0_in Gain 0 Switch'"
+-		}
+-		Before.EnableSequence "0"
+-		True {
+-			Include.pe.File "/platforms/bytcr/PlatformEnableSeq.conf"
+-			Include.pd.File "/platforms/bytcr/PlatformDisableSeq.conf"
+-		}
+-	}
+-}
+-
+-Include.mspk.File "/codecs/nau8824/MonoSpeaker.conf"
+-Include.hp.File "/codecs/nau8824/HeadPhones.conf"
+-
+-Include.mic.File "/codecs/nau8824/InternalMic.conf"
+-Include.hsmic.File "/codecs/nau8824/HeadsetMic.conf"
+diff --git a/ucm2/chtnau8824/HiFi.conf b/ucm2/chtnau8824/HiFi.conf
+index b3c0209aa0ec..6b7624d6e775 100644
+--- a/ucm2/chtnau8824/HiFi.conf
++++ b/ucm2/chtnau8824/HiFi.conf
+@@ -1,3 +1,15 @@
++Define.Speaker "Speaker"
++
++If.cfg-mspk {
++	Condition {
++		Type Regex
++		String "${CardLongName}"
++		Regex "(cube-i1_TF|PIPO-W2S)"
++	}
++	True {
++		Define.Speaker "MonoSpeaker"
++	}
++}
+ 
+ SectionVerb {
+ 
+@@ -22,7 +34,7 @@ SectionVerb {
+ 	}
+ }
+ 
+-Include.spk.File "/codecs/nau8824/Speaker.conf"
++Include.spk.File "/codecs/nau8824/${var:Speaker}.conf"
+ Include.hp.File "/codecs/nau8824/HeadPhones.conf"
+ 
+ Include.mic.File "/codecs/nau8824/InternalMic.conf"
+diff --git a/ucm2/chtnau8824/PIPO-W2S-Defaultstring-CherryTrailCR.conf b/ucm2/chtnau8824/PIPO-W2S-Defaultstring-CherryTrailCR.conf
+deleted file mode 120000
+index e3af8b605fc1..000000000000
+--- a/ucm2/chtnau8824/PIPO-W2S-Defaultstring-CherryTrailCR.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtnau8824-mono.conf
+\ No newline at end of file
+diff --git a/ucm2/chtnau8824/chtnau8824-mono.conf b/ucm2/chtnau8824/chtnau8824-mono.conf
+deleted file mode 100644
+index 6c498c74ec35..000000000000
+--- a/ucm2/chtnau8824/chtnau8824-mono.conf
++++ /dev/null
+@@ -1,8 +0,0 @@
+-Syntax 3
+-
+-Comment "chtnau8824 internal card"
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi-mono.conf"
+-	Comment "Default"
+-}
+diff --git a/ucm2/chtnau8824/cube-i1_TF-Defaultstring-CherryTrailCR.conf b/ucm2/chtnau8824/cube-i1_TF-Defaultstring-CherryTrailCR.conf
+deleted file mode 120000
+index e3af8b605fc1..000000000000
+--- a/ucm2/chtnau8824/cube-i1_TF-Defaultstring-CherryTrailCR.conf
++++ /dev/null
+@@ -1 +0,0 @@
+-chtnau8824-mono.conf
+\ No newline at end of file
+-- 
+2.16.4
+

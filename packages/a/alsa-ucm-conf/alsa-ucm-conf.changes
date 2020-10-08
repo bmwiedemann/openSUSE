@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:57:05 CEST 2020 - tiwai@suse.de
+
+- Disable HDA-Intel UCM conf due to a regression on openQA (the
+  muted state as default)
+
+-------------------------------------------------------------------
+Mon Sep  7 14:26:35 CEST 2020 - tiwai@suse.de
+
+- Update from alsa-ucm-conf git (commit 3048ff7b15a9):
+  mainly for adding the support for sof-soundwire (bsc#1176200):
+  0001-bytcr-rt5640-Fix-DMIC1-not-working-when-connected-ov.patch
+  0002-bytcr-rt5651-Fix-high-noise-level-soft-input-on-DMIC.patch
+  0003-chtrt5645-Add-ASUSTeKCOMPUTERINC.-T101HA-1.0.conf-sy.patch
+  0004-sof-hda-dsp-don-t-fail-if-Auto-Mute-control-is-not-p.patch
+  0005-ucm2-use-Include-Syntax-3.patch
+  0006-chtrt5645-merge-all-possible-configurations-to-HiFi..patch
+  0007-cht-bsw-rt5672-merge-all-possible-configurations-to-.patch
+  0008-chtnau8824-merge-all-possible-configurations-to-HiFi.patch
+  0009-ucm.conf-add-support-for-the-kernel-module-name-tree.patch
+  0010-sof-hda-dsp-make-Headphone-Playback-Switch-condition.patch
+  0011-sof-hda-dsp-add-initial-kcontrol-values.patch
+  0012-sof-hda-dsp-make-the-boot-init-optional-for-all-cont.patch
+  0013-bdw-rt5677-add-support-for-legacy-and-SOF-drivers.patch
+  0014-broadwell-rt286-add-SOF-support.patch
+  0015-sof-soundwire-initial-UCM2-version.patch
+  0016-sof-soundwire-cleanups-recommended-by-the-ucm-valida.patch
+  0017-sof-soundwire-rewrite-for-syntax-3.patch
+  0018-sof-hda-dsp-fix-the-device-order-Hdmi-devices.patch
+  0019-HDA-Intel-add-support-for-AMD-acp-microphone-devices.patch
+  0020-DAISY-I2S-move-to-Samsung-snow-snow.conf.patch
+  0021-DB410c-move-to-Qualcomm-apq8016-sbc.patch
+  0022-DB820c-DB845c-move-to-Qualcomm-tree.patch
+  0023-PAZ00-tegraalc5632-move-to-Tegra-alc5632-tree.patch
+  0024-VEYRON-I2C-move-to-Rockchip-max98090-tree.patch
+  0025-Pandaboard-ES-move-to-OMAP-abe-twl6040-tree.patch
+  0026-GoogleNyan-move-to-Tegra-max98090.patch
+  0027-SDP4430-Move-to-OMAP-abe-twl6040-SDP4430-tree.patch
+  0028-Fix-invalid-Regex-Type-in-various-Condition-blocks.patch
+  0029-cht-bsw-rt5672-Add-Lenovo-Miix-2-10-specific-configu.patch
+  0030-cht-bsw-rt5672-Add-Lenovo-ThinkPad-10-specific-confi.patch
+  0031-cht-bsw-rt5672-Boost-ADC-volume-a-bit.patch
+  0032-chtrt5645-Restore-stereo-sound-output-when-switching.patch
+  0033-DB820c-Correctly-move-DB820c-to-Qualcomm-apq8096.patch
+  0034-sof-hda-dsp-fixup-typo-in-Hdmi.conf.patch
+  0035-sof-hda-dsp-use-sof-hda-dsp-Hdmi.conf.patch
+  0036-hda-hdmi-add-HDMI4-HDMI5-HDMI6-devices.patch
+  0037-update-ucm2-README.md-more-kernel-module-lookup-clar.patch
+  0038-ucm2-Add-config-for-Rockchip-rk3399-gru-sound.patch
+  0039-amd-renoir-acp-use-the-machine-driver-s-name-for-top.patch
+  0040-amd-renoir-acp-Add-Syntax-3-in-the-module-lib-Linked.patch
+  0041-Correct-conflicting-mic-in-max98090.patch
+  0042-HDA-Intel-HiFi-dual-Fix-the-Rear-Mic-s-Jack-name.patch
+  0043-USB-Audio-Dell-WD15-Dock-make-input-and-output-volum.patch
+  0044-Rockchip-rk3399-gru-sound-remove-zero-PCM-subdevice.patch
+  0045-ucm2-ucm.conf-fix-the-fix-the-sysfs-kernel-module-pa.patch
+  0046-Revert-amd-renoir-acp-use-the-machine-driver-s-name-.patch
+  0047-ucm2-module-rename-rk3399-gru-sound.conf-snd_soc_rk3.patch
+  0048-ucm2-HDA-acp-add-Capture-simple-mixer-element-to-the.patch
+  0049-HDA-Intel-only-add-the-acp-dmic-to-the-sound-card-wi.patch
+  0050-Add-support-for-Lenovo-ThinkStation-P620-Main-Audio.patch
+  0051-ucm2-Qualcomm-sdm845-fixes-HDMI-select-card-and-HiFi.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 11:25:16 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-ucm-conf 1.2.3:

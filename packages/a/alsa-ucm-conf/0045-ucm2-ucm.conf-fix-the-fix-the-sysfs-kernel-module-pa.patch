@@ -1,0 +1,31 @@
+From b3531451db3b4ac6aa8c6a8bec3992bcf30fffe4 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 19 Aug 2020 16:03:48 +0200
+Subject: [PATCH 45/51] ucm2: ucm.conf - fix the fix the sysfs kernel module
+ path
+
+The idea was to use the kernel module name not the driver name which
+may be different.
+
+BugLink: https://github.com/alsa-project/alsa-lib/pull/79
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/ucm.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/ucm.conf b/ucm2/ucm.conf
+index ec8287817a5a..ed410dde64ce 100644
+--- a/ucm2/ucm.conf
++++ b/ucm2/ucm.conf
+@@ -51,7 +51,7 @@ If.driver {
+ 				Empty "${var:V2Module}"
+ 			}
+ 			False {
+-				Define.KernelModulePath "class/sound/card${CardNumber}/device/driver"
++				Define.KernelModulePath "class/sound/card${CardNumber}/device/driver/module"
+ 				Define.KernelModule "${sys:$KernelModulePath}"
+ 				UseCasePath.module {
+ 					Directory "module"
+-- 
+2.16.4
+

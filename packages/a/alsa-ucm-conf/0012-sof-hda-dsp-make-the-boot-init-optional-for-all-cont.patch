@@ -1,0 +1,108 @@
+From 6ed067e0d448b34eaa8217f9785830aa1a3f716f Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Wed, 24 Jun 2020 10:39:42 +0200
+Subject: [PATCH 12/51] sof-hda-dsp: make the boot init optional for all
+ controls
+
+Also don't initialize "Auto-Mute Mode" in the HiFi verb.
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf        | 12 +--------
+ ucm2/sof-hda-dsp/sof-hda-dsp.conf | 53 +++++++++++++++++++++++++++++++--------
+ 2 files changed, 43 insertions(+), 22 deletions(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 127948844d67..5c03da1a164e 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -1,17 +1,7 @@
+ # Use case Configuration for sof-hda-dsp
+ 
+ SectionVerb {
+-	If.automute {
+-		Condition {
+-			Type ControlExists
+-			Control "name='Auto-Mute Mode'"
+-		}
+-		True {
+-			EnableSequence [
+-				cset "name='Auto-Mute Mode' 'Disabled'"
+-			]
+-		}
+-	}
++	Value.TQ "HiFi"
+ }
+ 
+ SectionDevice."Headphones" {
+diff --git a/ucm2/sof-hda-dsp/sof-hda-dsp.conf b/ucm2/sof-hda-dsp/sof-hda-dsp.conf
+index 24d0359f304f..c8069a6bbf28 100644
+--- a/ucm2/sof-hda-dsp/sof-hda-dsp.conf
++++ b/ucm2/sof-hda-dsp/sof-hda-dsp.conf
+@@ -7,21 +7,52 @@ SectionUseCase."HiFi" {
+ 
+ # the kcontrols initial values, which will be set by `alsactl init`
+ 
+-BootSequence [
+-	cset "name='Master Playback Volume' 80"
+-	cset "name='Headphone Playback Volume' 80"
+-	cset "name='Speaker Playback Volume' 80"
+-	cset "name='Auto-Mute Mode' off"
+-]
++If.amute {
++	Condition {
++		Type ControlExists
++		Control "name='Auto-Mute Mode'"
++	}
++	True.BootSequence [
++		cset "name='Auto-Mute Mode' off"
++	]
++}
++
++If.master {
++	Condition {
++		Type ControlExists
++		Control "name='Master Playback Volume'"
++	}
++	True.BootSequence [
++		cset "name='Master Playback Volume' 60%"
++	]
++}
++
++If.speaker {
++	Condition {
++		Type ControlExists
++		Control "name='Speaker Playback Volume'"
++	}
++	True.BootSequence [
++		cset "name='Speaker Playback Volume' 60%"
++	]
++}
++
++If.headphone {
++	Condition {
++		Type ControlExists
++		Control "name='Headphone Playback Volume'"
++	}
++	True.BootSequence [
++		cset "name='Headphone Playback Volume' 60%"
++	]
++}
+ 
+ If.Dmic0 {
+ 	Condition {
+ 		Type ControlExists
+ 		Control "name='Dmic0 Capture Volume'"
+ 	}
+-	True {
+-		BootSequence [
+-			cset "name='Dmic0 Capture Volume' 70"
+-		]
+-	}
++	True.BootSequence [
++		cset "name='Dmic0 Capture Volume' 70%"
++	]
+ }
+-- 
+2.16.4
+

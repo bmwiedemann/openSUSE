@@ -1,0 +1,26 @@
+From 3a4539b00fa3a8852387af784b84af62c71a02d6 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 18 Aug 2020 17:39:50 +0200
+Subject: [PATCH 44/51] Rockchip/rk3399-gru-sound: remove zero PCM subdevice
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/Rockchip/rk3399-gru-sound/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/Rockchip/rk3399-gru-sound/HiFi.conf b/ucm2/Rockchip/rk3399-gru-sound/HiFi.conf
+index 4da6f1add200..4d2d3fa5d6a6 100644
+--- a/ucm2/Rockchip/rk3399-gru-sound/HiFi.conf
++++ b/ucm2/Rockchip/rk3399-gru-sound/HiFi.conf
+@@ -35,7 +35,7 @@ SectionDevice."Speaker" {
+ 
+ 	Value {
+ 		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId},0"
++		PlaybackPCM "hw:${CardId}"
+ 		PlaybackMixerElem "Speakers"
+ 	}
+ 
+-- 
+2.16.4
+

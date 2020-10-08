@@ -1,0 +1,27 @@
+From ffe0cab5cfceb921a50a655d4024467f8aeab701 Mon Sep 17 00:00:00 2001
+From: Libin Yang <libin.yang@intel.com>
+Date: Wed, 1 Jul 2020 01:51:58 -0400
+Subject: [PATCH 35/51] sof-hda-dsp: use sof-hda-dsp/Hdmi.conf
+
+sof-hda-dsp should use sof-hda-dsp/Hdmi.conf, not HDA-Intel/Hdmi.conf.
+HDA-Intel/Hdmi.conf is for legacy HDA.
+
+Signed-off-by: Libin Yang <libin.yang@intel.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/sof-hda-dsp/HiFi.conf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ucm2/sof-hda-dsp/HiFi.conf b/ucm2/sof-hda-dsp/HiFi.conf
+index 0f221b79ce21..a250331eb86d 100644
+--- a/ucm2/sof-hda-dsp/HiFi.conf
++++ b/ucm2/sof-hda-dsp/HiFi.conf
+@@ -43,4 +43,4 @@ SectionDevice."Mic1" {
+ 	}
+ }
+ 
+-<HDA-Intel/Hdmi.conf>
++<sof-hda-dsp/Hdmi.conf>
+-- 
+2.16.4
+

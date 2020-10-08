@@ -1,0 +1,41 @@
+From 7f07632932a7df572c3a5f5b3f6c83c03d0e798e Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Sun, 28 Jun 2020 19:44:21 +0200
+Subject: [PATCH 32/51] chtrt5645: Restore stereo sound output when switching
+ from MonoSpeaker to Headphones
+
+Commit fe3b0bdc2f43 ("chtrt5645: merge all possible configurations to
+HiFi.conf") missed the part of the removed HiFi-mono-speaker-analog-mic.conf
+file which restores stereo mixing (instead of mixing left + right to the
+left DAC mixer output) when switching from the mono speaker setup to the
+headphones output.
+
+This was causing both left and right channels to only be played on the
+left ear of the headphones. This commit fixes this.
+
+Fixes: fe3b0bdc2f43 ("chtrt5645: merge all possible configurations to HiFi.conf")
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/chtrt5645/HiFi.conf | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/ucm2/chtrt5645/HiFi.conf b/ucm2/chtrt5645/HiFi.conf
+index 5d0e3bf42f40..10b0a1c22f97 100644
+--- a/ucm2/chtrt5645/HiFi.conf
++++ b/ucm2/chtrt5645/HiFi.conf
+@@ -93,6 +93,11 @@ SectionDevice."Speaker" {
+ 				cset "name='Stereo DAC MIXL DAC R1 Switch' 1"
+ 				cset "name='Stereo DAC MIXR DAC R1 Switch' 0"
+ 			]
++			DisableSequence [
++				# Undo monospeaker mixing
++				cset "name='Stereo DAC MIXL DAC R1 Switch' 0"
++				cset "name='Stereo DAC MIXR DAC R1 Switch' 1"
++			]
+ 		}
+ 	}
+ 
+-- 
+2.16.4
+

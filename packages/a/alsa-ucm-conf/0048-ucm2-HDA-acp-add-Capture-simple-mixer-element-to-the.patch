@@ -1,0 +1,25 @@
+From 3320b1ac804595d6c145c1ad7af85917182a3c98 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Tue, 1 Sep 2020 13:57:18 +0200
+Subject: [PATCH 48/51] ucm2: HDA/acp - add Capture simple mixer element to the
+ ACP Mic device
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HiFi-acp.conf | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/ucm2/HDA-Intel/HiFi-acp.conf b/ucm2/HDA-Intel/HiFi-acp.conf
+index 123ae15f0406..15eeca527907 100644
+--- a/ucm2/HDA-Intel/HiFi-acp.conf
++++ b/ucm2/HDA-Intel/HiFi-acp.conf
+@@ -4,5 +4,6 @@ SectionDevice."Mic1" {
+ 	Value {
+ 		CapturePriority 100
+ 		CapturePCM "hw:${var:AcpCardId}"
++		CaptureMixerElem "Capture"
+ 	}
+ }
+-- 
+2.16.4
+

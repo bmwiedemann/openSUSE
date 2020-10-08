@@ -1,0 +1,387 @@
+From 8ff2d50745efbb6959324f672460e413f0b618b8 Mon Sep 17 00:00:00 2001
+From: Jaroslav Kysela <perex@perex.cz>
+Date: Thu, 25 Jun 2020 17:01:05 +0200
+Subject: [PATCH 23/51] PAZ00/tegraalc5632: move to Tegra/alc5632 tree
+
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/PAZ00/HiFi.conf                   | 39 ----------------------
+ ucm2/PAZ00/PAZ00.conf                  | 44 -------------------------
+ ucm2/PAZ00/Record.conf                 | 59 ----------------------------------
+ ucm2/Tegra/alc5632/HiFi.conf           | 39 ++++++++++++++++++++++
+ ucm2/Tegra/alc5632/Record.conf         | 59 ++++++++++++++++++++++++++++++++++
+ ucm2/Tegra/alc5632/alc5632.conf        | 44 +++++++++++++++++++++++++
+ ucm2/module/snd_soc_tegra_alc5632.conf |  1 +
+ ucm2/tegraalc5632/tegraalc5632.conf    | 25 --------------
+ 8 files changed, 143 insertions(+), 167 deletions(-)
+ delete mode 100644 ucm2/PAZ00/HiFi.conf
+ delete mode 100644 ucm2/PAZ00/PAZ00.conf
+ delete mode 100644 ucm2/PAZ00/Record.conf
+ create mode 100644 ucm2/Tegra/alc5632/HiFi.conf
+ create mode 100644 ucm2/Tegra/alc5632/Record.conf
+ create mode 100644 ucm2/Tegra/alc5632/alc5632.conf
+ create mode 120000 ucm2/module/snd_soc_tegra_alc5632.conf
+ delete mode 100644 ucm2/tegraalc5632/tegraalc5632.conf
+
+diff --git a/ucm2/PAZ00/HiFi.conf b/ucm2/PAZ00/HiFi.conf
+deleted file mode 100644
+index e3136a76a512..000000000000
+--- a/ucm2/PAZ00/HiFi.conf
++++ /dev/null
+@@ -1,39 +0,0 @@
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='Speaker Playback Switch' on"
+-		cset "name='Int Spk Switch' on"
+-		cset "name='Speaker Mix DAC2SPK Playback Switch' on"
+-	]
+-	DisableSequence [
+-		cset "name='Speaker Playback Switch' off"
+-		cset "name='Int Spk Switch' off"
+-		cset "name='Speaker Mix DAC2SPK Playback Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "3.5mm Headset"
+-
+-	EnableSequence [
+-		# Internal speaker
+-		cset "name='Int Spk Switch' off"
+-
+-		# Headphones
+-		cset "name='Headphone Playback Switch' on"
+-		cset "name='HPL Mix DACL2HP Playback Switch' on"
+-		cset "name='HPR Mix DACR2HP Playback Switch' on"
+-	]
+-	DisableSequence [
+-		# Headphones
+-		cset "name='Headphone Playback Switch' off"
+-		cset "name='HPL Mix DACL2HP Playback Switch' off"
+-		cset "name='HPR Mix DACR2HP Playback Switch' off"
+-
+-		# Internal speaker
+-		cset "name='Int Spk Switch' on"
+-	]
+-	Value {
+-		PlaybackPriority 100
+-		PlaybackPCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/PAZ00/PAZ00.conf b/ucm2/PAZ00/PAZ00.conf
+deleted file mode 100644
+index d999bd0af8b1..000000000000
+--- a/ucm2/PAZ00/PAZ00.conf
++++ /dev/null
+@@ -1,44 +0,0 @@
+-Syntax 2
+-
+-Comment "PAZ00 alc5632"
+-
+-BootSequence [
+-	cset "name='Master Playback Switch' on"
+-	cset "name='Master Playback Volume' 44,44"
+-	cset "name='Headphone Playback Volume' 21,21"
+-	cset "name='Speaker Playback Volume' 21,21"
+-	cset "name='SpeakerOut Mux' 2"
+-	cset "name='SpeakerOut N Mux' LN/-R"
+-	cset "name='AB-D Amp Mux' 0"
+-	cset "name='Left Headphone Mux' 1"
+-	cset "name='Right Headphone Mux' 1"
+-	cset "name='DMIC Boost Capture Volume' 4"
+-	cset "name='Rec Capture Volume' 24"
+-
+-	# Fix external mic record volumes
+-	cset "name='Mic 1 Boost Volume' 0"
+-	cset "name='Mic 2 Boost Volume' 0"
+-	cset "name='Mic1 Playback Volume' 0"
+-	cset "name='Mic2 Playback Volume' 0"
+-	cset "name='Rec Capture Volume' 0"
+-
+-	# Enable internal speaker
+-	cset "name='Speaker Playback Switch' on"
+-	cset "name='Int Spk Switch' on"
+-	cset "name='Speaker Mix DAC2SPK Playback Switch' on"
+-
+-	# Enable DMIC
+-	cset "name='DMICL Mix DMICL2ADC Capture Switch' on"
+-	cset "name='DMIC En Capture Switch' on"
+-	cset "name='DMIC PreFilter Capture Switch' on"
+-]
+-
+-SectionUseCase."HiFi" {
+-	File "HiFi.conf"
+-	Comment "Music playback"
+-}
+-
+-SectionUseCase."Record" {
+-	File "Record.conf"
+-	Comment "Playback and capture"
+-}
+diff --git a/ucm2/PAZ00/Record.conf b/ucm2/PAZ00/Record.conf
+deleted file mode 100644
+index 15b8164c6454..000000000000
+--- a/ucm2/PAZ00/Record.conf
++++ /dev/null
+@@ -1,59 +0,0 @@
+-SectionVerb {
+-	EnableSequence [
+-		cset "name='Speaker Playback Switch' on"
+-		cset "name='Int Spk Switch' on"
+-		cset "name='Speaker Mix DAC2SPK Playback Switch' on"
+-
+-		cset "name='DMICL Mix DMICL2ADC Capture Switch' on"
+-		cset "name='DMIC En Capture Switch' on"
+-		cset "name='DMIC PreFilter Capture Switch' on"
+-	]
+-	DisableSequence [
+-		cset "name='Speaker Playback Switch' off"
+-		cset "name='Int Spk Switch' off"
+-		cset "name='Speaker Mix DAC2SPK Playback Switch' off"
+-
+-		cset "name='DMICL Mix DMICL2ADC Capture Switch' off"
+-		cset "name='DMIC En Capture Switch' off"
+-		cset "name='DMIC PreFilter Capture Switch' off"
+-	]
+-}
+-
+-SectionDevice."Headset" {
+-	Comment "3.5mm Headset"
+-
+-	EnableSequence [
+-		# Internal speaker
+-		cset "name='Int Spk Switch' off"
+-
+-		# Internal mic
+-		cset "name='DMIC En Capture Switch' off"
+-
+-		# Headphones
+-		cset "name='Headphone Playback Switch' on"
+-		cset "name='HPL Mix DACL2HP Playback Switch' on"
+-		cset "name='HPR Mix DACR2HP Playback Switch' on"
+-
+-		# External min
+-		cset "name='Left Capture Mix MIC12REC_L Capture Switch' on"
+-	]
+-	DisableSequence [
+-		# Headphones
+-		cset "name='Headphone Playback Switch' off"
+-		cset "name='HPL Mix DACL2HP Playback Switch' off"
+-		cset "name='HPR Mix DACR2HP Playback Switch' off"
+-
+-		# External mic
+-		cset "name='Left Capture Mix MIC12REC_L Capture Switch' on"
+-
+-		# Internal speaker
+-		cset "name='Int Spk Switch' on"
+-
+-		# Internal mic
+-		cset "name='DMIC En Capture Switch' on"
+-	]
+-	Value {
+-		CapturePriority 100
+-		CapturePCM "hw:${CardId}"
+-	}
+-}
+diff --git a/ucm2/Tegra/alc5632/HiFi.conf b/ucm2/Tegra/alc5632/HiFi.conf
+new file mode 100644
+index 000000000000..e3136a76a512
+--- /dev/null
++++ b/ucm2/Tegra/alc5632/HiFi.conf
+@@ -0,0 +1,39 @@
++SectionVerb {
++	EnableSequence [
++		cset "name='Speaker Playback Switch' on"
++		cset "name='Int Spk Switch' on"
++		cset "name='Speaker Mix DAC2SPK Playback Switch' on"
++	]
++	DisableSequence [
++		cset "name='Speaker Playback Switch' off"
++		cset "name='Int Spk Switch' off"
++		cset "name='Speaker Mix DAC2SPK Playback Switch' off"
++	]
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++
++	EnableSequence [
++		# Internal speaker
++		cset "name='Int Spk Switch' off"
++
++		# Headphones
++		cset "name='Headphone Playback Switch' on"
++		cset "name='HPL Mix DACL2HP Playback Switch' on"
++		cset "name='HPR Mix DACR2HP Playback Switch' on"
++	]
++	DisableSequence [
++		# Headphones
++		cset "name='Headphone Playback Switch' off"
++		cset "name='HPL Mix DACL2HP Playback Switch' off"
++		cset "name='HPR Mix DACR2HP Playback Switch' off"
++
++		# Internal speaker
++		cset "name='Int Spk Switch' on"
++	]
++	Value {
++		PlaybackPriority 100
++		PlaybackPCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/Tegra/alc5632/Record.conf b/ucm2/Tegra/alc5632/Record.conf
+new file mode 100644
+index 000000000000..15b8164c6454
+--- /dev/null
++++ b/ucm2/Tegra/alc5632/Record.conf
+@@ -0,0 +1,59 @@
++SectionVerb {
++	EnableSequence [
++		cset "name='Speaker Playback Switch' on"
++		cset "name='Int Spk Switch' on"
++		cset "name='Speaker Mix DAC2SPK Playback Switch' on"
++
++		cset "name='DMICL Mix DMICL2ADC Capture Switch' on"
++		cset "name='DMIC En Capture Switch' on"
++		cset "name='DMIC PreFilter Capture Switch' on"
++	]
++	DisableSequence [
++		cset "name='Speaker Playback Switch' off"
++		cset "name='Int Spk Switch' off"
++		cset "name='Speaker Mix DAC2SPK Playback Switch' off"
++
++		cset "name='DMICL Mix DMICL2ADC Capture Switch' off"
++		cset "name='DMIC En Capture Switch' off"
++		cset "name='DMIC PreFilter Capture Switch' off"
++	]
++}
++
++SectionDevice."Headset" {
++	Comment "3.5mm Headset"
++
++	EnableSequence [
++		# Internal speaker
++		cset "name='Int Spk Switch' off"
++
++		# Internal mic
++		cset "name='DMIC En Capture Switch' off"
++
++		# Headphones
++		cset "name='Headphone Playback Switch' on"
++		cset "name='HPL Mix DACL2HP Playback Switch' on"
++		cset "name='HPR Mix DACR2HP Playback Switch' on"
++
++		# External min
++		cset "name='Left Capture Mix MIC12REC_L Capture Switch' on"
++	]
++	DisableSequence [
++		# Headphones
++		cset "name='Headphone Playback Switch' off"
++		cset "name='HPL Mix DACL2HP Playback Switch' off"
++		cset "name='HPR Mix DACR2HP Playback Switch' off"
++
++		# External mic
++		cset "name='Left Capture Mix MIC12REC_L Capture Switch' on"
++
++		# Internal speaker
++		cset "name='Int Spk Switch' on"
++
++		# Internal mic
++		cset "name='DMIC En Capture Switch' on"
++	]
++	Value {
++		CapturePriority 100
++		CapturePCM "hw:${CardId}"
++	}
++}
+diff --git a/ucm2/Tegra/alc5632/alc5632.conf b/ucm2/Tegra/alc5632/alc5632.conf
+new file mode 100644
+index 000000000000..57c64e3551db
+--- /dev/null
++++ b/ucm2/Tegra/alc5632/alc5632.conf
+@@ -0,0 +1,44 @@
++Syntax 2
++
++Comment "PAZ00 alc5632"
++
++BootSequence [
++	cset "name='Master Playback Switch' on"
++	cset "name='Master Playback Volume' 44,44"
++	cset "name='Headphone Playback Volume' 21,21"
++	cset "name='Speaker Playback Volume' 21,21"
++	cset "name='SpeakerOut Mux' 2"
++	cset "name='SpeakerOut N Mux' LN/-R"
++	cset "name='AB-D Amp Mux' 0"
++	cset "name='Left Headphone Mux' 1"
++	cset "name='Right Headphone Mux' 1"
++	cset "name='DMIC Boost Capture Volume' 4"
++	cset "name='Rec Capture Volume' 24"
++
++	# Fix external mic record volumes
++	cset "name='Mic 1 Boost Volume' 0"
++	cset "name='Mic 2 Boost Volume' 0"
++	cset "name='Mic1 Playback Volume' 0"
++	cset "name='Mic2 Playback Volume' 0"
++	cset "name='Rec Capture Volume' 0"
++
++	# Enable internal speaker
++	cset "name='Speaker Playback Switch' on"
++	cset "name='Int Spk Switch' on"
++	cset "name='Speaker Mix DAC2SPK Playback Switch' on"
++
++	# Enable DMIC
++	cset "name='DMICL Mix DMICL2ADC Capture Switch' on"
++	cset "name='DMIC En Capture Switch' on"
++	cset "name='DMIC PreFilter Capture Switch' on"
++]
++
++SectionUseCase."HiFi" {
++	File "/Tegra/alc5632/HiFi.conf"
++	Comment "Music playback"
++}
++
++SectionUseCase."Record" {
++	File "/Tegra/alc5632/Record.conf"
++	Comment "Playback and capture"
++}
+diff --git a/ucm2/module/snd_soc_tegra_alc5632.conf b/ucm2/module/snd_soc_tegra_alc5632.conf
+new file mode 120000
+index 000000000000..8685001f661a
+--- /dev/null
++++ b/ucm2/module/snd_soc_tegra_alc5632.conf
+@@ -0,0 +1 @@
++../Tegra/alc5632/alc5632.conf
+\ No newline at end of file
+diff --git a/ucm2/tegraalc5632/tegraalc5632.conf b/ucm2/tegraalc5632/tegraalc5632.conf
+deleted file mode 100644
+index ecc934a2a5fc..000000000000
+--- a/ucm2/tegraalc5632/tegraalc5632.conf
++++ /dev/null
+@@ -1,25 +0,0 @@
+-# UCM configuration for tegra-alc5632
+-
+-Syntax 2
+-
+-SectionDefaults [
+-	cset "name='Master Playback Switch' on"
+-	cset "name='Master Playback Volume' 44,44"
+-	cset "name='Headphone Playback Switch' on"
+-	cset "name='Headphone Playback Volume' 21,21"
+-	cset "name='Speaker Playback Switch' on"
+-	cset "name='Speaker Playback Volume' 21,21"
+-	cset "name='Speaker Mix DAC2SPK Playback Switch' on"
+-	cset "name='SpeakerOut Mux' 2"
+-	cset "name='SpeakerOut N Mux' LN/-R"
+-	cset "name='AB-D Amp Mux' 0"
+-	cset "name='HPL Mix DACL2HP Playback Switch' on"
+-	cset "name='HPR Mix DACR2HP Playback Switch' on"
+-	cset "name='Int Spk Switch' on"
+-	cset "name='Left Headphone Mux' 1"
+-	cset "name='Right Headphone Mux' 1"
+-	cset "name='DMIC En Capture Switch' on"
+-	cset "name='DMIC PreFilter Capture Switch' on"
+-	cset "name='DMIC Boost Capture Volume' 4"
+-	cset "name='Rec Capture Volume' 24"
+-]
+-- 
+2.16.4
+

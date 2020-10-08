@@ -1,0 +1,63 @@
+From 4c703a5504deb1772cadfdc783257d9a927b422b Mon Sep 17 00:00:00 2001
+From: Hui Wang <hui.wang@canonical.com>
+Date: Thu, 20 Aug 2020 11:25:24 +0800
+Subject: [PATCH 49/51] HDA-Intel: only add the acp dmic to the sound card with
+ analog codec
+
+Without this change, the acp dmic will be added to both Intel sound
+card (with analog codec) and Nvidia Hdmi audio sound card.
+
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ ucm2/HDA-Intel/HiFi.conf | 31 ++++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/ucm2/HDA-Intel/HiFi.conf b/ucm2/HDA-Intel/HiFi.conf
+index 2d18c9ed627a..f09ce1cbeb90 100644
+--- a/ucm2/HDA-Intel/HiFi.conf
++++ b/ucm2/HDA-Intel/HiFi.conf
+@@ -9,24 +9,25 @@ If.analog {
+ 		Type ControlExists
+ 		Control "name='Master Playback Switch'"
+ 	}
+-	True.Include.analog.File "/HDA-Intel/HiFi-analog.conf"
++	True {
++		Include.analog.File "/HDA-Intel/HiFi-analog.conf"
++		If.acp {
++			Condition {
++				Type String
++				Empty "${var:AcpCardId}"
++			}
++			True {
++				RenameDevice."Mic1" "Mic"
++			}
++			False.Include.acp {
++				Before.SectionDevice "Mic1"
++				File "/HDA-Intel/HiFi-acp.conf"
++			}
++		}
++	}
+ }
+ 
+ If.hdmi {
+ 	Condition { Type String Empty "" }
+ 	True.Include.hdmi.File "/HDA-Intel/Hdmi.conf"
+ }
+-
+-If.acp {
+-	Condition {
+-		Type String
+-		Empty "${var:AcpCardId}"
+-	}
+-	True {
+-		RenameDevice."Mic1" "Mic"
+-	}
+-	False.Include.acp {
+-		Before.SectionDevice "Mic1"
+-		File "/HDA-Intel/HiFi-acp.conf"
+-	}
+-}
+-- 
+2.16.4
+
