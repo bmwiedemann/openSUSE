@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:47:42 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1
+  Changes
+  * Automatically detect and add `altnet` to interfaces with
+    multiple addresses, possible thanks to work on.
+  * Reduce number of exposed aliases to debug sub-systems in
+    online help text and man page. Only primary name, as of
+    mrouted v3.9-beta3.
+  * Removed noisy `timer` sub-system from `-d all`, use
+    `-d all, timer`.
+  Fixes
+  * Fix update of `mrouted.genid` on SIGHUP and reboot.  mrouted
+    replaced contents with the value zero (0), causing a zero
+    genid in DVMRP as well, which likely caused peering issues
+    with some implementations
+  * Workaround for older autoconf without `--runstatedir` support
+  * Fix double free in `pidfile()`
+  * Cannot disable multicast routing in kernel: Permission denied
+    when starting up.
+  * Refactor interface probing and bringup. Fixes issue with the
+    `no phyint` config option not working, introduced in v4.0.
+  * Fix bad path for mrouted.genid, should be in `/var/lib/misc`
+    on Linux and `/var/db` on *BSD.
+  * Document and improve error message when running out of IGMP
+    groups on Linux.
+  * Detect and warn if multicast ingresses an unknown vif
+
+-------------------------------------------------------------------
 Wed Jun 10 14:41:41 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0

@@ -2,7 +2,7 @@
 # spec file for package mrouted
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           mrouted
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        An implementation of the DVMRP multicast routing protocol
 License:        BSD-3-Clause AND BSD-4-Clause
