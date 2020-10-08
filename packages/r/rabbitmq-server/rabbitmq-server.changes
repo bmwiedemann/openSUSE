@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:31:49 UTC 2020 - Dominik Heidler <dheidler@suse.de>
+
+- Add requirement for rabbitmq-server-plugins (boo#1174068)
+
+-------------------------------------------------------------------
 Wed Aug 19 08:58:05 UTC 2020 - Gabriele Santomaggio <gsantomaggio@suse.de>
 
 - Update to 3.8.7

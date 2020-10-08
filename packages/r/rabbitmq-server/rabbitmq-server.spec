@@ -73,6 +73,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  %insserv_prereq
+Requires:       rabbitmq-server-plugins
 %if 0%{?suse_version} > 1140
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
