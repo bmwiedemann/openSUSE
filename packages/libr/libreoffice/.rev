@@ -2871,4 +2871,13 @@ Petr</comment>
 - Update BR to match up configure.ac</comment>
     <requestid>831655</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>950d5aa17317a83a64c08df112249264</srcmd5>
+    <version>7.0.2.2</version>
+    <time>1602155455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.2.2:
+  * RC2 of 7.0.2</comment>
+    <requestid>839718</requestid>
+  </revision>
 </revisionlist>
