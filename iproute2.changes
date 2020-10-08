@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 21:57:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 10:03:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.8

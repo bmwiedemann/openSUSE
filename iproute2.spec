@@ -16,6 +16,7 @@
 #
 
 
+%define _buildshell /bin/bash
 Name:           iproute2
 Version:        5.8.0
 Release:        0
@@ -36,6 +37,7 @@ Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
+Patch7:         0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -111,8 +113,7 @@ xt_cflags="$(pkg-config xtables --cflags)"
 b="%buildroot"
 install -d "$b"/{etc/,sbin/,usr/{bin,sbin,share/man/man{3,8}}}
 install -d "$b"/{/usr/include,%_libdir,/usr/share}
-%make_install \
-  MODDESTDIR="$b/%_libdir/tc"
+%make_install MODDESTDIR="$b/%_libdir/tc"
 
 # We have m_xt
 rm -f "$b/%_libdir/tc/m_ipt.so"
