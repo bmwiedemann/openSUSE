@@ -521,4 +521,14 @@
     . no Group: tag</comment>
     <requestid>758150</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0ff23e8a242e55d979a8ab6ca8d9afca</srcmd5>
+    <version>20201005</version>
+    <time>1602155326</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 20201005
+  * many updated dictionaries, see
+    https://cgit.freedesktop.org/libreoffice/dictionaries/log/</comment>
+    <requestid>839534</requestid>
+  </revision>
 </revisionlist>

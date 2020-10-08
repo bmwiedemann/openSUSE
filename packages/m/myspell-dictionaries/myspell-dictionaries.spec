@@ -1,7 +1,7 @@
 #
 # spec file for package myspell-dictionaries
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 ## Generate: sh update.sh
 ###################################################################
 Name:           myspell-dictionaries
-Version:        20191219
+Version:        20201005
 Release:        0
 Summary:        A Source Package for Dictionaries Used by MySpell
 License:        AGPL-3.0-only AND BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND CC-BY-SA-1.0 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND LGPL-2.0-only AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND LGPL-3.0-or-later AND MPL-1.1
@@ -382,7 +382,7 @@ Provides:       locale(seamonkey-spellchecker:be_BY)
 BuildArch:      noarch
 
 %description -n myspell-be_BY
-Belarusian spelling dictionary.
+Belarusian spelling dictionary and hyphenation.
 
 %package -n myspell-bg_BG
 Summary:        MySpell bg_BG Dictionary
@@ -2191,6 +2191,8 @@ cp -P be_BY/be_BY.aff %{buildroot}%{_datadir}/hunspell/be_BY.aff
 ln -s %{_datadir}/hunspell/be_BY.aff %{buildroot}%{_datadir}/myspell/be_BY.aff
 cp -P be_BY/be_BY.dic %{buildroot}%{_datadir}/hunspell/be_BY.dic
 ln -s %{_datadir}/hunspell/be_BY.dic %{buildroot}%{_datadir}/myspell/be_BY.dic
+cp -P be_BY/hyph_be_BY.dic %{buildroot}%{_datadir}/hyphen/hyph_be_BY.dic
+ln -s %{_datadir}/hyphen/hyph_be_BY.dic %{buildroot}%{_datadir}/myspell/hyph_be_BY.dic
 mkdir -p %{buildroot}%{_docdir}/myspell-be_BY
 cp -P be_BY/README_be_BY.txt %{buildroot}%{_docdir}/myspell-be_BY/README_be_BY.txt
 cp -P be_BY/description.xml %{buildroot}%{_docdir}/myspell-be_BY/description.xml
@@ -3344,10 +3346,14 @@ cp -P ru_RU/ru_RU.aff %{buildroot}%{_datadir}/hunspell/ru_RU.aff
 ln -s %{_datadir}/hunspell/ru_RU.aff %{buildroot}%{_datadir}/myspell/ru_RU.aff
 cp -P ru_RU/ru_RU.dic %{buildroot}%{_datadir}/hunspell/ru_RU.dic
 ln -s %{_datadir}/hunspell/ru_RU.dic %{buildroot}%{_datadir}/myspell/ru_RU.dic
-cp -P ru_RU/th_ru_RU_v2.dat %{buildroot}%{_datadir}/mythes/th_ru_RU_v2.dat
+ln -s %{_datadir}/mythes/th_ru_RU_M_aot_and_v2.dat %{buildroot}%{_datadir}/mythes/th_ru_RU_v2.dat
 ln -s %{_datadir}/mythes/th_ru_RU_v2.dat %{buildroot}%{_datadir}/myspell/th_ru_RU_v2.dat
-cp -P ru_RU/th_ru_RU_v2.idx %{buildroot}%{_datadir}/mythes/th_ru_RU_v2.idx
+cp -P ru_RU/th_ru_RU_M_aot_and_v2.dat %{buildroot}%{_datadir}/mythes/th_ru_RU_M_aot_and_v2.dat
+ln -s %{_datadir}/mythes/th_ru_RU_M_aot_and_v2.dat %{buildroot}%{_datadir}/myspell/th_ru_RU_M_aot_and_v2.dat
+ln -s %{_datadir}/mythes/th_ru_RU_M_aot_and_v2.idx %{buildroot}%{_datadir}/mythes/th_ru_RU_v2.idx
 ln -s %{_datadir}/mythes/th_ru_RU_v2.idx %{buildroot}%{_datadir}/myspell/th_ru_RU_v2.idx
+cp -P ru_RU/th_ru_RU_M_aot_and_v2.idx %{buildroot}%{_datadir}/mythes/th_ru_RU_M_aot_and_v2.idx
+ln -s %{_datadir}/mythes/th_ru_RU_M_aot_and_v2.idx %{buildroot}%{_datadir}/myspell/th_ru_RU_M_aot_and_v2.idx
 mkdir -p %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-ru_RU
 cp -rP ru_RU/Lightproof.components %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-ru_RU/Lightproof.components
 cp -rP ru_RU/Lightproof.py %{buildroot}%{_libdir}/libreoffice/share/extensions/lightproof-ru_RU/Lightproof.py
@@ -3360,7 +3366,7 @@ mkdir -p %{buildroot}%{_docdir}/myspell-ru_RU
 cp -P ru_RU/Linguistic.xcu %{buildroot}%{_docdir}/myspell-ru_RU/Linguistic.xcu
 cp -P ru_RU/README_Lightproof_ru_RU.txt %{buildroot}%{_docdir}/myspell-ru_RU/README_Lightproof_ru_RU.txt
 cp -P ru_RU/README_ru_RU.txt %{buildroot}%{_docdir}/myspell-ru_RU/README_ru_RU.txt
-cp -P ru_RU/README_thes_ru_RU.txt %{buildroot}%{_docdir}/myspell-ru_RU/README_thes_ru_RU.txt
+cp -P ru_RU/README_thes_ru_RU_M_aot_and_v2.txt %{buildroot}%{_docdir}/myspell-ru_RU/README_thes_ru_RU_M_aot_and_v2.txt
 cp -P ru_RU/description.xml %{buildroot}%{_docdir}/myspell-ru_RU/description.xml
 cp -P ru_RU/dictionaries.xcu %{buildroot}%{_docdir}/myspell-ru_RU/dictionaries.xcu
 cp -P si_LK/si_LK.aff %{buildroot}%{_datadir}/hunspell/si_LK.aff
@@ -3406,6 +3412,8 @@ cp -P sl_SI/README_sl_SI.txt %{buildroot}%{_docdir}/myspell-sl_SI/README_sl_SI.t
 cp -P sl_SI/README_th_sl_SI.txt %{buildroot}%{_docdir}/myspell-sl_SI/README_th_sl_SI.txt
 cp -P sl_SI/description.xml %{buildroot}%{_docdir}/myspell-sl_SI/description.xml
 cp -P sl_SI/dictionaries.xcu %{buildroot}%{_docdir}/myspell-sl_SI/dictionaries.xcu
+cp -P sl_SI/icon.png %{buildroot}%{_docdir}/myspell-sl_SI/icon.png
+cp -P sl_SI/package-description.txt %{buildroot}%{_docdir}/myspell-sl_SI/package-description.txt
 cp -P sq_AL/sq_AL.aff %{buildroot}%{_datadir}/hunspell/sq_AL.aff
 ln -s %{_datadir}/hunspell/sq_AL.aff %{buildroot}%{_datadir}/myspell/sq_AL.aff
 cp -P sq_AL/sq_AL.dic %{buildroot}%{_datadir}/hunspell/sq_AL.dic
@@ -3800,6 +3808,8 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/be_BY.aff
 %{_datadir}/hunspell/be_BY.dic
 %{_datadir}/myspell/be_BY.dic
+%{_datadir}/hyphen/hyph_be_BY.dic
+%{_datadir}/myspell/hyph_be_BY.dic
 %dir %{_docdir}/myspell-be_BY
 %{_docdir}/myspell-be_BY/README_be_BY.txt
 %{_docdir}/myspell-be_BY/description.xml
@@ -5167,13 +5177,17 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_datadir}/myspell/ru_RU.dic
 %{_datadir}/mythes/th_ru_RU_v2.dat
 %{_datadir}/myspell/th_ru_RU_v2.dat
+%{_datadir}/mythes/th_ru_RU_M_aot_and_v2.dat
+%{_datadir}/myspell/th_ru_RU_M_aot_and_v2.dat
 %{_datadir}/mythes/th_ru_RU_v2.idx
 %{_datadir}/myspell/th_ru_RU_v2.idx
+%{_datadir}/mythes/th_ru_RU_M_aot_and_v2.idx
+%{_datadir}/myspell/th_ru_RU_M_aot_and_v2.idx
 %dir %{_docdir}/myspell-ru_RU
 %{_docdir}/myspell-ru_RU/Linguistic.xcu
 %{_docdir}/myspell-ru_RU/README_Lightproof_ru_RU.txt
 %{_docdir}/myspell-ru_RU/README_ru_RU.txt
-%{_docdir}/myspell-ru_RU/README_thes_ru_RU.txt
+%{_docdir}/myspell-ru_RU/README_thes_ru_RU_M_aot_and_v2.txt
 %{_docdir}/myspell-ru_RU/description.xml
 %{_docdir}/myspell-ru_RU/dictionaries.xcu
 
@@ -5235,6 +5249,8 @@ cp -P zu_ZA/dictionaries.xcu %{buildroot}%{_docdir}/myspell-zu_ZA/dictionaries.x
 %{_docdir}/myspell-sl_SI/README_th_sl_SI.txt
 %{_docdir}/myspell-sl_SI/description.xml
 %{_docdir}/myspell-sl_SI/dictionaries.xcu
+%{_docdir}/myspell-sl_SI/icon.png
+%{_docdir}/myspell-sl_SI/package-description.txt
 
 %files -n myspell-sq_AL
 %{_datadir}/hunspell/sq_AL.aff
