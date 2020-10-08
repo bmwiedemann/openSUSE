@@ -455,4 +455,14 @@
 - Update to TeXLive 2020</comment>
     <requestid>798522</requestid>
   </revision>
+  <revision rev="46" vrev="49">
+    <srcmd5>29785d11491203ff4ca6e2abfab623d7</srcmd5>
+    <version>unknown</version>
+    <time>1602155240</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance update script to detect user changes in configuration
+  files to warn the user.  Also run texlinks script to be sure
+  that local configuration fits the linked engines (boo#1176557)</comment>
+    <requestid>839106</requestid>
+  </revision>
 </revisionlist>

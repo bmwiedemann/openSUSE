@@ -120,6 +120,8 @@ unset KPSE_DOT || true
 : ${TEXMFDIST:=$(kpsewhich --expand-path='$TEXMFDIST' 2> /dev/null)}
 : ${TEXMFVAR:=$(kpsewhich --var-value=TEXMFVAR 2> /dev/null)}
 : ${TEXMFCNFFILE:=$(kpsewhich texmf.cnf 2> /dev/null)}
+: ${FMTUTILCNFFILE:=$(kpsewhich fmtutil.cnf 2> /dev/null)}
+: ${TEXLUACNFFILE:=$(kpsewhich -format=web2c texmfcnf.lua 2> /dev/null)}
 : ${TEXMFSYSCONFIG:=$(kpsewhich --expand-path='$TEXMFSYSCONFIG' 2> /dev/null)}
 : ${TEXMFLSR:=$(kpsewhich --show-path=ls-R 2> /dev/null)}
 : ${WEB2C:=$TEXMFVAR/web2c}
@@ -132,6 +134,39 @@ if test ! -e "$TEXMFCNFFILE" ; then
     echo "${0##*/}: Configuration of texlive installation not found." 1>&2
     exit 0
 fi
+
+#
+# Check for old configurations and inform system admin to check those
+#
+typeset -i mail=0
+typeset -a list=()
+for cnf in ${TEXMFCNFFILE} ${FMTUTILCNFFILE} ${TEXLUACNFFILE}
+do
+    test -e ${cnf}.rpmnew || continue
+    list[mail++]=${cnf}
+done
+if ((mail > 0))
+then
+    mailx -s "TeXLive Update: Warning about changed configurations" root@localhost <<-EOF
+	Hello,
+
+	the update script has found one or more changed configuration files:
+
+	$(for cnf in ${list[@]}; do echo "    ${cnf}"; done)
+
+	Please (if required) port the changes to the files with suffix .rpmnew!
+	Always move those rpmnew files to the original location:
+
+	$(for cnf in ${list[@]}; do echo "    mv ${cnf}.rpmnew ${cnf}"; done)
+
+	afterwards run as root:
+
+	    /usr/share/texmf/texconfig/update force
+
+	to get your configuration work again.
+	EOF
+fi
+unset mail list cnf
 
 #
 # Check for scriplets
@@ -192,6 +227,16 @@ do
     }
 done
 unset hyp suffix
+
+#
+# Be sure that the TeX Links do fit the configuration in fmtutil.cnf
+#
+if type -p texlinks &> /dev/null
+then
+    test $VERBOSE = true && { echo -en "\r[ ]Updating TeX links"; let nl++; }
+    texlinks < /dev/null 1>&4 2>&4
+    ((nl == 0)) || { echo; let nl=0; }
+fi
 
 init=false
 typeset -i yes=0

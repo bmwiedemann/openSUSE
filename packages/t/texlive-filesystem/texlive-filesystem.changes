@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 07:39:05 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance update script to detect user changes in configuration
+  files to warn the user.  Also run texlinks script to be sure
+  that local configuration fits the linked engines (boo#1176557)
+
+-------------------------------------------------------------------
 Tue Apr 28 06:46:38 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - No pstools anymore in texlive database 
