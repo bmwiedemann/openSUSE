@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:30:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.13.0:
+  * deps: upgrade to libuv 1.40.0 #35333
+  * module: named exports for CJS via static analysis #35249
+  * module: exports pattern support #34718
+  * src: allow N-API addon in AddLinkedBinding()
+
+-------------------------------------------------------------------
 Thu Sep 24 19:04:31 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.12.0:

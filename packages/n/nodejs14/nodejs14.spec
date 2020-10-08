@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.12.0
+Version:        14.13.0
 Release:        0
 
 %define node_version_number 14
@@ -246,7 +246,7 @@ Provides:       bundled(openssl) = 1.1.1g
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.10.0
 %else
-Provides:       bundled(libcares2) = 1.16.0
+Provides:       bundled(libcares2) = 1.16.1
 %endif
 
 %if ! 0%{with intree_icu}
@@ -296,7 +296,7 @@ ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Provides:       bundled(brotli) = 1.0.9
-Provides:       bundled(libuv) = 1.39.0
+Provides:       bundled(libuv) = 1.40.0
 Provides:       bundled(uvwasi) = 0.0.11
 Provides:       bundled(v8) = 8.4.371.19
 
@@ -309,6 +309,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 7.1.1
+Provides:       bundled(node-cjs-module-lexer) = 0.3.3
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
@@ -355,15 +356,9 @@ Provides:       bundled(node-ansi-align) = 2.0.0
 Provides:       bundled(node-ansi-regex) = 2.1.1
 Provides:       bundled(node-ansi-regex) = 3.0.0
 Provides:       bundled(node-ansi-regex) = 4.1.0
-Provides:       bundled(node-ansi-regex) = 4.1.0
-Provides:       bundled(node-ansi-regex) = 4.1.0
 Provides:       bundled(node-ansi-styles) = 3.2.1
 Provides:       bundled(node-ansicolors) = 0.3.2
 Provides:       bundled(node-ansistyles) = 0.1.3
-Provides:       bundled(node-aproba) = 1.2.0
-Provides:       bundled(node-aproba) = 1.2.0
-Provides:       bundled(node-aproba) = 1.2.0
-Provides:       bundled(node-aproba) = 1.2.0
 Provides:       bundled(node-aproba) = 1.2.0
 Provides:       bundled(node-aproba) = 2.0.0
 Provides:       bundled(node-archy) = 1.0.0
@@ -457,7 +452,6 @@ Provides:       bundled(node-fast-json-stable-stringify) = 2.0.0
 Provides:       bundled(node-figgy-pudding) = 3.5.1
 Provides:       bundled(node-find-npm-prefix) = 1.0.2
 Provides:       bundled(node-find-up) = 3.0.0
-Provides:       bundled(node-find-up) = 3.0.0
 Provides:       bundled(node-flush-write-stream) = 1.0.3
 Provides:       bundled(node-forever-agent) = 0.6.1
 Provides:       bundled(node-form-data) = 2.3.2
@@ -472,7 +466,6 @@ Provides:       bundled(node-gauge) = 2.7.4
 Provides:       bundled(node-genfun) = 5.0.0
 Provides:       bundled(node-gentle-fs) = 2.3.1
 Provides:       bundled(node-get-caller-file) = 2.0.5
-Provides:       bundled(node-get-stream) = 3.0.0
 Provides:       bundled(node-get-stream) = 3.0.0
 Provides:       bundled(node-get-stream) = 4.1.0
 Provides:       bundled(node-getpass) = 0.1.7
@@ -494,8 +487,6 @@ Provides:       bundled(node-https-proxy-agent) = 2.2.4
 Provides:       bundled(node-humanize-ms) = 1.2.1
 Provides:       bundled(node-iconv-lite) = 0.4.23
 Provides:       bundled(node-iferr) = 0.1.5
-Provides:       bundled(node-iferr) = 0.1.5
-Provides:       bundled(node-iferr) = 0.1.5
 Provides:       bundled(node-iferr) = 1.0.2
 Provides:       bundled(node-ignore-walk) = 3.0.3
 Provides:       bundled(node-import-lazy) = 2.1.0
@@ -512,9 +503,6 @@ Provides:       bundled(node-is-ci) = 1.2.1
 Provides:       bundled(node-is-cidr) = 3.0.0
 Provides:       bundled(node-is-date-object) = 1.0.1
 Provides:       bundled(node-is-fullwidth-code-point) = 1.0.0
-Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
-Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
-Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
 Provides:       bundled(node-is-fullwidth-code-point) = 2.0.0
 Provides:       bundled(node-is-installed-globally) = 0.1.0
 Provides:       bundled(node-is-npm) = 1.0.0
@@ -550,7 +538,6 @@ Provides:       bundled(node-libnpmsearch) = 2.0.2
 Provides:       bundled(node-libnpmteam) = 1.0.2
 Provides:       bundled(node-libnpx) = 10.2.4
 Provides:       bundled(node-locate-path) = 3.0.0
-Provides:       bundled(node-locate-path) = 3.0.0
 Provides:       bundled(node-lock-verify) = 2.1.0
 Provides:       bundled(node-lockfile) = 1.0.4
 Provides:       bundled(node-lodash._baseindexof) = 3.1.0
@@ -576,10 +563,6 @@ Provides:       bundled(node-mime-db) = 1.35.0
 Provides:       bundled(node-mime-types) = 2.1.19
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minimist) = 1.2.5
-Provides:       bundled(node-minimist) = 1.2.5
-Provides:       bundled(node-minipass) = 2.9.0
-Provides:       bundled(node-minipass) = 2.9.0
-Provides:       bundled(node-minipass) = 2.9.0
 Provides:       bundled(node-minipass) = 2.9.0
 Provides:       bundled(node-minizlib) = 1.3.3
 Provides:       bundled(node-mississippi) = 3.0.0
@@ -622,8 +605,6 @@ Provides:       bundled(node-p-finally) = 1.0.0
 Provides:       bundled(node-p-limit) = 2.2.0
 Provides:       bundled(node-p-limit) = 2.3.0
 Provides:       bundled(node-p-locate) = 3.0.0
-Provides:       bundled(node-p-locate) = 3.0.0
-Provides:       bundled(node-p-try) = 2.2.0
 Provides:       bundled(node-p-try) = 2.2.0
 Provides:       bundled(node-package-json) = 4.0.1
 Provides:       bundled(node-pacote) = 9.5.12
@@ -660,14 +641,6 @@ Provides:       bundled(node-read-installed) = 4.0.3
 Provides:       bundled(node-read-package-json) = 2.1.1
 Provides:       bundled(node-read-package-tree) = 5.3.1
 Provides:       bundled(node-readable-stream) = 1.1.14
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
-Provides:       bundled(node-readable-stream) = 2.3.6
 Provides:       bundled(node-readable-stream) = 2.3.6
 Provides:       bundled(node-readable-stream) = 3.6.0
 Provides:       bundled(node-readdir-scoped-modules) = 1.1.0
@@ -711,27 +684,14 @@ Provides:       bundled(node-stream-iterate) = 1.2.0
 Provides:       bundled(node-stream-shift) = 1.0.0
 Provides:       bundled(node-strict-uri-encode) = 2.0.0
 Provides:       bundled(node-string-width) = 1.0.2
-Provides:       bundled(node-string-width) = 1.0.2
 Provides:       bundled(node-string-width) = 2.1.1
 Provides:       bundled(node-string-width) = 3.1.0
-Provides:       bundled(node-string-width) = 3.1.0
-Provides:       bundled(node-string-width) = 3.1.0
 Provides:       bundled(node-string_decoder) = 0.10.31
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
-Provides:       bundled(node-string_decoder) = 1.1.1
 Provides:       bundled(node-string_decoder) = 1.1.1
 Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-stringify-package) = 1.0.1
 Provides:       bundled(node-strip-ansi) = 3.0.1
 Provides:       bundled(node-strip-ansi) = 4.0.0
-Provides:       bundled(node-strip-ansi) = 5.2.0
-Provides:       bundled(node-strip-ansi) = 5.2.0
 Provides:       bundled(node-strip-ansi) = 5.2.0
 Provides:       bundled(node-strip-eof) = 1.0.0
 Provides:       bundled(node-strip-json-comments) = 2.0.1
