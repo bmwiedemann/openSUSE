@@ -16,6 +16,16 @@
 #
 
 
+%define mailman_user     mailman
+%define mailman_group    mailman
+%define mailman_name     mailman
+%define mailman_homedir  %{_localstatedir}/lib/%{mailman_name}
+%define mailman_logdir   %{_localstatedir}/log/%{mailman_name}
+%define mailman_spooldir %{_localstatedir}/spool/%{mailman_name}
+
+%define mailman_rundir   %{_rundir}/%{mailman_name}
+%define mailman_lockdir  %{_rundir}/lock/%{mailman_name}
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -32,7 +42,18 @@ Release:        0
 Summary:        Mailman -- the GNU mailing list manager
 License:        GPL-3.0-only
 URL:            https://www.list.org
-Source:         https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/m/mailman/mailman-%{version}.tar.gz
+#
+Source10:       mailman.cfg
+Source11:       mailman.service
+Source12:       mailman-tmpfiles.conf
+Source13:       mailman.logrotate
+#
+Source20:       mailman-digests.service
+Source21:       mailman-digests.timer
+#
+Source30:       README.SUSE.md
+#
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 # whitespace fix
@@ -108,6 +129,7 @@ Mailman -- the GNU mailing list manager
 # https://gitlab.com/mailman/mailman/-/issues/704
 cp %{SOURCE100} src/mailman/testing/
 cp %{SOURCE101} src/mailman/testing/
+cp %{SOURCE30} .
 
 %build
 sed -i 's:/sbin:%{_prefix}/bin:' src/mailman/config/mailman.cfg
@@ -130,6 +152,29 @@ sed '/importlib_resources/d' -i src/mailman.egg-info/requires.txt setup.py
 %python_clone -a %{buildroot}%{_bindir}/mailman
 %python_clone -a %{buildroot}%{_bindir}/runner
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+install -d -m 0755 \
+            %{buildroot}%{_sysconfdir} \
+            %{buildroot}%{_sysconfdir}/logrotate.d \
+            %{buildroot}%{_sysconfdir}/%{mailman_name}.d \
+            %{buildroot}%{_tmpfilesdir} \
+            %{buildroot}%{_unitdir} \
+            %{buildroot}%{mailman_homedir} \
+            %{buildroot}%{mailman_homedir}/data \
+            %{buildroot}%{mailman_rundir} \
+            %{buildroot}%{mailman_lockdir} \
+            %{buildroot}%{mailman_logdir} \
+            %{buildroot}%{mailman_spooldir}
+
+install -m 0640 %{SOURCE10} %{buildroot}%{_sysconfdir}/%{mailman_name}.cfg
+install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/%{mailman_name}.service
+install -m 0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/%{mailman_name}.conf
+install -m 0644 %{SOURCE13} %{buildroot}%{_sysconfdir}/logrotate.d/%{mailman_name}
+sed -i 's,@LOGDIR@,%{mailman_logdir},g;s,@BINDIR@,%{_bindir},g' \
+        %{buildroot}%{_sysconfdir}/logrotate.d/%{mailman_name}
+
+install -m 0644 %{SOURCE20} %{buildroot}%{_unitdir}/%{mailman_name}-digests.service
+install -m 0644 %{SOURCE21} %{buildroot}%{_unitdir}/%{mailman_name}-digests.timer
 %endif
 
 %check
@@ -157,23 +202,56 @@ sed -i "s:\(902\):4\1:" src/mailman/testing/testing.cfg
 %endif
 
 %if !%{with test}
+%pre
+getent group %{mailman_group} >/dev/null || \
+    %{_sbindir}/groupadd -r %{mailman_group}
+getent passwd %{mailman_user} >/dev/null || \
+    %{_sbindir}/useradd -r -g %{mailman_group} -s /sbin/nologin \
+    -c "mailman daemon user" -d %{mailman_homedir} %{mailman_user}
+%{_sbindir}/usermod -g %{mailman_group} %{mailman_user} >/dev/null
+%service_add_pre %{mailman_name}.service
+
 %post
 %python_install_alternative master
 %python_install_alternative mailman
 %python_install_alternative runner
+%tmpfiles_create %{_tmpfilesdir}/%{mailman_name}.conf
+%service_add_post %{mailman_name}.service
+
+%preun
+%service_del_preun %{mailman_name}.service
 
 %postun
+%service_del_postun %{mailman_name}.service
 %python_uninstall_alternative master
 %python_uninstall_alternative mailman
 %python_uninstall_alternative runner
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst README.SUSE.md
 %license COPYING
 %python_alternative %{_bindir}/runner
 %python_alternative %{_bindir}/mailman
 %python_alternative %{_bindir}/master
 %{python_sitelib}/*
+
+%{_unitdir}/%{mailman_name}.service
+%{_unitdir}/%{mailman_name}-digests.service
+%{_unitdir}/%{mailman_name}-digests.timer
+%{_tmpfilesdir}/%{mailman_name}.conf
+
+%config(noreplace) %attr(640,root,mailman) %{_sysconfdir}/mailman.cfg
+%config(noreplace) %{_sysconfdir}/logrotate.d/%{mailman_name}
+
+%dir %attr(750,root,mailman) %{_sysconfdir}/%{mailman_name}.d
+
+%dir %attr(750,mailman,mailman) %{mailman_homedir}
+%dir %attr(750,mailman,mailman) %{mailman_homedir}/data
+%dir %attr(750,mailman,mailman) %{mailman_spooldir}
+%dir %attr(750,mailman,mailman) %{mailman_logdir}
+%ghost %dir %{mailman_rundir}
+%ghost %dir %{_rundir}/lock
+%ghost %dir %{mailman_lockdir}
 %endif
 
 %changelog

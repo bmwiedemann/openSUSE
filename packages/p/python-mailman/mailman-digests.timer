@@ -1,0 +1,10 @@
+[Unit]
+Description=Run mailman-digests.service every day
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+RandomizedDelaySec=3600
+Persistent=true
+
+[Install]
+WantedBy=basic.target

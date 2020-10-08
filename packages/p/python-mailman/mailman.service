@@ -1,0 +1,25 @@
+# It's not recommended to modify this file in-place, because it will be
+# overwritten during package upgrades.  If you want to customize, the
+# best way is to create a file "/etc/systemd/system/mailman3.service",
+# containing
+#       .include /usr/lib/systemd/system/mailman3.service
+#       ...make your changes here...
+# For more info about custom unit files, see
+# http://fedoraproject.org/wiki/Systemd#How_do_I_customize_a_unit_file.2F_add_a_custom_unit_file.3F
+
+
+[Unit]
+Description=GNU Mailing List Manager
+After=syslog.target network.target
+
+[Service]
+Type=forking
+PIDFile=/run/mailman/master.pid
+User=mailman
+Group=mailman
+ExecStart=/usr/bin/mailman start --force
+ExecReload=/usr/bin/mailman restart
+ExecStop=/usr/bin/mailman stop
+
+[Install]
+WantedBy=multi-user.target

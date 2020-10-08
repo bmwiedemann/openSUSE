@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:46:29 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove suid bit from /var/lib/mailman/data
+
+-------------------------------------------------------------------
+Wed Sep 30 07:18:40 UTC 2020 - pgajdos@suse.com
+
+- remove systemd (build)requires
+
+-------------------------------------------------------------------
+Sat Sep 26 10:38:00 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Create mailman user and group
+- Create directories for mailman and use FHS directory layout
+- Create initial /etc/mailman.cfg
+- Create /etc/mailman.d/ directory for extensions
+- Add systemd files
+
+-------------------------------------------------------------------
 Mon May 25 06:50:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

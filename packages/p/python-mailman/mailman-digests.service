@@ -1,0 +1,8 @@
+[Unit]
+Description=Sends Mailman digests
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mailman digests --send
+User=mailman
+Group=mailman
