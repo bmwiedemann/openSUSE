@@ -525,4 +525,16 @@
 </comment>
     <requestid>764182</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>90135cde1ed32bb0a85893115cef5f2d</srcmd5>
+    <version>2.0.14</version>
+    <time>1602155288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.14:
+  * manpage update
+  * numademo: fix issue on 32 bit systems
+  * drop custom cflags for libnuma
+  * use symvers attribute for symbol versioning</comment>
+    <requestid>839315</requestid>
+  </revision>
 </revisionlist>

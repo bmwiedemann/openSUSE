@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  3 12:11:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.14:
+  * manpage update
+  * numademo: fix issue on 32 bit systems
+  * drop custom cflags for libnuma
+  * use symvers attribute for symbol versioning 
+
+-------------------------------------------------------------------
 Sat Jan 11 17:09:25 UTC 2020 - stefan.bruens@rwth-aachen.de
 
 - Update to version 2.0.13:
