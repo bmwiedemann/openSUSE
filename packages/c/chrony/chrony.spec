@@ -23,14 +23,14 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           chrony
-Version:        3.5
+Version:        3.5.1
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Other
 URL:            https://chrony.tuxfamily.org/
 Source:         https://download.tuxfamily.org/chrony/chrony-%{version}.tar.gz
-Source2:        chrony.sysconfig
+Source2:        chronyd.sysconfig
 Source3:        chrony.dhclient
 Source4:        chrony.helper
 Source5:        chrony-dnssrv@.service
@@ -218,7 +218,7 @@ echo 'chronyd.service' > \
         %{buildroot}%{_systemdutildir}/ntp-units.d/50-chronyd.list
 
 install -Dpm 0644 %{SOURCE2} \
-  %{buildroot}%{_fillupdir}/sysconfig.chrony
+  %{buildroot}%{_fillupdir}/sysconfig.chronyd
 install -Dpm 755 %{SOURCE4} \
   %{buildroot}%{_libexecdir}/%name/helper
 
@@ -277,7 +277,7 @@ getent passwd %{name} >/dev/null || useradd -r -g %{name} -d "%{_localstatedir}/
 %{_unitdir}/chrony*.timer
 %{_sbindir}/rcchrony*
 %{_tmpfilesdir}/%{name}.conf
-%{_fillupdir}/sysconfig.chrony
+%{_fillupdir}/sysconfig.chronyd
 %dir %attr(750,chrony,chrony) %{_localstatedir}/lib/chrony
 %ghost %attr(640,chrony,chrony) %{_localstatedir}/lib/chrony/drift
 %ghost %attr(640,chrony,chrony) %{_localstatedir}/lib/chrony/rtc
