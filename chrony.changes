@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:41:58 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Adjust and rename the sysconfig file, so that it matches the
+  expectations of chronyd.service (bsc#1173277).
+
+-------------------------------------------------------------------
+Sun Sep 13 20:22:46 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 3.5.1:
+  * Create new file when writing pidfile (CVE-2020-14367, bsc#1174911)
+
+-------------------------------------------------------------------
 Sun Aug  2 21:27:45 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

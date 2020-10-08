@@ -272,4 +272,16 @@
     <comment></comment>
     <requestid>825252</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9af9c253b2cbcc361bab2afcd9d68989</srcmd5>
+    <version>3.5.1</version>
+    <time>1602155422</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust and rename the sysconfig file, so that it matches the
+  expectations of chronyd.service (bsc#1173277).
+
+- Update to 3.5.1:
+  * Create new file when writing pidfile (CVE-2020-14367, bsc#1174911)</comment>
+    <requestid>834313</requestid>
+  </revision>
 </revisionlist>
