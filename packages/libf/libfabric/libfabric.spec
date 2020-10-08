@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.f62ffe4a587e
+%define git_ver .0.4fe80e69d432
 
 Name:           libfabric
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        GPL-2.0-only OR BSD-2-Clause
