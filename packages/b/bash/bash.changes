@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 16:30:31 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- dot.profile: moved example for user specific LANG setting 
+  from .profile to .i18n (x11-tools package) skeleton file (boo#1158724)
+
+-------------------------------------------------------------------
 Sun Aug  2 20:49:58 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Bump bpatchlvl version to 18 which was missed in previous change 
