@@ -168,4 +168,12 @@ no _service here, yo stupid bot</comment>
     <comment>- Update to release 1.14.7</comment>
     <requestid>829652</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>662d7f7959e74461b1848f3f1c49a373</srcmd5>
+    <version>1.14.8</version>
+    <time>1602155264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.14.8</comment>
+    <requestid>839241</requestid>
+  </revision>
 </revisionlist>
