@@ -1,0 +1,132 @@
+Index: ceph-csi-3.1.0+git0.5d4847358/charts/ceph-csi-cephfs/values.yaml
+===================================================================
+--- ceph-csi-3.1.0+git0.5d4847358.orig/charts/ceph-csi-cephfs/values.yaml
++++ ceph-csi-3.1.0+git0.5d4847358/charts/ceph-csi-cephfs/values.yaml
+@@ -67,15 +67,15 @@ nodeplugin:
+ 
+   registrar:
+     image:
+-      repository: quay.io/k8scsi/csi-node-driver-registrar
+-      tag: v1.3.0
++      repository: SUSE_REGISTRY/cephcsi/csi-node-driver-registrar
++      tag: v%CSI_REG_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+   plugin:
+     image:
+-      repository: quay.io/cephcsi/cephcsi
+-      tag: v3.1.1
++      repository: SUSE_REGISTRY/cephcsi/cephcsi
++      tag: v%CSI_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -133,8 +133,8 @@ provisioner:
+ 
+   provisioner:
+     image:
+-      repository: quay.io/k8scsi/csi-provisioner
+-      tag: v1.6.0
++      repository: SUSE_REGISTRY/cephcsi/csi-provisioner
++      tag: v%CSI_PROV_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -142,8 +142,8 @@ provisioner:
+     name: attacher
+     enabled: true
+     image:
+-      repository: quay.io/k8scsi/csi-attacher
+-      tag: v2.1.1
++      repository: SUSE_REGISTRY/cephcsi/csi-attacher
++      tag: v%CSI_ATTACH_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -151,15 +151,15 @@ provisioner:
+     name: resizer
+     enabled: true
+     image:
+-      repository: quay.io/k8scsi/csi-resizer
+-      tag: v0.5.0
++      repository: SUSE_REGISTRY/cephcsi/csi-resizer
++      tag: v%CSI_RESIZE_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+   snapshotter:
+     image:
+-      repository: quay.io/k8scsi/csi-snapshotter
+-      tag: v2.1.1
++      repository: SUSE_REGISTRY/cephcsi/csi-snapshotter
++      tag: v%CSI_SNAP_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+Index: ceph-csi-3.1.0+git0.5d4847358/charts/ceph-csi-rbd/values.yaml
+===================================================================
+--- ceph-csi-3.1.0+git0.5d4847358.orig/charts/ceph-csi-rbd/values.yaml
++++ ceph-csi-3.1.0+git0.5d4847358/charts/ceph-csi-rbd/values.yaml
+@@ -79,15 +79,15 @@ nodeplugin:
+ 
+   registrar:
+     image:
+-      repository: quay.io/k8scsi/csi-node-driver-registrar
+-      tag: v1.3.0
++      repository: SUSE_REGISTRY/cephcsi/csi-node-driver-registrar
++      tag: v%CSI_REG_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+   plugin:
+     image:
+-      repository: quay.io/cephcsi/cephcsi
+-      tag: v3.1.1
++      repository: SUSE_REGISTRY/cephcsi/cephcsi
++      tag: v%CSI_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -152,8 +152,8 @@ provisioner:
+ 
+   provisioner:
+     image:
+-      repository: quay.io/k8scsi/csi-provisioner
+-      tag: v1.6.0
++      repository: SUSE_REGISTRY/cephcsi/csi-provisioner
++      tag: v%CSI_PROV_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -161,8 +161,8 @@ provisioner:
+     name: attacher
+     enabled: true
+     image:
+-      repository: quay.io/k8scsi/csi-attacher
+-      tag: v2.1.1
++      repository: SUSE_REGISTRY/cephcsi/csi-attacher
++      tag: v%CSI_ATTACH_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+@@ -170,15 +170,15 @@ provisioner:
+     name: resizer
+     enabled: true
+     image:
+-      repository: quay.io/k8scsi/csi-resizer
+-      tag: v0.5.0
++      repository: SUSE_REGISTRY/cephcsi/csi-resizer
++      tag: v%CSI_RESIZE_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 
+   snapshotter:
+     image:
+-      repository: quay.io/k8scsi/csi-snapshotter
+-      tag: v2.1.0
++      repository: SUSE_REGISTRY/cephcsi/csi-snapshotter
++      tag: v%CSI_SNAP_VERSION%
+       pullPolicy: IfNotPresent
+     resources: {}
+ 

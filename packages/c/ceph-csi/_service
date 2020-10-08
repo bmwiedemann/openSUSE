@@ -6,7 +6,7 @@
     <!-- see https://github.com/openSUSE/obs-service-tar_scm/blob/master/tar_scm.service.in for hints -->
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v3.1.0</param>
+    <param name="revision">v3.1.1</param>
   </service>
   <service name="tar" mode="disabled"/>
   <service name="recompress" mode="disabled">
@@ -17,5 +17,36 @@
     <param name="basename">ceph-csi</param>
   </service>
   <service name="go_modules" mode="disabled">
+  </service>
+  <!-- SETUP VERSIONS FOR ALL SIDECARDS -->
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">csi-images-SUSE.patch</param>
+    <param name="regex">%CSI_REG_VERSION%</param>
+    <param name="parse-version">patch</param>
+    <param name="package">csi-node-driver-registrar</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">csi-images-SUSE.patch</param>
+    <param name="regex">%CSI_PROV_VERSION%</param>
+    <param name="parse-version">patch</param>
+    <param name="package">csi-external-provisioner</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">csi-images-SUSE.patch</param>
+    <param name="regex">%CSI_SNAP_VERSION%</param>
+    <param name="parse-version">patch</param>
+    <param name="package">csi-external-snapshotter</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">csi-images-SUSE.patch</param>
+    <param name="regex">%CSI_ATTACH_VERSION%</param>
+    <param name="parse-version">patch</param>
+    <param name="package">csi-external-attacher</param>
+  </service>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">csi-images-SUSE.patch</param>
+    <param name="regex">%CSI_RESIZE_VERSION%</param>
+    <param name="parse-version">patch</param>
+    <param name="package">csi-external-resizer</param>
   </service>
 </services>

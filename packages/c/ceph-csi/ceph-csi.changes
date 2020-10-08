@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct  2 01:38:50 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- update to 3.1.1
+  * Bail out from node expansion if its block mode pvc
+  * Use common logging for rbd
+  * Add Upgrade E2E testing from 3.0.0 to 3.1.0
+  * Update Sidecars to the latest version
+  * Update go-ceph to v0.5.0
+  * Implement rbd.updateVolWithImageInfo() with go-ceph
+  * Add support for snapshot retention
+  * Add support for "snapshot-autoprotect" feature
+  * CephFS: Check error output contains Error: ENOENT
+  * CephFS: Fix lock release in volumeDelete
+  * CephFS: Trim spaces around fuseMountOptions
+  * CephFS: Check ENOTEMPTY when removing subvolume
+  * RBD: Fix cleanup in case of clone failure
+  * RBD: Use stagingTargetPath in NodeExpandVolume RPC
+  * RBD: Allow readonly only for volume with contentsource
+  * RBD: Rados namespaced image deletion fix
+
+-------------------------------------------------------------------
+Fri Oct  2 01:05:12 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Package ceph-csi-cephfs and ceph-csi-rbd helm charts into a new
+  RPM package for later use in publishing process
+  * Add BuildRequires for CSI sidecars
+  * Add csi-images-SUSE.patch to set CSI sidecar versions 
+  * New RPM: ceph-csi-helm-charts.rpm
+
+-------------------------------------------------------------------
 Thu Sep 10 22:50:04 UTC 2020 - Mike Latimer <mlatimer@suse.com>
 
 - update to 3.1.0
