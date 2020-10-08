@@ -344,4 +344,14 @@ The upcoming (this week) new MozillaThunderbird package (24.7.0) will have enigm
     to help you migrate your keys and settings to Thunderbird 78.</comment>
     <requestid>837358</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e48632d54f7054f3bca23c9617540135</srcmd5>
+    <version>2.2.4</version>
+    <time>1602155595</time>
+    <user>dimstar_suse</user>
+    <comment>- enigmail 2.2.4
+  * bugfixes and improvements
+  * translation updates</comment>
+    <requestid>839999</requestid>
+  </revision>
 </revisionlist>
