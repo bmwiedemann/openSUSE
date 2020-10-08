@@ -1,0 +1,50 @@
+From 4222d059c910136f5e2b5c6de96ddaf06828c1d5 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 22 Sep 2020 01:41:50 +0200
+Subject: [PATCH] ip: add error reporting when RTM_GETNSID failed
+Upstream: https://marc.info/?t=160073241300004&r=1&w=2
+
+`ip addr` when run under qemu-user-riscv64, fails. This likely is
+due to qemu-5.1 not doing translation of RTM_GETNSID calls. Aborting
+ip completely is the wrong response however. This patch reworks the
+error handling.
+
+2: host0@if5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 5a:44:da:1a:c4:0b brd ff:ff:ff:ff:ff:ff
+request send failed: Operation not supported
+
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+---
+ ip/ipnetns.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ip/ipnetns.c b/ip/ipnetns.c
+index 46cc235b..e7a45653 100644
+--- a/ip/ipnetns.c
++++ b/ip/ipnetns.c
+@@ -78,6 +78,8 @@ static int ipnetns_have_nsid(void)
+ 	if (have_rtnl_getnsid < 0) {
+ 		fd = open("/proc/self/ns/net", O_RDONLY);
+ 		if (fd < 0) {
++			fprintf(stderr, "/proc/self/ns/net: %s. "
++				"Continuing anyway.\n", strerror(errno));
+ 			have_rtnl_getnsid = 0;
+ 			return 0;
+ 		}
+@@ -85,8 +87,11 @@ static int ipnetns_have_nsid(void)
+ 		addattr32(&req.n, 1024, NETNSA_FD, fd);
+ 
+ 		if (rtnl_send(&rth, &req.n, req.n.nlmsg_len) < 0) {
+-			perror("request send failed");
+-			exit(1);
++			fprintf(stderr, "rtnl_send(RTM_GETNSID): %s. "
++				"Continuing anyway.\n", strerror(errno));
++			have_rtnl_getnsid = 0;
++			close(fd);
++			return 0;
+ 		}
+ 		rtnl_listen(&rth, ipnetns_accept_msg, NULL);
+ 		close(fd);
+-- 
+2.28.0
+
