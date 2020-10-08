@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:00:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable RPM builtin, did become pretty useless
+- Disable popmaildir and mime utilities
+
+-------------------------------------------------------------------
 Fri Aug 21 11:56:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Set CONFIG_FIRST_SYSTEM_ID to 101 as we use 100 already as fixed

@@ -637,4 +637,12 @@
 - Require group &quot;nogroup&quot; (used by adduser) (forwarded request 828493 from kukuk)</comment>
     <requestid>828495</requestid>
   </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>68f281013ce3598a9576d75e8a1b9c9c</srcmd5>
+    <version>1.32.0</version>
+    <time>1602155282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839288</requestid>
+  </revision>
 </revisionlist>
