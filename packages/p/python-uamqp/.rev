@@ -54,4 +54,15 @@
 - Install HISTORY.rst in %doc section (forwarded request 830779 from glaubitz)</comment>
     <requestid>830927</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d69dee3b5bab5a08e5fc66fbeb41303</srcmd5>
+    <version>1.2.11</version>
+    <time>1602155583</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.11
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 839806 from glaubitz)</comment>
+    <requestid>839869</requestid>
+  </revision>
 </revisionlist>
