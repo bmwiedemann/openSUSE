@@ -1,0 +1,36 @@
+From b24fe6b66b86e601c725d30f00c37e684b6395b6 Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Thu, 30 Apr 2020 10:19:09 +0100
+Subject: [PATCH spice-common 4/4] quic: Avoid possible buffer overflow in
+ find_bucket
+
+Proved by fuzzing the code.
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+Acked-by: Uri Lublin <uril@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ common/quic_family_tmpl.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/common/quic_family_tmpl.c b/common/quic_family_tmpl.c
+index 8a5f7d2..6cc051b 100644
+--- a/common/quic_family_tmpl.c
++++ b/common/quic_family_tmpl.c
+@@ -103,7 +103,12 @@ static s_bucket *FNAME(find_bucket)(Channel *channel, const unsigned int val)
+         spice_assert(val < (0x1U << BPC));
+     }
+ 
+-    return channel->_buckets_ptrs[val];
++    /* The and (&) here is to avoid buffer overflows in case of garbage or malicious
++     * attempts. Is much faster then using comparisons and save us from such situations.
++     * Note that on normal build the check above won't be compiled as this code path
++     * is pretty hot and would cause speed regressions.
++     */
++    return channel->_buckets_ptrs[val & ((1U << BPC) - 1)];
+ }
+ 
+ #undef FNAME
+-- 
+2.25.4
+

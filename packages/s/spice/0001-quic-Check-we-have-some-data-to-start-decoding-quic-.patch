@@ -1,0 +1,35 @@
+From 762e0abae36033ccde658fd52d3235887b60862d Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Wed, 29 Apr 2020 15:09:13 +0100
+Subject: [PATCH spice-common 1/4] quic: Check we have some data to start
+ decoding quic image
+
+All paths already pass some data to quic_decode_begin but for the
+test check it, it's not that expensive test.
+Checking for not 0 is enough, all other words will potentially be
+read calling more_io_words but we need one to avoid a potential
+initial buffer overflow or deferencing an invalid pointer.
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+Acked-by: Uri Lublin <uril@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ common/quic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/quic.c b/common/quic.c
+index e2dee0f..bc753ca 100644
+--- a/common/quic.c
++++ b/common/quic.c
+@@ -1136,7 +1136,7 @@ int quic_decode_begin(QuicContext *quic, uint32_t *io_ptr, unsigned int num_io_w
+     int channels;
+     int bpc;
+ 
+-    if (!encoder_reset(encoder, io_ptr, io_ptr_end)) {
++    if (!num_io_words || !encoder_reset(encoder, io_ptr, io_ptr_end)) {
+         return QUIC_ERROR;
+     }
+ 
+-- 
+2.25.4
+

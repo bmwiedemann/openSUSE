@@ -32,6 +32,11 @@ Source:         https://www.spice-space.org/download/releases/spice-server/%{nam
 Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sign
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
+Patch0:         0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+Patch1:         0002-quic-Check-image-size-in-quic_decode_begin.patch
+Patch2:         0003-quic-Check-RLE-lengths.patch
+Patch3:         0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer-plugins-good
 BuildRequires:  gstreamer-plugins-libav
@@ -96,6 +101,12 @@ and devices.
 
 %prep
 %setup -q
+cd subprojects/spice-common
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+cd ../../
 
 %build
 %configure \

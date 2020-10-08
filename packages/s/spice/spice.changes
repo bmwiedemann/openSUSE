@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:46:16 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix buffer overflow vunerabilities in QUIC image decoding
+  (CVE-2020-14355 bsc#1177158)
+0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+0002-quic-Check-image-size-in-quic_decode_begin.patch
+0003-quic-Check-RLE-lengths.patch
+0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+
+-------------------------------------------------------------------
 Mon Mar  9 21:40:53 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Clean up some spec file conditionals that are no longer helpful
