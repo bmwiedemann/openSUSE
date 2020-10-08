@@ -619,4 +619,31 @@
     <comment></comment>
     <requestid>826075</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f4861ad20f0d5181240c4abd14210de9</srcmd5>
+    <version>1.19.3</version>
+    <time>1602155256</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.19.3
+  * https://nginx.org/en/CHANGES
+  * Add the ngx_stream_set_module.
+  * Add the &quot;proxy_cookie_flags&quot; directive.
+  * Add the &quot;userid_flags&quot; directive.
+  * Fix the &quot;stale-if-error&quot; cache control extension was erroneously
+    applied if backend returned a response with status code 500, 502,
+    503, 504, 403, 404, or 429.
+  * Fix &quot;[crit] cache file ... has too long header&quot; messages might
+    appear in logs if caching was used and the backend returned responses
+    with the &quot;Vary&quot; header line.
+  * Fix &quot;[crit] SSL_write() failed&quot; messages might appear in logs
+    when using OpenSSL 1.1.1.
+  * Fix &quot;SSL_shutdown() failed (SSL: ... bad write retry)&quot; messages
+    might appear in logs; the bug had appeared in 1.19.2.
+  * Fix a segmentation fault might occur in a worker process when
+    using HTTP/2 if errors with code 400 were redirected to a proxied
+    location using the &quot;error_page&quot; directive.
+  * Fix socket leak when using HTTP/2 and subrequests in the njs module.
+</comment>
+    <requestid>839168</requestid>
+  </revision>
 </revisionlist>
