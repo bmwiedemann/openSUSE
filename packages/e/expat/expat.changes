@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Oct  4 19:19:55 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.2.10:
+  * Bug fixes:
+    - Fix undefined behavior during parsing caused by pointer
+      arithmetic with NULL pointers
+    - Fix reading uninitialized variable during parsing
+    - xmlwf: Add missing check for malloc NULL return
+  * Other changes:
+    - xmlwf: Document exit codes in xmlwf manpage and exit with code 3
+      (rather than code 1) for output errors when used with "-d DIRECTORY"
+    - Autotools: Use -Werror while configure tests the compiler for
+      supported compile flags to avoid false positives
+    - Autotools: Improve handling of user (C|CPP|CXX|LD)FLAGS, e.g.
+      ensure that they have the last word over flags added while
+      running ./configure
+    - CMake: Create libexpatw.{dll,so} and expatw.pc (with emphasis
+      on suffix "w") with -DEXPAT_CHAR_TYPE=(ushort|wchar_t)
+    - CMake: Detect and deny unsupported build combinations
+      involving -DEXPAT_CHAR_TYPE=(ushort|wchar_t)
+    - CMake: Install pre-compiled shipped xmlwf.1 manpage in case
+      of -DEXPAT_BUILD_DOCS=OFF
+    - CMake: Fix use of Expat by means of add_subdirectory
+    - CMake: Keep expat target name constant at "expat" (i.e. refrain
+      from using the target name to control build artifact filenames)
+    - CMake: Expose man page compilation as target "xmlwf-manpage"
+    - CMake: Introduce option EXPAT_BUILD_PKGCONFIG to control
+      generation of pkg-config file "expat.pc"
+    - CMake: Add minimalistic support for building binary packages
+      with CMake target "package"; based on CPack
+    - CMake: Add option -DEXPAT_OSSFUZZ_BUILD=(ON|OFF) with default
+      OFF to build fuzzer code against OSS-Fuzz and related
+      environment variable LIB_FUZZING_ENGINE
+    - Fix testsuite for -DEXPAT_DTD=OFF and -DEXPAT_NS=OFF
+    - Address compiler warnings
+    - Address pngcheck warnings with doc/*.png images: Version info
+      bumped from 7:11:6 to 7:12:6
+
+-------------------------------------------------------------------
 Fri Nov 29 18:30:43 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Version update to 2.2.9
