@@ -19,7 +19,7 @@
 %define so_ver 1
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -128,7 +128,7 @@ sed -i 's|${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}|${CMAKE_INSTALL_LIBDIR
   -DINDI_BUILD_WEBSOCKET=ON \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

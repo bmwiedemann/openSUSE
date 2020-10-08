@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 27 16:59:31 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.8.6:
+  * New Pegasus PPBA driver.
+  * New DomePro2 driver.
+  * Add PierSide to indi_ioptron_telescope
+  * Fix Pier Side problem on Gemini mounts
+  * Goto mode selectable for Alt/Az mounts via an UI Switch.
+  * OnStep: Weather sensor (READ) support
+  * OnStep: Support for setting temperatures for dew heaters/focusers
+  * Fix skywatcher altaz crash
+  * Add the focus temperature property to the focus simulator
+  * Logitech HD C270 webcam data added to v4l2_ccd driver
+  * Astrophysics park3 support
+  * Implement Parking for LX200 classic
+  * UDP support for skywatcherAPI
+  * LX200 FS-2 Park
+  * Telescope Simulator Parking to HA/Dec frame
+  * Update Pointing State determination.
+  * Feature Satellite tracking with TLE for 10Micron mounts
+  * Add focuser temperature to FITS header
+  * myFocuserPro2 Fix coil power command
+  * Updated TeenAstro INDI driver for firmware 1.2.0
+- Use %cmake_build instead of %make_jobs
+
+-------------------------------------------------------------------
 Mon Apr 27 08:26:20 UTC 2020 - wbauer@tmo.at
 
 - Update to version 1.8.5:
