@@ -22,12 +22,12 @@
 %endif
 
 Name:           at
-Version:        3.1.23
+Version:        3.2.1
 Release:        0
 Summary:        A Job Manager
 License:        GPL-2.0-or-later
-URL:            http://ftp.debian.org/debian/pool/main/a/at
-Source:         http://ftp.debian.org/debian/pool/main/a/at/%{name}_%{version}.orig.tar.gz
+URL:            http://blog.calhariz.com/index.php/tag/at
+Source:         http://software.calhariz.com/at/%{name}_%{version}.orig.tar.gz
 Source2:        atd.pamd
 Source3:        sysconfig.atd
 Source5:        atd.service
@@ -62,41 +62,22 @@ BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  libHX-devel
-BuildRequires:  libselinux-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(libHX)
+BuildRequires:  pkgconfig(libselinux)
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  permissions
 Recommends:     smtp_daemon
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
 
 %description
 This program allows you to run jobs at specified times.
 
 %prep
-%setup -q
-%patch0
-%patch4
-%patch10
-%patch11
-%patch15
-%patch16
-%patch17 -p1
-%patch19
-%patch20
-%patch21 -p1
-%patch22
-%patch23 -p1
-%patch24 -p1
-%patch25
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
+%autosetup -p1
 
 %build
 export SENDMAIL=%{_sbindir}/sendmail
@@ -109,7 +90,7 @@ autoreconf -fvi
   --with-daemon_username=at \
   --with-daemon_groupname=at
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d %{buildroot}{%{_sysconfdir}/pam.d,%{_bindir},%{_sbindir},%{_mandir}/man{1,5,8},%{_fillupdir}}
@@ -130,8 +111,10 @@ install -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/atd
 install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 
 %pre
-%{_sbindir}/groupadd -g 25 -o -r at 2> /dev/null || :
-%{_sbindir}/useradd -r -o -g at -u 25 -s /bin/false -c "Batch jobs daemon" -d %{_localstatedir}/spool/atjobs at 2> /dev/null || :
+getent group at >/dev/null || %{_sbindir}/groupadd -g 25 -o -r at
+getent passwd at >/dev/null || %{_sbindir}/useradd -r -o -g at -u 25 \
+	-s /bin/false -c "Batch jobs daemon" \
+	-d %{_localstatedir}/spool/atjobs at
 %service_add_pre atd.service
 
 %preun
@@ -149,8 +132,8 @@ install -m644 %{SOURCE3} %{buildroot}%{_fillupdir}
 %service_del_postun atd.service
 
 %files
-%defattr(-,root,root)
-%doc Problems Copyright COPYING README ChangeLog timespec
+%doc Problems README ChangeLog timespec
+%license COPYING Copyright
 %config(noreplace) %{_sysconfdir}/at.deny
 %{_sbindir}/rcatd
 %config %attr(644,root,root) %{_sysconfdir}/pam.d/atd

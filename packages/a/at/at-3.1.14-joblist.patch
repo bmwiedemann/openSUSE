@@ -1,8 +1,13 @@
-Index: at.c
+---
+ at.c    |   52 ++++++++++++++++++++++++++++++++++++++++++++++++----
+ panic.c |    1 +
+ 2 files changed, 49 insertions(+), 4 deletions(-)
+
+Index: at-3.2.0/at.c
 ===================================================================
---- at.c.orig
-+++ at.c
-@@ -134,7 +134,9 @@ static void sigc(int signo);
+--- at-3.2.0.orig/at.c
++++ at-3.2.0/at.c
+@@ -135,7 +135,9 @@ static void sigc(int signo);
  static void alarmc(int signo);
  static char *cwdname(void);
  static void writefile(time_t runtimer, char queue);
@@ -13,7 +18,7 @@ Index: at.c
  
  /* Signal catching functions */
  
-@@ -566,8 +568,20 @@ writefile(time_t runtimer, char queue)
+@@ -587,8 +589,20 @@ writefile(time_t runtimer, char queue)
      return;
  }
  
@@ -35,7 +40,7 @@ Index: at.c
  {
      /* List all a user's jobs in the queue, by looping through ATJOB_DIR, 
       * or everybody's if we are root
-@@ -606,6 +620,10 @@ list_jobs(void)
+@@ -627,6 +641,10 @@ list_jobs(void)
  	if (sscanf(dirent->d_name, "%c%5lx%8lx", &queue, &jobno, &ctm) != 3)
  	    continue;
  
@@ -46,7 +51,7 @@ Index: at.c
  	if (atqueue && (queue != atqueue))
  	    continue;
  
-@@ -727,6 +745,29 @@ process_jobs(int argc, char **argv, int
+@@ -748,6 +766,29 @@ process_jobs(int argc, char **argv, int
      return rc;
  }				/* delete_jobs */
  
@@ -76,8 +81,8 @@ Index: at.c
  /* Global functions */
  
  void *
-@@ -752,6 +793,8 @@ main(int argc, char **argv)
-     char *options = "q:f:MmbvlrdhVct:";	/* default options for at */
+@@ -773,6 +814,8 @@ main(int argc, char **argv)
+     char *options = "q:f:Mmu:bvlrdhVct:";	/* default options for at */
      int disp_version = 0;
      time_t timer = 0;
 +    long *joblist = NULL;
@@ -85,7 +90,7 @@ Index: at.c
      struct passwd *pwe;
      struct group *ge;
  
-@@ -889,8 +932,9 @@ main(int argc, char **argv)
+@@ -912,8 +955,9 @@ main(int argc, char **argv)
      case ATQ:
  
  	REDUCE_PRIV(daemon_uid, daemon_gid)
@@ -97,13 +102,13 @@ Index: at.c
  	break;
  
      case ATRM:
-Index: panic.c
+Index: at-3.2.0/panic.c
 ===================================================================
---- panic.c.orig
-+++ panic.c
+--- at-3.2.0.orig/panic.c
++++ at-3.2.0/panic.c
 @@ -95,6 +95,7 @@ usage(void)
-     fprintf(stderr, "Usage: at [-V] [-q x] [-f file] [-mMlbv] timespec ...\n"
-             "       at [-V] [-q x] [-f file] [-mMlbv] -t time\n"
+     fprintf(stderr, "Usage: at [-V] [-q x] [-f file] [-u username] [-mMlbv] timespec ...\n"
+             "       at [-V] [-q x] [-f file] [-u username] [-mMlbv] -t time\n"
      	    "       at -c job ...\n"
 +	    "       at [-V] -l [job ...]\n"
  	    "       atq [-V] [-q x]\n"

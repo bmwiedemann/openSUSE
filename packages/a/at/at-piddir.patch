@@ -1,6 +1,12 @@
---- configure.ac.orig
-+++ configure.ac
-@@ -136,6 +136,7 @@ elif test -d /usr/run ; then
+---
+ configure.ac |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: at-3.2.0/configure.ac
+===================================================================
+--- at-3.2.0.orig/configure.ac
++++ at-3.2.0/configure.ac
+@@ -130,6 +130,7 @@ elif test -d /usr/run ; then
  else
      PIDDIR="$ETCDIR"
  fi

@@ -1,27 +1,12 @@
---- at-3.1.13.orig/configure.ac
-+++ at-3.1.13/configure.ac
-@@ -17,8 +17,9 @@ AC_SUBST(VERSION)
- AC_CANONICAL_HOST
- 
- dnl Checks for programs.
--
--AC_PROG_CC
-+AC_USE_SYSTEM_EXTENSIONS
-+AC_PROG_CC_STDC
-+AC_SYS_LARGEFILE
- AC_PROG_INSTALL
- AC_PROG_LN_S
- AC_PROG_YACC
-@@ -58,6 +59,7 @@ AC_CHECK_LIB(fl,yywrap,
- 
- PKG_CHECK_MODULES([HX], [libHX])
- 
-+AC_CHECK_FUNCS([__secure_getenv secure_getenv])
- dnl Checks for header files.
- AC_HEADER_DIRENT
- AC_HEADER_STDC
---- at-3.1.13.orig/at.c
-+++ at-3.1.13/at.c
+---
+ at.c         |   10 +++++++++-
+ configure.ac |    6 ++++--
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+Index: at-3.2.0/at.c
+===================================================================
+--- at-3.2.0.orig/at.c
++++ at-3.2.0/at.c
 @@ -97,6 +97,14 @@
  #define DEFAULT_QUEUE 'a'
  #define BATCH_QUEUE   'b'
@@ -37,12 +22,36 @@
  enum {
      ATQ, BATCH, ATRM, AT, CAT
  };				/* what program we want to run */
-@@ -359,7 +367,7 @@ writefile(time_t runtimer, char queue)
-      */
-     mailname = getlogin();
-     if (mailname == NULL)
--	mailname = getenv("LOGNAME");
-+	    mailname = secure_getenv("LOGNAME");
-     if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
- 	pass_entry = getpwuid(real_uid);
- 	if (pass_entry != NULL)
+@@ -372,7 +380,7 @@ writefile(time_t runtimer, char queue)
+          */
+         mailname = getlogin();
+         if (mailname == NULL)
+-            mailname = getenv("LOGNAME");
++            mailname = secure_getenv("LOGNAME");
+         if (mailname == NULL || mailname[0] == '\0' || getpwnam(mailname) == NULL) {
+             pass_entry = getpwuid(real_uid);
+             if (pass_entry != NULL)
+Index: at-3.2.0/configure.ac
+===================================================================
+--- at-3.2.0.orig/configure.ac
++++ at-3.2.0/configure.ac
+@@ -17,8 +17,9 @@ AC_SUBST(VERSION)
+ AC_CANONICAL_HOST
+ 
+ dnl Checks for programs.
+-
+-AC_PROG_CC
++AC_USE_SYSTEM_EXTENSIONS
++AC_PROG_CC_STDC
++AC_SYS_LARGEFILE
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_YACC
+@@ -56,6 +57,7 @@ AC_CHECK_LIB(fl,yywrap,
+ 
+ PKG_CHECK_MODULES([HX], [libHX])
+ 
++AC_CHECK_FUNCS([__secure_getenv secure_getenv])
+ dnl Checks for header files.
+ AC_HEADER_DIRENT
+ AC_HEADER_STDC

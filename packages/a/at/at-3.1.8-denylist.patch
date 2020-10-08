@@ -1,5 +1,11 @@
---- at.deny.orig
-+++ at.deny
+---
+ at.deny |   24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
+
+Index: at-3.2.0/at.deny
+===================================================================
+--- at-3.2.0.orig/at.deny
++++ at-3.2.0/at.deny
 @@ -1,24 +1,12 @@
 -alias
 -backup

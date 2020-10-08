@@ -1,10 +1,12 @@
-Index: at.c
+---
+ at.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: at-3.2.0/at.c
 ===================================================================
---- at.c.orig
-+++ at.c
-@@ -616,10 +616,13 @@ list_jobs(long *joblist, int len)
- 	if ((pwd = getpwuid(buf.st_uid)))
- 	  printf("%ld\t%s %c %s\n", jobno, timestr, queue, pwd->pw_name);
+--- at-3.2.0.orig/at.c
++++ at-3.2.0/at.c
+@@ -658,6 +658,9 @@ list_jobs(long *joblist, int len)
  	else
  	  printf("%ld\t%s %c\n", jobno, timestr, queue);
      }
@@ -14,11 +16,7 @@ Index: at.c
      PRIV_END
  }
  
- static int
- process_jobs(int argc, char **argv, int what)
-@@ -698,10 +701,11 @@ process_jobs(int argc, char **argv, int
- 			if (fp) {
- 			    while ((ch = getc(fp)) != EOF) {
+@@ -740,6 +743,7 @@ process_jobs(int argc, char **argv, int
  				putchar(ch);
  			    }
  			    done = 1;
@@ -26,5 +24,3 @@ Index: at.c
  			}
  			else {
  			    perr("Cannot open %.500s", dirent->d_name);
- 			    rc = EXIT_FAILURE;
- 			}

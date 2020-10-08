@@ -1,8 +1,12 @@
-Index: at.1.in
+---
+ at.1.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: at-3.2.0/at.1.in
 ===================================================================
---- at.1.in.orig
-+++ at.1.in
-@@ -132,7 +132,7 @@ the past, the job will run as soon as po
+--- at-3.2.0.orig/at.1.in
++++ at-3.2.0/at.1.in
+@@ -136,7 +136,7 @@ the past, the job will run as soon as po
  it will run more likely at 8:05pm.
  .PP
  The definition of the time specification can be found in

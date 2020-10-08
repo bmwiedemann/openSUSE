@@ -1,8 +1,15 @@
-Index: Makefile.in
+---
+ Makefile.in  |   46 +++++++++++++++++++++++-----------------------
+ Problems     |    2 +-
+ atd.c        |   16 +++++++++++++---
+ configure.ac |    2 +-
+ 4 files changed, 38 insertions(+), 28 deletions(-)
+
+Index: at-3.2.0/Makefile.in
 ===================================================================
---- Makefile.in.orig
-+++ Makefile.in
-@@ -91,41 +91,41 @@ atrun: atrun.in
+--- at-3.2.0.orig/Makefile.in
++++ at-3.2.0/Makefile.in
+@@ -93,41 +93,41 @@ atrun: atrun.in
  	$(CC) -c $(CFLAGS) $(DEFS) $*.c
  
  install: all
@@ -52,10 +59,9 @@ Index: Makefile.in
 +	$(INSTALL) -m 644 tmpman $(IROOT)$(man8dir)/atrun.8
  	rm -f tmpman
 -	$(INSTALL) -g root -o root -m 644 at.allow.5 $(IROOT)$(man5dir)/
--	cd $(IROOT)$(man5dir) && $(LN_S) -f at.allow.5 at.deny.5
--	$(INSTALL) -g root -o root -m 644 $(DOCS) $(IROOT)$(atdocdir)
 +	$(INSTALL) -m 644 at.allow.5 $(IROOT)$(man5dir)/
-+	cd $(IROOT)$(man5dir) && $(LN_S) -f at.allow.5 at.deny.5
+ 	cd $(IROOT)$(man5dir) && $(LN_S) -f at.allow.5 at.deny.5
+-	$(INSTALL) -g root -o root -m 644 $(DOCS) $(IROOT)$(atdocdir)
 +	$(INSTALL) -m 644 $(DOCS) $(IROOT)$(atdocdir)
  	rm -f $(IROOT)$(mandir)/cat1/at.1* $(IROOT)$(mandir)/cat1/batch.1* \
  		$(IROOT)$(mandir)/cat1/atq.1*
@@ -68,13 +74,11 @@ Index: Makefile.in
  	fi
  
  dist: checkin $(DIST) $(LIST) Filelist.asc
-Index: Problems
+Index: at-3.2.0/Problems
 ===================================================================
---- Problems.orig
-+++ Problems
-@@ -3,10 +3,10 @@ Possible reasons why at may not run for
- - HAVE you run ./configure ?  If that fails for some
-   mysterious reasons, you can also do a
+--- at-3.2.0.orig/Problems
++++ at-3.2.0/Problems
+@@ -5,7 +5,7 @@ Possible reasons why at may not run for
  
  	make -f Makefile.old install
  
@@ -83,14 +87,11 @@ Index: Problems
  
  - If you find numerous 'try again' error messages in your syslog files,
    you have too many processes running; recompile your kernel for a
-   larger number
-Index: atd.c
+Index: at-3.2.0/atd.c
 ===================================================================
---- atd.c.orig
-+++ atd.c
-@@ -314,11 +314,16 @@ run_file(const char *filename, uid_t uid
- 	     jobno, filename);
-     }
+--- at-3.2.0.orig/atd.c
++++ at-3.2.0/atd.c
+@@ -388,7 +388,12 @@ run_file(const char *filename, uid_t uid
      if ((fflags = fcntl(fd_in, F_GETFD)) < 0)
  	perr("Error in fcntl");
  
@@ -104,11 +105,7 @@ Index: atd.c
  
      /*
       * If the spool directory is mounted via NFS `atd' isn't able to
-      * read from the job file and will bump out here.  The file is
-      * opened as "root" but it is read as "daemon" which fails over
-@@ -431,10 +436,13 @@ run_file(const char *filename, uid_t uid
- 		perr("Cannot change group");
- 
+@@ -512,6 +517,9 @@ run_file(const char *filename, uid_t uid
  	    if (setuid(uid) < 0)
  		perr("Cannot set user id");
  
@@ -118,11 +115,7 @@ Index: atd.c
  	    chdir("/");
  
  	    if (execle("/bin/sh", "sh", (char *) NULL, nenvp) != 0)
- 		perr("Exec failed for /bin/sh");
- 
-@@ -612,11 +620,12 @@ run_loop()
- 	    if (run_time + CHECK_INTERVAL <= now) {
- 
+@@ -699,7 +707,8 @@ run_loop()
  		/* Something went wrong the last time this was executed.
  		 * Let's remove the lockfile and reschedule.
  		 */
@@ -132,11 +125,7 @@ Index: atd.c
  		lock_name[0] = '=';
  		unlink(lock_name);
  		next_job = now;
- 		nothing_to_do = 0;
- 	    }
-@@ -646,11 +655,12 @@ run_loop()
- 	     * at a higher priority than anything before, keep its
- 	     * filename.
+@@ -733,7 +742,8 @@ run_loop()
  	     */
  	    run_batch++;
  	    if (strcmp(batch_name, dirent->d_name) > 0) {
@@ -146,15 +135,11 @@ Index: atd.c
  		batch_uid = buf.st_uid;
  		batch_gid = buf.st_gid;
  		batch_queue = queue;
- 	    }
- 	}
-Index: configure.ac
+Index: at-3.2.0/configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
-@@ -130,11 +130,11 @@ else
- fi
- AC_DEFINE_UNQUOTED(PIDFILE, "$PIDDIR/atd.pid", [What is the name of our PID file?])
+--- at-3.2.0.orig/configure.ac
++++ at-3.2.0/configure.ac
+@@ -132,7 +132,7 @@ AC_DEFINE_UNQUOTED(PIDFILE, "$PIDDIR/atd
  AC_MSG_RESULT($PIDDIR)
  
  AC_MSG_CHECKING(location of spool directory)
@@ -163,5 +148,3 @@ Index: configure.ac
    sp=/var/spool
    AC_MSG_RESULT(Using existing /var/spool/at{jobs|run})
  elif  test -d /var/spool/cron ; then
-   sp=/var/spool/cron
-   AC_MSG_RESULT(/var/spool/cron)

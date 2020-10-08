@@ -1,12 +1,14 @@
-Index: at-3.1.13/parsetime.y
+---
+ parsetime.y |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: at-3.2.0/parsetime.y
 ===================================================================
---- at-3.1.13.orig/parsetime.y
-+++ at-3.1.13/parsetime.y
-@@ -504,10 +504,15 @@ parsetime(time_t currtime, int argc, cha
- 	if (isgmt) {
- 	    exectime -= timezone;
- 	    if (currtm.tm_isdst && !exectm.tm_isdst)
- 		exectime -= 3600;
+--- at-3.2.0.orig/parsetime.y
++++ at-3.2.0/parsetime.y
+@@ -518,6 +518,11 @@ parsetime(time_t currtime, int argc, cha
+ 	    else
+ 		unsetenv("TZ");
  	}
 +	/* exectime zeroes its seconds, thus we need +60,
 +	 * else "now" will be scheduled to tomorrow */
@@ -16,5 +18,3 @@ Index: at-3.1.13/parsetime.y
  	if (exectime < currtime)
  		panic("refusing to create job destined in the past");
          return exectime;
-     }
-     else {

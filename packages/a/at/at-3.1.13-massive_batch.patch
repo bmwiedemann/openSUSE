@@ -1,7 +1,11 @@
-Index: atd.c
+---
+ atd.c |   15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+Index: at-3.2.0/atd.c
 ===================================================================
---- atd.c.orig
-+++ atd.c
+--- at-3.2.0.orig/atd.c
++++ at-3.2.0/atd.c
 @@ -108,9 +108,10 @@ static char *namep;
  static double load_avg = LOADAVG_MX;
  static time_t now;

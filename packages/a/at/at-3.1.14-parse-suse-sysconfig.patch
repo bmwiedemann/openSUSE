@@ -6,14 +6,14 @@ http://bugzilla.novell.com/780259
 ---
  Makefile.in  |    4 ++--
  atd.c        |   21 +++++++++++++++++++++
- configure.in |   44 +++++++++++++++++++++++++++-----------------
- 3 files changed, 50 insertions(+), 19 deletions(-)
+ configure.ac |    2 ++
+ 3 files changed, 25 insertions(+), 2 deletions(-)
 
-Index: Makefile.in
+Index: at-3.2.0/Makefile.in
 ===================================================================
---- Makefile.in.orig
-+++ Makefile.in
-@@ -28,7 +28,7 @@ LEX		= @LEX@
+--- at-3.2.0.orig/Makefile.in
++++ at-3.2.0/Makefile.in
+@@ -29,7 +29,7 @@ LEX		= @LEX@
  LEXLIB		= @LEXLIB@
  
  CC 		= @CC@
@@ -22,7 +22,7 @@ Index: Makefile.in
  LDFLAGS		= @LDFLAGS@
  LFILE		= $(ATJOB_DIR)/.SEQ
  DEFS 		= @DEFS@ -DVERSION=\"$(VERSION)\" \
-@@ -36,7 +36,7 @@ DEFS 		= @DEFS@ -DVERSION=\"$(VERSION)\"
+@@ -37,7 +37,7 @@ DEFS 		= @DEFS@ -DVERSION=\"$(VERSION)\"
  		-DDAEMON_USERNAME=\"$(DAEMON_USERNAME)\" \
  		-DDAEMON_GROUPNAME=\"$(DAEMON_GROUPNAME)\" \
  		-DLFILE=\"$(LFILE)\" -Wall
@@ -31,10 +31,10 @@ Index: Makefile.in
  LIBOBJS		= @LIBOBJS@
  INSTALL		= @INSTALL@
  PAMLIB          = @PAMLIB@
-Index: atd.c
+Index: at-3.2.0/atd.c
 ===================================================================
---- atd.c.orig
-+++ atd.c
+--- at-3.2.0.orig/atd.c
++++ at-3.2.0/atd.c
 @@ -74,6 +74,10 @@
  #include <syslog.h>
  #endif
@@ -77,10 +77,10 @@ Index: atd.c
      namep = argv[0];
      if (chdir(ATJOB_DIR) != 0)
  	perr("Cannot change to " ATJOB_DIR);
-Index: configure.ac
+Index: at-3.2.0/configure.ac
 ===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- at-3.2.0.orig/configure.ac
++++ at-3.2.0/configure.ac
 @@ -54,6 +54,8 @@ AC_CHECK_LIB(fl,yywrap,
                    [Define to 1 if we need to provide our own yywrap()])
  )

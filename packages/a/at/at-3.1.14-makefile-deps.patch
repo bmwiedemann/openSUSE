@@ -1,7 +1,11 @@
-Index: at-3.1.14/Makefile.in
+---
+ Makefile.in |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: at-3.2.0/Makefile.in
 ===================================================================
---- at-3.1.14.orig/Makefile.in
-+++ at-3.1.14/Makefile.in
+--- at-3.2.0.orig/Makefile.in
++++ at-3.2.0/Makefile.in
 @@ -77,9 +77,12 @@ at: $(ATOBJECTS)
  atd: $(RUNOBJECTS)
  	$(CC) $(LDFLAGS) -o atd $(RUNOBJECTS) $(LIBS) $(PAMLIB) $(SELINUXLIB)

@@ -599,4 +599,12 @@ I already created a maintenance request for 12.2 - #142949 (forwarded request 14
     <comment></comment>
     <requestid>777664</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7847a92a7de4c13441824f2c2979dd73</srcmd5>
+    <version>3.2.1</version>
+    <time>1602155340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839560</requestid>
+  </revision>
 </revisionlist>
