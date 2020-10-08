@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 00:59:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix anonymous enums from multiple files being squashed together:
+  Add 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch
+
+-------------------------------------------------------------------
 Sun Sep 20 15:49:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - doxygen 1.8.20:

@@ -917,4 +917,13 @@
     <comment>doxygen 1.8.20 (forwarded request 835687 from AndreasStieger)</comment>
     <requestid>835773</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>76bbced1cb13157023baab801dda59d4</srcmd5>
+    <version>1.8.20</version>
+    <time>1602155212</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix anonymous enums from multiple files being squashed together:
+  Add 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (forwarded request 839053 from StefanBruens)</comment>
+    <requestid>839059</requestid>
+  </revision>
 </revisionlist>

@@ -35,6 +35,8 @@ Patch1:         %{name}-no-lowercase-man-names.patch
 Patch3:         vhdlparser-no-return.patch
 Patch6:         doxygen-llvm-libs.patch
 Patch10:        doxygen-libclang-cpp.patch
+# PATCH-FIX-UPSTREAM
+Patch11:        0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -69,6 +71,7 @@ as well.
 %patch10 -p1
 %endif
 %endif
+%patch11 -p1
 
 %build
 %cmake \
