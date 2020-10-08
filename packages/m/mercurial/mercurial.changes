@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  3 07:10:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mercurial 5.5.2:
+  * fix a crash in the log command
+  * bug fixes in hgdemandimport
+  * stip: with --keep, consider all revs "removed" from the wcp 
+
+-------------------------------------------------------------------
 Thu Sep  3 12:24:59 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.5.1:
