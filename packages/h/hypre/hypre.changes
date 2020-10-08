@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 10:05:22 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Don't include superlu-devel and lapack-devel into HPC devel
+  package.
+
+-------------------------------------------------------------------
 Fri Sep 11 06:04:01 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc10 to HPC build (bsc#1174439).

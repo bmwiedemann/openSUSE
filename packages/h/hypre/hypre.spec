@@ -449,9 +449,10 @@ This package contains %{?mpi_family}%{?mpi_vers}%{!?mpi_family:serial} shared li
 Summary:        Headers and library links for %{libname}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %version
+%if %{without hpc}
 Requires:       lapack-devel
 Requires:       superlu-devel
-%if %{with hpc}
+%else
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 Requires:       superlu%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 %hpc_requires_devel
