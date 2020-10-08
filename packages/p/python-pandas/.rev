@@ -342,4 +342,12 @@ All packages broken by this update should be fixed now.</comment>
       would occur with center=True and an odd number of values</comment>
     <requestid>832629</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>51839834d371c4cc9da6729a02c6cd47</srcmd5>
+    <version>1.1.3</version>
+    <time>1602155381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839707</requestid>
+  </revision>
 </revisionlist>

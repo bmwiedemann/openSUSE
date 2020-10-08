@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause

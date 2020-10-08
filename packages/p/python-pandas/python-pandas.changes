@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Oct  5 20:11:59 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated cython version
+
+- update to version 1.1.3:
+  * Development Changes
+    + The minimum version of Cython is now the most recent bug-fix
+      version (0.29.21) (GH36296).
+  * Fixed regressions
+    + Fixed regression in DataFrame.agg(), DataFrame.apply(),
+      Series.agg(), and Series.apply() where internal suffix is
+      exposed to the users when no relabelling is applied (GH36189)
+    + Fixed regression in IntegerArray unary plus and minus operations
+      raising a TypeError (GH36063)
+    + Fixed regression when adding a timedelta_range() to a Timestamp
+      raised a ValueError (GH35897)
+    + Fixed regression in Series.__getitem__() incorrectly raising
+      when the input was a tuple (GH35534)
+    + Fixed regression in Series.__getitem__() incorrectly raising
+      when the input was a frozenset (GH35747)
+    + Fixed regression in modulo of Index, Series and DataFrame using
+      numexpr using C not Python semantics (GH36047, GH36526)
+    + Fixed regression in read_excel() with engine="odf" caused
+      UnboundLocalError in some cases where cells had nested child
+      nodes (GH36122, GH35802)
+    + Fixed regression in DataFrame.replace() inconsistent replace
+      when using a float in the replace method (GH35376)
+    + Fixed regression in Series.loc() on a Series with a MultiIndex
+      containing Timestamp raising InvalidIndexError (GH35858)
+    + Fixed regression in DataFrame and Series comparisons between
+      numeric arrays and strings (GH35700, GH36377)
+    + Fixed regression in DataFrame.apply() with raw=True and
+      user-function returning string (GH35940)
+    + Fixed regression when setting empty DataFrame column to a Series
+      in preserving name of index in frame (GH36527)
+    + Fixed regression in Period incorrect value for ordinal over the
+      maximum timestamp (GH36430)
+    + Fixed regression in read_table() raised ValueError when
+      delim_whitespace was set to True (GH35958)
+    + Fixed regression in Series.dt.normalize() when normalizing
+      pre-epoch dates the result was shifted one day (GH36294)
+  * Bug fixes
+    + Bug in read_spss() where passing a pathlib.Path as path would
+      raise a TypeError (GH33666)
+    + Bug in Series.str.startswith() and Series.str.endswith() with
+      category dtype not propagating na parameter (GH36241)
+    + Bug in Series constructor where integer overflow would occur for
+      sufficiently large scalar inputs when an index was provided
+      (GH36291)
+    + Bug in DataFrame.sort_values() raising an AttributeError when
+      sorting on a key that casts column to categorical dtype
+      (GH36383)
+    + Bug in DataFrame.stack() raising a ValueError when stacking
+      MultiIndex columns based on position when the levels had
+      duplicate names (GH36353)
+    + Bug in Series.astype() showing too much precision when casting
+      from np.float32 to string dtype (GH36451)
+    + Bug in Series.isin() and DataFrame.isin() when using NaN and a
+      row length above 1,000,000 (GH22205)
+    + Bug in cut() raising a ValueError when passed a Series of labels
+      with ordered=False (GH36603)
+  * Other
+    + Reverted enhancement added in pandas-1.1.0 where
+      timedelta_range() infers a frequency when passed start, stop,
+      and periods (GH32377)
+
+-------------------------------------------------------------------
+Sat Sep 12 19:56:08 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.1.2:
+  * Fixed regressions
+    + Regression in DatetimeIndex.intersection() incorrectly raising
+      AssertionError when intersecting against a list (GH35876)
+    + Fix regression in updating a column inplace (e.g. using
+      df['col'].fillna(.., inplace=True)) (GH35731)
+    + Fix regression in DataFrame.append() mixing tz-aware and
+      tz-naive datetime columns (GH35460)
+    + Performance regression for RangeIndex.format() (GH35712)
+    + Regression where MultiIndex.get_loc() would return a slice
+      spanning the full index when passed an empty list (GH35878)
+    + Fix regression in invalid cache after an indexing operation;
+      this can manifest when setting which does not update the data
+      (GH35521)
+    + Regression in DataFrame.replace() where a TypeError would be
+      raised when attempting to replace elements of type Interval
+      (GH35931)
+    + Fix regression in pickle roundtrip of the closed attribute of
+      IntervalIndex (GH35658)
+    + Fixed regression in DataFrameGroupBy.agg() where a ValueError:
+      buffer source array is read-only would be raised when the
+      underlying array is read-only (GH36014)
+    + Fixed regression in Series.groupby.rolling() number of levels of
+      MultiIndex in input was compressed to one (GH36018)
+    + Fixed regression in DataFrameGroupBy on an empty DataFrame
+      (GH36197)
+  * Bug fixes
+    + Bug in DataFrame.eval() with object dtype column binary
+      operations (GH35794)
+    + Bug in Series constructor raising a TypeError when constructing
+      sparse datetime64 dtypes (GH35762)
+    + Bug in DataFrame.apply() with result_type="reduce" returning
+      with incorrect index (GH35683)
+    + Bug in Series.astype() and DataFrame.astype() not respecting the
+      errors argument when set to "ignore" for extension dtypes
+      (GH35471)
+    + Bug in DateTimeIndex.format() and PeriodIndex.format() with
+      name=True setting the first item to "None" where it should be ""
+      (GH35712)
+    + Bug in Float64Index.__contains__() incorrectly raising TypeError
+      instead of returning False (GH35788)
+    + Bug in Series constructor incorrectly raising a TypeError when
+      passed an ordered set (GH36044)
+    + Bug in Series.dt.isocalendar() and DatetimeIndex.isocalendar()
+      that returned incorrect year for certain dates (GH36032)
+    + Bug in DataFrame indexing returning an incorrect Series in some
+      cases when the series has been altered and a cache not
+      invalidated (GH33675)
+    + Bug in DataFrame.corr() causing subsequent indexing lookups to
+      be incorrect (GH35882)
+    + Bug in import_optional_dependency() returning incorrect package
+      names in cases where package name is different from import name
+      (GH35948)
+    + Bug when setting empty DataFrame column to a Series in
+      preserving name of index in frame (GH31368)
+  * Other
+    + factorize() now supports na_sentinel=None to include NaN in the
+      uniques of the values and remove dropna keyword which was
+      unintentionally exposed to public facing API in 1.1 version from
+      factorize() (GH35667)
+    + DataFrame.plot() and Series.plot() raise UserWarning about usage
+      of FixedFormatter and FixedLocator (GH35684 and GH35945)
+
+-------------------------------------------------------------------
 Sat Sep  5 15:42:53 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
