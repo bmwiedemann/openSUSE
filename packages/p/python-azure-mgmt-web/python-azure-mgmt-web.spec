@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-web
-Version:        0.47.0
+Version:        0.48.0
 Release:        0
 Summary:        Microsoft Azure Web Apps Management Client Library
 License:        MIT

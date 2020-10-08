@@ -77,4 +77,15 @@
     CHANGELOG.md file provided with this package (forwarded request 815538 from glaubitz)</comment>
     <requestid>815587</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bba990ac1d326eef165ffc25b055c66c</srcmd5>
+    <version>0.48.0</version>
+    <time>1602155564</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.48.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839801 from glaubitz)</comment>
+    <requestid>839863</requestid>
+  </revision>
 </revisionlist>
