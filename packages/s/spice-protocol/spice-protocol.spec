@@ -17,7 +17,7 @@
 
 
 Name:           spice-protocol
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        SPICE-protocol definitions
 License:        BSD-3-Clause

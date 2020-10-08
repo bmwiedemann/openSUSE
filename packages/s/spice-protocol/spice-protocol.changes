@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:59:17 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.14.3
+  + Add VD_AGENT_CLIPBOARD_FILE_LIST to support copy/paste of files with
+  WebDAV support
+  + Add support for side mouse buttons
+  + Add a MonitorsMM field to VDAgentMonitorsConfig allowing to pass
+  physical monitor dimension
+
+-------------------------------------------------------------------
 Wed Sep 30 08:14:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libdir=/usr/(lib|lib64} entry from the .pc file: the

@@ -240,4 +240,18 @@
     <comment></comment>
     <requestid>838791</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4d27aa0958bf476e2d118f875998ae2f</srcmd5>
+    <version>0.14.3</version>
+    <time>1602155448</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.3
+  + Add VD_AGENT_CLIPBOARD_FILE_LIST to support copy/paste of files with
+  WebDAV support
+  + Add support for side mouse buttons
+  + Add a MonitorsMM field to VDAgentMonitorsConfig allowing to pass
+  physical monitor dimension
+</comment>
+    <requestid>839649</requestid>
+  </revision>
 </revisionlist>
