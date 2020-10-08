@@ -65,4 +65,12 @@
 - Add relocatable_executable.patch</comment>
     <requestid>839156</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>8b9d33b451c3e17209d19aee07565cba</srcmd5>
+    <version>1.0.0</version>
+    <time>1602155662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840187</requestid>
+  </revision>
 </revisionlist>

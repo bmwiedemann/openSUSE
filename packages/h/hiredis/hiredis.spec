@@ -27,6 +27,7 @@ URL:            https://github.com/redis/hiredis
 Source0:        https://github.com/redis/hiredis/archive/v%{version}.tar.gz
 Patch0:         relocatable_executable.patch
 BuildRequires:  pkgconfig
+BuildRequires:  libopenssl-devel
 
 %description
 Hiredis is a minimalistic C client library for the
@@ -54,10 +55,10 @@ Shared library for %{name}. The %{name}-example and
 %patch0
 
 %build
-%make_build OPTIMIZATION="%{optflags}" PREFIX=%{_prefix} LIBRARY_PATH=%{_lib}
+%make_build OPTIMIZATION="%{optflags}" PREFIX=%{_prefix} LIBRARY_PATH=%{_lib} USE_SSL=1
 
 %install
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBRARY_PATH=%{_lib}
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBRARY_PATH=%{_lib} USE_SSL=1
 
 mkdir -p %{buildroot}%{_bindir}
 install -m 0755 %{name}-test %{buildroot}%{_bindir}
@@ -78,10 +79,13 @@ find %{buildroot} -type f -name '*.a' -delete
 %doc CHANGELOG.md
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/hiredis.pc
+%{_libdir}/lib%{name}_ssl.so
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}_ssl.pc
 
 %files -n %{libname}
 %defattr(0755,root,root,0755)
 %{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}_ssl.so.*
 
 %changelog
