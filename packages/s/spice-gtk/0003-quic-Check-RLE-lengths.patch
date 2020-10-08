@@ -1,0 +1,36 @@
+From ef1b6ff7b82e15d759e5415b8e35b92bb1a4c206 Mon Sep 17 00:00:00 2001
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Wed, 29 Apr 2020 15:11:38 +0100
+Subject: [PATCH spice-common 3/4] quic: Check RLE lengths
+
+Avoid buffer overflows decoding images. On compression we compute
+lengths till end of line so it won't cause regressions.
+Proved by fuzzing the code.
+
+Signed-off-by: Frediano Ziglio <freddy77@gmail.com>
+Acked-by: Uri Lublin <uril@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ common/quic_tmpl.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/common/quic_tmpl.c b/common/quic_tmpl.c
+index ecd6f3f..ebae992 100644
+--- a/common/quic_tmpl.c
++++ b/common/quic_tmpl.c
+@@ -563,7 +563,11 @@ static void FNAME_DECL(uncompress_row_seg)(const PIXEL * const prev_row,
+ do_run:
+         state->waitcnt = stopidx - i;
+         run_index = i;
+-        run_end = i + decode_state_run(encoder, state);
++        run_end = decode_state_run(encoder, state);
++        if (run_end < 0 || run_end > (end - i)) {
++            encoder->usr->error(encoder->usr, "wrong RLE\n");
++        }
++        run_end += i;
+ 
+         for (; i < run_end; i++) {
+             UNCOMPRESS_PIX_START(&cur_row[i]);
+-- 
+2.25.4
+

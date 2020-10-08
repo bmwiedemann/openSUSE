@@ -23,14 +23,19 @@ Release:        0
 Summary:        Gtk client and libraries for SPICE remote desktop servers
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-URL:            http://spice-space.org
-Source0:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.xz
-Source1:        http://spice-space.org/download/gtk/%{name}-%{version}.tar.xz.sig
+URL:            https://spice-space.org
+Source0:        https://spice-space.org/download/gtk/%{name}-%{version}.tar.xz
+Source1:        https://spice-space.org/download/gtk/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
 Patch1:         Remove-celt-support.patch
+Patch2:         0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+Patch3:         0002-quic-Check-image-size-in-quic_decode_begin.patch
+Patch4:         0003-quic-Check-RLE-lengths.patch
+Patch5:         0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gstreamer-plugins-bad
 BuildRequires:  gstreamer-plugins-good
@@ -134,6 +139,12 @@ A Gtk client and libraries for SPICE remote desktop servers, (Linux and Windows)
 %setup -q
 %patch0 -p1
 %patch1 -p1
+cd subprojects/spice-common
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+cd ../../
 cp %{SOURCE3} .
 
 %build
