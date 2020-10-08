@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:43:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add upstream patches to fix security issues in kdeconnect
+  (CVE-2020-26164, boo#1176268):
+  * 0001-Do-not-leak-the-local-user-in-the-device-name.patch
+  * 0002-Fix-use-after-free-in-LanLinkProvider-connectError.patch
+  * 0003-Limit-identity-packets-to-8KiB.patch
+  * 0004-Do-not-let-lanlink-connections-stay-open-for-long-wi.patch
+  * 0005-Don-t-brute-force-reading-the-socket.patch
+  * 0006-Limit-number-of-connected-sockets-from-unpaired-devi.patch
+  * 0007-Do-not-remember-more-than-a-few-identity-packets-at-.patch
+  * 0008-Limit-the-ports-we-try-to-connect-to-to-the-port-ran.patch
+  * 0009-Do-not-replace-connections-for-a-given-deviceId-if-t.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 20:49:36 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1

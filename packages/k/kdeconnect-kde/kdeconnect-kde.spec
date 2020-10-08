@@ -32,6 +32,24 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 Source101:      kdeconnect-kde-firewalld.xml
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Do-not-leak-the-local-user-in-the-device-name.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0002-Fix-use-after-free-in-LanLinkProvider-connectError.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0003-Limit-identity-packets-to-8KiB.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0004-Do-not-let-lanlink-connections-stay-open-for-long-wi.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0005-Don-t-brute-force-reading-the-socket.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         0006-Limit-number-of-connected-sockets-from-unpaired-devi.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0007-Do-not-remember-more-than-a-few-identity-packets-at-.patch
+# PATCH-FIX-UPSTREAM
+Patch8:         0008-Limit-the-ports-we-try-to-connect-to-to-the-port-ran.patch
+# PATCH-FIX-UPSTREAM
+Patch9:         0009-Do-not-replace-connections-for-a-given-deviceId-if-t.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -91,7 +109,7 @@ ZSH command line completion support for %{name}.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
