@@ -37,6 +37,7 @@ Patch101:       openjfx-icedtea8.patch
 Patch102:       openjfx-nowerror.patch
 Patch103:       openjfx-pango.patch
 Patch104:       openjfx-architectures.patch
+Patch105:       openjfx8-sysctl.patch
 BuildRequires:  bison
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
@@ -120,6 +121,7 @@ This package contains javadoc for %{name}.
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
+%patch105 -p1
 
 cp %{SOURCE1} .
 
