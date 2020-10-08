@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-rpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           systemd-rpm-macros
-Version:        4
+Version:        4.1
 Release:        0
 Summary:        RPM macros for systemd
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
-Url:            http://en.opensuse.org/openSUSE:Systemd_packaging_guidelines
+URL:            http://en.opensuse.org/openSUSE:Systemd_packaging_guidelines
 Source0:        macros.systemd
 Requires:       coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
