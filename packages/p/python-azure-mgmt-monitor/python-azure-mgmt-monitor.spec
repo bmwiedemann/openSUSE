@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-mgmt-monitor
-Version:        0.11.0
+Version:        1.0.1
 Release:        0
 Summary:        Microsoft Azure Monitor Client Library
 License:        MIT
@@ -34,11 +34,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
+Requires:       python-azure-mgmt-core < 2.0.0
+Requires:       python-azure-mgmt-core >= 1.2.0
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.5.0
-Requires:       python-msrestazure < 2.0.0
-Requires:       python-msrestazure >= 0.4.32
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
