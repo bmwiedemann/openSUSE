@@ -180,4 +180,24 @@
   + python-azure-mgmt-sql &amp;gt;= 0.21.0 (forwarded request 836300 from glaubitz)</comment>
     <requestid>836335</requestid>
   </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>a5012ea25ad80091ef6ff2113fb28eee</srcmd5>
+    <version>4.0.0</version>
+    <time>1602155591</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version numbers for component packages in Requires
+  + python-azure-mgmt-appconfiguration &gt;= 1.0.1
+  + python-azure-mgmt-compute &gt;= 17.0.0
+  + python-azure-mgmt-hybridcompute &gt;= 2.0.0
+  + python-azure-mgmt-loganalytics &gt;= 1.0.0
+  + python-azure-mgmt-monitor &gt;= 1.0.1
+  + python-azure-mgmt-netapp &gt;= 0.13.0
+  + python-azure-mgmt-resource &gt;= 15.0.0
+  + python-azure-mgmt-search &gt;= 3.0.0
+  + python-azure-mgmt-servicebus &gt;= 1.0.0
+  + python-azure-mgmt-storage &gt;= 16.0.0
+  + python-azure-mgmt-synapse &gt;= 0.4.0
+  + python-azure-mgmt-web &gt;= 0.48.0</comment>
+    <requestid>840042</requestid>
+  </revision>
 </revisionlist>

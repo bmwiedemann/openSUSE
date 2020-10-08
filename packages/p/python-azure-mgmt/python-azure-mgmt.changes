@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  6 12:07:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update version numbers for component packages in Requires
+  + python-azure-mgmt-appconfiguration >= 1.0.1
+  + python-azure-mgmt-compute >= 17.0.0
+  + python-azure-mgmt-hybridcompute >= 2.0.0
+  + python-azure-mgmt-loganalytics >= 1.0.0
+  + python-azure-mgmt-monitor >= 1.0.1
+  + python-azure-mgmt-netapp >= 0.13.0
+  + python-azure-mgmt-resource >= 15.0.0
+  + python-azure-mgmt-search >= 3.0.0
+  + python-azure-mgmt-servicebus >= 1.0.0
+  + python-azure-mgmt-storage >= 16.0.0
+  + python-azure-mgmt-synapse >= 0.4.0
+  + python-azure-mgmt-web >= 0.48.0
+
+-------------------------------------------------------------------
 Wed Sep 23 11:02:54 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires
