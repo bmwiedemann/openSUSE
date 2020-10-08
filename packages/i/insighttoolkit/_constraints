@@ -5,10 +5,17 @@
       <size unit="G">24</size>
     </disk>
     <physicalmemory>
-      <size unit="G">2</size>
+      <size unit="G">4</size>
     </physicalmemory>
-    <memoryperjob>
-      <size unit="M">2000</size>
-    </memoryperjob>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memoryperjob>
+        <size unit="M">2000</size>
+      </memoryperjob>
+    </hardware>
+  </overwrite>
 </constraints>

@@ -63,8 +63,6 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
-# Builds currently fail on aarch64 due to known eigen+CastXML issues: https://gitlab.com/libeigen/eigen/-/issues/1979
-ExcludeArch:    aarch64
 
 %description
 The Insight Toolkit (ITK) is a toolkit for N-dimensional scientific
