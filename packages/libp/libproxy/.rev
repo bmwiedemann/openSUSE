@@ -643,4 +643,15 @@
   SLE-15-SP2 (jsc#SLE-12256). (forwarded request 834172 from yfjiang)</comment>
     <requestid>836032</requestid>
   </revision>
+  <revision rev="78" vrev="9">
+    <srcmd5>66afa2d34fcb7d7304fb07ac51db7e29</srcmd5>
+    <version>0.4.15</version>
+    <time>1602155435</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libproxy-CVE-2020-25219.patch: Rewrite url::recvline to be
+  nonrecursive (boo#1176410 CVE-2020-25219).
+- Add libproxy-fix-pac-buffer-overflow.patch: fix buffer overflow
+  when PAC is enabled (boo#1177143 CVE-2020-26154). (forwarded request 838838 from mgorse)</comment>
+    <requestid>839601</requestid>
+  </revision>
 </revisionlist>

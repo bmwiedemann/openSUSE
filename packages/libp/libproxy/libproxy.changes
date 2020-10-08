@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 30 18:50:44 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add libproxy-CVE-2020-25219.patch: Rewrite url::recvline to be
+  nonrecursive (boo#1176410 CVE-2020-25219).
+- Add libproxy-fix-pac-buffer-overflow.patch: fix buffer overflow
+  when PAC is enabled (boo#1177143 CVE-2020-26154).
+
+-------------------------------------------------------------------
 Fri Sep 14 02:58:52 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Build with KDE on Tumbleweed, Leap and SLE releases greater than

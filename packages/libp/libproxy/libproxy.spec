@@ -51,6 +51,10 @@ Source99:       baselibs.conf
 Patch0:         libproxy-python3.7.patch
 # PATCH-FIX-UPSTREAM libproxy-pxgsettings.patch dimstar@opensuse.org -- pxgsettings: use the correct syntax to connect to the changed signal
 Patch1:         libproxy-pxgsettings.patch
+# PATCH-FIX-UPSTREAM libproxy-CVE-2020-25219.patch boo#1176410 mgorse@suse.com -- Rewrite url::recvline to be nonrecursive.
+Patch2:         libproxy-CVE-2020-25219.patch
+# PATCH-FIX-UPSTREAM libproxy-fix-pac-buffer-overflow.patch boo#1177143 mgorse@suse.com -- fix buffer overflow when PAC is enabled.
+Patch3:         libproxy-fix-pac-buffer-overflow.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libmodman-devel
@@ -276,6 +280,8 @@ This package contains the Mono/.NET for libproxy.
 %setup -q -n %{_sourcename}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 mkdir build
 
 %build
