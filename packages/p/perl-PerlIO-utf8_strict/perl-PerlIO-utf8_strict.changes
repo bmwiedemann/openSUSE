@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 19 03:10:56 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.008
+   see /usr/share/doc/packages/perl-PerlIO-utf8_strict/Changes
+
+  0.008     2020-09-19 00:11:59+02:00 Europe/Amsterdam
+            - Make unread by :crlf on top of :utf8_strict reliable
+
+-------------------------------------------------------------------
 Fri Apr  7 06:34:23 UTC 2017 - coolo@suse.com
 
 - updated to 0.007
