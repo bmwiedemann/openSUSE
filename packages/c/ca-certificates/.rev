@@ -386,4 +386,13 @@
     <comment></comment>
     <requestid>796051</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>9071ec38de1f762d803c852b60f81fbf</srcmd5>
+    <version>2+git20201002.34daf7f</version>
+    <time>1602155253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20201002.34daf7f:
+  * Use relative symlink for /etc/ssl/certs (boo#1175340)</comment>
+    <requestid>839158</requestid>
+  </revision>
 </revisionlist>

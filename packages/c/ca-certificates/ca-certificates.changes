@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 02 12:53:48 UTC 2020 - lnussel@suse.de
+
+- Update to version 2+git20201002.34daf7f:
+  * Use relative symlink for /etc/ssl/certs (boo#1175340)
+
+-------------------------------------------------------------------
 Wed Apr 15 09:35:06 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove old migration code, we don't support migration from such

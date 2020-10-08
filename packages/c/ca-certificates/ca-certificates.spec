@@ -28,7 +28,7 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20200129.d1a437d
+Version:        2+git20201002.34daf7f
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
@@ -75,7 +75,7 @@ install -d -m 755 %{buildroot}%{_prefix}/lib/ca-certificates/update.d
 install -d -m 555 %{buildroot}/var/lib/ca-certificates/pem
 install -d -m 555 %{buildroot}/var/lib/ca-certificates/openssl
 install -d -m 755 %{buildroot}/%{_prefix}/lib/systemd/system
-ln -s /var/lib/ca-certificates/pem %{buildroot}%{sslcerts}
+ln -s ../../var/lib/ca-certificates/pem %{buildroot}%{sslcerts}
 %if %{with cabundle}
 install -D -m 644 /dev/null %{buildroot}/%{cabundle}
 ln -s %{cabundle} %{buildroot}%{ssletcdir}/ca-bundle.pem
