@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        3.36.0
+Version:        3.36.1
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
