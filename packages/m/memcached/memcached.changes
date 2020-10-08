@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 28 20:29:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.6.7:
+  * Dockerfile - allow override of config opts
+  * Improve page balancing when writes are bursty
+  * main: split binary protocol into proto_bin.c
+  * main: split text protocol into proto_text.c
+  * add openssl errors to SSL certificate loading error messages
+  * skip setting the resource limits in debug builds
+  * Use signal function instead of sigignore
+  * fixing the basic tls test so it exits correctly when fails
+  * net: remove most response obj cache related code
+  * net: carve response buffers from read buffers
+  * Do not join lru and slab maintainer threads if they do not exist
+  * Restore SAN entries in testing TLS certificates
+  * Changed code using strtol to use safe_strtol wrapper
+  * Fix TCP failure under OS X. 
+- drop use-signal-function-instead-of-sigignore.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Sep  1 19:24:14 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add use-signal-function-instead-of-sigignore.patch: sigignore
