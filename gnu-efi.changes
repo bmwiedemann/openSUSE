@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:52:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.12:
+  * Add SMBIOS 3.0 table support
+  * Fix ARCH on ARMv6. 
+
+-------------------------------------------------------------------
 Wed Dec 11 03:23:55 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to gnu-efi 3.0.11
