@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 29 03:11:28 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20201001
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2020 10 01
+      - Robustness of perltidy has been significantly improved.  Updating is recommended. Continual
+        automated testing runs began about 1 Sep 2020 and numerous issues have been found and fixed.
+        Many involve references to uninitialized variables when perltidy is fed random text and random
+        control parameters. A complete list is given in the file
+             https://github.com/perltidy/perltidy/blob/master/local-docs/BugLog.pod
+      - Added the token '->' to the list of alignment tokens, as suggested in git
+        #39, so that it can be vertically aligned if a space is placed before them with -wls='->'.
+      - Added parameters -bbhb=n (--break-before-hash-brace=n), -bbsb=n (--break-before-square-bracket=n),
+        and -bbp=n (--break-before-paren=n) suggested in git #38.  These provide control over the
+        opening container token of a multiple-line list.  Related new parameters -bbhbi=n, -bbsbi=n, -bbpi=n
+        control indentation of these tokens.
+      - Added keyword 'isa'.
+
+-------------------------------------------------------------------
 Mon Sep  7 03:17:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20200907
