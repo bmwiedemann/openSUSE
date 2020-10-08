@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:07:33 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+  6.11      2020-10-06 03:00:45 -0600
+    - Remove accidental recursive req on LWP::Simple
+
+-------------------------------------------------------------------
+Tue Oct  6 03:11:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.10
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+  6.10      2020-10-05 15:18:30 -0600
+    - Production version identical to 6.09_01
+
+  6.09_01   2020-10-05 08:17:32 -0600
+    - Remove TABs from source files and tests (gh#17)
+    - Restores (theoretical, untested) support for 5.6, which was removed when
+      the tests added modern file tests (gh#17)
+    - Fixes or silences several minor nits reported by PerlCritic (gh#17)
+
+  6.08_01 2020-10-01 17:28:35 -0600
+    - We now only call Time::Local::timelocal with four digit years (gh#5, gh#14)
+
+-------------------------------------------------------------------
+Sun Oct  4 03:10:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.07
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+-------------------------------------------------------------------
 Thu Feb 16 08:16:03 UTC 2012 - coolo@suse.com
 
 - updated to 6.04
