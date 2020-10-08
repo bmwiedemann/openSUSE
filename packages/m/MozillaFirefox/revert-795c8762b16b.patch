@@ -1,0 +1,25 @@
+diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
+--- a/build/moz.configure/lto-pgo.configure
++++ b/build/moz.configure/lto-pgo.configure
+@@ -224,17 +224,20 @@ def lto(value, c_compiler, ld64_known_go
+             #
+             # https://github.com/llvm/llvm-project/blob/e7694f34ab6a12b8bb480cbfcb396d0a64fe965f/llvm/lib/Target/X86/X86.td#L1165-L1187
+             if target.cpu == 'x86_64':
+                 ldflags.append('-mllvm:-mcpu=x86-64')
+             # We do not need special flags for arm64.  Hooray for fixed-length
+             # instruction sets.
+         else:
+             num_cores = multiprocessing.cpu_count()
+-            cflags.append("-flto")
++            if len(value) and value[0].lower() == 'full':
++                cflags.append("-flto")
++            else:
++                cflags.append("-flto=thin")
+             cflags.append("-flifetime-dse=1")
+ 
+             ldflags.append("-flto=%s" % num_cores)
+             ldflags.append("-flifetime-dse=1")
+ 
+         # Tell LTO not to inline functions above a certain size, to mitigate
+         # binary size growth while still getting good performance.
+         # (For hot functions, PGO will put a multiplier on this limit.)

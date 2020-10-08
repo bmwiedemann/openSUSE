@@ -2,7 +2,7 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">25</size>
+      <size unit="G">36</size>
     </disk>
     <memory>
       <size unit="G">8</size>
@@ -17,12 +17,15 @@
       <arch>armv7l</arch>
     </conditions>
     <hardware>
+      <memoryperjob>
+        <size unit="M">1000</size>
+      </memoryperjob>
       <disk>
         <size unit="G">12</size>
       </disk>
-      <memory>
+      <physicalmemory>
         <size unit="G">5</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>
@@ -30,9 +33,13 @@
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <memory>
+      <processors>4</processors>
+      <memoryperjob>
+        <size unit="M">1000</size>
+      </memoryperjob>
+      <physicalmemory>
         <size unit="G">12</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>

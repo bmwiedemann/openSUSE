@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Oct  1 20:00:27 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 81.0.1
+  * https://www.mozilla.org/en-US/firefox/81.0.1/releasenotes/
+- remove obsolete python2 build requires
+
+-------------------------------------------------------------------
+Wed Sep 30 18:49:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase disk requirements in _constraints to match current needs
+
+-------------------------------------------------------------------
+Fri Sep 18 06:22:40 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 81.0
+  * https://www.mozilla.org/en-US/firefox/81.0/releasenotes
+  MFSA 2020-42 (bsc#1176756)
+  * CVE-2020-15675 (bmo#1654211)
+    Use-After-Free in WebGL
+  * CVE-2020-15677 (bmo#1641487)
+    Download origin spoofing via redirect
+  * CVE-2020-15676 (bmo#1646140)
+    XSS when pasting attacker-controlled data into a
+    contenteditable element
+  * CVE-2020-15678 (bmo#1660211)
+    When recursing through layers while scrolling, an iterator
+    may have become invalid, resulting in a potential use-after-
+    free scenario
+  * CVE-2020-15673 (bmo#1648493, bmo#1660800)
+    Memory safety bugs fixed in Firefox 81 and Firefox ESR 78.3
+  * CVE-2020-15674 (bmo#1656063, bmo#1656064, bmo#1656067, bmo#1660293)
+    Memory safety bugs fixed in Firefox 81
+- requires
+  NSPR 4.28
+  NSS 3.56
+- removed obsolete patches
+  * mozilla-system-nspr.patch
+  * mozilla-bmo1661715.patch
+  * mozilla-silence-no-return-type.patch
+- skip post-build-checks for 15.0 and 15.1
+- add revert-795c8762b16b.patch to fix LTO builds with gcc
+  (related to bmo#1644409)
+- require python3-curses as workaround to fix i586 build
+
+-------------------------------------------------------------------
+Thu Sep 17 11:45:31 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use %limit_build macro again for aarch64 and armv7, instead of
+  the new memoryperjob _constraints to use more workers
+
+-------------------------------------------------------------------
+Sat Sep  5 17:43:26 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- add mozilla-bmo1661715.patch to fix Flash plugin
+
+-------------------------------------------------------------------
+Wed Sep  2 17:11:19 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Mozilla Firefox 80.0.1: Bug fixes:
+  * Fixed a performance regression when encountering new intermediate
+    CA certificates (bmo#1661543)
+  * Fixed crashes possibly related to GPU resets (bmo#1627616)
+  * Fixed rendering on some sites using WebGL (bmo#1659225)
+  * Fixed the zoom-in keyboard shortcut on Japanese language builds
+    (bmo#1661895)
+  * Fixed download issues related to extensions and cookies
+    (bmo#1655190)
+- added mozilla-silence-no-return-type.patch
+
+-------------------------------------------------------------------
+Tue Aug 25 19:30:15 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- more whitelisting (/dev/random) for sandbox in relation to FIPS
+  (bsc#1174284)
+- improve langpack builds to use dedicated objdirs and make it
+  parallel again
+
+-------------------------------------------------------------------
 Sat Aug 22 06:52:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 80.0

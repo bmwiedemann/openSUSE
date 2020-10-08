@@ -4595,4 +4595,41 @@
   * NSPR 4.27</comment>
     <requestid>829621</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>d6073d840d211e44cd4800793c36c393</srcmd5>
+    <version>81.0.1</version>
+    <time>1602155215</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 81.0.1
+  * https://www.mozilla.org/en-US/firefox/81.0.1/releasenotes/
+- remove obsolete python2 build requires
+
+- Increase disk requirements in _constraints to match current needs
+
+- Mozilla Firefox 81.0
+  * https://www.mozilla.org/en-US/firefox/81.0/releasenotes
+  MFSA 2020-42 (bsc#1176756)
+  * CVE-2020-15675 (bmo#1654211)
+    Use-After-Free in WebGL
+  * CVE-2020-15677 (bmo#1641487)
+    Download origin spoofing via redirect
+  * CVE-2020-15676 (bmo#1646140)
+    XSS when pasting attacker-controlled data into a
+    contenteditable element
+  * CVE-2020-15678 (bmo#1660211)
+    When recursing through layers while scrolling, an iterator
+    may have become invalid, resulting in a potential use-after-
+    free scenario
+  * CVE-2020-15673 (bmo#1648493, bmo#1660800)
+    Memory safety bugs fixed in Firefox 81 and Firefox ESR 78.3
+  * CVE-2020-15674 (bmo#1656063, bmo#1656064, bmo#1656067, bmo#1660293)
+    Memory safety bugs fixed in Firefox 81
+- requires
+  NSPR 4.28
+  NSS 3.56
+- removed obsolete patches
+  * mozilla-system-nspr.patch
+  * mozilla-bmo1661715.patch</comment>
+    <requestid>839098</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  f530b1587cd1c0a79c34f91a9690c4cc4c33ac31
+# Parent  5bd7b491505076dc38ba1efc7c406b9c53ba8389
 
 diff --git a/config/system-headers.mozbuild b/config/system-headers.mozbuild
 --- a/config/system-headers.mozbuild
@@ -65,13 +65,13 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/BUILD.gn b/media/
 diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 --- a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
 +++ b/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_generic_gn/moz.build
-@@ -289,16 +289,40 @@ if CONFIG["OS_TARGET"] == "WINNT":
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/win/screen_capturer_win_directx.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/win/screen_capturer_win_magnifier.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/win/win_shared.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/win/window_capture_utils.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_win.cc",
-         "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_finder_win.cc"
+@@ -112,16 +112,39 @@ if CONFIG["OS_TARGET"] == "DragonFly":
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_atom_cache.cc",
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_error_trap.cc",
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/x_server_pixel_buffer.cc",
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/mouse_cursor_monitor_linux.cc",
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/screen_capturer_linux.cc",
+         "/media/webrtc/trunk/webrtc/modules/desktop_capture/window_capturer_linux.cc"
      ]
  
 +# PipeWire specific files
@@ -97,8 +97,7 @@ diff --git a/media/webrtc/trunk/webrtc/modules/desktop_capture/desktop_capture_g
 +        "/media/webrtc/trunk/webrtc/modules/desktop_capture/linux/window_capturer_pipewire.cc"
 +    ]
 +
-+
- if CONFIG["OS_TARGET"] == "NetBSD":
+ if CONFIG["OS_TARGET"] == "FreeBSD":
  
      DEFINES["USE_X11"] = "1"
      DEFINES["WEBRTC_BSD"] = True
