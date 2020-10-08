@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  5 13:19:09 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- avoid bareword to fix build failure
+
+-------------------------------------------------------------------
 Wed Apr 15 07:01:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.23.20:

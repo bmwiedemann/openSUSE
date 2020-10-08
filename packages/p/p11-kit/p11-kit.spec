@@ -74,7 +74,7 @@ Summary:        Adaptor to make NSS read the p11-kit trust store
 Group:          Productivity/Networking/Security
 Requires:       p11-kit = %{version}
 Conflicts:      mozilla-nss-certs
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
 Provides:       libnssckbi.so()(64bit)
 %else
 Provides:       libnssckbi.so

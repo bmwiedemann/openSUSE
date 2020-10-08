@@ -342,4 +342,12 @@
     <comment></comment>
     <requestid>794045</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>eab8f882f285dec5772ff92b45459bf9</srcmd5>
+    <version>0.23.20</version>
+    <time>1602155430</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid bareword to fix build failure</comment>
+    <requestid>839597</requestid>
+  </revision>
 </revisionlist>
