@@ -248,4 +248,16 @@
     <comment>update to new version: 3.5</comment>
     <requestid>827946</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>adb9afbf8259f51bfa6873bc6a448a5c</srcmd5>
+    <version>3.5.1</version>
+    <time>1602155653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.1:
+  * Bugfix release
+    For details see
+    https://github.com/musescore/MuseScore/releases/tag/v3.5.1
+- Update use-qtmake-qt5.patch</comment>
+    <requestid>840146</requestid>
+  </revision>
 </revisionlist>
