@@ -1764,4 +1764,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment>New stable rel, never forwarded :-( (forwarded request 833853 from iznogood)</comment>
     <requestid>834307</requestid>
   </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>330fb15f09a49c2d8ab869dec83253e9</srcmd5>
+    <version>2.64.6</version>
+    <time>1602155441</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 839401 from iznogood)</comment>
+    <requestid>839604</requestid>
+  </revision>
 </revisionlist>

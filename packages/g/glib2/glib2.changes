@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  4 11:01:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.64.6:
+  + Bugs fixed: glgo#GNOME/GLib#2194, glgo#GNOME/GLib#2209,
+    glgo#GNOME/GLib!1633, glgo#GNOME/GLib!1634,
+    glgo#GNOME/GLib!1656, glgo#GNOME/GLib!1659,
+    glgo#GNOME/GLib!1666, glgo#GNOME/GLib!1672.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Aug 18 17:20:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.64.5:

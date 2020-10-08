@@ -18,7 +18,7 @@
 
 %bcond_without     systemtap
 Name:           glib2
-Version:        2.64.5
+Version:        2.64.6
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
