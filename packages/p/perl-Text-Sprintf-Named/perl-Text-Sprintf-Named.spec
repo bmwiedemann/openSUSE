@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Sprintf-Named
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Text-Sprintf-Named
-Version:        0.0403
+Version:        0.0404
 Release:        0
 %define cpan_name Text-Sprintf-Named
-Summary:        Sprintf-Like Function with Named Conversions
+Summary:        Sprintf-like function with named conversions
 License:        MIT
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Text-Sprintf-Named/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -49,7 +49,7 @@ with a width of 4.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
