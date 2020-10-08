@@ -39,7 +39,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
-%systemd_requires
+%{?systemd_ordering}
 
 %{go_nostrip}
 %{go_provides}

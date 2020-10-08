@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:33:57 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace %{?systemd_requires} with %{?systemd_ordering}
+
+-------------------------------------------------------------------
 Tue Sep 15 15:22:43 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Pin Golang version to 1.14
