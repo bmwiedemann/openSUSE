@@ -15,14 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?suse_version} > 1510
 %bcond_without meson
 %else
 %bcond_with meson
 %endif
 Name:           libwacom
-Version:        1.3
+Version:        1.5
 Release:        0
 Summary:        Library to identify wacom tablets
 License:        MIT
@@ -107,6 +106,11 @@ make %{?_smp_mflags}
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%if %{with meson}
+%check
+%meson_test
+%endif
+
 %post -n libwacom2 -p /sbin/ldconfig
 %postun -n libwacom2 -p /sbin/ldconfig
 
@@ -122,6 +126,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/libwacom/layouts/
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/65-libwacom.rules
+%dir %{_udevhwdbdir}
+%{_udevhwdbdir}/65-libwacom.hwdb
 
 %files tools
 %{_bindir}/libwacom-list-local-devices
