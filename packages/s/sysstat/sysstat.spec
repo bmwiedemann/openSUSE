@@ -46,7 +46,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(systemd)
 Requires:       procmail
 Requires:       xz
-%{?systemd_requires}
+%{?systemd_ordering}
 %ifnarch s390 s390x
 BuildRequires:  libsensors4-devel
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  3 07:38:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't hard require systemd, it works without,too.
+
+-------------------------------------------------------------------
 Fri Sep 18 14:47:02 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix average iowait output of sar [bsc#1174227]
