@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Oct  5 03:08:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.48
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.48    Sun  4 Oct 11:39:22 BST 2020
+      No changes since v7.47_12
+  7.47_12 Wed 30 Sep 16:19:25 BST 2020
+      Bug fixes:
+      - Make Mkbootstrap.pm strict
+      Test fixes:
+      - Skip the failing dynamic vs static tests on Win32
+  7.47_11 Sun 20 Sep 10:02:15 BST 2020
+      Enhancements:
+      - Hint file loading returned to using eval() as documented
+  7.47_10 Tue 15 Sep 19:30:32 BST 2020
+      Test fixes:
+      - BareV2String should also be skipped on v5.8.0
+  7.47_09 Mon 14 Sep 14:33:52 BST 2020
+      Bug fixes:
+      - Removed duplicated NOOP on pure_all
+      Test fixes:
+      - Remove tests for invalid version declarations
+      - Make windows specific code for NoXS compile under strict
+  7.47_08 Mon 31 Aug 09:43:01 BST 2020
+      Test fixes:
+      - Resolved race conditions so the whole testsuite
+        can be run in parallel safely again
+      QA Fixes:
+      - Added github action for Strawberry Perl
+      - Added github action for Ubuntu/Linux
+  7.47_07 Mon  3 Aug 22:34:08 BST 2020
+      Bug fixes:
+      - Ensure all modules have 'use warnings'
+      - Resolve revealed problems with warnings
+      Test fixes:
+      - Ensure all tests have strict and warnings
+      - Resolve revealed problems with strict and warnings
+  7.47_06 Sat  1 Aug 14:36:00 BST 2020
+      Bug fixes:
+      - Refine archname to use abi_version and abi_revision
+  7.47_05 Fri 31 Jul 10:35:54 BST 2020
+      Bug fixes:
+      - use $^V instead of PERL_VERSION after Perl 5.10
+  7.47_04 Tue 28 Jul 19:34:00 BST 2020
+      Test fixes:
+      - Skip static tests on AIX and z/OS when in
+        core
+      QA fixes:
+      - Added v5.30 and v5.32 to travis build
+  7.47_03 Wed  8 Jul 21:58:29 BST 2020
+      Test fixes:
+      - Correct skip count in MM_Cygwin.t
+  7.47_02 Tue  7 Jul 01:40:13 BST 2020
+      OS390 Enhancements:
+      - Added MM subclass for OS390
+      - Override xs_make_dynamic_lib() for os390
+  7.47_01 Fri 26 Jun 10:55:42 BST 2020
+      Bug fixes:
+      - Sanitise provided VERSION and VERSION_FROM
+        ( RT#132875 )
+
+-------------------------------------------------------------------
 Wed Jun 24 03:08:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.46
