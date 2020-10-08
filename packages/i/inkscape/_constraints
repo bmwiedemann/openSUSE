@@ -3,16 +3,12 @@
     <disk>
       <size unit="G">5</size>
     </disk>
+    <memory>
+      <size unit="M">4000</size>
+    </memory>
+    <memoryperjob>
+      <size unit="M">800</size>
+    </memoryperjob>
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>ppc64le</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="M">4800</size>
-      </physicalmemory>
-    </hardware>
-  </overwrite>
 </constraints>
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  2 23:17:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Clean up constraints:
+  * Remove ppc64le specific memory bound, use global 4GB limit.
+  * Add memoryperjob constraint, some ppc64{,le} workers have
+    a high core-to-memory ratio.
+
+-------------------------------------------------------------------
 Tue Sep  8 11:58:49 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.0.1:
