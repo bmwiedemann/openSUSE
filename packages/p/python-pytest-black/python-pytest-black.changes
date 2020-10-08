@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:57:46 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.3.12
+  * Handle verbose include/exclude patterns in pyproject.toml.
+  * Add support for Python 3.8
+
+-------------------------------------------------------------------
 Tue Jul  7 10:14:36 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.3.10
