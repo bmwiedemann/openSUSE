@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 04:59:22 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- Handle the yast pattern split into basis, desktop and server (boo#1159875)
+
+-------------------------------------------------------------------
 Mon Aug  3 09:54:36 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Don't recommend lightdm directly, also allow other DMs

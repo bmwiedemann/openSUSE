@@ -223,7 +223,6 @@ Provides:       pattern-order() = 1120
 Provides:       pattern-visible()
 %obsolete_legacy_pattern console
 Requires:       pattern() = enhanced_base
-Recommends:     pattern() = yast2_basis
 
 Recommends:     at
 Recommends:     bc
@@ -766,6 +765,7 @@ Provides:       pattern-order() = 1801
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
 Requires:       pattern() = x11
+Recommends:     pattern() = yast2_desktop
 Recommends:     pattern() = x11_yast
 
 # 1057377
@@ -794,7 +794,9 @@ Recommends:     xkeyboard-config
 Recommends:     xorg-x11-fonts
 Recommends:     xorg-x11-fonts-core
 Recommends:     yast2-control-center-gnome
-Recommends:     yast2-scanner
+# Recommend yast2-network until the Generic Desktop Role defaults to NetworkManager
+# At worst people need a way to switch from Wicked to NetworkManager.
+Recommends:     yast2-network
 # This will install Firefox if no other browser is selected
 Suggests:       MozillaFirefox
 Suggests:       MozillaFirefox-translations
