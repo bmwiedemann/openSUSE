@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.22
+Version:        6.1.26
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -29,9 +29,10 @@ Source3:        %{name}.changes
 Patch1:         praat-use_system_libs.patch
 # PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- address rpmlint complaint
 Patch2:         praat-no-return-in-nonvoid.patch
-BuildRequires:  ImageMagick
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  icns-utils
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gsl)
@@ -64,8 +65,13 @@ mkdir -p %{buildroot}/%{_bindir} \
          %{buildroot}/%{_datadir}/pixmaps \
          %{buildroot}/%{_datadir}/applications
 install -m 0755 %{name} %{buildroot}/%{_bindir}
-convert -strip -resize 128x128 main/praat_win.ico %{name}.png
-install -m 0644 %{name}.png %{buildroot}/%{_datadir}/pixmaps
+
+icns2png -x -d32 main/Praat.icns
+for s in 16 32 48 128; do
+  mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
+  install -m 0644 Praat_${s}x${s}x32.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
+done
+
 # create .desktop file
 tee %{buildroot}/%{_datadir}/applications/%{name}.desktop << "EOF"
 [Desktop Entry]
@@ -87,7 +93,7 @@ EOF
 %license main/GNU_General_Public_License.txt
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
