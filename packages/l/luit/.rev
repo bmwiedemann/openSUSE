@@ -112,4 +112,16 @@
   downstream, i.e. me, doesn't know how to reproduce it either ...</comment>
     <requestid>397451</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a7dbb94c4619aa77be0201abf256c59a</srcmd5>
+    <version>20201003</version>
+    <time>1602155501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201003 
+  * updated configure macros:
+    + compiler-warning fixes
+    + build-fixes for OpenBSD and macOS
+  * update config.guess, config.sub</comment>
+    <requestid>839817</requestid>
+  </revision>
 </revisionlist>

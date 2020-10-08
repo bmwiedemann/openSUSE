@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 10:45:50 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 20201003 
+  * updated configure macros:
+    + compiler-warning fixes
+    + build-fixes for OpenBSD and macOS
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon May 23 12:01:58 UTC 2016 - sndirsch@suse.com
 
 - removed u_luit-Set-up-terminal-before-fork.diff; upstream author
