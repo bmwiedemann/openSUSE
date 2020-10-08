@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-click
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pytest-click
-Version:        0.3
+Version:        1.0.2
 Release:        0
 Summary:        Pytest plugin for Click
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Stranger6667/pytest-click
-Source:         pytest-click-%{version}.tar.gz
+Source:         https://github.com/Stranger6667/pytest-click/archive/v%{version}.tar.gz#/pytest-click-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -34,7 +35,7 @@ Requires:       python-pytest >= 3.6.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 6.0}
-BuildRequires:  %{python_module pytest >= 3.6.0}
+BuildRequires:  %{python_module pytest >= 5.0}
 # /SECTION
 %python_subpackages
 
@@ -54,7 +55,7 @@ sed -i "s/'pytest-cov>=[0-9.]*'//;s/==/>=/g" setup.py
 
 %check
 export LANG=C.UTF-8
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.rst

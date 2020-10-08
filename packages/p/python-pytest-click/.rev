@@ -16,4 +16,12 @@
     <comment>- Fix build on Leap</comment>
     <requestid>706619</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f9aeb2efcb849e457a805650e219d14d</srcmd5>
+    <version>1.0.2</version>
+    <time>1602155652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840183</requestid>
+  </revision>
 </revisionlist>
