@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  5 13:16:22 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.9.0:
+  * trace: Refine the va_TraceVAPictureParameterBufferAV1.
+  * doc: Add comments for backward/forward reference to avoid confusion
+  * doc: Modify comments in av1 decoder interfaces
+  * doc: Update mailing list
+  * Add SCC fields trace for HEVC SCC encoding.
+  * Add FOURCC code for Y212 and Y412 format.
+  * Add interpolation method for scaling.
+  * add attributes for context priority setting
+  * Add vaSyncBuffer for output buffers synchronization
+  * Add vaSyncSurface2 with timeout
+
+-------------------------------------------------------------------
 Mon Aug 31 17:11:17 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - version 2.8.0 needed for jira#SLE/SLE-12712 
