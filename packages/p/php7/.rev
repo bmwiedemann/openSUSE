@@ -943,4 +943,13 @@
     <comment>- do not rely on apr-devel to pull db-devel</comment>
     <requestid>832712</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>0dca04a3d9f2a40e3959c5afdd6ee56b</srcmd5>
+    <version>7.4.11</version>
+    <time>1602155208</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.11: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.11 (forwarded request 839027 from adkorte)</comment>
+    <requestid>839058</requestid>
+  </revision>
 </revisionlist>

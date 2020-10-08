@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:43:38 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.11: This is a security release which also contains
+  several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.11
+
+-------------------------------------------------------------------
 Mon Sep  7 09:28:53 UTC 2020 - pgajdos@suse.com
 
 - do not rely on apr-devel to pull db-devel
