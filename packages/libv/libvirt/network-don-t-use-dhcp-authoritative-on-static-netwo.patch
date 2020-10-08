@@ -17,11 +17,11 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  tests/networkxml2confdata/dhcp6host-routed-network.conf | 1 -
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-Index: libvirt-6.7.0/src/network/bridge_driver.c
+Index: libvirt-6.8.0/src/network/bridge_driver.c
 ===================================================================
---- libvirt-6.7.0.orig/src/network/bridge_driver.c
-+++ libvirt-6.7.0/src/network/bridge_driver.c
-@@ -1448,7 +1448,14 @@ networkDnsmasqConfContents(virNetworkObj
+--- libvirt-6.8.0.orig/src/network/bridge_driver.c
++++ libvirt-6.8.0/src/network/bridge_driver.c
+@@ -1445,7 +1445,14 @@ networkDnsmasqConfContents(virNetworkObj
          if (VIR_SOCKET_ADDR_IS_FAMILY(&ipdef->address, AF_INET)) {
              if (ipdef->nranges || ipdef->nhosts) {
                  virBufferAddLit(&configbuf, "dhcp-no-override\n");
@@ -37,10 +37,10 @@ Index: libvirt-6.7.0/src/network/bridge_driver.c
              }
  
              if (ipdef->tftproot) {
-Index: libvirt-6.7.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+Index: libvirt-6.8.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 ===================================================================
---- libvirt-6.7.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
-+++ libvirt-6.7.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
+--- libvirt-6.8.0.orig/tests/networkxml2confdata/dhcp6host-routed-network.conf
++++ libvirt-6.8.0/tests/networkxml2confdata/dhcp6host-routed-network.conf
 @@ -10,7 +10,6 @@ bind-dynamic
  interface=virbr1
  dhcp-range=192.168.122.1,static

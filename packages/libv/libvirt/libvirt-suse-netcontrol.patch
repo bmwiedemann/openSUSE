@@ -1,8 +1,8 @@
-Index: libvirt-6.7.0/tools/virsh.c
+Index: libvirt-6.8.0/tools/virsh.c
 ===================================================================
---- libvirt-6.7.0.orig/tools/virsh.c
-+++ libvirt-6.7.0/tools/virsh.c
-@@ -547,6 +547,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
+--- libvirt-6.8.0.orig/tools/virsh.c
++++ libvirt-6.8.0/tools/virsh.c
+@@ -542,6 +542,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)
      vshPrint(ctl, " netcf");
@@ -11,10 +11,10 @@ Index: libvirt-6.7.0/tools/virsh.c
  # elif defined(WITH_UDEV)
      vshPrint(ctl, " udev");
  # endif
-Index: libvirt-6.7.0/src/interface/interface_backend_netcf.c
+Index: libvirt-6.8.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-6.7.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-6.7.0/src/interface/interface_backend_netcf.c
+--- libvirt-6.8.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-6.8.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -126,10 +126,10 @@ Index: libvirt-6.7.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-6.7.0/src/interface/interface_driver.c
+Index: libvirt-6.8.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-6.7.0.orig/src/interface/interface_driver.c
-+++ libvirt-6.7.0/src/interface/interface_driver.c
+--- libvirt-6.8.0.orig/src/interface/interface_driver.c
++++ libvirt-6.8.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -147,11 +147,11 @@ Index: libvirt-6.7.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-6.7.0/meson.build
+Index: libvirt-6.8.0/meson.build
 ===================================================================
---- libvirt-6.7.0.orig/meson.build
-+++ libvirt-6.7.0/meson.build
-@@ -1201,6 +1201,12 @@ if netcf_dep.found()
+--- libvirt-6.8.0.orig/meson.build
++++ libvirt-6.8.0/meson.build
+@@ -1184,6 +1184,12 @@ if netcf_dep.found()
    conf.set('WITH_NETCF', 1)
  endif
  
@@ -164,7 +164,7 @@ Index: libvirt-6.7.0/meson.build
  have_gnu_gettext_tools = false
  if not get_option('nls').disabled()
    have_gettext = cc.has_function('gettext')
-@@ -1632,10 +1638,10 @@ elif get_option('driver_hyperv').enabled
+@@ -1612,10 +1618,10 @@ elif get_option('driver_hyperv').enabled
    error('openwsman is required for the Hyper-V driver')
  endif
  
@@ -177,7 +177,7 @@ Index: libvirt-6.7.0/meson.build
  endif
  
  if not get_option('driver_libxl').disabled() and conf.has('WITH_LIBVIRTD')
-@@ -2442,6 +2448,7 @@ libs_summary = {
+@@ -2420,6 +2426,7 @@ libs_summary = {
    'libxml': libxml_dep.found(),
    'macvtap': conf.has('WITH_MACVTAP'),
    'netcf': netcf_dep.found(),
@@ -185,10 +185,10 @@ Index: libvirt-6.7.0/meson.build
    'NLS': have_gnu_gettext_tools,
    'nss': conf.has('WITH_NSS'),
    'numactl': numactl_dep.found(),
-Index: libvirt-6.7.0/src/interface/meson.build
+Index: libvirt-6.8.0/src/interface/meson.build
 ===================================================================
---- libvirt-6.7.0.orig/src/interface/meson.build
-+++ libvirt-6.7.0/src/interface/meson.build
+--- libvirt-6.8.0.orig/src/interface/meson.build
++++ libvirt-6.8.0/src/interface/meson.build
 @@ -2,7 +2,7 @@ interface_driver_sources = [
    'interface_driver.c',
  ]
@@ -206,11 +206,11 @@ Index: libvirt-6.7.0/src/interface/meson.build
        udev_dep,
      ],
      'link_args': [
-Index: libvirt-6.7.0/meson_options.txt
+Index: libvirt-6.8.0/meson_options.txt
 ===================================================================
---- libvirt-6.7.0.orig/meson_options.txt
-+++ libvirt-6.7.0/meson_options.txt
-@@ -30,6 +30,7 @@ option('libssh', type: 'feature', value:
+--- libvirt-6.8.0.orig/meson_options.txt
++++ libvirt-6.8.0/meson_options.txt
+@@ -28,6 +28,7 @@ option('libssh', type: 'feature', value:
  option('libssh2', type: 'feature', value: 'auto', description: 'libssh2 support')
  option('macvtap', type: 'feature', value: 'auto', description: 'enable macvtap device')
  option('netcf', type: 'feature', value: 'auto', description: 'netcf support')

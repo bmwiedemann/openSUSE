@@ -156,7 +156,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -242,8 +242,6 @@ BuildRequires:  ebtables
 BuildRequires:  iptables
 BuildRequires:  polkit >= 0.112
 BuildRequires:  radvd
-# Communication with the firewall and polkit daemons use DBus
-BuildRequires:  dbus-1-devel
 # For mount/umount in FS driver
 BuildRequires:  util-linux
 # For LVM drivers
@@ -309,9 +307,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         2ad009ea-qemu-check-modules-dir.patch
-Patch1:         8abd1ffe-qemu-tolerate-non-existent-files.patch
-Patch2:         4a72b76b-qemu-namespace-memleak-fix.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -760,7 +755,6 @@ capabilities of VirtualBox
 Summary:        Client side utilities of the libvirt library
 Group:          System/Management
 Requires:       %{name}-libs = %{version}-%{release}
-Requires:       readline
 # Needed by libvirt-guests init script.
 Requires:       gettext-runtime
 # Needed by virt-pki-validate script.
@@ -791,7 +785,6 @@ Shared libraries for accessing the libvirt daemon.
 Summary:        Set of tools to control libvirt daemon
 Group:          System/Management
 Requires:       %{name}-libs = %{version}-%{release}
-Requires:       readline
 %if %{with_bash_completion}
 Recommends:     %{name}-bash-completion = %{version}-%{release}
 %endif
@@ -848,9 +841,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %patch100 -p1
 %patch101 -p1
 %patch150 -p1
@@ -1042,7 +1032,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_selinux_mount} \
            %{?arg_apparmor} \
            %{?arg_apparmor_profiles} \
-	   -Dhal=disabled \
            -Dudev=enabled \
            -Dyajl=enabled \
            %{?arg_sanlock} \
@@ -1486,6 +1475,7 @@ fi
 %{_datadir}/polkit-1/actions/org.libvirt.unix.policy
 %{_datadir}/polkit-1/actions/org.libvirt.api.policy
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt_iohelper
+%attr(0755, root, root) %{_bindir}/virt-ssh-helper
 %doc %{_mandir}/man8/libvirtd.8*
 %doc %{_mandir}/man8/virtlogd.8*
 %doc %{_mandir}/man8/virtlockd.8*
@@ -1865,7 +1855,7 @@ fi
 %{_datadir}/%{name}/api/libvirt-lxc-api.xml
 
 %files doc
-%doc AUTHORS NEWS.rst README.rst
+%doc AUTHORS.rst NEWS.rst README.rst
 %license COPYING COPYING.LESSER
 %dir %{_datadir}/doc/%{name}
 %doc %{_datadir}/doc/%{name}/*

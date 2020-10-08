@@ -16,11 +16,11 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  tools/virsh.pod                  |    8 ++++++++
  6 files changed, 125 insertions(+), 6 deletions(-)
 
-Index: libvirt-6.7.0/include/libvirt/libvirt-domain.h
+Index: libvirt-6.8.0/include/libvirt/libvirt-domain.h
 ===================================================================
---- libvirt-6.7.0.orig/include/libvirt/libvirt-domain.h
-+++ libvirt-6.7.0/include/libvirt/libvirt-domain.h
-@@ -1065,6 +1065,31 @@ typedef enum {
+--- libvirt-6.8.0.orig/include/libvirt/libvirt-domain.h
++++ libvirt-6.8.0/include/libvirt/libvirt-domain.h
+@@ -1078,6 +1078,31 @@ typedef enum {
   */
  # define VIR_MIGRATE_PARAM_TLS_DESTINATION          "tls.destination"
  
@@ -52,11 +52,11 @@ Index: libvirt-6.7.0/include/libvirt/libvirt-domain.h
  /* Domain migration. */
  virDomainPtr virDomainMigrate (virDomainPtr domain, virConnectPtr dconn,
                                 unsigned long flags, const char *dname,
-Index: libvirt-6.7.0/src/libxl/libxl_driver.c
+Index: libvirt-6.8.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-6.7.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-6.7.0/src/libxl/libxl_driver.c
-@@ -6237,6 +6237,9 @@ libxlDomainMigratePerform3Params(virDoma
+--- libvirt-6.8.0.orig/src/libxl/libxl_driver.c
++++ libvirt-6.8.0/src/libxl/libxl_driver.c
+@@ -6243,6 +6243,9 @@ libxlDomainMigratePerform3Params(virDoma
      const char *dname = NULL;
      const char *uri = NULL;
      int ret = -1;
@@ -66,7 +66,7 @@ Index: libvirt-6.7.0/src/libxl/libxl_driver.c
  
  #ifdef LIBXL_HAVE_NO_SUSPEND_RESUME
      virReportUnsupportedError();
-@@ -6253,6 +6256,18 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6259,6 +6262,18 @@ libxlDomainMigratePerform3Params(virDoma
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_DEST_NAME,
                                  &dname) < 0 ||
@@ -85,7 +85,7 @@ Index: libvirt-6.7.0/src/libxl/libxl_driver.c
          virTypedParamsGetString(params, nparams,
                                  VIR_MIGRATE_PARAM_URI,
                                  &uri) < 0)
-@@ -6267,11 +6282,11 @@ libxlDomainMigratePerform3Params(virDoma
+@@ -6273,11 +6288,11 @@ libxlDomainMigratePerform3Params(virDoma
  
      if ((flags & (VIR_MIGRATE_TUNNELLED | VIR_MIGRATE_PEER2PEER))) {
          if (libxlDomainMigrationSrcPerformP2P(driver, vm, dom->conn, dom_xml,
@@ -99,10 +99,10 @@ Index: libvirt-6.7.0/src/libxl/libxl_driver.c
              goto cleanup;
      }
  
-Index: libvirt-6.7.0/src/libxl/libxl_migration.c
+Index: libvirt-6.8.0/src/libxl/libxl_migration.c
 ===================================================================
---- libvirt-6.7.0.orig/src/libxl/libxl_migration.c
-+++ libvirt-6.7.0/src/libxl/libxl_migration.c
+--- libvirt-6.8.0.orig/src/libxl/libxl_migration.c
++++ libvirt-6.8.0/src/libxl/libxl_migration.c
 @@ -345,18 +345,39 @@ libxlMigrateDstReceive(virNetSocketPtr s
  static int
  libxlDoMigrateSrcSend(libxlDriverPrivatePtr driver,
@@ -264,10 +264,10 @@ Index: libvirt-6.7.0/src/libxl/libxl_migration.c
      virObjectLock(vm);
  
      if (ret == 0) {
-Index: libvirt-6.7.0/src/libxl/libxl_migration.h
+Index: libvirt-6.8.0/src/libxl/libxl_migration.h
 ===================================================================
---- libvirt-6.7.0.orig/src/libxl/libxl_migration.h
-+++ libvirt-6.7.0/src/libxl/libxl_migration.h
+--- libvirt-6.8.0.orig/src/libxl/libxl_migration.h
++++ libvirt-6.8.0/src/libxl/libxl_migration.h
 @@ -35,6 +35,10 @@
      VIR_MIGRATE_PARAM_URI,              VIR_TYPED_PARAM_STRING, \
      VIR_MIGRATE_PARAM_DEST_NAME,        VIR_TYPED_PARAM_STRING, \
@@ -312,11 +312,11 @@ Index: libvirt-6.7.0/src/libxl/libxl_migration.h
  
  virDomainPtr
  libxlDomainMigrationDstFinish(virConnectPtr dconn,
-Index: libvirt-6.7.0/tools/virsh-domain.c
+Index: libvirt-6.8.0/tools/virsh-domain.c
 ===================================================================
---- libvirt-6.7.0.orig/tools/virsh-domain.c
-+++ libvirt-6.7.0/tools/virsh-domain.c
-@@ -10699,6 +10699,22 @@ static const vshCmdOptDef opts_migrate[]
+--- libvirt-6.8.0.orig/tools/virsh-domain.c
++++ libvirt-6.8.0/tools/virsh-domain.c
+@@ -10722,6 +10722,22 @@ static const vshCmdOptDef opts_migrate[]
       .type = VSH_OT_STRING,
       .help = N_("override the destination host name used for TLS verification")
      },
@@ -339,7 +339,7 @@ Index: libvirt-6.7.0/tools/virsh-domain.c
      {.name = NULL}
  };
  
-@@ -10720,6 +10736,7 @@ doMigrate(void *opaque)
+@@ -10742,6 +10758,7 @@ doMigrate(void *opaque)
      unsigned long long ullOpt = 0;
      int rv;
      virConnectPtr dconn = data->dconn;
@@ -347,7 +347,7 @@ Index: libvirt-6.7.0/tools/virsh-domain.c
  #ifndef WIN32
      sigset_t sigmask, oldsigmask;
  
-@@ -10842,6 +10859,27 @@ doMigrate(void *opaque)
+@@ -10872,6 +10889,27 @@ doMigrate(void *opaque)
              goto save_error;
      }
  
@@ -375,20 +375,21 @@ Index: libvirt-6.7.0/tools/virsh-domain.c
      if (vshCommandOptStringReq(ctl, cmd, "xml", &opt) < 0)
          goto out;
      if (opt) {
-Index: libvirt-6.7.0/docs/manpages/virsh.rst
+Index: libvirt-6.8.0/docs/manpages/virsh.rst
 ===================================================================
---- libvirt-6.7.0.orig/docs/manpages/virsh.rst
-+++ libvirt-6.7.0/docs/manpages/virsh.rst
-@@ -3113,6 +3113,8 @@ migrate
+--- libvirt-6.8.0.orig/docs/manpages/virsh.rst
++++ libvirt-6.8.0/docs/manpages/virsh.rst
+@@ -3113,7 +3113,8 @@ migrate
        [--postcopy-bandwidth bandwidth]
        [--parallel [--parallel-connections connections]]
        [--bandwidth bandwidth] [--tls-destination hostname]
-+      [--max_iters num] [--max_factor num] [--min_remaining num]
-+      [--abort_if_busy]
+-      [--disks-uri URI]
++      [--disks-uri URI] [--max_iters num] [--max_factor num]
++      [--min_remaining num] [--abort_if_busy]
  
  Migrate domain to another host.  Add *--live* for live migration; <--p2p>
  for peer-2-peer migration; *--direct* for direct migration; or *--tunnelled*
-@@ -3218,6 +3220,14 @@ parallel connections. The number of such
+@@ -3219,6 +3220,14 @@ parallel connections. The number of such
  network link between the source and the target and thus speeding up the
  migration.
  

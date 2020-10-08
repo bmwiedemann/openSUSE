@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:56:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.8.0
+  - jsc#SLE-12684, jsc#SLE-15861
+  - bsc#1174955 (CVE-2020-15708)
+  - bsc#1177155 (CVE-2020-25637)
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    2ad009ea-qemu-check-modules-dir.patch,
+    8abd1ffe-qemu-tolerate-non-existent-files.patch,
+    4a72b76b-qemu-namespace-memleak-fix.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 17:49:45 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - spec: Increase test timeout to account for slower test execution

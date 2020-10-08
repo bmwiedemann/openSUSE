@@ -1,9 +1,9 @@
 Adjust libvirtd sysconfig file to conform to SUSE standards
 
-Index: libvirt-6.7.0/src/remote/libvirtd.sysconf
+Index: libvirt-6.8.0/src/remote/libvirtd.sysconf
 ===================================================================
---- libvirt-6.7.0.orig/src/remote/libvirtd.sysconf
-+++ libvirt-6.7.0/src/remote/libvirtd.sysconf
+--- libvirt-6.8.0.orig/src/remote/libvirtd.sysconf
++++ libvirt-6.8.0/src/remote/libvirtd.sysconf
 @@ -1,5 +1,9 @@
 +## Path: System/Virtualization/libvirt
  # Customizations for the libvirtd.service systemd unit

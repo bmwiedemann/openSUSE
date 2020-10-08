@@ -9,11 +9,11 @@ need backporting to anything older. The dependency on xen.git commit
 c3999835df makes it hard to upstream this patch.
 
 See bsc#1157490 and bsc#1167007 for more details
-Index: libvirt-6.7.0/src/libxl/libxl_conf.c
+Index: libvirt-6.8.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-6.7.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-6.7.0/src/libxl/libxl_conf.c
-@@ -1825,7 +1825,7 @@ libxlDriverConfigNew(void)
+--- libvirt-6.8.0.orig/src/libxl/libxl_conf.c
++++ libvirt-6.8.0/src/libxl/libxl_conf.c
+@@ -1838,7 +1838,7 @@ libxlDriverConfigNew(void)
  int
  libxlDriverConfigInit(libxlDriverConfigPtr cfg)
  {
@@ -22,10 +22,10 @@ Index: libvirt-6.7.0/src/libxl/libxl_conf.c
  
      if (virFileMakePath(cfg->logDir) < 0) {
          virReportError(VIR_ERR_INTERNAL_ERROR,
-Index: libvirt-6.7.0/src/libxl/libxl_domain.c
+Index: libvirt-6.8.0/src/libxl/libxl_domain.c
 ===================================================================
---- libvirt-6.7.0.orig/src/libxl/libxl_domain.c
-+++ libvirt-6.7.0/src/libxl/libxl_domain.c
+--- libvirt-6.8.0.orig/src/libxl/libxl_domain.c
++++ libvirt-6.8.0/src/libxl/libxl_domain.c
 @@ -1020,8 +1020,8 @@ libxlDomainSetVcpuAffinities(libxlDriver
  static int
  libxlDomainFreeMem(libxl_ctx *ctx, libxl_domain_config *d_config)
@@ -46,10 +46,10 @@ Index: libvirt-6.7.0/src/libxl/libxl_domain.c
                                            &aop_console_how);
          libxl_domain_restore_params_dispose(&params);
      }
-Index: libvirt-6.7.0/tests/libxlmock.c
+Index: libvirt-6.8.0/tests/libxlmock.c
 ===================================================================
---- libvirt-6.7.0.orig/tests/libxlmock.c
-+++ libvirt-6.7.0/tests/libxlmock.c
+--- libvirt-6.8.0.orig/tests/libxlmock.c
++++ libvirt-6.8.0/tests/libxlmock.c
 @@ -67,7 +67,7 @@ VIR_MOCK_IMPL_RET_ARGS(libxl_get_version
  VIR_MOCK_STUB_RET_ARGS(libxl_get_free_memory,
                         int, 0,
@@ -59,11 +59,11 @@ Index: libvirt-6.7.0/tests/libxlmock.c
  
  VIR_MOCK_STUB_RET_ARGS(xc_interface_close,
                         int, 0,
-Index: libvirt-6.7.0/meson.build
+Index: libvirt-6.8.0/meson.build
 ===================================================================
---- libvirt-6.7.0.orig/meson.build
-+++ libvirt-6.7.0/meson.build
-@@ -1645,7 +1645,7 @@ elif get_option('driver_interface').enab
+--- libvirt-6.8.0.orig/meson.build
++++ libvirt-6.8.0/meson.build
+@@ -1625,7 +1625,7 @@ elif get_option('driver_interface').enab
  endif
  
  if not get_option('driver_libxl').disabled() and conf.has('WITH_LIBVIRTD')
@@ -72,7 +72,7 @@ Index: libvirt-6.7.0/meson.build
    libxl_dep = dependency('xenlight', version: '>=' + libxl_version, required: get_option('driver_libxl'))
  
    if libxl_dep.found()
-@@ -1675,7 +1675,7 @@ if not get_option('driver_libxl').disabl
+@@ -1655,7 +1655,7 @@ if not get_option('driver_libxl').disabl
      endif
  
      libxl_dep = declare_dependency(
