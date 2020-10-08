@@ -17,7 +17,7 @@
 
 
 Name:           cpuid
-Version:        20200427
+Version:        20201006
 Release:        0
 Summary:        x86 CPU identification tool
 License:        GPL-2.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 08:19:24 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Update to 20201006:
+  Added "Sapphire Rapids", "Golden Cove", "Rocket Lake", "Cato",
+  14nm "Zen", "Tiger Lake-U B0", "Elkhart Lake B0", "Alder Lake",
+  "Comet Lake", "Picasso A1", "Renoir A1", "Zhaoxin KaiXian KX-6000",
+  as well as some additional decoding of supported features.
+  [cpuid-20201006.src.tar.gz, jsc#sle-13189]
+
+-------------------------------------------------------------------
 Tue Apr 28 18:54:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20200427:
