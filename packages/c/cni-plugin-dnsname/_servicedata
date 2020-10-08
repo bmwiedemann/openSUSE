@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containers/dnsname.git</param>
+              <param name="changesrevision">fe71acc2f06cf07a27ad4f575cea92b7712115b5</param></service></servicedata>

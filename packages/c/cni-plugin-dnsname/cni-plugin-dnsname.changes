@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Oct  7 10:44:02 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- remove empty scriptlets
+- Adjust build flags to create PIE binary
+
+-------------------------------------------------------------------
+Tue Sep 29 12:50:28 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Initial release v1.0.0 

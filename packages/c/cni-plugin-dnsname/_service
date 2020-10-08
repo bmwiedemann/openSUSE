@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/containers/dnsname.git</param>
+    <param name="scm">git</param>
+    <param name="filename">dnsname</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">1.0.0</param>
+    <param name="revision">v1.0.0</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="buildtime">
+    <param name="basename">dnsname</param>
+  </service>
+</services>
