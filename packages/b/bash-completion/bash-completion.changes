@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:32:10 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert to _multibuild. The pre_checkin.sh script was quite
+  broken anyway and it was less effort to convert than to try to
+  fix that one.
+
+-------------------------------------------------------------------
+Mon Sep 28 14:37:58 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire util-linux: there is no need to have this in
+  the build root.
+- Drop cmake BuildRequires: this is only here for the
+  /usr/share/cmake directory ownership, which in turn even causes
+  problems of left-over directories (e.g. install bash-completion,
+  on a system without cmake, uninstall bash-completion,
+  /usr/share/cmake remains left on the disk).
+
+-------------------------------------------------------------------
 Tue Aug 18 23:13:19 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.11:

@@ -503,4 +503,12 @@
     <comment></comment>
     <requestid>827973</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>51575a5e2e4af8fab4911c635daab8a7</srcmd5>
+    <version>2.11</version>
+    <time>1602155321</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit post review (forwarded request 839494 from dimstar)</comment>
+    <requestid>839531</requestid>
+  </revision>
 </revisionlist>
