@@ -930,4 +930,27 @@
     <comment>- Update to version 0.48.10:</comment>
     <requestid>833677</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>5b8489b581eb759a502f1e21d1e35bae</srcmd5>
+    <version>0.48.11</version>
+    <time>1602155502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.48.11:
+  + Various improvements and bug fixes:
+    - codegen:
+      . The actual struct size is required for calloc (POSIX)
+      . Don't pass CCodeFunctionCall to NULL-aware free macro
+    - g-i: Fix a couple of C compiler warnings
+    - libvaladoc: Fix a couple of C compiler warnings
+    - testrunner: Pass --enable-checking to increase coverage,
+      Filter external -0X flags to preserve current default -O0
+  + Bindings:
+    - gstreamer: Update from 1.18.0+ git master
+    - gtk4: Don't skip LayoutManager.create_layout_child()
+    - gtk4: Update to 3.99.1+15b635d7
+    - poppler-glib: Update to 20.09.0
+    - vapi: Update GIR-based bindings
+    - webkit2gtk-4.0: Update to 2.30.1 (forwarded request 839761 from iznogood)</comment>
+    <requestid>839829</requestid>
+  </revision>
 </revisionlist>
