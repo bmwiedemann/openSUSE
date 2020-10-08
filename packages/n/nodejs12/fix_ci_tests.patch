@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v12.18.4/test/parallel/test-module-loading-globalpaths.js
+Index: node-v14.9.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v12.18.4.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v12.18.4/test/parallel/test-module-loading-globalpaths.js
+--- node-v14.9.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v14.9.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v12.18.4/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v12.18.4/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v14.9.0/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-v12.18.4.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-v12.18.4/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v14.9.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v14.9.0/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,10 +29,10 @@ Index: node-v12.18.4/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-v12.18.4/test/parallel/test-tls-passphrase.js
+Index: node-v14.9.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v12.18.4.orig/test/parallel/test-tls-passphrase.js
-+++ node-v12.18.4/test/parallel/test-tls-passphrase.js
+--- node-v14.9.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v14.9.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -51,10 +51,10 @@ Index: node-v12.18.4/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-v12.18.4/test/parallel/test-crypto-scrypt.js
+Index: node-v14.9.0/test/parallel/test-crypto-scrypt.js
 ===================================================================
---- node-v12.18.4.orig/test/parallel/test-crypto-scrypt.js
-+++ node-v12.18.4/test/parallel/test-crypto-scrypt.js
+--- node-v14.9.0.orig/test/parallel/test-crypto-scrypt.js
++++ node-v14.9.0/test/parallel/test-crypto-scrypt.js
 @@ -169,8 +169,8 @@ for (const options of bad) {
  
  for (const options of toobig) {
@@ -66,10 +66,10 @@ Index: node-v12.18.4/test/parallel/test-crypto-scrypt.js
      name: 'Error',
    };
    assert.throws(() => crypto.scrypt('pass', 'salt', 1, options, () => {}),
-Index: node-v12.18.4/test/parallel/test-repl-envvars.js
+Index: node-v14.9.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v12.18.4.orig/test/parallel/test-repl-envvars.js
-+++ node-v12.18.4/test/parallel/test-repl-envvars.js
+--- node-v14.9.0.orig/test/parallel/test-repl-envvars.js
++++ node-v14.9.0/test/parallel/test-repl-envvars.js
 @@ -2,12 +2,14 @@
  
  // Flags: --expose-internals
@@ -86,11 +86,11 @@ Index: node-v12.18.4/test/parallel/test-repl-envvars.js
  const tests = [
    {
      env: {},
-Index: node-v12.18.4/test/common/index.mjs
+Index: node-v14.9.0/test/common/index.mjs
 ===================================================================
---- node-v12.18.4.orig/test/common/index.mjs
-+++ node-v12.18.4/test/common/index.mjs
-@@ -45,6 +45,7 @@ const {
+--- node-v14.9.0.orig/test/common/index.mjs
++++ node-v14.9.0/test/common/index.mjs
+@@ -44,6 +44,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -98,7 +98,7 @@ Index: node-v12.18.4/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-@@ -92,6 +93,7 @@ export {
+@@ -90,6 +91,7 @@ export {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -106,21 +106,21 @@ Index: node-v12.18.4/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-Index: node-v12.18.4/Makefile
+Index: node-v14.9.0/Makefile
 ===================================================================
---- node-v12.18.4.orig/Makefile
-+++ node-v12.18.4/Makefile
-@@ -524,7 +524,8 @@ test-ci-js: | clear-stalled
+--- node-v14.9.0.orig/Makefile
++++ node-v14.9.0/Makefile
+@@ -529,7 +529,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
  test-ci: LOGLEVEL := info
--test-ci: | clear-stalled build-addons build-js-native-api-tests build-node-api-tests doc-only
-+test-ci: | clear-stalled build-addons build-js-native-api-tests build-node-api-tests
+-test-ci: | clear-stalled bench-addons-build build-addons build-js-native-api-tests build-node-api-tests doc-only
++test-ci: | clear-stalled bench-addons-build build-addons build-js-native-api-tests build-node-api-tests
 +	strip $(NODE_EXE)
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -699,7 +700,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -705,7 +706,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json

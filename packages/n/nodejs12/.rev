@@ -332,4 +332,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>839612</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80ac39cacf304736a20dd69629b5188e</srcmd5>
+    <version>12.19.0</version>
+    <time>1602155600</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 12.19.0:
+  * crypto: add randomInt function
+  * deps:
+    + upgrade to libuv 1.39.0
+    + deps: upgrade npm to 6.14.7
+    + deps: upgrade to libuv 1.38.1
+  * doc: deprecate process.umask() with no arguments
+  * module:
+    + package &quot;imports&quot; field
+    + module: deprecate module.parent
+  * n-api: create N-API version 7
+  * zlib: switch to lazy init for zlib streams
+- fix_ci_tests.patch: refreshed
+- versioned.patch: refreshed</comment>
+    <requestid>840025</requestid>
+  </revision>
 </revisionlist>

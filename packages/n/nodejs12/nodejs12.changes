@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  7 11:28:08 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 12.19.0:
+  * crypto: add randomInt function
+  * deps:
+    + upgrade to libuv 1.39.0
+    + deps: upgrade npm to 6.14.7
+    + deps: upgrade to libuv 1.38.1
+  * doc: deprecate process.umask() with no arguments
+  * module:
+    + package "imports" field
+    + module: deprecate module.parent
+  * n-api: create N-API version 7
+  * zlib: switch to lazy init for zlib streams
+
+- fix_ci_tests.patch: refreshed
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Wed Sep 23 18:28:20 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 12.18.4:
