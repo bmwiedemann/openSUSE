@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>789332</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1a1a6478c981105a7ae22c4bd3929d24</srcmd5>
+    <version>6.0</version>
+    <time>1602155617</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 4pane-fix_for_wx3.1.4.patch
+- Fix Factory build
+</comment>
+    <requestid>840119</requestid>
+  </revision>
 </revisionlist>

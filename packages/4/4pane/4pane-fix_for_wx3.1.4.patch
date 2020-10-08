@@ -1,0 +1,29 @@
+From 2143bc32c16e987619f06f9ff0159c0fcdebf924 Mon Sep 17 00:00:00 2001
+From: dghart <dghart@users.sourceforge.net>
+Date: Tue, 21 Jul 2020 15:54:13 +0100
+Subject: [PATCH] Compilation fix for wx3.1.4
+
+wxWidgets commit 1ec7ae changed two wxGenericTreeCtrl brushes to be objects, not pointers, which broke the copied code in MyTreeCtrl.
+---
+ MyTreeCtrl.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/MyTreeCtrl.cpp b/MyTreeCtrl.cpp
+index 5e692f4..48ace46 100644
+--- a/MyTreeCtrl.cpp
++++ b/MyTreeCtrl.cpp
+@@ -1438,7 +1438,11 @@ static const int NO_IMAGE = -1;                                  // //
+ 
+     if (item->IsSelected())
+     {
++#if wxVERSION_NUMBER < 3104
+         dc.SetBrush(*(m_hasFocus ? m_hilightBrush : m_hilightUnfocusedBrush));
++#else
++        dc.SetBrush(m_hasFocus ? m_hilightBrush : m_hilightUnfocusedBrush);
++#endif
+     }
+     else
+     {
+-- 
+2.28.0
+

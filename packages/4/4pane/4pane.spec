@@ -24,17 +24,13 @@ Summary:        A multi-pane detailed-list file manager
 License:        GPL-3.0-only
 URL:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
-%if 0%{?is_opensuse}
-BuildRequires:  wxWidgets-devel >= 3
-%else
-BuildRequires:  wxWidgets_3.0-devel
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-%endif
+# PATCH-FIX-UPSTREAM 4pane-fix_for_wx3.1.4.patch
+Patch0:         4pane-fix_for_wx3.1.4.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  xz-devel
+BuildRequires:  wxWidgets-devel >= 3.0
+BuildRequires:  pkgconfig(liblzma)
 
 %description
 4Pane is a multi-pane detailed-list file manager.
@@ -47,16 +43,16 @@ emulator and user-defined tools.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 sed -i -e "s|\$(datadir)/doc|%{_docdir}|g" Makefile.in
 sed -i -e "s|/usr/doc/4Pane/|%{_docdir}/4Pane/|g" Configure.cpp
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 %find_lang 4Pane
 mkdir -vp %{buildroot}/%{_datadir}/applications
 cd %{buildroot}/%{_datadir}/applications
