@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Wed Oct 7 09:15:13 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#429
+- remove dependency on insserv-compat (bsc#1176501)
+- remove ia64-specific dependency on ia32el
+- remove obsolete kbd_simple script
+- convert remaining insserv uses to systemctl calls
+- 16.23
+
+--------------------------------------------------------------------
 Tue Oct 6 10:17:39 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#428

@@ -939,4 +939,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>839765</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>a7da5c8f52f8a4cb6300516cd3e302a6</srcmd5>
+    <version>16.23</version>
+    <time>1602155395</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>839998</requestid>
+  </revision>
 </revisionlist>

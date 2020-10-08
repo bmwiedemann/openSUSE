@@ -368,7 +368,6 @@ BuildRequires:  icewm-lite
 BuildRequires:  icmpinfo
 BuildRequires:  indic-fonts
 BuildRequires:  initviocons
-BuildRequires:  insserv-compat
 BuildRequires:  ipa-gothic-fonts
 BuildRequires:  iproute2
 BuildRequires:  iputils
@@ -606,7 +605,6 @@ BuildRequires:  dmidecode
 BuildRequires:  efibootmgr
 BuildRequires:  elilo
 BuildRequires:  fpswa
-BuildRequires:  ia32el
 %endif
 %ifarch s390x
 BuildRequires:  s390-tools-hmcdrvfs
@@ -646,7 +644,7 @@ ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0+
 Group:          Metapackages
-Version:        16.22
+Version:        16.23
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
