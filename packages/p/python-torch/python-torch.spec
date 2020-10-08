@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 #
 %define srcname pytorch
 %define skip_python2 1
@@ -124,6 +123,13 @@ BuildRequires:  gcc7-c++
 BuildRequires:  libcudnn7-devel
 BuildRequires:  libnccl-devel
 %endif
+%ifarch aarch64
+%if 0%{?suse_version} > 1500
+# Workaround for https://github.com/pytorch/pytorch/issues/45971
+BuildRequires:  gcc9
+BuildRequires:  gcc9-c++
+%endif
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       python-future
 Requires:       python-leveldb
@@ -227,6 +233,12 @@ rmdir python-peachpy/
   %endif \
   %else \
   export USE_CUDNN=OFF \
+  %ifarch aarch64 \
+  %if 0%{?suse_version} > 1500 \
+  export CC=gcc-9 \
+  export CXX=g++-9 \
+  %endif \
+  %endif \
   %endif \
   export USE_TEST=OFF \
   export USE_LEVELDB=ON \
