@@ -82,4 +82,16 @@
     CHANGELOG.md file provided with this package (forwarded request 821898 from glaubitz)</comment>
     <requestid>821950</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06e433d168b7727d09869aa69930ea81</srcmd5>
+    <version>17.0.0</version>
+    <time>1602155546</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 13.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 839793 from glaubitz)</comment>
+    <requestid>839855</requestid>
+  </revision>
 </revisionlist>
