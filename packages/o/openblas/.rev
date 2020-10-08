@@ -337,4 +337,18 @@
     <comment></comment>
     <requestid>837347</requestid>
   </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>7f64790ff7b29a8e34b771130c0a89ae</srcmd5>
+    <version>0.3.10</version>
+    <time>1602155426</time>
+    <user>dimstar_suse</user>
+    <comment>- Set DYNAMIC_ARCH everywhere, use a base CPU model for non-dynamic
+  bits to have a reproducible base line:
+  x86_64: CORE2
+  aarch64: ARMV8
+  ppc: POWER8
+  s390: ZARCH_GENERIC
+- Remove workaround for build failure on aarch64 (boo#1128794). (forwarded request 839300 from eeich)</comment>
+    <requestid>839313</requestid>
+  </revision>
 </revisionlist>

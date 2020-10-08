@@ -293,21 +293,20 @@ cp %{SOURCE2} .
 %hpc_setup_compiler
 %endif
 
-# Only x86/x86-64/ARMv8 CPUs support DYNAMIC_ARCH
-%ifarch %ix86 x86_64
+# Use DYNAMIC_ARCH everywhere - not sure about PPC?
+%global openblas_target DYNAMIC_ARCH=1
 # We specify TARGET= to avoid compile-time CPU-detection (boo#1100677)
-%define openblas_target TARGET=CORE2 DYNAMIC_ARCH=1
+%ifarch %ix86 x86_64
+%global openblas_target %openblas_target TARGET=CORE2
 %endif
 %ifarch aarch64
- %if !(0%{?suse_version} > 1500)
-# Temporary fix, SLE/Leap15.x compiler segfaults for -mtune=cortex-a57 with kernel/arm/axpby.c (boo#1128794)
-  %define openblas_target TARGET=ARMV8
- %else
-  %define openblas_target DYNAMIC_ARCH=1
-  %ifarch s390 s390x
-   %define openblas_target %openblas_target TARGET=ZARCH_GENERIC
-  %endif
- %endif
+%global openblas_target %openblas_target TARGET=ARMV8 
+%endif  
+%ifarch s390 s390x
+%global openblas_target %openblas_target TARGET=ZARCH_GENERIC
+%endif
+%ifarch ppc64 ppc64le
+%global openblas_target %openblas_target TARGET=POWER8
 %endif
 # force -mvsx for ppc64 to avoid build failure:
 # ../kernel/power/sasum_microk_power8.c:41:3: error: '__vector' undeclared (first use in this function); did you mean '__cpow'?

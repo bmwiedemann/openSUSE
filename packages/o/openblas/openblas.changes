@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  3 07:30:06 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Set DYNAMIC_ARCH everywhere, use a base CPU model for non-dynamic
+  bits to have a reproducible base line:
+  x86_64: CORE2
+  aarch64: ARMV8
+  ppc: POWER8
+  s390: ZARCH_GENERIC
+- Remove workaround for build failure on aarch64 (boo#1128794).
+
+-------------------------------------------------------------------
 Thu Sep 24 10:45:45 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - For s390/s390x add TARGET=ZARCH_GENERIC (jsc#SLE-13773).
