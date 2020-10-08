@@ -323,6 +323,8 @@ export PYTHON=%{_bindir}/python3
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
 %ifarch aarch64
   -DENABLE_JIT=OFF \
+  -DENABLE_C_LOOP=ON \
+  -DENABLE_SAMPLING_PROFILER=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
 %endif
 

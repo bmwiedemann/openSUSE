@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 19:03:18 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Enable c_loop on aarch64: currently needed for compilation to
+  succeed with JIT disabled. Also disable sampling profiler, since
+  it conflicts with c_loop (boo#1177087).
+
+-------------------------------------------------------------------
 Tue Sep 22 01:34:43 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.30.1: 
