@@ -449,4 +449,12 @@ better packaging for distros, and various other quirks.
     the errors causing the shutdown. (forwarded request 835703 from mnhauke)</comment>
     <requestid>835714</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4f74b9628854c3bc7ce810e88ce4869a</srcmd5>
+    <version>2020_09_R4</version>
+    <time>1602155671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840196</requestid>
+  </revision>
 </revisionlist>
