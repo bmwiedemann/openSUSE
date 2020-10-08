@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Writer
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-XML-Writer
-Version:        0.625
+Version:        0.900
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name XML-Writer
 Summary:        Perl extension for writing XML documents
 License:        MIT
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-Writer/
-Source0:        http://www.cpan.org/authors/id/J/JO/JOSEPHW/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JO/JOSEPHW/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -54,13 +54,14 @@ can optionally be indented based as their nesting level.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -69,6 +70,7 @@ can optionally be indented based as their nesting level.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes examples LICENSE README TODO
+%doc Changes examples README TODO
+%license LICENSE
 
 %changelog
