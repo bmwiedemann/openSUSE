@@ -128,6 +128,7 @@ FileProvides: /bin/csh tcsh
 FileProvides: /bin/logger util-linux-systemd
 FileProvides: /sbin/netconfig sysconfig-netconfig
 FileProvides: /sbin/setcap libcap-progs
+FileProvides: /sbin/startproc sysvinit-tools
 FileProvides: /usr/bin/bc bc
 FileProvides: /usr/bin/csh tcsh
 FileProvides: /usr/bin/docbook2man docbook-utils
