@@ -1,7 +1,7 @@
 #
 # spec file for package paps
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define uuid    37e6ca1
-%define commit  37e6ca1cd96d751bbbff5539d795c90d657289a5
 Name:           paps
-Version:        0.7.0+
+Version:        0.7.1
 Release:        0
 Summary:        A text to postscript converter through pango 
 License:        LGPL-2.0-only
 Group:          System/Base
-Url:            https://github.com/dov/paps
-Source:         https://github.com/dov/%{name}/archive/%{uuid}.tar.gz#/%{name}-%{uuid}.tar.gz
-Patch0:         paps-prog_cc_c_o.patch
+URL:            https://github.com/dov/%{name}
+Source:         https://github.com/dov/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         paps-cpi_scale_calculation.patch
 Patch2:         paps-manpage_units.patch
 Patch3:         paps-manpage_fixes.patch
@@ -46,8 +43,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 paps is a command line program for converting Unicode text encoded in UTF-8 to postscript and pdf by using pango.
 
 %prep
-%setup -qT -b0 -n %{name}-%{commit}
-%patch0 -p0 -b .p0
+%setup -qT -b0 -n %{name}-%{version}
 %patch1 -p0 -b .p1
 %patch2 -p0 -b .p2
 %patch3 -p0 -b .p3
@@ -81,7 +77,7 @@ make install DESTDIR=%{buildroot} %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc COPYING.LIB
+%license COPYING.LIB
 %{_bindir}/*
 %{_mandir}/*/*
 

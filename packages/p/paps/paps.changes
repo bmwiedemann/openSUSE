@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:30:36 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Update to paps 0.7.1
+  * Added initial meson compilation support.
+  * Minor accumulated bug fixes since 0.7.0 
+- Drop patch paps-prog_cc_c_o.patch as now solved upstream
+
+-------------------------------------------------------------------
 Mon May 13 07:29:44 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch paps-glib.patch to amke it build again ... seems to be

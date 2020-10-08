@@ -17,4 +17,15 @@
   the already specified libraries.</comment>
     <requestid>702583</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00236858e590b349330247e9973ec08f</srcmd5>
+    <version>0.7.1</version>
+    <time>1602155612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to paps 0.7.1
+  * Added initial meson compilation support.
+  * Minor accumulated bug fixes since 0.7.0 
+- Drop patch paps-prog_cc_c_o.patch as now solved upstream</comment>
+    <requestid>840067</requestid>
+  </revision>
 </revisionlist>
