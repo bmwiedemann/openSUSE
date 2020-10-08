@@ -53,7 +53,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.2.3+git0.0e58a340d
+Version:        2.2.4+git0.de456726d
 Release:        0
 #
 #
@@ -138,7 +138,7 @@ the most work done from every CPU cycle.
 %patch3 -p1
 
 %build
-make \
+make %{?_smp_mflags} \
     TARGET=linux-glibc \
     CPU="%{_target_cpu}" \
     USE_PCRE=1 \

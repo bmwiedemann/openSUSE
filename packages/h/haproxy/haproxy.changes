@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct  2 14:38:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- use parallel build 
+
+-------------------------------------------------------------------
+Fri Oct 02 14:37:00 UTC 2020 - mrueckert@suse.de
+
+- Update to version 2.2.4+git0.de456726d:
+  * [RELEASE] Released version 2.2.4
+  * REGTEST: make map_regm_with_backref require 1.7
+  * REGTEST: make abns_socket.vtc require 1.8
+  * REGTEST: make agent-check.vtc require 1.8
+  * REGTEST: fix host part in balance-uri-path-only.vtc
+  * BUG/MINOR: ssl/crt-list: exit on warning out of crtlist_parse_line()
+  * DOC: agent-check: fix typo in "fail" word expected reply
+  * REGTESTS: use "command" instead of "which" for better POSIX compatibility
+  * BUILD: trace: include tools.h
+  * BUG/MEDIUM: listeners: do not pause foreign listeners
+  * REGTESTS: add a few load balancing tests
+  * MINOR: backend: add a new "path-only" option to "balance uri"
+  * MINOR: backend: make the "whole" option of balance uri take only one bit
+  * MINOR: h2/trace: also display the remaining frame length in traces
+  * BUG/MINOR: Fix memory leaks cfg_parse_peers
+  * BUG/MEDIUM: h2: report frame bits only for handled types
+  * BUG/MINOR: config: Fix memory leak on config parse listen
+  * BUG/MINOR: http-fetch: Don't set the sample type during the htx prefetch
+  * BUG/MINOR: h2/trace: do not display "stream error" after a frame ACK
+  * BUG/MINOR: ssl/crt-list: crt-list could end without a \n
+  * BUG/MEDIUM: ssl: Don't call ssl_sock_io_cb() directly.
+  * BUG/MINOR: server: report correct error message for invalid port on "socks4"
+  * BUG/MINOR: ssl: verifyhost is case sensitive
+  * BUG/MINOR: Fix type passed of sizeof() for calloc()
+  * BUG/MEDIUM: pattern: Renew the pattern expression revision when it is pruned
+  * BUILD: threads: better workaround for late loading of libgcc_s
+
+-------------------------------------------------------------------
 Tue Sep 08 15:02:38 UTC 2020 - mrueckert@suse.de
 
 - Update to version 2.2.3+git0.0e58a340d:
