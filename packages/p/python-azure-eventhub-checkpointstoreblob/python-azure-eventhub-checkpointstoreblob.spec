@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-eventhub-checkpointstoreblob
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Azure EventHubs Checkpoint Store client library for Python using Storage Blobs
 License:        MIT
