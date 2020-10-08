@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  2 17:38:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.24.4:
+  * libmbim-glib,device:
+    + Added new mbim_device_get_transaction_id() to retrieve the
+      transaction id currently being used.
+  * libmbim-glib,proxy:
+    + Fixed the transaction id used in fragments of the same
+      request.
+    + Avoid creating device context when it's already being
+      untracked.
+    + Fixed double GError free.
+  * mbimcli:
+    + Fixed missing EOL in error string when closing device.
+
+-------------------------------------------------------------------
 Wed Aug 19 12:23:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Upate to version 1.24.2:
