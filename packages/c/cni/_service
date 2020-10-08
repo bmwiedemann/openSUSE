@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="filename">cni</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">0.6.0</param>
-    <param name="revision">v0.6.0</param>
+    <param name="versionformat">0.8.0</param>
+    <param name="revision">v0.8.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

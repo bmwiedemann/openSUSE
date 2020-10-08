@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:47:37 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.0:
+  * Specification and Conventions changes
+    + docs: add ips and mac to well-known capabilities
+    + add interface name validation
+    + Add GUID to well known Capabilities
+    + Add DeviceID attribute to RuntimeConfig
+    + Typo fixes for infiniband GUID
+    + Fix linting issues in docs, add headers to json example, update errors into table
+  * Documentation changes
+    + Update cnitool docs
+    + Remove extra ',' chars which makes conflist examples invalid.
+  * libcni changes
+    + Remove Result.String method
+    + libcni: add config caching [v2]
+    + clean up : fix staticcheck warnings
+    + libcni: add InitCNIConfigWithCacheDir() and deprecate RuntimeConfig.CacheDir
+    + skel: clean up errors in skel and add some well-known error codes
+    + libcni: find plugin in exec
+    + validate containerID and networkName
+    + skel: remove needless functions and types
+    + libcni: also cache IfName
+    + libcni: fix cache file 'result' key name
+    + Bump Go version to 1.13
+    + When CNI version isn't supplied in config, use default.
+    + intercept netplugin std error
+    + invoke: capture and return stderr if plugin exits unexpectedly
+    + Retry exec commands on text file busy
+
+-------------------------------------------------------------------
 Mon Jan 13 10:32:53 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Set correct CNI version for 99-loopback.conf
