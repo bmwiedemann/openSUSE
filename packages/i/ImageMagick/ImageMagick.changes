@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:59:23 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.33
+  * miscellaneous clean-up.
+  * enable WMF for module build.
+  * writing PDF requires a seekable stream.
+
+-------------------------------------------------------------------
 Mon Sep 28 19:50:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 7.0.10.31:

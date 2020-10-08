@@ -2782,4 +2782,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Some DCM images include a thumbnail (forwarded request 838367 from dirkmueller)</comment>
     <requestid>838465</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>461f1952d34bdf404f77099a26357bad</srcmd5>
+    <version>7.0.10.33</version>
+    <time>1602155311</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.33
+  * miscellaneous clean-up.
+  * enable WMF for module build.
+  * writing PDF requires a seekable stream.</comment>
+    <requestid>839492</requestid>
+  </revision>
 </revisionlist>
