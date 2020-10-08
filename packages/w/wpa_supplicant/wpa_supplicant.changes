@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 15:20:18 UTC 2020 - Florian <sp1ritCS@protonmail.com>
+
+- Add wpa_supplicant-p2p_iname_size.diff -- Limit P2P_DEVICE name to appropriate ifname size
+  (https://patchwork.ozlabs.org/project/hostap/patch/20200825062902.124600-1-benjamin@sipsolutions.net/)
+
+-------------------------------------------------------------------
 Tue Sep 22 13:06:32 UTC 2020 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Fix spec file for SLE12, use make %{?_smp_mflags} instead of %make_build
