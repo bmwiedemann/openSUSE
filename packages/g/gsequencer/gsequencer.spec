@@ -22,7 +22,7 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        3.5.12
+Version:        3.5.16
 Release:        0
 Summary:        Audio processing engine
 License:        GPL-3.0-or-later AND AGPL-3.0-or-later AND GFDL-1.3-only

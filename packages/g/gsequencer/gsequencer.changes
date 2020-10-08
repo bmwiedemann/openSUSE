@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  8 04:14:07 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.5.16 fixed missing AgsMutable interface
+  implementation of ags-fx-volume.
+- fixed missing update of LV2_Options_Option after configuration
+  changed.
+- fixed initial loop set of specific machines.
+
+-------------------------------------------------------------------
 Fri Sep 18 05:25:29 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.5.12 fixed missing reset of notation edit's
