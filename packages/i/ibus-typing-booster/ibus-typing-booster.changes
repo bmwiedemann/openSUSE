@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 06 21:56:40 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.9.8
+- Prevent also Delete from reopening a preedit when the option
+  “Arrow keys can reopen a preedit” is off
+- When the input is empty, Escape should be passed through,
+  not inserted into the preedit
+- Fix itb_util.tokenize(): if the input is only whitespace,
+  the return should be an empty list
+- Don’t clear context after typing Return, KP_Enter, ISO_Enter
+- Improve behaviour of case modes
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Mon Sep 07 18:35:05 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.7
