@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-core
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Microsoft Azure Core Library for Python
 License:        MIT
