@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 10:28:39 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.31
+  * latest bugfix release
+- supersedes U_Fix-symbols-in-syntax-error-spurious-git-conflict-ma.patch
+- adjusted n_suse-ctrl-alt-bksp-terminate.patch
+
+-------------------------------------------------------------------
 Fri Jul 24 19:08:33 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Fix-symbols-in-syntax-error-spurious-git-conflict-ma.patch

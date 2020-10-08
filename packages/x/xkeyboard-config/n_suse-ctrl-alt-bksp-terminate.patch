@@ -1,7 +1,9 @@
-diff -u -r xkeyboard-config-2.16.orig/rules/evdev.m_s.part xkeyboard-config-2.16/rules/evdev.m_s.part
---- xkeyboard-config-2.16.orig/rules/evdev.m_s.part	2015-10-20 16:46:14.666938000 +0200
-+++ xkeyboard-config-2.16/rules/evdev.m_s.part	2015-10-20 16:47:50.094095000 +0200
-@@ -1,4 +1,4 @@
+Index: xkeyboard-config-2.31/rules/0026-evdev.m_s.part
+===================================================================
+--- xkeyboard-config-2.31.orig/rules/0026-evdev.m_s.part
++++ xkeyboard-config-2.31/rules/0026-evdev.m_s.part
+@@ -1,5 +1,5 @@
+ ! model		=	symbols
 -  $evdevkbds    =   +inet(evdev)+inet(%m)
 -  chromebook    =   +inet(evdev)+inet(chromebook)
 -  applealu_jis  =   +inet(evdev)+macintosh_vndr/jp(alujiskeys)

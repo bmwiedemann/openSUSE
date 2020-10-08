@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.30
+Version:        2.31
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND CDDL-1.0
@@ -27,7 +27,6 @@ Source:         http://xorg.freedesktop.org/archive/individual/data/%{name}/%{na
 Patch100:       n_suse-ctrl-alt-bksp-terminate.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
-Patch110:       U_Fix-symbols-in-syntax-error-spurious-git-conflict-ma.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -55,7 +54,6 @@ make keyboards more accessible to people with physical impairments.
 #translation-update-upstream
 %patch100 -p1
 %patch109 -p1
-%patch110 -p1
 
 %build
 %configure \

@@ -781,4 +781,15 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     (boo#1174483)</comment>
     <requestid>822702</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>51f056da1b7e7ca14787d7041f440f37</srcmd5>
+    <version>2.31</version>
+    <time>1602155418</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.31
+  * latest bugfix release
+- supersedes U_Fix-symbols-in-syntax-error-spurious-git-conflict-ma.patch
+- adjusted n_suse-ctrl-alt-bksp-terminate.patch</comment>
+    <requestid>840022</requestid>
+  </revision>
 </revisionlist>
