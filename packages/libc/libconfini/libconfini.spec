@@ -17,7 +17,7 @@
 
 
 Name:           libconfini
-Version:        1.14.2
+Version:        1.15.0
 Release:        0
 Summary:        INI file parser libarary
 License:        GPL-3.0-or-later

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 10:32:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libconfini 1.15.0:
+  * Public function ini_global_set_lowercase_mode() and global
+    variable INI_GLOBAL_LOWERCASE_MODE marked as deprecated
+  * Global integer constant INI_DISABLED_FLAG and macro
+    INI_IS_IMPLICIT_SUBSTR() added to the public header
+  * Documentation, Examples, build system fixes and minor bug fixes
+
+-------------------------------------------------------------------
 Fri Sep 25 06:57:06 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libconfini 1.14.2:
