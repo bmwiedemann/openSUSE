@@ -3298,4 +3298,19 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
 - added platform patches:</comment>
     <requestid>838449</requestid>
   </revision>
+  <revision rev="239" vrev="1">
+    <srcmd5>5bd9c7fa41bc48f4538a657082a7fe43</srcmd5>
+    <version>78.3.2</version>
+    <time>1602155398</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.3.2
+  * OpenPGP: Improved support for encrypting with subkeys
+  * OpenPGP: Encrypted messages with international characters were
+    sometimes displayed incorrectly
+  * Single-click deletion of recipient pills with middle mouse
+    button restored
+  * Searching an address book list did not display results
+  * Dark mode, high contrast, and Windows theming fixes</comment>
+    <requestid>840001</requestid>
+  </revision>
 </revisionlist>
