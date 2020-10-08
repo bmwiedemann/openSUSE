@@ -25,4 +25,12 @@
     <comment>- Allow option files as well</comment>
     <requestid>807779</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>83aa0bf44adc3c3825b079041d89bfab</srcmd5>
+    <version>0.1</version>
+    <time>1602155610</time>
+    <user>dimstar_suse</user>
+    <comment>- Handle gv and gsview</comment>
+    <requestid>840066</requestid>
+  </revision>
 </revisionlist>

@@ -203,6 +203,15 @@ then
     else
 	opts[o++]="--unshare-all"
     fi
+    if test -n "${GHOSTVIEW}"
+    then
+	opts[o++]="--die-with-parent"
+	opts[o++]="--setenv GHOSTVIEW ${GHOSTVIEW+"$GHOSTVIEW"}"
+    fi
+    if test -n "${GHOSTVIEW_COLORS}"
+    then
+	opts[o++]="--setenv GHOSTVIEW_COLORS ${GHOSTVIEW+"$GHOSTVIEW_COLORS"}"
+    fi
 else
     opts[o++]="--unshare-all"
 fi
