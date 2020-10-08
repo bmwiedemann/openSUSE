@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.4.3+git18.g42e1675e
+Version:        1.4.5+git5.ge3c837f8
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -98,7 +98,7 @@ BuildArch:      noarch
 BuildRequires:  ceph
 
 %description k8s-yaml
-This package contains the yaml files required to deploy and run the
+This package contains examples of yaml files required to deploy and run the
 Rook-Ceph operator and Ceph clusters in a Kubernetes cluster.
 
 ################################################################################
@@ -159,7 +159,7 @@ tar zxf %{SOURCE1}
 
 # determine image names to use in manifests depending on the base os type
 # %CEPH_VERSION%, and all CSI sidecar versions are replaced at build time by _service
-%global rook_container_version 1.4.3.18  # this is updated by update-tarball.sh
+%global rook_container_version 1.4.5.5  # this is updated by update-tarball.sh
 %if 0%{?is_opensuse}
 %define registry registry.opensuse.org/opensuse
 %else # is SES
@@ -247,20 +247,16 @@ install --preserve-timestamps --mode=755 \
     --target-directory="${install_location}" \
     images/ceph/toolbox.sh
 
-# Install selected yaml files to download and run the Rook operator and Ceph containers
+# Install ALL sample yaml files
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/rook/ceph
-install_yamls='ceph-client cluster cluster-on-pvc cluster-with-drive-groups common dashboard-external-http
-              dashboard-external-https dashboard-ingress-https dashboard-loadbalancer filesystem
-              filesystem-ec object-bucket-claim-delete object-bucket-claim-retain object-ec object-user
-              operator pool pool-ec rgw-external toolbox toolbox-job'
-for file in ${install_yamls}; do
-    cp -pr cluster/examples/kubernetes/ceph/${file}.yaml %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/
-done
+cp -pr cluster/examples/kubernetes/ceph/* %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/
 # Include ceph/csi directory, but move templates to /etc
 cp -pr cluster/examples/kubernetes/ceph/csi %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/
 mkdir -p %{buildroot}%{_sysconfdir}/ceph-csi
 mv %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/csi/template/* %{buildroot}%{_sysconfdir}/ceph-csi/
 rmdir %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/csi/template
+# Remove the flex directory as this is not supported at all
+rm -rf %{buildroot}%{_datadir}/k8s-yaml/rook/ceph/flex
 
 ################################################################################
 # Check that linker flags are applied
@@ -272,6 +268,7 @@ version_noplus="${version_full//[+]/_}"
 %global version_parsed "${version_noplus}-%{release}"
 # strip off everything following + for the helm appVersion
 %global helm_appVersion "${version_full%+*}"
+%global helm_version "%{helm_appVersion}_%{RELEASE}"
 
 # Check Rook version is properly set
 rook_bin="$rook_bin_location"rook
@@ -306,9 +303,10 @@ sed -i -e "s|/usr/local/bin/toolbox.sh|%{_bindir}/toolbox.sh|g" %{buildroot}%{_d
 %define values_yaml "%{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/values.yaml"
 mkdir -p %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
 cp -pr cluster/charts/rook-ceph/* %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator
-sed -i -e "1 i\#!BuildTag: rook-ceph:"%{version_parsed} %{chart_yaml}
+sed -i -e "1 i\#!BuildTag: rook-ceph:"%{helm_version} %{chart_yaml}
 # appVersion should being with a 'v', even though the image tag currently does not
 sed -i -e "/apiVersion/a appVersion: v%{helm_appVersion}" %{chart_yaml}
+sed -i -e "s|\(version: \).*|\1%{helm_version}|" %{chart_yaml}
 sed -i -e "s|\(.*tag: \)VERSION|\1%{helm_appVersion}|" %{values_yaml}
 # Install SUSE specific helm chart NOTES.txt
 cp %SOURCE97 %{buildroot}%{_datadir}/%{name}-ceph-helm-charts/operator/templates/NOTES.txt
@@ -324,18 +322,24 @@ echo -n %{ceph_csi_image} > %{rook_integration_dir}/ceph-csi-image-name
 ################################################################################
 # Specify which files we built belong to each package
 ################################################################################
-# rook-version-build.arch.rpm
 %files
 %defattr(-,root,root,-)
 %{_bindir}/rook
 %{_bindir}/toolbox.sh
 %config %{_sysconfdir}/ceph-csi
+# Due to upstream's use of /usr/local/bin in their example yamls, create
+# symlinks to avoid a difficult to find configuration problem
+%post
+[[ -e /usr/local/bin/toolbox.sh ]] || ln -s %{_bindir}/toolbox.sh /usr/local/bin/toolbox.sh
+[[ -e /usr/local/bin/rook ]] || ln -s %{_bindir}/rook /usr/local/bin/rook
 
-# rook-rookflex-version-build.arch.rpm
+%postun
+[[ -e /usr/local/bin/toolbox.sh ]] && rm /usr/local/bin/toolbox.sh
+[[ -e /usr/local/bin/rook ]] && rm /usr/local/bin/rook
+
 %files rookflex
 %{_bindir}/rookflex
 
-# rook-k8s-yaml-version-build.arch.rpm
 %files k8s-yaml
 %dir %{_datarootdir}/k8s-yaml
 %dir %{_datarootdir}/k8s-yaml/rook
@@ -346,7 +350,6 @@ echo -n %{ceph_csi_image} > %{rook_integration_dir}/ceph-csi-image-name
 %doc %{_datadir}/%{name}-ceph-helm-charts/operator/README.md
 %{_datadir}/%{name}-ceph-helm-charts
 
-# rook-integration-version-build.arch.rpm
 %files integration
 # integration test binary
 %{_bindir}/rook-integration

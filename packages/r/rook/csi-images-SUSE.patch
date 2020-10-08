@@ -6,7 +6,7 @@ Index: rook/pkg/operator/ceph/csi/spec.go
  // manually challenging.
  var (
  	// image names
--	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v3.1.0"
+-	DefaultCSIPluginImage   = "quay.io/cephcsi/cephcsi:v3.1.1"
 -	DefaultRegistrarImage   = "quay.io/k8scsi/csi-node-driver-registrar:v1.2.0"
 -	DefaultProvisionerImage = "quay.io/k8scsi/csi-provisioner:v1.6.0"
 -	DefaultAttacherImage    = "quay.io/k8scsi/csi-attacher:v2.1.0"
@@ -38,7 +38,7 @@ Index: rook/cluster/charts/rook-ceph/values.yaml
    #rbdLivenessMetricsPort: 9080
    #kubeletDirPath: /var/lib/kubelet
    #cephcsi:
--    #image: quay.io/cephcsi/cephcsi:v3.1.0
+-    #image: quay.io/cephcsi/cephcsi:v3.1.1
 +    #image: SUSE_REGISTRY/cephcsi/cephcsi:v%CSI_VERSION%.%CSI_OFFSET%
    #registrar:
 -    #image: quay.io/k8scsi/csi-node-driver-registrar:v1.2.0
