@@ -17,34 +17,33 @@
 
 
 Name:           torbrowser-launcher
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Tool for launching and easy-updates of Tor Browser
 License:        MIT
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://github.com/micahflee/torbrowser-launcher
-Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz
-# From gh#micahflee/torbrowser_launcher#482 (SHA512: aea340451291ce5b0fd87fb2f399a57d1407c5f81ee2e01d389e5586eb9b83cf77e48bbdfe8a71043d834b2475a67f43fd0f398d788f3a41a7a007d77d29dcab)
-Source1:        tor-browser-developers.asc
+Source0:        https://github.com/micahflee/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE pythontorbrowser-launcher-fix-distro-name.patch badshah400@gmail.com -- Use the correct distribution name (the setup.py code gives "SuSE" instead of "openSUSE")
 Patch0:         torbrowser-launcher-fix-distro-name.patch
-# PATCH-FIX-UPSTREAM torbrowser-launcher-apparmor-fixes.patch gh#micahflee/torbrowser-launcher#443 boo#1162284 badshah400@gmail.com -- Fix apparmor file so that it doesn't hinder actually running the browser, patch taken from upstream commits
-Patch1:         torbrowser-launcher-apparmor-fixes.patch
-# PATCH-FIX-UPSTREAM torbrowser-launcher-version-check-fix.patch gh#micahflee/torbrowser-launcher#499 badshah400@gmail.com -- Fix version checking with torbrowser 10.0+; patch taken from upstream PR (not yet merged)
-Patch2:         torbrowser-launcher-version-check-fix.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  gpg2
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-PySocks
 BuildRequires:  python3-devel
 BuildRequires:  python3-gpg
+BuildRequires:  python3-packaging
 BuildRequires:  python3-qt5
 BuildRequires:  update-desktop-files
 Requires:       gpg2
+Requires:       hicolor-icon-theme
 Requires:       python3-Parsley
 Requires:       python3-PySocks
 Requires:       python3-gpg
+Requires:       python3-packaging
 Requires:       python3-qt5
 Requires:       python3-requests
+Requires:       xmessage
 Recommends:     %{name}-lang = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -82,7 +81,6 @@ a Tor network compromise.
 %lang_package
 %prep
 %autosetup -p1
-cp %{SOURCE1} share/torbrowser-launcher/
 
 %build
 python3 setup.py build
@@ -116,7 +114,7 @@ rm -fr %{buildroot}%{_datadir}/locale/%{name}.mo
 %dir %{_datadir}/metainfo
 %endif
 %{_datadir}/metainfo/torbrowser.appdata.xml
-%{_datadir}/pixmaps/torbrowser*.png
+%{_datadir}/icons/hicolor/*/apps/torbrowser*.png
 %{_datadir}/%{name}/
 %{python3_sitelib}/torbrowser_launcher-%{version}-py%{py3_ver}.egg-info
 %{python3_sitelib}/torbrowser_launcher/

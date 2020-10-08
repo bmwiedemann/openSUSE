@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  7 12:14:53 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.3.3:
+  * Switch to Web Key Directory to refresh signing key from
+    torproject.org, because everything is broken.
+  * Use proper version comparison now that Tor Browser 10.0 is
+    out.
+  * Fix DNS leak when downloading over Tor.
+  * Various bug fixes, as well as AppData and AppArmor fixes.
+- Drop tor-browser-developers.asc key: fixed by update.
+- Drop patches incorporated or otherwise fixed upstream:
+  * torbrowser-launcher-apparmor-fixes.patch.
+  * torbrowser-launcher-version-check-fix.patch.
+- New BuildRequires and Requires: python3-packaging,
+  hicolor-icon-theme.
+- New Requires: xmessage: one of zenity, kdialog, or xmessage is
+  required and we choose xmessage as a minimal requirement in case
+  neither of the first two are installed in the system already.
+- Rename source file into %{name}-%{version} format.
+
+-------------------------------------------------------------------
 Sat Sep 26 22:13:26 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update Tor Browser public key from upstream (again).

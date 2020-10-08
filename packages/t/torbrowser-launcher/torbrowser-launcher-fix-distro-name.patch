@@ -1,9 +1,9 @@
-Index: torbrowser-launcher-0.3.2/setup.py
+Index: torbrowser-launcher-0.3.3/setup.py
 ===================================================================
---- torbrowser-launcher-0.3.2.orig/setup.py
-+++ torbrowser-launcher-0.3.2/setup.py
+--- torbrowser-launcher-0.3.3.orig/setup.py
++++ torbrowser-launcher-0.3.3/setup.py
 @@ -35,7 +35,7 @@ from distutils.core import setup
- SHARE = 'share'
+ SHARE = "share"
  
  # detect linux distribution
 -distro = platform.dist()[0]
