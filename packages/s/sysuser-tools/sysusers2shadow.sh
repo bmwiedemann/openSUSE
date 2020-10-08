@@ -13,6 +13,7 @@ for i in /bin/busybox /usr/bin/busybox; do [ -x "$i" ] && busybox=$i; done
 
 while read LINE
 do
+	# "eval set" to do proper splitting while respecting quotes
 	eval set -- $LINE
 	case "${1-}" in
 	\#*|"")

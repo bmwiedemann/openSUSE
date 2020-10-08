@@ -13,8 +13,7 @@
 #
 ###
 
-# This is for useradd/usermod/groupadd
-%sysusers_requires	Requires(pre): useradd_or_adduser_dep sysuser-shadow /usr/bin/cat \
+%sysusers_requires	Requires(pre): sysuser-shadow \
 Suggests:        shadow
 
 %sysusers_generate_pre()	\

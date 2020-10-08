@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 10:32:53 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Avoid useless use of cat
+- Simplify %sysusers_requires
+- Drop shebang, rpm passes it to /bin/sh itself
+
+-------------------------------------------------------------------
 Fri Aug 21 15:09:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Packages providing users need /usr/bin/cat installed to create
