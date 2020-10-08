@@ -1,4 +1,291 @@
 -------------------------------------------------------------------
+Wed Oct 07 14:08:47 UTC 2020 - jfehlig@suse.com
+
+- Update to version 0.34.0:
+  * jsc#ECO-2411
+  * Add mirrored dependencies to WORKSPACE
+  * Mark networking conformance tests
+  * restore backwards compatiblity with api group/version on DataVolumeTemplates spec
+  * Revert "move all tests to use kv config"
+  * Revert "update config message to specify which resource type it is using"
+  * Revert "test usage of configmap configuration"
+  * Revert "update build file"
+  * Revert "convert postcopy tests to use KubeVirt CR"
+  * Rework logic so it is easier to understand what is happening
+  * Allow PVC as volume source with a DV populating the PVC. Before this was not allowed because we could not be sure that the PVC was fully populated. This commit checks the DV to ensure the PVC is fully populated.
+  * vmi, sriov: Enable to set the PCI address on a SRIOV iface
+  * Don't discard bazel platform cache on virtctl cross-compilation
+  * convert postcopy tests to use KubeVirt CR
+  * fix autoconverge test
+  * remove using BeforeAll in vmi configuration tests
+  * generated openapi spec
+  * clean up
+  * start prom server earlier in the virt-handler process so health check returns without EOF error
+  * change kubevirt config type MemBalloon
+  * dump kubevirt cr in ci artifacts
+  * cpuRequest can not be type string since when the resource is patched it will fail to parse the units
+  * change bool to pointer to know unset vs value set to false
+  * update build file
+  * test usage of configmap configuration
+  * update config message to specify which resource type it is using
+  * move all tests to use kv config
+  * virt-launcher, Add mechanism to guard add/delete events channel
+  * Generated artifacts
+  * Add functional tests for missing subresource RBAC rules
+  * Allow admins and editors of a namespace to [un]pause a VMI
+  * Add dummy status to DataVolumeTemplate objects to maintain backwards compatibility
+  * Add functional test to validate api compatiblity during update
+  * changed migration test to use table
+  * only log event if migration is stuck during post copy migration
+  * change api from MigrationMode to AllowPostCopy
+  * switch to post copy migration if not completed with in acceptableCompletionTime
+  * update openapi spec
+  * add NFS migration test with postcopy
+  * remove vmiHasLocalStorage function
+  * fix migration tests
+  * remove reject postcopy for storage test
+  * remove nested vmi migration configuration
+  * change usePostCopy to migrationMode
+  * move when mode is set
+  * allow for postcopy migration
+  * maybe fix flakes test
+  * vendor in 1.23.5 CDI to hand golden namespace use case
+  * Validate network interface name
+  * tests, utils: Check events watcher type before casting
+  * Add readiness and health probes to virt-handler
+  * Removes unusable fields from vm DataVolumeTemplates
+  * virt-launcher, Remove unneeded log
+  * virt-launcher, Remove double domain event sending
+  * virt-launcher, Fix Guest Agent updates causing an event handling deadlock
+  * selinux: always build KubeVirt with selinux support
+  * Run make generate
+  * Adjust ceph-rook focus for e2e tests
+  * wrong apiVersion used for VirtualMachineRestore owner references
+  * update init container unit tests to validate container-disk pre-pull
+  * add container disk images also as init containers in order to guarantee they are pulled before virt-launcher starts
+  * add '--no-op' option to container-disk entry point for pre-pull logic
+  * Make the nogo check pass
+  * Make kubevirt compile with bazel 3.4.1
+  * Update builder image to bazel 3.4.1
+  * wait for vmi-killer pod to start before moving on
+  * Document basic parallel-test execution needs
+  * Integrate the junit merger into the parallel functest execution
+  * Add a tool to merge partial junit results
+  * Don't set the namespace in the VMI factory
+  * Run most of the VMI lifecycle tests in parallel
+  * Run kubectl related tests in parallel
+  * Hugepages are limited, run the relevant tests not in parallel
+  * Make version and vm-watch tests execute in parallel
+  * Don't check terminating pods if they pick up config changes
+  * Run container disk tests in parallel
+  * Run expose tests in parallel
+  * Run probe tests in parallel
+  * Allow running VMI Preset tests in parallel
+  * Run most of the cloud-init tests in parallel
+  * Make subresource tests part of the parallel test suite
+  * Adjust subresource access tests to new test service accounts
+  * Reference the default namespace directly
+  * Add a skip check for a migration tests if enough nodes are available
+  * Make access tests parallel executable
+  * More parallel tests
+  * Resolve test-namespace name in the test
+  * Allow VM tests to run in parallel
+  * Allow console tests to run in parallel
+  * Allow the headless service tests for VMIs to run in parallel
+  * Allow tests in vmi_configuration_test to run in parallel
+  * Make it possible to set the number of parallel executors
+  * Increase slow test threashold to 60 seconds
+  * Ensure that --skip and --focus flags are only passed onces
+  * Change build environment to execute ginkgo in parallel
+  * Let the ginkgo reporter log where it will dump artifacts
+  * Split setup and teardown code between parallel and synchronized steps
+  * Consume the ginkgo binary from the vendor folder
+  * Mark all tests as have to be run in serial
+  * fix typos
+  * docs: Update for k8s-1.18 as default provider
+  * Add option to log BIOS output to serial and use it to test for bootable NICs
+  * Migrate VMI when its pod is marked for eviction
+  * Intercept evictions on virt-launcher pods
+  * Support testing kubevirt on RHCOS
+  * Update kubevirtci to latest commit
+  * create tap device: add multiqueue support to netlink
+  * set vmipod cpu request based on guest vcpus and cpu_allocation_ratio
+  * allow to set a cpu allocation ratio in kubevirt config
+  * Test IDs for Node Placement tests
+  * only focus on tests that require rook-ceph for rook-ceph lane
+  * When filtering or aggregating metrics around the state label, having it exposed as a human readable state makes it a lot easier to understand, and thus, easier to get the desirable information. This PR changes kubevirt_vmi_vcpu_seconds' state label to a human readable string
+  * libvirt: disable PXE rom on interfaces with no boot order Except for virtio interfaces for which a rom is implicitely loaded
+  * Keep conformance artifacts on the top level
+  * tap device: use netlink instead of songgao's water lib
+  * netlink: update vendor folder
+  * bazel: update netlink dependency
+  * Release func tests on every release
+  * Add missing test ids
+  * Fix sync of generated client-go to master
+  * flaky pause test: make long-running process longer and quieter
+  * switch virtiofs tests to use datavolume
+  * test that vitriofs file written in the guest is present in the pod
+  * functional test to verify that virtiofs is enabled
+  * update generated files
+  * virtiofs requires virt-launcher selinux policy changes
+  * enable virtiofsd debug logs be setting by setting virtiofsdDebugLogs label
+  * handle filesystem virtiofs devices
+  * vmis with virtiofs require memory backing shared access
+  * allow CAP_SYS_ADMIN when the experimental virtiofs is required
+  * add a filesystem device schema element
+  * add a memorybacking access schema element
+  * Adding feature gate for experimental virtiofs support
+  * selinux: allow creating VMIs on nodes without selinux
+  * examples, vmi-masquerade: correct userData script
+  * tests: change hostdisk tmp path to /var/provision
+  * Bump kubevirtci to start testing k8s-1.19 provider
+  * Fix ACPI doc string
+  * Add functest for KVM hidden
+  * Support hiding KVM MSR from guest
+  * add snapshot APIGroup to aggregate cluster rules
+  * tests, networkpolicy: Add ports 80/81 tier1 http tests
+  * tests, vmi_servers: Add `HTTPServer.Start` and `TCPServer.Start` method to bypass LoggedIn
+  * Bring openapi spec in sync
+  * Fix logical error in affinity copy logic
+  * Add optional validation marker for new fields
+  * Update functional tests to match new object layout
+  * Fix unit tests for new object layout
+  * Fix injectPlacementMetadata to accept ComponentConfig objects
+  * Generated Artifacts
+  * Introduce ComponentConfig to contain NodePlacement
+  * Functional tests exercising placement logic
+  * Unit tests to ensure correctness of injectPlacementMetadata
+  * Merge Affinity, Tolerations and NodeSelectors from NodePlacement to podSpecs
+  * Generated artifacts
+  * Define NodePlacement for workloads and infra
+  * Port NodePlacement from HCO
+  * tests, libvmi: Add ports to InterfaceDeviceWithMasqueradeBinding
+  * Add conformance automation and manifest publishing
+  * SELinux: merge .cil policies and add a lot of comments
+  * vnc: use generic VNC client on comments
+  * vnc: remove unused FLAG const
+  * tests: re-enable couple of certificate functests
+  * network, tests: check IPv6 probes on dual stack network configs
+  * probes, tests: provide a TCP/HTTP server running on an helper pod
+  * network, tests: move the HTTP/TCP server creation to a separate file
+  * probes, tests: create ready/not ready asserter functions
+  * probes, tests: encapsulate VMI creation into a function
+  * probes, tests: have probe creation helpers
+  * tests, network: correct the string length
+  * probes, tests: exclusively use cirros VMIs on the probes tests
+  * network, tests: delete the leaked Jobs on the test tear down
+  * network, tests: ping first, then connect on helloWorld jobs
+  * network, tests: use assert / failed connectivity checks
+  * network, tests: add dual stack masquerade binding service tests
+  * network, tests: prepare for multiple binding / dual stack configs
+  * network, tests: move services functests to dedicated module
+  * tests, libvmi: provide a minimal CirrOS VMI via the libvmi factory
+  * fmt updates
+  * Adjust timelines and verbage to reflect feedback
+  * Fix release scripts git email and name variables
+  * New release documentation
+  * Replace outdated release announce script with new tool
+  * We introduced our `Pach` type which collides with kubernetes type. By default kube-openapi takes only last part of type/model definition. So type "kubevirt.io/client-go/api/v1.Patch" ends up -> "v1.Patch" & "k8s.io/apimachinery/pkg/apis/meta/v1.Patch" -> "v1.Patch".
+  * dual-stack, tests: actively check the cluster for dual stack conf
+  * dual stack, tests: check if the cluster is dual stack
+  * Add creation of bazelrc for running unnested in prow
+  * virt-chroot: use sysfs node for getenforce instead of less-reliable go-selinux
+  * selinux: print reason why getting launcher context failed
+  * network, tests: add a flag to skip a test asserting dual stack conf
+  * Addressed comments
+  * fix virtctl image-upload ignoring custom storage class
+  * Add unit tests for Service patching
+  * use informer for VirtualMachineRestores in restore webhook
+  * staticcheck updates
+  * don't allow creation of a VirtualMachineRestore if on is in progress
+  * make VirtualMachineRestores owned by VM
+  * wait for PVCs created from snapshots to be bound if not WaitForFirstConsumer
+  * Correctly check VM run strategy
+  * check running/runstrategy before restoring and one additional functional test
+  * tighten up functional tests
+  * initial functional tests for VM restore
+  * restore controller generate events on completion and error
+  * updates from rebase
+  * add source UID to VMSnapshot status and verify source matches target when restoring
+  * fix apiGroup handling
+  * VM sestore webhook
+  * restore unit tests
+  * restore controller implementation
+  * snapshot controller waits for no VMIs or pods using PVCs
+  * add VirtualMachineRestore type and CRD
+  * remove include/excludeVolumes
+  * update VirtualMachineRestoreStatus object to include timestamp and error
+  * add VirtualMachineRestore type and CRD
+  * Fix overloaded 'v1.Patch' api field
+  * Prevent delete and replace of service endpoints with ClusterIP == ""
+  * Fix validation for self-signed cert and addressed comments
+  * Add support for camel-case spellings of "userdata" and "networkdata"
+  * tests, net: Add dual-stack checks for post migration connectivity
+  * tests, net: Remove post migration connectivity workaround
+  * Enhance operator functional tests to validate pods are torn down after kv cr is deleted
+  * test: set kubevirt.io/memfd = false for k8s 1.16
+  * Add annotation kubevirt.io/memfd
+  * Unit tests to validate finalizer functionality on kubevirt objects
+  * Restore ability to set finalizer on kubevirt objects
+  * Unit tests to verify operator injected labels remain consistent
+  * Restores operator managed by label for backwards/forwards compability during updates
+  * Add mhenriks to approvers/reviewers list
+  * introduce retryOnConflict to certificate infra test
+  * tests, Make network policy tests dual stack compatible
+  * make generate after git rebase
+  * deps-updae && generate
+  * Workaround for a not accessible CDI dependency bitbucket.org/ww/goautoneg
+  * Update cdi in client-go and manifests/testing to v 1.21
+  * Run make deps-update
+  * Bumped CDI version to 1.21.0
+  * virt-api: allow update of VM metadata and status during VM rename process
+  * Rename option --allow-intermediate-certificates to --externally-name
+  * Add unit test for cert-manager
+  * Add option to allow client's intermediate certs to be used in building up the chain of trust in cert validation for virt-handler and virt-api
+  * Add options to allow users to configure certificate and key file paths for virt-handler, virt-controller and virt-api to accommodate varying rules around certificate validation.
+  * Limit CriticalAddonsOnly taint to a single compute
+  * Add test-id's for VMI migration and lifecycle testcases
+  * Add event for vmi failed render
+  * test, masquerade: Add dual stack vmi to vmi ping
+  * tests, Fix Network Policy Flakiness
+  * tests, Add waitForNetworkPolicyDeletion
+  * tests, Add skipNetworkPolicyRunningOnKindInfra for NetworkPolicy tests
+  * tests, Remove SkipIfNotUseNetworkPolicy
+  * tests, expecter: Centralize expecter helpers under expecter.go and login.go
+  * Add unit tests for to make sure it won't accidentally break passing monitorNamespace and monitorServiceAccount parameters
+  * add test_id to functional test
+  * add openapi listType=atomic to patches
+  * add func test for custom patches
+  * add custom patches to kubevirt resources on creation
+  * Fix issues of using default monitorNamespace and monitorServiceAccounta when those properities are not assigned
+  * update: fixing and adding unit tests
+  * test: add reserved hugepages
+  * tests, skip migration fail test on kind ipv6 provider
+  * test: add test for source in memorybacking
+  * Add source in memorybacking
+  * Set NUMA to use memfd
+  * virt-operator: on update, roll over daemonsets first, then controllers
+  * virt-operator: fix a copy-paste error
+  * Add functional test for custom-port flag
+  * Make use of stdout cleaner
+  * Added functional test
+  * Add option to run only VNC Proxy in virtctl
+  * Keep a single go_test_default rule
+  * Document on how to use the conformance tests
+  * Add the first conformance test
+  * Add wrapper binary for conformance tests
+  * Detect the kubevirt install namespace dynamically
+  * Fix issues that virt-operator cannot extract MonitorNamespace and MonitorServiceAccount from JSON.
+  * tests, network: Test connectivity pre/post migration
+  * tests, job: Convert WaitForJobTo* to a non-assert version.
+  * Generate deepcopy for NUMA
+  * add a NUMA schema element
+  * Removal of unnecessary output
+  * Added e2e test for unused memory metric
+  * Fix virtctl build for linux-amd64
+  * Adds new metric kubevirt_vmi_memory_unused_bytes
+
+-------------------------------------------------------------------
 Tue Sep 15 16:02:05 UTC 2020 - dmueller@suse.com
 
 - Update to version 0.33.0:
