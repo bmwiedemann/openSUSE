@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:58:55 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v31.0 (jsc#SLE-15657, jsc#SLE-15731, jsc#SLE-15743, jsc#SLE-15810)
+  - No release notes available
+
+-------------------------------------------------------------------
+Fri Jul 24 08:47:47 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v30.0
+  - No release notes available
+- Add cxgb3-nes-fix-declaration-of-free_context.patch to fix support
+  of older providers with newer rdma-core internal ABI
+
+-------------------------------------------------------------------
 Tue Apr 14 11:52:18 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v27.1

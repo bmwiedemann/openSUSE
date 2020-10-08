@@ -1,0 +1,72 @@
+commit 3eb8e71b19b62fa13cfc01db34e33914b1949ea8
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jul 24 10:44:05 2020 +0200
+
+    cxgb3,nes: fix declaration of free_context
+    
+    free_context got moved to another struct by
+    a4c102dd6b05 (verbs: Move free_context from verbs_device_ops to verbs_context_ops)
+    
+    Backport the change to older providers we maintain
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git providers/cxgb3/iwch.c providers/cxgb3/iwch.c
+index 6f3c8b9f1439..2bfca4f58f21 100644
+--- providers/cxgb3/iwch.c
++++ providers/cxgb3/iwch.c
+@@ -75,6 +75,8 @@ static const struct verbs_match_ent hca_table[] = {
+ 	{},
+ };
+ 
++static void iwch_free_context(struct ibv_context *ibctx);
++
+ static const struct verbs_context_ops iwch_ctx_common_ops = {
+ 	.query_device = iwch_query_device,
+ 	.query_port = iwch_query_port,
+@@ -98,6 +100,7 @@ static const struct verbs_context_ops iwch_ctx_common_ops = {
+ 	.detach_mcast = iwch_detach_mcast,
+ 	.post_srq_recv = iwch_post_srq_recv,
+ 	.req_notify_cq = iwch_arm_cq,
++	.free_context = iwch_free_context,
+ };
+ 
+ static const struct verbs_context_ops iwch_ctx_t3a_ops = {
+@@ -264,6 +267,5 @@ static const struct verbs_device_ops iwch_dev_ops = {
+ 	.alloc_device = iwch_device_alloc,
+ 	.uninit_device = iwch_uninit_device,
+ 	.alloc_context = iwch_alloc_context,
+-	.free_context = iwch_free_context,
+ };
+ PROVIDER_DRIVER(cxgb3, iwch_dev_ops);
+diff --git providers/nes/nes_umain.c providers/nes/nes_umain.c
+index 07aa7ddd112a..86f0f5c55db0 100644
+--- providers/nes/nes_umain.c
++++ providers/nes/nes_umain.c
+@@ -63,6 +63,8 @@ static const struct verbs_match_ent hca_table[] = {
+ 	{},
+ };
+ 
++static void nes_ufree_context(struct ibv_context *ibctx);
++
+ static const struct verbs_context_ops nes_uctx_ops = {
+ 	.query_device = nes_uquery_device,
+ 	.query_port = nes_uquery_port,
+@@ -86,7 +88,9 @@ static const struct verbs_context_ops nes_uctx_ops = {
+ 	.destroy_ah = nes_udestroy_ah,
+ 	.attach_mcast = nes_uattach_mcast,
+ 	.detach_mcast = nes_udetach_mcast,
+-	.async_event = nes_async_event
++	.async_event = nes_async_event,
++	.free_context = nes_ufree_context,
++
+ };
+ 
+ static const struct verbs_context_ops nes_uctx_no_db_ops = {
+@@ -215,6 +219,5 @@ static const struct verbs_device_ops nes_udev_ops = {
+ 	.alloc_device = nes_device_alloc,
+ 	.uninit_device = nes_uninit_device,
+ 	.alloc_context = nes_ualloc_context,
+-	.free_context = nes_ufree_context,
+ };
+ PROVIDER_DRIVER(nes, nes_udev_ops);

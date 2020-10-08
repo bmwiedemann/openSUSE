@@ -25,9 +25,9 @@
 %define with_pyverbs 0
 %endif
 
-%define         git_ver .0.ba66d565a860
+%define         git_ver .0.526d559740c7
 Name:           rdma-core
-Version:        27.1
+Version:        31.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        GPL-2.0-only OR BSD-2-Clause
@@ -69,6 +69,7 @@ Patch0:         Revert-libnes-Remove-libnes-from-rdma-core.patch
 Patch1:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
 Patch2:         Revert-Update-kernel-headers.patch
 Patch3:         disable-rdma-interface-renaming.patch
+Patch4:         cxgb3-nes-fix-declaration-of-free_context.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -137,7 +138,7 @@ BuildRequires:  ninja
 %else
 # Fallback to make otherwise
 BuildRequires:  make
-%define make_jobs make -v %{?_smp_mflags}
+%define make_jobs make VERBOSE=1 %{?_smp_mflags}
 %define cmake_install DESTDIR=%{buildroot} make install
 %endif
 
@@ -210,8 +211,7 @@ Requires:       %{efa_lname} = %{version}-%{release}
 Requires:       %{mlx4_lname} = %{version}-%{release}
 Requires:       %{mlx5_lname} = %{version}-%{release}
 %endif
-# Recommended packages for rxe_cfg
-Recommends:     ethtool
+# Recommended packages for rxe
 Recommends:     iproute2
 
 %description -n libibverbs
@@ -414,6 +414,7 @@ easy, object-oriented access to IB verbs.
 %patch1
 %patch2
 %patch3
+%patch4
 
 %build
 
@@ -672,9 +673,7 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %doc %{_docdir}/%{name}-%{version}/libibverbs.md
 %doc %{_docdir}/%{name}-%{version}/rxe.md
 %doc %{_docdir}/%{name}-%{version}/tag_matching.md
-%{_bindir}/rxe_cfg
 %{_mandir}/man7/rxe*
-%{_mandir}/man8/rxe*
 
 %files -n libibnetdisc%{ibnetdisc_major}
 %defattr(-, root, root)
@@ -712,10 +711,10 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %config(noreplace) %{_sysconfdir}/rdma/ibacm_opts.cfg
 %{_bindir}/ib_acme
 %{_sbindir}/ibacm
-%{_mandir}/man1/ibacm.*
 %{_mandir}/man1/ib_acme.*
 %{_mandir}/man7/ibacm.*
 %{_mandir}/man7/ibacm_prov.*
+%{_mandir}/man8/ibacm.*
 %{_unitdir}/ibacm.service
 %{_unitdir}/ibacm.socket
 %dir %{_libdir}/ibacm
@@ -862,10 +861,10 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 %{_sbindir}/srp_daemon
 %{_sbindir}/run_srp_daemon
 %{_sbindir}/rcsrp_daemon
-%{_mandir}/man1/ibsrpdm.1*
-%{_mandir}/man1/srp_daemon.1*
 %{_mandir}/man5/srp_daemon.service.5*
 %{_mandir}/man5/srp_daemon_port@.service.5*
+%{_mandir}/man8/ibsrpdm.8*
+%{_mandir}/man8/srp_daemon.8*
 %doc %{_docdir}/%{name}-%{version}/ibsrpdm.md
 
 %files -n rdma-ndd
