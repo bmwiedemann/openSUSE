@@ -58,6 +58,7 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-UPSTREAM -- "ps -C" does not allow anymore an argument longer than 15 characters
 Patch34:        procps-ng-3e1c00d0.patch
+Patch35:        procps-check-sanity-of-SC_ARG_MAX.patch
 
 BuildRequires:  automake
 BuildRequires:  dejagnu
@@ -146,6 +147,7 @@ the process information pseudo-file system.
 %patch32
 %patch33 -b .pmap4us
 %patch34 -p1
+%patch35 -p1
 
 %build
 #

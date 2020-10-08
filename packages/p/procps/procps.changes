@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:53:42 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add upstream procps-check-sanity-of-SC_ARG_MAX.patch in order to fix
+  pgrep: cannot allocate 4611686018427387903 bytes when ulimit -s is unlimited.
+
+-------------------------------------------------------------------
 Thu Sep 24 15:24:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Replace patch procps-ng-3.3.16-comm_len.patch with upstream

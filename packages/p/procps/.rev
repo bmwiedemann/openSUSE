@@ -1145,4 +1145,13 @@ provide distro defaults in a sane way. (forwarded request 71353 from lnussel)</c
   commitment patch procps-ng-3e1c00d0.patch (bsc#1158830)</comment>
     <requestid>837194</requestid>
   </revision>
+  <revision rev="116" vrev="4">
+    <srcmd5>afc4fe5b2bd2ed3052902bee371ddd0c</srcmd5>
+    <version>3.3.16</version>
+    <time>1602155392</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream procps-check-sanity-of-SC_ARG_MAX.patch in order to fix
+  pgrep: cannot allocate 4611686018427387903 bytes when ulimit -s is unlimited. (forwarded request 839972 from marxin)</comment>
+    <requestid>839997</requestid>
+  </revision>
 </revisionlist>
