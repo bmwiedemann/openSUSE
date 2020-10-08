@@ -33,4 +33,12 @@ but builtin version of current perl does not fit this!</comment>
     <comment></comment>
     <requestid>733996</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>896bb2c2fafdc9edae56580859f90af1</srcmd5>
+    <version>1.29</version>
+    <time>1602155147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838285</requestid>
+  </revision>
 </revisionlist>
