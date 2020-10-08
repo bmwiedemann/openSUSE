@@ -56,4 +56,15 @@
     <comment></comment>
     <requestid>829772</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65d11d202408c3e9edc6190012c7a0c4</srcmd5>
+    <version>12.5.0</version>
+    <time>1602155566</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839802 from glaubitz)</comment>
+    <requestid>839865</requestid>
+  </revision>
 </revisionlist>
