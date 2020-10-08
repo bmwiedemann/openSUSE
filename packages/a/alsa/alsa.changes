@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:07:46 CEST 2020 - tiwai@suse.de
+
+- Placeholder for SLE15-SP3 sync (bsc#1171246):
+  the actual fix is found in alsa-ucm-conf updates
+
+-------------------------------------------------------------------
+Sun Oct  4 09:53:09 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable topology support for riscv64
+
+-------------------------------------------------------------------
 Tue Sep 29 08:57:00 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable topology support for aarch64

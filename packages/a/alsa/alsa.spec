@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define _udevrulesdir /lib/udev/rules.d/
 %endif
 
-%ifarch %ix86 x86_64 %arm aarch64 ppc64le
+%ifarch %ix86 x86_64 %arm aarch64 ppc64le riscv64
 %define enable_topology	1
 %else
 %define enable_topology	0
@@ -37,7 +37,7 @@ Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            http://www.alsa-project.org/
+URL:            http://www.alsa-project.org/
 Source:         ftp://ftp.alsa-project.org/pub/lib/alsa-lib-%{version}.tar.bz2
 Source2:        baselibs.conf
 Source8:        40-alsa.rules
