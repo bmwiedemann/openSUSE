@@ -16,7 +16,7 @@
 #
 
 
-%define build_firmware 0%{?is_opensuse} && !0%{?is_backports}
+%define build_firmware ( 0%{?is_opensuse} && !0%{?is_backports} ) || !0%{?sle_version} || ( 0%{?sle_version} > 150200 )
 
 Name:           skiboot
 Version:        6.6.1
@@ -58,14 +58,18 @@ an interface to query or modify the registers of the different chipsets
 of an OpenPower system. 'pflash' is a tool to access the flash modules
 on such systems and update the OpenPower firmware.
 
+%if %build_firmware
 %package -n     opal-firmware
 Summary:        OPAL firmware
 Group:          System/Management
 BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 
 %description -n opal-firmware
 OPAL firmware, aka skiboot, loads the bootloader and provides runtime
 services to the OS (Linux) on IBM Power and OpenPower systems.
+%endif
 
 %prep
 %setup -q
@@ -90,7 +94,10 @@ install -D -m 444 -p external/opal-prd/opal-prd.service %{buildroot}%{_unitdir}/
 
 %if %build_firmware
 mkdir -p %{buildroot}%{_datadir}/qemu
-install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
+install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid.opal
+# create a dummy target for /etc/alternatives/skiboot.lid
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
 %endif
 
 %pre -n opal-prd
@@ -104,6 +111,17 @@ install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
 
 %postun -n opal-prd
 %service_del_postun opal-prd.service
+
+%if %build_firmware
+%post -n opal-firmware
+update-alternatives --install \
+   %{_datadir}/qemu/skiboot.lid skiboot.lid %{_datadir}/qemu/skiboot.lid.opal 10
+
+%postun -n opal-firmware
+if [ ! -f %{_datadir}/qemu/skiboot.lid.opal ] ; then
+   update-alternatives --remove skiboot.lid %{_datadir}/qemu/skiboot.lid.opal
+fi
+%endif
 
 %files -n opal-prd
 %defattr(-,root,root)
@@ -129,7 +147,10 @@ install -m 644 -p skiboot.lid %{buildroot}%{_datadir}/qemu/skiboot.lid
 %if %build_firmware
 %files -n opal-firmware
 %doc README.md LICENCE
-%{_datadir}/qemu/
+%dir %{_datadir}/qemu
+%{_datadir}/qemu/skiboot.lid
+%{_datadir}/qemu/skiboot.lid.opal
+%ghost %_sysconfdir/alternatives/skiboot.lid
 %endif
 
 %changelog
