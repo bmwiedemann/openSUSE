@@ -1,0 +1,43 @@
+From c9323dc0116fe2795fcd5915fda87ccc2aaace7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 6 Oct 2020 21:38:55 +0200
+Subject: [PATCH] Use icon installed to theme directory
+
+---
+ linux/src/droidcam.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/linux/src/droidcam.c b/linux/src/droidcam.c
+index a9116a3..29764b6 100644
+--- a/linux/src/droidcam.c
++++ b/linux/src/droidcam.c
+@@ -36,7 +36,7 @@ struct settings g_settings = {0};
+ 
+ extern char snd_device[32];
+ extern char v4l2_device[32];
+-const char *APP_ICON_FILE = "/opt/droidcam-icon.png";
++const char *APP_ICON_NAME = "droidcam";
+ 
+ void * AudioThreadProc(void * args);
+ void * VideoThreadProc(void * args);
+@@ -268,7 +268,7 @@ static gboolean accel_callback(GtkAccelGroup  *group, GObject *obj, guint keyval
+ 
+ /* Main */
+ static void add_indicator(GtkWidget *window) {
+-	AppIndicator *indicator = app_indicator_new("droidcam", APP_ICON_FILE, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
++	AppIndicator *indicator = app_indicator_new("droidcam", APP_ICON_NAME, APP_INDICATOR_CATEGORY_APPLICATION_STATUS);
+ 	GtkWidget *menu = gtk_menu_new();
+ 	GtkWidget *name_menu_item = gtk_menu_item_new_with_label("Droidcam");
+ 	GtkWidget *show_menu_item = gtk_menu_item_new_with_label("Show");
+@@ -315,7 +315,7 @@ int main(int argc, char *argv[])
+ 	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
+ 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_NONE);
+ 	gtk_container_set_border_width(GTK_CONTAINER(window), 4);
+-	gtk_window_set_icon_from_file(GTK_WINDOW(window), APP_ICON_FILE, NULL);
++	gtk_window_set_icon_name(GTK_WINDOW(window), APP_ICON_NAME);
+ 
+ 	// keyboard shortcuts
+ 	gtk_accel = gtk_accel_group_new ();
+-- 
+2.28.0
+

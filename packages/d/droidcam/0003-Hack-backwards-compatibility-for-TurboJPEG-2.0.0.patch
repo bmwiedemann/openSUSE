@@ -11,7 +11,7 @@ diff --git a/linux/src/decoder.c b/linux/src/decoder.c
 index 69496b0..ad48f92 100644
 --- a/linux/src/decoder.c
 +++ b/linux/src/decoder.c
-@@ -25,6 +25,13 @@ extern "C" {
+@@ -25,6 +25,15 @@ extern "C" {
  #include "libswscale/swscale.h"
  #include "speex/speex.h"
  
@@ -20,6 +20,8 @@ index 69496b0..ad48f92 100644
 +#warning LIBJPEG_TURBO_VERSION too old for thread safe error handling
 +#define tjGetErrorCode(handle) 0
 +#define tjGetErrorStr2(handle) tjGetErrorStr()
++
++#define TJXOPT_COPYNONE 0
 +#endif
 +
  struct spx_decoder_s {

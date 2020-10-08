@@ -17,22 +17,26 @@
 
 
 Name:           droidcam
-Version:        1.4
+Version:        1.5
 Release:        0
-Summary:	Use a phone as a webcam device
+Summary:        Program to turn a mobile device into a webcam
 License:        GPL-2.0-or-later
 URL:            https://www.dev47apps.com/droidcam/linux/
-Source:         https://github.com/aramg/droidcam/archive/v%{version}.tar.gz#/droidcam-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE
+Source0:        https://github.com/aramg/droidcam/archive/v%{version}.tar.gz#/droidcam-%{version}.tar.gz
+Source1:        README-v4l2loopback.md
+# PATCH-FIX-UPSTREAM
 Patch0:         0001-Enhance-compatibility-with-upstream-v4l2loopback-dri.patch
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-UPSTREAM
 Patch1:         0002-Accept-upstream-v4l2loopback-driver-as-device.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         0001-Use-icon-installed-to-theme-directory.patch
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libjpeg)
@@ -46,27 +50,25 @@ Requires:       kmod(v4l2loopback.ko)
 Recommends:     adb
 
 %description
-Turns a mobile device into a webcam.
+This program turns a mobile device into a webcam.
 
-Use it with chat programs like Skype, Zoom, Teams, or with live
-streaming programs like OBS.
+It can be used with chat programs like Skype, Zoom, Teams, or with
+live streaming programs like OBS.
 
 %package cli
-Summary:	Command line client for droidcam
+Summary:        Command line client for droidcam
 Requires:       kmod(v4l2loopback.ko)
 Recommends:     adb
 
 %description cli
-Turns a mobile device into a webcam.
+This program turns a mobile device into a webcam.
 
-Use it with chat programs like Skype, Zoom, Teams, or with live
-streaming programs like OBS.
+It can be used with chat programs like Skype, Zoom, Teams, or with
+live streaming programs like OBS.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 
 %build
 pushd linux
@@ -82,17 +84,18 @@ install -D -m 755 -t %{buildroot}%{_bindir} droidcam
 install -D -m 755 icon2.png %{buildroot}%{_datadir}/icons/hicolor/96x96/apps/droidcam.png
 popd
 %suse_update_desktop_file -c droidcam droidcam "Virtual Webcam" droidcam droidcam Multimedia Video GTK Utility AudioVideo
+cp %{S:1} ./
 
 %files
-%license linux/LICENCE
-%doc linux/README.md
+%license linux/LICENSE
+%doc README-v4l2loopback.md
 %{_bindir}/droidcam
 %{_datadir}/icons/hicolor/*/apps/droidcam.png
 %{_datadir}/applications/droidcam.desktop
 
 %files cli
-%license linux/LICENCE
-%doc linux/README.md
+%license linux/LICENSE
+%doc README-v4l2loopback.md
 %{_bindir}/droidcam-cli
 
 %changelog

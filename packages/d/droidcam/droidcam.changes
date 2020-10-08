@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  6 19:20:45 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.5
+  * AppIndicator support
+  * Portrait mode and flip support
+- Add README-v4l2loopback.md, referring to v4l2loopback-ctl for
+  configuration
+- Add 0001-Use-icon-installed-to-theme-directory.patch
+- Skip EXIF marker handling in JPEG transform on Leap 15.x, update
+  0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
+
+-------------------------------------------------------------------
+Sun Jul 12 09:40:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for descriptions.
+
+-------------------------------------------------------------------
 Fri Jul 10 19:26:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version 1.4
