@@ -308,4 +308,13 @@ New spdx.org license list now contains an official entry for X11 (forwarded requ
     <comment></comment>
     <requestid>826912</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c01bc916abdd60556e5b28d4f23bc338</srcmd5>
+    <version>1.18</version>
+    <time>1602155119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update homepage URL.
+- Drop old rpm constructs. (forwarded request 836235 from jengelh)</comment>
+    <requestid>836355</requestid>
+  </revision>
 </revisionlist>

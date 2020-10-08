@@ -23,15 +23,13 @@ Release:        0
 Summary:        A C library for parsing command line parameters
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://www.rpm.org/
+URL:            https://github.com/rpm-software-management/popt
 
-#CVS-Clone:	-d :pserver:anonymous@rpm5.org:/cvs co popt
 Source:         http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch:          popt-libc-updates.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Popt is a C library for parsing command line parameters.  Popt was
@@ -80,7 +78,6 @@ autoreconf -fiv
 %make_install
 rm %{buildroot}%{_libdir}/libpopt.la
 
-
 %find_lang %{name}
 
 %post -n libpopt0 -p /sbin/ldconfig
@@ -88,13 +85,11 @@ rm %{buildroot}%{_libdir}/libpopt.la
 %postun -n libpopt0 -p /sbin/ldconfig
 
 %files -n libpopt0 -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %doc CHANGES
 %{_libdir}/libpopt.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc README
 %{_libdir}/libpopt.so
 %{_includedir}/popt.h
