@@ -1,5 +1,7 @@
---- ./README.linux.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./README.linux	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/README.linux
+===================================================================
+--- /dev/null
++++ inn-2.6.3/README.linux
 @@ -0,0 +1,95 @@
 +Installing a news system:                              Florian La Roche
 +=========================
@@ -96,8 +98,10 @@
 +(recomended if you have lots of articles and little time), use
 +the "--fresh" option to just create a new history database.
 +
---- ./backends/ninpaths.c.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./backends/ninpaths.c	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/backends/ninpaths.c
+===================================================================
+--- inn-2.6.3.orig/backends/ninpaths.c
++++ inn-2.6.3/backends/ninpaths.c
 @@ -204,6 +204,7 @@ writedumpfile(const char *n)
      if (d) {
  	if (writedump(d)<0)
@@ -106,8 +110,10 @@
      } else {
  	perror("writedumpfile: fopen failed for ninpaths");
      }
---- ./convertspool.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./convertspool	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/convertspool
+===================================================================
+--- /dev/null
++++ inn-2.6.3/convertspool
 @@ -0,0 +1,142 @@
 +#!/bin/sh
 +. /usr/lib/news/lib/innshellvars
@@ -251,8 +257,10 @@
 +cd $PATHSPOOL
 +rmdir --ignore-fail-on-non-empty oldspool
 +echo "done."
---- ./crontab.sample.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./crontab.sample	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/crontab.sample
+===================================================================
+--- /dev/null
++++ inn-2.6.3/crontab.sample
 @@ -0,0 +1,38 @@
 +# Here are sample entries that could be added to /etc/crontab for
 +# your INN News-System.
@@ -292,15 +300,19 @@
 +# generate a uucp transmission statistic
 +#0 6 10 * * nobody /usr/bin/tua -U
 +
---- ./distributions.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./distributions	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/distributions
+===================================================================
+--- /dev/null
++++ inn-2.6.3/distributions
 @@ -0,0 +1,4 @@
 +world	Use no distribution rather than world
 +na	North America
 +usa	United States
 +local	This site only
---- ./history/Makefile.orig	2018-12-14 15:04:19.389096766 +0000
-+++ ./history/Makefile	2018-12-14 15:04:41.273038785 +0000
+Index: inn-2.6.3/history/Makefile
+===================================================================
+--- inn-2.6.3.orig/history/Makefile
++++ inn-2.6.3/history/Makefile
 @@ -51,7 +51,7 @@ $(FIXSCRIPT):
  	@exit 1
  
@@ -310,8 +322,10 @@
  	    $(LIBSTORAGE) $(LIBINN) $(STORAGE_LIBS) $(LIBS) \
  	    -rpath $(PATHLIB) -version-info $(LTVERSION)
  
---- ./include/inn/options.h.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./include/inn/options.h	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/include/inn/options.h
+===================================================================
+--- inn-2.6.3.orig/include/inn/options.h
++++ inn-2.6.3/include/inn/options.h
 @@ -41,7 +41,7 @@
  #define DEFAULT_TIMEOUT         300
  
@@ -321,8 +335,10 @@
  
  /* Define if inews should munge the GECOS entry of the passwd file when
     attempting to determine a poster's real name.  Use this if your GECOS
---- ./newsgroups.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./newsgroups	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/newsgroups
+===================================================================
+--- /dev/null
++++ inn-2.6.3/newsgroups
 @@ -0,0 +1,6 @@
 +control			Various control messages (no posting).
 +control.cancel		Cancel messages (no posting).
@@ -330,9 +346,11 @@
 +control.newgroup	Newsgroup creation control messages (no posting).
 +control.rmgroup		Newsgroup removal control messages (no posting).
 +junk			Unfiled articles (no posting).
---- ./nnrpd/nnrpd.c.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./nnrpd/nnrpd.c	2018-12-14 13:13:31.690888184 +0000
-@@ -665,6 +665,9 @@ StartConnection(unsigned short port)
+Index: inn-2.6.3/nnrpd/nnrpd.c
+===================================================================
+--- inn-2.6.3.orig/nnrpd/nnrpd.c
++++ inn-2.6.3/nnrpd/nnrpd.c
+@@ -665,6 +665,9 @@ GetClientInfo(unsigned short port)
      setsockopt(STDIN_FILENO, IPPROTO_TCP, TCP_NODELAY, &nodelay, sizeof(nodelay));
  #endif
  
@@ -340,16 +358,20 @@
 +    setsockopt(STDIN_FILENO, SOL_SOCKET, SO_KEEPALIVE, &keepalive, sizeof(keepalive));
 +
      notice("%s (%s) connect - port %u", Client.host, Client.ip, port);
+ }
  
-     PERMgetinitialaccess(NNRPACCESS);
---- ./profile.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./profile	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/profile
+===================================================================
+--- /dev/null
++++ inn-2.6.3/profile
 @@ -0,0 +1,3 @@
 +PATH=/usr/lib/news/bin:/usr/lib/news/bin/control:$PATH
 +PATH=/usr/lib/news/lib:/usr/sbin:$PATH
 +export PATH
---- ./samples/cycbuff.conf.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./samples/cycbuff.conf	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/samples/cycbuff.conf
+===================================================================
+--- inn-2.6.3.orig/samples/cycbuff.conf
++++ inn-2.6.3/samples/cycbuff.conf
 @@ -28,9 +28,9 @@ refreshinterval:30
  ##
  ##  If you're trying to stay under 2 GB, keep your sizes below 2097152.
@@ -363,8 +385,10 @@
  
  ##  2. Meta-cyclic buffers
  ##  Format:
---- ./samples/inn.conf.in.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./samples/inn.conf.in	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/samples/inn.conf.in
+===================================================================
+--- inn-2.6.3.orig/samples/inn.conf.in
++++ inn-2.6.3/samples/inn.conf.in
 @@ -21,7 +21,7 @@ mta:                         "@SENDMAIL@
  organization:                "A poorly-installed InterNetNews site"
  ovmethod:                    tradindexed
@@ -411,7 +435,7 @@
  #moderatormailer:
  nnrpdauthsender:             false
  #nnrpdposthost:
-@@ -148,7 +148,7 @@ backofftrigger:              10000
+@@ -149,7 +149,7 @@ backofftrigger:              10000
  
  # Monitoring
  
@@ -420,7 +444,7 @@
  innwatchbatchspace:          4000
  innwatchlibspace:            25000
  innwatchloload:              1000
-@@ -161,11 +161,11 @@ innwatchspoolspace:          25000
+@@ -162,11 +162,11 @@ innwatchspoolspace:          25000
  # Logging
  
  docnfsstat:                  false
@@ -435,7 +459,7 @@
  logipaddr:                   true
  logsitename:                 true
  logstatus:                   true
-@@ -191,7 +191,7 @@ nicekids:                    4
+@@ -192,7 +192,7 @@ nicekids:                    4
  nicenewnews:                 0
  nicennrpd:                   0
  pauseretrytime:              300
@@ -444,8 +468,10 @@
  rlimitnofile:                -1
  
  # Paths
---- ./samples/moderators.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./samples/moderators	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/samples/moderators
+===================================================================
+--- inn-2.6.3.orig/samples/moderators
++++ inn-2.6.3/samples/moderators
 @@ -22,14 +22,29 @@
  
  ##  Public hierarchies with exceptions.
@@ -476,8 +502,10 @@
  ukr.*:%s@sita.kiev.ua
  
  ##  Direct all other public hierarchies to the master moderator database.
---- ./samples/storage.conf.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./samples/storage.conf	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/samples/storage.conf
+===================================================================
+--- inn-2.6.3.orig/samples/storage.conf
++++ inn-2.6.3/samples/storage.conf
 @@ -25,7 +25,7 @@
  
  method tradspool {
@@ -487,8 +515,10 @@
  }
  
  ##  Here are some samples for a CNFS configuration.  This assumes that you
---- ./scripts/rc.news.in.orig	2018-03-18 20:03:32.000000000 +0000
-+++ ./scripts/rc.news.in	2018-12-14 13:15:00.454652986 +0000
+Index: inn-2.6.3/scripts/rc.news.in
+===================================================================
+--- inn-2.6.3.orig/scripts/rc.news.in
++++ inn-2.6.3/scripts/rc.news.in
 @@ -10,11 +10,11 @@
  
  waitforpid()
@@ -524,7 +554,9 @@
  ##  Pick ${INND} or ${INNDSTART}
  WHAT=${INND}
  
---- ./subscriptions.orig	2018-12-14 13:13:31.690888184 +0000
-+++ ./subscriptions	2018-12-14 13:13:31.690888184 +0000
+Index: inn-2.6.3/subscriptions
+===================================================================
+--- /dev/null
++++ inn-2.6.3/subscriptions
 @@ -0,0 +1 @@
 +news.announce.newusers

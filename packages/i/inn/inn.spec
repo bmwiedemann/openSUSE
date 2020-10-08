@@ -19,10 +19,14 @@
 Name:           inn
 BuildRequires:  bison
 BuildRequires:  gdbm-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  postfix
+BuildRequires:  python-devel
 BuildRequires:  zlib-devel
-URL:            http://www.isc.org/software/inn/
+BuildRequires:  perl(GD)
+BuildRequires:  perl(MIME::Parser)
+URL:            https://www.isc.org/othersoftware/#INN
 Summary:        InterNetNews
 License:        GPL-2.0-or-later AND BSD-4-Clause
 Group:          Productivity/Networking/News/Servers
@@ -34,9 +38,11 @@ PreReq:         group(uucp)
 PreReq:         user(news)
 PreReq:         group(news)
 Requires:       perl-MIME-tools
+Requires:       perl(GD)
+Requires:       perl(MIME::Parser)
 %{?systemd_requires}
 %{?libperl_requires}
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 %define PatchVersion -%{version}
 Source:         inn%{PatchVersion}.tar.gz
@@ -58,7 +64,11 @@ Rich Salz's InterNetNews news transport system.
 %package devel
 Requires:       %name = %version
 Summary:        InterNetNews development files
-Group:          Productivity/Networking/News/Servers
+Group:          Development/Languages/C and C++
+Requires:       bison
+Requires:       gdbm-devel
+Requires:       pam-devel
+Requires:       zlib-devel
 
 %description devel
 Rich Salz's InterNetNews news transport system.
@@ -82,13 +92,12 @@ Rich Salz's InterNetNews news transport system.
 %setup -n inn%{PatchVersion} 
 %setup -n inn%{PatchVersion} -D -T -a 1 
 %setup -n inn%{PatchVersion} -D -T -a 3
-%patch0
+%patch0 -p1
 cp -a $RPM_SOURCE_DIR/pubring.pgp .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fstack-protector -fcommon" ./configure \
-		--enable-dual-socket \
 		--enable-uucp-rnews \
 		--enable-setgid-inews \
 		--prefix=/usr/lib/news \
@@ -96,14 +105,14 @@ LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_
 		--mandir=%{_mandir} \
 		--disable-shared \
 		--enable-tagged-hash \
-		--enable-ipv6 \
 		--with-perl \
 		--with-zlib \
+        --with-python \
+        --with-openssl \
 		--with-sendmail=/usr/sbin/sendmail \
 		--with-news-user=news \
 		--with-news-group=news \
 		--with-news-master=news \
-		--with-etc-dir=/etc/news \
 		--with-db-dir=/var/lib/news \
 		--with-run-dir=/var/run/news \
 		--with-log-dir=/var/log/news \
@@ -163,8 +172,6 @@ ln %{buildroot}/usr/lib/news/bin/ovdb_init %{buildroot}/usr/lib/news/bin/ovdb_st
 %{installnews} 0555	convertspool	%{buildroot}/usr/lib/news/bin
 %{installnews} 0755 	-d		%{buildroot}/usr/lib/news/include
 %{installnews} 0755 	-d		%{buildroot}/usr/lib/news/include/inn
-#%{installnews} 0644	include/clibrary.h	%{buildroot}/usr/lib/news/include
-#%{installnews} 0644	include/config.h	%{buildroot}/usr/lib/news/include
 #
 # 
 #
@@ -274,12 +281,11 @@ if ! test -d /var/run/news ; then
 fi
 %set_permissions /usr/lib/news/bin/innbind /usr/lib/news/bin/inews /usr/lib/news/bin/rnews
 %service_add_post inn.service
+%tmpfiles_create inn.conf
 
 %post -n mininews
-if [ -x /usr/bin/systemd-tmpfiles ]; then
-    /usr/bin/systemd-tmpfiles --create inn.conf
-fi
 %set_permissions /usr/lib/news/bin/inews /usr/lib/news/bin/rnews
+%tmpfiles_create inn.conf
 
 %verifyscript
 %verify_permissions -e /usr/lib/news/bin/innbind -e /usr/lib/news/bin/inews -e /usr/lib/news/bin/rnews

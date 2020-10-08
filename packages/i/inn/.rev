@@ -304,4 +304,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>814573</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e6fa37849819c6f594c82b4a702a99e9</srcmd5>
+    <version>2.6.3</version>
+    <time>1602155639</time>
+    <user>dimstar_suse</user>
+    <comment>- update to inn-2.6.3</comment>
+    <requestid>840054</requestid>
+  </revision>
 </revisionlist>
