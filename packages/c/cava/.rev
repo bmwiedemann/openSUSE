@@ -109,4 +109,26 @@
   * fix install on macos #365</comment>
     <requestid>818311</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>13b1584319cf6c5629e9ef4268269660</srcmd5>
+    <version>0.7.3</version>
+    <time>1602155678</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.3:
+  Improvements:
+  * Added Hann windowing and proper ring buffer (this improves visualisation
+  significantly!)
+  * Added mutex lock on write to fftw input buffers and fftw execute (this
+    removes som glitches)
+  * Improved portaudio audio input
+  * #370 made timeout configurable
+  * ncurses mode is now default again
+  * #379 removed key controls from noncurses to fix strange beaviour
+  * Added config option: x-axis scale (frequency) #289
+  Bugfixes:
+  * #375 shmem audio input
+  * #377 small memory leak
+  * #385 fix eq</comment>
+    <requestid>840230</requestid>
+  </revision>
 </revisionlist>

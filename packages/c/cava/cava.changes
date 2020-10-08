@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct  8 10:32:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.3:
+  Improvements:
+  * Added Hann windowing and proper ring buffer (this improves visualisation
+  significantly!)
+  * Added mutex lock on write to fftw input buffers and fftw execute (this
+    removes som glitches)
+  * Improved portaudio audio input
+  * #370 made timeout configurable
+  * ncurses mode is now default again
+  * #379 removed key controls from noncurses to fix strange beaviour
+  * Added config option: x-axis scale (frequency) #289
+  Bugfixes:
+  * #375 shmem audio input
+  * #377 small memory leak
+  * #385 fix eq
+
+-------------------------------------------------------------------
 Thu Jul  2 12:37:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.2:
