@@ -1,0 +1,26 @@
+Index: fontobene-qt5-0.1.0/fontobene-qt5.pro
+===================================================================
+--- fontobene-qt5-0.1.0.orig/fontobene-qt5.pro
++++ fontobene-qt5-0.1.0/fontobene-qt5.pro
+@@ -2,7 +2,7 @@ TEMPLATE = subdirs
+ 
+ SUBDIRS = \
+     fontobene-qt5 \
+-    tests \
++#    tests \
+ 
+ tests.depends = \
+     fontobene-qt5 \
+Index: fontobene-qt5-0.1.0/fontobene-qt5/fontobene-qt5.pro
+===================================================================
+--- fontobene-qt5-0.1.0.orig/fontobene-qt5/fontobene-qt5.pro
++++ fontobene-qt5-0.1.0/fontobene-qt5/fontobene-qt5.pro
+@@ -3,7 +3,7 @@
+ # shared library will still be generated, just ignore that when packaging. It
+ # will not be installed by "make install".
+ 
+-TEMPLATE = lib
++TEMPLATE = aux
+ TARGET = fontobene-qt5
+ 
+ QT = core
