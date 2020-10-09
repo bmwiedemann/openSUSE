@@ -1068,4 +1068,18 @@
   * mac: add an option to prevent focusing of the window on open</comment>
     <requestid>839302</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9fe2fe93ccebfb819034211162bd0c77</srcmd5>
+    <version>0.32.0+git.20201008T111710.16b44d93f7</version>
+    <time>1602282592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201008T111710.16b44d93f7:
+  * Revert &quot;demux: add a POS&quot;
+  * player: fix another nightmarish corner case
+  * demux: add a POS
+  * Revert &quot;wayland: add wayland-display-socket option&quot;
+  * wayland: add wayland-display-socket option
+  * screenshot: add --screenshot-sw option</comment>
+    <requestid>840419</requestid>
+  </revision>
 </revisionlist>

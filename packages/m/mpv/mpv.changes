@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 09 11:30:41 UTC 2020 - idonmez@suse.com
+
+- Update to version 0.32.0+git.20201008T111710.16b44d93f7:
+  * Revert "demux: add a POS"
+  * player: fix another nightmarish corner case
+  * demux: add a POS
+  * Revert "wayland: add wayland-display-socket option"
+  * wayland: add wayland-display-socket option
+  * screenshot: add --screenshot-sw option
+
+-------------------------------------------------------------------
 Sat Oct 03 11:13:34 UTC 2020 - idonmez@suse.com
 
 - Update to version 0.32.0+git.20201001T111222.34b8adc456:
