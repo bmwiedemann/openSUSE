@@ -66,4 +66,12 @@ SPDX format (forwarded request 123774 from babelworx)</comment>
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>87aa1550929ae82c13900f04e5062ab6</srcmd5>
+    <version>2.0.5</version>
+    <time>1602282531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840282</requestid>
+  </revision>
 </revisionlist>

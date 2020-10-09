@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:08:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.0.5:
+  * long list of improvements and bugfixes, see 
+  https://github.com/log4cplus/log4cplus/releases 
+
+-------------------------------------------------------------------
+Tue Mar 20 10:15:13 UTC 2018 - astieger@suse.com
+
+- update to 1.2.1 (bsc#1085912):
+  * many improvements and bug fixes
+  * verify source signature
+
+-------------------------------------------------------------------
 Mon Mar  4 02:26:28 UTC 2013 - jengelh@inai.de
 
 - Kill off %make_install to unbreak SLE build
