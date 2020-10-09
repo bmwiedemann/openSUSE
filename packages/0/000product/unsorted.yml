@@ -1670,6 +1670,7 @@ unsorted:
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
+  - ceph-csi-helm-charts: [x86_64] 
   - ceph-fuse: [x86_64] 
   - ceph-grafana-dashboards: [x86_64] 
   - ceph-immutable-object-cache: [x86_64] 
@@ -1900,6 +1901,7 @@ unsorted:
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
   - cni: [i586] 
+  - cni-plugin-dnsname 
   - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
@@ -17612,7 +17614,6 @@ unsorted:
   - perl-Class-Unload 
   - perl-Class-WhiteHole 
   - perl-Class-XPath 
-  - perl-Class-XSAccessor 
   - perl-Clone 
   - perl-Clone-Choose 
   - perl-Clone-PP 
@@ -17779,7 +17780,6 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
-  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -17792,7 +17792,6 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -17862,7 +17861,6 @@ unsorted:
   - perl-Furl 
   - perl-Fuse 
   - perl-Future 
-  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -17999,8 +17997,6 @@ unsorted:
   - perl-List-AllUtils 
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
-  - perl-List-MoreUtils 
-  - perl-List-MoreUtils-XS 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -18472,7 +18468,6 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
-  - perl-Test-Pod 
   - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
@@ -18509,7 +18504,6 @@ unsorted:
   - perl-Text-BibTeX-devel 
   - perl-Text-Brew 
   - perl-Text-CSV 
-  - perl-Text-CSV_XS 
   - perl-Text-Capitalize 
   - perl-Text-ChaSen 
   - perl-Text-CharWidth 
