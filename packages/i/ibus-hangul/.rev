@@ -233,4 +233,12 @@
     <comment></comment>
     <requestid>838560</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>bd77a7661f674602aa2a3ea4c3cda5cf</srcmd5>
+    <version>1.5.3</version>
+    <time>1602282553</time>
+    <user>dimstar_suse</user>
+    <comment>Update ibus-hangul.spec: change the copyright to use &quot;SUSE LLC&quot;  according to the copyright attribution rules in the SUSE Open Source Policy. (forwarded request 839693 from qzhao)</comment>
+    <requestid>840338</requestid>
+  </revision>
 </revisionlist>

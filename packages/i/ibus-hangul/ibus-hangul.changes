@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 05 12:15:28 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-hangul.spec: change the copyright to use "SUSE LLC" 
+  according to the copyright attribution rules in the SUSE Open 
+  Source Policy.
+  
+-------------------------------------------------------------------
 Tue Sep 29 14:38:12 CEST 2020 - tiwai@suse.de
 
 - Replace buildreq gettext-runtime with gettext, which is preferred
