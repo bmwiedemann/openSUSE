@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/CLIUtils/CLI11.git</param>
+    <param name="package-meta">no</param>
+    <param name="exclude">.git</param>
+    <param name="filename">cli11</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">5cb3efabce007c3a0230e4cc2e27da491c646b6c</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*cli11*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
