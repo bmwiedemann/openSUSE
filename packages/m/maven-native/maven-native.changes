@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:21:43 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to maven-native 1.0-alpha-11
+  * includes many fixes in how libraries are created
+  * includes new parameters in configuration that are increasingly
+    used out there
+
+-------------------------------------------------------------------
 Mon Jun  3 17:52:13 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

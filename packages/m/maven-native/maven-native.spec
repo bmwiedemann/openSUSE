@@ -1,7 +1,7 @@
 #
 # spec file for package maven-native
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,33 @@
 #
 
 
-%global namedversion 1.0-alpha-8
+%global namedversion 1.0-alpha-11
 Name:           maven-native
-Version:        1.0~alpha8
+Version:        1.0~alpha11
 Release:        0
 Summary:        Maven plugin to compile C and C++ source
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
-URL:            http://www.mojohaus.org/plugins.html
+URL:            https://www.mojohaus.org/plugins.html
 # Source code available @ https://github.com/mojohaus/maven-native
-Source0:        http://repo2.maven.org/maven2/org/codehaus/mojo/natives/%{name}/%{namedversion}/%{name}-%{namedversion}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/natives/%{name}/%{namedversion}/%{name}-%{namedversion}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mojo-parent
 BuildRequires:  unzip
-BuildRequires:  mvn(aopalliance:aopalliance)
-BuildRequires:  mvn(bcel:bcel)
-BuildRequires:  mvn(commons-lang:commons-lang)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(net.sf.cglib:cglib)
+BuildRequires:  mvn(org.apache.bcel:bcel)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven:maven-aether-provider)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-api)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
@@ -86,10 +86,7 @@ done
 sed -i "s|edu.emory.mathcs.backport.java.util.concurrent|java.util.concurrent|" \
  maven-native-api/src/main/java/org/codehaus/mojo/natives/compiler/AbstractCompiler.java
 
-sed -i 's|<artifactId>maven-project|<artifactId>maven-compat|' pom.xml
-%pom_remove_dep :maven-project native-maven-plugin
-%pom_add_dep org.apache.maven:maven-compat native-maven-plugin
-%pom_add_dep org.apache.maven:maven-core native-maven-plugin
+%pom_remove_plugin -r :sortpom-maven-plugin
 
 # missing test deps
 %pom_add_dep aopalliance:aopalliance::test native-maven-plugin
@@ -103,6 +100,7 @@ sed -i 's|<artifactId>maven-project|<artifactId>maven-compat|' pom.xml
 %{mvn_package} ":%{name}-javah" components
 %{mvn_package} ":%{name}-manager" components
 %{mvn_package} ":%{name}-msvc" components
+%{mvn_package} ":%{name}-mingw" components
 %{mvn_package} ":native-maven-plugin" native-maven-plugin
 
 %build
