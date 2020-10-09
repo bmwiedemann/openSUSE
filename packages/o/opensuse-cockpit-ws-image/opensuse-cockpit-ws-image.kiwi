@@ -45,6 +45,7 @@
     <package name="cockpit-ws"/>
     <package name="cockpit-bridge"/>
     <package name="cockpit-dashboard"/>
+    <package name="system-group-wheel"/>
     <package name="mandoc"/>
     <package name="-busybox-man"/>
     <package name="-busybox-diffutils"/>
