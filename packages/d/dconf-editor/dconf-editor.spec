@@ -17,7 +17,7 @@
 
 
 Name:           dconf-editor
-Version:        3.36.4
+Version:        3.36.7
 Release:        0
 Summary:        Graphical editor for the dconf key-based configuration system
 License:        GPL-3.0-or-later
