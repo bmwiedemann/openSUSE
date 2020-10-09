@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Oct  9 07:54:17 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+
+-------------------------------------------------------------------
+* Wed Sep 30 2020 paul.fee@jci.com
+- Package redis++ 1.0.0 for openSUSE
+- disable_static_lib.patch
+  Upstream commit: master 10c3e8242812696bc3d965e033d132cbdac1d11d
+  13 Sep 2020
+  Add cmake options to disable building static lib or shared lib.
+  Used here since only shared library is packaged.
+- use_shared_lib_for_test.patch
+  Link against shared libraries provided by hiredis package.
+- custom_install_locations.patch
+  Provide CMake options for custom library and header file locations.
+  For example lib64 on x86_64 and lib on i586.

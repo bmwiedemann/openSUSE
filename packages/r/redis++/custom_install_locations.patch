@@ -1,0 +1,33 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -82,19 +82,26 @@
+     add_subdirectory(test)
+ endif()
+ 
++if (NOT DEFINED REDIS_LIBDIR)
++    set(REDIS_LIBDIR lib)
++endif()
++
+ # Install static lib.
+ if (REDIS_PLUS_PLUS_BUILD_STATIC)
+     install(TARGETS ${STATIC_LIB}
+-            ARCHIVE DESTINATION lib)
++           ARCHIVE DESTINATION ${REDIS_LIBDIR})
+ endif()
+ 
+ # Install shared lib.
+ if (REDIS_PLUS_PLUS_BUILD_SHARED)
+     install(TARGETS ${SHARED_LIB}
+-            LIBRARY DESTINATION lib)
++           LIBRARY DESTINATION ${REDIS_LIBDIR})
+ endif()
+ 
+ # Install headers.
+-set(HEADER_PATH "sw/redis++")
++if (NOT DEFINED REDIS_INCDIR)
++    set(REDIS_INCDIR "sw/redis++")
++endif()
++
+ file(GLOB HEADERS "${PROJECT_SOURCE_DIR}/*.h*" "${TLS_SUB_DIR}/*.h")
+-install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${HEADER_PATH})
++install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${REDIS_INCDIR})

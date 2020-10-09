@@ -1,0 +1,144 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ec7f4b5..cf17224 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@ endif()
+ 
+ message(STATUS "The CXX standard is c++${REDIS_PLUS_PLUS_CXX_STANDARD}")
+ 
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${REDIS_PLUS_PLUS_CXX_STANDARD} -Wall -W -Werror -fPIC")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++${REDIS_PLUS_PLUS_CXX_STANDARD} -Wall -W -Werror")
+ 
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+ 
+@@ -33,49 +33,68 @@ endif()
+ 
+ file(GLOB TLS_SOURCE_FILES "${TLS_SUB_DIR}/*.cpp")
+ 
+-set(STATIC_LIB redis-plus-plus-static)
+-set(SHARED_LIB redis-plus-plus-shared)
++# hiredis dependency
++find_path(HIREDIS_HEADER hiredis)
++find_library(HIREDIS_LIB hiredis)
+ 
+-add_library(${STATIC_LIB} STATIC ${PROJECT_SOURCE_FILES} ${TLS_SOURCE_FILES})
+-add_library(${SHARED_LIB} SHARED ${PROJECT_SOURCE_FILES} ${TLS_SOURCE_FILES})
++# Build static library
++option(REDIS_PLUS_PLUS_BUILD_STATIC "Build static library" ON)
+ 
+-target_include_directories(${STATIC_LIB} PUBLIC ${PROJECT_SOURCE_DIR} ${TLS_SUB_DIR})
+-target_include_directories(${SHARED_LIB} PUBLIC ${PROJECT_SOURCE_DIR} ${TLS_SUB_DIR})
++if (REDIS_PLUS_PLUS_BUILD_STATIC)
++    set(STATIC_LIB redis-plus-plus-static)
+ 
+-# hiredis dependency
+-find_path(HIREDIS_HEADER hiredis)
+-target_include_directories(${STATIC_LIB} PUBLIC ${HIREDIS_HEADER})
+-target_include_directories(${SHARED_LIB} PUBLIC ${HIREDIS_HEADER})
++    add_library(${STATIC_LIB} STATIC ${PROJECT_SOURCE_FILES} ${TLS_SOURCE_FILES})
+ 
+-find_library(HIREDIS_LIB hiredis)
+-target_link_libraries(${SHARED_LIB} ${HIREDIS_LIB})
++    target_include_directories(${STATIC_LIB} PUBLIC ${PROJECT_SOURCE_DIR} ${TLS_SUB_DIR})
++    target_include_directories(${STATIC_LIB} PUBLIC ${HIREDIS_HEADER})
+ 
+-if (REDIS_PLUS_PLUS_USE_TLS)
+-    find_library(HIREDIS_TLS_LIB hiredis_ssl)
+-    target_link_libraries(${SHARED_LIB} ${HIREDIS_TLS_LIB})
++    set_target_properties(${STATIC_LIB} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
++    set_target_properties(${STATIC_LIB} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++    set_target_properties(${STATIC_LIB} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ endif()
+ 
+-set_target_properties(${STATIC_LIB} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
+-set_target_properties(${SHARED_LIB} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
++# Build shared library
++option(REDIS_PLUS_PLUS_BUILD_SHARED "Build shared library" ON)
++
++if (REDIS_PLUS_PLUS_BUILD_SHARED)
++    set(SHARED_LIB redis-plus-plus-shared)
+ 
+-set_target_properties(${STATIC_LIB} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+-set_target_properties(${SHARED_LIB} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++    add_library(${SHARED_LIB} SHARED ${PROJECT_SOURCE_FILES} ${TLS_SOURCE_FILES})
++
++    target_include_directories(${SHARED_LIB} PUBLIC ${PROJECT_SOURCE_DIR} ${TLS_SUB_DIR})
++    target_include_directories(${SHARED_LIB} PUBLIC ${HIREDIS_HEADER})
++
++    target_link_libraries(${SHARED_LIB} ${HIREDIS_LIB})
++
++    if (REDIS_PLUS_PLUS_USE_TLS)
++        find_library(HIREDIS_TLS_LIB hiredis_ssl)
++        target_link_libraries(${SHARED_LIB} ${HIREDIS_TLS_LIB})
++    endif()
++
++    set_target_properties(${SHARED_LIB} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
++    set_target_properties(${SHARED_LIB} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
++    set_target_properties(${SHARED_LIB} PROPERTIES POSITION_INDEPENDENT_CODE ON)
++endif()
+ 
+ option(REDIS_PLUS_PLUS_BUILD_TEST "Build tests for redis++" ON)
+ 
+-if(REDIS_PLUS_PLUS_BUILD_TEST)
++if (REDIS_PLUS_PLUS_BUILD_TEST)
+     add_subdirectory(test)
+ endif()
+ 
+ # Install static lib.
+-install(TARGETS ${STATIC_LIB}
+-        ARCHIVE DESTINATION lib)
++if (REDIS_PLUS_PLUS_BUILD_STATIC)
++    install(TARGETS ${STATIC_LIB}
++            ARCHIVE DESTINATION lib)
++endif()
+ 
+ # Install shared lib.
+-install(TARGETS ${SHARED_LIB}
+-        LIBRARY DESTINATION lib)
++if (REDIS_PLUS_PLUS_BUILD_SHARED)
++    install(TARGETS ${SHARED_LIB}
++            LIBRARY DESTINATION lib)
++endif()
+ 
+-#Install headers.
++# Install headers.
+ set(HEADER_PATH "sw/redis++")
+ file(GLOB HEADERS "${PROJECT_SOURCE_DIR}/*.h*" "${TLS_SUB_DIR}/*.h")
+ install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/${HEADER_PATH})
+diff --git a/README.md b/README.md
+index 4a90aee..21286a7 100644
+--- a/README.md
++++ b/README.md
+@@ -115,6 +115,8 @@ When compiling *redis-plus-plus*, it also compiles a test program, which might t
+ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/path/to/hiredis -DCMAKE_INSTALL_PREFIX=/path/to/install/redis-plus-plus -DREDIS_PLUS_PLUS_BUILD_TEST=OFF ..
+ ```
+ 
++By default, *redis-plus-plus* builds both a static library and a shared library. If you only want to build one of them, you can disable the other with `-DREDIS_PLUS_PLUS_BUILD_STATIC=OFF` or `-DREDIS_PLUS_PLUS_BUILD_SHARED=OFF`.
++
+ ### Run Tests (Optional)
+ 
+ *redis-plus-plus* has been fully tested with the following compilers:
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index c498da9..a5bcd73 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -29,10 +29,16 @@ endif()
+ target_include_directories(${PROJECT_NAME} PUBLIC ../src)
+ 
+ ## solaris socket dependency
+-IF (CMAKE_SYSTEM_NAME MATCHES "(Solaris|SunOS)" )
++if (CMAKE_SYSTEM_NAME MATCHES "(Solaris|SunOS)")
+     target_link_libraries(${PROJECT_NAME} -lsocket)
+-ENDIF(CMAKE_SYSTEM_NAME MATCHES "(Solaris|SunOS)" )
++endif(CMAKE_SYSTEM_NAME MATCHES "(Solaris|SunOS)")
+ 
+ find_package(Threads REQUIRED)
+ 
+-target_link_libraries(${PROJECT_NAME} redis-plus-plus-static ${CMAKE_THREAD_LIBS_INIT})
++if (REDIS_PLUS_PLUS_BUILD_STATIC)
++    set(REDIS_PLUS_PLUS_LIB redis-plus-plus-static)
++else()
++    set(REDIS_PLUS_PLUS_LIB redis-plus-plus-shared)
++endif()
++
++target_link_libraries(${PROJECT_NAME} ${REDIS_PLUS_PLUS_LIB} ${CMAKE_THREAD_LIBS_INIT})

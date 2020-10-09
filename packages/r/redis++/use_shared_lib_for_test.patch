@@ -1,0 +1,20 @@
+--- test/CMakeLists.txt
++++ test/CMakeLists.txt
+@@ -16,13 +16,13 @@
+ find_path(HIREDIS_HEADER hiredis)
+ target_include_directories(${PROJECT_NAME} PUBLIC ${HIREDIS_HEADER})
+
+-find_library(HIREDIS_STATIC_LIB libhiredis.a)
+-target_link_libraries(${PROJECT_NAME} ${HIREDIS_STATIC_LIB})
++find_library(HIREDIS_SHARED_LIB libhiredis.so)
++target_link_libraries(${PROJECT_NAME} ${HIREDIS_SHARED_LIB})
+
+ if (REDIS_PLUS_PLUS_USE_TLS)
+     find_package(OpenSSL REQUIRED)
+-    find_library(HIREDIS_TLS_STATIC_LIB libhiredis_ssl.a)
+-    target_link_libraries(${PROJECT_NAME} ${HIREDIS_TLS_STATIC_LIB} ${OPENSSL_LIBRARIES})
++    find_library(HIREDIS_TLS_SHARED_LIB libhiredis_ssl.so)
++    target_link_libraries(${PROJECT_NAME} ${HIREDIS_TLS_SHARED_LIB} ${OPENSSL_LIBRARIES})
+ endif()
+
+ # redis++ dependency
