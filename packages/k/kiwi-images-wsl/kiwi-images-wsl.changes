@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 13:01:29 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add system-user-nobody bsc#1176401 
+  Part of patterns-base-base but not in minimal_base
+
+-------------------------------------------------------------------
 Wed Jun 24 11:13:02 UTC 2020 - Lubos Kocman <lubos.kocman@suse.com>
 
 - add lsof to the package list

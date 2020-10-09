@@ -35,6 +35,8 @@
     <package name="vim"/>
     <package name="joe"/>
     <package name="patterns-openSUSE-minimal_base"/>
+    <!-- not in minimal_base but expected by applications -->
+    <package name="system-user-nobody"/>
     <!-- only recommended in pattern -->
     <package name="iputils"/>
     <package name="openssh"/>
