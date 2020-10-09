@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 05 12:15:28 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-table-chinese.spec: change the copyright to use
+  "SUSE LLC" according to the copyright attribution rules in the
+  SUSE Open Source Policy.
+  
+-------------------------------------------------------------------
 Wed Apr 15 06:18:12 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-table-chinese.spec: Drop the is_opensuse macro to
