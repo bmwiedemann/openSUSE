@@ -1,7 +1,7 @@
 #
 # spec file for package php7-APCu
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define pkg_name apcu
 Name:           php7-APCu
-Version:        5.1.18
+Version:        5.1.19
 Release:        0
 Summary:        APCu - APC User Cache
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
-URL:            http://pecl.php.net/package/APCu
+URL:            https://pecl.php.net/package/APCu
 Source:         http://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        apcu.ini
 BuildRequires:  php7-devel >= 7.0
@@ -32,7 +32,6 @@ Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
 Provides:       php-APCu = %{version}
 Obsoletes:      php-APCu < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 APCu is userland caching: APC stripped of opcode caching in preparation
@@ -49,13 +48,13 @@ sed -e "s/__DATE__/\"$FAKE_BUILDDATE\"/g" -i php_apc.c
 fi
 
 %build
-export CFLAGS="%optflags -fvisibility=hidden"
+export CFLAGS="%{optflags} -fvisibility=hidden"
 %{_bindir}/phpize
 %configure --enable-apcu
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test PHP_EXECUTABLE=%{_bindir}/php NO_INTERACTION=1
+%make_build test PHP_EXECUTABLE=%{_bindir}/php NO_INTERACTION=1
 
 %install
 make install INSTALL_ROOT=%{buildroot}
@@ -65,7 +64,6 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/php7/conf.d/%{pkg_name}
 rm -rf %{buildroot}/%{_includedir}/php7/ext/%{pkg_name}/
 
 %files
-%defattr(-,root,root,-)
 %{_libdir}/php7/extensions/%{pkg_name}.so
 %config(noreplace) %{_sysconfdir}/php7/conf.d/%{pkg_name}.ini
 %doc NOTICE README.md TECHNOTES.txt apc.php
