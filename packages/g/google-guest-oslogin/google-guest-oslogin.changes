@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 09:24:32 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20200925.00
+  *  add getpwnam,getpwuid,getgrnam,getgrgid (#42)
+  *  Change requires to not require the python library for policycoreutils. (#44)
+  *  add dial and recvline (#41)
+  *  PR feedback
+  *  new client component and tests
+
+-------------------------------------------------------------------
 Tue Aug 25 15:27:35 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20200819.00 (bsc#1175740, bsc#1175741)
