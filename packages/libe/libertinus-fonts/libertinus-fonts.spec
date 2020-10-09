@@ -18,7 +18,7 @@
 
 %define fontname Libertinus
 Name:           libertinus-fonts
-Version:        7.000
+Version:        7.010
 Release:        0
 Summary:        Libertinus font family
 License:        OFL-1.1

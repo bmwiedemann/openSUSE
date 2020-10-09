@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:32:27 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.010:
+  * Build WOFF2 static font files suitable for use as self-hosted
+    webfonts (these are not packaged here)
+  * Add ‘𝄆’ [U+1D106] and ‘𝄇’ [U+1D107] MUSICAL SYMBOL REPEAT SIGN
+    glyphs
+  * Add ‘꞉’ [U+A789] MODIFIER LETTER COLON glyph
+  * Fix weight of period (and derivatives such as colon) in Serif
+    Semibold
+  * Fix side bearings for +dlig ‘tz’
+  * Fix vertical alignment of dots in colon to not shift between
+    weights
+  * Fix kerning of ‘f\’ and substitute an alternate ‘f’ glyph used
+    in ‘f)’
+  * Cleanup encoding used in source files and build rules for easier
+    maintenance
+  * Update font meta data fields, documentation for downloads, and
+    build process
+
+-------------------------------------------------------------------
 Sun Aug 23 20:29:55 UTC 2020 - Benedikt Fein <benedikt.fein@gmail.com>
 
 - Update to 7.000
