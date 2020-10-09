@@ -668,4 +668,15 @@
 - Add patch xemacs-libX11-boo1175028.patch as a try to fix also boo#1175028</comment>
     <requestid>827492</requestid>
   </revision>
+  <revision rev="93" vrev="20">
+    <srcmd5>e638a3537daf5a3eb13c1dfd9ce0df82</srcmd5>
+    <version>21.5.34</version>
+    <time>1602282484</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xemacs-21.5.34-strsignal.patch as sys_siglist is deprecated 
+
+- Update xemacs.spec: change source URL since the old is deprecated
+  Make xemacs can build successfuly.</comment>
+    <requestid>840398</requestid>
+  </revision>
 </revisionlist>

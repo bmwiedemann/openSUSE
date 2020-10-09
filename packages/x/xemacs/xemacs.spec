@@ -71,7 +71,7 @@ URL:            http://www.xemacs.org
 #
 # delete the .hg directory before creating the tarball in order
 # not to make the source rpm huge.
-Source0:        http://ftp.freenet.de/pub/ftp.xemacs.org/tux/xemacs/xemacs-21.5/%{name}-%{version}.tar.gz
+Source0:        http://ftp.xemacs.org/pub/xemacs/xemacs-21.5/%{name}-%{version}.tar.gz
 Source1:        xe-list.el
 Source2:        fix-load-history.el
 Source3:        xemacs.desktop
@@ -112,6 +112,8 @@ Patch60:        xemacs-21.5.34-sbrk.patch
 # PATCH-FIX-SUSE fix make build race
 Patch61:        xemacs-21.5.34-boo1115177.patch
 Patch62:        xemacs-libX11-boo1175028.patch
+# PATCH-FIX-SUSE sys_siglist is deprecated
+Patch63:        xemacs-21.5.34-strsignal.patch
 Requires(pre):  permissions
 Requires:       ctags
 Requires:       efont-unicode
@@ -207,6 +209,7 @@ echo Use xfs, that is XFontSet support for internationalized menubar.
 %patch60 -p0
 %patch61 -p0
 %patch62 -p0
+%patch63 -p0
 %patch0 -p1
 find lisp/ etc/ -name '*.elc' | xargs -r rm -f
 find . -name CVS -type d | xargs rm -rf
