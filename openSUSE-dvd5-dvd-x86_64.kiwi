@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201007" schemaversion="4.1">
+<image name="OBS__openSUSE___20201008" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201007</productvar>
+      <productvar name="VERSION">20201008</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201007,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201008,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201007/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201008/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3693,6 +3693,7 @@
       <repopackage name="perl-Bootloader"/>
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
+      <repopackage name="perl-Class-XSAccessor"/>
       <repopackage name="perl-common-sense"/>
       <repopackage name="perl-Config-General"/>
       <repopackage name="perl-Convert-ASN1"/>
@@ -3714,13 +3715,16 @@
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
       <repopackage name="perl-doc"/>
+      <repopackage name="perl-Encode"/>
       <repopackage name="perl-Encode-Detect"/>
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>
       <repopackage name="perl-Expect"/>
+      <repopackage name="perl-Exporter-Tiny"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-RandomAccess"/>
       <repopackage name="perl-FileHandle-Unget"/>
+      <repopackage name="perl-GD"/>
       <repopackage name="perl-gettext"/>
       <repopackage name="perl-HTML-Parser"/>
       <repopackage name="perl-HTML-Tagset"/>
@@ -3738,6 +3742,8 @@
       <repopackage name="perl-IPC-Run3"/>
       <repopackage name="perl-ldap"/>
       <repopackage name="perl-libwww-perl"/>
+      <repopackage name="perl-List-MoreUtils"/>
+      <repopackage name="perl-List-MoreUtils-XS"/>
       <repopackage name="perl-LWP-MediaTypes"/>
       <repopackage name="perl-LWP-Protocol-https"/>
       <repopackage name="perl-Mail-DKIM"/>
@@ -3766,7 +3772,9 @@
       <repopackage name="perl-Socket6"/>
       <repopackage name="perl-Term-ReadKey"/>
       <repopackage name="perl-Term-ReadLine-Gnu"/>
+      <repopackage name="perl-Test-Pod"/>
       <repopackage name="perl-Test-RequiresInternet"/>
+      <repopackage name="perl-Text-CSV_XS"/>
       <repopackage name="perl-TimeDate"/>
       <repopackage name="perl-Try-Tiny"/>
       <repopackage name="perl-Unix-Syslog"/>
