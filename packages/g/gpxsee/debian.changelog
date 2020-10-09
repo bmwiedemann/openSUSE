@@ -1,3 +1,15 @@
+gpxsee (7.34) stable; urgency=medium
+
+  * Fixed application icons paths.
+
+ -- Martin Tuma <tumic@cbox.cz>  Fri, 09 Oct 2020 05:35:15 +0200
+
+gpxsee (7.33) stable; urgency=low
+
+  * Added PNG export.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 07 Oct 2020 23:23:59 +0200
+
 gpxsee (7.32) stable; urgency=low
 
   * Configurable (GPX) segments handling.
