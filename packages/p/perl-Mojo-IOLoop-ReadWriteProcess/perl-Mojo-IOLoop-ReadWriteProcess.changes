@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:16:47 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.28 2020-09-30T11:51:40Z
+   - Avoid executing "blocking stop" code when process has already terminated by Martchus
+
+-------------------------------------------------------------------
 Fri Jul  3 03:11:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.27

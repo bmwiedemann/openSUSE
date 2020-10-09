@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.27
+Version:        0.28
 Release:        0
 %define cpan_name Mojo-IOLoop-ReadWriteProcess
 Summary:        Execute external programs or internal code blocks as separate process
