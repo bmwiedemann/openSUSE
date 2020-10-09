@@ -1,7 +1,7 @@
 (lambda (features)
   (flet ((enable (x) (pushnew x features))
          (disable (x) (setf features (remove x features))))
-    #+nil (enable :sb-thread)
+    (enable :sb-thread)
     (enable :sb-core-compression)
     (enable :sb-futex)
     (enable :sb-xref-for-internals)

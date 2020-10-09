@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 07:37:54 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Make sure :sb-thread is enabled, required by :sb-futex
+
+-------------------------------------------------------------------
 Wed Sep 30 13:10:03 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.0.9
