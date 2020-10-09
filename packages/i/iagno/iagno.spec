@@ -17,15 +17,13 @@
 
 
 Name:           iagno
-Version:        3.36.4
+Version:        3.36.7
 Release:        0
 Summary:        Reversi Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Iagno
 Source0:        https://download.gnome.org/sources/iagno/3.36/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM iagno-add-missing-posix.patch -- Fix build with new vala
-Patch0:         iagno-add-missing-posix.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
