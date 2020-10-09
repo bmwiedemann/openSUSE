@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:07:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.24
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.24 2020-10-02 (rurban)
+          - Fix decode_json(scalar, 0) (GH #171 plicease), check 2nd arg for true-ness
+
+-------------------------------------------------------------------
 Sun Sep  6 03:07:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.23
