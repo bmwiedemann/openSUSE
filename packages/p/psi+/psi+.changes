@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:13:34 UTC 2020 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.4.1513
+  * Iris updated
+  * Vcard: Added a workaround to show either desc or note
+  * Fix http links
+  * Update application meta files
+  * Wayland related fixes
+  * Fixed crash on multiple vcard update for the same muc contact
+  * An attempt to fix crash mentioned in #411
+  * Fixed another crash on exit (after opening at least one chat)
+  * Fixed crash on empty cert chain
+  * Applied a few fixes to themes
+  * Updated stun servers list
+  * Avoid smileys double conversion on each access with webkit/engine version
+  * Fixed image loading from imgur
+  * Update psi.desktop
+
+-------------------------------------------------------------------
 Thu Aug  6 08:29:54 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - update to 1.4.1473
