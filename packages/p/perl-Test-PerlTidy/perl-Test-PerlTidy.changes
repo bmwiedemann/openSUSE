@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:26:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20200930
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20200930        2020-09-30
+
+              * Fix the tests with lates Perl::Tidy
+
+-------------------------------------------------------------------
 Mon Apr 13 03:14:40 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 20200412
