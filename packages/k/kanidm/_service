@@ -4,9 +4,9 @@
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
     <!-- <param name="revision">master</param> -->
-    <param name="revision">v1.1.0-alpha</param>
+    <param name="revision">v1.1.0-alpha.2</param>
     <param name="match-tag">v*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)-alpha</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)-alpha\.2</param>
     <param name="versionrewrite-replacement">\1~alpha</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">wbrown@suse.de</param>

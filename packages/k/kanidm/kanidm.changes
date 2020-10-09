@@ -1,7 +1,38 @@
--------------------------------------------------------------------
-Wed Sep 23 01:17:22 UTC 2020 - William Brown <william.brown@suse.com>
+Thu Oct 01 00:19:19 UTC 2020 - wbrown@suse.de
 
-- Correct missing license details
+- Update to version v1.1.0alpha.2~git0.764e727:
+  * Update
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * (cargo-release) version 1.1.0-alpha.2
+  * gitignore
+  * Update Release Notes
+  * 250 cookie to auth bearer (#321)
+  * 259 reduce clones (#319)
+  * Xxx clippy outdated (#318)
+  * 314 improve async (#316)
+  * Update README.md
+  * On login pw upgrade (#315)
+  * Add python3 support to radius
+  * Dynamic crypto rounds (#311)
+  * tweak book chapter
+  * 67 resource limits impl (#307)
+  * Update based on review
+  * Apply suggestions from code review
+  * doc
+  * Build improvements
+  * Support zfs page size
+  * V large cleanup
+  * Cleanup and improve client error handling
+  * Improve server hardening
+  * Update deps + add simd support in container
+  * Add FAQ + eap selection
+  * Minor updates
+  * tweak release steps
 
 -------------------------------------------------------------------
 Mon Aug  3 00:38:29 UTC 2020 - William Brown <william.brown@suse.com>

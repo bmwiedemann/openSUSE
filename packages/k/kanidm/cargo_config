@@ -6,5 +6,14 @@ git = "https://github.com/csnewman/libnss-rs.git"
 rev = "eab2d93d2438652773699b0807d558ce75b1e748"
 replace-with = "vendored-sources"
 
+[source."https://github.com/http-rs/tide-rustls.git"]
+git = "https://github.com/http-rs/tide-rustls.git"
+rev = "c1f13a77e82369323274d832b8d3f33ba7c272c7"
+replace-with = "vendored-sources"
+
+[source."https://github.com/mozilla-services/fernet-rs.git"]
+git = "https://github.com/mozilla-services/fernet-rs.git"
+replace-with = "vendored-sources"
+
 [source.vendored-sources]
 directory = "vendor"

@@ -1,7 +1,7 @@
 #
 # spec file for package kanidm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Solid source of inspiration.
 # https://build.opensuse.org/package/view_file/home:luke_nukem:rust_apps/nushell/nushell.spec?expand=1
 
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           kanidm
-Version:        v1.1.0alpha~git0.c8ac497
+Version:        v1.1.0alpha.2~git0.ca71b12
 Release:        0
 Summary:        Kanidm identity project
 License:        MPL-2.0 AND Apache-2.0 AND MIT AND ISC AND OpenSSL AND APSL-2.0
-Url:            https://github.com/Firstyear/kanidm
+URL:            https://github.com/kanidm/kanidm
 Source:         kanidm-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
@@ -36,9 +37,9 @@ Source12:       server.toml
 ExcludeArch:    %ix86
 
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.39.0
-BuildRequires:  rust-std-static
 BuildRequires:  lld
+BuildRequires:  rust >= 1.45.0
+BuildRequires:  rust-std-static
 # BuildRequires:  pkgconfig(openssl)
 # BuildRequires:  sqlite-devel
 BuildRequires:  pam-devel
@@ -73,7 +74,7 @@ Server for kanidm
 Summary:        Client nsswitch/pam/ssh integration for consuming kanidm
 License:        MPL-2.0
 Requires:       %{name}-clients
-Requires:	pam
+Requires:       pam
 # Requires:	libsqlite3-0
 
 %description unixd-clients
@@ -177,5 +178,3 @@ install -m 0640 %{SOURCE12} %{buildroot}%{configdir}/server.toml
 %{_unitdir}/kanidm-unixd.service
 
 %changelog
-
-
