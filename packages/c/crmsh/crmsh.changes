@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 09 06:53:46 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1602225426.5f84efb5:
+  * Dev: unittest: unit test for hb_report sanitize
+  * Dev: behave: functional test for hb_report sanitize
+  * Fix: hb_report: fix sanitize functionality(bsc#1163581)
+
+-------------------------------------------------------------------
+Thu Sep 24 02:53:05 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1600915005.e8089225:
+  * FIx start_delay with start-delay
+  * fix on_fail should be on-fail
+
+-------------------------------------------------------------------
 Tue Sep 22 02:54:36 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1600742357.6be225e5:
