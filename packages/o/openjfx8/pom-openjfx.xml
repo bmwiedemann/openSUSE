@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<name>openjfx</name>
+	<groupId>org.openjfx</groupId>
+	<artifactId>javafx</artifactId>
+	<description>OpenJFX JavaFX</description>
+	<packaging>pom</packaging>
+	<version>@RELEASE_VERSION@</version>
+	<modules>
+		<module>buildSrc</module>
+		<module>modules/base</module>
+		<module>modules/graphics</module>
+		<module>modules/controls</module>
+		<module>modules/swing</module>
+		<module>modules/swt</module>
+		<module>modules/fxml</module>
+		<module>modules/media</module>
+		<module>modules/web</module>
+		<module>modules/builders</module>
+		<module>modules/fxpackager/native</module>
+		<module>modules/fxpackager</module>
+		<module>modules/fxpackager/so</module>
+		<module>modules/jmx</module>
+		<module>shade</module>
+	</modules>
+	
+</project>

@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>javafx.graphics</name>
+	<packaging>jar</packaging>
+	<artifactId>javafx.graphics</artifactId>
+	<groupId>org.openjfx</groupId>
+	<version>@RELEASE_VERSION@</version>
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>buildSrc</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>javafx.base</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.swt</groupId>
+			<artifactId>swt</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<sourceDirectory>${project.basedir}/../src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/../src/main/java</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>
+						<arg>-bootclasspath</arg>
+						<arg>${java.home}/lib/rt.jar</arg>
+						<arg>-XDignore.symbol.file</arg>
+						<arg>-XDuseUnsharedTable=true</arg>
+						<arg>-proc:none</arg>
+						<arg>-g:source,lines,vars</arg>
+						<arg>-h</arg>
+						<arg>modules/graphics/build/gensrc/headers/</arg>
+					</compilerArgs>
+					<excludes>
+						<exclude>**/d3d/*.java</exclude>
+						<exclude>**/mac/*.java</exclude>
+						<exclude>**/ios/*.java</exclude>
+						<exclude>**/android/*.java</exclude>
+						<exclude>**/win/*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+			<artifactId>maven-antrun-plugin</artifactId>
+			<executions>
+				<execution>
+				<phase>process-classes</phase>
+				<goals>
+					<goal>run</goal>
+				</goals>
+				<configuration>
+					<exportAntProperties>true</exportAntProperties>
+					<target>
+					   <property name="runtime_classpath" refid="maven.compile.classpath"/>
+					   <exec executable="${java.home}/../bin/javah">
+						   <arg value="-cp"/>
+						   <arg value="${runtime_classpath}"/>
+						   <arg value="-d"/>
+						   <arg value="${project.build.directory}/../../build/gensrc/headers/"/>
+						   <arg value="com.sun.glass.ui.Application"/>
+						   <arg value="com.sun.glass.ui.Cursor"/>
+						   <arg value="com.sun.glass.ui.Window"/>
+						   <arg value="com.sun.glass.ui.View"/>
+						   <arg value="com.sun.glass.events.WindowEvent"/>
+						   <arg value="com.sun.glass.events.MouseEvent"/>
+						   <arg value="com.sun.glass.events.ViewEvent"/>
+						   <arg value="com.sun.glass.events.KeyEvent"/>
+						   <arg value="com.sun.glass.events.DndEvent"/>
+						   <arg value="com.sun.prism.es2.GLDrawable"/>
+						   <arg value="com.sun.prism.es2.GLPixelFormat"/>
+						   <arg value="com.sun.pisces.RendererBase"/>
+					   </exec>
+					</target>
+				</configuration>
+			   </execution>
+			</executions>
+		</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<finalName>javafx.graphics</finalName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

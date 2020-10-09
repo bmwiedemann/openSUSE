@@ -18,6 +18,19 @@
 
 %global openjfxdir %{_jvmdir}/%{name}
 %global oldname java-1_8_0-openjfx
+%global archinstall %{_arch}
+%ifarch x86_64
+%global archinstall amd64
+%endif
+%ifarch %{ix86}
+%global archinstall i386
+%endif
+%ifarch %{arm}
+%global archinstall aarch32
+%endif
+%ifarch %{aarch64}
+%global archinstall aarch64
+%endif
 Name:           openjfx8
 Version:        8.0.202
 Release:        0
@@ -26,34 +39,65 @@ License:        GPL-2.0-only WITH Classpath-exception-2.0 AND BSD-3-Clause
 URL:            https://openjdk.java.net/projects/openjfx/
 Source0:        http://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/8u202-b07.tar.bz2
 Source1:        README.install
+Source2:        pom-base.xml
+Source3:        pom-builders.xml
+Source4:        pom-controls.xml
+Source5:        pom-fxml.xml
+Source6:        pom-fxpackager.xml
+Source7:        pom-graphics.xml
+Source8:        pom-graphics_compileDecoraCompilers.xml
+Source9:        pom-graphics_compileDecoraJavaShaders.xml
+Source10:       pom-graphics_compileJava.xml
+Source11:       pom-graphics_compilePrismCompilers.xml
+Source12:       pom-graphics_compilePrismJavaShaders.xml
+Source13:       pom-graphics_libdecora.xml
+Source14:       pom-graphics_libglass.xml
+Source15:       pom-graphics_libglassgtk2.xml
+Source16:       pom-graphics_libglassgtk3.xml
+Source17:       pom-graphics_libjavafx_font.xml
+Source18:       pom-graphics_libjavafx_font_freetype.xml
+Source19:       pom-graphics_libjavafx_font_pango.xml
+Source20:       pom-graphics_libjavafx_iio.xml
+Source21:       pom-graphics_libprism_common.xml
+Source22:       pom-graphics_libprism_es2.xml
+Source23:       pom-graphics_libprism_sw.xml
+Source24:       pom-jmx.xml
+Source25:       pom-media.xml
+Source26:       pom-openjfx.xml
+Source27:       pom-swing.xml
+Source28:       pom-swt.xml
+Source29:       pom-web.xml
+Source30:       shade.xml
+Source31:       build.xml
+Source32:       buildSrc.xml
+Source33:       fxpackager-native.xml
+Source34:       fxpackager-so.xml
+Source35:       build-sources.xml
 Patch0:         0000-Fix-wait-call-in-PosixPlatform.patch
-Patch1:         0001-Change-SWT-and-Lucene.patch
-Patch2:         0002-Allow-build-to-work-on-newer-gradles.patch
-Patch3:         0003-fix-cast-between-incompatible-function-types.patch
-Patch4:         0004-Fix-Compilation-Flags.patch
-Patch5:         0005-fxpackager-extract-jre-accept-symlink.patch
+Patch1:         0003-fix-cast-between-incompatible-function-types.patch
+Patch2:         0004-Fix-Compilation-Flags.patch
+Patch3:         0005-fxpackager-extract-jre-accept-symlink.patch
 Patch100:       openjfx-antlr.patch
 Patch101:       openjfx-icedtea8.patch
 Patch102:       openjfx-nowerror.patch
 Patch103:       openjfx-pango.patch
 Patch104:       openjfx-architectures.patch
-Patch105:       openjfx8-sysctl.patch
-BuildRequires:  bison
-BuildRequires:  eclipse-swt
-BuildRequires:  fdupes
-BuildRequires:  flex
+BuildRequires:  ant
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  gperf
-BuildRequires:  gradle-local
-BuildRequires:  java-devel >= 1.8
 BuildRequires:  libstdc++-devel
+BuildRequires:  maven-local
 BuildRequires:  pkgconfig
 BuildRequires:  mvn(antlr:antlr)
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.antlr:antlr)
 BuildRequires:  mvn(org.antlr:stringtemplate)
 BuildRequires:  mvn(org.apache.ant:ant)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:exec-maven-plugin)
+BuildRequires:  mvn(org.codehaus.mojo:native-maven-plugin)
+BuildRequires:  mvn(org.eclipse.swt:swt)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -62,14 +106,12 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildConflicts: java-devel >= 9
+#!BuildIgnore:  antlr3-tool-bootstrap
+#!BuildRequires: antlr3-tool
+#!BuildIgnore:  stringtemplate4-bootstrap
 Requires:       java >= 1.8
 Provides:       %{oldname}
 Obsoletes:      %{oldname}
-#!BuildIgnore:  antlr3-tool-bootstrap
-#!BuildRequires: antlr3-tool
-#!BuildIgnore:  gradle-bootstrap
-#!BuildRequires: gradle
-#!BuildIgnore:  stringtemplate4-bootstrap
 #!BuildRequires: stringtemplate4
 
 %description
@@ -113,49 +155,103 @@ This package contains javadoc for %{name}.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
 %patch104 -p1
-%patch105 -p1
 
 cp %{SOURCE1} .
 
-cat > gradle.properties << EOF
-COMPILE_WEBKIT = false
-COMPILE_MEDIA = false
-BUILD_JAVADOC = true
-BUILD_SRC_ZIP = true
-GRADLE_VERSION_CHECK = false
-CONF = DebugNative
-EOF
+#Drop *src/test folders
+rm -rf modules/{base,builders,controls,fxml,fxpackager,graphics,jmx,media,swing,swt,web}/src/test/
+rm -rf buildSrc/src/test/
+
+#prep for graphics
+##cp -a modules/javafx.graphics/src/jslc/antlr modules/javafx.graphics/src/main/antlr3
+cp -a modules/graphics/src/main/resources/com/sun/javafx/tk/quantum/*.properties modules/graphics/src/main/java/com/sun/javafx/tk/quantum
+
+#prep for base
+cp -a modules/base/src/main/java8/javafx modules/base/src/main/java
+
+#prep for swt
+cp -a modules/builders/src/main/java/javafx/embed/swt/CustomTransferBuilder.java modules/swt/src/main/java/javafx/embed/swt
 
 find -name '*.class' -delete
 find -name '*.jar' -delete
 
-#Bundled libraries
-rm -rf modules/media/src/main/native/gstreamer/3rd_party/glib
-rm -rf modules/media/src/main/native/gstreamer/gstreamer-lite
+#copy maven files
+cp -a %{_sourcedir}/pom-*.xml .
+mv pom-openjfx.xml pom.xml
+
+for MODULE in base graphics controls swing swt fxml media web builders fxpackager jmx
+do
+	mv pom-$MODULE.xml ./modules/$MODULE/pom.xml
+done
+
+#shade
+mkdir shade
+cp -a %{_sourcedir}/shade.xml ./shade/pom.xml
+
+#fxpackager native exe
+mkdir ./modules/fxpackager/native
+cp -a %{_sourcedir}/fxpackager-native.xml ./modules/fxpackager/native/pom.xml
+#fxpackager libpackager.so
+mkdir ./modules/fxpackager/so
+cp -a %{_sourcedir}/fxpackager-so.xml ./modules/fxpackager/so/pom.xml
+
+cp -a %{_sourcedir}/buildSrc.xml ./buildSrc/pom.xml
+
+mkdir ./modules/graphics/{compileJava,compilePrismCompilers,compilePrismJavaShaders,compileDecoraCompilers,compileDecoraJavaShaders,libdecora,libjavafx_font,libjavafx_font_freetype,libjavafx_font_pango,libglass,libglassgtk2,libglassgtk3,libjavafx_iio,libprism_common,libprism_es2,libprism_sw}
+for GRAPHMOD in compileJava compilePrismCompilers compilePrismJavaShaders compileDecoraCompilers compileDecoraJavaShaders libdecora libjavafx_font libjavafx_font_freetype libjavafx_font_pango libglass libglassgtk2 libglassgtk3 libjavafx_iio libprism_common libprism_es2 libprism_sw
+do
+	mv pom-graphics_$GRAPHMOD.xml ./modules/graphics/$GRAPHMOD/pom.xml
+done
+
+#set VersionInfo
+cp -a %{_sourcedir}/build.xml .
+ant -f build.xml
+
+cp -a %{_sourcedir}/build-sources.xml .
 
 %build
-gradle-local --no-daemon --offline
+%{mvn_build} -f -- -Dbuild.java.arch=%{archinstall}
+
+ant -f build-sources.xml
 
 %install
 install -d -m 755 %{buildroot}%{openjfxdir}
-cp -a build/sdk/{bin,lib,rt} %{buildroot}%{openjfxdir}
+mkdir -p %{buildroot}%{openjfxdir}/bin
+mkdir -p %{buildroot}%{openjfxdir}/lib
+mkdir -p %{buildroot}%{openjfxdir}/rt/lib/{%{archinstall},ext}
+
+cp -a shade/target/jfxrt.jar %{buildroot}%{openjfxdir}/rt/lib/ext
+cp -a modules/swt/target/jfxswt.jar %{buildroot}%{openjfxdir}/rt/lib
+cp -a modules/graphics/libdecora/target/libdecora_sse.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libglass/target/libglass.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libglassgtk2/target/libglassgtk2.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libglassgtk3/target/libglassgtk3.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libjavafx_font/target/libjavafx_font.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libjavafx_font_freetype/target/libjavafx_font_freetype.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libjavafx_font_pango/target/libjavafx_font_pango.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libjavafx_iio/target/libjavafx_iio.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libprism_common/target/libprism_common.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libprism_es2/target/libprism_es2.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/graphics/libprism_sw/target/libprism_sw.so %{buildroot}%{openjfxdir}/rt/lib/%{archinstall}
+cp -a modules/jmx/target/javafx-mx.jar %{buildroot}%{openjfxdir}/lib
+cp -a modules/fxpackager/target/fxpackager-ant-javafx.jar %{buildroot}%{openjfxdir}/lib/ant-javafx.jar
+cp -a modules/fxpackager/target/fxpackager-packager.jar %{buildroot}%{openjfxdir}/lib/packager.jar
+cp -a modules/fxpackager/src/main/native/javapackager/shell/javapackager %{buildroot}%{openjfxdir}/bin
+cp -a modules/fxpackager/src/main/native/javapackager/shell/javapackager %{buildroot}%{openjfxdir}/bin/javafxpackager
 
 install -d -m 755 %{buildroot}%{_mandir}/man1
-install -m 644 build/sdk/man/man1/* %{buildroot}%{_mandir}/man1
+install -m 644 modules/fxpackager/src/main/man/man1/* %{buildroot}%{_mandir}/man1
 
-install -m 644 build/sdk/javafx-src.zip %{buildroot}%{openjfxdir}/javafx-src.zip
+install -m 644 javafx-src.zip %{buildroot}%{openjfxdir}/javafx-src.zip
 
 install -d 755 %{buildroot}%{_javadocdir}/%{name}
-cp -a build/sdk/docs/api/. %{buildroot}%{_javadocdir}/%{name}
-%fdupes -s %{buildroot}%{_javadocdir}/%{name}
+cp -a target/site/apidocs/. %{buildroot}%{_javadocdir}/%{name}
 
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{openjfxdir}/bin/javafxpackager %{buildroot}%{_bindir}
@@ -165,7 +261,8 @@ ln -s %{openjfxdir}/bin/javapackager %{buildroot}%{_bindir}
 %dir %{openjfxdir}
 %{openjfxdir}/rt
 %license LICENSE
-%doc README README.install
+%doc README
+%doc README.install
 
 %files devel
 %{openjfxdir}/lib
@@ -175,7 +272,8 @@ ln -s %{openjfxdir}/bin/javapackager %{buildroot}%{_bindir}
 %{_mandir}/man1/javafxpackager.1%{?ext_man}
 %{_mandir}/man1/javapackager.1%{?ext_man}
 %license LICENSE
-%doc README README.install
+%doc README
+%doc README.install
 
 %files src
 %{openjfxdir}/javafx-src.zip

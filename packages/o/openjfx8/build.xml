@@ -1,0 +1,49 @@
+<project name="VersionInfo" default="replaceVersionInfo" basedir=".">
+  <!-- set global properties for this build -->
+  <property file="build.properties"/>
+  
+  <property name="file.versioninfo"	value="VersionInfo.java"/>
+  <property name="src.versioninfo"	value="modules/base/src/main/version-info"/>
+  <property name="dst.versioninfo"	value="modules/base/src/main/java/com/sun/javafx/runtime"/>
+  
+  <target name="replaceVersionInfo" depends="prepare,replaceReleaseVersion">
+	  <echo message="RELEASE_SUFFIX="/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@RELEASE_MILESTONE@" value=""/>
+	  <tstamp>
+		<format property="NOW" pattern="yyyy-MM-dd-HHmmss"/>
+	  </tstamp>
+	  <echo message="BUILD_TIMESTAMP=${NOW}"/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@BUILD_TIMESTAMP@" value="${NOW}"/>
+	  <echo message="HUDSON_JOB_NAME=not_hudson"/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@HUDSON_JOB_NAME@" value="not_hudson"/>
+	  <echo message="HUDSON_BUILD_NUMBER=0000"/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@HUDSON_BUILD_NUMBER@" value="0000"/>
+	  <echo message="PROMOTED_BUILD_NUMBER=0"/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@PROMOTED_BUILD_NUMBER@" value="0"/>
+  </target>
+  
+  <target name="replaceReleaseVersion">
+	  <echo message="RELEASE_VERSION=${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}"/>
+	  <replace file="${dst.versioninfo}/${file.versioninfo}" token="@RAW_VERSION@" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}"/>
+	  <!--<replace file="javafx.pom" token="@VERSION@" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}"/>-->
+	  <replace file="pom.xml" token="@RELEASE_VERSION@" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}"/>
+	  <replace dir="modules" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}">
+		  <include name="**/pom.xml"/>
+		  <replacetoken>@RELEASE_VERSION@</replacetoken>
+	  </replace>
+	  <replace dir="shade" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}">
+		  <include name="**/pom.xml"/>
+		  <replacetoken>@RELEASE_VERSION@</replacetoken>
+	  </replace>
+	  <replace dir="buildSrc" value="${jfx.release.major.version}.${jfx.release.minor.version}.${jfx.release.micro.version}">
+		  <include name="**/pom.xml"/>
+		  <replacetoken>@RELEASE_VERSION@</replacetoken>
+	  </replace>
+  </target>
+  
+  <target name="prepare">
+	  <copy file="${src.versioninfo}/${file.versioninfo}" tofile="${dst.versioninfo}/${file.versioninfo}"/>
+  </target>
+  
+  
+</project>

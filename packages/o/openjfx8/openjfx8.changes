@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:14:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Change build from using gradle to a mix of maven and ant builds
+- Removed patches:
+  * 0001-Change-SWT-and-Lucene.patch
+  * 0002-Allow-build-to-work-on-newer-gradles.patch
+    + gradle build specific patches not needed any more
+  * openjfx8-sysctl.patch
+    + intergrated in 0000-Fix-wait-call-in-PosixPlatform.patch
+- Modified patch:
+  * 0000-Fix-wait-call-in-PosixPlatform.patch
+    + integrate the openjfx8-sysctl.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 06:09:41 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

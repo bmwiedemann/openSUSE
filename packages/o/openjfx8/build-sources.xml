@@ -1,0 +1,10 @@
+<project name="sources" default="mergeSources" basedir=".">
+  
+  <target name="mergeSources">
+	<zip destfile="javafx-src.zip">
+		<zipgroupfileset dir="modules" includes="**/*-sources.jar"/>
+	</zip>
+  </target>
+  
+  
+</project>

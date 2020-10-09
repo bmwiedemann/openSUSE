@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>javafx.fxpackager</name>
+	<packaging>jar</packaging>
+	<artifactId>javafx.fxpackager</artifactId>
+	<parent>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx</artifactId>
+		<version>@RELEASE_VERSION@</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant-launcher</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>
+						<arg>-XDignore.symbol.file</arg>
+						<arg>-XDuseUnsharedTable=true</arg>
+						<arg>-proc:none</arg>
+						<arg>-g:source,lines,vars</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>ant-javafx</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<finalName>fxpackager</finalName>
+							<classifier>ant-javafx</classifier>
+						</configuration>
+					</execution>
+					<execution>
+						<id>packager</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<finalName>fxpackager</finalName>
+							<classifier>packager</classifier>
+							<includes>
+								<include>**/jdk/**</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<tasks>
+						<move todir="target/classes/resources/classes/com/javafx/main">
+							<fileset dir="target/classes/com/javafx/main"/>
+						</move>
+						<delete dir="target/classes/com/javafx" />
+						<copy todir="target/classes/com/oracle/tools/packager/linux">
+							<fileset dir="native/target"/>
+							<globmapper from="JavaAppLauncher.uexe" to="JavaAppLauncher"/>
+						</copy>
+					</tasks>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<name>javafx.graphics</name>
+	<packaging>pom</packaging>
+	<artifactId>javafx.graphics-aggregator</artifactId>
+	<parent>
+		<groupId>org.openjfx</groupId>
+		<artifactId>javafx</artifactId>
+		<version>@RELEASE_VERSION@</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<modules>
+		<module>compileJava</module>
+		<module>compilePrismCompilers</module>
+		<module>compilePrismJavaShaders</module>
+		<module>compileDecoraCompilers</module>
+		<module>compileDecoraJavaShaders</module>
+		<module>libdecora</module>
+		<module>libjavafx_font</module>
+		<module>libjavafx_font_freetype</module>
+		<module>libjavafx_font_pango</module>
+		<module>libglass</module>
+		<module>libglassgtk2</module>
+		<module>libglassgtk3</module>
+		<module>libjavafx_iio</module>
+		<module>libprism_common</module>
+		<module>libprism_es2</module>
+		<module>libprism_sw</module>
+	</modules>
+
+</project>
