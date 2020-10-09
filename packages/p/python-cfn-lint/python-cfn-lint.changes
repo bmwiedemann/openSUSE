@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:23:49 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.37.1
+  * Update CloudFormation specs to 18.6.0
+  * Add `AllowedValues` for `AWS::DMS::Endpoint.EngineName`
+  * Fix an issue with rule E2521 and E2520 to handle `Ref: AWS::Novalue`
+- from version 0.37.0
+  * Update CloudFormation specs to 18.5.0
+  * Get `AllowedValues` from Botocore during `--update-specs`
+  * Add string length requirements for `AWS::Config::ConfigRule.Description`
+  * Patch `AWS::StepFunctions::Activity` to include `Name` and remove `Arn`
+  * Fix an issue with rule `E3002` to better handle when conditions
+    are used at the root level of a list
+  * Update core node libraries to remove `Ref: AWS::NoValue` from returned properties
+- from version 0.36.1
+  * Update CloudFormation specs to 18.4.0
+  * Add `ap-northeast-3` to `scripts/update_specs_services_from_ssm.py`
+- from version 0.36.0
+  * Update rule E2541 to validate that input artifacts are output artifacts from
+    a previous action and that output artifact names are unique in the pipeline
+  * New rule E3007 to validate parameter and resource names are unique
+  * Update CloudFormation specs to 18.3.0
+  * Expand `AllowedValues` for `AWS::AmazonMQ::Broker.EngineVersion` and `AWS::Glue::Trigger.Condition.State`
+  * Expand `templated_exceptions` property types that require package command for rule E3002 and W3002
+  * Pin pyrsistent to `0.16.0` with Python versions less than `3.5`
+  * Fix an issue with SSM Spec patching that resulted in resource `PropertyTypes`
+    not being added to the spec patches
+  * Update directives to use the resource name key as the start
+
+-------------------------------------------------------------------
 Tue Sep  8 09:54:16 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.35.1
