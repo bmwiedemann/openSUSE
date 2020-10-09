@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:15:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.501
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.501 2020-09-30T04:50:46Z
+  	* Added create_plist_from_string()
+  	* Merged Tom Wyant's code to handle CF$UID types
+  	* A few more things emit warnings if they don't get the right type
+  	* $XML_{head,foot} are now subroutines
+
+-------------------------------------------------------------------
 Fri Mar 23 06:30:16 UTC 2018 - coolo@suse.com
 
 - updated to 1.413

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mac-PropertyList
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Mac-PropertyList
-Version:        1.413
+Version:        1.501
 Release:        0
 %define cpan_name Mac-PropertyList
-Summary:        Work with Mac Plists at a Low Level
+Summary:        Work with Mac plists at a low level
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Mac-PropertyList/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More) >= 0.94
+BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(XML::Entities)
 BuildRequires:  perl(parent)
 Requires:       perl(XML::Entities)
@@ -62,11 +62,11 @@ request).
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
