@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 10:50:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0
+  * Preliminary Qt 6 support
+  * Consistent naming of binaries (libquazip1-qt5 style)
+  * Modern CMake support
+  * Ditched qmake support
+- Drop quazip-0.9-pkgconfig.patch and
+  quazip-0.9-no_static_library.patch (no longer necessary)
+
+-------------------------------------------------------------------
 Sun May 24 13:59:18 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.1
