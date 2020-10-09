@@ -293,4 +293,12 @@
     <comment>New stable release (forwarded request 819025 from iznogood)</comment>
     <requestid>819950</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>9e04d7e651b34d9dec00c2731135697b</srcmd5>
+    <version>3.36.7</version>
+    <time>1602282495</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 840053 from iznogood)</comment>
+    <requestid>840244</requestid>
+  </revision>
 </revisionlist>

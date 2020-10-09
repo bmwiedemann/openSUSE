@@ -17,7 +17,7 @@
 
 
 Name:           four-in-a-row
-Version:        3.36.4
+Version:        3.36.7
 Release:        0
 Summary:        Connect Four Game for GNOME
 # License notice: Source code is GPL-2.0+, Icon themes are GPL-3.0+
