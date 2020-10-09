@@ -231,8 +231,7 @@ if [ "$1" -gt "1" ]; then
 fi
 
 %post
-# %%set_permissions %%{_sbindir}/basic_pam_auth
-# %%set_permissions %%{_sbindir}/pinger
+%set_permissions %{_sbindir}/pinger
 %set_permissions %{_localstatedir}/cache/squid/
 %set_permissions %{_localstatedir}/log/squid/
 %tmpfiles_create %{_tmpfilesdir}/squid.conf
@@ -242,8 +241,7 @@ fi
 %service_del_preun squid.service
 
 %verifyscript
-# %%verify_permissions -e %%{_sbindir}/basic_pam_auth
-# %%verify_permissions -e %%{_sbindir}/pinger
+%verify_permissions -e %{_sbindir}/pinger
 %verify_permissions -e %{_localstatedir}/cache/squid/
 %verify_permissions -e %{_localstatedir}/log/squid/
 

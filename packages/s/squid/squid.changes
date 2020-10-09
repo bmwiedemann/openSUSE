@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:01:44 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Reinstate permissions macros for pinger binary, because the permissions
+  package is also responsible for setting up the cap_net_raw capability,
+  currently a fresh squid install doesn't get a capability bit at all
+  (bsc#1171569).
+
+-------------------------------------------------------------------
 Mon Aug 24 11:38:09 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - squid 4.13:

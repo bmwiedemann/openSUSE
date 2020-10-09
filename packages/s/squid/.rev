@@ -891,4 +891,15 @@ from the squid 3.x changelog</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>831407</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>6f5b9479c4d6cf856a23f762838aee58</srcmd5>
+    <version>4.13</version>
+    <time>1602282548</time>
+    <user>dimstar_suse</user>
+    <comment>- Reinstate permissions macros for pinger binary, because the permissions
+  package is also responsible for setting up the cap_net_raw capability,
+  currently a fresh squid install doesn't get a capability bit at all
+  (bsc#1171569).</comment>
+    <requestid>840300</requestid>
+  </revision>
 </revisionlist>
