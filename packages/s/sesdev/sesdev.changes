@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:24:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.8.0+1602174240.g45df4dd
+  + upstream 1.8.0 release (2020-10-08)
+    * Add support for IPv6 (PR #56)
+    * contrib/deepsea_drive_replace.sh: new test script (PR #306)
+    * ceph_salt: deploy and smoke-test Prometheus (PR #418)
+    * ceph-salt: deploy and smoke-test Grafana (PR #475) 
+    * ceph-salt: deploy and smoke-test alertmanager (PR #480)
+    * ceph-salt: deploy and smoke-test node-exporter (PR #496)
+    * Support official Vagrant boxes from Vagrant Cloud (PR #476)
+    * new msgr2 secure options (PR #481)
+    * Add ability to deploy Ceph on Ubuntu "Bionic Beaver" 18.04 (PR #486)
+    * add label for ses deployment on caasp (PR #488)
+    * Implement --no-provision option to deploy "bare" VMs (PR #490)
+    * Implement "sesdev link" for linking two clusters (PR #498)
+    * Implement "sesdev status" subcommand (PR #502)
+    * Implement "sesdev show DEP_ID --nodes-with-role=ROLE" (PR #506)
+    * Make "sesdev box list" and "sesdev box remove" accept globs (PR #517)
+    * create: implement --fqdn option, specify FQDN when appropriate (PR #519, PR #522)
+    * replace --deploy/--no-deploy option with --provision/--no-provision (PR #490)
+    * caasp4: remove anti-affinity for mons for single node (PR #495)
+    * Revert "ceph_salt_deployment: add 1-minute grace period" (PR #521)
+    * ceph-salt: set some network-related config params explicitly (PR #482)
+    * deployment: do not assert if starting an existing deployment (PR #493)
+    * deployment: do not populate public_network with "0/24" (PR #512)
+    * qa: wait for grafanas to show up before counting them (PR #514)
+    * qa: wait longer for cluster to become healthy (PR #515)
+    * Add makecheck-specific repos only in "sesdev create makecheck" (PR #520)
+    * zypper: install rbd-nbd on all Leap 15.2/SLE-15-SP2 nodes (PR #484)
+    * Update pacific repos (PR #489)
+    * qa/nfs: do not attempt to mount NFS export on "pacific" (PR #492)
+    * deployment: use "vagrant up --provision" to start cluster (PR #501)
+    * cleanup: move cephadm Day 2 provisioner to its own subdirectory (PR #513) 
+    * tox: run pip with --use-feature=2020-resolver (PR #516)
+
+-------------------------------------------------------------------
 Sun Sep 13 12:11:38 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.7.0+1599999069.g8f2e732
