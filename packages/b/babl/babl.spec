@@ -19,7 +19,7 @@
 %define debug_package_requires libbabl-0_1-0 = %{version}-%{release}
 
 Name:           babl
-Version:        0.1.80
+Version:        0.1.82
 Release:        0
 Summary:        Dynamic Pixel Format Translation Library
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -29,7 +29,7 @@ URL:            http://gegl.org/babl/
 Source0:        https://download.gimp.org/pub/babl/0.1/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
