@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:46:46 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- GNU nano 5.3:
+  * Option 'set stateflags' makes nano show the state of auto-indenting,
+    the mark, hard-wrapping, macro recording, and soft-wrapping in the
+    title bar. The flags take the place of "Modified", and a modified
+    buffer is instead indicated by an asterisk (*) after its name.
+  * Nano no longer by default tries using libmagic to determine the type
+    of a file (when neither filename nor first line gave a clue), because
+    in most cases it is a waste of time. It requires using the option
+    --magic or -! or 'set magic' to make nano try libmagic.
+  * The color of the indicator can be changed with 'set scrollercolor'.
+
+-------------------------------------------------------------------
 Mon Aug 24 12:51:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 5.2:

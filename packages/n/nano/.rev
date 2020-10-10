@@ -725,4 +725,12 @@
     <comment>GNU nano 5.2</comment>
     <requestid>828975</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>43161c0f60a97b1ff72ed8da6964f116</srcmd5>
+    <version>5.3</version>
+    <time>1602349283</time>
+    <user>dimstar_suse</user>
+    <comment>GNU nano 5.3</comment>
+    <requestid>840142</requestid>
+  </revision>
 </revisionlist>
