@@ -19,10 +19,11 @@
 
 %define sover	0
 Name:           libmediainfo
-Version:        20.08
+Version:        20.09
 Release:        0
 Summary:        Library for supplying technical and tag information about a video or audio file
 License:        BSD-2-Clause
+Group:          System/Libraries
 URL:            https://mediaarea.net
 Source:         https://mediaarea.net/download/source/%{name}/%{version}/%{name}_%{version}.tar.xz
 Source1:        baselibs.conf
