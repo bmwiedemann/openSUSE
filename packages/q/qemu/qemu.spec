@@ -374,6 +374,7 @@ BuildRequires:  qemu-ppc   = %{qemuver}
 BuildRequires:  qemu-s390  = %{qemuver}
 BuildRequires:  qemu-seabios = %{sbver}
 BuildRequires:  qemu-sgabios = 8
+BuildRequires:  qemu-skiboot = %{qemuver}
 BuildRequires:  qemu-tools = %{qemuver}
 BuildRequires:  qemu-ui-curses = %{qemuver}
 BuildRequires:  qemu-ui-gtk = %{qemuver}
@@ -427,6 +428,7 @@ Suggests:       qemu-block-rbd
 Suggests:       qemu-block-ssh
 Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
+Suggests:       qemu-skiboot
 Suggests:       qemu-lang
 Recommends:     qemu-ksm = %{qemuver}
 Suggests:       qemu-microvm
@@ -517,6 +519,7 @@ Release:        0
 Requires:       %name = %{qemuver}
 Recommends:     qemu-ipxe
 Recommends:     qemu-vgabios
+Recommends:     qemu-skiboot
 
 %description extra
 %{generic_qemu_description}
@@ -885,6 +888,20 @@ BuildArch:      noarch
 %description edk2
 Provides EDK II based firmware.
 %endif
+
+%package skiboot
+Summary:        OPAL firmware (aka skiboot), used in booting OpenPOWER systems
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+BuildArch:      noarch
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+Provides:       %name:%_datadir/%name/forsplits/06
+
+%description skiboot
+Provides OPAL (OpenPower Abstraction Layer) firmware, aka skiboot, as
+traditionally packaged with QEMU.
 
 %package ksm
 Summary:        Kernel Samepage Merging services
@@ -1613,6 +1630,13 @@ install -D -m 0644 %{SOURCE203} %{buildroot}%_docdir/%name/qemu-ga-ref.txt
 install -D -m 0644 %{SOURCE204} %{buildroot}%_docdir/%name/qemu-qmp-ref.html
 install -D -m 0644 %{SOURCE205} %{buildroot}%_docdir/%name/qemu-qmp-ref.txt
 mv %{buildroot}%_libexecdir/qemu-pr-helper %{buildroot}%_bindir/qemu-pr-helper
+
+# in support of update-alternatives
+mv %{buildroot}%_datadir/%name/skiboot.lid %{buildroot}%_datadir/%name/skiboot.lid.qemu
+# create a dummy target for /etc/alternatives/skiboot.lid
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
+
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
 for X in 00 01 02 03 04 05 06 07 08 09
 do
@@ -1687,6 +1711,15 @@ fi
 %postun ksm
 %service_del_postun ksm.service
 
+%post skiboot
+update-alternatives --install \
+   %{_datadir}/%name/skiboot.lid skiboot.lid %{_datadir}/%name/skiboot.lid.qemu 15
+
+%postun skiboot
+if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
+   update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
+fi
+
 %endif # qemu
 
 # ========================================================================
@@ -1718,7 +1751,6 @@ fi
 %_datadir/%name/forsplits/02
 %_datadir/%name/forsplits/04
 %_datadir/%name/forsplits/05
-%_datadir/%name/forsplits/06
 %_datadir/%name/forsplits/07
 %_datadir/%name/forsplits/08
 %_datadir/%name/forsplits/09
@@ -1894,7 +1926,6 @@ fi
 %_datadir/%name/canyonlands.dtb
 %_datadir/%name/openbios-ppc
 %_datadir/%name/qemu_vga.ndrv
-%_datadir/%name/skiboot.lid
 %_datadir/%name/slof.bin
 %_datadir/%name/u-boot.e500
 %_datadir/%name/u-boot-sam460-20100605.bin
@@ -2149,6 +2180,15 @@ fi
 %_datadir/%name/firmware/60-edk2-x86_64.json
 %endif
 %endif
+
+%files skiboot
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/06
+%_datadir/%name/skiboot.lid
+%_datadir/%name/skiboot.lid.qemu
+%ghost %_sysconfdir/alternatives/skiboot.lid
 
 %files vhost-user-gpu
 %defattr(-, root, root)
