@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 07:58:21 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- adjust permissions.d entries to new %libexedir location (bsc#1171164).
+
+-------------------------------------------------------------------
 Tue Jul 28 11:20:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Fix same strange permissions below /usr/share/sendmail 
