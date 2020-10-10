@@ -114,11 +114,9 @@ ln -sf %{_bindir}/tracepath6    %{buildroot}/bin
 %post
 %service_add_post rdisc.service
 %set_permissions %{_bindir}/clockdiff
-%set_permissions %{_bindir}/ping
 
 %verifyscript
 %verify_permissions -e %{_bindir}/clockdiff
-%verify_permissions -e %{_bindir}/ping
 
 %preun
 %service_del_preun rdisc.service

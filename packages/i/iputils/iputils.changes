@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 12:16:44 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- No longer invoke permissions macros for ping. It now uses ICMP_PROTO sockets
+  (bsc#1174504).
+
+-------------------------------------------------------------------
 Mon Aug 24 07:06:40 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version s20200821
