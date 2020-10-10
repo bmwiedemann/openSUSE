@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 02:58:43 UTC 2020 - Emil Biserov <biserov@gmail.com>
+
+- updated for 0.7.2
+- tests-modules-load.lua added
+
+-------------------------------------------------------------------
 Mon Jul  6 19:04:27 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add lua54 as new build target
