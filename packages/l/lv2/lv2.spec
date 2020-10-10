@@ -1,7 +1,7 @@
 #
 # spec file for package lv2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,22 @@
 %endif
 
 Name:           lv2
-Version:        1.16.0
+Version:        1.18.0
 Release:        0
 Summary:        Plugin standard for audio systems
 License:        ISC
 Group:          System/Libraries
-Url:            http://lv2plug.in/
+URL:            http://lv2plug.in/
 Source0:        http://lv2plug.in/spec/lv2-%{version}.tar.bz2
 Source1:        lv2-rpmlintrc
 # Patch-Fix-Upstream  lv2pkgconfig.patch davejplater@gmail.com -- Add "/" to end of -I directory because otherwise pkg-config outputs nothing.
 Patch0:         lv2pkgconfig.patch
 BuildRequires:  pkg-config
 %if 0%{?suse_version} > 1500
+BuildRequires:  python3-Markdown
 BuildRequires:  python3-rdflib
 %else
+BuildRequires:  python-Markdown
 BuildRequires:  python-rdflib
 %endif
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
@@ -199,16 +201,12 @@ export CXXFLAGS='%{optflags}'
 
 %install
 %_waf install --lv2dir=%{_libdir}/%{name} --destdir=%{buildroot}
-%if %{asciidocs} == 1
-mv -t . %{buildroot}%{_defaultdocdir}/lv2/lv2plug.in
-%endif
-chmod 0755 %{buildroot}%{_bindir}/lv2_validate
 
 %files
 %defattr(0644,root,root,0755)
 %doc NEWS README.md
 %license COPYING
-%{_bindir}/lv2_validate
+%attr(0755,root,root) %{_bindir}/lv2_validate
 %{_libdir}/lv2/
 %exclude %{_libdir}/lv2/eg-amp.lv2/
 %exclude %{_libdir}/lv2/eg-metro.lv2/
@@ -235,7 +233,9 @@ chmod 0755 %{buildroot}%{_bindir}/lv2_validate
 %if %{asciidocs} == 1
 %files docs
 %defattr(0644,root,root,0755)
-%doc lv2plug.in/
+%doc %{_defaultdocdir}/lv2/aux
+%doc %{_defaultdocdir}/lv2/doc
+%doc %{_defaultdocdir}/lv2/ns
 %endif
 
 %changelog

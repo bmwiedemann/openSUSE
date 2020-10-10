@@ -175,4 +175,12 @@
 - Use python3</comment>
     <requestid>755049</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ba700f0dcdf657d4428c3c2c88297791</srcmd5>
+    <version>1.18.0</version>
+    <time>1602349300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840145</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:23:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.18.0
+  * Improve documentation.
+  * Separate extended documentation from primary data.
+  * core: Add lv2:Markdown datatype.
+  * core: Deprecate lv2:reportsLatency.
+  * patch: Fix incorrect type of patch:sequenceNumber.
+  * port-groups: Remove incorrect type of pg:letterCode.
+  * port-groups: Replace broken links with detailed Ambisonic
+    channel descriptions.
+  * state: Add state:freePath feature.
+  * ui: Add ui:requestValue feature.
+  * ui: Add ui:scaleFactor, ui:foregroundColor, and
+    ui:backgroundColor properties.
+  * ui: Deprecate ui:binary.
+  * worker: Improve documentation.
+
+-------------------------------------------------------------------
 Sun Dec  8 09:36:46 UTC 2019 - Dave Plater <davejplater@gmail.com>
 
 - Build Leap with python2
