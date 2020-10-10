@@ -21,7 +21,7 @@ Name:           open-lldp
 Summary:        Link Layer Discovery Protocol (LLDP) Agent
 License:        GPL-2.0-only
 Group:          System/Daemons
-Version:        1.0.1+102.4c7fcc3
+Version:        1.0.1+69.e8f522565f5a
 Release:        0
 BuildRequires:  bison
 BuildRequires:  flex
@@ -91,16 +91,16 @@ ln -s service %{buildroot}%{_sbindir}/rclldpad
 
 %post
 %{fillup_only -n lldpad}
-%service_add_post lldpad.service
+%service_add_post lldpad.service lldpad.socket
 
 %pre
-%service_add_pre lldpad.service
+%service_add_pre lldpad.service lldpad.socket
 
 %preun
-%service_del_preun lldpad.service
+%service_del_preun lldpad.service lldpad.socket
 
 %postun
-%service_del_postun lldpad.service
+%service_del_postun lldpad.service lldpad.socket
 
 %post -n %libname -p /sbin/ldconfig
 
@@ -115,7 +115,7 @@ ln -s service %{buildroot}%{_sbindir}/rclldpad
 %{_sbindir}/*
 %{_mandir}/man3/*
 %{_mandir}/man8/*
-%config /etc/bash_completion.d/*
+%{_datadir}/bash-completion/completions/*
 
 %files -n %libname
 %defattr(-,root,root)
