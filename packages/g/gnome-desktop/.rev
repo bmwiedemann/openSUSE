@@ -1196,4 +1196,12 @@
   glgo#GNOME/gnome-desktop#169). (forwarded request 834993 from mgorse)</comment>
     <requestid>836035</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>b2241d37598e0657ad8ad906fa5c7cad</srcmd5>
+    <version>3.36.7</version>
+    <time>1602349323</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 840047 from iznogood)</comment>
+    <requestid>840242</requestid>
+  </revision>
 </revisionlist>
