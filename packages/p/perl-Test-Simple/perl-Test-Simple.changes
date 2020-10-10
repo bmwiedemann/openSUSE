@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:12:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302182
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302182  2020-10-05 22:02:28-07:00 America/Los_Angeles
+
+      - Fix 5.6 support
+      - Fix fragile %INC handling in a test
+
+-------------------------------------------------------------------
 Tue Sep 15 03:17:53 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302181
