@@ -18,7 +18,7 @@
 
 %define _version 4.0.0
 Name:           cinnamon
-Version:        4.4.8
+Version:        4.6.7
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -28,8 +28,8 @@ Source:         https://github.com/linuxmint/cinnamon/archive/%{version}/%{name}
 # Some documentation for people writing branding packages, shipped in the branding-upstream package.
 Source1:        README.Gsettings-overrides
 # PATCH-FIX-OPENSUSE cinnamon-wheel-and-sbin-path sor.alexei@meowr.ru -- Make full sbin paths and use wheel as a sudo group.
-Patch0:         %{name}-wheel-and-sbin-path.patch
-# PATCH-FIX-OPENSUSE cinnamon-settings-native.patch sor.alexei@meowr.ru -- Remove foreign configuration tools and add openSUSE's native.
+Patch1:         %{name}-wheel-and-sbin-path.patch
+# PATCH-FIX-OPENSUSE cinnamon-settings-native.patch andythe_great@pm.me -- Remove foreign configuration tools and add openSUSE's native.
 Patch2:         %{name}-settings-native.patch
 # PATCH-FIX-OPENSUSE cinnamon-settings-xscreensaver-path.patch boo#960165 sor.alexei@meowr.ru -- Fix xscreensaver configs path.
 Patch3:         %{name}-settings-xscreensaver-path.patch
@@ -39,14 +39,6 @@ Patch4:         %{name}-favourite-applications.patch
 Patch6:         %{name}-fix-cogl.patch
 # PATCH-FEATURE-OPENSUSE cinnamon-fallback-icewm.patch sor.alexei@meowr.ru -- Use IceWM as fallback.
 Patch7:         %{name}-fallback-icewm.patch
-# PATCH-FIX-OPENSUSE cinnamon-fix-typelib-false-positive.patch sor.alexei@meowr.ru -- remove false typelib(Webkit) dependency
-Patch8:         %{name}-fix-typelib-false-positive.patch
-# PATCH-FIX-UPSTREAM cinnamon-settings-4.4.8-tinycss2.patch marguerite@opensuse.org - port deprecated tinycss to tinycss2
-Patch9:         %{name}-settings-4.4.8-tinycss2.patch
-# PATCH-FIX-UPSTREAM cinnamon-4.4.8-python3-is-with-literal.patch
-Patch10:        %{name}-4.4.8-python3-is-with-literal.patch
-# PATCH-FIX-UPSTREAM cinnamon-4.4.8-python3-platform.linux_distribution.patch
-Patch11:        %{name}-4.4.8-python3-platform.linux_distribution.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -189,16 +181,12 @@ This package contains the code documentation for various Cinnamon components.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
 cp -a %{SOURCE1} .
 
 for file in files%{_datadir}/%{name}/%{name}-settings/bin/*.py files%{_datadir}/%{name}/%{name}-looking-glass/*.py \

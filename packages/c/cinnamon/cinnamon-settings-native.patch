@@ -1,35 +1,42 @@
-Index: cinnamon-4.4.8/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-===================================================================
---- cinnamon-4.4.8.orig/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-+++ cinnamon-4.4.8/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-@@ -76,22 +76,19 @@ CONTROL_CENTER_MODULES = [
+diff -ruN --no-dereference a/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py b/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
+--- a/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2020-08-11 18:38:31.000000000 +0700
++++ b/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py	2020-09-19 03:35:27.016953429 +0700
+@@ -75,23 +75,21 @@
+ ]
  
  STANDALONE_MODULES = [
-     #         Label                          Executable                          Icon                Category        Keywords for filter
--    [_("Printers"),                      "system-config-printer",               "cs-printer",         "hardware",       _("printers, laser, inkjet")],
--    [_("Firewall"),                      "gufw",                                "cs-firewall",        "admin",          _("firewall, block, filter, programs")],
--    [_("Firewall"),                      "firewall-config",                     "cs-firewall",        "admin",          _("firewall, block, filter, programs")],
--    [_("Languages"),                     "mintlocale",                          "cs-language",        "prefs",          _("language, install, foreign")],
--    [_("Input Method"),                  "mintlocale-im",                       "cs-input-method",    "prefs",          _("language, install, foreign, input, method, chinese, korean, japanese, typing")],
-+    [_("Printers"),                      "xdg-su -c '/sbin/yast2 printer'",               "cs-printer",         "hardware",       _("printers, laser, inkjet")],
-+    [_("Firewall"),                      "xdg-su -c '/sbin/yast2 firewall'",                     "cs-firewall",        "admin",          _("firewall, block, filter, programs")],
-+    [_("Languages"),                     "xdg-su -c '/sbin/yast2 language'",                          "cs-language",        "prefs",          _("language, install, foreign")],
-     [_("Login Window"),                  "pkexec lightdm-settings",             "cs-login",           "admin",          _("login, lightdm, mdm, gdm, manager, user, password, startup, switch")],
-     [_("Login Window"),                  "lightdm-gtk-greeter-settings-pkexec", "cs-login",           "admin",          _("login, lightdm, manager, settings, editor")],
--    [_("Driver Manager"),                "pkexec driver-manager",               "cs-drivers",         "admin",          _("video, driver, wifi, card, hardware, proprietary, nvidia, radeon, nouveau, fglrx")],
-+    [_("Driver Manager"),                "xdg-su -c '/sbin/yast2 hwinfo'",               "cs-drivers",         "admin",          _("video, driver, wifi, card, hardware, proprietary, nvidia, radeon, nouveau, fglrx")],
-     [_("Nvidia Settings"),               "nvidia-settings",                     "cs-drivers",         "admin",          _("video, driver, proprietary, nvidia, settings")],
--    [_("Software Sources"),              "pkexec mintsources",                  "cs-sources",         "admin",          _("ppa, repository, package, source, download")],
--    [_("Package Management"),            "dnfdragora",                          "cs-sources",         "admin",          _("update, install, repository, package, source, download")],
--    [_("Package Management"),            "yumex-dnf",                           "cs-sources",         "admin",          _("update, install, repository, package, source, download")],
-+    [_("Software Sources"),              "xdg-su -c '/sbin/yast2 repositories'",                  "cs-sources",         "admin",          _("ppa, repository, package, source, download")],
-+    [_("Package Management"),            "xdg-su -c '/sbin/yast2 sw_single'",                           "cs-sources",         "admin",          _("update, install, repository, package, source, download")],
-     [_("Users and Groups"),              "cinnamon-settings-users",             "cs-user-accounts",   "admin",          _("user, users, account, accounts, group, groups, password")],
-     [_("Bluetooth"),                     "blueberry",                           "cs-bluetooth",       "hardware",       _("bluetooth, dongle, transfer, mobile")],
--    [_("Manage Services and Units"),     "systemd-manager-pkexec",              "cs-sources",         "admin",          _("systemd, units, services, systemctl, init")],
--    [_("Disks"),                         "gnome-disks",                         "gnome-disks",        "hardware",       _("disks, manage, hardware, management, hard, hdd, pendrive, format, erase, test, create, iso, ISO, disk, image")]
-+    [_("Manage Services and Units"),     "xdg-su -c '/sbin/yast2 services-manager'",              "cs-sources",         "admin",          _("systemd, units, services, systemctl, init")],
-+    [_("Disks"),                         "xdg-su -c '/sbin/yast2 partitioner'",                         "gnome-disks",        "hardware",       _("disks, manage, hardware, management, hard, hdd, pendrive, format, erase, test, create, iso, ISO, disk, image")]
+-    # Label                              Executable                             Icon                     Category          Keywords for filter
+-    [_("Printers"),                      "system-config-printer",               "cs-printer",            "hardware",       _("printers, laser, inkjet")],
+-    [_("Firewall"),                      "gufw",                                "cs-firewall",           "admin",          _("firewall, block, filter, programs")],
+-    [_("Firewall"),                      "firewall-config",                     "cs-firewall",           "admin",          _("firewall, block, filter, programs")],
+-    [_("Languages"),                     "mintlocale",                          "cs-language",           "prefs",          _("language, install, foreign")],
+-    [_("Input Method"),                  "mintlocale-im",                       "cs-input-method",       "prefs",          _("language, install, foreign, input, method, chinese, korean, japanese, typing")],
+-    [_("Login Window"),                  "pkexec lightdm-settings",             "cs-login",              "admin",          _("login, lightdm, mdm, gdm, manager, user, password, startup, switch")],
+-    [_("Login Window"),                  "lightdm-gtk-greeter-settings-pkexec", "cs-login",              "admin",          _("login, lightdm, manager, settings, editor")],
+-    [_("Driver Manager"),                "pkexec driver-manager",               "cs-drivers",            "admin",          _("video, driver, wifi, card, hardware, proprietary, nvidia, radeon, nouveau, fglrx")],
+-    [_("Nvidia Settings"),               "nvidia-settings",                     "cs-drivers",            "admin",          _("video, driver, proprietary, nvidia, settings")],
+-    [_("Software Sources"),              "pkexec mintsources",                  "cs-sources",            "admin",          _("ppa, repository, package, source, download")],
+-    [_("Package Management"),            "dnfdragora",                          "cs-sources",            "admin",          _("update, install, repository, package, source, download")],
+-    [_("Package Management"),            "yumex-dnf",                           "cs-sources",            "admin",          _("update, install, repository, package, source, download")],
+-    [_("Users and Groups"),              "cinnamon-settings-users",             "cs-user-accounts",      "admin",          _("user, users, account, accounts, group, groups, password")],
+-    [_("Bluetooth"),                     "blueberry",                           "cs-bluetooth",          "hardware",       _("bluetooth, dongle, transfer, mobile")],
+-    [_("Manage Services and Units"),     "systemd-manager-pkexec",              "cs-sources",            "admin",          _("systemd, units, services, systemctl, init")],
+-    [_("Disks"),                         "gnome-disks",                         "org.gnome.DiskUtility", "hardware",       _("disks, manage, hardware, management, hard, hdd, pendrive, format, erase, test, create, iso, ISO, disk, image")]
++    # Label                              Executable                                  Icon                     Category          Keywords for filter
++    [_("Printers"),                      "xdg-su -c '/sbin/yast2 printer'",          "cs-printer",            "hardware",       _("printers, laser, inkjet")],
++    [_("Firewall"),                      "xdg-su -c '/sbin/yast2 firewall'",         "cs-firewall",           "admin",          _("firewall, block, filter, programs")],
++    [_("Languages"),                     "xdg-su -c '/sbin/yast2 language'",         "cs-language",           "prefs",          _("language, install, foreign")],
++    [_("Input Method"),                  "mintlocale-im",                            "cs-input-method",       "prefs",          _("language, install, foreign, input, method, chinese, korean, japanese, typing")],
++    [_("Login Window"),                  "pkexec lightdm-settings",                  "cs-login",              "admin",          _("login, lightdm, mdm, gdm, manager, user, password, startup, switch")],
++    [_("Login Window"),                  "lightdm-gtk-greeter-settings-pkexec",      "cs-login",              "admin",          _("login, lightdm, manager, settings, editor")],
++    [_("Driver Manager"),                "xdg-su -c '/sbin/yast2 hwinfo'",           "cs-drivers",            "admin",          _("video, driver, wifi, card, hardware, proprietary, nvidia, radeon, nouveau, fglrx")],
++    [_("Nvidia Settings"),               "nvidia-settings",                          "cs-drivers",            "admin",          _("video, driver, proprietary, nvidia, settings")],
++    [_("Software Sources"),              "xdg-su -c '/sbin/yast2 repositories'",     "cs-sources",            "admin",          _("ppa, repository, package, source, download")],
++    [_("Package Management"),            "xdg-su -c '/sbin/yast2 sw_single'",        "cs-sources",            "admin",          _("update, install, repository, package, source, download")],
++    [_("Users and Groups"),              "cinnamon-settings-users",                  "cs-user-accounts",      "admin",          _("user, users, account, accounts, group, groups, password")],
++    [_("Bluetooth"),                     "blueberry",                                "cs-bluetooth",          "hardware",       _("bluetooth, dongle, transfer, mobile")],
++    [_("Manage Services and Units"),     "xdg-su -c '/sbin/yast2 services-manager'", "cs-sources",            "admin",          _("systemd, units, services, systemctl, init")],
++    [_("Disks"),                         "xdg-su -c '/sbin/yast2 partitioner'",      "org.gnome.DiskUtility", "hardware",       _("disks, manage, hardware, management, hard, hdd, pendrive, format, erase, test, create, iso, ISO, disk, image")]
  ]
  
  TABS = {
