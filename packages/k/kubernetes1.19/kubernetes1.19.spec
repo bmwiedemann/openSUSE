@@ -40,6 +40,7 @@ Source24:       90-kubeadm.conf
 Source25:       10-kubeadm.conf
 Source27:       kubelet.tmp.conf
 Source28:       kubernetes-rpmlintrc
+Source29:       kubernetes.obsinfo
 # Patch to change the default registry to registry.opensuse.org/kubic
 Patch2:         kubeadm-opensuse-registry.patch
 # Patch to change the version check server to kubic.opensuse.org
