@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  7 18:56:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.7:
+  + Fix Night Light updates after DPMS
+  + Fix IM handling on X11
+  + Fix resizing of attached modal dialogs on wayland
+  + Fix jumps when resizing windows using discrete steps.
+  + Fixed crashes.
+  + Plugged Memory leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep  8 12:03:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.6+2:

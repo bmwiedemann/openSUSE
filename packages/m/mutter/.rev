@@ -1346,4 +1346,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   + mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch (forwarded request 832974 from iznogood)</comment>
     <requestid>833674</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>69c19fe906e69e69b129aa7e98242648</srcmd5>
+    <version>3.36.7</version>
+    <time>1602349345</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 840125 from iznogood)</comment>
+    <requestid>840251</requestid>
+  </revision>
 </revisionlist>
