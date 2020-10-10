@@ -478,4 +478,41 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
 - refresh 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch</comment>
     <requestid>830435</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9675e12a7bc5c280e0e1a2279b7b7a1c</srcmd5>
+    <version>5.15.1</version>
+    <time>1602349267</time>
+    <user>dimstar_suse</user>
+    <comment>- disable _quick3d flavors in staging through ringdisabled
+
+- enable python2 Quick3D package for Leaps in new multibuild flavor 
+
+- Build Quick3D extension in separate package
+  * This keeps the dependency tree in staging smaller. (Requested
+    by Factory maintainers.)
+  * Is simply unresolvable for repositores which don't have
+    Quick3d but can still build the other extensions.
+- Clean alternatives setup: Make use of %python_clone macro.
+
+- Build Quick3D support in every repository that has it: presumably
+  all Qt 5.15 repositories
+
+- Qt5Quick3D is not available on Leaps
+
+- Add missing Quick3D and TextToSpeech build requirements
+
+- New upstream patch pyqt5-customaudio-qt511.patch
+  * versionize QCustomAudioRoleControl for older Leaps
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043241.html 
+- Updated patch pyqt5-signals-hashable.patch
+  * Fix typedef for old python versions
+  * Patch is submitted to the PyQt5 mailing list
+
+- Fix qtbot failures pyqt5-signals-hashable.patch, see
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043160.html
+  * gh#pytest-dev/pytest-qt#316
+
+- Update to Version 5.15.1</comment>
+    <requestid>840092</requestid>
+  </revision>
 </revisionlist>

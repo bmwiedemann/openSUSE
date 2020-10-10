@@ -16,10 +16,10 @@ modules, and just install a small wrapper for dbus.mainloop.pyqt5.
  4 files changed, 24 insertions(+), 6 deletions(-)
  create mode 100644 dbus/pyqt5.py
 
-Index: PyQt5-5.15.0/configure.py
+Index: PyQt5-5.15.1/configure.py
 ===================================================================
---- PyQt5-5.15.0.orig/configure.py
-+++ PyQt5-5.15.0/configure.py
+--- PyQt5-5.15.1.orig/configure.py
++++ PyQt5-5.15.1/configure.py
 @@ -58,7 +58,7 @@ class ModuleMetadata:
  # The module meta-data.
  MODULE_METADATA = {
@@ -29,7 +29,7 @@ Index: PyQt5-5.15.0/configure.py
      'QAxContainer':         ModuleMetadata(qmake_QT=['axcontainer']),
      'Qt':                   ModuleMetadata(qmake_QT=['-core', '-gui']),
      'QtAndroidExtras':      ModuleMetadata(qmake_QT=['androidextras']),
-@@ -1671,7 +1671,6 @@ del find_qt
+@@ -1674,7 +1674,6 @@ del find_qt
  
          generate_module_makefile(target_config, verbose, mname,
                  include_paths=target_config.dbus_inc_dirs, libs=libs,
@@ -37,7 +37,7 @@ Index: PyQt5-5.15.0/configure.py
                  src_dir=sp_src_dir)
  
          subdirs.append(mname)
-@@ -1701,6 +1700,14 @@ INSTALLS += init_py
+@@ -1704,6 +1703,14 @@ INSTALLS += init_py
  
      all_installs.append(root_dir + '/__init__.py')
  
@@ -52,10 +52,10 @@ Index: PyQt5-5.15.0/configure.py
      # Install the uic module.
      out_f.write('''
  uic_package.files = %s
-Index: PyQt5-5.15.0/dbus/dbus.cpp
+Index: PyQt5-5.15.1/dbus/dbus.cpp
 ===================================================================
---- PyQt5-5.15.0.orig/dbus/dbus.cpp
-+++ PyQt5-5.15.0/dbus/dbus.cpp
+--- PyQt5-5.15.1.orig/dbus/dbus.cpp
++++ PyQt5-5.15.1/dbus/dbus.cpp
 @@ -405,11 +405,11 @@ static PyMethodDef module_functions[] =
  
  // The module entry point.
@@ -85,27 +85,36 @@ Index: PyQt5-5.15.0/dbus/dbus.cpp
 +    Py_InitModule("dbus_mainloop", module_functions);
  }
  #endif
-Index: PyQt5-5.15.0/dbus/pyqt5.py
+Index: PyQt5-5.15.1/dbus/pyqt5.py
 ===================================================================
 --- /dev/null
-+++ PyQt5-5.15.0/dbus/pyqt5.py
++++ PyQt5-5.15.1/dbus/pyqt5.py
 @@ -0,0 +1,5 @@
 +"""Qt main loop integration using "python-qt5"""
 +
 +__all__ = ('DBusQtMainLoop', )
 +
 +from PyQt5.dbus_mainloop import DBusQtMainLoop
-Index: PyQt5-5.15.0/project.py
+Index: PyQt5-5.15.1/project.py
 ===================================================================
---- PyQt5-5.15.0.orig/project.py
-+++ PyQt5-5.15.0/project.py
-@@ -298,6 +298,12 @@ del find_qt
+--- PyQt5-5.15.1.orig/project.py
++++ PyQt5-5.15.1/project.py
+@@ -290,7 +290,7 @@ del find_qt
+         # Create the buildable.
+         sources_dir = os.path.join(self.root_dir, 'dbus')
+ 
+-        buildable = BuildableModule(self, 'dbus', 'dbus.mainloop.pyqt5',
++        buildable = BuildableModule(self, 'dbus', 'PyQt5.dbus_mainloop',
+                 uses_limited_api=True)
+         buildable.builder_settings.append('QT -= gui')
+         buildable.sources.extend(glob.glob(os.path.join(sources_dir, '*.cpp')))
+@@ -300,6 +300,12 @@ del find_qt
          buildable.libraries.extend(dbus_libs)
          buildable.debug = debug
  
 +        installable = Installable('pyqt5', target_subdir=dbus_module_dir)
 +        installable.files.append(
-+                os.path.join(project.root_dir, 'dbus',
++                os.path.join(self.root_dir, 'dbus',
 +                        'pyqt5.py'))
 +        self.installables.append(installable)
 +

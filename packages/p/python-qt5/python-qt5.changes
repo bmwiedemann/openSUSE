@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Oct  7 15:13:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- disable _quick3d flavors in staging through ringdisabled
+
+-------------------------------------------------------------------
+Sat Oct  3 17:55:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- enable python2 Quick3D package for Leaps in new multibuild flavor 
+
+-------------------------------------------------------------------
+Fri Oct  2 11:13:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Build Quick3D extension in separate package
+  * This keeps the dependency tree in staging smaller. (Requested
+    by Factory maintainers.)
+  * Is simply unresolvable for repositores which don't have
+    Quick3d but can still build the other extensions.
+- Clean alternatives setup: Make use of %python_clone macro.
+
+-------------------------------------------------------------------
+Sat Sep 26 18:25:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Build Quick3D support in every repository that has it: presumably
+  all Qt 5.15 repositories
+
+-------------------------------------------------------------------
+Sat Sep 26 14:26:13 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Qt5Quick3D is not available on Leaps
+
+-------------------------------------------------------------------
+Sat Sep 26 12:28:17 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Add missing Quick3D and TextToSpeech build requirements
+
+-------------------------------------------------------------------
+Sat Sep 26 11:44:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- New upstream patch pyqt5-customaudio-qt511.patch
+  * versionize QCustomAudioRoleControl for older Leaps
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043241.html 
+- Updated patch pyqt5-signals-hashable.patch
+  * Fix typedef for old python versions
+  * Patch is submitted to the PyQt5 mailing list
+
+-------------------------------------------------------------------
+Sat Sep 19 15:10:22 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix qtbot failures pyqt5-signals-hashable.patch, see
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043160.html
+  * gh#pytest-dev/pytest-qt#316
+
+-------------------------------------------------------------------
+Mon Sep 14 15:41:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 5.15.1
+  * Added the QtTextToSpeech module.
+  * None is now interpreted as a null QJsonValue.
+  * Bound signals can now be compared for equality.
+  * Q_CLASSINFO, Q_ENUM, Q_ENUMS, Q_FLAG and Q_FLAGS are not
+    implemented when using PyPy.
+- Drop update-timeline.patch once more. Nobody is using
+  nonexistent tags.
+- 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+  * another fix for the project.py for sip5 builds
+
+-------------------------------------------------------------------
+Sun Aug 30 21:48:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix 0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
+  * Variable project is undefined. root_dir is attribute of self.
+  * This is a preparation for sip5 usage
+
+-------------------------------------------------------------------
 Sat Aug 29 08:12:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update update-timeline.patch
