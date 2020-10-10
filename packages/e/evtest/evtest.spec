@@ -1,7 +1,7 @@
 #
 # spec file for package evtest
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           evtest
-Version:        1.33
+Version:        1.34
 Release:        0
 Summary:        Input device event monitor and query tool
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://cgit.freedesktop.org/evtest
-# Full url is http://cgit.freedesktop.org/evtest/snapshot/%%{name}-%%{version}.tar.gz
-# Every time source package is downloaded, there is different timestamp in the gzip header.
-# This makes the factory-auto decline SR, because of "Source URLs are not valid".
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://gitlab.freedesktop.org/libevdev/evtest/
+Source:         https://gitlab.freedesktop.org/libevdev/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
+Patch1:         0001-Add-missing-limits.h-include.patch
+Patch2:         0002-Fix-build-on-32bit-arches-with-64bit-time_t.patch
 BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -42,7 +42,7 @@ including all the events supported by the device. It then monitors the device
 and displays all the events layer events generated.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 autoreconf --install
@@ -54,7 +54,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/evtest
 %doc %{_mandir}/man1/evtest*
 
