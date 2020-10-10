@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  9 20:37:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Integration with the new PlatformIO Trusted Registry
+  * Integration with the new Account Management System
+  * New Package Management System
+  * see https://docs.platformio.org/page/core/migration.html  for migrating from 4.x
+  * full list of changes at https://docs.platformio.org/en/latest/core/history.html
+
+-------------------------------------------------------------------
 Fri Aug 28 10:57:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - Initial package (4.3.4) 
