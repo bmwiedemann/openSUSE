@@ -677,4 +677,17 @@ require it nevertheless
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>834741</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>47b141de93337ad12fef89272ec33719</srcmd5>
+    <version>4.29</version>
+    <time>1602349228</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.29
+  * Remove macOS Code Fragment Manager support code
+  * Remove XP_MACOSX and OS_TARGET=MacOSX
+  * Refresh config.guess and config.sub
+  * Remove NSPR's patch to config.sub
+  * Add support for e2k target (64-bit Elbrus 2000)</comment>
+    <requestid>840030</requestid>
+  </revision>
 </revisionlist>
