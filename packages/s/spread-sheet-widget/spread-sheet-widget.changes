@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:30:01 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to 0.7:
+  - Added library dependencies for GTK and GLIB.
+  - Fixed a few compiler warnings.
+  - Avoid problem if size allocating when not realised.
+  - Add calls to gtk_widget_has_set_window as appropriate.
+  - Improve axis.
+  - xpaned: Add missing realize / unrealize calls.
+  - Update AUTHORS
+  - Remove file cl-t.
+
+-------------------------------------------------------------------
 Wed Sep 23 16:37:09 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Provide URL to upstream SIG file, instead of non-existing ASC.

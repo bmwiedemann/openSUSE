@@ -19,7 +19,7 @@
 
 %define         libname libspread-sheet-widget0
 Name:           spread-sheet-widget
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        GNU Spread Sheet Widget library for Gtk+
 License:        GPL-3.0-or-later
