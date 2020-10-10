@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:50:14 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.8.1:
+ * Bugfixes:
+ + Fixed engine selection in backend settings with Qt 6.
+ + Fixed pixelated playlist source icon for currently playing song.
+ + Fixed crash when deleting queued songs from playlist.
+ + Fixed situations where songs could disappear or be shown multiple times with certain collection groupings.
+ + Fixed initial sizes of playlist header columns.
+ + Fixed Strawberry preventing logout.
+ + Fixed incorrectly splitting of basename for moodbar and transcoding for filenames with several dots.
+ + Fixed certain cases where "playing now" for scrobbler were sent twice.
+ + Fixed album cover loaded twice for certain songs causing slugglish playing widget.
+ + Fixed playing widget to draw text after album cover is fully shown.
+ + Fixed crash when trying to copy a closed playlist to a device.
+ + Fixed incorrect song source for CUE songs when added through the collection watcher.
+ + Disable use of HTML in system tray tooltip on Cinnamon too.
+ + Remove problematic '&' character from OSD messages.
+
+ * Enhancements:
+ + Improved playlist autoscrolling.
+ + Only allow playlist right click tag editing for editable songs.
+ + Read song creation time from subsonic API.
+ + Remember manually set compilation status for albums when songs are rescanned.
+ + Added icons for edit tag playlist right click menu actions.
+ + Maximize dialogs if they are already open when clicked again in the menu.
+ + Added support for compilation tag to edit tag dialog.
+ + Show song info and album cover in OSD on stop and pause.
+ + Reshow OSD on song restart.
+ + Always save initial settings.
+ + Removed use of deprecated gstreamer "low-percent" (Minimum buffer fill setting).
+ + Added buffer low and high watermark settings to backend settings.
+ + Make use of newer version of the desktop notifications service when available.
+
+ * New features:
+ + Added setting for enabling scrobbling based on song source.
+ + Added optional delete from disk in collection and playlist.
+ + Added Last.fm import data wizard.
+ + Added smart and dynamic playlists.
+ + Added song ratings.
+ + Added Qobuz streaming support.
+ + Added Subsonic server side scrobbling support.
+ + Load thumbnails from iPods to show under device collection.
+
+-------------------------------------------------------------------
 Sat Aug 15 21:10:53 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.7.2:
