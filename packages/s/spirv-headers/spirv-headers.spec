@@ -17,7 +17,7 @@
 
 
 Name:           spirv-headers
-Version:        1.5.3.g18
+Version:        1.5.3.g22
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
@@ -46,7 +46,7 @@ registry. This includes:
 %build
 # Because Khronos does not know what DESTDIR is.
 %cmake -DCMAKE_INSTALL_PREFIX="%buildroot/%_prefix"
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 pushd build/

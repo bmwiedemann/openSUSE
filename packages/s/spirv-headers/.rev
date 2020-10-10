@@ -159,4 +159,12 @@
     <comment>- Update to snapshot 1.5.3.g18 (979924c8bc)</comment>
     <requestid>826202</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c55f1981e00a01101fa0de2e691e8310</srcmd5>
+    <version>1.5.3.g22</version>
+    <time>1602349258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3.g22 / 1.5.3.reservations1 (3fdabd0d)</comment>
+    <requestid>840050</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:57:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.5.3.g22 / 1.5.3.reservations1 (3fdabd0d)
+  * Publish the headers for the clspv embedded reflection
+    non-semantic extended instruction set.
+  * Update the registry in spir-v.xml to modernize and split out
+    opcodes.
+
+-------------------------------------------------------------------
 Wed Aug 12 07:26:50 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.5.3.g18 (979924c8bc)
