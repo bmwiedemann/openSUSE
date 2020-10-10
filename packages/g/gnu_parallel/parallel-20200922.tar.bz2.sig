@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20200922.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAl9rAv0ACgkQ0atFFoiI
+iIj3XiaeKlkb420gZysWj7m13duYwl8aNzrGjC4bMJXy4rHguusW2gqAmO5PD6H8
+6dDRxzB1HM5J8A4Y3f9pkbMPGep8gTpeAXa/cdRCRXeRB6+LLWv+cbWd7Fi8E348
+/NR2WQvd7RjUMiKZX4ZzbWDE37FHcgmCPBEelQCswg9l8bhmKRgfNUH2/vkT17PZ
+6IOjh0X3zzQqhbnxTeBQ0iQCI+t0AkqUNIPSOMBNMLfieQVppVI1a00dM5inNMQ8
+Gn2WFT2R/9W3lDjwfncicW4n8Tv8IiHSKkIrte4hTrIhjSqkXKXYnYDsVH7Ot1lU
+lyNs9YAUC9soeZ9Bfd+Fd8mRhowJcx4wn50E54LE4UckFSt/cUae3FCLL+qRAHFG
+XUt0rn5XIjsYNQkHN+LDfYx6jOz8Ou1vMsw4CLMg5RS7vwQidrPiXgh2jLnhILR2
+kDxzUBgR1DIhKU3ThzmjJGRtH7A1YRhpvFbawq+GJeLhvYjDT3r8XhwnxvjrsE2x
+ypV0WA3y3CXQSbgxeI3O4C+pOsNQgkpH+Dgd7f2U9fhO7EyvWPXcoERLki/YiVyV
+AEcxN3FKIiRoXkN+H60A7ztsYLe3ae0tBNFKTf9TRoYV+zZ0BO970sMJ84jAnO7+
+A1bCgZFK7pr50Ji8Y2jaRiWm+vo+OK6qEv1aeM572ksSZITDbLR1gcW7xSWWm6tJ
+ZLKnIK3uXb7Kmv5NJHrGwXfqk+4Rkv+LZ7vAGJbRNQI3uNQSS0DDDh7iBtFCoVS9
+O8DOrk9H1Hgdk4slvBfHigcfkBCKKV4Dbtl59Q5Y4jYRsCY78oZkftlz+NEpn6+o
+vSL8eEpuXRBCCjOCfLcBmVbS5yTHhakmNjUWLBBIxrfNntPijrbs+OCwtQ5xmzBl
+nGGB3/wAnFeiC+uhcxj023mrt05FaEYQS28ouyvIaqbsFXiWzFvwJIm34EcPrSqu
+xFoMHP+HjBwSO8a3fAcy9u+cg/5kRMVV9Pnsi9+YjqJMaNpbx/0qLK0xo8t/fHkr
+i6FUG13l0Ma0TNyBsrLVFrhjgbl0wDCKv3kEg1p95vFCgnvON5bBor9pnzcX43UV
+BpQrI9/8/4+4Ugk1f/ejiY8Zup0izraSB3JWCpBP0mG5VNSnaylmfkcnKZlkKrBT
+yu5xUHJ/vmxyl/+1g2xqaomo4OE/Sf/oIdiUcZZEjYregiVYF+VENH8jHZ6ougKF
+OJk2FWWGrz3cCSZxs18cF7kMxaQIeVwoXqV0aD0xjfsqVr2HExhGn4QSvzqAEFCL
+vrqhOUpSdYIvGok/2+xh0dzx1YVSUCXsHfsLUQAnHtPQIsATgz/veQrLoq84oRMU
+pcFa4e9ksqSmSF1dIJBVjVxMFd11vF+PPZ9FYT7kGgv8tA7p1lHuQYgCg/ZJD0/6
+KufNjYpvStq4r+QiSYbosyTOFg1pwwtdwN48o6oIh3thCsu9aoh5Y3JWQtFiFC2l
+9Wcams/SqTCRXZz6FpANv29wciWFXaz+HUnq4dLGs9jtWNeodsKmckN+pZNu5Lef
+E3hH6M3ajMizYlZdF3FYfch0eeF+xluaaKMNplLfVH98GsJCAVZ3NEqxh+5/CYz4
+dnZQ3Sj1gEsypE2l5qn+lpJJwbABpSRI35moAb+j7XALJYxvra/W4kfr
+=sy79
+-----END PGP SIGNATURE-----

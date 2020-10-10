@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  9 18:12:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20200922
+  * New CPU detection for GNU/Linux
+
+-------------------------------------------------------------------
 Sat Sep  5 15:28:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200822
   * Bug fixes and man page updates.
-
 
 -------------------------------------------------------------------
 Thu Jul 30 13:01:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
