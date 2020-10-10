@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:02:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.36.7:
+  + Fix potential stack overflow in libcroco (CVE-2020-12825).
+  + Fix system action search regressions.
+  + Fix week number alignment when using font-scaling.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 13 12:33:45 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Update gnome-shell-fate324570-Make-GDM-background-image-configurable.patch: 
