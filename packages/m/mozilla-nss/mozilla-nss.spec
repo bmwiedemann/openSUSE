@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.56
-%define NSPR_min_version 4.28
+%global nss_softokn_fips_version 3.57
+%define NSPR_min_version 4.29
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.56
+Version:        3.57
 Release:        0
-%define underscore_version 3_56
+%define underscore_version 3_57
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -50,26 +50,25 @@ Patch5:         malloc.patch
 Patch6:         bmo-1400603.patch
 Patch7:         nss-sqlitename.patch
 Patch8:         ppc-old-abi-v3.patch
-Patch11:        nss-fips-use-getrandom.patch
-Patch13:        nss-fips-dsa-kat.patch
-Patch15:        nss-fips-pairwise-consistency-check.patch
-Patch16:        nss-fips-rsa-keygen-strictness.patch
-Patch19:        nss-fips-cavs-keywrap.patch
-Patch20:        nss-fips-cavs-kas-ffc.patch
-Patch21:        nss-fips-cavs-kas-ecc.patch
-Patch22:        nss-fips-gcm-ctr.patch
-Patch23:        nss-fips-constructor-self-tests.patch
-Patch24:        nss-fips-cavs-general.patch
-Patch25:        nss-fips-cavs-dsa-fixes.patch
-Patch26:        nss-fips-cavs-rsa-fixes.patch
-Patch27:        nss-fips-approved-crypto-non-ec.patch
-Patch29:        nss-fips-zeroization.patch
-Patch30:        nss-fips-tls-allow-md5-prf.patch
-Patch31:        nss-fips-use-strong-random-pool.patch
-Patch32:        nss-fips-detect-fips-mode-fixes.patch
-Patch34:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
-Patch36:        nss-fips-aes-keywrap-post.patch
-Patch37:        nss-freebl-fix-aarch64.patch
+Patch9:         nss-fips-use-getrandom.patch
+Patch10:        nss-fips-dsa-kat.patch
+Patch11:        nss-fips-pairwise-consistency-check.patch
+Patch12:        nss-fips-rsa-keygen-strictness.patch
+Patch13:        nss-fips-cavs-keywrap.patch
+Patch14:        nss-fips-cavs-kas-ffc.patch
+Patch15:        nss-fips-cavs-kas-ecc.patch
+Patch16:        nss-fips-gcm-ctr.patch
+Patch17:        nss-fips-constructor-self-tests.patch
+Patch18:        nss-fips-cavs-general.patch
+Patch19:        nss-fips-cavs-dsa-fixes.patch
+Patch20:        nss-fips-cavs-rsa-fixes.patch
+Patch21:        nss-fips-approved-crypto-non-ec.patch
+Patch22:        nss-fips-zeroization.patch
+Patch23:        nss-fips-tls-allow-md5-prf.patch
+Patch24:        nss-fips-use-strong-random-pool.patch
+Patch25:        nss-fips-detect-fips-mode-fixes.patch
+Patch26:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
+Patch27:        nss-fips-aes-keywrap-post.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -206,12 +205,17 @@ cd nss
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-
 # FIPS patches
+%patch9 -p1
+%patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %patch13 -p1
+%patch14 -p1
 %patch15 -p1
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
@@ -221,15 +225,6 @@ cd nss
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch34 -p1
-%patch36 -p1
-
-# Freebl
-%patch37 -p1
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

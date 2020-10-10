@@ -1,19 +1,8 @@
-# HG changeset patch
-# Parent  33317adf00d6bc6c3e3499e4b32fca6b899c4b77
-Index: security/coreconf/Linux.mk
-===================================================================
-RCS file: /cvsroot/mozilla/security/coreconf/Linux.mk,v
-retrieving revision 1.45.2.1
-
 diff --git a/coreconf/Linux.mk b/coreconf/Linux.mk
+index 956f0e4..b3a352a 100644
 --- a/coreconf/Linux.mk
 +++ b/coreconf/Linux.mk
-@@ -102,21 +102,17 @@ endif
- endif
- 
- 
- ifneq ($(OS_TARGET),Android)
- LIBC_TAG		= _glibc
+@@ -108,11 +108,7 @@ LIBC_TAG		= _glibc
  endif
  
  ifdef BUILD_OPT
@@ -26,8 +15,3 @@ diff --git a/coreconf/Linux.mk b/coreconf/Linux.mk
  ifdef MOZ_DEBUG_SYMBOLS
  	ifdef MOZ_DEBUG_FLAGS
  		OPTIMIZER += $(MOZ_DEBUG_FLAGS)
- 	else
- 		OPTIMIZER += -gdwarf-2
- 	endif
- endif
- endif

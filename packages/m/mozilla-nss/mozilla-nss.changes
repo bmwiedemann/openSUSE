@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 30 21:06:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.57
+  * The following CA certificates were Added:
+    bmo#1663049 - CN=Trustwave Global Certification Authority
+        SHA-256 Fingerprint: 97552015F5DDFC3C8788C006944555408894450084F100867086BC1A2BB58DC8
+    bmo#1663049 - CN=Trustwave Global ECC P256 Certification Authority
+        SHA-256 Fingerprint: 945BBC825EA554F489D1FD51A73DDF2EA624AC7019A05205225C22A78CCFA8B4
+    bmo#1663049 - CN=Trustwave Global ECC P384 Certification Authority
+        SHA-256 Fingerprint: 55903859C8C0C3EBB8759ECE4E2557225FF5758BBD38EBD48276601E1BD58097
+  * The following CA certificates were Removed:
+    bmo#1651211 - CN=EE Certification Centre Root CA
+        SHA-256 Fingerprint: 3E84BA4342908516E77573C0992F0979CA084E4685681FF195CCBA8A229B8A76
+    bmo#1656077 - O=Government Root Certification Authority; C=TW
+        SHA-256 Fingerprint: 7600295EEFE85B9E1FD624DB76062AAAAE59818A54D2774CD4C0B2C01131E1B3
+  * Trust settings for the following CA certificates were Modified:
+    bmo#1653092 - CN=OISTE WISeKey Global Root GA CA
+        Websites (server authentication) trust bit removed.
+  * https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.57_release_notes
+- requires NSPR 4.29
+- removed obsolete nss-freebl-fix-aarch64.patch (bmo#1659256)
+- introduced _constraints due to high memory requirements especially
+  for LTO on Tumbleweed
+
+-------------------------------------------------------------------
 Fri Sep 25 06:55:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on aarch64 - boo#1176934:

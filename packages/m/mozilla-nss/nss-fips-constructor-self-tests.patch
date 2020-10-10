@@ -4,10 +4,15 @@ Date:   Sun Mar 15 21:54:30 2020 +0100
 
     Patch 23: nss-fips-constructor-self-tests.patch
 
-diff -r 3a9a84eee4a2 cmd/chktest/chktest.c
---- a/cmd/chktest/chktest.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/cmd/chktest/chktest.c	Fri May 29 09:13:35 2020 +0200
-@@ -38,7 +38,7 @@
+diff --git a/cmd/chktest/chktest.c b/cmd/chktest/chktest.c
+--- a/cmd/chktest/chktest.c
++++ b/cmd/chktest/chktest.c
+@@ -33,13 +33,13 @@ main(int argc, char **argv)
+     }
+     rv = BL_Init();
+     if (rv != SECSuccess) {
+         SECU_PrintPRandOSError("");
+         return -1;
      }
      RNG_SystemInfoForRNG();
  
@@ -16,10 +21,16 @@ diff -r 3a9a84eee4a2 cmd/chktest/chktest.c
      printf("%s\n",
             (good_result ? "SUCCESS" : "FAILURE"));
      return (good_result) ? SECSuccess : SECFailure;
-diff -r 3a9a84eee4a2 cmd/shlibsign/shlibsign.c
---- a/cmd/shlibsign/shlibsign.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/cmd/shlibsign/shlibsign.c	Fri May 29 09:13:35 2020 +0200
-@@ -946,10 +946,12 @@
+ }
+diff --git a/cmd/shlibsign/shlibsign.c b/cmd/shlibsign/shlibsign.c
+--- a/cmd/shlibsign/shlibsign.c
++++ b/cmd/shlibsign/shlibsign.c
+@@ -941,20 +941,22 @@ main(int argc, char **argv)
+ 
+         if (keySize && (mechInfo.ulMaxKeySize < keySize)) {
+             PR_fprintf(PR_STDERR,
+                        "token doesn't support DSA2 (Max key size=%d)\n",
+                        mechInfo.ulMaxKeySize);
              goto cleanup;
          }
  
@@ -36,10 +47,20 @@ diff -r 3a9a84eee4a2 cmd/shlibsign/shlibsign.c
          }
      }
  
-diff -r 3a9a84eee4a2 lib/freebl/blapi.h
---- a/lib/freebl/blapi.h	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/blapi.h	Fri May 29 09:13:35 2020 +0200
-@@ -1736,17 +1736,17 @@
+     /* DSA key init */
+     if (keySize == 1024) {
+         dsaPubKeyTemplate[0].type = CKA_PRIME;
+         dsaPubKeyTemplate[0].pValue = (CK_VOID_PTR)&prime;
+         dsaPubKeyTemplate[0].ulValueLen = sizeof(prime);
+diff --git a/lib/freebl/blapi.h b/lib/freebl/blapi.h
+--- a/lib/freebl/blapi.h
++++ b/lib/freebl/blapi.h
+@@ -1734,27 +1734,27 @@ extern void PQG_DestroyVerify(PQGVerify 
+ extern void BL_Cleanup(void);
+ 
+ /* unload freebl shared library from memory */
+ extern void BL_Unload(void);
+ 
  /**************************************************************************
   *  Verify a given Shared library signature                               *
   **************************************************************************/
@@ -60,9 +81,15 @@ diff -r 3a9a84eee4a2 lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-diff -r 3a9a84eee4a2 lib/freebl/fips-selftest.inc
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/freebl/fips-selftest.inc	Fri May 29 09:13:35 2020 +0200
+ 
+ extern void BL_SetForkState(PRBool forked);
+ 
+ /*
+ ** pepare an ECParam structure from DEREncoded params
+diff --git a/lib/freebl/fips-selftest.inc b/lib/freebl/fips-selftest.inc
+new file mode 100644
+--- /dev/null
++++ b/lib/freebl/fips-selftest.inc
 @@ -0,0 +1,293 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test - common stuff.
@@ -357,9 +384,10 @@ diff -r 3a9a84eee4a2 lib/freebl/fips-selftest.inc
 +}
 +
 +#endif
-diff -r 3a9a84eee4a2 lib/freebl/fips.c
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/freebl/fips.c	Fri May 29 09:13:35 2020 +0200
+diff --git a/lib/freebl/fips.c b/lib/freebl/fips.c
+new file mode 100644
+--- /dev/null
++++ b/lib/freebl/fips.c
 @@ -0,0 +1,7 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test.
@@ -368,9 +396,10 @@ diff -r 3a9a84eee4a2 lib/freebl/fips.c
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
 + * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 +
-diff -r 3a9a84eee4a2 lib/freebl/fips.h
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/freebl/fips.h	Fri May 29 09:13:35 2020 +0200
+diff --git a/lib/freebl/fips.h b/lib/freebl/fips.h
+new file mode 100644
+--- /dev/null
++++ b/lib/freebl/fips.h
 @@ -0,0 +1,15 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test.
@@ -387,10 +416,15 @@ diff -r 3a9a84eee4a2 lib/freebl/fips.h
 +
 +#endif
 +
-diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
---- a/lib/freebl/fipsfreebl.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/fipsfreebl.c	Fri May 29 09:13:35 2020 +0200
-@@ -20,6 +20,13 @@
+diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
+--- a/lib/freebl/fipsfreebl.c
++++ b/lib/freebl/fipsfreebl.c
+@@ -16,16 +16,23 @@
+ #include "secerr.h"
+ #include "prtypes.h"
+ #include "secitem.h"
+ #include "pkcs11t.h"
+ #include "cmac.h"
  
  #include "ec.h" /* Required for EC */
  
@@ -404,7 +438,17 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  /*
   * different platforms have different ways of calling and initial entry point
   * when the dll/.so is loaded. Most platforms support either a posix pragma
-@@ -1774,9 +1781,8 @@
+  * or the GCC attribute. Some platforms suppor a pre-defined name, and some
+  * platforms have a link line way of invoking this function.
+  */
+ 
+ /* The pragma */
+@@ -1993,57 +2000,57 @@ freebl_fips_RNG_PowerUpSelfTest(void)
+         0x3f, 0xf7, 0x0c, 0xcd, 0xa6, 0xca, 0xbf, 0xce,
+         0x84, 0x0e, 0xb6, 0xf1, 0x0d, 0xbe, 0xa9, 0xa3
+     };
+     static const PRUint8 rng_known_DSAX[] = {
+         0x7a, 0x86, 0xf1, 0x7f, 0xbd, 0x4e, 0x6e, 0xd9,
          0x0a, 0x26, 0x21, 0xd0, 0x19, 0xcb, 0x86, 0x73,
          0x10, 0x1f, 0x60, 0xd7
      };
@@ -415,7 +459,13 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  
      /*******************************************/
      /*   Run the SP 800-90 Health tests        */
-@@ -1790,13 +1796,12 @@
+     /*******************************************/
+     rng_status = PRNGTEST_RunHealthTests();
+     if (rng_status != SECSuccess) {
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+         return SECFailure;
+     }
+ 
      /*******************************************/
      /* Generate DSAX fow given Q.              */
      /*******************************************/
@@ -430,7 +480,7 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
          PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
          return SECFailure;
      }
-@@ -1804,17 +1809,19 @@
+ 
      return (SECSuccess);
  }
  
@@ -451,7 +501,17 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  
  #define DO_FREEBL 1
  #define DO_REST 2
-@@ -1926,11 +1933,13 @@
+ 
+ static SECStatus
+ freebl_fipsPowerUpSelfTest(unsigned int tests)
+ {
+     SECStatus rv;
+@@ -2151,34 +2158,36 @@ freebl_fipsPowerUpSelfTest(unsigned int 
+  * to prevent the softoken function pointer table from operating until the
+  * libraries are loaded and we try to use them.
+  */
+ static PRBool self_tests_freebl_ran = PR_FALSE;
+ static PRBool self_tests_ran = PR_FALSE;
  static PRBool self_tests_freebl_success = PR_FALSE;
  static PRBool self_tests_success = PR_FALSE;
  
@@ -466,7 +526,12 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  {
      SECStatus rv;
      /* if the freebl self tests didn't run, there is something wrong with
-@@ -1943,7 +1952,7 @@
+      * our on load tests */
+     if (!self_tests_freebl_ran) {
+         return PR_FALSE;
+     }
+     /* if all the self tests have run, we are good */
+     if (self_tests_ran) {
          return PR_TRUE;
      }
      /* if we only care about the freebl tests, we are good */
@@ -475,7 +540,17 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
          return PR_TRUE;
      }
      /* run the rest of the self tests */
-@@ -1962,31 +1971,15 @@
+     /* We could get there if freebl was loaded without the rest of the support
+      * libraries, but now we want to use more than just a standalone freebl.
+      * This requires the other libraries to be loaded.
+      * If they are now loaded, Try to run the rest of the selftests,
+      * otherwise fail (disabling access to these algorithms)  */
+@@ -2187,92 +2196,174 @@ BL_POSTRan(PRBool freebl_only)
+     RNG_RNGInit(); /* required by RSA */
+     rv = freebl_fipsPowerUpSelfTest(DO_REST);
+     if (rv == SECSuccess) {
+         self_tests_success = PR_TRUE;
+     }
      return PR_TRUE;
  }
  
@@ -514,7 +589,12 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  
      self_tests_freebl_ran = PR_TRUE; /* we are running the tests */
  
-@@ -1999,20 +1992,55 @@
+     if (!freebl_only) {
+         self_tests_ran = PR_TRUE; /* we're running all the tests */
+         BL_Init();                /* needs to be called before RSA can be used */
+         RNG_RNGInit();
+     }
+ 
      /* always run the post tests */
      rv = freebl_fipsPowerUpSelfTest(freebl_only ? DO_FREEBL : DO_FREEBL | DO_REST);
      if (rv != SECSuccess) {
@@ -572,7 +652,8 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2021,28 +2049,91 @@
+  * this is called from the freebl init entry points that controll access to
+  * all other freebl functions. This prevents freebl from operating if our
   * power on selftest failed.
   */
  SECStatus
@@ -674,10 +755,15 @@ diff -r 3a9a84eee4a2 lib/freebl/fipsfreebl.c
 +}
 +
  #endif
-diff -r 3a9a84eee4a2 lib/freebl/loader.c
---- a/lib/freebl/loader.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/loader.c	Fri May 29 09:13:35 2020 +0200
-@@ -1189,11 +1189,11 @@
+diff --git a/lib/freebl/loader.c b/lib/freebl/loader.c
+--- a/lib/freebl/loader.c
++++ b/lib/freebl/loader.c
+@@ -1208,36 +1208,36 @@ AESKeyWrap_DecryptKWP(AESKeyWrapContext 
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+         return SECFailure;
+     return vector->p_AESKeyWrap_DecryptKWP(cx, output, outputLen, maxOutputLen,
+                                            input, inputLen);
  }
  
  PRBool
@@ -691,7 +777,9 @@ diff -r 3a9a84eee4a2 lib/freebl/loader.c
  }
  
  /*
-@@ -1203,12 +1203,12 @@
+  * The Caller is expected to pass NULL as the name, which will
+  * trigger the p_BLAPI_VerifySelf() to return 'TRUE'. Pass the real
+  * name of the shared library we loaded (the static libraryName set
   * in freebl_LoadDSO) to p_BLAPI_VerifySelf.
   */
  PRBool
@@ -706,7 +794,17 @@ diff -r 3a9a84eee4a2 lib/freebl/loader.c
  }
  
  /* ============== New for 3.006 =============================== */
-@@ -1804,11 +1804,11 @@
+ 
+ SECStatus
+ EC_NewKey(ECParams *params, ECPrivateKey **privKey)
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+@@ -1831,21 +1831,21 @@ void
+ SHA224_Clone(SHA224Context *dest, SHA224Context *src)
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+         return;
+     (vector->p_SHA224_Clone)(dest, src);
  }
  
  PRBool
@@ -720,10 +818,20 @@ diff -r 3a9a84eee4a2 lib/freebl/loader.c
  }
  
  /* === new for DSA-2 === */
-diff -r 3a9a84eee4a2 lib/freebl/loader.h
---- a/lib/freebl/loader.h	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/loader.h	Fri May 29 09:13:35 2020 +0200
-@@ -299,8 +299,8 @@
+ SECStatus
+ PQG_ParamGenV2(unsigned int L, unsigned int N, unsigned int seedBytes,
+                PQGParams **pParams, PQGVerify **pVfy)
+ {
+     if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
+diff --git a/lib/freebl/loader.h b/lib/freebl/loader.h
+--- a/lib/freebl/loader.h
++++ b/lib/freebl/loader.h
+@@ -294,18 +294,18 @@ struct FREEBLVectorStr {
+ 
+     SECStatus (*p_AESKeyWrap_Decrypt)(AESKeyWrapContext *cx,
+                                       unsigned char *output,
+                                       unsigned int *outputLen, unsigned int maxOutputLen,
+                                       const unsigned char *input, unsigned int inputLen);
  
      /* Version 3.004 came to here */
  
@@ -734,7 +842,17 @@ diff -r 3a9a84eee4a2 lib/freebl/loader.h
  
      /* Version 3.005 came to here */
  
-@@ -556,7 +556,7 @@
+     SECStatus (*p_EC_NewKey)(ECParams *params,
+                              ECPrivateKey **privKey);
+ 
+     SECStatus (*p_EC_NewKeyFromSeed)(ECParams *params,
+                                      ECPrivateKey **privKey,
+@@ -551,17 +551,17 @@ struct FREEBLVectorStr {
+     SECStatus (*p_SHA224_HashBuf)(unsigned char *dest, const unsigned char *src,
+                                   PRUint32 src_length);
+     SECStatus (*p_SHA224_Hash)(unsigned char *dest, const char *src);
+     void (*p_SHA224_TraceState)(SHA224Context *cx);
+     unsigned int (*p_SHA224_FlattenSize)(SHA224Context *cx);
      SECStatus (*p_SHA224_Flatten)(SHA224Context *cx, unsigned char *space);
      SHA224Context *(*p_SHA224_Resurrect)(unsigned char *space, void *arg);
      void (*p_SHA224_Clone)(SHA224Context *dest, SHA224Context *src);
@@ -743,10 +861,20 @@ diff -r 3a9a84eee4a2 lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-diff -r 3a9a84eee4a2 lib/freebl/manifest.mn
---- a/lib/freebl/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/manifest.mn	Fri May 29 09:13:35 2020 +0200
-@@ -97,6 +97,7 @@
+     SECStatus (*p_PQG_ParamGenV2)(unsigned int L, unsigned int N,
+                                   unsigned int seedBytes,
+                                   PQGParams **pParams, PQGVerify **pVfy);
+     SECStatus (*p_PRNGTEST_RunHealthTests)(void);
+ 
+diff --git a/lib/freebl/manifest.mn b/lib/freebl/manifest.mn
+--- a/lib/freebl/manifest.mn
++++ b/lib/freebl/manifest.mn
+@@ -92,16 +92,17 @@ PRIVATE_EXPORTS = \
+ 	chacha20poly1305.h \
+ 	hmacct.h \
+ 	secmpi.h \
+ 	secrng.h \
+ 	ec.h \
  	ecl.h \
  	ecl-curve.h \
  	eclt.h \
@@ -754,7 +882,17 @@ diff -r 3a9a84eee4a2 lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -179,6 +180,7 @@
+ MPI_SRCS = mpprime.c mpmontg.c mplogic.c mpi.c mp_gf2m.c
+ 
+ 
+ ECL_HDRS = ecl-exp.h ecl.h ecp.h ecl-priv.h
+ ECL_SRCS = ecl.c ecl_mult.c ecl_gf.c \
+@@ -181,16 +182,17 @@ ALL_HDRS =  \
+ 	rijndael.h \
+ 	camellia.h \
+ 	secmpi.h \
+ 	sha_fast.h \
+ 	sha256.h \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -762,10 +900,20 @@ diff -r 3a9a84eee4a2 lib/freebl/manifest.mn
  	$(NULL)
  
  
-diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
---- a/lib/freebl/shvfy.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/freebl/shvfy.c	Fri May 29 09:13:35 2020 +0200
-@@ -21,6 +21,8 @@
+ ifdef AES_GEN_VAL
+ DEFINES += -DRIJNDAEL_GENERATE_VALUES
+ else
+ ifdef AES_GEN_VAL_M
+ DEFINES += -DRIJNDAEL_GENERATE_VALUES_MACRO
+diff --git a/lib/freebl/shvfy.c b/lib/freebl/shvfy.c
+--- a/lib/freebl/shvfy.c
++++ b/lib/freebl/shvfy.c
+@@ -16,16 +16,18 @@
+ #include "stdio.h"
+ #include "prmem.h"
+ #include "hasht.h"
+ #include "pqg.h"
+ #include "blapii.h"
  
  #ifndef NSS_FIPS_DISABLED
  
@@ -774,7 +922,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  /*
   * Most modern version of Linux support a speed optimization scheme where an
   * application called prelink modifies programs and shared libraries to quickly
-@@ -230,8 +232,6 @@
+  * load if they fit into an already designed address space. In short, prelink
+  * scans the list of programs and libraries on your system, assigns them a
+  * predefined space in the the address space, then provides the fixups to the
+  * library.
+ 
+@@ -225,18 +227,16 @@ bl_CloseUnPrelink(PRFileDesc *file, int 
+     PR_Close(file);
+     /* reap the child */
+     if (pid) {
+         waitpid(pid, NULL, 0);
+     }
  }
  #endif
  
@@ -783,7 +941,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  static char *
  mkCheckFileName(const char *libName)
  {
-@@ -286,19 +286,19 @@
+     int ln_len = PORT_Strlen(libName);
+     int index = ln_len + 1 - sizeof("." SHLIB_SUFFIX);
+     char *output = PORT_Alloc(ln_len + sizeof(SGN_SUFFIX));
+     if (!output) {
+         PORT_SetError(SEC_ERROR_NO_MEMORY);
+@@ -281,52 +281,52 @@ readItem(PRFileDesc *fd, SECItem *item)
+         PORT_Free(item->data);
+         item->data = NULL;
+         item->len = 0;
+         return SECFailure;
+     }
      return SECSuccess;
  }
  
@@ -807,7 +975,10 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  
  loser:
      if (shName != NULL) {
-@@ -309,19 +309,19 @@
+         PR_Free(shName);
+     }
+ 
+     return result;
  }
  
  PRBool
@@ -832,7 +1003,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  {
      char *checkName = NULL;
      PRFileDesc *checkFD = NULL;
-@@ -339,7 +339,7 @@
+     PRFileDesc *shFD = NULL;
+     void *hashcx = NULL;
+     const SECHashObject *hashObj = NULL;
+     SECItem signature = { 0, NULL, 0 };
+     SECItem hash;
+@@ -334,17 +334,17 @@ blapi_SHVerifyFile(const char *shName, P
+     SECStatus rv;
+     DSAPublicKey key;
+     int count;
+ #ifdef FREEBL_USE_PRELINK
+     int pid = 0;
  #endif
  
      PRBool result = PR_FALSE; /* if anything goes wrong,
@@ -841,7 +1022,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
      unsigned char buf[4096];
      unsigned char hashBuf[HASH_LENGTH_MAX];
  
-@@ -366,14 +366,17 @@
+     PORT_Memset(&key, 0, sizeof(key));
+     hash.data = hashBuf;
+     hash.len = sizeof(hashBuf);
+ 
+     /* If our integrity check was never ran or failed, fail any other
+@@ -361,24 +361,27 @@ blapi_SHVerifyFile(const char *shName, P
+     checkName = mkCheckFileName(shName);
+     if (!checkName) {
+         goto loser;
+     }
+ 
      /* open the check File */
      checkFD = PR_Open(checkName, PR_RDONLY, 0);
      if (checkFD == NULL) {
@@ -862,7 +1053,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
      bytesRead = PR_Read(checkFD, buf, 12);
      if (bytesRead != 12) {
          goto loser;
-@@ -414,7 +417,8 @@
+     }
+     if ((buf[0] != NSS_SIGN_CHK_MAGIC1) || (buf[1] != NSS_SIGN_CHK_MAGIC2)) {
+         goto loser;
+     }
+     if ((buf[2] != NSS_SIGN_CHK_MAJOR_VERSION) ||
+@@ -409,46 +412,47 @@ blapi_SHVerifyFile(const char *shName, P
+     rv = readItem(checkFD, &key.params.base);
+     if (rv != SECSuccess) {
+         goto loser;
+     }
+     rv = readItem(checkFD, &key.publicValue);
      if (rv != SECSuccess) {
          goto loser;
      }
@@ -872,7 +1073,14 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
      rv = readItem(checkFD, &signature);
      if (rv != SECSuccess) {
          goto loser;
-@@ -429,7 +433,7 @@
+     }
+ 
+     /* done with the check file */
+     PR_Close(checkFD);
+     checkFD = NULL;
+ 
+     hashObj = HASH_GetRawHashObject(PQG_GetHashType(&key.params));
+     if (hashObj == NULL) {
          goto loser;
      }
  
@@ -881,7 +1089,7 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  #ifdef FREEBL_USE_PRELINK
      shFD = bl_OpenUnPrelink(shName, &pid);
  #else
-@@ -437,13 +441,13 @@
+     shFD = PR_Open(shName, PR_RDONLY, 0);
  #endif
      if (shFD == NULL) {
  #ifdef DEBUG_SHVERIFY
@@ -898,7 +1106,17 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
      hashcx = hashObj->create();
      if (hashcx == NULL) {
          goto loser;
-@@ -528,7 +532,7 @@
+     }
+     hashObj->begin(hashcx);
+ 
+     count = 0;
+     while ((bytesRead = PR_Read(shFD, buf, sizeof(buf))) > 0) {
+@@ -523,26 +527,26 @@ loser:
+     if (key.publicValue.data != NULL) {
+         PORT_Free(key.publicValue.data);
+     }
+ 
+     return result;
  }
  
  PRBool
@@ -907,7 +1125,8 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  {
      if (name == NULL) {
          /*
-@@ -537,7 +541,7 @@
+          * If name is NULL, freebl is statically linked into softoken.
+          * softoken will call BLAPI_SHVerify next to verify itself.
           */
          return PR_TRUE;
      }
@@ -916,9 +1135,15 @@ diff -r 3a9a84eee4a2 lib/freebl/shvfy.c
  }
  
  #else /* NSS_FIPS_DISABLED */
-diff -r 3a9a84eee4a2 lib/softoken/fips.c
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/softoken/fips.c	Fri May 29 09:13:35 2020 +0200
+ 
+ PRBool
+ BLAPI_SHVerifyFile(const char *shName)
+ {
+     return PR_FALSE;
+diff --git a/lib/softoken/fips.c b/lib/softoken/fips.c
+new file mode 100644
+--- /dev/null
++++ b/lib/softoken/fips.c
 @@ -0,0 +1,33 @@
 +#include "../freebl/fips-selftest.inc"
 +
@@ -953,9 +1178,10 @@ diff -r 3a9a84eee4a2 lib/softoken/fips.c
 +
 +    return;
 +}
-diff -r 3a9a84eee4a2 lib/softoken/fips.h
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/softoken/fips.h	Fri May 29 09:13:35 2020 +0200
+diff --git a/lib/softoken/fips.h b/lib/softoken/fips.h
+new file mode 100644
+--- /dev/null
++++ b/lib/softoken/fips.h
 @@ -0,0 +1,10 @@
 +#ifndef FIPS_H
 +#define FIPS_H
@@ -967,11 +1193,16 @@ diff -r 3a9a84eee4a2 lib/softoken/fips.h
 +
 +#endif
 +
-diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
---- a/lib/softoken/fipstest.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/softoken/fipstest.c	Fri May 29 09:13:35 2020 +0200
-@@ -581,6 +581,327 @@
-     return (SECFailure);
+diff --git a/lib/softoken/fipstest.c b/lib/softoken/fipstest.c
+--- a/lib/softoken/fipstest.c
++++ b/lib/softoken/fipstest.c
+@@ -677,39 +677,360 @@ sftk_fips_HKDF_PowerUpSelfTest(void)
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+         return (SECFailure);
+     }
+ #endif
+ 
+     return (SECSuccess);
  }
  
 +#define FIPS_DSA_TYPE siBuffer
@@ -1298,7 +1529,11 @@ diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
  static PRBool sftk_self_tests_ran = PR_FALSE;
  static PRBool sftk_self_tests_success = PR_FALSE;
  
-@@ -592,7 +913,6 @@
+ /*
+  * This function is called at dll load time, the code tha makes this
+  * happen is platform specific on defined above.
+  */
+ static void
  sftk_startup_tests(void)
  {
      SECStatus rv;
@@ -1306,7 +1541,11 @@ diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
  
      PORT_Assert(!sftk_self_tests_ran);
      PORT_Assert(!sftk_self_tests_success);
-@@ -604,6 +924,7 @@
+     sftk_self_tests_ran = PR_TRUE;
+     sftk_self_tests_success = PR_FALSE; /* just in case */
+ 
+     /* need to initiallize the oid library before the RSA tests */
+     rv = SECOID_Init();
      if (rv != SECSuccess) {
          return;
      }
@@ -1314,7 +1553,17 @@ diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
      /* make sure freebl is initialized, or our RSA check
       * may fail. This is normally done at freebl load time, but it's
       * possible we may have shut freebl down without unloading it. */
-@@ -621,12 +942,21 @@
+     rv = BL_Init();
+     if (rv != SECSuccess) {
+         return;
+     }
+ 
+@@ -717,22 +1038,31 @@ sftk_startup_tests(void)
+     if (rv != SECSuccess) {
+         return;
+     }
+     /* check the RSA combined functions in softoken */
+     rv = sftk_fips_RSA_PowerUpSelfTest();
      if (rv != SECSuccess) {
          return;
      }
@@ -1340,7 +1589,17 @@ diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
      rv = sftk_fips_IKE_PowerUpSelfTests();
      if (rv != SECSuccess) {
          return;
-@@ -642,17 +972,11 @@
+     }
+ 
+     rv = sftk_fips_SP800_108_PowerUpSelfTests();
+     if (rv != SECSuccess) {
+         return;
+@@ -754,27 +1084,21 @@ sftk_startup_tests(void)
+ /*
+  * this is called from nsc_Common_Initizialize entry points that gates access
+  * to * all other pkcs11 functions. This prevents softoken operation if our
+  * power on selftest failed.
+  */
  CK_RV
  sftk_FIPSEntryOK()
  {
@@ -1360,9 +1619,15 @@ diff -r 3a9a84eee4a2 lib/softoken/fipstest.c
      if (!sftk_self_tests_success) {
          return CKR_DEVICE_ERROR;
      }
-diff -r 3a9a84eee4a2 lib/softoken/legacydb/fips.c
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/softoken/legacydb/fips.c	Fri May 29 09:13:35 2020 +0200
+     return CKR_OK;
+ }
+ #else
+ #include "pkcs11t.h"
+ CK_RV
+diff --git a/lib/softoken/legacydb/fips.c b/lib/softoken/legacydb/fips.c
+new file mode 100644
+--- /dev/null
++++ b/lib/softoken/legacydb/fips.c
 @@ -0,0 +1,25 @@
 +#include "../../freebl/fips-selftest.inc"
 +
@@ -1389,19 +1654,25 @@ diff -r 3a9a84eee4a2 lib/softoken/legacydb/fips.c
 +
 +/*** public per-module symbols ***/
 +
-diff -r 3a9a84eee4a2 lib/softoken/legacydb/fips.h
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/lib/softoken/legacydb/fips.h	Fri May 29 09:13:35 2020 +0200
+diff --git a/lib/softoken/legacydb/fips.h b/lib/softoken/legacydb/fips.h
+new file mode 100644
+--- /dev/null
++++ b/lib/softoken/legacydb/fips.h
 @@ -0,0 +1,5 @@
 +#ifndef FIPS_H
 +#define FIPS_H
 +
 +#endif
 +
-diff -r 3a9a84eee4a2 lib/softoken/legacydb/lgfips.c
---- a/lib/softoken/legacydb/lgfips.c	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/softoken/legacydb/lgfips.c	Fri May 29 09:13:35 2020 +0200
-@@ -90,7 +90,7 @@
+diff --git a/lib/softoken/legacydb/lgfips.c b/lib/softoken/legacydb/lgfips.c
+--- a/lib/softoken/legacydb/lgfips.c
++++ b/lib/softoken/legacydb/lgfips.c
+@@ -85,17 +85,17 @@ lg_startup_tests(void)
+ 
+     PORT_Assert(!lg_self_tests_ran);
+     PORT_Assert(!lg_self_tests_success);
+     lg_self_tests_ran = PR_TRUE;
+     lg_self_tests_success = PR_FALSE; /* just in case */
  
      /* no self tests required for the legacy db, only the integrity check */
      /* check the integrity of our shared library */
@@ -1410,10 +1681,20 @@ diff -r 3a9a84eee4a2 lib/softoken/legacydb/lgfips.c
          /* something is wrong with the library, fail without enabling
           * the fips token */
          return;
-diff -r 3a9a84eee4a2 lib/softoken/legacydb/manifest.mn
---- a/lib/softoken/legacydb/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/softoken/legacydb/manifest.mn	Fri May 29 09:13:35 2020 +0200
-@@ -12,7 +12,7 @@
+     }
+     /* FIPS product has been installed and is functioning, allow
+      * the module to operate in fips mode */
+     lg_self_tests_success = PR_TRUE;
+ }
+diff --git a/lib/softoken/legacydb/manifest.mn b/lib/softoken/legacydb/manifest.mn
+--- a/lib/softoken/legacydb/manifest.mn
++++ b/lib/softoken/legacydb/manifest.mn
+@@ -7,26 +7,27 @@ CORE_DEPTH = ../../..
+ MODULE = nss
+ 
+ REQUIRES = dbm
+ 
+ LIBRARY_NAME = nssdbm
  LIBRARY_VERSION = 3
  MAPFILE = $(OBJDIR)/$(LIBRARY_NAME).def
  
@@ -1422,17 +1703,30 @@ diff -r 3a9a84eee4a2 lib/softoken/legacydb/manifest.mn
  
  CSRCS = \
  	dbmshim.c \
-@@ -28,5 +28,6 @@
+ 	keydb.c \
+ 	lgattr.c \
+ 	lgcreate.c \
+ 	lgdestroy.c \
+ 	lgfind.c \
+ 	lgfips.c \
+ 	lginit.c \
+ 	lgutil.c \
+ 	lowcert.c \
  	lowkey.c \
  	pcertdb.c \
  	pk11db.c \
 +	fips.c \
  	$(NULL)
  
-diff -r 3a9a84eee4a2 lib/softoken/manifest.mn
---- a/lib/softoken/manifest.mn	Wed Nov 20 08:25:39 2019 +0100
-+++ b/lib/softoken/manifest.mn	Fri May 29 09:13:35 2020 +0200
-@@ -29,6 +29,7 @@
+diff --git a/lib/softoken/manifest.mn b/lib/softoken/manifest.mn
+--- a/lib/softoken/manifest.mn
++++ b/lib/softoken/manifest.mn
+@@ -26,16 +26,17 @@ EXPORTS = \
+ 
+ PRIVATE_EXPORTS = \
+ 	pkcs11ni.h \
+ 	softoken.h \
+ 	softoknt.h \
  	softkver.h \
  	sdb.h \
  	sftkdbt.h \
@@ -1440,7 +1734,17 @@ diff -r 3a9a84eee4a2 lib/softoken/manifest.mn
  	$(NULL)
  
  CSRCS = \
-@@ -52,6 +53,7 @@
+ 	fipsaudt.c \
+ 	fipstest.c \
+ 	fipstokn.c \
+ 	kbkdf.c    \
+ 	lowkey.c   \
+@@ -50,16 +51,17 @@ CSRCS = \
+ 	sftkhmac.c  \
+ 	sftkike.c  \
+ 	sftkmessage.c  \
+ 	sftkpars.c  \
+ 	sftkpwd.c  \
  	softkver.c  \
  	tlsprf.c   \
  	jpakesftk.c \
@@ -1448,3 +1752,8 @@ diff -r 3a9a84eee4a2 lib/softoken/manifest.mn
  	$(NULL)
  
  ifndef NSS_DISABLE_DBM
+ PRIVATE_EXPORTS += lgglue.h
+ CSRCS += lgglue.c
+ endif
+ 
+ ifdef SQLITE_UNSAFE_THREADS
