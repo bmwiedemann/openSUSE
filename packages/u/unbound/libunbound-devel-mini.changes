@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Oct  8 08:39:40 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.12.0
+
+Features
+- DNS Flag Day 2020: change edns-buffer-size default to 1232.
+- Merge PR #255: DNS-over-HTTPS support.
+- Use inclusive language in configuration
+- Merge PR #284 and Fix #246: Remove DLV entirely from Unbound.
+  The DLV has been decommisioned and in unbound 1.5.4, in 2015, there
+  was advise to stop using it.  The current code base does not contain
+  DLV code any more.  The use of dlv options displays a warning.
+- Similar to NSD PR#113, implement that interface names can be used,
+  eg. something like interface: eth0 is resolved at server start and
+  uses the IP addresses for that named interface.
+- Merge PR #272: Add EDNS client tag functionality.
+- Add edns-client-tag-opcode option
+
+Bug Fixes
+- Merge PR #270 from cgzones: munin plugin: always exit 0 in autoconf
+- Merge PR #269, Fix python module len() implementations, by Torbjörn
+  Lönnemark
+- Merge PR #268, draft-ietf-dnsop-serve-stale-10 has become RFC 8767 on
+  March 2020, by and0x000.
+- Fix doxygen comment for no ssl for tls session ticket key callback
+  routine.
+- Fix mini_event.h on OpenBSD cannot find fd_set.
+- Improve error log message when inserting rpz RR.
+- Merge PR #280, Make tvOS & watchOS checks verify truthiness as well as
+  definedness, by Felipe Gasper.
+- contrib/aaaa-filter-iterator.patch file renewed diff content to
+  apply cleanly to the current coderepo for the current code version.
+- Fix #287: doc typo: "Additionaly".
+- Merge (modified) PR #277, use EVP_MAC_CTX_set_params if available,
+  by Vítězslav Čížek.
+- Create and init edns tags data for libunbound.
+- Fix stats double count issue (#289).
+- Fix that dnstap reconnects do not spam the log with the repeated
+  attempts.  Attempts on the timer are only logged on high verbosity,
+  if they produce a connection failure error.
+- Fix to apply chroot to dnstap-socket-path, if chroot is enabled.
+- Change configure to use EVP_sha256 instead of HMAC_Update for
+  openssl-3.0.0.
+- Update documentation in python example code.
+- Review fix interface, doxygen and assign null in case of error free.
+- Merge PR #293: Add missing prototype.  Also refactor to use the new
+  shorthand function to clean up the code.
+- Refactor to use sock_strerr shorthand function.
+- Fix #296: systemd nss-lookup.target is reached before unbound can
+  successfully answer queries. Changed contrib/unbound.service.in.
+- Fix num.expired statistics output.
+- Remove x file mode on ipset/ipset.c and h files.
+- Spelling fix.
+- Introduce test for statistics.
+- Fix that prefer-ip4 and prefer-ip6 can be get and set with
+  unbound-control, with libunbound and the unbound-checkconf option
+  output function.
+- Merge PR #311 by luismerino: Dynlibmod leak.
+- Error message is logged for dynlibmod malloc failures.
+- iana portlist updated.
+- Fix #304: dnstap logging not recovering after dnstap process restarts
+- Fix edns-client-tags get_option typo
+- Fix #305: dnstap logging significantly affects unbound performance
+  (regression in 1.11).
+- Fix #305: only wake up thread when threshold reached.
+- Fix to ifdef fptr wlist item for dnstap.
+- Fix memory leak of edns tags at libunbound context delete.
+- Fix double loopexit for unbound-dnstap-socket after sigterm.
+
+-------------------------------------------------------------------
 Mon Jul 27 10:48:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.11.0

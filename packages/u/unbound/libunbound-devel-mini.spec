@@ -24,7 +24,7 @@
 
 #
 Name:           libunbound-devel-mini
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 #
 #
