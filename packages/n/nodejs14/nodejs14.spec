@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.13.0
+Version:        14.13.1
 Release:        0
 
 %define node_version_number 14
@@ -300,7 +300,7 @@ Provides:       bundled(libuv) = 1.40.0
 Provides:       bundled(uvwasi) = 0.0.11
 Provides:       bundled(v8) = 8.4.371.19
 
-Provides:       bundled(llhttp) = 2.1.2
+Provides:       bundled(llhttp) = 2.1.3
 
 Provides:       bundled(node-acorn) = 7.1.1
 Provides:       bundled(node-acorn-class-fields) = 0.3.1
@@ -309,7 +309,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 7.1.1
-Provides:       bundled(node-cjs-module-lexer) = 0.3.3
+Provides:       bundled(node-cjs-module-lexer) = 0.4.0
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  8 15:12:05 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.13.1:
+  * fs: rmdir recursive is no longer considered experimental
+
+- fix_ci_tests.patch: add support to SUSE's ECDH backport errors
+  in SLE's openssl
+
+-------------------------------------------------------------------
 Tue Oct  6 11:30:37 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.13.0:
