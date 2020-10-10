@@ -1832,6 +1832,7 @@ unsorted:
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
   - clementine 
+  - cli11-devel 
   - clinfo 
   - clipgrab 
   - clipit 
@@ -3394,6 +3395,7 @@ unsorted:
   - fontforge 
   - fontforge-devel 
   - fontforge-doc 
+  - fontobene-qt5-devel 
   - fontpackages-devel 
   - fonttosfnt 
   - fontweak 
@@ -6914,6 +6916,7 @@ unsorted:
   - jopt-simple-javadoc 
   - jp 
   - jp2a 
+  - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
   - jrosetta 
@@ -10917,7 +10920,7 @@ unsorted:
   - liblog4c-doc 
   - liblog4c3 
   - liblog4c3-32bit: [x86_64] 
-  - liblog4cplus-1_1-5 
+  - liblog4cplus-1_2-5 
   - liblog4cpp5 
   - liblog4cxx-devel 
   - liblog4cxx10 
@@ -12178,7 +12181,7 @@ unsorted:
   - libquadmath0-gcc9 
   - libquadmath0-gcc9-32bit: [x86_64] 
   - libquagga_pb0 
-  - libquazip5-1 
+  - libquazip1-qt5-1_0_0 
   - libquicktime 
   - libquicktime-32bit: [x86_64] 
   - libquicktime-devel 
@@ -12259,6 +12262,7 @@ unsorted:
   - librecad 
   - librecad-parts 
   - librecode3 
+  - libredis++ 
   - libredland-devel 
   - libredwg-devel 
   - libredwg-tools 
@@ -22993,6 +22997,7 @@ unsorted:
   - redeclipse-server 
   - redfish-finder 
   - redfishtool 
+  - redis++-devel 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
