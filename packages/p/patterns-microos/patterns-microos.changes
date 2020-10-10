@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:44:09 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add container-selinux and selinux-policy-targeted policy packages
+  to selinux pattern
+- Add policycoreutils-python-utils to media
+
+-------------------------------------------------------------------
 Thu Sep  3 08:23:54 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove vim as we use now vim-small

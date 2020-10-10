@@ -190,9 +190,11 @@ Provides:       pattern-order() = 9055
 Provides:       patterns-caasp-selinux
 Obsoletes:      patterns-caasp-selinux <= 4.0
 Requires:       checkpolicy
+Requires:       container-selinux
 Requires:       mcstrans
 Requires:       policycoreutils
 Requires:       restorecond
+Requires:       selinux-policy-targeted
 Requires:       selinux-tools
 
 %description selinux
@@ -444,6 +446,7 @@ Requires:       hyper-v
 Requires:       open-vm-tools
 %endif
 Requires:       pam_pwquality
+Requires:       policycoreutils-python-utils
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd

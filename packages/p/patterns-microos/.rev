@@ -190,4 +190,14 @@
   [bsc#1175841]</comment>
     <requestid>831621</requestid>
   </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>c44eb95b7166fb55986405368f2b4e16</srcmd5>
+    <version>5.0</version>
+    <time>1602349373</time>
+    <user>dimstar_suse</user>
+    <comment>- Add container-selinux and selinux-policy-targeted policy packages
+  to selinux pattern
+- Add policycoreutils-python-utils to media</comment>
+    <requestid>840257</requestid>
+  </revision>
 </revisionlist>
