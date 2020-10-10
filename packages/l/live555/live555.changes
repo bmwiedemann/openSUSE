@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Oct  3 15:07:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2020.08.19:
+  - Fixed a bug in "QuickTimeFileSink" that could cause malformed "esds" atoms to be
+    generated.  (Thanks to Chris Paucar for reporting this issue.)
+  - In "MPEG2TransportStreamFromESSource.cpp", changed the name of the constant LOW_WATER_MARK
+    to TS_FROM_ES_LOW_WATER_MARK, and "#ifndef"d it, so that, if you wish, you can redefine it
+    at compile time.
+  - Fixed a bug in the handling of pausing, when streaming from (multi-track) Matroska files.
+  - Fixed another bug in the handling of seeking within Matroska files.
+  - Fixed a bug in the handling of seeking within Matroska files.
+    (Thanks to Jim Ham for reporting this problem.)
+  - Changed the parameter signature of the "RawVideoRTPSink" constructor and "createNew()"
+    functions so that the "width" parameter comes before the "height" parameter.  This order
+    - "width", "height" - is more common, and is the order used when these parameters are
+    defined in RFC 4175.
+    IMPORTANT NOTE: Because the types of these two parameters are the same, existing application
+    code that uses "RawVideoRTPSink" will compile without error; however, it will not work
+    properly unless the order of the parameters in the call to "RawVideoRTPSink::createNew()"
+    is changed.
+  - More cleanup of the implementation of "RawVideoRTPSink".
+  - Cleaned up the implementation of "RawVideoRTPSink".
+  - Updated the "RawVideoRTPSource" implementation to not set "fCurrentPacketCompletesFrame"
+    until we are processing the last line in the packet.
+    (Thanks to Andrey Lisovoy for reporting this issue.)
+  - Fixed a potential buffer overflow bug in the server handling of a RTSP "PLAY" command,
+    when the command specifies seeking by absolute time.
+    (Thank to Xiaobo Xiang for reporting this.)
+  - Fixed a memory leak in the "sha1()" function (a "EVP_MD_CTX" object was not being deleted).
+    (Thanks to Amir Perlman for reporting this.)
+  - Moved all definitions of PREFIX from "Makefile.tail" files to "Makefile.head" (so that
+    it can be redefined by a "config.*" file, if desired.
+    Also changed the definition of EXE in "config.mingw" to be ".exe".
+    (Thanks to Eric Beuque for this suggestion.)
+  - Fixed a typo in the previous release that could cause a compilation problem for some
+    developers.  (Thanks to Eric Beuque for reporting this.) 
+
+-------------------------------------------------------------------
 Thu Jun  4 14:33:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2020.05.15:
