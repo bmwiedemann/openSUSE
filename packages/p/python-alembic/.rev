@@ -1270,4 +1270,14 @@
     <comment></comment>
     <requestid>835584</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>04a3ebd3d5864c4b4035efa7f73944e2</srcmd5>
+    <version>1.4.3</version>
+    <time>1602349532</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest_depr_from_parent.patch to fix FTBGS with pytest 6.*
+  (gh#sqlalchemy/sqlalchemy#5635).
+</comment>
+    <requestid>840755</requestid>
+  </revision>
 </revisionlist>

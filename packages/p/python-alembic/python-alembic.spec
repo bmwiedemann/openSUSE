@@ -25,6 +25,9 @@ License:        MIT
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
 Source1:        python-alembic-rpmlintrc
+# PATCH-FIX-UPSTREAM pytest_depr_from_parent.patch gh#sqlalchemy/sqlalchemy#5635 mcepl@suse.com
+# pytest >= 3.4.0 requires Class.from_parent call
+Patch0:         pytest_depr_from_parent.patch
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 1.1.0}
 BuildRequires:  %{python_module mock}
@@ -59,6 +62,7 @@ offers the following functionality:
 
 %prep
 %setup -q -n alembic-%{version}
+%autopatch -p1
 
 %build
 %python_build
