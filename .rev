@@ -1636,4 +1636,17 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   (boo#1176418). (forwarded request 834124 from qkzhu)</comment>
     <requestid>836028</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>71f74d7392230ec29b2d54df46933739</srcmd5>
+    <version>3.36.7</version>
+    <time>1602349393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.36.7:
+  + Fix potential stack overflow in libcroco (CVE-2020-12825).
+  + Fix system action search regressions.
+  + Fix week number alignment when using font-scaling.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 840237 from iznogood)</comment>
+    <requestid>840288</requestid>
+  </revision>
 </revisionlist>
