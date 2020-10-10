@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 26 09:25:36 UTC 2020 - d_werner@gmx.net
+
+- update the path of the PIDFile in the svnserve.service file:
+  change /var/run/svnserve/svnserve.pid to /run/svnserve/svnserve.pid
+
+-------------------------------------------------------------------
+Fri Sep 25 15:04:51 UTC 2020 - d_werner@gmx.net
+
+- update the tmpfiles.d/ drop-in file as requested by the
+  rpm output 
+  /usr/lib/tmpfiles.d/svnserve.conf:1: Line references path below 
+  legacy directory /var/run/, updating /var/run/svnserve → /run/svnserve;
+
+-------------------------------------------------------------------
 Wed Sep 23 18:53:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - speed up testsuite run by using /dev/shm

@@ -30,6 +30,11 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
+#Compat macros for SLES 15 SP2 which does not support python_site{arch,lib}
+%if 0%{?sle_version} == 150200 && !0%{?is_opensuse}
+  %define python_sitearch %{python3_sitearch}
+  %define python_sitelib %{python3_sitelib}
+%endif
 %bcond_without gnome
 %bcond_with	python_ctypes
 %bcond_with	all_regression_tests
