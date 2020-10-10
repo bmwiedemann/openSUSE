@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 17:09:53 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.3
+  * Fix sending voice messages in scheduled messages section.
+  * Fix deleting profile / group / channel photos.
+  * Several crash fixes.
+
+-------------------------------------------------------------------
 Fri Oct  2 19:24:42 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.4.2
