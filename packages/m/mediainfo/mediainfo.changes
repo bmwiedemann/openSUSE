@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:44:05 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 20.09
+  Added:
+  * Dolby ED2: full featured support (presentations,
+    presentation targets, beds, objects)
+  * MKV: support of Dolby Vision metadata
+  * MXF: detection of Dolby E hidden in PCM tracks having more
+    than 2 channels
+  * WAV: detection of Dolby E hidden in PCM tracks having more
+    than 2 channels
+  * CineForm: display of color space (including Bayer), bit depth
+  Fixed:
+  * WAV: more precise sample count
+  * SMPTE ST 337: catch of streams starting later than usual
+    (probing increased from 4 to 16 PCM "frames")
+  * PNG: detection of additional alpha plane in color space
+  * MXF: detection of additional alpha plane in color space
+  * AVI: detection of additional alpha plane in color space
+  * MPEG Audio: was wrongly flagging Xing info tag as CBR
+  * VorbisTag: does not skip DISCID
+  * Miscellaneous bug/crash fixes
+
+-------------------------------------------------------------------
 Tue Aug 11 12:00:57 UTC 2020 - aloisio@gmx.com
 
 - Update to version 20.08
