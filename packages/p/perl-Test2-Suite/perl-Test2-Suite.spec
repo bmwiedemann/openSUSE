@@ -17,7 +17,7 @@
 
 
 Name:           perl-Test2-Suite
-Version:        0.000135
+Version:        0.000136
 Release:        0
 %define cpan_name Test2-Suite
 Summary:        Distribution with a rich set of tools built upon the Test2

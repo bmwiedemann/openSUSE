@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:13:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000136
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000136  2020-10-05 22:05:24-07:00 America/Los_Angeles
+
+      - Fix typo Test2::Builder -> Test::Builder
+      - Improve import logic for SRand
+      - Other misc typo fixes
+
+-------------------------------------------------------------------
 Tue Aug 18 03:12:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000135
