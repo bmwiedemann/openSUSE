@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:21:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.16.2
+  * A few device-specific fixes for the Google Pixelbook, Apple
+    Magic Trackpad 2, some ALPS i2c touchpads and a jumping
+    cursor fix for ALPS DoalPoint touchpads.
+
+-------------------------------------------------------------------
 Thu Aug 13 07:04:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.16.1
