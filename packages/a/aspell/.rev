@@ -294,4 +294,12 @@
   * Fix various crashes and other problems found by Google's OSS-Fuzz.</comment>
     <requestid>741431</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0f87b5168973cfa54ed3d65863950432</srcmd5>
+    <version>0.60.8</version>
+    <time>1602349389</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove/replace old specfile constructs. (forwarded request 840284 from jengelh)</comment>
+    <requestid>840287</requestid>
+  </revision>
 </revisionlist>

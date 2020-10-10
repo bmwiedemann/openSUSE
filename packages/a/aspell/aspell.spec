@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Spell Checker
 License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
 Group:          Productivity/Text/Spell
-Url:            http://aspell.net/
+URL:            http://aspell.net/
 Source0:        ftp://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
 Source1:        ftp://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
@@ -42,7 +42,6 @@ Suggests:       aspell-ispell
 Suggests:       aspell-spell
 Provides:       pspell = %{version}
 Obsoletes:      pspell < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 GNU Aspell is a spell checker planned to eventually replace Ispell. It
@@ -117,9 +116,7 @@ can be used as a library or as an independent spell checker.
 This package contains the pspell compatibility library.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
 autoreconf -fiv
@@ -127,19 +124,13 @@ export CXXFLAGS="%{optflags} `ncursesw6-config --cflags`"
 #this is an ugly kludge , don't look :-)
 export LDFLAGS="`ncursesw6-config --libs`"
 %configure \
-%if 0%{?suse_version} > 1210
   --enable-curses="-lncursesw" \
-%endif
   --disable-rpath
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-%if 0%{?suse_version} >= 1120
 %make_install
-%else
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%endif
 # Links for compatibility reasons (ispell and spell)
 ln -s %{_libdir}/aspell-0.60/ispell %{buildroot}%{_bindir}
 ln -s %{_libdir}/aspell-0.60/spell %{buildroot}%{_bindir}
@@ -169,8 +160,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libpspell15 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc COPYING README TODO
+%license COPYING
+%doc README TODO
 %doc manual/aspell.html/
 %{_bindir}/aspell
 %{_bindir}/aspell-import
@@ -182,7 +173,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %exclude %{_mandir}/man1/pspell-config.1%{ext_man}
 
 %files devel
-%defattr(-,root,root,-)
 %doc manual/aspell-dev.html/
 %{_bindir}/pspell-config
 %{_includedir}/pspell/
@@ -193,20 +183,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/pspell-config.1%{ext_man}
 
 %files ispell
-%defattr(-,root,root,-)
 %{_bindir}/ispell
 
 %files spell
-%defattr(-,root,root,-)
 %{_bindir}/spell
 
 %files -n libaspell15
-%defattr(-,root,root,-)
 %{_libdir}/aspell-0.60/
 %{_libdir}/libaspell.so.15*
 
 %files -n libpspell15
-%defattr(-,root,root,-)
 %{_libdir}/libpspell.so.15*
 
 %changelog
