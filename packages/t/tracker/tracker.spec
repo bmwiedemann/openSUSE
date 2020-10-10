@@ -21,7 +21,7 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later

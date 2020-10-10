@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  5 15:32:14 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.0.1:
+  + Reference Discourse instead of the mailing list.
+  + Use specific Meson options to enable debug flags.
+  + Reduce in use by TrackerSparqlStatement.
+  + Fix tracker:title-sort.
+  + Fix stale graphs with WITH clauses.
+  + Cleanup libtracker-common.
+  + Several fixes for Coverity warnings.
+  + More tests.
+  + Build fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 28 09:20:26 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.0.0:

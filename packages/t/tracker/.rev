@@ -1114,4 +1114,22 @@
   + Updated translations. (forwarded request 838216 from dimstar)</comment>
     <requestid>838739</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>335890ea9adfa9d9f47c11014f6f0997</srcmd5>
+    <version>3.0.1</version>
+    <time>1602349333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1:
+  + Reference Discourse instead of the mailing list.
+  + Use specific Meson options to enable debug flags.
+  + Reduce in use by TrackerSparqlStatement.
+  + Fix tracker:title-sort.
+  + Fix stale graphs with WITH clauses.
+  + Cleanup libtracker-common.
+  + Several fixes for Coverity warnings.
+  + More tests.
+  + Build fixes.
+  + Updated translations. (forwarded request 840123 from iznogood)</comment>
+    <requestid>840249</requestid>
+  </revision>
 </revisionlist>
