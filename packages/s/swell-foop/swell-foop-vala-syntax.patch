@@ -1,0 +1,12 @@
+diff -Naur a/src/game-view.vala b/src/game-view.vala
+--- a/src/game-view.vala	2019-10-15 05:48:06.000000000 -0500
++++ b/src/game-view.vala	2020-10-07 09:24:59.916669487 -0500
+@@ -354,7 +354,7 @@
+     public Theme (string name)
+     {
+         textures = new Clutter.Image [4];
+-        string[4] colors = {"blue", "green", "yellow", "red"};
++        string[] colors = {"blue", "green", "yellow", "red"};
+ 
+         /* Create the textures required to render */
+         try
