@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Aug 12 09:11:30 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Minimize BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug 10 21:11:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.143.0
+  - support containerd/cri
+
+-------------------------------------------------------------------
+Wed Aug  5 08:42:45 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version 
