@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 10 04:23:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Use %pytest
+- Avoid Python 3.8 specific test cases to support Leap 15.x
+- Update to v202009.1044
+  * per-file opt-in/opt-out `# lib3to6: [enabled|disabled]`
+- from v202006.1041
+  * Add detection of invalid imports and point to available backports
+    Use `install_requires` option to whitelist installed backports
+  * Checkers produce better error messages
+  * Colouring of diffs when using `lib3to6` cli command
+  * Checker for `yield from` syntax depending on target version
+  * Checker for `@` operator depending on target version
+  * Fix `--target-version` argument is ignored
+  * Remove `from __future__ import X` depending on target version
+  * Convert Forward Reference Annotations to strings
+  * Don't apply keyword only args fixer for target version 3.0+
+ 
+-------------------------------------------------------------------
 Mon May 25 06:50:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
