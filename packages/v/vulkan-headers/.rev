@@ -191,4 +191,12 @@
     <comment>- update to 1.2.153:</comment>
     <requestid>833601</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>edf74e394a2ddd39e67f1b00df247ff9</srcmd5>
+    <version>1.2.154</version>
+    <time>1602440091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.154</comment>
+    <requestid>840306</requestid>
+  </revision>
 </revisionlist>

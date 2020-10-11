@@ -16,8 +16,12 @@
 #
 
 
+# vkinfo reports vulkan-headers's version even if the loader/tools/etc.
+# are at an older version, which in the past confused some users.
+# Consider only updating the sources in lockstep.
+# 
 Name:           vulkan-headers
-Version:        1.2.153
+Version:        1.2.154
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -48,7 +52,7 @@ to make use of Vulkan.
 	-DCMAKE_INSTALL_SYSCONFDIR="%_sysconfdir" \
 	-DBUILD_WSI_MIR_SUPPORT=OFF \
 	-DBUILD_TESTS=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
