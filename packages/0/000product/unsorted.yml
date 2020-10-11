@@ -2051,6 +2051,7 @@ unsorted:
   - console-setup 
   - container-diff 
   - container-registry-systemd 
+  - container-selinux: [i586] 
   - container-support-utils 
   - containerd 
   - containerd-ctr 
@@ -19087,7 +19088,7 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-lang: [i586] 
   - policycoreutils-newrole 
-  - policycoreutils-python-utils 
+  - policycoreutils-python-utils: [i586] 
   - polkit-devel 
   - polkit-doc 
   - polkit-whitelisting 
@@ -20038,6 +20039,8 @@ unsorted:
   - python3-aws-xray-sdk-requests 
   - python3-axolotl 
   - python3-axolotl-curve25519 
+  - python3-azure-ai-anomalydetector 
+  - python3-azure-ai-metricsadvisor 
   - python3-azure-ai-nspkg 
   - python3-azure-ai-textanalytics 
   - python3-azure-appconfiguration 
@@ -20098,8 +20101,11 @@ unsorted:
   - python3-azure-mgmt-appplatform 
   - python3-azure-mgmt-attestation 
   - python3-azure-mgmt-authorization 
+  - python3-azure-mgmt-automanage 
   - python3-azure-mgmt-automation 
   - python3-azure-mgmt-azurestack 
+  - python3-azure-mgmt-azurestackhci 
+  - python3-azure-mgmt-baremetalinfrastructure 
   - python3-azure-mgmt-batch 
   - python3-azure-mgmt-batchai 
   - python3-azure-mgmt-billing 
@@ -22081,6 +22087,7 @@ unsorted:
   - python3-qsymm 
   - python3-qt3d-qt5 
   - python3-qt5-devel 
+  - python3-qt5-quick3d 
   - python3-qtcharts-qt5 
   - python3-qtconsole 
   - python3-qtdatavis3d-qt5 
@@ -25399,13 +25406,13 @@ unsorted:
   - segment 
   - segment-javadoc 
   - segv_handler 
-  - selinux-policy 
+  - selinux-policy: [i586] 
   - selinux-policy-devel 
   - selinux-policy-doc 
   - selinux-policy-minimum 
   - selinux-policy-mls 
   - selinux-policy-sandbox 
-  - selinux-policy-targeted 
+  - selinux-policy-targeted: [i586] 
   - selinux-tools: [i586] 
   - semantik 
   - sendfax 
