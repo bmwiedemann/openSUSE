@@ -16,9 +16,10 @@
 #
 
 
+# Only pick versions released as /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.2.153
+Version:        1.2.154
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
@@ -26,7 +27,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
 Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/v%version.tar.gz
 Source9:        baselibs.conf
-Patch0:         0001-Revert-loader-Return-error-if-layer-loading-failed.patch
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
