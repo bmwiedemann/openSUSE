@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  3 11:09:12 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Change paths from /etc to /usr/etc for UsrEtc Move (boo#1177195)
+
+-------------------------------------------------------------------
 Tue Jul  7 09:52:20 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec

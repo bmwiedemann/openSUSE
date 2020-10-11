@@ -610,4 +610,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   * 0003-Move-VT-setup-to-sddm-helper.patch</comment>
     <requestid>819685</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>7d0240360ea7e10bef8fecaab14ae81a</srcmd5>
+    <version>0.18.1</version>
+    <time>1602440098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840326</requestid>
+  </revision>
 </revisionlist>
