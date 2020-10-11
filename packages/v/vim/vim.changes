@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 21:35:39 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- apparmor.vim: update from latest AppArmor 2.13 branch:
+  - add capabilities bpf and perfmon
+
+-------------------------------------------------------------------
 Wed Sep 30 09:55:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1775, fixes the following problems
