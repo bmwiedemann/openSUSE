@@ -79,6 +79,12 @@ for line in watchtail(sys.stdin):
     else:
         os.environ.pop('GIT_AUTHOR_DATE', None)
     time.sleep(10)
+    try:
+        version = subprocess.run(["scripts/getversion", "/mounts/work/SRC/openSUSE:Factory/"+package], shell=False,stdout=subprocess.PIPE).stdout.decode()
+        if version and version != "unknown":
+            info = info.replace(" to rev ", " to version "+version+" / rev ", 1)
+    except:
+        pass
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "600", ".pkglock"], shell=False)
     subprocess.call(["scripts/syncone", package], shell=False)
