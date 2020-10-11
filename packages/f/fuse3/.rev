@@ -108,4 +108,12 @@
   * Minor bugfixes, documentation updates</comment>
     <requestid>825160</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c5c9ee8a84a57d3b860d38607fee562a</srcmd5>
+    <version>3.10.0</version>
+    <time>1602440138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.10.0</comment>
+    <requestid>840409</requestid>
+  </revision>
 </revisionlist>

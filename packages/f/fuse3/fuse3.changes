@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 10:00:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.10.0
+  * Add FUSE_CAP_CACHE_SYMLINKS: allow caching symlinks in kernel
+    page cache.
+
+-------------------------------------------------------------------
 Sun Aug  9 11:57:44 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 3.9.3
