@@ -1,4 +1,4 @@
-commit 02e9e9daa1adf26573bfb0d35c26cca46fb0e777
+commit a8b24a8cd4124e3ffb7b682b94b3a1192e48c9c7
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Aug 9 07:41:24 2018 +0200
 
@@ -33,19 +33,17 @@ index 9c7c820d9fff..8297fc7e6ec2 100644
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
-index 435e5a6feb8b..9b3beed68ea4 100644
+index 88d317670462..04d2c223b970 100644
 --- src/tools/info/sys_info.c
 +++ src/tools/info/sys_info.c
-@@ -37,7 +37,8 @@ static const char* cpu_vendor_names[] = {
-     [UCS_CPU_VENDOR_INTEL]            = "Intel",
+@@ -38,6 +38,7 @@ static const char* cpu_vendor_names[] = {
      [UCS_CPU_VENDOR_AMD]              = "AMD",
      [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
--    [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC"
-+    [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
-+    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM"
+     [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
++    [UCS_CPU_VENDOR_GENERIC_IBM]      = "Generic IBM",
+     [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM"
  };
  
- static double measure_memcpy_bandwidth(size_t size)
 diff --git src/ucm/Makefile.am src/ucm/Makefile.am
 index e53a30a46916..21bce848045d 100644
 --- src/ucm/Makefile.am
@@ -93,10 +91,10 @@ index 000000000000..334c0474e8b6
 +
 +#endif
 diff --git src/ucm/mmap/install.c src/ucm/mmap/install.c
-index 6824a6247bef..81d0375a4132 100644
+index 6b46baaeecfa..522fd6eaa89f 100644
 --- src/ucm/mmap/install.c
 +++ src/ucm/mmap/install.c
-@@ -258,7 +258,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
+@@ -331,7 +331,11 @@ static ucs_status_t ucs_mmap_install_reloc(int events)
                  status = ucm_reloc_modify(&entry->patch);
              } else {
                  ucs_assert(ucm_mmap_hook_mode() == UCM_MMAP_HOOK_BISTRO);
@@ -109,10 +107,10 @@ index 6824a6247bef..81d0375a4132 100644
              if (status != UCS_OK) {
                  ucm_warn("failed to install %s hook for '%s'",
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 2bd0a8d50c4b..4a60658f34d8 100644
+index b612ddeb54ff..6d01521b697b 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
-@@ -58,6 +58,7 @@ nobase_dist_libucs_la_HEADERS = \
+@@ -64,6 +64,7 @@ nobase_dist_libucs_la_HEADERS = \
  	arch/x86_64/global_opts.h \
  	arch/aarch64/global_opts.h \
  	arch/ppc64/global_opts.h \
@@ -120,16 +118,16 @@ index 2bd0a8d50c4b..4a60658f34d8 100644
  	arch/global_opts.h
  
  noinst_HEADERS = \
-@@ -67,6 +68,8 @@ noinst_HEADERS = \
+@@ -71,6 +72,8 @@ noinst_HEADERS = \
+ 	arch/generic/atomic.h \
  	arch/generic/cpu.h \
- 	arch/ppc64/bitops.h \
  	arch/ppc64/cpu.h \
 +	arch/s390x/bitops.h \
 +	arch/s390x/cpu.h \
  	arch/x86_64/atomic.h \
- 	arch/x86_64/bitops.h \
  	arch/x86_64/cpu.h \
-@@ -108,6 +111,7 @@ libucs_la_SOURCES = \
+ 	arch/atomic.h \
+@@ -112,6 +115,7 @@ libucs_la_SOURCES = \
  	algorithm/qsort_r.c \
  	arch/aarch64/cpu.c \
  	arch/aarch64/global_opts.c \
@@ -151,10 +149,10 @@ index 99e53ca5d0f7..dfa83b757bb0 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/bitops.h src/ucs/arch/bitops.h
-index 91d4573c1faf..8b092b023639 100644
+index 10a86b53ca42..80084eea6260 100644
 --- src/ucs/arch/bitops.h
 +++ src/ucs/arch/bitops.h
-@@ -14,6 +14,8 @@
+@@ -18,6 +18,8 @@ BEGIN_C_DECLS
  #  include "ppc64/bitops.h"
  #elif defined(__aarch64__)
  #  include "aarch64/bitops.h"
@@ -164,34 +162,30 @@ index 91d4573c1faf..8b092b023639 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index e81f540a899d..40b89907664a 100644
+index 6d9ebbafeaed..5cda2179efca 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
-@@ -57,7 +57,11 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
-     [UCS_CPU_VENDOR_GENERIC_PPC] = {
+@@ -60,6 +60,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
--    }
-+    },
+     },
 +    [UCS_CPU_VENDOR_GENERIC_IBM] = {
 +        .min = UCS_MEMUNITS_INF,
 +        .max = UCS_MEMUNITS_INF
 +    },
- };
- 
- const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
-@@ -65,7 +69,8 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
-     [UCS_CPU_VENDOR_INTEL]       = 5800 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = {
+         .min = UCS_MEMUNITS_INF,
+         .max = UCS_MEMUNITS_INF
+@@ -72,6 +76,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
      [UCS_CPU_VENDOR_AMD]         = 5008 * UCS_MBYTE,
      [UCS_CPU_VENDOR_GENERIC_ARM] = 5800 * UCS_MBYTE,
--    [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE
-+    [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
 +    [UCS_CPU_VENDOR_GENERIC_IBM] = 5800 * UCS_MBYTE,
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = 5800 * UCS_MBYTE
  };
  
- static void ucs_sysfs_get_cache_size()
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index c1f1cc826b6b..e9d5c5b32ca3 100644
+index cb317a8db3a4..5174eeb7e1db 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
 @@ -58,6 +58,7 @@ typedef enum ucs_cpu_vendor {
@@ -199,10 +193,10 @@ index c1f1cc826b6b..e9d5c5b32ca3 100644
      UCS_CPU_VENDOR_GENERIC_ARM,
      UCS_CPU_VENDOR_GENERIC_PPC,
 +    UCS_CPU_VENDOR_GENERIC_IBM,
+     UCS_CPU_VENDOR_FUJITSU_ARM,
      UCS_CPU_VENDOR_LAST
  } ucs_cpu_vendor_t;
- 
-@@ -91,6 +92,8 @@ typedef struct ucs_cpu_builtin_memcpy {
+@@ -92,6 +93,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "ppc64/cpu.h"
  #elif defined(__aarch64__)
  #  include "aarch64/cpu.h"

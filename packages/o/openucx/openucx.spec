@@ -17,7 +17,7 @@
 
 
 Name:           openucx
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause

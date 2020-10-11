@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Oct  5 13:21:34 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.9.0 (jsc#SLE-15163)
+  - Features:
+    - Added a new class of communication APIs '*_nbx' that enable API extendability while
+    - preserving ABI backward compatibility
+    - Added asynchronous event support to UCT/IB/DEVX
+    - Added support for latest CUDA library version
+    - Added NAK-based reliability protocol for UCT/IB/UD to optimize resends
+    - Added new tests for ROCm
+    - Added new configuration parameters for protocol selection
+    - Added performance optimization for Fujitsu A64FX with InfiniBand
+    - Added performance optimization for clear cache code aarch64
+    - Added support for relaxed-order PCIe access in IB RDMA transports
+    - Added new TCP connection manager
+    - Added support for UCT/IB PKey with partial membership in IB transports
+    - Added support for RoCE LAG
+    - Added support for ROCm 3.7 and above
+    - Added flow control for RDMA read operations
+    - Improved endpoint flush implementation for UCT/IB
+    - Improved UD timer to avoid interrupting the main thread when not in use
+    - Improved latency estimation for network path with CUDA
+    - Improved error reporting messages
+    - Improved performance in active message flow (removed malloc call)
+    - Improved performance in ptr_array flow
+    - Improved performance in UCT/SM progress engine flow
+    - Improved I/O demo code
+    - Improved rendezvous protocol for CUDA
+    - Updated examples code
+  - Bugfixes:
+    - Fixes for most resent versions of GCC, CLANG, ARMCLANG, PGI
+    - Fixes in UCT/IB for strict order keys
+    - Fixes in memory barrier code for aarch64
+    - Fixes in UCT/IB/DEVX for fork system call
+    - Fixes in UCT/IB for rand() call in rdma-core
+    - Fixed in group rescheduling for UCT/IB/DC
+    - Fixes in UCT/CUDA bandwidth reporting
+    - Fixes in rkey_ptr protocol
+    - Fixes in lane selection for rendezvous protocol based on get-zero-copy flow
+    - Fixes for ROCm build
+    - Fixes for XPMEM transport
+    - Fixes in closing endpoint code
+    - Fixes in RDMACM code
+    - Fixes in memcpy selection for AMD
+    - Fixed in UCT/UD endpoint flush functionality
+    - Fixes in XPMEM detection
+    - Fixes in rendezvous staging protocol
+    - Fixes in ROCEv1 mlx5 UDP source port configuration
+    - Multiple fixes in RPM spec file
+    - Multiple fixes in UCP documentation
+    - Multiple fixes in socket connection manager
+    - Multiple fixes in gtest
+    - Multiple fixes in JAVA API implementation
+- Refresh openucx-s390x-support.patch against new version
+
+-------------------------------------------------------------------
 Mon Jul 13 08:19:45 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v1.8.1
