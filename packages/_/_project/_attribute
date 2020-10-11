@@ -31,7 +31,7 @@
   boo#1162853: '20200312'
   boo#1163655: '20200218'
   boo#1163766: '20200414'
-  boo#1164313: '20201008'
+  boo#1164313: '20201009'
   boo#1166657: '20200405'
   boo#1167245: '20200327'
   boo#1167332: '20200319'
@@ -92,7 +92,7 @@
   boo#1176383: '20201009'
   boo#1176450: '20201009'
   boo#1176549: '20200917'
-  boo#1176553: '20201008'
+  boo#1176553: '20201009'
   boo#1176554: '20200916'
   boo#1176701: '20201009'
   boo#1176714: '20200923'
@@ -100,7 +100,7 @@
   boo#1176839: '20201004'
   boo#1176841: '20201009'
   boo#1176894: '20200923'
-  boo#1177402: '20201008'
+  boo#1177402: '20201009'
   boo#1177461: '20201009'
   boo#1177462: '20201009'
   boo#1177517: '20201009'
@@ -170,7 +170,7 @@
   poo#66331: '20200710'
   poo#66373: '20200502'
   poo#66580: '20200627'
-  poo#66784: '20201008'
+  poo#66784: '20201009'
   poo#66967: '20200802'
   poo#67183: '20200622'
   poo#67216: '20200526'
@@ -196,7 +196,7 @@
   poo#69994: '20200919'
   poo#70090: '20200823'
   poo#70231: '20200829'
-  poo#70336: '20201008'
+  poo#70336: '20201009'
   poo#70387: '20200910'
   poo#70597: '20200916'
   poo#70897: '20200910'
@@ -205,10 +205,11 @@
   poo#71344: '20201009'
   poo#71374: '20201006'
   poo#71503: '20201004'
+  poo#71740: '20201009'
   poo#71782: '20201006'
   poo#71929: '20201009'
   poo#71932: '20201009'
-  poo#73102: '20201008'
+  poo#73102: '20201009'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -252,7 +253,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20201009</value>
+    <value>20201010</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -470,9 +471,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20201009'
-published: '20201008'
-publishing: '20201008'
+    <value>failed: ''
+published: '20201009'
+publishing: '20201009'
 testing: '20201009'
 </value>
   </attribute>
