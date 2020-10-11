@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  9 08:15:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.14.1
+  * This minor bug fix release provides compatibility with 
+    Python 3.9 by replacing usage of deprecated API's which
+    were removed in Python 3.9.
+
+-------------------------------------------------------------------
 Mon Feb 24 19:19:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.14

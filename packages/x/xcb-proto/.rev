@@ -128,4 +128,15 @@
   * Allow access to the original type in the XML</comment>
     <requestid>778888</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>632e1af863e2abb67147ab3668e95d88</srcmd5>
+    <version>7.6_1.14.1</version>
+    <time>1602440128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.1
+  * This minor bug fix release provides compatibility with 
+    Python 3.9 by replacing usage of deprecated API's which
+    were removed in Python 3.9.</comment>
+    <requestid>840399</requestid>
+  </revision>
 </revisionlist>

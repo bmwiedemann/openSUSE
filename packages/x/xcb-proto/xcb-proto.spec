@@ -16,7 +16,7 @@
 #
 
 
-%define dirsuffix 1.14
+%define dirsuffix 1.14.1
 %if 0%{?suse_version} >= 1500
 %bcond_with python2
 %else
