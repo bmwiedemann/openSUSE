@@ -51,18 +51,18 @@ install -m 644 udev/sysconfig.issue-generator %{buildroot}%{_fillupdir}/
 %fdupes %{buildroot}%{_mandir}
 
 %pre
-%service_add_pre issue-generator.service issue-add-ssh-keys.service
+%service_add_pre issue-generator.service issue-generator.path issue-add-ssh-keys.service
 
 %post
 %tmpfiles_create issue-generator.conf
 %{fillup_only -n issue-generator}
-%service_add_post issue-generator.service issue-add-ssh-keys.service
+%service_add_post issue-generator.service issue-generator.path issue-add-ssh-keys.service
 
 %preun
-%service_del_preun issue-generator.service issue-add-ssh-keys.service
+%service_del_preun issue-generator.service issue-generator.path issue-add-ssh-keys.service
 
 %postun
-%service_del_postun issue-generator.service issue-add-ssh-keys.service
+%service_del_postun issue-generator.service issue-generator.path issue-add-ssh-keys.service
 
 %files
 %license COPYING

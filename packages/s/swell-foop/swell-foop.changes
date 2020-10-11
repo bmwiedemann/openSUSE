@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 14:39:54 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add swell-foop-vala-syntax.patch: Don't use unsupported vala
+  syntax, (glgo#GNOME/swell-foop!20).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:19:57 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

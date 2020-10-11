@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 22:53:36 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 20.10:
+  Add support for WAVESTOP notifications
+  Add support for engines without settings files (or empty settings files)
+  Add power-of-two quantum fallback paths for *BSD and Emscripten
+  Return a unique error code for audio engines with a bad platform ID
+  Fix a deadlock in Wolfenstein: The Old Blood related to callbacks
+  Fix a crash for streaming WaveBanks when calling Destroy
+  stb_vorbis: Handle malloc(0) calls
+  
+-------------------------------------------------------------------
 Fri Sep 11 14:45:42 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - The FFmpeg backend for WMA decoding has been replaced with GStreamer. 

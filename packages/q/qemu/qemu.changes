@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:34:49 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Create qemu-skiboot sub-package. Use update-alternatives mechanism
+  to coordinate with opal-firmware (provided with skiboot package set)
+  on the provider of the /usr/share/qemu/skiboot.lid firmware file.
+  qemu-skiboot uses a priority of 15, while opal-firmware uses a
+  priority of 10 (jsc#SLE-13240)
+
+-------------------------------------------------------------------
 Wed Sep 30 18:30:12 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Undo part of the split-provides recently done. We have to wait on

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  5 15:33:20 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.0.1:
+  + Fix moving files and directories leaving stale data.
+  + Better handling of faulty SPARQL from tracker-extract.
+  + Fix chromaprint tag extraction in gstreamer extractor causing
+    bad SPARQL.
+  + Reference Discourse instead of the mailing list.
+  + Forward tracker-extract state.
+  + Use specific Meson options to enable debug flags.
+  + Fix stop words location when building with system Tracker.
+  + Small libtracker-miners-common clean ups.
+  + Check for malloc_trim function being available.
+  + Fixes for Coverity warnings.
+  + Compiler warning fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:15:53 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.0.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep  9 07:59:53 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 2.99.5:

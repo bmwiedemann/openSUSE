@@ -171,4 +171,27 @@
     <comment>Update to 2.99.x - we have tracker stable renamed to tracker2, so we can easily already push the unstable branch (forwarded request 833773 from dimstar)</comment>
     <requestid>836026</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d6c7cc5ef60462196ff18c3be2f8fd1a</srcmd5>
+    <version>3.0.1</version>
+    <time>1602349340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.1:
+  + Fix moving files and directories leaving stale data.
+  + Better handling of faulty SPARQL from tracker-extract.
+  + Fix chromaprint tag extraction in gstreamer extractor causing
+    bad SPARQL.
+  + Reference Discourse instead of the mailing list.
+  + Forward tracker-extract state.
+  + Use specific Meson options to enable debug flags.
+  + Fix stop words location when building with system Tracker.
+  + Small libtracker-miners-common clean ups.
+  + Check for malloc_trim function being available.
+  + Fixes for Coverity warnings.
+  + Compiler warning fixes.
+  + Updated translations.
+- Update to version 3.0.0:
+  + Updated translations. (forwarded request 840124 from iznogood)</comment>
+    <requestid>840250</requestid>
+  </revision>
 </revisionlist>

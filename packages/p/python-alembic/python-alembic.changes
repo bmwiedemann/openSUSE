@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:07:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest_depr_from_parent.patch to fix FTBGS with pytest 6.*
+  (gh#sqlalchemy/sqlalchemy#5635).
+
+-------------------------------------------------------------------
 Sat Sep 19 15:30:06 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.4.3:

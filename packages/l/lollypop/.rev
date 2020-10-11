@@ -1458,4 +1458,14 @@
   * Bug fixes.</comment>
     <requestid>839415</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>33ded02018d53634078a11c8086237b5</srcmd5>
+    <version>1.4.2</version>
+    <time>1602349484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2:
+  * Bug fixes.
+  * Add information as a view.</comment>
+    <requestid>840486</requestid>
+  </revision>
 </revisionlist>

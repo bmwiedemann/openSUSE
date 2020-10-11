@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:13:09 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.19 development release
+  - Wine Mono engine updated to 5.1.1, with WPF text formatting support.
+  - KERNEL32 library converted to PE.
+  - DSS cryptographic provider.
+  - Windowing support in the new console host.
+  - A number of exception handling fixes.
+  - Various bug fixes.
+- update staging to 5.19 release
+
+-------------------------------------------------------------------
 Sat Sep 26 07:07:28 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.18 development release

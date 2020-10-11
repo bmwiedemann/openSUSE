@@ -1,0 +1,42 @@
+From: Phil Thompson <phil@riverbankcomputing.com>
+References: https://www.riverbankcomputing.com/pipermail/pyqt/2020-September/043241.html
+Subject: Fixed building against Qt v5.10 and earlier. [29e2ebf17db3]
+
+QCustomAudioRoleControl is only available for Qt 5.11 and later
+
+Index: PyQt5-5.15.1/sip/QtMultimedia/qabstractvideosurface.sip
+===================================================================
+--- PyQt5-5.15.1.orig/sip/QtMultimedia/qabstractvideosurface.sip
++++ PyQt5-5.15.1/sip/QtMultimedia/qabstractvideosurface.sip
+@@ -81,7 +81,11 @@ class QAbstractVideoSurface : QObject
+         {sipName_QCameraViewfinderSettingsControl, &sipType_QCameraViewfinderSettingsControl, -1, 39},
+         {sipName_QCameraViewfinderSettingsControl2, &sipType_QCameraViewfinderSettingsControl2, -1, 40},
+         {sipName_QCameraZoomControl, &sipType_QCameraZoomControl, -1, 41},
++    #if QT_VERSION >= 0x050b00
+         {sipName_QCustomAudioRoleControl, &sipType_QCustomAudioRoleControl, -1, 42},
++    #else
++        {0, 0, -1, 42},
++    #endif
+         {sipName_QImageEncoderControl, &sipType_QImageEncoderControl, -1, 43},
+         {sipName_QMediaAudioProbeControl, &sipType_QMediaAudioProbeControl, -1, 44},
+         {sipName_QMediaAvailabilityControl, &sipType_QMediaAvailabilityControl, -1, 45},
+
+Index: PyQt5-5.15.1/sip/QtMultimedia/qcustomaudiorolecontrol.sip
+===================================================================
+--- PyQt5-5.15.1.orig/sip/QtMultimedia/qcustomaudiorolecontrol.sip
++++ PyQt5-5.15.1/sip/QtMultimedia/qcustomaudiorolecontrol.sip
+@@ -20,6 +20,8 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++%If (Qt_5_11_0 -)
++
+ class QCustomAudioRoleControl : QMediaControl
+ {
+ %TypeHeaderCode
+@@ -38,3 +40,5 @@ signals:
+ protected:
+     explicit QCustomAudioRoleControl(QObject *parent /TransferThis/ = 0);
+ };
++
++%End

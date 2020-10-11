@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 5.18
-Version:        5.18
+%define realver 5.19
+Version:        5.19
 Release:        0
 
 %if "%{flavor}" != ""
@@ -142,8 +142,8 @@ Source8:        wine-rpmlintrc
 #Patch0:         patch.txt
 Recommends:     wine-gecko >= 2.47.1
 Conflicts:      wine-gecko < 2.47.1
-Recommends:     wine-mono >= 4.9.2
-Conflicts:      wine-mono < 4.9.2
+Recommends:     wine-mono >= 5.1.1
+Conflicts:      wine-mono < 5.1.1
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     dosbox
@@ -158,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 5.18
+%define staging_version 5.19
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

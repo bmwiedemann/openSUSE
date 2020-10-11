@@ -3700,4 +3700,19 @@
 - update staging to 5.18 release</comment>
     <requestid>838200</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>f23de14f046f1efbdffddcf8a554c07e</srcmd5>
+    <version>5.19</version>
+    <time>1602349518</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.19 development release
+  - Wine Mono engine updated to 5.1.1, with WPF text formatting support.
+  - KERNEL32 library converted to PE.
+  - DSS cryptographic provider.
+  - Windowing support in the new console host.
+  - A number of exception handling fixes.
+  - Various bug fixes.
+- update staging to 5.19 release</comment>
+    <requestid>840533</requestid>
+  </revision>
 </revisionlist>

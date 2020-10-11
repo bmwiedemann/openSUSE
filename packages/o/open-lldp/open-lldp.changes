@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Sep 06 16:13:14 UTC 2020 - lduncan@suse.com
+
+- Update to version v1.0.1+69.e8f522565f5a to removed commpiler
+  and rpmlint complaints:
+  * Fix bash-completion dir: don't use /etc
+  * Fix compiler issue with strcpy(): use memcpy
+  * Fix compiler complaint argument type mismatch.
+  * Fix compiler complaint declaration vs function.
+  * Fix compiler complaint copying to packed member.
+  * add 'lldpad.socket' to the '%service_*' macros in the SPEC
+    file
+
+-------------------------------------------------------------------
+Fri Sep  4 16:19:34 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Moved sources from github.com/intel to github/openSUSE
+  * upgrading to version v1.0.1+110.6009075a9fcc
+    - merged in latest upstream (no API changes)
+
+-------------------------------------------------------------------
+Tue Aug 04 12:06:31 UTC 2020 - hare@suse.de
+
+- Update to version v1.0.1+63.f977e67 (bsc#1171284,bsc#1170745,bsc#1153520):
+  * lldp/rx.c: Reset state machine variable in process_delete_info()
+  * lldp: do not call 'assert' in rxProcessFrame()
+  * ecp: allow for failure to create
+  * lldp_mand: retrieve permanent mac address in get_mac()
+  * lldp_util: use netlink to fetch mac address
+  * lldp_util: drop get_macstr()
+  * linux/if_link.h: Update and add bonding netlink definitions
+
+-------------------------------------------------------------------
 Mon Apr  6 09:26:46 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Use -fcommon in order to fix boo#1160407.
@@ -13,7 +45,7 @@ Fri Jan 24 11:12:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 Tue Nov 19 13:14:16 UTC 2019 - hare@suse.com
 
 - Update to version v1.0.1+102.4c7fcc3:
-  * l2_packet: Guard ETH_P_LLDP define
+  * l2_packet: Guard ETH_P_LLDP define (edit: fixes bsc#1156545)
   * lldp_mand: retrieve permanent mac address in get_mac()
   * lldp_util: use netlink to fetch mac address
   * lldp_util: drop get_macstr()

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lib3to6
-Version:        202002.32
+Version:        202009.1044
 Release:        0
 Summary:        Module to compile Python 3.6+ code to Python 2.7+
 License:        MIT
@@ -32,6 +32,7 @@ Requires:       python-astor
 Requires:       python-click
 Requires:       python-pathlib2
 Requires:       python-typing
+Requires:       python-wheel
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -39,7 +40,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module astor}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pathlib2}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
 # /SECTION
 %python_subpackages
@@ -61,7 +62,8 @@ sed -i '1{/^#!/d}' src/lib3to6/__main__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py pytest
+# Avoid Python 3.8 specific test cases to support Leap 15.x
+%pytest -k 'not (fixture7 or fixture17 or fixture53 or fixture54 or fixture55 or fixture56 or fixture57)'
 
 %post
 %python_install_alternative lib3to6

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:40:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Handle the .path unit in scriptlets as well
+
+-------------------------------------------------------------------
 Tue Jul  7 09:30:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.10

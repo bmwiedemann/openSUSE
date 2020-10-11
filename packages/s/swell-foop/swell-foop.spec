@@ -1,7 +1,7 @@
 #
 # spec file for package swell-foop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Swell_Foop
 Source0:        https://download.gnome.org/sources/swell-foop/3.34/%{name}-%{version}.tar.xz
-
+#PATCH-FIX-UPSTREAM swell-foop-vala-syntax.patch glgo#GNOME/swell-foop!20 malcolmlewis@opensuse.org -- Don't use unsupported vala syntax.
+Patch0:         swell-foop-vala-syntax.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson

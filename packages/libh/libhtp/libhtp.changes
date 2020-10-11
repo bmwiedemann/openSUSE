@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 18:36:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.35
+  * fix memory leak in tunnel traffoc
+  * fix case where chunked data causes excessive CPU use
+
+-------------------------------------------------------------------
 Sun Sep 13 13:03:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.34

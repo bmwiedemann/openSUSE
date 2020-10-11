@@ -3,7 +3,7 @@
 # Date 1589854460 -7200
 #      Tue May 19 04:14:20 2020 +0200
 # Node ID ce99bba6375432c55a73c1367f619dfef7c7e9fc
-# Parent  2b4f407fb1f8824fed4df9c4c3f15a2493e71677
+# Parent  2c820431829b3e5c7e161bd0bf73b48def9d3822
 commit e78f5a6a2124ce88002796d6aaefc6232f132526
 Author: Hans Petter Jansson <hpj@cl.no>
     AES Keywrap POST.
@@ -11,7 +11,12 @@ Author: Hans Petter Jansson <hpj@cl.no>
 diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
 --- a/lib/freebl/fipsfreebl.c
 +++ b/lib/freebl/fipsfreebl.c
-@@ -110,6 +110,9 @@
+@@ -107,16 +107,19 @@ BOOL WINAPI DllMain(
+ #define FIPS_AES_BLOCK_SIZE 16     /* 128-bits */
+ #define FIPS_AES_ENCRYPT_LENGTH 16 /* 128-bits */
+ #define FIPS_AES_DECRYPT_LENGTH 16 /* 128-bits */
+ #define FIPS_AES_CMAC_LENGTH 16    /* 128-bits */
+ #define FIPS_AES_128_KEY_SIZE 16   /* 128-bits */
  #define FIPS_AES_192_KEY_SIZE 24   /* 192-bits */
  #define FIPS_AES_256_KEY_SIZE 32   /* 256-bits */
  
@@ -21,7 +26,17 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
  /* FIPS preprocessor directives for message digests             */
  #define FIPS_KNOWN_HASH_MESSAGE_LENGTH 64 /* 512-bits */
  
-@@ -299,6 +302,9 @@
+ /* FIPS preprocessor directives for RSA.                         */
+ #define FIPS_RSA_TYPE siBuffer
+ #define FIPS_RSA_PUBLIC_EXPONENT_LENGTH 3    /*   24-bits */
+ #define FIPS_RSA_PRIVATE_VERSION_LENGTH 1    /*    8-bits */
+ #define FIPS_RSA_MESSAGE_LENGTH 256          /* 2048-bits */
+@@ -296,16 +299,19 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
+     static const PRUint8 aes_cbc_known_initialization_vector[] =
+         { "SecurityytiruceS" };
+ 
+     /* AES Known Plaintext (128-bits). (blocksize is 128-bits) */
+     static const PRUint8 aes_known_plaintext[] = { "NetscapeepacsteN" };
  
      static const PRUint8 aes_gcm_known_aad[] = { "MozillaallizoM" };
  
@@ -31,8 +46,18 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
      /* AES Known Ciphertext (128-bit key). */
      static const PRUint8 aes_ecb128_known_ciphertext[] = {
          0x3c, 0xa5, 0x96, 0xf3, 0x34, 0x6a, 0x96, 0xc1,
-@@ -353,6 +359,25 @@
-         0xf4, 0xb0, 0xc1, 0x8c, 0x86, 0x51, 0xf5, 0xa1
+         0x03, 0x88, 0x16, 0x7b, 0x20, 0xbf, 0x35, 0x47
+     };
+ 
+     static const PRUint8 aes_cbc128_known_ciphertext[] = {
+         0xcf, 0x15, 0x1d, 0x4f, 0x96, 0xe4, 0x4f, 0x63,
+@@ -366,33 +372,56 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
+     };
+ 
+     static const PRUint8 aes_cmac256_known_ciphertext[] = {
+         0xc1, 0x26, 0x69, 0x32, 0x51, 0x13, 0x65, 0xac,
+         0x71, 0x23, 0xe4, 0xe7, 0xb9, 0x0c, 0x88, 0x9f
+ 
      };
  
 +    /* AES Keywrap Known Ciphertexts. */
@@ -57,9 +82,14 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
      const PRUint8 *aes_ecb_known_ciphertext =
          (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_ecb128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_ecb192_known_ciphertext : aes_ecb256_known_ciphertext;
  
-@@ -362,10 +387,14 @@
+     const PRUint8 *aes_cbc_known_ciphertext =
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_cbc128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_cbc192_known_ciphertext : aes_cbc256_known_ciphertext;
+ 
      const PRUint8 *aes_gcm_known_ciphertext =
          (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_gcm128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_gcm192_known_ciphertext : aes_gcm256_known_ciphertext;
+ 
+     const PRUint8 *aes_cmac_known_ciphertext =
+         (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_cmac128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_cmac192_known_ciphertext : aes_cmac256_known_ciphertext;
  
 +    const PRUint8 *aes_keywrap_known_ciphertext =
 +        (aes_key_size == FIPS_AES_128_KEY_SIZE) ? aes_kw128_known_ciphertext : (aes_key_size == FIPS_AES_192_KEY_SIZE) ? aes_kw192_known_ciphertext : aes_kw256_known_ciphertext;
@@ -68,11 +98,22 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
      PRUint8 aes_computed_ciphertext[FIPS_AES_ENCRYPT_LENGTH * 2];
      PRUint8 aes_computed_plaintext[FIPS_AES_DECRYPT_LENGTH * 2];
      AESContext *aes_context;
+     CMACContext *cmac_context;
 +    AESKeyWrapContext *aes_keywrap_context;
      unsigned int aes_bytes_encrypted;
      unsigned int aes_bytes_decrypted;
      CK_NSS_GCM_PARAMS gcmParams;
-@@ -554,6 +583,52 @@
+     SECStatus aes_status;
+ 
+     /*check if aes_key_size is 128, 192, or 256 bits */
+     if ((aes_key_size != FIPS_AES_128_KEY_SIZE) &&
+         (aes_key_size != FIPS_AES_192_KEY_SIZE) &&
+@@ -609,16 +638,62 @@ freebl_fips_AES_PowerUpSelfTest(int aes_
+     if ((aes_status != SECSuccess) ||
+         (aes_bytes_encrypted != FIPS_AES_CMAC_LENGTH) ||
+         (PORT_Memcmp(aes_computed_ciphertext, aes_cmac_known_ciphertext,
+                      FIPS_AES_CMAC_LENGTH) != 0)) {
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
          return (SECFailure);
      }
  
@@ -124,4 +165,9 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
 +
      return (SECSuccess);
  }
+ 
+ /* Known Hash Message (512-bits).  Used for all hashes (incl. SHA-N [N>1]). */
+ static const PRUint8 known_hash_message[] = {
+     "The test message for the MD2, MD5, and SHA-1 hashing algorithms."
+ };
  

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:04:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- use obsinfo again for commit id extraction, as this matches
+  upstream's build commit id (just in case).
+
+-------------------------------------------------------------------
+Wed Oct  7 14:37:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- fix git commit determination (bsc#1177289) 
+
+-------------------------------------------------------------------
 Thu Sep 17 09:05:50 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.19.2:

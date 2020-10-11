@@ -18,10 +18,11 @@
 
 
 Name:           mediainfo
-Version:        20.08
+Version:        20.09
 Release:        0
 Summary:        Audio/video file technical and tag information utility
 License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/Other
 URL:            https://mediaarea.net
 Source0:        https://mediaarea.net/download/source/%{name}/%{version}/%{name}_%{version}.tar.xz
 BuildRequires:  fdupes

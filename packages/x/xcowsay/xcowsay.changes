@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:35:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fix black squares around cow and bubble on non-compositing window manager
+
+-------------------------------------------------------------------
 Sun Feb  9 06:35:02 UTC 2020 - wnereiz@member.fsf.org
 
 - Upgrade to version 1.5

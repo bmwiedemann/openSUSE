@@ -17,13 +17,13 @@
 
 
 Name:           tracker-miners
-Version:        2.99.5
+Version:        3.0.1
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/2.99/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/3.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
