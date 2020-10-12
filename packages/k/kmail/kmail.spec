@@ -21,15 +21,13 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch:          Fix-Bug-426596.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel

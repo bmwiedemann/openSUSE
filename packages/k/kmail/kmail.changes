@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:44:11 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Fix encoding problem with `kmail  --msg $PWD/file.txt`
+  * It was a error to call setAutoDelete(false). It will create a mem leak
+  * Fix Bug 426596 - Application: "akonadi_archivemail_agent" crashed after
+    closing "Configure automatic archving..."-Dialog (kde#426596)
+- Dropped patches, now upstream:
+  * Fix-Bug-426596.patch
+
+-------------------------------------------------------------------
 Thu Sep 17 10:11:29 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-Bug-426596.patch to fix a possible crash of the
