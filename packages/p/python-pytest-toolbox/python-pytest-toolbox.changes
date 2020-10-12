@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 11 15:55:51 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix %check to run tests with pytest 6.1
+
+-------------------------------------------------------------------
 Sat Aug  8 03:22:37 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

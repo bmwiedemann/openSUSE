@@ -41,7 +41,7 @@ Numerous useful plugins for pytest.
 
 %prep
 %setup -q -n pytest-toolbox-%{version}
-sed -i /addopts/d setup.cfg
+sed -i '/addopts/d;/timeout/d' setup.cfg
 
 %build
 %python_build
