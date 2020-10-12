@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 11 12:29:59 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 7.8.4
+  see https://trac.osgeo.org/grass/wiki/Release/7.8.4-News
+  Fixes to support wxPython 4.1x
+
+-------------------------------------------------------------------
 Tue May 19 16:14:55 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 7.8.3:

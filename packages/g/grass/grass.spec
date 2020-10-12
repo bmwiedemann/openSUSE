@@ -34,7 +34,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 BuildRequires:  wxWidgets-devel >= 2.8
 %endif
 Name:           grass
-Version:        7.8.3
+Version:        7.8.4
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
