@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-tools
-Version:        1.2.153
+Version:        1.2.154
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
