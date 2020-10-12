@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:32:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Fix isDefault that cause the KCModule to not properly update its default state
+  * initialize variable in header
+  * [kcolorscheme]: Add isColorSetSupported to check if a colour scheme has a given color set
+  * [kcolorscheme] Properly read custom Inactive colors for the backgrounds
+
+-------------------------------------------------------------------
 Sun Sep  6 12:48:51 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
