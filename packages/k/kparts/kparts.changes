@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Install krop & krwp servicetype definition files by file name matching type
+  * const'ify pointer + initialize variable
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0

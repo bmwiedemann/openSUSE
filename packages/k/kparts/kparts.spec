@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Parts5
-%define _tar_path 5.74
+%define _tar_path 5.75
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kparts
-Version:        5.74.0
+Version:        5.75.0
 Release:        0
 Summary:        Plugin framework for user interface components
 License:        LGPL-2.1-or-later
@@ -123,8 +123,8 @@ elaborate widgets with a user-interface defined in terms of actions
 %{_kf5_libdir}/libKF5Parts.so.*
 %{_kf5_servicetypesdir}/browserview.desktop
 %{_kf5_servicetypesdir}/kpart.desktop
-%{_kf5_servicetypesdir}/krop.desktop
-%{_kf5_servicetypesdir}/krwp.desktop
+%{_kf5_servicetypesdir}/kparts-readonlypart.desktop
+%{_kf5_servicetypesdir}/kparts-readwritepart.desktop
 
 %files devel
 %dir %{_kf5_includedir}/*/
