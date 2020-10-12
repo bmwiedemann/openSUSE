@@ -1,7 +1,7 @@
 #
 # spec file for package lsb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,107 @@
 
 
 Name:           lsb
+Version:        4.0.fake
+Release:        0
 Summary:        LSB Fake Package
 License:        GPL-2.0-or-later
 Group:          System/Fhs
-Version:        4.0.fake
-Release:        0
-Obsoletes:      lsb-desktop
+URL:            https://www.linuxbase.org/
 BuildRequires:  glibc-devel-32bit
 BuildRequires:  openSUSE-release
+Requires:       %{_bindir}/ar
+Requires:       %{_bindir}/at
+Requires:       %{_bindir}/awk
+Requires:       %{_bindir}/basename
+Requires:       %{_bindir}/batch
+Requires:       %{_bindir}/bc
+Requires:       %{_bindir}/chfn
+Requires:       %{_bindir}/chsh
+Requires:       %{_bindir}/cksum
+Requires:       %{_bindir}/cmp
+Requires:       %{_bindir}/col
+Requires:       %{_bindir}/comm
+Requires:       %{_bindir}/crontab
+Requires:       %{_bindir}/csplit
+Requires:       %{_bindir}/cut
+Requires:       %{_bindir}/diff
+Requires:       %{_bindir}/dirname
+Requires:       %{_bindir}/du
+Requires:       %{_bindir}/ed
+Requires:       %{_bindir}/env
+Requires:       %{_bindir}/expand
+Requires:       %{_bindir}/expr
+Requires:       %{_bindir}/file
+Requires:       %{_bindir}/find
+Requires:       %{_bindir}/fold
+Requires:       %{_bindir}/foomatic-rip
+Requires:       %{_bindir}/gencat
+Requires:       %{_bindir}/getconf
+Requires:       %{_bindir}/gettext
+Requires:       %{_bindir}/groups
+Requires:       %{_bindir}/gs
+Requires:       %{_bindir}/head
+Requires:       %{_bindir}/iconv
+Requires:       %{_bindir}/id
+Requires:       %{_bindir}/install
+Requires:       %{_bindir}/ipcrm
+Requires:       %{_bindir}/ipcs
+Requires:       %{_bindir}/join
+Requires:       %{_bindir}/killall
+Requires:       %{_bindir}/locale
+Requires:       %{_bindir}/localedef
+Requires:       %{_bindir}/logname
+Requires:       %{_bindir}/lp
+Requires:       %{_bindir}/lpr
+Requires:       %{_bindir}/m4
+Requires:       %{_bindir}/mailx
+Requires:       %{_bindir}/make
+Requires:       %{_bindir}/man
+Requires:       %{_bindir}/md5sum
+Requires:       %{_bindir}/mkfifo
+Requires:       %{_bindir}/msgfmt
+Requires:       %{_bindir}/newgrp
+Requires:       %{_bindir}/nice
+Requires:       %{_bindir}/nl
+Requires:       %{_bindir}/nohup
+Requires:       %{_bindir}/od
+Requires:       %{_bindir}/passwd
+Requires:       %{_bindir}/paste
+Requires:       %{_bindir}/patch
+Requires:       %{_bindir}/pathchk
+Requires:       %{_bindir}/pidof
+Requires:       %{_bindir}/pr
+Requires:       %{_bindir}/printf
+Requires:       %{_bindir}/renice
+Requires:       %{_bindir}/rsync
+Requires:       %{_bindir}/split
+Requires:       %{_bindir}/strip
+Requires:       %{_bindir}/sum
+Requires:       %{_bindir}/tail
+Requires:       %{_bindir}/tee
+Requires:       %{_bindir}/test
+Requires:       %{_bindir}/time
+Requires:       %{_bindir}/tr
+Requires:       %{_bindir}/tsort
+Requires:       %{_bindir}/tty
+Requires:       %{_bindir}/unexpand
+Requires:       %{_bindir}/uniq
+Requires:       %{_bindir}/wc
+Requires:       %{_bindir}/xargs
+Requires:       %{_bindir}/xdg-desktop-icon
+Requires:       %{_bindir}/xdg-desktop-menu
+Requires:       %{_bindir}/xdg-email
+Requires:       %{_bindir}/xdg-icon-resource
+Requires:       %{_bindir}/xdg-mime
+Requires:       %{_bindir}/xdg-open
+Requires:       %{_bindir}/xdg-screensaver
+Requires:       %{_sbindir}/groupadd
+Requires:       %{_sbindir}/groupdel
+Requires:       %{_sbindir}/groupmod
+Requires:       %{_sbindir}/sendmail
+Requires:       %{_sbindir}/useradd
+Requires:       %{_sbindir}/userdel
+Requires:       %{_sbindir}/usermod
 Requires:       /bin/cat
 Requires:       /bin/chgrp
 Requires:       /bin/chmod
@@ -33,7 +126,6 @@ Requires:       /bin/cp
 Requires:       /bin/dd
 Requires:       /bin/df
 Requires:       /bin/echo
-Requires:       /bin/ed
 Requires:       /bin/false
 Requires:       /bin/fuser
 Requires:       /bin/hostname
@@ -62,110 +154,25 @@ Requires:       /bin/touch
 Requires:       /bin/true
 Requires:       /bin/umount
 Requires:       /bin/uname
-Requires:       /sbin/pidof
 Requires:       /sbin/shutdown
-Requires:       /usr/bin/ar
-Requires:       /usr/bin/at
-Requires:       /usr/bin/awk
-Requires:       /usr/bin/basename
-Requires:       /usr/bin/batch
-Requires:       /usr/bin/bc
-Requires:       /usr/bin/chfn
-Requires:       /usr/bin/chsh
-Requires:       /usr/bin/cksum
-Requires:       /usr/bin/cmp
-Requires:       /usr/bin/col
-Requires:       /usr/bin/comm
-Requires:       /usr/bin/crontab
-Requires:       /usr/bin/csplit
-Requires:       /usr/bin/cut
-Requires:       /usr/bin/diff
-Requires:       /usr/bin/dirname
-Requires:       /usr/bin/du
-Requires:       /usr/bin/env
-Requires:       /usr/bin/expand
-Requires:       /usr/bin/expr
-Requires:       /usr/bin/file
-Requires:       /usr/bin/find
-Requires:       /usr/bin/fold
-Requires:       /usr/bin/foomatic-rip
-Requires:       /usr/bin/gencat
-Requires:       /usr/bin/getconf
-Requires:       /usr/bin/gettext
-Requires:       /usr/bin/groups
-Requires:       /usr/bin/gs
-Requires:       /usr/bin/head
-Requires:       /usr/bin/iconv
-Requires:       /usr/bin/id
-Requires:       /usr/bin/install
-Requires:       /usr/bin/ipcrm
-Requires:       /usr/bin/ipcs
-Requires:       /usr/bin/join
-Requires:       /usr/bin/killall
-Requires:       /usr/bin/locale
-Requires:       /usr/bin/localedef
-Requires:       /usr/bin/logname
-Requires:       /usr/bin/lp
-Requires:       /usr/bin/lpr
-Requires:       /usr/bin/m4
-Requires:       /usr/bin/mailx
-Requires:       /usr/bin/make
-Requires:       /usr/bin/man
-Requires:       /usr/bin/md5sum
-Requires:       /usr/bin/mkfifo
-Requires:       /usr/bin/msgfmt
-Requires:       /usr/bin/newgrp
-Requires:       /usr/bin/nice
-Requires:       /usr/bin/nl
-Requires:       /usr/bin/nohup
-Requires:       /usr/bin/od
-Requires:       /usr/bin/passwd
-Requires:       /usr/bin/paste
-Requires:       /usr/bin/patch
-Requires:       /usr/bin/pathchk
-Requires:       /usr/bin/pr
-Requires:       /usr/bin/printf
-Requires:       /usr/bin/renice
-Requires:       /usr/bin/rsync
-Requires:       /usr/bin/split
-Requires:       /usr/bin/strip
-Requires:       /usr/bin/sum
-Requires:       /usr/bin/tail
-Requires:       /usr/bin/tee
-Requires:       /usr/bin/test
-Requires:       /usr/bin/time
-Requires:       /usr/bin/tr
-Requires:       /usr/bin/tsort
-Requires:       /usr/bin/tty
-Requires:       /usr/bin/unexpand
-Requires:       /usr/bin/uniq
-Requires:       /usr/bin/wc
-Requires:       /usr/bin/xargs
-Requires:       /usr/bin/xdg-desktop-icon
-Requires:       /usr/bin/xdg-desktop-menu
-Requires:       /usr/bin/xdg-email
-Requires:       /usr/bin/xdg-icon-resource
-Requires:       /usr/bin/xdg-mime
-Requires:       /usr/bin/xdg-open
-Requires:       /usr/bin/xdg-screensaver
-Requires:       /usr/sbin/groupadd
-Requires:       /usr/sbin/groupdel
-Requires:       /usr/sbin/groupmod
-Requires:       /usr/sbin/sendmail
-Requires:       /usr/sbin/useradd
-Requires:       /usr/sbin/userdel
-Requires:       /usr/sbin/usermod
+Requires:       Mesa
 Requires:       cpio
 Requires:       grep
 Requires:       gzip
 Requires:       lsb-release
 Requires:       pax
+Requires:       perl-base >= 5.8.8
+Requires:       python >= 2.7.3
+Obsoletes:      lsb-desktop
 Obsoletes:      lsb-runtime
 Provides:       lsb = 2.0
 Provides:       lsb-core-noarch = 2.0
 Provides:       lsb-core-noarch = 3.2
 Provides:       lsb-core-noarch = 4.0
-%ifarch %ix86
+Provides:       lsb-graphics-noarch = 2.0
+Provides:       lsb-graphics-noarch = 3.2
+Provides:       lsb-graphics-noarch = 4.0
+%ifarch %{ix86}
 Provides:       lsb-core-ia32 = 2.0
 Provides:       lsb-core-ia32 = 3.2
 Provides:       lsb-core-ia32 = 4.0
@@ -199,10 +206,7 @@ Provides:       lsb-core-%{_target_cpu} = 4.0
 %endif
 %endif
 %endif
-Provides:       lsb-graphics-noarch = 2.0
-Provides:       lsb-graphics-noarch = 3.2
-Provides:       lsb-graphics-noarch = 4.0
-%ifarch %ix86
+%ifarch %{ix86}
 Provides:       lsb-graphics-ia32 = 2.0
 Provides:       lsb-graphics-ia32 = 3.2
 Provides:       lsb-graphics-ia32 = 4.0
@@ -236,122 +240,113 @@ Provides:       lsb-graphics-%{_target_cpu} = 4.0
 %endif
 %endif
 %endif
-Requires:       Mesa
-Requires:       perl-base >= 5.8.8
-Requires:       python >= 2.7.3
-Prefix:         /usr
-Url:            http://www.linuxbase.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Necessary files and dependencies for the Linux Standard Base (LSB)
 Core.
-
-
 
 %prep
 
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_lib}
-mkdir -p $RPM_BUILD_ROOT/etc/lsb-release.d
-echo -n "LSB_VERSION=\"core-2.0-noarch:core-3.2-noarch:core-4.0-noarch:" > $RPM_BUILD_ROOT/etc/lsb-release
-%ifarch %ix86
-echo -n "core-2.0-ia32:core-3.2-ia32:core-4.0-ia32" >>  $RPM_BUILD_ROOT/etc/lsb-release
+mkdir -p %{buildroot}/%{_lib}
+mkdir -p %{buildroot}%{_sysconfdir}/lsb-release.d
+echo -n "LSB_VERSION=\"core-2.0-noarch:core-3.2-noarch:core-4.0-noarch:" > %{buildroot}%{_sysconfdir}/lsb-release
+%ifarch %{ix86}
+echo -n "core-2.0-ia32:core-3.2-ia32:core-4.0-ia32" >>  %{buildroot}%{_sysconfdir}/lsb-release
 %else
-echo -n "core-2.0-%{_target_cpu}:core-3.2-%{_target_cpu}:core-4.0-%{_target_cpu}" >>  $RPM_BUILD_ROOT/etc/lsb-release
+echo -n "core-2.0-%{_target_cpu}:core-3.2-%{_target_cpu}:core-4.0-%{_target_cpu}" >>  %{buildroot}%{_sysconfdir}/lsb-release
 %endif
-echo "\"" >> $RPM_BUILD_ROOT/etc/lsb-release
+echo "\"" >> %{buildroot}%{_sysconfdir}/lsb-release
 %ifarch x86_64
-mkdir -p $RPM_BUILD_ROOT/lib
-ln -sf /lib64/ld-linux-x86-64.so.2 $RPM_BUILD_ROOT/lib64/ld-lsb-x86-64.so.2
-ln -sf /lib64/ld-linux-x86-64.so.2 $RPM_BUILD_ROOT/lib64/ld-lsb-x86-64.so.3
+mkdir -p %{buildroot}/lib
+ln -sf /lib64/ld-linux-x86-64.so.2 %{buildroot}/lib64/ld-lsb-x86-64.so.2
+ln -sf /lib64/ld-linux-x86-64.so.2 %{buildroot}/lib64/ld-lsb-x86-64.so.3
 %endif
-%ifarch %ix86 x86_64
-ln -sf /lib/ld-linux.so.2 $RPM_BUILD_ROOT/lib/ld-lsb.so.2
-ln -sf /lib/ld-linux.so.2 $RPM_BUILD_ROOT/lib/ld-lsb.so.3
+%ifarch %{ix86} x86_64
+ln -sf /lib/ld-linux.so.2 %{buildroot}/lib/ld-lsb.so.2
+ln -sf /lib/ld-linux.so.2 %{buildroot}/lib/ld-lsb.so.3
 %endif
 %ifarch ppc64
-mkdir -p $RPM_BUILD_ROOT/lib
-ln -s /lib64/ld64.so.1 $RPM_BUILD_ROOT/lib64/ld-lsb-ppc64.so.2
-ln -s /lib64/ld64.so.1 $RPM_BUILD_ROOT/lib64/ld-lsb-ppc64.so.3
+mkdir -p %{buildroot}/lib
+ln -s /lib64/ld64.so.1 %{buildroot}/lib64/ld-lsb-ppc64.so.2
+ln -s /lib64/ld64.so.1 %{buildroot}/lib64/ld-lsb-ppc64.so.3
 %endif
 %ifarch ppc ppc64
-ln -s /lib/ld.so.1            $RPM_BUILD_ROOT/lib/ld-lsb-ppc32.so.2
-ln -s /lib/ld.so.1            $RPM_BUILD_ROOT/lib/ld-lsb-ppc32.so.3
+ln -s /lib/ld.so.1            %{buildroot}/lib/ld-lsb-ppc32.so.2
+ln -s /lib/ld.so.1            %{buildroot}/lib/ld-lsb-ppc32.so.3
 %endif
 %ifarch ia64
-ln -s /lib/ld-linux-ia64.so.2 $RPM_BUILD_ROOT/lib/ld-lsb-ia64.so.2
-ln -s /lib/ld-linux-ia64.so.2 $RPM_BUILD_ROOT/lib/ld-lsb-ia64.so.3
+ln -s /lib/ld-linux-ia64.so.2 %{buildroot}/lib/ld-lsb-ia64.so.2
+ln -s /lib/ld-linux-ia64.so.2 %{buildroot}/lib/ld-lsb-ia64.so.3
 %endif
 %ifarch s390x
-mkdir -p $RPM_BUILD_ROOT/lib
-ln -sf /lib64/ld64.so.1         $RPM_BUILD_ROOT/lib64/ld-lsb-s390x.so.2
-ln -sf /lib64/ld64.so.1         $RPM_BUILD_ROOT/lib64/ld-lsb-s390x.so.3
+mkdir -p %{buildroot}/lib
+ln -sf /lib64/ld64.so.1         %{buildroot}/lib64/ld-lsb-s390x.so.2
+ln -sf /lib64/ld64.so.1         %{buildroot}/lib64/ld-lsb-s390x.so.3
 %endif
 %ifarch s390
-ln -sf /lib/ld.so.1	      $RPM_BUILD_ROOT/lib/ld-lsb-s390.so.2
-ln -sf /lib/ld.so.1           $RPM_BUILD_ROOT/lib/ld-lsb-s390.so.3
+ln -sf /lib/ld.so.1	      %{buildroot}/lib/ld-lsb-s390.so.2
+ln -sf /lib/ld.so.1           %{buildroot}/lib/ld-lsb-s390.so.3
 %endif
 %ifarch sparc
-ln -sf /lib/ld-linux.so.2      $RPM_BUILD_ROOT/lib/ld-lsb-sparc.so.2
-ln -sf /lib/ld-linux.so.2      $RPM_BUILD_ROOT/lib/ld-lsb-sparc.so.3
+ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-sparc.so.2
+ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-sparc.so.3
 %endif
 # These platforms do not have a LSB, just add something to make it compile
 %ifarch axp mips
-ln -sf /lib/ld-linux.so.2      $RPM_BUILD_ROOT/lib/ld-lsb-%{_target_cpu}.so.2
-ln -sf /lib/ld-linux.so.2      $RPM_BUILD_ROOT/lib/ld-lsb-%{_target_cpu}.so.3
+ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-%{_target_cpu}.so.2
+ln -sf /lib/ld-linux.so.2      %{buildroot}/lib/ld-lsb-%{_target_cpu}.so.3
 %endif
-mkdir -p $RPM_BUILD_ROOT/etc/lsb-release.d
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-noarch
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-noarch
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-noarch
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-noarch
-%ifarch %ix86
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-ia32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-ia32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-ia32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-ia32
+mkdir -p %{buildroot}%{_sysconfdir}/lsb-release.d
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-noarch
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-noarch
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-noarch
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-noarch
+%ifarch %{ix86}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-ia32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-ia32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-ia32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-ia32
 %else
 %ifarch x86_64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-amd64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-amd64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-amd64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-amd64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-amd64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-amd64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-amd64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-amd64
 %else
 %ifarch s390x
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-s390
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-s390
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-s390
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-s390
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-s390
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-s390
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-s390
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-s390
 %endif
 %ifarch ppc64 ppc
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-ppc32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-ppc32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-ppc32
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-ppc32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-ppc32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-ppc32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-ppc32
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-ppc32
 %ifarch ppc64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-ppc64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-ppc64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-ppc64
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-ppc64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-ppc64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-ppc64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-ppc64
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-ppc64
 %endif
 %else
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-2.0-%{_target_cpu}
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-3.2-%{_target_cpu}
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/graphics-%{version}-%{_target_cpu}
-touch $RPM_BUILD_ROOT/etc/lsb-release.d/desktop-%{version}-%{_target_cpu}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-2.0-%{_target_cpu}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-3.2-%{_target_cpu}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/graphics-%{version}-%{_target_cpu}
+touch %{buildroot}%{_sysconfdir}/lsb-release.d/desktop-%{version}-%{_target_cpu}
 %endif
 %endif
 %endif
 
 %files
-%defattr(-,root,root)
-%dir /etc/lsb-release.d
-/etc/lsb-release.d/*
-/etc/lsb-release
-%ifarch %ix86 x86_64
+%dir %{_sysconfdir}/lsb-release.d
+%{_sysconfdir}/lsb-release.d/*
+%{_sysconfdir}/lsb-release
+%ifarch %{ix86} x86_64
 /lib/ld-lsb.so.2
 /lib/ld-lsb.so.3
 %endif

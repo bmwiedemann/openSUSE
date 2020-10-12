@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 08:23:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update location of pidof and ed (bsc#1177540)
+- spec-cleaner run 
+
+-------------------------------------------------------------------
 Tue Feb 12 12:42:08 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - Remove all desktop requires as they just don't fit with the way

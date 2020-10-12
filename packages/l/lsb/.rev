@@ -207,4 +207,13 @@
   (see boo#1086166)</comment>
     <requestid>691591</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9ac6e77954b523175f8b68f2fa526836</srcmd5>
+    <version>4.0.fake</version>
+    <time>1602503977</time>
+    <user>dimstar_suse</user>
+    <comment>- update location of pidof and ed (bsc#1177540)
+- spec-cleaner run</comment>
+    <requestid>841164</requestid>
+  </revision>
 </revisionlist>
