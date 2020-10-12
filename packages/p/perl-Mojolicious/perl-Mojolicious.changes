@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  3 11:22:22 UTC 2020 - Oliver Kurz <okurz@suse.com>
+
+- updated to 8.61
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.61  2020-10-01
+    - Fixed fork-safety feature in Mojo::UserAgent to work with more than one fork.
+    - Fixed reset method in Mojo::IOLoop to not interfere with close events anymore, since that resulted in leaks.
+
+-------------------------------------------------------------------
 Mon Sep 28 03:14:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.60
