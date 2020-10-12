@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 10 00:00:00 CEST 2020 - dsterba@suse.cz
+
+- Update to version 12:
+ * 130 Elo stronger than version 11
+ * powered by NNUE (nn-baeb9ef2d183.nnue)
+ * More at https://github.com/official-stockfish/Stockfish/commit/c306d838697011da0a960758dde3f7ede6849060
+ * Added patch: update-nnue.patch
+
+-------------------------------------------------------------------
 Mon Jan 20 08:12:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 11:

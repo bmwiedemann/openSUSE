@@ -1,7 +1,8 @@
-diff -urEbwB Stockfish-sf_7/src/misc.cpp Stockfish-sf_7.new/src/misc.cpp
---- Stockfish-sf_7/src/misc.cpp	2016-01-02 21:26:02.000000000 +0100
-+++ Stockfish-sf_7.new/src/misc.cpp	2016-04-28 11:35:29.001468116 +0200
-@@ -99,18 +99,10 @@
+Index: Stockfish-sf_12/src/misc.cpp
+===================================================================
+--- Stockfish-sf_12.orig/src/misc.cpp
++++ Stockfish-sf_12/src/misc.cpp
+@@ -140,18 +140,10 @@ public:
  
  const string engine_info(bool to_uci) {
  
@@ -18,6 +19,6 @@ diff -urEbwB Stockfish-sf_7/src/misc.cpp Stockfish-sf_7.new/src/misc.cpp
 -      ss << setw(2) << day << setw(2) << (1 + months.find(month) / 4) << year.substr(2);
 -  }
 -
-   ss << (Is64Bit ? " 64" : "")
-      << (HasPext ? " BMI2" : (HasPopCnt ? " POPCNT" : ""))
-      << (to_uci  ? "\nid author ": " by ")
+   ss << (to_uci  ? "\nid author ": " by ")
+      << "the Stockfish developers (see AUTHORS file)";
+ 

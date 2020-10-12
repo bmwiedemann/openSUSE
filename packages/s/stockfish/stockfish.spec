@@ -1,7 +1,7 @@
 #
 # spec file for package stockfish
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define		nnuenet	nn-baeb9ef2d183.nnue
+
 Name:           stockfish
-Version:        11
+Version:        12
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later
@@ -26,10 +28,13 @@ Source0:        https://github.com/official-stockfish/Stockfish/archive/sf_%{ver
 # steal some documentation from ubuntu
 Source10:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{name}/vivid/download/head:/engineinterface.txt-20091204230329-yljoyxocuxhxg1ot-78/engine-interface.txt#/%{name}-interface.txt
 Source11:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{name}/vivid/download/head:/%{name}.6-20091204230329-yljoyxocuxhxg1ot-76/%{name}.6
+Source12:       %{nnuenet}.xz
 # If 'Version' is not set it will display the date as version number. We dont want __DATE__ and Version is set anyways.
 Patch0:         date.patch
+Patch1:         update-nnue.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  xz
 Recommends:     xboard
 Provides:       chess_backend
 ExclusiveArch:  %{power64} %{ix86} x86_64 armv7l armv7hl armv7hnl
@@ -47,7 +52,10 @@ information about how to use Stockfish with your GUI.
 %prep
 %setup -q -n Stockfish-sf_%{version}
 %patch0 -p1
+%patch1 -p0
 cp -p %{SOURCE10} %{SOURCE11} .
+xz -cd %{SOURCE12} > src/%{nnuenet}
+
 dos2unix %{name}-interface.txt
 dos2unix Copying.txt
 
@@ -76,7 +84,7 @@ cp -p %{name}.6 %{buildroot}%{_mandir}/man6
 
 %files
 %license Copying.txt
-%doc AUTHORS %{name}-interface.txt Readme.md
+%doc AUTHORS %{name}-interface.txt README.md
 %{_mandir}/man*/%{name}.*
 %{_bindir}/%{name}
 
