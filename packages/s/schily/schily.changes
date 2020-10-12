@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  9 22:54:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.10.09
+  * Bourne Shell: The "wait" builtin is now POSIX compliant and
+    returns 127 in $? in case that a process id to be waited for
+    does not exist.
+  * Bourne Shell: The exit code retrieved by $/ no longer is
+    masked by 0xFF when this code originates from a wait(1) call.
+  * Bourne Shell: The exit code from background jobs is now kept
+    until the builtin wait(1) is called.
+
+-------------------------------------------------------------------
 Wed Sep 23 09:38:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.09.22
