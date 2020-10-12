@@ -17,7 +17,7 @@
 
 
 Name:           googler
-Version:        4.1
+Version:        4.3.1
 Release:        0
 Summary:        Google Search, Google Site Search, Google News from the terminal
 License:        GPL-3.0-or-later

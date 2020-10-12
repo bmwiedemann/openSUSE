@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 11 23:43:01 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
+
+- Update to version 4.3.1
+        
+    * several important parser fixes
+    * retire Python v3.5, add v3.9
+
+- Update to version 4.3
+
+    * fix recent break due to server-side changes
+    * option `-e`/`--exclude` to exclude site from results
+    * option `-g`/`--geoloc` to specify geolocation
+    * replace uuid1 with uuid4 in request
+
+- Update to version 4.2
+
+    * support GUI platform browsers on WSL
+    * support Wayland native copier `wl-copy`
+    * program options `--ipv4`, `--ipv6`; ipv4 preferred by default
+    * deduplicate results
+    * fix sitelinks parsing
+    * combine consecutive whitespaces
+    * fix extraction of matched keywords
+    * fix match highlighting
+    * no additional blank line for empty abstracts
+    * undocumented debug option `--parse` to parse dumped HTML
+
+-------------------------------------------------------------------
 Fri May  1 12:22:42 UTC 2020 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 4.1
