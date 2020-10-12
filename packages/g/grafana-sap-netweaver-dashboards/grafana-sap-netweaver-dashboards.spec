@@ -18,7 +18,7 @@
 
 Name:           grafana-sap-netweaver-dashboards
 # Version will be processed via set_version source service
-Version:        1.0.2+git.1600360936.17d0dbe
+Version:        1.0.3+git.1601889366.9f71957
 Release:        0
 Summary:        Grafana Dashboards displaying metrics about a SAP NetWeaver landscape.
 License:        Apache-2.0
