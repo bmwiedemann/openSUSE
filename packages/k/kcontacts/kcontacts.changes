@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:00 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Compile without deprecated method against qt5.15.
+  * Remove obsolete license file for LGPL-2.0-only
+  * Relicense file to LGPL-2.0-or-later
+
+-------------------------------------------------------------------
 Sun Sep  6 12:48:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
