@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Support-quazip-1.0.patch
 %ifnarch %{arm} aarch64
 # causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
@@ -109,6 +111,7 @@ Development headers and libraries for Krita.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %ifarch %{arm} aarch64

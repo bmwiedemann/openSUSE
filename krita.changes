@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:35:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update Support-quazip-1.0.patch to support quazip 1.1 as well
+
+-------------------------------------------------------------------
+Sat Oct 10 15:00:08 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Support-quazip-1.0.patch to fix build with quazip 1.0
+
+-------------------------------------------------------------------
 Thu Jul  9 07:42:45 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - increase disk size from 4 to 9GB for ppc64/ppc64le
