@@ -17,7 +17,7 @@
 
 
 Name:           perl-File-Temp
-Version:        0.2310
+Version:        0.2311
 Release:        0
 %define cpan_name File-Temp
 Summary:        Return name and handle of a temporary file safely

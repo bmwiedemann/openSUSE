@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:11:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.2311
+   see /usr/share/doc/packages/perl-File-Temp/Changes
+
+  0.2311    2020-10-03 04:04:15Z
+            - Fix new PERMS test so as to also pass on root (RT#133443)
+
+-------------------------------------------------------------------
 Sun Sep 27 03:07:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.2310
