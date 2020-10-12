@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:36:44 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1602412783.03de4fa69:
+  * Dependency cron 2020-10-10
+  * docs: Update contribution hints for package impact
+  * Use a worker with fast local host uploads and without in full-stack tests
+  * Enable faster localhost uploads by default
+  * Merge Jobs::deps_hash with dependencies
+  * Add a personal activity view based on audit events
+  * t: Reduce timeout of t/44-scripts.t again after stabilization
+  * Dependency cron 2020-10-09
+  * Add simple "--help" test for all shell scripts in scripts/
+  * Try to fix instability in comment update detection
+  * ci: Try to avoid common download problems with a different time of day
+  * Improve coding style in render.js
+  * Fix warnings in render.js shown by jshint
+  * Fix details rendering if template snippet not available
+  * ci: Retry on temporary zypper repository refresh problems
+  * tools: Make 'retry' actually retry 3 times by default
+  * ci: Use same zypper prio levels as in documentation for consistency
+  * t: Remove obsolete test job database entry in all initializations
+  * ci: Bring back error context in log view as well as show unhandled test output
+  * Dependency cron 2020-10-06
+  * spec: Enable tests on Leap as well to prevent breakage on known supported versions
+  * t: Bump timeout for t/api/04-jobs.t
+  * Fix formatting error messages of download task
+  * Fix check for existing assets if multiple asset destinations are specified
+  * Prevent scheduler from assigning jobs while download tasks being created
+  * Improve coding style for code related to enqueuing download jobs
+  * t: Bump timeout for 44-scripts
+  * t: Fix missing 'use lib' in 44-scripts.t
+  * spec: Use higher timeout for tests within OBS due to performance fluctuations
+  * t: Reduce back the test module specific timeout limits
+  * Extract trivial _distri_key helper in OpenQA::Schema::Result::ScheduledProducts
+  * Configure a timeout for javascript in webdriver
+  * Handle services being stopped explicitely during tests
+  * Add test for catching warnings in sub processes during tests
+  * Catch Perl warnings in spawned workers as well
+  * Fail tests when a Perl warning within a sub process occurs
+  * t: Catch unhandled output in t/14-grutasks.t
+  * t: Extract helper for client user agent initialization
+  * t: Reuse existing schema variable in t/api/04-jobs.t
+  * t: Simplify ui/17-product-log.t
+  * Tweak test timeouts for full-stack
+
+-------------------------------------------------------------------
 Sun Sep 27 05:26:32 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1601184375.8f2898f37:

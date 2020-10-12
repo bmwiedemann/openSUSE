@@ -24,7 +24,8 @@
 %{_bindir}/systemd-tmpfiles --create %{?*} || : \
 %{nil}
 %endif
-%if 0%{?suse_version} >= 1550
+# Run tests on openSUSE Tumbleweed and supported openSUSE Leap versions
+%if 0%{?suse_version} >= 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} >= 150100 )
 %ifarch x86_64
 %bcond_without tests
 %else
@@ -75,7 +76,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1601184375.8f2898f37
+Version:        4.6.1602412783.03de4fa69
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -266,6 +267,10 @@ rm \
     t/api/14-plugin_obs_rsync_async.t \
     t/ui/*.t
 
+# "CI" set with longer timeouts as needed for higher performance variations
+# within CI systems, e.g. OBS. See t/lib/OpenQA/Test/TimeLimit.pm
+export CI=1
+export OPENQA_TEST_TIMEOUT_SCALE_CI=10
 make test PROVE_ARGS='-r -v' CHECKSTYLE=0 TEST_PG_PATH=%{buildroot}/DB
 rm -rf %{buildroot}/DB
 %endif
