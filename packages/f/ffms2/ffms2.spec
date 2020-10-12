@@ -1,7 +1,7 @@
 #
 # spec file for package ffms2
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,32 +13,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define aversion 2.23
 %define libname lib%{name}
 %define soname 4
 Name:           ffms2
-Version:        2.23.1
+Version:        2.40
 Release:        0
 Summary:        Wrapper library around FFmpeg libraries
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/FFMS/ffms2
-Source:         https://github.com/FFMS/ffms2/archive/%{aversion}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/FFMS/ffms2
+Source:         https://github.com/FFMS/ffms2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         ffms2-pkgconfig.patch
+BuildRequires:  automake
 BuildRequires:  gcc-c++ >= 4.8
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig(zlib)
 
 %description
 FFmpegSource (usually known as FFMS or FFMS2) is a wrapper
@@ -74,15 +74,15 @@ library around FFmpeg, plus some additional components to deal with file
 formats libavformat has (or used to have) problems with.
 
 %prep
-%setup -q -n %{name}-%{aversion}
-%patch0 -p1
-sed -i 's/\r$//' COPYING
+%setup -q
+%autopatch -p1
 
 %build
+./autogen.sh
 %configure --docdir=%{_docdir}/%{libname}-devel \
            --disable-static --enable-shared
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install V=1
@@ -92,16 +92,13 @@ rm %{buildroot}%{_libdir}/%{libname}.la
 %postun -n %{libname}-%{soname} -p /sbin/ldconfig
 
 %files -n ffmsindex
-%defattr(0644, root, root, 0755)
-%attr(0755,root,root) %{_bindir}/ffmsindex
+%{_bindir}/ffmsindex
 
 %files -n %{libname}-%{soname}
-%defattr(0644, root, root, 0755)
-%doc COPYING
+%license COPYING
 %{_libdir}/%{libname}.so.%{soname}*
 
 %files -n %{libname}-devel
-%defattr(0644, root, root, 0755)
 %{_libdir}/%{libname}.so
 %{_includedir}/ffms*
 %{_libdir}/pkgconfig/%{name}.pc

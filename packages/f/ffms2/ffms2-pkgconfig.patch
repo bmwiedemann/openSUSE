@@ -1,17 +1,25 @@
+From 8e8ea3844baf2a207a767c4fb72389a98d8aa1c8 Mon Sep 17 00:00:00 2001
+From: Martin Herkt <lachs0r@srsfckn.biz>
+Date: Tue, 24 Dec 2019 08:20:42 -0800
+Subject: [PATCH] Drop Requires.private from pc file
+
 ---
- ffms2.pc.in |    2 +-
+ ffms2.pc.in | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: ffms2-2.19.2/ffms2.pc.in
-===================================================================
---- ffms2-2.19.2.orig/ffms2.pc.in
-+++ ffms2-2.19.2/ffms2.pc.in
+diff --git a/ffms2.pc.in b/ffms2.pc.in
+index 7a2a35e..5382375 100644
+--- a/ffms2.pc.in
++++ b/ffms2.pc.in
 @@ -7,7 +7,7 @@ includedir=@includedir@
  
  Name: ffms2
  Description: The Fabulous FM Library 2
--Requires.private: libavformat libavcodec libswscale libavutil @libavresample@
+-Requires.private: libavformat libavcodec libswscale libavutil libswresample
 +Requires.private:
  Version: @FFMS_VERSION@
  Libs.private: @ZLIB_LDFLAGS@ -lz
  Libs: -L${libdir} -lffms2
+-- 
+2.24.0
+

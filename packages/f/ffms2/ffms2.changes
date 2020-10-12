@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:13:27 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.40
+  * Avisynth+ linux support
+  * Added LastEndTime track property to make it possible to take
+    the last frame's duration into account
+  * Removed several deprecated functions and enums from the API
+  * No longer assumes sub 1 fps framerates are invalid
+  * Added support for floating point format output in
+    VapourSynth and Avisynth+
+  * Fixed issue with dropped/repeated frames in vc1 with
+    multiple b-frames after seeking
+  * Fixed issue with dropped/repeated frames in h264 when the
+    reorder buffer size is too small
+  * Improved seeking in mpeg and mpegts streams
+  * Added rgb(a)p and several additional formats as output to
+    Avisynth+
+  * Added VP9 support
+  * Fixed incorrectly reporting the output as limited range when
+    it's in fact unknown and likely to be full range
+  * Added mastering display metadata output
+  * VapourSynth source now defaults to not outputting alpha
+  * Removed the now unused demuxer, dumpmask, audiofile and utf8
+    arguments from the source filters
+  * Removed ability to dump audio tracks
+  * Fixed incorrect colorimetry metadata reported when
+    converting the output to another colorspace
+  * Sources now simply reference the index instead of copying
+    large parts of it
+  * Use new FFmpeg decoding API
+  * Fixed several bugs in output format selection
+  * FFMSIndex will now properly error out with invalid arguments
+  * Add rotation metadata export
+  * Add stereoscopic metadata export
+  * Removed support for old FFmpeg versions
+  * Removed libav support
+  * Discontinuous Timestamp Support
+  * Add FFMS_Deinit
+  * Fix mid-stream parameter changes
+  * Fix decoding H.264 PAFF files with one field per packet
+  * Fix delay calculations for H.264 PAFF files
+  * Fix frame rate calculation for fields with one field per
+    packet
+- Switch to stable source tarball and drop _service file
+
+-------------------------------------------------------------------
+Tue Dec 24 16:10:44 UTC 2019 - 9+suse@cirno.systems
+
+- Refresh ffms2-pkgconfig.patch
+- Update to version 2.23+202.ga9e8f73:
+  * See changelog at https://github.com/FFMS/ffms2/commits/master
+
+-------------------------------------------------------------------
 Wed Jun 28 05:47:20 UTC 2017 - jengelh@inai.de
 
 - Rectify RPM group and trim filler words.

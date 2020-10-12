@@ -11,4 +11,12 @@ This package was taken from Packman, with minimal changes.
 It should be legally okay, as it only links FFmpeg and contains no support for patented/copyright-protected codecs of its own.</comment>
     <requestid>506980</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>39697839e6aa7d567a4180413b975d44</srcmd5>
+    <version>2.40</version>
+    <time>1602503951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841051</requestid>
+  </revision>
 </revisionlist>
