@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:47 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Fix cppcheck warning
+  * Compile without deprecated method against qt5.15.
+  * downgrade trigrams output
+  * Prevent unnecessary temporary container creations
+  * const'ify pointer + initialize variable
+  * Use QMultiMap in createOrderedModel
+  * Fix test_highlighter to not fail if dict not found
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:37 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
