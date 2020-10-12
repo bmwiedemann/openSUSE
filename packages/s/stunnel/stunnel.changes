@@ -4,20 +4,16 @@ Sun Oct 11 18:05:36 UTC 2020 - Michael Ströder <michael@stroeder.com>
 - update to 5.57:
   * Security bugfixes
     - The "redirect" option was fixed to properly
-      handle "verifyChain = yes" (thx to Rob Hoes).
-    - OpenSSL DLLs updated to version 1.1.1h.
+      handle "verifyChain = yes" boo#1177580
   * New features
     - New securityLevel configuration file option.
-    - FIPS support for RHEL-based distributions.
-    - Support for modern PostgreSQL clients (thx to Bram Geron).
-    - Windows tooltip texts updated to mention "stunnel".
+    - Support for modern PostgreSQL clients
     - TLS 1.3 configuration updated for better compatibility.
   * Bugfixes
     - Fixed a transfer() loop bug.
     - Fixed memory leaks on configuration reloading errors.
     - DH/ECDH initialization restored for client sections.
     - Delay startup with systemd until network is online.
-    - bin\libssp-0.dll removed when uninstalling.
     - A number of testing framework fixes and improvements.
 
 -------------------------------------------------------------------
