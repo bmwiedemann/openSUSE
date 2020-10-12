@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
