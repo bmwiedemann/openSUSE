@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:23:50 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * Fix doxygen latex formulas (kde#426466)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:41 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
