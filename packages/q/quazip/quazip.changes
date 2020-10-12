@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:36:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1
+  * Fixed Unix symlink handling in JlCompress compression
+  * Implemented Unix symlink handling in JlCompress extraction
+  * Added 1.x migration guide
+- Removed compatibility symlink (it was pointless anyway)
+
+-------------------------------------------------------------------
 Mon Oct  5 10:50:56 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0

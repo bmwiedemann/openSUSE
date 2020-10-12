@@ -19,7 +19,7 @@
 %define so_ver 1
 %define lib_ver 1_0_0
 Name:           quazip
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        C++ wrapper for ZIP/UNZIP
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -94,10 +94,6 @@ doxygen
 # install docs
 mkdir -pv %{buildroot}%{_defaultdocdir}/quazip-doc
 cp -r doc/html %{buildroot}%{_defaultdocdir}/quazip-doc/
-# temporary compat shim
-pushd %{buildroot}%{_includedir}
-ln -s QuaZip-Qt5-%{version} quazip5
-popd
 %fdupes -s %{buildroot}%{_defaultdocdir}/quazip-doc
 
 %post -n libquazip%{so_ver}-qt5-%{lib_ver} -p /sbin/ldconfig
@@ -110,8 +106,8 @@ popd
 
 %files devel
 %license COPYING*
+%doc QuaZip-1.x-migration.md
 %{_includedir}/QuaZip-Qt5-%{version}
-%{_includedir}/quazip5
 %{_libdir}/cmake/QuaZip-Qt5-%{version}
 %{_libdir}/libquazip%{so_ver}-qt5.so
 %{_libdir}/pkgconfig/quazip%{so_ver}-qt5.pc
