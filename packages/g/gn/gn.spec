@@ -17,7 +17,7 @@
 
 
 Name:           gn
-Version:        0.1726
+Version:        0.1807
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
