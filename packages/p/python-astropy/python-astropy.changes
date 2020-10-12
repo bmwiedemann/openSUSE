@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Sat Oct 10 20:46:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.0.2
+  New Features
+  * astropy.utils
+    astropy.utils.data.download_file now supports FTPS/FTP over 
+    TLS. [#9964]
+    astropy.utils.data now uses a lock-free mechanism for caching. 
+    This new mechanism uses a new cache layout and so ignores 
+    caches created using earlier mechanisms (which were causing 
+    lockups on clusters). The two cache formats can coexist but do 
+    not share any files. [#10437, #10683]
+    astropy.utils.data now ignores the config item 
+    astropy.utils.data.conf.download_cache_lock_attempts since no 
+    locking is done. [#10437, #10683]
+    astropy.utils.data.download_file and related functions now 
+    interpret the parameter or config file setting timeout=0 to 
+    mean they should make no attempt to download files. [#10437, 
+    #10683]
+    astropy.utils.import_file_to_cache now accepts a keyword-only 
+    argument replace, defaulting to True, to determine whether it 
+    should replace existing files in the cache, in a way as close 
+    to atomic as possible. [#10437, #10683]
+    astropy.utils.data.download_file and related functions now 
+    treat http://example.com and http://example.com/ as equivalent. 
+    [#10631]
+  * astropy.wcs
+    The new auxiliary WCS parameters added in WCSLIB 7.1 are now 
+    exposed as the aux attribute of Wcsprm. [#10333]
+    Updated bundled version of WCSLIB to v7.3. [#10433]
+  Bug fixes
+  * astropy.config
+    Added an extra fallback to os.expanduser('~') when trying to 
+    find the user home directory. [#10570]
+  * astropy.constants
+    Corrected definition of parsec to 648 000 / pi AU following IAU 
+    2015 B2 [#10569]
+  * astropy.convolution
+    Fixed a bug where a float-typed integers in the argument 
+    x_range of astropy.convolution.utils.discretize_oversample_1D 
+    (and the 2D version as well) fails because it uses 
+    numpy.linspace, which requires an int. [#10696]
+  * astropy.coordinates
+    Ensure that for size-1 array SkyCoord and coordinate frames the 
+    attributes also properly become scalars when indexed with 0. 
+    [#10113]
+    Fixed a bug where SkyCoord.separation() and 
+    SkyCoord.separation_3d were not accepting a frame object. 
+    [#10332]
+    Ensure that the lon values in SkyOffsetFrame are wrapped 
+    correctly at 180 degree regardless of how the underlying data 
+    is represented. [#10163]
+    Fixed an error in the obliquity of the ecliptic when 
+    transforming to/from the *TrueEcliptic coordinate frames. The 
+    error would primarily result in an inaccuracy in the ecliptic 
+    latitude on the order of arcseconds. [#10129]
+    Fixed an error in the computation of the location of solar 
+    system bodies where the Earth location of the observer was 
+    ignored during the correction for light travel time. [#10292]
+    Ensure that coordinates with proper motion that are transformed 
+    to other coordinate frames still can be represented properly. 
+    [#10276]
+    Improve the error message given when trying to get a cartesian 
+    representation for coordinates that have both proper motion and 
+    radial velocity, but no distance. [#10276]
+    Fixed an error where SkyCoord.apply_space_motion would return 
+    incorrect results when no distance is set and proper motion is 
+    high. [#10296]
+    Make the parsing of angles thread-safe so that Angle can be 
+    used in Python multithreading. [#10556]
+    Fixed reporting of EarthLocation.info which previously raised 
+    an exception. [#10592]
+  * astropy.io.ascii
+    Fixed a bug with the C fast_reader not correctly parsing 
+    newlines when delimiter was also set to \n or \r; ensured 
+    consistent handling of input strings without newline 
+    characters. [#9929]
+  * astropy.io.fits
+    Fix integer formats of TFORMn=Iw columns in ASCII tables to 
+    correctly read values exceeding int32 - setting int16, int32 or 
+    int64 according to w. [#9901]
+    Fix unclosed memory-mapped FITS files in FITSDiff when 
+    difference found. [#10159]
+    Fix crash when reading an invalid table file. [#10171]
+    Fix duplication issue when setting a keyword ending with space. 
+    [#10482]
+    Fix ResourceWarning with fits.writeto and pathlib.Path object. 
+    [#10599]
+    Fix repr for commentary cards and strip spaces for commentary 
+    keywords. [#10640]
+    Fix compilation of cfitsio with Xcode 12. [#10772]
+    Fix handling of 1-dimensional arrays with a single element in 
+    BinTableHDU [#10768]
+  * astropy.io.misc
+    Fix id URL in baseframe-1.0.0 ASDF schema. [#10223]
+    Write keys to ASDF only if the value is present, to account for 
+    a change in behavior in asdf 2.8. [#10674]
+  * astropy.io.registry
+    Fix Table.(read|write).help when reader or writer has no 
+    docstring. [#10460]
+  * astropy.io.votable
+    Fixed parsing failure of VOTable with no fields. When detecting 
+    a non-empty table with no fields, the following warning/
+    exception is issued: E25 "No FIELDs are defined; DATA section 
+    will be ignored." [#10192]
+  * astropy.modeling
+    Fixed a problem with mapping input_units and return_units of a 
+    CompoundModel to the units of the constituent models. [#10158]
+    Removed hard-coded names of inputs and outputs. [#10174]
+    Fixed a problem where slicing a CompoundModel by name will 
+    crash if there fix_inputs operators are present. [#10224]
+    Removed a limitation of fitting of data with units with 
+    compound models without units when the expression involves 
+    operators other than addition and subtraction. [#10415]
+    Fixed a problem with fitting Linear1D and Planar2D in model 
+    sets. [#10623]
+    Fixed reported module name of math_functions model classes. 
+    [#10694]
+    Fixed reported module name of tabular model classes. [#10709]
+    Do not create new math_functions models for ufuncs that are 
+    only aliases (divide and mod). [#10697]
+    Fix calculation of the Moffat2D derivative with respect to 
+    gamma. [#10784]
+  * astropy.stats
+    Fixed an API regression where SigmaClip.__call__ would convert 
+    masked elements to nan and upcast the dtype to float64 in its 
+    output MaskedArray when using the axis parameter along with the 
+    defaults masked=True and copy=True. [#10610]
+    Fixed an issue where fully masked MaskedArray input to 
+    sigma_clipped_stats gave incorrect results. [#10099]
+    Fixed an issue where sigma_clip and SigmaClip.__call__ would 
+    return a masked array instead of a ndarray when masked=False 
+    and the input was a full-masked MaskedArray. [#10099]
+    Fixed bug with funcs.poisson_conf_interval where an integer for 
+    N with interval='kraft-burrows-nousek' would throw an error 
+    with mpmath backend. [#10427]
+    Fixed bug in funcs.poisson_conf_interval with interval='kraft-
+    burrows-nousek' where certain combinations of source and 
+    background count numbers led to ValueError due to the choice of 
+    starting value for numerical optimization. [#10618]
+  * astropy.table
+    Fixed a bug when writing a table with mixin columns to FITS, 
+    ECSV or HDF5. If one of the data attributes of the mixin (e.g. 
+    skycoord.ra) had the same name as one of the table column names 
+    (ra), the column (ra) would be dropped when reading the table 
+    back. [#10222]
+    Fixed a bug when sorting an indexed table on the indexed column 
+    after first sorting on another column. [#10103]
+    Fixed a bug in table argsort when called with reverse=True for 
+    an indexed table. [#10103]
+    Fixed a performance regression introduced in #9048 when 
+    initializing a table from Python lists. Also fixed incorrect 
+    behavior (for data types other than float) when those lists 
+    contain np.ma.masked elements to indicate masked data. [#10636]
+    Avoid modifying .meta when serializing columns to FITS. 
+    [#10485]
+    Avoid crash when reading a FITS table that contains mixin info 
+    and PyYAML is missing. [#10485]
+  * astropy.time
+    Ensure that for size-1 array Time, the location also properly 
+    becomes a scalar when indexed with 0. [#10113]
+  * astropy.units
+    Refined test_parallax to resolve difference between 2012 and 
+    2015 definitions. [#10569]
+  * astropy.utils
+    The default IERS server has been updated to use the FTPS server 
+    hosted by CDDIS. [#9964]
+    Fixed memory allocation on 64-bit systems within xml.iterparse 
+    [#10076]
+    Fix case where None could be used in a numerical computation. 
+    [#10126]
+  * astropy.visualization
+    Fixed a bug where the ImageNormalize clip keyword was ignored 
+    when used with calling the object on data. [#10098]
+    Fixed a bug where axes.xlabel/axes.ylabel where not correctly 
+    set nor returned on an EllipticalFrame class WCSAxes plot.
+    [#10446]
+  * astropy.wcs
+    Handled WCS 360 -> 0 deg crossover in fit_wcs_from_points 
+    [#10155]
+    Do not issue DATREF warning when MJDREF has default value. 
+    [#10440]
+    Fixed a bug due to which naxis argument was ignored if header 
+    was supplied during the initialization of a WCS object. 
+    [#10532]
+  Other Changes and Additions
+  * Improved the speed of sorting a large Table on a single column 
+    by a factor of around 5. [#10103]
+  * Ensure that astropy can be used inside Application bundles 
+    built with pyinstaller. [#8795]
+  * Updated the bundled CFITSIO library to 3.49. See cextern/
+    cfitsio/docs/changes.txt for additional information. [#10256, 
+    #10665]
+  * extract_array raises a ValueError if the data type of the input 
+    array is inconsistent with the fill_value. [#10602]
+- Drop merged PR patches
+  * astropy-pr10433-wcslib73-tests.patch gh#astropy/astropy#10433
+  * astropy-pr10440-wcs-datfix.patch gh#astropy/astropy#10440
+- Skip test_compound_fitting_with_units gh#astropy/astropy#10675
+
+-------------------------------------------------------------------
 Fri Jul 17 11:42:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - actually detect unit test failures with sys.exit(astropy.tests())

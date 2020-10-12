@@ -28,18 +28,14 @@
 %define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint
 %define         skip_python2 1
 Name:           python-astropy
-Version:        4.0.1.post1
+Version:        4.0.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM astropy-pr10433-wcslib73-tests.patch gh#astropy/astropy#10433 -- allow system wcslib 7.3
-Patch0:         astropy-pr10433-wcslib73-tests.patch
-# PATCH-FIX-UPSTREAM astropy-pr10440-wcs-datfix.patch gh#astropy/astropy#10440 -- allow system wcslib 7.3
-Patch1:         astropy-pr10440-wcs-datfix.patch
 # PATCH-FIX-UPSTREAM astropy-pr10545-remove-newline-3d_cd_hdr.patch gh#astropy/astropy#10545 -- clean up newlines after pytest output
-Patch2:         astropy-pr10545-remove-newline-3d_cd_hdr.patch
+Patch0:         astropy-pr10545-remove-newline-3d_cd_hdr.patch
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
@@ -86,7 +82,6 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asdf >= 2.5}
-BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
@@ -98,6 +93,7 @@ BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy >= 0.18}
 # /SECTION
 # SECTION test requirements
+BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pytest >= 3.1}
@@ -162,13 +158,16 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 
 %if %{with test}
 %check
+# test matrix is ill-conditioned and fails occasionally
+# https://github.com/astropy/astropy/issues/10675
+donttest="compound_fitting_with_units"
 %ifarch aarch64
 # doctest failure because of precision errors
-  %define skip_pytest -k 'not bayesian_info_criterion_lsq'
+  donttest+=" or bayesian_info_criterion_lsq"
 %endif
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
-%python_exec -B -c "import astropy, sys; sys.exit(astropy.test(args=\"-v %{?skip_pytest}\"))"
+%python_exec -B -c "import astropy, sys; sys.exit(astropy.test(args=\"-v -k \\\"not ($donttest)\\\"\"))"
 %endif
 
 %if !%{with test}
