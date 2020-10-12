@@ -330,4 +330,12 @@
   * 0001-Revert-Port-some-qt5.15-deprecated-method.patch</comment>
     <requestid>834506</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7296e94b6bacdd6718cf4bb9f26c61bf</srcmd5>
+    <version>5.75.0</version>
+    <time>1602503838</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.75</comment>
+    <requestid>840862</requestid>
+  </revision>
 </revisionlist>

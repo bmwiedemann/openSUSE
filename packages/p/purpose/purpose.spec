@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.74
+%define _tar_path 5.75
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           purpose
-Version:        5.74.0
+Version:        5.75.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -56,8 +56,6 @@ BuildRequires:  cmake(Qt5Network) >= 5.12.0
 BuildRequires:  cmake(Qt5Qml) >= 5.12.0
 BuildRequires:  cmake(Qt5Test) >= 5.12.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
-# Needed by the nextcloud and youtube plugins
-Requires:       accounts-qml-module
 Requires:       kdeclarative-components >= %{_kf5_bugfix_version}
 Requires:       libKF5QuickAddons5 >= %{_kf5_bugfix_version}
 Requires:       libqt5-qtquickcontrols2

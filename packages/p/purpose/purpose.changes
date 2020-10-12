@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:45 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Port to ecm_generate_qmltypes
+  * autotests: fix path separator on Windows
+
+-------------------------------------------------------------------
 Mon Sep 14 11:40:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Require accounts-qml-module
