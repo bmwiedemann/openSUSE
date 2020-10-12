@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * kio_trash: remove unnecessarily strict permission check (kde#76380)
+  * OpenUrlJob: handle all text scripts consistently (kde#425829)
+  * KDirOperator: don't call setCurrentItem on an empty url (kde#425163)
+  * KNewFileMenu: fix creating new dir with name starting with ':' (kde#425396)
+  * Allow double quotes in filenames in KFileWidget (kde#185433)
+  * StatJob: cancel job if url is invalid (kde#426367)
+- Drop upstream patches:
+  * 0001-Remove-old-kio_fonts-hack-in-KCoreDirLister-hostname.patch
+  * 0002-KUrlCompletion-accommodate-local-protocols-that-use-.patch
+
+-------------------------------------------------------------------
 Sun Sep 13 09:41:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to fix browsing kdeconnect://:
