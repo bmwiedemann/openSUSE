@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  9 21:00:30 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build CBLAS from lapack package
+  * update baselibs.conf
+- Clean up spec file:
+  * remove useless make cleanlib
+  * remove ineffective duplicated 'make ..lib' calls with deviating
+    opts, as the object files are not removed (fortuanately) the
+    existing PIC files are used for the static libraries
+  * remove fortran-only -std=legacy opt from CFLAGS
+
+-------------------------------------------------------------------
+Fri Oct  9 17:28:03 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- lapack-man:
+  * Build manpages from same sources as the binaries (3.8.0) instead
+    of old 3.5.0.
+  * Merge blas-man package into lapack-man package. Avoids tedious
+    splitting of the two.
+  * Use fdupes macro instead of trying to deduplicate man pages
+    manually.
+- Cleanup lapack spec:
+  * Remove conditionals for obsolete distro versions
+  * Only use python3-base instead of python3
+  * Drop old copy of lapack_testing.py as separate source
+
+-------------------------------------------------------------------
 Fri Mar 13 14:58:33 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -std=legacy in order to fix boo#1166619.

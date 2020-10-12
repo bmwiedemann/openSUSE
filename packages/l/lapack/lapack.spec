@@ -24,14 +24,12 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            http://www.netlib.org/lapack/
 Source0:        http://www.netlib.org/lapack/%{name}-%{version}.tar.gz
-Source1:        lapack_testing.py
 Source99:       baselibs.conf
 Patch1:         lapack-3.2.2.patch
 BuildRequires:  gcc-fortran
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  update-alternatives
 Requires(pre):  update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 LAPACK provides routines for solving systems of simultaneous linear
@@ -47,9 +45,7 @@ both single and double precision.
 %package     -n liblapack3
 Summary:        LAPACK Shared Library
 Group:          Development/Libraries/Parallel
-%if 0%{?suse_version} >= 1120
 Requires(pre):  update-alternatives
-%endif
 
 %description -n liblapack3
 LAPACK provides routines for solving systems of simultaneous linear
@@ -65,9 +61,7 @@ both single and double precision.
 %package     -n libblas3
 Summary:        BLAS Shared Library
 Group:          Development/Libraries/Parallel
-%if 0%{?suse_version} >= 1120
 Requires(pre):  update-alternatives
-%endif
 
 %description -n libblas3
 BLAS (Basic Linear Algebra Subprograms) is a standard library for
@@ -157,106 +151,131 @@ Summary:        LAPACKE development files
 Group:          Development/Libraries/C and C++
 Requires:       liblapacke3 = %{version}
 Provides:       lapacke = %{version}
-Provides:       lapacke-devel-static = %{version}
 
 %description -n lapacke-devel
 LAPACKE headers and development files.
 
 %package     -n lapacke-devel-static
-Summary:        LAPACKE development files - static libraries
+Summary:        LAPACKE static libraries
 Group:          Development/Libraries/C and C++
 Requires:       lapacke-devel = %{version}
 
 %description -n lapacke-devel-static
-LAPACKE development files  - static libraries.
+LAPACKE development files - static libraries.
+
+%package     -n libcblas3
+Summary:        CBLAS Shared Library
+Group:          Development/Libraries/C and C++
+Requires(pre):  update-alternatives
+# Only version ever packaged separately
+Obsoletes:      libcblas3 == 20110120
+
+%description -n libcblas3
+This library provides a native C interface to BLAS routines available
+at www.netlib.org/blas to facilitate usage of BLAS functionality 
+for C programmers.
+
+%package     -n cblas-devel
+Summary:        CBLAS development files
+Group:          Development/Libraries/C and C++
+Requires:       libcblas3 = %{version}
+Provides:       cblas = %{version}
+
+%description -n cblas-devel
+cblas headers and development files.
+
+%package     -n cblas-devel-static
+Summary:        CBLAS - static libraries
+Group:          Development/Libraries/C and C++
+Requires:       cblas-devel = %{version}
+
+%description -n cblas-devel-static
+The cblas-devel-static package contains the CBLAS static libraries
+for -static linking. You do not need these, unless you link
+statically, which is highly discouraged.
+
 
 %prep
 %setup -q
 %patch1
+sed -i -e '1 s@env python@python3@' lapack_testing.py
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%global optflags %{optflags} -std=legacy
+%global optflags_f %{optflags} -std=legacy
 case "$RPM_ARCH" in
     i[0-9]86) PRECFLAGS="-ffloat-store" ;;
     *)        PRECFLAGS="" ;;
 esac
 export PRECFLAGS
 cp make.inc.example make.inc
+
 make cleanlib %{?_smp_mflags}
 make %{?_smp_mflags} blaslib \
-  OPTS="%{optflags} -fPIC" \
-  NOOPT="%{optflags} -O0 -fPIC"
-mv librefblas.a libblas_pic.a
+  OPTS="%{optflags_f} -fPIC" \
+  NOOPT="%{optflags_f} -O0 -fPIC"
 mkdir tmp
-( cd tmp; ar x ../libblas_pic.a )
+( cd tmp; ar x ../librefblas.a )
 gfortran -shared -Wl,-soname=libblas.so.3 -o libblas.so.%{version} tmp/*.o
 ln -s libblas.so.%{version} libblas.so
 rm -rf tmp
-make cleanlib %{?_smp_mflags}
-make %{?_smp_mflags} blaslib \
-  OPTS="%{optflags}" \
-  NOOPT="%{optflags} -O0"
+
 make blas_testing \
-  OPTS="%{optflags} $PRECFLAGS" \
-  NOOPT="%{optflags} $PRECFLAGS -O0"
+  OPTS="%{optflags_f} $PRECFLAGS" \
+  NOOPT="%{optflags_f} $PRECFLAGS -O0"
 if grep -B15 -A15 FAIL BLAS/*.out; then
   echo
   echo "blas_testing FAILED"
-  echo
   false
-else
-  true  # No failures
 fi
 mv librefblas.a libblas.a
-make cleanlib %{?_smp_mflags}
-make %{?_smp_mflags} lapacklib \
-  OPTS="%{optflags} -fPIC" \
-  NOOPT="%{optflags} -O0 -fPIC"
-mv liblapack.a liblapack_pic.a
+
+make %{?_smp_mflags} cblaslib \
+  CFLAGS="%{optflags} -fPIC -DADD_ " \
+  LINKER=gfortran
 mkdir tmp
-( cd tmp; ar x ../liblapack_pic.a )
+( cd tmp; ar x ../libcblas.a )
+gfortran -shared -Wl,-soname=libcblas.so.3 -o libcblas.so.%{version} tmp/*.o -L. -lblas
+ln -s libcblas.so.%{version} libcblas.so
+rm -rf tmp
+make %{?_smp_mflags} cblas_testing \
+  CFLAGS="%{optflags} -fPIC" \
+  LINKER=gfortran
+grep -B15 -A15 FAIL TESTING/*.out && false
+
+make %{?_smp_mflags} lapacklib \
+  OPTS="%{optflags_f} -fPIC" \
+  NOOPT="%{optflags_f} -O0 -fPIC"
+mkdir tmp
+( cd tmp; ar x ../liblapack.a )
 gfortran -shared -Wl,-soname=liblapack.so.3 -o liblapack.so.%{version} tmp/*.o -L. -lblas
 ln -s liblapack.so.%{version} liblapack.so
 rm -rf tmp
-make cleanlib %{?_smp_mflags}
-make %{?_smp_mflags} lapacklib \
-  OPTS="%{optflags}" \
-  NOOPT="%{optflags} -O0"
-ln -s libblas.a librefblas.a
+
 cd LAPACKE
 make %{?_smp_mflags} lapacke \
   CFLAGS="%{optflags} -fPIC -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE" \
   LINKER=gfortran
-mv ../liblapacke.a liblapacke_pic.a
 mkdir tmp
-( cd tmp; ar x ../liblapacke_pic.a )
+( cd tmp; ar x ../../liblapacke.a )
 gfortran -shared -Wl,-soname=liblapacke.so.3 -o liblapacke.so.%{version} tmp/*.o
 ln -s liblapacke.so.%{version} liblapacke.so
 rm -rf tmp
-make cleanlib %{?_smp_mflags}
-make %{?_smp_mflags} lapacke \
-  CFLAGS="%{optflags} -DADD_ -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE"
-mv ../liblapacke.a liblapacke.a
-# fix wrong end of line
-sed -i 's/\r//' LICENSE
 cd ..
-cp %{SOURCE1} .
+
 make lapack_testing \
-  OPTS="%{optflags} $PRECFLAGS" \
-  NOOPT="%{optflags} $PRECFLAGS -O0"
+  OPTS="%{optflags_f} $PRECFLAGS" \
+  NOOPT="%{optflags_f} $PRECFLAGS -O0"
 if grep -B15 -A15 FAIL TESTING/*.out; then
   echo
   echo "lapack_testing FAILED"
-  echo
   false
-else
-  true  # No failures
 fi
 
 %install
 install -d %{buildroot}/%{_libdir}
 install -d %{buildroot}/%{_sysconfdir}/alternatives
+install -d %{buildroot}/%{_includedir}
 ## BLAS
 install -d %{buildroot}/%{_libdir}/blas
 install -m 644 libblas.a %{buildroot}/%{_libdir}
@@ -266,6 +285,15 @@ ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
 # dummy target for update-alternatives
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so.3
 ln -s libblas.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/libblas.so.3
+## CBLAS
+install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
+install -m 644 libcblas.a %{buildroot}/%{_libdir}
+install -m 755 libcblas.so.%{version} %{buildroot}/%{_libdir}/blas
+ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
+ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
+# dummy target for update-alternatives
+ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so.3
+ln -s libcblas.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/libcblas.so.3
 ## LAPACK
 install -d %{buildroot}/%{_libdir}/lapack
 install -m 644 liblapack.a %{buildroot}/%{_libdir}
@@ -276,10 +304,9 @@ ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so.3
 ln -s liblapack.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/liblapack.so.3
 ## LAPACKE
-install -d %{buildroot}/%{_includedir}
 cd LAPACKE
 install -m 644 include/*.h %{buildroot}/%{_includedir}
-install -m 644 liblapacke.a %{buildroot}/%{_libdir}
+install -m 644 ../liblapacke.a %{buildroot}/%{_libdir}
 install -m 755 liblapacke.so.%{version} %{buildroot}/%{_libdir}
 ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so.3
 ln -s liblapacke.so.%{version} %{buildroot}/%{_libdir}/liblapacke.so
@@ -323,69 +350,87 @@ if [ "$1" = 0 ] ; then
   fi
 fi
 
+%post -n libcblas3
+%{_sbindir}/update-alternatives --install \
+   %{_libdir}/libcblas.so.3 libcblas.so.3 %{_libdir}/blas/libcblas.so.3  50
+/sbin/ldconfig
+
+%preun -n libcblas3
+if [ "$1" = 0 ] ; then
+   %{_sbindir}/update-alternatives --remove libcblas.so.3  %{_libdir}/blas/libcblas.so.3
+fi
+
+%postun -n libcblas3 -p /sbin/ldconfig
+
+%posttrans -n libcblas3
+if [ "$1" = 0 ] ; then
+  if ! [ -f %{_libdir}/libcblas.so.3 ] ; then
+      "%{_sbindir}/update-alternatives" --auto libcblas.so.3
+  fi
+fi
+
 %post -n liblapacke3 -p /sbin/ldconfig
 
 %postun -n liblapacke3 -p /sbin/ldconfig
 
 %files -n liblapack3
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/lapack
 %{_libdir}/lapack/liblapack.so.%{version}
 %{_libdir}/lapack/liblapack.so.3
-%if 0%{?suse_version} >= 1120
 %ghost %{_libdir}/liblapack.so.3
 %ghost %{_sysconfdir}/alternatives/liblapack.so.3
-%else
-%{_libdir}/liblapack.so.3
-%{_sysconfdir}/alternatives/liblapack.so.3
-%endif
 
 %files -n libblas3
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/blas
 %{_libdir}/blas/libblas.so.%{version}
 %{_libdir}/blas/libblas.so.3
-%if 0%{?suse_version} >= 1120
 %ghost %{_libdir}/libblas.so.3
 %ghost %{_sysconfdir}/alternatives/libblas.so.3
-%else
-%{_libdir}/libblas.so.3
-%{_sysconfdir}/alternatives/libblas.so.3
-%endif
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/liblapack.so
 
 %files devel-static
-%defattr(-,root,root)
 %{_libdir}/liblapack.a
 
 %files -n blas-devel
-%defattr(-,root,root)
 %{_libdir}/libblas.so
 
 %files -n blas-devel-static
-%defattr(-,root,root)
 %{_libdir}/libblas.a
 
 %files -n liblapacke3
-%defattr(-,root,root,-)
 %{_libdir}/liblapacke.so.%{version}
 %{_libdir}/liblapacke.so.3
 
 %files -n lapacke-devel
-%defattr(-,root,root,-)
-%doc LAPACKE/LICENSE LAPACKE/README
+%doc LAPACKE/README
+%license LAPACKE/LICENSE
 %{_libdir}/liblapacke.so
-%{_includedir}/*.h
+%{_includedir}/lapack*.h
 
 %files -n lapacke-devel-static
-%defattr(-,root,root,-)
 %{_libdir}/liblapacke.a
+
+%files -n libcblas3
+%doc README.md
+%license LICENSE
+%dir %{_libdir}/blas
+%{_libdir}/blas/libcblas.so.%{version}
+%{_libdir}/blas/libcblas.so.3
+%ghost %{_libdir}/libcblas.so.3
+%ghost %{_sysconfdir}/alternatives/libcblas.so.3
+
+%files -n cblas-devel
+%doc CBLAS/README
+%{_libdir}/libcblas.so
+%{_includedir}/cblas*.h
+
+%files -n cblas-devel-static
+%{_libdir}/libcblas.a
 
 %changelog

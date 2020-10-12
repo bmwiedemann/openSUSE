@@ -389,4 +389,19 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>785151</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>bc597815424a1500fa0ec7233d961be8</srcmd5>
+    <version>3.8.0</version>
+    <time>1602503212</time>
+    <user>dimstar_suse</user>
+    <comment>- Build CBLAS from lapack package
+  * update baselibs.conf
+- Clean up spec file:
+  * remove useless make cleanlib
+  * remove ineffective duplicated 'make ..lib' calls with deviating
+    opts, as the object files are not removed (fortuanately) the
+    existing PIC files are used for the static libraries
+  * remove fortran-only -std=legacy opt from CFLAGS (forwarded request 840488 from StefanBruens)</comment>
+    <requestid>841039</requestid>
+  </revision>
 </revisionlist>
