@@ -235,7 +235,6 @@ done
 rm -f %{buildroot}%{_mandir}/man1/grohtml.1*
 
 # compat symlinks
-ln -s -f current %{buildroot}%{_datadir}/%{name}/%{version}
 ln -s -f eqn %{buildroot}%{_bindir}/geqn
 ln -s -f tbl %{buildroot}%{_bindir}/gtbl
 
