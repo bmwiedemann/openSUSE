@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:18:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable Lua bindings as those fail to build
+- Add 0001-build-add-cmake-option-to-skip-Lua-components-1175.patch
+  for Factory.
+
+-------------------------------------------------------------------
+Sun Jun 28 10:44:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-build-allow-deactivating-the-crash-handler-at-build-.patch
+  Deactivate the crash handler, because it hangs. Let the kernel
+  generate a standard dump instead.
+
+-------------------------------------------------------------------
+Mon Jun 22 20:16:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add clzma.diff to use system-provided clzma library.
+
+-------------------------------------------------------------------
 Tue May 26 08:26:11 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.12

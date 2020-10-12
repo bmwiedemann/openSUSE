@@ -28,16 +28,21 @@ Source2:        slade.desktop
 Source100:      slade.appdata.xml
 Patch1:         basepk3.diff
 Patch2:         wx.diff
+Patch3:         clzma.diff
+Patch4:         0001-build-allow-deactivating-the-crash-handler-at-build-.patch
 Patch10:        disable_sse.patch
+Patch11:        0001-build-add-cmake-option-to-skip-Lua-components-1175.patch
+# slade 3.2 will need gcc-c++>=8 and pkgconfig(fmt)>=6
 BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 3.1
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++ >= 6
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_0-devel
 BuildRequires:  zip
+BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(gl)
@@ -45,24 +50,31 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
+Provides:       bundled(dumb) = 0.9.3
 
 %description
-SLADE3 is an editor for Doom-engine based games and source
+SLADE is an editor for Doom-engine based games and source
 ports. It has the ability to view, modify, and write many different
 game-specific formats, and even convert between some of them, or
 from/to other generic formats such as PNG.
 
 %prep
 %setup -q -n SLADE-%version
-%patch -P 1 -P 2 -p1
+%patch -P 1 -P 2 -P 3 -P 4 -p1
 %ifnarch %ix86 x86_64
 %patch10 -p0
+%endif
+%if 0%{?suse_version} >= 1550
+%patch -P 11 -p1
 %endif
 
 %build
 %define _lto_cflags %nil
-%cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF
-make %{?_smp_mflags}
+%cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF -DNO_CRASHHANDLER=ON \
+	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
+	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
+	-DNO_LUA:BOOL=TRUE
+%cmake_build
 
 %install
 strip-nondeterminism build/slade.pk3
@@ -75,10 +87,10 @@ install -Dpm0644 "%name.png" "$b/%_datadir/pixmaps/%name.png"
 install -Dpm0644 %{SOURCE100} "$b/%_datadir/appdata/%name.appdata.xml"
 
 pushd misc
-for txtfile in detect_functions.txt old-simage-formats.txt stuff.txt udmf11.txt \
-               udmf_zdoom.txt usdf.txt usdf_zdoom.txt
+for txtfile in detect_functions.txt old-simage-formats.txt stuff.txt \
+    udmf11.txt udmf_zdoom.txt usdf.txt usdf_zdoom.txt
 do
-	install -Dm644 $txtfile "$b/%_datadir/slade3/misc/$txtfile"
+	install -Dm644 "$txtfile" "$b/%_datadir/slade3/misc/$txtfile"
 done
 popd
 

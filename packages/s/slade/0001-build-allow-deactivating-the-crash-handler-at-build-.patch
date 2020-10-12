@@ -1,0 +1,52 @@
+From 519a5a5f87527a344ab04efa0947d5d8e75294e5 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sun, 28 Jun 2020 12:38:40 +0200
+Subject: [PATCH] build: allow deactivating the crash handler at build time
+ (#1166)
+
+SLADE's own crash handler has two problems:
+
+  * it inhibits the generation of a proper crashdump
+
+  * it calls functions that not async-signal safe and/or re-entrant,
+    such as malloc (by way of backtrace(3)), which can lead to a hang
+    when the initial crash happened in malloc,
+
+Fixes: #1166
+---
+ COMPILE.md                     | 1 +
+ src/Application/SLADEWxApp.cpp | 2 +-
+ src/CMakeLists.txt             | 4 ++++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/Application/SLADEWxApp.cpp b/src/Application/SLADEWxApp.cpp
+index 375f62b8..d9196355 100644
+--- a/src/Application/SLADEWxApp.cpp
++++ b/src/Application/SLADEWxApp.cpp
+@@ -523,7 +523,7 @@ bool SLADEWxApp::OnInit()
+ #endif
+ 
+ 	// Handle exceptions using wxDebug stuff, but only in release mode
+-#ifdef NDEBUG
++#if defined(USE_CRASHHANDLER) && defined(NDEBUG)
+ 	wxHandleFatalExceptions(true);
+ #endif
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 4ce2403d..5eabe4c7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -132,6 +132,10 @@ if (NOT NO_FLUIDSYNTH)
+ 	include_directories(${FLUIDSYNTH_INCLUDE_DIR})
+ endif()
+ 
++if (NOT NO_CRASHHANDLER)
++	add_definitions(-DUSE_CRASHHANDLER)
++endif ()
++
+ set(SLADE_SOURCES
+ )
+ # Don't include external libraries here as they should be compiled separately
+-- 
+2.27.0
+
