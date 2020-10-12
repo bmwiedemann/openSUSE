@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:43:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.20180726:
+  * Mitigate vulns caused by git code execution (CVE-2018-7032)
+  * Migrate from ack-grep to ack
+  * More reliable output supervision
+  * Improve the status output for CVS
+  * Improve the git-cvs extension
+  * Allow prepending commands to existing commands
+  * Allow for fallback to default commands
+  * Add support for caching command output
+  * Add shell extension to maintain a repo status cache
+  * Add graph, remote, upgrade extensions
+  * git registration improvements
+  * webcheckout: prefer https transport 
+
+-------------------------------------------------------------------
 Thu Apr 27 13:09:07 UTC 2017 - jengelh@inai.de
 
 - Wrap and trim description

@@ -1,7 +1,7 @@
 #
 # spec file for package mr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           mr
-Version:        1.20170129
+Version:        1.20180726
 Release:        0
 Summary:        Version control repository manager
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
-Url:            https://myrepos.branchable.com
-Source0:        mr-1.20170129.tar.gz
+URL:            https://myrepos.branchable.com
+Source0:        mr-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  make
 Requires:       perl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -47,29 +46,29 @@ It is configurable via shell scripting. Some examples of things it can do includ
    the update process.
  * Remember actions that failed due to a laptop being offline, so they can be retried when it comes back online.
 
-This package also includes the webcheckout(1) command.   
+This package also includes the webcheckout(1) command.
 
 %prep
 %setup -q
 
 %build
-make build
+%make_build build
 
 %install
 %make_install
+rm -rf %{buildroot}%{_datadir}/doc
 %fdupes -s %{buildroot}/%{_prefix}
 
 %check
-make test
+%make_build test
 
 %files
-%defattr(-,root,root)
-%doc GPL
+%license GPL
 %doc README
 %{_bindir}/mr
 %{_bindir}/webcheckout
-%{_mandir}/man1/mr.1.gz
-%{_mandir}/man1/webcheckout.1.gz
+%{_mandir}/man1/mr.1%{?ext_man}
+%{_mandir}/man1/webcheckout.1%{?ext_man}
 %dir %{_datadir}/mr
 %{_datadir}/mr/dgit
 %{_datadir}/mr/git-annex
@@ -81,5 +80,10 @@ make test
 %{_datadir}/mr/unison
 %{_datadir}/mr/vcsh
 %{_datadir}/mr/vis
+%{_datadir}/mr.sh
+%{_datadir}/mr/git-cvs
+%{_datadir}/mr/graph
+%{_datadir}/mr/remote
+%{_datadir}/mr/upgrade
 
 %changelog
