@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-streamz
-Version:        0.5.5
+Version:        0.6.0
 Release:        0
 Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause

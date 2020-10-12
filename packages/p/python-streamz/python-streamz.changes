@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:21:44 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.6.0:
+  * Fixed outdated docstring
+  * Merge pull request #362 from jbednar/docfixes
+  * Merge pull request #363 from jbednar/periodicdataframe
+  * Update docs/source/dataframes.rst
+  * Replaced system time with Pandas Timestamp
+  * Replaced system time with Pandas Timestamp
+  * Update docs/source/dataframes.rst
+  * Fixed flakes
+  * Added test_periodic_dataframes
+  * Replaced Tornado references with asyncio
+  * Updated dataframe docs
+  * Switched callbacks to use kwargs
+  * Added PeriodicDataFrame to the API docs
+  * Reformatted .rst files for 80 characters
+  * Fixed typos and formatting
+  * Fixed outdated or missing docs conf
+  * flake
+  * Added PeriodicDataFrame
+  * Added plotting section to the user guide
+  * Fixed typos
+
+- changes from version 0.5.6:
+  * Merge pull request #360 from chinmaychandak/windowing_fix
+  * Add empty windowing index test and fix TODO
+  * Windowing fix conforming to Pandas
+  * Style fix
+  * Windowing over n fix
+  * Change delta to nanosecond
+  * Revert npartitions elimination
+  * Fix windowing over time operations
+  * Remove print statement
+  * Remove npartitions parameter for CK -- to do for custreamz.kafka
+  * Merge pull request #288 from jdye64/287
+  * Merge pull request #349 from
+    nils-braun/bugfix/336-problematic-dicts
+  * Merge pull request #350 from martindurant/fix_example_notebook
+  * Update for hvplot
+  * Use f-strings
+  * Fix typo
+  * Fix #336 by wrapping every object with a known key
+  * Add a test which fails on scattering dicts, as dask treats dicts
+    differently
+
+-------------------------------------------------------------------
 Sat Aug 15 17:02:26 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.5.5:
