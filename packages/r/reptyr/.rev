@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>655903</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4672c6075d52f67884c8e14384966a40</srcmd5>
+    <version>0.8.0</version>
+    <time>1602503955</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner
+- Update to version 0.8.0
+  * Resolve a number of bugs in FreeBSD support
+  * Implement reptyr -T support for FreeBSD</comment>
+    <requestid>841056</requestid>
+  </revision>
 </revisionlist>

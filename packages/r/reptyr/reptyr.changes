@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:20:16 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- spec-cleaner
+- Update to version 0.8.0
+  * Resolve a number of bugs in FreeBSD support
+  * Implement reptyr -T support for FreeBSD
+
+-------------------------------------------------------------------
 Thu Dec  6 00:19:42 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use %make_install.
