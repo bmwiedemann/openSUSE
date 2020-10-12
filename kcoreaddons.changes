@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * harden message-based tests against environment (kde#387006)
+  * refcount and delete KDirWatchPrivate instances (kde#423928)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:48:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
