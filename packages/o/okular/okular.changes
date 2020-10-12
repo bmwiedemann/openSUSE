@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:45:25 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Too many changes since 20.08.1, only listing bugfixes:
+  * Fix forms when inertially scrolling (kde#421354)
+  * Show "Follow link" if right clicking over link and annotation (kde#425291)
+  * Fix crash on files that have the same signature in more than 1 page (kde#426467)
+  * Restore mouse drag scrolling, so it starts immediately (kde#420842)
+  * Re-add smooth scrolling for arrow key and mouse wheel scrolling (kde#422041)
+
+-------------------------------------------------------------------
 Wed Sep 16 14:32:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to make the okular-spectre split more user friendly (boo#1176030):
