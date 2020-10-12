@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:10:50 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 5.4.1:
+  * Fixes bugs found in Lua 5.4.0
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+
+-------------------------------------------------------------------
 Fri Aug 21 18:24:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add final part of patch for CVE-2020-15888, boo#1174367

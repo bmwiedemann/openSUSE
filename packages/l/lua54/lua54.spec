@@ -19,14 +19,14 @@
 %define major_version 5.4
 %define libname liblua5_4-5
 Name:           lua54
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
 Group:          Development/Languages/Other
 URL:            http://www.lua.org
-Source:         http://www.lua.org/ftp/lua-5.4.0.tar.gz
-Source1:        http://www.lua.org/tests/lua-5.4.0-tests.tar.gz
+Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
+Source1:        http://www.lua.org/tests/lua-%{version}-tests.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
@@ -34,8 +34,8 @@ Patch0:         lua-build-system.patch
 # Fix failing test
 Patch1:         attrib_test.patch
 Patch2:         files_test.patch
-# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html
-Patch3:         upstream-bugs.patch
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.1
+#Patch3:         upstream-bugs.patch
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig

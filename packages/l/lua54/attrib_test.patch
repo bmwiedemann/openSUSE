@@ -1,5 +1,5 @@
---- a/lua-5.4.0-tests/attrib.lua
-+++ b/lua-5.4.0-tests/attrib.lua
+--- a/lua-5.4.1-tests/attrib.lua
++++ b/lua-5.4.1-tests/attrib.lua
 @@ -269,7 +269,7 @@ local p = ""   -- On Mac OS X, redefine
  local st, err, when = package.loadlib(DC"lib1", "*")
  if not st then
