@@ -177,4 +177,12 @@
   * dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch</comment>
     <requestid>835930</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7698589586a5e56ca14a5959946dfb57</srcmd5>
+    <version>1.18</version>
+    <time>1602503185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>840495</requestid>
+  </revision>
 </revisionlist>

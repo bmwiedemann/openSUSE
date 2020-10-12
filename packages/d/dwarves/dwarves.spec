@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.17
+Version:        1.18
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -28,9 +28,7 @@ URL:            http://acmel.wordpress.com/
 Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
-Patch0:         libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
-Patch1:         dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch
-Patch2:         dwarves-dwarf_loader-Bail-out-at-DW_TAG_imported_unit-tags.patch
+Patch1:         libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.170
 %if 0%{?suse_version} < 1550
@@ -89,8 +87,10 @@ for processing DWARF, a debugging data format for ELF files.
 %autosetup -p1
 
 %build
-%cmake
-make %{?_smp_mflags}
+sv="$PWD/lib.v"
+echo "DWARVES_%version { global: *; };" >"$sv"
+%cmake -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
+%cmake_build
 
 %install
 %cmake_install

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  2 22:00:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18
+  * pahole now should be segfault free when handling gdb test
+    suit DWARF files, including ADA, FORTRAN, rust and dwp
+    compressed files (the latter is refused).
+  * Bail out on partial units for now, avoiding segfaults.
+- Drop
+  dwarves-dwarf_loader-Ignore-entries-in-a-DW_TAG_partial_unit-for-now.patch,
+  dwarves-dwarf_loader-Bail-out-at-DW_TAG_imported_unit-tags.patch
+  (merged)
+- Add forced ELF symvers because of ABI breaks
+
+-------------------------------------------------------------------
 Mon Sep 21 18:48:25 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Backport fixes for segfault when processing dwz-ed kernel
