@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 08:13:29 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build and update spec file
+- Add cpanspec file
+- Add fdupes macro
+
+-------------------------------------------------------------------
 Fri Nov 18 11:09:52 UTC 2011 - coolo@suse.com
 
 - use original .tar.gz
