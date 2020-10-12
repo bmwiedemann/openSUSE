@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:42:57 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Don't warn when closing multiple tabs if restoring window state
+  * Fix untranslated spinbox suffix strings (kde#426286)
+
+-------------------------------------------------------------------
 Tue Sep  1 20:49:04 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1
