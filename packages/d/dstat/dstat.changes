@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 11 03:00:46 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add python3-six as dependency
+  * The program does not start without it: "No module named 'six'" 
+
+-------------------------------------------------------------------
 Mon Sep 28 16:35:10 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add loop-should-be-integer.patch

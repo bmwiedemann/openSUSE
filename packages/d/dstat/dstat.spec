@@ -37,6 +37,7 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 Requires:       python3-curses
+Requires:       python3-six
 %endif
 
 %description
