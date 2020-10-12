@@ -91,4 +91,34 @@ no indication of aggregation. Fedora also denote this as GPL-2.0 (forwarded requ
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a597d2977811efa580170e4062bf14a9</srcmd5>
+    <version>0.24</version>
+    <time>1602508480</time>
+    <user>dimstar_suse</user>
+    <comment>
+- update to 0.24
+  * Support fancy Content-Disposition
+  * RFC5987-compliant headers
+  * Support for remote IMAP folders
+  * Fix string overrun bugs in nvp.c
+  * Option to follow symlinks to mboxes in rc file
+  * Minor parsing improvements, documentation fixes, and small bug
+    repairs.
+- includes 0.23
+  * Allow '=' in message-id search for RFC2822 conformance
+  * Add the option -H to force hardlinks
+  * Skip .gitignore files
+  * Do not interpret special characters [~,/=^] in Message-ID
+    queries
+  * Fix faultly mbox message separators
+  * Improve reporting of unparsed MIME headers
+  * Allow empty sections in MIME headers
+  * Add support for uuencoded attachments
+  * Improve the parsing of MIME boundaries
+  * Fix SEGV if mbox shrinks
+  * Add test suite
+  * Fix building in parallel</comment>
+    <requestid>841262</requestid>
+  </revision>
 </revisionlist>
