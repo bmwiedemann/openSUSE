@@ -27,9 +27,15 @@ Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/wsproto
 Source:         https://files.pythonhosted.org/packages/source/w/wsproto/wsproto-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+%if 0%{?suse_version} <= 1520
+BuildRequires:  %{python_module dataclasses}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h11 >= 0.8.1
+%if 0%{?suse_version} <= 1520
+Requires:       python-dataclasses
+%endif
 BuildArch:      noarch
 %python_subpackages
 
