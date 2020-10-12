@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Also use highlight text color when checkDelegate is highlighted (kde#427022)
+  * Respect scrollbar click to jump to position setting (kde#412685)
+  * Don't inherit colors in desktop toolbar style by default
+  * Remove obsolete license text for LGPL-2.0-only
+  * Relicense file to LGPL-2.0-or-later
+  * Use header colors only for header toolbars
+  * Move color set declaration to a place where it can be overridden
+  * Use Header colors for Desktop style ToolBar
+  * add the missing isItem property necessary for trees
+  * move the dbus connection in the singleton
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:32 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
