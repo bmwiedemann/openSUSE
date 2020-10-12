@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 22:12:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.154
+  * Add missing WAW suppression
+
+-------------------------------------------------------------------
 Fri Sep 11 05:33:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.153
