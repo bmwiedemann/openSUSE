@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * Fix plasmoidheading.svgz being installed to the wrong place (kde#426537)
+  * Make PlasmaComponents3 Tooltips use the typical tooltip style (kde#424506)
+  * Fix PC3 Button/ToolButton icons not always having the right color set (kde#426556)
+  * Ensure FrameSvg uses lastModified timestamp when using cache (kde#426674)
+- Drop upstream patch:
+  * 0001-Fix-PC3-Button-ToolButton-icons-not-always-having-th.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 07:48:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix PC3 Button icon colors (kde#426556):
