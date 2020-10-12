@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:45:23 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Fix crash xdg-email foo@kde.org bar@kde.org baz@kde.org
+  * Fix Bug 426639 - Kmail Undo Send option doesn't work (kde#426639)
+  * Fix crash when we forward inline a message
+  * Fix here too: We need to show action when we can see selected item
+  * Hide actions if we don't show item
+  * Warning--
+  * Fix Bug 425161 - Default keyboard shortcut for adding attachments (kde#425161)
+
+-------------------------------------------------------------------
 Tue Sep  1 20:51:23 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1
