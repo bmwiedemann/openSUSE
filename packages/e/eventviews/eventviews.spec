@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
