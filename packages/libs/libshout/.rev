@@ -165,4 +165,20 @@
     <comment></comment>
     <requestid>728490</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>639473bc5db974ef8b57636f063d413c</srcmd5>
+    <version>2.4.4</version>
+    <time>1602503182</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.4:
+  * Fixed handling of blocking/non-blocking mode
+  * Fixed ICY port increment
+  * Fixed reusing of handles
+  * Fixed error handling of Ogg sync layer
+  * Fixed passing of errors between connection and instance layer
+    (Without this fix, dead connections were not correctly
+    detected)
+  * Fixed and improved build scripts</comment>
+    <requestid>840487</requestid>
+  </revision>
 </revisionlist>

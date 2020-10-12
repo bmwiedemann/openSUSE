@@ -1,7 +1,7 @@
 #
 # spec file for package libshout
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           libshout
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Library for communcating with Icecast servers
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://icecast.org/
+#Git-Clone:     https://gitlab.xiph.org/xiph/icecast-libshout/
 Source:         https://downloads.xiph.org/releases/libshout/%name-%version.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  libtheora-devel
 BuildRequires:  libtool
-BuildRequires:  libvorbis-devel
-BuildRequires:  pkgconfig
-BuildRequires:  speex-devel
+BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(theora)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 libshout is a library for communicating with and sending data to an
@@ -56,12 +56,12 @@ This package contains the include files needed to develop
 applications that want to use libshout.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf --force --install
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -78,7 +78,8 @@ rm -Rf "%buildroot/%_libdir/ckport"
 %_libdir/*.so.3*
 
 %files devel
-%doc README COPYING doc/*.xml examples/*.c
+%doc README doc/*.xml examples/*.c
+%license COPYING
 %_libdir/*.so
 %_includedir/shout
 %_datadir/aclocal/*.m4

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:39:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.4.4:
+  * Fixed handling of blocking/non-blocking mode
+  * Fixed ICY port increment
+  * Fixed reusing of handles
+  * Fixed error handling of Ogg sync layer
+  * Fixed passing of errors between connection and instance layer
+    (Without this fix, dead connections were not correctly
+    detected)
+  * Fixed and improved build scripts
+
+-------------------------------------------------------------------
 Sun Sep  1 06:37:22 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.3
