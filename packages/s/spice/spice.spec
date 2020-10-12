@@ -38,8 +38,6 @@ Patch2:         0003-quic-Check-RLE-lengths.patch
 Patch3:         0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  gstreamer-plugins-good
-BuildRequires:  gstreamer-plugins-libav
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing

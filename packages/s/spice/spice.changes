@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:51:19 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Note: The Mar 9, 2020 spec file cleanup and the following change
+  satisfy jsc#SLE-15520
+- Remove gstreamer-plugins-libav and gstreamer-plugins-good as
+  BuildRequires. Even though the configure step of the package
+  build does report detection of features from these packages, the
+  build is actually not otherwise influenced by the presence of
+  these packages. It is at runtime when these plugin packages are
+  utilized, so leave the Recommends for these in the package spec,
+  so that if the packages are available in a distro they can get
+  installed and utilized.
+
+-------------------------------------------------------------------
 Mon Oct  5 19:46:16 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix buffer overflow vunerabilities in QUIC image decoding
