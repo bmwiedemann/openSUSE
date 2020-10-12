@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:34 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Fix shadow variable. Reported by cppcheck
+  * bring back disableAutoRebuild from the brink (kde#423931)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
