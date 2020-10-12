@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Add missing explicit (cppcheck warning)
+  * Constify pointer when it's possible
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
