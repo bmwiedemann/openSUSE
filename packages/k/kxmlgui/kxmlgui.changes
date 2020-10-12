@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * [kmainwindow] Don't delete entries from an invalid kconfiggroup (kde#427236)
+  * Don't overlap main windows when opening additional instances (kde#426725)
+  * [kmainwindow] Don't create native windows for non-toplevel windows (kde#424024)
+  * Handle double close in main window (kde#416728)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:23 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
