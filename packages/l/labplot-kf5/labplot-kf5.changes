@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 10 17:42:29 UTC 2020 - wbauer@tmo.at
+
+- Update fix_labplot_assumption_cantor_version.patch to fix build
+  with cantor 20.08.2 and later
+
+-------------------------------------------------------------------
 Fri Sep 25 12:05:16 UTC 2020 - wbauer@tmo.at
 
 - Move english docs from labplot-kf5-lang to the main package again
