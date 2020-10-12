@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  2 23:03:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8
+  * The default TERM environment variable value is now "fbterm".
+  * Allow to choose between "fbterm" or "linux" for TERM
+    using the "term-is-linux" config directive.
+  * Added short versions for most command line options.
+- Add 0002-Initialize-mTermIsLinux-variable.patch
+
+-------------------------------------------------------------------
 Fri Jun 17 12:24:38 CEST 2016 - tiwai@suse.de
 
 - Fix build error with gcc6 (boo#985146)
@@ -52,4 +62,3 @@ Wed Jan  7 17:00:04 CET 2009 - tiwai@suse.de
 
 - initial version: 1.3
   setuid bit is disabled as now
-

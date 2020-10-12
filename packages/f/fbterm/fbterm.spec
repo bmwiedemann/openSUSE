@@ -1,7 +1,7 @@
 #
 # spec file for package fbterm
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           fbterm
-Summary:        A fast framebuffer-based terminal emulator
-License:        GPL-2.0+
-Group:          System/Console
-Version:        1.7
+Version:        1.8
 Release:        0
-Url:            http://code.google.com/p/fbterm/
+Summary:        A fast framebuffer-based terminal emulator
+License:        GPL-2.0-or-later
+Group:          System/Console
+URL:            https://github.com/sfzhi/fbterm
 
-Source:         https://fbterm.googlecode.com/files/%name-1.7.0.tar.gz
+Source:         https://github.com/sfzhi/fbterm/archive/%version.tar.gz
 Patch1:         fbterm-gcc6-fixes.patch
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
-BuildRequires:  gpm
-BuildRequires:  ncurses-devel
-BuildRequires:  pkg-config
-%if 0%{?suse_version} > 1210
-# Fix build for openSUSE 12.2
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc-c++
+BuildRequires:  gpm
 BuildRequires:  libtool
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
 
 %description
 FbTerm is a fast terminal emulator for linux with frame buffer device.
@@ -59,28 +54,21 @@ Features include:
   * change the orientation of screen display, a.k.a. screen rotation
   * lightweight input method framework with client-server architecture
 
-
-Authors:
---------
-   dragchan <zgchan317@gmail.com>
-
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
 export CFLAGS="%optflags -fno-strict-aliasing"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 # disallow setuid bit for now...
-chmod 0755 $RPM_BUILD_ROOT%{_bindir}/fbterm
+chmod 0755 %{buildroot}/%{_bindir}/fbterm
 
 %files
-%defattr(-, root, root)
 %doc README AUTHORS ChangeLog COPYING
 %doc %{_mandir}/man1/*
 %{_bindir}/*
