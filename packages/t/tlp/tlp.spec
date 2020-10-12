@@ -74,7 +74,7 @@ make %{?_smp_mflags} V=1 \
   TLP_WITH_SYSTEMD=1           \
   TLP_WITH_ELOGIND=0           \
   TLP_NO_INIT=1                \
-  TLP_ULIB=%{_libexecdir}/udev \
+  TLP_ULIB=%{_udevrulesdir}/.. \
   TLP_SYSD=%{_unitdir} \
   TLP_SDSL=%{_unitdir}/system-sleep
 make install-man \
@@ -117,10 +117,8 @@ done
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/*%{name}.metainfo.xml
-%dir %{_libexecdir}/udev/
-%dir %{_libexecdir}/udev/rules.d/
-%{_libexecdir}/udev/%{name}-usb-udev
-%{_libexecdir}/udev/rules.d/85-%{name}.rules
+%{_udevrulesdir}/../%{name}-usb-udev
+%{_udevrulesdir}/85-%{name}.rules
 %{_localstatedir}/lib/%{name}/
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
@@ -134,10 +132,8 @@ done
 %files rdw
 %{_sysconfdir}/NetworkManager/
 %{_bindir}/%{name}-rdw
-%dir %{_libexecdir}/udev/
-%dir %{_libexecdir}/udev/rules.d/
-%{_libexecdir}/udev/rules.d/85-%{name}-rdw.rules
-%{_libexecdir}/udev/%{name}-rdw-udev
+%{_udevrulesdir}/85-%{name}-rdw.rules
+%{_udevrulesdir}/../%{name}-rdw-udev
 %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
 
 %changelog
