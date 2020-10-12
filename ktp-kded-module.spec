@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-kded-module
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        KDED module that manages the telepathy interactions with the KDE Desktop
 License:        LGPL-2.1-or-later
