@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Too many changes since 5.74.0, only listing bugfixes:
+  * Update versions for "fake" kpackage updates (kde#427201)
+  * Fix crash when installing kpackages (kde#426732)
+  * Fix updating of entry if version number is empty (kde#417510)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:49:52 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
