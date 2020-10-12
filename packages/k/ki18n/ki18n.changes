@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Remove obsolete LGPL-2.0-only license file
+  * Relicense file to LGPL-2.0-or-later
+  * Update macOS platform name according to KApiDox warning
+  * Update documentation
+
+-------------------------------------------------------------------
 Sun Sep  6 12:49:25 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
