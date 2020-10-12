@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:32:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * use new install var (kde#415938)
+  * Fix kauth test failure on windows.
+  * Mark David Edmundson as maintainer for KAuth.
+
+-------------------------------------------------------------------
 Sun Sep  6 12:48:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
