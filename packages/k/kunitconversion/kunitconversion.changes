@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Change platofrm name according to KApiDox warning
+  * Reduce documentation warnings
+  * Remove since 4.4 statements
+  * Remove license statements to API documentation
+  * Use uppercase for Fuel Efficiency
+
+-------------------------------------------------------------------
 Sun Sep  6 12:50:18 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
