@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:32:48 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * Add new generic "behavior" icon
+  * Make icon validation depend on icon generation only if enabled
+  * Only run Test24x24Icons if icon generation is enabled
+  * Replace 24px icon bash script with python script
+  * Use flag style iconography for view-calendar-holiday
+  * Add Plasma Nano logo
+  * Add application-x-kmymoney
+  * Lengthen the horizontal lines in the KMyMoney icon
+  * Add KMyMoney icon
+
+-------------------------------------------------------------------
 Thu Sep 17 12:48:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop patch to no longer inherit from oxygen, it's not been
