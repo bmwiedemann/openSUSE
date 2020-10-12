@@ -605,4 +605,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release 20.08.1</comment>
     <requestid>831705</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d7f94786fcb4947627b16ee29525360e</srcmd5>
+    <version>20.08.2</version>
+    <time>1602503864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841152</requestid>
+  </revision>
 </revisionlist>

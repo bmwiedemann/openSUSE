@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 12 07:01:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix reloading of external calendar files (kde#427358)
+  * 0001-Bug-427358-akonadi_ical_resource-stuck-in-InvalideCa.patch
+
+-------------------------------------------------------------------
+Fri Oct  9 05:42:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Fix AppArmor policy for Mariadb 10.5. (kde#425606)
+  * Fix(apparmor/postgres): Add kill signals.
+  * Fix(postgresql): Initialise database without locale en_US.UTF8 avalaible systemwide (kde##417721)
+  * Fix cancelation of CollectionSync
+  * AgentBase: Fix crash in setOnline (kde#418844)
+- Dropped patches, now upstream:
+  * 0001-AgentBase-Fix-crash-in-setOnline.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 11:40:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix crashes:

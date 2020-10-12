@@ -1,0 +1,32 @@
+From b2e4ee76d5831df075349a5a597c371a4d9c1460 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 11 Oct 2020 19:43:58 +0200
+Subject: [PATCH] Bug 427358 - akonadi_ical_resource stuck in
+ InvalideCacheForCollection
+
+Readd code removed.
+Thanks for Markus for debugging it
+
+BUG: 427358
+FIXED-IN: 5.15.3
+---
+ src/agentbase/resourcebase.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/agentbase/resourcebase.cpp b/src/agentbase/resourcebase.cpp
+index 0aa276b21..093b69f74 100644
+--- a/src/agentbase/resourcebase.cpp
++++ b/src/agentbase/resourcebase.cpp
+@@ -668,7 +668,8 @@ void ResourceBasePrivate::slotCollectionDeletionDone(KJob *job)
+ void ResourceBasePrivate::slotInvalidateCache(const Akonadi::Collection &collection)
+ {
+     Q_Q(ResourceBase);
+-    new InvalidateCacheJob(collection, q);
++    InvalidateCacheJob *job = new InvalidateCacheJob(collection, q);
++    connect(job, &KJob::result, scheduler, &ResourceScheduler::taskDone);
+ }
+ 
+ void ResourceBase::changeCommitted(const Item &item)
+-- 
+2.28.0
+
