@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-accounts-kcm
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        KCM Module for configuring Telepathy Instant Messaging Accounts
 License:        LGPL-2.1-or-later
