@@ -203,4 +203,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Updated French translation (forwarded request 839499 from jubalh)</comment>
     <requestid>839600</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3dab4f21302794032c6686af7a6e2c23</srcmd5>
+    <version>0.18.0</version>
+    <time>1602508478</time>
+    <user>dimstar_suse</user>
+    <comment>get actually ready for gnome-shell 3.38 (forwarded request 840298 from develop7)</comment>
+    <requestid>841168</requestid>
+  </revision>
 </revisionlist>
