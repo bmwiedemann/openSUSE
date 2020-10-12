@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:39:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.64:
+  * parallel: fix typo in usage message.
+  * Makefile: Propagate compiler and linker flags when building is_utf8.
+  * ts: Fix parsing of ISO-8601 dates.
+  * parallel: Allow compiling with uClibc-ng, which does not have getloadavg.
+ 
+-------------------------------------------------------------------
 Fri Apr 19 09:38:08 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.63

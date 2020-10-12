@@ -1,7 +1,7 @@
 #
 # spec file for package moreutils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           moreutils
-Version:        0.63
+Version:        0.64
 Release:        0
 Summary:        Additional Unix Utilities
-License:        GPL-2.0+ and GPL-2.0 and MIT
+License:        GPL-2.0-or-later AND GPL-2.0-only AND MIT
 Group:          Productivity/File utilities
-Url:            https://joeyh.name/code/moreutils/
+URL:            https://joeyh.name/code/moreutils/
 Source:         https://git.joeyh.name/index.cgi/moreutils.git/snapshot/%{name}-%{version}.tar.gz
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
