@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:51:05 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependency on contextvars
+- Deactivate low value hypothesis generated tests
+- Remove use of pytest-cov in %check  
+- Remove tests from runtime package
+
+-------------------------------------------------------------------
 Tue Aug 25 11:18:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Add patch pytest6.patch to fix build
