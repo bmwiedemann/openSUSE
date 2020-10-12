@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:25:53 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.9.6
+    This is a security release.
+- Fix boo#1177561 (CVE-2020-26934, PMASA-2020-5) XSS relating to
+  the transformation feature
+- Fix boo#1177562 (CVE-2020-26935, PMASA-2020-6) SQL injection 
+  vulnerability in SearchController
+
+-------------------------------------------------------------------
 Sun May  3 15:22:25 UTC 2020 - chris@computersalat.de
 
 - fix for boo#1170743

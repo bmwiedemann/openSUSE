@@ -30,7 +30,7 @@
 %define ap_grp nogroup
 %endif
 Name:           phpMyAdmin
-Version:        4.9.5
+Version:        4.9.6
 Release:        0
 Summary:        Administration of MySQL over the web
 License:        GPL-2.0-or-later
@@ -206,7 +206,7 @@ if [ -x %{_sbindir}/a2enflag ]; then
     a2enflag %{name}
   fi
 fi
-# We changed ap_docroot from %{ap_docroot_old} to %{ap_docroot} (/srv/www/htdocs to /usr/share)
+# We changed ap_docroot from %%{ap_docroot_old} to %%{ap_docroot} (/srv/www/htdocs to /usr/share)
 # If someone did 'manually' change the config file it won't be replaced by rpm
 # Hence we backup the existing and place the new one
 find=0

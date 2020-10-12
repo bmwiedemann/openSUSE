@@ -1426,4 +1426,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment>fix for boo#1170743 (forwarded request 799851 from computersalat)</comment>
     <requestid>799854</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>085fafe566a460f70d8b72afc8a5fb94</srcmd5>
+    <version>4.9.6</version>
+    <time>1602503972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841132</requestid>
+  </revision>
 </revisionlist>
