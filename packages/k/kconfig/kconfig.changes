@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:32:58 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * CMake: Also set SKIP_AUTOUIC on generated files
+  * Use reverse order in KDesktopFile::locateLocal to iterate over generic config paths.
+
+-------------------------------------------------------------------
 Sun Sep  6 12:48:49 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
