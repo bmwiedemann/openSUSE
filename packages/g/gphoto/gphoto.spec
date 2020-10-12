@@ -27,12 +27,11 @@ URL:            http://gphoto.sourceforge.net
 Summary:        A Digital Camera Utility
 License:        GPL-2.0-or-later
 Group:          Hardware/Camera
-Version:        2.5.23
+Version:        2.5.26
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2
 Source1:        https://downloads.sourceforge.net/project/gphoto/gphoto/%{version}/%{name}2-%{version}.tar.bz2.asc
 Source2:        %name.keyring
-Patch0:         fix-exif.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -50,7 +49,6 @@ gphoto2 --list-cameras
 
 %prep
 %setup -q -n gphoto2-%{version}
-%patch0 -p1
 
 %build
 pkg-config --libs libgphoto2

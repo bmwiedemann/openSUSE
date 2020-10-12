@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 11 17:55:44 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.5.26 release
+  * movie capture: allow some busy results before terminating
+  * wait-event/capture-tethered: allow terminating with SIGUSR2, granularity 1 second
+  * wait-event: allow waiting for TIMEOUT
+- upstreamed fix-exif.patch
+
+-------------------------------------------------------------------
 Sun May 31 16:41:51 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - fix-exif.patch: fix build with exif 0.6.22, which spells FlashPixversion

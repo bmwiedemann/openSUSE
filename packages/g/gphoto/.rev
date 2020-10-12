@@ -421,4 +421,16 @@
   now FlashpixVersion</comment>
     <requestid>810590</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6c6fe597cd22a186d802d93a25605714</srcmd5>
+    <version>2.5.26</version>
+    <time>1602503950</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.26 release
+  * movie capture: allow some busy results before terminating
+  * wait-event/capture-tethered: allow terminating with SIGUSR2, granularity 1 second
+  * wait-event: allow waiting for TIMEOUT
+- upstreamed fix-exif.patch</comment>
+    <requestid>841076</requestid>
+  </revision>
 </revisionlist>
