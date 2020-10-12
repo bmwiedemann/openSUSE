@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-10-10 12:34:08.413465744 +0200
+
+Revert 04472c948d7a0f51d9ec6cda3caed683bca488ce.
+Why is this flag even here...
+
+---
+ CMakeLists.txt |    1 -
+ 1 file changed, 1 deletion(-)
+
+Index: CPU-X/CMakeLists.txt
+===================================================================
+--- CPU-X.orig/CMakeLists.txt
++++ CPU-X/CMakeLists.txt
+@@ -38,7 +38,6 @@ set(CMAKE_EXE_LINKER_FLAGS    "${CMAKE_E
+ include(CheckCCompilerFlag)
+ check_c_compiler_flag("-no-pie" HAS_NO_PIE)
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND HAS_NO_PIE)
+-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -no-pie")
+ endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux" AND HAS_NO_PIE)
+ 
+ # Options
