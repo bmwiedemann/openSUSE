@@ -1,6 +1,19 @@
+Index: azurelinuxagent/common/osutil/suse.py
+===================================================================
 --- azurelinuxagent/common/osutil/suse.py.orig
 +++ azurelinuxagent/common/osutil/suse.py
-@@ -69,9 +69,62 @@ class SUSEOSUtil(SUSE11OSUtil):
+@@ -16,7 +16,10 @@
+ # Requires Python 2.6+ and Openssl 1.0+
+ #
+ 
++import time
++
+ import azurelinuxagent.common.utils.fileutil as fileutil
++import azurelinuxagent.common.logger as logger
+ import azurelinuxagent.common.utils.shellutil as shellutil
+ from azurelinuxagent.common.exception import OSUtilError
+ from azurelinuxagent.common.future import ustr
+@@ -69,9 +72,62 @@ class SUSEOSUtil(SUSE11OSUtil):
          super(SUSEOSUtil, self).__init__()
          self.dhclient_name = 'wickedd-dhcp4'
  
