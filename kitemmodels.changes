@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.75.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/kde-frameworks-5.75.0
+- Changes since 5.74.0:
+  * add reference to Qt bug
+  * ignore sourceDataChanged on invalid indexes
+  * Support for KDescendantProxyModel "collapsing" nodes
+
+-------------------------------------------------------------------
 Sun Sep  6 12:49:39 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.74.0
