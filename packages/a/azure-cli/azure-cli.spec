@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.12.1
+Version:        2.13.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -45,12 +45,12 @@ Patch1:         ac_use-python3-by-default.patch
 BuildRequires:  %{short_name} = %{version}
 %else
 BuildRequires:  azure-cli-command-modules-nspkg >= 2.0
-BuildRequires:  azure-cli-core >= %{version}
+BuildRequires:  azure-cli-core = %{version}
 BuildRequires:  azure-cli-nspkg >= 3.0.3
 BuildRequires:  fdupes
 BuildRequires:  python3-Fabric >= 2.4
 BuildRequires:  python3-PyYAML >= 5.1
-BuildRequires:  python3-azure-appconfiguration >= 1.1.0
+BuildRequires:  python3-azure-appconfiguration >= 1.1.1
 BuildRequires:  python3-azure-batch < 10.0
 BuildRequires:  python3-azure-batch >= 9.0
 BuildRequires:  python3-azure-cosmos >= 3.0.2
@@ -74,7 +74,7 @@ BuildRequires:  python3-azure-mgmt-cognitiveservices >= 6.2.0
 BuildRequires:  python3-azure-mgmt-compute >= 13.0
 BuildRequires:  python3-azure-mgmt-consumption >= 2.0
 BuildRequires:  python3-azure-mgmt-containerinstance >= 1.4
-BuildRequires:  python3-azure-mgmt-containerregistry >= 3.0.0rc14
+BuildRequires:  python3-azure-mgmt-containerregistry >= 3.0.0rc15
 BuildRequires:  python3-azure-mgmt-containerservice >= 9.4.0
 BuildRequires:  python3-azure-mgmt-cosmosdb >= 1.0.0
 BuildRequires:  python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -144,13 +144,13 @@ BuildRequires:  python3-vsts-cd-manager >= 1.0.0
 BuildRequires:  python3-websocket-client >= 0.56.0
 BuildRequires:  python3-xmltodict >= 0.12
 Requires:       azure-cli-command-modules-nspkg >= 2.0
-Requires:       azure-cli-core >= %{version}
+Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime < 5.0.0
 Requires:       python3-antlr4-python3-runtime >= 4.7.2
-Requires:       python3-azure-appconfiguration >= 1.1.0
+Requires:       python3-azure-appconfiguration >= 1.1.1
 Requires:       python3-azure-batch < 10.0
 Requires:       python3-azure-batch >= 9.0
 Requires:       python3-azure-cosmos >= 3.0.2
@@ -175,7 +175,7 @@ Requires:       python3-azure-mgmt-cognitiveservices >= 6.2.0
 Requires:       python3-azure-mgmt-compute >= 13.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 1.4
-Requires:       python3-azure-mgmt-containerregistry >= 3.0.0rc14
+Requires:       python3-azure-mgmt-containerregistry >= 3.0.0rc15
 Requires:       python3-azure-mgmt-containerservice >= 9.4.0
 Requires:       python3-azure-mgmt-cosmosdb >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1

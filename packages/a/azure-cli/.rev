@@ -186,4 +186,16 @@
     HISTORY.rst file provided with this package (forwarded request 838782 from glaubitz)</comment>
     <requestid>838783</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1fc7469e764b6acc95cd10c768a6b144</srcmd5>
+    <version>2.13.0</version>
+    <time>1602596676</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.13.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 841505 from glaubitz)</comment>
+    <requestid>841548</requestid>
+  </revision>
 </revisionlist>
