@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pymemcache
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        A pure Python memcached client
 License:        Apache-2.0
