@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Show "you might need to reconnect charger" hint only when charging/fully charged
+  * Take DESTDIR into account when running setcap
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Add setting for charge threshold
+  * Remove shortcut migration code
+  * [core] Return early if no wakeup was cleared
+  * [core] send the dbus error if wakeup is invalid
+  * cmake: set the CAP_WAKE_ALARM capability on the powerdevil
+  * [core] introduce the method to wake system up
+  * Set min width of activities KCM to smaller value (kde#407622)
+  * On wakeup from suspend restore remembered keyboard brightness
+  * [mobile] on mobile devices lock screen before we turn it off
+  * [mobile] various adjustments related to power management
+  * [dpms action] introduce option to lock screen before turning off
+  * Use camelcase (scripted)
+  * [kcm] Remove incorrect information from error message (kde#423872)
+  * Fix compilation with ddcutil 0.9.9
+  * Play sound when plugged in
+  * Change "adaptor" to "adapter"
+  * Fix build on FreeBSD
+  * WIP: Implement smooth brightness change for sysfs / backlight helper
+  * Use add_definitions instead of add_compile_definitions
+  * Add a logging category config file
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
