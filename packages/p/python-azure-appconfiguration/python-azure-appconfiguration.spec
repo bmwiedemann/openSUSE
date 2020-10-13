@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-azure-appconfiguration
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.0.0
+Requires:       python-azure-core >= 1.2.2
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.10
 Conflicts:      python-azure-sdk <= 2.0.0
