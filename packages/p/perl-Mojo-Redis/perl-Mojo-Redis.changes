@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  4 03:19:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.25
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.25 2020-10-02T10:21:30+0900
+   - Fix handling undef() in _process_...() methods #56
+   - Fix some leaks in Mojo::Redis::PubSub
+   - Add Mojo::Redis::PubSub->notify_p()
+
+-------------------------------------------------------------------
 Wed May  8 05:14:29 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 3.24
