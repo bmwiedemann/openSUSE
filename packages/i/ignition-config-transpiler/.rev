@@ -69,4 +69,12 @@
   * news: add news for 0.3.0</comment>
     <requestid>768013</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ebc19501c206feb5651d9324175a35a8</srcmd5>
+    <version>0.6.0+git20200928.d002e54</version>
+    <time>1602596580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>841303</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">git://github.com/coreos/fcct.git</param>
-    <param name="changesrevision">e34c4a9de4a1f3cd5b2007cb9e2d2ecffac7b250</param>
+    <param name="changesrevision">61b7e101918f3d3f5484f9ae6ef46022b9ec251f</param>
  </service>
 </servicedata>

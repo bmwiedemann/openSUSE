@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">0.4.0+git%cd.%h</param>
+    <param name="versionformat">0.6.0+git%cd.%h</param>
     <param name="url">git://github.com/coreos/fcct.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
