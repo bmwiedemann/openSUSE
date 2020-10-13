@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:44:37 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-10-apps-update
+- Changes since 20.08.1:
+  * Make sure to save security settings each time they are modified (kde#340411)
+  * pipewire: Only aspire to use dmabuf if linux/dma-buf.h is present
+  * Fixes for builds without pipewire3
+  * Support DMABuf streams
+  * Compensate for global scale factor when using xcb fb plugin (kde#419814)
+- Dropped patches, now upstream:
+  * 0003-Compensate-for-global-scale-factor-when-using-xcb-fb.patch
+- Rebased patches against 20.08.2:
+  - 0001-Declare-and-use-logging-categories.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 20:50:40 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.1

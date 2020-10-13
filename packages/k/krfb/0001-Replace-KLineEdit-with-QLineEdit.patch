@@ -12,11 +12,11 @@ so QLineEdit suffices.
  krfb/mainwindow.h   | 4 ++--
  4 files changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index aadd4b7..bd9ed41 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -29,7 +29,6 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED COMPONENTS Core DBus Widgets X11Extr
+Index: krfb-20.08.2/CMakeLists.txt
+===================================================================
+--- krfb-20.08.2.orig/CMakeLists.txt	2020-10-09 23:46:03.405438902 +0200
++++ krfb-20.08.2/CMakeLists.txt	2020-10-09 23:46:05.847580539 +0200
+@@ -30,7 +30,6 @@
  
  find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
      I18n
@@ -24,11 +24,11 @@ index aadd4b7..bd9ed41 100644
      Config
      CoreAddons
      Crash
-diff --git a/krfb/CMakeLists.txt b/krfb/CMakeLists.txt
-index a292226..43752b5 100644
---- a/krfb/CMakeLists.txt
-+++ b/krfb/CMakeLists.txt
-@@ -93,7 +93,6 @@ target_link_libraries (krfb
+Index: krfb-20.08.2/krfb/CMakeLists.txt
+===================================================================
+--- krfb-20.08.2.orig/krfb/CMakeLists.txt	2020-10-09 23:46:03.405438902 +0200
++++ krfb-20.08.2/krfb/CMakeLists.txt	2020-10-09 23:46:05.847580539 +0200
+@@ -101,7 +101,6 @@
                         ${X11_X11_LIB}
                         ${X11_Xdamage_LIB}
                         Qt5::Network
@@ -36,10 +36,10 @@ index a292226..43752b5 100644
                         KF5::CoreAddons
                         KF5::DBusAddons
                         KF5::DNSSD
-diff --git a/krfb/mainwindow.cpp b/krfb/mainwindow.cpp
-index 555d301..14924f6 100644
---- a/krfb/mainwindow.cpp
-+++ b/krfb/mainwindow.cpp
+Index: krfb-20.08.2/krfb/mainwindow.cpp
+===================================================================
+--- krfb-20.08.2.orig/krfb/mainwindow.cpp	2020-10-05 07:07:12.000000000 +0200
++++ krfb-20.08.2/krfb/mainwindow.cpp	2020-10-09 23:46:05.847580539 +0200
 @@ -21,7 +21,6 @@
  #include <KMessageWidget>
  #include <KStandardAction>
@@ -48,7 +48,7 @@ index 555d301..14924f6 100644
  #include <KNewPasswordDialog>
  #include <KPluginLoader>
  #include <KPluginMetaData>
-@@ -107,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent)
+@@ -107,7 +106,7 @@
      setAttribute(Qt::WA_DeleteOnClose, false);
  
      m_passwordEditable = false;
@@ -57,10 +57,10 @@ index 555d301..14924f6 100644
      m_passwordLineEdit->setVisible(false);
      m_passwordLineEdit->setAlignment(Qt::AlignHCenter);
  
-diff --git a/krfb/mainwindow.h b/krfb/mainwindow.h
-index 9f2939e..bbe69cd 100644
---- a/krfb/mainwindow.h
-+++ b/krfb/mainwindow.h
+Index: krfb-20.08.2/krfb/mainwindow.h
+===================================================================
+--- krfb-20.08.2.orig/krfb/mainwindow.h	2020-10-05 07:07:12.000000000 +0200
++++ krfb-20.08.2/krfb/mainwindow.h	2020-10-09 23:46:05.847580539 +0200
 @@ -15,7 +15,7 @@
  
  #include <KXmlGuiWindow>
@@ -70,7 +70,7 @@ index 9f2939e..bbe69cd 100644
  
  class MainWindow : public KXmlGuiWindow
  {
-@@ -43,7 +43,7 @@ class MainWindow : public KXmlGuiWindow
+@@ -43,7 +43,7 @@
      private:
          Ui::MainWidget m_ui;
          bool m_passwordEditable;
@@ -79,6 +79,3 @@ index 9f2939e..bbe69cd 100644
  };
  
  #endif
--- 
-2.28.0
-

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Patch0:         0001-Declare-and-use-logging-categories.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Replace-KLineEdit-with-QLineEdit.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0003-Compensate-for-global-scale-factor-when-using-xcb-fb.patch
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pipewire-devel
@@ -74,7 +72,6 @@ VNC-compatible server to share KDE desktops.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %ifarch ppc ppc64

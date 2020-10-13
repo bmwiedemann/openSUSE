@@ -23,10 +23,10 @@ Adds the following logging categories:
  krfb/rfbservermanager.cpp            |  1 -
  13 files changed, 78 insertions(+), 47 deletions(-)
 
-Index: krfb-20.08.1/CMakeLists.txt
+Index: krfb-20.08.2/CMakeLists.txt
 ===================================================================
---- krfb-20.08.1.orig/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/CMakeLists.txt	2020-10-09 23:44:31.733046725 +0200
++++ krfb-20.08.2/CMakeLists.txt	2020-10-09 23:44:44.155940985 +0200
 @@ -20,6 +20,7 @@
  include(ECMInstallIcons)
  include(ECMAddAppIcon)
@@ -48,10 +48,10 @@ Index: krfb-20.08.1/CMakeLists.txt
  feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
  ki18n_install(po)
  if (KF5DocTools_FOUND)
-Index: krfb-20.08.1/framebuffers/qt/CMakeLists.txt
+Index: krfb-20.08.2/framebuffers/qt/CMakeLists.txt
 ===================================================================
---- krfb-20.08.1.orig/framebuffers/qt/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/framebuffers/qt/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/framebuffers/qt/CMakeLists.txt	2020-10-09 23:44:31.733046725 +0200
++++ krfb-20.08.2/framebuffers/qt/CMakeLists.txt	2020-10-09 23:44:44.155940985 +0200
 @@ -7,6 +7,14 @@
       qtframebufferplugin.cpp
  )
@@ -67,10 +67,10 @@ Index: krfb-20.08.1/framebuffers/qt/CMakeLists.txt
  add_library(krfb_framebuffer_qt
   MODULE 
                   ${krfb_framebuffer_qt_SRCS}
-Index: krfb-20.08.1/framebuffers/xcb/CMakeLists.txt
+Index: krfb-20.08.2/framebuffers/xcb/CMakeLists.txt
 ===================================================================
---- krfb-20.08.1.orig/framebuffers/xcb/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/framebuffers/xcb/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/framebuffers/xcb/CMakeLists.txt	2020-10-09 23:44:31.733046725 +0200
++++ krfb-20.08.2/framebuffers/xcb/CMakeLists.txt	2020-10-09 23:44:44.155940985 +0200
 @@ -7,6 +7,14 @@
        xcb_framebuffer.cpp
  )
@@ -86,10 +86,10 @@ Index: krfb-20.08.1/framebuffers/xcb/CMakeLists.txt
  add_library(krfb_framebuffer_xcb MODULE ${krfb_framebuffer_xcb_SRCS})
  
  target_link_libraries (krfb_framebuffer_xcb
-Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
+Index: krfb-20.08.2/framebuffers/xcb/xcb_framebuffer.cpp
 ===================================================================
---- krfb-20.08.1.orig/framebuffers/xcb/xcb_framebuffer.cpp	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/framebuffers/xcb/xcb_framebuffer.cpp	2020-10-09 23:44:31.733046725 +0200
++++ krfb-20.08.2/framebuffers/xcb/xcb_framebuffer.cpp	2020-10-09 23:45:35.296788997 +0200
 @@ -8,6 +8,7 @@
  */
  
@@ -115,16 +115,16 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
                 xdamage_version->major_version << "." << xdamage_version->minor_version;
  #endif
  
-@@ -163,7 +163,7 @@
- 
-     QScreen *primaryScreen = QGuiApplication::primaryScreen();
-     if (primaryScreen) {
+@@ -166,7 +166,7 @@
+         qreal scaleFactor = primaryScreen->devicePixelRatio();
+         d->area = { primaryScreen->geometry().topLeft() * scaleFactor,
+                     primaryScreen->geometry().bottomRight() * scaleFactor };
 -        qDebug() << "xcb framebuffer: Primary screen: " << primaryScreen->name()
-+        qCDebug(KRFB_FB_XCB) << "xcb framebuffer: Primary screen: " << primaryScreen->name()
++        qDebug(KRFB_FB_XCB) << "xcb framebuffer: Primary screen: " << primaryScreen->name()
                   << ", geometry: " << primaryScreen->geometry()
-                  << ", depth: " << primaryScreen->depth();
-         //
-@@ -183,7 +183,7 @@
+                  << ", device scaling: " << scaleFactor
+                  << ", native size: " << d->area
+@@ -186,7 +186,7 @@
                                          XCB_IMAGE_FORMAT_Z_PIXMAP);
      if (d->framebufferImage) {
  #ifdef _DEBUG
@@ -133,7 +133,7 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
                   << ", size (" << d->framebufferImage->width << d->framebufferImage->height << ")"
                   << ", depth: " << d->framebufferImage->depth
                   << ", padded width: " << d->framebufferImage->stride;
-@@ -211,15 +211,15 @@
+@@ -214,15 +214,15 @@
                      nullptr);                   // data = 0
          if (d->updateTile) {
  #ifdef _DEBUG
@@ -158,7 +158,7 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
  #endif
  
              // allocate shared memory block only once, make its size large enough
-@@ -237,7 +237,7 @@
+@@ -240,7 +240,7 @@
              xcb_shm_attach(QX11Info::connection(), d->shminfo.shmseg, d->shminfo.shmid, 0);
  
  #ifdef _DEBUG
@@ -167,7 +167,7 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
  #endif
  
              // will return 1 on success (yes!)
-@@ -273,7 +273,7 @@
+@@ -276,7 +276,7 @@
      }
  
  #ifdef _DEBUG
@@ -176,7 +176,7 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
               << ", xshm base error = " << d->x11EvtFilter->xdamageBaseError
               << ", xdamage base event = " << d->x11EvtFilter->xdamageBaseEvent
               << ", xdamage base error = " << d->x11EvtFilter->xdamageBaseError;
-@@ -420,10 +420,12 @@
+@@ -423,10 +423,12 @@
          format.blueMax  = root_visualtype->blue_mask >> format.blueShift;
  
  #ifdef _DEBUG
@@ -193,10 +193,10 @@ Index: krfb-20.08.1/framebuffers/xcb/xcb_framebuffer.cpp
                 format.redMax, format.greenMax, format.blueMax);
  #endif
      } else {
-Index: krfb-20.08.1/krfb/CMakeLists.txt
+Index: krfb-20.08.2/krfb/CMakeLists.txt
 ===================================================================
---- krfb-20.08.1.orig/krfb/CMakeLists.txt	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/krfb/CMakeLists.txt	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/CMakeLists.txt	2020-10-09 23:44:31.733046725 +0200
++++ krfb-20.08.2/krfb/CMakeLists.txt	2020-10-09 23:44:44.155940985 +0200
 @@ -66,6 +66,14 @@
       invitationsrfbclient.cpp
  )
@@ -212,10 +212,10 @@ Index: krfb-20.08.1/krfb/CMakeLists.txt
  kconfig_add_kcfg_files (krfb_SRCS
                       krfbconfig.kcfgc
  )
-Index: krfb-20.08.1/krfb/eventsmanager.cpp
+Index: krfb-20.08.2/krfb/eventsmanager.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/eventsmanager.cpp	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/krfb/eventsmanager.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/eventsmanager.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/eventsmanager.cpp	2020-10-09 23:44:44.155940985 +0200
 @@ -23,8 +23,8 @@
  #include "eventsplugin.h"
  #include "krfbconfig.h"
@@ -257,10 +257,10 @@ Index: krfb-20.08.1/krfb/eventsmanager.cpp
 +    qCDebug(KRFB) << "No valid event handlers found. returning null.";
      return QSharedPointer<EventHandler>();
  }
-Index: krfb-20.08.1/krfb/framebuffermanager.cpp
+Index: krfb-20.08.2/krfb/framebuffermanager.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/framebuffermanager.cpp	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/krfb/framebuffermanager.cpp	2020-09-02 07:06:44.709582831 +0200
+--- krfb-20.08.2.orig/krfb/framebuffermanager.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/framebuffermanager.cpp	2020-10-09 23:44:44.155940985 +0200
 @@ -22,8 +22,8 @@
  
  #include "framebufferplugin.h"
@@ -311,10 +311,10 @@ Index: krfb-20.08.1/krfb/framebuffermanager.cpp
 +    qDebug(KRFB) << "No valid framebuffer found. returning null.";
      return QSharedPointer<FrameBuffer>();
  }
-Index: krfb-20.08.1/krfb/invitationsrfbclient.cpp
+Index: krfb-20.08.2/krfb/invitationsrfbclient.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/invitationsrfbclient.cpp	2020-09-02 07:05:32.869344897 +0200
-+++ krfb-20.08.1/krfb/invitationsrfbclient.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/invitationsrfbclient.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/invitationsrfbclient.cpp	2020-10-09 23:44:44.155940985 +0200
 @@ -24,11 +24,11 @@
  #include "krfbconfig.h"
  #include "sockethelpers.h"
@@ -346,10 +346,10 @@ Index: krfb-20.08.1/krfb/invitationsrfbclient.cpp
  
      if(InvitationsRfbServer::instance->allowUnattendedAccess() && vncAuthCheckPassword(
              InvitationsRfbServer::instance->unattendedPassword().toLocal8Bit(),
-Index: krfb-20.08.1/krfb/invitationsrfbserver.cpp
+Index: krfb-20.08.2/krfb/invitationsrfbserver.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/invitationsrfbserver.cpp	2020-09-02 07:05:32.873344910 +0200
-+++ krfb-20.08.1/krfb/invitationsrfbserver.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/invitationsrfbserver.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/invitationsrfbserver.cpp	2020-10-09 23:44:44.159944496 +0200
 @@ -22,10 +22,10 @@
  #include "invitationsrfbclient.h"
  #include "krfbconfig.h"
@@ -362,7 +362,7 @@ Index: krfb-20.08.1/krfb/invitationsrfbserver.cpp
  #include <QRandomGenerator>
  
  #include <KLocalizedString>
-@@ -188,7 +188,7 @@
+@@ -182,7 +182,7 @@
  
      } else {
  
@@ -371,10 +371,10 @@ Index: krfb-20.08.1/krfb/invitationsrfbserver.cpp
          KConfigGroup krfbConfig(KSharedConfig::openConfig(),"Security");
  
          desktopPassword = KStringHandler::obscure(krfbConfig.readEntry(
-Index: krfb-20.08.1/krfb/main.cpp
+Index: krfb-20.08.2/krfb/main.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/main.cpp	2020-09-02 07:05:32.873344910 +0200
-+++ krfb-20.08.1/krfb/main.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/main.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/main.cpp	2020-10-09 23:44:44.159944496 +0200
 @@ -20,6 +20,7 @@
  #include "invitationsrfbserver.h"
  #include "krfbconfig.h"
@@ -416,10 +416,10 @@ Index: krfb-20.08.1/krfb/main.cpp
          }
      }
  }
-Index: krfb-20.08.1/krfb/rfbclient.cpp
+Index: krfb-20.08.2/krfb/rfbclient.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/rfbclient.cpp	2020-09-02 07:05:32.873344910 +0200
-+++ krfb-20.08.1/krfb/rfbclient.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/rfbclient.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/rfbclient.cpp	2020-10-09 23:44:44.159944496 +0200
 @@ -23,7 +23,6 @@
  #include "sockethelpers.h"
  #include "eventsmanager.h"
@@ -428,10 +428,10 @@ Index: krfb-20.08.1/krfb/rfbclient.cpp
  #include <poll.h>
  #include <strings.h> //for bzero()
  
-Index: krfb-20.08.1/krfb/rfbserver.cpp
+Index: krfb-20.08.2/krfb/rfbserver.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/rfbserver.cpp	2020-09-02 07:05:32.873344910 +0200
-+++ krfb-20.08.1/krfb/rfbserver.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/rfbserver.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/rfbserver.cpp	2020-10-09 23:44:44.159944496 +0200
 @@ -19,11 +19,11 @@
  */
  #include "rfbserver.h"
@@ -471,10 +471,10 @@ Index: krfb-20.08.1/krfb/rfbserver.cpp
          rfbShutdownServer(d->screen, false);
          return false;
      };
-Index: krfb-20.08.1/krfb/rfbservermanager.cpp
+Index: krfb-20.08.2/krfb/rfbservermanager.cpp
 ===================================================================
---- krfb-20.08.1.orig/krfb/rfbservermanager.cpp	2020-09-02 07:05:32.873344910 +0200
-+++ krfb-20.08.1/krfb/rfbservermanager.cpp	2020-09-02 07:05:40.725370922 +0200
+--- krfb-20.08.2.orig/krfb/rfbservermanager.cpp	2020-10-09 23:44:31.737050235 +0200
++++ krfb-20.08.2/krfb/rfbservermanager.cpp	2020-10-09 23:44:44.159944496 +0200
 @@ -29,7 +29,6 @@
  #include <QDesktopWidget>
  #include <QGlobalStatic>
