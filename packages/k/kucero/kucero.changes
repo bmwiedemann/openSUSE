@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Oct 13 08:16:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Combine redundant %setup calls.
+
+-------------------------------------------------------------------
+Tue Sep 29 02:53:49 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version v1.3.0
+  * updates /etc/kubernetes/kubelet.conf to use symlink /var/lib/kubelet/pki/kubelet-client-current.pem
+    if the kubelet.conf is bootstrapped before Kubernetes 1.17. (bsc#1176578)
+  * supports automatically enable or disable the kubelet client and server certificate in /var/lib/kubelet/config.yaml.
+  * Add --duration flag to support changing kubelet server certificate TTL.
+
+-------------------------------------------------------------------
+Fri May 29 08:22:47 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Initial version v0.0.58
