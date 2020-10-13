@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 03:11:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.62
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.62  2020-10-10
+    - Improved commands to exit with a usage message on unknown options.
+
+-------------------------------------------------------------------
 Sat Oct  3 11:22:22 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - updated to 8.61
