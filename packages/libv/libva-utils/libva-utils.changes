@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 20:35:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 2.9.0:
+  * Fix KW issues
+  * Add support for csc with RGBP
+
+-------------------------------------------------------------------
 Mon Aug 31 17:24:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - version 2.8.0 needed for jira#SLE/SLE-12712 

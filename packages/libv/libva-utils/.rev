@@ -104,4 +104,12 @@
     <comment>- version 2.8.0 needed for jira#SLE/SLE-12712</comment>
     <requestid>831321</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d3a23acc84df800ee76b8aa2f4d5dfeb</srcmd5>
+    <version>2.9.0</version>
+    <time>1602596683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841332</requestid>
+  </revision>
 </revisionlist>
