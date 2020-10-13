@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:06 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Port old style connect
+  * Drop Qt version check for 5.14
+  * Let clear method actually clear model
+  * Remove dead code
+  * Drop empty X-KDE-PluginInfo-Depends
+  * Replace old ModelTest copy with QAbstractItemModelTester
+  * Enable plugin config watcher (kde#421426)
+  * Set krunnerrc config file for RunnerManager (kde#360359)
+  * Implement subtext tooltip for KRunner
+  * Fix single runner mode (kde#417070)
+  * Syntax fix
+  * Fix setting text in search field for InformationalMatch
+  * Clear search field when result is activated
+  * Fix closing of plasmoid when result is selected
+  * Close plasmoid using escape
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
