@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:57:29 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- fix compilation errors with sbcl 2.0.9 by using upstream patch
+  for csv-cl component 82397a78.patch
+
+-------------------------------------------------------------------
 Sat Jul 18 21:16:29 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Add patch for a broken dependency gh#fare/command-line-arguments#6

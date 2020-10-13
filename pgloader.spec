@@ -25,6 +25,8 @@ Group:          Productivity/Databases/Tools
 URL:            https://pgloader.io
 Source:         https://github.com/dimitri/%{name}/releases/download/v%{version}/%{name}-bundle-%{version}.tgz
 Patch1:         command-line-arguments.patch
+#Fix build error with sbcl 2.0.9
+Patch2:         https://github.com/AccelerationNet/cl-csv/commit/82397a78.patch
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
@@ -58,6 +60,9 @@ from the pgloader command directly.
 %setup -q -n %{name}-bundle-%{version}
 
 %patch1 -p1
+cd local-projects/cl-csv
+%patch2 -p1
+cd ../..
 
 %build
 export CCFLAGS="%{optflags}"
