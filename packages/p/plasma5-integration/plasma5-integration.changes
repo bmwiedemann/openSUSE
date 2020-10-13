@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * QXdgDesktopPortalFileDialog: pass directory option to portal
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Implement forwarding file dialog requests to xdg-desktop portal
+  * Use KDE shortcuts for "move to trash" action coming from QStandardKey (kde#426573)
+  * Use same default for all places StartDragTime is loaded (kde#421450)
+  * Get rid of workaround that prevents file dialog from being blocked
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
