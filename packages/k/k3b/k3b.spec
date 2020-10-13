@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application for KDE
 License:        GPL-2.0-or-later
