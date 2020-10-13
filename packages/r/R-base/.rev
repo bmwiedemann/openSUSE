@@ -1557,4 +1557,41 @@ CHANGES IN R 3.4.2:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>817664</requestid>
   </revision>
+  <revision rev="76" vrev="33">
+    <srcmd5>c78b46f81962ca5e87d709d3da7d723b</srcmd5>
+    <version>unknown</version>
+    <time>1602596787</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.0.3:
+  NEW FEATURES:
+    * On platforms using configure option --with-internal-tzcode,
+      additional values &quot;internal&quot; and (on macOS only) &quot;macOS&quot; are
+      accepted for the environment variable TZDIR.  (See ?TZDIR.)
+      On macOS, &quot;macOS&quot; is used by default if the system timezone
+      database is a newer version than that in the R installation.
+    * When install.packages(type = &quot;source&quot;) fails to find a package in
+      a repository it mentions package versions which are excluded by
+      their R version requirement and links to hints on why a package
+      might not be found.
+    * The default value for options(&quot;timeout&quot;) can be set from
+      enviromnent variable R_DEFAULT_INTERNET_TIMEOUT, still defaulting
+      to 60 (seconds) if that is not set or invalid.
+      This may be needed when child R processes are doing downloads,
+      for example during the installation of source packages which
+      download jars or other forms of data.
+  LINK-TIME OPTIMIZATION on a UNIX-ALIKE:
+    * There is now support for parallelized Link-Time Optimization
+      (LTO) with GCC and for 'thin' LTO with clang _via_ setting the
+      LTO macro.
+    * There is support for setting a different LTO flag for the Fortran
+      compiler, including to empty when mixing clang and gfortran (as
+      on macOS).  See file config.site.
+    * There is a new LTO_LD macro to set linker options for LTO
+      compilation, for example to select an alternative linker or to
+      parallelize thin LTO.
+  DEPRECATED AND DEFUNCT:
+    * The LINPACK argument to chol.default(), chol2inv(),
+      solve.default() and svd() has been defunct since R 3.1.0.  Using</comment>
+    <requestid>841472</requestid>
+  </revision>
 </revisionlist>

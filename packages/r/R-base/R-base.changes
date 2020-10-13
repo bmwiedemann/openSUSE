@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sat Oct 10 18:43:26 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.0.3:
+
+  NEW FEATURES:
+
+    * On platforms using configure option --with-internal-tzcode,
+      additional values "internal" and (on macOS only) "macOS" are
+      accepted for the environment variable TZDIR.  (See ?TZDIR.)
+
+      On macOS, "macOS" is used by default if the system timezone
+      database is a newer version than that in the R installation.
+
+    * When install.packages(type = "source") fails to find a package in
+      a repository it mentions package versions which are excluded by
+      their R version requirement and links to hints on why a package
+      might not be found.
+
+    * The default value for options("timeout") can be set from
+      enviromnent variable R_DEFAULT_INTERNET_TIMEOUT, still defaulting
+      to 60 (seconds) if that is not set or invalid.
+
+      This may be needed when child R processes are doing downloads,
+      for example during the installation of source packages which
+      download jars or other forms of data.
+
+  LINK-TIME OPTIMIZATION on a UNIX-ALIKE:
+
+    * There is now support for parallelized Link-Time Optimization
+      (LTO) with GCC and for 'thin' LTO with clang _via_ setting the
+      LTO macro.
+
+    * There is support for setting a different LTO flag for the Fortran
+      compiler, including to empty when mixing clang and gfortran (as
+      on macOS).  See file config.site.
+
+    * There is a new LTO_LD macro to set linker options for LTO
+      compilation, for example to select an alternative linker or to
+      parallelize thin LTO.
+
+  DEPRECATED AND DEFUNCT:
+
+    * The LINPACK argument to chol.default(), chol2inv(),
+      solve.default() and svd() has been defunct since R 3.1.0.  Using
+      it now gives a warning which will become an error in R 4.1.0.
+
+  BUG FIXES:
+
+    * The code mitigating stack overflow with PCRE regexps on very long
+      strings is enabled for PCRE2 < 10.30 also when JIT is enabled,
+      since stack overflows have been seen in that case.
+
+    * Fix to correctly show the group labels in dotchart() (which where
+      lost in the ylab improvement for R 4.0.0).
+
+    * addmargins(*, ..) now also works when fn() is a local function,
+      thanks to bug report and patch PR#17124 from Alex Bertram.
+
+    * rank(x) and hence sort(x) now work when x is an object (as per
+      is.object(x)) of type "raw" _and_ provides a valid `[` method,
+      e.g., for gmp::as.bigz(.) numbers.
+
+    * chisq.test(*, simulate.p.value=TRUE) and r2dtable() now work
+      correctly for large table entries (in the millions).  Reported by
+      Sebastian Meyer and investigated by more helpers in PR#16184.
+
+    * Low-level socket read/write operations have been fixed to
+      correctly signal communication errors. Previously, such errors
+      could lead to a segfault due to invalid memory access. Reported
+      and debugged by Dmitriy Selivanov in PR#17850.
+
+    * quantile(x, pr) works more consistently for pr values slightly
+      outside [0,1], thanks to Suharto Anggono's PR#17891.
+
+      Further, quantile(x, prN, names=FALSE) now works even when prN
+      contains NAs, thanks to Anggono's PR#17892.  Ditto for ordered
+      factors or Date objects when type = 1 or 3, thanks to PR#17899.
+
+    * Libcurl-based internet access, including curlGetHeaders(), was
+      not respecting the "timeout" option.  If this causes
+      unanticipated timeouts, consider increasing the default by
+      setting R_DEFAULT_INTERNET_TIMEOUT.
+
+    * as.Date(<char>) now also works with an initial "", thanks to
+      Michael Chirico's PR#17909.
+
+    * isS3stdGeneric(f) now detects an S3 generic also when it it is
+      trace()d, thanks to Gabe Becker's PR#17917.
+
+    * R_allocLD() has been fixed to return memory aligned for long
+      double type PR#16534.
+
+    * fisher.test() no longer segfaults when called again after its
+      internal stack has been exceeded PR#17904.
+
+    * Accessing a long vector represented by a compact integer sequence
+      no longer segfaults (reported and debugged by Hugh Parsonage).
+
+    * duplicated() now works also for strings with multiple encodings
+      inside a single vector PR#17809.
+
+    * phyper(11, 15, 0, 12, log.p=TRUE) no longer gives NaN; reported
+      as PR#17271 by Alexey Stukalov.
+
+    * Fix incorrect calculation in logLik.nls() PR#16100, patch from
+      Sebastian Meyer.
+
+    * A very old bug could cause a segfault in model.matrix() when
+      terms involved logical variables.  Part of PR#17879.
+
+    * model.frame.default() allowed data = 1, leading to involuntary
+      variable capture (rest of PR#17879).
+
+    * tar() no longer skips non-directory files, thanks to a patch by
+      Sebastian Meyer, fixing the remaining part of PR#16716. 
+
+-------------------------------------------------------------------
 Mon Jun 22 09:18:01 UTC 2020 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.0.2:

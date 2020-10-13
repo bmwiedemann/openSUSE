@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.0.2
+Version:        4.0.3
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
