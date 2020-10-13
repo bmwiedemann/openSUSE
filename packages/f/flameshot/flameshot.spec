@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -73,16 +73,17 @@ zsh shell completions for %{name}.
 %cmake_install
 install -d %{buildroot}/%{_sysconfdir}/zsh_completion.d
 mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
-%suse_update_desktop_file -r %{name} Utility X-SuSE-DesktopUtility
+%suse_update_desktop_file -r org.flameshot.Flameshot Utility X-SuSE-DesktopUtility
 
 %files
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/org.flameshot.Flameshot.desktop
 %{_datadir}/dbus-1/interfaces/org.flameshot.Flameshot.xml
 %{_datadir}/dbus-1/services/org.flameshot.Flameshot.service
-%{_datadir}/metainfo/%{name}.metainfo.xml
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/icons/hicolor/*/apps/org.flameshot.Flameshot.png
+%{_datadir}/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg
+%{_datadir}/metainfo/org.flameshot.Flameshot.metainfo.xml
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}

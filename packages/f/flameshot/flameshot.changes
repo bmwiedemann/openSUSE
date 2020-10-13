@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 11 07:58:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.4
+  * Renamed assets to match DBUS name for flathub support.
+  * Fixed issue where theme was not applied to widgets.
+  * Fixed issue where pixelate tool did not properly apply pixel
+    size and was not symmetric horizontally and vertically.
+  * Fixed visual artifact in pin to desktop in appimage release.
+  * Fixed issue where CTRL + S did not save active text in text
+    tool.
+  * Imgur tool now opens in the center of the screen.
+  * Translation Updates
+    + Brazilian Portuguese
+    + German
+    + Korean
+    + Basque
+
+-------------------------------------------------------------------
 Tue Sep 29 15:31:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versin 0.8.3
