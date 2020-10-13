@@ -8,12 +8,12 @@ They are not compatible with the theme
  lookandfeel/contents/components/UserList.qml | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/lookandfeel/contents/components/UserList.qml b/lookandfeel/contents/components/UserList.qml
-index 62c95c7..c8f88de 100644
---- a/lookandfeel/contents/components/UserList.qml
-+++ b/lookandfeel/contents/components/UserList.qml
-@@ -42,7 +42,13 @@ ListView {
-     preferredHighlightEnd: preferredHighlightBegin
+Index: plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml
+===================================================================
+--- plasma-workspace-5.15.80git.20200820T102416~bcaf3886d.orig/lookandfeel/contents/components/UserList.qml	2020-08-20 18:24:16.000000000 +0200
++++ plasma-workspace-5.15.80git.20200820T102416~bcaf3886d/lookandfeel/contents/components/UserList.qml	2020-08-20 21:38:45.160535922 +0200
+@@ -47,7 +47,13 @@
+     interactive: count > 1
  
      delegate: UserDelegate {
 -        avatarPath: model.icon || ""
@@ -25,8 +25,5 @@ index 62c95c7..c8f88de 100644
 +            return model.icon
 +        }
          iconSource: model.iconName || "user-identity"
+         fontSize: view.fontSize
  
-         name: {
--- 
-2.10.0
-

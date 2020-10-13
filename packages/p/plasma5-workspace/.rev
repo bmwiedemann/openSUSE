@@ -1438,4 +1438,41 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>835003</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>cde52912ff4b7d75557db3e60c02d73c</srcmd5>
+    <version>5.20.0</version>
+    <time>1602595849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-applets-devicenotifier-Don-t-open-popup-for-already-.patch
+  * 0001-Improve-handling-of-lifecycle-methods-in-retain-prio.patch
+
+- Add patch to avoid popup on login (kde#426990):
+  * 0001-applets-devicenotifier-Don-t-open-popup-for-already-.patch
+
+- Mark powerdevil 5.19.0 as recent enough as workaround for boo#1176474
+
+- Add patch to fix krunner on wayland:
+  * 0001-Improve-handling-of-lifecycle-methods-in-retain-prio.patch
+
+- Copy icon for org.kde.kcolorschemeeditor.desktop
+- Clean up .spec file and remove obsolete workarounds
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Ignore-default-sddm-face-icons.patch
+  * 0001-Use-qdbus-qt5.patch
+- Drop patches, now upstream:
+  * 0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch</comment>
+    <requestid>841022</requestid>
+  </revision>
 </revisionlist>

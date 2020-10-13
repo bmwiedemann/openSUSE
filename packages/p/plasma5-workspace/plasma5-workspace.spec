@@ -27,33 +27,31 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
 Patch503:       0001-Set-GTK_BACKEND-x11-in-a-wayland-session.patch
 # PATCH-FEATURE-OPENSUSE
 Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
-# PATCH-FIX-UPSTREAM
-Patch510:       0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch
-Patch511:       0001-sddm-theme-lockscreen-Fix-login-button-size.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(AppStreamQt) >= 0.10.4
@@ -93,25 +91,31 @@ BuildRequires:  cmake(KF5XmlRpcClient)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
 BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
+BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.1.0
 #!BuildIgnore:  kdialog
-BuildRequires:  libQt5PlatformHeaders-devel >= 5.4.0
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
+BuildRequires:  cmake(Qt5Gui) >= 5.4.0
 BuildRequires:  cmake(Qt5Network) >= 5.4.0
 BuildRequires:  cmake(Qt5Qml) >= 5.4.0
 BuildRequires:  cmake(Qt5Quick) >= 5.4.0
 BuildRequires:  cmake(Qt5QuickWidgets) >= 5.4.0
 BuildRequires:  cmake(Qt5Script) >= 5.4.0
 BuildRequires:  cmake(Qt5Sql) >= 5.4.0
+BuildRequires:  cmake(Qt5Svg) >= 5.4.0
 BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  cmake(ScreenSaverDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(dbusmenu-qt5)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libqalculate)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(wayland-client) >= 1.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
@@ -121,6 +125,8 @@ BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
@@ -182,11 +188,6 @@ Provides:       %{name}-branding = %{_plasma5_bugfix}
 Provides:       %{name}-branding-upstream = %{version}
 Provides:       dbus(org.freedesktop.Notifications)
 Obsoletes:      %{name}-branding-upstream < %{version}
-# Later versions have a supplements in sni-qt
-%if 0%{?suse_version} < 1330
-# so Qt4-only apps have some colors in tray
-Recommends:     sni-qt
-%endif
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -224,10 +225,8 @@ Can also be used by standalone tray apps.
 %package -n gmenudbusmenuproxy
 Summary:        GMenu to DBusMenu Proxy
 Group:          System/GUI/KDE
-%if 0%{?suse_version} >= 1500
 Recommends:     (unity-gtk2-module if libgtk-2_0-0)
 Recommends:     (unity-gtk3-module if libgtk-3-0)
-%endif
 
 %description -n gmenudbusmenuproxy
 This package provides a proxy translating GMenu (GTK Menu) to DBusMenu (the
@@ -262,7 +261,8 @@ Requires:       libkscreen2-plugin >= %{_plasma5_bugfix}
 Requires:       plasma5-desktop >= %{_plasma5_bugfix}
 Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 Requires:       polkit-kde-agent-5 >= %{_plasma5_bugfix}
-Requires:       powerdevil5 >= %{_plasma5_bugfix}
+# Workaround, until security whitelisted it (boo#1176474)
+Requires:       powerdevil5 >= 5.19.0
 Requires:       systemsettings5 >= %{_plasma5_bugfix}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -298,8 +298,7 @@ Plasma 5 session with Wayland from a display manager.
 %lang_package
 
 %prep
-%setup -q -n plasma-workspace-%{version}
-%autopatch -p1
+%autosetup -p1 -n plasma-workspace-%{version}
 
 %build
   %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
@@ -314,18 +313,12 @@ Plasma 5 session with Wayland from a display manager.
   %endif
 
   %suse_update_desktop_file -r %{buildroot}%{_kf5_applicationsdir}/org.kde.klipper.desktop System TrayIcon
-
   mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
   cp %{_kf5_iconsdir}/breeze/apps/48/klipper.svg %{buildroot}%{_kf5_iconsdir}/hicolor/48x48/apps/
 
-  # remove empty/invalid appstream xml files. kpackagetool5 generates invalid files sometimes...
-  # remove this once kpackagetool5 is fixed
-  find %{buildroot}%{_kf5_appstreamdir} -type f -size 0 -print -delete
-
-  # No wayland for Leap 42.x as no Xwayland available
-  %if 0%{?suse_version} <= 1320
-      rm -rfv %{buildroot}%{_kf5_sharedir}/wayland-sessions
-  %endif
+  # Copy the icon for org.kde.kcolorschemeeditor.desktop
+  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
+  cp %{_kf5_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf5_iconsdir}/hicolor/32x32/apps/
 
   # Rename upstream session file to oS location
   mv %{buildroot}%{_kf5_sharedir}/xsessions/{plasma,plasma5}.desktop
@@ -340,7 +333,12 @@ Plasma 5 session with Wayland from a display manager.
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+# boo#1175025: remove when it is fixed
+%if 0%{?suse_version} >= 1550
+  %fdupes -s %{buildroot}/%{_prefix}
+%else
   %fdupes %{buildroot}/%{_prefix}
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -383,8 +381,12 @@ fi
 
 %files
 %license COPYING*
+%{_kf5_applicationsdir}/org.kde.kcolorschemeeditor.desktop
+%{_kf5_applicationsdir}/org.kde.kfontview.desktop
 %{_kf5_bindir}/kcminit
 %{_kf5_bindir}/kcminit_startup
+%{_kf5_bindir}/kfontinst
+%{_kf5_bindir}/kfontview
 %{_kf5_bindir}/klipper
 %{_kf5_bindir}/krunner
 %{_kf5_bindir}/ksmserver
@@ -397,16 +399,29 @@ fi
 %{_kf5_bindir}/startplasma-wayland
 %{_kf5_bindir}/startplasma-x11
 %{_kf5_bindir}/plasma-shutdown
+%{_kf5_bindir}/kde-systemd-start-condition
+%{_kf5_bindir}/lookandfeeltool
+%{_kf5_bindir}/kcolorschemeeditor
+%{_kf5_bindir}/krdb
 %{_kf5_configdir}/autostart/org.kde.plasmashell.desktop
 %{_kf5_configdir}/autostart/klipper.desktop
+%{_kf5_configkcfgdir}/
+%{_kf5_knsrcfilesdir}/colorschemes.knsrc
+%{_kf5_knsrcfilesdir}/gtk_themes.knsrc
+%{_kf5_knsrcfilesdir}/kfontinst.knsrc
+%{_kf5_knsrcfilesdir}/icons.knsrc
+%{_kf5_knsrcfilesdir}/lookandfeel.knsrc
+%{_kf5_knsrcfilesdir}/plasma-themes.knsrc
 %{_kf5_knsrcfilesdir}/plasmoids.knsrc
 %{_kf5_knsrcfilesdir}/wallpaper.knsrc
 %{_kf5_knsrcfilesdir}/wallpaperplugin.knsrc
+%{_kf5_knsrcfilesdir}/xcursor.knsrc
+
 %config %{_kf5_configdir}/taskmanagerrulesrc
 %config %{_kf5_configdir}/plasmanotifyrc
 %dir %{_kf5_libdir}/libexec
-%{_kf5_libdir}/libexec/ksyncdbusenv
 %{_kf5_libdir}/libexec/ksmserver-logout-greeter
+%{_kf5_libdir}/libexec/plasma-changeicons
 %{_kf5_libdir}/libkdeinit5_kcminit.so
 %{_kf5_libdir}/libkdeinit5_kcminit_startup.so
 %{_kf5_libdir}/libkdeinit5_klipper.so
@@ -415,6 +430,8 @@ fi
 %{_kf5_libdir}/libexec/baloorunner
 %{_kf5_libdir}/libexec/plasma-sourceenv.sh
 %{_kf5_libdir}/libexec/startplasma-waylandsession
+%{_kf5_libdir}/libexec/plasma-dbus-run-session-if-needed
+%{_kf5_libdir}/kconf_update_bin/krdb_clearlibrarypath
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_applicationsdir}/org.kde.klipper.desktop
@@ -422,14 +439,30 @@ fi
 %{_kf5_applicationsdir}/org.kde.systemmonitor.desktop
 %{_kf5_applicationsdir}/plasma-windowed.desktop
 %{_kf5_configkcfgdir}/freespacenotifier.kcfg
+%{_kf5_configkcfgdir}/iconssettingsbase.kcfg
+%{_kf5_configkcfgdir}/feedbacksettings.kcfg
+%dir %{_kf5_sharedir}/krunner/
+%dir %{_kf5_sharedir}/krunner/dbusplugins/
+%{_kf5_sharedir}/kcontrol/
+%{_kf5_sharedir}/kdisplay/
+%{_kf5_sharedir}/kpackage/
+%{_kf5_sharedir}/kfontinst/
+%{_kf5_sharedir}/kxmlgui5/
+%{_kf5_sharedir}/dbus-1/services/org.kde.fontinst.service
+%{_kf5_sharedir}/dbus-1/system-services/org.kde.fontinst.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.baloorunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.krunner.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.KSplash.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.Shutdown.service
+%{_kf5_sharedir}/dbus-1/system.d/org.kde.fontinst.conf
 %{_kf5_sharedir}/desktop-directories/
 %{_kf5_sharedir}/kconf_update/
+%{_kf5_sharedir}/polkit-1/actions/org.kde.fontinst.policy
+%{_kf5_sharedir}/krunner/dbusplugins/plasma-runner-baloosearch.desktop
+%{_kf5_sharedir}/konqsidebartng/
+
 %dir %{_kf5_htmldir}
 %dir %lang(en) %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/klipper/
@@ -445,7 +478,12 @@ fi
 %{_kf5_plasmadir}/
 %{_kf5_sharedir}/solid/
 %{_kf5_sharedir}/kio_desktop/
+%{_kf5_iconsdir}/hicolor/32x32/apps/preferences-desktop-color.svg
 %{_kf5_iconsdir}/hicolor/48x48/apps/klipper.svg
+%{_kf5_iconsdir}/hicolor/*/mimetypes/fonts-package.png
+%{_kf5_iconsdir}/hicolor/*/apps/kfontview.png
+%{_kf5_iconsdir}/hicolor/scalable/apps/preferences-desktop-font-installer.svgz
+
 %{_kf5_appstreamdir}/
 %dir %{_kf5_sharedir}/sddm
 %dir %{_kf5_sharedir}/sddm/themes
@@ -455,6 +493,17 @@ fi
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_sharedir}/kpackage/kcms/kcm_translations
 %{_kf5_sharedir}/kpackage/kcms/kcm_feedback
+%{_kf5_sharedir}/kpackage/kcms/kcm5_icons
+%{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
+%dir %{_kf5_libdir}/libexec/kauth
+%{_kf5_libdir}/libexec/kauth/fontinst
+%{_kf5_libdir}/libexec/kauth/fontinst_helper
+%{_kf5_libdir}/libexec/kauth/fontinst_x11
+%{_kf5_libdir}/libexec/kfontprint
+%exclude %{_kf5_libdir}/libkfontinst.so
+%{_kf5_libdir}/libkfontinst.so.*
+%exclude %{_kf5_libdir}/libkfontinstui.so
+%{_kf5_libdir}/libkfontinstui.so.*
 
 %files -n xembedsniproxy
 %license COPYING*
@@ -478,11 +527,7 @@ fi
 %{_kf5_libdir}/cmake/LibKWorkspace/
 %{_kf5_libdir}/cmake/LibTaskManager/
 %{_kf5_libdir}/cmake/LibColorCorrect/
-%dir %{_kf5_libdir}/cmake/LibNotificationManager/
-%{_kf5_libdir}/cmake/LibNotificationManager/LibNotificationManagerConfig.cmake
-%{_kf5_libdir}/cmake/LibNotificationManager/LibNotificationManagerConfigVersion.cmake
-%{_kf5_libdir}/cmake/LibNotificationManager/LibNotificationManagerLibraryTargets-none.cmake
-%{_kf5_libdir}/cmake/LibNotificationManager/LibNotificationManagerLibraryTargets.cmake
+%{_kf5_libdir}/cmake/LibNotificationManager/
 %{_kf5_libdir}/libkworkspace5.so
 %{_kf5_libdir}/libplasma-geolocation-interface.so
 %{_kf5_libdir}/libtaskmanager.so
@@ -499,14 +544,11 @@ fi
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %{_kf5_sharedir}/xsessions/default.desktop
 
-# No wayland for 42.x as no Xwayland available
-%if 0%{?suse_version} > 1320
 %files -n plasma5-session-wayland
 %license COPYING*
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasmawayland.desktop
 %{_datadir}/wayland-sessions/plasmafullwayland.desktop
-%endif
 
 %if %{with lang}
 %files lang -f %{name}.lang

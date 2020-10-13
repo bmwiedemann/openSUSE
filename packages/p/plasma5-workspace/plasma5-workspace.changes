@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-applets-devicenotifier-Don-t-open-popup-for-already-.patch
+  * 0001-Improve-handling-of-lifecycle-methods-in-retain-prio.patch
+
+-------------------------------------------------------------------
+Sat Oct  3 10:21:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid popup on login (kde#426990):
+  * 0001-applets-devicenotifier-Don-t-open-popup-for-already-.patch
+
+-------------------------------------------------------------------
+Mon Sep 28 15:08:20 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mark powerdevil 5.19.0 as recent enough as workaround for boo#1176474
+
+-------------------------------------------------------------------
+Wed Sep 23 16:56:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix krunner on wayland:
+  * 0001-Improve-handling-of-lifecycle-methods-in-retain-prio.patch
+
+-------------------------------------------------------------------
+Mon Sep 21 18:01:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Copy icon for org.kde.kcolorschemeeditor.desktop
+- Clean up .spec file and remove obsolete workarounds
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:11 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Ignore-default-sddm-face-icons.patch
+  * 0001-Use-qdbus-qt5.patch
+- Drop patches, now upstream:
+  * 0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch
+  * 0001-ksmserver-Use-UpdateLaunchEnvJob-to-sync-SESSION_MAN.patch
+  * 0001-sddm-theme-lockscreen-Fix-login-button-size.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 20:18:17 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix login button appearance with KF 5.74:

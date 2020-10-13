@@ -7,11 +7,11 @@ Subject: [PATCH] Use qdbus-qt5
  startkde/startplasma-wayland.cpp | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/startkde/startplasma-wayland.cpp b/startkde/startplasma-wayland.cpp
-index 5b0e0746d..c651ea4fe 100644
---- a/startkde/startplasma-wayland.cpp
-+++ b/startkde/startplasma-wayland.cpp
-@@ -71,7 +71,7 @@ int main(int /*argc*/, char** /*argv*/)
+Index: plasma-workspace-5.15.80git.20200711T203602~d68c16b27/startkde/startplasma-wayland.cpp
+===================================================================
+--- plasma-workspace-5.15.80git.20200711T203602~d68c16b27.orig/startkde/startplasma-wayland.cpp	2020-07-11 22:36:02.000000000 +0200
++++ plasma-workspace-5.15.80git.20200711T203602~d68c16b27/startkde/startplasma-wayland.cpp	2020-07-12 10:44:19.999795526 +0200
+@@ -72,7 +72,7 @@
      runEnvironmentScripts();
  
      if (!qEnvironmentVariableIsSet("DBUS_SESSION_BUS_ADDRESS")) {
