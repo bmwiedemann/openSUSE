@@ -200,4 +200,18 @@
   + python-azure-mgmt-web &gt;= 0.48.0</comment>
     <requestid>840042</requestid>
   </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>76d414987baeb284a9224ef56ba7ab4d</srcmd5>
+    <version>4.0.0</version>
+    <time>1602596604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-automanage
+  + python-azure-mgmt-azurestackhci
+  + python-azure-mgmt-baremetalinfrastructure
+  + python-azure-mgmt-communication
+  + python-azure-mgmt-resourcemover
+  + python-azure-mgmt-streamanalytics (forwarded request 841256 from glaubitz)</comment>
+    <requestid>841297</requestid>
+  </revision>
 </revisionlist>

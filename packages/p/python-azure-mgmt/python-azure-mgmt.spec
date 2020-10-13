@@ -46,8 +46,14 @@ Requires:       python-azure-mgmt-attestation < 1.0.0
 Requires:       python-azure-mgmt-attestation >= 0.1.0
 Requires:       python-azure-mgmt-authorization < 1.0.0
 Requires:       python-azure-mgmt-authorization >= 0.61.0
+Requires:       python-azure-mgmt-automanage < 2.0.0
+Requires:       python-azure-mgmt-automanage >= 1.0.0b1
 Requires:       python-azure-mgmt-automation < 1.0.0
 Requires:       python-azure-mgmt-automation >= 0.1.1
+Requires:       python-azure-mgmt-azurestackhci < 2.0.0
+Requires:       python-azure-mgmt-azurestackhci >= 1.0.0rc1
+Requires:       python-azure-mgmt-baremetalinfrastructure < 2.0.0
+Requires:       python-azure-mgmt-baremetalinfrastructure >= 1.0.0b1
 Requires:       python-azure-mgmt-batch < 10.0.0
 Requires:       python-azure-mgmt-batch >= 9.0.0
 Requires:       python-azure-mgmt-batchai < 3.0.0
@@ -62,6 +68,8 @@ Requires:       python-azure-mgmt-cognitiveservices < 7.0.0
 Requires:       python-azure-mgmt-cognitiveservices >= 6.2.0
 Requires:       python-azure-mgmt-commerce < 2.0.0
 Requires:       python-azure-mgmt-commerce >= 1.0.1
+Requires:       python-azure-mgmt-communication < 2.0.0
+Requires:       python-azure-mgmt-communication >= 1.0.0b2
 Requires:       python-azure-mgmt-compute < 18.0.0
 Requires:       python-azure-mgmt-compute >= 17.0.0
 Requires:       python-azure-mgmt-consumption < 4.0.0
@@ -182,6 +190,8 @@ Requires:       python-azure-mgmt-redhatopenshift < 1.0.0
 Requires:       python-azure-mgmt-redhatopenshift >= 0.1.0
 Requires:       python-azure-mgmt-redis < 8.0.0
 Requires:       python-azure-mgmt-redis >= 7.0.0rc1
+Requires:       python-azure-mgmt-regionmove < 2.0.0
+Requires:       python-azure-mgmt-regionmove >= 1.0.0b1
 Requires:       python-azure-mgmt-relay < 1.0.0
 Requires:       python-azure-mgmt-relay >= 0.1.0
 Requires:       python-azure-mgmt-reservations < 1.0.0
@@ -190,6 +200,8 @@ Requires:       python-azure-mgmt-resource < 16.0.0
 Requires:       python-azure-mgmt-resource >= 15.0.0
 Requires:       python-azure-mgmt-resourcegraph < 3.0.0
 Requires:       python-azure-mgmt-resourcegraph >= 2.0.0
+Requires:       python-azure-mgmt-resourcemover < 2.0.0
+Requires:       python-azure-mgmt-resourcemover >= 1.0.1b1
 Requires:       python-azure-mgmt-scheduler < 3.0.0
 Requires:       python-azure-mgmt-scheduler >= 2.0.0
 Requires:       python-azure-mgmt-search < 4.0.0
@@ -218,6 +230,8 @@ Requires:       python-azure-mgmt-storageimportexport < 1.0.0
 Requires:       python-azure-mgmt-storageimportexport >= 0.1.0
 Requires:       python-azure-mgmt-storagesync < 1.0.0
 Requires:       python-azure-mgmt-storagesync >= 0.2.0
+Requires:       python-azure-mgmt-streamanalytics < 2.0.0
+Requires:       python-azure-mgmt-streamanalytics >= 1.0.0rc1
 Requires:       python-azure-mgmt-subscription < 1.0.0
 Requires:       python-azure-mgmt-subscription >= 0.6.0
 Requires:       python-azure-mgmt-synapse < 1.0.0

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:51:54 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-automanage
+  + python-azure-mgmt-azurestackhci
+  + python-azure-mgmt-baremetalinfrastructure
+  + python-azure-mgmt-communication
+  + python-azure-mgmt-resourcemover
+  + python-azure-mgmt-streamanalytics
+
+-------------------------------------------------------------------
 Tue Oct  6 12:07:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update version numbers for component packages in Requires
