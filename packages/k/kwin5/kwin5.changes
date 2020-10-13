@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * wayland: Fix initialization of dmabuf textures
+  * 3rdparty: Synchronize xcursor.{c,h}
+  * Fix kwin_rules_dialog not showing translated strings
+  * scripting: Fix initialization of WorkspaceWrapper
+  * scripting: Make ClientFilterModel work for Wayland windows
+  * scripting: Properly initialize clients model for Wayland windows
+  * scene: prefer calling mapToGlobal just once
+  * Place internal osd windows according to placement policies (kde#400675)
+  * Properly test internal window flags
+  * Use better window placement heuristics for internal clients
+  * screencast: Replace EGLFence with a glFinish()
+  * Allow calling setFrameGeometry() while the client is being resized (kde#426988)
+  * Fix ghost shadows left by context menus (kde#425294)
+  * Schedule workspace repaint for destroyed clients
+  * x11: Make removal of X11 event filters safe (kde#423319)
+  * Enable shadow protocol support for all Wayland clients
+  * screencast: Ensure that there is current OpenGL context when recording a window (kde#425869)
+  * Expose KWIN_XWL logging category to kdebugsettings
+  * Revert "[effects/slidingpopups] Start the animation on only windowAdded or windowClosed" (kde#426686)
+  * Fix invalidation of cached x stacking order in wayland only mode
+  * Fix for PlasmaSurfaceTest broken in a3b50500
+  * Fix for potential use-after-free introduced in a3b50500
+  * effects/flipswitch: Port away from deprecated QTimeline curve shape prop
+  * effects/cubeslide: Port away from deprecated QTimeline curve shape prop
+  * effects/desktopgrid: Port away from deprecated QTimeline curve shape prop
+  * Fix use-after-free when the user hovers over an auto-hide plasma panel in wayland...
+  * libkwineffects: Bump API version
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Sep 17 19:26:45 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Refresh patches:
+  * 0001-Bypass-wayland-interface-blacklisting.patch
+  * 0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
+  * 0001-Use-Xauthority-for-Xwayland.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5

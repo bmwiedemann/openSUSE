@@ -15,10 +15,10 @@ BUG: 387775
  tabbox/tabbox.cpp                                    | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg b/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
-index 49a253edc..feca5cb0c 100644
---- a/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
-+++ b/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
+Index: kwin-5.15.80git.20200807T195756~c8433e519/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg
+===================================================================
+--- kwin-5.15.80git.20200807T195756~c8433e519.orig/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg	2020-08-07 21:57:56.000000000 +0200
++++ kwin-5.15.80git.20200807T195756~c8433e519/kcmkwin/kwinscreenedges/kwintouchscreensettings.kcfg	2020-08-07 22:21:56.023358131 +0200
 @@ -47,7 +47,7 @@
      </group>
      <group name="TabBox">
@@ -28,11 +28,11 @@ index 49a253edc..feca5cb0c 100644
          </entry>
          <entry key="TouchBorderAlternativeActivate" type="IntList">
              <default>ElectricNone</default>
-diff --git a/tabbox/tabbox.cpp b/tabbox/tabbox.cpp
-index 87de23fc5..e13640c38 100644
---- a/tabbox/tabbox.cpp
-+++ b/tabbox/tabbox.cpp
-@@ -793,7 +793,7 @@ void TabBox::reconfigure()
+Index: kwin-5.15.80git.20200807T195756~c8433e519/tabbox/tabbox.cpp
+===================================================================
+--- kwin-5.15.80git.20200807T195756~c8433e519.orig/tabbox/tabbox.cpp	2020-08-07 21:57:56.000000000 +0200
++++ kwin-5.15.80git.20200807T195756~c8433e519/tabbox/tabbox.cpp	2020-08-07 22:21:56.023358131 +0200
+@@ -782,7 +782,7 @@
              actions.insert(ElectricBorder(i), a);
          }
      };
@@ -41,6 +41,3 @@ index 87de23fc5..e13640c38 100644
      touchConfig(QStringLiteral("TouchBorderAlternativeActivate"), m_touchAlternativeActivate, TabBoxWindowsAlternativeMode);
  }
  
--- 
-2.25.1
-

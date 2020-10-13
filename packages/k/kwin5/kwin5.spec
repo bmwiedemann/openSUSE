@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -31,9 +31,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -54,6 +54,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  libepoxy-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  cmake(Breeze) >= 5.9.0
 BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
@@ -83,7 +84,7 @@ BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
-BuildRequires:  cmake(KWaylandServer)
+BuildRequires:  cmake(KWaylandServer) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5Concurrent) >= %{qt5_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt5_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt5_version}
@@ -125,6 +126,8 @@ BuildRequires:  pkgconfig(libdrm) >= 2.4.62
 BuildRequires:  pkgconfig(libinput) >= 1.9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-egl)
+# Don't use pkgconfig here as that would cause unresolvables on 0.1 -> 0.2 -> 0.3 bumps
+BuildRequires:  pipewire-devel
 # xorg-x11-server-wayland is required by plasma5-session-wayland and kwin5 can run with just X11
 Recommends:     xorg-x11-server-wayland
 %endif
@@ -184,13 +187,20 @@ This package provides development files.
   %fdupes %{buildroot}%{_kf5_libdir}
   %fdupes %{buildroot}%{_datadir}
 
+%preun
+%systemd_user_preun plasma-kwin_wayland.service
+%systemd_user_preun plasma-kwin_x11.service
+
 %post
 /sbin/ldconfig
 %if %{wayland}
 %set_permissions %{_kf5_bindir}/kwin_wayland
 %endif
+%systemd_user_post plasma-kwin_wayland.service plasma-kwin_x11.service
 
-%postun -p /sbin/ldconfig
+%postun
+/sbin/ldconfig
+%systemd_user_postun plasma-kwin_wayland.service plasma-kwin_x11.service
 
 %if %{wayland}
 %verifyscript
@@ -198,14 +208,13 @@ This package provides development files.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %if %{wayland}
 %verify(not caps) %{_kf5_bindir}/kwin_wayland
 %endif
 %{_kf5_bindir}/kwin_x11
 %{_kf5_debugdir}/org_kde_kwin.categories
 %{_kf5_knsrcfilesdir}/*.knsrc
-
 %{_kf5_libdir}/kconf_update_bin/
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkwin.so.*
@@ -228,8 +237,8 @@ This package provides development files.
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/
 %{_kf5_plugindir}/kf5/org.kde.kidletime.platforms/KF5IdleTimeKWinWaylandPrivatePlugin.so
-%dir %{_kf5_plugindir}/kf5/org.kde.kwindowsystem.platforms/
-%{_kf5_plugindir}/kf5/org.kde.kwindowsystem.platforms/KF5WindowSystemKWinPrivatePlugin.so
+%dir %{_kf5_plugindir}/kf5/kwindowsystem/
+%{_kf5_plugindir}/kf5/kwindowsystem/KF5WindowSystemKWinPrivatePlugin.so
 %dir %{_kf5_plugindir}/kpackage/
 %dir %{_kf5_plugindir}/kpackage/packagestructure/
 %{_kf5_plugindir}/kpackage/packagestructure/kwin_packagestructure_aurorae.so
@@ -306,9 +315,11 @@ This package provides development files.
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwindecoration
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwin_effects
 %{_kf5_sharedir}/kpackage/kcms/kcm_kwinrules
+%{_userunitdir}/plasma-kwin_wayland.service
+%{_userunitdir}/plasma-kwin_x11.service
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_prefix}/include/*.h
 %{_kf5_libdir}/libkwin4_effect_builtins.so
 %{_kf5_libdir}/libkwineffects.so
@@ -319,7 +330,7 @@ This package provides development files.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog

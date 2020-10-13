@@ -1,4 +1,4 @@
-From 8ede8942dd8919b33d60ede365ae5d7a2f3818d8 Mon Sep 17 00:00:00 2001
+From fa990bdf47418968fd939636b84a43d0a4696f3c Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Tue, 12 Nov 2019 13:18:26 +0100
 Subject: [PATCH] Bypass wayland interface blacklisting
@@ -6,15 +6,15 @@ Subject: [PATCH] Bypass wayland interface blacklisting
 Currently the check isn't worth anything and it breaks some applications.
 See discussion on https://phabricator.kde.org/D22571 and https://phabricator.kde.org/T4437#207062.
 ---
- wayland_server.cpp | 2 ++
- 1 file changed, 2 insertions(+)
+ wayland_server.cpp | 1 +
+ 1 file changed, 1 insertion(+)
 
-Index: kwin-5.15.80git.20200430T125608~3a9d7a6e9/wayland_server.cpp
+Index: kwin-5.15.80git.20200912T061110~f5900a5fd/wayland_server.cpp
 ===================================================================
---- kwin-5.15.80git.20200430T125608~3a9d7a6e9.orig/wayland_server.cpp	2020-05-01 10:53:51.577581219 +0200
-+++ kwin-5.15.80git.20200430T125608~3a9d7a6e9/wayland_server.cpp	2020-05-01 10:54:55.020576994 +0200
-@@ -238,6 +238,7 @@
-     QSet<QByteArray> interfacesBlackList = {"org_kde_kwin_remote_access_manager", "org_kde_plasma_window_management", "org_kde_kwin_fake_input", "org_kde_kwin_keystate"};
+--- kwin-5.15.80git.20200912T061110~f5900a5fd.orig/wayland_server.cpp	2020-09-12 06:11:10.000000000 +0200
++++ kwin-5.15.80git.20200912T061110~f5900a5fd/wayland_server.cpp	2020-09-12 11:27:55.728309874 +0200
+@@ -270,6 +270,7 @@
+     QSet<QString> m_reported;
  
      bool allowInterface(KWaylandServer::ClientConnection *client, const QByteArray &interfaceName) override {
 +        return true;
