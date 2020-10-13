@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:30:18 UTC 2020 - pgajdos@suse.com
+
+- do not require aspell binary, dictionaries can be used even
+  by the aspell library [bsc#1177523]
+
+-------------------------------------------------------------------
 Mon Sep 21 06:43:39 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - update:

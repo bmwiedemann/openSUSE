@@ -145,7 +145,6 @@ Release:        0
 Summary:        Afrikaans Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:af)
 
 %description -n aspell-af
@@ -157,7 +156,6 @@ Release:        0
 Summary:        Galician-portuguese (galego-portugués) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:gl)
 
 %description -n aspell-agal
@@ -169,7 +167,6 @@ Release:        0
 Summary:        Amharic (አማርኛ) Dictionary for Aspell
 License:        SUSE-Public-Domain
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:am)
 
 %description -n aspell-am
@@ -181,7 +178,6 @@ Release:        0
 Summary:        Arabic (العربية) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ar)
 
 %description -n aspell-ar
@@ -193,7 +189,6 @@ Release:        0
 Summary:        Azerbaijani (تورکجه) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:az)
 
 %description -n aspell-az
@@ -205,7 +200,6 @@ Release:        0
 Summary:        Belarusian (беларуская мова) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:be)
 
 %description -n aspell-be
@@ -217,7 +211,6 @@ Release:        0
 Summary:        Bulgarian (български) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:bg)
 
 %description -n aspell-bg
@@ -229,7 +222,6 @@ Release:        0
 Summary:        Bengali (বাংলা) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:bn)
 
 %description -n aspell-bn
@@ -241,7 +233,6 @@ Release:        0
 Summary:        Breton (brezhoneg) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:br)
 
 %description -n aspell-br
@@ -253,7 +244,6 @@ Release:        0
 Summary:        Catalan (català) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ca)
 
 %description -n aspell-ca
@@ -265,7 +255,6 @@ Release:        0
 Summary:        Czech (čeština) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:cs)
 
 %description -n aspell-cs
@@ -277,7 +266,6 @@ Release:        0
 Summary:        Kashubian (kaszëbsczi) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:csb)
 
 %description -n aspell-csb
@@ -289,7 +277,6 @@ Release:        0
 Summary:        Welsh (Cymraeg) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:cy)
 
 %description -n aspell-cy
@@ -302,7 +289,6 @@ URL:            http://da.speling.org/
 Summary:        Danish (dansk) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:da)
 
 %description -n aspell-da
@@ -314,7 +300,6 @@ Release:        0
 Summary:        German (deutsch) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:de)
 
 %description -n aspell-de
@@ -326,7 +311,6 @@ Release:        0
 Summary:        Asturian (asturianu) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ast)
 
 %description -n aspell-ast
@@ -340,7 +324,6 @@ Summary:        Greek (ελληνικά) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 URL:            http://elspell.math.upatras.gr/?section=aspell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:el)
 
 %description -n aspell-el
@@ -352,7 +335,6 @@ Release:        0
 Summary:        Esperanto Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:eo)
 
 %description -n aspell-eo
@@ -364,7 +346,6 @@ Release:        0
 Summary:        Spanish (español) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:es)
 
 %description -n aspell-es
@@ -376,7 +357,6 @@ Release:        0
 Summary:        Estonian (eesti) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:et)
 
 %description -n aspell-et
@@ -388,7 +368,6 @@ Release:        0
 Summary:        Persian (فارسی) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:fa)
 
 %description -n aspell-fa
@@ -400,7 +379,6 @@ Release:        0
 Summary:        Finnish (suomi) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:fi)
 
 %description -n aspell-fi
@@ -412,7 +390,6 @@ Release:        0
 Summary:        Frisian (Frysk) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:fy)
 
 %description -n aspell-fy
@@ -424,7 +401,6 @@ Release:        0
 Summary:        Faroese (føroyskt) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:fo)
 
 %description -n aspell-fo
@@ -436,7 +412,6 @@ Release:        0
 Summary:        French (français) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:fr)
 
 %description -n aspell-fr
@@ -448,7 +423,6 @@ Release:        0
 Summary:        Irish (Gaeilge) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ga)
 
 %description -n aspell-ga
@@ -460,7 +434,6 @@ Release:        0
 Summary:        Scottish (Gàidhlig) Gaelic Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:gd)
 
 %description -n aspell-gd
@@ -472,7 +445,6 @@ Release:        0
 Summary:        Galician Gaelic (galego) Dictionary for Aspell
 License:        GPL-2.0-only
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:gl)
 
 %description -n aspell-gl
@@ -484,7 +456,6 @@ Release:        0
 Summary:        Ancient Greek (Ἑλληνική) Dictionary for Aspell
 License:        GPL-3.0-only
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:grc)
 
 %description -n aspell-grc
@@ -496,7 +467,6 @@ Release:        0
 Summary:        Gujarati (ગુજરાતી) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:gu)
 
 %description -n aspell-gu
@@ -508,7 +478,6 @@ Release:        0
 Summary:        Manx Gaelic (Gaelg) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:gv)
 
 %description -n aspell-gv
@@ -520,7 +489,6 @@ Release:        0
 Summary:        Hebrew (עברית) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:he)
 
 %description -n aspell-he
@@ -532,7 +500,6 @@ Release:        0
 Summary:        Hindi (हिंदी) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:hi)
 # u-deva.cmap and u-deva.cset files are also provided by aspell-mr
 Conflicts:      aspell-mr
@@ -546,7 +513,6 @@ Release:        0
 Summary:        Hiligaynon Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:hil)
 
 %description -n aspell-hil
@@ -558,7 +524,6 @@ Release:        0
 Summary:        Croatian (hrvatski) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:hr)
 
 %description -n aspell-hr
@@ -570,7 +535,6 @@ Release:        0
 Summary:        Upper Sorbian (hornjoserbsce) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:hsb)
 
 %description -n aspell-hsb
@@ -582,7 +546,6 @@ Release:        0
 Summary:        Hungarian (magyar) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:hu)
 
 %description -n aspell-hu
@@ -594,7 +557,6 @@ Release:        0
 Summary:        Huastec (wastek) dictionary for Aspell
 License:        GPL-3.0-only
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:hus)
 
 %description -n aspell-hus
@@ -606,7 +568,6 @@ Release:        0
 Summary:        Armenian (Հայերեն) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:hy)
 
 %description -n aspell-hy
@@ -618,7 +579,6 @@ Release:        0
 Summary:        Interlingua Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ia)
 
 %description -n aspell-ia
@@ -630,7 +590,6 @@ Release:        0
 Summary:        Indonesian (Bahasa Indonesia) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:id)
 
 %description -n aspell-id
@@ -642,7 +601,6 @@ Release:        0
 Summary:        Icelandic (Íslenska) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:is)
 
 %description -n aspell-is
@@ -654,7 +612,6 @@ Release:        0
 Summary:        Italian (italiano) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:it)
 
 %description -n aspell-it
@@ -666,7 +623,6 @@ Release:        0
 Summary:        Kannada (ಕನ್ನಡ) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:kn)
 
 %description -n aspell-kn
@@ -678,7 +634,6 @@ Release:        0
 Summary:        Kurdi (Kurdî, كوردی‎) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ku)
 
 %description -n aspell-ku
@@ -690,7 +645,6 @@ Release:        0
 Summary:        Kirghiz (Кыргызча) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ky)
 
 %description -n aspell-ky
@@ -702,7 +656,6 @@ Release:        0
 Summary:        Latin (latine) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:la)
 
 %description -n aspell-la
@@ -714,7 +667,6 @@ Release:        0
 Summary:        Lithuanian (lietuvių) Dictionary for Aspell
 License:        BSD-3-Clause
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:lt)
 
 %description -n aspell-lt
@@ -726,7 +678,6 @@ Release:        0
 Summary:        Latvian (latviešu) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:lv)
 
 %description -n aspell-lv
@@ -738,7 +689,6 @@ Release:        0
 Summary:        Malagasy Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:mg)
 
 %description -n aspell-mg
@@ -750,7 +700,6 @@ Release:        0
 Summary:        Maori (Māori) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:mi)
 
 %description -n aspell-mi
@@ -762,7 +711,6 @@ Release:        0
 Summary:        Macedonian (македонски) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:mk)
 
 %description -n aspell-mk
@@ -774,7 +722,6 @@ Release:        0
 Summary:        Malayalam (മലയാളം) Dictionary for Aspell
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ml)
 
 %description -n aspell-ml
@@ -786,7 +733,6 @@ Release:        0
 Summary:        Mongolian (Монгол) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:mn)
 
 %description -n aspell-mn
@@ -798,7 +744,6 @@ Release:        0
 Summary:        Marathi (मराठी) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:mr)
 # u-deva.cmap and u-deva.cset files are also provided by aspell-hi
 Conflicts:      aspell-hi
@@ -812,7 +757,6 @@ Release:        0
 Summary:        Malay (bahasa Melayu, بهاس ملايو‎) Dictionary for Aspell
 License:        GFDL-1.2-only
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ms)
 
 %description -n aspell-ms
@@ -824,7 +768,6 @@ Release:        0
 Summary:        Maltese (Malti) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:mt)
 
 %description -n aspell-mt
@@ -836,7 +779,6 @@ Release:        0
 Summary:        Norwegian Bokmaal (Norsk bokmål) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       aspell-no
 Provides:       locale(aspell:nb)
 Obsoletes:      aspell-no
@@ -850,7 +792,6 @@ Release:        0
 Summary:        Low Saxon (Plattdüütsch) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:nds)
 
 %description -n aspell-nds
@@ -863,7 +804,6 @@ Summary:        Dutch (Nederlands) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
 URL:            http://www.opentaal.org
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:nl)
 
 %description -n aspell-nl
@@ -875,7 +815,6 @@ Release:        0
 Summary:        Norwegian Nynorsk (Norsk nynorsk) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:nn)
 
 %description -n aspell-nn
@@ -887,7 +826,6 @@ Release:        0
 Summary:        Chichewa Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ny)
 
 %description -n aspell-ny
@@ -899,7 +837,6 @@ Release:        0
 Summary:        Oriya (ଓଡ଼ିଆ) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:or)
 
 %description -n aspell-or
@@ -911,7 +848,6 @@ Release:        0
 Summary:        Punjabi (ਪੰਜਾਬੀ, پنجابی‎) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:pa)
 
 %description -n aspell-pa
@@ -924,7 +860,6 @@ Summary:        Polish (polszczyzna) Dictionary for Aspell
 License:        GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
 Group:          Productivity/Text/Spell
 URL:            http://www.sjp.pl/slownik/en/
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:pl)
 
 %description -n aspell-pl
@@ -936,7 +871,6 @@ Release:        0
 Summary:        Brazilian Portuguese (Português brasileira) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:pt_BR)
 
 %description -n aspell-pt_BR
@@ -949,7 +883,6 @@ Summary:        Portuguese (Português) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
 URL:            http://natura.di.uminho.pt/download/sources/Dictionaries/aspell6/
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:pt)
 
 %description -n aspell-pt_PT
@@ -961,7 +894,6 @@ Release:        0
 Summary:        Quechua (Runasimi (qheshwa)) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:qu)
 
 %description -n aspell-qu
@@ -973,7 +905,6 @@ Release:        0
 Summary:        Romanian (română) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:ro)
 
 %description -n aspell-ro
@@ -985,7 +916,6 @@ Release:        0
 Summary:        Russian (русский) Dictionary for Aspell
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Permissive-Modify-By-Patch
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ru)
 
 %description -n aspell-ru
@@ -997,7 +927,6 @@ Release:        0
 Summary:        Kinyarwanda (Ikinyarwanda) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:rw)
 
 %description -n aspell-rw
@@ -1009,7 +938,6 @@ Release:        0
 Summary:        Sardinian (Sardu) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:sc)
 
 %description -n aspell-sc
@@ -1021,7 +949,6 @@ Release:        0
 Summary:        Slovak (slovenský) Dictionary for Aspell
 License:        GPL-2.0-only OR LGPL-2.1-only OR MPL-1.1
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:sk)
 
 %description -n aspell-sk
@@ -1033,7 +960,6 @@ Release:        0
 Summary:        Slovenian (slovenski) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:sl)
 
 %description -n aspell-sl
@@ -1045,7 +971,6 @@ Release:        0
 Summary:        Serbian (српски) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:sr)
 
 %description -n aspell-sr
@@ -1057,7 +982,6 @@ Release:        0
 Summary:        Swedish (Svenska) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:sv)
 Obsoletes:      aspell-se
 Provides:       aspell-se
@@ -1072,7 +996,6 @@ Release:        0
 Summary:        Swahili (Kiswahili) Dictionary for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:sw)
 
 %description -n aspell-sw
@@ -1084,7 +1007,6 @@ Release:        0
 Summary:        Tamil (தமிழ்) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:ta)
 
 %description -n aspell-ta
@@ -1096,7 +1018,6 @@ Release:        0
 Summary:        Telugu (తెలుగు) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:te)
 
 %description -n aspell-te
@@ -1108,7 +1029,6 @@ Release:        0
 Summary:        Tetum (Tetun) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:tet)
 
 %description -n aspell-tet
@@ -1120,7 +1040,6 @@ Release:        0
 Summary:        Turkmen (Türkmençe) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:tk)
 
 %description -n aspell-tk
@@ -1132,7 +1051,6 @@ Release:        0
 Summary:        Tagalog Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:tl)
 
 %description -n aspell-tl
@@ -1144,7 +1062,6 @@ Release:        0
 Summary:        Setswana Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:tn)
 
 %description -n aspell-tn
@@ -1156,7 +1073,6 @@ Release:        0
 Summary:        Turkish (Türkçe) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:tr)
 
 %description -n aspell-tr
@@ -1168,7 +1084,6 @@ Release:        0
 Summary:        Ukrainian (українська) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:uk)
 
 %description -n aspell-uk
@@ -1180,7 +1095,6 @@ Release:        0
 Summary:        Uzbek (Ўзбекча) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:uz)
 
 %description -n aspell-uz
@@ -1192,7 +1106,6 @@ Release:        0
 Summary:        Vietnamese (Tiếng Việt) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:vi)
 
 %description -n aspell-vi
@@ -1204,7 +1117,6 @@ Release:        0
 Summary:        Walloon (walon) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:wa)
 
 %description -n aspell-wa
@@ -1216,7 +1128,6 @@ Release:        0
 Summary:        Yiddish (ייִדיש) Dictionary for Aspell
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:yi)
 
 %description -n aspell-yi
@@ -1228,7 +1139,6 @@ Release:        0
 Summary:        Zulu (isiZulu) Dictionary Package for Aspell
 License:        LGPL-2.1-or-later
 Group:          Productivity/Text/Spell
-Requires:       aspell >= 0.50
 Provides:       locale(aspell:zu)
 
 %description -n aspell-zu
