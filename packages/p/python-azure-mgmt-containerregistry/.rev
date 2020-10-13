@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>821937</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4ab8a3a9003a66bc39056bd8b8650847</srcmd5>
+    <version>3.0.0rc15</version>
+    <time>1602596663</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0rc15
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 841487 from glaubitz)</comment>
+    <requestid>841538</requestid>
+  </revision>
 </revisionlist>
