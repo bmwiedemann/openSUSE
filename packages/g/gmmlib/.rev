@@ -84,4 +84,12 @@
   * No upstream changelog available (needed for jira#SLE/SLE-12712)</comment>
     <requestid>830886</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>aa20c6656019538e21d2dc1ac806dc9a</srcmd5>
+    <version>20.3.2</version>
+    <time>1602596692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841333</requestid>
+  </revision>
 </revisionlist>

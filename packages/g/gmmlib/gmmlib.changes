@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 10 20:53:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.3.2
+  * baseAlignment can be greater than 64KB and needs to be aligned to 64KB
+  * DG1 HiZ H/V Align modification
+  * Set MOCS0 with WB cache value
+  * DG1 Placed resource alignment issues Dx12/Vulkan
+  * Remove '-Werror=implicit-function-declaration'
+  * SyncInfoLin: Initialize members
+  * Do not use memset for clearing an object of non-trivial type
+  * Added the ADL-S device ID's and phyAddr support
+
+-------------------------------------------------------------------
 Mon Aug 31 17:07:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.2.5
