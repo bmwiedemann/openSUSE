@@ -48,7 +48,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(bzip2)
-Requires:       aspell
 
 %description
 EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC
@@ -60,6 +59,7 @@ clients.
 
 %package qt
 Summary:        Qt frontend for %{name}
+Requires:       aspell
 
 %description qt
 EiskaltDC++ is a cross-platform program that uses the Direct Connect and ADC

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:41:01 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Remove Requires:aspell and add Requires:aspell for -qt package.
+
+-------------------------------------------------------------------
 Tue Oct  6 18:10:12 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Readd aspell support and add Requires:aspell.
