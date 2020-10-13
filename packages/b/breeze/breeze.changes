@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * [kstyle] Remove #if BREEZE_HAVE_X11 around code that uses KWindowSystem
+  * Use correct colors for arrows in checked toolbuttons in toolbars
+  * [kstyle]: Make buttons use KColorScheme::Button for hover and focus colours (kde#426651)
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [kstyle] Require Qt 5.15
+
+-------------------------------------------------------------------
+Thu Sep 17 20:02:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * [kstyle] Port to QWindow::startSystemMove()
+  * Update Breeze Dark preview images for new Flow wallpaper
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Replace Flow with Shell
+  * Also enable highlighting Buttons
+  * Convert copyright statements to SPDX expressions
+  * Port away from deprecated Qt::MidButton
+  * [kstyle] Reverse default sort order indicator arrow direction
+  * Add comments to clarify hidden ViewInvertSortIndicator option
+  * Use semi-transparent menu separators
+  * Draw the separator for toolbuttons with separte popup menu on hover or focus
+  * Draw arrows on toolbuttons with menus and no popup delay (kde#344746)
+  * Add _kde_highlight_neutral property to allow widgets highlight with neutral color
+  * use global animation values
+  * Load and use global animation settings
+  * Remove breezemetrics.cpp and put values back into breezemetrics.h
+  * Clean up the appearance of breezemetrics.cpp
+  * Refactor metrics into their own C++ file
+  * Move Breeze::Metrics into breezemetrics.h to reduce recompilations
+  * Notify about the decoration button's appearance change
+  * [kstyle] Ensure that shadows are destroyed after decorated windows
+  * [kstyle] Increase tab height to 30px
+  * [QStyle] Make menu titles look less like menu items
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5

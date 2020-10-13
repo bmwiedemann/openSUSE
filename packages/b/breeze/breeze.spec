@@ -22,15 +22,15 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 2.8.12
@@ -130,16 +130,16 @@ Library containing support code for the Breeze Qt5 style.
 
 %if %{with lang}
 %files -n breeze5-style-lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %files -n breeze5-cursors
-%license COPYING*
+%license LICENSES/*
 %{_kf5_iconsdir}/breeze_cursors
 %{_kf5_iconsdir}/Breeze_Snow/
 
 %files -n breeze5-style
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/breeze-settings5
 %dir %{_kf5_iconsdir}/hicolor/scalable
 %dir %{_kf5_iconsdir}/hicolor/scalable/apps
@@ -161,22 +161,22 @@ Library containing support code for the Breeze Qt5 style.
 %{_kf5_appstreamdir}/org.kde.breezedark.desktop.appdata.xml
 
 %files -n breeze5-wallpapers
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_sharedir}/wallpapers
 %{_kf5_sharedir}/wallpapers/Next/
 
 %files -n breeze5-decoration
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}
 %{_kf5_plugindir}/org.kde.kdecoration2/
 %dir %{_kf5_servicesdir}
 %{_kf5_servicesdir}/breezedecorationconfig.desktop
 
 %files
-%license COPYING*
+%license LICENSES/*
 
 %files -n libbreezecommon5-5
-%license COPYING*
+%license LICENSES/*
 %{_libdir}/libbreezecommon5.so.*
 
 %changelog
