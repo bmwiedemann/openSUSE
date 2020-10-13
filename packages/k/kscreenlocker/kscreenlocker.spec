@@ -20,20 +20,18 @@
 
 %bcond_without lang
 Name:           kscreenlocker
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
-# PATCH-FIX-UPSTREAM (kind of, https://invent.kde.org/plasma/kscreenlocker/-/merge_requests/9)
-Patch1:         0001-Disable-the-seccomp-sandbox.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
@@ -55,7 +53,6 @@ BuildRequires:  cmake(Qt5QuickWidgets) >= 5.5.0
 BuildRequires:  cmake(Qt5Test) >= 5.5.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.5.0
-BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)
@@ -115,7 +112,7 @@ exit 0
 %post
 /sbin/ldconfig
 if [ $1 = 2 ] && [ -f /run/kscreenlocker_restart ]; then
-    /usr/bin/killall -TERM kscreenlocker_greet || :
+    /usr/bin/killall -q -TERM kscreenlocker_greet || :
     rm /run/kscreenlocker_restart
 fi
 exit 0
@@ -139,6 +136,9 @@ exit 0
 %{_kf5_plugindir}/
 %{_kf5_notifydir}/
 %{_kf5_sharedir}/ksmserver/
+%dir %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_screenlocker
 
 %files -n libKScreenLocker5
 %license COPYING*

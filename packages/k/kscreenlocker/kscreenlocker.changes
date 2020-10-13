@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:21 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+- Drop unneeded seccomp build requirement
+- Kill quietly
+
+-------------------------------------------------------------------
+Thu Sep 17 20:02:59 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Drop empty X-KDE-PluginInfo-Depends
+  * Update logind's SetLockedHint
+  * Drop seccomp sandboxing
+  * Build settings related code only once
+  * Fix the race condition fix
+  * enable notification for wallpaper configpropertymaps changes
+  * Do not require QuickWidgets that is not needed anymore
+  * Fix another race condition
+  * Fix race condition
+  * Fix translations
+  * This is a straightforward port of the kcm to qml.
+  * Add logo for the repo
+  * Fix minor typo
+  * Set componentDisplayName on the action collection
+
+-------------------------------------------------------------------
+Thu Sep 17 19:18:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patches, now upstream:
+  * 0001-Disable-the-seccomp-sandbox.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
