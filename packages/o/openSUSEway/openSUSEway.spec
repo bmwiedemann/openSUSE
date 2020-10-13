@@ -20,7 +20,7 @@
 %define waybar_version %(rpm -q --queryformat "%%{version}" waybar)
 
 Name:           openSUSEway
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        The openSUSEway desktop environment meta package
 License:        MIT
@@ -86,6 +86,7 @@ This pattern installs the openSUSE look and feel for sway.
 Summary:        openSUSE branding of sway
 Group:          System/GUI/Other
 BuildRequires:  sway
+Requires:       bc
 Requires:       brightnessctl
 Requires:       fontawesome-fonts
 Requires:       jq

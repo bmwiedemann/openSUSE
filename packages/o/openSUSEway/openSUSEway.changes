@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:43:19 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
+
+- New in 0.12 release
+  * Allow increasing volume over 100%
+  * Add bc to the sway-branding requirement
+
+-------------------------------------------------------------------
 Tue Sep 15 08:23:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Make patterns-openSUSEway properly behaved:
