@@ -64,7 +64,7 @@ This daemon is also able to deal with CDP, FDP, SONMP and EDP
 protocol. It also handles LLDP-MED extension.
 
 %package -n %{libname}
-Summary:        Implementation of IEEE 802.1ab - Shared library
+Summary:        Implementation of IEEE 802.1ab
 License:        MIT
 Group:          System/Libraries
 
@@ -78,10 +78,10 @@ inter-vendor compatible mechanism to deliver Link-Layer notifications
 to adjacent network devices.
 
 %package devel
-Summary:        Implementation of IEEE 802.1ab - Tools and header files for developers
+Summary:        Headers for the lldpd implementation
 License:        MIT
 Group:          Development/Languages/C and C++
-Requires:       lldpd = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
 
 %description devel
 This package is required to develop alternate clients for lldpd.
@@ -93,7 +93,7 @@ inter-vendor compatible mechanism to deliver Link-Layer notifications
 to adjacent network devices.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -119,7 +119,7 @@ to adjacent network devices.
    --disable-static
 
 [ -f %{_includedir}/net-snmp/agent/struct.h ] || touch src/struct.h
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -130,12 +130,11 @@ rm -f %{buildroot}%{_libdir}/liblldpctl.la
 
 %pre
 # Create lldpd user/group
-if getent group %{lldpd_group} >/dev/null 2>&1 ; then : ; else \
- %{_sbindir}/groupadd -r %{lldpd_group} > /dev/null 2>&1 || exit 1 ; fi
-if getent passwd %{lldpd_user} >/dev/null 2>&1 ; then : ; else \
+getent group %{lldpd_group} >/dev/null || \
+ %{_sbindir}/groupadd -r %{lldpd_group}
+getent passwd %{lldpd_user} >/dev/null || \
  %{_sbindir}/useradd -g %{lldpd_group} -M -r -s /sbin/nologin \
- -c "LLDP daemon" -d %{lldpd_chroot} %{lldpd_user} 2> /dev/null \
- || exit 1 ; fi
+ -c "LLDP daemon" -d %{lldpd_chroot} %{lldpd_user}
 
 %service_add_pre lldpd.service
 

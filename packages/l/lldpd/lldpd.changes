@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:04:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs. Do not suppress errors from
+  useradd. Require right subpackage from lldpd-devel. Trim
+  redundancies from descriptions.
+
+-------------------------------------------------------------------
 Sat Sep  5 20:22:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.6:
