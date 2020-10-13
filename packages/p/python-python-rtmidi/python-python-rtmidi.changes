@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 19:07:56 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.4.5
+  * Fixed error when trying to import version number from
+    ``rtmidi.release`` when Python is running with ``-OO``
+    optimization enabled.
+
+-------------------------------------------------------------------
 Mon Jul 20 17:44:05 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Fix rpmlint warnings

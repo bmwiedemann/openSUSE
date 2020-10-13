@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rtmidi
-Version:        1.4.2
+Version:        1.4.5
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
