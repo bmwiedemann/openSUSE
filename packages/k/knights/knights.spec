@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           knights
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
