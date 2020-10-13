@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:13 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * [Tabs Runner] Add tab URL as mime data for tabs
+  * [Tabs Runner] port to new KRunner metadata system & install location
+  * Calculate transfer speed manually if download size isn't known
+  * Split "page" context menu from links
+  * [DownloadJob] Fall back to url when finalUrl isn't set
+  * Bump manifest version
+  * Use getElementsByTagName instead of querySelectorAll
+  * Keep player pending also when duration is known but too short
+  * Compress and reduce MediaSession updates
+  * Fix removing KDE Connect context menu entries on host disconnect
+  * [Download Plugin] Just sent download verbatim
+  * Install MutationObserver in DOMContentLoaded
+  * Add logo.png for GitLab
+  * Restore ability to send tel: URLs to the phone
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
