@@ -19,37 +19,36 @@
 
 %bcond_without lang
 Name:           bluedevil5
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz
+Source:         bluedevil-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
+Source1:        bluedevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Port-applet-to-use-PlasmaExtras.PlaceholderMessage.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(KDED) >= 5.25.0
-BuildRequires:  cmake(KF5BluezQt) >= 5.25.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.25.0
-BuildRequires:  cmake(KF5DBusAddons) >= 5.25.0
-BuildRequires:  cmake(KF5I18n) >= 5.25.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.25.0
-BuildRequires:  cmake(KF5KIO) >= 5.25.0
-BuildRequires:  cmake(KF5Notifications) >= 5.25.0
-BuildRequires:  cmake(KF5Plasma) >= 5.25.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.25.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.25.0
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Qml) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KDED) >= 5.72.0
+BuildRequires:  cmake(KF5BluezQt)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       bluez-qt-imports >= %{version}
 Requires:       bluez-qt-udev >= %{version}
 # atop of the bluez itself, we also need bluez-obexd for kio_obexftp and both send/receive
@@ -66,9 +65,8 @@ Requires(postun): shared-mime-info
 Bluetooth daemon for KDE Plasma, handling connections.
 
 %lang_package
-
 %prep
-%autosetup -p1 -n bluedevil-%{version}
+%setup -q -n bluedevil-%{version}
 
 %build
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
@@ -87,9 +85,12 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %mime_database_postun
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README
 %dir %{_kf5_appstreamdir}/
+%dir %{_kf5_sharedir}/kpackage
+%dir %{_kf5_sharedir}/kpackage/kcms
+%{_kf5_sharedir}/kpackage/kcms/kcm_bluetooth/
 %{_kf5_sharedir}/mime/packages/bluedevil-mime.xml
 %{_kf5_applicationsdir}/org.kde.bluedevil*.desktop
 %{_kf5_sharedir}/bluedevilwizard/

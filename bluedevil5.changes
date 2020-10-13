@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * [applet] Open new KCM from the configure action
+  * Add Exec line to KCM desktop file
+
+-------------------------------------------------------------------
+Thu Sep 17 20:02:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Convert copyright statements to SPDX expressions
+  * bluedevil-sendfile: Fix small size of file selector
+  * Fix minor typo
+  * Translate KCM (patch by Victor Ryzhykh)
+  * Fix a TypeError in DeviceItem.qml
+  * New bluetooth KCM
+  * [wizard] Enable 1-finger touch scrolling (kde#406544)
+  * [applet] Don't show emblem for disconnected devices (kde#425239)
+  * [applet] Port to checkbox with internally-defined icon property
+  * set a name for the global notification category
+  * [applet] Port mostly to PlasmaComponents3
+  * correct appstream homepage URL to plasma homepage
+  * Increase frameworks dependency to 5.72 for PlasmaExtras.PlaceholderMessage
+  * Port applet to use PlasmaExtras.PlaceholderMessage
+  * [applet] Fix tooltip showing wrong name for connected device (kde#422691)
+
+-------------------------------------------------------------------
+Thu Sep 17 19:19:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patches, now upstream:
+  * 0001-Port-applet-to-use-PlasmaExtras.PlaceholderMessage.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
