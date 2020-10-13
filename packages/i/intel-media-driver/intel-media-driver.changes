@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 10 20:48:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.3.0:
+  * Enabled AV1 4:2:0 8bit and 10bit decoding for both driver and MSDK, up to 8K video decoding and 16K still picture decoding.
+  * Added Y212 and Y412 color format support for 12 bit decoding.
+  * Added several RePAK related changes for VP9 performance improvements including Pak-only RePAK and adaptive-RePAK
+  * Reconstructed Surface Variant formats configuration is now handled by the media-driver
+  * Added HuC Error Status Report improvements for VP9 VDEnc encoding
+  * Added scaling interpolation method(nearest, bilinear, advanced)
+  * Added resource usage type to specify cache policy usage
+  * Enabled SFC bilinear scaling. 
+- Disable Werror from build, which avoids having to create build fixes
+  patches for every release
+- remove u_20.1.1-build-fixes.patch, u_20.2.0-build-fixes.patch (obsolete)
+  
+-------------------------------------------------------------------
 Mon Aug 31 16:14:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 20.2.0

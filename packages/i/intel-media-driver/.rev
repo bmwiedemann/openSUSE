@@ -141,4 +141,12 @@ versions of libva(2)</comment>
 - updated Supplements lines in specfile</comment>
     <requestid>830884</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7e48a3896dda0d29c8524a9fd7a98d0f</srcmd5>
+    <version>20.3.0</version>
+    <time>1602596701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841334</requestid>
+  </revision>
 </revisionlist>

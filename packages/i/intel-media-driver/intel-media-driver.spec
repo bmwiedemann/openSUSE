@@ -19,7 +19,7 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        20.2.0
+Version:        20.3.0
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        MIT AND BSD-3-Clause
@@ -28,16 +28,13 @@ URL:            https://github.com/intel/media-driver
 Source:         https://github.com/intel/media-driver/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Patch1:         Werror-initialize-in-right-order.patch
-Patch2:         u_20.1.1-build-fixes.patch
-Patch3:         u_20.2.0-build-fixes.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
+BuildRequires:  gmmlib-devel >= 20.3.2
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(igdgmm) >= 2.1.1
-BuildRequires:  pkgconfig(libva) >= 1.7.0
+BuildRequires:  pkgconfig(libva) >= 1.9.0
 BuildRequires:  pkgconfig(pciaccess)
 ExclusiveArch:  x86_64
-
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00000A84sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001602sv*sd*bc*sc*i*)
 Supplements:    modalias(xorg-x11-server:pci:v00008086d00001606sv*sd*bc*sc*i*)
@@ -234,15 +231,14 @@ mv media-driver-* media-driver
 chmod -x media-driver/*.md
 pushd media-driver
 %patch1 -p1
-%patch2 -p2
-%patch3 -p1
 popd
-
 %define __sourcedir media-driver
+sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
 
 %build
 srcroot=`pwd`
-%cmake -DBUILD_SHARED_LIBS:BOOL=OFF
+%cmake \
+    -DBUILD_SHARED_LIBS:BOOL=OFF -DMEDIA_BUILD_FATAL_WARNINGS:BOOL=OFF
 %cmake_build
 
 %install
