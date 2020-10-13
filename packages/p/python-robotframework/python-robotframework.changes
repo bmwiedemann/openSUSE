@@ -1,0 +1,164 @@
+-------------------------------------------------------------------
+Wed Oct  7 13:34:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- switch to pypi tarball 
+
+-------------------------------------------------------------------
+Tue Sep 29 19:50:04 UTC 2020 - Flávio Ramalho <framalho@suse.com>
+
+- Add missing requires: python-setuptools
+
+-------------------------------------------------------------------
+Fri Sep 11 13:43:05 UTC 2020 - framalho@suse.com
+
+- Update to version 3.2.2:
+  * Changes from 3.2.2:
+    Enhancements:
+    * Python 3.9 support
+    * Argument conversion with enums should work with normalized names
+    * Libdoc: Allow switching between compact and expanded list of shortcuts and tags
+    * Show members of enum argument types in Libdoc HTML
+    * Libdoc: Split arguments and tags in keyword table to own lines
+    Fixes:
+    * --exitonfailure option ignores dynamic changes to criticality
+    * --expandkeywords fails in some cases
+    * Libdoc: Generating documentation fails if getting keyword source file is not possible
+    * Tidy adds trailing whitespace in multi-paragraph Documentation
+    * Screenshot: Newer scrot versions don't overwrite images when they should
+    * XML: Remove Element(s) does not work with Python 3.9
+    * :FOR still used in BuiltIn library docs
+    * Libdoc: Shortcuts are messed up on Firefox after search
+    * Bug in User Guide example related to **kwargs
+    * Line number reported by test libraries using class decorators is different in Python 3.9
+      than earlier
+    * Error running RobotFramework in a Windows console with PyTest
+  * Changes from 3.2.1:
+    Fixes:
+    * Regression with keywords implemented as methods with wrapping decorator
+    * Execution can crash if stdin is closed
+  * Changes from 3.2.0:
+    Enhancements:
+    * New test data parser
+    * New @library decorator
+    * New @not_keyword decorator
+    * Enhanced Libdoc spec files
+    * Inline Python evaluation
+    * Native &{dict} iteration with FOR loops
+    * Listeners can add and remove tests
+    * Signatures of "wrapped" keywords are read correctly
+    * Standalone jar distribution updated to use Jython 2.7.2
+    * Continuous integrating
+    Backwards incompatible changes:
+    * HTML and TSV formats are not supported anymore
+    * Only *.robot files are parsed by default
+    * Parsing APIs have been rewritten
+    * Changes to recognizing and evaluating variables
+    * Variables in test case names are resolved
+    * Changes to handling non-ASCII spaces
+    * Old for loop style not supported with pipe-separated format
+    * Stricter section and setting name syntax
+    * Stricter for loop separator syntax
+    * Libdoc spec files have changed
+    * Pre-run modifiers are run before selecting tests cases to be executed
+    * Other backwards incompatible changes
+    Deprecated features:
+    * Old FOR loop syntax
+    * FOR loops when all values are in key=value syntax
+    * Accessing list and dictionary items using @{var}[item] and &{var}[item]
+    * Ignoring space after literal newline is deprecated
+  * Changes from 3.1.2:
+    Fixes:
+    * Creating scalar variables in resource files with custom separator
+    * Using keywords accepting embedded arguments when library is imported multiple times using the WITH 
+      NAME syntax
+    * The Tidy tool both handles new style for loops (FOR ... END) correctly and converts old style loops
+      (:FOR ... \ ...) to new style loops automatically
+    Deprecated features:
+    * Omitting lines with only ... or ... # comment
+    * Converting non-ASCII spaces to normal spaces during parsing. Accidentally typed no-break spaces are
+      most likely to cause warnings, but also they ought to be rare
+    * Collapsing spaces during parsing. Only affects the pipe separated format
+    * Creating tests and keywords with name ...
+    * Escaping leading empty cells with \ except with for loops
+  * Changes from 3.1.1:
+    Fixes:
+    * Regression using --suite when executing multiple data sources or --name option (affects Pabot)
+    * Regression with Python 3.5+ when keyword is decorated and decorator uses functools.wraps
+    * Regression when using BuiltIn.run_keyword internally in keyword with timeouts
+  * Changes from 3.1.0:
+    Enhancements:
+    * Terminology configuration to support Robotic Process Automation (RPA)
+    * Automatic argument conversion
+    * Named-only arguments support
+    * Fix for intermittent corrupted outputs when using timeouts
+    * Installation enhancements
+    * For loop enhancements
+    * Accessing nested list and dictionary variable items
+    * New *.resource extension for resource files
+    * Better error reporting when test data is invalid
+    * Better compatibility with third party tools consuming xUnit outputs
+    * No need to install external ElementTree module with IronPython 2.7.9+
+    * Generating documentation for Java based libraries works without tools.jar with Java 9+
+    Backwards incompatible changes:
+    * Python 2.6 and 3.3 are not supported anymore
+    * Old start-up scripts like pybot are removed
+    * Changes to pattern matching syntax
+    * Square brackets after variable like ${var}[xxx] is considered item access
+    * Underscores are not converted to spaces in values given from the command line
+    * Changes to xUnit output file format
+    * Logs and reports do not support IE 8 and other old browsers anymore
+    * Newline handling changed with Create File and Append To File on Windows
+    * Some deprecated syntax removed
+    * Other issues possibly causing backwards incompatibility problems
+    Deprecated features:
+    * HTML and TSV data formats have been deprecated
+    * Parsing other than *.robot files by default is deprecated
+    * For loop syntax changes
+    * List item access to be changed to use syntax ${var}[item]
+    * Using section and setting names space-insensitively is deprecated
+    * Escaping problematic characters with --escape is deprecated
+    * --warnonskippedfiles has been deprecated
+
+-------------------------------------------------------------------
+Thu Jul 23 21:54:48 UTC 2020 - framalho@suse.com
+
+- Renamed package from python-robot to python-robotframework
+- Add singlespec for packaging both python2 and python3 packages
+- Update to version 3.0.4
+  * Changes from 3.0.4:
+    Fixes:
+    * Iterable objects (incl. ElementTree objects) converted to lists when added to dictionary
+      variables in RF 3.0.3
+    * Modifying lists and dictionaries used as dictionary variable values stopped working in
+      RF 3.0.3
+  * Changes from 3.0.3:
+    Enhancements:
+    * Use new logo as favicon in output files
+    * Dictionary variables should support attribute access with nested dictionaries
+    * Errors related to finding keywords should not be considered syntax errors
+    * String 'NONE' should be considered False when used as Boolean argument
+    * Change Selenium2Library to SeleniumLibrary in user guide documentation
+    Fixes:
+    * Using typing hints or keyword-only-arguments prevented using function as keyword
+    * RuntimeWarning printed on console when using robot command with Python 3.6 on Windows
+    * Content Security Policy (CSP) causes problems with report
+    * Terminal emulation in Telnet library is not compatible with latest pyte versions
+    * Importing String and DateTime fails on Windows and OSX if PYTHONCASEOK is set or
+      installation directory shared between VM and host
+    * rebot --merge doesn't work correctly if test messages contain HTML
+    * Dry Run fails if library keywords use embedded arguments
+    * Regression: Execution stops in teardown if keyword is not found
+    * [ ERROR ] Unexpected error: IOError: [Errno 0] Error
+    * Appending to test message using HTML doesn't work if old message is not HTML
+    * Custom string subclasses not always handled correctly (e.g. Convert To Integer)
+    * Zero length test library causes infinite recursion
+    * Timeouts do not stop execution if they occur during execution of log_message listener method
+    * robot.libdoc doesn't support specifying doc format although its docs say it does
+    * Syntax errors (non-fatal) when installing with easy_install using Python 3
+    * Process library keywords leave file descriptors open on Python 2
+    * Take Screenshot keyword causes warning when using wxPython 4
+
+-------------------------------------------------------------------
+Tue Aug 30 13:52:49 UTC 2016 - ds(at)marco.de
+
+- Initial package, robotframework 3.0.2
