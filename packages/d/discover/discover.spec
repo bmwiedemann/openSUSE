@@ -17,16 +17,19 @@
 
 
 %bcond_without lang
+# Version in Leap 15.1 is too old
+%global have_fwupd (!0%{?sle_version} || 0%{?sle_version} >= 150200)
+
 Name:           discover
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
+Source:         discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
+Source1:        discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -64,7 +67,9 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(packagekitqt5) >= 1.0.1
+%if %{have_fwupd}
 BuildRequires:  pkgconfig(fwupd) >= 1.0.6
+%endif
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports
@@ -152,7 +157,7 @@ user to install them using Discover.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/plasma-discover
 %{_kf5_bindir}/plasma-discover-update
 %{_kf5_libdir}/plasma-discover/
@@ -176,14 +181,14 @@ user to install them using Discover.
 %endif
 
 %files backend-packagekit
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/discover/packagekit-backend.so
 %{_kf5_sharedir}/libdiscover/categories/packagekit-backend-categories.xml
 %{_kf5_appstreamdir}/org.kde.discover.packagekit.appdata.xml
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
 %files backend-flatpak
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/discover/flatpak-backend.so
 %{_kf5_sharedir}/libdiscover/categories/flatpak-backend-categories.xml
 %{_kf5_appstreamdir}/org.kde.discover.flatpak.appdata.xml
@@ -191,12 +196,14 @@ user to install them using Discover.
 %{_kf5_iconsdir}/hicolor/*/apps/flatpak-discover.svg
 %endif
 
+%if %{have_fwupd}
 %files backend-fwupd
-%license COPYING*
+%license LICENSES/*
 %{_kf5_plugindir}/discover/fwupd-backend.so
+%endif
 
 %files notifier -f notifier.lang
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/discover-notifier
 %{_kf5_configdir}/autostart/org.kde.discover.notifier.desktop
 %{_libdir}/libexec/DiscoverNotifier
