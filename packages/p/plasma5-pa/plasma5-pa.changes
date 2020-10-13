@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Default maximumPercent value of 100
+  * Use pulseaudio's equal functions instead of memcmp
+  * Show and hide the inactive device buttons based on new count property
+  * Use i18nd consistently
+  * don't show in widget explorer on plasma mobile
+  * [applet] Allow showing inactive devices as in the KCM
+  * [applet] Port towards PlasmaComponents3
+  * Colorize volume percentage text when over 100%
+  * Show correct volume level in OSD when maximum volume is raised (kde#422537)
+  * Filter out currently unused devices (kde#422612)
+  * Fix Layout warnings
+  * Take into account Balance button for layouting
+  * Fix centering Volume icon around channel sliders
+  * Change it to a "Balance" button so also non-geeks can comprehend it
+  * Allow "unlocking" volume slider for per-channel (e.g. left, right) volume sliders
+  * [ListItemBase] Open options menu also on right click like a context menu
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
