@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:35:54 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.13.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Override upstream version in Requires for python-azure-mgmt-resource
+
+-------------------------------------------------------------------
 Wed Sep 30 12:53:01 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

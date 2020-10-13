@@ -160,4 +160,16 @@
   + acc_disable-update-check.patch (forwarded request 838781 from glaubitz)</comment>
     <requestid>838784</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4f05f4be6d7a46b17b36e6fb8800bea4</srcmd5>
+    <version>2.13.0</version>
+    <time>1602596671</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.13.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Override upstream version in Requires for python-azure-mgmt-resource (forwarded request 841504 from glaubitz)</comment>
+    <requestid>841540</requestid>
+  </revision>
 </revisionlist>
