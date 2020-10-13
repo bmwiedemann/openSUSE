@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-download_url
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@ Name:           obs-service-download_url
 Summary:        An OBS source service: curl download tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            http://openbuildservice.org
-Version:        0.1.2
+URL:            http://openbuildservice.org
+Version:        0.1.3
 Release:        0
 Source:         %name-%version.tar.gz
 Requires:       wget
