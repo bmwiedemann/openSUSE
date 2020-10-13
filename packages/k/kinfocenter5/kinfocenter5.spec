@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           kinfocenter5
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,9 +30,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE plasma-session-name.patch
