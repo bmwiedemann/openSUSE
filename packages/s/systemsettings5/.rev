@@ -851,4 +851,41 @@
     <comment>Plasma 5.19.5</comment>
     <requestid>831192</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>989f4344a6e93dec740368fa0a997f7b</srcmd5>
+    <version>5.20.0</version>
+    <time>1602595863</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Make margins consistent on all sides for all KCMs
+  * Update highlight default dot for module in search mode
+  * Fix default module highlight
+  * [Sidebar] Avoid reloading already loaded module (kde#420196)
+  * Make the user-visible strings defined in KAboutData translatable again. (kde#426742)
+  * Don't show an arrow when the category only contains one item (kde#426731)
+  * Show  bug report action in sidebar menu (kde#426747)
+  * [sidebar view] Set icon sizes properly on home screen
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * [Sidebar view] Only indent subsategory icons in the search view
+  * Fix trying to call a method on a still null object
+  * [Sidebar view] Add arrow to list items which are parent/category items
+  * [Sidebar view] Add accessibility hints for icons-only ToolButtons
+  * Port sidebar placeholder message to Kirigami.PlaceholderMessage
+  * Don't show highlight changed entries button in kinfocenter (kde#425964)
+  * Rework main.cpp
+  * Clean up subcategory model when going to home screen
+  * In sidebar mode show if a module is in default state or not
+  * Button text Uses Title Case</comment>
+    <requestid>841382</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:27 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Make margins consistent on all sides for all KCMs
+  * Update highlight default dot for module in search mode
+  * Fix default module highlight
+  * [Sidebar] Avoid reloading already loaded module (kde#420196)
+  * Make the user-visible strings defined in KAboutData translatable again. (kde#426742)
+  * Don't show an arrow when the category only contains one item (kde#426731)
+  * Show  bug report action in sidebar menu (kde#426747)
+  * [sidebar view] Set icon sizes properly on home screen
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * [Sidebar view] Only indent subsategory icons in the search view
+  * Fix trying to call a method on a still null object
+  * [Sidebar view] Add arrow to list items which are parent/category items
+  * [Sidebar view] Add accessibility hints for icons-only ToolButtons
+  * Port sidebar placeholder message to Kirigami.PlaceholderMessage
+  * Don't show highlight changed entries button in kinfocenter (kde#425964)
+  * Rework main.cpp
+  * Clean up subcategory model when going to home screen
+  * In sidebar mode show if a module is in default state or not
+  * Button text Uses Title Case
+  * Add Separator. Remove round. Style
+  * Add button to activate defaults highlighting
+  * [sidebar] Make SubcategoryModel dynamic
+  * [sidebar view] Show list item separator lines
+  * Also hide Buttons when changing modules in info center mode (kde#424490)
+  * [sidebar view] Remove size hacks for toolbar items (kde#424228)
+  * correct appstream homepage URL to plasma homepage
+  * Use camelcase (scripted)
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
