@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:21 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Revert "Merge branch 'Plasma/5.19'"
+  * Don't treat empty passwords as not available
+  * Bring back for saving usernames as well
+  * Pacify c++ compiler warnings
+
+-------------------------------------------------------------------
 Tue Sep  1 13:31:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop suse-tweaks.diff, overwrite KDE_INSTALL_BINDIR instead
