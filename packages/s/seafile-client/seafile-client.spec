@@ -16,9 +16,8 @@
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           seafile-client
-Version:        7.0.9
+Version:        7.0.10
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -27,6 +26,7 @@ Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
 Patch1:         fix_qpainterpath.patch
+Patch2:         fix-cmake-name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -56,7 +56,6 @@ BuildRequires:  sqlite-devel
 %else
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Designer)
@@ -65,6 +64,7 @@ BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5WebEngineCore)
 BuildRequires:  pkgconfig(Qt5WebKit)
 BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(jansson)
@@ -80,10 +80,9 @@ Seafile also allows users to create groups and easily sharing files into groups.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p0
 
 %build
-# set path, otherwise qmake is not found
-export PATH=$PATH:/usr/lib64/qt5/bin/
 export CFLAGS="%{optflags} -fPIE -pie"
 export CXXFLAGS="%{optflags} -fPIE -pie"
 %cmake \
