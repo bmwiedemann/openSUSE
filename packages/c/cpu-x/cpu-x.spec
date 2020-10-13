@@ -27,13 +27,14 @@ Source:         https://github.com/X0rg/CPU-X/archive/v%version.tar.gz
 Patch1:         no-no-pie.patch
 BuildRequires:  cmake
 BuildRequires:  gettext-tools
+%ifarch %ix86 x86_64
 BuildRequires:  nasm
+%endif
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(libcpuid) >= 0.4.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(ncursesw)
-ExclusiveArch:  %ix86 x86_64
 Provides:       bundled(dmidecode) = 3.2.20200417
 
 %description
@@ -42,6 +43,34 @@ and peripherals. It is similar to CPU-Z (Windows) and can be used in
 graphical mode by using GTK or in text-based mode by using NCurses. A
 dump mode is present from command line.
 
+%package bash-completion
+Summary:        Bash completion for %name
+Group:          System/Shells
+Supplements:    (%name and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Shell completion definitions from %name for %name.
+
+%package fish-completion
+Summary:        Bash completion for %name
+Group:          System/Shells
+Supplements:    (%name and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Shell completion definitions from %name for %name.
+
+%package zsh-completion
+Summary:        Bash completion for %name
+Group:          System/Shells
+Supplements:    (%name and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Shell completion definitions from %name for %name.
+
+%lang_package
 %prep
 %autosetup -p1 -n CPU-X-%version
 
@@ -54,16 +83,24 @@ dump mode is present from command line.
 rm -Rf "%buildroot/%_datadir/polkit-1" "%buildroot/%_datadir/applications"
 %find_lang %name
 
-%files -f %name.lang
+%files
 %_bindir/cpu-x
 %_libexecdir/cpu-x*
-%_datadir/bash-completion/
 %_datadir/cpu-x/
-%_datadir/fish/
 %_datadir/icons/*
 %_datadir/glib-2.0/
 %_datadir/metainfo/
-%_datadir/zsh/
 %license COPYING
+
+%files bash-completion
+%_datadir/bash-completion/
+
+%files fish-completion
+%_datadir/fish/
+
+%files lang -f %name.lang
+
+%files zsh-completion
+%_datadir/zsh/
 
 %changelog

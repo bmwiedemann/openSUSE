@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:48:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Split language files to -lang subpackage.
+
+-------------------------------------------------------------------
+Mon Oct 12 13:20:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Make powerpc builds possible. Split shell completions.
+
+-------------------------------------------------------------------
 Sat Oct 10 10:00:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 4.0.1) for build.opensuse.org
