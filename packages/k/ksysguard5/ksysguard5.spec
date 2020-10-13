@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           ksysguard5
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE System Guard daemon
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz
+Source:         ksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/ksysguard-%{version}.tar.xz.sig
+Source1:        ksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        ksysguardd.service
@@ -39,6 +39,8 @@ Patch0:         0001-Use-run-for-ksysguardd-s-pid-file.patch
 BuildRequires:  extra-cmake-modules >= 5.58.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libsensors4-devel
+# Has no effect, we use set_permissions
+#BuildRequires:  libcap-progs
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
@@ -50,29 +52,28 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5SysGuard) >= %{_plasma5_version}
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5Widgets)
 # kde#421514
 BuildRequires:  cmake(Qt5Test)
 # No pkgconfig(pcap) in Leap 15.1 yet
 BuildRequires:  libpcap-devel
+BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libnl-3.0)
 Requires:       libksysguard5-helper
 Recommends:     %{name}-lang
 BuildRequires:  update-desktop-files
 # For post and verifyscript
 Requires(post): permissions
 Requires(verify): permissions
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
 Provides:       kdebase4-workspace-ksysguardd = %{version}
 Obsoletes:      kdebase4-workspace-ksysguardd < %{version}
-%else
-Conflicts:      kdebase4-workspace-ksysguardd
-%endif
-%{?systemd_requires}
+%{systemd_ordering}
 
 %description
 This package contains the ksysguard daemon and application.
@@ -81,9 +82,9 @@ This package can be installed on servers without any other KDE packages
 to enable monitoring them remotely with ksysguard.
 
 %lang_package
+
 %prep
-%setup -q -n ksysguard-%{version}
-%patch0 -p1
+%autosetup -p1 -n ksysguard-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
@@ -145,6 +146,8 @@ exit 0
 %{_kf5_plugindir}/ksysguard/process/ksysguard_plugin_nvidia.so
 %{_kf5_plugindir}/ksysguard/ksysguard_plugin_nvidiaglobal.so
 %{_kf5_plugindir}/ksysguard/ksysguard_ksgrd.so
+%{_kf5_plugindir}/ksysguard/ksysguard_plugin_osinfo.so
+%{_kf5_plugindir}/ksysguard/ksysguard_globalplugin_network.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_unitdir}/ksysguardd.service
 
