@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -135,7 +135,7 @@ rm -fr %{buildroot}%{_datadir}/doc/Kdenlive
 %attr(0755,-,-) %{_bindir}/%{name}_render
 %license COPYING
 %doc AUTHORS README.md
-%(config) %{_kf5_configdir}/*.knsrc
+%{_kf5_knsrcfilesdir}/kdenlive*.knsrc
 %dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kdenlive/
 %{_kf5_applicationsdir}/org.kde.kdenlive.desktop
