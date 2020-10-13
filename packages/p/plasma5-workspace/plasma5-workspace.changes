@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:21:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix startup of some applications (mostly Tk):
+  * 0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0

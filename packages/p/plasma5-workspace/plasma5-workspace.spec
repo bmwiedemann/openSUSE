@@ -41,6 +41,7 @@ Source2:        plasma.keyring
 Source3:        baselibs.conf
 Source4:        plasmafullwayland.desktop
 # PATCH-FIX-UPSTREAM
+Patch1:         0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

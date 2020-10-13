@@ -1475,4 +1475,13 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0001-Port-applets-to-use-PlasmaExtras.PlaceholderMessage.patch</comment>
     <requestid>841022</requestid>
   </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>36d9b0ffa8867bcd82420e8f6feef92d</srcmd5>
+    <version>5.20.0</version>
+    <time>1602598622</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix startup of some applications (mostly Tk):
+  * 0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch</comment>
+    <requestid>841562</requestid>
+  </revision>
 </revisionlist>
