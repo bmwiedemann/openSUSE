@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:18:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Bundles librdkafka v1.5.0 - see release notes for all enhancements and fixes.
+  * Dockerfile examples
+  * List offsets example
+  * confluent-kafka-python is based on librdkafka v1.5.0, see the librdkafka
+  release notes for a complete list of changes, enhancements, fixes and
+  upgrade considerations. 
+- no-license-as-datafile.patch (obsolete, replaced by rm in %install)
+
+-------------------------------------------------------------------
 Thu Oct 31 09:17:20 UTC 2019 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.0:

@@ -31,4 +31,19 @@
   * configure: Fix libzstd static lib detection</comment>
     <requestid>745369</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de81814f38fb79e6a4600631a01f6fd4</srcmd5>
+    <version>1.5.0</version>
+    <time>1602596724</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Bundles librdkafka v1.5.0 - see release notes for all enhancements and fixes.
+  * Dockerfile examples
+  * List offsets example
+  * confluent-kafka-python is based on librdkafka v1.5.0, see the librdkafka
+  release notes for a complete list of changes, enhancements, fixes and
+  upgrade considerations. 
+- no-license-as-datafile.patch (obsolete, replaced by rm in %install)</comment>
+    <requestid>841410</requestid>
+  </revision>
 </revisionlist>
