@@ -1,0 +1,18 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="url">https://github.com/slgobinath/SafeEyes</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">master</param>
+    <param name="versionformat">2.0.9+git%cd</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">SafeEyes</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="file">SafeEyes-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">SafeEyes</param>
+  </service>
+</services>

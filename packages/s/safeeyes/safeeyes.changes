@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:19:15 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 20201003.448e11f:
+  * Fix UnboundLocalError in smartpause plugin (#378)
+  * Add installation instruction for openSUSE Tumbleweed, resolve #376 (#377)
+  * Translated using Weblate (Swedish)
+
+-------------------------------------------------------------------
 Sun Sep 27 16:40:06 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Add python3-cairo and python3-gobject as runtime dependencies.

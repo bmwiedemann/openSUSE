@@ -1,6 +1,7 @@
 #
-# spec file for package SafeEyes
+# spec file for package safeeyes
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -13,21 +14,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # get python versions
 %global py3_ver %(if [ -f "%{__python3}" ]; then %{__python3} -c "import sys; sys.stdout.write(sys.version[:3])"; else echo 0; fi;)
 
 Name:           safeeyes
-Version:        2.0.9+git20200906
+Version:        2.0.9+git20201003
 Release:        0
 Summary:        Protect you from eye strain when working on the computer
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Graphics/Visualization/Other
-Url:            https://github.com/slgobinath/SafeEyes
+URL:            https://github.com/slgobinath/SafeEyes
 Source0:        SafeEyes-%{version}.tar.xz
-Source98:       get_from_git.sh
 Source99:       safeeyes-rpmlintrc
 #PATCH-FIX-OPENSUSE SafeEyes-fix-install-path.patch opensuse.lietuviu.kalba@gmail.com -- install in /usr/share, not in /home/abuild/.local/share
 Patch0:         SafeEyes-fix-install-path.patch
@@ -35,8 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-Babel
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-psutil
+BuildRequires:  python3-setuptools
 %if 0%{?suse_version} > 1315 && 0%{?is_opensuse}
 BuildRequires:  python3-python-xlib
 %else
@@ -45,12 +46,12 @@ BuildRequires:  python3-xlib
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 # MANUAL BEGIN
-Requires:       typelib(AppIndicator3)
-Requires:       typelib(Notify)
 Requires:       python3-Babel
 Requires:       python3-cairo >= 1.11.1
 Requires:       python3-gobject
 Requires:       python3-psutil
+Requires:       typelib(AppIndicator3)
+Requires:       typelib(Notify)
 %if 0%{?suse_version} > 1315 && 0%{?is_opensuse}
 Requires:       python3-python-xlib
 %else
