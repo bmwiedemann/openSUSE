@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:27 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * AppModel: Rename role names
+  * Port AppChooserDialog to Kirigami
+  * mobile filechooser: Allow to disable the mime type filter
+  * mobile filechooser: Move more logic to c++
+  * appchooserdialog: Replace context properties
+  * Portaway from obsolute methods in QPrinter
+  * mobile filechooser: Forward selectMultiple
+  * FileChooser: Properly preselect MIME filter passed as "current_filter"
+  * Add "Name" entry into the desktop file (kde#426004)
+  * Add "Name" entry into the desktop file
+  * port appchooserdialog's app list to load kservices
+  * use kirigami icon instead of plasma icon in appchooser
+  * Print: enable printing of multiple copies
+  * Fix clazy warnings
+  * Port away from deprecated API
+  * open discover with mimetype when app choosing (if available)
+  * mobile filechooser: Fix handling of title and initial folder
+  * screencasting: error out when kwin isn't providing the zkde_screencast_unstable_v1 (kde#424744)
+  * FileChooser: Properly handle mnemonics in 'accept_label' (kde#422340)
+  * mobile filechooser: Show inline message for errors
+  * mobile filechooser: Use an icon that is colorful even in small sizes
+  * Implement mobile filechooser interface.
+  * screencasting: Adoption of the zkde_screencast_v1 Wayland protocol
+  * FileChooser: Return selected filter
+  * FileChooser: Handle 'options' - 'choices'
+  * FileChooser portal: Handle 'current_filter'
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:53 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
