@@ -1117,12 +1117,11 @@
     <package name="kde-cli-tools5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kde-cli-tools5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kde-gtk-config5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kde-gtk-config5-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kde-gtk-config5-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kde-print-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kde-print-manager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kde-user-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kde-user-manager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kde-user-manager" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="kde-user-manager-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kdeclarative-components" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdeconnect-kde" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdeconnect-kde-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
