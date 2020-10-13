@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -54,6 +54,7 @@ BuildRequires:  cmake(Qt5Network) >= 5.4.0
 BuildRequires:  cmake(Qt5WebChannel) >= 5.4.0
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.4.0
 %endif
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.14.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  pkgconfig(x11)
@@ -166,6 +167,10 @@ QML applications.
 %{_includedir}/ksysguard/
 %{_kf5_libdir}/cmake/KF5SysGuard/
 %{_kf5_libdir}/cmake/KSysGuard/
+%dir %{_kf5_plugindir}/designer/
+%{_kf5_plugindir}/designer/ksignalplotter5widgets.so
+%{_kf5_plugindir}/designer/ksysguard5widgets.so
+%{_kf5_plugindir}/designer/ksysguardlsof5widgets.so
 %{_kf5_libdir}/libKSysGuardFormatter.so
 %{_kf5_libdir}/libKSysGuardSensorFaces.so
 %{_kf5_libdir}/libKSysGuardSensors.so

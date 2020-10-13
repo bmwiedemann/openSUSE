@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Don't visit every directory if the cgroup base path is empty
+  * Remove implicitHeight hack
+  * Remove minimum width from line chart face's LineChart
+  * Remove left margin from legend in bar and line chart faces
+  * Remove maximum height from Bar chart
+  * Restart the daemon if it is stopped
+  * Reload everything when reloading the config
+  * Fix crash with text face
+  * Do not add sensors we did not request when they appear
+  * Revert "Update qt5 version requirement to 5.15.0"
+  * Fix cgroup regex name  matching
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:05 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
