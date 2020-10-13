@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeedu-data
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Data files for KDE Education Applications
 License:        GPL-2.0-or-later
