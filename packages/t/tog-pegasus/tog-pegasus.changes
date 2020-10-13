@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:57:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not suppress errors from useradd.
+- Replace some old RPM variables.
+
+-------------------------------------------------------------------
 Mon Feb  3 16:43:49 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

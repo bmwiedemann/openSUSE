@@ -327,7 +327,7 @@ This is a dependency of tog-pegasus and other associated packages.
 %global PEGASUS_SBIN_DIR /usr/sbin
 %global PEGASUS_DOC_DIR /usr/share/doc/%{name}-%{version}
 
-%global PEGASUS_RPM_ROOT $RPM_BUILD_DIR/%{srcname}
+%global PEGASUS_RPM_ROOT "%{_builddir}/%{srcname}"
 %global PEGASUS_RPM_HOME %PEGASUS_RPM_ROOT/build
 %global PEGASUS_INSTALL_LOG /var/lib/Pegasus/log/install.log
 
@@ -382,9 +382,9 @@ export OPENSSL_BIN=%OPENSSL_BIN
 export LD_LIBRARY_PATH=$PEGASUS_HOME/lib
 export PATH=$PEGASUS_HOME/bin:$PATH
 
-export PEGASUS_EXTRA_C_FLAGS="$RPM_OPT_FLAGS -fPIC -g -Wall -Wno-unused -fno-strict-aliasing"
+export PEGASUS_EXTRA_C_FLAGS="%{optflags} -fPIC -g -Wall -Wno-unused -fno-strict-aliasing"
 export PEGASUS_EXTRA_CXX_FLAGS="$PEGASUS_EXTRA_C_FLAGS"
-export PEGASUS_EXTRA_LINK_FLAGS="$RPM_OPT_FLAGS"
+export PEGASUS_EXTRA_LINK_FLAGS="%{optflags}"
 export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="-g -pie -Wl,-z,relro,-z,now,-z,nodlopen,-z,noexecstack"
 export SYS_INCLUDES=-I/usr/kerberos/include
 
@@ -405,7 +405,7 @@ export OPENSSL_BIN=%OPENSSL_BIN
 export LD_LIBRARY_PATH=$PEGASUS_HOME/lib
 export PATH=$PEGASUS_HOME/bin:$PATH
 
-export PEGASUS_STAGING_DIR=$RPM_BUILD_ROOT
+export PEGASUS_STAGING_DIR="%{buildroot}"
 %if %{PEGASUS_BUILD_TEST_RPM}
 make -f $PEGASUS_ROOT/Makefile.Release stage \
     PEGASUS_STAGING_DIR=$PEGASUS_STAGING_DIR \
@@ -415,75 +415,75 @@ make -f $PEGASUS_ROOT/Makefile.Release stage \
     PEGASUS_STAGING_DIR=$PEGASUS_STAGING_DIR
 %endif
 
-mkdir -p $RPM_BUILD_ROOT/%{_tmpfilesdir}
-install -p -D -m 644 %{SOURCE4} $RPM_BUILD_ROOT/%{_tmpfilesdir}/tog-pegasus.conf
+mkdir -p "%{buildroot}/%{_tmpfilesdir}"
+install -p -D -m 644 %{SOURCE4} "%{buildroot}/%{_tmpfilesdir}/tog-pegasus.conf"
 
 # Install script to generate SSL certificates at startup
-mkdir -p $RPM_BUILD_ROOT/usr/share/Pegasus/scripts
+mkdir -p "%{buildroot}/%{_datadir}/Pegasus/scripts"
 %if 0%{?suse_version}
-install -p -m 755 %{SOURCE11} $RPM_BUILD_ROOT/usr/share/Pegasus/scripts/generate-certs
+install -p -m 755 %{SOURCE11} "%{buildroot}/%{_datadir}/Pegasus/scripts/generate-certs"
 %else
-install -p -m 755 %{SOURCE10} $RPM_BUILD_ROOT/usr/share/Pegasus/scripts/generate-certs
+install -p -m 755 %{SOURCE10} "%{buildroot}/%{_datadir}/Pegasus/scripts/generate-certs"
 %endif
 
 # remove SysV initscript, install .service file
-rm -f $RPM_BUILD_ROOT/etc/init.d/tog-pegasus
-mkdir -p $RPM_BUILD_ROOT%{_unitdir}
+rm -f "%{buildroot}/etc/init.d/tog-pegasus"
+mkdir -p "%{buildroot}/%{_unitdir}"
 %if 0%{?suse_version} > 1310
-install -p -m 644 %{SOURCE12} $RPM_BUILD_ROOT%{_unitdir}/%{name}.service
+install -p -m 644 %{SOURCE12} "%{buildroot}/%{_unitdir}/%{name}.service"
 %else
-install -p -m 644 %{SOURCE5} $RPM_BUILD_ROOT%{_unitdir}/tog-pegasus.service
+install -p -m 644 %{SOURCE5} "%{buildroot}/%{_unitdir}/tog-pegasus.service"
 %endif
 # cimserver_planned.conf is on the right place since 2.9.2 (update - not in 2.10.0)
-#mv $RPM_BUILD_ROOT/var/lib/Pegasus/cimserver_planned.conf $RPM_BUILD_ROOT/etc/Pegasus/cimserver_planned.conf
-mkdir -p $RPM_BUILD_ROOT/%{_docdir}/%{name}
-mv $RPM_BUILD_ROOT/usr/share/doc/%{name}-%{major_ver}/* $RPM_BUILD_ROOT/%{_docdir}/%{name}
-rm -rf $RPM_BUILD_ROOT/usr/share/doc/%{name}-%{major_ver}
+#mv "%{buildroot}/var/lib/Pegasus/cimserver_planned.conf" "%{buildroot}/etc/Pegasus/cimserver_planned.conf"
+mkdir -p "%{buildroot}/%{_docdir}/%{name}"
+mv "%{buildroot}/%{_datadir}/doc/%{name}-%{major_ver}"/* "%{buildroot}/%{_docdir}/%{name}"
+rm -rf "%{buildroot}/%{_datadir}/doc/%{name}-%{major_ver}"
 # create symlink for libcmpiCppImpl
-pushd $RPM_BUILD_ROOT/%{_libdir}
+pushd "%{buildroot}/%{_libdir}"
 ln -s libcmpiCppImpl.so.1 libcmpiCppImpl.so
 # and libpeglistener
 ln -s libpeglistener.so.1 libpeglistener.so
 popd
-mkdir -p $RPM_BUILD_ROOT/%{_libexecdir}/pegasus
-mv $RPM_BUILD_ROOT/%{_sbindir}/cimprovagt $RPM_BUILD_ROOT/%{_libexecdir}/pegasus
+mkdir -p "%{buildroot}/%{_libexecdir}/pegasus"
+mv "%{buildroot}/%{_sbindir}/cimprovagt" "%{buildroot}/%{_libexecdir}/pegasus"
 %if 0%{?suse_version}
-install -p -m 0755 %{SOURCE13} $RPM_BUILD_ROOT/%{_sbindir}/cimprovagt
+install -p -m 0755 %{SOURCE13} "%{buildroot}/%{_sbindir}/cimprovagt"
 %else
-install -p -m 0755 %{SOURCE7} $RPM_BUILD_ROOT/%{_sbindir}/cimprovagt
+install -p -m 0755 %{SOURCE7} "%{buildroot}/%{_sbindir}/cimprovagt"
 %endif
 # install Platform_LINUX_XSCALE_GNU.h because of lmiwbem on arm
-install -m 644 src/Pegasus/Common/Platform_LINUX_XSCALE_GNU.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
+install -m 644 src/Pegasus/Common/Platform_LINUX_XSCALE_GNU.h "%{buildroot}/%{_includedir}/Pegasus/Common"
 # install UintArgs.h because of cimple
-install -m 644 src/Pegasus/Common/UintArgs.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
+install -m 644 src/Pegasus/Common/UintArgs.h "%{buildroot}/%{_includedir}/Pegasus/Common"
 # install CIMEnumerationContext.h because of cimple
-install -m 644 src/Pegasus/Client/CIMEnumerationContext.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Client
+install -m 644 src/Pegasus/Client/CIMEnumerationContext.h "%{buildroot}/%{_includedir}/Pegasus/Client"
 # install Linkage.h and CIMListener.h because of lmiwbem (CIMListener class)
-mkdir -p $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Listener
-install -m 644 src/Pegasus/Listener/Linkage.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Listener
-install -m 644 src/Pegasus/Listener/CIMListener.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Listener
+mkdir -p "%{buildroot}/%{_includedir}/Pegasus/Listener"
+install -m 644 src/Pegasus/Listener/Linkage.h "%{buildroot}/%{_includedir}/Pegasus/Listener"
+install -m 644 src/Pegasus/Listener/CIMListener.h "%{buildroot}/%{_includedir}/Pegasus/Listener"
 %if 0%{?suse_version}
 # install files because of cimple (brevity and cimple-pegasus-adapter)
-install -m 644 src/Pegasus/Common/ArrayImpl.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/ArrayInternal.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/ArrayRep.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/AtomicInt.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Buffer.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/CommonUTF.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/InternalException.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Linkable.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Magic.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Memory.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Message.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Mutex.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/PegasusAssert.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Stack.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/StringConversion.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/StrLit.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/Threads.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/XmlGenerator.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/XmlParser.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
-install -m 644 src/Pegasus/Common/XmlWriter.h $RPM_BUILD_ROOT/%{_includedir}/Pegasus/Common
+install -m 644 src/Pegasus/Common/ArrayImpl.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/ArrayInternal.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/ArrayRep.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/AtomicInt.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Buffer.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/CommonUTF.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/InternalException.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Linkable.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Magic.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Memory.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Message.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Mutex.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/PegasusAssert.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Stack.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/StringConversion.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/StrLit.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/Threads.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/XmlGenerator.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/XmlParser.h "%{buildroot}/%{_includedir}/Pegasus/Common"
+install -m 644 src/Pegasus/Common/XmlWriter.h "%{buildroot}/%{_includedir}/Pegasus/Common"
 %endif
 
 %if 0%{?suse_version}
@@ -491,7 +491,7 @@ install -m 644 src/Pegasus/Common/XmlWriter.h $RPM_BUILD_ROOT/%{_includedir}/Peg
 
 # Create Symbolic Links for SDK Libraries
 #
-pushd $RPM_BUILD_ROOT/%{_libdir}
+pushd "%{buildroot}/%{_libdir}"
 ln -sf libpegclient.so.1 libpegclient.so
 ln -sf libpegcommon.so.1 libpegcommon.so
 ln -sf libpegprovider.so.1 libpegprovider.so
@@ -505,7 +505,7 @@ popd
 
 # Create Symbolic Links for Packaged Provider Libraries
 #
-pushd $RPM_BUILD_ROOT/%{_libdir}/Pegasus/providers
+pushd "%{buildroot}/%{_libdir}/Pegasus/providers"
 ln -sf libComputerSystemProvider.so.1 libComputerSystemProvider.so
 ln -sf libOSProvider.so.1 libOSProvider.so
 ln -sf libProcessProvider.so.1 libProcessProvider.so
@@ -513,26 +513,26 @@ popd
 
 # Create Symbolic Links for Packaged Provider Managers
 #
-pushd $RPM_BUILD_ROOT/%{_libdir}/Pegasus/providerManagers/
+pushd "%{buildroot}/%{_libdir}/Pegasus/providerManagers/"
 ln -sf libCMPIProviderManager.so.1 libCMPIProviderManager.so
 popd
 
 # no binaries below /usr/share
-mv $RPM_BUILD_ROOT%{_datadir}/Pegasus/test $RPM_BUILD_ROOT%{_libdir}/Pegasus
+mv "%{buildroot}/%{_datadir}/Pegasus/test" "%{buildroot}/%{_libdir}/Pegasus"
 %if 0%{?suse_version} > 1010
-%fdupes -s $RPM_BUILD_ROOT%{_bindir}
-%fdupes -s $RPM_BUILD_ROOT/var/lib/Pegasus
+%fdupes -s %{buildroot}/%{_bindir}
+%fdupes -s %{buildroot}/var/lib/Pegasus
 %endif
-ln -sf %{_sbindir}/service $RPM_BUILD_ROOT%{_sbindir}/rc%{name}
+ln -sf %{_sbindir}/service "%{buildroot}/%{_sbindir}/rc%{name}"
 %endif
 
 %check
 # run unit tests
-export LD_LIBRARY_PATH=$RPM_BUILD_ROOT/usr/%{_lib}
+export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %if 0%{?suse_version}
-cd $RPM_BUILD_ROOT%{_libdir}/Pegasus/test
+cd "%{buildroot}/%{_libdir}/Pegasus/test"
 %else
-cd $RPM_BUILD_ROOT/usr/share/Pegasus/test
+cd "%{buildroot}/%{_datadir}/Pegasus/test"
 %endif
 make prestarttests
 # strip time and PID from logs to create reproducible results
@@ -702,7 +702,7 @@ fi
 %post
 install -d -m 1750 -o root -g pegasus %{rundir}/%{name}
 %if 0%{?suse_version}
-/usr/sbin/groupadd -r wbem >/dev/null 2>&1 || :
+getent group wbem >/dev/null || /usr/sbin/groupadd -r wbem
 %service_add_post %{name}.service
 %else
 restorecon %{rundir}/%{name}
@@ -756,11 +756,13 @@ fi
 %pre libs
 if [ $1 -eq 1 ]; then
 #  first install: create the 'pegasus' user and group:
-   /usr/sbin/groupadd -g %{pegasus_gid} -f -r pegasus >/dev/null 2>&1 || :; 
-   /usr/sbin/useradd -u %{pegasus_uid} -r -N -M -g pegasus -s /sbin/nologin -d /var/lib/Pegasus \
-     -c "tog-pegasus OpenPegasus WBEM/CIM services" pegasus >/dev/null 2>&1 || :;
+	getent group pegasus >/dev/null || \
+		/usr/sbin/groupadd -g %{pegasus_gid} -f -r pegasus
+	getent passwd pegasus >/dev/null || \
+		/usr/sbin/useradd -u %{pegasus_uid} -r -N -M -g pegasus \
+		-s /sbin/nologin -d /var/lib/Pegasus \
+		-c "tog-pegasus OpenPegasus WBEM/CIM services" pegasus
 fi
-:;
 
 %if 0%{?suse_version}
 %post libs -p /sbin/ldconfig
