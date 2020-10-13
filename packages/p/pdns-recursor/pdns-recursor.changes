@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:21:54 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- update to 4.3.5:
+  * fixes cache pollution related to DNSSEC validation.
+    (CVE-2020-25829, bsc#1177383)
+  * now raise an exception on invalid content in unknown records
+  * fixes the parsing of dont-throttle-netmasks in the presence of
+    dont-throttle-names
+
+- 9070.patch: refreshed, looks like only partially upstreamed
+
+-------------------------------------------------------------------
 Wed Sep  9 08:56:53 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - 9070.patch: backport compilation fix vs. latest Boost 1.74

@@ -455,4 +455,18 @@
 - use HTTPS scheme for all URLs</comment>
     <requestid>833218</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>56667f822192265d0ed379dba52cb376</srcmd5>
+    <version>4.3.5</version>
+    <time>1602596835</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.5:
+  * fixes cache pollution related to DNSSEC validation.
+    (CVE-2020-25829, bsc#1177383)
+  * now raise an exception on invalid content in unknown records
+  * fixes the parsing of dont-throttle-netmasks in the presence of
+    dont-throttle-names
+- 9070.patch: refreshed, looks like only partially upstreamed</comment>
+    <requestid>841527</requestid>
+  </revision>
 </revisionlist>
