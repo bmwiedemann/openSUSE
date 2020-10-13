@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-text-ui
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Telepathy chat handler for KDE
 License:        GPL-2.0-or-later
