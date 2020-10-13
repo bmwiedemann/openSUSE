@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:15 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Add missing LICENSES directory
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Convert copyright statements to SPDX expressions
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
