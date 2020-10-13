@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kigo
-Version:        20.08.1
+Version:        20.08.2
 Release:        0
 Summary:        Traditional Chinese Boardgame for KDE
 License:        GPL-2.0-or-later
