@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           plasma5-sdk
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        Plasma SDK
 License:        LGPL-2.0-or-later AND GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://cgit.kde.org/plasma-sdk.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
+Source:         plasma-sdk-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
+Source1:        plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
@@ -117,7 +117,7 @@ test Plasma data engines without writing a Plasma applet.
 %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/cuttlefish
 %{_kf5_bindir}/plasmoidviewer
 %{_kf5_bindir}/plasmathemeexplorer
@@ -141,7 +141,7 @@ test Plasma data engines without writing a Plasma applet.
 %{_kf5_appstreamdir}/org.kde.plasma.lookandfeelexplorer.appdata.xml
 
 %files -n plasmaengineexplorer5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/plasmaengineexplorer
 %{_mandir}/man1/plasmaengineexplorer.1%{ext_man}
 %{_kf5_applicationsdir}/org.kde.plasmaengineexplorer.desktop

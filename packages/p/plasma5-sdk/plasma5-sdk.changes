@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * [cuttlefish] Fix ResponsivePreview icon sizes
+  * [cuttlefix] Fix Dual Montage icon size
+  * [cuttlefish] Fix icon preview sizes
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:10 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Cleanup includes
+  * [engineexplorer] Port away from deprecated KTitleWidget::setPixmap and KIconThemes
+  * Convert copyright statements to SPDX expressions
+  * Drop empty X-KDE-PluginInfo-Depends
+  * Use Kirigami icon sizes instead of hardcoded numbers
+  * Center the Comparison sheet and move slider into the header
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:51 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
