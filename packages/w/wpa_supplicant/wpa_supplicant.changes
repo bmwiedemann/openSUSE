@@ -38,6 +38,11 @@ Thu Mar 26 10:02:31 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
   network. Fix WLAN config on boot with wicked. (boo#1166933)
 
 -------------------------------------------------------------------
+Fri Feb 28 12:42:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Adjust the service to start after network.target wrt bsc#1165266
+
+-------------------------------------------------------------------
 Mon Nov  4 10:57:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.9 release:
