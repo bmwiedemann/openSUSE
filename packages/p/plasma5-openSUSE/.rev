@@ -968,4 +968,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.19.4</comment>
     <requestid>823267</requestid>
   </revision>
+  <revision rev="115" vrev="24">
+    <srcmd5>44f947877da2fe18880d6a9bfabf6b52</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1602595828</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.0</comment>
+    <requestid>841015</requestid>
+  </revision>
 </revisionlist>
