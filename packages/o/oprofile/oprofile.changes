@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:06:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not suppress error text output from useradd.
+
+-------------------------------------------------------------------
 Wed Apr  8 12:11:10 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

@@ -124,7 +124,7 @@ find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g
 %make_build
 
 %install
-make DESTDIR=%{buildroot} htmldir=%{_docdir}/oprofile install
+%make_install htmldir=%{_docdir}/oprofile
 rm -f %{buildroot}%{_libdir}/oprofile/libopagent.*a
 # Hardlink duplicate files automatically (from package fdupes):
 # It doesn't save much, but it keeps rpmlint from breaking the package build.
@@ -132,11 +132,11 @@ rm -f %{buildroot}%{_libdir}/oprofile/libopagent.*a
 
 %pre
 getent group oprofile >/dev/null || \
-	%{_sbindir}/groupadd -r oprofile 2>/dev/null
+	%{_sbindir}/groupadd -r oprofile
 getent passwd oprofile >/dev/null || \
 	%{_sbindir}/useradd -r -g oprofile -d %{_localstatedir}/lib/empty \
 	-s /bin/false -c "Special user account to be used by OProfile" \
-	oprofile 2>/dev/null
+	oprofile
 
 %post -n libopagent1 -p /sbin/ldconfig
 %postun -n libopagent1 -p /sbin/ldconfig
