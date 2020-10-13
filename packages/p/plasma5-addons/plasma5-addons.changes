@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Sync runner config groups on save
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * [applets/nightcolor] Also toggle on middle click (kde#426428)
+  * Require C++17
+  * [runners/converter] Reject conversion queries without source unit
+  * Drop unused KF5DBusAddons dependency
+  * Remove POTD KDED module
+  * Change POTD cache path back to ~/.cache
+  * Drop empty X-KDE-PluginInfo-Depends
+  * Fix KNS deprecations
+  * specify license for dictionary runner
+  * Port mostly to PlasmaComponents3
+  * Fix timer applet commands with arguments (kde#424349)
+  * Use camelcase includes (scripted)
+  * move pot kded to kconfigwatcher
+  * do not needlessly allocate stuff when the potd isn't even used
+  * spdx++
+  * Add license header to kded_potd and correct identifier
+  * Port task switchers to use standard sizes for everything else
+  * Port task switchers to use units.iconSizes (kde#422547)
+  * runners: port to new KRunner metadata system & install location
+  * Fix POTD in lock screen (kde#389962)
+  * Improve warning
+  * Implement configurable zoom in web browser widget
+  * [applets/userswitcher] Reflect users KCM's new name
+  * [applets] Show KCMs in System Settings (kde#417836)
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
