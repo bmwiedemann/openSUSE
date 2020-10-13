@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 13 03:09:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.09
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.09 2020-10-12T11:04:16+0900
+   - Fix handling if "id" and "$id" in subschemas #186
+   - Add CONTRIBUTING.md #161
+  4.08 2020-10-12T08:06:29+0900
+   - Implemented basic support for draft 2019-09 #181
+   - JSON::Validator::Ref can hold sibling attrs #181
+  4.07 2020-10-11T11:48:05+0900
+   - Acceptance tests require Test::JSON::Schema::Acceptance 1.000
+  4.06 2020-10-10T16:21:51+0900
+   - Fix caching of schemas across objects #204 #212
+     Contributor: Karen Etheridge
+   - Fix "contains" can also be boolean "false"
+   - Fix "dependencies" can have boolean subschemas
+   - Fix "if" can be false
+   - Fix "null" is valid if "pattern" is defined, but no "type"
+   - Fix "propertyNames" can be false
+   - Fix JSON::Validator::Ref can hold a boolean schema
+   - Fix not adding "properties" to the input schema
+   - Fix resolving "$ref":"#id"
+   - Fix validating data when "additionalItems" is false, but there are enough rules
+   - Changed internals of JSON::Validator::Ref
+
+-------------------------------------------------------------------
 Tue Oct  6 03:12:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.05
