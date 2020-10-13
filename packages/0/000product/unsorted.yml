@@ -2127,6 +2127,10 @@ unsorted:
   - cppunit-devel-doc 
   - cppzmq-devel 
   - cpu-x 
+  - cpu-x-bash-completion 
+  - cpu-x-fish-completion 
+  - cpu-x-lang 
+  - cpu-x-zsh-completion 
   - cpuid 
   - cpulimit 
   - cpupower-bench 
@@ -7660,10 +7664,13 @@ unsorted:
   - kubevirt-virtctl: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
+  - kucero 
   - kuiviewer 
   - kuiviewer-lang 
   - kunitconversion-devel 
   - kunitconversion-devel-32bit: [x86_64] 
+  - kup-backup 
+  - kup-backup-lang 
   - kup-client 
   - kup-server 
   - kupfer 
@@ -15151,6 +15158,7 @@ unsorted:
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit: [x86_64] 
   - mozilla-nss-tools: [i586] 
+  - mozilla-zilla-slab-fonts 
   - mozjs52 
   - mozjs52-devel 
   - mozjs68 
@@ -20075,9 +20083,15 @@ unsorted:
   - python3-azure-cognitiveservices-vision-face 
   - python3-azure-cognitiveservices-vision-nspkg 
   - python3-azure-common 
+  - python3-azure-communication-administration 
+  - python3-azure-communication-chat 
+  - python3-azure-communication-nspkg 
+  - python3-azure-communication-sms 
   - python3-azure-core 
   - python3-azure-core-tracing-opencensus 
   - python3-azure-cosmos 
+  - python3-azure-data-nspkg 
+  - python3-azure-data-tables 
   - python3-azure-datalake-store 
   - python3-azure-devops 
   - python3-azure-eventgrid 
@@ -20115,6 +20129,7 @@ unsorted:
   - python3-azure-mgmt-cdn 
   - python3-azure-mgmt-cognitiveservices 
   - python3-azure-mgmt-commerce 
+  - python3-azure-mgmt-communication 
   - python3-azure-mgmt-compute 
   - python3-azure-mgmt-consumption 
   - python3-azure-mgmt-containerinstance 
@@ -20178,10 +20193,12 @@ unsorted:
   - python3-azure-mgmt-recoveryservicesbackup 
   - python3-azure-mgmt-redhatopenshift 
   - python3-azure-mgmt-redis 
+  - python3-azure-mgmt-regionmove 
   - python3-azure-mgmt-relay 
   - python3-azure-mgmt-reservations 
   - python3-azure-mgmt-resource 
   - python3-azure-mgmt-resourcegraph 
+  - python3-azure-mgmt-resourcemover 
   - python3-azure-mgmt-scheduler 
   - python3-azure-mgmt-search 
   - python3-azure-mgmt-security 
@@ -20196,6 +20213,7 @@ unsorted:
   - python3-azure-mgmt-storagecache 
   - python3-azure-mgmt-storageimportexport 
   - python3-azure-mgmt-storagesync 
+  - python3-azure-mgmt-streamanalytics 
   - python3-azure-mgmt-subscription 
   - python3-azure-mgmt-synapse 
   - python3-azure-mgmt-trafficmanager 
@@ -20348,6 +20366,7 @@ unsorted:
   - python3-certbot-nginx 
   - python3-certipy 
   - python3-certstream 
+  - python3-cfgdiff 
   - python3-cfgv 
   - python3-cfn-lint 
   - python3-cfscrape 
@@ -20452,6 +20471,7 @@ unsorted:
   - python3-cssselect2 
   - python3-cssutils 
   - python3-cstruct 
+  - python3-csv23 
   - python3-csvkit 
   - python3-ctypescrypto 
   - python3-ctypeslib2 
@@ -20959,6 +20979,7 @@ unsorted:
   - python3-httplib2 
   - python3-httpretty 
   - python3-httpsig_cffi 
+  - python3-httptools 
   - python3-humanfriendly 
   - python3-humanhash3 
   - python3-humanize 
@@ -21002,6 +21023,7 @@ unsorted:
   - python3-injector 
   - python3-inspektor 
   - python3-intake 
+  - python3-interrogate 
   - python3-intervals 
   - python3-intervaltree 
   - python3-invocations 
@@ -21329,6 +21351,7 @@ unsorted:
   - python3-moban 
   - python3-moban-ansible 
   - python3-mock 
+  - python3-mock-open 
   - python3-mocket 
   - python3-mockito 
   - python3-mockldap 
@@ -21343,6 +21366,7 @@ unsorted:
   - python3-monotonic 
   - python3-more-itertools 
   - python3-morecvutils 
+  - python3-moreorless 
   - python3-moretools 
   - python3-moto 
   - python3-moviepy 
@@ -21661,6 +21685,7 @@ unsorted:
   - python3-policycoreutils: [i586] 
   - python3-pomegranate 
   - python3-pomegranate-devel 
+  - python3-pontos 
   - python3-pony 
   - python3-pook 
   - python3-poppler-qt5 
@@ -22028,6 +22053,7 @@ unsorted:
   - python3-python-openid-cla 
   - python3-python-openid-teams 
   - python3-python-pam 
+  - python3-python-poppler 
   - python3-python-prctl 
   - python3-python-pseudorandom 
   - python3-python-ptrace 
@@ -22164,6 +22190,7 @@ unsorted:
   - python3-rjsmin 
   - python3-rnginline 
   - python3-robot-detection 
+  - python3-robotframework 
   - python3-roifile 
   - python3-rollbar 
   - python3-rope 
@@ -22240,6 +22267,7 @@ unsorted:
   - python3-serverfiles 
   - python3-setools: [i586] 
   - python3-setuptools-git 
+  - python3-setuptools-version-command 
   - python3-setuptools_scm 
   - python3-setuptools_scm_git_archive 
   - python3-sfs 
@@ -22453,6 +22481,7 @@ unsorted:
   - python3-topy 
   - python3-torch: [x86_64] 
   - python3-torch-devel: [x86_64] 
+  - python3-torchvision: [x86_64] 
   - python3-tornado 
   - python3-tornado4 
   - python3-tornado5 
@@ -22536,6 +22565,7 @@ unsorted:
   - python3-user-agents 
   - python3-user_agent 
   - python3-userpath 
+  - python3-uvicorn 
   - python3-uvloop 
   - python3-validate_email 
   - python3-validators 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201012" schemaversion="4.1">
+<image name="OBS__MicroOS___20201013" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201012</productvar>
+      <productvar name="VERSION">20201013</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201012,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201013,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201012/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201013/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -293,7 +293,6 @@
       <repopackage name="kdbusaddons-tools" arch="x86_64"/>
       <repopackage name="kde-cli-tools5" arch="x86_64"/>
       <repopackage name="kde-print-manager" arch="x86_64"/>
-      <repopackage name="kde-user-manager" arch="x86_64"/>
       <repopackage name="kdeclarative-components" arch="x86_64"/>
       <repopackage name="kdeconnect-kde" arch="x86_64"/>
       <repopackage name="kded" arch="x86_64"/>
@@ -671,7 +670,6 @@
       <repopackage name="libKF5Declarative5" arch="x86_64"/>
       <repopackage name="libKF5DNSSD5" arch="x86_64"/>
       <repopackage name="libKF5DocTools5" arch="x86_64"/>
-      <repopackage name="libKF5Emoticons5" arch="x86_64"/>
       <repopackage name="libKF5GlobalAccel5" arch="x86_64"/>
       <repopackage name="libKF5GlobalAccelPrivate5" arch="x86_64"/>
       <repopackage name="libKF5GuiAddons5" arch="x86_64"/>
