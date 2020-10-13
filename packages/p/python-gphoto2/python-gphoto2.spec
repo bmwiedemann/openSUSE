@@ -17,7 +17,7 @@
 
 
 Name:           python-gphoto2
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Python interface to libgphoto2
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libgphoto2)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %python_subpackages
 
 %description
