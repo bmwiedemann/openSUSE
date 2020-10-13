@@ -24,15 +24,15 @@
 
 %bcond_without lang
 Name:           kwayland-server
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        KDE Wayland server library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz
+Source:         kwayland-server-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-server-%{version}.tar.xz.sig
+Source1:        kwayland-server-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.5
@@ -43,12 +43,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Wayland) >= 5.70.0
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.0
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
 BuildRequires:  pkgconfig(wayland-server) >= 1.15.0
 
 # For kwayland-testQtSurfaceExtension
@@ -69,7 +69,7 @@ Summary:        KDE Wayland library: Build Environment
 Group:          Development/Libraries/KDE
 Requires:       %lname = %{version}
 Requires:       extra-cmake-modules
-Requires:       cmake(Qt5Gui) >= 5.14.0
+Requires:       cmake(Qt5Gui) >= 5.15.0
 
 %description devel
 kwayland-server provides a Qt-style server library wrapper for the Wayland libraries.

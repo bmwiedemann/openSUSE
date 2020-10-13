@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Improve readability of code that destroys frame callback resources
+  * Keep unreferenced buffers around (kde#425233)
+  * Untangle SurfaceInterface and BufferInterface
+  * [DataOffer] Avoid calls on null DataSource (kde#396308)
+
+-------------------------------------------------------------------
+Mon Sep 21 15:47:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix wayland-protocols dep, no trailing .0
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:01 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:49 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
