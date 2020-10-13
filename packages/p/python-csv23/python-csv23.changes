@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Sun Oct 11 14:20:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Release (only imposed from testing) minimum version for mock
+  to satisfy Leap dependency resolution
+
+-------------------------------------------------------------------
+Sun Oct 11 12:05:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Initial specfile for version 0.3.2
+- Is a test requirement of pip 20.2 
