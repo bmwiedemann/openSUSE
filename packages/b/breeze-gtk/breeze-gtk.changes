@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * [gtk3]: Make scrollbars fixed size (kde#414763)
+
+-------------------------------------------------------------------
+Thu Sep 17 20:02:56 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Changes since 5.19.5:
+  * Remove explicit ECM_KDE_MODULE_DIR
+  * Convert copyright statements to SPDX expressions
+  * Make shadow of popovers less harsh (kde#422763)
+  * Improve the shadow of CSD windows
+  * Add styles for floating bars (kde#418933)
+  * Fix GTK Assistant styles to be legible (kde#422866)
+  * Reduce popover shadow
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:47 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
