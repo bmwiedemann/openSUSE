@@ -22,15 +22,15 @@
 %define lname_private   libkdecorations2private%{private_sover}
 %bcond_without lang
 Name:           libkdecoration2
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz
+Source:         kdecoration-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz.sig
+Source1:        kdecoration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -51,7 +51,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname_private} = %{version}
 Requires:       %{lname} = %{version}
 Requires:       cmake(Qt5Gui) >= 5.4.0
-Obsoletes:      libkdecorations-devel
+Obsoletes:      libkdecorations-devel < 5.2
 
 %description devel
 Development files belonging to kdecoration,
@@ -60,7 +60,7 @@ plugin based library to create window decorations.
 %package -n %{lname}
 Summary:        KDE's window decorations library
 Group:          System/GUI/KDE
-Obsoletes:      libkdecorations5
+Obsoletes:      libkdecorations5 < 5.2
 Recommends:     %{lname}-lang
 
 %description -n %{lname}
@@ -94,17 +94,17 @@ Plugin based library to create window decorations.
 %postun -n %{lname_private} -p /sbin/ldconfig
 
 %files -n %{lname}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libkdecorations2.so.%{sover}
 %{_kf5_libdir}/libkdecorations2.so.%{sover}.*
 
 %files -n %{lname_private}
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libkdecorations2private.so.%{private_sover}
 %{_kf5_libdir}/libkdecorations2private.so.%{sover}.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libkdecorations2.so
 %{_kf5_libdir}/libkdecorations2private.so
 %{_kf5_libdir}/cmake/KDecoration2/
@@ -113,7 +113,7 @@ Plugin based library to create window decorations.
 
 %if %{with lang}
 %files -n %{lname}-lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
