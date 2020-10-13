@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Tue Oct  6 10:45:50 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add use-system-pybind11.patch to use system provided pybind11
+- Exclude pybind11 from _service
+
+-------------------------------------------------------------------
+Sat Oct  3 18:36:27 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix fdupes
+- Package license
+- Use %pytest_arch
+
+-------------------------------------------------------------------
+Sat Oct 03 11:14:01 UTC 2020 - hpj@urpla.net
+
+- Update to version 0.2.2:
+  * Put changelog in doc (#22)
+  * lower required python version to 3.6 (#21)
+  * Fix corrupted document buffer (#20)
+
+-------------------------------------------------------------------
+Thu Oct  1 16:45:31 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Switch to git release by disabled service (pypi is missing tests)
+- Enable tests
+
+-------------------------------------------------------------------
+Thu Oct 01 15:31:46 UTC 2020 - hpj@urpla.net
+
+- Update to version 0.2.1+git20200930.d09bfc7:
+  * fix initializer list for some compilers (#18)
+  * invoke apidoc when running tox -e docs (#15)
+  * Lower minimum poppler-cpp version to 0.26.0 (#13)
+  * Documentation (#10)
+  * Fixes for 20 08 (#11)
+  * Verbose nested namespace syntax (not C++17) (#7)
+  * fix include paths (#3)
+  * ensure document is unlocked (#5)
+  * Fixed byte order in image format string
+  * Add automated tests for latest version of Poppler (#1)
+- Remove fix-initializer-list-for-some-compilers.patch
+
+-------------------------------------------------------------------
+Wed Sep 30 13:15:15 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply fix-initializer-list-for-some-compilers.patch to fix a
+  32bit build issue
+
+-------------------------------------------------------------------
+Fri Sep 25 16:32:20 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Version 0.2.1: initial build
