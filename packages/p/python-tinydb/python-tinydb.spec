@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tinydb
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        A document-oriented database
 License:        MIT

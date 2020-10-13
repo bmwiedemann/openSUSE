@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 10 18:44:41 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.2.0:
+  * Feature: Add support for specifying document IDs during insertion
+    (see issue 303)
+  * Internal change: Use OrderedDict.move_to_end() in the query cache
+    (see issue 338)
+
+-------------------------------------------------------------------
 Thu Sep 24 12:08:57 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 4.1.1
