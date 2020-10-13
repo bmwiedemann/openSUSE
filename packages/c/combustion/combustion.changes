@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:00:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Also stop ignition-mount.service if there's no config
+
+-------------------------------------------------------------------
 Tue Oct  6 10:19:57 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Implement support for systems without transactional-update

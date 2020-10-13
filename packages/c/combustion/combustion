@@ -84,16 +84,16 @@ cleanup() {
 
 trap cleanup EXIT
 
-if ! [ -d "${config_mount}/combustion" ]; then
-	echo "No config found - doing nothing."
-	exit 0
-fi
-
 # ignition-mount.service mounts stuff below /sysroot in ExecStart and umounts
 # it on ExecStop, failing if umounting fails. This conflicts with the
 # mounts/umounts done by combustion. Ignition is already done, so just stop it.
 if systemctl --quiet is-active ignition-mount.service; then
 	systemctl stop ignition-mount.service
+fi
+
+if ! [ -d "${config_mount}/combustion" ]; then
+	echo "No config found - doing nothing."
+	exit 0
 fi
 
 # Copy config
