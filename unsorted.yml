@@ -301,6 +301,7 @@ unsorted:
   - accel-config 
   - accel-config-devel 
   - accerciser-plugin-IPython 
+  - accounts-qml-module 
   - accounts-qml-module-doc 
   - accountsservice-devel 
   - acct 
@@ -1204,7 +1205,6 @@ unsorted:
   - blas-devel 
   - blas-devel-32bit: [x86_64] 
   - blas-devel-static 
-  - blas-man 
   - blasphemer 
   - bleachbit 
   - bleachbit-lang 
@@ -2126,6 +2126,7 @@ unsorted:
   - cppunit-devel-32bit: [x86_64] 
   - cppunit-devel-doc 
   - cppzmq-devel 
+  - cpu-x 
   - cpuid 
   - cpulimit 
   - cpupower-bench 
@@ -7761,6 +7762,7 @@ unsorted:
   - laptop-mode-tools-gui 
   - lasem 
   - lasem-devel 
+  - last-resort-font 
   - lastpass-cli 
   - laszip-devel 
   - latencytop 
@@ -8495,7 +8497,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-5 
-  - libVkLayer_utils-1_2_153 
+  - libVkLayer_utils-1_2_154 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -22568,6 +22570,7 @@ unsorted:
   - python3-vncdotool 
   - python3-vobject 
   - python3-voila 
+  - python3-volatile 
   - python3-voluptuous 
   - python3-voluptuous-serialize 
   - python3-vsts 

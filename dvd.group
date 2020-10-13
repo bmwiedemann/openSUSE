@@ -57,7 +57,6 @@
     <package name="abcde" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="accerciser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="accerciser-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="accounts-qml-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="accountsservice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="accountsservice-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="acl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
