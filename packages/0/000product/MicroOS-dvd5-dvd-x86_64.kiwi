@@ -55,7 +55,6 @@
     </metadata>
     <repopackages>
       <repopackage name="aaa_base"/>
-      <repopackage name="accounts-qml-module" arch="x86_64"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
