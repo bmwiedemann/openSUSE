@@ -1677,4 +1677,12 @@ for 12.3</comment>
   * whitelist org.freedesktop.network1.forcerenew (bsc#1176215)</comment>
     <requestid>833401</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>60e3e8a105ce5144a70bc4d5db139249</srcmd5>
+    <version>1550+20201001.cb7020b</version>
+    <time>1602595648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839154</requestid>
+  </revision>
 </revisionlist>

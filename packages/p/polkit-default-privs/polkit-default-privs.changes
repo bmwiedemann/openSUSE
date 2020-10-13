@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 01 13:00:06 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201001.cb7020b:
+  * Whitelist newly added powerdevil battery charge threshold actions (bsc#1176474)
+
+-------------------------------------------------------------------
 Thu Sep 10 07:56:32 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 1550+20200909.647e56f:

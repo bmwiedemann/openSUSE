@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20200909.647e56f
+Version:        1550+20201001.cb7020b
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
