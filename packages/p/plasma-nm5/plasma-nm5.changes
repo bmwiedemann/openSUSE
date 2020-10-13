@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:26 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- No code changes since 5.19.90
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:14 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Sep 17 19:41:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop patches, now upstream:
+  * 0001-WIP-applet-Fix-inline-password-field-component-not-w.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:52 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5
