@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka
-Version:        0.6.8.4
+Version:        0.6.9.1
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -37,6 +37,7 @@ Requires:       python-devel
 Requires:       scons
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
 Recommends:     strace
@@ -44,26 +45,25 @@ Suggests:       execstack
 Suggests:       gdb
 BuildArch:      noarch
 # SECTION Testing requirements
-BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module appdirs}
+BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module passlib}
+BuildRequires:  %{python_module pmw}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module rsa}
+BuildRequires:  %{python_module tk}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xml}
+BuildRequires:  ccache
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  gdb
 BuildRequires:  strace
-# TkInter failing, so avoid the extra heavy build dep
-# https://github.com/Nuitka/Nuitka/issues/811
-# BuildRequires:  tk
-# BuildRequires:  %%{python_module tk}
-# https://github.com/Nuitka/Nuitka/issues/810
-#BuildRequires:  %%{python_module pmw}
+BuildRequires:  tk
 # moto currently failing to build
 #BuildRequires:  %%{python_module moto}
 #BuildRequires:  %%{python_module boto3}
@@ -85,8 +85,11 @@ used in the same way as pure Python objects.
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/pefile/
 # SCons has copies here that are automatically excluded, but remove them to be sure
-rm -r nuitka/build/inline_copy/lib/
-rm -r nuitka/build/inline_copy/bin/
+rm -r nuitka/build/inline_copy/lib/scons*/
+rm nuitka/build/inline_copy/bin/scons.py
+rmdir nuitka/build/inline_copy/bin/
+rmdir nuitka/build/inline_copy/lib/
+rmdir nuitka/build/inline_copy/
 
 sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_report/__main__.py
 
@@ -119,6 +122,7 @@ mv tests/standalone/SocketUsing.py tests/standalone/TkInterUsing.py /tmp
 
 # Reflection tests are very time consuming and not helpful for smoke tests
 
+export NUITKA_EXTRA_OPTIONS="--debug"
 %python_exec ./tests/run-tests --skip-reflection-test --no-other-python
 
 mv /tmp/SocketUsing.py /tmp/TkInterUsing.py tests/standalone/

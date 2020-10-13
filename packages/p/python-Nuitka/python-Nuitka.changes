@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:10:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add debuginfo to BuildRequires and Suggests
+- Enable Brotli, Pwm, and Tk tests
+- Update to v0.6.9.1
+
+-------------------------------------------------------------------
 Mon Aug 17 01:16:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.6.8.4
