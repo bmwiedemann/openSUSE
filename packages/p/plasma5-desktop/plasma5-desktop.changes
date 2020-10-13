@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Oct  8 16:55:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.0
+- Changes since 5.19.90:
+  * Fix "Plasma Renderer" KCM not being launchable (kde#421431)
+  * Remove fallthrough attribute
+  * Compare against coponent id when importing (kde#427188)
+  * [kcm/keys] Use AbstractKCM as a base, rather than ScrollViewKCM
+  * Add some rudimentary error handling to users kcm (kde#425036)
+  * [kcms/users] Fix "Passwords must match" message in change password sheet
+  * [kcms/users] Fix "passwords must match" error message being too narrow
+  * [applets/taskmanager] Don't show icons on top of thumbnails on Wayland (kde#427076)
+  * [kcms/activities] Use correct method to set active global shortcut (kde#374575)
+  * Always draw sidebar in applet configuration window (kde#419517)
+  * make click on thumbnails work on wayland
+  * [kcms/krunner] Use more accurate text for the positioning
+  * Add Q_FALLTHROUGH
+  * Update emoji category to latest ibus-dict-emoji
+  * Force Emojier using color emoji font
+  * [kcms/autostart] Add Exec line to KCM desktop file (kde#426737)
+  * Remove freetype/fontconfig remnants
+  * [kimpanel] Fix comments in cmake find modules
+- kde-user-manager got dropped in favor of the user kcm in here
+- Use a versioned Obsoletes for synaptiks
+
+-------------------------------------------------------------------
+Mon Sep 21 17:49:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop unneeded BuildRequires and obsolete workarounds
+- Mention KCMs in %files individually
+
+-------------------------------------------------------------------
+Thu Sep 17 20:03:07 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.19.90
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.19.90
+- Too many changes to list here
+- Refresh patches:
+  * 0001-Use-themed-user-face-icon-in-kickoff.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 11:38:50 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.19.5

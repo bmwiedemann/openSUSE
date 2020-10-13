@@ -16,13 +16,14 @@
 #
 
 
-%define kf5_version 5.58.0
+%define kf5_version 5.74.0
 
 %global have_ibus_dict_emoji_pkg (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
+%global have_kaccounts (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200)
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.19.5
+Version:        5.20.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -32,22 +33,23 @@ Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source:         plasma-desktop-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
+Source1:        plasma-desktop-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-themed-user-face-icon-in-kickoff.patch
-BuildRequires:  extra-cmake-modules >= 1.8.0
+BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
-BuildRequires:  glib2-devel
 BuildRequires:  kf5-filesystem
-BuildRequires:  libboost_headers-devel
-BuildRequires:  libtag-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  cmake(AppStreamQt) >= 0.10.4
+%if %{have_kaccounts}
+BuildRequires:  cmake(KAccounts) >= 20.04
+# Needed by ^, fixed in TW only
+BuildRequires:  intltool
+%endif
 BuildRequires:  cmake(KDED) >= %{kf5_version}
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
@@ -71,11 +73,9 @@ BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5NewStuffQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
-BuildRequires:  cmake(KF5People) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Runner) >= %{kf5_version}
-BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KRunnerAppDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(KSMServerDBusInterface) >= %{_plasma5_version}
@@ -94,13 +94,12 @@ BuildRequires:  cmake(Qt5Test) >= 5.4.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  cmake(ScreenSaverDBusInterface) >= %{_plasma5_version}
-BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(signon-oauth2plugin)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
@@ -109,7 +108,6 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xorg-evdev)
@@ -121,8 +119,6 @@ BuildRequires:  pkgconfig(glesv2)
 %else
 BuildRequires:  pkgconfig(gl)
 %endif
-#BuildRequires:  pkgconfig(xrender)
-BuildRequires:  breeze5-icons
 BuildRequires:  xkeyboard-config
 # Includes some plugins for kpackage needed during build
 BuildRequires:  plasma5-workspace >= %{_plasma5_bugfix}
@@ -132,7 +128,6 @@ Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 # hardcode versions of plasma-framework-componets and plasma-framework-private packages, as upstream doesn't keep backwards compability there
 %requires_ge plasma-framework-components
 %requires_ge plasma-framework-private
-Requires:       kde-user-manager
 # Various KCMs use it
 Requires:       kinfocenter5
 Requires:       kirigami2
@@ -143,7 +138,7 @@ Requires:       libksysguard5-imports
 # kcm_style does DBus calls to the KDED module.
 # However, that depends on xsettingsd and gio, so
 # let the Supplements in kde-gtk-config5 handle it.
-# Requires:       kde-gtk-config5 >= %{_plasma5_version}
+# Requires:       kde-gtk-config5
 # needed for the ActivityManager
 Requires:       kactivities5-imports
 # Needed for several KCMs
@@ -171,7 +166,10 @@ Provides:       plasma5-addons-kimpanel = %{version}
 Obsoletes:      plasma5-addons-kimpanel < %{version}
 Provides:       %{name}-kimpanel = %{version}
 Obsoletes:      %{name}-kimpanel < %{version}
-Obsoletes:      synaptiks
+# Was dropped in 5.20, replaced by kcm_users from p-d
+Provides:       kde-user-manager = %{version}
+Obsoletes:      kde-user-manager < %{version}
+Obsoletes:      synaptiks < 0.9.0
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -212,19 +210,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   %kf5_find_htmldocs
 %endif
 
-  # Copy the icon for kcolorschemeeditor.desktop
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps
-  mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/preferences
-  if [ -f %{_kf5_iconsdir}/breeze/apps/32/preferences-desktop-color.svg ]; then
-      cp %{_kf5_iconsdir}/breeze/apps/32/preferences-desktop-color.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-  else
-      cp %{_kf5_iconsdir}/breeze/preferences/32/preferences-desktop-color.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/preferences/
-  fi
-
-  # remove empty/invalid appstream xml files. kpackagetool5 generates invalid files sometimes...
-  # remove this once kpackagetool5 is fixed
-  find %{buildroot}%{_kf5_appstreamdir} -type f -size 0 -print -delete
-
 %if !%{have_ibus_dict_emoji_pkg}
   # The emojier needs .dict files from ibus, which are part of the ibus package.
   # That's a huge dep tree and is also known to break things such as keyboard layout selection.
@@ -238,55 +223,71 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
   %fdupes %{buildroot}/%{_prefix}
 
 %post   -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
-%{_kf5_debugdir}/kcmkeys.categories
-%{_kf5_dbuspolicydir}/org.kde.fontinst.conf
+%{_kf5_debugdir}/*.categories
 %{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmclock.conf
-%{_kf5_knsrcfilesdir}/colorschemes.knsrc
-%{_kf5_knsrcfilesdir}/emoticons.knsrc
-%{_kf5_knsrcfilesdir}/icons.knsrc
-%{_kf5_knsrcfilesdir}/kfontinst.knsrc
-%{_kf5_knsrcfilesdir}/plasma-themes.knsrc
-%{_kf5_knsrcfilesdir}/lookandfeel.knsrc
-%{_kf5_knsrcfilesdir}/xcursor.knsrc
 %{_kf5_knsrcfilesdir}/ksplash.knsrc
-%{_kf5_knsrcfilesdir}/gtk2_themes.knsrc
-%{_kf5_knsrcfilesdir}/gtk3_themes.knsrc
 %{_kf5_bindir}/kaccess
 %{_kf5_bindir}/kapplymousetheme
-%{_kf5_bindir}/kfontinst
-%{_kf5_bindir}/kfontview
 %{_kf5_bindir}/knetattach
-%{_kf5_bindir}/krdb
 %{_kf5_bindir}/kcm-touchpad-list-devices
 %{_kf5_bindir}/solid-action-desktop-gen
-%{_kf5_bindir}/lookandfeeltool
-%{_kf5_bindir}/kcolorschemeeditor
 %{_kf5_bindir}/tastenbrett
 %{_kf5_configdir}/autostart/kaccess.desktop
-%{_kf5_libdir}/kconf_update_bin/krdb_clearlibrarypath
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeinit5_kaccess.so
-%exclude %{_kf5_libdir}/libkfontinst.so
-%{_kf5_libdir}/libkfontinst.so.*
-%exclude %{_kf5_libdir}/libkfontinstui.so
-%{_kf5_libdir}/libkfontinstui.so.*
-%{_kf5_plugindir}/
+%{_kf5_plugindir}/kcm_access.so
+%{_kf5_plugindir}/kcm_activities.so
+%{_kf5_plugindir}/kcm_clock.so
+%{_kf5_plugindir}/kcm_componentchooser.so
+%{_kf5_plugindir}/kcm_desktoppaths.so
+%{_kf5_plugindir}/kcm_formats.so
+%{_kf5_plugindir}/kcm_joystick.so
+%{_kf5_plugindir}/kcm_keyboard.so
+%{_kf5_plugindir}/kcm_mouse.so
+%{_kf5_plugindir}/kcm_plasmasearch.so
+%dir %{_kf5_plugindir}/kcms/
+%{_kf5_plugindir}/kcms/kcm_autostart.so
+%{_kf5_plugindir}/kcms/kcm_baloofile.so
+%{_kf5_plugindir}/kcms/kcm_kded.so
+%{_kf5_plugindir}/kcms/kcm_keys.so
+%{_kf5_plugindir}/kcms/kcm_launchfeedback.so
+%{_kf5_plugindir}/kcms/kcm_nightcolor.so
+%{_kf5_plugindir}/kcms/kcm_notifications.so
+%{_kf5_plugindir}/kcms/kcm_splashscreen.so
+%{_kf5_plugindir}/kcms/kcm_users.so
+%{_kf5_plugindir}/kcms/kcm_workspace.so
+%{_kf5_plugindir}/kcm_smserver.so
+%{_kf5_plugindir}/kcm_solid_actions.so
+%{_kf5_plugindir}/kcmspellchecking.so
+%{_kf5_plugindir}/kded_touchpad.so
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/kded/
+%{_kf5_plugindir}/kf5/kded/device_automounter.so
+%{_kf5_plugindir}/kf5/kded/keyboard.so
+%{_kf5_plugindir}/kf5/krunner/
+%{_kf5_plugindir}/libkcm_device_automounter.so
+%{_kf5_plugindir}/libkcm_qtquicksettings.so
+%dir %{_kf5_plugindir}/plasma/
+%dir %{_kf5_plugindir}/plasma/dataengine/
+%{_kf5_plugindir}/plasma/dataengine/plasma_engine_touchpad.so
 %{_kf5_qmldir}/
-%{_kf5_applicationsdir}/org.kde.kfontview.desktop
 %{_kf5_applicationsdir}/org.kde.knetattach.desktop
-%{_kf5_applicationsdir}/org.kde.kcolorschemeeditor.desktop
-%{_kf5_sharedir}/dbus-1/services/org.kde.fontinst.service
-%{_kf5_sharedir}/dbus-1/system-services/org.kde.fontinst.service
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmclock.service
-%{_kf5_sharedir}/polkit-1/actions/org.kde.fontinst.policy
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmclock.policy
-%dir %{_kf5_htmldir}/en
+%if %{have_kaccounts}
+%{_kf5_plugindir}/attica_kde.so
+%dir %{_kf5_sharedir}/accounts/
+%dir %{_kf5_sharedir}/accounts/providers
+%dir %{_kf5_sharedir}/accounts/services
+%{_kf5_sharedir}/accounts/providers/kde/
+%{_kf5_sharedir}/accounts/services/kde/
+%endif
 %dir %{_kf5_htmldir}
+%dir %{_kf5_htmldir}/en
 %doc %{_kf5_htmldir}/en/*/
 %dir %{_kf5_iconsdir}/hicolor/*/
 %dir %{_kf5_iconsdir}/hicolor/*/*/
@@ -296,28 +297,34 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_sharedir}/kcmkeys/
 %{_kf5_sharedir}/kcmsolidactions/
 %{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kcontrol/
-%{_kf5_sharedir}/kdisplay/
-%{_kf5_sharedir}/kfontinst/
-%{_kf5_sharedir}/kxmlgui5/
-%{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/
+%dir %{_kf5_sharedir}/kpackage/kcms/
+%{_kf5_sharedir}/kpackage/kcms/kcm5_kded/
+%{_kf5_sharedir}/kpackage/kcms/kcm_autostart/
+%{_kf5_sharedir}/kpackage/kcms/kcm_baloofile/
+%{_kf5_sharedir}/kpackage/kcms/kcm_keys/
+%{_kf5_sharedir}/kpackage/kcms/kcm_launchfeedback/
+%{_kf5_sharedir}/kpackage/kcms/kcm_nightcolor/
+%{_kf5_sharedir}/kpackage/kcms/kcm_notifications/
+%{_kf5_sharedir}/kpackage/kcms/kcm_splashscreen/
+%{_kf5_sharedir}/kpackage/kcms/kcm_users/
+%{_kf5_sharedir}/kpackage/kcms/kcm_workspace/
 %{_kf5_sharedir}/kcmmouse/
 %{_kf5_sharedir}/kcmkeyboard/
 %{_kf5_notifydir}/
-%{_kf5_sharedir}/konqsidebartng/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %{_kf5_datadir}/
 %{_kf5_sharedir}/solid/
-%exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
 %{_kf5_plasmadir}/
 %{_kf5_appstreamdir}/
 %{_kf5_libdir}/libexec/kimpanel-ibus-panel
 %{_kf5_qmldir}/org/kde/plasma/private/kimpanel/
 %{_kf5_servicesdir}/*kimpanel*
-%{_kf5_plasmadir}/services/kimpanel.operations
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
-%{_kf5_plugindir}/plasma/dataengine/plasma_engine_kimpanel.so
+%if !%{have_ibus_dict_emoji_pkg}
+%exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
+%endif
 
 %files emojier
 %{_kf5_bindir}/ibus-ui-emojier-plasma
