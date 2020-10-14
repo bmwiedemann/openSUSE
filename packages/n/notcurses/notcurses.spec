@@ -1,6 +1,7 @@
 #
 # spec file for package notcurses
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %global sover   1
 Name:           notcurses
-Version:        1.7.2
+Version:        1.7.6
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -175,12 +176,10 @@ cd build
 %{_bindir}/ncneofetch
 %{_bindir}/notcurses-demo
 %{_bindir}/notcurses-input
-%{_bindir}/notcurses-ncreel
 %{_bindir}/notcurses-tetris
 %{_bindir}/notcurses-view
 %{_mandir}/man1/notcurses-demo.1%{?ext_man}
 %{_mandir}/man1/notcurses-input.1%{?ext_man}
-%{_mandir}/man1/notcurses-ncreel.1%{?ext_man}
 %{_mandir}/man1/notcurses-tester.1%{?ext_man}
 %{_mandir}/man1/notcurses-tetris.1%{?ext_man}
 %{_mandir}/man1/notcurses-view.1%{?ext_man}

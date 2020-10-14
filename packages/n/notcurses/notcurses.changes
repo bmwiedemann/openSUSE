@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Sat Oct 10 08:28:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.6
+  * `ncstats` added the new stats `writeout_ns`, `writeout_min_ns`,
+    and `writeout_max_ns`. The `render_*ns` stats now only cover
+    the rendering and rasterizing process. The `writeout*ns` stats
+    cover the time spent writing data out to the terminal.
+    `notcurses_render()` involves both of these processes.
+  * `notcurses_render_to_buffer()` has been added, allowing user
+    control of the process of writing frames out to the terminal.
+  * `notcurses_stats_alloc()` has been added, to allocate an
+    `ncstats` object.  `notcurses_reset_stats()` has been renamed
+    `notcurses_stats_reset()`.
+  * Two flags have been defined for `ncdirect_init()`:
+    `NCDIRECT_OPTION_INHIBIT_SETLOCALE` and
+    `NCDIRECT_OPTION_INHIBIT_CBREAK`.
+    The former is similar to `NCOPTION_INHIBIT_SETLOCALE`. The
+    latter keeps `ncdirect_init()` from touching the termios and
+    entering cbreak mode.
+  * The C++ wrapper `Ncplane::putwc()` has been renamed
+    `Ncplane::putwch()`, so as not to clash with standard
+    libraries implementing `putwc()` as a macro.
+
+-------------------------------------------------------------------
+Tue Sep 29 20:05:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.5
+  * `ncreel_destroy()` now returns `void` rather than `int`.
+  * `nctablet_ncplane()` has been renamed `nctablet_plane()`.
+  * The standard plane now has the name `std`.
+  * Removed long-deprecated `ncplane_set_attrs()` and
+    `ncplane_attrs()`.
+  * Renamed `ncplane_styles_*()` to `ncplane_*_styles()`, to
+    conform with every other `ncplane_set_*()` function, but
+    retained the old versions as (deprecated) aliases.
+  * Renamed `cell_styles_*()` to `cell_*_styles()`, to conform with
+    every other `cell_set_*()` function. Since these were inline
+    functions, I've not bothered to retain the old versions.
+- Update to version 1.7.4
+  * All `_rgb_clipped()` functions have been renamed
+   `_rgb8_clipped()`, to match the changes made in 1.7.2.
+  * `ncplane_create()` has been introduced, taking a
+    `struct ncplane_options` parameter. This replaces
+    `ncplane_aligned()`, and will replace `ncplane_new()`. The
+    latter ought be considered deprecated, and will be removed in
+    the future. To align a place as previously done with
+    `ncplane_aligned()`, use the `NCPLANE_OPTION_HORALIGNED` flag.
+  * The `ncplane_options` struct includes a function pointer
+    member, `resizecb`. If not `NULL`, this function will be
+    called after the parent plane is resized.
+    See `notcurses_plane.3` for more information.
+  * `ncplane_resize_realign()` has been added, suitable for use as
+    a `resizecb`. It realigns the plane against its parent.
+  * `NCCHANNEL_ALPHA_MASK` has been renamed `CHANNEL_ALPHA_MASK`,
+    to match the other declarations.
+- Update to version 1.7.3
+  * API changes pursuant to 2.0 API finalization:
+  * `mbswidth()` has been renamed `ncstrwidth()`.
+  * The long-promised/dreaded Great Widget Review, normalizing
+    behavior across all widgets, has been effected. Sorry, there
+    was no getting around this one. Pretty much all widgets have
+    slightly changed, because pretty much all widgets previously
+    behaved slightly differently:
+    + `ncselector_create()` and `ncmultiselector_create()` now
+      take ownership of the provided `ncplane`. On an error in
+      these functions, the `ncplane` will be destroyed. Otherwise,
+      the `ncplane` is destroyed by `ncselector_destroy()` or
+      `ncmultiselector_destroy()`.
+    + `ncselector_create()`, `ncmultiselector_create()`, and
+      `ncreader_create()` no longer accept `int y, int x` placement
+      parameters. Just place the `ncplane`.
+    + `ncselector_options`, `ncmultiselector_options`, and
+      `ncreel_options` have lost their `bgchannels` members. Just
+      set the base character for the `ncplane`.
+    + `ncreader_options` has lost its `echannels`, `eattrword`,
+      `egc`, `physrows`, and `physcols` fields. Just set the base
+      character and size for the `ncplane`.
+  * Functions which set a 24-bit RGB value have had the suffix `g`
+    replaced with `g_rgb`. Functions which set three 8-bit RGB
+    components have had the suffix `rgb` replaced with `rgb8`.
+    This was done because e.g.
+    `channels_set_fg()` and `channels_set_fchannel()` were
+    indistinguishable on sight. Failure to make the necessary
+    conversions will result in compiler errors.
+  * Functions ending in `_stainable()` now end in `_stained()`.
+  * `ncplane_putwc_stained()` and `ncplane_putwstr_stained()` have
+    been added in the interest of orthogonality.
+  * `ncplane_new_named()` has been eliminated. `ncplane_new()` now
+    takes a `const char* name` argument. `ncplane_bound()` and
+    `ncplane_bound_named()` have both been eliminated.
+    `ncplane_new()` now accepts an `ncplane*` instead of a
+    `notcurses*`. All functionality exposed by the removed
+    functions is thus now present in `ncplane_new()`.
+  * `ncplane_aligned_named()` has been removed. `ncplane_aligned()`
+    now accepts a `const char* name` argument.
+- Update to version 1.7.2
+  * Exported `ncvisual_default_blitter()`, so that the effective
+    value of `NCBLIT_DEFAULT` can be determined.
+  * Added `NCREADER_OPTION_CURSOR`, instructing the `ncreader` to
+    make the terminal cursor visible, and manage the cursor's
+    placement.
+
+-------------------------------------------------------------------
 Thu Sep 10 18:39:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.2
