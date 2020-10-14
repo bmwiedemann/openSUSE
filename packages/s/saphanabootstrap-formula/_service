@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">saphanabootstrap-formula</param>
-    <param name="versionformat">0.6.1+git.%ct.%h</param>
-    <param name="revision">fd9649323153de0a55c7ed2158c07a314d7f1096</param>
+    <param name="versionformat">0.6.2+git.%ct.%h</param>
+    <param name="revision">b2b12f7e7a06269af114f8303766824a500e88c3</param>
   </service>
 
   <service name="recompress" mode="disabled">

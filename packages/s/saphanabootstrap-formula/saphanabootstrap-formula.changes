@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:50:43 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version 0.6.2:
+  * Update the package version after SUMA form update and extraction logic update
+  (jsc#SLE-4047) 
+
+-------------------------------------------------------------------
 Sun Oct 11 04:21:32 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Fix the hana media extraction and installation logics when using exe archives 
