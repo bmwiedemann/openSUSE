@@ -78,6 +78,7 @@ mkdir -p build/linphone-sdk/desktop/{bin,share}
 
 %build
 %cmake \
+  -DCMAKE_BUILD_TYPE=Release \
   -DLINPHONE_OUTPUT_DIR="$PWD" \
   -DENABLE_UPDATE_CHECK=OFF \
   -DENABLE_STRICT=OFF       \
