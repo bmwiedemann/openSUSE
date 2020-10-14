@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later

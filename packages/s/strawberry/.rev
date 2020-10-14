@@ -644,4 +644,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>840479</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d881f35b93cf4aab1030d60c420f0a81</srcmd5>
+    <version>0.8.2</version>
+    <time>1602682750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2:
+ * Bugfixes:
+ + Fixed broken transition to next song for CUE files with certain audio formats (regression since version 0.6.13).
+ + Fixed all collection divider keys showing on top with some language collate settings (regression in version 0.8.1).
+ + Fixed SQL querying songs by song ID when song ID is a string.
+ + Fixed saving album covers for LMS Subsonic servers.
+ + Fixed reading song creation dates with LMS Subsonic servers.
+ + Fixed saving initial settings.
+ + Removed use of HTML in system tray icon tooltip for all desktop environments instead of just KDE and Cinnamon.
+</comment>
+    <requestid>841603</requestid>
+  </revision>
 </revisionlist>
