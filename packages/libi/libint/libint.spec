@@ -86,6 +86,7 @@ This package contains development headers and libraries for libint.
 
 %build
 %{configure} --enable-shared --disable-static \
+ --enable-eri3=1 \
  --with-incdirs="-I%{_includedir}/eigen3"
 %make_build
 
