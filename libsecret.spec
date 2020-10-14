@@ -18,7 +18,7 @@
 
 %define have_lang 1
 Name:           libsecret
-Version:        0.20.3
+Version:        0.20.4
 Release:        0
 Summary:        Library for accessing the Secret Service API
 License:        LGPL-2.1-or-later
