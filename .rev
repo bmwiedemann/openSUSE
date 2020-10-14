@@ -71,4 +71,12 @@
     <comment>- Update to version 4.2.1.</comment>
     <requestid>823447</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>12cfd24ebd83486ca142d2e00cfb5408</srcmd5>
+    <version>4.2.1</version>
+    <time>1602682811</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>841645</requestid>
+  </revision>
 </revisionlist>
