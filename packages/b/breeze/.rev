@@ -926,4 +926,13 @@
     <comment>Plasma 5.20.0</comment>
     <requestid>840972</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>bb27e79ee1d5ba38e890c5bbcfe99e0e</srcmd5>
+    <version>5.20.0</version>
+    <time>1602668076</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch and regenerate wallpapers to significantly reduce the size:
+  * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch (forwarded request 841732 from Vogtinator)</comment>
+    <requestid>841733</requestid>
+  </revision>
 </revisionlist>

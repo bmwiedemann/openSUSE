@@ -1,0 +1,34 @@
+From 3f1f58950971791b8deaa7fc63187926aa5dd7b9 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 14 Oct 2020 11:00:33 +0200
+Subject: [PATCH] generate_wallpaper_sizes.py: Properly compress wallpapers
+
+The current options are quite bad and result in files which are unnessarily
+big, even bigger than the original file. The Pillow documentation says:
+> Values above 95 should be avoided; 100 disables portions of the JPEG
+> compression algorithm, and results in large files with hardly any gain
+> in image quality.
+
+"100" is not a valid value for the subsamping parameter either.
+
+This change actually enables proper compression with subsampling and also
+enables optimization of internal settings.
+
+Result: From 34MiB down to 12MiB with no noticable difference.
+---
+ wallpapers/generate_wallpaper_sizes.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/wallpapers/generate_wallpaper_sizes.py b/wallpapers/generate_wallpaper_sizes.py
+index b5f997b2..79298c7b 100644
+--- a/wallpapers/generate_wallpaper_sizes.py
++++ b/wallpapers/generate_wallpaper_sizes.py
+@@ -43,4 +43,4 @@ for orientation in ('horizontal', 'vertical'):
+ 			else: box = None
+ 			resized_image = image.resize((width, height), Image.LANCZOS, box)
+ 			resized_image.save(base_dir / f'{width}x{height}{extension}',
+-					  quality=100, subsampling=100)
++					  quality=90, optimize=True, subsampling=1)
+-- 
+2.25.1
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:15:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch and regenerate wallpapers to significantly reduce the size:
+  * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0
