@@ -201,4 +201,19 @@ Use SPDX format (using same license form as Fedora for this package) (forwarded 
   Remove compare's and fail's.</comment>
     <requestid>758165</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>60a4e8b23fba429ffbc94f17706380ac</srcmd5>
+    <version>2019.10.06</version>
+    <time>1602682677</time>
+    <user>dimstar_suse</user>
+    <comment>- removing Novell residues
+- deleted patches
+  - aspell-en-Novellwords_extra_dict.patch (not needed)
+- deleted sources
+  - Nwordlist.tgz (abandoned)
+
+- do not require aspell binary, dictionary can be used
+  by the aspell library [bsc#1177523]</comment>
+    <requestid>841264</requestid>
+  </revision>
 </revisionlist>

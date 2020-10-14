@@ -1,7 +1,7 @@
 #
 # spec file for package aspell-en
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,9 @@ Source1:        ftp://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-%{version}-0.tar
 # keyring from ftp://ftp.gnu.org/gnu/aspell/dict/0index.html
 #   http://aspell.net/dict-upload-key.txt + http://kevin.atkinson.dhs.org/public-key.txt
 Source2:        aspell-en.keyring
-Source3:        Nwordlist.tgz
-# PATCH-FEATURE-OPENSUSE aspell-en-Novellwords_extra_dict.patch -- Add Novell jargon dictionary
-Patch0:         aspell-en-Novellwords_extra_dict.patch
 
 BuildRequires:  aspell >= 0.60
 BuildRequires:  fdupes
-Requires:       aspell >= 0.60
 Provides:       locale(aspell:en)
 
 %description
@@ -46,20 +42,15 @@ An English, Canadian English and British English dictionary for the ASpell
 spell checker.
 
 %prep
-%setup -q -n aspell6-en-%{version}-0 -a3
-%patch0
+%setup -q -n aspell6-en-%{version}-0
 
 %build
 #not autoconf
 ./configure
 make %{?_smp_mflags}
-# creating extra dictionary with Novell jargon
-/usr/bin/word-list-compress c < Nwordlist > Nwordlist.cwl
-/usr/bin/word-list-compress d < Nwordlist.cwl | aspell --lang=en create master ./enNovellwords
 
 %install
 %makeinstall
-install -pm 0644 ./enNovellwords %{buildroot}%{aspell_dict_dir}/
 fdupes %{buildroot}%{aspell_dict_dir}
 
 %files
@@ -68,7 +59,6 @@ fdupes %{buildroot}%{aspell_dict_dir}
 %{aspell_dict_dir}/*.rws
 %{aspell_dict_dir}/*.multi
 %{aspell_dict_dir}/*.alias
-%{aspell_dict_dir}/enNovellwords
 %{aspell_data_dir}/*.dat
 
 %changelog
