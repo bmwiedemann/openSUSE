@@ -117,20 +117,6 @@ make OPTFLAGS="%{optflags}" %{?_smp_mflags}
 mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
 %ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
-%else
-d=%{_libexecdir}/xen/scripts
-mkdir -p %{buildroot}$d
-mv %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd %{buildroot}$d
-%if 0%{?suse_version} > 1500
-rm -rf %{buildroot}%{_sysconfdir}/xen
-%else
-tee %{buildroot}%{_sysconfdir}/xen/scripts/block-drbd <<_EOS_
-#!/bin/sh
-# SUSE versions up to SLE15 populated /etc with files.
-# This wrapper exists to remain compatible with their expected script path
-exec $d/block-drbd "\$@"
-_EOS_
-%endif
 %endif
 
 %pre
@@ -183,12 +169,9 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 /sbin/drbdmon
 %endif
 %ifarch %{ix86} x86_64
-%if 0%{?suse_version} <= 1500
 %dir %attr(700,root,root) %{_sysconfdir}/xen
 %dir %{_sysconfdir}/xen/scripts
 %attr(755,root,root) %{_sysconfdir}/xen/scripts/block-drbd
-%endif
-%{_libexecdir}/xen
 %endif
 %{_prefix}/lib/ocf/resource.d/linbit/drbd
 %{_prefix}/lib/ocf/resource.d/linbit/drbd.shellfuncs.sh

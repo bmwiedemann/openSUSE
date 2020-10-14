@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:12:12 UTC 2020 - ohering@suse.de
+
+- Move block-drbd back to /etc/xen/scripts (bsc#1177531)
+  The change in xen.spec was reverted, but the revert was not applied
+  to this pkg
+
+-------------------------------------------------------------------
 Fri Sep 11 02:35:49 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1176436, update to 9.14.0
