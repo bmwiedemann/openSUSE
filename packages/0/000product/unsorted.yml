@@ -163,7 +163,7 @@ unsorted:
   - OpenLP 
   - OpenMoji-Black 
   - OpenMoji-Color 
-  - OpenPrintingPPDs 
+  - OpenPrintingPPDs: [i586] 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
   - OpenSceneGraph-plugins 
@@ -755,6 +755,7 @@ unsorted:
   - asm5-examples 
   - asm5-javadoc 
   - asn1c 
+  - aspell 
   - aspell-af 
   - aspell-agal 
   - aspell-am 
@@ -766,14 +767,20 @@ unsorted:
   - aspell-bn 
   - aspell-br 
   - aspell-ca 
+  - aspell-cs 
   - aspell-csb 
   - aspell-cy 
+  - aspell-da 
+  - aspell-de 
   - aspell-devel 
+  - aspell-el 
   - aspell-eo 
+  - aspell-es 
   - aspell-et 
   - aspell-fa 
   - aspell-fi 
   - aspell-fo 
+  - aspell-fr 
   - aspell-fy 
   - aspell-ga 
   - aspell-gd 
@@ -786,12 +793,14 @@ unsorted:
   - aspell-hil 
   - aspell-hr 
   - aspell-hsb 
+  - aspell-hu 
   - aspell-hus 
   - aspell-hy 
   - aspell-ia 
   - aspell-id 
   - aspell-is 
   - aspell-ispell 
+  - aspell-it 
   - aspell-kn 
   - aspell-ku 
   - aspell-ky 
@@ -813,12 +822,17 @@ unsorted:
   - aspell-ny 
   - aspell-or 
   - aspell-pa 
+  - aspell-pl 
+  - aspell-pt_BR 
+  - aspell-pt_PT 
   - aspell-qu 
   - aspell-ro 
+  - aspell-ru 
   - aspell-rw 
   - aspell-sc 
   - aspell-sk 
   - aspell-sl 
+  - aspell-spell 
   - aspell-sr 
   - aspell-sv 
   - aspell-sw 
@@ -3807,6 +3821,7 @@ unsorted:
   - gdcm-libgdcm3_0 
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
+  - gdk-pixbuf-loader-libheif 
   - gdk-pixbuf-loader-libopenraw-32bit: [x86_64] 
   - gdk-pixbuf-loader-rsvg-32bit: [x86_64] 
   - gdl-devel 
@@ -8770,6 +8785,7 @@ unsorted:
   - libasm1-32bit: [x86_64] 
   - libasn1c-devel 
   - libasn1c1 
+  - libaspell15 
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
@@ -9649,6 +9665,7 @@ unsorted:
   - libelf1-32bit: [x86_64] 
   - libemf2svg-devel 
   - libemf2svg1 
+  - libenca0 
   - libenca0-32bit: [x86_64] 
   - libenchant-2-2-32bit: [x86_64] 
   - libenchant1-32bit: [x86_64] 
@@ -10171,7 +10188,8 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc8 
+  - libgrpc12 
+  - libgrpc_plugin_support1 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -10261,6 +10279,7 @@ unsorted:
   - libgudev-1_0-0-32bit: [x86_64] 
   - libgudev-1_0-devel 
   - libguess-devel 
+  - libguess1 
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
@@ -10483,6 +10502,8 @@ unsorted:
   - libhdf5hl_fortran_1_10_5-gnu-openmpi4-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
+  - libheif-devel 
+  - libheif1 
   - libheimdal 
   - libheimdal-devel 
   - libhfst53 
@@ -12248,8 +12269,10 @@ unsorted:
   - librbio2 
   - librbl1 
   - librcc-devel 
+  - librcc0 
   - librcc0-32bit: [x86_64] 
   - librcd-devel 
+  - librcd0 
   - librcd0-32bit: [x86_64] 
   - librdf0-32bit: [x86_64] 
   - librdkafka-devel 
@@ -13170,6 +13193,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
+  - libupb12 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -19674,8 +19698,6 @@ unsorted:
   - python-zope.i18nmessageid-doc 
   - python2-aexpect 
   - python2-appindicator 
-  - python2-arabic-reshaper 
-  - python2-geopy 
   - python2-keyrings.alt 
   - python2-libfwsi 
   - python2-libguestfs: [x86_64] 
@@ -19982,6 +20004,7 @@ unsorted:
   - python3-args 
   - python3-arrow 
   - python3-asciimatics 
+  - python3-asciitree 
   - python3-asdf 
   - python3-asgiref 
   - python3-aspectlib 
@@ -20394,6 +20417,7 @@ unsorted:
   - python3-click-log 
   - python3-click-man 
   - python3-click-plugins 
+  - python3-click-repl 
   - python3-click-spinner 
   - python3-click-threading 
   - python3-cliff 
@@ -22999,6 +23023,7 @@ unsorted:
   - rbd-mirror: [x86_64] 
   - rbd-nbd: [x86_64] 
   - rbutil 
+  - rcc-runtime 
   - rclone 
   - rclone-bash-completion 
   - rclone-zsh-completion 
@@ -34652,6 +34677,7 @@ unsorted:
   - uom-lib-common 
   - uom-lib-javadoc 
   - uom-parent 
+  - upb-devel 
   - update-bootloader-rpm-macros 
   - update-checker 
   - update-desktop-files 
