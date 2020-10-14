@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 05:31:51 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1602650385.42f51057:
+  * Support FORCE_PUBLISH_HDD_ when the job fails
+  * Output additional errno value on "encoder not accepting data"
+
+-------------------------------------------------------------------
 Sun Oct 11 17:40:39 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1602438027.de365f7d:
