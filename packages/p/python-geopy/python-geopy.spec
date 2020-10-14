@@ -33,8 +33,8 @@ BuildRequires:  %{python_module pytest >= 3.10}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
-BuildRequires:  python2-contextlib2
-BuildRequires:  python2-statistics
+BuildRequires:  (python2-contextlib2 if python)
+BuildRequires:  (python2-statistics if python)
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-geographiclib >= 1.49

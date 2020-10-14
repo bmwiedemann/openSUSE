@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 16:34:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only buildRequire python2-* when also using python, aka python2.
+
+-------------------------------------------------------------------
 Tue Aug 27 07:00:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of descriptions.
