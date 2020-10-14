@@ -87,12 +87,21 @@ Source18:       RELNOTES-%{upstream_version}
 Source19:       ChangeLog
 Source20:       kernel-source.build-modules.sh
 Source23:       openafs-client.service
+Source24:       openafs-client.service.allow_unsupported
 Source25:       openafs-server.service
 Source26:       openafs-fuse-client.service
 Source27:       sysconfig.openafs-client
 Source28:       sysconfig.openafs-server
 Source29:       sysconfig.openafs-fuse-client
 Source30:       preamble
+Source40:       afs3-bos.xml
+Source41:       afs3-callback.xml
+Source42:       afs3-fileserver.xml
+Source43:       afs3-prserver.xml
+Source44:       afs3-rmtsys.xml
+Source45:       afs3-update.xml
+Source46:       afs3-vlserver.xml
+Source47:       afs3-volser.xml
 Source55:       openafs.SuidCells
 Source56:       openafs.CellAlias
 Source57:       openafs.ThisCell
@@ -116,6 +125,7 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  coreutils
 BuildRequires:  fdupes
+BuildRequires:  firewall-macros
 BuildRequires:  flex
 BuildRequires:  fuse-devel
 BuildRequires:  git
@@ -435,7 +445,11 @@ cp -a %{S:57} %{buildroot}/%{viceetcdir}/ThisCell
 cp -a %{S:58} %{buildroot}/%{viceetcdir}/cacheinfo
 cp -a src/afs/afszcm.cat %{buildroot}%{_datadir}/openafs/C
 install -m 644 %{S:27} %{buildroot}/%{_fillupdir}/sysconfig.openafs-client
+%if 0%{?sle_version} > 150000 
+install -m 644 %{S:24} %{buildroot}/%_unitdir/openafs-client.service
+%else
 install -m 644 %{S:23} %{buildroot}/%_unitdir
+%endif
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcopenafs-client
 
 #
@@ -505,6 +519,18 @@ cp -p %{buildroot}/%{_mandir}/man8/afsd.8 %{buildroot}/%{_mandir}/man8/afsd.fuse
 mv %{buildroot}/%{_libdir}/afs/* %{buildroot}/%{_libdir}/openafs
 mv %{buildroot}/%{_libdir}/*.* %{buildroot}/%{_libdir}/openafs
 rm -rf %{buildroot}/%{_libdir}/afs
+
+# firewalld
+
+mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:40} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:41} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:42} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:43} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:44} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:45} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:46} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -D -m 644 %{S:47} %{buildroot}%{_prefix}/lib/firewalld/services/
 
 #
 # general cleanup
@@ -618,6 +644,7 @@ fi
 /sbin/ldconfig
 %{fillup_only -n openafs-client}
 %service_add_post openafs-client.service
+%firewalld_reload
 
 if [ "x$1" = "x" ]; then
     my_operation=0
@@ -817,6 +844,10 @@ fi
 %{_sbindir}/rcopenafs-client
 %{_fillupdir}/sysconfig.openafs-client
 %{vicecachedir}
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/afs3-callback.xml
+%{_prefix}/lib/firewalld/services/afs3-rmtsys.xml
 
 %files server 
 %defattr(-,root,root)
@@ -906,6 +937,14 @@ fi
 %_unitdir/openafs-server.service
 %{_sbindir}/rcopenafs-server
 /%{_fillupdir}/sysconfig.openafs-server
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/afs3-bos.xml  
+%{_prefix}/lib/firewalld/services/afs3-fileserver.xml
+%{_prefix}/lib/firewalld/services/afs3-prserver.xml
+%{_prefix}/lib/firewalld/services/afs3-update.xml
+%{_prefix}/lib/firewalld/services/afs3-vlserver.xml
+%{_prefix}/lib/firewalld/services/afs3-volser.xml
 
 %files devel  
 %defattr(-,root,root)

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>afs3-prserver</short>
+  <description>OpenAFS users and groups database</description>
+  <port protocol="udp" port="7002"/>
+</service>
