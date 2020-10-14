@@ -247,6 +247,7 @@ Preinstall: libunwind
 Prefer: coreutils
 
 ### Branding related preferences
+Prefer: systemd:systemd-default-settings-branding-openSUSE
 Prefer: distribution-logos-openSUSE-Tumbleweed
 Prefer: awesome:awesome-branding-upstream
 Prefer: bundle-lang-gnome:gnome-session-branding-openSUSE
