@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 17:17:38 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only BuildRequire gimp-plugins-python upto and including Leap
+  15.x. TW has no python2 support anymore, and the gimp python
+  plugins no longer exist.
+
+-------------------------------------------------------------------
 Mon May 27 14:45:12 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
 
 - Tumbleweed needs gimp-plugins-python & python-xml

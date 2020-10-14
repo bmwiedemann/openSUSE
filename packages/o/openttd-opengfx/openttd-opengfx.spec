@@ -1,7 +1,7 @@
 #
 # spec file for package openttd-opengfx
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           openttd-opengfx
 Version:        0.5.5
 Release:        0
 Summary:        Default baseset graphics for OpenTTD
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
-Url:            http://dev.openttdcoop.org/projects/opengfx
+URL:            http://dev.openttdcoop.org/projects/opengfx
 Source:         http://bundles.openttdcoop.org/opengfx/releases/%{version}/opengfx-%{version}-source.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -30,7 +30,9 @@ BuildRequires:  dos2unix
 BuildRequires:  nml >= 0.4.1
 %if !0%{?without_gimp}
 BuildRequires:  gimp
+%if 0%{?suse_version} < 1550
 BuildRequires:  gimp-plugins-python
+%endif
 %endif
 BuildRequires:  grfcodec
 BuildRequires:  python-base
