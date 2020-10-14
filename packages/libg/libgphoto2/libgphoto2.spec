@@ -48,7 +48,7 @@ Obsoletes:      libgphoto2-64bit
 Summary:        A Digital Camera Library
 License:        LGPL-2.1-or-later
 Group:          Hardware/Camera
-Version:        2.5.25
+Version:        2.5.26
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.bz2
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.bz2.asc
