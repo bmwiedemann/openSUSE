@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:59:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python-configparser only conditionally when using
+  python-base, aka python2.
+
+-------------------------------------------------------------------
 Fri Sep 13 12:51:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.0.15:

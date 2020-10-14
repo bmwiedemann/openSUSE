@@ -1,7 +1,7 @@
 #
 # spec file for package python-arabic-reshaper
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@ Source:         https://github.com/mpcabd/python-arabic-reshaper/archive/v%{vers
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-configparser
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python-configparser if python-base)
 Requires:       python-future
 BuildArch:      noarch
 %ifpython2
