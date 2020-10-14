@@ -31,7 +31,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(snappy)
+BuildRequires:  snappy-devel
 %python_subpackages
 
 %description

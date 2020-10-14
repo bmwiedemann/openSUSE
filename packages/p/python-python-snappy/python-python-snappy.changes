@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 17:13:23 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire snappy-devel instead of pkgconfig(snappy): snappy
+  does not provide a pkgconfig file (anymore) and setup.py does
+  also not care for this.
+
+-------------------------------------------------------------------
 Sun Aug 16 21:22:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary build dependency nose
