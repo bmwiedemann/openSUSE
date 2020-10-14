@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 11 21:09:28 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 10.0.26.1:
+  * Add linker functions and types
+  * Fix CUdeviceptr definition for ARM64 CPU
+
+-------------------------------------------------------------------
 Tue Jul  7 22:26:12 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 10.0.26.0:

@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">n([0-9\.]*)</param>
-    <param name="revision">n10.0.26.0</param>
+    <param name="revision">n10.0.26.1</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
