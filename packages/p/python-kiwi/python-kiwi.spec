@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.21.14
+Version:        9.21.17
 Provides:       kiwi-schema = 7.2
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -272,7 +272,7 @@ Summary:        KIWI - Dracut module for oem(repart) image type
 # to set up the build environment...
 BuildRequires:  dracut
 %endif
-Requires:       dracut-kiwi-lib
+Requires:       dracut-kiwi-lib = %{version}-%{release}
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
 
@@ -289,7 +289,7 @@ Summary:        KIWI - Dracut module for oem(install) image type
 # to set up the build environment...
 BuildRequires:  dracut
 %endif
-Requires:       dracut-kiwi-lib
+Requires:       dracut-kiwi-lib = %{version}-%{release}
 Requires:       kexec-tools
 Requires:       gawk
 Requires:       kpartx
