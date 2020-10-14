@@ -2199,4 +2199,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch</comment>
     <requestid>835995</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>febcae72d3557433cf155510b5ab9778</srcmd5>
+    <version>5.15.1</version>
+    <time>1602682689</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove some no longer required build dependencies: libpulse,
+  alsa (now used via QtMultimedia), libmng (obsolete).</comment>
+    <requestid>841299</requestid>
+  </revision>
 </revisionlist>
