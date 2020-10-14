@@ -19,7 +19,7 @@
 %global sover 1
 Name:           libmfx
 %define lname   libmfx%{sover}
-Version:        20.2.1
+Version:        20.3.0
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT

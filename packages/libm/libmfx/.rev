@@ -97,4 +97,12 @@
     <comment>- version 20.2.1 needed for jira#SLE/SLE-12712</comment>
     <requestid>831319</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4047a92911df4b3420062578badc9b12</srcmd5>
+    <version>20.3.0</version>
+    <time>1602682703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841331</requestid>
+  </revision>
 </revisionlist>
