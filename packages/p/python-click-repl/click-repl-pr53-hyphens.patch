@@ -1,0 +1,50 @@
+From 3b557bcb3b53f81950d50169329f4fd1171bc6be Mon Sep 17 00:00:00 2001
+From: Chris Sullins <theazureshadow@gmail.com>
+Date: Wed, 31 Oct 2018 17:32:27 -0700
+Subject: [PATCH] Update tests to expect hyphens
+
+Click now converts underscores to hyphens in command names, so
+update test expectations to match.
+---
+ tests/test_argument.py           | 2 +-
+ tests/test_basic.py              | 4 ++--
+ tests/test_command_collection.py | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_argument.py b/tests/test_argument.py
+index ab1ccea..93af5d1 100644
+--- a/tests/test_argument.py
++++ b/tests/test_argument.py
+@@ -14,6 +14,6 @@ def arg_cmd():
+         pass
+ 
+     c = ClickCompleter(root_command)
+-    completions = list(c.get_completions(Document(u"arg_cmd ")))
++    completions = list(c.get_completions(Document(u"arg-cmd ")))
+ 
+     assert set(x.text for x in completions) == set([u"foo", u"bar"])
+diff --git a/tests/test_basic.py b/tests/test_basic.py
+index 9c67171..b198efb 100644
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -21,8 +21,8 @@ def second_level_command_two():
+         pass
+ 
+     c = ClickCompleter(root_command)
+-    completions = list(c.get_completions(Document(u"first_level_command ")))
++    completions = list(c.get_completions(Document(u"first-level-command ")))
+ 
+     assert set(x.text for x in completions) == set(
+-        [u"second_level_command_one", u"second_level_command_two"]
++        [u"second-level-command-one", u"second-level-command-two"]
+     )
+diff --git a/tests/test_command_collection.py b/tests/test_command_collection.py
+index 0e4c584..a78dfcf 100644
+--- a/tests/test_command_collection.py
++++ b/tests/test_command_collection.py
+@@ -24,4 +24,4 @@ def foobar_cmd():
+     c = ClickCompleter(click.CommandCollection(sources=[foo_group, foobar_group]))
+     completions = list(c.get_completions(Document(u"foo")))
+ 
+-    assert set(x.text for x in completions) == set([u"foo_cmd", u"foobar_cmd"])
++    assert set(x.text for x in completions) == set([u"foo-cmd", u"foobar-cmd"])
