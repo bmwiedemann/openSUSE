@@ -31,7 +31,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 1.8
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-semantic_version
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.17.1
 BuildRequires:  python3-testscenarios
@@ -51,7 +50,7 @@ Requires:       python3-six >= 1.9.0
 Requires:       python3-stevedore >= 1.17.1
 Requires:       python3-yaql >= 1.1.0
 %if 0%{?suse_version}
-Obsoletes:      python-murano-pkg-check < 0.3.1
+Obsoletes:      python2-murano-pkg-check < 0.3.1
 %endif
 
 %description -n python3-murano-pkg-check

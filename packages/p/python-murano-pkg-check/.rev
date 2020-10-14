@@ -36,4 +36,12 @@
   * Switch to python3 only</comment>
     <requestid>811542</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>40886dc1c5a0cbb877f7a499d0af3d27</srcmd5>
+    <version>0.3.0</version>
+    <time>1602682759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to victora template (removes setuptools)</comment>
+    <requestid>841625</requestid>
+  </revision>
 </revisionlist>

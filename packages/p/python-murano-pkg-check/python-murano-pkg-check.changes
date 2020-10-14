@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 19:01:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to victora template (removes setuptools)
+
+-------------------------------------------------------------------
 Thu Jun  4 10:50:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - blacklist failing test
