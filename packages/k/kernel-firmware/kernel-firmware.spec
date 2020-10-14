@@ -123,8 +123,8 @@ Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 Requires:       %{name}-amdgpu = %{version}
-Requires:       %{name}-atheros = %{version}
 Requires:       %{name}-ath10k = %{version}
+Requires:       %{name}-atheros = %{version}
 Requires:       %{name}-bluetooth = %{version}
 Requires:       %{name}-bnx2 = %{version}
 Requires:       %{name}-brcm = %{version}
@@ -5689,10 +5689,10 @@ mkdir -p %{buildroot}/lib/firmware
 %if "%flavor" != "compressed"
 sh ./copy-firmware.sh %{buildroot}/lib/firmware
 %else
-sh %{_sourcedir}/install-split.sh %{_sourcedir}/topics.list %{buildroot} < WHENCE
+sh %{_sourcedir}/install-split.sh -v %{_sourcedir}/topics.list %{buildroot} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
-%fdupes %{buildroot}
+%fdupes -s %{buildroot}
 
 %if "%flavor" != "compressed"
 %post

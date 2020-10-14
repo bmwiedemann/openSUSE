@@ -102,28 +102,6 @@ while read l; do
 		copy_file "$f"
 	    fi
 	    ;;
-    esac
-done
-
-sub="xxx"
-while read l; do
-    test -z "$l" && continue
-    case "$l" in
-	----*)
-	    sub=""
-	    topic=""
-	    ;;
-	Driver:*)
-	    test -n "$sub" && continue
-	    sub=$(echo "$l" | sed -e's/Driver: *//' -e's/[ :].*$//')
-	    m=$(grep -m1 "^$sub": "$topics" | sed -e's/^.*:[[:space:]]*//')
-	    test -z "$m" && continue
-	    set -- $m
-	    topic="$1"
-	    if [ "$topic" = "SKIP" ]; then
-		continue
-	    fi
-	    ;;
 	Link:*)
 	    test "$topic" = "SKIP" && continue
 	    if [ -z "$topic" ]; then
@@ -131,12 +109,10 @@ while read l; do
 		exit 1
 	    fi
 	    echo "$l" | sed -e's/^Link: *//g' -e's/-> //g' | while read f d; do
-		if test -L "$f"; then
-		    copy_link "$f"
-		else
-		    copy_link "$f" "$d"
-		fi
+		copy_link "$f" "$d"
 	    done
 	    ;;
     esac
 done
+
+exit 0

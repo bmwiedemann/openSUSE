@@ -1332,4 +1332,14 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
     <comment></comment>
     <requestid>839646</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>54704d52044b0b935144d5f8682cbc00</srcmd5>
+    <version>20201005</version>
+    <time>1602682707</time>
+    <user>dimstar_suse</user>
+    <comment>- Use fdupes -s (bsc#1177428);
+  this seems fixing the mess up of hard-linked files by the package
+  update (forwarded request 841341 from tiwai)</comment>
+    <requestid>841342</requestid>
+  </revision>
 </revisionlist>

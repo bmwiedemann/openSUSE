@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 12 10:09:10 CEST 2020 - tiwai@suse.de
+
+- Use fdupes -s (bsc#1177428);
+  this seems fixing the mess up of hard-linked files by the package
+  update
+
+-------------------------------------------------------------------
+Sun Oct 11 22:01:34 CEST 2020 - tiwai@suse.de
+
+- Fix symlink creations for split packages (bsc#1177554);
+  also show the copy/link status verbosely at packge build
+
+-------------------------------------------------------------------
 Mon Oct  5 19:34:51 CEST 2020 - tiwai@suse.de
 
 - Placeholder for SLE15-SP3 package sync:
