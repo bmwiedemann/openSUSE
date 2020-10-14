@@ -50,11 +50,6 @@ BuildRequires:  cups-devel
 %endif
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-# All printer driver packages should have "BuildRequires: python-cups"
-# because python-cups installs special rpm macros that adds Provides tags
-# for the printer drivers supported by the package,
-# see https://bugzilla.novell.com/show_bug.cgi?id=735865
-BuildRequires:  python-cups
 %if (0%{?suse_version} > 1110) && ! %{without jbigkit}
 BuildRequires:  libjbig-devel
 %endif
