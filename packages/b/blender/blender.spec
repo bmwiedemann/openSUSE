@@ -72,6 +72,8 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
+# PATCH-FIX-OPENSUSE -- 32bit arch compatibility
+Patch2:         0001-Dont-hide-required-uint64-atomic-ops-when-available.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -242,6 +244,7 @@ popd
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
@@ -290,6 +293,7 @@ cmake ../ \
       -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
 %ifarch ppc ppc64 ppc64le
       -DWITH_CYCLES:BOOL=OFF \
+      -DWITH_CYCLES_EMBREE:BOOL=OFF \
 %else
       -DWITH_CYCLES:BOOL=ON \
 %if %{with osl}

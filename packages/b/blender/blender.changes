@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 23:38:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Explicitly disable embree on PPC*.
+- Fix 32 bit architectures, add
+  0001-Dont-hide-required-uint64-atomic-ops-when-available.patch
+- Remove pointless physicalmemory _constraints already covered by
+  memoryperjob constraint.
+
+-------------------------------------------------------------------
 Thu Sep 24 12:03:28 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.90.1

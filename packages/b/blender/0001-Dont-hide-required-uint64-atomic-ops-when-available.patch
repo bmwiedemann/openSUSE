@@ -1,0 +1,75 @@
+From 21eec0e650520a2c180df027e31faea360206f54 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Wed, 14 Oct 2020 01:37:29 +0200
+Subject: [PATCH] Dont hide required uint64 atomic ops when available
+
+The session-uuid is of type uint64_t, thus 64 bit atomic ops are required.
+
+Always declare the ops, but still fail if neither GCC provides an
+implementation nor blender has a suitable implementation in assembly
+(currently only x86_64).
+
+Fixes blender 2.90.x builds on 32 bit x86 and arm architectures.
+---
+ intern/atomic/atomic_ops.h             |  2 --
+ intern/atomic/intern/atomic_ops_unix.h | 10 ++++------
+ 2 files changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/intern/atomic/atomic_ops.h b/intern/atomic/atomic_ops.h
+index 106e195..54cbcf9 100644
+--- a/intern/atomic/atomic_ops.h
++++ b/intern/atomic/atomic_ops.h
+@@ -69,7 +69,6 @@
+ /******************************************************************************/
+ /* Function prototypes. */
+ 
+-#if (LG_SIZEOF_PTR == 8 || LG_SIZEOF_INT == 8)
+ ATOMIC_INLINE uint64_t atomic_add_and_fetch_uint64(uint64_t *p, uint64_t x);
+ ATOMIC_INLINE uint64_t atomic_sub_and_fetch_uint64(uint64_t *p, uint64_t x);
+ ATOMIC_INLINE uint64_t atomic_fetch_and_add_uint64(uint64_t *p, uint64_t x);
+@@ -81,7 +80,6 @@ ATOMIC_INLINE int64_t atomic_sub_and_fetch_int64(int64_t *p, int64_t x);
+ ATOMIC_INLINE int64_t atomic_fetch_and_add_int64(int64_t *p, int64_t x);
+ ATOMIC_INLINE int64_t atomic_fetch_and_sub_int64(int64_t *p, int64_t x);
+ ATOMIC_INLINE int64_t atomic_cas_int64(int64_t *v, int64_t old, int64_t _new);
+-#endif
+ 
+ ATOMIC_INLINE uint32_t atomic_add_and_fetch_uint32(uint32_t *p, uint32_t x);
+ ATOMIC_INLINE uint32_t atomic_sub_and_fetch_uint32(uint32_t *p, uint32_t x);
+diff --git a/intern/atomic/intern/atomic_ops_unix.h b/intern/atomic/intern/atomic_ops_unix.h
+index e1126ca..63f8c52 100644
+--- a/intern/atomic/intern/atomic_ops_unix.h
++++ b/intern/atomic/intern/atomic_ops_unix.h
+@@ -51,8 +51,7 @@
+ 
+ /******************************************************************************/
+ /* 64-bit operations. */
+-#if (LG_SIZEOF_PTR == 8 || LG_SIZEOF_INT == 8)
+-#  if (defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8) || defined(JE_FORCE_SYNC_COMPARE_AND_SWAP_8))
++#if (defined(__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8) || defined(JE_FORCE_SYNC_COMPARE_AND_SWAP_8))
+ /* Unsigned */
+ ATOMIC_INLINE uint64_t atomic_add_and_fetch_uint64(uint64_t *p, uint64_t x)
+ {
+@@ -105,7 +104,7 @@ ATOMIC_INLINE int64_t atomic_cas_int64(int64_t *v, int64_t old, int64_t _new)
+   return __sync_val_compare_and_swap(v, old, _new);
+ }
+ 
+-#  elif (defined(__amd64__) || defined(__x86_64__))
++#elif (defined(__amd64__) || defined(__x86_64__))
+ /* Unsigned */
+ ATOMIC_INLINE uint64_t atomic_fetch_and_add_uint64(uint64_t *p, uint64_t x)
+ {
+@@ -179,9 +178,8 @@ ATOMIC_INLINE int64_t atomic_cas_int64(int64_t *v, int64_t old, int64_t _new)
+   asm volatile("lock; cmpxchgq %2,%1" : "=a"(ret), "+m"(*v) : "r"(_new), "0"(old) : "memory");
+   return ret;
+ }
+-#  else
+-#    error "Missing implementation for 64-bit atomic operations"
+-#  endif
++#elif (LG_SIZEOF_PTR == 8 || LG_SIZEOF_INT == 8)
++#  error "Missing implementation for 64-bit atomic operations"
+ #endif
+ 
+ /******************************************************************************/
+-- 
+2.28.0
+

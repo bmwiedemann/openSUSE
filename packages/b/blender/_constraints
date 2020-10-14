@@ -4,9 +4,6 @@
     <disk>
       <size unit="G">20</size>
     </disk>
-    <physicalmemory>
-      <size unit="G">2</size>
-    </physicalmemory>
     <memory>
       <size unit="G">4</size>
     </memory>
@@ -19,20 +16,10 @@
       <arch>x86_64</arch>
     </conditions>
     <hardware>
+      <!-- have some additional features like embree ... -->
       <memory>
         <size unit="M">5500</size>
       </memory>
-    </hardware>
-  </overwrite>
-  <overwrite>
-    <conditions>
-      <arch>ppc64</arch>
-      <arch>ppc64le</arch>
-    </conditions>
-    <hardware>
-      <physicalmemory>
-        <size unit="G">6</size>
-      </physicalmemory>
     </hardware>
   </overwrite>
 </constraints>

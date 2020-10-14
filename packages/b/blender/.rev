@@ -1141,4 +1141,12 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>837183</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>1620608e9caebf907d602f5dc68e5fcb</srcmd5>
+    <version>2.90.1</version>
+    <time>1602682842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841717</requestid>
+  </revision>
 </revisionlist>
