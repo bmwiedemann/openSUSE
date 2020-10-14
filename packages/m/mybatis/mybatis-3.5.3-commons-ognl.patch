@@ -1,6 +1,8 @@
---- mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/DynamicContext.java	2019-10-20 12:19:07.000000000 +0200
-+++ mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/DynamicContext.java	2019-11-18 09:50:27.820354865 +0100
-@@ -19,9 +19,9 @@
+Index: mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/DynamicContext.java
+===================================================================
+--- mybatis-3-mybatis-3.5.6.orig/src/main/java/org/apache/ibatis/scripting/xmltags/DynamicContext.java
++++ mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/DynamicContext.java
+@@ -19,9 +19,9 @@ import java.util.HashMap;
  import java.util.Map;
  import java.util.StringJoiner;
  
@@ -13,7 +15,7 @@
  
  import org.apache.ibatis.reflection.MetaObject;
  import org.apache.ibatis.session.Configuration;
-@@ -104,7 +104,7 @@
+@@ -104,7 +104,7 @@ public class DynamicContext {
      }
    }
  
@@ -22,9 +24,11 @@
  
      @Override
      public Object getProperty(Map context, Object target, Object name) {
---- mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlCache.java	2019-10-20 12:19:07.000000000 +0200
-+++ mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlCache.java	2019-11-18 09:53:28.329413177 +0100
-@@ -18,8 +18,8 @@
+Index: mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlCache.java
+===================================================================
+--- mybatis-3-mybatis-3.5.6.orig/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlCache.java
++++ mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlCache.java
+@@ -18,8 +18,8 @@ package org.apache.ibatis.scripting.xmlt
  import java.util.Map;
  import java.util.concurrent.ConcurrentHashMap;
  
@@ -35,7 +39,7 @@
  
  import org.apache.ibatis.builder.BuilderException;
  
-@@ -42,7 +42,7 @@
+@@ -42,7 +42,7 @@ public final class OgnlCache {
  
    public static Object getValue(String expression, Object root) {
      try {
@@ -44,22 +48,23 @@
        return Ognl.getValue(parseExpression(expression), context, root);
      } catch (OgnlException e) {
        throw new BuilderException("Error evaluating expression '" + expression + "'. Cause: " + e, e);
---- mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlClassResolver.java	2019-10-20 12:19:07.000000000 +0200
-+++ mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlClassResolver.java	2019-11-18 10:00:28.603874818 +0100
-@@ -15,9 +15,11 @@
+Index: mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlClassResolver.java
+===================================================================
+--- mybatis-3-mybatis-3.5.6.orig/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlClassResolver.java
++++ mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlClassResolver.java
+@@ -15,9 +15,9 @@
   */
  package org.apache.ibatis.scripting.xmltags;
  
 -import ognl.DefaultClassResolver;
+-
 +import org.apache.commons.ognl.DefaultClassResolver;
  import org.apache.ibatis.io.Resources;
- 
 +import java.util.Map;
-+
+ 
  /**
   * Custom ognl {@code ClassResolver} which behaves same like ognl's
-  * {@code DefaultClassResolver}. But uses the {@code Resources}
-@@ -30,7 +32,8 @@
+@@ -31,7 +31,8 @@ import org.apache.ibatis.io.Resources;
  public class OgnlClassResolver extends DefaultClassResolver {
  
    @Override
@@ -69,9 +74,11 @@
      return Resources.classForName(className);
    }
  
---- mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlMemberAccess.java	2019-10-20 12:19:07.000000000 +0200
-+++ mybatis-3-mybatis-3.5.3/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlMemberAccess.java	2019-11-18 09:50:27.820354865 +0100
-@@ -19,7 +19,7 @@
+Index: mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlMemberAccess.java
+===================================================================
+--- mybatis-3-mybatis-3.5.6.orig/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlMemberAccess.java
++++ mybatis-3-mybatis-3.5.6/src/main/java/org/apache/ibatis/scripting/xmltags/OgnlMemberAccess.java
+@@ -19,7 +19,7 @@ import java.lang.reflect.AccessibleObjec
  import java.lang.reflect.Member;
  import java.util.Map;
  

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 14:41:39 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Version update to 3.5.6 [bsc#1177568, CVE-2020-26945]
+  * Security fix: mybatis mishandles deserialization of object
+    streams which could lead to remote code execution
+  * List of changes: https://github.com/mybatis/mybatis-3/releases
+- Update mybatis-3.5.3-commons-ognl.patch
+
+-------------------------------------------------------------------
 Wed Mar  4 09:45:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of mybatis 3.5.3

@@ -1,7 +1,7 @@
 #
 # spec file for package mybatis
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with test
 Name:           mybatis
-Version:        3.5.3
+Version:        3.5.6
 Release:        0
 Summary:        SQL Mapping Framework for Java
 # http://code.google.com/p/mybatis/
