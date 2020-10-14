@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Oct 13 16:49:04 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix the License
+
+-------------------------------------------------------------------
+Mon Oct 12 20:12:32 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Only build with AV1-AVIF support
+- Update to version 1.9.1
+  * https://github.com/strukturag/libheif/releases/tag/v1.9.1
+
+-------------------------------------------------------------------
+Wed Jul 08 15:54:52 UTC 2018 - plinnell@opensuse.org
+
+- initial package for 1.3.2
