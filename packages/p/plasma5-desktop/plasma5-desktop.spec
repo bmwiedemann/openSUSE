@@ -143,6 +143,8 @@ Requires:       libksysguard5-imports
 Requires:       kactivities5-imports
 # Needed for several KCMs
 Requires:       knewstuff-imports
+# Needed for kcm_users
+Requires:       accountsservice
 Conflicts:      kactivities5 < 5.20.0
 Recommends:     plasma5-addons
 Recommends:     %{name}-emojier
@@ -169,6 +171,7 @@ Obsoletes:      %{name}-kimpanel < %{version}
 # Was dropped in 5.20, replaced by kcm_users from p-d
 Provides:       kde-user-manager = %{version}
 Obsoletes:      kde-user-manager < %{version}
+Obsoletes:      kde-user-manager-lang < %{version}
 Obsoletes:      synaptiks < 0.9.0
 
 %description
