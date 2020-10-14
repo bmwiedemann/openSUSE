@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 09:26:15 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Update to version 3.8.5
+  - Pin to cmd/config/v0.8.2
+- Refresh vendor.tar.xz
+
+-------------------------------------------------------------------
 Mon Sep 21 09:57:01 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.8.4
