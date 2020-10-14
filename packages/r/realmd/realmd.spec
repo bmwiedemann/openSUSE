@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.freedesktop.org/software/realmd
 Source:         http://www.freedesktop.org/software/realmd/releases/%{name}-%{version}.tar.gz
+Patch1:         0001-suse-pam-settings.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -56,6 +57,7 @@ authentication and user account lookups.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 # krb5-config is hidden
