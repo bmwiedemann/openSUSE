@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 07 11:06:27 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201007.ccac00af:
+  * Fix MQ timeouts in rabbit-repoid
+
+-------------------------------------------------------------------
+Wed Oct 07 06:15:05 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201007.706b6713:
+  * Do not try to push empty changes in rabbit-repoid
+
+-------------------------------------------------------------------
+Wed Oct 07 05:22:37 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201007.c336e60c:
+  * Check git errors in rabbit-repoid
+
+-------------------------------------------------------------------
+Wed Sep 30 12:52:46 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20200930.488b0fc7:
+  * gocd: Run ttm for openSUSE:Jump:15.2:Images
+
+-------------------------------------------------------------------
 Wed Sep 23 08:34:49 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20200923.c33e6a9e:
