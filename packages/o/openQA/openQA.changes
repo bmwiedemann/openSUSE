@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 14 05:32:33 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1602630091.729fcbe41:
+  * Dependency cron 2020-10-13
+  * Fix wrong firewalld command in documentation
+  * tools: Revert change f3b5dd95c that never fully worked
+
+-------------------------------------------------------------------
 Sun Oct 11 11:36:44 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1602412783.03de4fa69:
