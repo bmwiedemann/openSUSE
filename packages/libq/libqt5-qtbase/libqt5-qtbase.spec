@@ -71,12 +71,10 @@ Patch25:        0001-Revert-Emit-QScreen-availableG-g-eometryChanged-on-l.patch
 # patches 2000-3000 and above from upstream qt6/dev branch #
 # Not accepted yet, https://codereview.qt-project.org/c/qt/qtbase/+/255384
 Patch2001:      0002-Synthesize-Enter-LeaveEvent-for-accepted-QTabletEven.patch
-BuildRequires:  alsa-devel
 BuildRequires:  cups-devel
 BuildRequires:  double-conversion-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
-BuildRequires:  libmng-devel
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libproxy-devel
@@ -103,7 +101,6 @@ BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  pkgconfig(glesv2)
 %endif
 BuildRequires:  libicu-devel
-BuildRequires:  libpulse-devel
 BuildRequires:  tslib-devel
 %if %{vulkan}
 BuildRequires:  vulkan-devel
