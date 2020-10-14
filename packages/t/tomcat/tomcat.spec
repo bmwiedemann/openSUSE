@@ -83,6 +83,7 @@ Patch4:         tomcat-9.0-osgi-build.patch
 Patch5:         tomcat-9.0.31-java8compat.patch
 # PATCH-FIX-OPENSUSE: set ajp connector secreteRequired to false by default to avoid tomcat not starting
 Patch6:         tomcat-9.0.31-secretRequired-default.patch
+Patch7:         tomcat-9.0-CVE-2020-13943.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -262,6 +263,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

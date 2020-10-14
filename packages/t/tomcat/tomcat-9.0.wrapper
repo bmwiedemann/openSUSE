@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" = "version" ]; then
-  . /usr/lib/tomcat/preamble
+  . /usr/libexec/tomcat/preamble
   exec ${JAVACMD} -classpath ${CATALINA_HOME}/lib/catalina.jar \
     org.apache.catalina.util.ServerInfo
 fi

@@ -14,8 +14,8 @@ After=syslog.target network.target
 Type=simple
 EnvironmentFile=/etc/tomcat/tomcat.conf
 Environment="NAME=" "USE_JSVC=true"
-ExecStart=/usr/lib/tomcat/server start
-ExecStop=/usr/lib/tomcat/server stop
+ExecStart=/usr/libexec/tomcat/server start
+ExecStop=/usr/libexec/tomcat/server stop
 
 [Install]
 WantedBy=multi-user.target

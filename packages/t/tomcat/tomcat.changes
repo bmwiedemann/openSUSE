@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:23:32 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Fix CVE-2020-13943 (bsc#1177582)
+- Added patch: 
+  * tomcat-9.0-CVE-2020-13943.patch
+- Change /usr/lib/tomcat to /usr/libexec/tomcat in startup
+  scripts (bsc#1177601)
+
+-------------------------------------------------------------------
 Wed Aug 26 06:04:58 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid hardcoding /usr/lib as libexecdir
