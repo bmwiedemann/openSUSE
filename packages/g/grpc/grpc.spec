@@ -16,13 +16,12 @@
 #
 
 
-%define lver 8
+%define lver 12
 %define lverp 1
+%define lverplugin 1
 %define src_install_dir /usr/src/%name
-%bcond_without python2
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           grpc
-Version:        1.25.0
+Version:        1.32.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -30,18 +29,20 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM grpc-find-re2-via-pkgconfig.patch gh#grpc/grpc#24088 badshah400@gmail.com -- Attempt to find Re2 library via pkg-config; patch taken from upstream PR
+Patch0:         grpc-find-re2-via-pkgconfig.patch
+# PATCH-FIX-UPSTREAM grpc-correct-pkgconfig-path.patch badshah400@gmail.com -- Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
+Patch1:         grpc-correct-pkgconfig-path.patch
+BuildRequires:  abseil-cpp-source
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  python-rpm-macros
 BuildRequires:  zypper
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(protobuf) >= 3.8.0
+BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -52,10 +53,6 @@ Protocol Buffers as the Interface Definition Language by default.
 %package -n libgrpc%lver
 Summary:        HTTP/2-based Remote Procedure Call implementation
 Group:          System/Libraries
-%if "%lver" == "7"
-# prior error in packaging
-Conflicts:      libgrpc6
-%endif
 
 %description -n libgrpc%lver
 The reference implementation of the gRPC protocol, done on top of
@@ -75,15 +72,54 @@ The reference implementation of the gRPC protocol, done on top of
 HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
 Protocol Buffers as the Interface Definition Language by default.
 
+%package -n libgrpc_plugin_support%lverplugin
+Summary:        HTTP/2-based Remote Procedure Call implementation - plugin support
+Group:          System/Libraries
+
+%description -n libgrpc_plugin_support%lverplugin
+The reference implementation of the gRPC protocol, done on top of
+HTTP/2 with support for synchronous and asynchronous calls. gRPC uses
+Protocol Buffers as the Interface Definition Language by default.
+
+This package provides the shared library to support plugins for grpc.
+
+%package -n libupb%lver
+Summary:        A small protobuf implementation in C
+Group:          System/Libraries
+
+%description -n libupb%lver
+μpb (often written 'upb') is a small protobuf implementation written in C.
+
+upb generates a C API for creating, parsing, and serializing messages as
+declared in .proto files. upb is heavily arena-based: all messages always live
+in an arena (note: the arena can live in stack or static memory if desired).
+
 %package devel
 Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Tools/Building
 Requires:       libgrpc%lver = %version
 Requires:       libgrpc++%lverp = %version
+Requires:       libgrpc_plugin_support%lverplugin = %version
+Requires:       pkgconfig(libcares)
+Requires:       pkgconfig(re2)
 
 %description devel
 This subpackage contains libraries and header files for developing
 applications that want to make use of the gRPC reference implementation.
+
+%package -n upb-devel
+Summary:        Developmnt files for upb
+Group:          Development/Tools/Building
+Requires:       libupb%lver = %version
+
+%description -n upb-devel
+μpb (often written 'upb') is a small protobuf implementation written in C.
+
+upb generates a C API for creating, parsing, and serializing messages as
+declared in .proto files. upb is heavily arena-based: all messages always live
+in an arena (note: the arena can live in stack or static memory if desired).
+
+This package provides development files for upb.
 
 %package source
 Summary:        Source code of gRPC
@@ -93,24 +129,10 @@ BuildArch:      noarch
 %description -n grpc-source
 This subpackage contains source code of the gRPC reference implementation.
 
-%package -n python2-grpcio
-Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
-Group:          Development/Libraries/Python
-Requires:       libgrpc%lver = %version-%release
-
-%description -n python2-grpcio
-This subpackage contains the python2 bindings.
-
-%package -n python3-grpcio
-Summary:        Python language bindings for grpc, a HTTP/2 Remote Procedure Call implementation
-Group:          Development/Libraries/Python
-Requires:       libgrpc%lver = %version-%release
-
-%description -n python3-grpcio
-This subpackage contains the python3 bindings.
-
 %prep
 %autosetup -p1
+# Copy abseil-cpp source into empty third_party/abseil-cpp dir
+cp -r %_prefix/src/abseil-cpp/* third_party/abseil-cpp/
 
 %build
 %define _lto_cflags %nil
@@ -119,36 +141,36 @@ mkdir -p third_party/protobuf/src
 
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
-make %{?_smp_mflags} STRIP=/bin/true V=1 VERBOSE=1
-
-# build python module
-export GRPC_PYTHON_BUILD_WITH_CYTHON=True
-export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=True
-export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=True
-export GRPC_PYTHON_BUILD_SYSTEM_CARES=True
-%python_build
+%cmake -DgRPC_INSTALL=ON                  \
+       -DgRPC_INSTALL_LIBDIR:PATH="%_lib" \
+       -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir"/cmake/grpc \
+       -DgRPC_ABSL_PROVIDER=module        \
+       -DgRPC_CARES_PROVIDER=package      \
+       -DgRPC_PROTOBUF_PROVIDER=package   \
+       -DgRPC_RE2_PROVIDER=package        \
+       -DgRPC_SSL_PROVIDER=package        \
+       -DgRPC_ZLIB_PROVIDER=package
+%cmake_build
 
 %install
 b="%buildroot"
 # work around "Argument list too long"
 ln -s "%buildroot" "b"
-%make_install DESTDIR="b" prefix="b/%_prefix" STRIP=/bin/true V=1 VERBOSE=1
+%cmake_install
 
-find "$b/%_includedir" -type f -exec chmod a-x {} +
 pushd "$b/usr"
 rm -fv lib/*.a share/grpc/*.pem
-perl -i -pe 's{^prefix=.*}{prefix=%_prefix}' lib/pkgconfig/*.pc
-perl -i -pe 's{^libdir=.*}{libdir=%_libdir}' lib/pkgconfig/*.pc
-if test ! -d lib64 && test "%_lib" = lib64; then
-	mv lib lib64
-fi
 popd
-%python_install
 
 # Install sources
+pushd %__builddir
 make clean
-rm -f "b" "a.out"
-find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" ")" -exec rm -rf {} +
+rm -f "b"
+find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" -o -name "*.bin" -o -name "*.out" ")" -exec rm -rf {} +
+popd
+# Don't include abseil-cpp in sources
+rm -fr third_party/abseil-cpp/*
+
 mkdir -p "%buildroot/%src_install_dir"
 cp -r * "%buildroot/%src_install_dir"
 
@@ -158,6 +180,8 @@ cp -r * "%buildroot/%src_install_dir"
 %postun -n libgrpc%lver -p /sbin/ldconfig
 %post   -n libgrpc++%lverp -p /sbin/ldconfig
 %postun -n libgrpc++%lverp -p /sbin/ldconfig
+%post   -n libgrpc_plugin_support%lverplugin -p /sbin/ldconfig
+%postun -n libgrpc_plugin_support%lverplugin -p /sbin/ldconfig
 
 %files -n libgrpc%lver
 %_libdir/libaddress_sorting.so.%{lver}*
@@ -168,22 +192,24 @@ cp -r * "%buildroot/%src_install_dir"
 %_libdir/libgrpc++*.so.%{lverp}*
 %_libdir/libgrpcpp_channelz.so.%{lverp}*
 
+%files -n libgrpc_plugin_support%lverplugin
+%_libdir/libgrpc_plugin_support.so.%{lverplugin}*
+
+%files -n libupb%lver
+%_libdir/libupb*.so.%{lver}*
+
 %files devel
 %license LICENSE
 %_bindir/*
 %_includedir/*
 %_libdir/pkgconfig/*.pc
 %_libdir/*.so
+%_libdir/cmake/grpc/
+
+%files -n upb-devel
+%_libdir/libupb*.so
 
 %files source
 %src_install_dir
-
-%if %{with python2}
-%files -n python2-grpcio
-%python2_sitearch/grpc*
-%endif
-
-%files -n python3-grpcio
-%python3_sitearch/grpc*
 
 %changelog
