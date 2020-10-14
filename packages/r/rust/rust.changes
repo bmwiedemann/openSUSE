@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Oct 10 00:26:02 UTC 2020 - William Brown <william.brown@suse.com>
+
+- Update to version 1.46.0
+  + Language
+  - [`if`, `match`, and `loop` expressions can now be used in const functions.][72437]
+  - [Additionally you are now also able to coerce and cast to slices (`&[T]`) in
+    const functions.][73862]
+  - [The `#[track_caller]` attribute can now be added to functions to use the
+    function's caller's location information for panic messages.][72445]
+  - [Recursively indexing into tuples no longer needs parentheses.][71322] E.g.
+    `x.0.0` over `(x.0).0`.
+  - [`mem::transmute` can now be used in statics and constants.][72920] **Note**
+    You currently can't use `mem::transmute` in constant functions.
+  + Compiler
+  - [You can now use the `cdylib` target on Apple iOS and tvOS platforms.][73516]
+  - [Enabled static "Position Independent Executables" by default
+    for `x86_64-unknown-linux-musl`.][70740]
+  + Libraries
+  - [`mem::forget` is now a `const fn`.][73887]
+  - [`String` now implements `From<char>`.][73466]
+  - [The `leading_ones`, and `trailing_ones` methods have been stabilised for all
+    integer types.][73032]
+  - [`vec::IntoIter<T>` now implements `AsRef<[T]>`.][72583]
+  - [All non-zero integer types (`NonZeroU8`) now implement `TryFrom` for their
+    zero-able equivalent (e.g. `TryFrom<u8>`).][72717]
+  - [`&[T]` and `&mut [T]` now implement `PartialEq<Vec<T>>`.][71660]
+  - [`(String, u16)` now implements `ToSocketAddrs`.][73007]
+  - [`vec::Drain<'_, T>` now implements `AsRef<[T]>`.][72584]
+  + Stabilized APIs
+  - [`Option::zip`]
+  - [`vec::Drain::as_slice`]
+  + Cargo
+    Added a number of new environment variables that are now available when
+    compiling your crate.
+  - [`CARGO_BIN_NAME` and `CARGO_CRATE_NAME`][cargo/8270] Providing the name of
+    the specific binary being compiled and the name of the crate.
+  - [`CARGO_PKG_LICENSE`][cargo/8325] The license from the manifest of the package.
+  - [`CARGO_PKG_LICENSE_FILE`][cargo/8387] The path to the license file.
+
+-------------------------------------------------------------------
+Thu Oct 08 22:33:12 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Rebased patches:
+  + ignore-Wstring-conversion.patch (offset / fuzz)
+
+-------------------------------------------------------------------
 Thu Sep  3 03:09:46 UTC 2020 - William Brown <william.brown@suse.com>
 
 - Update to version 1.45.2
