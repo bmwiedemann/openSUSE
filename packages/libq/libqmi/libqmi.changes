@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:09:15 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- update to 1.26.6:
+ * libqmi-glib:
+   + New TLV read APIs added in "NAS Get Cell Location Info" so
+     that BCD encoded PLMN strings are read as arrays instead of
+     as UTF-8 validated strings.
+   + Allow TAB characters as printable in strings.
+ * qmicli:
+   + report EcIo, RSRP and phase for 5GNR in "NAS Get TX/RX Info".
+ * Several other minor improvements and fixes.
+
+-------------------------------------------------------------------
 Wed Aug 26 19:20:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.26.4:
