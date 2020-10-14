@@ -20,10 +20,10 @@
 Name:           folder-color
 Version:        0.0.88
 Release:        0
-Summary:        Change a directory colour in Caja, Nautilus and Nemo
+Summary:        File browser extension for changing directory colors in Caja, Nautilus and Nemo
 License:        GPL-3.0-or-later
 Group:          Productivity/File utilities
-URL:            https://launchpad.net/folder-color
+URL:            https://github.com/costales/folder-color
 Source:         https://launchpad.net/~costales/+archive/ubuntu/folder-color/+files/%{name}-common_%{version}.tar.gz
 Source1:        https://launchpad.net/~costales/+archive/ubuntu/folder-color/+files/%{name}_%{version}.tar.gz
 Source2:        https://launchpad.net/~costales/+archive/ubuntu/folder-color/+files/%{name}-caja_%{version}.tar.gz
@@ -36,10 +36,10 @@ BuildRequires:  python3-distutils-extra
 BuildArch:      noarch
 
 %description
-Change a directory colour, then get better visual layout.
+A file browser extension for choosing the color of a folder.
 
 %package -n nautilus-extension-%{name}
-Summary:        Change a directory colour in Nautilus
+Summary:        Nautilus extension for changing directory color
 Group:          Productivity/File utilities
 Requires:       %{name}-common = %{version}
 Requires:       nautilus
@@ -49,10 +49,10 @@ Provides:       %{name}-nautilus = %{version}
 Obsoletes:      %{name}-nautilus < %{version}
 
 %description -n nautilus-extension-%{name}
-Change a directory colour, then get better visual layout.
+A file browser extension for choosing the color of a folder.
 
 %package -n caja-extension-%{name}
-Summary:        Change a directory colour in Caja
+Summary:        Caja extension for changing directory color
 Group:          Productivity/File utilities
 Requires:       %{name}-common = %{version}
 Requires:       caja
@@ -62,35 +62,32 @@ Provides:       %{name}-caja = %{version}
 Obsoletes:      %{name}-caja < %{version}
 
 %description -n caja-extension-%{name}
-Change a directory colour, then get better visual layout.
+A file browser extension for choosing the color of a folder.
 
 %package -n nemo-extension-%{name}
-Summary:        Change a directory colour in Nemo
+Summary:        Nemo extension for changing directory color
 Group:          Productivity/File utilities
 Requires:       %{name}-common = %{version}
 Requires:       nemo
 Requires:       python-nemo
 
 %description -n nemo-extension-%{name}
-Change a directory colour, then get better visual layout.
+A file browser extension for choosing the color of a folder.
 
 %package common
-Summary:        Change a directory colour in Caja, Nautilus and Nemo
+Summary:        Auxiliary files for the folder-color file browser extension
 Group:          Productivity/File utilities
 Requires:       gtk3-tools
 Requires:       gvfs
 Recommends:     %{name}-common-lang = %{version}
 
 %description common
-Change a directory colour, then get better visual layout.
+A file browser extension for choosing the color of a folder.
 
 %lang_package -n %{name}-common
 
 %prep
-%setup -q -n common
-%setup -q -D -T -a 1 -n common
-%setup -q -D -T -a 2 -n common
-%setup -q -D -T -a 3 -n common
+%setup -qn common -a1 -a2 -a3
 
 chmod a-x COPYING.GPL3
 sed -i '/name/s/%{name}/%{name}-nautilus/' nautilus/setup.py
