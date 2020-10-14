@@ -17,13 +17,13 @@
 
 
 Name:           python-pyghmi
-Version:        1.5.13
+Version:        1.5.18
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/pyghmi
-Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.13.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.18.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cryptography >= 2.1
 BuildRequires:  python3-devel
@@ -74,7 +74,7 @@ this library into python code
 
 %build
 %{py3_build}
-PYTHONPATH=. PBR_VERSION=1.5.13 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=1.5.18 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install

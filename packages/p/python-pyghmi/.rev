@@ -259,4 +259,41 @@
     <comment>- update to stable/ussuri template (version 1.5.13)</comment>
     <requestid>812565</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0d5e68e2a6996b0813ba879ad159ab7c</srcmd5>
+    <version>1.5.18</version>
+    <time>1602682757</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.18:
+  * Fix software sensor data
+  * Fix more SMM issues
+  * Fix NTP configuration of FPC/SMM with py3
+  * Add Cascade Lake OEM sensor to sdr
+  * Amend refererer
+  * Fix the referer for ipv6
+  * Add referer to XCC OEM behaviors
+  * Fix compatibility with FPC for PSU cfg
+  * Fix FPC configuration support
+  * Coerce to str if bytes in python 3
+  * Closes-Bug: 1887953
+  * In python2, we must change to bytes explicitly
+  * Fix python3 issues with FPC interaction
+  * Add smm\_ip setting to XCC devices under IPMI
+  * Support newer storage api
+  * Add dateutil requirement for python2 users
+  * Do not swallow TSM errors
+  * Tolerate variant of TSMA without sys OEM
+  * Fix setting passwords in python3
+  * A redfish device with no OEM should be generic
+  * Ignore 'fault' light for info-only events
+  * Add dateutil dependency
+  * Fix RDOC upload of large images
+  * Update pep8 import order check
+  * Fix python3 compatibility with older IBM
+  * Support newer XCC firmware raid
+  * Retry on etag change
+  * Improve redfish errors and identify
+  * Fix KCS on python 2</comment>
+    <requestid>841624</requestid>
+  </revision>
 </revisionlist>
