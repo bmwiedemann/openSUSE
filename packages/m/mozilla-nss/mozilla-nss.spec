@@ -82,7 +82,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires(pre):  libfreebl3 >= %{nss_softokn_fips_version}
 Requires(pre):  libsoftokn3 >= %{nss_softokn_fips_version}
 Requires(pre):  mozilla-nspr >= %{NSPR_min_version}
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
 Requires:       libnssckbi.so()(64bit)
 %else
 Requires:       libnssckbi.so

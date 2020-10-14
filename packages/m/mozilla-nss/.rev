@@ -2183,4 +2183,12 @@
   for LTO on Tumbleweed</comment>
     <requestid>840031</requestid>
   </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>30d0ddc35574780d6994cb8c25e5b95f</srcmd5>
+    <version>3.57</version>
+    <time>1602682693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841322</requestid>
+  </revision>
 </revisionlist>

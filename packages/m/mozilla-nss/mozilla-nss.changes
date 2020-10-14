@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:31:33 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  lib64 == lib64.
+
+-------------------------------------------------------------------
 Wed Sep 30 21:06:01 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.57
