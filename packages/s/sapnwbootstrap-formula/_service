@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">sapnwbootstrap-formula</param>
-    <param name="versionformat">0.5.1+git.%ct.%h</param>
-    <param name="revision">84ced2387dfdf481ffab0c8eea37767340ecf7e1</param>
+    <param name="versionformat">0.5.2+git.%ct.%h</param>
+    <param name="revision">43801ea10f75a074193515ae443808929bcec1e4</param>
   </service>
 
   <service name="recompress" mode="disabled">
