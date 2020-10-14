@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 16:14:57 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer package symlinks for Xsession, Xsetupm Xstartup and
+  Xreset in /etc/X11/xdm, since meanwhile sddm, gdm and lightdm
+  have been adjusted
+
+-------------------------------------------------------------------
 Mon Oct  5 14:57:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed /etc/X11/xdm/Keyboard.map since it meanwhile has been

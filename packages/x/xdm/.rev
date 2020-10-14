@@ -879,4 +879,14 @@
   * no longer support sle11</comment>
     <requestid>839607</requestid>
   </revision>
+  <revision rev="85" vrev="11">
+    <srcmd5>42562cf2111af091b17370fc2bd62a25</srcmd5>
+    <version>1.1.12</version>
+    <time>1602682700</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer package symlinks for Xsession, Xsetupm Xstartup and
+  Xreset in /etc/X11/xdm, since meanwhile sddm, gdm and lightdm
+  have been adjusted</comment>
+    <requestid>841329</requestid>
+  </revision>
 </revisionlist>

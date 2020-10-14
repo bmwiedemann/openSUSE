@@ -124,10 +124,6 @@ tar xf %{SOURCE1}
 patch -p0 < %{PATCH2}
 mkdir -p usr/etc/X11/xdm
 mv etc/X11/xdm/* usr/etc/X11/xdm
-# Install compatibility symlinks. Remove once DMs adjusted
-for i in Xsession Xsetup Xstartup Xreset; do
-	ln -s /usr/etc/X11/xdm/$i etc/X11/xdm/$i
-done
 # Edited by SUSEConfig.xdm, package a copy
 for i in xdm-config Xservers; do
 	cp usr/etc/X11/xdm/$i etc/X11/xdm/$i
