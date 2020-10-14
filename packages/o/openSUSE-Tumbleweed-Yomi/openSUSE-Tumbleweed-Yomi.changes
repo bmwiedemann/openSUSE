@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:31:28 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Support config{_url}{_name} for user provided configuration
+
+-------------------------------------------------------------------
 Wed Sep 30 12:30:00 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update config.sh based on last JeOS template

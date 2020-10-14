@@ -152,44 +152,44 @@ mkdir -p /etc/systemd/system/salt-minion.service.d/
 
 # Add a systemd overlay for salt-minion.service that will set the
 # master address to looking for.  We can inject the master address via
-# the boot parameters, using the variable 'master'.  For example:
-# 'master=10.0.2.2'.  By default the master address will be 'salt'
-cat > /usr/bin/master.sh <<-'EOF'
+# the boot parameters, using the variable 'ym.master'.  For example:
+# 'ym.master=10.0.2.2'.  By default the master address will be 'salt'
+cat > /usr/bin/yomi-master.sh <<-'EOF'
 	#!/bin/sh
 
 	# Default value of master
 	master=salt
 
-	# Search for the parameter 'master=' in /proc/cmdline
-	for arg in $(cat /proc/cmdline); do
-	    [[ "$arg" =~ ^master=.*$ ]] && master="${arg#master=}"
-	done
+	# Search for the parameter 'ym.master=' in /proc/cmdline
+	while IFS= read -r line; do
+	    [[ "$line" =~ ^ym.master=.*$ ]] && master="${line#ym.master=}"
+	done <<< "$(cat /proc/cmdline | xargs -n1)"
 
 	[ -f /etc/salt/minion.d/master.conf ] || echo "master: $master" > /etc/salt/minion.d/master.conf
 EOF
-chmod a+x /usr/bin/master.sh
+chmod a+x /usr/bin/yomi-master.sh
 
-cat > /etc/systemd/system/salt-minion.service.d/10-master.conf <<-EOF
+cat > /etc/systemd/system/salt-minion.service.d/10-yomi-master.conf <<-EOF
 	[Service]
-	ExecStartPre=/usr/bin/master.sh
+	ExecStartPre=/usr/bin/yomi-master.sh
 EOF
 
-# Add a systemd overlay for salt-minion.service, that will add into
-# the minion_id the based on some priorities:
+# Add a systemd overlay for salt-minion.service, that will set the
+# minion_id the based on some priorities:
 #
-#   - minion_id boot parameter
+#   - ym.minion_id boot parameter
 #   - hostname (FQDN) if is different from localhost
 #   - the MAC address of the first interface
 #
 # This algorithm replaces the default minion ID, that is the
 # IP address of the main interface.
-cat > /usr/bin/minion_id.sh <<-'EOF'
+cat > /usr/bin/yomi-minion_id.sh <<-'EOF'
 	#!/bin/sh
 
-	# Search for the parameter 'minion_id=' in /proc/cmdline
-	for arg in $(cat /proc/cmdline); do
-	    [[ "$arg" =~ ^minion_id=.*$ ]] && minion_id="${arg#minion_id=}"
-	done
+	# Search for the parameter 'ym.minion_id=' in /proc/cmdline
+	while IFS= read -r line; do
+	    [[ "$line" =~ ^ym.minion_id=.*$ ]] && minion_id="${line#ym.minion_id=}"
+	done <<< "$(cat /proc/cmdline | xargs -n1)"
 
 	# If there is not parameter, take the hostname
 	[ -z "$minion_id" ] && minion_id=$(hostname -f)
@@ -200,11 +200,41 @@ cat > /usr/bin/minion_id.sh <<-'EOF'
 
 	[ -f /etc/salt/minion_id ] || echo "$minion_id" > /etc/salt/minion_id
 EOF
-chmod a+x /usr/bin/minion_id.sh
+chmod a+x /usr/bin/yomi-minion_id.sh
 
-cat > /etc/systemd/system/salt-minion.service.d/20-minion-id.conf <<-EOF
+cat > /etc/systemd/system/salt-minion.service.d/20-yomi-minion_id.conf <<-EOF
 	[Service]
-	ExecStartPre=/usr/bin/minion_id.sh
+	ExecStartPre=/usr/bin/yomi-minion_id.sh
+EOF
+
+# Add a systemd overlay for salt-minion.service, that will add a new
+# configuration file provided by the user.
+cat > /usr/bin/yomi-config.sh <<-'EOF'
+	#!/bin/sh
+
+	# Search for the parameter 'ym.config_url[_name]=' in /proc/cmdline
+	while IFS= read -r line; do
+	    [[ "$line" =~ ^ym.config_url=.*$ ]] && config_url="${line#ym.config_url=}"
+	    [[ "$line" =~ ^ym.config_url_name=.*$ ]] && config_url_name="${line#ym.config_url_name=}"
+	done <<< "$(cat /proc/cmdline | xargs -n1)"
+
+	config_url_name=/etc/salt/minion.d/"${config_url_name:-config_url.conf}"
+	[ ! -f "$config_url_name" ] && [ -n "$config_url" ] && curl --insecure --location --silent "$config_url" -o "$config_url_name"
+
+	# Search for the parameter 'ym.config[_name]=' in /proc/cmdline
+	while IFS= read -r line; do
+	    [[ "$line" =~ ^ym.config=.*$ ]] && config="${line#ym.config=}"
+	    [[ "$line" =~ ^ym.config_name=.*$ ]] && config_name="${line#ym.config_name=}"
+	done <<< "$(cat /proc/cmdline | xargs -n1)"
+
+	config_name=/etc/salt/minion.d/"${config_name:-config.conf}"
+	[ ! -f "$config_name" ] && [ -n "$config" ] && printf '%b\n' "$(printf '%b' "$config")" > "$config_name" || true
+EOF
+chmod a+x /usr/bin/yomi-config.sh
+
+cat > /etc/systemd/system/salt-minion.service.d/30-yomi-config.conf <<-EOF
+	[Service]
+	ExecStartPre=/usr/bin/yomi-config.sh
 EOF
 
 systemctl enable salt-minion.service
