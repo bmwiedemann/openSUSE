@@ -58,9 +58,6 @@ Requires:       pattern() = minimal_base
 # need to require it as recommends are off
 Requires:       pattern() = update_test
 %endif
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-MicroOS
-Obsoletes:      patterns-caasp-MicroOS <= 4.0
 ### openSUSE base system
 Requires:       aaa_base
 Requires:       bash
@@ -131,12 +128,9 @@ Provides:       pattern() = microos_defaults
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9011
-Requires:       pattern() = microos_base
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-MicroOS-defaults
-Obsoletes:      patterns-caasp-MicroOS-defaults <= 4.0
 Requires:       audit
 Requires:       systemd-logger
+Requires:       pattern() = microos_base
 
 %description defaults
 This provides default packages for openSUSE MicroOS which can be optionally
@@ -150,9 +144,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-hardware
-Obsoletes:      patterns-caasp-hardware <= 4.0
 %ifnarch s390x
 Requires:       irqbalance
 %endif
@@ -170,9 +161,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-apparmor
 Provides:       pattern-order() = 9050
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-apparmor
-Obsoletes:      patterns-caasp-apparmor <= 4.0
 Requires:       apparmor-parser
 Requires:       apparmor-profiles
 
@@ -186,9 +174,7 @@ Provides:       pattern() = microos_selinux
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9055
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-selinux
-Obsoletes:      patterns-caasp-selinux <= 4.0
+Provides:       pattern-visible()
 Requires:       checkpolicy
 Requires:       container-selinux
 Requires:       mcstrans
@@ -208,9 +194,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9060
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-sssd-ldap
-Obsoletes:      patterns-caasp-sssd-ldap <= 4.0
 Requires:       sssd
 Requires:       sssd-ldap
 
@@ -225,9 +208,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9080
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-ima_evm
-Obsoletes:      patterns-caasp-ima_evm <= 4.0
 Requires:       attr
 Requires:       dracut-ima
 Requires:       ima-evm-utils
@@ -244,9 +224,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9090
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-cloud
-Obsoletes:      patterns-caasp-cloud <= 4.0
 Requires:       cloud-init
 Requires:       cloud-init-config-MicroOS
 
@@ -296,14 +273,8 @@ Requires:       gnome-terminal
 Requires:       gnome-user-docs
 Requires:       gpgme
 # we need something for xdg-su
-Requires:       adobe-sourcecodepro-fonts
-Requires:       adobe-sourcesanspro-fonts
-Requires:       adobe-sourceserifpro-fonts
-Requires:       dejavu-fonts
 Requires:       file-roller
 Requires:       flatpak
-Requires:       ghostscript-fonts-other
-Requires:       ghostscript-fonts-std
 Requires:       gnome-calculator
 Requires:       gnome-packagekit
 Requires:       gnome-software
@@ -315,10 +286,6 @@ Requires:       gnome-bluetooth
 Requires:       gnome-control-center-goa
 Requires:       gnome-online-accounts
 Requires:       gnome-shell-calendar
-Requires:       google-carlito-fonts
-Requires:       google-droid-fonts
-Requires:       google-opensans-fonts
-Requires:       google-roboto-fonts
 # For seeing thumbnails in Nautilus
 Requires:       gdk-pixbuf-thumbnailer
 Requires:       gsf-office-thumbnailer
@@ -329,6 +296,25 @@ Requires:       libgnomesu
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
 Requires:       nautilus-share
+# So Trash and mounting USB sticks work in Nautilus
+Requires:       gvfs-backends
+Requires:       udisks2
+# Allow users to print (and add some common printer drivers)
+Requires:       OpenPrintingPPDs
+Requires:       cups
+Requires:       cups-filters
+Requires:       hplip-hpijs
+# Some fonts
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourceserifpro-fonts
+Requires:       dejavu-fonts
+Requires:       ghostscript-fonts-other
+Requires:       ghostscript-fonts-std
+Requires:       google-carlito-fonts
+Requires:       google-droid-fonts
+Requires:       google-opensans-fonts
+Requires:       google-roboto-fonts
 Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
@@ -462,9 +448,6 @@ Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_hardware
 Requires:       pattern() = microos_ima_evm
 Requires:       pattern() = microos_sssd_ldap
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-onlyDVD
-Obsoletes:      patterns-caasp-onlyDVD <= 4.0
 
 %description onlyDVD
 Additional packages on a openSUSE MicroOS DVD.
@@ -482,9 +465,6 @@ Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_ima_evm
 Requires:       pattern() = microos_selinux
 Requires:       pattern() = microos_sssd_ldap
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-alt-onlyDVD
-Obsoletes:      patterns-caasp-alt-onlyDVD <= 4.0
 
 %description alt_onlyDVD
 Alternative additional packages on a openSUSE MicroOS DVD.

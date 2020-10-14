@@ -200,4 +200,27 @@
 - Add policycoreutils-python-utils to media</comment>
     <requestid>840257</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>9fe89ac967c95214356691a0c61f9e2a</srcmd5>
+    <version>5.0</version>
+    <time>1602682718</time>
+    <user>dimstar_suse</user>
+    <comment>- Make SELinux pattern visible
+- Remove caasp compat provides/obsoletes
+
+- GNOME desktop pattern:
+  * add cups, so that printers can be added
+  * add some common printer driver
+
+- GNOME desktop pattern:
+  * group font packages together
+
+- GNOME desktop pattern:
+  * add udisks2 and gvfs-backends, so that, in Nautilus, Trash
+    works in Nautilus, USB sticks appears when inserted and can
+    ben (auto)mounted and the various BTRFS subvolumes are handled
+    better (they're not shown as separate volumes, which was pretty
+    annoying and cumbersome)</comment>
+    <requestid>841439</requestid>
+  </revision>
 </revisionlist>
