@@ -1,4 +1,6 @@
 #!/bin/sh
+tail -100 /home/opensuserabbit/dumprabbit.json | scripts/rabbithandle.py
+
 rsync="rsync -a \
   --max-size=999000k \
   --exclude=DELETED \
