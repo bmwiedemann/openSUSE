@@ -222,9 +222,7 @@ sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buil
 %dir %{_libdir}/ldb
 %{_libdir}/pkgconfig/ldb.pc
 %{_mandir}/man3/ldb*.3.*
-%if 0%{?suse_version} != 1110 || %{_arch} != i386
 %{_mandir}/man3/ldif*.3.*
-%endif
 
 %files -n ldb-tools
 %defattr(-,root,root)
@@ -256,8 +254,6 @@ sed -i 's;-lpyldb-util.%{py3_soflags_dash};-lpyldb-util.%{py3_soflags};g' %{buil
 %{_includedir}/pyldb.h
 %{_libdir}/libpyldb-util.%{py3_soflags}.so
 %{_libdir}/pkgconfig/pyldb-util.%{py3_soflags}.pc
-%if 0%{?suse_version} != 1110 || %{_arch} != i386
 %{_mandir}/man3/PyLdb*.3.*
-%endif
 
 %changelog
