@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 10 03:08:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.013		2020-10-09	T. R. Wyant
+      Warn on first use of attribute 'postderef'.
+
+-------------------------------------------------------------------
 Wed Jul 29 03:09:13 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.012
