@@ -1,7 +1,7 @@
 #
 # spec file for package installation-images
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,10 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # needsrootforbuild
 # needsbinariesforbuild
+
 
 # The files from i-i are, in parts, extracted and published in the FTP Tree
 # Since they are all auto-generated files, so they keep on changing. Having the mtime
@@ -51,7 +52,6 @@ ExclusiveArch:  do_not_build
 %define the_arch ppc
 %endif
 
-
 # ===  sort out which flavor to build  ===
 
 %if "%flavor" == "openSUSE"
@@ -63,14 +63,14 @@ ExclusiveArch:  do_not_build
 %if "%{the_version}" == ""
 %error "bad version string"
 %endif
-%ifarch aarch64 ppc64 ppc64le
+%ifarch %arm aarch64 ppc64 ppc64le
 %define net_repo https://download.opensuse.org/ports/%{the_arch}/distribution/leap/%{the_version}/repo/oss/
 %else
 %define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
 %endif
 %else
 %define with_exfat 1
-%ifarch aarch64 ppc64 ppc64le
+%ifarch %arm aarch64 ppc64 ppc64le
 %define net_repo https://download.opensuse.org/ports/%{the_arch}/tumbleweed/repo/oss/
 %else
 %define net_repo https://download.opensuse.org/tumbleweed/repo/oss
@@ -153,8 +153,8 @@ ExclusiveArch:  do_not_build
 %define branding_plymouth openSUSE
 %define branding_grub2    openSUSE
 %define branding_gfxboot  openSUSE
-BuildRequires:  openSUSE-release
 BuildRequires:  adobe-sourcesanspro-fonts
+BuildRequires:  openSUSE-release
 %if 0%{?is_opensuse} && !0%{?sle_version}
 BuildRequires:  distribution-logos-openSUSE-Tumbleweed
 %else
@@ -258,8 +258,8 @@ BuildRequires:  unified-installer-release
 %define branding_grub2    SLE
 %define branding_gfxboot  SLE
 %define config_bootmenu_no_upgrade 1
-BuildRequires:  skelcd-fallbackrepo-CAASP
 BuildRequires:  caasp-release
+BuildRequires:  skelcd-fallbackrepo-CAASP
 %endif
 
 # ===  product name with architecture appended  ===
@@ -306,12 +306,11 @@ BuildRequires:  aaa_base-extras
 BuildRequires:  adaptec-firmware
 BuildRequires:  alsa
 BuildRequires:  alsa-utils
-BuildRequires:  noto-naskharabic-fonts
 BuildRequires:  arphic-uming-fonts
 BuildRequires:  audit-libs
-BuildRequires:  bcm43xx-firmware
 BuildRequires:  bc
 BuildRequires:  bcache-tools
+BuildRequires:  bcm43xx-firmware
 BuildRequires:  bind-libs
 BuildRequires:  bind-utils
 BuildRequires:  blueprint-cursor-theme
@@ -343,6 +342,7 @@ BuildRequires:  ed
 BuildRequires:  efont-unicode-bitmap-fonts
 BuildRequires:  elfutils
 BuildRequires:  ethtool
+BuildRequires:  noto-naskharabic-fonts
 %if %with_exfat
 BuildRequires:  exfatprogs
 %endif
@@ -370,8 +370,8 @@ BuildRequires:  indic-fonts
 BuildRequires:  initviocons
 BuildRequires:  ipa-gothic-fonts
 BuildRequires:  iproute2
-BuildRequires:  iputils
 BuildRequires:  iptables
+BuildRequires:  iputils
 BuildRequires:  iscsiuio
 BuildRequires:  jfsutils
 BuildRequires:  joe
@@ -522,8 +522,8 @@ BuildRequires:  yast2-devtools
 BuildRequires:  yast2-schema
 BuildRequires:  yast2-trans-allpacks
 %if 0%{?with_storage_ng}
-BuildRequires:  yast2-storage-ng
 BuildRequires:  libstorage-ng-lang
+BuildRequires:  yast2-storage-ng
 #!BuildIgnore:  yast2-storage
 #!BuildIgnore:  libstorage7
 %endif
@@ -626,6 +626,9 @@ BuildRequires:  raspberrypi-firmware-config
 BuildRequires:  raspberrypi-firmware-dt
 BuildRequires:  u-boot-rpiarm64
 %endif
+%ifarch %arm
+BuildRequires:  grub2-arm-efi
+%endif
 # inst-sys module for libstoragemgmt
 BuildRequires:  libstoragemgmt-netapp-plugin
 BuildRequires:  libstoragemgmt-smis-plugin
@@ -640,11 +643,10 @@ Name:           installation-images
 Name:           installation-images-%{theme}
 %endif
 AutoReqProv:    off
-ExcludeArch:    %arm
 Summary:        Installation Image Files for %theme
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.23
+Version:        16.24
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

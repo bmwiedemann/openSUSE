@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Oct 13 08:21:31 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#430
+- Refresh spec file.
+- Support 32bit ARM (boo#1177264).
+- 16.24
+
+--------------------------------------------------------------------
 Wed Oct 7 09:15:13 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#429
