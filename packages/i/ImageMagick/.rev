@@ -2793,4 +2793,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * writing PDF requires a seekable stream.</comment>
     <requestid>839492</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>94ac48618b022e863b9e852c313bfda7</srcmd5>
+    <version>7.0.10.34</version>
+    <time>1602762307</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.0.10.34
+  * check for linux-compatible sendfile().</comment>
+    <requestid>841408</requestid>
+  </revision>
 </revisionlist>

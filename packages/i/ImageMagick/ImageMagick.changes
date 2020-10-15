@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:36:49 UTC 2020 - pgajdos@suse.com
+
+- version update to 7.0.10.34
+  * check for linux-compatible sendfile().
+
+-------------------------------------------------------------------
 Mon Oct  5 06:59:23 UTC 2020 - pgajdos@suse.com
 
 - version update to 7.0.10.33
