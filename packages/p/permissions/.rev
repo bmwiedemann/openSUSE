@@ -1329,4 +1329,14 @@ Feel free to use or reject (forwarded request 397400 from dimstar)</comment>
   * whitelist Xorg setuid-root wrapper (bsc#1175867)</comment>
     <requestid>838733</requestid>
   </revision>
+  <revision rev="145" vrev="25">
+    <srcmd5>3bd46fa290886a62a74d7aead8eabf78</srcmd5>
+    <version>unknown</version>
+    <time>1602762218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201008:
+  * cleanup now useless /usr/lib entries after move to /usr/libexec (bsc#1171164)
+  * drop (f)ping capabilities in favor of ICMP_PROTO sockets (bsc#1174504)</comment>
+    <requestid>840211</requestid>
+  </revision>
 </revisionlist>

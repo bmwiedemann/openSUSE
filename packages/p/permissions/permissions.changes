@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 08 09:19:32 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 20201008:
+  * cleanup now useless /usr/lib entries after move to /usr/libexec (bsc#1171164)
+  * drop (f)ping capabilities in favor of ICMP_PROTO sockets (bsc#1174504)
+
+-------------------------------------------------------------------
 Wed Sep 30 09:26:44 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 20200930:
