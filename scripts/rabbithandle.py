@@ -78,7 +78,7 @@ for line in watchtail(sys.stdin):
         print("set commitdate "+commitdate)
     else:
         os.environ.pop('GIT_AUTHOR_DATE', None)
-    time.sleep(10)
+    time.sleep(max([0, change["time"]+20-time.time()]))
     try:
         version = subprocess.run(["scripts/getversion", "/mounts/work/SRC/openSUSE:Factory/"+package], shell=False,stdout=subprocess.PIPE).stdout.decode()
         if version and version != "unknown":
