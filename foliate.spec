@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Handy\\) = 1
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only

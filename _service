@@ -4,7 +4,7 @@
     <param name="filename">foliate</param>
     <param name="url">https://github.com/johnfactotum/foliate.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/2.4.2</param>
+    <param name="revision">refs/tags/2.5.0</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
