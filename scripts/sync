@@ -1,5 +1,5 @@
 #!/bin/sh
-tail -100 /home/opensuserabbit/dumprabbit.json | scripts/rabbithandle.py
+tail -100 /home/opensuserabbit/dumprabbit.json | timeout 3m scripts/rabbithandle.py
 
 rsync="rsync -a \
   --max-size=999000k \
