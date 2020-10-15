@@ -15,4 +15,12 @@
     <comment>5.5.0 + fix build on ppc64 and s390x</comment>
     <requestid>811312</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>796be7de27fa1746d6198a401b541423</srcmd5>
+    <version>5.5.0</version>
+    <time>1602682661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841242</requestid>
+  </revision>
 </revisionlist>

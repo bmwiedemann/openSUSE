@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:59:58 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.1.18 release
+  - new USB ids
+  - mtp-getfile and mtp-delfile new parameter
+  - report "error 6" as "busy / blocked by another device"
+
+-------------------------------------------------------------------
 Sun Feb  2 14:00:38 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.1.17 release

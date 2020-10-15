@@ -1,7 +1,7 @@
 #
 # spec file for package libmtp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 %{!?_udevdir: %global _udevdir %(pkg-config --variable=udevdir udev) }
 Name:           libmtp
-Version:        1.1.17
+Version:        1.1.18
 Release:        0
 Summary:        Commandline utilities for access to MTP Players
 License:        LGPL-2.1-or-later

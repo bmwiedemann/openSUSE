@@ -1,0 +1,13 @@
+Index: grpc-1.32.0/CMakeLists.txt
+===================================================================
+--- grpc-1.32.0.orig/CMakeLists.txt
++++ grpc-1.32.0/CMakeLists.txt
+@@ -15667,7 +15667,7 @@ function(generate_pkgconfig name descrip
+     "${output_filepath}"
+     @ONLY)
+   install(FILES "${output_filepath}"
+-    DESTINATION "lib/pkgconfig/")
++    DESTINATION "${gRPC_INSTALL_LIBDIR}/pkgconfig/")
+ endfunction()
+ 
+ # gpr .pc file

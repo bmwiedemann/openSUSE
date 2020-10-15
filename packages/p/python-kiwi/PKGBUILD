@@ -3,7 +3,7 @@
 
 pkgname=('python-kiwi' 'kiwi-man-pages' 'dracut-kiwi-lib' 'dracut-kiwi-oem-repart' 'dracut-kiwi-oem-dump' 'dracut-kiwi-live' 'dracut-kiwi-overlay')
 arch=(x86_64)
-pkgver=9.21.14
+pkgver=9.21.17
 pkgrel=0
 pkgdesc="KIWI - Appliance Builder Next Generation"
 url="https://github.com/SUSE/kiwi/tarball/master"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools gcc shadow grep)
 provides=(kiwi-ng kiwi)
 source=("${pkgname}.tar.gz")
 changelog="${pkgname}.changes"
-md5sums=('fefbad94106141392d967912d4ba4084')
+md5sums=('1823efaf3892bec7b0ea06177ae51ccf')
 
 
 build() {
@@ -42,14 +42,14 @@ package_dracut-kiwi-lib(){
 }
 
 package_dracut-kiwi-oem-repart(){
-  depends=(dracut-kiwi-lib)
+  depends=(dracut-kiwi-lib=${pkgver})
   cd kiwi-${pkgver}
   install -d -m 755 ${pkgdir}/usr/lib/dracut/modules.d/90kiwi-repart
   cp -a dracut/modules.d/90kiwi-repart ${pkgdir}/usr/lib/dracut/modules.d/
 }
 
 package_dracut-kiwi-oem-dump(){
-  depends=(dracut-kiwi-lib multipath-tools)
+  depends=(dracut-kiwi-lib=${pkgver} multipath-tools)
   cd kiwi-${pkgver}
   install -d -m 755 ${pkgdir}/usr/lib/dracut/modules.d/90kiwi-dump
   cp -a dracut/modules.d/90kiwi-dump ${pkgdir}/usr/lib/dracut/modules.d/

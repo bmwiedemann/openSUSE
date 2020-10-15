@@ -104,4 +104,14 @@ Accidentally packaged and older version. Sorry!</comment>
   * Update headers from Video SDK 10.0</comment>
     <requestid>819298</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2c098d77c8f04b732658fb3c5c446ab6</srcmd5>
+    <version>10.0.26.1</version>
+    <time>1602682643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.0.26.1:
+  * Add linker functions and types
+  * Fix CUdeviceptr definition for ARM64 CPU</comment>
+    <requestid>841086</requestid>
+  </revision>
 </revisionlist>

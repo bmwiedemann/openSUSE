@@ -1,8 +1,8 @@
-Index: rustc-1.44.1-src/src/librustc_llvm/build.rs
+Index: rustc-1.46.0-src/src/librustc_llvm/build.rs
 ===================================================================
---- rustc-1.44.1-src.orig/src/librustc_llvm/build.rs
-+++ rustc-1.44.1-src/src/librustc_llvm/build.rs
-@@ -145,6 +145,12 @@ fn main() {
+--- rustc-1.46.0-src.orig/src/librustc_llvm/build.rs
++++ rustc-1.46.0-src/src/librustc_llvm/build.rs
+@@ -146,6 +146,12 @@ fn main() {
              continue;
          }
  

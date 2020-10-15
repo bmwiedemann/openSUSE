@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:14:38 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Specify gRPC_INSTALL_LIBDIR and gRPC_INSTALL_CMAKEDIR to
+  correctly configure install paths for libraries and cmake files
+  instead of moving them after the installation.
+- Add grpc-correct-pkgconfig-path.patch to fix install path for
+  pkgconfig file relative to gRPC_INSTALL_LIBDIR.
+- Add Requires: pkgconfig(libcares) for the -devel pkg.
+
+-------------------------------------------------------------------
+Tue Sep 22 16:37:51 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
+
+- Add new subpackages - libupb and upb-devel. Currently, grpc
+  sources include also upb sources. Before this change, libupb and
+  upb-devel used to be included in a separate package - upb.
+
+-------------------------------------------------------------------
+Fri Sep 18 19:53:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add pkgconfig(re2) to list of Requires for grpc-devel package.
+
+-------------------------------------------------------------------
+Thu Sep 17 13:14:42 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Fixup 1.32.0 update with wrong grpc-devel ->
+  libgrpc-support-plugin1 require.
+
+-------------------------------------------------------------------
+Sat Sep 12 22:11:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop now-obsolescent Conflicts.
+
+-------------------------------------------------------------------
+Thu Sep 10 14:33:01 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.32.0:
+  * Core
+    - Remove stream from stalled lists on remove_stream
+      (gh#grpc/grpc#23984).
+    - Do not cancel RPC if send metadata size if larger than
+      peer's limit (gh#grpc/grpc#23806).
+    - Don't consider receiving non-OK status as an error for HTTP2
+      (gh#grpc/grpc#19545).
+    - Keepalive throttling (gh#grpc/grpc#23313).
+    - Include the target_uri in "target uri is not valid" error
+      messages (gh#grpc/grpc#23782).
+    - Fix "cannot send compressed message large than 1024B" in
+      cronet_transport (gh#grpc/grpc#23219).
+    - Receive SETTINGS frame on clients before declaring
+      subchannel READY (gh#grpc/grpc#23636).
+    - Enabled GPR_ABSEIL_SYNC (gh#grpc/grpc#23372).
+    - Experimental xDS v3 support (gh#grpc/grpc#23281).
+  * C++
+    - Upgrade bazel used for all tests to 2.2.0
+      (gh#grpc/grpc#23902).
+    - Remove test targets and test helper libraries from Makefile
+      (gh#grpc/grpc#23813).
+    - Fix repeated builds broken by re2's cmake
+      (gh#grpc/grpc#23587).
+    - Log the peer address of grpc_cli CallMethod RPCs to stderr
+      (gh#grpc/grpc#23557).
+- Use cmake to configure and cmake macros to build and install.
+- New BuildRequires: abseil-cpp-source and pkgconfig(re2); copy
+  abseil-cpp-source contents into source's third_party dir and
+  build it as a module (since we don't have the actual abseil-cpp
+  library built for openSUSE.
+- Add grpc-find-re2-via-pkgconfig.patch to enable finding system
+  Re2 library via pkg-config; taken from upstream PR
+  gh#grpc/grpc#24088.
+- Split out new shared lib package libgrpc_plugin_support1 for
+  supporting grpc plugins.
+
+-------------------------------------------------------------------
+Wed Sep  9 22:43:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop python modules provided by python-grpcio source package in
+  openSUSE:Factory.
+
+-------------------------------------------------------------------
 Thu Mar 12 06:53:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add conditional to build without python2 if needed

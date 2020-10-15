@@ -1,0 +1,120 @@
+From 45e413d2520795e7281e9a592af81620349bc186 Mon Sep 17 00:00:00 2001
+From: Paul Wankadia <junyer@google.com>
+Date: Wed, 9 Sep 2020 04:26:36 -0700
+Subject: [PATCH] Attempt to find RE2 via CMake and via pkg-config.
+
+---
+ CMakeLists.txt                    |  1 +
+ cmake/modules/Findre2.cmake       | 58 +++++++++++++++++++++++++++++++
+ cmake/re2.cmake                   |  6 +---
+ templates/CMakeLists.txt.template |  1 +
+ 4 files changed, 61 insertions(+), 5 deletions(-)
+ create mode 100644 cmake/modules/Findre2.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4b04d25ac50..cecb4396c57 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15624,6 +15624,7 @@ install(FILES
+ )
+ install(FILES
+     ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findc-ares.cmake
++    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/Findre2.cmake
+   DESTINATION ${gRPC_INSTALL_CMAKEDIR}/modules
+ )
+ 
+diff --git a/cmake/modules/Findre2.cmake b/cmake/modules/Findre2.cmake
+new file mode 100644
+index 00000000000..41df4547138
+--- /dev/null
++++ b/cmake/modules/Findre2.cmake
+@@ -0,0 +1,58 @@
++# Copyright 2017 gRPC authors.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#     http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++find_package(re2 QUIET CONFIG)
++if(re2_FOUND)
++  message(STATUS "Found RE2 via CMake.")
++  return()
++endif()
++
++find_package(PkgConfig REQUIRED)
++# TODO(junyer): Use the IMPORTED_TARGET option whenever CMake 3.6 (or newer)
++# becomes the minimum required: that will take care of the add_library() and
++# set_property() calls; then we can simply alias PkgConfig::RE2 as re2::re2.
++# For now, we can only set INTERFACE_* properties that existed in CMake 3.5.
++pkg_check_modules(RE2 QUIET re2)
++if(RE2_FOUND)
++  set(re2_FOUND "${RE2_FOUND}")
++  add_library(re2::re2 INTERFACE IMPORTED)
++  if(RE2_INCLUDE_DIRS)
++    set_property(TARGET re2::re2 PROPERTY
++                 INTERFACE_INCLUDE_DIRECTORIES "${RE2_INCLUDE_DIRS}")
++  endif()
++  if(RE2_CFLAGS_OTHER)
++    # Filter out the -std flag, which is handled by CMAKE_CXX_STANDARD.
++    # TODO(junyer): Use the FILTER option whenever CMake 3.6 (or newer)
++    # becomes the minimum required: that will allow this to be concise.
++    foreach(flag IN LISTS RE2_CFLAGS_OTHER)
++      if("${flag}" MATCHES "^-std=")
++        list(REMOVE_ITEM RE2_CFLAGS_OTHER "${flag}")
++      endif()
++    endforeach()
++    set_property(TARGET re2::re2 PROPERTY
++                 INTERFACE_COMPILE_OPTIONS "${RE2_CFLAGS_OTHER}")
++  endif()
++  if(RE2_LDFLAGS)
++    set_property(TARGET re2::re2 PROPERTY
++                 INTERFACE_LINK_LIBRARIES "${RE2_LDFLAGS}")
++  endif()
++  message(STATUS "Found RE2 via pkg-config.")
++  return()
++endif()
++
++if(re2_FIND_REQUIRED)
++  message(FATAL_ERROR "Failed to find RE2.")
++elseif(NOT re2_FIND_QUIETLY)
++  message(WARNING "Failed to find RE2.")
++endif()
+diff --git a/cmake/re2.cmake b/cmake/re2.cmake
+index 3e83aae6910..974b0a436e2 100644
+--- a/cmake/re2.cmake
++++ b/cmake/re2.cmake
+@@ -45,13 +45,9 @@ if(gRPC_RE2_PROVIDER STREQUAL "module")
+     set(gRPC_INSTALL FALSE)
+   endif()
+ elseif(gRPC_RE2_PROVIDER STREQUAL "package")
+-  find_package(re2 REQUIRED CONFIG)
+-
++  find_package(re2 REQUIRED)
+   if(TARGET re2::re2)
+     set(_gRPC_RE2_LIBRARIES re2::re2)
+-  else()
+-    set(_gRPC_RE2_LIBRARIES ${RE2_LIBRARIES})
+   endif()
+-  set(_gRPC_RE2_INCLUDE_DIR ${RE2_INCLUDE_DIRS})
+   set(_gRPC_FIND_RE2 "if(NOT re2_FOUND)\n  find_package(re2)\nendif()")
+ endif()
+diff --git a/templates/CMakeLists.txt.template b/templates/CMakeLists.txt.template
+index c7f2556dc92..f7db0fd2d0c 100644
+--- a/templates/CMakeLists.txt.template
++++ b/templates/CMakeLists.txt.template
+@@ -706,6 +706,7 @@
+   )
+   install(FILES
+       <%text>${CMAKE_CURRENT_SOURCE_DIR}</%text>/cmake/modules/Findc-ares.cmake
++      <%text>${CMAKE_CURRENT_SOURCE_DIR}</%text>/cmake/modules/Findre2.cmake
+     DESTINATION <%text>${gRPC_INSTALL_CMAKEDIR}</%text>/modules
+   )
+ 

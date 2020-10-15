@@ -223,4 +223,12 @@
     <comment> (forwarded request 799178 from iznogood)</comment>
     <requestid>799474</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5cdfa0beedbf5fb23deb583a8d2a75cf</srcmd5>
+    <version>0.20.4</version>
+    <time>1602682656</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 840876 from iznogood)</comment>
+    <requestid>841169</requestid>
+  </revision>
 </revisionlist>

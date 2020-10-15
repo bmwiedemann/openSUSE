@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Mon Oct 05 15:06:20 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.16 → 9.21.17
+
+-------------------------------------------------------------------
+Mon Oct 05 14:56:48 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Make dependencies to dracut-kiwi-lib release specific
+
+  This commit adds a dracut-kiwi-lib dependency to dracut-kiwi-oem-dump and
+  darcut-kiwi-oem-repart to match up to the release level. This way the
+  dependency ensures the pulled binaries they are all part of the same build.
+
+-------------------------------------------------------------------
+Mon Oct 05 12:24:29 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.15 → 9.21.16
+
+-------------------------------------------------------------------
+Mon Oct 05 09:34:59 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Delete length limitation of image id attribute
+
+  For legacy reasons the <image id="..."/> attributes was
+  limited to 10digits. The contents of /etc/ImageID are now
+  free format and no longer strictly evaluated. Thus the
+  limitations on the id attribute can be deleted
+
+-------------------------------------------------------------------
+Fri Oct 02 14:04:51 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.21.14 → 9.21.15
+
+-------------------------------------------------------------------
+Fri Oct 02 11:54:25 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Align dracut-kiwi-lib version with packages requiring it
+
+  This commit enforces dracut-kiwi-oem-repart and
+  dracut-kiwi-oem-dump to require dracut-kiwi-lib of the same exact
+  version. This prevents dracut-kiwi-lib and the packages
+  dependent on it being installed on a image with inconsistent versions.
+
+  Fixes #1529
+
+-------------------------------------------------------------------
+Fri Oct 02 11:15:36 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Allow to configure .changes creation and bundling
+
+  Provide config option has_package_changes in the runtime config
+  file and set a useful default. For building outside obs the
+  default for the .changes creation is switched on, for building
+  in obs it's switched off because obs creates its own info file
+
+-------------------------------------------------------------------
+Tue Sep 29 13:37:13 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Fix compat link for rpmdb location
+
+  This commit fixes the symlink creation for `/var/lib/rpm`. More specific
+  for derived container images in which the base root tree already
+  included the `/var/lib/rpm` the link, the `ln` command was creating a
+  symlink inside the `/var/lib/rpm` folder givent that it was following
+  the already existing symlink. Adding the `--no-target-directory` force
+  `ln` command to treat `/var/lib/rpm` path as the fully qualified symlink name.
+
+  Fixes bsc#1176977
+
+-------------------------------------------------------------------
+Tue Sep 29 10:17:55 CEST 2020 - Jim Klimov <jimklimov@gmail.com>
+
+- Report download URL on failed request
+
+  In case a network request to a given URL failed the report message should include the URL
+  This Fixes #1572
+
+-------------------------------------------------------------------
+Tue Sep 29 09:58:22 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Use pragma: no cover to skip non reachable code
+
+  Instead of placing the file into .coveragerc use the
+  no cover pragma to skip code paths that can never be
+  reached from being counted in the coverage report.
+  This affects the abstract constructors in the Factory
+  classes
+
+-------------------------------------------------------------------
+Mon Sep 28 09:37:05 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Refactor BootLoaderInstall
+
+  This commit refactors BootLoaderInstall class to make it a proper
+  factory class. In addition type hints are added for the constructor
+  method.
+
+  Related to #1498
+
+-------------------------------------------------------------------
+Fri Sep 25 17:13:38 CEST 2020 - David Cassany <dcassany@suse.com>
+
+- Refactor BootLoaderConfig
+
+  This commit refactors BootLoaderConfig to turn it into a proper factory
+  class and to also include type hints to facilitate it's use from an API
+  POV.
+
+  Related to #1498
+
+-------------------------------------------------------------------
+Fri Sep 25 10:53:02 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Fix/Refactor s390 support
+
+  This changes the s390 support on several stages:
+
+  1) On s390 the boot process is based on zipl which boots into an
+  initrd from which a userspace grub process is started to support
+  the grub capabilities. The implementation of this concept is
+  provided via the grub2-s390x-emu package. Once installed the
+  setup of the bootloader is done via the grub2-mkconfig and
+  grub2-install commands and therefore from a caller perspective
+  the same as with any other grub2 setup process. For kiwi this
+  means no extra zipl bootloader target code is needed. Therefore
+  this commit deletes the zipl setup from kiwi and puts on
+  the standard grub2 process. This Fixes bsc#1170863
+
+  2) To support different targettypes the grub2-s390x-emu provided
+  zipl template must be adapted. Parts of the former zipl bootloader
+  setup therefore now applies to an update of the zipl2grub
+  template file
+
+  3) Support for CDL/LDL DASD targets has been disabled in the schema
+  When testing 4k devices and a respective zipl2grub template
+  setup for CDL/LDL targettype it has turned out that grub2-install
+  is not able to run on such a device. My assumption is that
+  the device code in grub2-install does not work for 4k devices
+  with an fdasd created partition table. As this needs further
+  investigations and most probably adaptions on the grub toolchain
+  for s390, we disabled the setup of these modes for now.
+  emulated DASD (FBA) and SCSI targets stays supported.
+
+-------------------------------------------------------------------
+Wed Sep 23 17:49:14 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Add support for package changelog info
+
+  In addition to the .packages file which shows details about
+  the installed packages in terms of version, license, etc...
+  we now also create a .changes file which contains the changelog
+  information of the installed packages. The file can be used
+  to compare the package changelogs between image builds.
+
+-------------------------------------------------------------------
+Wed Sep 23 15:45:17 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor BootImage Factory
+
+  This commit refactors the BootImage factory to be a real
+  factory and to add type hints such that its use from an api
+  perspective is clear and enforced. Related to Issue #1498
+
+-------------------------------------------------------------------
 Wed Sep 23 13:06:47 CEST 2020 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.21.13 → 9.21.14
@@ -26,6 +190,15 @@ Wed Sep 23 10:21:40 CEST 2020 - Marcus Schäfer <ms@suse.de>
   more gracefully this commit changes the commandline
   option --type vmx into --type oem if provided and prints
   a warning message.
+
+-------------------------------------------------------------------
+Tue Sep 22 16:28:17 CEST 2020 - Marcus Schäfer <ms@suse.de>
+
+- Refactor ImageBuilder Factory
+
+  This commit refactors the ImageBuilder factory to be a real
+  factory and to add type hints such that its use from an api
+  perspective is clear and enforced. Related to Issue #1498
 
 -------------------------------------------------------------------
 Tue Sep 22 12:19:15 CEST 2020 - Marcus Schäfer <ms@suse.de>

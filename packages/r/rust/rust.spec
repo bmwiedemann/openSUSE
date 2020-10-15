@@ -17,12 +17,12 @@
 #
 
 
-%global version_current 1.45.2
-%global version_previous 1.44.1
-%global version_bootstrap 1.44.1
+%global version_current 1.46.0
+%global version_previous 1.45.2
+%global version_bootstrap 1.45.2
 
 # some sub-packages are versioned independently
-%global rustfmt_version 1.4.16
+%global rustfmt_version 1.4.21
 %global clippy_version 0.0.212
 
 # Build the rust target triple.
@@ -576,10 +576,12 @@ rm -rf %{buildroot}/home
 %{_bindir}/rust-gdbgui
 %dir %{rustlibdir}
 %dir %{rustlibdir}%{_sysconfdir}
-%{rustlibdir}%{_sysconfdir}/debugger_pretty_printers_common.py
 %{rustlibdir}%{_sysconfdir}/gdb_load_rust_pretty_printers.py
-%{rustlibdir}%{_sysconfdir}/gdb_rust_pretty_printing.py
-%{rustlibdir}%{_sysconfdir}/lldb_rust_formatters.py
+%{rustlibdir}%{_sysconfdir}/gdb_lookup.py
+%{rustlibdir}%{_sysconfdir}/gdb_providers.py
+%{rustlibdir}%{_sysconfdir}/lldb_lookup.py
+%{rustlibdir}%{_sysconfdir}/lldb_providers.py
+%{rustlibdir}%{_sysconfdir}/rust_types.py
 
 %files -n rust-doc
 %dir %{_docdir}/%{name}

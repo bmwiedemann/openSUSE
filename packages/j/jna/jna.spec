@@ -106,7 +106,7 @@ install -m 755 build/native*/libjnidispatch*.so %{buildroot}%{_libdir}/%{name}/
 
 install -d -m 755 %{buildroot}%{_jnidir}/%{name}
 install -d -m 755 %{buildroot}%{_javadir}/%{name}
-install -p -m 644 build%{suffix}/jna-min.jar %{buildroot}%{_jnidir}/%{name}.jar
+install -p -m 644 build/jna-min.jar %{buildroot}%{_jnidir}/%{name}.jar
 ln -sf ../%{name}.jar %{buildroot}%{_jnidir}/%{name}/%{name}.jar
 ln -sf %{_jnidir}/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 install -p -m 644 ./contrib/platform/dist/jna-platform.jar %{buildroot}%{_javadir}/%{name}-platform.jar

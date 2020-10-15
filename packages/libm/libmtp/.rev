@@ -666,4 +666,15 @@
   - various bugfixes</comment>
     <requestid>769381</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>282c725bbe34c376ae6a5c4f17162b53</srcmd5>
+    <version>1.1.18</version>
+    <time>1602682567</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.1.18 release
+  - new USB ids
+  - mtp-getfile and mtp-delfile new parameter
+  - report &quot;error 6&quot; as &quot;busy / blocked by another device&quot;</comment>
+    <requestid>841029</requestid>
+  </revision>
 </revisionlist>
