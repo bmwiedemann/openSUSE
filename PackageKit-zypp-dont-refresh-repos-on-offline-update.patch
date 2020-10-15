@@ -1,0 +1,50 @@
+From 81207bd3ac347199e72d227a0cf0e90403dcb568 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Mon, 12 Oct 2020 15:18:40 +0800
+Subject: [PATCH] =?UTF-8?q?zypp:=20Don=E2=80=99t=20refresh=20repos=20again?=
+ =?UTF-8?q?=20when=20actually=20updating=20packages?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+https://bugzilla.suse.com/show_bug.cgi?id=1173562
+---
+ backends/zypp/pk-backend-zypp.cpp | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/backends/zypp/pk-backend-zypp.cpp b/backends/zypp/pk-backend-zypp.cpp
+index d936a2b43..9404abb1a 100644
+--- a/backends/zypp/pk-backend-zypp.cpp
++++ b/backends/zypp/pk-backend-zypp.cpp
+@@ -3423,16 +3423,19 @@ upgrade_system (PkBackendJob *job,
+ {
+ 	set<PoolItem> candidates;
+ 
+-	/* refresh the repos before checking for updates. */
+-	if (!zypp_refresh_cache (job, zypp, FALSE)) {
+-		return;
+-	}
+-	zypp_get_updates (job, zypp, candidates);
+-	if (candidates.empty ()) {
+-		pk_backend_job_error_code (job, PK_ERROR_ENUM_NO_DISTRO_UPGRADE_DATA,
+-					   "No Distribution Upgrade Available.");
++	/* Only refresh repos when it's simulating. */
++	if (pk_bitfield_contain (transaction_flags, PK_TRANSACTION_FLAG_ENUM_SIMULATE)) {
++		/* refresh the repos before checking for updates. */
++		if (!zypp_refresh_cache (job, zypp, FALSE)) {
++			return;
++		}
++		zypp_get_updates (job, zypp, candidates);
++		if (candidates.empty ()) {
++			pk_backend_job_error_code (job, PK_ERROR_ENUM_NO_DISTRO_UPGRADE_DATA,
++						   "No Distribution Upgrade Available.");
+ 
+-		return;
++			return;
++		}
+ 	}
+ 
+ 	zypp->resolver ()->dupSetAllowVendorChange (ZConfig::instance ().solver_dupAllowVendorChange ());
+-- 
+2.26.2
+

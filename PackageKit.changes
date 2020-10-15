@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 01:56:23 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-refresh-repos-on-offline-update.patch:
+  zypp: Don’t refresh repos again when actually updating packages
+  (gh#/hughsie/PackageKit/commit/81207bd3, bsc#1173562).
+
+-------------------------------------------------------------------
 Mon Sep 21 06:37:58 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-set-PATH.patch: zypp: Set PATH variable
