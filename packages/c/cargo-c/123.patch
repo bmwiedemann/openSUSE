@@ -1,0 +1,66 @@
+From f3df5af26c9b8a13e2beedb7de688d9b08861513 Mon Sep 17 00:00:00 2001
+From: Luca Barbato <lu_zero@gentoo.org>
+Date: Tue, 13 Oct 2020 13:42:02 +0200
+Subject: [PATCH] Save the include subdir to a specific field
+
+The pkgconfig generation needs to know the include path w/out the
+now-optional subdirectory.
+
+Fixes: #121
+---
+ src/install.rs | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/src/install.rs b/src/install.rs
+index 5105d46..e88be6c 100644
+--- a/src/install.rs
++++ b/src/install.rs
+@@ -90,7 +90,11 @@ pub fn cinstall(
+ 
+     let install_path_lib = append_to_destdir(destdir, &paths.libdir);
+     let install_path_pc = append_to_destdir(destdir, &paths.pkgconfigdir);
+-    let install_path_include = append_to_destdir(destdir, &paths.includedir);
++    let mut install_path_include = append_to_destdir(destdir, &paths.includedir);
++    if let Some(name) = paths.subdir_name {
++        install_path_include = install_path_include.join(name);
++    }
++
+     let install_path_bin = append_to_destdir(destdir, &paths.bindir);
+ 
+     fs::create_dir_all(&install_path_lib)?;
+@@ -178,6 +182,7 @@ pub fn cinstall(
+ 
+ #[derive(Debug)]
+ pub struct InstallPaths {
++    pub subdir_name: Option<PathBuf>,
+     pub destdir: PathBuf,
+     pub prefix: PathBuf,
+     pub libdir: PathBuf,
+@@ -200,13 +205,15 @@ impl InstallPaths {
+             .value_of("libdir")
+             .map(PathBuf::from)
+             .unwrap_or_else(|| prefix.join("lib"));
+-        let mut includedir = args
++        let includedir = args
+             .value_of("includedir")
+             .map(PathBuf::from)
+             .unwrap_or_else(|| prefix.join("include"));
+-        if capi_config.header.subdirectory {
+-            includedir = includedir.join(name);
+-        }
++        let subdir_name = if capi_config.header.subdirectory {
++            Some(PathBuf::from(name))
++        } else {
++            None
++        };
+         let bindir = args
+             .value_of("bindir")
+             .map(PathBuf::from)
+@@ -217,6 +224,7 @@ impl InstallPaths {
+             .unwrap_or_else(|| libdir.join("pkgconfig"));
+ 
+         InstallPaths {
++            subdir_name,
+             destdir,
+             prefix,
+             libdir,

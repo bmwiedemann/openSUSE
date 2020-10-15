@@ -18,7 +18,7 @@
 
 
 Name:           cargo-c
-Version:        0.6.7
+Version:        0.6.13
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
@@ -28,6 +28,8 @@ URL:            https://crates.io/crates/cargo-c
 #
 Source0:        https://github.com/lu-zero/cargo-c/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+#
+Patch0:         https://github.com/lu-zero/cargo-c/pull/123.patch
 #
 BuildRequires:  rust-packaging
 BuildRequires:  pkgconfig(openssl)
@@ -72,7 +74,8 @@ rm -rf %{buildroot}%{_datadir}/cargo/registry
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/cargo-cinstall
+%{_bindir}/cargo-capi
 %{_bindir}/cargo-cbuild
+%{_bindir}/cargo-cinstall
 
 %changelog
