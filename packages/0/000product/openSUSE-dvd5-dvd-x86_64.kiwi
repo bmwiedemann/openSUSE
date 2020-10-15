@@ -4943,6 +4943,9 @@
       <repopackage name="systemd"/>
       <repopackage name="systemd-32bit" arch="x86_64"/>
       <repopackage name="systemd-container"/>
+      <repopackage name="systemd-default-settings"/>
+      <repopackage name="systemd-default-settings-branding-openSUSE"/>
+      <repopackage name="systemd-default-settings-branding-SLE"/>
       <repopackage name="systemd-doc"/>
       <repopackage name="systemd-icon-branding-openSUSE"/>
       <repopackage name="systemd-lang"/>

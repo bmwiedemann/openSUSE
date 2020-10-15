@@ -8851,7 +8851,7 @@ unsorted:
   - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif6 
+  - libavif7 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -20490,6 +20490,7 @@ unsorted:
   - python3-crontab 
   - python3-crumbs 
   - python3-cryptography-vectors 
+  - python3-css-html-js-minify 
   - python3-css-parser 
   - python3-csscompressor 
   - python3-cssselect2 
@@ -20953,6 +20954,7 @@ unsorted:
   - python3-grpc-google-iam-v1 
   - python3-grpcio 
   - python3-grpcio-gcp 
+  - python3-grpcio-tools 
   - python3-gscholar 
   - python3-gspread 
   - python3-gsw 
@@ -26115,6 +26117,7 @@ unsorted:
   - system-user-tss 
   - system-user-uuidd 
   - systemd-coredump 
+  - systemd-default-settings-branding-upstream 
   - systemd-devel 
   - systemd-journal-remote 
   - systemd-mini 
@@ -34837,6 +34840,9 @@ unsorted:
   - vde2-slirp 
   - ved 
   - velero 
+  - velero-plugin-for-aws 
+  - velero-plugin-for-gcp 
+  - velero-plugin-for-microsoft-azure 
   - velocity 
   - velocity-demo 
   - velocity-javadoc 
