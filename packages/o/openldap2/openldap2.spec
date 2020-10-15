@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.53
+%define version_main 2.4.54
 %define name_ppolicy_check_module ppolicy-check-password
 %define version_ppolicy_check_module 1.2
 %define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}

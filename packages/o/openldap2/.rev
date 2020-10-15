@@ -1340,4 +1340,12 @@ Removal of SuSEfirewall2 service.
     <comment>updated to 2.4.53</comment>
     <requestid>832824</requestid>
   </revision>
+  <revision rev="158" vrev="58">
+    <srcmd5>bd9cc11a70cadd7caebae38cbb9359c3</srcmd5>
+    <version>unknown</version>
+    <time>1602762269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841355</requestid>
+  </revision>
 </revisionlist>
