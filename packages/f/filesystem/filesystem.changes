@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:49:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add /usr/etc/X11 (boo#1173049)
+- Add /usr/etc/xdg (boo#1173316)
+- Add /usr/etc/profile.d (boo#1173310)
+
+-------------------------------------------------------------------
 Fri Sep  4 12:14:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Split /var/tmp out of fs-var.conf, new file is fs-var-tmp.conf.
