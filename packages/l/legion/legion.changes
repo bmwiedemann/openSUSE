@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 13:46:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update a few specfile constructs with newer macros.
+
+-------------------------------------------------------------------
 Thu Oct 10 10:04:10 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Disable hwloc support as legion is not compatible with hwloc >= 2.0

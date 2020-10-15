@@ -1,7 +1,7 @@
 #
 # spec file for package legion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2016-2017 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ Release:        0
 Summary:        A data-centric parallel programming system
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
-Url:            http://legion.stanford.edu/
+URL:            http://legion.stanford.edu/
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Patch0:         legion-fix-potential-return-of-random-data.patch
 Patch1:         gcc-8.patch
@@ -107,11 +107,11 @@ This package contains development headers and libraries for the legion library.
          -DGASNet_CONDUIT=mpi \
          -DLegion_BUILD_TUTORIAL=ON \
 	 -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}/legion 
-make
+%cmake_build
 
 %install
 %setup_openmpi
-make -C build install DESTDIR=%{buildroot}
+%cmake_install
 
 %check
 %setup_openmpi
@@ -121,15 +121,14 @@ LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:${LD_LIBRARY_PATH}" make -C build %{?_s
 %postun -n liblegion1 -p /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root,-)
-%doc LICENSE.txt README.md CHANGES.txt
+%license LICENSE.txt
+%doc README.md CHANGES.txt
 %{_includedir}/*
 %{_libdir}/lib*.so
 %{_datadir}/Legion
 
 %files -n liblegion1
-%defattr(-,root,root,-)
-%doc LICENSE.txt README.md CHANGES.txt
+%doc README.md CHANGES.txt
 %{_libdir}/lib*.so.1
 
 %changelog
