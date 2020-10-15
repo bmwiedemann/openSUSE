@@ -40,6 +40,8 @@ Source99:       juliabuildopts
 Patch0:         julia-env-script-interpreter.patch
 # PATCH-FIX-UPSTREAM llvm-8.0.1-gcc-10.patch ronisbr@gmail.com -- Fix LLVM 8.0.1 build using GCC 10 - https://reviews.llvm.org/D64937.
 Patch1:         llvm-8.0.1-gcc-10.patch
+# PATCH-FIX-UPSTREAM - https://github.com/JuliaLang/julia/commit/15dee645cdddda022de8960c91141109c41a66b4
+Patch2:         julia-fix-aarch64.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -171,6 +173,7 @@ Contains the Julia manual, the reference documentation of the standard library.
 %prep
 %setup -q -n julia-%{version}
 %patch0 -p1
+%patch2 -p1
 
 # Extract LLVM sources to apply the patch.
 make CFLAGS="%optflags" CXXFLAGS="%optflags" %{juliabuildopts} -C deps extract-llvm
@@ -218,7 +221,11 @@ export LDFLAGS="$LDFLAGS -latomic"
 %endif
 
 %define julia_builddir %{_builddir}/%{name}/
-make %{?_smp_mflags} MARCH=%{julia_march} \
+make %{?_smp_mflags} \
+                     MARCH=%{julia_march} \
+%ifarch aarch64
+                     JULIA_CPU_TARGET="generic" \
+%endif
                      prefix=%{_prefix} \
                      bindir=%{_bindir} \
                      libdir=%{_libdir} \
@@ -236,6 +243,9 @@ make %{?_smp_mflags} MARCH=%{julia_march} \
 %install
 make install DESTDIR=%{buildroot} \
              MARCH=%{julia_march} \
+%ifarch aarch64
+             JULIA_CPU_TARGET="generic" \
+%endif
              prefix=%{_prefix} \
              bindir=%{_bindir} \
              libdir=%{_libdir} \

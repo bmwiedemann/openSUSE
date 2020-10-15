@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:20:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  * julia-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 22:02:46 UTC 2020 - Ronan Chagas <ronisbr@gmail.com>
 
 - Version bump to 1.4.2, see NEWS.md for details.
