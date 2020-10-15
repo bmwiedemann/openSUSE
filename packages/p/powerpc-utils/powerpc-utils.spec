@@ -16,30 +16,18 @@
 #
 
 
-%define realversion 1.3.7
-
 Name:           powerpc-utils
-Version:        %{realversion}.1
+Version:        1.3.8
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/ibm-power-utilities/powerpc-utils
-Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{realversion}.tar.gz#/%{name}-%{realversion}.tar.gz
+Source0:        https://github.com/ibm-power-utilities/powerpc-utils/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        nvsetenv
 Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
-Patch3:         systemd-dir.patch
 Patch4:         libvirt-service-dep.patch
-# This adds field in the middle of tool output so revert it again in < 15.1
-Patch5:         Revert-lparstat-Show-available-physical-processors-i.patch
-Patch6:         bug-1158312-parse-ibm-drc-info-property.patch
-Patch7:         0001-powerpc-utils-Suppress-errors-reading-kernel-files.patch
-Patch9:         bsc1164726-search-only-part-of-sys.patch
-Patch10:        bsc1171892-get-rid-of-trainling-NUL.patch
-Patch11:        Fix-ofpathname-Could-not-retrieve-logical-device-nam.patch
-Patch12:        ofpathname-Fix-udevadm-location.patch
-Patch13:        ofpathname-make-goto_dir-canonicalize-directory-argu.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -65,28 +53,14 @@ The powerpc-utils package provides a set of tools and utilities and
 utilities for maintaining and enabling certain features of Linux on Power.
 
 %prep
-%setup -q -n %{name}-%{realversion}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%if 0%{?sle_version} <= 120400 || 0%{?sle_version} == 150000
-%patch5 -p1
-%endif
-%patch6 -p1
-%patch7 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%setup -q
+%autopatch -p1
 
 %build
 autoreconf -fvi
 %configure \
     --disable-silent-rules \
-    --with-systemd=%{buildroot}%{_unitdir}
+    --with-systemd=%{_unitdir}
 make CFLAGS="%{optflags}" %{?_smp_mflags}
 
 %install
@@ -108,20 +82,20 @@ ln -sf drmgr %{buildroot}%{_sbindir}/drmig_chrp_pmig
 
 ln -s service %{buildroot}%{_sbindir}/rcsmt_off
 
-# remove docu installed by make_install as we hand-install them in %files
+# remove docu installed by make_install as we hand-install them in %%files
 rm -rf %{buildroot}%{_docdir}/%{name}/*
 
 %pre
-%service_add_pre smt_off.service
+%service_add_pre hcn-init.service smt_off.service smtstate.service
 
 %post
-%service_add_post smt_off.service
+%service_add_post hcn-init.service smt_off.service smtstate.service
 
 %preun
-%service_del_preun smt_off.service
+%service_del_preun hcn-init.service smt_off.service smtstate.service
 
 %postun
-%service_del_postun smt_off.service
+%service_del_postun hcn-init.service smt_off.service smtstate.service
 
 %files
 %license COPYING
@@ -130,6 +104,10 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*
 %{_sbindir}/*
 %{_bindir}/*
 /sbin/lsprop
-%attr(644, -, -) %{_unitdir}/smt_off.service
+%dir %{_localstatedir}/lib/powerpc-utils
+%ghost %{_localstatedir}/lib/powerpc-utils/smt.state
+%{_unitdir}/hcn-init.service
+%{_unitdir}/smt_off.service
+%{_unitdir}/smtstate.service
 
 %changelog
