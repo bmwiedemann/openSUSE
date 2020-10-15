@@ -612,4 +612,12 @@
     <comment>- Update to kernel headers 5.8 (forwarded request 824107 from Andreas_Schwab)</comment>
     <requestid>824108</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>821a5493e163056d1cee5129435fd196</srcmd5>
+    <version>5.9</version>
+    <time>1602762233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.9 (forwarded request 841231 from Andreas_Schwab)</comment>
+    <requestid>841232</requestid>
+  </revision>
 </revisionlist>
