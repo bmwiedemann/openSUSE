@@ -926,4 +926,23 @@
   Add 0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch (forwarded request 839053 from StefanBruens)</comment>
     <requestid>839059</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>3b0f82d04fb689a3ded90a49020aa726</srcmd5>
+    <version>1.8.20</version>
+    <time>1602762399</time>
+    <user>dimstar_suse</user>
+    <comment>- Use gcc9 for building on SLE_15 based distributions to workaround
+  gcc7 bug PR85180.
+- Adjust building with libclang support for doxygen-1.8.20.
+  - doxygen-llvm-libs.patch
+  - doxygen-libclang-cpp.patch
+  + doxygen-no-libclang-cpp.patch
+
+- Use gcc9 for building on SLE_15 based distributions to workaround
+  gcc7 bug PR85180.
+  - doxygen-llvm-libs.patch
+  - doxygen-libclang-cpp.patch
+  + doxygen-no-libclang-cpp.patch</comment>
+    <requestid>841450</requestid>
+  </revision>
 </revisionlist>

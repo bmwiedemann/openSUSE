@@ -1,0 +1,11 @@
+--- doxygen-1.8.20/src/CMakeLists.txt.orig	2020-10-06 15:56:02.841527965 +0200
++++ doxygen-1.8.20/src/CMakeLists.txt	2020-10-06 16:07:14.226206979 +0200
+@@ -341,7 +341,7 @@
+         set(CLANG_LIBS libclang clangTooling)
+     else() # dynamically linked version of clang
+         llvm_config(doxymain USE_SHARED support)
+-        set(CLANG_LIBS libclang clang-cpp)
++        set(CLANG_LIBS libclang clangTooling)
+     endif()
+     target_compile_definitions(doxygen PRIVATE ${LLVM_DEFINITIONS})
+ endif()

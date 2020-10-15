@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:55:24 UTC 2020 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Use gcc9 for building on SLE_15 based distributions to workaround
+  gcc7 bug PR85180.
+- Adjust building with libclang support for doxygen-1.8.20.
+  - doxygen-llvm-libs.patch
+  - doxygen-libclang-cpp.patch
+  + doxygen-no-libclang-cpp.patch
+
+-------------------------------------------------------------------
 Fri Oct  2 00:59:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix anonymous enums from multiple files being squashed together:

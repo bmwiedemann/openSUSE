@@ -31,7 +31,11 @@ Patch3:         vhdlparser-no-return.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -61,6 +65,10 @@ export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
 %cmake \
     -Dbuild_wizard=ON \
+%if 0%{?suse_version} <= 1500
+    -DCMAKE_C_COMPILER=gcc-9 \
+    -DCMAKE_CXX_COMPILER=g++-9 \
+%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \

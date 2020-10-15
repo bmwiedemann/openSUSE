@@ -16,8 +16,11 @@
 #
 
 
+%if 0%{?sle_version} >= 150100
 # build with "--with libclang" to enable libclang support
 %bcond_with libclang
+%endif
+
 Name:           doxygen
 Version:        1.8.20
 Release:        0
@@ -33,14 +36,17 @@ Patch0:         %{name}-modify_footer.patch
 Patch1:         %{name}-no-lowercase-man-names.patch
 # PATCH-FIX-UPSTREAM: add missing returns to non-void functions
 Patch3:         vhdlparser-no-return.patch
-Patch6:         doxygen-llvm-libs.patch
-Patch10:        doxygen-libclang-cpp.patch
+Patch10:        doxygen-no-libclang-cpp.patch
 # PATCH-FIX-UPSTREAM
 Patch11:        0001-issue-7979-C++-enums-being-defined-in-multiple-files.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc9-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 # Do not bother building documentation with latex since it is present on the
@@ -64,10 +70,7 @@ as well.
 %patch1 -p1
 %patch3 -p1
 %if %{with libclang}
-%patch6
-%endif
-%if %{with libclang}
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+%if 0%{?sle_version} == 150100 || (0%{?sle_version} == 150200 && !0%{?is_opensuse})
 %patch10 -p1
 %endif
 %endif
@@ -81,6 +84,10 @@ as well.
     -Dbuild_wizard=OFF \
 %if %{with libclang}
     -Duse_libclang=ON \
+%endif
+%if 0%{?suse_version} <= 1500
+    -DCMAKE_C_COMPILER=gcc-9 \
+    -DCMAKE_CXX_COMPILER=g++-9 \
 %endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
