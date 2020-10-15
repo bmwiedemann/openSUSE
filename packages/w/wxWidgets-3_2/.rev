@@ -99,4 +99,14 @@
   Add 0002-Fix-documented-type-of-wxART_XXX-constants.patch</comment>
     <requestid>838843</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>3cc89daf068e232a6b667176d018c694</srcmd5>
+    <version>3.1.4</version>
+    <time>1602762248</time>
+    <user>dimstar_suse</user>
+    <comment>- Change wxGTK2 flavor to be the main (unnamed) flavor.
+- Fix unquoted bareword comparisons for RPM 4.16 compatibility
+</comment>
+    <requestid>841336</requestid>
+  </revision>
 </revisionlist>

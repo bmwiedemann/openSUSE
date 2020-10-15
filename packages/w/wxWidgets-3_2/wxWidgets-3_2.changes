@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:48:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Change wxGTK2 flavor to be the main (unnamed) flavor.
+
+-------------------------------------------------------------------
+Fri Oct  9 13:48:14 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix unquoted bareword comparisons for RPM 4.16 compatibility
+
+-------------------------------------------------------------------
 Wed Sep 30 17:39:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix wxPython compatibility issue:

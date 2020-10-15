@@ -18,11 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
-Name:           wxWidgets-3_2
-ExclusiveArch:  do_not_build
-%endif
-
-%if "%{flavor}" == "GTK2"
+# default flavor is GTK2
 Name:           wxWidgets-3_2
 %define pkgname wxWidgets-3_2
 %define variant suse
@@ -104,17 +100,17 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
-%if %{toolkit} == "gtk2"
+%if "%{toolkit}" == "gtk2"
 BuildRequires:  gnome-vfs2-devel
 BuildRequires:  gtk2-devel
 %endif
-%if %{toolkit} == "gtk3"
+%if "%{toolkit}" == "gtk3"
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with webview}
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 %endif
 %endif
-%if %{toolkit} == "qt"
+%if "%{toolkit}" == "qt"
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.2.1
 BuildRequires:  pkgconfig(Qt5OpenGL) >= 5.2.1
@@ -288,13 +284,13 @@ SDL based sound plugin for the wxWidgets cross-platform GUI.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-%if %{toolkit} == "gtk2"
+%if "%{toolkit}" == "gtk2"
 Requires:       gtk2-devel
 %endif
-%if %{toolkit} == "gtk3"
+%if "%{toolkit}" == "gtk3"
 Requires:       pkgconfig(gtk+-3.0)
 %endif
-%if %{toolkit} == "qt"
+%if "%{toolkit}" == "qt"
 Requires:       pkgconfig(Qt5OpenGL) >= 5.2.1
 Requires:       pkgconfig(Qt5Widgets) >= 5.2.1
 %endif
@@ -320,19 +316,19 @@ Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
 Provides:       wxWidgets-any-devel
 Conflicts:      wxWidgets-any-devel
-%if %{toolkit} == "gtk2"
+%if "%{toolkit}" == "gtk2"
 Provides:       wxGTK2-devel = %version-%release
 Provides:       wxWidgets-devel = %version-%release
 # Name up to openSUSE 11.3 and up to wxGTK-2.8.x:
 Provides:       wxGTK-devel = %version-%release
 Obsoletes:      wxGTK-devel < %version-%release
 %endif
-%if %{toolkit} == "gtk3"
+%if "%{toolkit}" == "gtk3"
 %if "%{flavor}" != "GTK3-nostl"
 Provides:       wxGTK3-devel = %version-%release
 %endif
 %endif
-%if %{toolkit} == "qt"
+%if "%{toolkit}" == "qt"
 Provides:       wxQt-devel = %version-%release
 %endif
 
@@ -363,11 +359,11 @@ autoconf -f -i
 
 %configure \
 	--enable-vendor=%variant \
-%if %{toolkit} == "qt"
+%if "%{toolkit}" == "qt"
 	--with-qt \
 %else
 	--with-gtk=%gtk_version \
-%if %{gtk_version} == 2
+%if "%gtk_version" == "2"
 	--with-gnomevfs \
 %endif
 %endif
