@@ -1,17 +1,7 @@
 <services>
-  <service name="obs_scm" mode="disabled">
-    <param name="url">https://github.com/vmware-tanzu/velero.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="versionformat">1.3.1</param>
-    <param name="revision">v1.3.1</param>
-    <param name="changesgenerate">enable</param>
-  </service>
-  <service name="tar" mode="disabled"/>
-  <service name="recompress" mode="disabled">
-    <param name="file">*.tar</param>
-    <param name="compression">gz</param>
-  </service>
   <service name="set_version" mode="disabled">
+    <param name="basename">velero</param>
+  </service>
+  <service name="go_modules" mode="disabled">
   </service>
 </services>

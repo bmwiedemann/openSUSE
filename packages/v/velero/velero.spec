@@ -1,7 +1,7 @@
 #
-# spec file for package velero and velero-restic-restore-helper
+# spec file for package velero
 #
-# Copyright (c) 2019,2020 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define goipath github.com/vmware-tanzu/velero
-%define commit 0665b05321eefeb7b7fdd6984750745b7429774f
+%define commit 87d86a45a6ca66c6c942c7c7f08352e26809426c
 %define gitstate clean
 
 Name:           velero
-Version:        1.3.1
+Version:        1.5.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
 Group:          Productivity/Archiving/Backup
 URL:            https://velero.io
 Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.14
 
 %description
 velero is a backup program. It supports verification, encryption,
@@ -45,12 +47,13 @@ Restic restore helper for %{name}.
 
 %prep
 %setup -q
+%setup -q -T -D -a 1
 
 %build
 %goprep %{goipath}
 export CGO_ENABLED=0
-%gobuild -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero
-%gobuild -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero-restic-restore-helper
+%gobuild -mod vendor -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero
+%gobuild -mod vendor -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero-restic-restore-helper
 
 %install
 %goinstall
