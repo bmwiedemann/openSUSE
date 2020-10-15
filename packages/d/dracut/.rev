@@ -1802,4 +1802,36 @@ Add:  dracut_git_v034_to_head.patch</comment>
   * Revert &quot;install: also install post weak dependencies of kernel modules&quot; (boo#1177016)</comment>
     <requestid>838227</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>4b1df5ec2e1fc82f54e96e8a2d90558f</srcmd5>
+    <version>050+suse.250.ge6b6e843</version>
+    <time>1602762482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 050+suse.250.ge6b6e843:
+  * Revert &quot;Revert &quot;install: also install post weak dependencies of kernel modules&quot;&quot;
+  * 98dracut-systemd: don't wait for root device if remote cryptsetup active
+  * cryptroot-ask: unify /etc/crypttab and rd.luks.key
+  * 90kernel-modules: arm: add drivers/hwmon for arm/arm64
+  * rootfs-block: only write root argument for block device
+  * 90crypt: pull in remote-cryptsetup.target enablement
+  * 00systemd: add missing cryptsetup-related targets
+  * 95nvmf: Implement 'fc,auto' commandline syntax
+  * 95nvmf: add nvmf-autoconnect script
+  * 95nvmf: Fixup FC connections
+  * 95nvmf: add documentation
+  * 95nvmf: rework parameter handling
+  * dracut-install: fix edge-case regression with weak modules
+  * dracut-install: ignore bogus preload libs
+  * dracut.spec: Use make macros
+  * dracut.spec: remove fedora pre 30 quirks
+  * 50drm: Check drm_encoder_init along drm_crtc_init
+  * 50drm: Include drm platform drivers in hostonly
+  * 50drm: fix ambiguous redirects
+  * Include devfreq drivers in initrd
+  * dracut.spec: include the 04watchdog-modules module
+
+- Update to version 050+suse.228.gd0d6792d:
+  * 99memstrack: use /bin/bash</comment>
+    <requestid>841563</requestid>
+  </revision>
 </revisionlist>
