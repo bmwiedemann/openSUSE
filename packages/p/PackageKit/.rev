@@ -1744,4 +1744,12 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
   (gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315). (forwarded request 835757 from JonathanKang)</comment>
     <requestid>836045</requestid>
   </revision>
+  <revision rev="206" vrev="3">
+    <srcmd5>9dc162f2b90a853e4dceb3167a1e9d78</srcmd5>
+    <version>1.2.1</version>
+    <time>1602762429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841480</requestid>
+  </revision>
 </revisionlist>

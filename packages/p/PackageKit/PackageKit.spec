@@ -54,6 +54,8 @@ Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.
 Patch4:         PackageKit-test-Install-required-helper-files.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-set-PATH.patch gh#/hughsie/PackageKit/commit/2fb7fc6e, bsc#1175315 sckang@suse.com -- zypp: Set PATH variable
 Patch5:         PackageKit-zypp-set-PATH.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-repos-on-offline-update.patch gh#/hughsie/PackageKit/commit/81207bd3, bsc#1173562 sckang@suse.com -- zypp: Don’t refresh repos again when actually updating packages
+Patch6:         PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
