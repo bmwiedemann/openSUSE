@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:37:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  no == yes.
+
+-------------------------------------------------------------------
 Thu May 28 07:05:06 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
-- Fixup mono-find-requires for v1 profiles 
+- Fixup mono-find-requires for v1 profiles
 
 -------------------------------------------------------------------
 Wed May 27 09:35:05 UTC 2020 - Ismail Dönmez <idonmez@suse.com>

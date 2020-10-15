@@ -1057,4 +1057,12 @@
 - Update to the most current mono release, 6.8.0.105.</comment>
     <requestid>809780</requestid>
   </revision>
+  <revision rev="128" vrev="6">
+    <srcmd5>3fc6da3cc1a22b0dce12b45edf4d9401</srcmd5>
+    <version>6.8.0</version>
+    <time>1602762256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841346</requestid>
+  </revision>
 </revisionlist>

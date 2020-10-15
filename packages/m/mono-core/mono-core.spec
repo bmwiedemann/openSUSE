@@ -88,7 +88,7 @@ BuildRequires:  pkgconfig(zlib)
 %ifnarch ia64 %arm s390
 BuildRequires:  pkgconfig(valgrind)
 %endif
-%if %llvm == yes
+%if "%llvm" == "yes"
 BuildRequires:  llvm-mono-devel
 %endif
 Requires:       ca-certificates
@@ -100,7 +100,7 @@ Provides:       mono-posix = %{version}
 Provides:       mono-xml-relaxng = %{version}
 Provides:       mono-ziplib = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %llvm == yes
+%if "%llvm" == "yes"
 Recommends:     libmono-llvm0 = %{version}
 %endif
 Recommends:     libgdiplus0
@@ -211,7 +211,7 @@ technologies that have been submitted to the ECMA for standardization.
 %setup -q -n mono-%{version}.%{version_suffix}
 %patch14 -p1
 %patch16 -p1
-%if %roslyn == no
+%if "%roslyn" == "no"
 %patch15 -p1
 %else
 %patch20 -p1
@@ -258,12 +258,12 @@ export MONO_CPU_ARCH="armv7l-thumb"
 export MONO_CPU_ARCH="armv5el"
 %endif
 # distro specific configure options
-%if %llvm == yes
+%if "%llvm" == "yes"
 export PATH=/opt/novell/llvm-mono/bin:$PATH
 %endif
 %configure \
   --with-sgen=%{sgen} \
-%if %llvm == yes
+%if "%llvm" == "yes"
   --enable-loadedllvm \
 %endif
 %ifarch ppc
@@ -272,7 +272,7 @@ export PATH=/opt/novell/llvm-mono/bin:$PATH
 %ifnarch %ix86 x86_64
   --disable-system-aot \
 %endif
-%if %roslyn == no
+%if "%roslyn" == "no"
   --with-csc=mcs \
 %endif
   --with-ikvm=yes \
@@ -347,7 +347,7 @@ install -D -m 0755 %{S:2} %{buildroot}%{_bindir}/gmcs
 # this trick is needed to fix build for some packages (gnome-keyring-sharp for example),
 # that incorrectly detect CSC precense when it is actually not usable for current platform.
 # mono still package roslyn components even if it is disabled from build
-%if %roslyn == no
+%if "%roslyn" == "no"
 rm -v %{buildroot}%{_prefix}/lib/mono/4.5/Microsoft.CodeAnalysis.CSharp.dll*
 rm -v %{buildroot}%{_prefix}/lib/mono/4.5/Microsoft.CodeAnalysis.dll*
 rm -v %{buildroot}%{_prefix}/lib/mono/4.5/System.Collections.Immutable.dll*
@@ -371,7 +371,7 @@ rm -v %{buildroot}%{_prefix}/lib/mono/msbuild/Current/bin/Roslyn/*
 
 %find_lang mcs
 
-%if %sgen == no
+%if "%sgen" == "no"
 # installed anyway but not packaged
 rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %endif
@@ -410,11 +410,11 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_bindir}/mcs
 %{_bindir}/mono
 %{_bindir}/mono-hang-watchdog
-%if %boehm == yes
+%if "%boehm" == "yes"
 %{_bindir}/mono-boehm
 %endif
 %{_bindir}/mono-configuration-crypto
-%if %sgen == yes
+%if "%sgen" == "yes"
 %{_bindir}/mono-sgen
 %endif
 %{_bindir}/mono-test-install
@@ -551,12 +551,12 @@ rm %{buildroot}%{_bindir}/mono-sgen-gdb.py
 %{_prefix}/lib/mono/gac/System.IO.Compression
 %{_prefix}/lib/mono/gac/cscompmgd
 %{_prefix}/lib/mono/mono-configuration-crypto
-%if %btls == yes
+%if "%btls" == "yes"
 %{_libdir}/libmono-btls-shared.so*
 %{_prefix}/lib/mono/4.5/Mono.Btls.Interface.dll
 %{_prefix}/lib/mono/gac/Mono.Btls.Interface
 %endif
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_bindir}/csc
 %{_bindir}/csi
 %{_bindir}/vbc
@@ -645,7 +645,7 @@ Development files for libmono.
 %{_libdir}/libmono-2.0.so
 %{_libdir}/pkgconfig/mono-2.pc
 
-%if %boehm == yes
+%if "%boehm" == "yes"
 %package -n libmonoboehm-2_0-1
 Summary:        A Library for embedding Mono in your Application (Boehm GC)
 License:        LGPL-2.1-only
@@ -691,7 +691,7 @@ Development files for libmonoboehm
 %{_libdir}/libmonoboehm-2.0.so
 %endif
 
-%if %sgen == yes
+%if "%sgen" == "yes"
 %package -n libmonosgen-2_0-1
 Summary:        A Library for embedding Mono in your Application (SGen GC)
 License:        LGPL-2.1-only
@@ -739,7 +739,7 @@ Development files for libmonosgen.
 %{_libdir}/pkgconfig/monosgen-2.pc
 %endif
 
-%if %llvm == yes
+%if "%llvm" == "yes"
 %package -n libmono-llvm0
 Summary:        Loadable LLVM libary for mono
 License:        LGPL-2.1-only
@@ -856,7 +856,7 @@ Database connectivity for Mono.
 %{_prefix}/lib/mono/gac/System.Runtime.Serialization
 %{_prefix}/lib/mono/gac/System.Transactions
 %{_prefix}/lib/mono/gac/WebMatrix.Data
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/4.5/sqlmetal.pdb
 %{_prefix}/lib/mono/4.5/sqlsharp.pdb
 %endif
@@ -981,7 +981,7 @@ Extra packages.
 %{_prefix}/lib/mono/gac/System.ServiceProcess
 %{_prefix}/lib/mono/gac/System.Xaml
 %{_prefix}/lib/mono/gac/mono-service
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/4.5/installutil.pdb
 %{_prefix}/lib/mono/4.5/mono-service.pdb
 %{_prefix}/lib/mono/4.5/RabbitMQ.Client.Apigen.pdb
@@ -1052,7 +1052,7 @@ Mono implementation of WCF, Windows Communication Foundation
 %{_prefix}/lib/mono/gac/System.ServiceModel.Routing
 %{_prefix}/lib/mono/gac/System.ServiceModel.Web
 %{_prefix}/lib/mono/gac/SMDiagnostics
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/4.5/svcutil.pdb
 %endif
 
@@ -1176,7 +1176,7 @@ Mono implementation of ASP.NET, Remoting and Web Services.
 %{_prefix}/lib/mono/gac/System.Web.WebPages.Deployment
 %{_prefix}/lib/mono/gac/System.Web.WebPages.Razor
 %{_prefix}/lib/mono/gac/System.Web.WebPages
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/4.5/disco.pdb
 %{_prefix}/lib/mono/4.5/mconfig.pdb
 %{_prefix}/lib/mono/4.5/soapsuds.pdb
@@ -1466,7 +1466,7 @@ Mono development tools.
 %{_prefix}/lib/mono/xbuild-frameworks
 %dir %{_libdir}/mono/
 %{_libdir}/mono/lldb
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/msbuild
 %{_prefix}/lib/mono/4.5/caspol.pdb
 %{_prefix}/lib/mono/4.5/cccheck.pdb
@@ -1589,7 +1589,7 @@ Monodoc-core contains documentation tools for C#.
 %{_prefix}/lib/mono/gac/monodoc
 %{_prefix}/lib/mono/monodoc
 %{_prefix}/lib/monodoc
-%if %roslyn == yes
+%if "%roslyn" == "yes"
 %{_prefix}/lib/mono/4.5/mdoc.pdb
 %{_prefix}/lib/mono/4.5/mod.pdb
 %endif
@@ -1602,14 +1602,14 @@ Requires:       ibm-data-db2 = %{version}
 Requires:       libmono-2_0-1 = %{version}
 Requires:       libmono-2_0-devel = %{version}
 Requires:       mono-core = %{version}
-%if %llvm == yes
+%if "%llvm" == "yes"
 Requires:       libmono-llvm0 = %{version}
 %endif
-%if %sgen == yes
+%if "%sgen" == "yes"
 Requires:       libmonosgen-2_0-1 = %{version}
 Requires:       libmonosgen-2_0-devel = %{version}
 %endif
-%if %boehm == yes
+%if "%boehm" == "yes"
 Requires:       libmonoboehm-2_0-1 = %{version}
 Requires:       libmonoboehm-2_0-devel = %{version}
 %endif
