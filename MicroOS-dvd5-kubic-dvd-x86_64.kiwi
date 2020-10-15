@@ -604,6 +604,9 @@
       <repopackage name="system-user-nobody"/>
       <repopackage name="system-user-root"/>
       <repopackage name="systemd"/>
+      <repopackage name="systemd-default-settings"/>
+      <repopackage name="systemd-default-settings-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="systemd-default-settings-branding-SLE"/>
       <repopackage name="systemd-logger" arch="x86_64"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-common-SUSE"/>

@@ -4639,6 +4639,9 @@
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="systemd-container" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-icon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
