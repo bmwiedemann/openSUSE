@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Jul 29 07:36:49 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version v1.1.0
+  * chunk objects when uploading to object storage in order to support objects larger than 256MB (#30, @skriss)
+  * support using static storage account keys rather than service principals (#32, @jaygridley)
+
+-------------------------------------------------------------------
+Tue Mar  3 00:56:22 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version 1.0.1
+
+-------------------------------------------------------------------
+Wed Feb  5 01:59:59 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Add LICENSE file
