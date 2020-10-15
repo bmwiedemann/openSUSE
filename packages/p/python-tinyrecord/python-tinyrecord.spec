@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyrecord
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-tinyrecord
-Version:        0.1.5
+Version:        0.2.0
 Release:        0
-License:        MIT
 Summary:        Atomic transactions for TinyDB
-Url:            https://github.com/eugene-eeo/tinyrecord
+License:        MIT
 Group:          Development/Languages/Python
-Source:         https://github.com/eugene-eeo/tinyrecord/archive/%{version}.tar.gz#/tinyrecord-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/eugene-eeo/tinyrecord/master/LICENSE
-BuildRequires:  python-rpm-macros
+URL:            https://github.com/eugene-eeo/tinyrecord
+Source:         https://github.com/eugene-eeo/tinyrecord/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tinydb}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-tinydb
 BuildArch:      noarch
 
@@ -40,7 +42,6 @@ Atomic transactions for TinyDB.
 
 %prep
 %setup -q -n tinyrecord-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -50,10 +51,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python setup.py pytest --addopts="tests.py"
-$python ./test.py
-}
+%pytest tests.py
 
 %files %{python_files}
 %license LICENSE
