@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Oct 13 08:43:43 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import v0.2
+
+  cc4e951 timesyncd: add default ntp servers for SUSE and openSUSE distros
+
+-------------------------------------------------------------------
+Mon Oct 12 14:46:51 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Introduce "upstream" branding sub-package
+
+  Installing this branding sub-package is supposed to restore upstream
+  defaults by uninstalling all custom drop-ins installed by other
+  branding sub-packages.
+
+-------------------------------------------------------------------
+Tue Oct  6 07:15:44 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Initial revision
