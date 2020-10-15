@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 19:34:25 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- fix constructor param name for virDomain{Checkpoint,Snapshot}
+  61341150-fix-constructor-param-name.patch
+  boo#1177559
+
+-------------------------------------------------------------------
 Thu Oct  1 16:49:58 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to 6.8.0

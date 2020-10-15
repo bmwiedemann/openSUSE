@@ -398,4 +398,14 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
   - jsc#SLE-12684, jsc#SLE-15861</comment>
     <requestid>839022</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>55935e10874ce866245bed6159f15a8f</srcmd5>
+    <version>6.8.0</version>
+    <time>1602762261</time>
+    <user>dimstar_suse</user>
+    <comment>- fix constructor param name for virDomain{Checkpoint,Snapshot}
+  61341150-fix-constructor-param-name.patch
+  boo#1177559</comment>
+    <requestid>841348</requestid>
+  </revision>
 </revisionlist>

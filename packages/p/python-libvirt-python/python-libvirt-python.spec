@@ -31,6 +31,7 @@ Group:          Development/Languages/Python
 Source0:        %{srcname}-%{version}.tar.gz
 Source1:        %{srcname}-%{version}.tar.gz.asc
 Source2:        python-libvirt-python.keyring
+Patch0:         61341150-fix-constructor-param-name.patch
 BuildRequires:  fdupes
 BuildRequires:  libvirt-devel = %{version}
 BuildRequires:  python-rpm-macros
@@ -52,6 +53,7 @@ of recent versions of Linux (v2.6.20+).
 
 %prep
 %setup -q -n %{srcname}-%{version}
+%patch0 -p1
 
 # Unset execute bit for example scripts; it can introduce spurious
 # RPM dependencies, like /usr/bin/python which can pull in python2
