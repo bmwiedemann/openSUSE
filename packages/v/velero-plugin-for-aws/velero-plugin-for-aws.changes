@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Jul 29 07:33:22 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version v1.1.0
+  * bug fix: have plugin server bind flags to allow --log-level flag to be used (#31, @skriss)
+  * support using a custom CA certificate to verify connections to object storage (#34, @mansam)
+  * Pull in proxy configuration from environment when constructing custom transport (#37, @dymurray)
+  * Update AWS-SDK-GO version to a version that supports regional and private VPC STS endpoints. (#41, @jones-paul1525)
+
+-------------------------------------------------------------------
+Tue Mar  3 00:48:08 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version 1.0.1
+
+-------------------------------------------------------------------
+Wed Feb  5 01:56:29 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Add LICENSE file
