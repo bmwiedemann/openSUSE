@@ -1941,4 +1941,16 @@ and I can give it a stab.
   obsolete. (forwarded request 835136 from fbui)</comment>
     <requestid>838608</requestid>
   </revision>
+  <revision rev="143" vrev="9">
+    <srcmd5>62dc350fa7bb9f0f0e92fe5b523c6538</srcmd5>
+    <version>2.13.4</version>
+    <time>1602762242</time>
+    <user>dimstar_suse</user>
+    <comment>- add CAP_CHECKPOINT_RESTORE to severity.db (MR 656,
+  cap_checkpoint_restore.diff)
+
+- %service_del_postun_without_restart only works for Tumbleweed,
+  keep using DISABLE_RESTART_ON_UPDATE for Leap 15.x</comment>
+    <requestid>841767</requestid>
+  </revision>
 </revisionlist>

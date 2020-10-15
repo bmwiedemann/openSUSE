@@ -81,6 +81,9 @@ Patch12:        sevdb-caps-mr589.diff
 # needs to go upstream
 Patch13:        libvirt-leaseshelper.patch
 
+# add CAP_CHECKPOINT_RESTORE to severity.db (https://gitlab.com/apparmor/apparmor/-/merge_requests/656, submitted upstream 2020-10-14 for 2.10..master)
+Patch14:        cap_checkpoint_restore.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix /lib/apparmor
@@ -379,6 +382,7 @@ SubDomain.
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 %define _lto_cflags %{nil}
@@ -762,7 +766,12 @@ fi
 
 %postun parser
 # don't call try-restart, see bnc#853019
+%if 0%{?suse_version} <= 1500
+export DISABLE_RESTART_ON_UPDATE="yes"
+%service_del_postun apparmor.service
+%else
 %service_del_postun_without_restart apparmor.service
+%endif
 
 %post abstractions
 # workaround for bnc#904620#c8 / lp#1392042

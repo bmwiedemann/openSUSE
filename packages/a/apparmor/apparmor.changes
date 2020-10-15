@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:16:52 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- add CAP_CHECKPOINT_RESTORE to severity.db (MR 656,
+  cap_checkpoint_restore.diff)
+
+-------------------------------------------------------------------
+Thu Oct  8 20:56:45 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- %service_del_postun_without_restart only works for Tumbleweed,
+  keep using DISABLE_RESTART_ON_UPDATE for Leap 15.x
+
+-------------------------------------------------------------------
 Fri Sep 11 15:32:37 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Make use of %service_del_postun_without_restart
