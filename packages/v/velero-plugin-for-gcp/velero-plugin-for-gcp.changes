@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Jul 29 07:35:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version v1.1.0
+  * bug fix: have plugin server bind flags to allow --log-level flag to be used (#20, @skriss)
+
+-------------------------------------------------------------------
+Tue Mar  3 00:53:58 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Bump version 1.0.1
+
+-------------------------------------------------------------------
+Wed Feb  5 01:59:52 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Add LICENSE file
