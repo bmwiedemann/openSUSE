@@ -26,6 +26,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Patch1:         reproducible.patch
+# PATCH-FIX-UPSTREAM - https://github.com/sherpa/sherpa/issues/970
+Patch2:         sherpa-fix-aarch64.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}

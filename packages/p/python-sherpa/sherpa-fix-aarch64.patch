@@ -1,0 +1,25 @@
+diff -purN sherpa-4.12.1.orig/sherpa/utils/src/cephes/mconf.h sherpa-4.12.1/sherpa/utils/src/cephes/mconf.h
+--- sherpa-4.12.1.orig/sherpa/utils/src/cephes/mconf.h	2020-06-26 20:27:19.000000000 +0200
++++ sherpa-4.12.1/sherpa/utils/src/cephes/mconf.h	2020-10-14 14:44:53.565068804 +0200
+@@ -173,6 +173,10 @@ typedef struct
+ /* Define to support tiny denormal numbers, else undefine. */
+ #define DENORMAL 1
+ 
++/* https://github.com/sherpa/sherpa/issues/970 */
++#define NOINFINITIES
++#define NONANS
++
+ /* Define to ask for infinity support, else undefine. */
+ #define INFINITIES 1
+ #ifdef NOINFINITIES
+--- sherpa-4.12.1.orig/sherpa/tests/test_fit_unit.py	2020-06-26 20:27:19.000000000 +0200
++++ sherpa-4.12.1/sherpa/tests/test_fit_unit.py	2020-10-14 15:08:34.798995079 +0200
+@@ -1867,7 +1867,7 @@ def test_fit_single(stat, usestat, usesy
+     assert fit.method.name == 'levmar'
+     fr = fit.fit()
+     assert fr.succeeded
+-    assert_almost_equal(fr.statval, finalstat)
++    assert fr.statval == pytest.approx(finalstat, rel=7e-5)
+ 
+ 
+ @pytest.mark.parametrize("stat,usestat,usesys,finalstat", [
