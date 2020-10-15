@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:54:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Escape rpm command %%expand when used in comment.
+
+-------------------------------------------------------------------
 Tue Sep  8 08:18:48 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Update to 3.6.15
