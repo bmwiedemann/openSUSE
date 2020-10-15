@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 14:50:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(xorg-macros) BuildRequires: this is only needed if
+  configure.ac/Makefile.am files are being modified and autoreconf
+  needs to be started. When using the pristine tarball, upstream
+  ran make dist.
+
+-------------------------------------------------------------------
 Fri Mar 22 11:47:42 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6
