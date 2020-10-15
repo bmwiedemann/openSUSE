@@ -1,7 +1,7 @@
-Index: vim-8.2.0701/runtime/defaults.vim
+Index: vim-8.2.1840/runtime/defaults.vim
 ===================================================================
---- vim-8.2.0701.orig/runtime/defaults.vim
-+++ vim-8.2.0701/runtime/defaults.vim
+--- vim-8.2.1840.orig/runtime/defaults.vim
++++ vim-8.2.1840/runtime/defaults.vim
 @@ -77,13 +77,15 @@ inoremap <C-U> <C-G>u<C-U>
  " can position the cursor, Visually select and scroll with the mouse.
  " Only xterm can grab the mouse events when using the shift key, for other
@@ -23,8 +23,8 @@ Index: vim-8.2.0701/runtime/defaults.vim
 +"  endif
 +"endif
  
- " Switch syntax highlighting on when the terminal has colors or when using the
- " GUI (which always has colors).
+ " Only do this part when Vim was compiled with the +eval feature.
+ if 1
 @@ -139,3 +141,6 @@ if has('langmap') && exists('+langremap'
    " compatible).
    set nolangremap

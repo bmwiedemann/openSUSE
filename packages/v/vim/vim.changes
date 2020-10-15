@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Oct 13 06:21:33 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1840, fixes the following problems
+- refreshed vim-7.3-filetype_changes.patch and vim-8.0.1568-defaults.patch
+  * Filetype.vim may be loaded twice.
+  * Vim9: some assignment tests in the wrong file.
+  * Vim9: returning from a partial call clears outer context, causing a crash.
+  * Some debian changelog files are not recognized.
+  * Statusline not updated when splitting windows.
+  * Writing to prompt buffer interferes with insert mode.
+  * Vim9: cannot pass boolean to mapset().
+  * Try-catch test fails.
+  * commits are not scanned for security problems
+  * Compiler warning for strcp() out of bounds. (Christian Brabandt)
+  * Various Normal mode commands not fully tested.
+  * Crash with 'incsearch' and very long line.
+  * Vim9: still allows :let for declarations.
+  * Vim9: crash with invalid list constant. (Dhiraj Mishra)
+  * Vim9: debugger test fails.
+  * Configure does not recognize Racket 6.1+.
+  * Not consistently giving the "is a directory" warning.
+  * No falsy Coalescing operator.
+  * Vim9: operators && and || have a confusing result.
+  * Vim9: invalid memory access with weird function name. (Dhiraj Mishra)
+  * Vim9: some parts of the code not tested.
+  * Vim9: trinary operator condition is too permissive.
+  * Some Normal mode commands not fully tested.
+  * Vim9: memory leak if "if" condition is invalid.
+  * Undo file not found when using ":args" or ":next".
+  * Vim9: crash with unterminated dict. (Dhiraj Mishra)
+  * A few failures are not tested.
+  * resolve('/') returns an empty string.
+  * Unix: terminal mode changed when using ":shell".
+  * Can use :help in a terminal popup window.
+  * No test coverage for ":spelldump!".
+  * Mapping some keys with Ctrl does not work properly.
+  * Some code in normal.c not covered by tests.
+  * Mapping Ctrl-key does not work for '{', '}' and '|'.
+  * Vim9: nested closure throws an internal error.
+  * Vim9: can assign wrong type to script dict. (Christian J.  Robinson)
+  * Missing change to remove "static".
+  * Vim9: memory leak when using function reference.
+  * Vim9: another memory leak when using function reference.
+  * Vim9: wrong instruction when reusing a local variable spot.
+  * SE Linux: deprecation warning for security_context_t.
+  * Vim9: Memory leak when using a closure.
+  * Vim9: crash when error happens in timer callback.
+  * Vim9: concatenating to a NULL list doesn't work.
+  * List test doesn't fail.
+  * "gN" does not select the matched string.
+  * Vim9: variables at the script level escape their scope.
+  * Vim9: accessing freed memory.
+  * Vim9: cannot use a {} block at script level.
+  * Filetype detection does not test enough file names.
+  * Build failure without the +eval feature.
+  * Warnings when executing Github actions.
+  * File missing from distribution.
+  * readdirex() error is displayed as a message. (Yegappan Lakshmanan)
+  * When reading from stdin dup() is called twice.
+  * PyEval_InitThreads() is deprecated in Python 3.9.
+  * ":help ??" finds the "!!" tag.
+  * Autocmd test fails on pacifist systems.
+  * Using "gn" after "gN" does not work.
+  * Vim9: cannot insert a comment line in an expression.
+  * Vim9: memory leaks reported in assign test.
+  * Vim9: error message is not clear about compilation error.
+
+-------------------------------------------------------------------
 Thu Oct  8 21:35:39 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - apparmor.vim: update from latest AppArmor 2.13 branch:

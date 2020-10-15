@@ -1,8 +1,8 @@
-Index: vim-8.2.0348/runtime/filetype.vim
+Index: vim-8.2.1840/runtime/filetype.vim
 ===================================================================
---- vim-8.2.0348.orig/runtime/filetype.vim
-+++ vim-8.2.0348/runtime/filetype.vim
-@@ -314,6 +314,9 @@ au BufNewFile,BufRead *.css			setf css
+--- vim-8.2.1840.orig/runtime/filetype.vim
++++ vim-8.2.1840/runtime/filetype.vim
+@@ -320,6 +320,9 @@ au BufNewFile,BufRead *.css			setf css
  " Century Term Command Scripts (*.cmd too)
  au BufNewFile,BufRead *.con			setf cterm
  
@@ -10,12 +10,12 @@ Index: vim-8.2.0348/runtime/filetype.vim
 +au BufNewFile,BufRead *.changes			setf changes
 +
  " Changelog
- au BufNewFile,BufRead changelog.Debian,changelog.dch,NEWS.Debian,NEWS.dch
+ au BufNewFile,BufRead changelog.Debian,changelog.dch,NEWS.Debian,NEWS.dch,*/debian/changelog
  					\	setf debchangelog
-Index: vim-8.2.0348/runtime/syntax/changes.vim
+Index: vim-8.2.1840/runtime/syntax/changes.vim
 ===================================================================
 --- /dev/null
-+++ vim-8.2.0348/runtime/syntax/changes.vim
++++ vim-8.2.1840/runtime/syntax/changes.vim
 @@ -0,0 +1,41 @@
 +" Vim syntax file
 +" Filename:     changes.vim
