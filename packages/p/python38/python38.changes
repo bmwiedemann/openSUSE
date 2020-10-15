@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+
+-------------------------------------------------------------------
 Tue Sep  1 10:16:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Just cleanup and reordering items to synchronize with python39
@@ -24,6 +30,7 @@ Mon Jul 20 17:46:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
     ease maintenance for Linux distributions. Patch by Felix Yan.
   - bpo-41300: Save files with non-ascii chars. Fix regression
     released in 3.9.0b4 and 3.8.4.
+- This release also fixes CVE-2020-26116 (bsc#1177211).
 
 -------------------------------------------------------------------
 Fri Jul 17 06:39:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
