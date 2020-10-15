@@ -18,9 +18,9 @@
 
 %define netdata_user    netdata
 %define netdata_group   netdata
-%define godplugin_version 0.22.0
+%define godplugin_version 0.23.0
 Name:           netdata
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        A system for distributed real-time performance and health monitoring
 # netdata is GPL-3.0+, other licenses refer to included third-party software (see REDISTRIBUTED.md)
@@ -133,7 +133,10 @@ ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,' \
     %{buildroot}%{_libexecdir}/%{name}/plugins.d/* \
     %{buildroot}%{_sysconfdir}/%{name}/edit-config
-%fdupes -s %{buildroot}
+
+# Respect FHS
+mv %{buildroot}%{_sysconfdir}/%{name}/edit-config %{buildroot}%{_libexecdir}/%{name}
+sed -i 's|/usr/lib|%{_libdir}|' %{buildroot}%{_libexecdir}/%{name}/edit-config
 
 # This should be opt-in, not opt-out. I do not believe most users would agree
 # with sending usage data to Google Analytics, whether anonymized or not.
@@ -141,14 +144,20 @@ sed -i 's,^#!%{_bindir}/env bash,#!/bin/bash,;s,^#!%{_bindir}/env sh,#!/bin/sh,'
 touch %{buildroot}%{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 
 %if 0%{?sle_version} >= 150200
-cd go.d.plugin-%{godplugin_version}
-cp -r config/* %{buildroot}%{_libdir}/%{name}/conf.d
+pushd go.d.plugin-%{godplugin_version}
+
+install -d -m 0755 %{buildroot}/%{_libdir}/%{name}/conf.d
+cp -a config/* %{buildroot}/%{_libdir}/%{name}/conf.d
+
 install -m0755 -p bin/go.d.plugin %{buildroot}%{_libexecdir}/%{name}/plugins.d/go.d.plugin
+popd
 %endif
 
 install -m 755 -d %{buildroot}%{_localstatedir}/cache/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/log/%{name}
 install -m 755 -d %{buildroot}%{_localstatedir}/lib/%{name}/registry
+
+%fdupes -s %{buildroot}
 
 %pre
 getent group %{netdata_group} >/dev/null || \
@@ -202,6 +211,6 @@ getent passwd %{netdata_user} >/dev/null || \
 %config(noreplace) %{_sysconfdir}/%{name}/.opt-out-from-anonymous-statistics
 %config(noreplace) %{_sysconfdir}/%{name}/*.conf
 
-%attr(0750,root,%{netdata_group}) %{_sysconfdir}/%{name}/edit-config
+%attr(0750,root,%{netdata_group}) %{_libexecdir}/%{name}/edit-config
 
 %changelog

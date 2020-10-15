@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 14 23:35:47 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Fix RPM file list
+- Update to v1.26.0 (go.d.plugin 0.23.0):
+Improvements
+  * Add the ability to send Agent alarm notifications to StackPulse
+  * Add a way to get build configuration info from the Agent
+  * Add chart for churn rates to python.d/rabbitmq
+  * Add failed dim to the connection_fails alarm in the Portcheck
+    alarm
+  * Improve the data query when using the context parameter
+  * Add a context parameter to the data endpoint
+
+(Netdata Cloud)
+  * Change default ACLK query thread count
+  * Remove leading whitespace before JSON in ACLK
+  * Allow using libwebsockets without SOCKS5
+  * Add information about Cloud disabled status to -W buildinfo
+
+(Collectors)
+  * Update go.d.plugin version to v0.23.0
+    + Add new filecheck collector
+    + Add new systemd unit state collector
+    + Add new ISC DHCP collector
+
+(Dashboard)
+  * Add missing period in Netdata dashboard
+
+Bug Fixes
+  * Fix systemd comment syntax
+  * Fix file descriptor leak in Infiniband collector (proc.plugin)
+  * Fix the data endpoint to prioritize chart over context if both
+    are present
+  * Fix cleanup of obsolete charts
+  * Fix build for the AWS Kinesis exporting connector
+  * Fix gauges for go.d.plugin/web_log collector
+  * Fix locking order to address CID_362348
+  * Fix chart's last accessed time during context queries
+  * Fix resource leak in case of malformed request to Netdata Cloud
+
+-------------------------------------------------------------------
+Thu Oct  1 16:05:13 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Move edit-config to libexeddir
+- Fix conf.d path in edit-config
+
+-------------------------------------------------------------------
 Wed Sep 23 07:15:40 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building with go support on openSUSE 15.2
