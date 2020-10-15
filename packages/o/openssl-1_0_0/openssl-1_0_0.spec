@@ -384,7 +384,7 @@ cp %{SOURCE99} .
 # invalidates a HMAC that may have been created earlier.
 # solution: create the hashes _after_ the macro runs.
 #
-# this shows up earlier because otherwise the %expand of
+# this shows up earlier because otherwise the %%expand of
 # the macro is too late.
 # remark: This is the same as running
 #   openssl dgst -sha256 -hmac 'ppaksykemnsecgtsttplmamstKMEs'
