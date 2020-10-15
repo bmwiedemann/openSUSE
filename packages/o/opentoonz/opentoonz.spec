@@ -35,6 +35,8 @@ Patch2:         0001-Use-the-system-mypaint-brushes.patch
 Patch3:         0001-Fix-build-with-GCC-10.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-Fix-build-with-Qt-5.15.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-System-depend-code-deduplication.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel

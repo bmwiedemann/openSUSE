@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 17:01:46 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix the factory build:
+  * 0001-System-depend-code-deduplication.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 06:52:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with GCC 10:
