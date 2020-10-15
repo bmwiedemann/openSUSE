@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:38:08 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.0.9:
+ - Fix composer false positive
+ - disable broken python nightly, enable 3.9-dev
+ - add http header injection test
+ - doc for headerinject
+ - check if we document all the tests in TESTS.md
+ - fix pyflakes and pyupgrade warnings
+ - add wordpress debug.log test
+ - document wpdebug
+ - add .orig to backupfiles test, created by patch tool
+ - dnspython 2.x support, this requires using dns.resolver.resolve if av…
+ - codingstyle for backupfiles 
+- update to version 0.0.8:
+ - Test: phpinfo
+ - code styling
+ - add vb_test.php check
+ - fix whitespace error from merge
+ - document phpinfo
+ - use annotated tags for changelog
+
+-------------------------------------------------------------------
 Sat Jul  4 10:22:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - initial package for version 0.0.7
