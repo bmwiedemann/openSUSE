@@ -21,6 +21,19 @@ if [ $# -lt 1 -o $# -gt 4 ]; then
   exit 1
 fi
 
+# definition of "root" $HOME for users
+. /etc/default/useradd
+
+USER=$1
+GID=$(id -g $USER)
+HOMEDIR=$HOME/$USER
+
+if [ $# -lt 4 ]; then
+  HOMEDIR=$HOME/$USER
+else
+  HOMEDIR=$4
+fi
+
 # Update NIS database
 # make -C /var/yp
 
@@ -29,16 +42,23 @@ fi
 if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled ; then
   test -x /sbin/restorecon || exit 2
 
-  if [ $# -lt 4 ]; then
-    home_dir=/home/$1
-  else
-    home_dir=$4
-  fi
-
-  if [ -d $home_dir ]; then
-      /sbin/restorecon -R $home_dir
+  if [ -d $HOMEDIR ]; then
+      /sbin/restorecon -R $HOMEDIR
   fi
 fi
+
+#
+# Copy also skeleton files from /usr/etc/skel (boo#1173321)
+#
+
+USRSKELDIR=/usr/etc/skel
+for file in $(ls -A $USRSKELDIR); do
+  # Only copy if not exist yet, i.e. does *not* exist in /etc/skel, which is still
+  # being preferred ...
+  test -e $HOMEDIR/$file && continue
+  cp -a $USRSKELDIR/$file $HOMEDIR
+  chown -R $USER.$GID $HOMEDIR/$file
+done
 
 # All done.
 exit 0

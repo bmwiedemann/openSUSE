@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  9 13:12:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add support for /usr/etc/skel to useradd.local script (boo#1173321) 
+
+-------------------------------------------------------------------
+Thu Oct  8 03:16:58 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
+
+- shadow-login_defs-check.sh: Fix the regexp to get a real variable
+  list (boo#1164274).
+
+-------------------------------------------------------------------
 Tue Sep  8 00:56:37 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
 
 - login.defs: Add support for new util-linux-2.36 login variable

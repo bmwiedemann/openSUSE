@@ -54,7 +54,7 @@ fi
 echo "Extracting variables from pam..."
 cd openSUSE:Factory/pam/BUILD/*
 grep -rh LOGIN_DEFS . |
-	sed -n 's/^.*search_key *("\([A-Z0-9_]*\)", *LOGIN_DEFS).*$/\1/p' |
+	sed -n 's/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
 	LC_ALL=C sort -u >../../../../shadow-login_defs-check-pam.lst
 cd ../../../..
 

@@ -564,4 +564,15 @@
     <comment></comment>
     <requestid>834532</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>f2a82560a918341004f9e7c3d40c0c80</srcmd5>
+    <version>4.8.1</version>
+    <time>1602762227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for /usr/etc/skel to useradd.local script (boo#1173321) 
+
+- shadow-login_defs-check.sh: Fix the regexp to get a real variable
+  list (boo#1164274).</comment>
+    <requestid>840431</requestid>
+  </revision>
 </revisionlist>
