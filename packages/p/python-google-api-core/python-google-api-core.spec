@@ -19,34 +19,34 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-api-core
-Version:        1.17.0
+Version:        1.22.4
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
+URL:            https://github.com/googleapis/python-api-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-core/google-api-core-%{version}.tar.gz
-BuildRequires:  %{python_module google-auth >= 0.4.0}
+BuildRequires:  %{python_module google-auth >= 1.21.1}
 BuildRequires:  %{python_module googleapis-common-protos >= 1.6.0}
-BuildRequires:  %{python_module grpcio >= 1.8.2}
+BuildRequires:  %{python_module grpcio >= 1.29.0}
 BuildRequires:  %{python_module grpcio-gcp >= 0.2.2}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module protobuf >= 3.4.0}
+BuildRequires:  %{python_module protobuf >= 3.12.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools >= 34.0.0}
-BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module six >= 1.13.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-auth >= 0.4.0
+Requires:       python-google-auth >= 1.21.1
 Requires:       python-googleapis-common-protos >= 1.6.0
-Requires:       python-grpcio >= 1.8.2
-Requires:       python-protobuf >= 3.4.0
+Requires:       python-grpcio >= 1.29.0
+Requires:       python-protobuf >= 3.12.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.18.0
 Requires:       python-setuptools >= 34.0.0
-Requires:       python-six >= 1.10.0
+Requires:       python-six >= 1.13.0
 Suggests:       python-grpcio-gcp >= 0.2.2
 BuildArch:      noarch
 %if %{with python2}
@@ -60,7 +60,7 @@ Requires:       python-futures >= 3.2.0
 %python_subpackages
 
 %description
-Core Library for Google Client Libraries
+Core Library for Google Client Libraries.
 
 %prep
 %setup -q -n google-api-core-%{version}
@@ -73,8 +73,7 @@ Core Library for Google Client Libraries
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test___call___and_execute_retry_hitting_deadline - broken on Leap with old mock
-%pytest -k 'not test___call___and_execute_retry_hitting_deadline'
+%pytest
 
 %files %{python_files}
 %license LICENSE

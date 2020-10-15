@@ -130,4 +130,12 @@
   to make leap buildable</comment>
     <requestid>828031</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2cbf3962f7e09d05e96232a30385650</srcmd5>
+    <version>1.22.4</version>
+    <time>1602762556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840186</requestid>
+  </revision>
 </revisionlist>

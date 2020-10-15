@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:13:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL to match PyPI: https://github.com/googleapis/python-api-core
+- Update to v1.22.4
+  * use version.py instead of pkg_resources.get_distribution
+- from v1.22.3
+  * require six >= 1.13.0
+
+-------------------------------------------------------------------
+Thu Sep 10 11:52:56 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.22.2
+  * only add quota project id if supported (#75)
+- from version 1.22.1
+  * fix spelling errors for amount in retry (#69)
+- from version 1.22.0
+  * allow quota project to be passed to create_channel (#58)
+  * _determine_timeout problem handling float type timeout (#64)
+  * change the documentation for using 'six.moves.collections_abc.Mapping'
+    instead of 'dict' in 'client_options.from_dict()' (#53)
+- from version 1.21.0
+  * allow credentials files to be passed for channel creation (#50)
+- from version 1.20.1
+  * **dependencies:** increase protobuf version (#49), closes (#48)
+- from version 1.20.0
+  * allow disabling response stream pre-fetch (#30), closes (#25)
+- from version 1.19.1
+  * bump up grpcio minimum version to 1.29.0 (#41)
+- from version 1.19.0
+  * **client_options:** add new client options 'quota_project_id', 'scopes',
+    and 'credentials_file'
+- from version 1.18.0
+  * [CBT-6 helper] Exposing Retry._deadline as a property (#20)
+  * add client_encryped_cert_source to ClientOptions (#31)
+  * AsyncIO Integration [Part 2] (#28), closes (#23)
+  * First batch of AIO integration (#26)
+  * third batch of AsyncIO integration (#29)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Fri Aug 28 12:20:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix dependency on google-auth to have proper version constrain
+
+-------------------------------------------------------------------
 Thu Aug 20 08:02:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable test test___call___and_execute_retry_hitting_deadline
