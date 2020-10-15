@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 10 08:33:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.14
+  * require notcurses 1.7.6
+  * pass NCDIRECT_OPTION_INHIBIT_CBREAK
+  * use crc32 from zlib
+  * CMake: depend on libz 1.2.11+
+  * readline: call ncdirect_stop() on all exit paths
+  * Properly draw adapters truncated at the top
+
+-------------------------------------------------------------------
+Tue Sep 29 20:16:20 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.13
+  - Adapt to notcurses 1.7.5 APIs
+
+-------------------------------------------------------------------
 Wed Sep  2 15:49:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.11
