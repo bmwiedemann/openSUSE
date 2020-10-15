@@ -115,7 +115,7 @@ BuildRequires:  gnu-efi
 %if 0%{?bootstrap}
 #!BuildIgnore:  dbus-1
 Requires:       this-is-only-for-build-envs
-Provides:       systemd = %{version}-%{release}
+Provides:       systemd = %{version}
 %else
 # the buildignore is important for bootstrapping
 #!BuildIgnore:  udev
@@ -123,8 +123,9 @@ Requires:       dbus-1 >= 1.4.0
 Requires:       kbd
 Requires:       kmod >= 15
 Requires:       netcfg >= 11.5
+Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
-Requires:       udev = %{version}-%{release}
+Requires:       udev = %{version}
 Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
 Requires(post): coreutils
@@ -141,7 +142,7 @@ Conflicts:      sysvinit
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
 Obsoletes:      systemd-analyze < 201
-Provides:       systemd-analyze = %{version}-%{release}
+Provides:       systemd-analyze = %{version}
 Obsoletes:      pm-utils <= 1.4.1
 Obsoletes:      suspend <= 1.0
 Source0:        systemd-v%{version}%{suse_version}.tar.xz
@@ -201,7 +202,7 @@ Group:          Documentation/Other
 Supplements:    (systemd and patterns-base-documentation)
 
 %description doc
-The HTML documenation for systemd
+The HTML documentation for systemd.
 
 # /bootstrap
 %endif
@@ -210,7 +211,7 @@ The HTML documenation for systemd
 Summary:        Development headers for systemd
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libsystemd0%{?mini} = %{version}-%{release}
+Requires:       libsystemd0%{?mini} = %{version}
 Requires:       systemd-rpm-macros
 %if 0%{?bootstrap}
 Conflicts:      systemd-devel
@@ -223,10 +224,10 @@ Development headers and auxiliary files for developing applications for systemd.
 Summary:        System V init tools
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 Provides:       sbin_init
 Conflicts:      otherproviders(sbin_init)
-Provides:       systemd-sysvinit = %{version}-%{release}
+Provides:       systemd-sysvinit = %{version}
 Provides:       sysvinit:/sbin/init
 
 %description sysvinit
@@ -282,7 +283,7 @@ Conflicts:      util-linux < 2.16
 Conflicts:      ConsoleKit < 0.4.1
 Requires:       filesystem
 %if 0%{?bootstrap}
-Provides:       udev = %{version}-%{release}
+Provides:       udev = %{version}
 Conflicts:      libudev1
 Conflicts:      udev
 # avoid kiwi picking it for bootstrap
@@ -315,10 +316,10 @@ access to udev device information
 Summary:        Development files for libudev
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
-Requires:       libudev%{?mini}1 = %{version}-%{release}
+Requires:       libudev%{?mini}1 = %{version}
 %if 0%{?bootstrap}
-Provides:       libudev-devel = %{version}-%{release}
-Conflicts:      libudev1 = %{version}-%{release}
+Provides:       libudev-devel = %{version}
+Conflicts:      libudev1 = %{version}
 Conflicts:      libudev-devel
 %endif
 
@@ -331,7 +332,7 @@ dynamic library, which provides access to udev device information.
 Summary:        Systemd tools for coredump management
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 %systemd_requires
 Provides:       systemd:%{_bindir}/coredumpctl
 
@@ -345,7 +346,7 @@ This package contains systemd-coredump, coredumpctl.
 Summary:        Systemd tools for container management
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 %systemd_requires
 Provides:       systemd:%{_bindir}/systemd-nspawn
 %if 0%{?bootstrap}
@@ -363,7 +364,7 @@ and systemd-importd.
 Summary:        Systemd tools for networkd and resolved
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
 %systemd_requires
@@ -379,7 +380,7 @@ resolver tools for resolved
 Summary:        Systemd tools for portable services
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 %systemd_requires
 
 %description portable
@@ -441,7 +442,7 @@ To activate this NSS module, you will need to include it in
 Summary:        Plugin for local hostname resolution via systemd-resolved
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Requires:       %{name}-network = %{version}-%{release}
+Requires:       %{name}-network = %{version}
 
 %description -n nss-resolve
 This package contains a plug-in module for the Name Service Switch
@@ -475,7 +476,7 @@ To activate this NSS module, you will need to include it in
 Summary:        Gateway for serving journal events over the network using HTTP
 License:        LGPL-2.1-or-later
 Group:          System/Base
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name} = %{version}
 Requires(post):   systemd
 Requires(preun):  systemd
 Requires(postun): systemd
@@ -499,12 +500,6 @@ systemd-journal-remote, and systemd-journal-upload.
 %autopatch -p1
 
 %build
-%if 0%{?is_opensuse}
-ntp_servers=({0..3}.opensuse.pool.ntp.org)
-%else
-ntp_servers=({0..3}.suse.pool.ntp.org)
-%endif
-
 # keep split-usr until all packages have moved their systemd rules to /usr
 %meson \
         -Dversion-tag=%{version}%{suse_version} \
@@ -519,7 +514,6 @@ ntp_servers=({0..3}.suse.pool.ntp.org)
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
         -Ddefault-hierarchy=hybrid \
         -Ddefault-kill-user-processes=false \
-        -Dntp-servers="${ntp_servers[*]}" \
         -Drc-local=/etc/init.d/boot.local \
         -Dbump-proc-sys-fs-nr-open=false \
         -Ddebug-shell=/bin/bash \
@@ -709,25 +703,6 @@ mkdir -p %{buildroot}%{_userpresetdir}
 mkdir -p %{buildroot}%{_systemd_system_env_generator_dir}
 mkdir -p %{buildroot}%{_systemd_user_env_generator_dir}
 
-# create drop-in to prevent tty1 to be cleared (bnc#804158)
-mkdir %{buildroot}%{_unitdir}/getty@tty1.service.d/
-cat  >%{buildroot}%{_unitdir}/getty@tty1.service.d/noclear.conf  <<EOF
-[Service]
-# ensure tty1 isn't cleared (bnc#804158)
-TTYVTDisallocate=no
-EOF
-
-# Since v235 logind run inside an IPv4/IPv6 sandbox by default. This
-# creates incompatibilites for systems using NIS. Turn off the IP
-# sandboxing.
-mkdir %{buildroot}%{_unitdir}/systemd-logind.service.d/
-cat  >%{buildroot}%{_unitdir}/systemd-logind.service.d/nosandbox.conf <<EOF
-# To keep backward compat with system using NIS, turn off the
-# IP sandboxing.
-[Service]
-IPAddressDeny=
-EOF
-
 # ensure after.local wrapper is called
 install -m 644 %{S:11} %{buildroot}%{_unitdir}/
 ln -s ../after-local.service %{buildroot}%{_unitdir}/multi-user.target.wants/
@@ -797,14 +772,6 @@ fi
 # kbd-model-map.legacy is used to provide mapping for legacy keymaps,
 # which may still be used by yast.
 cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
-
-# Create a drop-in to prevent journald from starting auditd during
-# boot (bsc#984034).
-mkdir -p %{buildroot}%{_prefix}/lib/systemd/journald.conf.d
-cat >%{buildroot}%{_prefix}/lib/systemd/journald.conf.d/20-suse-defaults.conf <<EOF
-[Journal]
-Audit=no
-EOF
 
 # Don't ship systemd-journald-audit.socket as there's no other way for
 # us to prevent journald from recording audit messages in the journal
@@ -1210,9 +1177,6 @@ fi
 %dir %{_prefix}/lib/systemd/system-shutdown/
 %dir %{_prefix}/lib/systemd/system-sleep/
 
-%{_unitdir}/getty@tty1.service.d
-%{_unitdir}/systemd-logind.service.d
-
 /%{_lib}/security/pam_systemd.so
 
 %if %{with gnuefi}
@@ -1262,8 +1226,6 @@ fi
 %config(noreplace) %{_sysconfdir}/systemd/system.conf
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
-
-%{_prefix}/lib/systemd/journald.conf.d/
 
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services

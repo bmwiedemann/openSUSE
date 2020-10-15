@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:29:40 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Do not include %{release} in a few places where we explicitly mention package versions
+
+  It's usually not a good idea especially when used with conflicts.
+
+-------------------------------------------------------------------
+Tue Oct 13 08:50:13 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Rely on systemd-default-settings for overriding system default settings
+
+  The new branding packages now ships the drop-ins to customize
+  systemd either for an openSUSE or a SLE ditro.
+
+-------------------------------------------------------------------
 Wed Sep 30 19:09:59 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Import commit d7b5ac76dc95ddf30e707d26998e36303e9f52a7 (merge of v246.6)
@@ -342,6 +357,12 @@ Wed Mar 18 14:09:57 UTC 2020 - Franck Bui <fbui@suse.com>
   See https://github.com/openSUSE/systemd/blob/SUSE/v245/NEWS for
   details. 
 
+  This includes the following bug fixes:
+
+   - upstream commit 7f56982289275ce84e20f0554475864953e6aaab (CVE-2020-1712)
+   - upstream commit 66a19d85a533b15ed32f4066ec880b5a8c06babd (bsc#1157315)
+   - upstream commit 7f56982289275ce84e20f0554475864953e6aaab (bsc#1162108)
+
   The new tools provided by systemd repart, userdb, homed, fdisk,
   pwquality, p11kit feature have been disabled for now as they require
   reviews first.
@@ -466,6 +487,15 @@ Thu Dec  5 14:00:03 UTC 2019 - Franck Bui <fbui@suse.com>
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v244/NEWS for
   details. 
+
+  This includes the following bug fixes:
+
+   - upstream commit b49e14d5f3081dfcd363d8199a14c0924ae9152f (bsc#1139459)
+   - upstream commit 22683674716fd0e5b016ce5a7d8fd90df5f9f9e7 (bsc#1151377)
+   - upstream commit faf205de3ba9a11b0ba17682123d7f3fedc7da24 (bsc#1151377)
+   - upstream commit 27c3112dcbd1b5f171c36c32550d9c6331375b0b (bsc#1155574)
+   - upstream commit 21b40f16622f171a9969dc334d74fb5eb2f575c2 (bsc#1159814)
+   - upstream commit 9b88bb5023dfa3cea406c14fdaa3d8e3e320907a (jsc#SLE-7689)
 
   Legacy and obsolete symlinks have been finally dropped.
 
@@ -703,7 +733,17 @@ Tue Sep  3 15:10:10 UTC 2019 - Franck Bui <fbui@suse.com>
 - Upgrade to v243 (commit e0b24c4356aa0c1c56ff274ff72228f33482a5be)
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v243/NEWS for
-  details. 
+  details.
+
+  This includes the following bug fixes:
+
+    - upstream commit b2774a3ae692113e1f47a336a6c09bac9cfb49ad (CVE-2019-20386 bsc#1161436)
+    - upstream commit 5406c36844b35504a64e9f05fc74b8e5e5a09143 (bsc#1132400)
+    - upstream commit 83a32ea7b03d6707b8e5bb90a0b3a6eb868ef633 (bsc#1132721)
+    - upstream commit 7cc5ef5f1811c539ae7f20255c2a093f413cc64f (bsc#1172824 bsc#1142733)
+    - upstream commit 83cb24ac20baf19f7834931dcf6e03486b4c9c30 (bsc#1156213)
+    - upstream commit a2dcb1d78737d3daa301ee63fbdd02837acb71a8 (bsc#1158485)
+    - upstream commit 08185cff19efcb1d7d9fb7b546e7f516ab6dae91 (bsc#1165011)
 
   Drop 0001-Revert-insserv.conf-generator.patch as it's been dropped
   from branch SUSE/v243 while we were rebasing.
@@ -852,7 +892,7 @@ Tue May 14 14:27:12 UTC 2019 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Mon May 13 08:46:38 UTC 2019 - Franck Bui <fbui@suse.com>
 
-- Buildrequire polkit so /usr/share/polkit-1/rules.d has an owner
+- Buildrequire polkit so /usr/share/polkit-1/rules.d has an owner (bsc#1145023)
 
   Otherwise the "post build checks" would complain and would force
   systemd to own this directory. The owner should still be "polkit"
@@ -891,6 +931,16 @@ Thu May  2 13:12:23 UTC 2019 - Franck Bui <fbui@suse.com>
   See https://github.com/openSUSE/systemd/blob/SUSE/v242/NEWS for
   details.
 
+  This includes the following bug fixes:
+
+   - upstream commit bf65b7e0c9fc215897b676ab9a7c9d1c688143ba (CVE-2019-3843)
+   - upstream commit bf65b7e0c9fc215897b676ab9a7c9d1c688143ba (CVE-2019-3844)
+   - upstream commit 37ed15d7edaf59a1fc7c9e3552cd93a83f3814ef (bsc#1124122)
+   - upstream commit bf65b7e0c9fc215897b676ab9a7c9d1c688143ba (bsc#1133506)
+   - upstream commit bf65b7e0c9fc215897b676ab9a7c9d1c688143ba (bsc#1133509)
+   - upstream commit 1f82f5bb4237ed5f015daf93f818e9db95e764b8 (bsc#1150595)
+   - upstream commit e55bdf9b6c5f72475b258a7a4585a0480551cb60 (bsc#1173422)
+
 -------------------------------------------------------------------
 Wed Apr 24 07:23:44 UTC 2019 - Franck Bui <fbui@suse.com>
 
@@ -914,7 +964,7 @@ Fri Apr 12 14:13:54 UTC 2019 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Tue Mar 19 16:11:44 UTC 2019 - Franck Bui <fbui@suse.com>
 
-- systemd-coredump: generate a stack trace of all core dumps (bsc#1128832)
+- systemd-coredump: generate a stack trace of all core dumps (bsc#1128832 jsc#SLE-5933)
 
   This stack trace is logged to the journal.
 
@@ -955,6 +1005,20 @@ Wed Mar  6 14:59:22 UTC 2019 - Franck Bui <fbui@suse.com>
 Tue Mar  5 17:51:02 UTC 2019 - Franck Bui <fbui@suse.com>
 
 - Upgrade to v241 (commit 15a1b4d58f1d2bc9c21c7cbab6fe63b58e48bda1)
+
+  This includes the following bug fixes:
+
+   - upstream commit c0d76959080e3ba6534bce1c7053c750668e8b55 (bsc#1160595)
+   - upstream commit 7334ade4a7e103b1a01d1c8fe1ea7c7a854a1c31 (bsc#1123892)
+   - upstream commit c7e93c4d15019323973baf12daa76357c83892c4 (boo#1111498)
+
+  This also includes the following bug fixes released in v240:
+
+   - upstream commit 2675747f3cdd6f1e6236bbb2f79abfa53fb307f1 (boo#1111498)
+   - upstream commit 9eb0fc32d6cb63e71f2cfc1e7dd34c3ede4b48a3 (bsc#1140631)
+   - upstream commit 1432d2dbdfa90963272a9b581dc4b55dd3ac514f (bsc#1155574)
+   - upstream commit 26e35b164b8d0603629b3d394554cfa728e8c3e4 (bsc#1169488)
+   - upstream commit a9fc640671ef60ac949f1ace6fa687ff242fc233 (fate#325697)
 
 -------------------------------------------------------------------
 Tue Feb 19 11:08:13 UTC 2019 - Franck Bui <fbui@suse.com>
@@ -1216,6 +1280,20 @@ Wed Oct 24 10:07:36 UTC 2018 - Franck Bui <fbui@suse.com>
 
 - Upgrade to v239 (commit 6d8584e7e8e5d13d2bab49b9e6f6d2ec39759978)
 
+  This includes the following bug fixes:
+
+   - upstream commit 0722b359342d2a9f9e0d453875624387a0ba1be2 (bsc#1045723)
+   - upstream commit 2f2e14b251b9929e84e8b690d0187b766dfbae20 (bsc#1124122)
+   - upstream commit c839b729c5f7b08f6d91bf9567d0b1f91d17e0f7 (bsc#1155207)
+   - upstream commit 8eebb6a9e5e74ec0ef40902e2da53d24559b94a4 (bsc#1168076)
+
+  This also includes the following bug fixes released in v238:
+
+   - upstream commit e8a3144ec4ff332bd63644e468a98e1a7e06e7e4 (bsc#1112024)
+   - upstream commit 4d219f5343b1924e7c519c2c178aeb5d1a5ab924 (bsc#1123727)
+   - upstream commit 43b7f24b5e0dd048452112bfb344739764c58694 (bsc#1146991)
+   - upstream commit bf443be99565e4327f1c8c12b79d98b4c1529cf1 (bsc#1156213)
+
 -------------------------------------------------------------------
 Mon Oct 15 16:23:05 UTC 2018 - Franck Bui <fbui@suse.com>
 
@@ -1256,11 +1334,11 @@ Fri Sep 28 06:16:06 UTC 2018 - fbui@suse.com
 -------------------------------------------------------------------
 Fri Sep 28 06:05:03 UTC 2018 - Thomas.Blume@suse.com
 
-- split off SUSE specific configuration from systemd package (fate#325478)
+- split off SUSE specific udev rules from systemd package (fate#325478)
    * remove 60-io-scheduler.rules
    * remove 80-hotplug-cpu-mem.rules
    * remove 99-wakeup-from-idle.rules
-   * remove /usr/lib/modules-load.d/sg.conf
+   * remove /usr/lib/modules-load.d/sg.conf (see bsc#1036463 for details)
 
   these are now maintained in the new package system-tuning-common-SUSE
 
@@ -1449,7 +1527,7 @@ Wed Mar 28 12:30:31 UTC 2018 - fbui@suse.com
 -------------------------------------------------------------------
 Wed Mar 28 12:13:03 UTC 2018 - fbui@suse.com
 
-- Rename the tarball
+- Rename the tarball (bsc#1087323)
 
   So it's clear that it contains some additional patches on top of the
   upstream version. Use the commit hash in the name so the exact
@@ -1585,6 +1663,37 @@ Thu Mar  1 10:13:02 UTC 2018 - fbui@suse.com
   level. Those rules have been rejected by upstream as they seem to be
   written to workaround some kernel shortcomings...
 
+  This includes the following bug fix:
+
+   - upstream commit 3d083b2245b0b8e52f2d8ccc3e55246f41f1f544 (bsc#1102908)
+
+  This also includes the following bug fixes released in v235:
+
+   - upstream commit 2e64e8f46d726689a44d4084226fe3e0ea255c29 (bsc#1069239)
+   - upstream commit 79873bc850177050baa0c5165b119adafeebb891 (bsc#1069239)
+   - upstream commit 4bc5d27b942afa83cc3d95debd2ad48d42ac07a8 (bsc#1089376)
+   - upstream commit e9ea4526a3a3b41eced29b8d742498cc36750424 (bsc#1089693)
+   - upstream commit d75b31837c93dbb9b20067719026ad0fb7cdfadd (bsc#1117025)
+   - upstream commit 0e8856d25ab71764a279c2377ae593c0f2460d8f (bsc#1117025)
+   - upstream commit 048dd629c4590eefb2ebd6a316c7350ed3a6ff19 (bsc#1119971)
+   - upstream commit 9b32afa9f241fe8febc0a754850f1e7331caf6e3 (bsc#1126056)
+   - upstream commit e6dde451a51dc5aaa7f4d98d39b8fe735f73d2af (bsc#1137053)
+   - upstream commit 0864d311766498563331f486909a0d950ba7de87 (bsc#1158336)
+   - upstream commit d60cb656fc63c24b430421764b7d0322857d34fd (bsc#1161262)
+   - upstream commit e2be442e791fa1150aa835c684acc6d7189de3e1 (bsc#1165011)
+   - upstream commit 64a36ae4b1dd23474dd7ea261381ac437b24fac2 (bsc#1172072)
+   - upstream commit b001ad61e91b6499897f0c977045c7608c233bfa (jsc#SLE-7687)
+
+   - includes IP filtering feature (jsc#SLE-7743)
+
+  This also includes the following bug fixes released in v236:
+
+   - upstream commit b3b4ebab02395933cde554b5a5d5c363dae3920d (bsc#1083571)
+   - upstream commit 3e3852b3c6c61506963112fd218a86b673fc61e6 (bsc#1110445)
+   - upstream commit 4050e4797603d3644707d58edfd9742b5311c7cf (bsc#1124153)
+   - upstream commit 8cb83266062b383cdd4a57301ef559d64b491c51 (bsc#1125604)
+   - upstream commit 19a44dfe4525ab01caf593a9c2beada4b412910d (bsc#1156482)
+
 -------------------------------------------------------------------
 Wed Feb 28 06:53:02 UTC 2018 - Thomas.Blume@suse.com
 
@@ -1623,7 +1732,7 @@ Thu Feb 22 15:11:13 UTC 2018 - fvogt@suse.com
 -------------------------------------------------------------------
 Thu Feb 22 14:57:19 UTC 2018 - fbui@suse.com
 
-- Split systemd-container sub-package off
+- Split systemd-container sub-package off (fate#325469)
 
   Other distros already do it and it seems a good idea to not install
   this stuff on new installations by default. At least
