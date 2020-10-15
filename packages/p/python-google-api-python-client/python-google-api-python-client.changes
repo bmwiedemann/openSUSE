@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:05:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.11.0
+  * add support for mtls env variables (#1008)
+- from version 1.10.1
+  * discovery uses V2 when version is None (#975), closes (#971)
+  * fix deprecation warnings due to invalid escape sequences. (#996), closes (#995)
+  * fix link to service accounts documentation (#986)
+  * update generated docs (#981)
+- from version 1.10.0
+  * allow to use 'six.moves.collections_abc.Mapping' in 'client_options.from_dict()' (#943)
+  * Build universal wheels (#948)
+  * discovery supports retries (#967), closes (#848)
+  * consolidating and updating the Contribution Guide (#964), closes (#963)
+- from version 1.9.3
+  * update GOOGLE_API_USE_MTLS values (#940)
+- from version 1.9.2
+  * bump api-core version (#936)
+- from version 1.9.1
+  * fix python-api-core dependency issue (#931)
+- from version 1.9.0
+  * add mtls feature (#917)
+  * add templates for python samples projects (#506), (#924)
+- Refresh patches for new version
+  + python-google-api-python-client-no-unittest2.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Jun 25 10:42:58 UTC 2020 - pgajdos@suse.com
 
 - so remove the dependency on unittest2 from BuildRequires, too

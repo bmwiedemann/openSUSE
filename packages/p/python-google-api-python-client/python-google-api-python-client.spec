@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-api-python-client
-Version:        1.8.4
+Version:        1.11.0
 Release:        0
 Summary:        Google APIs Python Client
 License:        Apache-2.0
@@ -27,20 +27,21 @@ URL:            https://github.com/google/google-api-python-client
 Source:         https://files.pythonhosted.org/packages/source/g/google-api-python-client/google-api-python-client-%{version}.tar.gz
 # https://github.com/googleapis/google-api-python-client/pull/929
 Patch0:         python-google-api-python-client-no-unittest2.patch
-BuildRequires:  %{python_module google-api-core >= 1.13.0}
-BuildRequires:  %{python_module google-auth >= 1.4.1}
+BuildRequires:  %{python_module google-api-core >= 1.18.0}
+BuildRequires:  %{python_module google-auth >= 1.16.0}
 BuildRequires:  %{python_module google-auth-httplib2 >= 0.0.3}
 BuildRequires:  %{python_module httplib2 >= 0.9.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module oauth2client}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module uritemplate  >= 3.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.13.0
-Requires:       python-google-auth >= 1.4.1
+Requires:       python-google-api-core >= 1.18.0
+Requires:       python-google-auth >= 1.16.0
 Requires:       python-google-auth-httplib2 >= 0.0.3
 Requires:       python-httplib2 >= 0.9.2
 Requires:       python-six >= 1.6.1

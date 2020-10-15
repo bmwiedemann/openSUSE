@@ -1,8 +1,7 @@
-Index: google-api-python-client-1.8.4/tests/test__auth.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test__auth.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test__auth.py	2020-06-01 15:48:23.340280191 +0200
-@@ -18,7 +18,7 @@ import google.auth.credentials
+diff -Nru google-api-python-client-1.11.0.orig/tests/test__auth.py google-api-python-client-1.11.0/tests/test__auth.py
+--- google-api-python-client-1.11.0.orig/tests/test__auth.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test__auth.py	2020-09-10 15:54:13.243410474 +0200
+@@ -18,7 +18,7 @@
  import google_auth_httplib2
  import httplib2
  import oauth2client.client
@@ -11,11 +10,10 @@ Index: google-api-python-client-1.8.4/tests/test__auth.py
  
  from googleapiclient import _auth
  
-Index: google-api-python-client-1.8.4/tests/test_channel.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_channel.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_channel.py	2020-06-01 15:48:45.200411976 +0200
-@@ -3,7 +3,7 @@ from __future__ import absolute_import
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_channel.py google-api-python-client-1.11.0/tests/test_channel.py
+--- google-api-python-client-1.11.0.orig/tests/test_channel.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_channel.py	2020-09-10 15:54:13.243410474 +0200
+@@ -3,7 +3,7 @@
  
  __author__ = "jcgregorio@google.com (Joe Gregorio)"
  
@@ -24,23 +22,9 @@ Index: google-api-python-client-1.8.4/tests/test_channel.py
  import datetime
  
  from googleapiclient import channel
-Index: google-api-python-client-1.8.4/tests/test_discovery.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_discovery.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_discovery.py	2020-06-01 15:49:06.480540264 +0200
-@@ -37,7 +37,7 @@ import os
- import pickle
- import re
- import sys
--import unittest2 as unittest
-+import unittest
- 
- import mock
- 
-Index: google-api-python-client-1.8.4/tests/test_discovery_cache.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_discovery_cache.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_discovery_cache.py	2020-06-01 15:49:21.664631801 +0200
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_discovery_cache.py google-api-python-client-1.11.0/tests/test_discovery_cache.py
+--- google-api-python-client-1.11.0.orig/tests/test_discovery_cache.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_discovery_cache.py	2020-09-10 15:54:13.243410474 +0200
 @@ -18,7 +18,7 @@
  """Discovery document cache tests."""
  
@@ -50,11 +34,22 @@ Index: google-api-python-client-1.8.4/tests/test_discovery_cache.py
  
  import mock
  
-Index: google-api-python-client-1.8.4/tests/test_errors.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_errors.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_errors.py	2020-06-01 15:49:32.728698502 +0200
-@@ -21,7 +21,7 @@ from __future__ import absolute_import
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_discovery.py google-api-python-client-1.11.0/tests/test_discovery.py
+--- google-api-python-client-1.11.0.orig/tests/test_discovery.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_discovery.py	2020-09-10 15:54:40.883760261 +0200
+@@ -37,7 +37,7 @@
+ import pickle
+ import re
+ import sys
+-import unittest2 as unittest
++import unittest
+ from collections import defaultdict
+ 
+ from parameterized import parameterized
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_errors.py google-api-python-client-1.11.0/tests/test_errors.py
+--- google-api-python-client-1.11.0.orig/tests/test_errors.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_errors.py	2020-09-10 15:54:13.247410524 +0200
+@@ -21,7 +21,7 @@
  __author__ = "afshar@google.com (Ali Afshar)"
  
  
@@ -63,11 +58,10 @@ Index: google-api-python-client-1.8.4/tests/test_errors.py
  import httplib2
  
  
-Index: google-api-python-client-1.8.4/tests/test_http.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_http.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_http.py	2020-06-01 15:49:53.456823460 +0200
-@@ -35,7 +35,7 @@ import io
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_http.py google-api-python-client-1.11.0/tests/test_http.py
+--- google-api-python-client-1.11.0.orig/tests/test_http.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_http.py	2020-09-10 15:54:13.247410524 +0200
+@@ -35,7 +35,7 @@
  import logging
  import mock
  import os
@@ -76,11 +70,10 @@ Index: google-api-python-client-1.8.4/tests/test_http.py
  import random
  import socket
  import ssl
-Index: google-api-python-client-1.8.4/tests/test_json_model.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_json_model.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_json_model.py	2020-06-01 15:50:08.064911523 +0200
-@@ -28,7 +28,7 @@ import json
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_json_model.py google-api-python-client-1.11.0/tests/test_json_model.py
+--- google-api-python-client-1.11.0.orig/tests/test_json_model.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_json_model.py	2020-09-10 15:54:13.247410524 +0200
+@@ -28,7 +28,7 @@
  import os
  import pkg_resources
  import platform
@@ -89,11 +82,10 @@ Index: google-api-python-client-1.8.4/tests/test_json_model.py
  import httplib2
  import googleapiclient.model
  
-Index: google-api-python-client-1.8.4/tests/test_mocks.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_mocks.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_mocks.py	2020-06-01 15:50:21.572991364 +0200
-@@ -24,7 +24,7 @@ __author__ = "jcgregorio@google.com (Joe
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_mocks.py google-api-python-client-1.11.0/tests/test_mocks.py
+--- google-api-python-client-1.11.0.orig/tests/test_mocks.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_mocks.py	2020-09-10 15:54:13.247410524 +0200
+@@ -24,7 +24,7 @@
  
  import httplib2
  import os
@@ -102,11 +94,10 @@ Index: google-api-python-client-1.8.4/tests/test_mocks.py
  
  from googleapiclient.errors import HttpError
  from googleapiclient.errors import UnexpectedBodyError
-Index: google-api-python-client-1.8.4/tests/test_model.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_model.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_model.py	2020-06-01 15:50:35.321072029 +0200
-@@ -23,7 +23,7 @@ from __future__ import absolute_import
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_model.py google-api-python-client-1.11.0/tests/test_model.py
+--- google-api-python-client-1.11.0.orig/tests/test_model.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_model.py	2020-09-10 15:54:13.247410524 +0200
+@@ -23,7 +23,7 @@
  
  __author__ = "jcgregorio@google.com (Joe Gregorio)"
  
@@ -115,11 +106,10 @@ Index: google-api-python-client-1.8.4/tests/test_model.py
  
  from googleapiclient.model import BaseModel
  from googleapiclient.model import makepatch
-Index: google-api-python-client-1.8.4/tests/test_protobuf_model.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_protobuf_model.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_protobuf_model.py	2020-06-01 15:50:53.605179328 +0200
-@@ -22,7 +22,7 @@ from __future__ import absolute_import
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_protobuf_model.py google-api-python-client-1.11.0/tests/test_protobuf_model.py
+--- google-api-python-client-1.11.0.orig/tests/test_protobuf_model.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_protobuf_model.py	2020-09-10 15:54:13.247410524 +0200
+@@ -22,7 +22,7 @@
  
  __author__ = "mmcdonald@google.com (Matt McDonald)"
  
@@ -128,11 +118,10 @@ Index: google-api-python-client-1.8.4/tests/test_protobuf_model.py
  import httplib2
  import googleapiclient.model
  
-Index: google-api-python-client-1.8.4/tests/test_schema.py
-===================================================================
---- google-api-python-client-1.8.4.orig/tests/test_schema.py	2020-05-26 22:17:53.000000000 +0200
-+++ google-api-python-client-1.8.4/tests/test_schema.py	2020-06-01 15:51:08.885268956 +0200
-@@ -19,7 +19,7 @@ __author__ = "jcgregorio@google.com (Joe
+diff -Nru google-api-python-client-1.11.0.orig/tests/test_schema.py google-api-python-client-1.11.0/tests/test_schema.py
+--- google-api-python-client-1.11.0.orig/tests/test_schema.py	2020-08-27 23:33:51.000000000 +0200
++++ google-api-python-client-1.11.0/tests/test_schema.py	2020-09-10 15:54:13.247410524 +0200
+@@ -19,7 +19,7 @@
  
  import json
  import os
