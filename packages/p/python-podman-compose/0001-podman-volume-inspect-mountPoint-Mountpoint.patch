@@ -1,0 +1,26 @@
+From a9216c3980233289eb8d26bd514e0803392e3906 Mon Sep 17 00:00:00 2001
+From: Simon Li <orpheus+devel@gmail.com>
+Date: Sat, 5 Oct 2019 21:26:53 +0100
+Subject: [PATCH] podman volume inspect mountPoint/Mountpoint
+
+podman version 1.6.1 volume inspect outputs Mountpoint instead of mountPoint
+---
+ podman_compose.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: podman-compose-0.1.5/podman_compose.py
+===================================================================
+--- podman-compose-0.1.5.orig/podman_compose.py	2020-09-10 15:09:26.308833372 +0200
++++ podman-compose-0.1.5/podman_compose.py	2020-09-10 15:15:51.332846378 +0200
+@@ -363,7 +362,10 @@
+     except subprocess.CalledProcessError:
+         compose.podman.output(["volume", "create", "-l", "io.podman.compose.project={}".format(proj_name), vol_name])
+         out = compose.podman.output(["volume", "inspect", vol_name])
++    try:
+-    src = json.loads(out)[0]["mountPoint"]
++        src = json.loads(out)[0]["mountpoint"]
++    except KeyError:
++        src = json.loads(out)[0]["Mountpoint"]
+     ret=dict(mount_dict, type="bind", source=src, _vol=vol_name)
+     bind_prop=ret.get("bind", {}).get("propagation")
+     if not bind_prop:

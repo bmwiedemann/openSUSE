@@ -1,0 +1,25 @@
+From 751aaa87f6d891149b4563ec8524d8af5e2c1e72 Mon Sep 17 00:00:00 2001
+From: Kevin Elliott <kevin@welikeinc.com>
+Date: Fri, 13 Sep 2019 12:11:57 -0700
+Subject: [PATCH] Add support for devices in a service
+
+---
+ podman_compose.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/podman_compose.py b/podman_compose.py
+index 3e38fc9..86cff62 100755
+--- a/podman_compose.py
++++ b/podman_compose.py
+@@ -459,6 +459,8 @@ def container_to_args(compose, cnt, detached=True, podman_command='run'):
+     if net:
+         podman_args.extend(['--network', net])
+     env = norm_as_list(cnt.get('environment', {}))
++    for d in cnt.get('devices', []):
++        podman_args.extend(['--device', d])
+     for e in env:
+         podman_args.extend(['-e', e])
+     for i in cnt.get('env_file', []):
+-- 
+2.26.2
+

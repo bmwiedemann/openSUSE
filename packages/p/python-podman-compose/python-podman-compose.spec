@@ -1,7 +1,7 @@
 #
 # spec file for package python-podman-compose
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/containers/%{src_name}
 Source0:        https://files.pythonhosted.org/packages/source/p/%{src_name}/%{src_name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/containers/%{src_name}/v%{version}/LICENSE
+# PATCH-FIX-UPSTREAM 0001-podman-volume-inspect-mountPoint-Mountpoint.patch fcrozat@suse.com -- handle various podman version
+Patch0:         0001-podman-volume-inspect-mountPoint-Mountpoint.patch
+# PATCH-FIX-UPSTREAM 0001-Add-support-for-devices-in-a-service.patch fcrozat@suse.com -- support --devices
+Patch1:         0001-Add-support-for-devices-in-a-service.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
