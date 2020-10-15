@@ -1,7 +1,7 @@
 #
 # spec file for package lvm2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define device_mapper_version     1.02.173
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 0
-%define dlm_version     4.0
+%define dlm_version     4.0.9
 # from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd. 
 # so the obseletes version is 2.03 
 %define lvm2_clvm_version 2.03
@@ -100,7 +100,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  libcorosync-devel
 BuildRequires:  pkgconfig(blkid)
 %if %{with lockd}
-BuildRequires:  libdlm-devel
+BuildRequires:  libdlm-devel >= %{dlm_version}
 BuildRequires:  pkgconfig(libsystemd)
 %if 0%{_supportsanlock} == 1
 BuildRequires:  sanlock-devel >= %{sanlock_version}
@@ -162,6 +162,7 @@ extra_opts="
     --with-default-pid-dir=/run
     --with-default-run-dir=/run/lvm
     --enable-lvmlockd-dlm
+    --enable-lvmlockd-dlmcontrol
 %if 0%{_supportsanlock} == 1
     --enable-lvmlockd-sanlock
 %endif
@@ -425,8 +426,8 @@ Summary:        LVM locking daemon
 Group:          System/Base
 Requires:       corosync
 Requires:       device-mapper >= %{device_mapper_version}
+Requires:       libdlm >= %{dlm_version}
 Requires:       lvm2 = %{version}
-Recommends:     libdlm >= %{dlm_version}
 Obsoletes:      lvm2-clvm <= %{lvm2_clvm_version}
 %{?systemd_requires}
 %if 0%{_supportsanlock} == 1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 10:00:20 UTC 2020 - ghe@suse.com
+
+- Update lvm2.spec file (bsc#1174336)
+  - enable lvmlockd remote refresh using libdlmcontrol
+  - update libdlm dependency relationship
+
+-------------------------------------------------------------------
 Thu Sep 03 08:16:00 UTC 2020 - heming.zhao@suse.com
 
 - lvm can't pass build with gcc option Wstringop-overflow (bsc#1175565)
