@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 12:17:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.7.3
+  * JSON Schema: Support schemas where the root is not a dict.
+  * Do not drop previous errors within an Or criterion.
+
+- Update to 0.7.2
+  * Set the contextlib dependency as a minimum, rather than fixed.
+
+-------------------------------------------------------------------
 Thu Mar 26 12:29:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.7.1

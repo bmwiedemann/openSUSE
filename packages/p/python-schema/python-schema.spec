@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-schema
-Version:        0.7.1
+Version:        0.7.3
 Release:        0
 Summary:        Data validation library
 License:        MIT
