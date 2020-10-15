@@ -833,4 +833,12 @@
   - pam_get_authtok_verify: Avoid duplicate password verification</comment>
     <requestid>812631</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>59d0b771d9dc0233da6b5c92f4fed860</srcmd5>
+    <version>1.4.0</version>
+    <time>1602762212</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840210</requestid>
+  </revision>
 </revisionlist>

@@ -47,6 +47,7 @@ Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
+Patch5:         pam-xauth_ownership.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
@@ -139,6 +140,7 @@ removed with one of the next releases.
 cp -a %{SOURCE12} .
 %patch2 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 bash ./pam-login_defs-check.sh
