@@ -1,0 +1,13 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/juancarlospaco/css-html-js-minify</param>
+    <param name="scm">git</param>
+    <param name="filename">css-html-js-minify</param>
+    <param name="versionprefix">2.5.5.git</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>
