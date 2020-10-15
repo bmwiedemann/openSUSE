@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:44:11 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.7.3:
+ * Improve the build system:
+   + Declare build-dependencies (as per PEP-518).
+ * Improve the test suite.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:46 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

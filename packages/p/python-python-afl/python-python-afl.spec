@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-python-afl
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        American fuzzy lop fork server and instrumentation for pure-Python code
 License:        MIT
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://jwilk.net/software/python-afl
 Source:         https://files.pythonhosted.org/packages/source/p/python-afl/python-afl-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
-Patch0:         https://github.com/jwilk/python-afl/compare/%{version}...sebix:%{version}-fix-setup-tests.patch#/Use-setuptools-and-use-test-command-for-setup.patch
+Patch0:         https://github.com/jwilk/python-afl/compare/%{version}...sebix:0.7.2-fix-setup-tests.patch#/Use-setuptools-and-use-test-command-for-setup.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
