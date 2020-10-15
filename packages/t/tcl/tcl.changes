@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 11:25:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  lib64 == lib64.
+
+-------------------------------------------------------------------
 Tue Dec  3 13:40:02 UTC 2019 - Reinhard Max <max@suse.com>
 
 - New version: 8.6.10:

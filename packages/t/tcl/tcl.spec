@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,7 +153,7 @@ ln -sf tclsh%TCL_MINOR %buildroot%_prefix/bin/tclsh
 mkdir -p %buildroot%_datadir/tcl
 install -D %{S:3} -m 644 %buildroot/etc/rpm/macros.tcl
 
-%if %_lib == lib64
+%if "%_lib" == "lib64"
 %post
 test -L /usr/lib/tcl%TCL_MINOR && /bin/rm -f /usr/lib/tcl%TCL_MINOR
 exit 0

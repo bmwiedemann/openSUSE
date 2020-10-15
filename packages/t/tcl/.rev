@@ -597,4 +597,12 @@ sqlite3 patch I will submit in a moment.</comment>
   * (bug)[13657a] application/json us text, not binary</comment>
     <requestid>753909</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>0af2c7d19ce2832b39c00c602f0b1695</srcmd5>
+    <version>8.6.10</version>
+    <time>1602762235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841275</requestid>
+  </revision>
 </revisionlist>
