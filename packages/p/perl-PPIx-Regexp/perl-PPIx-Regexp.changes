@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  9 03:08:55 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.075
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.075		2020-10-08	T. R. Wyant
+      Warn on first use of attribute 'postderef'.
+
+-------------------------------------------------------------------
 Wed Sep  9 03:08:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.074
