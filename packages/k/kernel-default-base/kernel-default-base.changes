@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:19:13 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Create the list of crypto modules dynamically, supersedes hardcoded
+  list of crc32 implementations (boo#1177577)
+
+-------------------------------------------------------------------
 Mon Oct  5 11:17:52 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Add cifs

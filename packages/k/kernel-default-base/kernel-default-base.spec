@@ -56,11 +56,12 @@ ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.
 nf_.* nfnetlink.* nft_.* tun veth xfrm.*_tunnel xfrm_.* x_tables xt_.* tcp_diag \
 vxlan
 
-%define crc32_modules crc32c_generic crc32c-intel crc32c-vpmsum crc32-vx_s390 crc32-arm-ce
+%define crypto_modules \
+%(rpm -ql %{kernel_package_name} | grep -E 'kernel/crypto/|kernel/arch/.*/crypto/' | xargs basename -a | cut -d. -f1)
 
 %define modules %usb_modules %net_drivers %scsi_modules %block_drivers \
                 %hyperv_modules %virtio_modules %vmware_modules %xen_modules \
-                %networking %filesystems %misc_modules %crc32_modules
+                %networking %filesystems %misc_modules %crypto_modules
 
 # Reasonable defaults that might be overriden if needed
 %define kernel_package_name kernel-%build_flavor
@@ -72,6 +73,9 @@ vxlan
 Name:           %package_name
 BuildRequires:  %kernel_package_name
 BuildRequires:  %kernel_package_name-devel
+BuildRequires:  coreutils
+BuildRequires:  findutils
+BuildRequires:  grep
 BuildRequires:  kernel-subpackage-macros
 Summary:        %summary
 License:        GPL-2.0-only
