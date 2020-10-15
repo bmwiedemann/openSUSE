@@ -135,4 +135,41 @@
     <comment> (forwarded request 835423 from dimstar)</comment>
     <requestid>836040</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1f08f536b128a5e59d48b908e726419b</srcmd5>
+    <version>0.3.13</version>
+    <time>1602762475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.13:
+  * PipeWire improvements
+    + Add pw-reserve tool to reserve or monitor a device on DBus.
+    + Install spa-resample, a tool to resample a file.
+    + Install spa-acp-tool, a tool to inspect the card profile.
+    + Various fixes and improvements
+    + Fix a bug in pw-stream where a capture stream could run out
+      of buffers and become silent.
+    + Rework the processing loops in the adapter and stream. There
+      is now less latency in PulseAudio and ALSA layers.
+  * Session manager improvements
+    + Improve the device reservation code. We now try to acquire
+      the device using the dbus device reservation API before we
+      probe the device. This avoids conflicts with a running
+      PulseAudio where devices would disappear (because they were
+      locked by the other process).
+    + Don't fail on invalid input from the config files.
+    + Audio devices now have the same name as what PulseAudio
+      would assign.
+  * Device support
+    + v4l2: try to use the format before enumerating the size and
+      framerate. Some drivers don't check the format and might now
+      work better.
+    + v4l2: Fall back to MMAP when EXPBUF fails. Fix MMAP access,
+      just export the fd and the mapoffset. This should make more
+      devices work.
+    + Fix crash in ALSA Card Profile (ACP) code.
+    + ACP: fix selection of default profile. Prefer any possibly
+      available profile over 'Off'. This makes some card at least
+      start with something. (forwarded request 841457 from alarrosa)</comment>
+    <requestid>841554</requestid>
+  </revision>
 </revisionlist>

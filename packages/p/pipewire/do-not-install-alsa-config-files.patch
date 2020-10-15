@@ -10,8 +10,8 @@ Index: pipewire-0.3.8/spa/plugins/alsa/meson.build
  spa_alsa_sources = ['alsa.c',
                  'alsa-udev.c',
 @@ -26,8 +26,8 @@ alsa_udevrules = [
-   '90-pipewire-alsa.rules',
- ]
+   install : true,
+ )
  
 -if libudev_dep.found()
 -  install_data(alsa_udevrules,

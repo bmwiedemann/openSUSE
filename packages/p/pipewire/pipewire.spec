@@ -22,7 +22,6 @@
 %global provfind sh -c "grep -v -e 'libpulse.*\\.so' -e 'libjack.*\\.so' | %__find_provides"
 %global __find_provides %provfind
 
-%define sover 0_3_9
 %define apiver 0.3
 %define apiver_str 0_3
 %define spa_ver 0.2
@@ -36,7 +35,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.11
+Version:        0.3.13
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -47,8 +46,6 @@ Source1:        %{name}-rpmlintrc
 Patch0:         fix-memfd_create-call.patch
 Patch1:         do-not-use-snd_pcm_ioplug_hw_avail.patch
 Patch2:         do-not-install-alsa-config-files.patch
-# PATCH-FIX-UPSTREAM 0001-alsa-dont-change-the-resampler-delay-value.patch -- https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/287
-Patch100:       0001-alsa-dont-change-the-resampler-delay-value.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -266,9 +263,8 @@ sed -i -e "s/dependency('alsa', version : '>=1.1.7')/dependency('alsa', version 
 %endif
 sed -i -e "s/meson_version : '>= 0.49.0',/meson_version : '>= 0.46.0',/" meson.build
 %patch2 -p1
-%patch100 -p1
 
-%autopatch -m 101 -p1
+%autopatch -m 100 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -423,6 +419,7 @@ fi
 %{_bindir}/pw-mididump
 %{_bindir}/pw-midiplay
 %{_bindir}/pw-midirecord
+%{_bindir}/pw-reserve
 %{_mandir}/man1/pw-cli.1%{ext_man}
 %{_mandir}/man1/pw-mon.1%{ext_man}
 %{_mandir}/man1/pw-cat.1%{ext_man}
@@ -434,6 +431,8 @@ fi
 %files spa-tools
 %{_bindir}/spa-inspect
 %{_bindir}/spa-monitor
+%{_bindir}/spa-acp-tool
+%{_bindir}/spa-resample
 
 %files modules
 %dir %{_libdir}/pipewire-%{apiver}
