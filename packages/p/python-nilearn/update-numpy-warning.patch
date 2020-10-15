@@ -1,0 +1,11 @@
+--- nilearn-0.6.2.orig/nilearn/image/tests/test_resampling.py	2020-10-14 10:27:20.294973452 +0200
++++ nilearn-0.6.2/nilearn/image/tests/test_resampling.py	2020-10-14 10:29:29.025968587 +0200
+@@ -479,7 +479,7 @@ def test_resampling_nan():
+ 
+         # check 3x3 transformation matrix
+         target_affine = np.eye(3)[axis_permutation]
+-        with pytest.warns(RuntimeWarning):
++        with pytest.warns(Warning, match=r"(\bnan\b|invalid value)"):
+             resampled_img = resample_img(source_img,
+                                          target_affine=target_affine)
+ 

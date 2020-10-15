@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 11:42:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patches to fix some tests:
+  * update-numpy-warning.patch - https://github.com/nilearn/nilearn/pull/2530
+  * fix-test_save_cmap.patch   - https://github.com/nilearn/nilearn/pull/2543
+
+-------------------------------------------------------------------
 Wed Apr 29 12:53:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use xdist to speedup the tests to take less than 30 mins
