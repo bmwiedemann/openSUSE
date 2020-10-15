@@ -31,4 +31,12 @@
     <comment>- Use xdist to speedup the tests to take less than 30 mins</comment>
     <requestid>798921</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d5c7d5cd5f9af4e7fa46d2de51f97646</srcmd5>
+    <version>0.6.2</version>
+    <time>1602762645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841775</requestid>
+  </revision>
 </revisionlist>

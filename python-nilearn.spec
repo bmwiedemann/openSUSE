@@ -26,6 +26,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/nilearn/nilearn/pull/2530
+Patch1:         update-numpy-warning.patch
+# PATCH-FIX-UPSTREAM - https://github.com/nilearn/nilearn/pull/2543
+Patch2:         fix-test_save_cmap.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,6 +58,7 @@ NeuroImaging data.
 
 %prep
 %setup -q -n nilearn-%{version}
+%autopatch -p1
 
 %build
 %python_build
