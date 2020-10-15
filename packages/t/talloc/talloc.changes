@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:52:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16:
+  bad %if condition:  01550 != 1110 || "x86_64" == x86_64
+  no bare word support, x86_64 needs to be quoted
+
+-------------------------------------------------------------------
 Fri Mar  6 17:31:27 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Upgrade to 2.3.1

@@ -137,7 +137,7 @@ doxygen doxy.config
 
 %if ! %{build_man}
 %check
-%if 0%{?suse_version} != 1110 || "%{_build_arch}" == x86_64
+%if 0%{?suse_version} != 1110 || "%{_build_arch}" == "x86_64"
 %if "%{qemu_user_space_build}" == "1"
 echo "skipping test on qemu userspace build due to AT_RANDOM not changing"
 %else # qemu_user_space_build == 1
