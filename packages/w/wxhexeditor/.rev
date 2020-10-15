@@ -116,4 +116,12 @@ Upstream changes:
 </comment>
     <requestid>572387</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1c5a50f6c5510b882096104c4a10b244</srcmd5>
+    <version>0.24</version>
+    <time>1602762657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841802</requestid>
+  </revision>
 </revisionlist>

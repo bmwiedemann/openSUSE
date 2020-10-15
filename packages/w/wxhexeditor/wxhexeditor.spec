@@ -1,7 +1,7 @@
 #
 # spec file for package wxhexeditor
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,9 +25,9 @@ Version:        0.24
 Release:        0
 Summary:        A free HEX editor / disk editor
 # Program is statically linked to udis86 which is BSD-2-Clause
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Tools/Other
-Url:            https://github.com/EUA/wxHexEditor
+URL:            https://github.com/EUA/wxHexEditor
 Source:         https://github.com/EUA/wxHexEditor/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE wxhexeditor-0.23-mhash.patch lazy.kent@opensuse.org -- Use system mhash library.
 Patch0:         %{name}-0.23-mhash.patch
@@ -35,6 +35,8 @@ Patch0:         %{name}-0.23-mhash.patch
 Patch1:         wxhexeditor-remove-debug.patch
 # PATCH-FIX-UPSTREAM wxhexeditor-fixdesktopfile.patch davejplater@gmail.com -- Fix desktop file
 Patch2:         wxhexeditor-fixdesktopfile.patch
+# PATCH-FIX-UPSTREAM - https://github.com/EUA/wxHexEditor/issues/90
+Patch3:         wxhexeditor-fix-arm.patch
 %if %{with gcc6}
 %if 0%{?sle_version} >= 120200
 #!BuildIgnore:  libgcc_s1
@@ -70,6 +72,7 @@ rm -rf mhash
 %patch0 -p0
 %patch1 -p0
 %patch2
+%patch3 -p1
 chmod -x docs/*
 cp -v udis86/LICENSE LICENSE-udis86
 cp -v docs/GPL.txt .

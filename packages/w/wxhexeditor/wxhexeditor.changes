@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 13:03:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix build on Arm:
+  * wxhexeditor-fix-arm.patch
+
+-------------------------------------------------------------------
 Sun Feb  4 08:16:55 UTC 2018 - davejplater@gmail.com
 
 - Update to release 0.24 and modify wxhexeditor-0.23-mhash.patch.
