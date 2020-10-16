@@ -353,4 +353,12 @@
 - versioned.patch: refreshed</comment>
     <requestid>840025</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e724ea17ecbdd8e65115e10ecac3a8c7</srcmd5>
+    <version>12.19.0</version>
+    <time>1602857783</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842084</requestid>
+  </revision>
 </revisionlist>
