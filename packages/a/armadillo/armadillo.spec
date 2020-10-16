@@ -16,9 +16,9 @@
 #
 
 
-%define soname libarmadillo9
+%define soname libarmadillo10
 Name:           armadillo
-Version:        9.900.3
+Version:        10.1.0
 Release:        0
 Summary:        C++ matrix library with interfaces to LAPACK and ATLAS
 License:        Apache-2.0
@@ -94,6 +94,7 @@ and user documentation (reference guide).
 %setup -q
 #Convert DOS end-of-line to UNIX end-of-line
 sed -i 's/\r$//' README.md
+sed -i 's/\r$//' examples/README.txt
 sed -i 's/\r$//' LICENSE.txt
 sed -i 's/\r$//' NOTICE.txt
 for i in `ls examples/*.cpp`; do sed -i 's/\r$//' $i; done
