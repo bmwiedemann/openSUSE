@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 22:22:27 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.4.6
+  * Declare/document Python 3.9 support
+  * Drop official support for Python 3.5
+
+-------------------------------------------------------------------
 Sun Oct 11 19:07:56 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.4.5

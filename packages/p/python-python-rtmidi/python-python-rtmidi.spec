@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rtmidi
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Python binding for the RtMidi C++ library
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  python > 3.5
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
@@ -59,7 +60,7 @@ Contains HTML documentation and examples for python-rtmidi.
 
 %prep
 %setup -q -n python-rtmidi-%{version}
-sed -i 's,/usr/bin/env python,/usr/bin/%{python_for_executables},' examples/*.py examples/*/*.py
+sed -i 's,/usr/bin/env python,%{_bindir}/%{python_for_executables},' examples/*.py examples/*/*.py
 
 %build
 %python_build
