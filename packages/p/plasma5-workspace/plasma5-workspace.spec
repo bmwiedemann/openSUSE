@@ -39,7 +39,6 @@ Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
-Source4:        plasmafullwayland.desktop
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
@@ -114,6 +113,10 @@ BuildRequires:  cmake(dbusmenu-qt5)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libgps)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%endif
 BuildRequires:  pkgconfig(libqalculate)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(wayland-client) >= 1.15
@@ -290,7 +293,6 @@ Requires:       libqt5-qtwayland
 Requires:       plasma5-session >= %{version}
 Requires:       xf86-input-libinput
 Requires:       xorg-x11-server-wayland
-BuildArch:      noarch
 
 %description -n plasma5-session-wayland
 This package contains the startup scripts necessary to start a KDE
@@ -328,16 +330,17 @@ Plasma 5 session with Wayland from a display manager.
   ln -s %{_kf5_sharedir}/xsessions/plasma5.desktop %{buildroot}%{_kf5_sharedir}/xsessions/kde-plasma.desktop
 
   # Install custom "full wayland" session
-  install -m0644 %{SOURCE4} %{buildroot}%{_kf5_sharedir}/wayland-sessions/plasmafullwayland.desktop
+  pushd %{buildroot}%{_kf5_sharedir}/wayland-sessions/
+  sed '/^Name/d;s/^Exec=/Exec=env GDK_BACKEND=wayland QT_QPA_PLATFORM=wayland /' plasmawayland.desktop > plasmafullwayland.desktop
+  echo 'Name=Plasma (Full Wayland)' >> plasmafullwayland.desktop
+  popd
 
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
   ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
-# boo#1175025: remove when it is fixed
-%if 0%{?suse_version} >= 1550
-  %fdupes -s %{buildroot}/%{_prefix}
-%else
+# To work around boo#1175025. Can't use symlinks either, kpackage doesn't like them.
+%if 0%{?suse_version} < 1550
   %fdupes %{buildroot}/%{_prefix}
 %endif
 

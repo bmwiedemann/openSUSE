@@ -1484,4 +1484,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch</comment>
     <requestid>841562</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>049ee96b204e39ba086b2b50e7e55ff1</srcmd5>
+    <version>5.20.0</version>
+    <time>1602857692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841822</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 14 17:22:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Generate plasmafullwayland.desktop by editing plasmawayland.desktop
+- Make plasma5-session-wayland arch-dependent as it contains %{_libdir}
+- Add BuildRequires for pipewire and libdrm
+
+-------------------------------------------------------------------
+Wed Oct 14 05:59:25 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't use %fdupes -s, kpackage doesn't like it and so this broke
+  the slideshow wallpaper
+
+-------------------------------------------------------------------
 Tue Oct 13 10:21:44 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix startup of some applications (mostly Tk):
