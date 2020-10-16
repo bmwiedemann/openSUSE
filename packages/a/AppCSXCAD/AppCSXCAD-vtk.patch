@@ -1,0 +1,21 @@
+--- a/CMakeLists.txt	2018-12-14 23:45:50.112002905 +0100
++++ b/CMakeLists.txt	2018-12-15 00:01:35.322874327 +0100
+@@ -117,15 +117,14 @@
+ if("${VTK_MAJOR_VERSION}" EQUAL 5)
+   set( vtk_LIBS
+     QVTK )
+-elseif("${VTK_MAJOR_VERSION}" EQUAL 6)
+-  set( vtk_LIBS
+-    vtkGUISupportQt)
++else()
++  set( vtk_LIBS ${VTK_LIBRARIES} )
+ endif()
+ message(STATUS "vtk libraries " ${vtk_LIBS})
+ 
+ # Qt
+ set(CMAKE_AUTOMOC ON)
+-if(${VTK_VERSION} VERSION_GREATER "6" AND VTK_QT_VERSION VERSION_GREATER "4")
++if(${VTK_VERSION} VERSION_GREATER "6" AND ((NOT DEFINED VTK_QT_VERSION) OR ("${VTK_QT_VERSION}" VERSION_GREATER "4")))
+     find_package(Qt5Widgets REQUIRED)
+     include_directories(${Qt5Widgets_INCLUDE_DIRS})
+     find_package(Qt5Xml REQUIRED)

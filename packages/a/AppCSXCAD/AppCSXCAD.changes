@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:02:01 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with VTK 9.x, add AppCSXCAD-vtk.patch
+
+-------------------------------------------------------------------
 Sat Dec 15 11:54:35 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.2.2

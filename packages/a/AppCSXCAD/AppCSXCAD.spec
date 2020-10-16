@@ -1,7 +1,7 @@
 #
 # spec file for package AppCSXCAD
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,33 +22,35 @@ Release:        0
 Summary:        Minimal GUI Application using the QCSXCAD library
 License:        GPL-3.0-only
 Group:          Productivity/Scientific/Other
-Url:            http://openems.de
+URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         qt5_use_modules.diff
+# PATCH-FIX-OPENSUSE
+Patch1:         AppCSXCAD-vtk.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  QCSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  glew-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
+BuildRequires:  vtk-qt
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Minimal GUI Application using the QCSXCAD library.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
