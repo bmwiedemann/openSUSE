@@ -8754,8 +8754,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libarm_compute20: [x86_64] 
-  - libarmadillo9 
-  - libarmadillo9-32bit: [x86_64] 
+  - libarmadillo10 
+  - libarmadillo10-32bit: [x86_64] 
   - libarmnn22: [x86_64] 
   - libarmnn22-opencl: [x86_64] 
   - libarmnnBasePipeServer22: [x86_64] 
@@ -17529,6 +17529,7 @@ unsorted:
   - perl-Alien-Tidyp 
   - perl-Alien-wxWidgets 
   - perl-Any-Moose 
+  - perl-Any-URI-Escape 
   - perl-AnyEvent 
   - perl-AnyEvent-HTTP 
   - perl-AnyEvent-I3 
@@ -18045,6 +18046,7 @@ unsorted:
   - perl-Locale-US 
   - perl-LockFile-Simple 
   - perl-Log-Any 
+  - perl-Log-Any-Adapter-Callback 
   - perl-Log-Contextual 
   - perl-Log-Dispatch 
   - perl-Log-Dispatch-Array 
@@ -18364,6 +18366,7 @@ unsorted:
   - perl-Scalar-String 
   - perl-Scope-Guard 
   - perl-Scope-Upper 
+  - perl-Search-Elasticsearch 
   - perl-Selenium-Remote-Driver 
   - perl-Sereal 
   - perl-Sereal-Decoder 
