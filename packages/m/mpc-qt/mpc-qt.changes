@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:22:02 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 20.10
+  Fixes and improvements:
+  * Add library window, deleted playlists are now saved instead
+    of destroyed
+  * Remember shown stats page
+  * Implement subtitle track preference
+  * Rearrange settings window for 720p
+  * Save/restore maximized/minimized state
+  * Implement additive speed step
+  * Correctly set video filters
+  * Add ability to save thumbnails
+  * Implement after playback -> play next
+  * Implement thinner time fields like mpc-hc
+  * Implement limiting volume to 100% like mpc-hc
+  * Audio output settings now on own page
+  * Add logging framework
+  Notes:
+  * In addition, there may be other improvements not listed here.
+  * As the playlist format has changed, opening the saved data
+    of this version with older versions may result in data loss.
+- Switch to stable version and remove _service
+
+-------------------------------------------------------------------
 Fri Jul  3 08:19:18 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 18.08+git20200704

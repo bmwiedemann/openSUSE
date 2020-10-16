@@ -17,12 +17,12 @@
 
 
 Name:           mpc-qt
-Version:        18.08+git20200704
+Version:        20.10
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
 URL:            https://github.com/cmdrkotori/mpc-qt
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/cmdrkotori/mpc-qt-origin/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist
@@ -43,7 +43,7 @@ BuildRequires:  gcc7-c++
 A clone of Media Player Classic reimplemented in Qt.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n mpc-qt-origin-%{version}
 rm -rf mpv-dev
 
 %build
