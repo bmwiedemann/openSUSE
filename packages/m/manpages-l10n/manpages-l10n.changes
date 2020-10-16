@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 19:48:41 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.2.0:
+  * Updated and added many translations.
+  * Still skip Italian and Spanish, will be included in the next
+    or any future release.
+
+-------------------------------------------------------------------
 Wed Jul  1 16:24:06 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Initial version: manpages-l10n 4.1.0 (boo#1173602).
