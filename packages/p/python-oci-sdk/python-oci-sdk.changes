@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Oct 15 10:29:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.23.0
+  * Support for API definitions in the API Gateway service
+  * Support for pattern-based logical entities, namespace-bound custom
+    properties, and faceted search in the Data Catalog service
+  * Support for autonomous Data Guard on autonomous infrastructure
+    in the Database service
+  * Support for creating a Data Guard association on an existing standby
+    database home in the Database service
+  * Support for upgrading cloud VM cluster grid infrastructure
+    in the Database service
+  * Attribute `is_quick_start` in models `CreateLogSavedSearchDetails`,
+    `LogSavedSearchSummary` and `LogSavedSearch` is removed from the
+     Logging Management service
+  * Lifecycle State `DELETED` is removed from the Logging Management service
+- from version 2.22.0 - 2020-10-06
+  * Support for calling Oracle Cloud Infrastructure services in the me-dubai-1 region
+  * Support for rotating keys on autonomous container databases and autonomous
+    databases in the Database service
+  * Support for cloud Exadata infrastructure and cloud VM clusters
+    in the Database service
+  * Support for controlling the display of tax banners in the Marketplace service
+  * Support for application references, patch changes, generic JDBC and MySQL data asset
+    types, and publishing tasks to OCI Dataflow in the Data Integration service
+  * Support for disabling the legacy Instance Metadata endpoints v1
+    in the Compute service
+  * Support for instance configurations specifying instance options
+    in the Compute Management service
+  * The attribute `model_type` in `TypedObject` model now raises `ValueError`
+    when provided with an invalid value. Please see the documentation for a
+    list of allowed values.
+- from version 2.21.6
+  * Support for specifying custom content dispositions when downloading
+    objects in the Object Storage service
+  * Support for the “bring your own IP address” feature in the Virtual
+    Networking service
+  * Support for updating the tags of instance console connections in the Compute service
+  * Support for custom SSL certificates on gateways in the API Gateway service
+- from version 2.21.5
+  * Support for software keys in the Key Management service
+  * Support for customer contacts on Exadata Cloud at Customer
+    in the Database service
+  * Support for updating open modes and permission levels of autonomous
+    databases in the Database service
+  * Support for flexible memory on VM instances in the Compute and
+    Compute Management services
+- from version 2.21.4
+  * Support for the Cloud Guard service
+  * Support for specifying desired consumption models when creating
+    instances in the Integration service
+  * Support for dynamic shapes in the Load Balancing service
+- Update file list to fix Python imports for unvendoring
+
+-------------------------------------------------------------------
 Wed Sep  9 13:02:46 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.21.3
