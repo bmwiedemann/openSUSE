@@ -1,0 +1,184 @@
+From 6c8d2faa73571e41d49b609b1406dec1e6a0fe8d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Thu, 15 Oct 2020 13:48:37 +0200
+Subject: [PATCH] Remove leftover QVTKWidget include, fix for VTK 9
+
+QVTKWidget has been removed finally in VTK 9, but as it is not used
+directly in QCSXAPP it can be removed there.
+
+Everywhere else, use QVTKOpenGLWidget/QVTKOpenGLStereoWidget.
+---
+ QCSXCAD.cpp       |  1 -
+ QVTKStructure.cpp | 10 ++++++++--
+ QVTKStructure.h   |  8 ++++++--
+ export_pov.cpp    | 22 ++++++++++++++++++++--
+ export_x3d.cpp    | 16 ++++++++++++++--
+ 5 files changed, 48 insertions(+), 9 deletions(-)
+
+diff --git a/QCSXCAD.cpp b/QCSXCAD.cpp
+index 4cd4a74..a7450c6 100644
+--- a/QCSXCAD.cpp
++++ b/QCSXCAD.cpp
+@@ -58,7 +58,6 @@
+ #include "CSPrimWire.h"
+ #include "CSPrimUserDefined.h"
+ 
+-#include <QVTKWidget.h>
+ #include <vtkRendererCollection.h>
+ #include <vtkRenderWindow.h>
+ #include <vtkRenderer.h>
+diff --git a/QVTKStructure.cpp b/QVTKStructure.cpp
+index 1c9b539..1a6dff5 100644
+--- a/QVTKStructure.cpp
++++ b/QVTKStructure.cpp
+@@ -20,7 +20,10 @@
+ #include "QVTKStructure.h"
+ 
+ #include "vtkCommand.h"
+-#if VTK_MAJOR_VERSION>=8
++#if VTK_MAJOR_VERSION>=9
++  #include "QVTKOpenGLStereoWidget.h"
++  #include "vtkGenericOpenGLRenderWindow.h"
++#elif VTK_MAJOR_VERSION==8
+   #include "QVTKOpenGLWidget.h"
+   #include "vtkGenericOpenGLRenderWindow.h"
+ #else
+@@ -99,7 +102,10 @@ QVTKStructure::QVTKStructure()
+ 	iResolution=32;
+ 	AllowUpdate=true;
+ 
+-#if VTK_MAJOR_VERSION>=8
++#if VTK_MAJOR_VERSION>=9
++	VTKWidget = new QVTKOpenGLStereoWidget();
++	VTKWidget->setRenderWindow(vtkGenericOpenGLRenderWindow::New());
++#elif VTK_MAJOR_VERSION==8
+ 	VTKWidget = new QVTKOpenGLWidget();
+ 	VTKWidget->SetRenderWindow(vtkGenericOpenGLRenderWindow::New());
+ #else
+diff --git a/QVTKStructure.h b/QVTKStructure.h
+index 6719711..4b0dd5e 100644
+--- a/QVTKStructure.h
++++ b/QVTKStructure.h
+@@ -21,7 +21,9 @@
+ #include <QtGui>
+ 
+ #include "vtkCommand.h"
+-#if VTK_MAJOR_VERSION>=8
++#if VTK_MAJOR_VERSION>=9
++  class QVTKOpenGLStereoWidget;
++#elif VTK_MAJOR_VERSION==8
+   class QVTKOpenGLWidget;
+ #else
+   class QVTKWidget;
+@@ -100,7 +102,9 @@ protected:
+ 		unsigned int uID;
+ 	} VTKLayerStruct;
+ 
+-#if VTK_MAJOR_VERSION>=8
++#if VTK_MAJOR_VERSION>=9
++	QVTKOpenGLStereoWidget *VTKWidget;
++#elif VTK_MAJOR_VERSION==8
+ 	QVTKOpenGLWidget *VTKWidget;
+ #else
+ 	QVTKWidget *VTKWidget;
+diff --git a/export_pov.cpp b/export_pov.cpp
+index 07f6fb5..30c0943 100644
+--- a/export_pov.cpp
++++ b/export_pov.cpp
+@@ -18,7 +18,14 @@
+ #include <QMessageBox>
+ #include <QtXml>
+ 
+-#include <QVTKWidget.h>
++#include "QVTKStructure.h"
++#if VTK_MAJOR_VERSION>=9
++  #include "QVTKOpenGLStereoWidget.h"
++#elif VTK_MAJOR_VERSION==8
++  #include "QVTKOpenGLWidget.h"
++#else
++  #include "QVTKWidget.h"
++#endif
+ #include <vtkRendererCollection.h>
+ #include <vtkRenderWindow.h>
+ #include <vtkRenderer.h>
+@@ -33,7 +40,6 @@
+ #include "CSPrimCurve.h"
+ #include "CSPrimWire.h"
+ 
+-#include "QVTKStructure.h"
+ #include "QCSXCAD.h"
+ #include "export_pov.h"
+ 
+@@ -201,7 +207,13 @@ void export_pov::export_wire( QTextStream &stream, size_t count, double *array,
+ 
+ QString export_pov::get_camera()
+ {
++#if VTK_MAJOR_VERSION>=9
++	vtkRendererCollection* collection = ((QVTKOpenGLStereoWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->renderWindow()->GetRenderers();
++#elif VTK_MAJOR_VERSION==8
++	vtkRendererCollection* collection = ((QVTKOpenGLWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#else
+ 	vtkRendererCollection* collection = ((QVTKWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#endif
+ 	vtkRenderer *r = collection->GetFirstRenderer();
+ 	if (!r)
+ 		return QString();
+@@ -231,7 +243,13 @@ QString export_pov::get_camera()
+ 
+ QString export_pov::get_light()
+ {
++#if VTK_MAJOR_VERSION>=9
++	vtkRendererCollection* collection = ((QVTKOpenGLStereoWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->renderWindow()->GetRenderers();
++#elif VTK_MAJOR_VERSION==8
++	vtkRendererCollection* collection = ((QVTKOpenGLWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#else
+ 	vtkRendererCollection* collection = ((QVTKWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#endif
+ 	vtkRenderer *r = collection->GetFirstRenderer();
+ 	if (!r)
+ 		return QString();
+diff --git a/export_x3d.cpp b/export_x3d.cpp
+index 347463d..802d974 100644
+--- a/export_x3d.cpp
++++ b/export_x3d.cpp
+@@ -17,7 +17,14 @@
+ 
+ #include <QMessageBox>
+ 
+-#include <QVTKWidget.h>
++#include "QVTKStructure.h"
++#if VTK_MAJOR_VERSION>=9
++  #include "QVTKOpenGLStereoWidget.h"
++#elif VTK_MAJOR_VERSION==8
++  #include "QVTKOpenGLWidget.h"
++#else
++  #include "QVTKWidget.h"
++#endif
+ #include <vtkRendererCollection.h>
+ #include <vtkRenderWindow.h>
+ #include <vtkRenderer.h>
+@@ -29,7 +36,6 @@
+ #include "CSPrimBox.h"
+ #include "CSPrimPolygon.h"
+ 
+-#include "QVTKStructure.h"
+ #include "QCSXCAD.h"
+ #include "export_x3d.h"
+ 
+@@ -70,7 +76,13 @@ void export_X3D::save( QString filename )
+ 	export_properties( Scene, properties, Material );
+ 
+ 	// create camera
++#if VTK_MAJOR_VERSION>=9
++	vtkRendererCollection* collection = ((QVTKOpenGLStereoWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->renderWindow()->GetRenderers();
++#elif VTK_MAJOR_VERSION==8
++	vtkRendererCollection* collection = ((QVTKOpenGLWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#else
+ 	vtkRendererCollection* collection = ((QVTKWidget*)(m_CSX->StructureVTK->GetVTKWidget()))->GetRenderWindow()->GetRenderers();
++#endif
+ 	vtkRenderer *r = collection->GetFirstRenderer();
+ 	if (!r)
+ 		return;
+-- 
+2.28.0
+

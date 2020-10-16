@@ -1,0 +1,65 @@
+From 3d301074593bde36ed43044e87864f6796aedb24 Mon Sep 17 00:00:00 2001
+From: Thorsten Liebig <Thorsten.Liebig@gmx.de>
+Date: Wed, 26 Dec 2018 23:25:53 +0100
+Subject: [PATCH] vtk: fix changes for vtk 8.x
+
+Signed-off-by: Thorsten Liebig <Thorsten.Liebig@gmx.de>
+---
+ QVTKStructure.cpp | 10 +++++-----
+ QVTKStructure.h   |  1 +
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/QVTKStructure.cpp b/QVTKStructure.cpp
+index 1ddf2c8..7394bd9 100644
+--- a/QVTKStructure.cpp
++++ b/QVTKStructure.cpp
+@@ -19,11 +19,13 @@
+ 
+ #include "QVTKStructure.h"
+ 
++#include "vtkCommand.h"
+ #if VTK_MAJOR_VERSION>=8
+   #include "QVTKOpenGLWidget.h"
+   #include "vtkGenericOpenGLRenderWindow.h"
+ #else
+-  #include "QVTKWidget.h"
++  #include "QVTKWidget.h"
++
+ #endif
+ #include "vtkRenderWindow.h"
+ #include "vtkRenderWindowInteractor.h"
+@@ -55,7 +57,6 @@
+ #include "vtkDoubleArray.h"
+ #include "vtkActorCollection.h"
+ #include "vtkInteractorStyle.h"
+-#include "vtkCommand.h"
+ #include "vtkCallbackCommand.h"
+ #include "vtkWindowToImageFilter.h"
+ #include "vtkPNGWriter.h"
+@@ -99,9 +100,8 @@ QVTKStructure::QVTKStructure()
+ 	AllowUpdate=true;
+ 
+ #if VTK_MAJOR_VERSION>=8
+-	VTKWidget= new QVTKOpenGLWidget();
+-	vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
+-	VTKWidget->SetRenderWindow(renderWindow);
++	VTKWidget = new QVTKOpenGLWidget();
++	VTKWidget->SetRenderWindow(vtkGenericOpenGLRenderWindow::New());
+ #else
+ 	VTKWidget= new QVTKWidget();
+ #endif
+diff --git a/QVTKStructure.h b/QVTKStructure.h
+index 3a0cb4e..6719711 100644
+--- a/QVTKStructure.h
++++ b/QVTKStructure.h
+@@ -20,6 +20,7 @@
+ 
+ #include <QtGui>
+ 
++#include "vtkCommand.h"
+ #if VTK_MAJOR_VERSION>=8
+   class QVTKOpenGLWidget;
+ #else
+-- 
+2.28.0
+

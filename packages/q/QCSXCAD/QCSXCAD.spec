@@ -1,7 +1,7 @@
 #
 # spec file for package QCSXCAD
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Qt-GUI for CSXCAD library
 License:        LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
-Url:            http://openems.de
+URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE qt5_use_modules.diff -- qt5_use_modules has been deprecated and removed
 Patch0:         qt5_use_modules.diff
@@ -32,6 +32,12 @@ Patch0:         qt5_use_modules.diff
 Patch1:         QCSXCAD-no-build-date.patch
 # PATCH-FIX-OPENSUSE QCSXCAD-vtk.patch -- Avoid pulling in unneeded VTK modules
 Patch2:         QCSXCAD-vtk.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-vtk-use-QVTKOpenGLWidget-for-vtk-8.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-vtk-fix-changes-for-vtk-8.x.patch
+# PATCH-FIX-OPENSUSE
+Patch5:         0001-Remove-leftover-QVTKWidget-include-fix-for-VTK-9.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -39,14 +45,15 @@ BuildRequires:  glew-devel
 BuildRequires:  lzma-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
+BuildRequires:  vtk-qt
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xt)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A Qt-GUI for the CSXCAD library.
@@ -70,14 +77,11 @@ This package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -87,13 +91,11 @@ make %{?_smp_mflags}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root,-)
 %license COPYING
 %doc NEWS README
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so
 %{_includedir}/%{name}/
 

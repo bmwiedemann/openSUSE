@@ -1,15 +1,29 @@
 --- a/CMakeLists.txt	2018-12-14 23:45:50.112002905 +0100
 +++ b/CMakeLists.txt	2018-12-15 00:01:35.322874327 +0100
-@@ -98,8 +98,11 @@
+@@ -98,8 +98,16 @@
  if (WIN32)
      find_package(VTK 6.1 REQUIRED)
  else()
-+   find_package(VTK COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkIOGeometry vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
++    find_package(VTK COMPONENTS GUISupportQt RenderingLOD IOGeometry IOXML IOPLY IOImage InteractionWidgets InteractionStyle FiltersModeling FiltersGeometry RenderingAnnotation RenderingFreeType NO_MODULE)
++    IF (NOT ${VTK_FOUND})
++       find_package(VTK COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkIOGeometry vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
++    endif()
      # prefer >=6.1, fallback to >=5.4
 -    find_package(VTK 6.1 COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkRenderingOpenGL vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
 +    IF (NOT ${VTK_FOUND})
 +       find_package(VTK 6.1 COMPONENTS vtkGUISupportQt vtkRenderingLOD vtkRenderingOpenGL vtkIOXML vtkIOPLY vtkIOImage vtkInteractionWidgets NO_MODULE)
++    else()
++        message(STATUS "Found VTK ${VTK_VERSION}, Qt \"${VTK_QT_VERSION}\"")
 +    endif()
      IF (NOT ${VTK_FOUND})
          find_package(VTK REQUIRED)
      endif()
+@@ -112,7 +115,7 @@
+ # Qt 
+ SET(RESOURCES resources.qrc)
+ set(CMAKE_AUTOMOC ON)
+-if(${VTK_VERSION} VERSION_GREATER "6" AND VTK_QT_VERSION VERSION_GREATER "4")
++if(${VTK_VERSION} VERSION_GREATER "6" AND ((NOT DEFINED VTK_QT_VERSION) OR ("${VTK_QT_VERSION}" VERSION_GREATER "4")))
+     find_package(Qt5Widgets REQUIRED)
+     include_directories(${Qt5Widgets_INCLUDE_DIRS})
+     find_package(Qt5Xml REQUIRED)

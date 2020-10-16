@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 11:40:53 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add some patches to fix compilation with VTK 9.x:
+  * 0001-vtk-use-QVTKOpenGLWidget-for-vtk-8.patch
+  * 0001-vtk-fix-changes-for-vtk-8.x.patch
+  * 0001-Remove-leftover-QVTKWidget-include-fix-for-VTK-9.patch
+  * Update QCSXCAD-vtk.patch
+
+-------------------------------------------------------------------
 Thu Apr  4 01:29:57 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add explicit devel BuildRequires for glew, lzma and double-conversion
