@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 16 03:07:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.85
+   see /usr/share/doc/packages/perl-Devel-CheckOS/CHANGELOG
+
+  1.85    2020-10-15      Add Linux::Raspbian and Linux::Ubuntu;
+                          Add Linux::RealDebian for *actual* Debian Linux;
+                          Add Linux::UnknownDebianLike for anything else that's like Debian;
+                          Linux::Debian has become a family that includes all the above
+
+-------------------------------------------------------------------
 Tue Oct  6 03:08:39 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.84
