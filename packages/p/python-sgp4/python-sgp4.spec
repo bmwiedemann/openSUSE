@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sgp4
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 License:        MIT
@@ -52,8 +52,8 @@ over arrays of satellites and arrays of times with machine code instead of Pytho
 %prep
 %setup -q -n sgp4-%{version}
 cp %{SOURCE99} .
-# ease precision tolerances for flaky platforms
-sed -i 's/GRAVITY_DIGITS = 12/GRAVITY_DIGITS = 10/' sgp4/tests.py
+# ease precision tolerances https://github.com/brandon-rhodes/python-sgp4/issues/69
+sed -i 's/GRAVITY_DIGITS = (/GRAVITY_DIGITS = 10\nGRAVITY_DIGITS_UPSTREAM =(/' sgp4/tests.py
 sed -i 's/error = 2e-7/error = 2e-5/' sgp4/tests.py
 
 %build
@@ -71,7 +71,6 @@ cd .. # SLE12 workaround
 %pytest_arch --pyargs sgp4.tests
 # Only the doctests acually import the compiled extension and fail if it is not present
 %pytest_arch --pyargs sgp4 --doctest-modules
-
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 09:49:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 2.13
+  *  Enhanced sgp4init() with custom code that also sets the
+     epochdays and epochyr satellite attributes. 
+
+-------------------------------------------------------------------
 Fri Jul 10 10:21:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - yank Python 2 package 
