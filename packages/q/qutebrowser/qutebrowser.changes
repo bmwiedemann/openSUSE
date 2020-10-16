@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Thu Oct 15 21:57:47 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.14.0
+This release still only contains partial session support for
+QtWebEngine 5.15. It's still recommended to run against Qt 5.15
+due to the security patches contained in it -- for most users,
+the added workarounds seem to work out fine. A rewritten session
+support will be part of qutebrowser v2.0.0, tentatively planned
+for the end of the year or early 2021.
+
+Changed
+  * The content.media_capture setting got split up into three more
+    fine-grained settings, content.media.audio_capture,
+    .video_capture and .audio_video_capture. Before this change,
+    answering "always" to a prompt about e.g. audio capturing would
+    set the content.media_capture setting, which would also allow
+    the same website to capture video on a future visit. Now every
+    prompt will set the appropriate setting, though existing
+    content.media_capture settings in autoconfig.yml will be
+    migrated to set all three settings. To review/change previously
+    granted permissions, use :config-diff and e.g.
+    :config-unset -u example.org content.media.video_capture.
+  * The main window's (invisible) background color is now set to
+    transparent. This allows using the alpha channel in
+    statusbar/tabbar colors to get a partially transparent
+    qutebrowser window on a setup which supports doing so.
+  * If QtWebEngine is compiled with PipeWire support and
+    libpipewire is installed, qutebrowser will now support screen
+    sharing on Wayland. Note that QtWebEngine 5.15.1 is needed.
+  * When :undo is used with a count, it now reopens the count-th
+    to last tab instead of the last one. The depth can instead be
+    passed as an argument, which is also completed.
+  * The default completion.timestamp_format now also shows the
+    time.
+  * :back and :forward now take an optional index which is
+    completed using the current tab's history.
+  * The time a website in a tab was visited is now saved/restored
+    in sessions.
+  * When attempting to download a file to a location for which
+    there's already a still-running download, a confirmation prompt
+    is now displayed.
+  * :completion-item-focus now understands next-page and prev-page
+    with corresponding <PgDown> / <PgUp> default bindings.
+  * When the last private window is closed, all private browsing
+    data is now cleared.
+  * When config.source(...) is used with a --config-py argument
+    given, qutebrowser used to search relative files in the config
+    basedir, leading to them not being found when using a shared
+    config.py for different basedirs. Instead, they are now
+    searched relative to the given config.py file.
+  * navigate prev ([[) and navigate next (]]) now recognize links
+    with nav-prev and nav-next classes, such as those used by the
+    Hugo static site generator.
+  * When tabs.favicons is disabled but tabs.tabs_are_windows is
+    set, the window icon is still set to the page's favicon now.
+  * Dark mode (colors.webpage.darkmode.*) is now supported with
+    Qt 5.15.2 (which is not released yet).
+  * The default for the darkmode policy.images setting is now set
+    to smart which fixes issues with e.g. formulas on Wikipedia.
+  * The readability-js userscript now adds some CSS to improve the
+    reader mode styling in various scenarios:
+    + Images are now shrinked to the page width, similarly to what
+      Firefox' reader mode does.
+    + Some images ore now displayed as block (rather than inline)
+      which is what Firefox' reader mode does as well.
+    + Blockquotes are now styled more distinctively, again based
+      on the Firefox reader mode.
+    + Code blocks are now easier to distinguish from text and
+      tables have visible cell margins.
+  * The readability-js userscript now supports hint userscript
+    mode.
+
+Added
+  * New argument strip for :navigate which removes queries and
+    fragments from the current URL.
+  * :undo now has a new -w / --window argument, which can be used
+    to restore closed windows (rather than tabs). This is bound to
+    U by default.
+  * :jseval can now take javascript:... URLs via a new --url flag.
+  * New replacement {aligned_index} for tabs.title.format and
+    format_pinned which behaves like {index}, but space-pads the
+    index based on the total numbers of tabs. This can be used to
+    get aligned tab texts with vertical tabs.
+  * New command :devtools-focus (bound to wIf) to toggle keyboard
+    focus between the devtools and web page.
+  * The --target argument to qutebrowser now understands a new
+    private-window value, which can be used to open a private
+    window in an existing instance from the commandline.
+  * The :download-open command now has a new --dir flag, which can
+    be used to open the directory containing the downloaded file.
+    An entry to do the same was also added to the context menu.
+  * Messages are now wrapped when they are too long to be displayed
+    on a single line.
+  * New possible --debug-flag values:
+    + wait-renderer-process waits for a SIGUSR1 in the renderer
+      process so a debugger can be attached.
+    + avoid-chromium-init allows using --version without needing
+      a working QtWebEngine/Chromium.
+
+Fixed
+  * A URL pattern with a *. host was considered valid and matched
+    all hosts. Due to keybindings like tsH toggling scripts for
+    *://*.{url:host}/*, invoking them on pages without a host
+    (e.g. about:blank) could result in accidentally
+    allowing/blocking JavaScript for all pages. Such patterns are
+    now considered invalid, with existing patterns being
+    automatically removed from autoconfig.yml.
+  * When scrolling.bar was set to overlay (the default),
+    qutebrowser would internally override any enable-features=...
+    flags passed via qt.args or --qt-flag. It now correctly
+    combines existing enable-feature flags with internal ones.
+  * Elements with an inherited contenteditable attribute now
+    trigger insert mode and get hints assigned correctly.
+  * When checkmarks, radio buttons and some other elements are
+    styled via the Bootstrap CSS framework, they now get hints
+    correctly.
+  * When the session file isn't writable when qutebrowser exits,
+    an error is now logged instead of crashing.
+  * When using -m with the qute-lastpass userscript, it
+    accidentally matched URLs containing the match as substring.
+    This is now fixed.
+  * When a filename is derived from a page's title, it's now
+    shortened to the maximum filename length permitted by the
+    filesystem.
+  * :enter-mode register crashed since v1.13.0, it now displays
+    an error instead.
+  * With the QtWebKit backend, webpage resources loading certain
+    invalid URLs could cause a crash, which is now fixed.
+  * When :config-edit is used but no config.py exists yet, the file
+    is now created (and watched for changes properly) before
+    spawning the external editor.
+  * When hint mode was entered from outside normal mode, the status
+    bar was empty instead of displaying the proper text.
+    This is now fixed.
+  * When entering different modes too quickly (e.g. pressing fV),
+    the statusbar could end up in a confusing state. This is now
+    fixed.
+  * When qutebrowser quits, running downloads are now cancelled
+    properly.
+  * The site-specific quirk for web.whatsapp.com has been updated
+    to work after recent changes in WhatsApp.
+  * Highlighting in the completion now works properly when UTF-16
+    surrogate pairs (such as emoji) are involved.
+  * When a windowed inspector is clicked, insert mode now isn't
+    entered anymore.
+  * When :undo is used to re-open a tab, but tabs.tabs_are_windows
+    was set between closing and undoing the close, qutebrowser
+    crashed. This is now fixed.
+  * With QtWebEngine 5.15.0, setting the darkmode image policy to
+    smart leads to renderer process crashes. The offending setting
+    value is now ignored with a warning.
+  * Fixes for the qute-pass userscript:
+    + With newer gopass versions, a deprecation notice was copied
+      as password due to qute-pass using it in a deprecated way.
+    + The --password-store argument didn't actually set
+    + PASSWORD_STORE_DIR for pass, resulting in qute-pass finding
+      matches but the underlying pass not finding matching
+      passwords.
+
+-------------------------------------------------------------------
 Fri Jul 17 19:42:28 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.13.1

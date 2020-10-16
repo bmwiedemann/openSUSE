@@ -1449,4 +1449,41 @@ Fixed
     with --merge-candidates.</comment>
     <requestid>821559</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e15899d65d90b208034777e96eecb57f</srcmd5>
+    <version>1.14.0</version>
+    <time>1602857750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0
+This release still only contains partial session support for
+QtWebEngine 5.15. It's still recommended to run against Qt 5.15
+due to the security patches contained in it -- for most users,
+the added workarounds seem to work out fine. A rewritten session
+support will be part of qutebrowser v2.0.0, tentatively planned
+for the end of the year or early 2021.
+Changed
+  * The content.media_capture setting got split up into three more
+    fine-grained settings, content.media.audio_capture,
+    .video_capture and .audio_video_capture. Before this change,
+    answering &quot;always&quot; to a prompt about e.g. audio capturing would
+    set the content.media_capture setting, which would also allow
+    the same website to capture video on a future visit. Now every
+    prompt will set the appropriate setting, though existing
+    content.media_capture settings in autoconfig.yml will be
+    migrated to set all three settings. To review/change previously
+    granted permissions, use :config-diff and e.g.
+    :config-unset -u example.org content.media.video_capture.
+  * The main window's (invisible) background color is now set to
+    transparent. This allows using the alpha channel in
+    statusbar/tabbar colors to get a partially transparent
+    qutebrowser window on a setup which supports doing so.
+  * If QtWebEngine is compiled with PipeWire support and
+    libpipewire is installed, qutebrowser will now support screen
+    sharing on Wayland. Note that QtWebEngine 5.15.1 is needed.
+  * When :undo is used with a count, it now reopens the count-th
+    to last tab instead of the last one. The depth can instead be
+    passed as an argument, which is also completed.
+  * The default completion.timestamp_format now also shows the</comment>
+    <requestid>842006</requestid>
+  </revision>
 </revisionlist>
