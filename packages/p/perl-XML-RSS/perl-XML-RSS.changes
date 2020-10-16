@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 16 03:10:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-XML-RSS/Changes
+
+  1.62    2020-10-15
+      - dist.ini / weaver.ini / .tidyallrc / etc. cleanup
+          - Move to @SHLOMIF
+          - Inspired by Lady_Aleena.
+      - Sympotamtic fix for item/link nested inside custom tags:
+          - https://github.com/shlomif/perl-XML-RSS/issues/7
+          - Thanks to @jkramer for the bug report and a test case.
+
+-------------------------------------------------------------------
 Sun Aug 25 05:39:03 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.61
