@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 21:33:58 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
+
+- Version bump 0.3.11
+ * Update the prevalidation logic to check for valid sbd entries (jsc#SLE-4047)
+
+-------------------------------------------------------------------
 Thu Oct  8 20:47:37 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Version bump 0.3.10
