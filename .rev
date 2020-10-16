@@ -400,4 +400,50 @@
     optionally apply teffalump's chapter dedup and ordering code.</comment>
     <requestid>834724</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f63aa4806ceb9c21d9ca7bd36fd2018e</srcmd5>
+    <version>3.24.0</version>
+    <time>1602857712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.24.0:
+  - fiction.live - handle api returning non-int values for votes
+    PR gh#JimmXinu/FanFicFare#550, thanks muchtea
+  - adapter_scribblehubcom: Include author notes/news in chapters
+    unless in exclude_notes - thanks, Epicpkmn11!
+  - archive.hpfanfictalk.com -&gt; fanfictalk.com plus site changes
+    for same.
+  - Change ponyfictionarchive.net to https by default
+  - Making eFiction series name/desc collection work with more
+    sites.
+  - Apply CLI --json-meta to --list to see series name/desc.
+  - Fix adapter_storiesonlinenet login. Closes
+    gh#JimmXinu/FanFicFare#550
+  - Add AO3 Series 'status'.
+  - Don't save cover image size for dedup_img_files - Calibre
+    might replace it. Also fixes gh#JimmXinu/FanFicFare#550
+  - Better GUI for series anthology
+  - Adding eFiction series parsing attempt to base_adapter.
+  - ensure_text plugin-example.ini for py3
+  - New site: www.the-sietch.com XenForo2 site with weird URL
+    scheme. Closes gh#JimmXinu/FanFicFare#550
+  - Add get_urls_from_page() and get_series_from_page() to
+    adapters, add support. AO3 and TtH only so far.
+  - Add include_author_notes option (defaults on) to
+    adapter_royalroadcom Closes gh#JimmXinu/FanFicFare#550
+  - adapter_fictionlive: Handle stories with missing
+    contentRating, storyStatus &amp; support beta.fictionlive.com
+    domain, thanks HazelSh!
+  - Add setting remove_tags:script,style replacing script remove
+    hardcode, adding style remove. Closes
+    gh#JimmXinu/FanFicFare#550.
+  - New Site: novelupdates.cc (possible transition dest for
+    wuxiaworld.co?) - Thanks ElminsterAU!
+  - Fix for adapter_wuxiaworldsite not setting authorUrl.
+  - Add dedup_img_files option(default:false).
+    gh#JimmXinu/FanFicFare#550
+  - wuxiaworld.co and novelupdates.cc don't author links after
+    all?
+</comment>
+    <requestid>841986</requestid>
+  </revision>
 </revisionlist>
