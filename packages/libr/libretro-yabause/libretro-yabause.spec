@@ -39,7 +39,10 @@ front-end.
 
 %build
 cd yabause/src/libretro
-make
+make \
+%ifnarch %{ix86} x86_64
+  HAVE_SSE=0 \
+%endif
 
 %install
 mkdir -p %{buildroot}%{_libdir}/libretro
