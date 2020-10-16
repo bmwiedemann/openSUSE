@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 12:26:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix aarch64 and armv7 builds
+- Disable armv6 builds
+
+-------------------------------------------------------------------
+Thu Oct 15 12:14:34 UTC 2020 - guillaume.gardet@opensuse.org
+
+- Update to version 0~git20201011:
+  * Fix Makefile
+  * Add .gitlab-ci.yml
+  * Xcode wants his cariables initialized or won't link externs
+  * Fix GCC10 compilation (-fno-common fixes)
+  * Solve armv & armv8 compilation
+  * Use all possible optimizations.
+  * Fix dithering in AL+.
+  * Fix spurious RSP crashes.
+  * Update paraLLEl-RDP.
+  * Make proper note of texture filtering.
+  * Update parallel-rdp.
+  * Update parallel-RDP.
+  * Add more crop pixel options
+  * Update paraLLEl-RDP.
+  * Implement logging levels
+  * Update parallel-RDP.
+  * Update paraLLEl-RDP.
+  * Use same types as mesa and new headers shipped with gpu blobs.
+
+-------------------------------------------------------------------
 Sun Jun 07 11:09:59 UTC 2020 - i@guoyunhe.me
 
 - Add aarch64 build

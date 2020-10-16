@@ -17,7 +17,7 @@
 
 
 Name:           libretro-parallel-n64
-Version:        0~git20200529
+Version:        0~git20201011
 Release:        0
 Summary:        Parallel N64 libretro core for Nintendo 64 emulation
 License:        GPL-3.0-only
@@ -29,6 +29,8 @@ BuildRequires:  Mesa-devel
 BuildRequires:  gcc-c++
 BuildRequires:  make
 
+ExcludeArch:    armv6l armv6hl
+
 %description
 Optimized/rewritten Nintendo 64 emulator made specifically for Libretro.
 Originally based on Mupen64 Plus.
@@ -37,6 +39,7 @@ Originally based on Mupen64 Plus.
 %setup -q
 
 %build
+sed -i "s#aarch64-linux-gnu-##" Makefile
 # https://github.com/libretro/libretro-super/blob/master/recipes/linux
 %ifarch x86_64
     make WITH_DYNAREC=x86_64 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
@@ -45,10 +48,10 @@ Originally based on Mupen64 Plus.
     make WITH_DYNAREC=x86 HAVE_PARALLEL_RSP=1 HAVE_THR_AL=1
 %endif
 %ifarch %arm
-    make WITH_DYNAREC=arm HAVE_THR_AL=1
+    make WITH_DYNAREC=arm HAVE_THR_AL=1 platform=classic_armv7_a7
 %endif
 %ifarch aarch64
-    make WITH_DYNAREC=aarch64 HAVE_THR_AL=1
+    make WITH_DYNAREC=aarch64 HAVE_THR_AL=1 platform=armv8
 %endif
 
 %install
