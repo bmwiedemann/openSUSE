@@ -17,7 +17,7 @@
 
 
 Name:           libretro-ppsspp
-Version:        0~git20200813
+Version:        0~git20201015
 Release:        0
 Summary:        PPSSPP libretro core for PSP emulation
 License:        GPL-2.0-only
@@ -28,6 +28,14 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libswscale)
 
 %description
 A PSP emulator for Android, Windows, Mac and Linux, written in C++.
@@ -40,7 +48,7 @@ This package is for RetroArch/libretro front-end.
 %build
 mkdir build
 cd build
-cmake .. -DLIBRETRO=ON -DCMAKE_BUILD_TYPE=Release
+cmake .. -DLIBRETRO=ON -DCMAKE_BUILD_TYPE=Release -DUSE_SYSTEM_FFMPEG=ON
 make
 
 %install
