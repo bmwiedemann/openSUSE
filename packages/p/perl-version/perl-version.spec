@@ -17,7 +17,7 @@
 
 
 Name:           perl-version
-Version:        0.9927
+Version:        0.9928
 Release:        0
 %define cpan_name version
 Summary:        Perl extension for Version Objects
