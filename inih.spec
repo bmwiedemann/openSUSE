@@ -1,7 +1,7 @@
 #
 # spec file for package inih
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           inih
-Version:        51
+Version:        52
 Release:        0
 Summary:        Simple .INI file parser in C, good for embedded systems
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/benhoyt/inih
-Source:         https://github.com/benhoyt/inih/archive/r51.tar.gz#/inih-r51.tar.gz
+URL:            https://github.com/benhoyt/inih
+Source:         https://github.com/benhoyt/inih/archive/r%{version}.tar.gz#/inih-r%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -69,8 +69,6 @@ bash -e cpptest.sh
 
 %install
 %meson_install
-mv %{buildroot}%{_libdir}/libinih.so.49 %{buildroot}%{_libdir}/libinih.so.0
-mv %{buildroot}%{_libdir}/libINIReader.so.49 %{buildroot}%{_libdir}/libINIReader.so.0
 
 %post -n libinih0 -p /sbin/ldconfig
 %postun -n libinih0 -p /sbin/ldconfig
@@ -93,4 +91,3 @@ mv %{buildroot}%{_libdir}/libINIReader.so.49 %{buildroot}%{_libdir}/libINIReader
 %license LICENSE.txt
 
 %changelog
-
