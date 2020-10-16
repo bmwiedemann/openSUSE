@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 15 19:10:02 UTC 2020 - Matthias Bach <marix@marix.org> - 52
+
+- Update to version 52
+  * Add INI_CUSTOM_ALLOCATOR to allow using a custom memory
+    allocator.
+- Drop workaround for library name not matching its soname as this
+  was fixed upstream.
+
+-------------------------------------------------------------------
 Sat Sep 19 15:31:37 UTC 2020 - Matthias Bach <marix@marix.org> - 51
 
 - Following packaging guidelines, exclude static libraries again.
