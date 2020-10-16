@@ -19,7 +19,7 @@
 # See also https://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           salt-shaptools
-Version:        0.3.10+git.1601276788.1869cbd
+Version:        0.3.10+git.1602832357.46de636
 Release:        0
 Summary:        Salt modules and states for SAP Applications and SLE-HA components management
 

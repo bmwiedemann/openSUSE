@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 15 07:14:20 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Improve extract_pydbapi to check recursively in subfolders 
+
+-------------------------------------------------------------------
 Thu Sep 24 12:42:59 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Implement a new state to set the ENSA version grains data 
