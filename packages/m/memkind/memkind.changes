@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:58:33 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Add Buildrequires pkg-config to generate pkg-config provides
+
+-------------------------------------------------------------------
 Tue Aug 18 08:19:30 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable memkind builds for ppc64, ppc64le and s390x

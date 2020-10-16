@@ -27,6 +27,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  pkg-config
 BuildRequires:  unzip
 %if %{defined suse_version}
 BuildRequires:  libnuma-devel

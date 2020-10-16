@@ -89,4 +89,12 @@ numbers.
     <comment></comment>
     <requestid>828259</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>58532506433ff4d73ae7931b1754855e</srcmd5>
+    <version>1.10.0</version>
+    <time>1602857643</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Buildrequires pkg-config to generate pkg-config provides (forwarded request 841903 from cvoegl)</comment>
+    <requestid>841930</requestid>
+  </revision>
 </revisionlist>
