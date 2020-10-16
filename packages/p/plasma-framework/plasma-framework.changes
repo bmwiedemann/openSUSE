@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 19:53:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to improve krunner responsiveness on wayland (kde#426746):
+  * 0001-BusyIndicator-Do-not-rotate-when-invisible.patch
+
+-------------------------------------------------------------------
 Mon Oct  5 08:33:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.75.0
