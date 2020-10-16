@@ -1,0 +1,8 @@
+---
+license: Apache-2.0
+preamble: |-
+  BuildRequires:  perl(IO::Socket::SSL)
+  BuildRequires:  perl(Log::Any::Adapter::Callback)
+  BuildRequires:  perl(Test::Deep)
+  BuildRequires:  perl(Test::Exception)
+  BuildRequires:  perl(Test::SharedFork)
