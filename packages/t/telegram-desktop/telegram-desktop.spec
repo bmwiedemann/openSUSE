@@ -136,7 +136,6 @@ Requires:       icu
 Requires:       openssl
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
-ExclusiveArch:  x86_64
 
 %description
 Telegram is a non-profit cloud-based instant messaging service.
