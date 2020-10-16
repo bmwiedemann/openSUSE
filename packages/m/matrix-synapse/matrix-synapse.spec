@@ -19,9 +19,11 @@
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 %bcond_without email_notifs
 %bcond_without postgres
+%bcond_with    oidc
 %bcond_without saml
 %bcond_without url_preview
 %bcond_without jwt
+%bcond_with    redis
 # missing deps
 %bcond_with    opentracing
 # matrix-synapse-ldap isn't packaged on openSUSE.
@@ -46,7 +48,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.20.1
+Version:        1.21.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -154,6 +156,10 @@ BuildRequires:  python3-txacme >= 0.9.2
 BuildRequires:  python3-pysaml2 >= 4.5.0
 %requires_eq    python3-pysaml2
 %endif
+%if %{with oidc}
+BuildRequires:  python3-authlib >= 0.15.1
+%requires_eq    python3-authlib
+%endif
 %if %{with url_preview}
 BuildRequires:  python3-lxml >= 3.5.0
 %requires_eq    python3-lxml
@@ -171,6 +177,12 @@ BuildRequires:  python3-jaeger-client >= 4.0.0
 %requires_eq    python3-jaeger-client
 BuildRequires:  python3-opentracing   >= 2.2.0
 %requires_eq    python3-opentracing
+%endif
+%if %{with redis}
+BuildRequires:  python3-txredisapi >= 1.4.7
+%requires_eq    python3-txredisapi
+BuildRequires:  python3-hiredis
+%requires_eq    python3-hiredis
 %endif
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.

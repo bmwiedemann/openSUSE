@@ -171,4 +171,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>837221</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ddf8ef99ebb055231b486394827a5782</srcmd5>
+    <version>1.21.2</version>
+    <time>1602857619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21.2</comment>
+    <requestid>841979</requestid>
+  </revision>
 </revisionlist>
