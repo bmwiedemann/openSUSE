@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:28:21 UTC 2020 - guillaume.gardet@opensuse.org
+
+- Update to version 0~git20201013:
+  * Remove broken link
+  * revert some changes to naomi inputs [flyinghead]
+  * fix savestates [flyinghead]
+  * sort out aarch64 makefile weirdness
+  * add missing makefile code to select aarch64 dynarec
+  * Backport partial changes here https://github.com/flyinghead/flycast/commit/6402c8e7ed0d71ecd636e4812f8faeb3b6de66ed
+  * Backport https://github.com/flyinghead/flycast/commit/fee28194fbc3f2ba426cad1d78f8aae588d8d63b
+  * Rebase Naomi code against master - let us know if changes need to be applied
+  * Backport 'Fix wldkickspw crash with invalid TA data'
+  * arm32: support for 64b immediate memory reads
+  * arm32: support for 64b immediate memory reads
+  * Improve off-screen reload with lightgun
+  * Add support for Lightgun for Lupin The Shooting
+  * For whatever reason on newer Nvidia drivers, we can't allocate pixel buffer size at 2GB or 4GB - we can allocate 2GB by changing size to 0x7ff00000u for now
+  * [Switch] Add -fcommon
+  * Updated Makefile with logic to force -O2 on classic ARM platforms
+  * Fix OSX build
+  * Fix build
+  * Ghost commit
+  * Revert "replace Array<> with std::array. savestate: save correct TA ctx"
+  * handle some palette textures on the GPU. vulkan: some linear tiling
+  * protect P4 vram to detect texture updates
+  * replace Array<> with std::array. savestate: save correct TA ctx
+  * savestate: save sq_remap used for store queues when mini-mmu is on
+  * gl: don't re-upload buffers to gpu after drawing vmu or xhair
+  * savestate: Save current TA context. Save AW cart state.
+  * various aica/arm/misc fixes
+  * naomi: fix wrungp "no drive board" regression
+  * support for absolute path .m3u playlists
+  * maple: don't overrun device strings
+  * maple: create devs after loading the game. aw: better analog mapping
+  * workaround for context logic
+  * div32: get rid of edge cases. simplify
+  * Some logging optimizations
+
+-------------------------------------------------------------------
+Thu Oct 15 13:27:47 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64
+
+-------------------------------------------------------------------
 Thu Aug 20 14:30:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on armv7 and exclude armv6 as it is unsupported

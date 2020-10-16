@@ -17,7 +17,7 @@
 
 
 Name:           libretro-flycast
-Version:        0~git20200609
+Version:        0~git20201013
 Release:        0
 Summary:        Flycast libretro core for Sega Dreamcast emulation
 License:        GPL-3.0-only
@@ -39,7 +39,8 @@ RetroArch/libretro front-end.
 
 %build
 %ifarch aarch64
-export platform=classic_armv8_a35
+export platform=arm64
+export CC_AS=gcc
 %endif
 %ifarch %arm
 export ARCH=arm
