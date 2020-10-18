@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:22:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Escape rpm command %%expand when used in comment.
+
+-------------------------------------------------------------------
+Tue Sep 22 20:43:59 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
+
+- Update to 1.1.1h
+  * Disallow explicit curve parameters in verifications chains when X509_V_FLAG_X509_STRICT is used
+  * Enable 'MinProtocol' and 'MaxProtocol' to configure both TLS and DTLS contexts
+- refresh openssl-fips_selftest_upstream_drbg.patch
+  * DRBG internals got renamed back:
+    reseed_gen_counter  -> generate_counter
+    reseed_prop_counter -> reseed_counter
+
+-------------------------------------------------------------------
 Fri May 15 09:51:22 UTC 2020 - Vítězslav Čížek <vcizek@suse.com>
 
 - Limit the DRBG selftests to not deplete entropy (bsc#1165274)

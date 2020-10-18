@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1g
+Version:        1.1.1h
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -263,7 +263,7 @@ cp %{SOURCE5} .
 # invalidates a HMAC that may have been created earlier.
 # solution: create the hashes _after_ the macro runs.
 #
-# this shows up earlier because otherwise the %expand of
+# this shows up earlier because otherwise the %%expand of
 # the macro is too late.
 # remark: This is the same as running
 #   openssl dgst -sha256 -hmac 'ppaksykemnsecgtsttplmamstKMEs'

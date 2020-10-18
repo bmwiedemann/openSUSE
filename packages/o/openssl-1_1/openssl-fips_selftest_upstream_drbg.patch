@@ -419,15 +419,15 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +    /* Instantiate again with valid data */
 +    if (!instantiate(drbg, td, &t))
 +        goto err;
-+    reseed_counter_tmp = drbg->reseed_gen_counter;
-+    drbg->reseed_gen_counter = drbg->reseed_interval;
++    reseed_counter_tmp = drbg->generate_counter;
++    drbg->generate_counter = drbg->reseed_interval;
 +
 +    /* Generate output and check entropy has been requested for reseed */
 +    t.entropycnt = 0;
 +    if (!RAND_DRBG_generate(drbg, buff, td->exlen, 0,
 +                                      td->adin, td->adinlen)
 +            || t.entropycnt != 1
-+            || drbg->reseed_gen_counter != reseed_counter_tmp + 1
++            || drbg->generate_counter != reseed_counter_tmp + 1
 +            || !uninstantiate(drbg))
 +        goto err;
 +
@@ -444,15 +444,15 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +    /* Test reseed counter works */
 +    if (!instantiate(drbg, td, &t))
 +        goto err;
-+    reseed_counter_tmp = drbg->reseed_gen_counter;
-+    drbg->reseed_gen_counter = drbg->reseed_interval;
++    reseed_counter_tmp = drbg->generate_counter;
++    drbg->generate_counter = drbg->reseed_interval;
 +
 +    /* Generate output and check entropy has been requested for reseed */
 +    t.entropycnt = 0;
 +    if (!RAND_DRBG_generate(drbg, buff, td->exlen, 0,
 +                                      td->adin, td->adinlen)
 +            || t.entropycnt != 1
-+            || drbg->reseed_gen_counter != reseed_counter_tmp + 1
++            || drbg->generate_counter != reseed_counter_tmp + 1
 +            || !uninstantiate(drbg))
 +        goto err;
 +
@@ -642,14 +642,14 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +     */
 +
 +    /* Test whether seed propagation is enabled */
-+    if (master->reseed_prop_counter == 0
-+        || public->reseed_prop_counter == 0
-+        || private->reseed_prop_counter == 0)
++    if (master->reseed_counter == 0
++        || public->reseed_counter == 0
++        || private->reseed_counter == 0)
 +        return 0;
 +
 +    /* Check whether the master DRBG's reseed counter is the largest one */
-+    if (public->reseed_prop_counter > master->reseed_prop_counter
-+        || private->reseed_prop_counter > master->reseed_prop_counter)
++    if (public->reseed_counter > master->reseed_counter
++        || private->reseed_counter > master->reseed_counter)
 +        return 0;
 +
 +    /*
@@ -697,8 +697,8 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +
 +    if (expect_success == 1) {
 +        /* Test whether all three reseed counters are synchronized */
-+        if (public->reseed_prop_counter != master->reseed_prop_counter
-+            || private->reseed_prop_counter != master->reseed_prop_counter)
++        if (public->reseed_counter != master->reseed_counter
++            || private->reseed_counter != master->reseed_counter)
 +            return 0;
 +
 +        /* Test whether reseed time of master DRBG is set correctly */
@@ -816,7 +816,7 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +     * Test whether the public and private DRBG are both reseeded when their
 +     * reseed counters differ from the master's reseed counter.
 +     */
-+    master->reseed_prop_counter++;
++    master->reseed_counter++;
 +    if (!test_drbg_reseed(1, master, public, private, 0, 1, 1, 0))
 +        goto error;
 +    reset_drbg_hook_ctx();
@@ -825,8 +825,8 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +     * Test whether the public DRBG is reseeded when its reseed counter differs
 +     * from the master's reseed counter.
 +     */
-+    master->reseed_prop_counter++;
-+    private->reseed_prop_counter++;
++    master->reseed_counter++;
++    private->reseed_counter++;
 +    if (!test_drbg_reseed(1, master, public, private, 0, 1, 0, 0))
 +        goto error;
 +    reset_drbg_hook_ctx();
@@ -835,8 +835,8 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +     * Test whether the private DRBG is reseeded when its reseed counter differs
 +     * from the master's reseed counter.
 +     */
-+    master->reseed_prop_counter++;
-+    public->reseed_prop_counter++;
++    master->reseed_counter++;
++    public->reseed_counter++;
 +    if (!test_drbg_reseed(1, master, public, private, 0, 0, 1, 0))
 +        goto error;
 +    reset_drbg_hook_ctx();
@@ -869,7 +869,7 @@ Index: openssl-1.1.1g/crypto/fips/drbgtest.c
 +     * Test whether none of the DRBGs is reseed if the master fails to reseed
 +     */
 +    master_ctx.fail = 1;
-+    master->reseed_prop_counter++;
++    master->reseed_counter++;
 +    RAND_add(rand_add_buf, sizeof(rand_add_buf), sizeof(rand_add_buf));
 +    if (!test_drbg_reseed(0, master, public, private, 0, 0, 0, 0))
 +        goto error;
