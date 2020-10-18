@@ -290,4 +290,12 @@ Advantages:
     <comment>submit new version 4.3.3</comment>
     <requestid>822225</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4de88ddf6ea8955060ce480c2aaf2e20</srcmd5>
+    <version>4.3.6</version>
+    <time>1603030835</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.6</comment>
+    <requestid>840429</requestid>
+  </revision>
 </revisionlist>

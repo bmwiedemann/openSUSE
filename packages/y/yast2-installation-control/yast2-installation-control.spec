@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-installation-control
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-installation-control
-Version:        4.3.3
+Version:        4.3.6
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -26,7 +26,7 @@ Source0:        %{name}-%{version}.tar.bz2
 Summary:        YaST2 - RNG schema for installation control files
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-installation-control
+URL:            https://github.com/yast/yast-installation-control
 
 BuildRequires:  yast2-devtools >= 3.1.10
 # smoke test during build
