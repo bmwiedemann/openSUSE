@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses-rest-api
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_version 13
+%define so_version 14
 %define bin_name %{name}%{so_version}
 %define libyui_devel_version libyui-devel >= 3.8.0
 
 Name:           libyui-ncurses-rest-api
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Libyui - The REST API plugin for the Ncurses frontend
 License:        LGPL-2.1-only OR LGPL-3.0-only
