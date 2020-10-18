@@ -1,7 +1,7 @@
 #
 # spec file for package pam_u2f
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pam_u2f
-Version:        1.0.8
+Version:        1.1.0
 Release:        0
 Summary:        U2F authentication integration into PAM
 License:        BSD-2-Clause
@@ -28,8 +28,8 @@ Source1:        https://developers.yubico.com/pam-u2f/Releases/%{name}-%{version
 Source2:        baselib.conf
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(u2f-host)
-BuildRequires:  pkgconfig(u2f-server)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libfido2)
 
 %description
 The PAM U2F module provides a way to integrate the Yubikey
@@ -40,11 +40,13 @@ authentication infrastructure.
 %setup -q
 
 %build
-%configure --with-pam-dir=/%{_lib}/security --disable-static --disable-silent-rules
+%configure --with-pam-dir=/%{_lib}/security \
+           --disable-static
 make %{?_smp_mflags}
 
 %install
 %make_install %{?_smp_mflags}
+
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files

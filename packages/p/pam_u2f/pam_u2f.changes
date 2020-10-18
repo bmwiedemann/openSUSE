@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 15 17:59:59 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 1.1.0
+  * Add support to FIDO2 (move from libu2f-host+libu2f-server to libfido2)
+  * Add support to User Verification
+  * Add support to PIN Verification
+  * Add support to Resident Credentials
+  * Add support to SSH credential format
+- Drop libu2f-host and libu2f-server BuildRequires
+- Add BuildRequires on pkgconfig(libfido2)
+- Add explicit BuildRequires on pkgconfig(libcrypto), this was being
+  pulled down implicitly before.
+
+-------------------------------------------------------------------
 Tue Jun  4 13:19:36 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
 - Version 1.0.8 (released 2019-06-04)
