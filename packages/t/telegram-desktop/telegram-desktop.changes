@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 16 15:03:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Lower constraints on Arm
+
+-------------------------------------------------------------------
 Thu Oct  15 15:09:53 UTC 2020 - Adrian Campos Garrido <adriancampos@teachelp.com>
 
 - Delete the limitation and build for all platforms including aarch64 

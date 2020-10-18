@@ -8,4 +8,19 @@
       <size unit="M">2048</size>
     </memoryperjob>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <arch>armv7l</arch>
+      <arch>armv6l</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+      <memoryperjob>
+        <size unit="M">1024</size>
+      </memoryperjob>
+    </hardware>
+  </overwrite>
 </constraints>
