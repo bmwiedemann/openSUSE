@@ -20,7 +20,7 @@
 # having a hard requirement on this package
 %define helper_version 6
 Name:           kmozillahelper
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        Helper for KDE Firefox Integration
 License:        MIT

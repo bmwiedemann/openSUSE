@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 17 18:27:04 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.0.6:
+  * Exclude kmozillahelper from session management (boo#1176852)
+
+-------------------------------------------------------------------
 Fri Jul 17 20:14:18 UTC 2020 - Tom Warnke <tom@toromtomtom.com>
 
 - Supplement not only MozillaFirefox, but also MozillaThunderbird 
