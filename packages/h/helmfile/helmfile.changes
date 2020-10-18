@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct 18 08:48:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.130.3: Bump vals (#1537)
+  * 563fce4 (HEAD, tag: v0.130.3, origin/master, origin/HEAD, master)
+    Bump vals (#1537)
+  * b287101 Update USERS.md (#1535)
+
+- v0.130.2: Fix concurrent-map-iteration-and-write errors while running release h…
+  * ab9fb2c (HEAD, tag: v0.130.2, origin/master, origin/HEAD, master)
+    Fix concurrent-map-iteration-and-write errors while running
+    release hooks (#1534)
+  * c170b5a Minor tweaks for helmfile write-values (#1533)
+  * d9286ed Fix intermittent failures while building deps on local
+    chart (#1532)
+  * 3018e82 Fix multiple --set in --args messed up in helmfile
+    template (#1529)
+  * 34acf14 Bump chartify to v0.4.3 (#1528)
+  * 5d8eba9 Append --force-update for specific helm versions. (#1494)
+  * b284b7b chore: add SettleMint to the USERS list (#1516)
+  * b293ac1 Fix typo (#1523)
+  * 8d9d635 Clarify namespace prefix in needs (#1500)
+
+-------------------------------------------------------------------
+Tue Oct  6 07:19:24 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.130.1: Fix: forceNamespace needs shouldRun is true (#1510)
+  * 954673d (HEAD, tag: v0.130.1, origin/master, origin/HEAD, master)
+    Fix: forceNamespace needs shouldRun is true (#1510)
+
+-------------------------------------------------------------------
+Tue Sep 29 10:41:39 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.130.0: Add support for ChartCenter (#1492)
+  * 942b9a6 (HEAD, tag: v0.130.0, origin/master, origin/HEAD, master)
+    Add support for ChartCenter (#1492)
+
+-------------------------------------------------------------------
 Mon Sep 21 10:57:27 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.129.4: Enable `helmfile test` testing only enabled and selected
