@@ -1,4 +1,79 @@
 --------------------------------------------------------------------
+Wed Oct 14 23:40:13 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.3.50
+
+--------------------------------------------------------------------
+Wed Oct 14 06:41:32 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.3.49
+
+--------------------------------------------------------------------
+Tue Oct 13 16:34:19 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.3.48
+
+--------------------------------------------------------------------
+Tue Oct 13 15:19:03 UTC 2020 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Oct 13 15:19:02 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Oct 13 13:32:40 UTC 2020 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Tue Oct 13 10:51:22 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#773
+- updated pot and po files
+- 4.3.47
+
+--------------------------------------------------------------------
+Tue Oct 13 08:51:20 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#772
+- added support for tmpfs (jsc#SLE11308)
+- extended bindings
+- added unit test
+- added integration tests
+- 4.3.46
+
+--------------------------------------------------------------------
+Mon Oct 12 08:16:53 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#771
+- improved error messages in testsuite
+- coding style
+- 4.3.45
+
+--------------------------------------------------------------------
+Thu Oct 8 10:04:40 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#770
+- added utility function to get names of used features
+- coding style
+- used sdc instead of sdb or sdd in some tests
+- extended documentation
+- 4.3.44
+
+--------------------------------------------------------------------
+Thu Oct 1 07:41:01 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#769
+- fixed exception message
+- 4.3.43
+
+--------------------------------------------------------------------
 Wed Sep 16 11:18:14 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#768
