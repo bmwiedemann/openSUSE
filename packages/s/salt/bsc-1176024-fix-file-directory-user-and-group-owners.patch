@@ -1,0 +1,112 @@
+From 8973063f6ad24fd5b3788292aa8cc341221d7fb5 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
+Date: Tue, 6 Oct 2020 12:36:41 +0300
+Subject: [PATCH] bsc#1176024: Fix file/directory user and group
+ ownership containing UTF-8 characters (#275)
+
+* Fix check_perm typos of file module
+
+* Fix UTF8 support for user/group ownership operations with file module and state
+
+* Fix UTF8 support for user/group ownership operations with file module and state
+
+Co-authored-by: Victor Zhestkov <vzhestkov@vz-thinkpad.vzhestkov.net>
+---
+ salt/modules/file.py | 18 +++++++++---------
+ salt/states/file.py  |  4 ++--
+ 2 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/salt/modules/file.py b/salt/modules/file.py
+index b5b70e2d4c..0b516aff05 100644
+--- a/salt/modules/file.py
++++ b/salt/modules/file.py
+@@ -256,7 +256,7 @@ def group_to_gid(group):
+     try:
+         if isinstance(group, int):
+             return group
+-        return grp.getgrnam(group).gr_gid
++        return grp.getgrnam(salt.utils.stringutils.to_str(group)).gr_gid
+     except KeyError:
+         return ''
+ 
+@@ -344,7 +344,7 @@ def user_to_uid(user):
+     try:
+         if isinstance(user, int):
+             return user
+-        return pwd.getpwnam(user).pw_uid
++        return pwd.getpwnam(salt.utils.stringutils.to_str(user)).pw_uid
+     except KeyError:
+         return ''
+ 
+@@ -4574,7 +4574,7 @@ def check_perms(name, ret, user, group, mode, attrs=None, follow_symlinks=False)
+         if (salt.utils.platform.is_windows() and
+                 user_to_uid(user) != user_to_uid(perms['luser'])
+             ) or (
+-            not salt.utils.platform.is_windows() and user != perms['luser']
++            not salt.utils.platform.is_windows() and salt.utils.stringutils.to_str(user) != perms['luser']
+         ):
+             perms['cuser'] = user
+ 
+@@ -4584,7 +4584,7 @@ def check_perms(name, ret, user, group, mode, attrs=None, follow_symlinks=False)
+         if (salt.utils.platform.is_windows() and
+                 group_to_gid(group) != group_to_gid(perms['lgroup'])
+             ) or (
+-                not salt.utils.platform.is_windows() and group != perms['lgroup']
++                not salt.utils.platform.is_windows() and salt.utils.stringutils.to_str(group) != perms['lgroup']
+         ):
+             perms['cgroup'] = group
+ 
+@@ -4615,7 +4615,7 @@ def check_perms(name, ret, user, group, mode, attrs=None, follow_symlinks=False)
+                 user != ''
+             ) or (
+             not salt.utils.platform.is_windows() and
+-                user != get_user(name, follow_symlinks=follow_symlinks) and
++                salt.utils.stringutils.to_str(user) != get_user(name, follow_symlinks=follow_symlinks) and
+                 user != ''
+         ):
+             if __opts__['test'] is True:
+@@ -4633,10 +4633,10 @@ def check_perms(name, ret, user, group, mode, attrs=None, follow_symlinks=False)
+         if (salt.utils.platform.is_windows() and
+                 group_to_gid(group) != group_to_gid(
+                     get_group(name, follow_symlinks=follow_symlinks)) and
+-                user != '') or (
++                group != '') or (
+             not salt.utils.platform.is_windows() and
+-                group != get_group(name, follow_symlinks=follow_symlinks) and
+-                user != ''
++                salt.utils.stringutils.to_str(group) != get_group(name, follow_symlinks=follow_symlinks) and
++                group != ''
+         ):
+             if __opts__['test'] is True:
+                 ret['changes']['group'] = group
+@@ -4644,7 +4644,7 @@ def check_perms(name, ret, user, group, mode, attrs=None, follow_symlinks=False)
+                 ret['result'] = False
+                 ret['comment'].append('Failed to change group to {0}'
+                                       .format(group))
+-        elif 'cgroup' in perms and user != '':
++        elif 'cgroup' in perms and group != '':
+             ret['changes']['group'] = group
+ 
+     # Mode changes if needed
+diff --git a/salt/states/file.py b/salt/states/file.py
+index 0e925bb2ed..f21e0d12fc 100644
+--- a/salt/states/file.py
++++ b/salt/states/file.py
+@@ -960,11 +960,11 @@ def _check_dir_meta(name,
+         changes['directory'] = 'new'
+         return changes
+     if (user is not None
+-            and user != stats['user']
++            and salt.utils.stringutils.to_str(user) != stats['user']
+             and user != stats.get('uid')):
+         changes['user'] = user
+     if (group is not None
+-            and group != stats['group']
++            and salt.utils.stringutils.to_str(group) != stats['group']
+             and group != stats.get('gid')):
+         changes['group'] = group
+     # Normalize the dir mode
+-- 
+2.28.0
+
+

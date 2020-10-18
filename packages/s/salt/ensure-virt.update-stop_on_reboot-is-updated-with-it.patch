@@ -1,0 +1,51 @@
+From 173444cecc1e7b4867570f1f8764db1b7f82061e Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Wed, 14 Oct 2020 12:39:16 +0200
+Subject: [PATCH] Ensure virt.update stop_on_reboot is updated with its
+ default value (#280)
+
+While all virt.update properties default values should not be used when
+updating the XML definition, the stop_on_reboot default value (False)
+needs to be passed still or the user will never be able to update with
+this value.
+---
+ salt/modules/virt.py            | 1 +
+ tests/unit/modules/test_virt.py | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 87ab7ca12d..9bc7bc6093 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -2742,6 +2742,7 @@ def update(
+     ]
+ 
+     data = {k: v for k, v in six.iteritems(locals()) if bool(v)}
++    data["stop_on_reboot"] = stop_on_reboot
+     if boot_dev:
+         data["boot_dev"] = {i + 1: dev for i, dev in enumerate(boot_dev.split())}
+     need_update = salt.utils.xmlutil.change_xml(
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index ca5e80d2d2..fbc03cf7a6 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -1778,6 +1778,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+               <memory unit='KiB'>1048576</memory>
+               <currentMemory unit='KiB'>1048576</currentMemory>
+               <vcpu placement='auto'>1</vcpu>
++              <on_reboot>restart</on_reboot>
+               <os>
+                 <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
+                 <boot dev="hd"/>
+@@ -2350,6 +2351,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+               <memory unit='KiB'>1048576</memory>
+               <currentMemory unit='KiB'>1048576</currentMemory>
+               <vcpu placement='auto'>1</vcpu>
++              <on_reboot>restart</on_reboot>
+               <os>
+                 <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
+               </os>
+-- 
+2.28.0
+
+

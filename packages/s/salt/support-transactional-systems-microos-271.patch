@@ -1,0 +1,3145 @@
+From 479ec4e978d81da75e45e2ead3193ca96e075753 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 5 Oct 2020 16:32:44 +0200
+Subject: [PATCH] Support transactional systems (MicroOS) (#271)
+
+* Add rebootmgr module
+
+* Add transactional_update module
+
+* chroot: add chroot detector
+
+* systemd: add offline mode detector
+
+* transactional_update: add pending_transaction detector
+
+* extra: add EFI and transactional grains
+
+* transactional_update: add call, apply_, sls & highstate
+
+* transactional_update: add documentation
+
+* transactional_update: add executor
+
+* Add changelog entry 58519.added
+
+Closes #58519
+
+* transactional_update: update the cleanups family
+
+* transactional_update: add activate_transaction param
+
+* transactional_update: skip tests on Windows
+---
+ changelog/58519.added                         |    1 +
+ doc/ref/executors/all/index.rst               |    1 +
+ .../salt.executors.transactional_update.rst   |    6 +
+ doc/ref/modules/all/index.rst                 |    2 +
+ .../modules/all/salt.modules.rebootmgr.rst    |    5 +
+ .../all/salt.modules.transactional_update.rst |    5 +
+ salt/executors/transactional_update.py        |  126 ++
+ salt/grains/extra.py                          |   29 +
+ salt/modules/chroot.py                        |   39 +-
+ salt/modules/rebootmgr.py                     |  357 +++++
+ salt/modules/systemd_service.py               |   22 +-
+ salt/modules/transactional_update.py          | 1270 +++++++++++++++++
+ salt/utils/systemd.py                         |   22 +
+ tests/unit/modules/test_chroot.py             |   15 +
+ tests/unit/modules/test_rebootmgr.py          |  304 ++++
+ .../unit/modules/test_transactional_update.py |  683 +++++++++
+ 16 files changed, 2882 insertions(+), 5 deletions(-)
+ create mode 100644 changelog/58519.added
+ create mode 100644 doc/ref/executors/all/salt.executors.transactional_update.rst
+ create mode 100644 doc/ref/modules/all/salt.modules.rebootmgr.rst
+ create mode 100644 doc/ref/modules/all/salt.modules.transactional_update.rst
+ create mode 100644 salt/executors/transactional_update.py
+ create mode 100644 salt/modules/rebootmgr.py
+ create mode 100644 salt/modules/transactional_update.py
+ create mode 100644 tests/unit/modules/test_rebootmgr.py
+ create mode 100644 tests/unit/modules/test_transactional_update.py
+
+diff --git a/changelog/58519.added b/changelog/58519.added
+new file mode 100644
+index 0000000000..1cc8d7dc74
+--- /dev/null
++++ b/changelog/58519.added
+@@ -0,0 +1 @@
++Add support for transactional systems, like openSUSE MicroOS
+\ No newline at end of file
+diff --git a/doc/ref/executors/all/index.rst b/doc/ref/executors/all/index.rst
+index 1f26a86fc3..4cd430d8e3 100644
+--- a/doc/ref/executors/all/index.rst
++++ b/doc/ref/executors/all/index.rst
+@@ -14,3 +14,4 @@ executors modules
+     docker
+     splay
+     sudo
++    transactional_update
+diff --git a/doc/ref/executors/all/salt.executors.transactional_update.rst b/doc/ref/executors/all/salt.executors.transactional_update.rst
+new file mode 100644
+index 0000000000..17f00b2d27
+--- /dev/null
++++ b/doc/ref/executors/all/salt.executors.transactional_update.rst
+@@ -0,0 +1,6 @@
++salt.executors.transactional_update module
++==========================================
++
++.. automodule:: salt.executors.transactional_update
++    :members:
++
+diff --git a/doc/ref/modules/all/index.rst b/doc/ref/modules/all/index.rst
+index 8e1bf2ecf1..ec5f4b9cd9 100644
+--- a/doc/ref/modules/all/index.rst
++++ b/doc/ref/modules/all/index.rst
+@@ -371,6 +371,7 @@ execution modules
+     rbac_solaris
+     rbenv
+     rdp
++    rebootmgr
+     redismod
+     reg
+     rest_pkg
+@@ -457,6 +458,7 @@ execution modules
+     tls
+     tomcat
+     trafficserver
++    transactional_update
+     travisci
+     tuned
+     twilio_notify
+diff --git a/doc/ref/modules/all/salt.modules.rebootmgr.rst b/doc/ref/modules/all/salt.modules.rebootmgr.rst
+new file mode 100644
+index 0000000000..22240080b0
+--- /dev/null
++++ b/doc/ref/modules/all/salt.modules.rebootmgr.rst
+@@ -0,0 +1,5 @@
++salt.modules.rebootmgr module
++=============================
++
++.. automodule:: salt.modules.rebootmgr
++    :members:
+diff --git a/doc/ref/modules/all/salt.modules.transactional_update.rst b/doc/ref/modules/all/salt.modules.transactional_update.rst
+new file mode 100644
+index 0000000000..2f15b95ad4
+--- /dev/null
++++ b/doc/ref/modules/all/salt.modules.transactional_update.rst
+@@ -0,0 +1,5 @@
++salt.modules.transactional_update module
++========================================
++
++.. automodule:: salt.modules.transactional_update
++    :members:
+diff --git a/salt/executors/transactional_update.py b/salt/executors/transactional_update.py
+new file mode 100644
+index 0000000000..ef7d92bc05
+--- /dev/null
++++ b/salt/executors/transactional_update.py
+@@ -0,0 +1,126 @@
++"""
++Transactional executor module
++
++.. versionadded:: TBD
++
++"""
++
++import salt.utils.path
++
++# Functions that are mapped into an equivalent one in
++# transactional_update module
++DELEGATION_MAP = {
++    "state.single": "transactional_update.single",
++    "state.sls": "transactional_update.sls",
++    "state.apply": "transactional_update.apply",
++    "state.highstate": "transactional_update.highstate",
++}
++
++# By default, all modules and functions are executed outside the
++# transaction.  The next two sets will enumerate the exceptions that
++# will be routed to transactional_update.call()
++DEFAULT_DELEGATED_MODULES = [
++    "ansible",
++    "cabal",
++    "chef",
++    "cmd",
++    "composer",
++    "cp",
++    "cpan",
++    "cyg",
++    "file",
++    "freeze",
++    "nix",
++    "npm",
++    "pip",
++    "pkg",
++    "puppet",
++    "pyenv",
++    "rbenv",
++    "scp",
++]
++DEFAULT_DELEGATED_FUNCTIONS = []
++
++
++def __virtual__():
++    if salt.utils.path.which("transactional-update"):
++        return True
++    else:
++        return (False, "transactional_update executor requires a transactional system")
++
++
++def execute(opts, data, func, args, kwargs):
++    """Delegate into transactional_update module
++
++    The ``transactional_update`` module support the execution of
++    functions inside a transaction, as support apply a state (via
++    ``apply``, ``sls``, ``single`` or ``highstate``).
++
++    This execution module can be used to route some Salt modules and
++    functions to be executed inside the transaction snapshot.
++
++    Add this executor in the minion configuration file:
++
++    .. code-block:: yaml
++
++        module_executors:
++          - transactional_update
++          - direct_call
++
++    Or use the command line parameter:
++
++    .. code-block:: bash
++
++        salt-call --module-executors='[transactional_update, direct_call]' test.version
++
++    You can also schedule a reboot if needed:
++
++    .. code-block:: bash
++
++        salt-call --module-executors='[transactional_update]' state.sls stuff activate_transaction=True
++
++    There are some configuration parameters supported:
++
++    .. code-block:: yaml
++
++       # Replace the list of default modules that all the functions
++       # are delegated to `transactional_update.call()`
++       delegated_modules: [cmd, pkg]
++
++       # Replace the list of default functions that are delegated to
++       # `transactional_update.call()`
++       delegated_functions: [pip.install]
++
++       # Expand the default list of modules
++       add_delegated_modules: [ansible]
++
++       # Expand the default list of functions
++       add_delegated_functions: [file.copy]
++
++    """
++    fun = data["fun"]
++    module, _ = fun.split(".")
++
++    delegated_modules = set(opts.get("delegated_modules", DEFAULT_DELEGATED_MODULES))
++    delegated_functions = set(
++        opts.get("delegated_functions", DEFAULT_DELEGATED_FUNCTIONS)
++    )
++    if "executor_opts" in data:
++        delegated_modules |= set(data["executor_opts"].get("add_delegated_modules", []))
++        delegated_functions |= set(
++            data["executor_opts"].get("add_delegated_functions", [])
++        )
++    else:
++        delegated_modules |= set(opts.get("add_delegated_modules", []))
++        delegated_functions |= set(opts.get("add_delegated_functions", []))
++
++    if fun in DELEGATION_MAP:
++        result = __executors__["direct_call.execute"](
++            opts, data, __salt__[DELEGATION_MAP[fun]], args, kwargs
++        )
++    elif module in delegated_modules or fun in delegated_functions:
++        result = __salt__["transactional_update.call"](fun, *args, **kwargs)
++    else:
++        result = __executors__["direct_call.execute"](opts, data, func, args, kwargs)
++
++    return result
+diff --git a/salt/grains/extra.py b/salt/grains/extra.py
+index b30ab0091f..6a26aece77 100644
+--- a/salt/grains/extra.py
++++ b/salt/grains/extra.py
+@@ -3,14 +3,18 @@
+ from __future__ import absolute_import, print_function, unicode_literals
+ 
+ # Import python libs
++import glob
++import logging
+ import os
+ 
+ # Import third party libs
+ import logging
+ 
+ # Import salt libs
++import salt.utils
+ import salt.utils.data
+ import salt.utils.files
++import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.yaml
+ 
+@@ -83,3 +87,28 @@ def suse_backported_capabilities():
+         '__suse_reserved_pkg_patches_support': True,
+         '__suse_reserved_saltutil_states_support': True
+     }
++
++
++def __secure_boot():
++    """Detect if secure-boot is enabled."""
++    enabled = False
++    sboot = glob.glob("/sys/firmware/efi/vars/SecureBoot-*/data")
++    if len(sboot) == 1:
++        with salt.utils.files.fopen(sboot[0], "rb") as fd:
++            enabled = fd.read()[-1:] == b"\x01"
++    return enabled
++
++
++def uefi():
++    """Populate UEFI grains."""
++    grains = {
++        "efi": os.path.exists("/sys/firmware/efi/systab"),
++        "efi-secure-boot": __secure_boot(),
++    }
++
++    return grains
++
++
++def transactional():
++    """Determine if the system in transactional."""
++    return {"transactional": bool(salt.utils.path.which("transactional-update"))}
+diff --git a/salt/modules/chroot.py b/salt/modules/chroot.py
+index bc089ebf18..5e890b5c35 100644
+--- a/salt/modules/chroot.py
++++ b/salt/modules/chroot.py
+@@ -21,6 +21,7 @@ import salt.defaults.exitcodes
+ import salt.exceptions
+ import salt.ext.six as six
+ import salt.utils.args
++import salt.utils.files
+ 
+ 
+ __func_alias__ = {
+@@ -82,6 +83,38 @@ def create(root):
+     return True
+ 
+ 
++def in_chroot():
++    """
++    Return True if the process is inside a chroot jail
++
++    .. versionadded:: TBD
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt myminion chroot.in_chroot
++
++    """
++    result = False
++
++    try:
++        # We cannot assume that we are "root", so we cannot read
++        # '/proc/1/root', that is required for the usual way of
++        # detecting that we are in a chroot jail.  We use the debian
++        # ischroot method.
++        with salt.utils.files.fopen(
++            "/proc/1/mountinfo"
++        ) as root_fd, salt.utils.files.fopen("/proc/self/mountinfo") as self_fd:
++            root_mountinfo = root_fd.read()
++            self_mountinfo = self_fd.read()
++        result = root_mountinfo != self_mountinfo
++    except OSError:
++        pass
++
++    return result
++
++
+ def call(root, function, *args, **kwargs):
+     '''
+     Executes a Salt function inside a chroot environment.
+@@ -121,7 +154,7 @@ def call(root, function, *args, **kwargs):
+         so_mods=__salt__['config.option']('thin_so_mods', '')
+     )
+     # Some bug in Salt is preventing us to use `archive.tar` here. A
+-    # AsyncZeroMQReqChannel is not closed at the end os the salt-call,
++    # AsyncZeroMQReqChannel is not closed at the end of the salt-call,
+     # and makes the client never exit.
+     #
+     # stdout = __salt__['archive.tar']('xzf', thin_path, dest=thin_dest_path)
+@@ -198,7 +231,7 @@ def apply_(root, mods=None, **kwargs):
+ 
+ def _create_and_execute_salt_state(root, chunks, file_refs, test, hash_type):
+     '''
+-    Create the salt_stage tarball, and execute in the chroot
++    Create the salt_state tarball, and execute in the chroot
+     '''
+     # Create the tar containing the state pkg and relevant files.
+     salt.client.ssh.wrapper.state._cleanup_slsmod_low_data(chunks)
+@@ -210,7 +243,7 @@ def _create_and_execute_salt_state(root, chunks, file_refs, test, hash_type):
+     ret = None
+ 
+     # Create a temporary directory inside the chroot where we can move
+-    # the salt_stage.tgz
++    # the salt_state.tgz
+     salt_state_path = tempfile.mkdtemp(dir=root)
+     salt_state_path = os.path.join(salt_state_path, 'salt_state.tgz')
+     salt_state_path_in_chroot = salt_state_path.replace(root, '', 1)
+diff --git a/salt/modules/rebootmgr.py b/salt/modules/rebootmgr.py
+new file mode 100644
+index 0000000000..96133c754b
+--- /dev/null
++++ b/salt/modules/rebootmgr.py
+@@ -0,0 +1,357 @@
++"""
++:maintainer:    Alberto Planas <aplanas@suse.com>
++:maturity:      new
++:depends:       None
++:platform:      Linux
++"""
++
++import logging
++import re
++
++import salt.exceptions
++
++log = logging.getLogger(__name__)
++
++
++def __virtual__():
++    """rebootmgrctl command is required."""
++    if __utils__["path.which"]("rebootmgrctl") is not None:
++        return True
++    else:
++        return (False, "Module rebootmgt requires the command rebootmgrctl")
++
++
++def _cmd(cmd, retcode=False):
++    """Utility function to run commands."""
++    result = __salt__["cmd.run_all"](cmd)
++    if retcode:
++        return result["retcode"]
++
++    if result["retcode"]:
++        raise salt.exceptions.CommandExecutionError(result["stderr"])
++
++    return result["stdout"]
++
++
++def version():
++    """Return the version of rebootmgrd
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr version
++
++    """
++    cmd = ["rebootmgrctl", "--version"]
++
++    return _cmd(cmd).split()[-1]
++
++
++def is_active():
++    """Check if the rebootmgrd is running and active or not.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr is_active
++
++    """
++    cmd = ["rebootmgrctl", "is_active", "--quiet"]
++
++    return _cmd(cmd, retcode=True) == 0
++
++
++def reboot(order=None):
++    """Tells rebootmgr to schedule a reboot.
++
++    With the [now] option, a forced reboot is done, no lock from etcd
++    is requested and a set maintenance window is ignored. With the
++    [fast] option, a lock from etcd is requested if needed, but a
++    defined maintenance window is ignored.
++
++    order
++        If specified, can be "now" or "fast"
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr reboot
++        salt microos rebootmgt reboot order=now
++
++    """
++    if order and order not in ("now", "fast"):
++        raise salt.exceptions.CommandExecutionError(
++            "Order parameter, if specified, must be 'now' or 'fast'"
++        )
++
++    cmd = ["rebootmgrctl", "reboot"]
++    if order:
++        cmd.append(order)
++
++    return _cmd(cmd)
++
++
++def cancel():
++    """Cancels an already running reboot.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr cancel
++
++    """
++    cmd = ["rebootmgrctl", "cancel"]
++
++    return _cmd(cmd)
++
++
++def status():
++    """Returns the current status of rebootmgrd.
++
++    Valid returned values are:
++      0 - No reboot requested
++      1 - Reboot requested
++      2 - Reboot requested, waiting for maintenance window
++      3 - Reboot requested, waiting for etcd lock.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr status
++
++    """
++    cmd = ["rebootmgrctl", "status", "--quiet"]
++
++    return _cmd(cmd, retcode=True)
++
++
++def set_strategy(strategy=None):
++    """A new strategy to reboot the machine is set and written into
++    /etc/rebootmgr.conf.
++
++    strategy
++        If specified, must be one of those options:
++
++        best-effort - This is the default strategy. If etcd is
++            running, etcd-lock is used. If no etcd is running, but a
++            maintenance window is specified, the strategy will be
++            maint-window. If no maintenance window is specified, the
++            machine is immediately rebooted (instantly).
++
++        etcd-lock - A lock at etcd for the specified lock-group will
++            be acquired before reboot. If a maintenance window is
++            specified, the lock is only acquired during this window.
++
++        maint-window - Reboot does happen only during a specified
++            maintenance window. If no window is specified, the
++            instantly strategy is followed.
++
++        instantly - Other services will be informed that a reboot will
++            happen. Reboot will be done without getting any locks or
++            waiting for a maintenance window.
++
++        off - Reboot requests are temporary
++            ignored. /etc/rebootmgr.conf is not modified.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr set_strategy stragegy=off
++
++    """
++    if strategy and strategy not in (
++        "best-effort",
++        "etcd-lock",
++        "maint-window",
++        "instantly",
++        "off",
++    ):
++        raise salt.exceptions.CommandExecutionError("Strategy parameter not valid")
++
++    cmd = ["rebootmgrctl", "set-strategy"]
++    if strategy:
++        cmd.append(strategy)
++
++    return _cmd(cmd)
++
++
++def get_strategy():
++    """The currently used reboot strategy of rebootmgrd will be printed.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr get_strategy
++
++    """
++    cmd = ["rebootmgrctl", "get-strategy"]
++
++    return _cmd(cmd).split(":")[-1].strip()
++
++
++def set_window(time, duration):
++    """Set's the maintenance window.
++
++    time
++        The format of time is the same as described in
++        systemd.time(7).
++
++    duration
++         The format of duration is "[XXh][YYm]".
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr set_window time="Thu,Fri 2020-*-1,5 11:12:13" duration=1h
++
++    """
++    cmd = ["rebootmgrctl", "set-window", time, duration]
++
++    return _cmd(cmd)
++
++
++def get_window():
++    """The currently set maintenance window will be printed.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr get_window
++
++    """
++    cmd = ["rebootmgrctl", "get-window"]
++    window = _cmd(cmd)
++
++    return dict(
++        zip(
++            ("time", "duration"),
++            re.search(
++                r"Maintenance window is set to (.*), lasting (.*).", window
++            ).groups(),
++        )
++    )
++
++
++def set_group(group):
++    """Set the group, to which this machine belongs to get a reboot lock
++       from etcd.
++
++    group
++        Group name
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr set_group group=group_1
++
++    """
++    cmd = ["rebootmgrctl", "set-group", group]
++
++    return _cmd(cmd)
++
++
++def get_group():
++    """The currently set lock group for etcd.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr get_group
++
++    """
++    cmd = ["rebootmgrctl", "get-group"]
++    group = _cmd(cmd)
++
++    return re.search(r"Etcd lock group is set to (.*)", group).groups()[0]
++
++
++def set_max(max_locks, group=None):
++    """Set the maximal number of hosts in a group, which are allowed to
++       reboot at the same time.
++
++    number
++        Maximal number of hosts in a group
++
++    group
++        Group name
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr set_max 4
++
++    """
++    cmd = ["rebootmgrctl", "set-max"]
++    if group:
++        cmd.extend(["--group", group])
++    cmd.append(max_locks)
++
++    return _cmd(cmd)
++
++
++def lock(machine_id=None, group=None):
++    """Lock a machine. If no group is specified, the local default group
++       will be used. If no machine-id is specified, the local machine
++       will be locked.
++
++    machine_id
++        The machine-id is a network wide, unique ID. Per default the
++        ID from /etc/machine-id is used.
++
++    group
++        Group name
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr lock group=group1
++
++    """
++    cmd = ["rebootmgrctl", "lock"]
++    if group:
++        cmd.extend(["--group", group])
++    if machine_id:
++        cmd.append(machine_id)
++
++    return _cmd(cmd)
++
++
++def unlock(machine_id=None, group=None):
++    """Unlock a machine. If no group is specified, the local default group
++       will be used. If no machine-id is specified, the local machine
++       will be locked.
++
++    machine_id
++        The machine-id is a network wide, unique ID. Per default the
++        ID from /etc/machine-id is used.
++
++    group
++        Group name
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos rebootmgr unlock group=group1
++
++    """
++    cmd = ["rebootmgrctl", "unlock"]
++    if group:
++        cmd.extend(["--group", group])
++    if machine_id:
++        cmd.append(machine_id)
++
++    return _cmd(cmd)
+diff --git a/salt/modules/systemd_service.py b/salt/modules/systemd_service.py
+index e39962f9ac..a684ec0778 100644
+--- a/salt/modules/systemd_service.py
++++ b/salt/modules/systemd_service.py
+@@ -56,8 +56,10 @@ def __virtual__():
+     '''
+     Only work on systems that have been booted with systemd
+     '''
+-    if __grains__['kernel'] == 'Linux' \
+-       and salt.utils.systemd.booted(__context__):
++    is_linux = __grains__.get("kernel") == "Linux"
++    is_booted = salt.utils.systemd.booted(__context__)
++    is_offline = salt.utils.systemd.offline(__context__)
++    if is_linux and (is_booted or is_offline):
+         return __virtualname__
+     return (
+         False,
+@@ -1419,3 +1421,19 @@ def firstboot(locale=None, locale_message=None, keymap=None,
+             'systemd-firstboot error: {}'.format(out['stderr']))
+ 
+     return True
++
++
++def offline():
++    """
++    .. versionadded:: TBD
++
++    Check if systemd is working in offline mode, where is not possible
++    to talk with PID 1.
++
++    CLI Example:
++
++        salt '*' service.offline
++
++    """
++
++    return salt.utils.systemd.offline(__context__)
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+new file mode 100644
+index 0000000000..9b14557e07
+--- /dev/null
++++ b/salt/modules/transactional_update.py
+@@ -0,0 +1,1270 @@
++"""Transactional update
++====================
++
++.. versionadded: TBD
++
++A transactional system, like `MicroOS`_, can present some challenges
++when the user decided to manage it via Salt.
++
++MicroOS provide a read-only rootfs and a tool,
++``transactional-update``, that takes care of the management of the
++system (updating, upgrading, installation or reboot, among others) in
++an atomic way.
++
++Atomicity is the main feature of MicroOS, and to guarantee this
++property, this model leverages ``snapper``, ``zypper``, ``btrfs`` and
++``overlayfs`` to create snapshots that will be updated independently
++of the currently running system, and that are activated after the
++reboot.  This implies, for example, that some changes made on the
++system are not visible until the next reboot, as those changes are
++living in a different snapshot of the file system.
++
++This model present a lot of problems with the traditional Salt model,
++where the inspections (like 'is this package installed?') are executed
++in order to determine if a subsequent action is required (like
++'install this package').
++
++Lets consider this use case, to see how it works on a traditional
++system, and in a transactional system:
++
++1) Check if ``apache`` is installed
++
++2) If it is not installed, install it
++
++3) Check that a ``vhost`` is configured for ``apache``
++
++4) Make sure that ``apache2.service`` is enabled
++
++5) If the configuration changes, restart ``apache2.service``
++
++In the traditional system everything will work as expected.  The
++system can see if the package is present or not, install it if it
++isn't, and a re-check will shows that is already present.  The same
++will happen to the configuration file in ``/etc/apache2``, that will
++be available as soon the package gets installed.  Salt can inspect the
++current form of this file, and add the missing bits if required.  Salt
++can annotate that a change is present, and restart the service.
++
++In a transactional system we will have multiple issues.  The first one
++is that Salt can only see the content of the snapshot where the system
++booted from.  Later snapshots may contain different content, including
++the presence of ``apache``.  If Salt decides to install ``apache``
++calling ``zypper``, it will fail, as this will try to write into the
++read-only rootfs.  Even if Salt would call ``transactional-update pkg
++install``, the package would only be present in the new transaction
++(snapshot), and will not be found in the currently running system when
++later Salt tries to validate the presence of the package in the
++current one.
++
++Any change in ``/etc`` alone will have also problems, as the changes
++will be alive in a different overlay, only visible after the reboot.
++And, finally, the service can only be enabled and restarted if the
++service file is already present in the current ``/etc``.
++
++
++General strategy
++----------------
++
++``transactional-update`` is the reference tool used for the
++administration of transactional systems.  Newer versions of this tool
++support the execution of random commands in the new transaction, the
++continuation of a transaction, the automatic detection of changes in
++new transactions and the merge of ``/etc`` overlays.
++
++Continue a transaction
++......................
++
++One prerequisite already present is the support for branching from a
++different snapshot than the current one in snapper.
++
++With this feature we can represent in ``transactional-update`` the
++action of creating a transaction snapshot based on one that is planned
++to be the active one after the reboot.  This feature removes a lot of
++user complains (like, for example, loosing changes that are stored in
++a transaction not yet activated), but also provide a more simple model
++to work with.
++
++So, for example, if the user have this scenario::
++
++      +-----+  *=====*  +--V--+
++    --| T.1 |--| T.2 |--| T.3 |
++      +-----+  *=====*  +--A--+
++
++where T.2 is the current active one, and T.3 is an snapshot generated
++from T.2 with a new package (``apache2``), and is marked to be the
++active after the reboot.
++
++Previously, if the user (that is still on T.2) created a new
++transaction, maybe for adding a new package (``tomcat``, for example),
++the new T.4 will be based on the content of T.2 again, and not T.3, so
++the new T.4 will have lost the changes of T.3 (i.e. `apache2` will not
++be present in T.4).
++
++With the ``--continue`` parameter, ``transactional-update`` will
++create T.4 based on T.3, and nothing will be lost.
++
++Command execution inside a new transaction
++..........................................
++
++With ``transactional-update run`` we will create a new transaction
++based on the current one (T.2), where we can send interactive commands
++that can modify the new transaction, and as commented, with
++``transactional-update --continue run``, we will create a new
++transaction based on the last created (T.3)
++
++The ``run`` command can execute any application inside the new
++transaction namespace.  This module uses this feature to execute the
++different Salt execution modules, via ``call()``. Or even the full
++``salt-thin`` or ``salt-call`` via ``sls()``, ``apply()``,
++``single()`` or ``highstate``.
++
++``transactional-update`` will drop empty snapshots
++..................................................
++
++The option ``--drop-if-no-change`` is used to detect whether there is
++any change in the file system on the read-only subvolume of the new
++transaction will be added.  If a change is present, the new
++transaction will remain, if not it will be discarded.
++
++For example::
++
++  transactional-update --continute --drop-if-no-change run zypper in apache2"
++
++If we are in the scenario described before, ``apache2`` is already
++present in T.3.  In this case a new transaction, T.4, will be created
++based on T.3, ``zypper`` will detect that the package is already
++present and no change will be produced on T.4.  At the end of the
++execution, ``transactional-update`` will validate that T.3 and T.4 are
++equivalent and T.4 will be discarded.
++
++If the command is::
++
++  transactional-update --continue --drop-if-no-change run zypper in tomcat
++
++the new T.4 will be indeed different from T.3, and will remain after
++the transaction is closed.
++
++With this feature, every time that we call any function of this
++execution module, we will minimize the amount of transaction, while
++maintaining the idempotence so some operations.
++
++Report for pending transaction
++..............................
++
++A change in the system will create a new transaction, that needs to be
++activated via a reboot.  With ``pending_transaction()`` we can check
++if a reboot is needed.  We can execute the reboot using the
++``reboot()`` function, that will follow the plan established by the
++functions of the ``rebootmgr`` execution module.
++
++``/etc`` overlay merge when no new transaction is created
++.........................................................
++
++In a transactional model, ``/etc`` is an overlay file system.  Changes
++done during the update are only present in the new transaction, and so
++will only be available after the reboot.  Or worse, if the transaction
++gets dropped, because there is no change in the ``rootfs``, the
++changes in ``/etc`` will be dropped too!.  This is designed like that
++in order to make the configuration files for the new package available
++only when new package is also available to the user.  So, after the
++reboot.
++
++This makes sense for the case when, for example, ``apache2`` is not
++present in the current transaction, but we installed it.  The new
++snapshot contains the ``apache2`` service, and the configuration files
++in ``/etc`` will be accessible only after the reboot.
++
++But this model presents an issue.  If we use ``transactional-update
++--continue --drop-if-no-change run <command>``, where ``<command>``
++does not make any change in the read-only subvolume, but only in
++``/etc`` (which is also read-write in the running system), the new
++overlay with the changes in ``/etc`` will be dropped together with the
++transaction.
++
++To fix this, ``transactional-update`` will detect that when no change
++has been made on the read-only subvolume, but done in the overlay, the
++transaction will be dropped and the changes in the overlay will be
++merged back into ``/etc`` overlay of the current transaction.
++
++
++Using the execution module
++--------------------------
++
++With this module we can create states that leverage Salt into this
++kind of systems::
++
++  # Install apache (low-level API)
++  salt-call transactional_update.pkg_install apache2
++
++  # We can call any execution module
++  salt-call transactional_update.call pkg.install apache2
++
++  # Or via a state
++  salt-call transactional_update.single pkg.installed name=apache2
++
++  # We can also execute a zypper directly
++  salt-call transactional_update run "zypper in apache2" snapshot="continue"
++
++  # We can reuse SLS states
++  salt-call transactional_update.apply install_and_configure_apache
++
++  # Or apply the full highstate
++  salt-call transactional_update.highstate
++
++  # Is there any change done in the system?
++  salt-call transactional_update pending_transaction
++
++  # If so, reboot via rebootmgr
++  salt-call transactional_update reboot
++
++  # We can enable the service
++  salt-call service.enable apache2
++
++  # If apache2 is available, this will work too
++  salt-call service.restart apache2
++
++
++Fixing some expectations
++------------------------
++
++This module alone is an improvement over the current state, but is
++easy to see some limitations and problems:
++
++Is not a fully transparent approach
++...................................
++
++The user needs to know if the system is transactional or not, as not
++everything can be expressed inside a transaction (for example,
++restarting a service inside transaction is not allowed).
++
++Two step for service restart
++............................
++
++In the ``apache2` example from the beginning we can observe the
++biggest drawback.  If the package ``apache2`` is missing, the new
++module will create a new transaction, will execute ``pkg.install``
++inside the transaction (creating the salt-thin, moving it inside and
++delegating the execution to `transactional-update` CLI as part of the
++full state).  Inside the transaction we can do too the required
++changes in ``/etc`` for adding the new ``vhost``, and we can enable the
++service via systemctl inside the same transaction.
++
++At this point we will not merge the ``/etc`` overlay into the current
++one, and we expect from the user call the ``reboot`` function inside
++this module, in order to activate the new transaction and start the
++``apache2`` service.
++
++In the case that the package is already there, but the configuration
++for the ``vhost`` is required, the new transaction will be dropped and
++the ``/etc`` overlay will be visible in the live system.  Then from
++outside the transaction, via a different call to Salt, we can command
++a restart of the ``apache2`` service.
++
++We can see that in both cases we break the user expectation, where a
++change on the configuration will trigger automatically the restart of
++the associated service.  In a transactional scenario we need two
++different steps: or a reboot, or a restart from outside of the
++transaction.
++
++.. _MicroOS: https://microos.opensuse.org/
++
++:maintainer:    Alberto Planas <aplanas@suse.com>
++:maturity:      new
++:depends:       None
++:platform:      Linux
++
++"""
++
++import copy
++import logging
++import os
++import sys
++import tempfile
++
++import salt.client.ssh.state
++import salt.client.ssh.wrapper.state
++import salt.exceptions
++import salt.utils.args
++
++__func_alias__ = {"apply_": "apply"}
++
++log = logging.getLogger(__name__)
++
++
++def __virtual__():
++    """
++    transactional-update command is required.
++    """
++    if __utils__["path.which"]("transactional-update"):
++        return True
++    else:
++        return (False, "Module transactional_update requires a transactional system")
++
++
++def _global_params(self_update, snapshot=None, quiet=False):
++    """Utility function to prepare common global parameters."""
++    params = ["--non-interactive", "--drop-if-no-change"]
++    if self_update is False:
++        params.append("--no-selfupdate")
++    if snapshot and snapshot != "continue":
++        params.extend(["--continue", snapshot])
++    elif snapshot:
++        params.append("--continue")
++    if quiet:
++        params.append("--quiet")
++    return params
++
++
++def _pkg_params(pkg, pkgs, args):
++    """Utility function to prepare common package parameters."""
++    params = []
++
++    if not pkg and not pkgs:
++        raise salt.exceptions.CommandExecutionError("Provide pkg or pkgs parameters")
++
++    if args and isinstance(args, str):
++        params.extend(args.split())
++    elif args and isinstance(args, list):
++        params.extend(args)
++
++    if pkg:
++        params.append(pkg)
++
++    if pkgs and isinstance(pkgs, str):
++        params.extend(pkgs.split())
++    elif pkgs and isinstance(pkgs, list):
++        params.extend(pkgs)
++
++    return params
++
++
++def _cmd(cmd, retcode=False):
++    """Utility function to run commands."""
++    result = __salt__["cmd.run_all"](cmd)
++    if retcode:
++        return result["retcode"]
++
++    if result["retcode"]:
++        raise salt.exceptions.CommandExecutionError(result["stderr"])
++
++    return result["stdout"]
++
++
++def transactional():
++    """Check if the system is a transactional system
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update transactional
++
++    """
++    return bool(__utils__["path.which"]("transactional-update"))
++
++
++def in_transaction():
++    """Check if Salt is executing while in a transaction
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update in_transaction
++
++    """
++    return transactional() and __salt__["chroot.in_chroot"]()
++
++
++def cleanup(self_update=False):
++    """Run both cleanup-snapshots and cleanup-overlays.
++
++    Identical to calling both cleanup-snapshots and cleanup-overlays.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update cleanup
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update))
++    cmd.append("cleanup")
++    return _cmd(cmd)
++
++
++def cleanup_snapshots(self_update=False):
++    """Mark unused snapshots for snapper removal.
++
++    If the current root filesystem is identical to the active root
++    filesystem (means after a reboot, before transactional-update
++    creates a new snapshot with updates), all old snapshots without a
++    cleanup algorithm get a cleanup algorithm set. This is to make
++    sure, that old snapshots will be deleted by snapper. See the
++    section about cleanup algorithms in snapper(8).
++
++    self_update
++        Check for newer transactional-update versions.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update cleanup_snapshots
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update))
++    cmd.append("cleanup-snapshots")
++    return _cmd(cmd)
++
++
++def cleanup_overlays(self_update=False):
++    """Remove unused overlay layers.
++
++    Removes all unreferenced (and thus unused) /etc overlay
++    directories in /var/lib/overlay.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update cleanup_overlays
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update))
++    cmd.append("cleanup-overlays")
++    return _cmd(cmd)
++
++
++def grub_cfg(self_update=False, snapshot=None):
++    """Regenerate grub.cfg
++
++    grub2-mkconfig(8) is called to create a new /boot/grub2/grub.cfg
++    configuration file for the bootloader.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update grub_cfg snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("grub.cfg")
++    return _cmd(cmd)
++
++
++def bootloader(self_update=False, snapshot=None):
++    """Reinstall the bootloader
++
++    Same as grub.cfg, but will also rewrite the bootloader itself.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update bootloader snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("bootloader")
++    return _cmd(cmd)
++
++
++def initrd(self_update=False, snapshot=None):
++    """Regenerate initrd
++
++    A new initrd is created in a snapshot.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update initrd snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("initrd")
++    return _cmd(cmd)
++
++
++def kdump(self_update=False, snapshot=None):
++    """Regenerate kdump initrd
++
++    A new initrd for kdump is created in a snapshot.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update kdump snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("kdump")
++    return _cmd(cmd)
++
++
++def run(command, self_update=False, snapshot=None):
++    """Run a command in a new snapshot
++
++    Execute the command inside a new snapshot. By default this snaphot
++    will remain, but if --drop-if-no-chage is set, the new snapshot
++    will be dropped if there is no change in the file system.
++
++    command
++        Command with parameters that will be executed (as string or
++        array)
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update run "mkdir /tmp/dir" snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot, quiet=True))
++    cmd.append("run")
++    if isinstance(command, str):
++        cmd.extend(command.split())
++    elif isinstance(command, list):
++        cmd.extend(command)
++    else:
++        raise salt.exceptions.CommandExecutionError("Command parameter not recognized")
++    return _cmd(cmd)
++
++
++def reboot(self_update=False):
++    """Reboot after update
++
++    Trigger a reboot after updating the system.
++
++    Several different reboot methods are supported, configurable via
++    the REBOOT_METHOD configuration option in
++    transactional-update.conf(5). By default rebootmgrd(8) will be
++    used to reboot the system according to the configured policies if
++    the service is running, otherwise systemctl reboot will be called.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update reboot
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update))
++    cmd.append("reboot")
++    return _cmd(cmd)
++
++
++def dup(self_update=False, snapshot=None):
++    """Call 'zypper dup'
++
++    If new updates are available, a new snapshot is created and zypper
++    dup --no-allow-vendor-change is used to update the
++    snapshot. Afterwards, the snapshot is activated and will be used
++    as the new root filesystem during next boot.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update dup snapshot="continue"
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("dup")
++    return _cmd(cmd)
++
++
++def up(self_update=False, snapshot=None):
++    """Call 'zypper up'
++
++    If new updates are available, a new snapshot is created and zypper
++    up is used to update the snapshot. Afterwards, the snapshot is
++    activated and will be used as the new root filesystem during next
++    boot.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update up snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("up")
++    return _cmd(cmd)
++
++
++def patch(self_update=False, snapshot=None):
++    """Call 'zypper patch'
++
++    If new updates are available, a new snapshot is created and zypper
++    patch is used to update the snapshot. Afterwards, the snapshot is
++    activated and will be used as the new root filesystem during next
++    boot.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update patch snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("patch")
++    return _cmd(cmd)
++
++
++def migration(self_update=False, snapshot=None):
++    """Updates systems registered via SCC / SMT
++
++    On systems which are registered against the SUSE Customer Center
++    (SCC) or SMT, a migration to a new version of the installed
++    products can be made with this option.
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update migration snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.append("migration")
++    return _cmd(cmd)
++
++
++def pkg_install(pkg=None, pkgs=None, args=None, self_update=False, snapshot=None):
++    """Install individual packages
++
++    Installs additional software. See the install description in the
++    "Package Management Commands" section of zypper's man page for all
++    available arguments.
++
++    pkg
++        Package name to install
++
++    pkgs
++        List of packages names to install
++
++    args
++        String or list of extra parameters for zypper
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update pkg_install pkg=emacs snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.extend(["pkg", "install"])
++    cmd.extend(_pkg_params(pkg, pkgs, args))
++    return _cmd(cmd)
++
++
++def pkg_remove(pkg=None, pkgs=None, args=None, self_update=False, snapshot=None):
++    """Remove individual packages
++
++    Removes installed software. See the remove description in the
++    "Package Management Commands" section of zypper's man page for all
++    available arguments.
++
++    pkg
++        Package name to install
++
++    pkgs
++        List of packages names to install
++
++    args
++        String or list of extra parameters for zypper
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update pkg_remove pkg=vim snapshot="continue"
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.extend(["pkg", "remove"])
++    cmd.extend(_pkg_params(pkg, pkgs, args))
++    return _cmd(cmd)
++
++
++def pkg_update(pkg=None, pkgs=None, args=None, self_update=False, snapshot=None):
++    """Updates individual packages
++
++    Update selected software. See the update description in the
++    "Update Management Commands" section of zypper's man page for all
++    available arguments.
++
++    pkg
++        Package name to install
++
++    pkgs
++        List of packages names to install
++
++    args
++        String or list of extra parameters for zypper
++
++    self_update
++        Check for newer transactional-update versions.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "continue" to indicate the last snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update pkg_update pkg=emacs snapshot="continue"
++
++    """
++    cmd = ["transactional-update"]
++    cmd.extend(_global_params(self_update=self_update, snapshot=snapshot))
++    cmd.extend(["pkg", "update"])
++    cmd.extend(_pkg_params(pkg, pkgs, args))
++    return _cmd(cmd)
++
++
++def rollback(snapshot=None):
++    """Set the current, given or last working snapshot as default snapshot
++
++    Sets the default root file system. On a read-only system the root
++    file system is set directly using btrfs. On read-write systems
++    snapper(8) rollback is called.
++
++    If no snapshot number is given, the current root file system is
++    set as the new default root file system. Otherwise number can
++    either be a snapshot number (as displayed by snapper list) or the
++    word last. last will try to reset to the latest working snapshot.
++
++    snapshot
++        Use the given snapshot or, if no number is given, the current
++        default snapshot as a base for the next snapshot. Use
++        "last" to indicate the last working snapshot done.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update rollback
++
++    """
++    if (
++        snapshot
++        and isinstance(snapshot, str)
++        and snapshot != "last"
++        and not snapshot.isnumeric()
++    ):
++        raise salt.exceptions.CommandExecutionError(
++            "snapshot should be a number or 'last'"
++        )
++    cmd = ["transactional-update"]
++    cmd.append("rollback")
++    if snapshot:
++        cmd.append(snapshot)
++    return _cmd(cmd)
++
++
++def pending_transaction():
++    """Check if there is a pending transaction
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update pending_transaction
++
++    """
++    # If we are running inside a transaction, we do not have a good
++    # way yet to detect a pending transaction
++    if in_transaction():
++        raise salt.exceptions.CommandExecutionError(
++            "pending_transaction cannot be executed inside a transaction"
++        )
++
++    cmd = ["snapper", "--no-dbus", "list", "--columns", "number"]
++    snapshots = _cmd(cmd)
++
++    return any(snapshot.endswith("+") for snapshot in snapshots)
++
++
++def call(function, *args, **kwargs):
++    """Executes a Salt function inside a transaction.
++
++    The chroot does not need to have Salt installed, but Python is
++    required.
++
++    function
++        Salt execution module function
++
++    activate_transaction
++        If at the end of the transaction there is a pending activation
++        (i.e there is a new snaphot in the system), a new reboot will
++        be scheduled (default False)
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update.call test.ping
++        salt microos transactional_update.call ssh.set_auth_key user key=mykey
++        salt microos transactional_update.call pkg.install emacs activate_transaction=True
++
++    """
++
++    if not function:
++        raise salt.exceptions.CommandExecutionError("Missing function parameter")
++
++    activate_transaction = kwargs.pop("activate_transaction", False)
++
++    # Generate the salt-thin and create a temporary directory in a
++    # place that the new transaction will have access to, and where we
++    # can untar salt-thin
++    thin_path = __utils__["thin.gen_thin"](
++        __opts__["cachedir"],
++        extra_mods=__salt__["config.option"]("thin_extra_mods", ""),
++        so_mods=__salt__["config.option"]("thin_so_mods", ""),
++    )
++    thin_dest_path = tempfile.mkdtemp(dir=__opts__["cachedir"])
++    # Some bug in Salt is preventing us to use `archive.tar` here. A
++    # AsyncZeroMQReqChannel is not closed at the end of the salt-call,
++    # and makes the client never exit.
++    #
++    # stdout = __salt__['archive.tar']('xzf', thin_path, dest=thin_dest_path)
++    #
++    stdout = __salt__["cmd.run"](["tar", "xzf", thin_path, "-C", thin_dest_path])
++    if stdout:
++        __utils__["files.rm_rf"](thin_dest_path)
++        return {"result": False, "comment": stdout}
++
++    try:
++        safe_kwargs = salt.utils.args.clean_kwargs(**kwargs)
++        salt_argv = (
++            [
++                "python{}".format(sys.version_info[0]),
++                os.path.join(thin_dest_path, "salt-call"),
++                "--metadata",
++                "--local",
++                "--log-file",
++                os.path.join(thin_dest_path, "log"),
++                "--cachedir",
++                os.path.join(thin_dest_path, "cache"),
++                "--out",
++                "json",
++                "-l",
++                "quiet",
++                "--",
++                function,
++            ]
++            + list(args)
++            + ["{}={}".format(k, v) for (k, v) in safe_kwargs.items()]
++        )
++        try:
++            ret_stdout = run([str(x) for x in salt_argv], snapshot="continue")
++        except salt.exceptions.CommandExecutionError as e:
++            ret_stdout = e.message
++
++        # Process "real" result in stdout
++        try:
++            data = __utils__["json.find_json"](ret_stdout)
++            local = data.get("local", data)
++            if isinstance(local, dict) and "retcode" in local:
++                __context__["retcode"] = local["retcode"]
++            return local.get("return", data)
++        except (KeyError, ValueError):
++            return {"result": False, "comment": ret_stdout}
++    finally:
++        __utils__["files.rm_rf"](thin_dest_path)
++
++        # Check if reboot is needed
++        if activate_transaction and pending_transaction():
++            reboot()
++
++
++def apply_(mods=None, **kwargs):
++    """Apply an state inside a transaction.
++
++    This function will call `transactional_update.highstate` or
++    `transactional_update.sls` based on the arguments passed to this
++    function. It exists as a more intuitive way of applying states.
++
++    For a formal description of the possible parameters accepted in
++    this function, check `state.apply_` documentation.
++
++    activate_transaction
++        If at the end of the transaction there is a pending activation
++        (i.e there is a new snaphot in the system), a new reboot will
++        be scheduled (default False)
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update.apply
++        salt microos transactional_update.apply stuff
++        salt microos transactional_update.apply stuff pillar='{"foo": "bar"}'
++        salt microos transactional_update.apply stuff activate_transaction=True
++
++    """
++    if mods:
++        return sls(mods, **kwargs)
++    return highstate(**kwargs)
++
++
++def _create_and_execute_salt_state(
++    chunks, file_refs, test, hash_type, activate_transaction
++):
++    """Create the salt_state tarball, and execute it in a transaction"""
++
++    # Create the tar containing the state pkg and relevant files.
++    salt.client.ssh.wrapper.state._cleanup_slsmod_low_data(chunks)
++    trans_tar = salt.client.ssh.state.prep_trans_tar(
++        salt.fileclient.get_file_client(__opts__), chunks, file_refs, __pillar__
++    )
++    trans_tar_sum = salt.utils.hashutils.get_hash(trans_tar, hash_type)
++
++    ret = None
++
++    # Create a temporary directory accesible later by the transaction
++    # where we can move the salt_state.tgz
++    salt_state_path = tempfile.mkdtemp(dir=__opts__["cachedir"])
++    salt_state_path = os.path.join(salt_state_path, "salt_state.tgz")
++    try:
++        salt.utils.files.copyfile(trans_tar, salt_state_path)
++        ret = call(
++            "state.pkg",
++            salt_state_path,
++            test=test,
++            pkg_sum=trans_tar_sum,
++            hash_type=hash_type,
++            activate_transaction=activate_transaction,
++        )
++    finally:
++        __utils__["files.rm_rf"](salt_state_path)
++
++    return ret
++
++
++def sls(
++    mods, saltenv="base", test=None, exclude=None, activate_transaction=False, **kwargs
++):
++    """Execute the states in one or more SLS files inside a transaction.
++
++    saltenv
++        Specify a salt fileserver environment to be used when applying
++        states
++
++    mods
++        List of states to execute
++
++    test
++        Run states in test-only (dry-run) mode
++
++    exclude
++        Exclude specific states from execution. Accepts a list of sls
++        names, a comma-separated string of sls names, or a list of
++        dictionaries containing ``sls`` or ``id`` keys. Glob-patterns
++        may be used to match multiple states.
++
++    activate_transaction
++        If at the end of the transaction there is a pending activation
++        (i.e there is a new snaphot in the system), a new reboot will
++        be scheduled (default False)
++
++    For a formal description of the possible parameters accepted in
++    this function, check `state.sls` documentation.
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update.sls stuff pillar='{"foo": "bar"}'
++        salt microos transactional_update.sls stuff activate_transaction=True
++
++    """
++    # Get a copy of the pillar data, to avoid overwriting the current
++    # pillar, instead the one delegated
++    pillar = copy.deepcopy(__pillar__)
++    pillar.update(kwargs.get("pillar", {}))
++
++    # Clone the options data and apply some default values. May not be
++    # needed, as this module just delegate
++    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
++    st_ = salt.client.ssh.state.SSHHighState(
++        opts, pillar, __salt__, salt.fileclient.get_file_client(__opts__)
++    )
++
++    if isinstance(mods, str):
++        mods = mods.split(",")
++
++    high_data, errors = st_.render_highstate({saltenv: mods})
++    if exclude:
++        if isinstance(exclude, str):
++            exclude = exclude.split(",")
++        if "__exclude__" in high_data:
++            high_data["__exclude__"].extend(exclude)
++        else:
++            high_data["__exclude__"] = exclude
++
++    high_data, ext_errors = st_.state.reconcile_extend(high_data)
++    errors += ext_errors
++    errors += st_.state.verify_high(high_data)
++    if errors:
++        return errors
++
++    high_data, req_in_errors = st_.state.requisite_in(high_data)
++    errors += req_in_errors
++    if errors:
++        return errors
++
++    high_data = st_.state.apply_exclude(high_data)
++
++    # Compile and verify the raw chunks
++    chunks = st_.state.compile_high_data(high_data)
++    file_refs = salt.client.ssh.state.lowstate_file_refs(
++        chunks,
++        salt.client.ssh.wrapper.state._merge_extra_filerefs(
++            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
++        ),
++    )
++
++    hash_type = opts["hash_type"]
++    return _create_and_execute_salt_state(
++        chunks, file_refs, test, hash_type, activate_transaction
++    )
++
++
++def highstate(activate_transaction=False, **kwargs):
++    """Retrieve the state data from the salt master for this minion and
++    execute it inside a transaction.
++
++    For a formal description of the possible parameters accepted in
++    this function, check `state.highstate` documentation.
++
++    activate_transaction
++        If at the end of the transaction there is a pending activation
++        (i.e there is a new snaphot in the system), a new reboot will
++        be scheduled (default False)
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update.highstate
++        salt microos transactional_update.highstate pillar='{"foo": "bar"}'
++        salt microos transactional_update.highstate activate_transaction=True
++
++    """
++    # Get a copy of the pillar data, to avoid overwriting the current
++    # pillar, instead the one delegated
++    pillar = copy.deepcopy(__pillar__)
++    pillar.update(kwargs.get("pillar", {}))
++
++    # Clone the options data and apply some default values. May not be
++    # needed, as this module just delegate
++    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
++    st_ = salt.client.ssh.state.SSHHighState(
++        opts, pillar, __salt__, salt.fileclient.get_file_client(__opts__)
++    )
++
++    # Compile and verify the raw chunks
++    chunks = st_.compile_low_chunks()
++    file_refs = salt.client.ssh.state.lowstate_file_refs(
++        chunks,
++        salt.client.ssh.wrapper.state._merge_extra_filerefs(
++            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
++        ),
++    )
++    # Check for errors
++    for chunk in chunks:
++        if not isinstance(chunk, dict):
++            __context__["retcode"] = 1
++            return chunks
++
++    test = kwargs.pop("test", False)
++    hash_type = opts["hash_type"]
++    return _create_and_execute_salt_state(
++        chunks, file_refs, test, hash_type, activate_transaction
++    )
++
++
++def single(fun, name, test=None, activate_transaction=False, **kwargs):
++    """Execute a single state function with the named kwargs, returns
++    False if insufficient data is sent to the command
++
++    By default, the values of the kwargs will be parsed as YAML. So,
++    you can specify lists values, or lists of single entry key-value
++    maps, as you would in a YAML salt file. Alternatively, JSON format
++    of keyword values is also supported.
++
++    activate_transaction
++        If at the end of the transaction there is a pending activation
++        (i.e there is a new snaphot in the system), a new reboot will
++        be scheduled (default False)
++
++    CLI Example:
++
++    .. code-block:: bash
++
++        salt microos transactional_update.single pkg.installed name=emacs
++        salt microos transactional_update.single pkg.installed name=emacs activate_transaction=True
++
++    """
++    # Get a copy of the pillar data, to avoid overwriting the current
++    # pillar, instead the one delegated
++    pillar = copy.deepcopy(__pillar__)
++    pillar.update(kwargs.get("pillar", {}))
++
++    # Clone the options data and apply some default values. May not be
++    # needed, as this module just delegate
++    opts = salt.utils.state.get_sls_opts(__opts__, **kwargs)
++    st_ = salt.client.ssh.state.SSHState(opts, pillar)
++
++    # state.fun -> [state, fun]
++    comps = fun.split(".")
++    if len(comps) < 2:
++        __context__["retcode"] = 1
++        return "Invalid function passed"
++
++    # Create the low chunk, using kwargs as a base
++    kwargs.update({"state": comps[0], "fun": comps[1], "__id__": name, "name": name})
++
++    # Verify the low chunk
++    err = st_.verify_data(kwargs)
++    if err:
++        __context__["retcode"] = 1
++        return err
++
++    # Must be a list of low-chunks
++    chunks = [kwargs]
++
++    # Retrieve file refs for the state run, so we can copy relevant
++    # files down to the minion before executing the state
++    file_refs = salt.client.ssh.state.lowstate_file_refs(
++        chunks,
++        salt.client.ssh.wrapper.state._merge_extra_filerefs(
++            kwargs.get("extra_filerefs", ""), opts.get("extra_filerefs", "")
++        ),
++    )
++
++    hash_type = opts["hash_type"]
++    return _create_and_execute_salt_state(
++        chunks, file_refs, test, hash_type, activate_transaction
++    )
+diff --git a/salt/utils/systemd.py b/salt/utils/systemd.py
+index 060bc1e3fb..674b6d419f 100644
+--- a/salt/utils/systemd.py
++++ b/salt/utils/systemd.py
+@@ -11,6 +11,7 @@ import subprocess
+ 
+ # Import Salt libs
+ from salt.exceptions import SaltInvocationError
++import salt.utils.path
+ import salt.utils.stringutils
+ 
+ log = logging.getLogger(__name__)
+@@ -47,6 +48,27 @@ def booted(context=None):
+     return ret
+ 
+ 
++def offline(context=None):
++    """Return True is systemd is in offline mode"""
++    contextkey = "salt.utils.systemd.offline"
++    if isinstance(context, dict):
++        if contextkey in context:
++            return context[contextkey]
++    elif context is not None:
++        raise SaltInvocationError("context must be a dictionary if passed")
++
++    # Note that there is a difference from SYSTEMD_OFFLINE=1.  Here we
++    # assume that there is no PID 1 to talk with.
++    ret = not booted(context) and salt.utils.path.which("systemctl")
++
++    try:
++        context[contextkey] = ret
++    except TypeError:
++        pass
++
++    return ret
++
++
+ def version(context=None):
+     '''
+     Attempts to run systemctl --version. Returns None if unable to determine
+diff --git a/tests/unit/modules/test_chroot.py b/tests/unit/modules/test_chroot.py
+index de3041e98f..62808ed680 100644
+--- a/tests/unit/modules/test_chroot.py
++++ b/tests/unit/modules/test_chroot.py
+@@ -31,6 +31,9 @@ from __future__ import absolute_import, print_function, unicode_literals
+ import sys
+ 
+ # Import Salt Testing Libs
++import salt.modules.chroot as chroot
++import salt.utils.platform
++from salt.exceptions import CommandExecutionError
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.unit import skipIf, TestCase
+ from tests.support.mock import MagicMock, patch
+@@ -80,6 +83,18 @@ class ChrootTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertTrue(chroot.create('/chroot'))
+         makedirs.assert_called()
+ 
++    @patch("salt.modules.chroot.exist")
++    @patch("salt.utils.files.fopen")
++    def test_in_chroot(self, fopen):
++        """
++        Test the detection of chroot environment.
++        """
++        matrix = (("a", "b", True), ("a", "a", False))
++        for root_mountinfo, self_mountinfo, result in matrix:
++            fopen.return_value.__enter__.return_value = fopen
++            fopen.read = MagicMock(side_effect=(root_mountinfo, self_mountinfo))
++            self.assertEqual(chroot.in_chroot(), result)
++
+     @patch('salt.modules.chroot.exist')
+     def test_call_fails_input_validation(self, exist):
+         '''
+diff --git a/tests/unit/modules/test_rebootmgr.py b/tests/unit/modules/test_rebootmgr.py
+new file mode 100644
+index 0000000000..4cf573997c
+--- /dev/null
++++ b/tests/unit/modules/test_rebootmgr.py
+@@ -0,0 +1,304 @@
++import pytest
++import salt.modules.rebootmgr as rebootmgr
++from salt.exceptions import CommandExecutionError
++
++# Import Salt Testing Libs
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.mock import MagicMock, patch
++from tests.support.unit import TestCase
++
++
++class RebootMgrTestCase(TestCase, LoaderModuleMockMixin):
++    """
++    Test cases for salt.modules.rebootmgr
++    """
++
++    def setup_loader_modules(self):
++        return {rebootmgr: {"__salt__": {}, "__utils__": {}}}
++
++    def test_version(self):
++        """
++        Test rebootmgr.version without parameters
++        """
++        version = "rebootmgrctl (rebootmgr) 1.3"
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": version, "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.version() == "1.3"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "--version"])
++
++    def test_is_active(self):
++        """
++        Test rebootmgr.is_active without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": None, "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.is_active()
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "is_active", "--quiet"]
++            )
++
++    def test_reboot(self):
++        """
++        Test rebootmgr.reboot without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.reboot() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "reboot"])
++
++    def test_reboot_order(self):
++        """
++        Test rebootmgr.reboot with order parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.reboot("now") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "reboot", "now"]
++            )
++
++    def test_reboot_invalid(self):
++        """
++        Test rebootmgr.reboot with invalid parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            with pytest.raises(CommandExecutionError):
++                rebootmgr.reboot("invalid")
++
++    def test_cancel(self):
++        """
++        Test rebootmgr.cancel without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.cancel() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "cancel"])
++
++    def test_status(self):
++        """
++        Test rebootmgr.status without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            # 0 - No reboot requested
++            assert rebootmgr.status() == 0
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "status", "--quiet"]
++            )
++
++    def test_set_strategy_default(self):
++        """
++        Test rebootmgr.set_strategy without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_strategy() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "set-strategy"]
++            )
++
++    def test_set_strategy(self):
++        """
++        Test rebootmgr.set_strategy with strategy parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_strategy("best-effort") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "set-strategy", "best-effort"]
++            )
++
++    def test_set_strategy_invalid(self):
++        """
++        Test rebootmgr.strategy with invalid parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            with pytest.raises(CommandExecutionError):
++                rebootmgr.set_strategy("invalid")
++
++    def test_get_strategy(self):
++        """
++        Test rebootmgr.get_strategy without parameters
++        """
++        strategy = "Reboot strategy: best-effort"
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": strategy, "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.get_strategy() == "best-effort"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "get-strategy"]
++            )
++
++    def test_set_window(self):
++        """
++        Test rebootmgr.set_window with parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_window("Thu,Fri 2020-*-1,5 11:12:13", "1h") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "set-window", "Thu,Fri 2020-*-1,5 11:12:13", "1h"]
++            )
++
++    def test_get_window(self):
++        """
++        Test rebootmgr.get_window without parameters
++        """
++        window = "Maintenance window is set to *-*-* 03:30:00, lasting 01h30m."
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": window, "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.get_window() == {
++                "time": "*-*-* 03:30:00",
++                "duration": "01h30m",
++            }
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "get-window"])
++
++    def test_set_group(self):
++        """
++        Test rebootmgr.set_group with parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_group("group1") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "set-group", "group1"]
++            )
++
++    def test_get_group(self):
++        """
++        Test rebootmgr.get_group without parameters
++        """
++        group = "Etcd lock group is set to group1"
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": group, "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.get_group() == "group1"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "get-group"])
++
++    def test_set_max(self):
++        """
++        Test rebootmgr.set_max with default parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_max(10) == "output"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "set-max", 10])
++
++    def test_set_max_group(self):
++        """
++        Test rebootmgr.set_max with group parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.set_max(10, "group1") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "set-max", "--group", "group1", 10]
++            )
++
++    def test_lock(self):
++        """
++        Test rebootmgr.lock without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.lock() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "lock"])
++
++    def test_lock_machine_id(self):
++        """
++        Test rebootmgr.lock with machine_id parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.lock("machine-id") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "lock", "machine-id"]
++            )
++
++    def test_lock_machine_id_group(self):
++        """
++        Test rebootmgr.lock with machine_id and group parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.lock("machine-id", "group1") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "lock", "--group", "group1", "machine-id"]
++            )
++
++    def test_unlock(self):
++        """
++        Test rebootmgr.unlock without parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.unlock() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(["rebootmgrctl", "unlock"])
++
++    def test_unlock_machine_id(self):
++        """
++        Test rebootmgr.unlock with machine_id parameter
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.unlock("machine-id") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "unlock", "machine-id"]
++            )
++
++    def test_unlock_machine_id_group(self):
++        """
++        Test rebootmgr.unlock with machine_id and group parameters
++        """
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(rebootmgr.__salt__, salt_mock):
++            assert rebootmgr.unlock("machine-id", "group1") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["rebootmgrctl", "unlock", "--group", "group1", "machine-id"]
++            )
+diff --git a/tests/unit/modules/test_transactional_update.py b/tests/unit/modules/test_transactional_update.py
+new file mode 100644
+index 0000000000..b42734a53d
+--- /dev/null
++++ b/tests/unit/modules/test_transactional_update.py
+@@ -0,0 +1,683 @@
++import sys
++
++import pytest
++import salt.modules.transactional_update as tu
++import salt.utils.platform
++from salt.exceptions import CommandExecutionError
++
++# Import Salt Testing Libs
++from tests.support.mixins import LoaderModuleMockMixin
++from tests.support.mock import MagicMock, patch
++from tests.support.unit import TestCase, skipIf
++
++
++@skipIf(salt.utils.platform.is_windows(), "Do not run these tests on Windows")
++class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
++    """
++    Test cases for salt.modules.transactional_update
++    """
++
++    def setup_loader_modules(self):
++        return {tu: {"__salt__": {}, "__utils__": {}}}
++
++    def test__global_params_no_self_update(self):
++        """Test transactional_update._global_params without self_update"""
++        assert tu._global_params(self_update=False) == [
++            "--non-interactive",
++            "--drop-if-no-change",
++            "--no-selfupdate",
++        ]
++
++    def test__global_params_self_update(self):
++        """Test transactional_update._global_params with self_update"""
++        assert tu._global_params(self_update=True) == [
++            "--non-interactive",
++            "--drop-if-no-change",
++        ]
++
++    def test__global_params_no_self_update_snapshot(self):
++        """Test transactional_update._global_params without self_update and
++        snapshot
++
++        """
++        assert tu._global_params(self_update=False, snapshot=10) == [
++            "--non-interactive",
++            "--drop-if-no-change",
++            "--no-selfupdate",
++            "--continue",
++            10,
++        ]
++
++    def test__global_params_no_self_update_continue(self):
++        """Test transactional_update._global_params without self_update and
++        snapshot conitue
++
++        """
++        assert tu._global_params(self_update=False, snapshot="continue") == [
++            "--non-interactive",
++            "--drop-if-no-change",
++            "--no-selfupdate",
++            "--continue",
++        ]
++
++    def test__pkg_params_no_packages(self):
++        """Test transactional_update._pkg_params without packages"""
++        with pytest.raises(CommandExecutionError):
++            tu._pkg_params(pkg=None, pkgs=None, args=None)
++
++    def test__pkg_params_pkg(self):
++        """Test transactional_update._pkg_params with single package"""
++        assert tu._pkg_params(pkg="pkg1", pkgs=None, args=None) == ["pkg1"]
++
++    def test__pkg_params_pkgs(self):
++        """Test transactional_update._pkg_params with packages"""
++        assert tu._pkg_params(pkg=None, pkgs="pkg1", args=None) == ["pkg1"]
++        assert tu._pkg_params(pkg=None, pkgs="pkg1 pkg2 ", args=None) == [
++            "pkg1",
++            "pkg2",
++        ]
++        assert tu._pkg_params(pkg=None, pkgs=["pkg1", "pkg2"], args=None) == [
++            "pkg1",
++            "pkg2",
++        ]
++
++    def test__pkg_params_pkg_pkgs(self):
++        """Test transactional_update._pkg_params with packages"""
++        assert tu._pkg_params(pkg="pkg1", pkgs="pkg2", args=None) == [
++            "pkg1",
++            "pkg2",
++        ]
++
++    def test__pkg_params_args(self):
++        """Test transactional_update._pkg_params with argumens"""
++        assert tu._pkg_params(pkg="pkg1", pkgs=None, args="--arg1") == [
++            "--arg1",
++            "pkg1",
++        ]
++        assert tu._pkg_params(pkg="pkg1", pkgs=None, args="--arg1 --arg2") == [
++            "--arg1",
++            "--arg2",
++            "pkg1",
++        ]
++        assert tu._pkg_params(pkg="pkg1", pkgs=None, args=["--arg1", "--arg2"]) == [
++            "--arg1",
++            "--arg2",
++            "pkg1",
++        ]
++
++    def test_transactional_transactional(self):
++        """Test transactional_update.transactional"""
++        matrix = (("/usr/sbin/transactional-update", True), ("", False))
++
++        for path_which, result in matrix:
++            utils_mock = {"path.which": MagicMock(return_value=path_which)}
++
++            with patch.dict(tu.__utils__, utils_mock):
++                assert tu.transactional() is result
++                utils_mock["path.which"].assert_called_with("transactional-update")
++
++    def test_in_transaction(self):
++        """Test transactional_update.in_transaction"""
++        matrix = (
++            ("/usr/sbin/transactional-update", True, True),
++            ("/usr/sbin/transactional-update", False, False),
++            ("", True, False),
++            ("", False, False),
++        )
++
++        for path_which, in_chroot, result in matrix:
++            utils_mock = {"path.which": MagicMock(return_value=path_which)}
++            salt_mock = {"chroot.in_chroot": MagicMock(return_value=in_chroot)}
++
++            with patch.dict(tu.__utils__, utils_mock):
++                with patch.dict(tu.__salt__, salt_mock):
++                    assert tu.in_transaction() is result
++
++    def test_commands_with_global_params(self):
++        """Test commands that only accept global params"""
++        for cmd in [
++            "cleanup",
++            "cleanup_snapshots",
++            "cleanup_overlays",
++            "grub_cfg",
++            "bootloader",
++            "initrd",
++            "kdump",
++            "reboot",
++            "dup",
++            "up",
++            "patch",
++            "migration",
++        ]:
++            salt_mock = {
++                "cmd.run_all": MagicMock(
++                    return_value={"stdout": "output", "retcode": 0}
++                )
++            }
++            with patch.dict(tu.__salt__, salt_mock):
++                assert getattr(tu, cmd)() == "output"
++                salt_mock["cmd.run_all"].assert_called_with(
++                    [
++                        "transactional-update",
++                        "--non-interactive",
++                        "--drop-if-no-change",
++                        "--no-selfupdate",
++                        cmd.replace("_", ".")
++                        if cmd.startswith("grub")
++                        else cmd.replace("_", "-"),
++                    ]
++                )
++
++    def test_run_error(self):
++        """Test transactional_update.run with missing command"""
++        with pytest.raises(CommandExecutionError):
++            tu.run(None)
++
++    def test_run_string(self):
++        """Test transactional_update.run with command as string"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.run("cmd --flag p1 p2") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--quiet",
++                    "run",
++                    "cmd",
++                    "--flag",
++                    "p1",
++                    "p2",
++                ]
++            )
++
++    def test_run_array(self):
++        """Test transactional_update.run with command as array"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.run(["cmd", "--flag", "p1", "p2"]) == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--quiet",
++                    "run",
++                    "cmd",
++                    "--flag",
++                    "p1",
++                    "p2",
++                ]
++            )
++
++    def test_pkg_commands(self):
++        """Test transactional_update.pkg_* commands"""
++        for cmd in ["pkg_install", "pkg_remove", "pkg_update"]:
++            salt_mock = {
++                "cmd.run_all": MagicMock(
++                    return_value={"stdout": "output", "retcode": 0}
++                )
++            }
++            with patch.dict(tu.__salt__, salt_mock):
++                assert getattr(tu, cmd)("pkg1", "pkg2 pkg3", "--arg") == "output"
++                salt_mock["cmd.run_all"].assert_called_with(
++                    [
++                        "transactional-update",
++                        "--non-interactive",
++                        "--drop-if-no-change",
++                        "--no-selfupdate",
++                        "pkg",
++                        cmd.replace("pkg_", ""),
++                        "--arg",
++                        "pkg1",
++                        "pkg2",
++                        "pkg3",
++                    ]
++                )
++
++    def test_rollback_error(self):
++        """Test transactional_update.rollback with wrong snapshot"""
++        with pytest.raises(CommandExecutionError):
++            tu.rollback("error")
++
++    def test_rollback_default(self):
++        """Test transactional_update.rollback with default snapshot"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.rollback() == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["transactional-update", "rollback"]
++            )
++
++    def test_rollback_snapshot_number(self):
++        """Test transactional_update.rollback with numeric snapshot"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.rollback(10) == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["transactional-update", "rollback", 10]
++            )
++
++    def test_rollback_snapshot_str(self):
++        """Test transactional_update.rollback with string snapshot"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.rollback("10") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["transactional-update", "rollback", "10"]
++            )
++
++    def test_rollback_last(self):
++        """Test transactional_update.rollback with last snapshot"""
++        salt_mock = {
++            "cmd.run_all": MagicMock(return_value={"stdout": "output", "retcode": 0})
++        }
++        with patch.dict(tu.__salt__, salt_mock):
++            assert tu.rollback("last") == "output"
++            salt_mock["cmd.run_all"].assert_called_with(
++                ["transactional-update", "rollback", "last"]
++            )
++
++    def test_pending_transaction(self):
++        """Test transactional_update.pending_transaction"""
++        matrix = (
++            (False, ["1", "2+", "3-"], True),
++            (False, ["1", "2-", "3+"], True),
++            (False, ["1", "2", "3*"], False),
++        )
++
++        for in_transaction, snapshots, result in matrix:
++            salt_mock = {
++                "cmd.run_all": MagicMock(
++                    return_value={"stdout": snapshots, "retcode": 0}
++                )
++            }
++
++            tu_in_transaction = "salt.modules.transactional_update.in_transaction"
++            with patch(tu_in_transaction) as in_transaction_mock:
++                in_transaction_mock.return_value = in_transaction
++                with patch.dict(tu.__salt__, salt_mock):
++                    assert tu.pending_transaction() is result
++                    salt_mock["cmd.run_all"].assert_called_with(
++                        ["snapper", "--no-dbus", "list", "--columns", "number"]
++                    )
++
++    def test_pending_transaction_in_transaction(self):
++        """Test transactional_update.pending_transaction when in transaction"""
++        tu_in_transaction = "salt.modules.transactional_update.in_transaction"
++        with patch(tu_in_transaction) as in_transaction_mock:
++            in_transaction_mock.return_value = True
++            with pytest.raises(CommandExecutionError):
++                tu.pending_transaction()
++
++    def test_call_fails_input_validation(self):
++        """Test transactional_update.call missing function name"""
++        with pytest.raises(CommandExecutionError):
++            tu.call("")
++
++    @patch("tempfile.mkdtemp")
++    def test_call_fails_untar(self, mkdtemp):
++        """Test transactional_update.call when tar fails"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value="Error"),
++            "config.option": MagicMock(),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert tu.call("/chroot", "test.ping") == {
++                "result": False,
++                "comment": "Error",
++            }
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            utils_mock["files.rm_rf"].assert_called_once()
++
++    @patch("tempfile.mkdtemp")
++    def test_call_fails_salt_thin(self, mkdtemp):
++        """Test transactional_update.chroot when fails salt_thin"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++            "json.find_json": MagicMock(side_effect=ValueError()),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value=""),
++            "config.option": MagicMock(),
++            "cmd.run_all": MagicMock(return_value={"retcode": 1, "stderr": "Error"}),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert tu.call("test.ping") == {"result": False, "comment": "Error"}
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--continue",
++                    "--quiet",
++                    "run",
++                    "python{}".format(sys.version_info[0]),
++                    "/var/cache/salt/minion/tmp01/salt-call",
++                    "--metadata",
++                    "--local",
++                    "--log-file",
++                    "/var/cache/salt/minion/tmp01/log",
++                    "--cachedir",
++                    "/var/cache/salt/minion/tmp01/cache",
++                    "--out",
++                    "json",
++                    "-l",
++                    "quiet",
++                    "--",
++                    "test.ping",
++                ]
++            )
++            utils_mock["files.rm_rf"].assert_called_once()
++
++    @patch("tempfile.mkdtemp")
++    def test_call_fails_function(self, mkdtemp):
++        """Test transactional_update.chroot when fails the function"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++            "json.find_json": MagicMock(side_effect=ValueError()),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value=""),
++            "config.option": MagicMock(),
++            "cmd.run_all": MagicMock(
++                return_value={"retcode": 0, "stdout": "Not found", "stderr": ""}
++            ),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert tu.call("test.ping") == {"result": False, "comment": "Not found"}
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--continue",
++                    "--quiet",
++                    "run",
++                    "python{}".format(sys.version_info[0]),
++                    "/var/cache/salt/minion/tmp01/salt-call",
++                    "--metadata",
++                    "--local",
++                    "--log-file",
++                    "/var/cache/salt/minion/tmp01/log",
++                    "--cachedir",
++                    "/var/cache/salt/minion/tmp01/cache",
++                    "--out",
++                    "json",
++                    "-l",
++                    "quiet",
++                    "--",
++                    "test.ping",
++                ]
++            )
++            utils_mock["files.rm_rf"].assert_called_once()
++
++    @patch("tempfile.mkdtemp")
++    def test_call_success_no_reboot(self, mkdtemp):
++        """Test transactional_update.chroot when succeed"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++            "json.find_json": MagicMock(return_value={"return": "result"}),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value=""),
++            "config.option": MagicMock(),
++            "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert tu.call("test.ping") == "result"
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--continue",
++                    "--quiet",
++                    "run",
++                    "python{}".format(sys.version_info[0]),
++                    "/var/cache/salt/minion/tmp01/salt-call",
++                    "--metadata",
++                    "--local",
++                    "--log-file",
++                    "/var/cache/salt/minion/tmp01/log",
++                    "--cachedir",
++                    "/var/cache/salt/minion/tmp01/cache",
++                    "--out",
++                    "json",
++                    "-l",
++                    "quiet",
++                    "--",
++                    "test.ping",
++                ]
++            )
++            utils_mock["files.rm_rf"].assert_called_once()
++
++    @patch("salt.modules.transactional_update.reboot")
++    @patch("salt.modules.transactional_update.pending_transaction")
++    @patch("tempfile.mkdtemp")
++    def test_call_success_reboot(self, mkdtemp, pending_transaction, reboot):
++        """Test transactional_update.chroot when succeed and reboot"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        pending_transaction.return_value = True
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++            "json.find_json": MagicMock(return_value={"return": "result"}),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value=""),
++            "config.option": MagicMock(),
++            "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert (
++                tu.call("transactional_update.dup", activate_transaction=True)
++                == "result"
++            )
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--continue",
++                    "--quiet",
++                    "run",
++                    "python{}".format(sys.version_info[0]),
++                    "/var/cache/salt/minion/tmp01/salt-call",
++                    "--metadata",
++                    "--local",
++                    "--log-file",
++                    "/var/cache/salt/minion/tmp01/log",
++                    "--cachedir",
++                    "/var/cache/salt/minion/tmp01/cache",
++                    "--out",
++                    "json",
++                    "-l",
++                    "quiet",
++                    "--",
++                    "transactional_update.dup",
++                ]
++            )
++            utils_mock["files.rm_rf"].assert_called_once()
++            pending_transaction.assert_called_once()
++            reboot.assert_called_once()
++
++    @patch("tempfile.mkdtemp")
++    def test_call_success_parameters(self, mkdtemp):
++        """Test transactional_update.chroot when succeed with parameters"""
++        mkdtemp.return_value = "/var/cache/salt/minion/tmp01"
++        utils_mock = {
++            "thin.gen_thin": MagicMock(return_value="/salt-thin.tgz"),
++            "files.rm_rf": MagicMock(),
++            "json.find_json": MagicMock(return_value={"return": "result"}),
++        }
++        opts_mock = {"cachedir": "/var/cache/salt/minion"}
++        salt_mock = {
++            "cmd.run": MagicMock(return_value=""),
++            "config.option": MagicMock(),
++            "cmd.run_all": MagicMock(return_value={"retcode": 0, "stdout": ""}),
++        }
++        with patch.dict(tu.__utils__, utils_mock), patch.dict(
++            tu.__opts__, opts_mock
++        ), patch.dict(tu.__salt__, salt_mock):
++            assert tu.call("module.function", key="value") == "result"
++
++            utils_mock["thin.gen_thin"].assert_called_once()
++            salt_mock["config.option"].assert_called()
++            salt_mock["cmd.run"].assert_called_once()
++            salt_mock["cmd.run_all"].assert_called_with(
++                [
++                    "transactional-update",
++                    "--non-interactive",
++                    "--drop-if-no-change",
++                    "--no-selfupdate",
++                    "--continue",
++                    "--quiet",
++                    "run",
++                    "python{}".format(sys.version_info[0]),
++                    "/var/cache/salt/minion/tmp01/salt-call",
++                    "--metadata",
++                    "--local",
++                    "--log-file",
++                    "/var/cache/salt/minion/tmp01/log",
++                    "--cachedir",
++                    "/var/cache/salt/minion/tmp01/cache",
++                    "--out",
++                    "json",
++                    "-l",
++                    "quiet",
++                    "--",
++                    "module.function",
++                    "key=value",
++                ]
++            )
++            utils_mock["files.rm_rf"].assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.client.ssh.state.SSHHighState")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_sls(
++        self,
++        get_sls_opts,
++        get_file_client,
++        SSHHighState,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.sls"""
++        SSHHighState.return_value = SSHHighState
++        SSHHighState.render_highstate.return_value = (None, [])
++        SSHHighState.state.reconcile_extend.return_value = (None, [])
++        SSHHighState.state.requisite_in.return_value = (None, [])
++        SSHHighState.state.verify_high.return_value = []
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock):
++            assert tu.sls("module") == "result"
++            _create_and_execute_salt_state.assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.client.ssh.state.SSHHighState")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_highstate(
++        self,
++        get_sls_opts,
++        get_file_client,
++        SSHHighState,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.highstage"""
++        SSHHighState.return_value = SSHHighState
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock):
++            assert tu.highstate() == "result"
++            _create_and_execute_salt_state.assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.client.ssh.state.SSHState")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_single(self, get_sls_opts, SSHState, _create_and_execute_salt_state):
++        """Test transactional_update.single"""
++        SSHState.return_value = SSHState
++        SSHState.verify_data.return_value = None
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock):
++            assert tu.single("pkg.installed", name="emacs") == "result"
++            _create_and_execute_salt_state.assert_called_once()
+-- 
+2.28.0
+
+

@@ -345,6 +345,24 @@ Patch129:     fix-virt.update-with-cpu-defined-263.patch
 Patch130:     remove-msgpack-1.0.0-requirement-in-the-installed-me.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/bc20f38d0fa492af70321fef7fe2530937dfc86a
 Patch131:     prevent-import-errors-when-running-test_btrfs-unit-t.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58529
+Patch132:     invalidate-file-list-cache-when-cache-file-modified-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58400
+Patch133:     xen-disk-fixes-264.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58552
+Patch134:     zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/58520
+Patch135:     support-transactional-systems-microos-271.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/272
+Patch136:     backport-a-few-virt-prs-272.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/275
+Patch137:     bsc-1176024-fix-file-directory-user-and-group-owners.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/277
+Patch138:     fix-grains.test_core-unit-test-277.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/e2c3b1cb72b796fe12f94af64baa2e64cbe5db0b
+Patch139:     drop-wrong-mock-from-chroot-unit-test.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/280
+Patch140:     ensure-virt.update-stop_on_reboot-is-updated-with-it.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate
@@ -690,6 +708,7 @@ Requires:       pmtools
 %endif
 %if %{with systemd}
 %{?systemd_requires}
+BuildRequires:	systemd
 %else
 %if 0%{?suse_version}
 Requires(pre):  %insserv_prereq
@@ -982,6 +1001,15 @@ cp %{S:5} ./.travis.yml
 %patch129 -p1
 %patch130 -p1
 %patch131 -p1
+%patch132 -p1
+%patch133 -p1
+%patch134 -p1
+%patch135 -p1
+%patch136 -p1
+%patch137 -p1
+%patch138 -p1
+%patch139 -p1
+%patch140 -p1
 
 %build
 # Putting /usr/bin at the front of $PATH is needed for RHEL/RES 7. Without this
@@ -1357,7 +1385,8 @@ if [ $1 -eq 2 ] ; then
   true
 fi
 %if %{with systemd}
-if [ `rpm -q systemd --queryformat="%%{VERSION}"` -lt 228 ]; then
+systemd_ver=$(rpm -q systemd --queryformat="%%{VERSION}")
+if [ "${systemd_ver%%.*}" -lt 228 ]; then
   # On systemd < 228 the 'TasksTask' attribute is not available.
   # Removing TasksMax from salt-master.service on SLE12SP1 LTSS (bsc#985112)
   sed -i '/TasksMax=infinity/d' %{_unitdir}/salt-master.service

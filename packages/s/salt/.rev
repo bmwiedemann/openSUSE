@@ -1545,4 +1545,41 @@ let build start it or we will get libvirt errors.
   * fix-the-removed-six.itermitems-and-six.-_type-262.patch</comment>
     <requestid>834906</requestid>
   </revision>
+  <revision rev="110" vrev="6">
+    <srcmd5>d9455c0b57c80c14eaf22d053e47c6f8</srcmd5>
+    <version>3000.3</version>
+    <time>1603031111</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure virt.update stop_on_reboot is updated with its default value
+- Added:
+  * ensure-virt.update-stop_on_reboot-is-updated-with-it.patch
+
+- Do not break package building for systemd OSes
+
+- Drop wrong mock from chroot unit test
+- Added:
+  * drop-wrong-mock-from-chroot-unit-test.patch
+
+- Support systemd versions with dot (bsc#1176294)
+
+- Fix for grains.test_core unit test
+- Fix file/directory user and group ownership containing UTF-8
+  characters (bsc#1176024)
+- Several changes to virtualization:
+-   - Fix virt update when cpu and memory are changed
+-   - Memory Tuning GSoC
+-   - Properly fix memory setting regression in virt.update
+-   - Expose libvirt on_reboot in virt states
+- Support transactional systems (MicroOS)
+- zypperpkg module ignores retcode 104 for search() (bsc#1159670)
+- Xen disk fixes. No longer generates volumes for Xen disks, but the
+  corresponding file or block disk (bsc#1175987)
+- Added:
+  * fix-grains.test_core-unit-test-277.patch
+  * support-transactional-systems-microos-271.patch
+  * backport-a-few-virt-prs-272.patch
+  * xen-disk-fixes-264.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch</comment>
+    <requestid>841799</requestid>
+  </revision>
 </revisionlist>

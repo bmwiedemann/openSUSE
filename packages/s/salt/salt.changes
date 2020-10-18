@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:49:33 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Ensure virt.update stop_on_reboot is updated with its default value
+
+- Added:
+  * ensure-virt.update-stop_on_reboot-is-updated-with-it.patch
+
+-------------------------------------------------------------------
+Tue Oct 13 15:26:05 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not break package building for systemd OSes
+
+-------------------------------------------------------------------
+Tue Oct 13 11:10:06 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Drop wrong mock from chroot unit test
+
+- Added:
+  * drop-wrong-mock-from-chroot-unit-test.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 12:19:05 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Support systemd versions with dot (bsc#1176294)
+
+-------------------------------------------------------------------
+Tue Oct  6 12:52:51 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Fix for grains.test_core unit test
+- Fix file/directory user and group ownership containing UTF-8
+  characters (bsc#1176024)
+- Several changes to virtualization:
+-   - Fix virt update when cpu and memory are changed
+-   - Memory Tuning GSoC
+-   - Properly fix memory setting regression in virt.update
+-   - Expose libvirt on_reboot in virt states
+- Support transactional systems (MicroOS)
+- zypperpkg module ignores retcode 104 for search() (bsc#1159670)
+- Xen disk fixes. No longer generates volumes for Xen disks, but the
+  corresponding file or block disk (bsc#1175987)
+
+- Added:
+  * fix-grains.test_core-unit-test-277.patch
+  * support-transactional-systems-microos-271.patch
+  * backport-a-few-virt-prs-272.patch
+  * xen-disk-fixes-264.patch
+  * zypperpkg-ignore-retcode-104-for-search-bsc-1176697-.patch
+  * bsc-1176024-fix-file-directory-user-and-group-owners.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 14:48:41 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Invalidate file list cache when cache file modified time is in the future (bsc#1176397)
+
+- Added:
+  * invalidate-file-list-cache-when-cache-file-modified-.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 11:52:33 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Prevent import errors when running test_btrfs unit tests

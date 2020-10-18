@@ -1,0 +1,1272 @@
+From f45df684fe68a93a7003aca2189479b0d0240305 Mon Sep 17 00:00:00 2001
+From: Cedric Bosdonnat <cbosdonnat@suse.com>
+Date: Mon, 5 Oct 2020 16:49:59 +0200
+Subject: [PATCH] Backport a few virt PRs (#272)
+
+* Fix virt update when cpu and memory are changed
+
+If CPU is changed, the memory change would be short circuited. This is a
+regression introduced by PR #58332
+
+* virt: add VM memory tunning support
+
+* avoid comparing string with integer
+
+* fix pre-commit failure
+
+* Properly fix memory setting regression in virt.update
+
+The 'mem' property in the virt.update value should indicate the result
+of a live memory setting. The value should be an int in KiB. Fixing the
+code and tests for this.
+
+* virt: add stop_on_reboot parameter in guest states and definition
+
+It can be needed to force a VM to stop instead of rebooting. A typical
+example of this is when creating a VM using a install CDROM ISO or when
+using an autoinstallation profile. Forcing a shutdown allows libvirt to
+pick up another XML definition for the new start to remove the
+firstboot-only options.
+
+* virt: expose live parameter in virt.defined state
+
+Allow updating the definition of a VM without touching the live
+instance. This can be helpful since live update may change the device
+names in the guest.
+
+Co-authored-by: firefly <guoqing_li@pm.me>
+Co-authored-by: gqlo <escita@pm.me>
+---
+ changelog/57639.added                    |   1 +
+ changelog/58589.added                    |   1 +
+ salt/modules/virt.py                     | 303 +++++++++++++++++++--
+ salt/states/virt.py                      |  73 +++++-
+ salt/templates/virt/libvirt_domain.jinja |  30 ++-
+ salt/utils/xmlutil.py                    |   4 +-
+ tests/unit/modules/test_virt.py          | 320 ++++++++++++++++++++++-
+ tests/unit/states/test_virt.py           |  19 +-
+ 8 files changed, 704 insertions(+), 47 deletions(-)
+ create mode 100644 changelog/57639.added
+ create mode 100644 changelog/58589.added
+
+diff --git a/changelog/57639.added b/changelog/57639.added
+new file mode 100644
+index 0000000000..c0281e9319
+--- /dev/null
++++ b/changelog/57639.added
+@@ -0,0 +1 @@
++Memory Tuning Support which allows much greater control of memory allocation
+diff --git a/changelog/58589.added b/changelog/58589.added
+new file mode 100644
+index 0000000000..5960555ec6
+--- /dev/null
++++ b/changelog/58589.added
+@@ -0,0 +1 @@
++Allow handling special first boot definition on virtual machine
+diff --git a/salt/modules/virt.py b/salt/modules/virt.py
+index 34643787f9..87ab7ca12d 100644
+--- a/salt/modules/virt.py
++++ b/salt/modules/virt.py
+@@ -71,13 +71,57 @@ The calls not using the libvirt connection setup are:
+ - `libvirt URI format <http://libvirt.org/uri.html#URI_config>`_
+ - `libvirt authentication configuration <http://libvirt.org/auth.html#Auth_client_config>`_
+ 
++Units
++==========
++.. _virt-units:
++.. rubric:: Units specification
++.. versionadded:: Magnesium
++
++The string should contain a number optionally followed
++by a unit. The number may have a decimal fraction. If
++the unit is not given then MiB are set by default.
++Units can optionally be given in IEC style (such as MiB),
++although the standard single letter style (such as M) is
++more convenient.
++
++Valid units include:
++
++========== =====    ==========  ==========  ======
++Standard   IEC      Standard    IEC
++  Unit     Unit     Name        Name        Factor
++========== =====    ==========  ==========  ======
++    B               Bytes                   1
++    K       KiB     Kilobytes   Kibibytes   2**10
++    M       MiB     Megabytes   Mebibytes   2**20
++    G       GiB     Gigabytes   Gibibytes   2**30
++    T       TiB     Terabytes   Tebibytes   2**40
++    P       PiB     Petabytes   Pebibytes   2**50
++    E       EiB     Exabytes    Exbibytes   2**60
++    Z       ZiB     Zettabytes  Zebibytes   2**70
++    Y       YiB     Yottabytes  Yobibytes   2**80
++========== =====    ==========  ==========  ======
++
++Additional decimal based units:
++
++======  =======
++Unit     Factor
++======  =======
++KB      10**3
++MB      10**6
++GB      10**9
++TB      10**12
++PB      10**15
++EB      10**18
++ZB      10**21
++YB      10**24
++======  =======
+ """
+ # Special Thanks to Michael Dehann, many of the concepts, and a few structures
+ # of his in the virt func module have been used
+ 
+-# Import python libs
+ 
+ import base64
++import collections
+ import copy
+ import datetime
+ import logging
+@@ -89,10 +133,8 @@ import subprocess
+ import sys
+ import time
+ 
+-# Import third party libs
+ import jinja2.exceptions
+ 
+-# Import salt libs
+ import salt.utils.data
+ import salt.utils.files
+ import salt.utils.json
+@@ -725,6 +767,39 @@ def _disk_from_pool(conn, pool, pool_xml, volume_name):
+     return disk_context
+ 
+ 
++def _handle_unit(s, def_unit="m"):
++    """
++    Handle the unit conversion, return the value in bytes
++    """
++    m = re.match(r"(?P<value>[0-9.]*)\s*(?P<unit>.*)$", six.text_type(s).strip())
++    value = m.group("value")
++    # default unit
++    unit = m.group("unit").lower() or def_unit
++    try:
++        value = int(value)
++    except ValueError:
++        try:
++            value = float(value)
++        except ValueError:
++            raise SaltInvocationError("invalid number")
++    # flag for base ten
++    dec = False
++    if re.match(r"[kmgtpezy]b$", unit):
++        dec = True
++    elif not re.match(r"(b|[kmgtpezy](ib)?)$", unit):
++        raise SaltInvocationError("invalid units")
++    p = "bkmgtpezy".index(unit[0])
++    value *= 10 ** (p * 3) if dec else 2 ** (p * 10)
++    return int(value)
++
++
++def nesthash():
++    """
++    create default dict that allows arbitrary level of nesting
++    """
++    return collections.defaultdict(nesthash)
++
++
+ def _gen_xml(
+     conn,
+     name,
+@@ -738,18 +813,32 @@ def _gen_xml(
+     graphics=None,
+     boot=None,
+     boot_dev=None,
++    stop_on_reboot=False,
+     **kwargs
+ ):
+     """
+     Generate the XML string to define a libvirt VM
+     """
+-    mem = int(mem) * 1024  # MB
+     context = {
+         "hypervisor": hypervisor,
+         "name": name,
+         "cpu": six.text_type(cpu),
+-        "mem": six.text_type(mem),
++        "on_reboot": "destroy" if stop_on_reboot else "restart",
+     }
++
++    context["mem"] = nesthash()
++    if isinstance(mem, int):
++        mem = int(mem) * 1024  # MB
++        context["mem"]["boot"] = six.text_type(mem)
++        context["mem"]["current"] = six.text_type(mem)
++    elif isinstance(mem, dict):
++        for tag, val in six.iteritems(mem):
++            if val:
++                if tag == "slots":
++                    context["mem"]["slots"] = "{}='{}'".format(tag, val)
++                else:
++                    context["mem"][tag] = six.text_type(int(_handle_unit(val) / 1024))
++
+     if hypervisor in ["qemu", "kvm"]:
+         context["controller_model"] = False
+     elif hypervisor == "vmware":
+@@ -869,7 +958,6 @@ def _gen_xml(
+     except jinja2.exceptions.TemplateNotFound:
+         log.error("Could not load template %s", fn_)
+         return ""
+-
+     return template.render(**context)
+ 
+ 
+@@ -1668,6 +1756,7 @@ def init(
+     arch=None,
+     boot=None,
+     boot_dev=None,
++    stop_on_reboot=False,
+     **kwargs
+ ):
+     """
+@@ -1675,7 +1764,28 @@ def init(
+ 
+     :param name: name of the virtual machine to create
+     :param cpu: Number of virtual CPUs to assign to the virtual machine
+-    :param mem: Amount of memory to allocate to the virtual machine in MiB.
++    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since Magnesium, a dictionary can be used to
++        contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
++        ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
++        structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
++        Detail unit specification is documented  in :ref:`virt-units`. Please note that the value for ``slots`` must be
++        an integer.
++
++        .. code-block:: python
++
++            {
++                'boot': 1g,
++                'current': 1g,
++                'max': 1g,
++                'slots': 10,
++                'hard_limit': '1024'
++                'soft_limit': '512m'
++                'swap_hard_limit': '1g'
++                'min_guarantee': '512mib'
++            }
++
++        .. versionchanged:: Magnesium
++
+     :param nic: NIC profile to use (Default: ``'default'``).
+                 The profile interfaces can be customized / extended with the interfaces parameter.
+                 If set to ``None``, no profile will be used.
+@@ -1732,6 +1842,15 @@ def init(
+     :param password: password to connect with, overriding defaults
+ 
+                      .. versionadded:: 2019.2.0
++
++    :param stop_on_reboot:
++        If set to ``True`` the guest will stop instead of rebooting.
++        This is specially useful when creating a virtual machine with an installation cdrom or
++        an autoinstallation needing a special first boot configuration.
++        Defaults to ``False``
++
++        .. versionadded:: Aluminium
++
+     :param boot:
+         Specifies kernel, initial ramdisk and kernel command line parameters for the virtual machine.
+         This is an optional parameter, all of the keys are optional within the dictionary. The structure of
+@@ -1788,6 +1907,36 @@ def init(
+ 
+        .. versionadded:: sodium
+ 
++    .. _init-mem-def:
++
++    .. rubric:: Memory parameter definition
++
++    Memory parameter can contain the following properties:
++
++    boot
++        The maximum allocation of memory for the guest at boot time
++
++    current
++        The actual allocation of memory for the guest
++
++    max
++        The run time maximum memory allocation of the guest
++
++    slots
++         specifies the number of slots available for adding memory to the guest
++
++    hard_limit
++        the maximum memory the guest can use
++
++    soft_limit
++        memory limit to enforce during memory contention
++
++    swap_hard_limit
++        the maximum memory plus swap the guest can use
++
++    min_guarantee
++        the guaranteed minimum memory allocation for the guest
++
+     .. _init-nic-def:
+ 
+     .. rubric:: Network Interfaces Definitions
+@@ -2082,6 +2231,7 @@ def init(
+             graphics,
+             boot,
+             boot_dev,
++            stop_on_reboot,
+             **kwargs
+         )
+         log.debug("New virtual machine definition: %s", vm_xml)
+@@ -2311,6 +2461,7 @@ def update(
+     boot=None,
+     test=False,
+     boot_dev=None,
++    stop_on_reboot=False,
+     **kwargs
+ ):
+     """
+@@ -2318,7 +2469,24 @@ def update(
+ 
+     :param name: Name of the domain to update
+     :param cpu: Number of virtual CPUs to assign to the virtual machine
+-    :param mem: Amount of memory to allocate to the virtual machine in MiB.
++    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since Magnesium, a dictionary can be used to
++        contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
++        ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
++        structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
++        Detail unit specification is documented  in :ref:`virt-units`. Please note that the value for ``slots`` must be
++        an integer.
++
++        To remove any parameters, pass a None object, for instance: 'soft_limit': ``None``. Please note  that ``None``
++        is mapped to ``null`` in sls file, pass ``null`` in sls file instead.
++
++        .. code-block:: yaml
++
++            - mem:
++                hard_limit: null
++                soft_limit: null
++
++        .. versionchanged:: Magnesium
++
+     :param disk_profile: disk profile to use
+     :param disks:
+         Disk definitions as documented in the :func:`init` function.
+@@ -2375,6 +2543,14 @@ def update(
+ 
+         .. versionadded:: Magnesium
+ 
++    :param stop_on_reboot:
++        If set to ``True`` the guest will stop instead of rebooting.
++        This is specially useful when creating a virtual machine with an installation cdrom or
++        an autoinstallation needing a special first boot configuration.
++        Defaults to ``False``
++
++        .. versionadded:: Aluminium
++
+     :param test: run in dry-run mode if set to True
+ 
+         .. versionadded:: sodium
+@@ -2438,6 +2614,8 @@ def update(
+             desc.find(".//os/type").get("arch"),
+             graphics,
+             boot,
++            boot_dev,
++            stop_on_reboot,
+             **kwargs
+         )
+     )
+@@ -2458,12 +2636,26 @@ def update(
+     def _set_nvram(node, value):
+         node.set("template", value)
+ 
+-    def _set_with_mib_unit(node, value):
++    def _set_with_byte_unit(node, value):
+         node.text = six.text_type(value)
+-        node.set("unit", "MiB")
++        node.set("unit", "bytes")
++
++    def _get_with_unit(node):
++        unit = node.get("unit", "KiB")
++        # _handle_unit treats bytes as invalid unit for the purpose of consistency
++        unit = unit if unit != "bytes" else "b"
++        value = node.get("memory") or node.text
++        return _handle_unit("{}{}".format(value, unit)) if value else None
++
++    old_mem = int(_get_with_unit(desc.find("memory")) / 1024)
+ 
+     # Update the kernel boot parameters
+     params_mapping = [
++        {
++            "path": "stop_on_reboot",
++            "xpath": "on_reboot",
++            "convert": lambda v: "destroy" if v else "restart",
++        },
+         {"path": "boot:kernel", "xpath": "os/kernel"},
+         {"path": "boot:initrd", "xpath": "os/initrd"},
+         {"path": "boot:cmdline", "xpath": "os/cmdline"},
+@@ -2473,14 +2665,72 @@ def update(
+         {
+             "path": "mem",
+             "xpath": "memory",
+-            "get": lambda n: int(n.text) / 1024,
+-            "set": _set_with_mib_unit,
++            "convert": _handle_unit,
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
+         },
+         {
+             "path": "mem",
+             "xpath": "currentMemory",
+-            "get": lambda n: int(n.text) / 1024,
+-            "set": _set_with_mib_unit,
++            "convert": _handle_unit,
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:max",
++            "convert": _handle_unit,
++            "xpath": "maxMemory",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:boot",
++            "convert": _handle_unit,
++            "xpath": "memory",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:current",
++            "convert": _handle_unit,
++            "xpath": "currentMemory",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:slots",
++            "xpath": "maxMemory",
++            "get": lambda n: n.get("slots"),
++            "set": lambda n, v: n.set("slots", str(v)),
++            "del": salt.utils.xmlutil.del_attribute("slots", ["unit"]),
++        },
++        {
++            "path": "mem:hard_limit",
++            "convert": _handle_unit,
++            "xpath": "memtune/hard_limit",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:soft_limit",
++            "convert": _handle_unit,
++            "xpath": "memtune/soft_limit",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:swap_hard_limit",
++            "convert": _handle_unit,
++            "xpath": "memtune/swap_hard_limit",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
++        },
++        {
++            "path": "mem:min_guarantee",
++            "convert": _handle_unit,
++            "xpath": "memtune/min_guarantee",
++            "get": _get_with_unit,
++            "set": _set_with_byte_unit,
+         },
+         {
+             "path": "boot_dev:{dev}",
+@@ -2566,13 +2816,24 @@ def update(
+                     }
+                 )
+             if mem:
+-                commands.append(
+-                    {
+-                        "device": "mem",
+-                        "cmd": "setMemoryFlags",
+-                        "args": [mem * 1024, libvirt.VIR_DOMAIN_AFFECT_LIVE],
+-                    }
+-                )
++                if isinstance(mem, dict):
++                    # setMemoryFlags takes memory amount in KiB
++                    new_mem = (
++                        int(_handle_unit(mem.get("current")) / 1024)
++                        if "current" in mem
++                        else None
++                    )
++                elif isinstance(mem, int):
++                    new_mem = int(mem * 1024)
++
++                if old_mem != new_mem and new_mem is not None:
++                    commands.append(
++                        {
++                            "device": "mem",
++                            "cmd": "setMemoryFlags",
++                            "args": [new_mem, libvirt.VIR_DOMAIN_AFFECT_LIVE],
++                        }
++                    )
+ 
+             # Look for removable device source changes
+             new_disks = []
+diff --git a/salt/states/virt.py b/salt/states/virt.py
+index 1a0c889d58..740f6c5746 100644
+--- a/salt/states/virt.py
++++ b/salt/states/virt.py
+@@ -11,13 +11,11 @@ for the generation and signing of certificates for systems running libvirt:
+       virt.keys
+ """
+ 
+-# Import Python libs
+ 
+ import fnmatch
+ import logging
+ import os
+ 
+-# Import Salt libs
+ import salt.utils.args
+ import salt.utils.files
+ import salt.utils.stringutils
+@@ -290,6 +288,8 @@ def defined(
+     boot=None,
+     update=True,
+     boot_dev=None,
++    stop_on_reboot=False,
++    live=True,
+ ):
+     """
+     Starts an existing guest, or defines and starts a new VM with specified arguments.
+@@ -298,7 +298,28 @@ def defined(
+ 
+     :param name: name of the virtual machine to run
+     :param cpu: number of CPUs for the virtual machine to create
+-    :param mem: amount of memory in MiB for the new virtual machine
++    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since Magnesium, a dictionary can be used to
++        contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
++        ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
++        structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
++        Detail unit specification is documented  in :ref:`virt-units`. Please note that the value for ``slots`` must be
++        an integer.
++
++        .. code-block:: python
++
++            {
++                'boot': 1g,
++                'current': 1g,
++                'max': 1g,
++                'slots': 10,
++                'hard_limit': '1024'
++                'soft_limit': '512m'
++                'swap_hard_limit': '1g'
++                'min_guarantee': '512mib'
++            }
++
++        .. versionchanged:: Magnesium
++
+     :param vm_type: force virtual machine type for the new VM. The default value is taken from
+         the host capabilities. This could be useful for example to use ``'qemu'`` type instead
+         of the ``'kvm'`` one.
+@@ -358,6 +379,20 @@ def defined(
+ 
+         .. versionadded:: Magnesium
+ 
++    :param stop_on_reboot:
++        If set to ``True`` the guest will stop instead of rebooting.
++        This is specially useful when creating a virtual machine with an installation cdrom or
++        an autoinstallation needing a special first boot configuration.
++        Defaults to ``False``
++
++        .. versionadded:: Aluminium
++
++    :param live:
++        If set to ``False`` the changes will not be applied live to the running instance, but will
++        only apply at the next start. Note that reboot will not take those changes.
++
++        .. versionadded:: Aluminium
++
+     .. rubric:: Example States
+ 
+     Make sure a virtual machine called ``domain_name`` is defined:
+@@ -415,13 +450,14 @@ def defined(
+                     nic_profile=nic_profile,
+                     interfaces=interfaces,
+                     graphics=graphics,
+-                    live=True,
++                    live=live,
+                     connection=connection,
+                     username=username,
+                     password=password,
+                     boot=boot,
+                     test=__opts__["test"],
+                     boot_dev=boot_dev,
++                    stop_on_reboot=stop_on_reboot,
+                 )
+             ret["changes"][name] = status
+             if not status.get("definition"):
+@@ -457,6 +493,7 @@ def defined(
+                     boot=boot,
+                     start=False,
+                     boot_dev=boot_dev,
++                    stop_on_reboot=stop_on_reboot,
+                 )
+             ret["changes"][name] = {"definition": True}
+             ret["comment"] = "Domain {} defined".format(name)
+@@ -490,6 +527,7 @@ def running(
+     arch=None,
+     boot=None,
+     boot_dev=None,
++    stop_on_reboot=False,
+ ):
+     """
+     Starts an existing guest, or defines and starts a new VM with specified arguments.
+@@ -498,7 +536,23 @@ def running(
+ 
+     :param name: name of the virtual machine to run
+     :param cpu: number of CPUs for the virtual machine to create
+-    :param mem: amount of memory in MiB for the new virtual machine
++    :param mem: Amount of memory to allocate to the virtual machine in MiB. Since Magnesium, a dictionary can be used to
++        contain detailed configuration which support memory allocation or tuning. Supported parameters are ``boot``,
++        ``current``, ``max``, ``slots``, ``hard_limit``, ``soft_limit``, ``swap_hard_limit`` and ``min_guarantee``. The
++        structure of the dictionary is documented in  :ref:`init-mem-def`. Both decimal and binary base are supported.
++        Detail unit specification is documented  in :ref:`virt-units`. Please note that the value for ``slots`` must be
++        an integer.
++
++        To remove any parameters, pass a None object, for instance: 'soft_limit': ``None``. Please note  that ``None``
++        is mapped to ``null`` in sls file, pass ``null`` in sls file instead.
++
++        .. code-block:: yaml
++
++            - mem:
++                hard_limit: null
++                soft_limit: null
++
++        .. versionchanged:: Magnesium
+     :param vm_type: force virtual machine type for the new VM. The default value is taken from
+         the host capabilities. This could be useful for example to use ``'qemu'`` type instead
+         of the ``'kvm'`` one.
+@@ -609,6 +663,14 @@ def running(
+ 
+         .. versionadded:: Magnesium
+ 
++    :param stop_on_reboot:
++        If set to ``True`` the guest will stop instead of rebooting.
++        This is specially useful when creating a virtual machine with an installation cdrom or
++        an autoinstallation needing a special first boot configuration.
++        Defaults to ``False``
++
++        .. versionadded:: Aluminium
++
+     .. rubric:: Example States
+ 
+     Make sure an already-defined virtual machine called ``domain_name`` is running:
+@@ -677,6 +739,7 @@ def running(
+         boot=boot,
+         update=update,
+         boot_dev=boot_dev,
++        stop_on_reboot=stop_on_reboot,
+         connection=connection,
+         username=username,
+         password=password,
+diff --git a/salt/templates/virt/libvirt_domain.jinja b/salt/templates/virt/libvirt_domain.jinja
+index 18728a75b5..fb4c9f40d0 100644
+--- a/salt/templates/virt/libvirt_domain.jinja
++++ b/salt/templates/virt/libvirt_domain.jinja
+@@ -2,9 +2,32 @@
+ <domain type='{{ hypervisor }}'>
+         <name>{{ name }}</name>
+         <vcpu>{{ cpu }}</vcpu>
+-        <memory unit='KiB'>{{ mem }}</memory>
+-        <currentMemory unit='KiB'>{{ mem }}</currentMemory>
+-        <os {{boot.os_attrib}}>
++        {%- if mem.max %}
++        <maxMemory {{ mem.slots }} unit='KiB'> {{ mem.max }}</maxMemory>
++        {%- endif %}
++        {%- if mem.boot %}
++        <memory unit='KiB'>{{ mem.boot }}</memory>
++        {%- endif %}
++        {%- if mem.current %}
++        <currentMemory unit='KiB'>{{ mem.current }}</currentMemory>
++        {%- endif %}
++        {%- if mem %}
++        <memtune>
++            {%- if 'hard_limit' in mem and mem.hard_limit %}
++                <hard_limit unit="KiB">{{ mem.hard_limit }}</hard_limit>
++            {%- endif %}
++            {%- if 'soft_limit' in mem and mem.soft_limit %}
++                <soft_limit unit="KiB">{{ mem.soft_limit }}</soft_limit>
++            {%- endif %}
++            {%- if 'swap_hard_limit' in mem and mem.swap_hard_limit %}
++                <swap_hard_limit unit="KiB">{{ mem.swap_hard_limit }}</swap_hard_limit>
++            {%- endif %}
++            {%- if 'min_guarantee' in mem and mem.min_guarantee %}
++                <min_guarantee unit="KiB">{{ mem.min_guarantee }}</min_guarantee>
++            {%- endif %}
++        </memtune>
++        {%- endif %}
++        <os {{ boot.os_attrib }}>
+                 <type arch='{{ arch }}'>{{ os_type }}</type>
+                 {% if boot %}
+                   {% if 'kernel' in boot %}
+@@ -27,6 +50,7 @@
+                 <boot dev='{{ dev }}' />
+                 {% endfor %}
+         </os>
++        <on_reboot>{{ on_reboot }}</on_reboot>
+         <devices>
+                 {% for disk in disks %}
+                 <disk type='{{ disk.type }}' device='{{ disk.device }}'>
+diff --git a/salt/utils/xmlutil.py b/salt/utils/xmlutil.py
+index 68191bc528..6c32f22ad4 100644
+--- a/salt/utils/xmlutil.py
++++ b/salt/utils/xmlutil.py
+@@ -2,12 +2,10 @@
+ Various XML utilities
+ """
+ 
+-# Import Python libs
+ import re
+ import string  # pylint: disable=deprecated-module
+ from xml.etree import ElementTree
+ 
+-# Import salt libs
+ import salt.utils.data
+ from salt.ext import six
+ 
+@@ -301,7 +299,7 @@ def change_xml(doc, data, mapping):
+                 if convert_fn:
+                     new_value = convert_fn(new_value)
+ 
+-                if current_value != new_value:
++                if six.text_type(current_value) != six.text_type(new_value):
+                     set_fn(node, new_value)
+                     need_update = True
+             else:
+diff --git a/tests/unit/modules/test_virt.py b/tests/unit/modules/test_virt.py
+index 6e61544a1f..ca5e80d2d2 100644
+--- a/tests/unit/modules/test_virt.py
++++ b/tests/unit/modules/test_virt.py
+@@ -4,7 +4,6 @@ virt execution module unit tests
+ 
+ # pylint: disable=3rd-party-module-not-gated
+ 
+-# Import python libs
+ 
+ import datetime
+ import os
+@@ -16,7 +15,6 @@ import salt.modules.config as config
+ import salt.modules.virt as virt
+ import salt.syspaths
+ 
+-# Import salt libs
+ import salt.utils.yaml
+ from salt._compat import ElementTree as ET
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+@@ -24,7 +22,6 @@ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ # pylint: disable=import-error
+ from salt.ext.six.moves import range  # pylint: disable=redefined-builtin
+ 
+-# Import Salt Testing libs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, patch
+ from tests.support.unit import TestCase
+@@ -1859,6 +1856,25 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             virt.update("my_vm"),
+         )
+ 
++        # mem + cpu case
++        define_mock.reset_mock()
++        domain_mock.setMemoryFlags.return_value = 0
++        domain_mock.setVcpusFlags.return_value = 0
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++                "mem": True,
++                "cpu": True,
++            },
++            virt.update("my_vm", mem=2048, cpu=2),
++        )
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual("2", setxml.find("vcpu").text)
++        self.assertEqual("2147483648", setxml.find("memory").text)
++        self.assertEqual(2048 * 1024, domain_mock.setMemoryFlags.call_args[0][0])
++
+         # Same parameters passed than in default virt.defined state case
+         self.assertEqual(
+             {
+@@ -2004,6 +2020,50 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         with self.assertRaises(SaltInvocationError):
+             virt.update("my_vm", boot={"efi": "Not a boolean value"})
+ 
++        # Update memtune parameter case
++        memtune = {
++            "soft_limit": "0.5g",
++            "hard_limit": "1024",
++            "swap_hard_limit": "2048m",
++            "min_guarantee": "1 g",
++        }
++
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("my_vm", mem=memtune),
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(
++            setxml.find("memtune").find("soft_limit").text, str(int(0.5 * 1024 ** 3))
++        )
++        self.assertEqual(setxml.find("memtune").find("soft_limit").get("unit"), "bytes")
++        self.assertEqual(
++            setxml.find("memtune").find("hard_limit").text, str(1024 * 1024 ** 2)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("swap_hard_limit").text, str(2048 * 1024 ** 2)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("min_guarantee").text, str(1 * 1024 ** 3)
++        )
++
++        invalid_unit = {"soft_limit": "2HB"}
++
++        with self.assertRaises(SaltInvocationError):
++            virt.update("my_vm", mem=invalid_unit)
++
++        invalid_number = {
++            "soft_limit": "3.4.MB",
++        }
++
++        with self.assertRaises(SaltInvocationError):
++            virt.update("my_vm", mem=invalid_number)
++
+         # Update memory case
+         setmem_mock = MagicMock(return_value=0)
+         domain_mock.setMemoryFlags = setmem_mock
+@@ -2018,10 +2078,43 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+             virt.update("my_vm", mem=2048),
+         )
+         setxml = ET.fromstring(define_mock.call_args[0][0])
+-        self.assertEqual(setxml.find("memory").text, "2048")
+-        self.assertEqual(setxml.find("memory").get("unit"), "MiB")
++        self.assertEqual(setxml.find("memory").text, str(2048 * 1024 ** 2))
++        self.assertEqual(setxml.find("memory").get("unit"), "bytes")
+         self.assertEqual(setmem_mock.call_args[0][0], 2048 * 1024)
+ 
++        mem_dict = {"boot": "0.5g", "current": "2g", "max": "1g", "slots": 12}
++        self.assertEqual(
++            {
++                "definition": True,
++                "mem": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("my_vm", mem=mem_dict),
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(setxml.find("memory").get("unit"), "bytes")
++        self.assertEqual(setxml.find("memory").text, str(int(0.5 * 1024 ** 3)))
++        self.assertEqual(setxml.find("maxMemory").text, str(1 * 1024 ** 3))
++        self.assertEqual(setxml.find("currentMemory").text, str(2 * 1024 ** 3))
++
++        max_slot_reverse = {
++            "slots": "10",
++            "max": "3096m",
++        }
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("my_vm", mem=max_slot_reverse),
++        )
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(setxml.find("maxMemory").text, str(3096 * 1024 ** 2))
++        self.assertEqual(setxml.find("maxMemory").attrib.get("slots"), "10")
++
+         # Update disks case
+         devattach_mock = MagicMock(return_value=0)
+         devdetach_mock = MagicMock(return_value=0)
+@@ -2536,7 +2629,6 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         Test virt.update() with existing boot parameters.
+         """
+-        root_dir = os.path.join(salt.syspaths.ROOT_DIR, "srv", "salt-images")
+         xml_boot = """
+             <domain type='kvm' id='8'>
+               <name>vm_with_boot_param</name>
+@@ -2594,9 +2686,7 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+                 </video>
+               </devices>
+             </domain>
+-        """.format(
+-            root_dir, os.sep
+-        )
++        """
+         domain_mock_boot = self.set_mock_vm("vm_with_boot_param", xml_boot)
+         domain_mock_boot.OSType = MagicMock(return_value="hvm")
+         define_mock_boot = MagicMock(return_value=True)
+@@ -2697,6 +2787,218 @@ class VirtTestCase(TestCase, LoaderModuleMockMixin):
+         self.assertEqual(setxml.find("os").find("loader"), None)
+         self.assertEqual(setxml.find("os").find("nvram"), None)
+ 
++    def test_update_memtune_params(self):
++        """
++        Test virt.update() with memory tuning parameters.
++        """
++        xml_with_memtune_params = """
++            <domain type='kvm' id='8'>
++              <name>vm_with_boot_param</name>
++              <memory unit='KiB'>1048576</memory>
++              <currentMemory unit='KiB'>1048576</currentMemory>
++              <maxMemory slots="12" unit="bytes">1048576</maxMemory>
++              <vcpu placement='auto'>1</vcpu>
++              <memtune>
++                <hard_limit unit="KiB">1048576</hard_limit>
++                <soft_limit unit="KiB">2097152</soft_limit>
++                <swap_hard_limit unit="KiB">2621440</swap_hard_limit>
++                <min_guarantee unit='KiB'>671088</min_guarantee>
++              </memtune>
++              <os>
++                <type arch='x86_64' machine='pc-i440fx-2.6'>hvm</type>
++              </os>
++            </domain>
++        """
++        domain_mock = self.set_mock_vm("vm_with_memtune_param", xml_with_memtune_params)
++        domain_mock.OSType = MagicMock(return_value="hvm")
++        define_mock = MagicMock(return_value=True)
++        self.mock_conn.defineXML = define_mock
++
++        memtune_new_val = {
++            "boot": "0.7g",
++            "current": "2.5g",
++            "max": "3096m",
++            "slots": "10",
++            "soft_limit": "2048m",
++            "hard_limit": "1024",
++            "swap_hard_limit": "2.5g",
++            "min_guarantee": "1 g",
++        }
++
++        domain_mock.setMemoryFlags.return_value = 0
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++                "mem": True,
++            },
++            virt.update("vm_with_memtune_param", mem=memtune_new_val),
++        )
++        self.assertEqual(
++            domain_mock.setMemoryFlags.call_args[0][0], int(2.5 * 1024 ** 2)
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(
++            setxml.find("memtune").find("soft_limit").text, str(2048 * 1024)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("hard_limit").text, str(1024 * 1024)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("swap_hard_limit").text,
++            str(int(2.5 * 1024 ** 2)),
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("swap_hard_limit").get("unit"), "KiB",
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("min_guarantee").text, str(1 * 1024 ** 3)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("min_guarantee").attrib.get("unit"), "bytes"
++        )
++        self.assertEqual(setxml.find("maxMemory").text, str(3096 * 1024 ** 2))
++        self.assertEqual(setxml.find("maxMemory").attrib.get("slots"), "10")
++        self.assertEqual(setxml.find("currentMemory").text, str(int(2.5 * 1024 ** 3)))
++        self.assertEqual(setxml.find("memory").text, str(int(0.7 * 1024 ** 3)))
++
++        max_slot_reverse = {
++            "slots": "10",
++            "max": "3096m",
++        }
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("vm_with_memtune_param", mem=max_slot_reverse),
++        )
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(setxml.find("maxMemory").text, str(3096 * 1024 ** 2))
++        self.assertEqual(setxml.find("maxMemory").get("unit"), "bytes")
++        self.assertEqual(setxml.find("maxMemory").attrib.get("slots"), "10")
++
++        max_swap_none = {
++            "boot": "0.7g",
++            "current": "2.5g",
++            "max": None,
++            "slots": "10",
++            "soft_limit": "2048m",
++            "hard_limit": "1024",
++            "swap_hard_limit": None,
++            "min_guarantee": "1 g",
++        }
++
++        domain_mock.setMemoryFlags.reset_mock()
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++                "mem": True,
++            },
++            virt.update("vm_with_memtune_param", mem=max_swap_none),
++        )
++        self.assertEqual(
++            domain_mock.setMemoryFlags.call_args[0][0], int(2.5 * 1024 ** 2)
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(
++            setxml.find("memtune").find("soft_limit").text, str(2048 * 1024)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("hard_limit").text, str(1024 * 1024)
++        )
++        self.assertEqual(setxml.find("memtune").find("swap_hard_limit"), None)
++        self.assertEqual(
++            setxml.find("memtune").find("min_guarantee").text, str(1 * 1024 ** 3)
++        )
++        self.assertEqual(
++            setxml.find("memtune").find("min_guarantee").attrib.get("unit"), "bytes"
++        )
++        self.assertEqual(setxml.find("maxMemory").text, None)
++        self.assertEqual(setxml.find("currentMemory").text, str(int(2.5 * 1024 ** 3)))
++        self.assertEqual(setxml.find("memory").text, str(int(0.7 * 1024 ** 3)))
++
++        memtune_none = {
++            "soft_limit": None,
++            "hard_limit": None,
++            "swap_hard_limit": None,
++            "min_guarantee": None,
++        }
++
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("vm_with_memtune_param", mem=memtune_none),
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(setxml.find("memtune").find("soft_limit"), None)
++        self.assertEqual(setxml.find("memtune").find("hard_limit"), None)
++        self.assertEqual(setxml.find("memtune").find("swap_hard_limit"), None)
++        self.assertEqual(setxml.find("memtune").find("min_guarantee"), None)
++
++        max_none = {
++            "max": None,
++        }
++
++        self.assertEqual(
++            {
++                "definition": True,
++                "disk": {"attached": [], "detached": [], "updated": []},
++                "interface": {"attached": [], "detached": []},
++            },
++            virt.update("vm_with_memtune_param", mem=max_none),
++        )
++
++        setxml = ET.fromstring(define_mock.call_args[0][0])
++        self.assertEqual(setxml.find("maxMemory"), None)
++        self.assertEqual(setxml.find("currentMemory").text, str(int(1 * 1024 ** 2)))
++        self.assertEqual(setxml.find("memory").text, str(int(1 * 1024 ** 2)))
++
++    def test_handle_unit(self):
++        """
++        Test regex function for handling units
++        """
++        valid_case = [
++            ("2", 2097152),
++            ("42", 44040192),
++            ("5b", 5),
++            ("2.3Kib", 2355),
++            ("5.8Kb", 5800),
++            ("16MiB", 16777216),
++            ("20 GB", 20000000000),
++            ("16KB", 16000),
++            (".5k", 512),
++            ("2.k", 2048),
++        ]
++
++        for key, val in valid_case:
++            self.assertEqual(virt._handle_unit(key), val)
++
++        invalid_case = [
++            ("9ib", "invalid units"),
++            ("8byte", "invalid units"),
++            ("512bytes", "invalid units"),
++            ("4 Kbytes", "invalid units"),
++            ("3.4.MB", "invalid number"),
++            ("", "invalid number"),
++            ("bytes", "invalid number"),
++            ("2HB", "invalid units"),
++        ]
++
++        for key, val in invalid_case:
++            with self.assertRaises(SaltInvocationError):
++                virt._handle_unit(key)
++
+     def test_mixed_dict_and_list_as_profile_objects(self):
+         """
+         Test virt._nic_profile with mixed dictionaries and lists as input.
+diff --git a/tests/unit/states/test_virt.py b/tests/unit/states/test_virt.py
+index f03159334b..1923ae5c0f 100644
+--- a/tests/unit/states/test_virt.py
++++ b/tests/unit/states/test_virt.py
+@@ -1,21 +1,15 @@
+ """
+     :codeauthor: Jayesh Kariya <jayeshk@saltstack.com>
+ """
+-# Import Python libs
+ 
+ import shutil
+ import tempfile
+ 
+-# Import Salt Libs
+ import salt.states.virt as virt
+ import salt.utils.files
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+-
+-# Import 3rd-party libs
+ from tests.support.mixins import LoaderModuleMockMixin
+ from tests.support.mock import MagicMock, mock_open, patch
+-
+-# Import Salt Testing Libs
+ from tests.support.runtests import RUNTIME_VARS
+ from tests.support.unit import TestCase
+ 
+@@ -351,6 +345,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                         install=False,
+                         pub_key="/path/to/key.pub",
+                         priv_key="/path/to/key",
++                        stop_on_reboot=True,
+                         connection="someconnection",
+                         username="libvirtuser",
+                         password="supersecret",
+@@ -376,6 +371,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     start=False,
+                     pub_key="/path/to/key.pub",
+                     priv_key="/path/to/key",
++                    stop_on_reboot=True,
+                     connection="someconnection",
+                     username="libvirtuser",
+                     password="supersecret",
+@@ -489,6 +485,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     password=None,
+                     boot=None,
+                     test=False,
++                    stop_on_reboot=False,
+                 )
+ 
+             # Failed definition update case
+@@ -559,6 +556,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                         install=False,
+                         pub_key="/path/to/key.pub",
+                         priv_key="/path/to/key",
++                        stop_on_reboot=False,
+                         connection="someconnection",
+                         username="libvirtuser",
+                         password="supersecret",
+@@ -601,6 +599,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     boot=None,
+                     test=True,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                 )
+ 
+             # No changes case
+@@ -636,6 +635,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     boot=None,
+                     test=True,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                 )
+ 
+     def test_running(self):
+@@ -713,6 +713,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     pub_key=None,
+                     priv_key=None,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                     connection=None,
+                     username=None,
+                     password=None,
+@@ -775,6 +776,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                         pub_key="/path/to/key.pub",
+                         priv_key="/path/to/key",
+                         boot_dev="network hd",
++                        stop_on_reboot=True,
+                         connection="someconnection",
+                         username="libvirtuser",
+                         password="supersecret",
+@@ -800,6 +802,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     pub_key="/path/to/key.pub",
+                     priv_key="/path/to/key",
+                     boot_dev="network hd",
++                    stop_on_reboot=True,
+                     connection="someconnection",
+                     username="libvirtuser",
+                     password="supersecret",
+@@ -945,6 +948,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     boot=None,
+                     test=False,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                 )
+ 
+             # Failed definition update case
+@@ -1018,6 +1022,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                         install=False,
+                         pub_key="/path/to/key.pub",
+                         priv_key="/path/to/key",
++                        stop_on_reboot=True,
+                         connection="someconnection",
+                         username="libvirtuser",
+                         password="supersecret",
+@@ -1064,6 +1069,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     boot=None,
+                     test=True,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                 )
+                 start_mock.assert_not_called()
+ 
+@@ -1101,6 +1107,7 @@ class LibvirtTestCase(TestCase, LoaderModuleMockMixin):
+                     boot=None,
+                     test=True,
+                     boot_dev=None,
++                    stop_on_reboot=False,
+                 )
+ 
+     def test_stopped(self):
+-- 
+2.28.0
+
+

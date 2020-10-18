@@ -1,0 +1,46 @@
+From 4998996a08db72a1b925b2c3f725c4fba4fe9622 Mon Sep 17 00:00:00 2001
+From: Dominik Gedon <dgedon@suse.de>
+Date: Tue, 6 Oct 2020 14:00:55 +0200
+Subject: [PATCH] Fix grains.test_core unit test (#277)
+
+This reverts 63b94ae and fixes the grains test_core unit test. The
+changes are aligned with upstream.
+---
+ tests/unit/grains/test_core.py | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 36aa49f232..d3b6515d00 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -69,10 +69,11 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+     def test_parse_etc_os_release(self, path_isfile_mock):
+         path_isfile_mock.side_effect = lambda x: x == "/usr/lib/os-release"
+         with salt.utils.files.fopen(os.path.join(OS_RELEASE_DIR, "ubuntu-17.10")) as os_release_file:
+-            os_release_content = os_release_file.readlines()
+-        with patch("salt.utils.files.fopen", mock_open()) as os_release_file:
+-            os_release_file.return_value.__iter__.return_value = os_release_content
+-            os_release = core._parse_os_release(["/etc/os-release", "/usr/lib/os-release"])
++            os_release_content = os_release_file.read()
++        with patch("salt.utils.files.fopen", mock_open(read_data=os_release_content)):
++            os_release = core._parse_os_release(
++                "/etc/os-release", "/usr/lib/os-release"
++            )
+         self.assertEqual(os_release, {
+             "NAME": "Ubuntu",
+             "VERSION": "17.10 (Artful Aardvark)",
+@@ -134,7 +135,9 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+ 
+     def test_missing_os_release(self):
+         with patch('salt.utils.files.fopen', mock_open(read_data={})):
+-            os_release = core._parse_os_release(['/etc/os-release', '/usr/lib/os-release'])
++            os_release = core._parse_os_release(
++                "/etc/os-release", "/usr/lib/os-release"
++            )
+         self.assertEqual(os_release, {})
+ 
+     @skipIf(not salt.utils.platform.is_windows(), 'System is not Windows')
+-- 
+2.28.0
+
+
