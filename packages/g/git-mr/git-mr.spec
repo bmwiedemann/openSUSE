@@ -1,6 +1,7 @@
 #
 # spec file for package git-mr
 #
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,11 +22,10 @@ Version:        1.0.0
 Release:        0
 Summary:        Checkout GitLab merge requests / GitHub pull requests locally
 License:        MIT
-
-Url:            https://gitlab.com/glensc/%{name}
+URL:            https://gitlab.com/glensc/%{name}
 Source0:        https://gitlab.com/glensc/%{name}/-/archive/%{version}/%{name}-%{version}.tar.gz
-
 BuildRequires:  fdupes
+Conflicts:      git-extras
 Provides:       git-pr
 BuildArch:      noarch
 
