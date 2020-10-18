@@ -340,4 +340,12 @@
     <comment>submit new version 2.50.9</comment>
     <requestid>825953</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d444e199ac67e4748582ee13f3269677</srcmd5>
+    <version>2.50.10</version>
+    <time>1603030904</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.50.10</comment>
+    <requestid>841238</requestid>
+  </revision>
 </revisionlist>

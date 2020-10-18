@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses-pkg
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libyui-ncurses-pkg
-Version:        2.50.9
+Version:        2.50.10
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 13
+%define so_version 14
 %define bin_name %{name}%{so_version}
 
 %if 0%{?suse_version} > 1325
@@ -39,7 +39,7 @@ BuildRequires:  %{libyui_ncurses_devel_version}
 %define libzypp_devel_version           libzypp-devel >= 17.21.0
 BuildRequires:  %{libzypp_devel_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - yast2 package selector widget for the ncurses UI
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
@@ -67,7 +67,7 @@ Supplements:    packageand(libyui-ncurses:yast2-packager)
 # Selectable::hasRetracted()
 Requires:       libzypp >= 17.21.0
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - yast2 package selector widget for the ncurses UI
 Group:          System/Libraries
 
@@ -90,7 +90,7 @@ Requires:       %{bin_name} = %{version}
 Requires:       glibc-devel
 Requires:       libstdc++-devel
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-ncurses-pkg header files
 Group:          Development/Languages/C and C++
 
