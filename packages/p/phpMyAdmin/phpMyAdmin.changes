@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 07:56:11 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- phpMyAdmin 4.9.7:
+  * Fix two factor authentication that was broken in 4.9.6
+  * Fix incompatibilities with older PHP versions
+
+-------------------------------------------------------------------
 Mon Oct 12 06:25:53 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.9.6

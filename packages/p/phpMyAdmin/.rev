@@ -1434,4 +1434,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment></comment>
     <requestid>841132</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>c9c404dfaf512a37fe6c0fbd3cc912f7</srcmd5>
+    <version>4.9.7</version>
+    <time>1603031451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842100</requestid>
+  </revision>
 </revisionlist>
