@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:49:56 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not import SuSEFirewall2 anymore as the support was dropped
+  from YaST (fate#323460)
+- 4.3.7
+
+-------------------------------------------------------------------
 Thu Sep 17 13:06:05 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not skip the Full medium add-on selection when a driver update
