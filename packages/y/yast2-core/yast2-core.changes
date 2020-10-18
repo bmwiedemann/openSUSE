@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 24 13:56:22 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Drop encryption builtins as they needed adjustment and
+  they are reimplemented in yast2-ruby-bindings anyway (bsc#1176924)
+  (crypt cryptmd5 cryptblowfish cryptsha256 cryptsha512)
+- 4.3.3
+
+-------------------------------------------------------------------
 Fri Sep 18 15:41:56 UTC 2020 - Martin Vidner <mvidner@suse.com>
 
 - Avoid 'Construct not supported' on UnmountAgent (bsc#1176594)
@@ -4866,4 +4874,3 @@ Sat Jun 22 01:37:40 CEST 2002 - arvin@suse.de
   yast2-core-wfm, yast2-agent-any, yast2-agent-probe,
   yast2-agent-ini, yast2-agent-modules, yast2-agent-system
   and yast2-base into new package yast2-core
-

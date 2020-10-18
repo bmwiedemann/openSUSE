@@ -27,7 +27,7 @@
 %bcond_with werror
 
 Name:           yast2-core
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 URL:            https://github.com/yast/yast-core
 
@@ -45,8 +45,6 @@ BuildRequires:  libtool
 # we have a parser
 BuildRequires:  bison
 BuildRequires:  flex
-# workaround for error when jemalloc is dlopened in ruby in old testsuite (bsc#1068883)
-BuildRequires:  jemalloc-devel
 # incompatible change, parser.h -> parser.hh
 BuildRequires:  automake >= 1.12
 # needed for all yast packages
@@ -102,6 +100,11 @@ export CC=clang CXX=clang++
 # warning/error: argument unused during compilation
 CFLAGS="${CFLAGS/-grecord-gcc-switches/}"
 CXXFLAGS="${CXXFLAGS/-grecord-gcc-switches/}"
+
+# "unsupported argument 'auto' to option 'flto='"
+# This time it comes from RPM macro expansion
+# so let's override /usr/lib/rpm/suse/macros
+%define _lto_cflags %{nil}
 %endif
 
 %yast_build
@@ -114,11 +117,6 @@ mkdir -p "$RPM_BUILD_ROOT"%{yast_logdir}
 
 %post
 /sbin/ldconfig
-# bnc#485992, since oS 11.2
-C=blacklist
-if test -f /etc/modprobe.d/$C; then
-     mv -f /etc/modprobe.d/$C /etc/modprobe.d/50-$C.conf
-fi
 
 %postun -p /sbin/ldconfig
 
@@ -154,12 +152,6 @@ fi
 %{perl_vendorlib}/ycp.pm
 %dir %{perl_vendorlib}/YaST
 %{perl_vendorlib}/YaST/SCRAgent.pm
-
-%if 0%{?suse_version} == 0 || 0%{?suse_version} <= 1130
-#  .packlist
-%{perl_vendorarch}/auto/ycp
-/var/adm/perl-modules/%name
-%endif
 
 %files devel
 %defattr(-,root,root)
