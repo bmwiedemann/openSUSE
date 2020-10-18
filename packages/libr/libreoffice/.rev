@@ -2880,4 +2880,13 @@ Petr</comment>
   * RC2 of 7.0.2</comment>
     <requestid>839718</requestid>
   </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>615ff71cab40ae3aaf4f35c0ed09ee3d</srcmd5>
+    <version>7.0.2.2</version>
+    <time>1603030747</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to work with latest orcus/ixion:
+  * 0001-Upgrade-liborcus-to-0.16.0.patch</comment>
+    <requestid>841867</requestid>
+  </revision>
 </revisionlist>

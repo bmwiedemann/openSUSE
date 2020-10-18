@@ -102,6 +102,7 @@ Patch1:         scp2-user-config-suse.diff
 # FIXME: the right fix is to compile the help and produce the .db_, .ht_, and other files
 Patch2:         nlpsolver-no-broken-help.diff
 Patch3:         mediawiki-no-broken-help.diff
+Patch4:         0001-Upgrade-liborcus-to-0.16.0.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -197,7 +198,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.16
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.15)
+BuildRequires:  pkgconfig(liborcus-0.16)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libqxp-0.0)
@@ -959,6 +960,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif # Leap 42/SLE-12
 %patch2
 %patch3
+%patch4 -p1
 %patch990 -p1
 %patch991 -p1
 

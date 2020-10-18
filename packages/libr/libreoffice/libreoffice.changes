@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:14:38 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with latest orcus/ixion:
+  * 0001-Upgrade-liborcus-to-0.16.0.patch
+
+-------------------------------------------------------------------
 Tue Oct  6 08:26:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 7.0.2.2:
