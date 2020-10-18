@@ -1,0 +1,14 @@
+
+The fail_nul_* tests are broken with OpenSSL configured to reject SHA-1 digests.
+
+--- neon-0.31.2/test/ssl.c.lesstests
++++ neon-0.31.2/test/ssl.c
+@@ -1932,7 +1932,7 @@
+     T(fail_ca_expired),
+ 
+     T(nulcn_identity),
+-#ifndef HAVE_GNUTLS
++#if 0
+     /* These certs were created with a SHA#1 digest so are rejected by GnuTLS. */
+     T(fail_nul_cn),
+     T(fail_nul_san),

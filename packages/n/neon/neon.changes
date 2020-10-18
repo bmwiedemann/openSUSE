@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  8 17:46:22 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Disable tests fail_ca_* that fail since OpenSSL update to 1.1.1h.
+  * Upstream report: https://github.com/notroj/neon/issues/38
+- Add neon-0.31.2-CA-tests.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 11:02:56 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Disable fail_nul_* tests broken with OpenSSL configured to reject
+  certificates created with a SHA1.
+- Add neon-0.31.2-sha1-tests.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 20:39:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.31.2:
