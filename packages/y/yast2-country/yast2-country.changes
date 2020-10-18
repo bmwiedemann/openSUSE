@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 07:49:20 UTC 2020 - Steffen Winterfeldt <snwint@suse.de>
+
+- adjust keyboard client layout to also fit the firstboot workflow
+  (bsc#1174856)
+- restructure keyboard client code to allow easier reuse (bsc#1174856)
+- 4.3.10
+
+-------------------------------------------------------------------
 Tue Sep  8 09:18:33 CEST 2020 - schubi@suse.de
 
 - Using ":" in the autoyast(...) supplements (bsc#1146494).
