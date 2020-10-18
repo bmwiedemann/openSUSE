@@ -2208,4 +2208,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   alsa (now used via QtMultimedia), libmng (obsolete).</comment>
     <requestid>841299</requestid>
   </revision>
+  <revision rev="112" vrev="4">
+    <srcmd5>bdf69e31796b184a8113bda2c8f07598</srcmd5>
+    <version>5.15.1</version>
+    <time>1603031288</time>
+    <user>dimstar_suse</user>
+    <comment>- Silence xcb errors and qml connection warnings by default, see
+  boo#1115541 (xcb) and kde#418793.</comment>
+    <requestid>841905</requestid>
+  </revision>
 </revisionlist>
