@@ -33,6 +33,9 @@ BuildRequires:  eigen3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 
+# not enough memory for lto
+%global _lto_cflags %nil
+
 %description
 LIBINT computes the Coulomb and exchange integrals, which in electronic
 structure theory are called electron repulsion integrals (ERIs). This is by
@@ -86,8 +89,14 @@ This package contains development headers and libraries for libint.
 
 %build
 %{configure} --enable-shared --disable-static \
- --enable-eri3=1 \
- --with-incdirs="-I%{_includedir}/eigen3"
+  --enable-eri=2 --enable-eri3=2 --enable-eri2=2 \
+  --with-eri-max-am=7,5,4 --with-eri-opt-am=3 \
+  --with-eri3-max-am=7 --with-eri2-max-am=7 \
+  --with-g12-max-am=5 --with-g12-opt-am=3 \
+  --with-g12dkh-max-am=5 --with-g12dkh-opt-am=3 \
+  --disable-unrolling --enable-generic-code --enable-contracted-ints \
+  --with-incdirs="-I%{_includedir}/eigen3" \
+  --with-cxx-optflags="%optflags"
 %make_build
 
 %install
@@ -107,6 +116,7 @@ find %{buildroot}%{_datadir}/libint -name \*.g94 -delete
 %{_libdir}/libint2.so.%{sover}*
 
 %files devel
+%dir %{_libdir}/cmake
 %{_libdir}/cmake/libint2/
 %{_includedir}/libint2/
 %{_includedir}/libint2.h
