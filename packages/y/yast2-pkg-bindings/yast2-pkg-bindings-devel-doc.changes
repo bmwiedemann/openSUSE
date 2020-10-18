@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:37:48 CEST 2020 - schubi@suse.de
+
+- Added new call Pkg::SetAdditionalVendors (jsc#SLE-14807).
+- 4.3.3
+
+-------------------------------------------------------------------
 Fri Aug 17 15:33:34 CEST 2018 - schubi@suse.de
 
 - Switched license in spec file from SPDX2 to SPDX3 format.
