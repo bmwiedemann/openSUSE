@@ -32,8 +32,9 @@ BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module invoke >= 1.3}
 BuildRequires:  %{python_module mock >= 2.0.0}
 BuildRequires:  %{python_module paramiko >= 2.4}
-BuildRequires:  %{python_module pytest >= 3.2.5}
 BuildRequires:  %{python_module pytest-relaxed}
+# gh#bitprophet/pytest-relaxed#12
+BuildRequires:  %{python_module pytest < 6.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes

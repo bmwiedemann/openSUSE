@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Mon May 11 09:59:18 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Adds Provides for python-Fabric3.

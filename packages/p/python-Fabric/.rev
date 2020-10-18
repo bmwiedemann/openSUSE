@@ -297,4 +297,12 @@
     <comment>- Adds Provides for python-Fabric3.</comment>
     <requestid>802649</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>84272ac415b5631dc4c9b1d875f7e0c7</srcmd5>
+    <version>2.5.0</version>
+    <time>1603031621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842128</requestid>
+  </revision>
 </revisionlist>
