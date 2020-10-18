@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  9 13:22:49 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Use new parent lib SO version libyui.so.14 (bsc#1176402).
+- 0.5.7
+
+-------------------------------------------------------------------
+Thu Oct  1 14:54:18 UTC 2020 - Rodion Iafarov <riafarov@suse.com>
+
+- Remove log component from YHttpWidgetsActionHandler header file
+  bsc#1177159
+- 0.5.6
+
+-------------------------------------------------------------------
+Mon Sep 17 08:05:00 UTC 2020 - Joaquín Rivera <jeriveramoya@suse.com>
+
+- Add item selection in YMenuBar (bsc#1175115)
+- 0.5.5
+
+-------------------------------------------------------------------
 Wed Sep 16 10:14:16 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed compilation in SLE15-SP2 (related to the previous fix
