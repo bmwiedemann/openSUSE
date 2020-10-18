@@ -284,15 +284,6 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_mandir}/man8/ondelay.8c%{ext_man}
 %{_mandir}/man8/probemodem.8c%{ext_man}
 %{_mandir}/man8/typetest.8c%{ext_man}
-%defattr(755,root,root,-)
-%dir %{_sysconfdir}/hylafax
-%dir %{_sysconfdir}/hylafax/faxmail
-%dir %{_sysconfdir}/hylafax/faxmail/application
-%dir %{_sysconfdir}/hylafax/faxmail/image
-%config(noreplace) %{_sysconfdir}/hylafax/hfaxd.conf
-%defattr(-,uucp,uucp,-)
-%dir %{faxspool}/config
-%dir %{faxspool}/dev
 %{faxspool}/config/*
 %{faxspool}/bin/dict/*
 %{faxspool}/bin/genfontmap.ps
@@ -303,6 +294,15 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{faxspool}%{_sysconfdir}/LiberationSans-25.pcf
 %config(noreplace) %{faxspool}%{_sysconfdir}/dialrules*
 %defattr(755,root,root,-)
+%dir %{_sysconfdir}/hylafax
+%dir %{_sysconfdir}/hylafax/faxmail
+%dir %{_sysconfdir}/hylafax/faxmail/application
+%dir %{_sysconfdir}/hylafax/faxmail/image
+%dir %{faxspool}/bin
+%dir %{faxspool}%{_sysconfdir}
+%dir %{faxspool}/config
+%dir %{faxspool}/bin/dict
+%config(noreplace) %{_sysconfdir}/hylafax/hfaxd.conf
 %{_sbindir}/choptest
 %{_sbindir}/cqtest
 %{_sbindir}/dialtest
@@ -360,21 +360,21 @@ rm -f %{buildroot}%{faxspool}/COPYRIGHT
 %{_sysconfdir}/hylafax/faxmail/image/tiff
 %defattr(-,uucp,uucp,-)
 %dir %{faxspool}
-%attr(755,root,root) %dir %{faxspool}/bin
-%dir %{faxspool}/bin/dict
 %dir %{faxspool}/client
-%attr(755,root,root) %dir %{faxspool}%{_sysconfdir}
 %dir %{faxspool}/info
 %dir %{faxspool}/log
 %dir %{faxspool}/recvq
 %dir %{faxspool}/status
+%dir %{faxspool}/config
+%dir %{faxspool}/dev
 %config(noreplace) %{faxspool}%{_sysconfdir}/xferfaxlog
-%attr(700,uucp,uucp) %dir %{faxspool}/docq
-%attr(700,uucp,uucp) %dir %{faxspool}/doneq
-%attr(700,uucp,uucp) %dir %{faxspool}/archive
-%attr(700,uucp,uucp) %dir %{faxspool}/sendq
-%attr(700,uucp,uucp) %dir %{faxspool}/tmp
-%attr(700,uucp,uucp) %dir %{faxspool}/pollq
+%defattr(700,uucp,uucp) 
+%dir %{faxspool}/docq
+%dir %{faxspool}/doneq
+%dir %{faxspool}/archive
+%dir %{faxspool}/sendq
+%dir %{faxspool}/tmp
+%dir %{faxspool}/pollq
 %defattr(600,uucp,uucp,-)
 %config(noreplace) %{faxspool}%{_sysconfdir}/hosts.hfaxd
 
