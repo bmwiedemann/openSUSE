@@ -1,9 +1,10 @@
-diff -dupr mesa-20.0.0.orig/include/meson.build mesa-20.0.0/include/meson.build
---- mesa-20.0.0.orig/include/meson.build	2020-02-21 14:11:14.623397341 +0100
-+++ mesa-20.0.0/include/meson.build	2020-02-21 14:13:05.620425210 +0100
-@@ -22,10 +22,8 @@ inc_include = include_directories('.')
- inc_d3d9 = include_directories('D3D9')
- inc_haikugl = include_directories('HaikuGL')
+Index: mesa-20.2.0/include/meson.build
+===================================================================
+--- mesa-20.2.0.orig/include/meson.build
++++ mesa-20.2.0/include/meson.build
+@@ -29,10 +29,8 @@ if with_android_stub
+   inc_include += [include_directories('android_stub')]
+ endif
  
 -if not with_glvnd
    if with_gles1 or with_gles2 or with_opengl or with_egl

@@ -40,7 +40,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.1.8
+%define _version 20.2.1
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -108,7 +108,7 @@
 %endif
 
 Name:           Mesa
-Version:        20.1.8
+Version:        20.2.1
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -127,6 +127,7 @@ Patch2:         n_add-Mesa-headers-again.patch
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch60:        buildfix-ppc64le.patch
+Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -703,6 +704,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %ifarch ppc64le
 %patch60 -p1
 %endif
+%patch100 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -914,7 +916,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %if !%{drivers}
 %files
-%license docs/license.html
+%license docs/license.rst
 %doc docs/README*
 %dir %{_datadir}/drirc.d
 %config %{_datadir}/drirc.d/*
@@ -1070,7 +1072,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/pkgconfig/dri.pc
 
 %files devel
-%doc docs/*.html
+%doc docs/*.rst
 
 # !drivers
 %endif

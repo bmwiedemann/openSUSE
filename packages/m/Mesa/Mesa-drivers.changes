@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct 15 09:59:46 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- reenabled U_fix-mpeg1_2-decode-mesa-20.2.patch due to regression
+  reported in boo#1173185 
+
+-------------------------------------------------------------------
+Wed Oct 14 20:26:56 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.2.1
+  * first bugfix release for the 20.1 branch
+- supersedes U_fix-mpeg1_2-decode.patch
+- disabled U_fix-mpeg1_2-decode-mesa-20.2.patch; likely no longer
+  needed (boo#1173185)
+
+-------------------------------------------------------------------
+Wed Sep 30 09:17:14 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * additional patch currently needed for Mesa 20.2 (boo#1173185) 
+
+-------------------------------------------------------------------
+Tue Sep 29 09:21:57 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.2.0
+  * includes Intel Rocket Lake Platform Support 
+    (jsc#SLE/SLE-12880, jsc#SLE/SLE-12882)
+- adjusted/refreshed patches:
+  * n_add-Mesa-headers-again.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * u_dep_xcb.patch
+- docs now available in .rst format (html before)
+
+-------------------------------------------------------------------
+Thu Sep 24 11:08:44 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add U_fix-mpeg1_2-decode.patch (boo#1173185)
+  * fixes colors in kaffeine on Radeon (r600 VAAPI driver)
+
+-------------------------------------------------------------------
 Fri Sep 18 11:11:14 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildfix-ppc64le.patch

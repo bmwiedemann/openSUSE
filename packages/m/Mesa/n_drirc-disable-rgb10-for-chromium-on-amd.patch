@@ -1,7 +1,8 @@
-diff -dupr mesa-20.0.0.orig/src/util/00-mesa-defaults.conf mesa-20.0.0/src/util/00-mesa-defaults.conf
---- mesa-20.0.0.orig/src/util/00-mesa-defaults.conf	2020-02-19 20:29:32.000000000 +0100
-+++ mesa-20.0.0/src/util/00-mesa-defaults.conf	2020-02-22 12:10:47.118008543 +0100
-@@ -556,6 +556,14 @@ TODO: document the other workarounds.
+Index: mesa-20.2.0/src/util/00-mesa-defaults.conf
+===================================================================
+--- mesa-20.2.0.orig/src/util/00-mesa-defaults.conf
++++ mesa-20.2.0/src/util/00-mesa-defaults.conf
+@@ -633,6 +633,14 @@ TODO: document the other workarounds.
          <application name="DiRT Rally" executable="DirtRally">
              <option name="radeonsi_prim_restart_tri_strips_only" value="true"/>
          </application>
