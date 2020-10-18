@@ -51,6 +51,7 @@ Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}
 Source1:        libqt5-qtbase.changes
 Source2:        macros.qt5
 Source3:        baselibs.conf
+Source4:        qtlogging.ini
 Source99:       libqt5-qtbase-rpmlintrc
 # patches 0-1000 are openSUSE and/or non-upstream(able) patches #
 Patch1:         0001-Lower-required-version-of-OpenSSL-to-1.1.0.patch
@@ -966,6 +967,10 @@ popd
 
 chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 
+# Silence logging of xcb errors and qml deprecated connection
+# warnings by default
+install -Dm644 %{SOURCE4} %{buildroot}%{libqt5_datadir}/qtlogging.ini
+
 %post -n libQt5Core5 -p /sbin/ldconfig
 
 %post -n libQt5Concurrent5 -p /sbin/ldconfig
@@ -1048,6 +1053,8 @@ chmod 644 %{buildroot}%{libqt5_docdir}/global/template/images/*.png
 %{libqt5_libdir}/sse2/libQt5Core.so.*
 %endif
 %endif
+%dir %{libqt5_datadir}
+%{libqt5_datadir}/qtlogging.ini
 
 %files -n libQt5Core-devel
 %license LICENSE.*

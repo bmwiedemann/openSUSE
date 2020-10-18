@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 19:28:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Silence xcb errors and qml connection warnings by default, see
+  boo#1115541 (xcb) and kde#418793.
+
+-------------------------------------------------------------------
 Mon Oct 12 13:57:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove some no longer required build dependencies: libpulse,
