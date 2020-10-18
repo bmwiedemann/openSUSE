@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:45:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust soversion.patch to include a symlink [boo#1177667]
+- Add 0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
+
+-------------------------------------------------------------------
 Mon Jul 27 13:39:27 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Apply upstream fix to avoid segfaults in x86/yuv2rgb conversion

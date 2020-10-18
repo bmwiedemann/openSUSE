@@ -14,15 +14,21 @@ unclear when upstream will have implemented a solution. Until then,
 we will need to tighten the requirements between packages, to which
 end we stretch the SOVERSION to include MINOR.
 
----
- configure |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Programs linking to libavcodec get the right DT_NEEDED field with value
+libavcodec.so.58.91, and so they do not request libavcodec.so.58 (which could
+potentially lead to libavcodec.so.58.54).
+Programs dlopening libavcodec.so.58 will get something random, that's
+what dlopening programs have to deal with.
 
-Index: ffmpeg-4.3/configure
+---
+ configure |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: ffmpeg-4.3.1/configure
 ===================================================================
---- ffmpeg-4.3.orig/configure
-+++ ffmpeg-4.3/configure
-@@ -3794,7 +3794,7 @@ SLIBPREF="lib"
+--- ffmpeg-4.3.1.orig/configure
++++ ffmpeg-4.3.1/configure
+@@ -3794,10 +3794,10 @@ SLIBPREF="lib"
  SLIBSUF=".so"
  SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
  SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
@@ -30,4 +36,8 @@ Index: ffmpeg-4.3/configure
 +SLIBNAME_WITH_MAJOR='$(SLIBNAME).$(LIBMAJOR).$(LIBMINOR)'
  LIB_INSTALL_EXTRA_CMD='$$(RANLIB) "$(LIBDIR)/$(LIBNAME)"'
  SLIB_INSTALL_NAME='$(SLIBNAME_WITH_VERSION)'
- SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
+-SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME)'
++SLIB_INSTALL_LINKS='$(SLIBNAME_WITH_MAJOR) $(SLIBNAME) $(SLIBNAME).$(LIBMAJOR)'
+ VERSION_SCRIPT_POSTPROCESS_CMD="cat"
+ 
+ asflags_filter=echo

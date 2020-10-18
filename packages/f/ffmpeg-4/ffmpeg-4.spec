@@ -115,6 +115,7 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
 Patch6:         ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
+Patch7:         0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -783,42 +784,51 @@ done
 %_bindir/*
 %_mandir/man1/ff*.1*
 %_datadir/ffmpeg/
+%_libdir/libavcodec.so.58
+%_libdir/libavdevice.so.58
+%_libdir/libavfilter.so.7
+%_libdir/libavformat.so.58
+%_libdir/libavresample.so.4
+%_libdir/libavutil.so.56
+%_libdir/libpostproc.so.55
+%_libdir/libswresample.so.3
+%_libdir/libswscale.so.5
 
 %files -n libavcodec58_91
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavcodec.so.*
+%_libdir/libavcodec.so.58.91*
 
 %files -n libavdevice58_10
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavdevice.so.*
+%_libdir/libavdevice.so.58.10*
 
 %files -n libavfilter7_85
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavfilter.so.*
+%_libdir/libavfilter.so.7.85*
 
 %files -n libavformat58_45
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavformat.so.*
+%_libdir/libavformat.so.58.45*
 
 %files -n libavresample4_0
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavresample.so.*
+%_libdir/libavresample.so.4.0*
 
 %files -n libavutil56_51
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libavutil.so.*
+%_libdir/libavutil.so.56.51*
 
 %files -n libpostproc55_7
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libpostproc.so.*
+%_libdir/libpostproc.so.55.7*
 
 %files -n libswresample3_7
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libswresample.so.*
+%_libdir/libswresample.so.3.7*
 
 %files -n libswscale5_7
 %license COPYING.GPLv2 LICENSE.md
-%_libdir/libswscale.so.*
+%_libdir/libswscale.so.5.7*
 
 %files libavcodec-devel
 %dir %_includedir/ffmpeg/
