@@ -952,4 +952,12 @@
   several bug fixes. See https://www.php.net/ChangeLog-7.php#7.4.11 (forwarded request 839027 from adkorte)</comment>
     <requestid>839058</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>2eab1de2021dce1fbc8ce7a75da219e3</srcmd5>
+    <version>7.4.11</version>
+    <time>1603030724</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>841752</requestid>
+  </revision>
 </revisionlist>

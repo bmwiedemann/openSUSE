@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:48:06 UTC 2020 - pgajdos@suse.com
+
+- fix build for 15 and 15sp1
+
+-------------------------------------------------------------------
 Thu Oct  1 16:43:38 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.11: This is a security release which also contains

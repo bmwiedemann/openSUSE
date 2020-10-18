@@ -30,7 +30,11 @@
 %global zendver           20190902
 %define extension_dir     %{_libdir}/%{name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{name}
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150200
 %define build_firebird 1
+%else
+%define build_firebird 0
+%endif
 %define build_sodium 1
 %define build_argon2 0
 %if %{?suse_version} >= 1500
@@ -142,7 +146,7 @@ Recommends:     php-xmlreader
 Recommends:     php-xmlwriter
 # Recommends instead of Requires smtp_daemon bsc#1115213
 Recommends:     smtp_daemon
-# suggest %{name}-* instead of php-* [bsc#1022158c#4]
+# suggest %%{name}-* instead of php-* [bsc#1022158c#4]
 Suggests:       %{name}-gd
 Suggests:       %{name}-gettext
 Suggests:       %{name}-mbstring
