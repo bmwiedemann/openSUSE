@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Oct 15 17:06:17 UTC 2020 - rbrown@suse.com
+
+- Update to version 1.19.3:
+  * Azure: fix node removal race condition on VMSS deletion
+  * Fix reporting network_programming_latency metrics in kube-proxy
+  * make download-or-bust compatible with both sha512/sha1
+  * replace sha1 with sha512
+  * avoid potential secret leaking while reading .dockercfg
+  * Mask Ceph RBD adminSecrets in logs when logLevel >= 4
+  * upgrade test for BoundServiceAccountTokenVolume
+  * fix detach azure disk issue when vm not exist
+  * vsphere: improve logging message on node cache refresh event
+  * Fix UpdateSnapshot when Node is partially removed
+  * kubeadm: make the CP join handling of kubeconfig similar to "init"
+  * kubeadm: warn but do not error out on missing CA keys on CP join
+  * Return the Kubernetes version which stopped serving deprecated APIs by default
+  * fix: detach azure disk broken on Azure Stack
+  * Ensuring EndpointSlices are recreated after Service recreation
+  * Handle nil elements when sorting, instead of panicking
+  * use more granular buckets for azure api calls
+  * do not mutate endpoints in the apiserver
+  * Remove HeadlessService label in endpoints controller before comparing
+  * test: add unit-test for TranslateCSIPVToInTree.
+  * fix azure file migration panic
+  * kubeadm: relax the validation of kubeconfig server URLs
+  * portforward: Fix UDP-only ports calculation
+  * make kube::util::find-binary not dependent on bazel-out/ structure
+  * output go_binary rule directly from go_binary_conditional_pure
+  * hack/lib/util.sh: some bash cleanups
+  * bazel: Replace --features with Starlark build settings flag
+  * [go1.15] staging/publishing: Set default go version to go1.15.2
+  * [go1.15] build: Use go-runner:buster-v2.0.1 (built using go1.15.1)
+  * [go1.15] Update to go1.15.2
+  * [go1.15] hack/tools: Update to k/repo-infra@v0.1.1 (supports go1.15.2)
+  * [go1.15] build: Update to k/repo-infra@v0.1.1 (supports go1.15.2)
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.2
+  * count of etcd object should be limited to the specified resource
+  * Track pods with required anti-affinity
+  * Ensure getPrimaryInterfaceID not panic when network interfaces for Azure VMSS are null
+  * Fix misusage of RLock in timeCache lru.Cache.Get()
+  * support ipv6 in e2e policy tests
+  * Allow 404 error on lb deletion in azure
+  * fix: azure disk resize error if source does not exist
+  * chore: add diskclient.Update interface
+  * chore: add diskclient.ListByResourceGroup interface
+
+-------------------------------------------------------------------
 Wed Oct  7 19:04:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - use obsinfo again for commit id extraction, as this matches

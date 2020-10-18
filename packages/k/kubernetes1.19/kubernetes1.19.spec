@@ -22,7 +22,7 @@
 %define baseversionminus1 1.18
 
 Name:           kubernetes%{baseversion}
-Version:        1.19.2
+Version:        1.19.3
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,8 +51,8 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.19.0 requires at least go 1.15 (see changelog)
-BuildRequires:  go >= 1.15
+# Kubernetes 1.19.3 requires at least go 1.15.2 (see changelog)
+BuildRequires:  go >= 1.15.2
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
