@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 15 02:42:36 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.14.10 (released 2020-10-14) includes fixes to the compiler,
+  runtime, and the plugin and testing packages.
+  * go#41815 database/sql: TestTxCannotCommitAfterRollback failures on windows-amd64-2008 builder
+  * go#41796 runtime: memory corruption from stack-allocated defer on 32-bit
+  * go#41619 memory corruption on linux/386 with float32 arithmetic, GO386=387, buildmode pie/c-archive
+  * go#41322 runtime: "fatal error: unexpected signal during runtime execution" on windows-amd64-longtest builder of Go 1.15.2 commit
+  * go#40880 testing: summary and test output interleaved
+  * go#40694 plugin: program on linux/s390x sometimes hangs after calling "plugin.Open"
+  * go#40647 runtime: pcdata is -2 and 12 locals stack map entries error on nil pointer
+  * go#40642 runtime: race between stack shrinking and channel send/recv leads to bad sudog values
+
+-------------------------------------------------------------------
 Thu Sep 09 22:51:08 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.14.9 (released 2020-09-09) includes fixes to the compiler,
