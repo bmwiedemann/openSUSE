@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/lupoDharkael/flameshot#flameshot
 #Git-Clone:     https://github.com/flameshot-org/flameshot.git
 Source0:        https://github.com/lupoDharkael/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
@@ -74,6 +75,7 @@ zsh shell completions for %{name}.
 install -d %{buildroot}/%{_sysconfdir}/zsh_completion.d
 mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
 %suse_update_desktop_file -r org.flameshot.Flameshot Utility X-SuSE-DesktopUtility
+%fdupes %{buildroot}%{_datadir}/icons/hicolor
 
 %files
 %{_bindir}/%{name}
@@ -81,8 +83,8 @@ mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfd
 %{_datadir}/applications/org.flameshot.Flameshot.desktop
 %{_datadir}/dbus-1/interfaces/org.flameshot.Flameshot.xml
 %{_datadir}/dbus-1/services/org.flameshot.Flameshot.service
-%{_datadir}/icons/hicolor/*/apps/org.flameshot.Flameshot.png
-%{_datadir}/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg
+%{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/metainfo/org.flameshot.Flameshot.metainfo.xml
 
 %files bash-completion
