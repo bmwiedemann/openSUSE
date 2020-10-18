@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 21:26:11 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not export the registration e-mail if it is not defined
+  (bsc#1177135).
+- 4.3.10
+
+-------------------------------------------------------------------
+Thu Oct  1 14:15:55 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed upgrade using the Full medium with the "media_upgrade=1"
+  boot option (bsc#1176563)
+- 4.3.9 
+
+-------------------------------------------------------------------
 Mon Aug 24 11:31:58 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - AutoYaST: the release_type element is not mandatory
