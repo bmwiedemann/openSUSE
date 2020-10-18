@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 13:25:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU bison 3.7.3:
+  * Fix concurrent build issues
+  * The bison executable is no longer linked uselessly against
+    libreadline
+  * Fix incorrect use of yytname in glr.cc
+
+-------------------------------------------------------------------
 Sun Sep  6 08:44:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.7.2:
