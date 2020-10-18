@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:06:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * Some minor bugs in Micro QR Code generation have been fixed.
+  * The data capacity calculations are now correct. These bugs probably did not
+    affect the Micro QR Code generation.
+
+-------------------------------------------------------------------
 Sat Sep 12 15:12:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.1.0:

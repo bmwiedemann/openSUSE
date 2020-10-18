@@ -1,7 +1,7 @@
 #
 # spec file for package qrencode
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define so_ver 4
 Name:           qrencode
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        C library for encoding data in a QR Code symbol
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
-Url:            https://github.com/fukuchi/libqrencode
+URL:            https://github.com/fukuchi/libqrencode
 Source0:        https://fukuchi.org/works/qrencode/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 BuildRequires:  cmake >= 3.1.0
