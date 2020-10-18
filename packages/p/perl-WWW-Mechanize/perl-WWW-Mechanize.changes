@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 14 03:19:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.02      2020-10-13 13:50:28Z
+      [ENHANCEMENTS]
+      - Add redirects() as a short to HTTP::Response->redirects (GH#116) (Julien Fiegehenn)
+      - click_button( value => $foo) now also works for button tags and image buttons
+        (GH#131) (Spencer Christensen) and (Julien Fiegehenn)
+
+      [DOCUMENTATION]
+      - Document that click_button() will die when it cannot find a button (GH#136) (Julien Fiegehenn)
+      - Document that content() returns undef before a request was made (GH#134) (Julien Fiegehenn)
+
+      [TESTS]
+      - Add a test for dump_forms() with multiselect (GH#133) (Julien Fiegehenn)
+      - Add tests for select multiple (GH#132) (Michael G. Schwern) and (Julien Fiegehenn)
+      - Remove use of discouraged vars pragma (James Raspass)
+      - Add tests for dump_forms() and field() with empty attributes (GH#125) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Sat Sep 19 03:13:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.01
