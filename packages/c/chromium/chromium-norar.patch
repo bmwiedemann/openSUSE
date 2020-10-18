@@ -1,8 +1,8 @@
-Index: chromium-84.0.4136.5/chrome/common/safe_browsing/BUILD.gn
+Index: chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
 ===================================================================
---- chromium-84.0.4136.5.orig/chrome/common/safe_browsing/BUILD.gn
-+++ chromium-84.0.4136.5/chrome/common/safe_browsing/BUILD.gn
-@@ -54,39 +54,6 @@ if (safe_browsing_mode == 1) {
+--- chromium-86.0.4240.75.orig/chrome/common/safe_browsing/BUILD.gn
++++ chromium-86.0.4240.75/chrome/common/safe_browsing/BUILD.gn
+@@ -43,39 +43,6 @@ if (safe_browsing_mode == 1) {
      public_deps = [ "//components/safe_browsing/core:csd_proto" ]
    }
  
@@ -42,7 +42,7 @@ Index: chromium-84.0.4136.5/chrome/common/safe_browsing/BUILD.gn
    source_set("disk_image_type_sniffer_mac") {
      sources = [
        "disk_image_type_sniffer_mac.cc",
-@@ -153,7 +120,6 @@ source_set("safe_browsing") {
+@@ -138,7 +105,6 @@ source_set("safe_browsing") {
        ":archive_analyzer_results",
        ":binary_feature_extractor",
        ":download_type_util",
@@ -50,10 +50,10 @@ Index: chromium-84.0.4136.5/chrome/common/safe_browsing/BUILD.gn
        "//components/safe_browsing/core:features",
      ]
  
-Index: chromium-84.0.4136.5/chrome/common/safe_browsing/DEPS
+Index: chromium-86.0.4240.75/chrome/common/safe_browsing/DEPS
 ===================================================================
---- chromium-84.0.4136.5.orig/chrome/common/safe_browsing/DEPS
-+++ chromium-84.0.4136.5/chrome/common/safe_browsing/DEPS
+--- chromium-86.0.4240.75.orig/chrome/common/safe_browsing/DEPS
++++ chromium-86.0.4240.75/chrome/common/safe_browsing/DEPS
 @@ -1,6 +1,5 @@
  include_rules = [
    "+components/safe_browsing",
@@ -61,11 +61,11 @@ Index: chromium-84.0.4136.5/chrome/common/safe_browsing/DEPS
 -  "+third_party/unrar",
    "+third_party/zlib",
  ]
-Index: chromium-84.0.4136.5/chrome/services/file_util/safe_archive_analyzer.cc
+Index: chromium-86.0.4240.75/chrome/services/file_util/safe_archive_analyzer.cc
 ===================================================================
---- chromium-84.0.4136.5.orig/chrome/services/file_util/safe_archive_analyzer.cc
-+++ chromium-84.0.4136.5/chrome/services/file_util/safe_archive_analyzer.cc
-@@ -46,10 +46,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
+--- chromium-86.0.4240.75.orig/chrome/services/file_util/safe_archive_analyzer.cc
++++ chromium-86.0.4240.75/chrome/services/file_util/safe_archive_analyzer.cc
+@@ -45,10 +45,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
                                           AnalyzeRarFileCallback callback) {
@@ -80,3 +80,15 @@ Index: chromium-84.0.4136.5/chrome/services/file_util/safe_archive_analyzer.cc
 +  NOTREACHED();
 +#endif
  }
+Index: chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
+===================================================================
+--- chromium-86.0.4240.75.orig/chrome/services/file_util/BUILD.gn
++++ chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
+@@ -15,7 +15,6 @@ source_set("file_util") {
+     "//base",
+     "//chrome/common/safe_browsing",
+     "//chrome/common/safe_browsing:archive_analyzer_results",
+-    "//chrome/common/safe_browsing:rar_analyzer",
+     "//components/safe_browsing:buildflags",
+     "//mojo/public/cpp/bindings",
+   ]

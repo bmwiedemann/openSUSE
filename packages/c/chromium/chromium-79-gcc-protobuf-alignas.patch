@@ -1,5 +1,15 @@
-Re-use chromium alignas workaround in protobuf.
+From 5d66d5907ac3e76d1e382b8a8e8afe653bd00f4c Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 31 May 2020 13:59:15 +0000
+Subject: [PATCH] Fix GCC build with PROTOBUF_USE_DLLS enabled
+
+GCC does not allow mixing __attribute__(()) syntax and alignas()
+syntax. Re-use approach from chromium base/compiler_specific.h
 ---
+ .../protobuf/src/google/protobuf/arena.h      |  2 +-
+ .../protobuf/src/google/protobuf/port_def.inc | 29 +++++++++++++++++++
+ .../src/google/protobuf/port_undef.inc        |  1 +
+ 3 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/third_party/protobuf/src/google/protobuf/arena.h b/third_party/protobuf/src/google/protobuf/arena.h
 index dedc221..a8515ce 100644
@@ -66,3 +76,6 @@ index b7e67fe..ba1fffc 100644
  
  
  
+-- 
+2.26.2
+

@@ -1,0 +1,31 @@
+From 2879a6ba43b65c33e3c02432b4ae7a7462d24096 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Fri, 28 Aug 2020 07:23:29 +0000
+Subject: [PATCH] GCC: fix ImageMemoryBarrierData initialization
+
+GCC can't convert constant string to char[40]. Use const char * instead.
+Otherwise fails like this:
+
+src/libANGLE/renderer/vulkan/vk_helpers.cpp:121:1: error: could not convert
+'...' from '<brace-enclosed initializer list>' to
+'const angle::PackedEnumMap<rx::vk::ImageLayout, rx::vk::{anonymous}::ImageMemoryBarrierData>'
+---
+ third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp b/third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp
+index af957d7..7fe82ae 100644
+--- a/third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp
++++ b/third_party/angle/src/libANGLE/renderer/vulkan/vk_helpers.cpp
+@@ -73,7 +73,7 @@ enum BarrierType
+ 
+ struct ImageMemoryBarrierData
+ {
+-    char name[40];
++    const char *name;
+ 
+     // The Vk layout corresponding to the ImageLayout key.
+     VkImageLayout layout;
+-- 
+2.26.2
+

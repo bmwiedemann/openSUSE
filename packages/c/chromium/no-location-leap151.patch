@@ -1,25 +1,20 @@
-Index: chromium-83.0.4103.116/base/location.h
+Index: chromium-86.0.4240.75/base/location.h
 ===================================================================
---- chromium-83.0.4103.116.orig/base/location.h
-+++ chromium-83.0.4103.116/base/location.h
-@@ -18,12 +18,7 @@
- 
- namespace base {
- 
--#if defined(__has_builtin)
--// Clang allows detection of these builtins.
--#define SUPPORTS_LOCATION_BUILTINS                                       \
--  (__has_builtin(__builtin_FUNCTION) && __has_builtin(__builtin_FILE) && \
--   __has_builtin(__builtin_LINE))
+--- chromium-86.0.4240.75.orig/base/location.h
++++ chromium-86.0.4240.75/base/location.h
+@@ -23,7 +23,7 @@ namespace base {
+ #define SUPPORTS_LOCATION_BUILTINS                                       \
+   (__has_builtin(__builtin_FUNCTION) && __has_builtin(__builtin_FILE) && \
+    __has_builtin(__builtin_LINE))
 -#elif defined(COMPILER_GCC) && __GNUC__ >= 7
-+#if defined(COMPILER_GCC) && __GNUC__ >= 10
++#elif defined(COMPILER_GCC) && __GNUC__ >= 10
  // GCC has supported these for a long time, but they point at the function
  // declaration in the case of default arguments, rather than at the call site.
  #define SUPPORTS_LOCATION_BUILTINS 1
-Index: chromium-83.0.4103.116/base/location.cc
+Index: chromium-86.0.4240.75/base/location.cc
 ===================================================================
---- chromium-83.0.4103.116.orig/base/location.cc
-+++ chromium-83.0.4103.116/base/location.cc
+--- chromium-86.0.4240.75.orig/base/location.cc
++++ chromium-86.0.4240.75/base/location.cc
 @@ -92,7 +92,7 @@ NOINLINE Location Location::Current(cons
  #else
  // static
@@ -29,18 +24,3 @@ Index: chromium-83.0.4103.116/base/location.cc
  }
  #endif
  
-Index: chromium-83.0.4103.116/media/base/media_serializers.h
-===================================================================
---- chromium-83.0.4103.116.orig/media/base/media_serializers.h
-+++ chromium-83.0.4103.116/media/base/media_serializers.h
-@@ -377,8 +377,8 @@ template <>
- struct MediaSerializer<base::Location> {
-   static base::Value Serialize(const base::Location& value) {
-     base::Value result(base::Value::Type::DICTIONARY);
--    FIELD_SERIALIZE("file", value.file_name());
--    FIELD_SERIALIZE("line", value.line_number());
-+    FIELD_SERIALIZE("file", value.file_name() ? value.file_name() : "unknown");
-+    FIELD_SERIALIZE("line", value.line_number() ? value.line_number() : 0);
-     return result;
-   }
- };

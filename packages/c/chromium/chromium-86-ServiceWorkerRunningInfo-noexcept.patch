@@ -1,0 +1,63 @@
+From e4b5d6eddf876509c05cb377bc4ce67fae0f3b1c Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Fri, 21 Aug 2020 07:40:33 +0000
+Subject: [PATCH] GCC: default move constructor of ServiceWorkerRunningInfo noexcept requires StrongAlias noexcept too.
+
+Fix for this GCC compilation error:
+../../content/public/browser/service_worker_running_info.cc:26:1: error: function ‘content::ServiceWorkerRunningInfo::ServiceWorkerRunningInfo(content::ServiceWorkerRunningInfo&&)’ defaulted on its redeclaration with an exception-specification that differs from the implicit exception-specification ‘’
+   26 | ServiceWorkerRunningInfo::ServiceWorkerRunningInfo(
+      | ^~~~~~~~~~~~~~~~~~~~~~~~
+
+Problem comes from blink::ServiceWorkerToken move constructor being declared
+noexcept, but its parent StrongAlias not having noexcept.
+
+Fix making StrongAlias move constructor noexcept too.
+
+Bug: 819294
+Change-Id: I127a435b3d1f52f01a40700457ce6e67d5d67af2
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2359077
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/master@{#800495}
+---
+
+diff --git a/base/util/type_safety/strong_alias.h b/base/util/type_safety/strong_alias.h
+index ea93928..df49749 100644
+--- a/base/util/type_safety/strong_alias.h
++++ b/base/util/type_safety/strong_alias.h
+@@ -70,7 +70,8 @@
+  public:
+   constexpr StrongAlias() = default;
+   constexpr explicit StrongAlias(const UnderlyingType& v) : value_(v) {}
+-  constexpr explicit StrongAlias(UnderlyingType&& v) : value_(std::move(v)) {}
++  constexpr explicit StrongAlias(UnderlyingType&& v) noexcept
++      : value_(std::move(v)) {}
+ 
+   constexpr UnderlyingType& value() & { return value_; }
+   constexpr const UnderlyingType& value() const& { return value_; }
+From 4924144afd81017920885aecf4aedfe5d86ae71c Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Fri, 21 Aug 2020 18:32:11 +0200
+Subject: [PATCH] GCC: pending fix for ServiceWorkerRunningInfo noexcept in move constructor
+
+It is not enough to make StrongAlias noexcept. TokenType needs to also
+provide noexcept move constructor.
+
+Bug: 819294
+Change-Id: Ib85faa18f66b41053fb71ecee32e818e05685080
+---
+
+diff --git a/base/util/type_safety/token_type.h b/base/util/type_safety/token_type.h
+index 0a12679..2cbfdb7 100644
+--- a/base/util/type_safety/token_type.h
++++ b/base/util/type_safety/token_type.h
+@@ -23,6 +23,9 @@
+   TokenType() : Super(base::UnguessableToken::Create()) {}
+   explicit TokenType(const base::UnguessableToken& token) : Super(token) {}
+   TokenType(const TokenType& token) : Super(token.value()) {}
++  TokenType(TokenType&& token) noexcept : Super(token.value()) {}
++  TokenType& operator=(const TokenType& token) = default;
++  TokenType& operator=(TokenType&& token) noexcept = default;
+ 
+   // This object allows default assignment operators for compatibility with
+   // STL containers.

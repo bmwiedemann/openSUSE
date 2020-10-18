@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        85.0.4183.121
+Version:        86.0.4240.75
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -71,38 +71,31 @@ Patch1:         exclude_ymp.patch
 Patch2:         chromium-master-prefs-path.patch
 # PATCH-FIX-OPENSUSE fix_building_widevinecdm_with_chromium.patch - Enable WideVine plugin
 Patch3:         fix_building_widevinecdm_with_chromium.patch
-Patch4:         chromium-dma-buf.patch
-Patch5:         chromium-buildname.patch
-Patch6:         chromium-drm.patch
-Patch9:         chromium-system-libusb.patch
-Patch10:        gcc-enable-lto.patch
-Patch11:        chromium-79-gcc-alignas.patch
-Patch12:        chromium-80-gcc-quiche.patch
-Patch13:        chromium-fix-char_traits.patch
-Patch14:        gpu-timeout.patch
-Patch15:        build-with-pipewire-0.3.patch
-Patch16:        chromium-82-gcc-constexpr.patch
-Patch20:        chromium-83-gcc-10.patch
-Patch21:        chromium-84-gcc-include.patch
+Patch4:         chromium-buildname.patch
+Patch5:         chromium-system-libusb.patch
+Patch6:         gcc-enable-lto.patch
+Patch7:         chromium-fix-char_traits.patch
+Patch8:         gpu-timeout.patch
+Patch9:         build-with-pipewire-0.3.patch
 # Do not use unrar code, it is non-free
-Patch26:        chromium-norar.patch
-Patch27:        chromium-84-blink-disable-clang-format.patch
+Patch10:        chromium-norar.patch
 # revert location on old GCC on 15.1, 15.2 gets it right tho
-Patch36:        no-location-leap151.patch
-Patch37:        chromium-84-mediaalloc.patch
-Patch40:        chromium-blink-gcc-diagnostic-pragma.patch
-Patch41:        chromium-quiche-invalid-offsetof.patch
-Patch43:        system-libdrm.patch
-Patch44:        chromium-85-DelayNode-cast.patch
-Patch45:        chromium-85-FrameWidget-namespace.patch
-Patch46:        chromium-85-NearbyConnection-abstract.patch
-Patch47:        chromium-85-NearbyShareEncryptedMetadataKey-include.patch
-Patch48:        chromium-85-oscillator_node-cast.patch
-Patch49:        chromium-85-ostream-operator.patch
-Patch50:        chromium-85-ozone-include.patch
-Patch51:        chromium-85-sim_hash-include.patch
-Patch52:        chromium-disable-parallel-gold.patch
-Patch53:        chromium-lp151-old-drm.patch
+Patch11:        no-location-leap151.patch
+Patch12:        system-libdrm.patch
+Patch13:        chromium-disable-parallel-gold.patch
+Patch14:        chromium-lp151-old-drm.patch
+Patch15:        fix-invalid-end-iterator-usage-in-CookieMonster.patch
+# gentoo patchset
+Patch50:        chromium-78-protobuf-RepeatedPtrField-export.patch
+Patch51:        chromium-79-gcc-protobuf-alignas.patch
+Patch52:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
+Patch53:        chromium-84-blink-disable-clang-format.patch
+Patch54:        chromium-86-compiler.patch
+Patch55:        chromium-86-ConsumeDurationNumber-constexpr.patch
+Patch56:        chromium-86-ImageMemoryBarrierData-init.patch
+Patch57:        chromium-86-nearby-explicit.patch
+Patch58:        chromium-86-nearby-include.patch
+Patch59:        chromium-86-ServiceWorkerRunningInfo-noexcept.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -110,7 +103,6 @@ Patch53:        chromium-lp151-old-drm.patch
 #  (default on) compared to the PR
 Patch100:       chromium-vaapi.patch
 Patch101:       old-libva.patch
-Patch102:       chromium-vaapi-fix.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch200:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
@@ -120,7 +112,7 @@ BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  gn >= 0.1726
+BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 # Java used during build
@@ -263,11 +255,11 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 BuildRequires:  clang >= 5.0.0
 %else
 %if %{?suse_version} > 1500
-BuildRequires:  gcc >= 9
-BuildRequires:  gcc-c++ >= 9
+BuildRequires:  gcc >= 10
+BuildRequires:  gcc-c++ >= 10
 %else
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
+BuildRequires:  gcc10
+BuildRequires:  gcc10-c++
 %endif
 %endif
 
@@ -335,7 +327,6 @@ keeplibs=(
     third_party/breakpad
     third_party/breakpad/breakpad/src/third_party/curl
     third_party/brotli
-    third_party/cacheinvalidation
     third_party/catapult
     third_party/catapult/common/py_vulcanize/third_party/rcssmin
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
@@ -365,9 +356,15 @@ keeplibs=(
     third_party/devscripts
     third_party/devtools-frontend
     third_party/devtools-frontend/src/front_end/third_party/acorn
+    third_party/devtools-frontend/src/front_end/third_party/chromium
     third_party/devtools-frontend/src/front_end/third_party/codemirror
     third_party/devtools-frontend/src/front_end/third_party/fabricjs
+    third_party/devtools-frontend/src/front_end/third_party/i18n
+    third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
+    third_party/devtools-frontend/src/front_end/third_party/lit-html
+    third_party/devtools-frontend/src/front_end/third_party/lodash-isequal
+    third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
@@ -413,6 +410,7 @@ keeplibs=(
     third_party/minigbm
     third_party/modp_b64
     third_party/nasm
+    third_party/nearby
     third_party/node
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
@@ -444,6 +442,7 @@ keeplibs=(
     third_party/rnnoise
     third_party/s2cellid
     third_party/schema_org
+    third_party/securemessage
     third_party/simplejson
     third_party/skia
     third_party/skia/third_party/skcms
@@ -462,6 +461,7 @@ keeplibs=(
     third_party/swiftshader/third_party/subzero
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
     third_party/tcmalloc
+    third_party/ukey2
     third_party/usrsctp
     third_party/vulkan
     third_party/web-animations-js
@@ -478,6 +478,7 @@ keeplibs=(
     third_party/woff2
     third_party/wuffs
     third_party/xcbproto
+    third_party/zxcvbn-cpp
     third_party/zlib/google
     tools/grit/third_party/six
     url/third_party/mozilla
@@ -511,7 +512,6 @@ keeplibs+=(
 %endif
 # needed due to bugs in GN
 keeplibs+=(
-    base/third_party/libevent
     third_party/adobe
     third_party/speech-dispatcher
     third_party/usb_ids
@@ -573,6 +573,7 @@ gn_system_libraries=(
     flac
     fontconfig
     libdrm
+    libevent
     libjpeg
     libpng
     libxslt
@@ -654,10 +655,9 @@ myconf_gn+=" use_system_libdrm=true"
 myconf_gn+=" use_system_minigbm=true use_xkbcommon=true"
 myconf_gn+=" use_ozone=true ozone_auto_platforms=false"
 myconf_gn+=" ozone_platform=\"x11\" ozone_platform_x11=true ozone_platform_gbm=true"
-myconf_gn+=" ozone_platform_wayland=true"
+myconf_gn+=" ozone_platform_wayland=true ozone_platform_headless=true"
 # use_v4l2_codec - uses patches in kernel-headers present on chromeos only
 myconf_gn+=" use_v4lplugin=true use_v4l2_codec=false"
-
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"

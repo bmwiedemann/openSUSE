@@ -3195,4 +3195,75 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   * CVE-2020-15964: Insufficient data validation in media</comment>
     <requestid>836361</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>7c327b8886c59cec14e45dc4e1d18a59</srcmd5>
+    <version>86.0.4240.75</version>
+    <time>1603031211</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove vdpau-&gt;vaapi bridge as it breaks a lot:
+  (fixes welcome by someone else than me)
+  * chromium-vaapi-fix.patch
+- Fix cookiemonster:
+  * fix-invalid-end-iterator-usage-in-CookieMonster.patch
+- Update to 86.0.4240.75 bsc#1177408:
+  * CVE-2020-15967: Use after free in payments.
+  * CVE-2020-15968: Use after free in Blink.
+  * CVE-2020-15969: Use after free in WebRTC. 
+  * CVE-2020-15970: Use after free in NFC.
+  * CVE-2020-15971: Use after free in printing. 
+  * CVE-2020-15972: Use after free in audio. 
+  * CVE-2020-15990: Use after free in autofill. 
+  * CVE-2020-15991: Use after free in password manager.
+  * CVE-2020-15973: Insufficient policy enforcement in extensions.
+  * CVE-2020-15974: Integer overflow in Blink. 
+  * CVE-2020-15975: Integer overflow in SwiftShader. 
+  * CVE-2020-15976: Use after free in WebXR. 
+  * CVE-2020-6557: Inappropriate implementation in networking. 
+  * CVE-2020-15977: Insufficient data validation in dialogs.
+  * CVE-2020-15978: Insufficient data validation in navigation.
+  * CVE-2020-15979: Inappropriate implementation in V8.
+  * CVE-2020-15980: Insufficient policy enforcement in Intents.
+  * CVE-2020-15981: Out of bounds read in audio. 
+  * CVE-2020-15982: Side-channel information leakage in cache. 
+  * CVE-2020-15983: Insufficient data validation in webUI.
+  * CVE-2020-15984: Insufficient policy enforcement in Omnibox. 
+  * CVE-2020-15985: Inappropriate implementation in Blink. 
+  * CVE-2020-15986: Integer overflow in media. 
+  * CVE-2020-15987: Use after free in WebRTC. 
+  * CVE-2020-15992: Insufficient policy enforcement in networking. 
+  * CVE-2020-15988: Insufficient policy enforcement in downloads.
+  * CVE-2020-15989: Uninitialized Use in PDFium.
+- Add patches:
+  * chromium-78-protobuf-RepeatedPtrField-export.patch
+  * chromium-79-gcc-protobuf-alignas.patch
+  * chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
+  * chromium-86-ConsumeDurationNumber-constexpr.patch
+  * chromium-86-ImageMemoryBarrierData-init.patch
+  * chromium-86-ServiceWorkerRunningInfo-noexcept.patch
+  * chromium-86-compiler.patch
+  * chromium-86-nearby-explicit.patch
+  * chromium-86-nearby-include.patch
+- Remove patches:
+  * chromium-79-gcc-alignas.patch
+  * chromium-80-gcc-quiche.patch
+  * chromium-82-gcc-constexpr.patch
+  * chromium-83-gcc-10.patch
+  * chromium-84-gcc-include.patch
+  * chromium-84-mediaalloc.patch
+  * chromium-85-DelayNode-cast.patch
+  * chromium-85-FrameWidget-namespace.patch
+  * chromium-85-NearbyConnection-abstract.patch
+  * chromium-85-NearbyShareEncryptedMetadataKey-include.patch
+  * chromium-85-oscillator_node-cast.patch
+  * chromium-85-ostream-operator.patch
+  * chromium-85-ozone-include.patch
+  * chromium-85-sim_hash-include.patch
+  * chromium-blink-gcc-diagnostic-pragma.patch
+  * chromium-dma-buf.patch
+  * chromium-drm.patch
+  * chromium-quiche-invalid-offsetof.patch
+- build with system libevent, the gn bug is no longer present
+</comment>
+    <requestid>841866</requestid>
+  </revision>
 </revisionlist>
