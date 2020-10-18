@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:55:29 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST schema (bsc#1174133, bsc#1177496):
+  - Fix validation of string/symbol elements in the schema.
+  - Fix validation of 'masquerade_user' elements.
+- 4.3.3
+
+-------------------------------------------------------------------
+Thu Oct  1 08:46:13 UTC 2020 - Peter Varkoly <varkoly@suse.com>
+
+- bsc#1176645 - Running Yast2 Mail multiple times creates excess
+  brackets in postfix configuration 
+- 4.3.2  
+
+-------------------------------------------------------------------
 Tue Aug 11 12:08:49 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(mail) into the spec file
