@@ -1,7 +1,7 @@
 #
 # spec file for package libyui
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libyui
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 13
+%define so_version 14
 %define bin_name %{name}%{so_version}
 
 # optionally build with code coverage reporting,
@@ -44,7 +44,7 @@ BuildRequires:  pkg-config
 BuildRequires:  lcov
 %endif
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        GUI-abstraction library
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
@@ -64,7 +64,7 @@ Provides:       yast2-libyui = 2.42.0
 Obsoletes:      yast2-libyui < 2.42.0
 Requires:       yui_backend = %{so_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - GUI-abstraction library
 Group:          System/Libraries
 
@@ -89,7 +89,7 @@ Requires:       %{bin_name} = %{version}
 Requires:       glibc-devel
 Requires:       libstdc++-devel
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui header files
 Group:          Development/Languages/C and C++
 
