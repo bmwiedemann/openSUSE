@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pip-shims
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Compatibility shims for pip versions 8 thru current
 License:        ISC
 URL:            https://github.com/sarugaku/pip-shims
 Source:         https://github.com/sarugaku/pip-shims/archive/%{version}.tar.gz#/pip-shims-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 36.2.2}
+BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with python2}
@@ -70,6 +70,7 @@ Compatibility shims for pip versions 8 thru current.
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGELOG.rst docs/*.rst
-%{python_sitelib}/*
+%{python_sitelib}/pip_shims
+%{python_sitelib}/pip_shims-%{version}*info
 
 %changelog

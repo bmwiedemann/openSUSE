@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 12:08:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v0.5.3
+  * Avoid overriding slot members when adding new methods to a
+    class. #67
+  * Call ``resolve()`` with correct arguments for pip 20.2. #68
+
+-------------------------------------------------------------------
 Sun Jul 12 06:59:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.5.2
