@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:06:05 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow setting the 't' (or 'config:type') attribute in the
+  'backup' and 'upgrade' elements (bsc#1176834 and bsc#1176848).
+- 4.3.61
+
+-------------------------------------------------------------------
+Thu Oct  8 15:31:12 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not show a warning the user when a script just did not run
+  (bsc#1177057).
+- 4.3.60
+
+-------------------------------------------------------------------
+Thu Oct  8 08:33:12 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the progress bar length during autoinstallation
+  initialization (bsc#1177322).
+
+-------------------------------------------------------------------
+Tue Oct  6 07:20:14 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Resolve "zzz_reboot" script conflict (bsc#1177036)
+- 4.3.59
+
+-------------------------------------------------------------------
+Fri Oct  2 07:04:25 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix 'inst_autosetup' tests (bsc#1177227).
+- 4.3.58
+
+-------------------------------------------------------------------
+Thu Oct  1 05:58:50 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add validation of 'activate_systemd_default_target' and
+  'final_restart_services' elements in the 'general/mode' section
+  (related to bsc#1176595).
+- 4.3.57
+
+-------------------------------------------------------------------
+Tue Sep 29 13:55:29 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Improve validation errors presentation (related to bsc#1176973).
+- 4.3.56
+
+-------------------------------------------------------------------
+Tue Sep 29 09:52:11 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the 'general/mouse' element from the schema. It has been
+  unsupported since version 3.0.3, FATE#313101 (bsc#1176973).
+- 4.3.55
+
+-------------------------------------------------------------------
+Mon Sep 28 13:08:26 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix tests for CWM::ComboBox (related to the CWM changes for
+  bsc#1136454).
+- 4.3.54
+
+-------------------------------------------------------------------
 Thu Sep 24 13:04:47 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add the schema for 'backup' and 'upgrade' sections (bsc#1176834).
