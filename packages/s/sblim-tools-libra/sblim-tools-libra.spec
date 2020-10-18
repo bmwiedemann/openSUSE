@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-tools-libra
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sblim-tools-libra
 Version:        1.0
 Release:        0
-Url:            http://www.sblim.org
+URL:            http://www.sblim.org
 Source:         http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
-Patch1:         %{name}-%{version}-docdir.patch
+Patch0:         %{name}-%{version}-docdir.patch
+Patch1:         0001-declare-sys_errlist.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
 Summary:        SBLIM Common Resource Access Library for WBEM-SMT tasks
@@ -60,7 +61,8 @@ provider packages.
 
 %prep
 %setup -q
-%patch1
+%patch0
+%patch1 -p1
 
 %build
 autoreconf -fi

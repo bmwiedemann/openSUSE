@@ -118,4 +118,12 @@ No indication of IPL or CPL licenses in the package (forwarded request 159919 fr
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>5fd1937e42a324557e0a1ffe7d6f2272</srcmd5>
+    <version>1.0</version>
+    <time>1603031471</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842120</requestid>
+  </revision>
 </revisionlist>

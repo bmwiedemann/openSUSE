@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  9 12:31:03 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
+
+- fix gcc10 build: add 0001-declare-sys_errlist.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 07:53:51 UTC 2013 - cfarrell@suse.com
 
 - license update: EPL-1.0
