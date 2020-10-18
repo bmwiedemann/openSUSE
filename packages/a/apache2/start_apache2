@@ -79,7 +79,7 @@ sysconfd_dir=$(dirname $httpd_conf)/sysconfig${instance_suffix}.d/
 # be used in the configuration to change this, otherwise
 # stopping will not work
 #
-pid_file=/var/run/httpd${instance_suffix}.pid
+pid_file=/run/httpd${instance_suffix}.pid
 
 unset sysconfig_setting
 #

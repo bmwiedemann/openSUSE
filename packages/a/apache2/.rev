@@ -1759,4 +1759,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
     <comment>- gensslcert: fix SAN in final cert generation (forwarded request 836062 from jtomasiak)</comment>
     <requestid>836064</requestid>
   </revision>
+  <revision rev="174" vrev="6">
+    <srcmd5>728a776974f0577814cd4c179709c46e</srcmd5>
+    <version>2.4.46</version>
+    <time>1603030719</time>
+    <user>dimstar_suse</user>
+    <comment>- /var/run is depracted, /run should be used instead (forwarded request 841741 from fbui)</comment>
+    <requestid>841747</requestid>
+  </revision>
 </revisionlist>

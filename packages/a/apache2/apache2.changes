@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:43:08 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- /var/run is depracted, /run should be used instead
+
+-------------------------------------------------------------------
+Wed Oct 14 06:43:21 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- systemd-ask-password is located in /usr/bin
+
+-------------------------------------------------------------------
 Tue Sep 22 09:12:31 UTC 2020 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - gensslcert: fix SAN in final cert generation
