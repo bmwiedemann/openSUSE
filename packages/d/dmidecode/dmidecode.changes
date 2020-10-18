@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct 14 15:53:32 UTC 2020 - Jean Delvare <jdelvare@suse.de>
+
+- Update to upstream version 3.3:
+  * [COMPATIBILITY] Document how the UUID fields are interpreted.
+  * [PORTABILITY] Don't use memcpy on /dev/mem on arm64.
+  * Add bios-revision, firmware-revision and system-sku-number to -s option.
+  * Use the most appropriate unit for cache size.
+  * Decode system slot base bus width and peers.
+  * Obsoletes dmidecode-add-enumerated-values-from-smbios-3.3.0.patch,
+    dmidecode-add-logical-non-volatile-device.patch,
+    dmidecode-allow-overriding-build-settings-from-env.patch,
+    dmidecode-dont-choke-on-invalid-processor-voltage.patch,
+    dmidecode-fix-formatting-of-tpm-table-output.patch,
+    dmidecode-fix-redfish-hostname-print-length.patch,
+    dmidecode-fix-system-slot-information-for-pcie-ssd.patch,
+    dmidecode-fix-the-alignment-of-type-25-name.patch,
+    dmidecode-only-scan-dev-mem-for-entry-point-on-x86.patch, and
+    dmidecode-print-type-33-name-unconditionally.patch.
+
+-------------------------------------------------------------------
 Tue Apr 21 08:17:46 UTC 2020 - Jean Delvare <jdelvare@suse.de>
 
 3 recommended fixes from upstream:
