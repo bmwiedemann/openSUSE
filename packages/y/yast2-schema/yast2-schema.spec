@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.6
+Version:        4.3.14
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,16 +34,16 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# proper validation of installed{,_version} elements in rules.xml
-BuildRequires:  autoyast2 >= 4.3.43
+# set 't' element in 'backup' and 'upgrade' elements
+BuildRequires:  autoyast2 >= 4.3.61
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3
 BuildRequires:  yast2-audit-laf >= 4.3.0
 BuildRequires:  yast2-auth-client >= 4.3.0
 BuildRequires:  yast2-auth-server
-# tag secure_boot
-BuildRequires:  yast2-bootloader >= 4.3.0
+# set 't' element in 'initrd_module' element
+BuildRequires:  yast2-bootloader >= 4.3.12
 BuildRequires:  yast2-configuration-management >= 4.3.0
 BuildRequires:  yast2-country >= 4.3.0
 BuildRequires:  yast2-dhcp-server >= 4.3.0
@@ -56,7 +56,7 @@ BuildRequires:  yast2-http-server
 BuildRequires:  yast2-installation
 BuildRequires:  yast2-iscsi-client
 BuildRequires:  yast2-kdump
-BuildRequires:  yast2-mail
+BuildRequires:  yast2-mail >= 4.3.3
 BuildRequires:  yast2-tftp-server >= 4.1.7
 # setup_before_proposal element
 BuildRequires:  yast2-network >= 4.3.10

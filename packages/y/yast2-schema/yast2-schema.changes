@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:12:16 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow setting the 't' (or 'config:type') attribute in:
+  - 'backup' and 'upgrade' elements (bsc#1176834 and bsc#1176848).
+  - 'initrd_module' element (bsc#1177058).
+- 4.3.14
+
+-------------------------------------------------------------------
+Fri Oct  9 05:58:37 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST schema (bsc#1174133, bsc#1177496):
+  - Fix validation of string/symbol elements in the schema.
+  - Fix validation of 'masquerade_user' elements.
+- 4.3.13
+
+-------------------------------------------------------------------
+Thu Oct  1 12:51:56 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not validate unknown sections (bsc#1177173).
+- 4.3.12
+
+-------------------------------------------------------------------
+Thu Oct  1 08:11:28 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add validation of 'activate_systemd_default_target' and
+  'final_restart_services' elements in the 'general/mode' section.
+  (bsc#1176595).
+- 4.3.11
+
+-------------------------------------------------------------------
+Tue Sep 29 13:24:26 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the 'suse_btrfs' element from the schema (bsc#1176970).
+- 4.3.10
+
+-------------------------------------------------------------------
+Tue Sep 29 10:34:30 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Drop the 'general/mouse' element from the schema (bsc#1176973).
+- 4.3.9
+
+-------------------------------------------------------------------
+Thu Sep 24 13:08:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the schema for 'backup' and 'upgrade' sections (bsc#1176834).
+- 4.3.8
+
+-------------------------------------------------------------------
+Wed Sep 23 14:37:16 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- add update_nvram element to the bootloader section (jsc#11500)
+- 4.3.7
+
+-------------------------------------------------------------------
 Wed Sep  2 15:14:28 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Recognize installed_product and installed_product_version as
