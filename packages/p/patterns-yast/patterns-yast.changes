@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Dec 29 11:55:24 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Split basis pattern into basis, desktop and server (boo#1159875)
+- 20191229
+
+-------------------------------------------------------------------
+Tue Aug 27 09:11:33 CEST 2019 - schubi@suse.de
+
+- Adapting Dockerfile to yast-ruby container.
+
+-------------------------------------------------------------------
 Thu Apr 11 14:19:26 CEST 2019 - Antoine Ginies <aginies@suse.com>
 
 - remove requires on old package yast2-branding-openSUSE (boo#1109310)
