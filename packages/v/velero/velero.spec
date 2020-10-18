@@ -46,8 +46,7 @@ Supplements:    packageand(velero:velero-restic-restore-helper)
 Restic restore helper for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%setup -q -a1
 
 %build
 %goprep %{goipath}
@@ -59,7 +58,6 @@ export CGO_ENABLED=0
 %goinstall
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_bindir}/velero

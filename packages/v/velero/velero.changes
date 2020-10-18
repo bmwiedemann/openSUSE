@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:12:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid double %setup calls.
+
+-------------------------------------------------------------------
 Tue Oct 13 01:05:31 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Update to version v1.5.1
