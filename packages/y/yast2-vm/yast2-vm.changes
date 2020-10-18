@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 17 14:04:21 MDT 2020 - carnold@suse.com
+
+- bsc#1169214 - [Build 20200409] yast2 virtualization module does
+  not show popup about "NetworkManager is being used" but it is
+  mentioned in log file
+- 4.2.4
+
+-------------------------------------------------------------------
 Fri Jun 14 15:05:21 MDT 2019 - carnold@suse.com
 
 - bsc#1091967 - relocation-server configuration - error : cannot
