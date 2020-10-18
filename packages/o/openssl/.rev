@@ -1585,4 +1585,12 @@ fixes its regression.
     <comment></comment>
     <requestid>796089</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>a8f91a521d4574a665f865832908b9a9</srcmd5>
+    <version>1.1.1h</version>
+    <time>1603030666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836221</requestid>
+  </revision>
 </revisionlist>
