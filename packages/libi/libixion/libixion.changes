@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 28 18:15:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.16.1:
+  * fixed a build issue on 32-bit linux platforms, caused by slicing of integer
+  string ID values.
+  * worked around floating point rounding errors which prevented two
+  theoretically-equal numeric values from being evaluated as equal in test
+  code.
+  * added new function to allow printing of single formula tokens.
+  * added method for setting cached results on formula cells in
+    model_context.
+  * changed the model_context design to ensure that all sheets are of the same
+    size.
+  * added an accessor method to formula_model_access interface (and implicitly
+    in model_context) that directly returns a string value from cell.
+  * added cell_access class for querying of cell states without knowing its
+    type ahead of time.
+  * added document class which provides a layer on top of model_context, to
+    abstract away the handling of formula calculations.
+  * deprecated model_context::erase_cell() in favor of empty_cell().
+  * added support for 3D references - references that contain multiple sheets.
+  * added support for the exponent (^) and concatenation (&) operators.
+  * fixed incorrect handling of range references containing whole columns such
+    as A:A.
+  * added support for unordered range references - range references whose
+    start row or column is greater than their end position counterparts, such
+    as A3:A1.
+  * fixed a bug that prevented nested formula functions from working properly.
+  * implemented Calc A1 style reference resolver.
+  * formula results now directly store the string values when the results are
+    of string type.  They previously stored string ID values after interning
+    the original strings.
+  * removed build-time dependency on spdlog. 
+
+-------------------------------------------------------------------
 Thu Aug 15 21:35:46 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - Update to 0.15.0

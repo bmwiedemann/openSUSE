@@ -1,7 +1,7 @@
 #
 # spec file for package libixion
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,13 @@
 #
 
 
-%define libname libixion-0_15-0
+%define libname libixion-0_16-0
 Name:           libixion
-Version:        0.15.0
+Version:        0.16.1
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
-Group:          Productivity/Publishing/Word
-Url:            https://gitlab.com/ixion/ixion
+URL:            https://gitlab.com/ixion/ixion
 Source:         http://kohei.us/files/ixion/src/%{name}-%{version}.tar.xz
 BuildRequires:  coreutils
 BuildRequires:  gcc-c++
@@ -47,7 +46,6 @@ multiple named targets, or "cells".
 
 %package -n %{libname}
 Summary:        Threaded multi-target formula parser & interpreter
-Group:          System/Libraries
 
 %description -n %{libname}
 Ixion is a general purpose formula parser & interpreter that can calculate
@@ -55,7 +53,6 @@ multiple named targets, or "cells".
 
 %package devel
 Summary:        Threaded multi-target formula parser & interpreter
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -64,7 +61,6 @@ multiple named targets, or "cells".
 
 %package tools
 Summary:        Spreadsheet file processing library
-Group:          Productivity/Publishing/Word
 Requires:       %{libname} = %{version}
 
 %description tools
@@ -72,7 +68,6 @@ Tools to use ixion parser and interpreter from cli.
 
 %package -n python3-%{name}
 Summary:        Python bindings for libixion
-Group:          Productivity/Publishing/Word
 Obsoletes:      %{name}-python
 # Renamed in 15.0
 Provides:       %{name}-python3 = %{version}
@@ -88,10 +83,10 @@ Python 3 bindings for %{name}.
 	--disable-silent-rules \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
 %make_install
