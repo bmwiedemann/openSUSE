@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 15:10:39 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to version 6.0.3.4: CVE-2020-8264 (boo#1177521)
+  https://weblog.rubyonrails.org/2020/10/7/Rails-6-0-3-4-has-been-released/
+
+-------------------------------------------------------------------
 Sat Sep 12 12:02:38 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.3.3
