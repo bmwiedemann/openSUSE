@@ -179,4 +179,14 @@
     <comment></comment>
     <requestid>727043</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>9f2f9b7afdf8f67fed8f2d68f62f8c10</srcmd5>
+    <version>1.07.1</version>
+    <time>1603031309</time>
+    <user>dimstar_suse</user>
+    <comment>- fix [bsc#1177579] -- wrong clamping of hexadecimal digits in dc
+- deleted patches
+  - bc-1.06-dc_ibase.patch (upstreamed)</comment>
+    <requestid>841945</requestid>
+  </revision>
 </revisionlist>

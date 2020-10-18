@@ -1,7 +1,7 @@
 #
 # spec file for package bc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,10 @@ Release:        0
 Summary:        GNU Command Line Calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            https://www.gnu.org/software/bc/
+URL:            https://www.gnu.org/software/bc/
 Source0:        https://ftp.gnu.org/gnu/bc/bc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/bc/bc-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-Patch1:         bc-1.06-dc_ibase.patch
 # Correct return value after 'q' [bsc#1129038]
 Patch2:         bc-dc-correct-return-value.patch
 BuildRequires:  bison
@@ -58,7 +57,6 @@ and "pushes" its results back onto the stack.
 
 %prep
 %setup -q
-%patch1
 %patch2 -p1
 
 %build
