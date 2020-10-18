@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 14 11:04:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do build with SUSE's %optflags.
+- Abolish historic specfile constructs.
+- Rework libdlm3 require with a shared library version
+  tag instead so it propagates to all consuming packages.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:10:20 UTC 2020 - ghe@suse.com
+
+- Add require libdlm3 (bsc#1177658)
+
+-------------------------------------------------------------------
 Mon Sep 21 11:10:20 UTC 2020 - ghe@suse.com
 
 - Add dependency relationship between libdlm and dlm-kmp (bsc#1121380)

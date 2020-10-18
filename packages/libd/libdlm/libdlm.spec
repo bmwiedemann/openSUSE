@@ -1,7 +1,7 @@
 #
 # spec file for package libdlm
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
 Version:        4.0.9
 Release:        0
-Url:            https://pagure.io/dlm
+URL:            https://pagure.io/dlm/
 Source:         https://releases.pagure.org/dlm/dlm-%{version}.tar.gz
 Patch1:         0001-makefile-for-diff-arch.patch
 Patch2:         0002-remove-sd-notify.patch
@@ -44,7 +44,6 @@ Patch3:         0003-bnc#874705-nodes-without-quorum.patch
 Patch4:         sysmacros.patch
 Patch5:         cluster-ringid-seq.patch
 Patch6:         dlm_controld-add-note-that-the-dlm-file-is-not-creat.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
 BuildRequires:  libcorosync-devel
@@ -82,23 +81,18 @@ Libraries and tools that allow applications, particularly filesystems
 like OCFS2, to interface with the in-kernel distributed lock manager.
 
 %prep
-###########################################################
-%setup -qn dlm-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-###########################################################
+%autosetup -p1 -n dlm-%{version}
 
 %build
+echo "V_%version { global: *; };" >dlm.ver
+export CFLAGS="%optflags"
+export LDFLAGS="-Wl,--version-script=$PWD/dlm.ver"
 make all UDEVDIR="%{_udevrulesdir}"
 ###########################################################
 
 %install
 ###########################################################
-make DESTDIR=$RPM_BUILD_ROOT UDEVDIR="%{_udevrulesdir}" install
+%make_install UDEVDIR="%{_udevrulesdir}"
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/packages/libdlm-%{version}
 
 install -Dm 0644 init/dlm.service $RPM_BUILD_ROOT%{_unitdir}/dlm.service
@@ -125,8 +119,6 @@ install -Dm 0644 init/dlm.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dlm
 %postun -n libdlm3 -p /sbin/ldconfig
 
 %files
-###########################################################
-%defattr(-,root,root)
 %dir %{_datadir}/doc/packages/libdlm-%{version}
 %{_udevrulesdir}/51-dlm.rules
 %{_sbindir}/dlm_controld
@@ -140,14 +132,11 @@ install -Dm 0644 init/dlm.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dlm
 %{_fillupdir}/sysconfig.dlm
 
 %files -n libdlm3
-%defattr(-,root,root)
 %{_libdir}/libdlm.so.*
 %{_libdir}/libdlm_lt.so.*
 %{_libdir}/libdlmcontrol.so.*
 
 %files devel
-###########################################################
-%defattr(-,root,root)
 %{_libdir}/libdlm*.so
 %{_libdir}/pkgconfig/libdlm.pc
 %{_libdir}/pkgconfig/libdlm_lt.pc
