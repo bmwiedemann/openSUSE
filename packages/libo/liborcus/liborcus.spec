@@ -16,9 +16,9 @@
 #
 
 
-%define libname liborcus-0_15-0
+%define libname liborcus-0_16-0
 Name:           liborcus
-Version:        0.15.4
+Version:        0.16.1
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
@@ -28,7 +28,7 @@ BuildRequires:  coreutils
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(libixion-0.15)
+BuildRequires:  pkgconfig(libixion-0.16)
 BuildRequires:  pkgconfig(mdds-1.5)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
@@ -124,7 +124,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n python3-%{name}
 %dir %{python3_sitelib}/orcus/
-%{python3_sitelib}/orcus/*.py
+%{python3_sitelib}/orcus/*
 %{python3_sitearch}/_orcus.so
 %{python3_sitearch}/_orcus_json.so
 

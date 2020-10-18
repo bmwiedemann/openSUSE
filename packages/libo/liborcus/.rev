@@ -307,4 +307,13 @@
   * Bugfixes release</comment>
     <requestid>789639</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>861734422888158984ada3abe713cc51</srcmd5>
+    <version>0.16.1</version>
+    <time>1603030707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.1:
+  * match up with ixion 0.16 release</comment>
+    <requestid>841729</requestid>
+  </revision>
 </revisionlist>
