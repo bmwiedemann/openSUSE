@@ -1414,4 +1414,16 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1177039</comment>
   </revision>
+  <revision rev="143" vrev="4">
+    <srcmd5>d3655840d5e189a0b8bffd12a40ada0b</srcmd5>
+    <version>8.3p1</version>
+    <time>1603031324</time>
+    <user>dimstar_suse</user>
+    <comment>- Work around %service_add_post disabling sshd on upgrade with
+  package name change (bsc#1177039).
+
+- Use of DISABLE_RESTART_ON_UPDATE is deprecated.
+  Replace it with %service_del_postun_without_restart (forwarded request 840337 from hpjansson)</comment>
+    <requestid>841947</requestid>
+  </revision>
 </revisionlist>
