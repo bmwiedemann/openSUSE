@@ -1,7 +1,7 @@
 #
 # spec file for package expect
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Tool for Automating Interactive Programs
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Tcl
-Url:            http://expect.nist.gov
+URL:            http://expect.nist.gov
 Source:         https://downloads.sourceforge.net/expect/expect%version.tar.gz
 Source1:        expect-rpmlintrc
 Patch1:         expect.patch
@@ -81,6 +81,8 @@ sed -i \
 rm %buildroot%_bindir/*passwd
 rm %buildroot%_bindir/weather
 rm %buildroot%_mandir/*/*passwd*
+# Simplify linking for apps that use Expect without Tcl
+ln -s libexpect%version.so %buildroot%_libdir/libexpect.so
 
 %files
 %_bindir/*
@@ -90,6 +92,7 @@ rm %buildroot%_mandir/*/*passwd*
 %doc ChangeLog HISTORY INSTALL FAQ NEWS README
 
 %files devel
+%_libdir/libexpect.so
 %_includedir/*
 %_mandir/man3/*
 

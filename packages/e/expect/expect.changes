@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 15 08:18:32 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Add an unversioned symlink to make linking easier for
+  applications that use libexpect without Tcl (boo#1172681).
+
+-------------------------------------------------------------------
 Thu Oct 25 09:10:24 UTC 2018 - Reinhard Max <max@suse.com>
 
 - New version 5.45.4:

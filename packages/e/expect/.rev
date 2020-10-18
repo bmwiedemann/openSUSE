@@ -187,4 +187,13 @@
   * Fix two bugs in EOF handling.</comment>
     <requestid>644610</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>aaac8e2f2ed4f49720d258ae8b5b5038</srcmd5>
+    <version>5.45.4</version>
+    <time>1603030685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add an unversioned symlink to make linking easier for
+  applications that use libexpect without Tcl (boo#1172681).</comment>
+    <requestid>841877</requestid>
+  </revision>
 </revisionlist>
