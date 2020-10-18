@@ -265,4 +265,13 @@
     <comment>- Drop kde_imaging and technical_writing from the DVD (need space
   after we now compress zstd).</comment>
   </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>2fd4b76f2dab578781ecb9a015a01dca</srcmd5>
+    <version>20170319</version>
+    <time>1603030945</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend chrony by rest_cd_core (yast pattern used to recommen
+  it before)</comment>
+    <requestid>841300</requestid>
+  </revision>
 </revisionlist>

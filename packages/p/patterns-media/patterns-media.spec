@@ -77,6 +77,7 @@ Recommends:     bluez-firmware
 Recommends:     btrfsprogs
 Recommends:     bundle-lang-common-en
 Recommends:     cifs-utils
+Recommends:     chrony
 # prefer the full version for installation
 Recommends:     cracklib-dict-full
 # bnc#480879

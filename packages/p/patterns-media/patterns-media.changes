@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:03:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend chrony by rest_cd_core (yast pattern used to recommen
+  it before)
+
+-------------------------------------------------------------------
 Wed Aug 26 18:26:08 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop kde_imaging and technical_writing from the DVD (need space
