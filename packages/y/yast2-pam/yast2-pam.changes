@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:42:35 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix initialize of packager to not break command line
+  (bsc#1177632)
+- 4.3.3
+
+-------------------------------------------------------------------
 Tue Jul 28 11:35:47 UTC 2020 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed a bug, introduced in the latest version, related to
