@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 14 17:26:11 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split libinput-debug-gui from the library package build,
+  removes GTK3 and transient build dependencies from libinput.
+- Fix cleanup of python3-libevdev dependent helpers, now
+  located under libexecdir
+- Fix installation path of zsh-completion helpers, move to
+  tools package.
+
+-------------------------------------------------------------------
 Wed Oct  7 05:21:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.16.2
@@ -31,8 +41,8 @@ Mon Aug  3 08:40:06 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 Mon Jun 22 12:08:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.15.6
-  * Add HP stream x360 11 ModelTabletModeNoSuspend keyboard quirk                                             
-  * Add quirks file for Sony Vaio Laptop                                                                              
+  * Add HP stream x360 11 ModelTabletModeNoSuspend keyboard quirk
+  * Add quirks file for Sony Vaio Laptop
   * tablet: use the AttrPressureRange quirk for tablets too
 
 -------------------------------------------------------------------

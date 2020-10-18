@@ -805,4 +805,17 @@ Peter Hutterer (3):
     <comment>- Update to release 1.16.2</comment>
     <requestid>840049</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>ccc1d4469bb0bd522f9b347c83d46879</srcmd5>
+    <version>1.16.2</version>
+    <time>1603031141</time>
+    <user>dimstar_suse</user>
+    <comment>- Split libinput-debug-gui from the library package build,
+  removes GTK3 and transient build dependencies from libinput.
+- Fix cleanup of python3-libevdev dependent helpers, now
+  located under libexecdir
+- Fix installation path of zsh-completion helpers, move to
+  tools package.</comment>
+    <requestid>841813</requestid>
+  </revision>
 </revisionlist>

@@ -16,10 +16,28 @@
 #
 
 
-%bcond_with documentation
+%global flavor @BUILD_FLAVOR@%nil
 
+%if "%flavor" == ""
 Name:           libinput
+%bcond_without  completion
+%bcond_with     documentation
+%bcond_with     debug_gui
+%endif
+
+%if "%flavor" == "extra"
+Name:           libinput-extra
+%bcond_with     completion
+# no python3-recommonmark
+%bcond_with     documentation
+%bcond_without  debug_gui
+%endif
+
+# no python3-libevdev available
+%bcond_with     python3_libevdev
+
 %define lname	libinput10
+%define pname	libinput
 Version:        1.16.2
 Release:        0
 Summary:        Input device and event processing library
@@ -28,10 +46,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/libinput/
 
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
-Source:         http://freedesktop.org/software/libinput/%name-%version.tar.xz
-Source2:        http://freedesktop.org/software/libinput/%name-%version.tar.xz.sig
+Source:         http://freedesktop.org/software/libinput/%pname-%version.tar.xz
+Source2:        http://freedesktop.org/software/libinput/%pname-%version.tar.xz.sig
 Source3:        baselibs.conf
-Source4:        %name.keyring
+Source4:        %pname.keyring
 Source5:        libinput-rpmlintrc
 Patch1:         kill-env.diff
 
@@ -40,13 +58,16 @@ BuildRequires:  gcc-c++
 %if %{with documentation}
 BuildRequires:  doxygen
 BuildRequires:  graphviz >= 2.26
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-recommonmark
 %endif
-BuildRequires:  grep
 BuildRequires:  meson >= 0.41.0
 BuildRequires:  pkg-config
+%if %{with debug_gui}
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+%endif
 BuildRequires:  pkgconfig(libevdev) >= 0.4
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom) >= 0.20
@@ -83,10 +104,22 @@ functionality that users expect.
 %package tools
 Summary:        Utilities to display libinput configuration
 Group:          Hardware/Other
+%if %{with python3_libevdev}
+Requires:       python3-libevdev
+%endif
 
 %description tools
 This tool lists the locally recognised devices and their respective
 configuration options and configuration defaults.
+
+%package -n %pname-debug-gui
+Summary:        Graphical libinput debug tool
+Group:          Hardware/Other
+Requires:       libinput-tools = %version-%release
+
+%description -n %pname-debug-gui
+This tool allows graphical libinput debugging. It visualizes
+all events processed by libinput.
 
 %package devel
 Summary:        Development files for the Input Device Library
@@ -101,26 +134,36 @@ This package contains all necessary include files and libraries needed
 to develop applications that require libinput.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %pname-%version
 
 %build
 %meson \
-	--includedir="%_includedir/%name" \
-	--datadir="%_datadir/%name-%version" \
+	--includedir="%_includedir/%pname" \
+	--datadir="%_datadir/%pname-%version" \
+	-Dzshcompletiondir="%{?with_completion:%_datadir/zsh/site-functions}%{!?with_completion:no}" \
 	-Dudev-dir="%_prefix/lib/udev" \
 	-Dtests=false \
+	-Ddebug-gui=%{?with_debug_gui:true}%{!?with_debug_gui:false} \
 	-Ddocumentation=%{?with_documentation:true}%{!?with_documentation:false} \
 	%nil
 %meson_build
 
 %install
 %meson_install
-%fdupes %buildroot/%_prefix
-# no python3-libevdev available
+
+%if %{without python3_libevdev}
 for i in libinput-measure-fuzz libinput-measure-touch-size libinput-measure-touchpad-pressure libinput-measure-touchpad-tap libinput-replay; do
-	rm -fv "%buildroot/usr/lib/libinput/$i"
+	rm -fv "%buildroot/%_libexecdir/libinput/$i"
 	rm -fv "%buildroot/%_mandir/man1/$i".1*
 done
+%endif
+
+%if "%flavor" == "extra"
+	find "%buildroot/" \( -type f -o -type l \) -not -iname \*libinput-debug-gui\* -delete
+	find "%buildroot/" -type d -empty -delete
+%endif
+
+%fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -128,6 +171,7 @@ done
 %post udev
 [ -x /usr/bin/udevadm ] && /usr/bin/udevadm hwdb --update || :
 
+%if "%flavor" == ""
 %files udev
 %_prefix/lib/udev/libinput-device-group
 %_prefix/lib/udev/libinput-fuzz-*
@@ -142,10 +186,20 @@ done
 %_bindir/libinput
 %_libexecdir/libinput/
 %_mandir/man1/*
+%dir %_datadir/zsh
+%_datadir/zsh/site-functions
 
 %files devel
-%_includedir/%name/
+%_includedir/%pname/
 %_libdir/pkgconfig/libinput.pc
 %_libdir/libinput.so
+%endif
+
+%if "%flavor" == "extra"
+%files -n %pname-debug-gui
+%dir %_libexecdir/libinput/
+%_libexecdir/libinput/libinput-debug-gui
+%_mandir/man1/libinput-debug-gui*
+%endif
 
 %changelog
