@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Oct 11 07:30:59 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.11.1:
+  * New
+  * Added Shift-e keyboard shortcut to edit note text for nodes
+    and connections.
+  * Changes
+  * Updated Italian translation (thanks to @albanobattistella).
+  * Improved automatic layout of node trees when adjacent tree
+    sizes change.
+  * Changed node and connection contextual menus to show (Edit
+    Note) instead of (Add Note) and (Remove Note) options.
+  * Bug Fixes
+  * Fixing compilation issues.
+  * Fixing behavior of 't' command when node is selected.
+  * Fixing support for undo/redo of root node insertion.
+  * Added Preferences dialog.
+  * Added Portuguese translation (thanks to Andre Barata).
+  * Added keyboard shortcut (Menu or Shift-F10) to display
+    contextual menus in mindmap.
+  * Added default theme preference option.
+  * Added preference option to select map items on cursor hover.
+  * Added Shift+Home/End support for selecting all text from
+    current cursor to beginning/end of node or connection titles when
+    editing.
+  * Added support for PlantUML import/export.
+  * Added support for displaying notifications on completion of
+    export operation.
+  * Added keyboard shortcuts for displaying tabs in sidebar.
+  * Added support for making filepath URIs clickable in nodes,
+    connections and notes (displays the files in the file manager
+    application).
+  * When nodes are copied to clipboard, pasting them as text in
+    an external application will be displayed as in text export
+    format.
+  * When text is copied to the clipboard from an external
+    application, pasting as nodes in Minder will parse in text import
+  * Improved look of menu accelerators and added missing
+    accelerators.
+  * Changed 't' command to transition task status from disabled
+    to enabled to done and back to disabled.
+  * Fixed issues with undo/redo of node/connection title changes.
+  * Fixed issue with undoing a connection add operation.
+  * Fixed issue with connection titles being clear when
+    connection is moved to a different node.
+  * Fixed UI issue with changing window width by dragging right
+    side of window when sidebar is hidden.
+  * Fixed issues with inputting special characters with US
+    international keyboard.
+  * Fixed issue where images in resized nodes were not displaying
+    properly on application restart.
+  * Fixed issue where copying a filename in a file manager and
+    pasting in Minder would attempt to past the icon image instead of
+    the filename when editing text.
+
+-------------------------------------------------------------------
 Fri Aug 28 23:09:09 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.10.0:
