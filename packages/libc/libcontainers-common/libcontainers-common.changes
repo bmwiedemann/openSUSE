@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 15:53:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Simplify %setup statements.
+
+-------------------------------------------------------------------
 Mon Aug  3 17:10:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

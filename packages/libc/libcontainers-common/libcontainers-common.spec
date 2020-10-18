@@ -1,7 +1,7 @@
 #
 # spec file for package libcontainers-common
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # commonver - version from containers/common
 %define commonver 0.14.6
@@ -31,7 +32,7 @@ Name:           libcontainers-common
 Version:        20200727
 Release:        0
 Summary:        Configuration files common to github.com/containers
-License:        Apache-2.0 and GPL-3.0+
+License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/containers
 Source0:        image-%{imagever}.tar.xz
@@ -59,12 +60,8 @@ Configuration files and manpages shared by tools that are based on the
 github.com/containers libraries, such as Buildah, CRI-O, Podman and Skopeo.
 
 %prep
-%setup -q -T -D -b 0 -n image-%{imagever}
-%setup -q -T -D -b 1 -n storage-%{storagever}
-%setup -q -T -D -b 7 -n podman-%{podmanver}
-%setup -q -T -D -b 9 -n common-%{commonver}
+%setup -Tcq -b0 -b1 -b7 -b9
 # copy the LICENSE file in the build root
-cd ..
 cp %{SOURCE2} .
 
 %build
