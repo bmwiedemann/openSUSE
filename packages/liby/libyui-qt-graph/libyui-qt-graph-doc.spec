@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-graph-doc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define parent libyui-qt-graph
-%define so_version 13
+%define so_version 14
 
 Name:           %{parent}-doc
-Version:        2.46.5
+Version:        2.46.6
 Release:        0
 Source:         %{parent}-%{version}.tar.bz2
 
@@ -34,7 +34,7 @@ BuildRequires:  graphviz-gnome
 BuildRequires:  libyui-devel >= 3.9.0
 BuildRequires:  texlive-latex
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-qt-graph documentation
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          Documentation/HTML

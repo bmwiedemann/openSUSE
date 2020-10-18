@@ -246,4 +246,12 @@
     <comment>submit new version 2.46.5</comment>
     <requestid>825951</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4ba57354534928d80a483a4fb941b4de</srcmd5>
+    <version>2.46.6</version>
+    <time>1603030884</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.46.6</comment>
+    <requestid>840453</requestid>
+  </revision>
 </revisionlist>

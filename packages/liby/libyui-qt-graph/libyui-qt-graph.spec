@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-graph
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libyui-qt-graph
-Version:        2.46.5
+Version:        2.46.6
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 13
+%define so_version 14
 %define bin_name %{name}%{so_version}
 
 BuildRequires:  cmake >= 2.8
@@ -35,7 +35,7 @@ BuildRequires:  libyui-devel >= 3.9.0
 %define libyui_qt_devel_version libyui-qt-devel >= 2.52.0
 BuildRequires:  %{libyui_qt_devel_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Qt Graph Widget
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
@@ -54,7 +54,7 @@ Provides:       %{name} = %{version}
 Provides:       yast2-qt-graph = 2.46.0
 Obsoletes:      yast2-qt-graph < 2.46.0
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui - Qt Graph Widget
 Group:          System/Libraries
 
@@ -69,7 +69,7 @@ component for libYUI.
 Requires:       %{bin_name} = %{version}
 Requires:       %{libyui_qt_devel_version}
 
-Url:            http://github.com/libyui/
+URL:            http://github.com/libyui/
 Summary:        Libyui-qt-graph header files
 Group:          Development/Languages/C and C++
 
