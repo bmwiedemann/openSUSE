@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:54:06 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed menu navigation using arrow keys in Qt UI - do not start
+  the selected module immediately after changing the selection
+  (bsc#1172035)
+- 4.3.1
+
+-------------------------------------------------------------------
+Fri Sep 25 10:02:31 CEST 2020 - schubi@suse.de
+
+- Adaptions to AppArmor 3.X: Changes in AppArmor aa-status output.
+  (bsc#1174746)
+- 4.3.0
+
+-------------------------------------------------------------------
 Mon Feb 17 16:01:12 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed user-visible messages (bsc#1084015)

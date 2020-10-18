@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-apparmor
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-apparmor
-Version:        4.2.4
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - Plugins for AppArmor Profile Management
 License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            https://github.com/yast/yast-apparmor
+URL:            https://github.com/yast/yast-apparmor
 
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
+
+#for install task
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 # Yast::Execute.locally!
 Requires:       yast2 > 3.3.2
@@ -48,8 +52,10 @@ profiles.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
