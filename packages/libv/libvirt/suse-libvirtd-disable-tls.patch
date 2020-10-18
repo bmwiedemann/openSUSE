@@ -31,3 +31,16 @@ Index: libvirt-6.8.0/src/remote/libvirtd.conf.in
  
  # Listen for unencrypted TCP connections on the public TCP/IP port.
  # NB, must pass the --listen flag to the @DAEMON_NAME@ process for this to
+Index: libvirt-6.8.0/src/remote/test_libvirtd.aug.in
+===================================================================
+--- libvirt-6.8.0.orig/src/remote/test_libvirtd.aug.in
++++ libvirt-6.8.0/src/remote/test_libvirtd.aug.in
+@@ -3,7 +3,7 @@ module Test_@DAEMON_NAME@ =
+ 
+    test @DAEMON_NAME_UC@.lns get conf =
+ @CUT_ENABLE_IP@
+-        { "listen_tls" = "0" }
++        { "listen_tls" = "1" }
+         { "listen_tcp" = "1" }
+         { "tls_port" = "16514" }
+         { "tcp_port" = "16509" }

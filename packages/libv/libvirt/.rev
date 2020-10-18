@@ -3666,4 +3666,20 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>839021</requestid>
   </revision>
+  <revision rev="313" vrev="2">
+    <srcmd5>f22f2b0b9fa14cb5407c6f6acf0c5e89</srcmd5>
+    <version>6.8.0</version>
+    <time>1603031130</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 'make check' with all downstream patches applied. Some
+  patches touch config files and needed the corresponding augeaus
+  test files updated.
+  Updated patches:
+  suse-libvirtd-disable-tls.patch,
+  suse-qemu-conf.patch,
+  suse-ovmf-paths.patch,
+  suse-libxl-disable-autoballoon.patch
+  boo#1175574</comment>
+    <requestid>841811</requestid>
+  </revision>
 </revisionlist>

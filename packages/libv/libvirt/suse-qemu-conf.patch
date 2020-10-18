@@ -73,3 +73,15 @@ Index: libvirt-6.8.0/src/qemu/qemu_conf.c
      cfg->securityRequireConfined = false;
  
      cfg->keepAliveInterval = 5;
+Index: libvirt-6.8.0/src/qemu/test_libvirtd_qemu.aug.in
+===================================================================
+--- libvirt-6.8.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-6.8.0/src/qemu/test_libvirtd_qemu.aug.in
+@@ -44,6 +44,7 @@ module Test_libvirtd_qemu =
+ { "remote_websocket_port_min" = "5700" }
+ { "remote_websocket_port_max" = "65535" }
+ { "security_driver" = "selinux" }
++{ "security_driver" = "apparmor" }
+ { "security_default_confined" = "1" }
+ { "security_require_confined" = "1" }
+ { "user" = "root" }

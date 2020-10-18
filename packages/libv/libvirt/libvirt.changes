@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 14 16:44:22 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Fix 'make check' with all downstream patches applied. Some
+  patches touch config files and needed the corresponding augeaus
+  test files updated.
+  Updated patches:
+  suse-libvirtd-disable-tls.patch,
+  suse-qemu-conf.patch,
+  suse-ovmf-paths.patch,
+  suse-libxl-disable-autoballoon.patch
+  boo#1175574
+
+-------------------------------------------------------------------
 Thu Oct  1 15:56:21 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 6.8.0

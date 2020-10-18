@@ -50,3 +50,21 @@ Index: libvirt-6.8.0/src/security/virt-aa-helper.c
      };
      /* override the above with these */
      const char * const override[] = {
+Index: libvirt-6.8.0/src/qemu/test_libvirtd_qemu.aug.in
+===================================================================
+--- libvirt-6.8.0.orig/src/qemu/test_libvirtd_qemu.aug.in
++++ libvirt-6.8.0/src/qemu/test_libvirtd_qemu.aug.in
+@@ -95,10 +95,9 @@ module Test_libvirtd_qemu =
+ { "migration_port_max" = "49215" }
+ { "log_timestamp" = "0" }
+ { "nvram"
+-    { "1" = "/usr/share/OVMF/OVMF_CODE.fd:/usr/share/OVMF/OVMF_VARS.fd" }
+-    { "2" = "/usr/share/OVMF/OVMF_CODE.secboot.fd:/usr/share/OVMF/OVMF_VARS.fd" }
+-    { "3" = "/usr/share/AAVMF/AAVMF_CODE.fd:/usr/share/AAVMF/AAVMF_VARS.fd" }
+-    { "4" = "/usr/share/AAVMF/AAVMF32_CODE.fd:/usr/share/AAVMF/AAVMF32_VARS.fd" }
++    { "1" = "/usr/share/qemu/ovmf-x86_64-ms-4m-code.bin:/usr/share/qemu/ovmf-x86_64-ms-4m-vars.bin" }
++    { "2" = "/usr/share/qemu/ovmf-x86_64-ms-code.bin:/usr/share/qemu/ovmf-x86_64-ms-vars.bin" }
++    { "3" = "/usr/share/qemu/aavmf-aarch64-code.bin:/usr/share/qemu/aavmf-aarch64-vars.bin" }
+ }
+ { "stdio_handler" = "logd" }
+ { "gluster_debug_level" = "9" }
