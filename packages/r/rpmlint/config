@@ -792,6 +792,9 @@ setOption("DBUSServices.WhiteList", (
     # powerdevil chargethreshold helper (bsc#1176474)
     "org.kde.powerdevil.chargethresholdhelper.service",
     "org.kde.powerdevil.chargethresholdhelper.conf",
+    # plasma5-disks smartmon helper
+    "org.kde.kded.smart.service",
+    "org.kde.kded.smart.conf"
 ))
 
 setOption("PAMModules.WhiteList", (
