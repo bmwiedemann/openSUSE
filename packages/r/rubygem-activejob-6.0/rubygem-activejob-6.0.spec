@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activejob-6.0
-Version:        6.0.3.3
+Version:        6.0.3.4
 Release:        0
 %define mod_name activejob
 %define mod_full_name %{mod_name}-%{version}
