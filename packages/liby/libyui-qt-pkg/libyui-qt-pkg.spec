@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-pkg
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_version 13
+%define so_version 14
 %define bin_name %{name}%{so_version}
 %define libyui_qt_devel_version libyui-qt-devel >= 2.50.1
 %define libzypp_devel_version libzypp-devel >= 17.21.0
 Name:           libyui-qt-pkg
-Version:        2.48.3
+Version:        2.48.4
 Release:        0
 Summary:        Libyui - Qt Package Selector
 License:        LGPL-2.1-only OR LGPL-3.0-only

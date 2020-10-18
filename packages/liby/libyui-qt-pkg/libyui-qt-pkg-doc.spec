@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-pkg-doc
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define parent libyui-qt-pkg
-%define so_version 13
+%define so_version 14
 Name:           %{parent}-doc
-Version:        2.48.3
+Version:        2.48.4
 Release:        0
 Summary:        Libyui-qt-pkg documentation
 License:        LGPL-2.1-only OR LGPL-3.0-only
