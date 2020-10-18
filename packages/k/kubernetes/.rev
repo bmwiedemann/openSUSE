@@ -654,4 +654,14 @@
     <comment>- Bump kubernetes to 1.19.2 and 1.18.9</comment>
     <requestid>835140</requestid>
   </revision>
+  <revision rev="70" vrev="10">
+    <srcmd5>bcc30ec516147d42845747e6b2f9c76c</srcmd5>
+    <version>unknown</version>
+    <time>1603031393</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes to 1.18.10 
+
+- Bump kubernetes to 1.19.3</comment>
+    <requestid>841996</requestid>
+  </revision>
 </revisionlist>
