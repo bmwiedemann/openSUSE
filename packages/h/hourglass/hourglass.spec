@@ -17,7 +17,7 @@
 
 
 Name:           hourglass
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Clock gadget for Elementary OS
 License:        GPL-3.0-only

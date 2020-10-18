@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct 11 07:29:30 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.3:
+  * StopWatch: Rewrite for efficiency and visibility
+  * Add :disabled pseudo-class to the .round-button class
+  * Fix a fatal regression that timer does not stop on 00:00:00
+  * Use icons for add/remove buttons
+  * Update .desktop comment to be consistent with HIG (by
+    @aljelly)
+  * Change shortened format of weekdays (by @NathanBnm)
+  * Improve look of create/edit alarm dialog
+  * Don't reset repeat setting on closing popover
+  * Fix DBus error at the first launch
+  * Fix notification icon is not set
+  * Fix left time shows unexpected values if set time is too big
+  * Improve saving window state
+  * Add French translation (by @NathanBnm)
+  * Update Spanish translation (by @CCaroV)
+  * Add Japanese translation
+  * Add Portuguese-Portugal translation (by @rottenpants466)
+  * Various l10n and coding improvements to the project thanks to
+    @NathanBnm
+
+-------------------------------------------------------------------
 Thu Apr 30 07:33:14 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.1:
