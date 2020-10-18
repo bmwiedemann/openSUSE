@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 12:04:21 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Added Nested Tables (bsc#1176402)
+- Require libyui.so.14
+- 4.3.3
+
+-------------------------------------------------------------------
 Wed Aug 12 12:12:01 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Use new syntax (MenuBar(), Menu()) in MenuBar example (bsc#1175115)
