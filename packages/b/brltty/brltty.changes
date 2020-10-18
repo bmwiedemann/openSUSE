@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 18:14:27 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Add coreutils and util-linux to post requires (boo#1177656).
+
+-------------------------------------------------------------------
 Tue Jul  7 08:53:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec

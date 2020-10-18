@@ -194,7 +194,9 @@ The xbrlapi utility is a helper to have BrlAPI work on a X system.
 %package -n %{soname}
 Summary:        Library to use BRLTTY from applications
 Group:          System/Daemons
+Requires(post): coreutils
 Requires(post): shadow
+Requires(post): util-linux
 Recommends:     %{name}
 
 %description -n %{soname}

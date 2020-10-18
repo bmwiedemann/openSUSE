@@ -467,4 +467,12 @@
     <comment>- Fixes for %_libexecdir changing to /usr/libexec (forwarded request 819150 from gmbr3)</comment>
     <requestid>819253</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>a104fdb15757f67aca1fb97e629642e2</srcmd5>
+    <version>6.1</version>
+    <time>1603031154</time>
+    <user>dimstar_suse</user>
+    <comment>- Add coreutils and util-linux to post requires (boo#1177656). (forwarded request 841815 from mgorse)</comment>
+    <requestid>841816</requestid>
+  </revision>
 </revisionlist>
