@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 05:41:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Fix-a-dangling-reference-to-the-list-of-database-files.patch
+  to fix possible crashes (kde#427650)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0

@@ -31,6 +31,8 @@ Source:         kactivitymanagerd-%{version}.tar.xz
 Source1:        kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch:          Fix-a-dangling-reference-to-the-list-of-database-files.patch
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -84,6 +86,7 @@ Provides translations to the package %{name}.
 
 %prep
 %setup -q -n kactivitymanagerd-%{version}
+%autopatch -p1
 
 %build
   %cmake_kf5 -d build
