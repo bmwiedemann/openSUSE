@@ -130,4 +130,13 @@
   versions.</comment>
     <requestid>812197</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>014423fc7d02e399e40fac653e5bbefe</srcmd5>
+    <version>5.5.2</version>
+    <time>1603031842</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 5.5.2
+  * Miscellaneous bugfixes</comment>
+    <requestid>842311</requestid>
+  </revision>
 </revisionlist>

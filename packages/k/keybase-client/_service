@@ -3,7 +3,7 @@
     <param name="url">https://github.com/keybase/client.git</param>
     <param name="scm">git</param>
     <param name="subdir">go/</param>
-    <param name="revision">refs/tags/v5.5.1</param>
+    <param name="revision">refs/tags/v5.5.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">client</param>
