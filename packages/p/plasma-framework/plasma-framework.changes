@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 17 11:50:09 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid 100% CPU usage by plasmashell:
+  * 0001-Fix-BusyIndicator-rotating-even-when-invisible-again.patch
+
+-------------------------------------------------------------------
 Thu Oct 15 19:53:18 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to improve krunner responsiveness on wayland (kde#426746):

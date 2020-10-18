@@ -38,6 +38,8 @@ Source2:        frameworks.keyring
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-BusyIndicator-Do-not-rotate-when-invisible.patch
+# https://invent.kde.org/frameworks/plasma-framework/-/merge_requests/118
+Patch2:         0001-Fix-BusyIndicator-rotating-even-when-invisible-again.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
