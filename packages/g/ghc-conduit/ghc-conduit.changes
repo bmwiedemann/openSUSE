@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 02:01:33 UTC 2020 - psimons@suse.com
+
+- Update conduit to version 1.3.3.
+  ## 1.3.3
+
+  * Add `uncons`, `unconsM`, `unconsEither`, `unconsEitherM`.
+
+-------------------------------------------------------------------
 Tue Sep  1 14:36:17 UTC 2020 - psimons@suse.com
 
 - Update conduit to version 1.3.2.1.
