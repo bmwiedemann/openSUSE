@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Oct  8 20:21:22 UTC 2020 - José Iván López González <jlopez@suse.com>
+
+- Revert changes for hiding the heading of the dialog in text mode
+  (the heading has no height if the title is empty).
+- bsc#1176808
+- 4.3.37
+
+-------------------------------------------------------------------
+Thu Oct  8 19:35:48 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: SectionWithAttributes#new_from_hashes accepts
+  an enumerable as first element (related to bsc#1177405).
+- 4.3.36
+
+-------------------------------------------------------------------
+Wed Oct  7 13:23:28 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: do not crash when sections like 'raid_options' are
+  empty (bsc#1177405).
+- 4.3.35
+
+-------------------------------------------------------------------
+Thu Oct  1 15:16:20 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Revert the drop of SuSEFirewall2 as there are still some packages
+  which need to be adapted (bsc#1177160)
+- 4.3.34
+
+-------------------------------------------------------------------
+Tue Sep 29 09:46:21 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Drop SuSEFirewall2 code completely (fate#323460)
+- 4.3.33
+
+-------------------------------------------------------------------
+Mon Sep 28 08:53:39 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix non-editable ComboBox handling (bsc#1136454).
+- 4.3.32
+
+-------------------------------------------------------------------
+Fri Sep 25 08:59:57 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Small improvements to CWM based widgets (related to bsc#1136454):
+  - An editable ComboBox will refresh the list of items when a new
+    one is given as its current value.
+  - By default, a MenuButton widget listens to events from all its
+    buttons.
+- 4.3.31
+
+-------------------------------------------------------------------
+Thu Sep 24 07:25:01 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not crash when trying to parse non-existing ("nil") add-on
+  product control XML file (bsc#1176593)
+- 4.3.30
+
+-------------------------------------------------------------------
 Wed Sep 23 13:21:38 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added "--plain" and "--full" options for the "systemctl"
