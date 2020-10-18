@@ -17,7 +17,7 @@
 
 
 Name:           transactional-update
-Version:        2.26
+Version:        2.27
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later

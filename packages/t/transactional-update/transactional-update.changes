@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:32:15 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.27
+  - Add support for network systemd-resolvd network connections in t-u
+    environment
+  - Mount /var/lib/ca-certificates read-write to prevent SELinux error
+  - Prevent calling transactional-update from within transactional-update
+
+-------------------------------------------------------------------
 Sat Sep 26 14:50:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.26
