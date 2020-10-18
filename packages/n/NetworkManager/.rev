@@ -1720,4 +1720,20 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   + dhcp4: fix bug in internal DHCP client on big endian systems. (forwarded request 828235 from iznogood)</comment>
     <requestid>828238</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>41e0721dba70a3a22e4e25c2178e13cc</srcmd5>
+    <version>1.26.4</version>
+    <time>1603031270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.4:
+  + Add support for the DHCPv4 vendor class identifier option.
+  + The initrd generator now supports specifying interfaces by MAC
+    address.
+  + Automatically add the wildcard DNS domain to VPNs with
+    never-default=no and no domains.
+  + Allow setting bond &quot;primary&quot; option with modes &quot;tlb&quot; and &quot;alb&quot;.
+  + Fix peer group tracking of Wi-Fi P2P connections.
+  + Fix autoactivating virtual devices after a failure. (forwarded request 841879 from iznogood)</comment>
+    <requestid>841896</requestid>
+  </revision>
 </revisionlist>
