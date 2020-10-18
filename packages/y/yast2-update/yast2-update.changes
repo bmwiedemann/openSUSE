@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:49:12 CEST 2020 - schubi@suse.de
+
+- Adding additional compatible vendors which are defined in the
+  control file (jsc#SLE-14807).
+- 4.3.1
+
+-------------------------------------------------------------------
 Wed Jun  3 16:12:18 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Replace anyxml agent with rubygem-nokogiri as yast2 already

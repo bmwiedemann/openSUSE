@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-update
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-update
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        YaST2 - Update
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-update
+URL:            https://github.com/yast/yast-update
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -52,8 +52,8 @@ Requires:       yast2 >= 4.2.71
 Requires:       yast2-installation
 # product_update_summary, product_update_warning
 Requires:       yast2-packager >= 4.2.33
-# Improved Pkg.SourceRestore()
-Requires:       yast2-pkg-bindings >= 4.2.6
+# Pkg::SetAdditionalVendors
+Requires:       yast2-pkg-bindings >= 4.3.3
 Requires:       yast2-ruby-bindings >= 1.0.0
 # nokogiri is used for parsing pam conf.
 Requires:       rubygem(%{rb_default_ruby_abi}:nokogiri)
