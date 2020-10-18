@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:28:53 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Run configuration_management_finish client after *.repo files
+  are available in the installed system (bsc#1177522).
+- 4.3.19
+
+-------------------------------------------------------------------
+Mon Oct 12 17:13:51 CEST 2020 - schubi@suse.de
+
+- Control.xml docu: Added "product_upgrades" tag in software/upgrade
+  (jsc#SLE-14807).
+- 4.3.18
+
+-------------------------------------------------------------------
 Tue Sep  8 09:20:52 CEST 2020 - schubi@suse.de
 
 - Using ":" in the autoyast(...) supplements (bsc#1146494).
