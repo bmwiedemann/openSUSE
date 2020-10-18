@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:15:06 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Modified the warning text introduced in previous change according
+  to suggestions (jsc#SLE-1567)
+- 4.3.6
+
+-------------------------------------------------------------------
+Fri Oct  9 10:42:32 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- Warn the user when the SSH port is closed or the service is
+  disabled and the configured authentication is only based on SSH
+  key (jsc#SLE-15675)
+- 4.3.5
+
+-------------------------------------------------------------------
 Thu Aug 13 07:52:47 UTC 2020 - Michal Filka <mfilka@suse.com>
 
 - AutoYaST: moved the configuration into first stage (bsc#1173624)
