@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-sudo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           yast2-sudo
 Summary:        YaST2 - Sudo configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
-Url:            https://github.com/yast/yast-sudo
+URL:            https://github.com/yast/yast-sudo
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -35,7 +35,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-users
-BuildRequires:  rubygem(yast-rake)
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 
 BuildArch:      noarch
 

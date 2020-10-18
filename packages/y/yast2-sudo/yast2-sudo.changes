@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 14:43:17 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Support @include(-dir) directives
+- Support alternative name Cmd_Alias
+- report properly if yast2-sudo cannot read some configuration
+- improve error report if syntax failed after write
+  (related to bsc#1156929)
+- 4.3.0
+
+-------------------------------------------------------------------
 Tue Feb 18 14:40:08 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fixed user-visible messages (bsc#1084015)
