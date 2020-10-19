@@ -841,4 +841,11 @@
     <comment></comment>
     <requestid>840210</requestid>
   </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>dc9caf5367fb109b84506c3b1c83a5ff</srcmd5>
+    <version>1.4.0</version>
+    <time>1603093695</time>
+    <user>dimstar_suse</user>
+    <comment>Revert: https://bugzilla.opensuse.org/show_bug.cgi?id=1177858</comment>
+  </revision>
 </revisionlist>
