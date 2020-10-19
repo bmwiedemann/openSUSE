@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 14:14:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix software rendering detection with Mesa 20.2+:
+  * 0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0
