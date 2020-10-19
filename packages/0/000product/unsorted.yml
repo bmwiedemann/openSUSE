@@ -1707,6 +1707,10 @@ unsorted:
   - cephfs-mirror: [x86_64] 
   - cephfs-shell: [x86_64] 
   - cereal-devel 
+  - cert-manager 
+  - cert-manager-cainjector 
+  - cert-manager-controller 
+  - cert-manager-webhook 
   - certbot-systemd-timer 
   - certmonger 
   - certstrap: [i586] 
@@ -7266,7 +7270,6 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -11201,10 +11204,12 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-52 
+  - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
   - libmpcdec-devel 
+  - libmpcdec5 
   - libmpcdec5-32bit: [x86_64] 
   - libmpcdec6-32bit: [x86_64] 
   - libmpd-devel 
@@ -11426,8 +11431,8 @@ unsorted:
   - libnma-devel 
   - libnormaliz3 
   - libnoson2 
-  - libnotcurses++1 
-  - libnotcurses1 
+  - libnotcurses++2 
+  - libnotcurses2 
   - libnotify-devel 
   - libnotify-devel-32bit: [x86_64] 
   - libnotify4-32bit: [x86_64] 
@@ -11869,6 +11874,8 @@ unsorted:
   - libpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemblk-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemblk1: [x86_64] 
+  - libpmemkv1: [x86_64] 
+  - libpmemkv_json_config1: [x86_64] 
   - libpmemlog-devel: [x86_64] # devel package of dvd:pmdk 
   - libpmemlog1: [x86_64] 
   - libpmemobj-cpp-devel: [x86_64] 
@@ -13105,9 +13112,6 @@ unsorted:
   - libtpms0 
   - libtranscript-devel 
   - libtranscript1 
-  - libtranslate-devel 
-  - libtranslate-progs 
-  - libtranslate0 
   - libtrilinos-gnu-mpich-hpc: [x86_64] 
   - libtrilinos-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos-gnu-openmpi2-hpc: [x86_64] 
@@ -13150,11 +13154,6 @@ unsorted:
   - libtvm: [x86_64] 
   - libtwolame-devel 
   - libtwolame0-32bit: [x86_64] 
-  - libu2f-host-devel 
-  - libu2f-host-doc 
-  - libu2f-host0 
-  - libu2f-server-devel 
-  - libu2f-server0 
   - libubsan0 
   - libubsan0-32bit: [x86_64] 
   - libubsan1-32bit: [x86_64] 
@@ -13597,7 +13596,7 @@ unsorted:
   - libwx_qtu_richtext-suse4_0_0 
   - libwx_qtu_stc-suse4_0_0 
   - libwx_qtu_xrc-suse4_0_0 
-  - libwxcode_gtk2u_wxsqlite3-3_0-0 
+  - libwxcode_gtk2u_wxsqlite3-3_1-0 
   - libwxlua 
   - libwxstedit-wx30gtk2u-1_6_0 
   - libwxsvg-devel 
@@ -15205,6 +15204,8 @@ unsorted:
   - mozjs52-devel 
   - mozjs68 
   - mozjs68-devel 
+  - mozjs78 
+  - mozjs78-devel 
   - mozldap-devel: [x86_64] 
   - mozldap-libs: [x86_64] 
   - mozldap-tools: [x86_64] 
@@ -17742,6 +17743,7 @@ unsorted:
   - perl-DBM-Deep 
   - perl-DNS-LDNS 
   - perl-Daemon-Generic 
+  - perl-Dancer2 
   - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
@@ -17895,6 +17897,7 @@ unsorted:
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
+  - perl-File-Share 
   - perl-File-ShareDir 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
@@ -18328,7 +18331,9 @@ unsorted:
   - perl-PerlIO-via-dynamic 
   - perl-PerlMagick 
   - perl-Plack 
+  - perl-Plack-Middleware-FixMissingBodyInRedirect 
   - perl-Plack-Middleware-LogErrors 
+  - perl-Plack-Middleware-RemoveRedundantBody 
   - perl-Plack-Middleware-Session 
   - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
@@ -18358,6 +18363,8 @@ unsorted:
   - perl-Readonly 
   - perl-Readonly-XS 
   - perl-Redis 
+  - perl-Ref-Util 
+  - perl-Ref-Util-XS 
   - perl-Regexp-Assemble 
   - perl-Regexp-Common 
   - perl-Regexp-IPv6 
@@ -18470,6 +18477,7 @@ unsorted:
   - perl-Task-Moose 
   - perl-Task-Weaken 
   - perl-Template-GD 
+  - perl-Template-Tiny 
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
@@ -19070,6 +19078,7 @@ unsorted:
   - pmdk-convert: [x86_64] 
   - pmdk-devel-doc: [x86_64] 
   - pmdk-tools: [x86_64] 
+  - pmemkv-devel: [x86_64] 
   - pmidi 
   - pmix 
   - pmix-devel 
@@ -34339,6 +34348,7 @@ unsorted:
   - trilinos_12_14_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
+  - trivy 
   - trojita 
   - trousers 
   - trousers-devel 
@@ -34620,8 +34630,6 @@ unsorted:
   - typescript 
   - tzdb 
   - u-boot-tools 
-  - u2f-host 
-  - u2f-server 
   - u3-tool 
   - uacme 
   - ubi_reader 
