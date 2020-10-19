@@ -739,6 +739,7 @@ unsorted:
   - artifacts-validator 
   - artikulate 
   - artikulate-lang 
+  - as10k1 
   - asciidoc 
   - asciidoc-examples 
   - asciinema 
@@ -1779,6 +1780,7 @@ unsorted:
   - cilium-docker: [x86_64] 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
+  - cim-schema 
   - cimple 
   - cimple-cmpi-adapter 
   - cimple-devel 
@@ -1897,6 +1899,7 @@ unsorted:
   - cmpi-bindings-perl 
   - cmpi-bindings-py3wbem 
   - cmpi-bindings-ruby 
+  - cmpi-provider-register 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -4124,6 +4127,8 @@ unsorted:
   - ghc-cabal2spec-devel 
   - ghc-call-stack 
   - ghc-call-stack-devel 
+  - ghc-canonical-json 
+  - ghc-canonical-json-devel 
   - ghc-case-insensitive 
   - ghc-case-insensitive-devel 
   - ghc-cassava 
@@ -4311,6 +4316,8 @@ unsorted:
   - ghc-fingertree-devel 
   - ghc-foldl 
   - ghc-foldl-devel 
+  - ghc-formatting 
+  - ghc-formatting-devel 
   - ghc-foundation 
   - ghc-foundation-devel 
   - ghc-free 
@@ -4529,6 +4536,8 @@ unsorted:
   - ghc-mountpoints 
   - ghc-mountpoints-devel 
   - ghc-mtl 
+  - ghc-mtl-compat 
+  - ghc-mtl-compat-devel 
   - ghc-mtl-devel 
   - ghc-mustache 
   - ghc-mustache-devel 
@@ -4550,6 +4559,8 @@ unsorted:
   - ghc-network-multicast-devel 
   - ghc-network-uri 
   - ghc-network-uri-devel 
+  - ghc-nothunks 
+  - ghc-nothunks-devel 
   - ghc-old-locale 
   - ghc-old-locale-devel 
   - ghc-old-time 
@@ -4626,6 +4637,8 @@ unsorted:
   - ghc-process-devel 
   - ghc-profunctors 
   - ghc-profunctors-devel 
+  - ghc-protolude 
+  - ghc-protolude-devel 
   - ghc-psqueues 
   - ghc-psqueues-devel 
   - ghc-quickcheck-io 
@@ -6437,8 +6450,8 @@ unsorted:
   - insighttoolkit-devel 
   - inspectrum 
   - inst-source-utils 
-  - install-initrd-Kubic: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
-  - install-initrd-MicroOS: [x86_64] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - install-initrd-Kubic: [x86_64] 
+  - install-initrd-MicroOS: [x86_64] 
   - install-initrd-openSUSE 
   - installation-images-Kubic: [x86_64] 
   - installation-images-MicroOS: [x86_64] 
@@ -6520,6 +6533,7 @@ unsorted:
   - isapnp-devel: [i586] 
   - isatapd 
   - iscsi-formula 
+  - iscsiuio: [i586] 
   - isight-firmware-tools 
   - isl-devel 
   - isl-devel-32bit: [x86_64] 
@@ -9050,6 +9064,7 @@ unsorted:
   - libboost_random1_74_0-32bit: [x86_64] 
   - libboost_random1_74_0-devel 
   - libboost_regex-devel 
+  - libboost_regex1_74_0 
   - libboost_regex1_74_0-32bit: [x86_64] 
   - libboost_regex1_74_0-devel 
   - libboost_serialization-devel 
@@ -10621,6 +10636,7 @@ unsorted:
   - libiniparser1 
   - libiniparser1-32bit: [x86_64] 
   - libinjeqt1 
+  - libinput-debug-gui 
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
@@ -10696,6 +10712,7 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
+  - libjemalloc2 
   - libjim0_75 
   - libjpeg62 
   - libjpeg62-32bit: [x86_64] 
@@ -12657,6 +12674,7 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
+  - libsfcUtil0 
   - libsfml2-2_5 
   - libsfml2-2_5-32bit: [x86_64] 
   - libsfst-hfst0 
@@ -13779,7 +13797,7 @@ unsorted:
   - libyui-ncurses-pkg-devel 
   - libyui-ncurses-pkg-doc 
   - libyui-ncurses-rest-api-devel 
-  - libyui-ncurses-rest-api13 
+  - libyui-ncurses-rest-api14 
   - libyui-ncurses-tools 
   - libyui-qt-devel 
   - libyui-qt-doc 
@@ -13788,9 +13806,9 @@ unsorted:
   - libyui-qt-pkg-devel 
   - libyui-qt-pkg-doc 
   - libyui-qt-rest-api-devel 
-  - libyui-qt-rest-api13 
+  - libyui-qt-rest-api14 
   - libyui-rest-api-devel 
-  - libyui-rest-api13 
+  - libyui-rest-api14 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -16889,6 +16907,8 @@ unsorted:
   - openspecfun-devel 
   - openssh-cavs 
   - openssh-fips 
+  - openssh-helpers 
+  - openssl: [i586] 
   - openssl-1_0_0 
   - openssl-1_0_0-cavs 
   - openssl-1_0_0-doc 
@@ -17326,6 +17346,7 @@ unsorted:
   - patterns-server-xen_tools: [x86_64] 
   - patterns-sway-sway 
   - patterns-yast-devel_yast 
+  - patterns-yast-yast2_server 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
   - pavumeter 
@@ -18607,6 +18628,7 @@ unsorted:
   - perl-URI-Template 
   - perl-URI-db 
   - perl-Unicode-Collate 
+  - perl-Unicode-EastAsianWidth 
   - perl-Unicode-LineBreak 
   - perl-Unicode-Map 
   - perl-Unicode-Map8 
@@ -19514,6 +19536,7 @@ unsorted:
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
+  - python-Sphinx-doc-man 
   - python-Sphinx2-doc-html 
   - python-Sphinx2-doc-man 
   - python-Twisted-doc 
@@ -19896,6 +19919,7 @@ unsorted:
   - python3-SoundCard 
   - python3-SoundFile 
   - python3-SpeechRecognition 
+  - python3-Sphinx 
   - python3-Sphinx-latex 
   - python3-Sphinx2 
   - python3-Sphinx2-latex 
@@ -19919,6 +19943,7 @@ unsorted:
   - python3-WebOb 
   - python3-WebTest 
   - python3-Werkzeug 
+  - python3-Whoosh 
   - python3-XStatic 
   - python3-XStatic-Angular-Schema-Form 
   - python3-XStatic-jQuery 
@@ -19972,6 +19997,7 @@ unsorted:
   - python3-aiorpcX 
   - python3-aiosmtplib 
   - python3-akismet 
+  - python3-alabaster 
   - python3-allpairspy 
   - python3-alsa 
   - python3-altair 
@@ -20707,6 +20733,7 @@ unsorted:
   - python3-dockerpty 
   - python3-docopt 
   - python3-docrepr 
+  - python3-docutils 
   - python3-docutils-ast-writer 
   - python3-dogpile.cache 
   - python3-dogslow 
@@ -21032,6 +21059,7 @@ unsorted:
   - python3-imagecodecs 
   - python3-imageio 
   - python3-imageio-ffmpeg 
+  - python3-imagesize 
   - python3-imbox 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21645,6 +21673,7 @@ unsorted:
   - python3-pathvalidate 
   - python3-patsy 
   - python3-pbkdf2 
+  - python3-pbr 
   - python3-pcp 
   - python3-pdd 
   - python3-pdfkit 
@@ -22130,6 +22159,7 @@ unsorted:
   - python3-pyvips 
   - python3-pyviz-comms 
   - python3-pyvmomi 
+  - python3-pywbem 
   - python3-pywebpush 
   - python3-pywinrm 
   - python3-pyxattr 
@@ -22178,6 +22208,7 @@ unsorted:
   - python3-remoto 
   - python3-rencode 
   - python3-renderspec 
+  - python3-reno 
   - python3-repoze.lru 
   - python3-repoze.sphinx.autointerface 
   - python3-repoze.who 
@@ -22222,6 +22253,7 @@ unsorted:
   - python3-robotframework 
   - python3-roifile 
   - python3-rollbar 
+  - python3-roman 
   - python3-rope 
   - python3-rpcq 
   - python3-rply 
@@ -22338,6 +22370,7 @@ unsorted:
   - python3-smmap 
   - python3-smpplib 
   - python3-snimpy 
+  - python3-snowballstemmer 
   - python3-snuggs 
   - python3-social-auth-app-django 
   - python3-social-auth-core 
@@ -22365,27 +22398,35 @@ unsorted:
   - python3-sphinx-removed-in 
   - python3-sphinx-testing 
   - python3-sphinx-version-warning 
+  - python3-sphinx_rtd_theme 
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-sphinxcontrib-actdiag 
   - python3-sphinxcontrib-apidoc 
+  - python3-sphinxcontrib-applehelp 
   - python3-sphinxcontrib-asyncio 
   - python3-sphinxcontrib-autoprogram 
   - python3-sphinxcontrib-autoprogram-doc 
   - python3-sphinxcontrib-blockdiag 
+  - python3-sphinxcontrib-devhelp 
   - python3-sphinxcontrib-documentedlist 
   - python3-sphinxcontrib-fulltoc 
   - python3-sphinxcontrib-github-alt 
+  - python3-sphinxcontrib-htmlhelp 
   - python3-sphinxcontrib-httpdomain 
   - python3-sphinxcontrib-issuetracker 
+  - python3-sphinxcontrib-jsmath 
   - python3-sphinxcontrib-newsfeed 
   - python3-sphinxcontrib-nwdiag 
   - python3-sphinxcontrib-pecanwsme 
   - python3-sphinxcontrib-plantuml 
   - python3-sphinxcontrib-programoutput 
+  - python3-sphinxcontrib-qthelp 
   - python3-sphinxcontrib-seqdiag 
+  - python3-sphinxcontrib-serializinghtml 
   - python3-sphinxcontrib-svg2pdfconverter 
   - python3-sphinxcontrib-trio 
+  - python3-sphinxcontrib-websupport 
   - python3-sphobjinv 
   - python3-spidev 
   - python3-splinter 
@@ -25316,6 +25357,7 @@ unsorted:
   - sblim-indication_helper 
   - sblim-indication_helper-devel 
   - sblim-sfcCommon-devel 
+  - sblim-sfcb 
   - sblim-sfcc-devel 
   - sblim-testsuite 
   - sblim-tools-libra-devel 
@@ -35657,6 +35699,8 @@ unsorted:
   - yast2-adsi 
   - yast2-aduc 
   - yast2-audit-laf 
+  - yast2-auth-client 
+  - yast2-auth-server 
   - yast2-boot-server 
   - yast2-buildtools 
   - yast2-caasp 
@@ -35665,14 +35709,19 @@ unsorted:
   - yast2-devtools 
   - yast2-dns-manager 
   - yast2-docker: [x86_64] 
-  - yast2-drbd: [i586] # suggested by dvd:suggested:patterns-gnome-gnome 
+  - yast2-drbd 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
   - yast2-iplb 
+  - yast2-iscsi-client 
   - yast2-iscsi-lio-server 
+  - yast2-mail 
+  - yast2-multipath 
+  - yast2-online-update-configuration 
+  - yast2-online-update-frontend 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
   - yast2-rear 
@@ -35680,6 +35729,9 @@ unsorted:
   - yast2-rmt 
   - yast2-samba-provision 
   - yast2-slide-show 
+  - yast2-squid 
+  - yast2-sudo 
+  - yast2-support 
   - yast2-testsuite 
   - yast2-trans 
   - yast2-trans-allpacks 
@@ -35705,8 +35757,10 @@ unsorted:
   - yast2-trans-sw 
   - yast2-trans-tg 
   - yast2-trans-tk 
+  - yast2-tune 
   - yast2-update-FACTORY 
   - yast2-usbauth 
+  - yast2-vpn 
   - yast2-ycp-ui-bindings-devel 
   - yate 
   - yate-bts 
@@ -35735,6 +35789,7 @@ unsorted:
   - youtube-dl-gui 
   - youtube-dl-gui-lang 
   - youtube-dl-zsh-completion 
+  - ypserv 
   - ytree 
   - yubico-piv-tool 
   - yubikey-manager 

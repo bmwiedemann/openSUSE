@@ -109,6 +109,9 @@
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="openssh" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="openssh-clients" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="openssh-common" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="openssh-server" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -1119,9 +1122,9 @@
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
     <package name="libyaml-cpp0_6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
-    <package name="libyui-ncurses13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="libyui-qt13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
-    <package name="libyui13" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libyui-ncurses14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libyui-qt14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
+    <package name="libyui14" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-kde -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-desktop-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libzio1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-cloud -->
