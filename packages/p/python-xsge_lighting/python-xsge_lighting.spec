@@ -23,7 +23,8 @@ Release:        0
 Summary:        xSGE Lighting Library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
-Url:            http://xsge.nongnu.org
+URL:            https://python-sge.github.io/
+#Git-Clone:     https://github.com/python-sge/xsge
 Source:         https://files.pythonhosted.org/packages/source/x/xsge_lighting/xsge_lighting-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
