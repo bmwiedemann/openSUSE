@@ -16,6 +16,7 @@
 #
 
 
+%global simde_version 0.6.0
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %endif
@@ -27,7 +28,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Scientific/Other
 URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        simde-0.0~git20190101.422ed9c.tar.xz
+Source1:        https://github.com/simd-everywhere/simde/archive/v%{simde_version}.tar.gz#/simde-%{simde_version}.tar.gz
 # PATCH-FIX-UPSTREAM bowtie2-cmake-install-targets.patch gh#BenLangmead/bowtie2#292 badshah400@gmail.com -- Add install targets to cmake scripts and fix tests; patch taken from upstream git
 Patch0:         bowtie2-cmake-install-targets.patch
 Patch1:         bowtie2-processor_support.patch

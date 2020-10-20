@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 12:13:11 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2:
+  * Fixed an issue that would cause the `bowtie2` wrapper script
+    to throw an error when using wrapper-specific arguments.
+  * Added new `--sam-append-comment` flag that appends comment
+    from FASTA/Q read to corresponding SAM record.
+  * Fixed an issue that would cause qupto, `-u`, to overflow when
+    there are >= 2^32 query sequences
+    (gh#BenLangmead/bowtie2#312).
+  * Fixed an issue that would cause bowtie2-build script to
+    incorrectly process reference files.
+- Drop _service file and use tagged version of simde instead (at
+  version 0.6.0); correspondingly drop the obsinfo and obscpio
+  files as well.
+
+-------------------------------------------------------------------
 Mon Jun 15 09:21:50 UTC 2020 - Pierre Bonamy <flyos@mailoo.org>
 
 - Added bowtie2-processor_support.patch to fix GCC10 build fail
