@@ -24,7 +24,7 @@
 %endif
 
 Name:           budgie-desktop-branding
-Version:        20201004.2
+Version:        20201017.1
 Release:        0
 Summary:        Branding of the Budgie Desktop Environment
 Group:          System/GUI/Other
@@ -66,7 +66,7 @@ Supplements:    (budgie-desktop and branding-upstream)
 Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}
 Recommends:     gnome-backgrounds
-Recommends:     gtk3-metatheme-greybird-geeko
+Recommends:     gtk3-metatheme-greybird
 Recommends:     adwaita-icon-theme
 BuildArch:      noarch
 
@@ -85,24 +85,24 @@ desktop environment.
 %install
 %meson_install
 %if !0%{?is_backports} && 0%{?suse_version} < 1550
-sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
+sed -e 's-5120x3200-3840x2400-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
 %if 0%{?is_backports} && 0%{?sle_version} < 150300
-sed -e 's-5120x2880-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
+sed -e 's-5120x2880-1920x1200-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
 %if 0%{?is_backports} && 0%{?suse_version} < 1550
-sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
+sed -e 's-png-jpg-g' -i %{buildroot}%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %endif
 
 %files %{nsuffix}
 %license LICENSE LICENSE.CC-BY-SA-3.0
 %doc README.md
-%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_%{nsuffix}.gschema.override
+%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_%{nsuffix}.gschema.override
 %{_datadir}/icons/hicolor/scalable/apps/budgie-%{nsuffix}-distributor-logo.svg
 
 %files upstream
 %license LICENSE LICENSE.CC-BY-SA-3.0
 %doc README.md
-%{_datadir}/glib-2.0/schemas/10_budgie_gnome_settings_upstream.gschema.override
+%{_datadir}/glib-2.0/schemas/21_budgie_gnome_settings_upstream.gschema.override
 
 %changelog
