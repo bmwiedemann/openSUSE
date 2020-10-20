@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 03:12:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.59
+   see /usr/share/doc/packages/perl-File-Remove/Changes
+
+  1.59    2020-10-16 - Shlomi Fish
+      - dist.ini / weaver.ini / .tidyallrc / etc. cleanup
+          - Move to @SHLOMIF
+          - Inspired by Lady_Aleena.
+
+-------------------------------------------------------------------
 Thu Nov  8 06:21:53 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.58
