@@ -1082,4 +1082,25 @@
   * screenshot: add --screenshot-sw option</comment>
     <requestid>840419</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>22cbaedc4822aab180a0b51f14fbbd12</srcmd5>
+    <version>0.32.0+git.20201016T174805.cbbdb3fae4</version>
+    <time>1603203049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32.0+git.20201016T174805.cbbdb3fae4:
+  * stats: display hw pixel format too
+  * command: expose underlying pixfmt for hwdec
+  * manpage: Document behaviour of *nix configuration directories
+  * build: bump waf to 2.0.20
+  * stream_lavf: enable SRT protocol support through FFmpeg
+  * vo_gpu: fix segfault when updating render opts
+  * vo_gpu: EGL: hack for alpha on different platforms
+  * wayland: update opaque region on runtime
+  * vo_gpu: update render options on runtime
+  * wayland: be less strict about when to render
+  * docs: fix simple typo, unminimze -&gt; unminimize
+  * DOCS: fix typo on sub-filter-regex-enable
+  * manpage: reference standard for configuration file location</comment>
+    <requestid>842552</requestid>
+  </revision>
 </revisionlist>
