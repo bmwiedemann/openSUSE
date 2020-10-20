@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:21:57 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.27:
+  - Added Macro support.
+  - Added support to view trigger function under the respective
+    trigger node.
+  - Allow user to change the database connection from an open query
+    tool tab.
+  - Added support to ignore the owner while comparing objects in
+    the Schema Diff tool.
+  - Merged the latest code of 'pgcli' used for the autocomplete
+    feature.
+  - Fixed invalid literal issue when fetching dependencies for
+    Materialized View.
+  - Fixed an issue where schema diff is showing identical table as
+    different due to default vacuum settings.
+  - Ensure that the user should be able to change the start value
+    of the existing sequence.
+  - Fixed an issue where the query tool is not fetching more than
+    1000 rows for the table does not have any primary key.
+  - Fixed an issue where 'Rows X' column values were not visible 
+    properly for Explain Analyze in Dark theme.
+  - Fixed an issue where file extension is stripped on renaming a
+    file.
+
+-------------------------------------------------------------------
 Mon Sep 21 18:45:31 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Specify path for pg_dump and pg_restore

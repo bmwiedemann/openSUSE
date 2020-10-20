@@ -113,4 +113,12 @@
   to upgrade to a newer version anyway)</comment>
     <requestid>836144</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9fdebb3ecfc23904c0ba82d7f49c3068</srcmd5>
+    <version>4.27</version>
+    <time>1603202855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842399</requestid>
+  </revision>
 </revisionlist>

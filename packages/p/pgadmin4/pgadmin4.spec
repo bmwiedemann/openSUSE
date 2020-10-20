@@ -21,7 +21,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        4.26
+Version:        4.27
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
