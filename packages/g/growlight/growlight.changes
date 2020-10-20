@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 19 07:48:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.16
+  * build system fixes
+  * enforce requirement of Notcurses 2.0.0+
+  * purge notcurses_version_check()
+  * redraw details border from update_details()
+  * extract out subdisplay_border()
+  * ATA serial numbers can be 20 octets, not 10
+  * sg: reference 'ATA Command Pass-Through' spec
+  * color bottom border of selected blockdev to match sides
+
+- Update to version 1.2.15
+  * kill 'REVERSE', fix up bottom border reverse
+  * repair disappearing write-cache/alignment details
+  * add most menu items
+  * handle_input: execute menu mouse clicks
+  * handle_input: don't print warning on wayward mouse clicks
+  * use correct shortcuts for menu items partition table/filesystem
+    create.
+  * resize: take menu+footer into account
+  * color menu internals + make them opaque
+  * support mouse, get menu unrolling
+  * create a menu
+  * remove duplicate handling of Ctrl+L
+  * lock down SIGWINCH early to ensure we see NCKEY_RESIZE
+  * handle ctrl+L and NCKEY_RESIZE
+
+-------------------------------------------------------------------
 Sat Oct 10 08:33:40 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.14
