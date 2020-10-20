@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 19 15:35:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.2.
+  * Added
+    * U+221A SQUARE ROOT
+    * U+2116 NUMERO SIGN 
+  * Fixed 
+    * U+0506 CYRILLIC CAPITAL LETTER KOMI DZJE now has an actual 
+      glyph
+    * U+0507 CYRILLIC SMALL LETTER KOMI DZJE now has an actual 
+      glyph 
+
+-------------------------------------------------------------------
+Sat Aug 29 10:31:37 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.9.0.
+  * Added
+    * U+0166 LATIN CAPITAL LETTER T WITH STROKE
+    * U+0167 LATIN SMALL LETTER T WITH STROKE
+    * U+0172 LATIN CAPITAL LETTER U WITH OGONEK
+    * U+0173 LATIN SMALL LETTER U WITH OGONEK
+    * U+0174 LATIN CAPITAL LETTER W WITH CIRCUMFLEX
+    * U+0175 LATIN SMALL LETTER W WITH CIRCUMFLEX
+    * U+0176 LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
+    * U+0177 LATIN SMALL LETTER Y WITH CIRCUMFLEX
+  * Changed
+    * snake is now fullwidth to make starship prompts look less ugly
+
+-------------------------------------------------------------------
 Tue May 12 03:11:52 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 1.8.0. (see CHANGELOG.md)

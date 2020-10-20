@@ -2,8 +2,8 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/slavfox/Cozette.git</param>
     <param name="scm">git</param>
-    <param name="revision">b90b7be</param>
-    <param name="versionprefix">1.8.0+git</param>
+    <param name="revision">ea2ec2b</param>
+    <param name="versionprefix">1.9.2+git</param>
     <param name="versionformat">%ct.%h</param>
   </service>
   <service mode="buildtime" name="tar" />

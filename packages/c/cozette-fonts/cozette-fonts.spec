@@ -17,9 +17,9 @@
 
 %define ttf_fontdir %{_datadir}/fonts/truetype
 %define fontname    Cozette
-%define fontversion    1.7.0
+%define fontversion    1.9.2
 Name:           cozette-fonts
-Version:        1.8.0+git.1586169539.b90b7be
+Version:        1.9.2+git.1601275698.ea2ec2b
 Release:        0
 Summary:        A bitmap programming font
 License:        MIT
