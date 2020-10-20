@@ -25,9 +25,9 @@ Name:           ruby2.7
 ####
 
 %define patch_level p0
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
-%define pkg_version 2.7.1
+%define pkg_version 2.7.2
 # make the exported API version explicit
 %define api_version 2.7.0
 %define rb_binary_suffix .ruby2.7

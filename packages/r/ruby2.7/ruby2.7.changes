@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  9 18:10:19 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.7.2 (boo#1177125)
+  This release contains intentional incompatibility. Deprecation
+  warnings are off by default on 2.7.2 and later. You can turn on
+  deprecation warnings by specifying the -w or -W:deprecated option
+  at the command-line. Please check the topics below for details.
+
+  - Feature #17000 2.7.2 turns off deprecation warnings by default
+  - Feature #16345 Don’t emit deprecation warnings by default.
+
+  This release contains the new version of webrick with a security
+  fix described in the article.
+
+  - CVE-2020-25613: Potential HTTP Request Smuggling Vulnerability
+    in WEBrick
+
+  Complete list of changes at https://github.com/ruby/ruby/compare/v2_7_1...v2_7_2
+
+-------------------------------------------------------------------
 Tue Apr 28 17:59:59 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - make sure that update-alternative weight for the default
