@@ -19,7 +19,7 @@
 %define debug_package %{nil}
 %define _rpmlibdir    %{_prefix}/lib/rpm
 Name:           mingw32-filesystem
-Version:        20200825
+Version:        20201017
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
