@@ -129,7 +129,7 @@ different applications like Windows Search, Windows Mail, Exchange, Active
 Directory, etc.
 
 %prep
-%setup -q -n libesedb-%{timestamp}
+%setup -n libesedb-%{timestamp}
 cp "%{SOURCE2}" .
 cp "%{SOURCE3}" .
 cp "%{SOURCE4}" .
@@ -157,20 +157,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog
-%license COPYING 
+%license COPYING*
 %{_libdir}/libesedb.so.*
 
 %files tools
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog
-%license COPYING 
+%doc AUTHORS README ChangeLog
+%license COPYING*
 %{_bindir}/esedb*
 %{_mandir}/man1/esedb*.1*
 
 %files devel
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING
+%license COPYING*
 %doc Exchange.pdf
 %doc Extensible_Storage_Engine_*
 %doc Forensic_analysis_of_the_Windows_Search_database.pdf
@@ -186,14 +186,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n python2-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING*
 %{python2_sitearch}/pyesedb.so
 %endif
 
 %files -n python3-%{name}
 %defattr(-,root,root)
 %doc AUTHORS README ChangeLog
-%license COPYING 
+%license COPYING*
 %{python3_sitearch}/pyesedb.so
 
 %changelog
