@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:16:16 UTC 2020 - maiku.fabian@gmail.com
+
+- Update to 2.10.0
+- Add option to automatically capitalize after punctuation
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/96)
+- Don't record in user database when stripped_input_phrase or
+  stripped_commit_phrase are emty
+- When interactively deleting a candidate from the user database,
+  remove all case modes
+- Add 4 more characters ÞĦŊŦ to get special treatment in remove_accents()
+- Translation updates from Weblate for ca, es, fr, it, ja, nl, sv
+
+-------------------------------------------------------------------
 Thu Oct 08 12:02:49 UTC 2020 - maiku.fabian@gmail.com
 
 - Update to 2.9.9
