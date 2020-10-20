@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:31:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.18.0:
+  - Fix `Worder.get_primary_at` for names that start like
+    keywords. <Rob Kelly>
+  - Add guess_def_lineno() to get actual function/class
+    definition line number <Lie Ryan>
+  - Fix SimilarFinder/_ASTMatcher to consider 1/0 and True/False
+    to be unequal <Lie Ryan>
+  - Compatibility with Python 3.8
+  - Add pytest.ini to collect all tests <Lie Ryan> 
+
+-------------------------------------------------------------------
 Tue May  5 16:25:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.17.0:

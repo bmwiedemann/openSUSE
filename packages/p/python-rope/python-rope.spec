@@ -19,7 +19,7 @@
 %define upname rope
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rope
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        A python refactoring library
 License:        LGPL-3.0-or-later

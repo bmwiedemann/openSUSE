@@ -191,4 +191,21 @@
   - obsolete_escape_strings.patch</comment>
     <requestid>800812</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f7d7f8075dc4cbb6c28c4592624c1c0f</srcmd5>
+    <version>0.18.0</version>
+    <time>1603203029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0:
+  - Fix `Worder.get_primary_at` for names that start like
+    keywords. &lt;Rob Kelly&gt;
+  - Add guess_def_lineno() to get actual function/class
+    definition line number &lt;Lie Ryan&gt;
+  - Fix SimilarFinder/_ASTMatcher to consider 1/0 and True/False
+    to be unequal &lt;Lie Ryan&gt;
+  - Compatibility with Python 3.8
+  - Add pytest.ini to collect all tests &lt;Lie Ryan&gt; 
+</comment>
+    <requestid>842555</requestid>
+  </revision>
 </revisionlist>
