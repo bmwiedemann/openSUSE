@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jun 10 05:28:12 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Remove build acme binary since cert-manager helm chart does not requires it
+
+-------------------------------------------------------------------
+Mon Jun  1 13:24:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
+
+- Initial version v0.15.1 
