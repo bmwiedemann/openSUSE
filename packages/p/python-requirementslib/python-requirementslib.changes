@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 17 08:31:16 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Set minimum version attrs>=19.2.0
+
+-------------------------------------------------------------------
+Thu Oct 15 15:36:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 1.5.13 
+  * Don't copy whole tree for local directory dependencies. #259
+- need to skip test_no_duplicate_egg_info
+  gh#sarugaku/requirementslib#270
+
+-------------------------------------------------------------------
 Wed Aug 19 04:42:13 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove build dependency on pytest-xdist

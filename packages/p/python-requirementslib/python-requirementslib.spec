@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-requirementslib
-Version:        1.5.12
+Version:        1.5.13
 Release:        0
 Summary:        A tool for converting between pip-style and pipfile requirements
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 # Cerberus is suggested by plette, but required by requirementslib
 Requires:       python-Cerberus
 Requires:       python-appdirs
-Requires:       python-attrs >= 18.2
+Requires:       python-attrs >= 19.2.0
 Requires:       python-boltons >= 19.0.0
 Requires:       python-cached-property
 Requires:       python-distlib >= 0.2.8
@@ -60,7 +60,7 @@ Requires:       python-typing
 # SECTION test requirements
 BuildRequires:  %{python_module Cerberus}
 BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module attrs >= 18.2}
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module boltons >= 19.0.0}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module dateutil}
@@ -120,9 +120,12 @@ skip_tests="needs_internet"
 skip_tests+=" or test_get_local_ref"
 skip_tests+=" or test_get_requirements"
 skip_tests+=" or (test_convert_from_pipfile and requirement10)"
-# unkown reason
+# unknown reason
 skip_tests+=" or test_parse_function_call_as_name"
+# no packaged test artifact
 skip_tests+=" or test_ast_parser_handles_exceptions"
+# https://github.com/sarugaku/requirementslib/issues/270
+skip_tests+=" or test_no_duplicate_egg_info"
 # increase test deadline for slow obs executions architectures (e.g. on s390x)
 cat >> tests/conftest.py <<EOF
 
