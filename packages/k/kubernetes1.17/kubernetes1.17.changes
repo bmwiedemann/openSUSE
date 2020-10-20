@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 16 20:25:05 UTC 2020 - dsauer@suse.com
+
+- Update to version 1.17.13:
+  * use more granular buckets for azure api calls
+  * avoid potential secret leaking while reading .dockercfg
+  * Mask Ceph RBD adminSecrets in logs when logLevel >= 4
+  * fix detach azure disk issue when vm not exist
+  * kubeadm: make the CP join handling of kubeconfig similar to "init"
+  * kubeadm: warn but do not error out on missing CA keys on CP join
+  * do not mutate endpoints in the apiserver
+  * fix: detach azure disk broken on Azure Stack
+  * Handle nil elements when sorting, instead of panicking
+  * Remove HeadlessService label in endpoints controller before comparing
+  * kubectl: fix the Scheduled eventTime is <unknown> when use kubectl describe pod xxx
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.12
+  * count of etcd object should be limited to the specified resource
+  * Fix doc for leader-elect-resource-lock flag
+
+-------------------------------------------------------------------
 Thu Sep 17 09:06:00 UTC 2020 - rbrown@suse.com
 
 - Update to version 1.17.12:
