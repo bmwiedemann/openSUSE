@@ -1,5 +1,0 @@
-<package name="libtranslate" project="openSUSE:Factory">
-  <title>libtranslate</title>
-  <description>libtranslate is a library for translating text and web pages between natural languages. Its modular infrastructure allows to implement new translation services separately from the core library.</description>
-  <devel project="devel:libraries:c_c++" package="libtranslate"/>
-</package>
