@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:02:01 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.4.0 with these major enhancements:
+  * Native DNS64 support, without the need to use Lua.
+  * The ability to add custom tags to RPZ hits.
+  * Names encountered while resolving CNAMEs are now subject to RPZ
+    processing.
+  * More detailed information about RPZ handling is now available while
+    tracing, in Lua and in the protobuf logging messages.
+  * To allow more efficient use, the record cache is now shared between
+    threads.
+  * A routing tag[3] can be added in Lua code, which will be used as an
+    additional record cache key instead of an EDNS subnet mask,
+    enabling for a simpler record cache structure which will enhance
+    query processing where the EDNS subnet mask is relevant.
+  * The Proxy Protocol version 2 has been implemented to allow for a
+    structured exchange of information between a client (typically
+    dnsdist) and the Recursor.
+- removed obsolete back-port fix 9070.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 11:21:54 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.3.5:

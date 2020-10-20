@@ -35,7 +35,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.3.5
+Version:        4.4.0
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -86,7 +86,6 @@ Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.b
 Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
-Patch1:         9070.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
