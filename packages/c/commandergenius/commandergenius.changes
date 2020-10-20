@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:40:47 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.6.1
+  * More lua support. Oblivion v1.4 fully working
+  * More crash fixes, especially for Keen 6 DEMO
+
+-------------------------------------------------------------------
+Fri Oct 16 20:44:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to release 2.6.0
+  * Fixing mute music after saving a game
+  * Added PC Speaker Volume option
+
+-------------------------------------------------------------------
 Sun Aug 30 12:03:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Drop patch (fixed by upstream):
