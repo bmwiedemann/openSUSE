@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 19 14:54:33 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Set the native fence mechanism usage for CSP as optional
+- Add instance name suffix to socat resources
+- Remove meta resource-stickness to the ERS resources group
+
+-------------------------------------------------------------------
+Thu Oct 15 07:21:21 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
+
+- Update the db installation template to use correctly the schema
+  names for S/4HANA
+  
+-------------------------------------------------------------------
 Wed Oct 14 23:40:20 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Update the default 'nw_extract_dir' SWPM media extraction location 
@@ -14,13 +27,13 @@ Wed Oct  7 19:58:03 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 Thu Sep 24 12:43:47 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Implement the differences between ENSA1 and ENSA2 versions
-- Add the keepalive configuration changes 
+- Add the keepalive configuration changes
 
 -------------------------------------------------------------------
 Thu Aug 20 02:19:18 UTC 2020 - Simranpal Singh <simranpal.singh@suse.com>
 
 - Version 0.5.1
-  * Add pillar.example to package 
+  * Add pillar.example to package
   (bsc#1174994, jsc#SLE-4047)
 
 -------------------------------------------------------------------
