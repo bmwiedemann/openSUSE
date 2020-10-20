@@ -830,4 +830,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>838361</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>42081c097cb6d0948367585123dafa2c</srcmd5>
+    <version>3.17.8</version>
+    <time>1603203376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842666</requestid>
+  </revision>
 </revisionlist>
