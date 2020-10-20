@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:05:10 CEST 2020 - ro@suse.de
+
+- add patch monitoring-plugins-2.3-check_ntp_perf_absolute.patch
+  return ntp offset absolute (as positive value) in performance
+  data since warn and crit are also positive values 
+
+-------------------------------------------------------------------
 Fri Sep 18 08:19:35 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Drop check_ping_fix_ip4.patch (obsolete, conflicts with upstream fix)

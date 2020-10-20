@@ -1,0 +1,11 @@
+--- monitoring-plugins-2.3~alpha.20200520T233014.cadac85e/plugins/check_ntp_time.c	2020/10/12 16:05:30	1.1
++++ monitoring-plugins-2.3~alpha.20200520T233014.cadac85e/plugins/check_ntp_time.c	2020/10/12 16:07:13
+@@ -533,7 +533,7 @@
+ 
+ char *perfd_offset (double offset)
+ {
+-	return fperfdata ("offset", offset, "s",
++	return fperfdata ("offset", fabs(offset), "s",
+ 		TRUE, offset_thresholds->warning->end,
+ 		TRUE, offset_thresholds->critical->end,
+ 		FALSE, 0, FALSE, 0);

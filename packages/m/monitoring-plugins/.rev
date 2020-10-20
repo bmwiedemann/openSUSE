@@ -170,4 +170,12 @@
     <comment></comment>
     <requestid>835552</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>39622fae3e59d697e25e85916ab84a7c</srcmd5>
+    <version>2.3~alpha.20200520T233014.cadac85e</version>
+    <time>1603203491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842723</requestid>
+  </revision>
 </revisionlist>

@@ -74,6 +74,7 @@ Patch118:       %{name}.check_hpjd.c-64bit-portability-issue.patch
 Patch119:       monitoring-plugins-2.2-mariadb_102_build_fix.patch
 # PATCH-FIX-UPSTREAM see https://bugzilla.redhat.com/512559
 Patch121:       %{name}-wrong_return_in_check_swap.patch
+Patch122:       monitoring-plugins-2.3-check_ntp_perf_absolute.patch
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
 BuildRequires:  fping
@@ -1125,6 +1126,7 @@ done
 %patch118 -p1
 %patch119 -p1
 %patch121 -p1
+%patch122 -p1
 find -type f -exec chmod 644 {} +
 
 %build
