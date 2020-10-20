@@ -16,6 +16,11 @@
 #
 
 
+# build ids are not currently generated on RHEL/CentOS
+%if 0%{?rhel}
+%global debug_package %{nil}
+%endif
+
 %global provider        github
 %global provider_tld    com
 %global project         QubitProducts
@@ -34,15 +39,23 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        exporter_exporter.yaml
 Source3:        prometheus-exporter_exporter.service
+%if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
+%else
+BuildRequires:  golang
+%endif
+%if 0%{?suse_version}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
+%endif
 %{?systemd_ordering}
 
+%if 0%{?suse_version}
 %{go_nostrip}
 %{go_provides}
+%endif
 
 %description
 Reverse proxy designed for Prometheus exporters
@@ -51,44 +64,72 @@ Reverse proxy designed for Prometheus exporters
 %autosetup -a1 -n %{repo}-%{version}
 
 %build
+%if 0%{?suse_version}
 %goprep %{import_path}
 %gobuild --mod=vendor "" ...
+%else
+mkdir -pv $HOME/go/src && cp -avr vendor/* $HOME/go/src/
+go build -mod=vendor -ldflags "-v -buildmode=pie -compressdwarf=false" -o %{repo}
+%endif
 
 %install
+# Binary
+%if 0%{?suse_version}
 %goinstall
-%gosrc
-%gofilelist
+%else
+install -m 0755 -vd %{buildroot}%{_bindir}
+install -m 0755 -vp %{repo} %{buildroot}%{_bindir}/
+%endif
 
+# Service
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/prometheus-exporter_exporter.service
-install -Dd -m 0755 %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus-exporter_exporter
+
+# Configuration
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{repo}.yaml
 install -d -m 0755 %{buildroot}%{_sysconfdir}/%{repo}.d
 
-%fdupes %{buildroot}/%{_prefix}
+%if 0%{?suse_version}
+  %fdupes %{buildroot}/%{_prefix}
+%endif
 
 %check
-%gotest --mod=vendor "" ...
+%if 0%{?suse_version}
+  %gotest --mod=vendor "" ...
+%endif
 
 %pre
-%service_add_pre prometheus-exporter_exporter.service
+%if 0%{?suse_version}
+  %service_add_pre prometheus-exporter_exporter.service
+%endif
 getent group prometheus >/dev/null || %{_sbindir}/groupadd -r prometheus
 getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %{_localstatedir}/lib/prometheus -M -s /sbin/nologin prometheus
 
 %post
-%service_add_post prometheus-exporter_exporter.service
-%fillup_only -n prometheus-exporter_exporter
+%if 0%{?suse_version}
+  %service_add_post prometheus-exporter_exporter.service
+  %fillup_only -n prometheus-exporter_exporter
+%else
+  %systemd_post prometheus-exporter_exporter.service
+%endif
+
 %preun
-%service_del_preun prometheus-exporter_exporter.service
+%if 0%{?suse_version}
+  %service_del_preun prometheus-exporter_exporter.service
+%else
+  %systemd_preun prometheus-exporter_exporter.service
+%endif
 
 %postun
-%service_del_postun prometheus-exporter_exporter.service
+%if 0%{?suse_version}
+  %service_del_postun prometheus-exporter_exporter.service
+%else
+  %systemd_postun prometheus-exporter_exporter.service
+%endif
 
-%files -f file.lst
+%files
 %doc README.md LICENSE
 %{_bindir}/%{repo}
 %{_unitdir}/prometheus-exporter_exporter.service
-%{_sbindir}/rcprometheus-exporter_exporter
 %config %{_sysconfdir}/%{repo}.yaml
 %{_sysconfdir}/%{repo}.d
 

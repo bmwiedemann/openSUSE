@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  9 12:24:58 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add support for CentOS
+
+-------------------------------------------------------------------
 Wed Sep 23 09:33:57 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Replace %{?systemd_requires} with %{?systemd_ordering}
