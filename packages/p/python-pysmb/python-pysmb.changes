@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 14 10:53:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.4:
+  * Remove dependency on pycrypto as it is no longer under active
+    maintenance and use own implementation of RC4 cipher instead
+    (gh#miketeo/pysmb#167).
+- Changes from version 1.2.3:
+  * Fix bug in session key generation during session negotiation
+    (gh#miketeo/pysmb#166).
+  * Fix bug in SMB message signing which leads to operation
+    failures with Samba services.
+
+-------------------------------------------------------------------
 Sun Sep  6 09:48:19 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.2:
