@@ -21,6 +21,7 @@ Install Cockpit packages as RPMs with zypper on Tumbleweed:
 
 Run the Cockpit web service with this privileged container (as root):
    ```
+   podman pull registry.opensuse.org/opensuse/cockpit-ws
    podman container runlabel --name cockpit-ws RUN registry.opensuse.org/opensuse/cockpit-ws
    ```
 

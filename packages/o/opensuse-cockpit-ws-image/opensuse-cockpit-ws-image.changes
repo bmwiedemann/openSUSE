@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:18:18 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Document that you need to pull first before using RUNLABEL
+
+-------------------------------------------------------------------
 Thu Oct  8 15:08:41 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add system-group-wheel 
