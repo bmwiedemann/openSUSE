@@ -1,0 +1,33 @@
+From ec7d7ceefc1c2b9ba82cac1ba0f6a34d41a4a913 Mon Sep 17 00:00:00 2001
+From: Nigel Croxon <ncroxon@redhat.com>
+Date: Mon, 4 May 2020 12:27:45 -0400
+Subject: [PATCH 75/89] clean up meaning of small typo
+Git-commit: ec7d7ceefc1c2b9ba82cac1ba0f6a34d41a4a913
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Clean up the typo which leads to wrong understanding.
+
+Signed-off-by: Nigel Croxon <ncroxon@redhat.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ mdadm.8.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mdadm.8.in b/mdadm.8.in
+index a3494a1..9e7cb96 100644
+--- a/mdadm.8.in
++++ b/mdadm.8.in
+@@ -2878,7 +2878,7 @@ operation, as described below under LAYOUT CHANGES.
+ 
+ .SS CHUNK-SIZE AND LAYOUT CHANGES
+ 
+-Changing the chunk-size of layout without also changing the number of
++Changing the chunk-size or layout without also changing the number of
+ devices as the same time will involve re-writing all blocks in-place.
+ To ensure against data loss in the case of a crash, a
+ .B --backup-file
+-- 
+2.26.2
+

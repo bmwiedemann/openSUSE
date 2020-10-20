@@ -1,0 +1,53 @@
+From 03ab9763f51ddf2030f60f83e76cf9c1b50b726c Mon Sep 17 00:00:00 2001
+From: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
+Date: Fri, 15 May 2020 11:23:14 +0200
+Subject: [PATCH 78/89] Makefile: add EXTRAVERSION support
+Git-commit: 03ab9763f51ddf2030f60f83e76cf9c1b50b726c
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Add optional EXTRAVERSION parameter to Makefile and allow to mark version
+by user friendly label. It might be useful when creating custom
+spins of mdadm, or labeling some instance in between major releases.
+
+Signed-off-by: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Makefile | 3 ++-
+ ReadMe.c | 5 ++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index a33319a..0a20b75 100644
+--- a/Makefile
++++ b/Makefile
+@@ -105,7 +105,8 @@ VERSION = $(shell [ -d .git ] && git describe HEAD | sed 's/mdadm-//')
+ VERS_DATE = $(shell [ -d .git ] && date --iso-8601 --date="`git log -n1 --format=format:%cd --date=iso --date=short`")
+ DVERS = $(if $(VERSION),-DVERSION=\"$(VERSION)\",)
+ DDATE = $(if $(VERS_DATE),-DVERS_DATE="\"$(VERS_DATE)\"",)
+-CFLAGS += $(DVERS) $(DDATE)
++DEXTRAVERSION = $(if $(EXTRAVERSION),-DEXTRAVERSION="\" - $(EXTRAVERSION)\"",)
++CFLAGS += $(DVERS) $(DDATE) $(DEXTRAVERSION)
+ 
+ # The glibc TLS ABI requires applications that call clone(2) to set up
+ # TLS data structures, use pthreads until mdmon implements this support
+diff --git a/ReadMe.c b/ReadMe.c
+index eaf1042..06b8f7e 100644
+--- a/ReadMe.c
++++ b/ReadMe.c
+@@ -33,7 +33,10 @@
+ #ifndef VERS_DATE
+ #define VERS_DATE "2018-10-01"
+ #endif
+-char Version[] = "mdadm - v" VERSION " - " VERS_DATE "\n";
++#ifndef EXTRAVERSION
++#define EXTRAVERSION ""
++#endif
++char Version[] = "mdadm - v" VERSION " - " VERS_DATE EXTRAVERSION "\n";
+ 
+ /*
+  * File: ReadMe.c
+-- 
+2.26.2
+

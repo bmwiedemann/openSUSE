@@ -1,0 +1,168 @@
+From 12724c018c964596aa277489fd287d5c3506361a Mon Sep 17 00:00:00 2001
+From: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
+Date: Fri, 17 Apr 2020 13:55:55 +0200
+Subject: [PATCH 73/89] Manage, imsm: Write metadata before add
+Commit: 12724c018c964596aa277489fd287d5c3506361a
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+New drive in container always appears as spare. Manager is able to
+handle that, and queues appropriative update to monitor.
+No update from mdadm side has to be processed, just insert the drive and
+ping the mdmon. Metadata has to be written if no mdmon is running (case
+for Raid0 or container without arrays).
+
+If bare drive is added very early on startup (by custom bare rule),
+there is possiblity that mdmon was not restarted after switch root. Old
+one is not able to handle new drive. New one fails because there is
+drive without metadata in container and metadata cannot be loaded.
+
+To prevent this, write spare metadata before adding device
+to container. Mdmon will overwrite it (same case as spare migration,
+if drive appears it writes the most recent metadata).
+Metadata has to be written only on new drive before sysfs_add_disk(),
+don't race with mdmon if running.
+
+Signed-off-by: Tkaczyk Mariusz <mariusz.tkaczyk@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Manage.c      |  6 +----
+ super-intel.c | 66 +++++++++++++++++++++++++++++++++------------------
+ 2 files changed, 44 insertions(+), 28 deletions(-)
+
+diff --git a/Manage.c b/Manage.c
+index b22c396..0a5f09b 100644
+--- a/Manage.c
++++ b/Manage.c
+@@ -994,17 +994,13 @@ int Manage_add(int fd, int tfd, struct mddev_dev *dv,
+ 
+ 		Kill(dv->devname, NULL, 0, -1, 0);
+ 		dfd = dev_open(dv->devname, O_RDWR | O_EXCL|O_DIRECT);
+-		if (mdmon_running(tst->container_devnm))
+-			tst->update_tail = &tst->updates;
+ 		if (tst->ss->add_to_super(tst, &disc, dfd,
+ 					  dv->devname, INVALID_SECTORS)) {
+ 			close(dfd);
+ 			close(container_fd);
+ 			return -1;
+ 		}
+-		if (tst->update_tail)
+-			flush_metadata_updates(tst);
+-		else
++		if (!mdmon_running(tst->container_devnm))
+ 			tst->ss->sync_metadata(tst);
+ 
+ 		sra = sysfs_read(container_fd, NULL, 0);
+diff --git a/super-intel.c b/super-intel.c
+index 562a58c..3a73d2b 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -5809,6 +5809,9 @@ int mark_spare(struct dl *disk)
+ 	return ret_val;
+ }
+ 
++
++static int write_super_imsm_spare(struct intel_super *super, struct dl *d);
++
+ static int add_to_super_imsm(struct supertype *st, mdu_disk_info_t *dk,
+ 			     int fd, char *devname,
+ 			     unsigned long long data_offset)
+@@ -5938,9 +5941,13 @@ static int add_to_super_imsm(struct supertype *st, mdu_disk_info_t *dk,
+ 		dd->next = super->disk_mgmt_list;
+ 		super->disk_mgmt_list = dd;
+ 	} else {
++		/* this is called outside of mdmon
++		 * write initial spare metadata
++		 * mdmon will overwrite it.
++		 */
+ 		dd->next = super->disks;
+ 		super->disks = dd;
+-		super->updates_pending++;
++		write_super_imsm_spare(super, dd);
+ 	}
+ 
+ 	return 0;
+@@ -5979,15 +5986,15 @@ static union {
+ 	struct imsm_super anchor;
+ } spare_record __attribute__ ((aligned(MAX_SECTOR_SIZE)));
+ 
+-/* spare records have their own family number and do not have any defined raid
+- * devices
+- */
+-static int write_super_imsm_spares(struct intel_super *super, int doclose)
++
++static int write_super_imsm_spare(struct intel_super *super, struct dl *d)
+ {
+ 	struct imsm_super *mpb = super->anchor;
+ 	struct imsm_super *spare = &spare_record.anchor;
+ 	__u32 sum;
+-	struct dl *d;
++
++	if (d->index != -1)
++		return 1;
+ 
+ 	spare->mpb_size = __cpu_to_le32(sizeof(struct imsm_super));
+ 	spare->generation_num = __cpu_to_le32(1UL);
+@@ -6000,28 +6007,41 @@ static int write_super_imsm_spares(struct intel_super *super, int doclose)
+ 	snprintf((char *) spare->sig, MAX_SIGNATURE_LENGTH,
+ 		 MPB_SIGNATURE MPB_VERSION_RAID0);
+ 
+-	for (d = super->disks; d; d = d->next) {
+-		if (d->index != -1)
+-			continue;
++	spare->disk[0] = d->disk;
++	if (__le32_to_cpu(d->disk.total_blocks_hi) > 0)
++		spare->attributes |= MPB_ATTRIB_2TB_DISK;
+ 
+-		spare->disk[0] = d->disk;
+-		if (__le32_to_cpu(d->disk.total_blocks_hi) > 0)
+-			spare->attributes |= MPB_ATTRIB_2TB_DISK;
++	if (super->sector_size == 4096)
++		convert_to_4k_imsm_disk(&spare->disk[0]);
+ 
+-		if (super->sector_size == 4096)
+-			convert_to_4k_imsm_disk(&spare->disk[0]);
++	sum = __gen_imsm_checksum(spare);
++	spare->family_num = __cpu_to_le32(sum);
++	spare->orig_family_num = 0;
++	sum = __gen_imsm_checksum(spare);
++	spare->check_sum = __cpu_to_le32(sum);
+ 
+-		sum = __gen_imsm_checksum(spare);
+-		spare->family_num = __cpu_to_le32(sum);
+-		spare->orig_family_num = 0;
+-		sum = __gen_imsm_checksum(spare);
+-		spare->check_sum = __cpu_to_le32(sum);
++	if (store_imsm_mpb(d->fd, spare)) {
++		pr_err("failed for device %d:%d %s\n",
++			d->major, d->minor, strerror(errno));
++		return 1;
++	}
++
++	return 0;
++}
++/* spare records have their own family number and do not have any defined raid
++ * devices
++ */
++static int write_super_imsm_spares(struct intel_super *super, int doclose)
++{
++	struct dl *d;
++
++	for (d = super->disks; d; d = d->next) {
++		if (d->index != -1)
++			continue;
+ 
+-		if (store_imsm_mpb(d->fd, spare)) {
+-			pr_err("failed for device %d:%d %s\n",
+-				d->major, d->minor, strerror(errno));
++		if (write_super_imsm_spare(super, d))
+ 			return 1;
+-		}
++
+ 		if (doclose) {
+ 			close(d->fd);
+ 			d->fd = -1;
+-- 
+2.26.2
+

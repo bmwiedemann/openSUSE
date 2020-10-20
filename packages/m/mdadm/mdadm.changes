@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:14:50 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Update to latest mdadm which is requested by jsc#SLE-13700 from
+  partners. Mostly the purpose is for latest Intel IMSM raid
+  support, while some other fixes are important too.
+
+- imsm: Correct minimal device size (jsc#SLE-13700)
+  0073-imsm-Correct-minimal-device-size.patch
+- Detail: show correct bitmap info for cluster raid device
+  (jsc#SLE-13700)
+  0074-Detail-show-correct-bitmap-info-for-cluster-raid-dev.patch
+- imsm: support the Array Creation Time field in metadata
+  (jsc#SLE-13700)
+  0075-imsm-support-the-Array-Creation-Time-field-in-metada.patch
+- imsm: show Subarray and Volume ID in --examine output
+  (jsc#SLE-13700)
+  0076-imsm-show-Subarray-and-Volume-ID-in-examine-output.patch
+- udev: Ignore change event for imsm (jsc#SLE-13700)
+  0077-udev-Ignore-change-event-for-imsm.patch
+- Manage, imsm: Write metadata before add (jsc#SLE-13700)
+  0078-Manage-imsm-Write-metadata-before-add.patch
+- Assemble: print error message if mdadm fails assembling
+  with --uuid option (jsc#SLE-13700)
+  0079-Assemble-print-error-message-if-mdadm-fails-assembli.patch
+- clean up meaning of small typo (jsc#SLE-13700)
+  0080-clean-up-meaning-of-small-typo.patch
+- Assemble.c: respect force flag (jsc#SLE-13700)
+  0081-Assemble.c-respect-force-flag.patch
+- mdcheck: Log when done (jsc#SLE-13700)
+  0082-mdcheck-Log-when-done.patch
+- Makefile: add EXTRAVERSION support (jsc#SLE-13700)
+  0083-Makefile-add-EXTRAVERSION-support.patch
+- uuid.c: split uuid stuffs from util.c (jsc#SLE-13700)
+  0084-uuid.c-split-uuid-stuffs-from-util.c.patch
+- Include count for \0 character when using strncpy to
+  implement strdup. (jsc#SLE-13700)
+  0085-Include-count-for-0-character-when-using-strncpy-to-.patch
+- restripe: fix ignoring return value of read and lseek
+  (jsc#SLE-13700)
+  0086-restripe-fix-ignoring-return-value-of-read-and-lseek.patch
+- Block overwriting existing links while manual assembly
+  (jsc#SLE-13700)
+  0087-Block-overwriting-existing-links-while-manual-assemb.patch
+- Detect too-small device: error rather than underflow/crash
+  (jsc#SLE-13700)
+  0088-Detect-too-small-device-error-rather-than-underflow-.patch
+- Use more secure HTTPS URLs  (jsc#SLE-13700)
+  0089-Use-more-secure-HTTPS-URLs.patch
+- Update link to Intel page for IMSM (jsc#SLE-13700)
+  0090-Update-link-to-Intel-page-for-IMSM.patch
+- mdadm/Grow: prevent md's fd from being occupied during delayed time
+  (jsc#SLE-13700)
+  0091-mdadm-Grow-prevent-md-s-fd-from-being-occupied-durin.patch
+- Specify nodes number when updating cluster nodes (jsc#SLE-13700)
+  0092-Specify-nodes-number-when-updating-cluster-nodes.patch
+- mdadm/md.4: update path to in-kernel-tree documentation
+  (jsc#SLE-13700)
+  0093-mdadm-md.4-update-path-to-in-kernel-tree-documentati.patch
+- manual: update --examine-badblocks (jsc#SLE-13700)
+  0094-manual-update-examine-badblocks.patch
+
+-------------------------------------------------------------------
+Sun Aug 30 16:08:02 UTC 2020 - Coly Li <colyli@suse.com>
+
+- mdadm: treat the Dell softraid array as local array (bsc#1175004)
+  1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 09:35:58 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)

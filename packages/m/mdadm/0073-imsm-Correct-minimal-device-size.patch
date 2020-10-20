@@ -1,0 +1,36 @@
+From 06a6101c0a4d2658798dc42f461ace8e6900f840 Mon Sep 17 00:00:00 2001
+From: Blazej Kucman <blazej.kucman@intel.com>
+Date: Wed, 11 Mar 2020 15:40:13 +0100
+Subject: [PATCH 66/89] imsm: Correct minimal device size.
+Git-commit: 06a6101c0a4d2658798dc42f461ace8e6900f840
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Check if given size of member drive is not less than 1 MibiByte.
+
+Signed-off-by: Blazej Kucman <blazej.kucman@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ super-intel.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/super-intel.c b/super-intel.c
+index c9a1af5..6680df2 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -7425,7 +7425,10 @@ static int validate_geometry_imsm(struct supertype *st, int level, int layout,
+ 							verbose);
+ 	}
+ 
+-	if (size && (size < 1024)) {
++	/*
++	 * Size is given in sectors.
++	 */
++	if (size && (size < 2048)) {
+ 		pr_err("Given size must be greater than 1M.\n");
+ 		/* Depends on algorithm in Create.c :
+ 		 * if container was given (dev == NULL) return -1,
+-- 
+2.26.2
+

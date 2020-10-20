@@ -1250,4 +1250,41 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>821004</requestid>
   </revision>
+  <revision rev="124" vrev="9">
+    <srcmd5>41073ed3e474ebfc511254c2be6d937f</srcmd5>
+    <version>4.1</version>
+    <time>1603202382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to latest mdadm which is requested by jsc#SLE-13700 from
+  partners. Mostly the purpose is for latest Intel IMSM raid
+  support, while some other fixes are important too.
+- imsm: Correct minimal device size (jsc#SLE-13700)
+  0073-imsm-Correct-minimal-device-size.patch
+- Detail: show correct bitmap info for cluster raid device
+  (jsc#SLE-13700)
+  0074-Detail-show-correct-bitmap-info-for-cluster-raid-dev.patch
+- imsm: support the Array Creation Time field in metadata
+  (jsc#SLE-13700)
+  0075-imsm-support-the-Array-Creation-Time-field-in-metada.patch
+- imsm: show Subarray and Volume ID in --examine output
+  (jsc#SLE-13700)
+  0076-imsm-show-Subarray-and-Volume-ID-in-examine-output.patch
+- udev: Ignore change event for imsm (jsc#SLE-13700)
+  0077-udev-Ignore-change-event-for-imsm.patch
+- Manage, imsm: Write metadata before add (jsc#SLE-13700)
+  0078-Manage-imsm-Write-metadata-before-add.patch
+- Assemble: print error message if mdadm fails assembling
+  with --uuid option (jsc#SLE-13700)
+  0079-Assemble-print-error-message-if-mdadm-fails-assembli.patch
+- clean up meaning of small typo (jsc#SLE-13700)
+  0080-clean-up-meaning-of-small-typo.patch
+- Assemble.c: respect force flag (jsc#SLE-13700)
+  0081-Assemble.c-respect-force-flag.patch
+- mdcheck: Log when done (jsc#SLE-13700)
+  0082-mdcheck-Log-when-done.patch
+- Makefile: add EXTRAVERSION support (jsc#SLE-13700)
+  0083-Makefile-add-EXTRAVERSION-support.patch
+- uuid.c: split uuid stuffs from util.c (jsc#SLE-13700) (forwarded request 841255 from colyli)</comment>
+    <requestid>842010</requestid>
+  </revision>
 </revisionlist>

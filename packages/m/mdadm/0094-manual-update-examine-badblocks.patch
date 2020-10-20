@@ -1,0 +1,38 @@
+From 5f4184557a98bb641a7889e280265109c73e2f43 Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Date: Thu, 6 Aug 2020 13:57:50 +0200
+Subject: [PATCH 89/89] manual: update --examine-badblocks
+Commit: 5f4184557a98bb641a7889e280265109c73e2f43
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+IMSM also supports it.
+
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ mdadm.8.in | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/mdadm.8.in b/mdadm.8.in
+index 1474602..ab832e8 100644
+--- a/mdadm.8.in
++++ b/mdadm.8.in
+@@ -1695,9 +1695,11 @@ does not report the bitmap for that array.
+ .TP
+ .B \-\-examine\-badblocks
+ List the bad-blocks recorded for the device, if a bad-blocks list has
+-been configured.  Currently only
++been configured. Currently only
+ .B 1.x
+-metadata supports bad-blocks lists.
++and
++.B IMSM
++metadata support bad-blocks lists.
+ 
+ .TP
+ .BI \-\-dump= directory
+-- 
+2.26.2
+

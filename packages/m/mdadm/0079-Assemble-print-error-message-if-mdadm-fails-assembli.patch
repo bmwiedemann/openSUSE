@@ -1,0 +1,61 @@
+From 5cfb79dea26d9d7266f79c7c196a1a9f70c16a28 Mon Sep 17 00:00:00 2001
+From: Gioh Kim <gi-oh.kim@cloud.ionos.com>
+Date: Tue, 16 Apr 2019 18:08:17 +0200
+Subject: [PATCH 74/89] Assemble: print error message if mdadm fails assembling
+ with --uuid option
+Git-commit: 5cfb79dea26d9d7266f79c7c196a1a9f70c16a28
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+When mdadm tries to assemble one working device and one zeroed-out device,
+it failed but print successful message because there is --uuid option.
+
+Following script always reproduce it.
+
+dd if=/dev/zero of=/dev/ram0 oflag=direct
+dd if=/dev/zero of=/dev/ram1 oflag=direct
+./mdadm -C /dev/md111 -e 1.2 --uuid="12345678:12345678:12345678:12345678" \
+    -l1 -n2 /dev/ram0 /dev/ram1
+./mdadm -S /dev/md111
+dd if=/dev/zero of=/dev/ram1 oflag=direct
+./mdadm -A /dev/md111 --uuid="12345678:12345678:12345678:12345678" \
+    /dev/ram0 /dev/ram1
+
+Following is message from mdadm.
+
+mdadm: No super block found on /dev/ram1 (Expected magic a92b4efc, got 00000000)
+mdadm: no RAID superblock on /dev/ram1
+mdadm: /dev/md111 assembled from 1 drive - need all 2 to start it (use --run to insist).
+
+The mdadm say that it assembled but mdadm does not create /dev/md111.
+The message is wrong.
+
+After applying this patch, mdadm reports error correctly as following.
+
+mdadm: No super block found on /dev/ram1 (Expected magic a92b4efc, got 00000000)
+mdadm: no RAID superblock on /dev/ram1
+mdadm: /dev/ram1 has no superblock - assembly aborted
+
+Signed-off-by: Gioh Kim <gi-oh.kim@cloud.ionos.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Assemble.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Assemble.c b/Assemble.c
+index 6b5a7c8..2ed5884 100644
+--- a/Assemble.c
++++ b/Assemble.c
+@@ -269,7 +269,7 @@ static int select_devices(struct mddev_dev *devlist,
+ 			if (auto_assem || !inargv)
+ 				/* Ignore unrecognised devices during auto-assembly */
+ 				goto loop;
+-			if (ident->uuid_set || ident->name[0] ||
++			if (ident->name[0] ||
+ 			    ident->super_minor != UnSet)
+ 				/* Ignore unrecognised device if looking for
+ 				 * specific array */
+-- 
+2.26.2
+

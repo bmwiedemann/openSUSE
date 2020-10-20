@@ -1,0 +1,36 @@
+From 7758ada9f3872cc9cb4c76c733dbc553562b3d7d Mon Sep 17 00:00:00 2001
+From: Kinga Tanska <kinga.tanska@intel.com>
+Date: Fri, 29 May 2020 08:31:36 +0200
+Subject: [PATCH 82/89] Block overwriting existing links while manual assembly
+Commit: 7758ada9f3872cc9cb4c76c733dbc553562b3d7d
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Manual assembly with existing link caused overwriting
+this link. Add checking link and block this situation.
+
+Signed-off-by: Kinga Tanska <kinga.tanska@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Assemble.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Assemble.c b/Assemble.c
+index 3e5d4e6..ed0ddfb 100644
+--- a/Assemble.c
++++ b/Assemble.c
+@@ -1482,6 +1482,10 @@ try_again:
+ 				name = content->name;
+ 			break;
+ 		}
++		if (mddev && map_by_name(&map, mddev) != NULL) {
++			pr_err("Cannot create device with %s because is in use\n", mddev);
++			goto out;
++		}
+ 		if (!auto_assem)
+ 			/* If the array is listed in mdadm.conf or on
+ 			 * command line, then we trust the name
+-- 
+2.26.2
+

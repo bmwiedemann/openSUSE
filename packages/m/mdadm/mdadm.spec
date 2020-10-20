@@ -109,8 +109,31 @@ Patch64:        0069-imsm-pass-subarray-id-to-kill_subarray-function.patch
 Patch65:        0070-imsm-Remove-dump-restore-implementation.patch
 Patch66:        0071-Monitor-improve-check_one_sharer-for-checking-duplic.patch
 Patch67:        0072-Detail-adding-sync-status-for-cluster-device.patch
+Patch73:        0073-imsm-Correct-minimal-device-size.patch
+Patch74:        0074-Detail-show-correct-bitmap-info-for-cluster-raid-dev.patch
+Patch75:        0075-imsm-support-the-Array-Creation-Time-field-in-metada.patch
+Patch76:        0076-imsm-show-Subarray-and-Volume-ID-in-examine-output.patch
+Patch77:        0077-udev-Ignore-change-event-for-imsm.patch
+Patch78:        0078-Manage-imsm-Write-metadata-before-add.patch
+Patch79:        0079-Assemble-print-error-message-if-mdadm-fails-assembli.patch
+Patch80:        0080-clean-up-meaning-of-small-typo.patch
+Patch81:        0081-Assemble.c-respect-force-flag.patch
+Patch82:        0082-mdcheck-Log-when-done.patch
+Patch83:        0083-Makefile-add-EXTRAVERSION-support.patch
+Patch84:        0084-uuid.c-split-uuid-stuffs-from-util.c.patch
+Patch85:        0085-Include-count-for-0-character-when-using-strncpy-to-.patch
+Patch86:        0086-restripe-fix-ignoring-return-value-of-read-and-lseek.patch
+Patch87:        0087-Block-overwriting-existing-links-while-manual-assemb.patch
+Patch88:        0088-Detect-too-small-device-error-rather-than-underflow-.patch
+Patch89:        0089-Use-more-secure-HTTPS-URLs.patch
+Patch90:        0090-Update-link-to-Intel-page-for-IMSM.patch
+Patch91:        0091-mdadm-Grow-prevent-md-s-fd-from-being-occupied-durin.patch
+Patch92:        0092-Specify-nodes-number-when-updating-cluster-nodes.patch
+Patch93:        0093-mdadm-md.4-update-path-to-in-kernel-tree-documentati.patch
+Patch94:        0094-manual-update-examine-badblocks.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
+Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 
@@ -187,8 +210,31 @@ mdadm is a program that can be used to control Linux md devices.
 %patch65 -p1
 %patch66 -p1
 %patch67 -p1
+%patch73 -p1
+%patch74 -p1
+%patch75 -p1
+%patch76 -p1
+%patch77 -p1
+%patch78 -p1
+%patch79 -p1
+%patch80 -p1
+%patch81 -p1
+%patch82 -p1
+%patch83 -p1
+%patch84 -p1
+%patch85 -p1
+%patch86 -p1
+%patch87 -p1
+%patch88 -p1
+%patch89 -p1
+%patch90 -p1
+%patch91 -p1
+%patch92 -p1
+%patch93 -p1
+%patch94 -p1
 %patch1001 -p1
 %patch1002 -p1
+%patch1003 -p1
 
 %build
 make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" SUSE=yes

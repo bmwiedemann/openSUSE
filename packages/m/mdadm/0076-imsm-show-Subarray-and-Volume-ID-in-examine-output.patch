@@ -1,0 +1,42 @@
+From ba1b3bc80ea555c288f1119e69d9273249967081 Mon Sep 17 00:00:00 2001
+From: Artur Paszkiewicz <artur.paszkiewicz@intel.com>
+Date: Tue, 17 Mar 2020 10:21:03 +0100
+Subject: [PATCH 69/89] imsm: show Subarray and Volume ID in --examine output
+Git-commit: ba1b3bc80ea555c288f1119e69d9273249967081
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Show the index of the subarray as 'Subarray' and the value of the
+my_vol_raid_dev_num field as 'Volume ID'.
+
+Signed-off-by: Artur Paszkiewicz <artur.paszkiewicz@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ super-intel.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/super-intel.c b/super-intel.c
+index 8840fff..562a58c 100644
+--- a/super-intel.c
++++ b/super-intel.c
+@@ -1579,6 +1579,7 @@ static void print_imsm_dev(struct intel_super *super,
+ 
+ 	printf("\n");
+ 	printf("[%.16s]:\n", dev->volume);
++	printf("       Subarray : %d\n", super->current_vol);
+ 	printf("           UUID : %s\n", uuid);
+ 	printf("     RAID Level : %d", get_imsm_raid_level(map));
+ 	if (map2)
+@@ -1683,6 +1684,8 @@ static void print_imsm_dev(struct intel_super *super,
+ 		printf("Multiple PPLs on journaling drive\n");
+ 	else
+ 		printf("<unknown:%d>\n", dev->rwh_policy);
++
++	printf("      Volume ID : %u\n", dev->my_vol_raid_dev_num);
+ }
+ 
+ static void print_imsm_disk(struct imsm_disk *disk,
+-- 
+2.26.2
+

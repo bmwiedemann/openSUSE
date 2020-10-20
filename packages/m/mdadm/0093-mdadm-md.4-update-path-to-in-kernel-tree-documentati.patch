@@ -1,0 +1,35 @@
+From 5e592e1ed809b94670872b7a4629317fc1c8a5c1 Mon Sep 17 00:00:00 2001
+From: Winston Weinert <winston@ml1.net>
+Date: Wed, 22 Jul 2020 08:33:22 -0500
+Subject: [PATCH 88/89] mdadm/md.4: update path to in-kernel-tree documentation
+Commit: 5e592e1ed809b94670872b7a4629317fc1c8a5c1
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Documentation/md.txt was renamed to Documentation/admin-guide/md.rst
+in linux commit 9d85025b0418163fae079c9ba8f8445212de8568 (Oct 26,
+2016).
+
+Signed-off-by: Winston Weinert <winston@ml1.net>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ md.4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/md.4 b/md.4
+index 0712af2..aecff38 100644
+--- a/md.4
++++ b/md.4
+@@ -1061,7 +1061,7 @@ which contains various files for providing access to information about
+ the array.
+ 
+ This interface is documented more fully in the file
+-.B Documentation/md.txt
++.B Documentation/admin-guide/md.rst
+ which is distributed with the kernel sources.  That file should be
+ consulted for full documentation.  The following are just a selection
+ of attribute files that are available.
+-- 
+2.26.2
+

@@ -1,0 +1,39 @@
+From e1b92ee0de26576a33b20c9dd6ef6bd8cab8e283 Mon Sep 17 00:00:00 2001
+From: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Date: Wed, 8 Apr 2020 16:44:52 +0200
+Subject: [PATCH 70/89] udev: Ignore change event for imsm
+Git-commit: e1b92ee0de26576a33b20c9dd6ef6bd8cab8e283
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+When adding a device to a container mdadm has to close its file
+descriptor before sysfs_add_disk(). This generates change event.
+There is race possibility because metadata is already written and other
+-I process can place drive differently. As a result device can be added
+to two containers simultaneously.
+From IMSM perspective there is no need to react for change event. IMSM
+doesn't support stacked devices.
+
+Signed-off-by: Mariusz Tkaczyk <mariusz.tkaczyk@intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ udev-md-raid-assembly.rules | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/udev-md-raid-assembly.rules b/udev-md-raid-assembly.rules
+index 9f055ed..d668cdd 100644
+--- a/udev-md-raid-assembly.rules
++++ b/udev-md-raid-assembly.rules
+@@ -23,7 +23,7 @@ IMPORT{cmdline}="nodmraid"
+ ENV{nodmraid}=="?*", GOTO="md_inc_end"
+ ENV{ID_FS_TYPE}=="ddf_raid_member", GOTO="md_inc"
+ ENV{noiswmd}=="?*", GOTO="md_inc_end"
+-ENV{ID_FS_TYPE}=="isw_raid_member", GOTO="md_inc"
++ENV{ID_FS_TYPE}=="isw_raid_member", ACTION!="change", GOTO="md_inc"
+ GOTO="md_inc_end"
+ 
+ LABEL="md_inc"
+-- 
+2.26.2
+

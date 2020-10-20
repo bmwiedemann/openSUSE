@@ -1,0 +1,49 @@
+From 3b7aae927bdb6e150d1aaf3aaf0d183a06abda0b Mon Sep 17 00:00:00 2001
+From: Donald Buczek <buczek@molgen.mpg.de>
+Date: Wed, 13 May 2020 15:16:46 +0200
+Subject: [PATCH 77/89] mdcheck: Log when done
+Git-commit: 3b7aae927bdb6e150d1aaf3aaf0d183a06abda0b
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Currently mdcheck (when called with `--duration`) logs only the
+beginning of the check, the pausing and the continuation but not the
+completion.
+
+So, log the completion, too, so that it can be determined how long the
+raid check took.
+
+    2020-05-08T18:00:02+02:00 deadpool root: mdcheck start checking /dev/md0
+    2020-05-08T18:00:02+02:00 deadpool root: mdcheck start checking /dev/md1
+    2020-05-09T15:32:04+02:00 deadpool root: mdcheck finished checking /dev/md1
+    2020-05-09T17:38:04+02:00 deadpool root: mdcheck finished checking /dev/md0
+
+Cc: linux-raid@vger.kernel.org
+Signed-off-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ misc/mdcheck | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/misc/mdcheck b/misc/mdcheck
+index 42d4094..700c3e2 100644
+--- a/misc/mdcheck
++++ b/misc/mdcheck
+@@ -125,11 +125,13 @@ do
+ 	do
+ 		eval fl=\$MD_${i}_fl
+ 		eval sys=\$MD_${i}_sys
++		eval dev=\$MD_${i}_dev
+ 
+ 		if [ -z "$fl" ]; then continue; fi
+ 
+ 		if [ "`cat $sys/md/sync_action`" != 'check' ]
+ 		then
++			logger -p daemon.info mdcheck finished checking $dev
+ 			eval MD_${i}_fl=
+ 			rm -f $fl
+ 			continue;
+-- 
+2.26.2
+

@@ -1,0 +1,40 @@
+From 138a9e9bbe2622eafc90c976b82f3d84895dbebd Mon Sep 17 00:00:00 2001
+From: Xiao Ni <xni@redhat.com>
+Date: Mon, 27 Jul 2020 09:14:20 +0800
+Subject: [PATCH 87/89] Specify nodes number when updating cluster nodes
+Commit: 138a9e9bbe2622eafc90c976b82f3d84895dbebd
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Now it allows updating cluster nodes without specify --nodes. It can write superblock
+with zero nodes. It can break the current cluster. Add this check to avoid this problem.
+
+v2: It needs check c.update first to avoid NULL pointer reference
+v3: Wol points the typo error
+
+Signed-off-by: Xiao Ni <xni@redhat.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ mdadm.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/mdadm.c b/mdadm.c
+index 13dc24e..1b3467f 100644
+--- a/mdadm.c
++++ b/mdadm.c
+@@ -1433,6 +1433,11 @@ int main(int argc, char *argv[])
+ 		}
+ 	}
+ 
++	if (c.update && strcmp(c.update, "nodes") == 0 && c.nodes == 0) {
++		pr_err("Please specify nodes number with --nodes\n");
++		exit(1);
++	}
++
+ 	if (c.backup_file && data_offset != INVALID_SECTORS) {
+ 		pr_err("--backup-file and --data-offset are incompatible\n");
+ 		exit(2);
+-- 
+2.26.2
+

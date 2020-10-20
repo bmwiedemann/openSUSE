@@ -1,0 +1,34 @@
+From 9e4494051de3f53228fabae56c116879bff5a0c8 Mon Sep 17 00:00:00 2001
+From: Lidong Zhong <lidong.zhong@suse.com>
+Date: Mon, 16 Mar 2020 10:16:49 +0800
+Subject: [PATCH 67/89] Detail: show correct bitmap info for cluster raid
+ device
+Git-commit: 9e4494051de3f53228fabae56c116879bff5a0c8
+Patch-mainline: mdadm-4.1+
+References: jsc#SLE-13700
+
+Signed-off-by: Lidong Zhong <lidong.zhong@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Detail.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/Detail.c b/Detail.c
+index 832485f..daec4f1 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -468,7 +468,9 @@ int Detail(char *dev, struct context *c)
+ 		if (ioctl(fd, GET_BITMAP_FILE, &bmf) == 0 && bmf.pathname[0]) {
+ 			printf("     Intent Bitmap : %s\n", bmf.pathname);
+ 			printf("\n");
+-		} else if (array.state & (1<<MD_SB_BITMAP_PRESENT))
++		} else if (array.state & (1<<MD_SB_CLUSTERED))
++			printf("     Intent Bitmap : Internal(Clustered)\n\n");
++		else if (array.state & (1<<MD_SB_BITMAP_PRESENT))
+ 			printf("     Intent Bitmap : Internal\n\n");
+ 		atime = array.utime;
+ 		if (atime)
+-- 
+2.26.2
+
