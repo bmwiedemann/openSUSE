@@ -1,4 +1,251 @@
 -------------------------------------------------------------------
+Thu Oct 15 10:09:30 CEST 2020 - jslaby@suse.cz
+
+- x86/unwind/orc: Fix inactive tasks with stack pointer in %sp
+  on GCC 10 compiled kernels (bsc#1176907).
+- commit c680e93
+
+-------------------------------------------------------------------
+Thu Oct 15 09:19:08 CEST 2020 - jslaby@suse.cz
+
+- Bluetooth: L2CAP: Fix calling sk_filter on non-socket based
+  channel (bsc#1177724 CVE-2020-12351).
+- commit 8f9e7d2
+
+-------------------------------------------------------------------
+Thu Oct 15 08:47:37 CEST 2020 - tiwai@suse.de
+
+- Bluetooth: A2MP: Fix not initializing all members
+  (CVE-2020-12352 bsc#1177725).
+- commit c64c556
+
+-------------------------------------------------------------------
+Wed Oct 14 13:33:46 CEST 2020 - tiwai@suse.de
+
+- Update config files: CONFIG_PINCTRL_AMD=y for fixing dependency (bsc#1177049)
+- commit f9a8fb6
+
+-------------------------------------------------------------------
+Wed Oct 14 13:13:19 CEST 2020 - jslaby@suse.cz
+
+- platform/x86: intel-vbtn: Revert "Fix SW_TABLET_MODE always
+  reporting 1 on the HP Pavilion 11 x360" (git-fixes).
+- net_sched: check error pointer in tcf_dump_walker() (git-fixes).
+- net_sched: remove a redundant goto chain check (git-fixes).
+- net: qrtr: ns: Fix the incorrect usage of rcu_read_lock()
+  (git-fixes).
+- commit db08e19
+
+-------------------------------------------------------------------
+Wed Oct 14 12:46:24 CEST 2020 - jslaby@suse.cz
+
+- platform/x86: intel-vbtn: Switch to an allow-list for
+  SW_TABLET_MODE reporting (bsc#1012628 bsc#1175599)
+- commit 4144623
+
+-------------------------------------------------------------------
+Wed Oct 14 12:39:26 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.8.15 (bsc#1012628).
+- net_sched: commit action insertions together (bsc#1012628).
+- net_sched: defer tcf_idr_insert() in tcf_action_init_1()
+  (bsc#1012628).
+- net: qrtr: ns: Protect radix_tree_deref_slot() using rcu read
+  locks (bsc#1012628).
+- net: usb: rtl8150: set random MAC address when
+  set_ethernet_addr() fails (bsc#1012628).
+- Input: ati_remote2 - add missing newlines when printing module
+  parameters (bsc#1012628).
+- tty/vt: Do not warn when huge selection requested (bsc#1012628).
+- net/mlx5e: Fix driver's declaration to support GRE offload
+  (bsc#1012628).
+- net/tls: race causes kernel panic (bsc#1012628).
+- net: bridge: fdb: don't flush ext_learn entries (bsc#1012628).
+- net/core: check length before updating Ethertype in
+  skb_mpls_{push,pop} (bsc#1012628).
+- netlink: fix policy dump leak (bsc#1012628).
+- tcp: fix receive window update in tcp_add_backlog()
+  (bsc#1012628).
+- mm: khugepaged: recalculate min_free_kbytes after memory
+  hotplug as expected by khugepaged (bsc#1012628).
+- mm: validate inode in mapping_set_error() (bsc#1012628).
+- mmc: core: don't set limits.discard_granularity as 0
+  (bsc#1012628).
+- perf: Fix task_function_call() error handling (bsc#1012628).
+- afs: Fix deadlock between writeback and truncate (bsc#1012628).
+- net: mscc: ocelot: divide watermark value by 60 when writing
+  to SYS_ATOP (bsc#1012628).
+- net: mscc: ocelot: extend watermark encoding function
+  (bsc#1012628).
+- net: mscc: ocelot: split writes to pause frame enable bit and
+  to thresholds (bsc#1012628).
+- net: mscc: ocelot: rename ocelot_board.c to ocelot_vsc7514.c
+  (bsc#1012628).
+- rxrpc: Fix server keyring leak (bsc#1012628).
+- rxrpc: The server keyring isn't network-namespaced
+  (bsc#1012628).
+- rxrpc: Fix some missing _bh annotations on locking
+  conn->state_lock (bsc#1012628).
+- rxrpc: Downgrade the BUG() for unsupported token type in
+  rxrpc_read() (bsc#1012628).
+- rxrpc: Fix rxkad token xdr encoding (bsc#1012628).
+- net: mvneta: fix double free of txq->buf (bsc#1012628).
+- vhost-vdpa: fix page pinning leakage in error path
+  (bsc#1012628).
+- vhost-vdpa: fix vhost_vdpa_map() on error condition
+  (bsc#1012628).
+- net: hinic: fix DEVLINK build errors (bsc#1012628).
+- net: stmmac: Modify configuration method of EEE timers
+  (bsc#1012628).
+- net/mlx5e: Fix race condition on nhe->n pointer in neigh update
+  (bsc#1012628).
+- net/mlx5e: Fix VLAN create flow (bsc#1012628).
+- net/mlx5e: Fix VLAN cleanup flow (bsc#1012628).
+- net/mlx5e: Fix return status when setting unsupported FEC mode
+  (bsc#1012628).
+- net/mlx5e: Add resiliency in Striding RQ mode for packets
+  larger than MTU (bsc#1012628).
+- net/mlx5: Fix request_irqs error flow (bsc#1012628).
+- net/mlx5: Add retry mechanism to the command entry index
+  allocation (bsc#1012628).
+- net/mlx5: poll cmd EQ in case of command timeout (bsc#1012628).
+- net/mlx5: Avoid possible free of command entry while timeout
+  comp handler (bsc#1012628).
+- net/mlx5: Fix a race when moving command interface to polling
+  mode (bsc#1012628).
+- pipe: Fix memory leaks in create_pipe_files() (bsc#1012628).
+- octeontx2-pf: Fix synchnorization issue in mbox (bsc#1012628).
+- octeontx2-pf: Fix the device state on error (bsc#1012628).
+- octeontx2-pf: Fix TCP/UDP checksum offload for IPv6 frames
+  (bsc#1012628).
+- octeontx2-af: Fix enable/disable of default NPC entries
+  (bsc#1012628).
+- net: phy: realtek: fix rtl8211e rx/tx delay config
+  (bsc#1012628).
+- virtio-net: don't disable guest csum when disable LRO
+  (bsc#1012628).
+- net: usb: ax88179_178a: fix missing stop entry in driver_info
+  (bsc#1012628).
+- r8169: fix RTL8168f/RTL8411 EPHY config (bsc#1012628).
+- mlxsw: spectrum_acl: Fix mlxsw_sp_acl_tcam_group_add()'s error
+  path (bsc#1012628).
+- mdio: fix mdio-thunder.c dependency & build error (bsc#1012628).
+- bonding: set dev->needed_headroom in bond_setup_by_slave()
+  (bsc#1012628).
+- net: ethernet: cavium: octeon_mgmt: use phy_start and phy_stop
+  (bsc#1012628).
+- net: stmmac: Fix clock handling on remove path (bsc#1012628).
+- vmxnet3: fix cksum offload issues for non-udp tunnels
+  (bsc#1012628).
+- ice: fix memory leak in ice_vsi_setup (bsc#1012628).
+- ice: fix memory leak if register_netdev_fails (bsc#1012628).
+- iavf: Fix incorrect adapter get in iavf_resume (bsc#1012628).
+- iavf: use generic power management (bsc#1012628).
+- xfrm: Use correct address family in xfrm_state_find
+  (bsc#1012628).
+- net: dsa: felix: convert TAS link speed based on phylink speed
+  (bsc#1012628).
+- hinic: fix wrong return value of mac-set cmd (bsc#1012628).
+- hinic: add log in exception handling processes (bsc#1012628).
+- platform/x86: fix kconfig dependency warning for FUJITSU_LAPTOP
+  (bsc#1012628).
+- platform/x86: fix kconfig dependency warning for LG_LAPTOP
+  (bsc#1012628).
+- net: stmmac: removed enabling eee in EEE set callback
+  (bsc#1012628).
+- xsk: Do not discard packet when NETDEV_TX_BUSY (bsc#1012628).
+- xfrm: clone whole liftime_cur structure in xfrm_do_migrate
+  (bsc#1012628).
+- xfrm: clone XFRMA_SEC_CTX in xfrm_do_migrate (bsc#1012628).
+- xfrm: clone XFRMA_REPLAY_ESN_VAL in xfrm_do_migrate
+  (bsc#1012628).
+- xfrm: clone XFRMA_SET_MARK in xfrm_do_migrate (bsc#1012628).
+- iommu/vt-d: Fix lockdep splat in iommu_flush_dev_iotlb()
+  (bsc#1012628).
+- btrfs: move btrfs_rm_dev_replace_free_srcdev outside of all
+  locks (bsc#1012628).
+- drm/amd/display: fix return value check for hdcp_work
+  (bsc#1012628).
+- drm/amd/pm: Removed fixed clock in auto mode DPM (bsc#1012628).
+- io_uring: fix potential ABBA deadlock in ->show_fdinfo()
+  (bsc#1012628).
+- btrfs: move btrfs_scratch_superblocks into
+  btrfs_dev_replace_finishing (bsc#1012628).
+- drm/amdgpu: prevent double kfree ttm->sg (bsc#1012628).
+- openvswitch: handle DNAT tuple collision (bsc#1012628).
+- net: team: fix memory leak in __team_options_register
+  (bsc#1012628).
+- team: set dev->needed_headroom in team_setup_by_port()
+  (bsc#1012628).
+- sctp: fix sctp_auth_init_hmacs() error path (bsc#1012628).
+- i2c: owl: Clear NACK and BUS error bits (bsc#1012628).
+- i2c: meson: fixup rate calculation with filter delay
+  (bsc#1012628).
+- i2c: meson: keep peripheral clock enabled (bsc#1012628).
+- i2c: meson: fix clock setting overwrite (bsc#1012628).
+- cifs: Fix incomplete memory allocation on setxattr path
+  (bsc#1012628).
+- espintcp: restore IP CB before handing the packet to xfrm
+  (bsc#1012628).
+- xfrmi: drop ignore_df check before updating pmtu (bsc#1012628).
+- nvme-tcp: check page by sendpage_ok() before calling
+  kernel_sendpage() (bsc#1012628).
+- tcp: use sendpage_ok() to detect misused .sendpage
+  (bsc#1012628).
+- net: introduce helper sendpage_ok() in include/linux/net.h
+  (bsc#1012628).
+- mm/khugepaged: fix filemap page_to_pgoff(page) != offset
+  (bsc#1012628).
+- gpiolib: Disable compat ->read() code in UML case (bsc#1012628).
+- RISC-V: Make sure memblock reserves the memory containing DT
+  (bsc#1012628).
+- macsec: avoid use-after-free in macsec_handle_frame()
+  (bsc#1012628).
+- nvme-core: put ctrl ref when module ref get fail (bsc#1012628).
+- platform/x86: thinkpad_acpi: re-initialize ACPI buffer size
+  when reuse (bsc#1012628).
+- r8169: consider that PHY reset may still be in progress after
+  applying firmware (bsc#1012628).
+- bpf: Prevent .BTF section elimination (bsc#1012628).
+- bpf: Fix sysfs export of empty BTF section (bsc#1012628).
+- platform/x86: asus-wmi: Fix SW_TABLET_MODE always reporting
+  1 on many different models (bsc#1012628).
+- platform/x86: thinkpad_acpi: initialize tp_nvram_state variable
+  (bsc#1012628).
+- platform/x86: intel-vbtn: Fix SW_TABLET_MODE always reporting
+  1 on the HP Pavilion 11 x360 (bsc#1012628).
+- Platform: OLPC: Fix memleak in olpc_ec_probe (bsc#1012628).
+- splice: teach splice pipe reading about empty pipe buffers
+  (bsc#1012628).
+- usermodehelper: reset umask to default before executing user
+  process (bsc#1012628).
+- vhost: Use vhost_get_used_size() in vhost_vring_set_addr()
+  (bsc#1012628).
+- vhost: Don't call access_ok() when using IOTLB (bsc#1012628).
+- block/scsi-ioctl: Fix kernel-infoleak in
+  scsi_put_cdrom_generic_arg() (bsc#1012628).
+- partitions/ibm: fix non-DASD devices (bsc#1012628).
+- drm/nouveau/mem: guard against NULL pointer access in mem_del
+  (bsc#1012628).
+- drm/nouveau/device: return error for unknown chipsets
+  (bsc#1012628).
+- net: wireless: nl80211: fix out-of-bounds access in
+  nl80211_del_key() (bsc#1012628).
+- exfat: fix use of uninitialized spinlock on error path
+  (bsc#1012628).
+- crypto: arm64: Use x16 with indirect branch to bti_c
+  (bsc#1012628).
+- bpf: Fix scalar32_min_max_or bounds tracking (bsc#1012628).
+- Revert "ravb: Fixed to be able to unload modules" (bsc#1012628).
+- fbcon: Fix global-out-of-bounds read in fbcon_get_font()
+  (bsc#1012628).
+- Fonts: Support FONT_EXTRA_WORDS macros for built-in fonts
+  (bsc#1012628).
+- fbdev, newport_con: Move FONT_EXTRA_WORDS macros into
+  linux/font.h (bsc#1012628).
+- commit 1dc82dd
+
+-------------------------------------------------------------------
 Wed Oct  7 08:23:04 CEST 2020 - jslaby@suse.cz
 
 - Update config files.
