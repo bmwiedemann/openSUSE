@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 18 12:05:33 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.37
+   see /usr/share/doc/packages/perl-Curses/HISTORY
+
+  New in 1.37
+
+    Fix printw for wide characters.
+
+    Fix bug: wenclose() and mouse_trafo() treat an integer as a boolean.  The
+    functional effect is they return true if they fail to do the window move (I
+    don't understand this - there's some kind of window move that is part of
+    every function).  False is better.
+
+-------------------------------------------------------------------
 Wed Sep 12 13:42:05 UTC 2018 - pmonrealgonzalez@suse.com
 
 - updated to 1.36 (Released August 14, 2016)
