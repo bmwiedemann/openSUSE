@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 15 14:31:39 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.3.3
+  * OpenPGP: Improved support for encrypting with subkeys
+  * OpenPGP message status icons were not visible in message header pane
+  * OpenPGP Key Manager was missing from Tools menu on macOS
+  * Creating a new calendar event did not require an event title
+- remove python2 dependencies for TW
+- support wayland mode/autodetection in startup wrapper
+- replace some Requires to use requires_ge macro where appropriate
+- improve langpack build (as already used for Firefox)
+- add ccache statistics output to build
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:03 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.3.2

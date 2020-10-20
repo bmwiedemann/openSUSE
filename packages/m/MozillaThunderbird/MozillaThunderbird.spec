@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.3.2
-%define orig_version   78.3.2
+%define mainver        %major.3.3
+%define orig_version   78.3.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -62,11 +62,13 @@
 %define localize 1
 %define crashreporter 0
 %if 0%{?sle_version} > 150100
-# pipewire is too old on Leap <=15.1
+# pipewire and wayland is too old on Leap <=15.1
 # Activate only on everything newer
 %define with_pipewire0_3 1
+%define wayland_supported 1
 %else
 %define with_pipewire0_3 0
+%define wayland_supported 0
 %endif
 
 Name:           %{pkgname}
@@ -90,13 +92,19 @@ BuildRequires:  mozilla-nspr-devel >= 4.25.1
 BuildRequires:  mozilla-nss-devel >= 3.53.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.21.0
+# Leap 15 still requires python2 for BE (ICU creation)
+%if 0%{?suse_version} < 1550
 BuildRequires:  python-devel
+BuildRequires:  python2-xml
+%endif
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+# SLE12 exception
 BuildRequires:  python-libxml2
 BuildRequires:  python36
 %else
-BuildRequires:  python2-xml
+# TW is python2 free
 BuildRequires:  python3 >= 3.5
+BuildRequires:  python3-devel
 %endif
 BuildRequires:  rust >= 1.41
 BuildRequires:  rust-cbindgen >= 0.14.1
@@ -194,12 +202,13 @@ Patch24:        mozilla-bmo1602730.patch
 Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
-%endif # only_print_mozconfig
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         coreutils fileutils textutils /bin/sh
 ### build options end
-Requires:       mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
-Requires:       mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
+%requires_ge    mozilla-nspr
+%requires_ge    mozilla-nss
+%requires_ge    libfreetype6
 Recommends:     libcanberra0
 Recommends:     libpulse0
 Requires(post): desktop-file-utils
@@ -293,7 +302,7 @@ fi
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
-%endif # only_print_mozconfig
+%endif
 
 %build
 %if !%{with only_print_mozconfig}
@@ -318,9 +327,9 @@ if test "$kdehelperversion" != %{kde_helper_version}; then
   exit 1
 fi
 %endif
-%endif # only_print_mozconfig
 
 source %{SOURCE4}
+%endif
 
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
 export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
@@ -409,9 +418,6 @@ ac_add_options --disable-elf-hack
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-ccache
-%if %{localize}
-ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
-%endif
 ac_add_options --with-system-zlib
 ac_add_options --disable-updater
 ac_add_options --disable-tests
@@ -473,14 +479,38 @@ xvfb-run --server-args="-screen 0 1920x1080x24" \
 %if %localize
 mkdir -p %{buildroot}%{progdir}/extensions/
 truncate -s 0 %{_tmppath}/translations.{common,other}
+# langpack-build can not be done in parallel easily (see https://bugzilla.mozilla.org/show_bug.cgi?id=1660943)
+# Therefore, we have to have a separate obj-dir for each language
+# We do this, by creating a mozconfig-template with the necessary switches
+# and a placeholder obj-dir, which gets copied and modified for each language
+
+# Create mozconfig-template for langbuild
+cat << EOF > ${MOZCONFIG}_LANG
+mk_add_options MOZILLA_OFFICIAL=1
+mk_add_options BUILD_OFFICIAL=1
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj_LANG
+ac_add_options --enable-application=comm/mail
+ac_add_options --prefix=%{_prefix}
+ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
+ac_add_options --disable-updater
+ac_add_options --enable-official-branding
+EOF
+
 sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
-    | xargs -n 1 -I {} /bin/sh -c '
+    | xargs -n 1 %{?jobs:-P %jobs} -I {} /bin/sh -c '
         locale=$1
-        ./mach build langpack-$locale
-        cp -rL ../obj/dist/xpi-stage/locale-$locale \
+        cp ${MOZCONFIG}_LANG ${MOZCONFIG}_$locale
+        sed -i "s|obj_LANG|obj_$locale|" ${MOZCONFIG}_$locale
+        export MOZCONFIG=${MOZCONFIG}_$locale
+        # nsinstall is needed for langpack-build. It is already built by `./mach build`, but building it again is very fast
+        ./mach build config/nsinstall langpack-$locale
+        cp -rL ../obj_$locale/dist/xpi-stage/locale-$locale \
            %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org
-        # remove prefs and profile defaults from langpack
+        # remove prefs, profile defaults, and hyphenation from langpack
         rm -rf %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org/defaults
+        rm -rf %{buildroot}%{progdir}/extensions/langpack-$locale@thunderbird.mozilla.org/hyphenation
+        # Build systems like to run out of disc-space, so we delete the build-dir here (we copied already all relevant files)
+        rm -rf ../obj_$locale/
         # check against the fixed common list and sort into the right filelist
         _matched=0
         for _match in ar ca cs da de el en-GB es-AR es-CL es-ES fi fr hu it ja ko nb-NO nl pl pt-BR pt-PT ru sv-SE zh-CN zh-TW; do
@@ -491,7 +521,9 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
           >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
 %endif
-%endif # only_print_mozconfig
+
+ccache -s
+%endif
 
 %install
 cd $RPM_BUILD_DIR/obj
@@ -521,6 +553,7 @@ mkdir --parents %{buildroot}%{_bindir}/
 sed "s:%%PREFIX:%{_prefix}:g
 s:%%PROGDIR:%{progdir}:g
 s:%%APPNAME:%{progname}:g
+s:%%WAYLAND_SUPPORTED:%{wayland_supported}:g
 s:%%PROFILE:.thunderbird:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh

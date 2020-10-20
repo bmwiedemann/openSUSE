@@ -87,6 +87,18 @@ export LD_LIBRARY_PATH
 # needed for SUN Java under Xorg >= 7.2
 export LIBXCB_ALLOW_SLOPPY_LOCK=1
 
+# disable Gnome crash dialog (doesn't make sense anyway)
+export GNOME_DISABLE_CRASH_DIALOG=1
+
+# Wayland
+# Only supported on newer systems
+WAYLAND_SUPPORTED=%WAYLAND_SUPPORTED
+
+# $XDG_SESSION_TYPE should contain either x11 or wayland
+if [ $WAYLAND_SUPPORTED -eq 1 ] && [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  export MOZ_ENABLE_WAYLAND=1
+fi
+
 ##
 if [ -z "$MOZ_PLUGIN_PATH" ]; then
   export MOZ_PLUGIN_PATH=$BROWSER_PLUGIN_DIR
@@ -98,9 +110,6 @@ else
     export MOZ_PLUGIN_PATH=$MOZ_PLUGIN_PATH:$BROWSER_PLUGIN_DIR
   fi
 fi
-
-# disable Gnome crash dialog (doesn't make sense anyway)
-export GNOME_DISABLE_CRASH_DIALOG=1
 
 moz_debug=0
 script_args=""

@@ -3313,4 +3313,21 @@ But as always there are semi-relevant changes from the Gecko 60.4 baseline. Many
   * Dark mode, high contrast, and Windows theming fixes</comment>
     <requestid>840001</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>5b8b03040b853a037a7de09c9dc3e7a6</srcmd5>
+    <version>78.3.3</version>
+    <time>1603202505</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.3.3
+  * OpenPGP: Improved support for encrypting with subkeys
+  * OpenPGP message status icons were not visible in message header pane
+  * OpenPGP Key Manager was missing from Tools menu on macOS
+  * Creating a new calendar event did not require an event title
+- remove python2 dependencies for TW
+- support wayland mode/autodetection in startup wrapper
+- replace some Requires to use requires_ge macro where appropriate
+- improve langpack build (as already used for Firefox)
+- add ccache statistics output to build</comment>
+    <requestid>842109</requestid>
+  </revision>
 </revisionlist>
