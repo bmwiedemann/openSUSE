@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/aquasecurity/trivy.git</param>
+              <param name="changesrevision">d9fa353a069bf14e93c88cf6a4ba194c12594374</param></service></servicedata>

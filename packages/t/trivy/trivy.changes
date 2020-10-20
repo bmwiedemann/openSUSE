@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Sep 08 18:00:57 UTC 2020 - jsuchome@suse.com
+
+- Update to version 0.9.2:
+  * Fixing `Error retrieving template from path` when --format is not template but template is provided (#556)
+  * Adding contrib/junit.tpl to docker image (#554)
+  * db: Update trivy-db to include CVSS score info (#530)
+  * docs: fix markdown (#553)
+  * Added function to escape string in failure message title and descriptions (#551)
+  * Added JUNIT support (#541)
+  * chore(docs): mention air-gapped environment (#544)
+  * chore(README): add programming languages (#543)
+  * fix(log): write error messages to stderr (#538)
+  * Use StoreMetadata from trivy-db (#509)
+  * docs: add more CI options to README (#535)
+  * chore(Dockerfile): bump up alpine to 3.12 (#528)
+  * fix(alpine): replace go-deb-version with go-apk-version (#520)
+  * fix: MissingBlobs is implemented different in FS and S3 the method log… (#522)
+
+-------------------------------------------------------------------
+Wed Aug 19 11:24:03 UTC 2020 - dmueller@suse.com
+
+- Update to version 0.9.1:
+  * fix(alpine): support 3.12 (#517)
+  * chore(README): prepare for v0.9.0 (#507)
+  * fix(config): transpose arguments (#516)
+
+-------------------------------------------------------------------
+Tue Jul 28 12:33:21 UTC 2020 - jsuchome@suse.com
+
+- Update to version 0.9.0:
+  * fix(app): add ArgsUsage (#508)
+  * feat: support repository and filesystem scan (#503)
+  * Add GHSA support (#467)
+  * refactor: define common options and embed them into the option for subcommand (#502)
+  * Add image subcommand (#493)
+  * fix: remove help template (#500)
+  * vulnerability: Add CVSS Vectors to JSON output. (#484)
+  * feat: support registry token (#482)
+  * chore: bump up urfave/cli to v2 (#499)
+  * chore(doc): update README (#490)
+  * chore(ci): move integration tests to GitHub Actions (#485)
+  * feat: support OCI Image Format (#475)
+  * chore(github): fix issue templates (#483)
+  * contrib/gitlab.tpl: Add new id field (#468)
+  * chore(docs): add triage.md (#473)
+  * fix: handle a scratch/busybox/DockerSlim image gracefully (#476)
+  * rpc: Fix output to use templates when in client server mode. (#469)
+  * Override with Vendor score if exists (#433)
+  * docs: Update installation docs for pointing to Trivy Releases. (#463)
+
+-------------------------------------------------------------------
+Fri Jul 24 11:34:15 UTC 2020 - jsuchome@suse.com
+
+- enabled changesgenerate option to automatically generate changes 
+
+-------------------------------------------------------------------
+Thu Jul 16 15:54:15 CEST 2020 - jsuchome@suse.com
+
+- initial release of 0.6.0 version, supported by Harbor 2.0 
+
