@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 10:25:30 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1177526)
+  + Avoid exception if no gateway information is present and warning
+    is triggered for existing routing.
+
+-------------------------------------------------------------------
 Fri Jul 24 19:55:40 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 20.2 (bsc#1174443, bsc#1174444)

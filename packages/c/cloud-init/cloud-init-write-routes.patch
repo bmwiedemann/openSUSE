@@ -10,7 +10,7 @@ Index: cloudinit/distros/opensuse.py
  
  from cloudinit import helpers
  from cloudinit import log as logging
-@@ -174,7 +175,137 @@ class Distro(distros.Distro):
+@@ -174,7 +175,140 @@ class Distro(distros.Distro):
              util.write_file(out_fn, str(conf), 0o644)
  
      def _write_network_config(self, netconfig):
@@ -59,9 +59,12 @@ Index: cloudinit/distros/opensuse.py
 +                            )
 +                            continue
 +                    if dest == 'default' and has_default_route:
++                        dest_info = dest
++                        if gateway:
++                            dest_info = ' '.join([dest, gateway, '-', '-'])
 +                        LOG.warning(
 +                            '%s already has default route, skipping "%s"',
-+                            if_name, ' '.join([dest, gateway, '-', '-'])
++                            if_name, dest_info
 +                        )
 +                        continue
 +                    if dest == 'default' and not has_default_route:
