@@ -219,4 +219,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
 - Recommend kwrited5 in kde_plasma</comment>
     <requestid>738415</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>9c29955d8e89f1e8412a36718fb2f745</srcmd5>
+    <version>20181130</version>
+    <time>1603202441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842080</requestid>
+  </revision>
 </revisionlist>

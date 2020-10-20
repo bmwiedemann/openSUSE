@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
 BuildArch:      noarch
@@ -323,7 +323,8 @@ Recommends:     plasma5-pk-updates
 Recommends:     plasma5-addons
 Recommends:     plasma5-thunderbolt
 Recommends:     kgamma5
-Recommends:     kdeconnect-kde
+# boo#1177628
+# Recommends:     kdeconnect-kde
 Recommends:     kde-print-manager
 Recommends:     kwrited5
 # Wayland is optional
