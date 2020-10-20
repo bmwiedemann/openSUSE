@@ -2,7 +2,7 @@
 # spec file for package apparmor
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2011-2019 Christian Boltz
+# Copyright (c) 2011-2020 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define apache_module_path %(/usr/sbin/apxs2 -q LIBEXECDIR)
 
 Name:           apparmor
-Version:        2.13.4
+Version:        2.13.5
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -65,24 +65,11 @@ Patch4:         apparmor-lessopen-profile.patch
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
-# changes and fixes since the 2.13.4 Release (v2.13.4 (= df0ac742)..5f61bd4c
-Patch9:         changes-since-2.13.4.diff
-
 # update abstractions/base and nameservice for /usr/etc (submitted upstream 2020-01-25 https://gitlab.com/apparmor/apparmor/merge_requests/447, only merged to master, not 2.13.x)
 Patch10:        ./usr-etc-abstractions-base-nameservice.diff
 
-# allow /{,var/}run/user/*/xauth_* r, in abstractions/X (submitted upstream 2020-07-20 https://gitlab.com/apparmor/apparmor/-/merge_requests/581 (master), https://gitlab.com/apparmor/apparmor/-/merge_requests/582 (2.11..2.13))
-Patch11:        abstractions-X-xauth-mr582.diff
-
-# add CAP_BPF and CAP_PERFMON to severity.db (merged upstream 2020-08-07 https://gitlab.com/apparmor/apparmor/-/merge_requests/589 (2.11..master))
-Patch12:        sevdb-caps-mr589.diff
-
-# add /usr/libexec as a path for libvirt_leaseshelper script, jsc#SLE-14253
-# needs to go upstream
-Patch13:        libvirt-leaseshelper.patch
-
-# add CAP_CHECKPOINT_RESTORE to severity.db (https://gitlab.com/apparmor/apparmor/-/merge_requests/656, submitted upstream 2020-10-14 for 2.10..master)
-Patch14:        cap_checkpoint_restore.diff
+# fix libapparmor so version (submitted upstream 2020-10-17 https://gitlab.com/apparmor/apparmor/-/merge_requests/658)
+Patch11:        libapparmor-so-number.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -372,7 +359,6 @@ SubDomain.
 %patch3 -p1
 %patch4
 %patch5
-%patch9 -p1
 
 %if 0%{?suse_version} > 1500
 # /usr/etc/ changes in abstractions, apply only to Tumbleweed, but not to Leap 15.x
@@ -380,9 +366,6 @@ SubDomain.
 %endif
 
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
 
 %build
 %define _lto_cflags %{nil}

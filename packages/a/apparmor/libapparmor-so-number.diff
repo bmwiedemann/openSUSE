@@ -1,0 +1,42 @@
+commit 145136f6041aba4fffbbf8d1a5df368998b81ca1
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Sat Oct 17 17:30:39 2020 +0200
+
+    Fix 2.13 libapparmor so version
+    
+    ab0f4ab2ed7e734827b143cd32dace4444875e9b increased AA_LIB_REVISION and
+    AA_LIB_AGE, with the result that 2.13.5 builds libapparmor.so.0.7.3,
+    while 2.13.4 had libapparmor-1.6.2
+    
+    This patch reverts the AA_LIB_AGE increase to fix the so name so that
+    we'll get libapparmor-1.6.3.
+    
+    Note: If you want to apply this fix on top of the 2.13.5 tarball, you'll
+    need to also apply the patch to Makefile.in.
+
+diff --git a/libraries/libapparmor/src/Makefile.am b/libraries/libapparmor/src/Makefile.am
+index b59b2d1c..6d9c6296 100644
+--- a/libraries/libapparmor/src/Makefile.am
++++ b/libraries/libapparmor/src/Makefile.am
+@@ -28,7 +28,7 @@ INCLUDES = $(all_includes)
+ #
+ AA_LIB_CURRENT = 7
+ AA_LIB_REVISION = 3
+-AA_LIB_AGE = 7
++AA_LIB_AGE = 6
+ 
+ SUFFIXES = .pc.in .pc
+ 
+diff --git a/libraries/libapparmor/src/Makefile.am b/libraries/libapparmor/src/Makefile.am
+index b59b2d1c..6d9c6296 100644
+--- a/libraries/libapparmor/src/Makefile.in
++++ b/libraries/libapparmor/src/Makefile.in
+@@ -587,7 +587,7 @@ INCLUDES = $(all_includes)
+ #
+ AA_LIB_CURRENT = 7
+ AA_LIB_REVISION = 3
+-AA_LIB_AGE = 7
++AA_LIB_AGE = 6
+ SUFFIXES = .pc.in .pc
+ BUILT_SOURCES = grammar.h scanner.h af_protos.h
+ AM_LFLAGS = -v

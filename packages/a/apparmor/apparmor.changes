@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:46:01 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.5
+  - add missing permissions to several profiles and abstractions
+  - bugfixes in parser and tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.5
+    for the detailed upstream changelog
+- remove upstream(ed) patches
+  - changes-since-2.13.4.diff
+  - abstractions-X-xauth-mr582.diff
+  - sevdb-caps-mr589.diff
+  - libvirt-leaseshelper.patch
+  - cap_checkpoint_restore.diff
+- add libapparmor-so-number.diff to fix libapparmor so version (!658)
+
+-------------------------------------------------------------------
 Wed Oct 14 12:16:52 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - add CAP_CHECKPOINT_RESTORE to severity.db (MR 656,

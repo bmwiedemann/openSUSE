@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:45:32 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 2.13.5
+  - fix two potential build failures
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.5
+    for the detailed upstream changelog
+- add libapparmor-so-number.diff to fix libapparmor so version (!658)
+
+-------------------------------------------------------------------
 Thu Mar 12 19:30:19 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 2.13.4

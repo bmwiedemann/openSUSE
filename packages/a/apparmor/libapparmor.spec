@@ -18,7 +18,7 @@
 
 
 Name:           libapparmor
-Version:        2.13.4
+Version:        2.13.5
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
@@ -31,6 +31,9 @@ BuildRequires:  dejagnu
 BuildRequires:  flex
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+# fix libapparmor so version (submitted upstream 2020-10-17 https://gitlab.com/apparmor/apparmor/-/merge_requests/658
+Patch1:         libapparmor-so-number.diff
 
 %description
 This package provides the libapparmor library, which contains the
@@ -67,6 +70,7 @@ AppArmor API.
 
 %prep
 %setup -q -n apparmor-%{version}
+%patch1 -p1
 
 %build
 %define _lto_cflags %{nil}

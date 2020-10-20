@@ -1953,4 +1953,30 @@ and I can give it a stab.
   keep using DISABLE_RESTART_ON_UPDATE for Leap 15.x</comment>
     <requestid>841767</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2ae9853ab0b7d24c2eae0c1b852586ca</srcmd5>
+    <version>2.13.5</version>
+    <time>1603202634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 2.13.5
+  - add missing permissions to several profiles and abstractions
+  - bugfixes in parser and tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.5
+    for the detailed upstream changelog
+- remove upstream(ed) patches
+  - changes-since-2.13.4.diff
+  - abstractions-X-xauth-mr582.diff
+  - sevdb-caps-mr589.diff
+  - libvirt-leaseshelper.patch
+  - cap_checkpoint_restore.diff
+- add libapparmor-so-number.diff to fix libapparmor so version (!658)
+
+libapparmor:
+- update to AppArmor 2.13.5
+  - fix two potential build failures
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_2.13.5
+    for the detailed upstream changelog
+- add libapparmor-so-number.diff to fix libapparmor so version (!658) (forwarded request 842314 from cboltz)</comment>
+    <requestid>842315</requestid>
+  </revision>
 </revisionlist>
