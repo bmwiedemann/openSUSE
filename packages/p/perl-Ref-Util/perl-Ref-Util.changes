@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Apr 20 05:55:40 UTC 2018 - coolo@suse.com
+
+- updated to 0.204
+   see /usr/share/doc/packages/perl-Ref-Util/Changes
+
+  0.204     2018-04-19 13:21:49+02:00 Europe/Oslo
+  
+          * fix Makefile.PL so that the 'install' sub is patched before
+            WriteMakefile() is called (issue #41).
+
+-------------------------------------------------------------------
+Sun May 28 19:19:02 UTC 2017 - coolo@suse.com
+
+- initial package 0.203
+ * created by cpanspec 1.78.08
