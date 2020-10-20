@@ -16,6 +16,8 @@
 #
 
 
+%global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
+
 Name:           stellarium
 Version:        0.20.3
 Release:        0
@@ -30,6 +32,7 @@ BuildRequires:  cmake >= 2.8.11
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.7.0
@@ -63,13 +66,13 @@ binoculars or a small telescope.
 %build
 export QT_HASH_SEED=0
 %cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
-%if 0%{?suse_version} >= 1550
+%if %{qt_version} >= 051500 && %{qt_version} < 051502
 %ifarch i586
        -DENABLE_NLS=OFF \
 %endif
 %endif
        -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
-%if 0%{?suse_version} >= 1550
+%if %{qt_version} >= 051500 && %{qt_version} < 051502
 %make_jobs -j1
 %else
 %make_jobs
