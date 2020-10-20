@@ -1,0 +1,24 @@
+diff -ur LWP-Protocol-https-6.09/lib/LWP/Protocol/https.pm LWP-Protocol-https-6.09_fix/lib/LWP/Protocol/https.pm
+--- LWP-Protocol-https-6.09/lib/LWP/Protocol/https.pm	2020-07-16 15:33:07.000000000 +0200
++++ LWP-Protocol-https-6.09_fix/lib/LWP/Protocol/https.pm	2020-10-15 15:56:49.380284037 +0200
+@@ -22,7 +22,8 @@
+     else {
+ 	$ssl_opts{SSL_verify_mode} = 0;
+     }
+-    if ($ssl_opts{SSL_verify_mode}) {
++    my $suse_allows_mozilla_ca = 0;
++    if ($suse_allows_mozilla_ca && $ssl_opts{SSL_verify_mode}) {
+ 	unless (exists $ssl_opts{SSL_ca_file} || exists $ssl_opts{SSL_ca_path}) {
+ 	    eval {
+ 		require Mozilla::CA;
+diff -ur LWP-Protocol-https-6.09/Makefile.PL LWP-Protocol-https-6.09_fix/Makefile.PL
+--- LWP-Protocol-https-6.09/Makefile.PL	2020-07-16 15:33:07.000000000 +0200
++++ LWP-Protocol-https-6.09_fix/Makefile.PL	2020-10-15 15:56:08.235630479 +0200
+@@ -22,7 +22,6 @@
+     "IO::Socket::SSL" => "1.54",
+     "LWP::Protocol::http" => 0,
+     "LWP::UserAgent" => "6.06",
+-    "Mozilla::CA" => 20180117,
+     "Net::HTTPS" => 6,
+     "base" => 0,
+     "strict" => 0

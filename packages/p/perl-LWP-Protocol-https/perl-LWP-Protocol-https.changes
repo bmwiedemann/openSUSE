@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:58:08 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 6.09
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.09      2020-07-16 13:33:05Z
+      - Make available the version of SSL/TLS protocol used in the connection
+        (GH#56) (Jon Jensen)
+
+  6.08      2020-03-23 20:19:22Z (TRIAL RELEASE)
+      - Add defined check (GH#53) (Mohammad S Anwar)
+      - Fix copyright year (GH#55) (Olaf Alders)
+      - Upgrade Mozilla::CA dependency; originally #26 by dolmen (GH#54) (Shoichi Kaji)
+      - Adds coverage tests (GH#51) (Juan Julin Merelo Guervs)
+      - Migrated to DZil (GH PR#30)
+      - Moved bug tracking from RT to GitHub (GH#48) (Olaf Alders)
+
+Rebase patch LWP-Protocol-https-6.04-systemca.diff to LWP-Protocol-https-6.09-systemca.diff
+
+-------------------------------------------------------------------
 Thu Sep 13 15:42:12 UTC 2018 - pmonrealgonzalez@suse.com
 
 - 6.07      2017-02-19

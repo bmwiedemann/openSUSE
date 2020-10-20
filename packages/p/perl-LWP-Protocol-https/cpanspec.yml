@@ -6,7 +6,7 @@
 #  - source2
 patches:
  # patch for using system certificates
- "%{cpan_name}-6.04-systemca.diff": -p1
+ "%{cpan_name}-6.09-systemca.diff": -p1
  # see https://github.com/libwww-perl/lwp-protocol-https/pull/14
  CVE-2014-3230.patch: -p1
 #preamble: |-

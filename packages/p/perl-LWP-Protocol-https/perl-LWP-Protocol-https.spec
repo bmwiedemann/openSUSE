@@ -1,7 +1,7 @@
 #
 # spec file for package perl-LWP-Protocol-https
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define cpan_name LWP-Protocol-https
 Name:           perl-LWP-Protocol-https
-Version:        6.07
+Version:        6.09
 Release:        0
+%define cpan_name LWP-Protocol-https
 Summary:        Provide https support for LWP::UserAgent
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         %{cpan_name}-6.04-systemca.diff
+Patch0:         %{cpan_name}-6.09-systemca.diff
 Patch1:         CVE-2014-3230.patch
-BuildRequires:  ca-certificates
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::SSL) >= 1.54
+BuildRequires:  perl(IO::Socket::SSL::Utils)
+BuildRequires:  perl(LWP::Protocol::http)
 BuildRequires:  perl(LWP::UserAgent) >= 6.06
+#BuildRequires:  perl(Mozilla::CA) >= 20180117
 BuildRequires:  perl(Net::HTTPS) >= 6
 BuildRequires:  perl(Test::RequiresInternet)
 Requires:       perl(IO::Socket::SSL) >= 1.54
+Requires:       perl(LWP::Protocol::http)
 Requires:       perl(LWP::UserAgent) >= 6.06
+#Requires:       perl(Mozilla::CA) >= 20180117
 Requires:       perl(Net::HTTPS) >= 6
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -69,7 +74,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -78,6 +83,7 @@ make %{?_smp_mflags} test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes README
+%doc Changes CONTRIBUTING.md
+%license LICENSE
 
 %changelog
