@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Oct 15 11:07:02 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Replaced pkgconfig Buildreqiures with direct Package dependencies,
+  to fix build issues for SLES
+- ran spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 22 08:58:01 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Initial packaging of v1.2 (jsc#SLE-13926)
