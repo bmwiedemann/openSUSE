@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:57:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.145.0
+  - Add support for kubernetes_file_t
+  - Allow container_t to open existing tun/tap
+
+-------------------------------------------------------------------
 Wed Aug 12 09:11:30 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Minimize BuildRequires
