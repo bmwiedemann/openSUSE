@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
-Url:            http://www-nrg.ee.lbl.gov/nrg.html
+URL:            http://www-nrg.ee.lbl.gov/nrg.html
 Source:         %{name}-%{version}.tar.bz2
 Source10:       arpwatch@.service
 Source11:       sysconfig.arpwatch
@@ -43,6 +43,7 @@ Patch8:         arpwatch-2.1a15-massagevendor.patch
 Patch9:         getnameinfo.patch
 # PATCH-Fix-Upstream -- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=625796#20 -- seife+obs@b1-systems.com
 Patch10:        0001-Ignore-802.1Q-frames.patch
+Patch11:        report-iface.patch
 BuildRequires:  libpcap-devel
 BuildRequires:  postfix
 BuildRequires:  systemd-rpm-macros
@@ -75,6 +76,7 @@ needed if you want to build the arpwatch-ethercodes package.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 %configure

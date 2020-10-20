@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 10:52:57 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add report-iface.patch to see, where the offending change happened
+
+-------------------------------------------------------------------
 Tue May  7 08:51:31 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add 0001-Ignore-802.1Q-frames.patch to fix log spam on networks
