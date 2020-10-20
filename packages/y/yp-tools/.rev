@@ -240,4 +240,12 @@
     <comment>- Use /usr/share/yp and /usr/libexec/yp</comment>
     <requestid>830459</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>22dbd9031c7c646278151edf50650adf</srcmd5>
+    <version>4.2.3</version>
+    <time>1603202431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842073</requestid>
+  </revision>
 </revisionlist>

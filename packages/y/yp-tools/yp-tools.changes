@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:36:20 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix dangling /var/yp/nicknames symlink after update
+  (boo#1176526) 
+
+-------------------------------------------------------------------
 Sat Aug 29 10:18:42 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use /usr/share/yp and /usr/libexec/yp

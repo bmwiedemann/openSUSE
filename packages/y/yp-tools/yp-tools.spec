@@ -54,6 +54,13 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_prefix}/lib/tmpfiles.d/yp-tools.conf
 %find_lang %{name}
 %fdupes %{buildroot}/%{_prefix}
 
+%post
+# Remove symlink pointing to old location (4.2.3-1.8 and older)
+if [ "$1" = "2" ] && test -L %{_localstatedir}/yp/nicknames \
+       && [ "$(readlink %{_localstatedir}/yp/nicknames)" = ../../usr/lib/yp/nicknames ]; then
+    rm -f %{_localstatedir}/yp/nicknames
+fi
+
 %postun
 if [ "$1" = "0" ]; then
    test -L %{_localstatedir}/yp/nicknames && rm -f %{_localstatedir}/yp/nicknames ||:
