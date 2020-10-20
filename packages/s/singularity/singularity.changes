@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 07:56:37 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 3.6.4 addresses a security issue:
+  - CVE-2020-15229, bsc#1177901
+  Due to insecure handling of path traversal and the lack of path 
+  sanitization within unsquashfs, it is possible to overwrite/create 
+  files on the host filesystem during the extraction of a crafted 
+  squashfs filesystem. Affects unprivileged execution of SIF/SquashFS 
+  images, and image builds from SIF/SquashFS images.
+
+-------------------------------------------------------------------
 Fri Sep 18 07:29:10 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - New version 3.6.3, addresses the following security issues:
