@@ -23,4 +23,4 @@
 # macros from mingw64-macros.mingw64 cross-compilation. 
 
 NAME="_`basename $0|tr -- - _`"
-eval "`rpm --eval "%{$NAME}"`" "$@"
+eval "`rpm --eval "%{$NAME}"`" $(printf " %q" "${@}")

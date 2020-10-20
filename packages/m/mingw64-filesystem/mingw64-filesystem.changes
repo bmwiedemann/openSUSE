@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:32:20 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20201017
+- Fix bug not keeping quotes in bash arguments provided to mingw64-scripts.sh
+  which is for example required to specify a different cmake generator 
+
+-------------------------------------------------------------------
 Fri Aug 28 18:59:36 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix architecture in generating cmake provides
