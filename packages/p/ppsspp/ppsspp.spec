@@ -16,60 +16,50 @@
 #
 
 
-%define _lto_cflags %{nil} 
+%define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.10~git20200627
+Version:        1.10.3~git20201014
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            http://www.ppsspp.org
 Source:         %{name}-%{version}.tar.xz
-
-# never built for PowerPC on 20200721
-ExcludeArch:    ppc ppc64 ppc64le
-
+BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-
-BuildRequires:  unzip
-
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(vulkan)
-
-BuildRequires:  snappy-devel
-BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(zlib)
-
-BuildRequires:  Mesa-devel
 BuildRequires:  glslang-devel
+BuildRequires:  pkgconfig
+BuildRequires:  snappy-devel
+BuildRequires:  unzip
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libswresample)
+#Desktop icon deps
+BuildRequires:  update-desktop-files
 BuildRequires:  wayland-devel
-
 #Qt deps:
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5OpenGL)
-
-#ffmpeg deps: (Restore once https://github.com/hrydgard/ppsspp/issues/9026 is closed)
-#BuildRequires:      pkgconfig(libavcodec)
-#BuildRequires:      pkgconfig(libswscale)
-#BuildRequires:      pkgconfig(libavformat)
-#BuildRequires:      pkgconfig(libavutil)
-#BuildRequires:      pkgconfig(libavdevice)
-#BuildRequires:      pkgconfig(libavfilter)
-#BuildRequires:      pkgconfig(libpostproc)
-#BuildRequires:      pkgconfig(libswresample)
-
-#Desktop icon deps
-BuildRequires:  update-desktop-files
-Requires(post):     hicolor-icon-theme
-Requires(postun):   hicolor-icon-theme
-
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-common
+Requires(post): hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
+# never built for PowerPC/Arm on 20200721
+ExcludeArch:    aarch64 %arm ppc ppc64 ppc64le
 
 %description
 PPSSPP is a PSP emulator written in C++, and translates PSP CPU instructions directly into optimized x86, x64 and ARM machine code, using JIT recompilers (dynarecs).
@@ -121,13 +111,11 @@ const char *PPSSPP_GIT_VERSION = \"%{version}\";
 
 %build
 
-#Restore         -DUSE_SYSTEM_FFMPEG="ON" \ once ffmpeg bug is fixed upstream
-
 mkdir build-headless build-qt build
 
 cd build-headless
 cmake  .. \
-        -DUSE_FFMPEG="ON" \
+        -DUSE_SYSTEM_FFMPEG="ON" \
         -DHEADLESS="ON" \
         -DCMAKE_C_FLAGS="%optflags" \
         -DCMAKE_CXX_FLAGS="%optflags" \
@@ -138,7 +126,7 @@ cmake  .. \
 
 cd ../build-qt
 cmake  .. \
-        -DUSE_FFMPEG="ON" \
+        -DUSE_SYSTEM_FFMPEG="ON" \
         -DUSING_QT_UI="ON" \
         -DCMAKE_C_FLAGS="%optflags" \
         -DCMAKE_CXX_FLAGS="%optflags" \
@@ -149,7 +137,7 @@ cmake  .. \
 
 cd ../build
 cmake  .. \
-        -DUSE_FFMPEG="ON" \
+        -DUSE_SYSTEM_FFMPEG="ON" \
         -DCMAKE_C_FLAGS="%optflags" \
         -DCMAKE_CXX_FLAGS="%optflags" \
         -DCMAKE_BUILD_TYPE="Release|RelWithDebugInfo" \
