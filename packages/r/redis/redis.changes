@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Sep 11 06:38:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- redis 6.0.8:
+- redis 6.0.8 (jsc#PM-1615, jsc#PM-1622, jsc#PM-1681, jsc#ECO-2417, jsc#ECO-2867, jsc#PM-1547, jsc#CAPS-56, jsc#SLE-11578, jsc#SLE-12821):
   * bug fixes when using with Sentinel
   * bug fixes when using CONFIG REWRITE
   * Remove THP warning when set to madvise
