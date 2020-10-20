@@ -1,0 +1,11 @@
+--- vm-install-0.10.08/src/vminstall/gtk/interface.py.orig	2018-02-07 22:19:13.103413935 +0100
++++ vm-install-0.10.08/src/vminstall/gtk/interface.py	2020-10-19 10:32:06.503732456 +0200
+@@ -1460,7 +1460,7 @@
+             self._exc_box(VmError(err=VmError.E_VM_RUNNING))
+             return
+         if self.options.os_type in ('sles12', 'sled12', 'sles15', 'sled15'):
+-            self.options.extra_args = "upgrade=1"
++            self.options.extra_args += " upgrade=1"
+         # Initialize the internal data from the config file. Do this before calling calculate
+         try:
+             vminstall.options.initialize_vm_from_config_file(self.options, vm_name)

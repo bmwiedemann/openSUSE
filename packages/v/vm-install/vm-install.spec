@@ -1,7 +1,7 @@
 #
 # spec file for package vm-install
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@ Name:           vm-install
 %if %suse_version <= 1230
 %define with_vminstall_as_default_installer 1
 %endif
-Url:            http://developer.novell.com/wiki/index.php/Vm-install
+URL:            http://developer.novell.com/wiki/index.php/Vm-install
 BuildRequires:  python3-devel
 %if %{?with_vminstall_as_default_installer}0
 BuildRequires:  update-desktop-files
@@ -30,10 +30,11 @@ BuildRequires:  yast2
 Version:        0.10.08
 Release:        0
 Summary:        Tool to Define a Virtual Machine and Install Its Operating System
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Emulators/PC
 Source0:        %{name}-0.10.08.tar.bz2
 Source1:        vm-install.conf
+Patch1:         vm-install-extra-args.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       kdump
 Requires:       python3-dbus-python
@@ -80,6 +81,7 @@ Authors:
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 

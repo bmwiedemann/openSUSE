@@ -1313,4 +1313,12 @@
     <comment>Fix for bsc#1163183 parsing bridge names. Also added support for winserver2019</comment>
     <requestid>774040</requestid>
   </revision>
+  <revision rev="170" vrev="2">
+    <srcmd5>6333f9e1aed370b7b1a86ba10677d701</srcmd5>
+    <version>0.10.08</version>
+    <time>1603203146</time>
+    <user>dimstar_suse</user>
+    <comment>Fix upgrade feature to not drop extra args</comment>
+    <requestid>842627</requestid>
+  </revision>
 </revisionlist>

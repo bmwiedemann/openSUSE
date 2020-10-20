@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 08:40:01 UTC 2020 - Franz Sirl <franz.sirl-obs@lauterbach.com>
+
+- Don't forget --extra-args when using --upgrade.
+  vm-install-extra-args.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 14:32:48 MST 2020 - carnold@suse.com
 
 - bsc#1163183 - vm-install: Parsing error acquiring bridge names
