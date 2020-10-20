@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 13 08:18:32 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to 0.15.0
+  * Allow customizing mangling of generic parameters in C
+  * Box<T> simplifies to T* in C
+  * ManuallyDrop<T> and MaubeUninit<T> simplify to T in C, and are opaque in C++
+  * C++ supports a derive-ostream annotation to derive serialization 
+    of structs, unions and enums
+  * Large character constants have been fixed on Windows
+  * Constants are now generated for typedefs, etc
+  * The `sort_by` configuration option has been made to work for constants
+  * Default sort order is source order now (sort_by = "None"), and can 
+    be changed by the above option
+
+- update to 0.14.6
+  * Fixed the builds with older versions of rustc.
+
+- update to 0.14.5
+  * Add support to specify line ending style
+  * Add cbindgen:ptrs-as-arrays annotation to allow making function
+       arguments C/C++ arrays.
+
+- update to 0.14.4
+  * Allow to override the mangling separator
+  * cbindgen now handles better having ZSTs in template parameters, and
+       default template parameters.
+  * Support for annotating nonnull pointers
+  * Fixed bitflags that overflow a signed integer
+  * Support for wildcard argument names
+  * Support for the never return type, with configurable annotation
+  * Properly reject arrays as function arguments
+
+-------------------------------------------------------------------
 Thu Jul 23 14:26:02 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to 0.14.3
