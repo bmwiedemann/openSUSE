@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.20.0
+Version:        5.20.0.1
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
@@ -74,7 +74,6 @@ Provides KDE's control center modules. Development files.
 %lang_package
 %prep
 %setup -q -n systemsettings-%{version}
-%autopatch -p1
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
