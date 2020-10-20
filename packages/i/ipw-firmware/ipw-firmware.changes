@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 09:56:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old specfile constructs.
+
+-------------------------------------------------------------------
 Sat Feb  2 23:02:49 UTC 2013 - crrodriguez@opensuse.org
 
 - PreReq modutils instead of module-init-tools otherwise 
- we cannot switch to kmod cleanly
+  we cannot switch to kmod cleanly
 
 -------------------------------------------------------------------
 Wed Dec 14 14:34:32 UTC 2011 - coolo@suse.com

@@ -1,7 +1,7 @@
 #
 # spec file for package ipw-firmware
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-Url:            http://ipw2200.sourceforge.net/firmware.php
 
 Name:           ipw-firmware
 Summary:        Firmware for Intel PRO/Wireless WLAN Cards
@@ -27,14 +25,14 @@ Release:        0
 %define version_2100 1.3
 %define version_2200 2.4
 %define version_3945 1.14.2
+URL:            http://ipw2200.sourceforge.net/firmware.php
 Source0:        ipw2100-fw-%{version_2100}.tar.bz2
 Source1:        ipw2200-fw-%{version_2200}.tar.bz2
 Source2:        ipw2200-fw-2.3.tar.bz2
 Source3:        ipw2200-fw-2.2.tar.bz2
 Source4:        ipw2200-fw-3.1.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-PreReq:         modutils grep
+Requires(post): modutils grep
 # Modules: ipw2100.ko ipw2200.ko
 Supplements:    modalias(pci:v00008086d00001043sv0000103Csd00002741bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001043sv00008086sd0000252[0123456789BCD]bc*)
@@ -58,16 +56,10 @@ Supplements:    modalias(pci:v00008086d0000422[0134]sv*sd*bc*sc*i*)
 %description
 This package contains firmware binaries needed for Intel PRO/Wireless
 2100/2200BG (aka Centrino) WLAN cards. The package is covered by the
-Intel license.	See http://ipw2100.sourceforge.net/firmware.php?fid=4.
-
-
+Intel license. See http://ipw2100.sourceforge.net/firmware.php?fid=4.
 
 %prep
-%setup0 -c
-%setup1 -T -D -a 1
-%setup2 -T -D -a 2
-%setup3 -T -D -a 3
-%setup4 -T -D -a 4
+%setup -cq -a1 -a2 -a3 -a4
 
 %build
 
@@ -93,13 +85,8 @@ for M in ipw2100 ipw2200 ; do
 		{ echo "Reloading module $M"; rmmod $M; modprobe $M; }
 	fi
 done
-exit 0
 
 %files
-%defattr(-,root,root)
 /lib/firmware/*
-
-%clean
-test "$RPM_BUILD_ROOT" != "/" && rm -rf $RPM_BUILD_ROOT
 
 %changelog
