@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 19 13:22:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Info that since version 2.12.0 following security issue is fixed:
+  prepare-dirs script allows for symlink attack in the icinga user
+  context. boo#1172171 (CVE-2020-14004)
+
+-------------------------------------------------------------------
 Thu Oct 15 15:43:22 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.1
