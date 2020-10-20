@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 18:05:21 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Add AVIF support via libheif
+  * libheif is *only* built with AVIF support
+  * HEIF is not working as it isn't linked against x265
+
+-------------------------------------------------------------------
 Sat Aug 15 14:43:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to vips 8.10.0:
