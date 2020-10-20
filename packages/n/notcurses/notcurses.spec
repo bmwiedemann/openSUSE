@@ -17,9 +17,9 @@
 #
 
 
-%global sover   1
+%global sover   2
 Name:           notcurses
-Version:        1.7.6
+Version:        2.0.1
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
