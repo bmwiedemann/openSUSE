@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  9 14:19:57 UTC 2020 - pgajdos@suse.com
+
+- recommend aspell-en also from the library [bsc#1177523]
+
+-------------------------------------------------------------------
 Thu Oct  8 13:55:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove/replace old specfile constructs.

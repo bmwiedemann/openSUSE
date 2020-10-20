@@ -108,6 +108,7 @@ This package contains the aspell library.
 %package -n libpspell15
 Summary:        GNU Aspell - Pspell Compatibility Library
 Group:          System/Libraries
+Recommends:     aspell-en
 
 %description -n libpspell15
 GNU Aspell is a spell checker planned to eventually replace Ispell. It

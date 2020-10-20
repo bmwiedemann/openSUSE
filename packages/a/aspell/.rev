@@ -302,4 +302,12 @@
     <comment>- Remove/replace old specfile constructs. (forwarded request 840284 from jengelh)</comment>
     <requestid>840287</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>9c68c57663f4229c3afd4a1c1467921a</srcmd5>
+    <version>0.60.8</version>
+    <time>1603202564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842171</requestid>
+  </revision>
 </revisionlist>
