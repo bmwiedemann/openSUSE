@@ -36,11 +36,11 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flac-devel
 BuildRequires:  libdvdread-devel
-BuildRequires:  libmpcdec-devel
 BuildRequires:  libmusicbrainz-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libvorbis-devel
+BuildRequires:  musepack-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive) >= 5.21.0

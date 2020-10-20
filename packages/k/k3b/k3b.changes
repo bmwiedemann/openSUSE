@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 01:07:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add support for Musepack SV8 decoding, use musepack-devel
+  instead of libmpcdec-devel.
+
+-------------------------------------------------------------------
 Fri Oct  9 05:43:09 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.2
