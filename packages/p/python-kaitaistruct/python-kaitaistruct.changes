@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:24:34 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9 (no changelog supplied)
+
+-------------------------------------------------------------------
 Mon Oct 14 13:50:21 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.
