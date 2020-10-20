@@ -311,4 +311,13 @@
     <comment></comment>
     <requestid>839826</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>ba8fb66201d5394a7dca9141d3a3bd36</srcmd5>
+    <version>5.0.1</version>
+    <time>1603203534</time>
+    <user>dimstar_suse</user>
+    <comment>- Make krename own the locolor icon directories.
+  kf5-filesystem doesn't own these folders anymore.</comment>
+    <requestid>842808</requestid>
+  </revision>
 </revisionlist>

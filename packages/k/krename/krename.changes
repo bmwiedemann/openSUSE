@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 12:01:16 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make krename own the locolor icon directories.
+  kf5-filesystem doesn't own these folders anymore.
+
+-------------------------------------------------------------------
 Tue Oct  6 12:40:20 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.1:

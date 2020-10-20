@@ -76,6 +76,11 @@ rm -rf src/modeltest.*
 %files -f %{name}.lang
 %license COPYING
 %doc AUTHORS README.md TODO
+%dir %{_kf5_iconsdir}/locolor
+%dir %{_kf5_iconsdir}/locolor/16x16
+%dir %{_kf5_iconsdir}/locolor/16x16/apps
+%dir %{_kf5_iconsdir}/locolor/32x32
+%dir %{_kf5_iconsdir}/locolor/32x32/apps
 %{_kf5_applicationsdir}/org.kde.krename.desktop
 %{_kf5_appstreamdir}/org.kde.krename.appdata.xml
 %{_kf5_bindir}/krename
