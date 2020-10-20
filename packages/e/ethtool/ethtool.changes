@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 15 18:50:12 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.9
+  * extended link state
+  * QSFP-DD support
+  * tunnel information (--show-tunnels)
+  * Broadcom bnxt support
+  * improve compatibility between ioctl and netlink output
+  * fix cable test TDR amplitude output
+  * get rid of build warnings
+  * fix null pointer dereference running against old kernel (no arg)
+  * update link mode tables
+  * fix memory leaks and error handling found by static analysis
+- update compiler flags
+  * -Wno-missing-field-initializers no longer needed
+  * replace -W with -Wextra (preferred form)
+
+-------------------------------------------------------------------
 Tue Aug  4 16:31:09 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to new upstream release 5.8

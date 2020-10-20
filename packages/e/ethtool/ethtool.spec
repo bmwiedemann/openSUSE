@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        5.8
+Version:        5.9
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -41,7 +41,7 @@ network interfaces.  See the man page for more details.
 %setup -q
 
 %build
-export CFLAGS="%optflags -W -Wall -Wstrict-prototypes -Wformat-security -Wpointer-arith -Wno-missing-field-initializers"
+export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"
 %configure
 make %{?_smp_mflags}
 
