@@ -106,4 +106,12 @@ icewm-theme-branding icewm-config-upstream</comment>
   Allow icewm to have several brandings.(fate#319667)</comment>
     <requestid>837284</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>48183707e080eb885afa00cad8bc073b</srcmd5>
+    <version>1.2.5</version>
+    <time>1603202589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842211</requestid>
+  </revision>
 </revisionlist>

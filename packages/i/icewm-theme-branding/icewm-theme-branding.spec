@@ -50,6 +50,9 @@ Source:         https://github.com/openSUSE/%{_name}/archive/%{_name}-%{version}
 Requires:       icewm
 Conflicts:      icewm < 1.3.11
 Conflicts:      otherproviders(icewm-configuration-files)
+%if 0%{?sle_version}
+Obsoletes:      icewm-config-upstream     <= %{icewm_version}
+%endif
 Provides:       icewm-configuration-files = %{icewm_version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch

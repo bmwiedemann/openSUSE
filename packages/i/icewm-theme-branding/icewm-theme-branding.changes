@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:52:40 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
+
+- Bring back the obsoletion of icemwm-upstream-config (bsc#1173441,
+  bsc#1170420) for SLE and Leap.
+
+-------------------------------------------------------------------
 Thu Sep 24 02:29:01 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
 
 - Improve spec:
