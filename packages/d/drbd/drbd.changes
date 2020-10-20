@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 03:49:16 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1177910, compat to kernel v5.9
+  Add patch blk_alloc_queue_make_request.patch
+  Add patch compat_generic_make_request.patch
+  Add patch remove_congested_fn_congested_data.patch
+- Add tumbleweed only patch
+  Add patch compat_blk_queue_stack_limits.patch
+
+-------------------------------------------------------------------
 Fri Sep 18 07:38:21 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1175257, update to 9.0.25-0rc1

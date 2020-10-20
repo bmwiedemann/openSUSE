@@ -1,0 +1,115 @@
+1. Remove congested_fn and drbd_congested due to
+    21cf866145047f8bfecb38ec8d2fed64464c074f
+2. Change define of blkdev_get_by_path from fs.h to blkdev.h,
+    3f1266f1f82d7b8c72472a8921e80aa3e611fb62
+3. Change define of bd_unlink_disk_holder from fs.h to genhd.h,
+    3f1266f1f82d7b8c72472a8921e80aa3e611fb62
+
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/drbd_wrappers.h drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/drbd_wrappers.h
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-10-10 10:50:15.408562371 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-10-10 10:50:21.156601464 +0800
+@@ -143,9 +143,7 @@
+ 
+ #ifdef COMPAT_HAVE_POINTER_BACKING_DEV_INFO /* >= v4.11 */
+ #define bdi_from_device(device) (device->ldev->backing_bdev->bd_disk->queue->backing_dev_info)
+-#define init_bdev_info(bdev_info, drbd_congested, device) do { \
+-	(bdev_info)->congested_fn = drbd_congested; \
+-	(bdev_info)->congested_data = device; \
++#define init_bdev_info(bdev_info, device) do { \
+ 	set_bdi_cap_stable_writes(bdev_info->capabilities); \
+ } while(0)
+ #define adjust_ra_pages(q, b) _adjust_ra_pages((q)->backing_dev_info->ra_pages, (b)->backing_dev_info->ra_pages)
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c	2020-10-10 10:50:15.408562371 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_bd_unlink_disk_holder.c	2020-10-10 10:50:29.488658135 +0800
+@@ -1,4 +1,5 @@
+ #include <linux/fs.h>
++#include <linux/genhd.h>
+ 
+ #ifdef CONFIG_SYSFS
+ void dummy(struct block_device *bdev, struct gendisk *disk)
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blkdev_get_by_path.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blkdev_get_by_path.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blkdev_get_by_path.c	2020-10-10 10:50:15.408562371 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blkdev_get_by_path.c	2020-10-10 10:50:40.432732559 +0800
+@@ -1,4 +1,5 @@
+ #include <linux/fs.h>
++#include <linux/blkdev.h>
+ 
+ /*
+  * In kernel version 2.6.38-rc1, open_bdev_exclusive() was replaced by
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_main.c drbd-9.0.25~0+git.bd41626d/drbd/drbd_main.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_main.c	2020-10-10 10:50:15.412562399 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_main.c	2020-10-10 10:50:21.156601464 +0800
+@@ -3103,63 +3103,6 @@
+ 	pr_info("module cleanup done.\n");
+ }
+ 
+-/**
+- * drbd_congested() - Callback for the flusher thread
+- * @congested_data:	User data
+- * @bdi_bits:		Bits the BDI flusher thread is currently interested in
+- *
+- * Returns 1<<WB_async_congested and/or 1<<WB_sync_congested if we are congested.
+- */
+-static int drbd_congested(void *congested_data, int bdi_bits)
+-{
+-	struct drbd_device *device = congested_data;
+-	struct request_queue *q;
+-	int r = 0;
+-
+-	if (!may_inc_ap_bio(device)) {
+-		/* DRBD has frozen IO */
+-		r = bdi_bits;
+-		goto out;
+-	}
+-
+-	if (test_bit(CALLBACK_PENDING, &device->resource->flags)) {
+-		r |= (1 << WB_async_congested);
+-		/* Without good local data, we would need to read from remote,
+-		 * and that would need the worker thread as well, which is
+-		 * currently blocked waiting for that usermode helper to
+-		 * finish.
+-		 */
+-		if (!get_ldev_if_state(device, D_UP_TO_DATE))
+-			r |= (1 << WB_sync_congested);
+-		else
+-			put_ldev(device);
+-		r &= bdi_bits;
+-		goto out;
+-	}
+-
+-	if (get_ldev(device)) {
+-		q = bdev_get_queue(device->ldev->backing_bdev);
+-		r = bdi_congested(q->backing_dev_info, bdi_bits);
+-		put_ldev(device);
+-	}
+-
+-	if (bdi_bits & (1 << WB_async_congested)) {
+-		struct drbd_peer_device *peer_device;
+-
+-		rcu_read_lock();
+-		for_each_peer_device_rcu(peer_device, device) {
+-			if (test_bit(NET_CONGESTED, &peer_device->connection->transport.flags)) {
+-				r |= (1 << WB_async_congested);
+-				break;
+-			}
+-		}
+-		rcu_read_unlock();
+-	}
+-
+-out:
+-	return r;
+-}
+-
+ static void drbd_init_workqueue(struct drbd_work_queue* wq)
+ {
+ 	spin_lock_init(&wq->q_lock);
+@@ -3731,7 +3674,7 @@
+ 	/* we have no partitions. we contain only ourselves. */
+ 	device->this_bdev->bd_contains = device->this_bdev;
+ 
+-	init_bdev_info(q->backing_dev_info, drbd_congested, device);
++	init_bdev_info(q->backing_dev_info, device);
+ 
+ 	blk_queue_write_cache(q, true, true);
+ 

@@ -1,0 +1,139 @@
+Together with generic_make_request change to submit_bio_noacct,
+patch compat_generic_make_request.patch
+
+Adapted two upstream changes:
+c62b37d96b6eb     v5.9-rc1~147^2~55
+	move ->make_request_fn to struct
+	block_device_operations
+f695ca3886ce7     v5.9-rc1~147^2~59
+	remove the request_queue argument
+	from blk_queue_split
+
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_int.h drbd-9.0.25~0+git.bd41626d/drbd/drbd_int.h
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_int.h	2020-10-10 13:00:26.547933412 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_int.h	2020-10-10 13:00:51.932114769 +0800
+@@ -1838,7 +1838,11 @@
+ #define __drbd_make_request(d,b,k,j) __drbd_make_request(d,b,j)
+ #endif
+ extern void __drbd_make_request(struct drbd_device *, struct bio *, ktime_t, unsigned long);
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++extern blk_qc_t drbd_make_request(struct bio *bio);
++#else
+ extern blk_qc_t drbd_make_request(struct request_queue *q, struct bio *bio);
++#endif
+ 
+ /* drbd_nl.c */
+ enum suspend_scope {
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/gen_patch_names.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/gen_patch_names.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/gen_patch_names.c	2020-10-10 13:00:26.543933383 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/gen_patch_names.c	2020-10-10 13:00:51.932114769 +0800
+@@ -83,7 +83,7 @@
+ 	patch(1, "block_device_operations_release", true, false,
+ 	      COMPAT_DRBD_RELEASE_RETURNS_VOID, "is_void");
+ 
+-#if !defined(COMPAT_HAVE_BD_UNLINK_DISK_HOLDER) || defined(COMPAT_HAVE_BD_CLAIM_BY)
++#if !defined(COMPAT_HAVE_BD_UNLINK_DISK_HOLDER) || defined(COMPAT_HAVE_BD_CLAIM_BY_DISK)
+ 	patch(2, "claim_disk", true, false,
+ 	      COMPAT_HAVE_BD_UNLINK_DISK_HOLDER, "link",
+ 	      COMPAT_HAVE_BD_CLAIM_BY_DISK, "claim");
+@@ -130,11 +130,14 @@
+ 	patch(1, "blk_queue_make_request", false, true,
+ 	      COMPAT_HAVE_BLK_QUEUE_MAKE_REQUEST, "present");
+ 
++/* together with generic_make_request change to submit_bio_noacct */
++#ifdef COMPAT_HAVE_GENERIC_MAKE_REQUEST
+ #ifndef COMPAT_HAVE_BLK_QC_T_MAKE_REQUEST
+ 	patch(2, "make_request", false, false,
+ 	      COMPAT_HAVE_BLK_QC_T_MAKE_REQUEST, "is_blk_qc_t",
+ 	      COMPAT_HAVE_VOID_MAKE_REQUEST, "is_void");
+ #endif
++#endif
+ 
+ 	patch(1, "blkdev_get_by_path", true, false,
+ 	      COMPAT_HAVE_BLKDEV_GET_BY_PATH, "present");
+@@ -209,6 +212,8 @@
+ 	patch(1, "blk_queue_merge_bvec", false, true,
+ 	      COMPAT_HAVE_BLK_QUEUE_MERGE_BVEC, "present");
+ 
++/* together with generic_make_request change to submit_bio_noacct */
++#ifdef COMPAT_HAVE_GENERIC_MAKE_REQUEST
+ #if !defined(COMPAT_HAVE_BLK_QUEUE_SPLIT_Q_BIO)
+ # if defined(COMPAT_HAVE_BLK_QUEUE_SPLIT_Q_BIO_BIOSET)
+ 	/* if _BIOSET is true, it's the variant with 3 arguments */
+@@ -222,6 +227,7 @@
+ 	      NO, "present");
+ # endif
+ #endif
++#endif
+ 
+ 	patch(1, "security_netlink_recv", false, true,
+ 	      COMPAT_HAVE_SECURITY_NETLINK_RECV, "present");
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blk_queue_split_q_bio.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blk_queue_split_q_bio.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blk_queue_split_q_bio.c	2020-10-10 13:00:26.543933383 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blk_queue_split_q_bio.c	2020-10-10 13:03:31.905257690 +0800
+@@ -2,5 +2,10 @@
+ 
+ void dummy(struct request_queue *q, struct bio *bio)
+ {
++/* together with generic_make_request change to submit_bio_noacct */
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++	blk_queue_split(&bio);
++#else
+ 	blk_queue_split(q, &bio);
++#endif
+ }
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_main.c drbd-9.0.25~0+git.bd41626d/drbd/drbd_main.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_main.c	2020-10-10 13:00:26.547933412 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_main.c	2020-10-10 13:00:51.936114797 +0800
+@@ -161,6 +161,9 @@
+ 	.owner =   THIS_MODULE,
+ 	.open =    drbd_open,
+ 	.release = drbd_release,
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++	.submit_bio = drbd_make_request,
++#endif
+ };
+ 
+ struct bio *bio_alloc_drbd(gfp_t gfp_mask)
+@@ -3709,7 +3712,11 @@
+ 
+ 	init_rwsem(&device->uuid_sem);
+ 
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++	q = blk_alloc_queue(NUMA_NO_NODE);
++#else
+ 	q = blk_alloc_queue(drbd_make_request, NUMA_NO_NODE);
++#endif
+ 	if (!q)
+ 		goto out_no_q;
+ 	device->rq_queue = q;
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_req.c drbd-9.0.25~0+git.bd41626d/drbd/drbd_req.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_req.c	2020-10-10 13:00:26.547933412 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_req.c	2020-10-10 13:05:16.018001520 +0800
+@@ -2183,15 +2183,26 @@
+ 	}
+ }
+ 
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++blk_qc_t drbd_make_request(struct bio *bio)
++{
++	struct drbd_device *device = bio->bi_disk->private_data;
++#else
+ blk_qc_t drbd_make_request(struct request_queue *q, struct bio *bio)
+ {
+ 	struct drbd_device *device = (struct drbd_device *) q->queuedata;
++#endif
++
+ #ifdef CONFIG_DRBD_TIMING_STATS
+ 	ktime_t start_kt;
+ #endif
+ 	unsigned long start_jif;
+ 
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++	blk_queue_split(&bio);
++#else
+ 	blk_queue_split(q, &bio);
++#endif
+ 
+ 	if (device->cached_err_io) {
+ 		bio->bi_status = BLK_STS_IOERR;

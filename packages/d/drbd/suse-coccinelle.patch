@@ -1,13 +1,26 @@
-diff -Naur drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.21~1+git.449d6bf2/drbd/drbd-kernel-compat/gen_compat_patch.sh
---- drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-12-16 14:42:10.832866579 +0800
-+++ drbd-9.0.21~1+git.449d6bf2/drbd/drbd-kernel-compat/gen_compat_patch.sh	2019-12-16 15:11:08.209750606 +0800
-@@ -56,29 +56,49 @@
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/gen_compat_patch.sh
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/gen_compat_patch.sh	2020-09-19 08:34:40.643919136 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/gen_compat_patch.sh	2020-09-19 08:50:59.095231966 +0800
+@@ -44,9 +44,15 @@
+ 
+ if hash spatch && spatch_is_recent; then
+     K=$(cat $incdir/kernelrelease.txt)
++    echo "  compat.h content ";
++    cat $incdir/compat.h;
++    echo "  -------------------   ";
+     echo "  GENPATCHNAMES   "$K
+     gcc -I $incdir -o $incdir/gen_patch_names -std=c99 drbd-kernel-compat/gen_patch_names.c
+     $incdir/gen_patch_names > $incdir/applied_cocci_files.txt
++    echo "  APPLIED_COCCI_FILES   ";
++    cat $incdir/applied_cocci_files.txt;
++    echo "  -------------------   ";
+     rm $incdir/gen_patch_names
+     rm -f $incdir/.compat.cocci
+     rm -f $incdir/.compat.patch
+@@ -61,29 +67,46 @@
  		< drbd-kernel-compat/cocci/debugfs_compat_template.cocci.in \
  		>> $incdir/.compat.cocci
      done
-+
-+    echo "  APPLIED_COCCI_FILES   ";
-+    cat $incdir/applied_cocci_files.txt;
 +
 +    coccilibpath=$(rpm -ql coccinelle|grep standard.h|xargs dirname);
 +    echo "  SPATCH_SOURCES: "$*;
@@ -21,9 +34,18 @@ diff -Naur drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_pa
 -	# are "the rest of the shell argument array", so after shifting the first
 -	# argument away this is shell $@ respectively $* now.
 -	# we know we don't have white-space in the argument list
--
++    	echo "  GENCOCCIRULES .compat.cocci";
++    	cat $incdir/.compat.cocci;
+ 
 -	command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"
--
++		echo "  SPATCH   $chksum  "$K
++		# Note: $* (or $@) is NOT make magic variable now, this is a shell script
++		# make $@, the target file, was passed as $1, and is now $compat_patch
++		# make $^, the source (and header) files spatch should operate on,
++		# are "the rest of the shell argument array", so after shifting the first
++		# argument away this is shell $@ respectively $* now.
++		# we know we don't have white-space in the argument list
+ 
 -	if test -t 0; then
 -	    $SHELL -c "$command"
 -	else
@@ -32,17 +54,6 @@ diff -Naur drbd-9.0.21~1+git.449d6bf2.orig/drbd/drbd-kernel-compat/gen_compat_pa
 -	    # They may ignore INT and TERM; if you have to, use HUP.
 -	    </dev/null &> /dev/null script --append $incdir/.spatch.tty.out --return --quiet --command "$command"
 -	fi
-+    	echo "  GENCOCCIRULES .compat.cocci";
-+    	cat $incdir/.compat.cocci;
-+
-+		echo "  SPATCH   $chksum  "$K
-+		# Note: $* (or $@) is NOT make magic variable now, this is a shell script
-+		# make $@, the target file, was passed as $1, and is now $compat_patch
-+		# make $^, the source (and header) files spatch should operate on,
-+		# are "the rest of the shell argument array", so after shifting the first
-+		# argument away this is shell $@ respectively $* now.
-+		# we know we don't have white-space in the argument list
-+
 +    	command="spatch --sp-file $incdir/.compat.cocci $* --macro-file drbd-kernel-compat/cocci_macros.h --macro-file-builtins $coccilibpath/standard.h --iso-file $coccilibpath/standard.iso --very-quiet > $compat_patch.tmp 2> $incdir/.spatch.stderr;"                                           
 +    	echo "  SPATCH COMMAND $command  ";
 +

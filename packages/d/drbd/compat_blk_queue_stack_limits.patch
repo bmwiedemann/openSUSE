@@ -1,0 +1,80 @@
+1. b9b1a5d7 blk_queue_stack_limits is removed
+2. 63a0895d and 3f649ab72 uninitialized_var() macro removed
+3. c9ec0524 convert sched_setscheduler to sched_set_fifo*
+
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/drbd_wrappers.h drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/drbd_wrappers.h
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-10-20 10:48:14.274795598 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/drbd_wrappers.h	2020-10-20 10:48:02.074702666 +0800
+@@ -523,4 +523,13 @@
+ #define __vmalloc(SIZE, GFP, PRGROT) __vmalloc(SIZE, GFP)
+ #endif
+ 
++#ifndef COMPAT_HAVE_BLK_QUEUE_STACK_LIMITS
++#define blk_queue_stack_limits(TOP, BOTTOM) \
++	blk_stack_limits(&((TOP)->limits), &((BOTTOM)->limits), 0 )
++#endif
++
++#ifndef COMPAT_HAVE_UNINITIALIZED_VAR
++#define uninitialized_var(X) (X)
++#endif
++
+ #endif
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blk_queue_stack_limits.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blk_queue_stack_limits.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_blk_queue_stack_limits.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_blk_queue_stack_limits.c	2020-10-20 10:48:02.070702635 +0800
+@@ -0,0 +1,7 @@
++#include <linux/blkdev.h>
++
++/* b9b1a5d7 blk_queue_stack_limits is removed */
++void dummy(struct request_queue *a, struct request_queue *b)
++{
++	blk_queue_stack_limits(a, b);
++}
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_sched_set_fifo_low.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_sched_set_fifo_low.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_sched_set_fifo_low.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_sched_set_fifo_low.c	2020-10-20 10:48:02.070702635 +0800
+@@ -0,0 +1,7 @@
++/* 6d2b84a4e and c9ec052470 Convert set_scheduler to sched_set_fifo* */
++#include <linux/sched.h>
++
++void test(struct task_struct *p)
++{
++	sched_set_fifo_low(p);
++}
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_uninitialized_var.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_uninitialized_var.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_uninitialized_var.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_uninitialized_var.c	2020-10-20 10:48:02.070702635 +0800
+@@ -0,0 +1,10 @@
++/* 63a0895d9 uninitialized_var is removed
++ * 3f649ab72 uninitialized_var removed in all .c
++*/
++#include <linux/compiler-gcc.h>
++
++void test()
++{
++	unsigned int uninitialized_var(a);
++	a = 1;
++}
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_receiver.c drbd-9.0.25~0+git.bd41626d/drbd/drbd_receiver.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_receiver.c	2020-10-20 10:48:14.058793953 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_receiver.c	2020-10-20 11:11:32.948922212 +0800
+@@ -9241,13 +9241,18 @@
+ 	unsigned int header_size = drbd_header_size(connection);
+ 	int expect   = header_size;
+ 	bool ping_timeout_active = false;
+-	struct sched_param param = { .sched_priority = 2 };
+ 	struct drbd_transport *transport = &connection->transport;
+ 	struct drbd_transport_ops *tr_ops = transport->ops;
+ 
++#ifdef COMPAT_HAVE_SCHED_SET_FIFO_LOW
++	sched_set_fifo_low(current);
++#else
++	struct sched_param param = { .sched_priority = 2 };
+ 	rv = sched_setscheduler(current, SCHED_RR, &param);
++
+ 	if (rv < 0)
+ 		drbd_err(connection, "drbd_ack_receiver: ERROR set priority, ret=%d\n", rv);
++#endif
+ 
+ 	while (get_t_state(thi) == RUNNING) {
+ 		drbd_thread_current_set_cpu(thi);

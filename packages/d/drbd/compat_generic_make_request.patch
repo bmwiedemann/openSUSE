@@ -1,0 +1,49 @@
+Upstream ed00aabd5eb9fb44d6aff1173234a2e911b9fead
+block: rename generic_make_request to submit_bio_noacct
+
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_int.h drbd-9.0.25~0+git.bd41626d/drbd/drbd_int.h
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_int.h	2020-09-19 09:26:23.903673522 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_int.h	2020-09-19 09:34:03.363139586 +0800
+@@ -2063,7 +2063,11 @@
+ 		bio->bi_status = BLK_STS_IOERR;
+ 		bio_endio(bio);
+ 	} else {
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++		submit_bio_noacct(bio);
++#else
+ 		generic_make_request(bio);
++#endif
+ 	}
+ }
+ 
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_generic_make_request.c drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_generic_make_request.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd-kernel-compat/tests/have_generic_make_request.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd-kernel-compat/tests/have_generic_make_request.c	2020-09-19 09:30:31.729550871 +0800
+@@ -0,0 +1,11 @@
++#include <linux/blkdev.h>
++
++/* in Commit ed00aabd5eb9fb44d6aff1173234a2e911b9fead
++   generic_make_request rename to submit_bio_noacct
++ */
++
++void foo(void)
++{
++	struct bio *bio;
++	generic_make_request(bio);
++}
+diff -Naur drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_req.c drbd-9.0.25~0+git.bd41626d/drbd/drbd_req.c
+--- drbd-9.0.25~0+git.bd41626d.orig/drbd/drbd_req.c	2020-09-19 09:26:23.903673522 +0800
++++ drbd-9.0.25~0+git.bd41626d/drbd/drbd_req.c	2020-09-19 09:35:12.107655181 +0800
+@@ -1481,7 +1481,11 @@
+ 		} else if (bio_op(bio) == REQ_OP_DISCARD) {
+ 			drbd_process_discard_or_zeroes_req(req, EE_TRIM);
+ 		} else {
+-			generic_make_request(bio);
++#ifndef COMPAT_HAVE_GENERIC_MAKE_REQUEST
++   		    submit_bio_noacct(bio);
++#else
++        	generic_make_request(bio);
++#endif
+ 		}
+ 		put_ldev(device);
+ 	} else {

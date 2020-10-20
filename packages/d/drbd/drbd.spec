@@ -40,6 +40,11 @@ Patch3:         drbd-fix-zero-metadata-limit-by-page-size-misaligned.patch
 Patch4:         compat_remove_pgprot_88dca4c.patch
 Patch5:         compat_remove_include_vermagic.patch
 Patch6:         compat_remove_kernel_setsockopt.patch
+# Compat to kernel v5.9
+Patch7:         compat_generic_make_request.patch
+Patch8:         blk_alloc_queue_make_request.patch
+Patch9:         remove_congested_fn_congested_data.patch
+Patch10:        compat_blk_queue_stack_limits.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -79,6 +84,10 @@ installed kernel.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 %patch99 -p1
 
 mkdir source
