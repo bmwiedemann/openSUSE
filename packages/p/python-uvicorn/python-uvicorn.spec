@@ -21,7 +21,7 @@
 Name:           python-uvicorn
 Version:        0.12.1
 Release:        0
-Summary:        The lightning-fast ASGI server
+Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/encode/uvicorn
@@ -42,12 +42,12 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
 BuildRequires:  %{python_module httptools >= 0.0.13}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module uvloop >= 0.14.0}
@@ -58,10 +58,11 @@ BuildRequires:  %{python_module wsproto >= 0.13.0}
 %python_subpackages
 
 %description
-The lightning-fast ASGI server.
+Uvicorn is an ASGI server implementation, using uvloop and httptools.
+It supports HTTP/1.1 and WebSockets only.
 
 %prep
-%setup -q -n uvicorn-%{version}
+%autosetup -p1 -n uvicorn-%{version}
 rm setup.cfg
 
 %build
