@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -36,10 +36,7 @@ Source9:        ignition-enable-network.service
 Source10:       ignition-enable-network.sh
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
-Patch1:         0001-fix-install-permissions.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
-Patch3:         0003-fix-i386-build.patch
-Patch4:         ignition-fix-arm32-installation.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
@@ -85,10 +82,7 @@ which creates firstboot_happened after the first boot.
 
 %prep
 %setup -q
-%patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 mkdir dracut/30ignition-microos grub systemd_suse
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
@@ -153,7 +147,7 @@ fi
 
 %files
 %license LICENSE
-%doc README.md README.SUSE doc
+%doc README.md README.SUSE docs
 %{_prefix}/lib/dracut/modules.d/30ignition
 %{_prefix}/lib/dracut/modules.d/30ignition-microos
 %{_bindir}/ignition-validate

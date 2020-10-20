@@ -19,10 +19,23 @@ Index: ignition-2.3.0/config/v3_1/types/filesystem.go
  }
  
  func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
-Index: ignition-2.3.0/config/v3_2_experimental/types/filesystem.go
+Index: ignition-2.3.0/config/v3_2/types/filesystem.go
 ===================================================================
---- ignition-2.3.0.orig/config/v3_2_experimental/types/filesystem.go
-+++ ignition-2.3.0/config/v3_2_experimental/types/filesystem.go
+--- ignition-2.3.0.orig/config/v3_2/types/filesystem.go
++++ ignition-2.3.0/config/v3_2/types/filesystem.go
+@@ -23,7 +23,7 @@ import (
+ )
+ 
+ func (f Filesystem) Key() string {
+-	return f.Device
++	return f.Device + *f.Path
+ }
+ 
+ func (f Filesystem) IgnoreDuplicates() map[string]struct{} {
+Index: ignition-2.3.0/config/v3_3_experimental/types/filesystem.go
+===================================================================
+--- ignition-2.3.0.orig/config/v3_3_experimental/types/filesystem.go
++++ ignition-2.3.0/config/v3_3_experimental/types/filesystem.go
 @@ -23,7 +23,7 @@ import (
  )
  

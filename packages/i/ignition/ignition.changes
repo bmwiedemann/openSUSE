@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Oct 19 15:39:37 UTC 2020 - iforster@suse.de
+
+- Update to version 2.7.0:
+  * news: add notes for 2.7.0
+  * docs: stabilize spec
+  * gomod: bump go.opencensus.io to v0.22.5
+  * docs: add section to spec stabilization for failing external tests
+  * news: fix error in 2.3.0 changelog
+  * tests: update for spec stabilization
+  * internal: update for new experimental spec
+  * config/v3_3_experimental: create new experimental package
+  * config/v3_2_experimental: mark stable
+  * interal/providers/*stack: drop timeout for config fetch
+  * internal/providers/*stack: exit early if all configs error out
+  * internal/providers/*stack: make ErrNotFound authoritative
+  * doc: add clevis custom documentation
+  * internal/exec/stages: add clevis custom support
+  * config: add custom options for clevis devices
+  * fetch-offline: immediately return ErrNeedNet on OpenStack
+  * ci: unfreeze kernel
+  * tests/*: add test for resizing an existing partition
+  * docs/*: add resize partition info
+  * stages/disks: support resizing an existing partition
+  * config: add resize to schema
+  * README: Minor changes for consistency
+  * test: Use alternative marker for testing ignition config examples
+  * docs: Convert and improve formatting for INI sections
+  * docs: Add spec ordering instructions for new stable releases
+  * docs: Add ToC for some long pages
+  * docs: Rename Migrating ... to Upgrading Configs
+  * docs: Fix link in Development page
+  * docs: Add specs reference page
+  * docs: Add index page inspired from README
+  * docs: Add Config Validation example from README
+  * docs: Add Jekyll front matter for existing pages
+  * docs: Add Jekyll and theme config
+  * internal: fix S3 region detection
+  * docs: Follow-up for doc->docs renaming
+  * docs: Rename doc to docs for GitHub Pages support
+  * docs/getting-started: tiny cleanups
+  * README: drop stray link target
+  * doc: drop references to Container Linux
+  * doc/development: drop section on running blackbox tests on CL
+  * doc: add gs url scheme for bare metal platform
+  * fetch: don't run if fetch-offline fetched a config
+  * doc: fix LUKS indentation for configuration-v3_2_experimental docs
+  * doc: Add shouldExist for users and groups
+  * engine: fix logging interactions with fetch-offline
+  * AzureStack: fix unfortunate typo of iso9660
+  * *: add wipeVolume LUKS field
+  * types: Use "path" instead of "path/filepath"
+  * Add support for building 32 bit ARM version
+  * Install Dracut modules with correct permissions
+  * Add support for building 32 bit x86 version
+  * doc: add LUKS examples & operator notes
+  * internal/stages/disks: allow LUKS device re-use
+  * internal: use device aliases for LUKS
+  * tests: fix partition.number0 partition size specification
+  * blkid: drop some unsafe pointer casts
+  * blkid: fix invalid pointer cast in DumpDisk()
+  * {sgdisk,blkid}: use int64 for sector counts
+  * sgdisk: stop putting sector counts in MiB fields
+  * README: note that spec2x is unmaintained
+  * release-checklist: drop support for Ignition 0.x
+  * release-checklist: minor updates
+- Remove upstreamed patches
+  * 0001-fix-install-permissions.patch
+  * 0003-fix-i386-build.patch
+  * ignition-fix-arm32-installation.patch
+- Refreshed to match new Ignition spec
+  * 0002-allow-multiple-mounts-of-same-device.patch
+
+-------------------------------------------------------------------
 Fri Sep 18 06:33:02 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Retrigger udev when requesting networking on demand
