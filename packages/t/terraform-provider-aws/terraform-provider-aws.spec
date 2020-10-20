@@ -16,14 +16,22 @@
 #
 
 
+%global provider        github
+%global provider_tld    com
+%global project         terraform-providers
+%global repo            terraform-provider-aws
+%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
+%global import_path     %{provider_prefix}
+
 Name:           terraform-provider-aws
-Version:        2.69.0
+Version:        3.11.0
 Release:        0
 Summary:        Terraform provider for Amazon Web Services (AWS)
 License:        MPL-2.0
 Group:          System/Management
 URL:            https://github.com/terraform-providers/terraform-provider-aws
-Source:         %{name}-%{version}.tar.xz
+Source:         %{repo}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 %if 0%{?suse_version}
 %{go_nostrip}
 %endif
@@ -54,10 +62,11 @@ This is a terraform provider that lets you provision servers on Amazon Web
 Services via Terraform.
 
 %prep
-%setup -q
+%setup -q -n %{repo}-%{version}
+%setup -q -D -T -a 1 -n %{repo}-%{version}
 
 %build
-%{goprep} github.com/terraform-providers/terraform-provider-aws
+%{goprep} %{import_path}
 %{gobuild} -mod=vendor ""
 ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
 
