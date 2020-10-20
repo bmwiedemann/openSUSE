@@ -1,0 +1,19 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2020-10-19 16:23:10 +0200
+Subject: Link to libpthread
+
+libtorrent-rasterbar 1.2.10 fixed this, but 1.2.4 has an underlinking
+problem
+
+Index: qbittorrent-4.3.0/src/base/CMakeLists.txt
+===================================================================
+--- qbittorrent-4.3.0.orig/src/base/CMakeLists.txt
++++ qbittorrent-4.3.0/src/base/CMakeLists.txt
+@@ -164,6 +164,7 @@ target_link_libraries(qbt_base
+         qbt_version_definitions
+     PUBLIC
+         LibtorrentRasterbar::torrent-rasterbar
++        pthread
+         Qt5::Core Qt5::Network Qt5::Xml
+         qbt_common_cfg
+ )

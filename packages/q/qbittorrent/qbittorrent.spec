@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.2.5
+Version:        4.3.0
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-OPENSUSE qbittorrent-libtorrent-legacy.patch
-Patch0:         qbittorrent-libtorrent-legacy.patch
+# PATCH-FIX-UPSTREAM qbittorrent-libtorrent_pthread.patch
+Patch1:         qbittorrent-libtorrent_pthread.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -70,11 +70,13 @@ version.
 
 %prep
 %setup -q
-%patch0 -p1
+%if 0%{?suse_version} <= 1500
+%patch1 -p1
+%endif
 
 %build
 for ui in nox gui; do
-    [ "$ui" = nox ] && ui_opt="-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Widgets=ON" || ui_opt=
+    [ "$ui" = nox ] && ui_opt="-DGUI=OFF" || ui_opt=
     %cmake \
       $ui_opt      \
       -DSYSTEMD=ON \
