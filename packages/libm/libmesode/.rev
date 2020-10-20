@@ -73,4 +73,13 @@
 </comment>
     <requestid>838592</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>085f9acb21200cfe44ec87d601851f99</srcmd5>
+    <version>0.10.1</version>
+    <time>1603203305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  * Use correct version in configure.ac</comment>
+    <requestid>842639</requestid>
+  </revision>
 </revisionlist>

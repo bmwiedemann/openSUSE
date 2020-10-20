@@ -18,7 +18,7 @@
 
 %define c_lib   libmesode0
 Name:           libmesode
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        An XMPP library for C
 License:        GPL-3.0-or-later OR MIT
