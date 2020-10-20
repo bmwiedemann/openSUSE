@@ -1,0 +1,30 @@
+From db3a0a25b97377b388532b23e73a10d246f66496 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <fzatlouk@redhat.com>
+Date: Mon, 3 Aug 2020 10:27:00 +0200
+Subject: [PATCH] Skip failing tests on ppc64 and s390x
+
+ppc64 and s390x: non262/extensions/clone-errors.js
+s390x: test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js
+---
+ js/src/tests/jstests.list | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/js/src/tests/jstests.list b/js/src/tests/jstests.list
+index 4085ce3..4f014f5 100644
+--- a/js/src/tests/jstests.list
++++ b/js/src/tests/jstests.list
+@@ -56,6 +56,11 @@ skip-if(!this.hasOwnProperty('addIntlExtras')) include test262/intl402/DisplayNa
+ skip-if(!this.hasOwnProperty("Atomics")) include test262/built-ins/Atomics/jstests.list
+ skip-if(!this.hasOwnProperty("SharedArrayBuffer")) include test262/built-ins/SharedArrayBuffer/jstests.list
+ 
++# Crashes on s390x and ppc64, avoid it
++skip-if(xulRuntime.XPCOMABI.match(/s390x|ppc64-/)) script non262/extensions/clone-errors.js
++
++# Crashes on s390x, avoid it
++skip-if(xulRuntime.XPCOMABI.match(/s390x/)) script test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-other-type.js
+ 
+ #####################################
+ # Test262 tests disabled on browser #
+-- 
+2.26.2
+

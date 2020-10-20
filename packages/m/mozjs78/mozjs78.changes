@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Oct 18 12:17:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Replace armv7_disable_WASM_EMULATE_ARM_UNALIGNED_FP_ACCESS.patch
+  with definitions_for_user_vfp.patch from Debian
+
+-------------------------------------------------------------------
+Sun Oct 18 09:07:36 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- version 78.4.0esr
+- add source signature and keyring
+- use ccache
+- remove disable-optimize build flag
+
+-------------------------------------------------------------------
+Sun Oct 11 13:47:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- LTO set in configure instead of CFLAGS
+- Add Add-riscv64-support.patch: fixes riscv64 build
+- Add icu to BuildRequires for BigEndian only
+- Correct path to icupkg
+
+-------------------------------------------------------------------
+Thu Aug 20 07:19:30 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- initial mozjs78 package based on mozjs68
