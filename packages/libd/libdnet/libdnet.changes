@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 15 14:16:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.14:
+  * many fixes included 
+- remove libdnet-autoreconf.patch
+  libdnet-config-multilib.patch
+  libdnet-fortify.patch
+  reproducible.patch: drop (upstream)
+- skip-test-subdir.patch: skip building tests, we don't need
+  to install them and don't run them
+
+-------------------------------------------------------------------
 Wed Mar 18 11:12:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop python2 bindings as they don't make sense to be built with
