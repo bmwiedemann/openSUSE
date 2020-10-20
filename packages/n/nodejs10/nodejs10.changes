@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:34:16 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- fix_ci_tests.patch: add support to SUSE's ECDH backport errors
+  in SLE's openssl
+
+-------------------------------------------------------------------
 Fri Sep 18 07:00:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream LTS version 10.22.1:

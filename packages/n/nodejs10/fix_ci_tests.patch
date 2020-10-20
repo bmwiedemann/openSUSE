@@ -204,3 +204,16 @@ Index: node-v10.22.1/test/parallel/test-dns.js
 -    assert.deepStrictEqual(err.message, 'queryMx ENOTFOUND foo.onion');
 -  });
 -}
+Index: node-v10.22.1/test/parallel/test-crypto-dh.js
+===================================================================
+--- node-v10.22.1.orig/test/parallel/test-crypto-dh.js
++++ node-v10.22.1/test/parallel/test-crypto-dh.js
+@@ -109,7 +109,7 @@ const wrongBlockLength =
+ 
+ assert.throws(() => {
+   dh3.computeSecret('');
+-}, /^Error: Supplied key is too small$/);
++}, /^Error: Supplied key is too small|error:05066066:Diffie-Hellman routines:compute_key:invalid public key$/);
+ 
+ // Create a shared using a DH group.
+ const alice = crypto.createDiffieHellmanGroup('modp5');
