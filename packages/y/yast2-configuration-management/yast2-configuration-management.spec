@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-configuration-management
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-configuration-management
-Version:        4.3.3
+Version:        4.3.4
 Release:        0
-Url:            https://github.com/yast/yast-migration
+URL:            https://github.com/yast/yast-migration
 Summary:        YaST2 - YaST Configuration Management
 License:        GPL-2.0-only
 Group:          System/YaST

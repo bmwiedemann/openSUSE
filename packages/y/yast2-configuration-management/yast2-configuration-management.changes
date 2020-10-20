@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 08:47:44 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Clean-up the libzypp's raw cache before running the finish client
+  (bsc#1177522).
+- 4.3.4
+
+-------------------------------------------------------------------
 Tue Aug 11 12:22:20 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(configuration-management)
