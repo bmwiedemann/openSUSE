@@ -16,15 +16,16 @@
 #
 
 
-%define wx_version_soname %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@;s@\\.@_@')
+%define wx_version_pkgname %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@;s@\\.@_@')
+%define wx_version_soname  %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@')
 %define sover 0
 Name:           wxsqlite3
-Version:        4.5.1
+Version:        4.6.1
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1
-URL:            https://utelle.github.io/wxsqlite3
-Source0:        https://github.com/utelle/wxsqlite3/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/utelle/wxsqlite3
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -42,17 +43,17 @@ wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
 and is specifically designed for use in programs based on the wxWidgets
 library.
 
-%package -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
+%package -n libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover}
 Summary:        C++ wrapper around SQLite 3.x
 
-%description -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
+%description -n libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover}
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
 and is specifically designed for use in programs based on the wxWidgets
 library.
 
 %package        devel
 Summary:        C++ wrapper around SQLite 3.x - Development Files
-Requires:       libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} = %{version}
+Requires:       libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover} = %{version}
 
 %description    devel
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
@@ -60,11 +61,14 @@ and is specifically designed for use in programs based on the wxWidgets
 library.
 
 %prep
+: wx_version_pkgname: %{wx_version_pkgname}
 : wx_version_soname: %{wx_version_soname}
 wx-config --version
 %autosetup
 
 %build
+CFLAGS='%{optflags} -Wno-unused-but-set-variable -Wno-unused-variable -Wno-unused-function' 
+CXXFLAGS="${CFLAGS}"
 autoreconf -fi
 %configure \
 	--enable-shared \
@@ -75,20 +79,20 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} -p /sbin/ldconfig
-%postun -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover} -p /sbin/ldconfig
+%post -n libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover} -p /sbin/ldconfig
+%postun -n libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover} -p /sbin/ldconfig
 
-%files -n libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}-%{sover}
+%files -n libwxcode_gtk2u_wxsqlite3-%{wx_version_pkgname}-%{sover}
 %license LICENCE.txt
 %doc readme.md
-%{_libdir}/libwxcode_gtk2u_wxsqlite3-3.0.so.%{sover}*
+%{_libdir}/libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}.so.%{sover}*
 
 %files devel
 %dir %{_includedir}/wx
 %{_includedir}/wx/wxsqlite3.h
 %{_includedir}/wx/wxsqlite3_version.h
 %{_includedir}/wx/wxsqlite3def.h
-%{_libdir}/libwxcode_gtk2u_wxsqlite3-3.0.so
+%{_libdir}/libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}.so
 %{_libdir}/pkgconfig/wxsqlite3.pc
 
 %changelog
