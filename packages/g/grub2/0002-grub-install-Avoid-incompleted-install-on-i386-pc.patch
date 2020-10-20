@@ -1,0 +1,47 @@
+From 4cf2e774557c782aa7156b2261d603212b24a64c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 26 Sep 2020 20:29:40 +0800
+Subject: [PATCH 2/2] grub-install: Avoid incompleted install on i386-pc
+
+If any error happens between grub_install_copy_files() and
+grub_util_bios_setup(), the system would become unbootable with error
+like undefined symbol as a result of incompleted install that leaves
+behind images on disk from different build to the modules on /boot.
+
+This patch makes grub_install_copy_files() an adjecent call to
+grub_util_bios_setup() to minimize the risk of running into any error in
+between that would abort the process.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub-install.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/util/grub-install.c b/util/grub-install.c
+index ac8f98552..bb3c81660 100644
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1340,8 +1340,9 @@ main (int argc, char *argv[])
+ 	}
+     }
+ 
+-  grub_install_copy_files (grub_install_source_directory,
+-			   grubdir, platform);
++  if (platform != GRUB_INSTALL_PLATFORM_I386_PC)
++    grub_install_copy_files (grub_install_source_directory,
++			     grubdir, platform);
+ 
+   char *envfile = grub_util_path_concat (2, grubdir, "grubenv");
+   if (!grub_util_is_regular (envfile))
+@@ -1964,6 +1965,8 @@ main (int argc, char *argv[])
+ 				  fs_probe, allow_floppy, add_rs_codes,
+ 				  warn_short_mbr_gap);
+ 	  }
++	grub_install_copy_files (grub_install_source_directory,
++				 grubdir, platform);
+ 	break;
+       }
+     case GRUB_INSTALL_PLATFORM_SPARC64_IEEE1275:
+-- 
+2.26.2
+
