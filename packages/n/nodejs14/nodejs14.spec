@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.13.1
+Version:        14.14.0
 Release:        0
 
 %define node_version_number 14
@@ -309,7 +309,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 7.1.1
-Provides:       bundled(node-cjs-module-lexer) = 0.4.0
+Provides:       bundled(node-cjs-module-lexer) = 0.4.2
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
@@ -922,11 +922,11 @@ find %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules 
 
 # fix permissions
 chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/bin/np*-cli.js
-chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/bin/node-gyp-bin/node-gyp
+! test -f %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/bin/node-gyp-bin/node-gyp || \
+    chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/bin/node-gyp-bin/node-gyp
 chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/node-gyp/bin/node-gyp.js
-%if %{node_version_number} >= 8
-chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/npm-lifecycle/node-gyp-bin/node-gyp
-%endif
+! test -f %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/npm-lifecycle/node-gyp-bin/node-gyp || \
+    chmod 0755 %{buildroot}%{_libdir}/node_modules/npm%{node_version_number}/node_modules/npm-lifecycle/node-gyp-bin/node-gyp
 
 # browser.js is useless for npm cli
 find %{buildroot}%{_libdir}/node_modules/npm%{node_version_number} -name "browser.js" -delete

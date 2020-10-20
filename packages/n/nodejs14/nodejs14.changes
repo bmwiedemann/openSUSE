@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 16 11:54:33 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 14.14.0:
+  * fs: add rm method
+  * http: allow passing array of key/val into writeHead
+  * src: expose v8::Isolate setup callbacks
+
+- sle12_python3_compat.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Oct  8 15:12:05 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 14.13.1:
