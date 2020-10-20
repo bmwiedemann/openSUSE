@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define         archive_version 2020-04-16-vl805-000137ad
-# url version is a bit different s/.137ad/-137ad/
-%define         url_version 2020.04.16-137ad
+%define         archive_version 2020-09-03-vl805-000138a1
+# url version is a bit different
+%define         url_version 2020.09.03-138a1
 Name:           raspberrypi-firmware-eeprom
-Version:        2020.04.16.137ad
+Version:        2020.09.03.138a1
 Release:        0
 Summary:        Raspberry Pi 4 EEPROM firmware upgrade package
 License:        SUSE-Firmware

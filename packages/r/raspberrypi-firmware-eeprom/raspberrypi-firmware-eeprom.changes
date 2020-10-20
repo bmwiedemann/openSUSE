@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 19 16:53:03 UTC 2020 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 2020.09.03.138a1
+  * Add support for booting from USB mass storage devices
+  * Add support for bootloader updates for USB MSD or network boot (self-update)
+  * Improve compatibility for USB devices which require the USB port power to be
+    switched off for a period of time during a reboot
+  * Add support GPT and Hybrid MBR partition tables
+  * Add support for EEPROM write-protect
+  * Add the ability to loop between different boot-modes until a bootable image is found.
+    The default is to loop between SD and USB-MSD
+  * VLI 0138A1 - Improve full-speed isochronous endpoint support
+
+-------------------------------------------------------------------
 Mon Jun 15 13:09:03 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix URL of source
