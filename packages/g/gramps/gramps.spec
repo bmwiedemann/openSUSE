@@ -1,7 +1,7 @@
 #
 # spec file for package gramps
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +19,12 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-Url:            http://www.gramps-project.org/
+URL:            http://www.gramps-project.org/
 Source:         https://github.com/gramps-project/gramps/archive/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gramps-no-translations-check.patch boo#941490 dimstar@opensuse.org -- Do not warn on missing translations
 Patch0:         gramps-no-translations-check.patch
