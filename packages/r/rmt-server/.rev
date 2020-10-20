@@ -526,4 +526,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>835201</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c847ecfa05490c4e1c0ac6694f0bd9c8</srcmd5>
+    <version>2.6.5</version>
+    <time>1603202905</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.6.5
+- Solved potential bug of SCC repository URLs changing over time. RMT
+  now self heals by removing the previous invalid repository and
+  creating the correct one.
+
+- Version 2.6.4
+- Add web server settings to /etc/rmt.conf:
+  Now it's possible to configure the minimum and maximum threads count as well
+  the number of web server workers to be booted through /etc/rmt.conf.
+
+- Version 2.6.3
+- Instead of using an MD5 of URLs for custom repository friendly_ids,
+  RMT now builds an ID from the name.
+
+- Version 2.6.2
+- Fix RMT file caching based on timestamps:
+  Previously, RMT sent GET requests with the header 'If-Modified-Since' to a
+  repository server and if the response had a 304 (Not Modified), it would copy
+  a file from the local cache instead of downloading. However, if the local file
+  timestamp accidentally changed to a date newer than the one on the repository
+  server, RMT would have an outdated file, which caused some errors.
+  Now, RMT makes HEAD requests to the repositories servers and inspect the
+  'Last-Modified' header to decide whether to download a file or copy it from
+  cache, by comparing the equalness of timestamps.
+
+
+- Version 2.6.1
+- Fixed an issue where relative paths supplied to `rmt-cli import repos`
+  caused the command to fail.</comment>
+    <requestid>842502</requestid>
+  </revision>
 </revisionlist>
