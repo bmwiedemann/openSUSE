@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 16 14:42:18 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1602859323.3f1131b1b:
+  * Document configuration of worker package diff
+  * Test archive cli command options
+  * tour: Introduce the activity view
+  * Handle unknown options consistently with Mojolicious 8.63 in openqa-cli
+  * Ensure all scripts exit non-zero in case of invalid parameters
+  * Enable strict merge on Mergify
+  * Dependency cron 2020-10-14
+  * Add testcase "failure" (singular) to XUnit parser
+  * Mark full-stack.t as stable and faster after recent stabilization
+
+-------------------------------------------------------------------
 Wed Oct 14 05:32:33 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1602630091.729fcbe41:
