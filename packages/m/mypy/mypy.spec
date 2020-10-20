@@ -17,7 +17,7 @@
 
 
 Name:           mypy
-Version:        0.782
+Version:        0.790
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -31,9 +31,11 @@ BuildRequires:  python3-mypy_extensions >= 0.4.0
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-typed-ast >= 1.4.0
 BuildRequires:  python3-typing_extensions >= 3.7.4
+# SECTION tests
+BuildRequires:  python3-pytest
+# /SECTION
 Requires:       python3
 Requires:       python3-mypy_extensions >= 0.4.0
-#Requires:       python3-psutil >= 5.4.0
 Requires:       python3-typed-ast >= 1.4.0
 Requires:       python3-typing_extensions >= 3.7.4
 Provides:       python3-mypy = %{version}
@@ -64,6 +66,7 @@ done
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
 sed -i '/env python3/d' ./mypy/stubgen.py
+sed -i '1s/env //' mypy/typeshed/scripts/update-stubtest-whitelist.py
 
 %build
 %python3_build

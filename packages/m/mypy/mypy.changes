@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Oct 11 06:53:29 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.790:
+ - Enabling and Disabling Error Codes
+  - You can now globally disable and enable the generation of error messages with specific error codes by using --enable-error-code and --disable-error-code command line options (and config file options). This lets you disallow certain checks that don’t provide value or are too noisy, and in the future these can be used to enable optional, stricter checks. For more information, read the documentation.
+ - Bug Fixes
+  - Fix disable_error_code config file option (Aristotelis Mikropoulos, PR 9538)
+  - Fix partial type crash during protocol checking (Shantanu, PR 9495)
+  - Store the type for assignment expression (walrus) targets (Lawrence Chan, PR 9479)
+  - Always type check arguments when using --disallow-untyped-calls (PR 9510)
+  - Make None compatible with Hashable (PR 9371)
+  - Don't infinite loop on self dependencies in --follow-imports=normal (Michael J. Sullivan, PR 9302)
+  - Don't simplify away Any when joining union types (PR 9301)
+  - Check for deleted vars in raise from (Alexandre Viau, PR 9272)
+  - Fix corner case for comparing nested overloads (Nikita Sobolev, PR 9259)
+  - Fix issues with async for and with statements (Guido van Rossum, PR 9268)
+  - Fix internal error on list/dict comprehension with walrus operator in global scope (dhood, PR 9062)
+  - Fix propagation of module-specific options to the parser (Guido van Rossum, PR 9247)
+  - Fix crash when super is called outside a method (Weiss, PR 9173)
+  - Fix untyped decorator overload error on class decorator with __call__ overloads (Ran Benita, PR 9232)
+  - Clean up terminal width handling (Florian Bruhin, PR 9143)
+  - Add keyword arguments for functional Enum API (LiuYuhui, PR 9123)
+  - Validate follow_imports values in mypy.ini (Michael J. Sullivan, PR 9165)
+  - Fix *expr in an assigned expression (LiuYuhui, PR 8827)
+  - Don't consider comparing True and False as a dangerous comparison (PR 9021)
+  - Make reveal_type work with call expressions returning None (Jakub Stasiak, PR 8924)
+ - Error Reporting Improvements
+  - Improve missing module error for subdirectories (Ethan Leba, PR 8927)
+  - Clarify bytes formatting error messages (Shantanu, PR 9243)
+  - Fix misleading follow_imports error message in dmypy (Michael J. Sullivan, PR 9167)
+  - Use [arg-type] error code for additional argument type error messages (PR 9090)
+  - Report some additional serious errors in junit.xml (PR 8950)
+  - Report note about binary operation on the same location as error message (PR 8936)
+ - Documentation Updates
+  - Document disable_error_code config file option (Aristotelis Mikropoulos, PR 9539)
+  - Add cross references to config file values (Oleg Höfling, PR 7859)
+  - Add cross references to additional config values, and missing plugins config value, and document --help option for stubgen (Oleg Höfling, PR 9241)
+  - Remove note that Final is experimental and suggest importing it from typing (Ran Benita, PR 9138)
+  - Discuss unreachable code as a common issue (Chetan Khanna, PR 8899)
+ - Stubgen Improvements
+  - Improve property type detection in extension modules (Antoine Prouvost, PR 8999)
+  - Fix type stubgen crash caused by invalid type annotation (Henry Schreiner, PR 8888)
+  - Import Iterable and Iterator from typing in generated stubs (Ashley Whetter, PR 9088)
+ - Other Improvements
+  - Speed up type checking of unions containing many literal string types (Akuli, PR 9192)
+  - Add scripts to misc/ (in the mypy GitHub repository) for computing and applying diffs of mypy caches to enable incremental cache downloads (Michael J. Sullivan, PR 8906)
+ - Internal Changes
+  - This release includes several improvements to mypyc, the compiler we use to speed up mypy. Most notably, Xuanda Yang has been migrating mypyc to use a new, lower-level intermediate representation in his Google Summer of Code project. This provides a solid foundation for a variety of future mypyc improvements.
+ - Additional mypyc improvements:
+  - Dynamically disallow instantiating traits/interpreted subclasses (Michael J. Sullivan, PR 9248)
+  - Basic support for protocols (PR 8914) Michael J. Sullivan)
+  - Various optimizations (PR 8903, PR 8870) (Michael J. Sullivan and Xuanda Yang, PR 9245)
+  - Make it easier to write mypyc test cases (PR 9094)
+ - Typeshed Updates
+  - Many improvements were made to typeshed — too many to list. 
+
+-------------------------------------------------------------------
 Sat Jul  4 12:28:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.780:
