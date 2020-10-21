@@ -1,7 +1,7 @@
 #
 # spec file for package libbde
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 %define lname	libbde1
-%define timestamp 20190701
+%define timestamp 20200724
 Name:           libbde
 Version:        0~%{timestamp}
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        LGPL-3.0-or-later AND GFDL-1.1-or-later AND GFDL-1.3-or-later
 Group:          Productivity/File utilities
-Url:            https://github.com/libyal/libbde/wiki
+URL:            https://github.com/libyal/libbde/wiki
 Source:         https://github.com/libyal/libbde/releases/download/%timestamp/%{name}-alpha-%{timestamp}.tar.gz
 Source2:        BitLocker_Drive_Encryption_BDE_format.pdf
 BuildRequires:  glibc-devel
@@ -137,20 +137,20 @@ find %{buildroot} -name "*.a" -delete
 
 %files -n %{lname}
 %defattr(-,root,root)
-%license COPYING 
+%license COPYING*
 %doc AUTHORS ChangeLog
 %{_libdir}/libbde.so.*
 
 %files tools
 %defattr(-,root,root)
-%license COPYING 
-%doc AUTHORS ChangeLog
+%license COPYING*
+%doc AUTHORS README ChangeLog
 %{_bindir}/bde*
 %{_mandir}/man1/bde*.1*
 
 %files devel
 %defattr(-,root,root)
-%license COPYING 
+%license COPYING*
 %doc AUTHORS README ChangeLog
 %doc BitLocker_Drive_Encryption_*.pdf
 %{_includedir}/libbde.h
@@ -161,7 +161,7 @@ find %{buildroot} -name "*.a" -delete
 
 %files -n python3-%{name}
 %defattr(-,root,root)
-%license COPYING 
+%license COPYING*
 %doc AUTHORS README ChangeLog
 %{python3_sitearch}/pybde.so
 
