@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 21 03:09:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.08
+   see /usr/share/doc/packages/perl-Clone-PP/Changes
+
+  1.08 2020-10-20 NEILB
+      - Changed "sub main'dump" to "sub main::dump" in t/dump.pl, as that
+        meant this distribution wouldn't build under cperl. RT#125171
+
+-------------------------------------------------------------------
 Tue Apr 11 05:17:16 UTC 2017 - coolo@suse.com
 
 - updated to 1.07
