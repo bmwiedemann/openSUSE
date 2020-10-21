@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Form-UrlEncoded
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-WWW-Form-UrlEncoded
-Version:        0.25
+Version:        0.26
 Release:        0
 %define cpan_name WWW-Form-UrlEncoded
-Summary:        Parser and Builder for Application/X-Www-Form-Urlencoded
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Parser and builder for application/x-www-form-urlencoded
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+# MANUAL
+#BuildArch:     noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(JSON) >= 2
-BuildRequires:  perl(Module::Build) >= 0.380000
+BuildRequires:  perl(JSON::PP) >= 2
+BuildRequires:  perl(Module::Build) >= 0.400500
 BuildRequires:  perl(Test::More) >= 0.98
 %{perl_requires}
 
@@ -45,7 +48,7 @@ use WWW::Form::UrlEncoded::PP instead
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -53,7 +56,6 @@ perl Build.PL installdirs=vendor
 
 %install
 ./Build install destdir=%{buildroot} create_packlist=0
-find %{buildroot} -name ".keep" -printf "/bin/rm -v '%p'\n" |/bin/sh
 %perl_gen_filelist
 
 %files -f %{name}.files

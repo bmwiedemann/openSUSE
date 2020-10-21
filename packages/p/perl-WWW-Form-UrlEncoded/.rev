@@ -7,4 +7,12 @@
     <comment>New, needed by Perl-Apache-AuthCookies package.</comment>
     <requestid>638959</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7b67e1a4df0aa4e52786733d41de929c</srcmd5>
+    <version>0.26</version>
+    <time>1603284019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843206</requestid>
+  </revision>
 </revisionlist>
