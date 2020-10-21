@@ -77,4 +77,12 @@
     <comment>- Add support for gcc8 and gcc9 (jsc#SLE-7766 &amp; jsc#SLE-8604).</comment>
     <requestid>755684</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5d6e9bd3b4cd4160ad968f90a549aa8a</srcmd5>
+    <version>2019.6</version>
+    <time>1603283923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842836</requestid>
+  </revision>
 </revisionlist>

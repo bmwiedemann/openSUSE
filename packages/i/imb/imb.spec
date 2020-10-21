@@ -1,7 +1,7 @@
 #
 # spec file for package imb
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2019.3
-%define _ver 2019_3
+%define ver 2019.6
+%define _ver 2019_6
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:12:09 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to 2019.6
+  * New IMB-P2P Stencil2D and Stencil3D benchmarks
+  * Added Visual Studio projects for IMB-P2P
+  * Bug fixes and code cleanup.
+
+-------------------------------------------------------------------
 Fri Nov 29 19:37:22 UTC 2019 - Egbert Eich <eich@suse.com>
 
 - Add support for gcc7.
