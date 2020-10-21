@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 14 16:38:40 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 7.020:
+  * Fix name tables broken in 7.010 that associate styles in the
+    Serif family
+  * Correct position of middle dot on ŀ U+0140 in Mono and Keyboard
+    families
+  * Adjust height of middle dot in Ŀ U+013F in the Display family
+  * Un-slant ‖ U+2016 and ‗ U+2017 in Mono family
+  * Un-slant, center, and fix widths of dash related characters in
+    Mono family
+
+-------------------------------------------------------------------
 Fri Oct  9 06:32:27 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 7.010:

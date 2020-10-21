@@ -167,4 +167,20 @@
     build process</comment>
     <requestid>840406</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4ade8d73f151863c6abc67053d6065e4</srcmd5>
+    <version>7.020</version>
+    <time>1603283910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.020:
+  * Fix name tables broken in 7.010 that associate styles in the
+    Serif family
+  * Correct position of middle dot on ŀ U+0140 in Mono and Keyboard
+    families
+  * Adjust height of middle dot in Ŀ U+013F in the Display family
+  * Un-slant ‖ U+2016 and ‗ U+2017 in Mono family
+  * Un-slant, center, and fix widths of dash related characters in
+    Mono family</comment>
+    <requestid>841823</requestid>
+  </revision>
 </revisionlist>
