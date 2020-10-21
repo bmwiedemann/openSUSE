@@ -6396,11 +6396,11 @@ unsorted:
   - imb-openmpi1 
   - imb-openmpi2 
   - imb-openmpi3 
-  - imb_2019_3-gnu-mpich-hpc 
-  - imb_2019_3-gnu-mvapich2-hpc 
-  - imb_2019_3-gnu-openmpi1-hpc 
-  - imb_2019_3-gnu-openmpi2-hpc 
-  - imb_2019_3-gnu-openmpi3-hpc 
+  - imb_2019_6-gnu-mpich-hpc 
+  - imb_2019_6-gnu-mvapich2-hpc 
+  - imb_2019_6-gnu-openmpi1-hpc 
+  - imb_2019_6-gnu-openmpi2-hpc 
+  - imb_2019_6-gnu-openmpi3-hpc 
   - imgen 
   - imgp 
   - imgp-bash-completion 
@@ -18441,6 +18441,7 @@ unsorted:
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
   - perl-Sub-Exporter-Progressive 
+  - perl-Sub-HandlesVia 
   - perl-Sub-Identify 
   - perl-Sub-Info 
   - perl-Sub-Install 
@@ -19598,7 +19599,6 @@ unsorted:
   - python-flake8-doc 
   - python-flup-doc 
   - python-freezerclient-doc 
-  - python-gcs-oauth2-boto-plugin 
   - python-gdbm 
   - python-gevent-doc 
   - python-glanceclient-doc 
@@ -21509,6 +21509,8 @@ unsorted:
   - python3-nilearn 
   - python3-nine 
   - python3-nltk 
+  - python3-nocasedict 
+  - python3-nocaselist 
   - python3-node-semver 
   - python3-nodeenv 
   - python3-nornir 
@@ -25629,6 +25631,8 @@ unsorted:
   - simple-obfs-doc 
   - simplescreenrecorder 
   - simtrace2 
+  - simutrans 
+  - simutrans-makeobj 
   - singularity 
   - sipcalc 
   - sipp 
