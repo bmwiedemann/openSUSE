@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 14 08:27:19 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Name the installed binary `delta`, as upstream calls it, as
+  renaming causes various breakages (e.g. bash completions) and 
+  inconsitencies with upstream documentation and usage. 
+  Add Conflict with sccs, which also provides a binary called
+  `delta` instead.
+
+-------------------------------------------------------------------
+Wed Oct 14 05:56:35 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to version 0.4.4
+  * This release mostly fixes bugs in git add -p behavior, adds 
+    test coverage, and clarifies the code involved.
+    In addition, a new environment variable is supported: 
+    DELTA_PAGER. If set, this takes precedence over BAT_PAGER. 
+    See --paging in delta --help.
+    * bug git add -p one-to-one correspondence errors
+    * bug Line numbers incorrect/relative - Windows/Delta 0.4.1
+    * bug [Linux] git add -p not working with side-by-side
+    * bug Delta crash on Windows when using as stand-alone diff tool
+    * Second document label is missing last character (truncated)
+
+-------------------------------------------------------------------
+Sat Oct 10 17:58:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Conflicts with git-extras
+
+-------------------------------------------------------------------
 Wed Sep 16 09:04:13 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.4.3

@@ -17,7 +17,7 @@
 
 
 Name:           git-delta
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
@@ -26,6 +26,7 @@ Source0:        https://github.com/dandavison/delta/archive/%{version}.tar.gz#/%
 Source1:        vendor.tar.xz
 BuildRequires:  clang-devel
 BuildRequires:  rust-packaging
+Conflicts:      sccs
 
 %description
 Delta provides language syntax-highlighting, within-line insertion/deletion detection, and restructured diff output for git on the command line.
@@ -53,16 +54,14 @@ mv $(pwd)/vendor/backtrace-sys/src/libbacktrace/config.guess.save $(pwd)/vendor/
 
 %install
 %cargo_install
-# There is already a package "delta" so we have to rename it
-mv %{buildroot}%{_bindir}/delta %{buildroot}%{_bindir}/%{name}
 
 # install bash completion
-install -D -m 0644 %{_builddir}/delta-%{version}/etc/completion/completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -D -m 0644 %{_builddir}/delta-%{version}%{_sysconfdir}/completion/completion.bash %{buildroot}%{_datadir}/bash-completion/completions/delta
 
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/%{name}
-%{_datadir}/bash-completion/completions/%{name}
+%{_bindir}/delta
+%{_datadir}/bash-completion/completions/delta
 
 %changelog
