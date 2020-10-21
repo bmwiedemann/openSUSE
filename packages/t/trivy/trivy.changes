@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:13:39 UTC 2020 - msabate@suse.com
+
+- Update to version 0.12.0:
+  * ci(circle): update remote docker version (#683)
+  * suse: update end of life dates for SLES service packs (#676)
+  * update readme for parallel run issue (#660)
+  * fix link for Clear images section in README (#659)
+  * add link to Gitlab CI pipeline in README (#658)
+  * test: add tests for mux (#645)
+  * chore: bump up Go to 1.15 (#646)
+  * Add contrib/ to the release chain for Docker (#638)
+  * Add health check endpoint to trivy server (#644)
+  * fix(cli): show help for subcommands (#629)
+
+-------------------------------------------------------------------
 Tue Sep 08 18:00:57 UTC 2020 - jsuchome@suse.com
 
 - Update to version 0.9.2:
@@ -52,10 +67,10 @@ Tue Jul 28 12:33:21 UTC 2020 - jsuchome@suse.com
 -------------------------------------------------------------------
 Fri Jul 24 11:34:15 UTC 2020 - jsuchome@suse.com
 
-- enabled changesgenerate option to automatically generate changes 
+- enabled changesgenerate option to automatically generate changes
 
 -------------------------------------------------------------------
 Thu Jul 16 15:54:15 CEST 2020 - jsuchome@suse.com
 
-- initial release of 0.6.0 version, supported by Harbor 2.0 
+- initial release of 0.6.0 version, supported by Harbor 2.0
 

@@ -1,18 +1,17 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/aquasecurity/trivy.git</param>
+    <param name="url">https://github.com/aquasecurity/trivy</param>
     <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="filename">trivy</param>
-    <param name="revision">v0.9.2</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">0.12.0</param>
+    <param name="revision">v0.12.0</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
   <service name="recompress" mode="disabled">
-    <param name="file">*.tar</param>
+    <param name="file">trivy-*.tar</param>
     <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">trivy</param>
   </service>
   <service name="go_modules" mode="disabled"/>
 </services>
