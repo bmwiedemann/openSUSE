@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:59:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary. Wrap description at 80 cols.
+- Avoid double %setup call.
+
+-------------------------------------------------------------------
 Wed Jun 10 05:28:12 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Remove build acme binary since cert-manager helm chart does not requires it

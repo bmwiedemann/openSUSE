@@ -20,7 +20,7 @@
 Name:           cert-manager
 Version:        0.15.1
 Release:        0
-Summary:        Automatically provision and manage TLS certificates in Kubernetes
+Summary:        Add-on for automatic provisioning of TLS certificates in Kubernetes
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://cert-manager.io
@@ -30,8 +30,11 @@ BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
 
 %description
-cert-manager is a Kubernetes add-on to automate the management and issuance of TLS certificates from various issuing sources.
-It will ensure certificates are valid and up to date periodically, and attempt to renew certificates at an appropriate time before expiry.
+cert-manager is a Kubernetes add-on to automate the management and issuance of
+TLS certificates from various issuing sources.
+
+It will ensure certificates are valid and up to date periodically, and attempt
+to renew certificates at an appropriate time before expiry.
 
 %package controller
 Summary:        The controller for %{name}
@@ -55,8 +58,7 @@ The webhook server provides dynamic admission control over cert-manager resource
 ValidatingAdmissionWebhook, MutatingAdmissionWebhook, and CustomResourceConversionWebhook.
 
 %prep
-%setup -q -n %{name}-%{version}
-%setup -q -T -D -a 1
+%setup -q -a1
 
 %build
 %goprep %{goipath}
