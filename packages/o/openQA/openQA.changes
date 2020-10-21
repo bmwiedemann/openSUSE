@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 05:32:07 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1603211536.4498c99a4:
+  * Scale timeout in t/01-test-utilities.t to prevent failures observed on OBS
+
+-------------------------------------------------------------------
 Fri Oct 16 14:42:18 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1602859323.3f1131b1b:
