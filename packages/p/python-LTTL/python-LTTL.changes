@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 03:10:01 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.12:
+  * Update setup.py
+  * ordered annotation keys 
+
+-------------------------------------------------------------------
 Wed Apr 15 07:45:33 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use pytest instead of nose 

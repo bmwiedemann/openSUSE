@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-LTTL
-Version:        2.0.9
+Version:        2.0.12
 Release:        0
 Summary:        Library for text processing and analysis
 License:        GPL-3.0-only
