@@ -1,0 +1,188 @@
+-------------------------------------------------------------------
+Wed Oct  7 17:29:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Rename makeobj subpackage to simutrans-makeobj, and install the
+  makeobj binary as /usr/bin/makeobj-simutrans, to avoid a conflict
+  with makeobj from kdesdk-scripts.
+- Cleanup spec file:
+  * Remove unused allegro build dep
+  * Remove no longer required __DATE__ mangling
+  * Remove BuildRoot and defattr tags
+
+-------------------------------------------------------------------
+Fri Sep  4 16:00:30 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- avoid using _service as it is forbidden in Factory
+
+-------------------------------------------------------------------
+Thu Dec  5 15:23:36 UTC 2019 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 121-0
+
+- update to version 121-0
+- Comletely overhauled GUI, which should scale much better with button and fontsize changes
+- Larger citybuildings than 1x1 tile are now possible
+- New signal type: Priority signals to facilitate overtaking of trains
+- More details at (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
+
+-------------------------------------------------------------------
+Tue Sep 25 04:53:47 UTC 2018 - Michiel van der Wulp <michiel.vanderwulp@gmail.com>
+
+- update to version 120-4-1 - changes described at
+  https://forum.simutrans.com/index.php/topic,18515.0.html
+  or more in detail (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
+
+-------------------------------------------------------------------
+Wed Sep 19 05:07:11 UTC 2018 - Michiel van der Wulp <michiel.vanderwulp@gmail.com>
+
+- update to version 120-4 - changes described at 
+  https://forum.simutrans.com/index.php/topic,18499.0.html
+  or more in detail (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
+
+-------------------------------------------------------------------
+Fri Sep  7 19:09:07 UTC 2018 - michiel.vanderwulp@gmail.com
+
+- update to version 120-3 - changes described at 
+  https://forum.simutrans.com/index.php/topic,18295.0.html
+  or more in detail (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
+
+-------------------------------------------------------------------
+Fri Mar 31 17:29:39 UTC 2017 - michiel.vanderwulp@gmail.com
+
+- update to version 120.2.2 - changes described at
+  http://forum.simutrans.com/index.php?topic=16909.0
+
+-------------------------------------------------------------------
+Wed Mar 22 01:23:59 UTC 2017 - rpm@fthiessen.de
+
+- Build with sdl2
+- Added makeobj subpackages (makeobj is used to compile data and
+  images for custom graphic packs).
+- Use https://en.opensuse.org/SourceUrls
+- Some spec file cleanup
+
+-------------------------------------------------------------------
+Tue Mar 21 12:02:27 UTC 2017 - michiel.vanderwulp@gmail.com
+
+- update to version 120.2.1 - changes described at
+  http://forum.simutrans.com/index.php?topic=16798.0
+- skipped version 120.2 - changes described at
+  http://forum.simutrans.com/index.php?topic=16680.0
+
+-------------------------------------------------------------------
+Thu Feb  4 08:39:12 UTC 2016 - michiel.vanderwulp@gmail.com
+
+- update to version 120.1.3 - changes described at
+  http://forum.simutrans.com/index.php?topic=15226.0
+
+-------------------------------------------------------------------
+Fri Jan  1 20:56:43 UTC 2016 - michiel.vanderwulp@gmail.com
+
+- update to version 120.1.1
+
+-------------------------------------------------------------------
+Sat Mar 14 14:07:22 UTC 2015 - michiel.vanderwulp@gmail.com
+
+- update to version 120.0.1
+
+-------------------------------------------------------------------
+Thu Feb 20 21:03:18 UTC 2014 - michiel.vanderwulp@gmail.com
+
+- update to version 112.3
+- added folders only supplied with the binary
+
+-------------------------------------------------------------------
+Thu Dec 27 11:53:02 UTC 2012 - mailaender@opensuse.org
+
+- actually build from source, not copy prebuild binaries
+- update to version 112.1
+- move content to separate packages
+- adhere to FHS
+- added .desktop file and icon
+
+-------------------------------------------------------------------
+Wed Dec 26 14:32:56 UTC 2012 - joop.boonen@opensuse.org
+
+- Build for all architectures
+- Corrected Url and license
+
+-------------------------------------------------------------------
+Fri Mar 23 02:47:18 UTC 2012 - jengelh@medozas.de
+
+- Parallel build with %_smp_mflags; strip redundant sections/tags
+
+-------------------------------------------------------------------
+Fri Jan  9 08:41:58 CET 2009 - olh@suse.de
+
+- use ExclusiveArch as in /SRC/arch/
+
+-------------------------------------------------------------------
+Thu Mar 29 11:53:52 CEST 2007 - coolo@suse.de
+
+- fix BuildRequires
+
+-------------------------------------------------------------------
+Fri Aug  4 17:26:37 CEST 2006 - lmichnovic@suse.cz
+
+- fixed wrong encoding of sk translation file
+
+-------------------------------------------------------------------
+Fri Aug  4 14:26:37 CEST 2006 - lmichnovic@suse.cz
+
+- update of the binary to version 0.88.10.5
+- update of the data pack to version 1.3.1 
+  - new translations: dk, nl, pl, sk
+  - many fixes (e.g. pricing, costs, typos) and improvements (new
+    vehicles, new buildings, monorail improvements)
+  - fixed some copyright information
+
+-------------------------------------------------------------------
+Fri Jun 16 15:20:50 CEST 2006 - lmichnovic@suse.cz
+
+- update of the binary to version 0.88.6 
+- update of the data pack to version 1.2.9d
+  - many improvements and fixes to buildings and vehicles
+  - aeroplanes was added 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:44:39 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 12 13:45:54 CET 2006 - lmichnovic@suse.cz
+
+- update to 0.88.01 version :
+  has smoother and nicer graphics because of use 128x128 pixel
+  objects instead 64x64 in previous version
+- added extensions fertilizer, czech-vehicles
+
+-------------------------------------------------------------------
+Mon Aug 11 14:22:44 CEST 2003 - ltinkl@suse.cz
+
+- fixed wrong file permissions [#28646]
+
+-------------------------------------------------------------------
+Fri Dec 13 21:40:54 CET 2002 - prehak@suse.cz
+
+- updated to version 0.81.0 (sources not available anymore)
+
+-------------------------------------------------------------------
+Mon Jul  8 17:25:02 CEST 2002 - prehak@suse.cz
+
+- updated to version 0.80.0
+- added midi files with music
+- added winter scenario graphics (created README)
+
+-------------------------------------------------------------------
+Wed Nov 21 13:38:40 CET 2001 - rvasice@suse.cz
+
+- fixed permissions for start script
+
+-------------------------------------------------------------------
+Mon Nov 19 19:17:52 CET 2001 - rvasice@suse.cz
+
+- initial package release (version 0.79.0)
+

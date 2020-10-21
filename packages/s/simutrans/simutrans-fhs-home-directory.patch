@@ -1,0 +1,11 @@
+--- old/simsys.cc	2018-09-10 08:15:34.305159327 +0200
++++ new/simsys.cc	2018-09-10 08:19:59.325153888 +0200
+@@ -357,7 +357,7 @@
+ 	find_directory(B_USER_DIRECTORY, &userDir);
+ 	sprintf(buffer, "%s/simutrans", userDir.Path());
+ #else
+-	sprintf(buffer, "%s/simutrans", getenv("HOME"));
++	sprintf(buffer, "%s/.simutrans", getenv("HOME"));
+ #endif
+ 
+ 	// create directory and subdirectories
