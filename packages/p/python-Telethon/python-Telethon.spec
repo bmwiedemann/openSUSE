@@ -20,7 +20,7 @@
 # Python2 is not supported
 %define skip_python2 1
 Name:           python-Telethon
-Version:        1.16.4
+Version:        1.17.0
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT
