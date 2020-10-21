@@ -2008,4 +2008,11 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>842014</requestid>
   </revision>
+  <revision rev="229" vrev="19">
+    <srcmd5>9ebbcc01aaf9d99356ba37105388b064</srcmd5>
+    <version>2.04</version>
+    <time>1603276485</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1177957</comment>
+  </revision>
 </revisionlist>

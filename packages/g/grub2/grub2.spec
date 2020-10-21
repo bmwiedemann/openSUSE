@@ -138,7 +138,7 @@ BuildRequires:  update-bootloader-rpm-macros
 %define grubxenarch x86_64-xen
 %endif
 
-%if "%{platform}" == "emu"
+%if %{platform} == emu
 # force %%{emu} to 1, e.g. for s390
 %define emu 1
 %endif
@@ -332,10 +332,6 @@ Patch718:       0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
 Patch719:       0001-Unify-the-check-to-enable-btrfs-relative-path.patch
 Patch720:       0001-shim_lock-Disable-GRUB_VERIFY_FLAGS_DEFER_AUTH-if-se.patch
 Patch721:       0001-efi-linux-provide-linux-command.patch
-# Improve the error handling when grub2-install fails with short mbr gap
-# (bsc#1176062)
-Patch722:       0001-Warn-if-MBR-gap-is-small-and-user-uses-advanced-modu.patch
-Patch723:       0002-grub-install-Avoid-incompleted-install-on-i386-pc.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -403,7 +399,7 @@ Upstream branding for GRUB2's graphical console
 
 Summary:        Bootloader with support for Linux, Multiboot and more
 Group:          System/Boot
-%if "%{platform}" != "emu"
+%if %{platform} != emu
 BuildArch:      noarch
 %endif
 Requires:       %{name} = %{version}
@@ -424,7 +420,7 @@ provides support for %{platform} systems.
 %package %{grubarch}-debug
 Summary:        Debug symbols for %{grubarch}
 Group:          System/Boot
-%if "%{platform}" != "emu"
+%if %{platform} != emu
 BuildArch:      noarch
 %endif
 Requires:       %{name}-%{grubarch} = %{version}
@@ -468,7 +464,7 @@ provides support for EFI systems.
 %package %{grubefiarch}-debug
 Summary:        Debug symbols for %{grubefiarch}
 Group:          System/Boot
-%if "%{platform}" != "emu"
+%if %{platform} != emu
 BuildArch:      noarch
 %endif
 Requires:       %{name}-%{grubefiarch} = %{version}
@@ -659,8 +655,6 @@ swap partition while in resuming
 %patch719 -p1
 %patch720 -p1
 %patch721 -p1
-%patch722 -p1
-%patch723 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15
@@ -817,7 +811,7 @@ cd build
 %define _target_platform i386-%{_vendor}-%{_target_os}%{?_gnu}
 %endif
 
-%if "%{platform}" != "emu"
+%if %{platform} != "emu"
 %define arch_specific --enable-device-mapper
 TLFLAGS="-static"
 

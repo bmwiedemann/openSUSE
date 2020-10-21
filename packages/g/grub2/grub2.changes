@@ -1,25 +1,4 @@
 -------------------------------------------------------------------
-Wed Oct 14 08:46:46 UTC 2020 - Michael Chang <mchang@suse.com>
-
-- Fix https boot interrupted by unrecognised network address error message
-  (bsc#1172952)
-  * 0001-add-support-for-UEFI-network-protocols.patch
-
--------------------------------------------------------------------
-Tue Oct 13 08:54:10 UTC 2020 - Michael Chang <mchang@suse.com>
-
-- grub2.spec: Fix bare words used as string in expression which is no longer
-  allowed in rpm 4.16
-
--------------------------------------------------------------------
-Fri Sep 25 07:13:27 UTC 2020 - Michael Chang <mchang@suse.com>
-
-- Improve the error handling when grub2-install fails with short mbr gap
-  (bsc#1176062)
-  * 0001-Warn-if-MBR-gap-is-small-and-user-uses-advanced-modu.patch
-  * 0002-grub-install-Avoid-incompleted-install-on-i386-pc.patch
-
--------------------------------------------------------------------
 Wed Sep  9 08:10:45 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Make efi hand off the default entry point of the linux command (bsc#1176134)
