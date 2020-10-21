@@ -25,7 +25,7 @@
 %bcond_with    openipmi
 %endif
 Name:           gensio
-Version:        2.1.4
+Version:        2.1.7
 Release:        0
 Summary:        Library to abstract stream and packet I/O
 # examples/* is licenced under Apache-2.0
@@ -129,7 +129,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/gtlssync.1%{?ext_man}
 %{_mandir}/man5/gensio.5%{?ext_man}
 %{_mandir}/man5//sergensio.5%{?ext_man}
-%{_mandir}/man8/gtlsshd.8%{?ext_man}
 
 %files -n %{libname}
 %{_libdir}/libgensio.so.%{sover}*

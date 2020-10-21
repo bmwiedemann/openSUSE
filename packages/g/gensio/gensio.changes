@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct  6 20:54:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.7
+  * bugfix release only
+  * No user visible changes
+
+-------------------------------------------------------------------
+Sun Sep 27 08:08:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.6
+  * fixed quite a number of small issues and things that weren't
+    quite right.
+  * No user visible changes
+
+-------------------------------------------------------------------
+Mon Aug 24 21:07:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.5
+  * You can now set permissions on unix socket files
+  * gtlssh-keygen was extended to make it easier to install new
+    keys and transfer them to other systems on a key update.
+    Basically, you can generate a new key then issue a command to
+    copy them to other systems using the old key.
+  * gtlsshd was fairly broken handling passwords if you didn't get
+    the first one right. I don't use passwords very much, and I
+    haven't figured out a way to automate tests on it. But it
+    should work ok now.
+  * Fix some minor bugs and a possible (low probability) crash in
+    stdio.
+  * Add some tcpd capability for setting th ename per-gensio.
+
+-------------------------------------------------------------------
 Sun Aug  9 14:29:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.4
