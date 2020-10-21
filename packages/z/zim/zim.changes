@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 29 05:52:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.73.2:
+  + Add "show debug log" menu item
+  + Add missing "triangle" icons for windows installer
+  + Include helper to spawn external processes for windows installer
+  + Fix dropdown namespace autocomplete in move-page dialog
+  + Fix wiki parser for case of nested URL
+  + Fix ParseTreeBuilder interface for python3.9
+  + Add debug output for drag-and-drop workaround
+  + Fix popup menu in attachment browser plugin
+  + Fix warnings during export for "page.meta"
+  + Fix on-preferences-changed for tableofcontents plugin
+
+-------------------------------------------------------------------
 Thu Jul  9 09:04:14 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.73.1:

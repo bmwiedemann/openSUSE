@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.73.1
+Version:        0.73.2
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
