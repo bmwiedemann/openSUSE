@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 21 03:12:31 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v20200724
+	* changes to handle metadatasize
+	* changes for AES-XTS 256 support
+	* colde clean up
+- add LGPL text
+- add README to tools
+
+-------------------------------------------------------------------
+Mon Jul  6 21:53:20 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to v20191221
+	* there are no documented changes except code clean up
+
+-------------------------------------------------------------------
 Thu Apr 30 01:11:57 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - remove python2 submodule
