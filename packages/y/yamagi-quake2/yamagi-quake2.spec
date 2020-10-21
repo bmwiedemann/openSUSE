@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2
-Version:        7.43
+Version:        7.44
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
@@ -55,7 +55,6 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 sed -i "s/__DATE__/${DATE}/g" src/game/savegame/savegame.c src/common/header/common.h
 
 %build
-export CFLAGS="%{optflags} -Wno-unused-result"
 %cmake \
     -DSYSTEMWIDE_SUPPORT=ON
 make %{_smp_mflags}
@@ -88,20 +87,12 @@ install -D -p -m 644 %{SOURCE100}  %{buildroot}%{_datadir}/appdata/%{name}.appda
 %suse_update_desktop_file -c yquake2 'Quake II' 'Yamagi Quake II' yquake2 yquake2 Game ActionGame
 
 %post
-%if 0%{?suse_version} < 1325
-%icon_theme_cache_post
-%endif
 cat << EOF
 
 Please read README in %{_docdir}/%{name} for information on
 how to install the needed gamedata files.
 
 EOF
-
-%if 0%{?suse_version} < 1325
-%postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license LICENSE
