@@ -96,4 +96,33 @@ Needed for python-dns-lexicon</comment>
   * Explain warning better</comment>
     <requestid>835186</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>98185e47e6abe47208c2b79e298a7af7</srcmd5>
+    <version>3.0.0</version>
+    <time>1603283948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  This release fixes the long standing bug that public and private
+  suffixes were generated separately and could not be switched at
+  runtime, https://github.com/john-kurkowski/tldextract/issues/66
+  * Breaking Changes
+    + Rename `cache_file` to `cache_dir` as it is no longer a
+      single file but a directory
+      (https://github.com/john-kurkowski/tldextract/issues/207)
+    + Rename CLI arg also, from `--cache_file` to `--cache_dir`
+    + Remove Python 2.7 support
+  * Features
+    + Can pass `include_psl_private_domains` on call, not only on
+      construction
+    + Use filelocking to support multi-processing and
+      multithreading environments
+  * Bugfixes
+    + Select public or private suffixes at runtime
+      (https://github.com/john-kurkowski/tldextract/issues/66)
+  * Removals
+    + Do not `debug` log the diff during update
+  * Drop tldextract-tests-offline.patch
+</comment>
+    <requestid>843031</requestid>
+  </revision>
 </revisionlist>

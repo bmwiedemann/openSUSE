@@ -16,9 +16,10 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tldextract
-Version:        2.2.3
+Version:        3.0.0
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
@@ -26,9 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/john-kurkowski/tldextract
 Source:         https://files.pythonhosted.org/packages/source/t/tldextract/tldextract-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# No internet connection on OBS build hosts; skip suffix list snapshot diff
-Patch0:         tldextract-tests-offline.patch
 ### BEGIN test requirements
+BuildRequires:  %{python_module filelock} >= 3.0.8
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-file} >= 1.4
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-filelock >= 3.0.8
 Requires:       python-idna >= 2.1.0
 Requires:       python-requests >= 2.1.0
 Requires:       python-requests-file >= 1.4
@@ -58,7 +59,6 @@ as well.
 
 %prep
 %setup -q -n tldextract-%{version}
-%autopatch -p1
 
 %build
 sed -i 's:--pylint::' pytest.ini
