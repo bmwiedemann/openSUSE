@@ -1,7 +1,7 @@
 #
 # spec file for package nfacct
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,15 @@ Name:           nfacct
 Version:        1.0.2
 Release:        0
 Summary:        Netfilter Extended Accounting utility
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://netfilter.org/
+URL:            https://netfilter.org/projects/nfacct/
 
 #Git-Web:	http://git.netfilter.org/
 #Git-Clone:	git://git.netfilter.org/nfacct
 Source:         ftp://ftp.netfilter.org/pub/nfacct/%name-%version.tar.bz2
 Source2:        ftp://ftp.netfilter.org/pub/nfacct/%name-%version.tar.bz2.sig
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#git#BuildRequires:  autoconf, automake >= 1.6, libtool
-BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  pkgconfig(libmnl) >= 1.0.0
 BuildRequires:  pkgconfig(libnetfilter_acct) >= 1.0.3
 
@@ -40,17 +37,16 @@ This utility allows you to manipulate the extended accounting
 infrastructure.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags};
+%make_build
 
 %install
-make install DESTDIR="%buildroot";
+%make_install
 
 %files
-%defattr(-,root,root)
 %_sbindir/nfacct
 %_mandir/man*/nfacct*
 
