@@ -17,7 +17,7 @@
 
 
 Name:           charliecloud
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        User-defined software stacks (UDSS) for HPC centers
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Patch0:         Replace-hardcode-path.patch
 BuildRequires:  python3-base
 # Recommend for ch-grow
 # used to build images
+Requires:       fakeroot
 Recommends:     docker
 Recommends:     buildah >= 1.11.2
 Recommends:     python3-requests >= 2.6.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 21 08:14:06 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 0.20. 
+  - improvement for unprivileged image build using fakeroot
+    This feature can be turned off with “ch-grow build --no-fakeroot”
+    Further details are in the ch-grow man page 
+  - miscellaneous bug fixes and improvements
+  - Full changelot at https://groups.io/g/charliecloud/message/107
+- Add requirements on fakeroot
+-------------------------------------------------------------------
 Tue Sep 22 06:08:16 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 0.19. Two particularly notable changes:
