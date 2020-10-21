@@ -1,0 +1,13 @@
+Index: py3exiv2-0.8.0/setup.py
+===================================================================
+--- py3exiv2-0.8.0.orig/setup.py	2020-09-29 18:30:38.000000000 +0200
++++ py3exiv2-0.8.0/setup.py	2020-10-20 08:52:35.836907091 +0200
+@@ -37,7 +37,7 @@ if platform.system() == "Darwin":
+     boostlib = get_libboost_osx()
+ 
+ else:
+-    python_version = str(sys.version_info.major) + str(sys.version_info.minor)
++    python_version = str(sys.version_info.major)
+     boostlib = 'boost_python' + python_version
+ 
+ setup(

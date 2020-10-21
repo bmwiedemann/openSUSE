@@ -1,7 +1,7 @@
 #
 # spec file for package python-exiv2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,17 @@
 # This is a python3 only package
 %define         skip_python2 1
 Name:           python-exiv2
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/py3exiv2
-Source:         https://files.pythonhosted.org/packages/source/p/py3exiv2/py3exiv2-%{version}.tar.gz
+#
+Source0:        https://files.pythonhosted.org/packages/source/p/py3exiv2/py3exiv2-%{version}.tar.gz
+#
+Patch0:         py3exiv2-link-boost.patch
+#
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +52,7 @@ libexiv2. Using python’s built-in data types and standard modules, it provides
 easy manipulation of image metadata.
 
 %prep
-%setup -q -n py3exiv2-%{version}
+%autosetup -p1 -n py3exiv2-%{version}
 
 %build
 %python_build

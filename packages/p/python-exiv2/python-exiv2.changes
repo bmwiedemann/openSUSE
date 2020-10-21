@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 20 06:39:52 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.8.0
+  * Add XmpSeq support
+  * Add a datetime conversion to Python with iso format, update some unittests
+- Added py3exiv2-link-boost.patch
+
+-------------------------------------------------------------------
 Tue Jul  2 14:47:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.7.1:

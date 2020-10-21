@@ -48,4 +48,16 @@
   * Various fixes to work with new exiv releases</comment>
     <requestid>713077</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a85eb813a5fe8c55b28aa4f891478853</srcmd5>
+    <version>0.8.0</version>
+    <time>1603283914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0
+  * Add XmpSeq support
+  * Add a datetime conversion to Python with iso format, update some unittests
+- Added py3exiv2-link-boost.patch
+</comment>
+    <requestid>842971</requestid>
+  </revision>
 </revisionlist>
