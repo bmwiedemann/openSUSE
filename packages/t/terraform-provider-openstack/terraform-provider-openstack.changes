@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Oct 20 10:22:43 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.31.0:
+  * Update CHANGELOG.md
+  * Update Terraform SDK to v1.15.0, use Go 1.14.7 (#1051)
+  * Update CHANGELOG.md
+  * docs: update Rackspace compatibility notes (#1049)
+  * Update CHANGELOG.md
+  * feat: add floating_ip_enabled in containerinfra (#1043)
+  * Update CHANGELOG.md
+  * Keymanager V1: fix ACL set for the "certificate" container type (#1046)
+  * Swift: run tempurl acceptance tests with slashes in object name (#1031)
+  * Update CHANGELOG.md
+  * Identity V3: reduce keystone requests amount (#1044)
+  * Update CHANGELOG.md
+  * [openstack_containerinfra_cluster_v1] Fix merge_labels (#1039)
+  * Update CHANGELOG.md
+  * Add identity_ec2_credential resource* allows creating EC2 credentials for S3-compatible S3/RadowGW endpoints (#1033)
+  * Cleanup after v1.30.0 release
+- from version 1.30.0
+  * Update CHANGELOG.md
+  * Add "allowed_cidrs" option for Octavia listeners (#1034)
+  * Update CHANGELOG.md
+  * feat: add openstack_identity_group_v3 resource (#1028)
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * data source openstack_images_image_ids_v2 (#139)
+  * Update CHANGELOG.md
+  * [openstack_containerinfra_cluster_v1] Add missing options (#1024)
+  * fix typo (#1023)
+  * Cleanup after v1.29.0 release
+- from version 1.29.0
+  * Set Go version to 1.14.4 (#1022)
+  * Update CHANGELOG.md
+  * Upgrage Terraform SDK to v0.14.0 (#1021)
+  * Upgrage Gophercloud to v0.12.0 (#1020)
+  * Bump gophercloud version (#1018)
+  * Update CHANGELOG.md
+  * Compute V2: Allow to filter flavors by visibility in data source (#1017)
+  * Update CHANGELOG.md
+  * Docs: cleanup Networking Port V2 docs (#1009)
+  * Update CHANGELOG.md
+  * Add vip_network_id for octavia (#948)
+  * Update CHANGELOG.md
+  * Add compute_instance_v2 data source (#984)
+  * Fix "composite literal uses unkeyed fields" go vet (#1006)
+  * Cleanup after v1.28.0 release
+
+-------------------------------------------------------------------
 Tue Jun 23 20:07:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - fix requirement mismatch 

@@ -22,7 +22,7 @@
 %endif
 
 Name:           terraform-provider-openstack
-Version:        1.28.0
+Version:        1.31.0
 Release:        0
 Summary:        Terraform OpenStack provider
 License:        MPL-2.0

@@ -82,4 +82,12 @@
     <comment>- fix requirement mismatch</comment>
     <requestid>816714</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5aed409ef0265a33bbccc058c96bddda</srcmd5>
+    <version>1.31.0</version>
+    <time>1603283977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843049</requestid>
+  </revision>
 </revisionlist>
