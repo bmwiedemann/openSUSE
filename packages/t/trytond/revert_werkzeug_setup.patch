@@ -7,6 +7,6 @@
 -        'werkzeug < 1.0',
 +        'werkzeug',
          'wrapt',
-         'passlib',
+         'passlib >= 1.7.0',
          ],
  
