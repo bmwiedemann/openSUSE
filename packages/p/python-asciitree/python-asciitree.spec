@@ -20,7 +20,7 @@
 Name:           python-asciitree
 Version:        0.3.3
 Release:        0
-Summary:        Draws ASCII trees
+Summary:        Python module to draw ASCII trees
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mbr/asciitree
