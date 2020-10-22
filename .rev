@@ -214,4 +214,24 @@
     <comment></comment>
     <requestid>791011</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fc568a6d5c556928e5690831b2c20861</srcmd5>
+    <version>20201017</version>
+    <time>1603369348</time>
+    <user>dimstar_suse</user>
+    <comment>- Make kf5-filesystem 'own' a couple more directories:
+  * %_kf5_configkcfgdir
+  * %_kf5_mkspecsdir
+  * %_kf5_wallpapersdir
+- Use the same sorting for variable definition, folder creation
+  and the %files section
+- Remove duplicate entries
+- Don't try to create folders already owned by the filesystem package
+- Stop creating crystalsvg and locolor subfolders in the
+  icons directory
+- Drop the python condition. The macros never worked
+- Replace the python macros with stubs
+- Require hicolor-icon-theme instead of creating empty directories</comment>
+    <requestid>842996</requestid>
+  </revision>
 </revisionlist>

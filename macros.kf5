@@ -32,9 +32,6 @@
 %_kf5_htmldir         %{_kf5_sharedir}/doc/HTML
 %_kf5_kxmlguidir      %{_kf5_sharedir}/kxmlgui5
 %_kf5_appstreamdir    %{_kf5_sharedir}/metainfo
-%_kf5_py2kf5dir       %{python2_sitelib}/PyKF5
-%_kf5_py3kf5dir       %{python3_sitelib}/PyKF5
-%_kf5_pysipdir        %{_kf5_sharedir}/sip/PyKF5
 %_kf5_debugdir        %{_kf5_sharedir}/qlogging-categories5
 %_kf5_knsrcfilesdir   %{_kf5_sharedir}/knsrcfiles
 
@@ -206,27 +203,6 @@ for i in *; do \
 done \
 popd
 
+# TODO: Remove the macro
 %kf5_python_bindings_package \
-%package -n     python2-%{name} \
-Summary:        Python bindings for %{name} \
-Group:          Development/Libraries/KDE \
-Requires:       %{name} = %{version} \
-%requires_python_sip_api \
-%description -n python2-%{name} \
-This package contains Python 2 bindings for %{name}. \
- \
-%package -n     python3-%{name} \
-Summary:        Python 3 bindings for %{name} \
-Group:          Development/Libraries/KDE \
-Requires:       %{name} = %{version} \
-%requires_python3_sip_api \
-%description -n python3-%{name} \
-This package contains Python 3 bindings for %{name}. \
- \
-%package -n python-%{name}-devel \
-Provides:       %{python_module %{name}-devel} = %{version} \
-Requires:       %{python_module %{name}-devel} = %{version} \
-Summary:        Development files for %{name} Python bindings  \
-Group:          Development/Libraries/KDE \
-%description -n python-%{name}-devel \
-This package contains the SIP files used to generate the Python bindings for %{name}.
+%{nil}
