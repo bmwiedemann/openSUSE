@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dotmap
-Version:        1.3.17
+Version:        1.3.22
 Release:        0
 Summary:        Python ordered, dynamically-expandable dot-access dictionary
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/drgrib/dotmap
 Source:         https://files.pythonhosted.org/packages/source/d/dotmap/dotmap-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
