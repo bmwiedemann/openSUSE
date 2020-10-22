@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:53:22 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- update to version 3.1.6 with following changes:
+  * fix build on Lustre 2.12.4
+  * check the filesystem returns consistent statfs values
+  * chglog_reader: reopen changelog in case of unexpected error
+  * chglog_reader: de-duplicate HSM STATE events (keep the latest)
+  * policy run time stat now includes initial DB request time
+  * fix the use of archive_id parameter in lhsm
+- fixed build on newer autoconf versions 
+  * added file make-test_confparam-depend-on-lustre.patch
+
+
+-------------------------------------------------------------------
 Mon Dec 16 07:17:40 UTC 2019 - Christian Goll <cgoll@suse.com>
 
 - added zlib-devel as BuildRequires, as openSUSE Leap 15.2 does 

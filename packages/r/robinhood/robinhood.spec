@@ -1,7 +1,7 @@
 #
 # spec file for package robinhood
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,18 +23,20 @@
 %endif
 
 %define installdir_www %{_localstatedir}/lib/
+%define githash 1ca39f131bb35f120f458faf4e70779d5621e8cd
 
 Name:           robinhood
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Policy engine and reporting tool for large filesystems
 License:        CECILL-C
 Group:          System/Monitoring
 URL:            https://github.com/cea-hpc/robinhood
-Source0:        https://github.com/cea-hpc/robinhood/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
+Source0:        https://github.com/cea-hpc/robinhood/archive/%{githash}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         web-gui.patch
 Patch2:         rbh-config.patch
 Patch3:         avoid-version.patch
+Patch4:         make-test_confparam-depend-on-lustre.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
@@ -99,11 +101,13 @@ Tests and examples for the robinhood policy engine.
 
 %prep
 
-%setup -q
+%setup -q -n %{name}-%{githash}
 %patch1
+# the macro {installdir_www} is not known in the patch
 sed -i 's,WWWROOT,%{installdir_www}robinhood,g' web_gui/robinhood.conf
 %patch2
 %patch3
+%patch4 -p1 
 # remove spurious executeable bits
 find ./doc/templates -type f -executable -exec chmod 644 {} +
 
@@ -111,7 +115,11 @@ find ./doc/templates -type f -executable -exec chmod 644 {} +
 autoreconf -fi
 
 %build
-%configure
+%configure \
+  --enable-lustre \
+  --disable-static \
+  --enable-dependency-tracking \
+  %{nil}
 make %{?_smp_mflags}
 
 %install
