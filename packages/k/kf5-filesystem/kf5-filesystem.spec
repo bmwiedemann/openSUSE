@@ -16,31 +16,21 @@
 #
 
 
-%if 0%{?suse_version} >= 1330
-# Not set to 0 in the else branch, so it can be overwritten in the prjconf
-%global with_python 0
-%endif
-
 Name:           kf5-filesystem
-URL:            http://www.kde.org
-Version:        20170414
+URL:            https://www.kde.org
+Version:        20201017
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        KF5 Directory Layout
 License:        LGPL-2.1-or-later
 Group:          System/Fhs
-%if 0%{?with_python}
-# Yes, we need this just to get the site-packages path...
-BuildRequires:  python-base
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base
-%endif
 Source0:        macros.kf5
 Source1:        COPYING
 # https://github.com/openSUSE/rpm-config-SUSE/blob/54f9f71bacdfb944d88f722d71a4d35651f7cc8a/fileattrs/locale.attr
 # edited for /usr/share/locale/kf5/
 Source2:        localekf5.attr
 Source3:        https://raw.githubusercontent.com/openSUSE/rpm-config-SUSE/54f9f71bacdfb944d88f722d71a4d35651f7cc8a/scripts/locale.prov#/localekf5.prov
+Requires:       hicolor-icon-theme
 
 %description
 This package provides macros which are utilized with extra-cmake-modules' KDEInstallDirs.
@@ -74,9 +64,6 @@ This package provides macros which are utilized with extra-cmake-modules' KDEIns
 %define _kf5_servicetypesdir %{_kf5_sharedir}/kservicetypes5
 %define _kf5_htmldir         %{_kf5_sharedir}/doc/HTML
 %define _kf5_kxmlguidir      %{_kf5_sharedir}/kxmlgui5
-%define _kf5_py2kf5dir       %{python2_sitelib}/PyKF5
-%define _kf5_py3kf5dir       %{python3_sitelib}/PyKF5
-%define _kf5_pysipdir        %{_kf5_sharedir}/sip/PyKF5
 %define _kf5_knsrcfilesdir   %{_kf5_sharedir}/knsrcfiles
 %define _kf5_debugdir        %{_kf5_sharedir}/qlogging-categories5
 
@@ -95,28 +82,23 @@ install -D -m644 %{SOURCE2} %{buildroot}%{_rpmconfigdir}/fileattrs/localekf5.att
 install -D -m755 %{SOURCE3} %{buildroot}%{_rpmconfigdir}/fileattrs/localekf5.prov
 %endif
 
+mkdir -p %{buildroot}%{_kf5_datadir}
 mkdir -p %{buildroot}%{_kf5_includedir}
 mkdir -p %{buildroot}%{_kf5_libexecdir}
-mkdir -p %{buildroot}%{_kf5_libdir}/qt5
-mkdir -p %{buildroot}%{_kf5_libdir}/qt5/plugins
+mkdir -p %{buildroot}%{_kf5_notifydir}
 mkdir -p %{buildroot}%{_kf5_plugindir}
-mkdir -p %{buildroot}%{_kf5_qmldir}
-mkdir -p %{buildroot}%{_kf5_datadir}
 mkdir -p %{buildroot}%{_kf5_plasmadir}
 mkdir -p %{buildroot}%{_kf5_importdir}
-mkdir -p %{buildroot}%{_kf5_mandir}
-mkdir -p %{buildroot}%{_kf5_mandir}/man{1,2,3,4,5,6,7,8,9}
-mkdir -p %{buildroot}%{_kf5_sbindir}
-mkdir -p %{buildroot}%{_kf5_notifydir}
-mkdir -p %{buildroot}%{_kf5_sysconfdir}
-mkdir -p %{buildroot}%{_kf5_sysconfdir}/xdg
+mkdir -p %{buildroot}%{_kf5_qmldir}
 mkdir -p %{buildroot}%{_kf5_cmakedir}
+mkdir -p %{buildroot}%{_kf5_mkspecsdir}
 mkdir -p %{buildroot}%{_kf5_dbusinterfacesdir}
 mkdir -p %{buildroot}%{_kf5_dbuspolicydir}
+mkdir -p %{buildroot}%{_kf5_configdir}
+mkdir -p %{buildroot}%{_kf5_wallpapersdir}
+mkdir -p %{buildroot}%{_kf5_configkcfgdir}
 mkdir -p %{buildroot}%{_kf5_servicesdir}
 mkdir -p %{buildroot}%{_kf5_servicetypesdir}
-mkdir -p %{buildroot}%{_kf5_configdir}
-mkdir -p %{buildroot}%{_kf5_sharedir}
 mkdir -p %{buildroot}%{_kf5_htmldir}
 mkdir -p %{buildroot}%{_kf5_kxmlguidir}
 mkdir -p %{buildroot}%{_kf5_appstreamdir}
@@ -125,21 +107,11 @@ mkdir -p %{buildroot}%{_kf5_debugdir}
 
 for size in scalable 128x128 64x64 48x48 32x32 22x22 16x16; do
   for type in actions apps devices filesystems mimetypes places status; do
-    for theme in crystalsvg oxygen hicolor locolor; do
-      mkdir -p %{buildroot}%{_kf5_sharedir}/icons/$theme/$size/$type
-    done
+    mkdir -p %{buildroot}%{_kf5_sharedir}/icons/oxygen/$size/$type
   done
 done
 mkdir -p %{buildroot}%{_kf5_sharedir}/icons/oxygen/scalable/apps/small/{16x16,32x32}
 mkdir -p %{buildroot}%{_kf5_sharedir}/icons/oxygen/scalable/status/small/{16x16,22x22,48x48}
-
-%if 0%{?with_python}
-mkdir -p %{buildroot}%{_kf5_py2kf5dir}
-mkdir -p %{buildroot}%{_kf5_py3kf5dir}
-
-touch %{buildroot}%{_kf5_py2kf5dir}/__init__.py
-touch %{buildroot}%{_kf5_py3kf5dir}/__init__.py
-%endif
 
 # Own the htmldocs directories for all supported languages
 pushd /usr/share/locale
@@ -151,49 +123,46 @@ done
 popd
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %{_rpmconfigdir}/macros.d/macros.kf5
 %if 0%{?suse_version} >= 1550
 %{_rpmconfigdir}/fileattrs/localekf5.attr
 %{_rpmconfigdir}/fileattrs/localekf5.prov
 %endif
+%dir %{_kf5_datadir}
 %dir %{_kf5_includedir}
-%dir %{_kf5_plugindir}
 %dir %{_kf5_libdir}/libexec
 %dir %{_kf5_libexecdir}
+%dir %{_mandir}/*
+%dir %{_mandir}/*/man1
+%dir %{_kf5_notifydir}
 %dir %{_kf5_libdir}/qt5
 %dir %{_kf5_libdir}/qt5/plugins
 %dir %{_kf5_plugindir}
-%dir %{_kf5_datadir}
-%dir %{_kf5_qmldir}
 %dir %{_kf5_plasmadir}
 %dir %{_kf5_importdir}
-%dir %{_kf5_notifydir}
-%dir %{_kf5_sysconfdir}/xdg
+%dir %{_kf5_qmldir}
 %dir %{_kf5_cmakedir}
+%dir %{_kf5_libdir}/qt5/mkspecs
+%dir %{_kf5_mkspecsdir}
 %dir %{_kf5_sharedir}/dbus-1
-%dir %{_kf5_sharedir}/dbus-1/interfaces
-%dir %{_kf5_sharedir}/dbus-1/system.d
+%dir %{_kf5_dbuspolicydir}
 %dir %{_kf5_dbusinterfacesdir}
+%dir %{_kf5_configdir}
+%dir %{_kf5_iconsdir}/oxygen
+%dir %{_kf5_iconsdir}/oxygen/*
+%dir %{_kf5_iconsdir}/oxygen/*/*
+%dir %{_kf5_wallpapersdir}
+%dir %{_kf5_configkcfgdir}
 %dir %{_kf5_servicesdir}
 %dir %{_kf5_servicetypesdir}
-%dir %{_kf5_configdir}
-%dir %{_kf5_sharedir}/icons/*
-%dir %{_kf5_sharedir}/icons/*/*
-%dir %{_kf5_sharedir}/icons/*/*/*
 %dir %{_kf5_sharedir}/doc/HTML
 %dir %{_kf5_sharedir}/doc/HTML/en
 %dir %{_kf5_kxmlguidir}
 %dir %{_kf5_appstreamdir}
 %dir %{_kf5_knsrcfilesdir}
 %dir %{_kf5_debugdir}
-%if 0%{?with_python}
-%{_kf5_py2kf5dir}/
-%{_kf5_py3kf5dir}/
-%endif
-%{_kf5_htmldir}/
-%exclude %{_mandir}/man*
-%{_mandir}/*
+%dir %{_kf5_htmldir}
+%dir %{_kf5_htmldir}/*
 
 %changelog

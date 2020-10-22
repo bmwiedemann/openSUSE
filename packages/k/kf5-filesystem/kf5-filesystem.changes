@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:37:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make kf5-filesystem 'own' a couple more directories:
+  * %_kf5_configkcfgdir
+  * %_kf5_mkspecsdir
+  * %_kf5_wallpapersdir
+- Use the same sorting for variable definition, folder creation
+  and the %files section
+- Remove duplicate entries
+- Don't try to create folders already owned by the filesystem package
+- Stop creating crystalsvg and locolor subfolders in the
+  icons directory
+- Drop the python condition. The macros never worked
+- Replace the python macros with stubs
+- Require hicolor-icon-theme instead of creating empty directories
+
+-------------------------------------------------------------------
 Tue Mar 31 15:03:40 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Use %license
