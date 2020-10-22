@@ -166,7 +166,7 @@ mkdir -p %{buildroot}/%{_sysconfdir}/robinhood.d/
 
 %files
 %defattr(-,root,root)
-%license COPYING
+%license LICENSE.en.txt LICENSE.fr.txt
 %doc ChangeLog README.md
 %doc ./doc/templates/
 

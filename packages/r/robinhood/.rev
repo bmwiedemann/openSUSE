@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>843225</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d83627f5337fdb59fb98277948ed73b0</srcmd5>
+    <version>3.1.6</version>
+    <time>1603448601</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed license files</comment>
+    <requestid>843572</requestid>
+  </revision>
 </revisionlist>
