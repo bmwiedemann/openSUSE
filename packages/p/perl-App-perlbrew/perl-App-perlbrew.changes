@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 19 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.89
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.89
+  	- Released at 2020-10-19T09:26:19+0900
+  	- Thanks to our contributors: Håkon Hægland, Nicolas R, Peter Tripp
+  	- Make the bashrc compatible with 'bash -u'. Github PR #694
+  	- Prevent build directory from being overwritten. Github PR #683
+
+-------------------------------------------------------------------
 Thu Jan 30 03:07:11 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.88
