@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
