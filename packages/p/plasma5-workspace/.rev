@@ -1492,4 +1492,27 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>841822</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>bfd907e7fee5f05835d107003de5600f</srcmd5>
+    <version>5.20.1.1</version>
+    <time>1603369508</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop workaround for old powerdevil
+- 5.20.1.1 is actually still 5.20.1, set the macro that way
+
+- Update to 5.20.1.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * [applets/devicenotifier] Don't offer to unmount non-removable devices (kde#427176)
+  * [applets/systemtray] Fix icon size for 24px panels (kde#427690)
+  * Make Prison a required dependency
+  * [notifications] Fix margins of close button timeout indicator (kde#425911)
+  * [Notifications] Also check transient parent for whether it's a dialog
+  * Revert &quot;krdb: Call xrdb with -nocpp&quot; to fix gitk runtime errors
+- Drop patches, now upstream:
+  * 0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch</comment>
+    <requestid>843328</requestid>
+  </revision>
 </revisionlist>

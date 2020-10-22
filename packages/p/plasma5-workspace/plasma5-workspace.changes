@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 22 07:20:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop workaround for old powerdevil
+- 5.20.1.1 is actually still 5.20.1, set the macro that way
+
+-------------------------------------------------------------------
+Tue Oct 20 14:30:36 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * [applets/devicenotifier] Don't offer to unmount non-removable devices (kde#427176)
+  * [applets/systemtray] Fix icon size for 24px panels (kde#427690)
+  * Make Prison a required dependency
+  * [notifications] Fix margins of close button timeout indicator (kde#425911)
+  * [Notifications] Also check transient parent for whether it's a dialog
+  * Revert "krdb: Call xrdb with -nocpp" to fix gitk runtime errors
+- Drop patches, now upstream:
+  * 0001-Revert-krdb-Call-xrdb-with-nocpp-to-fix-gitk-runtime.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 17:22:00 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Generate plasmafullwayland.desktop by editing plasmawayland.desktop
