@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 22 07:21:48 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 5.3.2
+  * Use "%.17g" sprintf format for doubles as done in Redis server.
+  * Allow to pass NULL as RedisCluster stream context options.
+  * Verify SET options are strings before testing them as strings
+  * Fix cluster segfault when dealing with NULL multi bulk replies
+    in RedisCluster
+  * Fix xReadGroup() must return message id
+  * Fix memory leak in rediscluster session handler
+  * Fix XInfo() returns false if the stream is empty
+  * Relax requirements on set's expire argument
+  * Refactor redis_sock_check_liveness
+  * PHP8 compatibility
+  * Update documentation
+  * Add Redis::OPT_NULL_MULTIBULK_AS_NULL setting to treat NULL
+    multi bulk replies as NULL instead of [].
+  * Allow to specify stream context for rediscluster session handler
+  * Add new parameter to RedisCluster to specify stream ssl/tls
+    context.
+  * Add new parameter to RedisSentinel to specify auth information
+
+-------------------------------------------------------------------
 Wed Jul  8 12:08:55 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 5.3.1
