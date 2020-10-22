@@ -17,18 +17,17 @@
 
 
 Name:           python-oslotest
-Version:        4.2.0
+Version:        4.4.1
 Release:        0
 Summary:        OpenStack test framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslotest
-Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.2.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslotest/oslotest-4.4.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector
 BuildRequires:  python3-fixtures >= 3.0.0
-BuildRequires:  python3-mock >= 2.0.0
-BuildRequires:  python3-mox3
+BuildRequires:  python3-mock
 BuildRequires:  python3-pbr
 BuildRequires:  python3-python-subunit >= 1.0.0
 BuildRequires:  python3-six >= 1.10.0
@@ -45,8 +44,7 @@ Summary:        OpenStack test framework
 Group:          Development/Languages/Python
 Requires:       python3-debtcollector
 Requires:       python3-fixtures >= 3.0.0
-Requires:       python3-mock >= 2.0.0
-Requires:       python3-mox3
+Requires:       python3-mock
 # NOTE: python-os-client-config is only needed for functional testing
 # Requires:       python3-os-client-config
 Requires:       python3-python-subunit >= 1.0.0

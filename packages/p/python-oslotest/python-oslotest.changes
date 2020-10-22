@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:05:54 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.4.1
+  - Align contributing doc with oslo's policy
+  - Add release notes links to doc index
+  - Add py38 package metadata
+  - Bump default tox env from py37 to py38
+  - Update master for stable/ussuri
+  - Revert "Revert "Switch to unittest.mock from mock""
+  - Stop to use the __future__ module.
+  - Switch to newer openstackdocstheme and reno versions
+  - Add Python3 victoria unit tests
+
+-------------------------------------------------------------------
 Tue May 12 09:51:45 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.2.0
