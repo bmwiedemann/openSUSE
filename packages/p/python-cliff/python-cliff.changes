@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:13:03 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Migrate to stestr
+  - Remove python3.5
+  - drop mock from lower-constraints and requirements
+  - switch to stevedore for loading entry points
+  - Switch to newer openstackdocstheme version
+  - Use unittest.mock instead of third party mock
+  - Remove unneeded tests
+  - Fix compatibility with new cmd2
+  - Add Python3 victoria unit tests
+  - Import command group support from osc-lib
+  - Remove cap on cmd2
+  - Stop to use the __future__ module.
+
+-------------------------------------------------------------------
 Tue May 12 09:52:03 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.0
