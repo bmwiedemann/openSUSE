@@ -12,7 +12,7 @@ BACKEND = sdl2
 #BACKEND = posix
 
 #COLOUR_DEPTH = 0
-COLOUR_DEPTH = 16
+#COLOUR_DEPTH = 16 #seems to be not needed any more
 
 #OSTYPE = amiga
 #OSTYPE = beos
@@ -46,6 +46,12 @@ MULTI_THREAD = 1 # Enable multithreading
 
 VERBOSE = 1
 
+USE_UPNP=0
+
+USE_FREETYPE=1
+
+USE_ZSTD=0
+
 # Use static libraries instead
 # STATIC = 1
 
@@ -78,7 +84,7 @@ VERBOSE = 1
 # In order to use the flags, add a line like this: (-Dxxx)
 # FLAGS = -DUSE_C
 
-FLAGS += -DREVISION="8870"
+FLAGS += -DREVISION="9274"
 
 # Output directories:
 #
@@ -93,3 +99,5 @@ FLAGS += -DREVISION="8870"
 # MAKEOBJ_PROGDIR = $(shell pwd)
 # NETTOOL_PROGDIR = $(shell pwd)
 # PROGDIR  = $(shell pwd)
+
+

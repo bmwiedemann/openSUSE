@@ -16,9 +16,9 @@
 #
 
 
-%define pkgver 121-0
+%define pkgver 122-0
 Name:           simutrans
-Version:        121.0
+Version:        122.0
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  freetype2-devel
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -66,8 +67,6 @@ to simutrans .pak files.
 
 %prep
 %setup -q -c -n simutrans
-# this file has the wrong line-endings, which would give a patch error:
-dos2unix simsys.cc
 %patch0 -p1
 cp %{SOURCE1} .
 # files with the wrong line-endings, which give a rpmlint warning:
@@ -77,6 +76,10 @@ dos2unix simutrans/*.txt
 export CFLAGS="%{optflags}"
 export CCFLAGS="$CFLAGS"
 %make_build all makeobj
+# The next 3 lines did not function correctly; so now we use the available theme pak files:
+# cd themes.src
+# sed -i 's|../makeobj|../../build/default/makeobj/makeobj|g' build_themes.sh
+# ./build_themes.sh
 
 %install
 # Create starter-wrapper script (not a source so we can use directory macros):
