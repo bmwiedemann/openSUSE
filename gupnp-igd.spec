@@ -17,20 +17,17 @@
 
 
 Name:           gupnp-igd
-Version:        0.2.5
+Version:        1.2.0
 Release:        0
 Summary:        Library to handle UPnP IGD port mapping
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GUPnP
-Source:         http://download.gnome.org/sources/gupnp-igd/0.2/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/gupnp-igd/1.2/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch -- Free GStaticMutex in AddRemoveData
-Patch0:         gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch
-# PATCH-FIX-UPSTREAM gupnp-igd-port-to-new-gupnp-api.patch -- Port to new GUPnP API
-Patch1:         gupnp-igd-port-to-new-gupnp-api.patch
 
-BuildRequires:  libtool
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.26
@@ -78,15 +75,16 @@ to have a very simple API.
 %autosetup -p1
 
 %build
-autoreconf -fiv
-%configure \
-	--disable-static \
+%meson \
+	-Dgtk_doc=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+
+%check
+%meson_test
 
 %post -n libgupnp-igd-1_0-4 -p /sbin/ldconfig
 %postun -n libgupnp-igd-1_0-4 -p /sbin/ldconfig

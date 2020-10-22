@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:41:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Switch to GUPnP 1.2.0 API
+  + Update GLib dependency to 2.38
+  + Replace deprecated GLib APIs
+  + Fix crashes
+  + Switch to meson build.
+- Add meson and gtk-doc BuildRequires and macros following
+  upstreams port, and run tests during build.
+- Drop no longer needed libtool BuildRequires, and various
+  autotools related macros and commands.
+- Drop patches fixed upstream:
+  + gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch
+  + gupnp-igd-port-to-new-gupnp-api.patch
+
+-------------------------------------------------------------------
 Sun Jan  6 00:34:44 UTC 2019 - bjorn.lie@gmail.com
 
 - Add gupnp-igd-port-to-new-gupnp-api.patch: Port to new GUPnP API.

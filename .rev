@@ -245,4 +245,25 @@
     <comment></comment>
     <requestid>709081</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e44f323f8ca3b28fdd564e818abc0ef1</srcmd5>
+    <version>1.2.0</version>
+    <time>1603369324</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, fixed .changes
+- Update to version 1.2.0:
+  + Switch to GUPnP 1.2.0 API
+  + Update GLib dependency to 2.38
+  + Replace deprecated GLib APIs
+  + Fix crashes
+  + Switch to meson build.
+- Add meson and gtk-doc BuildRequires and macros following
+  upstreams port, and run tests during build.
+- Drop no longer needed libtool BuildRequires, and various
+  autotools related macros and commands.
+- Drop patches fixed upstream:
+  + gupnp-igd-free-GStaticMutex-in-AddRemoveData.patch
+  + gupnp-igd-port-to-new-gupnp-api.patch (forwarded request 842313 from iznogood)</comment>
+    <requestid>842550</requestid>
+  </revision>
 </revisionlist>
