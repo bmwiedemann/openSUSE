@@ -800,4 +800,12 @@
     <comment>Plasma 5.20.0</comment>
     <requestid>840988</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>bb9cda20644589f9953ef6972532e522</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369425</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843097</requestid>
+  </revision>
 </revisionlist>
