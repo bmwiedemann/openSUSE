@@ -19,7 +19,7 @@
 %define do_autoreconf 0
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           alsa-utils
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -85,7 +85,8 @@ autoreconf -fi
 %endif
 %configure --with-curses=ncursesw \
   --with-systemdsystemunitdir=%{_unitdir} \
-  --with-udev-rules-dir=%{_udevdir}/rules.d
+  --with-udev-rules-dir=%{_udevdir}/rules.d \
+  --with-alsactl-lock-dir=/run/lock
 make %{?_smp_mflags}
 
 %install
@@ -115,6 +116,11 @@ install -c -m 0755 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/scripts
 
 %post
 %service_add_post sound-extra.service
+# migrate the old asound.state
+test -f %{_localstatedir}/lib/alsa/asound.state || \
+  test -f /etc/asound.state && \
+    cp -a /etc/asound.state %{_localstatedir}/lib/alsa/asound.state
+exit 0
 
 %preun
 %service_del_preun sound-extra.service
