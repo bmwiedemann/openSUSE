@@ -1,8 +1,7 @@
 #
 # spec file for package perl-Gnome2-Canvas
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
-# Copyright (c) 2011 Sascha Manns <saigkill@opensuse.org>
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,72 +12,58 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Gnome2-Canvas
-Version:        1.002
+Version:        1.004
 Release:        0
-Summary:        Gnome2-Canvas Perl module
-License:        LGPL-2.0+ and GPL-2.0+
-Group:          Development/Languages/Perl
-Url:            http://search.cpan.org/dist/Gnome2-Canvas/
-Source0:        Gnome2-Canvas-%{version}.tar.gz
-BuildRequires:  libgnomecanvas-devel
-BuildRequires:  perl
-BuildRequires:  perl-ExtUtils-Depends
-BuildRequires:  perl-ExtUtils-PkgConfig
-BuildRequires:  perl-Glib
-BuildRequires:  perl-Gtk2
-%if 0%{?suse_version} && 0%{?suse_version} < 1140
-BuildRequires:  perl-macros
-%endif
-Requires:       libgnomecanvas >= %(pkg-config --modversion libgnomecanvas-2.0)     
-Requires:       perl-Glib
-Requires:       perl-Gtk2
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
+%define cpan_name Gnome2-Canvas
+Summary:        Gnome2::Canvas Perl module
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/Perl
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} && 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
+BuildRequires:  perl
+BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::Depends) >= 0.2
+BuildRequires:  perl(ExtUtils::PkgConfig) >= 1.030000
+BuildRequires:  perl(Glib) >= 1.120
+BuildRequires:  perl(Gtk2) >= 1.100
+Requires:       perl(ExtUtils::Depends) >= 0.200
+Requires:       perl(ExtUtils::PkgConfig) >= 1.030000
+Requires:       perl(Glib) >= 1.040
+Requires:       perl(Gtk2) >= 1.040
 %{perl_requires}
-%endif
+# MANUAL BEGIN
+BuildRequires:  libgnomecanvas-devel
+# MANUAL END
 
 %description
-The Gnome2::Canvas module allows a perl developer to use the GnomeCanvas
-widget with Gtk2-Perl.  Find out more about Gnome+ at http://www.gnome.org.
-
-Like the Gtk2 module on which it depends, Gnome2::Canvas follows the C API
-of libgnomecanvas-2.0 as closely as possible while still being perlish.
-Thus, the C API reference remains the canonical documentation.
-
-To discuss gtk2-perl, ask questions and flame/praise the authors,
-join gtk-perl-list@gnome.org at lists.gnome.org.
-
-Also have a look at the gtk2-perl website and sourceforge project page,
-http://gtk2-perl.sourceforge.net
+Gnome2::Canvas Perl module
 
 %prep
-%setup -q -n Gnome2-Canvas-%{version}
+%setup -q -n %{cpan_name}-%{version}
 
 %build
-perl Makefile.PL
-make
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
+
+%check
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-rm -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(-,root,root,-)
-%dir %{perl_vendorarch}/Gnome2
-%dir %{perl_vendorarch}/Gnome2/Canvas
-%dir %{perl_vendorarch}/Gnome2/Canvas/Install
-%dir %{perl_vendorarch}/auto/Gnome2
-%dir %{perl_vendorarch}/auto/Gnome2/Canvas
+%defattr(-,root,root,755)
+%doc AUTHORS canvas.typemap ChangeLog maps NEWS README TODO
+%license LICENSE
 
 %changelog
