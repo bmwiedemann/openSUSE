@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:32:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Demo: show GTK Layer Shell version
+  * Demo: fix initially set auto-exclusive zone and fixed size
+    properties (fixes #64)
+  * API: expose GTK Layer Shell version
+  * API: expose the underlying layer shell surface (fixes #41)
+  * Tests: add mock server
+  * Tests: add integration tests (fixes #60)
+  * Diagnostics: remove "transient_for != window transient_for" warning
+  * Diagnostics: improve warning when GTK version may not work by
+    linking to a compatibility table (fixes #66)
+  * Compat: bump supported GTK to v3.24.23
+
+-------------------------------------------------------------------
 Tue Aug 18 13:05:57 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Add GPL3 to Licenses

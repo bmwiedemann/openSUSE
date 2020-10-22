@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        MIT AND LGPL-3.0-or-later AND GPL-3.0-or-later
