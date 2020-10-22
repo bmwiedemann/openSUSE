@@ -59,14 +59,6 @@ designed to be easy to parse.
 %install
 %make_install
 
-%if 0%{?suse_version} >= 1500
-%post
-%set_permissions %{_sbindir}/fping
-
-%verifyscript
-%verify_permissions -e %{_sbindir}/fping
-%endif
-
 %files
 %doc CHANGELOG.md
 %if 0%{?suse_version} >= 1500

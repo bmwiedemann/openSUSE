@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 12:20:48 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- no longer invoke permissions macros for fping. It now uses ICMP_RAW sockets
+  instead (bsc#1174504).
+
+-------------------------------------------------------------------
 Mon Aug 17 12:40:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0:
