@@ -338,7 +338,7 @@
  getty.1				getty.8
 --- man/ncurses.3x
 +++ man/ncurses.3x	2020-08-31 12:06:53.686411216 +0000
-@@ -140,6 +140,10 @@ after the shell environment variable \fB
+@@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
  .PP
@@ -496,7 +496,7 @@
  	ech=\E[%p1%dX, ed=\E[J, el=\E[K, el1=\E[1K, enacs=\E(B\E)0,
  	flash=\E[?5h$<100/>\E[?5l, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=\E[@, il=\E[%p1%dL,
-@@ -5160,8 +5173,26 @@ xterm-noapp|xterm with cursor keys in no
+@@ -5164,8 +5177,26 @@ xterm-noapp|xterm with cursor keys in no
  xterm-24|vs100|xterms|xterm terminal emulator (X Window System),
  	lines#24, use=xterm-old,
  
@@ -523,7 +523,7 @@
  	use=xterm-new,
  
  # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
-@@ -5506,7 +5537,7 @@ xterms-sun|small (80x24) xterm with sunF
+@@ -5510,7 +5541,7 @@ xterms-sun|small (80x24) xterm with sunF
  
  #### GNOME (VTE)
  # this describes the alpha-version of Gnome terminal shipped with Redhat 6.0
@@ -532,7 +532,7 @@
  	bce,
  	kdch1=^?, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
  	use=xterm-color,
-@@ -5757,10 +5788,14 @@ mgt|Multi GNOME Terminal,
+@@ -5761,10 +5792,14 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -548,7 +548,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -5975,14 +6010,14 @@ mlterm3|multi lingual terminal emulator,
+@@ -6016,14 +6051,14 @@ mlterm3|multi lingual terminal emulator,
  mlterm2|multi lingual terminal emulator,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, it#8, lines#24, pairs#64,
@@ -566,7 +566,7 @@
  	home=\E[H, hpa=\E[%i%p1%dG, ht=^I, hts=\EH, ich=\E[%p1%d@,
  	il=\E[%p1%dL, il1=\E[L, ind=\n,
  	is2=\E7\E[r\E[m\E[?7h\E[?1;3;4;6l\E[4l\E8\E>, kbs=^?,
-@@ -6039,6 +6074,7 @@ mlterm-256color|mlterm 3.0 with xterm 25
+@@ -6080,6 +6115,7 @@ mlterm-256color|mlterm 3.0 with xterm 25
  # rxvt is normally configured to look for "xterm" or "xterm-color" as $TERM.
  # Since rxvt is not really compatible with xterm, it should be configured as
  # "rxvt" or "rxvt-color".
@@ -574,7 +574,7 @@
  #
  # removed dch/dch1 because they are inconsistent with bce/ech -TD
  # remove km as per tack test -TD
-@@ -6050,13 +6086,14 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6091,13 +6127,14 @@ rxvt-basic|rxvt terminal base (X Window
  	clear=\E[H\E[2J, cnorm=\E[?25h, cr=\r,
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
@@ -592,7 +592,7 @@
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=\E>, rmso=\E[27m,
  	rmul=\E[24m,
  	rs1=\E>\E[1;3;4;5;6l\E[?7h\E[m\E[r\E[2J\E[H,
-@@ -6067,7 +6104,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6108,7 +6145,7 @@ rxvt-basic|rxvt terminal base (X Window
  	    %p9%t\016%e\017%;,
  	sgr0=\E[0m\017, smacs=^N, smcup=\E7\E[?47h, smir=\E[4h,
  	smkx=\E=, smso=\E[7m, smul=\E[4m, tbc=\E[3g, use=vt100+enq,
@@ -601,7 +601,7 @@
  # Key Codes from rxvt reference:
  #
  # Note: Shift + F1-F10 generates F11-F20
-@@ -6150,8 +6187,8 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6191,8 +6228,8 @@ rxvt-basic|rxvt terminal base (X Window
  # Removed kDN6, etc (control+shift) since rxvt does not implement this -TD
  rxvt+pcfkeys|fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
@@ -612,7 +612,7 @@
  	kend=\E[8~, kf1=\E[11~, kf10=\E[21~, kf11=\E[23~,
  	kf12=\E[24~, kf13=\E[25~, kf14=\E[26~, kf15=\E[28~,
  	kf16=\E[29~, kf17=\E[31~, kf18=\E[32~, kf19=\E[33~,
-@@ -6242,6 +6279,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -6283,6 +6320,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -651,7 +651,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -6288,7 +6357,7 @@ mrxvt-256color|multitabbed rxvt with 256
+@@ -6329,7 +6398,7 @@ mrxvt-256color|multitabbed rxvt with 256
  # Eterm 0.9.3
  #
  # removed kf0 which conflicts with kf10 -TD
@@ -660,7 +660,7 @@
  # Eterm does not implement control/shift cursor keys such as kDN6, or kPRV/kNXT
  # but does otherwise follow the rxvt+pcfkeys model -TD
  # remove nonworking flash -TD
-@@ -6302,12 +6371,12 @@ Eterm|Eterm-color|Eterm with xterm-style
+@@ -6343,12 +6412,12 @@ Eterm|Eterm-color|Eterm with xterm-style
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\E[B, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -675,7 +675,7 @@
  	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
  	mc4=\E[4i, mc5=\E[5i, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmam=\E[?7l, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=,
-@@ -7260,7 +7329,7 @@ pty|4bsd pseudo teletype,
+@@ -7301,7 +7370,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -684,7 +684,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, clear=\E[H\E[J, cr=\r,
-@@ -7273,6 +7342,13 @@ eterm|gnu emacs term.el terminal emulati
+@@ -7314,6 +7383,13 @@ eterm|gnu emacs term.el terminal emulati
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmso=\E[m, rmul=\E[m,
  	sgr0=\E[m, smcup=\E7\E[?47h, smir=\E[4h, smso=\E[7m,
  	smul=\E[4m,
@@ -698,7 +698,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -7401,7 +7477,7 @@ screen|VT 100/ANSI X3.64 virtual termina
+@@ -7442,7 +7518,7 @@ screen|VT 100/ANSI X3.64 virtual termina
  	dl=\E[%p1%dM, dl1=\E[M, ed=\E[J, el=\E[K, el1=\E[1K,
  	enacs=\E(B\E)0, flash=\Eg, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
@@ -707,7 +707,7 @@
  	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA,
  	kdch1=\E[3~, kend=\E[4~, kf1=\EOP, kf10=\E[21~,
  	kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
-@@ -7523,6 +7599,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -7564,6 +7640,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	use=xterm+x11mouse, use=xterm-new,
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -721,7 +721,7 @@
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
  screen.xterm-r6|screen customized for X11R6 xterm,
-@@ -7610,7 +7693,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
+@@ -7651,7 +7734,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
  	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, ed=\E[J,
  	el=\E[K, ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=, il=\E[%p1%dL,
@@ -730,7 +730,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -9513,7 +9596,7 @@ hp700-wy|HP700/41 emulating wyse30,
+@@ -9559,7 +9642,7 @@ hp700-wy|HP700/41 emulating wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -739,7 +739,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -12744,6 +12827,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
+@@ -12790,6 +12873,7 @@ msk22714|mskermit22714|UCB MS-DOS Kermit
  # at support for the VT320 itself.
  # Please send changes with explanations to bug-gnu-emacs@prep.ai.mit.edu.
  # (vt320-k3: I added <rmam>/<smam> based on the init string -- esr)
@@ -747,7 +747,7 @@
  vt320-k3|MS-Kermit 3.00's vt320 emulation,
  	am, eslok, hs, km, mir, msgr, xenl,
  	cols#80, it#8, lines#49, pb#9600, vt#3,
-@@ -12753,7 +12837,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
+@@ -12799,7 +12883,7 @@ vt320-k3|MS-Kermit 3.00's vt320 emulatio
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
@@ -756,7 +756,7 @@
  	dsl=\E[0$~, ech=\E[%p1%dX, ed=\E[J, el=\E[K,
  	flash=\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[?5l\E[?5h$<100/>\E[
  	      ?5l,
-@@ -17165,7 +17249,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -17211,7 +17295,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -765,7 +765,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -17423,7 +17507,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -17469,7 +17553,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:24:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201010
+  + correct sgr in aaa+rv (report by Florian Weimer) -TD
+  + fix some sgr inconsistencies in d230c, ibm6153, ibm6154,
+    ncrvt100an -TD
+  + improve tic's check for errors detected in tparm (prompted by
+    discussion with Florian Weimer).
+  + set output-mode to binary in experimental Windows-10 driver (Juergen
+    Pfeifer).
+
+-------------------------------------------------------------------
+Tue Oct  6 07:41:30 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20201003
+  + remove output-related checks for nl/nonl (report by Leon Winter).
+  + change tmux's kbs to ^? (report by Premysl Eric Janouch)
+  + simplify mlterm initialization with DECSTR -TD
+  + fix a typo in man/curs_terminfo.3 (Reuben Thomas).
+  + add tmux-direct (tmux #2370)
+  + add user-defined capabilities from mintty to Caps-ncurses, for
+    checking consistency with tic.
+
+-------------------------------------------------------------------
+Mon Sep 28 06:59:48 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200926
+  + correct configure-check for gnurx library.
+  + regenerate llib-* files.
+  + modify tracemunch and the panel library to show readable traces for
+    panel- and user-pointers.
+
+-------------------------------------------------------------------
+Tue Sep 22 08:22:49 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20200919
+  + update mlterm3 for 3.9.0 (report by Premysl Eric Janouch) -TD
+- Add ncurses patch 20200918
+  + corrected condition for appending curses.events to the generated
+    curses.h (report by Sven Joachim, Debian #970545).
+
+-------------------------------------------------------------------
 Tue Sep 15 07:51:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20200912
