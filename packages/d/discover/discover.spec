@@ -21,7 +21,7 @@
 %global have_fwupd (!0%{?sle_version} || 0%{?sle_version} >= 150200)
 
 Name:           discover
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
