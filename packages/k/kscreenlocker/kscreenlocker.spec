@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           kscreenlocker
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
