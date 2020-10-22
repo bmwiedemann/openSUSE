@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:54:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2020.10.16:
+  - Changed "TLSState::read()" to treat any "SSL_read()" result of <=0 as if the
+    TLS connection has closed (unless the error was SSL_ERROR_WANT_READ).
+    This fixes a problem that could cause 100% CPU usage in RTSP client applications.
+    (Thanks to Larry Wu for reporting this.)
+  - Updated "TLSState::setup()" to use "TLS_client_method()" instead of the (deprecated)
+    "SSLv23_client_method()". 
+
+-------------------------------------------------------------------
 Sat Oct  3 15:07:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2020.08.19:
