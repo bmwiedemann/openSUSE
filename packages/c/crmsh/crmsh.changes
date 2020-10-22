@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct 21 18:31:29 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1603292079.8fae778b:
+  * Dev: behave: verify hawk was stopped when removing node
+  * Dev: unittest: adjust unit test for this PR#648
+  * Fix: bootstrap: Stop hawk service when removing node(bsc#1175708)
+
+-------------------------------------------------------------------
+Tue Oct 20 03:22:10 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1603162937.49ce94a5:
+  * Dev: unittest: adjust unit test for service management codes refactor
+  * Dev: utils: Refactor service management code
+
+-------------------------------------------------------------------
+Tue Oct 20 01:39:23 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1603156877.5b81da60:
+  * Fix: cibverify: give warning if crm_verify return warning(bsc#1122391)
+  * Dev: behave: verify convert score to kind
+  * Dev: unittest: unit test for score_to_kind function
+  * Dev: doc: remove score related in doc for rsc_order configure
+  * Fix: parse: convert score to kind for rsc_order configure(bsc#1122391)
+
+-------------------------------------------------------------------
+Wed Oct 14 06:13:20 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1602654994.34e0eeb6:
+  * Dev: unittest: Unit test for related changes based on remove node bug
+  * Dev: behave: functional test for bug of removing node(bsc#1165644)
+  * Fix: bootstrap: remove specific configured address while removing node(bsc#1165644)
+
+-------------------------------------------------------------------
 Fri Oct 09 06:53:46 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1602225426.5f84efb5:
