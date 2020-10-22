@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:53:00 CEST 2020 - mls@suse.de
+
+- Backport FA_TOUCH fixes from upsteam [bnc#1175025] [bnc#1177428]
+  * new patch: touch_backport.diff
+
+-------------------------------------------------------------------
+Fri Oct  9 13:28:33 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix finddebuginfo when no res.* file are found:
+  * finddebuginfo-check-res-file.patch
+
+-------------------------------------------------------------------
 Mon Jul  6 16:35:40 CEST 2020 - Martin Liška <mliska@suse.cz>
 
 - Default to zstd compression (level 19).

@@ -1,0 +1,25 @@
+From a20edbb561f74ba608c0aa36be637e7245e596b5 Mon Sep 17 00:00:00 2001
+From: ggardet <guillaume.gardet@opensuse.org>
+Date: Fri, 9 Oct 2020 13:10:09 +0200
+Subject: [PATCH] Do not fail if there is no "$temp"/res.* file
+
+find-debuginfo is multi-threaded and rpm runs
+scripts usually with "-e" to abort on error.
+If the debug-splitting tool fails, that job will abort.
+But if you have X files that are problematic in the tree,
+and you have X or less jobs, find-debuginfo will abort
+as no single res.$number has been written.
+But if you have more than X jobs, the build will succeed,
+which makes the whole process random.
+This commit remove this randomness.
+
+--- scripts/find-debuginfo.sh.orig
++++ scripts/find-debuginfo.sh
+@@ -498,6 +498,7 @@ else
+     wait
+   )
+   for f in "$temp"/res.*; do
++    test -f "$f" || continue
+     res=$(< "$f")
+     if [ "$res" !=  "0" ]; then
+       exit 1

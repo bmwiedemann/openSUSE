@@ -1,0 +1,64 @@
+--- ./lib/fsm.c.orig	2019-06-26 14:17:31.407985702 +0000
++++ ./lib/fsm.c	2020-10-19 09:49:02.709129763 +0000
+@@ -926,10 +926,6 @@ int rpmPackageFilesInstall(rpmts ts, rpm
+         if (!skip) {
+ 	    int setmeta = 1;
+ 
+-	    /* When touching we don't need any of this... */
+-	    if (action == FA_TOUCH)
+-		goto touch;
+-
+ 	    /* Directories replacing something need early backup */
+ 	    if (!suffix) {
+ 		rc = fsmBackup(fi, action);
+@@ -941,6 +937,17 @@ int rpmPackageFilesInstall(rpmts ts, rpm
+ 		rc = RPMERR_ENOENT;
+ 	    }
+ 
++	    /* See if the file was removed while our attention was elsewhere */
++	    if (rc == RPMERR_ENOENT && action == FA_TOUCH) {
++		rpmlog(RPMLOG_DEBUG, "file %s vanished unexpectedly\n", fpath);
++		action = FA_CREATE;
++		fsmDebug(fpath, action, &sb);
++	    }
++
++	    /* When touching we don't need any of this... */
++	    if (action == FA_TOUCH)
++		goto touch;
++
+             if (S_ISREG(sb.st_mode)) {
+ 		if (rc == RPMERR_ENOENT) {
+ 		    rc = fsmMkfile(fi, fpath, files, psm, nodigest,
+--- ./lib/transaction.c.orig	2020-10-19 09:47:25.761418056 +0000
++++ ./lib/transaction.c	2020-10-19 09:48:20.837254277 +0000
+@@ -483,13 +483,6 @@ static void handleInstInstalledFile(cons
+ 	rpmfsSetAction(fs, fx, action);
+     }
+ 
+-    /* Skip already existing files - if 'minimize_writes' is set. */
+-    if ((!isCfgFile) && (rpmfsGetAction(fs, fx) == FA_UNKNOWN)  && ts->min_writes) {
+-	if (rpmfileContentsEqual(otherFi, ofx, fi, fx)) {
+-	   rpmfsSetAction(fs, fx, FA_TOUCH);
+-	}
+-    }
+-
+     otherFileSize = rpmfilesFSize(otherFi, ofx);
+ 
+     /* Only account for the last file of a hardlink set */
+@@ -499,6 +492,16 @@ static void handleInstInstalledFile(cons
+ 
+     /* Add one to make sure the size is not zero */
+     rpmfilesSetFReplacedSize(fi, fx, otherFileSize + 1);
++
++    /* Just touch already existing files if minimize_writes is enabled */
++    if (ts->min_writes) {
++	if ((!isCfgFile) && (rpmfsGetAction(fs, fx) == FA_UNKNOWN)) {
++	    /* XXX fsm can't handle FA_TOUCH of hardlinked files */
++	    int nolinks = (nlink == 1 && rpmfilesFNlink(fi, fx) == 1);
++	    if (nolinks && rpmfileContentsEqual(otherFi, ofx, fi, fx))
++	       rpmfsSetAction(fs, fx, FA_TOUCH);
++	}
++    }
+ }
+ 
+ /**

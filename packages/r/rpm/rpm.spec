@@ -134,6 +134,8 @@ Patch122:       db_conversion.diff
 Patch123:       initgcrypt.diff
 Patch124:       gcryptdsa2.diff
 Patch125:       ndb_backport2.diff
+Patch126:       touch_backport.diff
+Patch127:       finddebuginfo-check-res-file.patch
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -259,6 +261,7 @@ cp config.guess config.sub db/dist/
 %patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
 %patch -P 118 -P 119 -P 120 -P 121 -P 122 -P 123 -P 124 -P 125
+%patch -P 126 -P 127
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
