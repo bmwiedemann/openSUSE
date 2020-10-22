@@ -86,8 +86,8 @@ ln -sf %{_bindir}/tracepath %{buildroot}/%{_bindir}/tracepath6
 ln -sf %{_mandir}/man8/tracepath.8%{ext_man} %{buildroot}%{_mandir}/man8/tracepath6.8%{ext_man}
 
 # Install service files and create rc compat symling
-install -Dpm 0644 build/rdisc.service %{buildroot}/%{_unitdir}
-install -Dpm 0644 build/rarpd@.service %{buildroot}/%{_unitdir}
+install -Dpm 0644 %_vpath_builddir/rdisc.service %{buildroot}/%{_unitdir}
+install -Dpm 0644 %_vpath_builddir/rarpd@.service %{buildroot}/%{_unitdir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrarpd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcrdisc
 
