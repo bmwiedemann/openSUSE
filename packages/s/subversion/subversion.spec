@@ -21,10 +21,10 @@
 %define svnuser svn
 %define sqlite_minimum_version 3.8.2
 # SLE does not ship KDE
-%if 0%{?is_opensuse} != 1
-%bcond_with kde
-%else
+%if 0%{?is_opensuse} || 0%{?sle_version} > 150200
 %bcond_without kde
+%else
+%bcond_with kde
 %endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
