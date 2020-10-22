@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:51:57 UTC 2020 - matthias.gerstner@suse.com
+
+- Update to version 1550+20201012.1df5a0d:
+  * whitelist new plasma5-disks smartmon helper (bsc#1176742)
+
+-------------------------------------------------------------------
 Thu Oct 01 13:00:06 UTC 2020 - matthias.gerstner@suse.com
 
 - Update to version 1550+20201001.cb7020b:

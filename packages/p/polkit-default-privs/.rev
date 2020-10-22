@@ -1685,4 +1685,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>839154</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>722c9180e9e9ff4bb82357e8d711e942</srcmd5>
+    <version>1550+20201012.1df5a0d</version>
+    <time>1603369329</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20201012.1df5a0d:
+  * whitelist new plasma5-disks smartmon helper (bsc#1176742)</comment>
+    <requestid>842553</requestid>
+  </revision>
 </revisionlist>
