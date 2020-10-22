@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Send wl_pointer.frame when emulating pointer events out of touch ones
+  * Properly handle destruction of XdgOutputV1Interface (kde#426293)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0
