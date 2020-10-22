@@ -19,9 +19,9 @@
 %global abiver 4
 %global apiver 2.0
 %if 0%{?sle_version}
-%bcond_with python2
+%bcond_with python_plugin
 %else
-%bcond_without python2
+%bcond_without python_plugin
 %endif
 Name:           gimp
 Version:        2.10.22
@@ -64,7 +64,7 @@ BuildRequires:  libtiff-devel
 BuildRequires:  libwmf-devel >= 0.2.8
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
-%if %{with python2}
+%if %{with python_plugin}
 BuildRequires:  python-gtk-devel >= 2.10.4
 %endif
 BuildRequires:  translation-update-upstream
@@ -107,7 +107,7 @@ Requires:       libgimp-2_0-0 = %{version}
 Requires:       libgimpui-2_0-0 = %{version}
 Requires:       xdg-utils
 Recommends:     %{name}-lang
-%if %{with python2}
+%if %{with python_plugin}
 Recommends:     %{name}-plugins-python = %{version}
 %endif
 Recommends:     iso-codes
@@ -151,7 +151,7 @@ toolbox and scripting.
 
 This package provides GIMP UI libraries.
 
-%if %{with python2}
+%if %{with python_plugin}
 %package plugins-python
 Summary:        The GNU Image Manipulation Program - python-gtk based plugins
 Group:          Productivity/Graphics/Bitmap Editors
@@ -243,9 +243,7 @@ export LDFLAGS="%{optflags} -lm"
 	--without-webkit\
 	--with-lcms=lcms2\
 %endif
-%if %{without python2}
-	--disable-python \
-%endif
+        %{!?with_python_plugin:--disable-python} \
 	--libexecdir=%{_libexecdir}\
 	--enable-default-binary\
 	--disable-check-update\
@@ -367,7 +365,7 @@ install -m 644 -c macros.gimp \
 %{_libdir}/libgimpui-2.0.so.*
 %{_libdir}/libgimpwidgets-2.0.so.*
 
-%if %{with python2}
+%if %{with python_plugin}
 %files plugins-python -f plugins-python.list
 %{_libdir}/gimp/2.0/environ/pygimp.env
 %{_libdir}/gimp/2.0/interpreters/pygimp.interp

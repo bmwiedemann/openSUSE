@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 18 14:04:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Change macro defined to test whether to build python plugin from
+  _with_python2 to _with_python_plugin since the complementary
+  variable _without_python2 is already defined as `true` for
+  openSUSE:Factory project wide (to disable building python2
+  modules when using single-spec); this re-enables the python
+  plugin for openSUSE Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Oct  6 02:29:41 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.10.22:
