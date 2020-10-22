@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Regenerate wallpaper sizes
+  * generate_wallpaper_sizes.py: Properly compress wallpapers
+  * Fix for occasional background glitches behind transparent Menus, especially when hovering over menu elements.
+- Drop patches, now upstream:
+  * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 09:15:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch and regenerate wallpapers to significantly reduce the size:

@@ -935,4 +935,12 @@
   * 0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch (forwarded request 841732 from Vogtinator)</comment>
     <requestid>841733</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>555a542533c60f72007f3be8d9d266ba</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369358</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843081</requestid>
+  </revision>
 </revisionlist>

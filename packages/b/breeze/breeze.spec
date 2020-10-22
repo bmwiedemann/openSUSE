@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -33,16 +33,12 @@ Source:         breeze-%{version}.tar.xz
 Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-generate_wallpaper_sizes.py-Properly-compress-wallpa.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 0.0.13
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-# To regenerate the images for Patch1
-BuildRequires:  python3-Pillow
 # Needed for Plasma/LookAndFeel service type declaration (kde#367923)
 BuildRequires:  plasma-framework
 BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
@@ -119,8 +115,6 @@ Library containing support code for the Breeze Qt5 style.
 %autosetup -p1
 
 %build
-  # Apply Patch1
-  python3 wallpapers/generate_wallpaper_sizes.py
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
