@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 21 15:19:16 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201021.07d465a:
+  * Bump to v1.8.0.
+
+-------------------------------------------------------------------
+Wed Oct 21 15:02:43 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201021.39657be:
+  * Disable renaming passes by default.
+  * Fix LinesPass for Fortran "Standard Fixed Format".
+  * Use proper openSUSE package in Docker image.
+  * Bump to v1.7.0.
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * Fix a small type.
+
+-------------------------------------------------------------------
 Tue Sep 29 15:39:22 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.7.0+git.20200929.17345b8:
