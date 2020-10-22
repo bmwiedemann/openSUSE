@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:32 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Fix a dangling reference to the list of database files
+- Drop patches, now upstream:
+  * Fix-a-dangling-reference-to-the-list-of-database-files.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 05:41:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add Fix-a-dangling-reference-to-the-list-of-database-files.patch

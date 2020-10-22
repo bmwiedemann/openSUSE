@@ -689,4 +689,12 @@
     <comment></comment>
     <requestid>842135</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>96dd72088fbb9edbf3dfa39721603bdf</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369384</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843086</requestid>
+  </revision>
 </revisionlist>
