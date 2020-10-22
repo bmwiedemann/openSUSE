@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Fix typo in small icons window switcher (kde#427745)
+  * Use higher match priority and copy suggested text
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0

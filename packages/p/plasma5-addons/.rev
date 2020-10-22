@@ -840,4 +840,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.20.0</comment>
     <requestid>841001</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>76d86b848ad1d8af53916c6d65df7921</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369468</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843112</requestid>
+  </revision>
 </revisionlist>
