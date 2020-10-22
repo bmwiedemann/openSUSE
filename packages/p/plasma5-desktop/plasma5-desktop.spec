@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -145,7 +145,7 @@ Requires:       kactivities5-imports
 Requires:       knewstuff-imports
 # Needed for kcm_users
 Requires:       accountsservice
-Conflicts:      kactivities5 < 5.20.0
+Conflicts:      kactivities5 < 5.20.1
 Recommends:     plasma5-addons
 Recommends:     %{name}-emojier
 Provides:       kdebase4-workspace = 5.3.0
@@ -159,8 +159,10 @@ Obsoletes:      kdebase4-workspace-plasma-engine-akonadi < %{version}
 Conflicts:      kio-extras5 <= 5.3.2
 Provides:       kcm-touchpad5 = %{version}
 Obsoletes:      kcm-touchpad5 < %{version}
-# libinput configuration is lacking in comparision
-Recommends:     xf86-input-synaptics
+# Despite libinput configuration is lacking in comparision no longer
+# recommend synaptics, since the driver is no longer in development
+# and should no longer be installed by default (boo#1175035)
+#Recommends:     xf86-input-synaptics
 Provides:       %{name}-branding = %{version}
 Provides:       %{name}-branding-upstream = %{version}
 Obsoletes:      %{name}-branding-upstream < %{version}
