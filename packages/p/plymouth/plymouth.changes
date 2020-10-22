@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct  7 14:53:06 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version: 0.9.5+git20200921+20778f2:
+  * boot-server: Handle client disconnecting while trigger pending.
+  * boot-server: Ref count the connections.
+  * drm: Honor modes selected by the user through video= kernel
+    cmdline argument.
+  * use resolution of higher res monitor for window size.
+  * autogoo: use /proc/self/fd/0 instead of /dev/stdin.
+  * main: Don't bail out of load_settings if "Theme" is missing.
+  * main: switch log file when switching mode.
+  * main: fix mode changing before splash is shown.
+  * two-step: Center message text within labels if labels are
+    centered.
+  * drm/kms probe speedups.
+  * drm: Do not unnecessarily get output info twice.
+  * ply-device-manager: Only consume one udev event at a time.
+  * two-step: Do not jump to end-animation on halt/reboot if it is 
+    disabled.
+  * two-step: Add UseEndAnimation setting.
+  * script: add Image.Crop(x, y, width, height).
+  * ply-throbber: Do not redraw when we need to stop throbbing on
+    free.
+  * ply-keymap-icon: Do not draw on free.
+  * ply-capslock-icon: Do not draw on free.
+  * script: add missing unref() for system update func.
+  * themes: Drop UseFirmwareBackground=true from spinner/bgrt
+    firmware-upgrade settings.
+  * Fix SetSystemUpdateFunction.
+  * event-loop: Remove ply_trace calls around the disconnect handler.
+  * ply-terminal-session: Not use grantpt when the system shut down. 
+    to avoid sytem hung up.
+  * build-goo: Remove vestigial remnants of old GDM integration code.
+- Drop plymouth-avoid-umount-hanging-shutdown.patch: because has
+  been merged to upstream.
+
+-------------------------------------------------------------------
 Mon Sep 28 16:32:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove gnu-unifont-bitmap-fonts runtime dependency, it is not

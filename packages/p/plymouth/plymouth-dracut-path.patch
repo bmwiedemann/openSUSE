@@ -1,9 +1,8 @@
-Index: plymouth-0.9.3+git20180807.7663b0c/scripts/plymouth-populate-initrd.in
-===================================================================
---- plymouth-0.9.3+git20180807.7663b0c.orig/scripts/plymouth-populate-initrd.in	2018-08-07 17:41:15.000000000 +0200
-+++ plymouth-0.9.3+git20180807.7663b0c/scripts/plymouth-populate-initrd.in	2018-08-17 19:57:27.334004329 +0200
-@@ -386,8 +386,8 @@ done
- [ -z "$INITRDDIR" ] && usage error
+diff -Nura plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in
+--- plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in	2020-04-11 14:22:34.000000000 +0800
++++ plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in	2020-10-02 21:34:54.588764052 +0800
+@@ -414,8 +414,8 @@
+ ddebug "Running with PLYMOUTH_LDD_PATH=$PLYMOUTH_LDD_PATH"
  
  mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
 -inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR

@@ -1,13 +1,12 @@
-Index: plymouth-0.9.3+git20180807.7663b0c/configure.ac
-===================================================================
---- plymouth-0.9.3+git20180807.7663b0c.orig/configure.ac	2018-08-07 17:41:15.000000000 +0200
-+++ plymouth-0.9.3+git20180807.7663b0c/configure.ac	2018-08-17 19:58:07.106444425 +0200
-@@ -150,7 +150,7 @@ if test x$with_system_root_install = xye
- else
+diff -Nura plymouth-0.9.5+git20200921+20778f2/configure.ac plymouth-0.9.5+git20200921+20778f2_new/configure.ac
+--- plymouth-0.9.5+git20200921+20778f2/configure.ac	2020-07-18 15:27:12.000000000 +0800
++++ plymouth-0.9.5+git20200921+20778f2_new/configure.ac	2020-10-02 21:41:46.998308963 +0800
+@@ -154,7 +154,7 @@
    plymouthclientdir=$bindir
    plymouthdaemondir=$sbindir
--  plymouthruntimedir=$localstatedir/run/plymouth
-+  plymouthruntimedir=/run/plymouth
+   if (test -z "${plymouthruntimedir}"); then
+-    plymouthruntimedir=$localstatedir/run/plymouth
++    plymouthruntimedir=/run/plymouth
+   fi
  fi
  AC_SUBST(plymouthclientdir)
- AC_SUBST(plymouthdaemondir)

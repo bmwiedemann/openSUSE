@@ -27,7 +27,7 @@
 %define plymouth_initrd_file /boot/initrd-plymouth.img
 
 Name:           plymouth
-Version:        0.9.5+git20190908+3abfab2
+Version:        0.9.5+git20200921+20778f2
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -43,15 +43,13 @@ Patch1:         plymouth-some-greenish-openSUSE-colors.patch
 Patch2:         plymouth-correct-runtime-dir.patch
 # PATCH-FIX-UPSTREAM plymouth-manpages.patch bnc#871419 idoenmez@suse.de  -- Fix man page installation
 Patch3:         plymouth-manpages.patch
-# PATCH-FIX-OPENSUSE plymouth-avoid-umount-hanging-shutdown.patch bnc#1105688, bnc#1129386, bnc#1134660 qzhao@opensuse.org -- Drop grantpt() to avoid system failed to unmount /var during shutdown.
-Patch4:         plymouth-avoid-umount-hanging-shutdown.patch
 # PATCH-FIX-SLE plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch qzhao@suse.com  jsc#SLE-11637 -- plymouth will use plymouthd.defaults instead of plymouth.conf to close the leap gap.
-Patch5:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
+Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1001:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
-# PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
+#uo PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1002:      0003-fix_null_deref.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -85,7 +83,6 @@ Requires:       systemd >= 186
 Requires(post): coreutils
 Requires(post): plymouth-scripts = %{version}
 Requires(postun): coreutils
-Recommends:     plymouth-plugin-label-ft
 Suggests:       plymouth-plugin-label
 Provides:       bootsplash = 3.5
 Obsoletes:      bootsplash < 3.5
@@ -223,20 +220,6 @@ This package contains the "Fade-In" boot splash plugin for
 Plymouth. It features a centered image that fades in and out
 while other images pulsate around during system boot up.
 
-%package plugin-throbgress
-Summary:        Plymouth "Throbgress" plugin
-Group:          System/Base
-Requires:       %{name}-plugin-label = %{version}
-Requires:       libply%{soversion} = %{version}
-Requires:       libply-splash-core%{soversion} = %{version}
-Requires:       libply-splash-graphics%{soversion} = %{version}
-
-%description plugin-throbgress
-This package contains the "throbgress" boot splash plugin for
-Plymouth. It features a centered logo and animated spinner that
-spins repeatedly while a progress bar advances at the bottom of
-the screen.
-
 %package plugin-space-flares
 Summary:        Plymouth "space-flares" plugin
 Group:          System/Base
@@ -305,7 +288,6 @@ while stars twinkle around the logo during system boot up.
 %package theme-spinfinity
 Summary:        Plymouth "Spinfinity" theme
 Group:          System/Base
-Requires:       %{name}-plugin-throbgress = %{version}
 Requires(post): %{name}-scripts
 Requires(pre):  %{name}
 BuildArch:      noarch
@@ -532,6 +514,7 @@ fi
 %dir %{_libdir}/plymouth/renderers
 %dir %{_sysconfdir}/plymouth
 %ghost %{_sysconfdir}/plymouth/plymouthd.conf
+/etc/logrotate.d/bootlog
 %{plymouthdaemon_execdir}/plymouthd
 %{plymouthclient_execdir}/plymouth
 /bin/plymouth
@@ -607,15 +590,17 @@ fi
 %{_datadir}/plymouth/themes/fade-in/star.png
 %{_datadir}/plymouth/themes/fade-in/fade-in.plymouth
 
-%files plugin-throbgress
-%{_libdir}/plymouth/throbgress.so
-
 %files theme-spinfinity
 %dir %{_datadir}/plymouth/themes/spinfinity
 %{_datadir}/plymouth/themes/spinfinity/box.png
 %{_datadir}/plymouth/themes/spinfinity/bullet.png
 %{_datadir}/plymouth/themes/spinfinity/entry.png
 %{_datadir}/plymouth/themes/spinfinity/lock.png
+%{_datadir}/plymouth/themes/spinfinity/capslock.png
+%{_datadir}/plymouth/themes/spinfinity/header-image.png
+%{_datadir}/plymouth/themes/spinfinity/keyboard.png
+%{_datadir}/plymouth/themes/spinfinity/keymap-render.png
+%{_datadir}/plymouth/themes/spinfinity/animation-0001.png
 %{_datadir}/plymouth/themes/spinfinity/throbber-[0-3][0-9].png
 %{_datadir}/plymouth/themes/spinfinity/spinfinity.plymouth
 
