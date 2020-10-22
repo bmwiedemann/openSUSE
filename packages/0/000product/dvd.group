@@ -617,6 +617,7 @@
     <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gimp-plugins-python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-ufraw" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2036,7 +2037,7 @@
     <package name="libgitg-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libgitg-ext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libglade-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-basic_desktop -->
+    <package name="libglade-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgladeui-2-12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2542,7 +2543,7 @@
     <package name="libpurple-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpython2_7-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="libpython2_7-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpython3_8-1_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpyzy-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqalculate21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2636,7 +2637,6 @@
     <package name="librsvg-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libruby2_6-2_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -3588,7 +3588,6 @@
     <package name="plymouth-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-label" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="plymouth-plugin-label-ft" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-plugin-two-step" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-scripts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="plymouth-theme-bgrt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3654,12 +3653,15 @@
     <package name="purpose" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="purpose-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pwgen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python-base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-falcon-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python-rpm-generators" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-rpm-macros" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python-sip-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python2-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-Automat" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Babel" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python3-Beaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3928,53 +3930,6 @@
     <package name="ruby" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby-solv" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="ruby2.6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-bindex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-bootsnap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-builder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-byebug" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-crass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-puma" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.6-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ruby2.7-rubygem-RedCloth" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-abstract" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4934,7 +4889,6 @@
     <package name="xf86-input-keyboard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-input-libinput" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-input-mouse" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="xf86-input-synaptics" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xf86-input-vmmouse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-input-wacom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xf86-video-ark" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->

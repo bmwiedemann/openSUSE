@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201021" schemaversion="4.1">
+<image name="OBS__openSUSE___20201022" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201021</productvar>
+      <productvar name="VERSION">20201022</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201021,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201022,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201021/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201022/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -639,6 +639,7 @@
       <repopackage name="gimp"/>
       <repopackage name="gimp-lang"/>
       <repopackage name="gimp-plugin-aa"/>
+      <repopackage name="gimp-plugins-python"/>
       <repopackage name="gimp-ufraw"/>
       <repopackage name="gio-branding-openSUSE"/>
       <repopackage name="girepository-1_0"/>
@@ -2717,7 +2718,6 @@
       <repopackage name="librsvg-lang"/>
       <repopackage name="librtlsdr0"/>
       <repopackage name="librubberband2"/>
-      <repopackage name="libruby2_6-2_6"/>
       <repopackage name="libruby2_7-2_7"/>
       <repopackage name="librygel-core-2_6-2"/>
       <repopackage name="librygel-server-2_6-2"/>
@@ -3860,7 +3860,6 @@
       <repopackage name="plymouth-branding-openSUSE"/>
       <repopackage name="plymouth-dracut"/>
       <repopackage name="plymouth-plugin-label"/>
-      <repopackage name="plymouth-plugin-label-ft"/>
       <repopackage name="plymouth-plugin-two-step"/>
       <repopackage name="plymouth-scripts"/>
       <repopackage name="plymouth-theme-bgrt"/>
@@ -3932,9 +3931,12 @@
       <repopackage name="python"/>
       <repopackage name="python-base"/>
       <repopackage name="python-falcon-doc"/>
+      <repopackage name="python-gobject2"/>
+      <repopackage name="python-gtk"/>
       <repopackage name="python-rpm-generators"/>
       <repopackage name="python-rpm-macros"/>
       <repopackage name="python-sip-common"/>
+      <repopackage name="python2-pycairo"/>
       <repopackage name="python3-aiosmtpd"/>
       <repopackage name="python3-alembic"/>
       <repopackage name="python3-apparmor"/>
@@ -4222,53 +4224,6 @@
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
       <repopackage name="ruby-solv"/>
-      <repopackage name="ruby2.6"/>
-      <repopackage name="ruby2.6-rubygem-actionpack-6.0"/>
-      <repopackage name="ruby2.6-rubygem-actionview-6.0"/>
-      <repopackage name="ruby2.6-rubygem-activemodel-6.0"/>
-      <repopackage name="ruby2.6-rubygem-activesupport-6.0"/>
-      <repopackage name="ruby2.6-rubygem-bindex"/>
-      <repopackage name="ruby2.6-rubygem-bootsnap"/>
-      <repopackage name="ruby2.6-rubygem-builder"/>
-      <repopackage name="ruby2.6-rubygem-byebug"/>
-      <repopackage name="ruby2.6-rubygem-concurrent-ruby"/>
-      <repopackage name="ruby2.6-rubygem-crass"/>
-      <repopackage name="ruby2.6-rubygem-erubi"/>
-      <repopackage name="ruby2.6-rubygem-ffi"/>
-      <repopackage name="ruby2.6-rubygem-i18n"/>
-      <repopackage name="ruby2.6-rubygem-jbuilder"/>
-      <repopackage name="ruby2.6-rubygem-listen"/>
-      <repopackage name="ruby2.6-rubygem-loofah"/>
-      <repopackage name="ruby2.6-rubygem-method_source"/>
-      <repopackage name="ruby2.6-rubygem-msgpack"/>
-      <repopackage name="ruby2.6-rubygem-nio4r"/>
-      <repopackage name="ruby2.6-rubygem-nokogiri"/>
-      <repopackage name="ruby2.6-rubygem-puma"/>
-      <repopackage name="ruby2.6-rubygem-rack"/>
-      <repopackage name="ruby2.6-rubygem-rack-proxy"/>
-      <repopackage name="ruby2.6-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby2.6-rubygem-rails-dom-testing"/>
-      <repopackage name="ruby2.6-rubygem-rails-html-sanitizer"/>
-      <repopackage name="ruby2.6-rubygem-railties-6.0"/>
-      <repopackage name="ruby2.6-rubygem-rb-fsevent"/>
-      <repopackage name="ruby2.6-rubygem-rb-inotify"/>
-      <repopackage name="ruby2.6-rubygem-sass-rails"/>
-      <repopackage name="ruby2.6-rubygem-sassc"/>
-      <repopackage name="ruby2.6-rubygem-sassc-rails"/>
-      <repopackage name="ruby2.6-rubygem-spring"/>
-      <repopackage name="ruby2.6-rubygem-spring-watcher-listen"/>
-      <repopackage name="ruby2.6-rubygem-sprockets"/>
-      <repopackage name="ruby2.6-rubygem-sprockets-rails"/>
-      <repopackage name="ruby2.6-rubygem-sqlite3"/>
-      <repopackage name="ruby2.6-rubygem-thor"/>
-      <repopackage name="ruby2.6-rubygem-thread_safe"/>
-      <repopackage name="ruby2.6-rubygem-tilt"/>
-      <repopackage name="ruby2.6-rubygem-turbolinks"/>
-      <repopackage name="ruby2.6-rubygem-turbolinks-source"/>
-      <repopackage name="ruby2.6-rubygem-tzinfo-1.2"/>
-      <repopackage name="ruby2.6-rubygem-web-console"/>
-      <repopackage name="ruby2.6-rubygem-webpacker"/>
-      <repopackage name="ruby2.6-rubygem-zeitwerk"/>
       <repopackage name="ruby2.7"/>
       <repopackage name="ruby2.7-rubygem-abstract"/>
       <repopackage name="ruby2.7-rubygem-abstract_method"/>
@@ -5246,7 +5201,6 @@
       <repopackage name="xf86-input-keyboard"/>
       <repopackage name="xf86-input-libinput"/>
       <repopackage name="xf86-input-mouse"/>
-      <repopackage name="xf86-input-synaptics"/>
       <repopackage name="xf86-input-vmmouse"/>
       <repopackage name="xf86-input-wacom"/>
       <repopackage name="xf86-video-ark"/>
