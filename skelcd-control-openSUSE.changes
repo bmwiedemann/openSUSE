@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 15:59:00 CEST 2020 - schubi@suse.de
+
+- Upgrade openSUSE->Jump. Allow vendor change without asking
+  the user. Added "product_upgrades" tag in software/upgrade.
+  (jsc#SLE-14807)
+- 20201007
+
+-------------------------------------------------------------------
 Thu Jul 30 16:57:34 UTC 2020 - Richard Brown <rbrown@suse.de>
 
 - Remove tmp subvolume for all system roles [boo#1173461][jsc#PM-1898]

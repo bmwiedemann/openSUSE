@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-control-openSUSE-promo
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -27,12 +27,12 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE-promo
-Version:        20200730
+Version:        20201007
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/yast/skelcd-control-openSUSE
+URL:            https://github.com/yast/skelcd-control-openSUSE
 Source:         skelcd-control-openSUSE-%{version}.tar.bz2
 # we do not distribute it, but need to have it here, otherwise build service checks complain
 Source99:       README.md
@@ -41,7 +41,7 @@ BuildRequires:  libxml2-tools
 # xsltproc
 BuildRequires:  libxslt-tools
 # RNG schema
-BuildRequires:  yast2-installation-control >= 4.0.10
+BuildRequires:  yast2-installation-control >= 4.3.6
 ######################################################################
 #
 # Here is the list of Yast packages which are needed in the
