@@ -30,7 +30,7 @@
 %define binaries pocompile build_firefox.sh build_tmdb buildxpi.py csv2po csv2tbx flatxml2po get_moz_enUS.py html2po ical2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff po2yaml poclean pocommentclean pocompendium poconflicts pocount podebug pofilter pogrep pomerge pomigrate2 popuretext poreencode porestructure posegment posplit poswap pot2po poterminology pretranslate prop2po pydiff pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po tmserver ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po
 %define manpages pocompile build_firefox.sh csv2po csv2tbx flatxml2po html2po idml2po ini2po json2po junitmsgfmt moz2po mozlang2po odf2xliff oo2po oo2xliff phppo2pypo po2csv po2flatxml po2html po2idml po2ini po2json po2moz po2mozlang po2oo po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py po2wordfast po2xliff poclean poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap pot2po poterminology pretranslate prop2po pypo2phppo rc2po resx2po sub2po symb2po tbx2po tiki2po translatetoolkit ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po
 Name:           translate-toolkit%{psuffix}
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -49,7 +49,7 @@ BuildRequires:  %{python_module cheroot >= 8.3.0}
 BuildRequires:  %{python_module iniparse >= 0.5}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module phply >= 1.2.5}
-BuildRequires:  %{python_module ruamel.yaml >= 0.16.10}
+BuildRequires:  %{python_module ruamel.yaml >= 0.16.12}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vobject >= 0.9.6.1}
 BuildRequires:  dos2unix

@@ -319,4 +319,12 @@
 - Drop merged patch test-mo-endian.patch</comment>
     <requestid>815269</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4959dcc2725801ecdd92fc0e2480248f</srcmd5>
+    <version>3.1.1</version>
+    <time>1603369216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842106</requestid>
+  </revision>
 </revisionlist>

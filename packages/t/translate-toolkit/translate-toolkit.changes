@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:39:10 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 3.1.1:
+  * Fixed comparing units
+  * Fixed removal of units from a storage
+- Update to 3.1.0:
+  * Improved round trip for JSON and YAML formats.
+  * Fixes for multiple formats (Android, JSON, CSV, Windows RC).
+  * Added support for XWiki formats.
+
+-------------------------------------------------------------------
 Tue Jun 16 12:49:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.0.0:
