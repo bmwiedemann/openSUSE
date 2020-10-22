@@ -248,4 +248,12 @@
     <comment>Ussuri Update</comment>
     <requestid>803580</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bf4f0c27bffaa9ef2be99b1c67908461</srcmd5>
+    <version>2.2.5</version>
+    <time>1603369205</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841198</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:16:08 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.5
+  - Provide extension version
+  - Update several links
+  - Show version in PDFs
+  - trivial: Remove leftover Python 2 code
+  - trivial: Add whitespace
+  - Changing the scope of the search bar on docs.starlingx.io
+  - Add py38 package metadata
+  - Mark sphinx extensions thread safe
+  - Fix broken URLs
+  - Update hacking for Python3
+  - Lower logging level of pdf-related logs
+  - Add 'openstackdocs_auto_name' config option
+  - Remove vendored 'native' Pygments theme
+  - Add version dropdown on docs.starlingx.io
+  - Use consistent logging
+  - Cleanup bindep
+  - Update docstheme
+  - Fix hacking min version to 3.0.1
+  - Add package prefixes for all config options
+  - Add octaviaclient cross job
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Merge, rather than overwrite, LaTeX settings
+  - Ignore 'last_updated' for auto-generated pages
+  - Add 'openstackdocs_auto_version' config option, path checking
+  - Restore configuration of 'latex_engine'
+  - Do not set html_last_updated_fmt
+  - Enable parallel building
+  - css: Namespace Pygments stylesheet
+  - Use xelatex as latex_engine
+  - Fix auto_name logic
+  - Add link to PDF file
+  - Add cross-tests for nova
+
+-------------------------------------------------------------------
 Tue May 12 12:34:22 UTC 2020 - cloud-devel@suse.de
 
 - removed 0001-Catch-any-exception-when-trying-to-call-git.patch
