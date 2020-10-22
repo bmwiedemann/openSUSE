@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 08:06:43 UTC 2020 - lnussel@suse.de
+
+- Update to version 0.g60:
+  * Add VPATH macros from RH/Fedora to make upstream Meson macros work
+  * Don't limit locale match to /usr/share/locale
+
+-------------------------------------------------------------------
 Sun Mar 22 13:32:49 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.g56:
