@@ -421,25 +421,17 @@
        <listitem>
          <para>To print fonts available on your system  
        </para>
-    
        </listitem>
      </varlistentry>
-          
    </variablelist>
    <para>If needed, you can setup the environment variable GRAPHVIZ_DOT.  </para>
  </refsect1>
 
- 
  <refsect1>
    <title>Documentation</title>
    <para>See PDF file <ulink
-     url="file:///usr/share/doc/packages/plantuml/PlantUML_Language_Reference_Guide.pdf"/>
+     url="file:///usr/share/doc/packages/plantuml/PlantUML_Language_Reference_Guide_en.pdf"/>
      for more information.</para>
  </refsect1>
-  
- 
- 
- 
- 
-</refentry>
 
+</refentry>
