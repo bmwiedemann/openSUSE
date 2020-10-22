@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:22:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.414
+   see /usr/share/doc/packages/perl-SQL-Statement/Changes
+
+  1.414	2020-10-21
+      * re-release 1.413_001 without further changes
+
+  1.413_001	2020-09-28
+      * Spell check
+      * Be specific in which files to skip from the distribution
+      * Author fixes
+      * Makefile.PL: port WriteMakefile1 from Hash::Merge
+      * .travis.yml: update for Xenial VMs
+      * cleanup MANIFEST.SKIP
+      * bump copyright year
+      * SQL::Parser correctly parse VALUES and SET clauses containing function invocations with several arguments
+        patch provided by Edgar J. Holleis
+
+-------------------------------------------------------------------
 Fri Apr  7 06:45:08 UTC 2017 - coolo@suse.com
 
 - updated to 1.412
