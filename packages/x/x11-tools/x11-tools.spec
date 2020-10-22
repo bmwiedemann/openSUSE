@@ -53,17 +53,20 @@ Some useful tools for the X Window System.
 mkdir -p %{buildroot}/usr/bin/
 install -m 755 %{_sourcedir}/xf86debug      %{buildroot}/usr/bin
 %if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}/usr/etc/skel
+install -m 644 %{_sourcedir}/xim.template %{buildroot}/usr/etc/skel/.xim.template
+install -m 644 %{S:37} %{buildroot}/usr/etc/skel/.i18n
 mkdir -p %{buildroot}/%{_distconfdir}/X11/xim.d
 install -m 644 %{_sourcedir}/xim  %{buildroot}/%{_distconfdir}/X11
 install -m 644 %{_sourcedir}/none %{buildroot}/%{_distconfdir}/X11/xim.d
 %else
+mkdir -p %{buildroot}/etc/skel
+install -m 644 %{_sourcedir}/xim.template %{buildroot}/etc/skel/.xim.template
+install -m 644 %{S:37} %{buildroot}/etc/skel/.i18n
 mkdir -p %{buildroot}/etc/X11/xim.d
 install -m 644 %{_sourcedir}/xim  %{buildroot}/etc/X11
 install -m 644 %{_sourcedir}/none %{buildroot}/etc/X11/xim.d
 %endif
-mkdir -p %{buildroot}/etc/skel
-install -m 644 %{_sourcedir}/xim.template %{buildroot}/etc/skel/.xim.template
-install -m 644 %{S:37} %{buildroot}/etc/skel/.i18n
 mkdir -p  %{buildroot}/%{_fillupdir}/
 install -c -m 644 %{_sourcedir}/sysconfig.language-%{name} %{buildroot}/%{_fillupdir}/
 mkdir -p %{buildroot}/usr/lib/nvidia
@@ -81,17 +84,20 @@ install -m 755 %{_sourcedir}/nvidia-post-uninstall \
 /usr/lib/nvidia/pre-install
 /usr/lib/nvidia/post-uninstall
 %if 0%{?suse_version} >= 1550
+%dir /usr/etc/skel
+/usr/etc/skel/.i18n
+/usr/etc/skel/.xim.template
 %{_distconfdir}/X11
 %{_distconfdir}/X11/xim
 %dir %{_distconfdir}/X11/xim.d
 %{_distconfdir}/X11/xim.d/*
 %else
+/etc/skel/.i18n
+/etc/skel/.xim.template
 /etc/X11/xim
 %dir /etc/X11/xim.d
 /etc/X11/xim.d/*
 %endif
-/etc/skel/.xim.template
-/etc/skel/.i18n
 %{_fillupdir}/sysconfig.language-%{name}
 
 %changelog

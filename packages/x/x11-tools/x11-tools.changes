@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 19 03:10:18 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
+
+- move skeleton files to /usr/etc/skel on Tumbleweed (boo#1176431) 
+
+-------------------------------------------------------------------
 Mon Sep 28 19:21:21 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - xim script: also consider files below /usr/etc/X11/xim.d (boo#1176431)
