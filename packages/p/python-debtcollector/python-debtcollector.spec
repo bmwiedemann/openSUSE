@@ -17,18 +17,17 @@
 
 
 Name:           python-debtcollector
-Version:        2.0.1
+Version:        2.2.0
 Release:        0
 Summary:        A collection of Python deprecation patterns and strategies
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/debtcollector/
-Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-2.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/d/debtcollector/debtcollector-2.2.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-wrapt >= 1.7.0
 BuildArch:      noarch
@@ -84,14 +83,14 @@ future deprecations.
 This package contains documentation in HTML format.
 
 %prep
-%autosetup -p1 -n debtcollector-2.0.1
+%autosetup -p1 -n debtcollector-2.2.0
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate html doc
-PBR_VERSION=2.0.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.2.0 %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

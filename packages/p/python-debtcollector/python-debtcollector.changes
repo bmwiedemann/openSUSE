@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:13:17 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Switch to newer openstackdocstheme and reno versions
+  - Stop to use the __future__ module.
+  - Update lower-constraints versions
+  - Update master for stable/ussuri
+  - Switch to Victoria tests
+
+-------------------------------------------------------------------
 Tue May 12 10:03:02 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.0.1
