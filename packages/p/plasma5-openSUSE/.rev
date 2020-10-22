@@ -976,4 +976,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.20.0</comment>
     <requestid>841015</requestid>
   </revision>
+  <revision rev="116" vrev="25">
+    <srcmd5>27cb5306821e8b6c334d72311ef40dc6</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1603369503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.20.1</comment>
+    <requestid>843153</requestid>
+  </revision>
 </revisionlist>
