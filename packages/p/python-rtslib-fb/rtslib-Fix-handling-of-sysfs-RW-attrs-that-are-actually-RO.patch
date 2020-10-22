@@ -1,0 +1,65 @@
+From 10f23379b2d3e2226782e2d6185bee22cc586170 Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Thu, 15 Oct 2020 14:21:20 -0700
+Subject: [PATCH] Fix handling of sysfs RW attrs that are actually RO
+
+Kernel commit 356ba2a8bc8d ("scsi: target: tcmu: Make
+gr_support and alua_support attributes writable"), made the
+alua_support and pgr_support sysfs attributes writable
+so that individual target drivers could change them.
+This means that the filesystem attributes might saw
+read-write, but the attributes can in fact be read-only.
+When a user tries to write to them, in this case,
+they EINVAL.
+
+This causes rtslib to throw error messages when one does
+a "targetctl restore" like these:
+
+> Storage Object fileio/file01: Cannot set attribute alua_support: [Errno 22] Invalid argument, skipped
+> Storage Object fileio/file01: Cannot set attribute pgr_support: [Errno 22] Invalid argument, skipped
+
+While these messages are benign, they will cause confusion, since
+(1) there's nothing wrong, and (2) they didn't occur before above-
+mentioned kernel commit.
+
+This fix tells rtslib to ignore errno 22 for these two attributes.
+---
+ rtslib/node.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/rtslib/node.py b/rtslib/node.py
+index 415f45d675f9..ed08030002bb 100644
+--- a/rtslib/node.py
++++ b/rtslib/node.py
+@@ -20,6 +20,7 @@ under the License.
+ 
+ import os
+ import stat
++import errno
+ from .utils import fread, fwrite, RTSLibError, RTSLibNotInCFS
+ 
+ 
+@@ -28,6 +29,10 @@ class CFSNode(object):
+     # Where is the configfs base LIO directory ?
+     configfs_dir = '/sys/kernel/config/target'
+ 
++    # these two attributes can have file permissions of
++    # read-write but be read-only
++    may_be_ro_attrs = ['alua_support', 'pgr_support']
++
+     # CFSNode private stuff
+ 
+     def __init__(self):
+@@ -172,7 +177,8 @@ class CFSNode(object):
+             try:
+                 fwrite(path, "%s" % str(value))
+             except Exception as e:
+-                raise RTSLibError("Cannot set attribute %s: %s" % (attribute, e))
++                if attribute not in self.may_be_ro_attrs or e.errno != errno.EINVAL:
++                    raise RTSLibError("Cannot set attribute %s: %s" % (attribute, e))
+ 
+     def get_attribute(self, attribute):
+         '''
+-- 
+2.26.2
+

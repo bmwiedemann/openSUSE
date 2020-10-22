@@ -19,7 +19,7 @@
 %define dbdir %{_sysconfdir}/target
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rtslib-fb
-Version:        2.1.73
+Version:        2.1.74
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/open-iscsi/rtslib-fb.git
 Source:         %{name}-v%{version}.tar.xz
 Patch1:         rbd-support.patch
+Patch2:         rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
+Patch3:         rtslib-target-service-for-suse.patch
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -56,6 +58,8 @@ the Apache 2.0 license. Contributions are welcome
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch1 -p1
 %endif
+%patch2 -p1
+%patch3 -p1
 
 %build
 %python_build
@@ -73,12 +77,25 @@ install -m644 doc/targetctl.8 %{buildroot}%{_mandir}/man8
 install -d -m755 %{buildroot}/%{dbdir}
 install -d -m755 %{buildroot}/%{dbdir}/pr
 install -d -m755 %{buildroot}/%{dbdir}/alua
+mkdir -p %{buildroot}/%{_unitdir}/
+install -m644 systemd/target.service %{buildroot}/%{_unitdir}
+install -d -m755 %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 
 %post
 %python_install_alternative targetctl targetctl.8 saveconfig.json.5
+%{service_add_post target.service}
 
 %postun
 %python_uninstall_alternative targetctl
+%{service_del_postun target.service}
+
+%pre
+%{service_add_pre target.service}
+
+%preun
+%{stop_on_removal target}
+%{service_del_preun target.service}
 
 %files %{python_files}
 %python_alternative %{_bindir}/targetctl
@@ -90,5 +107,7 @@ install -d -m755 %{buildroot}/%{dbdir}/alua
 %dir %{dbdir}
 %dir %{dbdir}/pr
 %dir %{dbdir}/alua
+%{_unitdir}/target.service
+%{_sbindir}/rctarget
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 16 18:47:04 UTC 2020 - lduncan@suse.com
+
+- Update to version v2.1.74:
+  * version 2.1.74
+  * rtslib: safely call shutil.copy()
+  * Fix fail when target_core_mod doesn't exists
+  * Fix EPERM errors with scsi_generic devices
+  Also, add this commit submitted upstream:
+  * rtslib-Fix-handling-of-sysfs-RW-attrs-that-are-actually-RO.patch
+  And this commit for SUSE:
+  * rtslib-target-service-for-suse.patch
+  Lastly, this package now installs systemd unit file target.service,
+  which will replace eventually targetcli.service (from the
+  targetcli-fb package), since this matches how upstream works.
+  This also meant updating the SPEC file.
+
+-------------------------------------------------------------------
 Thu Aug 27 02:10:59 UTC 2020 - Matthew Oliver <moliver@suse.com>
 
 - Updated the rbd-support.patch (bsc#1175808):
