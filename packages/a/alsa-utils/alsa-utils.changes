@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:01:26 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-utils 1.2.3:
+  alsactl extension for disabling UCM, alsa-info.sh enhancements,
+  various fixes and documentation updates.
+  See details in
+    https://alsa-project.org/wiki/Changes_v1.2.3.2_v1.2.4
+
+-------------------------------------------------------------------
+Sun Oct 18 19:12:43 CEST 2020 - tiwai@suse.de
+
+- Use /run/lock for alsactl lock directory (bsc#1177826)
+- Migrate the old asound.state file if the new path isn't present
+  yet (bsc#1177826)
+
+-------------------------------------------------------------------
 Mon Oct  5 12:39:42 CEST 2020 - tiwai@suse.de
 
 - Conditionally add buildreq alsa-topology-devel to fix build
