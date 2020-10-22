@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:47:42 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 0.16.12
+  * update links in doc
+- update to 0.16.11
+  * workaround issue with setuptools 0.50 and importing pip
+
+-------------------------------------------------------------------
 Fri Feb 21 10:02:08 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.16.10 (bsc#1164458, CVE-2019-20478)
