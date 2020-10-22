@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 19 09:09:39 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.44 state of the Mozilla NSS Certificate store (bsc#1177864)
+
+- Removed CAs:
+  - EE Certification Centre Root CA
+  - Taiwan GRCA
+
+- Added CAs:
+  - Trustwave Global Certification Authority
+  - Trustwave Global ECC P256 Certification Authority
+  - Trustwave Global ECC P384 Certification Authority
+
+-------------------------------------------------------------------
 Wed Jul 29 13:06:19 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - update to 2.42 state of the Mozilla NSS Certificate store (bsc#1174673)

@@ -617,4 +617,19 @@
   - Microsoft RSA Root Certificate Authority 2017</comment>
     <requestid>823414</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5d72981e4b39a96761c4431709ba11d7</srcmd5>
+    <version>2.44</version>
+    <time>1603369291</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.44 state of the Mozilla NSS Certificate store (bsc#1177864)
+- Removed CAs:
+  - EE Certification Centre Root CA
+  - Taiwan GRCA
+- Added CAs:
+  - Trustwave Global Certification Authority
+  - Trustwave Global ECC P256 Certification Authority
+  - Trustwave Global ECC P384 Certification Authority (forwarded request 842509 from msmeissn)</comment>
+    <requestid>842510</requestid>
+  </revision>
 </revisionlist>
