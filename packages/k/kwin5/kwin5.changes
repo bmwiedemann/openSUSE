@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Introduce persistent global share context (kde#415798)
+  * Fix a potential SIGSEGV
+  * qpa: Create a pbuffer for internal windows
+  * core: Use less confusing name for Platform::supportsQpaContext()
+  * qpa: Merge OpenGL platform context classes
+  * scene: Reduce the call cost of Platform::supportsQpaContext()
+  * Fix pipewire stream double free
+  * Detect softpipe and llvmpipe on Mesa 20.2+
+  * wayland: Introduce logicalToNativeMatrix() helper
+  * platforms/drm: Fix software flip output transforms
+  * platforms/drm: Compute correct cursor transform matrix (kde#427605)
+  * wayland: Fix Qt clients not being maximized initially
+  * xwayland: Avoid creating a tree query on crash (kde#427688)
+  * wayland: Block geometry updates while placing popups
+  * Fix KWIN_EFFECT_FACTORY macros
+- Drop patches, now upstream:
+  * 0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
+
+-------------------------------------------------------------------
 Mon Oct 19 14:14:02 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix software rendering detection with Mesa 20.2+:

@@ -21,7 +21,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without lang
 Name:           kwin5
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -36,8 +36,6 @@ Source:         kwin-%{version}.tar.xz
 Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/kwin/-/merge_requests/364
-Patch1:         0001-Detect-softpipe-and-llvmpipe-on-Mesa-20.2.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE
