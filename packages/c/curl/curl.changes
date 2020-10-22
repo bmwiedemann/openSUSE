@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Oct 14 21:29:48 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.73.0
+  * Changes:
+    - curl: add --output-dir
+    - curl: support XDG_CONFIG_HOME to find .curlrc
+    - curl: update --help with categories
+    - curl_easy_option_*: new API for meta-data about easy options
+    - CURLE_PROXY: new error code
+    - mqtt: enable by default
+    - sftp: add new quote commands 'atime' and 'mtime'
+    - ssh: add the option CURLKHSTAT_FINE_REPLACE
+    - tls: add CURLOPT_SSL_EC_CURVES and --curves 
+  * Bugfixes:
+    - base64: also build for smtp, pop3 and imap
+    - cleanups: avoid curl_ on local variables
+    - configure: let --enable-debug set -Wenum-conversion with gcc >= 10
+    - conn: check for connection being dead before reuse
+    - curl: in retry output don't call all problems "transient"
+    - curl: make checkpasswd, file2memory, file2string and
+            glob_match_url use dynbuf
+    - curl: retry delays in parallel mode no longer sleeps blocking
+    - curl: use curlx_dynbuf for realloc when loading config files
+    - curl:parallel_transfers: make sure retry readds the transfer
+    - curl_get_line: build only if cookies or alt-svc are enabled
+    - Curl_pgrsTime - return new time to avoid timeout integer overflow
+    - Curl_send: return error when pre_receive_plain can't malloc
+    - dynbuf: make sure Curl_dyn_tail() zero terminates
+    - etag: save and use the full received contents
+    - ftp: a 550 response to SIZE returns CURLE_REMOTE_FILE_NOT_FOUND
+    - ftp: avoid risk of reading uninitialized integers
+    - ftp: get rid of the PPSENDF macro
+    - ftp: make a 552 response return CURLE_REMOTE_DISK_FULL
+    - ftp: separate FTPS from FTP over "HTTPS proxy"
+    - HTTP/3: update to OpenSSL_1_1_1g-quic-draft-29
+    - http: consolidate nghttp2_session_mem_recv() call paths
+    - http_proxy: do not count proxy headers in the header bytecount
+    - http_proxy: do not crash with HTTPS_PROXY and NO_PROXY set
+    - imap: make imap_send use dynbuf for the send buffer management
+    - imap: set cselect_bits to CURL_CSELECT_IN initially
+    - lib1560: verify "redirect" to double-slash leading URL
+    - lib: make Curl_gethostname accept a const pointer
+    - libssh2: handle the SSH protocols done over HTTPS proxy
+    - libssh2: pass on the error from ssh_force_knownhost_key_type
+    - memdebug: remove 9 year old unused debug function
+    - multi: expand pre-check for socket readiness
+    - ngtcp2: adapt to new NGTCP2_PROTO_VER_MAX define
+    - ngtcp2: adapt to the new pkt_info arguments
+    - openssl: avoid error conditions when importing native CA
+    - openssl: consider ALERT_CERTIFICATE_EXPIRED a failed verification
+    - parsedate: tune the date to epoch conversion
+    - pause: only trigger a reread if the unpause sticks
+    - pingpong: use a dynbuf for the *_pp_sendf() function
+    - runtests: allow creating files without newlines
+    - runtests: allow generating a binary sequence from hex
+    - runtests: clear pid variables when failing to start a server
+    - schannel: fix memory leak when using get_cert_location
+    - schannel: return CURLE_PEER_FAILED_VERIFICATION for untrusted root
+    - sectransp: make it build with --disable-proxy
+    - select.h: make socket validation macros test for INVALID_SOCKET
+    - select: align poll emulation to return all relevant events
+    - select: fix poll-based check not detecting connect failure
+    - select: simplify return code handling for poll and select
+    - setopt: if the buffer exists, refuse the new BUFFERSIZE
+    - setopt: return CURLE_BAD_FUNCTION_ARGUMENT on bad argument
+    - socketpair: allow CURL_DISABLE_SOCKETPAIR
+    - sockfilt: handle FD_CLOSE winsock event on write socket
+    - symbian: drop support
+    - tests: remove pipelining tests
+    - tls: fix SRP detection by using the proper #ifdefs
+    - tls: provide the CApath verbose log on its own line
+    - tool_setopt: escape binary data to hex, not octal
+    - url: use blank credentials when using proxy w/o username and password
+    - urlapi: use more Curl_safefree
+    - vtls: deduplicate client certificates in ssl_config_data
+
+-------------------------------------------------------------------
 Wed Aug 19 07:47:34 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
 
 - Update to 7.72.0 [bsc#1175109, CVE-2020-8231]

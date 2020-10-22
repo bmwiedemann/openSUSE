@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.72.0
+Version:        7.73.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -78,9 +78,8 @@ network protocols.
 Summary:        Development files for the curl library
 Requires:       glibc-devel
 Requires:       libcurl4 = %{version}
-# curl-devel (v 7.15.5) was last used in 10.2
-Provides:       curl-devel <= 7.15.5
-Obsoletes:      curl-devel < 7.16.2
+Provides:       curl-devel = %{version}
+Obsoletes:      curl-devel < %{version}
 
 %description -n libcurl-devel
 Curl is a client to get documents and files from or send documents to a
@@ -141,7 +140,7 @@ make %{?_smp_mflags} V=1
 %if %{with testsuite}
 %check
 pushd tests
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 # make sure the testsuite runs don't race on MP machines in autobuild
 if test -z "$BUILD_INCARNATION" -a -r /.buildenv; then
 	. /.buildenv
@@ -153,7 +152,7 @@ fi
 base=$((8990 + $BUILD_INCARNATION * 20))
 # bug940009 do not run flaky tests for any architecture
 # at least test 1510 do fail for i586 and ppc64le
-perl ./runtests.pl -a -b$base '!flaky' || exit
+perl ./runtests.pl -a -v -p -b$base '!flaky' || exit
 
 popd
 %endif
@@ -170,8 +169,8 @@ popd
 %postun -n libcurl4 -p /sbin/ldconfig
 
 %files
-%doc README RELEASE-NOTES
-%doc docs/{BUGS,FAQ,FEATURES,RESOURCES,TODO,TheArtOfHttpScripting}
+%doc README RELEASE-NOTES CHANGES
+%doc docs/{BUGS.md,FAQ,FEATURES,TODO,TheArtOfHttpScripting.md}
 %{_bindir}/curl
 %{_datadir}/zsh/site-functions/_curl
 %{_mandir}/man1/curl.1%{?ext_man}
