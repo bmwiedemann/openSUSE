@@ -19,7 +19,7 @@
 %define kf5_version 5.54.0
 %bcond_without lang
 Name:           kde-cli-tools5
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
