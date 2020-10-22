@@ -1,12 +1,11 @@
 Index: usage.c
 ===================================================================
---- usage.c.orig	2010-07-29 11:59:45.000000000 -0400
-+++ usage.c	2010-08-29 14:39:17.366314422 -0400
-@@ -890,47 +890,6 @@ usage(xv, fh, version)
- 		LSOF_URL);
- 	    (void) fprintf(stderr, "    latest man page: %slsof_man\n",
- 		LSOF_URL);
--
+--- usage.c.orig
++++ usage.c
+@@ -925,50 +925,6 @@ usage(xv, fh, version)
+ 	    (void) fprintf(stderr, "    latest (non-formatted) man page: %s\n",
+ 		LSOF_MAN_URL);
+ 
 -#if	defined(LSOF_CINFO)
 -	    if ((cp = isnullstr(LSOF_CINFO)))
 -		(void) fprintf(stderr, "    configuration info: %s\n", cp);
@@ -47,6 +46,10 @@ Index: usage.c
 -		(void) fprintf(stderr, "    loader flags: %s\n", cp);
 -	    if ((cp = isnullstr(LSOF_SYSINFO)))
 -		(void) fprintf(stderr, "    system info: %s\n", cp);
- 	    (void) report_SECURITY("    ", ".\n");
- 	    (void) report_WARNDEVACCESS("    ", "are", ".\n");
- 	    (void) report_HASKERNIDCK("    K", "is");
+-	    (void) report_SECURITY("    ", ".\n");
+-	    (void) report_WARNDEVACCESS("    ", "are", ".\n");
+-	    (void) report_HASKERNIDCK("    K", "is");
+-
+ #if	defined(DIALECT_WARNING)
+ 	    (void) fprintf(stderr, "    WARNING: %s\n", DIALECT_WARNING);
+ #endif	/* defined(DIALECT_WARNING) */

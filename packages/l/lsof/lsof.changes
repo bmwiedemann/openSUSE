@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 11 20:40:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.93.2:
+   The maintainership is switched from Vic to lsof-org  
+   Made FreeBSD 13 adjustment.
+   Fix a typo causing a build error.
+   Fix a potential memory leak.
+   [linux] use tirpc for rpc if libc doesn't provide rpc.h.
+   Fix a typo in man page.
+   fix memory leaks detected by valgrind about unix endpoint
+    information.
+   Update the description about -fg and -fG options on linux.
+   Fix a broken symbolic link.
+   Update the version number embedded in lsof executable.
+- lsof-no-build-date-etc.patch: refreshed against newer base
+
+-------------------------------------------------------------------
 Wed Apr 10 14:30:38 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add lsof-glibc-linux-5.0.patch: Fix build with

@@ -1,7 +1,7 @@
 #
 # spec file for package lsof
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           lsof
-Version:        4.91
+Version:        4.93.2
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
-URL:            http://people.freebsd.org/~abe/
+URL:            https://github.com/lsof-org/lsof
+# From https://github.com/lsof-org/lsof/archive/%{version}.tar.gz
 # Always repack the source to remove legally problematic files - bnc#705143
 # dialects/uw/uw7/sys/fs/{fifonode.h,namenode.h,README}
-Source:         %{name}_%{version}_src_repacked.tar.xz
+Source:         lsof-%{version}_repacked.tar.gz
 Patch0:         lsof_4.81-include.patch
 Patch1:         lsof_4.81-fmt.patch
 Patch2:         lsof-no-build-date-etc.patch
@@ -43,7 +44,7 @@ specific  file or all the files in a file system may be selected by
 path.
 
 %prep
-%setup -q -n %{name}_%{version}_src
+%setup -q
 %patch0
 %patch1
 %patch2
@@ -53,15 +54,11 @@ path.
 %build
 ./Configure -n linux
 make %{?_smp_mflags} DEBUG="%{optflags} -Wall -Wno-unused"
-cd tests
-chmod u+w TestDB
-./Add2TestDB
-make %{?_smp_mflags} DEBUG="%{optflags} -Wall -Wno-unused"
 
 %install
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man8
 install -m755 lsof %{buildroot}%{_bindir}
-install -m644 lsof.8 %{buildroot}%{_mandir}/man8
+install -m644 Lsof.8 %{buildroot}%{_mandir}/man8/lsof.8
 mkdir SUSE_docs
 for s in 00* ; do
 	mv $s SUSE_docs/${s#00}
@@ -69,6 +66,12 @@ done
 sed -i -e "s|%{_prefix}/local/bin/perl|%{_bindir}/perl|g" scripts/*
 mv scripts/00MANIFEST scripts/MANIFEST
 mv scripts/00README scripts/README
+
+%check
+cd tests
+chmod u+w TestDB
+./Add2TestDB
+make %{?_smp_mflags} DEBUG="%{optflags} -Wall -Wno-unused"
 
 %files
 %doc SUSE_docs/* scripts
