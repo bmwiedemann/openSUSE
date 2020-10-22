@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Feb 18 03:10:27 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 0.100
+   see /usr/share/doc/packages/perl-MooX-late/Changes
+
+  0.100	2020-02-17
+  
+   [ Packaging ]
+   - Make Sub::HandlesVia a required dependency.
+  
+   [ Other ]
+   - Use Sub::HandlesVia instead of MooX::HandlesVia; less translation needed
+     because Sub::HandlesVia already understands Moose-like syntax; plus it
+     covers more datatypes and methods.
+
+-------------------------------------------------------------------
 Tue Nov 19 08:38:06 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 0.016

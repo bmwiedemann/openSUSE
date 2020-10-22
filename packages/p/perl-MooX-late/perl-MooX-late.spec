@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooX-late
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-MooX-late
-Version:        0.016
+Version:        0.100
 Release:        0
 %define cpan_name MooX-late
 Summary:        Easily translate Moose code to Moo
@@ -30,14 +30,15 @@ BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Moo) >= 1.006000
+BuildRequires:  perl(Moo) >= 2
+BuildRequires:  perl(Sub::HandlesVia) >= 0.013
 BuildRequires:  perl(Test::Fatal) >= 0.010
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires) >= 0.06
 BuildRequires:  perl(Type::Utils) >= 1.000001
-Requires:       perl(Moo) >= 1.006000
+Requires:       perl(Moo) >= 2
+Requires:       perl(Sub::HandlesVia) >= 0.013
 Requires:       perl(Type::Utils) >= 1.000001
-Recommends:     perl(MooX::HandlesVia) >= 0.001004
 %{perl_requires}
 
 %description
@@ -74,12 +75,7 @@ Exports 'blessed' and 'confess' functions to your namespace.
 
 * 5.
 
-Handles certain attribute traits. Currently 'Hash', 'Array' and 'Code' are
-supported. This feature requires MooX::HandlesVia.
-
-'String', 'Number', 'Counter' and 'Bool' are unlikely to ever be supported
-because of internal implementation details of Moo. If you need another
-attribute trait to be supported, let me know and I will consider it.
+Handles native attribute traits.
 
 Five features. It is not the aim of 'MooX::late' to make every aspect of
 Moo behave exactly identically to Moose. It's just going after the
