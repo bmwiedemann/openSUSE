@@ -808,4 +808,12 @@
     <comment>Plasma 5.20.0</comment>
     <requestid>840971</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>f60df91120441df986ef684ef21f6c9c</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369354</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843080</requestid>
+  </revision>
 </revisionlist>

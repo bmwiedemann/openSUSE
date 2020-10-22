@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:30:31 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.1
+- Changes since 5.20.0:
+  * Show "Enable bluetooth" only when Manager is operational
+  * Fix device icon size on device page
+  * [kcm] Set sane default size
+
+-------------------------------------------------------------------
 Thu Oct  8 16:55:19 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.0
