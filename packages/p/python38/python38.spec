@@ -66,13 +66,13 @@
 %define         so_minor 0
 %define         so_version %{python_version_soname}%{abi_kind}-%{so_major}_%{so_minor}
 # rpm and python have different ideas about what is an arch-dependent name, so:
-%if %{__isa_name} == ppc
+%if "%{__isa_name}" == "ppc"
 %define archname %(echo %{_arch} | sed s/ppc/powerpc/)
 %else
 %define archname %{_arch}
 %endif
 # our arm has Hardware-Floatingpoint
-%if %{_arch} == arm
+%if "%{_arch}" == "arm"
 %define armsuffix hf
 %endif
 # pyexpat.cpython-35m-x86_64-linux-gnu

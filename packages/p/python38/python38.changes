@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  x86 == ppc.
+
+-------------------------------------------------------------------
 Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Buildrequire timezone only for general flavor. It's used in this
