@@ -24,7 +24,7 @@
 %define skip_python2 1
 
 Name:           python-bokeh
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
