@@ -803,4 +803,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.20.0</comment>
     <requestid>840986</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7b20d20e1a73c29f94acb3bffbb9c1ff</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369420</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843095</requestid>
+  </revision>
 </revisionlist>
