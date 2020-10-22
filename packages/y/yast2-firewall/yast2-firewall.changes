@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 16 15:15:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not enable firewall during first stage of AutoYaST
+  (bsc#1177778) 
+- 4.3.7
+
+-------------------------------------------------------------------
 Tue Oct 13 11:15:06 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Modified the warning text introduced in previous change according
