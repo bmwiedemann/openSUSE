@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:19:31 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.2.2
+  - Drop Python 2.7 support
+  - sphinxext: fix warning message for detailed list
+  - Switch to newer openstackdocstheme and reno versions
+  - Replace external mock with built-in unittest.mock
+  - Remove Travis CI config
+  - switch to importlib.metadata package
+  - fix supported python versions in documentation
+  - Add Python3 victoria unit tests
+  - add release note before major version update
+  - add property methods to extension for more entry point values
+  - Stop to use the __future__ module.
+  - Remove dead files
+  - Mark sphinx extensions thread safe
+  - Update master for stable/ussuri
+  - Fix the bug 1892610. There're some syntax errors in the comment of stevedore code.
+
+-------------------------------------------------------------------
 Tue May 12 10:04:04 UTC 2020 - cloud-devel@suse.de
 
 - update to version 1.32.0

@@ -17,19 +17,18 @@
 
 
 Name:           python-stevedore
-Version:        1.32.0
+Version:        3.2.2
 Release:        0
 Summary:        Manage dynamic plugins for Python applications
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/stevedore/
-Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-1.32.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/stevedore/stevedore-3.2.2.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-docutils
 BuildRequires:  python3-mock
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-testtools
 BuildArch:      noarch
 
@@ -47,8 +46,9 @@ dynamically loaded extensions.
 %package -n python3-stevedore
 Summary:        Manage dynamic plugins for Python applications
 Group:          Development/Languages/Python
+Requires:       python3-importlib-metadata >= 1.7.0
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 
 %description -n python3-stevedore
 Python makes loading code dynamically easy, allowing you to configure
@@ -90,7 +90,7 @@ This package contains documentation in HTML format.
 %py3_build
 
 # generate html docs
-PBR_VERSION=1.32.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.2.2 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 # remove the Sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
