@@ -330,6 +330,7 @@ Ignore: libsystemd0-mini:this-is-only-for-build-envs
 Ignore: libudev-mini1:this-is-only-for-build-envs
 Ignore: libunbound-devel-mini:this-is-only-for-build-envs
 Ignore: postgresql12-devel-mini:this-is-only-for-build-envs
+Ignore: postgresql13-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
 
