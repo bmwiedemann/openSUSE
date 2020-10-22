@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 20 18:34:17 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix URL in .spec file
+
+-------------------------------------------------------------------
 Tue Sep 29 01:23:22 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - drop cs8-build-fix.patch, upstreamed

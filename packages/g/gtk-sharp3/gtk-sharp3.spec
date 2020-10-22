@@ -24,7 +24,7 @@ Release:        0
 Summary:        C-Sharp Language Bindings for GTK+
 License:        GPL-2.0-only
 Group:          System/GUI/GNOME
-URL:            https:/github.com/mono/gtk-sharp
+URL:            https://github.com/mono/gtk-sharp
 Source:         gtk-sharp3-%{vsuffix}.tar.xz
 Source99:       create-source-archive.sh
 Patch1:         profiler-update.patch
