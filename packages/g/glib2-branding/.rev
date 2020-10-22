@@ -110,4 +110,13 @@
   * update background color for SLE. (forwarded request 835426 from fcrozat)</comment>
     <requestid>836042</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>7c0830a3c22abec3924047d5fcf7f5d2</srcmd5>
+    <version>15</version>
+    <time>1603369319</time>
+    <user>dimstar_suse</user>
+    <comment>- Add priority of 20 to gschema override, otherwise you can't
+  override it (forwarded request 842123 from gmbr3)</comment>
+    <requestid>842549</requestid>
+  </revision>
 </revisionlist>

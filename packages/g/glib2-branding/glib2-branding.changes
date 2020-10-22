@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 11 17:39:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add priority of 20 to gschema override, otherwise you can't
+  override it
+
+-------------------------------------------------------------------
 Fri Sep 18 12:36:04 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Update .gschema.override.in (jsc#SLE-14772):

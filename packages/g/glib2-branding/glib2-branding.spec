@@ -98,21 +98,21 @@ sed "s:@@IF_openSUSE@@::g" < glib2-branding.gschema.override | \
 %if 0%{?sle_version}
     sed "s:@@IF_LEAP@@::g" | \
 %endif
-    grep -v ^@@IF_ > %{branding_name}-branding.gschema.override
+    grep -v ^@@IF_ > 20_%{branding_name}-branding.gschema.override
 %endif
 %if 0%{?build_SLE}
-sed "s:@@IF_SLE@@::g" < glib2-branding.gschema.override | grep -v ^@@IF_ > %{branding_name}-branding.gschema.override
+sed "s:@@IF_SLE@@::g" < glib2-branding.gschema.override | grep -v ^@@IF_ > 20_%{branding_name}-branding.gschema.override
 %endif
 
 %install
 install -d %{buildroot}%{_sysconfdir}
 install -m0644 gnome_defaults.conf %{buildroot}%{_sysconfdir}/
 install -d %{buildroot}%{_datadir}/glib-2.0/schemas
-install -m0644 %{branding_name}-branding.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
+install -m0644 20_%{branding_name}-branding.gschema.override %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 %files -n gio-branding-%{branding_name}
 %license COPYING
 %config (noreplace) %{_sysconfdir}/gnome_defaults.conf
-%{_datadir}/glib-2.0/schemas/%{branding_name}-branding.gschema.override
+%{_datadir}/glib-2.0/schemas/20_%{branding_name}-branding.gschema.override
 
 %changelog
