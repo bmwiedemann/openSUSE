@@ -896,4 +896,12 @@
     <comment></comment>
     <requestid>842136</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>d216d47e2423c8a3d5949745dd8c9424</srcmd5>
+    <version>5.20.1.1</version>
+    <time>1603369493</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843127</requestid>
+  </revision>
 </revisionlist>
