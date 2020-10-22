@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 21 11:38:16 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 2.40008
+   see /usr/share/doc/packages/perl-Net-AMQP-RabbitMQ/Changes
+
+  2.40008 - 2020-09-30
+      - Merged #195, to update Sectigo CA -  fixes #194
+
+-------------------------------------------------------------------
 Wed Sep 30 18:53:53 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - updated license to MPL-1.1 

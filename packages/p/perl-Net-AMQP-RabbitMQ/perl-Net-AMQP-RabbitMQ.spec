@@ -17,21 +17,25 @@
 
 
 Name:           perl-Net-AMQP-RabbitMQ
-Version:        2.40007
+Version:        2.40008
 Release:        0
+#Upstream: MPL
 %define cpan_name Net-AMQP-RabbitMQ
 Summary:        Interact with RabbitMQ over AMQP using librabbitmq
 License:        MPL-1.1
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTEMLE/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  openssl-devel
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Math::Int64) >= 0.34
 Requires:       perl(Math::Int64) >= 0.34
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  openssl-devel
+# MANUAL END
 
 %description
 'Net::AMQP::RabbitMQ' provides a simple wrapper around the librabbitmq
@@ -50,9 +54,8 @@ perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 make %{?_smp_mflags}
 
 %check
-# disabled because checks need network connection
-# while testing which breaks in OBS
-# make test
+# MANUAL no testing (needs network)
+#make test
 
 %install
 %perl_make_install
@@ -61,7 +64,7 @@ make %{?_smp_mflags}
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes net-amqp-rabbitmq.sublime-project
+%doc Changes CONTRIBUTING.md README.md
 %license LICENSE LICENSE-MIT
 
 %changelog
