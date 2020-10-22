@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Mon Oct 19 10:40:34 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#774
+- extended queries of used features (for bsc#1065588)
+- extended unit tests
+- extended integration tests
+- coding style
+- 4.3.51
+
+--------------------------------------------------------------------
 Wed Oct 14 23:40:13 UTC 2020 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
