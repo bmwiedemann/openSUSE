@@ -21,7 +21,7 @@
 %bcond_with browser_extension
 %bcond_without lang
 Name:           plasma-browser-integration
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Helper for the KDE Plasma Browser Integration
 License:        GPL-3.0-or-later
