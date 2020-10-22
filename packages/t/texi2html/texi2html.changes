@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 20:11:10 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix wrong perl provides for Unicode::EastAsianWidth
+
+-------------------------------------------------------------------
 Sat May  6 13:51:15 UTC 2017 - bwiedemann@suse.com
 
 - Add 03_add_build-date_param.patch from Debian to allow overriding
@@ -53,4 +58,3 @@ Thu Aug  7 18:59:42 UTC 2014 - dmitry_r@opensuse.org
 - Import:
   * texi2html-1.78.dif
   * config-guess-sub-update.patch
-

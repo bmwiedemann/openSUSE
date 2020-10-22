@@ -1,7 +1,7 @@
 #
 # spec file for package texi2html
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           texi2html
 Version:        5.0
 Release:        0
 Summary:        Tool for converting texinfo documents to HTML
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Texinfo
-Url:            http://www.nongnu.org/texi2html/
+URL:            http://www.nongnu.org/texi2html/
 Source0:        http://download.savannah.nongnu.org/releases/texi2html/texi2html-%{version}.tar.bz2
 Patch1:         texi2html-1.78.dif
 Patch2:         texi2html-5584.patch
@@ -31,9 +31,11 @@ BuildRequires:  perl
 BuildRequires:  perl-Text-Unidecode
 BuildRequires:  perl-gettext
 BuildRequires:  perl-libintl-perl
+BuildRequires:  perl(Unicode::EastAsianWidth)
 Requires:       perl-Text-Unidecode
 Requires:       perl-gettext
 Requires:       perl-libintl-perl
+Requires:       perl(Unicode::EastAsianWidth)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Conflicts:      texinfo < 5.0
@@ -63,7 +65,13 @@ touch translations.pl
 LANG=POSIX
 LC_ALL=POSIX
 export LANG LC_ALL
-%configure --enable-nls --with-encode --with-gnu-ld --with-unidecode --with-external-libintl-perl
+%configure \
+  --enable-nls \
+  --with-encode \
+  --with-gnu-ld \
+  --with-unidecode \
+  --with-external-libintl-perl \
+  --with-external-Unicode-EastAsianWidth
 
 make %{?_smp_mflags}
 
@@ -71,7 +79,7 @@ make %{?_smp_mflags}
 %make_install
 rm -rf %{buildroot}%{_datadir}/texinfo/
 rm -rf %{buildroot}%{_datadir}/locale/*.us-ascii
-rm -rf %{buildroot}%{_datadir}/%{name}/lib/libintl-perl/
+rm -rf %{buildroot}%{_datadir}/%{name}/lib
 
 %find_lang %name
 %find_lang %{name}_document
