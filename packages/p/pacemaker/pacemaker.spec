@@ -55,6 +55,8 @@
 
 %define _rundir /run
 
+%global hacluster_id 90
+
 ## Path to Python interpreter (leave commented to auto-detect,
 ## or uncomment and edit to use a specific version)
 %global python_path /usr/bin/python%{python3_version}
@@ -78,13 +80,13 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.0.4+20200616.2deceaa3a
+Version:        2.0.4+20200702.813fdbfdc
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
-Url:            http://www.clusterlabs.org
+Url:            https://www.clusterlabs.org/
 # Hint: use "spectool -s 0 pacemaker.spec" (rpmdevtools) to check the final URL:
 # https://github.com/ClusterLabs/pacemaker/archive/e91769e5a39f5cb2f7b097d3c612368f0530535e/pacemaker-e91769e.tar.gz
 Source0:        %{name}-%{version}.tar.xz
@@ -459,8 +461,8 @@ fi
 %service_del_postun crm_mon.service
 
 %pre -n libpacemaker3
-getent group %{gname} >/dev/null || groupadd -r %{gname} -g 189
-getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nologin -c "cluster user" %{uname}
+getent group %{gname} >/dev/null || groupadd -r %{gname} -g %{hacluster_id}
+getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u %{hacluster_id} -s /sbin/nologin -c "cluster user" %{uname}
 exit 0
 
 %post -n libpacemaker3 -p /sbin/ldconfig

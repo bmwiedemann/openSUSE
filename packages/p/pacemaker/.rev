@@ -1707,4 +1707,41 @@
 - crm_mon: NULL output-pointer when buffer is freed (forwarded request 819984 from yan_gao)</comment>
     <requestid>819985</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>4bd803d30f388d227dbafc6092b570ea</srcmd5>
+    <version>2.0.4+20200702.813fdbfdc</version>
+    <time>1603448406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.4+20200702.813fdbfdc:
+- libcrmcommon: deprecate create_hello_message() as public API (bsc#1170346, rh#1796824)
+- pacemakerd: properly conditionalize corosync calls (bsc#1170346, rh#1796824)
+- pacemakerd: use existing handle for corosync shutdown (bsc#1170346, rh#1796824)
+- pacemakerd: improve messages (bsc#1170346, rh#1796824)
+- pacemakerd: functionize removing core file limit (bsc#1170346, rh#1796824)
+- pacemakerd: remove unneeded IPC and CPG commands (bsc#1170346, rh#1796824)
+- tools: crm_node -l and -p now work from Pacemaker Remote nodes (bsc#1170346, rh#1796824)
+- functionize numeric comparisons of strings (bsc#1170346, rh#1796824)
+- controller: add new IPC API command for getting node list (bsc#1170346, rh#1796824)
+
+- Update to version 2.0.4+20200701.556cef416:
+- tools: convert crmadmin to use new controller IPC model (bsc#1170346, rh#1796824)
+- tools: remove dead code from crm_node (bsc#1170346, rh#1796824)
+- tools: convert crm_node to use new controller IPC model (bsc#1170346, rh#1796824)
+- tools: convert crm_resource to use new controller IPC model (bsc#1170346, rh#1796824)
+- libcrmcommon: add C API for controller IPC (bsc#1170346, rh#1796824)
+- libcrmcommon: new model for daemon IPC API (bsc#1170346, rh#1796824)
+
+- Update to version 2.0.4+20200630.107af1896:
+- tools, libs: Use pcmk__str_any_of and pcmk__str_all_of.
+- libcrmcommon: Add pcmk__str_any_of and pcmk__str_none_of.
+
+- Update to version 2.0.4+20200624.67a6a9b31:
+- lib, tools: Correct types given to PCMK__OUTPUT_ARGS.
+
+- Update to version 2.0.4+20200623.e36fe309d:
+- sysconfig: remove outdated reference to wildcards in PCMK_trace_files
+- rpm: use https in package URL
+- resources: don't check host-specific conditions in attribute validate (forwarded request 842719 from yan_gao)</comment>
+    <requestid>842721</requestid>
+  </revision>
 </revisionlist>

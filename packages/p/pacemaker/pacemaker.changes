@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Aug 25 11:37:48 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200702.813fdbfdc:
+- libcrmcommon: deprecate create_hello_message() as public API (bsc#1170346, rh#1796824)
+- pacemakerd: properly conditionalize corosync calls (bsc#1170346, rh#1796824)
+- pacemakerd: use existing handle for corosync shutdown (bsc#1170346, rh#1796824)
+- pacemakerd: improve messages (bsc#1170346, rh#1796824)
+- pacemakerd: functionize removing core file limit (bsc#1170346, rh#1796824)
+- pacemakerd: remove unneeded IPC and CPG commands (bsc#1170346, rh#1796824)
+- tools: crm_node -l and -p now work from Pacemaker Remote nodes (bsc#1170346, rh#1796824)
+- functionize numeric comparisons of strings (bsc#1170346, rh#1796824)
+- controller: add new IPC API command for getting node list (bsc#1170346, rh#1796824)
+
+-------------------------------------------------------------------
+Tue Aug 25 11:26:47 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200701.556cef416:
+- tools: convert crmadmin to use new controller IPC model (bsc#1170346, rh#1796824)
+- tools: remove dead code from crm_node (bsc#1170346, rh#1796824)
+- tools: convert crm_node to use new controller IPC model (bsc#1170346, rh#1796824)
+- tools: convert crm_resource to use new controller IPC model (bsc#1170346, rh#1796824)
+- libcrmcommon: add C API for controller IPC (bsc#1170346, rh#1796824)
+- libcrmcommon: new model for daemon IPC API (bsc#1170346, rh#1796824)
+
+-------------------------------------------------------------------
+Tue Aug 25 11:05:13 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200630.107af1896:
+- tools, libs: Use pcmk__str_any_of and pcmk__str_all_of.
+- libcrmcommon: Add pcmk__str_any_of and pcmk__str_none_of.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:01:08 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200624.67a6a9b31:
+- lib, tools: Correct types given to PCMK__OUTPUT_ARGS.
+
+-------------------------------------------------------------------
+Mon Aug 24 18:04:07 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200623.e36fe309d:
+- sysconfig: remove outdated reference to wildcards in PCMK_trace_files
+- rpm: use https in package URL
+- resources: don't check host-specific conditions in attribute validate
+
+-------------------------------------------------------------------
+Mon Aug 24 17:49:42 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200622.c7e75c04b:
+- libpacemaker: Don't allow a potential NULL in a format string.
+
+-------------------------------------------------------------------
+Mon Aug 24 17:10:48 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200622.4bb3b23a2:
+- libcrmcommon: bump CRM feature set
+- scheduler: support "demote" choice for no-quorum-policy option (rh#1837747)
+- scheduler: new on-fail="demote" recovery policy for promoted resources (rh#1837747)
+- xml: add on-fail="demote" option to resources schema (rh#1837747)
+- libpacemaker: check for re-promotes specifically
+- libpacemaker: don't force stop when skipping reload of failed resource
+- scheduler: disallow on-fail=stop for stop operations
+
+-------------------------------------------------------------------
+Mon Aug 24 16:20:06 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200520.81d4b3976:
+- xml: Add rsc_expression and op_expression to the XML schema. (rh#1628701)
+- scheduler: Pass rsc_defaults and op_defaults data. (rh#1628701)
+- scheduler: Add new rule tests for op_defaults and rsc_defaults. (rh#1628701)
+
+-------------------------------------------------------------------
+Mon Aug 24 15:35:51 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.4+20200508.3f6514f01:
+- tools: functionize listing nodes from CIB in crmadmin (bsc#1170346, rh#1796824)
+- tools: use proper type for glib timeout value in crmadmin (bsc#1170346, rh#1796824)
+- tools: handle memory cleanup better in crm_node (bsc#1170346, rh#1796824)
+- libcrmcommon: new function for draining and quitting a main loop (bsc#1170346, rh#1796824)
+- libcrmcommon: drop generate_hash_key() (bsc#1170346, rh#1796824)
+- libcrmcommon: move get_message_xml() and add_message_xml() definition (bsc#1170346, rh#1796824)
+- libcrmcommon: separate IPC code into multiple files (bsc#1170346, rh#1796824)
+- libcrmcommon: combine IPC internal headers (bsc#1170346, rh#1796824)
+
+-------------------------------------------------------------------
+Wed Aug 12 13:45:41 UTC 2020 - Yan Gao <ygao@suse.com>
+
+- rpm: use the user/group ID 90 for haclient/hacluster to be consistent with cluster-glue (bsc#1167171)
+
+-------------------------------------------------------------------
 Tue Jul  7 09:47:46 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
@@ -553,7 +643,7 @@ Thu Aug 08 11:10:39 UTC 2019 - Yan Gao <ygao@suse.com>
 - extra: handle run-as-user properly in ClusterMon
 - extra: advertise promote and demote in Stateful meta-data
 - extra: formally deprecate the ocf:pacemaker:pingd agent
-- extra: quote shell variables in agent code where appropriate
+- extra: quote shell variables in agent code where appropriate (bsc#1175557)
 - extra: use ":=" where appropriate in agent code
 
 -------------------------------------------------------------------
@@ -913,7 +1003,7 @@ Fri Jan 11 10:11:05 UTC 2019 - ygao@suse.com
 - tools: Fix moving a resource with a lifetime constraint (bsc#1155290)
 - attrd: check for alert changes after CIB is replaced
 - attrd: start new election if writer is lost
-- attrd: handle shutdown more cleanly
+- attrd: handle shutdown more cleanly (bsc#1173668)
 - attrd: don't start a new election when receiving a client update
 - attrd: clear lost updates
 - attrd: don't delay re-attempted writes unless original failed
