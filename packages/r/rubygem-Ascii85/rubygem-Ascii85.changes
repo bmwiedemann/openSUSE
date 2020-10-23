@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Thu Feb  8 05:49:31 UTC 2018 - coolo@suse.com
+
+- updated to version 1.0.3
+ see installed History.txt
+
+  === 1.0.3 / 2018-01-25
+  
+    * Updated the gem's metadata
+
+-------------------------------------------------------------------
+Tue Sep 30 11:41:58 UTC 2014 - mrueckert@suse.de
+
+- update to new packaging scheme
+
+-------------------------------------------------------------------
+Tue Sep 18 18:54:00 UTC 2012 - coolo@suse.com
+
+- updated to version 1.0.2
+   * Changed test runner from RSpec to MiniSpec
+   * Support for rubygems-test
+   * Minor changes to make packaging easier
+
+-------------------------------------------------------------------
+Mon Jul 30 20:23:10 UTC 2012 - coolo@suse.com
+
+- initial package
+
