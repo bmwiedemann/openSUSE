@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Oct 22 05:55:43 UTC 2020 - jenting.hsiao@suse.com
+
+- Update to version v0.16.1:
+  * Bump to version 0.16.1 and added changelogs
+  * Remove the quick switcher header to make it same as before
+  * Workaround for Clarity input control styling problem
+  * update datagrid and button-group to use marked directly
+  * add trustedContent flag for markdown
+  * Keep logs scrolled to bottom when selecting container or time
+  * Change redirect path when switching namespaces to be more intuitive
+  * Move breadcrumb/title generation to tab component
+
