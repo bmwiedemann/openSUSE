@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:14:31 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1603368860.d92dff65:
+  * tests: Reduce timeout for isotovideo execution/shutdown
+
+-------------------------------------------------------------------
 Wed Oct 14 05:31:51 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1602650385.42f51057:
