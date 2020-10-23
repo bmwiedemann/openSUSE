@@ -16,9 +16,9 @@
 #
 
 
-%define freetype_version 2.10.2
+%define freetype_version 2.10.4
 Name:           ft2demos
-Version:        2.10.2
+Version:        2.10.4
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
@@ -189,6 +189,7 @@ pushd ..
     make %{?_smp_mflags}
 
     cd src/ftinspect
+    sed -i s/"-isystem "/"-I "/ ftinspect.pro
     qmake-qt5 ftinspect.pro
     make
 popd

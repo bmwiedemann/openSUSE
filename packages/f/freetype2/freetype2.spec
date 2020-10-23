@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.10.2
+%define doc_version 2.10.4
 Name:           freetype2
-Version:        2.10.2
+Version:        2.10.4
 Release:        0
 Summary:        A TrueType Font Library
 License:        SUSE-Freetype OR GPL-2.0-or-later

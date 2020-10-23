@@ -850,4 +850,29 @@
 - Add BR on pkgconfig(libbrotlidec) for ftinspect</comment>
     <requestid>802021</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7c946dc8816c181c8bed4fa6ba62b319</srcmd5>
+    <version>2.10.4</version>
+    <time>1603448342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.4
+  * Fix a heap buffer overflow has been found  in the handling of embedded
+    PNG bitmaps, introduced in FreeType version 2.6 (CVE-2020-15999 bsc#1177914)
+  * Minor improvements to the B/W rasterizer.
+  * Auto-hinter support for Medefaidrin script.
+  * Fix various  memory leaks (mainly  for CFF) and other  issues that
+    might cause crashes in rare circumstances.
+
+- Update to version 2.10.4
+  * In  `ftview', custom  LCD  filter values  are  now normalized  and
+    balanced.  Unorthodox filters are still available through the `-L'
+    command line option.
+  * The GUI demo programs can now be resized.
+  * Demo programs that accept command  line option `-k' can now handle
+    function keys, too.  The  corresponding character codes start with
+    0xF1.  As  an example, the  POSIX shell syntax (accepted  by bash,
+    ksh, and zsh) -k $'\xF3q' emulates the pressing of function key `F3'
+    followed by key `q'.</comment>
+    <requestid>842789</requestid>
+  </revision>
 </revisionlist>

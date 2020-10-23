@@ -1,10 +1,10 @@
-Index: freetype-2.10.0/include/freetype/config/ftoption.h
+Index: freetype-2.10.4/include/freetype/config/ftoption.h
 ===================================================================
---- freetype-2.10.0.orig/include/freetype/config/ftoption.h
-+++ freetype-2.10.0/include/freetype/config/ftoption.h
-@@ -126,7 +126,7 @@ FT_BEGIN_HEADER
-    * macro is not defined, FreeType offers alternative LCD rendering
-    * technology that produces excellent output without LCD filtering.
+--- freetype-2.10.4.orig/include/freetype/config/ftoption.h
++++ freetype-2.10.4/include/freetype/config/ftoption.h
+@@ -124,7 +124,7 @@ FT_BEGIN_HEADER
+    * When this macro is not defined, FreeType offers alternative LCD
+    * rendering technology that produces excellent output.
     */
 -/* #define FT_CONFIG_OPTION_SUBPIXEL_RENDERING */
 +#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING

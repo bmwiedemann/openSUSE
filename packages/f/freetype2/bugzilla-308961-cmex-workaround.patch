@@ -2,11 +2,11 @@
  src/base/ftobjs.c |    5 +++++
  1 file changed, 5 insertions(+)
 
-Index: freetype-2.10.0/src/base/ftobjs.c
+Index: freetype-2.10.4/src/base/ftobjs.c
 ===================================================================
---- freetype-2.10.0.orig/src/base/ftobjs.c
-+++ freetype-2.10.0/src/base/ftobjs.c
-@@ -2584,6 +2584,11 @@
+--- freetype-2.10.4.orig/src/base/ftobjs.c
++++ freetype-2.10.4/src/base/ftobjs.c
+@@ -2602,6 +2602,11 @@
  
      if ( FT_IS_SCALABLE( face ) )
      {

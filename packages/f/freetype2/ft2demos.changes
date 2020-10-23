@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 20 09:40:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.10.4
+  * In  `ftview', custom  LCD  filter values  are  now normalized  and
+    balanced.  Unorthodox filters are still available through the `-L'
+    command line option.
+  * The GUI demo programs can now be resized.
+  * Demo programs that accept command  line option `-k' can now handle
+    function keys, too.  The  corresponding character codes start with
+    0xF1.  As  an example, the  POSIX shell syntax (accepted  by bash,
+    ksh, and zsh) -k $'\xF3q' emulates the pressing of function key `F3'
+    followed by key `q'.
+
+-------------------------------------------------------------------
 Sat May  9 10:26:07 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.10.2

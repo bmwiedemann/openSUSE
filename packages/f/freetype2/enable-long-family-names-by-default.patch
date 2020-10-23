@@ -1,8 +1,8 @@
-Index: freetype-2.10.0/include/freetype/config/ftoption.h
+Index: freetype-2.10.4/include/freetype/config/ftoption.h
 ===================================================================
---- freetype-2.10.0.orig/include/freetype/config/ftoption.h
-+++ freetype-2.10.0/include/freetype/config/ftoption.h
-@@ -847,7 +847,7 @@ FT_BEGIN_HEADER
+--- freetype-2.10.4.orig/include/freetype/config/ftoption.h
++++ freetype-2.10.4/include/freetype/config/ftoption.h
+@@ -861,7 +861,7 @@ FT_BEGIN_HEADER
     * If this option is activated, it can be controlled with the
     * `no-long-family-names` property of the 'pcf' driver module.
     */

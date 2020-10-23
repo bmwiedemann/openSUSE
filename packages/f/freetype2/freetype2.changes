@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 09:38:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 2.10.4
+  * Fix a heap buffer overflow has been found  in the handling of embedded
+    PNG bitmaps, introduced in FreeType version 2.6 (CVE-2020-15999 bsc#1177914)
+  * Minor improvements to the B/W rasterizer.
+  * Auto-hinter support for Medefaidrin script.
+  * Fix various  memory leaks (mainly  for CFF) and other  issues that
+    might cause crashes in rare circumstances.
+
+-------------------------------------------------------------------
 Sat May  9 10:24:29 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.10.2

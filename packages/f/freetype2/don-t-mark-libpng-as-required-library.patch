@@ -1,7 +1,7 @@
-Index: freetype-2.10.2/builds/unix/configure
+Index: freetype-2.10.4/builds/unix/configure
 ===================================================================
---- freetype-2.10.2.orig/builds/unix/configure
-+++ freetype-2.10.2/builds/unix/configure
+--- freetype-2.10.4.orig/builds/unix/configure
++++ freetype-2.10.4/builds/unix/configure
 @@ -15014,7 +15014,6 @@ fi
  # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
@@ -26,10 +26,10 @@ Index: freetype-2.10.2/builds/unix/configure
                     $harfbuzz_libsstaticconf \
                     $brotli_libsstaticconf   \
                     $ft2_extra_libs"
-Index: freetype-2.10.2/builds/unix/configure.raw
+Index: freetype-2.10.4/builds/unix/configure.raw
 ===================================================================
---- freetype-2.10.2.orig/builds/unix/configure.raw
-+++ freetype-2.10.2/builds/unix/configure.raw
+--- freetype-2.10.4.orig/builds/unix/configure.raw
++++ freetype-2.10.4/builds/unix/configure.raw
 @@ -1039,7 +1039,6 @@ fi
  # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
