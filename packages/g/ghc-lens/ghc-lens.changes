@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:30 UTC 2020 - psimons@suse.com
+
+- Update lens to version 4.19.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:39 UTC 2020 - psimons@suse.com
 
 - Update lens to version 4.19.2 revision 1.
