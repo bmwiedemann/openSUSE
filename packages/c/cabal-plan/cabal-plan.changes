@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 19 02:00:56 UTC 2020 - psimons@suse.com
+
+- Update cabal-plan to version 0.7.2.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cabal-plan-0.7.2.0/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Wed Sep  9 02:00:42 UTC 2020 - psimons@suse.com
 
 - Update cabal-plan to version 0.7.1.0.
