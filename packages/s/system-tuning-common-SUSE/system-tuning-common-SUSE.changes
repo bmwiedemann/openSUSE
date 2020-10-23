@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:23:54 UTC 2020 - Andreas Herrmann <aherrmann@suse.com>
+
+- Remove mq-deadline selection from 60-io-scheduler.rules (bsc#1177490)
+
+-------------------------------------------------------------------
 Mon Feb  3 16:36:45 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
