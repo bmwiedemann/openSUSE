@@ -13,10 +13,10 @@ Fixes: #1979
  Eigen/src/Core/util/Macros.h       | 6 ++++++
  2 files changed, 8 insertions(+), 2 deletions(-)
 
-Index: eigen-eigen-323c052e1731/Eigen/src/Core/arch/NEON/Complex.h
+Index: eigen-3.3.8/Eigen/src/Core/arch/NEON/Complex.h
 ===================================================================
---- eigen-eigen-323c052e1731.orig/Eigen/src/Core/arch/NEON/Complex.h
-+++ eigen-eigen-323c052e1731/Eigen/src/Core/arch/NEON/Complex.h
+--- eigen-3.3.8.orig/Eigen/src/Core/arch/NEON/Complex.h
++++ eigen-3.3.8/Eigen/src/Core/arch/NEON/Complex.h
 @@ -17,7 +17,7 @@ namespace internal {
  
  inline uint32x4_t p4ui_CONJ_XOR() {
@@ -35,10 +35,10 @@ Index: eigen-eigen-323c052e1731/Eigen/src/Core/arch/NEON/Complex.h
    static uint64x2_t p2ul_CONJ_XOR = {0x0, 0x8000000000000000};
  #else
    const uint64_t  p2ul_conj_XOR_DATA[] = { 0x0, 0x8000000000000000 };
-Index: eigen-eigen-323c052e1731/Eigen/src/Core/util/Macros.h
+Index: eigen-3.3.8/Eigen/src/Core/util/Macros.h
 ===================================================================
---- eigen-eigen-323c052e1731.orig/Eigen/src/Core/util/Macros.h
-+++ eigen-eigen-323c052e1731/Eigen/src/Core/util/Macros.h
+--- eigen-3.3.8.orig/Eigen/src/Core/util/Macros.h
++++ eigen-3.3.8/Eigen/src/Core/util/Macros.h
 @@ -35,6 +35,12 @@
    #define EIGEN_COMP_CLANG 0
  #endif

@@ -7,11 +7,11 @@ Subject: [PATCH] Do stack allignment on ppc
  Eigen/src/Core/util/Macros.h |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: eigen-eigen-67e894c6cd8f/Eigen/src/Core/util/Macros.h
+Index: eigen-3.3.8/Eigen/src/Core/util/Macros.h
 ===================================================================
---- eigen-eigen-67e894c6cd8f.orig/Eigen/src/Core/util/Macros.h
-+++ eigen-eigen-67e894c6cd8f/Eigen/src/Core/util/Macros.h
-@@ -701,7 +701,7 @@ namespace Eigen {
+--- eigen-3.3.8.orig/Eigen/src/Core/util/Macros.h
++++ eigen-3.3.8/Eigen/src/Core/util/Macros.h
+@@ -718,7 +718,7 @@ namespace Eigen {
    // certain common platform (compiler+architecture combinations) to avoid these problems.
    // Only static alignment is really problematic (relies on nonstandard compiler extensions),
    // try to keep heap alignment even when we have to disable static alignment.

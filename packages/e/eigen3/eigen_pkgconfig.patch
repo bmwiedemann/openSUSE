@@ -1,6 +1,7 @@
-diff -rupN eigen-eigen-07105f7124f9/eigen3.pc.in eigen-eigen-07105f7124f9-new/eigen3.pc.in
---- eigen-eigen-07105f7124f9/eigen3.pc.in	2016-02-16 14:26:15.000000000 +0100
-+++ eigen-eigen-07105f7124f9-new/eigen3.pc.in	2016-02-20 19:13:19.816842461 +0100
+Index: eigen-3.3.8/eigen3.pc.in
+===================================================================
+--- eigen-3.3.8.orig/eigen3.pc.in
++++ eigen-3.3.8/eigen3.pc.in
 @@ -6,4 +6,4 @@ Description: A C++ template library for
  Requires:
  Version: @EIGEN_VERSION_NUMBER@

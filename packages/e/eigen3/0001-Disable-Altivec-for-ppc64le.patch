@@ -7,11 +7,11 @@ Subject: [PATCH] Disable Altivec for ppc64le
  Eigen/Core |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: eigen-eigen-67e894c6cd8f/Eigen/Core
+Index: eigen-3.3.8/Eigen/Core
 ===================================================================
---- eigen-eigen-67e894c6cd8f.orig/Eigen/Core
-+++ eigen-eigen-67e894c6cd8f/Eigen/Core
-@@ -201,7 +201,7 @@
+--- eigen-3.3.8.orig/Eigen/Core
++++ eigen-3.3.8/Eigen/Core
+@@ -220,7 +220,7 @@
      #undef bool
      #undef vector
      #undef pixel

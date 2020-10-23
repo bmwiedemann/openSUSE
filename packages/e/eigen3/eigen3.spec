@@ -18,6 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %global pkgname eigen3
+%global srcname eigen
 
 %bcond_with tests
 
@@ -26,13 +27,12 @@
 %endif
 
 Name:           eigen3%{?pkgsuffix}
-Version:        3.3.7
+Version:        3.3.8
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
 License:        MPL-2.0 AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            http://eigen.tuxfamily.org/
-Source0:        https://bitbucket.org/eigen/eigen/get/%{version}.tar.bz2#/%{pkgname}-%{version}.tar.bz2
+Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
 Patch1:         0001-Do-stack-allignment-on-ppc.patch
 # PATCH-FIX-OPENSUSE eigen_pkgconfig.patch asterios.dramis@gmail.com -- Fix pkg-config file includedir
@@ -79,7 +79,6 @@ numerical solvers, and related algorithms.
 
 %package devel
 Summary:        C++ Template Library for Linear Algebra
-Group:          Development/Libraries/C and C++
 # libeigen3-devel was last used at openSUSE 13.1 (version 3.2.0)
 Provides:       libeigen3-devel = %{version}
 Obsoletes:      libeigen3-devel < %{version}
@@ -90,7 +89,6 @@ numerical solvers, and related algorithms.
 
 %if "%{flavor}" == "docs"
 Summary:        Documentation for the Eigen3 C++ Template Library for Linear Algebra
-Group:          Documentation/HTML
 
 %description
 Documentation in HTML format for the Eigen3 C++ Template Library
@@ -98,7 +96,7 @@ for Linear Algebra
 %endif
 
 %prep
-%setup -q -n eigen-eigen-323c052e1731
+%setup -q -n %{srcname}-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -115,7 +113,7 @@ echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
 %build
 %cmake \
  -DCMAKE_BUILD_TYPE=Release \
- -DINCLUDE_INSTALL_DIR=%{_includedir}/eigen3 \
+ -DINCLUDE_INSTALL_DIR=include/eigen3 \
  -DGOOGLEHASH_INCLUDES=%{_includedir}
 
 %if "%{flavor}" == ""

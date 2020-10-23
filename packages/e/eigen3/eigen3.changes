@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Thu Oct 15 13:23:17 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.8:
+  * General bug fixes:
+    - Issue #1995: Fix a failure in the GEBP kernel when using
+      small L1 cache sizes, OpenMP and FMA.
+    - Issue #1990: Make CMake accept installation paths relative
+      to CMAKE_INSTALL_PREFIX.
+    - Issue #1974: Fix issue when reserving an empty sparse matrix
+    - Issue #1823: Fix incorrect use of std::abs
+    - Issue #1788: Fix rule-of-three violations inside the stable
+      modules. This fixes deprecated-copy warnings when compiling
+      with GCC>=9. Also protect some additional Base-constructors
+      from getting called by user code code (Issue #1587)
+    - Issue #1796: Make matrix squareroot usable for Map and Ref
+      types.
+    - Issue #1281: Fix AutoDiffScalar's make_coherent for nested
+      expression of constant ADs.
+    - Issue #1761: Fall back is_integral to std::is_integral in
+      c++11 and fix internal::is_integral<size_t/ptrdiff_t> with
+      MSVC 2013 and older.
+    - Issue #1741: Fix self-adjoint*matrix, triangular*matrix, and
+      triangular^1*matrix with a destination having a non-trivial
+      inner-stride.
+    - Issue #1741: Fix SelfAdjointView::rankUpdate and product to
+      triangular part for destination with non-trivial inner
+      stride.
+    - Issue #1741: Fix C.noalias() = A*C; with C.innerStride()!=1.
+    - Issue #1695: Fix a numerical robustness issue in BDCSVD.
+    - Issue #1692: Enable enum as sizes of Matrix and Array.
+    - Issue #1689: Fix used-but-marked-unused warning.
+    - Issue #1679: Avoid possible division by 0 in complex-schur.
+    - Issue #1676: Fix C++17 template deduction in DenseBase.
+    - Issue #1669: Fix PartialPivLU/inverse with zero-sized
+      matrices.
+    - Issue #1557: Fix RealSchur and EigenSolver for matrices with
+      only zeros on the diagonal.
+  * Performance related fixes:
+    - Issue #1562: Optimize evaluation of small products of the
+      form s*A*B by rewriting them as: s*(A.lazyProduct(B)) to
+      save a costly temporary. Measured speedup from 2x to 5x...
+    - Fix performance issue with SimplicialLDLT for complexes
+      coefficients.
+  * Misc fixes:
+    - Fix QuaternionBase::cast for quaternion map and wrapper.
+    - Fix case issue with Lapack unit tests.
+    - Fix possible conflict with an externally defined "real" type
+      when using gcc-5.
+    - Provide numext::[u]int{32,64}_t.
+    - Initialize isometric transforms like affine transforms.
+    - Change typedefs from private to protected to fix MSVC
+      compilation.
+    - Fix compilation of FFTW unit test.
+    - Fix compilation of BLAS backend and frontend.
+    - Fix real/imag namespace conflict.
+    - Avoid throwing in destructors.
+    - Fix precision issue in SelfAdjointEigenSolver.h
+    - Make digits10() return an integer.
+    - Use pade for matrix exponential also for complex values.
+    - Cast Index to RealScalar in SVDBase to fix an issue when
+      RealScalar is not implicitly convertible to Index.
+    - Provide EIGEN_HAS_C99_MATH when using MSVC.
+    - Various fixes in polynomial solver and its unit tests.
+    - nd 4415d4e2d: Extend polynomial solver unit tests to
+      complexes.
+    - Automatically switch between EigenSolver and
+      ComplexEigenSolver, and fix a few Real versus Scalar issues.
+    - Enable construction of Ref<VectorType> from a runtime
+      vector.
+    - Fix a problem of old gcc versions having problems with
+      recursive #pragma GCC diagnostic push/pop.
+    - Fix compilation with expression template scalar type.
+    - Backport AVX512 implementation to 3.3.
+    - Fix StlDeque compilation issue with GCC 10.
+    - Avoid false-positive test results in non-linear optimization
+      tests.
+    - Fix undefined behaviour caused by uncaught exceptions in OMP
+      section of parallel GEBP kernel.
+    - Fix a bug with half-precision floats on GPUs.
+  * Fixed warnings:
+    - Fix some maybe-uninitialized warnings in AmbiVector.h and
+      test bdcsvd.
+    - Silent cmake warnings in Lapack CMakeLists.txt.
+    - Rename variable which shadows class name in Polynomials
+      module.
+    - Workaround gcc's alloc-size-larger-than= warning in
+      DenseStorage.h.
+    - Hide some unused variable warnings in g++8.1 in Tensor
+      contraction mapper.
+    - Fix gcc 8.1 warning: "maybe use uninitialized" in std tests.
+    - Fix always true warning with gcc 4.7in test numext.
+    - Fix nonnull-compare warning in test geo_alignedbox.
+    - Disable ignoring attributes warning in vectorization logic
+      test.
+    - Fix a gcc7 warning about bool * bool in abs2 default
+      implementation.
+    - Fix a warning in SparseSelfAdjointView about a branch
+      statement always evaluation to false.
+- Minor rebase of patches to fix offsets.
+- Specify relative path to includedir as option to cmake as it
+  only accepts paths relative to CMAKE_INSTALL_PREFIX now.
+- Drop Group tags.
+
+-------------------------------------------------------------------
 Thu Sep 17 12:23:42 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add eigen3-CastXML-support-for-aarch64.patch to support CastXML

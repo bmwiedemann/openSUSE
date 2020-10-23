@@ -1,7 +1,8 @@
-diff -rupN eigen-eigen-323c052e1731/CMakeLists.txt eigen-eigen-323c052e1731-new/CMakeLists.txt
---- eigen-eigen-323c052e1731/CMakeLists.txt	2018-12-25 23:10:48.592420583 +0100
-+++ eigen-eigen-323c052e1731-new/CMakeLists.txt	2018-12-25 23:10:48.659420305 +0100
-@@ -531,7 +531,7 @@ set ( EIGEN_VERSION_MAJOR  ${EIGEN_WORLD
+Index: eigen-3.3.8/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/CMakeLists.txt
++++ eigen-3.3.8/CMakeLists.txt
+@@ -536,7 +536,7 @@ set ( EIGEN_VERSION_MAJOR  ${EIGEN_WORLD
  set ( EIGEN_VERSION_MINOR  ${EIGEN_MAJOR_VERSION} )
  set ( EIGEN_VERSION_PATCH  ${EIGEN_MINOR_VERSION} )
  set ( EIGEN_DEFINITIONS "")
