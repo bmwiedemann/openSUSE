@@ -75,4 +75,13 @@ It's licensed under GPLv2.</comment>
     <comment>1</comment>
     <requestid>292509</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cc21692cd5ee1e4e21f13da423778bc4</srcmd5>
+    <version>1.24</version>
+    <time>1603448542</time>
+    <user>dimstar_suse</user>
+    <comment>- fix broken url
+</comment>
+    <requestid>843461</requestid>
+  </revision>
 </revisionlist>

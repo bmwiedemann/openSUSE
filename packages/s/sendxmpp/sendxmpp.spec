@@ -1,7 +1,7 @@
 #
 # spec file for package sendxmpp
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           sendxmpp
 Version:        1.24
-Release:        1
+Release:        0
 Summary:        A perl-script to send xmpp, similar to what mail does for mail
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Talk/Clients
-License:        GPL-2.0
-Url:            http://sendxmpp.platon.sk
+URL:            https://sendxmpp.hostname.sk/
 Source0:        https://github.com/lhost/sendxmpp/archive/v%{version}.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
