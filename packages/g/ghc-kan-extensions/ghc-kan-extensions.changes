@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:17 UTC 2020 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.1.
+  5.2.1 [2020.10.01]
+  ------------------
+  * Allow building with GHC 9.0.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:17 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

@@ -18,7 +18,7 @@
 
 %global pkg_name kan-extensions
 Name:           ghc-%{pkg_name}
-Version:        5.2
+Version:        5.2.1
 Release:        0
 Summary:        Kan extensions, Kan lifts, the Yoneda lemma, and (co)density (co)monads
 License:        BSD-3-Clause
