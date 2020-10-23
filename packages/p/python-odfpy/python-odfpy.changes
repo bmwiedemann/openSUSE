@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  4 15:42:23 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Change license from GPL-2.0-or-later AND Apache-2.0 to
+  GPL-2.0-or-later OR Apache-2.0
+
+-------------------------------------------------------------------
 Thu May 21 06:55:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -24,7 +24,7 @@ Name:           python-%{modname}
 Version:        1.4.1
 Release:        0
 Summary:        Python API and tools to manipulate OpenDocument files
-License:        GPL-2.0-or-later AND Apache-2.0
+License:        GPL-2.0-or-later OR Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/eea/odfpy
 Source:         https://files.pythonhosted.org/packages/source/o/odfpy/%{modname}-%{version}.tar.gz
