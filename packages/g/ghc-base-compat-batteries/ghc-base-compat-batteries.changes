@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:15 UTC 2020 - psimons@suse.com
+
+- Update base-compat-batteries to version 0.11.2.
+  ## Changes in 0.11.2 [2020.09.30]
+   - This coincides with the `base-compat-0.11.2` release. Refer to the
+     [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0112-20200930)
+     for more details.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:04 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

@@ -19,7 +19,7 @@
 %global pkg_name base-compat-batteries
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Base-compat with extra batteries
 License:        MIT
