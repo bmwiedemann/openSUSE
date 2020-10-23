@@ -535,4 +535,16 @@
     <comment></comment>
     <requestid>839908</requestid>
   </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>ebf8713e921f1e93d39f3ac376e68616</srcmd5>
+    <version>20200505</version>
+    <time>1603448409</time>
+    <user>dimstar_suse</user>
+    <comment>- Have pattern enhanced_base recommend documentation:
+  patterns-base-documentation in turn recommends man-pages (man cp)
+  and pam-doc (boo#1177828).
+
+- Stop trying to install grub2-branding on ppc64/ppc64le [boo#1171146]</comment>
+    <requestid>842796</requestid>
+  </revision>
 </revisionlist>

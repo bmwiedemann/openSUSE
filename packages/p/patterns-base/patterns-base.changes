@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 20 10:33:19 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have pattern enhanced_base recommend documentation:
+  patterns-base-documentation in turn recommends man-pages (man cp)
+  and pam-doc (boo#1177828).
+
+-------------------------------------------------------------------
 Tue Oct  6 04:59:22 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Handle the yast pattern split into basis, desktop and server (boo#1159875)
@@ -17,7 +24,7 @@ Mon Jul 27 09:59:08 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Wed Jul 22 14:23:49 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Stop trying to install grub2-branding on ppc64/ppc64le [boo#1171146] 
+- Stop trying to install grub2-branding on ppc64/ppc64le [boo#1171146]
 
 -------------------------------------------------------------------
 Wed Jun 10 13:07:04 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>

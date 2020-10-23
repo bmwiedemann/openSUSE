@@ -306,6 +306,7 @@ Provides:       pattern-visible()
 %obsolete_legacy_pattern enhanced_base
 Requires:       pattern() = base
 Recommends:     pattern() = apparmor
+Recommends:     pattern() = documentation
 Recommends:     pattern() = sw_management
 Recommends:     pattern() = yast2_basis
 
