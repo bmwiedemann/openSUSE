@@ -19,7 +19,7 @@
 %define kf5_version 5.58.0
 %bcond_without lang
 Name:           plasma-vault
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
