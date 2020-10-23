@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  9 10:40:09 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.18.156
+  + For detailed changes see
+    https://github.com/aws/aws-cli/blob/1.18.156/CHANGELOG.rst
+- Drop patches no longer required
+  + hide_py_pckgmgmt.patch
+- Update Requires in spec file from setup.py
+
+-------------------------------------------------------------------
 Mon Sep  7 18:23:37 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.18.133

@@ -17,14 +17,13 @@
 
 
 Name:           aws-cli
-Version:        1.18.133
+Version:        1.18.156
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/aws-cli
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         hide_py_pckgmgmt.patch
 BuildRequires:  fdupes
 Requires:       groff
 Provides:       awscli = %{version}
@@ -35,7 +34,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.0.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.17.56
+Requires:       python3-botocore >= 1.18.15
 Requires:       python3-colorama <= 0.4.4
 Requires:       python3-colorama >= 0.2.5
 Requires:       python3-docutils >= 0.10
@@ -51,7 +50,7 @@ BuildRequires:  python-setuptools
 Requires:       python
 Requires:       python-PyYAML <= 5.4
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.17.56
+Requires:       python-botocore >= 1.18.15
 Requires:       python-colorama <= 0.3.9
 Requires:       python-colorama >= 0.2.5
 Requires:       python-docutils >= 0.10
@@ -69,7 +68,6 @@ from the command line and automated through scripts.
 
 %prep
 %setup -q
-%patch0
 sed -i 's/from botocore\.vendored //' awscli/customizations/awslambda.py
 sed -i 's/botocore\.vendored\.//' awscli/customizations/configure/__init__.py
 
