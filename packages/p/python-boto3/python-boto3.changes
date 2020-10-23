@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Oct  9 10:25:18 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Version update to 1.15.15
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``events``: [``botocore``] Update events client to latest version
+  * api-change:``sns``: [``botocore``] Update sns client to latest version
+  * api-change:``ce``: [``botocore``] Update ce client to latest version
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+  * api-change:``rekognition``: [``botocore``] Update rekognition client to latest version
+- from version 1.15.14
+  * api-change:``mediapackage``: [``botocore``] Update mediapackage client to latest version
+  * api-change:``ce``: [``botocore``] Update ce client to latest version
+  * api-change:``compute-optimizer``: [``botocore``] Update compute-optimizer client to latest version
+  * api-change:``elasticache``: [``botocore``] Update elasticache client to latest version
+- from version 1.15.13
+  * api-change:``dms``: [``botocore``] Update dms client to latest version
+  * api-change:``kinesisanalyticsv2``: [``botocore``] Update kinesisanalyticsv2 client to latest version
+  * api-change:``marketplace-catalog``: [``botocore``] Update marketplace-catalog client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+- from version 1.15.12
+  * api-change:``dynamodbstreams``: [``botocore``] Update dynamodbstreams client to latest version
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``mediaconvert``: [``botocore``] Update mediaconvert client to latest version
+  * api-change:``dynamodb``: [``botocore``] Update dynamodb client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+- from version 1.15.11
+  * api-change:``batch``: [``botocore``] Update batch client to latest version
+  * api-change:``personalize-events``: [``botocore``] Update personalize-events client to latest version
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+  * api-change:``elbv2``: [``botocore``] Update elbv2 client to latest version
+  * api-change:``servicediscovery``: [``botocore``] Update servicediscovery client to latest version
+  * api-change:``s3``: [``botocore``] Update s3 client to latest version
+- from version 1.15.10
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``kafka``: [``botocore``] Update kafka client to latest version
+  * api-change:``appsync``: [``botocore``] Update appsync client to latest version
+  * api-change:``emr``: [``botocore``] Update emr client to latest version
+  * api-change:``wafv2``: [``botocore``] Update wafv2 client to latest version
+  * api-change:``quicksight``: [``botocore``] Update quicksight client to latest version
+- from version 1.15.9
+  * api-change:``datasync``: [``botocore``] Update datasync client to latest version
+  * api-change:``s3control``: [``botocore``] Update s3control client to latest version
+  * api-change:``imagebuilder``: [``botocore``] Update imagebuilder client to latest version
+  * api-change:``securityhub``: [``botocore``] Update securityhub client to latest version
+  * api-change:``iot``: [``botocore``] Update iot client to latest version
+  * api-change:``emr``: [``botocore``] Update emr client to latest version
+  * api-change:``s3outposts``: [``botocore``] Update s3outposts client to latest version
+  * api-change:``application-autoscaling``: [``botocore``] Update application-autoscaling client to latest version
+  * api-change:``directconnect``: [``botocore``] Update directconnect client to latest version
+  * api-change:``s3``: [``botocore``] Update s3 client to latest version
+  * api-change:``mediaconnect``: [``botocore``] Update mediaconnect client to latest version
+  * api-change:``pinpoint``: [``botocore``] Update pinpoint client to latest version
+- from version 1.15.8
+  * api-change:``timestream-write``: [``botocore``] Update timestream-write client to latest version
+  * api-change:``connect``: [``botocore``] Update connect client to latest version
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``schemas``: [``botocore``] Update schemas client to latest version
+  * api-change:``timestream-query``: [``botocore``] Update timestream-query client to latest version
+- from version 1.15.7
+  * api-change:``application-autoscaling``: [``botocore``] Update application-autoscaling client to latest version
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+- from version 1.15.6
+  * api-change:``frauddetector``: [``botocore``] Update frauddetector client to latest version
+  * api-change:``config``: [``botocore``] Update config client to latest version
+  * api-change:``batch``: [``botocore``] Update batch client to latest version
+  * api-change:``docdb``: [``botocore``] Update docdb client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``sts``: [``botocore``] Update sts client to latest version
+- from version 1.15.5
+  * api-change:``transcribe``: [``botocore``] Update transcribe client to latest version
+  * api-change:``textract``: [``botocore``] Update textract client to latest version
+  * api-change:``amplify``: [``botocore``] Update amplify client to latest version
+  * api-change:``eks``: [``botocore``] Update eks client to latest version
+  * api-change:``savingsplans``: [``botocore``] Update savingsplans client to latest version
+  * api-change:``synthetics``: [``botocore``] Update synthetics client to latest version
+- from version 1.15.4
+  * api-change:``translate``: [``botocore``] Update translate client to latest version
+  * api-change:``ce``: [``botocore``] Update ce client to latest version
+  * api-change:``quicksight``: [``botocore``] Update quicksight client to latest version
+  * api-change:``backup``: [``botocore``] Update backup client to latest version
+- from version 1.15.3
+  * api-change:``comprehend``: [``botocore``] Update comprehend client to latest version
+  * api-change:``dynamodbstreams``: [``botocore``] Update dynamodbstreams client to latest version
+  * api-change:``workmail``: [``botocore``] Update workmail client to latest version
+  * api-change:``lex-models``: [``botocore``] Update lex-models client to latest version
+- from version 1.15.2
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``resourcegroupstaggingapi``: [``botocore``] Update resourcegroupstaggingapi client to latest version
+  * api-change:``iotsitewise``: [``botocore``] Update iotsitewise client to latest version
+  * api-change:``events``: [``botocore``] Update events client to latest version
+  * api-change:``resource-groups``: [``botocore``] Update resource-groups client to latest version
+  * api-change:``rds``: [``botocore``] Update rds client to latest version
+- from version 1.15.1
+  * api-change:``medialive``: [``botocore``] Update medialive client to latest version
+  * api-change:``sso-admin``: [``botocore``] Update sso-admin client to latest version
+  * api-change:``codestar-connections``: [``botocore``] Update codestar-connections client to latest version
+- from version 1.15.0
+  * api-change:``kendra``: [``botocore``] Update kendra client to latest version
+  * api-change:``cloudfront``: [``botocore``] Update cloudfront client to latest version
+  * api-change:``comprehend``: [``botocore``] Update comprehend client to latest version
+  * api-change:``apigateway``: [``botocore``] Update apigateway client to latest version
+  * api-change:``es``: [``botocore``] Update es client to latest version
+  * api-change:``apigatewayv2``: [``botocore``] Update apigatewayv2 client to latest version
+  * feature:dependency: [``botocore``] botocore has removed docutils as a required dependency
+- from version 1.14.63
+  * api-change:``servicecatalog``: [``botocore``] Update servicecatalog client to latest version
+  * api-change:``dlm``: [``botocore``] Update dlm client to latest version
+  * api-change:``greengrass``: [``botocore``] Update greengrass client to latest version
+  * api-change:``connect``: [``botocore``] Update connect client to latest version
+  * api-change:``ssm``: [``botocore``] Update ssm client to latest version
+- from version 1.14.62
+  * api-change:``transcribe``: [``botocore``] Update transcribe client to latest version
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``sagemaker``: [``botocore``] Update sagemaker client to latest version
+  * api-change:``medialive``: [``botocore``] Update medialive client to latest version
+  * api-change:``budgets``: [``botocore``] Update budgets client to latest version
+  * api-change:``kafka``: [``botocore``] Update kafka client to latest version
+  * api-change:``kendra``: [``botocore``] Update kendra client to latest version
+  * api-change:``organizations``: [``botocore``] Update organizations client to latest version
+- from version 1.14.61
+  * api-change:``ec2``: [``botocore``] Update ec2 client to latest version
+  * api-change:``managedblockchain``: [``botocore``] Update managedblockchain client to latest version
+  * api-change:``stepfunctions``: [``botocore``] Update stepfunctions client to latest version
+  * api-change:``docdb``: [``botocore``] Update docdb client to latest version
+- from version 1.14.60
+  * api-change:``workspaces``: [``botocore``] Update workspaces client to latest version
+- from version 1.14.59
+  * api-change:``cloudfront``: [``botocore``] Update cloudfront client to latest version
+  * api-change:``ebs``: [``botocore``] Update ebs client to latest version
+  * api-change:``sso-admin``: [``botocore``] Update sso-admin client to latest version
+  * api-change:``s3``: [``botocore``] Update s3 client to latest version
+- from version 1.14.58
+  * api-change:``kinesisanalyticsv2``: [``botocore``] Update kinesisanalyticsv2 client to latest version
+  * api-change:``glue``: [``botocore``] Update glue client to latest version
+  * api-change:``redshift-data``: [``botocore``] Update redshift-data client to latest version
+- from version 1.14.57
+  * api-change:``lex-models``: [``botocore``] Update lex-models client to latest version
+  * api-change:``apigatewayv2``: [``botocore``] Update apigatewayv2 client to latest version
+  * api-change:``codebuild``: [``botocore``] Update codebuild client to latest version
+  * api-change:``quicksight``: [``botocore``] Update quicksight client to latest version
+  * api-change:``elbv2``: [``botocore``] Update elbv2 client to latest version
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Sep  7 12:50:58 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.14.56
