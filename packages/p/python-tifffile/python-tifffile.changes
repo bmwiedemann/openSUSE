@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 18 21:20:20 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2020.9.3.
+  * Do not write contiguous series by default (breaking).
+  * Allow to write to SubIFDs (WIP).
+  * Fix writing F-contiguous numpy arrays.
+- Ignore test_write_ome, test_class_omexml_attributes, 
+  test_class_omexml_multiimage, and test_class_omexml because it 
+  need network connection.
+  
+-------------------------------------------------------------------
 Fri Aug 28 08:59:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Enable testsuite

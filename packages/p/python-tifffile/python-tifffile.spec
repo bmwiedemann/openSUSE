@@ -20,21 +20,24 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tifffile
-Version:        2020.5.30
+Version:        2020.9.3
 Release:        0
 Summary:        Read and write TIFF(r) files
 License:        BSD-2-Clause
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 BuildRequires:  %{python_module imagecodecs >= 2020.2.18}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module numpy >= 1.15.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-imagecodecs >= 2020.2.18
+Requires:       python-lxml
+Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy >= 1.15.1
-Recommends:     python-matplotlib >= 3.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,7 +74,7 @@ sed -i 's/\r//' README.rst
 
 %check
 # skip online tests and tests that OOM
-%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff)'
+%pytest -k 'not (test_issue_infinite_loop or test_func_pformat_xml or test_filehandle_seekable or test_write_compress_lerc or test_write_imagej_raw or test_write_bigtiff or test_write_ome or test_class_omexml_attributes or test_class_omexml_multiimage or test_class_omexml)'
 
 %files %{python_files}
 %doc README.rst
