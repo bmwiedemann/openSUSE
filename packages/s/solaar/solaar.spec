@@ -17,7 +17,7 @@
 
 
 Name:           solaar
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
