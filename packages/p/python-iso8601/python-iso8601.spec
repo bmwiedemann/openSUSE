@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iso8601
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        Python module to parse ISO 8601 dates
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://code.google.com/p/pyiso8601/
+URL:            https://github.com/micktwomey/pyiso8601
 Source:         https://files.pythonhosted.org/packages/source/i/iso8601/iso8601-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 2.4.2}
 BuildRequires:  %{python_module setuptools}
