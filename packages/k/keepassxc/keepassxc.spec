@@ -17,7 +17,7 @@
 
 
 Name:           keepassxc
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Qt5-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
