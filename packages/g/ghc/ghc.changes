@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- force multiversion for subpackages 
+
+-------------------------------------------------------------------
 Sat Oct  3 15:58:52 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add --enable-unregistered to configure phase on unregistered

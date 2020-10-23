@@ -152,6 +152,7 @@ To install all of GHC install package ghc.
 %endif
 
 %if %{defined ghclibdir}
+#!ForceMultiversion
 %ghc_lib_subpackage -d Cabal-3.2.0.0
 %ghc_lib_subpackage -d array-0.5.4.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.1.0
