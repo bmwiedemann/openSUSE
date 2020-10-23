@@ -18,17 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-botocore
-Version:        1.17.56
+Version:        1.18.15
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
 URL:            https://github.com/boto/botocore
 Source:         https://files.pythonhosted.org/packages/source/b/botocore/botocore-%{version}.tar.gz
-Patch0:         hide_py_pckgmgmt.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#boto/botocore#2134 mcepl@suse.com
 # Port test suite from nose to pytest (mostly just plain unittest)
-Patch1:         remove_nose.patch
-BuildRequires:  %{python_module docutils >= 0.10}
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module jmespath < 1.0.0}
 BuildRequires:  %{python_module jmespath >= 0.7.1}
 BuildRequires:  %{python_module python-dateutil <= 3.0.0}
@@ -38,7 +36,6 @@ BuildRequires:  %{python_module urllib3 < 1.26}
 BuildRequires:  %{python_module urllib3 >= 1.20}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-docutils >= 0.10
 Requires:       python-jmespath < 1.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-python-dateutil <= 3.0.0
@@ -53,6 +50,7 @@ BuildArch:      noarch
 BuildRequires:  python
 %endif
 # SECTION Testing requirements
+BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module pluggy >= 0.7}
 BuildRequires:  %{python_module py >= 1.5.0}
 BuildRequires:  %{python_module pytest >= 4.6}
