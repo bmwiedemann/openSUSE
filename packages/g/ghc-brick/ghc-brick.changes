@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:57 UTC 2020 - psimons@suse.com
+
+- Update brick to version 0.57.
+  0.57
+  ----
+
+  Package changes:
+   * Raised lower bound on `vty` to 5.31 to get the new `strikethrough`
+     style.
+
+  New features:
+   * Added support for the `strikethrough` style in Brick theme
+     customization files.
+
+-------------------------------------------------------------------
 Sun Sep 27 02:01:03 UTC 2020 - psimons@suse.com
 
 - Update brick to version 0.56.
