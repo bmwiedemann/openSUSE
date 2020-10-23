@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:37 UTC 2020 - psimons@suse.com
+
+- Update foldl to version 1.4.9 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Sep 28 02:01:38 UTC 2020 - psimons@suse.com
 
 - Update foldl to version 1.4.9.
