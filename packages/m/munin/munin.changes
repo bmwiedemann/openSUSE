@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:17:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- pwdutils is long gone, use shadow
+- Don't hard require systemd
+- Update to 2.0.64
+  * several bugfixes in minor releases
+  https://github.com/munin-monitoring/munin/blob/stable-2.0/ChangeLog
+
+-------------------------------------------------------------------
 Wed Aug 19 10:11:07 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop abusing %{_libexecdir} for the firewalld service files.

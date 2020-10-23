@@ -24,7 +24,7 @@
 %define active_by_default 0
 
 Name:           munin
-Version:        2.0.56
+Version:        2.0.64
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
@@ -56,10 +56,10 @@ BuildRequires:  perl-Log-Log4perl
 BuildRequires:  perl-Net-SNMP
 BuildRequires:  perl-Net-SSLeay
 BuildRequires:  perl-Net-Server
-BuildRequires:  pwdutils
+BuildRequires:  shadow
 BuildRequires:  unzip
 BuildRequires:  perl(Module::Build)
-%{?systemd_requires}
+%{?systemd_ordering}
 BuildRequires:  htmldoc
 BuildRequires:  pkgconfig(systemd)
 Requires:       perl-Date-Manip
@@ -74,8 +74,8 @@ Requires:       perl-Net-Server
 Requires:       perl-URI
 Requires:       perl-base = %{perl_version}
 Requires:       perl-rrdtool
-Requires:       pwdutils
 Requires:       rrdtool
+Requires:       shadow
 Requires:       spawn-fcgi
 Requires:       perl(Munin::Common::Defaults)
 Recommends:     logrotate
@@ -114,12 +114,12 @@ Requires:       perl-Net-Server
 Requires:       perl-base = %{perl_version}
 Requires:       perl-libwww-perl
 Requires:       ps
-Requires:       pwdutils
+Requires:       shadow
 Requires:       sysstat
 # manual requires from certain plugins using "env ..."
 Requires:       python
 Requires:       ruby
-%{?systemd_requires}
+%{?systemd_ordering}
 Requires(pre):  group(nobody)
 Requires(pre):  user(nobody)
 Recommends:     logrotate
@@ -223,7 +223,7 @@ chmod 755 %{dbdir}
 touch %{logdir}/munin-graph.log %{logdir}/munin-html.log %{logdir}/munin-nagios.log %{logdir}/munin-limits.log %{logdir}/munin-update.log
 chown munin:munin %{logdir}/*
 chown root:root %{logdir}/munin-node.log* >/dev/null 2>&1 || true
-systemd-tmpfiles --create /usr/lib/tmpfiles.d/munin.conf
+%tmpfiles_create munin.conf
 %service_add_post munin-cgi-graph.service
 %service_add_post munin-cgi-html.service
 %if 0%{?suse_version} > 1510
@@ -268,7 +268,7 @@ touch %{logdir}/munin-node.log
 chown munin:munin %{logdir}/*
 chown root:root %{logdir}/munin-node.log*
 chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
-%tmpfiles_create /usr/lib/tmpfiles.d/munin-node.conf
+%tmpfiles_create munin-node.conf
 %service_add_post munin-node.service
 %firewalld_reload
 
@@ -381,6 +381,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %config %{_sysconfdir}/logrotate.d/munin-node
 %dir %{perl_vendorlib}/Munin/Common
 %{perl_vendorlib}/Munin/Common/Config.pm
+%{perl_vendorlib}/Munin/Common/Daemon.pm
 %{perl_vendorlib}/Munin/Common/Defaults.pm
 %{perl_vendorlib}/Munin/Common/TLS.pm
 %{perl_vendorlib}/Munin/Common/TLSClient.pm
@@ -415,6 +416,7 @@ chown -R nobody:nobody %{dbdir}/plugin-state/* >/dev/null 2>&1
 %{_mandir}/man1/munindoc.1.gz
 %{_mandir}/man1/munin-get.1.gz
 %{_mandir}/man3/Munin::Common::Config.3pm.gz
+%{_mandir}/man3/Munin::Common::Daemon.3pm.gz
 %{_mandir}/man3/Munin::Common::Defaults.3pm.gz
 %{_mandir}/man3/Munin::Common::TLS.3pm.gz
 %{_mandir}/man3/Munin::Common::TLSClient.3pm.gz
