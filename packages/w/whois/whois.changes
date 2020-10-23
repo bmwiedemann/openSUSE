@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 18 17:57:41 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.5.7:
+  * Implemented support for CIDR queries to whois.arin.net.
+    The old behaviour caused the server to return no results, now when
+    querying for ip/length the server returns a result if there is an
+    exact match.
+
+-------------------------------------------------------------------
 Tue Feb 18 13:37:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - whois 5.5.6:
