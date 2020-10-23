@@ -1468,4 +1468,13 @@
   * Add information as a view.</comment>
     <requestid>840486</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>58a35b0aeb494075123a082acbcd573a</srcmd5>
+    <version>1.4.3</version>
+    <time>1603448558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.3:
+  * Bug fixes.</comment>
+    <requestid>843479</requestid>
+  </revision>
 </revisionlist>
