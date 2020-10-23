@@ -1,6 +1,6 @@
 Name: dhall
 Version: 1.35.0
-x-revision: 1
+x-revision: 2
 Cabal-Version: >=1.10
 Build-Type: Simple
 Tested-With: GHC == 8.4.3, GHC == 8.6.1
@@ -504,7 +504,7 @@ Library
         prettyprinter               >= 1.5.1    && < 1.8 ,
         prettyprinter-ansi-terminal >= 1.1.1    && < 1.2 ,
         pretty-simple                              < 4.1 ,
-        profunctors                 >= 3.1.2    && < 5.6 ,
+        profunctors                 >= 3.1.2    && < 5.7 ,
         repline                     >= 0.4.0.0  && < 0.5 ,
         serialise                   >= 0.2.0.0  && < 0.3 ,
         scientific                  >= 0.3.0.0  && < 0.4 ,
