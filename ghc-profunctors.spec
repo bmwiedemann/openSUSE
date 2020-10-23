@@ -18,7 +18,7 @@
 
 %global pkg_name profunctors
 Name:           ghc-%{pkg_name}
-Version:        5.5.2
+Version:        5.6
 Release:        0
 Summary:        Profunctors
 License:        BSD-3-Clause
