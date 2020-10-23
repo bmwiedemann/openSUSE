@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 23 13:32:26 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1603294467.b176715be:
+  * Retry when rsync error code is 23
+  * branding: Set "blocker" flag automatically in bugzilla bug reports
+  * Fix tour
+  * Improve feature tour test
+  * Add validation to feature tour route and actually respond
+
+-------------------------------------------------------------------
 Wed Oct 21 05:32:07 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1603211536.4498c99a4:
