@@ -16,8 +16,19 @@
 #
 
 
+# Leap before 15.2 doesn't have a new enough QtWebEngine (5.12 is the minimum version)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
+# QtWebEngine is not available on ppc
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+%bcond_without qtwebengine
+%else
+%bcond_with qtwebengine
+%endif
+%else
+%bcond_with qtwebengine
+%endif
 Name:           rkward
-Version:        0.7.1b
+Version:        0.7.2
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
@@ -32,7 +43,6 @@ BuildRequires:  gettext
 BuildRequires:  kconfig-devel
 BuildRequires:  kcoreaddons-devel
 BuildRequires:  kcrash-devel
-BuildRequires:  kdewebkit-devel
 BuildRequires:  kdoctools-devel
 BuildRequires:  kf5-filesystem
 BuildRequires:  ki18n-devel
@@ -47,9 +57,17 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5WebKitWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+%if %{with qtwebengine}
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.12.0
+%else
+BuildRequires:  kdewebkit-devel
+BuildRequires:  cmake(Qt5WebKitWidgets)
+%endif
+Recommends:     kate-plugins
+Suggests:       kbibtex
+Suggests:       pandoc
 # rkward needs the R-base version it was compiled with - boo#993268
 %requires_eq    R-base
 
@@ -70,7 +88,7 @@ intégration dans les suites bureautiques.
 %setup -q
 
 %build
-%cmake_kf5 -d build -- -DNO_R_XML=1
+%cmake_kf5 -d build
 %make_jobs
 
 %install
@@ -98,6 +116,7 @@ intégration dans les suites bureautiques.
 %{_kf5_sharedir}/icons/hicolor/64x64/apps/rkward.png
 %{_kf5_sharedir}/icons/hicolor/128x128/apps/rkward.png
 %{_kf5_sharedir}/icons/hicolor/scalable/apps/rkward.svgz
+%{_kf5_sharedir}/ktexteditor_snippets/
 %{_kf5_bindir}/rkward*
 %{_kf5_libdir}/libexec/
 %{_kf5_sharedir}/rkward/
@@ -126,8 +145,21 @@ intégration dans les suites bureautiques.
 %lang(pt_BR) %{_kf5_sharedir}/rkward/po/pt_BR/
 %lang(sv) %{_kf5_sharedir}/rkward/po/sv/
 %lang(uk) %{_kf5_sharedir}/rkward/po/uk/
-%lang(x-test) %{_kf5_sharedir}/rkward/po/x-test/
 
 %doc %lang(en) %{_kf5_sharedir}/doc/HTML/en/rkward/
+%doc %lang(it) %{_kf5_sharedir}/doc/HTML/it/rkward/
+%doc %lang(nl) %{_kf5_sharedir}/doc/HTML/nl/rkward/
+%doc %lang(sv) %{_kf5_sharedir}/doc/HTML/sv/rkward/
+%doc %lang(uk) %{_kf5_sharedir}/doc/HTML/uk/rkward/
+
+%doc %lang(nl) %{_kf5_sharedir}/doc/HTML/nl/rkwardplugins/
+%doc %lang(sv) %{_kf5_sharedir}/doc/HTML/sv/rkwardplugins/
+%doc %lang(uk) %{_kf5_sharedir}/doc/HTML/uk/rkwardplugins/
+
+%doc %lang(ca) %{_kf5_mandir}/ca/man1/rkward.1.gz
+%doc %lang(it) %{_kf5_mandir}/it/man1/rkward.1.gz
+%doc %lang(nl) %{_kf5_mandir}/nl/man1/rkward.1.gz
+%doc %lang(sv) %{_kf5_mandir}/sv/man1/rkward.1.gz
+%doc %lang(uk) %{_kf5_mandir}/uk/man1/rkward.1.gz
 
 %changelog

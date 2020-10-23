@@ -328,4 +328,35 @@
 - Run spec-cleaner (forwarded request 808892 from wolfi323)</comment>
     <requestid>808906</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>05bd13bd2b69a378530b06b513e0cca8</srcmd5>
+    <version>0.7.2</version>
+    <time>1603448504</time>
+    <user>dimstar_suse</user>
+    <comment>- upstream release 0.7.2
+- New features and improvements
+  * Script preview keeps vertical scroll position when updating
+  * Add function rk.home() for retrieving application paths, similar to R.home()
+  * Add menu option to switch application language
+  * Remove direct dependency on libintl
+  * Add &quot;Check installation&quot; wizard to test for several common basic installation issues all in one place
+  * Add rkward internal package location to end of library search path, to make it accessible to help.search()
+  * Add menu action to open any supported file type, directly
+  * Support using QWebEngine instead of QtWebKit (still supported)
+  * &amp;lt;text&amp;gt; elements in plugins may now also contain clickable links, including rkward://-scheme links
+  * The new code hinting features from version 0.7.1 are now also available in the console
+  * On unix-systems, RKWard can now be run without installation
+  * Kate addons are now supported within RKWard. Intially, search-in-files, snippets, and projects are loaded by default
+  * Python development scripts have been ported to python3
+- Bug fixes
+  * Fix some problems with plot preview in wizard-type plugins
+  * Fix several small memory leaks
+  * Clean some logged warnings and potential issues during R backend shutdown
+  * Fixed: Avoid shortcut clash with kate part by removing conflicting (default) shortcuts, automatically
+- Recommend kate-plugins that are usable in rkward now
+- Build with QtWebEngine (instead of QtWebKit) on architectures
+  and distributions where it is available (in a new enough version)
+- Remove no longer available NO_R_XML cmake option (forwarded request 843268 from wolfi323)</comment>
+    <requestid>843272</requestid>
+  </revision>
 </revisionlist>
