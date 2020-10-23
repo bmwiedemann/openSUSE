@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:55:59 UTC 2020 - psimons@suse.com
+
+- Update wai-extra to version 3.1.1.
+  ## 3.1.1
+
+  * 'Network.Wai.Middleware.RequestSizeLimit': Add a new middleware to reject request bodies above a certain size. [#818](https://github.com/yesodweb/wai/pull/818/files)
+
+-------------------------------------------------------------------
 Tue Sep 22 09:35:49 UTC 2020 - psimons@suse.com
 
 - Update wai-extra to version 3.1.0.

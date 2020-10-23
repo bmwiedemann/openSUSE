@@ -19,7 +19,7 @@
 %global pkg_name wai-extra
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
