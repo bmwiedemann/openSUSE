@@ -17,8 +17,10 @@
 #
 
 
+%define   with_cloud_input   1
+
 Name:           ibus-libpinyin
-Version:        1.11.93
+Version:        1.11.94
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
@@ -40,6 +42,10 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(libpinyin) >= 2.2.1
+%if %{with_cloud_input}
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libsoup-2.4)
+%endif
 Provides:       locale(ibus:zh_CN;zh_SG)
 %{ibus_requires}
 %if 0%{?suse_version} <= 1320
@@ -60,9 +66,11 @@ NOCONFIGURE=1 ./autogen.sh
 %configure --disable-static \
            --enable-opencc \
            --disable-boost \
-           --enable-lua \
            --libexecdir=%{_libdir}/ibus \
            --libdir=%{_libdir} \
+%if %{with_cloud_input}
+           --enable-cloud-input-mode \
+%endif
            --with-python=python3
 %make_build
 

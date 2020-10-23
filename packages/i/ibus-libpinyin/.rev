@@ -251,4 +251,14 @@
   * bug fixes (forwarded request 829919 from hillwood)</comment>
     <requestid>829920</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2550cd801714c09090b7bec07143a1f9</srcmd5>
+    <version>1.11.94</version>
+    <time>1603448527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.11.94
+  * support cloud input
+  * bug fixes (forwarded request 843539 from hillwood)</comment>
+    <requestid>843540</requestid>
+  </revision>
 </revisionlist>
