@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:03:58 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.7. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-7-has-been-released/9213
+  boo#1177825
+
+  + Backup (export/import) of custom storage volumes
+  + Import of instances with alternative name
+  + Virtual machine memory shrinking (and re-grow)
+  + USB device passthrough for virtual machines
+  + Configurable rsync compression in migration
+  + Restrict available uplinks for project networks
+  + Add new physical managed network type
+  + Support for external routed addresses/subnets on OVN
+
+-------------------------------------------------------------------
 Sat Sep 19 04:50:10 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.6. The full upstream changelog is available from:

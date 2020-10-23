@@ -23,7 +23,7 @@
 %define import_path github.com/lxc/lxd
 
 Name:           lxd
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -119,6 +119,8 @@ export CFLAGS="%{optflags} -fPIC -DPIC"
 # We have a temporary-install directory which contains all of the dylib deps.
 export PKG_CONFIG_SYSROOT_DIR="$INSTALL_ROOT"
 export PKG_CONFIG_PATH="$INSTALL_LIBDIR/pkgconfig"
+# For some reason, Leap need us to specify this explicitly now.
+export CPPFLAGS="-I$INSTALL_INCLUDEDIR"
 
 # raft
 pushd "$PKGDIR/_dist/deps/raft"
