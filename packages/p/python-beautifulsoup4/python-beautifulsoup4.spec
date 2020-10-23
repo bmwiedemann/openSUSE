@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-beautifulsoup4
-Version:        4.9.1
+Version:        4.9.3
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT

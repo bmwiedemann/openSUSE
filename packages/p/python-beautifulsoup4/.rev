@@ -361,4 +361,12 @@ Build and package documentation (forwarded request 176044 from TheBlackCat)</com
 - remove soupsieve2-tests.patch: upstreamed</comment>
     <requestid>811097</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4ddf62271756ecc55ea4b0f7ffffd36f</srcmd5>
+    <version>4.9.3</version>
+    <time>1603448333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841137</requestid>
+  </revision>
 </revisionlist>

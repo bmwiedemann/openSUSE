@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 10 18:34:16 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.9.3:
+  * Implemented a significant performance optimization to the process
+    of searching the parse tree. Patch by Morotti. [bug=1898212]
+
+-------------------------------------------------------------------
+Mon Sep 28 11:41:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.9.2:
+  * Fixed a bug that caused too many tags to be popped from the tag
+    stack during tree building, when encountering a closing tag that had
+    no matching opening tag. [bug=1880420]
+
+  * Fixed a bug that inconsistently moved elements over when passing
+    a Tag, rather than a list, into Tag.extend(). [bug=1885710]
+
+  * Specify the soupsieve dependency in a way that complies with
+    PEP 508. Patch by Mike Nerone. [bug=1893696]
+
+  * Change the signatures for BeautifulSoup.insert_before and insert_after
+    (which are not implemented) to match PageElement.insert_before and
+    insert_after, quieting warnings in some IDEs. [bug=1897120]
+
+-------------------------------------------------------------------
 Wed Jun  3 11:10:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.9.1:
