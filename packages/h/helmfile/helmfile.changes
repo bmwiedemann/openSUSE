@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:50:25 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.132.0: Minor README improvement (#1543)
+  * 9ec4a85 (HEAD, tag: v0.132.0, origin/master, origin/HEAD, master)
+    Minor README improvement (#1543)
+  * 4d86879 Improve capitalization and formats of README.md. (#1545)
+  * 1aca099 feat: Upgrade to kubectl version supported by latest
+    stable release and upgrade helm3 to 3.3.4 (#1498)
+  * f5d0988 Retain the option helm repo add --force-update when Helm
+    is v3.3.4 or above. (#1546)
+
+-------------------------------------------------------------------
+Sun Oct 18 08:55:59 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.131.0: Bump chartify to 0.4.4 (#1540)
+  * 080080f (HEAD, tag: v0.131.0, origin/master, origin/HEAD, master)
+    Bump chartify to 0.4.4 (#1540)
+  * cd4afc3 Remove duplicated logs from helm.exec. (#1538)
+  * 8f86697 Support for azure acr helm repositories (#1526)
+
+-------------------------------------------------------------------
 Sun Oct 18 08:48:12 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.130.3: Bump vals (#1537)

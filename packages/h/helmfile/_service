@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.130.3</param>
+    <param name="revision">v0.132.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
