@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/spotahome/redis-operator.git</param>
+              <param name="changesrevision">eb6d91672608685890020878bd7066fc12cabfbd</param></service></servicedata>

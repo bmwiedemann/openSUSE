@@ -1,0 +1,36 @@
+From e8d04dd6c21d13ed443518fa336fae59e4cd362d Mon Sep 17 00:00:00 2001
+From: Alin Jurj <office@perfectweb.ro>
+Date: Tue, 7 Apr 2020 20:06:43 +0300
+Subject: [PATCH 2/2] Update generator.go
+
+---
+ operator/redisfailover/service/generator.go | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/operator/redisfailover/service/generator.go b/operator/redisfailover/service/generator.go
+index d35e4a75..ccf75671 100644
+--- a/operator/redisfailover/service/generator.go
++++ b/operator/redisfailover/service/generator.go
+@@ -196,8 +196,8 @@ func generateRedisReadinessConfigMap(rf *redisfailoverv1.RedisFailover, labels m
+    }
+ 
+    check_slave(){
+-           in_sync=$(redis-cli -a "${REDIS_PASSWORD}" info replication | grep $IN_SYNC | tr -d "\r" | tr -d "\n")
+-           no_master=$(redis-cli -a "${REDIS_PASSWORD}" info replication | grep $NO_MASTER | tr -d "\r" | tr -d "\n")
++           in_sync=$(redis-cli --no-auth-warning -a "${REDIS_PASSWORD}" info replication | grep $IN_SYNC | tr -d "\r" | tr -d "\n")
++           no_master=$(redis-cli --no-auth-warning -a "${REDIS_PASSWORD}" info replication | grep $NO_MASTER | tr -d "\r" | tr -d "\n")
+ 
+            if [ -z "$in_sync" ] && [ -z "$no_master" ]; then
+                    exit 0
+@@ -206,7 +206,7 @@ func generateRedisReadinessConfigMap(rf *redisfailoverv1.RedisFailover, labels m
+            exit 1
+    }
+ 
+-   role=$(redis-cli -a "${REDIS_PASSWORD}" info replication | grep $ROLE | tr -d "\r" | tr -d "\n")
++   role=$(redis-cli --no-auth-warning -a "${REDIS_PASSWORD}" info replication | grep $ROLE | tr -d "\r" | tr -d "\n")
+ 
+    case $role in
+            $ROLE_MASTER)
+-- 
+2.26.2
+

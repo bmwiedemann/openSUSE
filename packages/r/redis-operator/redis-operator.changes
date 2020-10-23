@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Oct 21 16:33:05 UTC 2020 - Boris Bobrov <bbobrov@suse.com>
+
+- Add 0001-Ignore-terminating-pods-for-sentinel.patch
+  * Required for proper failover when all sentinels are down
+- Add 0002-Prevent-warning-from-redis-cli.patch
+  * Prevents a warning from redis
+
+-------------------------------------------------------------------
+Wed Oct 21 07:37:07 UTC 2020 - bbobrov@suse.com
+
+- Update to version 1.0.0:
+  * cutoff 1.0.0
+  * fix helm version
+  * Cutoff v1.0.0-rc.5
+  * Move serviceAnnotations in monitoring
+  * Change labels to Annotations
+  * fix labels for services
+  * fix typo
+  * disable service monitor
+  * Add double quotes to `rename-command`.
+  * Add an example of how to use custom command renames.
+  * Add support for custom command renaming in Redis.
+
+-------------------------------------------------------------------
+Mon Oct  5 06:52:51 UTC 2020 - Boris Bobrov <bbobrov@suse.com>
+
+- Initial commit

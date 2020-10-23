@@ -1,0 +1,53 @@
+From 7673bfdea11f1765947f42ff5808aabf7a42b28e Mon Sep 17 00:00:00 2001
+From: Dmitry Sergeev <identw@gmail.com>
+Date: Tue, 25 Aug 2020 16:24:49 +0500
+Subject: [PATCH 1/2] Fix bug
+
+Fixed a bug due to which sentinel from not ready nodes get into the sentinels array. Because of this, the operator cannot specify the actual master, and the sentinel configures 127.0.0.1 as the master. To do this, I added an additional check on the Pod.DeletionTimestamp field, just like it was done in kubectl (https://github.com/kubernetes/kubernetes/blob/7ceac2baf0820fd354259aa8b7f0e37b0bc6b814/staging/src/k8s.io/kubectl/pkg/describe/describe.go#L722)
+---
+ operator/redisfailover/service/check.go | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/operator/redisfailover/service/check.go b/operator/redisfailover/service/check.go
+index b29bf7e4..95d790e9 100644
+--- a/operator/redisfailover/service/check.go
++++ b/operator/redisfailover/service/check.go
+@@ -194,7 +194,7 @@ func (r *RedisFailoverChecker) GetRedisesIPs(rf *redisfailoverv1.RedisFailover)
+ 		return nil, err
+ 	}
+ 	for _, rp := range rps.Items {
+-		if rp.Status.Phase == corev1.PodRunning { // Only work with running pods
++		if rp.Status.Phase == corev1.PodRunning && rp.DeletionTimestamp == nil { // Only work with running pods
+ 			redises = append(redises, rp.Status.PodIP)
+ 		}
+ 	}
+@@ -209,7 +209,7 @@ func (r *RedisFailoverChecker) GetSentinelsIPs(rf *redisfailoverv1.RedisFailover
+ 		return nil, err
+ 	}
+ 	for _, sp := range rps.Items {
+-		if sp.Status.Phase == corev1.PodRunning { // Only work with running pods
++		if sp.Status.Phase == corev1.PodRunning && sp.DeletionTimestamp == nil { // Only work with running pods
+ 			sentinels = append(sentinels, sp.Status.PodIP)
+ 		}
+ 	}
+@@ -251,7 +251,7 @@ func (r *RedisFailoverChecker) GetRedisesSlavesPods(rf *redisfailoverv1.RedisFai
+ 	}
+ 
+ 	for _, rp := range rps.Items {
+-		if rp.Status.Phase == corev1.PodRunning { // Only work with running
++		if rp.Status.Phase == corev1.PodRunning && rp.DeletionTimestamp == nil { // Only work with running
+ 			master, err := r.redisClient.IsMaster(rp.Status.PodIP, password)
+ 			if err != nil {
+ 				return []string{}, err
+@@ -277,7 +277,7 @@ func (r *RedisFailoverChecker) GetRedisesMasterPod(rFailover *redisfailoverv1.Re
+ 	}
+ 
+ 	for _, rp := range rps.Items {
+-		if rp.Status.Phase == corev1.PodRunning { // Only work with running
++		if rp.Status.Phase == corev1.PodRunning && rp.DeletionTimestamp == nil { // Only work with running
+ 			master, err := r.redisClient.IsMaster(rp.Status.PodIP, password)
+ 			if err != nil {
+ 				return "", err
+-- 
+2.26.2
+
