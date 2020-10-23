@@ -2,13 +2,13 @@
  contrib/completion/git-completion.bash |   10 ++++++----
  1 file changed, 6 insertions(+), 4 deletions(-)
 
-Index: git-2.23.0/contrib/completion/git-completion.bash
+Index: git-2.29.0/contrib/completion/git-completion.bash
 ===================================================================
---- git-2.23.0.orig/contrib/completion/git-completion.bash
-+++ git-2.23.0/contrib/completion/git-completion.bash
-@@ -40,10 +40,12 @@
- #     and git-switch completion (e.g., completing "foo" when "origin/foo"
- #     exists).
+--- git-2.29.0.orig/contrib/completion/git-completion.bash
++++ git-2.29.0/contrib/completion/git-completion.bash
+@@ -45,10 +45,12 @@
+ #     When set to "1" suggest all options, including options which are
+ #     typically hidden (e.g. '--allow-empty' for 'git commit').
  
 -case "$COMP_WORDBREAKS" in
 -*:*) : great ;;
