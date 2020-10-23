@@ -97,7 +97,7 @@ chmod a-x rpmlint-checks-master/*.py
 mv rpmlint-checks-master/*.py .
 
 %build
-make %{?_smp_mflags} PYTHON=%{_bindir}/python3
+%make_build PYTHON=%{_bindir}/python3
 
 %install
 %make_install PYTHON=%{_bindir}/python3
@@ -138,7 +138,7 @@ env PYTHON=%{_bindir}/python3 ./test.sh
 %config %{_sysconfdir}/rpmlint/pie.config
 %config %{_sysconfdir}/rpmlint/licenses.config
 %dir %{_sysconfdir}/rpmlint
-%{_mandir}/man1/rpmlint.1%{ext_man}
-%{_mandir}/man1/rpmdiff.1%{ext_man}
+%{_mandir}/man1/rpmlint.1%{?ext_man}
+%{_mandir}/man1/rpmdiff.1%{?ext_man}
 
 %changelog

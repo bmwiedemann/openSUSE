@@ -348,6 +348,7 @@ setOption('StandardUsers', (
     'fetchmail',
     'ffums',
     'firebird',
+    'fluidsynth',
     'fonehome',
     'ftp',
     'games',
@@ -1170,4 +1171,3 @@ addFilter(' info-files-without-install-info-postun ')
 addFilter(' postin-without-install-info ')
 
 # config ends here
-
