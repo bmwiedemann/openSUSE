@@ -43,12 +43,9 @@ specification that runs on the Moar virtual machine.
 perl Configure.pl --prefix="%{_prefix}"
 make
 
-%ifnarch armv6l armv6hl
-# See armv6 issue: https://github.com/rakudo/rakudo/issues/2513
 %check
 rm t/08-performance/99-misc.t
 RAKUDO_SKIP_TIMING_TESTS=1 make test
-%endif
 
 %install
 %make_install
