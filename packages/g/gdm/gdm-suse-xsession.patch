@@ -1,53 +1,61 @@
-Index: gdm-3.36.2/data/Init.in
-===================================================================
---- gdm-3.36.2.orig/data/Init.in
-+++ gdm-3.36.2/data/Init.in
-@@ -1,4 +1,9 @@
+diff --git a/data/Init.in b/data/Init.in
+index ec6fd395..4b8ed8ce 100644
+--- a/data/Init.in
++++ b/data/Init.in
+@@ -1,4 +1,11 @@
  #!/bin/sh
 +
 +if test -x /etc/X11/xdm/Xsetup; then
 +	exec /etc/X11/xdm/Xsetup
++elif test -x /usr/etc/X11/xdm/Xsetup; then
++       exec /usr/etc/X11/xdm/Xsetup
 +fi
 +
  # Stolen from the debian kdm setup, aren't I sneaky
  # Plus a lot of fun stuff added
  #  -George
-Index: gdm-3.36.2/data/PostSession.in
-===================================================================
---- gdm-3.36.2.orig/data/PostSession.in
-+++ gdm-3.36.2/data/PostSession.in
-@@ -1,3 +1,7 @@
+diff --git a/data/PostSession.in b/data/PostSession.in
+index c52d3c26..4d94b3e7 100755
+--- a/data/PostSession.in
++++ b/data/PostSession.in
+@@ -1,3 +1,9 @@
  #!/bin/sh
  
 +if test -x /etc/X11/xdm/Xreset; then
 +       exec /etc/X11/xdm/Xreset
++elif test -x /usr/etc/X11/xdm/Xreset; then
++       exec /usr/etc/X11/xdm/Xreset
 +fi
 +
  exit 0
-Index: gdm-3.36.2/data/Xsession.in
-===================================================================
---- gdm-3.36.2.orig/data/Xsession.in
-+++ gdm-3.36.2/data/Xsession.in
-@@ -1,4 +1,9 @@
- #!@XSESSION_SHELL@
-+
-+if test -x /etc/X11/xdm/Xsession; then
-+       exec /etc/X11/xdm/Xsession $1 $GDM_LANG
-+fi
-+
- #
- # This is SORT OF LIKE an X session, but not quite.  You get a command as the
- # first argument (it could be multiple words, so run it with "eval").  As a
-Index: gdm-3.36.2/data/PreSession.in
-===================================================================
---- gdm-3.36.2.orig/data/PreSession.in
-+++ gdm-3.36.2/data/PreSession.in
-@@ -6,4 +6,8 @@
+diff --git a/data/PreSession.in b/data/PreSession.in
+index cfabee75..306a905e 100755
+--- a/data/PreSession.in
++++ b/data/PreSession.in
+@@ -6,4 +6,10 @@
  #
  # Note that output goes into the .xsession-errors file for easy debugging
  #
 +if test -x /etc/X11/xdm/Xstartup; then
 +       exec /etc/X11/xdm/Xstartup
++elif test -x /usr/etc/X11/xdm/Xstartup; then
++       exec /usr/etc/X11/xdm/Xstartup
 +fi
 +
  PATH="@X_PATH@:$PATH"
+diff --git a/data/Xsession.in b/data/Xsession.in
+index 9d79558c..bcefdd73 100755
+--- a/data/Xsession.in
++++ b/data/Xsession.in
+@@ -1,4 +1,11 @@
+ #!@XSESSION_SHELL@
++
++if test -x /etc/X11/xdm/Xsession; then
++       exec /etc/X11/xdm/Xsession $1 $GDM_LANG
++elif test -x /usr/etc/X11/xdm/Xsession; then
++       exec /usr/etc/X11/xdm/Xsession $1 $GDM_LANG
++fi
++
+ #
+ # This is SORT OF LIKE an X session, but not quite.  You get a command as the
+ # first argument (it could be multiple words, so run it with "eval").  As a

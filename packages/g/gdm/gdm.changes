@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 20:10:53 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update gdm-suse-xsession.patch: Handle the fact that xdm moved
+  its files from /etc to /usr/etc (boo#1177918).
+
+-------------------------------------------------------------------
 Wed Sep 16 09:17:43 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - gdm-UsrEtc.patch
