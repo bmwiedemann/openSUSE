@@ -19,7 +19,7 @@
 %global pkg_name unicode-transforms
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.7
+Version:        0.3.7.1
 Release:        0
 Summary:        Unicode normalization
 License:        BSD-3-Clause

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:00:26 UTC 2020 - psimons@suse.com
+
+- Update unicode-transforms to version 0.3.7.1.
+  ## 0.3.7.1
+
+  * Fix x32 build
+
+-------------------------------------------------------------------
 Tue Aug 18 17:11:54 UTC 2020 - psimons@suse.com
 
 - Update unicode-transforms to version 0.3.7.
