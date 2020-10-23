@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:03:00 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- fix crash when hostname file missing (bsc#1177904)
+- 4.3.27
+
+-------------------------------------------------------------------
 Wed Oct  7 11:45:04 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
 
 - Write hostname changes when modified through the 'dns' client
