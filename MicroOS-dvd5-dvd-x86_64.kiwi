@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201022" schemaversion="4.1">
+<image name="OBS__MicroOS___20201023" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201022</productvar>
+      <productvar name="VERSION">20201023</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201022,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201023,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201022/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201023/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -59,6 +59,7 @@
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourceserifpro-fonts" arch="x86_64"/>
+      <repopackage name="adwaita-icon-theme" arch="x86_64"/>
       <repopackage name="alsa-plugins-pulse" arch="x86_64"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
@@ -101,7 +102,7 @@
       <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-psmisc" arch="x86_64"/>
-      <repopackage name="busybox-xz" arch="x86_64"/>
+      <repopackage name="busybox-sed" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>
       <repopackage name="ca-certificates-mozilla" arch="x86_64"/>
       <repopackage name="canberra-gtk-play" arch="x86_64"/>
@@ -117,6 +118,9 @@
       <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
+      <repopackage name="cockpit-bridge" arch="x86_64"/>
+      <repopackage name="cockpit-podman" arch="x86_64"/>
+      <repopackage name="cockpit-system" arch="x86_64"/>
       <repopackage name="conmon" arch="x86_64"/>
       <repopackage name="container-selinux" arch="x86_64"/>
       <repopackage name="containers-systemd" arch="x86_64"/>
@@ -862,6 +866,7 @@
       <repopackage name="libpsl5"/>
       <repopackage name="libpulse-mainloop-glib0" arch="x86_64"/>
       <repopackage name="libpulse0" arch="x86_64"/>
+      <repopackage name="libpwquality-tools" arch="x86_64"/>
       <repopackage name="libpwquality1" arch="x86_64"/>
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
       <repopackage name="libqalculate21" arch="x86_64"/>
@@ -1133,7 +1138,6 @@
       <repopackage name="lua53-luasocket" arch="x86_64"/>
       <repopackage name="lvm2" arch="x86_64"/>
       <repopackage name="makedumpfile"/>
-      <repopackage name="mcstrans" arch="x86_64"/>
       <repopackage name="mdadm" arch="x86_64"/>
       <repopackage name="Mesa" arch="x86_64"/>
       <repopackage name="Mesa-dri" arch="x86_64"/>
@@ -1199,6 +1203,7 @@
       <repopackage name="patterns-microos-base" arch="x86_64"/>
       <repopackage name="patterns-microos-basesystem" arch="x86_64"/>
       <repopackage name="patterns-microos-cloud" arch="x86_64"/>
+      <repopackage name="patterns-microos-cockpit" arch="x86_64"/>
       <repopackage name="patterns-microos-defaults" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-gnome" arch="x86_64"/>
       <repopackage name="patterns-microos-desktop-kde" arch="x86_64"/>
@@ -1336,7 +1341,6 @@
       <repopackage name="qqc2-desktop-style" arch="x86_64"/>
       <repopackage name="read-only-root-fs" arch="x86_64"/>
       <repopackage name="rebootmgr" arch="x86_64"/>
-      <repopackage name="restorecond" arch="x86_64"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rsvg-thumbnailer" arch="x86_64"/>

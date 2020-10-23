@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201022" schemaversion="4.1">
+<image name="OBS__MicroOS___20201023" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201022</productvar>
+      <productvar name="VERSION">20201023</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201022,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201023,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201022/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201023/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -78,7 +78,7 @@
       <repopackage name="busybox-grep" arch="x86_64"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-k8s-yaml" arch="x86_64"/>
-      <repopackage name="busybox-xz" arch="x86_64"/>
+      <repopackage name="busybox-sed" arch="x86_64"/>
       <repopackage name="ca-certificates" arch="x86_64"/>
       <repopackage name="ca-certificates-mozilla" arch="x86_64"/>
       <repopackage name="catatonit" arch="x86_64"/>
@@ -93,6 +93,9 @@
       <repopackage name="cloud-init-config-MicroOS" arch="x86_64"/>
       <repopackage name="cni" arch="x86_64"/>
       <repopackage name="cni-plugins" arch="x86_64"/>
+      <repopackage name="cockpit-bridge" arch="x86_64"/>
+      <repopackage name="cockpit-podman" arch="x86_64"/>
+      <repopackage name="cockpit-system" arch="x86_64"/>
       <repopackage name="conmon" arch="x86_64"/>
       <repopackage name="conntrack-tools" arch="x86_64"/>
       <repopackage name="container-selinux" arch="x86_64"/>
@@ -135,6 +138,7 @@
       <repopackage name="gawk"/>
       <repopackage name="gettext-runtime" arch="x86_64"/>
       <repopackage name="gio-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="glib-networking" arch="x86_64"/>
       <repopackage name="glib2-tools" arch="x86_64"/>
       <repopackage name="glibc"/>
       <repopackage name="glibc-locale" arch="x86_64"/>
@@ -148,6 +152,7 @@
       <repopackage name="grub2-i386-pc" arch="x86_64"/>
       <repopackage name="grub2-snapper-plugin" arch="x86_64"/>
       <repopackage name="grub2-x86_64-efi" arch="x86_64"/>
+      <repopackage name="gsettings-desktop-schemas" arch="x86_64"/>
       <repopackage name="gzip" arch="x86_64"/>
       <repopackage name="haproxy" arch="x86_64"/>
       <repopackage name="haveged" arch="x86_64"/>
@@ -291,14 +296,18 @@
       <repopackage name="libglib-2_0-0" arch="x86_64"/>
       <repopackage name="libgmodule-2_0-0" arch="x86_64"/>
       <repopackage name="libgmp10"/>
+      <repopackage name="libgnutls30" arch="x86_64"/>
       <repopackage name="libgobject-2_0-0" arch="x86_64"/>
       <repopackage name="libgomp1" arch="x86_64"/>
       <repopackage name="libgpg-error0"/>
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
+      <repopackage name="libhogweed6" arch="x86_64"/>
       <repopackage name="libhugetlbfs" arch="x86_64"/>
       <repopackage name="libibverbs" arch="x86_64"/>
       <repopackage name="libibverbs1" arch="x86_64"/>
+      <repopackage name="libicu67" arch="x86_64"/>
+      <repopackage name="libicu67-ledata" arch="x86_64"/>
       <repopackage name="libidn2-0"/>
       <repopackage name="libimaevm2" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
@@ -306,6 +315,7 @@
       <repopackage name="libip6tc2" arch="x86_64"/>
       <repopackage name="libipset13" arch="x86_64"/>
       <repopackage name="libjson-c5"/>
+      <repopackage name="libjson-glib-1_0-0" arch="x86_64"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libkmod2"/>
       <repopackage name="libksba8" arch="x86_64"/>
@@ -327,12 +337,14 @@
       <repopackage name="libmnl0" arch="x86_64"/>
       <repopackage name="libmodman1" arch="x86_64"/>
       <repopackage name="libmount1"/>
+      <repopackage name="libmozjs-68" arch="x86_64"/>
       <repopackage name="libmpath0" arch="x86_64"/>
       <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libncurses6"/>
       <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
       <repopackage name="libnetfilter_cthelper0" arch="x86_64"/>
       <repopackage name="libnetfilter_cttimeout1" arch="x86_64"/>
+      <repopackage name="libnettle8" arch="x86_64"/>
       <repopackage name="libnfnetlink0" arch="x86_64"/>
       <repopackage name="libnfsidmap1" arch="x86_64"/>
       <repopackage name="libnftnl11" arch="x86_64"/>
@@ -355,10 +367,12 @@
       <repopackage name="libpgm-5_2-0" arch="x86_64"/>
       <repopackage name="libpkgconf3"/>
       <repopackage name="libpng16-16" arch="x86_64"/>
+      <repopackage name="libpolkit0" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
+      <repopackage name="libpwquality-tools" arch="x86_64"/>
       <repopackage name="libpwquality1" arch="x86_64"/>
       <repopackage name="libpython3_8-1_0" arch="x86_64"/>
       <repopackage name="libqrencode4"/>
@@ -437,7 +451,6 @@
       <repopackage name="lsof" arch="x86_64"/>
       <repopackage name="lvm2" arch="x86_64"/>
       <repopackage name="makedumpfile"/>
-      <repopackage name="mcstrans" arch="x86_64"/>
       <repopackage name="metallb-k8s-yaml" arch="x86_64"/>
       <repopackage name="MicroOS-release"/>
       <repopackage name="MicroOS-release-appliance"/>
@@ -482,6 +495,7 @@
       <repopackage name="patterns-microos-base" arch="x86_64"/>
       <repopackage name="patterns-microos-basesystem" arch="x86_64"/>
       <repopackage name="patterns-microos-cloud" arch="x86_64"/>
+      <repopackage name="patterns-microos-cockpit" arch="x86_64"/>
       <repopackage name="patterns-microos-defaults" arch="x86_64"/>
       <repopackage name="patterns-microos-hardware" arch="x86_64"/>
       <repopackage name="patterns-microos-ima_evm" arch="x86_64"/>
@@ -503,6 +517,7 @@
       <repopackage name="podman-cni-config" arch="x86_64"/>
       <repopackage name="policycoreutils" arch="x86_64"/>
       <repopackage name="policycoreutils-python-utils" arch="x86_64"/>
+      <repopackage name="polkit" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
@@ -572,7 +587,6 @@
       <repopackage name="read-only-root-fs" arch="x86_64"/>
       <repopackage name="rebootmgr" arch="x86_64"/>
       <repopackage name="reg" arch="x86_64"/>
-      <repopackage name="restorecond" arch="x86_64"/>
       <repopackage name="rook-k8s-yaml" arch="x86_64"/>
       <repopackage name="rpcbind" arch="x86_64"/>
       <repopackage name="rpm"/>
