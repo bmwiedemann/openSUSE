@@ -1,7 +1,7 @@
 #
 # spec file for package lout
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ Group:          Productivity/Publishing/PS
 URL:            http://savannah.nongnu.org/projects/lout/
 Source0:        http://download.savannah.gnu.org/releases/lout/lout-%{version}.tar.gz
 Patch0:         makefile.patch
+# PATCH-FIX-UPSTREAM lout-3.40-cve.patch mcepl@suse.com
+# from https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
+# Fix for bsc#1159713 and bsc#1159714 (CVE-2019-19918 and CVE-2019-19917)
+Patch1:         lout-3.40-cve.patch
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 %if !%{makedocs}
@@ -44,7 +48,7 @@ fed to a printer. Lout is offered in multiple languages.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 make COPTS="%{optflags}" \

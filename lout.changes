@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 23 13:40:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lout-3.40-cve.patch from
+  https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
+  fixing  bsc#1159713 and bsc#1159714 (CVE-2019-19918 and
+  CVE-2019-19917), two buffer overflows.
+
+-------------------------------------------------------------------
 Tue Sep  3 19:35:00 CEST 2019 - Matej Cepl <mcepl@suse.com>
 
 - Why in the world we set executable bit on README? Fixed.
