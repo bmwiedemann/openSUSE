@@ -1595,4 +1595,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838686</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>f7342517585ac9395c82596e9f21cdbe</srcmd5>
+    <version>3.18.4</version>
+    <time>1603448388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842646</requestid>
+  </revision>
 </revisionlist>
