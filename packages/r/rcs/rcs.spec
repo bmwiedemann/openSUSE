@@ -1,7 +1,7 @@
 #
 # spec file for package rcs
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           rcs
-Version:        5.9.4
+Version:        5.10.0
 Release:        0
 Summary:        Revision Control System
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Tools/Version Control
-Url:            http://www.gnu.org/software/rcs/
+URL:            https://www.gnu.org/software/rcs/
 Source:         http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz.sig
 Source3:        rcs.keyring
 BuildRequires:  ed
-BuildRequires:  xz
 Requires:       diffutils
 Requires(pre):  %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 RCS, the Revision Control System, manages multiple revisions of files.
@@ -44,11 +42,11 @@ documentation, graphics, and papers.
 %build
 ac_cv_path_SENDMAIL=%{_sbindir}/sendmail \
 %configure --with-diff-utils
-make %{?_smp_mflags} CFLAGS="%{optflags} -std=gnu99"
+%make_build
 
 %check
-# t810 is failing
-#make %{?_smp_mflags} check
+# t632 fails during ocs/OBS build without a TTY
+%make_build check XFAIL_TESTS=t632
 
 %install
 %make_install
@@ -61,10 +59,10 @@ mkdir -p %{buildroot}%{_defaultdocdir}/rcs
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files
-%defattr(-, root, root)
 %{_defaultdocdir}/rcs
 %{_bindir}/*
-%doc AUTHORS README NEWS THANKS ChangeLog COPYING
+%license COPYING
+%doc AUTHORS README NEWS THANKS ChangeLog
 %{_mandir}/man?/*.gz
 %{_infodir}/*.*
 

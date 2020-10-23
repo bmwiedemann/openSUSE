@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:56:04 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rcs 5.10.0:
+  * Fix RCS file search skipping RCS/FILENAME by default
+  * Fix 'rlog -w' omitting 'w' when specified without login
+  * preserve subsecond mtime on file systems that support it
+
+-------------------------------------------------------------------
 Wed Jan 13 09:01:44 UTC 2016 - tchvatal@suse.com
 
 - Use %configure and %make_install macros
