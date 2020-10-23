@@ -24,10 +24,12 @@ Summary:        Library to manipulate Gravitational Wave Detector data in frame 
 License:        LGPL-2.1-or-later
 URL:            https://lappweb.in2p3.fr/virgo/FrameL/
 Source:         http://software.igwn.org/lscsoft/source/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM framel-fix-pkgconfig.patch badshah400@gmail.com -- Fix include and lib dir paths in pkgconfig file
+Patch0:         framel-fix-pkgconfig.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-setuptools
 
 %description
 A Common Data Frame Format for Interferometric Gravitational Wave Detector has
@@ -66,7 +68,7 @@ matlab, dedicated to frame data manipulation including file input/output.
 This package provides the python3 module for frame library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

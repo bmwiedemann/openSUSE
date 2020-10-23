@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 23 07:18:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add framel-fix-pkgconfig.patch -- Fix include and lib dir paths
+  in pkgconfig file when absolute paths to LIBDIR and INCLUDEDIR
+  are specified to cmake.
+
+-------------------------------------------------------------------
 Mon Jul  6 22:26:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
