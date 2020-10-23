@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:10:50 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.43
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.43    2020-10-21
+
+  - This release is based on version 2020c of the Olson database. This release
+    includes contemporary changes for Palestine.
+
+-------------------------------------------------------------------
+Sat Oct 17 03:09:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.42
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.42    2020-10-16
+
+  - This release is based on version 2020c of the Olson database. This release
+    includes contemporary changes for Fiji.
+
+-------------------------------------------------------------------
 Thu Oct  8 03:09:52 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.41
