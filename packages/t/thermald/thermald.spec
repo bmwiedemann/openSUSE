@@ -22,7 +22,7 @@
 %endif
 
 Name:           thermald
-Version:        1.9.1
+Version:        2.3
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
@@ -36,11 +36,15 @@ Source10:       thermal-monitor.desktop
 Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
 Patch1:         fix-man-thermald_8.patch
+# PATCH-FEATURE-UPSTREAM fix-32bit-build.patch https://github.com/intel/thermal_daemon/pull/264
+Patch2:         fix-32bit-build.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  dbus-1-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
+BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
@@ -51,7 +55,10 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(upower-glib)
 Requires(post): %fillup_prereq
 Suggests:       acpica
 Suggests:       dptfxtract
@@ -78,14 +85,14 @@ To communicate with thermald via dbus, the user has to be member of "power" grou
 %autosetup -n thermal_daemon-%{version} -p1
 
 %build
-autoreconf -fiv
+NO_CONFIGURE=1 ./autogen.sh
 %configure
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 %sysusers_generate_pre %{SOURCE2} power
 
 pushd tools/thermal_monitor
 %qmake5 ThermalMonitor.pro
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install

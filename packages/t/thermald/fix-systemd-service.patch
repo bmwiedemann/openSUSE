@@ -1,6 +1,6 @@
 --- a/data/thermald.service.in
 +++ b/data/thermald.service.in
-@@ -3,9 +3,13 @@
+@@ -4,9 +4,13 @@
  
  [Service]
  Type=dbus
@@ -10,8 +10,8 @@
 +EnvironmentFile=-/etc/sysconfig/thermald
  SuccessExitStatus=1
  BusName=org.freedesktop.thermald
--ExecStart=@sbindir@/thermald --no-daemon --dbus-enable
-+ExecStart=@sbindir@/thermald --no-daemon --dbus-enable --config-file ${THERMALD_CONFIG} --poll-interval $THERMALD_POLL $THERMALD_OPTS
+-ExecStart=@sbindir@/thermald --systemd --dbus-enable --adaptive
++ExecStart=@sbindir@/thermald --systemd --dbus-enable --adaptive --config-file ${THERMALD_CONFIG} --poll-interval $THERMALD_POLL $THERMALD_OPTS
  
  [Install]
  WantedBy=multi-user.target
