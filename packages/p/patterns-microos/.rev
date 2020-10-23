@@ -223,4 +223,18 @@
     annoying and cumbersome)</comment>
     <requestid>841439</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>acf8461f3ae4e25a48124eeb200d664b</srcmd5>
+    <version>5.0</version>
+    <time>1603448359</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cockpit pattern
+- Remove more optional SELinux packages from default install
+
+- GNOME desktop pattern:
+  + Add a dependency for adwaita-icon-theme so GNOME icons show up
+
+- Remove restorecond from the selinux pattern</comment>
+    <requestid>842562</requestid>
+  </revision>
 </revisionlist>

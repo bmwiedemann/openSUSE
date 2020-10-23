@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 19 10:41:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add cockpit pattern
+- Remove more optional SELinux packages from default install
+
+-------------------------------------------------------------------
+Fri Oct 16 14:52:41 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- GNOME desktop pattern:
+  + Add a dependency for adwaita-icon-theme so GNOME icons show up
+
+-------------------------------------------------------------------
+Fri Oct 16 14:07:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove restorecond from the selinux pattern
+
+-------------------------------------------------------------------
 Mon Oct 12 16:45:52 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Make SELinux pattern visible

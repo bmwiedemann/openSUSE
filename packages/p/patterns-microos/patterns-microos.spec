@@ -175,16 +175,29 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9055
 Provides:       pattern-visible()
-Requires:       checkpolicy
 Requires:       container-selinux
-Requires:       mcstrans
 Requires:       policycoreutils
-Requires:       restorecond
 Requires:       selinux-policy-targeted
 Requires:       selinux-tools
 
 %description selinux
 This are packages which are required to enable SELinux on openSUSE MicroOS
+
+%package cockpit
+Summary:        Web based remote system managemet
+Group:          Metapackages
+Provides:       pattern() = microos_cockpit
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 9060
+Provides:       pattern-visible()
+Requires:       cockpit-podman
+Requires:       cockpit-system
+
+%description cockpit
+Packages required to run the Cockpit system management service.
+For the web service the cockpit-ws container is required.
+
 
 %package sssd_ldap
 Summary:        LDAP client
@@ -192,7 +205,7 @@ Group:          Metapackages
 Provides:       pattern() = microos_sssd_ldap
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-generic
-Provides:       pattern-order() = 9060
+Provides:       pattern-order() = 9070
 Provides:       pattern-visible()
 Requires:       sssd
 Requires:       sssd-ldap
@@ -304,6 +317,8 @@ Requires:       OpenPrintingPPDs
 Requires:       cups
 Requires:       cups-filters
 Requires:       hplip-hpijs
+# We need the icons to work
+Requires:       adwaita-icon-theme
 # Some fonts
 Requires:       adobe-sourcecodepro-fonts
 Requires:       adobe-sourcesanspro-fonts
@@ -462,6 +477,7 @@ Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9901
 Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
+Requires:       pattern() = microos_cockpit
 Requires:       pattern() = microos_ima_evm
 Requires:       pattern() = microos_selinux
 Requires:       pattern() = microos_sssd_ldap
@@ -477,7 +493,7 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
-for i in basesystem base defaults hardware ima_evm apparmor selinux sssd_ldap cloud desktop-gnome desktop-kde \
+for i in basesystem base defaults hardware ima_evm apparmor selinux cockpit sssd_ldap cloud desktop-gnome desktop-kde \
     onlyDVD alt_onlyDVD; do
 	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
 done
@@ -520,6 +536,11 @@ done
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/selinux.txt
+
+%files cockpit
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/cockpit.txt
 
 %files cloud
 %defattr(-,root,root)
