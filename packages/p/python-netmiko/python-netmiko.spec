@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-netmiko
-Version:        3.3.0
+Version:        3.3.2
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
@@ -30,14 +30,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-paramiko >= 2.4.3
+Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyserial
 Requires:       python-scp >= 0.13.2
+Requires:       python-tenacity
 Requires:       python-textfsm
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module paramiko >= 2.4.3}
+BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module scp >= 0.13.2}
 BuildRequires:  %{python_module textfsm}

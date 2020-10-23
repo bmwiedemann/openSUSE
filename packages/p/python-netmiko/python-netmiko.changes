@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct  1 17:50:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.2
+  New Features
+  * Add support for PIP installable ntc-templates
+  * Add support for TTP templates
+  Performance Improvements
+  * Cisco NX-OS Performance Improvements
+  * Cisco IOS-XR Performance Improvements
+  * Arista Performance Improvements
+  New Drivers
+  * Cisco FTD Driver
+  * Ubiquity EdgeRouter
+  * TPLink JetStream
+  Bug Fixes
+  * Secure Copy Progress Bar fix for get Operation
+- Update to version 3.3.1
+
+-------------------------------------------------------------------
 Mon Aug 31 22:11:35 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.0
