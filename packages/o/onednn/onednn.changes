@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Mon Oct  5 06:16:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Obsoletes mkl-dnn* <= %{version}
+
+-------------------------------------------------------------------
+Fri Oct  2 12:47:08 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename mkl-dnn to onednn to follow upstream
+
+-------------------------------------------------------------------
+Wed Sep 23 13:36:02 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.6.3
+- Drop upstream patch:
+  * cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 13:16:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build on aarch64 and ppc64le which are now also supported
+- Provide oneDNN and oneDNN-devel as it is the new official name
+
+-------------------------------------------------------------------
+Tue May  5 07:38:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.4:
+  * Performance improvements all over the board
+- Rebase patch cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 10:50:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add constraints to not crash during testing on OOM
+
+-------------------------------------------------------------------
+Thu Feb 27 12:44:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not disable LTO there is no actual reason for that
+- Export LD_LIBRARY_PATH to fix older releases build
+
+-------------------------------------------------------------------
+Wed Feb 26 10:36:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- There is no actual reason to not use github tag for tarball
+  fetching -> remove the service
+- Format with spec-cleaner
+- Use proper %cmake macros everywhere
+- Add configure options for cmake to set it up in a way we really
+  want
+- Add patch from Debian to not install OpenCL cmake finder:
+  * cmake-no-install-ocl-cmake.patch
+
+-------------------------------------------------------------------
+Thu Feb 20 10:26:52 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- enabled tests 
+
+-------------------------------------------------------------------
+Thu Jan 30 14:20:22 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- packaged separate benchnn packae with its input files
+- updated to v1.1.3 which includes
+ * Fixed the mean and variance memory descriptors in layer 
+   normalization (65f1908)
+ * Fixed the layer normalization formula (c176ceb)
+
+-------------------------------------------------------------------
+Wed Jan  8 15:21:54 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to v1.1.2 
+  * Fixed threading over the spatial in bfloat16 batched
+    normalization (017b6c9)
+  * Fixed read past end-of-buffer error for int8 convolution (7d6f45e)
+  * Fixed condition for dispatching optimized channel blocking in 
+    fp32 backward convolution on Intel Xeon Phi(TM) processor (846eba1)
+  * Fixed fp32 backward convolution for shapes with spatial strides 
+    over the depth dimension (002e3ab)
+  * Fixed softmax with zero sizes on GPU (936bff4)
+  * Fixed int8 deconvolution with dilation when ih <= dh (3e3bacb)
+  * Enabled back fp32 -> u8 reorder for RNN (a2c2507)
+  * Fixed segmentation fault in bfloat16 backward convolution from 
+    kd_padding=0 computation (52d476c)
+  * Fixed segmentation fault in bfloat16 forward convolution due 
+    to push/pop imbalance (4f6e3d5)
+  * Fixed library version for OS X build (0d85005)
+  * Fixed padding by channels in concat (a265c7d)
+  * Added full text of third party licenses and 
+    copyright notices to LICENSE file (79f204c)
+  * Added separate README for binary packages (28f4c96)
+  * Fixed computing per-oc mask in RNN (ff3ffab)
+  * Added workaround for number of cores calculation in Xbyak (301b088)
+
+-------------------------------------------------------------------
+Mon Feb 11 16:35:48 UTC 2019 - cgoll@suse.com
+
+- added ARCH_OPT_FLAGS=""
+
+-------------------------------------------------------------------
+Tue Feb  5 07:45:53 UTC 2019 - Christian Goll <cgoll@suse.com>
+
+- Initial checking of the Intel(R) Math Kernel Library for 
+  Deep Neural Networks which can be used by:
+  * tensorflow
+  * Caffee
+  * PyTorch
+  and other machine learning tools
