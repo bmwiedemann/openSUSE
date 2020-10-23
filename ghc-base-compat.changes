@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:12 UTC 2020 - psimons@suse.com
+
+- Update base-compat to version 0.11.2.
+  ## Changes in 0.11.2 [2020.09.30]
+   - Sync with `base-4.15`/GHC 9.0
+   - Backport `singleton` to `Data.List` and `Data.List.NonEmpty`
+   - Backport `hGetContents'`, `getContents'`, and `readFile'` added to `System.IO`
+
+-------------------------------------------------------------------
 Tue Aug 18 10:44:04 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
