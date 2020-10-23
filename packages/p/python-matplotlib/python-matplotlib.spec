@@ -38,6 +38,8 @@ License:        SUSE-Matplotlib
 URL:            https://matplotlib.org
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
 Source1:        matplotlib-setup.cfg
+# Remove after next update
+Source2:        https://github.com/matplotlib/matplotlib/raw/b9470957c7f440084915a0b6573af3ee2235b941/lib/matplotlib/tests/baseline_images/test_axes/transparent_markers.pdf
 # Bundled version of freetype for testing purposes only
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
 Patch0:         no-builddir-freetype.patch
@@ -224,6 +226,9 @@ find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/python||" {} \;
 cp %{SOURCE1} setup.cfg
 %patch0 -p1
+
+# Fix test with ghostscript 9.53
+cp %{SOURCE2} lib/matplotlib/tests/baseline_images/test_axes/transparent_markers.pdf
 
 %build
 %if !%{with test}

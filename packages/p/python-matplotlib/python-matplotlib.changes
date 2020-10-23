@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:59:30 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Copy updated transparent_markers.pdf from upstream commit
+  https://github.com/matplotlib/matplotlib/pull/18604 to fix
+  test failure Ghostscript 9.53
+
+-------------------------------------------------------------------
 Thu Jul 23 09:49:30 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Require Pillow
