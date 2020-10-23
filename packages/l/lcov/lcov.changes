@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:36:50 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Fix output of --version option.
+
+-------------------------------------------------------------------
 Wed Aug 12 17:15:51 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.15+git.20200812.d100e6c:

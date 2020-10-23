@@ -38,6 +38,7 @@ for easy navigation within the file structure.
 
 %prep
 %setup -q
+sed -i "s/1.0/%{version}/" bin/get_version.sh
 
 %build
 

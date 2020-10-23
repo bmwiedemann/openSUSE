@@ -213,4 +213,12 @@
   * Fixed processing GCOV intermediate format.</comment>
     <requestid>826083</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>095a270e340231b5cfbd7a294af8fba9</srcmd5>
+    <version>1.15+git.20200812.d100e6c</version>
+    <time>1603469665</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix output of --version option.</comment>
+    <requestid>843618</requestid>
+  </revision>
 </revisionlist>
