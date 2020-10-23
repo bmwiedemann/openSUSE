@@ -19,7 +19,7 @@
 %global pkg_name skylighting-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.5
+Version:        0.10.0.2
 Release:        0
 Summary:        Syntax highlighting library
 License:        BSD-3-Clause
@@ -40,7 +40,6 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hxt-devel
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-regex-pcre-builtin-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-text-devel

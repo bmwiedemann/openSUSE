@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:05:05 UTC 2020 - psimons@suse.com
+
+- Update skylighting-core to version 0.10.0.2.
+  ## 0.10.0.2
+
+    * Improve DetectIdentifier to ensure that identifiers can't
+      include non-ASCII characters.
+
+  ## 0.10.0.1
+
+    * Fix identifier detection in non-ASCII context (#110).
+
+  ## 0.10
+
+    * Add instructions for submitting patches upstream to KDE (#106).
+
+    * Synced syntax definitions from KDE repo.  Note that fortran
+      has split into two: `fortran-fixed` and `fortran-free`.
+
+    * Add test to ensure that all regexes in rules compile.
+
+    * Regex: allow unescaped `}`.
+
+    * Regex: allow empty regexes and groups.
+
+    * Regex: support lazy and possessive quantifiers (#109).
+
+    * Regex: support recursive regexes `(?R)` (#108).
+
+    * Hide invisible line numbers from keyboard focus (#107, d10n).
+      This fixes tabbing through elements on a page.
+
+    * Remove some obsolete patches for xml definitions.
+
+  ## 0.9
+
+    * Use a pure Haskell regex implementation (in unexported module
+      Text.Regex.KDE) instead of pcre.  The implementation is not
+      as efficient as pcre, but it seems good enough for this
+      application, and it is desirable to avoid depending on a C
+      library.  (Available Haskell libraries weren't up to the
+      task, because they don't do back-references, captures,
+      lookahead/behind.) Some benchmarks (old/new):
+      haskell (4.6/7.9) java (13.4/23.3) c (2.8/3.7) rhtml
+      (4.7/6.1) lua (10.6/13.2) javascript (4.2/6.6).
+      Though this is a significant slowdown, the tradeoff seems
+      worth it to have a pure Haskell implementation.
+
+    * Removed old `system-pcre` flag.
+
+    * More efficient treatment of dynamic regexes.
+      We put something in the Regex itself to represent the `%1`,
+      and modify it later.  This allows us to cache dynamic
+      regexes in a way we couldn't before.
+
+    * Add support for TOML (#105, Shiming Wang),
+      GraphQL, and Nim syntax (#102, Daniel Pozo Escalona).
+
+    * Update xml definitions for actionscript, bash, boo, c,
+      cmake, elm, erlang, glsl, isocpp, java, lua, m4, mediawiki,
+      perl, powershell, scala, tcsh, xul, zsh.
+
+    * Fix fallthrough behavior (don't always consume a token).
+
+    * Fix word boundary detection.
+
+    * Remove RegexException. (API change)
+
+    * Skylighting.Regex now exports `isWordChar` and `testRegex`,
+      as well as the constructors underlying the new `Regex` type.
+
+    * Remove some obsolete xml definition patches.
+
+    * Fix escaped % in dynamic regex.
+
+-------------------------------------------------------------------
 Wed Aug 19 06:55:08 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 6GB min disk space for ppc64/ppc64le
