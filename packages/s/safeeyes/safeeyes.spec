@@ -75,6 +75,8 @@ A Free and Open Source Linux alternative for EyeLeo.
 #Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python3][#\!%{_bindir}/python3]' {} \;
 find . -type f -exec perl -pi -e 'BEGIN{undef $/};s[^#\!/usr/bin/env python][#\!%{_bindir}/python3]' {} \;
+# SmartPause: Increase default idle time to pause SafeEyes
+sed 's/"default": 5,/"default": 60,/' -i safeeyes/plugins/smartpause/config.json
 
 %build
 python3 setup.py build
