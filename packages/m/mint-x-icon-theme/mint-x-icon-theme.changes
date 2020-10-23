@@ -1,0 +1,181 @@
+-------------------------------------------------------------------
+Fri Oct  2 16:40:59 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove group tag.
+
+-------------------------------------------------------------------
+Wed Jun 10 03:01:26 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove _service file.
+- Update to verion 1.5.5.
+  * Add org.gnome.ArchiveManager icon. 
+
+-------------------------------------------------------------------
+Fri Mar 27 03:10:13 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.5.3 and add _service file. 
+
+-------------------------------------------------------------------
+Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.5.1:
+  * Add symbolic icons for some system actions.
+  * Fix nemo sidebar bookmark icon.
+  * Add wireless-secure icons.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.5.0:
+  * Add start-here-symbolic.
+
+-------------------------------------------------------------------
+Wed Jun  6 14:12:23 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.4.9 (changes since 1.4.7):
+  * Add symbolic icons for places, phone and switch-user.
+  * Add icons/links for GOA (GNOME Online Accounts).
+
+-------------------------------------------------------------------
+Sat Apr 28 20:12:30 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.4.7:
+  * volume muted symbolic icon: Change the shade of grey.
+  * Add a nemo icon.
+  * Add a symbolic link for calibre viewers.
+  * Rename microphone-sensitivity-none to
+    microphone-sensitivity-muted.
+  * Add system-lock-screen-symbolic.
+
+-------------------------------------------------------------------
+Tue Nov 21 07:11:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.6:
+  * Add the Timeshift icon.
+
+-------------------------------------------------------------------
+Sun Nov 12 21:00:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.5:
+  * Add the WhatsApp icon.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.4:
+  * Status: Fix network icons in 48px and 96px.
+  * devices: Add a couple 16px icons for removable drives.
+  * Add some additional sizes for cairo-dock.
+  * Add the original base faenza icons to src/.
+  * Add icon for PIA Manager.
+  * Add some symbolic actions.
+  * Add GOA icons.
+  * Provide GOA icons in all dimensions.
+  * Add SVG audio icons for the volume hotkey pop up indicator.
+
+-------------------------------------------------------------------
+Mon Jun 12 19:52:24 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.3:
+  * Restyle the 32px network icons.
+  * Restyle the 32px volume icons.
+  * Restyle the 32px battery status icons.
+
+-------------------------------------------------------------------
+Sun May  7 20:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.2:
+  * Link unity-monodevelop to monodevelop.
+  * Link minecraft-launcher to minecraft.
+
+-------------------------------------------------------------------
+Wed Mar 22 21:40:49 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.4.1:
+  * Fix some broken links.
+  * Add a link for the new Skype icons.
+  * Add Mint-X-Dark/status/22/system-devices-panel.png.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.4.0:
+  * Add a missing symbolic link places/16/folder-videos.svg for
+    each extra colour theme.
+  * actions: Add some more symbolic icons.
+  * Add a size 128px trash icon.
+
+-------------------------------------------------------------------
+Tue Sep 27 15:34:53 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.9:
+  * Symlink fix.
+
+-------------------------------------------------------------------
+Tue Aug 30 14:34:54 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.8:
+  * Add some symbolics.
+  * blueman disabled has become symbolic.
+
+-------------------------------------------------------------------
+Tue Jun  7 17:43:17 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.7:
+  * Fix corrupt status/96/image-missing.svg.
+- Inherit "Adwaita" icon theme instead of "gnome".
+
+-------------------------------------------------------------------
+Thu May 12 09:54:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.3.6 (changes since 1.3.2):
+  * Add actions icons for clementine with HDPI-support, fix
+    "search" symlink.
+  * Rename 32px and 48px icon "view-media-lyrics" to
+    "music-library", "view-media-lyrics" as symlink "music-library".
+  * Add icons: birdie, corebird, gitkraken, lollypop, nylas,
+    qbittorrent, qpdfview.
+  * Add icons & symlinks: gnome-mpv, sublimetext.
+  * Fix icons doublecmd, gprename, smartgit, telegram, viber
+    (16, 22, 24, 32 px's)
+  * Change bleachbit icons (symlinks earlier).
+  * Add symlinks for gtk-index & helpfaq (need actions icons for
+    Shutter application)
+  * Fix form & size firefox icon (16, 22, 14 px's).
+  * Add symlinks for Spotify client: spotify-client -> spotify.
+  * Add icon-theme.cache files to the .gitignore list.
+  * Add keepassx2 app symlinks to keepassx.
+  * New Spotify icons.
+  * Don't inherit ubuntu-mono-light or gnome-color-wise
+  * Add icons for Motorola Moto G 2 phone.
+  * Update Moto G 2 icons, add white Moto G 2 icons, and add black
+    and white iPhone 6 icons.
+  * Improve Moto G 2 icons and add Samsung Galaxy S4 icons in
+    White, Black, Red and Blue.
+  * Add iPhone 5 icons, black and white.
+  * Improve several white iPhone 6 icons
+  * Add black and white iPhone 4S icons.
+  * Change all files names to use hyphens rather than underscores
+    to specify colours.
+  * Improve and standardise some colours on a few phones.
+
+-------------------------------------------------------------------
+Sun Nov  8 18:16:11 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to version 1.3.2:
+  * UPS icons.
+  * Multicolour trash-bin stripe.
+  * ODP support.
+  * vsd and vsdx icons support.
+  * Add SVG-icons doublecmd, smartgit, telegram, viber.
+  * Add symlinks geary and plank.
+  * Add gprename icon.
+  * Update all haguichi icons to use the new logo, add 32/48/96
+    status icons.
+  * Add additional size PNG's for some newly added icons.
+  * Add support to the theme for the new cs-input-method icon.
+
+-------------------------------------------------------------------
+Sat Oct 17 15:54:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.
