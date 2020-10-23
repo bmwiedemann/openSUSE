@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:06:13 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Update to 86.0.4240.111 bsc#1177936
+  - CVE-2020-16000: Inappropriate implementation in Blink.
+  - CVE-2020-16001: Use after free in media.
+  - CVE-2020-16002: Use after free in PDFium.
+  - CVE-2020-15999: Heap buffer overflow in Freetype.
+  - CVE-2020-16003: Use after free in printing.
+
+-------------------------------------------------------------------
+Mon Oct 19 12:27:04 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- chromium-86-f_seal.patch: F_SEAL* definitions added for leap 15.1 and 15.2
+- replace one missed g++-9 by g++-10 for leap 15.1/15.2
+
+-------------------------------------------------------------------
 Wed Oct 14 11:37:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove vdpau->vaapi bridge as it breaks a lot:

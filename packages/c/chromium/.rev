@@ -3266,4 +3266,17 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>841866</requestid>
   </revision>
+  <revision rev="272" vrev="1">
+    <srcmd5>3a59d339fbb7ef86bed109fb4ea83689</srcmd5>
+    <version>86.0.4240.111</version>
+    <time>1603448431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 86.0.4240.111 bsc#1177936
+  - CVE-2020-16000: Inappropriate implementation in Blink.
+  - CVE-2020-16001: Use after free in media.
+  - CVE-2020-16002: Use after free in PDFium.
+  - CVE-2020-15999: Heap buffer overflow in Freetype.
+  - CVE-2020-16003: Use after free in printing. (forwarded request 843351 from msmeissn)</comment>
+    <requestid>843389</requestid>
+  </revision>
 </revisionlist>

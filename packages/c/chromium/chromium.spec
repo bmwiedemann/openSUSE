@@ -51,7 +51,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        86.0.4240.75
+Version:        86.0.4240.111
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -96,6 +96,7 @@ Patch56:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch57:        chromium-86-nearby-explicit.patch
 Patch58:        chromium-86-nearby-include.patch
 Patch59:        chromium-86-ServiceWorkerRunningInfo-noexcept.patch
+Patch60:        chromium-86-f_seal.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -549,8 +550,8 @@ export CXX=g++
 export AR=ar
 export NM=nm
 %if 0%{?suse_version} <= 1500
-export CC=gcc-9
-export CXX=g++-9
+export CC=gcc-10
+export CXX=g++-10
 # some still call gcc/g++
 mkdir -p "$HOME/bin/"
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
