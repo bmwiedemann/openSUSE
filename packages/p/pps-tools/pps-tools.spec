@@ -1,7 +1,7 @@
 #
 # spec file for package pps-tools
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,8 @@ Version:        0.0.0+git.20181203
 Release:        0
 Summary:        Userspace tools for the Linux Pulse Per Second subsystem
 License:        GPL-2.0-or-later
-Group:          Hardware/Other
 URL:            http://linuxpps.org
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  xz
 
 %description
 Userland tools to test Linux kernel PPS API. See Documentations/pps/pps.txt
@@ -33,7 +31,6 @@ for reference.
 
 %package devel
 Summary:        Development files for the LinuxPPS API
-Group:          Development/Languages/C and C++
 
 %description devel
 This subpackage contains a header-only C API providing a number of
@@ -42,13 +39,16 @@ API. It is, for example, used by ntpd to interact with timing
 devices.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
+# for some reason rebuild occurs during installation
+# we need to be sure that optflags are still honored
+export CFLAGS="%{optflags}"
 %make_install
 
 %files

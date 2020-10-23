@@ -33,4 +33,12 @@
   * ppswatch: Add useful stats output.</comment>
     <requestid>658016</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b5697291eeac7a3f082d9abd91afea8d</srcmd5>
+    <version>0.0.0+git.20181203</version>
+    <time>1603448400</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure optflags are honored</comment>
+    <requestid>842704</requestid>
+  </revision>
 </revisionlist>
