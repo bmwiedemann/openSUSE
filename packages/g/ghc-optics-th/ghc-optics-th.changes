@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:34 UTC 2020 - psimons@suse.com
+
+- Update optics-th to version 0.3.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Sep  1 10:38:33 UTC 2020 - psimons@suse.com
 
 - Add optics-th at version 0.3.0.2.
