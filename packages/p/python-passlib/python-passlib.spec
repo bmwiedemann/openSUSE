@@ -25,10 +25,18 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://bitbucket.org/ecollins/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
+BuildRequires:  %{python_module argon2_cffi}
+BuildRequires:  %{python_module bcrypt}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scrypt}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Recommends:     python-argon2_cffi
+Recommends:     python-bcrypt
+Recommends:     python-cryptography
+Recommends:     python-scrypt
 BuildArch:      noarch
 %python_subpackages
 

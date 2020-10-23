@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:34:01 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add optional dependencies: bcrypt, argon2_cffi, cryptography
+  and scrypt.
+
+-------------------------------------------------------------------
 Tue Jun  9 06:39:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
