@@ -1,0 +1,11 @@
+diff -Pdpru bup-0.31.orig/config/configure bup-0.31/config/configure
+--- bup-0.31.orig/config/configure	2020-08-22 19:12:01.000000000 +0200
++++ bup-0.31/config/configure	2020-09-13 11:39:43.045092521 +0200
+@@ -66,6 +66,7 @@ expr "$MAKE_VERSION" '>=' '3.81' || AC_F
+ AC_SUB bup_make "$MAKE"
+ 
+ bup_python="$(type -p "$PYTHON")"
++test -z "$bup_python" && bup_python="$(bup_find_prog python3 '')"
+ test -z "$bup_python" && bup_python="$(bup_find_prog python2.7 '')"
+ test -z "$bup_python" && bup_python="$(bup_find_prog python2.6 '')"
+ test -z "$bup_python" && bup_python="$(bup_find_prog python2 '')"
