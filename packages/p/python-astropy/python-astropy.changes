@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:36:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.1
+  Astropy 4.1 is a major release that contains bug fixes and new
+  features since the 4.0.x series of releases.  In particular, this 
+  release includes:
+  * A new SpectralCoord class for representing and transforming 
+    spectral quantities
+  * Support for writing Dask arrays to FITS files
+  * Added True Equator Mean Equinox (TEME) frame for satellite two-
+    line ephemeris data
+  * Support for in-place setting of array-valued SkyCoord and frame 
+    objects
+  * Change in the definition of equality comparison for coordinate 
+    classes
+  * Support use of SkyCoord in table vstack, dstack, and insert_row
+  * Support for table cross-match join with SkyCoord or N-d columns
+  * Support for custom attributes in Table subclasses
+  * Added a new Time subformat unix_tai
+  * Added support for the -TAB convention in FITS WCS
+  * Support for replacing submodels in CompoundModel
+  * Support for units on otherwise unitless models via the 
+    Model.coerce_units method.
+  * Support for ASDF serialization of models
+  In addition to these major changes, Astropy v4.0 includes a large
+  number of smaller improvements and bug fixes, which are described
+  in the Full Changelog. By the numbers:
+  * 381 issues have been closed since v4.0
+  * 511 pull requests have been merged since v4.0
+  * 66 distinct people have contributed code to this release, 23 of
+    which are first time contributors to Astropy 
+- Drop astropy-pr10545-remove-newline-3d_cd_hdr.patch
+  * merged upstream
+  * gh#astropy/astropy#10545
+- Add astropy-pr10329-unbundle-erfa_4.1.patch
+  * Remove bundled _erfa but use system package pyerfa instead
+  * gh#astropy/astropy#10329
+- enable optional pytest-xdist
+
+-------------------------------------------------------------------
+Thu Oct 15 12:22:54 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 4.0.3
+  * astropy.table  
+    Fixed a small bug where initializing an empty `Column` 
+    with a structured dtype with a length and a shape 
+    failed to give the requested dtype. [#10819]
+  * Fixed installation of the source distribution with 
+    pip<19. [#10837, #10852]
+
+-------------------------------------------------------------------
 Sat Oct 10 20:46:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 4.0.2
