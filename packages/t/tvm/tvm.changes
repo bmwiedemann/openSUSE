@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  2 12:16:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable onednn (formerly mkl-dnn) for aarch64 and ppc64le as well
+- Add support to:
+  * Antlr4
+  * openBLAS
+- Add patch to fix build with openblas enabled:
+  * tvm-fix-openblas.patch
+
+-------------------------------------------------------------------
 Fri Oct  2 09:01:09 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space

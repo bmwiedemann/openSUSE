@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%ifarch x86_64
-%bcond_without mkldnn
+%ifarch aarch64 x86_64 ppc64le
+%bcond_without onednn
 %else
-%bcond_with mkldnn
+%bcond_with onednn
 %endif
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
@@ -33,6 +33,8 @@ License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/incubator-tvm/archive/v%{version}.tar.gz
 Patch0:         lib-finder-python-cmake.patch
+# Fix cblas.h path
+Patch1:         tvm-fix-openblas.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module decorator}
@@ -42,14 +44,16 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  antlr4-java
 BuildRequires:  cmake
 BuildRequires:  dlpack-devel
 BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtest
-#BuildRequires:  openblas-devel
 BuildRequires:  memory-constraints
+BuildRequires:  openblas-devel
+BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  rang-devel
 BuildRequires:  spirv-headers
@@ -77,8 +81,8 @@ BuildRequires:  llvm9-devel
 %else
 BuildRequires:  llvm-devel
 %endif
-%if %{with mkldnn}
-BuildRequires:  mkl-dnn-devel
+%if %{with onednn}
+BuildRequires:  onednn-devel
 %endif
 %python_subpackages
 
@@ -131,29 +135,24 @@ ln -s %{_includedir}/endian.h include/endian.h
 
 %build
 %limit_build -m 800
-# USE_ANTLR - fails to find the antlr4 we provide
 # USE_CUDA - we would need cuda
 # USE_METAL
 # USE_MICRO USE_MICRO_STANDALONE_RUNTIME
-# USE_GRAPH_RUNTIME
 # USE_NNPACK
 # USE_ROCBLAS USE_ROCM
 %cmake \
   -DDMLC_PATH="%{_includedir}/dmlc" \
   -DDLPACK_PATH="%{_includedir}/dlpack" \
   -DRANG_PATH="%{_includedir}/rang" \
+  -DUSE_GRAPH_RUNTIME=ON \
   -DUSE_LLVM=ON \
-  -DUSE_BLAS="none" \
-%if %{with mkldnn}
+  -DUSE_BLAS="openblas" \
+%if %{with onednn}
   -DUSE_MKLDNN=ON \
 %else
   -DUSE_MKLDNN=OFF \
 %endif
-%if 0%{?suse_version} > 1500
   -DUSE_OPENCL=ON \
-%else
-  -DUSE_OPENCL=OFF \
-%endif
   -DUSE_OPENGL=ON \
   -DUSE_OPENMP=ON \
   -DUSE_RANDOM=ON \
@@ -162,6 +161,7 @@ ln -s %{_includedir}/endian.h include/endian.h
   -DUSE_SORT=ON \
   -DUSE_THREADS=ON \
   -DUSE_VULKAN=ON \
+  -DUSE_ANTLR="/usr/share/java/antlr4/antlr4-runtime.jar" \
   -DINSTALL_DEV=ON
 %cmake_build
 cd ..

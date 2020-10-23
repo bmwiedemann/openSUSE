@@ -1,0 +1,11 @@
+--- incubator-tvm-0.6.1.orig/src/runtime/contrib/cblas/cblas.cc	2020-10-02 14:17:41.273707898 +0200
++++ incubator-tvm-0.6.1/src/runtime/contrib/cblas/cblas.cc	2020-10-05 09:28:06.788585163 +0200
+@@ -29,7 +29,7 @@ extern "C" {
+ #if USE_MKL_BLAS == 1
+ #include <mkl_cblas.h>
+ #else
+-#include <cblas.h>
++#include <openblas/cblas.h>
+ #endif
+ #if USE_DNNL == 1
+ #include <dnnl.h>
