@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:55:54 CEST 2020 - tiwai@suse.de
+
+- Drop unnecessary buildreq alsa-topology-devel (bsc#1178064)
+
+-------------------------------------------------------------------
 Tue Feb 25 14:36:44 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.2.2 (do not support Python 2 and PyGtk).
