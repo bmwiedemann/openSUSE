@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 18 02:01:23 UTC 2020 - psimons@suse.com
+
+- Update path-io to version 1.6.1.
+  ## Path IO 1.6.1
+
+  * Fixed a space leak in `walkDirAccum`. [Issue
+    55](https://github.com/mrkkrp/path-io/issues/55).
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
 
 - Update path-io to version 1.6.0 revision 3.
