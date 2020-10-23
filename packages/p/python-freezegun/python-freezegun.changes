@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 20 01:42:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.0:
+  * Dropped Py2 support
+  * Added as_kwarg argument in order to have the frozen time object passed
+    with the name provided in as_kwarg argument 
+- Drop denose.patch
+- Drop python-six from {Build,}Requires
+- Update version of python-dateutil in {Build,}Requires
+
+-------------------------------------------------------------------
 Tue Aug 18 22:52:14 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We can finally use %pyunittest macro

@@ -19,24 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-freezegun
-Version:        0.3.15
+Version:        1.0.0
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0
 URL:            https://github.com/spulec/freezegun
 Source:         https://files.pythonhosted.org/packages/source/f/freezegun/freezegun-%{version}.tar.gz
-# gh#spulec/freezegun#259
-Patch1:         denose.patch
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil > 2.0}
+BuildRequires:  %{python_module python-dateutil > 2.7}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-python-dateutil > 2.0
-Requires:       python-six
+Requires:       python-python-dateutil > 2.7
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-mock

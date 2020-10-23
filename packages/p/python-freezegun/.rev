@@ -98,4 +98,18 @@
 </comment>
     <requestid>827695</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b79c1ae091ffb5d2cbc0967f69d31eed</srcmd5>
+    <version>1.0.0</version>
+    <time>1603448337</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Dropped Py2 support
+  * Added as_kwarg argument in order to have the frozen time object passed
+    with the name provided in as_kwarg argument 
+- Drop denose.patch
+- Drop python-six from {Build,}Requires
+- Update version of python-dateutil in {Build,}Requires</comment>
+    <requestid>842656</requestid>
+  </revision>
 </revisionlist>
