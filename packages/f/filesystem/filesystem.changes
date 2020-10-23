@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 10 12:41:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add /usr/etc/skel (boo#1173321)
+- Move additional /etc/skel directories to /usr/etc/skel
+
+-------------------------------------------------------------------
 Mon Oct  5 12:49:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add /usr/etc/X11 (boo#1173049)
