@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:55:55 UTC 2020 - psimons@suse.com
+
+- Update transformers-compat to version 0.6.6.
+  0.6.6 [2020.09.30]
+  ------------------
+  * Add `FunctorClassesDefault`, an adapter newtype suitable for `DerivingVia`,
+    to `Data.Functor.Classes.Generic`.
+  * Fix a bug in which `readsPrec1Default`/`liftReadsPrecDefault` would parse
+    empty data types too strictly.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:22 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
