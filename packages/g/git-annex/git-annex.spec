@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        8.20200908
+Version:        8.20201007
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only

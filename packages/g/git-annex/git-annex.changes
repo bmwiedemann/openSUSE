@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Oct  8 02:00:42 UTC 2020 - psimons@suse.com
+
+- Update git-annex to version 8.20201007.
+  git-annex (8.20201007) upstream; urgency=medium
+
+    * --json output now includes a new field "input" which is the input
+      value (filename, url, etc) that caused a json object to be output.
+    * --batch combined with -J now runs batch requests concurrently for many
+      commands. Before, the combination was accepted, but did not enable
+      concurrency. Since the output of batch requests can be in any order,
+      --json with the new "input" field is recommended to be used,
+      to determine which batch request each response corresponds to.
+    * aws-0.22 improved its support for setting etags, which improves
+      support for versioned S3 buckets.
+    * Serialize use of C magic library, which is not thread safe.
+      This fixes failures uploading to S3 when using -J.
+    * add, addurl, importfeed, import: Added --no-check-gitignore option
+      for finer grained control than using --force.
+    * import: Check gitignores when importing trees from special remotes.
+    * addunused: Don't check .gitignores when adding files.
+    * Improve the "Try making some of these repositories available"
+      message, with some hints for the user for what to do.
+    * Improve --debug output to show pid of processes that are started and
+      stopped.
+    * sync --all: Sped up seeking to around twice as fast, by avoiding a
+      pass over the worktree files when preferred content expressions of the
+      local repo and remotes don't use include=/exclude=.
+    * Sped up seeking for files to operate on, when using options like
+      --copies or --in, by around 20%
+    * import --no-content: Check annex.largefiles, and import small
+      files into git, the same as is done when importing with content.
+      If the largefiles expression needs the file content available
+      (due to mimetype or mimeencoding being used), the import will fail.
+    * sync: When run without --content, import without copying from
+      importtree=yes directory special remotes.
+      (Other special remotes may support this later as well.)
+    * addurl: Avoid a redundant git ignores check for speed.
+    * upgrade: Avoid an upgrade failure of a bare repo in unusual circumstances.
+    * httpalso: Support being used with special remotes that do not have
+      encryption= in their config.
+    * Parse youtube-dl progress output, which lets progress be displayed
+      when doing concurrent downloads.
+    * Fix build with Benchmark build flag.
+    * Enable building with git-annex benchmark by default, only turning it
+      off when the criterion library is not installed.
+    * runshell: Fix a edge case where rm errors were sent to stdout, which
+      could confuse things parsing git-annex output.
+    * runshell: Update files atomically when preparing to run git-annex.
+    * Fix a build failure on Windows.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 07 Oct 2020 12:19:05 -0400
+
+-------------------------------------------------------------------
 Tue Sep 15 14:54:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints 4GB min disk space
