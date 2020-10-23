@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 12:51:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt to changes done in ntp-client (bsc#1177797)
+- 4.3.7
+
+-------------------------------------------------------------------
 Thu Oct 15 07:58:45 UTC 2020 - Steffen Winterfeldt <snwint@suse.com>
 
 - use regular keyboard client for firstboot_keyboard (bsc#1174856)
