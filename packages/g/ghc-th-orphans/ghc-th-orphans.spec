@@ -19,7 +19,7 @@
 %global pkg_name th-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.13.10
+Version:        0.13.11
 Release:        0
 Summary:        Orphan instances for TH datatypes
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-th-compat-devel
 BuildRequires:  ghc-th-lift-devel
 BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-th-reify-many-devel
