@@ -19,7 +19,7 @@
 %global pkg_name th-lift
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Derive Template Haskell's Lift class for datatypes
 License:        (BSD-3-Clause OR GPL-2.0-only)

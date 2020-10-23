@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:36:13 UTC 2020 - psimons@suse.com
+
+- Update th-lift to version 0.8.2.
+  ## [0.8.2] - 2020-09-29
+
+  * Allow building with `template-haskell-2.17.0.0` (GHC 9.0).
+  * Make `deriveLift` work for unlifted newtypes.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:16 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
