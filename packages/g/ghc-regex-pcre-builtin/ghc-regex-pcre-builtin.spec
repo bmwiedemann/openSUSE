@@ -18,7 +18,7 @@
 
 %global pkg_name regex-pcre-builtin
 Name:           ghc-%{pkg_name}
-Version:        0.95.1.2.8.43
+Version:        0.95.1.3.8.43
 Release:        0
 Summary:        PCRE Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
