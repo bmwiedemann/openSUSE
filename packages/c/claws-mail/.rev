@@ -838,4 +838,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>842666</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>b15faec6b2628fc3fb5ee98ba6abeab2</srcmd5>
+    <version>3.17.8</version>
+    <time>1603448379</time>
+    <user>dimstar_suse</user>
+    <comment>add missing bugnumbers</comment>
+    <requestid>843434</requestid>
+  </revision>
 </revisionlist>
