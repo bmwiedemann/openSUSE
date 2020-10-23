@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 20 02:03:09 UTC 2020 - psimons@suse.com
+
+- Update yesod-core to version 1.6.18.5.
+  ## 1.6.18.5
+
+  Document `ErrorResponse` [#1698](https://github.com/yesodweb/yesod/pull/1698)
+
+-------------------------------------------------------------------
 Thu Sep 24 02:00:45 UTC 2020 - psimons@suse.com
 
 - Update yesod-core to version 1.6.18.4.

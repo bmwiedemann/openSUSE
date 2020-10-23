@@ -19,7 +19,7 @@
 %global pkg_name yesod-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.18.4
+Version:        1.6.18.5
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
