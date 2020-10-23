@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 16 02:00:52 UTC 2020 - psimons@suse.com
+
+- Update hlint to version 3.2.1.
+  3.2.1, released 2020-10-15
+      #1150, remove the Duplicate hint (was slow)
+      #1149, allow within to use module wildcards, e.g. **.Foo
+      #1141, make redundant return highlight just the return
+      #1142, suggest newtype instead of data for data family instances
+      #1138, show allowed fields in YAML error message
+      #1131, fix potential variable capture in zipWith/repeat hint
+      #1129, add hints to use const and \_ x -> x where appropriate
+
+-------------------------------------------------------------------
 Tue Sep 15 02:37:00 UTC 2020 - psimons@suse.com
 
 - Update hlint to version 3.2.
