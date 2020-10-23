@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:36:19 UTC 2020 - psimons@suse.com
+
+- Update text-conversions to version 0.3.1.
+  ## 0.3.1 (September 29th, 2020)
+
+  - Added support for `base16-bytestring-1.0`.
+
+  ## 0.3.0 (June 9, 2016)
+
+  ### New Features
+
+  - The `Base16` and `Base64` newtypes are now provided for managing safe conversions between binary data and Base16 and Base64 textual encodings of that data.
+
+-------------------------------------------------------------------
 Tue Sep 22 09:35:59 UTC 2020 - psimons@suse.com
 
 - Update text-conversions to version 0.3.0 revision 1.
