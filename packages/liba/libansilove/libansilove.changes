@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 22 19:11:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.7
+  - Error out early with ANSILOVE_FORMAT_ERROR in case ctx->length
+    is 0.
+  - Initialize ansi_buffer and pcboard_buffer to NULL.
+  - Refactor the IceDraw loader to use a state machine.
+  - Check strndup() return value and error out on failed allocations
+  - Add some file format integrity checks in the IceDraw loader.
+  - Add range integrity checks for scale_factor values in the
+    output() function.
+  - Return error code directly if ctx->length is 0 in the ANSI and
+    PCBoard loaders.
+  - Add range integrity checks for columns value in relevant loaders
+  - Add range integrity checks for bits value in relevant loaders
+  - Add additional file format integrity check in the XBin loader
+
+-------------------------------------------------------------------
 Wed Sep 30 20:50:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.6
