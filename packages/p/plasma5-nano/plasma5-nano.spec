@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           plasma5-nano
-Version:        5.20.0
+Version:        5.20.1
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
