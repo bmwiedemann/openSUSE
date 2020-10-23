@@ -92,7 +92,7 @@ sed -i '1 s|^#!%{_bindir}/env bash|#!%{_bindir}/bash|' %{buildroot}%{_datadir}/%
 %endif
 %doc CONTRIBUTING.md README.md
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/
+%{_prefix}/lib/%{name}/
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
