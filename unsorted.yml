@@ -15055,8 +15055,6 @@ unsorted:
   - mkcomposecache 
   - mkdud 
   - mkelfImage 
-  - mkl-dnn-devel: [x86_64] 
-  - mkl-dnn-doc: [x86_64] 
   - mkosi: [x86_64] 
   - mksh 
   - mksusecd 
@@ -24446,6 +24444,8 @@ unsorted:
   - shake 
   - shapelib 
   - shared-color-targets 
+  - sharpfont 
+  - sharpfont-devel 
   - shellementary 
   - shelltestrunner 
   - shepherd 
