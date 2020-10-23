@@ -19,7 +19,7 @@
 %global pkg_name pandoc-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only
