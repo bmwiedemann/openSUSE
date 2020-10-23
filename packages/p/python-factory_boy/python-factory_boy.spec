@@ -19,16 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-factory_boy
-Version:        2.12.0
+Version:        3.1.0
 Release:        0
-Summary:        A test fixtures replacement
+Summary:        Python test fixtures
 License:        MIT
 URL:            https://github.com/rbarrois/factory_boy
-Source:         https://github.com/FactoryBoy/factory_boy/archive/%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{pythons}
@@ -61,7 +60,7 @@ sed -i -e '/test_alchemy/d' tests/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%python_exec -m unittest
 
 %files %{python_files}
 %license LICENSE

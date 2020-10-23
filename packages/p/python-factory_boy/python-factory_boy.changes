@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:11:53 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Use PyPI tarball and revise test runner to python -m unittest
+- Update to v3.1.0
+  * Allow all types of declarations in :class:`factory.Faker` calls
+    enables references to other faker-defined attributes.
+- from v3.0.1
+  * Fix `import factory; factory.django.DjangoModelFactory` and
+    similar calls.
+- from v3.0.0
+  * Removed alias
+    + `from factory import DjangoModelFactory` to
+      `from factory.django import DjangoModelFactory`
+    + `from factory import MogoFactory` to
+      `from factory.mogo import MogoFactory`
+    + `from factory.fuzzy import get_random_state` to
+      `from factory.random import get_random_state`
+    + `from factory.fuzzy import set_random_state` to
+      `from factory.random import set_random_state`
+    + `from factory.fuzzy import reseed_random` to
+      `from factory.random import reseed_random`
+  * Drop support for Python 2 and 3.4
+  * Drop support for Django 2.0 and 2.1
+  * Remove deprecated `force_flush` from `SQLAlchemyModelFactory`
+    Use `sqlalchemy_session_persistence = "flush"` instead
+  * Drop deprecated `attributes()` from `factory.Factory`; use
+    `make_factory(dict, FactoryClass._meta.pre_declarations)`
+  * Drop deprecated `declarations()` from `factory.Factory`; use
+    `FactoryClass._meta.pre_declarations` instead
+  * Drop `factory.compat` module
+  * Add support for Python 3.8
+  * Add support for Django 2.2 and 3.0
+  * Report misconfiguration when `Factory` is used
+    as the `Factory.model` for another `Factory`
+  * Allow configuring the color palette of `factory.django.ImageField`
+  * `get_random_state()` now represents the state of Faker and
+    `factory_boy` fuzzy attributes
+  * Add SQLAlchemy ``get_or_create`` support
+  * Display a developer-friendly error message when providing a model
+    instead of a factory in a `factory.declarations.SubFactory` class
+  * Fix issue with SubFactory not preserving signal muting behaviour
+    of the used factory
+  * Fix issue with overriding params in a Trait
+  * Limit ``get_or_create`` behavior to fields specified in
+    `django_get_or_create`
+  * Re-raise `~django.db.IntegrityError` when `django_get_or_create`
+    with multiple fields fails to lookup model using user provided
+    keyword arguments
+  * TypeError masked by __repr__ AttributeError when initializing
+    `Maybe` with inconsistent phases
+
+-------------------------------------------------------------------
 Mon Mar 16 10:31:31 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
