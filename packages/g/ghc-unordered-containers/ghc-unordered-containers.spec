@@ -19,7 +19,7 @@
 %global pkg_name unordered-containers
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.12.0
+Version:        0.2.13.0
 Release:        0
 Summary:        Efficient hashing-based container types
 License:        BSD-3-Clause

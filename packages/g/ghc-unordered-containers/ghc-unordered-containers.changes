@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:43 UTC 2020 - psimons@suse.com
+
+- Update unordered-containers to version 0.2.13.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/unordered-containers-0.2.13.0/src/CHANGES.md
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:28 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
