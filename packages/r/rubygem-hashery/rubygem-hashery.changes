@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon May  2 04:34:55 UTC 2016 - coolo@suse.com
+
+- updated to version 2.1.2
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Mon Aug 26 05:05:51 UTC 2013 - coolo@suse.com
+
+- updated to version 2.1.1
+
+-------------------------------------------------------------------
+Mon Nov 26 17:50:30 UTC 2012 - coolo@suse.com
+
+- updated to version 2.1.0
+   The major change of the 2.1 release is to switch over to `Hash#fetch`
+   as the fundamental CRUD read method inplace of the previous `#read` core
+   extension (an alias of `#[]`). This is a pretty fundamental change which
+   required modification of a number of classes. So please do extra-diligence
+   and file an issue if you experience any problems.
+   
+   In addition, the Hash#read core extension has been renamed to Hash#retrieve
+   to avoid any possible confusion with IO objects. This release also fixes
+   a couple of issues with 1.8 compatibility and makes a few other small 
+   enhancements.
+   
+   Changes:
+   
+   * Rename Hash#read to Hash#retrieve.
+   * Deprecate `Dictionary.alpha` in favor of `Dictionary.alphabetic`.
+   * Add support for block argument in Dictionary#order_by_key and #order_by_value.
+   * Fix OpenHash issues with Ruby 1.8.x compatibility.
+   * OpenHash methods are opened up via `protected` instead of `private`.
+   * Change OpenCascade to auto-create the subclass when inherited.
+
+-------------------------------------------------------------------
+Fri Aug 31 20:56:07 UTC 2012 - coolo@suse.com
+
+- initial package (version 2.0.1)
+
