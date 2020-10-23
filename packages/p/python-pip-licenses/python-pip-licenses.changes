@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:33:50 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependency on pip
+- Update to v3.1.1
+  * Implement new option for manage unicode characters
+    + `--filter-strings`
+    + `--filter-code-page`
+- from v2.2.1
+  * Fixed the file that is selected when multiple matches are made
+    with `LICENSE*` with run `--with-license-file`
+- from v2.2.0
+  * Implement new option `--with-notice-file`
+  * Added to find British style file name `LICENCE` with run
+    `--with-license-file`
+
+-------------------------------------------------------------------
 Mon May 18 20:36:35 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.
