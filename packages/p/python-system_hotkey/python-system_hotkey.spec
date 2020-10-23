@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-system_hotkey
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        System wide hotkeys
 License:        BSD-3-Clause
@@ -44,8 +44,6 @@ System wide hotkeys for python 3.
 
 %prep
 %setup -q -n system_hotkey-%{version}
-# version was not bumped
-sed -i -e 's:1\.0\.1:1.0.2:g' setup.py
 
 %build
 %python_build
@@ -61,10 +59,7 @@ sed -i -e 's:1\.0\.1:1.0.2:g' setup.py
 %files %{python_files}
 %license LICENSE
 %doc HISTORY.rst README.rst
-%dir %{python_sitelib}/system_hotkey/
-%dir %{python_sitelib}/system_hotkey/__pycache__/
-%{python_sitelib}/system_hotkey-%{version}-py%{python_version}.egg-info/
-%{python_sitelib}/system_hotkey/*.py
-%pycache_only %{python_sitelib}/system_hotkey/__pycache__/*.pyc
+%{python_sitelib}/system_hotkey
+%{python_sitelib}/*egg-info
 
 %changelog

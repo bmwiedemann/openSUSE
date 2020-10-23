@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 22 16:48:44 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.3.
+  * Fix a typo in Readme
+  * Documented the fact that xlib shouldn't really be used
+- Cleanup spec file.
+
+-------------------------------------------------------------------
 Sat May 23 02:50:29 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Remove _service file. 
