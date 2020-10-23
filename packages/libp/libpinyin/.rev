@@ -271,4 +271,14 @@
   support Leap 42 (forwarded request 832924 from hillwood)</comment>
     <requestid>832925</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>35a8e5cf37a94f1fff08b9d680f26ba8</srcmd5>
+    <version>2.4.92</version>
+    <time>1603448530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.4.92
+  * update pinyin data
+  * bug fixes (forwarded request 843505 from hillwood)</comment>
+    <requestid>843541</requestid>
+  </revision>
 </revisionlist>
