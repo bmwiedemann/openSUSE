@@ -137,4 +137,20 @@
     <comment></comment>
     <requestid>840255</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5183dcd449a1d7deafe65ecc46ac269f</srcmd5>
+    <version>1.12</version>
+    <time>1603448425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12
+  - Update manual page
+  - Use python3 instead of python 2.x
+
+- Update to version 1.11
+  - Don't display issue.d/*.issue files, agetty will do that [bsc#1177891]
+  - Ignore /run/issue.d in issue-generator.path, else issue-generator will
+    be called too fast too often [bsc#1177865]
+  - Ignore *.bak, *~ and *.rpm* files [bsc#1118862]</comment>
+    <requestid>843161</requestid>
+  </revision>
 </revisionlist>

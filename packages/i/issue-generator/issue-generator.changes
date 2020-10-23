@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 21 08:53:39 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.12
+  - Update manual page
+  - Use python3 instead of python 2.x
+
+-------------------------------------------------------------------
+Mon Oct 19 14:26:58 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.11
+  - Don't display issue.d/*.issue files, agetty will do that [bsc#1177891]
+  - Ignore /run/issue.d in issue-generator.path, else issue-generator will
+    be called too fast too often [bsc#1177865]
+  - Ignore *.bak, *~ and *.rpm* files [bsc#1118862]
+
+-------------------------------------------------------------------
 Tue Oct  6 11:40:21 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Handle the .path unit in scriptlets as well
