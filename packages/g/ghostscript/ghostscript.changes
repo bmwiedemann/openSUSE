@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Oct 20 16:38:24 CEST 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch
+  fixes compilation with FreeType 2.10.3+
+  http://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=41ef9a0bc36b9db7115fbe9623f989bfb47bbade
+  c.f. https://bugs.ghostscript.com/show_bug.cgi?id=702985
+
+-------------------------------------------------------------------
+Tue Oct 20 16:03:48 CEST 2020 - jsmeix@suse.de
+
+- Version upgrade to 9.53.3
+  Highlights in this release include
+  (excerpts from the Ghostscript upstream release summary
+   in https://www.ghostscript.com/doc/9.53.3/News.htm):
+  * The 9.53.3 release is primarily maintenance.
+  * Issues arose with 9.53.0/1/2 that prompted the release
+    of a .3 patch:
+    A crash related to management of ICC profile objects.
+    A parameter type mismatch that would cause Ghostscript
+    to error out during initialisation, which
+    affected 64 big, big endian architectures.
+    An unexpected side effect of another change that prevented
+    multithreaded rendering and background rendering
+    from working correctly.
+  * The most obvious change is the (re-)introduction of the
+    patch level to the version number, this helps facilitate
+    a revised policy on handling security related issues.
+    To clarify: in the event we decide to release a patch revision,
+    it will replace the release with the previous patch number.
+    Release notes, highlights and warnings will remain the same,
+    except for the addition of whatever fix(es) prompted the patch.
+  * Our efforts in code hygiene and maintainability continue.
+  * We have added Python bindings for the gsapi interface, can be
+    found in demos/python. These are experimental, and we welcome
+    feedback from interested developers.
+  * For those integrating Ghostscript/GhostPDL via the gsapi
+    interface, we have added new capabilities to that, specifically
+    in terms of setting and interrogating device parameters. These,
+    along with the existing interface calls, are documented in:
+    Ghostscript Interpreter API at
+    https://www.ghostscript.com/doc/9.53.3/API.htm
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements.
+  * For a list of open issues, or to report problems, please visit
+    bugs.ghostscript.com
+  Incompatible changes:
+  * As of 9.53.0, we have (re-)introduced the patch level to the
+    version number, this helps facilitate a revised policy
+    on handling security related issues.
+    Note for GSView Users: The patch level addition breaks
+    GSView 5 (it is hardcoded to check for versions 704-999).
+    It is possible, but not guaranteed that a GSView update might
+    be forthcoming to resolve this. 
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.53.3/News.htm
+  For details see the News.htm and History9.htm files.
+- CVE-2020-15900.patch is no longer needed
+  because it is fixed in the upstream sources.
+- Ghostscript 9.53.3 fixes in particular txtwrite memory issues
+  (boo#1177922).
+
+-------------------------------------------------------------------
 Tue Jul 28 09:15:30 CEST 2020 - jsmeix@suse.de
 
 - CVE-2020-15900.patch fixes CVE-2020-15900 Memory Corruption

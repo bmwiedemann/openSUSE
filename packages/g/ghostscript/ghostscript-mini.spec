@@ -47,7 +47,7 @@ URL:            https://www.ghostscript.com/
 # so that we keep additionally the previous version number to upgrade from the previous version:
 # Starting SLE12/rpm-4.10, one can use tildeversions: 9.15~rc1.
 #Version:        9.25pre26rc1
-Version:        9.52
+Version:        9.53.3
 Release:        0
 # Normal version for Ghostscript releases is the upstream version:
 # tarball_version is used below to specify the directory via "setup -n":
@@ -58,8 +58,8 @@ Release:        0
 # built_version is used below in the install and files sections:
 # Separated built_version needed in case of Ghostscript release candidates e.g. "define built_version 9.15".
 # For Ghostscript releases built_version and version are the same (i.e. the upstream version):
-#define built_version %{version}
-%define built_version 9.52
+%define built_version %{version}
+#define built_version 9.26
 # Source0...Source9 is for sources from upstream:
 # Special URLs for Ghostscript release candidates:
 # see https://github.com/ArtifexSoftware/ghostpdl-downloads/releases
@@ -71,20 +71,17 @@ Release:        0
 #Source0:        ghostscript-%{tarball_version}.tar.gz
 # Normal URLs for Ghostscript releases:
 # URL for Source0:
-# wget -O ghostscript-9.52.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.gz
+# wget -O ghostscript-9.53.3.tar.gz https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.gz
 # URL for MD5 checksums:
-# wget -O gs952.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/MD5SUMS
-# MD5 checksum for Source0: 0f6964ab9b83a63b7e373f136243f901 ghostscript-9.52.tar.gz
+# wget -O gs9533.MD5SUMS https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/MD5SUMS
+# MD5 checksum for Source0: 807a5c4934a814e8a6cd83eff702f212 ghostscript-9.53.3.tar.gz
 Source0:        ghostscript-%{version}.tar.gz
 Source1:        apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
-# Patch1 CVE-2020-15900.patch is
-# https://github.com/ArtifexSoftware/ghostpdl/commit/5d499272b95a6b890a1397e11d20937de000d31b
-# that fixes CVE-2020-15900 Memory Corruption
-# in the rsearch PostScript function that is implemented as search_impl() in psi/zstring.c
-# cf. https://bugs.ghostscript.com/show_bug.cgi?id=702582
-# and https://bugzilla.suse.com/show_bug.cgi?id=1174415
-Patch1:         CVE-2020-15900.patch
+# Patch2 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch fixes compilation with FreeType 2.10.3+
+# http://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=41ef9a0bc36b9db7115fbe9623f989bfb47bbade
+# c.f. https://bugs.ghostscript.com/show_bug.cgi?id=702985
+Patch2:         41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Source100...Source999 is for sources from SUSE which are not intended for upstream:
@@ -153,13 +150,10 @@ This package contains the development files for Minimal Ghostscript.
 # Be quiet when unpacking and
 # use a directory name matching Source0 to make it work also for ghostscript-mini:
 %setup -q -n ghostscript-%{tarball_version}
-# Patch1 CVE-2020-15900.patch is
-# https://github.com/ArtifexSoftware/ghostpdl/commit/5d499272b95a6b890a1397e11d20937de000d31b
-# that fixes CVE-2020-15900 Memory Corruption
-# in the rsearch PostScript function that is implemented as search_impl() in psi/zstring.c
-# cf. https://bugs.ghostscript.com/show_bug.cgi?id=702582
-# and https://bugzilla.suse.com/show_bug.cgi?id=1174415
-%patch1
+# Patch2 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch fixes compilation with FreeType 2.10.3+
+# http://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=41ef9a0bc36b9db7115fbe9623f989bfb47bbade
+# c.f. https://bugs.ghostscript.com/show_bug.cgi?id=702985
+%patch2 -p1
 # Patch100 remove-zlib-h-dependency.patch removes dependency on zlib/zlib.h
 # in makefiles as we do not use the zlib sources from the Ghostscript upstream tarball.
 # Again use the zlib sources from Ghostscript upstream
@@ -187,6 +181,9 @@ rm -f Resource/Init/*.ps.orig
 rm -rf jpeg libpng tiff
 %else
 rm -rf freetype jpeg libpng tiff
+%endif
+%if 0%{?suse_version} >= 1550
+rm -rf openjpeg
 %endif
 # In contrast to the above we use lcms2 from SUSE since Ghostscript 9.23rc1
 # because that is what Ghostscript upstream recommends according to
@@ -327,14 +324,15 @@ popd
 # Extract the catalog of devices which are actually built-in in exactly this Ghostscript:
 # If a needed source file is no longer accessible fail intentionally as notification
 # that something changed which needs adaptions here:
-for F in devices/devs.mak devices/contrib.mak contrib/contrib.mak
+catalog_devices_source_files="devices/devs.mak devices/dcontrib.mak contrib/contrib.mak"
+for F in $catalog_devices_source_files
 do test -r $F || exit 99
 done
 # Do not pollute the build log file with zillions of meaningless messages:
 set +x
 cat /dev/null >catalog.devices
 for D in $( LD_LIBRARY_PATH=%{buildroot}/%{_libdir} %{buildroot}/usr/bin/gs -h | sed -n -e '/^Available devices:/,/^Search path:/p' | egrep -v '^Available devices:|^Search path:' )
-do for F in devices/devs.mak devices/contrib.mak contrib/contrib.mak
+do for F in $catalog_devices_source_files
    do sed -n -e '/ Catalog /,/ End of catalog /p' $F | grep "[[:space:]]$D[[:space:]]" | grep -o '[[:alnum:]].*' | tr -s '[:blank:]' ' ' | sed -e 's/ /\t/' | expand -t16 >>catalog.devices
    done
 done
