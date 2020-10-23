@@ -18,7 +18,7 @@
 
 %global pkg_name uri-encode
 Name:           ghc-%{pkg_name}
-Version:        1.5.0.6
+Version:        1.5.0.7
 Release:        0
 Summary:        Unicode aware uri-encoding
 License:        BSD-3-Clause
@@ -32,7 +32,8 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-utf8-string-devel
 
 %description
-Unicode aware uri-encoding.
+This package allows you to uri encode and uri decode Strings, Texts and
+ByteString values.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
