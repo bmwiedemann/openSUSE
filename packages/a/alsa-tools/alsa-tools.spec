@@ -39,7 +39,6 @@ Source7:        rmedigicontrol.png
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
-BuildRequires:  alsa-topology-devel
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
