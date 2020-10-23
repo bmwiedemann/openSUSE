@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           bowtie2
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
@@ -29,9 +29,6 @@ Group:          Productivity/Scientific/Other
 URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/simd-everywhere/simde/archive/v%{simde_version}.tar.gz#/simde-%{simde_version}.tar.gz
-# PATCH-FIX-UPSTREAM bowtie2-cmake-install-targets.patch gh#BenLangmead/bowtie2#292 badshah400@gmail.com -- Add install targets to cmake scripts and fix tests; patch taken from upstream git
-Patch0:         bowtie2-cmake-install-targets.patch
-Patch1:         bowtie2-processor_support.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -52,8 +49,6 @@ supports gapped, local, and paired-end alignment modes.
 %prep
 %setup -q
 %setup -q -b 1
-%patch0 -p1
-%patch1 -p1
 pushd third_party
 rmdir simde
 ln -s ../../simde-*/ simde
@@ -84,7 +79,7 @@ sed -i "s:%{_bindir}/env python:%{_bindir}/python:" %{buildroot}%{_bindir}/bowti
 %fdupes %{buildroot}%{_bindir}
 
 %files
-%doc AUTHORS MANUAL NEWS TUTORIAL VERSION
+%doc AUTHORS MANUAL NEWS TUTORIAL BOWTIE2_VERSION README.md
 %license LICENSE
 %{_bindir}/bowtie2
 %{_bindir}/bowtie2-align-l
