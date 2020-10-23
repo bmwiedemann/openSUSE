@@ -19,7 +19,7 @@
 %global pkg_name splitmix
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.1
+Version:        0.1.0.2
 Release:        0
 Summary:        Fast Splittable PRNG
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-time-devel
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-async-devel
