@@ -1,0 +1,155 @@
+-------------------------------------------------------------------
+Fri Sep  4 08:48:30 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Fix License (Ruby or GPL-2.0 or GPL-3.0)
+
+-------------------------------------------------------------------
+Thu May  7 21:37:21 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.6.2.1
+ see installed CHANGELOG.md
+
+  ## [1.6.2.1]
+  
+  ### Fixed
+  
+  * 1.6.2 gem conains local debuging code. This is the same commit but without
+    local changes.
+  
+    Alexander Mankuta
+  
+  ## [1.6.2]
+  
+  ### Fixed
+  
+  * Reverted to pre 1.6 maxp table serialization.
+  
+    Cameron Dutro
+
+-------------------------------------------------------------------
+Mon Feb 10 15:58:37 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.6.1
+ see installed CHANGELOG.md
+
+  ## [1.6.1]
+  
+  ### Fixed
+  
+  * Fixed maxp table encoding
+  
+    Cameron Dutro
+  
+  ## [1.6.0]
+  
+  ### Added
+  
+  * OpenType fonts support
+  
+    * Added support for CFF-flavored fonts (also known as CID-keyed or OpenType fonts)
+    * Added support for the VORG and DSIG tables
+    * Improved charset encoding support
+    * Improved font metrics calculations in the head, maxp, hhea, hmtx, and os/2 tables
+    * Subsetted fonts verified with Font-Validator, fontlint, and Mac OS's Font Book
+  
+    Cameron Dutro
+  
+  * Ruby 2.6 support
+  
+    Alexander Mankuta
+  
+  * JRuby 9.2 support
+  
+    Alexander Mankuta
+  
+  ### Removed
+  
+  * Dropped Ruby 2.1 & 2.2 support
+  
+    Alexander Mankuta
+  
+  * Removed JRuby 9.1 support
+  
+    Alexander Mankuta
+  
+  ### Fixed
+  
+  * Sort name table entries when generating subset font
+  
+    Matjaz Gregoric
+  
+  * Map the 0xFFFF char code to glyph 0 in cmap format 4
+  
+    Matjaz Gregoric
+  
+  * Order tables by tag when generating font subset
+  
+    Matjaz Gregoric
+  
+  * Fix typo in TTFunk::Subset::Unicode#includes?
+  
+    Matjaz Gregoric
+  
+  * Fixe calculation of search_range for font subsets
+  
+    Matjaz Gregoric
+  
+  * Fixed instance variable @offset and @length not initialized
+  
+    Katsuya HIDAKA
+  
+  * Code style fixes
+  
+    Katsuya HIDAKA, Matjaz Gregoric, Alexander Mankuta
+
+-------------------------------------------------------------------
+Wed Apr 12 04:45:24 UTC 2017 - coolo@suse.com
+
+- updated to version 1.5.1
+ see installed CHANGELOG.md
+
+  ## [1.5.1]
+  
+  ### Fixed
+  
+  * loca table corruption during subsetting. The loca table serialization code
+    didn't properly detect suitable table format.
+  
+  * Fixed checksum calculation for empty tables.
+
+-------------------------------------------------------------------
+Tue Feb 14 05:46:16 UTC 2017 - coolo@suse.com
+
+- updated to version 1.5.0
+ CHANGELOG removed upstream
+
+-------------------------------------------------------------------
+Tue Feb 10 18:39:42 UTC 2015 - coolo@suse.com
+
+- updated to version 1.4.0
+
+-------------------------------------------------------------------
+Mon Oct 13 18:50:26 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Mon Jul 28 05:28:19 UTC 2014 - coolo@suse.com
+
+- updated to version 1.2.0
+
+-------------------------------------------------------------------
+Fri Mar 21 12:54:12 UTC 2014 - coolo@suse.com
+
+- updated to version 1.1.1
+
+-------------------------------------------------------------------
+Thu Feb  6 18:00:14 UTC 2014 - coolo@suse.com
+
+- updated to version 1.1.0
+
+-------------------------------------------------------------------
+Mon Jul 30 19:23:05 UTC 2012 - coolo@suse.com
+
+- initial package
+
