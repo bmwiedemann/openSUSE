@@ -188,4 +188,12 @@
 - Include in SLE-15 (bsc#1148092, jsc#ECO-134)</comment>
     <requestid>813002</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>0b31e88c9ebe745fcc02d4b473716f8b</srcmd5>
+    <version>0.13.4</version>
+    <time>1603454443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841959</requestid>
+  </revision>
 </revisionlist>
