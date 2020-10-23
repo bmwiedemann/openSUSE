@@ -19,7 +19,7 @@
 %global pkg_name hslua
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Bindings to Lua, an embeddable scripting language
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  ghc-tasty-quickcheck-devel
 HsLua provides bindings, wrappers, types, and helper functions to bridge
 Haskell and <https://www.lua.org/ Lua>.
 
-This package contains a full Lua interpreter version 5.3.5. If you want to link
+This package contains a full Lua interpreter version 5.3.6. If you want to link
 it with a system-wide Lua installation, use the 'system-lua' flag.
 
 <https://github.com/hslua/hslua-examples Example programs> are available in a
