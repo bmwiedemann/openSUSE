@@ -19,7 +19,7 @@
 %global pkg_name base-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Backwards-compatible orphan instances for base
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  ghc-hspec-devel
 versions of 'base' to a wider (older) range of compilers.
 'base-orphans' does not export anything except the orphan instances themselves
 and complements '<http://hackage.haskell.org/package/base-compat base-compat>'.
+
 See the README for what instances are covered:
 <https://github.com/haskell-compat/base-orphans#readme>. See also the
 <https://github.com/haskell-compat/base-orphans#what-is-not-covered what is not
