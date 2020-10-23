@@ -1,0 +1,313 @@
+-------------------------------------------------------------------
+Fri Oct  2 16:39:26 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.4.3.
+  * Add org.gnome.SystemMonitor
+- Remove group tag.
+
+-------------------------------------------------------------------
+Wed Jun 10 02:55:25 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Remove _service file.
+- Update to version 1.4.2.
+  * add system-reboot-symbolic
+  * adapt mintupdate app icon to new symbolic version (#253)
+  * mimetypes: add x-pem-key icon
+  * mimetypes: create symlink for pgp-encrypted files
+  * Fix mintwelcome icon
+  * Add app icon for GCstar
+  * Add mimetype icon for GCstar
+  * Revert "Update Orange places"
+  * Revert "Update Grey places"
+  * Revert "Update Purple places"
+  * Revert "Update Red places"
+  * Revert "Update Teal places"
+  * Revert "Update Sand places"
+  * Revert "Update Blue places"
+  * Revert "Update Aqua places"
+  * Revert "Update Pink places"
+
+-------------------------------------------------------------------
+Fri Mar 27 03:07:09 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 1.3.7 and add _service file. 
+
+-------------------------------------------------------------------
+Wed Dec 26 23:25:34 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.3.3:
+  * Add symbolic link for geogebra classic.
+  * mimetypes: Port some mimetype-symbolics from elementary.
+  * Add symbolic link for hydrogen h2-icon.
+  * Add franz, x-plane icon, Postman icons.
+  * Places: Fix missing symbols in 24/24@2x
+    folder-documents/folder-music.
+
+-------------------------------------------------------------------
+Fri Nov 30 17:46:42 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.3.2 (changes since 1.3.0):
+  * Re-colour the atom editor icon.
+  * action icons: Save, exit, spell-check, document-revert.
+  * mimetypes: Backports and improvements.
+  * Add network-wireless-*-symbolic icons.
+  * Undo/redo consistency.
+  * Add Teal icon theme.
+  * actions: Add action icons for TeXstudio.
+  * status: Add missing wireless-secure icon.
+
+-------------------------------------------------------------------
+Tue Jun 26 17:30:24 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.3.0 (changes since 1.2.6):
+  * Add mintstick and mintlocale-im.
+  * Add a script to render mimetypes.
+  * mimetypes: Change the icon for .deb files.
+  * Devices: Remove label on 16/22/24/32px driver-harddisk.
+  * Import panel icons from Papirus.
+  * Remove status/nm-signal* icons.
+  * Panel: Add NM connection animation.
+  * Panel: Remove blueberry and mintupdate.
+  * Panel: Darken 16px icons.
+  * Add NM notification icons.
+  * Panel: Remove symbolics in 16/22/24.
+
+-------------------------------------------------------------------
+Sat Jun 16 15:48:41 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.6:
+  * mimetype: C++.
+  * Zoom actions fix.
+  * actions: Add mail-attachment symbolic.
+  * status: nm-signal icons (blue).
+
+-------------------------------------------------------------------
+Wed Jun  6 14:12:23 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.5 (changes since 1.2.1):
+  * mimetypes: application-x-trash.
+  * status: add image-loading.
+  * mimetype: For Sass CSS pre-processor file.
+  * Remove audio-volume icons.
+  * Revert "add nm-signal icons (22/24/32 + @2x)".
+  * thunderbird: Symbolic link for flatpak app.
+  * mimetype for .theme files.
+  * action icons: Consistency between (non-)symbolics.
+  * mimetype: video.
+
+-------------------------------------------------------------------
+Sat May 26 10:16:07 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.1:
+  * Places: Add missing links in colour variations.
+
+-------------------------------------------------------------------
+Tue May 22 07:20:12 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.2.0 (changes since 1.1.8):
+  * Re-render apps/categories with optipng.
+  * mimetype: Symbolic link for text-x-python3.
+  * mimetype for ruby.
+  * Add mimetype for sql files.
+  * Import action icons from ePapirus.
+  * Add devices/symbolic/ac-adapter-symbolic.svg.
+  * mimetypes: Fix border colours (16px--64px icons).
+
+-------------------------------------------------------------------
+Fri May 17 12:31:01 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.8 (changes since 1.1.6):
+  * Fix the import-from-other-theme script.
+  * Import devices icons from Arc.
+  * Import some Paper action icons.
+  * Import places trash icons from Arc.
+  * Devices: Give video-display a more neutral colour.
+  * Places: system-file-manager link to folder.
+  * mimetypes: Initial commit.
+  * Update README.md.
+
+-------------------------------------------------------------------
+Tue May 15 19:30:29 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.6:
+  * Add grey, orange, pink, purple, red and sand folders.
+  * Add links for GOA (GNOME Online Accounts).
+  * Fix drive-harddisk-usb-symbolic.
+  * symbolics: Make some icons solid.
+  * Move cs-printer to categories.
+  * Move cs-applets to categories.
+  * Move cs-backgrounds to categories.
+  * Move cs-bluetooth to categories.
+  * Move cs-(mouse,network,tablet,tiling,desktop) to categories.
+  * Move cs-cat* and cs-color to categories.
+  * Move cs-d* to categories.
+  * cs-cat-appearance to symbolic link.
+  * cs-(extensions,firewall,fonts,general) moved to categories.
+  * Improve default-apps and cs-fonts icons.
+  * Improve cs-printer.
+
+-------------------------------------------------------------------
+Thu May  8 20:40:20 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.5:
+  * Fix user-info-symbolic.
+  * Add Aqua and Blue folder colour variations.
+  * Add brown folders.
+  * Create a symbolic link for xfburn.
+  * Add folder-new and bookmark-new symbolics.
+  * Add zoom-icons.
+  * Add nm-signal icons (22/24/32 + @2x).
+  * Improve/add folder symbolics.
+  * Add drive-removable-media-usb symbolic link.
+  * Add drive-harddisk-usb-symbolic.
+  * Add security-symbolics.
+
+-------------------------------------------------------------------
+Sat Apr 28 20:12:30 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 1.1.4:
+  * Fix our icon for nemo.
+  * Add render-bitmaps script.
+  * Backport Moka icons (characters [A-Z], numbers, web-*).
+  * Created an im-chooser icon.
+  * Fix some names/duplicates/symbolic links, add missing icons.
+  * Add new src files, improve duplicates/symbolic links.
+  * Some more improvements.
+  * A few more new svg icons, and symbolic link improvements/
+  * Remove a duplicate whatsapp icon
+  * Add a new frozen-bubble icon.
+  * Add a new icon for pillarsofeternity.
+  * Fix 96px icons.
+  * Femove action icons from the apps directory.
+  * Add script to create symbolic links for apps.
+  * Add @2x for apps in index.theme.
+  * Rendered @2x icons.
+  * Add a cs-input symbolic link.
+  * Replace the cs-desktop icon.
+  * Add a keyboard icon.
+  * Add an icon for pix.
+  * Add a new icon for mintupdate.
+  * Add a new JabRef icon.
+  * Add a scanner icon (backport from Moka).
+  * Add symbolic links to list for flatpak apps.
+  * Umprove texstudio, texmaker icons.
+  * Add an evince icon.
+  * Change the mintupdate icon.
+  * Add a cs-network icon.
+  * Use blue background colour for the okular icon.
+  * Add a new thunderbird icon.
+  * Add mintwelcome, mintupload, mintreport, mintinstall icons.
+  * Remove a wrong symbolic link hedgewars.
+  * symbolics: Add document, folder, and tab new.
+  * Fallback on Adwaita instead of Mint-X.
+  * Symbolics: Add user/avatar icons.
+  * Symbolics: Add view-continous icon.
+  * Symbolics: Add navigation icons.
+  * Add symbolics apps/status to index.theme.
+  * Add a symlink for gnome-power-stats.
+  * Udd user-trash-full-symbolic.
+  * Add camera symbolic icons.
+  * Add battery-full-charged-symbolic.
+  * Add dialogue icons from Arc.
+  * Add system-switch-user-symbolic.
+  * Add several symbolics.
+  * Improve go-history symbolics.
+
+-------------------------------------------------------------------
+Fri Nov 24 20:58:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.3 (changes since 1.1.1):
+  * Fix BattleNet, WhatsApp, Steam, mono-runtime icons.
+  * Update a atom icon and add atom-beta.
+  * Move timeshift.svg.
+  * Add Discord, Seafile icons.
+  * Add action icons.
+
+-------------------------------------------------------------------
+Tue Nov 21 07:11:21 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.1:
+  * Add the Timeshift icon.
+
+-------------------------------------------------------------------
+Sun Nov 12 21:00:18 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.1.0:
+  * Add the WhatsApp icon.
+
+-------------------------------------------------------------------
+Sat Nov  4 10:10:46 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.9:
+  * places: Add new @2 directories for HiDPI.
+  * Add symlinks for Tilix.
+  * Create symlinks for modem-manager-gui.
+  * Add eye-candy for online-accounts.
+  * Remove Pale Moon icon override (incorrect/unrelated icon).
+
+-------------------------------------------------------------------
+Wed Jun 21 16:11:48 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.8:
+  * Add icons for transmission-tray.
+  * Tweak the recently added fluxgui-panel icons to better match.
+  * Add initial directory icons.
+
+-------------------------------------------------------------------
+Wed May 24 14:40:01 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.7:
+  * Give Shutter its proper panel icon.
+  * Add a new directory for panel icons.
+  * Flux Panel Icon.
+
+-------------------------------------------------------------------
+Sun May 14 16:04:41 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.6:
+  * Add links for icons used in GNOME and Cinnamon.
+  * Add icons for mintupdate.
+
+-------------------------------------------------------------------
+Sun May  7 20:20:04 UTC 2017 - sor.alexei@meowr.ru
+
+- Update to version 1.0.5:
+  * Update Spotify icons.
+  * Add symlinks for dnfdragora.
+  * Linke firefox-esr to firefox.
+  * Add a link for the new Skype for Linux icons.
+  * Add a 96 pixel link.
+  * Link unity-monodevelop to monodevelop.
+  * Add symlinks for lightdm-settings.
+  * Link minecraft-launcher to minecraft.
+  * Link openjdk-9 to java.
+  * Extract mintdrivers from jockey and update all links to it.
+  * Link the GDebi icon to system-software-package-manager.
+  * Extract printer from cs-printer.
+  * Link mintbackup to deja-dup.
+
+-------------------------------------------------------------------
+Tue Nov  8 13:01:41 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.4:
+  * Link keepassx2 -> keepass.
+
+-------------------------------------------------------------------
+Wed Jun 22 12:01:32 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.3:
+  * Add an application icon for mintsources.
+
+-------------------------------------------------------------------
+Sun May 22 15:13:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 1.0.2:
+  * mimetype symbolics: The standard is to use rgb(190,190,190) so
+    lets use it.
+  * places: Remove the current places icons.
+  * mimetypes: Remove the mimetypes for now.
+
+-------------------------------------------------------------------
+Thu May 12 09:54:43 UTC 2016 - sor.alexei@meowr.ru
+
+- Initial package.
