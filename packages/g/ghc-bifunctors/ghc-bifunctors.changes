@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:02 UTC 2020 - psimons@suse.com
+
+- Update bifunctors to version 5.5.8.
+  5.5.8 [2020.10.01]
+  ------------------
+  * Fix a bug in which `deriveBifunctor` would fail on sufficiently complex uses
+    of rank-n types in constructor fields.
+  * Fix a bug in which `deriveBiunctor` and related functions would needlessly
+    reject data types whose two last type parameters appear as oversaturated
+    arguments to a type family.
+
+-------------------------------------------------------------------
 Mon Aug 31 09:34:30 UTC 2020 - psimons@suse.com
 
 - Update bifunctors to version 5.5.7 revision 1.

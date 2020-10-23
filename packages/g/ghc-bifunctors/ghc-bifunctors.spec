@@ -19,13 +19,12 @@
 %global pkg_name bifunctors
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.5.7
+Version:        5.5.8
 Release:        0
 Summary:        Collection Haskell 98 bifunctors, bifoldables and bitraversables
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-comonad-devel
@@ -56,7 +55,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
