@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 19 17:58:26 UTC 2020 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.2.1 (jsc#SLE-13711)
+  Bug fixes:
+  - zhypinfo: Fix memory leaks
+  - Makefile: Various fixes
+- Removed obsolete qclib.makefile.libdir.patch.
+- Removed obsolete qclib.fix.missing.makefile.if.statement.patch.
+- Updated qclib.makefile.libdir.patch to fit the current version.
+
+-------------------------------------------------------------------
 Wed Sep 16 18:27:21 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.2.0 (jsc#SLE-13711)

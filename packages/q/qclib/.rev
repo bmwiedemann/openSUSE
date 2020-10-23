@@ -80,4 +80,19 @@ Reworked as requested.</comment>
     <comment></comment>
     <requestid>836410</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7dac2ee61cb9daaa193e1d819d5fdfd2</srcmd5>
+    <version>2.2.1</version>
+    <time>1603448463</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgraded to version 2.2.1 (jsc#SLE-13711)
+  Bug fixes:
+  - zhypinfo: Fix memory leaks
+  - Makefile: Various fixes
+- Removed obsolete qclib.makefile.libdir.patch.
+- Removed obsolete qclib.fix.missing.makefile.if.statement.patch.
+- Updated qclib.makefile.libdir.patch to fit the current version.
+</comment>
+    <requestid>843547</requestid>
+  </revision>
 </revisionlist>

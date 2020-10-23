@@ -17,7 +17,7 @@
 
 
 Name:           qclib
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -25,8 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://public.dhe.ibm.com/software/dw/linux390/ht_src/%{name}-%{version}.tgz
 Source:         %{name}-%{version}.tgz
 Source1:        %{name}-rpmlintrc
-Patch1:         qclib.fix.missing.makefile.if.statement.patch
-Patch99:        qclib.makefile.libdir.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
@@ -108,7 +106,7 @@ MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
 %make_build doc test-sh
 
 %install
-%make_install LIBDIR=%{_lib} V=1
+%make_install V=1
 gzip -9 %{buildroot}/%{_mandir}/man8/*
 make installdoc DESTDIR=%{buildroot} V=1
 
