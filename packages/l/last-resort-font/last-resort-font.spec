@@ -17,13 +17,13 @@
 
 
 Name:           last-resort-font
-Version:        13.000
+Version:        13.001
 Release:        0
 Summary:        A special-purpose font that includes a collection of glyphs to represent types of Unicode characters
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/unicode-org/last-resort-font
-Source0:        https://github.com/unicode-org/last-resort-font/releases/download/%{version}/LastResort-Regular.ttf
+Source0:        https://github.com/unicode-org/last-resort-font/releases/download/%{version}/LastResortHE-Regular.ttf
 Source1:        https://raw.githubusercontent.com/unicode-org/last-resort-font/main/LICENSE.md
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
