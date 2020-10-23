@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.10.1
+Version:        2.11.0.2
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-blaze-markup-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
+BuildRequires:  ghc-citeproc-devel
 BuildRequires:  ghc-commonmark-devel
 BuildRequires:  ghc-commonmark-extensions-devel
 BuildRequires:  ghc-commonmark-pandoc-devel
@@ -54,6 +55,7 @@ BuildRequires:  ghc-doclayout-devel
 BuildRequires:  ghc-doctemplates-devel
 BuildRequires:  ghc-emojis-devel
 BuildRequires:  ghc-exceptions-devel
+BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-haddock-library-devel
 BuildRequires:  ghc-hslua-devel
@@ -108,13 +110,13 @@ Markdown and (subsets of) HTML, reStructuredText, LaTeX, DocBook, JATS,
 MediaWiki markup, DokuWiki markup, TWiki markup, TikiWiki markup, Jira markup,
 Creole 1.0, Haddock markup, OPML, Emacs Org-Mode, Emacs Muse, txt2tags, ipynb
 (Jupyter notebooks), Vimwiki, Word Docx, ODT, EPUB, FictionBook2, roff man,
-Textile, and CSV, and it can write Markdown, reStructuredText, XHTML, HTML 5,
-LaTeX, ConTeXt, DocBook, JATS, OPML, TEI, OpenDocument, ODT, Word docx,
-PowerPoint pptx, RTF, MediaWiki, DokuWiki, XWiki, ZimWiki, Textile, Jira, roff
-man, roff ms, plain text, Emacs Org-Mode, AsciiDoc, Haddock markup, EPUB (v2
-and v3), ipynb, FictionBook2, InDesign ICML, Muse, LaTeX beamer slides, and
-several kinds of HTML/JavaScript slide shows (S5, Slidy, Slideous, DZSlides,
-reveal.js).
+Textile, BibTeX, BibLaTeX, CSL JSON, , and CSV, and it can write Markdown,
+reStructuredText, XHTML, HTML 5, LaTeX, ConTeXt, DocBook, JATS, OPML, TEI,
+OpenDocument, ODT, Word docx, PowerPoint pptx, RTF, MediaWiki, DokuWiki, XWiki,
+ZimWiki, Textile, Jira, roff man, roff ms, plain text, Emacs Org-Mode,
+AsciiDoc, Haddock markup, EPUB (v2 and v3), ipynb, FictionBook2, InDesign ICML,
+Muse, CSL JSON, LaTeX beamer slides, and several kinds of HTML/JavaScript slide
+shows (S5, Slidy, Slideous, DZSlides, reveal.js).
 
 In contrast to most existing tools for converting Markdown to HTML, pandoc has
 a modular design: it consists of a set of readers, which parse text in a given
@@ -141,8 +143,7 @@ This package provides the Haskell %{name} library development files.
 %prep
 %autosetup
 cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 2'
-cabal-tweak-dep-ver hslua '< 1.2' '< 2'
-cabal-tweak-dep-ver hslua-module-text '< 0.3' '< 1'
+cabal-tweak-dep-ver hslua '< 1.3' '< 2'
 
 %build
 %ghc_lib_build
@@ -167,6 +168,8 @@ cabal-tweak-dep-ver hslua-module-text '< 0.3' '< 1'
 %doc AUTHORS.md README.md changelog.md
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
+%dir %{_datadir}/%{name}-%{version}/citeproc
+%dir %{_datadir}/%{name}-%{version}/citeproc/biblatex-localization
 %dir %{_datadir}/%{name}-%{version}/data
 %dir %{_datadir}/%{name}-%{version}/data/docx
 %dir %{_datadir}/%{name}-%{version}/data/docx/_rels
@@ -200,8 +203,10 @@ cabal-tweak-dep-ver hslua-module-text '< 0.3' '< 1'
 %dir %{_datadir}/%{name}-%{version}/data/translations
 %{_datadir}/%{name}-%{version}/COPYRIGHT
 %{_datadir}/%{name}-%{version}/MANUAL.txt
+%{_datadir}/%{name}-%{version}/citeproc/biblatex-localization/*.lbx.strings
 %{_datadir}/%{name}-%{version}/data/abbreviations
 %{_datadir}/%{name}-%{version}/data/bash_completion.tpl
+%{_datadir}/%{name}-%{version}/data/default.csl
 %{_datadir}/%{name}-%{version}/data/docx/?Content_Types?.xml
 %{_datadir}/%{name}-%{version}/data/docx/_rels/.rels
 %{_datadir}/%{name}-%{version}/data/docx/docProps/app.xml
