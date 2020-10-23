@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:05:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with RPM 4.16: error: bare words are no longer
+  supported, please use "...":  x86 == ppc.
+
+-------------------------------------------------------------------
+Tue Oct  6 07:30:56 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to the final version 3.9.0:
+  Complete changelog with all (many)
+  changes from previous version is on
+  https://docs.python.org/release/3.9.0/whatsnew/3.9.html
+  Changes from the previous RC versions (not that many) are on
+  https://docs.python.org/release/3.9.0/whatsnew/changelog.html#changelog
+
+-------------------------------------------------------------------
 Fri Sep 25 06:58:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Buildrequire timezone only for general flavor. It's used in this

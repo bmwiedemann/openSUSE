@@ -55,7 +55,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     .. note::
 --- a/Lib/ensurepip/__init__.py
 +++ b/Lib/ensurepip/__init__.py
-@@ -59,27 +59,27 @@ def _disable_pip_configuration_settings(
+@@ -56,27 +56,27 @@ def _disable_pip_configuration_settings(
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
  
@@ -88,7 +88,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
      Note that calling this function will alter both sys.path and os.environ.
      """
-@@ -122,6 +122,8 @@ def _bootstrap(*, root=None, upgrade=Fal
+@@ -119,6 +119,8 @@ def _bootstrap(*, root=None, upgrade=Fal
          args = ["install", "--no-cache-dir", "--no-index", "--find-links", tmpdir]
          if root:
              args += ["--root", root]
@@ -97,7 +97,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          if upgrade:
              args += ["--upgrade"]
          if user:
-@@ -194,6 +196,11 @@ def _main(argv=None):
+@@ -191,6 +193,11 @@ def _main(argv=None):
          help="Install everything relative to this alternate root directory.",
      )
      parser.add_argument(
@@ -109,7 +109,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          "--altinstall",
          action="store_true",
          default=False,
-@@ -212,6 +219,7 @@ def _main(argv=None):
+@@ -209,6 +216,7 @@ def _main(argv=None):
  
      return _bootstrap(
          root=args.root,
@@ -139,7 +139,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
-@@ -1244,7 +1244,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+@@ -1252,7 +1252,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -148,7 +148,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  	fi
  
  altinstall: commoninstall
-@@ -1254,7 +1254,7 @@ altinstall: commoninstall
+@@ -1262,7 +1262,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
