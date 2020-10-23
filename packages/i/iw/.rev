@@ -250,4 +250,17 @@ Look at the license file in the sources (forwarded request 143986 from babelworx
     <comment></comment>
     <requestid>800311</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d93750a7706c8329e182b26f48e416c1</srcmd5>
+    <version>5.9</version>
+    <time>1603448394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.9:
+  * iw: support HE rate configuration in 6 GHz band	Rajkumar Manoharan	1	-2/+38
+  * iw: add HE rate/gi/ltf support	Miles Hu	1	-15/+163
+  * iw: update nl80211.h	Johannes Berg	1	-22/+174
+  * iw: add TID specific Tx bitrate configuration	Tamizh Chelvam	3	-8/+58
+  * iw: fix tid config help entries</comment>
+    <requestid>842693</requestid>
+  </revision>
 </revisionlist>

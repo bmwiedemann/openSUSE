@@ -17,7 +17,7 @@
 
 
 Name:           iw
-Version:        5.4
+Version:        5.9
 Release:        0
 Summary:        Configuration utility for nl80211 based wireless drivers
 License:        ISC

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 20 06:58:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.9:
+  * iw: support HE rate configuration in 6 GHz band	Rajkumar Manoharan	1	-2/+38
+  * iw: add HE rate/gi/ltf support	Miles Hu	1	-15/+163
+  * iw: update nl80211.h	Johannes Berg	1	-22/+174
+  * iw: add TID specific Tx bitrate configuration	Tamizh Chelvam	3	-8/+58
+  * iw: fix tid config help entries
+
+-------------------------------------------------------------------
 Wed Apr 15 06:45:47 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.4:
