@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 22 15:10:30 MDT 2020 - carnold@suse.com
+
+- jsc#SLE-11981 - Dev: vm-install: sync SLE and openSUSE Leap
+  differences
+  Modify the PV PXE booting feature to only allow a pxe server
+  address passed on command line. The use of udhcp to lookup a pxe
+  server is removed.
+- Drop vm-install-extra-args.patch by folding fix into new tarball
+- Version 0.10.10
+
+-------------------------------------------------------------------
 Mon Oct 19 08:40:01 UTC 2020 - Franz Sirl <franz.sirl-obs@lauterbach.com>
 
 - Don't forget --extra-args when using --upgrade.
   vm-install-extra-args.patch
+- Version 0.10.09
 
 -------------------------------------------------------------------
 Mon Feb 10 14:32:48 MST 2020 - carnold@suse.com

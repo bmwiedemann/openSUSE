@@ -1321,4 +1321,12 @@
     <comment>Fix upgrade feature to not drop extra args</comment>
     <requestid>842627</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>10ceab08a5e4ef7aa74289f44fbf4539</srcmd5>
+    <version>0.10.10</version>
+    <time>1603448538</time>
+    <user>dimstar_suse</user>
+    <comment>jsc#SLE-11981 - Dev: vm-install: sync SLE and openSUSE Leap differences</comment>
+    <requestid>843491</requestid>
+  </revision>
 </revisionlist>

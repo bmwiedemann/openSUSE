@@ -27,14 +27,13 @@ BuildRequires:  update-desktop-files
 %endif
 # For directory ownership:
 BuildRequires:  yast2
-Version:        0.10.08
+Version:        0.10.10
 Release:        0
 Summary:        Tool to Define a Virtual Machine and Install Its Operating System
 License:        GPL-2.0-only
 Group:          System/Emulators/PC
-Source0:        %{name}-0.10.08.tar.bz2
+Source0:        %{name}-0.10.10.tar.bz2
 Source1:        vm-install.conf
-Patch1:         vm-install-extra-args.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       kdump
 Requires:       python3-dbus-python
@@ -46,10 +45,6 @@ Requires:       python3-pycurl
 Requires:       qemu-tools
 %else
 Requires:       virt-utils
-%endif
-# FATE324167: vm-install: remove deps on udhcp on SLE15
-%if 0%{?is_opensuse} && 0%{?suse_version} < 1500
-Requires:       udhcp
 %endif
 Requires:       usbutils
 Requires:       tftp(client)
@@ -81,7 +76,6 @@ Authors:
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 
