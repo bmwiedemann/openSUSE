@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:36:56 UTC 2020 - psimons@suse.com
+
+- Update config-ini to version 0.2.4.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Sep  9 14:43:22 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Relax over-specified constraint on megaparsec.
