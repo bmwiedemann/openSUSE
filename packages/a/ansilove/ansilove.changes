@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 22 19:44:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.4
+  * Move read_status variable declaration to the top of the function
+  * Check fread() return values in readComments() and add error
+    handling
+  * Introduce the READ_RECORD function-like macro, for fread error
+    handling
+  * Use READ_RECORD in readRecord() to add fread() error handling
+  * Only call memset() if the malloc call succeeds
+  * Check strdup() return value and error out on failed allocation
+
+-------------------------------------------------------------------
 Fri Sep 18 19:07:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.3
