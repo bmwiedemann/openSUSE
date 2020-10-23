@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:10:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.0
+  * Session recording can now exclude specific users or groups
+    when scope is set to all (see exclude_users and
+    exclude_groups options).
+  * Active Directory provider now sends CLDAP pings over UDP
+    protocol to Domain Controllers in parallel to determine site
+    and forest to speed up server discovery.
+
+-------------------------------------------------------------------
 Mon Aug 10 12:55:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Build sssd's KCM.

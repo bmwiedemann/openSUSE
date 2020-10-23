@@ -18,15 +18,15 @@
 %define _buildshell /bin/bash
 
 Name:           sssd
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
 Group:          System/Daemons
 URL:            https://pagure.io/SSSD/sssd
 #Git-Clone:	https://pagure.io/SSSD/sssd
-Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_3_1/%name-%version.tar.gz
-Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_3_1/%name-%version.tar.gz.asc
+Source:         https://github.com/SSSD/sssd/releases/download/sssd-2_4_0/%name-%version.tar.gz
+Source2:        https://github.com/SSSD/sssd/releases/download/sssd-2_4_0/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
 Patch1:         krb-noversion.diff

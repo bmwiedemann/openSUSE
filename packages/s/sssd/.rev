@@ -944,4 +944,12 @@
     <comment>- Build sssd's KCM.</comment>
     <requestid>825390</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>7cf9f721b486657f8830f43ac4eb3c13</srcmd5>
+    <version>2.4.0</version>
+    <time>1603448365</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842566</requestid>
+  </revision>
 </revisionlist>
