@@ -19,7 +19,7 @@
 %global pkg_name hslua-module-text
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.0
+Version:        0.3.0.1
 Release:        0
 Summary:        Lua module for text
 License:        MIT
