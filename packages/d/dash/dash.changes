@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 18 18:08:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.11.2:
+  * shell: Group readdir64/dirent64 with open64 
+
+-------------------------------------------------------------------
 Sun Aug 16 17:55:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.5.11.1:
@@ -23,7 +29,7 @@ Thu Oct 25 06:07:40 UTC 2018 - sean@suspend.net
 -------------------------------------------------------------------
 Sat Nov  4 23:15:40 UTC 2017 - aavindraa@gmail.com
 
-- update to version 0.5.9.1
+- update to version 0.5.9.1 (bsc#1177691)
   * For complete list of changes, see:
     https://git.kernel.org/pub/scm/utils/dash/dash.git/log/?qt=range&q=v0.5.8..v0.5.9.1
 - lint with spec-cleaner

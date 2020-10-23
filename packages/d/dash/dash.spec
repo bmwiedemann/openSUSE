@@ -18,7 +18,7 @@
 
 
 Name:           dash
-Version:        0.5.11.1
+Version:        0.5.11.2
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause
