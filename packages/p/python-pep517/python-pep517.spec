@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep517
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Wrappers to build Python packages using PEP 517 hooks
 License:        MIT

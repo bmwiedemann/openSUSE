@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:45:17 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.8.2
+  * Avoid compat.py, to make _in_process.py zip-safe
+
+-------------------------------------------------------------------
 Thu Mar 12 11:13:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 0.8.1
