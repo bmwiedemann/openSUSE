@@ -411,6 +411,7 @@ unsorted:
   - akonadi-notes-devel 
   - akonadi-search-devel 
   - akonadi-server-devel 
+  - akonadi-server-sqlite 
   - akonadiconsole 
   - alac 
   - alac-devel 
@@ -1426,6 +1427,7 @@ unsorted:
   - bumblebee 
   - bumblebee-status 
   - bumpversion 
+  - bup: [x86_64] 
   - busybox-adduser 
   - busybox-attr 
   - busybox-bc 
@@ -1932,7 +1934,7 @@ unsorted:
   - coccigrep 
   - coccinelle 
   - cockpit 
-  - cockpit-bridge 
+  - cockpit-bridge: [i586] 
   - cockpit-dashboard 
   - cockpit-doc 
   - cockpit-kdump 
@@ -1940,9 +1942,9 @@ unsorted:
   - cockpit-networkmanager 
   - cockpit-packagekit 
   - cockpit-pcp 
-  - cockpit-podman 
+  - cockpit-podman: [i586] 
   - cockpit-storaged 
-  - cockpit-system 
+  - cockpit-system: [i586] 
   - cockpit-tests 
   - cockpit-ws 
   - codec2 
@@ -2845,6 +2847,7 @@ unsorted:
   - eclipse-swtchart: [x86_64] 
   - econnman 
   - ecore_imf-module-scim 
+  - ecpint-common 
   - ecryptfs-utils 
   - ecryptfs-utils-32bit: [x86_64] 
   - ecryptfs-utils-devel 
@@ -4586,8 +4589,6 @@ unsorted:
   - ghc-optparse-simple 
   - ghc-optparse-simple-devel 
   - ghc-pandoc 
-  - ghc-pandoc-citeproc 
-  - ghc-pandoc-citeproc-devel 
   - ghc-pandoc-devel 
   - ghc-pandoc-types 
   - ghc-pandoc-types-devel 
@@ -4799,6 +4800,8 @@ unsorted:
   - ghc-tf-random-devel 
   - ghc-th-abstraction 
   - ghc-th-abstraction-devel 
+  - ghc-th-compat 
+  - ghc-th-compat-devel 
   - ghc-th-expand-syns 
   - ghc-th-expand-syns-devel 
   - ghc-th-lift 
@@ -7270,6 +7273,7 @@ unsorted:
   - kernel-coverage 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -9660,6 +9664,8 @@ unsorted:
   - libeconf-devel 
   - libecpg6 
   - libecpg6-32bit: [x86_64] 
+  - libecpint-devel 
+  - libecpint1 
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
   - libedata-book-1_2-26-32bit: [x86_64] 
@@ -11947,11 +11953,6 @@ unsorted:
   - libpqos4 
   - libpqxx-6_4 
   - libpqxx-devel 
-  - libprelude-devel 
-  - libprelude-devel-bindings 
-  - libprelude-doc 
-  - libprelude28 
-  - libpreludecpp12 
   - libpreludedb-devel 
   - libpreludedb-devel-bindings 
   - libpreludedb-doc 
@@ -12029,7 +12030,7 @@ unsorted:
   - libpurple-plugin-gnome-keyring 
   - libpurple-plugin-pack-extras 
   - libpwquality-devel 
-  - libpwquality-tools 
+  - libpwquality-tools: [i586] 
   - libpythia8 
   - libpythia8lhapdf6 
   - libpython2_7-1_0-32bit: [x86_64] 
@@ -12038,6 +12039,7 @@ unsorted:
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
+  - libpyzy-1_0-0 
   - libqalculate-devel 
   - libqb-devel 
   - libqb-devel-32bit: [x86_64] 
@@ -12525,6 +12527,7 @@ unsorted:
   - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
+  - librime-lua 
   - librime1 
   - librime1-32bit: [x86_64] 
   - librk0 
@@ -12533,6 +12536,7 @@ unsorted:
   - librlog5-doc 
   - librmt-devel-doc 
   - librocsgraphtheory0 
+  - librpma0: [x86_64] 
   - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
   - librpmem1: [x86_64] 
   - librrd8 
@@ -14114,7 +14118,6 @@ unsorted:
   - lua-Hamliblua 
   - lua-genders 
   - lua-libguestfs: [x86_64] 
-  - lua-libprelude 
   - lua-lmod 
   - lua-lmod-doc 
   - lua-macros 
@@ -14791,7 +14794,7 @@ unsorted:
   - mcpp 
   - mcpp-devel 
   - mcqd 
-  - mcstrans: [i586] 
+  - mcstrans 
   - mda-lv2 
   - mdbtools 
   - mdbtools-devel 
@@ -15031,6 +15034,8 @@ unsorted:
   - minizip-devel 
   - minlog 
   - minlog-javadoc 
+  - mint-x-icon-theme 
+  - mint-y-icon-theme 
   - minuet 
   - minuet-devel 
   - minuet-lang 
@@ -16501,6 +16506,7 @@ unsorted:
   - ocrad 
   - ocrad-devel 
   - ocserv 
+  - octant 
   - octave 
   - octave-CSXCAD 
   - octave-cli 
@@ -16600,6 +16606,8 @@ unsorted:
   - onboard 
   - onboard-data 
   - onboard-lang 
+  - onednn-devel: [x86_64] 
+  - onednn-doc: [x86_64] 
   - onedrive 
   - onedrive-completion-bash 
   - onedrive-completion-fish 
@@ -16725,6 +16733,7 @@ unsorted:
   - openbsc 
   - openbsc-bs11-utils 
   - openbsc-bsc-sccplite 
+  - opencc 
   - opencc-devel 
   - opencensus-cpp-source 
   - opencensus-proto-source 
@@ -18720,7 +18729,6 @@ unsorted:
   - perl-indirect 
   - perl-libconfigfile 
   - perl-libintl-perl 
-  - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
   - perl-marisa 
@@ -18968,6 +18976,8 @@ unsorted:
   - plasma-wayland-protocols 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
+  - plasma5-disks 
+  - plasma5-disks-lang 
   - plasma5-nano 
   - plasma5-nano-lang 
   - plasma5-sdk 
@@ -19330,7 +19340,6 @@ unsorted:
   - prelude-manager-devel 
   - prelude-manager-smtp-plugin 
   - prelude-manager-xml-plugin 
-  - prelude-tools 
   - preludedb-tools 
   - premake4 
   - presage 
@@ -20035,7 +20044,6 @@ unsorted:
   - python3-arf 
   - python3-argcomplete: [i586] 
   - python3-argh 
-  - python3-argon2-cffi 
   - python3-argparse-manpage: [i586] 
   - python3-args 
   - python3-arrow 
@@ -21294,7 +21302,6 @@ unsorted:
   - python3-libpamtest 
   - python3-libpff 
   - python3-libpfm 
-  - python3-libprelude 
   - python3-libpreludedb 
   - python3-libproxy 
   - python3-libqcow 
@@ -22318,7 +22325,6 @@ unsorted:
   - python3-screeninfo 
   - python3-screenplain 
   - python3-scripttest 
-  - python3-scrypt 
   - python3-scspell3k 
   - python3-sdnotify 
   - python3-seaborn 
@@ -22850,6 +22856,8 @@ unsorted:
   - pytorch-examples: [x86_64] 
   - pyzo 
   - pyzologo 
+  - pyzy-db-android 
+  - pyzy-db-open-phrase 
   - pyzy-devel 
   - q4wine 
   - q4wine-lang 
@@ -23118,6 +23126,7 @@ unsorted:
   - redfish-finder 
   - redfishtool 
   - redis++-devel 
+  - redis-operator 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -23168,7 +23177,7 @@ unsorted:
   - restic 
   - restic-bash-completion 
   - restic-zsh-completion 
-  - restorecond: [i586] 
+  - restorecond 
   - restund 
   - retext 
   - retro-gtk-devel 
@@ -23244,6 +23253,7 @@ unsorted:
   - rpm-devel 
   - rpm-repo-keys-openSUSE 
   - rpm-repos-openSUSE-Tumbleweed 
+  - rpma-devel: [x86_64] 
   - rpmconf 
   - rpmdevtools 
   - rpmemd: [x86_64] 
@@ -23319,7 +23329,6 @@ unsorted:
   - ruby-common-rails 
   - ruby-devel 
   - ruby-geos 
-  - ruby-libprelude 
   - ruby-marisa 
   - ruby-obexftp 
   - ruby-rrdtool 
@@ -23335,6 +23344,8 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
+  - ruby2.7-rubygem-Ascii85-doc 
+  - ruby2.7-rubygem-Ascii85-testsuite 
   - ruby2.7-rubygem-RedCloth-doc 
   - ruby2.7-rubygem-RedCloth-testsuite 
   - ruby2.7-rubygem-abstract-doc 
@@ -23366,6 +23377,8 @@ unsorted:
   - ruby2.7-rubygem-addressable-testsuite 
   - ruby2.7-rubygem-addressable-testsuite-2_3 
   - ruby2.7-rubygem-aes_key_wrap-doc 
+  - ruby2.7-rubygem-afm-doc 
+  - ruby2.7-rubygem-afm-testsuite 
   - ruby2.7-rubygem-airbrussh-doc 
   - ruby2.7-rubygem-amq-protocol-doc 
   - ruby2.7-rubygem-amq-protocol-testsuite 
@@ -23469,6 +23482,7 @@ unsorted:
   - ruby2.7-rubygem-crass-doc 
   - ruby2.7-rubygem-cri-doc 
   - ruby2.7-rubygem-cri-testsuite 
+  - ruby2.7-rubygem-css_parser-doc 
   - ruby2.7-rubygem-cssmin-doc 
   - ruby2.7-rubygem-daemon_controller-doc 
   - ruby2.7-rubygem-daemon_controller-testsuite 
@@ -23592,6 +23606,8 @@ unsorted:
   - ruby2.7-rubygem-has_mobile_views-testsuite 
   - ruby2.7-rubygem-hashdiff-doc 
   - ruby2.7-rubygem-hashdiff-testsuite 
+  - ruby2.7-rubygem-hashery-doc 
+  - ruby2.7-rubygem-hashery-testsuite 
   - ruby2.7-rubygem-hashicorp-checkpoint-doc 
   - ruby2.7-rubygem-hashicorp-checkpoint-testsuite 
   - ruby2.7-rubygem-hashie-doc 
@@ -23794,6 +23810,8 @@ unsorted:
   - ruby2.7-rubygem-path_expander-doc 
   - ruby2.7-rubygem-path_expander-testsuite 
   - ruby2.7-rubygem-pathutil-doc 
+  - ruby2.7-rubygem-pdf-core-doc 
+  - ruby2.7-rubygem-pdf-reader-doc 
   - ruby2.7-rubygem-pg-doc 
   - ruby2.7-rubygem-pg-testsuite 
   - ruby2.7-rubygem-pkg-config-doc 
@@ -24008,6 +24026,7 @@ unsorted:
   - ruby2.7-rubygem-treetop-testsuite-1_4 
   - ruby2.7-rubygem-trollop-doc 
   - ruby2.7-rubygem-trollop-testsuite 
+  - ruby2.7-rubygem-ttfunk-doc 
   - ruby2.7-rubygem-turbolinks-doc 
   - ruby2.7-rubygem-turbolinks-source-doc 
   - ruby2.7-rubygem-tzinfo-data-doc 
@@ -24760,6 +24779,7 @@ unsorted:
   - sql-parser-devel 
   - sqlcipher 
   - sqlcipher-devel 
+  - sqlite3 
   - sqlite3-devel 
   - sqlite3-doc 
   - sqlitebrowser 
