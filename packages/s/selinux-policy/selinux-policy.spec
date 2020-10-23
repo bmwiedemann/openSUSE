@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-policy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # There are almost no SUSE specific modifications available in the policy, so we utilize the
 # ones used by redhat and include also the SUSE specific ones (see sed statement below)
@@ -32,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20200910
+Version:        20201016
 Release:        0
 Source:         fedora-policy.%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -87,10 +88,10 @@ Patch003:       fix_gift.patch
 Patch004:       fix_java.patch
 Patch005:       fix_hadoop.patch
 Patch006:       fix_thunderbird.patch
-Patch007: 	fix_postfix.patch
-Patch008: 	fix_nscd.patch
-Patch009: 	fix_sysnetwork.patch
-Patch010: 	fix_logging.patch
+Patch007:       fix_postfix.patch
+Patch008:       fix_nscd.patch
+Patch009:       fix_sysnetwork.patch
+Patch010:       fix_logging.patch
 Patch011:       fix_xserver.patch
 Patch012:       fix_miscfiles.patch
 Patch013:       fix_init.patch
@@ -129,9 +130,9 @@ Patch047:       fix_rpm.patch
 Patch048:       fix_apache.patch
 Patch049:       fix_nis.patch
 
-Patch100: 	sedoctool.patch
+Patch100:       sedoctool.patch
 
-Url:            https://github.com/fedora-selinux/selinux-policy.git
+URL:            https://github.com/fedora-selinux/selinux-policy.git
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  checkpolicy
@@ -139,8 +140,9 @@ BuildRequires:  gawk
 BuildRequires:  libxml2-tools
 BuildRequires:  m4
 BuildRequires:  policycoreutils
-BuildRequires:  python3-policycoreutils
 BuildRequires:  policycoreutils-devel
+BuildRequires:  python3
+BuildRequires:  python3-policycoreutils
 # we need selinuxenabled
 Requires(pre):  policycoreutils >= %{POLICYCOREUTILSVER}
 Requires(pre):  pam-config
@@ -354,7 +356,8 @@ creating other policies.
 %{_rpmconfigdir}/macros.d/macros.selinux-policy
 
 %package sandbox
-Summary: SELinux policy sandbox
+Summary:        SELinux policy sandbox
+Group:          System/Management
 Requires(pre): selinux-policy-targeted = %{version}-%{release}
 
 %description sandbox
@@ -455,7 +458,6 @@ mkdir -p %{buildroot}%{_sharedstatedir}/selinux/{targeted,mls,minimum,modules}/
 
 mkdir -p %{buildroot}%{_datadir}/selinux/packages
 
-
 mkdir selinux_config
 for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15} %{SOURCE20} %{SOURCE21} %{SOURCE22} %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE91} %{SOURCE92} %{SOURCE94};do
  cp $i selinux_config
@@ -522,11 +524,13 @@ if [ ! -s %{_sysconfdir}/selinux/config ]; then
     else
 	echo "
 # This file controls the state of SELinux on the system.
+# SELinux can be completly disabled with the \"selinux=0\" kernel
+# commandline option.
+#
 # SELINUX= can take one of these three values:
 #     enforcing - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-SELINUX=disabled
+SELINUX=permissive
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,
 #     minimum - Modification of targeted policy. Only selected processes are protected.
@@ -553,9 +557,7 @@ if [ $1 -eq 0 ]; then \
   if [ "$SELINUXTYPE" = "$2" ]; then \
     %{_sbindir}/setenforce 0 2> /dev/null \
     if [ -s %{_sysconfdir}/selinux/config ]; then \
-      sed -i 's/^SELINUX=.*/SELINUX=disabled/g' %{_sysconfdir}/selinux/config \
-    else \
-      echo "SELINUX=disabled" > %{_sysconfdir}/selinux/config \
+      sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config \
     fi \
   fi \
   pam-config -d --selinux \
@@ -565,14 +567,11 @@ exit 0
 %postun
 if [ $1 = 0 ]; then
      %{_sbindir}/setenforce 0 2> /dev/null
-     if [ ! -s %{_sysconfdir}/selinux/config ]; then
-          echo "SELINUX=disabled" > %{_sysconfdir}/selinux/config
-     else
-          sed -i 's/^SELINUX=.*/SELINUX=disabled/g' %{_sysconfdir}/selinux/config
+     if [ -s %{_sysconfdir}/selinux/config ]; then
+          sed -i 's/^SELINUX=.*/SELINUX=permissive/g' %{_sysconfdir}/selinux/config
      fi
 fi
 exit 0
-
 
 %package devel
 Summary:        SELinux policy devel
@@ -650,7 +649,6 @@ Requires(pre):  coreutils
 Requires(pre):  /usr/bin/awk
 Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       selinux-policy = %{version}-%{release}
-
 
 %description minimum
 SELinux Reference policy minimum base module.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 16 08:50:06 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20201016
+- Use python3 to build (fc_sort.c was replaced by fc_sort.py which
+  uses python3)
+- Drop SELINUX=disabled, "selinux=0" kernel commandline option has
+  to be used instead. New default is "permissive" [bsc#1176923].
+
+-------------------------------------------------------------------
 Tue Sep 10 07:16:50 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20200910. Refreshed
