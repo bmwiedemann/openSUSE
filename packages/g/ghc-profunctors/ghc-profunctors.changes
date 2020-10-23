@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:56:05 UTC 2020 - psimons@suse.com
+
+- Update profunctors to version 5.6.
+  5.6 [2020.10.01]
+  ----------------
+  * Enable the `PolyKinds` extension. The following datatypes now have
+    polymorphic kinds: `(:->)`, `Cayley`, `Procompose`, `Rift`,
+    `ProfunctorFunctor`, `Ran`, `Codensity`, `Prep`, `Coprep`, `Star`, `Costar`,
+    `WrappedArrow`, `Forget`.
+  * Allow building with GHC 9.0.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:45:48 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
