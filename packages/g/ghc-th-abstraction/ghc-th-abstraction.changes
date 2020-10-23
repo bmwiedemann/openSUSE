@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:36:12 UTC 2020 - psimons@suse.com
+
+- Update th-abstraction to version 0.4.0.0.
+  ## 0.4.0.0 -- 2020-09-29
+  * Adapt to the `TyVarBndr` data type gaining a new `flag` type parameter
+    (in `template-haskell-2.17.0.0`) to represent its specificity:
+    * Introduce a new `Language.Haskell.TH.Datatype.TyVarBndr` module that
+      defines `TyVarBndr_`, a backwards-compatible type synonym for `TyVarBndr`,
+      as well as backporting `TyVarBndrSpec`, `TyVarBndrUnit`, and `Specificity`.
+      This module also defines other useful functions for constructing and
+      manipulating `TyVarBndr`s.
+    * The types in `Language.Haskell.TH.Datatype` now use `TyVarBndr_`,
+      `TyVarBndrUnit`, and `TyVarBndrSpec` where appropriate. Technically, this
+      is not a breaking change, since all three are simple type synonyms around
+      `TyVarBndr`, but it is likely that you will need to update your
+      `th-abstraction`-using code anyway if it involves a `TyVarBndr`-consuming
+      function.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:46:15 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.

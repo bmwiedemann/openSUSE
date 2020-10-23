@@ -19,7 +19,7 @@
 %global pkg_name th-abstraction
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.2.0
+Version:        0.4.0.0
 Release:        0
 Summary:        Nicer interface for reified information about data types
 License:        ISC
