@@ -1,0 +1,120 @@
+Index: ldas-tools-framecpp-2.7.0/src/CInterface/framecppc.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/CInterface/framecppc.pc.in
++++ ldas-tools-framecpp-2.7.0/src/CInterface/framecppc.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Common/framecpp_common.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Common/framecpp_common.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Common/framecpp_common.pc.in
+@@ -4,8 +4,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/OOInterface/framecpp.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/OOInterface/framecpp.pc.in
++++ ldas-tools-framecpp-2.7.0/src/OOInterface/framecpp.pc.in
+@@ -4,8 +4,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Version3/framecpp3.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Version3/framecpp3.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Version3/framecpp3.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Version4/framecpp4.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Version4/framecpp4.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Version4/framecpp4.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Version6/framecpp6.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Version6/framecpp6.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Version6/framecpp6.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Version7/framecpp7.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Version7/framecpp7.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Version7/framecpp7.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------
+Index: ldas-tools-framecpp-2.7.0/src/Version8/framecpp8.pc.in
+===================================================================
+--- ldas-tools-framecpp-2.7.0.orig/src/Version8/framecpp8.pc.in
++++ ldas-tools-framecpp-2.7.0/src/Version8/framecpp8.pc.in
+@@ -3,8 +3,8 @@
+ #------------------------------------------------------------------------
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INCLUDEDIR@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
+ #------------------------------------------------------------------------
+ # Description of the package
+ #------------------------------------------------------------------------

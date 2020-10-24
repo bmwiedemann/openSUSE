@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Fri Oct 23 07:41:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ldas-tools-framecpp-fix-pkgconfig.patch -- Fix paths in
+  pkgconfig file when absolute paths to LIBDIR and INCLUDEDIR are
+  specified to cmake.
+
+-------------------------------------------------------------------
+Wed Aug 12 14:12:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add _constraints to allocate at least 2 GB memory to prevent OOM
+  build failures on Tumbleweed.
+- Use memory-constraints to limit the number of threads to require
+  at least 2 GB per thread.
+
+-------------------------------------------------------------------
+Thu Apr 23 09:01:23 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Set CMAKE_SKIP_INSTALL_RPATH to ON avoid build failures on
+  openSUSE 15.x.
+
+-------------------------------------------------------------------
+Thu Mar 12 14:05:50 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable link-time-optimization to fix builds on openSUSE
+  Tumbleweed.
+
+-------------------------------------------------------------------
+Wed Oct  2 14:12:43 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7.0
+- Add ldas-tools-framecpp-no-return-from-nonvoid-func.patch to fix
+  a non-void function which was not returning any data.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:36:44 UTC 2019 - badshah400@gmail.com
+
+- Add zlib, openssl, ldastoolsal, and libboost_program_options
+  Requires for -devel pkg.
+
+-------------------------------------------------------------------
+Sun Feb  3 11:06:10 UTC 2019 - badshah400@gmail.com
+
+- Initial package.
