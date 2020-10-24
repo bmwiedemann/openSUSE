@@ -18,10 +18,10 @@
 
 %define shlib libipopt0
 Name:           Ipopt
-Version:        3.13.2
+Version:        3.13.3
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
-License:        EPL-1.0
+License:        EPL-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://projects.coin-or.org/Ipopt
 Source0:        https://github.com/coin-or/Ipopt/archive/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -67,6 +67,7 @@ This package contains the development and header files for %{name}.
 
 %package java
 Summary:        Java bindings for %{name}
+Group:          Development/Libraries/C and C++
 
 %description java
 This package provides the java bindings for %{name} in a jar file.
