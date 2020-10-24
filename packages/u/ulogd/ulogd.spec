@@ -51,8 +51,6 @@ BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.2
 BuildRequires:  pkgconfig(libnetfilter_log) >= 1.0.0
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.1
 BuildRequires:  pkgconfig(libpq)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_ordering}
 %sysusers_requires
 
 %description
@@ -99,7 +97,7 @@ SQLite3 output target for ulogd.
 %build
 autoreconf -fi
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 %sysusers_generate_pre %{SOURCE5} ulogd
 
 %install
@@ -128,7 +126,6 @@ install -m 644 %{SOURCE5} "$b/%_sysusersdir/"
 %service_del_postun ulogd.service
 
 %files
-%defattr(-,root,root)
 %config(noreplace) %_sysconfdir/ulogd.conf
 %_sbindir/ulogd
 %dir %_libdir/%name
@@ -149,19 +146,15 @@ install -m 644 %{SOURCE5} "$b/%_sysusersdir/"
 # These are the dependency-heavy things:
 
 %files mysql
-%defattr(-,root,root)
 %_libdir/%name/ulogd_output_MYSQL.so*
 
 %files pcap
-%defattr(-,root,root)
 %_libdir/%name/ulogd_output_PCAP.so*
 
 %files pgsql
-%defattr(-,root,root)
 %_libdir/%name/ulogd_output_PGSQL.so*
 
 %files sqlite3
-%defattr(-,root,root)
 %_libdir/%name/ulogd_output_SQLITE3.so*
 
 %changelog

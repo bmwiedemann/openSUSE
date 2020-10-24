@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 00:01:59 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
 Wed Apr 15 15:13:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use sysusers instead of shadow to create ulogd account
