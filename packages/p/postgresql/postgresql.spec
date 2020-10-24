@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define pgmajor 12
+%define pgmajor 13
 %define defaultpackage postgresql%pgmajor
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
@@ -40,7 +40,7 @@ Name:           postgresql
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
-Version:        %pgmajor.0.1
+Version:        %pgmajor
 Release:        0
 Url:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

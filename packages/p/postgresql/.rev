@@ -461,4 +461,12 @@
   SLE-15 and SLE-15-SP1.</comment>
     <requestid>826578</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>be230e3c70a00d79a8842cdeb15b04bb</srcmd5>
+    <version>13</version>
+    <time>1603545362</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump major and default version to 13.</comment>
+    <requestid>843219</requestid>
+  </revision>
 </revisionlist>

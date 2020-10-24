@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:58:58 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Bump major and default version to 13.
+
+-------------------------------------------------------------------
 Thu Aug 13 08:22:16 UTC 2020 - Reinhard Max <max@suse.com>
 
 - We also transfer PostgreSQL 9.4.26 to the new package layout in
