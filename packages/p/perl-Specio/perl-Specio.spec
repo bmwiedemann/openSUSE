@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Specio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           perl-Specio
-Version:        0.44
+Version:        0.46
 Release:        0
 %define cpan_name Specio
 Summary:        Type constraints and coercions for Perl
@@ -42,6 +42,7 @@ BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Try::Tiny)
+BuildRequires:  perl(XString)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version) >= 0.83
 Requires:       perl(Devel::StackTrace)
@@ -55,11 +56,11 @@ Requires:       perl(Sub::Quote)
 Requires:       perl(Test::Fatal)
 Requires:       perl(Test::More) >= 0.96
 Requires:       perl(Try::Tiny)
+Requires:       perl(XString)
 Requires:       perl(parent)
 Requires:       perl(version) >= 0.83
 Recommends:     perl(Ref::Util) >= 0.112
 Recommends:     perl(Sub::Util) >= 1.40
-Recommends:     perl(XString)
 %{perl_requires}
 
 %description
@@ -94,7 +95,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc appveyor.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO.md
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO.md
 %license LICENSE
 
 %changelog
