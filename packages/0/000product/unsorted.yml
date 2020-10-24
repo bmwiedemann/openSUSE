@@ -4970,6 +4970,10 @@ unsorted:
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
+  - giac 
+  - giac-devel 
+  - giac-doc 
+  - giac-lang 
   - giada 
   - giblib-devel 
   - giflib-devel 
@@ -7835,7 +7839,13 @@ unsorted:
   - ldap-sdk-javadoc 
   - ldapfuse 
   - ldapvi 
+  - ldas-tools-al-devel 
+  - ldas-tools-al-swig 
   - ldas-tools-cmake 
+  - ldas-tools-framecpp-c-devel 
+  - ldas-tools-framecpp-devel 
+  - ldas-tools-framecpp-doc 
+  - ldas-tools-framecpp-utils 
   - ldb-tools 
   - ldc 
   - ldc-bash-completion 
@@ -9590,7 +9600,7 @@ unsorted:
   - libdnf-devel 
   - libdnf2 
   - libdnnl1: [x86_64] 
-  - libdns1605-32bit: [x86_64] 
+  - libdns1607-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdouble-conversion3-32bit: [x86_64] 
@@ -9907,6 +9917,8 @@ unsorted:
   - libfprint-doc 
   - libframe6 
   - libframe6-32bit: [x86_64] 
+  - libframecpp 
+  - libframecppc3 
   - libframel8 
   - libfreebl3-32bit: [x86_64] 
   - libfreebl3-hmac-32bit: [x86_64] 
@@ -10061,6 +10073,7 @@ unsorted:
   - libgfortran5-32bit: [x86_64] 
   - libgfortran5-gcc9 
   - libgfortran5-gcc9-32bit: [x86_64] 
+  - libgiac0 
   - libgiblib1 
   - libgif7-32bit: [x86_64] 
   - libgig-devel 
@@ -10679,7 +10692,7 @@ unsorted:
   - libirs1601-32bit: [x86_64] 
   - libisc1606-32bit: [x86_64] 
   - libisccc1600-32bit: [x86_64] 
-  - libisccfg1600-32bit: [x86_64] 
+  - libisccfg1601-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -10900,6 +10913,7 @@ unsorted:
   - liblcms2-doc 
   - libldac2 
   - libldapcpp-devel 
+  - libldastoolsal7 
   - libldb-devel 
   - libldc-jit93 
   - libldl-doc 
@@ -11552,10 +11566,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_10-gnu-hpc 
-  - libopenblas-pthreads_0_3_10-gnu-hpc-devel 
-  - libopenblas_0_3_10-gnu-hpc 
-  - libopenblas_0_3_10-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_11-gnu-hpc 
+  - libopenblas-pthreads_0_3_11-gnu-hpc-devel 
+  - libopenblas_0_3_11-gnu-hpc 
+  - libopenblas_0_3_11-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -13370,6 +13384,7 @@ unsorted:
   - libvma: [x86_64] 
   - libvma-devel: [x86_64] 
   - libvma9: [x86_64] 
+  - libvmaf0-32bit: [x86_64] 
   - libvmdk-devel 
   - libvmdk-tools 
   - libvmdk1 
@@ -16718,8 +16733,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_10-gnu-hpc-devel-static 
-  - openblas_0_3_10-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_11-gnu-hpc-devel-static 
+  - openblas_0_3_11-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -18038,13 +18053,11 @@ unsorted:
   - perl-Inline-Python 
   - perl-Iterator 
   - perl-Iterator-Util 
-  - perl-JSON 
   - perl-JSON-Any 
   - perl-JSON-DWIW 
   - perl-JSON-MaybeXS 
   - perl-JSON-RPC 
   - perl-JSON-Validator 
-  - perl-JSON-XS 
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-Online 
   - perl-Lexical-Persistence 
@@ -18246,6 +18259,7 @@ unsorted:
   - perl-Net-AMQP-RabbitMQ 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
+  - perl-Net-DNS-Resolver-Mock 
   - perl-Net-DNS-Resolver-Programmable 
   - perl-Net-Daemon 
   - perl-Net-Domain-TLD 
@@ -18554,6 +18568,7 @@ unsorted:
   - perl-Test-Refcount 
   - perl-Test-Requires 
   - perl-Test-Requires-Git 
+  - perl-Test-RequiresInternet 
   - perl-Test-Script 
   - perl-Test-SharedFork 
   - perl-Test-Simple 
@@ -18636,7 +18651,6 @@ unsorted:
   - perl-Tree-DAG_Node 
   - perl-TryCatch 
   - perl-Type-Tiny 
-  - perl-Types-Serialiser 
   - perl-UNIVERSAL-can 
   - perl-UNIVERSAL-isa 
   - perl-UNIVERSAL-moniker 
@@ -18703,7 +18717,9 @@ unsorted:
   - perl-XML-XSLT 
   - perl-XMLRPC-Lite 
   - perl-XSLoader 
+  - perl-XString 
   - perl-YAML 
+  - perl-YAML-LibYAML 
   - perl-YAML-LibYAML-API 
   - perl-YAML-PP 
   - perl-YAML-PP-LibYAML 
@@ -19238,8 +19254,11 @@ unsorted:
   - postgresql11-server-devel 
   - postgresql11-test 
   - postgresql11-timescaledb 
+  - postgresql12 
+  - postgresql12-contrib 
   - postgresql12-devel 
-  - postgresql12-devel-mini 
+  - postgresql12-docs 
+  - postgresql12-llvmjit 
   - postgresql12-pg_cron 
   - postgresql12-pg_cron-llvmjit 
   - postgresql12-pgagent 
@@ -19250,9 +19269,17 @@ unsorted:
   - postgresql12-plr 
   - postgresql12-plr-doc 
   - postgresql12-pltcl 
+  - postgresql12-server 
   - postgresql12-server-devel 
   - postgresql12-test 
   - postgresql12-timescaledb 
+  - postgresql13-devel 
+  - postgresql13-devel-mini 
+  - postgresql13-plperl 
+  - postgresql13-plpython 
+  - postgresql13-pltcl 
+  - postgresql13-server-devel 
+  - postgresql13-test 
   - postgresql95 
   - postgresql95-contrib 
   - postgresql95-devel 
@@ -21255,6 +21282,7 @@ unsorted:
   - python3-ldapdomaindump 
   - python3-ldappool 
   - python3-ldaptor 
+  - python3-ldas-tools-al-swig 
   - python3-ldb-32bit: [x86_64] 
   - python3-ldb-devel 
   - python3-ldns 
@@ -21960,6 +21988,7 @@ unsorted:
   - python3-pypuppetdb 
   - python3-pyqtgraph 
   - python3-pyquery 
+  - python3-pyquil 
   - python3-pyrad 
   - python3-pyramid 
   - python3-pyramid-chameleon 
@@ -33879,6 +33908,7 @@ unsorted:
   - vlc-jack 
   - vlc-opencv 
   - vm-dump-metrics 
+  - vmaf-devel 
   - vms-empire 
   - vmtouch 
   - vncmanager 
@@ -34184,6 +34214,7 @@ unsorted:
   - xcalc 
   - xcalib 
   - xcalib-profiles 
+  - xcas 
   - xcb 
   - xcb-proto-devel 
   - xcb-util-cursor-devel 
