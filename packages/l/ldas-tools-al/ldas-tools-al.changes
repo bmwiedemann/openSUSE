@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Thu May  7 22:35:14 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL to point to correct upstream website.
+
+-------------------------------------------------------------------
+Mon Feb  3 14:25:40 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.4
+  * Added cx_ldas_prog_cxx() configuration check to obtain C++
+    standard flag for use in package config file.
+- Fix builds for openSUSE >= 1550: The test for HAVE_PROCFS_STAT
+  fails for unknown reason; workaround by forcing the value of
+  this variable to 1 as a cmake option.
+
+-------------------------------------------------------------------
+Wed Oct  2 09:59:53 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.3
+- Bump shlib number in keeping with upstream so version update.
+- Switch to using cmake for build.
+- New BuildRequires: ldas-tools-cmake.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:35:19 UTC 2019 - badshah400@gmail.com
+
+- Specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Sun Feb  3 11:06:10 UTC 2019 - badshah400@gmail.com
+
+- Initial package.
