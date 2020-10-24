@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 24 06:34:23 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 5.20 development release
+  - More work on the DSS cryptographic provider.
+  - A number of fixes for windowless RichEdit.
+  - Support for FLS callbacks.
+  - Window resizing in the new console host.
+  - Various bug fixes.
+- update staging to 5.20 release
+
+-------------------------------------------------------------------
 Sat Oct 10 06:13:09 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 5.19 development release

@@ -3715,4 +3715,18 @@
 - update staging to 5.19 release</comment>
     <requestid>840533</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>87c72e57438a2c2166ba54b733a79b49</srcmd5>
+    <version>5.20</version>
+    <time>1603545482</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.20 development release
+  - More work on the DSS cryptographic provider.
+  - A number of fixes for windowless RichEdit.
+  - Support for FLS callbacks.
+  - Window resizing in the new console host.
+  - Various bug fixes.
+- update staging to 5.20 release</comment>
+    <requestid>843751</requestid>
+  </revision>
 </revisionlist>
