@@ -93,4 +93,12 @@
     <comment>- Update to new upstream release 1.0.3</comment>
     <requestid>421147</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d01f277e5cd672c51aacd429e0117795</srcmd5>
+    <version>1.0.3</version>
+    <time>1603545265</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843032</requestid>
+  </revision>
 </revisionlist>
