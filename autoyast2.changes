@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 06:09:04 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST warnings timeout applies to the XML validation error
+  dialog (bsc#1176973).
+- 4.3.62
+
+-------------------------------------------------------------------
 Tue Oct 13 10:06:05 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Allow setting the 't' (or 'config:type') attribute in the
