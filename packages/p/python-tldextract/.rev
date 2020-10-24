@@ -125,4 +125,16 @@ Needed for python-dns-lexicon</comment>
 </comment>
     <requestid>843031</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7d18f67a43a335d1505475b4d1f60e57</srcmd5>
+    <version>3.0.1</version>
+    <time>1603545502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Fix `tlds` property `AttributeError`
+    (https://github.com/john-kurkowski/tldextract/issues/210)
+  * Allow `include_psl_private_domains` in global `extract` too
+    (https://github.com/john-kurkowski/tldextract/issues/210)</comment>
+    <requestid>843692</requestid>
+  </revision>
 </revisionlist>

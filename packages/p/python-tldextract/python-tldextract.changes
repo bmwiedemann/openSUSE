@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 23 21:46:35 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.1:
+  * Fix `tlds` property `AttributeError`
+    (https://github.com/john-kurkowski/tldextract/issues/210)
+  * Allow `include_psl_private_domains` in global `extract` too
+    (https://github.com/john-kurkowski/tldextract/issues/210)
+
+-------------------------------------------------------------------
 Tue Oct 20 22:45:59 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.0.0:

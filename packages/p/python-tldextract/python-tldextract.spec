@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tldextract
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Python module to separate the TLD of a URL
 License:        BSD-3-Clause
