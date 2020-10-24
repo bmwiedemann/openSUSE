@@ -3,7 +3,7 @@
     <param name="versionformat">%ad</param>
     <param name="url">https://github.com/Ryochan7/sc-controller.git</param>
     <param name="scm">git</param>
-    <param name="versionprefix">0.4.7</param>
+    <param name="versionprefix">0.4.8.1</param>
     <param name="revision">python3</param>
   </service>
   <service name="tar" mode="disabled"/>

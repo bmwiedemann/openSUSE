@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:31:30 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
+
+- Updated to current git version
+  * Initial Python 3 port
+  * Fixed several errors discovered by pyflakes
+  * Updated Linux platform SDL GameController mappings from SDL_GameControllerDB project
+
+-------------------------------------------------------------------
 Tue Jul  7 14:54:44 UTC 2020 - Jannik Seiler <seil0@mosad.xyz>
 
 - Updated to current git version

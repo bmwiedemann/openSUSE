@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.4.7.20200707
+Version:        0.4.8.1.20201002
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
