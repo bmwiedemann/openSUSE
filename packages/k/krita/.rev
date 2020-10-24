@@ -465,4 +465,41 @@
     <comment></comment>
     <requestid>841157</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fc6ccb33d290f310c5ecfe05ddbdb6b2</srcmd5>
+    <version>4.4.0</version>
+    <time>1603545439</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase the minimum disk size for all archs.
+
+- Update to 4.4.0:
+  * See https://krita.org/en/item/krita-4-4-0-released/
+  * Fill layers can now make use of multi-threading
+  * The patterns of fill layers can now be transformed
+  * A new Screentone fill layer option specialized in filling the
+    whole screen with dots, squares, lines, waves or more
+  * Multigrid - a fill layer that generates, among others, Penrose
+    tilings, as well as Quasicrystal structures
+  * Integration of Disney Animation's SeExpr expression language
+  * Gradient Map mode for Brush-tips
+  * Brushes now have the ability to use lightness and the gradients
+    for textures as well
+  * Diagonal lines in MyPaint color selector allow modifying
+    lightness and saturation of the currently active color at the
+    same time
+  * Support for dynamic use of currently selected colors in
+    gradients
+  * New WebM/VP9 preset for Animation Rendering
+  * Compositions Docker now allows for the exporting of Animations
+  * New GDQUEST Batch Exporter add-on
+  * New Python plugin Channels to Layers
+  * Python API changes:
+    + Return list of available dockers for application in python
+    + Add signal to notify when theme changed
+    + Add signal when active view changes in python
+    + Add showFloatingMessage to View API
+    + New widget bindings: scratchpad
+  * Make Ctrl+C/X/V shortcut work with layers when there is nothing</comment>
+    <requestid>841605</requestid>
+  </revision>
 </revisionlist>

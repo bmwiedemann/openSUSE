@@ -3,16 +3,8 @@
   <memory>
    <size unit="G">4</size>
   </memory>
- </hardware>
- <overwrite>
-  <conditions>
-   <arch>ppc64</arch>
-   <arch>ppc64le</arch>
-  </conditions>
-  <hardware>
-   <disk>
-    <size unit="G">9</size>
-   </disk>
+  <disk>
+   <size unit="G">10</size>
+  </disk>
   </hardware>
- </overwrite>
 </constraints>

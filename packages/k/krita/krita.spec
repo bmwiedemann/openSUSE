@@ -24,15 +24,13 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Support-quazip-1.0.patch
 %ifnarch %{arm} aarch64
 # causes build failure on ARM currently
 BuildRequires:  OpenColorIO-devel
@@ -111,7 +109,6 @@ Development headers and libraries for Krita.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %ifarch %{arm} aarch64
@@ -139,6 +136,7 @@ chmod -x %{buildroot}/%{_kf5_applicationsdir}/*.desktop
 %license COPYING*
 %doc AUTHORS HACKING README*
 %{_kf5_bindir}/krita
+%{_kf5_bindir}/krita_version
 %{_kf5_bindir}/kritarunner
 %{_kf5_applicationsdir}/*.desktop
 %{_kf5_sharedir}/krita/
