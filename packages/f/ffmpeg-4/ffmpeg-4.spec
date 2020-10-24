@@ -116,6 +116,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
 Patch6:         ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
 Patch7:         0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
+Patch8:         vmaf-trim-usr-local.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -163,6 +164,7 @@ BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva) >= 0.35.0
 BuildRequires:  pkgconfig(libva-drm)
 BuildRequires:  pkgconfig(libva-x11)
+BuildRequires:  pkgconfig(libvmaf) >= 1.3.9
 BuildRequires:  pkgconfig(libwebp) >= 0.4
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with zmq}
@@ -668,6 +670,7 @@ LDFLAGS="%_lto_cflags" \
 %if %{with vidstab}
 	--enable-libvidstab \
 %endif
+	--enable-libvmaf \
 	--enable-libvorbis \
 	--enable-libv4l2 \
 	--enable-libvpx \
@@ -696,6 +699,7 @@ LDFLAGS="%_lto_cflags" \
 %endif
 	--enable-vaapi \
 	--enable-vdpau \
+	--enable-version3 \
 %if %{with fdk_aac_dlopen}
 	--enable-libfdk-aac-dlopen \
 	--enable-nonfree \

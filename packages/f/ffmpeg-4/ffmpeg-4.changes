@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 19 06:42:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable VMAF. This can be used to compute VMAF/PSNR/SSIM.
+- Add vmaf-trim-usr-local.patch .
+
+-------------------------------------------------------------------
 Wed Oct 14 09:45:07 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Adjust soversion.patch to include a symlink [boo#1177667]
