@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 16 14:42:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix Liberation Sans renders most Latin combining characters incorrectly
+  * Fix Combining diaerasis below does not work except U
+  * Fix glyph of Cent sign (U+00A2) in Sans and Mono style
+  * Fix U+25D2 and U+25D3 circle with lower / upper half black are backwards
+  * Improving lowercase Cyrillic glyps localized for Macedonian and Serbian
+  * COMBINING LONG SOLIDUS OVERLAY (U+0338) not centred on base character
+  * Added Bitcoin sign
+  * fix for few bugs
+
+-------------------------------------------------------------------
 Fri Feb  9 11:58:05 UTC 2018 - sknorr@suse.com
 
 - Set this package to obsolete liberation2-fonts to help

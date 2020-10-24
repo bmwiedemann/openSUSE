@@ -1,7 +1,7 @@
 #
 # spec file for package liberation-fonts
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           liberation-fonts
-Version:        1.07.4
+Version:        2.1.1
 Release:        0
 Summary:        Liberation Fonts
 License:        SUSE-Liberation
 Group:          System/X11/Fonts
-Url:            https://fedorahosted.org/liberation-fonts/
-Source:         https://fedorahosted.org/releases/l/i/liberation-fonts/liberation-fonts-ttf-%{version}.tar.gz
+URL:            https://fedorahosted.org/liberation-fonts/
+Source:         https://github.com/liberationfonts/liberation-fonts/files/4743886/liberation-fonts-ttf-2.1.1.tar.gz
 Source100:      %{name}-rpmlintrc
-%reconfigure_fonts_prereq
 BuildRequires:  fontpackages-devel
 Provides:       locale(bg;el;ru;bg)
-Obsoletes:      liberation2-fonts
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Obsoletes:      liberation2-fonts < 2
 BuildArch:      noarch
+%reconfigure_fonts_prereq
 
 %description
 Free fonts which are metric compatible to "Arial", "Times New Roman"
@@ -48,8 +47,8 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog License.txt README
+%license LICENSE
+%doc AUTHORS ChangeLog README.md
 %{_ttfontsdir}
 
 %changelog
