@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:20:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 10.5.1+9197f3f0:
+  * Support to set XDG directory
+  * Fix build with vala 0.49
+  * Changes and fixes in Budgie Menu
+  * Update translations
+- Removed vala-0.49.patch: contained in upstream
+- Removed Revert-GNOME-3.38-support.patch: end of Leap 15.2 support
+- Rebased nemo-instead-of-nautilus.patch
+- Updated BuildRequires:
+  * pkgconfig(libmutter-5/6/7) >> pkgconfig(libmutter-6/7)
+- Follow UsrEtc move for autostart desktop files
+
+-------------------------------------------------------------------
 Sat Sep 19 16:19:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Use a better format for testing gnome versions

@@ -7,4 +7,3 @@ OnlyShowIn=Budgie;
 AutostartCondition=GSettings org.nemo.desktop show-desktop-icons
 X-GNOME-AutoRestart=true
 NoDisplay=true
-

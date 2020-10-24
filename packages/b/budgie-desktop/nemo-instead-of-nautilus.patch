@@ -1,165 +1,27 @@
-From fad652f4140b0165d6fb9c67f6817fc37374a707 Mon Sep 17 00:00:00 2001
+From b5a7f3e3890f050ed4b76923abda5459652c3338 Mon Sep 17 00:00:00 2001
 From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:04:09 +0100
-Subject: [PATCH 1/5] Update meson.build
+Date: Thu, 22 Oct 2020 19:35:27 +0100
+Subject: [PATCH] patch update
 
 ---
- meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../icon-tasklist/IconTasklistApplet.vala     |  2 +-
+ src/panel/meson.build                         |  4 ++--
+ src/panel/settings/settings_desktop.vala      | 20 +++++++++----------
+ 3 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 3c4c6ac1..eda57368 100644
---- a/meson.build
-+++ b/meson.build
-@@ -101,8 +101,8 @@ cdata.set_quoted('LOCALEDIR', localedir)
- cdata.set_quoted('PACKAGE_URL', 'https://budgie-desktop.org')
+diff --git a/src/applets/icon-tasklist/IconTasklistApplet.vala b/src/applets/icon-tasklist/IconTasklistApplet.vala
+index ef056683..47ecb4bc 100644
+--- a/src/applets/icon-tasklist/IconTasklistApplet.vala
++++ b/src/applets/icon-tasklist/IconTasklistApplet.vala
+@@ -255,7 +255,7 @@ public class IconTasklistApplet : Budgie.Applet {
+ 		var app_id = (string)selection_data.get_data();
+ 		ButtonWrapper? original_button = null;
  
- with_desktop_icons = get_option('with-desktop-icons')
--if with_desktop_icons ==  'nautilus'
--    warning('You must have Nautilus 3.26 or older for desktop icons with Budgie')
-+if with_desktop_icons ==  'nemo'
-+    warning('You must have Nemo for desktop icons with Budgie')
- endif
+-		if (app_id.has_prefix("x-nautilus-desktop")) { // Someone is trying to drag a desktop icon to an application tasklist for some reason
++		if (app_id.has_prefix("x-nemo-desktop")) { // Someone is trying to drag a desktop icon to an application tasklist for some reason
+ 			return;
+ 		}
  
- with_stateless = get_option('with-stateless')
--- 
-2.26.2.windows.1
-
-
-From eea4eebe774a97e4d3ce9738d92b990063e0160a Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:04:41 +0100
-Subject: [PATCH 2/5] Update meson_options.txt
-
----
- meson_options.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/meson_options.txt b/meson_options.txt
-index dca91296..c6b5c8c5 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -2,3 +2,3 @@
- option('with-polkit', type: 'boolean', value: true, description: 'Enable PolKit support')
- option('with-gtk-doc', type: 'boolean', value: true, description: 'Build gtk-doc documentation')
--option('with-desktop-icons', type: 'combo', choices: ['nautilus', 'none'], value: 'nautilus', description: 'Desktop icon handling')
-+option('with-desktop-icons', type: 'combo', choices: ['nemo', 'none'], value: 'nemo', description: 'Desktop icon handling')
-
-
--- 
-2.26.2.windows.1
-
-
-From 24fb1622908a899dcc5b7a3dda0ba04045194dbd Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:13:23 +0100
-Subject: [PATCH 3/5] Update settings_main.vala
-
----
- src/panel/settings/settings_main.vala | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/src/panel/settings/settings_main.vala b/src/panel/settings/settings_main.vala
-index ec412580..8839d8ca 100644
---- a/src/panel/settings/settings_main.vala
-+++ b/src/panel/settings/settings_main.vala
-@@ -101,8 +101,8 @@ public class SettingsWindow : Gtk.Window {
-     {
-         this.add_page(new Budgie.StylePage());
- 
--#if HAVE_NAUTILUS
--        if (Environment.find_program_in_path("nautilus") != null) {
-+#if HAVE_NEMO
-+        if (Environment.find_program_in_path("nemo") != null) {
-             this.add_page(new Budgie.DesktopPage());
-         }
- #endif
--- 
-2.26.2.windows.1
-
-
-From b329787021641417dc6c74218056ea709f7905a9 Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:26:53 +0100
-Subject: [PATCH 4/5] Update settings_desktop.vala
-
----
- src/panel/settings/settings_desktop.vala | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/src/panel/settings/settings_desktop.vala b/src/panel/settings/settings_desktop.vala
-index 943879cf..3bd3c434 100644
---- a/src/panel/settings/settings_desktop.vala
-+++ b/src/panel/settings/settings_desktop.vala
-@@ -19,9 +19,9 @@ public class DesktopPage : Budgie.SettingsPage {
-     private Settings wm_pref_settings;
-     private Gtk.SpinButton? workspace_count;
- 
--#if HAVE_NAUTILUS
-+#if HAVE_NEMO
-     private Settings bg_settings;
--    private Settings nautilus_settings;
-+    private Settings nemo_settings;
-     private Gtk.Switch switch_icons;
-     private Gtk.Switch switch_home;
-     private Gtk.Switch switch_network;
-@@ -42,7 +42,7 @@ public class DesktopPage : Budgie.SettingsPage {
- 
-         wm_pref_settings = new Settings("org.gnome.desktop.wm.preferences"); // Set up our wm preferences Settings
- 
--#if HAVE_NAUTILUS
-+#if HAVE_NEMO
-         /* Allow icons */
-         switch_icons = new Gtk.Switch();
-         grid.add_row(new SettingsRow(switch_icons,
-@@ -50,7 +50,7 @@ public class DesktopPage : Budgie.SettingsPage {
-             _("Control whether to allow launchers and icons on the desktop.")));
- 
-         /* Hook up settings */
--        bg_settings = new GLib.Settings("org.gnome.desktop.background");
-+        bg_settings = new GLib.Settings("org.nemo.desktop");
-         bg_settings.bind("show-desktop-icons", switch_icons, "active", SettingsBindFlags.DEFAULT);
-         bg_settings.changed["show-desktop-icons"].connect(this.update_switches);
- 
-@@ -79,11 +79,11 @@ public class DesktopPage : Budgie.SettingsPage {
-             _("Mounted volumes & drives will appear on the desktop.")));
- 
- 
--        nautilus_settings = new GLib.Settings("org.gnome.nautilus.desktop");
--        nautilus_settings.bind("home-icon-visible", switch_home, "active", SettingsBindFlags.DEFAULT);
--        nautilus_settings.bind("network-icon-visible", switch_network, "active", SettingsBindFlags.DEFAULT);
--        nautilus_settings.bind("trash-icon-visible", switch_trash, "active", SettingsBindFlags.DEFAULT);
--        nautilus_settings.bind("volumes-visible", switch_mounts, "active", SettingsBindFlags.DEFAULT);
-+        nemo_settings = new GLib.Settings("org.nemo.desktop");
-+        nemo_settings.bind("home-icon-visible", switch_home, "active", SettingsBindFlags.DEFAULT);
-+        nemo_settings.bind("network-icon-visible", switch_network, "active", SettingsBindFlags.DEFAULT);
-+        nemo_settings.bind("trash-icon-visible", switch_trash, "active", SettingsBindFlags.DEFAULT);
-+        nemo_settings.bind("volumes-visible", switch_mounts, "active", SettingsBindFlags.DEFAULT);
- 
-         update_switches();
- #endif
-@@ -111,7 +111,7 @@ public class DesktopPage : Budgie.SettingsPage {
-         ));
-     }
- 
--#if HAVE_NAUTILUS
-+#if HAVE_NEMO
-     void update_switches()
-     {
- 
--- 
-2.26.2.windows.1
-
-
-From 0e4bc5f7eae610de6c9778c319b57ada6757334c Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:33:13 +0100
-Subject: [PATCH 5/5] Update meson.build
-
----
- src/panel/meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/src/panel/meson.build b/src/panel/meson.build
 index 51ad315f..a8f75234 100644
 --- a/src/panel/meson.build
@@ -175,32 +37,143 @@ index 51ad315f..a8f75234 100644
  endif
  
  budgie_panel_c_args = [
+diff --git a/src/panel/settings/settings_desktop.vala b/src/panel/settings/settings_desktop.vala
+index 633923cd..c8713951 100644
+--- a/src/panel/settings/settings_desktop.vala
++++ b/src/panel/settings/settings_desktop.vala
+@@ -17,9 +17,9 @@ namespace Budgie {
+ 		private Settings wm_pref_settings;
+ 		private Gtk.SpinButton? workspace_count;
+ 
+-	#if HAVE_NAUTILUS
++	#if HAVE_NEMO
+ 		private Settings bg_settings;
+-		private Settings nautilus_settings;
++		private Settings nemo_settings;
+ 		private Gtk.Switch switch_icons;
+ 		private Gtk.Switch switch_home;
+ 		private Gtk.Switch switch_network;
+@@ -39,7 +39,7 @@ namespace Budgie {
+ 
+ 			wm_pref_settings = new Settings("org.gnome.desktop.wm.preferences"); // Set up our wm preferences Settings
+ 
+-	#if HAVE_NAUTILUS
++	#if HAVE_NEMO
+ 			/* Allow icons */
+ 			switch_icons = new Gtk.Switch();
+ 			grid.add_row(new SettingsRow(switch_icons,
+@@ -47,7 +47,7 @@ namespace Budgie {
+ 				_("Control whether to allow launchers and icons on the desktop.")));
+ 
+ 			/* Hook up settings */
+-			bg_settings = new Settings("org.gnome.desktop.background");
++			bg_settings = new Settings("org.nemo.desktop");
+ 			bg_settings.bind("show-desktop-icons", switch_icons, "active", SettingsBindFlags.DEFAULT);
+ 			bg_settings.changed["show-desktop-icons"].connect(this.update_switches);
+ 
+@@ -76,11 +76,11 @@ namespace Budgie {
+ 				_("Mounted volumes & drives will appear on the desktop.")));
+ 
+ 
+-			nautilus_settings = new Settings("org.gnome.nautilus.desktop");
+-			nautilus_settings.bind("home-icon-visible", switch_home, "active", SettingsBindFlags.DEFAULT);
+-			nautilus_settings.bind("network-icon-visible", switch_network, "active", SettingsBindFlags.DEFAULT);
+-			nautilus_settings.bind("trash-icon-visible", switch_trash, "active", SettingsBindFlags.DEFAULT);
+-			nautilus_settings.bind("volumes-visible", switch_mounts, "active", SettingsBindFlags.DEFAULT);
++			nemo_settings = new Settings("org.nemo.desktop");
++			nemo_settings.bind("home-icon-visible", switch_home, "active", SettingsBindFlags.DEFAULT);
++			nemo_settings.bind("network-icon-visible", switch_network, "active", SettingsBindFlags.DEFAULT);
++			nemo_settings.bind("trash-icon-visible", switch_trash, "active", SettingsBindFlags.DEFAULT);
++			nemo_settings.bind("volumes-visible", switch_mounts, "active", SettingsBindFlags.DEFAULT);
+ 
+ 			update_switches();
+ 	#endif
+@@ -108,7 +108,7 @@ namespace Budgie {
+ 			));
+ 		}
+ 
+-	#if HAVE_NAUTILUS
++	#if HAVE_NEMO
+ 		void update_switches() {
+ 			bool b = bg_settings.get_boolean("show-desktop-icons");
+ 			switch_home.sensitive = b;
 -- 
-2.26.2.windows.1
 
 
-From 38e53b7e4a278b4f466428f5e4fc9f3eee5d16e9 Mon Sep 17 00:00:00 2001
+From 84eadfbdb629f6c040e2c21604500d35ae1d9f52 Mon Sep 17 00:00:00 2001
 From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 19:21:24 +0100
-Subject: [PATCH 6/6] Update IconTasklistApplet.vala
+Date: Thu, 22 Oct 2020 19:23:08 +0100
+Subject: [PATCH] patch update
 
 ---
- src/applets/icon-tasklist/IconTasklistApplet.vala | 2 +-
+ src/panel/settings/settings_main.vala | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/panel/settings/settings_main.vala b/src/panel/settings/settings_main.vala
+index dc68ae99..f73542aa 100644
+--- a/src/panel/settings/settings_main.vala
++++ b/src/panel/settings/settings_main.vala
+@@ -125,8 +125,8 @@ namespace Budgie {
+ 		void build_content() {
+ 			this.add_page(new Budgie.StylePage());
+ 
+-	#if HAVE_NAUTILUS
+-			if (Environment.find_program_in_path("nautilus") != null) {
++	#if HAVE_NEMO
++			if (Environment.find_program_in_path("nemo") != null) {
+ 				this.add_page(new Budgie.DesktopPage());
+ 			}
+ 	#endif
+-- 
+
+
+From 13453baef09a081ea157cc3e16b22ccf77d317b2 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <callumjfarmer13@gmail.com>
+Date: Mon, 31 Aug 2020 17:04:41 +0100
+Subject: [PATCH] Update meson_options.txt
+
+---
+ meson_options.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/applets/icon-tasklist/IconTasklistApplet.vala b/src/applets/icon-tasklist/IconTasklistApplet.vala
-index 5e8122b7..3dea06a2 100644
---- a/src/applets/icon-tasklist/IconTasklistApplet.vala
-+++ b/src/applets/icon-tasklist/IconTasklistApplet.vala
-@@ -262,7 +262,7 @@ public class IconTasklistApplet : Budgie.Applet
-         var app_id = (string)selection_data.get_data();
-         ButtonWrapper? original_button = null;
- 
--        if (app_id.has_prefix("x-nautilus-desktop")) { // Someone is trying to drag a desktop icon to an application tasklist for some reason
-+        if (app_id.has_prefix("x-nemo-desktop")) { // Someone is trying to drag a desktop icon to an application tasklist for some reason
-             return;
-         }
- 
+diff --git a/meson_options.txt b/meson_options.txt
+index e6ac4d36..ae8ad40c 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,5 +1,5 @@
+ option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
+ option('with-polkit', type: 'boolean', value: true, description: 'Enable PolKit support')
+ option('with-gtk-doc', type: 'boolean', value: true, description: 'Build gtk-doc documentation')
+-option('with-desktop-icons', type: 'combo', choices: ['nautilus', 'none'], value: 'nautilus', description: 'Desktop icon handling')
++option('with-desktop-icons', type: 'combo', choices: ['nemo', 'none'], value: 'nemo', description: 'Desktop icon handling')
+ option('xdg-appdir', type: 'string', description: 'XDG autostart path')
 -- 
-2.28.0.windows.1
+
+
+From 4aa6070cc472a77d89d5238050fde077844478d4 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <callumjfarmer13@gmail.com>
+Date: Mon, 31 Aug 2020 17:04:09 +0100
+Subject: [PATCH] Update meson.build
+
+---
+ meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index dea589fc..655b22f4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -101,8 +101,8 @@ cdata.set_quoted('LOCALEDIR', localedir)
+ cdata.set_quoted('PACKAGE_URL', 'https://budgie-desktop.org')
+ 
+ with_desktop_icons = get_option('with-desktop-icons')
+-if with_desktop_icons ==  'nautilus'
+-    warning('You must have Nautilus 3.26 or older for desktop icons with Budgie')
++if with_desktop_icons ==  'nemo'
++    warning('You must have Nemo for desktop icons with Budgie')
+ endif
+ 
+ with_stateless = get_option('with-stateless')
+-- 
+
 

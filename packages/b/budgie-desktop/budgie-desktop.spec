@@ -15,13 +15,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%if !0%{?is_backports}
-%define brandingsuffix openSUSE
-%else
-%define brandingsuffix SLE
-%endif
 Name:           budgie-desktop
-Version:        10.5.1+1ed6276b
+Version:        10.5.1+9197f3f0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,10 +30,6 @@ Source3:        budgie-desktop-nemo-autostart.desktop
 Patch:          desktop-override.patch
 # PATCH-FIX-OPENSUSE: Use nemo instead of nautilus for desktop icons
 Patch1:         nemo-instead-of-nautilus.patch
-# PATCH-FIX-UPSTREAM gh#solus-project/budgie-desktop#2029
-Patch2:         vala-0.49.patch
-# PATCH-FIX-OPENSUSE Re-add Leap 15.2 support
-Patch3:         Revert-GNOME-3.38-support.patch
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.41.2
 BuildRequires:  pkgconfig
@@ -62,7 +53,7 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen) >= 0.28
-BuildRequires:  (pkgconfig(libmutter-5) or pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
+BuildRequires:  (pkgconfig(libmutter-6) or pkgconfig(libmutter-7))
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(alsa)
@@ -78,7 +69,6 @@ Recommends:     gnome-software
 Recommends:     NetworkManager-applet
 Recommends:     gnome-backgrounds
 Recommends:     budgie-desktop-doc
-Recommends:     budgie-desktop-branding-%{brandingsuffix}
 %define vala_version %(rpm -q --queryformat='%%{VERSION}' vala | sed 's/\.[0-9]*$//g')
 
 %description
@@ -147,13 +137,9 @@ Private library for Budgie desktop to link against.
 %setup -q
 %patch -p1
 %patch1 -p1
-%patch2 -p1
-if pkg-config --max-version 3.36 gnome-desktop-3.0; then
-%patch3 -p1
-fi
 
 %build
-%meson
+%meson -Dwith-stateless=true -Dxdg-appdir=%{_distconfdir}/xdg/autostart
 %meson_build
 
 %install
@@ -166,7 +152,7 @@ touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
 # nemo autostart
-cp %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart
+cp %{SOURCE3} %{buildroot}%{_distconfdir}/xdg/autostart
 
 %find_lang %{name}
 
@@ -198,9 +184,9 @@ cp %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
-%{_sysconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
-%{_sysconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
-%{_sysconfdir}/xdg/autostart/budgie-desktop-nemo-autostart.desktop
+%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+%{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
+%{_distconfdir}/xdg/autostart/budgie-desktop-nemo-autostart.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
 %files -n libraven0
