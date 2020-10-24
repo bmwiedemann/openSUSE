@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.20.1
+Version:        2.21
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT

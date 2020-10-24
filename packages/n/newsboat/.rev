@@ -552,4 +552,41 @@ run -osc service localrun format_spec_file to fix copyright
   * exec command-line command, which allows to run an arbitrary operation</comment>
     <requestid>817201</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f4d275f51c0cf7ab7f5e057e9b7ab890</srcmd5>
+    <version>2.21</version>
+    <time>1603545430</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.21:
+  Added:
+  * Build dependency on AWK
+  * A note that security vulnerability should be reported to
+    security@newsboat.org preferably encrypted to PGP key 4ED6CD61932B9EBE
+  * Confirmation before marking all feeds as read (#1006) (Dennis van der Schagt)
+  * scrolloff setting which keeps the specified number of lines above and below
+    the selected list item (#1103) (Dennis van der Schagt)
+  * %=[width][identifier] formatting sequence for *-format settings. It
+    centers a given value inside a given width, padded with spaces and slanting
+    to the left if it can't be aligned evenly (Daniel Bauer)
+  * Support for Miniflux (#448) (Galen Abell)
+  * run-on-startup setting which executes a given list of operations when
+    Newsboat starts. This can be used to e.g. open tag dialog on startup, or go
+    to a certain feed (#888) (Dennis van der Schagt)
+  * Documentation for one, two, ..., nine, zero operations that open
+    a corresponding URL in the browser (A1RO)
+  Changed:
+  * It is now a startup error for a macro to have no operations
+  * Bumped minimum supported Rust version to 1.42.0
+  * Updated vendored libraries: Catch2 to 2.13.1, json.hpp to 3.9.1
+  * Empty strings in filter expressions are treated as zero when compared with
+    a numeric attribute like age (Alexander Batischev)
+  * Converted various tables in docs to decorated lists, making them easier to
+    read (#441]) (Spacewalker2)
+  * In macros, no longer require a space between operation and the following
+    semicolon (#702]) (Dennis van der Schagt)
+  * Sorting by first tag now ignores &quot;title tags&quot;, i.e. the ones that start with
+    a tilde (#1128]) (José Rui Barros)
+  * contrib/feedgrabber.rb updated to use Newsboat directories instead of</comment>
+    <requestid>839559</requestid>
+  </revision>
 </revisionlist>
