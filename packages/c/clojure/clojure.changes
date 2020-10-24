@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 10 21:37:56 UTC 2020 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update tool version to 708
+- Remove _service file as it wasn't accepted by Factory
+
+-------------------------------------------------------------------
+Wed Sep 30 13:00:00 UTC 2020 - Daniel Ziltener <dziltener@lyrion.ch>
+
+- Updated tool version.
+- Fixed macros in spec file, added _service file.
+
+-------------------------------------------------------------------
 Mon Aug 26 05:46:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

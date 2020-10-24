@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define         toolsver 447
+
+%define         toolsver 708
 Name:           clojure
 Version:        1.10.1
 Release:        0
@@ -44,20 +45,18 @@ can avoid reflection.
 %setup -q -n clojure-tools
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clj
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clojure
-#sed -i "s|PREFIX|%{_prefix}|" clojure
-sed -i "s|PREFIX|/usr/share/clojure|" clojure
+sed -i "s|PREFIX|%{_prefix}/clojure|" clojure
 
 %build
 
 %install
-
-install -Dm644 deps.edn "%{buildroot}/usr/share/clojure/deps.edn"
-install -Dm644 example-deps.edn "%{buildroot}/usr/share/clojure/example-deps.edn"
-install -Dm644 clojure-tools-%{version}.%{toolsver}.jar "%{buildroot}/usr/share/clojure/libexec/clojure-tools-%{version}.%{toolsver}.jar"
-install -Dm755 clojure "%{buildroot}/usr/bin/clojure"
-install -Dm755 clj "%{buildroot}/usr/bin/clj"
-install -Dm644 clojure.1 "%{buildroot}/usr/share/man/man1/clojure.1"
-install -Dm644 clj.1 "%{buildroot}/usr/share/man/man1/clj.1"
+install -Dm644 deps.edn "%{buildroot}/%{_datadir}/clojure/deps.edn"
+install -Dm644 example-deps.edn "%{buildroot}/%{_datadir}/clojure/example-deps.edn"
+install -Dm644 clojure-tools-%{version}.%{toolsver}.jar "%{buildroot}/%{_datadir}/clojure/libexec/clojure-tools-%{version}.%{toolsver}.jar"
+install -Dm755 clojure "%{buildroot}/%{_bindir}/clojure"
+install -Dm755 clj "%{buildroot}/%{_bindir}/clj"
+install -Dm644 clojure.1 "%{buildroot}%{_mandir}/man1/clojure.1"
+install -Dm644 clj.1 "%{buildroot}%{_mandir}/man1/clj.1"
 
 %fdupes %{buildroot}/%{_prefix}
 
@@ -68,8 +67,7 @@ install -Dm644 clj.1 "%{buildroot}/usr/share/man/man1/clj.1"
 %{_bindir}/clojure
 %{_datadir}/clojure/deps.edn
 %{_datadir}/clojure/example-deps.edn
-%{_datadir}/clojure/libexec/clojure-tools-1.10.1.447.jar
-%{_datadir}/man/man1/clj.1.gz
-%{_datadir}/man/man1/clojure.1.gz
+%{_datadir}/clojure/libexec/clojure-tools-%{version}.%{toolsver}.jar
+%doc %{_mandir}/man1/*
 
 %changelog
