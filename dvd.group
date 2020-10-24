@@ -1876,7 +1876,7 @@
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdns1605" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libdns1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdolphinvcs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdotconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2196,7 +2196,7 @@
     <package name="libirs1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisc1606" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccfg1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libisccfg1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libisl22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2844,6 +2844,7 @@
     <package name="libvisual" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libvlc5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libvlccore9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libvmaf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvmtools0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libvncclient1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libvncserver1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3433,11 +3434,14 @@
     <package name="perl-IO-stringy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-IPC-Run3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Image-ExifTool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="perl-JSON" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-JSON-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-LWP-MediaTypes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-LWP-Protocol-https" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-List-MoreUtils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-List-MoreUtils-XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-MIME-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Mail-AuthenticationResults" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Mail-DKIM" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Mail-Mbox-MessageParser" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-Mail-SPF" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3448,7 +3452,6 @@
     <package name="perl-Net-CIDR-Lite" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-DBus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-DNS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Net-DNS-Resolver-Mock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Net-HTTP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Net-LibIDN" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-Net-Patricia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3463,10 +3466,10 @@
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Test-Pod" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Test-RequiresInternet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Text-CSV_XS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-URI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Unix-Syslog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-WWW-RobotRules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3481,10 +3484,9 @@
     <package name="perl-XML-SAX-Base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-Twig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-XML-Writer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="perl-YAML-LibYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="perl-common-sense" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="perl-common-sense" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-gettext" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="perl-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3605,11 +3607,11 @@
     <package name="postgresql-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="postgresql-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="postgresql-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql12" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
-    <package name="postgresql12-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql12-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="postgresql12-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
-    <package name="postgresql12-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql13" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
+    <package name="postgresql13-contrib" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql13-docs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="postgresql13-llvmjit" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="postgresql13-server" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
     <package name="pothana2000-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
     <package name="powerdevil5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="powerdevil5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4824,6 +4826,7 @@
     <package name="vlc-vdpau" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="vlgothic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="vm-install" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="vmaf-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vorbis-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vorbis-tools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="vpnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201023" schemaversion="4.1">
+<image name="OBS__openSUSE___20201024" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201023</productvar>
+      <productvar name="VERSION">20201024</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201023,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201024,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201023/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201024/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1596,7 +1596,7 @@
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdmx1"/>
-      <repopackage name="libdns1605"/>
+      <repopackage name="libdns1607"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -1926,7 +1926,7 @@
       <repopackage name="libirs1601"/>
       <repopackage name="libisc1606"/>
       <repopackage name="libisccc1600"/>
-      <repopackage name="libisccfg1600"/>
+      <repopackage name="libisccfg1601"/>
       <repopackage name="libiscsi9"/>
       <repopackage name="libisl22"/>
       <repopackage name="libiso9660-11"/>
@@ -2805,6 +2805,7 @@
       <repopackage name="libvisual"/>
       <repopackage name="libvlc5"/>
       <repopackage name="libvlccore9"/>
+      <repopackage name="libvmaf0"/>
       <repopackage name="libvmtools0"/>
       <repopackage name="libvncclient1"/>
       <repopackage name="libvncserver1"/>
@@ -3492,12 +3493,15 @@
       <repopackage name="perl-IO-stringy"/>
       <repopackage name="perl-IO-Tty"/>
       <repopackage name="perl-IPC-Run3"/>
+      <repopackage name="perl-JSON"/>
+      <repopackage name="perl-JSON-XS"/>
       <repopackage name="perl-ldap"/>
       <repopackage name="perl-libwww-perl"/>
       <repopackage name="perl-List-MoreUtils"/>
       <repopackage name="perl-List-MoreUtils-XS"/>
       <repopackage name="perl-LWP-MediaTypes"/>
       <repopackage name="perl-LWP-Protocol-https"/>
+      <repopackage name="perl-Mail-AuthenticationResults"/>
       <repopackage name="perl-Mail-DKIM"/>
       <repopackage name="perl-Mail-Mbox-MessageParser"/>
       <repopackage name="perl-Mail-SpamAssassin"/>
@@ -3509,7 +3513,6 @@
       <repopackage name="perl-Net-CIDR-Lite"/>
       <repopackage name="perl-Net-DBus"/>
       <repopackage name="perl-Net-DNS"/>
-      <repopackage name="perl-Net-DNS-Resolver-Mock"/>
       <repopackage name="perl-Net-HTTP"/>
       <repopackage name="perl-Net-LibIDN"/>
       <repopackage name="perl-Net-Patricia"/>
@@ -3525,10 +3528,10 @@
       <repopackage name="perl-Term-ReadKey"/>
       <repopackage name="perl-Term-ReadLine-Gnu"/>
       <repopackage name="perl-Test-Pod"/>
-      <repopackage name="perl-Test-RequiresInternet"/>
       <repopackage name="perl-Text-CSV_XS"/>
       <repopackage name="perl-TimeDate"/>
       <repopackage name="perl-Try-Tiny"/>
+      <repopackage name="perl-Types-Serialiser"/>
       <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
       <repopackage name="perl-WebService-MusicBrainz"/>
@@ -3543,7 +3546,6 @@
       <repopackage name="perl-XML-SAX-Base"/>
       <repopackage name="perl-XML-Twig"/>
       <repopackage name="perl-XML-Writer"/>
-      <repopackage name="perl-YAML-LibYAML"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="permissions-doc"/>
@@ -3659,11 +3661,11 @@
       <repopackage name="postgresql-docs"/>
       <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
-      <repopackage name="postgresql12"/>
-      <repopackage name="postgresql12-contrib"/>
-      <repopackage name="postgresql12-docs"/>
-      <repopackage name="postgresql12-llvmjit"/>
-      <repopackage name="postgresql12-server"/>
+      <repopackage name="postgresql13"/>
+      <repopackage name="postgresql13-contrib"/>
+      <repopackage name="postgresql13-docs"/>
+      <repopackage name="postgresql13-llvmjit"/>
+      <repopackage name="postgresql13-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="powerdevil5"/>
       <repopackage name="powerdevil5-lang"/>
@@ -4877,6 +4879,7 @@
       <repopackage name="vlc-vdpau"/>
       <repopackage name="vlgothic-fonts"/>
       <repopackage name="vm-install"/>
+      <repopackage name="vmaf-data"/>
       <repopackage name="vorbis-tools"/>
       <repopackage name="vorbis-tools-lang"/>
       <repopackage name="vpnc"/>
