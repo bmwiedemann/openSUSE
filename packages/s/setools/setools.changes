@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:29:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Cleanup BuildRequires
+- Fix setools-gui dependencies, we are using python-qt5 and not 
+  tcl/tk
+
+-------------------------------------------------------------------
 Wed Jul 29 18:16:13 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - python3-setools needs python3-networkx

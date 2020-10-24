@@ -32,14 +32,10 @@ Source:         https://github.com/SELinuxProject/setools/releases/download/%{ve
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  bison
 BuildRequires:  fdupes
-BuildRequires:  flex
-BuildRequires:  gcc
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  swig
 Requires:       setools-console = %{version}-%{release}
 Requires:       setools-gui = %{version}-%{release}
 
@@ -85,10 +81,9 @@ libraries designed to facilitate SELinux policy analysis.
 Summary:        Policy analysis graphical tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Base
-Requires:       bwidget
-Requires:       gtk2
-Requires:       tcl
-Requires:       tk
+Requires:       python3-networkx
+Requires:       python3-qt5
+Requires:       python3-setools = %{version}
 
 %description gui
 SETools is a collection of graphical tools, command-line tools, and
