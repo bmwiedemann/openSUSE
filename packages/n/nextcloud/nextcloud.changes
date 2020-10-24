@@ -1,8 +1,41 @@
 -------------------------------------------------------------------
+Sat Oct 24 08:37:20 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 20.0.1
+  No changelog from upstream at this time.
+
+-------------------------------------------------------------------
 Sat Oct  3 10:31:15 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 20.0.0
-  - No changelog from upstream at this time.
+  * Changes
+    The three biggest features we introduce with Nextcloud 20 are:
+    - Our new dashboard provides a great starting point for the day
+      with over a dozen widgets ranging from Twitter and Github to 
+      Moodle and Zammad already available
+    - Search was unified, bringing search results of Nextcloud apps
+      as well as external services like Gitlab, Jira and Discourse
+      in one place
+    - Talk introduced bridging to other platforms including MS Teams,
+      Slack, IRC, Matrix and a dozen others
+    * Some other improvements we want to highlight include:
+      - Notifications and Activities were brought together, making 
+        sure you won’t miss anything important
+      - We added a ‘status’ setting so you can communicate to other
+        users what you are up to
+      - Talk also brings dashboard and search integration, emoji picker,
+        upload view, camera and microphone settings, mute and more
+      - Calendar integrates in dashboard and search, introduced a list 
+        view and design improvements
+      - Mail introduces threaded view, mailbox management and more
+      - Deck integrates with dashboard and search, introduces Calendar
+        integration, modal view for card editing and series of smaller 
+        improvements
+      - Flow adds push notification and webhooks so other web apps
+        can easily integrate with Nextcloud
+      - Text introduced direct linking to files in Nextcloud
+      - Files lets you add a description to public link shares
+  + Read the full announcement on our blog
 - Upgrade apps during update process.
 
 -------------------------------------------------------------------
