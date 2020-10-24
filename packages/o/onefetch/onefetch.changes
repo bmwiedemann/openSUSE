@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 22 08:40:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.0:
+  Bug Fixes:
+  * Identify author by email
+  * Fix #180
+  * Fix layout with sixel image backend
+  New features:
+  * Show number of Tags and Branches
+  Misc:
+  * Reduce size of Lua, Clojure, Jupyter-Notebooks, Tex, Zig ASCII logo
+  * Reduce size of Swift, Objective-C ASCII logo
+  * Reduce size of Php
+  * Reduce size of Nim
+  * Better CI/CD
+  * New Go and Rust ASCII logo
+
+-------------------------------------------------------------------
+Mon Oct  5 07:23:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.0:
+  Language:
+  * Added support for Crystal
+  New feature:
+  * Use async/await to improve performance
+  * Refacto language.rs with the introduction of a macro
+  * Refacto info.rs to use git log once #198
+  Misc:
+  * Add info for cargo-deb
+  * Enable stale bot #184
+  * Enable dependabot
+  * Improved ci/cd actions
+
+-------------------------------------------------------------------
 Thu Aug 20 15:14:56 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - avoid build error for ppc64le as reported by boo#1175502
