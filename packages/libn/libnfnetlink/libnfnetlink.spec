@@ -1,7 +1,7 @@
 #
 # spec file for package libnfnetlink
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Low-level library for Netfilter-related kernel/userspace communication
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-Url:            http://netfilter.org/projects/libnfnetlink/
+URL:            https://netfilter.org/projects/libnfnetlink/
 
 #Git-Clone:	git://git.netfilter.org/libnfnetlink
 #DL-URL:	ftp://ftp.netfilter.org/pub/libnfnetlink/
@@ -31,22 +31,10 @@ Source:         http://netfilter.org/projects/libnfnetlink/files/%name-%version.
 Source2:        http://netfilter.org/projects/libnfnetlink/files/%name-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  autoconf
-#BuildRequires:  automake >= 1.6
-#BuildRequires:  libtool
-BuildRequires:  pkgconfig >= 0.21
 
 %description
 libnfnetlink is the low-level library for netfilter related
-kernel/userspace communication. It provides a generic messaging
-infrastructure for in-kernel netfilter subsystems (such as
-nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
-respective users and/or management tools in userspace.
-
-This library is not meant as a public API for application developers.
-It is only used by other netfilter.org projects, such as
-libnetfilter_log, libnetfilter_queue or libnetfilter_conntrack.
+kernel/userspace communication.
 
 %package -n %libsoname
 Summary:        Low-level library for Netfilter-related kernel/userspace communication
@@ -59,10 +47,6 @@ infrastructure for in-kernel netfilter subsystems (such as
 nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
 respective users and/or management tools in userspace.
 
-This library is not meant as a public API for application developers.
-It is only used by other netfilter.org projects, such as
-libnetfilter_log, libnetfilter_queue or libnetfilter_conntrack.
-
 %package devel
 Requires:       %libsoname = %version
 Summary:        Low-level library for Netfilter-related kernel/userspace communication
@@ -70,41 +54,32 @@ Group:          Development/Libraries/C and C++
 
 %description devel
 libnfnetlink is the low-level library for netfilter related
-kernel/userspace communication. It provides a generic messaging
-infrastructure for in-kernel netfilter subsystems (such as
-nfnetlink_log, nfnetlink_queue, nfnetlink_conntrack) and their
-respective users and/or management tools in userspace.
+kernel/userspace communication.
 
 This library is not meant as a public API for application developers.
 It is only used by other netfilter.org projects, such as
 libnetfilter_log, libnetfilter_queue or libnetfilter_conntrack.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fi;
-fi
 %configure --disable-static --includedir="%_includedir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la;
+%make_install
+rm -f "%buildroot/%_libdir"/*.la
 
-%post -n %libsoname -p /sbin/ldconfig
-
+%post   -n %libsoname -p /sbin/ldconfig
 %postun -n %libsoname -p /sbin/ldconfig
 
 %files -n %libsoname
-%defattr(-,root,root)
 %license COPYING
 %doc README
 %_libdir/libnfnetlink.so.0*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libnfnetlink.so
 %_libdir/pkgconfig/libnfnetlink.pc

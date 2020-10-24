@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 00:28:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
 Tue Mar 27 13:12:25 CEST 2018 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]
