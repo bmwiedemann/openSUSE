@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:27:20 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream v70.1 (jsc#SLE-13338).
+  Adds firmware activation support.
+
+-------------------------------------------------------------------
 Fri Aug 28 08:27:10 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Suppress ENXIO when processing all namespaces (jsc#SLE-13321, bsc#1175851, ltc#187867).
