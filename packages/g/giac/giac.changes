@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Fri Sep 25 10:57:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize RPM constructs. Remove %post(un) logic that expands
+  to empty strings.
+- Remove pkgconfig(ao) from giac-devel, the headers do not use it.
+
+-------------------------------------------------------------------
+Sun Sep 20 09:32:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace undefined %info_add/%info_del.
+
+-------------------------------------------------------------------
+Fri Jan 31 20:03:36 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.5.0.85
+
+-------------------------------------------------------------------
+Tue Dec 11 00:32:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove devel-static subpackage. There is no reason to ship these.
+- Remove .la files. These do not constitute static libs, either.
+- Use find -delete rather than expensively calling -exec rm.
+
+-------------------------------------------------------------------
+Fri Dec  7 17:47:12 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix building on Leap 42.3
+
+-------------------------------------------------------------------
+Wed Dec  5 18:40:16 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.5.0.21
+- Split xcas gui into own subpackage
+
+-------------------------------------------------------------------
+Fri Oct 20 00:07:00 UTC 2017 - avvissu@yandex.by
+
+- Update to 1.4.9:
+  * Python compatibility mode
+  * User manual corrected
+- Change in 1.2.3:
+  * Some speedups and bug fixes
+
+-------------------------------------------------------------------
+Fri Jul 15 23:40:29 UTC 2016 - avvissu@yandex.by
+
+- Fix postun scriptlet failed: 
+  * use install_info_delete instead of info_del
+
+-------------------------------------------------------------------
+Sat Jan  2 21:21:49 UTC 2016 - avvissu@yandex.ru
+
+- Update to 1.2.2:
+  * improved Groebner basis engine
+
+-------------------------------------------------------------------
+Fri Jun  5 00:34:28 UTC 2015 - avvissu@yandex.ru
+
+- Initial release
+
