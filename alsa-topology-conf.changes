@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:57:00 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.4:
+  hda-dsp: Remove srcintc module from HDA DSP topology
+
+-------------------------------------------------------------------
 Tue Jun  9 11:26:25 CEST 2020 - tiwai@suse.de
 
 - Update to alsa-topology-conf 1.2.3:
