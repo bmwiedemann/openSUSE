@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:06:25 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose.
+
+-------------------------------------------------------------------
 Wed Apr  8 02:27:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Don't use post and preun scriptlets to avoid dependency issues.

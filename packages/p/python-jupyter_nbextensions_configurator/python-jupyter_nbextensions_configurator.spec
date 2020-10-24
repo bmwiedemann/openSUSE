@@ -24,17 +24,20 @@ Release:        0
 Summary:        Configuration interfaces for nbextensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/jupyter-contrib/jupyter_nbextensions_configurator
+URL:            https://github.com/jupyter-contrib/jupyter_nbextensions_configurator
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_nbextensions_configurator/jupyter_nbextensions_configurator-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+# PATCH-FIX-UPSTREAM remove_nose.patch bsc#[0-9]+ mcepl@suse.com
+# port the test suite to pytest (from nose)
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module jupyter_contrib_core >= 0.3.3}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-jupyter_contrib_core >= 0.3.3
 Requires:       python-jupyter_core
@@ -74,6 +77,8 @@ This package provides the jupyter components.
 
 %prep
 %setup -q -n jupyter_nbextensions_configurator-%{version}
+%autopatch -p1
+
 sed -i 's/\r$//' LICENSE.txt
 sed -i 's/\r$//' LICENSE.txt
 sed -i 's|/usr/bin/env python|%{__python3}|' scripts/jupyter-nbextensions_configurator
