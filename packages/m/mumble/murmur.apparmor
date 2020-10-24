@@ -8,23 +8,14 @@ profile murmurd /usr/sbin/murmurd {
   #include <abstractions/ssl_certs>
   #include <abstractions/user-tmp>
 
-  /etc/ssl/certs/** r,
-  deny /usr/share/ssl/ r,
-  deny /usr/share/ssl/** r,
-
-# FIXME: mumble has weird capability handling. None of the first four should be
-# needed if the code is adjusted
-  capability dac_override,
-  capability setgid,
-  capability setuid,
-  capability chown,
-
-# needed for real time scheduling of the mixer threads
+  # needed for real time scheduling of the mixer threads
   capability sys_resource,
-# not needed anymore
-# capability net_admin,
 
+  network inet dgram,
   network inet stream,
+  network netlink,
+
+  /usr/share/icu/*/icu*.dat r,
 
   /etc/mumble-server.ini rk,
   /usr/bin/lsb_release cx,
@@ -37,14 +28,15 @@ profile murmurd /usr/sbin/murmurd {
     #include <abstractions/base>
     #include <abstractions/consoles>
 
-    /{usr/,}bin/bash r,
+    /{usr/,}bin/bash rm,
     /proc/meminfo r,
-    /usr/bin/getopt rix,
-    /usr/bin/head rix,
-    /usr/bin/grep rix,
-    /usr/bin/sed rix,
-    /usr/bin/cut rix,
+    /usr/bin/getopt rmix,
+    /usr/bin/head rmix,
+    /usr/bin/grep rmix,
+    /usr/bin/sed rmix,
+    /usr/bin/cut rmix,
     /usr/bin/lsb_release r,
     /etc/SuSE-release r,
   }
+  #include if exists <local/usr.sbin.murmurd>
 }

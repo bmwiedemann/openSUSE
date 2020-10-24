@@ -14,6 +14,8 @@ Requires=var-run.mount network.target remote-fs.target time-sync.target
 After=var-run.mount network.target remote-fs.target time-sync.target mysql.target
 
 [Service]
+User=mumble-server
+Group=mumble-server
 ExecStart=/usr/sbin/murmurd -fg -ini /etc/mumble-server.ini
 
 [Install]
