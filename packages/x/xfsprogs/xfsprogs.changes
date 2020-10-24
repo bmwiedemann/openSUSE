@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 20 16:16:43 UTC 2020 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.9.0:
+  * mkfs.xfs: disallow creation of RT files from proto file
+  * mkfs.xfs: fix ASSERT on small device with stripe geom
+  * xfs_repair: more fixes from fuzz-testing
+  * libhandle: fix potential unterminated string problem
+  * libhandle: libfrog: fix a potential null pointer deref
+  * man: install all manpages that redirect to another page
+  * man: fix ioctl_xfs_geometry manpage naming
+  * xfsprogs: various realtime related fixes
+  * xfsprogs: ignore autofs mount table entries
+  * libxfs: make buffers track the per-ag structures
+  * libxfs changes merged from kernel 5.9
+
+-------------------------------------------------------------------
 Mon Sep  7 12:08:20 UTC 2020 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to v5.8.0:
