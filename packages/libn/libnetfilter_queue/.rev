@@ -161,4 +161,12 @@
     <comment>- Update to release 1.0.5</comment>
     <requestid>814225</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>99f0b5ff65a46b061f50a6a606374b76</srcmd5>
+    <version>1.0.5</version>
+    <time>1603545288</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843039</requestid>
+  </revision>
 </revisionlist>

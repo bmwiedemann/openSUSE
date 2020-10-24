@@ -23,7 +23,7 @@ Release:        0
 Summary:        Userspace library for packets that have been queued by the kernel packet filter
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-URL:            http://netfilter.org/projects/libnetfilter_queue/
+URL:            https://netfilter.org/projects/libnetfilter_queue/
 
 #Git-Clone:	git://git.netfilter.org/libnetfilter_queue
 #DL-URL:	https://netfilter.org/projects/libnetfilter_queue/files/
@@ -31,7 +31,6 @@ Source:         https://netfilter.org/projects/libnetfilter_queue/files/libnetfi
 Source2:        https://netfilter.org/projects/libnetfilter_queue/files/libnetfilter_queue-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
-BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnfnetlink) >= 0.0.41
 
@@ -67,11 +66,12 @@ system that deprecates the old ip_queue / libipq mechanism.
 libnetfilter_queue has been previously known as libnfnetlink_queue.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name"
-make %{?_smp_mflags} KERNELDIR="ignore"
+%make_build KERNELDIR="ignore"
 
 %install
 %make_install KERNELDIR="ignore"
