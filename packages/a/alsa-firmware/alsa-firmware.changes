@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 13:04:20 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-firmware 1.2.4:
+  rework in auto-tools and Makefiles
+  See details in
+    https://alsa-project.org/wiki/Changes_v1.2.3.2_v1.2.4
+
+-------------------------------------------------------------------
 Tue Jan 14 14:46:03 CET 2020 - tiwai@suse.de
 
 - Comment out superfluous buildreq automake

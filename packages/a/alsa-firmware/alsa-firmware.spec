@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alsa-firmware
-Url:            http://www.alsa-project.org/
+URL:            http://www.alsa-project.org/
 Summary:        Firmware Data Files for ALSA
 # BuildRequires:  automake
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
 %endif
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Source:         ftp://ftp.alsa-project.org/pub/firmware/alsa-firmware-%{version}.tar.bz2
 Source1:        usx2yaudio.rules
