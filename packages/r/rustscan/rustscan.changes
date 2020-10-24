@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:10:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.10.0
+  Features
+  * Added DNS lookup using Google DNS, refactored IP code.
+  * Take file of addresses as input.
+  Maintenance
+  * Refactored tests, introduced default function in test context
+    for structs.
+
+-------------------------------------------------------------------
 Fri Aug 28 20:13:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.0

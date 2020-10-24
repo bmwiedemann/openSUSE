@@ -18,7 +18,7 @@
 
 
 Name:           rustscan
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        Fast network port scanner
 License:        GPL-3.0-or-later
