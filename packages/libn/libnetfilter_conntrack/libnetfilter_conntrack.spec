@@ -20,17 +20,16 @@ Name:           libnetfilter_conntrack
 %define lname	libnetfilter_conntrack3
 Version:        1.0.8
 Release:        0
-URL:            http://netfilter.org/projects/libnetfilter_conntrack/
 Summary:        Userspace library for the in-kernel connection tracking state table
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
+URL:            https://netfilter.org/projects/libnetfilter_conntrack/
 
 #Git-Clone:	git://git.netfilter.org/libnetfilter_conntrack
 Source:         ftp://ftp.netfilter.org/pub/libnetfilter_conntrack/%name-%version.tar.bz2
 Source2:        ftp://ftp.netfilter.org/pub/libnetfilter_conntrack/%name-%version.tar.bz2.sig
 Source3:        baselibs.conf
 Source4:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
@@ -66,9 +65,10 @@ libnfnetlink_conntrack and libctnetlink. This library is currently
 used by conntrack-tools among many other applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %configure --disable-static --includedir="%_includedir/%name"
 make %{?_smp_mflags}
 
@@ -80,11 +80,9 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libnetfilter_conntrack.so.3*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name/
 %_libdir/libnetfilter_conntrack.so
 %_libdir/pkgconfig/libnetfilter_conntrack.pc
