@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Oct 13 17:09:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Increase the minimum disk size for all archs.
+
+-------------------------------------------------------------------
+Tue Oct 13 07:39:48 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.4.0:
+  * See https://krita.org/en/item/krita-4-4-0-released/
+  * Fill layers can now make use of multi-threading
+  * The patterns of fill layers can now be transformed
+  * A new Screentone fill layer option specialized in filling the
+    whole screen with dots, squares, lines, waves or more
+  * Multigrid - a fill layer that generates, among others, Penrose
+    tilings, as well as Quasicrystal structures
+  * Integration of Disney Animation's SeExpr expression language
+  * Gradient Map mode for Brush-tips
+  * Brushes now have the ability to use lightness and the gradients
+    for textures as well
+  * Diagonal lines in MyPaint color selector allow modifying
+    lightness and saturation of the currently active color at the
+    same time
+  * Support for dynamic use of currently selected colors in
+    gradients
+  * New WebM/VP9 preset for Animation Rendering
+  * Compositions Docker now allows for the exporting of Animations
+  * New GDQUEST Batch Exporter add-on
+  * New Python plugin Channels to Layers
+  * Python API changes:
+    + Return list of available dockers for application in python
+    + Add signal to notify when theme changed
+    + Add signal when active view changes in python
+    + Add showFloatingMessage to View API
+    + New widget bindings: scratchpad
+  * Make Ctrl+C/X/V shortcut work with layers when there is nothing
+    else to copy
+  * Basic Reapply Filter with Prompt
+  * Update default layer name to show type
+  * Add 'selection as a border' option to the Fill Tool
+  * Bug fixes
+- Drop Support-quazip-1.0.patch, merged upstream
+
+-------------------------------------------------------------------
 Sun Oct 11 14:35:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update Support-quazip-1.0.patch to support quazip 1.1 as well
