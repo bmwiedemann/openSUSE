@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 16 17:49:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Apply upstreams sgp4-fix69-precision.patch instead of own fix
+  gh#brandon-rhodes/python-sgp4#69
+
+-------------------------------------------------------------------
 Fri Oct 16 09:49:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 2.13

@@ -1,0 +1,35 @@
+From 8d6da331aace3b9c78e9973273911bc269d21d7e Mon Sep 17 00:00:00 2001
+From: Brandon Rhodes <brandon@rhodesmill.org>
+Date: Fri, 16 Oct 2020 09:33:11 -0400
+Subject: [PATCH] For #69, lower test precision on other platforms
+
+---
+ sgp4/tests.py | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/sgp4/tests.py b/sgp4/tests.py
+index 954036a..a7a737d 100644
+--- a/sgp4/tests.py
++++ b/sgp4/tests.py
+@@ -239,10 +239,17 @@ def test_all_three_gravity_models_with_sgp4init():
+ GRAVITY_DIGITS = (
+     # Why don't Python and C agree more closely?
+     4 if not accelerated
+-    # See https://github.com/conda-forge/sgp4-feedstock/pull/19 for details.
+-    else 11 if platform.system() != 'Linux'
+-    # Insist on very high precision on my Linux laptop.
+-    else 12
++
++    # Insist on very high precision on my Linux laptop, to signal me if
++    # some future adjustment subtlely changes the library's results.
++    else 12 if platform.system() == 'Linux' and platform.machine() == 'x86_64'
++
++    # Otherwise, reduce our expectations.  Note that at least 6 digits
++    # past the decimal point are necessary to let the test distinguish
++    # between WSG72OLD and WGS72.  See:
++    # https://github.com/conda-forge/sgp4-feedstock/pull/19
++    # https://github.com/brandon-rhodes/python-sgp4/issues/69
++    else 10
+ )
+ 
+ def assert_wgs72old(sat):

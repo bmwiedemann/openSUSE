@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://github.com/brandon-rhodes/python-sgp4
 Source:         https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-%{version}.tar.gz
 Source99:       https://github.com/brandon-rhodes/python-sgp4/raw/master/LICENSE
+# PATCH-FIX-UPSTREAM sgp4-fix69-precision.patch -- relax precision on platforms gh#brandon-rhodes/python-sgp4#69
+Patch1:         https://github.com/brandon-rhodes/python-sgp4/commit/8d6da331aace3b9c78e9973273911bc269d21d7e.patch#/sgp4-fix69-precision.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -50,10 +52,8 @@ of SGP4. You can call the routine directly, or through an array API that loops
 over arrays of satellites and arrays of times with machine code instead of Python.
 
 %prep
-%setup -q -n sgp4-%{version}
+%autosetup -p1 -n sgp4-%{version}
 cp %{SOURCE99} .
-# ease precision tolerances https://github.com/brandon-rhodes/python-sgp4/issues/69
-sed -i 's/GRAVITY_DIGITS = (/GRAVITY_DIGITS = 10\nGRAVITY_DIGITS_UPSTREAM =(/' sgp4/tests.py
 sed -i 's/error = 2e-7/error = 2e-5/' sgp4/tests.py
 
 %build
