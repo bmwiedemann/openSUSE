@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-DKIM
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,33 +17,35 @@
 
 
 Name:           perl-Mail-DKIM
-Version:        0.54
+Version:        1.20200907
 Release:        0
 %define cpan_name Mail-DKIM
 Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBRADSHAW/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Crypt::OpenSSL::RSA) >= 0.24
+BuildRequires:  perl(Crypt::OpenSSL::RSA)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Mail::Address)
+BuildRequires:  perl(Mail::AuthenticationResults::Header::AuthServID)
+BuildRequires:  perl(Mail::AuthenticationResults::Parser)
 BuildRequires:  perl(Net::DNS)
+BuildRequires:  perl(Net::DNS::Resolver)
 BuildRequires:  perl(Net::DNS::Resolver::Mock)
 BuildRequires:  perl(Test::RequiresInternet)
 BuildRequires:  perl(YAML::XS)
-Requires:       perl(Crypt::OpenSSL::RSA) >= 0.24
+Requires:       perl(Crypt::OpenSSL::RSA)
 Requires:       perl(Digest::SHA)
 Requires:       perl(Mail::Address)
+Requires:       perl(Mail::AuthenticationResults::Header::AuthServID)
+Requires:       perl(Mail::AuthenticationResults::Parser)
 Requires:       perl(Net::DNS)
-Requires:       perl(Net::DNS::Resolver::Mock)
-Requires:       perl(Test::RequiresInternet)
-Requires:       perl(YAML::XS)
 %{perl_requires}
 
 %description
@@ -71,7 +73,7 @@ headers will get sorted keys
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -87,6 +89,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc ChangeLog Changes doc HACKING.DKIM README.md TODO
+%doc Changes doc HACKING.DKIM README README.md TODO
+%license LICENSE
 
 %changelog
