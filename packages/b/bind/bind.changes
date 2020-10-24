@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 21 09:05:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to version 9.16.7
+  * Fix (non-)publication of CDS and CDNSKEY records.
+  * 'dig +bufsize=0' failed to disable EDNS.
+  * Address a TSAN report by ensuring each rate limiter
+    object holds a reference to its task.
+  * With query minimization enabled, named failed to
+    resolve ip6.arpa. names that had extra labels to the
+    left of the IPv6 part.
+  * Silence the EPROTO syslog message on older systems.
+  * Fix off-by-one error when calculating new hash table size.
+  * Tighten LOC parsing to reject a period (".") and/or "m"
+    as a value. Fix handling of negative altitudes which are
+    not whole meters.
+  * rbtversion->glue_table_size could be read without the
+    appropriate lock being held.
+  * Named erroneously accepted certain invalid resource
+    records that were incorrectly processed after
+    subsequently being written to disk and loaded back, as
+    the wire format differed. Such records include: CERT,
+    IPSECKEY, NSEC3, NSEC3PARAM, NXT, SIG, TLSA, WKS, and X25.
+  * NTA code needed to have a weak reference on its
+    associated view to prevent the latter from being deleted
+    while NTA tests were being performed.
+  * replace an INSIST() (which calls abort()) with a check and
+    an error message.
+  [bsc#1177913, bind-9.16.7.tar.xz]
+
+-------------------------------------------------------------------
 Fri Sep 18 13:20:34 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Removed "-r /dev/urandom" from all invocations of rndc-confgen
