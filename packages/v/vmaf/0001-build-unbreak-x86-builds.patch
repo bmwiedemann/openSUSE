@@ -1,0 +1,46 @@
+From 1ecaeef0b1804c150d3f5a0b11b99aea9746a1d6 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 17 Oct 2020 18:55:44 +0200
+Subject: [PATCH] build: unbreak x86 builds
+
+SSE is not guaranteed to be present on x86 hosts, so i386..i686
+compilers default to -mno-sse. That however makes the build fail
+because vmaf unconditionally uses emmintrin functions which are
+not available under no-sse. ppc64le builds however are just fine, so...
+
+Change the macro guarding emmintrin to not match on x86-like
+architectures, but to match on the enablement of SSE2. The macro
+"__SSE2__" is the gcc name and is true whenever -msse2 is enabled
+(explicitly or implicitly); clang should behave the same. I have not
+tested this under other compilers such as Microsoft, though.
+
+Fixes: #374
+---
+ libvmaf/src/feature/adm_tools.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libvmaf/src/feature/adm_tools.c b/libvmaf/src/feature/adm_tools.c
+index 86e122b..c141b1a 100644
+--- a/libvmaf/src/feature/adm_tools.c
++++ b/libvmaf/src/feature/adm_tools.c
+@@ -35,7 +35,7 @@
+ #define MIN(x, y) (((x) < (y)) ? (x) : (y))
+ #define MAX(x, y) (((x) > (y)) ? (x) : (y))
+ 
+-#if ARCH_X86
++#ifdef __SSE2__
+ #ifdef ADM_OPT_RECIP_DIVISION
+ 
+ #include <emmintrin.h>
+@@ -50,7 +50,7 @@ static float rcp_s(float x)
+ #endif //ADM_OPT_RECIP_DIVISION
+ #else
+ #define DIVS(n, d) ((n) / (d))
+-#endif //ARCH_X86
++#endif // __SSE2__
+ 
+ static const float dwt2_db2_coeffs_lo_s[4] = { 0.482962913144690, 0.836516303737469, 0.224143868041857, -0.129409522550921 };
+ static const float dwt2_db2_coeffs_hi_s[4] = { -0.129409522550921, -0.224143868041857, 0.836516303737469, -0.482962913144690 };
+-- 
+2.28.0
+

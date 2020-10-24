@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Oct 19 12:06:33 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing BuildRequires: pkg-config. This is still needed
+  for rpm to pick up .pc and generate pkgconfig() symbols.
+
+-------------------------------------------------------------------
+Sat Oct 17 16:20:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.5.3) for build.opensuse.org
+- Add 0001-build-unbreak-x86-builds.patch
