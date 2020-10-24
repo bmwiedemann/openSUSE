@@ -1,4 +1,303 @@
 -------------------------------------------------------------------
+Mon Oct  5 05:56:59 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.14.1
+  * matomo-org/matomo
+    - #16223 piwik-php-tracker missed after update
+    - #16382 Urgent update to Danish translation
+    - #16210 Allow plugins to configure custom user preferences
+    - #16291 Official PHP Reporting Client, or at least link those that already exist
+    - #16295 Number formatting may be wrong when eg German language is used
+    - #16322 Fix plugins might not be updated when updating core
+  * matomo-org/matomo-php-tracker
+    - #61 Tracker does not set samesite cookie
+    - #73 Make it possible to configure cookie options for Secure, HTTPOnly and SameSite
+  * matomo-org/matomo-log-analytics
+    - #273 When input is stdin (‘-‘), import_logs.py doesn’t work
+    - #274 always disable queued tracking when sending requests from log import
+  * matomo-org/tag-manager
+    - #252 Improve detection of preview release if it wasn’t detected previously somehow
+  * matomo-org/matomo-package
+    - #112 Ship Matomo with Provider and Custom Variables plugin
+  * matomo-org/device-detecto
+    - #5389 Iceweasel should be tracked as Firefox
+    - #5713 WebOS regex is incorrect.
+    - #6075 Fixed version truncation so one client doesn’t affect the others
+    - #6292 Adds detection for multiple notebooks
+    - #6321 add sistrix crawler
+    - #6324 Detect new brand: 360, Owwo, TD Systems; Detect old devices model for brands: AllDocube, Coolpad, Huawei, Vivo,
+       Mecool, Sony, Samsung, Sharp, Kyocera, Fujitsu, LG, ZTE, NEC, Freetel, OPPO, Realme, Philips, Hoffmann, GOME,
+       Ginzzu, Alcatel, EVOLVEO, Bravis, Condor, Casper, Hisense, Videocon, Walton, IMO, Yu, Own, YEZZ, Nvidia, Medion,
+       BQ, Impression, Ulefon, Aligator;
+    - #6325 Detect new browser Yaani Browser
+    - #6327 Detect new browser: Blue Browser
+    - #6332 Detect new brand: Soundmax; Detect old devices model for brand Samsung
+    - #6333 Detect new brand: Tone, AT&T, BIHEE, Ravoz and Detect old devices model for brands: Realme, Positivo BGH, Blackview,
+       Wiko, Alcatel, Multilaser, Samsung, How, LG, Kyocera, Huawei, Oppo, HTC, Sony, Sharp, Google, Panasonic, ZTE, Coolpad
+    - #6335 Logicom Le Hola FR not detected as smartphone, but detected as hola! browser
+    - #6336 Fix detect browser: hola! Browser and detect brand Logicom model: Le Hola FR
+    - #6337 Update README.md
+    - #6338 Adds detection for client DingTalk
+    - #6342 Detect new brands: Enot, Kooper, Anry, Tinai and detect devices for existing brands: Thomson, Denver, Highscreen,
+      Oppo, O+, Highsense, Lenovo, Cheery Mobile, Unimax and OnePlus
+    - #6345 Support for Seobility
+    - #6346 Detect notebook devices in Facebook useragents
+    - #6347 Detect new brands: Minix, Winds, Asano, MyTab, Phonemax and detect new bot Seobility and Detect devices for 
+      existing brands: Asus, Aligator, BQ, Bravis, Ergo, HTC, Polaroid, Highscreen, Ulefone, Doodgee and Pixus
+    - #6348 Added ReactorNetty library
+    - #6352 improved statistics.php report output
+    - #6354 Detect new brands: Eltex, Neomi, Lumigon, OzoneHD, Kzen, Melrose, Crony, Takara, Amigoo and Detect devices for
+      existing brands: Tecno, Coolpad, Sharp, Sony, Alcatel, BQ, ZTE, Kyocera, Condor, Santin, Own, RugGear, Oukitel,
+      Elephone, Vestel, Oysters, MTC, Umax, Echo mobiles, Beeline, Inoi, Wexler, Asus, Samsung, Bitmore, Ulefone, Krüger&Matz,
+      Nobby, Highscreen, Xiaomi, Leagoo, Starway, 4Good, MLS, Digma, Irbis, LG, Lenovo, Fujitsu, Advan, Google, Turbo, Ainol,
+      Archos, Prestigio, Aligator, Yezz and Detect app: U-Cursos
+    - #6357 Detect new brands: Klipad, Tele2, Alfawise, Senkatel, Bobarry, BB mobile, E2, Wortmann, Billion and Detect devices
+      for existing brands: Teclast, Alcatel, Assistant, Ace, Ergo, DEXP, Aiwa, Irbis, Datsun, Overmax, Logicom, Ravoz, Asus,
+      Blu, Cube, Onda, Oysters, Zidoo, ZTE, Digma, DNS, Sugar, Philips, Ulefone, Fly, Hisense, MicroMax, Brondi, Telefunken,
+      Vivax, Yu, Zidoo, Majestic, Leotec
+    - #6358 Detect Samsung Galaxy Note 20, Galaxy Note 20 Ultra, and Galaxy Note 20 Ultra 5G
+    - #6360 Detect mobile app HeyTabBrowser
+    - #6363 Detect devices for existing brands: Samsung, Sony, Phonemax, Casper, DEXP, Nomi, Essentielb, Acer, Digma,
+      Tele2, Oukitel, Kyocera, Sharp
+  * matomo-org/referrer-spam-list
+    - #1225 Update new repository name referrer-spam-list
+    - #1229 Add foojo.net to spammers list
+    - #1230 Added phimmakinhdi.com
+    - #1231 Add suzanneboswell.top
+    - #1232 Add briankatrine.top
+    - #1233 Added more spammers
+    - #1234 Add shcrose.com
+- Changes from 3.14.0
+  * matomo-org/matomo
+    - #16055 Do not load JS tracking code deferred
+    - #11071 security ‘forget your password’ prone to phishing attacks
+    - #16042 Expose setVisitorId JS tracker method
+    - #16193 JS tracker should support CSS class matomo_ignore as alias of piwik_ignore
+    - #16189 assign _paq to window in tracking code
+    - #15778 Cookie domain config is not applied in ignore cookie preventing opt out to work
+    - #16057 Nonce::verifyNonce() returning FALSE when it should not
+    - #13056 Add possibility to turn cookies back on, JS enableCookies
+    - #13246 ‘requireConsent’ has not effect on cookie setting
+    - #15948 Document “How can I still track a visitor without cookies after they declined the cookie consent?”
+    - #15955 Do not check if any archive is running when a segment is forced
+    - #16006 Removing piwik composer deprecations
+    - #16047 Fix falsely assumes session was already started
+    - #16069 Add legacy autoloader to support Matomo namespaces in 3.X
+    - #16087 wrong escaping of cookie path
+    - #16119 Clarify the “password changed” e-mail notification text
+    - #13109 Fix 3rd party cookie / global visitorid race condition
+    - #16162 GeoLite2-ASN Geolocation not working
+    - #13462 Offer possibility to sync JavaScript tracker with any CDN
+  * matomo-org/matomo-log-analytics
+    - #178 Allow wildcards for importing logs
+    - #184 Adds Incapsula log format
+    - #222 Add haproxy log format
+    - #236 Fix timezone calculation for non-integer timezones
+    - #237 Apply config.options.seconds_to_add_to_date to _…ts tracker params
+  * matomo-org/device-detector
+    - #6140 Can’t detect mobile safari browser version
+    - #6182 iPhone OS 12_4 is not browser
+    - #6209 Ability to use external source
+    - #6303 Detect devices and new browser Quark; Detect new brands: Readme, Sugar, PocketBook, Goophone, Bitmore;
+      Detect old brands: Xiaomi, Huawei, Lenovo, Mio, Oppo, CUBOT, Capser, BQ, Backview, Digma, Oysters, Meitu, Odys, Smartisan, Protruly
+    - #6308 Detect new brand Xshitou and detect old devices model for brands: Xiaomi, Huawei, Oppo, Gionee, Vivo, Walton, Meizu, Teclast
+    - #6310 Added a few Android devices
+    - #6312 Detect new brand TWM, Mito, Gree, VKworld, Vodacom, JKL and detect old devices model for brands: Smartisan, OnePlus, OPPO, Vivo, Sharp, Huawei
+    - #6316 Improves device detection for mobile apps using chrome
+    - #6317 Improves detection for Facebook mobile app
+    - #6318 Added a few Android devices
+    - #6319 Adds detection for Clout and MLS devices
+    - #6320 Detect new brand Contixo, Prixton, Newland, Orbic and detect old devices model for brands: Coolpad, Huawei, Acer, Vivo,
+      Meizu, Smartisan, Samsung, HTC, ZTE, Xiaomi, Hisense, Miscrosoft, Sharp, Alcatel, SUGAR, Evercoss
+  * matomo-org/referrer-spam-blacklist
+    - #1209 Add dreams-works.net
+    - #1210 Add nwrcz.com
+    - #1211 100searchengines.com should not be listed as referral spam
+    - #1212 Added new spammer variant domains
+    - #1213 Add brooklynsays.com
+    - #1214 Add andrewancheta.com
+    - #1215 Add nyinfo.org
+    - #1216 Add eduardoluis.com
+    - #1217 Add ideayz.com
+    - #1218 Add popelina.com
+    - #1219 Add iceton.net
+    - #1220 Add mybestoffers.club
+    - #1221 Add batietiket.com
+    - #1223 Add bottraffic4free.club
+    - #1226 Adding mycollegereview.com
+    - #1227 Added pacobarrero.com
+  * matomo-org/matomo-php-tracker
+    - #69 Fix include_once warning Failed opening ‘./PiwikTracker.php’ for inclusion
+    - #71 Method setRequestMethodNonBulk() added to allow (non bulk) POST requests
+  * matomo-org/tracker-proxy
+    - #61 rename piwik -> matomo
+- Changes from 3.13.6
+  Security release
+  - In this release we have fixed an non-critical issue in the LDAP plugin.
+  * matomo-org/matomo
+    - #13655 Limit visitor fingerprint by default for even better privacy
+    - #15930 Archive Blob Tables bloating in size
+    - #13151 Improve config file and configuration overview in admin
+    - #14579 JS Tracker: add rtf to list of downloads
+    - #15853 Make sure to increase time limit when archiving
+    - #15862 Queue content tracking request
+    - #15869 Update visit only when needed
+    - #15870 Reexpire archive lock less often
+    - #15902 Instagram generates heaps of different referrer urls causing out of memory issues
+    - #15954 Fix a plugin that enriches the tracker needed to mark plugin as tracker
+    - #15978 Real-time visitors live widget don’t refresh after live_widget_refresh_after_seconds “timed out” without new visits/actions on websites
+    - #13783 title-text of JavaScript Tracking option help box shows HTML
+    - #15982 Fix: Logo being displayed too small on IE 11
+    - #15894 Send onboarding email during installation
+    - #15901 Fix Javascript error in JS global template causing side effects
+    - #15910 Add link to shopify tracking installation guide when no data tracked yet
+    - #12685 Change widget category of Realtime Map to Live!
+    - #1931 Translation file cleanups (refactor all html code, commands to type etc.)
+    - #13398 undefined method createTestConfig() in BenchmarkTestCase
+    - #15883 Updates device detector to 3.12.5
+    - #15980 require category and action in logEvent
+    - #16015 Fixes some date comparison issues
+    - #15111 Load more in Visitor Profile doesn’t load actions
+    - #15876 Warning while upgrading “Warning – array_merge(): Argument 2 is not an array”
+    - #15881 No Visitors shown in Brandenburg (state of Germany) on the Map
+    - #15923 Search engines are displayed in the wrong channel type
+    - #15270 Skip password min length checks when disable_checks_usernames_attributes=1
+    - #15854 Keep last 100 characters of archive error message when error is too long
+    - #15865 Cron – Filesystem.php(430): Warning – filesize(): stat failed for […] archive.sharedsiteids.pid
+    - #15867 Fix plugins/Live/Controller.php(99): Notice – Undefined variable: visitors
+    - #15879 Minor performance improvement when invalidating archives
+    - #15915 Search for links on page load as well, not just on ready
+    - #15937 Baidu not considered as a search engine?
+    - #15965 Fix theme rewrite removes src attribute when custom plugin directory is used
+    - #15997 Fix min archive time not correctly respected
+    - #16010 Optional userLogin in getUserPreference API
+  * matomo-org/device-detector
+    - #6169 Google-HTTP-Java-Client is detected as a bot – correctly?
+    - #6244 Adds detection for Light browser
+    - #6245 Adds detection for Elements Browser
+    - #6248 Adds detection for VMware AirWatch browser
+    - #6249 Adds detection for Origin browser
+    - #6250 Adds detection for PlayStation 4 Pro console
+    - #6251 Add Steam Overlay
+    - #6252 Adds detection for Steam browser
+    - #6253 Adds detection for AOL Desktop browser
+    - #6261 Detect devices and apps; Detect brands: Vivo, Umidigi, Teclast, Huawei, Asus, Irbis, Ergo,
+      DEXP, Black Fox, Xiomi, Doogee, Highscreen, NextBook, Ginzzu, Gome, Bravis, Sigma, Qumo, ZTE;
+      Detect apps: Snapchat, TopBuzz; Detect new brand: Wigor
+    - #6266 Improves detection for Apple iPhone devices
+    - #6268 Adds detection for Safe Exam Browser
+    - #6269 Improves detection for Avast Secure Browser
+    - #6270 Adds detection for Colibri browser
+    - #6271 Adds detection for Xvast browser
+    - #6272 Adds detection for Tungsten browser
+    - #6273 Adds detection for Lulumi browser
+    - #6274 Adds detection for Yahoo! Japan Browser
+    - #6275 Improves detection for Lunascape browser
+    - #6276 Adds detection for Lunascape Lite browser
+    - #6277 Adds detection for Jig Browser Plus
+    - #6278 Improves detection for Qwant Mobile browser
+    - #6279 Adds detection for Polypane browser
+    - #6280 Adds detection for Sizzy browser
+    - #6281 Adds detection for OhHai Browser
+    - #6282 Adds detection for Glass Browser
+    - #6283 Improves detection for multiple brands
+    - #6284 Adds detection for TmaxOS and ToGate browser
+    - #6288 Improves detection for Baidu Browser
+    - #6289 Apple Email client is not detecting on v3.12.5
+    - #6293 MatomoDeviceDetector.NET is cloned project from totpero/DeviceDetector.NET
+    - #6294 Adds detection for new brands Datawind, Droxio, NEXON, ONN, Q.Bell and devices from various existing brands
+    - #6295 Update README.md
+    - #6297 Add detect Zvu browser
+    - #6300 Update README.md
+  * matomo-org/referrer-spam-blacklist
+    - #1197 Add leddjc.net
+    - #1199 Add oudallas.net
+    - #1200 add 2 new domains
+    - #1201 Add commentag.com
+    - #1202 Add estdj.com
+    - #1203 Request sites in blacklist
+    - #1204 More spammers
+    - #1205 Add deryie.com
+    - #1206 Add websitebottraffic.host
+    - #1207 Add sxsnjj.com
+    - #1208 Add websitebottraffic.club
+  * matomo-org/searchengine-and-social-list
+    - #73 Adds detection for baidu.com (without subdomain)
+- Changes from 3.13.5
+  * matomo-org/matomo
+    - #15831 Archive Blob Tables bloating in size
+    - #15545 Deadlock found when trying to get lock
+    - #15732 Faster segmented suggested values when browser archiving is disabled
+    - #15747 Archiving status: Reexpire lock only when needed
+    - #15853 Make sure to increase time limit when archiving
+    - #15727 Archiving specific date via console won’t take date as argument.
+    - #15750 Fix displaying of actions when loading additional visits in visitor profile
+    - #15724 Add possibility to silently stop the archiver without an error
+    - #15757 Update device detector to latest 3.12.4
+    - #15644 no popup graph shown after the first in page titles report
+    - #15740 Pagetitle reports “Page Name not defined” although all PageViews do have a title (action_name)
+    - #15764 Realtime visitors “visitsTotal”-div is inserted multiple times
+    - #15773 Notifications with the same id might not be shown at all
+    - #15784 Force POST for bulk requests, fix alwaysUseSendBeacon not respected for bulk requests
+    - #15809 Fix problem when comparing segments or opening popovers
+    - #15688 Ensure stringify/parse is a function
+    - #15696 Better handling of processing uniques for multiple sites
+    - #15729 Codespell report for “Matomo” (on fossies.org)
+    - #15746 Fix inconsistent usage of segment idSites
+    - #15769 Revert detect page view bucket
+    - #15770 One click update in two parts so new code is loaded for second.
+    - #15779 Avoid possible error subtable already exists but not loaded
+    - #15785 Make sure to always set JSON_PIWIK to native JSON when possible
+    - #15798 Make sure to clean up tracking failures before sending email notification
+    - #15800 purge all old archives regardless of done value
+    - #15808 Add more parameters to the computeNbUnique event
+  * matomo-org/device-detector
+    - #6170 Problem detecting Twitter App on iOS
+    - #6203 Improves detection for Alcatel, Allview, Casper, Condor, Crosscall, Doogee, Lanix, OnePlus, Orange,
+      Ulefone, UMIDIGI, Wiko devices
+    - #6205 Adds detection for TV Bro Browser and devices of Shift Phones, RugGear, Aligator, Maxcom, Luna and some existing brands
+    - #6206 Adds detection for Oukitel devices
+    - #6207 Adds detection for Ace device
+    - #6210 Santin BiTBiZ incorrect brand name
+    - #6211 Fix brand Santin name and added other models
+    - #6215 What type of device to use in motamo? if the device is a smartwatch
+    - #6216 Adds detection for Razer device
+    - #6217 Detect devices for brands: iBall, Irbis, Motorola, Huawei, Casper, Qysters, Protruly, RegGear, Runbo, Telefunken, JFone,
+      Ritmix, IconBIT, Samsung, LG, Acer, Assistant, Vonino, UMIDIGI, Philips, Krüger&Matz, Uhans, Overmax, ArmPhone
+    - #6218 Adds detection for Goanna browser engine
+    - #6219 Adds detection for Amazon devices
+    - #6220 Adds detection for Grundig devices
+    - #6221 Adds detection for Insignia devices
+    - #6222 Adds detection for Element device
+    - #6226 Add surf browser
+    - #6229 Adds detection for XenForo service agent
+    - #6231 Update README.md
+    - #6232 Adds detection for Google Duplex on the Web bot
+    - #6234 Adds detection for GTmetrix crawler
+    - #6235 Tests run failed for another lib matthiasmullie\scrapbook\src\Adapters\MemoryStore
+    - #6236 Adds detection for new brands iGet, Soyes, Zfiner and Zidoo and some other devices
+    - #6239 Adds detection for new brands iVa, Phicomm, Gome, Voyo, Huadoo, Ryte, Vontar and some other devices
+    - #6240 Adds detection for Mypal browser
+    - #6241 Adds detection for Centaury browser
+    - #6242 Adds detection for Arctic Fox browser
+    - #6243 Fix Basilisk browser rendering engine
+    - #6246 Adds detection for Atom browser
+    - #6247 Improves detection for Avast Secure Browser
+    - #6254 Adds detection for 115 Browser
+    - #6257 Detect mobile app Twitter
+    - #6258 Add support for AspiegelBot, a new Huawei spider
+  * matomo-org/referrer-spam-blacklist
+    - #1189 add celestepage.xyz
+    - #1190 Four more Referrerspammer
+    - #1192 More spammers
+    - #1193 Add ptfic.org
+    - #1194 Remove from list vk.com
+    - #1195 Update spammers.txt
+    - #1196 Add sneakerfreaker.com
+  * matomo-org/tag-manager
+    - #235 Fix possible error on PHP 7.4
+
+-------------------------------------------------------------------
 Sat Mar 28 09:06:21 UTC 2020 - ecsos@opensuse.org
 
 - Update to 3.13.4

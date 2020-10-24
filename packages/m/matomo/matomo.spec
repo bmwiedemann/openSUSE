@@ -32,7 +32,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        3.13.4
+Version:        3.14.1
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
