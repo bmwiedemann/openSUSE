@@ -1,0 +1,246 @@
+From 3574fb71d1849295f662c3fcf0818bcd40373649 Mon Sep 17 00:00:00 2001
+From: Javier Martinez Canillas <javierm@redhat.com>
+Date: Tue, 18 Feb 2020 12:03:28 +0100
+Subject: [PATCH 1/3] shim: Update EFI_LOADED_IMAGE with the second stage
+ loader file path
+
+When shim loads the second stage loader (e.g: GRUB) the FilePath field of
+the EFI_LOADED_IMAGE structure isn't updated with the path of the loaded
+binary. So it still contains the file path of the shim binary.
+
+This isn't a problem since the file path is currently not used. But should
+be used to set the DevicePath field of the EFI_IMAGE_LOAD_EVENT structure
+that is logged when measuring the PE/COFF binaries. In that case the TPM
+Event Log will have an incorrect file path for the measured binary, i.e:
+
+$ hexdump -Cv /sys/kernel/security/tpm0/binary_bios_measurements
+...
+00000a50  00 00 00 00 00 00 04 04  34 00 5c 00 45 00 46 00  |........4.\.E.F.|
+00000a60  49 00 5c 00 72 00 65 00  64 00 68 00 61 00 74 00  |I.\.r.e.d.h.a.t.|
+00000a70  5c 00 73 00 68 00 69 00  6d 00 78 00 36 00 34 00  |\.s.h.i.m.x.6.4.|
+00000a80  2e 00 65 00 66 00 69 00  00 00 7f ff 04 00 00 00  |..e.f.i.........|
+00000a90  00 00 00 00 00 00 af 08  00 00 00 0d 00 00 00 b5  |................|
+00000aa0  cd d0 8f bb 16 31 e2 80  8b e8 58 75 c9 89 18 95  |.....1....Xu....|
+00000ab0  d2 de 15 15 00 00 00 67  72 75 62 5f 63 6d 64 20  |.......grub_cmd |
+00000ac0  73 65 74 20 70 61 67 65  72 3d 31 00 08 00 00 00  |set pager=1.....|
+...
+
+So update the EFI_LOADED_IMAGE structure with the second stage loader file
+path to have the correct value in the log, i.e:
+
+$ hexdump -Cv /sys/kernel/security/tpm0/binary_bios_measurements
+...
+00000a50  00 00 00 00 00 00 04 04  34 00 5c 00 45 00 46 00  |........4.\.E.F.|
+00000a60  49 00 5c 00 72 00 65 00  64 00 68 00 61 00 74 00  |I.\.r.e.d.h.a.t.|
+00000a70  5c 00 67 00 72 00 75 00  62 00 78 00 36 00 34 00  |\.g.r.u.b.x.6.4.|
+00000a80  2e 00 65 00 66 00 69 00  00 00 7f ff 04 00 00 00  |..e.f.i.........|
+00000a90  00 00 00 00 00 00 af 08  00 00 00 0d 00 00 00 b5  |................|
+00000aa0  cd d0 8f bb 16 31 e2 80  8b e8 58 75 c9 89 18 95  |.....1....Xu....|
+00000ab0  d2 de 15 15 00 00 00 67  72 75 62 5f 63 6d 64 20  |.......grub_cmd |
+00000ac0  73 65 74 20 70 61 67 65  72 3d 31 00 08 00 00 00  |set pager=1.....|
+...
+
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+(cherry picked from commit cd7d42d493d2913625b9852743db99d97ad15c72)
+---
+ shim.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index ebc46f0..1dff8a4 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1950,6 +1950,16 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
+ 	 */
+ 	CopyMem(&li_bak, li, sizeof(li_bak));
+ 
++	/*
++	 * Update the loaded image with the second stage loader file path
++	 */
++	li->FilePath = FileDevicePath(NULL, PathName);
++	if (!li->FilePath) {
++		perror(L"Unable to update loaded image file path\n");
++		efi_status = EFI_OUT_OF_RESOURCES;
++		goto restore;
++	}
++
+ 	/*
+ 	 * Verify and, if appropriate, relocate and execute the executable
+ 	 */
+@@ -1959,8 +1969,7 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
+ 		perror(L"Failed to load image: %r\n", efi_status);
+ 		PrintErrors();
+ 		ClearErrors();
+-		CopyMem(li, &li_bak, sizeof(li_bak));
+-		goto done;
++		goto restore;
+ 	}
+ 
+ 	loader_is_participating = 0;
+@@ -1970,6 +1979,10 @@ EFI_STATUS start_image(EFI_HANDLE image_handle, CHAR16 *ImagePath)
+ 	 */
+ 	efi_status = entry_point(image_handle, systab);
+ 
++restore:
++	if (li->FilePath)
++		FreePool(li->FilePath);
++
+ 	/*
+ 	 * Restore our original loaded image values
+ 	 */
+-- 
+2.28.0
+
+
+From eee96f1c59ba0f1a58eb1748a4bdf7ed0855b17a Mon Sep 17 00:00:00 2001
+From: Javier Martinez Canillas <javierm@redhat.com>
+Date: Tue, 18 Feb 2020 12:03:17 +0100
+Subject: [PATCH 2/3] tpm: Include information about PE/COFF images in the TPM
+ Event Log
+
+The "TCG PC Client Specific Platform Firmware Profile Specification" says
+that when measuring a PE/COFF image, the TCG_PCR_EVENT2 structure Event
+field MUST contain a UEFI_IMAGE_LOAD_EVENT structure.
+
+Currently an empty UEFI_IMAGE_LOAD_EVENT structure is passed so users only
+have the hash of the PE/COFF image, but not information such the file path
+of the binary.
+
+Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+(cherry picked from commit c252b9ee94c342f9074a3e9064fd254eef203a63)
+---
+ include/tpm.h |  5 +++--
+ shim.c        |  7 +++++--
+ tpm.c         | 46 ++++++++++++++++++++++++++++++++--------------
+ 3 files changed, 40 insertions(+), 18 deletions(-)
+
+diff --git a/include/tpm.h b/include/tpm.h
+index 746e871..a05c249 100644
+--- a/include/tpm.h
++++ b/include/tpm.h
+@@ -10,8 +10,9 @@ EFI_STATUS tpm_log_event(EFI_PHYSICAL_ADDRESS buf, UINTN size, UINT8 pcr,
+ 			 const CHAR8 *description);
+ EFI_STATUS fallback_should_prefer_reset(void);
+ 
+-EFI_STATUS tpm_log_pe(EFI_PHYSICAL_ADDRESS buf, UINTN size, UINT8 *sha1hash,
+-		      UINT8 pcr);
++EFI_STATUS tpm_log_pe(EFI_PHYSICAL_ADDRESS buf, UINTN size,
++		      EFI_PHYSICAL_ADDRESS addr, EFI_DEVICE_PATH *path,
++		      UINT8 *sha1hash, UINT8 pcr);
+ 
+ EFI_STATUS tpm_measure_variable(CHAR16 *dbname, EFI_GUID guid, UINTN size, void *data);
+ 
+diff --git a/shim.c b/shim.c
+index 1dff8a4..6ce30a0 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1299,7 +1299,9 @@ static EFI_STATUS handle_image (void *data, unsigned int datasize,
+ #ifdef REQUIRE_TPM
+ 	efi_status =
+ #endif
+-	tpm_log_pe((EFI_PHYSICAL_ADDRESS)(UINTN)data, datasize, sha1hash, 4);
++	tpm_log_pe((EFI_PHYSICAL_ADDRESS)(UINTN)data, datasize,
++		   (EFI_PHYSICAL_ADDRESS)(UINTN)context.ImageAddress,
++		   li->FilePath, sha1hash, 4);
+ #ifdef REQUIRE_TPM
+ 	if (efi_status != EFI_SUCCESS) {
+ 		return efi_status;
+@@ -1813,7 +1815,8 @@ EFI_STATUS shim_verify (void *buffer, UINT32 size)
+ #ifdef REQUIRE_TPM
+ 	efi_status =
+ #endif
+-	tpm_log_pe((EFI_PHYSICAL_ADDRESS)(UINTN)buffer, size, sha1hash, 4);
++	tpm_log_pe((EFI_PHYSICAL_ADDRESS)(UINTN)buffer, size, 0, NULL,
++		   sha1hash, 4);
+ #ifdef REQUIRE_TPM
+ 	if (EFI_ERROR(efi_status))
+ 		goto done;
+diff --git a/tpm.c b/tpm.c
+index 196b93c..22ad148 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -210,21 +210,39 @@ EFI_STATUS tpm_log_event(EFI_PHYSICAL_ADDRESS buf, UINTN size, UINT8 pcr,
+ 				 strlen(description) + 1, 0xd, NULL);
+ }
+ 
+-EFI_STATUS tpm_log_pe(EFI_PHYSICAL_ADDRESS buf, UINTN size, UINT8 *sha1hash,
+-		      UINT8 pcr)
++EFI_STATUS tpm_log_pe(EFI_PHYSICAL_ADDRESS buf, UINTN size,
++		      EFI_PHYSICAL_ADDRESS addr, EFI_DEVICE_PATH *path,
++		      UINT8 *sha1hash, UINT8 pcr)
+ {
+-	EFI_IMAGE_LOAD_EVENT ImageLoad;
+-
+-	// All of this is informational and forces us to do more parsing before
+-	// we can generate it, so let's just leave it out for now
+-	ImageLoad.ImageLocationInMemory = 0;
+-	ImageLoad.ImageLengthInMemory = 0;
+-	ImageLoad.ImageLinkTimeAddress = 0;
+-	ImageLoad.LengthOfDevicePath = 0;
+-
+-	return tpm_log_event_raw(buf, size, pcr, (CHAR8 *)&ImageLoad,
+-				 sizeof(ImageLoad),
+-				 EV_EFI_BOOT_SERVICES_APPLICATION, sha1hash);
++	EFI_IMAGE_LOAD_EVENT *ImageLoad = NULL;
++	EFI_STATUS efi_status;
++	UINTN path_size = 0;
++
++	if (path)
++		path_size = DevicePathSize(path);
++
++	ImageLoad = AllocateZeroPool(sizeof(*ImageLoad) + path_size);
++	if (!ImageLoad) {
++		perror(L"Unable to allocate image load event structure\n");
++		return EFI_OUT_OF_RESOURCES;
++	}
++
++	ImageLoad->ImageLocationInMemory = buf;
++	ImageLoad->ImageLengthInMemory = size;
++	ImageLoad->ImageLinkTimeAddress = addr;
++
++	if (path_size > 0) {
++		CopyMem(ImageLoad->DevicePath, path, path_size);
++		ImageLoad->LengthOfDevicePath = path_size;
++	}
++
++	efi_status = tpm_log_event_raw(buf, size, pcr, (CHAR8 *)ImageLoad,
++				       sizeof(*ImageLoad) + path_size,
++				       EV_EFI_BOOT_SERVICES_APPLICATION,
++				       sha1hash);
++	FreePool(ImageLoad);
++
++	return efi_status;
+ }
+ 
+ typedef struct {
+-- 
+2.28.0
+
+
+From 537851177b72328b76f74782709029cff466168b Mon Sep 17 00:00:00 2001
+From: Peter Jones <pjones@redhat.com>
+Date: Thu, 23 Jul 2020 20:35:56 -0400
+Subject: [PATCH 3/3] Fix a broken tpm type
+
+Signed-off-by: Peter Jones <pjones@redhat.com>
+(cherry picked from commit 871cfcf8bdc4f656642993d38b06e4e2d5be0c18)
+---
+ tpm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tpm.c b/tpm.c
+index 22ad148..03cf3a1 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -239,7 +239,7 @@ EFI_STATUS tpm_log_pe(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ 	efi_status = tpm_log_event_raw(buf, size, pcr, (CHAR8 *)ImageLoad,
+ 				       sizeof(*ImageLoad) + path_size,
+ 				       EV_EFI_BOOT_SERVICES_APPLICATION,
+-				       sha1hash);
++				       (CHAR8 *)sha1hash);
+ 	FreePool(ImageLoad);
+ 
+ 	return efi_status;
+-- 
+2.28.0
+

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 14 07:34:18 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1177404-fix-a-use-of-strlen.patch to fix the length
+  of the option data string to launch the program correctly
+  (bsc#1177404)
+- Add shim-bsc1175509-more-tpm-fixes.patch to fix the file path
+  in the tpm even log (bsc#1175509)
+
+-------------------------------------------------------------------
 Mon Sep 14 08:06:27 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-VLogError-Avoid-Null-pointer-dereferences.patch to fix

@@ -1195,4 +1195,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>834243</requestid>
   </revision>
+  <revision rev="88" vrev="18">
+    <srcmd5>6fb4a438b147058e40d589d82d9d499d</srcmd5>
+    <version>15+git47</version>
+    <time>1603545294</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843143</requestid>
+  </revision>
 </revisionlist>

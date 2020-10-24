@@ -87,6 +87,10 @@ Patch10:        shim-VLogError-Avoid-Null-pointer-dereferences.patch
 Patch11:        shim-fix-verify-eku.patch
 # PATCH-FIX-UPSTREAM shim-do-not-write-string-literals.patch -- Fix the potential crash when accessing the DEFAULT_LOADER string
 Patch12:        shim-do-not-write-string-literals.patch
+# PATCH-FIX-UPSTREAM shim-bsc1177404-fix-a-use-of-strlen.patch bsc#1177404 glin@suse.com -- Fix the length of the option data string to launch the program correctly
+Patch13:        shim-bsc1177404-fix-a-use-of-strlen.patch
+# PATCH-FIX-UPSTREAM shim-bsc1175509-more-tpm-fixes.patch bsc#1175509 glin@suse.com -- Fix the file path in tpm event log
+Patch14:        shim-bsc1175509-more-tpm-fixes.patch
 # PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:       shim-opensuse-cert-prompt.patch
 BuildRequires:  gnu-efi >= 3.0.3
@@ -140,6 +144,8 @@ The source code of UEFI shim loader
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
+%patch14 -p1
 %if 0%{?is_opensuse} == 1
 %patch100 -p1
 %endif
