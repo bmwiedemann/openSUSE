@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 14 00:20:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs.
+
+-------------------------------------------------------------------
 Mon Dec  8 23:47:57 UTC 2014 - jengelh@inai.de
 
 - Drop %version from subincludedir, it tends to break recompiles of
