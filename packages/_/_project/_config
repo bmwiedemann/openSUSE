@@ -1030,7 +1030,7 @@ Prefer: xmlgraphics-commons:apache-commons-io
 # the -32bit stuff provides things it shouldn't (hopefully temporary)
 Prefer: -typelib-1_0-GdkPixbuf-2_0-32bit -typelib-1_0-Pango-1_0-32bit -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel postgresql-server-devel
-Prefer: postgresql12-devel-mini
+Prefer: postgresql13-devel-mini postgresql12-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
 Prefer: -postgresql94 -postgresql95 -postgresql95-server -postgresql94-server
 Prefer: -unzip-rcc
