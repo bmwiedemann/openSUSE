@@ -338,4 +338,27 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>831367</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b71e9e1571f743b8d05f4d00d161f22c</srcmd5>
+    <version>10.1+1602850462</version>
+    <time>1603545375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.1+1602850462:
+  * Compress kernel modules in batch and in parallel
+  * Forward _binary_payload to the repackaged rpm (bsc#1175882)
+- remove 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch,
+  parallel-compression.patch (upstream)
+
+- Sync from git master directly
+- drop 0001-Add-support-for-kernel-module-compression.patch
+  0001-Enable-find_provides-and-requires.patch
+  0001-Initialize-compress-variable.patch
+  0001-Keep-the-files-in-the-OTHER-directory.patch
+  0001-Passthrough-license-tag.patch
+  0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
+  pesign-sign-s390x-kernel.patch (upstream)
+- add parallel-compression.patch</comment>
+    <requestid>843222</requestid>
+  </revision>
 </revisionlist>

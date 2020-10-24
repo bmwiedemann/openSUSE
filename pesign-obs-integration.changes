@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:44:19 UTC 2020 - dmueller@suse.com
+
+- Update to version 10.1+1602850462:
+  * Compress kernel modules in batch and in parallel
+  * Forward _binary_payload to the repackaged rpm (bsc#1175882)
+- remove 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch,
+  parallel-compression.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Oct 15 21:13:24 UTC 2020 - dmueller@suse.com
+
+- Sync from git master directly
+- drop 0001-Add-support-for-kernel-module-compression.patch
+  0001-Enable-find_provides-and-requires.patch
+  0001-Initialize-compress-variable.patch
+  0001-Keep-the-files-in-the-OTHER-directory.patch
+  0001-Passthrough-license-tag.patch
+  0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
+  pesign-sign-s390x-kernel.patch (upstream)
+- add parallel-compression.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 03:39:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch to
