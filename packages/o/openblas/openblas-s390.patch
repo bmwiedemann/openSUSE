@@ -1,9 +1,9 @@
-Index: OpenBLAS-0.3.10/c_check
+Index: OpenBLAS-0.3.11/c_check
 ===================================================================
---- OpenBLAS-0.3.10.orig/c_check
-+++ OpenBLAS-0.3.10/c_check
-@@ -10,7 +10,7 @@ $hostarch = "x86_64" if ($hostarch eq "a
- $hostarch = "arm" if ($hostarch =~ /^arm.*/);
+--- OpenBLAS-0.3.11.orig/c_check
++++ OpenBLAS-0.3.11/c_check
+@@ -11,7 +11,7 @@ $hostarch = "x86_64" if ($hostarch eq "a
+ $hostarch = "arm" if ($hostarch ne "arm64" && $hostarch =~ /^arm.*/);
  $hostarch = "arm64" if ($hostarch eq "aarch64");
  $hostarch = "power" if ($hostarch =~ /^(powerpc|ppc).*/);
 -$hostarch = "zarch" if ($hostarch eq "s390x");
@@ -11,10 +11,10 @@ Index: OpenBLAS-0.3.10/c_check
  
  #$tmpf = new File::Temp( UNLINK => 1 );
  $binary = $ENV{"BINARY"};
-Index: OpenBLAS-0.3.10/ctest.c
+Index: OpenBLAS-0.3.11/ctest.c
 ===================================================================
---- OpenBLAS-0.3.10.orig/ctest.c
-+++ OpenBLAS-0.3.10/ctest.c
+--- OpenBLAS-0.3.11.orig/ctest.c
++++ OpenBLAS-0.3.11/ctest.c
 @@ -117,7 +117,7 @@ ARCH_X86_64
  ARCH_POWER
  #endif
@@ -24,11 +24,11 @@ Index: OpenBLAS-0.3.10/ctest.c
  ARCH_ZARCH
  #endif
  
-Index: OpenBLAS-0.3.10/getarch.c
+Index: OpenBLAS-0.3.11/getarch.c
 ===================================================================
---- OpenBLAS-0.3.10.orig/getarch.c
-+++ OpenBLAS-0.3.10/getarch.c
-@@ -1200,7 +1200,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+--- OpenBLAS-0.3.11.orig/getarch.c
++++ OpenBLAS-0.3.11/getarch.c
+@@ -1266,7 +1266,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  #define OPENBLAS_SUPPORTED
  #endif
  

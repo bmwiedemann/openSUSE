@@ -351,4 +351,41 @@
 - Remove workaround for build failure on aarch64 (boo#1128794). (forwarded request 839300 from eeich)</comment>
     <requestid>839313</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>5403b0e185496dadc3e11270e55e8ab1</srcmd5>
+    <version>0.3.11</version>
+    <time>1603545325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _constraints to use 12GB RAM on x86_64 
+
+- Update to version 0.3.11
+  common:
+  * Reduced the default BLAS3_MEM_ALLOC_THRESHOLD (used as an upper
+    limit for placing temporary arrays on the stack) to be compatible
+    with a stack size of 1mb (as imposed by the JAVA runtime library)
+  * Added mixed-precision dot function SBDOT and utility functions
+    shstobf16, shdtobf16, sbf16tos and dbf16tod to convert between
+    single or double precision float arrays and bfloat16 arrays
+  * Fixed prototypes of LAPACK_?ggsvp and LAPACK_?ggsvd functions
+    in lapack.h
+  * Fixed underflow and rounding errors in LAPACK SLANV2 and DLANV2
+    (causing miscalculations in e.g. SHSEQR/DHSEQR, LAPACK issue #263)
+  * Fixed workspace calculation in LAPACK ?GELQ (LAPACK issue #415)
+  * Fixed several bugs in the LAPACK testsuite
+  * Improved performance of TRMM and TRSM for certain problem sizes
+  * Fixed infinite recursions and workspace miscalculations in ReLAPACK
+  * CMAKE builds no longer require pkg-config for creating the .pc file
+  * Makefile builds no longer misread NO_CBLAS=0 or NO_LAPACK=0 as
+    enabling these options
+  * Fixed detection of gfortran when invoked through an mpi wrapper
+  * Improve thread reinitialization performance with OpenMP after a fork
+  * Added support for building only the subset of the library required
+    for a particular precision by specifying BUILD_SINGLE, BUILD_DOUBLE
+  * Optional function name prefixes and suffixes are now correctly
+    reflected in the generated cblas.h
+  * Added CMAKE build support for the LAPACK and multithreading tests
+  power:
+  * Added optimized support for POWER10</comment>
+    <requestid>843166</requestid>
+  </revision>
 </revisionlist>

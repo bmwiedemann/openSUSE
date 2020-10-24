@@ -1,10 +1,21 @@
+<?xml version="1.0"?>
 <constraints>
   <hardware>
     <disk>
       <size unit="G">8</size>
     </disk>
     <memory>
-      <size unit="M">4000</size>
+      <size unit="G">4</size>
     </memory>
   </hardware>
-</constraints> 
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">12</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
