@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 23 13:26:53 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.9.1+1603459604.g8c9ed2c 
+  + upstream 1.9.1 release (2020-10-23)
+    * sesdev --devel flag: let click deduct type (PR #550)
+
+-------------------------------------------------------------------
+Fri Oct 23 10:23:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 1.9.0+1603448566.gcb3362c 
+  + upstream 1.9.0 release (2020-10-23)
+    * constant: add missing SLE-15-SP[12] Product repos (PR #530)
+    * Implement "sesdev upgrade" subcommand (PR #531)
+    * Implement "sesdev reboot DEP_ID NODE" command (PR #532)
+    * contrib/upgrade-demo-ses6-to-ses7.sh: add upgrade demo script (PR #535)
+    * provision.sh: add helper_scripts Jinja template (PR #540)
+    * exceptions: have SesDevException return optional exit code (PR #538)
+    * deployment: wait for rebooted node to complete boot sequence (PR #539)
+    * sesdev: fix --filestore regression (PR #545)
+    * cephadm/deployment_day_2.sh.j2: do not fail on defective --dry-run (PR #546)
+    * setup.cfg: include seslib/templates/cephadm/ directory in packaging (PR #548)
+    * templates/zypper: do not install supportutils-plugin-ses in SES{5,6,7} (PR #526)
+    * deepsea/nautilus_pre_stage_0.sh: refrain from patching DeepSea (PR #547)
+
+-------------------------------------------------------------------
 Thu Oct  8 16:24:07 UTC 2020 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 1.8.0+1602174240.g45df4dd
