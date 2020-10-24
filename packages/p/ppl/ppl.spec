@@ -1,7 +1,7 @@
 #
 # spec file for package ppl
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Name:           ppl
 Version:        1.2
 Release:        0
 Summary:        The Parma Polyhedra Library
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.bugseng.com/parma-polyhedra-library
 
@@ -29,7 +29,6 @@ URL:            https://www.bugseng.com/parma-polyhedra-library
 #Git-Clone:	git://git.cs.unipr.it/ppl/ppl
 Source:         http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz
 Source2:        http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz.sign
-Source4:        GLS-0.12-1.1
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  glpk-devel
@@ -91,20 +90,20 @@ want to program with the PPL.
 %autosetup -p1 -n ppl-%version
 
 %build
-%if "%name" == "ppl-testsuite"
-export CXXFLAGS="%optflags -g0"
-%endif
+if [ ! -e configure ]; then autoreconf -fi; fi
 %configure \
-	--disable-static \
-	--disable-rpath \
-	--disable-watchdog
+	--disable-static --disable-rpath --disable-watchdog \
+	--disable-ppl_lpsol --disable-ppl_lcdd
 #sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 #sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags}
+%make_build
 
 %if "%name" == "ppl-testsuite"
 %check
-make %{?_smp_mflags} check
+# https://www.cs.unipr.it/mantis/view.php?id=1078
+# https://www.cs.unipr.it/mantis/view.php?id=2113
+# both behind a stupid login wall
+%make_build check
 
 %install
 
@@ -128,7 +127,6 @@ rm -f %buildroot/%_datadir/doc/%name/fdl.pdf
 rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-prolog-interface-%{version}*
 rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-ocaml-interface-%{version}*
 rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-java-interface-%{version}*
-cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
 # %%name == ppl
 %endif
 %fdupes -s %buildroot
@@ -146,10 +144,7 @@ cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
 %doc %_datadir/doc/%name/CREDITS
 %doc %_datadir/doc/%name/NEWS
 %doc %_datadir/doc/%name/README
-%_bindir/ppl_lcdd
-%_bindir/ppl_lpsol
 %_bindir/ppl_pips
-%_mandir/man1/ppl_lcdd.1.gz
 %_mandir/man1/ppl_pips.1.gz
 
 %files -n libppl%sover
@@ -172,7 +167,6 @@ cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
 %_datadir/aclocal/ppl_c.m4
 
 %files doc
-%doc %_datadir/doc/%name/GLS-*
 %doc %_datadir/doc/%name/README.doc
 %doc %_datadir/doc/%name/fdl.txt
 %doc %_datadir/doc/%name/ppl-user-%version-html/

@@ -1,7 +1,7 @@
 #
-# spec file for package ppl
+# spec file for package ppl-testsuite
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_name 14
+%define sover 14
 Name:           ppl-testsuite
 Version:        1.2
 Release:        0
 Summary:        The Parma Polyhedra Library
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.bugseng.com/parma-polyhedra-library
 
@@ -29,7 +29,6 @@ URL:            https://www.bugseng.com/parma-polyhedra-library
 #Git-Clone:	git://git.cs.unipr.it/ppl/ppl
 Source:         http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz
 Source2:        http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz.sign
-Source4:        GLS-0.12-1.1
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  glpk-devel
@@ -54,7 +53,7 @@ through its C and C++ interfaces.
 Summary:        Development tools for the Parma Polyhedra Library C and C++ interfaces
 Group:          Development/Libraries/C and C++
 Requires:       gmp-devel >= 4.1.3
-Requires:       libppl%so_name = %version
+Requires:       libppl%sover = %version
 Requires:       libppl_c4 = %version
 Recommends:     ppl-doc = %version
 
@@ -63,11 +62,11 @@ The header files, Autoconf macro, and ppl-config tool for developing
 applications using the Parma Polyhedra Library through its C and C++
 interfaces.
 
-%package -n libppl%so_name
+%package -n libppl%sover
 Summary:        C++ interface of the Parma Polyhedra Library
 Group:          System/Libraries
 
-%description -n libppl%so_name
+%description -n libppl%sover
 Shared library for the Parma Polyhedra Library.
 
 %package -n libppl_c4
@@ -91,20 +90,20 @@ want to program with the PPL.
 %autosetup -p1 -n ppl-%version
 
 %build
-%if "%name" == "ppl-testsuite"
-export CXXFLAGS="%optflags -g0"
-%endif
+if [ ! -e configure ]; then autoreconf -fi; fi
 %configure \
-	--disable-static \
-	--disable-rpath \
-	--disable-watchdog
+	--disable-static --disable-rpath --disable-watchdog \
+	--disable-ppl_lpsol --disable-ppl_lcdd
 #sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 #sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags}
+%make_build
 
 %if "%name" == "ppl-testsuite"
 %check
-make %{?_smp_mflags} check
+# https://www.cs.unipr.it/mantis/view.php?id=1078
+# https://www.cs.unipr.it/mantis/view.php?id=2113
+# both behind a stupid login wall
+%make_build check
 
 %install
 
@@ -114,27 +113,26 @@ make %{?_smp_mflags} check
 %make_install INSTALL="install -p"
 rm -f "%buildroot/%_libdir"/*.la
 # We don't build the binary, so delete its manpage
-rm -f %buildroot%_mandir/man1/ppl_lpsol.1
+rm -f %buildroot/%_mandir/man1/ppl_lpsol.1
 # We don't build pwl
-rm -Rf %buildroot%_datadir/doc/pwl
+rm -Rf %buildroot/%_datadir/doc/pwl
 # The pdf is enough
-rm -f %buildroot%_datadir/doc/%name/ppl-user-*.ps.gz
-rm -f %buildroot%_datadir/doc/%name/ChangeLog
-rm -f %buildroot%_datadir/doc/%name/README.configure
-rm -f %buildroot%_datadir/doc/%name/TODO
-rm -f %buildroot%_datadir/doc/%name/gpl.*
-rm -f %buildroot%_datadir/doc/%name/fdl.ps.gz
-rm -f %buildroot%_datadir/doc/%name/fdl.pdf
-rm -Rf %buildroot%_datadir/doc/%name/ppl-user-prolog-interface-%{version}*
-rm -Rf %buildroot%_datadir/doc/%name/ppl-user-ocaml-interface-%{version}*
-rm -Rf %buildroot%_datadir/doc/%name/ppl-user-java-interface-%{version}*
-cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
+rm -f %buildroot/%_datadir/doc/%name/ppl-user-*.ps.gz
+rm -f %buildroot/%_datadir/doc/%name/ChangeLog
+rm -f %buildroot/%_datadir/doc/%name/README.configure
+rm -f %buildroot/%_datadir/doc/%name/TODO
+rm -f %buildroot/%_datadir/doc/%name/gpl.*
+rm -f %buildroot/%_datadir/doc/%name/fdl.ps.gz
+rm -f %buildroot/%_datadir/doc/%name/fdl.pdf
+rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-prolog-interface-%{version}*
+rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-ocaml-interface-%{version}*
+rm -Rf %buildroot/%_datadir/doc/%name/ppl-user-java-interface-%{version}*
 # %%name == ppl
 %endif
 %fdupes -s %buildroot
 
-%post   -n libppl%so_name -p /sbin/ldconfig
-%postun -n libppl%so_name -p /sbin/ldconfig
+%post   -n libppl%sover -p /sbin/ldconfig
+%postun -n libppl%sover -p /sbin/ldconfig
 %post   -n libppl_c4 -p /sbin/ldconfig
 %postun -n libppl_c4 -p /sbin/ldconfig
 
@@ -146,13 +144,10 @@ cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
 %doc %_datadir/doc/%name/CREDITS
 %doc %_datadir/doc/%name/NEWS
 %doc %_datadir/doc/%name/README
-%_bindir/ppl_lcdd
-%_bindir/ppl_lpsol
 %_bindir/ppl_pips
-%_mandir/man1/ppl_lcdd.1.gz
 %_mandir/man1/ppl_pips.1.gz
 
-%files -n libppl%so_name
+%files -n libppl%sover
 %_libdir/libppl.so.*
 
 %files -n libppl_c4
@@ -172,7 +167,6 @@ cp -a %_sourcedir/GLS-* "%buildroot/%_datadir/doc/%name/"
 %_datadir/aclocal/ppl_c.m4
 
 %files doc
-%doc %_datadir/doc/%name/GLS-*
 %doc %_datadir/doc/%name/README.doc
 %doc %_datadir/doc/%name/fdl.txt
 %doc %_datadir/doc/%name/ppl-user-%version-html/

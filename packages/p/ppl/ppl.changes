@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 24 00:00:54 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable lpsol and lcdd.
+- Drop old bundled changelog file
+
+-------------------------------------------------------------------
 Sun Sep 20 10:32:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove useless keyring (outofdate key).
