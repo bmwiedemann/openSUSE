@@ -76,4 +76,12 @@
   a just-freed pointer [bnc#908875]</comment>
     <requestid>264450</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>e263e02161d3db257219f96c044b1c19</srcmd5>
+    <version>1.0.0</version>
+    <time>1603545276</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843036</requestid>
+  </revision>
 </revisionlist>
