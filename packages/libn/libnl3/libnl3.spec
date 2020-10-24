@@ -1,7 +1,7 @@
 #
 # spec file for package libnl3
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,21 +28,12 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
 
 #Git-Clone:	https://github.com/thom311/libnl/
-#Mailing-List:	http://lists.infradead.org/mailman/listinfo/libnl
 Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz
 Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz.sig
 Source3:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison >= 2.4
-BuildRequires:  flex >= 2.5.19
-BuildRequires:  pkgconfig >= 0.21
-# Only used if python/ subdir would be built, which is not and
-# is marked as 
-# "NOTE: The python wrapper is experimental and may or may not work."
-# BuildRequires:  python-devel >= 2.6
-%if 0%{?suse_version}
 BuildRequires:  fdupes
-%endif
+BuildRequires:  flex >= 2.5.19
 
 %description
 The libnl suite is a collection of libraries providing APIs to
@@ -101,15 +92,15 @@ demonstrated.
 %endif
 
 %prep
-%setup -qn libnl-%version
+%autosetup -p1 -n libnl-%version
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} pkglibdir="%_libdir/%lname"
+%make_build pkglibdir="%_libdir/%lname"
 
 %install
-b="%buildroot";
-make install DESTDIR="%buildroot" pkglibdir="%_libdir/%lname"
+b="%buildroot"
+%make_install pkglibdir="%_libdir/%lname"
 find "$b" -iname "*.la" -delete
 %if !%with_tools
 rm -Rf "$b/%_sysconfdir/libnl"
@@ -123,12 +114,10 @@ rm -Rf "$b/%_sbindir" "$b/%_mandir/man8"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libnl*.so.200*
 %_libdir/%lname
 
 %files devel
-%defattr(-,root,root)
 %_includedir/%name
 %_libdir/libnl*.so
 %_libdir/pkgconfig/*
@@ -136,12 +125,10 @@ rm -Rf "$b/%_sbindir" "$b/%_mandir/man8"
 %if %with_tools
 
 %files -n libnl-config
-%defattr(-,root,root)
 %dir %_sysconfdir/libnl
 %config %_sysconfdir/libnl/*
 
 %files -n libnl-tools
-%defattr(-,root,root)
 %_mandir/man*/*
 %_bindir/*
 %endif
