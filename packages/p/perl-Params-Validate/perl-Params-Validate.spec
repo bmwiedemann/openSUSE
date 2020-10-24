@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Params-Validate
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-Params-Validate
-Version:        1.29
+Version:        1.30
 Release:        0
 %define cpan_name Params-Validate
 Summary:        Validate method/function parameters
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Params-Validate/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.422700
 BuildRequires:  perl(Module::Implementation)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
@@ -56,7 +56,7 @@ certain methods, or applying validation callbacks to arguments.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
+perl Build.PL installdirs=vendor optimize="%{optflags}"
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -68,7 +68,7 @@ certain methods, or applying validation callbacks to arguments.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md README.md TODO
+%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO
 %license LICENSE
 
 %changelog

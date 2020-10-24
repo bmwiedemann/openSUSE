@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 19 03:09:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30
+   see /usr/share/doc/packages/perl-Params-Validate/Changes
+
+  1.30    2020-10-18
+
+  - Support pure Perl builds via the standard incantation of `perl Build.PL
+    --pureperl_only`. The `--pp` flag is still supported. Implemented by Diab
+    Jerius. GH @17.
+
+-------------------------------------------------------------------
 Wed Jun 14 06:05:11 UTC 2017 - coolo@suse.com
 
 - updated to 1.29
