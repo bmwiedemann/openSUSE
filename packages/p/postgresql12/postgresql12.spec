@@ -19,7 +19,7 @@
 %define pgversion 12.4
 %define pgmajor 12
 %define pgsuffix %pgmajor
-%define buildlibs 1
+%define buildlibs 0
 %define tarversion %{pgversion}
 
 ### CUT HERE ###

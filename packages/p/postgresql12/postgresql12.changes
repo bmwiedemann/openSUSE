@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:34:28 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Stop building the mini and lib packages as they are now coming
+  from postgresql13.
+
+-------------------------------------------------------------------
 Thu Aug 13 12:01:34 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 12.4:
