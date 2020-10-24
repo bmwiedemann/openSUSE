@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 23:40:05 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
+
+- Update to version 0.8.3:
+ + Fixed updating playing widget song details in small cover mode.
+ + Fixed file extension when transcoding songs.
+ + Fixed updating album cover to collection in edit tag dialog when pressing save.
+ + Fixed songs with empty artist in collection.
+ + Fixed possible crashes with stream discovery.
+ + Fixed setting engine state to null.
+ + Fixed tagreader crash with empty APE tags.
+ + Fixed a gstreamer memory leak. 
+
+-------------------------------------------------------------------
 Tue Oct 13 16:09:48 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Update to version 0.8.2:

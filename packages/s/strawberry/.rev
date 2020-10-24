@@ -661,4 +661,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>841603</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>488840179cf3fb1a2253026550c6e97e</srcmd5>
+    <version>0.8.3</version>
+    <time>1603545518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.3:
+ + Fixed updating playing widget song details in small cover mode.
+ + Fixed file extension when transcoding songs.
+ + Fixed updating album cover to collection in edit tag dialog when pressing save.
+ + Fixed songs with empty artist in collection.
+ + Fixed possible crashes with stream discovery.
+ + Fixed setting engine state to null.
+ + Fixed tagreader crash with empty APE tags.
+ + Fixed a gstreamer memory leak. 
+</comment>
+    <requestid>843705</requestid>
+  </revision>
 </revisionlist>
