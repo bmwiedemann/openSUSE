@@ -148,6 +148,8 @@ Patch12:        0001-Guard-glPointSize-with-GL_ES_VERSION_3_0.patch
 Patch13:        0001-Fix-PyVTKAddFile_-function-signature-mismatch.patch
 # PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/merge_requests/7115
 Patch14:        0001-Replace-invalid-GL_LINE-with-GL_LINES-for-glDrawArra.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.kitware.com/vtk/vtk/-/issues/18033
+Patch15:        vtk-freetype-2.10.3-replace-FT_CALLBACK_DEF.patch
 BuildRequires:  R-base-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.4
@@ -404,6 +406,7 @@ languages.
 %endif
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.

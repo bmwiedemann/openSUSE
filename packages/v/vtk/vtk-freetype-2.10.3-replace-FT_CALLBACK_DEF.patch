@@ -1,0 +1,37 @@
+Index: VTK-9.0.1/Rendering/FreeType/vtkFreeTypeTools.cxx
+===================================================================
+--- VTK-9.0.1.orig/Rendering/FreeType/vtkFreeTypeTools.cxx
++++ VTK-9.0.1/Rendering/FreeType/vtkFreeTypeTools.cxx
+@@ -378,7 +378,7 @@ FTC_CMapCache* vtkFreeTypeTools::GetCMap
+ }
+ 
+ //----------------------------------------------------------------------------
+-FT_CALLBACK_DEF(FT_Error)
++extern "C" FT_Error
+ vtkFreeTypeToolsFaceRequester(
+   FTC_FaceID face_id, FT_Library lib, FT_Pointer request_data, FT_Face* face)
+ {
+Index: VTK-9.0.1/Rendering/FreeTypeFontConfig/vtkFontConfigFreeTypeTools.cxx
+===================================================================
+--- VTK-9.0.1.orig/Rendering/FreeTypeFontConfig/vtkFontConfigFreeTypeTools.cxx
++++ VTK-9.0.1/Rendering/FreeTypeFontConfig/vtkFontConfigFreeTypeTools.cxx
+@@ -26,10 +26,8 @@
+ 
+ vtkStandardNewMacro(vtkFontConfigFreeTypeTools);
+ 
+-namespace
+-{
+ // The FreeType face requester callback:
+-FT_CALLBACK_DEF(FT_Error)
++extern "C" FT_Error
+ vtkFontConfigFreeTypeToolsFaceRequester(
+   FTC_FaceID face_id, FT_Library lib, FT_Pointer request_data, FT_Face* face)
+ {
+@@ -71,7 +69,6 @@ vtkFontConfigFreeTypeToolsFaceRequester(
+ 
+   return static_cast<FT_Error>(0);
+ }
+-} // end anon namespace
+ 
+ void vtkFontConfigFreeTypeTools::PrintSelf(ostream& os, vtkIndent indent)
+ {

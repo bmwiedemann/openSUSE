@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 14:06:35 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add vtk-freetype-2.10.3-replace-FT_CALLBACK_DEF.patch to fix
+  compilation with FreeType 2.10.3+
+
+-------------------------------------------------------------------
 Thu Jul 16 16:55:31 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.0.1:
