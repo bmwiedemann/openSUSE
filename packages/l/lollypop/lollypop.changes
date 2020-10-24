@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 24 11:00:58 UTC 2020 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.4:
+  * Fix an issue with equalizer (glgo#World/lollypop#2588).
+  * Use relative path in .m3u files if possible
+    (glgo#World/lollypop#2585).
+  * Fix duration for Last.FM searches.
+
+-------------------------------------------------------------------
 Thu Oct 22 17:18:33 UTC 2020 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.3:
