@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  5 14:18:31 UTC 2020 - pgajdos@suse.com
+
+- disable yet another tests [bsc#1177209]
+
+-------------------------------------------------------------------
 Tue Sep  8 08:26:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable tests failing often in OBS:

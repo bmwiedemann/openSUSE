@@ -72,7 +72,28 @@ Joblib can handle large data and has specific optimizations for `numpy` arrays.
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# turn off unreliable tests across architectures
+# https://bugzilla.suse.com/show_bug.cgi?id=1177209
+# they have been seen failing for the first time on following
+# architectures:
+#  s390x:
+#  test_hash_numpy_noncontiguous
+#  test_hashes_are_different_between_c_and_fortran_contiguous_arrays
+#  test_hashes_stay_the_same_with_numpy_objects
+#  test_non_contiguous_array_pickling
+#  x86_64:
+#  test_multithreaded_parallel_termination_resource_tracker_silent
+#  aarch64:
+#  test_resource_tracker_silent_when_reference_cycles
+#  test_child_raises_parent_exits_cleanly
+DISABLED_TESTS="test_hash_numpy_noncontiguous or \
+                test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
+                test_hashes_stay_the_same_with_numpy_objects or \
+                test_non_contiguous_array_pickling or \
+                test_multithreaded_parallel_termination_resource_tracker_silent or \
+                test_resource_tracker_silent_when_reference_cycles or \
+                test_child_raises_parent_exits_cleanly"
+%pytest -k "not ($DISABLED_TESTS)"
 
 %files %{python_files}
 %license LICENSE.txt
