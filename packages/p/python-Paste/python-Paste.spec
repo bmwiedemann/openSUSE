@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Paste
-Version:        3.4.3
+Version:        3.4.6
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cdent/paste
 Source:         https://files.pythonhosted.org/packages/source/P/Paste/Paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch

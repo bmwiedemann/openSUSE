@@ -300,4 +300,15 @@
   * Patch auth ticket to be python3 compatible.</comment>
     <requestid>824325</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c3bc96686a88ef15de92e827d202c4b8</srcmd5>
+    <version>3.4.6</version>
+    <time>1603645803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.6:
+  * Explicit pkg_resource dependency to easy packaging.
+  * Remove deprecated dependencies paste/fixture.py.
+  * Update setup.py to work with setuptools 50.1.0+</comment>
+    <requestid>840343</requestid>
+  </revision>
 </revisionlist>

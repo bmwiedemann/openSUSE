@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  9 04:10:19 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.6:
+  * Explicit pkg_resource dependency to easy packaging.
+  * Remove deprecated dependencies paste/fixture.py.
+  * Update setup.py to work with setuptools 50.1.0+ 
+
+-------------------------------------------------------------------
 Tue Aug  4 12:08:43 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.4.3:
