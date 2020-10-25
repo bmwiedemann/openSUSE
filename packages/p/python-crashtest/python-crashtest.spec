@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-crashtest
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Manage Python errors with ease
 License:        MIT

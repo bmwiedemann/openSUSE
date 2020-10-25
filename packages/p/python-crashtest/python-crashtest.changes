@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:49:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.3.1:
+  * Fixed an error when trying to retrieve the line of a frame with no context 
+
+-------------------------------------------------------------------
 Thu May  7 10:02:41 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.3.0
