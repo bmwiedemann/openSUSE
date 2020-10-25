@@ -1788,6 +1788,7 @@
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcapi20-3" supportstatus="unsupported"/> <!-- reason: dvd:capi4hylafax -->
     <package name="libcares2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libcbor0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libccolamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->

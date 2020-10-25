@@ -3302,6 +3302,7 @@ unsorted:
   - filemanager-actions-lang 
   - filesystem-media 
   - filezilla 
+  - filezilla-devel 
   - filezilla-lang 
   - fillets-ng 
   - fillets-ng-data 
@@ -9216,7 +9217,6 @@ unsorted:
   - libcasacore5-openmpi2 
   - libcasacore5-openmpi3 
   - libcasacore5-openmpi4 
-  - libcblas3 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
   - libccrtp3 
@@ -9855,7 +9855,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla9 
+  - libfilezilla10 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12572,7 +12572,6 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
-  - libruby2_6-2_6 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -19275,6 +19274,8 @@ unsorted:
   - postgresql12-timescaledb 
   - postgresql13-devel 
   - postgresql13-devel-mini 
+  - postgresql13-pg_cron 
+  - postgresql13-pg_cron-llvmjit 
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-pltcl 
@@ -20475,6 +20476,7 @@ unsorted:
   - python3-chest 
   - python3-cilium-microscope 
   - python3-cinderclient 
+  - python3-cirq: [x86_64] 
   - python3-ciscoconfparse 
   - python3-cl 
   - python3-clang 
@@ -21580,8 +21582,8 @@ unsorted:
   - python3-numpy-devel 
   - python3-numpy-gnu-hpc 
   - python3-numpy-gnu-hpc-devel 
-  - python3-numpy_1_19_0-gnu-hpc 
-  - python3-numpy_1_19_0-gnu-hpc-devel 
+  - python3-numpy_1_19_2-gnu-hpc 
+  - python3-numpy_1_19_2-gnu-hpc-devel 
   - python3-numpydoc 
   - python3-nwdiag 
   - python3-nxapi-plumbing 
@@ -23364,11 +23366,6 @@ unsorted:
   - ruby-selinux 
   - ruby-xapian 
   - ruby-yui 
-  - ruby2.6 
-  - ruby2.6-devel 
-  - ruby2.6-devel-extra 
-  - ruby2.6-doc 
-  - ruby2.6-doc-ri 
   - ruby2.7-devel 
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
