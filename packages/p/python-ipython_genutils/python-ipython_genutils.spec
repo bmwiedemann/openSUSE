@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipython_genutils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,14 +23,15 @@ Release:        0
 Summary:        Vestigial utilities from IPython
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://ipython.org
+URL:            http://ipython.org
 Source:         https://files.pythonhosted.org/packages/source/i/ipython_genutils/ipython_genutils-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python
+Requires:       python-nose
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 

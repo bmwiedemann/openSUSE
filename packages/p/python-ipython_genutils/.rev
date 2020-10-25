@@ -17,4 +17,12 @@ This version adds a specific requirement for Python 2.7, since it won't even bui
     <comment>1</comment>
     <requestid>483880</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f19367e77340347d1aa628bb4ca8856a</srcmd5>
+    <version>0.2.0</version>
+    <time>1603645698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834615</requestid>
+  </revision>
 </revisionlist>
