@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:07:17 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.11.0:
+  * Updated Plotly.js to version 1.56.0. See the plotly.js CHANGELOG
+    for more information. These changes are reflected in the
+    auto-generated plotly.graph_objects module.
+
+-------------------------------------------------------------------
 Sat Sep 12 19:58:52 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.10.0:
