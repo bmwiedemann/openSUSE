@@ -445,4 +445,15 @@
     <comment></comment>
     <requestid>826942</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>57916a014ddc46c1684b34f14a36ba58</srcmd5>
+    <version>0.23.2</version>
+    <time>1603645815</time>
+    <user>dimstar_suse</user>
+    <comment>- Add assert_allclose-for-FP-comparison.patch to overcome
+  equality comparison for FP numbers
+  (gh#scikit-learn/scikit-learn#18031).
+</comment>
+    <requestid>841689</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 22:49:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add assert_allclose-for-FP-comparison.patch to overcome
+  equality comparison for FP numbers
+  (gh#scikit-learn/scikit-learn#18031).
+
+-------------------------------------------------------------------
 Sat Aug 15 16:57:34 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

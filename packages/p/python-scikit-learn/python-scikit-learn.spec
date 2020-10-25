@@ -25,6 +25,9 @@ Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit-learn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM assert_allclose-for-FP-comparison.patch gh#scikit-learn/scikit-learn#18031 mcepl@suse.com
+# Use assert_allclose instead of equality in FP comparison
+Patch0:         assert_allclose-for-FP-comparison.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
@@ -58,11 +61,19 @@ Scikit-learn is a python module for machine learning built on top of
 scipy.
 
 %prep
-%setup -q -n scikit-learn-%{version}
+%autosetup -p1 -n scikit-learn-%{version}
+
 rm -rf sklearn/.pytest_cache
 
 %build
 %python_build
+%{python_expand for d in %{buildroot}%{$python_sitelib} %{buildroot}%{$python_sitearch}; do \
+if [ -d $d ]; then
+  # find $d -name \*.pyc -delete
+  $python -m compileall $d
+  $python -O -m compileall $d
+fi
+done }
 
 %install
 %python_install
