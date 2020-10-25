@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 17 11:01:12 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.5.2:
+  * Fixed an unexpected page stretching in "Edit style" dialog
+  * Fixed an issue with audio export on Windows, previously
+    exporting to .FLAC or .OGG could result in an empty file that
+    cannot be played
+  * Fixed an issue of harmony playback preferences. Previously, the
+    real value of "Chord symbol playback" was not taken into
+    account until the first toggle of this setting
+  * Fixed a potential crash that could occur when resizing the
+    Piano Roll
+
+-------------------------------------------------------------------
 Wed Oct  7 18:53:36 UTC 2020 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.5.1:
