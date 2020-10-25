@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:04:32 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.30.0:
+  * Support SubgraphCallable in str_graph() (GH#4148) Mads
+    R. B. Kristensen
+  * Handle exceptions in BatchedSend (GH#4135) Tom Augspurger
+  * Fix for missing : in autosummary docs (GH#4143) Gil Forsyth
+  * Limit GPU metrics to visible devices only (GH#3810) Jacob
+    Tomlinson
+
+-------------------------------------------------------------------
 Mon Oct  5 20:16:12 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.29.0:
