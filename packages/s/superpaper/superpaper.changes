@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 14:33:27 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 2.1.0.
+  * New features
+    * Span groups: span wallpapers on groups of displays.
+    * New tool to set the physical display positions for advanced 
+      span. Enables accurate fine tuning of dragged positions.
+    * Control system wallpaper span setting. No more need to check
+      the setting in the system settings.
+  * Fixes
+    * Fix out of order wallpaper changes when user and slideshow 
+      acted concurrently
+    * Support capitalized file extensions
+    * Default locale is now system locale
+- Clean up spec file, update python-system_hotkey dependency.
+
+-------------------------------------------------------------------
 Sat May 23 02:31:38 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix dependencies. 

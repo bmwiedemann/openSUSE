@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           superpaper
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        An advanced multi monitor wallpaper manager
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module Pillow >= 7.0.0}
 BuildRequires:  %{python_module numpy >= 1.18.0}
 BuildRequires:  %{python_module screeninfo >= 0.6.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module system_hotkey >= 1.0.2}
+BuildRequires:  %{python_module system_hotkey >= 1.0.3}
 BuildRequires:  %{python_module wxPython}
 BuildRequires:  %{python_module xcffib >= 0.8.0}
 BuildRequires:  %{python_module xpybutil >= 0.0.5}
@@ -72,7 +72,7 @@ sed -i 's|share/icons/hicolor/256x256/apps|%{_datadir}/pixmaps|' setup.py
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/%{name}
+%{python_sitelib}/*egg-info
 
 %changelog
