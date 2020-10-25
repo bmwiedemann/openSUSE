@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:05:16 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * changed .rst to .md
+
+- update to version 0.4.7.1:
+  * Fix Python 2.7 regression (#45).
+
+- changes from version 0.4.7:
+  * Fix bug unpacking nested, structured dtypes (#42).
+
+- changes from version 0.4.6.1:
+  * Deprecate support for msgpack < 1.0.0 (#41).
+
+- changes from version 0.4.6:
+  * Set default use_bin_type and raw params of Packer and Unpacker
+    classes the same as in msgpack (#39).
+  * Convert docs to Markdown.
+
+-------------------------------------------------------------------
 Fri Apr 24 15:46:49 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

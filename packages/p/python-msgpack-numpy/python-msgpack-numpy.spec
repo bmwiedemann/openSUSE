@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msgpack-numpy
-Version:        0.4.5
+Version:        0.4.7.1
 Release:        0
 Summary:        Numpy data serialization library using msgpack
 License:        BSD-3-Clause
@@ -58,8 +58,8 @@ sed -i -e '/^#!\//, 1d' msgpack_numpy.py
 %python_exec -B tests.py
 
 %files %{python_files}
-%doc AUTHORS.rst CHANGES.rst README.rst
-%license LICENSE.rst
+%doc AUTHORS.md CHANGES.md README.md
+%license LICENSE.md
 %{python_sitelib}/msgpack_numpy-%{version}-py*.egg-info
 %{python_sitelib}/msgpack_numpy.*
 %pycache_only %{python_sitelib}/__pycache__
