@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.4.3
+Version:        1.5.1
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause

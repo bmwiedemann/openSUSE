@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:39:27 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- udpate to 1.5.1:
+  * Added ARM64 wheels (manylinux2014).
+  * Added support for ``__fspath__``.
+  * Dropped support for Python 3.4.
+
+-------------------------------------------------------------------
 Wed Apr 15 11:16:17 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.4.3

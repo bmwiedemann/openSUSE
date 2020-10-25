@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>794168</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>46226c4d9e13dcd497a32e6dfe3d649f</srcmd5>
+    <version>1.5.1</version>
+    <time>1603645726</time>
+    <user>dimstar_suse</user>
+    <comment>- udpate to 1.5.1:
+  * Added ARM64 wheels (manylinux2014).
+  * Added support for ``__fspath__``.
+  * Dropped support for Python 3.4.</comment>
+    <requestid>835176</requestid>
+  </revision>
 </revisionlist>
