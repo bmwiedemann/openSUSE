@@ -55,4 +55,15 @@
     <comment></comment>
     <requestid>809396</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f2cc43e8d242daba1e46f438541b967</srcmd5>
+    <version>1.1.1</version>
+    <time>1603645718</time>
+    <user>dimstar_suse</user>
+    <comment>-  update to 1.1.1:
+   * Fix exception on DNS timeout
+   * Mention Punycode in the README
+   * Flake8 fixes</comment>
+    <requestid>835159</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-email_validator
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
