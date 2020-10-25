@@ -26,7 +26,7 @@
 %endif
 %bcond_without python2
 Name:           python-arrow%{?psuffix}
-Version:        0.15.8
+Version:        0.16.0
 Release:        0
 Summary:        Better dates and times for Python
 License:        Apache-2.0
@@ -35,13 +35,13 @@ Source:         https://files.pythonhosted.org/packages/source/a/arrow/arrow-%{v
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-dateutil
+Requires:       python-python-dateutil >= 2.7.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow == %{version}}
 BuildRequires:  %{python_module chai}
 BuildRequires:  %{python_module dateparser}
-BuildRequires:  %{python_module dateutil}
+BuildRequires:  %{python_module dateutil >= 2.7.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
