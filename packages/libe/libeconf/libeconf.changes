@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:16:36 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- explicitly BuildRequire: pkgconfig for /usr/lib/rpm/pkgconfigdeps.sh
+  On TW it's pulled in implicitly by libxcrypt-devel which is not the
+  case on 15.2
+
+-------------------------------------------------------------------
 Fri Jul 10 21:15:09 UTC 2020 - rbrown@suse.com
 
 - Update to version 0.3.8+git20200710.5126fff:

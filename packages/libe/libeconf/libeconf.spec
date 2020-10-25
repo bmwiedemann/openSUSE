@@ -27,6 +27,8 @@ URL:            https://github.com/openSUSE/libeconf
 Source:         libeconf-%{version}.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  meson
+# for /usr/lib/rpm/pkgconfigdeps.sh
+BuildRequires:  pkgconfig
 
 %description
 Enhanced config file parser, which merges config files placed
