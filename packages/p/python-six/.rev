@@ -395,4 +395,12 @@
  - Pull request #331: Optimize `six.ensure_str` and `six.ensure_binary`.</comment>
     <requestid>811025</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>552cfc26a0eb0850e7c28a3aaeba194f</srcmd5>
+    <version>1.15.0</version>
+    <time>1603645821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843620</requestid>
+  </revision>
 </revisionlist>

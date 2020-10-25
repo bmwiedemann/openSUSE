@@ -103,7 +103,7 @@ fi
 %license LICENSE
 %doc README.rst CHANGES
 %{python_sitelib}/six.py*
-%pycache_only %{python3_sitelib}/__pycache__/*
+%pycache_only %{python_sitelib}/__pycache__/*
 %{python_sitelib}/six-%{version}-py*.egg-info
 %else
 %files -n python-six-doc

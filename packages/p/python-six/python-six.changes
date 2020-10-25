@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:35:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use %pycache_only %python_sitelib instead of %python3_sitelib
+  * fixes gh#openSUSE/python-rpm-macros#64#issuecomment-715373348
+
+-------------------------------------------------------------------
 Tue Jun  2 17:11:49 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.15.0:
