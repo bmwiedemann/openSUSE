@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 10 19:08:06 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * updated versions of required packages
+
+- update to version 2.0.2:
+  * Fix DataFrameMapper drop_cols attribute naming consistency with
+    scikit-learn and initialization.
+
+- changes from version 2.0.1:
+  * Added an option to explicitly drop columns.
+
+- changes from version 2.0.0:
+  * Deprecated support for Python < 3.6.
+  * Deprecated support for old versions of scikit-learn, pandas and
+    numpy. Please check setup.py for minimum requirement.
+  * Removed CategoricalImputer, cross_val_score and GridSearchCV. All
+    these functionality now exists as part of scikit-learn. Please use
+    SimpleImputer instead of CategoricalImputer. Also Cross validation
+    from sklearn now supports dataframe so we don't need to use cross
+    validation wrapper provided over here.
+  * Added NumericalTransformer for common numerical
+    transformations. Currently it implements log and log1p
+    transformation.
+  * Added prefix and suffix options. See examples above. These are
+    usually helpful when using gen_features.
+  * Added drop_cols argument to DataframeMapper. This can be used to
+    explicitly drop columns
+
+-------------------------------------------------------------------
 Mon Jan  6 15:11:42 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Drop python2 subpackage due to dependencies dropping python2.

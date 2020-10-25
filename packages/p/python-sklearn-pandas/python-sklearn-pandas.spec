@@ -1,7 +1,7 @@
 #
 # spec file for package python-sklearn-pandas
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-sklearn-pandas
-Version:        1.8.0
+Version:        2.0.2
 Release:        0
 Summary:        Pandas integration with sklearn
 License:        Zlib AND BSD-2-Clause
@@ -29,18 +29,18 @@ Source:         https://files.pythonhosted.org/packages/source/s/sklearn-pandas/
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.6.1
-Requires:       python-pandas >= 0.11.0
-Requires:       python-scikit-learn >= 0.15.0
-Requires:       python-scipy >= 0.14
+Requires:       python-numpy >= 1.18.1
+Requires:       python-pandas >= 1.0.5
+Requires:       python-scikit-learn >= 0.23.0
+Requires:       python-scipy >= 1.4.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module numpy >= 1.6.1}
-BuildRequires:  %{python_module pandas >= 0.11.0}
+BuildRequires:  %{python_module numpy >= 1.18.1}
+BuildRequires:  %{python_module pandas >= 1.0.5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scikit-learn >= 0.15.0}
-BuildRequires:  %{python_module scipy >= 0.14}
+BuildRequires:  %{python_module scikit-learn >= 0.23.0}
+BuildRequires:  %{python_module scipy >= 1.4.1}
 # /SECTION
 %python_subpackages
 
