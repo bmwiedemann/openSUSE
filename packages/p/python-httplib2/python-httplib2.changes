@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:26:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.18.1:
+  * explicit build-backend workaround for pip build isolation bug
+  * IMPORTANT security vulnerability CWE-93 CRLF injection
+  Force %xx quote of space, CR, LF characters in uri.
+  * Ship test suite in source dist
+
+-------------------------------------------------------------------
 Wed Apr 29 10:54:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.17.3:

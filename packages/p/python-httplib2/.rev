@@ -370,4 +370,16 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>800676</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5c82eff08ec9ee6cdcc8a42421852807</srcmd5>
+    <version>0.18.1</version>
+    <time>1603645814</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.18.1:
+  * explicit build-backend workaround for pip build isolation bug
+  * IMPORTANT security vulnerability CWE-93 CRLF injection
+  Force %xx quote of space, CR, LF characters in uri.
+  * Ship test suite in source dist</comment>
+    <requestid>841414</requestid>
+  </revision>
 </revisionlist>
