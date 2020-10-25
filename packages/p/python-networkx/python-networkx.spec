@@ -25,7 +25,7 @@ Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
-Patch0:         disable-test-failing-in-i586.patch
+Patch0:         0001-Replace-hash-function-for-test-of-weighted-astar.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module matplotlib >= 3.1}

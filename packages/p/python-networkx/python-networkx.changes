@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:47:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream that fixes gh#networkx/networkx#4203)
+  * 0001-Replace-hash-function-for-test-of-weighted-astar.patch
+- Drop patch that is not needed anymore:
+  * disable-test-failing-in-i586.patch
+
+-------------------------------------------------------------------
 Fri Sep 11 06:08:25 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.5:
