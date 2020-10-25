@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:13:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 8.5.0:
+  * windowed_complete() (thanks to MarcinKonowalczyk)
+  Changes to existing itertools:
+  * The is_sorted() implementation was improved (thanks to cool-RR)
+  * The groupby_transform() now accepts a reducefunc parameter.
+  * The last() implementation was improved (thanks to brianmaissy)
+  * Various documentation fixes (thanks to craigrosie, samuelstjean, PiCT0)
+  * The tests for distinct_combinations() were improved (thanks to Minabsapi)
+
+-------------------------------------------------------------------
 Thu Aug  6 08:16:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 8.4.0:

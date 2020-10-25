@@ -228,4 +228,19 @@
    * The test configuration for mypy was updated (thanks to blueyed)</comment>
     <requestid>824641</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4fbd5a00b8113ba2b772cc7bd99fecd7</srcmd5>
+    <version>8.5.0</version>
+    <time>1603645702</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.5.0:
+  * windowed_complete() (thanks to MarcinKonowalczyk)
+  Changes to existing itertools:
+  * The is_sorted() implementation was improved (thanks to cool-RR)
+  * The groupby_transform() now accepts a reducefunc parameter.
+  * The last() implementation was improved (thanks to brianmaissy)
+  * Various documentation fixes (thanks to craigrosie, samuelstjean, PiCT0)
+  * The tests for distinct_combinations() were improved (thanks to Minabsapi)</comment>
+    <requestid>834878</requestid>
+  </revision>
 </revisionlist>
