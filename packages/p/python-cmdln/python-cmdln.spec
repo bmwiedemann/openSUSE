@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmdln
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        An improved cmd.py for Writing Multi-command Scripts and Shells
 License:        MIT
 Group:          Development/Libraries/Python
-Url:            https://github.com/trentm/cmdln
+URL:            https://github.com/trentm/cmdln
 Source:         https://files.pythonhosted.org/packages/source/c/cmdln/cmdln-%{version}.zip
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
@@ -60,6 +60,6 @@ chmod -x examples/*
 %files %{python_files}
 %doc LICENSE.txt docs/ examples/
 %{python_sitelib}/cmdln*
-%pycache_only %{python3_sitelib}/__pycache__/*
+%pycache_only %{python_sitelib}/__pycache__/*
 
 %changelog

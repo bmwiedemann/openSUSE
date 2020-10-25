@@ -10,6 +10,5 @@ option processing, and make having good command documentation easier.</descripti
   <devel project="devel:languages:python" package="python-cmdln"/>
   <debuginfo>
     <disable/>
-    <disable/>
   </debuginfo>
 </package>
