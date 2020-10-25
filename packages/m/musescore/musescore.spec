@@ -21,7 +21,7 @@
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Musescore code license is GPL-2.0

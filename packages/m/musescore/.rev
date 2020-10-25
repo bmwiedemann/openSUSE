@@ -260,4 +260,21 @@
 - Update use-qtmake-qt5.patch</comment>
     <requestid>840146</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f9afcda4d71078a9ece0e3f17de39f79</srcmd5>
+    <version>3.5.2</version>
+    <time>1603645630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.2:
+  * Fixed an unexpected page stretching in &quot;Edit style&quot; dialog
+  * Fixed an issue with audio export on Windows, previously
+    exporting to .FLAC or .OGG could result in an empty file that
+    cannot be played
+  * Fixed an issue of harmony playback preferences. Previously, the
+    real value of &quot;Chord symbol playback&quot; was not taken into
+    account until the first toggle of this setting
+  * Fixed a potential crash that could occur when resizing the
+    Piano Roll</comment>
+    <requestid>842292</requestid>
+  </revision>
 </revisionlist>
