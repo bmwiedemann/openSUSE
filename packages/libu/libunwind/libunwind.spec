@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(atomic_ops)
-ExclusiveArch:  %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64
+ExclusiveArch:  %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64 s390x
 
 %description
 A C programming interface (API) to determine the call chain of a program.

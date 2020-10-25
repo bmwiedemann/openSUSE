@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 20 20:01:36 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Enable s390x for building
+
+-------------------------------------------------------------------
 Wed May 13 08:53:38 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Fix compilation with -fno-common [bsc#1171549]
