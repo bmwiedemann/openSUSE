@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 19:11:36 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.3.0
+  * Background worker support by Bertrand Drouvot
+  * Audit table support by Bertrand Drouvot
+  * PostgreSQL 13 support by Alexander Kukushkin
+  * Schedule jobs by name
+  * Fixes a bug that could cause cron.schedule to crash with long
+    schedules
+  * Fixes a bug that could cause cron.schedule to get into an infinite
+    loop
+  * Fixes a bug that caused overlapping runs not to start
+- adding postgresql13 to _multibuild
+
+-------------------------------------------------------------------
 Thu Jun  4 17:08:45 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Disable LLVM on SLE builds.

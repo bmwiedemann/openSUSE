@@ -21,13 +21,13 @@
 %define         sname pg_cron
 %define         pg_libdir %(pg_config --pkglibdir)
 %define         pg_share %(pg_config --sharedir)
-%if 0%{?is_opensuse} && ("%{pgversion}" == "postgresql11" || "%{pgversion}" == "postgresql12") && 0%{?suse_version} >= 1500
+%if 0%{?is_opensuse} && ("%{pgversion}" == "postgresql11" || "%{pgversion}" == "postgresql12" || "%{pgversion}" == "postgresql13") && 0%{?suse_version} >= 1500
 %bcond_without  llvm
 %else
 %bcond_with     llvm
 %endif
 Name:           %{pgversion}-%{sname}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        PostgreSQL module for simple job schedule
 License:        PostgreSQL

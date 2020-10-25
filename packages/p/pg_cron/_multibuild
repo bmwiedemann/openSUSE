@@ -4,4 +4,5 @@
   <package>postgresql10</package>
   <package>postgresql11</package>
   <package>postgresql12</package>
+  <package>postgresql13</package>
 </multibuild>

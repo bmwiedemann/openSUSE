@@ -39,4 +39,23 @@
     <comment></comment>
     <requestid>811587</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ed7e7027ea91f26022b63175e48e70ba</srcmd5>
+    <version>1.3.0</version>
+    <time>1603645567</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0
+  * Background worker support by Bertrand Drouvot
+  * Audit table support by Bertrand Drouvot
+  * PostgreSQL 13 support by Alexander Kukushkin
+  * Schedule jobs by name
+  * Fixes a bug that could cause cron.schedule to crash with long
+    schedules
+  * Fixes a bug that could cause cron.schedule to get into an infinite
+    loop
+  * Fixes a bug that caused overlapping runs not to start
+- adding postgresql13 to _multibuild
+</comment>
+    <requestid>841073</requestid>
+  </revision>
 </revisionlist>
