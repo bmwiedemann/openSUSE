@@ -1,7 +1,0 @@
-%rb_default_ruby_suffix ruby2.6
-
-%rb_default_ruby        ruby26
-%rb_default_ruby_abi    ruby:2.6.0
-
-%rb_build_versions      %rb_default_ruby
-%rb_build_ruby_abis     %rb_default_ruby_abi
