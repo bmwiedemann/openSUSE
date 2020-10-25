@@ -107,4 +107,14 @@
     <comment>- Fix fdupes call</comment>
     <requestid>784574</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>80e3ef6c2402a5e3ce3c9e5b915fd26d</srcmd5>
+    <version>4.7.6</version>
+    <time>1603645722</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.7.6:
+ - Fixed an issue with some versions of the ``wheel`` dist
+   failing because of being unable to detect the license file.</comment>
+    <requestid>835171</requestid>
+  </revision>
 </revisionlist>

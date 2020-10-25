@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:34:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.7.6:
+ - Fixed an issue with some versions of the ``wheel`` dist
+   failing because of being unable to detect the license file.
+
+-------------------------------------------------------------------
 Fri Mar 13 08:40:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix fdupes call

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-multidict
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 Summary:        Multidict implementation
 License:        Apache-2.0
