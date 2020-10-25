@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:29:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add cblas build dependency, otherwise numpy uses naive internal
+  implementations for some blas operations, mitigates boo#1177260.
+- Add libopenblas recommends. To actually use openblas instead of
+  netlib BLAS/LAPACK, update-alternatives has to be used.
+- Remove .pytest_cache from the build_root
+
+-------------------------------------------------------------------
+Wed Sep 30 07:13:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required memory to avoid test failures
+
+-------------------------------------------------------------------
+Tue Sep 22 16:40:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix upgrade from older distro versions which did not package
+  f2py using update-alternatives (catched by openQA, boo#1176832).
+
+-------------------------------------------------------------------
+Fri Sep 18 08:19:50 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Build only HPC version with OpenBLAS, use standard BLAS/LAPACK
+  for non-HPC instead.
+- Create a macro %ver for the package version number next to %_ver
+  to help keep both in sync.
+
+-------------------------------------------------------------------
+Sat Sep 12 19:55:00 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.19.2:
+  * #16959: TST: Change aarch64 to arm64 in travis.yml.
+  * #16998: MAINT: Configure hypothesis in np.test() for
+     determinism,...
+  * #17000: BLD: pin setuptools < 49.2.0
+  * #17015: ENH: Add NumPy declarations to be used by Cython 3.0+
+  * #17125: BUG: Remove non-threadsafe sigint handling from fft
+     calculation
+  * #17243: BUG: core: fix ilp64 blas dot/vdot/... for strides > int32
+     max
+  * #17244: DOC: Use SPDX license expressions with correct license
+  * #17245: DOC: Fix the link to the quick-start in the old API
+     functions
+  * #17272: BUG: fix pickling of arrays larger than 2GiB
+
+-------------------------------------------------------------------
 Sat Jul 25 15:35:20 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

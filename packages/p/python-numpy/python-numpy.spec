@@ -17,28 +17,22 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_19_0
+%define ver 1.19.2
+%define _ver 1_19_2
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
  %bcond_with hpc
- %if 0%{?sle_version} == 120300 && !0%{?is_opensuse}
-  %bcond_with openblas
- %else
-  %ifarch armv6l s390 s390x m68k riscv64
-   %bcond_with openblas
-  %else
-   %bcond_without openblas
-  %endif
- %endif
+ %bcond_with openblas
 %endif
 %if "%{flavor}" == "gnu-hpc"
  %bcond_without hpc
- %bcond_without openblas
 %endif
 %if "%{flavor}" == "gnu7-hpc"
  %define c_f_ver 7
  %bcond_without hpc
+%endif
+%if %{with hpc}
  %bcond_without openblas
 %endif
 %if 0%{?sle_version} == 120300
@@ -70,7 +64,8 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 Name:           %{package_name}
-Version:        1.19.1
+# set %%ver and %%_ver instead above
+Version:        %ver
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -106,8 +101,15 @@ BuildRequires:  gcc-gfortran
 BuildRequires:  openblas-devel > 0.3.4
  %else
 BuildRequires:  blas-devel
+BuildRequires:  cblas-devel
 BuildRequires:  lapack-devel
+# openblas has significantly better performance for some operations
+Recommends:     libopenblas_pthreads0
  %endif
+# Last version which packaged %%{_bindir}/f2py without update-alternatives
+# Protect it from substitution
+%define oldpy_numpy python-numpy
+Conflicts:      %{oldpy_numpy} <= 1.12.0
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
@@ -142,6 +144,7 @@ Requires:       python-devel
 Requires:       openblas-devel
 %else
 Requires:       blas-devel
+Requires:       cblas-devel
 Requires:       lapack-devel
 %endif
 %else
@@ -254,10 +257,13 @@ pushd testing
 # boo#1148173 gh#numpy/numpy#14438
 %ifarch ppc64 ppc64le
 %define skiptest -k "not test_generalized_sq"
+%pytest_arch -n auto --pyargs numpy %{buildroot}%{python_sitearch}/numpy -k "test_generalized_sq" || true
 %endif
 %pytest_arch -n auto --pyargs numpy %{buildroot}%{python_sitearch}/numpy %{?skiptest}
 popd
+rm -Rf %{buildroot}%{python_sitearch}/numpy/.pytest_cache
 %endif
+
 %if %{without hpc}
 %post
 %python_install_alternative f2py
