@@ -42,4 +42,20 @@
     (see #61, #62)</comment>
     <requestid>704698</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b574ba93b1e886e85dedd6ece425611e</srcmd5>
+    <version>20.0.1</version>
+    <time>1603645735</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.0.1:
+  * CPython 3.7 and 3.8 and PyPy3 added to test matrix
+  * Hyperlink now has type hints and they are now exported per
+  [PEP 561](https://www.python.org/dev/peps/pep-0561/).
+  * Several bugs related to hidden state were fixed, making it so that all data
+  on a `URL` object (including `rooted` and `uses_netloc`) is reflected by and
+  consistent with its textual representation.
+  This does mean that sometimes these constructor arguments are ignored, if it
+  would create invalid or unparseable URL text.</comment>
+    <requestid>838268</requestid>
+  </revision>
 </revisionlist>
