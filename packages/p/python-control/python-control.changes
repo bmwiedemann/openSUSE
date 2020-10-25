@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 11 18:39:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip a test family on Leap because of segfaults in numpy 
+
+-------------------------------------------------------------------
 Thu Jul 23 09:56:18 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - moved Pillow requirement to matplotlib package 

@@ -83,7 +83,11 @@ filterwarnings =
     ignore:.*matrix subclass:PendingDeprecationWarning
     ignore:.*scipy:DeprecationWarning
 EOL
-%pytest
+%if 0%{?suse_version} < 1550
+# segfault: free() error in Leap numpy library
+%define donttest -k "not test_clean_part"
+%endif
+%pytest %{?donttest}
 
 %files %{python_files}
 %doc ChangeLog README.rst
