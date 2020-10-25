@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 21 10:37:04 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.25.0
+  * New features:
+    - Added fz::invoker to asynchronously call functions to run in
+      a specific thread independent of the caller's thread
+  * Bugfixes and minor changes:
+    - Added additional checks to fz::buffer to leave the buffer in
+      a valid state in out-of-memory situations and to prevent
+      mis-use
+    - Detect a particular socket buffer tuning issue under Linux
+      where setting a receiver buffer size shrinks the window scale
+      factor
+    - Reordered a few data members to reduce the amount of 
+      structure padding due to alignment
+
+-------------------------------------------------------------------
 Mon Sep  7 17:22:25 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.24.1

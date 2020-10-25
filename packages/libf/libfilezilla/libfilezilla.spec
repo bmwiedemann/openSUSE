@@ -16,11 +16,11 @@
 #
 
 
-%define major		9
+%define major		10
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.24.1
+Version:        0.25.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -32,12 +32,17 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8-c++
+%endif
 BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gnutls) >= 3.5.7
+BuildRequires:  pkgconfig(hogweed) >= 3.1
 BuildRequires:  pkgconfig(nettle) >= 3.1
 
 %description
@@ -90,6 +95,10 @@ Provides translations for the "%{name}" package.
 %patch0
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC="%{_bindir}/gcc-8"
+export CXX="%{_bindir}/g++-8"
+%endif
 autoreconf -fi
 %configure --disable-static
 %make_build
