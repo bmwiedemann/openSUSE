@@ -17,7 +17,7 @@
 
 
 Name:           filezilla
-Version:        3.50.0
+Version:        3.51.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.24.1
+BuildRequires:  pkgconfig(libfilezilla) >= 0.25.0
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -71,6 +71,14 @@ Some of the main features are:
  * SFTP support.
  * Upload/Download queue.
  * Drag&Drop support.
+
+%package devel
+Summary:        Development files for filezilla
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+
+%description devel
+This are development files for filezilla.
 
 %lang_package
 
@@ -131,11 +139,11 @@ autoreconf -fi
 %check
 %make_build check
 
-%post
+%post -p /sbin/ldconfig
 %desktop_database_post
 %icon_theme_cache_post
 
-%postun
+%postun -p /sbin/ldconfig
 %desktop_database_postun
 %icon_theme_cache_postun
 
@@ -147,16 +155,21 @@ autoreconf -fi
 %{_bindir}/fzputtygen
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
+%dir %{_datadir}/icons/hicolor/480x480
+%dir %{_datadir}/icons/hicolor/480x480/apps
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-%{_datadir}/icons/hicolor/480x480
-%{_datadir}/icons/hicolor/480x480/apps
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
+%{_libdir}/libfzclient-private-%{version}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
 %{_mandir}/man1/fzputtygen.1%{?ext_man}
 %{_mandir}/man1/fzsftp.1%{?ext_man}
 %{_mandir}/man5/fzdefaults.xml.5%{?ext_man}
+
+%files devel
+%{_libdir}/libfzclient-private.la
+%{_libdir}/libfzclient-private.so
 
 %files lang -f %{name}.lang
 

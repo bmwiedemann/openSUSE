@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 21 11:34:01 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.51.0:
+  * Bugfixes and minor changes:
+    - Fixed import of sites protected with a different master password
+    - Directory comparison now works correctly with non-default file name sorting settings
+    - Small search dialog fixes
+- Changes from 3.51.0-rc1:
+  * Bugfixes and minor changes:
+    - Refactored how the queue stores transfer flags
+    - Refactored internals to be more modular
+    - Linux: Disable receive buffer tuning if it results in unexpected consequences
+    - Distinguish between Cancel and No in the file changed dialog
+    - Small fixes to changing or disabling a master password
+
+-------------------------------------------------------------------
 Mon Sep  7 17:24:05 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.50.0:
