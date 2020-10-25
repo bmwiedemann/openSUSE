@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 19 15:42:41 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initail package release.
+- Ignore test dev_tools/bash_scripts_test.py because it cannot be
+  reproduce and has no effect on package validity. 
+  gh#quantumlib/Cirq#3154
