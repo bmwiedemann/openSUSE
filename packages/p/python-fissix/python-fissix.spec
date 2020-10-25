@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fissix
-Version:        20.5.1
+Version:        20.8.0
 Release:        0
 Summary:        Backport of lib2to3, with enhancements
 License:        Python-2.0
@@ -27,7 +27,9 @@ URL:            https://github.com/jreese/fissix
 Source:         https://files.pythonhosted.org/packages/source/f/fissix/fissix-%{version}.tar.gz
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pytest >= 6.0.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
@@ -39,13 +41,19 @@ Backport of latest lib2to3, with enhancements.
 
 %prep
 %setup -q -n fissix-%{version}
+sed -i '1{/^#!/d}' fissix/pgen2/token.py
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/fissix/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md

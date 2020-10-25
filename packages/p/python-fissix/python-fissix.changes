@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 15:33:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to 20.8.0
+  *  include dict in iterating context 
+  *  Fixed reporting some unchanged files as needing modification
+
+-------------------------------------------------------------------
 Wed Jul  1 06:10:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 20.5.1:
