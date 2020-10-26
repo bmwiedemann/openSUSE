@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:03:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 8.4.0
+  - Remove the unused coding style modules
+  - Update master for stable/ussuri
+  - requirements: Drop os-testr
+  - [goal] Migrate testing to ubuntu focal
+  - Remove use of deprecated LOG.warn
+  - Add py38 package metadata
+  - Make test-setup.sh compatible with mysql8
+  - Remove translation sections from setup.cfg
+  - Switch to newer openstackdocstheme and reno versions
+  - Bump default tox env from py37 to py38
+  - Set create_constraint=True for boolean constraint test
+  - Modernize use of table.count() with func.count()
+  - Align contributing doc with oslo's policy
+  - Fix hacking min version to 3.0.1
+  - Fix pygments style
+  - Add Python3 victoria unit tests
+  - Imported Translations from Zanata
+  - Bump bandit version
+  - Add release notes links to doc index
+
+-------------------------------------------------------------------
 Tue May 12 09:50:47 UTC 2020 - cloud-devel@suse.de
 
 - update to version 8.1.0

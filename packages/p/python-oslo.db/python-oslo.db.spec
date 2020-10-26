@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.db
-Version:        8.1.0
+Version:        8.4.0
 Release:        0
 Summary:        OpenStack oslo.db library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.db
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-8.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.db/oslo.db-8.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyMySQL
 BuildRequires:  python3-alembic >= 0.9.6
@@ -40,7 +40,6 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-reno
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  python3-sqlalchemy-migrate >= 0.11.0
 BuildRequires:  python3-stestr
@@ -94,7 +93,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo database handling library.
 
 %prep
-%autosetup -p1 -n oslo.db-8.1.0
+%autosetup -p1 -n oslo.db-8.4.0
 %py_req_cleanup
 
 %build
