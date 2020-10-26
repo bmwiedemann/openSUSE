@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:25:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.05
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.05      2020-10-21 13:00:44Z
+      - Bump all versions to 5.05 in order to remove various version mismatches.
+        (GH #77) (Olaf Alders)
+      - Add a simple test case for an ipv6 host (GH#66) (Olaf Alders)
+
+-------------------------------------------------------------------
 Fri Jan 11 06:36:27 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.76
