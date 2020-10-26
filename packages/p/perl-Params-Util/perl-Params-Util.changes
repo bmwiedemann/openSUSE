@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:26:18 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.101
+   see /usr/share/doc/packages/perl-Params-Util/Changes
+
+  1.101	2020-10-22
+  	- fix inconsistent license conditions in meta data and documentation
+  	  and add appropriate LICENSE files. Fixes RT#133586.
+
+-------------------------------------------------------------------
+Thu Oct 22 03:20:38 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.100
+   see /usr/share/doc/packages/perl-Params-Util/Changes
+
+-------------------------------------------------------------------
 Fri Mar 16 09:27:34 UTC 2012 - lars@linux-schulserver.de
 
 - update to 1.07:
@@ -96,4 +112,3 @@ Sun Jun 21 20:27:19 CEST 2009 - chris@computersalat.de
 Sun Nov 30 07:39:09 CET 2008 - lars@linux-schulserver.de
 
 - initial version 0.35
-
