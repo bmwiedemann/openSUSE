@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-cli
-Version:        2.1.6
+Version:        2.1.8
 Release:        0
 %define mod_name mixlib-cli
 %define mod_full_name %{mod_name}-%{version}
