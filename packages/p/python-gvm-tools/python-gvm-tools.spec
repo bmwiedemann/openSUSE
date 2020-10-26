@@ -20,14 +20,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-gvm-tools
-Version:        2.1.0
+Version:        20.10.1
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
 URL:            https://github.com/greenbone/gvm-tools/
-Source:         https://github.com/greenbone/gvm-tools/archive/v2.1.0.tar.gz#/gvm-tools-%{version}.tar.gz
-Source98:       https://github.com/greenbone/gvm-tools/releases/download/v%{version}/gvm-tools-%{version}.tar.gz.sig
-Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/gvm-tools.keyring
+Source:         https://github.com/greenbone/gvm-tools/archive/v%{version}.tar.gz#/gvm-tools-%{version}.tar.gz
+#Source98:       https://github.com/greenbone/gvm-tools/releases/download/v%%{version}/v%%{version}.tar.gz.asc#/gvm-tools-%%{version}.tar.gz.sig
+#Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/gvm-tools.keyring
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-dephell-rpm-macros
