@@ -17,13 +17,13 @@
 
 
 Name:           python-saharaclient
-Version:        3.1.0
+Version:        3.2.1
 Release:        0
 Summary:        Client library for OpenStack Sahara API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-saharaclient/python-saharaclient-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-saharaclient/python-saharaclient-3.2.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-mock
 BuildRequires:  python3-osc-lib >= 2.0.0
@@ -35,7 +35,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests >= 2.14.2
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testrepository
 BuildArch:      noarch
@@ -46,7 +45,7 @@ Python client library for interacting with OpenStack Sahara API.
 %package -n python3-saharaclient
 Summary:        Client library for OpenStack Sahara API
 Group:          Development/Languages/Python
-Requires:       python3-Babel >= 2.3.4
+Requires:       python3-Babel
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstackclient >= 5.2.0
 Requires:       python3-osc-lib >= 2.0.0
@@ -72,7 +71,7 @@ BuildRequires:  python3-openstackdocstheme
 Python client library for interacting with OpenStack Sahara API.
 
 %prep
-%autosetup -p1 -n python-saharaclient-3.1.0
+%autosetup -p1 -n python-saharaclient-3.2.1
 %py_req_cleanup
 
 %build
@@ -82,7 +81,7 @@ Python client library for interacting with OpenStack Sahara API.
 %{py3_install}
 
 # Build HTML docs and man page
-PYTHONPATH=. PBR_VERSION=3.1.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=3.2.1 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 

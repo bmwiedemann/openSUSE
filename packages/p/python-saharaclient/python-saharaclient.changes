@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:19:10 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.2.1
+  - Use unittest.mock instead of third party mock
+  - Update master for stable/ussuri
+  - Switch to newer openstackdocstheme and reno versions
+  - Ussuri contributor docs community goal
+  - Remove Babel requirement
+  - Bump default tox env from py37 to py38
+  - Fix hacking min version to 3.0.1
+  - [goal] Migrating testing to Ubuntu Focal
+  - drop mock from lower-constraints
+  - Remove pypy job
+  - Add py38 package metadata
+  - Add Python3 victoria unit tests
+
+-------------------------------------------------------------------
 Tue May 12 10:05:31 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.0
