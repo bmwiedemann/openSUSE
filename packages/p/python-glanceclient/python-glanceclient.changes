@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:13:40 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.2.2
+  - Update test certificates to use strong signing
+  - Update master for stable/ussuri
+  - Fail gracefully when MD5 is unavailable
+  - Fix hacking min version to 3.0.1
+  - [goal] Migrate testing to ubuntu focal
+  - Add Python3 victoria unit tests
+  - Fix SyntaxWarning with Python 3.8
+  - Use unittest.mock instead of third party mock
+  - Fixes "stores" property added to the image
+  - Pass --all-stores, --allow-failure as bool to API
+  - drop mock from lower-constraints
+  - Add py38 package metadata
+  - Bump default tox env from py37 to py38
+  - Pass Global Request ID on with session client
+  - Switch to newer openstackdocstheme and reno versions
+  - Do not use the six library.
+  - Stop to use the __future__ module.
+  - Do not use the six library in the tests.
+  - Remove F403, F812 and F821 from the ignorelist in tox.ini
+
+-------------------------------------------------------------------
 Tue May 12 09:55:53 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.1
