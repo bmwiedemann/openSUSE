@@ -33,7 +33,7 @@
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
 Name:           rabbitmq-server
-Version:        3.8.7
+Version:        3.8.9
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 20 09:30:39 UTC 2020 - Gabriele Santomaggio <g.santomaggio@gmail.com>
+
+- Update to RabbitMQ 3.8.9
+- RabbitMQ 3.8.9 is a maintenance release.
+  It focuses on bug fixes and usability improvements.
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.9
+- This release no longer supports Erlang 21.3.
+- This release is compatible with Erlang 23
+
+- Update to RabbitMQ 3.8.8
+- RabbitMQ 3.8.8 is a maintenance release.
+  It focuses on bug fixes and usability improvements.
+- Full release notes: https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.8.8
+- This is the last RabbitMQ release to support Erlang 21.3.
+- This release is compatible with Erlang 23
+
+-------------------------------------------------------------------
 Tue Oct  6 11:31:49 UTC 2020 - Dominik Heidler <dheidler@suse.de>
 
 - Add requirement for rabbitmq-server-plugins (boo#1174068)
