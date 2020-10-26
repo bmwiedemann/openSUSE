@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1603368860.d92dff65
+Version:        4.6.1603469837.f54bdeab
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -67,7 +67,7 @@ Source0:        %{name}-%{version}.tar.xz
 %define yamllint_requires %{nil}
 %endif
 # The following line is generated from dependencies.yaml
-%define test_base_requires %main_requires perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::More) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 procps python3-setuptools qemu qemu-tools qemu-x86
+%define test_base_requires %main_requires perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Exception) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::Mojo) perl(Test::Most) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 procps python3-setuptools qemu qemu-tools qemu-x86
 # The following line is generated from dependencies.yaml
 %define test_version_only_requires perl(Mojo::IOLoop::ReadWriteProcess) >= 0.28
 # The following line is generated from dependencies.yaml

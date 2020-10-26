@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:32:03 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1603469837.f54bdeab:
+  * Consider Test::Most a module enabling strictures
+  * Use OpenQA::Test::TimeLimit in some tests, especially ones invoking QEMU
+  * git subrepo pull (merge) external/os-autoinst-common
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Thu Oct 22 12:14:31 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1603368860.d92dff65:
