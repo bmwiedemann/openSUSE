@@ -208,7 +208,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # ========================================================================
 %if "%{name}" == "qemu-linux-user"
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel-static
@@ -261,7 +260,6 @@ BuildRequires:  cyrus-sasl-devel
 %if %{build_x86_firmware_from_source}
 BuildRequires:  dos2unix
 %endif
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -291,7 +289,6 @@ BuildRequires:  libnfs-devel >= 1.9.3
 %ifnarch %arm s390x
 BuildRequires:  libnuma-devel
 %endif
-BuildRequires:  libpcap-devel
 BuildRequires:  libpixman-1-0-devel >= 0.21.8
 %ifarch x86_64
 BuildRequires:  libpmem-devel
@@ -348,7 +345,6 @@ BuildRequires:  bc
 BuildRequires:  qemu-arm = %{qemuver}
 BuildRequires:  qemu-audio-alsa = %{qemuver}
 BuildRequires:  qemu-audio-pa = %{qemuver}
-BuildRequires:  qemu-audio-sdl = %{qemuver}
 BuildRequires:  qemu-block-curl = %{qemuver}
 BuildRequires:  qemu-block-dmg = %{qemuver}
 BuildRequires:  qemu-block-gluster = %{qemuver}
@@ -378,7 +374,6 @@ BuildRequires:  qemu-skiboot = %{qemuver}
 BuildRequires:  qemu-tools = %{qemuver}
 BuildRequires:  qemu-ui-curses = %{qemuver}
 BuildRequires:  qemu-ui-gtk = %{qemuver}
-BuildRequires:  qemu-ui-sdl = %{qemuver}
 BuildRequires:  qemu-ui-spice-app = %{qemuver}
 BuildRequires:  qemu-vgabios = %{sbver}
 BuildRequires:  qemu-x86    = %{qemuver}
@@ -400,7 +395,6 @@ Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
 Recommends:     qemu-ui-gtk
-Recommends:     qemu-ui-sdl
 Recommends:     qemu-ui-spice-app
 Recommends:     qemu-x86
 %ifarch ppc ppc64 ppc64le
@@ -433,8 +427,9 @@ Suggests:       qemu-lang
 Recommends:     qemu-ksm = %{qemuver}
 Suggests:       qemu-microvm
 Suggests:       qemu-vhost-user-gpu
-Provides:       qemu-audio-oss = %{qemuver}
 Obsoletes:      qemu-audio-oss < %{qemuver}
+Obsoletes:      qemu-audio-sdl < %{qemuver}
+Obsoletes:      qemu-ui-sdl < %{qemuver}
 
 # ------------------------------------------------------------------------
 %define generic_qemu_description QEMU provides full machine emulation and cross architecture usage. It closely\
@@ -594,16 +589,6 @@ Release:        0
 %description audio-pa
 This package contains a module for Pulse Audio based audio support for QEMU.
 
-%package audio-sdl
-Summary:        SDL based audio support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description audio-sdl
-This package contains a module for SDL based audio support for QEMU.
-
 %package block-curl
 Summary:        cURL block support for QEMU
 Group:          System/Emulators/PC
@@ -747,16 +732,6 @@ Release:        0
 
 %description ui-gtk
 This package contains a module for doing GTK based UI for QEMU.
-
-%package ui-sdl
-Summary:        SDL based UI support for QEMU
-Group:          System/Emulators/PC
-Version:        %{qemuver}
-Release:        0
-%{qemu_module_conflicts}
-
-%description ui-sdl
-This package contains a module for doing SDL based UI for QEMU.
 
 %package ui-spice-app
 Summary:        Spice UI support for QEMU
@@ -1148,7 +1123,7 @@ cd %mybuilddir
 %endif
 	--enable-pie \
 	--enable-docs \
-	--audio-drv-list="pa alsa sdl" \
+	--audio-drv-list="pa alsa" \
 	--enable-attr \
 	--disable-auth-pam \
 	--enable-bochs \
@@ -1223,8 +1198,8 @@ cd %mybuilddir
 	--enable-replication \
 	--disable-safe-stack \
 	--disable-sanitizers \
-	--enable-sdl \
-	--enable-sdl-image \
+	--disable-sdl \
+	--disable-sdl-image \
 	--enable-seccomp \
 	--enable-sheepdog \
 	--enable-smartcard \
@@ -1638,7 +1613,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
 
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09
+for X in 00 01 02 03 04 05 06 07 08 09 10 11 12
 do
   ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
 done
@@ -1754,6 +1729,9 @@ fi
 %_datadir/%name/forsplits/07
 %_datadir/%name/forsplits/08
 %_datadir/%name/forsplits/09
+%_datadir/%name/forsplits/10
+%_datadir/%name/forsplits/11
+%_datadir/%name/forsplits/12
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
@@ -2008,11 +1986,6 @@ fi
 %dir %_libdir/%name
 %_libdir/%name/audio-pa.so
 
-%files audio-sdl
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/audio-sdl.so
-
 %files block-curl
 %defattr(-, root, root)
 %dir %_libdir/%name
@@ -2094,11 +2067,6 @@ fi
 %defattr(-, root, root)
 %dir %_libdir/%name
 %_libdir/%name/ui-gtk.so
-
-%files ui-sdl
-%defattr(-, root, root)
-%dir %_libdir/%name
-%_libdir/%name/ui-sdl.so
 
 %files ui-spice-app
 %defattr(-, root, root)
