@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 15 20:44:47 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 82.0
+  * https://www.mozilla.org/en-US/firefox/82.0/releasenotes/
+  MFSA 2020-45 (bsc#1177872)
+  * CVE-2020-15969 (bmo#1666570)
+    Use-after-free in usersctp
+  * CVE-2020-15254 (bmo#1668514)
+    Undefined behavior in bounded channel of crossbeam rust crate
+  * CVE-2020-15680 (bmo#1658881)
+    Presence of external protocol handlers could be determined
+    through image tags
+  * CVE-2020-15681 (bmo#1666568)
+    Multiple WASM threads may have overwritten each others' stub
+    table entries
+  * CVE-2020-15682 (bmo#1636654)
+    The domain associated with the prompt to open an external
+    protocol could be spoofed to display the incorrect origin
+  * CVE-2020-15683 (bmo#1576843, bmo#1656987, bmo#1660954,
+    bmo#1662760, bmo#1663439, bmo#1666140)
+    Memory safety bugs fixed in Firefox 82 and Firefox ESR 78.4
+  * CVE-2020-15684 (bmo#1653764, bmo#1661402, bmo#1662259,
+    bmo#1664257)
+    Memory safety bugs fixed in Firefox 82
+- requires
+  * NSPR 4.29
+  * NSS 3.57
+
+-------------------------------------------------------------------
 Thu Oct  1 20:00:27 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 81.0.1

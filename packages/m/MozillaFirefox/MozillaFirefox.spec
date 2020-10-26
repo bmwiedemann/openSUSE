@@ -29,9 +29,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          81
-%define mainver        %major.0.1
-%define orig_version   81.0.1
+%define major          82
+%define mainver        %major.0
+%define orig_version   82.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -100,8 +100,8 @@ BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.28
-BuildRequires:  mozilla-nss-devel >= 3.56
+BuildRequires:  mozilla-nspr-devel >= 4.29
+BuildRequires:  mozilla-nss-devel >= 3.57
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.21.0
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -109,7 +109,6 @@ BuildRequires:  python-libxml2
 BuildRequires:  python36
 %else
 BuildRequires:  python3 >= 3.5
-BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 BuildRequires:  rust >= 1.43
@@ -559,8 +558,13 @@ ac_add_options --enable-official-branding
 %endif
 EOF
 
+%ifarch %ix86
+%define njobs 1
+%else
+%define njobs 0%{?jobs:%jobs}
+%endif
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
-    | xargs -n 1 %{?jobs:-P %jobs} -I {} /bin/sh -c '
+    | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
         locale=$1
         cp ${MOZCONFIG}_LANG ${MOZCONFIG}_$locale
         sed -i "s|obj_LANG|obj_$locale|" ${MOZCONFIG}_$locale
