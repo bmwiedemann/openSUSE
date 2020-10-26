@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:42 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Use unittest.mock instead of third party lib
+  - Improve OSC test coverage
+  - Graduate share replication feature
+  - Drop install_command usage in tox
+  - Add py38 package metadata
+  - Implement the first half of OSC share snapshots commands
+  - Implement OSC share resize command
+  - Fix hacking min version to 3.0.1
+  - Add initial documentation for OSC
+  - Add commands for share server migration
+  - Switch to newer openstackdocstheme and reno versions
+  - [goal] Migrate testing to ubuntu focal
+  - Update master for stable/ussuri
+  - Migrate functional job to native zuulv3
+  - Replace "tenant" terminology with "project"
+  - TrivialFix: Remove unnecessary future imports
+  - Add noqa markup to intentionally redefined methods
+  - [ussuri][goal] Change contributor guide
+  - Implement OSC share quota commands
+  - Add Python3 victoria unit tests
+
+-------------------------------------------------------------------
 Tue May 12 09:59:44 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.1.0
