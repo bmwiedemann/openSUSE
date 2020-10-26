@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.middleware
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.middleware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-4.0.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.middleware/oslo.middleware-4.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-WebOb >= 1.8.0
@@ -38,7 +38,7 @@ BuildRequires:  python3-oslo.serialization
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-six
 BuildRequires:  python3-statsd >= 3.2.1
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
@@ -62,7 +62,7 @@ Requires:       python3-oslo.context >= 2.19.2
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization
 Requires:       python3-oslo.utils >= 3.33.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-statsd >= 3.2.1
 Requires:       python3-stevedore >= 1.20.0
 
@@ -88,7 +88,7 @@ for limiting size/connection etc.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.middleware-4.0.2
+%autosetup -p1 -n oslo.middleware-4.1.1
 %py_req_cleanup
 
 %build

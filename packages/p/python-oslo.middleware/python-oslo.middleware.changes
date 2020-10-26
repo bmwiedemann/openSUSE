@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:27 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Remove the unused coding style modules
+  - Update master for stable/ussuri
+  - Stop to use the __future__ module.
+  - Remove translation sections from setup.cfg
+  - Fix pygments style
+  - Cleanup py27 support
+  - Add py38 package metadata
+  - Fix hacking min version to 3.0.1
+  - Add Python3 victoria unit tests
+  - Align contributing doc with oslo's policy
+  - Bump bandit version
+  - Add release notes links to doc index
+  - Switch to newer openstackdocstheme and reno versions
+  - Drop use of six
+  - Bump default tox env from py37 to py38
+
+-------------------------------------------------------------------
 Tue May 12 09:51:18 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.2
