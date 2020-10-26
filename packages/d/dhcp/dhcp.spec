@@ -290,7 +290,7 @@ install -d -m0755 %{buildroot}%{_fillupdir}
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}%{_sysconfdir}
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/dev
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/%{_lib}
-install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}%{_localstatedir}/run
+install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/run
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/{dhcp,dhcp6}/db
 # move the dhclient binary to /sbin
 mv -f %{buildroot}%{_sbindir}/dhclient %{buildroot}/sbin/
@@ -490,15 +490,13 @@ fi
 %dir %{_localstatedir}/lib/dhcp%{_sysconfdir}
 %dir %{_localstatedir}/lib/dhcp/dev
 %dir %{_localstatedir}/lib/dhcp/%{_lib}
-%dir %{_localstatedir}/lib/dhcp%{_localstatedir}
-%dir %{_localstatedir}/lib/dhcp%{_localstatedir}/run
+%dir %{_localstatedir}/lib/dhcp/run
 %attr(755,dhcpd,root) %dir %{_localstatedir}/lib/dhcp/db
 %dir %{_localstatedir}/lib/dhcp6
 %dir %{_localstatedir}/lib/dhcp6%{_sysconfdir}
 %dir %{_localstatedir}/lib/dhcp6/dev
 %dir %{_localstatedir}/lib/dhcp6/%{_lib}
-%dir %{_localstatedir}/lib/dhcp6%{_localstatedir}
-%dir %{_localstatedir}/lib/dhcp6%{_localstatedir}/run
+%dir %{_localstatedir}/lib/dhcp6/run
 %attr(755,dhcpd,root) %dir %{_localstatedir}/lib/dhcp6/db
 %{_mandir}/man8/dhcpd.8%{?ext_man}
 %{_mandir}/man5/dhcpd.conf.5%{?ext_man}

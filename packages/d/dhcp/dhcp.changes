@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 21 17:06:32 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Complete the /var/run -> /run migration by renaming
+  /var/lib/dhcp/var/run accordingly (boo#1177951).
+
+-------------------------------------------------------------------
 Thu Sep 17 14:55:25 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Don't create dhclient.leases in %post. It affects transactional

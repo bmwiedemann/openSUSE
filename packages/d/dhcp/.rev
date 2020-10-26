@@ -1097,4 +1097,13 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
 - /var/run is legacy -&gt; /run should be used instead</comment>
     <requestid>835242</requestid>
   </revision>
+  <revision rev="122" vrev="19">
+    <srcmd5>418f1fb725b2b7938c0d5579e2581f98</srcmd5>
+    <version>4.3.5</version>
+    <time>1603724867</time>
+    <user>dimstar_suse</user>
+    <comment>- Complete the /var/run -&gt; /run migration by renaming
+  /var/lib/dhcp/var/run accordingly (boo#1177951).</comment>
+    <requestid>843259</requestid>
+  </revision>
 </revisionlist>
