@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 24 12:10:24 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.13
+  * Removed warnings and use uniform warning suppression
+  * Switched Khornos Headers to OpenCL3.0
+  * Added OpenCL 3.0 support
+  * Fix warning in gcc10
+  * Updated loader and headers to support
+    clSetContextDestructorCallback.
+  * Call clGetDeviceIDs directly through the dispatch table
+- Drop patch:
+  * ocl-icd-gcc10.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Mon Aug 31 19:03:27 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - added patch markups to specfile for better documentation

@@ -17,15 +17,13 @@
 
 
 Name:           ocl-icd
-Version:        2.2.12
+Version:        2.2.13
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
 URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIx-UPSTREAM ocl-icd-gcc10.patch dimstar@opensuse.org -- Fix build with gcc10
-Patch0:         ocl-icd-gcc10.patch
 # PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
 Patch1:         n_UsrShare.patch
 BuildRequires:  libtool
