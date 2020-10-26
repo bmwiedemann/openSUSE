@@ -116,4 +116,12 @@
   - Update TOX/UPPER_CONSTRAINTS_FILE for stable/ussuri</comment>
     <requestid>825327</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6b9dc694038d1022694a18547abf0f3</srcmd5>
+    <version>1.5.0</version>
+    <time>1603725459</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841224</requestid>
+  </revision>
 </revisionlist>

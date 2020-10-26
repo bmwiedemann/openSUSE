@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:18:44 UTC 2020 - cloud-devel@suse.de
+
+- update to version 1.5.0
+  - Import ABCs from 'collections.abc'
+  - Add QoSDelExtIdCommand
+  - Update master for stable/ussuri
+  - Handle index lookups in DbFindCommand
+  - Add "inactivity_probe" parameter to "enable_connection_uri"
+  - Add a cause description to "TimeoutException"
+  - Add "if_exists" parameter to "QoSDelCommand"
+  - Stop iterating on first matching QoS rule
+  - Remove translation sections from setup.cfg
+  - Allow read-only Commands to bypass txns in execute()
+  - Only create indices if connection is not running
+  - drop mock from lower-constraints
+  - Fix thread/threading change in unit test
+  - Fix hacking min version to 3.0.1
+  - Don't let an Exception in one event affect others
+  - Add indexed column support to ovsdbapp
+  - Change TestOvnNbIndex.test_find to use Port_Group
+  - Remove the dependency on the "mock" package
+  - Make it more obvious when errors are ignored
+  - Add MAC_Binding index lookup
+  - Tempest job inherits from Neutron tempest OVN job
+  - Switch to newer openstackdocstheme and reno versions
+  - Fix spurious test failure
+  - Accept a Row as a result in AddCommand
+  - Remove all usage of six library
+  - Update hacking for Python3
+  - Don't create new API instance in fixtures
+  - Fix pep8 job
+  - Correct variable names for test
+  - Add lock when calling idl.run()
+  - OVNNB backend: Fix LbDelCommand when using vip param
+
+-------------------------------------------------------------------
 Mon Aug 10 10:23:06 UTC 2020 - cloud-devel@suse.de
 
 - update to version 1.2.0
