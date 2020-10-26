@@ -1489,4 +1489,14 @@
   * Fix duration for Last.FM searches.</comment>
     <requestid>843763</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>24b0ebba147538cb62ee41c96c441612</srcmd5>
+    <version>1.4.5</version>
+    <time>1603725641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.5:
+  * Fix an issue with command line handler
+    (glgo#World/lollypop#2590).</comment>
+    <requestid>843878</requestid>
+  </revision>
 </revisionlist>
