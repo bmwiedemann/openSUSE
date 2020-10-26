@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-dogpile.cache
-Version:        0.9.2
+Version:        1.0.2
 Release:        0
 Summary:        A caching front-end based on the Dogpile lock
 License:        BSD-3-Clause
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module decorator >= 4.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module stevedore}
 Requires:       python-decorator >= 4.0.0
 BuildRequires:  %{python_module six}
 Requires:       python-six
