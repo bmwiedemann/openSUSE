@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:01 UTC 2020 - cloud-devel@suse.de
+
+- update to version 5.0.1
+  - Imported Translations from Zanata
+  - Stop to use the __future__ module.
+  - Update master for stable/ussuri
+  - Remove a couple more shim tests
+  - Add Babel aliases to get_available_languages
+  - Bump bandit version
+  - Switch to newer openstackdocstheme and reno versions
+  - Add Python3 victoria unit tests
+  - Add py38 package metadata
+  - Remove translation sections from setup.cfg
+  - Drop use of babel
+  - Remove the unused coding style modules
+  - Align contributing doc with oslo's policy
+  - Add release notes links to doc index
+  - Bump default tox env from py37 to py38
+  - Remove Message.translate
+
+-------------------------------------------------------------------
 Tue May 12 09:43:53 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.1
