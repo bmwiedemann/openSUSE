@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Oct 26 11:12:49 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Set CXX in setup.py, not in build-script
+
+-------------------------------------------------------------------
+Thu Oct 22 09:31:56 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Initial packaging of pmemkv-python
+  This is a part of jsc#sle-13670
