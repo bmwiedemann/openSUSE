@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>774978</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>dac26ba48c081d81c762f773c0b0743f</srcmd5>
+    <version>0.20</version>
+    <time>1603725598</time>
+    <user>dimstar_suse</user>
+    <comment>- Readd remote source URL
+</comment>
+    <requestid>843868</requestid>
+  </revision>
 </revisionlist>
