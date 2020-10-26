@@ -1,7 +1,7 @@
 #
 # spec file for package mtr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _group dialout
 Name:           mtr
 Version:        0.92
 Release:        0
@@ -37,12 +36,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 Requires(post): permissions
 Recommends:     bash-completion
-%if 0%{?suse_version} >= 1330
-Requires:       group(%{_group})
-Requires(pre):  group(%{_group})
-%else
-Requires(pre):  shadow
-%endif
 
 %description
 Mtr is a network diagnostic tool that combines Ping and Traceroute into
@@ -74,9 +67,6 @@ cp mtr.8 xmtr.8
 echo "%{version}" >.tarball-version
 autoreconf -fvi
 
-export CFLAGS="%{optflags} -fpie -fPIE"
-export LDFLAGS="-pie -Wl,-z,relro,-z,now"
-
 %configure \
 	--disable-silent-rules \
 	--enable-ipv6 \
@@ -103,31 +93,26 @@ install -Dm 644 img/mtr_icon.xpm %{buildroot}%{_includedir}/X11/pixmaps/xmtr_ico
 install -Dm 644 img/mtr_icon.xpm %{buildroot}%{_datadir}/pixmaps/xmtr_icon.xpm
 %suse_update_desktop_file -i xmtr Network Monitor
 
-%if 0%{?suse_version} < 1330
-%pre
-getent group %{_group} >/dev/null || %{_sbindir}/groupadd -r %{_group}
-%endif
-
 %post
-%set_permissions %{_sbindir}/mtr
-%set_permissions %{_sbindir}/xmtr
+%set_permissions %{_sbindir}/mtr-packet
 
 %verifyscript
-%verify_permissions -e %{_sbindir}/mtr
-%verify_permissions -e %{_sbindir}/xmtr
+%verify_permissions -e %{_sbindir}/mtr-packet
 
 %files
-%doc AUTHORS COPYING FORMATS NEWS README SECURITY TODO
+%doc AUTHORS FORMATS NEWS README SECURITY TODO
+%license COPYING
 %{_datadir}/bash-completion/completions/mtr
 %{_mandir}/man8/mtr-packet.8%{ext_man}
 %{_mandir}/man8/mtr.8%{ext_man}
-%verify(not mode caps) %attr(750,root,dialout) %{_sbindir}/mtr-packet
-%verify(not mode caps) %attr(750,root,dialout) %{_sbindir}/mtr
+%verify(not caps) %attr(755,root,root) %{_sbindir}/mtr-packet
+%attr(755,root,root) %{_sbindir}/mtr
 
 %files gtk
-%doc AUTHORS COPYING FORMATS NEWS README SECURITY TODO
+%doc AUTHORS FORMATS NEWS README SECURITY TODO
+%license COPYING
 %{_mandir}/man8/xmtr.8%{ext_man}
-%verify(not mode caps) %attr(750,root,dialout) %{_sbindir}/xmtr
+%attr(755,root,root) %{_sbindir}/xmtr
 %{_includedir}/X11/pixmaps
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 13:58:42 UTC 2020 - Malte Kraus <malte.kraus@suse.com>
+
+- Stop requiring group-membership in 'dialout' group to run mtr.
+  Only run chkstat for the mtr-packet binary in %post and %pre
+  since it's the only file that's supposed to be installed with
+  capabilities (depending on security profile).
+
+-------------------------------------------------------------------
 Tue Dec 18 16:46:39 UTC 2018 - mardnh@gmx.de
 
 - Create file ".tarball-version" so mtr shows the proper version
