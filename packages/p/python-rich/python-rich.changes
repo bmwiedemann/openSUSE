@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:36:02 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.1.0
+  * New option to render 'indent guides' in Syntax and pretty
+    printing.
+  * Added a max_length argument to pretty printing which will
+    truncate containers longer than a certain length.
+- Update to version 9.0.0
+  * Added a new pager method which will pipe any console output
+    in to the system 'pager'.
+  * There's also a new Bar renderable you could use to display a
+    chart in a table. See bars.py for an example of how to use it.
+
+-------------------------------------------------------------------
 Sat Sep 26 15:51:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.1.0
