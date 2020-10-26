@@ -17,16 +17,16 @@
 
 
 Name:           python-oslo.privsep
-Version:        2.1.1
+Version:        2.4.0
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.privsep
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.4.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-cffi >= 1.7.0
-BuildRequires:  python3-eventlet >= 0.18.2
+BuildRequires:  python3-cffi >= 1.14.0
+BuildRequires:  python3-eventlet >= 0.21.0
 BuildRequires:  python3-greenlet >= 0.4.14
 BuildRequires:  python3-mock
 BuildRequires:  python3-msgpack >= 0.6.0
@@ -36,7 +36,6 @@ BuildRequires:  python3-oslo.log >= 3.36.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildArch:      noarch
 
@@ -46,8 +45,8 @@ OpenStack library for privilege separation
 %package -n python3-oslo.privsep
 Summary:        OpenStack library for privilege separation
 Group:          Development/Languages/Python
-Requires:       python3-cffi >= 1.7.0
-Requires:       python3-eventlet >= 0.18.2
+Requires:       python3-cffi >= 1.14.0
+Requires:       python3-eventlet >= 0.21.0
 Requires:       python3-greenlet >= 0.4.14
 Requires:       python3-msgpack >= 0.6.0
 Requires:       python3-oslo.config >= 5.2.0
@@ -72,7 +71,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for oslo.privsep
 
 %prep
-%autosetup -p1 -n oslo.privsep-2.1.1
+%autosetup -p1 -n oslo.privsep-2.4.0
 %py_req_cleanup
 
 %build

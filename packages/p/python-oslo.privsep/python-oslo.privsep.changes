@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:42 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Add release notes links to doc index
+  - Bump default tox env from py37 to py38
+  - Remove translation sections from setup.cfg
+  - Add py38 package metadata
+  - Replace assertItemsEqual with assertCountEqual
+  - Undo the eventlet monkey patch for the privileged daemon
+  - [goal] Migrate testing to ubuntu focal
+  - Align contributing doc with oslo's policy
+  - Remove the unused coding style modules
+  - Fix pygments style
+  - Add Python3 victoria unit tests
+  - Fix hacking min version to 3.0.1
+  - Switch to newer openstackdocstheme and reno versions
+  - Bump bandit version
+  - Update master for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 09:47:16 UTC 2020 - cloud-devel@suse.de
 
 - removed 0001-Disable-logger-validation-during-unit-testing.patch
