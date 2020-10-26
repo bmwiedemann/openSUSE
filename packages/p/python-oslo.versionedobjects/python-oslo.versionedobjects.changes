@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:18:20 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - Update hacking for Python3
+  - Remove translation sections from setup.cfg
+  - Update master for stable/ussuri
+  - Bump default tox env from py37 to py38
+  - Switch to newer openstackdocstheme and reno versions
+  - Cap jsonschema 3.2.0 as the minimal version
+  - Stop to use the __future__ module.
+  - zuul: port the legacy multinode grenade job
+  - Add release notes links to doc index
+  - trivial: Mock warnings
+  - Imported Translations from Zanata
+  - Bump bandit version
+  - Align contributing doc with oslo's policy
+  - [goal] Migrate testing to ubuntu focal
+  - Add py38 package metadata
+  - Add Python3 victoria unit tests
+
+-------------------------------------------------------------------
 Tue May 12 09:50:26 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.0.2
