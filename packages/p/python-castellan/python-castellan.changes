@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:12:45 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.6.0
+  - Remove translation sections from setup.cfg
+  - Bump vault version
+  - Bump default tox env from py37 to py38
+  - add "verify_ssl_path" config for barbican key manager
+  - Fix hacking min version to 3.0.1
+  - Add to_dict and from_dict conversions to managed objects
+  - Update lower-constraints versions
+  - Add py38 package metadata
+  - drop mock from lower-constraints
+  - migrate testing to ubuntu focal
+  - Update hacking for Python3
+  - Add handler for Bad Request error during Vault authentication
+  - Replaces _get_api_version with config option
+  - Add Python3 victoria unit tests
+  - Switch to newer openstackdocstheme and reno versions
+  - Update master for stable/ussuri
+  - Use 'barbican_endpoint_type'config option to get endpoint from catalog
+  - zuul: use the new barbican simple-crypto job
+  - Some Cleanups
+  - Bump bandit version
+  - [goal] Migrate testing to ubuntu focal
+  - Use unittest.mock instead of third party mock
+
+-------------------------------------------------------------------
 Tue May 12 10:00:40 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.1
