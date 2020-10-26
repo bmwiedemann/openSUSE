@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:06:14 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.4.0
+  - Do not import "oslo.log" in the main module
+  - Fix some SSL tests for wsgi module under python 3
+  - Stop to use the __future__ module.
+  - Fix pygments style
+  - Use unittest.mock instead of third party mock
+  - Align contributing doc with oslo's policy
+  - Raise minimum version of eventlet to 0.25.2
+  - Fix wsgi/SSL/ipv6 tests for wsgi module under python 3
+  - Add py38 package metadata
+  - Remove the unused coding style modules
+  - Remove translation sections from setup.cfg
+  - Drop six usages
+  - Add release notes links to doc index
+  - Remove monotonic usage
+  - Monkey patch original current_thread _active
+  - Bump default tox env from py37 to py38
+  - Fix wsgi SSL tests for wsgi module under python 3
+  - Reactivate wsgi test related to socket option under python 3
+  - Cleanup py27 support
+  - [goal] Migrate testing to ubuntu focal
+  - Align tests with monkey patch original current_thread _active
+  - Update master for stable/ussuri
+  - Add Python3 victoria unit tests
+  - Switch to newer openstackdocstheme and reno versions
+  - Fix hacking min version to 3.0.1
+  - Bump bandit version
+
+-------------------------------------------------------------------
 Tue May 12 09:48:33 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.1.1
