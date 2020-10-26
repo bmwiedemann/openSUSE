@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 24 08:24:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to verssion 2.3.4
+  * Workaround bitarray.bitdiff deprecation
+
+-------------------------------------------------------------------
 Fri Aug 21 17:29:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.3.3:
