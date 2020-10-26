@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:16:18 UTC 2020 - cloud-devel@suse.de
+
+- update to version 0.50.0
+  - Add query parameter 'id' for security_groups
+  - Fix l-c testing for ubuntu focal
+  - Don't error if clouds.yaml is not readable
+  - Set BaseImageProxy.create_image validate_checksum default to False
+  - Add support for multiple image stores
+  - Add "numa_affinity_policy" attribute to "port"
+  - Fix a bogus error in config loader when using several args with dashes
+  - Refresh python versions
+  - Add compute microversion 2.6 and 2.8
+  - Update TOX_CONSTRAINTS_FILE for stable/victoria
+  - OpenStack port decorator variables
+  - Use unittest.mock instead of mock
+  - Strip self from incoming glance properties
+  - Tolerate images created with other means
+  - Fix issues found by latest flake8
+  - Update master for stable/ussuri
+  - Fix AttributeError exception during authorization
+  - Extend statistics reporting
+  - NIT: Fix application credential
+  - baremetal: support for volume connectors API
+  - Remove neutron-fwaas from the jobs' required project
+  - Drop python3.5 support
+  - Fix deleting stacks by id when waiting for result
+  - baremetal: use proxy methods in unregister_machine
+  - Fix image owner field
+  - added new regions for provider OVH
+  - Add block_storage find functions
+  - Add support for filters into the project cleanup
+  - Stop subclassing object
+  - Add some unit tests for config.loader
+  - Remove enforcer
+  -  Add cipher list support for octavia
+  - switch to importlib.metadata for entrypoint loading
+  - Update docs to work with newer Sphinx
+  - Add user_projects method to docs index
+  - Update .gitreview for stable/victoria
+  - Wait for the project cleanup to complete
+  - Add "id" to Port's query parameters
+  - Remove some unneeded things from test-requirements
+  - Fix metric names in the object_store
+  - Add TLS protocol support for Octavia
+  - Make optional name and admin password
+  - Remove uses of from six.moves
+  - Upload image via interop import if needed
+  - Ignore IPv6 addresses if force_ipv4 is set
+  - Allow passing in a logging handler
+  - Add name query filter to keystone service
+  - Switch to newer openstackdocstheme and reno versions
+  - Add ansible stable-2.9 job and run 2.8 and 2.9
+  - Functional tests to explicitly use ML2/OVS
+  - Do not clean keypairs in the project cleanup
+  - Update config to Keystone v3
+  - Stop falling back to image import
+  - baremetal-introspection: allow fetching unprocessed data
+  - Don't use random.SystemRandom in tests
+  - Remove use of six
+  - Fix an unstable bare metal unit test
+  - add default user and project domain for OVH provider
+  - new ovh-us provider for OVH US regions
+
+-------------------------------------------------------------------
 Tue May 12 12:33:57 UTC 2020 - cloud-devel@suse.de
 
 - removed 0001-Increase-test-timeout-for-2-tests-in-TestImageProxy-.patch

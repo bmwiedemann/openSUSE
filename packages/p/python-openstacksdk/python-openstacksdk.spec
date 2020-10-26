@@ -19,15 +19,15 @@
 # and cause timeouts due to swapping. Disabling for now
 %define with_tests 0
 Name:           python-openstacksdk
-Version:        0.46.0
+Version:        0.50.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.46.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-0.50.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs >= 1.3.0
 BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-ddt
@@ -50,7 +50,7 @@ BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-requestsexceptions >= 1.2.0
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-six
 BuildRequires:  python3-statsd
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore
@@ -72,9 +72,9 @@ documentation, examples, and tools.
 %package -n python3-openstacksdk
 Summary:        An SDK for building applications to work with OpenStack
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-cryptography >= 2.1
+Requires:       python3-cryptography >= 2.7
 Requires:       python3-decorator >= 4.4.1
 Requires:       python3-dogpile.cache >= 0.6.5
 Requires:       python3-iso8601 >= 0.1.11
@@ -85,7 +85,7 @@ Requires:       python3-munch >= 2.1.0
 Requires:       python3-netifaces >= 0.10.4
 Requires:       python3-os-service-types >= 1.7.0
 Requires:       python3-requestsexceptions >= 1.2.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-openstacksdk < 1.0.0
 %endif
@@ -126,7 +126,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-0.46.0
+%autosetup -p1 -n openstacksdk-0.50.0
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -137,7 +137,7 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=0.46.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=0.50.0 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
