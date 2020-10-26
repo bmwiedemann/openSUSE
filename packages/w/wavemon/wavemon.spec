@@ -17,7 +17,7 @@
 
 
 Name:           wavemon
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        An ncurses monitoring application for wireless network devices
 License:        GPL-2.0-or-later
