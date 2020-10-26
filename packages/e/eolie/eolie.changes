@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 09:56:52 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 0.9.100:
+  * Add an option for a custom Firefox sync server.
+  * Allow zooming in reading view.
+  * Notifications support.
+  * Enable sandboxing.
+- Drop soft dependency on git: Not used anymore for ad blocking.
+- Replace shebangs which use env interpreter.
+
+-------------------------------------------------------------------
 Wed Mar 11 19:53:08 UTC 2020 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Disable Python WebExtension support: It does not build with

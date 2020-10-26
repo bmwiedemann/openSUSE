@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Unity\\)
 
 Name:           eolie
-Version:        0.9.63
+Version:        0.9.100
 Release:        0
 Summary:        Web browser for GNOME
 License:        GPL-3.0-or-later
@@ -41,9 +41,6 @@ Recommends:     python3-beautifulsoup4
 Recommends:     python3-cryptography
 Recommends:     python3-pycrypto
 Recommends:     python3-requests-hawk
-# Eolie can use git to retrieve more adblock rules from
-# https://gitlab.gnome.org/gnumdk/eolie-adblock.git.
-Suggests:       git
 BuildArch:      noarch
 
 %description
@@ -67,9 +64,8 @@ search results from the Eolie Web browser.
 
 %prep
 %autosetup
-# Skip WebExtension code since it does not build with Python 3.8
-sed -i 's/subdir('"'"python-webextension"'"')//g' meson.build
-rm -r python-webextension
+# Don't use env interpreter so that the rpm dependency detection works
+sed -i 's;/usr/bin/env python3;/usr/bin/python3;' eolie.in search-provider/eolie-sp.in
 
 %build
 %meson

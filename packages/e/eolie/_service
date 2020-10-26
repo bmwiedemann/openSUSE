@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="tar_scm">
-    <param name="revision">0.9.63</param>
+    <param name="revision">0.9.100</param>
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/World/eolie.git</param>
     <param name="versionformat">@PARENT_TAG@</param>

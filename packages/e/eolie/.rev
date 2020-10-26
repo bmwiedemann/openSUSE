@@ -164,4 +164,18 @@
   Python 3.8 and it will be replaced in a future release.</comment>
     <requestid>784064</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f351ebb6db8defff8aa5d71a43aa5e12</srcmd5>
+    <version>0.9.100</version>
+    <time>1603725583</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.100:
+  * Add an option for a custom Firefox sync server.
+  * Allow zooming in reading view.
+  * Notifications support.
+  * Enable sandboxing.
+- Drop soft dependency on git: Not used anymore for ad blocking.
+- Replace shebangs which use env interpreter.</comment>
+    <requestid>843877</requestid>
+  </revision>
 </revisionlist>
