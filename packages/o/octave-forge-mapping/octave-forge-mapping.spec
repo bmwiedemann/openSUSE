@@ -18,7 +18,7 @@
 
 %define octpkg  mapping
 Name:           octave-forge-%{octpkg}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Octave mapping functions
 License:        GPL-3.0-or-later
@@ -58,7 +58,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
