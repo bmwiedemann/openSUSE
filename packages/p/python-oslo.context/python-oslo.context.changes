@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:11:07 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Remove translation sections from setup.cfg
+  - Switch to newer openstackdocstheme and reno versions
+  - Add py38 package metadata
+  - Remove the unused coding style modules
+  - Update master for stable/ussuri
+  - drop mock from lower-constraints
+  - Add release notes links to doc index
+  - Align contributing doc with oslo's policy
+  - Fix hacking min version to 3.0.1
+  - Bump bandit version
+  - Bump default tox env from py37 to py38
+  - Add Python3 victoria unit tests
+  - Fix pygments style
+
+-------------------------------------------------------------------
 Tue May 12 09:46:46 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.2
