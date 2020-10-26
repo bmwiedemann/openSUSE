@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:09 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.4.0
+  - Add missing SYSLOG_FACILITY to JournalHandler
+  - Add py38 package metadata
+  - Align contributing doc with oslo's policy
+  - Default facility to None in OSJournalHandler class
+  - Imported Translations from Zanata
+  - Remove monotonic usage
+  - Added uwsgi_name information into fluentFormatter event message
+  - Update master for stable/ussuri
+  - Bump default tox env from py37 to py38
+  - Bump bandit version
+  - Remove translation sections from setup.cfg
+  - zuul: port the legacy grenade job
+  - Add Python3 victoria unit tests
+  - Remove the unused coding style modules
+  - Add Victoria and Wallaby in versionutils.deprecated
+  - Stop to use the __future__ module.
+  - Switch to newer openstackdocstheme and reno versions
+  - Add release notes links to doc index
+
+-------------------------------------------------------------------
 Mon Aug 10 10:19:13 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.1.3
