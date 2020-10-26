@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 14 03:14:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 8.63
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  8.63  2020-10-11
+    - Improved Mojo::IOLoop::Subprocess to ensure a clean exit even if something unexpected happens in the forked
+      process.
+
+-------------------------------------------------------------------
 Tue Oct 13 03:11:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 8.62
