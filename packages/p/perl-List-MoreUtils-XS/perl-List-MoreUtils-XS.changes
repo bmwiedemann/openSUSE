@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:17:57 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.430
+   see /usr/share/doc/packages/perl-List-MoreUtils-XS/Changes
+
+  0.430	2020-10-21
+      - re-release 0.429_002 without further changes
+
+  0.429_002	2020-10-05
+      - fix parts of RT#132043: listcmp misbehave in XS implementation
+        (thanks to Henrik Pauli for reporting)
+
+  0.429_001	2020-10-02
+      - fix parts of RT#123989: more $a/$b/$_ refcounting bugs
+        since some bugs are simply reported wrong, dealing with them breaks
+        more (including running code) than it solves. Way to heavy to feel
+        better ...
+      - introduce functions slide and slideatatime (wished by SCHWERN)
+      - toolchain fixes
+      - fix RT#133128 - LANG=nb_NO.utf8 related str tests fails (thanks, SJN
+        for reporting and provide a reasonable fix)
+      - fix issue#7 (Typo), thanks AMBS for reporting
+
+-------------------------------------------------------------------
 Wed Dec 20 06:32:01 UTC 2017 - coolo@suse.com
 
 - updated to 0.428
