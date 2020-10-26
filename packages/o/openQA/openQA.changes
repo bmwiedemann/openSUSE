@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:32:44 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1603626328.c21bec508:
+  * spec: Exclude flaky 01-test-utilities.t from OBS checks
+  * Avoid unhandled output in `t/25-downloader.t`
+  * Prevent unhandled output in `t/14-grutasks.t`
+  * Speedup `t/ui/10-tests_overview.t`
+  * Stabilize and speedup `t/ui/16-tests_job_next_previous.t`
+  * Show "link to overview fixed to the current time" and "link to latest jobs"
+  * Add timestamp parameter to test overview to show only jobs older than that
+  * Bump base OS version to Leap 15.2
+
+-------------------------------------------------------------------
 Fri Oct 23 13:32:26 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1603294467.b176715be:
