@@ -18,17 +18,16 @@
 
 %global oldpython python
 Name:           python-masakariclient
-Version:        6.0.0
+Version:        6.1.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-6.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-masakariclient/python-masakariclient-6.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-ddt
-BuildRequires:  python3-nose
 BuildRequires:  python3-openstacksdk >= 0.13.0
 BuildRequires:  python3-osc-lib >= 1.8.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
@@ -36,7 +35,7 @@ BuildRequires:  python3-oslo.utils
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-python-subunit
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-testrepository
+BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -83,8 +82,8 @@ This package contains the documentation.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=6.0.0 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=6.0.0 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=6.1.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=6.1.1 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install
@@ -93,12 +92,7 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 install -p -D -m 644 doc/build/man/python-masakariclient.1 %{buildroot}%{_mandir}/man1/python-masakariclient.1
 
 %check
-find . -type f -name *.pyc -delete
-%if 0%{?suse_version}
-PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests masakariclient/tests/unit
-%else
-PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests-3 masakariclient/tests/unit
-%endif
+python3 -m stestr.cli run
 
 %files -n python3-masakariclient
 %license LICENSE

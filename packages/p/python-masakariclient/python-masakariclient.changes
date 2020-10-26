@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:52 UTC 2020 - cloud-devel@suse.de
+
+- update to version 6.1.1
+  - Add Python3 victoria unit tests
+  - Switch to newer openstackdocstheme and reno versions
+  - Update master for stable/ussuri
+  - Use unittest.mock instead of third party mock
+  - remove future from lower-constraints
+  - Remove translation sections from setup.cfg
+  - drop mock from lower-constraints
+  - Fix hacking min version to 3.0.1
+  - Stop to use the __future__ module.
+
+-------------------------------------------------------------------
 Tue May 12 09:59:06 UTC 2020 - cloud-devel@suse.de
 
 - update to version 6.0.0
