@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:12:36 UTC 2020 - cloud-devel@suse.de
+
+- update to version 5.0.1
+  - Use unittest.mock instead of third party mock
+  - Switch to newer openstackdocstheme and reno versions
+  - Switch from unittest2 compat methods to Python 3.x methods
+  - Fix gate job failures and py3 compatibility
+  - Zuul: port to native v3 job and add victoria unit tests
+  - [ussuri][goal] Drop python 2.7 support and testing
+  - Update hacking for Python3
+  - add py38 package metadata
+
+-------------------------------------------------------------------
 Tue May 12 10:02:24 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.10.0

@@ -17,13 +17,13 @@
 
 
 Name:           python-barbicanclient
-Version:        4.10.0
+Version:        5.0.1
 Release:        0
 Summary:        Client for the Barbican Key Management API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-barbicanclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-4.10.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-barbicanclient/python-barbicanclient-5.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
