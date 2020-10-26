@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 17 22:55:56 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.8.0:
+  + New build configuration system based on Meson. The existing
+    CMake-based system is still maintained, and both produce the
+    same outputs.
+  + Hidden visibility is now used by default for symbols, and only
+    those belonging to the public API are exported.
+- Switch to meson.
+
+-------------------------------------------------------------------
 Thu Mar 12 12:49:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.0:

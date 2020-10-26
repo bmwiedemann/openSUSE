@@ -21,7 +21,7 @@
 %define sover 1_0-1
 
 Name:           libwpe
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        General-purpose library for the WPE-flavored port of WebKit
 License:        BSD-2-Clause
@@ -30,7 +30,7 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -59,12 +59,12 @@ header files for developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%cmake \
+%meson \
 	%{nil}
-%cmake_build
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 
 %post -n %{name}-%{sover} -p /sbin/ldconfig
 %postun -n %{name}-%{sover} -p /sbin/ldconfig
