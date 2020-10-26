@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:12:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.50
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.50    Wed 21 Oct 17:33:53 BST 2020
+      No changes since v7.49_04
+  7.49_04 Tue 13 Oct 18:42:05 BST 2020
+      Win32 fixes:
+      - make can_dep_space check for short path support
+      Macosx fixes:
+      - Handle XCode 12's implicit adding of Werror=implicit-function-declaration
+  7.49_03 Fri  9 Oct 21:30:57 BST 2020
+      Regression fixes:
+      - disable strict when evaling hints files
+      Bug fixes:
+      - clean up and improve MIN_PERL_VERSION handling
+  7.49_02 Thu  8 Oct 08:35:05 BST 2020
+      Bug fixes:
+      - Change wording of MIN_PERL_VERSION format message to clarify
+        fatally
+      Doc fixes:
+      - Fixed some typos
+  7.49_01 Tue  6 Oct 18:01:38 BST 2020
+      Regression fixes:
+      - fix PERL_CORE warnings from ExtUtils::CBuilder
+
+-------------------------------------------------------------------
 Mon Oct  5 03:08:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.48
