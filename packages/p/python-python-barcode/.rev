@@ -49,4 +49,19 @@
     <comment></comment>
     <requestid>807675</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cb9e5a8c2712d5021b6804ad9d2dadf2</srcmd5>
+    <version>0.13.1</version>
+    <time>1603725680</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Fix a crash when using the generate shortcut function.
+  * Added support for transparent backgrounds. This is done by setting the
+    mode option for a writer to RGBA.
+  * Removed writer_options from barcode.get. This parameter was not used.
+  * Add a with_doctype flag to SVGWriter. Set this to false to avoid including
+    a DOCTYPE in the resulting SVG.
+  * Add support for Pillow&gt;=8.0.0.</comment>
+    <requestid>843978</requestid>
+  </revision>
 </revisionlist>

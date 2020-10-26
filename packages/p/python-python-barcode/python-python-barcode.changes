@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 04:08:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.1:
+  * Fix a crash when using the generate shortcut function.
+  * Added support for transparent backgrounds. This is done by setting the
+    mode option for a writer to RGBA.
+  * Removed writer_options from barcode.get. This parameter was not used.
+  * Add a with_doctype flag to SVGWriter. Set this to false to avoid including
+    a DOCTYPE in the resulting SVG.
+  * Add support for Pillow>=8.0.0. 
+
+-------------------------------------------------------------------
 Wed May 20 07:26:48 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

@@ -21,11 +21,10 @@
 %define skip_python2 1
 %define base_name python-barcode
 Name:           python-%{base_name}
-Version:        0.11.0
+Version:        0.13.1
 Release:        0
 Summary:        Library to create Barcodes with Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/WhyNotHugo/python-barcode
 Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
