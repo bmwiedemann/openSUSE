@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 22:16:52 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use default compiler (g++) instead of clang++. (boo#1174233)
+- Remove unneeded or not directly needed build dependencies:
+  clangX-devel, llvmX-LTO-devel, llvmX-gold, {ncurses,zlib}-devel.
+
+-------------------------------------------------------------------
 Sun Apr 19 09:37:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Rebase patch support-clang9.patch to include clang 10 support too

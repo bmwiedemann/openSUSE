@@ -33,17 +33,13 @@ Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/ll
 Patch0:         support-clang9.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  clang%{llvm_major}-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
-BuildRequires:  llvm%{llvm_major}-LTO-devel
+BuildRequires:  libstdc++-devel
 BuildRequires:  llvm%{llvm_major}-devel
-BuildRequires:  llvm%{llvm_major}-gold
-BuildRequires:  ncurses-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
-ExcludeArch:    armv7l
 %python_subpackages
 
 %description
@@ -68,7 +64,7 @@ following approach:
 %patch0 -p1
 
 %build
-export CXX="clang++ -fPIC"
+export CPPFLAGS="-fPIC"
 export LLVM_CONFIG=%{_bindir}/llvm-config
 %python_build
 
