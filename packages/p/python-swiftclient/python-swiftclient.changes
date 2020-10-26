@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:19:41 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.10.1
+  - Add py38 classifier
+  - object versioning features
+  - Drop pypy testing
+  - Bump default tox env from py37 to py38
+  - Clean up some warnings
+  - Update master for stable/ussuri
+  - Add Python3 victoria unit tests
+  - Remove references to swift-specs and blueprints
+  - Application credential support follow-up
+  - Fix pygments style
+  - Ussuri contrib docs community goal
+  - Improve `list --versions` output
+  - Update docs building
+  - Add max_backoff and starting_backoff for get_conn in swift service
+  - Change recommended test config to use auth_uri
+  - Fixed capability discovery endpoint hardcode
+  - Support v3 application credentials auth.
+  - Blacklist stestr 3.0.0
+  - Speed up test_lazy_connections
+
+-------------------------------------------------------------------
 Tue May 12 10:04:43 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.9.0
