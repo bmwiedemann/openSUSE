@@ -1,10 +1,10 @@
 --- cups-config.in.orig	2011-08-27 11:23:01.000000000 +0200
 +++ cups-config.in	2012-11-27 15:47:27.000000000 +0100
 @@ -35,7 +35,7 @@ INSTALLSTATIC=@INSTALLSTATIC@
- # flags for C++ compiler:
+ # flags for compiler and linker...
  CFLAGS=""
  LDFLAGS="@EXPORT_LDFLAGS@"
--LIBS="@LIBGSSAPI@ @EXPORT_SSLLIBS@ @LIBZ@ @LIBS@"
+-LIBS="@LIBGSSAPI@ @DNSSDLIBS@ @EXPORT_SSLLIBS@ @LIBZ@ @LIBS@"
 +LIBS=""
  
  # Check for local invocation...

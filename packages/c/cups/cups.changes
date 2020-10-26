@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:11:00 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Version upgrade to 2.3.3:
+  - CVE-2020-3898: The `ppdOpen` function did not handle invalid UI
+    constraint.  `ppdcSource::get_resolution` function did not
+    handle invalid resolution strings.
+  - CVE-2019-8842: The `ippReadIO` function may under-read an
+    extension field.
+  - Fixed WARNING_OPTIONS support for GCC 9.x
+  Changes in CUPS 2.3.2:
+  Localization updates
+  Changes in CUPS 2.3.1:
+  - CVE-2019-2228: The `ippSetValuetag` function did not validate
+    the default language value.
+  - Fixed a crash bug in the web interface.
+  - The PPD cache code now looks up page sizes using their
+    dimensions.
+  - PPD files containing "custom" option keywords did not work.
+  - Added a workaround for the scheduler's systemd support.
+  - Added a DigestOptions directive for the `client.conf` file to
+    control whether MD5-based Digest authentication is allowed.
+  - Fixed a bug in the handling of printer resource files.
+  - The libusb-based USB backend now reports an error when the
+    distribution permissions are wrong.
+  - Added paint can labels to Dymo driver.
+  - The `ippeveprinter` program now supports authentication.
+  - The `ippeveprinter` program now advertises DNS-SD services on
+    the correct interfaces, and provides a way to turn them off.
+  - The `--with-dbusdir` option was ignored by the configure
+    script.
+  - Sandboxed applications were not able to get the default
+    printer.
+  - Log file access controls were not preserved by `cupsctl`.
+  - Default printers set with `lpoptions` did not work in all
+    cases.
+  - Fixed an error in the jobs web interface template.
+  - Fixed an off-by-one error in `ippEnumString`.
+  - Fixed some new compiler warnings.
+  - Fixed a few issues with the Apple Raster support.
+  - The IPP backend did not detect all cases where a job should be
+    retried using a raster format.
+  - Fixed spelling of "fold-accordion".
+  - Fixed the default common name for TLS certificates used by
+    `ippeveprinter`.
+  - Fixed the option names used for IPP Everywhere finishing
+    options.
+  - Added support for the second roll of the DYMO Twin/DUO label
+    printers.
+  Changes in CUPS v2.3.0:
+  - CVE-2019-8696 and CVE-2019-8675: Fixed SNMP buffer overflows.
+  - Added a GPL2/LGPL2 exception to the new CUPS license terms.
+  - Fixed a bug in the scheduler job cleanup code.
+  - Fixed builds when there is no TLS library.
+  - "make" failed with GZIP options.
+  - Fixed potential excess logging from the scheduler when removing
+    job files.
+  - Fixed a NULL pointer dereference bug in `httpGetSubField2`.
+  - Added FIPS-140 workarounds for GNU TLS.
+  - The scheduler no longer provides a default value for the
+     description.
+  - The scheduler now logs jobs held for authentication using the
+    error level so it is clear what happened.
+  - The `lpadmin` command did not always update the PPD file for
+    changes to the `cupsIPPSupplies` and `cupsSNMPSupplies` keywords.
+  - The scheduler now uses both the group's membership list as well
+    as the various OS-specific membership functions to determine
+    whether a user belongs to a named group.
+  - Added USB quirks rule for HP LaserJet 1015.
+  - Fixed some PPD parser issues.
+  - The IPP parser no longer allows invalid member attributes in
+    collections.
+  - The configure script now treats the "wheel" group as a
+    potential system group.
+  - Fixed IPP buffer overflow.
+  - Fixed memory disclosure issue in the scheduler.
+  - Fixed DoS issues in the scheduler.
+  - Fixed an issue with unsupported "sides" values in the IPP
+    backend.
+  - The scheduler would restart continuously when idle and printers
+    were not shared.
+  - Fixed an issue with `EXPECT !name WITH-VALUE ...` tests.
+  - Fixed a command ordering issue in the Zebra ZPL driver.
+  - Fixed a memory leak in `ppdOpen`.
+  Changes in CUPS v2.3rc1:
+  - The `cups-config` script no longer adds extra libraries when linking against
+    shared libraries.
+  - The supplied example print documents have been optimized for
+    size.
+  - The `cupsctl` command now prevents setting "cups-files.conf"
+    directives.
+  - The "forbidden" message in the web interface is now explained.
+  - The footer in the web interface covered some content on small
+    displays.
+  - The libusb-based USB backend now enforces read limits,
+    improving print speed in many cases.
+  - The `ippeveprinter` command now looks for print commands in
+    the "command" subdirectory.
+  - The `ipptool` command now supports `$date-current` and
+    `$date-start` variables to insert the current and starting date
+    and time values, as well as ISO-8601 relative time values such
+    as "PT30S" for 30 seconds in the future.
+  Changes in CUPS v2.3b8
+  - Media size matching now uses a tolerance of 0.5mm.
+  - The lpadmin command would hang with a bad PPD file.
+  - Fixed a potential crash bug in cups-driverd.
+  - Fixed a performance regression with large PPDs.
+  - Fixed a memory reallocation bug in HTTP header value expansion.
+  - Timed out job submission now yields an error.
+  - Restored minimal support for the `Emulators` keyword in PPD
+    files to allow old Samsung printer drivers to continue to work.
+  - The scheduler did not encode octetString values like
+    "job-password" correctly for the print filters.
+  - The `cupsCheckDestSupported` function did not check octetString
+    values correctly.
+  - Added support for `UserAgentTokens` directive in "client.conf".
+  - Updated the systemd service file for cupsd.
+  - The `ippValidateAttribute` function did not catch all instances
+    of invalid UTF-8 strings.
+  - Fixed an issue with the self-signed certificates generated by
+    GNU TLS.
+  - Fixed a potential memory leak when reading at the end of a
+    file.
+  - Fixed potential unaligned accesses in the string pool.
+  - Fixed a potential memory leak when loading a PPD file.
+  - Added a USB quirks rule for the Lexmark E120n.
+  - Updated the USB quirks rule for Zebra label printers.
+  - The lpadmin command, web interface, and scheduler all queried
+    an IPP Everywhere printer differently, resulting in different
+    PPDs for the same printer.
+  - The web interface no longer provides access to the log files.
+  - Non-Kerberized printing to Windows via IPP was broken.
+  - The scheduler no longer stops a printer if an error occurs when
+    a job is canceled or aborted.
+  - Added a USB quirks rule for the DYMO 450 Turbo.
+  - Added a USB quirks rule for Xerox printers.
+  - The scheduler's self-signed certificate did not include all of
+    the alternate names for the server when using GNU TLS.
+  - Fixed some PPD caching and IPP Everywhere PPD
+    accounting/password bugs.
+  - Fixed `PreserveJobHistory` bug with time values.
+  - The scheduler no longer advertises the HTTP methods it
+    supports.
+  - The scheduler did not always idle exit as quickly as it could.
+  - Added a new `ippeveprinter` command based on the old ippserver
+    sample code.
+  Changes in CUPS v2.3b7
+  - Running ppdmerge with the same input and output filenames did
+    not work as advertised.
+  - Rebase let-cupsd-start-after-network.patch and
+    cups-config-libs.patch.
+  - Drop issue5509-fix-utf-8-validation-issue.patch and
+    issue5453.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jun 25 12:24:13 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - make cups-devel pull in cups-rpm-helper to fix printer driver provides

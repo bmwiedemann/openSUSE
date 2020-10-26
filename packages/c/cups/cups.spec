@@ -23,24 +23,24 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.3b6
+Version:        2.3.3
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            http://www.cups.org/
 # To get Source0 go to https://www.cups.org/software.html or https://github.com/apple/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3b6-source.tar.gz https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz
-Source0:        https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz
+# wget --no-check-certificate -O cups-2.3.3-source.tar.gz https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
+Source0:        https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
 # To get Source1 go to https://www.cups.org/software.html or https://github.com/apple/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3b6-source.tar.gz.sig https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz.sig
-Source1:        https://github.com/apple/cups/releases/download/v2.3b6/cups-2.3b6-source.tar.gz.sig
+# wget --no-check-certificate -O cups-2.3.3-source.tar.gz.sig https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz.sig
+Source1:        https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz.sig
 # To get Source2 go to https://www.cups.org/pgp.html
 Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
 #   gpg --list-keys | grep -1 'CUPS.org' | grep -v 'expired'
-#   gpg --verify cups-2.3b6-source.tar.gz.sig cups-2.3b6-source.tar.gz
+#   gpg --verify cups-2.3.3-source.tar.gz.sig cups-2.3.3-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -60,8 +60,6 @@ Patch11:        cups-2.1.0-default-webcontent-path.patch
 Patch12:        cups-2.1.0-cups-systemd-socket.patch
 # Patch42 Let cupsd start after possible network connection (boo#1111351)
 Patch42:        let-cupsd-start-after-network.patch
-# Patch43 Fix UTF-8 validation issue (bsc#1118118, Issue #5509)
-Patch43:        issue5509-fix-utf-8-validation-issue.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
@@ -77,8 +75,6 @@ Patch101:       cups-2.0.3-additional_policies.patch
 Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 Patch104:       cups-config-libs.patch
-# Patch105 issue5453.patch fixes https://github.com/apple/cups/issues/5453
-Patch105:       issue5453.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -285,7 +281,6 @@ printer drivers for CUPS.
 #patch12 -b cups-systemd-socket.orig
 # Patch42 Let cupsd start after possible network connection (boo#1111351)
 %patch42 -p0
-%patch43 -p1
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 %patch100 -b cups-pam.orig
@@ -301,8 +296,6 @@ printer drivers for CUPS.
 %patch103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 %patch104 -b cups-config-libs.orig
-# Patch105 issue5453.patch fixes https://github.com/apple/cups/issues/5453
-%patch105 -b issue5453.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
@@ -542,6 +535,9 @@ exit 0
 /usr/lib/cups/cgi-bin/help.cgi
 /usr/lib/cups/cgi-bin/jobs.cgi
 /usr/lib/cups/cgi-bin/printers.cgi
+%dir /usr/lib/cups/command
+/usr/lib/cups/command/ippevepcl
+/usr/lib/cups/command/ippeveps
 %dir /usr/lib/cups/daemon
 /usr/lib/cups/daemon/cups-deviced
 /usr/lib/cups/daemon/cups-driverd
@@ -567,6 +563,7 @@ exit 0
 %doc %{_defaultdocdir}/cups
 %doc %{_mandir}/man1/cups.1.gz
 %doc %{_mandir}/man1/cupstestppd.1.gz
+%doc %{_mandir}/man1/ippeveprinter.1.gz
 %doc %{_mandir}/man5/classes.conf.5.gz
 %doc %{_mandir}/man5/client.conf.5.gz
 %doc %{_mandir}/man5/cups-snmp.conf.5.gz
@@ -580,6 +577,8 @@ exit 0
 %doc %{_mandir}/man5/subscriptions.conf.5.gz
 %doc %{_mandir}/man7/backend.7.gz
 %doc %{_mandir}/man7/filter.7.gz
+%doc %{_mandir}/man7/ippevepcl.7.gz
+%doc %{_mandir}/man7/ippeveps.7.gz
 %doc %{_mandir}/man7/notifier.7.gz
 %doc %{_mandir}/man8/cups-deviced.8.gz
 %doc %{_mandir}/man8/cups-driverd.8.gz
@@ -596,6 +595,7 @@ exit 0
 %files client
 %defattr(-,root,root)
 %{_bindir}/cancel
+%{_bindir}/ippeveprinter
 %{_bindir}/ippfind
 %{_bindir}/ipptool
 %{_bindir}/lp
@@ -604,7 +604,6 @@ exit 0
 %{_bindir}/lpr
 %{_bindir}/lprm
 %{_bindir}/lpstat
-%{_sbindir}/accept
 %{_sbindir}/cupsaccept
 %{_sbindir}/cupsdisable
 %{_sbindir}/cupsenable
@@ -613,7 +612,6 @@ exit 0
 %{_sbindir}/lpc
 %{_sbindir}/lpinfo
 %{_sbindir}/lpmove
-%{_sbindir}/reject
 %doc %{_mandir}/man1/cancel.1.gz
 %doc %{_mandir}/man1/ippfind.1.gz
 %doc %{_mandir}/man1/ipptool.1.gz
@@ -624,7 +622,6 @@ exit 0
 %doc %{_mandir}/man1/lprm.1.gz
 %doc %{_mandir}/man1/lpstat.1.gz
 %doc %{_mandir}/man5/ipptoolfile.5.gz
-%doc %{_mandir}/man8/accept.8.gz
 %doc %{_mandir}/man8/cupsaccept.8.gz
 %doc %{_mandir}/man8/cupsdisable.8.gz
 %doc %{_mandir}/man8/cupsenable.8.gz
@@ -633,7 +630,6 @@ exit 0
 %doc %{_mandir}/man8/lpc.8.gz
 %doc %{_mandir}/man8/lpinfo.8.gz
 %doc %{_mandir}/man8/lpmove.8.gz
-%doc %{_mandir}/man8/reject.8.gz
 
 %files devel
 %defattr(-,root,root)
