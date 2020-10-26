@@ -240,4 +240,12 @@ update to version 4.9.0
     <comment>Ussuri Update</comment>
     <requestid>803568</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4797974f32aaaa94fd9e718ad15642f2</srcmd5>
+    <version>9.1.0</version>
+    <time>1603725330</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841185</requestid>
+  </revision>
 </revisionlist>

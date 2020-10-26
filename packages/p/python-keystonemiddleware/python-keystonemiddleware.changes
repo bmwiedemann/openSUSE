@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:23 UTC 2020 - cloud-devel@suse.de
+
+- update to version 9.1.0
+  - Change the default Identity endpoint to internal
+  - Update master for stable/ussuri
+  - Switch to newer openstackdocstheme and reno versions
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue May 12 09:58:47 UTC 2020 - cloud-devel@suse.de
 
 - update to version 9.0.0
