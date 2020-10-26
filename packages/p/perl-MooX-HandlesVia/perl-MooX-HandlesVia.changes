@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 17 03:15:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.001009
+   see /usr/share/doc/packages/perl-MooX-HandlesVia/Changes
+
+  0.001009  2020-10-16 10:53:01+01:00 Europe/London
+    - new maintainer (@mattp -> @tobyink)
+    - update repo links
+    - mention Sub::HandlesVia in documentation
+
+-------------------------------------------------------------------
 Tue Apr 14 20:54:51 UTC 2015 - coolo@suse.com
 
 - updated to 0.001008
