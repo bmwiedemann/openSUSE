@@ -597,4 +597,15 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Prevent calling transactional-update from within transactional-update</comment>
     <requestid>841734</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>72242d2e497833ba1376518c6c370331</srcmd5>
+    <version>2.28</version>
+    <time>1603725141</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.28
+  - Add 'setup-selinux' command for easy setup of a SELinux system
+  - Allow complex commands for the 'run' command
+  - SELinux: Fix /etc / overlay labeling</comment>
+    <requestid>843423</requestid>
+  </revision>
 </revisionlist>
