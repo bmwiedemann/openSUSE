@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:18:52 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Correct a typo in the document
+  - Switch to newer openstackdocstheme version
+  - Use unittest.mock instead of third party mock
+  - Add Python3 victoria unit tests
+  - Fix hacking min version to 3.0.1
+  - Update hacking for Python3
+
+-------------------------------------------------------------------
 Tue May 12 10:09:51 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.0

@@ -17,20 +17,19 @@
 
 
 Name:           python-pycadf
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        DMTF Cloud Audit (CADF) data model
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/pycadf
-Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-3.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pycadf/pycadf-3.1.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.serialization >= 2.18.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -72,14 +71,14 @@ Group:          Development/Languages/Python
 Configuration files for the DMTF Cloud Audit (CADF) data model.
 
 %prep
-%autosetup -n pycadf-3.0.0
+%autosetup -n pycadf-3.1.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=3.0.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.1.1 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
