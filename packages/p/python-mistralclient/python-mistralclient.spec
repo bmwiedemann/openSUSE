@@ -18,23 +18,23 @@
 
 %global oldpython python
 Name:           python-mistralclient
-Version:        4.0.1
+Version:        4.1.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-4.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-mistralclient/python-mistralclient-4.1.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-mock
-BuildRequires:  python3-nose
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
+BuildRequires:  python3-stestr
 BuildArch:      noarch
 
 %description
@@ -44,7 +44,7 @@ Client library for Mistral built on the Mistral API. It provides a Python API
 %package -n python3-mistralclient
 Summary:        Python API and CLI for OpenStack Mistral
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-keystoneclient
 Requires:       python3-os-client-config
@@ -53,7 +53,7 @@ Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-osprofiler
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 Conflicts:      %{oldpython}-mistralclient < %version
 
@@ -76,7 +76,7 @@ Client library for Mistral built on the Mistral API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-mistralclient-4.0.1
+%autosetup -p1 -n python-mistralclient-4.1.1
 %py_req_cleanup
 
 %build
@@ -90,12 +90,7 @@ rm -r doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-find . -type f -name *.pyc -delete
-%if 0%{?suse_version}
-PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests mistralclient/tests/unit
-%else
-PYTHONPATH=%{buildroot}%{python3_sitelib} nosetests-3 mistralclient/tests/unit
-%endif
+python3 -m stestr.cli run
 
 %files -n python3-mistralclient
 %license LICENSE

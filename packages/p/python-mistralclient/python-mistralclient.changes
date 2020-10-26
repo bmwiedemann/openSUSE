@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:15:09 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Add py38 package metadata
+  - Update master for stable/ussuri
+  - Bump default tox env from py37 to py38
+  - Use unittest.mock instead of third party mock
+  - Add Python3 victoria unit tests
+  - Fix hacking min version to 3.0.1
+  - Remove all usage of six library
+  - Switch to newer openstackdocstheme and reno versions
+  - drop mock from lower-constraints
+  - [goal] Migrate testing to ubuntu focal
+  - added support statistics only for report execution API
+
+-------------------------------------------------------------------
 Tue May 12 09:55:36 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.1
