@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:41:27 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6.2:
+  * Bug fixes:
+    + Fix Named range read errors for .ods files with OCT interface.
+    + dbfread.m: open files in little-endian mode (fix by Rafael Laboissière).
+    + xlsopen.m: improve filename extension checking (.xlsm, .xlsb and .sxc
+      were not recognized).
+    + xlsclose (private/__COM_spsh_close__.m): add missing output formats for
+      COM interface (esp. .ods; also .wk3 and .wk4).
+    + xlsread.m: implement options argument (it *was* mentioned in the help
+      but didn't work)
+    + Improve character encoding for COM interface (bug #59203); credits to
+      Markus Mützel
+  * Code improvements:
+    + xlsfinfo.m: implement 'verbose' flag to echo used interface info.
+    + io_testscript.m: minimize delay, improve texinfo.
+    + csv2cell's maximum line length has been increased to 32768 characters
+      (bug #58618).
+    + Remove autotools (bootstrap, configure). Avoids potential problems and
+      makes code easier to maintain. Kudos to Kai Torben Ohlhus (bug 357081).
+    + Reintroduce xmlread and xmlwrite functions.
+      NOTE: xmlread may provoke Octave crashes on some Linux systems (see
+            bug #58004)
+
+-------------------------------------------------------------------
 Thu May  7 17:30:46 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.6.1:

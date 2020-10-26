@@ -18,12 +18,12 @@
 
 %define octpkg  io
 Name:           octave-forge-%{octpkg}
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Input/Output in external formats from Octave
 License:        GPL-3.0-or-later AND BSD-2-Clause
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
