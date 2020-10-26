@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:16:00 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - switch documentation job to new PTI
+  - Switch to newer openstackdocstheme and reno versions
+  - Check RST as part of linting
+  - fix tox python3 overrides
+  - OpenDev Migration Patch
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Update sitemap for Python3
+  - Remove openstack-jsoncheck and openstack-indexpage
+  - Remove setup.py check from pep8 job
+  - setup.cfg: Cleanup and update some urls to latest
+  - Cleanup py27 support
+  - import zuul job settings from project-config
+  - Advancing the protocal of the website to HTTPS in README.rst.
+  - Drop py35 testing
+  - tox: Keeping going with docs
+  - Add python-requires >= 3.6
+  - Publish to publish-docs/html
+  - Cleanup doc-tools-check-languages
+  - Remove support for py34
+  - Use unittest.mock instead of mock
+  - Change openstack-dev to openstack-discuss
+  - Update docs building
+  - Update the constraints url
+  - Don't use special api-quick-start location
+  - Drop python 2.7 support and testing
+  - [goal] Migrate testing to ubuntu focal
+  - Update sitemap file
+  - Add Python 3 Train unit tests
+  - Switch to stestr
+  - add python 3.6 unit test job
+  - Use openstack-lower-constraints-jobs template
+  - Remove demjson from requirements
+  - Remove some commented obsolete lines
+  - Update hacking
+  - Update sitemap
+  - Switch to ussuri python3 jobs
+  - Update hacking for Python3
+  - Update home-page
+
+-------------------------------------------------------------------
 Tue Jul 14 09:50:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add obsoletes to make factory review team happy

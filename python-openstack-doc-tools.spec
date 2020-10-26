@@ -18,24 +18,22 @@
 
 %global module os_doc_tools
 Name:           python-openstack-doc-tools
-Version:        1.8.0
+Version:        3.3.0
 Release:        0
 Summary:        OpenStack Docs Tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/openstack-doc-tools
-Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-1.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstack-doc-tools/openstack-doc-tools-3.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-demjson
-BuildRequires:  python3-lxml >= 3.4.1
+BuildRequires:  python3-lxml >= 4.5.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-testrepository
 BuildArch:      noarch
 
 %description
@@ -44,13 +42,12 @@ Tools used by the OpenStack Documentation Project.
 %package -n python3-openstack-doc-tools
 Summary:        OpenStack Docs Tools
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-Sphinx
 Requires:       python3-iso8601 >= 0.1.11
-Requires:       python3-lxml >= 3.4.1
+Requires:       python3-lxml >= 4.5.0
 Requires:       python3-openstackdocstheme
 %if 0%{?suse_version}
-Obsoletes:      python-openstack-doc-tools < 1.8.0
 Obsoletes:      python2-openstack-doc-tools < 1.8.0
 %endif
 
@@ -69,18 +66,11 @@ This package contains the Python 3.x module.
 %install
 %py3_install
 
-%check
-# We don't want to run the sitemap tests, it is not included in the package
-rm -f test/test_sitemap_file.py test/test_pipelines.py
-PYTHON=python3 python3 setup.py testr
-
 %files -n python3-openstack-doc-tools
 %license LICENSE
 %doc README.rst
 %{_bindir}/doc-tools-build-rst
 %{_bindir}/doc-tools-check-languages
-%{_bindir}/openstack-indexpage
-%{_bindir}/openstack-jsoncheck
 %{python3_sitelib}/%{module}
 %{_datadir}/openstack-doc-tools
 %{python3_sitelib}/*.egg-info
