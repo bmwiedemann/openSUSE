@@ -1,0 +1,58 @@
+From 4cf2e774557c782aa7156b2261d603212b24a64c Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 26 Sep 2020 20:29:40 +0800
+Subject: [PATCH 2/2] grub-install: Avoid incompleted install on i386-pc
+
+If any error happens between grub_install_copy_files() and
+grub_util_bios_setup(), the system would become unbootable with error
+like undefined symbol as a result of incompleted install that leaves
+behind images on disk from different build to the modules on /boot.
+
+This patch makes grub_install_copy_files() an adjecent call to
+grub_util_bios_setup() to minimize the risk of running into any error in
+between that would abort the process.
+
+V1:
+  * Create platform directory, /boot/grub2/i386-pc, which is required to
+    have existed in the process of setting up prefix for the core.img.
+    This fixed "failed to get canonical path of `/boot/grub2/i386-pc`"
+    error during grub-install.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub-install.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+Index: grub-2.04/util/grub-install.c
+===================================================================
+--- grub-2.04.orig/util/grub-install.c
++++ grub-2.04/util/grub-install.c
+@@ -1340,8 +1340,9 @@ main (int argc, char *argv[])
+ 	}
+     }
+ 
+-  grub_install_copy_files (grub_install_source_directory,
+-			   grubdir, platform);
++  if (platform != GRUB_INSTALL_PLATFORM_I386_PC)
++    grub_install_copy_files (grub_install_source_directory,
++			     grubdir, platform);
+ 
+   char *envfile = grub_util_path_concat (2, grubdir, "grubenv");
+   if (!grub_util_is_regular (envfile))
+@@ -1430,6 +1431,7 @@ main (int argc, char *argv[])
+   {
+     char *t = grub_util_path_concat (2, grubdir,
+ 				   platname);
++    grub_install_mkdir_p (t);
+     platdir = grub_canonicalize_file_name (t);
+     if (!platdir)
+       grub_util_error (_("failed to get canonical path of `%s'"),
+@@ -1964,6 +1966,8 @@ main (int argc, char *argv[])
+ 				  fs_probe, allow_floppy, add_rs_codes,
+ 				  warn_short_mbr_gap);
+ 	  }
++	grub_install_copy_files (grub_install_source_directory,
++				 grubdir, platform);
+ 	break;
+       }
+     case GRUB_INSTALL_PLATFORM_SPARC64_IEEE1275:

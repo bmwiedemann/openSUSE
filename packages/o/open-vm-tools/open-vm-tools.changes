@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 21 20:37:22 UTC 2020 - Kirk Allan <kallan@suse.com>
+
+- Update to 11.2.0 (build 16938113) (boo#1177987)
+  + Fixed memory leak occurs in disk device mapping information for IDE,
+    SATA or SAS (LSI Logic SAS) disks configured in the guest.
+  + The following issues and pull requests reported on
+    https://github.com/vmware/open-vm-tools have been addressed:
+      https://github.com/vmware/open-vm-tools/issues/429
+      https://github.com/vmware/open-vm-tools/pull/431
+      https://github.com/vmware/open-vm-tools/pull/432
+      https://github.com/vmware/open-vm-tools/issues/452
+  + A number of Coverity reported errors and false positives have been
+    addressed.
+  + A complete list of the granular changes that are in the open-vm-tools
+    11.2.0 release is available at:
+      https://github.com/vmware/open-vm-tools/blob/stable-11.2.0/open-vm-tools/ChangeLog
+
+- Update pam-vmtoolsd.patch (boo#1177987): removed the pam_securetty.so line
+  from the new suse file.  Modified the Makefile.am to copy the suse file to
+  the /etc/pam.d/vmtoolsd file rather than the default generic file.
+
+-------------------------------------------------------------------
 Mon Sep  7 10:31:27 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - Use libtirpc also in SLE-15-SP3

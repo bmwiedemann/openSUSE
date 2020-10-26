@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 23 03:12:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000138
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000138  2020-10-21 19:46:07-07:00 America/Los_Angeles
+
+      - Merge doc fix from PR
+      - Merge strict fix for test
+
+-------------------------------------------------------------------
+Thu Oct 22 03:24:02 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.000137
+   see /usr/share/doc/packages/perl-Test2-Suite/Changes
+
+  0.000137  2020-10-21 18:22:07-07:00 America/Los_Angeles
+
+      - Test new syntax `use Test2::Plugin::SRand seed => $seed;`
+      - Update GitHub workflow with deprecated add-path
+
+-------------------------------------------------------------------
 Wed Oct  7 03:13:43 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.000136

@@ -1,7 +1,11 @@
-Index: tftp/main.c
+---
+ tftp/main.c |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+Index: tftp-hpa-5.2/tftp/main.c
 ===================================================================
---- tftp/main.c.orig
-+++ tftp/main.c
+--- tftp-hpa-5.2.orig/tftp/main.c
++++ tftp-hpa-5.2/tftp/main.c
 @@ -308,7 +308,7 @@ int main(int argc, char *argv[])
  
      bsd_signal(SIGINT, intr);

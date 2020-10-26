@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 14:15:27 UTC 2020 - pgajdos@suse.com
+
+- before test drop, try more runs for --flaky
+
+-------------------------------------------------------------------
+Tue Sep 15 11:20:20 UTC 2020 - pgajdos@suse.com
+
+- replace nose by pytest
+- added patches
+  https://github.com/jupyter/jupyter_console/pull/230
+  + python-jupyter_console-remove-nose.patch
+
+-------------------------------------------------------------------
 Sun May 17 16:40:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add Pillow to test build, avoids skipping a test

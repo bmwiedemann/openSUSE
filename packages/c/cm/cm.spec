@@ -17,12 +17,13 @@
 
 
 Name:           cm
-Version:        0.3
+Version:        0.3.1
 Release:        0
 Summary:        Class polynomial computation via floating point approximations
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.multiprecision.org/cm/
+#Git-Clone:     https://gitlab.inria.fr/enge/cm
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.asc
 Source3:        %name.keyring
@@ -65,17 +66,17 @@ multiplication via floating point approximations.
 It includes libraries that can be called from within a C program.
 
 %package -n libmpfpx0
-Summary:      Multi-precision floating-point polynomial library
-Group:        System/Libraries
+Summary:        Multi-precision floating-point polynomial library
+Group:          System/Libraries
 
 %description -n libmpfpx0
 MPFPX is a GMP-based library for working with polynomials.
 
 %package -n mpfpx-devel
-Summary:      Header files for the multi-precision floating-point polynomial library
-Group:        System/Libraries
-Requires:     libmpfpx0 = %version
-Requires:     gmp-devel
+Summary:        Header files for the multi-precision floating-point polynomial library
+Group:          System/Libraries
+Requires:       gmp-devel
+Requires:       libmpfpx0 = %version
 
 %description -n mpfpx-devel
 MPFPX is a GMP-based library for working with polynomials.

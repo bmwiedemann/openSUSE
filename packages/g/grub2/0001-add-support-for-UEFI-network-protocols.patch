@@ -33,6 +33,11 @@ V5:
   * Use grub_calloc for overflow check and return NULL when it would
     occur.
 
+V6:
+  * Don't force grub_print_error if no best route found as boot process
+    could be interrupted by logged error. The default interface will be
+    used as fallback in this case
+
 ---
  grub-core/Makefile.core.def        |   18 +
  grub-core/io/bufio.c               |    2 +-
@@ -1990,7 +1995,7 @@ Index: grub-2.04/grub-core/net/efi/net.c
 ===================================================================
 --- /dev/null
 +++ grub-2.04/grub-core/net/efi/net.c
-@@ -0,0 +1,1437 @@
+@@ -0,0 +1,1440 @@
 +#include <grub/net.h>
 +#include <grub/env.h>
 +#include <grub/mm.h>
@@ -2792,13 +2797,16 @@ Index: grub-2.04/grub-core/net/efi/net.c
 +  grub_efi_net_interface_t *inf;
 +  int is_ip6 = 0;
 +
++  grub_error_push ();
 +  err = grub_efi_net_parse_address (server, &ip4, &ip6, &is_ip6, 0);
 +
 +  if (err)
 +    {
-+      grub_print_error ();
++      grub_dprintf ("efinetfs", "error in matching route : %s\n", grub_errmsg);
++      grub_error_pop ();
 +      return NULL;
 +    }
++  grub_error_pop ();
 +
 +  if (is_ip6)
 +    {

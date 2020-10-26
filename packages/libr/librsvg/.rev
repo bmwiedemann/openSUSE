@@ -820,4 +820,12 @@
     <comment>- Add _constraints for PowerPC avoid &quot;no space left on device&quot; build error (forwarded request 822009 from michel_mno)</comment>
     <requestid>822254</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>eb7a772e4b55f181efa63240052a6da7</srcmd5>
+    <version>2.50.1</version>
+    <time>1603725088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843378</requestid>
+  </revision>
 </revisionlist>

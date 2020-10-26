@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-authentication
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 %define mod_name mixlib-authentication
 %define mod_full_name %{mod_name}-%{version}

@@ -17,7 +17,7 @@
 
 
 Name:           nasm
-Version:        2.15.03
+Version:        2.15.05
 Release:        0
 Summary:        Netwide Assembler (An x86 Assembler)
 License:        BSD-2-Clause

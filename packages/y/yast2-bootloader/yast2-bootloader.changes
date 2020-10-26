@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:53:21 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- "write proper value for NVRAM for UEFI (bsc#1157550)"
+- fix failing test on s390 (bsc#1177986)
+- 4.3.13
+
+-------------------------------------------------------------------
 Thu Oct  8 18:05:29 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix definition of initrd_module in AutoYaST schema (bsc#1177058)

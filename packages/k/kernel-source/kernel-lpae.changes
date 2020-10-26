@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:04:45 CET 2020 - jslaby@suse.cz
+
+- vt_ioctl: fix GIO_UNIMAP regression (5.9 GIO_UNIMAP regression).
+- commit 15946ea
+
+-------------------------------------------------------------------
+Sun Oct 25 12:34:16 CET 2020 - mkubecek@suse.cz
+
+- kernel-binary.spec.in: pack scripts/module.lds into kernel-$flavor-devel
+  Since mainline commit 596b0474d3d9 ("kbuild: preprocess module linker
+  script") in 5.10-rc1, scripts/module.lds linker script is needed to build
+  out of tree modules. Add it into kernel-$flavor-devel subpackage.
+- commit fe37c16
+
+-------------------------------------------------------------------
+Fri Oct 23 09:52:12 CEST 2020 - tiwai@suse.de
+
+- drm/amd/display: Don't invoke kgdb_breakpoint() unconditionally
+  (bsc#1177973).
+- drm/amd/display: Fix kernel panic by dal_gpio_open() error
+  (bsc#1177973).
+- commit 3f21462
+
+-------------------------------------------------------------------
+Sun Oct 18 14:37:11 CEST 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- move to "almost mainline" section:
+  patches.suse/coresight-fix-offset-by-one-error-in-counting-ports.patch
+- commit 8e0635b
+
+-------------------------------------------------------------------
+Sun Oct 18 09:50:25 CEST 2020 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/coresight-fix-offset-by-one-error-in-counting-ports.patch.
+  Update upstream status.
+- commit 7b40cc9
+
+-------------------------------------------------------------------
+Sun Oct 18 09:42:17 CEST 2020 - jslaby@suse.cz
+
+- Linux 5.9.1 (bsc#1012628).
+- Bluetooth: MGMT: Fix not checking if BT_HS is enabled
+  (bsc#1012628).
+- media: usbtv: Fix refcounting mixup (bsc#1012628).
+- USB: serial: option: add Cellient MPL200 card (bsc#1012628).
+- USB: serial: option: Add Telit FT980-KS composition
+  (bsc#1012628).
+- staging: comedi: check validity of wMaxPacketSize of usb
+  endpoints found (bsc#1012628).
+- USB: serial: pl2303: add device-id for HP GC device
+  (bsc#1012628).
+- USB: serial: ftdi_sio: add support for FreeCalypso JTAG+UART
+  adapters (bsc#1012628).
+- vt_ioctl: make VT_RESIZEX behave like VT_RESIZE (bsc#1012628).
+- reiserfs: Initialize inode keys properly (bsc#1012628).
+- reiserfs: Fix oops during mount (bsc#1012628).
+- Revert "drm/amdgpu: Fix NULL dereference in dpm sysfs handlers"
+  (bsc#1012628).
+- crypto: bcm - Verify GCM/CCM key length in setkey (bsc#1012628).
+- crypto: qat - check cipher length for aead AES-CBC-HMAC-SHA
+  (bsc#1012628).
+- commit b7f511b
+
+-------------------------------------------------------------------
+Fri Oct 16 09:20:34 CEST 2020 - mkubecek@suse.cz
+
+- update patches metadata
+- update upstream references:
+  patches.suse/Bluetooth-A2MP-Fix-not-initializing-all-members.patch
+  patches.suse/Bluetooth-L2CAP-Fix-calling-sk_filter-on-non-socket-.patch
+- commit b1f22f7
+
+-------------------------------------------------------------------
 Thu Oct 15 10:09:30 CEST 2020 - jslaby@suse.cz
 
 - x86/unwind/orc: Fix inactive tasks with stack pointer in %sp
@@ -17,13 +92,13 @@ Thu Oct 15 08:47:37 CEST 2020 - tiwai@suse.de
 
 - Bluetooth: A2MP: Fix not initializing all members
   (CVE-2020-12352 bsc#1177725).
-- commit c64c556
+- commit 74ef4a4
 
 -------------------------------------------------------------------
 Wed Oct 14 13:33:46 CEST 2020 - tiwai@suse.de
 
 - Update config files: CONFIG_PINCTRL_AMD=y for fixing dependency (bsc#1177049)
-- commit f9a8fb6
+- commit 233d0fc
 
 -------------------------------------------------------------------
 Wed Oct 14 13:13:19 CEST 2020 - jslaby@suse.cz
@@ -246,6 +321,38 @@ Wed Oct 14 12:39:26 CEST 2020 - jslaby@suse.cz
 - commit 1dc82dd
 
 -------------------------------------------------------------------
+Mon Oct 12 00:20:46 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9 final
+- eliminated 1 patch
+  - patches.suse/bpf-Fix-unresolved-symbol-build-error-with-resolve_b.patch
+- update configs
+  - MLX5_VDPA=y, MLX5_VDPA_NET=m
+  - restore FB_ARMCLCD (y on armv6hl and armv7hl, n on arm64)
+- commit 11733e1
+
+-------------------------------------------------------------------
+Fri Oct  9 14:01:47 CEST 2020 - mkubecek@suse.cz
+
+- config: disable DEBUG_INFO_BTF in s390x/zfcpdump
+  Even if the build has been fixed, there is little use for BTF debug
+  information in kernel-zfcpdump so disable it there.
+- commit e7595e7
+
+-------------------------------------------------------------------
+Thu Oct  8 21:38:16 CEST 2020 - msuchanek@suse.de
+
+- kernel-binary.spec.in: Exclude .config.old from kernel-devel
+   - use tar excludes for .kernel-binary.spec.buildenv
+- commit 939a79b
+
+-------------------------------------------------------------------
+Wed Oct  7 20:02:12 CEST 2020 - msuchanek@suse.de
+
+- kernel-binary.spec.in: Package the obj_install_dir as explicit filelist.
+- commit 5587762
+
+-------------------------------------------------------------------
 Wed Oct  7 08:23:04 CEST 2020 - jslaby@suse.cz
 
 - Update config files.
@@ -405,6 +512,13 @@ Wed Oct  7 08:22:07 CEST 2020 - jslaby@suse.cz
 - commit e882d6e
 
 -------------------------------------------------------------------
+Mon Oct  5 23:19:30 CEST 2020 - afaerber@suse.com
+
+- rpm/mkspec-dtb: Update for 5.9
+  arch/arm64/boot/dts/al subdir has been renamed to amazon.
+- commit e450c4d
+
+-------------------------------------------------------------------
 Mon Oct  5 17:30:07 CEST 2020 - tiwai@suse.de
 
 - platform/x86: intel-vbtn: Switch to an allow-list for
@@ -412,11 +526,57 @@ Mon Oct  5 17:30:07 CEST 2020 - tiwai@suse.de
 - commit 5672f81
 
 -------------------------------------------------------------------
+Mon Oct  5 15:20:10 CEST 2020 - afaerber@suse.com
+
+- config: armv7hl: Update to 5.9-rc8
+- commit 2a6c374
+
+-------------------------------------------------------------------
+Mon Oct  5 15:07:01 CEST 2020 - afaerber@suse.com
+
+- config: armv6hl: Update to 5.9-rc8
+- commit 52c5e56
+
+-------------------------------------------------------------------
+Mon Oct  5 14:38:26 CEST 2020 - afaerber@suse.com
+
+- config: arm64: Update to 5.9-rc8
+- commit bbcb0ce
+
+-------------------------------------------------------------------
+Mon Oct  5 06:36:16 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc8
+- commit f75a311
+
+-------------------------------------------------------------------
+Sun Oct  4 22:24:19 CEST 2020 - mkubecek@suse.cz
+
+- bpf: Fix "unresolved symbol" build error with resolve_btfids
+  (http://lkml.kernel.org/r/20200929101737.3ufw36bngkmzppqk@lion.mk-sys.cz).
+  Fixes s390x/zfcpdump build failure.
+- commit c27d6ab
+
+-------------------------------------------------------------------
 Fri Oct  2 18:21:59 CEST 2020 - jdelvare@suse.de
 
 - drm/amdgpu: restore proper ref count in
   amdgpu_display_crtc_set_config (git-fixes).
 - commit 08db7a3
+
+-------------------------------------------------------------------
+Fri Oct  2 14:39:57 CEST 2020 - mkubecek@suse.cz
+
+- config: disable SECURITY_SELINUX_DISABLE also in arm*/* (bsc#1176923)
+  The arm configs (both 64-bit and 32-bit) are currently disabled so that
+  they cannot be updated the usual way. Apply the changes manually.
+- commit a1b15af
+
+-------------------------------------------------------------------
+Fri Oct  2 10:55:44 CEST 2020 - mkubecek@suse.cz
+
+- config: disable SECURITY_SELINUX_DISABLE (bsc#1176923)
+- commit 9702a5f
 
 -------------------------------------------------------------------
 Thu Oct  1 18:47:56 CEST 2020 - jslaby@suse.cz
@@ -585,6 +745,12 @@ Thu Oct  1 18:47:56 CEST 2020 - jslaby@suse.cz
 - commit ea492d4
 
 -------------------------------------------------------------------
+Wed Sep 30 14:35:06 CEST 2020 - ohering@suse.de
+
+- rpm/constraints.in: recognize also kernel-source-azure (bsc#1176732)
+- commit 7214bbe
+
+-------------------------------------------------------------------
 Mon Sep 28 18:54:40 CEST 2020 - jslaby@suse.cz
 
 - hv_netvsc: Switch the data path at the right time during
@@ -683,6 +849,14 @@ Mon Sep 28 18:52:42 CEST 2020 - jslaby@suse.cz
 - ibmvnic fix NULL tx_pools and rx_tools issue at do_reset
   (bsc#1012628).
 - commit 4416947
+
+-------------------------------------------------------------------
+Mon Sep 28 01:08:38 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc7
+- eliminated 1 patch
+  - patches.suse/dax-Fix-compilation-for-CONFIG_DAX-CONFIG_FS_DAX.patch
+- commit a5f5f07
 
 -------------------------------------------------------------------
 Sun Sep 27 10:02:02 CEST 2020 - tiwai@suse.de
@@ -898,6 +1072,13 @@ Tue Sep 22 11:36:53 CEST 2020 - msuchanek@suse.de
 - commit ecaf78d
 
 -------------------------------------------------------------------
+Tue Sep 22 00:29:58 CEST 2020 - mkubecek@suse.cz
+
+- dax: Fix compilation for CONFIG_DAX && !CONFIG_FS_DAX
+  (http://lkml.kernel.org/r/20200921010359.GO3027113@arch-chirva.localdomain).
+- commit 289d4e9
+
+-------------------------------------------------------------------
 Mon Sep 21 13:00:19 CEST 2020 - jslaby@suse.cz
 
 - Update
@@ -912,6 +1093,14 @@ Mon Sep 21 12:44:24 CEST 2020 - tiwai@suse.de
 - Update config files: turn off CONFIG_SND_CTL_VALIDATION again (bsc#1176200)
   This causes errors on ASoC SOF driver.
 - commit b7791aa
+
+-------------------------------------------------------------------
+Mon Sep 21 07:08:13 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc6
+- refresh configs
+  - drop VGACON_SOFT_SCROLLBACK and related
+- commit bf46e69
 
 -------------------------------------------------------------------
 Mon Sep 21 03:15:11 CEST 2020 - glin@suse.com
@@ -1239,6 +1428,15 @@ Thu Sep 17 19:44:40 CEST 2020 - jslaby@suse.cz
 - ARM: OMAP2+: Fix an IS_ERR() vs NULL check in _get_pwrdm()
   (bsc#1012628).
 - commit 83e873a
+
+-------------------------------------------------------------------
+Mon Sep 14 10:21:33 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc5
+- eliminated 2 patches
+  patches.suse/drm-virtio-fix-unblank.patch
+  patches.suse/firmware_loader-fix-memory-leak-for-paged-buffer.patch
+- commit e921ea1
 
 -------------------------------------------------------------------
 Sat Sep 12 20:07:52 CEST 2020 - jslaby@suse.cz
@@ -1609,13 +1807,31 @@ Mon Sep  7 12:03:50 CEST 2020 - yousaf.kaukab@suse.com
 
 - coresight: fix offset by one error in counting ports
   (bsc#1175054).
-- commit 038472f
+- commit 1169fee
+
+-------------------------------------------------------------------
+Mon Sep  7 10:27:30 CEST 2020 - tiwai@suse.de
+
+- Update config files: add CONFIG_GCOV_KENREL=n
+  Define this explicitly as kbuild bot still uses gcc9 for testing
+- commit 0dcb9bb
 
 -------------------------------------------------------------------
 Mon Sep  7 09:10:13 CEST 2020 - tiwai@suse.de
 
 - Update config files: enable a few missing Intel SOF and SST ASoC entries (bsc#1176200)
-- commit 87f4d0a
+- commit 074fdcf
+
+-------------------------------------------------------------------
+Mon Sep  7 06:49:28 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc4
+- eliminated 1 patch
+  - patches.suse/net-packet-fix-overflow-in-tpacket_rcv.patch
+- update configs
+  - new config option:
+    - XEN_UNPOPULATED_ALLOC=y (x86_64 only)
+- commit 2817e6d
 
 -------------------------------------------------------------------
 Sun Sep  6 09:39:46 CEST 2020 - jslaby@suse.cz
@@ -2093,6 +2309,23 @@ Fri Sep  4 16:59:40 CEST 2020 - mkubecek@suse.cz
 - commit eba56bd
 
 -------------------------------------------------------------------
+Mon Aug 31 07:23:19 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc3
+- eliminated 1 patch
+  - patches.suse/Revert-HID-usbhid-do-not-sleep-when-opening-device.patch
+- update configs
+  - new config option:
+    - PPC_PROT_SAO_LPAR=n (ppc64 and ppc64le)
+- commit 3cc13d8
+
+-------------------------------------------------------------------
+Sun Aug 30 22:44:37 CEST 2020 - mkubecek@suse.cz
+
+- series.conf: whitespace cleanup
+- commit efc1fed
+
+-------------------------------------------------------------------
 Fri Aug 28 19:19:49 CEST 2020 - msuchanek@suse.de
 
 - obsolete_kmp: provide newer version than the obsoleted one
@@ -2104,7 +2337,7 @@ Fri Aug 28 10:13:28 CEST 2020 - tiwai@suse.de
 
 - fs/cachefiles: Drop superfluous readpages aops NULL check
   (bsc#1175245).
-- commit 34111a4
+- commit e4cd10b
 
 -------------------------------------------------------------------
 Thu Aug 27 09:52:54 CEST 2020 - jslaby@suse.cz
@@ -2138,6 +2371,13 @@ Thu Aug 27 09:52:54 CEST 2020 - jslaby@suse.cz
   (bsc#1012628).
 - gre6: Fix reception with IP6_TNL_F_RCV_DSCP_COPY (bsc#1012628).
 - commit 4d7a832
+
+-------------------------------------------------------------------
+Thu Aug 27 09:48:20 CEST 2020 - mkubecek@suse.cz
+
+- Update upstream reference:
+  patches.suse/Revert-HID-usbhid-do-not-sleep-when-opening-device.patch.
+- commit 993f7ee
 
 -------------------------------------------------------------------
 Wed Aug 26 12:50:42 CEST 2020 - jslaby@suse.cz
@@ -2422,11 +2662,40 @@ Tue Aug 25 08:12:56 CEST 2020 - jslaby@suse.cz
 - commit fb64fba
 
 -------------------------------------------------------------------
+Mon Aug 24 20:02:21 CEST 2020 - mkubecek@suse.cz
+
+- Revert "HID: usbhid: do not sleep when opening device".
+- commit 4229f31
+
+-------------------------------------------------------------------
+Mon Aug 24 15:02:20 CEST 2020 - wqu@suse.com
+
+- Refresh
+  patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch.
+- commit 31073f8
+
+-------------------------------------------------------------------
 Mon Aug 24 14:57:08 CEST 2020 - wqu@suse.com
 
 - Refresh
   patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch.
 - commit 74987e4
+
+-------------------------------------------------------------------
+Mon Aug 24 06:49:26 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc2
+- eliminated 1 patch
+  - patches.suse/squashfs-avoid-bio_alloc-failure-with-1Mbyte-blocks.patch
+- refresh configs
+- commit 7bec2d7
+
+-------------------------------------------------------------------
+Sun Aug 23 10:12:27 CEST 2020 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move an "almost mainline" patch to "almost mainline" section.
+- commit 4e4b6b0
 
 -------------------------------------------------------------------
 Fri Aug 21 20:20:08 CEST 2020 - jslaby@suse.cz
@@ -2830,6 +3099,12 @@ Fri Aug 21 12:16:12 CEST 2020 - jwiesner@suse.com
 - bonding: fix active-backup failover for current ARP slave
   (bsc#1174771).
 - commit 1874dbd
+
+-------------------------------------------------------------------
+Thu Aug 20 08:39:02 CEST 2020 - jslaby@suse.cz
+
+- drm/virtio: fix unblank (make virtio gpu work again).
+- commit 42af09b
 
 -------------------------------------------------------------------
 Wed Aug 19 11:43:13 CEST 2020 - jslaby@suse.cz
@@ -3637,7 +3912,125 @@ Wed Aug 19 08:13:41 CEST 2020 - tiwai@suse.de
 
 - squashfs: avoid bio_alloc() failure with 1Mbyte blocks
   (bsc#1175308).
-- commit 61ee09a
+- commit 8f3c2bf
+
+-------------------------------------------------------------------
+Tue Aug 18 01:50:23 CEST 2020 - mkubecek@suse.cz
+
+- config: restore PHYLIB=m in */vanilla
+  As the PHYLIB/ETHTOOL_NETLINK dependency fix is now in 5.9-rc1 tarball,
+  we can apply the changes from commit 4756d9edf730 ("config: restore
+  PHYLIB=m") also to vanilla configs.
+- commit 4d4447f
+
+-------------------------------------------------------------------
+Tue Aug 18 00:47:00 CEST 2020 - mkubecek@suse.cz
+
+- Update to 5.9-rc1
+- eliminated 50 patches (39 stable, 11 other)
+- disable ARM architectures (need config update)
+- disable (needs update)
+  - patches.suse/btrfs-btrfs-use-the-new-VFS-super_block_dev.patch
+- refresh
+  - patches.rpmify/Add-ksym-provides-tool.patch
+  - patches.suse/acpi_thermal_passive_blacklist.patch
+  - patches.suse/add-product-identifying-information-to-vmcoreinfo.patch
+  - patches.suse/apparmor-compatibility-with-v2.x-net.patch
+  - patches.suse/b43-missing-firmware-info.patch
+  - patches.suse/dm-mpath-no-partitions-feature
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+- new config options:
+  - General setup
+    - KERNEL_ZSTD=n
+    - RD_ZSTD=y
+  - File systems
+    - FS_ENCRYPTION_INLINE_CRYPT=y
+    - TMPFS_INODE64=y
+  - Kernel hacking
+    - DEBUG_FORCE_FUNCTION_ALIGN_32B=n
+    - DEBUG_FS_ALLOW_ALL=y
+    - DEBUG_FS_DISALLOW_MOUNT=n
+    - DEBUG_FS_ALLOW_NONE=n
+    - RCU_REF_SCALE_TEST=n
+    - TEST_FPU=n
+  - PCI support
+    - PCI_J721E_HOST=n
+    - PCI_J721E_EP=n
+  - Storage
+    - NVME_TARGET_PASSTHRU=n
+    - SCSI_UFS_CRYPTO=y
+    - BCACHE_ASYNC_REGISTRATION=y
+  - Network device support
+    - MLX5_IPSEC=y
+    - MT7663S=m
+    - WLAN_VENDOR_MICROCHIP=y
+    - RTW88_8821CE=m
+  - Character devices
+    - HW_RANDOM_BA431=m
+    - SERIAL_IMX_EARLYCON=n
+  - Power management
+    - CHARGER_BQ2515X=m
+    - SENSORS_CORSAIR_CPRO=m
+    - THERMAL_NETLINK=y
+    - REGULATOR_PCA9450=m
+    - REGULATOR_QCOM_USB_VBUS=m
+    - REGULATOR_QCOM_LABIBB=m
+    - REGULATOR_FAN53880=m
+    - REGULATOR_SY8827N=m
+  - Multimedia support
+    - VIDEO_RDACM20=m
+    - VIDEO_DW9768=m
+    - VIDEO_MAX9286=m
+  - Graphics support
+    - DRM_AMD_DC_DCN3_0=y
+    - NOUVEAU_DEBUG_PUSH=n
+    - DRM_PANEL_SITRONIX_ST7703=n
+  - Sound card support
+    - SND_HDA_INTEL_HDMI_SILENT_STREAM=y
+    - SND_SOC_MAX98373_SDW=m
+  - USB support
+    - USB_OTG_PRODUCTLIST=n
+    - USB_OTG_DISABLE_EXTERNAL_HUB=n
+  - X86 Platform Specific Device Drivers
+    - INTEL_ATOMISP2_LED=m
+  - Industrial I/O support
+    - SCD30_CORE=n
+    - INV_ICM42600_I2C=n
+    - INV_ICM42600_SPI=n
+  - Misc drivers
+    - SPI_LANTIQ_SSC=n
+    - PINCTRL_EMMITSBURG=m
+    - GPIO_PCA9570=m
+    - IR_TOY=m
+    - CEC_CH7322=m
+    - LEDS_CLASS_MULTICOLOR=m
+    - XILINX_ZYNQMP_DPDMA=m
+    - MLX5_VDPA=n
+    - CLK_HSDK=n
+  - i386
+    - REGULATOR_CROS_EC=m
+  - ppc
+    - PPC_QUEUED_SPINLOCKS=y
+  - s390x
+    - BPF_KPROBE_OVERRIDE=n
+    - FAIL_FUNCTION=n
+  - riscv64
+    - NO_HZ_IDLE=y
+    - VIRT_CPU_ACCOUNTING_GEN=y
+    - JUMP_LABEL=y
+    - STATIC_KEYS_SELFTEST=n
+    - STACKPROTECTOR=y
+    - STACKPROTECTOR_STRONG=y
+    - SND_SOC_MAX98373_I2C=m
+    - DEBUG_KMEMLEAK=n
+    - DEBUG_VM_PGTABLE=n
+    - PROVE_LOCKING=n
+    - LOCK_STAT=n
+    - DEBUG_WW_MUTEX_SLOWPATH=n
+    - DEBUG_LOCK_ALLOC=n
+    - KCOV=n
+    - CONTEXT_TRACKING_FORCE=n
+- commit 6a30651
 
 -------------------------------------------------------------------
 Mon Aug 17 16:31:56 CEST 2020 - tiwai@suse.de
@@ -12508,7 +12901,7 @@ Wed Feb 26 14:05:58 CET 2020 - mhocko@suse.com
 Tue Feb 25 11:49:29 CET 2020 - meissner@suse.de
 
 - sign also s390x kernel images (bsc#1163524)
-- commit b38b611
+- commit fd52e6c
 
 -------------------------------------------------------------------
 Tue Feb 25 11:37:02 CET 2020 - jroedel@suse.de

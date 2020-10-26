@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 22 12:20:38 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.28
+  - Add 'setup-selinux' command for easy setup of a SELinux system
+  - Allow complex commands for the 'run' command
+  - SELinux: Fix /etc / overlay labeling
+
+-------------------------------------------------------------------
 Wed Oct 14 09:32:15 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Version 2.27

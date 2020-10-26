@@ -5226,4 +5226,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.8.15 &amp; BleedingTooth CVE fixes &amp; ORC fix</comment>
     <requestid>842044</requestid>
   </revision>
+  <revision rev="558" vrev="1">
+    <srcmd5>feea3d2149ded13ff652fbfa502831d2</srcmd5>
+    <version>5.9.1</version>
+    <time>1603725198</time>
+    <user>dimstar_suse</user>
+    <comment>GIO_UNIMAP fix &amp; 5.9.1 &amp; DRM fixes</comment>
+    <requestid>844025</requestid>
+  </revision>
 </revisionlist>

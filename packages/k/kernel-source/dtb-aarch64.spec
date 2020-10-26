@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.8
-%define patchversion 5.8.15
+%define srcversion 5.9
+%define patchversion 5.9.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        5.8.15
+Version:        5.9.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc680e93
+Release:        <RELEASE>.g435e92d
 %else
 Release:        0
 %endif
@@ -125,15 +125,6 @@ Source121:      sysctl.tar.bz2
 %description
 Device Tree files for $MACHINES.
 
-%package -n dtb-al
-Summary:        Alpine Labs based arm64 systems
-Group:          System/Boot
-Provides:       multiversion(dtb)
-Requires(post): coreutils
-
-%description -n dtb-al
-Device Tree files for Alpine Labs based arm64 systems.
-
 %package -n dtb-allwinner
 Summary:        Allwinner based arm64 systems
 Group:          System/Boot
@@ -151,6 +142,16 @@ Requires(post): coreutils
 
 %description -n dtb-altera
 Device Tree files for Altera based arm64 systems.
+
+%package -n dtb-amazon
+Summary:        Amazon based arm64 systems
+Group:          System/Boot
+Provides:       dtb-al = %version
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-amazon
+Device Tree files for Amazon based arm64 systems.
 
 %package -n dtb-amd
 Summary:        AMD based arm64 systems
@@ -358,7 +359,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/arm64/boot/dts
-for dts in al/*.dts allwinner/*.dts altera/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -370,7 +371,7 @@ done
 %install
 
 cd pp
-for dts in al/*.dts allwinner/*.dts altera/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -385,13 +386,6 @@ for dts in al/*.dts allwinner/*.dts altera/*.dts amd/*.dts amlogic/*.dts apm/*.d
 done
 cd -
 
-%post -n dtb-al
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
 %post -n dtb-allwinner
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
@@ -400,6 +394,13 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-altera
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-amazon
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -547,17 +548,6 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %ifarch aarch64 riscv64
-%files -n dtb-al -f dtb-al.list
-%else
-%files -n dtb-al
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/al
-%{dtbdir}/al/*.dtb
-
-%ifarch aarch64 riscv64
 %files -n dtb-allwinner -f dtb-allwinner.list
 %else
 %files -n dtb-allwinner
@@ -578,6 +568,17 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/altera
 %{dtbdir}/altera/*.dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-amazon -f dtb-amazon.list
+%else
+%files -n dtb-amazon
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/amazon
+%{dtbdir}/amazon/*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-amd -f dtb-amd.list

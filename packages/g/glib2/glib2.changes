@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:45:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable building of documentation:
+  + Toggle gtk_doc from bcond_with to bcond_without.
+  + Use sed to replace gtk-doc version in
+    docs/reference/meson.build with 1.32.
+
+-------------------------------------------------------------------
+Tue Oct 20 14:00:37 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.66.2:
+  + Important and time-critical fix to DST transitions which will
+    happen in Europe on 2020-10-25 on distributions which use the
+    ‘slim’ tzdata format (which is now the default in tzdata/tzcode
+    2020b).
+  + Further timezone handling changes to restore support for
+    changing the timezone when `/etc/localtime/` changes.
+  + Fix deadlock on Windows when `G_SLICE` is set in the
+    environment.
+  + Fix UTF-8 validation when escaping URI components.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 15:13:27 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.66.1:
+  + A performance problem where timezones were reloaded from disk
+    every time a `GTimeZone` was created has been fixed, but this
+    means that changes to `/etc/localtime` will not take effect
+    until a process restarts; future changes in a subsequent 2.66.x
+    release will improve this.
+  + Security fix for incorrect scope/zone ID parsing in URIs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 02:56:00 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.66.0:
+  + * Bugs fixed:
+    - Missing tab in makefile rule.
+    - guri: Fix user passed to g_uri_split_with_user() not being
+      NULL'd.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 02:55:03 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.65.3:
+  + Fixes to the new `statx()` calls — note that since GLib 2.65.2
+    uses `statx()` (if available) instead of
+    `stat()`/`fstat()`/`lstat()`/`fstatat()`, syscall sandboxing
+    for third party applications might need to be updated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 02:55:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.65.2:
+  + Support `statx()` and `G_FILE_ATTRIBUTE_TIME_CREATED`.
+  + Fix deadlock in `g_subprocess_communicate_async()`.
+  + Add `%f`/microsecond placeholder support to
+    `g_date_time_format()`.
+- Changes from version 2.65.1:
+  + Add `GUri` API for parsing, building and representing URIs
+    according to [RFC 3986](https://tools.ietf.org/html/rfc3986).
+  + Fix handling of xattr data with embedded nuls.
+  + Add `g_file_set_contents_full()` which gives more control over
+    fsyncs.
+  + Add a `x-gvfs-notrash` option to disable trash on certain
+    mounts.
+  + Support ‘slim’ TZif files generated with `zic -b slim`.
+  + Support emitting profiling marks from `GMainContext` to sysprof
+    capture files.
+  + Accept IPv6 zone IDs in `g_hostname_is_ip_address()`.
+  + Updated translations.
+- Rebase glib2-gdbus-codegen-version.patch.
+- Build without gtk-doc: it would require a not yet released
+  version of gtk-doc.
+
+-------------------------------------------------------------------
 Sun Oct  4 11:01:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.64.6:

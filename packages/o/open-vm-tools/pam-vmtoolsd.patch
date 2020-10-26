@@ -1,14 +1,21 @@
---- a/open-vm-tools/scripts/linux/pam.d/vmtoolsd
-+++ b/open-vm-tools/scripts/linux/pam.d/vmtoolsd
-@@ -1,7 +1,5 @@
- #%PAM-1.0
--auth       required         pam_shells.so
--auth       sufficient       pam_unix.so shadow
--auth       required         pam_unix_auth.so shadow
--account    required         pam_shells.so
--account    sufficient       pam_unix.so
--account    required         pam_unix_acct.so
-+auth     required       pam_shells.so
-+auth     requisite      pam_nologin.so
-+auth     include        common-auth
-+account  include        common-account
+--- a/open-vm-tools/pam/suse
++++ b/open-vm-tools/pam/suse
+@@ -1,6 +1,5 @@
++#%PAM-1.0
+ auth     required       pam_shells.so
+ auth     requisite      pam_nologin.so
+-auth     [user_unknown=ignore success=ok ignore=ignore auth_err=die default=bad]    pam_securetty.so
+ auth     include        common-auth
+ account  include        common-account
+-
+--- a/open-vm-tools/services/vmtoolsd/Makefile.am
++++ b/open-vm-tools/services/vmtoolsd/Makefile.am
+@@ -78,7 +78,7 @@ install-data-hook:
+ install-exec-hook:
+ 	$(INSTALL) -d $(DESTDIR)/etc/vmware-tools
+ 	$(INSTALL) -d $(DESTDIR)/$(PAM_PREFIX)/pam.d/
+-	$(INSTALL) $(top_srcdir)/pam/generic $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd
++	$(INSTALL) $(top_srcdir)/pam/suse $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd
+ 
+ uninstall-hook:
+ 	rm -f $(DESTDIR)/$(PAM_PREFIX)/pam.d/vmtoolsd

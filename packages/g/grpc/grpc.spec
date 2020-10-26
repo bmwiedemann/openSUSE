@@ -16,12 +16,12 @@
 #
 
 
-%define lver 12
+%define lver 13
 %define lverp 1
 %define lverplugin 1
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.32.0
+Version:        1.33.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -29,8 +29,6 @@ Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
-# PATCH-FIX-UPSTREAM grpc-find-re2-via-pkgconfig.patch gh#grpc/grpc#24088 badshah400@gmail.com -- Attempt to find Re2 library via pkg-config; patch taken from upstream PR
-Patch0:         grpc-find-re2-via-pkgconfig.patch
 # PATCH-FIX-UPSTREAM grpc-correct-pkgconfig-path.patch badshah400@gmail.com -- Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
 Patch1:         grpc-correct-pkgconfig-path.patch
 BuildRequires:  abseil-cpp-source

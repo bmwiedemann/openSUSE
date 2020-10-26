@@ -567,4 +567,12 @@ update to version 2.3.0
     <comment>Ussuri Update</comment>
     <requestid>803562</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ddcace809a3bed8dc7773289c57a2abc</srcmd5>
+    <version>3.2.2</version>
+    <time>1603725301</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841179</requestid>
+  </revision>
 </revisionlist>

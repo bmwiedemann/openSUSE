@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:12:54 UTC 2020 - cloud-devel@suse.de
+
+- update to version 7.2.0
+  - Add note for Victoria release
+  - Add support for Cinder API mv3.61
+  - zuul functional job: drop the custom playbooks
+  - Add doc linting to pep8 target
+  - Update master for stable/ussuri
+  - Clean up some old v1 API references
+  - Add Python3 victoria unit tests
+  - use stevedore to load util plugins
+  - Bump hacking to 3.1.0
+  - Remove excess whitespace in ignore-path
+  - Add directive to document CLI
+  - Add functional-py38 job
+  - Python API in python-cinderclient
+  - Fix hacking min version to 3.0.1
+  - Fix pygments style
+  - Fix typo: dow -> down
+  - Remove Babel from requirements
+  - Switch to newer openstackdocstheme and reno versions
+  - Use importlib to take place of imp module
+  - trivial: Drop references to os-testr
+  - Add py38 package metadata
+  - Bump default tox env from py37 to py38
+  - [goal] Migrate python-cinderclient jobs to focal
+  - Add commands for default type overrides
+  - Use unittest.mock instead of third party mock
+  - Stop to use the __future__ module.
+
+-------------------------------------------------------------------
 Tue May 12 10:02:01 UTC 2020 - cloud-devel@suse.de
 
 - update to version 7.0.0

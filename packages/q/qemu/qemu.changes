@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 14 13:05:43 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Note: As part of the "Close the Leap Gap" effort, it's been
+  decided that our SDL2 support in qemu is not worth trying
+  to maintain. Long ago SLE qemu stopped including SDL2 support and
+  now we will do the same for the openSUSE releases going forward.
+  Accordingly SDL2 options are now configured out, and the two sub-
+  packages which are SDL2 specific, namely qemu-audio-sdl and
+  qemu-ui-sdl, are no longer generated, and due to the rpm package
+  conflicts used for those packages, they will be uninstalled from
+  systems as qemu updates move forward
+- Drop e2fsprogs-devel and libpcap-devel as BuildRequires packages.
+  They have not actually been needed to build qemu for a very long
+  time
+- Add more forsplits files
+
+-------------------------------------------------------------------
 Wed Oct  7 13:34:49 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Create qemu-skiboot sub-package. Use update-alternatives mechanism

@@ -1,0 +1,22 @@
+Index: jupyter_console-6.1.0/jupyter_console/tests/test_console.py
+===================================================================
+--- jupyter_console-6.1.0.orig/jupyter_console/tests/test_console.py	2020-01-16 00:32:32.000000000 +0100
++++ jupyter_console-6.1.0/jupyter_console/tests/test_console.py	2020-09-15 12:58:23.543962909 +0200
+@@ -9,7 +9,7 @@ import sys
+ import tempfile
+ from subprocess import check_output
+ 
+-from nose import SkipTest
++import pytest
+ 
+ from traitlets.tests.utils import check_help_all_output
+ from ipython_genutils.testing import decorators as dec
+@@ -63,7 +63,7 @@ def start_console():
+     try:
+         p = pexpect.spawn(cmd, args=args, env=env)
+     except IOError:
+-        raise SkipTest("Couldn't find command %s" % cmd)
++        pytest.skip("Couldn't find command %s" % cmd)
+     
+     # timeout after one minute
+     t = 60

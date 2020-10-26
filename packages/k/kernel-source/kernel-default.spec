@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.8
-%define patchversion 5.8.15
+%define srcversion 5.9
+%define patchversion 5.9.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.8.15
+Version:        5.9.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc680e93
+Release:        <RELEASE>.g435e92d
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-c680e9353e2ed383d01d7da7cf68fd65898a2432
-Provides:       kernel-srchash-c680e9353e2ed383d01d7da7cf68fd65898a2432
+Provides:       kernel-%build_flavor-base-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
+Provides:       kernel-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
 # END COMMON DEPS
-Provides:       %name-srchash-c680e9353e2ed383d01d7da7cf68fd65898a2432
+Provides:       %name-srchash-435e92d56d394d19f6e8d6bfa2fcfe909943e076
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
@@ -962,13 +962,16 @@ if [ %CONFIG_MODULES = y ]; then
     fi
 
     # These files are required for building external modules
-    for FILE in arch/powerpc/lib/crtsavres.o arch/arm64/kernel/ftrace-mod.o arch/*/kernel/macros.s; do
+    for FILE in arch/powerpc/lib/crtsavres.o arch/arm64/kernel/ftrace-mod.o \
+		arch/*/kernel/macros.s scripts/module.lds
+    do
 	    if [ -f %kernel_build_dir/$FILE ]; then
 		echo $FILE >> %my_builddir/obj-files
 	    fi
     done
 
-    tar -cf - -T %my_builddir/obj-files | \
+    tar --exclude=\*.ipa-clones --exclude=.config.old --exclude=.kernel-binary.spec.buildenv \
+        -cf - -T %my_builddir/obj-files | \
 	tar -xf - -C %rpm_install_dir/%cpu_arch_flavor
     # bnc#507084
     find %rpm_install_dir/%cpu_arch_flavor/scripts -type f -perm -111 | \
@@ -985,10 +988,6 @@ if [ %CONFIG_MODULES = y ]; then
 fi
 
 rm -rf %{buildroot}/lib/firmware
-if [ %CONFIG_MODULES = y ]; then
-	# file contains number of CPUs, making builds hard to reproduce
-	find %{buildroot}/usr/src/linux-*-obj/ -name .kernel-binary.spec.buildenv -delete
-fi
 
 add_dirs_to_filelist() {
     sed -rn '
@@ -1018,6 +1017,9 @@ for file in %buildroot/boot/symtypes* %buildroot/lib/modules/*/{build,source}; d
 	f=${file##%buildroot}
 	echo "$f"
 done | add_dirs_to_filelist >%my_builddir/kernel-devel.files
+( cd %buildroot ; find .%obj_install_dir/%cpu_arch_flavor -type f ; ) | \
+sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
+add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 
 {   cd %buildroot
     for f in boot/*; do
@@ -1268,13 +1270,9 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 
 %files devel -f kernel-devel.files
 %defattr(-,root,root)
-%dir %obj_install_dir
-%dir %obj_install_dir/%cpu_arch
 %dir /usr/src/linux-obj
 %dir /usr/src/linux-obj/%cpu_arch
 %ghost /usr/src/linux-obj/%cpu_arch_flavor
-%obj_install_dir/%cpu_arch_flavor
-%exclude %obj_install_dir/%cpu_arch_flavor/Symbols.list
 %if %kmp_target_cpu != %cpu_arch
 %obj_install_dir/%kmp_target_cpu
 /usr/src/linux-obj/%kmp_target_cpu

@@ -1,7 +1,11 @@
-Index: tftp/main.c
+---
+ tftp/main.c |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: tftp-hpa-5.2/tftp/main.c
 ===================================================================
---- tftp/main.c.orig
-+++ tftp/main.c
+--- tftp-hpa-5.2.orig/tftp/main.c
++++ tftp-hpa-5.2/tftp/main.c
 @@ -39,6 +39,7 @@
   * TFTP User Program -- Command Interface.
   */

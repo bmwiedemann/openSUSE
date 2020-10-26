@@ -17,23 +17,23 @@
 
 
 Name:           python-ironicclient
-Version:        4.1.0
+Version:        4.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-ironicclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-4.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-ironicclient/python-ironicclient-4.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs >= 1.3.0
-BuildRequires:  python3-dogpile.cache >= 0.6.2
+BuildRequires:  python3-dogpile.cache >= 0.8.0
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-jsonschema >= 2.6.0
+BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
-BuildRequires:  python3-osc-lib >= 1.10.0
+BuildRequires:  python3-osc-lib >= 2.0.0
 BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.utils >= 3.33.0
 BuildRequires:  python3-oslotest
@@ -54,15 +54,15 @@ ironicclient module) and a command-line interface (ironic).
 %package -n python3-ironicclient
 Summary:        Python API and CLI for OpenStack Ironic
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-appdirs >= 1.3.0
-Requires:       python3-dogpile.cache >= 0.6.2
-Requires:       python3-jsonschema >= 2.6.0
+Requires:       python3-dogpile.cache >= 0.8.0
+Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstackclient
-Requires:       python3-osc-lib >= 1.10.0
+Requires:       python3-osc-lib >= 2.0.0
 Requires:       python3-oslo.i18n
-Requires:       python3-oslo.serialization >= 2.18.0
+Requires:       python3-oslo.serialization
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
@@ -90,13 +90,13 @@ Each implements 100% of the OpenStack Ironic API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-ironicclient-4.1.0
+%autosetup -p1 -n python-ironicclient-4.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=4.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=4.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
