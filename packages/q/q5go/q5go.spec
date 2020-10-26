@@ -17,14 +17,13 @@
 
 
 Name:           q5go
-Version:        1.1.1
+Version:        2.0
 Release:        0
 Summary:        A Go board including an editor and analysis frontend
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://github.com/bernds/q5go
 Source0:        https://github.com/bernds/%{name}/archive/%{name}-%{version}.tar.gz
-Patch0:         0001-Add-missing-includes.patch
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -77,7 +76,7 @@ popd
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/q5go
 %{_datadir}/applications/q5Go.desktop
 %{_datadir}/pixmaps/q5go.png

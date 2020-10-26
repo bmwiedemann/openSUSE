@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:07:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0
+  * Pattern search is now available
+  * atabase load times are reduced, and threading was added
+    so that the user interface remains responsive.
+  * Multiple online games can now be observed in a single
+    window with clickable previews to switch between them.
+  * There is a new "Tip of the day" dialog on startup, which
+    displays features that are maybe not easily discoverable.
+  * Several new high resolution wood textures for the board
+    to choose from.
+  * When playing engines that are capable of analysis, the
+    evaluation is now collected during the game and can be
+    displayed live.
+  * Engine configuration now allows engines to be
+    unrestricted in board size and komi
+  * Some GTP bugs were fixed, which may improve compatibility
+    with certain engines.
+  * Window titles can now be overriden in the settings,
+    which should help with streaming setups.
+  * Performance improvements for the screen updates should
+    now make it feasible to turn off quiet mode when online
+  * There is a new option to highlight the user's own chat
+    messages
+- Drop 0001-Add-missing-includes.patch. Fixed upstream.
+
+-------------------------------------------------------------------
 Sun May  3 14:42:06 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.1. Bugfix release:
