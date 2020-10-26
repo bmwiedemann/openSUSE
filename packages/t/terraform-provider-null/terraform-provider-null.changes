@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 20 09:28:25 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.0:
+  * add .tfproto5 file for releases
+  * Update CHANGELOG.md
+  * Update CHANGELOG.md
+  * update go version in go.mod
+  * normalise naming conventions
+  * Add descriptions
+  * update CI
+  * SDK v2.0.3
+  * update provider directory layout
+  * force go modules on for travis
+  * restore hashibot behaviors post migration
+  * Update CHANGELOG.md
+  * switch to standalone sdk
+  * bump terraform to v0.12.8
+  * Cleanup after v2.1.2 release
+  * Fix typo in resource.html.markdown
+
+-------------------------------------------------------------------
 Tue Aug 11 10:23:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - spec-cleaner run
