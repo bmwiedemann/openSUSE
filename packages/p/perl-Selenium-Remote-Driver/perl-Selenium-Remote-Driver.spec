@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Selenium-Remote-Driver
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Selenium-Remote-Driver
-Version:        1.37
+Version:        1.38
 Release:        0
 %define cpan_name Selenium-Remote-Driver
 Summary:        Perl Client for Selenium Remote Driver
 License:        Apache-2.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TE/TEODESIAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 # MANUAL
@@ -49,6 +49,7 @@ BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::LWP::UserAgent)
 BuildRequires:  perl(Test::LongString)
+BuildRequires:  perl(Test::MockModule)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(XML::Simple)
 BuildRequires:  perl(namespace::clean)
