@@ -18,12 +18,12 @@
 
 %define octpkg  netcdf
 Name:           octave-forge-%{octpkg}
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        NetCDF interface for Octave
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  netcdf-devel
