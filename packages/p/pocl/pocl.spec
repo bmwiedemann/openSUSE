@@ -113,8 +113,7 @@ sed -i 's/-Wl,--no-undefined//g' build.ninja
 
 %install
 %cmake_install
-# FIXME - should be handled upstream
-mv %{buildroot}%{_prefix}%{_libdir} %{buildroot}%{_libdir}
+# TODO: check packaging instructions
 sed -i 's|%{_prefix}%{_prefix}/|%{_prefix}/|g' %{buildroot}%{_datadir}/OpenCL/vendors/pocl.icd
 # Unbundle vecmath
 #rm -vf %%{buildroot}/%%{_libdir}/pocl/vecmath/
