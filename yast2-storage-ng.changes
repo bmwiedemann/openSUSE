@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 15:36:03 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added $LIBSTORAGE_IGNORE_PROBE_ERRORS environment variable
+  to ignore storage probing errors (bsc#1177332)
+- 4.3.16
+-------------------------------------------------------------------
 Wed Aug 26 10:08:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Unify profile element paths (bsc#1175680).
