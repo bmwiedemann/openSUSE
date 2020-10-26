@@ -109,4 +109,41 @@
     <comment></comment>
     <requestid>824174</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6663bbd93c199b7ce24b5726bac00677</srcmd5>
+    <version>0.23.1</version>
+    <time>1603725645</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.24.1:
+  - Real-time rendering of preview window
+    # fzf can render preview window before the command completes
+    fzf --preview 'sleep 1; for i in $(seq 100); do echo $i; sleep 0.01; done'
+    # Preview window can process ANSI escape sequence (CSI 2 J) for clearing the display
+    fzf --preview 'for i in $(seq 100000); do
+      (( i % 200 == 0 )) &amp;&amp; printf &quot;\033[2J&quot;
+      echo &quot;$i&quot;
+      sleep 0.01
+    done'
+  - To indicate if --multi mode is enabled, fzf will print the number of
+    selected items even when no item is selected
+    seq 100 | fzf
+      # 100/100
+    seq 100 | fzf --multi
+      # 100/100 (0)
+    seq 100 | fzf --multi 5
+      # 100/100 (0/5)
+  - Added --preview-window options for disabling flags
+        nocycle
+        nohidden
+        nowrap
+        default
+  - Support preview scroll offset relative to window height
+    git grep --line-number '' |
+      fzf --delimiter : \
+          --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+          --preview-window +{2}-/2
+  - Added --preview-window option for sharp edges (--preview-window
+    sharp)</comment>
+    <requestid>843822</requestid>
+  </revision>
 </revisionlist>
