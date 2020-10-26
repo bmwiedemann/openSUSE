@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 14 03:11:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.10
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.10 2020-10-13T10:53:11+0900
+   - Add JSON::Validator::Store
+   - Changed JSON::Validator->schema() to also load
+   - JSON::Validator->schema() can handle draft 2019-09 schemas
+   - Documented what is not supported in draft 2019-09
+
+-------------------------------------------------------------------
 Tue Oct 13 03:09:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.09
