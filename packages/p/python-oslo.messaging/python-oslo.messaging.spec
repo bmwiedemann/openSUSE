@@ -17,15 +17,15 @@
 
 
 Name:           python-oslo.messaging
-Version:        12.1.2
+Version:        12.5.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.messaging
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.1.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.messaging/oslo.messaging-12.5.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-amqp >= 2.5.2
 BuildRequires:  python3-cachetools >= 2.0.0
@@ -37,7 +37,7 @@ BuildRequires:  python3-futurist >= 1.2.0
 BuildRequires:  python3-greenlet
 BuildRequires:  python3-kombu >= 4.6.6
 BuildRequires:  python3-mock
-BuildRequires:  python3-monotonic >= 0.6
+BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.i18n
 BuildRequires:  python3-oslo.log >= 3.36.0
@@ -48,7 +48,7 @@ BuildRequires:  python3-oslo.utils >= 3.37.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-pyngus
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testscenarios
@@ -62,7 +62,7 @@ of different messaging transports.
 %package -n python3-oslo.messaging
 Summary:        OpenStack oslo.messaging library
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-WebOb >= 1.7.1
 Requires:       python3-amqp >= 2.5.2
 Requires:       python3-cachetools >= 2.0.0
@@ -77,7 +77,7 @@ Requires:       python3-oslo.middleware >= 3.31.0
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.service >= 1.24.0
 Requires:       python3-oslo.utils >= 3.37.0
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}
 Obsoletes:      python2-oslo.messaging < 12.0.0
@@ -101,7 +101,7 @@ of different messaging transports.
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n oslo.messaging-12.1.2
+%autosetup -p1 -n oslo.messaging-12.5.0
 %py_req_cleanup
 
 %build

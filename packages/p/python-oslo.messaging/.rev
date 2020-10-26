@@ -476,4 +476,12 @@
     <comment></comment>
     <requestid>825319</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0ec3664ba58944e8878b9b76d15950d6</srcmd5>
+    <version>12.5.0</version>
+    <time>1603725410</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841211</requestid>
+  </revision>
 </revisionlist>

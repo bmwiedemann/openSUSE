@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:18 UTC 2020 - cloud-devel@suse.de
+
+- update to version 12.5.0
+  - Remove six usage
+  - Cancel consumer if queue down
+  - Remove the unused coding style modules
+  - Simplify tools/test-setup.sh
+  - Add release notes links to doc index
+  - Bump bandit version
+  - Remove monotonic usage
+  - Add py38 package metadata
+  - Fix pygments style
+  - tests: Resolves issues with kombu > 4.6.8
+  - Fix some typos
+  - Print warning message when connection running out
+  - Add Python3 victoria unit tests
+  - [goal] Migrate testing to ubuntu focal
+  - Add a ping endpoint to RPC dispatcher
+  - Catch ConnectionForced Exception
+  - Move legacy grenade jobs to Zuul v3
+  - Switch to newer openstackdocstheme and reno versions
+  - Update master for stable/ussuri
+  - Fix hacking min version to 3.0.1
+  - Imported Translations from Zanata
+  - Align contributing doc with oslo's policy
+  - Bump default tox env from py37 to py38
+  - Drop a python 2 exception management
+
+-------------------------------------------------------------------
 Wed Aug  5 12:36:58 UTC 2020 - cloud-devel@suse.de
 
 - Proper fix for forever looping test (bsc#1163136) is the kombu change below
