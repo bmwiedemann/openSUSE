@@ -17,19 +17,20 @@
 
 
 Name:           python-osprofiler
-Version:        3.1.0
+Version:        3.4.0
 Release:        0
 Summary:        OpenStack Profiler Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/osprofiler
-Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osprofiler/osprofiler-3.4.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
 BuildRequires:  python3-WebOb >= 1.7.1
 BuildRequires:  python3-ddt
 BuildRequires:  python3-docutils
 BuildRequires:  python3-elasticsearch
+BuildRequires:  python3-importlib-metadata
 BuildRequires:  python3-mock
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
 BuildRequires:  python3-oslo.config
@@ -56,6 +57,7 @@ Summary:        OpenStack Profiler Library
 Group:          Development/Languages/Python
 Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-WebOb >= 1.7.1
+Requires:       python3-importlib-metadata
 Requires:       python3-oslo.concurrency >= 3.26.0
 Requires:       python3-oslo.config
 Requires:       python3-oslo.log
@@ -85,7 +87,7 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for OSProfiler.
 
 %prep
-%autosetup -p1 -n osprofiler-3.1.0
+%autosetup -p1 -n osprofiler-3.4.0
 %py_req_cleanup
 
 %build

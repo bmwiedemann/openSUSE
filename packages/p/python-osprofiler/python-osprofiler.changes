@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:18:37 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Fix empty 'args' and 'kwargs' when using 'hide_args' with Jaeger
+  - drop mock from lower-constraints
+  - Bump default tox env from py37 to py38
+  - Add Python3 victoria unit tests
+  - Add py38 package metadata
+  - switch to importlib.metadata to find package version
+  - Fix StopIteration error on Ubuntu Focal
+  - Use unittest.mock instead of third party mock
+  - Fix pep8 failures
+  - Bump bandit version
+  - Switch to newer openstackdocstheme and reno versions
+  - Update master for stable/ussuri
+  - Enforce order of import statements
+
+-------------------------------------------------------------------
 Tue May 12 10:04:24 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.0
