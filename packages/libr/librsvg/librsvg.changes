@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:20:32 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.50.1:
+  + SVG2: Support a chain of uri() filters in the "filter"
+    property.
+  + Support CSS selectors for attribute matching, like
+    rect[attr^="prefix"].
+  + Fixed the geometry_for_layer() APIs to not ignore the passed
+    viewport.
+  + Fixed CSS "import" so it allows only files from the same base
+    directory.
+  + The pkg-config files (*.pc) do not define the 'svgz_supported'
+    and 'css_supported' variables anymore.  These variables were
+    hardcoded to 'true' and unchanged since 2011.
+  + The source repository no longer produces a
+    librsvg-uninstalled.pc file.
+
+-------------------------------------------------------------------
+Fri Sep 11 12:39:48 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 2.50.0:
+  + Librsvg now consumes much less memory for large SVG files.
+  + The 'font' shorthand in is now supported in CSS. Librsvg
+    ignores the 'line-height' sub-property because it cannot be
+    done easily with Pango, but everything else in 'font' should
+    work now.
+  + Many new features from SVG2:
+    - radialGradient now supports the "fr" property from SVG2.
+    - Support href attribute in addition to xlink:href per SVG2.
+    - Ignore missing filter references per SVG2.
+    - Support the mix-blend-mode property from SVG2 and the
+      Compositing and Blending Level 1 specification, so layers can
+      be composited with operators like multiply/screen/color-burn.
+    - Support the paint-order property from SVG2, so one can pick
+      the order in which a path's fill/stroke/markers are drawn.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul 21 06:59:15 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints for PowerPC avoid "no space left on device" build error

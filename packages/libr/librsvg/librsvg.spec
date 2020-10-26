@@ -20,19 +20,19 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.48.8
+Version:        2.50.1
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
-Source0:        https://download.gnome.org/sources/librsvg/2.48/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/librsvg/2.50/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  cargo
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.39
+BuildRequires:  rust >= 1.40
 BuildRequires:  vala
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(cairo-png) >= 1.2.0
