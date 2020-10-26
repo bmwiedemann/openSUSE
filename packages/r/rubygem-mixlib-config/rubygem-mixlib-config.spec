@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-config
-Version:        3.0.6
+Version:        3.0.9
 Release:        0
 %define mod_name mixlib-config
 %define mod_full_name %{mod_name}-%{version}
