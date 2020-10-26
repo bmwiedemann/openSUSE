@@ -647,4 +647,12 @@ update to version 5.1.0
     <comment>Ussuri Update</comment>
     <requestid>803577</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>29c3b257383a43a7eca7e9121ee2356b</srcmd5>
+    <version>17.2.1</version>
+    <time>1603725359</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841194</requestid>
+  </revision>
 </revisionlist>

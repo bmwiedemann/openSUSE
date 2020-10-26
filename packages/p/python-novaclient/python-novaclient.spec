@@ -17,12 +17,12 @@
 
 
 Name:           python-novaclient
-Version:        17.0.0
+Version:        17.2.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Nova
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-novaclient/python-novaclient-17.2.1.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cinderclient
@@ -35,7 +35,6 @@ BuildRequires:  python3-os-client-config
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -50,7 +49,7 @@ the OpenStack Nova API.
 Summary:        Python API and CLI for OpenStack Nova
 Group:          Development/Languages/Python
 Requires:       openssl
-Requires:       python3-Babel >= 2.3.4
+Requires:       python3-Babel
 Requires:       python3-PrettyTable >= 0.7.2
 Requires:       python3-iso8601 >= 0.1.11
 Requires:       python3-keystoneauth1 >= 3.5.0
@@ -91,7 +90,7 @@ This package contains auto-generated documentation.
 %build
 %{py3_build}
 
-PBR_VERSION=17.0.0 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
+PBR_VERSION=17.2.1 %sphinx_build -b html -d doc/build/doctrees doc/source doc/build/html
 # Fix hidden-file-or-dir warnings
 rm -fr doc/build/html/.doctrees doc/build/html/.buildinfo
 

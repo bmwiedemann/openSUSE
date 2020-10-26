@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:15:51 UTC 2020 - cloud-devel@suse.de
+
+- update to version 17.2.1
+  - [Community goal] Update contributor documentation
+  - Bump default tox env from py37 to py38
+  - Use unittest.mock instead of third party mock
+  - Switch to newer openstackdocstheme and reno versions
+  - Switch legacy Zuul jobs to native Zuul v3 jobs
+  - use stevedore to load extensions
+  - Bump hacking min version to 3.0.1
+  - Add Python3 victoria unit tests
+  - Remove mock in lower-constraints.txt
+  - Remove Babel requirement
+  - Add link to PDF document
+  - Remove unused code
+  - Remove future imports
+  - doc: Update Testing document
+  - Add a cleanup for a server in a functional test
+  - zuul functional job: drop the custom playbooks
+  - Update master for stable/ussuri
+  - Add py38 package metadata
+  - Switch to using TOX_CONSTRAINTS_FILE
+  - migrate testing to ubuntu focal
+
+-------------------------------------------------------------------
 Tue May 12 09:53:04 UTC 2020 - cloud-devel@suse.de
 
 - update to version 17.0.0
