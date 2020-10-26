@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 06:46:01 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.1 implemented gstreamer file IO, read/write
+  mp3, mp4, mkv, webm ...
+- updated gtk-doc.
+- implemented some get type functions of enums.
+- edited spec file and added gstreamer dependencies.
+
+-------------------------------------------------------------------
 Thu Oct  8 04:14:07 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.5.16 fixed missing AgsMutable interface
