@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:15:18 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.1
+  - Stop to use the __future__ module.
+  - Update CONTRIBUTING.rst
+  - Add py38 package metadata
+  - Bump default tox env from py37 to py38
+  - Add releasenotes link to README
+  - Switch to newer openstackdocstheme and reno versions
+  - Add Python3 victoria unit tests
+  - Update master for stable/ussuri
+  - Fix mock import statements
+  - Fix hacking min version to 3.0.1
+  - Use unittest.mock instead of third party mock
+
+-------------------------------------------------------------------
 Tue May 12 09:56:53 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.1.0
