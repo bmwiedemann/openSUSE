@@ -25,6 +25,8 @@ Summary:        Jupyter terminal console
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_console
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_console/jupyter_console-%{version}.tar.gz
+# https://github.com/jupyter/jupyter_console/pull/230
+Patch0:         python-jupyter_console-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,8 +36,8 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter-client}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 # /SECTION
 Requires:       jupyter-jupyter_console = %{version}
@@ -68,6 +70,7 @@ This package provides the jupyter components.
 
 %prep
 %setup -q -n jupyter_console-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -77,7 +80,7 @@ This package provides the jupyter components.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand nosetests-%{$python_bin_suffix} --with-flaky --force-flaky -v -s jupyter_console
+%pytest -s --force-flaky --max-runs=10
 
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
