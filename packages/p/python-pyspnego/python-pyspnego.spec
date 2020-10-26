@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyspnego
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyspnego
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
-License:        MIT
 Summary:        Python SPNEGO authentication library 
-Url:            https://github.com/jborean93/pyspnego
+License:        MIT
 Group:          Development/Languages/Python
-Source:         https://github.com/jborean93/pyspnego/archive/v0.1.0.tar.gz#/pyspnego-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+URL:            https://github.com/jborean93/pyspnego
+Source:         https://github.com/jborean93/pyspnego/archive/v%{version}.tar.gz#/pyspnego-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cryptography

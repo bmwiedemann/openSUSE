@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:53:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.2
+  * Fix up WinRM wrapping on SSPI
+- Update to version 0.1.1
+  * Include the cython files in the built sdist
+
+-------------------------------------------------------------------
 Sat Aug 22 14:27:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.1.0
