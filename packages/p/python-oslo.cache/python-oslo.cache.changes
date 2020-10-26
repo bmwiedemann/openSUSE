@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:06:50 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.6.1
+  - Switch to Victoria tests
+  - Drop hard choice on py38 for functional tests
+  - [doc] tell to prefix ipv6 hosts with inet6
+  - Remove the unused coding style modules
+  - Remove unneeded babel.cfg etc
+  - Adding functional tests for memcache_pool backend
+  - Add pre-commit to pep8 gate
+  - Imported Translations from Zanata
+  - Fix pygments style
+  - Update master for stable/ussuri
+  - Introducing usage of pre-commit
+  - Removes pre-commit hooks from Lucas-C
+  - Add Memcached functional tests to gate
+  - Align contributing doc with oslo's policy
+  - Refactoring functional tests based on standard usages
+  - Uses commit hash instead of version tags in pre-commit
+  - Apply fixes for pre-commit compliance in all code
+  - Switch to newer openstackdocstheme and reno versions
+  - Adding functional tests
+  - Remove six
+  - Add release notes links to doc index
+  - Add python-binary-memcached to support SASL
+  - Bump bandit version
+  - Small cleanups in tox.ini
+  - Add TLS options to oslo.cache
+  - Bump dogpile.cache's version for Memcached TLS support
+  - Fix pep8 failure
+  - Stop to use the __future__ module.
+  - Add TLS context creation from config
+  - Update lower-constraints versions
+
+-------------------------------------------------------------------
 Tue May 12 09:46:11 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.3.0
