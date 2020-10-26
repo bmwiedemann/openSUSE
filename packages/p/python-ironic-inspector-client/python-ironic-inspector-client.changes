@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:13:57 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Upgrade flake8-import-order version to 0.17.1
+  - Switch to newer openstackdocstheme and reno versions
+  - Tempest job to use the inherited devstack_services value
+  - Support retrieving unprocessed data
+  - Document the new standalone CLI
+  - Follow up to update functest-requirements
+  - Update master for stable/ussuri
+  - Use unittest.mock instead of third party mock
+  - Hacking: enforce usage of autospec=True in tests
+  - Add py38 package metadata
+  - Convert job to dib
+  - Provide a clear error message when trying to access ironic (not inspector)
+  - Add Python3 victoria unit tests
+  - Update lower-constraints.txt
+  - Set min version of tox to 3.2.1
+  - Use only one job for tempest
+  - Restore default netboot boot option
+  - No need to import print function anymore
+  - Update releasenotes conf
+  - Fix pep8 job and functional job
+  - Remove python3 from job name
+  - Change parent for base job to ironic-inspector-base
+
+-------------------------------------------------------------------
 Tue May 12 10:06:17 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.1.0
