@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Thu Dec  6 16:08:19 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.201
+   see /usr/share/doc/packages/perl-PerlX-Maybe/Changes
+
+  1.201	2018-11-25
+  
+   - Improve documentation for `provided_deref`.
+     Michael Jemmeson++
+
+-------------------------------------------------------------------
+Thu Nov  8 06:48:27 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.200
+   see /usr/share/doc/packages/perl-PerlX-Maybe/Changes
+
+  1.200	2018-10-10	Big new features time!
+  
+   [ Packaging ]
+   - Package using newer version of Dist::Inkt.
+   - Require Scalar::Util.
+  
+   [ Other ]
+   - Add `use` line to SYNOPSIS.
+     Ivan Baidakou++
+   - Added: Add `provided_deref` and `provided_deref_with_maybe` functions.
+     Theo van Hoesel++
+   - Progressively load exporters, choosing Exporter.pm or Exporter::Tiny as
+     needed.
+
+-------------------------------------------------------------------
+Mon Apr 13 19:00:11 UTC 2015 - coolo@suse.com
+
+- updated to 1.001
+   see /usr/share/doc/packages/perl-PerlX-Maybe/Changes
+
+-------------------------------------------------------------------
+Tue Dec 10 07:07:07 UTC 2013 - coolo@suse.com
+
+- initial package 1.000
+    * created by cpanspec 1.78.07
+
