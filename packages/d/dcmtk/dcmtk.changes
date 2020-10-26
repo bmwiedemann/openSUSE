@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 22 20:02:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to avoid file conflict between dcmtk and charls:
+  * 0001-Link-charls-statically.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 15:10:11 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require tcpd-devel. The dcmnet library links to libwrap.

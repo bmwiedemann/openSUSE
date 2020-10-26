@@ -187,4 +187,12 @@
     <comment>- Explicitly require tcpd-devel. The dcmnet library links to libwrap.</comment>
     <requestid>791227</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9159d84b384c95595b9737b2288f64c2</srcmd5>
+    <version>3.6.5</version>
+    <time>1603725744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844055</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,8 @@ URL:            https://dicom.offis.de/dcmtk.php.en
 Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
+# PATCH-FIX-OPENSUSE 0001-Link-charls-statically.patch -- avoid file conflict with CharLS-devel
+Patch1:         0001-Link-charls-statically.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -77,8 +79,7 @@ parts the DICOM standard.
  -DDCMTK_WITH_XML=ON \
  -DDCMTK_WITH_OPENSSL=ON \
  -DDCMTK_WITH_SNDFILE=ON \
- -DDCMTK_WITH_ZLIB=ON \
- -DDCMTK_WITH_CHARLS=ON
+ -DDCMTK_WITH_ZLIB=ON
 
 %cmake_build
 

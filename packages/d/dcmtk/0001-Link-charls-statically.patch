@@ -1,0 +1,65 @@
+From e02f943b38ce5bcdeeb3b57a18d8be9cf7f7174d Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sun, 25 Oct 2020 18:02:55 +0100
+Subject: [PATCH] Link charls statically
+
+dcmtk still ships a charls 1 copy which installed a shared library that clashes with charls 2.
+As upstream still didn't review their merge requests, we'll create a static charls library.
+
+This was the dcmtk behaviour until 2012.
+---
+ dcmjpls/libcharls/CMakeLists.txt | 6 ++++--
+ dcmjpls/libcharls/intrface.h     | 9 +--------
+ dcmjpls/libsrc/CMakeLists.txt    | 2 +-
+ 3 files changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/dcmjpls/libcharls/CMakeLists.txt b/dcmjpls/libcharls/CMakeLists.txt
+index 0c5b143..dcea3dc 100644
+--- a/dcmjpls/libcharls/CMakeLists.txt
++++ b/dcmjpls/libcharls/CMakeLists.txt
+@@ -2,6 +2,8 @@
+ include_directories("${dcmjpls_SOURCE_DIR}/libcharls" "${ofstd_SOURCE_DIR}/include")
+ 
+ # create library from source files
+-DCMTK_ADD_LIBRARY(charls header intrface jpegls)
++add_library(charls STATIC header.cc intrface.cc jpegls.cc)
+ 
+-DCMTK_TARGET_LINK_MODULES(charls ofstd oflog)
++set_target_properties(charls PROPERTIES COMPILE_FLAGS "-fPIC")
++
++target_link_libraries(charls ofstd oflog)
+diff --git a/dcmjpls/libcharls/intrface.h b/dcmjpls/libcharls/intrface.h
+index c8fdaa9..c2150d3 100644
+--- a/dcmjpls/libcharls/intrface.h
++++ b/dcmjpls/libcharls/intrface.h
+@@ -8,16 +8,9 @@
+ 
+ #include "pubtypes.h"
+ #include "dcmtk/ofstd/ofstd.h"    /* for size_t */
+-#include "dcmtk/ofstd/ofdefine.h" /* for DCMTK_DECL_EXPORT */
+-
+-#ifdef charls_EXPORTS
+-#define DCMTK_CHARLS_EXPORT DCMTK_DECL_EXPORT
+-#else
+-#define DCMTK_CHARLS_EXPORT DCMTK_DECL_IMPORT
+-#endif
+ 
+ #ifndef CHARLS_IMEXPORT
+-#define CHARLS_IMEXPORT(returntype) DCMTK_CHARLS_EXPORT returntype
++#define CHARLS_IMEXPORT(returntype) returntype
+ #endif
+ 
+ 
+diff --git a/dcmjpls/libsrc/CMakeLists.txt b/dcmjpls/libsrc/CMakeLists.txt
+index 314face..415444b 100644
+--- a/dcmjpls/libsrc/CMakeLists.txt
++++ b/dcmjpls/libsrc/CMakeLists.txt
+@@ -4,4 +4,4 @@ include_directories("${dcmjpls_SOURCE_DIR}/include" "${ofstd_SOURCE_DIR}/include
+ # create library from source files
+ DCMTK_ADD_LIBRARY(dcmjpls djcparam djdecode djencode djrparam djcodecd djutils djcodece)
+ 
+-DCMTK_TARGET_LINK_MODULES(dcmjpls ofstd oflog dcmdata dcmimgle dcmimage charls)
++DCMTK_TARGET_LINK_MODULES(dcmjpls PUBLIC ofstd oflog dcmdata dcmimgle dcmimage PRIVATE charls)
+-- 
+2.29.0
+
