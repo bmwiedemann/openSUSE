@@ -1,0 +1,303 @@
+From b0c16922b57e1df5e885d6fb03b473555851ad21 Mon Sep 17 00:00:00 2001
+From: wwp <subscript@free.fr>
+Date: Sat, 24 Oct 2020 13:15:16 +0200
+Subject: [PATCH] Reworked fixing unsecure command-line invocation in
+ templates' |program{} and |attach_program{}: fixed a leak, factorized, use
+ glib stuff, parts come from msuchanek@suse.de (bug 4393).
+
+---
+ src/common/utils.c    |  34 ++++++++
+ src/common/utils.h    |   1 +
+ src/quote_fmt_parse.y | 185 ++++++++++--------------------------------
+ 3 files changed, 76 insertions(+), 144 deletions(-)
+
+diff --git src/common/utils.c src/common/utils.c
+index 52a0eb3f5616..19ef5ab8827b 100644
+--- src/common/utils.c
++++ src/common/utils.c
+@@ -2607,6 +2607,8 @@ gint execute_command_line(const gchar *cmdline, gboolean async,
+ 	gchar **argv;
+ 	gint ret;
+ 
++	cm_return_val_if_fail(cmdline != NULL, -1);
++
+ 	debug_print("execute_command_line(): executing: %s\n", cmdline?cmdline:"(null)");
+ 
+ 	argv = strsplit_with_quote(cmdline, " ", 0);
+@@ -2639,6 +2641,38 @@ gchar *get_command_output(const gchar *cmdline)
+ 	return child_stdout;
+ }
+ 
++FILE *get_command_output_stream(const char* cmdline)
++{
++    GPid pid;
++	GError *err = NULL;
++	gchar **argv = NULL;
++    int fd;
++
++	cm_return_val_if_fail(cmdline != NULL, NULL);
++
++	debug_print("get_command_output_stream(): executing: %s\n", cmdline);
++
++	/* turn the command-line string into an array */
++	if (!g_shell_parse_argv(cmdline, NULL, &argv, &err)) {
++		g_warning("could not parse command line from '%s': %s\n", cmdline, err->message);
++        g_error_free(err);
++		return NULL;
++	}
++
++    if (!g_spawn_async_with_pipes(NULL, argv, NULL, G_SPAWN_SEARCH_PATH,
++                                  NULL, NULL, &pid, NULL, &fd, NULL, &err)
++        && err)
++    {
++        g_warning("could not spawn '%s': %s\n", cmdline, err->message);
++        g_error_free(err);
++		g_strfreev(argv);
++        return NULL;
++    }
++
++	g_strfreev(argv);
++	return fdopen(fd, "r");
++}
++
+ static gint is_unchanged_uri_char(char c)
+ {
+ 	switch (c) {
+diff --git src/common/utils.h src/common/utils.h
+index 9816c4efcac9..842e467b38c7 100644
+--- src/common/utils.h
++++ src/common/utils.h
+@@ -442,6 +442,7 @@ gint execute_command_line	(const gchar	*cmdline,
+ 				 gboolean	 async,
+ 				 const gchar	*working_directory);
+ gchar *get_command_output	(const gchar	*cmdline);
++FILE *get_command_output_stream	(const gchar	*cmdline);
+ 
+ /* open URI with external browser */
+ gint open_uri(const gchar *uri, const gchar *cmdline);
+diff --git src/quote_fmt_parse.y src/quote_fmt_parse.y
+index 3bb8cd4d1949..a7bed9081b35 100644
+--- src/quote_fmt_parse.y
++++ src/quote_fmt_parse.y
+@@ -1,6 +1,6 @@
+ /*
+- * Sylpheed -- a GTK+ based, lightweight, and fast e-mail client
+- * Copyright (C) 1999-2007 Hiroyuki Yamamoto and the Claws Mail Team
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2020 The Claws Mail Team and Hiroyuki Yamamoto
+  *
+  * This program is free software; you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+@@ -25,10 +25,6 @@
+ #include <glib/gi18n.h>
+ 
+ #include <ctype.h>
+-#include <errno.h>
+-#include <fcntl.h>
+-#include <sys/types.h>
+-#include <sys/wait.h>
+ 
+ #include "procmsg.h"
+ #include "procmime.h"
+@@ -525,91 +521,41 @@ static void quote_fmt_insert_file(const gchar *filename)
+ 
+ static void quote_fmt_insert_program_output(const gchar *progname)
+ {
+-    int pipefd[2];
+-    pid_t pid;
+-
+-    GError *error;
+-	gint argc;
+-	gchar **argv;
+-	gboolean ret;
+-
+-    /* turn the command-line string into an array */
+-	argv = NULL;
+-	argc = 0;
+-	error = NULL;
+-	ret = g_shell_parse_argv (progname, &argc, &argv, &error);
+-	if (!ret) {
+-		g_error("could not parse command line from '%s'", progname);
+-        return;
+-    }
++	FILE *file;
++	char buffer[BUFFSIZE];
+ 
+-	if (pipe(pipefd) == -1) {
+-		g_error("can't pipe - error %s", g_strerror(errno));
+-		return;
++	if ((file = get_command_output_stream(progname)) != NULL) {
++		while (fgets(buffer, sizeof(buffer), file)) {
++			INSERT(buffer);
++		}
++		close(file);
+ 	}
+-
+-	if (0 == (pid = fork())) {
+-		/*
+-		 * redirect output to write end of pipe
+-		 */
+-        close(pipefd[0]);
+-        dup2(pipefd[1], STDOUT_FILENO);
+-		if (-1 == execvp(argv[0], argv))
+-			perror("execvp");
+-    } else {
+-	    char buffer[BUFFSIZE];
+-        int r;
+-
+-		waitpid(pid, NULL, 0);
+-
+-	    g_strfreev (argv);
+-
+-		/*
+-		 * make it non blocking
+-		 */
+-        if (-1 == fcntl(pipefd[0], F_SETFL, fcntl(pipefd[0], F_GETFL) | O_NONBLOCK))
+-			g_warning("set to non blocking failed");
+-
+-		/*
+-		 * get the output
+-		 */
+-		do {
+-			r = read(pipefd[0], buffer, sizeof buffer - 1);
+-			if (r > 0) {
+-				buffer[r] = 0;
+-			    INSERT(buffer);
+-			}
+-		} while (r > 0);
+-
+-		close(pipefd[0]);
+-        close(pipefd[1]);
+-    }
+ }
+ 
+ static void quote_fmt_insert_user_input(const gchar *varname)
+ {
+-	gchar *buf = NULL;
+-	gchar *text = NULL;
+-	
+-	if (dry_run) 
+-		return;
+-
+-	if ((text = g_hash_table_lookup(var_table, varname)) == NULL) {
+-		buf = g_strdup_printf(_("Enter text to replace '%s'"), varname);
+-		text = input_dialog(_("Enter variable"), buf, "");
+-		g_free(buf);
+-		if (!text)
+-			return;
+-		g_hash_table_insert(var_table, g_strdup(varname), g_strdup(text));
+-	} else {
+-		/* don't free the one in hashtable at the end */
+-		text = g_strdup(text);
+-	}
++    gchar *buf = NULL;
++    gchar *text = NULL;
++
++    if (dry_run) 
++	    return;
++
++    if ((text = g_hash_table_lookup(var_table, varname)) == NULL) {
++	    buf = g_strdup_printf(_("Enter text to replace '%s'"), varname);
++	    text = input_dialog(_("Enter variable"), buf, "");
++	    g_free(buf);
++	    if (!text)
++		    return;
++	    g_hash_table_insert(var_table, g_strdup(varname), g_strdup(text));
++    } else {
++	    /* don't free the one in hashtable at the end */
++	    text = g_strdup(text);
++    }
+ 
+-	if (!text)
+-		return;
+-	INSERT(text);
+-	g_free(text);
++    if (!text)
++	    return;
++    INSERT(text);
++    g_free(text);
+ }
+ 
+ static void quote_fmt_attach_file(const gchar *filename)
+@@ -619,67 +565,18 @@ static void quote_fmt_attach_file(const gchar *filename)
+ 
+ static void quote_fmt_attach_file_program_output(const gchar *progname)
+ {
+-    int pipefd[2];
+-    pid_t pid;
+-
+-    GError *error;
+-	gint argc;
+-	gchar **argv;
+-	gboolean ret;
+-
+-    /* turn the command-line string into an array */
+-	argv = NULL;
+-	argc = 0;
+-	error = NULL;
+-	ret = g_shell_parse_argv (progname, &argc, &argv, &error);
+-	if (!ret) {
+-		g_error("could not parse command line from '%s'", progname);
+-        return;
+-    }
+-
+-	if (pipe(pipefd) == -1) {
+-		g_error("can't pipe - error %s", g_strerror(errno));
+-		return;
++	FILE *file;
++	char buffer[BUFFSIZE];
++
++	if ((file = get_command_output_stream(progname)) != NULL) {
++		/* get first line only */
++		if (fgets(buffer, sizeof(buffer), file)) {
++			/* trim trailing CR/LF */
++			strretchomp(buffer);
++			attachments = g_list_append(attachments, g_strdup(buffer));
++		}
++		close(file);
+ 	}
+-
+-	if (0 == (pid = fork())) {
+-		/*
+-		 * redirect output to write end of pipe
+-		 */
+-        close(pipefd[0]);
+-        dup2(pipefd[1], STDOUT_FILENO);
+-		if (-1 == execvp(argv[0], argv))
+-			perror("execvp");
+-    } else {
+-	    char buffer[BUFFSIZE];
+-        int r;
+-
+-		waitpid(pid, NULL, 0);
+-
+-	    g_strfreev (argv);
+-
+-		/*
+-		 * make it non blocking
+-		 */
+-        if (-1 == fcntl(pipefd[0], F_SETFL, fcntl(pipefd[0], F_GETFL) | O_NONBLOCK))
+-			g_warning("set to non blocking failed");
+-
+-		/*
+-		 * get the output
+-		 */
+-		do {
+-			r = read(pipefd[0], buffer, sizeof buffer - 1);
+-			if (r > 0) {
+-				buffer[r] = 0;
+-			    /* trim trailing CR/LF */
+-			    strretchomp(buffer);
+-			    attachments = g_list_append(attachments, g_strdup(buffer));
+-			}
+-		} while (r > 0);
+-
+-		close(pipefd[0]);
+-        close(pipefd[1]);
+-    }
+ }
+ 
+ static gchar *quote_fmt_complete_address(const gchar *addr)
+-- 
+2.28.0
+

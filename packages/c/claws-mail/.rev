@@ -846,4 +846,13 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment>add missing bugnumbers</comment>
     <requestid>843434</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>27f4274c8cd122b2850aae3520a317b3</srcmd5>
+    <version>3.17.8</version>
+    <time>1603725787</time>
+    <user>dimstar_suse</user>
+    <comment>- Additional cleanup of the template handling
+  * add claws-mail-Reworked-fixing-unsecure-command-line-invocation.patch</comment>
+    <requestid>844082</requestid>
+  </revision>
 </revisionlist>

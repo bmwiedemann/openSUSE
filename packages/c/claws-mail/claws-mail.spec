@@ -45,6 +45,8 @@ Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
 Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
 Patch0:         libcanberra-gtk3.patch
+# patch merged upstream but not part of a release
+Patch1:         claws-mail-Reworked-fixing-unsecure-command-line-invocation.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -160,6 +162,7 @@ This package contains header files for building plugins.
 %if ! 0%{?favor_gtk2}
 %patch0 -p1
 %endif
+%patch1 -p0
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
