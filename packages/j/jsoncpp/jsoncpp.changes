@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 18:11:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.9.4:
+  * This patch contains several fixes found through the OSS-Fuzz project
+  fuzzing, increasing the security of the library, 
+
+-------------------------------------------------------------------
 Wed Jun 24 19:10:43 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - From 1.9.2 to 1.9.3, autolink.h has been dropped and 
