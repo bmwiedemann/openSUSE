@@ -1,7 +1,7 @@
 #
 # spec file for package perl-List-MoreUtils
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-List-MoreUtils
-Version:        0.428
+Version:        0.430
 Release:        0
 %define cpan_name List-MoreUtils
 Summary:        Provide the stuff missing in List::Util
 License:        Apache-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/List-MoreUtils/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RE/REHSACK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -31,11 +31,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter::Tiny) >= 0.038
-BuildRequires:  perl(List::MoreUtils::XS) >= 0.426
+BuildRequires:  perl(List::MoreUtils::XS) >= 0.430
 BuildRequires:  perl(Test::LeakTrace)
 BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Exporter::Tiny) >= 0.038
-Requires:       perl(List::MoreUtils::XS) >= 0.426
+Requires:       perl(List::MoreUtils::XS) >= 0.430
 %{perl_requires}
 
 %description
@@ -52,11 +52,11 @@ case the C portions of this module couldn't be compiled on this machine.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

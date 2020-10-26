@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:16:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.430
+   see /usr/share/doc/packages/perl-List-MoreUtils/Changes
+
+  0.430	2020-10-21
+      - bump List::MoreUtils::XS requirement to 0.430
+      - release 0.429_001 without any further changes
+
+  0.429_001	2020-10-05
+      - fix failing installation in parallel make (Issue#38)
+      - infrastructure improvements and tooling updates,
+        lot's of author tests with according fixes added
+      - added slide and slideatatime functions wished by SCHWERN
+      - documentation fixes (PR#21, PR#33, PR#34, RT#126029, RT#132043, RT#132940)
+
+-------------------------------------------------------------------
 Tue Dec 12 06:29:54 UTC 2017 - coolo@suse.com
 
 - updated to 0.428
