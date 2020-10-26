@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 03:11:12 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.62
+   see /usr/share/doc/packages/perl-Devel-PPPort/Changes
+
+  3.62 - 2020-10-16
+    * Restore missing PPPort.pm
+    * Fix metaCPAN indexing
+
+-------------------------------------------------------------------
 Tue Oct 13 03:07:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.61
