@@ -17,13 +17,13 @@
 
 
 Name:           python-futurist
-Version:        2.1.1
+Version:        2.3.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/futurist
-Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-2.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-2.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-Sphinx
@@ -32,7 +32,6 @@ BuildRequires:  python3-monotonic
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.10.0
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
@@ -53,14 +52,14 @@ Useful additions to futures, from the future.
 This package contains the Python 3.x module.
 
 %prep
-%autosetup -p1 -n futurist-2.1.1
+%autosetup -p1 -n futurist-2.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # generate html docs
-PBR_VERSION=2.1.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -r doc/build/html/.{doctrees,buildinfo}
 
