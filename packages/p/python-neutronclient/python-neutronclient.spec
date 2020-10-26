@@ -17,20 +17,19 @@
 
 
 Name:           python-neutronclient
-Version:        7.1.1
+Version:        7.2.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Neutron
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/%{name}
-Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-7.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-neutronclient/python-neutronclient-7.2.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cliff >= 2.8.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
 BuildRequires:  python3-keystoneclient >= 3.8.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-mox3
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-os-client-config >= 1.28.0
 BuildRequires:  python3-osc-lib >= 1.8.0
@@ -42,7 +41,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -55,7 +53,7 @@ Neutron's API.
 %package -n python3-neutronclient
 Summary:        Python API and CLI for OpenStack Neutron
 Group:          Development/Languages/Python
-Requires:       python3-Babel >= 2.3.4
+Requires:       python3-Babel
 Requires:       python3-cliff >= 2.8.0
 Requires:       python3-debtcollector >= 1.2.0
 Requires:       python3-iso8601 >= 0.1.11
@@ -70,7 +68,7 @@ Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-simplejson >= 3.5.1
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 %if 0%{?suse_version}
 Obsoletes:      python2-neutronclient < 7.1.0
 %endif
@@ -100,8 +98,8 @@ Neutron's API.
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=7.1.1 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=7.1.1 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=7.2.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=7.2.1 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

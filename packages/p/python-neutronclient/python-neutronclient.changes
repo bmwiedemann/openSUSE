@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:15:42 UTC 2020 - cloud-devel@suse.de
+
+- update to version 7.2.1
+  - lower-constraints: Drop os-testr, mox3
+  - Add Python3 victoria unit tests
+  - Fix hacking min version to 3.0.1
+  - Use unittest.mock instead of mock
+  - Allow 4byte ASNs in dynamic routing client
+  - Use unittest.mock instead of third party mock
+  - Stop to use the __future__ module.
+  - Fix description of bgp speaker set arg
+  - Remove usage of six
+  - Bump default tox env from py37 to py38
+  - Switch to newer openstackdocstheme and reno versions
+  - zuul: native Zuul v3 version of the grenade job
+  - Remove translation sections from setup.cfg
+  - Add segments client code
+  - Update master for stable/ussuri
+  - Add py38 package metadata
+  - Remove Babel from requirements
+  - Add aggressive negotiation mode for ikepolicy
+
+-------------------------------------------------------------------
 Tue May 12 09:56:11 UTC 2020 - cloud-devel@suse.de
 
 - update to version 7.1.1
