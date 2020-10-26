@@ -17,13 +17,13 @@
 
 
 Name:           python-keystoneclient
-Version:        4.0.0
+Version:        4.1.1
 Release:        0
 Summary:        Client library for OpenStack Identity API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-keystoneclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-4.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-4.1.1.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -67,13 +67,14 @@ Summary:        Documentation for OpenStack Identity API Client
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-keystoneclient-doc
 Documentation for the client library for interacting with Openstack
 Identity API.
 
 %prep
-%autosetup -p1 -n python-keystoneclient-4.0.0
+%autosetup -p1 -n python-keystoneclient-4.1.1
 %py_req_cleanup
 # disable intersphinx - no network access during build
 echo "intersphinx_mapping = {}" >> doc/source/conf.py

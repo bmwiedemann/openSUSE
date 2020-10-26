@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:14 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.1.1
+  - Switch to newer openstackdocstheme and reno versions
+  - Add Python3 victoria unit tests
+  - Hacking: Fix F601
+  - Bump default tox env from py37 to py38
+  - Fix hacking min version to 3.0.1
+  - Add py38 package metadata
+  - Update the minversion parameter.
+  - Fix test-requirements.txt
+  - Fix docs publishing
+  - Use unittest.mock instead of third party mock
+  - Import os-client-config
+  - Update master for stable/ussuri
+  - Fix the typo on attribute word.
+
+-------------------------------------------------------------------
 Tue May 12 09:57:17 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.0
