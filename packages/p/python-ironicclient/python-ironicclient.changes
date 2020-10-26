@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:05 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Get rid of the oslo.serialization dependency
+  - Fix expected exception message in one test
+  - Add release note regarding global_request_id
+  - Convert ironicclient-tempest to dib
+  - Check import order
+  - Fix missing tox in functional devstack-minimal based job
+  - Set min version of tox to 3.2.1
+  - Add global_request_id into the base client methods
+  - Switch to newer openstackdocstheme and reno versions
+  - Allow to pass global request id for remaining objects
+  - Add Python3 victoria unit tests
+  - Remove future dependency
+  - drop mock from lower-constraints
+  - Update master for stable/ussuri
+  - Allow to pass global request id in node methods
+  - Cap jsonschema 3.2.0 as the minimal version
+  - Update lower-constraints.txt
+  - Remove pypy
+  - Use unittest.mock instead of third party mock
+  - Allow to pass additional arguments into adapter
+  - Allow to pass global request id in port and volume
+  - Remove Babel requirement
+  - Add `network_data` ironic node attribute support
+  - Add py38 package metadata
+  - Add port-uuid parameter to node vif attach
+  - Fix pygments style
+  - Restore default netboot boot option
+
+-------------------------------------------------------------------
 Tue May 12 09:58:02 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.1.0
