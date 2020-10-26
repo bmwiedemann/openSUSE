@@ -1,0 +1,233 @@
+This can be fixed by checking first to see if -rsa appears on its own
+(either as the last option or followed by another option beginning
+with '-') and if it does assuming the default value of 2048 for
+keyBits.  If a non options follows, parse it as a number which keeps
+backwards compatibility with versions before 1.5 while still allowing
+expanded rsa key sizes to be specified.
+
+Signed-off-by: James Bottomley <James.Bottomley@...>
+---
+ utils/certifyx509.c     |  8 ++-----
+ utils/create.c          |  8 ++-----
+ utils/createek.c        | 46 +++++++++++++++++++----------------------
+ utils/createekcert.c    | 42 +++++++++++++++++--------------------
+ utils/createloaded.c    |  8 ++-----
+ utils/createprimary.c   |  8 ++-----
+ utils/objecttemplates.c |  2 +-
+ 7 files changed, 49 insertions(+), 73 deletions(-)
+
+diff --git a/utils/certifyx509.c b/utils/certifyx509.c
+index 2b763eb..3eabc45 100644
+--- a/utils/certifyx509.c
++++ b/utils/certifyx509.c
+@@ -233,14 +233,10 @@ int main(int argc, char *argv[])
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    scheme = TPM_ALG_RSASSA;
+ 	    algCount++;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+ 	    }
+-	    else {
+-		printf("Missing keysize parameter for -rsa\n");
+-		printUsage();
+-	    }
+ 	}
+ 	else if (strcmp(argv[i], "-ecc") == 0) {
+ 	    scheme = TPM_ALG_ECDSA;
+diff --git a/utils/create.c b/utils/create.c
+index f1be83d..a707f2f 100644
+--- a/utils/create.c
++++ b/utils/create.c
+@@ -173,14 +173,10 @@ int main(int argc, char *argv[])
+ 	}
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    algPublic = TPM_ALG_RSA;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+ 	    }
+-	    else {
+-		printf("Missing parameter for -rsa\n");
+-		printUsage();
+-	    }
+ 	}
+ 	else if (strcmp(argv[i], "-ecc") == 0) {
+ 	    algPublic = TPM_ALG_ECC;
+diff --git a/utils/createek.c b/utils/createek.c
+index 602d9ce..f561f78 100644
+--- a/utils/createek.c
++++ b/utils/createek.c
+@@ -196,33 +196,29 @@ int main(int argc, char *argv[])
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    algPublic = TPM_ALG_RSA;
+ 	    algCount++;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+-		switch (keyBits) {
+-		  case 2048:
+-		    if (range == LowRange) {
+-			ekCertIndex = EK_CERT_RSA_INDEX;
+-			ekNonceIndex = EK_NONCE_RSA_INDEX;
+-			ekTemplateIndex = EK_TEMPLATE_RSA_INDEX;
+-		    }
+-		    else {	/* high range */
+-			ekCertIndex = EK_CERT_RSA_2048_INDEX_H1;
+-		    }
+-		    break;
+-		  case 3072:
+-		    ekCertIndex = EK_CERT_RSA_3072_INDEX_H6;
+-		    break;
+-		  case 4096:
+-		    ekCertIndex = EK_CERT_RSA_4096_INDEX_H7;
+-		    break;
+-		  default:
+-		    printf("Bad key size %s for -rsa\n", argv[i]);
+-		    printUsage();
+-		}
+ 	    }
+-	    else {
+-		printf("Missing keysize parameter for -rsa\n");
++	    switch (keyBits) {
++	    case 2048:
++		if (range == LowRange) {
++		    ekCertIndex = EK_CERT_RSA_INDEX;
++		    ekNonceIndex = EK_NONCE_RSA_INDEX;
++		    ekTemplateIndex = EK_TEMPLATE_RSA_INDEX;
++		}
++		else {	/* high range */
++		    ekCertIndex = EK_CERT_RSA_2048_INDEX_H1;
++		}
++		break;
++	    case 3072:
++		ekCertIndex = EK_CERT_RSA_3072_INDEX_H6;
++		break;
++	    case 4096:
++		ekCertIndex = EK_CERT_RSA_4096_INDEX_H7;
++		break;
++	    default:
++		printf("Bad key size %s for -rsa\n", argv[i]);
+ 		printUsage();
+ 	    }
+ 	}
+diff --git a/utils/createekcert.c b/utils/createekcert.c
+index 7049605..02d765c 100644
+--- a/utils/createekcert.c
++++ b/utils/createekcert.c
+@@ -179,31 +179,27 @@ int main(int argc, char *argv[])
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    algPublic = TPM_ALG_RSA;
+ 	    algCount++;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+-		switch (keyBits) {
+-		  case 2048:
+-		    if (range == LowRange) {
+-			ekCertIndex = EK_CERT_RSA_INDEX;
+-		    }
+-		    else {	/* high range */
+-			ekCertIndex = EK_CERT_RSA_2048_INDEX_H1;
+-		    }
+-		    break;
+-		  case 3072:
+-		    ekCertIndex = EK_CERT_RSA_3072_INDEX_H6;
+-		    break;
+-		  case 4096:
+-		    ekCertIndex = EK_CERT_RSA_4096_INDEX_H7;
+-		    break;
+-		  default:
+-		    printf("Bad key size %s for -rsa\n", argv[i]);
+-		    printUsage();
+-		}
+ 	    }
+-	    else {
+-		printf("Missing keysize parameter for -rsa\n");
++	    switch (keyBits) {
++	    case 2048:
++		if (range == LowRange) {
++		    ekCertIndex = EK_CERT_RSA_INDEX;
++		}
++		else {	/* high range */
++		    ekCertIndex = EK_CERT_RSA_2048_INDEX_H1;
++		}
++		break;
++	    case 3072:
++		ekCertIndex = EK_CERT_RSA_3072_INDEX_H6;
++		break;
++	    case 4096:
++		ekCertIndex = EK_CERT_RSA_4096_INDEX_H7;
++		break;
++	    default:
++		printf("Bad key size %s for -rsa\n", argv[i]);
+ 		printUsage();
+ 	    }
+ 	}
+diff --git a/utils/createloaded.c b/utils/createloaded.c
+index a481cb3..fe97ab4 100644
+--- a/utils/createloaded.c
++++ b/utils/createloaded.c
+@@ -167,14 +167,10 @@ int main(int argc, char *argv[])
+ 	}
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    algPublic = TPM_ALG_RSA;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+ 	    }
+-	    else {
+-		printf("Missing parameter for -rsa\n");
+-		printUsage();
+-	    }
+ 	}
+ 	else if (strcmp(argv[i], "-ecc") == 0) {
+ 	    algPublic = TPM_ALG_ECC;
+diff --git a/utils/createprimary.c b/utils/createprimary.c
+index 3c7676f..c805674 100644
+--- a/utils/createprimary.c
++++ b/utils/createprimary.c
+@@ -180,14 +180,10 @@ int main(int argc, char *argv[])
+ 	}
+ 	else if (strcmp(argv[i], "-rsa") == 0) {
+ 	    algPublic = TPM_ALG_RSA;
+-	    i++;
+-	    if (i < argc) {
++	    if (i + 1 < argc && argv[i+1][0] != '-') {
++		i++;
+ 		sscanf(argv[i],"%hu", &keyBits);
+ 	    }
+-	    else {
+-		printf("Missing parameter for -rsa\n");
+-		printUsage();
+-	    }
+ 	}
+ 	else if (strcmp(argv[i], "-ecc") == 0) {
+ 	    algPublic = TPM_ALG_ECC;
+diff --git a/utils/objecttemplates.c b/utils/objecttemplates.c
+index 06b07ef..f44398f 100644
+--- a/utils/objecttemplates.c
++++ b/utils/objecttemplates.c
+@@ -538,7 +538,7 @@ void printUsageTemplate(void)
+ {
+     printf("\t[Asymmetric Key Algorithm]\n");
+     printf("\n");
+-    printf("\t-rsa keybits (default)\n");
++    printf("\t-rsa [keybits] (default)\n");
+     printf("\t\t(2048 default)\n");
+     printf("\t-ecc curve\n");
+     printf("\t\tbnp256\n");
+-- 
+2.26.2
+
+

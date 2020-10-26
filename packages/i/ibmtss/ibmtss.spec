@@ -33,6 +33,7 @@ Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{versi
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
 Patch2:         ibmtss-certifyx509-Fix-uninitialized-variable.patch
+Patch3:         ibmtss-fix-dsa-regression.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2

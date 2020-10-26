@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:24:56 UTC 2020 - Pedro Monreal Gonzalez <pmonreal@suse.com>
+
+- Regression fix:
+  * utils: fix ABI break caused by additional argument to -rsa
+  * https://sourceforge.net/p/ibmtpm20tss/mailman/message/37119441/
+- Add ibmtss-fix-dsa-regression.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 14:38:12 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to upstream version 1.5.0 (jsc#SLE-13828).
