@@ -22,7 +22,7 @@
 %bcond_without python2
 
 Name:           libpwquality
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Library for password quality checking and generating random passwords
 License:        BSD-3-Clause OR GPL-2.0-or-later
