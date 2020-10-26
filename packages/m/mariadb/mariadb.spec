@@ -56,7 +56,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.4.14
+Version:        10.5.6
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -84,7 +84,6 @@ Patch4:         mariadb-10.2.4-fortify-and-O.patch
 Patch5:         mariadb-10.2.19-link-and-enable-c++11-atomics.patch
 Patch6:         mariadb-10.4.12-harden_setuid.patch
 Patch7:         mariadb-10.4.12-fix-install-db.patch
-Patch8:         mariadb-10.5-fix-prevent-optimizing-out-buf-argument-in-ch.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -111,7 +110,7 @@ BuildRequires:  pam-devel
 # MariaDB requires a specific version of pcre. Provide MariaDB with
 # "BuildRequires: pcre-devel" and it automatically decides if the version is
 # ok or not. If not, it uses bundled pcre.
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 # Some tests and myrocks_hotbackup script need python3
@@ -373,7 +372,6 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 
 cp %{_sourcedir}/suse-test-run .
 
@@ -542,6 +540,10 @@ rm -f %{buildroot}%{_datadir}/mysql/magic
 # Upstream ships them because of MDEV-10797 (we don't need them as we use our own systemd scripts)
 rm -f %{buildroot}%{_datadir}/mysql/mysql.server
 rm -f %{buildroot}%{_datadir}/mysql/mysqld_multi.server
+# upstream installs links for mysql
+unlink %{buildroot}%{_datadir}/mysql/systemd/mysql.service
+unlink %{buildroot}%{_datadir}/mysql/systemd/mysqld.service
+unlink %{buildroot}%{_unitdir}/mysqld.service
 # The old fork of mytop utility (we ship it as a separate package)
 rm -f %{buildroot}%{_bindir}/mytop
 # xtrabackup is not supported for MariaDB >= 10.3
@@ -571,7 +573,9 @@ rm %{buildroot}%{_libdir}/pkgconfig/mariadb.pc
 rm -f %{buildroot}%{_prefix}/lib/pkgconfig/libmariadb.pc
 rm -f %{buildroot}%{_libdir}/pkgconfig/libmariadb.pc
 rm %{buildroot}%{_datadir}/aclocal/mysql.m4
+rm %{buildroot}%{_mandir}/man1/mariadb_config*.1*
 rm %{buildroot}%{_mandir}/man1/mysql_config*.1*
+rm %{buildroot}%{_mandir}/man1/mytop.1*
 rm -r %{buildroot}%{_includedir}/mysql
 
 # Rename the wsrep README so it corresponds with the other README names
@@ -603,7 +607,7 @@ filelist mysqlslap mariadb-slap >mariadb-bench.files
 filelist mysql_client_test mariadb-client-test mysql_client_test_embedded mariadb-client-test-embedded mysql_waitpid mariadb-waitpid mysqltest mariadb-test mysqltest_embedded mariadb-test-embedded >mariadb-test.files
 
 # mariadb-tools.files
-filelist msql2mysql mysql_plugin mariadb-plugin mysql_convert_table_format mariadb-convert-table-format mysql_find_rows mariadb-find-rows mysql_setpermission mariadb-setpermission mysql_tzinfo_to_sql mariadb-tzinfo-to-sql mysqlaccess mariadb-access mysqlhotcopy mariadb-hotcopy perror replace mysql_embedded mariadb-embedded >mariadb-tools.files
+filelist msql2mysql mysql_plugin mariadb-plugin mysql_convert_table_format mariadb-convert-table-format mysql_find_rows mariadb-find-rows mysql_setpermission mariadb-setpermission mysql_tzinfo_to_sql mariadb-tzinfo-to-sql mysqlaccess mariadb-access mysqlhotcopy mariadb-hotcopy perror replace mysql_embedded mariadb-embedded aria_s3_copy mariadb-conv >mariadb-tools.files
 
 # All configuration files
 echo '%{_datadir}/mysql/*.cnf' >> mariadb.files
@@ -912,8 +916,8 @@ exit 0
 %{_mandir}/man1/mysql-test-run.pl.1%{?ext_man}
 %{_mandir}/man1/mysql-stress-test.pl.1%{?ext_man}
 %{_datadir}/mysql-test/valgrind.supp
-%dir %attr(755, mysql, mysql)%{_datadir}/mysql-test
-%{_datadir}/mysql-test/[^v]*
+%dir %attr(755, mysql, mysql) %{_datadir}/mysql-test
+%attr(-, mysql, mysql) %{_datadir}/mysql-test/[^v]*
 %dir %attr(755, mysql, mysql) %{_datadir}/mysql-test%{_localstatedir}
 
 %files tools -f mariadb-tools.files

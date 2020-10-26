@@ -38,8 +38,8 @@ Date:   Fri Dec 21 19:14:04 2018 +0200
    SET(HAVE_valgrind 1)
 --- a/mysys/CMakeLists.txt
 +++ b/mysys/CMakeLists.txt
-@@ -78,6 +78,10 @@ TARGET_LINK_LIBRARIES(mysys dbug strings
-  ${LIBNSL} ${LIBM} ${LIBRT} ${LIBDL} ${LIBSOCKET} ${LIBEXECINFO} ${CRC32_LIBRARY})
+@@ -130,6 +130,10 @@
+  ${LIBNSL} ${LIBM} ${LIBRT} ${LIBDL} ${LIBSOCKET} ${LIBEXECINFO})
  DTRACE_INSTRUMENT(mysys)
  
 +IF (HAVE_GCC_C11_ATOMICS_WITH_LIBATOMIC)
@@ -51,7 +51,7 @@ Date:   Fri Dec 21 19:14:04 2018 +0200
  ENDIF(HAVE_BFD_H)
 --- a/sql/CMakeLists.txt
 +++ b/sql/CMakeLists.txt
-@@ -178,6 +178,10 @@ ELSE()
+@@ -215,6 +215,10 @@
    SET(MYSQLD_SOURCE main.cc ${DTRACE_PROBES_ALL})
  ENDIF()
  
@@ -59,6 +59,6 @@ Date:   Fri Dec 21 19:14:04 2018 +0200
 +  TARGET_LINK_LIBRARIES(sql atomic)
 +ENDIF()
 +
- 
- IF(MSVC AND NOT WITHOUT_DYNAMIC_PLUGINS)
-
+ IF(MSVC)
+   SET(libs_to_export_symbols sql mysys dbug strings)
+   # Create shared library of already compiled object
