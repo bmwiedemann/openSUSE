@@ -1,8 +1,8 @@
-Index: glib-2.63.5/gio/gdbus-2.0/codegen/codegen.py
+Index: glib-2.65.2/gio/gdbus-2.0/codegen/codegen.py
 ===================================================================
---- glib-2.63.5.orig/gio/gdbus-2.0/codegen/codegen.py
-+++ glib-2.63.5/gio/gdbus-2.0/codegen/codegen.py
-@@ -76,8 +76,7 @@ class HeaderCodeGenerator:
+--- glib-2.65.2.orig/gio/gdbus-2.0/codegen/codegen.py
++++ glib-2.65.2/gio/gdbus-2.0/codegen/codegen.py
+@@ -79,8 +79,7 @@ class HeaderCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
      def generate_header_preamble(self):
@@ -12,13 +12,33 @@ Index: glib-2.63.5/gio/gdbus-2.0/codegen/codegen.py
          self.outfile.write('\n')
  
          if self.use_pragma:
-@@ -690,8 +689,7 @@ class InterfaceInfoBodyCodeGenerator:
+@@ -721,8 +720,7 @@ class InterfaceInfoHeaderCodeGenerator:
+     # ----------------------------------------------------------------------------------------------------
+ 
+     def generate_header_preamble(self):
+-        basenames = ', '.join(self.input_files_basenames)
+-        self.outfile.write(LICENSE_STR.format(config.VERSION, basenames))
++        self.outfile.write(LICENSE_STR)
+         self.outfile.write('\n')
+ 
+         if self.use_pragma:
+@@ -781,8 +779,7 @@ class InterfaceInfoBodyCodeGenerator:
      # ----------------------------------------------------------------------------------------------------
  
      def generate_body_preamble(self):
 -        basenames = ', '.join(self.input_files_basenames)
 -        self.outfile.write(LICENSE_STR.format(config.VERSION, basenames))
 +        self.outfile.write(LICENSE_STR)
-         self.outfile.write('\n')
-         self.outfile.write('#ifdef HAVE_CONFIG_H\n'
-                            '#  include "config.h"\n'
+ 
+         if self.symbol_decoration_define is not None:
+             self.outfile.write('\n')
+@@ -1023,8 +1020,7 @@ class CodeGenerator:
+     # ----------------------------------------------------------------------------------------------------
+ 
+     def generate_body_preamble(self):
+-        basenames = ', '.join(self.input_files_basenames)
+-        self.outfile.write(LICENSE_STR.format(config.VERSION, basenames))
++        self.outfile.write(LICENSE_STR)
+         if self.symbol_decoration_define is not None:
+             self.outfile.write('\n')
+             self.outfile.write('#define %s\n' % self.symbol_decoration_define)

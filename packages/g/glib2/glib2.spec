@@ -17,14 +17,15 @@
 
 
 %bcond_without     systemtap
+%bcond_without gtk_doc
 Name:           glib2
-Version:        2.64.6
+Version:        2.66.2
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.64/glib-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib/2.66/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -51,7 +52,9 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gamin-devel
 BuildRequires:  gcc-c++
+%if %{with gtk_doc}
 BuildRequires:  gtk-doc >= 1.32
+%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  m4
 BuildRequires:  meson >= 0.49.2
@@ -259,6 +262,7 @@ cp -a %{SOURCE4} gnome_defaults.conf
 # replace /usr/bin/env shebangs
 # /usr/bin/env @PYTHON@ -> /usr/bin/python3
 grep "%{_bindir}/env @PYTHON@" . -rl | xargs sed -i "s|%{_bindir}/env @PYTHON@|%{_bindir}/python3|g"
+sed -i "s/1.32.1/1.32/" docs/reference/meson.build
 
 %build
 %if %{with systemtap}
@@ -270,7 +274,9 @@ grep "%{_bindir}/env @PYTHON@" . -rl | xargs sed -i "s|%{_bindir}/env @PYTHON@|%
 	--default-library=both \
 	-Dselinux=enabled \
 	-Dman=true \
+%if %{with gtk_doc}
 	-Dgtk_doc=true \
+%endif
 	-Dfam=true \
 %if %{with systemtap}
 	-Dsystemtap=true \
@@ -287,9 +293,6 @@ grep "%{_bindir}/env @PYTHON@" . -rl | xargs sed -i "s|%{_bindir}/env @PYTHON@|%
 %install
 %meson_install
 
-%if 0%{?suse_version} <= 1120
-rm %{buildroot}%{_datadir}/locale/en@shaw/LC_MESSAGES/*
-%endif
 %find_lang glib20 %{?no_lang_C}
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 install -D -m0644 glib2.sh %{buildroot}%{_sysconfdir}/profile.d/zzz-glib2.sh
@@ -315,6 +318,7 @@ cp %{SOURCE6} %{buildroot}%{_rpmmacrodir}
 # Install zsh completion for gsettings
 mkdir -p  %{buildroot}%{_datadir}/zsh/site-functions/
 cp %{SOURCE8} %{buildroot}%{_datadir}/zsh/site-functions/_gsettings
+mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %fdupes %{buildroot}/%{_prefix}
 
 %filetriggerin -n glib2-tools -- %{_datadir}/glib-2.0/schemas
@@ -487,9 +491,11 @@ done
 %dir %{_libdir}/glib-2.0/
 %{_libdir}/glib-2.0/include/
 %{_libdir}/pkgconfig/*.pc
+%if %{with gtk_doc}
 %{_datadir}/gtk-doc/html/gio
 %{_datadir}/gtk-doc/html/glib
 %{_datadir}/gtk-doc/html/gobject
+%endif
 %{_datadir}/gdb/auto-load/%{_libdir}/*-gdb.py
 %if %{with systemtap}
 %dir %{_datadir}/systemtap
