@@ -201,4 +201,12 @@
   - Flush confirmation messages</comment>
     <requestid>812567</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5dc9d6253489ee27f0c7e69bcdb9c7e7</srcmd5>
+    <version>2.1.1</version>
+    <time>1603725467</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841228</requestid>
+  </revision>
 </revisionlist>

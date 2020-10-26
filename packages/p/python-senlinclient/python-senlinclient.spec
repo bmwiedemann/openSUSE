@@ -17,24 +17,24 @@
 
 
 Name:           python-senlinclient
-Version:        2.0.1
+Version:        2.1.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Senlin
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-senlinclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-senlinclient/python-senlinclient-2.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-senlinclient/python-senlinclient-2.1.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-Babel >= 2.3.4
+BuildRequires:  python3-Babel
 BuildRequires:  python3-PrettyTable >= 0.7.2
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-devel
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-heatclient >= 1.10.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstackclient
 BuildRequires:  python3-openstacksdk >= 0.24.0
-BuildRequires:  python3-osc-lib >= 1.8.0
+BuildRequires:  python3-osc-lib >= 1.11.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
 BuildRequires:  python3-oslo.serialization >= 2.18.0
 BuildRequires:  python3-oslo.utils >= 3.33.0
@@ -54,20 +54,20 @@ It provides a Python API (the senlinclient module).
 %package -n python3-senlinclient
 Summary:        Python API and CLI for OpenStack Senlin
 Group:          Development/Languages/Python
-Requires:       python3-Babel >= 2.3.4
+Requires:       python3-Babel
 Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-heatclient >= 1.10.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-openstackclient
 Requires:       python3-openstacksdk >= 0.24.0
-Requires:       python3-osc-lib >= 1.8.0
+Requires:       python3-osc-lib >= 1.11.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 
 %description -n python3-senlinclient
 OpenStack Clustering service Provisioning API Client Library
@@ -90,7 +90,7 @@ It implements 100% of the OpenStack Senlin API. This package contains
 auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-senlinclient-2.0.1
+%autosetup -p1 -n python-senlinclient-2.1.1
 %py_req_cleanup
 
 %build
