@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 17:59:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.2:
+  * Stop building Python wheels with universal=1 set. (#251)
+  * Fix a bug that put a trailing quote in the documentation
+    version. (#232)
+  * Update the documentation URL to point to ReadTheDocs.
+
+-------------------------------------------------------------------
 Mon Sep 28 11:20:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 6.0.1:

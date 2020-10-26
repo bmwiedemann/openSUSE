@@ -261,4 +261,12 @@
   * Add *python_requires* to ``setup.py`` (#2</comment>
     <requestid>838247</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8d89cdd8faab57eff6232bbc713adc01</srcmd5>
+    <version>6.0.2</version>
+    <time>1603725737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844040</requestid>
+  </revision>
 </revisionlist>
