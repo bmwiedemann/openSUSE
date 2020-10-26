@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mixlib-log
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 %define mod_name mixlib-log
 %define mod_full_name %{mod_name}-%{version}
