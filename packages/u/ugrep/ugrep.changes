@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 25 13:59:32 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ugrep 3.0.4:
+  * fix an issue with large zip files searched in the query UI
+
+-------------------------------------------------------------------
 Fri Oct 23 10:17:28 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ugrep 3.0.2:
