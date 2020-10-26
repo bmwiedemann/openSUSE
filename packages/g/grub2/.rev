@@ -2015,4 +2015,12 @@ pretty much the same. The main user visible changes are
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1177957</comment>
   </revision>
+  <revision rev="230" vrev="20">
+    <srcmd5>d326fd03317acdbad5c589a8a905fc9e</srcmd5>
+    <version>2.04</version>
+    <time>1603725107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843382</requestid>
+  </revision>
 </revisionlist>
