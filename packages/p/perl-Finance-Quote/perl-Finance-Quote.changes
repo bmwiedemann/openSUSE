@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 27 16:22:23 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- Use metacpan for URL and sources file
+
+-------------------------------------------------------------------
+Tue Aug  6 21:29:48 CEST 2019 - sbrabec@suse.com
+
+- Update to version 1.49:
+  * Alphavantage: Removed Time::HiRes dependency due to mswin32
+    not supporting clock_gettime calls.
+  * Alphavantage: Add a waiting mechanism to comply to
+    alphavantage use terms
+  * Alphavantage: Added several stock exchange support and
+    currency
+  * Updated modules: Union, Deka, Indiamutual, ASX, Yahoojson,
+    TSP, AEX, Fool
+  * New modules: IEXTrading, MorningstarAU, MorningstarCH,
+    IEXCloud
+  * Yahoo: removed modules referring to yahoo API, which yahoo
+    stopped
+  * BUGFIX: 'use of uninitialized value' returned by perl could
+    make gnucash fail when more than 15 quotes where requested
+  * BUGFIX: MS Windows does not support %T in strftime call
+  * Added new documentation files: Release.txt, Hackers-Guide,
+    Modules-README.yml
+  * We started moving known failing tests into TODO blocks
+  * This release is the result of hard work by Bruce Schuck,
+    Vincent Lucarelli, Pieter-Jan Vandormael, Manuel Friedli,
+    Jalon Avens, Chris Good, Mark J. Cox, Eelco Dolstra, Henrik
+    Ahlgren, Vinay Shastry, Mike Alexander, Erik Colson.
+  * Special thanks go to Bruce Schuck and Vincent Lucarelli
+    which joined the maintainers team!
+- Use Sourceforge as home and download site.
+
+-------------------------------------------------------------------
 Tue Jul 24 06:35:01 UTC 2018 - sbrabec@suse.com
 
 - Fix dependencies. Require perl(CGI) (boo#1077300).
@@ -8,6 +43,12 @@ Tue Jun 12 21:47:44 UTC 2018 - astieger@suse.com
 
 - Change package license to GPL-3.0-or-later:
   MorningstarJP.pm carries this license
+
+-------------------------------------------------------------------
+Fri Apr  6 17:06:17 CEST 2018 - sbrabec@suse.com
+
+- Change license to GPL-3.0-or-later (MorningstarJP.pm).
+- Clean spec file by spec-cleaner.
 
 -------------------------------------------------------------------
 Fri Mar 23 01:08:43 CET 2018 - sbrabec@suse.com

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Finance-Quote
-Version:        1.47
-Release:        0
-#Upstream: GPL-1.0+
 %define cpan_name Finance-Quote
+Name:           perl-Finance-Quote
+Version:        1.49
+Release:        0
 Summary:        Get stock and mutual fund quotes from various exchanges
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Finance-Quote/
-Source0:        http://www.cpan.org/authors/id/E/EC/ECOCODE/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/EC/ECOCODE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch2:         perl-Finance-Quote-66235-Cdnfundlibrary-row.patch
 Patch3:         perl-Finance-Quote-debian-03_whatis.patch
 Patch5:         perl-Finance-Quote-debian-06_seb.patch
 Patch6:         perl-Finance-Quote-debian-10_whatis.patch
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CGI)
 BuildRequires:  perl(DateTime)
+BuildRequires:  perl(DateTime::Format::Strptime)
 BuildRequires:  perl(HTML::Parser)
 BuildRequires:  perl(HTML::TableExtract)
 BuildRequires:  perl(HTML::TokeParser)
@@ -46,15 +44,19 @@ BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Status)
 BuildRequires:  perl(JSON)
+BuildRequires:  perl(JSON::Parse)
 BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(String::Util)
+BuildRequires:  perl(Text::Template)
 BuildRequires:  perl(Time::Piece)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(URI::QueryParam)
 Requires:       perl(CGI)
 Requires:       perl(DateTime)
+Requires:       perl(DateTime::Format::Strptime)
 Requires:       perl(HTML::Parser)
 Requires:       perl(HTML::TableExtract)
 Requires:       perl(HTML::TokeParser)
@@ -64,13 +66,17 @@ Requires:       perl(HTTP::Headers)
 Requires:       perl(HTTP::Request::Common)
 Requires:       perl(HTTP::Status)
 Requires:       perl(JSON)
+Requires:       perl(JSON::Parse)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::Simple)
 Requires:       perl(LWP::UserAgent)
+Requires:       perl(String::Util)
+Requires:       perl(Text::Template)
 Requires:       perl(Time::Piece)
 Requires:       perl(URI)
 Requires:       perl(URI::Escape)
 Requires:       perl(URI::QueryParam)
+BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -84,7 +90,7 @@ With the exception of straight currency exchange rates, all information is
 returned as a two-dimensional hash (or a reference to such a hash, if
 called in a scalar context). For example:
 
-    %info = $q->fetch("australia","CML");
+    %%info = $q->fetch("australia","CML");
     print "The price of CML is ".$info{"CML","price"};
 
 The first part of the hash (eg, "CML") is referred to as the stock. The
@@ -99,11 +105,11 @@ find . -type f -print0 | xargs -0 chmod 644
 %patch6
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make %{?_smp_mflags} test
 
 %install
 %perl_make_install
@@ -112,6 +118,7 @@ find . -type f -print0 | xargs -0 chmod 644
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc ChangeLog.1 Changes LICENSE README
+%license LICENSE
+%doc ChangeLog.1 Changes README
 
 %changelog
