@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:50 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Remove the unused coding style modules
+  - Add Python3 victoria unit tests
+  - [goal] Migrate testing to ubuntu focal
+  - Bump default tox env from py37 to py38
+  - Update master for stable/ussuri
+  - Align contributing doc with oslo's policy
+  - Fix pygments style
+  - Bump bandit version
+  - Switch to newer openstackdocstheme and reno versions
+  - Add release notes links to doc index
+  - Remove translation sections from setup.cfg
+  - Add py38 package metadata
+  - Stop to use the __future__ module.
+
+-------------------------------------------------------------------
 Tue May 12 09:44:20 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.0.1
