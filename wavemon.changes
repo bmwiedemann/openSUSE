@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Oct 24 19:04:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.9.2
+  General
+  * proper rendering on UTF-8 terminals (#70),
+  * enabled by using libncursesw in place of libncurses,
+  * and using wide-characters for rendering where supported.
+  Info Screen:
+  * properly clear area when updating with new data,
+  * do not leave rx / tx empty when no data available (use 'n/a'
+    instead),
+  * improve rendering on some terminal types (e.g. ansi),
+  * refresh immediately after a window-size change;
+  History Screen:
+  * do not display noise / SNR levels when such data is not
+    reported by the driver;
+  Scan Screen:
+  * fix segmentation fault when no CAP_NET_ADMIN permissions,
+  * fix locking bug (#78), redoing the original and incorrect fix
+    (#42),
+    as a result, screen now retains data when switching windows;
+  Conf Screen:
+  * fix memory leak identified in #73,
+  * reorganize into sections via separators.
+  Miscellaneous
+  * Keyboard shortcuts: can now use 0..9 in place of F10,
+    F1..F9 (#76);
+  * Scan screen: increased the usable window size by 1 line;
+  * Build: updated several outdated build/bootstrap files.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:58:04 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Clean up spec file with spec-cleaner
