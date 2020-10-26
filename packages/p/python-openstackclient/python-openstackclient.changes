@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:02:36 UTC 2020 - cloud-devel@suse.de
+
+- update to version 5.4.0
+  - Switch to newer openstackdocstheme and reno versions
+  - Add API check for server_groups.create
+  - Cleanup Python 2.7 support
+  - Remove congress
+  - Add 'address_scope' type support to network rbac commands
+  - Resolve PEP8
+  - Add system role assignment tests for users and groups
+  - Add '--force; parameter to 'openstack quota set'
+  - Show words indicating booted from volume for server image
+  - Fix reverted osc-lib interface change
+  - Fix compatibility issue in 5.3
+  - Support tagging Neutron ports on creation
+  - Add NUMA affinity policy parameter to "port"
+  - Add 'subnetpool' type support to rbac commands
+  - Use unittest.mock instead of third party mock
+  - Allow os quota list query to filter by project
+  - Output correct json for security groups in 'openstack server show'
+  - Add libc6-dev to bindep
+  - Add description field to portforwarding NAT rules
+  - switch to stevedore for entry points
+  - Fix gate due to switch to focal
+  - Revert "Format location columns in network commands"
+  - Remove enabling of glance v1 API
+  - Support for stateless security groups
+  - Add cliff to libs-from-git for devstack functional tips
+  - Fix uploading an signed image does not work if private signing key is encrypted
+  - Expose flag for forcing use of import for images
+  - Add a command to trigger entrypoint cache creation
+  - Add resource option immutable
+  - Be explicit about python version in image
+  - Delete the testcases that arent needed anymore
+  - Add py38 package metadata
+  - Make volume backup record commands available in v3
+  - bump py37 to py38 in tox.ini
+  - Update master for stable/ussuri
+  - Remove os-client-config references
+  - identity: autogenerate docs
+  - Fix --image-property option in 'create server'
+  - Adding options to user cli
+  - Allow openstack flavor set to update flavor description using name
+  - Replace assertItemsEqual with assertCountEqual
+  - Bypass user and group verification in RemoveRole
+  - Cleanup: remove a useless reference to "object"
+  - Add Python3 victoria unit tests
+  - image: autogenerate docs
+  - Remove translation sections from setup.cfg
+  - Client should parse string to boolean for value 'is_domain'
+  - Don't display Munch objects in the output
+  - port: add --host to list command
+  - Update developing.rst
+  - Add API check for server_groups.list
+  - Remove Babel from requirements
+  - Correct image lookup during server rebuild
+  - Remove install unnecessary packages
+  - Revert "Disallow setting default on internal network"
+  - Make container list --all work
+  - Add OpenStack Client for Manila docs
+  - Add command: router add/remove route --route
+
+-------------------------------------------------------------------
 Tue May 12 09:52:28 UTC 2020 - cloud-devel@suse.de
 
 - update to version 5.2.0
