@@ -1,7 +1,7 @@
 #
 # spec file for package python-notebook
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-notebook%{psuffix}
@@ -36,14 +35,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
+# PATCH-FIX-UPSTREAM remove_nose.patch gh#jupyter/notebook#4753 mcepl@suse.com
+# Port the test suite to pytest from nose
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
-%if !%{with test}
-BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  jupyter-notebook-filesystem
-%endif
 Requires:       jupyter-notebook = %{version}
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
@@ -63,19 +60,21 @@ Suggests:       %{name}-latex
 Provides:       python-jupyter_notebook = %{version}
 Obsoletes:      python-jupyter_notebook < %{version}
 BuildArch:      noarch
+%if !%{with test}
+BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  jupyter-notebook-filesystem
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module Send2Trash}
+BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 5.3.1}
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
-BuildRequires:  %{python_module nose-exclude}
-BuildRequires:  %{python_module nose_warnings_filters}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
@@ -97,11 +96,11 @@ This package provides the python interface.
 # FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
+Requires:       jupyter-notebook-lang = %{version}
 Requires:       python-notebook = %{version}
 Provides:       python-jupyter_notebook-lang = %{version}
 Provides:       python-notebook-lang-all = %{version}
 Obsoletes:      python-jupyter_notebook-lang < %{version}
-Requires:       jupyter-notebook-lang = %{version}
 
 %description    lang
 Provides translations for the Jupyter notebook.
@@ -129,6 +128,7 @@ interactive computing.
 This package provides the jupyter components.
 
 %package     -n jupyter-notebook-lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for the Jupyter Notebook
 Group:          System/Localization
 Requires:       jupyter-notebook = %{version}
@@ -157,6 +157,10 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
 %prep
 %setup -q -n notebook-%{version}
+%autopatch -p1
+
+# We don't want to run selenium tests
+rm -rf notebook/tests/selenium
 
 %build
 %python_build
@@ -179,7 +183,7 @@ done
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_expand nosetests-%{$python_bin_suffix} -v --exclude-dir notebook/tests/selenium
+%pytest
 %endif
 
 %if !%{with test}

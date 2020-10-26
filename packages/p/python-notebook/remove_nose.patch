@@ -1,0 +1,582 @@
+---
+ notebook/auth/tests/test_security.py             |   17 ++++----
+ notebook/services/contents/tests/test_fileio.py  |   41 ++++++++++----------
+ notebook/services/contents/tests/test_manager.py |    3 -
+ notebook/tests/launchnotebook.py                 |    8 ++--
+ notebook/tests/test_gateway.py                   |   19 ++++-----
+ notebook/tests/test_i18n.py                      |    9 +---
+ notebook/tests/test_notebookapp.py               |   41 +++++++++-----------
+ notebook/tests/test_paths.py                     |    6 +--
+ notebook/tests/test_serialize.py                 |    6 +--
+ notebook/tests/test_utils.py                     |   45 ++++++++++-------------
+ setup.cfg                                        |    9 ----
+ 11 files changed, 90 insertions(+), 114 deletions(-)
+
+--- a/notebook/auth/tests/test_security.py
++++ b/notebook/auth/tests/test_security.py
+@@ -1,25 +1,24 @@
+ # coding: utf-8
+ from ..security import passwd, passwd_check, salt_len
+-import nose.tools as nt
+ 
+ def test_passwd_structure():
+     p = passwd('passphrase')
+     algorithm, salt, hashed = p.split(':')
+-    nt.assert_equal(algorithm, 'sha1')
+-    nt.assert_equal(len(salt), salt_len)
+-    nt.assert_equal(len(hashed), 40)
++    assert algorithm == 'sha1'
++    assert len(salt) == salt_len
++    assert len(hashed) == 40
+ 
+ def test_roundtrip():
+     p = passwd('passphrase')
+-    nt.assert_equal(passwd_check(p, 'passphrase'), True)
++    assert passwd_check(p, 'passphrase')
+ 
+ def test_bad():
+     p = passwd('passphrase')
+-    nt.assert_equal(passwd_check(p, p), False)
+-    nt.assert_equal(passwd_check(p, 'a:b:c:d'), False)
+-    nt.assert_equal(passwd_check(p, 'a:b'), False)
++    assert not passwd_check(p, p)
++    assert not passwd_check(p, 'a:b:c:d')
++    assert not passwd_check(p, 'a:b')
+ 
+ def test_passwd_check_unicode():
+     # GH issue #4524
+     phash = u'sha1:23862bc21dd3:7a415a95ae4580582e314072143d9c382c491e4f'
+-    assert passwd_check(phash, u"łe¶ŧ←↓→")
+\ No newline at end of file
++    assert passwd_check(phash, u"łe¶ŧ←↓→")
+--- a/notebook/services/contents/tests/test_fileio.py
++++ b/notebook/services/contents/tests/test_fileio.py
+@@ -8,7 +8,7 @@ import io as stdlib_io
+ import os.path
+ import stat
+ 
+-import nose.tools as nt
++import pytest
+ 
+ from ipython_genutils.testing.decorators import skip_win32
+ from ..fileio import atomic_writing
+@@ -24,7 +24,7 @@ def test_atomic_writing():
+         f1 = os.path.join(td, 'penguin')
+         with stdlib_io.open(f1, 'w') as f:
+             f.write(u'Before')
+-        
++
+         if os.name != 'nt':
+             os.chmod(f1, 0o701)
+             orig_mode = stat.S_IMODE(os.stat(f1).st_mode)
+@@ -39,32 +39,32 @@ def test_atomic_writing():
+             # OSError: The user lacks the privilege (Windows)
+             have_symlink = False
+ 
+-        with nt.assert_raises(CustomExc):
++        with pytest.raises(CustomExc):
+             with atomic_writing(f1) as f:
+                 f.write(u'Failing write')
+                 raise CustomExc
+ 
+         # Because of the exception, the file should not have been modified
+         with stdlib_io.open(f1, 'r') as f:
+-            nt.assert_equal(f.read(), u'Before')
++            assert f.read() == u'Before'
+ 
+         with atomic_writing(f1) as f:
+             f.write(u'Overwritten')
+ 
+         with stdlib_io.open(f1, 'r') as f:
+-            nt.assert_equal(f.read(), u'Overwritten')
++            assert f.read() == u'Overwritten'
+ 
+         if os.name != 'nt':
+             mode = stat.S_IMODE(os.stat(f1).st_mode)
+-            nt.assert_equal(mode, orig_mode)
++            assert mode == orig_mode
+ 
+         if have_symlink:
+             # Check that writing over a file preserves a symlink
+             with atomic_writing(f2) as f:
+                 f.write(u'written from symlink')
+-            
++
+             with stdlib_io.open(f1, 'r') as f:
+-                nt.assert_equal(f.read(), u'written from symlink')
++                assert f.read() == u'written from symlink'
+ 
+ def _save_umask():
+     global umask
+@@ -75,57 +75,58 @@ def _restore_umask():
+     os.umask(umask)
+ 
+ @skip_win32
+-@nt.with_setup(_save_umask, _restore_umask)
+ def test_atomic_writing_umask():
++    _save_umask()
+     with TemporaryDirectory() as td:
+         os.umask(0o022)
+         f1 = os.path.join(td, '1')
+         with atomic_writing(f1) as f:
+             f.write(u'1')
+         mode = stat.S_IMODE(os.stat(f1).st_mode)
+-        nt.assert_equal(mode, 0o644, '{:o} != 644'.format(mode))
++        assert mode, 0o644 == '{:o} != 644'.format(mode)
+ 
+         os.umask(0o057)
+         f2 = os.path.join(td, '2')
+         with atomic_writing(f2) as f:
+             f.write(u'2')
+         mode = stat.S_IMODE(os.stat(f2).st_mode)
+-        nt.assert_equal(mode, 0o620, '{:o} != 620'.format(mode))
++        assert mode, 0o620 == '{:o} != 620'.format(mode)
++    _restore_umask()
+ 
+ 
+ def test_atomic_writing_newlines():
+     with TemporaryDirectory() as td:
+         path = os.path.join(td, 'testfile')
+-        
++
+         lf = u'a\nb\nc\n'
+         plat = lf.replace(u'\n', os.linesep)
+         crlf = lf.replace(u'\n', u'\r\n')
+-        
++
+         # test default
+         with stdlib_io.open(path, 'w') as f:
+             f.write(lf)
+         with stdlib_io.open(path, 'r', newline='') as f:
+             read = f.read()
+-        nt.assert_equal(read, plat)
+-        
++        assert read == plat
++
+         # test newline=LF
+         with stdlib_io.open(path, 'w', newline='\n') as f:
+             f.write(lf)
+         with stdlib_io.open(path, 'r', newline='') as f:
+             read = f.read()
+-        nt.assert_equal(read, lf)
+-        
++        assert read == lf
++
+         # test newline=CRLF
+         with atomic_writing(path, newline='\r\n') as f:
+             f.write(lf)
+         with stdlib_io.open(path, 'r', newline='') as f:
+             read = f.read()
+-        nt.assert_equal(read, crlf)
+-        
++        assert read == crlf
++
+         # test newline=no convert
+         text = u'crlf\r\ncr\rlf\n'
+         with atomic_writing(path, newline='') as f:
+             f.write(text)
+         with stdlib_io.open(path, 'r', newline='') as f:
+             read = f.read()
+-        nt.assert_equal(read, text)
++        assert read == text
+--- a/notebook/services/contents/tests/test_manager.py
++++ b/notebook/services/contents/tests/test_manager.py
+@@ -8,9 +8,8 @@ import time
+ from contextlib import contextmanager
+ from itertools import combinations
+ 
+-from nose import SkipTest
+ from tornado.web import HTTPError
+-from unittest import TestCase
++from unittest import TestCase, SkipTest
+ from tempfile import NamedTemporaryFile
+ 
+ from nbformat import v4 as nbformat
+--- a/notebook/tests/launchnotebook.py
++++ b/notebook/tests/launchnotebook.py
+@@ -68,7 +68,7 @@ class NotebookTestBase(TestCase):
+         cls.notebook_thread.join(timeout=MAX_WAITTIME)
+         if cls.notebook_thread.is_alive():
+             raise TimeoutError("Undead notebook server")
+-    
++
+     @classmethod
+     def auth_headers(cls):
+         headers = {}
+@@ -79,7 +79,7 @@ class NotebookTestBase(TestCase):
+     @classmethod
+     def request(cls, verb, path, **kwargs):
+         """Send a request to my server
+-        
++
+         with authentication and everything.
+         """
+         headers = kwargs.setdefault('headers', {})
+@@ -104,7 +104,7 @@ class NotebookTestBase(TestCase):
+     @classmethod
+     def get_argv(cls):
+         return []
+-    
++
+     @classmethod
+     def setup_class(cls):
+         cls.tmp_dir = TemporaryDirectory()
+@@ -116,7 +116,7 @@ class NotebookTestBase(TestCase):
+                 if e.errno != errno.EEXIST:
+                     raise
+             return path
+-        
++
+         cls.home_dir = tmp('home')
+         data_dir = cls.data_dir = tmp('data')
+         config_dir = cls.config_dir = tmp('config')
+--- a/notebook/tests/test_gateway.py
++++ b/notebook/tests/test_gateway.py
+@@ -6,7 +6,6 @@ from datetime import datetime
+ from io import StringIO
+ from unittest.mock import patch
+ 
+-import nose.tools as nt
+ from tornado import gen
+ from tornado.web import HTTPError
+ from tornado.httpclient import HTTPRequest, HTTPResponse
+@@ -72,7 +71,7 @@ def mock_gateway_request(url, **kwargs):
+         name = json_body.get('name')
+         env = json_body.get('env')
+         kspec_name = env.get('KERNEL_KSPEC_NAME')
+-        nt.assert_equal(name, kspec_name)   # Ensure that KERNEL_ env values get propagated
++        assert name == kspec_name   # Ensure that KERNEL_ env values get propagated
+         model = generate_model(name)
+         running_kernels[model.get('id')] = model  # Register model as a running kernel
+         response_buf = StringIO(json.dumps(model))
+@@ -159,17 +158,17 @@ class TestGateway(NotebookTestBase):
+         return argv
+ 
+     def test_gateway_options(self):
+-        nt.assert_equal(self.notebook.gateway_config.gateway_enabled, True)
+-        nt.assert_equal(self.notebook.gateway_config.url, TestGateway.mock_gateway_url)
+-        nt.assert_equal(self.notebook.gateway_config.http_user, TestGateway.mock_http_user)
+-        nt.assert_equal(self.notebook.gateway_config.connect_timeout, self.notebook.gateway_config.connect_timeout)
+-        nt.assert_equal(self.notebook.gateway_config.connect_timeout, 44.4)
++        assert self.notebook.gateway_config.gateway_enabled
++        assert self.notebook.gateway_config.url == TestGateway.mock_gateway_url
++        assert self.notebook.gateway_config.http_user == TestGateway.mock_http_user
++        assert self.notebook.gateway_config.connect_timeout == self.notebook.gateway_config.connect_timeout
++        assert self.notebook.gateway_config.connect_timeout == 44.4
+ 
+     def test_gateway_class_mappings(self):
+         # Ensure appropriate class mappings are in place.
+-        nt.assert_equal(self.notebook.kernel_manager_class.__name__, 'GatewayKernelManager')
+-        nt.assert_equal(self.notebook.session_manager_class.__name__, 'GatewaySessionManager')
+-        nt.assert_equal(self.notebook.kernel_spec_manager_class.__name__, 'GatewayKernelSpecManager')
++        assert self.notebook.kernel_manager_class.__name__ == 'GatewayKernelManager'
++        assert self.notebook.session_manager_class.__name__ == 'GatewaySessionManager'
++        assert self.notebook.kernel_spec_manager_class.__name__ == 'GatewayKernelSpecManager'
+ 
+     def test_gateway_get_kernelspecs(self):
+         # Validate that kernelspecs come from gateway.
+--- a/notebook/tests/test_i18n.py
++++ b/notebook/tests/test_i18n.py
+@@ -1,10 +1,7 @@
+-import nose.tools as nt
+-
+ from notebook import i18n
+ 
+ def test_parse_accept_lang_header():
+     palh = i18n.parse_accept_lang_header
+-    nt.assert_equal(palh(''), [])
+-    nt.assert_equal(palh('zh-CN,en-GB;q=0.7,en;q=0.3'),
+-                    ['en', 'en_GB', 'zh_CN'])
+-    nt.assert_equal(palh('nl,fr;q=0'), ['nl'])
++    assert palh('') == []
++    assert palh('zh-CN,en-GB;q=0.7,en;q=0.3') == ['en', 'en_GB', 'zh_CN']
++    assert palh('nl,fr;q=0') == ['nl']
+--- a/notebook/tests/test_notebookapp.py
++++ b/notebook/tests/test_notebookapp.py
+@@ -4,14 +4,11 @@ import getpass
+ import logging
+ import os
+ import re
+-import signal
+-from subprocess import Popen, PIPE, STDOUT
+-import sys
+ from tempfile import NamedTemporaryFile
+ 
+ from unittest.mock import patch
+ 
+-import nose.tools as nt
++import pytest
+ 
+ from traitlets.tests.utils import check_help_all_output
+ 
+@@ -37,11 +34,11 @@ def test_server_info_file():
+     nbapp.initialize(argv=[])
+     nbapp.write_server_info_file()
+     servers = get_servers()
+-    nt.assert_equal(len(servers), 1)
+-    nt.assert_equal(servers[0]['port'], nbapp.port)
+-    nt.assert_equal(servers[0]['url'], nbapp.connection_url)
++    assert len(servers) == 1
++    assert servers[0]['port'] == nbapp.port
++    assert servers[0]['url'] == nbapp.connection_url
+     nbapp.remove_server_info_file()
+-    nt.assert_equal(get_servers(), [])
++    assert get_servers() == []
+ 
+     # The ENOENT error should be silenced.
+     nbapp.remove_server_info_file()
+@@ -49,43 +46,43 @@ def test_server_info_file():
+ def test_nb_dir():
+     with TemporaryDirectory() as td:
+         app = NotebookApp(notebook_dir=td)
+-        nt.assert_equal(app.notebook_dir, td)
++        assert app.notebook_dir == td
+ 
+ def test_no_create_nb_dir():
+     with TemporaryDirectory() as td:
+         nbdir = os.path.join(td, 'notebooks')
+         app = NotebookApp()
+-        with nt.assert_raises(TraitError):
++        with pytest.raises(TraitError):
+             app.notebook_dir = nbdir
+ 
+ def test_missing_nb_dir():
+     with TemporaryDirectory() as td:
+         nbdir = os.path.join(td, 'notebook', 'dir', 'is', 'missing')
+         app = NotebookApp()
+-        with nt.assert_raises(TraitError):
++        with pytest.raises(TraitError):
+             app.notebook_dir = nbdir
+ 
+ def test_invalid_nb_dir():
+     with NamedTemporaryFile() as tf:
+         app = NotebookApp()
+-        with nt.assert_raises(TraitError):
++        with pytest.raises(TraitError):
+             app.notebook_dir = tf
+ 
+ def test_nb_dir_with_slash():
+     with TemporaryDirectory(suffix="_slash" + os.sep) as td:
+         app = NotebookApp(notebook_dir=td)
+-        nt.assert_false(app.notebook_dir.endswith(os.sep))
++        assert not app.notebook_dir.endswith(os.sep)
+ 
+ def test_nb_dir_root():
+     root = os.path.abspath(os.sep) # gets the right value on Windows, Posix
+     app = NotebookApp(notebook_dir=root)
+-    nt.assert_equal(app.notebook_dir, root)
++    assert app.notebook_dir == root
+ 
+ def test_generate_config():
+     with TemporaryDirectory() as td:
+         app = NotebookApp(config_dir=td)
+         app.initialize(['--generate-config', '--allow-root'])
+-        with nt.assert_raises(NoStart):
++        with pytest.raises(NoStart):
+             app.start()
+         assert os.path.exists(os.path.join(td, 'jupyter_notebook_config.py'))
+ 
+@@ -100,7 +97,7 @@ def test_pep440_version():
+         '1.2.3.dev1.post2',
+         ]:
+         def loc():
+-            with nt.assert_raises(ValueError):
++            with pytest.raises(ValueError):
+                 raise_on_bad_version(version)
+         yield loc
+ 
+@@ -136,7 +133,7 @@ def test_notebook_password():
+             app.start()
+             nb = NotebookApp()
+             nb.load_config_file()
+-            nt.assert_not_equal(nb.password, '')
++            assert nb.password != ''
+             passwd_check(nb.password, password)
+ 
+ class TestingStopApp(notebookapp.NbserverStopApp):
+@@ -171,17 +168,17 @@ def test_notebook_stop():
+         app = TestingStopApp()
+         app.initialize(['105'])
+         app.start()
+-    nt.assert_equal(len(app.servers_shut_down), 1)
+-    nt.assert_equal(app.servers_shut_down[0]['port'], 105)
++    assert len(app.servers_shut_down) == 1
++    assert app.servers_shut_down[0]['port'] == 105
+ 
+     # test no match
+     with mock_servers, patch('os.kill') as os_kill:
+         app = TestingStopApp()
+         app.initialize(['999'])
+-        with nt.assert_raises(SystemExit) as exc:
++        with pytest.raises(SystemExit) as exc:
+             app.start()
+-        nt.assert_equal(exc.exception.code, 1)
+-    nt.assert_equal(len(app.servers_shut_down), 0)
++        assert exc.value.code == 1
++    assert len(app.servers_shut_down) == 0
+ 
+ 
+ class NotebookAppTests(NotebookTestBase):
+--- a/notebook/tests/test_paths.py
++++ b/notebook/tests/test_paths.py
+@@ -1,6 +1,4 @@
+-
+ import re
+-from nose.tools import assert_regex, assert_not_regex
+ 
+ from notebook.base.handlers import path_regex
+ 
+@@ -16,7 +14,7 @@ def test_path_regex():
+         '/x/foo/bar',
+         '/x/foo/bar.txt',
+     ):
+-        assert_regex(path, path_pat)
++        assert re.search(path_pat, path)
+ 
+ def test_path_regex_bad():
+     for path in (
+@@ -29,4 +27,4 @@ def test_path_regex_bad():
+         '/y',
+         '/y/x/foo',
+     ):
+-        assert_not_regex(path, path_pat)
++        assert not re.search(path_pat, path)
+--- a/notebook/tests/test_serialize.py
++++ b/notebook/tests/test_serialize.py
+@@ -2,8 +2,6 @@
+ 
+ import os
+ 
+-import nose.tools as nt
+-
+ from jupyter_client.session import Session
+ from ..base.zmqhandlers import (
+     serialize_binary_message,
+@@ -15,7 +13,7 @@ def test_serialize_binary():
+     msg = s.msg('data_pub', content={'a': 'b'})
+     msg['buffers'] = [ memoryview(os.urandom(3)) for i in range(3) ]
+     bmsg = serialize_binary_message(msg)
+-    nt.assert_is_instance(bmsg, bytes)
++    assert isinstance(bmsg, bytes)
+ 
+ def test_deserialize_binary():
+     s = Session()
+@@ -23,4 +21,4 @@ def test_deserialize_binary():
+     msg['buffers'] = [ memoryview(os.urandom(2)) for i in range(3) ]
+     bmsg = serialize_binary_message(msg)
+     msg2 = deserialize_binary_message(bmsg)
+-    nt.assert_equal(msg2, msg)
++    assert msg2 == msg
+--- a/notebook/tests/test_utils.py
++++ b/notebook/tests/test_utils.py
+@@ -6,8 +6,6 @@
+ import ctypes
+ import os
+ 
+-import nose.tools as nt
+-
+ from traitlets.tests.utils import check_help_all_output
+ from notebook.utils import url_escape, url_unescape, is_hidden, is_file_hidden
+ from ipython_genutils.py3compat import cast_unicode
+@@ -26,60 +24,60 @@ def test_url_escape():
+     # changes path or notebook name with special characters to url encoding
+     # these tests specifically encode paths with spaces
+     path = url_escape('/this is a test/for spaces/')
+-    nt.assert_equal(path, '/this%20is%20a%20test/for%20spaces/')
++    assert path == '/this%20is%20a%20test/for%20spaces/'
+ 
+     path = url_escape('notebook with space.ipynb')
+-    nt.assert_equal(path, 'notebook%20with%20space.ipynb')
++    assert path == 'notebook%20with%20space.ipynb'
+ 
+     path = url_escape('/path with a/notebook and space.ipynb')
+-    nt.assert_equal(path, '/path%20with%20a/notebook%20and%20space.ipynb')
+-    
++    assert path == '/path%20with%20a/notebook%20and%20space.ipynb'
++
+     path = url_escape('/ !@$#%^&* / test %^ notebook @#$ name.ipynb')
+-    nt.assert_equal(path,
+-        '/%20%21%40%24%23%25%5E%26%2A%20/%20test%20%25%5E%20notebook%20%40%23%24%20name.ipynb')
++    assert path == \
++        '/%20%21%40%24%23%25%5E%26%2A%20/%20test%20%25%5E%20notebook%20%40%23%24%20name.ipynb'
+ 
+ def test_url_unescape():
+ 
+     # decodes a url string to a plain string
+     # these tests decode paths with spaces
+     path = url_unescape('/this%20is%20a%20test/for%20spaces/')
+-    nt.assert_equal(path, '/this is a test/for spaces/')
++    assert path == '/this is a test/for spaces/'
+ 
+     path = url_unescape('notebook%20with%20space.ipynb')
+-    nt.assert_equal(path, 'notebook with space.ipynb')
++    assert path == 'notebook with space.ipynb'
+ 
+     path = url_unescape('/path%20with%20a/notebook%20and%20space.ipynb')
+-    nt.assert_equal(path, '/path with a/notebook and space.ipynb')
++    assert path == '/path with a/notebook and space.ipynb'
+ 
+     path = url_unescape(
+         '/%20%21%40%24%23%25%5E%26%2A%20/%20test%20%25%5E%20notebook%20%40%23%24%20name.ipynb')
+-    nt.assert_equal(path, '/ !@$#%^&* / test %^ notebook @#$ name.ipynb')
++    assert path == '/ !@$#%^&* / test %^ notebook @#$ name.ipynb'
+ 
+ def test_is_hidden():
+     with TemporaryDirectory() as root:
+         subdir1 = os.path.join(root, 'subdir')
+         os.makedirs(subdir1)
+-        nt.assert_equal(is_hidden(subdir1, root), False)
+-        nt.assert_equal(is_file_hidden(subdir1), False)
++        assert not is_hidden(subdir1, root)
++        assert not is_file_hidden(subdir1)
+ 
+         subdir2 = os.path.join(root, '.subdir2')
+         os.makedirs(subdir2)
+-        nt.assert_equal(is_hidden(subdir2, root), True)
+-        nt.assert_equal(is_file_hidden(subdir2), True)#
++        assert is_hidden(subdir2, root)
++        assert is_file_hidden(subdir2)#
+         # root dir is always visible
+-        nt.assert_equal(is_hidden(subdir2, subdir2), False)
++        assert not is_hidden(subdir2, subdir2)
+ 
+         subdir34 = os.path.join(root, 'subdir3', '.subdir4')
+         os.makedirs(subdir34)
+-        nt.assert_equal(is_hidden(subdir34, root), True)
+-        nt.assert_equal(is_hidden(subdir34), True)
++        assert is_hidden(subdir34, root)
++        assert is_hidden(subdir34)
+ 
+         subdir56 = os.path.join(root, '.subdir5', 'subdir6')
+         os.makedirs(subdir56)
+-        nt.assert_equal(is_hidden(subdir56, root), True)
+-        nt.assert_equal(is_hidden(subdir56), True)
+-        nt.assert_equal(is_file_hidden(subdir56), False)
+-        nt.assert_equal(is_file_hidden(subdir56, os.stat(subdir56)), False)
++        assert is_hidden(subdir56, root)
++        assert is_hidden(subdir56)
++        assert not is_file_hidden(subdir56)
++        assert not is_file_hidden(subdir56, os.stat(subdir56))
+ 
+ @skip_if_not_win32
+ def test_is_hidden_win32():
+@@ -92,4 +90,3 @@ def test_is_hidden_win32():
+         print(r)
+         assert is_hidden(subdir1, root)
+         assert is_file_hidden(subdir1)
+-
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -3,12 +3,3 @@ universal=0
+ 
+ [metadata]
+ license_file = LICENSE
+-
+-[nosetests]
+-warningfilters=module   |.*            |DeprecationWarning |notebook.*
+-               default  |.* | Warning | notebook.*
+-               ignore   |.*metadata.*  |DeprecationWarning |notebook.*
+-               ignore   |.*schema.*    |UserWarning        |nbfor.*
+-               ignore   |The 'warn' method is deprecated, use 'warning' instead     | DeprecationWarning |notebook.*
+-               error    |encodestring\(\) is a deprecated alias, use encodebytes\(\)| DeprecationWarning | notebook.*
+-               error    |decodestring\(\) is a .*| DeprecationWarning | notebook.*
