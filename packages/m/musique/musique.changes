@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Mon Oct 26 08:33:03 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Remove obsolete line: Recommends: %{name}-lang = %{version}
+
+-------------------------------------------------------------------
+Wed Oct 21 18:45:56 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Correct licence
+
+-------------------------------------------------------------------
+Thu Oct  8 12:58:33 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Remove lines for unsupported openSUSE versions
+
+-------------------------------------------------------------------
+Wed Oct  7 10:37:21 UTC 2020 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 1.10
+  - No upstream changelog
+- Remove local qthelper.cpp
+- Remove 0001-Use-a-local-copy-of-qthelper.hpp.patch
+- Remove fixbuild.patch
+
+-------------------------------------------------------------------
+Wed Mar 11 10:21:54 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a local qthelper.cpp copy. mpv >= 0.33 doesn't provide this
+  header anymore and suggest keeping a local copy until using a
+  better wrapper.
+- Add 0001-Use-a-local-copy-of-qthelper.hpp.patch
+
+-------------------------------------------------------------------
+Fri Aug  9 20:20:58 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Add fixbuild.patch
+
+-------------------------------------------------------------------
+Fri Aug  9 20:00:43 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 1.7:
+  * Main change is swith to discogs for artist images, because
+    lastfm stopped working.
+
+-------------------------------------------------------------------
+Thu May 16 15:56:44 UTC 2019 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.6:
+  * Port from Phonon to MPV.
+- Switch to SOURCE_DATE_EPOCH for fake build dates.
+- Removed musique-fix-stringcompare.patch
+
+-------------------------------------------------------------------
+Sat Feb 11 17:24:45 UTC 2017 - kieltux@gmail.com
+
+- Update to 1.5:
+  * Reworked icon
+  * Now supports multiple disk and multiple artists albums
+  * New Mac toolbar and icons
+  * Retina display support
+  * Fixed media keys on GNOME
+  * Fixed collection updating on Mac App Store version
+  * Fixed playlist header not displaying on tracks without album
+  * New and updated translations
+
+-------------------------------------------------------------------
+Sat Oct 24 20:35:24 UTC 2015 - tchvatal@suse.com
+
+- Simply call qmake
+- fix bnc#916899 by explicitly depending on sql backends of qt4
+
+-------------------------------------------------------------------
+Fri Jun 12 22:32:12 UTC 2015 - sor.alexei@meowr.ru
+
+- Change source target to GitHub.
+- Remove musique-compilation-fix.patch.
+
+-------------------------------------------------------------------
+Sat Feb 28 12:00:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 1.4.
+  * Enhancements to the search suggestions.
+  * Make the volume handle red when volume is zero.
+  * Hide the status bar when in the Info View.
+  * Remote collections: do not update collection if dir does not
+    exist or is empty.
+  * Add --stop-after-this command line switch.
+  * Fix duplicate tracks when playing an artist.
+  * Add Stop After This Video GNOME action.
+  * New and updated translations.
+- Add musique-compilation-fix.patch.
+- Remove gcc-4.7.patch.
+- Remove musique-1.3-fix-toolbaricon.diff: fixed upstream.
+- Spec cleanup.
+- Add musique-lang package.
+
+-------------------------------------------------------------------
+Fri Nov  1 21:56:07 UTC 2013 - cornelis@solcon.nl
+
+- Added musique-1.3-fix-toolbaricon.diff to fix info icon on toolbar
+
+-------------------------------------------------------------------
+Fri Oct 11 16:14:03 UTC 2013 - cornelis@solcon.nl
+
+- Update to version 1.3:
+  * Album and artist sorting
+  * Album covers in the playlist
+  * Faster artist and album views
+  * Notification at end of collection scan
+  * Notification support on Ubuntu
+  * Gapless playback (Only works on Linux with the GStreamer Phonon backend)
+  * Find more local covers (added GIF, PNG, BMP and JPEG file types)
+  * Fixed homonymous albums from different artists being erroneously merged
+  * Fixed albums not correctly sorted when playing an artist
+  * Fixed play icon hover animation in Folders view
+  * Fixed lyrics showing showing garbage in some cases
+  * Fixed handling of tracks that have no associated album
+  * New and updated translations
+
+-------------------------------------------------------------------
+Fri Feb  8 13:19:14 UTC 2013 - cornelis@solcon.nl
+
+- Update to version 1.2.1:
+  * Faster painting of artist photos and album covers
+  * Autoupdate on Mac and Windows
+  * Updated Windows toolbar style
+  * Ubuntu Ambiance theme integration
+  * Fixed system language settings detection
+  * New and updated translations
+
+-------------------------------------------------------------------
+Fri Oct 26 08:19:12 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 1.2:
+  * Fixed wrong artist names, please rescan your collection
+  * Long artist names and album titles displaying incorrectly
+  * Fixed disabled Info button when the playlist finishes
+  * OS X Mountain Lion notifications
+  * Mac Sandbox support
+  * Compatible with OS X Mountain Lion Gatekeeper
+  * Partial Retina Display support. Still using 1x bitmaps because of Qt not being ready
+  * Fixed search box being erroneously focused on the Mac
+  * Fixed wrong localization of some menu items on the Mac
+  * Added missing menu item to restore hidden window, as per the OS X HIG
+  * Unity & GNOME 3 actions (aka Quicklists)
+  * CLI
+  * New and updated translations
+
+-------------------------------------------------------------------
+Mon Jul 30 21:27:13 UTC 2012 - cornelis@solcon.nl
+
+- Added patch from debian to fix build with gcc 4.7
+
+-------------------------------------------------------------------
+Mon Feb 20 12:22:39 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Set SPDX-style license
+  * Add spec file license header
+  * Removed outdated %clean section
+
+-------------------------------------------------------------------
+Thu Feb 16 13:32:25 UTC 2012 - cornelis@solcon.nl
+
+- Update to version 1.1:
+  * Last.fm scrobbling
+  * Album covers from image files or embedded in audio files
+  * Lyrics are now read from inside MP3 files when not available online
+  * Faster music collection scanning
+  * Album covers and artist photos are downloaded in the background
+  * Album release year inside tags has now precedence over Last.fm often incorrect release year
+  * Fixed duplicate tracks after rescan on Windows
+  * Lots of minor UI enhancements
+
+-------------------------------------------------------------------
+Wed Oct 26 11:24:20 UTC 2011 - alinm.elena@gmail.com
+
+- Initial commit
+
