@@ -1,8 +1,8 @@
 <services>
   <service mode="disabled" name="renderspec">
-    <param name="input-template">https://raw.githubusercontent.com/openstack/rpm-packaging/stable/train/openstack/python-octaviaclient/python-octaviaclient.spec.j2</param>
+    <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/branch/stable/victoria/openstack/python-octaviaclient/python-octaviaclient.spec.j2</param>
     <param name="output-name">python-octaviaclient.spec</param>
-    <param name="requirements">https://raw.githubusercontent.com/openstack/python-octaviaclient/stable/train/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/python-octaviaclient/raw/branch/stable/victoria/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,python-octaviaclient</param>
   </service>

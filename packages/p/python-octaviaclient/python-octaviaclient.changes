@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:10:46 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Remove mocking of functools.partial
+  - Add SCTP support
+  - Fix hacking min version to 3.0.1
+  - Add TLS versions and ciphers unsets
+  - Add the ability to specify TLS protocols for a listener
+  - Show operating_status in listing LB output
+  - Fix new pylint errors
+  - Fix the lower-constraints job for focal
+  - Update master for stable/ussuri
+  - Add Python3 victoria unit tests
+  - Remove Babel requirement
+  - Add l7policy and l7rule to octavia quota
+  - Add the ability to specify TLS protocols for a pool
+  - Add amphora delete command
+  - Add ALPN support for listeners
+  - Switch to newer openstackdocstheme and reno versions
+
+-------------------------------------------------------------------
+Tue May 12 09:56:38 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.0.1
+  - Add amphora stats show API and CLI
+  - Fix Octavia client for API endpoint 503
+  - Add the ability to specify the cipher list for a listener
+  - Generate PDF documentation
+  - Add --long to amphora-list to show more columns
+  - Add the ability to specify the cipher list for a pool
+  - Align python-octaviaclient to octavia coding style
+  - List l7poclies by listener
+  - Add "--wait" functionality
+  - Drop netifaces from requirements.txt
+  - Fix API breakage due to new exceptions module
+  - Remove the dependency on the "mock" package
+  - Fix long CLI error messages
+  - Do not get all resources if ID is passed
+  - Stop testing python 2
+  - Add support for availability zone [profiles]
+  - Add librsvg2-bin/-tools to bindep.txt
+  - Cleanup py27 support
+  - Update hacking for Python3
+  - Update master for stable/train
+  - Fix doc8 check
+
+-------------------------------------------------------------------
 Wed Mar 11 17:01:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to python 3.x only build

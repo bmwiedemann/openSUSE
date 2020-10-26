@@ -95,4 +95,12 @@
     <comment>- switch to python 3.x only build</comment>
     <requestid>783979</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce843ef7350131d9f927a8d57ecee47b</srcmd5>
+    <version>2.2.0</version>
+    <time>1603725365</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841195</requestid>
+  </revision>
 </revisionlist>
