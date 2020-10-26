@@ -17,16 +17,16 @@
 
 
 Name:           python-magnumclient
-Version:        3.0.1
+Version:        3.2.1
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-magnumclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-3.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-magnumclient/python-magnumclient-3.2.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable >= 0.7.2
-BuildRequires:  python3-cryptography >= 2.1
+BuildRequires:  python3-cryptography >= 3.0
 BuildRequires:  python3-decorator >= 3.4.0
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -41,7 +41,6 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -56,7 +55,7 @@ Summary:        Python API and CLI for OpenStack Magnum
 Group:          Development/Languages/Python
 Requires:       python3-Babel >= 2.3.4
 Requires:       python3-PrettyTable >= 0.7.2
-Requires:       python3-cryptography >= 2.1
+Requires:       python3-cryptography >= 3.0
 Requires:       python3-decorator >= 3.4.0
 Requires:       python3-keystoneauth1 >= 3.4.0
 Requires:       python3-os-client-config >= 1.28.0
@@ -67,7 +66,7 @@ Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-requests >= 2.14.2
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}
 Obsoletes:      python2-magnumclient < 2.17.0
@@ -91,15 +90,15 @@ Client library for Magnum built on the Magnum API. It provides a Python API
 This package contains the documentation.
 
 %prep
-%autosetup -p1 -n python-magnumclient-3.0.1
+%autosetup -p1 -n python-magnumclient-3.2.1
 %py_req_cleanup
 
 %build
 %{py3_build}
 
 # Build HTML docs and man page
-PBR_VERSION=3.0.1 %sphinx_build -b html doc/source doc/build/html
-PBR_VERSION=3.0.1 %sphinx_build -b man doc/source doc/build/man
+PBR_VERSION=3.2.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.2.1 %sphinx_build -b man doc/source doc/build/man
 rm -r doc/build/html/.{doctrees,buildinfo}
 
 %install

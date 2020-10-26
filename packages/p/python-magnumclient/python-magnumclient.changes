@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:14:32 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.2.1
+  - Switch to newer openstackdocstheme and reno versions
+  - Update to hacking 3.0
+  - Rename variables to address pep8 error
+  - Refactor the getid method base.py
+  - Use unittest.mock instead of mock
+  - Support master_lb_enabled when creating cluster
+  - Use unittest.mock instead of third party mock
+  - replace launchpad urls with storyboard urls
+  - Add Python3 victoria unit tests
+  - Support updating cluster health status
+  - Cleanup py27 support
+  - Update master for stable/ussuri
+  - Add py38 package metadata
+  - Migrate testing to Ubuntu Focal
+  - Fix raw_request of SessionClient
+  - Remove six
+  - Fix hacking min version to 3.0.1
+  - Stop to use the __future__ module.
+  - Print response after issuing CA rotate request
+  - Labels override
+  - Use overlay2 driver by default
+  - Check response type in _extract_error_json
+  - Show cluster fixed_network, fixed_subnet, floating_ip_enabled
+
+-------------------------------------------------------------------
 Mon Aug 10 10:19:57 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.1

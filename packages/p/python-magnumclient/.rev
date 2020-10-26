@@ -187,4 +187,12 @@
   - Update .gitreview for stable/ussuri</comment>
     <requestid>825321</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9a0713acb83e4453af96b2bd8eac4f70</srcmd5>
+    <version>3.2.1</version>
+    <time>1603725334</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841186</requestid>
+  </revision>
 </revisionlist>
