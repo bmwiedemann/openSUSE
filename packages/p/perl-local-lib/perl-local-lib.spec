@@ -1,7 +1,7 @@
 #
 # spec file for package perl-local-lib
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-local-lib
-Version:        2.000023
+Version:        2.000024
 Release:        0
 %define cpan_name local-lib
-Summary:        Create and Use a Local Lib/ for Perl Modules with Perl5lib
-License:        Artistic-1.0 or GPL-1.0+
+Summary:        Create and use a local lib/ for perl modules with PERL5LIB
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/local-lib/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-homedir.sh
 Source2:        perl-homedir.csh
@@ -93,11 +93,11 @@ install this package.
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -108,26 +108,10 @@ install this package.
 # MANUAL END
 %perl_gen_filelist
 
-%files
-%defattr(-,root,root)
-%doc Changes
-%dir %{perl_vendorlib}/lib
-%dir %{perl_vendorlib}/lib/core
-%{perl_vendorlib}/lib/core/only.pm
-%dir %{perl_vendorlib}/local/
-%{perl_vendorlib}/local/lib.pm
-%doc %{perl_man3dir}/lib::core::only.%{perl_man3ext}%{ext_man}
-%doc %{perl_man3dir}/local::lib.%{perl_man3ext}%{ext_man}
-
-%dir %{perl_vendorlib}/POD2
-%lang(de) %dir %{perl_vendorlib}/POD2/DE
-%lang(de) %dir %{perl_vendorlib}/POD2/DE/local
-%lang(de) %{perl_vendorlib}/POD2/DE/local/lib.pod
-%lang(de) %doc %{perl_man3dir}/POD2::DE::local::lib.%{perl_man3ext}%{ext_man}
-%lang(pt_BR) %dir %{perl_vendorlib}/POD2/PT_BR
-%lang(pt_BR) %dir %{perl_vendorlib}/POD2/PT_BR/local
-%lang(pt_BR) %{perl_vendorlib}/POD2/PT_BR/local/lib.pod
-%lang(pt_BR) %doc %{perl_man3dir}/POD2::PT_BR::local::lib.%{perl_man3ext}%{ext_man}
+%files -f %{name}.files
+%defattr(-,root,root,755)
+%doc Changes README
+%license LICENSE
 
 %files -n perl-homedir
 %defattr(-,root,root)

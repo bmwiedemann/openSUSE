@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 17 13:57:56 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 2.000024 - 2017-10-08
+   - be compatible with CPAN.pm 1.82 to 1.86_51 during bootstrap process
+
+-------------------------------------------------------------------
 Fri Jun  9 06:42:51 UTC 2017 - coolo@suse.com
 
 - updated to 2.000023
@@ -275,4 +281,3 @@ Sun Mar 14 02:15:00 UTC 2010 - pascal.bleser@opensuse.org
 Wed Feb  3 19:43:22 UTC 2010 - pascal.bleser@opensuse.org
 
 - new package, ported from Fedora 13
-
