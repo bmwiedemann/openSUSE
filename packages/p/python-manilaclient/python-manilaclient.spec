@@ -17,13 +17,13 @@
 
 
 Name:           python-manilaclient
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-manilaclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-2.1.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-manilaclient/python-manilaclient-2.3.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-ddt
 BuildRequires:  python3-fixtures
@@ -77,13 +77,13 @@ Share API.
 This package contains auto-generated documentation.
 
 %prep
-%autosetup -p1 -n python-manilaclient-2.1.0
+%autosetup -p1 -n python-manilaclient-2.3.0
 %py_req_cleanup
 
 %build
 %{py3_build}
 
-PBR_VERSION=2.1.0 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=2.3.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
