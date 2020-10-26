@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:10:17 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Don't warn on lock removal if file doesn't exist
+  - Bump default tox env from py37 to py38
+  - Add support for timeout to processutils.execute
+  - Monkey patch original current_thread _active
+  - Stop to use the __future__ module.
+  - Remove babel.cfg etc
+  - Switch to newer openstackdocstheme and reno versions
+  - Imported Translations from Zanata
+  - Update master for stable/ussuri
+  - Align contributing doc with oslo's policy
+  - Remove six usage
+  - Fix pygments style
+  - Update lower-constraints versions
+  - Fix hacking min version to 3.0.1
+  - Bump bandit version
+  - Add py38 package metadata
+  - Add Python3 victoria unit tests
+  - Add release notes links to doc index
+  - Remove the unused coding style modules
+
+-------------------------------------------------------------------
 Tue May 12 09:54:07 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.2
