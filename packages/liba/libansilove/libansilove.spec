@@ -20,7 +20,7 @@
 %global sover   1
 %global libname %{name}%{sover}
 Name:           libansilove
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
 License:        BSD-2-Clause

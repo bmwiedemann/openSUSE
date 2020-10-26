@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:30:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.8
+  * Add LibFuzzer-based fuzzers for each supported format
+  * Do not hardcode CMAKE_BUILD_TYPE to "Release" in CMakeLists.txt
+  * Only enable FORTIFY_SOURCE level 2 for release builds
+  * Add #ifdef __cplusplus extern "C" to allow calling library
+    functions from C++
+  * Constify input and output arguments of ansilove_loadfile() and
+    ansilove_savefile()
+
+-------------------------------------------------------------------
 Thu Oct 22 19:11:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.7
