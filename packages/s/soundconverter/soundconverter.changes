@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:34:26 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 3.0.2.
+  * Upstream does not provide an informational log.
+  * Refresh spec-file via spec-cleaner and manual optimizations.
+  * Remove Only-fetch-profiles-if-GConf-is-still-available.patch.
+  * Remove update_desktop_file and outdated design.
+
+-------------------------------------------------------------------
 Thu Jun  7 23:22:59 UTC 2018 - bjorn.lie@gmail.com
 
 - Add Only-fetch-profiles-if-GConf-is-still-available.patch: No
