@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:18:28 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Add py38 package metadata
+  - Bump default tox env from py37 to py38
+  - Switch to newer openstackdocstheme and reno versions
+  - Add backend-independent access to cookiejar
+  - Add release notes links to doc index
+  - Add Python3 victoria unit tests
+  - Remove the unused coding style modules
+  - Add moref helper functions
+  - [goal] Migrate testing to ubuntu focal
+  - Remove translation sections from setup.cfg
+  - Align contributing doc with oslo's policy
+  - Update master for stable/ussuri
+  - Fix hacking min version to 3.0.1
+  - Imported Translations from Zanata
+  - Bump bandit version
+  - Validation of VMDK upload completion
+
+-------------------------------------------------------------------
 Tue May 12 09:48:57 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.3.1

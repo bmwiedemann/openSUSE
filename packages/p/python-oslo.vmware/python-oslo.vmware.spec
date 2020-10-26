@@ -17,21 +17,20 @@
 
 
 Name:           python-oslo.vmware
-Version:        3.3.1
+Version:        3.7.0
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.3.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.7.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
 BuildRequires:  python3-eventlet >= 0.18.2
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-lxml >= 3.4.1
+BuildRequires:  python3-lxml >= 4.5.0
 BuildRequires:  python3-mock
-BuildRequires:  python3-mox3
 BuildRequires:  python3-netaddr >= 0.7.18
 BuildRequires:  python3-oslo.concurrency >= 3.26.0
 BuildRequires:  python3-oslo.context >= 2.19.2
@@ -58,9 +57,9 @@ server.
 %package -n python3-oslo.vmware
 Summary:        Oslo VMware library for OpenStack projects
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 3.13
 Requires:       python3-eventlet >= 0.18.2
-Requires:       python3-lxml >= 3.4.1
+Requires:       python3-lxml >= 4.5.0
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-oslo.concurrency >= 3.26.0
 Requires:       python3-oslo.context >= 2.19.2
@@ -93,7 +92,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-3.3.1
+%autosetup -p1 -n oslo.vmware-3.7.0
 %py_req_cleanup
 
 %build
