@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 22 20:44:20 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not warn user about ssh key only authentication when
+  ssh port is closed, but firewall is disabled.
+  (bsc#1177953)
+- 4.3.8
+
+-------------------------------------------------------------------
 Fri Oct 16 15:15:49 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Do not enable firewall during first stage of AutoYaST
