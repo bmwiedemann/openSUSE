@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-lssa
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  lssa
 Name:           octave-forge-%{octpkg}
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Least squares spectral analysis for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  octave-devel
@@ -55,7 +55,6 @@ This is part of the Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
