@@ -1,8 +1,8 @@
 <services>
   <service mode="disabled" name="renderspec">
-    <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/branch/stable/ussuri/openstack/oslo.utils/oslo.utils.spec.j2</param>
+    <param name="input-template">https://opendev.org/openstack/rpm-packaging/raw/branch/stable/victoria/openstack/oslo.utils/oslo.utils.spec.j2</param>
     <param name="output-name">python-oslo.utils.spec</param>
-    <param name="requirements">https://opendev.org/openstack/oslo.utils/raw/branch/stable/ussuri/requirements.txt</param>
+    <param name="requirements">https://opendev.org/openstack/oslo.utils/raw/branch/stable/victoria/requirements.txt</param>
     <param name="changelog-email">cloud-devel@suse.de</param>
     <param name="changelog-provider">gh,openstack,oslo.utils</param>
   </service>
