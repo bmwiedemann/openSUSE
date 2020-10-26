@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:54:05 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.4.0
+  * MailExtensions: browser.tabs.sendMessage API added
+  * MailExtensions: messageDisplayScripts API added
+  * Yahoo and AOL mail users using password authentication will be
+    migrated to OAuth2
+  * MailExtensions: messageDisplay APIs extended to support multiple
+    selected messages
+  * MailExtensions: compose.begin functions now support creating a
+    message with attachments
+  * multiple bugfixes
+  MFSA 2020-47 (bsc#1177872)
+  * CVE-2020-15969 (bmo#1666570)
+    Use-after-free in usersctp
+  * CVE-2020-15683 (bmo#1576843, bmo#1656987, bmo#1660954, bmo#1662760,
+    bmo#1663439, bmo#1666140)
+    Memory safety bugs fixed in Firefox 82 and Firefox ESR 78.4
+
+-------------------------------------------------------------------
 Thu Oct 15 14:31:39 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.3.3
