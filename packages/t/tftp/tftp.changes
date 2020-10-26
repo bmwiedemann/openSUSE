@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:00:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not suppress errors from useradd.
+- Replace some old specfile constructs. To that end, patches were
+  refreshed: tftp-hpa-0.43_include_sys_params.patch,
+  tftp-hpa-0.46_colon_check.patch, tftp-hpa-0.48-macros-crash.patch,
+  tftp-hpa-0.48-macros-v6mapped.patch.
+
+-------------------------------------------------------------------
 Tue Sep  1 15:15:15 UTC 2020 - olaf@aepfle.de
 
 - Remove bogus comment about directory assumptions

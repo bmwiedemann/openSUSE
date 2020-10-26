@@ -1,7 +1,12 @@
-diff -up tftpd/tftpd.c.orig-len tftpd/tftpd.c
---- tftpd/tftpd.c.orig-len	2012-12-11 16:31:29.658043427 +0100
-+++ tftpd/tftpd.c	2012-12-11 16:32:22.234018253 +0100
-@@ -1287,24 +1287,24 @@ static int rewrite_macros(char macro, ch
+---
+ tftpd/tftpd.c |   26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
+
+Index: tftp-hpa-5.2/tftpd/tftpd.c
+===================================================================
+--- tftp-hpa-5.2.orig/tftpd/tftpd.c
++++ tftp-hpa-5.2/tftpd/tftpd.c
+@@ -1377,24 +1377,24 @@ static int rewrite_macros(char macro, ch
              return strlen(p);
  
      case 'x':

@@ -58,15 +58,7 @@ booting diskless workstations and for getting or saving network
 component configuration files.
 
 %prep
-%setup -q -n %{name}-hpa-%{version}
-%patch0
-%patch1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7
-%patch8
-%patch43 -p1
+%autosetup -p1 -n %{name}-hpa-%{version}
 
 %build
 autoreconf -fi
@@ -76,7 +68,7 @@ export CFLAGS="%{optflags} -fcommon"
   --with-tcpwrappers \
   --with-remap \
   --with-ipv6
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install INSTALLROOT=%{buildroot} MANDIR="%{_mandir}"
@@ -92,10 +84,11 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # This group/user is shared with atftp, so please
 # keep this in sync with atftp.spec
 # add group
-%{_sbindir}/groupadd -r tftp 2>/dev/null || :
+getent group tftp >/dev/null || %{_sbindir}/groupadd -r tftp
 # add user
-%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp -g tftp \
-  -r -s /bin/false tftp 2>/dev/null || :
+getent passwd tftp >/dev/null || \
+	%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp \
+	-g tftp -r -s /bin/false tftp
 
 %service_add_pre %{name}.service %{name}.socket
 
