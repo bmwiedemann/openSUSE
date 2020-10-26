@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 17 22:59:56 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.8.0:
+  + Added new API for the audio rendering protocol, which allows
+    embedders to receive audio samples instead of letting WPE
+    WebKit handle their playback.
+  + Added support to export frames using EGLStreams, which can be
+    used e.g.  with Nvidia GPUs.
+  + New build configuration system based on Meson. The existing
+    CMake-based system is still maintained, and both produce the
+    same outputs.
+  + Use libepoxy for EGL operations.
+- Switch to meson.
+- Add epoxy to BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Wed Jun 10 17:33:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.1:

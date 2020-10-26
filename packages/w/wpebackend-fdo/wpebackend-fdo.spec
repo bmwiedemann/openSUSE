@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.6.1
+Version:        1.8.0
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
@@ -28,9 +28,10 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
@@ -63,13 +64,12 @@ header files for developing applications that use %{name}.
 %autosetup -p1
 
 %build
-%cmake \
-	-DWayland_VERSION_HEADER_PATH=$(pkg-config --variable=includedir wayland-client) \
+%meson \
 	%{nil}
-%cmake_build
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 
 %post -n libWPEBackend-fdo-1_0-%{sover} -p /sbin/ldconfig
 %postun -n libWPEBackend-fdo-1_0-%{sover} -p /sbin/ldconfig
