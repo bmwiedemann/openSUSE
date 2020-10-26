@@ -48,4 +48,16 @@
  * Slight refinement to TaskGroup result reporting.</comment>
     <requestid>814701</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8b49c874d083d8887ae015beec753634</srcmd5>
+    <version>1.4</version>
+    <time>1603724934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Fixed minimum requirement in setup.py
+  * Moved the Pytest plugin to the examples directory.
+  * Refined the detection of coroutines to use collections.abc.Coroutine.
+  * Added a Result object.</comment>
+    <requestid>843295</requestid>
+  </revision>
 </revisionlist>

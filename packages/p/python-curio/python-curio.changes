@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 22 03:11:22 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4:
+  * Fixed minimum requirement in setup.py
+  * Moved the Pytest plugin to the examples directory.
+  * Refined the detection of coroutines to use collections.abc.Coroutine.
+  * Added a Result object.
+
+-------------------------------------------------------------------
 Mon Jun 15 11:58:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 1.2 

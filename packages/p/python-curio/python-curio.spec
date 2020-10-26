@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-curio
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        Concurrent I/O library for Python 3
 License:        BSD-Source-Code
