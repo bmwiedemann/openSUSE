@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Statistics-Descriptive
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-Statistics-Descriptive
-Version:        3.0702
+Version:        3.0800
 Release:        0
 %define cpan_name Statistics-Descriptive
 Summary:        Module of basic descriptive statistical functions
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -71,7 +71,7 @@ perl Build.PL installdirs=vendor
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes examples README scripts UserSurvey.txt
+%doc Changes examples README UserSurvey.txt
 %license LICENSE
 
 %changelog

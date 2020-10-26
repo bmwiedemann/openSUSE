@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Oct 18 03:08:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.0800
+   see /usr/share/doc/packages/perl-Statistics-Descriptive/Changes
+
+  3.0800      2020-10-17
+      - dist.ini / weaver.ini / .tidyallrc / etc. cleanup
+          - Move to @SHLOMIF
+          - Inspired by Lady_Aleena (Thanks!)
+  v0.2.1      2015-04-28
+      - Specify minimal version of perl to 5.8.x.
+          - CPANTS / Kwalitee
+      - Add provides to META.yml.
+          - CPANTS / Kwalitee
+  v0.2.0      2015-03-09
+      - Remove dependency on Moo/MooX/MooX::late.
+          - Seemed like an overkill for such a small and simple app.
+      - Remove dependency on List::MoreUtils.
+          - To avoid unnecessary deps.
+  v0.0.5      2015-01-25
+      - Add inc/ to the git repo, so minting a new release.
+  v0.0.4      2014-05-04
+      - Add minimal prereq on Getopt::Long 2.36 for GetOptionsFromArray.
+          - There were test failures with older Getopt::Long-s.
+  v0.0.3      2014-05-02
+      - Convert t/app.t from IPC::System::Simple to Test::Trap hoping to
+      fix test failures on MS Windows.
+          - we also don't use a separate process now but rather capture
+          STDOUT.
+  v0.0.2      2014-05-01
+      - Change the meta resources/links to point to the actual repository at
+      GitHub.
+          - Thanks to pyon from Freenode for noticing it.
+
+-------------------------------------------------------------------
 Thu Nov  8 06:57:02 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 3.0702
