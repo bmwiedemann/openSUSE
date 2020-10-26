@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:07:06 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Add py38 in tox.
+  - Switch to newer openstackdocstheme and reno versions
+  - Fix tip error
+  - Use unittest.mock instead of third party mock
+  - Add Python3 victoria unit tests
+  - Remove keystone v2 related code
+  - Update hacking for Python3
+  - Fix hacking min version to 3.0.1
+  - Update master for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 10:00:54 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.0.1
