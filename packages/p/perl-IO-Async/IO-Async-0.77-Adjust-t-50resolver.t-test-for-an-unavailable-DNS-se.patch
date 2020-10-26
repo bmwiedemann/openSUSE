@@ -1,0 +1,51 @@
+From 27bc9f6cf7f751d294d110160b66460a7c26fbba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 24 Sep 2020 13:40:36 +0200
+Subject: [PATCH] Adjust t/50resolver.t test for an unavailable DNS server
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If no DNS server is available (e.g. empty /etc/resolv.conf and no DNS
+server listening on localhost), getaddrinfo() function reports
+EAI_AGAIN (or EAI_FAIL) to distinguish the DNS procol error from
+a negative respons by the DNS server.
+
+t/50resolver.t did not expected it and failed likes this in SuSE and
+Fedora build systems:
+
+    t/42function.t ............... ok
+    #   Failed test '->failure [3] gives EAI_NONAME or EAI_NODATA'
+    #   at t/50resolver.t line 344.
+    # $errno is -3
+    # Looks like you failed 1 test of 35.
+    t/50resolver.t ...............
+    Dubious, test returned 1 (wstat 256, 0x100)
+
+This patch fixes it.
+
+CPAN RT#131109
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ t/50resolver.t | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/t/50resolver.t b/t/50resolver.t
+index 68f4446..b7cfb56 100644
+--- a/t/50resolver.t
++++ b/t/50resolver.t
+@@ -341,7 +341,9 @@ SKIP: {
+     is( ( $future->failure )[2], "getaddrinfo", '->failure [2] gives getaddrinfo' );
+ 
+     my $errno = ( $future->failure )[3];
+-    ok( $errno == Socket::EAI_NONAME || $errno == Socket::EAI_NODATA, '->failure [3] gives EAI_NONAME or EAI_NODATA' ) or
++    ok( $errno == Socket::EAI_FAIL || $errno == Socket::EAI_AGAIN || # no server available
++        $errno == Socket::EAI_NONAME || $errno == Socket::EAI_NODATA, # server confirmed no DNS entry
++        '->failure [3] gives EAI_FAIL or EAI_AGAIN or EAI_NONAME or EAI_NODATA' ) or
+       diag( '$errno is ' . $errno );
+ }
+ 
+-- 
+2.25.4
+

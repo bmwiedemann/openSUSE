@@ -1,11 +1,12 @@
 ---
-#description_paragraphs: 3
+description_paragraphs: 1
 #no_testing: broken upstream
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  # PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=131109
+  https://rt.cpan.org/Ticket/Attachment/1912750/1024503/IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch: -p1
 #  bar.patch:
 preamble: |-
  BuildRequires:  netcfg
