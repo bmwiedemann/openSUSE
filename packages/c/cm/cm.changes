@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:46:34 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.1
+  * Correct a bug in computing powers of 2.
+    (fixed: "left shift count >= width of type")
+
+-------------------------------------------------------------------
 Thu Sep 17 09:52:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.3) for build.opensuse.org
