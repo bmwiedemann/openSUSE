@@ -287,4 +287,12 @@ update to version 2.12.0
     <comment>Ussuri Update</comment>
     <requestid>803566</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2694393027075ede055d70e536d64f8a</srcmd5>
+    <version>4.2.1</version>
+    <time>1603725324</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841183</requestid>
+  </revision>
 </revisionlist>

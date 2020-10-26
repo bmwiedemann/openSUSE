@@ -17,13 +17,13 @@
 
 
 Name:           python-keystoneauth1
-Version:        4.0.0
+Version:        4.2.1
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/keystoneauth
-Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-4.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-4.2.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-betamax

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:06:32 UTC 2020 - cloud-devel@suse.de
+
+- update to version 4.2.1
+  - Remove mox3 from local upper-constraints
+  - Fix E741 pep8 failure
+  - Add in-tree upper-constraints for py35 job
+  - Cleanup py27 support
+  - Fix get_endpoint_data for non-keystone plugins
+  - Implement HTTP Basic client support in keystoneauth1
+  - Fix docs builds for modern stevedors
+  - Fix hacking min version to 3.0.1
+  - Correct major version discovery for non-keystone plugins
+  - Use unittest.mock instead of third party mock
+  - Make header Case Insensitive
+  - Update lower-constraints versions
+  - Re-add python3.5 testing
+  - Add py38 package metadata
+  - Replace assertItemsEqual with assertCountEqual
+  - Inject /v3 in token path for v3 plugins
+  - Switch to newer openstackdocstheme and reno versions
+  - Drop python 3.5 support
+  - Update master for stable/ussuri
+
+-------------------------------------------------------------------
 Tue May 12 09:57:35 UTC 2020 - cloud-devel@suse.de
 
 - update to version 4.0.0
