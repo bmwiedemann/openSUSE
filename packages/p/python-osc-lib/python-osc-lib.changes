@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:07:24 UTC 2020 - cloud-devel@suse.de
+
+- update to version 2.2.1
+  - Add a couple of release notes
+  - Update master for stable/ussuri
+  - Add get_osc_show_columns_for_sdk_resource function
+  - Add Python3 victoria unit tests
+  - Fix the misspelling of "argument"
+  - Stop using lib-forward-testing
+  - Revert "Add error message when occurrence Forbidden error"
+  - Cleanup py27 support
+  - Stop configuring install_command in tox and stop use pip.
+  - Fix the requirement of keystoneauth1.
+  - Use mock from unittest
+  - Remove commandmanager subclass
+  - Remove .testr.conf
+  - Update hacking for Python3
+  - Add pep8 import order check
+  - Remove six library from dependencies
+  - Switch to newer openstackdocstheme and reno versions
+  - Update to hacking 3.0
+  - Replace assertItemsEqual with assertCountEqual
+  - Remove Babel from requirements
+  - Save the results from the early authentication
+
+-------------------------------------------------------------------
 Tue May 12 09:47:52 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.0.0

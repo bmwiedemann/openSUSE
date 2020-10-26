@@ -17,18 +17,18 @@
 
 
 Name:           python-osc-lib
-Version:        2.0.0
+Version:        2.2.1
 Release:        0
 Summary:        OpenStackClient Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/developer/osc-lib
-Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/osc-lib/osc-lib-2.2.1.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-Babel >= 2.3.4
-BuildRequires:  python3-cliff >= 2.8.0
+BuildRequires:  python3-Babel
+BuildRequires:  python3-cliff >= 3.2.0
 BuildRequires:  python3-fixtures
-BuildRequires:  python3-keystoneauth1 >= 3.7.0
+BuildRequires:  python3-keystoneauth1 >= 3.14.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-openstacksdk >= 0.15.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -38,7 +38,7 @@ BuildRequires:  python3-osprofiler
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
 BuildRequires:  python3-simplejson >= 3.5.1
-BuildRequires:  python3-six >= 1.10.0
+BuildRequires:  python3-six
 BuildRequires:  python3-stestr
 BuildRequires:  python3-stevedore >= 1.20.0
 BuildRequires:  python3-testtools
@@ -51,15 +51,15 @@ is a package of common support modules for writing OSC plugins.
 %package -n python3-osc-lib
 Summary:        OpenStackClient Library
 Group:          Development/Languages/Python
-Requires:       python3-Babel >= 2.3.4
-Requires:       python3-cliff >= 2.8.0
-Requires:       python3-keystoneauth1 >= 3.7.0
+Requires:       python3-Babel
+Requires:       python3-cliff >= 3.2.0
+Requires:       python3-keystoneauth1 >= 3.14.0
 Requires:       python3-openstacksdk >= 0.15.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.utils >= 3.33.0
 Requires:       python3-pbr >= 2.0.0
 Requires:       python3-simplejson >= 3.5.1
-Requires:       python3-six >= 1.10.0
+Requires:       python3-six
 Requires:       python3-stevedore >= 1.20.0
 
 %description -n python3-osc-lib
@@ -80,7 +80,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the OpenStack client library.
 
 %prep
-%autosetup -p1 -n osc-lib-2.0.0
+%autosetup -p1 -n osc-lib-2.2.1
 %py_req_cleanup
 
 %build
