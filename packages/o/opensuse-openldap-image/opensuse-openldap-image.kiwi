@@ -54,6 +54,7 @@
     <package name="openldap2-client"/>
     <package name="openldap2-ppolicy-check-password"/>
     <package name="openssl"/>
+    <package name="timezone"/>
     <package name="mandoc"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
