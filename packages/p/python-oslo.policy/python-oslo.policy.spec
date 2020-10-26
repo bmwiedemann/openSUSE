@@ -17,15 +17,15 @@
 
 
 Name:           python-oslo.policy
-Version:        3.1.1
+Version:        3.5.0
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/oslo.policy
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.1.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.policy/oslo.policy-3.5.0.tar.gz
 BuildRequires:  openstack-macros
-BuildRequires:  python3-PyYAML >= 3.12
+BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-oslo.config >= 5.2.0
 BuildRequires:  python3-oslo.context >= 2.22.0
 BuildRequires:  python3-oslo.i18n >= 3.15.3
@@ -45,7 +45,7 @@ RBAC policy enforcement library for OpenStack.
 %package -n python3-oslo.policy
 Summary:        OpenStack Oslo Policy library
 Group:          Development/Languages/Python
-Requires:       python3-PyYAML >= 3.12
+Requires:       python3-PyYAML >= 5.1
 Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.context >= 2.22.0
 Requires:       python3-oslo.i18n >= 3.15.3
@@ -75,7 +75,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for the Oslo Policy library.
 
 %prep
-%autosetup -p1 -n oslo.policy-3.1.1
+%autosetup -p1 -n oslo.policy-3.5.0
 %py_req_cleanup
 
 %build
@@ -96,10 +96,12 @@ python3 -m stestr.cli run
 %license LICENSE
 %doc README.rst
 %{_bindir}/oslopolicy-checker
+%{_bindir}/oslopolicy-convert-json-to-yaml
 %{_bindir}/oslopolicy-list-redundant
 %{_bindir}/oslopolicy-policy-generator
 %{_bindir}/oslopolicy-sample-generator
 %{_bindir}/oslopolicy-policy-upgrade
+%{_bindir}/oslopolicy-validator
 %{python3_sitelib}/oslo_policy
 %{python3_sitelib}/*.egg-info
 

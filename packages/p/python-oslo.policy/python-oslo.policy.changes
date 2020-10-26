@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:34 UTC 2020 - cloud-devel@suse.de
+
+- update to version 3.5.0
+  - Reload files in policy_dirs on primary file change
+  - Log warning for redundant file rules
+  - docs: Add description of 'oslopolicy-policy-generator'
+  - Don't deepcopy objects before mask_dict_password
+  - Add oslopolicy-validator tool
+  - Add release notes links to doc index
+  - Remove translation sections from setup.cfg
+  - Add Python3 victoria unit tests
+  - Switch to newer openstackdocstheme and reno versions
+  - sample-generator: Improve YAML output
+  - Clarify what exactly an "access file" is
+  - Fix unit tests to work with stevedore > 2.0.1
+  - Add py38 package metadata
+  - Bump bandit version
+  - [goal] Migrate testing to ubuntu focal
+  - Remove the conversion according to the comment of jdennis
+  - Mark sphinx extensions thread safe
+  - Deprecate the JSON support for policy_file
+  - Remove the unused coding style modules
+  - Fix pygments style
+  - Add oslopolicy-convert-json-to-yaml tool
+  - docs: Add separate man page for each CLI tool
+  - Bump default tox env from py37 to py38
+  - Update master for stable/ussuri
+  - Include example of literal comparison policy rule
+  - Align contributing doc with oslo's policy
+
+-------------------------------------------------------------------
 Mon Aug 10 10:22:25 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.1.1
