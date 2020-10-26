@@ -17,10 +17,10 @@
 #
 
 
-%define tarball_version 3_5_12
+%define tarball_version 3_6_0
 
 Name:           Jamulus
-Version:        3.5.12
+Version:        3.6.0
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:43:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6.0
+  * handle audio packets received out of order
+  * most recently connected users appear on the RH side on the
+    fader panel
+  * improvements for the server multithreading
+  * removed Display Channel Levels setting and --servername
+  * removed support for further server infos in --serverinfo
+    since the preferred way of registering a server is to do it
+    using the protocol messages
+  * removed -g, --pingservers since all Central servers must
+    activate this function, now it is activated by default and
+    no command line argument is needed
+  * added --mutemyown command line argument to mute my own
+    signal in my personal mix, only supported in headless client
+    mode
+  * added "Mountain Dulcimer" instrument icon
+  * added new instrument icons for "Scratching" and "Rapping"
+  * replaced double types by floats for some of the signal
+    processing
+  * support permanent channl fader sorting (i.e., not only on
+    request but always)
+  * support sorting faders by channel city
+  * if sorting the faders by instrument, we now sort by the name
+    for the same instruments
+  * bug fix: reduced server list is displayed instead of the
+    normal list
+
+-------------------------------------------------------------------
 Sun Oct  4 07:28:10 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.5.12
