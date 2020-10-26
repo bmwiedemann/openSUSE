@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:17:57 UTC 2020 - cloud-devel@suse.de
+
+- update to version 6.2.0
+  - Add py38 package metadata
+  - Add Python3 victoria unit tests
+  - Update hacking for Python3
+  - Bump bandit version
+  - Remove the unused coding style modules
+  - Align contributing doc with oslo's policy
+  - Stop to use the __future__ module.
+  - Add release notes links to doc index
+  - [goal] Migrate testing to ubuntu focal
+  - Fix hacking min version to 3.0.1
+  - Update master for stable/ussuri
+  - Switch to newer openstackdocstheme and reno versions
+  - Avoid raising a RuntimeError during the shutdown
+  - Bump default tox env from py37 to py38
+
+-------------------------------------------------------------------
 Tue May 12 09:48:16 UTC 2020 - cloud-devel@suse.de
 
 - update to version 6.0.2
