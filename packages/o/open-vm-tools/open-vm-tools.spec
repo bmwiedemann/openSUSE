@@ -40,8 +40,8 @@
 Name:           open-vm-tools
 %define subname open-vm-tools
 %define tarname open-vm-tools
-%define bldnum  16724464
-Version:        11.1.5
+%define bldnum  16938113
+Version:        11.2.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
