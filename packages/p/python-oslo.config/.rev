@@ -734,4 +734,12 @@ all changed Requires/Buildrequires seem to be available
     <comment>Ussuri Update</comment>
     <requestid>803588</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a576382c3912e295977d1215c05e20c1</srcmd5>
+    <version>8.3.2</version>
+    <time>1603725391</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841206</requestid>
+  </revision>
 </revisionlist>

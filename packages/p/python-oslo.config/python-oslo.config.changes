@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  9 19:16:51 UTC 2020 - cloud-devel@suse.de
+
+- update to version 8.3.2
+  - Remove six from lower-constraints.txt
+  - Resolve UnboundLocalError
+  - Cap flake8 to be < 3.8.0
+  - Mark sphinx extensions thread safe
+  - Fix pygments style
+  - Update lower-constraints versions
+  - generator: Handle 'cfg.Opt'-type options
+  - Add Python3 victoria unit tests
+  - Remove the unused coding style modules
+  - Add release notes links to doc index
+  - docs: Mention other ways of escaping '$'
+  - drop use of pkg_resources
+  - Use unittest.mock instead of third party mock
+  - Update master for stable/ussuri
+  - Bump bandit version
+  - Fix unit tests to work with stevedore > 2.0.1
+  - Raise hacking minimum to 3.0.1
+  - Remove redundant class docstring info
+  - Align contributing doc with oslo's policy
+  - Add py38 package metadata
+
+-------------------------------------------------------------------
 Tue May 12 09:46:27 UTC 2020 - cloud-devel@suse.de
 
 - update to version 8.0.2
