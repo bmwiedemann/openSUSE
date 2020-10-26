@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 20 10:31:22 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.1:
+  * Create codeql-analysis.yml (#1222)
+  * Fixed a typo in the docs (#1226)
+  * Update CHANGELOG.md
+  * Fix ova deploy and tests (#1221)
+  * Convert folder path to MOID (#1207)
+  * Change default OS method on bare VMs (#1217)
+  * Allow more config options to be changed from OVF (#1218)
+  * Networking additions [WIP] (#1146)
+  * r/host_port_group: Add support for importing (#1194)
+  * set datacenter_id when importing datastore cluster (#1203)
+  * Import ditributed port group using moid (#1208)
+  * Fixing port group resource to enable LACP only in virtual switch resource and not in port level. (#1214)
+  * Update CHANGELOG.md
+  * Add type to content library data source. (#1184)
+- from version 1.24.0
+  * Update CHANGELOG.md
+  * Update pull_request_template.md
+  * Content library vm-template, disk type, and vApp props (#1198)
+  * r/content__library_item: Local upload, OVA, and vm-template sources (#1196)
+  * Subscription and publication support for content library (#1197)
+  * Make storage_policy_id computed. (#1185)
+  * Ignore nil objects in host network. (#1186)
+  * Keep status chan open (#1187)
+  * Set SCSI controller type to unknown when nil (#1188)
+  * Fix non inclusive language (#1193)
+  * Skip SCSI controller check when empty (#1179)
+  * Cleanup after v1.23.0 release
+- from version 1.23.0
+  * Update CHANGELOG.md
+  * Cleanup after v1.23.0 release
+  * Update CHANGELOG.md
+  * Cleanup after v1.23.0 release
+  * Update CHANGELOG.md
+  * Add hall of fame to README.md (#1175)
+  * Update acc tests for simple environment (#1173)
+  * Ignore thin_provisioned and eagerly_scrub during DiskPostCloneOperation (#1161)
+  * Fix vnic import (#1162)
+  * Fixed SetHardwareOptions to fetch the hardware version from QueryConfigOption instead of the default properties (#1159)
+  * Allow performing a linked-clone from a template without requiring snapshots (#1158)
+  * Merged the virtual machine configuration schema between the both the resource and datasource (#1157)
+  * Cleanup after v1.22.0 release
+
+-------------------------------------------------------------------
 Mon Aug 10 08:43:22 UTC 2020 - dmueller@suse.com
 
 - Update to version 1.22.0:
