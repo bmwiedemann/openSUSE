@@ -137,4 +137,14 @@ Needed for python-dns-lexicon</comment>
     (https://github.com/john-kurkowski/tldextract/issues/210)</comment>
     <requestid>843692</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>87bf5b850e95543ac3003e14a3e6e6f8</srcmd5>
+    <version>3.0.2</version>
+    <time>1603725672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Catch permission error when making cache dir, as well as cache
+    file (https://github.com/john-kurkowski/tldextract/issues/211)</comment>
+    <requestid>843974</requestid>
+  </revision>
 </revisionlist>

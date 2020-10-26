@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 00:28:42 UTC 2020 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.2:
+  * Catch permission error when making cache dir, as well as cache
+    file (https://github.com/john-kurkowski/tldextract/issues/211)
+
+-------------------------------------------------------------------
 Fri Oct 23 21:46:35 UTC 2020 - Mia Herkt <mia@0x0.st>
 
 - Update to 3.0.1:
