@@ -17,7 +17,7 @@
 
 
 Name:           perl-Text-Sprintf-Named
-Version:        0.0404
+Version:        0.0405
 Release:        0
 %define cpan_name Text-Sprintf-Named
 Summary:        Sprintf-like function with named conversions
