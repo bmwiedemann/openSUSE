@@ -1,0 +1,28 @@
+---
+#description_paragraphs: 3
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#preamble: |-
+# BuildRequires:  gcc-c++
+post_prep: |-
+    for file in $(find . -type f); do
+        sed -i "s|/home/ben/software/install/bin/perl|%{_bindir}/perl|g; \
+                s|/home/ben/projects/Json3/blib/lib|%{perl_vendorarch}|g; \
+                s|use lib '/home/ben/projects/Json3/blib/arch';||g;" "$file"
+    done
+    # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
