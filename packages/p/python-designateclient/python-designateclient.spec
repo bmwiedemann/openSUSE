@@ -17,13 +17,13 @@
 
 
 Name:           python-designateclient
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        OpenStack DNS as a Service - Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/python-designateclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-4.0.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-designateclient/python-designateclient-4.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-jsonschema >= 2.6.0
 BuildRequires:  python3-keystoneauth1 >= 3.4.0
@@ -32,7 +32,6 @@ BuildRequires:  python3-oslo.serialization >= 2.18.0
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-requests-mock
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
 BuildArch:      noarch
 
@@ -68,14 +67,14 @@ BuildRequires:  python3-openstackdocstheme
 Documentation for the OpenStack DNS as a Service - Client.
 
 %prep
-%autosetup -p1 -n python-designateclient-4.0.0
+%autosetup -p1 -n python-designateclient-4.1.0
 %py_req_cleanup
 
 %build
 %py3_build
 
 # generate docs
-PYTHONPATH=. PBR_VERSION=4.0.0 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=4.1.0 %sphinx_build -b html doc/source doc/build/html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
