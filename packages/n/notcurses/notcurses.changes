@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:50:56 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * Add `ncvisual_decode_loop()`, which returns to the first frame
+    upon reaching the end of a file.
+
+-------------------------------------------------------------------
 Mon Oct 19 07:31:58 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.1
