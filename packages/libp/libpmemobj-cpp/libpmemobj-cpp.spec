@@ -18,13 +18,13 @@
 
 Name:           libpmemobj-cpp
 %define lname   libpmemobj-cpp0
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        C++ bindings for libpmemobj
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://pmem.io/pmdk/
-Source:         https://github.com/pmem/libpmemobj-cpp/archive/%{version}.tar.gz
+Source:         https://github.com/pmem/libpmemobj-cpp/archive/%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -45,8 +45,8 @@ in manual usage of `setjmp`.
 %package devel
 Summary:        C++ bindings for libpmemobj
 Group:          Development/Libraries/C and C++
-Obsoletes:      libpmemobj++-devel < %{version}
-Provides:       libpmemobj++-devel = %{version}
+Obsoletes:      libpmemobj++-devel < %version
+Provides:       libpmemobj++-devel = %version
 
 %description devel
 This package contains the header files for pmemobj's C++ interface.
@@ -63,11 +63,15 @@ Example C++ programs (with source) on how to use libpmemobj++.
 
 %build
 %cmake \
-%if %{suse_version} < 1500
- -DTEST_ARRAY=OFF -DTEST_VECTOR=OFF -DTEST_STRING=OFF -DTEST_CONCURRENT_HASHMAP=OFF -DTEST_SEGMENT_VECTOR_ARRAY_EXPSIZE=OFF -DTEST_SEGMENT_VECTOR_VECTOR_EXPSIZE=OFF -DTEST_SEGMENT_VECTOR_VECTOR_FIXEDSIZE=OFF -DTEST_ENUMERABLE_THREAD_SPECIFIC=OFF \
+%if 0%{?suse_version} < 1500
+	-DTEST_ARRAY=OFF -DTEST_VECTOR=OFF -DTEST_STRING=OFF \
+	-DTEST_CONCURRENT_HASHMAP=OFF -DTEST_SEGMENT_VECTOR_ARRAY_EXPSIZE=OFF \
+	-DTEST_SEGMENT_VECTOR_VECTOR_EXPSIZE=OFF \
+	-DTEST_SEGMENT_VECTOR_VECTOR_FIXEDSIZE=OFF \
+	-DTEST_ENUMERABLE_THREAD_SPECIFIC=OFF \
 %endif
 	-DCMAKE_INSTALL_DOCDIR="%_docdir/%name"
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

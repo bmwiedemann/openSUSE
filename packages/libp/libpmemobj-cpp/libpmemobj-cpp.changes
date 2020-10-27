@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Oct 26 13:19:05 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to version 1.11
+  * experimental radix_tree container (single-threaded sorted map)
+  * experimental inline_string class (class serves similar
+    purpose to pmem::obj::string, but keeps the data within the
+    same allocation as inline_string itself)
+  * string_view class (support for compilers older than C++17)
+  * experimental self_relative_ptr and
+    std::atomic<self_relative_ptr> specialization (persistent
+    smart ptr which encapsulates the self offseted pointer and
+    provides member access, dereference and array access
+    operators - for some workloads it could be faster alternative
+    for persistent_ptr)
+  * optimizations for concurrent_map with self_relative_ptr
+  * missing constructors for basic_string class
+  * conversion operator for basic_string class
+  * ported libcxx's sorted map tests
+  * lower and lower_eq methods for concurrent_map
+  * missing constructor for concurrent_map (comparator as an
+    argument)
+
+-------------------------------------------------------------------
 Tue Sep 15 09:52:16 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
 
 - This version is needed for pmemkv (jsc#SLE-13670)
