@@ -1051,6 +1051,7 @@ Prefer: oxygen5-icon-theme
 Prefer: kernel-default-devel
 
 Prefer: -wxWidgets-3_0-devel -python-wxWidgets-3_0 wxWidgets-3_2-devel
+Prefer: -libwx_baseu-suse-nostl3_0_4 -libwx_baseu-suse-nostl4_0_0 -libwx_baseu-suse3_0_4
 Prefer: libopenssl-devel
 
 Prefer: -NX -xaw3dd -db43 -amanda
