@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:57:55 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add csync-libssh.patch: Detect libssh version in libssh_version.h
+  in case this file exists.
+
+-------------------------------------------------------------------
 Tue Oct 30 20:29:59 UTC 2018 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add fix-missing-const.patch: Fix a compile error on Leap 15.1 

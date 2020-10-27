@@ -1,7 +1,7 @@
 #
 # spec file for package csync
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Release:        0
 Summary:        A user level bidirectional client only file synchronizer
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Url:            http://www.csync.org/
+URL:            http://www.csync.org/
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE fix-cmake-on-pre-12.patch
@@ -41,6 +41,8 @@ Patch0:         fix-cmake-on-pre-12.patch
 Patch1:         csync_log.h.patch
 # PATCH-FIX-OPENSUSE fix-missing-const.patch
 Patch2:         fix-missing-const.patch
+# PATCH-FIX-OPENSUSE csync-libssh.patch -- Detect newer libssh versions; hacked patch
+Patch3:         csync-libssh.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -129,6 +131,9 @@ The libcsync-doc package provides user documentation for csync.
 %endif
 %patch1 -p1
 %patch2 -p1
+if [ -f %{_includedir}/libssh/libssh_version.h ]; then
+%patch3 -p1
+fi
 
 %build
 if test ! -e "build"; then
@@ -159,14 +164,9 @@ make DESTDIR=%{buildroot} install
 %endif
 popd
 
-%post -n libcsync0
-/sbin/ldconfig
+%post -n libcsync0 -p /sbin/ldconfig
 
-%postun -n libcsync0
-/sbin/ldconfig
-
-%clean
-%__rm -rf %{buildroot}
+%postun -n libcsync0 -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
