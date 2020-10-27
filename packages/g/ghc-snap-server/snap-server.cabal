@@ -1,0 +1,543 @@
+name:           snap-server
+version:        1.1.1.2
+x-revision: 1
+synopsis:       A web server for the Snap Framework
+description:
+  Snap is a simple and fast web development framework and server written in
+  Haskell. For more information or to download the latest version, you can
+  visit the Snap project website at <http://snapframework.com/>.
+  .
+  The Snap HTTP server is a high performance web server library written in
+  Haskell. Together with the @snap-core@ library upon which it depends, it
+  provides a clean and efficient Haskell programming interface to the HTTP
+  protocol.
+
+license:        BSD3
+license-file:   LICENSE
+author:         Snap Framework Authors  (see CONTRIBUTORS)
+maintainer:     snap@snapframework.com
+build-type:     Simple
+cabal-version:  >= 1.10
+homepage:       http://snapframework.com/
+bug-reports:    https://github.com/snapframework/snap-server/issues
+category:       Web, Snap, IO-Streams
+
+extra-source-files:
+  CONTRIBUTORS,
+  LICENSE,
+  README.md,
+  README.SNAP.md,
+  test/bad_key.pem,
+  test/cert.pem,
+  test/dummy.txt,
+  test/key.pem,
+  testserver/static/hello.txt
+
+tested-with:
+  GHC==7.6.3,
+  GHC==7.8.4,
+  GHC==7.10.3,
+  GHC==8.0.2,
+  GHC==8.2.2,
+  GHC==8.4.4,
+  GHC==8.6.5,
+  GHC==8.8.3,
+  GHC==8.10.1
+
+Flag portable
+  Description: Compile in cross-platform mode. No platform-specific code or
+               optimizations such as C routines will be used.
+  Default: False
+
+Flag openssl
+  Description: Enable https support using the HsOpenSSL library.
+  Default: False
+  Manual: True
+
+Flag build-pong
+  Description: Build a server that just returns "PONG"? Normally useful only
+               for benchmarks.
+  Default: False
+  Manual: True
+
+Flag build-testserver
+  Description: Build the blackbox testserver?
+  Default: False
+  Manual: True
+
+Flag debug
+  Description: Enable support for debugging.
+  Default: False
+  Manual: True
+
+Library
+  hs-source-dirs:    src
+  Default-language:  Haskell2010
+
+  exposed-modules:
+    Snap.Http.Server,
+    Snap.Http.Server.Config,
+    Snap.Http.Server.Types,
+    Snap.Internal.Http.Server.Config,
+    Snap.Internal.Http.Server.Types,
+    System.FastLogger
+
+  other-modules:
+    Paths_snap_server,
+    Control.Concurrent.Extended,
+    Snap.Internal.Http.Server.Address,
+    Snap.Internal.Http.Server.Clock,
+    Snap.Internal.Http.Server.Common,
+    Snap.Internal.Http.Server.Date,
+    Snap.Internal.Http.Server.Parser,
+    Snap.Internal.Http.Server.Session,
+    Snap.Internal.Http.Server.Socket,
+    Snap.Internal.Http.Server.Thread,
+    Snap.Internal.Http.Server.TimeoutManager,
+    Snap.Internal.Http.Server.TLS
+
+  build-depends:
+    attoparsec                          >= 0.12     && < 0.14,
+    base                                >= 4.6      && < 4.15,
+    blaze-builder                       >= 0.4      && < 0.5,
+    bytestring                          >= 0.9.1    && < 0.11,
+    bytestring-builder                  >= 0.10.4   && < 0.11,
+    case-insensitive                    >= 1.1      && < 1.3,
+    clock                               >= 0.7.1    && < 0.9,
+    containers                          >= 0.3      && < 0.7,
+    filepath                            >= 1.1      && < 2.0,
+    io-streams                          >= 1.3      && < 1.6,
+    io-streams-haproxy                  >= 1.0      && < 1.1,
+    lifted-base                         >= 0.1      && < 0.3,
+    mtl                                 >= 2.0      && < 2.3,
+    network                             >= 2.3      && < 3.2,
+    old-locale                          >= 1.0      && < 1.1,
+    snap-core                           >= 1.0      && < 1.1,
+    text                                >= 0.11     && < 1.3,
+    time                                >= 1.0      && < 1.11,
+    unix-compat                         >= 0.2      && < 0.6,
+    vector                              >= 0.7      && < 0.13
+
+  other-extensions:
+    BangPatterns,
+    CPP,
+    MagicHash,
+    Rank2Types,
+    OverloadedStrings,
+    ScopedTypeVariables,
+    DeriveDataTypeable,
+    PackageImports,
+    ViewPatterns,
+    ForeignFunctionInterface,
+    EmptyDataDecls,
+    GeneralizedNewtypeDeriving
+
+  if !impl(ghc >= 8.0)
+    build-depends: semigroups >= 0.16 && < 0.19
+
+  if flag(portable) || os(windows)
+    cpp-options: -DPORTABLE
+  else
+    build-depends: unix                         < 2.8
+
+  if flag(openssl)
+    cpp-options: -DOPENSSL
+    build-depends: HsOpenSSL       >= 0.10.4 && < 0.12,
+                   openssl-streams >= 1.1    && < 1.3
+
+  if os(linux) && !flag(portable)
+    cpp-options: -DLINUX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.Linux
+
+-- Disabling sendfile() on OSX for now. See
+--
+-- https://github.com/snapframework/snap-core/issues/274 and
+-- https://github.com/snapframework/snap-core/issues/91
+--
+  if os(darwin) && !flag(portable)
+     cpp-options: -DHAS_UNIX_SOCKETS
+  -- if os(darwin) && !flag(portable)
+  --   cpp-options: -DOSX -DHAS_UNIX_SOCKETS
+
+  if os(freebsd) && !flag(portable)
+    cpp-options: -DFREEBSD -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.FreeBSD
+
+  if impl(ghc >= 6.12.0)
+    ghc-options: -Wall -fwarn-tabs -funbox-strict-fields -fno-warn-unused-do-bind
+  else
+    ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
+
+  if flag(debug)
+    cpp-options: -DLABEL_THREADS
+
+Test-suite testsuite
+  hs-source-dirs:    src test
+  Type:              exitcode-stdio-1.0
+  Main-is:           TestSuite.hs
+  Default-language:  Haskell2010
+
+  other-modules:
+    Control.Concurrent.Extended,
+    Paths_snap_server,
+    Snap.Http.Server,
+    Snap.Http.Server.Config,
+    Snap.Http.Server.Types,
+    Snap.Internal.Http.Server.Address,
+    Snap.Internal.Http.Server.Clock,
+    Snap.Internal.Http.Server.Common,
+    Snap.Internal.Http.Server.Config,
+    Snap.Internal.Http.Server.Date,
+    Snap.Internal.Http.Server.Parser,
+    Snap.Internal.Http.Server.Session,
+    Snap.Internal.Http.Server.Socket,
+    Snap.Internal.Http.Server.Thread,
+    Snap.Internal.Http.Server.TimeoutManager,
+    Snap.Internal.Http.Server.TLS
+    Snap.Internal.Http.Server.Types,
+    System.FastLogger,
+
+    Snap.Internal.Http.Server.Address.Tests,
+    Snap.Internal.Http.Server.Parser.Tests,
+    Snap.Internal.Http.Server.Session.Tests,
+    Snap.Internal.Http.Server.Socket.Tests,
+    Snap.Internal.Http.Server.TimeoutManager.Tests,
+    Snap.Test.Common,
+    Test.Blackbox,
+    Test.Common.Rot13,
+    Test.Common.TestHandler
+
+  build-depends:
+    attoparsec,
+    base,
+    base16-bytestring                   >= 0.1      && < 1.1,
+    blaze-builder,
+    bytestring-builder,
+    bytestring,
+    case-insensitive,
+    clock,
+    containers,
+    directory                           >= 1.1      && < 1.4,
+    filepath,
+    io-streams,
+    io-streams-haproxy,
+    lifted-base,
+    monad-control                       >= 1.0      && < 1.1,
+    mtl,
+    network,
+    old-locale,
+    random                              >= 1.0      && < 1.2,
+    snap-core,
+    text,
+    threads                             >= 0.5      && < 0.6,
+    time,
+    transformers                        >= 0.3      && < 0.6,
+    unix-compat,
+    vector,
+
+    HUnit                               >= 1.2      && < 2,
+    QuickCheck                          >= 2.3.0.2  && < 3,
+    deepseq                             >= 1.3      && < 2,
+    http-streams                        >= 0.7      && < 0.9,
+    http-common                         >= 0.7      && < 0.9,
+    parallel                            >= 3        && < 4,
+    test-framework                      >= 0.8.0.3  && < 0.9,
+    test-framework-hunit                >= 0.2.7    && < 0.4,
+    test-framework-quickcheck2          >= 0.2.12.1 && < 0.4
+
+  other-extensions:
+    BangPatterns,
+    CPP,
+    MagicHash,
+    Rank2Types,
+    OverloadedStrings,
+    ScopedTypeVariables,
+    DeriveDataTypeable,
+    PackageImports,
+    ViewPatterns,
+    ForeignFunctionInterface,
+    EmptyDataDecls,
+    GeneralizedNewtypeDeriving
+
+  if !impl(ghc >= 8.0)
+    build-depends: semigroups
+
+  if flag(portable) || os(windows)
+    cpp-options: -DPORTABLE
+  else
+    build-depends: unix
+
+  -- always label threads in testsuite
+  cpp-options: -DLABEL_THREADS
+
+  if flag(openssl)
+    cpp-options: -DOPENSSL
+    build-depends: HsOpenSSL,
+                   openssl-streams
+
+  if os(linux) && !flag(portable)
+    cpp-options: -DLINUX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.Linux,
+      System.SendFile.Tests
+    c-sources: test/cbits/errno_util.c
+
+  if os(darwin) && !flag(portable)
+     cpp-options: -DHAS_UNIX_SOCKETS
+--  if os(darwin) && !flag(portable)
+--    cpp-options: -DOSX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+--    other-modules:
+--      System.SendFile,
+--      System.SendFile.Darwin,
+--      System.SendFile.Tests
+--    c-sources: test/cbits/errno_util.c
+
+  if os(freebsd) && !flag(portable)
+    cpp-options: -DFREEBSD -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.FreeBSD,
+      System.SendFile.Tests
+    c-sources: test/cbits/errno_util.c
+
+  cpp-options: -DTESTSUITE
+
+  ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
+               -fno-warn-unused-do-bind -threaded
+
+
+Benchmark benchmark
+  type:             exitcode-stdio-1.0
+  hs-source-dirs:   benchmark src
+  main-is:          Benchmark.hs
+  default-language: Haskell2010
+
+  other-modules:
+    Snap.Internal.Http.Parser.Benchmark,
+    Snap.Internal.Http.Parser.Data,
+    Snap.Internal.Http.Server.Parser
+
+  build-depends:
+    attoparsec,
+    base,
+    blaze-builder,
+    bytestring,
+    bytestring-builder,
+    criterion                           >= 0.6     && < 1.6,
+    io-streams,
+    io-streams-haproxy,
+    snap-core,
+    vector
+
+  ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
+               -fno-warn-unused-do-bind -rtsopts
+
+  other-extensions:
+    BangPatterns,
+    CPP,
+    MagicHash,
+    Rank2Types,
+    OverloadedStrings,
+    ScopedTypeVariables,
+    DeriveDataTypeable,
+    PackageImports,
+    ViewPatterns,
+    ForeignFunctionInterface,
+    EmptyDataDecls,
+    GeneralizedNewtypeDeriving
+
+Executable snap-test-pong-server
+  hs-source-dirs: src pong
+  main-is: Main.hs
+
+  if !flag(build-pong)
+    buildable: False
+
+  default-language: Haskell2010
+
+  other-modules:
+    Paths_snap_server,
+    Snap.Internal.Http.Server.Address,
+    Snap.Internal.Http.Server.Clock,
+    Snap.Internal.Http.Server.Common,
+    Snap.Internal.Http.Server.Config,
+    Snap.Internal.Http.Server.Date,
+    Snap.Internal.Http.Server.Parser,
+    Snap.Internal.Http.Server.Session,
+    Snap.Internal.Http.Server.Socket,
+    Snap.Internal.Http.Server.Thread,
+    Snap.Internal.Http.Server.TimeoutManager,
+    Snap.Internal.Http.Server.TLS,
+    Snap.Internal.Http.Server.Types
+
+  if flag(portable) || os(windows)
+    cpp-options: -DPORTABLE
+  else
+    build-depends: unix
+
+  if os(linux) && !flag(portable)
+    cpp-options: -DLINUX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.Linux
+
+  if os(darwin) && !flag(portable)
+     cpp-options: -DHAS_UNIX_SOCKETS
+--  if os(darwin) && !flag(portable)
+--    cpp-options: -DOSX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+--    other-modules:
+--      System.SendFile,
+--      System.SendFile.Darwin
+
+  if os(freebsd) && !flag(portable)
+    cpp-options: -DFREEBSD -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.FreeBSD
+
+  if flag(openssl)
+    cpp-options: -DOPENSSL
+    build-depends: HsOpenSSL,
+                   openssl-streams
+
+  build-depends:
+    attoparsec,
+    base,
+    blaze-builder,
+    bytestring,
+    bytestring-builder,
+    case-insensitive,
+    clock,
+    containers,
+    io-streams,
+    io-streams-haproxy,
+    lifted-base,
+    mtl,
+    network,
+    old-locale,
+    snap-core,
+    text,
+    time,
+    unix-compat,
+    vector
+
+  ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
+               -fno-warn-unused-do-bind -threaded -rtsopts
+
+  other-extensions:
+    BangPatterns,
+    CPP,
+    MagicHash,
+    Rank2Types,
+    OverloadedStrings,
+    ScopedTypeVariables,
+    DeriveDataTypeable,
+    PackageImports,
+    ViewPatterns,
+    ForeignFunctionInterface,
+    EmptyDataDecls,
+    GeneralizedNewtypeDeriving
+
+
+Executable snap-test-server
+  hs-source-dirs: src testserver test
+  main-is: Main.hs
+
+  if !flag(build-testserver)
+    buildable: False
+
+  if flag(openssl)
+    cpp-options: -DOPENSSL
+    build-depends: HsOpenSSL,
+                   openssl-streams
+
+  default-language: Haskell2010
+
+  other-modules:
+    Paths_snap_server,
+    Snap.Internal.Http.Server.Address,
+    Snap.Internal.Http.Server.Clock,
+    Snap.Internal.Http.Server.Common,
+    Snap.Internal.Http.Server.Config,
+    Snap.Internal.Http.Server.Date,
+    Snap.Internal.Http.Server.Parser,
+    Snap.Internal.Http.Server.Session,
+    Snap.Internal.Http.Server.Socket,
+    Snap.Internal.Http.Server.Thread,
+    Snap.Internal.Http.Server.TimeoutManager,
+    Snap.Internal.Http.Server.TLS,
+    Snap.Internal.Http.Server.Types
+
+  if flag(portable) || os(windows)
+    cpp-options: -DPORTABLE
+  else
+    build-depends: unix
+
+  if os(linux) && !flag(portable)
+    cpp-options: -DLINUX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.Linux
+
+  if os(darwin) && !flag(portable)
+     cpp-options: -DHAS_UNIX_SOCKETS
+  -- if os(darwin) && !flag(portable)
+  --   cpp-options: -DOSX -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+  --   other-modules:
+  --     System.SendFile,
+  --     System.SendFile.Darwin
+
+  if os(freebsd) && !flag(portable)
+    cpp-options: -DFREEBSD -DHAS_SENDFILE -DHAS_UNIX_SOCKETS
+    other-modules:
+      System.SendFile,
+      System.SendFile.FreeBSD
+
+  build-depends:
+    attoparsec,
+    base,
+    blaze-builder,
+    bytestring,
+    bytestring-builder,
+    case-insensitive,
+    clock,
+    containers,
+    directory,
+    io-streams,
+    io-streams-haproxy,
+    lifted-base,
+    mtl,
+    network,
+    old-locale,
+    snap-core,
+    text,
+    time,
+    transformers,
+    unix-compat,
+    vector
+
+  ghc-options: -Wall -fwarn-tabs -funbox-strict-fields
+               -fno-warn-unused-do-bind -threaded -rtsopts
+
+  other-extensions:
+    BangPatterns,
+    CPP,
+    MagicHash,
+    Rank2Types,
+    OverloadedStrings,
+    ScopedTypeVariables,
+    DeriveDataTypeable,
+    PackageImports,
+    ViewPatterns,
+    ForeignFunctionInterface,
+    EmptyDataDecls,
+    GeneralizedNewtypeDeriving
+
+source-repository head
+  type:     git
+  location: git://github.com/snapframework/snap-server.git
