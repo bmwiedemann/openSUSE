@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:32:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.17
+  * purge glibc version lookup to work on musl.
+  * remove pre-2.0.1 notcurses compat code.
+  * CMake: require notcurses 2.0.1+.
+
+-------------------------------------------------------------------
 Mon Oct 19 07:48:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.16
