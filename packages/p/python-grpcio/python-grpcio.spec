@@ -20,13 +20,15 @@
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
 Name:           python-grpcio
-Version:        1.31.0
+Version:        1.33.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-grpcio-disable-boring-ssl.patch gh#grpc/grpc#24498 badshah400@gmail.com -- Make enabling system ssl disable boring ssl; patch taken from upstream PR
+Patch0:         python-grpcio-disable-boring-ssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +50,7 @@ and server applications to communicate, and enables the building of
 connected systems.
 
 %prep
-%setup -q -n grpcio-%{version}
+%autosetup -p1 -n grpcio-%{version}
 
 %build
 export CFLAGS="%{optflags}"
