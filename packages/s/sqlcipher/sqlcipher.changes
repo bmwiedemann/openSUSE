@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 09:59:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.4.0:
+  - Updates baseline to upstream SQLite 3.31.0
+  - Adjusts shell to report SQLCipher version alongside SQLite version
+  - Fixes various build warnings under several compilers
+  - Removes unused id and status functions from provider interface
+
+-------------------------------------------------------------------
 Fri Apr 17 09:04:13 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.3.0:
