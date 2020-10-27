@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 26 03:07:26 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 10.14
+   see /usr/share/doc/packages/perl-Minion/Changes
+
+  10.14  2020-10-24
+    - Changed SQL style to use uppercase keywords.
+    - Fixed a bug where Minion::Worker could inherit timers from Mojolicious applications.
+
+-------------------------------------------------------------------
 Sat Aug  1 03:19:19 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 10.13
