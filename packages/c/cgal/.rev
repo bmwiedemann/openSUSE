@@ -167,4 +167,14 @@
     <comment></comment>
     <requestid>811181</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8a3c8f1e3fcb57eee9770074e0e80330</srcmd5>
+    <version>5.1</version>
+    <time>1603821521</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1
+  Many news, see https://github.com/CGAL/cgal/releases/tag/v5.1
+</comment>
+    <requestid>839125</requestid>
+  </revision>
 </revisionlist>

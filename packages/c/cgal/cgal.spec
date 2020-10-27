@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # Disable Qt5 for embedded platforms, QOpenGlFunctions_2_1 is not available with GLES
 %ifarch %arm aarch64
 %bcond_with qt5
@@ -40,15 +41,14 @@
 %define _sourcename CGAL
 %define _libname() libCGAL%{?1}%{?2}%{expand:%{_sover%{?1}}}
 Name:           cgal
-Version:        5.0.2
+Version:        5.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
-Url:            https://www.cgal.org/
-# You will need to update the magic numbers from the download urls on updating
-Source0:        https://github.com/CGAL/cgal/releases/download/releases%%2FCGAL-%{version}/CGAL-%{version}.tar.xz
-Source1:        https://github.com/CGAL/cgal/releases/download/releases%%2FCGAL-%{version}/CGAL-%{version}-doc_html.tar.xz
+URL:            https://www.cgal.org/
+Source0:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}.tar.xz
+Source1:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}-doc_html.tar.xz
 Source2:        cgal-rpmlintrc
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 2.8.11
@@ -57,9 +57,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_atomic-devel
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_atomic-devel >= 1.66.0
+BuildRequires:  libboost_system-devel >= 1.66.0
+BuildRequires:  libboost_thread-devel >= 1.66.0
 %if %{with qt5}
 BuildRequires:  cmake(Qt5) >= 5.3
 BuildRequires:  cmake(Qt5OpenGL) >= 5.3
@@ -96,9 +96,9 @@ hull algorithms, shape analysis, AABB and KD trees.
 
 %package -n %{_libname _Core}
 Summary:        Computational Geometry Algorithms Library
+# Required after package split, remove on sover bump
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/Libraries
-# Required after package split, remove on sover bump
 Conflicts:      %{_libname} < %{version}
 
 %description -n %{_libname _Core}
@@ -142,19 +142,19 @@ hull algorithms, shape analysis, AABB and KD trees.
 Summary:        Development files and tools for CGAL applications
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0
 Group:          Development/Libraries/C and C++
-Requires:       %{_libname} = %{version}
 Requires:       %{_libname _Core} = %{version}
 Requires:       %{_libname _ImageIO} = %{version}
+Requires:       %{_libname} = %{version}
 %if %{with qt5}
 Requires:       %{_libname _Qt5 - } = %{version}
 %endif
 Requires:       blas
-Requires:       libboost_atomic-devel
-Requires:       libboost_system-devel
-Requires:       libboost_thread-devel
 Requires:       cmake
 Requires:       gmp-devel
 Requires:       lapack
+Requires:       libboost_atomic-devel
+Requires:       libboost_system-devel
+Requires:       libboost_thread-devel
 Requires:       mpfr-devel
 Requires:       zlib-devel
 #For compatibility with package looking for our old name
@@ -208,7 +208,7 @@ cp -a examples/* %{buildroot}/%{_datadir}/CGAL/examples
 cp -a demo/* %{buildroot}/%{_datadir}/CGAL/demo
 
 # Clean doc wrongly placed by make install
-rm -rfv %{buildroot}/%{_datadir}/doc/CGAL-%{version}
+rm -rfv %{buildroot}/%{_datadir}/doc/CGAL
 
 # no macos here.
 rm %{buildroot}/%{_bindir}/cgal_make_macosx_app
