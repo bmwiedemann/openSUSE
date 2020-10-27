@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-MimeInfo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,28 @@
 
 
 Name:           perl-File-MimeInfo
-Version:        0.29
+Version:        0.30
 Release:        0
 %define cpan_name File-MimeInfo
 Summary:        Determine file type from the file name
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-MimeInfo/
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Encode::Locale)
 BuildRequires:  perl(File::BaseDir) >= 0.03
 BuildRequires:  perl(File::DesktopEntry) >= 0.04
 BuildRequires:  perl(Test::More) >= 0.88
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  shared-mime-info
-Requires:       perl(File::BaseDir) >= 0.03
 Requires:       shared-mime-info
+Requires:       perl(File::BaseDir) >= 0.03
 # MANUAL END
 
 %description
@@ -57,14 +58,14 @@ data earlier see the 'rehash' methods below.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
