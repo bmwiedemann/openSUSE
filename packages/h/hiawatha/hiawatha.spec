@@ -117,9 +117,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 sed "s/#ServerId = www-data/ServerId = wwwrun/" -i %{buildroot}%{_sysconfdir}/hiawatha/hiawatha.conf
 
 install -D -m 0644 %{SOURCE102} \
-    %{buildroot}%{_libexecdir}/firewalld/services/%{name}.xml
+    %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 install -D -m 0644 %{SOURCE103} \
-    %{buildroot}%{_libexecdir}/firewalld/services/%{name}-ssl.xml
+    %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-ssl.xml
 
 %pre
 %service_add_pre %{name}.service
@@ -150,10 +150,10 @@ install -D -m 0644 %{SOURCE103} \
 %config(noreplace) %{_sysconfdir}/%{name}/index.xslt
 %config(noreplace) %{_sysconfdir}/%{name}/error.xslt
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
-%{_libexecdir}/firewalld/services/%{name}.xml
-%{_libexecdir}/firewalld/services/%{name}-ssl.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/%{name}.xml
+%{_prefix}/lib/firewalld/services/%{name}-ssl.xml
 %{_mandir}/man1/{cgi-wrapper,hiawatha,ssi-cgi,wigwam}.1%{ext_man}
 %dir %{webroot}/%{name}
 %dir %{webroot}/%{name}/htdocs
