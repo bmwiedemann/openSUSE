@@ -1,30 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 26 09:36:35 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Remove obsolete designs.
+  * Change from Recommends to Requires for cabextract and unzip.
+
+-------------------------------------------------------------------
 Tue Apr 14 07:44:01 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 20200412
-  - shellcheck fixes to script
-  - aria2c fixes
-  - speechsdk fixes
-  - bugfixes
+  * shellcheck fixes to script
+  * aria2c fixes
+  * speechsdk fixes
+  * bugfixes
 
 -------------------------------------------------------------------
 Wed Dec 25 10:47:40 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - updated to 20191224
-  - adjusted to current wine
-  - lots of changes and updates
+  * adjusted to current wine
+  * lots of changes and updates
 
 -------------------------------------------------------------------
 Fri Sep 13 06:48:09 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - Update to 20190912
-  - lots of changes and updates
+  * lots of changes and updates
 
 -------------------------------------------------------------------
 Sat Jun 15 07:29:43 UTC 2019 - Marcus Meissner <meissner@suse.com>
 
 - Update to 20190615
-  - lots of adjustments
+  * lots of adjustments
 
 -------------------------------------------------------------------
 Sun Mar 10 20:50:32 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
@@ -55,4 +62,3 @@ Wed Dec  5 09:59:57 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 Tue Dec  4 09:22:41 UTC 2018 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 20181203
-

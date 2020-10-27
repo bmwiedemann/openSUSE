@@ -25,11 +25,9 @@ Group:          System/Emulators/PC
 URL:            https://github.com/Winetricks/winetricks
 Source0:        https://github.com/Winetricks/%{name}/archive/%{version}.tar.gz##/%{name}-%{version}.tar.gz
 BuildRequires:  update-desktop-files
+Requires:       cabextract
+Requires:       unzip
 Requires:       wine
-# some recommends for winetricks:
-Recommends:     cabextract
-Recommends:     unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Winetricks is a way to work around problems in Wine.
@@ -39,24 +37,18 @@ workarounds automatically. It also allows the installation of missing
 DLLs and tweaking of various WINE settings.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-make
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 %suse_update_desktop_file -G Winetricks -r %{name} System Emulator
 
 %files
-%defattr(-,root,root)
-# %license works starting from SLE 15 and Leap 42.2
-%if 0%{?suse_version} >= 1500 || ( 0%{?sle_version} >= 120200 && 0%{?is_opensuse} )
 %license COPYING
-%else
-%doc COPYING
-%endif
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
@@ -69,6 +61,6 @@ make install DESTDIR=%{buildroot}
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/man/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

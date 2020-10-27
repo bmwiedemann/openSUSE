@@ -61,4 +61,14 @@
   - bugfixes</comment>
     <requestid>793753</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b9894e20684ccb5e39659f68a8d58058</srcmd5>
+    <version>20200412</version>
+    <time>1603821557</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh spec-file via spec-cleaner and manual optimizations.
+  * Remove obsolete designs.
+  * Change from Recommends to Requires for cabextract and unzip. (forwarded request 844050 from 13ilya)</comment>
+    <requestid>844116</requestid>
+  </revision>
 </revisionlist>
