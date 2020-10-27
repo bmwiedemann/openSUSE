@@ -1415,6 +1415,16 @@ Macros:
 %rubydevelruby27() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
 %rubydevelxruby27() %{expand:%%{rubydevelx%*}}
 
+### And now Ruby 3.0
+
+%rubygemsruby30() rubygem(ruby:3.0.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby30() %{expand:%%{rubygemsx%*}}
+
+%rubyruby30() ruby3.0 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby30() %{expand:%%{rubyx%*}}
+
+%rubydevelruby30() ruby3.0-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby30() %{expand:%%{rubydevelx%*}}
 
 ### Things to define default ruby stuff for the distro
 
@@ -1422,26 +1432,20 @@ Macros:
 %rb_default_ruby_suffix ruby2.7
 %rb_default_ruby_abi    ruby:2.7.0
 
-#rb_build_ruby_abis     ruby:2.6.0 ruby:2.7.0
-#rb_build_versions      ruby26 ruby27
 %rb_build_ruby_abis     ruby:2.7.0
 %rb_build_versions      ruby27
 :Macros
 
 Macros:
-#_with_ruby26               1
 %_with_ruby27               1
 :Macros
 
-#define _with_ruby26         1
 %define _with_ruby27         1
 
 %define rb_default_ruby        ruby27
 %define rb_default_ruby_suffix ruby2.7
 %define rb_default_ruby_abi    ruby:2.7.0
 
-#define rb_build_ruby_abis     ruby:2.6.0 ruby:2.7.0
-#define rb_build_versions      ruby26 ruby27
 %define rb_build_ruby_abis     ruby:2.7.0
 %define rb_build_versions      ruby27
 
