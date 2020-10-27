@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:25:51 UTC 2020 - psimons@suse.com
+
+- Update path-io to version 1.6.2.
+  ## Path IO 1.6.2
+
+  * Fixed a bug in the `findFilesWith` and based on it `findFiles` functions.
+
+-------------------------------------------------------------------
 Sun Oct 18 02:01:23 UTC 2020 - psimons@suse.com
 
 - Update path-io to version 1.6.1.

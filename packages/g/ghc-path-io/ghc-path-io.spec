@@ -19,7 +19,7 @@
 %global pkg_name path-io
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Interface to ‘directory’ package for users of ‘path’
 License:        BSD-3-Clause
