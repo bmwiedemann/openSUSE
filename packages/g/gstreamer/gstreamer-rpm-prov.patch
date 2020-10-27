@@ -332,7 +332,7 @@ diff -urp gstreamer-1.16.0.orig/tools/gst-inspect.c gstreamer-1.16.0/tools/gst-i
 +  gboolean print_aii_rpm = FALSE;
    gboolean uri_handlers = FALSE;
    gboolean check_exists = FALSE;
-   gchar *min_version = NULL;
+   gboolean color_always = FALSE;
 @@ -1958,6 +2198,9 @@ main (int argc, char *argv[])
                "or all plugins provide.\n                                       "
                "Useful in connection with external automatic plugin "

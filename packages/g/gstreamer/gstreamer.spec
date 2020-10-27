@@ -16,20 +16,14 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%define use_meson 1
-%else
-%define use_meson 0
-%endif
-
 %define gst_branch 1.0
 Name:           gstreamer
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://gstreamer.freedesktop.org/
+URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer/%{name}-%{version}.tar.xz
 Source1:        gstreamer.macros
 Source2:        gstreamer.prov
@@ -38,9 +32,6 @@ Source99:       baselibs.conf
 Patch1:         gstreamer-rpm-prov.patch
 # PATCH-FIX-OPENSUSE gstreamer-pie.patch mgorse@suse.com -- create position-independent executables.
 Patch2:         gstreamer-pie.patch
-# PATCH-FIX-UPSTREAM gstreamer-revert-encforce-elements.patch -- Revert enforce elements
-Patch3:         gstreamer-revert-encforce-elements.patch
-
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
 BuildRequires:  fdupes
@@ -48,13 +39,10 @@ BuildRequires:  flex >= 2.5.31
 BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  gtk-doc >= 1.12
+BuildRequires:  hotdoc
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-%if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%else
-BuildRequires:  libtool
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
@@ -66,11 +54,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libdw)
-%define libunwind_archs %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64
-%ifarch %{libunwind_archs}
-BuildRequires:  pkgconfig(libunwind)
-%endif
-
 # Ensure that the documentation corresponds with the installed version:
 Requires:       libgstreamer-1_0-0 = %{version}
 # Core modules may depend on new enough libraries:
@@ -78,6 +61,10 @@ Requires:       libgstreamer-1_0-0 >= %{version}
 Requires(pre):  permissions
 # Generic name, never used in SuSE:
 Provides:       gstreamer-doc = %{version}
+%define libunwind_archs %{ix86} ia64 x86_64 %{arm} ppc ppc64 ppc64le aarch64
+%ifarch %{libunwind_archs}
+BuildRequires:  pkgconfig(libunwind)
+%endif
 
 %description
 GStreamer is a streaming-media framework, based on graphs of filters
@@ -162,58 +149,35 @@ to develop applications that require these.
 %prep
 %setup -q -n gstreamer-%{version}
 translation-update-upstream po gstreamer-%{gst_branch}
-gnome-patch-translation-prepare po gstreamer-%{gst_branch}
+#gnome-patch-translation-prepare po gstreamer-%%{gst_branch}
 # The order matters. Only run gnome-patch-translation-update after patching!
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-gnome-patch-translation-update po gstreamer-%{gst_branch}
+#gnome-patch-translation-update po gstreamer-%%{gst_branch}
+sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-doc-cache-generator.py
 
 %build
 export PYTHON=%{_bindir}/python3
-%if %{use_meson}
 sed -i "s/^executable('gst-plugin-scanner',/executable('gst-plugin-scanner-%{_target_cpu}',/" libs/gst/helpers/meson.build
 sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
 # TODO: enable dbghelp
-%{meson} \
+%meson \
 	-Dptp-helper-permissions=capabilities \
 	-Dpackage-name='openSUSE GStreamer package' \
 	-Dpackage-origin='http://download.opensuse.org' \
-	-Dgtk_doc=enabled \
 	-Dintrospection=enabled \
 	-Dbenchmarks=disabled \
+	-Ddoc=enabled \
 	-Dexamples=disabled \
-	-Dtests=disabled \
 	-Ddbghelp=disabled \
 %ifnarch %{libunwind_archs}
 	-Dlibunwind=disabled \
 %endif
 	%{nil}
-%{meson_build}
-%else
-export CFLAGS="%{optflags} -fPIE"
-export LDFLAGS="-pie"
-%configure \
-	--with-ptp-helper-permissions=capabilities \
-	--with-package-name='openSUSE GStreamer package' \
-	--with-package-origin='http://download.opensuse.org' \
-	--enable-gtk-doc \
-	--enable-introspection \
-	--disable-benchmarks \
-	--disable-examples \
-	--disable-static \
-	--disable-tests \
-	--program-transform-name='s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/' \
-	%{nil}
-%make_build
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
+%meson_install
 %find_lang %{name}-%{gst_branch}
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_datadir}/gstreamer-%{gst_branch}/presets
@@ -241,6 +205,8 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %dir %{_libexecdir}/gstreamer-%{gst_branch}
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-completion-helper
 %{_libexecdir}/gstreamer-%{gst_branch}/gst-plugin-scanner-%{_target_cpu}
+%{_libexecdir}/gstreamer-%{gst_branch}/gst-hotdoc-plugins-scanner
+%{_libexecdir}/gstreamer-%{gst_branch}/gst-plugins-doc-cache-generator
 %verify(not mode caps) %{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper
 %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/helpers/
@@ -280,7 +246,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 
 %files doc
 %doc AUTHORS ChangeLog NEWS README RELEASE
-%{_datadir}/gtk-doc/html/*
+#%%{_datadir}/gtk-doc/html/*
 
 %files lang -f %{name}-%{gst_branch}.lang
 

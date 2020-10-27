@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Oct 24 12:19:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not manually install gst-tester-%{gst_branch}: meson_install
+  takes care of this already.
+
+-------------------------------------------------------------------
+Thu Sep 10 11:48:58 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.0:
+  + Highlights:
+    - GstTranscoder: new high level API for applications to
+      transcode media files from one format to another
+    - High Dynamic Range (HDR) video information representation
+      and signalling enhancements
+    - Instant playback rate change support
+    - Active Format Description (AFD) and Bar Data support
+    - RTSP server and client implementations gained ONVIF trick
+      modes support
+    - Hardware-accelerated video decoding on Windows via
+      DXVA2/Direct3D11
+    - Microsoft Media Foundation plugin for video capture and
+      hardware-accelerated video encoding on Windows
+    - qmlgloverlay: New overlay element that renders a QtQuick
+      scene over the top of an input video stream
+    - imagesequencesrc: New element to easily create a video
+      stream from a sequence of jpeg or png images
+    - dashsink: New sink to produce DASH content
+    - dvbsubenc: New DVB Subtitle encoder element
+    - MPEG-TS muxing now also supports TV broadcast compliant
+      muxing with constant bitrate muxing and SCTE-35 support
+    - rtmp2: New RTMP client source and sink element from-scratch
+      implementation
+    - svthevcenc: New SVT-HEVC-based H.265 video encoder
+    - vaapioverlay: New compositor element using VA-API
+    - rtpmanager gained support for Google's Transport-Wide
+      Congestion Control (twcc) RTP extension
+    - splitmuxsink and splitmuxsrc gained support for auxiliary
+      video streams
+    - webrtcbin now contains some initial support for
+      renegotiation involving stream addition and removal
+    - RTP support was enhanced with new RTP source and sink
+      elements to easily set up RTP streaming via rtp:// URIs
+    - avtp: New Audio Video Transport Protocol (AVTP) plugin for
+      Time-Sensitive Applications
+    - Support for the Video Services Forum's Reliable Internet
+      Stream Transport (RIST) TR-06-1 Simple Profile
+    - Universal Windows Platform (UWP) support
+    - rpicamsrc: New element for capturing from the Raspberry Pi
+      camera
+    - RTSP Server TCP interleaved backpressure handling
+      improvements as well as support for Scale/Speed headers
+    - GStreamer Editing Services gained support for nested
+      timelines, per-clip speed rate control and the OpenTimelineIO
+      format.
+    - Autotools build system has been removed in favour of Meson
+- Remove patches from upstream:
+  * gstreamer-revert-encforce-elements.patch
+- Rebase gstreamer-rpm-prov.patch.
+- Don't disable tests when configuring the build so gst-tester-1.0
+  is built and installed, since it's required by
+  gstreamer-plugins-base.
+
+-------------------------------------------------------------------
 Sat May 30 09:28:45 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - adjust / ship more 32bit stuff for Wine usage (bsc#1172304)
