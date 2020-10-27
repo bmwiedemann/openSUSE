@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.11.0.2
+Version:        2.11.0.4
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -143,7 +143,6 @@ This package provides the Haskell %{name} library development files.
 %prep
 %autosetup
 cabal-tweak-dep-ver base64-bytestring '< 1.2' '< 2'
-cabal-tweak-dep-ver hslua '< 1.3' '< 2'
 
 %build
 %ghc_lib_build
