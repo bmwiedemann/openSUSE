@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:16:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v14.2.0
+  * Fix Django 3.1 warning in test app settings.
+- Kill dephell dependency by using PyPI published sdist but get
+  tests from Github gh#zostera/django-bootstrap3#492
+
+-------------------------------------------------------------------
 Thu Jul 23 08:23:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
