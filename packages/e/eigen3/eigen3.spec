@@ -43,6 +43,8 @@ Patch3:         01_install_FindEigen3.patch
 Patch4:         eigen3-3.3.1-fixcmake.patch
 # PATCH-FIX-UPSTREAM eigen3-CastXML-support-for-aarch64.patch badshah400@gmail.com -- Add CastXML support for ARM aarch64 [https://gitlab.com/libeigen/eigen/-/issues/1979]
 Patch5:         eigen3-CastXML-support-for-aarch64.patch
+# PATCH-FIX-UPSTREAM -- https://gitlab.com/libeigen/eigen/-/merge_requests/232
+Patch6:         Remove-error-counting-in-OpenMP-parallelize_gemm.patch
 BuildRequires:  adolc-devel
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
@@ -103,6 +105,7 @@ for Linear Algebra
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' COPYING.MINPACK
