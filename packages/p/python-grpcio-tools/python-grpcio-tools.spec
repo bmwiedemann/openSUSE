@@ -20,7 +20,7 @@
 %define         skip_python2 1
 
 Name:           python-grpcio-tools
-Version:        1.30.0
+Version:        1.33.1
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
@@ -32,10 +32,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-grpcio >= 1.30.0
+Requires:       python-grpcio >= %{version}
 Requires:       python-protobuf >= 3.5.0.post1
 # SECTION test requirements
-BuildRequires:  %{python_module grpcio >= 1.30.0}
+BuildRequires:  %{python_module grpcio >= %{version}}
 BuildRequires:  %{python_module protobuf >= 3.5.0.post1}
 # /SECTION
 %python_subpackages
