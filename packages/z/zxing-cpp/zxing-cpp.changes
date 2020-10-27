@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:33:47 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
 Fri Sep  4 07:16:43 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add fix for pkg-config file so the version and library are set properly

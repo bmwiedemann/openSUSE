@@ -25,6 +25,7 @@ License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.
 Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        https://github.com/nu-book/zxing-cpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 Patch0:         fix-pkg-config-file.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
