@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Oct 22 03:07:06 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.78
+   see /usr/share/doc/packages/perl-Code-TidyAll/Changes
+
+  0.78     2020-04-25
+  - Fix an issue with the pre-commit hook code when commit after a merge. If
+    tidyall invoked `git stash` in the hook and there was content to stash, this
+    would break the merge commit, leading to the commit to fail entirely. Now
+    the pre-commit hook code will simply never call `git stash` when merging a
+    merge commit. Reported by Damien Prystay. GH #100.
+  - This release also includes the changes from the 0.76 and 0.77 trial
+    releases.
+  0.77     2020-01-04 (TRIAL RELEASE)
+  - Made some more line ending fixes in the test code.
+  - Fixed a test to handle spaces with paths (on Windows, at least).
+  0.76     2019-12-24 (TRIAL RELEASE)
+  - Preserve line endings in files but using raw mode to read and
+    write. Otherwise Perl will automatically write files with the
+    platform-appropriate ending. This could lead to ending "flapping" if you
+    have developers working on the same project on different platforms, and
+    probably lots of other annoying issues. Based on PR #97 from Kenneth Ölwing.
+  0.75     2019-12-24
+  - Git v2.24.0 introduced a serious bug when running `git stash` with the
+    `--quiet` flag that causes it to delete files. This in turn caused this
+    package's pre-commit hook code to be seriously broken. We no longer pass the
+    `--quiet` flag if the git version is >= 2.24. We re-enable the flag once
+    there is a version that fixes this bug.
+  - The pre-commit hook code now uses `git rev-parse -q --verify refs/stash` to
+    determine if the call to `git stash` actually does anything. This seems
+    better than attempting to parse the output of the `git stash` call for a
+    user-facing message.
+  0.74     2019-05-24
+  - Fix a warning that would happen when applying shebang matching to empty
+    files. Fixed by Greg Oschwald. GH #93.
+
+-------------------------------------------------------------------
+Wed Apr  3 07:45:54 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- initial package 0.73
+ * created by cpanspec 1.78.09
