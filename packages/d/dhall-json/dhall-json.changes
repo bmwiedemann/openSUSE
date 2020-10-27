@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 22 02:01:06 UTC 2020 - psimons@suse.com
+
+- Update dhall-json to version 1.7.3.
+  1.7.3
+
+  * [Fix command-line completions for files](https://github.com/dhall-lang/dhall-haskell/pull/2034)
+  * [Support new `Text/replace` built-in](https://github.com/dhall-lang/dhall-haskell/pull/2063)
+
+-------------------------------------------------------------------
 Tue Sep 15 15:56:54 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 4GB min disk space
