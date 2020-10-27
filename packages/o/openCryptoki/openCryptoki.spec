@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2018-2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2018-2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.12.1
+Version:        3.15.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -39,7 +39,6 @@ Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch1:         ocki-3.11-remove-make-install-chgrp.patch
-Patch2:         oki-3.12-EP11-Fix-EC-uncompress-buffer-length.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -129,7 +128,6 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
-%patch2 -p1
 
 cp %{SOURCE2} .
 
@@ -235,6 +233,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf
 %{_sbindir}/pkcsep11_migrate
 %endif
+%{_sbindir}/p11sak
 %{_unitdir}/pkcsslotd.service
 %{_tmpfilesdir}/opencryptoki.conf
 %{_sbindir}/rcpkcsslotd
@@ -246,6 +245,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf
+%{_sbindir}/pkcstok_migrate
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
