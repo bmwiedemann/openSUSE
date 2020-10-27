@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:51:40 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add memory constraints for riscv64
+
+-------------------------------------------------------------------
 Tue Aug 18 10:43:42 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Replace %setup -q with the more modern %autosetup macro.
