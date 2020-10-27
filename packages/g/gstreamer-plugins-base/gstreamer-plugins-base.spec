@@ -18,17 +18,9 @@
 
 %define _name gst-plugins-base
 %define gst_branch 1.0
-%define gstreamer_plugins_base_req %(xzgrep --text "^GST[_A-Z]*_REQ.*=" %{SOURCE0} | sort -u | sed 's/GST_REQ=/gstreamer >= /')
-
-# Enable for tumbleweed only for now
-%if 0%{?suse_version} >= 1550
-%define use_meson 1
-%else
-%define use_meson 0
-%endif
-
+%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -37,15 +29,9 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-base/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM gst-base-playbin-handle-error.patch -- playbin: Handle error message with redirection indication
-Patch0:         gst-base-playbin-handle-error.patch
-# PATCH-FIX-UPSTREAM gst-base-audioencoder-fix-leak.patch -- audioencoder: fix segment event leak
-Patch1:         gst-base-audioencoder-fix-leak.patch
-# PATCH-FIX-UPSTREAM gst-base-fft-update-kiss-version.patch -- fft: Update our kiss fft version
-Patch2:         gst-base-fft-update-kiss-version.patch
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
 Patch3:         gstreamer-plugins-base-gl-deps.patch
-
+Patch4:         add_wayland_dep_to_tests.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  fdupes
@@ -53,15 +39,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.40.0
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  gtk-doc >= 1.12
+BuildRequires:  hotdoc
 BuildRequires:  libICE-devel
 BuildRequires:  libSM-devel
 BuildRequires:  libXext-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-%if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%endif
+BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
@@ -80,7 +66,7 @@ BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
@@ -96,6 +82,7 @@ BuildRequires:  pkgconfig(vorbis) >= 1.0
 BuildRequires:  pkgconfig(vorbisenc) >= 1.0
 BuildRequires:  pkgconfig(wayland-client) >= 1.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.0
+BuildRequires:  pkgconfig(wayland-egl) >= 1.0
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
@@ -105,15 +92,13 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(graphene-1.0)
 %endif
-BuildRequires:  orc >= 0.4.24
-BuildRequires:  pkgconfig(wayland-egl) >= 1.0
-Requires:       %{gstreamer_plugins_base_req}
+Requires:       gstreamer >= %{gstreamer_req_version}
 Supplements:    gstreamer
+Conflicts:      gstreamer-plugins-bad < 1.18.0
 # Generic name, never used in SuSE:
 Provides:       gst-plugins-base = %{version}
 Obsoletes:      libgstbadvideo-1_0-0
 Obsoletes:      typelib-1_0-GstFft-1_0 < 1.14.0
-Conflicts:      gstreamer-plugins-bad < 1.16.0
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -243,6 +228,48 @@ Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bi
 Group:          System/Libraries
 
 %description -n typelib-1_0-GstGL-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+This package provides the GObject Introspection bindings for GStreamer
+plug-ins.
+
+%package -n typelib-1_0-GstGLEGL-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstGLEGL-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+This package provides the GObject Introspection bindings for GStreamer
+plug-ins.
+
+%package -n typelib-1_0-GstGLWayland-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstGLWayland-1_0
+GStreamer is a streaming media framework based on graphs of filters
+that operate on media data. Applications using this library can do
+anything media-related, from real-time sound processing to playing
+videos. Its plug-in-based architecture means that new data types or
+processing capabilities can be added simply by installing new plug-ins.
+
+This package provides the GObject Introspection bindings for GStreamer
+plug-ins.
+
+%package -n typelib-1_0-GstGLX11-1_0
+Summary:        GStreamer Streaming-Media Framework Plug-Ins -- Introspection bindings
+Group:          System/Libraries
+
+%description -n typelib-1_0-GstGLX11-1_0
 GStreamer is a streaming media framework based on graphs of filters
 that operate on media data. Applications using this library can do
 anything media-related, from real-time sound processing to playing
@@ -446,6 +473,9 @@ Requires:       typelib-1_0-GstAllocators-1_0 = %{version}
 Requires:       typelib-1_0-GstApp-1_0 = %{version}
 Requires:       typelib-1_0-GstAudio-1_0 = %{version}
 Requires:       typelib-1_0-GstGL-1_0 = %{version}
+Requires:       typelib-1_0-GstGLEGL-1_0 = %{version}
+Requires:       typelib-1_0-GstGLWayland-1_0 = %{version}
+Requires:       typelib-1_0-GstGLX11-1_0 = %{version}
 Requires:       typelib-1_0-GstPbutils-1_0 = %{version}
 Requires:       typelib-1_0-GstRtp-1_0 = %{version}
 Requires:       typelib-1_0-GstRtsp-1_0 = %{version}
@@ -479,37 +509,20 @@ translation-update-upstream po gst-plugins-base-%{gst_branch}
 
 %build
 export PYTHON=%{_bindir}/python3
-%if %{use_meson}
 # TODO: tremor needs libvorbisidec
-%{meson} \
+%meson \
 	-Dpackage-name='openSUSE GStreamer-plugins-base package'\
 	-Dpackage-origin='http://download.opensuse.org'\
-	-Dgtk_doc=enabled \
+	-Ddoc=enabled \
 	-Dintrospection=enabled \
 	-Dorc=enabled \
 	-Dexamples=disabled \
 	-Dtremor=disabled \
 	%{nil}
-%{meson_build}
-%else
-%configure\
-	--with-package-name='openSUSE GStreamer-plugins-base package' \
-	--with-package-origin='http://download.opensuse.org' \
-	--disable-static \
-	--enable-gtk-doc \
-	--enable-introspection \
-	--disable-examples \
-	--enable-orc \
-	%{nil}
-%make_build
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
+%meson_install
 if [ -f %{buildroot}%{_datadir}/appdata/gstreamer-plugins-base.appdata.xml ]; then
   echo "Please remove the added gstreamer-plugins-base.appdata.xml file from the sources - the tarball installs it"
   false
@@ -524,37 +537,26 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libgstallocators-1_0-0 -p /sbin/ldconfig
 %postun -n libgstallocators-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstapp-1_0-0 -p /sbin/ldconfig
 %postun -n libgstapp-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstaudio-1_0-0 -p /sbin/ldconfig
 %postun -n libgstaudio-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstfft-1_0-0 -p /sbin/ldconfig
 %postun -n libgstfft-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstgl-1_0-0 -p /sbin/ldconfig
 %postun -n libgstgl-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstpbutils-1_0-0 -p /sbin/ldconfig
 %postun -n libgstpbutils-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstriff-1_0-0 -p /sbin/ldconfig
 %postun -n libgstriff-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstrtp-1_0-0 -p /sbin/ldconfig
 %postun -n libgstrtp-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstrtsp-1_0-0 -p /sbin/ldconfig
 %postun -n libgstrtsp-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstsdp-1_0-0 -p /sbin/ldconfig
 %postun -n libgstsdp-1_0-0 -p /sbin/ldconfig
-
 %post -n libgsttag-1_0-0 -p /sbin/ldconfig
 %postun -n libgsttag-1_0-0 -p /sbin/ldconfig
-
 %post -n libgstvideo-1_0-0 -p /sbin/ldconfig
 %postun -n libgstvideo-1_0-0 -p /sbin/ldconfig
 
@@ -629,6 +631,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n typelib-1_0-GstGL-1_0
 %{_libdir}/girepository-1.0/GstGL-*.typelib
 
+%files -n typelib-1_0-GstGLEGL-1_0
+%{_libdir}/girepository-1.0/GstGLEGL-1.0.typelib
+
+%files -n typelib-1_0-GstGLWayland-1_0
+%{_libdir}/girepository-1.0/GstGLWayland-1.0.typelib
+
+%files -n typelib-1_0-GstGLX11-1_0
+%{_libdir}/girepository-1.0/GstGLX11-1.0.typelib
+
 %files -n libgstpbutils-1_0-0
 %{_libdir}/libgstpbutils*.so.*
 
@@ -683,12 +694,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files doc
 %doc AUTHORS NEWS README RELEASE REQUIREMENTS
-%if %{use_meson}
-%{_datadir}/gtk-doc/html/gst-plugins-base-libs
-%else
-%{_datadir}/gtk-doc/html/gst-plugins-base-libs-%{gst_branch}
-%{_datadir}/gtk-doc/html/gst-plugins-base-plugins-%{gst_branch}
-%endif
 
 %files lang -f %{_name}-%{gst_branch}.lang
 
