@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 22:34:02 UTC 2020 - Christian Boltz <suse-beta@cboltz.de>
+
+- Add firejail-apparmor-3.0.diff to make the AppArmor profile compatible with
+  AppArmor 3.0 (add missing include <tunables/global>)
+
+-------------------------------------------------------------------
 Wed Aug 19 06:15:16 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.9.62.4

@@ -1,0 +1,37 @@
+Note: this patch is backported/modified - upstream moved the AppArmor profile
+to etc/apparmor/firejail-default in the meantime
+-- cboltz, 2020-10-26
+
+
+
+commit bba750c73469ea315d859464ddd19e495d830a72
+Author: Kristóf Marussy <kristof@marussy.com>
+Date:   Sat Oct 10 13:27:42 2020 +0200
+
+    Fix AppArmor 3.0 support (closes #3659)
+    
+    AppArmor introduces the @{run} variable, which is used in
+    <abstractions/dbus-strict> and <abstractions/dbus-session-strict> among
+    other places. Thus, we follow suit of the built-in profiles and #include
+    <tunables/global>, which includes <tunables/run> in AppArmor 3.0,
+    defining the variable.
+    
+    As <tunables/global> exists in previous versions of AppArmor, too, this
+    patch does not introduce a backward-compatibility issue with Apparmor
+    2.x.
+
+diff --git a/etc/apparmor/firejail-default b/etc/apparmor/firejail-default
+index 68e20d9b..e396ae7d 100644
+--- a/etc/firejail-default
++++ b/etc/firejail-default
+@@ -2,6 +2,10 @@
+ # Generic Firejail AppArmor profile
+ #########################################
+ 
++# AppArmor 3.0 uses the @{run} variable in <abstractions/dbus-strict>
++# and <abstractions/dbus-session-strict>.
++#include <tunables/global>
++
+ ##########
+ # A simple PID declaration based on Ubuntu's @{pid}
+ # Ubuntu keeps it under tunables/kernelvars and include it via tunables/global.

@@ -27,6 +27,8 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz.asc
 # PATCH-FIX-OPENSUSE firejail-0.9.62-fix-usr-etc.patch -- https://github.com/netblue30/firejail/issues/3145 two patches combined, source see file
 Patch0:         firejail-0.9.62-fix-usr-etc.patch
+# PATCH-FIX-UPSTREAM firejail-apparmor-3.0.diff -- https://github.com/netblue30/firejail/issues/3659
+Patch1:         firejail-apparmor-3.0.diff
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
@@ -45,6 +47,7 @@ Linux namespace support. It supports sandboxing specific users upon login.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjclip.py contrib/fjdisplay.py contrib/fjresize.py contrib/sort.py
 
 %build
