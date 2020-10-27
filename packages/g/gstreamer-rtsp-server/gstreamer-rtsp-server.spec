@@ -16,9 +16,10 @@
 #
 
 
+%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 %define _name gst-rtsp-server
 Name:           gstreamer-rtsp-server
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
@@ -26,19 +27,12 @@ Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-rtsp-server/%{_name}-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
-
-# PATCH-FIX-UPSTREAM gst-rtsp-fix-token-leak.patch
-Patch0:         gst-rtsp-fix-token-leak.patch
-# PATCH-FIX-UPSTREAM gst-rtsp-Fix-NULL-pointer.patch
-Patch1:         gst-rtsp-Fix-NULL-pointer.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         gst-rtsp-replace-G_TYPE_INSTANCE_GET_PRIVATE.patch
-
+BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.1
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-net-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
