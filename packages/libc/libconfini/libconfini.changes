@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 06:48:56 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libconfini 1.16.0:
+  * new function ini_get_bool_i()
+  * documentation and examples
+
+-------------------------------------------------------------------
 Wed Oct  7 10:32:22 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libconfini 1.15.0:
