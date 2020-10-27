@@ -1,8 +1,8 @@
-diff --git a/sesman/startwm.sh b/sesman/startwm.sh
-index ad06010..2330775 100755
---- a/sesman/startwm.sh
-+++ b/sesman/startwm.sh
-@@ -7,34 +7,66 @@
+Index: xrdp-0.9.14/sesman/startwm.sh
+===================================================================
+--- xrdp-0.9.14.orig/sesman/startwm.sh
++++ xrdp-0.9.14/sesman/startwm.sh
+@@ -7,34 +7,81 @@
  # exec xterm
  
  
@@ -25,8 +25,11 @@ index ad06010..2330775 100755
 +#start the window manager
 +wm_start()
 +{
-+  #Customize your preferred session mode here
-+  #The default session is gnome(GNOME Session)
++  #To customize system-wise session, edit this file.
++  #To customize user specific session, copy this file to $HOME and edit it.
++  #Please refer to DefaultWindowManager and UserWindowManager in /etc/xrdp/sesman.ini for more details.
++
++  #The default session is gnome (GNOME Session)
 +  #sle means SLE-Classic Session
 +  SESSION="gnome"
 +
@@ -36,12 +39,24 @@ index ad06010..2330775 100755
 +        export XDG_SESSION_TYPE=x11
 +        export GNOME_SHELL_SESSION_MODE=sle-classic
 +        /usr/bin/gnome-session --session gnome-classic
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/icewm-session
 +      fi
 +      ;;
 +    gnome)
 +      if [ -r /usr/bin/gnome-session ]; then
 +        export XDG_SESSION_TYPE=x11
 +        /usr/bin/gnome-session
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/icewm-session
++      fi
++      ;;
++    plasma)
++      if [ -r /usr/bin/startplasma-x11 ]; then
++        export XDG_SESSION_TYPE=x11
++        /usr/bin/startplasma-x11
++      elif [ -r /usr/bin/icewm-session ]; then
++        /usr/bin/icewm-session
 +      fi
 +      ;;
 +    icewm)
@@ -89,7 +104,7 @@ index ad06010..2330775 100755
          . ~/.profile
        fi
      fi
-@@ -42,56 +74,20 @@ pre_start()
+@@ -42,11 +89,11 @@ pre_start()
    return 0
  }
  
@@ -105,11 +120,8 @@ index ad06010..2330775 100755
 +#END IF
  post_start()
  {
--  if [ -r ~/.bash_logout ]; then
-+  if [ -f ~/.bash_logout ]
-+  then
-     . ~/.bash_logout
-   fi
+   if [ -r ~/.bash_logout ]; then
+@@ -55,46 +102,6 @@ post_start()
    return 0
  }
  
@@ -143,6 +155,9 @@ index ad06010..2330775 100755
 -    # do not execute the pseudo login shell scripts
 -    . /etc/X11/xdm/Xsession
 -    exit 0
+-  elif [ -r /usr/etc/X11/xdm/Xsession ]; then
+-    . /usr/etc/X11/xdm/Xsession
+-    exit 0
 -  fi
 -
 -  pre_start
@@ -153,7 +168,7 @@ index ad06010..2330775 100755
  #. /etc/environment
  #export PATH=$PATH
  #export LANG=$LANG
-@@ -106,6 +102,8 @@ wm_start()
+@@ -109,6 +116,8 @@ wm_start()
  # includes
  # auth       required     pam_env.so readenv=1
  

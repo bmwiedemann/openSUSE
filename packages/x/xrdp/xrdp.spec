@@ -44,6 +44,8 @@ Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 Patch5:         xrdp-support-KillDisconnected-for-Xvnc.patch
 # PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
 Patch6:         xrdp-systemd-services.patch
+# PATCH-FEATURE-UPSTREAM xrdp-usr-etc-support.patch bsc#1177779 - yfjiang@suse.com gh#neutrinolabs/xrdp!1702 -- Support /usr/etc configuration change
+Patch7:         xrdp-usr-etc-support.patch 
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
 Patch11:        xrdp-avahi.diff
 # PATCH-FIX-SLE xrdp-filter-tab-from-mstsc-on-focus-change.patch bnc#601996 bnc#623534 - dliang@novell.com -- filter the fake tab key which is used to notify the session
@@ -53,6 +55,7 @@ Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
 # PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
 Patch14:        xrdp-fate318398-change-expired-password.patch
 Patch16:        xrdp-buildfix.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -104,6 +107,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 %patch11 -p1
 %if 0%{?sle_version}
 %patch12 -p1
@@ -185,7 +189,8 @@ exit 0
 %config(noreplace) %{_sysconfdir}/pam.d/xrdp-sesman
 %config(noreplace) %{_sysconfdir}/xrdp/sesman.ini
 %config(noreplace) %{_sysconfdir}/xrdp/xrdp.ini
-%doc COPYING *.txt
+%license COPYING
+%doc *.txt
 %{_bindir}/xrdp*
 %{_datadir}/xrdp/*
 %{_libdir}/xrdp/*
