@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:25:24 UTC 2020 - psimons@suse.com
+
+- Update citeproc to version 0.1.0.3.
+  ## 0.1.0.3
+
+    * Better handling of author-only/suppress-author.
+      Previously all results of "names" elements were treated
+      as authors.  But only the first should be (generally this
+      is the author, but it could be the editor of an edited
+      volume with no author).  See jgm/pandoc#6765.
+
+-------------------------------------------------------------------
 Fri Oct 16 02:00:51 UTC 2020 - psimons@suse.com
 
 - Update citeproc to version 0.1.0.2.
