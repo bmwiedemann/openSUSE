@@ -8,13 +8,6 @@
     <param name="submodule">master</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/hchunhui/librime-lua.git</param>
-    <param name="scm">git</param>
-    <param name="exclude">.git</param>
-    <param name="version">_none_</param>
-    <param name="revision">master</param>
-  </service>
   <service name="recompress" mode="disabled">
     <param name="file">librime-*.tar</param>
     <param name="compression">xz</param>

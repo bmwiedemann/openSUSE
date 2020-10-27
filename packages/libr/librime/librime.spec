@@ -24,7 +24,6 @@ License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
 Source:         %{name}-%{version}.tar.xz
-Source1:        librime-lua.tar.xz
 Source99:       baselibs.conf
 #PATCH-FIX-OPENSUSE workaround for gcc bug 53613 on 12.3 and lower
 Patch1:         librime-1.1-gcc53613.patch
@@ -50,8 +49,6 @@ BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
 %endif
-# for plugins
-BuildRequires:  pkgconfig(lua) >= 5.1
 
 %description
 Rime is an Traditional Chinese input method engine.
@@ -94,27 +91,12 @@ Mainly it's about to express your thinking with your keystrokes.
 
 This package is the development headers of Rime.
 
-%package -n librime-lua
-Summary:        Extending RIME with Lua scripts
-Group:          System/Libraries
-Requires:       rime = %{version}
-
-%description -n librime-lua
-Extending RIME with lua scripts.
-Features:
-    Supports extending RIME processors, segmentors, translators and filters
-    Provides high-level programming model for translators and filters
-    Loaded dynamically as a librime plugin
-
-This package is a plugin of librime.
-
 %prep
 %setup -q
 %if 0%{?suse_version} <= 1230
 %patch1 -p1
 %patch2 -p1
 %endif
-tar xf %{S:1} -C plugins
 
 %build
 # build internal capnproto
@@ -125,12 +107,23 @@ make
 make install
 popd
 
-%cmake -DCapnProto_DIR=thirdparty/src/%{_lib}/cmake/CapnProto \
-       -DBUILD_MERGED_PLUGINS=OFF
+%cmake -DCapnProto_DIR=thirdparty/src/%{_lib}/cmake/CapnProto
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+# librime-lua
+mkdir -p %{buildroot}%{_includedir}/rime
+for i in $(find src/rime/ -type f -name "*.h"); do
+  dir=$(dirname $i);
+  if [ "$dir" != "src/rime" ]; then
+    target_dir=$(basename $dir);
+    mkdir -p %{buildroot}%{_includedir}/rime/$target_dir;
+    cp -r $i %{buildroot}%{_includedir}/rime/$target_dir/;
+  else
+    cp -r $i %{buildroot}%{_includedir}/rime/;
+  fi
+done
 
 %post -n librime1 -p /sbin/ldconfig
 %postun -n librime1 -p /sbin/ldconfig
@@ -149,11 +142,9 @@ make %{?_smp_mflags}
 %files devel
 %{_includedir}/rime_api.h
 %{_includedir}/rime_levers_api.h
+%{_includedir}/rime
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/rime.pc
 %{_datadir}/cmake/rime/
-
-%files -n librime-lua
-%{_libdir}/librime-lua.so
 
 %changelog

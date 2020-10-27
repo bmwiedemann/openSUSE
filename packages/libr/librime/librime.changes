@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 14:05:02 UTC 2020 - Marguerite Su <i@marguerite.su>
+
+- revert: Add plugin librime-lua
+  * different upstream, bundling not possible
+  * no LICENSE
+  * can be and should be built separately
+- expose internal headers for librime plugins
+
+-------------------------------------------------------------------
 Mon Oct 19 06:28:16 UTC 2020 - emricg2@gmail.com
 
 - Add plugin librime-lua
