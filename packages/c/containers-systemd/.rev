@@ -144,4 +144,22 @@
   * All services should 'Want=' targets not just 'After='</comment>
     <requestid>835440</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea6621d7c1c0b89043f44d047f182593</srcmd5>
+    <version>0.0+git20201027.f1d33d8</version>
+    <time>1603821516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20201027.f1d33d8:
+  * Add a way to provide pki directory to postfix
+
+- Update to version 0.0+git20201026.4046317:
+  * Start some services only after firewall is running
+
+- Update to version 0.0+git20201023.1bb4d20:
+  * Point to documentation in wiki
+  * Unify names of spool directories
+  * Fix name of container
+  * Fix typo</comment>
+    <requestid>844345</requestid>
+  </revision>
 </revisionlist>

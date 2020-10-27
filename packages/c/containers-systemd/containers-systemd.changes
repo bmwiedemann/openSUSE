@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 27 13:09:41 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201027.f1d33d8:
+  * Add a way to provide pki directory to postfix
+
+-------------------------------------------------------------------
+Mon Oct 26 11:46:27 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201026.4046317:
+  * Start some services only after firewall is running
+
+-------------------------------------------------------------------
+Fri Oct 23 13:54:40 UTC 2020 - kukuk@suse.com
+
+- Update to version 0.0+git20201023.1bb4d20:
+  * Point to documentation in wiki
+  * Unify names of spool directories
+  * Fix name of container
+  * Fix typo
+
+-------------------------------------------------------------------
 Fri Sep 18 14:49:49 UTC 2020 - rbrown@suse.com
 
 - Update to version 0.0+git20200918.c14836a:
