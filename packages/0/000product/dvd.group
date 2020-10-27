@@ -1306,7 +1306,6 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1615,7 +1614,6 @@
     <package name="libQtQuick5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libSDL-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSDL2_image-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libSDL_gfx15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSDL_image-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3063,7 +3061,6 @@
     <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="metatheme-sonar-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="milou5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="milou5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="minicom" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3245,9 +3242,6 @@
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
-    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3877,7 +3871,6 @@
     <package name="qemu-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-curses" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="qemu-ui-sdl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ui-spice-app" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-vgabios" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-vhost-user-gpu" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5235,13 +5228,13 @@
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.8.15-1-default needed by openafs-kmp-default-1.8.6.1_k5.8.15_1-2.2.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="MozillaFirefox" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="MozillaFirefox-translations-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5253,7 +5246,6 @@
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="chrome-gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5274,6 +5266,7 @@
     <package name="guestfs-data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ibus-gtk-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5452,6 +5445,7 @@
     <package name="nss-mdns-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.8.15-1-default needed by openafs-kmp-default-1.8.6.1_k5.8.15_1-2.2.x86_64-->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->

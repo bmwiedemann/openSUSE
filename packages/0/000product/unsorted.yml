@@ -35,6 +35,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -2712,6 +2713,7 @@ unsorted:
   - dpdk-devel: [x86_64] 
   - dpdk-doc: [x86_64] 
   - dpdk-examples: [x86_64] 
+  - dpdk-kmp-default: [x86_64] 
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
@@ -4651,6 +4653,8 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-quickcheck-io 
   - ghc-quickcheck-io-devel 
+  - ghc-quiet 
+  - ghc-quiet-devel 
   - ghc-random 
   - ghc-random-devel 
   - ghc-refact 
@@ -7576,6 +7580,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -7785,6 +7790,7 @@ unsorted:
   - laf-plugin 
   - laf-plugin-javadoc 
   - lal-devel 
+  - lalmetaio-devel 
   - lame-doc 
   - lame-mp3rtp 
   - lammps 
@@ -8481,6 +8487,7 @@ unsorted:
   - libSDL2_gfx-1_0-0-32bit: [x86_64] 
   - libSDL2_gfx-devel 
   - libSDL2_gfx-devel-32bit: [x86_64] 
+  - libSDL2_image-2_0-0 
   - libSDL2_image-2_0-0-32bit: [x86_64] 
   - libSDL2_image-devel 
   - libSDL2_image-devel-32bit: [x86_64] 
@@ -10227,7 +10234,7 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc12 
+  - libgrpc13 
   - libgrpc_plugin_support1 
   - libgrss-devel 
   - libgrss0 
@@ -10881,6 +10888,7 @@ unsorted:
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
   - liblal20 
+  - liblalmetaio8 
   - liblalsupport14 
   - liblammps0 
   - liblangtag-devel 
@@ -11143,6 +11151,7 @@ unsorted:
   - libmesode-devel 
   - libmesode0 
   - libmetacity3 
+  - libmetaio1 
   - libmetal-devel 
   - libmetal0 
   - libmetalink-devel 
@@ -12055,7 +12064,6 @@ unsorted:
   - libpython3_8-1_0-32bit: [x86_64] 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit: [x86_64] 
-  - libpyzy-1_0-0 
   - libqalculate-devel 
   - libqb-devel 
   - libqb-devel-32bit: [x86_64] 
@@ -13230,7 +13238,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb12 
+  - libupb13 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14861,6 +14869,8 @@ unsorted:
   - metacity-theme-adapta 
   - metacity-theme-plata 
   - metacity-tools 
+  - metaio-devel 
+  - metaio-utils 
   - metallb-controller: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
@@ -14910,6 +14920,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
+  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -15480,6 +15491,8 @@ unsorted:
   - musepack-devel 
   - musescore 
   - musescore-fonts 
+  - musique 
+  - musique-lang 
   - mutter-devel 
   - mvapich2 
   - mvapich2-devel 
@@ -16586,6 +16599,7 @@ unsorted:
   - octave-forge-tsa 
   - octave-forge-vrml 
   - octave-lal 
+  - octave-lalmetaio 
   - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
@@ -16714,11 +16728,14 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -17714,6 +17731,7 @@ unsorted:
   - perl-Config-GitLike 
   - perl-Config-Grammar 
   - perl-Config-INI 
+  - perl-Config-INI-Reader-Ordered 
   - perl-Config-IniFiles 
   - perl-Config-MVP 
   - perl-Config-MVP-Reader-INI 
@@ -18055,6 +18073,7 @@ unsorted:
   - perl-JSON-Any 
   - perl-JSON-DWIW 
   - perl-JSON-MaybeXS 
+  - perl-JSON-Parse 
   - perl-JSON-RPC 
   - perl-JSON-Validator 
   - perl-JavaScript-Minifier-XS 
@@ -18134,6 +18153,7 @@ unsorted:
   - perl-Meta-Builder 
   - perl-Method-Signatures 
   - perl-Method-Signatures-Simple 
+  - perl-Metrics-Any 
   - perl-Minion 
   - perl-Minion-Backend-SQLite 
   - perl-Mixin-Linewise 
@@ -18353,6 +18373,7 @@ unsorted:
   - perl-PerlIO-via-Timeout 
   - perl-PerlIO-via-dynamic 
   - perl-PerlMagick 
+  - perl-PerlX-Maybe 
   - perl-Plack 
   - perl-Plack-Middleware-FixMissingBodyInRedirect 
   - perl-Plack-Middleware-LogErrors 
@@ -18458,6 +18479,7 @@ unsorted:
   - perl-String-ShellQuote 
   - perl-String-ToIdentifier-EN 
   - perl-String-Truncate 
+  - perl-String-Util 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
   - perl-Sub-Exporter 
@@ -18545,6 +18567,7 @@ unsorted:
   - perl-Test-LongString 
   - perl-Test-Manifest 
   - perl-Test-Memory-Cycle 
+  - perl-Test-Metrics-Any 
   - perl-Test-Mock-Guard 
   - perl-Test-Mock-LWP 
   - perl-Test-Mock-Time 
@@ -19106,6 +19129,7 @@ unsorted:
   - pmdk-devel-doc: [x86_64] 
   - pmdk-tools: [x86_64] 
   - pmemkv-devel: [x86_64] 
+  - pmemkv-python: [x86_64] 
   - pmidi 
   - pmix 
   - pmix-devel 
@@ -21268,6 +21292,7 @@ unsorted:
   - python3-labelImg 
   - python3-labels 
   - python3-lal 
+  - python3-lalmetaio 
   - python3-lancet-ioam 
   - python3-langdetect 
   - python3-langtable 
@@ -22887,9 +22912,6 @@ unsorted:
   - pytorch-examples: [x86_64] 
   - pyzo 
   - pyzologo 
-  - pyzy-db-android 
-  - pyzy-db-open-phrase 
-  - pyzy-devel 
   - q4wine 
   - q4wine-lang 
   - q5go 
@@ -22911,7 +22933,6 @@ unsorted:
   - qemacs 
   - qemu-audio-alsa 
   - qemu-audio-pa 
-  - qemu-audio-sdl 
   - qemu-extra 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
@@ -25035,6 +25056,7 @@ unsorted:
   - sxiv 
   - sympol 
   - sympol-devel 
+  - sympow 
   - syncthing 
   - syncthing-relaysrv 
   - syndication-devel 
