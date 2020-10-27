@@ -1,0 +1,250 @@
+Name:                threepenny-gui
+Version:             0.9.0.0
+x-revision: 1
+Synopsis:            GUI framework that uses the web browser as a display.
+Description:
+    Threepenny-GUI is a GUI framework that uses the web browser as a display.
+    .
+    It's very easy to install because everyone has a web browser installed.
+    .
+    A program written with Threepenny is essentially a small web server that
+    displays the user interface as a web page to any browser that connects to it.
+    You can freely manipulate the HTML DOM and handle JavaScript events
+    from your Haskell code.
+    .
+    Stability forecast: This is an experimental release! Send me your feedback!
+    Significant API changes are likely in future versions.
+    .
+    NOTE: This library contains examples, but they are not built by default.
+    To build and install the example, use the @buildExamples@ flag like this
+    .
+    @cabal install threepenny-gui -fbuildExamples@
+
+License:             BSD3
+License-file:        LICENSE
+Author:              Heinrich Apfelmus
+Maintainer:          Heinrich Apfelmus <apfelmus at quantentunnel dot de>
+Homepage:            http://wiki.haskell.org/Threepenny-gui
+bug-reports:         https://github.com/HeinrichApfelmus/threepenny-gui/issues
+Category:            Web, GUI
+Build-type:          Simple
+Cabal-version:       >=1.10
+Tested-With:         GHC == 7.10.3
+                    ,GHC == 8.0.2
+                    ,GHC == 8.2.2
+                    ,GHC == 8.4.4
+                    ,GHC == 8.6.5
+                    ,GHC == 8.8.3
+                    ,GHC == 8.10.1
+
+Extra-Source-Files:  CHANGELOG.md
+                    ,README.md
+                    ,samples/README.md
+                    ,js/*.html
+                    ,js/*.css
+                    ,js/*.js
+                    ,js/lib/*.js
+
+Data-dir:           .
+Data-files:          samples/static/css/*.css
+                    ,samples/static/css/*.png
+                    ,samples/static/*.html
+                    ,samples/static/*.png
+                    ,samples/static/*.wav
+
+
+flag buildExamples
+    description: Build example executables.
+    default:     False
+    manual:      True
+
+flag rebug
+    description: The library uses some techniques that are highly
+                 non-deterministic, for example garbage collection
+                 and concurrency.
+                 Bugs in these subsystems are harder to find.
+                 Activating this flag will expose more of them.
+    default:     False
+    manual:      True
+
+Source-repository head
+    type:               git
+    location:           git://github.com/HeinrichApfelmus/threepenny-gui.git
+
+
+Library
+  hs-source-dirs:    src
+  exposed-modules:
+                     Foreign.JavaScript
+                    ,Foreign.RemotePtr
+                    ,Graphics.UI.Threepenny
+                    ,Graphics.UI.Threepenny.Attributes
+                    ,Graphics.UI.Threepenny.Canvas
+                    ,Graphics.UI.Threepenny.Core
+                    ,Graphics.UI.Threepenny.DragNDrop
+                    ,Graphics.UI.Threepenny.Elements
+                    ,Graphics.UI.Threepenny.Events
+                    ,Graphics.UI.Threepenny.JQuery
+                    ,Graphics.UI.Threepenny.SVG
+                    ,Graphics.UI.Threepenny.SVG.Attributes
+                    ,Graphics.UI.Threepenny.SVG.Elements
+                    ,Graphics.UI.Threepenny.Timer
+                    ,Graphics.UI.Threepenny.Widgets
+                    ,Reactive.Threepenny
+  other-modules:
+                     Foreign.JavaScript.CallBuffer
+                    ,Foreign.JavaScript.EventLoop
+                    ,Foreign.JavaScript.Include
+                    ,Foreign.JavaScript.Marshal
+                    ,Foreign.JavaScript.Resources
+                    ,Foreign.JavaScript.Server
+                    ,Foreign.JavaScript.Types
+                    ,Graphics.UI.Threepenny.Internal
+                    ,Reactive.Threepenny.Memo
+                    ,Reactive.Threepenny.Monads
+                    ,Reactive.Threepenny.PulseLatch
+                    ,Reactive.Threepenny.Types
+                    ,Paths_threepenny_gui
+  other-extensions: CPP
+  cpp-options:      -DCABAL
+  if flag(rebug)
+      cpp-options:  -DREBUG
+      ghc-options:  -O2
+  build-depends:     base                   >= 4.8   && < 4.15
+                    ,aeson                  (>= 0.7 && < 0.10) || == 0.11.* || (>= 1.0 && < 1.6)
+                    ,async                  >= 2.0   && < 2.3
+                    ,bytestring             >= 0.9.2 && < 0.12
+                    ,containers             >= 0.4.2 && < 0.7
+                    ,data-default           >= 0.5.0 && < 0.8
+                    ,deepseq                >= 1.3.0 && < 1.5
+                    ,exceptions             >= 0.6   && < 0.11
+                    ,filepath               >= 1.3.0 && < 1.5.0
+                    ,file-embed             >= 0.0.10 && < 0.1
+                    ,hashable               >= 1.1.0 && < 1.4
+                    ,safe                   == 0.3.*
+                    ,snap-server            >= 0.9.0 && < 1.2
+                    ,snap-core              >= 0.9.0 && < 1.1
+                    ,stm                    >= 2.2    && < 2.6
+                    ,template-haskell       >= 2.7.0  && < 2.17
+                    ,text                   >= 0.11   && < 1.3
+                    ,transformers           >= 0.3.0  && < 0.6
+                    ,unordered-containers   == 0.2.*
+                    ,websockets             (>= 0.8    && < 0.12.5) || (> 0.12.5.0 && < 0.13)
+                    ,websockets-snap        >= 0.8    && < 0.11
+                    ,vault                  == 0.3.*
+                    ,vector                 >= 0.10   && < 0.13
+  if impl(ghc >= 8.0)
+      ghc-options: -Wcompat -Wnoncanonical-monad-instances
+  default-language: Haskell2010
+
+Executable threepenny-examples-bartab
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+    else
+        buildable: False
+    main-is:           BarTab.hs
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-buttons
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+                          ,filepath
+    else
+        buildable: False
+    main-is:           Buttons.hs
+    other-modules:     Paths_threepenny_gui, Paths
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-canvas
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,filepath
+                          ,threepenny-gui
+    else
+        buildable: False
+    main-is:           Canvas.hs
+    other-modules:     Paths_threepenny_gui, Paths
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-chat
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+                          ,filepath
+                          ,time
+    else
+        buildable: False
+    main-is:           Chat.hs
+    other-modules:     Paths_threepenny_gui, Paths, Data.List.Extra
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-crud
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,containers
+                          ,threepenny-gui
+    else
+        buildable: False
+    main-is:           CRUD.hs
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-currencyconverter
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+                          ,safe
+    else
+        buildable: False
+    main-is:           CurrencyConverter.hs
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-dragndropexample
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+                          ,filepath
+    else
+        buildable: False
+    main-is:           DragNDropExample.hs
+    other-modules:     Paths_threepenny_gui, Paths
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-drummachine
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+                          ,filepath
+    else
+        buildable: False
+    main-is:           DrumMachine.hs
+    other-modules:     Paths_threepenny_gui, Paths
+    hs-source-dirs:    samples
+    default-language: Haskell2010
+
+Executable threepenny-examples-svg
+    if flag(buildExamples)
+        cpp-options:       -DCABAL
+        build-depends:     base                      >= 4     && < 5
+                          ,threepenny-gui
+    else
+        buildable: False
+    main-is:           Svg.hs
+    hs-source-dirs:    samples
+    default-language: Haskell2010
