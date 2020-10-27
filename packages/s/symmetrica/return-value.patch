@@ -1,0 +1,436 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2020-10-26 16:57:34.477468291 +0100
+
+hiccup.c:1109:1: error: no return statement in function returning
+non-void [-Werror=return-type]
+etc.
+
+---
+ src/hiccup.c     |   10 ++++++++++
+ src/lo.c         |    2 +-
+ src/mo.c         |    5 +++++
+ src/mod_dg_sbd.c |    2 ++
+ src/nc.c         |    1 +
+ src/pr.c         |    2 ++
+ src/rest.c       |   12 ++++++------
+ src/rh.c         |   32 +++++++++++++++++++++++++++-----
+ 8 files changed, 54 insertions(+), 12 deletions(-)
+
+Index: symmetrica-3.0.1/src/hiccup.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/hiccup.c
++++ symmetrica-3.0.1/src/hiccup.c
+@@ -825,6 +825,7 @@ int hecke_action ( tableau,  permutation
+ 	b_sn_l(tab_mo,NULL,list);
+ 
+ 	hecke_action_perm_on_lc(list,perm_cop); /* perm_cop freed in hecke_action_perm_on_lc */
++	return 0;
+ }
+ static INT axel_ll,axel_kk;
+ 
+@@ -1106,6 +1107,7 @@ static int standardise_tableau_list ( li
+ 		set_multiplier(S_MO_K(S_L_S(a)));
+ 		standardise_tableau(S_MO_S(S_L_S(a)),expression);
+ 	}
++	return 0;
+ }
+ 
+ 
+@@ -1140,6 +1142,7 @@ static int standardise_tableau ( tableau
+ 		garnir_juggle(tableau,(INT)0,(INT)((swaps&1) ? -1 : 1));
+ 
+ 
++	return 0;
+ }
+ 
+ 
+@@ -1218,6 +1221,7 @@ static int garnir_juggle ( tableau,  pow
+ 	}
+ 
+ 	freeall(store);
++	return 0;
+ }
+ 
+ 
+@@ -1297,6 +1301,7 @@ static int garnir_generate ( head,  wag)
+ 	}
+ 
+ 	garnir_len--;         /* restores value */
++	return 0;
+ }
+ 
+ 
+@@ -1356,6 +1361,7 @@ static int garnir_result ( tableau,  mp_
+ 			insert(mp_coeff,S_MO_K(S_L_S(a)),add_koeff,NULL);
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ 
+@@ -1404,6 +1410,7 @@ INT enter_list_to_matrix ( matrix, colum
+ 			}  while (express!=NULL && empty_listp(S_MO_K(S_L_S(express))));
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ 
+@@ -3064,6 +3071,7 @@ INT remove_mp_qnumber_fac ( mp,  qn)
+ 		C_O_K(accumulate,EMPTY);
+ 		freeall(accumulate);
+ 	}
++	return 0;
+ }
+ 
+ 
+@@ -3140,6 +3148,7 @@ INT remove_vec_qnumber ( qn) INT qn;
+ 	}
+ 
+ 	/* the quotient remains in poly and there are no entries q^root & above */
++	return 0;
+ }
+ 
+ 
+@@ -3448,6 +3457,7 @@ INT free_cyclotomic_parameters ()
+ 		c_vec=NULL;
+ 		c_root=0;
+ 	}
++	return 0;
+ }
+ 
+ 
+Index: symmetrica-3.0.1/src/lo.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/lo.c
++++ symmetrica-3.0.1/src/lo.c
+@@ -30,7 +30,7 @@ static INT longint_speicher_ende();
+ 
+ static INT nofolgezeichen=0;
+ 
+-INT set_lo_nopoint(para) INT para; { nofolgezeichen=para; }
++INT set_lo_nopoint(para) INT para; { nofolgezeichen=para; return 0; }
+ 
+ static INT ganzadd();
+ static INT ganzanfang();
+Index: symmetrica-3.0.1/src/mo.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/mo.c
++++ symmetrica-3.0.1/src/mo.c
+@@ -1323,6 +1323,7 @@ static struct ak * ak_tmpfile()
+ 	a->ptr = NULL;
+ #endif
+ 	init_mat();
++	return 0;
+ }
+ 
+ static INT ak_rewind(a) struct ak *a;
+@@ -1396,14 +1397,17 @@ static INT mat_size;
+ INT tl_set_prime(p) INT p;
+ { 
+ 	tl_prime = p; 
++	return 0;
+ }
+ INT tl_set_max_numb(p) INT p;
+ { 
+ 	tl_max_numb = p; 
++	return 0;
+ }
+ INT tl_set_index_inc(p) INT p;
+ { 
+ 	tl_index_inc = p; 
++	return 0;
+ }
+ #ifdef UNDEF
+ #define PRIME  9973 /*  40993  */
+@@ -1503,6 +1507,7 @@ TL_2BYTE koeff;
+ 	}
+ 
+ 
++	return 0;
+ }
+ 
+ 
+Index: symmetrica-3.0.1/src/mod_dg_sbd.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/mod_dg_sbd.c
++++ symmetrica-3.0.1/src/mod_dg_sbd.c
+@@ -60,6 +60,7 @@ static INT println_bid(a) OP a;
+     }
+     
+     printf("\n");zeilenposition=0;
++	return 0;
+ }
+ 
+ static INT make_basis(e,prim,v) OP e; OP prim;
+@@ -387,6 +388,7 @@ INT kk_280604 (part,e,prim) OP part,e,pr
+         }
+         freeall(a);
+     close_zero_one();
++	return 0;
+ }
+ 
+ 
+Index: symmetrica-3.0.1/src/nc.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/nc.c
++++ symmetrica-3.0.1/src/nc.c
+@@ -2038,6 +2038,7 @@ static INT J_matrix(n,q,m) OP n,q,m;
+     FORALL(y,m,{ null_ff_given_q(q,y); });
+     for (j=0;j<S_M_HI(m);j++) eins_ff_given_q(q,S_M_IJ(m,j,j));
+     for (j=1;j<S_M_HI(m);j++) eins_ff_given_q(q,S_M_IJ(m,j,j-1));
++    return 0;
+ }
+ 
+ static INT all_blocks(n,q,v) OP n,q,v;
+Index: symmetrica-3.0.1/src/pr.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/pr.c
++++ symmetrica-3.0.1/src/pr.c
+@@ -210,6 +210,7 @@ INT prsym(lambda, T_v) OP lambda, T_v;
+ 	freeall(G); 
+ 	freeall(kk);
+ 	freeall(gg);
++	return 0;
+ }
+ 
+ typedef INT PR_INTARRAY[PR_RH_MAX];
+@@ -316,6 +317,7 @@ static INT rh_ccstka(tab,st,k,um,m,pa,n)
+ 			}
+ 		}
+ 	}
++	return 0;
+ }
+ 
+ 
+Index: symmetrica-3.0.1/src/rest.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/rest.c
++++ symmetrica-3.0.1/src/rest.c
+@@ -5056,12 +5056,12 @@ INT words_jn=0;
+ INT point(a,b,c) OP a,b,c;
+ /* a is a permutation pi
+ c = pi(b) */
+-{ COPY(S_P_I(a,S_I_I(b)-1),c); }
++{ COPY(S_P_I(a,S_I_I(b)-1),c); return 0; }
+ 
+ INT hashv(OP v) { INT erg = OK; return HASH(S_V_I(v,0)); ENDR("hashv"); }
+ INT eqv(OP a,OP b) { INT erg = OK;return EQ(S_V_I(a,0),S_V_I(b,0));ENDR("eqv");}
+ INT orbit_words(erz,root,res,f,sv) OP erz,root,res; INT (*f)(); OP sv;
+-{ words_jn=1; orbit(erz,root,res,f,sv); words_jn=0; }
++{ words_jn=1; orbit(erz,root,res,f,sv); words_jn=0; return 0; }
+ 
+ 
+ 
+@@ -5196,10 +5196,10 @@ end:
+ 
+ static int all_orbits_trace=0;
+ static INT (*all_orbits_rankf)()=NULL;
+-INT all_orbits_set_trace() { all_orbits_trace=1; }
+-INT all_orbits_unset_trace() { all_orbits_trace=0; }
+-INT all_orbits_set_rankf(f) INT (*f)(); { all_orbits_rankf=f; }
+-INT all_orbits_unset_rankf()  { all_orbits_rankf=NULL; }
++INT all_orbits_set_trace() { all_orbits_trace=1; return 0; }
++INT all_orbits_unset_trace() { all_orbits_trace=0; return 0; }
++INT all_orbits_set_rankf(f) INT (*f)(); { all_orbits_rankf=f; return 0; }
++INT all_orbits_unset_rankf()  { all_orbits_rankf=NULL; return 0; }
+ 
+ INT all_orbits(X,erz,bahnen,no,f) OP X,erz,bahnen,no; INT (*f)();
+ /* berechnet alle bahnen von erz auf der menge X
+Index: symmetrica-3.0.1/src/rh.c
+===================================================================
+--- symmetrica-3.0.1.orig/src/rh.c
++++ symmetrica-3.0.1/src/rh.c
+@@ -67,6 +67,7 @@ static int del_poly(p) struct REIHE_poly
+       free_eins((char*)*p);
+       *p = NULL;
+       }
++	return 0;
+ }
+ 
+ static int del_mon(m) struct REIHE_mon **m;
+@@ -81,6 +82,7 @@ static int del_mon(m) struct REIHE_mon *
+       free_zwei((char*)(*m));
+       *m = NULL;
+       }
++	return 0;
+ }
+ 
+ static int del_var(v) struct REIHE_variablen **v;
+@@ -92,6 +94,7 @@ static int del_var(v) struct REIHE_varia
+       free_drei((char*)*v);
+       *v = NULL;
+       }
++	return 0;
+ }
+ 
+ static void copy_poly(a,b) struct REIHE_poly **b,*a;
+@@ -169,11 +172,11 @@ static struct REIHE_variablen *new_drei(
+ { 
+    return (struct REIHE_variablen*) SYM_calloc(1,sizeof(struct REIHE_variablen)); 
+ }
+-static int free_drei(a) char *a; { SYM_free(a); }
+-static int free_zwei(a) char *a; { SYM_free(a); }
+-static int free_eins(a) char *a; { SYM_free(a); }
+-static int free_null_debug(a) char *a; { printf("free_null:%p\n",a); SYM_free(a); }
+-static int free_null(a) char *a; { SYM_free(a); }
++static int free_drei(a) char *a; { SYM_free(a); return 0; }
++static int free_zwei(a) char *a; { SYM_free(a); return 0; }
++static int free_eins(a) char *a; { SYM_free(a); return 0; }
++static int free_null_debug(a) char *a; { printf("free_null:%p\n",a); SYM_free(a); return 0; }
++static int free_null(a) char *a; { SYM_free(a); return 0; }
+ 
+ static struct REIHE_mon *new_zwei()
+ { 
+@@ -237,6 +240,7 @@ INT init_reihe(a) OP a;
+ static int  normalisiere_reihe(a) REIHE_zeiger a;
+ {   /* entfernen des absoluten Gliedes wegen pletist. Subst. */
+    a->infozeig->unten=NULL;
++	return 0;
+ }
+ 
+ static int card_reihe(a) REIHE_zeiger a;
+@@ -259,6 +263,7 @@ static int card_reihe(a) REIHE_zeiger a;
+          zeigpoly=zeigpoly->rechts;
+       }  while (zeigpoly!=NULL);
+    }
++	return 0;
+ }
+ 
+ static int card_typ_reihe(a) REIHE_zeiger a;
+@@ -290,6 +295,7 @@ static int card_typ_reihe(a) REIHE_zeige
+          zeigpoly=zeigpoly->rechts;
+       }  while (zeigpoly!=NULL);
+    }
++	return 0;
+ }
+ 
+ 
+@@ -517,6 +523,7 @@ INT Exp_eingabe(root, anzahl) REIHE_zeig
+    freeall(b);
+    freeall(d);
+    freeall(f);
++	return 0;
+ }
+ 
+ 
+@@ -589,6 +596,7 @@ static INT co_261093(root,anzahl,func) R
+    freeall(b);
+    freeall(d);
+    freeall(f);
++	return 0;
+ }
+ 
+ INT Sinus_eingabe(root,anzahl) REIHE_zeiger root; INT anzahl;
+@@ -882,6 +890,7 @@ static int make_skalar_reihe(a) REIHE_ze
+    scan(scanobjectkind(),(*a)->infozeig->unten->coeff);
+    (*a)->infozeig->unten->zeiger=NULL;
+    (*a)->infozeig->unten->ref=NULL;
++	return 0;
+ }
+ 
+ 
+@@ -987,6 +996,7 @@ static int ausgabe(f, r) REIHE_zeiger r;
+          zeigpoly=zeigpoly->rechts;
+       }  while (zeigpoly!=NULL);
+    }
++	return 0;
+ }
+ 
+ static INT reihevergleich (s, r) REIHE_zeiger s,r;
+@@ -1134,6 +1144,7 @@ static int  ableitung_reihe(a,n,c,anzahl
+       }
+    }
+    c->exist+=anzahl;
++	return 0;
+ }
+ 
+ 
+@@ -1197,6 +1208,7 @@ static int copyy_monom(m1,m2) struct REI
+          zvar_eins=zvar_eins->weiter;
+       }  while (zvar_eins!=NULL);
+    }
++	return 0;
+ }
+ 
+ 
+@@ -1468,6 +1480,7 @@ static int del_reihe(a) REIHE_zeiger *a;
+       free_null((char*)*a);
+       *a = NULL;
+       }
++	return 0;
+ }
+ 
+ INT copy_reihe(a,b) OP a,b;
+@@ -1620,6 +1633,7 @@ static int  pot_reihe(a,n,c,anzahl) REIH
+       }
+    }
+    c->exist+=anzahl;
++	return 0;
+ }
+ 
+ 
+@@ -1803,6 +1817,7 @@ static int  trans_reihe_in_monom(a,m,b,a
+    del_reihe(&help_zwei);
+ 
+    *b=help_drei;
++	return 0;
+ }
+ 
+ 
+@@ -1868,6 +1883,7 @@ static int subst_reihe(a,b,c,anzahl) REI
+    (*c)->reihenart=0L;
+    (*c)->exist=anzahl;
+    (*c)->ope='s';
++	return 0;
+ }
+ 
+ 
+@@ -2045,6 +2061,7 @@ static int  transform_reihe(a,n,c,anzahl
+       }
+    }
+    c->exist+=anzahl;
++	return 0;
+ }
+ 
+ INT m_perm_reihe(a) OP a;
+@@ -2309,6 +2326,7 @@ static int debugprint_rh(a) REIHE_zeiger
+    doffset += 2L;
+    debugprint_rh_poly(a->infozeig);
+    doffset -= 2L;
++	return 0;
+ }
+ 
+ static int debugprint_rh_poly(a) struct REIHE_poly *a;
+@@ -2333,6 +2351,7 @@ static int debugprint_rh_poly(a) struct
+    doffset += 2L;
+    debugprint_rh_poly(a->rechts);
+    doffset -= 2L;
++	return 0;
+ }
+ static int debugprint_rh_mon(a) struct REIHE_mon *a;
+ {
+@@ -2359,6 +2378,7 @@ static int debugprint_rh_mon(a) struct R
+    doffset += 2L;
+    debugprint_rh_mon(a->ref);
+    doffset -= 2L;
++	return 0;
+ }
+ static int debugprint_rh_var(a) struct REIHE_variablen *a;
+ {
+@@ -2381,6 +2401,7 @@ static int debugprint_rh_var(a) struct R
+    doffset += 2L;
+    debugprint_rh_var(a->weiter);
+    doffset -= 2L;
++	return 0;
+ }
+ 
+ INT addinvers_reihe(a,b) OP a,b;
+@@ -2668,6 +2689,7 @@ INT rh_test()
+    freeall(a); freeall(b); freeall(c); freeall(d); freeall(e);
+    freeall(f);freeall(g);freeall(h);freeall(h2);
+ 
++	return 0;
+ }
+ #endif /* REIHETRUE */
+ #ifdef  REIHETRUE 
