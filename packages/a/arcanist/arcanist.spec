@@ -17,7 +17,7 @@
 
 
 Name:           arcanist
-Version:        0.0~git.20200426T084008~b81818b2
+Version:        0.0~git.20201026T090106~f713656a
 Release:        0
 Summary:        Command-line interface to Phabricator
 License:        Apache-2.0
@@ -66,7 +66,7 @@ bin/arc shell-complete --generate
 %install
 # arcanist
 install -d %{buildroot}%{_datadir}/phabricator/%{name}
-cp -a bin/ support/ resources/ scripts/ src/ %{buildroot}%{_datadir}/phabricator/%{name}/
+cp -a bin/ support/ resources/ scripts/ src/ externals/ %{buildroot}%{_datadir}/phabricator/%{name}/
 
 find %{buildroot}%{_datadir}/phabricator/%{name}/bin \
      %{buildroot}%{_datadir}/phabricator/%{name}/scripts -type f | \

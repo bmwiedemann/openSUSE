@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:01:09 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 0.0~git.20201026T090106~f713656a:
+  * Fix a typo of "previously" in FutureIterator
+  * Fix an issue where "phutil_utf8v()" could fatal when passed an integer
+  * Fix rubocop lint tests
+  * Fix "PhutilOpaqueEnvelopeTestCase" under PHP 7.4 with "zend.exception_ignore_args"
+  * fail `arc diff` if second lfs push errors
+  * In "phutil_passthru()", "resolve()" the future rather than calling "execute()" directly
+  * In ConduitCallFuture, only call Conduit exception messages on Conduit exceptions
+  * Fix a slow memory leak in long-lived FutureIterator objects, as used by FuturePool
+  * When raising a Conduit client exception, show the called method in the error message
+  * Fix additional "xsprintf()"-family static parameter errors
+  * Allow AAST to extract string literal values from HEREDOCs
+  * Fix a missing "pht()" parameter in HTTPSFuture
+  * Fix a false negative in lint for "xsprintf()"-family functions
+
+-------------------------------------------------------------------
+Fri Sep 04 07:02:41 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 0.0~git.20200904T100240~7f87aeaa:
+  * Give Futures clearer start/end and exception semantics
+  * Preserve bookmarks across "hg rebase --keep --collapse", and destroy them before "hg strip/prune"
+  * When saving and restoring local state in Mercurial, also save and restore bookmarks
+  * Clean up push failure messaging in "arc land" slightly
+  * When "arc land" fails a Mercurial push, actually raise it as an exception
+  * Fix additional Mercurial/Python compatibility issues in "arc land"
+  * Allow "hg arc-ls-markers" to run under Python 2 or Python 3
+  * Fix a MarkerRef call to get the active bookmark in Mercurial
+  * Render the state tree in "arc branches" slightly more cleanly
+
+-------------------------------------------------------------------
+Fri Jul 03 07:07:42 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 0.0~git.20200703T100739~8daff5ee:
+  * Clean up some service profiler behavior in Conduit futures
+  * Improve login/auth messages from Arcanist toolset workflows
+  * Drop intended support for "--anonymous" from Arcanist Toolsets
+  * When tab-completing "arc" commands, suggest paths if the argument is empty and a path wildcard argument exists
+  * Implement Conduit login prompt behavior as a pure FutureProxy, not a Future-like object
+  * Improve resolution behaviors of FutureProxy
+  * Remove an unused method in "ArcanistUploadWorkflow"
+  * Give Mercurial more plausible marker behavior
+  * Support date-range commit graph queries, and multiple disjoint commits in Git
+  * In "arc branches", group linear sequences of published revisions together
+  * When a commit graph set has many commits, summarize them
+  * Improve grid layout in "arc branches" at various terminal widths
+  * Remove implicit sorting from "MarkerRefQuery"
+  * Render "arc markers" workflows as a tree, not a list
+  * Identify published commits in working copies by using remote configuration
+  * Load and map repository objects for remote URIs
+  * Provide "arc look", a user-facing inspection command
+  * Support generating remote refs in Git
+  * Support inspection of remote refs with "arc inspect remote(...)"
+  * Copy repository URI normalization code from Phabricator to Arcanist
+  * Introduce "phutil_partition()" and natural case sorting for "msortv(...)"
+  * Introduce "GridView", an updated version of "ConsoleTableView"
+  * Correct a leftover reference to "--keep-branch"
+  * Add more "RepositoryRef" legacy status mappings
+  * In "arc land" under Git, confirm branch creation
+  * Collect scattered implementations of "getDisplayHash()" into RepositoryAPI
+  * Update "arc land" display of build failures, and rename "DisplayRef" to "RefView"
+  * On Windows, don't try to set "stdin" nonblocking, as it does not work
+  * When a linter raises a message at a nonexistent line, don't fatal during rendering
+  * Improve "--hold", save/restore state, bookmark creation, and some warnings for "arc land" in Mercurial
+  * Correct some minor "arc land" workflow issues in Mercurial
+  * Use a "branchmap" call to identify remote branches in "arc-hg"
+  * In "arc land" in Mercurial, inch closer to making complex branch/bookmark workflows function
+  * In "arc land", fix some coarse issues with build warnings
+  * Realign "arc land" closed/published warning around more modern language
+  * In "arc land" in Mercurial, show a tidier "ls-remote" command
+  * Disambiguate various types of Mercurial remote markers with "hg arc-ls-remote"
+  * Verify remotes ("paths") in Mercurial during "arc land"
+  * Refine "arc land" behavior when pushing "onto" a new branch
+  * Support "arc land --pick" to pick specific changes out of a sequence
+  * Improve "arc land" behavior in the presence of merge conflicts and change sequences
+  * Remove "arc feature", "arc branch", "arc bookmark", and significant chunks of obsolete marker code
+  * Implement "arc work", to replace "arc feature"
+  * Use MarkerRefs to resolve landing symbols in Mercurial
+  * Provide a more powerful query mechanism for "markers" (branches/bookmarks)
+  * Allow "arc" to accept any prefix of a command as that command
+  * Remove old Mercurial code testing for rebase and phase support
+  * Add a check for ambiguous merge strategies after the "history.immutable" behavioral change
+  * Allow users to save prompt responses in "arc" workflows
+  * Format "arc land" passthru commands more nicely, and execute them from CWD
+  * Make Mercurial use "hg shelve" and "hg unshelve" in dirty working copies in "arc land"
+  * Improve final messages under "arc land --hold"
+  * Show some "arc" help pages through a configurable pager, like "less"
+  * Update "arc help land"
+  * Improve the logic for identifying ambiguous commits and applying "--revision" to them
+  * When landing changes in an empty repository, merge cleanly in Git
+  * Modernize output when pruning branches in Git during "arc land"
+  * Provide more information about merge progress in "arc land" under Git
+  * Sometimes discard already-closed revisions in "arc land"
+  * Add a synopsis and example for "arc help land"
+  * In "arc land", rebase branches in natural order
+  * Substantially modernize the "arc land" workflow
+  * In "arc branch" output, sort branches updated in the same second by name
+  * Remove "--ignore-unsound-tests" from "arc diff"
+  * When "arc" receives SIGWINCH or other signals during display of a prompt, recover
+  * Introduce "RepositoryLocalState", a modern version of "requireCleanWorkingCopy()"
+  * Provide modern config options for "arc land" configuration
+  * Add modern refs and hardpoints for buildables, builds, and build plans
+  * Add "Author" and "Parent Revision" hardpoints to RevisionRefs
+  * Alias newer "--library" to "--load-phutil-library" in legacy workflows
+  * Remove the "--less-context" flag from "arc diff"
+  * Remove "--encoding" flag from "arc diff"
+  * Remove "haveUncommittedChanges" property from "arc diff"
+  * Remove "--lintall" and "--only-new" flags to "arc diff"
+  * Remove lint and unit excuses and "--advice" and "--excuse" flags from "arc diff"
+  * Remove "--use-commit-message/-C" from "arc diff"
+  * Support short aliases and repeatable arguments in Arcanist Workflow arguments
+  * Add a "%?" ("hint") conversion to "tsprintf()"
+  * Support appending arbitrary lines to DisplayRef output
+  * Impose a HardpointEngine future parallelism limit
+  * Remove special casing of "arc --version"
+  * Allow PhutilArrayCheck to accept a list of objects as a context
+  * Add a support class to simplify typechecking list-of-objects return values
+  * Mark the wildcard argument to "arc liberate" as a path argument for shell completion
+  * Make lint tests handle paths better and distinguish between "0" and "null" more carefully
+  * Fix an issue when rendering a lint message which removes whitespace at the end of a file
+  * In the "cpplint" binding, raise messages on "line 0" without a line
+  * Allow construction of a ConduitEngine with a bare ConduitClient
+  * update SSL error messge re:libphutil
+  * Add "HTTPSFuture->addCurlOption()" for raw access to "curl_setopt()"
+  * Fix an initialization issue in VectorTree
+  * Add "--browse" and "--input" to "arc paste", and remove "--json" (which had no effect)
+  * Add "--browse" to "arc upload" and update behavior, particularly "--json"
+  * When recent PHP raises a "broken pipe" error in ExecFuture, treat it as a blocked stdin
+  * When a proxy future wraps a future which throws an exception, resolve with an exception
+  * Work around "mb_check_encoding(<stringlike-object>)" warning in particular versions of PHP
+  * Restore the ":(attr:filter=lfs)" test for LFS
+  * Detect LFS by looking for tracks in ".gitattributes" instead of using "ls-tree"
+  * Replace "PhutilFileTree" with a more abstract "VectorTree"
+
+-------------------------------------------------------------------
 Mon Apr 27 06:29:53 UTC 2020 - tuukka.pasanen@ilmi.fi
 
 - Update to version 0.0~git.20200426T084008~b81818b2:
