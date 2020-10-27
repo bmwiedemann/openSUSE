@@ -16,6 +16,8 @@
 #
 
 
+%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
+
 # aasink is just a toy. Once in future, we may want to disable aalib
 # support completely: Disabled 25/12/17
 %define ENABLE_AALIB 0
@@ -23,17 +25,11 @@
 %define _name gst-plugins-good
 %define gst_branch 1.0
 
-# Currently disabled because plugin documentation isn't built
-%define use_meson 0
-%if %{use_meson}
 # Option doesn't currently exist in meson
 %define ENABLE_EXPERIMENTAL 1
-%else
-%define ENABLE_EXPERIMENTAL 0
-%endif
 
 Name:           gstreamer-plugins-good
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -42,55 +38,50 @@ URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gst-plugins-good/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM gst-good-qtdemux-Specify-REDIRECT-info.patch -- qtdemux: Specify REDIRECT information in error message
-Patch0:         gst-good-qtdemux-Specify-REDIRECT-info.patch
-# PATCH-FIX-UPSTREAM gst-good-rtpjpegdepay-outputs-framed-jpeg.patch -- rtpjpegdepay: outputs framed jpeg
-Patch1:         gst-good-rtpjpegdepay-outputs-framed-jpeg.patch
-
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  libICE-devel
+BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  libSM-devel
-BuildRequires:  libmp3lame-devel
 # used by libgstvideo4linux2.so
 BuildRequires:  libXv-devel
 BuildRequires:  libavc1394-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
-%if %{use_meson}
+BuildRequires:  libmp3lame-devel
 BuildRequires:  meson >= 0.47.0
-%endif
+BuildRequires:  nasm
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  translation-update-upstream
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(caca)
-BuildRequires:  pkgconfig(cairo) >= 1.10.0
-BuildRequires:  pkgconfig(cairo-gobject) >= 1.10.0
-BuildRequires:  pkgconfig(flac) >= 1.1.4
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.8.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-check-1.0)
-BuildRequires:  pkgconfig(gstreamer-controller-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-gl-1.0)
-BuildRequires:  pkgconfig(gstreamer-net-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
-%if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.15.0
-%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(caca)
+BuildRequires:  pkgconfig(cairo) >= 1.10.0
+BuildRequires:  pkgconfig(cairo-gobject) >= 1.10.0
+BuildRequires:  pkgconfig(flac) >= 1.1.4
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.8.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-base-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-check-1.0)
+BuildRequires:  pkgconfig(gstreamer-controller-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-gl-1.0)
+BuildRequires:  pkgconfig(gstreamer-net-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
+%if 0%{?suse_version} >= 1500
+BuildRequires:  pkgconfig(gtk+-wayland-3.0) >= 3.15.0
+%endif
 BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.15.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(jack) >= 0.99.10
@@ -113,16 +104,16 @@ BuildRequires:  pkgconfig(wavpack) >= 4.60.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xfixes)
-Requires:       gstreamer >= %{version}
-Requires:       gstreamer-plugins-base >= %{version}
+Requires:       gstreamer >= %{gstreamer_req_version}
+Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Recommends:     %{name}-gtk
 Enhances:       gstreamer
+Conflicts:      gstreamer-plugins-ugly < 1.18.0
 # Generic name, never used in SuSE: I wish it had been used I would have used it then I wouldn't have to keep copy pasting and actually type it.
 Provides:       gst-plugins-good = %{version}
 %if 0%{?ENABLE_AALIB}
 BuildRequires:  aalib-devel
 %endif
-Conflicts:      gstreamer-plugins-ugly < 1.13.92
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -185,30 +176,24 @@ translation-update-upstream po gst-plugins-good-%{gst_branch}
 
 %build
 export PYTHON=%{_bindir}/python3
-%if %{use_meson}
-%{meson} \
+%meson \
 	-Dpackage-name='openSUSE GStreamer-plugins-good package' \
 	-Dpackage-origin='http://download.opensuse.org' \
 %if ! 0%{?ENABLE_AALIB}
 	-Daalib=disabled \
 %endif
+	-Ddoc=disabled \
+%ifarch aarch64
+        -Drpicamsrc=enabled \
+%else
+        -Drpicamsrc=disabled \
+%endif
 	-Dv4l2-probe=true \
 	%{nil}
-%{meson_build}
-%else
-%configure \
-	--with-package-name='openSUSE GStreamer-plugins-good package' \
-	--with-package-origin='http://download.opensuse.org' \
-%{nil}
-%make_build
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
+%meson_install
 %find_lang %{_name}-%{gst_branch}
 if [ -f %{buildroot}%{_datadir}/appdata/gstreamer-plugins-good.appdata.xml ]; then
   echo "Please remove the added gstreamer-plugins-good.appdata.xml file from the sources - the tarball installs it"
@@ -217,7 +202,6 @@ else
   mkdir -p %{buildroot}%{_datadir}/appdata
   cp %{SOURCE1} %{buildroot}%{_datadir}/appdata/
 fi
-rm %{buildroot}%{_libdir}/gstreamer-%{gst_branch}/*.*a
 
 %files
 %license COPYING
@@ -293,7 +277,6 @@ rm %{buildroot}%{_libdir}/gstreamer-%{gst_branch}/*.*a
 
 %files doc
 %doc AUTHORS README RELEASE REQUIREMENTS
-%{_datadir}/gtk-doc/html/gst-plugins-good-plugins-%{gst_branch}
 
 %files extra
 %{_libdir}/gstreamer-%{gst_branch}/libgst1394.so
