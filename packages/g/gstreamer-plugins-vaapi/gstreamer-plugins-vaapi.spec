@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-vaapi
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,19 @@
 
 
 %define gst_branch 1.0
-# Disable for now, since plugin docs are not being built
-%define use_meson 0
 Name:           gstreamer-plugins-vaapi
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org/
 Source0:        https://gstreamer.freedesktop.org/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
-
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gtk-doc
-%if %{use_meson}
+BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  vaapi-wayland-tools
 BuildRequires:  yasm
@@ -76,8 +72,7 @@ This package contains documentation for gstreamer-plugins-vaapi.
 %autosetup -n gstreamer-vaapi-%{version} -p1
 
 %build
-%if %{use_meson}
-%{meson} \
+%meson \
 	-Dwith_egl=yes \
 	-Dwith_encoders=yes \
 	-Dwith_drm=yes \
@@ -86,26 +81,10 @@ This package contains documentation for gstreamer-plugins-vaapi.
 	-Dwith_x11=yes \
 	-Dexamples=disabled \
 	%{nil}
-%{meson_build}
-%else
-%configure \
-	--disable-static \
-	--enable-egl \
-	--enable-encoders \
-	--enable-drm \
-	--enable-glx \
-	--enable-wayland \
-	--enable-x11 \
-	%{nil}
-make %{?_smp_mflags}
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
@@ -117,6 +96,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files doc
 %doc AUTHORS NEWS README
-%{_datadir}/gtk-doc/html/gstreamer-vaapi-plugins-1.0
 
 %changelog
