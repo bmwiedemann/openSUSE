@@ -1,7 +1,7 @@
 #
 # spec file for package php7-phalcon
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,19 @@
 %define _architecture   %([[ %{_arch} == "i586" ]] && echo "32bits" || echo "64bits")
 
 Name:           %{_php}-phalcon
-Version:        4.0.0
+Version:        4.0.6
 Release:        0
 Summary:        PHP7 Extension Module
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
 URL:            http://phalconphp.com/
 Source0:        https://github.com/%{_name}/%{_cname}/archive/v%{version}.tar.gz#/%{_cname}-%{version}.tar.gz
+BuildRequires:  %{_php} >= 7.2
 BuildRequires:  %{_php}-ctype
 BuildRequires:  %{_php}-devel
 BuildRequires:  %{_php}-json
 BuildRequires:  %{_php}-pdo
+BuildRequires:  %{_php}-psr >= 0.7.0
 BuildRequires:  gcc
 Requires:       %{_php}-mysql
 

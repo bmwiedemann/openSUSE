@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Sun Aug 30 11:53:17 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 4.0.6
+  * Changed Volt::convertEncoding to no longer using iconv for a fallback since it
+    causes issues with macOS [#14912]
+  * Changed schema manipulation in Phalcon\Db\Dialect\Mysql - unquote numerical
+    defaults [#14888]
+  * Changed the default ACL access level from boolean FALSE to Enum::DENY [#14974]
+  * Changed the way Phalcon\Http\Response::__construct checks content data type.
+    Now a TypeError will be thrown if incompatible data type was passed [#14983]
+  * Changed return type hints of the following Phalcon\Flash\FlashInterface's
+    methods: error, message, notice, success and warning [#14994]
+  * Changed return type hint for Phalcon\Mvc\ModelInterface::sum [#15000]
+  * Changed return type for Phalcon\Mvc\Model\Criteria::getLimit so that integer,
+    NULL or array will be returned [#15004]
+  * Changed return type hint for Phalcon\Mvc\Model\Manager::getCustomEventsManager to
+    return NULL instead of boolean FALSE if there is no special events manager [#15008]
+  * Changed Phalcon\Mvc\Model\MetaData::getDI so that now it will throw a
+    Phalcon\Mvc\Model\Exception if there is no DiInterface instance [#15011]
+  * Changed Phalcon\Http\Request::getJsonRawBody to use json_decode instead of
+    Phalcon\Json::decode [#14936]
+  * Changed Phalcon\Factory\AbstractFactory to expose getService which will throw an
+    exception if it does not exist. Removed checkService and adjusted all references
+    in newInstance() calls. [#15038]
+  * Changed the visibility of methods and properties in Phalcon\Http\Message\Response,
+    Phalcon\Http\Message\ServerRequest and Phalcon\Http\Message\Uri to work with clone.
+    [#15040]
+  * Fixed Phalcon\Mvc\Model\Query\Builder::getPhql to add single quote between string
+    value on a simple condition [#14874]
+  * Fixed recognizing language operators inside Volt's echo mode ({{ ... }}) [#14476]
+  * Fixed Tag::friendlyTitle to correctly convert titles under MacOS and Windows [#14866]
+  * Fixed the Volt compiler to no longer parse cache fragments and thus searching for
+    the viewCache service (deprecated for v4) [#14907]
+  * Fixed IN operator precedence in Volt [#14816]
+  * Fixed testing suite to work with PHPUnit 9 when we upgrade [#14837]
+  * Fixed return type hints of the following Phalcon\Acl\AbstractAdapter's methods:
+    getActiveAccess, getActiveRole and getActiveComponent [#14974]
+  * Fixed default value of the following Phalcon\Annotations\Annotation's properties:
+    $arguments and $exprArguments [#14977]
+  * Fixed return type hints of the following Phalcon\Annotations\Annotation's methods:
+    getArgument, getName and getNamedArgument [#14977]
+  * Fixed incorrect return type hint for Phalcon\Http\Response\Cookies::setSignKey
+    [#14982]
+  * Fixed return type hints for Phalcon\Config\ConfigFactory::load and
+    Phalcon\Config\ConfigFactory::newInstance to explicitly indicate the return type
+    as Phalcon\Config instance [#14978]
+  * Fixed return type hints for the following methods [#14987]
+    + Phalcon\Dispatcher\AbstractDispatcher::dispatch
+    + Phalcon\Dispatcher\DispatcherInterface::dispatch
+    + Phalcon\Filter::get
+    + Phalcon\Http\Message\AbstractCommon::cloneInstance
+    + Phalcon\Http\Message\AbstractCommon::processWith
+    + Phalcon\Http\Message\AbstractMessage::withAddedHeader
+    + Phalcon\Http\Message\AbstractMessage::withBody
+    + Phalcon\Http\Message\AbstractMessage::withHeader
+    + Phalcon\Http\Message\AbstractMessage::withProtocolVersion
+    + Phalcon\Http\Message\AbstractMessage::withoutHeader
+    + Phalcon\Http\Message\AbstractRequest::withMethod
+    + Phalcon\Http\Message\AbstractRequest::withRequestTarget
+    + Phalcon\Http\Message\AbstractRequest::withUri
+    + Phalcon\Mvc\Model\Binder::findBoundModel
+    + Phalcon\Validation::getEntity
+    + Phalcon\Validation\ValidationInterface::getEntity
+  * Fixed default value of Phalcon\Crypt::$key to satisfy the interface [#14989]
+  * Fixed return type hint for Phalcon\Di::getInternalEventsManager [#14992]
+  * Fixed return type hints of the following Phalcon\Flash\AbstractFlash's methods:
+    error, notice, success and warning [#14994]
+  * Fixed return type hint for Phalcon\Translate\InterpolatorFactory::newInstance [#14996]
+  * Fixed return type hint for Phalcon\Mvc\Model::sum [#15000]
+  * Fixed return type hint for Phalcon\Mvc\Model\CriteriaInterface::getLimit and
+    Phalcon\Mvc\Model\Criteria::getLimit to follow documentation and original purpose
+    [#15004]
+  * Fixed return type hint for Phalcon\Mvc\Model::count and
+    Phalcon\Mvc\ModelInterface::count to reflect original behavior [#15006]
+  * Fixed return type hint for Phalcon\Mvc\Model::getEventsManager to reflect original
+    behavior [#15008]
+  * Fixed return type hint for Phalcon\Mvc\Model::average and
+    Phalcon\Mvc\ModelInterface::average to reflect original behavior [#15013]
+  * Fixed return type hint for Phalcon\Mvc\Model\MetaData::getColumnMap and
+    Phalcon\Mvc\Model\MetaData::getReverseColumnMap to reflect original behavior [#15015]
+  * Fixed return type hint for Phalcon\Mvc\Model\MetaDataInterface::getColumnMap and
+    Phalcon\Mvc\Model\MetaDataInterface::getReverseColumnMap to reflect original behavior
+    [#15015]
+  * Fixed return type hint for Phalcon\Mvc\Model\CriteriaInterface::getColumns and
+    Phalcon\Mvc\Model\Criteria::getColumns to reflect original behavior [#15017]
+  * Fixed return type hint for Phalcon\Db\Column::getSize and
+    Phalcon\Db\ColumnInterface::getSize to reflect original behavior [#15019]
+  * Fixed return type hint for Phalcon\Db\Column::getAfterPosition and
+    Phalcon\Db\ColumnInterface::getAfterPosition to reflect original behavior [#15021]
+  * Fixed return type hint for Phalcon\Mvc\Model\Manager::executeQuery and
+    Phalcon\Mvc\Model\Manager::ManagerInterface to reflect original behavior [#15024]
+  * Fixed return type hint for Phalcon\Mvc\Model\Resultset::getFirst and
+    Phalcon\Mvc\Model\ResultsetInterface::getFirst to reflect original behavior [#15027]
+  * Rollback the regression changes for Phalcon\Mvc\Model\Query::_prepareSelect to
+    properly prepare a SQL SELECT statement from a PHQL one [#14657]
+  * Fixed SerializerInterface usage for Phalcon\Mvc\Model\Resultset\Complex::unserialize
+    as well as Phalcon\Mvc\Model\Resultset\Complex::unserialize [#14942]
+  * Removed Phalcon\Translate\InterpolatorFactory::$mapper as well as
+    Phalcon\Translate\InterpolatorFactory::$services in favor of
+    Phalcon\Factory\AbstractFactory ones [#15036]
+- Update to 4.0.5
+  * Fixed Phalcon\Db::fetchAll to correctly return data when Enum::FETCH_COLUMN is
+    supplied. [#13321]
+  * Fixed Postgres NULL values to not be required during model update. [#14862]
+  * Fixed MySQL alter column when default value contains not only CURRENT_TIMESTAMP
+    [#14880]
+  * Fixed MySQL default value with ON UPDATE expression [#14887]
+  * Fixed Str::dirFromFile() to replace . with - to avoid issues with Windows
+    environments [#14858]
+- Update to 4.0.4
+  * Added a way to utilize GitHub actions to run database tests against each RDBMS and
+    reworked the testing suite. [#14779]
+  * Added the latest version of Codeception (v4) and utilized the phalcon4 module.
+    [#14779]
+  * Changed Column 'notNull' definition to make possible create nullable (NULL) columns
+    [#14804]
+  * Fixed Phalcon\Db\Adapter\Pdo\Postgresql to correctly identify bool fields instead of
+    treating them as tinyint [#14722]
+  * Fixed Phalcon\Cli\Console to pass current container to the
+    Phalcon\Mvc\ModuleDefinitionInterface::registerAutoloaders() [#14787]
+  * Fixed Phalcon\Db\Dialect\Mysql::createTable() to create default value with
+    CURRENT_TIMESTAMP ON UPDATE/DELETE [#14797]
+  * Fixed Phalcon\Storage\Adapter\* to no longer accept the serializer option as it was
+    clashing with the factory [#14828]
+  * Fixed Phalcon\Http\Request to return the correct host on an UnexpectedValueException
+    [#14763]
+  * Fixed Phalcon\Assets\Collection to initialize position to 0 [#14848]
+- Update to 4.0.3
+  * Fixed Phalcon\Db\Adapter\Pdo\Mysql Tinyint(1) is handled as boolean under MySql
+    [#14708]
+  * Fixed Phalcon\Mvc\View\Engine\Volt to produce the correct order of variables for the
+    join filter [#14771]
+  * Fixed Phalcon\Storage\Adapter\Stream::getKeys() bug in the absence of a directory
+    with a prefix name [#14725]
+  * Fixed Phalcon\Debug::onUncaughtException Should accept \Throwable instead of
+    \Exception as an argument [#14738]
+  * Fixed Phalcon\Validation\ValidatorFactory Should return
+    Phalcon\Validation\ValidatorInterface [14749]
+  * Fixed Phalcon\Mvc\Model\Binder to now correctly call has and set on the cache object
+    [#14743]
+  * Fixed Phalcon\Session\Adapter\Stream and Phalcon\Storage\Adapter\Stream to correctly
+    handle simultaneous read/write [#14694]
+  * Fixed Phalcon\Config\ConfigFactory to always add the correct extension [#14756]
+- Update to 4.0.2
+  * Fixed Phalcon version number incorrectly set in the previous release
+- Update to 4.0.1
+  * Changed the logic when logging times for Phalcon\Logger to use DateTimeImmutable so
+    as to handle microseconds if necessary. [#2893]
+  * Changed Phalcon\Http\Cookie::send and Phalcon\Http\Cookie::delete to allow for
+    samesite to be passed in the options when using PHP > 7.3 [#14627]
+  * Fixed Phalcon\Mvc\Model\Criteria Di isn't set when using Criteria::fromInput()
+    [#14538]
+  * Fixed Phalcon\Db\Dialect\Mysql removing unnecessary parentheses for double and float
+    [#14645]
+  * Fixed Phalcon\Http\Cookie::delete to parse the correct parameters - cannot use
+    alternative syntax until PHP 7.3 [#14643]
+  * Fixed Phalcon\Mvc\Model::__isset to take into account non visible properties by
+    checking the getter if it exists [#13518]
+  * Fixed Phalcon\Mvc\Model::__set to return a more informative message if we are tying
+    to access a non visible property [#13518]
+  * Fixed Phalcon\Mvc\Model\Resultset\Simple::toArray to correctly process virtual fields
+    [#14669]
+  * Fixed Phalcon\Session\Manager::getUniqueKey to prefix the key only if uniqueId is
+    present [#14688]
+  * Fixed Phalcon\Db\Adapter\Pdo::describeColumns to correctly detect ENUM columns
+    [#14691]
+
+-------------------------------------------------------------------
 Fri Dec 27 15:07:30 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 4.0.0
