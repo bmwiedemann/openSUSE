@@ -19,7 +19,7 @@
 %define ttf_fontdir %{_datadir}/fonts/truetype
 %define fontname     openmoji
 Name:           openmoji-fonts
-Version:        12.3.0+git.1590131834.9ea5516a1
+Version:        12.4.0+git.1595925010.16e293b40
 Release:        0
 Summary:        OpenMoji fonts
 License:        CC-BY-SA-4.0

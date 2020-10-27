@@ -2,12 +2,12 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">git://github.com/hfg-gmuend/openmoji.git</param>
     <param name="scm">git</param>
-    <param name="revision">9ea5516</param>
-    <param name="versionprefix">12.3.0+git</param>
+    <param name="revision">16e293b</param>
+    <param name="versionprefix">12.4.0+git</param>
     <param name="versionformat">%ct.%h</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
