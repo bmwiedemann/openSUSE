@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:06:19 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add Requires: python-setuptools
+
+-------------------------------------------------------------------
+Fri Oct 16 12:16:37 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to remove dependency on python-xdg and use python-pyxdg
+  instead since both are not coinstallable and pyxdg is a
+  freedesktop project and used by openSUSE-release-tools:
+  * remove-dependency-on-python-xdg.patch
+
+-------------------------------------------------------------------
 Thu Sep 17 15:28:14 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix rpm group

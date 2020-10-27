@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Doc Generators
 URL:            https://github.com/hotdoc/hotdoc
 Source:         https://files.pythonhosted.org/packages/source/h/hotdoc/hotdoc-%{version}.tar.gz
+Patch0:         remove-dependency-on-python-xdg.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
@@ -41,7 +42,8 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  llvm-devel
 BuildRequires:  python-rpm-macros
-# The c extension needs llvm-config
+# The c extension needs libclang.so and llvm-config
+Requires:       clang-devel
 Requires:       llvm-devel
 Requires:       python-PyYAML >= 5.1
 Requires:       python-appdirs
@@ -50,10 +52,11 @@ Requires:       python-dbus-deviation >= 0.4.0
 Requires:       python-lxml
 Requires:       python-networkx >= 1.11
 Requires:       python-pkgconfig >= 1.1.0
+Requires:       python-pyxdg
 Requires:       python-schema
+Requires:       python-setuptools
 Requires:       python-toposort >= 1.4
 Requires:       python-wheezy.template >= 0.1.167
-Requires:       python-xdg >= 4.0.0
 %python_subpackages
 
 %description
@@ -81,12 +84,12 @@ with prism, etc.
 
 %prep
 %setup -q -n hotdoc-%{version}
+%patch0 -p1
 sed -i -e "s/wheezy.template==/wheezy.template>=/" setup.py
 sed -i -e "s/pkgconfig==/pkgconfig>=/" setup.py
 sed -i -e "s/networkx==/networkx>=/" setup.py
 
 sed -i -e '1s,#! /usr/bin/env sh,#!/usr/bin/sh,' ./hotdoc/extensions/gi/transition_scripts/translate_sections.sh
-
 
 %build
 %python_build
@@ -94,7 +97,6 @@ sed -i -e '1s,#! /usr/bin/env sh,#!/usr/bin/sh,' ./hotdoc/extensions/gi/transiti
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
 
 %files %{python_files}
 %license COPYING

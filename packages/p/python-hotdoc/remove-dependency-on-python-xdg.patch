@@ -1,0 +1,51 @@
+Index: hotdoc-0.12.2/hotdoc.egg-info/requires.txt
+===================================================================
+--- hotdoc-0.12.2.orig/hotdoc.egg-info/requires.txt
++++ hotdoc-0.12.2/hotdoc.egg-info/requires.txt
+@@ -4,7 +4,7 @@ schema
+ appdirs
+ wheezy.template==0.1.167
+ toposort>=1.4
+-xdg>=4.0.0
++pyxdg
+ dbus-deviation>=0.4.0
+ pkgconfig==1.1.0
+ cchardet
+Index: hotdoc-0.12.2/hotdoc/parsers/gtk_doc.py
+===================================================================
+--- hotdoc-0.12.2.orig/hotdoc/parsers/gtk_doc.py
++++ hotdoc-0.12.2/hotdoc/parsers/gtk_doc.py
+@@ -27,7 +27,8 @@ import re
+ import cgi
+ from collections import OrderedDict
+ from itertools import zip_longest
+-from xdg import XDG_DATA_HOME, XDG_DATA_DIRS
++from xdg import BaseDirectory
++import pathlib
+ from lxml import etree
+ 
+ import yaml
+@@ -52,6 +53,10 @@ GTKDOC_HREFS = {}
+ GATHERED_GTKDOC_LINKS = False
+ 
+ 
++XDG_DATA_HOME = pathlib.Path(BaseDirectory.xdg_data_home)
++XDG_DATA_DIRS = [pathlib.Path(dir) for dir in BaseDirectory.xdg_data_dirs]
++
++
+ # http://stackoverflow.com/questions/434287/what-is-the-most-pythonic-way-to-iterate-over-a-list-in-chunks
+ def _grouper(iterable, n_args, fillvalue=None):
+     """
+Index: hotdoc-0.12.2/setup.py
+===================================================================
+--- hotdoc-0.12.2.orig/setup.py
++++ hotdoc-0.12.2/setup.py
+@@ -317,7 +317,7 @@ INSTALL_REQUIRES = [
+     'appdirs',
+     'wheezy.template==0.1.167',
+     'toposort>=1.4',
+-    'xdg>=4.0.0',
++    'pyxdg',
+ ]
+ 
+ # dbus-deviation requires sphinx, which requires python 3.5
