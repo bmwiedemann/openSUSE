@@ -487,4 +487,1325 @@
     <comment>submit new version 4.3.12</comment>
     <requestid>843151</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>6ad152409507d53b1ae12f22ce46e1de</srcmd5>
+    <version>4.3.12</version>
+    <time>1603821592</time>
+    <user>dimstar_suse</user>
+    <comment>- AY Addon: Taking the latest version if no version has been
+  defined. Taking system architecture if no architecture has been
+  defined. (jsc#SLE-16195)
+- 4.3.12
+- Showing add-on selection screen only if they are available
+  (bsc#1177292).
+- 4.3.11
+- Do not export the registration e-mail if it is not defined
+  (bsc#1177135).
+- 4.3.10
+- Fixed upgrade using the Full medium with the &quot;media_upgrade=1&quot;
+  boot option (bsc#1176563)
+- 4.3.9 
+- AutoYaST: the release_type element is not mandatory
+  (bsc#1175682).
+- 4.3.8
+- Improved skipping message in the first boot mode, the first boot
+  workflow might not contain the add-on module in the next step
+  (bsc#1174467)
+- 4.3.7
+- AutoYaST: Added supplements: autoyast(suse_register) into the spec file
+  in order to install this packages if the section has been defined
+  in the AY configuration file (bsc#1146494).
+- 4.3.6
+- Handle exceptions when parsing xml file (related to bsc#1170886)
+- 4.3.5
+- Export the registration settings in the &lt;suse_register/&gt;
+  section when cloning a registered system (bsc#1174202).
+- 4.3.4
+- Do not use Profile.current unless necessary (bsc#1174173)
+- 4.3.3
+- Evaluating addon-list: Uses version without release for
+  connecting SCC (bsc#1162755).
+- 4.3.2
+- Declining/refusal of an addon license means canceling all addons.
+  (bsc#1169577)
+- 4.3.1
+- Autoyast schema: Allow optional types for string and map objects
+  (bsc#1170886)
+- 4.3.0
+- Crash fix: Added missing require (bsc#1167945)
+- 4.2.40
+- Reverts changes made in 4.2.36 to improve the addons selection,
+  keeping it as it was (bsc#1167523).
+- 4.2.39
+- Hide registration feedback window when configuring network
+  (bsc#1165705)
+- 4.2.38
+- Improves online search UX (bsc#1165913 and bsc#1166038):
+  - Make clear how to select/unselect packages in the Qt version.
+  - Improve overall performance.
+  - Properly clear the package details when there are not results.
+  - Add the missing help in the &quot;changes summary&quot;.
+  - Extend the help for the search dialog, including more details
+    about how to use it.
+  - Display the &quot;changes summary&quot; when a module/extension is going
+    to be activated, even if no packages will be installed.
+  - Include information about the amount of packages found.
+  - Ignore spaces around the search term.
+- 4.2.37
+- Improves the addons selection dialog:
+  - Avoid the scroll reset after (un)selecting and addon
+    (bsc#1049965).
+  - Avoid the need to(un)select an addon to see its description
+    (bsc#1161200).
+- 4.2.36
+- Do not catch exceptions when getting the updates list from the
+  registration server (bsc#1162903)
+- 4.2.35
+- Fix a typo in the online search UI (jsc#SLE-9109).
+- 4.2.34
+- Improves online search mechanism UI (jsc#SLE-9109):
+  - Fix the &quot;ignore case&quot; checkbox behaviour.
+  - Add a help text.
+- 4.2.33
+- Improves online search mechanism UI (jsc#SLE-9109):
+  - Add a summary screen that enumerates which changes will
+    take place (addons and packages).
+  - Fix the 'Cancel' button label.
+  - Improve feedback when waiting for network I/O.
+  - Inform users about unsupported scenarios: unregistered and
+    SMT/RMT registered systems.
+- 4.2.33
+- Fix running registration in firstboot (bsc#1162841)
+- 4.2.32
+- Mark registration as WSL capable module (bsc#1162650)
+- 4.2.31
+- Fix random building problems (bsc#1162122).
+- 4.2.30
+- Improves the online search mechanism (jsc#SLE-9109):
+  - Do not crash when a package does not belong to an addon.
+  - Display dependencies when enabling a module/extension.
+  - Handle multiple packages with the same name properly.
+  - Show an error when a package cannot be selected for
+    installation.
+  - After selecting a package, unselect the addon if it is not
+    needed anymore.
+  - Forces a minimal number of characters before performing the
+    search.
+  - Removes the 'Back' button.
+- 4.2.29
+- Add support to perform online package searches through all the
+  available modules/extensions (jsc#SLE-9109).
+- 4.2.28
+- Using tag $os_release_version in the control.xml file
+  (entry &lt;full_system_media_name&gt;) which will be replaced by the
+  value of VERSION in /etc/os-release. (improvement for fate#325834)
+- 4.2.27
+- AY: Providing a &quot;retry&quot; button if a request timed out.
+  (bsc#1159277)
+- 4.2.26
+- fix crash in autoyast registration (bsc#1160909)
+- 4.2.25
+- Load the old repositories before running the migration
+  so the code can properly detect the old and the new repositories
+  and remove the obsoleted services from the system (bsc#1159433)
+- 4.2.24
+- Improve messages when auto upgrading unregistered system with 
+  online medium (jsc#SLE-7101)
+- 4.2.23
+- Improved messages displayed when skipping registration
+  (jsc#SLE-7214, jsc#SLE-7101)
+- 4.2.22 
+- Full medium: Upgrade also registered system (jsc#SLE-7101)
+- 4.2.21
+- Online medium: Do not permit going next upgrading unregistered
+  system (jsc#SLE-7101)
+- 4.2.20
+- Online medium: Do not permit going next without registering the
+  system (bsc#1155793)
+- 4.2.19
+- Using Y2Packager::Resolvable.any? and Y2Packager::Resolvable.find
+  in order to decrease the required memory (bsc#1132650,
+  bsc#1140037).
+- 4.2.18
+- Support base product renames when upgrading using the Full
+  medium (allows upgrading from SLES11) (jsc#SLE-7101)
+- 4.2.17
+- Implement upgrade for Full medium (jsc#SLE-7101)
+- 4.2.16
+- Fix getting product for self-update for online and full medium
+  (bsc#1155420)
+- 4.2.15
+- Upgrade support for the Online installation medium
+  (jsc#SLE-7214)
+- 4.2.14
+- AutoYaST support for the OnlineOnly installation medium
+  (jsc#SLE-7214)
+- 4.2.13
+- fix crash of autoyast config dialog (bsc#1152913)
+- 4.2.12
+- Detect the installation medium type only during installation,
+  it crashes in an installed system (bsc#1152694)
+- 4.2.11
+- bnc#1140474
+  - changed wording when informing the user about missing migration
+    target
+- 4.2.10
+- updated list of fallback paths of SSL certificate (bsc#1130864)
+- 4.2.9
+- Support for the online installation medium (jsc#SLE-7214)
+- 4.2.8
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.7
+- Fixed unit test, reset the mocked addons in the
+  addon_eula_dialog_test.rb test (bsc#1144550)
+- 4.2.6
+- Do not abort when an addon license is refused (bsc#1114018).
+- 4.2.5
+- Improve error message when migration products could not be found
+  during an offline upgrade (bsc#1078739).
+- 4.2.4
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.3
+- Update labels and help texts related to registration server,
+  replacing SMT by RMT since the former is not longer supported
+  (bsc#1129206, bsc#1136433).
+- 4.2.2
+- Properly display the openSUSE Leap to SLES migration summary
+  (bsc#1136325)
+- 4.2.1
+- Update the  label used for the option to register the system
+  via local server (bsc#1129206).
+- 4.2.0
+- Run the solver to correctly initialize the product statuses
+  (fixes displaying SUMA RN during a SLES upgrade) (bsc#1129029)
+- 4.1.21
+- Permit to retry the registration in case of a timeout or a json
+  parse error and hide the error details which will be accesible
+  through the 'details' button (bsc#1058375, bsc#1126045).
+- 4.1.20
+- Skip SLP discovery when going back after registering the system,
+  the server cannot be changed anyway (related to bsc#1071887)
+- 4.1.19
+- Better handle the SSL certificates signed by an uknown CA
+  (bsc#1124992)
+    - Display details in a scrollable widget
+    - Display hints how to install the certificate manually
+- 4.1.18
+- Fixed &quot;can't modify frozen String&quot; crash (bsc#1125006)
+- 4.1.17
+- Improved the message in the registration skipping dialog
+  (bsc#1122608)
+- 4.1.16
+- Do not try to remove services which have already been deleted.
+  (bsc#1110246)
+- 4.1.15
+- Save the current repository configuration so it is properly
+  restored after restarting the package manager (bsc#1122011)
+- 4.1.14
+- Do not crash when no base product to register is found
+  (bsc#1122011)
+- 4.1.13
+- Properly restart the package management to avoid using a possibly
+  outdated configuration (related to bsc#1120568)
+- 4.1.12
+- Hardening commands execution (part of bsc#1118291).
+- Replace backticks by Yast::Execute.
+- 4.1.11
+- Fixed UI display issue in the installation workflow
+  (not cleared screen) (bsc#1117492)
+- 4.1.10
+- Provide icon with module (boo#1109310)
+- 4.1.9
+- Do not allow redirection while checking via HTTP request if
+  (old) NCC API is present at the server (bsc#1111404).
+- 4.1.8
+- Improved error messages (bsc#1060151).
+- 4.1.7
+- Do not display a connection error when automatically trying to
+  use the base product registration code for the extensions
+  (bsc#1091825).
+- 4.1.6
+- Added license file to spec.
+- Added tags full_system_media_name and full_system_download_url
+  in control.xml which describe the location for the
+  &quot;all-packages&quot; medium. This information will be shown if the
+  registration has been scipped by the user. No hint will be shown
+  if these tags have not been defined. (fate#325834)
+- 4.1.5
+- CRLF control characters cannot be included in the registration
+  code, added validation check (bsc#1111419)
+- 4.1.4
+- Suggest downloading the &quot;SLE-15-SP1-Packages&quot; medium instead of
+  the old &quot;SLE-15-Packages&quot; (bsc#1108620)
+- 4.1.3
+- Limit the registration code size to 512 characters (bsc#1098576)
+- 4.1.2
+- Better check the not installed addon products, some specific
+  repositories do not provide any product
+- Fixes online migration on PPC (bsc#1103412)
+- 4.1.1
+- Switched license in spec file from SPDX2 to SPDX3 format.
+- Modified addon selection filter for filtering all the testing
+  (not released) versions (bsc#1104450)
+- 4.1.0
+- Do not crash if getting zypp lock failed. (bnc#1043125)
+- 4.0.43
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.42
+- Added additional searchkeys to desktop file (fate#321043).
+- 4.0.41
+- Prefer the SCC credentials at upgrade when both NCC and SCC
+  credentials are present in the system (bsc#1096813)
+- 4.0.40
+- Fixed also the another places detecting the installed product
+  (bsc#1095702)
+- 4.0.39
+- Fixed evaluating the installed product (the installed upgraded
+  products are marked as &quot;removed&quot;) (bsc#1095702)
+- 4.0.38
+- Fixes for upgrade via SMT (bsc#1094865):
+  - Set the new &quot;target_distro&quot; for libzypp also after reloading
+    the target otherwise libzypp might reject the new repositories
+  - Copy also the SMT credentials into the installation system,
+    not only the SCC ones
+  - Copy the SMT (and also the RMT) SSL certificate into the
+    installation system (for HTTPS communication)
+- 4.0.37
+- Fixed: Offline migration against RMT sends some requests to 
+  SCC instead (bnc#1090911)
+- 4.0.36
+- Install a registration rollback script to rollback the
+  registration in case YaST is aborted or crashes during upgrade
+  (bsc#1089643)
+- 4.0.35
+- Reimplemented AutoYaST autoupgrade, use the same API and workflow
+  like in a manual upgrade (bsc#1087206)
+- 4.0.34
+- Select wanted release packages during SCC based offline
+  migration (bsc#1086818)
+- 4.0.33
+- do not build on 32-bit architectures (bsc#1088552)
+- 4.0.32
+- Given a license, remember whether another one with the same
+  content was already accepted (fate#325461).
+- 4.0.31
+- Better evaluate the product to upgrade, do not use the package
+  solver if there is only one base product to install, use some
+  fallbacks when the solver fails (bsc#1086259)
+- 4.0.30
+- Improve text for migration targets (bsc#1079075)
+- 4.0.29
+- Import the SMT SSL certificate at offline upgrade into
+  the inst-sys so the SMT server can be accessed (bsc#1080518)
+- 4.0.28
+- Do not hide beta addons that are preselected (bsc#1066216,
+  bsc#1085286)
+- 4.0.27
+- Implemented the registration rollback functionality when going
+  back in the upgrade workflow (bsc#1080979)
+- Properly handle going back also in unregistered systems
+- Refresh the add-on IDs after migrating the registration to show
+  the correct values in the addon and the upgrade overview dialog
+- In the offline migration do not set the solver flags designed for
+  the online migration
+- 4.0.26
+- Just use the first product available from the media When a self
+  update id is defined in the control file (bsc#1084820)
+- 4.0.25
+- Prevent crashing when no product was defined in the profile
+  (bsc#1084820)
+- 4.0.24
+- Display additional error details when refreshing a service fails
+  (related to bsc#1083503)
+- 4.0.23
+- Support for offline migration from SLE11 to SLE15 (fate#323395)
+- Fixed evaluating the migration summary for renamed or merged
+  products (bsc#1080913)
+- 4.0.22
+- Do no send the product release version (&quot;11.4-1.109&quot;) at upgrade,
+  send only the major and minor version (&quot;11.4&quot;) (bsc#1079051)
+- 4.0.21
+- Fixes for the SLE11 -&gt; SLE15 offline migration (fate#323395)
+- 4.0.20
+- Initial support for the SLE15 offline migration (fate#323163)
+- 4.0.19
+- Try base product registration code first (bsc#1075551).
+  Some add-ons/extensions are not free but can be registered
+  using their base product's registration code. Try it automatically
+  so that the user does not have to enter it again.
+- 4.0.18
+- Adjust the base product selection so it is not influenced by
+  a possibly changed repository priority, use the
+  &quot;system-installation()&quot; provides just like the other code in the
+  installer (related to bsc#1071742)
+- 4.0.17
+- bnc#1075723
+  - added missing part of previous patch
+- 4.0.16
+- Fix initialization to copy the profile to /tmp/profile again
+  (bsc#1075334)
+- Fix package build (dropping symlinks under test/fixtures/anchors)
+- 4.0.15
+- fate#323450
+  - added support for reading registration code from install.inf
+- 4.0.14
+- AutoYaST fixes (bsc#1065438):
+  - fixed addon registration order
+  - automatically register the dependant addons
+- Preselect also the recommended beta addons, display them by
+  default even when the beta filter is active
+  (related to bsc#1056413)
+- 4.0.13
+- Changed warning text if user has skipped registration.
+  (bnc#1055023)
+- 4.0.12
+- Do not preselect the default addons when some addon is already
+  registered (avoid selecting again when going back after
+  registration) (related to bsc#1056413)
+- 4.0.11
+- Do not crash when displaying the AutoYaST summary in installed
+  system (bsc#1065432)
+- 4.0.10
+- Use the correct install.inf key for media base upgrade (related
+  to fate#323163)
+- Warn when doing media based upgrade for a registered system
+- Preselect the recommended modules and extensions (bsc#1056413)
+- Describe the icons in the modules and extensions dialog help
+- 4.0.9
+- fixed detection of base product during upgrade (bsc#1064191)
+- 4.0.8
+- Display an informative popup when upgrading an unregistered
+  system, preselect adding DVD add-ons to make upgrade using media
+  easier (fate#323163)
+- Support &quot;media_upgrade=1&quot; boot parameter for media based upgrade
+  even for registered systems (fate#323163)
+- 4.0.7
+- fate#323450
+  - when searching for base product check also AY profiles for
+    user's selection
+- 4.0.6 
+- use self update id if defined instead of product name to make
+  self update predictable on multi-product media (bsc#1055556)
+- 4.0.5
+- Fixed registration of autoselected extensions (bsc#1062684)
+- 4.0.4
+- Add the /mnt prefix only at upgrade, in installation still use /
+  for storing the credentials (bsc#1062468)
+- 4.0.3
+- Fix showing modules and extensions when there is more then
+  simple one level dependencies. (bsc#1054965)
+- 4.0.2
+- Initial support for the SLE12 -&gt; SLE15 upgrade, honor the target
+  mount point prefix (fate#323163)
+- Do not crash when the baseproduct symlink does not exist in
+  installed system
+- Dump the available addons to a separate file
+  (/var/log/YaST2/registration_addons.yml) instead of the y2log
+  to make it better readable
+- 4.0.1
+- Do not display info.txt file anymore (bsc#1047060).
+- 4.0.0
+- bnc#1056318
+  - fixed internal error raised when cloning configuration
+- 3.3.3
+- Wrap text of connection_helpers error messages (bsc#1055643)
+- 3.3.2
+- LeanOS: Better handle multiple products on the installation
+  medium, register the selected product (FATE#323450)
+- 3.3.1
+- workaround YAML loading issue in ruby 2.4 (bsc#1048526)
+- 3.3.0
+- Do not display a hint about the old registration server when
+  SCC is used (bsc#1045344)
+- 3.2.12
+- A system registered in a local SMT server uses the same SMT
+  server URL to register during upgrade (bsc#1043033).
+- 3.2.11
+- Don't crash if the regurl provided by linuxrc is invalid, use
+  the one provided by the control file as fallback (bsc#1035908).
+- 3.2.10
+- AY inst-sys: Copy certificate to /etc/pki/trust/anchors instead of
+  /usr/share/pki/trust/anchors which is read only (bnc#1034663).
+- 3.2.9
+- Removed the option &quot;Register Extensions of Modules Again&quot;
+  (bsc#1029885).
+- Hides &quot;Filter Beta Versions&quot; checkbox when there is no beta
+  version to filter.
+- Hides &quot;Network config&quot; option when the system is already
+  installed.
+- 3.2.8
+- Online Migration (fate#320534)
+  - Added step for check registered but not installed addons to the
+    migration workflow. In case of existence, allow the user to
+    install the release package or deactivate the products.
+  - In case of abort, only registered products are downgraded and
+    synced.
+  - Added to the migration summary information about products not
+    offering migrations (third party addons).
+- 3.2.7
+- Be explicit about 'Details' box not being localized (bsc#1025846)
+- 3.2.6
+- Remember the state of the checkbox when leaving the dialog
+  (bsc#1026155) and correct the filter to always show installed
+  addons, even if they are beta versions.
+- 3.2.5
+- Adjusted .desktop files wrapping /sbin/yast2 calls that requires
+  root permisions with xdg-su (bsc#1028053).
+- 3.2.4
+- Registration#get_updates_list won't catch errors anymore because
+  that's something tightly coupled to the user interface. They
+  should be handled outside that method (bsc#1025251)
+- 3.2.3
+- fate#321044
+  - provide a shortcut for running &quot;Add System Extensions/Modules&quot;
+    dialog directly from control centre.
+- 3.2.2
+- Added Registration::Widgets::RegistrationCode (fate#322328).
+- Fixed initialization of the registration code in case of called
+  more than once (fate#322328).
+- 3.2.1
+- allow user to go forward in firstboot when system is already
+  registered (bsc#975368)
+- 3.2.0
+- do not crash if empty regurl paremeter is passed (bsc#1010387)
+- Better handle invalid credentials at start - start the repository
+  manager to allow manually removing the offending service or
+  repository (bsc#941427)
+- 3.1.190
+- Remember the beta filter value and set it when going back
+  (bnc#996891)
+- 3.1.189
+- more robust check for installation dark theme (bnc#996258)
+- 3.1.188
+- write name of server which have certificate problem in error
+  popup (bnc#995526)
+- 3.1.187
+- fix detection of installation qss, so registration in first boot
+  have readable text (bnc#995333)
+- 3.1.186
+- Fixed typos and grammar issues in the SSL certificate import
+  dialog (bsc#992585)
+- 3.1.185
+- Improve 'connection timeout' error messages (related to
+  bsc#993467)
+- 3.1.184
+- Removed workaround for making /etc/zypp directory writable,
+  it has been fixed in the installation-images package (bsc#967828)
+- 3.1.183
+- Preselect the add-on products also during installation
+  (bsc#992304)
+- 3.1.182
+- Fix package building in AArch64 (bsc#992341)
+- 3.1.181
+- Declare textdomain to fix untranslated texts in the previous
+  change (related to FATE#319716)
+- 3.1.180
+- Extract the services selection dialog so it can be used by
+  other YaST modules (related to FATE#319716)
+- 3.1.179
+- Improve certificates handling during registration:
+  - Write imported certificates to /etc/pki/trust/anchors
+    instead of the /usr/share/pki/trust/anchors counterpart
+    (bsc#989787).
+  - Prevent removal of installation system CA certificates
+    when importing a new one (bsc#981428).
+  - Continue the registration after successful import of
+    a new certificate (bsc#991028).
+- 3.1.178
+- Extensions and Modules:
+  - do not show beta versions of products (FATE#319909)
+  - make many items fit by using a scrollable widget (bsc#967387)
+- 3.1.177
+- For &quot;Register System via local SMT Server&quot; offer a list of servers
+  found with SLP (bsc#981633).
+- 3.1.176
+- Automatically preselect the Toolchain module on ARM in SLES12-SP2
+  (FATE#320679)
+- 3.1.175
+- regurl parameter overwrites default SCC registration URL
+  (bsc#982974)
+- 3.1.174
+- Redesigned UI for the registration of the base system
+  (bsc#974626)
+- 3.1.173
+- Select the default product patterns for the registered modules
+  and extensions (FATE#320199)
+- 3.1.172
+- Force refreshing while adding a service (bnc#967828).
+  Otherwise some services will not be refreshed due TTL entries.
+  So, some packages are not be available for installation.
+- Enable [Next] button in the first boot workflow to allow using
+  the registration module (pass the WFM arguments with the Back/Next
+  status to the internally called client) (bsc#970572)
+- 3.1.171
+- Unified shortcut 'alt-w' for network setup button (bsc#974216)
+- 3.1.170
+- Read registration codes from a USB stick (FATE#316796)
+- 3.1.169
+- Ask again after some provided registration code failed (bsc#958521)
+- 3.1.168
+- Fixed a crash when EULA download fails (bsc#941232)
+- 3.1.167
+- Fix validation of AutoYaST profiles (bsc#954412)
+- 3.1.166
+- always enable update repositories for modules during online
+  migration (bsc#953536)
+- 3.1.165
+- display a better error message when registration fails because
+  of a typo in the URL (bsc#952443)
+- 3.1.164
+- Addon upgrade - fixed crash when upgrading installed addon
+  (undefined method) (bsc#950795)
+- 3.1.163
+- AutoYaST: Taking registration server from AutoYaST configuration
+  file and set it in /etc/SUSEConnect. (bnc#943466,bnc#950233)
+- 3.1.162
+- Using a &quot;suse_register&quot; section in the AutoYaST profile does not
+  produce an error message anymore (bsc#950119)
+- 3.1.161
+- disable the [Clone] button in the AutoYaST configuration UI, the
+  registration module does not support cloning (bsc#950098)
+- 3.1.160
+- AutoYaST config: fixed crash at the end of the configuration
+  workflow (bsc#949934)
+- Add the SUSEConnect dependency to install the packages required
+  by suse-connect gem (workaround for bsc#947482)
+- 3.1.159
+- Addon selection dialog - sort the addons by the displayed label,
+  not by the internal name (which might not be unique) (bsc#949424)
+- 3.1.158
+- Restore the original $releasever value and refresh the
+  repositories when online migration is aborted (bsc#948363)
+- 3.1.157
+- do not crash when a repository cannot be accessed, ask the user
+  to skip it or abort the online migration (bsc#946200)
+- 3.1.156
+- migration rollback: make sure the base product is downgraded
+  first (FATE#315161)
+- 3.1.155
+- check whether the system is registered before running online
+  migration (bsc#946004)
+- 3.1.154
+- restore the original product registration when online migration
+  is aborted (FATE#315161)
+- set the selected repository states in the manual repository
+  selection dialog before starting the full repository management
+  module
+- 3.1.153
+- properly return the certificate import result
+- avoid an import loop after importing a SSL certificate
+  (bsc#942986)
+- 3.1.152
+- use better labels - specific migration repositories are not used
+  in SLE12, use better wording (bsc#944510)
+- 3.1.151
+- set the $releasever URL variable to the new base product
+  during online migration (bsc#941563)
+- 3.1.150
+- display short product names instead of the internal identifiers
+  in the migration selection dialog (bsc#945028)
+- 3.1.149
+- disable &quot;Back&quot; at the initial dialog
+- restore (enable) the Updates repositories at the end of the
+  migration workflow (bsc#943960)
+- 3.1.148
+- fixed syntax error (bsc#944089)
+- 3.1.147
+- make the migration selection widget smaller to have more space
+  for details when only few migrations are available (bsc#943636)
+- Keep the original NCCCredentials file permissions when upgrading
+  from SLE11 (bsc#943568)
+- 3.1.146
+- Better wording in the &quot;install updates&quot; popup (bsc#942843)
+- 3.1.145
+- Handle not available products when using a SMT server for running
+  online migration (bsc#942892)
+- 3.1.144
+- Fixed registering a product with POOL flavor (bsc#941402)
+- Addon selection dialog - avoid possible ID duplicates when
+  an addon with multiple versions is displayed
+- 3.1.143
+- Fix AutoYaST crash during registration (bsc#941449)
+- 3.1.142
+- Catch exceptions also when loading the available extensions
+  (bsc#941491)
+- 3.1.141
+- User messages improved when registration does not happen during
+  installation (bnc#941403, bnc#941739)
+- Reload the packages after modifying the repository setup
+  (bsc#941532)
+- 3.1.140
+- Fixed 'back' button in registration screen during installation
+  (bnc#940915)
+- 3.1.139
+- change category from &quot;Support&quot; to &quot;Software&quot; (bsc#939543)
+- 3.1.138
+- set the correct vendor change flag (for the DUP mode instead of
+  the normal mode) (FATE#319128)
+- 3.1.137
+- Use &quot;zypper dup --no-vendor-change&quot; equivalent for online
+  migration (FATE#319138)
+- 3.1.136
+- added support for online migration, the registration part handles
+  the service upgrade and migration repository management
+  (fate#315161)
+- 3.1.135
+- Adapt module to new version of SUSEConnect (FATE#318800)
+- 3.1.134
+- Renamed the module again to &quot;Product Registration&quot; after a
+  clarification in FATE#318800.
+- 3.1.133
+- Renamed the module from &quot;SUSE Customer Center Configuration&quot; to
+  &quot;System Registration&quot; (FATE#318800).
+- 3.1.132
+- added support for re-registering extensions and modules
+  (FATE#318800)
+- 3.1.131
+- allow registering add-ons installed from media (fate#318505)
+- allow network configuration also in installed system
+- refactoring/cleanup
+- 3.1.130
+- collect product rename also for the base product (the internal
+  SLES-for-SAP product identifier has been changed) (bsc#925700)
+- 3.1.129.1
+- display correct default EULA translation for extensions/modules
+  (bnc#894460)
+- 3.1.129
+- reset registration URL when registration upgrade fails to allow
+  easily switch from SMT to SCC and to be consistent with full
+  installation (bnc#891293)
+- 3.1.128
+- re-enable the update repositories in the installed system
+  when updates are disabled during installation (bnc#899999)
+- 3.1.127
+- fixed failure in AutoYast autoupgrade mode when the upgraded
+  system was not registered (in that case the system is newly
+  registered) (bnc#899168)
+- 3.1.126
+- fixed AutoYast autoupgrade - use the SMT server from the AutoYast
+  profile instead of the public SCC server (bnc#897040)
+- 3.1.125
+- export registration settings also when no extension or module
+  has been registered (bnc#897755)
+- 3.1.124
+- fixed crash at AutoYast export at the end of installation when
+  a SMT certificate has been imported (export the fingerprint value
+  instead of the Fingerprint object which cannot be serialized to
+  Autoyast XML) (bnc#897449)
+- 3.1.123
+- properly mark children addons as registered when loading the
+  current status
+- make sure the addon is marked as registered after registering or
+  upgrading it (bnc#893364)
+- 3.1.122
+- fixed displaying pop question _after_ successfuly uprading the
+  registration at upgrade (bnc#896018)
+- 3.1.121
+- update the system registration in update mode, set the new target
+  distribution value (needed for update via SMT, bnc#889778)
+- 3.1.120
+- ask for installing updates _after_ successfuly registering the
+  system (bnc#895000)
+- 3.1.119
+- sort displayed addons to have requested order (bnc#888567)
+- use the custom URL also in upgrade (bnc#894592)
+- don't run SLP discovery if the system has been registered
+  using the public SCC server
+- added missing &quot;require&quot; in Autoyast client (bnc#895147)
+- 3.1.118
+- Use a more flexible rubygem requirement syntax (bnc#895069)
+- 3.1.117
+- avoid crash in autoinstallation with method called on nil
+  (bnc#894877)
+- 3.1.116
+- do not log the registration code or the credentials to y2log
+  (bnc#894670)
+- 3.1.115
+- ignore SUSE Manager services in SLP discovery (bnc#894470)
+- 3.1.114
+- select extension/module products to install in Autoyast mode
+  (bnc#893750)
+- upgrade registration in Autoyast autoupgrade mode
+- 3.1.113
+- read proxy credentials from .curlrc file (bnc#885957)
+- do not ask for network configuration in Autoyast mode
+- 3.1.112
+- Added proper handling for the user clicking the cancel button in
+  &quot;Local Registration Servers&quot; window (bnc#893462)
+- 3.1.111 
+- Replaced call to private method SslCertificate#sha256_fingerprint
+  with the proper SslCertificate#fingerprint (bnc#893561)
+- 3.1.110
+- select and install extension/module products also in installed
+  system (bnc#891891)
+- 3.1.109
+- save the registration settings to autoinst.xml at the end of
+  installation (bnc#892449)
+- decrease vertical spacing in text mode to fit 80x25 screen
+  (bnc#892747)
+- 3.1.108
+- Fixed aborting from the base product registration dialog in
+  installation - it needs user confirmation now (bnc#886662)
+- 3.1.107
+- check for old SMT server API when registration fails, display
+  error about outdated SMT server (bnc#889503)
+- 3.1.106
+- allow starting the module directly at the extension selection
+  screen when invoked from &quot;repositories&quot; Yast module (bnc#888566)
+- 3.1.105
+- Autoyast: Moving registration to first stage of installation.
+  (bnc#890073)
+- 3.1.104
+- fixed importing SSL certificate, log errors in the SSL verify
+  callback (bnc#891940)
+- 3.1.103
+- do not crash when SSL certificate download fails (bnc#891896)
+- 3.1.102
+- reset registration status on failure (bnc#889531)
+- removed (sometimes) confusing error message (bnc#889531)
+- 3.1.101
+- handle closing by window manager (:cancel event) (bnc#891550)
+- 3.1.100
+- report more details when registration fails (bnc#890873)
+- added some hints to the error message displayed when the base
+  product is not found (bnc#890863)
+- 3.1.99
+- Fixed AutoYast clonning in installed system: registration cannot
+  be clonned, skip it (bnc#888168)
+- AutoYast fixes and improvements:
+    - optionally register online extensions
+    - download and import SSL certificate from the specified URL
+    - automatically import the server SSL certificate if the
+      certificate fingerprint matches the specified value
+    - in the config mode allow downloading the list of extensions
+      from the server
+- Added HTTP redirection handling in the download code
+- 3.1.98
+- Fixed handling while aborting an extension license confirmation
+  (bnc#886662)
+- 3.1.97
+- Asking for confirmation when aborting Extension and Module
+  Selection dialog (bnc#886662)
+- 3.1.96
+- improved &quot;skip registration&quot; label (bnc#888561)
+- 3.1.95
+- display error details when package management initialization
+  fails, do not abort silently (bnc#887089)
+- 3.1.94
+- another &quot;E-mail Address&quot; label fixes (bnc#888158)
+- 3.1.93
+- call SLP discovery at upgrade when the system was not registered
+  at NCC (bnc#886804)
+- 3.1.92
+- do not cache the base product upgrade, always do the upgrade
+  (bnc#882039)
+- fixed error code handling, display an additional hint when
+  upgrade from SLE11 fails (bnc#885506)
+- use &quot;E-mail Address&quot; label (bnc#888158)
+- handle missing SSL certificate attributes (bnc#886850)
+- 3.1.91
+- skip SLP discovery if SMT is used, use the URL from config file
+  (bnc#886423)
+- allow changing the registration server when re-registering
+- reset registration status when upgrade fails to allow
+  re-registering from scratch (bnc#886387)
+- 3.1.90
+- fixed check for registered status (bnc#886116)
+- 3.1.89
+- better handle &quot;Network unreachable&quot; error (Errno::ENETUNREACH)
+  (bnc#885638)
+- 3.1.88
+- added &quot;Cancel&quot; button to SLP selection dialog to allow to change
+  the entered values before connecting to the server (bnc#885633)
+- 3.1.87
+- copy imported SMT certificate from inst-sys to the target system
+  (bnc#885968)
+- 3.1.86
+- pass product renames to AddOnProduct module to update the
+  default fallback mapping
+- 3.1.85
+- check also the previous product name to handle addon/extension
+  renames (bnc#883206)
+- 3.1.84
+- improved user visible texts (bnc#883769)
+- 3.1.83
+- use the status call and properly mark the already registered
+  extensions
+- 3.1.82
+- enable autorefresh for registered services (bnc#884937)
+- 3.1.81
+- update: automatically update installed addons (using simple
+  product name match so far) (bnc#871141)
+- 3.1.80
+- removed workaround for failed EULA download (now do not allow to
+  continue when download fails) (bnc#880649)
+- 3.1.79
+- add reading of old url from suseRegister.conf during upgrade
+- 3.1.78
+- display SSL error details from exception, hide the details
+  section if there are no details actually (bnc#882573)
+- send correct base product name when downloading available
+  extensions (fix by Michael Calmer)
+- do not log the registration code to y2log
+- use the new suse-connect SSL API (0.1.2)
+- fixed selecting extensions when going back in the installation
+  workflow
+- added a popup for changing the registration server URL
+  (bnc#883138)
+- removed Beta warning workaround (bnc#882034) 
+- 3.1.77
+- fixed crash (nil error) when reading available extensions
+- 3.1.76
+- port to the new suse-connect API (suse-connect &gt;= 0.1.0)
+- fixed removing previous credentials at installation restart
+- libzypp now properly sets the repository statuses from service,
+  no need to explicitly enforce them
+- 3.1.75
+- reset registration status when installation is restarted
+  (bnc#877365)
+- 3.1.74
+- removed media addons from registratoin workflow (bnc#880507)
+- 3.1.73
+- write changes at the end of installation for suse connect
+- 3.1.72
+- updated dialog title (extension selection) (bnc#881627)
+- 3.1.71
+- display a fixed Beta warning for all online extensions
+  (temporary workaround for bnc#882034)
+- 3.1.70
+- display where to download the extension EULA text (bnc#880685)
+- 3.1.69
+- switch build tool from autotools to yast-rake
+- 3.1.68
+- properly leave the addon workflow when registration was skipped
+  (bnc#880941)
+- 3.1.67
+- added support for nested extensions to display e.g. HA GEO
+  extension (bnc#873185)
+- improve test coverage
+- 3.1.66
+- add explanation to extension regcode dialog (bnc#881466)
+- 3.1.65
+- fixed accepting more than one extension EULA (bnc#881078)
+- 3.1.64
+- UX improvements for registration server selection (bnc#878649)
+- 3.1.63
+- automatically upgrade the registration without asking for
+  a registration code when upgrading from SLE11 (bnc#876849)
+- 3.1.62
+- fixed displaying EULA translations (bnc#880504)
+- removed EULA printing text (part of bnc#878976)
+- 3.1.61
+- empty eula url mean no eula (Bnc#879456)
+- 3.1.60
+- fix registration of multiple addons (bnc#879421)
+- 3.1.59
+- Enable next button for kernel cmdline specified addons
+  (bnc#878997,bnc#879140)
+- 3.1.58
+- Do not abort after pressing back in add-on dialog (bnc#878997)
+- 3.1.57
+- Allow failed eula download for betas to make testing easier
+- 3.1.56
+- fix sequencer in inst_scc (bnc#878534)
+- adapt to changes in suseconnect API(bnc#875456)
+- 3.1.55
+- download and confirm add-on licenses from the registration server
+- 3.1.54
+- fixed package dependency (it is 'yast2-add-on')
+- 3.1.53
+- allow adding media addons without registering the base system
+  (bnc#870625)
+- 3.1.52
+- use &quot;modules&quot; term as well (bnc#875199#c10)
+- 3.1.51
+- remember registered extensions, do not register them again
+  and disable the checkboxes (extensions cannot be &quot;unregistered&quot;)
+- display registered status in the main dialog
+- use &quot;extension&quot; term consistently (bnc#875199)
+- allow registering extensions in installed system without
+  re-registering the base product (bnc#876328)
+- 3.1.50
+- Save the repository credentials to /mnt during upgrade (libzypp
+  is already switched to the target system) (bnc#876151)
+- 3.1.49
+- fixed setting the repository status (to properly enable e.g. the
+  *-Pool repositories) (bnc#875839)
+- 3.1.48
+- use PackageCallbacks instead of obsoleted PackageCallbacksInit
+  module (bnc#873936)
+- fixed base product detection (bnc#875194)
+- 3.1.47
+- fixed a crash in addon registration
+- use generic &quot;Registration Server&quot; in progress message (SCC
+  title does not make sense for SMT registration (bnc#875196)
+- fixed caching the registration URL
+- display product names in progess
+- fixed &quot;Next&quot; button label in installed system
+- 3.1.46
+- initialize the connection object when reading addons
+  (otherwise a &quot;nil&quot; bug appears when going back in the
+  installation workflow)
+- cache the registration server URL (to use the same server when
+  going back)
+- added &quot;nil&quot; check for long product description
+- typo in a logger call
+- 3.1.45
+- add product name when something wrong happen with addon
+  registration(bnc#872481)
+- register as much addons as possible and skip only failed ones
+- improve progress to print which addon it register
+- 3.1.44
+- Update &quot;enabled&quot; and &quot;autorefresh&quot; repository flags according to
+  the registration response, e.g. enable -Pool repositories
+  (bnc#875839)
+- 3.1.43
+- ask user to import an unknown SSL certificate (bnc#874745)
+- fixed wrong method name causing crash when adding repositories
+  (bnc#875412)
+- remove the base product from the addons list (bnc#872483)
+- 3.1.42
+- added a nil check when reading the long product name to avoid
+  possible failure (bnc#875796)
+- 3.1.41
+- fixed failure when registering the base product 
+  (fixed return value from product registration call) (bnc#875412)
+- 3.1.40
+- &quot;reg_ssl_verify=0&quot; boot parameter disables SSL checks (part of
+  bnc#874745)
+- reuse already known &quot;regurl&quot; parameter (instead &quot;reg_url&quot; cannot
+  be used as it conflicts with it) (bnc#874997)
+- 3.1.39
+- use &quot;is_update_repo&quot; flag for finding update repositories
+- use &quot;suse-connect&quot; gem as the backend (to share the code with
+  the command line registration tool)
+- 3.1.38
+- use &quot;registration code&quot; term everywhere to be consistent with
+  SCC terminology
+- do not fail if the service already exists (bnc#873198)
+- 3.1.37
+- send base product base version (i.e. remove build suffix from the
+  version) (bnc#873193)
+- 3.1.36
+- check the libzypp lock at start, do not continue if libzypp is
+  already locked by another application (bnc#873882)
+- check the base product at start to avoid problems later
+- fixed using nil base product when registration failed
+  (bnc#873683)
+- register the base product again if it failed
+- 3.1.35
+- pass also version and architecture when registering an addon
+  product
+- 3.1.34
+- pass also &quot;release_type&quot; product parameter (bnc#873194)
+- 3.1.33
+- use generic SLP service name for both SMT and SUSE Manager
+  (fate#316384)
+- fixed namespace error when reading SLP service URL
+- 3.1.32
+- ask simple Yes/No for installing online updates (instead of
+  complex repository selection)
+- 3.1.31
+- redesiged addon selection dialog
+- small UI improvements
+- 3.1.30
+- fixed undefined method (bnc#872012)
+- 3.1.29
+- avoid client class redefinition (bnc#871651)
+- make the input fields slighly narrow (bnc#864882#c7)
+- 3.1.28
+- fix up, removed forgotten require (bnc#871400)
+- 3.1.27
+- do not restore the original repository status (enabled/disabled
+  Updates), keep the user changes in installed system (bnc#869088)
+- 3.1.26
+- fixes/enhancements:
+  - do not ask for credentials when the system is already
+    registered (avoid re-registration when going back)
+  - display details when registration fails
+  - register only the base product (add-ons use a different reg.
+    key, important in running system)
+- 3.1.25
+- better error message for failed registration (bnc#870787#c2)
+- bnc#870622
+  - fixed handling &quot;Network Configuration&quot; button
+- 3.1.24 
+- use an ERB template instead of ugly Summary module for rendering
+  AutoYast rich text summary
+- 3.1.23
+- initial AutoYast support, allow specifying the registration
+  server URL in the AutoYast profile (FATE#312433)
+- 3.1.22
+- added &quot;Network Configuration&quot; button for manual network
+  configuration, ask user to configure network if registration
+  fails because of missing network setup (bnc#868830)
+- 3.1.21
+- ask for media addons when the respective checkbox is set
+  (bnc#868942)
+- 3.1.20
+- Display and allow registering online add-ons from SCC during
+  installation (FATE#312925, FATE#315685)
+- 3.1.19
+- display a popup for selecting/deselecting registered repositories
+  (to allow e.g. disabling Updates and installing GA version)
+  (FATE#312012)
+- 3.1.18
+- fixed service refresh loop (bnc#867120)
+- 3.1.17
+- fixed crash at start (added missing &quot;require&quot; call) (bnc#867120)
+- 3.1.16
+- added SLP service discovery (FATE#316384)
+- 3.1.15
+- allow changing the registration server URL in installation via
+  boot command line (&quot;reg_url&quot; option) (FATE#312433)
+- 3.1.14
+- Check for errors when adding/refreshing services
+- 3.1.13
+- Initializing packager before registration on a running system
+- Registering selected or installed products (both bnc#865737)
+- 3.1.12
+- Check for defined client class
+- 3.1.11
+- better error handling
+- 3.1.10
+- make the credentials input fields wider (bnc#864882)
+- ask user to confirm skipping the registration
+- use the current language in &quot;Accept-Language&quot; HTTP header
+- 3.1.9
+- Add SLP service discovery dialog for registration (FATE#316384)
+- 3.1.8
+- display progress when adding registered services
+- 3.1.7
+- fixed mounting write copy of /etc/zypp at installation
+- 3.1.6
+- save repositories before refreshing added services (otherwise
+  pkg-bindings will treat them as removed by the service refresh
+  and unloads them)
+- 3.1.5
+- pass the repository services returned by SCC to libzypp
+- make /etc/zypp writable during installation
+- 3.1.4
+- use scc_api gem for communication with SCC
+- 3.1.3
+- added &quot;Skip Registration&quot; button (FATE#312925)
+- workaround for SCC not accepting JSON input
+- 3.1.2
+- changed the implementation to use SCC instead of NCC
+- 3.1.1
+- do not use *.spec.in template, use *.spec file with RPM macros
+  instead
+- 3.1.0
+- converted from YCP to Ruby by YCP Killer
+  (https://github.com/yast/ycp-killer)
+- version 3.0.0
+- use new polkit instead of deprecated PolicyKit
+- use perl-camgm instead of limal-ca-mgm-perl (dropped in
+  Factory/openSUSE-13.1)
+- removed useless BuildRequires: perl-XML-Writer yast2-packager
+  yast2-testsuite perl-TimeDate yast2-pkg-bindings suseRegister
+  (not needed durign build)
+- 2.24.0
+- show detailed registration status window (fate#312712)
+- confirmed license GPL v2
+- 2.21.2
+- do not block registration browser via SSH (bnc#179614) (bnc#718334)
+- fix typo in help text (bnc#759735)
+- merge proofread texts 
+- make use of ButtonBox where possible to make button order
+  depending on desktop environment (bnc#701264)
+- fix typo in registration process (bnc#703222)
+- cleanup xauth export after interactive registration (bnc#702638)
+- fix broken xauth export file in post install script (bnc#702423)
+- 2.21.1
+- bump version
+- 2.21.0 
+- fix registration status detection (bnc#634026)
+  use a common flag file (bnc#633183)
+- fix proxy settings for WebYaST registrations (bnc#626965)
+- 2.19.7
+- use correct error code for backend init errors (bnc#633183)
+- touch flag file to show in webyast that the system is registered
+- 2.19.6 
+- fixed typo (bnc#631743)
+- 2.19.5 
+- fix for the SMT server configuration via WebYaST (bnc#621914)
+- 2.19.4 
+- catch severe backend error and pass error message on (bnc#604777)
+- 2.19.3
+- split off online-update-configuration module (fate#308494)
+- 2.19.2
+- buildrequire PolicyKit-devel to fix build
+- fixes in REST API to prevent server error and loops (bnc#553244)
+- 2.19.1 
+- fix catalog checks in stateless registration API
+- fix XML format in stateless registration API
+- fix XML format for stateless registration API
+- disable help texts for Open-SLX (bnc#544907)
+- 2.19.0
+- enable the webyast API by default
+- 2.18.1 
+- adding help texts for Open-SLX 
+- disable update repo restore because of bnc#449842
+- update cronjob support for auto license agreement (bnc#474573)
+- 2.18.0
+- Autoinst Resource in desktop file fixed
+- check boolean values also for nil to prevent crashes (bnc#463800) 
+- reload SourceManager after registration (bnc#468449)
+- do not force the refreshes during registration (bnc#476429)
+- fix autoyast registration; fix ported from SLE11 (bnc#476494) 
+- without network connection skip registration (bnc#475795)
+- use OKDialog for online_update_configuration (bnc#440568)
+- keep target initialized on exit (bnc#468449)
+- setup proxy before suseRegister initializes (bnc#468480)
+- setup http and https proxy settings individually (bnc#468919)
+- fix detection of base product (bnc#449844)
+- 2.17.17
+- fix restoring the default update repository (bnc#444301)
+- 2.17.16 
+- call other modules via WFM (bnc#447043)
+- 2.17.15
+- adapt to new suseRegister states (bnc#446572)
+- 2.17.14
+- finish sources when changed to enforce reload (bnc#447080)
+- merge service repo flags instead overwriting them
+- fix repo type definition for adding sources (bnc#444770)
+- remove deprecated unused function
+- add more debug logging
+- service changes should not enable all its catalogs
+- refresh services prior to repositories
+- 2.17.13
+- fix empty install message (bnc#444638)
+- fix error in sformat statement (bnc#443781)
+- 2.17.12 
+- fix registration code parameter (bnc#443704) 
+- fix reading repo settings (bnc#427698)
+- 2.17.11
+- split off branding packages (bnc#436644)
+- fix error code handling of SuseRegister
+- updated yastbrowser for xulrunner191 (bnc#383660)
+- desktop file changed
+- YSR module should return true 
+- check for w3m in textmode registration (bnc#440289)
+- reset registration backend before exiting
+- remove requires to sles-release
+- 2.17.10
+- consistent naming in autoYaST profile
+- checking if registration runs on xen (bnc#418287)
+- more verbose logging
+- 2.17.9
+- activate autorefresh for new services
+- remove requires to mozilla-xulrunner (bnc#436900) 
+- 2.17.8
+- changing repos and services only via pkg-bindings (bnc#435669)
+- 2.17.7
+- fix to display correct text in manual interaction (bnc#435869)
+- refresh services after creating them
+- 2.17.6
+- display correct text during manual interaction (bnc#435869)
+- fix repeated initializations of suseRegister
+- ask to trust CA certificate of registration server (port from SP2)
+- spec file clean up
+- 2.17.5
+- call to saveLastZmdConfig added (bnc#435696)
+- removed installing the certificate to zmd (bnc#435631)
+- add credetials information to services url (bnc#435645)
+- fix xulrunner dependency (bnc#435872)
+- 2.17.4
+- check if initialization of SuseRegister succeeds (bnc#435188)
+- initialize the target to prevent repeated key import (bnc#435192)
+- adapting repo changes as well in autoYaST mode
+- 2.17.3 
+- support repository changes in catalogs (bnc#430896)
+- added mandatory source refreshes
+- 2.17.2
+- use new suse_register backend (bnc#430896)
+- change registration server in UI
+- 2.17.1
+- new module for online update configuration (fate#303458)
+- simplifying/cleaning up sw management (fate#303458) 
+- 2.17.0
+- removed unused GetInstArgs call
+- initialize the target to read the GPG keys (bnc#394662)
+- 2.16.7
+- Lslezak's patch for inst_suse_register to save all sources but
+  not to disable them (bnc #395333).
+- 2.16.6
+- call Pkg::SourceRestore before adding new source (bnc#395333)
+- 2.16.5
+- handling cancel event in info window (bnc#217249)
+- fix preselected checkboxes (bnc#390367)
+- create repositories with proper umask (bnc#392072)
+- 2.16.4
+- added categories Settings and System into desktop file
+  (bnc #382778)
+- removed online update from piwo (bnc#386633)
+- adapted version compatibility flag of yastbrowser (bnc#383660)
+- 2.16.3 
+- show error output behind details button on error 101 (bnc#308117) 
+- adding alternative strings using repository instead of source 
+- fixed SMT autoyast bug (bnc#377929)
+- integrated SMT renaming (bnc#376000)
+- removed dependencies to limal for SMT support (bnc#380060)
+- cleaned gui layout
+- initial release of postinstallation workflow (piwo) (fate#303359)
+- 2.16.2 
+- proper pluralization in autoYaST (bnc#184893) 
+- added 'StartupNotify=true' to the desktop file (bnc #304964)
+- added support for SMT (registration proxy)
+- 2.16.1 
+- Removed dependency on yast2-network, Internet YCP module has been
+  moved to yast2.rpm.
+- 2.16.0
+- importing PackageCallbacks (#307764)
+- 2.15.3 
+- adapted source management changes (#304310)
+- wrapping of detailled error messages (#239570)
+- 2.15.2 
+- handling sysconfig file with fillup (#300064)
+- code cleanup - nonroot user not supported
+- 2.15.1
+- new version
+- 2.15.0 
+- made multiline texts gettext compatible (#230388)
+- reactivated skip button in case of error (#240174)
+- ensure that Sources are initialized on startup (#270899)
+- 2.14.6 
+- removed X-SuSE-translate in order to build
+- 2.14.5
+- fixed category in desktop files (#259914)
+- 2.14.4 
+- improved dependecies in spec file (#253975)
+- 2.14.3 
+- added autoyast schema file (#219408)
+- 2.14.2
+- yastbrowser update, support for mozilla-xulrunner181 (#219354)
+- removed dependencies to rug and zmd for openSUSE (#220807)
+- hard dependencies to rug and zmd for SLE (#220807)
+- check for wrong proxy settings (#208651)
+- removed SuSEregister.pango call (FATE #300947)
+- 2.14.1
+- 2.14.0
+- fixed textdomain (#219378)
+- 2.13.4
+- using own icon in installation workflow (#211552)
+- check for rug and zmd to be installed (#191135)
+- show message if no product to be registered (#191258)
+- avoid missing file error in log (#211899)
+- do not log sensitive data from autoyast (#195624)
+- renamed the _not_ missing file (inst_)suse_register.ycp
+- 2.13.3
+- added missing inst_suse_register.ycp
+- 2.13.2
+- Added missing yast2-packager into BuildRequires
+- 2.13.1
+- initial version
+- split off registration from installation (#203551)
+- fixed desktop files (#165891)
+- fixed proxy bug under Gnome (#207332)
+</comment>
+    <requestid>844234</requestid>
+  </revision>
 </revisionlist>
