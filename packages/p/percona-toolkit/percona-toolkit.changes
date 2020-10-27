@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:36:32 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Percona Toolkit 3.2.1:
+ * Fix pt-pg-summary failing for Postgres12
+ * Add --no-check-foreing-keys to pt-osc
+ * Fix pt-heartbeat not reconnecting for check-read-only
+ * Fix pt-mongodb-summary failing  on standalone mongodb instances
+ * Fix pt-table-checksum error CRC32
+
+-------------------------------------------------------------------
 Mon Sep  7 10:38:39 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

@@ -17,7 +17,7 @@
 
 
 Name:           percona-toolkit
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Advanced MySQL and system command-line tools
 License:        GPL-2.0-only
@@ -60,6 +60,8 @@ This collection was formerly known as Maatkit.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor < /dev/null
+sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|' bin/*
+sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|' bin/*
 %make_build
 
 %install
@@ -81,7 +83,7 @@ cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
 %doc README.md Changelog
 %dir %{_sysconfdir}/%{name}
 %{_bindir}/*
-%{_mandir}/man1/*.1*
+%{_mandir}/man1/*.1p.gz
 %config %{_sysconfdir}/%{name}/%{name}.conf
 
 %changelog
