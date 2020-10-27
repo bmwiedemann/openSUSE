@@ -1,7 +1,7 @@
 #
 # spec file for package arm-ml-examples
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Enable CAFFE
 %bcond_without armnn_caffe
@@ -33,7 +34,7 @@ Release:        0
 Summary:        Machine learning examples used in Arm's ML developer space
 License:        Apache-2.0
 Group:          Development/Libraries/Other
-Url:            https://developer.arm.com/products/processors/machine-learning/arm-nn
+URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        ML-examples-%{version}.tar.xz
 BuildRequires:  armnn-devel
 BuildRequires:  gcc-c++
@@ -48,6 +49,7 @@ Requires:       arm-ml-examples-data
 %if %{without armnn_caffe} && %{without armnn_tf}
 ExclusiveArch:  
 %endif
+ExcludeArch:    %ix86
 
 %description
 Source code for machine learning tutorials and examples used in Arm's ML developer space.
