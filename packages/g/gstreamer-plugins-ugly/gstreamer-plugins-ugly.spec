@@ -23,39 +23,34 @@
 # Use rpmbuild -D 'BUILD_ORIG 1' -D 'BUILD_ORIG_ADDON 1' to build patched build plus original as addon.
 %define _experimental 0
 # Get minimum gstreamer and gstreamer-plugins-base required versions from configure.ac
-%define gstreamer_plugins_ugly_req %(xzgrep --text "^GST.*_REQ" %{SOURCE0} | sort -u | sed 's/GST_REQ=/gstreamer >= /;s/GSTPB_REQ=/gstreamer-plugins-base >= /' | tr '\\n' ' ')
-# Currently disabled because plugin documentation isn't built
-%define use_meson 0
+%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
+
 Name:           gstreamer-plugins-ugly
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://gstreamer.freedesktop.org/
+URL:            https://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM gst-ugly-x264enc-fixes.patch -- x264enc: corrected em_data value
-Patch0:         gst-ugly-x264enc-fixes.patch
-
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc >= 1.12
+BuildRequires:  hotdoc
 BuildRequires:  liba52-devel
 BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
-%if %{use_meson}
 BuildRequires:  meson >= 0.47.0
-%endif
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
 BuildRequires:  pkgconfig(libmpeg2) >= 0.5.1
-Requires:       %{gstreamer_plugins_ugly_req}
+Requires:       gstreamer-plugins-base >= %{gstreamer_req_version}
 Enhances:       gstreamer
 # Generic name, never used in SUSE:
 Provides:       gst-plugins-ugly = %{version}
@@ -123,8 +118,7 @@ installing new plug-ins.
 
 %build
 export PYTHON=%{_bindir}/python3
-%if %{use_meson}
-%{meson} \
+%meson \
 %if ! 0%{?BUILD_ORIG}
 	-Dpackage-name='openSUSE gstreamer-plugins-ugly package' \
 	-Dasfdemux=disabled \
@@ -135,29 +129,10 @@ export PYTHON=%{_bindir}/python3
 %endif
 	-Dsidplay=disabled \
 	%{nil}
-%{meson_build}
-%else
-%configure \
-%if ! 0%{?BUILD_ORIG}
-	--with-package-name='openSUSE gstreamer-plugins-ugly package' \
-	--disable-asfdemux \
-	--with-package-origin='http://www.opensuse.org/' \
-%endif
-	--enable-gtk-doc \
-%if 0%{?_experimental}
-	--enable-experimental \
-%endif
-	--disable-static \
-	%{nil}
-make %{?_smp_mflags}
-%endif
+%meson_build
 
 %install
-%if %{use_meson}
-%{meson_install}
-%else
-%make_install
-%endif
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 
@@ -188,6 +163,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files doc
 %doc AUTHORS NEWS README RELEASE REQUIREMENTS
-%{_datadir}/gtk-doc/html/gst-plugins-ugly-plugins-%{gst_branch}
 
 %changelog
