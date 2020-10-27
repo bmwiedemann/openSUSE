@@ -1,7 +1,7 @@
 #
 # spec file for package python-py2pack
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py2pack
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Script for generating distribution packages from Python packages on PyPI
 License:        Apache-2.0

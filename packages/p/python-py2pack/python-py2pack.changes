@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:06:41 UTC 2020 - Thomas Bechtold <tbechtold@suse.com>
+
+- update to 0.8.5:
+  * Use 3.8 python in the travis by default
+  * Use python 3.8 and 3.9 in tox
+  * Execute flake8 on latest py3 instead of old py2 version
+  * Add missing comment to opensuse template header
+  * Switch to pytest
+  * Just say we support py2 and py3 do not bother with minor versions
+  * gitignore coverage datafile
+  * Do not bother with creating group tag as it is optional these days in openSUSE
+  * Run tests under python 3.7 and fix tests
+  * tests: replace year in tests by placeholder
+  * bug: show help if no command given
+  * Fix date in test examples
+  * fix fedora tests
+  * fix opensuse tests
+  * Update py2pack-opensuse-legacy.spec
+  * Update py2pack-opensuse.spec
+  * Make template compatible with spec-cleaner
+  * Add default empty for scripts
+  * Just get rid of whole line in opensuse-legacy.spec, this breaks things
+  * Don't add BR on python-devel without thinking
+  * Add test for non-existent file
+  * Add documentation to py2pack/utils.py
+  * Add test with invalid archive
+  * Raise a ValueError from \_get\_archive\_filelist instead of Exception
+  * Add type hints to py2pack.utils
+  * Ignore flake8 unused import warning for typing imports
+  * Require typing module for python < 3.5
+  * Bump python version in test case
+  * Shorten overlong line
+  * Add docstrings & type hints to functions in requires.py
+  * Replace filter() with list/generator expressions
+  * Fix indentation of \_requirement\_find\_lowest\_possible
+  * Fix DeprecationWarnings for invalid escape sequences with python3
+
+-------------------------------------------------------------------
 Tue Mar 26 15:43:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix fdupes
