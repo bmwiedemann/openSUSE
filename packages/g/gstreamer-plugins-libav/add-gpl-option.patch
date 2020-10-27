@@ -1,0 +1,29 @@
+Index: gst-libav-1.18.0/meson.build
+===================================================================
+--- gst-libav-1.18.0.orig/meson.build
++++ gst-libav-1.18.0/meson.build
+@@ -122,6 +122,12 @@ if cc.has_argument('-fno-strict-aliasing
+   add_project_arguments('-fno-strict-aliasing', language: 'c')
+ endif
+ 
++gpl_option = get_option('gpl')
++if gpl_option.enabled()
++  message('Building a GPL licensed gst-libav')
++  add_project_arguments('-DGST_LIBAV_ENABLE_GPL', language: 'c++')
++endif
++
+ if gst_dep.type_name() == 'internal'
+     gst_proj = subproject('gstreamer')
+ 
+Index: gst-libav-1.18.0/meson_options.txt
+===================================================================
+--- gst-libav-1.18.0.orig/meson_options.txt
++++ gst-libav-1.18.0/meson_options.txt
+@@ -4,4 +4,5 @@ option('package-origin', type : 'string'
+        value : 'Unknown package origin', yield : true,
+        description : 'package origin URL to use in plugins')
+ option('doc', type : 'feature', value : 'auto', yield: true,
+-       description: 'Enable documentation.')
+\ No newline at end of file
++       description: 'Enable documentation.')
++option('gpl', type : 'feature', value : 'disabled', yield : true)

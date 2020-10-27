@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-libav
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %define gst_branch 1.0
 Name:           gstreamer-plugins-libav
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://gstreamer.freedesktop.org/
+URL:            https://gstreamer.freedesktop.org/
 Source:         https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-%{version}.tar.xz
 Source1000:     baselibs.conf
-
+Patch0:         add-gpl-option.patch
+BuildRequires:  gcc-c++
+BuildRequires:  hotdoc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
 BuildRequires:  pkgconfig(bzip2)
@@ -79,19 +82,19 @@ This plugin contains the documentation
 
 %prep
 %setup -q -n gst-libav-%{version}
-# Ensure we cannot use the embedded libav
-rm -rf gst-libs/ext/libav
+%patch0 -p1
 
 %build
-# TODO: switch to meson, but need to allow a GPL build first
-%configure \
-	--with-system-libav \
-	--enable-gpl \
+%meson \
+	-Dpackage-name='openSUSE GStreamer-plugins-good package' \
+	-Dpackage-origin='http://download.opensuse.org' \
+        -Dgpl=enabled \
 	%{nil}
-make %{?_smp_mflags}
+
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
@@ -99,7 +102,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstlibav.so
 
 %files doc
-%doc AUTHORS NEWS README TODO
-%doc %{_datadir}/gtk-doc/html/
+%doc AUTHORS NEWS README.md
 
 %changelog
