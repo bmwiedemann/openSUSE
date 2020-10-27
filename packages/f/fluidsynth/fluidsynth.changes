@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 19 11:05:56 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Refresh spec-file via spec-cleaner and manual optimizations.
+- Add Requires:fluid-soundfont-gm.
+- Add user fluidsynth and group audio. 
+- Add files: fluidsynth.conf and fluidsynth.service.
+
+-------------------------------------------------------------------
 Sun Sep 20 09:36:23 UTC 2020 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to version 2.1.5
@@ -536,4 +544,3 @@ Fri Jun  6 16:20:24 CEST 2003 - tiwai@suse.de
 Thu Mar 27 17:22:27 CET 2003 - tiwai@suse.de
 
 - initial version 1.0.0.  iiwusynth is obsoleted.
-

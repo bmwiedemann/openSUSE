@@ -1,0 +1,14 @@
+[Unit]
+Description=FluidSynth GM daemon
+Documentation=man:fluidsynth(1)
+After=sound.target
+
+[Service]
+User=fluidsynth
+Group=audio
+EnvironmentFile=-/etc/sysconfig/fluidsynth
+ExecStart=/usr/bin/fluidsynth -is $OTHER_OPTS $SOUND_FONT
+LimitRTPRIO=90
+
+[Install]
+WantedBy=multi-user.target
