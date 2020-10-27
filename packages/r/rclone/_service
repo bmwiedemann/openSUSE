@@ -3,8 +3,8 @@
     <param name="url">https://github.com/ncw/rclone.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.53.1</param>
-    <param name="revision">v1.53.1</param>
+    <param name="versionformat">1.53.2</param>
+    <param name="revision">v1.53.2</param>
     <param name="filename">rclone</param>
   </service>
   <service name="set_version" mode="disabled"/>
