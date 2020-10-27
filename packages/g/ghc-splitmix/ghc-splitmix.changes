@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 23 02:03:35 UTC 2020 - psimons@suse.com
+
+- Update splitmix to version 0.1.0.3.
+  # 0.1.0.3
+
+  - Fix oops bugs in 0.1.0.2
+
+    - It's lowercase `windows.h`.
+      I blame Microsoft docs for using capital case `Windows.h` in the docs.
+      https://docs.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocessid
+
+    - accidental `shiftL` vs `shiftR` mixup for 32-bit generator initialization.
+      Doesn't affect Linux.
+
+-------------------------------------------------------------------
 Tue Oct 20 02:03:27 UTC 2020 - psimons@suse.com
 
 - Update splitmix to version 0.1.0.2.
