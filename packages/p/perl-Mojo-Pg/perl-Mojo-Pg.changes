@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 26 03:08:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.21
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.21  2020-10-25
+    - Added reset method to Mojo::Pg.
+    - Changed SQL style to use uppercase keywords.
+
+-------------------------------------------------------------------
 Sun Oct  4 03:17:59 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.20
