@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 03:32:21 UTC 2020 - psimons@suse.com
+
+- Update githash to version 0.1.5.0.
+  ## 0.1.5.0
+
+  * Add git tag output via git-describe
+
+-------------------------------------------------------------------
 Tue Sep  1 14:41:29 UTC 2020 - psimons@suse.com
 
 - Update githash to version 0.1.4.0.
