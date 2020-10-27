@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20201025" schemaversion="4.1">
+<image name="OBS__openSUSE___20201026" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201025</productvar>
+      <productvar name="VERSION">20201026</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201025,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20201026,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201025/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20201026/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -322,7 +322,6 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -420,7 +419,6 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
@@ -1344,7 +1342,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krdc"/>
       <repopackage name="krdc-lang"/>
       <repopackage name="krename"/>
@@ -2743,7 +2741,6 @@
       <repopackage name="libschroedinger-1_0-0"/>
       <repopackage name="libSDL-1_2-0"/>
       <repopackage name="libSDL2-2_0-0"/>
-      <repopackage name="libSDL2_image-2_0-0"/>
       <repopackage name="libSDL_gfx15"/>
       <repopackage name="libSDL_image-1_2-0"/>
       <repopackage name="libSDL_mixer-1_2-0"/>
@@ -3282,7 +3279,6 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="mhvtl-kmp-default"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -3492,9 +3488,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -4170,7 +4163,6 @@
       <repopackage name="qemu-uefi-aarch64" arch="x86_64"/>
       <repopackage name="qemu-ui-curses"/>
       <repopackage name="qemu-ui-gtk"/>
-      <repopackage name="qemu-ui-sdl"/>
       <repopackage name="qemu-ui-spice-app"/>
       <repopackage name="qemu-vgabios"/>
       <repopackage name="qemu-vhost-user-gpu"/>
