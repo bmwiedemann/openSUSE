@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 14:38:09 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to address build issues with LLVM11:
+  * 0001-updated-for-compatibility-with-LLVM-10.patch
+  * 0001-updated-for-compatibility-with-LLVM-10-clazy-standal.patch
+
+-------------------------------------------------------------------
 Tue Jun 30 09:18:36 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.7:
