@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 07:44:00 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
 Tue Sep 29 14:34:10 CEST 2020 - tiwai@suse.de
 
 - Don't build / package static library

@@ -1,7 +1,7 @@
 #
 # spec file for package libavtp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/AVnu/libavtp.git
 Source:         %{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cmocka)
