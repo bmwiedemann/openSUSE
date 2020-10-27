@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 22:38:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 3.0
+  * flit_core once again requires Python 3 (>=3.4). Packages that
+    support Python 2 can still be built by flit_core 2.x, but can't
+    rely on new features (:ghpull:`342`).
+- Kill dephell dependency
+
+-------------------------------------------------------------------
 Mon Mar 23 18:13:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add macro %dephell_genspec to generate setup.py

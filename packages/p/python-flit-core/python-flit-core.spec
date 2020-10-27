@@ -16,22 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-flit-core
-Version:        2.1.0
+Version:        3.0.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
 URL:            https://github.com/takluyver/flit
-Source:         https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytoml}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dephell
 Requires:       python-pytoml
 BuildArch:      noarch
 %python_subpackages
@@ -41,13 +40,12 @@ Flit is a simple way to put Python packages and modules on PyPI.
 
 %prep
 %setup -q -n flit_core-%{version}
-%dephell_gensetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/flit_core/tests
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -56,6 +54,7 @@ Flit is a simple way to put Python packages and modules on PyPI.
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/flit_core
+%{python_sitelib}/flit_core-%{version}*-info
 
 %changelog
