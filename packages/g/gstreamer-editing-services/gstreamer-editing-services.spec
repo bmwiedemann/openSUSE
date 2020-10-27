@@ -17,22 +17,23 @@
 #
 
 
+%define _name gst-editing-services
 Name:           gstreamer-editing-services
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        GStreamer Editing Services
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
-Source:         https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{name}-%{version}.tar.xz
-
+URL:            https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-editing-services/html/ges-architecture.html
+Source:         https://gstreamer.freedesktop.org/src/gstreamer-editing-services/%{_name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  flex
+BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject-devel
-# Does not build/get installed when using meson build
-# BuildRequires:  pkgconfig(bash-completion) >= 2.0
+BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.16
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
@@ -147,7 +148,7 @@ a series of classes to simplify the creation of many kind of
 editing-related applications.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson \
@@ -165,17 +166,15 @@ editing-related applications.
 
 %files
 %license COPYING
-%{_mandir}/man1/ges-launch-1.0.1%{ext_man}
+%{_mandir}/man1/ges-launch-1.0.1%{?ext_man}
 %{_bindir}/ges-launch-1.0
-# Does not build/get installed when using meson build.
-#%%{_datadir}/bash-completion/completions/ges-launch-1.0
+%{_datadir}/bash-completion/completions/ges-launch-1.0
 %{_datadir}/gstreamer-1.0/validate/scenarios/ges-edit-clip-while-paused.scenario
 %{_libdir}/gst-validate-launcher/python/launcher/apps/geslaunch.py
 %{python3_sitearch}/gi/overrides/GES.py
 
 %files -n libges-1_0-0
 %license COPYING
-
 %{_libdir}/gstreamer-1.0/libgstges.so
 %{_libdir}/gstreamer-1.0/libgstnle.so
 %{_libdir}/libges-1.0.so.*
