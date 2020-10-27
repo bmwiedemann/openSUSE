@@ -17,7 +17,6 @@
 
 %define goipath github.com/vmware-tanzu/octant
 %define commit 8aebb34922f83894fb02ad393740e96ee1b3d8fe
-%define time %(date +%%Y-%%m-%%dT%%H:%%M:%%S)
 
 Name:           octant
 Version:        0.16.1
@@ -42,7 +41,8 @@ It will ensure certificates are valid and up to date periodically, and attempt t
 %build
 %goprep %{goipath}
 export CGO_ENABLED=0
-%gobuild -mod vendor -ldflags "-X main.version=%{version} -X main.gitCommit=%{commit} -X main.buildTime=%{time}" cmd/octant
+time=$(date -d@${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%S)
+%gobuild -mod vendor -ldflags "-X main.version=%{version} -X main.gitCommit=%{commit} -X main.buildTime=$time" cmd/octant
 
 %install
 %goinstall
