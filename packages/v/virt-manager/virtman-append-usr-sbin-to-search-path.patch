@@ -1,0 +1,19 @@
+References: bsc#1177763
+When virt-manager is launched by a user (non-root) for the first
+time and no connection was previously defined, the user path
+typically does not have /usr/sbin and will therefore fail to find
+the installed libvirtd.
+
+
+--- virt-manager-3.1.0/virtManager/lib/connectauth.py.orig	2020-10-23 13:18:59.894366558 -0600
++++ virt-manager-3.1.0/virtManager/lib/connectauth.py	2020-10-23 13:20:03.050368102 -0600
+@@ -204,7 +204,8 @@ def connect_error(conn, errmsg, tb, warn
+ ##################################
+ 
+ def setup_first_uri(config, tryuri):
+-    libvirtd_installed = bool(shutil.which("libvirtd"))
++    # Add /usr/sbin to the path in case non-root user launches virt-manager
++    libvirtd_installed = bool(shutil.which("libvirtd", path=os.environ['PATH'] + os.pathsep + "/usr/sbin"))
+     if config.CLITestOptions.fake_no_libvirtd:
+         libvirtd_installed = False
+ 

@@ -52,6 +52,7 @@ Patch126:       virtinst-add-caasp-support.patch
 Patch127:       virtinst-add-sle15-detection-support.patch
 Patch128:       virtinst-add-pvh-support.patch
 Patch129:       virtinst-media-detection.patch
+Patch130:       virtinst-graphics-add-check-for-qemu-modules-in-spice-graphic.patch
 # Bug Fixes
 Patch151:       virtman-increase-setKeepAlive-count.patch
 Patch152:       virtman-allow-destroy-from-shutdown-menu-of-crashed-vm.patch
@@ -62,6 +63,7 @@ Patch156:       virtman-dont-specify-gtksource-version.patch
 Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
+Patch160:       virtman-append-usr-sbin-to-search-path.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch
@@ -174,6 +176,7 @@ machine).
 %patch127 -p1
 %patch128 -p1
 %patch129 -p1
+%patch130 -p1
 # Bug Fixes
 %patch151 -p1
 %patch152 -p1
@@ -184,6 +187,7 @@ machine).
 %patch157 -p1
 %patch158 -p1
 %patch159 -p1
+%patch160 -p1
 %patch170 -p1
 %patch171 -p1
 %patch172 -p1

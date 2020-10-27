@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct 25 02:34:44 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- boo#1178141 - Accomodate qemu modularization with respect to
+  spice and spice related optional modules. If full spice support
+  is not detected due to missing qemu modules (v5.1 qemu and newer),
+  use vnc as the default install-time graphics type used
+  virtinst-graphics-add-check-for-qemu-modules-in-spice-graphic.patch
+
+-------------------------------------------------------------------
+Fri Oct 23 13:25:38 MDT 2020 - carnold@suse.com
+
+- bsc#1177763 - Cannot install an existing virtual machine two
+  error messages with Virtual Machine Manager
+  virtman-append-usr-sbin-to-search-path.patch
+
+-------------------------------------------------------------------
 Wed Sep 30 17:07:44 MDT 2020 - carnold@suse.com
 
 - jsc#SLE-16582, Upgrade virt-manager >= 3.x
