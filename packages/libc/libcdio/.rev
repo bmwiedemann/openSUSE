@@ -356,4 +356,12 @@ In home:RedDwarf:cdio it can be seen it doesn't break the build of anything.
     <comment></comment>
     <requestid>715755</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>dcf5be88f1e8339a5bab3f2b5fcd5194</srcmd5>
+    <version>2.1.0</version>
+    <time>1603821597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844244</requestid>
+  </revision>
 </revisionlist>
