@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Oct 23 09:24:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add libgstcodecs and libgstvulkan to baselibs.conf
+
+-------------------------------------------------------------------
+Fri Sep 11 09:43:39 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.18.0:
+  + Highlights:
+    - GstTranscoder: new high level API for applications to
+      transcode media files from one format to another
+    - High Dynamic Range (HDR) video information representation
+      and signalling enhancements
+    - Instant playback rate change support
+    - Active Format Description (AFD) and Bar Data support
+    - RTSP server and client implementations gained ONVIF trick
+      modes support
+    - Hardware-accelerated video decoding on Windows via
+      DXVA2/Direct3D11
+    - Microsoft Media Foundation plugin for video capture and
+      hardware-accelerated video encoding on Windows
+    - qmlgloverlay: New overlay element that renders a QtQuick
+      scene over the top of an input video stream
+    - imagesequencesrc: New element to easily create a video
+      stream from a sequence of jpeg or png images
+    - dashsink: New sink to produce DASH content
+    - dvbsubenc: New DVB Subtitle encoder element
+    - MPEG-TS muxing now also supports TV broadcast compliant
+      muxing with constant bitrate muxing and SCTE-35 support
+    - rtmp2: New RTMP client source and sink element from-scratch
+      implementation
+    - svthevcenc: New SVT-HEVC-based H.265 video encoder
+    - vaapioverlay: New compositor element using VA-API
+    - rtpmanager gained support for Google's Transport-Wide
+      Congestion Control (twcc) RTP extension
+    - splitmuxsink and splitmuxsrc gained support for auxiliary
+      video streams
+    - webrtcbin now contains some initial support for
+      renegotiation involving stream addition and removal
+    - RTP support was enhanced with new RTP source and sink
+      elements to easily set up RTP streaming via rtp:// URIs
+    - avtp: New Audio Video Transport Protocol (AVTP) plugin for
+      Time-Sensitive Applications
+    - Support for the Video Services Forum's Reliable Internet
+      Stream Transport (RIST) TR-06-1 Simple Profile
+    - Universal Windows Platform (UWP) support
+    - rpicamsrc: New element for capturing from the Raspberry Pi
+      camera
+    - RTSP Server TCP interleaved backpressure handling
+      improvements as well as support for Scale/Speed headers
+    - GStreamer Editing Services gained support for nested
+      timelines, per-clip speed rate control and the OpenTimelineIO
+      format.
+    - Autotools build system has been removed in favour of Meson
+- Drop patches:
+  * gst-bad-autoconvert-fix-lock-less.patch
+  * gst-bad-interlace-fixes.patch
+  * gst-plugins-bad-neon-bump.patch
+  * gst-plugins-bad-vkerror.patch
+  * gst-plugins-bad-wayland-headers.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 15:56:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gst-plugins-bad-neon-bump.patch: meson: build with neon 0.31.
