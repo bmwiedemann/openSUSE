@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:38:52 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- move the tcti-fapi tmpfiles.d config file into the libtss2-fapi1 sub-package.
+- improve the descriptions of new libraries (fapi1, cmd0, swtpm0)
+- adjust baselibs.conf to match new library versions and added libraries
+
+-------------------------------------------------------------------
+Mon Oct 19 13:30:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.0.1, changelog at:
+  https://github.com/tpm2-software/tpm2-tss/blob/3.0.x/CHANGELOG.md
+- Update libtss2-sys0 to libtss2-sys1
+- Add new libs:
+  * libtss2-fapi1
+  * libtss2-tcti-cmd0
+  * libtss2-tcti-swtpm0
+
+-------------------------------------------------------------------
 Wed Feb 19 19:37:14 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.3

@@ -340,4 +340,23 @@ This should be handled together with sr#769061</comment>
   * Fixed exported symbols map for libtss2-mu</comment>
     <requestid>778720</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>251bbe54a9272ce963d350f3a0bf2983</srcmd5>
+    <version>3.0.1</version>
+    <time>1603875510</time>
+    <user>dimstar_suse</user>
+    <comment>- also add tctildr0 and cmd0 libraries to baselibs.conf
+- move the tcti-fapi tmpfiles.d config file into the libtss2-fapi1 sub-package.
+- improve the descriptions of new libraries (fapi1, cmd0, swtpm0)
+- adjust baselibs.conf to match new library versions and added libraries
+
+- Update to 3.0.1, changelog at:
+  https://github.com/tpm2-software/tpm2-tss/blob/3.0.x/CHANGELOG.md
+- Update libtss2-sys0 to libtss2-sys1
+- Add new libs:
+  * libtss2-fapi1
+  * libtss2-tcti-cmd0
+  * libtss2-tcti-swtpm0</comment>
+    <requestid>844057</requestid>
+  </revision>
 </revisionlist>
