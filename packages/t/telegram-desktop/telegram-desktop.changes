@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 15:02:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.4
+  * Fix application quit on call end with main window hidden in tray.
+  * Update OpenAL library on Windows.
+  * Several crash fixes.
+- Stricter constraints for i586
+
+-------------------------------------------------------------------
 Fri Oct 16 15:03:56 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Lower constraints on Arm

@@ -31,7 +31,7 @@
 %define __builder ninja
 
 Name:           telegram-desktop
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -136,6 +136,7 @@ Requires:       icu
 Requires:       openssl
 # TDesktop can fall back to a simple GTK file picker but prefers the portal
 Recommends:     xdg-desktop-portal
+Recommends:     libqt5-qtwayland
 
 %description
 Telegram is a non-profit cloud-based instant messaging service.

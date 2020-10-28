@@ -13,6 +13,7 @@
       <arch>aarch64</arch>
       <arch>armv7l</arch>
       <arch>armv6l</arch>
+      <arch>i586</arch>
     </conditions>
     <hardware>
       <physicalmemory>
