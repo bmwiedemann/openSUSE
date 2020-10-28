@@ -1,27 +1,29 @@
-From 8026c9649990d70ebe53c5c7d0c68e74fce28014 Mon Sep 17 00:00:00 2001
+From 04366a23329b4afd73a9c3f5a979d41bf7485ce5 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 17 Mar 2018 23:25:56 +0100
 Subject: [PATCH] Use Xauthority for Xwayland authorization
 
 Currently Xwayland only looks at the uid of the application connecting to it.
 Using Xauthority gives more flexibility here, by having a token which can be
-passed around.
+passed around. This is what kdesu and ssh's X-forwarding expect.
 
-Not only does this allow to grant only certain applications the right to
-connect to the display (e.g. su user xterm) while keeping other applications
-outside, this allows also
-starting applications as other users again
+According to the Xsecurity man page, this is more secure than
+"xhost +si:localuser:root" as non-root processes can actually appear as root
+to the X server in certain circumstances.
+
+To deal with hostname changes, FamilyWild is used for Xauthority, but for Xsm
+XAUTHLOCALHOSTNAME is also set (boo#1177835, downstream patch in xtrans).
 ---
  CMakeLists.txt   |   1 +
- xwl/xwayland.cpp | 103 ++++++++++++++++++++++++++++++++++++++++++++++-
- xwl/xwayland.h   |   3 ++
+ xwl/xwayland.cpp | 104 ++++++++++++++++++++++++++++++++++++++++++++++-
+ xwl/xwayland.h   |   2 +
  3 files changed, 105 insertions(+), 2 deletions(-)
 
-Index: kwin-5.15.80git.20200912T061110~f5900a5fd/CMakeLists.txt
-===================================================================
---- kwin-5.15.80git.20200912T061110~f5900a5fd.orig/CMakeLists.txt	2020-09-12 06:11:10.000000000 +0200
-+++ kwin-5.15.80git.20200912T061110~f5900a5fd/CMakeLists.txt	2020-09-12 11:27:06.232054780 +0200
-@@ -668,6 +668,7 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 87c7ed7f2..3a0565034 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -667,6 +667,7 @@ set(kwin_XLIB_LIBS
      ${X11_ICE_LIB}
      ${X11_SM_LIB}
      ${X11_X11_LIB}
@@ -29,10 +31,10 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/CMakeLists.txt
  )
  
  set(kwin_XCB_LIBS
-Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
-===================================================================
---- kwin-5.15.80git.20200912T061110~f5900a5fd.orig/xwl/xwayland.cpp	2020-09-12 06:11:10.000000000 +0200
-+++ kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp	2020-09-12 11:27:25.688155051 +0200
+diff --git a/xwl/xwayland.cpp b/xwl/xwayland.cpp
+index 5bb08b162..18efe67d8 100644
+--- a/xwl/xwayland.cpp
++++ b/xwl/xwayland.cpp
 @@ -39,6 +39,8 @@
  #include <sys/socket.h>
  #include <cerrno>
@@ -42,7 +44,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
  
  static QByteArray readDisplay(int pipe)
  {
-@@ -77,6 +79,72 @@
+@@ -77,6 +79,73 @@ Xwayland::~Xwayland()
      stop();
  }
  
@@ -65,12 +67,12 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
 +    return data;
 +}
 +
-+static bool addCookieToFile(QString filename, QString &hostname)
++static bool addCookieToFile(QString filename, QString display, QString &hostname)
 +{
 +    QByteArray cookie = getRandomData(16);
-+    char *displayNumber = getenv("DISPLAY");
++    QByteArray displayUtf8 = display.toUtf8();
 +
-+    if(displayNumber == nullptr || displayNumber[0] == '\0' || cookie.count() != 16) {
++    if(displayUtf8.size() < 2 || displayUtf8[0] != ':' || cookie.count() != 16) {
 +        return false;
 +    }
 +
@@ -92,7 +94,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
 +    auth.family = FamilyLocal;
 +    auth.address = localhost;
 +    auth.address_length = strlen(auth.address);
-+    auth.number = displayNumber + 1;
++    auth.number = displayUtf8.data() + 1;
 +    auth.number_length = strlen(auth.number);
 +    auth.name = cookieName;
 +    auth.name_length = sizeof(cookieName) - 1;
@@ -105,6 +107,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
 +    }
 +
 +    auth.family = FamilyWild;
++    auth.address_length = 0;
 +    bool success = XauWriteAuth(authFp, &auth) != 0 && fflush(authFp) != EOF;
 +
 +    fclose(authFp);
@@ -115,7 +118,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
  QProcess *Xwayland::process() const
  {
      return m_xwaylandProcess;
-@@ -88,6 +156,16 @@
+@@ -88,6 +157,16 @@ void Xwayland::start()
          return;
      }
  
@@ -132,7 +135,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
      int pipeFds[2];
      if (pipe(pipeFds) != 0) {
          qCWarning(KWIN_XWL, "Failed to create pipe to start Xwayland: %s", strerror(errno));
-@@ -130,11 +208,15 @@
+@@ -130,11 +209,15 @@ void Xwayland::start()
      env.insert("WAYLAND_SOCKET", QByteArray::number(wlfd));
      env.insert("EGL_PLATFORM", QByteArrayLiteral("DRM"));
      m_xwaylandProcess->setProcessEnvironment(env);
@@ -150,13 +153,13 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
      connect(m_xwaylandProcess, &QProcess::errorOccurred, this, &Xwayland::handleXwaylandError);
      connect(m_xwaylandProcess, &QProcess::started, this, &Xwayland::handleXwaylandStarted);
      connect(m_xwaylandProcess, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
-@@ -328,6 +410,23 @@
+@@ -332,6 +415,23 @@ void Xwayland::handleXwaylandReady()
  
  bool Xwayland::createX11Connection()
  {
 +    if (!m_xwaylandAuthority.fileName().isEmpty()) {
 +        QString hostname;
-+        if (addCookieToFile(m_xwaylandAuthority.fileName(), hostname)) {
++        if (addCookieToFile(m_xwaylandAuthority.fileName(), m_displayName, hostname)) {
 +            setenv("XAUTHORITY", qPrintable(m_xwaylandAuthority.fileName()), 1);
 +            setenv("XAUTHLOCALHOSTNAME", qPrintable(hostname), 1);
 +            auto env = m_app->processStartupEnvironment();
@@ -165,7 +168,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
 +            m_app->setProcessStartupEnvironment(env);
 +        }
 +        else {
-+            std::cerr << "Could not generate Xauthority entry" << std::endl;
++            qCWarning(KWIN_XWL) << "Could not generate Xauthority entry";
 +            // We can't authenticate using it so the server must not see any entries either
 +            m_xwaylandAuthority.resize(0);
 +        }
@@ -174,10 +177,10 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.cpp
      xcb_connection_t *connection = xcb_connect_to_fd(m_xcbConnectionFd, nullptr);
  
      const int errorCode = xcb_connection_has_error(connection);
-Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.h
-===================================================================
---- kwin-5.15.80git.20200912T061110~f5900a5fd.orig/xwl/xwayland.h	2020-09-12 06:11:10.000000000 +0200
-+++ kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.h	2020-09-12 11:27:06.232054780 +0200
+diff --git a/xwl/xwayland.h b/xwl/xwayland.h
+index 0254188e5..bd67d02af 100644
+--- a/xwl/xwayland.h
++++ b/xwl/xwayland.h
 @@ -15,6 +15,7 @@
  #include <QFutureWatcher>
  #include <QProcess>
@@ -186,7 +189,7 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.h
  
  namespace KWin
  {
-@@ -102,6 +103,7 @@
+@@ -102,6 +103,7 @@ private:
      QProcess *m_xwaylandProcess = nullptr;
      QSocketNotifier *m_socketNotifier = nullptr;
      QTimer *m_resetCrashCountTimer = nullptr;
@@ -194,3 +197,6 @@ Index: kwin-5.15.80git.20200912T061110~f5900a5fd/xwl/xwayland.h
      QByteArray m_displayName;
      QFutureWatcher<QByteArray> *m_watcher = nullptr;
      ApplicationWaylandAbstract *m_app;
+-- 
+2.25.1
+

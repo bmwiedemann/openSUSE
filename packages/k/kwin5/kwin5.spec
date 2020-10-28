@@ -36,6 +36,8 @@ Source:         kwin-%{version}.tar.xz
 Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH_FIX-UPSTREAM
+Patch1:         0001-screencast-Handle-the-case-where-pipewire-is-not-ins.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Revert-Make-WindowSwitching-Alt-Tab-the-default-left.patch
 # PATCH-FEATURE-OPENSUSE

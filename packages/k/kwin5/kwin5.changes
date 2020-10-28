@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 26 09:40:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash if pipewire fails to initialize (boo#1178101, kde#427949):
+  * 0001-screencast-Handle-the-case-where-pipewire-is-not-ins.patch
+
+-------------------------------------------------------------------
+Sat Oct 24 09:43:30 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add XAUTHLOCALHOSTNAME back to 0001-Use-Xauthority-for-Xwayland.patch
+  (boo#1177835)
+
+-------------------------------------------------------------------
+Fri Oct 23 19:28:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix Xauthority generation (boo#1177875) by modifying
+  0001-Use-Xauthority-for-Xwayland-authorization.patch:
+  * DISPLAY is not in the environment at that point, use m_displayName
+  * Drop XAUTHLOCALHOSTNAME, FamilyWild takes care of that
+  * FamilyWild doesn't need an address
+
+-------------------------------------------------------------------
 Tue Oct 20 14:30:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.1
