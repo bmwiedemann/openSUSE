@@ -29,6 +29,7 @@ Patch0:         disable-sandboxed-test.patch
 Patch1:         memory_failure_early_kill.patch
 Patch2:         bigendian.patch
 Patch3:         powerpc.patch
+Patch4:         disable_no_new_privs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

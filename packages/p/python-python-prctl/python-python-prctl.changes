@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:54:52 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable test of no_new_privs with disable_no_new_privs.patch
+  test fails, because ping doesn't use capabilities anymore (boo#1174504)
+
+-------------------------------------------------------------------
 Fri Sep  4 13:48:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Fixing arch-dependent test failures (bsc#1176085):
