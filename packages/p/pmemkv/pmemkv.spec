@@ -17,7 +17,7 @@
 
 
 Name:           pmemkv
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Key/Value Datastore for Persistent Memory
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source:         https://github.com/pmem/pmemkv/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  libpmemobj-cpp-devel >= 1.10
+BuildRequires:  libpmemobj-cpp-devel >= 1.11
 BuildRequires:  libpmemobj-devel >= 1.8
 BuildRequires:  memkind-devel >= 1.8.0
 BuildRequires:  pkgconfig
@@ -72,14 +72,13 @@ This package contains the header files for libpmemkv and libpmemkv_json_config
 %prep
 %setup -q
 
-
 %build
+# ENGINE_VCMAP needs package-config(tbb) which is currently not available
 %cmake -DTESTS_USE_VALGRIND=0 -DENGINE_VCMAP=0
 %make_build
 
 %install
 %cmake_install
-
 
 %post   -n libpmemkv1 -p /sbin/ldconfig
 %postun -n libpmemkv1 -p /sbin/ldconfig
