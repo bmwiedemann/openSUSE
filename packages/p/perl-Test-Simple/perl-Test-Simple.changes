@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 23 03:11:04 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302183
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302183  2020-10-21 20:10:36-07:00 America/Los_Angeles
+
+      - avoid closing over scalar in BEGIN block in cmp_ok eval
+
+-------------------------------------------------------------------
 Wed Oct  7 03:12:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302182
