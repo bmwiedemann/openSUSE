@@ -370,4 +370,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>812366</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8cc1395bd9755cc3059380bd6d5c2c8f</srcmd5>
+    <version>1.4.4.6~git0.71baa8cb2</version>
+    <time>1603875756</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 844487 from firstyear)</comment>
+    <requestid>844488</requestid>
+  </revision>
 </revisionlist>

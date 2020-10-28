@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct 27 01:48:44 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.6~git0.71baa8cb2:
+  * Bump version to 1.4.4.6
+  * Issue 4262 - Remove legacy tools subpackage (final cleanup)
+  * Issue 4262 - Remove legacy tools subpackage (restart instances after rpm install)
+  * Issue 4262 - Remove legacy tools subpackage
+  * Issue 2526 - revert API change in slapi_be_getsuffix()
+  * Issue 4363 - Sync repl: per thread structure was incorrectly initialized (#4395)
+  * Issue 4392 - Update create_test.py
+  * Issue 2820 - Fix CI tests (#4365)
+  * Issue 2526 - suffix management in backends incorrect
+  * Issue 4389 - errors log with incorrectly formatted message parent_update_on_childchange
+
+-------------------------------------------------------------------
+Mon Jul 13 04:38:39 UTC 2020 - wbrown@suse.de
+
+- Update to version 1.4.4.4~git0.318a3ce0c:
+  * Bump version to 1.4.4.4
+  * Ticket 51175 - resolve plugin name leaking
+  * Issue 51187 - UI - stop importing Cockpit's PF css
+  * Issue 51192 - Add option to reject internal unindexed searches
+  * Issue 50840 - Fix test docstrings metadata-1
+  * Issue 50840 - Fix test docstrings metadata
+  * Ticket 50980 - fix foo_filter_rewrite
+  * Issue 51165 - add more logconv stats for the new access log keywords
+  * Issue 50928 - Unable to create a suffix with countryName either via dscreate or the admin console
+  * Issue 51188 - db2ldif crashes when LDIF file can't be accessed
+  * Issue 50545 - Port remaining legacy tools to new python CLI
+  * Issue 51165 - add new access log keywords for wtime and optime
+  * Issue : 49761 - Fix CI test suite issues ( Port remaning acceptance test suit part 1)
+  * Issue: 51070 - Port Import TET module to python3 part2
+  * Issue:51142 - Port manage Entry TET suit to python 3 part 1
+  * Issue: 50860 - Port Password Policy test cases from TET to python3 final
+  * Issue 50696 - Fix Allowed and Denied Ciphers lists - WebUI
+  * Issue 51169 - UI - attr uniqueness - selecting empty subtree crashes cockpit
+  * Issue 49256 - log warning when thread number is very different from autotuned value
+  * Issue 51157 - Reindex task may create abandoned index file
+  * Issue 50873 - Fix issues with healthcheck tool
+  * Issue:50860 - Port Password Policy test cases from TET to python3 part2
+  * Issue 51166 - Log an error when a search is fully unindexed
+  * Ticket 50544 - OpenLDAP syncrepl compatability
+  * Ticket 51161 - fix SLE15.2 install issps
+  * Issue 49999 - rpm.mk build-cockpit should clean cockpit_dist first
+  * Issue 51144 - dsctl fails with instance names that contain slapd-
+  * Issue 51155 - Fix OID for sambaConfig objectclass
+  * Ticket 51159 - dsidm ou delete fails
+  * Issue 50984 - Memory leaks in disk monitoring
+  * Ticket 51131 - improve mutex alloc in conntable
+  * Issue 49761 - Fix CI tests
+  * Ticket 49859 - A distinguished value can be missing in an entry
+  * Issue 50791 - Healthcheck should look for notes=A/F in access log
+  * Issue 51072 - Set the default minimum worker threads
+  * Ticket 51140 - missing ifdef
+  * Issue 50912 - pwdReset can be modified by a user
+  * Issue 50781 - Make building cockpit plugin optional
+  * Issue 51100 - Correct numSubordinates value for cn=monitor
+  * Issue 51136 - dsctl and dsidm do not errors correctly when using JSON
+  * Ticket 137 - fix compiler warning
+  * Issue 50781 - Make building cockpit plugin optional
+  * Issue 51132 - Winsync setting winSyncWindowsFilter not working as expected
+  * Ticket 51034 - labeledURIObject
+  * Issue 50545 - Port remaining legacy tools to new python CLI
+  * Issue 50889 - Extract pem files into a private namespace
+  * Ticket 137 - Implement EntryUUID plugin
+  * Ticket 51072 - improve autotune defaults
+  * Ticket 51115 - enable samba3.ldif by default
+  * Issue 51118 - UI - improve modal validation when creating an instance
+  * Issue 50746 - Add option to healthcheck to list all the lint reports
+
+-------------------------------------------------------------------
 Sun May 31 23:52:49 UTC 2020 - wbrown@suse.de
 
 - Update to version 1.4.4.3~git0.7b79b89c1:

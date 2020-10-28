@@ -1,18 +1,13 @@
-<!-- the file should only be named _service, but i named it _service.xml to trigger gitlab syntax highlighting -->
 <services>
-  <!-- configuration for the tar service -->
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://pagure.io/389-ds-base.git</param>
+    <param name="url">https://github.com/389ds/389-ds-base.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">389-ds-base-1.4.4.3</param>
-    <param name="match-tag">389-ds-base-1.4.4.3</param>
-    <!-- remove the extra prefix from the tag again it looks so funny because the service removed "-" from the string before-->
+    <param name="revision">389-ds-base-1.4.4.6</param>
+    <param name="match-tag">389-ds-base-1.4.4.6</param>
     <param name="versionrewrite-pattern">389dsbase(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <!-- run osc vc for us with the git changes -->
     <param name="changesgenerate">enable</param>
-    <!-- email address for the changes entry -->
     <param name="changesauthor">wbrown@suse.de</param>
   </service>
   <service mode="disabled" name="tar" />
@@ -20,7 +15,10 @@
     <param name="file">*.tar</param>
     <param name="compression">bz2</param>
   </service>
-  <!-- update version field in the spec file -->
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">389-ds-base</param>
+     <param name="compression">xz</param>
+  </service>
   <service mode="disabled" name="set_version" />
 </services>
 

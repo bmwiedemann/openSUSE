@@ -51,7 +51,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        1.4.4.3~git0.7b79b89c1
+Version:        1.4.4.6~git0.71baa8cb2
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -61,7 +61,8 @@ Source:         389-ds-base-%{version}.tar.bz2
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
 %if %{with rust}
-Source3:        vendor.tar.gz
+Source3:        vendor.tar.xz
+# Source4:        cargo_config
 %endif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
@@ -252,6 +253,8 @@ uses the facilities provided by NSS.
 # Extract the vendor.tar.gz. The -D -T here prevents removal of the sources
 # from the previous setup step.
 %if %{with rust}
+# mkdir .cargo
+# cp %{SOURCE4} .cargo/config
 %setup -q -n %{name}-base-%{version} -D -T -a 3
 %endif
 
@@ -409,6 +412,8 @@ exit 0
 %{_mandir}/man5/*
 %if %{with lib389}
 %{_mandir}/man8/ns-slapd.8.gz
+%{_mandir}/man8/openldap_to_ds.8.gz
+
 # With lib389 we don't package all the man pages for deprecated commands. Upstream needs to remove
 # these from the build with --disable-perl flag set.
 # These are excluded now
@@ -459,6 +464,7 @@ exit 0
 # This also needs a lot more work on the service file
 #attr(750,root,dirsrv) #caps(CAP_NET_BIND_SERVICE=pe) #{_sbindir}/ns-slapd
 %verify(not caps) %attr(755,root,root) %{_sbindir}/ns-slapd
+%{_sbindir}/openldap_to_ds
 %if ! %{with lib389}
 %{_sbindir}/bak2db
 %{_sbindir}/bak2db.pl
