@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Goxel
+GenericName=Voxel graphics editor
+Comment=3D voxel graphics editor
+Exec=goxel
+Icon=goxel
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;
+StartupNotify=false
