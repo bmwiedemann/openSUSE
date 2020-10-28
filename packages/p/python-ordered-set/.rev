@@ -41,4 +41,14 @@
 </comment>
     <requestid>826115</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>655369d94c0ed4258a1885e87dcf0099</srcmd5>
+    <version>3.1.1</version>
+    <time>1603875431</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pycache_only %python_sitelib instead of %python3_sitelib
+  fixes gh#openSUSE/python-rpm-macros#64#issuecomment-715373348
+</comment>
+    <requestid>843677</requestid>
+  </revision>
 </revisionlist>

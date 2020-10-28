@@ -79,7 +79,7 @@ cp -r ordered_set.egg-info %{buildroot}%{$python_sitelib}/ordered_set-%{version}
 %doc README.md
 %{python_sitelib}/%{dir_name}-*
 %{python_sitelib}/%{dir_name}.py*
-%pycache_only %{python3_sitelib}/__pycache__/%{dir_name}.*
+%pycache_only %{python_sitelib}/__pycache__/%{dir_name}.*
 %endif
 
 %changelog
