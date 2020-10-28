@@ -47,21 +47,21 @@ BuildRequires:  cmake(KF5KIO) >= 5.25.0
 BuildRequires:  cmake(KF5Kross) >= 5.25.0
 BuildRequires:  cmake(KF5NewStuff) >= 5.25.0
 BuildRequires:  cmake(KF5Plasma) >= 5.25.0
+BuildRequires:  cmake(KF5Purpose) >= 5.25.0
 BuildRequires:  cmake(KF5Runner) >= 5.25.0
 BuildRequires:  cmake(KF5Service) >= 5.25.0
 BuildRequires:  cmake(KF5UnitConversion) >= 5.25.0
 #!BuildIgnore: kwin5
-BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
-%if 0%{?suse_version} > 1314 && "%{suse_version}" != "1320"
-BuildRequires:  cmake(KDEExperimentalPurpose)
-%endif
 BuildRequires:  xz
+BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
 BuildRequires:  cmake(Qt5Core) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Gui) >= 5.4.0
 BuildRequires:  cmake(Qt5Qml) >= 5.4.0
 BuildRequires:  cmake(Qt5Quick) >= 5.4.0
+%ifnarch ppc ppc64 ppc64le s390 s390x riscv64
 BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
+%endif
 BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
 BuildRequires:  pkgconfig(x11)
@@ -110,7 +110,7 @@ the Plasma desktop.
 %license COPYING*
 %{_kf5_knsrcfilesdir}/comic.knsrc
 %{_kf5_libdir}/libplasmacomicprovidercore.so.*
-%{_libdir}/libplasmapotdprovidercore.so*
+%{_kf5_libdir}/libplasmapotdprovidercore.so.*
 %{_kf5_servicetypesdir}/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
@@ -123,17 +123,12 @@ the Plasma desktop.
 %files devel
 %license COPYING*
 %dir %{_includedir}/plasma
-%dir %{_includedir}/plasma/potdprovider
-%{_includedir}/plasma/potdprovider/plasma_potd_export.h
-%{_includedir}/plasma/potdprovider/potdprovider.h
-%dir %{_kf5_cmakedir}/PlasmaPotdProvider/
-%{_kf5_cmakedir}/PlasmaPotdProvider/PlasmaPotdProviderConfig.cmake
-%{_kf5_cmakedir}/PlasmaPotdProvider/PlasmaPotdProviderConfigVersion.cmake
-%{_kf5_cmakedir}/PlasmaPotdProvider/PlasmaPotdProviderTargets-none.cmake
-%{_kf5_cmakedir}/PlasmaPotdProvider/PlasmaPotdProviderTargets.cmake
+%{_includedir}/plasma/potdprovider
+%{_kf5_cmakedir}/PlasmaPotdProvider/
 %dir %{_kf5_sharedir}/kdevappwizard
 %dir %{_kf5_sharedir}/kdevappwizard/templates/
-%{_kf5_sharedir}/kdevappwizard/templates/plasmapotdprovider.tar.bz2
+%{_kf5_sharedir}/kdevappwizard/templates/*
+%{_kf5_libdir}/libplasmapotdprovidercore.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
