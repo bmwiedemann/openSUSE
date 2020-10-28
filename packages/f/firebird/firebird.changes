@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 11:52:16 UTC 2020 - Michal Kubeček <mkubecek@suse.cz>
+
+- update to upstream version 3.0.6
+  * add better transaction control in isql (CORE-4933)
+  * increase parse speed of long queries (CORE-6274)
+  * improve performance when using SRP plugin (CORE-6237)
+- refresh
+  * work-around-g-problem-in-SLE11.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 08:39:13 UTC 2020 - Michal Kubecek <mkubecek@suse.cz>
 
 - minor specfile cleanup

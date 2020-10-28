@@ -19,7 +19,7 @@
 %define up_stage 0
 
 Name:           firebird
-Version:        3.0.5.33220
+Version:        3.0.6.33328
 Release:        0
 Summary:        Database system (common files)
 License:        SUSE-IDPL-1.0 AND SUSE-IBPL-1.0

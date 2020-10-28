@@ -436,4 +436,12 @@ Changes against the original submit request:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>818337</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7878250514b3db41808975def876d255</srcmd5>
+    <version>3.0.6.33328</version>
+    <time>1603875475</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843769</requestid>
+  </revision>
 </revisionlist>
