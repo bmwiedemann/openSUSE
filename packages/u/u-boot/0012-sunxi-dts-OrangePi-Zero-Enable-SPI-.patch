@@ -1,0 +1,29 @@
+From 6b1054580c7d2fce12c3aea4a4fe7874dad54684 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 28 Sep 2020 23:02:01 +0200
+Subject: [PATCH] sunxi: dts: OrangePi Zero: Enable SPI flash.
+
+This flash is optional but new boards do have it, and on boards that
+don't the pins are routed to the flash pads anyway.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
+index 3f0d0281ba..b08e84c616 100644
+--- a/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -164,8 +164,8 @@
+ };
+ 
+ &spi0 {
+-	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
+-	status = "disabled";
++	/* Enable SPI NOR by default: it optional on Orange Pi Zero boards */
++	status = "okay";
+ 
+ 	flash@0 {
+ 		#address-cells = <1>;

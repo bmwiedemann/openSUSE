@@ -1,4 +1,4 @@
-From 4a9ece206c304a7dd8d05797102f333a7ccb5777 Mon Sep 17 00:00:00 2001
+From 0e5ee623eb68459199c41161e67bffe422e89096 Mon Sep 17 00:00:00 2001
 From: Alexander Graf <agraf@suse.de>
 Date: Mon, 2 May 2016 23:25:07 +0200
 Subject: [PATCH] Revert "Revert "omap3: Use raw SPL by default for mmc1""
@@ -9,10 +9,10 @@ This reverts commit 7fa75d0ac5502db813d109c1df7bd0da34688685.
  1 file changed, 2 deletions(-)
 
 diff --git a/arch/arm/mach-omap2/boot-common.c b/arch/arm/mach-omap2/boot-common.c
-index 734fa9d9e6..a35451f195 100644
+index cb9d7fdb15..50dec906df 100644
 --- a/arch/arm/mach-omap2/boot-common.c
 +++ b/arch/arm/mach-omap2/boot-common.c
-@@ -132,8 +132,6 @@ void save_omap_boot_params(void)
+@@ -133,8 +133,6 @@ void save_omap_boot_params(void)
  	    (boot_device <= MMC_BOOT_DEVICES_END)) {
  		switch (boot_device) {
  		case BOOT_DEVICE_MMC1:

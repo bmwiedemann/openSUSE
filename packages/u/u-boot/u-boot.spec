@@ -35,6 +35,7 @@
 %define is_armv8 0
 %define is_ppc 0
 %define is_riscv64 0
+%define is_zynq 0
 %define is_zynqmp 0
 %define tools_only 0
 %if "%target" == "rpi" || "%target" == "rpi2" || "%target" == "rpi3" || "%target" == "rpi4" || "%target" == "rpiarm64"
@@ -83,6 +84,11 @@
 %define sunxi_spl 1
 %define binext .itb
 %endif
+
+%if "%target" == "mt7623nbpir2"
+%define is_armv7 1
+%endif
+
 %if "%target" == "orangepipc2"
 %define is_h5 1
 %define is_armv8 1
@@ -95,7 +101,7 @@
 %define sunxi_spl 1
 %define binext .itb
 %endif
-%if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3"
+%if "%target" == "bananapi" || "%target" == "cubieboard" || "%target" == "cubieboard2" || "%target" == "cubietruck" || "%target" == "melea1000" || "%target" == "a10-olinuxino-lime" || "%target" == "a13-olinuxino" || "%target" == "a13-olinuxinom" || "%target" == "a20-olinuxino-lime" || "%target" == "a20-olinuxino-lime2" || "%target" == "a20-olinuxinomicro" || "%target" == "nanopineo" || "%target" == "orangepipc" || "%target" == "hyundaia7hd" || "%target" == "lamobor1" || "%target" == "bananapim2plush3" || "%target" == "orangepizero"
 %define is_armv7 1
 %define binext .img
 %define sunxi_spl 1
@@ -148,18 +154,22 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "zynqzturn"
+%if "%target" == "zynqzturn" || "%target" == "xilinxzynqvirt"
+%define is_zynq 1
 %define is_armv7 1
 %define binext .img
 %endif
 %if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifivefu540"
 %define is_riscv64 1
+%if "%target" == "sifivefu540"
+%define binext .itb
+%endif
 %endif
 %if "%target" == "qemu-ppce500"
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2020.04
+%define archive_version 2020.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -191,7 +201,7 @@ ExclusiveArch:  do_not_build
 %endif
 %bcond_with uboot_atf
 %bcond_with uboot_atf_pine64
-Version:        2020.04
+Version:        2020.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -213,22 +223,9 @@ Patch0007:      0007-boo-1144161-Remove-nand-mtd-spi-dfu.patch
 Patch0008:      0008-Kconfig-add-btrfs-to-distro-boot.patch
 Patch0009:      0009-configs-Re-sync-with-CONFIG_DISTRO_.patch
 Patch0010:      0010-configs-am335x_evm-disable-BTRFS.patch
-Patch0011:      0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
-Patch0012:      0012-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
-Patch0013:      0013-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
-Patch0014:      0014-usb-xhci-Add-missing-cache-flush-in.patch
-Patch0015:      0015-usb-xhci-Use-only-32-bit-accesses-i.patch
-Patch0016:      0016-pci-Move-some-PCIe-register-offset-.patch
-Patch0017:      0017-rpi4-shorten-a-mapping-for-the-DRAM.patch
-Patch0018:      0018-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
-Patch0019:      0019-linux-bitfield.h-Add-primitives-for.patch
-Patch0020:      0020-pci-Add-some-PCI-Express-capability.patch
-Patch0021:      0021-pci-Add-driver-for-Broadcom-STB-PCI.patch
-Patch0022:      0022-config-Enable-support-for-the-XHCI-.patch
-Patch0023:      0023-arm-rpi-Add-function-to-trigger-VL8.patch
-Patch0024:      0024-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
-Patch0025:      0025-config-Enable-USB-Keyboard-support-.patch
-Patch0026:      0026-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+Patch0011:      0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
+Patch0012:      0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
+Patch0013:      0013-sunxi-Enable-SPI-support-on-Orange-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -306,6 +303,9 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
+%if "%{name}" == "u-boot-sifivefu540"
+BuildRequires:  opensbi-sifivefu540 >= 0.7
+%endif
 %if %x_loader == 1
 Obsoletes:      x-loader-%target
 Provides:       x-loader-%target
@@ -377,6 +377,9 @@ export BL31=%{_datadir}/arm-trusted-firmware-sun50ia64/bl31.bin
 %if 0%{?is_h6}
 export BL31=%{_datadir}/arm-trusted-firmware-sun50ih6/bl31.bin
 %endif
+%if "%{name}" == "u-boot-sifivefu540"
+export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
+%endif
 
 %if %{with uboot_atf}
 %if "%{name}" == "u-boot-rock64-rk3328"
@@ -387,16 +390,22 @@ cp %{_datadir}/arm-trusted-firmware-rk3399/bl31.elf .
 %endif
 %endif
 
-%if !%{is_zynqmp}
-confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
-%else
+%if %{is_zynq}
+confname="xilinx_zynq_virt_defconfig"
+%elif %{is_zynqmp}
 confname="xilinx_zynqmp_virt_defconfig"
+%else
+confname=$(ls configs | perl -ne '$l=lc; $l=~ s,_,,g; $l eq "%{target}defconfig\n" && print;')
+%endif
+
 %if "%target" == "avnetultra96rev1"
 export DEVICE_TREE=avnet-ultra96-rev1
 %endif
 %if "%target" == "xilinxzynqmpzcu102rev10"
 export DEVICE_TREE=zynqmp-zcu102-rev1.0
 %endif
+%if "%target" == "zynqzturn"
+export DEVICE_TREE=zynq-zturn
 %endif
 
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
@@ -523,6 +532,9 @@ echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.tx
 %endif
 %if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
 echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
+%endif
+%if "%{name}" == "u-boot-sifivefu540"
+install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 
 %if 0%{?is_rpi}

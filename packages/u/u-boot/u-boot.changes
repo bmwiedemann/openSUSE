@@ -1,7 +1,114 @@
 -------------------------------------------------------------------
+Wed Oct 14 09:48:25 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Fix last change
+
+-------------------------------------------------------------------
+Mon Oct 12 09:55:35 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add xilinxzynqvirt virtual flavor (similar to xilinxzynqmpvirt)
+- zynq-zturn is provided by xilinx_zynq_virt config
+
+-------------------------------------------------------------------
+Thu Oct  8 10:04:51 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to v2020.10
+
+-------------------------------------------------------------------
+Tue Oct  6 13:05:30 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable SPL on SiFive FU540
+
+-------------------------------------------------------------------
+Thu Oct  1 14:45:44 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches added:
+  0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
+  0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
+  0013-sunxi-Enable-SPI-support-on-Orange-.patch
+
+-------------------------------------------------------------------
+Wed Sep 30 18:31:44 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Add Orange Pi Zero build
+
+-------------------------------------------------------------------
+Thu Sep 29 14:57:56 UTC 2020 - Matthias Brugger <mbrugger@suse.com>
+
+- Add Bananpi-R2 build
+
+-------------------------------------------------------------------
+Tue Sep 29 12:56:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+* Update to v2020.10-rc5
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches dropped:
+  0011-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+
+-------------------------------------------------------------------
+Fri Sep 18 13:41:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+* Update to v2020.10-rc4
+Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.10
+* Patches dropped:
+  0011-usb-xhci-Add-missing-cache-flush-in.patch
+  0012-usb-xhci-Use-only-32-bit-accesses-i.patch
+  0013-pci-Move-some-PCIe-register-offset-.patch
+  0014-rpi4-shorten-a-mapping-for-the-DRAM.patch
+  0015-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
+  0016-linux-bitfield.h-Add-primitives-for.patch
+  0017-pci-Add-some-PCI-Express-capability.patch
+  0018-pci-Add-driver-for-Broadcom-STB-PCI.patch
+  0019-config-Enable-support-for-the-XHCI-.patch
+  0020-arm-rpi-Add-function-to-trigger-VL8.patch
+  0021-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
+  0022-config-Enable-USB-Keyboard-support-.patch
+  0023-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+* Patches added:
+  0011-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+
+-------------------------------------------------------------------
 Sun Aug  9 19:41:12 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use python3 for pyelftools
+
+-------------------------------------------------------------------
+Wed Jul 15 11:29:18 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+* Update to v2020.07
+  Patch queue updated from git://github.com/openSUSE/u-boot.git tumbleweed-2020.07
+* Patches dropped:
+  0011-net-bcmgenet-Don-t-set-ID_MODE_DIS-.patch
+  0012-uboot-fs-btrfs-Use-LZO_LEN-to-repla.patch
+  0013-uboot-fs-btrfs-Fix-LZO-false-decomp.patch
+  0014-usb-xhci-Add-missing-cache-flush-in.patch
+  0015-usb-xhci-Use-only-32-bit-accesses-i.patch
+  0016-pci-Move-some-PCIe-register-offset-.patch
+  0017-rpi4-shorten-a-mapping-for-the-DRAM.patch
+  0018-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
+  0019-linux-bitfield.h-Add-primitives-for.patch
+  0020-pci-Add-some-PCI-Express-capability.patch
+  0021-pci-Add-driver-for-Broadcom-STB-PCI.patch
+  0022-config-Enable-support-for-the-XHCI-.patch
+  0023-arm-rpi-Add-function-to-trigger-VL8.patch
+  0024-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
+  0025-config-Enable-USB-Keyboard-support-.patch
+  0026-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
+* Patches added:
+  0011-usb-xhci-Add-missing-cache-flush-in.patch
+  0012-usb-xhci-Use-only-32-bit-accesses-i.patch
+  0013-pci-Move-some-PCIe-register-offset-.patch
+  0014-rpi4-shorten-a-mapping-for-the-DRAM.patch
+  0015-rpi4-add-a-mapping-for-the-PCIe-XHC.patch
+  0016-linux-bitfield.h-Add-primitives-for.patch
+  0017-pci-Add-some-PCI-Express-capability.patch
+  0018-pci-Add-driver-for-Broadcom-STB-PCI.patch
+  0019-config-Enable-support-for-the-XHCI-.patch
+  0020-arm-rpi-Add-function-to-trigger-VL8.patch
+  0021-usb-xhci-Load-Raspberry-Pi-4-VL805-.patch
+  0022-config-Enable-USB-Keyboard-support-.patch
+  0023-configs-rpi-set-NR_DRAM_BANKS-to-fo.patch
 
 -------------------------------------------------------------------
 Tue Jun  2 06:54:36 UTC 2020 - Matthias Brugger <mbrugger@suse.com>

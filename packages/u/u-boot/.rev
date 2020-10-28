@@ -1555,4 +1555,12 @@ boundary checks.
     <comment></comment>
     <requestid>825924</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>13b93399b0b1ad300365e3d7322dd849</srcmd5>
+    <version>2020.10</version>
+    <time>1603880730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842537</requestid>
+  </revision>
 </revisionlist>

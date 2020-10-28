@@ -1,19 +1,19 @@
-From be3112208a9246eb6f0bd15947154db0bef65d26 Mon Sep 17 00:00:00 2001
-From: Guillaume GARDET <guillaume.gardet@free.fr>
-Date: Tue, 29 Jan 2019 11:38:12 +0100
+From 8731159e77b49b6d89cc4ae5364dfe10ffacc49e Mon Sep 17 00:00:00 2001
+From: Guillaume Gardet <guillaume.gardet@arm.com>
+Date: Fri, 18 Sep 2020 15:28:41 +0200
 Subject: [PATCH] boo#1123170: Remove ubifs support from omap3_beagle to keep a
  small u-boot.img
 
 ---
- configs/omap3_beagle_defconfig | 2 +-
+ configs/omap3_beagle_defconfig | 3 ++-
  include/configs/omap3_beagle.h | 1 -
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/configs/omap3_beagle_defconfig b/configs/omap3_beagle_defconfig
-index ed7cb8f2ff..03dc3b27d4 100644
+index 1447dab344..86c2435b62 100644
 --- a/configs/omap3_beagle_defconfig
 +++ b/configs/omap3_beagle_defconfig
-@@ -38,7 +38,6 @@ CONFIG_CMD_FS_UUID=y
+@@ -43,7 +43,6 @@ CONFIG_CMD_FS_UUID=y
  CONFIG_CMD_MTDPARTS=y
  CONFIG_MTDIDS_DEFAULT="nand0=omap2-nand.0"
  CONFIG_MTDPARTS_DEFAULT="mtdparts=omap2-nand.0:512k(spl),1920k(u-boot),128k(u-boot-env),128k(dtb),6m(kernel),-(rootfs)"
@@ -21,19 +21,20 @@ index ed7cb8f2ff..03dc3b27d4 100644
  # CONFIG_ISO_PARTITION is not set
  # CONFIG_SPL_EFI_PARTITION is not set
  CONFIG_SPL_PARTITION_UUIDS=y
-@@ -73,6 +72,7 @@ CONFIG_SYS_NAND_BUSWIDTH_16BIT=y
+@@ -78,6 +77,8 @@ CONFIG_SYS_NAND_BUSWIDTH_16BIT=y
  CONFIG_SYS_NAND_U_BOOT_LOCATIONS=y
  CONFIG_SYS_NAND_U_BOOT_OFFS=0x80000
- CONFIG_SPL_NAND_SIMPLE=y
+ CONFIG_DM_ETH=y
++CONFIG_SPL_NAND_SIMPLE=y
 +CONFIG_MTD_UBI=y
  CONFIG_SPI=y
  CONFIG_DM_SPI=y
  CONFIG_OMAP3_SPI=y
 diff --git a/include/configs/omap3_beagle.h b/include/configs/omap3_beagle.h
-index bc8aa7adf5..ee1d36003e 100644
+index 6563335f91..bc19317387 100644
 --- a/include/configs/omap3_beagle.h
 +++ b/include/configs/omap3_beagle.h
-@@ -82,7 +82,6 @@
+@@ -81,7 +81,6 @@
  #define BOOT_TARGET_DEVICES(func) \
  	func(MMC, mmc, 0) \
  	func(LEGACY_MMC, legacy_mmc, 0) \

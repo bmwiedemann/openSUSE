@@ -1,4 +1,4 @@
-From 0403d42def8d2ea3251f131a05ff9f76de2b602a Mon Sep 17 00:00:00 2001
+From f6c178cc6540fc57888e06c36f1813910f5432ed Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 10:26:43 +0100
 Subject: [PATCH] configs: am335x_evm: disable BTRFS
@@ -11,10 +11,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 2 insertions(+)
 
 diff --git a/configs/am335x_evm_defconfig b/configs/am335x_evm_defconfig
-index ccb11c9b2a..1894678eea 100644
+index 78202a55c7..1d32f9589a 100644
 --- a/configs/am335x_evm_defconfig
 +++ b/configs/am335x_evm_defconfig
-@@ -61,3 +61,5 @@ CONFIG_DYNAMIC_CRC_TABLE=y
+@@ -66,3 +66,5 @@ CONFIG_DYNAMIC_CRC_TABLE=y
  CONFIG_RSA=y
  CONFIG_LZO=y
  # CONFIG_OF_LIBFDT_OVERLAY is not set

@@ -1,4 +1,4 @@
-From 91c18e17e22e76454d0ed7f75a1a1ec6c6637084 Mon Sep 17 00:00:00 2001
+From 19be21a06d5b85f6be87c1ccd2631aff79e0e416 Mon Sep 17 00:00:00 2001
 From: Guillaume GARDET <guillaume.gardet@free.fr>
 Date: Mon, 9 Apr 2018 10:28:26 +0200
 Subject: [PATCH] Temp workaround for Chromebook snow to avoid the 'unable to
@@ -9,10 +9,10 @@ Subject: [PATCH] Temp workaround for Chromebook snow to avoid the 'unable to
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mmc/dw_mmc.c b/drivers/mmc/dw_mmc.c
-index 1224540811..5c1cac97e4 100644
+index 7702f4be3f..ff2cd946fc 100644
 --- a/drivers/mmc/dw_mmc.c
 +++ b/drivers/mmc/dw_mmc.c
-@@ -600,7 +600,8 @@ void dwmci_setup_cfg(struct mmc_config *cfg, struct dwmci_host *host,
+@@ -603,7 +603,8 @@ void dwmci_setup_cfg(struct mmc_config *cfg, struct dwmci_host *host,
  		cfg->host_caps |= MMC_MODE_4BIT;
  		cfg->host_caps &= ~MMC_MODE_8BIT;
  	}

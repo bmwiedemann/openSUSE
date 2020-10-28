@@ -1,4 +1,4 @@
-From c2dd94a9854d148a77cee50f3f9b4757db3a060f Mon Sep 17 00:00:00 2001
+From 4738cf1c8ebce2343671591663eedc394813da43 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 09:56:06 +0100
 Subject: [PATCH] configs: Re-sync with CONFIG_DISTRO_DEFAULTS
@@ -18,10 +18,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index 71a4d7fccb..f07e017b0e 100644
+index c3ca796d51..9c102948c0 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
-@@ -63,7 +63,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -75,7 +75,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -30,10 +30,10 @@ index 71a4d7fccb..f07e017b0e 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index f96891ecae..694880f71f 100644
+index 6e9f029cc9..92ffe48432 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
-@@ -72,7 +72,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -87,7 +87,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -42,29 +42,29 @@ index f96891ecae..694880f71f 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/socfpga_arria10_defconfig b/configs/socfpga_arria10_defconfig
-index ca34457ddd..5a4204eaf6 100644
+index 8fdd21c0d3..61d8c3f7c4 100644
 --- a/configs/socfpga_arria10_defconfig
 +++ b/configs/socfpga_arria10_defconfig
-@@ -50,3 +50,5 @@ CONFIG_TIMER=y
- CONFIG_SPL_TIMER=y
- CONFIG_DESIGNWARE_APB_TIMER=y
+@@ -55,3 +55,5 @@ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
  # CONFIG_SPL_WDT is not set
 +# CONFIG_CMD_BTRFS is not set
 +# CONFIG_FS_BTRFS is not set
 diff --git a/configs/turris_mox_defconfig b/configs/turris_mox_defconfig
-index 2e637044c1..a6140ce92f 100644
+index c63c9d24ed..934fccc533 100644
 --- a/configs/turris_mox_defconfig
 +++ b/configs/turris_mox_defconfig
-@@ -33,7 +33,6 @@ CONFIG_CMD_TFTPPUT=y
+@@ -36,7 +36,6 @@ CONFIG_CMD_TFTPPUT=y
  CONFIG_CMD_CACHE=y
  CONFIG_CMD_TIME=y
  CONFIG_CMD_MVEBU_BUBT=y
 -CONFIG_CMD_BTRFS=y
  CONFIG_CMD_EXT4_WRITE=y
  CONFIG_MAC_PARTITION=y
- CONFIG_OF_BOARD_FIXUP=y
+ CONFIG_ENV_OVERWRITE=y
 diff --git a/configs/turris_omnia_defconfig b/configs/turris_omnia_defconfig
-index f3ed9917d5..0c48800873 100644
+index 536be77ca7..e834f92828 100644
 --- a/configs/turris_omnia_defconfig
 +++ b/configs/turris_omnia_defconfig
 @@ -50,7 +50,6 @@ CONFIG_CMD_CACHE=y
@@ -73,5 +73,5 @@ index f3ed9917d5..0c48800873 100644
  CONFIG_CMD_HASH=y
 -CONFIG_CMD_BTRFS=y
  # CONFIG_SPL_PARTITION_UUIDS is not set
- CONFIG_DEFAULT_DEVICE_TREE="armada-385-turris-omnia"
- CONFIG_ENV_IS_IN_SPI_FLASH=y
+ CONFIG_ENV_OVERWRITE=y
+ CONFIG_USE_ENV_SPI_MAX_HZ=y

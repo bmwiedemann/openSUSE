@@ -1,0 +1,32 @@
+From cb19bc680c9353acb48d0f90f3e91292701ef1bb Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 28 Sep 2020 23:02:02 +0200
+Subject: [PATCH] sunxi: Enable SPI support on Orange Pi Zero
+
+Enable support for SPI flash and the sf command.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ configs/orangepi_zero_defconfig | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
+index 998c95d151..1087baece1 100644
+--- a/configs/orangepi_zero_defconfig
++++ b/configs/orangepi_zero_defconfig
+@@ -8,6 +8,14 @@ CONFIG_SPL_SPI_SUNXI=y
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-orangepi-zero"
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ CONFIG_CONSOLE_MUX=y
++CONFIG_CMD_SF_TEST=y
++CONFIG_CMD_SPI=y
++CONFIG_DM_SPI_FLASH=y
++CONFIG_SPI_FLASH_SFDP_SUPPORT=y
++CONFIG_SPI_FLASH_MACRONIX=y
++CONFIG_SPI_FLASH_WINBOND=y
+ CONFIG_SUN8I_EMAC=y
++CONFIG_SPI=y
++CONFIG_DM_SPI=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_OHCI_HCD=y
