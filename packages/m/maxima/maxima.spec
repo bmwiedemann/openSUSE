@@ -16,16 +16,11 @@
 #
 
 
-# This can be changed by modifying the variables below.
-%define enable_clisp 1
-%define clisp_flags --enable-clisp
-%define clisp_version 2.33
-%define enable_cmucl 0
-%define cmucl_flags --disable-cmucl
-%define enable_sbcl 0
-%define sbcl_flags --disable-sbcl
-%define enable_gcl 0
-%define gcl_flags --disable-gcl
+# clisp and sbcl are available for oS, cmucl and gcl are not
+%bcond_without clisp
+%bcond_without sbcl
+%bcond_with cmucl
+%bcond_with gcl
 
 # Inhibit automatic compressing of info files. Compressed info
 # files break maxima's internal help.
@@ -39,6 +34,7 @@ License:        GPL-2.0-or-later
 URL:            http://maxima.sourceforge.net/
 Source0:        http://download.sourceforge.net/maxima/%{name}-%{version}.tar.gz
 Source1:        maxima-rpmlintrc
+Source2:        README.SUSE.packaging 
 # PATCH-FIX-UPSTREAM maxima-python3.patch badshah400@gmail.com -- Use python3 instead of python(2) when importing vtk modules and building help; this allows maxima to be built with python3 instead of python2.
 Patch0:         maxima-python3.patch
 BuildRequires:  bash-completion
@@ -50,13 +46,24 @@ BuildRequires:  update-desktop-files
 Requires:       gnuplot
 Requires:       maxima_exec
 Requires:       plotutils
+Requires:       rlwrap
+Suggests:       maxima-exec-sbcl
 ExcludeArch:    ppc64 ppc64le
 %if 0%{?suse_version} <= 1500
 Requires(post): /sbin/install-info
 Requires(postun): /sbin/install-info
 %endif
-%if 0%{?enable_clisp}
+%if %{with clisp}
 BuildRequires:  clisp >= 2.34.0
+%endif
+%if %{with cmucl}
+BuildRequires:  cmucl
+%endif
+%if %{with gcl}
+BuildRequires:  gcl
+%endif
+%if %{with sbcl}
+BuildRequires:  sbcl
 %endif
 
 %description
@@ -86,31 +93,31 @@ Maxima commands from an html page.
 
 Xmaxima is written in the Tcl/Tk language.
 
-%if 0%{?enable_clisp}
+%if %{with clisp}
 %package        exec-clisp
 Summary:        Maxima compiled with clisp
-BuildRequires:  clisp
-Requires:       maxima = %{version}
+Requires:       clisp
+Supplements:    packageand(maxima:clisp)
 Provides:       maxima_exec = %{version}
 
 %description exec-clisp
 Maxima compiled with Common Lisp.
 %endif
 
-%if 0%{?enable_cmucl}
+%if %{with cmucl}
 %package exec-cmucl
 Summary:        Maxima compiled with CMUCL
-Requires:       maxima = %{version}
+Supplements:    packageand(maxima:cmucl)
 Provides:       maxima_exec = %{version}
 
 %description    exec-cmucl
 Maxima compiled with CMUCL.
 %endif
 
-%if 0%{?enable_sbcl}
+%if %{with sbcl}
 %package exec-sbcl
 Summary:        Maxima compiled with SBCL
-Requires:       maxima = %{version}
+Supplements:    packageand(maxima:sbcl)
 Requires:       sbcl
 Provides:       maxima_exec = %{version}
 
@@ -118,10 +125,10 @@ Provides:       maxima_exec = %{version}
 Maxima compiled with SBCL.
 %endif
 
-%if 0%{?enable_gcl}
+%if %{with gcl}
 %package exec-gcl
 Summary:        Maxima compiled with GCL
-Requires:       maxima = %{version}
+Supplements:    packageand(maxima:gcl)
 Provides:       maxima_exec = %{version}
 
 %description exec-gcl
@@ -181,13 +188,17 @@ Maxima Brazilian Portuguese language support (in UTF-8).
 %patch0 -p1
 
 %build
-%configure  %{?sbcl_flags:} %{?cmucl_flags:} %{?gcl_flags:} %{?clisp_flags:} \
+%configure  %{?with_sbcl:--enable-sbcl} \
+            %{?with_cmucl:--enable-cmucl} \
+            %{?with_gcl:--enable-gcl} \
+            %{?with_clisp:--enable-clisp} \
             --enable-gettext \
             --enable-lang-de-utf8 \
             --enable-lang-es-utf8 \
             --enable-lang-pt-utf8 \
             --enable-lang-pt_BR-utf8 \
-            --disable-recode
+            --disable-recode \
+            --enable-mathjax
 %make_build
 
 %install
@@ -287,7 +298,18 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %exclude %{_datadir}/maxima/%{version}/doc/html/pt.utf8
 %exclude %{_datadir}/maxima/%{version}/doc/html/pt_BR.utf8
 %{_libdir}/maxima/%{version}
+%if %{with clisp}
 %exclude %{_libdir}/maxima/%{version}/binary-clisp
+%endif
+%if %{with sbcl}
+%exclude %{_libdir}/maxima/%{version}/binary-sbcl
+%endif
+%if %{with cmucl}
+%exclude %{_libdir}/maxima/%{version}/binary-cmucl
+%endif
+%if %{with gcl}
+%exclude %{_libdir}/maxima/%{version}/binary-gcl
+%endif
 %dir %{_libexecdir}/maxima/%{version}
 %{_libexecdir}/maxima/%{version}/mgnuplot
 %{_infodir}/*
@@ -314,25 +336,24 @@ gzip %{buildroot}%{_mandir}/*/man1/maxima.1
 %{_datadir}/pixmaps/*
 %{_datadir}/metainfo/*.appdata.xml
 
-%if 0%{?enable_clisp}
+%if %{with clisp}
 %files exec-clisp
-%dir %{_libdir}/maxima/%{version}/binary-clisp/
-%{_libdir}/maxima/%{version}/binary-clisp/*
+%{_libdir}/maxima/%{version}/binary-clisp/
 %endif
 
-%if 0%{?enable_cmucl}
+%if %{with cmucl}
 %files exec-cmucl
-%{_libdir}/maxima/%{version}/binary-cmucl/*
+%{_libdir}/maxima/%{version}/binary-cmucl/
 %endif
 
-%if 0%{?enable_sbcl}
+%if %{with sbcl}
 %files exec-sbcl
-%{_libdir}/maxima/%{version}/binary-sbcl/*
+%{_libdir}/maxima/%{version}/binary-sbcl/
 %endif
 
-%if 0%{?enable_gcl}
+%if %{with gcl}
 %files exec-gcl
-%{_libdir}/maxima/%{version}/binary-gcl/*
+%{_libdir}/maxima/%{version}/binary-gcl/
 %endif
 
 %files lang-de-utf8

@@ -345,4 +345,28 @@
     <comment></comment>
     <requestid>813301</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>0c8380ce1703da9b81ee9271a0504786</srcmd5>
+    <version>5.44.0</version>
+    <time>1603875579</time>
+    <user>dimstar_suse</user>
+    <comment>- also ship README.SUSE.packaging as source
+
+- Replace manually defined macros to enable/disable different
+  lisp bindings with %bcond_with(out) macros.
+- Improve dependency resolution between the different lisp
+  versions of maxima_exec by using Supplements: packageand()
+  appropriately.
+- Enable sbcl compiled binaries and package it (needed for
+  maxima-jupyter).
+- Enable mathjax support for installed html manual (pass
+  --enable-mathjax to configure).
+- Add Requires: rlwrap to maxima, needed for rmaxima.
+- Add Suggests: maxima-exec-sbcl to maxima to weakly recommend a
+  specific flavour of maxima in case the user doesn't specify one
+  during installation.
+- Add README.SUSE.packaging documenting the packaging changes that
+  will be needed for pkgs depending on maxima.</comment>
+    <requestid>844445</requestid>
+  </revision>
 </revisionlist>

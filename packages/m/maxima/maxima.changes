@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:34:23 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
+
+- also ship README.SUSE.packaging as source
+
+-------------------------------------------------------------------
+Tue Oct 20 20:11:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Replace manually defined macros to enable/disable different
+  lisp bindings with %bcond_with(out) macros.
+- Improve dependency resolution between the different lisp
+  versions of maxima_exec by using Supplements: packageand()
+  appropriately.
+- Enable sbcl compiled binaries and package it (needed for
+  maxima-jupyter).
+- Enable mathjax support for installed html manual (pass
+  --enable-mathjax to configure).
+- Add Requires: rlwrap to maxima, needed for rmaxima.
+- Add Suggests: maxima-exec-sbcl to maxima to weakly recommend a
+  specific flavour of maxima in case the user doesn't specify one
+  during installation.
+- Add README.SUSE.packaging documenting the packaging changes that
+  will be needed for pkgs depending on maxima.
+
+-------------------------------------------------------------------
 Tue Jun  9 20:18:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.44.0:

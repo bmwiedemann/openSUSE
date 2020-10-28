@@ -1,0 +1,14 @@
+Note to packagers:
+* The availability of multiple providers of maxima_exec (namely,
+  maxima-exec-clisp and maxima-exec-sbcl) will affect the build dependencies
+  (but not the runtime deps) of any package depending on maxima, leaving the
+  package in an `unresolvable` state. This should be fixed at the affected
+  package's specfile with an additional `BuildRequires: maxima-exec-${flavor}`.
+  See for example, how this is done for wxMaxima (obs://Education/wxMaxima). 
+* When building multiple lisp flavours, maxima sets `sbcl` as the preferred
+  default lisp but it tries and finds other lisp implementations just fine in
+  case `maxima-exec-sbcl` is not installed. Thus, one only needs the weaker
+  `Suggests` on `maxima-exec-sbcl` for `maxima` rather than a `Requires` or
+  even `Recommends`.
+* At least one `maxima-exec-${flavor}` must be installed for `maxima` to work;
+  this is ensured by the `Requires: maxima_exec` for `maxima`.
