@@ -17,7 +17,7 @@
 #
 
 
-%global hawkey_version 0.48.0
+%global hawkey_version 0.54.1
 %global libcomps_version 0.1.8
 %global rpm_version 4.14.0
 %global min_plugins_core 4.0.16
@@ -47,7 +47,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.2.23
+Version:        4.4.0
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -244,6 +244,7 @@ popd
 %{_mandir}/man8/dnf.8*
 %{_mandir}/man8/yum2dnf.8*
 %{_mandir}/man7/dnf.modularity.7*
+%{_mandir}/man5/dnf-transaction-json.5*
 %dir %{_var}/cache/dnf
 %{_unitdir}/dnf-makecache.service
 %{_unitdir}/dnf-makecache.timer

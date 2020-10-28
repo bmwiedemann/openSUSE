@@ -366,4 +366,35 @@
     <comment></comment>
     <requestid>821863</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1f846c1ec64b722a0e6bbc7826b97de2</srcmd5>
+    <version>4.4.0</version>
+    <time>1603880759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0
+  + Handle empty comps group name (rh#1826198)
+  + Remove dead history info code (rh#1845800)
+  + Improve command emmitter in dnf-automatic
+  + Enhance --querytags and --qf help output
+  + [history] add option --reverse to history list (rh#1846692)
+  + Add logfilelevel configuration (rh#1802074)
+  + Don't turn off stdout/stderr logging longer than necessary (rh#1843280)
+  + Mention the date/time that updates were applied
+  + [dnf-automatic] Wait for internet connection (rh#1816308)
+  + [doc] Enhance repo variables documentation (rh#1848161, rh#1848615)
+  + Add librepo logger for handling messages from librepo (rh#1816573)
+  + [doc] Add package-name-spec to the list of possible specs
+  + [doc] Do not use &lt;package-nevr-spec&gt;
+  + [doc] Add section to explain -n, -na and -nevra suffixes
+  + Add alias 'ls' for list command
+  + remove log_lock.pid after reboot (rh#1863006)
+  + comps: Raise CompsError when removing a non-existent group
+  + Add methods for working with comps to RPMTransactionItemWrapper
+  + Implement storing and replaying a transaction
+  + Log failure to access last makecache time as warning
+  + [doc] Document Substitutions class
+  + Dont document removed attribute ``reports`` for get_best_selector
+  + Change the debug log timestamps from UTC to local time</comment>
+    <requestid>843803</requestid>
+  </revision>
 </revisionlist>
