@@ -347,7 +347,6 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %{_mingw32_bindir}/libatomic-1.dll
 
 %files -n mingw32-cpp
-#/lib/%{_mingw32_target}-cpp
 %{_mingw32_bindir}/cpp.exe
 %{_mingw32_mandir}/man1/cpp.1*
 %dir %{_mingw32_libdir}/gcc/%{_mingw32_target}

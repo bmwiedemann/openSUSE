@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 20 06:40:27 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add _constraints to fix builds on Tumbleweed
+
+-------------------------------------------------------------------
 Mon Jun 22 09:33:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Cannot be noarch, otherwise it makes mingw32-libssp0 (and others)
