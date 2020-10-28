@@ -18,7 +18,7 @@
 
 
 Name:           mupdf
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  libgumbo-devel
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(openssl)
@@ -89,6 +90,7 @@ echo > user.make "\
   USE_SYSTEM_ZLIB := yes
   USE_SYSTEM_GLUT := no # need freeglut2-art frok
   USE_SYSTEM_CURL := yes
+  USE_SYSTEM_GUMBO := yes
 "
 
 %build
