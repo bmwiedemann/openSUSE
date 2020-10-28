@@ -48,7 +48,7 @@
 %define         modname synapse
 %define         pkgname matrix-synapse
 Name:           %{pkgname}
-Version:        1.21.2
+Version:        1.22.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
