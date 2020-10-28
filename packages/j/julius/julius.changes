@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Oct 27 18:54:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  UI improvements
+  * Add right-click image to some enemies which were missing
+    images.
+  * Number of unemployed people has been added to the senate
+    tooltip and Chief advisor.
+  * Setting hotkeys for construction of common buildings is now
+    possible.
+  * Setting a hotkey for quickly selecting the building under
+    cursor for construction.
+  * Changing trade status (import/export) for resources can now
+    be done from the Empire map.
+  * Some more in-game messages have a button to the relevant
+    advisor.
+  Configuration options
+  * New option: highlight legion on cursor hover.
+  * New option: enable military sidebar.
+  * New option: disable right click to drag the map.
+  * New command-line option: use --windowed to force the game to
+    start in windowed mode.
+  Language improvements
+  * Use localized filenames for mission saved games. For example,
+    Citizen.sav will now be called Bürger.sav in the German
+    version of the game.
+  * Users running the Korean or Chinese version of the game can
+    now save files using Korean/Chinese characters.
+  * Add Italian, Polish and Swedish translations for the
+    configuration screen.
+  * Add support for the Simplified Chinese version of the game.
+  * Tweaks to make texts in more verbose languages fit in their
+    dialogs.
+  UI/Gameplay fixes
+  * Fix aqueduct tile turning into gatehouse image on a certain
+    aqueduct configuration.
+  * Fix graphic glitch in road tile caused by plaza.
+  * Fix visual bugs when visual feedback is active.
+  * Fix Religion being shown as Health on chief advisor.
+  * Fix warehouses/granaries getting linked during delete/undo.
+  * Fix combat short and long music being swapped.
+  * Fix population advisor showing the wrong end date for the
+    history graph.
+  * Fix education advisor always saying that people want more
+    libraries.
+  * Fix displayed price for clear land being double the actual
+    amount.
+  * Fix right-clicking the buttons on the sidebar going to the
+    wrong help page.
+  * Fix game speed being way too fast on the higher speed
+    settings on >60Hz monitors.
+  * Fix columns on damage overlay being too tall.
+  * Fix minimap not immediately jumping to the right location when
+    "go to problem" button is used.
+  * Fix minimap not immediately updating when placing a building.
+  Technical fixes
+  * Fix crash/memory corruption on difficulty dialog.
+
+-------------------------------------------------------------------
 Mon Jun  1 14:35:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.0

@@ -17,7 +17,7 @@
 
 
 Name:           julius
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        An open source re-implementation of Caesar III
 License:        GPL-3.0-only
