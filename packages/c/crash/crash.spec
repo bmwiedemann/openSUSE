@@ -83,6 +83,8 @@ Patch28:        %{name}-fix-memory_driver-build-kernel-5.8.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
 Patch30:        %{name}-verify-exception-frame-accessible-for-all-verify-requests.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
+Patch91:        %{name}-gdb-fix-aarch64.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libeppic-devel
@@ -299,6 +301,7 @@ cd -
 %patch12 -p1
 %patch16 -p1
 %patch29 -p1
+%patch91 -p1
 cp %{S:3} .
 mkdir kbuild
 cp %{S:6} memory_driver

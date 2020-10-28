@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 13:05:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  crash-gdb-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Wed Sep  9 16:45:44 UTC 2020 - David Mair <dmair@suse.com>
 
 - Add crash-verify-exception-frame-accessible-for-all-verify-requests.patch
