@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,13 @@ Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Players
-Url:            http://beets.io/
+URL:            http://beets.io/
 Source:         https://github.com/beetbox/beets/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         0001-Fixed-failing-test-where.patch
 # PATCH-FIX-UPSTREAM fix_test_command_line_option_relative_to_working_dir.diff alarrosa@suse.de - Fixes one of the tests to run successfully
 Patch1:         fix_test_command_line_option_relative_to_working_dir.diff
+# PATCH-FIX-UPSTREAM 0001-Compatibility-with-breaking-changes-to-the-ast-module.patch -- Fix from upstream for boo#1178199
+Patch2:         0001-Compatibility-with-breaking-changes-to-the-ast-module.patch
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-Unidecode
 BuildRequires:  python3-devel
@@ -108,6 +110,7 @@ Writing additional plugins for beets is possible using Python.
 %setup -q -n beets-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 python3 setup.py build
@@ -117,7 +120,8 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc LICENSE README.rst
+%doc README.rst
+%license LICENSE
 %{_bindir}/beet
 %{python3_sitelib}/*
 

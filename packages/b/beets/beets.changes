@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:17:51 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix a crash due to invalid use of the ast module
+  (boo#1178199):
+  * 0001-Compatibility-with-breaking-changes-to-the-ast-module.patch
+- Use %license
+
+-------------------------------------------------------------------
 Sat Jun 29 09:28:04 UTC 2019 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 1.4.9:
