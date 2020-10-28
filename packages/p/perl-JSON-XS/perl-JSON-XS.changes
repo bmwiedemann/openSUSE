@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 03:07:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.03
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  TODO: replace bool_stash by BOOL_STASH seems to work with mod_perl, make a compile time option?
+
+-------------------------------------------------------------------
 Thu Mar  7 06:15:20 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 4.02
