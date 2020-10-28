@@ -388,4 +388,33 @@
   * Added optimized support for POWER10</comment>
     <requestid>843166</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f97ccef30da3cda376763e372d4e8395</srcmd5>
+    <version>0.3.12</version>
+    <time>1603875484</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.12
+  common:
+  * Fixed missing BLAS/LAPACK functions (inadvertently dropped during
+    the build system restructuring to support selective compilation)
+  * Fixed argument conversion macro in LAPACKE_zgesvdq (LAPACK #458)
+  
+  power:
+  * Added optimized SCOPY/CCOPY kernels for POWER10
+  * Increased and unified the default size of the GEMM buffer
+  * Fixed building for POWER10 in DYNAMIC_ARCH mode
+  * POWER10 compatibility test now checks binutils version as well
+  * Cleaned up compiler warnings
+  x86_64:
+  * Corrected compiler version checks for AVX2 compatibility
+  * Added compiler option -mavx2 for building with flang
+  * Fixed direct SGEMM pathway for small matrix sizes (broken by
+    the code refactoring in 0.3.11)
+  * Fixed unhandled partial register clobbers in several kernels
+    for AXPY,DOT,GEMV_N and GEMV_T flagged by gcc10 tree-vectorizer
+  armv8:
+  * Improved Apple Vortex support to include cross-compiling
+- Drop fix-build.patch, merged upstream.</comment>
+    <requestid>843798</requestid>
+  </revision>
 </revisionlist>

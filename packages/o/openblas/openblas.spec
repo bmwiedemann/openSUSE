@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_11
-%define vers 0.3.11
+%define _vers 0_3_12
+%define vers 0.3.12
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -171,8 +171,6 @@ Source2:        README.HPC.SUSE
 Patch1:         openblas-noexecstack.patch
 # PATCH port
 Patch2:         openblas-s390.patch
-# PATCH-FIX-UPSTREAM fix-build.patch
-Patch3:         fix-build.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -278,7 +276,6 @@ This package contains headers for OpenBLAS.
 %setup -q -n OpenBLAS-%{version}
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 %ifarch s390
 sed -i -e "s@m32@m31@" Makefile.system
 %endif

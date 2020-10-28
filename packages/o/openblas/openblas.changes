@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:27:35 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.3.12
+  common:
+  * Fixed missing BLAS/LAPACK functions (inadvertently dropped during
+    the build system restructuring to support selective compilation)
+  * Fixed argument conversion macro in LAPACKE_zgesvdq (LAPACK #458)
+  
+  power:
+  * Added optimized SCOPY/CCOPY kernels for POWER10
+  * Increased and unified the default size of the GEMM buffer
+  * Fixed building for POWER10 in DYNAMIC_ARCH mode
+  * POWER10 compatibility test now checks binutils version as well
+  * Cleaned up compiler warnings
+
+  x86_64:
+  * Corrected compiler version checks for AVX2 compatibility
+  * Added compiler option -mavx2 for building with flang
+  * Fixed direct SGEMM pathway for small matrix sizes (broken by
+    the code refactoring in 0.3.11)
+  * Fixed unhandled partial register clobbers in several kernels
+    for AXPY,DOT,GEMV_N and GEMV_T flagged by gcc10 tree-vectorizer
+
+  armv8:
+  * Improved Apple Vortex support to include cross-compiling
+
+- Drop fix-build.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Oct 21 09:18:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update _constraints to use 12GB RAM on x86_64 
