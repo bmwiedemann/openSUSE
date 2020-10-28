@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 25 03:07:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.15     2020-10-24
+
+  - Fixed the SYNOPSIS, which showed calling parse_time with a string that would
+    cause an error. Reported by Yuki Yoshida. GH #12.
+
+-------------------------------------------------------------------
 Mon Aug 17 03:07:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.14

@@ -17,7 +17,7 @@
 
 
 Name:           perl-DateTime-Format-ISO8601
-Version:        0.14
+Version:        0.15
 Release:        0
 %define cpan_name DateTime-Format-ISO8601
 Summary:        Parses ISO8601 formats
