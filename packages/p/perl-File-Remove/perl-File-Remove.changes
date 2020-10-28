@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 03:07:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-File-Remove/Changes
+
+  1.60    2020-10-22 - Shlomi Fish
+      - Add .tidyallrc + related changes
+      - Fix mismatched $VERSION.
+          - https://rt.cpan.org/Public/Bug/Display.html?id=133562
+          - https://github.com/shlomif/File-Remove/pull/3/files
+          - Thanks to William Storey, PMPERRY, and @briang for the report
+
+-------------------------------------------------------------------
 Sat Oct 17 03:12:31 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.59

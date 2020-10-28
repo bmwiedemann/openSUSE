@@ -17,7 +17,7 @@
 
 
 Name:           perl-File-Remove
-Version:        1.59
+Version:        1.60
 Release:        0
 %define cpan_name File-Remove
 Summary:        Remove files and directories
