@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 27 20:11:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * maintenance release, see https://logging.apache.org/log4cxx/latest_stable/changes-report.html#a0.11.0
+- drop gcc6.patch, log4cxx-fix_duplicate_entries.patch: obsolete
+
+-------------------------------------------------------------------
 Wed Dec 27 23:44:58 UTC 2017 - sleep_walker@opensuse.org
 
 - fix license to SPDX form

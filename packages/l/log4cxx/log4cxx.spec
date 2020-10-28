@@ -1,7 +1,7 @@
 #
 # spec file for package log4cxx
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           log4cxx
-Version:        0.10.0.svn20080724
-%define soname 10
-Release:        1.0
-License:        Apache-2.0
+Version:        0.11.0
+Release:        0
+%define soname 11
 Summary:        Log4j like C++ Logging Library
-Url:            http://logging.apache.org/log4cxx/index.html
+License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-Source:         apache-log4cxx-%{version}.tar.bz2
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch0:         %{name}-fix_duplicate_entries.patch
-# PATH-UPSTREAM -- fix gcc6 build
-Patch1:         gcc6.patch
+URL:            https://logging.apache.org/log4cxx/latest_stable/
+Source:         https://downloads.apache.org/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
-BuildRequires:  libapr1-devel
 BuildRequires:  libapr-util1-devel
+BuildRequires:  libapr1-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  unixODBC-devel
@@ -104,8 +101,6 @@ Log4cxx is a port to C++ of the log4j logging library.
 
 %prep
 %setup -qn apache-log4cxx-%{version}
-%patch0 -p1
-%patch1 -p0
 
 %build
 ./autogen.sh
@@ -128,17 +123,15 @@ make %{?_smp_mflags}
 %makeinstall
 rm -f "%buildroot/%_libdir"/*.la
 mkdir -p %{buildroot}%{_docdir}/liblog4cxx
-mv %{buildroot}%{_datadir}/log4cxx %{buildroot}%{_docdir}/liblog4cxx
+mv %{buildroot}%{_datadir}/doc/log4cxx %{buildroot}%{_docdir}/liblog4cxx
 
 %post   -n liblog4cxx%{soname} -p /sbin/ldconfig
 %postun -n liblog4cxx%{soname} -p /sbin/ldconfig
 
 %files -n liblog4cxx%{soname}
-%defattr(-,root,root)
 %{_libdir}/liblog4cxx.so.*
 
 %files -n liblog4cxx-devel
-%defattr(-,root,root)
 %{_libdir}/liblog4cxx.so
 %{_libdir}/pkgconfig/liblog4cxx.pc
 %{_includedir}/log4cxx
