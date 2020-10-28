@@ -54,6 +54,7 @@ Recommends:     djvulibre
 Recommends:     gocr
 Recommends:     tesseract-ocr
 Recommends:     tiff
+Recommends:     pdftk
 BuildArch:      noarch
 %{perl_requires}
 

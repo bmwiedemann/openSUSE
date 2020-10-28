@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 27 16:16:24 UTC 2020 - Sauerlandlinux@gmx.de
+
+- Add Recommends on pdftk for PDF encryption
+
+-------------------------------------------------------------------
 Sat Aug  8 18:49:33 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add requies on typelib(GdkPixdata) for SLE 15+, Leap 15.2 and
