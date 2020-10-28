@@ -24,6 +24,7 @@
 %define	vendor_ruby	vendor_ruby
 %define	init_style	suse
 %define	pkg_group	Productivity/Clustering/HA
+%define rb_build_versions %rb_default_ruby
 
 %define www_base %{_datadir}
 %define www_tmp  %{_localstatedir}/lib/hawk/tmp
