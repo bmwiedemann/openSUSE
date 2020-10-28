@@ -201,4 +201,21 @@
 - test package and test it with pytest (drop dependency on nose)</comment>
     <requestid>819224</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e404069e7b539184a7c87955804db265</srcmd5>
+    <version>4.0.18</version>
+    <time>1603880764</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.18
+  + [needs-restarting] Fix plugin fail if needs-restarting.d does not exist
+  + [needs-restarting] add kernel-rt to reboot list
+  + Fix debug-restore command
+  + [config-manager] enable/disable comma separated pkgs (rh#1830530)
+  + [debug] Use standard demands.resolving for transaction handling
+  + [debug] Do not remove install-only packages (rh#1844533)
+  + return error when dnf download failed
+  + [reposync] Add latest NEVRAs per stream to download (rh#1833074)
+  + copr: don't try to list runtime dependencies</comment>
+    <requestid>843804</requestid>
+  </revision>
 </revisionlist>
