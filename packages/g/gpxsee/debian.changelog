@@ -1,3 +1,11 @@
+gpxsee (7.35) stable; urgency=low
+
+  * IMG format compatability, performance and layout improvements.
+  * Fixed CRS entries parsing (WMS, WMTS)
+  * Various minor bug fixes.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 27 Oct 2020 21:39:44 +0100
+
 gpxsee (7.34) stable; urgency=medium
 
   * Fixed application icons paths.
