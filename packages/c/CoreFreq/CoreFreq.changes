@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 12:43:05 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated to git 20201028, fixes compilation on kernel 5.9
+
+-------------------------------------------------------------------
 Mon Sep 14 19:33:07 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated changelog to mention leap15_2.patch
