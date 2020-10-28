@@ -418,4 +418,12 @@
     <comment>- Update to release 3.1.4</comment>
     <requestid>827860</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f73cb5e11eec8fae156bfe9de5bb4483</srcmd5>
+    <version>3.2.2</version>
+    <time>1603892036</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>844534</requestid>
+  </revision>
 </revisionlist>

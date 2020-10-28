@@ -1,20 +1,35 @@
 From: Jan Engelhardt <jengelh@inai.de>
-Date: 2017-12-04 21:25:11.022534627 +0100
+Date: 2020-10-21 10:27:09.816637061 +0200
 
-Add symbol versions into the library to be on par with openssl.
+Exports should be _versioned_. Without a version on libressl symbols, this could happen:
+
+a) given a function call to libressl SSL_CTX_new in source, the linker
+   will emit "SSL_CTX_new" into the executable
+b) assuming the final program somehow loads both libressl and openssl,
+   the dynamic loader could resolve "SSL_CTX_new" to SSL_CTX_new@@OPENSSL_1.1.0
+
+   -> usually crash because something was initialized in one library
+      but not in the other
+
+If libressl.so has versioned exports,
+
+a) the linker emits "SSL_CTX_new@@LIBRESSL"
+b) the dynamic loader is required to look for SSL_CTX_new@@LIBRESSL
+   and cannot satisfy it with SSL_CTX_new@@OPENSSL.
+
 ---
  crypto/Makefile.am |    7 +++++--
  ssl/Makefile.am    |    6 +++++-
  tls/Makefile.am    |    6 +++++-
  3 files changed, 15 insertions(+), 4 deletions(-)
 
-Index: libressl-3.1.1/crypto/Makefile.am
+Index: libressl-3.2.2/crypto/Makefile.am
 ===================================================================
---- libressl-3.1.1.orig/crypto/Makefile.am
-+++ libressl-3.1.1/crypto/Makefile.am
-@@ -93,8 +93,11 @@ if HOST_WIN
- 	-mv crypto_portable.sym.tmp crypto_portable.sym
- endif
+--- libressl-3.2.2.orig/crypto/Makefile.am
++++ libressl-3.2.2/crypto/Makefile.am
+@@ -105,8 +105,11 @@ libcrypto_la_objects.mk: Makefile
+ 	  | sed 's/  */ $$\(abs_top_builddir\)\/crypto\//g' \
+ 	  >> libcrypto_la_objects.mk
  
 -libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -export-symbols crypto_portable.sym
 -EXTRA_libcrypto_la_DEPENDENCIES = crypto_portable.sym
@@ -23,31 +38,31 @@ Index: libressl-3.1.1/crypto/Makefile.am
 +
 +libcrypto_la_LDFLAGS = -version-info @LIBCRYPTO_VERSION@ -no-undefined -Wl,--version-script=crypto2.sym
 +EXTRA_libcrypto_la_DEPENDENCIES = crypto_portable.sym crypto2.sym
+ EXTRA_libcrypto_la_DEPENDENCIES += libcrypto_la_objects.mk
  libcrypto_la_LIBADD = libcompat.la
  if !HAVE_EXPLICIT_BZERO
- libcrypto_la_LIBADD += libcompatnoopt.la
-Index: libressl-3.1.1/ssl/Makefile.am
+Index: libressl-3.2.2/ssl/Makefile.am
 ===================================================================
---- libressl-3.1.1.orig/ssl/Makefile.am
-+++ libressl-3.1.1/ssl/Makefile.am
-@@ -6,7 +6,11 @@ EXTRA_DIST = VERSION
- EXTRA_DIST += CMakeLists.txt
- EXTRA_DIST += ssl.sym
+--- libressl-3.2.2.orig/ssl/Makefile.am
++++ libressl-3.2.2/ssl/Makefile.am
+@@ -15,7 +15,11 @@ libssl_la_objects.mk: Makefile
+ 	  | sed 's/  */ $$\(abs_top_builddir\)\/ssl\//g' \
+ 	  > libssl_la_objects.mk
  
 -libssl_la_LDFLAGS = -version-info @LIBSSL_VERSION@ -no-undefined -export-symbols $(top_srcdir)/ssl/ssl.sym
 +ssl2.sym: ssl.sym
 +	(echo 'LIBRESSL { global: '; sed -e 's/\(.*\)/\1;/' <$<; echo 'local: *; };') >$@
 +
 +libssl_la_LDFLAGS = -version-info @LIBSSL_VERSION@ -no-undefined -Wl,--version-script=ssl2.sym
-+EXTRA_libssl_la_DEPENDENCIES = ssl.sym ssl2.sym
++EXTRA_libssl_la_DEPENDENCIES += ssl.sym ssl2.sym
  libssl_la_LIBADD = $(abs_top_builddir)/crypto/libcrypto.la $(PLATFORM_LDADD)
  
  libssl_la_SOURCES = bio_ssl.c
-Index: libressl-3.1.1/tls/Makefile.am
+Index: libressl-3.2.2/tls/Makefile.am
 ===================================================================
---- libressl-3.1.1.orig/tls/Makefile.am
-+++ libressl-3.1.1/tls/Makefile.am
-@@ -6,7 +6,11 @@ EXTRA_DIST = VERSION
+--- libressl-3.2.2.orig/tls/Makefile.am
++++ libressl-3.2.2/tls/Makefile.am
+@@ -9,7 +9,11 @@ EXTRA_DIST = VERSION
  EXTRA_DIST += CMakeLists.txt
  EXTRA_DIST += tls.sym
  
@@ -57,6 +72,6 @@ Index: libressl-3.1.1/tls/Makefile.am
 +
 +libtls_la_DEPENDENCIES = tls2.sym
 +libtls_la_LDFLAGS = -version-info @LIBTLS_VERSION@ -no-undefined -Wl,--version-script=tls2.sym
- libtls_la_LIBADD = $(abs_top_builddir)/ssl/libssl.la
- libtls_la_LIBADD += $(abs_top_builddir)/crypto/libcrypto.la
- libtls_la_LIBADD += $(PLATFORM_LDADD)
+ libtls_la_LIBADD = $(libcrypto_la_objects)
+ libtls_la_LIBADD += $(libcompat_la_objects)
+ libtls_la_LIBADD += $(libcompatnoopt_la_objects)

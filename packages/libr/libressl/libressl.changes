@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:55:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * New X509 certificate chain validator that correctly handles
+    multiple paths through intermediate certificates.
+  * New name constraints verification implementation.
+  * Define OPENSSL_NO_SSL_TRACE in opensslfeatures.h.
+  * Make SSL_CTX_get_ciphers(NULL) return NULL rather than crash.
+  * Avoid an out-of-bounds write in BN_rand().
+  * Fix numerous leaks in the UI_dup_* functions.
+  * Avoid an out-of-bounds write in BN_rand().
+
+-------------------------------------------------------------------
 Wed Aug 19 10:30:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.4
