@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Oct 22 11:58:16 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 4.3:
+  - changes in version 4.3:
+    - tss2_*: Fix double-free errors in commands asking for password authorization
+    - tss2_*: Fix shorthand command -f that was falsely requiring an argument
+    - tss2_*: Update tss2_encrypt to the new FAPI interface
+    - The argument 'policyPath' is removed which was never read anyway
+    - tss2_*: Remove the additional '\n' that was appended when redirecting to stdout
+    - tss2_*: Update mandatory vs optional treatment of arguments according to latest Fapi spec
+    - tss2_*: tss2_getinfo now retrieves the correct FAPI version from Fapi_GetInfo
+    - tss2_*: Fix the error handling in case of multiple inputs and/or outputs from stdin/stdout
+    - tss2_*: Fix syntax errors and update content of man pages according to latest Fapi spec
+    - tss2_*: Add parameter types to all man page
+    - tss2_*: tss2_setappdata now reads from file or stdin allowing to store also binary data
+    - tss2_*: Memory leaks are fixed in cases when a returned empty non-char output value was passed to file output
+    - tss2_pcrextend: fix extending PCR 0
+    - tss2_quote: fix unused TSS2_RC in LOG_ERR
+  - changes in 4.2.1:
+    - Fix missing handle maps for ESY3 handle breaks. See #1994.
+    - Bump ESYS minimum dependency version from 2.3.0 to 2.4.0.
+    - Fix for loop declarations build error.
+  - changes in 4.2:
+    - Fix various issues reported by static analysis tools.
+    - Add integration test for ECC based getekcertificate.
+    - Fix for issue #1959 where ARM builds were failing.
+    - Add a check in autotools to add "expect" as a package dependency for fapi tools.
+    - tpm2_createek: Drop the unused -p or --ek-auth option
+    - tpm2_policyor: List of policy files should be specified as an argument
+    - instead of -l option. The -l option is still retained for backwards
+    - compatibility. See issue#1894.
+    - tpm2_eventlog: add a tool for parsing and displaying the event log.
+    - tpm2_createek: Fix an issue where the template option looked for args
+    - tpm2_hierarchycontrol: Fixed bug where tool operation failed silently
+    - tpm2_nvdefine: Fixed an issue where text output suggested failures as passes
+    - tpm2_certify: Add an example usage in man page
+    - tpm2_policyor: Fix a bug where tool failed silently when no input were given
+    - tpm2_getekcertificate: Intel (R) PTT EK cert web portal is set as default address
+    - tpm2_alg_util.c: Fix a bug where string rsa3072 was not parsed
+    - .ci/download-deps.sh: Change tss dependency to 2.4.0 to acquire SAPI handles for cpHash calculations
+    - tpm2_policycphash: Add a tool to implement enhanced authorization with cpHash of a command
+    - Add options to tools to enable cpHash outputs: tpm2_nvsetbits, tpm2_nvextend,
+      tpm2_nvincrement, tpm2_nvread, tpm2_nvreadlock, tpm2_writelock, tpm2_nvdefine,
+      tpm2_nvundefine, tpm2_nvcertify, tpm2_policynv, tpm2_policyauthorizenv,
+      tpm2_policysecret, tpm2_create, tpm2_load, tpm2_activatecredential, tpm2_unseal,
+      tpm2_changeauth, tpm2_duplicate, tpm2_import, tpm2_rsadecrypt, tpm2_certify,
+      tpm2_certifycreation, tpm2_hierarchycontrol, tpm2_setprimarypolicy, tpm2_clearcontrol,
+      tpm2_dictionarylockout, tpm2_evictcontrol, tpm2_setclock, tpm2_clockrateadjust,
+      tpm2_clear, tpm2_nvwrite, tpm2_encryptdecrypt, tpm2_hmac.
+    - tpm2_import: Fix an issue where the imported key always required to have a policy
+    - tpm2_policysecret: Fix an issue where authorization model was fixed to password only
+    - Feature API (FAPI) tools added. These additional set of tools implement utilities
+    - using the FAPI which was added to the tpm2-tss v2.4.4:
+      tss2_decrypt, tss2_encrypt, tss2_list, tss2_changeauth, tss2_delete,
+      tss2_import, tss2_getinfo, tss2_createkey, tss2_createseal, tss2_exportkey,
+      tss2_getcertificate, tss2_getplatformcertificates, tss2_gettpmblobs,
+      tss2_getappdata, tss2_setappdata, tss2_setcertificate, tss2_sign,
+      tss2_verifysignature, tss2_verifyquote, tss2_createnv, tss2_nvextend,
+      tss2_nvincrement, tss2_nvread, tss2_nvsetbits, tss2_nvwrite,
+      tss2_getdescription, tss2_setdescription, tss2_pcrextend, tss2_quote,
+      tss2_pcrread, tss2_authorizepolicy, tss2_exportpolicy, tss2_import,
+      tss2_provision, tss2_getrandom, tss2_unseal, tss2_writeauthorizenv
+    - tpm2_policycountertimer: Fix an issue where operandB array was reversed causing faulty comparisons.
+  - changes in 4.1.1:
+    - tpm2_certify: Fix output of attestation data including size field. Now outputs just bytes.
+    - tpm2_certifycreation: Fix tool to match manpage where the code had the -C and -c options reversed.
+    - tpm2_gettime: Fix output of attestation data including size field. Now outputs just bytes.
+    - tpm2_nvcertify: Fix output of attestation data including size field. Now outputs just bytes.
+    - tpm2_nvreadpublic: add name hash output.
+    - tpm2_import: Support object policies when importing raw key material.
+    - Fix overflow in pcrs.h where sizeof() was used instead of ARRAY_LEN().
+    - build:
+    - Fix compilation issue: lib/tpm2_hash.c:17:19: note: 'left' was declared here.
+    - man:
+    - Fix manpage examples that have "sha" instead of "sha1"
+    - tpm2_shutdown manpage was missing, add it to build.
+    - Fix manpage example for tpm2_createak's tpm2_evictcontrol example.
+- Remove fix_bad_bufsize.patch: is now contained in upstream tarball
+- Adjust fix_bogus_warning.patch: one hunk no longer applies, upstream code
+  changed.
+
+-------------------------------------------------------------------
 Wed Dec 11 13:29:12 UTC 2019 - matthias.gerstner@suse.com
 
 - add fix_bad_bufsize.patch: fixes findings from compile time fread() checks

@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-tools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           tpm2.0-tools
-Version:        4.1
+Version:        4.3.0
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
 Group:          Productivity/Security
-Url:            https://github.com/tpm2-software/tpm2-tools/releases
+URL:            https://github.com/tpm2-software/tpm2-tools/releases
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Patch0:         fix_bogus_warning.patch
-Patch1:         fix_bad_bufsize.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
+BuildRequires:  libuuid-devel
 %if 0%{?is_opensuse}
 # releases prior to 3.0.4 required pandoc for building the man pages. On SLE
 # we don't have pandoc and it requires a complete haskell stack so adding it
@@ -64,7 +64,6 @@ associated interfaces.
 %prep
 %setup -q -n tpm2-tools-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %configure --disable-static
@@ -79,9 +78,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE CHANGELOG.md
+%doc README.md doc/LICENSE doc/CHANGELOG.md
 /usr/bin/tpm2_*
+/usr/bin/tss2_*
 %{_mandir}/man1/tpm2_*
+%{_mandir}/man1/tss2_*
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
