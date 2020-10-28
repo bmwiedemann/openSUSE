@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 09:21:22 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.40
+   see /usr/share/doc/packages/perl-Task-Kensho-ModuleDev/Changes
+
+  0.40      2018-12-01
+            - CLI: added Reply
+            - Dates: added Time::Moment
+            - Email: added Email::Stuffer
+            - Exceptions: added Syntax::Keyword::Try
+            - ModuleDev: added Code::TidyAll, removed Perl::Version
+            - OOP: removed Task::Moose
+            - Toolchain: added App::cpm
+            - WebDev: added HTTP::BrowserDetect, Attean
+            - XML: removed RDF::Trine
+
+-------------------------------------------------------------------
 Mon May 23 12:48:30 UTC 2016 - coolo@suse.com
 
 - updated to 0.39
