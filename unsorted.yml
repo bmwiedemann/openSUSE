@@ -35,7 +35,6 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
-  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -284,6 +283,7 @@ unsorted:
   - aalib 
   - aalib-devel 
   - aalib-devel-32bit: [x86_64] 
+  - abcde 
   - abcm2ps 
   - abi-compliance-checker 
   - abi-dumper 
@@ -1660,6 +1660,7 @@ unsorted:
   - ccrypt-lang 
   - ccze 
   - ccze-devel 
+  - cd-discid 
   - cd-paranoia 
   - cddlib-devel 
   - cddlib-doc 
@@ -2129,6 +2130,7 @@ unsorted:
   - cozette-fonts 
   - cozy 
   - cozy-lang 
+  - cp210x-program 
   - cp437 
   - cpanspec 
   - cpluff 
@@ -3094,6 +3096,7 @@ unsorted:
   - extreme-tuxracer 
   - extreme-tuxracer-data 
   - extundelete 
+  - eyeD3 
   - ez-ipupdate 
   - ezmorph 
   - ezmorph-javadoc 
@@ -5569,6 +5572,7 @@ unsorted:
   - gource 
   - govpn 
   - govpn-server 
+  - goxel 
   - gp2c 
   - gpa 
   - gpa-lang 
@@ -5756,7 +5760,7 @@ unsorted:
   - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
   - gstreamer-devel-32bit: [x86_64] 
-  - gstreamer-devtools-devel: [i586] 
+  - gstreamer-devtools-devel 
   - gstreamer-doc 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
@@ -5788,8 +5792,6 @@ unsorted:
   - gstreamer-plugins-vaapi-doc 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder-devel 
-  - gstreamer-validate: [i586] 
-  - gstreamer-validate-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
   - gswrap 
@@ -8359,7 +8361,7 @@ unsorted:
   - libPythonQt_QtAll-Qt5-Python3-3 
   - libQCSXCAD0 
   - libQMatrixClient0_5_3 
-  - libQgpsmm25 
+  - libQgpsmm27 
   - libQt53DAnimation-devel 
   - libQt53DAnimation5 
   - libQt53DAnimation5-32bit: [x86_64] 
@@ -8943,7 +8945,6 @@ unsorted:
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
-  - libavtp0: [x86_64] 
   - libavtp0-32bit: [x86_64] 
   - libavutil56_51-32bit: [x86_64] 
   - libax25-0 
@@ -9631,6 +9632,7 @@ unsorted:
   - libdirac_encoder0 
   - libdirac_encoder0-32bit: [x86_64] 
   - libdiscid-devel 
+  - libdiscid0 
   - libdiscid0-32bit: [x86_64] 
   - libdiscord-rpc 
   - libdjvulibre-devel 
@@ -11054,7 +11056,7 @@ unsorted:
   - liblog4cplus-1_2-5 
   - liblog4cpp5 
   - liblog4cxx-devel 
-  - liblog4cxx10 
+  - liblog4cxx11 
   - liblog4shib-devel 
   - liblog4shib2 
   - liblogg44-devel 
@@ -11628,10 +11630,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_11-gnu-hpc 
-  - libopenblas-pthreads_0_3_11-gnu-hpc-devel 
-  - libopenblas_0_3_11-gnu-hpc 
-  - libopenblas_0_3_11-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_12-gnu-hpc 
+  - libopenblas-pthreads_0_3_12-gnu-hpc-devel 
+  - libopenblas_0_3_12-gnu-hpc 
+  - libopenblas_0_3_12-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -13214,15 +13216,23 @@ unsorted:
   - libtspi1 
   - libtspi1-32bit: [x86_64] 
   - libtss2-esys0-32bit: [x86_64] 
+  - libtss2-fapi1 
+  - libtss2-fapi1-32bit: [x86_64] 
   - libtss2-mu0-32bit: [x86_64] 
   - libtss2-rc0: [i586] 
-  - libtss2-sys0-32bit: [x86_64] 
+  - libtss2-rc0-32bit: [x86_64] 
+  - libtss2-sys1-32bit: [x86_64] 
+  - libtss2-tcti-cmd0 
+  - libtss2-tcti-cmd0-32bit: [x86_64] 
   - libtss2-tcti-device0 
   - libtss2-tcti-device0-32bit: [x86_64] 
   - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
+  - libtss2-tcti-swtpm0 
+  - libtss2-tcti-swtpm0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0 
   - libtss2-tctildr0 
+  - libtss2-tctildr0-32bit: [x86_64] 
   - libttf2 
   - libttf2-32bit: [x86_64] 
   - libttsmimic0 
@@ -14850,6 +14860,7 @@ unsorted:
   - mawk 
   - maxima 
   - maxima-exec-clisp 
+  - maxima-exec-sbcl 
   - maxima-lang-de-utf8 
   - maxima-lang-es-utf8 
   - maxima-lang-pt-utf8 
@@ -16803,8 +16814,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_11-gnu-hpc-devel-static 
-  - openblas_0_3_11-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_12-gnu-hpc-devel-static 
+  - openblas_0_3_12-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -18249,6 +18260,7 @@ unsorted:
   - perl-Mojo-RabbitMQ-Client: [x86_64] 
   - perl-Mojo-Redis 
   - perl-Mojo-SQLite 
+  - perl-Mojolicious 
   - perl-Mojolicious-Plugin-AssetPack 
   - perl-Mojolicious-Plugin-CHI 
   - perl-Mojolicious-Plugin-NYTProf 
@@ -18328,6 +18340,7 @@ unsorted:
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
   - perl-Mozilla-LDAP 
+  - perl-MusicBrainz-DiscID 
   - perl-NKF 
   - perl-Nagios-Plugin 
   - perl-Net-AMQP: [x86_64] 
@@ -18759,6 +18772,7 @@ unsorted:
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
+  - perl-WebService-MusicBrainz 
   - perl-Win-Hivex 
   - perl-Wx 
   - perl-X11-Protocol-Other 
@@ -33529,12 +33543,12 @@ unsorted:
   - typelib-1_0-Gst-1_0-32bit: [x86_64] 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
-  - typelib-1_0-GstBadAudio-1_0: [i586] 
-  - typelib-1_0-GstCodecs-1_0: [i586] 
+  - typelib-1_0-GstBadAudio-1_0 
+  - typelib-1_0-GstCodecs-1_0 
   - typelib-1_0-GstGL-1_0 
-  - typelib-1_0-GstGLEGL-1_0: [i586] 
-  - typelib-1_0-GstGLWayland-1_0: [i586] 
-  - typelib-1_0-GstGLX11-1_0: [i586] 
+  - typelib-1_0-GstGLEGL-1_0 
+  - typelib-1_0-GstGLWayland-1_0 
+  - typelib-1_0-GstGLX11-1_0 
   - typelib-1_0-GstInsertBin-1_0 
   - typelib-1_0-GstMpegts-1_0 
   - typelib-1_0-GstPlayer-1_0 
@@ -33542,9 +33556,9 @@ unsorted:
   - typelib-1_0-GstRtsp-1_0 
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
-  - typelib-1_0-GstVulkan-1_0: [i586] 
-  - typelib-1_0-GstVulkanWayland-1_0: [i586] 
-  - typelib-1_0-GstVulkanXCB-1_0: [i586] 
+  - typelib-1_0-GstVulkan-1_0 
+  - typelib-1_0-GstVulkanWayland-1_0 
+  - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 
@@ -34526,6 +34540,7 @@ unsorted:
   - xmoto 
   - xmoto-data 
   - xmp 
+  - xmppc 
   - xmvn 
   - xmvn-api 
   - xmvn-bisect 
