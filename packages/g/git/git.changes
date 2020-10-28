@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:03:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.29.1:
+  * build system fixes for non-default installations
+    (not affecting this package)
+
+-------------------------------------------------------------------
 Mon Oct 19 20:12:45 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.29.0:
