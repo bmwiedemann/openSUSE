@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1603469837.f54bdeab
+Version:        4.6.1603710234.d64195b7
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -167,6 +167,7 @@ ln -s ../sbin/service %{buildroot}%{_sbindir}/rcos-autoinst-openvswitch
 export NO_BRP_STALE_LINK_ERROR=yes
 
 %check
+export CI=1
 %if 0%{?suse_version} == 1315
 sed '/perlcritic/d' -i Makefile
 sed '/tidy/d' -i Makefile

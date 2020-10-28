@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 05:32:05 UTC 2020 - okurz@suse.com
+
+- Update to version 4.6.1603710234.d64195b7:
+  * Scale test timeouts during package build (like in CI)
+  * os-autoinst-openvswitch: Allow to configure timeout with env variable
+  * Fix qemu failing on ppc64 with "Requested safe cache capability level not supported by kvm"
+
+-------------------------------------------------------------------
 Sun Oct 25 21:32:03 UTC 2020 - okurz@suse.com
 
 - Update to version 4.6.1603469837.f54bdeab:
