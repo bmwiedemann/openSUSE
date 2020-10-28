@@ -1,4 +1,4 @@
-From f4f097d3d3c25b292f05e8e3cc9a719ab5b78003 Mon Sep 17 00:00:00 2001
+From 44bb53709096f9a7c3cb171638e437b29249df93 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa13@gmail.com>
 Date: Sun, 1 Dec 2019 11:17:43 -0500
 Subject: [PATCH] Switch default reposdir to /etc/dnf/repos.d
@@ -8,12 +8,12 @@ Subject: [PATCH] Switch default reposdir to /etc/dnf/repos.d
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/libdnf/conf/ConfigMain.cpp b/libdnf/conf/ConfigMain.cpp
-index fe1ccbd..51027c8 100644
+index d147e3bd..1fb04887 100644
 --- a/libdnf/conf/ConfigMain.cpp
 +++ b/libdnf/conf/ConfigMain.cpp
-@@ -185,7 +185,7 @@ class ConfigMain::Impl {
-     OptionNumber<std::int32_t> log_size{1024 * 1024, strToBytes};
+@@ -187,7 +187,7 @@ class ConfigMain::Impl {
      OptionNumber<std::int32_t> log_rotate{4, 0};
+     OptionBool log_compress{false};
      OptionStringList varsdir{VARS_DIRS};
 -    OptionStringList reposdir{{"/etc/yum.repos.d", "/etc/yum/repos.d", "/etc/distro.repos.d"}};
 +    OptionStringList reposdir{{"/etc/dnf/repos.d", "/etc/yum.repos.d", "/etc/yum/repos.d", "/etc/distro.repos.d"}};
@@ -21,5 +21,5 @@ index fe1ccbd..51027c8 100644
      OptionStringList installonlypkgs{INSTALLONLYPKGS};
      OptionStringList group_package_types{GROUP_PACKAGE_TYPES};
 -- 
-2.21.0
+2.28.0
 

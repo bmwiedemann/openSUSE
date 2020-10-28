@@ -19,7 +19,7 @@
 %global libsolv_version 0.7.7
 %global libmodulemd_version 2.5.0
 %global librepo_version 1.12.0
-%global dnf_conflict 4.2.23
+%global dnf_conflict 4.3.0
 %global swig_version 3.0.12
 
 # Keep tests switched off for now, it bombs out on SUSE
@@ -33,7 +33,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.48.0
+Version:        0.54.2
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -42,15 +42,12 @@ Url:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-## Fix libdnf tests to build against check >= 0.15
-## From: https://github.com/rpm-software-management/libdnf/commit/4f3f747cdf3e5d7ab0dadc4f25bca56fb16ce923
-Patch0001:      0001-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
 
 # openSUSE specific fixes
 ## Fix libdnf build with static libsolvext
 Patch1000:      libdnf-0.48.0-with-static-libsolvext.patch
 ## Switch default reposdir to /etc/dnf/repos.d
-Patch1001:      libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+Patch1001:      libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc

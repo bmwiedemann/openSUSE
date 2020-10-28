@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 24 16:25:10 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 0.54.2
+  + history: Fix dnf history rollback when a package was removed (rh#1683134)
+  + Add support for HY_GT, HY_LT in query nevra_strict
+  + Fix parsing empty lines in config files
+  + Accept '==' as an operator in reldeps (rh#1847946)
+  + Add log file level main config option (rh#1802074)
+  + Add protect_running_kernel configuration option (rh#1698145)
+  + Context part of libdnf cannot assume zchunk is on (rh#1851841, rh#1779104)
+  + Fix memory leak of resultingModuleIndex and handle g_object refs
+  + Redirect librepo logs to libdnf logs with different source
+  + Add hy_goal_lock
+  + Enum/String conversions for Transaction Store/Replay
+  + utils: Add a method to decode URLs
+  + Unify hawkey.log line format with the rest of the logs
+- Drop patches included in this release
+  + Patch: 0001-tests-Fix-incorrect-usage-of-the-fail_unless-macro.patch
+- Refresh patch for reposdir paths
+  + Remove patch: libdnf-0.39.1-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+  + Add patch: libdnf-0.54.2-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 07:56:01 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Backport fix from upstream to fix building against check >= 0.15
