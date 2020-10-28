@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct 22 19:47:01 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 3.21
+  * Create python programs from .in files to allow macro substitution.
+  * Finally clean .sconsign*.dblite with "scons -c"
+  * Remove revision.h.  Move REVISION into gpsd_config.h
+  * Change asciidoc to asciidoctor, and revise documents to match.
+  * library version bumped to 27
+  * Add leap_seconds to gps_data_t
+  * Add/change many rtcm2 structs in gps.h
+  * Add/change many rtcm3 structs in gps.h
+  * Maindenhead now 8 chars.
+  * Add icondir and sharedir install options
+  * Install basic doc in sharedir
+  * Move gps_data_t->status to gps_fix_t.status for better fix merging
+  * The gps python module is now Pure Python + FFI.  FFI only for packet.py
+  * User should manually delete any old packet*so.
+  * Add wspeedt, wspeedr, wanglem, wanglet, wangler to  gps_fix_t
+  * Add "-p CONFIG", "-p STATUS", "-t" and "-tt" options to ubxtool.
+  * Add python_shebang option to scons config.
+  * gpsrinex has long options and many new options.
+  * Added long options to gpsd.
+  * Remove unused FORCE_GLOBAL_ENABLE
+  * Remove config option reconfigure, replace with -p, --passive runtime option.
+  * Remove config option controlsend (RECONFIGURE_ENABLE)
+  * Add config option rundir=XX.  Default set to /run, or /var/run as required.
+  * Fixes for Python 2.6 up to 3.9.
+
+-------------------------------------------------------------------
 Fri Apr 17 16:18:26 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.20

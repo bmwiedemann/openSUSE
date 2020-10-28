@@ -16,13 +16,13 @@
 #
 
 
-%define         sover 25
-%define		libgps libgps%{sover}
-%define		libQgps libQgpsmm%{sover}
+%define         sover 27
+%define         libgps libgps%{sover}
+%define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.20
+Version:        3.21
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
@@ -160,9 +160,11 @@ cgps resembles xgps, but without the pictorial satellite display.  It
 can run on a serial terminal or terminal emulator.
 
 %prep
+%if %{with python2}
 mkdir -p %{name}-%{version}/python2
-mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python2
+%endif
+mkdir -p %{name}-%{version}/python3
 tar -xf %{SOURCE0} -C %{name}-%{version}/python3
 cd %{name}-%{version}
 
@@ -175,11 +177,11 @@ sed -i 's|systemctl daemon-reload|true|' python*/%{name}-%{version}/SConstruct
 # don't set RPATH
 sed -i 's|env.Prepend.*RPATH.*|pass #\0|' python*/%{name}-%{version}/SConstruct
 
+# fix docdir path
+sed -i 's|(\x27sharedir\x27), \"doc"|(\x27docdir\x27)|' python*/%{name}-%{version}/SConstruct
+
 # fix gpsd path
 sed -i 's|ExecStart=.*/gpsd|ExecStart=%{_sbindir}/gpsd|' python*/%{name}-%{version}/systemd/gpsd.service
-
-# fix socket path
-sed -i 's|ListenStream=/var/run/gpsd.sock|ListenStream=/run/gpsd.sock|' python*/%{name}-%{version}/systemd/gpsd.socket
 
 %build
 # The SCons description does not handle CXXFLAGS correctly, pass C++ flags also in CFLAGS
@@ -211,7 +213,9 @@ for i in "${pyversions[@]}"; do
         libdir=%{_libdir} \
         sbindir=%{_sbindir} \
         mandir=%{_mandir} \
-        docdir=%{_docdir} \
+        docdir=%{_docdir}/%{name} \
+        icondir=%{_datadir}/icons/hicolor/128x128/apps \
+        python_shebang=%{_bindir}/${i} \
         pkgconfigdir=%{_libdir}/pkgconfig \
         udevdir=$(dirname %{_udevrulesdir}) \
         target_python=${i} \
@@ -219,8 +223,7 @@ for i in "${pyversions[@]}"; do
         build
 
     # Fix python interpreter path.
-    sed -e "s,#!%{_bindir}/\(python[23]\?\|env \+python[23]\?\),#!%{_bindir}/${i},g" -i \
-        gegps gpscat gpsfake xgps xgpsspeed gpsprof ubxtool zerk gps/*.py
+    sed -e "s,#!%{_bindir}/\(python[23]\?\|env \+python[23]\?\),#!%{_bindir}/${i},g" -i gps/*.py
 
     popd
     cnt=`expr $cnt + 1`
@@ -235,7 +238,7 @@ export CPPFLAGS="%{optflags}"
 %if %{with python2}
 pushd %{name}-%{version}/python2/%{name}-%{version}
 
-DESTDIR=%{buildroot} scons nostrip=True install
+DESTDIR=%{buildroot} scons nostrip=True install systemd_install
 
 # Now delete all the installed files except the python2 files
 find %{buildroot} \( -not -type d -a -not -path "*/python2.*/*" \) -delete
@@ -244,7 +247,7 @@ popd
 %endif
 pushd %{name}-%{version}/python3/%{name}-%{version}
 
-DESTDIR=%{buildroot} scons nostrip=True install
+DESTDIR=%{buildroot} scons nostrip=True install systemd_install
 
 install -d -m 755 %{buildroot}%{_udevdir}
 install -d -m 755 %{buildroot}%{_udevdir}/rules.d
@@ -254,7 +257,6 @@ install -m 644 %{SOURCE1} %{buildroot}%{_udevdir}/rules.d/51-gpsd.rules
 install -m 755 %{SOURCE2} %{buildroot}%{_udevdir}/gpsd.sh
 install -m 644 %{SOURCE3} %{buildroot}%{_fillupdir}
 # install desktop entries
-install -D -m 644 -t %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/ packaging/X11/gpsd-logo.png
 install -D -m 644 -t %{buildroot}%{_datadir}/applications/ packaging/X11/xgps.desktop
 install -D -m 644 -t %{buildroot}%{_datadir}/applications/ packaging/X11/xgpsspeed.desktop
 install -D -m 644 systemd/gpsd.service %{buildroot}/%{_unitdir}/gpsd.service
@@ -292,6 +294,8 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 
 %files
 %license %{name}-%{version}/python3/%{name}-%{version}/COPYING
+%{_docdir}/%{name}
+%exclude %{_docdir}/%{name}/{COPYING,build.adoc}
 %{_mandir}/man?/gpsd.*
 %{_mandir}/man?/gpsdctl.*
 %{_mandir}/man?/gpsctl.*
@@ -309,6 +313,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 
 %files -n %{libgps}
 %{_libdir}/libgps.so.*
+%{_libdir}/libgpsdpacket.so.*
 
 %files -n %{libQgps}
 %{_libdir}/libQgpsmm.so.*
@@ -330,6 +335,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_includedir}/gps.h
 %{_includedir}/libgpsmm.h
 %{_libdir}/libgps.so
+%{_libdir}/libgpsdpacket.so
 %{_libdir}/pkgconfig/libgps.pc
 %{_libdir}/libQgpsmm.so
 %{_libdir}/libQgpsmm.prl
