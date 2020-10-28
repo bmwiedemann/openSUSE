@@ -255,4 +255,27 @@ etc.
   shared library. This one hopefully now does the right thing.</comment>
     <requestid>755854</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc45993e8ef9c5e00bc2ba8d625c742a</srcmd5>
+    <version>2.3.3</version>
+    <time>1603880747</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.3:
+  - changes in version 2.3.1:
+    - Fixed handle resource leak exhausting TPM resources.
+  - changes in version 2.3.2:
+    - Added cirrus CI specific config files to enable FreeBSD builds.
+    - Changed test scripts to be more portable.
+    - Changed include header paths specific to FreeBSD.
+  - changes in version 2.3.1:
+    - Provide meaningful exit codes on initialization failures.
+    - Prevent systemd from starting the daemon before udev changes ownership
+      of the TPM device node.
+    - Prevent systemd from starting the daemon if there is no TPM device node.
+    - Prevent systemd from restarting the daemon if it fails.
+    - Add SELinux policy to allow daemon to resolve names.
+    - Add SELinux policy boolean (disabled by default) to allow daemon to
+      connect to all unreserved ports.</comment>
+    <requestid>843600</requestid>
+  </revision>
 </revisionlist>

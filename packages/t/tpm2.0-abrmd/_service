@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/intel/tpm2-abrmd.git</param>
     <param name="scm">git</param>
-    <param name="revision">2.3.0</param>
+    <param name="revision">2.3.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
   </service>
