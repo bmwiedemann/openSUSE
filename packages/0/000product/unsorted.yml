@@ -4067,6 +4067,8 @@ unsorted:
   - ghc-assoc-devel 
   - ghc-async 
   - ghc-async-devel 
+  - ghc-async-timer 
+  - ghc-async-timer-devel 
   - ghc-atomic-write 
   - ghc-atomic-write-devel 
   - ghc-attoparsec 
@@ -4157,6 +4159,8 @@ unsorted:
   - ghc-cipher-aes-devel 
   - ghc-citeproc 
   - ghc-citeproc-devel 
+  - ghc-clay 
+  - ghc-clay-devel 
   - ghc-clientsession 
   - ghc-clientsession-devel 
   - ghc-clock 
@@ -4426,6 +4430,8 @@ unsorted:
   - ghc-hspec-expectations-devel 
   - ghc-hspec-smallcheck 
   - ghc-hspec-smallcheck-devel 
+  - ghc-hsyslog 
+  - ghc-hsyslog-devel 
   - ghc-html 
   - ghc-html-devel 
   - ghc-http-api-data 
@@ -4462,6 +4468,10 @@ unsorted:
   - ghc-intern-devel 
   - ghc-invariant 
   - ghc-invariant-devel 
+  - ghc-io-streams 
+  - ghc-io-streams-devel 
+  - ghc-io-streams-haproxy 
+  - ghc-io-streams-haproxy-devel 
   - ghc-iproute 
   - ghc-iproute-devel 
   - ghc-ipynb 
@@ -4480,6 +4490,8 @@ unsorted:
   - ghc-js-jquery-devel 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
+  - ghc-katip 
+  - ghc-katip-devel 
   - ghc-language-c 
   - ghc-language-c-devel 
   - ghc-language-javascript 
@@ -4493,6 +4505,8 @@ unsorted:
   - ghc-libmpd 
   - ghc-libmpd-devel 
   - ghc-libraries 
+  - ghc-libsystemd-journal 
+  - ghc-libsystemd-journal-devel 
   - ghc-libxml-sax 
   - ghc-libxml-sax-devel 
   - ghc-libyaml 
@@ -4623,6 +4637,10 @@ unsorted:
   - ghc-persistent-sqlite-devel 
   - ghc-persistent-template 
   - ghc-persistent-template-devel 
+  - ghc-pipes 
+  - ghc-pipes-devel 
+  - ghc-pipes-safe 
+  - ghc-pipes-safe-devel 
   - ghc-polyparse 
   - ghc-polyparse-devel 
   - ghc-postgresql-libpq 
@@ -4657,6 +4675,10 @@ unsorted:
   - ghc-quiet-devel 
   - ghc-random 
   - ghc-random-devel 
+  - ghc-readable 
+  - ghc-readable-devel 
+  - ghc-recursion-schemes 
+  - ghc-recursion-schemes-devel 
   - ghc-refact 
   - ghc-refact-devel 
   - ghc-reflection 
@@ -4683,6 +4705,8 @@ unsorted:
   - ghc-resource-pool-devel 
   - ghc-resourcet 
   - ghc-resourcet-devel 
+  - ghc-retry 
+  - ghc-retry-devel 
   - ghc-rfc5051 
   - ghc-rfc5051-devel 
   - ghc-rio 
@@ -4735,6 +4759,10 @@ unsorted:
   - ghc-skylighting-devel 
   - ghc-smallcheck 
   - ghc-smallcheck-devel 
+  - ghc-snap-core 
+  - ghc-snap-core-devel 
+  - ghc-snap-server 
+  - ghc-snap-server-devel 
   - ghc-socks 
   - ghc-socks-devel 
   - ghc-split 
@@ -4750,7 +4778,11 @@ unsorted:
   - ghc-streaming-commons 
   - ghc-streaming-commons-devel 
   - ghc-strict 
+  - ghc-strict-concurrency 
+  - ghc-strict-concurrency-devel 
   - ghc-strict-devel 
+  - ghc-string-conv 
+  - ghc-string-conv-devel 
   - ghc-syb 
   - ghc-syb-devel 
   - ghc-system-fileio 
@@ -4823,6 +4855,8 @@ unsorted:
   - ghc-th-utilities-devel 
   - ghc-these 
   - ghc-these-devel 
+  - ghc-threepenny-gui 
+  - ghc-threepenny-gui-devel 
   - ghc-time 
   - ghc-time-compat 
   - ghc-time-compat-devel 
@@ -4831,6 +4865,8 @@ unsorted:
   - ghc-time-locale-compat-devel 
   - ghc-time-manager 
   - ghc-time-manager-devel 
+  - ghc-time-units 
+  - ghc-time-units-devel 
   - ghc-timeit 
   - ghc-timeit-devel 
   - ghc-timezone-olson 
@@ -4866,6 +4902,8 @@ unsorted:
   - ghc-uniplate 
   - ghc-uniplate-devel 
   - ghc-unix 
+  - ghc-unix-bytestring 
+  - ghc-unix-bytestring-devel 
   - ghc-unix-compat 
   - ghc-unix-compat-devel 
   - ghc-unix-devel 
@@ -4917,6 +4955,10 @@ unsorted:
   - ghc-warp-tls-devel 
   - ghc-wcwidth 
   - ghc-wcwidth-devel 
+  - ghc-websockets 
+  - ghc-websockets-devel 
+  - ghc-websockets-snap 
+  - ghc-websockets-snap-devel 
   - ghc-weeder 
   - ghc-weeder-devel 
   - ghc-wizards 
@@ -4966,6 +5008,8 @@ unsorted:
   - ghc-zip-archive 
   - ghc-zip-archive-devel 
   - ghc-zlib 
+  - ghc-zlib-bindings 
+  - ghc-zlib-bindings-devel 
   - ghc-zlib-devel 
   - ghcid 
   - ghex-devel 
@@ -5712,6 +5756,7 @@ unsorted:
   - gstreamer-32bit: [x86_64] 
   - gstreamer-devel 
   - gstreamer-devel-32bit: [x86_64] 
+  - gstreamer-devtools-devel: [i586] 
   - gstreamer-doc 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
@@ -5743,6 +5788,7 @@ unsorted:
   - gstreamer-plugins-vaapi-doc 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder-devel 
+  - gstreamer-validate: [i586] 
   - gstreamer-validate-devel 
   - gstreamermm-devel 
   - gstreamermm-doc 
@@ -8047,7 +8093,6 @@ unsorted:
   - libCGAL_ImageIO14 
   - libCGAL_Qt5-14 
   - libCSXCAD0 
-  - libCharLS2 
   - libCoin60 
   - libColPack0 
   - libColPack0-32bit: [x86_64] 
@@ -8665,6 +8710,7 @@ unsorted:
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
   - libYODA-1_8_3 
+  - libZXing1-32bit: [x86_64] 
   - liba52-0-32bit: [x86_64] 
   - liba52-devel 
   - libaa1-32bit: [x86_64] 
@@ -8897,7 +8943,8 @@ unsorted:
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
-  - libavtp0 
+  - libavtp0: [x86_64] 
+  - libavtp0-32bit: [x86_64] 
   - libavutil56_51-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
@@ -9275,6 +9322,7 @@ unsorted:
   - libchardet-devel 
   - libchardet1 
   - libchardet1-32bit: [x86_64] 
+  - libcharls2 
   - libchck0 
   - libcheck0 
   - libcheck0-32bit: [x86_64] 
@@ -10266,6 +10314,7 @@ unsorted:
   - libgstbadaudio-1_0-0-32bit: [x86_64] 
   - libgstbasecamerabinsrc-1_0-0-32bit: [x86_64] 
   - libgstcodecparsers-1_0-0-32bit: [x86_64] 
+  - libgstcodecs-1_0-0-32bit: [x86_64] 
   - libgstfft-1_0-0-32bit: [x86_64] 
   - libgstgl-1_0-0-32bit: [x86_64] 
   - libgstinsertbin-1_0-0 
@@ -10288,6 +10337,7 @@ unsorted:
   - libgsttag-1_0-0-32bit: [x86_64] 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
   - libgstvideo-1_0-0-32bit: [x86_64] 
+  - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
@@ -11281,6 +11331,8 @@ unsorted:
   - libmspub-devel 
   - libmspub-devel-doc 
   - libmspub-tools 
+  - libmt32emu-devel 
+  - libmt32emu2 
   - libmtdev1-32bit: [x86_64] 
   - libmtp-devel 
   - libmuffin0 
@@ -11348,6 +11400,7 @@ unsorted:
   - libnemo-extension1 
   - libneon-devel 
   - libneon27-32bit: [x86_64] 
+  - libnest2d-devel 
   - libnet-devel 
   - libnet-doc 
   - libnet9 
@@ -12551,7 +12604,6 @@ unsorted:
   - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
-  - librime-lua 
   - librime1 
   - librime1-32bit: [x86_64] 
   - librk0 
@@ -12853,7 +12905,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_30_1-0 
+  - libsqlcipher-3_31_0-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -12984,6 +13036,7 @@ unsorted:
   - libswresample3_7-32bit: [x86_64] 
   - libswscale5_7-32bit: [x86_64] 
   - libsybdb5 
+  - libsymmetrica2 
   - libsympol0_1 
   - libsymspg1 
   - libsyn123-0 
@@ -15377,6 +15430,7 @@ unsorted:
   - msv-xmlgen 
   - msv-xsdlib 
   - mt-st 
+  - mt32emu 
   - mtd-utils 
   - mtdev 
   - mtools-doc 
@@ -17721,6 +17775,7 @@ unsorted:
   - perl-Clone-Choose 
   - perl-Clone-PP 
   - perl-Code-DRY 
+  - perl-Code-TidyAll 
   - perl-CommonMark 
   - perl-Compress-Bzip2 
   - perl-Compress-Raw-Lzma 
@@ -18102,6 +18157,7 @@ unsorted:
   - perl-List-AllUtils 
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
+  - perl-List-Compare 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -18456,6 +18512,7 @@ unsorted:
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
   - perl-Specio 
+  - perl-Specio-Library-Path-Tiny 
   - perl-Spiffy 
   - perl-Spooky-Patterns-XS: [x86_64] 
   - perl-Spreadsheet-ParseExcel 
@@ -18765,6 +18822,7 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
+  - perl-lib-relative 
   - perl-libconfigfile 
   - perl-libintl-perl 
   - perl-libxml-perl 
@@ -18894,6 +18952,7 @@ unsorted:
   - php7-phar 
   - php7-phpunit8 
   - php7-posix 
+  - php7-psr 
   - php7-readline 
   - php7-redis 
   - php7-shmop 
@@ -25054,6 +25113,7 @@ unsorted:
   - swtchart-javadoc 
   - sxhkd 
   - sxiv 
+  - symmetrica-devel 
   - sympol 
   - sympol-devel 
   - sympow 
@@ -33469,7 +33529,12 @@ unsorted:
   - typelib-1_0-Gst-1_0-32bit: [x86_64] 
   - typelib-1_0-GstAllocators-1_0 
   - typelib-1_0-GstApp-1_0 
+  - typelib-1_0-GstBadAudio-1_0: [i586] 
+  - typelib-1_0-GstCodecs-1_0: [i586] 
   - typelib-1_0-GstGL-1_0 
+  - typelib-1_0-GstGLEGL-1_0: [i586] 
+  - typelib-1_0-GstGLWayland-1_0: [i586] 
+  - typelib-1_0-GstGLX11-1_0: [i586] 
   - typelib-1_0-GstInsertBin-1_0 
   - typelib-1_0-GstMpegts-1_0 
   - typelib-1_0-GstPlayer-1_0 
@@ -33477,6 +33542,9 @@ unsorted:
   - typelib-1_0-GstRtsp-1_0 
   - typelib-1_0-GstRtspServer-1_0 
   - typelib-1_0-GstSdp-1_0 
+  - typelib-1_0-GstVulkan-1_0: [i586] 
+  - typelib-1_0-GstVulkanWayland-1_0: [i586] 
+  - typelib-1_0-GstVulkanXCB-1_0: [i586] 
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 

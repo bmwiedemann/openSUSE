@@ -816,7 +816,6 @@
     <package name="gstreamer-plugins-ugly-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gstreamer-transcoder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gstreamer-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gstreamer-validate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gthumb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gthumb-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk-vnc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5224,6 +5223,10 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gstreamer-devtools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgstcodecs-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgstvulkan-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5259,6 +5262,7 @@
     <package name="gnutls" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
+    <package name="gstreamer-validate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engine-cleanice-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gtk2-engine-murrine-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gtk2-theming-engine-adwaita-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
