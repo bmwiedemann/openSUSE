@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 05:32:48 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1603819052.0daa7dd96:
+  * Dependency cron 2020-10-27
+  * t: Workaround for faulty JSON::Validator error handling
+  * Avoid unhandled output in 26-controllerrunning.t and 31-client_archive.t
+
+-------------------------------------------------------------------
 Sun Oct 25 21:32:44 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1603626328.c21bec508:
