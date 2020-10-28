@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 17:35:00 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.132.1: Disable dependency update while running helm-x/chartify
+  in more cases…
+  * 0663831 (HEAD, tag: v0.132.1, origin/master, origin/HEAD, master)
+    Disable dependency update while running helm-x/chartify in more
+    cases (#1548)
+  * afb2653 fix: printing error to stdout together with templated
+    resources (#1550)
+
+-------------------------------------------------------------------
 Thu Oct 22 08:50:25 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.132.0: Minor README improvement (#1543)
