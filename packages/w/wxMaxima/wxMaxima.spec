@@ -34,6 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  maxima >= 5.30.0
+BuildRequires:  maxima-exec-sbcl
 BuildRequires:  ninja
 BuildRequires:  pandoc
 BuildRequires:  po4a
