@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 27 20:48:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 0.7.8
+  * New feature: Support of more animations. So an actor can request
+    an animation when a class or pseudo-class is added or was removed.
+    Also an actor requests an animation when it was created and shown
+    for the first time. Currently at last an animation is requested
+    when the actor was moved and or resized.
+  * Followed main Xfce project by switching to "foreign" mode
+    at automake
+  * Added dummy example search provider plugin. It's main purpose is
+    to provide a skeleton for creating new search provider plugins.
+  * Fixed a crash when reselecting a search result item on search
+    update fails because its container was destroyed while updating.
+  * Smaller bug fixes but mostly to silence compiler warnings
+  * Translation updates
+
+-------------------------------------------------------------------
 Tue Dec  3 11:06:11 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 0.7.7

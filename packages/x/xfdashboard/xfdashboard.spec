@@ -1,7 +1,7 @@
 #
 # spec file for package xfdashboard
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define so_ver 0
 
 Name:           xfdashboard
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
@@ -112,7 +112,7 @@ gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %postun -n libxfdashboard%{so_ver} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS README
+%doc AUTHORS README.md
 %license COPYING
 %{_bindir}/%{name}*
 %{_mandir}/man1/%{name}*.1.gz
