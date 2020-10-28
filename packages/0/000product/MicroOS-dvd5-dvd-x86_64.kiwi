@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201027" schemaversion="4.1">
+<image name="OBS__MicroOS___20201028" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201027</productvar>
+      <productvar name="VERSION">20201028</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201027,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201028,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201027/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201028/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -413,6 +413,7 @@
       <repopackage name="libavahi-glib1" arch="x86_64"/>
       <repopackage name="libavcodec58_91" arch="x86_64"/>
       <repopackage name="libavformat58_45" arch="x86_64"/>
+      <repopackage name="libavtp0" arch="x86_64"/>
       <repopackage name="libavutil56_51" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
       <repopackage name="libbd_crypto2" arch="x86_64"/>
@@ -588,7 +589,7 @@
       <repopackage name="libgpgme11" arch="x86_64"/>
       <repopackage name="libgpgmepp6" arch="x86_64"/>
       <repopackage name="libgphoto2-6" arch="x86_64"/>
-      <repopackage name="libgps25" arch="x86_64"/>
+      <repopackage name="libgps27" arch="x86_64"/>
       <repopackage name="libgraphene-1_0-0" arch="x86_64"/>
       <repopackage name="libgraphite2-3" arch="x86_64"/>
       <repopackage name="libgsf-1-114" arch="x86_64"/>
@@ -603,6 +604,7 @@
       <repopackage name="libgstbadaudio-1_0-0" arch="x86_64"/>
       <repopackage name="libgstbasecamerabinsrc-1_0-0" arch="x86_64"/>
       <repopackage name="libgstcodecparsers-1_0-0" arch="x86_64"/>
+      <repopackage name="libgstcodecs-1_0-0" arch="x86_64"/>
       <repopackage name="libgstfft-1_0-0" arch="x86_64"/>
       <repopackage name="libgstgl-1_0-0" arch="x86_64"/>
       <repopackage name="libgstisoff-1_0-0" arch="x86_64"/>
@@ -618,6 +620,7 @@
       <repopackage name="libgsttag-1_0-0" arch="x86_64"/>
       <repopackage name="libgsturidownloader-1_0-0" arch="x86_64"/>
       <repopackage name="libgstvideo-1_0-0" arch="x86_64"/>
+      <repopackage name="libgstvulkan-1_0-0" arch="x86_64"/>
       <repopackage name="libgstwayland-1_0-0" arch="x86_64"/>
       <repopackage name="libgstwebrtc-1_0-0" arch="x86_64"/>
       <repopackage name="libgtk-2_0-0" arch="x86_64"/>
@@ -1001,7 +1004,7 @@
       <repopackage name="libtss2-esys0" arch="x86_64"/>
       <repopackage name="libtss2-mu0" arch="x86_64"/>
       <repopackage name="libtss2-rc0" arch="x86_64"/>
-      <repopackage name="libtss2-sys0" arch="x86_64"/>
+      <repopackage name="libtss2-sys1" arch="x86_64"/>
       <repopackage name="libtwolame0" arch="x86_64"/>
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0" arch="x86_64"/>
@@ -1129,6 +1132,7 @@
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzvbi0" arch="x86_64"/>
+      <repopackage name="libZXing1" arch="x86_64"/>
       <repopackage name="libzypp" arch="x86_64"/>
       <repopackage name="libzypp-plugin-appdata" arch="x86_64"/>
       <repopackage name="lockdev" arch="x86_64"/>
