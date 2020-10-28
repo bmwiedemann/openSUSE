@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WebService-MusicBrainz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,44 @@
 
 
 Name:           perl-WebService-MusicBrainz
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 %define cpan_name WebService-MusicBrainz
 Summary:        Web service API to MusicBrainz database
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/%{cpan_name}/
-Source0:        http://www.cpan.org/authors/id/B/BF/BFAIST/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/B/BF/BFAIST/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Mojolicious) >= 7.13
+Requires:       perl(Mojolicious) >= 7.13
 %{perl_requires}
-Requires:       perl(Mojolicious)
 
 %description
-An API to search the musicbrainz.org database.
+API to search the musicbrainz.org database
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Build.PL installdirs=vendor
+./Build build flags=%{?_smp_mflags}
+
+%check
+# MANUAL no testing (needs network)
+#./Build test
 
 %install
-%perl_make_install
-%perl_process_packlist
+./Build install destdir=%{buildroot} create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc README.md
+%doc Changes README.md
 
 %changelog
