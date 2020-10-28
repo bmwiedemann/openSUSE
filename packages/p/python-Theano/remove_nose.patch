@@ -1,0 +1,5211 @@
+---
+ bin/theano-nose                                   |    3 
+ bin/theano_nose.py                                |  273 ----------------------
+ setup.cfg                                         |    4 
+ setup.py                                          |    5 
+ theano/compile/tests/test_debugmode.py            |    9 
+ theano/compile/tests/test_function_module.py      |   34 +-
+ theano/compile/tests/test_mode.py                 |    2 
+ theano/compile/tests/test_nanguardmode.py         |   14 -
+ theano/compile/tests/test_pfunc.py                |    9 
+ theano/d3viz/tests/test_d3viz.py                  |    5 
+ theano/d3viz/tests/test_formatting.py             |   12 
+ theano/gof/tests/test_cc.py                       |   12 
+ theano/gof/tests/test_compute_test_value.py       |    5 
+ theano/gof/tests/test_fg.py                       |   11 
+ theano/gof/tests/test_graph.py                    |    7 
+ theano/gof/tests/test_op.py                       |    7 
+ theano/gof/tests/test_types.py                    |   12 
+ theano/gof/tests/test_vm.py                       |    9 
+ theano/gpuarray/tests/check_dnn_conv.py           |    5 
+ theano/gpuarray/tests/config.py                   |    7 
+ theano/gpuarray/tests/test_abstractconv.py        |   26 +-
+ theano/gpuarray/tests/test_basic_ops.py           |   32 +-
+ theano/gpuarray/tests/test_blas.py                |   24 -
+ theano/gpuarray/tests/test_dnn.py                 |   50 ++--
+ theano/gpuarray/tests/test_elemwise.py            |   22 -
+ theano/gpuarray/tests/test_extra_ops.py           |    2 
+ theano/gpuarray/tests/test_fft.py                 |    5 
+ theano/gpuarray/tests/test_linalg.py              |    4 
+ theano/gpuarray/tests/test_opt.py                 |   42 +--
+ theano/gpuarray/tests/test_pickle.py              |   13 -
+ theano/gpuarray/tests/test_reduction.py           |   16 -
+ theano/gpuarray/tests/test_type.py                |    4 
+ theano/sandbox/cuda/__init__.py                   |    2 
+ theano/sandbox/linalg/tests/test_linalg.py        |   32 +-
+ theano/sandbox/tests/test_multinomial.py          |   11 
+ theano/sandbox/tests/test_rng_mrg.py              |   43 +--
+ theano/scalar/tests/test_basic_sympy.py           |    8 
+ theano/scan_module/tests/test_scan.py             |   96 +++----
+ theano/scan_module/tests/test_scan_checkpoints.py |    8 
+ theano/sparse/sandbox/test_sp.py                  |   34 +-
+ theano/sparse/tests/test_basic.py                 |   43 +--
+ theano/sparse/tests/test_opt.py                   |   19 -
+ theano/sparse/tests/test_sp2.py                   |   20 -
+ theano/sparse/tests/test_utils.py                 |   11 
+ theano/tensor/nnet/tests/test_abstract_conv.py    |   81 +++---
+ theano/tensor/nnet/tests/test_conv.py             |   16 -
+ theano/tensor/nnet/tests/test_conv3d2d.py         |   14 -
+ theano/tensor/nnet/tests/test_corr.py             |   30 +-
+ theano/tensor/nnet/tests/test_corr3d.py           |   19 -
+ theano/tensor/nnet/tests/test_ctc.py              |   11 
+ theano/tensor/nnet/tests/test_nnet.py             |   61 ++--
+ theano/tensor/signal/tests/test_conv.py           |   14 -
+ theano/tensor/signal/tests/test_pool.py           |   28 +-
+ theano/tensor/tests/test_basic.py                 |  202 +++++++---------
+ theano/tensor/tests/test_blas.py                  |    6 
+ theano/tensor/tests/test_blas_c.py                |   22 -
+ theano/tensor/tests/test_blas_scipy.py            |   11 
+ theano/tensor/tests/test_elemwise.py              |   69 ++---
+ theano/tensor/tests/test_extra_ops.py             |   41 +--
+ theano/tensor/tests/test_keepdims.py              |    4 
+ theano/tensor/tests/test_mpi.py                   |   11 
+ theano/tensor/tests/test_nlinalg.py               |   45 +--
+ theano/tensor/tests/test_opt.py                   |  177 +++++---------
+ theano/tensor/tests/test_slinalg.py               |   54 +---
+ theano/tensor/tests/test_subtensor.py             |   17 -
+ theano/tests/test_flake8.py                       |    7 
+ theano/tests/test_ifelse.py                       |   11 
+ theano/tests/test_printing.py                     |    9 
+ theano/tests/test_rop.py                          |   25 +-
+ theano/tests/unittest_tools.py                    |   36 --
+ theano/typed_list/tests/test_basic.py             |   37 +-
+ 71 files changed, 852 insertions(+), 1218 deletions(-)
+
+--- a/bin/theano-nose
++++ /dev/null
+@@ -1,3 +0,0 @@
+-#!/usr/bin/env python
+-import theano_nose
+-theano_nose.main()
+--- a/bin/theano_nose.py
++++ /dev/null
+@@ -1,273 +0,0 @@
+-#!/usr/bin/env python
+-"""
+-This script should behave the same as the `nosetests` command.
+-
+-The reason for its existence is that on some systems, it may not be obvious to
+-find where nosetests is installed in order to run it in a different process.
+-
+-It is also used to load the KnownFailure plugin, in order to hide
+-KnownFailureTests error messages. Use --without-knownfailure to
+-disable that plugin.
+-
+-`run_tests_in_batch.py` will in turn call back this script in another process.
+-"""
+-from __future__ import print_function
+-
+-__authors__ = "Olivier Delalleau, Pascal Lamblin, Eric Larsen"
+-__contact__ = "delallea@iro"
+-
+-import logging
+-_logger = logging.getLogger('theano.bin.theano-nose')
+-
+-import os
+-import nose
+-import textwrap
+-import sys
+-import warnings
+-from nose.plugins import Plugin
+-
+-def main_function():
+-    # Handle the --theano arguments
+-    if "--theano" in sys.argv:
+-        i = sys.argv.index("--theano")
+-        import theano
+-        sys.argv[i] = theano.__path__[0]
+-
+-    # Many Theano tests suppose device=cpu, so we need to raise an
+-    # error if device==gpu.
+-    # I don't know how to do this check only if we use theano-nose on
+-    # Theano tests.  So I make an try..except in case the script get
+-    # reused elsewhere.
+-    # We should not import theano before call nose.main()
+-    # As this cause import problem with nosetests.
+-    # Should we find a way to don't modify sys.path?
+-    if not os.path.exists('theano/__init__.py'):
+-        try:
+-            from theano import config
+-            if config.device != "cpu":
+-                raise ValueError("Theano tests must be run with device=cpu."
+-                                 " This will also run GPU tests when possible.\n"
+-                                 " If you want GPU-related tests to run on a"
+-                                 " specific GPU device, and not the default one,"
+-                                 " you should use the init_gpu_device theano flag.")
+-        except ImportError:
+-            pass
+-
+-    # Handle --batch[=n] arguments
+-    batch_args = [arg for arg in sys.argv if arg.startswith('--batch')]
+-    for arg in batch_args:
+-        sys.argv.remove(arg)
+-    batch_size = None
+-    if len(batch_args):
+-        if len(batch_args) > 1:
+-            _logger.warning(
+-                'Multiple --batch arguments detected, using the last one '
+-                'and ignoring the first ones.')
+-
+-        batch_arg = batch_args[-1]
+-        elems = batch_arg.split('=', 1)
+-        if len(elems) == 2:
+-            batch_size = int(elems[1])
+-
+-    # Handle the --debug-batch argument.
+-    display_batch_output = False
+-    if '--debug-batch' in sys.argv:
+-        if not batch_args:
+-            raise AssertionError(
+-                'You can only use the --debug-batch argument with the '
+-                '--batch[=n] option')
+-        while '--debug-batch' in sys.argv:
+-            sys.argv.remove('--debug-batch')
+-        sys.argv += ['--verbose', '--nocapture', '--detailed-errors']
+-        display_batch_output = True
+-
+-    # Handle --time_prof arguments
+-    time_prof_args = [arg for arg in sys.argv if arg=='--time-profile']
+-    for arg in time_prof_args:
+-        sys.argv.remove(arg)
+-
+-    # Time-profiling and batch modes
+-    if time_prof_args or batch_args:
+-        from theano.tests import run_tests_in_batch
+-        return run_tests_in_batch.main(
+-                theano_nose=os.path.realpath(__file__),
+-                batch_size=batch_size,
+-                time_profile=bool(time_prof_args),
+-                display_batch_output=display_batch_output)
+-
+-    # Non-batch mode.
+-    addplugins = []
+-    # We include KnownFailure plugin by default, unless
+-    # it is disabled by the "--without-knownfailure" arg.
+-    if '--without-knownfailure' not in sys.argv:
+-        try:
+-            from numpy.testing.noseclasses import KnownFailure
+-            addplugins.append(KnownFailure())
+-        except ImportError:
+-            _logger.warning(
+-                'KnownFailure plugin from NumPy could not be imported. '
+-                'Use --without-knownfailure to disable this warning.')
+-    else:
+-        sys.argv.remove('--without-knownfailure')
+-
+-    # When 'theano-nose' is called-back under the time-profile option, an
+-    # instance of the custom Nosetests plugin class 'DisabDocString' (see
+-    # below) is loaded. The latter ensures that the test name will not be
+-    # replaced in display by the first line of the documentation string.
+-    if '--disabdocstring' in sys.argv:
+-        addplugins.append(DisabDocString())
+-
+-    try:
+-        if addplugins:
+-            ret = nose.main(addplugins=addplugins)
+-        else:
+-            ret = nose.main()
+-        return ret
+-    except TypeError as e:
+-        if "got an unexpected keyword argument 'addplugins'" in e.message:
+-            # This means nose is too old and does not support plugins
+-            _logger.warning(
+-                'KnownFailure plugin from NumPy can\'t'
+-                ' be used as nosetests is too old. '
+-                'Use --without-knownfailure to disable this warning.')
+-            nose.main()
+-        else:
+-            raise
+-
+-
+-def help():
+-    help_msg = """
+-        This script behaves mostly the same as the `nosetests` command.
+-
+-        The main difference is that it loads automatically the
+-        KnownFailure plugin, in order to hide KnownFailureTests error
+-        messages. It also supports executing tests by batches.
+-
+-        Local options:
+-
+-            --help, -h: Displays this help.
+-
+-            --batch[=n]:
+-                If specified without option '--time-profile', do not run all
+-                the tests in one run, but split the execution in batches of
+-                `n` tests each. Default n is 100.
+-
+-            --time-profile:
+-                Each test will be run and timed separately and the results will
+-                be deposited in the files 'timeprof_sort', 'timeprof_nosort'
+-                and 'timeprof_rawlog' in the current directory. If the
+-                '--batch[=n]' option is also specified, notification of the
+-                progresses will be made to standard output after every group of
+-                n tests. Otherwise, notification will occur after every group
+-                of 100 tests.
+-
+-                The files 'timeprof_sort' and 'timeprof_nosort' both contain one
+-                record for each test and comprise the following fields:
+-                - test running-time
+-                - nosetests sequential test number
+-                - test name
+-                - name of class to which test belongs (if any), otherwise full
+-                  information is contained in test name
+-                - test outcome ('OK', 'SKIPPED TEST', 'FAILED TEST' or
+-                  'FAILED PARSING')
+-
+-                In 'timeprof_sort', test records are sorted according to
+-                running-time whereas in 'timeprof_nosort' records are reported
+-                according to sequential number. The former classification is the
+-                main information source for time-profiling. Since tests belonging
+-                to same or close classes and files have close sequential, the
+-                latter may be used to identify duration patterns among the tests
+-                numbers. A full log is also saved as 'timeprof_rawlog'.
+-
+-            --without-knownfailure: Do not load the KnownFailure plugin.
+-
+-            --theano: This parameter is replaced with the path to the theano
+-                      library. As theano-nose is a wrapper to nosetests, it
+-                      expects a path to the tests to run.
+-                      If you do not know where theano is installed, use this
+-                      option to have it inserted automatically.
+-
+-            --debug-batch:
+-                Use this parameter to run nosetests with options '--verbose',
+-                '--nocapture' and '--detailed-errors' and show the output of
+-                nosetests during batch execution.  This can be useful to debug
+-                situations where re-running only the failed tests after batch
+-                execution is not working properly. This option can only be used
+-                in conjunction with the '--batch=[n]' argument.
+-
+-        The other options will be passed to nosetests, see ``nosetests -h``.
+-        """
+-
+-    print(textwrap.dedent(help_msg))
+-
+-
+-def main():
+-    if '--help' in sys.argv or '-h' in sys.argv:
+-        help()
+-    else:
+-        warnings.simplefilter("default")  # Enable warnings before importing theano
+-        if os.environ.get("PYTHONWARNINGS") is not None:
+-            os.environ["PYTHONWARNINGS"] = "default"  # Also affect subprocesses
+-        result = main_function()
+-        sys.exit(result)
+-
+-
+-class DisabDocString(Plugin):
+-
+-    """
+-    When activated, a custom Nosetests plugin created through this class
+-    will preclude automatic replacement in display of the name of the test
+-    by the first line in its documentation string.
+-
+-    Sources:
+-    http://nose.readthedocs.org/en/latest/developing.html
+-    http://nose.readthedocs.org/en/latest/further_reading.html
+-    http://www.siafoo.net/article/54
+-    https://github.com/nose-devs/nose/issues/294
+-    http://python-nose.googlecode.com/svn/trunk/nose/plugins/base.py
+-    Nat Williams:
+-    https://github.com/Merino/nose-description-fixer-plugin/commit/
+-        df94596f29c04fea8001713dd9b04bf3720aebf4
+-    """
+-
+-    enabled = False # plugin disabled by default
+-    score = 2000  # high score ensures priority over other plugins
+-
+-    def __init__(self):
+-        # 'super.__init__(self):' would have achieved exactly the same
+-        if self.name is None:
+-            self.name = self.__class__.__name__.lower()
+-        if self.enableOpt is None:
+-            self.enableOpt = ("enable_plugin_%s"
+-                              % self.name.replace('-', '_'))
+-
+-    def options(self, parser, env):
+-        env_opt = 'NOSE_WITH_%s' % self.name.upper()
+-        # latter expression to be used if plugin called from the command line
+-        parser.add_option("--%s" % self.name,
+-                          # will be called with Nosetests 'main' or 'run'
+-                          # function's' argument '--disabdocstring'
+-                          action="store_true",
+-                          dest=self.enableOpt,
+-                          # the latter entails that the boolean self.enableOpt
+-                          # is set to 'True' when plugin is called through a
+-                          # function's argument
+-                          default=env.get(env_opt),
+-                          # entails that plugin will be enabled when command
+-                          # line trigger 'env_opt' will be activated
+-                          help="Enable plugin %s: %s [%s]" %
+-                          (self.__class__.__name__,
+-                           self.help(), env_opt))
+-
+-    def configure(self, options, conf):
+-        self.conf = conf
+-        # plugin will be enabled when called through argument
+-        self.enabled = getattr(options, self.enableOpt)
+-
+-    def describeTest(self, test):
+-        # 'describeTest' is also called when the test result in Nosetests calls
+-        # 'test.shortDescription()' and can thus be used to alter the display.
+-        return False
+-
+-if __name__ == '__main__':
+-    main()
+--- a/setup.py
++++ b/setup.py
+@@ -103,7 +103,7 @@ def do_setup():
+           install_requires=['numpy>=1.9.1', 'scipy>=0.14', 'six>=1.9.0'],
+           # pygments is a dependency for Sphinx code highlight
+           extras_require={
+-              'test': ['nose>=1.3.0', 'parameterized', 'flake8'],
++              'test': ['pytest', 'parameterized', 'flake8'],
+               'doc': ['Sphinx>=0.5.1', 'pygments']
+           },
+           package_data={
+@@ -113,8 +113,7 @@ def do_setup():
+               'theano.d3viz': ['html/*', 'css/*', 'js/*']
+           },
+           entry_points={
+-              'console_scripts': ['theano-cache = bin.theano_cache:main',
+-                                  'theano-nose = bin.theano_nose:main']
++              'console_scripts': ['theano-cache = bin.theano_cache:main']
+           },
+           keywords=' '.join([
+               'theano', 'math', 'numerical', 'symbolic', 'blas',
+--- a/theano/compile/tests/test_debugmode.py
++++ b/theano/compile/tests/test_debugmode.py
+@@ -1,8 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+ import sys
+-import unittest
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ import numpy as np
+ from six import reraise
+ 
+@@ -386,7 +385,7 @@ def test_baddestroymap_c():
+         pass
+ 
+ 
+-class Test_ViewMap(unittest.TestCase):
++class Test_ViewMap(TestCase):
+ 
+     class BadAddRef(gof.Op):
+         def make_node(self, a, b):
+@@ -569,7 +568,7 @@ class Test_ViewMap(unittest.TestCase):
+         # f([1,2,3,4],[5,6,7,8])
+ 
+ 
+-class Test_check_isfinite(unittest.TestCase):
++class Test_check_isfinite(TestCase):
+     def setUp(self):
+         self.old_ts = theano.tensor.TensorType.filter_checks_isfinite
+         self.old_dm = theano.compile.mode.predefined_modes[
+@@ -749,7 +748,7 @@ class VecAsRowAndCol(gof.Op):
+             c[0][i, 0] = v[i]
+ 
+ 
+-class Test_preallocated_output(unittest.TestCase):
++class Test_preallocated_output(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(seed=utt.fetch_seed())
+ 
+--- a/theano/compile/tests/test_mode.py
++++ b/theano/compile/tests/test_mode.py
+@@ -1,6 +1,6 @@
+ from __future__ import absolute_import, print_function, division
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ 
+ import theano
+ from theano.compile.mode import Mode, AddFeatureOptimizer
+--- a/theano/compile/tests/test_pfunc.py
++++ b/theano/compile/tests/test_pfunc.py
+@@ -1,7 +1,6 @@
+ from __future__ import absolute_import, print_function, division
+-import unittest
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ import numpy as np
+ 
+ import theano
+@@ -19,7 +18,7 @@ def data_of(s):
+     return s.container.storage[0]
+ 
+ 
+-class Test_pfunc(unittest.TestCase):
++class Test_pfunc(TestCase):
+ 
+     def test_doc(self):
+         # Ensure the code given in pfunc.txt works as expected
+@@ -665,7 +664,7 @@ class Test_pfunc(unittest.TestCase):
+         assert b.get_value(borrow=True).shape == (2, 3), b.get_value()
+ 
+ 
+-class Test_aliasing_rules(unittest.TestCase):
++class Test_aliasing_rules(TestCase):
+     # 1. Theano manages its own memory space, which typically does not overlap
+     # with the memory of normal python variables that the user uses.
+     #
+@@ -985,7 +984,7 @@ class Test_aliasing_rules(unittest.TestC
+             # objects forming a chain to the underlying data.
+ 
+ 
+-class Test_rebuild_strict(unittest.TestCase):
++class Test_rebuild_strict(TestCase):
+     def test1(self):
+         # Test fix for error reported at
+         # https://groups.google.com/d/topic/theano-users/BRK0UEB72XA/discussion
+--- a/theano/d3viz/tests/test_d3viz.py
++++ b/theano/d3viz/tests/test_d3viz.py
+@@ -3,20 +3,19 @@ from __future__ import absolute_import,
+ import numpy as np
+ import os.path as pt
+ import tempfile
+-import unittest
+ import filecmp
+ 
+ import theano as th
+ import theano.d3viz as d3v
+ from theano.d3viz.tests import models
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ from theano.d3viz.formatting import pydot_imported, pydot_imported_msg
+ if not pydot_imported:
+     raise SkipTest('pydot not available: ' + pydot_imported_msg)
+ 
+ 
+-class TestD3Viz(unittest.TestCase):
++class TestD3Viz(TestCase):
+ 
+     def setUp(self):
+         self.rng = np.random.RandomState(0)
+--- a/theano/d3viz/tests/test_formatting.py
++++ b/theano/d3viz/tests/test_formatting.py
+@@ -1,19 +1,19 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+ import numpy as np
+-import unittest
+ 
+ import theano as th
+-from theano.d3viz.formatting import PyDotFormatter
++from theano.d3viz.formatting import (PyDotFormatter, pydot_imported,
++                                     pydot_imported_msg)
+ from theano.d3viz.tests import models
+ 
+-from nose.plugins.skip import SkipTest
+-from theano.d3viz.formatting import pydot_imported, pydot_imported_msg
+ if not pydot_imported:
+     raise SkipTest('pydot not available: ' + pydot_imported_msg)
+ 
+ 
+-class TestPyDotFormatter(unittest.TestCase):
++class TestPyDotFormatter(TestCase):
+ 
+     def setUp(self):
+         self.rng = np.random.RandomState(0)
+--- a/theano/gof/tests/test_cc.py
++++ b/theano/gof/tests/test_cc.py
+@@ -1,16 +1,16 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ 
+ import numpy as np
+ 
+ import theano
+-from theano.gof.link import PerformLinker
++from theano.gof import fg
+ from theano.gof.cc import CLinker, DualLinker, OpWiseCLinker
+-from theano.gof.type import Type
+-from theano.gof.graph import Variable, Apply, Constant
++from theano.gof.graph import Apply, Constant, Variable
++from theano.gof.link import PerformLinker
+ from theano.gof.op import Op
+-from theano.gof import fg
++from theano.gof.type import Type
+ 
+ 
+ def as_variable(x):
+--- a/theano/gof/tests/test_compute_test_value.py
++++ b/theano/gof/tests/test_compute_test_value.py
+@@ -5,8 +5,7 @@ import traceback
+ import warnings
+ 
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+-import unittest
++from unittest import SkipTest, TestCase
+ 
+ import theano
+ from theano import config
+@@ -38,7 +37,7 @@ class IncOneC(Op):
+         return "%(z)s = %(x)s + 1;" % locals()
+ 
+ 
+-class TestComputeTestValue(unittest.TestCase):
++class TestComputeTestValue(TestCase):
+ 
+     def test_variable_only(self):
+         orig_compute_test_value = theano.config.compute_test_value
+--- a/theano/gof/tests/test_fg.py
++++ b/theano/gof/tests/test_fg.py
+@@ -1,17 +1,16 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import os
+ import pickle
+-import unittest
+-
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ 
+ import theano
++from theano import tensor as tt
+ from theano.compat import PY3
+ from theano.gof import CachedConstantError, FunctionGraph
+-from theano import tensor as tt
+ 
+ 
+-class TFunctionGraph(unittest.TestCase):
++class TFunctionGraph(TestCase):
+     def test_constant_cache_error(self):
+         v = theano.tensor.constant(1)
+         assert v.cached
+--- a/theano/gof/tests/test_graph.py
++++ b/theano/gof/tests/test_graph.py
+@@ -1,9 +1,8 @@
+ from __future__ import absolute_import, print_function, division
+ from itertools import count
+ import pickle
+-import unittest
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ import numpy as np
+ 
+ from theano import (
+@@ -253,7 +252,7 @@ class TestToposort:
+ # is_same_graph #
+ #################
+ 
+-class TestIsSameGraph(unittest.TestCase):
++class TestIsSameGraph(TestCase):
+ 
+     def check(self, expected, debug=True):
+         """
+@@ -325,7 +324,7 @@ class TestIsSameGraph(unittest.TestCase)
+ # eval         #
+ ################
+ 
+-class TestEval(unittest.TestCase):
++class TestEval(TestCase):
+ 
+     def setUp(self):
+         self.x, self.y = tensor.scalars('x', 'y')
+--- a/theano/gof/tests/test_op.py
++++ b/theano/gof/tests/test_op.py
+@@ -1,7 +1,6 @@
+ from __future__ import absolute_import, print_function, division
+-import unittest
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase, main
+ import numpy as np
+ 
+ import theano
+@@ -155,7 +154,7 @@ class TestOp:
+         assert rval == [0, 0]
+ 
+ 
+-class TestMakeThunk(unittest.TestCase):
++class TestMakeThunk(TestCase):
+ 
+     def test_no_c_code(self):
+         class IncOnePython(Op):
+@@ -402,4 +401,4 @@ def test_debug_error_message():
+             config.compute_test_value = prev_value
+ 
+ if __name__ == '__main__':
+-    unittest.main()
++    main()
+--- a/theano/gof/tests/test_types.py
++++ b/theano/gof/tests/test_types.py
+@@ -1,14 +1,14 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import os
++from unittest import SkipTest, TestCase
++
+ import numpy as np
+ 
+ import theano
+-from theano import Op, Apply, scalar
++from theano import Apply, Op, scalar
++from theano.gof.type import CDataType, CEnumType, EnumList, EnumType
+ from theano.tensor import TensorType
+-from theano.gof.type import CDataType, EnumType, EnumList, CEnumType
+-from unittest import TestCase
+-
+-from nose.plugins.skip import SkipTest
+ 
+ # todo: test generic
+ 
+--- a/theano/gof/tests/test_vm.py
++++ b/theano/gof/tests/test_vm.py
+@@ -2,9 +2,9 @@ from __future__ import absolute_import,
+ import gc
+ import sys
+ import time
+-import unittest
++import pytest
+ 
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest, TestCase
+ import numpy as np
+ from six import itervalues
+ 
+@@ -19,7 +19,7 @@ from theano.ifelse import ifelse
+ import theano
+ 
+ 
+-class TestCallbacks(unittest.TestCase):
++class TestCallbacks(TestCase):
+     # Test the VM_Linker's callback argument, which can be useful for debugging.
+ 
+     def setUp(self):
+@@ -67,8 +67,7 @@ def test_c_thunks():
+                          linker=vm.VM_Linker(c_thunks=c_thunks,
+                                              use_cloop=False)))
+         f(1, [2], [3, 2])
+-        from nose.tools import assert_raises
+-        assert_raises(ValueError, f, 0, [2], [3, 4])
++        pytest.raises(ValueError, f, 0, [2], [3, 4])
+         assert any([hasattr(t, 'cthunk') for t in f.fn.thunks]) == c_thunks
+ 
+ 
+--- a/theano/gpuarray/tests/check_dnn_conv.py
++++ b/theano/gpuarray/tests/check_dnn_conv.py
+@@ -18,10 +18,9 @@ from __future__ import absolute_import,
+ import math
+ import sys
+ from itertools import product, chain
++import unittest
+ 
+-import nose
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+ 
+ import theano
+ import theano.tests.unittest_tools as utt
+@@ -1060,4 +1059,4 @@ if __name__ == '__main__':
+         argv = [sys.argv[0], module_name] + args
+ 
+         CheckDnn.print_infos()
+-        nose.main(argv=argv)
++        unittest.main(argv=argv)
+--- a/theano/gpuarray/tests/config.py
++++ b/theano/gpuarray/tests/config.py
+@@ -1,8 +1,9 @@
+-from __future__ import absolute_import, print_function, division
+-from nose.plugins.skip import SkipTest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
+ 
+-import theano.tensor
+ import theano.gpuarray
++import theano.tensor
+ 
+ if theano.gpuarray.pygpu is None:
+     raise SkipTest("pygpu not installed")
+--- a/theano/gpuarray/tests/test_abstractconv.py
++++ b/theano/gpuarray/tests/test_abstractconv.py
+@@ -1,19 +1,19 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
++from unittest import SkipTest
+ 
+ import numpy as np
++import pytest
++from pygpu import gpuarray
+ 
+ from theano.tensor.nnet.tests import test_abstract_conv
+-from ..type import GpuArrayType, gpuarray_shared_constructor, get_context
+-from ..dnn import dnn_available, GpuDnnConv, GpuDnnConvGradW, GpuDnnConvGradI
+-from ..blas import (
+-    GpuCorrMM, GpuCorrMM_gradWeights, GpuCorrMM_gradInputs,
+-    GpuCorr3dMM, GpuCorr3dMM_gradWeights, GpuCorr3dMM_gradInputs)
+ 
++from ..blas import (GpuCorr3dMM, GpuCorr3dMM_gradInputs,
++                    GpuCorr3dMM_gradWeights, GpuCorrMM, GpuCorrMM_gradInputs,
++                    GpuCorrMM_gradWeights)
++from ..dnn import GpuDnnConv, GpuDnnConvGradI, GpuDnnConvGradW, dnn_available
++from ..type import GpuArrayType, get_context, gpuarray_shared_constructor
+ from .config import mode_with_gpu, test_ctx_name
+-from pygpu import gpuarray
+ 
+ gpu_ftensor4 = GpuArrayType(dtype='float32', broadcastable=(False,) * 4)
+ 
+@@ -65,7 +65,7 @@ class TestDnnConv2d(test_abstract_conv.B
+                                filter_flip=flip, target_op=GpuDnnConvGradI,
+                                filter_dilation=fd)
+         else:
+-            assert_raises((RuntimeError, ValueError),
++            pytest.raises((RuntimeError, ValueError),
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s,
+@@ -123,7 +123,7 @@ class TestDnnConv3d(test_abstract_conv.B
+                                filter_flip=flip, target_op=GpuDnnConvGradI,
+                                filter_dilation=fd)
+         else:
+-            assert_raises((RuntimeError, ValueError),
++            pytest.raises((RuntimeError, ValueError),
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s,
+@@ -177,7 +177,7 @@ class TestCorrMMConv2d(test_abstract_con
+                                target_op=GpuCorrMM_gradInputs,
+                                filter_dilation=fd)
+         else:
+-            assert_raises(ValueError,
++            pytest.raises(ValueError,
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s,
+@@ -232,7 +232,7 @@ class TestCorrMMConv3d(test_abstract_con
+                                target_op=GpuCorr3dMM_gradInputs,
+                                filter_dilation=fd)
+         else:
+-            assert_raises(ValueError,
++            pytest.raises(ValueError,
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s,
+--- a/theano/gpuarray/tests/test_basic_ops.py
++++ b/theano/gpuarray/tests/test_basic_ops.py
+@@ -1,34 +1,30 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
+-from theano.compat import izip
++from __future__ import absolute_import, division, print_function
+ 
+-from six import iteritems
++from unittest import TestCase
+ 
+ import numpy as np
++from pygpu import gpuarray
++from six import iteritems
++
+ import theano
+ import theano.tensor as T
++from theano.compat import izip
+ from theano.tensor import TensorType
+ from theano.tensor.basic import alloc
+-
+ # Don't import test classes otherwise they get tested as part of the file
+ from theano.tensor.tests import test_basic
+ from theano.tensor.tests.test_basic import rand, safe_make_node
+ from theano.tests import unittest_tools as utt
+ 
+-from ..type import (GpuArrayType, get_context,
+-                    gpuarray_shared_constructor)
+-from ..basic_ops import (
+-    host_from_gpu, HostFromGpu, GpuFromHost, GpuReshape, GpuToGpu,
+-    GpuAlloc, GpuAllocEmpty, GpuContiguous,
+-    gpu_join, GpuJoin, GpuSplit, GpuEye, GpuTri,
+-    gpu_contiguous)
++from ..basic_ops import (GpuAlloc, GpuAllocEmpty, GpuContiguous, GpuEye,
++                         GpuFromHost, GpuJoin, GpuReshape, GpuSplit, GpuToGpu,
++                         GpuTri, HostFromGpu, gpu_contiguous, gpu_join,
++                         host_from_gpu)
+ from ..elemwise import GpuDimShuffle, GpuElemwise
+ from ..subtensor import GpuSubtensor
+-
++from ..type import GpuArrayType, get_context, gpuarray_shared_constructor
+ from .config import mode_with_gpu, mode_without_gpu, test_ctx_name
+ 
+-from pygpu import gpuarray
+-
+ utt.seed_rng()
+ rng = np.random.RandomState(seed=utt.fetch_seed())
+ 
+@@ -44,7 +40,7 @@ def inplace_func(inputs, outputs, mode=N
+ 
+ 
+ def fake_shared(value, name=None, strict=False, allow_downcast=None, **kwargs):
+-    from theano.tensor.sharedvar import tensor_constructor, scalar_constructor
++    from theano.tensor.sharedvar import scalar_constructor, tensor_constructor
+     for c in (gpuarray_shared_constructor, tensor_constructor,
+               scalar_constructor):
+         try:
+@@ -75,7 +71,7 @@ def makeTester(name, op, gpu_op, cases,
+     _skip = skip
+     _checks = checks
+ 
+-    class Checker(unittest.TestCase, utt.TestOptimizationMixin):
++    class Checker(TestCase, utt.TestOptimizationMixin):
+         op = staticmethod(_op)
+         gpu_op = staticmethod(_gpu_op)
+         cases = _cases
+@@ -87,7 +83,7 @@ def makeTester(name, op, gpu_op, cases,
+ 
+         def test_all(self):
+             if skip:
+-                from nose.plugins.skip import SkipTest
++                from unittest import SkipTest
+                 raise SkipTest(skip)
+ 
+             for testname, inputs in iteritems(cases):
+--- a/theano/gpuarray/tests/test_blas.py
++++ b/theano/gpuarray/tests/test_blas.py
+@@ -1,25 +1,23 @@
+-from __future__ import absolute_import, print_function, division
+-from unittest import TestCase
+-from nose.plugins.skip import SkipTest
++from __future__ import absolute_import, division, print_function
++
+ import itertools
++from unittest import SkipTest, TestCase
++
+ import numpy as np
+ 
+ import theano
+-from theano import config
+-from theano import tensor
++from theano import config, tensor
++from theano.tensor.blas import (_dot22, batched_dot, gemm_inplace, gemv,
++                                gemv_inplace)
++from theano.tensor.tests.test_blas import BaseGemv, TestGer
+ from theano.tests import unittest_tools as utt
+-from theano.tensor.blas import gemv, gemv_inplace, gemm_inplace, _dot22, batched_dot
+-from theano.tensor.tests.test_blas import TestGer, BaseGemv
+ 
+ from .. import gpuarray_shared_constructor
++from ..blas import (GpuGemm, GpuGer, gpu_dot22, gpugemm_inplace,
++                    gpugemm_no_inplace, gpugemmbatch_inplace, gpugemv_inplace,
++                    gpugemv_no_inplace, gpuger_inplace, gpuger_no_inplace)
+ from .config import mode_with_gpu, test_ctx_name
+ from .test_basic_ops import makeTester, rand
+-from ..blas import (gpugemv_inplace, gpugemv_no_inplace,
+-                    gpugemm_inplace, gpugemm_no_inplace,
+-                    gpugemmbatch_inplace,
+-                    gpuger_inplace, gpuger_no_inplace,
+-                    GpuGer, GpuGemm, gpu_dot22)
+-
+ 
+ GpuGemvTester = makeTester(
+     'GpuGemvTester',
+--- a/theano/gpuarray/tests/test_dnn.py
++++ b/theano/gpuarray/tests/test_dnn.py
+@@ -1,33 +1,33 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import logging
+ from collections import OrderedDict
++from itertools import chain, product
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+-from parameterized import parameterized
+ import numpy as np
+-from itertools import product, chain
++import pytest
++from parameterized import parameterized
++from six import StringIO
+ 
+ import theano
+-from six import StringIO
+ import theano.tensor as T
+ import theano.tests.unittest_tools as utt
+-from theano.tensor.signal.pool import pool_2d, pool_3d
+-from theano.tensor.signal.pool import Pool, MaxPoolGrad, AveragePoolGrad
+-from theano.tensor.nnet.abstract_conv import get_conv_output_shape, get_conv_gradinputs_shape
++from theano.configdefaults import SUPPORTED_DNN_CONV_ALGO_FWD
+ from theano.tensor.nnet import bn
++from theano.tensor.nnet.abstract_conv import (get_conv_gradinputs_shape,
++                                              get_conv_output_shape)
++from theano.tensor.nnet.tests.test_abstract_conv import (
++    Grouped_conv3d_noOptim, Grouped_conv_noOptim)
++from theano.tensor.signal.pool import (AveragePoolGrad, MaxPoolGrad, Pool,
++                                       pool_2d, pool_3d)
+ 
+ from .. import dnn
+ from ..basic_ops import GpuAllocEmpty
+-from ..type import gpuarray_shared_constructor, GpuArrayType
+-
+-from .config import mode_with_gpu, mode_without_gpu, test_ctx_name, ref_cast
++from ..type import GpuArrayType, gpuarray_shared_constructor
+ from . import test_nnet
+-from .rnn_support import Model, GRU, LSTM, WrapperLayer
+-
+-from theano.configdefaults import SUPPORTED_DNN_CONV_ALGO_FWD
+-from theano.tensor.nnet.tests.test_abstract_conv import Grouped_conv_noOptim
+-from theano.tensor.nnet.tests.test_abstract_conv import Grouped_conv3d_noOptim
++from .config import mode_with_gpu, mode_without_gpu, ref_cast, test_ctx_name
++from .rnn_support import GRU, LSTM, Model, WrapperLayer
+ 
+ try:
+     import pygpu
+@@ -197,11 +197,11 @@ def run_dnn_conv_invalid_precision(ndim)
+ 
+     dnn_gradw('float64')
+     dnn_gradw('float32')
+-    assert_raises(TypeError, dnn_gradw, 'float16')
++    pytest.raises(TypeError, dnn_gradw, 'float16')
+ 
+     dnn_gradi('float64')
+     dnn_gradi('float32')
+-    assert_raises(TypeError, dnn_gradi, 'float16')
++    pytest.raises(TypeError, dnn_gradi, 'float16')
+ 
+     for precision in ('float64', 'float32'):
+         dnn_conv(precision, 'valid', None)
+@@ -210,8 +210,8 @@ def run_dnn_conv_invalid_precision(ndim)
+         dnn_conv(precision, 'full', 'forward!')
+ 
+     dnn_conv('float16', 'valid', None)
+-    assert_raises(TypeError, dnn_conv, 'float16', 'valid', 'bprop weights')
+-    assert_raises(TypeError, dnn_conv, 'float16', 'full', None)
++    pytest.raises(TypeError, dnn_conv, 'float16', 'valid', 'bprop weights')
++    pytest.raises(TypeError, dnn_conv, 'float16', 'full', None)
+     dnn_conv('float16', 'full', 'forward!')
+ 
+ 
+@@ -2693,12 +2693,12 @@ def test_dnn_spatialtf_invalid_shapes():
+     try_theta_shp((3, 2, 3))
+ 
+     # incorrect parameter dimensions
+-    assert_raises(RuntimeError, try_theta_shp, (3, 1, 3))
+-    assert_raises(RuntimeError, try_theta_shp, (3, 2, 1))
++    pytest.raises(RuntimeError, try_theta_shp, (3, 1, 3))
++    pytest.raises(RuntimeError, try_theta_shp, (3, 2, 1))
+ 
+     # number of rows does not match the number of input rows
+-    assert_raises(RuntimeError, try_theta_shp, (1, 2, 3))
+-    assert_raises(RuntimeError, try_theta_shp, (4, 2, 3))
++    pytest.raises(RuntimeError, try_theta_shp, (1, 2, 3))
++    pytest.raises(RuntimeError, try_theta_shp, (4, 2, 3))
+ 
+ 
+ def test_dnn_spatialtf_grad():
+--- a/theano/gpuarray/tests/test_fft.py
++++ b/theano/gpuarray/tests/test_fft.py
+@@ -1,5 +1,5 @@
+ from __future__ import absolute_import, print_function, division
+-import unittest
++from unittest import SkipTest, TestCase
+ import numpy as np
+ 
+ import theano
+@@ -11,7 +11,6 @@ import theano.gpuarray.fft
+ from .config import mode_with_gpu
+ 
+ # Skip tests if pygpu is not available.
+-from nose.plugins.skip import SkipTest
+ from theano.gpuarray.fft import pygpu_available, skcuda_available, pycuda_available
+ if not pygpu_available:  # noqa
+     raise SkipTest('Optional package pygpu not available')
+@@ -24,7 +23,7 @@ if not pycuda_available:  # noqa
+ N = 32
+ 
+ 
+-class TestFFT(unittest.TestCase):
++class TestFFT(TestCase):
+ 
+     def test_1Dfft(self):
+         inputs_val = np.random.random((1, N)).astype('float32')
+--- a/theano/gpuarray/tests/test_pickle.py
++++ b/theano/gpuarray/tests/test_pickle.py
+@@ -5,17 +5,18 @@ available are in test_type.py.
+ This is needed as we skip all the test file when pygpu isn't there in
+ regular test file.
+ """
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import os
+ import sys
+-from six import reraise
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+ import numpy as np
++import pytest
++from six import reraise
+ 
+-from theano.compat import PY3
+ from theano import config
++from theano.compat import PY3
+ from theano.misc.pkl_utils import CompatUnpickler
+ 
+ from ..type import ContextNotDefined
+@@ -45,7 +46,7 @@ def test_unpickle_gpuarray_as_numpy_ndar
+                 u = CompatUnpickler(fp, encoding="latin1")
+             else:
+                 u = CompatUnpickler(fp)
+-            assert_raises((ImportError, ContextNotDefined), u.load)
++            pytest.raises((ImportError, ContextNotDefined), u.load)
+     finally:
+         config.experimental.unpickle_gpu_on_cpu = oldflag
+ 
+--- a/theano/sandbox/cuda/__init__.py
++++ b/theano/sandbox/cuda/__init__.py
+@@ -1,4 +1,4 @@
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ # NB: We raise a SkipTest (instead of another type of exception) because we're in a folder,
+ # thus nosetests will look for test files into this folder. With a SkipTest raised,
+ # the folder will be skipped by nosetests without failing.
+--- a/theano/sandbox/linalg/tests/test_linalg.py
++++ b/theano/sandbox/linalg/tests/test_linalg.py
+@@ -1,28 +1,22 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
++
+ import numpy as np
+ import numpy.linalg
+ 
+ import theano
+-from theano import tensor, function
++from theano import config, function, tensor
++# The one in comment are not tested...
++from theano.sandbox.linalg.ops import Cholesky  # PSD_hint,; op class
++from theano.sandbox.linalg.ops import (Solve, imported_scipy, inv_as_solve,
++                                       matrix_inverse, solve,
++                                       spectral_radius_bound)
++from theano.tensor import DimShuffle
+ from theano.tensor.basic import _allclose
+-from theano.tests.test_rop import break_op
+-from theano.tests import unittest_tools as utt
+-from theano import config
+ from theano.tensor.nlinalg import MatrixInverse
+-from theano.tensor import DimShuffle
+-
+-# The one in comment are not tested...
+-from theano.sandbox.linalg.ops import (Cholesky,  # op class
+-                                       matrix_inverse,
+-                                       Solve,
+-                                       solve,
+-                                       # PSD_hint,
+-                                       spectral_radius_bound,
+-                                       imported_scipy,
+-                                       inv_as_solve,
+-                                       )
+-
+-from nose.plugins.skip import SkipTest
++from theano.tests import unittest_tools as utt
++from theano.tests.test_rop import break_op
+ 
+ 
+ def test_rop_lop():
+--- a/theano/sandbox/tests/test_multinomial.py
++++ b/theano/sandbox/tests/test_multinomial.py
+@@ -1,17 +1,18 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import os
+ import sys
+-from six import reraise
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
++from six import reraise
+ 
+ import theano
+-from theano import config, function, tensor
+-from theano.sandbox import multinomial
+ import theano.tests.unittest_tools as utt
++from theano import config, function, tensor
+ from theano.compat import PY3
+ from theano.misc.pkl_utils import CompatUnpickler
++from theano.sandbox import multinomial
+ 
+ 
+ def test_n_samples_1():
+--- a/theano/scalar/tests/test_basic_sympy.py
++++ b/theano/scalar/tests/test_basic_sympy.py
+@@ -1,10 +1,10 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
+ 
+ import theano
+-from theano.scalar.basic_sympy import SymPyCCode
+ from theano.scalar.basic import floats
+-
+-from nose.plugins.skip import SkipTest
++from theano.scalar.basic_sympy import SymPyCCode
+ 
+ try:
+     import sympy
+--- a/theano/scan_module/tests/test_scan.py
++++ b/theano/scan_module/tests/test_scan.py
+@@ -1,32 +1,27 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+ import os
+ import shutil
+ import sys
+-from tempfile import mkdtemp
+ import time
+-import unittest
+-import copy
+ from collections import OrderedDict
++from tempfile import mkdtemp
++from unittest import SkipTest, TestCase
+ 
+-import six.moves.cPickle as pickle
+-from six.moves import xrange
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+-from nose.tools import raises
++import pytest
++import six.moves.cPickle as pickle
+ from numpy.testing import dec
++from six.moves import xrange
+ 
+ import theano
+ import theano.sandbox.rng_mrg
++import theano.scalar.sharedvar
+ from theano import tensor
++from theano.compat import PY3
+ from theano.compile.pfunc import rebuild_collect_shared
+-from theano.tests import unittest_tools as utt
+-import theano.scalar.sharedvar
+ from theano.scan_module.scan_op import Scan
+-from theano.compat import PY3
+-from theano.tests.unittest_tools import attr
+-
++from theano.tests import unittest_tools as utt
+ 
+ '''
+   Questions and notes about scan that should be answered :
+@@ -216,7 +211,7 @@ def scan_nodes_from_fct(fct):
+     return scan_nodes
+ 
+ 
+-class T_Scan(unittest.TestCase):
++class T_Scan(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+@@ -376,7 +371,7 @@ class T_Scan(unittest.TestCase):
+              4,
+              np.int64([2, 2, 3]))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_only_nonseq_inputs(self):
+         # Compile the Theano function
+         n_steps = 2
+@@ -1525,7 +1520,7 @@ class T_Scan(unittest.TestCase):
+                              analytic_grad[max_err_pos],
+                              num_grad.gx[max_err_pos]))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_grad_multiple_outs_taps(self):
+         l = 5
+         rng = np.random.RandomState(utt.fetch_seed())
+@@ -1797,7 +1792,7 @@ for{cpu,scan_fn}.2 [id H] ''
+                              analytic_grad[max_err_pos],
+                              num_grad.gx[max_err_pos]))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_grad_multiple_outs_taps_backwards(self):
+         l = 5
+         rng = np.random.RandomState(utt.fetch_seed())
+@@ -3154,7 +3149,7 @@ for{cpu,scan_fn}.2 [id H] ''
+         f2 = theano.function([], gx)
+         utt.assert_allclose(f2(), np.ones((10,)))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_rop2(self):
+         seed = utt.fetch_seed()
+         rng = np.random.RandomState(seed)
+@@ -3620,7 +3615,7 @@ for{cpu,scan_fn}.2 [id H] ''
+         out, updates_outer = theano.scan(unit_dropout,
+                                      sequences=[tensor.arange(inp.shape[0])])
+ 
+-        assert_raises(theano.gradient.NullTypeGradError,
++        pytest.raises(theano.gradient.NullTypeGradError,
+                       tensor.grad, out.sum(), inp)
+ 
+     def test_bugFunctioProvidesIntermediateNodesAsInputs(self):
+@@ -4574,7 +4569,7 @@ for{cpu,scan_fn}.2 [id H] ''
+             inp = scan_node.op.outer_non_seqs(scan_node)
+             assert len(inp) == 1
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_hessian_bug_grad_grad_two_scans(self):
+         # Bug reported by Bitton Tenessi
+         # NOTE : The test to reproduce the bug reported by Bitton Tenessi
+@@ -4649,23 +4644,23 @@ for{cpu,scan_fn}.2 [id H] ''
+ 
+         assert diff <= type_eps[theano.config.floatX]
+ 
+-    @raises(theano.gof.fg.MissingInputError)
+     def test_strict_mode_ex(self):
+-        n = 10
++        with pytest.raises(theano.gof.fg.MissingInputError):
++            n = 10
+ 
+-        w = np.array([[-1, 2], [3, -4]]).astype(theano.config.floatX)
+-        w_ = theano.shared(w)
+-        x0 = np.array([1, 2]).astype(theano.config.floatX)
+-        x0_ = tensor.vector(name='x0', dtype=theano.config.floatX)
+-
+-        def _scan_loose(x):
+-            return tensor.dot(x, w_)
+-
+-        ret_strict = theano.scan(_scan_loose,
+-                                 sequences=[],
+-                                 outputs_info=[x0_],
+-                                 n_steps=n,
+-                                 strict=True)
++            w = np.array([[-1, 2], [3, -4]]).astype(theano.config.floatX)
++            w_ = theano.shared(w)
++            x0 = np.array([1, 2]).astype(theano.config.floatX)
++            x0_ = tensor.vector(name='x0', dtype=theano.config.floatX)
++
++            def _scan_loose(x):
++                return tensor.dot(x, w_)
++
++            theano.scan(_scan_loose,
++                        sequences=[],
++                        outputs_info=[x0_],
++                        n_steps=n,
++                        strict=True)
+ 
+     def test_monitor_mode(self):
+         # Test that it is possible to pass an instance of MonitorMode
+@@ -5049,7 +5044,7 @@ class ScanGpuTests:
+         utt.assert_allclose(output, expected_output)
+ 
+ 
+-class T_Scan_Gpuarray(unittest.TestCase, ScanGpuTests):
++class T_Scan_Gpuarray(TestCase, ScanGpuTests):
+     """
+     This class takes the gpu tests for scan that are defined in
+     class ScanGpuTests and runs them using the gpuarray backend.
+@@ -5072,6 +5067,7 @@ class T_Scan_Gpuarray(unittest.TestCase,
+         # Make sure to activate the new backend, if possible otherwise
+         # tesing this class directly will always skip.
+         import theano.gpuarray.tests.config
++
+         # Skip the test if pygpu is not available
+         if not self.gpu_backend.pygpu_activated:
+             raise SkipTest('Optional package pygpu disabled')
+@@ -5581,9 +5577,9 @@ def test_outputs_taps_check():
+     y = tensor.fvector('y')
+     f = lambda x, y: [x]
+     outputs_info = {'initial': y, 'taps': [0]}
+-    assert_raises(ValueError, theano.scan, f, x, outputs_info)
++    pytest.raises(ValueError, theano.scan, f, x, outputs_info)
+     outputs_info = {'initial': y, 'taps': [-1, -1]}
+-    assert_raises(ValueError, theano.scan, f, x, outputs_info)
++    pytest.raises(ValueError, theano.scan, f, x, outputs_info)
+     print('done')
+ 
+ 
+@@ -5613,7 +5609,7 @@ def test_default_value_broadcasted():
+     f(np.random.rand(10, in_size).astype(X.dtype))
+ 
+ 
+-class TestInconsistentBroadcast(unittest.TestCase):
++class TestInconsistentBroadcast(TestCase):
+ 
+     def test_raise_error(self):
+         x = tensor.tensor3()
+@@ -5630,24 +5626,24 @@ class TestInconsistentBroadcast(unittest
+         y, updates = theano.scan(fn=lambda x, prev_x: x + prev_x,
+                                  sequences=x,
+                                  outputs_info=[dict(initial=initial_x)])
+-        gs = tensor.grad(y.sum(), x)
++        tensor.grad(y.sum(), x)
+ 
+ 
+-class TestMissingInputError(unittest.TestCase):
++class TestMissingInputError(TestCase):
+ 
+-    @raises(theano.gof.fg.MissingInputError)
+     def test_raise_error(self):
+-        c = theano.shared(0.)
+-        inc = tensor.scalar('inc')
++        with pytest.raises(theano.gof.fg.MissingInputError):
++            c = theano.shared(0.)
++            inc = tensor.scalar('inc')
+ 
+-        def count_up():
+-            return tensor.zeros(()), {c: c + inc}
++            def count_up():
++                return tensor.zeros(()), {c: c + inc}
+ 
+-        _, updates = theano.scan(count_up, n_steps=20)
+-        func = theano.function(inputs=[inc], outputs=[], updates=updates)
++            _, updates = theano.scan(count_up, n_steps=20)
++            theano.function(inputs=[inc], outputs=[], updates=updates)
+ 
+ 
+-class TestGradUntil(unittest.TestCase):
++class TestGradUntil(TestCase):
+ 
+     def setUp(self):
+         self.x = tensor.vector(name='x')
+--- a/theano/sparse/sandbox/test_sp.py
++++ b/theano/sparse/sandbox/test_sp.py
+@@ -1,31 +1,28 @@
+-from __future__ import absolute_import, print_function, division
+-from nose.plugins.skip import SkipTest
+-import sys
++from __future__ import absolute_import, division, print_function
++
+ import time
+-import unittest
++from unittest import SkipTest, TestCase
++
++import pytest
+ 
+ import theano.sparse
++
+ if not theano.sparse.enable_sparse:
+     raise SkipTest('Optional package sparse disabled')
+ 
+-import scipy.sparse
+-from scipy.signal import convolve2d
+-import scipy.sparse as sparse
+ import numpy as np
+-from six.moves import xrange
++from scipy.signal import convolve2d
+ 
+-from theano import function, tensor
+ import theano
++from theano import function, tensor
+ from theano.compat import next
+ from theano.sparse.sandbox import sp
+-from theano.sparse.tests.test_basic import random_lil
++from theano.sparse.tests import test_remove0
+ from theano.tests import unittest_tools as utt
+-from theano.sparse.tests.test_basic import sparse_random_inputs
+-from theano.tests.unittest_tools import attr
+ 
+ 
+-class TestSP(unittest.TestCase):
+-    @attr('slow')
++class TestSP(TestCase):
++    @pytest.mark.slow
+     def test_convolution(self):
+ #        print '\n\n*************************************************'
+ #        print '           TEST CONVOLUTION'
+@@ -52,12 +49,13 @@ class TestSP(unittest.TestCase):
+             for conv_mode in convmodes:
+                 for ss in ssizes:
+ 
+-                    output, outshp = sp.convolve(kerns, kshp, nkern, input,\
+-                            imshp, ss, bias=bias, mode=conv_mode)
++                    output, outshp = sp.convolve(kerns, kshp, nkern, input,
++                                                 imshp, ss, bias=bias,
++                                                 mode=conv_mode)
+                     f = function([kerns, bias, input], output, mode=mode)
+ 
+                     # now test with real values
+-                    img2d = np.arange(bsize * np.prod(imshp)).reshape(( \
++                    img2d = np.arange(bsize * np.prod(imshp)).reshape((
+                                                             bsize,) + imshp)
+                     img1d = img2d.reshape(bsize, -1)
+ 
+@@ -213,7 +211,7 @@ if __name__ == '__main__':
+         test_remove0()
+         exit()
+     if 1:
+-        testcase =  TestSP
++        testcase = TestSP
+         suite = unittest.TestLoader()
+         suite = suite.loadTestsFromTestCase(testcase)
+         unittest.TextTestRunner(verbosity=2).run(suite)
+--- a/theano/sparse/tests/test_basic.py
++++ b/theano/sparse/tests/test_basic.py
+@@ -1,15 +1,14 @@
+ from __future__ import absolute_import, print_function, division
+ from itertools import product
+ import time
+-import unittest
++from unittest import SkipTest, TestCase, main
+ 
+-from nose.plugins.skip import SkipTest
++import pytest
+ import numpy as np
+ from six.moves import xrange
+ try:
+     import scipy.sparse as sp
+     import scipy.sparse
+-    from scipy.sparse import csr_matrix
+ except ImportError:
+     pass  # The variable enable_sparse will be used to disable the test file.
+ 
+@@ -18,8 +17,6 @@ from theano import tensor
+ from theano import sparse
+ from theano import compile, config, gof
+ from theano.sparse import enable_sparse
+-from theano.tensor.basic import _allclose
+-from theano.tests.unittest_tools import attr
+ 
+ if not enable_sparse:
+     raise SkipTest('Optional package SciPy not installed')
+@@ -268,7 +265,7 @@ def verify_grad_sparse(op, pt, structure
+ verify_grad_sparse.E_grad = utt.verify_grad.E_grad
+ 
+ 
+-class T_verify_grad_sparse(unittest.TestCase):
++class T_verify_grad_sparse(TestCase):
+     class FailOp(gof.op.Op):
+         def __init__(self, structured):
+             self.structured = structured
+@@ -316,7 +313,7 @@ class T_verify_grad_sparse(unittest.Test
+                                                     config.floatX, 3))])
+ 
+ 
+-class T_transpose(unittest.TestCase):
++class T_transpose(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -504,7 +501,7 @@ class SparseInferShapeTester(utt.InferSh
+     def test_structured_dot_grad(self):
+         # We also need the grad of CSM to be implemetned.
+         raise SkipTest('infer_shape not implemented for the grad'
+-                       ' of structured_dot')
++                                ' of structured_dot')
+         for format, op in [('csc', StructuredDotGradCSC),
+                            ('csr', StructuredDotGradCSR)]:
+             x = SparseType(format, dtype=config.floatX)()
+@@ -560,7 +557,7 @@ class SparseInferShapeTester(utt.InferSh
+                 )
+ 
+ 
+-class TestConstructSparseFromList(unittest.TestCase):
++class TestConstructSparseFromList(TestCase):
+     def test_adv_sub1_sparse_grad(self):
+         v = theano.tensor.ivector()
+ 
+@@ -613,7 +610,7 @@ class TestConstructSparseFromList(unitte
+             self.assertRaises(TypeError, theano.grad, sub.sum(), t)
+ 
+ 
+-class T_AddMul(unittest.TestCase):
++class T_AddMul(TestCase):
+     def testAddSS(self):
+         self._testSS(add)
+ 
+@@ -758,7 +755,7 @@ class T_AddMul(unittest.TestCase):
+                             verify_grad_sparse(op, [a, b], structured=False)
+ 
+ 
+-class test_comparison(unittest.TestCase):
++class test_comparison(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -890,7 +887,7 @@ class test_comparison(unittest.TestCase)
+                                               self.testsDic[func](m2, m1)))
+ 
+ 
+-class T_conversion(unittest.TestCase):
++class T_conversion(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -955,7 +952,7 @@ class T_conversion(unittest.TestCase):
+             self.assertRaises(TypeError, self.check_format_ndim, format, 4)
+ 
+ 
+-class test_csm_properties(unittest.TestCase):
++class test_csm_properties(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -998,7 +995,7 @@ class test_csm_properties(unittest.TestC
+                 assert np.all(shape == spmat.shape)
+ 
+ 
+-class test_csm(unittest.TestCase):
++class test_csm(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -1089,7 +1086,7 @@ class test_csm(unittest.TestCase):
+                 assert np.all(res.shape == spmat.shape)
+ 
+ 
+-class test_structureddot(unittest.TestCase):
++class test_structureddot(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -1452,7 +1449,7 @@ class DotTests(utt.InferShapeTester):
+         theano.tests.unittest_tools.verify_grad(buildgraph_T, [mat])
+ 
+ 
+-class UsmmTests(unittest.TestCase):
++class UsmmTests(TestCase):
+     """
+     Test the Usmm and UsmmCscDense class and related optimization
+     """
+@@ -1643,7 +1640,7 @@ class UsmmTests(unittest.TestCase):
+                         for node in topo]) == nb
+ 
+ 
+-class test_zeros_like(unittest.TestCase):
++class test_zeros_like(TestCase):
+     def test(self):
+         x = theano.sparse.csr_matrix()
+         f = theano.function([x], theano.sparse.sp_zeros_like(x))
+@@ -2124,7 +2121,7 @@ class Remove0Tester(utt.InferShapeTester
+         verify_grad_sparse(Remove0(), [mat_csr])
+ 
+ 
+-class Test_getitem(unittest.TestCase):
++class Test_getitem(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(utt.fetch_seed())
+ 
+@@ -2450,7 +2447,7 @@ class CastTester(utt.InferShapeTester):
+                     utt.assert_allclose(expected, t_cls)
+                     utt.assert_allclose(expected, t_prop)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape(self):
+         for format in sparse.sparse_formats:
+             for i_dtype in sparse.all_dtypes:
+@@ -2644,7 +2641,7 @@ def elemwise_checker(op, expected_f, gap
+     if test_dtypes is None:
+         test_dtypes = sparse.all_dtypes
+ 
+-    class Tester(unittest.TestCase):
++    class Tester(TestCase):
+ 
+         def setUp(self):
+             super(Tester, self).setUp()
+@@ -2990,7 +2987,7 @@ ConjTester = elemwise_checker(
+     grad_test=False)
+ 
+ 
+-class MulSVTester(unittest.TestCase):
++class MulSVTester(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -3025,7 +3022,7 @@ class MulSVTester(unittest.TestCase):
+                 utt.assert_allclose(spmat.toarray() * mat, out.toarray())
+ 
+ 
+-class StructuredAddSVTester(unittest.TestCase):
++class StructuredAddSVTester(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -3228,4 +3225,4 @@ class test_shared_options(object):
+ 
+ 
+ if __name__ == '__main__':
+-    unittest.main()
++    main()
+--- a/theano/sparse/tests/test_opt.py
++++ b/theano/sparse/tests/test_opt.py
+@@ -1,16 +1,20 @@
+-from __future__ import absolute_import, print_function, division
+-from nose.plugins.skip import SkipTest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
++
+ import numpy as np
++
+ try:
+-    import scipy.sparse as sp
+     import scipy.sparse
++    import scipy.sparse as sp
+ except ImportError:
+     pass  # The variable enable_sparse will be used to disable the test file.
+ 
+ import theano
+-from theano import sparse, config, tensor
++from theano import config, sparse, tensor
+ from theano.sparse import enable_sparse
+ from theano.tests import unittest_tools as utt
++
+ if not enable_sparse:
+     raise SkipTest('Optional package sparse disabled')
+ 
+@@ -160,14 +164,13 @@ def test_sd_csc():
+     A = sp.rand(4, 5, density=0.60, format='csc', dtype=np.float32)
+     b = np.random.rand(5,2).astype(np.float32)
+     target = A*b
+-    
++
+     a_val = theano.tensor.as_tensor_variable(A.data)
+     a_ind = theano.tensor.as_tensor_variable(A.indices)
+     a_ptr = theano.tensor.as_tensor_variable(A.indptr)
+     nrows = theano.tensor.as_tensor_variable(np.int32(A.shape[0]))
+     b = theano.tensor.as_tensor_variable(b)
+-    
++
+     res = theano.sparse.opt.sd_csc(a_val, a_ind, a_ptr, nrows, b).eval()
+-    
+-    utt.assert_allclose(res, target)
+ 
++    utt.assert_allclose(res, target)
+--- a/theano/sparse/tests/test_sp2.py
++++ b/theano/sparse/tests/test_sp2.py
+@@ -1,26 +1,24 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, main
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
++
+ try:
+     import scipy.sparse as sp
+ except ImportError:
+     pass  # The variable enable_sparse will be used to disable the test file.
+ 
+ import theano
+-from theano import config
+-from theano import tensor
+-from theano import sparse
++from theano import config, sparse, tensor
+ 
+ if not theano.sparse.enable_sparse:
+     raise SkipTest('Optional package sparse disabled')
+ 
+-from theano.sparse.sandbox.sp2 import (
+-    Poisson, poisson, Binomial, Multinomial, multinomial)
+-
+-from theano.tests import unittest_tools as utt
++from theano.sparse.sandbox.sp2 import (Binomial, Multinomial, Poisson,
++                                       multinomial, poisson)
+ from theano.sparse.tests.test_basic import as_sparse_format
++from theano.tests import unittest_tools as utt
+ 
+ 
+ class PoissonTester(utt.InferShapeTester):
+@@ -141,4 +139,4 @@ class MultinomialTester(utt.InferShapeTe
+ 
+ 
+ if __name__ == '__main__':
+-    unittest.main()
++    main()
+--- a/theano/sparse/tests/test_utils.py
++++ b/theano/sparse/tests/test_utils.py
+@@ -1,12 +1,15 @@
+-from __future__ import absolute_import, print_function, division
+-from nose.plugins.skip import SkipTest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
++
+ import numpy as np
++
+ import theano.sparse
++
+ if not theano.sparse.enable_sparse:
+     raise SkipTest('Optional package sparse disabled')
+-from theano.sparse.utils import hash_from_sparse
+ from theano.sparse.tests.test_basic import as_sparse_format
+-
++from theano.sparse.utils import hash_from_sparse
+ 
+ 
+ def test_hash_from_sparse():
+--- a/theano/tensor/nnet/tests/test_abstract_conv.py
++++ b/theano/tensor/nnet/tests/test_abstract_conv.py
+@@ -1,8 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+-import unittest
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises, assert_true
++from unittest import SkipTest, TestCase
++import pytest
+ 
+ import theano
+ from theano import tensor
+@@ -99,7 +98,7 @@ def conv3d_corr_gi(filters, topgrad, inp
+                                                        inputs_shape[2:])
+ 
+ 
+-class TestGetConvOutShape(unittest.TestCase):
++class TestGetConvOutShape(TestCase):
+     def test_basic(self):
+         image_shape, kernel_shape = (3, 2, 12, 9), (4, 2, 5, 6)
+         sub_sample = (1, 2)
+@@ -137,7 +136,7 @@ class TestGetConvOutShape(unittest.TestC
+         self.assertTrue(test4_params == (3, 4, 6, 4, 10))
+ 
+ 
+-class TestConvGradInputsShape(unittest.TestCase):
++class TestConvGradInputsShape(TestCase):
+     def test_check_shape(self):
+         for i in range(1, 20):
+             for k in range(1, 10):
+@@ -212,21 +211,21 @@ class TestConvGradInputsShape(unittest.T
+                         self.assertEqual(computed_kernel_shape, kernel_shape_with_None)
+ 
+ 
+-class TestAssertConvShape(unittest.TestCase):
++class TestAssertConvShape(TestCase):
+     def test_basic(self):
+         shape = tuple(tensor.iscalar() for i in range(4))
+         f = theano.function(shape, assert_conv_shape(shape))
+ 
+         self.assertEqual([1, 2, 3, 4], f(1, 2, 3, 4))
+         self.assertEqual([0, 0, 1, 1], f(0, 0, 1, 1))
+-        assert_raises(AssertionError, f, 3, 3, 3, 0)
+-        assert_raises(AssertionError, f, 3, 3, 0, 3)
+-        assert_raises(AssertionError, f, 3, 3, -1, 3)
+-        assert_raises(AssertionError, f, 3, -1, 3, 3)
+-        assert_raises(AssertionError, f, -1, 3, 3, 3)
++        pytest.raises(AssertionError, f, 3, 3, 3, 0)
++        pytest.raises(AssertionError, f, 3, 3, 0, 3)
++        pytest.raises(AssertionError, f, 3, 3, -1, 3)
++        pytest.raises(AssertionError, f, 3, -1, 3, 3)
++        pytest.raises(AssertionError, f, -1, 3, 3, 3)
+ 
+ 
+-class TestAssertShape(unittest.TestCase):
++class TestAssertShape(TestCase):
+     @change_flags([("conv.assert_shape", True)])
+     def test_basic(self):
+         x = tensor.tensor4()
+@@ -238,10 +237,10 @@ class TestAssertShape(unittest.TestCase)
+         v = np.zeros((3, 5, 7, 11), dtype='float32')
+         self.assertEqual(0, np.sum(f(v, 5, 7)))
+ 
+-        assert_raises(AssertionError, f, v, 5, 0)
+-        assert_raises(AssertionError, f, v, 5, 9)
+-        assert_raises(AssertionError, f, v, 0, 7)
+-        assert_raises(AssertionError, f, v, 7, 7)
++        pytest.raises(AssertionError, f, v, 5, 0)
++        pytest.raises(AssertionError, f, v, 5, 9)
++        pytest.raises(AssertionError, f, v, 0, 7)
++        pytest.raises(AssertionError, f, v, 7, 7)
+ 
+     @change_flags([("conv.assert_shape", True)])
+     def test_shape_check_conv2d(self):
+@@ -253,11 +252,11 @@ class TestAssertShape(unittest.TestCase)
+                           filter_shape=(7, 5, 3, 3))
+         f = theano.function([input, filters], out)
+         # mismatched input_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 5, 9, 11), dtype='float32'),
+                       np.zeros((7, 5, 3, 3), dtype='float32'))
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 5, 7, 11), dtype='float32'),
+                       np.zeros((7, 5, 2, 2), dtype='float32'))
+ 
+@@ -273,11 +272,11 @@ class TestAssertShape(unittest.TestCase)
+                           filter_shape=(7, 5, 3, 3, 3))
+         f = theano.function([input, filters], out)
+         # mismatched input_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 5, 9, 11, 13), dtype='float32'),
+                       np.zeros((7, 5, 3, 3, 3), dtype='float32'))
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 5, 7, 11, 13), dtype='float32'),
+                       np.zeros((7, 5, 2, 2, 2), dtype='float32'))
+ 
+@@ -291,7 +290,7 @@ class TestAssertShape(unittest.TestCase)
+                                           filter_shape=(7, 5, 3, 3))
+         f = theano.function([output_grad, filters], out)
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 6, 5, 9), dtype='float32'),
+                       np.zeros((7, 6, 3, 3), dtype='float32'))
+ 
+@@ -307,7 +306,7 @@ class TestAssertShape(unittest.TestCase)
+                                           filter_shape=(7, 5, 3, 3, 3))
+         f = theano.function([output_grad, filters], out)
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 6, 5, 9, 11), dtype='float32'),
+                       np.zeros((7, 6, 3, 3, 3), dtype='float32'))
+ 
+@@ -321,7 +320,7 @@ class TestAssertShape(unittest.TestCase)
+                                            input_shape=(3, 5, 7, 11))
+         f = theano.function([input, output_grad], out)
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 6, 7, 11), dtype='float32'),
+                       np.zeros((3, 7, 5, 9), dtype='float32'))
+ 
+@@ -337,7 +336,7 @@ class TestAssertShape(unittest.TestCase)
+                                            input_shape=(3, 5, 7, 11, 13))
+         f = theano.function([input, output_grad], out)
+         # mismatched filter_shape
+-        assert_raises(AssertionError, f,
++        pytest.raises(AssertionError, f,
+                       np.zeros((3, 6, 7, 11, 13), dtype='float32'),
+                       np.zeros((3, 7, 5, 9, 11), dtype='float32'))
+ 
+@@ -415,7 +414,7 @@ class BaseTestConv(object):
+             assert any([isinstance(n.op, target_op) for n
+                         in f.maker.fgraph.toposort()])
+             if check_trace:
+-                assert_true(check_stack_trace(f, ops_to_check=target_op))
++                assert check_stack_trace(f, ops_to_check=target_op)
+ 
+         res_ref = np.array(f_ref())
+         res = np.array(f())
+@@ -474,7 +473,7 @@ class BaseTestConv(object):
+             assert any([isinstance(n.op, target_op) for n
+                         in f.maker.fgraph.toposort()])
+             if check_trace:
+-                assert_true(check_stack_trace(f, ops_to_check=target_op))
++                assert check_stack_trace(f, ops_to_check=target_op)
+ 
+         res_ref = np.array(f_ref())
+         res = np.array(f())
+@@ -538,7 +537,7 @@ class BaseTestConv(object):
+             assert any([isinstance(n.op, target_op) for n
+                         in f.maker.fgraph.toposort()])
+             if check_trace:
+-                assert_true(check_stack_trace(f, ops_to_check=target_op))
++                assert check_stack_trace(f, ops_to_check=target_op)
+ 
+         res = np.array(f())
+ 
+@@ -726,7 +725,7 @@ class TestCorrConv2d(BaseTestConv2d):
+                                filter_flip=flip, target_op=CorrMM_gradInputs,
+                                check_trace=True, filter_dilation=fd)
+         else:
+-            assert_raises(ValueError,
++            pytest.raises(ValueError,
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s, verify_grad=False,
+@@ -789,7 +788,7 @@ class TestAbstractConvNoOptim(BaseTestCo
+                                check_trace=True, filter_dilation=fd,
+                                mode=mode)
+         else:
+-            assert_raises(ValueError,
++            pytest.raises(ValueError,
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s, verify_grad=False,
+@@ -948,7 +947,7 @@ class TestCorrConv3d(BaseTestConv3d):
+                                filter_flip=flip, target_op=Corr3dMM_gradInputs,
+                                check_trace=True, filter_dilation=fd)
+         else:
+-            assert_raises(ValueError,
++            pytest.raises(ValueError,
+                           self.run_gradinput,
+                           inputs_shape=i, filters_shape=f,
+                           output_shape=o, subsample=s, verify_grad=False,
+@@ -996,15 +995,15 @@ def test_constant_shapes():
+ 
+     for op in ops_to_test:
+         for shp in bad_shapes:
+-            assert_raises(ValueError, op, imshp=shp)
+-            assert_raises(ValueError, op, kshp=shp)
++            pytest.raises(ValueError, op, imshp=shp)
++            pytest.raises(ValueError, op, kshp=shp)
+ 
+         for shp in good_shapes:
+             op(imshp=shp)
+             op(kshp=shp)
+ 
+ 
+-class TestConvTypes(unittest.TestCase):
++class TestConvTypes(TestCase):
+     def setUp(self):
+         self.input = tensor.ftensor4()
+         self.filters = tensor.ftensor4()
+@@ -1095,7 +1094,7 @@ class TestConvTypes(unittest.TestCase):
+             grad_filters, grad_filters.type, filters, filters.type)
+ 
+ 
+-class TestBilinearUpsampling(unittest.TestCase):
++class TestBilinearUpsampling(TestCase):
+     # If theano.config.blas.ldflags is empty, Theano will use
+     # a NumPy C implementation of [sd]gemm_.
+     compile_mode = theano.compile.mode.get_default_mode()
+@@ -1334,7 +1333,7 @@ class TestBilinearUpsampling(unittest.Te
+         utt.assert_allclose(out, (1, 1, 240, 240))
+ 
+ 
+-class TestConv2dTranspose(unittest.TestCase):
++class TestConv2dTranspose(TestCase):
+     mode = None
+ 
+     def test_interface(self):
+@@ -1372,7 +1371,7 @@ class TestConv2dTranspose(unittest.TestC
+         np.testing.assert_equal(output, expected_output)
+ 
+ 
+-class TestConv2dGrads(unittest.TestCase):
++class TestConv2dGrads(TestCase):
+ 
+     def setUp(self):
+ 
+@@ -1476,7 +1475,7 @@ class TestConv2dGrads(unittest.TestCase)
+                         utt.assert_allclose(f_new(input_val, out_grad_val), f_old(input_val, filter_val, out_grad_val))
+ 
+ 
+-class Grouped_conv_noOptim(unittest.TestCase):
++class Grouped_conv_noOptim(TestCase):
+     conv = theano.tensor.nnet.abstract_conv.AbstractConv2d
+     conv_gradw = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradWeights
+     conv_gradi = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradInputs
+@@ -1670,7 +1669,7 @@ class Grouped_conv3d_noOptim(Grouped_con
+             raise SkipTest("CorrMM needs cxx")
+ 
+ 
+-class Separable_conv(unittest.TestCase):
++class Separable_conv(TestCase):
+     def setUp(self):
+         self.x = np.array([[[[1, 2, 3, 4, 5], [3, 2, 1, 4, 5], [3, 3, 1, 3, 6], [5, 3, 2, 1, 1], [4, 7, 1, 2, 1]],
+                             [[3, 3, 1, 2, 6], [6, 5, 4, 3, 1], [3, 4, 5, 2, 3], [6, 4, 1, 3, 4], [2, 3, 4, 2, 5]]]]).astype(theano.config.floatX)
+@@ -1795,7 +1794,7 @@ class Separable_conv(unittest.TestCase):
+         utt.assert_allclose(top, precomp_output)
+ 
+ 
+-class TestUnsharedConv(unittest.TestCase):
++class TestUnsharedConv(TestCase):
+     conv2d = theano.tensor.nnet.abstract_conv.AbstractConv2d
+     conv2d_gradw = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradWeights
+     conv2d_gradi = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradInputs
+@@ -1946,7 +1945,7 @@ class TestUnsharedConv(unittest.TestCase
+                 utt.verify_grad(conv_gradinputs, [kern, top], mode=self.mode, eps=1)
+ 
+ 
+-class TestAsymmetricPadding(unittest.TestCase):
++class TestAsymmetricPadding(TestCase):
+     conv2d = theano.tensor.nnet.abstract_conv.AbstractConv2d
+     conv2d_gradw = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradWeights
+     conv2d_gradi = theano.tensor.nnet.abstract_conv.AbstractConv2d_gradInputs
+@@ -2075,7 +2074,7 @@ class TestAsymmetricPadding(unittest.Tes
+             utt.verify_grad(conv_gradinputs, [kern, top], mode=self.mode, eps=1)
+ 
+ 
+-class TestCausalConv(unittest.TestCase):
++class TestCausalConv(TestCase):
+     mode = theano.compile.mode.Mode(optimizer='None')
+ 
+     img = np.array([[[2, 4, 9, 5, 8], [0, 0, 4, 0, 5]],
+--- a/theano/tensor/nnet/tests/test_conv.py
++++ b/theano/tensor/nnet/tests/test_conv.py
+@@ -1,14 +1,16 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import time
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
++import pytest
++
+ import theano
+ import theano.tensor as T
+-from theano.tests import unittest_tools as utt
++from theano.tensor.basic import NotScalarConstantError, _allclose
+ from theano.tensor.nnet import conv
+-from theano.tensor.basic import _allclose, NotScalarConstantError
+-from theano.tests.unittest_tools import attr
++from theano.tests import unittest_tools as utt
+ 
+ 
+ class TestConv2D(utt.InferShapeTester):
+@@ -278,7 +280,7 @@ class TestConv2D(utt.InferShapeTester):
+             N_image_shape=(2, 3, 3, 3), N_filter_shape=(5, 3, 2, 2),
+             should_raise=True)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_subsample(self):
+         # Tests convolution where subsampling != (1,1)
+         self.validate((3, 2, 7, 5), (5, 2, 2, 3), 'full', subsample=(2, 2))
+@@ -314,7 +316,7 @@ class TestConv2D(utt.InferShapeTester):
+                           (3, 2, 8, 8), (4, 3, 5, 5),
+                           'valid')
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_invalid_input_shape(self):
+         # Tests that when the shape gived at build time is not the same as
+         # run time we raise an error
+--- a/theano/tensor/nnet/tests/test_conv3d2d.py
++++ b/theano/tensor/nnet/tests/test_conv3d2d.py
+@@ -1,9 +1,11 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import time
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+-from parameterized import parameterized
+ import numpy as np
++from parameterized import parameterized
++
+ try:
+     from scipy import ndimage
+ except ImportError:
+@@ -11,9 +13,11 @@ except ImportError:
+ from six.moves import xrange
+ 
+ import theano
+-from theano.gof.opt import check_stack_trace
+-from theano.tensor.nnet.conv3d2d import conv3d, get_diagonal_subtensor_view, DiagonalSubtensor, IncDiagonalSubtensor
+ import theano.tests.unittest_tools as utt
++from theano.gof.opt import check_stack_trace
++from theano.tensor.nnet.conv3d2d import (DiagonalSubtensor,
++                                         IncDiagonalSubtensor, conv3d,
++                                         get_diagonal_subtensor_view)
+ 
+ 
+ def test_get_diagonal_subtensor_view(wrap=lambda a: a):
+--- a/theano/tensor/nnet/tests/test_corr.py
++++ b/theano/tensor/nnet/tests/test_corr.py
+@@ -1,17 +1,19 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+-from nose.plugins.attrib import attr
+-from nose.tools import assert_equals
+ import numpy as np
++import pytest
+ from six import integer_types
+ 
+ import theano
+ import theano.tensor as T
++from theano.tensor.nnet import conv, corr
++from theano.tensor.nnet.tests.test_abstract_conv import (Grouped_conv_noOptim,
++                                                         TestAsymmetricPadding,
++                                                         TestCausalConv,
++                                                         TestUnsharedConv)
+ from theano.tests import unittest_tools as utt
+-from theano.tensor.nnet import corr, conv
+-from theano.tensor.nnet.tests.test_abstract_conv import Grouped_conv_noOptim, TestUnsharedConv
+-from theano.tensor.nnet.tests.test_abstract_conv import TestAsymmetricPadding, TestCausalConv
+ 
+ 
+ class TestCorr2D(utt.InferShapeTester):
+@@ -141,7 +143,7 @@ class TestCorr2D(utt.InferShapeTester):
+             utt.verify_grad(sym_CorrMM, [orig_image_data, filter_data],
+                             mode=self.mode)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_basic(self):
+         # Tests that basic correlations work for odd and even
+         # dimensions of image and filter shapes, as well as rectangular
+@@ -168,7 +170,7 @@ class TestCorr2D(utt.InferShapeTester):
+         self.validate((3, 2, 3, 3), (4, 2, 3, 3), (1, 1))
+         self.validate((3, 2, 3, 3), (4, 2, 3, 3), 1)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_subsample(self):
+         # Tests correlation where subsampling != (1,1)
+ 
+@@ -211,7 +213,7 @@ class TestCorr2D(utt.InferShapeTester):
+ 
+         self.validate((1, 1, 6, 6), (1, 1, 3, 3), 1, subsample=(3, 3), filter_dilation=(2, 2))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_shape_Constant_tensor(self):
+         # Tests correlation where the {image,filter}_shape is a Constant tensor.
+ 
+@@ -280,9 +282,9 @@ class TestCorr2D(utt.InferShapeTester):
+ 
+                     c_tens = op()(a_tens, b_tens)
+                     f = theano.function([a_tens, b_tens], c_tens, mode=self.mode)
+-                    assert_equals(f(a_tens_val, b_tens_val).dtype, c_dtype)
++                    assert f(a_tens_val, b_tens_val).dtype == c_dtype
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_forward(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("CorrMM don't work in FAST_COMPILE")
+@@ -315,7 +317,7 @@ class TestCorr2D(utt.InferShapeTester):
+                                             [adtens_val, bdtens_val], corrMM,
+                                             warn=False)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_gradW(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("CorrMM don't work in FAST_COMPILE")
+@@ -355,7 +357,7 @@ class TestCorr2D(utt.InferShapeTester):
+                                             [adtens_val, cdtens_val], gradW,
+                                             warn=False)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_gradI(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("CorrMM don't work in FAST_COMPILE")
+--- a/theano/tensor/nnet/tests/test_corr3d.py
++++ b/theano/tensor/nnet/tests/test_corr3d.py
+@@ -1,10 +1,9 @@
+ from __future__ import absolute_import, print_function, division
+ 
+-from nose.plugins.skip import SkipTest
+-from nose.plugins.attrib import attr
+-from nose.tools import assert_equals
++from unittest import SkipTest
+ from parameterized import parameterized
+ 
++import pytest
+ import numpy as np
+ from six import integer_types
+ 
+@@ -152,7 +151,7 @@ class TestCorr3D(utt.InferShapeTester):
+             utt.verify_grad(sym_Corr3dMM, [orig_image_data, filter_data],
+                             mode=self.mode)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_basic(self):
+         # Tests that basic correlations work for odd and even
+         # dimensions of image and filter shapes, as well as rectangular
+@@ -179,7 +178,7 @@ class TestCorr3D(utt.InferShapeTester):
+         self.validate((3, 2, 3, 3, 3), (1, 2, 3, 3, 3), (1, 1, 1))
+         self.validate((3, 2, 3, 3, 3), (1, 2, 3, 3, 3), 1)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_subsample(self):
+         # Tests correlation where subsampling != (1,1,1)
+         self.validate((3, 2, 7, 5, 5), (2, 2, 2, 3, 3), 'valid', subsample=(2, 2, 2))
+@@ -224,7 +223,7 @@ class TestCorr3D(utt.InferShapeTester):
+     @parameterized.expand([('valid',), ('full',), ('half',), ((1, 1, 1),),
+                            ((2, 1, 1),), ((1, 2, 1),), ((1, 1, 2),),
+                            ((3, 3, 3),), (1,)])
+-#    @attr('slow')
++#    @pytest.mark.slow
+     def test_shape_Constant_tensor(self, border_mode):
+         # Tests correlation where the {image,filter}_shape is a Constant tensor
+         as_t = T.as_tensor_variable
+@@ -289,9 +288,9 @@ class TestCorr3D(utt.InferShapeTester):
+ 
+                     c_tens = op()(a_tens, b_tens)
+                     f = theano.function([a_tens, b_tens], c_tens, mode=self.mode)
+-                    assert_equals(f(a_tens_val, b_tens_val).dtype, c_dtype)
++                    assert f(a_tens_val, b_tens_val.dtype) == c_dtype
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_forward(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("Corr3dMM don't work in FAST_COMPILE")
+@@ -324,7 +323,7 @@ class TestCorr3D(utt.InferShapeTester):
+                                             [adtens_val, bdtens_val], corr3dMM,
+                                             warn=False)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_gradW(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("Corr3dMM don't work in FAST_COMPILE")
+@@ -365,7 +364,7 @@ class TestCorr3D(utt.InferShapeTester):
+                                             [adtens_val, cdtens_val], gradW,
+                                             warn=False)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape_gradI(self):
+         if theano.config.mode == "FAST_COMPILE":
+             raise SkipTest("Corr3dMM don't work in FAST_COMPILE")
+--- a/theano/tensor/nnet/tests/test_ctc.py
++++ b/theano/tensor/nnet/tests/test_ctc.py
+@@ -1,13 +1,14 @@
+-from __future__ import (division, absolute_import, print_function)
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+-import unittest
+-from nose.plugins.skip import SkipTest
+ import numpy as np
+ 
+ import theano
+ import theano.tensor as T
++from theano.tensor.nnet.ctc import (ConnectionistTemporalClassification, ctc,
++                                    ctc_available)
+ from theano.tests import unittest_tools as utt
+-from theano.tensor.nnet.ctc import (ctc_available, ctc, ConnectionistTemporalClassification)
+ 
+ 
+ def setup_torch_case():
+@@ -76,7 +77,7 @@ def setup_grad_case():
+     return [activations, labels, activation_times]
+ 
+ 
+-class TestCTC(unittest.TestCase):
++class TestCTC(TestCase):
+     """
+     Test Baidu CTC wrapper implementation.
+ 
+--- a/theano/tensor/nnet/tests/test_nnet.py
++++ b/theano/tensor/nnet/tests/test_nnet.py
+@@ -1,49 +1,42 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+ from six.moves import xrange
+ 
+ import theano
+-from theano import config
+-from theano import tensor as T
++from theano import config, gof, printing
+ from theano import tensor
+-from theano import gof
++from theano import tensor as T
+ from theano.gof.opt import check_stack_trace
+-from theano.tests import unittest_tools as utt
+-from theano import printing
+-from theano.tensor.nnet import (categorical_crossentropy,
++from theano.tensor import lvector, matrix, scalar, vector
++from theano.tensor.nnet import (CrossentropyCategorical1Hot,
++                                CrossentropyCategorical1HotGrad,
++                                CrossentropySoftmax1HotWithBiasDx,
++                                CrossentropySoftmaxArgmax1HotWithBias,
++                                Prepend_scalar_constant_to_each_row,
++                                Prepend_scalar_to_each_row, Softmax,
++                                SoftmaxGrad, SoftmaxWithBias,
++                                binary_crossentropy, categorical_crossentropy,
++                                confusion_matrix,
+                                 crossentropy_categorical_1hot,
+                                 crossentropy_softmax_1hot,
+                                 crossentropy_softmax_1hot_with_bias,
+                                 crossentropy_softmax_1hot_with_bias_dx,
+                                 crossentropy_softmax_argmax_1hot_with_bias,
+-                                CrossentropySoftmax1HotWithBiasDx,
+-                                CrossentropySoftmaxArgmax1HotWithBias,
+-                                CrossentropyCategorical1Hot,
+-                                CrossentropyCategorical1HotGrad,
+-                                sigmoid, softplus, Softmax, softmax,
+-                                softmax_op, softmax_graph, SoftmaxWithBias,
+-                                softmax_with_bias, logsoftmax_op,
+-                                softmax_grad, SoftmaxGrad,
+-                                Prepend_scalar_constant_to_each_row,
+-                                Prepend_scalar_to_each_row,
+-                                relu,
+-                                h_softmax,
+-                                elu,
+-                                selu,
+-                                binary_crossentropy,
+-                                sigmoid_binary_crossentropy,
+-                                confusion_matrix)
+-from theano.tensor import matrix, vector, lvector, scalar
++                                elu, h_softmax, logsoftmax_op, relu, selu,
++                                sigmoid, sigmoid_binary_crossentropy, softmax,
++                                softmax_grad, softmax_graph, softmax_op,
++                                softmax_with_bias, softplus)
+ from theano.tensor.nnet.nnet import softsign
+-from theano.tensor.tests.test_basic import (makeBroadcastTester, check_floatX,
+-                                            _good_broadcast_unary_normal_float_no_complex,
+-                                            upcast_int8_nfunc)
++from theano.tensor.tests.test_basic import (
++    _good_broadcast_unary_normal_float_no_complex, check_floatX,
++    makeBroadcastTester, upcast_int8_nfunc)
++from theano.tests import unittest_tools as utt
+ 
+ 
+-class T_sigmoid(unittest.TestCase):
++class T_sigmoid(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+@@ -52,7 +45,7 @@ class T_sigmoid(unittest.TestCase):
+         utt.verify_grad(sigmoid, [np.random.rand(3, 4)])
+ 
+ 
+-class T_softplus(unittest.TestCase):
++class T_softplus(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+@@ -325,7 +318,7 @@ class T_SoftmaxGrad(utt.InferShapeTester
+                                 [admat_val, bdmat_val], SoftmaxGrad)
+ 
+ 
+-class T_CrossentropySoftmax1Hot(unittest.TestCase):
++class T_CrossentropySoftmax1Hot(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+@@ -1768,7 +1761,7 @@ SoftsignTester = makeBroadcastTester(
+ )
+ 
+ 
+-class T_sigmoid_binary_crossentropy(unittest.TestCase):
++class T_sigmoid_binary_crossentropy(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+--- a/theano/tensor/signal/tests/test_conv.py
++++ b/theano/tensor/signal/tests/test_conv.py
+@@ -1,19 +1,17 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
+ 
+ import theano
+ import theano.tensor as T
+-from theano.tests import unittest_tools as utt
+-
+-from theano.tensor.signal import conv
+-
+ from theano.tensor.basic import _allclose
++from theano.tensor.signal import conv
++from theano.tests import unittest_tools as utt
+ 
+ 
+-class TestSignalConv2D(unittest.TestCase):
++class TestSignalConv2D(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+--- a/theano/tensor/signal/tests/test_pool.py
++++ b/theano/tensor/signal/tests/test_pool.py
+@@ -1,26 +1,24 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+-from nose.plugins.skip import SkipTest
+-from parameterized import parameterized
+-from itertools import product
+ import os
+-import unittest
+-from six import reraise
+-from six.moves import cPickle
+-import six.moves.builtins as builtins
+ import sys
++from itertools import product
++from unittest import SkipTest, main
+ 
+ import numpy as np
++import six.moves.builtins as builtins
++from parameterized import parameterized
++from six import reraise
++from six.moves import cPickle
+ 
+ import theano
+ import theano.tensor as tensor
+-from theano.tests import unittest_tools as utt
+-from theano.tensor.signal.pool import (Pool, pool_2d, pool_3d,
+-                                       MaxPoolGrad, AveragePoolGrad,
+-                                       max_pool_2d_same_size,
+-                                       DownsampleFactorMaxGradGrad)
+-
+ from theano import function
++from theano.tensor.signal.pool import (AveragePoolGrad,
++                                       DownsampleFactorMaxGradGrad,
++                                       MaxPoolGrad, Pool,
++                                       max_pool_2d_same_size, pool_2d, pool_3d)
++from theano.tests import unittest_tools as utt
+ 
+ 
+ class TestDownsampleFactorMax(utt.InferShapeTester):
+@@ -1161,4 +1159,4 @@ class TestDownsampleFactorMax(utt.InferS
+ 
+ 
+ if __name__ == '__main__':
+-    unittest.main()
++    main()
+--- a/theano/tensor/tests/test_basic.py
++++ b/theano/tensor/tests/test_basic.py
+@@ -1,63 +1,57 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+-from copy import copy, deepcopy
+-from functools import partial
+ import itertools
+ import logging
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+ import operator
+ import os
+ import sys
+-from tempfile import mkstemp
+-import unittest
+ import warnings
++from copy import copy, deepcopy
++from functools import partial
++from tempfile import mkstemp
++from unittest import SkipTest, TestCase
+ 
++import numpy as np
++import pytest
++from numpy.testing import assert_allclose, assert_array_equal, dec
+ from six import iteritems
+-from six.moves import StringIO, reduce
+-from six.moves import xrange
++from six.moves import StringIO, reduce, xrange
+ # Import builtin min to be able to use it after importing the tensor version.
+ from six.moves.builtins import min as builtin_min
+ 
+-import numpy as np
+-from numpy.testing import dec, assert_array_equal, assert_allclose
+-
+ import theano
+-from theano.compat import izip
+-from theano.compat import PY3, exc_message, operator_div
+-from theano import compile, config, function, gof, tensor, shared
++from theano import change_flags, compile, config, function, gof, shared, tensor
++from theano.compat import PY3, exc_message, izip, operator_div
+ from theano.compile import DeepCopyOp
+ from theano.compile.mode import get_default_mode
+-from theano.scalar import autocast_float_as, autocast_float
+-from theano.tensor import (
+-    wvector, bvector,
+-    argmin, max_and_argmax, cscalar, join,
+-    horizontal_stack, vertical_stack, argmax, get_vector_length,
+-    fscalar, sum, tensor3, vector, add, addbroadcast,
+-    alloc, as_tensor_variable, tensor_from_scalar, ARange,
+-    clip, constant, default, diag, dot, batched_dot,
+-    dmatrix, dscalar, dvector, eq, eye, fill, flatten, inverse_permutation,
+-    tensor4, permute_row_elements, fmatrix, fscalars, grad,
+-    inplace, iscalar, matrix, minimum, matrices, maximum, mul, neq,
+-    Reshape, row, scalar, scalars, second, smallest, stack, sub, Tensor,
+-    tensor_copy, tensordot, TensorType, Tri, tri, tril, triu, unbroadcast,
+-    var, Argmax, Join, shape, MaxAndArgmax, lscalar, zvector, exp,
+-    get_scalar_constant_value, ivector, reshape, scalar_from_tensor, scal,
+-    iscalars, arange, dscalars, fvector, imatrix, numeric_grad,
+-    opt, lvector, true_div, max, min, Split, roll,
+-    tile, patternbroadcast, Eye, Shape, Dot, PermuteRowElements,
+-    ScalarFromTensor, TensorFromScalar, dtensor4, Rebroadcast, Alloc,
+-    dtensor3, SpecifyShape, Mean,
+-    itensor3, Tile, switch, ExtractDiag, AllocDiag,
+-    nonzero, flatnonzero, nonzero_values,
+-    stacklists, DimShuffle, hessian, ptp, power,
+-    swapaxes, choose, Choose, NoneConst, AllocEmpty,
+-    isclose, allclose, mgrid, ogrid, extract_constant,
+-    )
+-
++from theano.scalar import autocast_float, autocast_float_as
++from theano.tensor import (Alloc, AllocDiag, AllocEmpty, ARange, Argmax,
++                           Choose, DimShuffle, Dot, ExtractDiag, Eye, Join,
++                           MaxAndArgmax, Mean, NoneConst, PermuteRowElements,
++                           Rebroadcast, Reshape, ScalarFromTensor, Shape,
++                           SpecifyShape, Split, Tensor, TensorFromScalar,
++                           TensorType, Tile, Tri, add, addbroadcast, allclose,
++                           alloc, arange, argmax, argmin, as_tensor_variable,
++                           batched_dot, bvector, choose, clip, constant,
++                           cscalar, default, diag, dmatrix, dot, dscalar,
++                           dscalars, dtensor3, dtensor4, dvector, eq, exp,
++                           extract_constant, eye, fill, flatnonzero, flatten,
++                           fmatrix, fscalar, fscalars, fvector,
++                           get_scalar_constant_value, get_vector_length, grad,
++                           hessian, horizontal_stack, imatrix, inplace,
++                           inverse_permutation, iscalar, iscalars, isclose,
++                           itensor3, ivector, join, lscalar, lvector, matrices,
++                           matrix, max, max_and_argmax, maximum, mgrid, min,
++                           minimum, mul, neq, nonzero, nonzero_values,
++                           numeric_grad, ogrid, opt, patternbroadcast,
++                           permute_row_elements, power, ptp, reshape, roll,
++                           row, scal, scalar, scalar_from_tensor, scalars,
++                           second, shape, smallest, stack, stacklists, sub,
++                           sum, swapaxes, switch, tensor3, tensor4,
++                           tensor_copy, tensor_from_scalar, tensordot, tile,
++                           tri, tril, triu, true_div, unbroadcast, var, vector,
++                           vertical_stack, wvector, zvector)
+ from theano.tests import unittest_tools as utt
+-from theano.tests.unittest_tools import attr
+-from theano import change_flags
+ 
+ imported_scipy_special = False
+ mode_no_scipy = get_default_mode()
+@@ -275,7 +269,7 @@ def makeTester(name, op, expected, check
+     _check_name = check_name
+     _grad_eps = grad_eps
+ 
+-    class Checker(unittest.TestCase):
++    class Checker(TestCase):
+ 
+         op = staticmethod(_op)
+         expected = staticmethod(_expected)
+@@ -2440,7 +2434,7 @@ class ApplyDefaultTestOp(theano.Op):
+         return theano.Apply(self, [x], [x.type()])
+ 
+ 
+-class TestAsTensorVariable(unittest.TestCase):
++class TestAsTensorVariable(TestCase):
+     # Unit test for ensuring that as_tensor_variable handles Apply objects
+     # correctly and removes leading broadcastable dimensions when possible.
+     def setUp(self):
+@@ -2471,7 +2465,7 @@ class TestAsTensorVariable(unittest.Test
+         self.assertRaises(ValueError, as_tensor_variable, x, ndim=1)
+ 
+ 
+-class TestAlloc(unittest.TestCase):
++class TestAlloc(TestCase):
+     dtype = config.floatX
+     mode = mode_opt
+     shared = staticmethod(theano.shared)
+@@ -2604,7 +2598,7 @@ def test_eye():
+         yield check, dtype, 5, 3, -1
+ 
+ 
+-class test_triangle(unittest.TestCase):
++class test_triangle(TestCase):
+     def test_tri(self):
+         def check(dtype, N, M_=None, k=0):
+             # Theano does not accept None as a tensor.
+@@ -2675,7 +2669,7 @@ class test_triangle(unittest.TestCase):
+             yield check_u, m, -1
+ 
+ 
+-class test_nonzero(unittest.TestCase):
++class test_nonzero(TestCase):
+     def test_nonzero(self):
+         def check(m):
+             m_symb = theano.tensor.tensor(dtype=m.dtype,
+@@ -2779,7 +2773,7 @@ def test_identity():
+         yield check, dtype
+ 
+ 
+-class CastTester(unittest.TestCase):
++class CastTester(TestCase):
+     def test_good_between_real_types(self):
+         good = itertools.chain(
+             multi_dtype_cast_checks((2,), dtypes=REAL_DTYPES),
+@@ -2858,7 +2852,7 @@ BackwardsClipTester = makeTester(
+     )
+ 
+ 
+-class T_Clip(unittest.TestCase):
++class T_Clip(TestCase):
+     def test_complex_value(self):
+         for dtype in ['complex64', 'complex128']:
+             a = tensor.vector(dtype=dtype)
+@@ -3081,7 +3075,7 @@ def test_isnan():
+         f([[0, 1, 2]])
+ 
+ 
+-class T_Shape(unittest.TestCase):
++class T_Shape(TestCase):
+     def test_basic0(self):
+         s = shape(np.ones((5, 3)))
+         self.assertTrue((eval_outputs([s]) == [5, 3]).all())
+@@ -3095,7 +3089,7 @@ class T_Shape(unittest.TestCase):
+         self.assertTrue((eval_outputs([s]) == [5, 3, 10]).all())
+ 
+ 
+-class T_max_and_argmax(unittest.TestCase):
++class T_max_and_argmax(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+         MaxAndArgmax.debug = 0
+@@ -3327,7 +3321,7 @@ class T_max_and_argmax(unittest.TestCase
+         self.assertEqual(argmax.eval(), 2)
+ 
+ 
+-class T_argmin_argmax(unittest.TestCase):
++class T_argmin_argmax(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+         MaxAndArgmax.debug = 0
+@@ -3494,7 +3488,7 @@ class T_argmin_argmax(unittest.TestCase)
+         self.assertEqual(i, 0)
+ 
+ 
+-class T_min_max(unittest.TestCase):
++class T_min_max(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+         MaxAndArgmax.debug = 0
+@@ -3706,7 +3700,7 @@ def test_basic_allclose():
+     assert tensor.basic._allclose(-0.311023883434, -0.311022856884)
+ 
+ 
+-class T_outer(unittest.TestCase):
++class T_outer(TestCase):
+     def test_outer(self):
+         for m in range(4):
+             for n in range(4):
+@@ -3740,7 +3734,7 @@ class T_outer(unittest.TestCase):
+             utt.verify_grad(tensor.outer, [data0, data1])
+ 
+ 
+-class T_GetVectorLength(unittest.TestCase):
++class T_GetVectorLength(TestCase):
+     def test_get_vector_length(self):
+         x = theano.shared(np.zeros((2, 3, 4, 5)))
+         assert len(list(x.shape)) == 4
+@@ -3760,7 +3754,7 @@ class T_GetVectorLength(unittest.TestCas
+         assert len(list(x.shape[1:-1])) == 2
+ 
+ 
+-class T_Join_and_Split(unittest.TestCase):
++class T_Join_and_Split(TestCase):
+     # Split is tested by each verify_grad method.
+     def setUp(self):
+         Join.debug = False
+@@ -4555,7 +4549,7 @@ def test_join_oneInput():
+     assert join_1 is not x_0
+ 
+ 
+-class test_comparison(unittest.TestCase):
++class test_comparison(TestCase):
+     # Test <, >, <=, >=, == and !=
+     #
+     # Test that we can do the comparison with different
+@@ -4769,7 +4763,7 @@ class test_comparison(unittest.TestCase)
+                         assert err
+ 
+ 
+-class test_bitwise(unittest.TestCase):
++class test_bitwise(TestCase):
+     dtype = ['int8', 'int16', 'int32', 'int64', ]
+ 
+     def test_or(self):
+@@ -4825,7 +4819,7 @@ class test_bitwise(unittest.TestCase):
+         self.assertTrue(np.all(fn(5, 6, 1) == np.eye(5, 6, 1)))
+ 
+ 
+-class T_add(unittest.TestCase):
++class T_add(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -4857,12 +4851,12 @@ class T_add(unittest.TestCase):
+         utt.verify_grad(add, [rand(3, 5), rand(3, 1)])
+ 
+ 
+-class T_ceil(unittest.TestCase):
++class T_ceil(TestCase):
+     def test_complex(self):
+         self.assertRaises(TypeError, tensor.ceil, tensor.zvector())
+ 
+ 
+-class T_exp(unittest.TestCase):
++class T_exp(TestCase):
+     def test_grad_0(self):
+         utt.verify_grad(exp, [
+             np.asarray([[1.5089518, 1.48439076, -4.7820262],
+@@ -4890,7 +4884,7 @@ class T_exp(unittest.TestCase):
+         assert np.allclose(exp_3, np.exp(3 + 2j))
+ 
+ 
+-class T_divimpl(unittest.TestCase):
++class T_divimpl(TestCase):
+     def test_impls(self):
+         i = iscalar()
+         ii = lscalar()
+@@ -4914,7 +4908,7 @@ class T_divimpl(unittest.TestCase):
+                            ((5 + 3j) / 5.))
+ 
+ 
+-class T_mean(unittest.TestCase):
++class T_mean(TestCase):
+     def test_regression_mean_of_ndarray_failure(self):
+         try:
+             tensor.mean(np.zeros(1))
+@@ -4939,7 +4933,7 @@ class T_mean(unittest.TestCase):
+         tensor.mean(ll).eval() == 1
+ 
+ 
+-class test_matinv(unittest.TestCase):
++class test_matinv(TestCase):
+ 
+     def mat_reciprocal(self, dim):
+         # symbolic program
+@@ -5001,7 +4995,7 @@ class test_matinv(unittest.TestCase):
+         self.assertAlmostEqual(ssd, myssd)
+ 
+ 
+-class t_dot(unittest.TestCase):
++class t_dot(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -5206,7 +5200,7 @@ class t_dot(unittest.TestCase):
+         utt.verify_grad(dot, [rand(2, 3, 4), rand(4, 5)])
+         utt.verify_grad(dot, [rand(2, 3, 4), rand(3, 4, 5)])
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_broadcastable_patterns(self):
+ 
+         #
+@@ -5271,7 +5265,7 @@ class t_dot(unittest.TestCase):
+                             assert g.broadcastable == y.broadcastable
+ 
+ 
+-class T_tensorfromscalar(unittest.TestCase):
++class T_tensorfromscalar(TestCase):
+     def test0(self):
+         s = scal.constant(56)
+         t = tensor_from_scalar(s)
+@@ -5321,7 +5315,7 @@ class T_tensorfromscalar(unittest.TestCa
+         self.assertTrue(eval_outputs([g]) == 1.)
+ 
+ 
+-class T_scalarfromtensor(unittest.TestCase):
++class T_scalarfromtensor(TestCase):
+     def test0(self):
+         tt = constant(56)  # scal.constant(56)
+         ss = scalar_from_tensor(tt)
+@@ -5349,7 +5343,7 @@ class T_scalarfromtensor(unittest.TestCa
+         self.assertTrue(v.shape == (), v.shape)
+ 
+ 
+-class test_grad(unittest.TestCase):
++class test_grad(TestCase):
+     class Obj1(gof.op.Op):
+         def __init__(self):
+             self.gval0 = scalar('e')
+@@ -5438,7 +5432,7 @@ class test_grad(unittest.TestCase):
+         self.assertRaises(TypeError, grad, m, m)
+ 
+ 
+-class T_op_cache(unittest.TestCase):
++class T_op_cache(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -5720,8 +5714,8 @@ def test_flatten_broadcastable():
+ 
+ def test_flatten_ndim_invalid():
+     a = dmatrix()
+-    assert_raises(ValueError, flatten, a, 3)
+-    assert_raises(ValueError, flatten, a, 0)
++    pytest.raises(ValueError, flatten, a, 3)
++    pytest.raises(ValueError, flatten, a, 0)
+ 
+ 
+ def test_is_flat():
+@@ -5856,28 +5850,28 @@ def test_tile():
+ 
+         # error raising test: ndim not specified when reps is vector
+         reps = ivector()
+-        np.testing.assert_raises(ValueError, tile, x, reps)
++        pytest.raises(ValueError, tile, x, reps)
+ 
+         # error raising test: not a integer
+         for reps in [2.5, fscalar(), fvector()]:
+-            np.testing.assert_raises(ValueError, tile, x, reps)
++            pytest.raises(ValueError, tile, x, reps)
+ 
+         # error raising test: the dimension of reps exceeds 1
+         reps = imatrix()
+-        np.testing.assert_raises(ValueError, tile, x, reps)
++        pytest.raises(ValueError, tile, x, reps)
+ 
+         # error raising test: ndim is not None, ndim < x.ndim
+         # 3 cases below (reps is list/tensor.scalar/tensor.vector):
+         for reps in [[2, 3, 4], iscalar(), ivector()]:
+             if k > 1:
+                 ndim = k - 1
+-                np.testing.assert_raises(ValueError, tile, x, reps, ndim)
++                pytest.raises(ValueError, tile, x, reps, ndim)
+ 
+         # error raising test: reps is list, len(reps) > ndim
+         r = [2, 3, 4, 5, 6]
+         reps = r[:k + 1]
+         ndim = k
+-        np.testing.assert_raises(ValueError, tile, x, reps, ndim)
++        pytest.raises(ValueError, tile, x, reps, ndim)
+ 
+         # error raising test:
+         # reps is tensor.vector and len(reps_value) > ndim,
+@@ -5887,7 +5881,7 @@ def test_tile():
+         reps_ = r[:k + 2]
+         ndim_ = k + 1
+         f = function([x, reps], tile(x, reps, ndim_))
+-        np.testing.assert_raises(AssertionError, f, x_, reps_)
++        pytest.raises(AssertionError, f, x_, reps_)
+ 
+ 
+ def test_tile_grad():
+@@ -5915,7 +5909,7 @@ def test_tile_grad():
+               rng.randn(2, 4, 3, 5).astype(config.floatX))
+ 
+ 
+-class TestARange(unittest.TestCase):
++class TestARange(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -6245,7 +6239,7 @@ class TestARange(unittest.TestCase):
+         assert np.all(f(0) == len(np.arange(0, 0)))
+ 
+ 
+-class TestNdGrid(unittest.TestCase):
++class TestNdGrid(TestCase):
+ 
+     def setUp(self):
+         pass
+@@ -6295,7 +6289,7 @@ class TestNdGrid(unittest.TestCase):
+                 utt.assert_allclose(ng, tg)
+ 
+ 
+-class TestInversePermutation(unittest.TestCase):
++class TestInversePermutation(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -6339,7 +6333,7 @@ class TestInversePermutation(unittest.Te
+             assert np.all(i_row[p_row] == np.arange(10))
+ 
+ 
+-class TestPermuteRowElements(unittest.TestCase):
++class TestPermuteRowElements(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -6465,7 +6459,7 @@ class TestPermuteRowElements(unittest.Te
+         utt.verify_grad(permute_fixed, [input_val])
+ 
+ 
+-class test_tensordot(unittest.TestCase):
++class test_tensordot(TestCase):
+     def TensorDot(self, axes):
+         # Since tensordot is no longer an op, mimic the old op signature
+         # to allow easy use of verify_grad.
+@@ -6734,7 +6728,7 @@ def test_var():
+     assert theano.tensor.vector(dtype='float16').var().dtype == 'float16'
+ 
+ 
+-class T_sum(unittest.TestCase):
++class T_sum(TestCase):
+     def test_sum_overflow(self):
+         # Ensure that overflow errors are a little bit harder to get
+         a = Tensor(dtype='int8', broadcastable=[False])()
+@@ -6914,7 +6908,7 @@ def _test_autocast_numpy_floatX():
+         config.floatX = backup_floatX
+ 
+ 
+-class test_arithmetic_cast(unittest.TestCase):
++class test_arithmetic_cast(TestCase):
+     # Test output types of basic arithmeric operations (* / + - //).
+     #
+     # We only test the behavior for `config.cast_policy` set to either 'numpy' or
+@@ -7068,7 +7062,7 @@ class test_arithmetic_cast(unittest.Test
+                     category=DeprecationWarning)
+ 
+ 
+-class T_long_tensor(unittest.TestCase):
++class T_long_tensor(TestCase):
+     def test_fit_int64(self):
+         bitwidth = theano.configdefaults.python_int_bitwidth()
+         for exponent in xrange(bitwidth):
+@@ -7106,7 +7100,7 @@ class T_long_tensor(unittest.TestCase):
+         self.assertRaises(Exception, constant, [[val, val]])
+ 
+ 
+-class test_broadcast(unittest.TestCase):
++class test_broadcast(TestCase):
+     def test_broadcast_bigdim(self):
+         def f():
+             x = matrix()
+@@ -7198,7 +7192,7 @@ class test_broadcast(unittest.TestCase):
+ def test_len():
+     for shape_ in [(5,), (3, 4), (7, 4, 6)]:
+         x = tensor.tensor(dtype='floatX', broadcastable=(False,) * len(shape_))
+-        assert_raises(TypeError, len, x)
++        pytest.raises(TypeError, len, x)
+ 
+ 
+ def test_mod():
+@@ -7310,7 +7304,7 @@ def test_dimshuffle_duplicate():
+     assert success
+ 
+ 
+-class T_get_scalar_constant_value(unittest.TestCase):
++class T_get_scalar_constant_value(TestCase):
+     def test_get_scalar_constant_value(self):
+         a = tensor.stack([1, 2, 3])
+         assert get_scalar_constant_value(a[0]) == 1
+@@ -7440,7 +7434,7 @@ class T_get_scalar_constant_value(unitte
+         self.assertTrue(e == 3, (c, d, e))
+ 
+ 
+-class T_as_tensor_variable(unittest.TestCase):
++class T_as_tensor_variable(TestCase):
+     # We test that ticket #649 stay fixed.
+     # We should not allow as_tensor_variable to accept True or False
+     # But it should upcast an ndarray of bool to uint8
+@@ -7471,7 +7465,7 @@ class T_as_tensor_variable(unittest.Test
+                 theano.config.floatX = old
+ 
+ 
+-class test_complex_mod(unittest.TestCase):
++class test_complex_mod(TestCase):
+     # Make sure % fails on complex numbers.
+     def test_fail(self):
+         x = vector(dtype='complex64')
+@@ -7482,7 +7476,7 @@ class test_complex_mod(unittest.TestCase
+             pass
+ 
+ 
+-class test_size(unittest.TestCase):
++class test_size(TestCase):
+     # Ensure the `size` attribute of tensors behaves as in numpy.
+     def test_matrix(self):
+         x = tensor.matrix()
+@@ -7506,7 +7500,7 @@ class test_size(unittest.TestCase):
+         assert y.size == function([], x.size)()
+ 
+ 
+-class test_diag(unittest.TestCase):
++class test_diag(TestCase):
+     # Test that tensor.diag has the same behavior as np.diag.
+     # np.diag has two behaviors:
+     #
+@@ -7561,7 +7555,7 @@ class test_diag(unittest.TestCase):
+ 
+         # Test scalar input
+         xx = theano.tensor.scalar()
+-        np.testing.assert_raises(ValueError, diag, xx)
++        pytest.raises(ValueError, diag, xx)
+ 
+     def test_infer_shape(self):
+         rng = np.random.RandomState(utt.fetch_seed())
+@@ -7597,7 +7591,7 @@ class test_diag(unittest.TestCase):
+         tensor.verify_grad(diag, [x], rng=rng)
+ 
+ 
+-class TestAllocDiag(unittest.TestCase):
++class TestAllocDiag(TestCase):
+     def __init__(self, name, alloc_diag=AllocDiag, mode=None):
+         self.alloc_diag = alloc_diag
+ 
+@@ -7679,7 +7673,7 @@ class TestAllocDiag(unittest.TestCase):
+                 assert np.all(true_grad_input == grad_input)
+ 
+ 
+-class test_numpy_assumptions(unittest.TestCase):
++class test_numpy_assumptions(TestCase):
+     # Verify that some assumptions Theano makes on Numpy's behavior still hold.
+     def test_ndarray_copy(self):
+         # A copy or deepcopy of the ndarray type should not create a new object.
+@@ -7779,7 +7773,7 @@ def test_stacklists():
+     assert f(x, x, x, x).shape == (2, 2, 4, 4)
+ 
+ 
+-class TestSpecifyShape(unittest.TestCase):
++class TestSpecifyShape(TestCase):
+     mode = None
+     input_type = TensorType
+ 
+@@ -8252,7 +8246,7 @@ class TestInferShape(utt.InferShapeTeste
+                                 [adtens4_val], Tile)
+ 
+ 
+-class TestTensorInstanceMethods(unittest.TestCase):
++class TestTensorInstanceMethods(TestCase):
+     def setUp(self):
+         self.vars = matrices('X', 'Y')
+         self.vals = [m.astype(floatX) for m in [rand(2, 2), rand(2, 2)]]
+@@ -8390,7 +8384,7 @@ def test_norm():
+     assert np.allclose(f([1, 1]), np.sqrt(2))
+ 
+ 
+-class test_cov(unittest.TestCase):
++class test_cov(TestCase):
+ 
+     def test_core(self):
+         x = theano.tensor.matrix('x')
+@@ -8491,7 +8485,7 @@ class test_cov(unittest.TestCase):
+                 assert np.allclose(f(data), np.cov(data, ddof=ddof, bias=bias))
+ 
+ 
+-class test_ptp(unittest.TestCase):
++class test_ptp(TestCase):
+     def test_scalar(self):
+         # Should return 0 for all scalar
+         x = scalar('x')
+@@ -8579,7 +8573,7 @@ if __name__ == '__main__':
+     t.test_infer_shape()
+ 
+ 
+-class T_swapaxes(unittest.TestCase):
++class T_swapaxes(TestCase):
+ 
+     def test_no_dimensional_input(self):
+         self.assertRaises(IndexError, swapaxes, 2, 0, 1)
+@@ -8613,7 +8607,7 @@ class T_swapaxes(unittest.TestCase):
+         assert np.allclose(n_s, t_s)
+ 
+ 
+-class T_Power(unittest.TestCase):
++class T_Power(TestCase):
+     def test_numpy_compare(self):
+         rng = np.random.RandomState(utt.fetch_seed())
+         A = tensor.matrix("A", dtype=theano.config.floatX)
+--- a/theano/tensor/tests/test_blas_c.py
++++ b/theano/tensor/tests/test_blas_c.py
+@@ -1,27 +1,19 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import sys
+-import numpy as np
+-from unittest import TestCase
++from unittest import SkipTest, TestCase
+ 
+-from nose.plugins.skip import SkipTest
++import numpy as np
+ 
+ import theano
+ import theano.tensor as tensor
+-
+-from theano.tensor.blas_c import CGer
++from theano.tensor.blas import Gemv, Ger
++from theano.tensor.blas_c import CGemv, CGer, check_force_gemv_init
+ from theano.tensor.blas_scipy import ScipyGer
+-from theano.tensor.blas import Ger
+-
+-from theano.tensor.blas_c import CGemv
+-from theano.tensor.blas import Gemv
+-
+-from theano.tensor.blas_c import check_force_gemv_init
+-
++from theano.tensor.tests.test_blas import BaseGemv, TestBlasStrides
+ from theano.tests import unittest_tools
+ from theano.tests.unittest_tools import TestOptimizationMixin
+ 
+-from theano.tensor.tests.test_blas import BaseGemv, TestBlasStrides
+-
+ mode_blas_opt = theano.compile.get_default_mode().including(
+     'BlasOpt', 'specialize', 'InplaceBlasOpt', 'c_blas')
+ 
+--- a/theano/tensor/tests/test_elemwise.py
++++ b/theano/tensor/tests/test_elemwise.py
+@@ -1,26 +1,23 @@
+-from __future__ import absolute_import, print_function, division
+-from copy import copy
+-import unittest
++from __future__ import absolute_import, division, print_function
++
+ import math
++from copy import copy
++from unittest import SkipTest, TestCase
+ 
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+-from nose.tools import raises
+-from six.moves import xrange
++import pytest
+ import six.moves.cPickle as pickle
++from six.moves import xrange
+ 
+ import theano
++import theano.tests.unittest_tools as utt
++from theano import config, gof, scalar, tensor
+ from theano.compat import imap
+-from theano import gof, scalar, config
+-
+-from theano import tensor
++from theano.compile.mode import Mode, get_default_mode
+ from theano.tensor import TensorType, as_tensor_variable
+-from theano.compile.mode import get_default_mode, Mode
+-from theano.tensor.elemwise import (CAReduce, Elemwise, DimShuffle,
+-                                    Prod, ProdWithoutZeros)
++from theano.tensor.elemwise import (CAReduce, DimShuffle, Elemwise, Prod,
++                                    ProdWithoutZeros)
+ from theano.tests import unittest_tools
+-from theano.tests.unittest_tools import attr
+-import theano.tests.unittest_tools as utt
+ 
+ 
+ def FunctionGraph(i, o):
+@@ -107,7 +104,7 @@ class test_DimShuffle(unittest_tools.Inf
+         self.assertRaises(ValueError, y.eval, {x: 0})
+ 
+ 
+-class test_reduce_axes(unittest.TestCase):
++class test_reduce_axes(TestCase):
+ 
+     def test_sum_axes(self):
+         axes = [None, 0, 1, [0, 1], np.array(1),
+@@ -152,7 +149,7 @@ class test_reduce_axes(unittest.TestCase
+             x.var(a)
+ 
+ 
+-class test_Broadcast(unittest.TestCase):
++class test_Broadcast(TestCase):
+     # this is to allow other types to reuse this class to test their ops
+     type = TensorType
+     op = Elemwise
+@@ -544,7 +541,7 @@ class test_CAReduce(unittest_tools.Infer
+             raise SkipTest("G++ not available, so we need to skip this test.")
+         self.with_mode(Mode(linker='c', optimizer=None), scalar.add, dtype='floatX')
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_c(self):
+         if not theano.config.cxx:
+             raise SkipTest("G++ not available, so we need to skip this test.")
+@@ -563,7 +560,7 @@ class test_CAReduce(unittest_tools.Infer
+             self.with_mode(Mode(linker='c'), scalar.and_, dtype=dtype)
+             self.with_mode(Mode(linker='c'), scalar.xor, dtype=dtype)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_c_nan(self):
+         if not theano.config.cxx:
+             raise SkipTest("G++ not available, so we need to skip this test.")
+@@ -599,7 +596,7 @@ class test_CAReduce(unittest_tools.Infer
+                                     warn=0 not in xsh)
+ 
+ 
+-class test_Prod(unittest.TestCase):
++class test_Prod(TestCase):
+     def setUp(self):
+         unittest_tools.seed_rng()
+ 
+@@ -611,7 +608,7 @@ class test_Prod(unittest.TestCase):
+ 
+         self.mode = mode
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_verify_grad(self):
+ 
+         # including zeros, as the case with zeros is important
+@@ -670,7 +667,7 @@ class test_Prod(unittest.TestCase):
+ 
+         # unittest_tools.verify_grad(fn5, [x_val])
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_prod_no_zeros_in_input(self):
+         x = theano.tensor.dmatrix()
+         x_val = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], dtype='float32')
+@@ -714,14 +711,14 @@ class test_Prod(unittest.TestCase):
+         fn_a0 = theano.function([x], pwz_a0, mode=self.mode)
+         assert np.allclose(fn_a0(x_val), [1, 10, 162])
+ 
+-    @raises(theano.gradient.NullTypeGradError)
+     def test_prod_without_zeros_grad(self):
+-        x = theano.tensor.dmatrix()
+-        pwz_a1 = ProdWithoutZeros(axis=0)(x)
+-        pwz_grad = theano.grad(theano.tensor.sum(pwz_a1), x)
+-        theano.function([x], pwz_grad, mode=self.mode)
++        with pytest.raises(theano.gradient.NullTypeGradError):
++            x = theano.tensor.dmatrix()
++            pwz_a1 = ProdWithoutZeros(axis=0)(x)
++            pwz_grad = theano.grad(theano.tensor.sum(pwz_a1), x)
++            theano.function([x], pwz_grad, mode=self.mode)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_other_grad_tests(self):
+         x = theano.tensor.dmatrix()
+         x_val1 = np.array([[1, 2, 3], [0, 5, 6], [0, 0, 9]],
+@@ -768,7 +765,7 @@ class test_Prod(unittest.TestCase):
+         pickle.dumps(o)
+ 
+ 
+-class test_IsInf_IsNan(unittest.TestCase):
++class test_IsInf_IsNan(TestCase):
+ 
+     def setUp(self):
+         self.test_vals = [np.array(x, dtype=config.floatX) for x in [
+@@ -809,7 +806,7 @@ class test_IsInf_IsNan(unittest.TestCase
+         return self.run_isfunc('isnan')
+ 
+ 
+-class T_reduce_dtype(unittest.TestCase):
++class T_reduce_dtype(TestCase):
+     mode = theano.compile.get_default_mode().excluding(
+         'local_cut_useless_reduce')
+     op = CAReduce
+@@ -871,7 +868,7 @@ class T_reduce_dtype(unittest.TestCase):
+                 data = data.astype(dtype)
+                 f(data)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_reduce_custom_dtype(self):
+         # Test the ability to provide your own output dtype for a reduce.
+ 
+@@ -966,7 +963,7 @@ class T_reduce_dtype(unittest.TestCase):
+             assert np.allclose(s_val, ret), (s_val, ret)
+ 
+ 
+-class T_mean_dtype(unittest.TestCase):
++class T_mean_dtype(TestCase):
+     def test_mean_default_dtype(self):
+         # Test the default dtype of a mean().
+ 
+@@ -985,7 +982,7 @@ class T_mean_dtype(unittest.TestCase):
+             data = data.astype(dtype)
+             f(data)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_mean_custom_dtype(self):
+         # Test the ability to provide your own output dtype for a mean.
+ 
+@@ -1043,7 +1040,7 @@ class T_mean_dtype(unittest.TestCase):
+         assert np.allclose(m_val, 1. / 3)
+ 
+ 
+-class T_prod_without_zeros_dtype(unittest.TestCase):
++class T_prod_without_zeros_dtype(TestCase):
+     def test_prod_without_zeros_default_dtype(self):
+         # Test the default dtype of a ProdWithoutZeros().
+ 
+@@ -1091,7 +1088,7 @@ class T_prod_without_zeros_dtype(unittes
+             data = data.astype(dtype)
+             f(data)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_prod_without_zeros_custom_dtype(self):
+         # Test ability to provide your own output dtype for a ProdWithoutZeros().
+ 
+@@ -1114,7 +1111,7 @@ class T_prod_without_zeros_dtype(unittes
+                 data = data.astype(input_dtype)
+                 f(data)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_prod_without_zeros_custom_acc_dtype(self):
+         # Test ability to provide your own acc_dtype for a ProdWithoutZeros().
+ 
+@@ -1151,7 +1148,7 @@ class T_prod_without_zeros_dtype(unittes
+                 idx += 1
+ 
+ 
+-class TestBitOpReduceGrad(unittest.TestCase):
++class TestBitOpReduceGrad(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(unittest_tools.fetch_seed())
+ 
+--- a/theano/tensor/tests/test_mpi.py
++++ b/theano/tensor/tests/test_mpi.py
+@@ -1,15 +1,14 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import os
+ import subprocess
+-
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ 
+ import theano
+ from theano import change_flags
+-from theano.compat import PY3
+ from theano.gof.sched import sort_schedule_fn
+-from theano.tensor.io import (send, recv, mpi_cmps, MPISend, MPISendWait,
+-                              mpi_send_wait_cmp, mpi_tag_cmp, mpi_enabled)
++from theano.tensor.io import (MPISend, MPISendWait, mpi_cmps, mpi_enabled,
++                              mpi_send_wait_cmp, recv, send)
+ 
+ mpi_scheduler = sort_schedule_fn(*mpi_cmps)
+ mpi_linker = theano.OpWiseCLinker(schedule=mpi_scheduler)
+--- a/theano/tensor/tests/test_nlinalg.py
++++ b/theano/tensor/tests/test_nlinalg.py
+@@ -1,31 +1,25 @@
+ from __future__ import absolute_import, print_function, division
+ import unittest
++import pytest
+ 
+-import itertools
+ import numpy as np
+ import numpy.linalg
+ from numpy.testing import assert_array_almost_equal
+-from numpy.testing import dec, assert_array_equal, assert_allclose
+ from numpy import inf
+ from six.moves import xrange
+ 
+ import theano
+ from theano import tensor, function
+ from theano.tensor.basic import _allclose
+-from theano.tests.test_rop import break_op
+ from theano.tests import unittest_tools as utt
+ from theano import config
+ 
+ from theano.tensor.nlinalg import (
+-    MatrixInverse, matrix_inverse, MatrixPinv, pinv,
++    MatrixInverse, matrix_inverse, pinv,
+     AllocDiag, alloc_diag, ExtractDiag, extract_diag, diag,
+-    trace, Det, det, Eig, eig, Eigh, EighGrad, eigh,
+-    matrix_dot, _zero_disconnected, qr, matrix_power,
++    trace, det, Eig, eig, eigh,
++    matrix_dot, qr, matrix_power,
+     norm, svd, SVD, TensorInv, tensorinv, tensorsolve)
+-from nose.plugins.attrib import attr
+-
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+ 
+ 
+ def test_pseudoinverse_correctness():
+@@ -174,7 +168,8 @@ class test_SVD(utt.InferShapeTester):
+     def validate_shape(self, shape, compute_uv=True, full_matrices=True):
+         A = self.A
+         A_v = self.rng.rand(*shape).astype(self.dtype)
+-        outputs = self.op(A, full_matrices=full_matrices, compute_uv=compute_uv)
++        outputs = self.op(A, full_matrices=full_matrices,
++                          compute_uv=compute_uv)
+         if not compute_uv:
+             outputs = [outputs]
+         self._compile_and_check([A], outputs, [A_v], self.op_class, warn=False)
+@@ -228,7 +223,7 @@ def test_tensorsolve():
+ 
+ def test_inverse_singular():
+     singular = np.array([[1, 0, 0]] + [[0, 1, 0]] * 2,
+-                           dtype=theano.config.floatX)
++                        dtype=theano.config.floatX)
+     a = tensor.matrix()
+     f = function([a], matrix_inverse(a))
+     try:
+@@ -290,6 +285,7 @@ class test_diag(unittest.TestCase):
+     test_diag test makes sure that linalg.diag instantiates
+     the right op based on the dimension of the input.
+     """
++
+     def __init__(self, name, mode=None, shared=tensor._shared,
+                  floatX=None, type=tensor.TensorType):
+         self.mode = mode
+@@ -395,7 +391,7 @@ class test_diag(unittest.TestCase):
+         x = rng.rand(5, 4).astype(self.floatX)
+         tensor.verify_grad(extract_diag, [x], rng=rng)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_extract_diag_empty(self):
+         c = self.shared(np.array([[], []], self.floatX))
+         f = theano.function([], extract_diag(c), mode=self.mode)
+@@ -453,7 +449,7 @@ class test_Eig(utt.InferShapeTester):
+     def test_eval(self):
+         A = theano.tensor.matrix(dtype=self.dtype)
+         self.assertEqual([e.eval({A: [[1]]}) for e in self.op(A)],
+-                          [[1.0], [[1.0]]])
++                         [[1.0], [[1.0]]])
+         x = [[0, 1], [1, 0]]
+         w, v = [e.eval({A: x}) for e in self.op(A)]
+         assert_array_almost_equal(np.dot(x, v), w * v)
+@@ -477,8 +473,10 @@ class test_Eigh(test_Eig):
+         # matrix that is hermitian
+         utt.verify_grad(lambda x: self.op(x.dot(x.T))[0], [X], rng=self.rng)
+         utt.verify_grad(lambda x: self.op(x.dot(x.T))[1], [X], rng=self.rng)
+-        utt.verify_grad(lambda x: self.op(x.dot(x.T), 'U')[0], [X], rng=self.rng)
+-        utt.verify_grad(lambda x: self.op(x.dot(x.T), 'U')[1], [X], rng=self.rng)
++        utt.verify_grad(lambda x: self.op(x.dot(x.T), 'U')[0], [X],
++                        rng=self.rng)
++        utt.verify_grad(lambda x: self.op(x.dot(x.T), 'U')[1], [X],
++                        rng=self.rng)
+ 
+ 
+ class test_Eigh_float32(test_Eigh):
+@@ -557,7 +555,8 @@ class T_NormTests(unittest.TestCase):
+         self.assertRaises(ValueError, norm, 3, None)
+ 
+     def test_tensor_input(self):
+-        self.assertRaises(NotImplementedError, norm, np.random.rand(3, 4, 5), None)
++        self.assertRaises(NotImplementedError, norm, np.random.rand(3, 4, 5),
++                          None)
+ 
+     def test_numpy_compare(self):
+         rng = np.random.RandomState(utt.fetch_seed())
+@@ -568,10 +567,11 @@ class T_NormTests(unittest.TestCase):
+         a = rng.rand(4, 4).astype(theano.config.floatX)
+         b = rng.rand(4).astype(theano.config.floatX)
+ 
+-        A = (   [None, 'fro', 'inf', '-inf', 1, -1, None, 'inf', '-inf', 0, 1, -1, 2, -2],
+-                [M, M, M, M, M, M, V, V, V, V, V, V, V, V],
+-                [a, a, a, a, a, a, b, b, b, b, b, b, b, b],
+-                [None, 'fro', inf, -inf, 1, -1, None, inf, -inf, 0, 1, -1, 2, -2])
++        A = ([None, 'fro', 'inf', '-inf', 1, -1, None, 'inf', '-inf',
++              0, 1, -1, 2, -2],
++             [M, M, M, M, M, M, V, V, V, V, V, V, V, V],
++             [a, a, a, a, a, a, b, b, b, b, b, b, b, b],
++             [None, 'fro', inf, -inf, 1, -1, None, inf, -inf, 0, 1, -1, 2, -2])
+ 
+         for i in range(0, 14):
+             f = function([A[1][i]], norm(A[1][i], A[0][i]))
+@@ -587,7 +587,8 @@ class test_TensorInv(utt.InferShapeTeste
+         self.B = tensor.tensor3("B", dtype=theano.config.floatX)
+         self.a = np.random.rand(4, 6, 8, 3).astype(theano.config.floatX)
+         self.b = np.random.rand(2, 15, 30).astype(theano.config.floatX)
+-        self.b1 = np.random.rand(30, 2, 15).astype(theano.config.floatX)  # for ind=1 since we need prod(b1.shape[:ind]) == prod(b1.shape[ind:])
++        self.b1 = np.random.rand(30, 2, 15).astype(theano.config.floatX)
++        # for ind=1 since we need prod(b1.shape[:ind]) == prod(b1.shape[ind:])
+ 
+     def test_infer_shape(self):
+         A = self.A
+--- a/theano/tensor/tests/test_opt.py
++++ b/theano/tensor/tests/test_opt.py
+@@ -1,70 +1,41 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
+ 
+ import copy
+ import logging
+ import time
+-import unittest
++from unittest import SkipTest, TestCase
+ 
+ import numpy as np
++from six import StringIO
+ from six.moves import xrange
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises, assert_true
+ 
+ import theano
+ import theano.scalar as scal
+-from six import StringIO
+-from theano import compile
+-from theano.compile import deep_copy_op, DeepCopyOp
+-from theano.compile import get_mode
+-from theano import config
+-from theano import function
+-from theano import gof
+-from theano import pprint
+-from theano import shared
+-from theano.gof import FunctionGraph
+ import theano.tensor.opt as opt
+-from theano.tensor.opt import (
+-    local_add_specialize,
+-    local_dimshuffle_lift,
+-    local_useless_dimshuffle_in_reshape,
+-    local_useless_alloc,
+-    local_merge_alloc,
+-    local_greedy_distributor,
+-    local_useless_reshape,
+-    local_reshape_to_dimshuffle,
+-    mul_canonizer,
+-    Shape_i,
+-    Assert,
+-    MakeVector,
+-    make_vector,
+-    local_canonicalize_alloc
+-    )
++from theano import change_flags, compile, config, function, gof, pprint, shared
+ from theano import tensor
+ from theano import tensor as T
+-from theano.tensor import scalar, iscalar, lscalar, fscalar, dscalar
+-from theano.tensor import vector, lvector, fvector, dvector
+-from theano.tensor import matrix, fmatrix, dmatrix, tensor3
+-from theano.tensor import vectors, matrices, fmatrices, dmatrices
+-from theano.tensor import (
+-    AdvancedSubtensor,
+-    AdvancedSubtensor1,
+-    as_tensor_variable,
+-    IncSubtensor,
+-    AdvancedIncSubtensor,
+-    AdvancedIncSubtensor1,
+-    inplace,
+-    Join,
+-    join,
+-    Subtensor,
+-    TensorType,
+-    tile
+-    )
++from theano.compile import DeepCopyOp, deep_copy_op, get_mode
++from theano.gof import FunctionGraph
++from theano.gof.opt import check_stack_trace, out2in
++from theano.tensor import (AdvancedIncSubtensor, AdvancedIncSubtensor1,
++                           AdvancedSubtensor, AdvancedSubtensor1, IncSubtensor,
++                           Join, Subtensor, TensorType, as_tensor_variable,
++                           dmatrices, dmatrix, dscalar, dvector, fmatrices,
++                           fmatrix, fscalar, fvector, inplace, iscalar, join,
++                           lscalar, lvector, matrices, matrix, scalar, tensor3,
++                           tile, vector, vectors)
+ from theano.tensor.elemwise import DimShuffle
++from theano.tensor.opt import (Assert, MakeVector, Shape_i,
++                               local_add_specialize, local_canonicalize_alloc,
++                               local_dimshuffle_lift, local_greedy_distributor,
++                               local_merge_alloc, local_reshape_to_dimshuffle,
++                               local_useless_alloc,
++                               local_useless_dimshuffle_in_reshape,
++                               local_useless_reshape, make_vector,
++                               mul_canonizer)
+ from theano.tensor.type import values_eq_approx_remove_nan
+ from theano.tests import unittest_tools as utt
+-from theano.gof.opt import check_stack_trace, out2in
+-from theano import change_flags
+-from nose.plugins.attrib import attr
+ 
+ mode_opt = theano.config.mode
+ if mode_opt == 'FAST_COMPILE':
+@@ -108,7 +79,7 @@ def inputs(xbc=(0, 0), ybc=(0, 0), zbc=(
+     return x, y, z
+ 
+ 
+-class test_dimshuffle_lift(unittest.TestCase):
++class test_dimshuffle_lift(TestCase):
+     def test_double_transpose(self):
+         x, y, z = inputs()
+         e = ds(ds(x, (1, 0)), (1, 0))
+@@ -234,19 +205,19 @@ def test_local_useless_dimshuffle_in_res
+                        reshape_dimshuffle_row, reshape_dimshuffle_col])
+ 
+     print(str(g))
+-    assert_true(str(g) == "[Reshape{1}(InplaceDimShuffle{x,0}(vector), Shape(vector)), "
+-                          "Reshape{2}(InplaceDimShuffle{x,0,x,1}(mat), Shape(mat)), "
+-                          "Reshape{2}(InplaceDimShuffle{1,x}(row), Shape(row)), "
+-                          "Reshape{2}(InplaceDimShuffle{0}(col), Shape(col))]")
++    assert str(g) == "[Reshape{1}(InplaceDimShuffle{x,0}(vector), Shape(vector)), "
++                       "Reshape{2}(InplaceDimShuffle{x,0,x,1}(mat), Shape(mat)), "
++                       "Reshape{2}(InplaceDimShuffle{1,x}(row), Shape(row)), "
++                       "Reshape{2}(InplaceDimShuffle{0}(col), Shape(col))]"
+     useless_dimshuffle_in_reshape = out2in(local_useless_dimshuffle_in_reshape)
+     useless_dimshuffle_in_reshape.optimize(g)
+-    assert_true(str(g) == "[Reshape{1}(vector, Shape(vector)), "
+-                          "Reshape{2}(mat, Shape(mat)), "
+-                          "Reshape{2}(row, Shape(row)), "
+-                          "Reshape{2}(col, Shape(col))]")
++    assert str(g) == "[Reshape{1}(vector, Shape(vector)), "
++                       "Reshape{2}(mat, Shape(mat)), "
++                       "Reshape{2}(row, Shape(row)), "
++                       "Reshape{2}(col, Shape(col))]"
+ 
+     # Check stacktrace was copied over correctly after opt was applied
+-    assert_true(check_stack_trace(g, ops_to_check='all'))
++    assert check_stack_trace(g, ops_to_check='all')
+ 
+     # Check that the optimization does not get applied when the order
+     # of dimensions has changed.
+@@ -254,7 +225,7 @@ def test_local_useless_dimshuffle_in_res
+     h = FunctionGraph([mat], [reshape_dimshuffle_mat2])
+     str_h = str(h)
+     useless_dimshuffle_in_reshape.optimize(h)
+-    assert_true(str(h) == str_h)
++    assert str(h) == str_h
+ 
+ 
+ def test_add_canonizer_problem0():
+@@ -272,7 +243,7 @@ def test_add_canonizer_problem0():
+     theano.function([], c0 + c1)
+ 
+ 
+-class test_greedy_distribute(unittest.TestCase):
++class test_greedy_distribute(TestCase):
+     def test_main(self):
+         a, b, c, d, x, y, z = matrices('abcdxyz')
+ 
+@@ -323,7 +294,7 @@ class test_greedy_distribute(unittest.Te
+         assert np.all(r0 == r2)
+ 
+ 
+-class test_canonize(unittest.TestCase):
++class test_canonize(TestCase):
+     def test_muldiv(self):
+         x, y, z = matrices('xyz')
+         a, b, c, d = matrices('abcd')
+@@ -502,7 +473,7 @@ class test_canonize(unittest.TestCase):
+             assert(len(f.maker.fgraph.toposort()) == nb_elemwise)
+             assert(out_dtype == out.dtype)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_multiple_case(self):
+         # test those case take from the comment in Canonizer
+         # x / x -> 1
+@@ -922,7 +893,7 @@ def test_cast_in_mul_canonizer():
+     f([1], [1])
+ 
+ 
+-class test_fusion(unittest.TestCase):
++class test_fusion(TestCase):
+     mode = copy.copy(compile.mode.get_default_mode())
+     _shared = staticmethod(shared)
+     topo_exclude = ()
+@@ -1185,7 +1156,7 @@ class test_fusion(unittest.TestCase):
+             'canonicalize')
+         self.do(mode, self._shared, shp)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_elemwise_fusion_4d(self):
+         shp = (3, 3, 3, 3)
+         mode = copy.copy(self.mode)
+@@ -1332,7 +1303,7 @@ class TimesN(theano.scalar.basic.UnarySc
+         return "%(z)s = %(name)s_timesn(%(x)s);" % locals()
+ 
+ 
+-class TestCompositeCodegen(unittest.TestCase):
++class TestCompositeCodegen(TestCase):
+     """
+     Test The Composite Ops code generation in a case where there is multiple
+     scalar ops with support code.
+@@ -1734,7 +1705,7 @@ def test_local_subtensor_remove_broadcas
+     f2(xn)
+ 
+ 
+-class Test_subtensor_inc_subtensor(unittest.TestCase):
++class Test_subtensor_inc_subtensor(TestCase):
+     @classmethod
+     def setUpClass(cls):
+         cls.mode = theano.compile.mode.get_default_mode().including('local_subtensor_inc_subtensor')
+@@ -1852,7 +1823,7 @@ class Test_subtensor_inc_subtensor(unitt
+         assert np.array_equal(f(x_, i_, v_), v_.astype('int8'))
+ 
+ 
+-class test_local_subtensor_make_vector(unittest.TestCase):
++class test_local_subtensor_make_vector(TestCase):
+     def test_scalar_idx(self):
+         x, y, z = tensor.lscalars('xyz')
+         v = make_vector(x, y, z)
+@@ -1915,7 +1886,7 @@ class test_local_subtensor_make_vector(u
+             self.assertTrue(check_stack_trace(f, ops_to_check='all'))
+ 
+ 
+-class test_local_subtensor_lift(unittest.TestCase):
++class test_local_subtensor_lift(TestCase):
+     def test0(self):
+         # basic test that the Op works
+         x = tensor.matrix('x')
+@@ -2128,7 +2099,7 @@ class test_local_subtensor_lift(unittest
+         assert (f4(zval) == zval[:, 3, 0]).all()
+ 
+ 
+-class test_local_subtensor_merge(unittest.TestCase):
++class test_local_subtensor_merge(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+         self.x_shapes = [(2, 2), (5, 3), (4, 1), (1, 2),
+@@ -2193,7 +2164,7 @@ class test_local_subtensor_merge(unittes
+                     self.assertRaises(IndexError, f, x_val, idx)
+                     self.assertRaises(IndexError, g, x_val, idx)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_const2(self):
+         # var[::-1][const] -> var[-1]
+         x = tensor.matrix('x')
+@@ -2508,7 +2479,7 @@ class test_local_subtensor_merge(unittes
+             # print 'shape: %s' % (x_s,)
+             # print '%% OK: %f' % (float(n_ok) * 100 / (n_ok + n_index_err))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_none_slice(self):
+         # Test case of two slices, var[b1:e1:s1][b2:e2:s2]
+         # where any of the b, e, and s can be None
+@@ -2658,7 +2629,7 @@ class test_local_subtensor_merge(unittes
+                         f(x_val, *i_val)
+ 
+ 
+-class test_local_adv_sub1_adv_inc_sub1(unittest.TestCase):
++class test_local_adv_sub1_adv_inc_sub1(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+         mode = theano.compile.mode.get_default_mode()
+@@ -2753,7 +2724,7 @@ class test_local_adv_sub1_adv_inc_sub1(u
+                 f, ops_to_check=(Assert, scal.Cast)))
+ 
+ 
+-class Test_alloc_zero(unittest.TestCase):
++class Test_alloc_zero(TestCase):
+     def setUp(self):
+         mode = theano.compile.mode.get_default_mode()
+         self.mode = mode.including("local_incsubtensor_of_zeros",
+@@ -3055,7 +3026,7 @@ def test_local_subtensor_of_dot():
+     assert check_stack_trace(f, ops_to_check='last')
+ 
+ 
+-class Test_local_elemwise_alloc(unittest.TestCase):
++class Test_local_elemwise_alloc(TestCase):
+     dtype = config.floatX
+ 
+     def setUp(self):
+@@ -3421,7 +3392,7 @@ def test_local_elemwise_sub_zeros():
+     assert check_stack_trace(f, ops_to_check='all')
+ 
+ 
+-class Test_local_useless_elemwise_comparison(unittest.TestCase):
++class Test_local_useless_elemwise_comparison(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(utt.fetch_seed())
+ 
+@@ -3699,7 +3670,7 @@ class Test_local_useless_elemwise_compar
+         self.assertTrue(check_stack_trace(f, ops_to_check='last'))
+ 
+ 
+-class Test_local_canonicalize_alloc(unittest.TestCase):
++class Test_local_canonicalize_alloc(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(utt.fetch_seed())
+ 
+@@ -3811,7 +3782,7 @@ class Test_local_canonicalize_alloc(unit
+         self.assertTrue(check_stack_trace(g, ops_to_check='all'))
+ 
+ 
+-class Test_local_useless_inc_subtensor_alloc(unittest.TestCase):
++class Test_local_useless_inc_subtensor_alloc(TestCase):
+     opt_name = 'local_useless_inc_subtensor_alloc'
+ 
+     def setUp(self):
+@@ -3914,7 +3885,7 @@ class Test_local_useless_inc_subtensor_a
+         self.assertTrue(check_stack_trace(f2, ops_to_check='last'))
+ 
+ 
+-class test_shapeoptimizer(unittest.TestCase):
++class test_shapeoptimizer(TestCase):
+     def setUp(self):
+         utt.seed_rng()
+ 
+@@ -4239,7 +4210,7 @@ def test_local_mul_specialize():
+     assert nodes == [T.mul]
+ 
+ 
+-class T_Tile(unittest.TestCase):
++class T_Tile(TestCase):
+     def test_local_useless_tile(self):
+         v = T.vector()
+         m = T.matrix()
+@@ -4393,7 +4364,7 @@ def test_local_pow_specialize_device_mor
+     utt.assert_allclose(f(val_no0), val_no0 ** (-16))
+ 
+ 
+-class T_Rebroadcast(unittest.TestCase):
++class T_Rebroadcast(TestCase):
+     def test_local_useless_rebroadcast(self):
+         mode = theano.compile.get_default_mode().including('canonicalize')
+         v1 = T.vector()
+@@ -4419,7 +4390,7 @@ class T_Rebroadcast(unittest.TestCase):
+         assert rebroadcast_nodes[0].op.axis == {0: True}
+ 
+ 
+-class T_useless_elemwise(unittest.TestCase):
++class T_useless_elemwise(TestCase):
+     def setUp(self):
+         self.mode = theano.compile.get_default_mode().including(
+             'canonicalize', 'local_fill_to_alloc')
+@@ -4505,7 +4476,7 @@ class T_useless_elemwise(unittest.TestCa
+         assert topo[0].op == deep_copy_op
+ 
+ 
+-class T_cast_cast(unittest.TestCase):
++class T_cast_cast(TestCase):
+     def setUp(self):
+         mode = theano.compile.get_default_mode()
+         self.mode = mode.including('local_cast_cast')
+@@ -4561,7 +4532,7 @@ class T_cast_cast(unittest.TestCase):
+         assert (len(topo) == 1 and isinstance(topo[0].op.scalar_op, scal.basic.Composite)) or (len(topo) > 1)
+ 
+ 
+-class T_func_inverse(unittest.TestCase):
++class T_func_inverse(TestCase):
+ 
+     def setUp(self):
+         mode = theano.compile.get_default_mode()
+@@ -4677,7 +4648,7 @@ def test_constant_get_stabilized():
+                        'cases. See #504.')
+ 
+ 
+-class T_local_switch_sink(unittest.TestCase):
++class T_local_switch_sink(TestCase):
+     def setUp(self):
+         # condition values
+         self.condm = np.asarray([[0.1, 0, 1, -1],
+@@ -4757,7 +4728,7 @@ class T_local_switch_sink(unittest.TestC
+         f = self.function_remove_nan([x], T.grad(y, x), self.mode)
+         assert f(5) == 1, f(5)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_local_div_switch_sink(self):
+         c = T.dscalar()
+         idx = 0
+@@ -4780,7 +4751,7 @@ class T_local_switch_sink(unittest.TestC
+                 idx += 1
+ 
+ 
+-class T_local_erf(unittest.TestCase):
++class T_local_erf(TestCase):
+     def setUp(self):
+         self.mode = theano.compile.mode.get_default_mode().including(
+             'canonicalize', 'fast_run').excluding('gpu', 'fusion')
+@@ -4867,7 +4838,7 @@ class T_local_erf(unittest.TestCase):
+         print(f(val))
+ 
+ 
+-class T_local_erfc(unittest.TestCase):
++class T_local_erfc(TestCase):
+     def setUp(self):
+         self.mode_fusion = theano.compile.mode.get_default_mode().including(
+             'canonicalize').including('fast_run').excluding('gpu')
+@@ -5061,7 +5032,7 @@ class T_local_erfc(unittest.TestCase):
+         print(t1 - t0, t2 - t1)
+ 
+ 
+-class test_local_useless_switch(unittest.TestCase):
++class test_local_useless_switch(TestCase):
+     def setUp(self):
+         self.mode = mode_opt.excluding('constant_folding')
+ 
+@@ -5202,7 +5173,7 @@ class test_local_useless_switch(unittest
+                     isinstance(node.op, theano.tensor.Elemwise)]) == 0
+ 
+ 
+-class test_local_merge_switch_same_cond(unittest.TestCase):
++class test_local_merge_switch_same_cond(TestCase):
+     def test_elemwise(self):
+         # float Ops
+         mats = theano.tensor.matrices('cabxy')
+@@ -5231,7 +5202,7 @@ class test_local_merge_switch_same_cond(
+             assert str(g).count('Switch') == 1
+ 
+ 
+-class T_local_sum_prod(unittest.TestCase):
++class T_local_sum_prod(TestCase):
+     """
+     Test sum/prod opts in opt.py
+     """
+@@ -5590,7 +5561,7 @@ class T_local_sum_prod(unittest.TestCase
+         assert check_stack_trace(f, ops_to_check=[T.Sum])
+ 
+ 
+-class T_local_opt_alloc(unittest.TestCase):
++class T_local_opt_alloc(TestCase):
+     dtype = 'float32'
+ 
+     def test_sum_upcast(self):
+@@ -5634,7 +5605,7 @@ class T_local_opt_alloc_f16(T_local_opt_
+     dtype = 'float16'
+ 
+ 
+-class T_local_reduce(unittest.TestCase):
++class T_local_reduce(TestCase):
+     def setUp(self):
+         self.mode = theano.compile.get_default_mode().including(
+             'canonicalize',
+@@ -5760,7 +5731,7 @@ class T_local_reduce(unittest.TestCase):
+             theano.config.warn.reduce_join = old
+ 
+ 
+-class T_local_sum_prod_dimshuffle(unittest.TestCase):
++class T_local_sum_prod_dimshuffle(TestCase):
+     def setUp(self):
+         self.mode = theano.compile.get_default_mode().including('canonicalize')
+ 
+@@ -6279,7 +6250,7 @@ def test_local_flatten_lift():
+         assert isinstance(topo[-1].op, tensor.Elemwise)
+ 
+ 
+-class Test_Reshape(unittest.TestCase):
++class Test_Reshape(TestCase):
+     def setUp(self):
+         self.mode = mode_opt
+         self.op = tensor.Reshape
+@@ -6296,7 +6267,7 @@ class Test_Reshape(unittest.TestCase):
+         self.assertTrue(check_stack_trace(f, ops_to_check=[self.op]))
+ 
+ 
+-class Test_local_useless_reshape(unittest.TestCase):
++class Test_local_useless_reshape(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(utt.fetch_seed())
+ 
+@@ -6358,7 +6329,7 @@ class Test_local_useless_reshape(unittes
+             assert not any(isinstance(n.op, tensor.basic.Reshape) for n in topo)
+ 
+ 
+-class Test_local_reshape_to_dimshuffle(unittest.TestCase):
++class Test_local_reshape_to_dimshuffle(TestCase):
+     def setUp(self):
+         self.rng = np.random.RandomState(utt.fetch_seed())
+ 
+@@ -6405,7 +6376,7 @@ def test_local_reshape_lift():
+     assert check_stack_trace(f, ops_to_check='last')
+ 
+ 
+-class Test_lift_transpose_through_dot(unittest.TestCase):
++class Test_lift_transpose_through_dot(TestCase):
+     def simple_optimize(self, g):
+         out2in(opt.local_useless_elemwise).optimize(g)
+         out2in(opt.local_lift_transpose_through_dot).optimize(g)
+@@ -6491,7 +6462,7 @@ class TestShape_i(utt.InferShapeTester):
+                                 [admat_val], Shape_i)
+ 
+ 
+-class TestShapeFeature(unittest.TestCase):
++class TestShapeFeature(TestCase):
+     def test_scalar(self):
+         x = scalar()
+         cst = T.constant(1).clone()
+@@ -6554,7 +6525,7 @@ def test_assert_op_gradient():
+     assert func(x_val) == 1
+ 
+ 
+-class TestIntDivByOne(unittest.TestCase):
++class TestIntDivByOne(TestCase):
+ 
+     def setUp(self):
+         self.mode = theano.compile.mode.get_default_mode()
+@@ -6714,7 +6685,7 @@ def test_local_merge_alloc():
+     assert isinstance(topo[-1].op, T.Alloc)
+     o = f(0., 1, 2, 2, 3, 4)
+     assert o.shape == (1, 2, 3, 4)
+-    assert_raises((AssertionError, ValueError), f, 0., 1, 2, 5, 3, 4)
++    pytest.raises((AssertionError, ValueError), f, 0., 1, 2, 5, 3, 4)
+ 
+ 
+ def test_local_useless_alloc():
+--- a/theano/tensor/tests/test_slinalg.py
++++ b/theano/tensor/tests/test_slinalg.py
+@@ -1,27 +1,17 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
++from __future__ import absolute_import, division, print_function
++
++import itertools
++from unittest import SkipTest
+ 
+ import numpy as np
+ import numpy.linalg
+-from numpy.testing import assert_array_almost_equal
+-from numpy.testing import dec, assert_array_equal, assert_allclose
+-from numpy import inf
+-
+-import itertools
++import pytest
+ 
+ import theano
+-from theano import tensor, function, grad
+-from theano.tensor.basic import _allclose
+-from theano.tests.test_rop import break_op
++from theano import config, function, grad, tensor
++from theano.tensor.slinalg import (Cholesky, CholeskyGrad, Solve, cholesky,
++                                   eigvalsh, expm, kron, solve)
+ from theano.tests import unittest_tools as utt
+-from theano import config
+-from theano.tensor.slinalg import (
+-    Cholesky, cholesky, CholeskyGrad, Solve, solve,
+-    Eigvalsh, EigvalshGrad, eigvalsh, expm, kron)
+-from theano.tests.unittest_tools import attr
+-
+-from nose.plugins.skip import SkipTest
+-from nose.tools import assert_raises
+ 
+ try:
+     import scipy.linalg
+@@ -79,7 +69,7 @@ def test_cholesky_indef():
+     matrix = np.array([[1, 0.2], [0.2, -2]]).astype(config.floatX)
+     cholesky = Cholesky(lower=True, on_error='raise')
+     chol_f = function([x], cholesky(x))
+-    with assert_raises(scipy.linalg.LinAlgError):
++    with pytest.raises(scipy.linalg.LinAlgError):
+         chol_f(matrix)
+     cholesky = Cholesky(lower=True, on_error='nan')
+     chol_f = function([x], cholesky(x))
+@@ -112,23 +102,24 @@ def test_cholesky_grad_indef():
+     matrix = np.array([[1, 0.2], [0.2, -2]]).astype(config.floatX)
+     cholesky = Cholesky(lower=True, on_error='raise')
+     chol_f = function([x], grad(cholesky(x).sum(), [x]))
+-    with assert_raises(scipy.linalg.LinAlgError):
++    with pytest.raises(scipy.linalg.LinAlgError):
+         chol_f(matrix)
+     cholesky = Cholesky(lower=True, on_error='nan')
+     chol_f = function([x], grad(cholesky(x).sum(), [x]))
+     assert np.all(np.isnan(chol_f(matrix)))
+ 
+ 
+-@attr('slow')
+-def test_cholesky_and_cholesky_grad_shape():
++@pytest.mark.slow
++@pytest.mark.parametrize("shp", [2, 3, 5])
++def test_cholesky_and_cholesky_grad_shape(shp):
+     if not imported_scipy:
+         raise SkipTest("Scipy needed for the Cholesky op.")
+ 
+     rng = np.random.RandomState(utt.fetch_seed())
+     x = tensor.matrix()
+-    for l in (cholesky(x), Cholesky(lower=True)(x), Cholesky(lower=False)(x)):
+-        f_chol = theano.function([x], l.shape)
+-        g = tensor.grad(l.sum(), x)
++    for lchol in (cholesky(x), Cholesky(lower=True)(x), Cholesky(lower=False)(x)):
++        f_chol = theano.function([x], lchol.shape)
++        g = tensor.grad(lchol.sum(), x)
+         f_cholgrad = theano.function([x], g.shape)
+         topo_chol = f_chol.maker.fgraph.toposort()
+         topo_cholgrad = f_cholgrad.maker.fgraph.toposort()
+@@ -137,10 +128,9 @@ def test_cholesky_and_cholesky_grad_shap
+                         for node in topo_chol]) == 0
+             assert sum([node.op.__class__ == CholeskyGrad
+                         for node in topo_cholgrad]) == 0
+-        for shp in [2, 3, 5]:
+-            m = np.cov(rng.randn(shp, shp + 10)).astype(config.floatX)
+-            yield np.testing.assert_equal, f_chol(m), (shp, shp)
+-            yield np.testing.assert_equal, f_cholgrad(m), (shp, shp)
++        m = np.cov(rng.randn(shp, shp + 10)).astype(config.floatX)
++        assert f_chol(m) == (shp, shp)
++        assert f_cholgrad(m) == (shp, shp)
+ 
+ 
+ def test_eigvalsh():
+@@ -158,7 +148,7 @@ def test_eigvalsh():
+     for b in [10 * np.eye(5, 5) + rng.randn(5, 5)]:
+         w = f(a, b)
+         refw = scipy.linalg.eigvalsh(a, b)
+-        np.testing.assert_array_almost_equal(w, refw)
++        assert w == pytest.approx(refw)
+ 
+     # We need to test None separatly, as otherwise DebugMode will
+     # complain, as this isn't a valid ndarray.
+@@ -167,7 +157,7 @@ def test_eigvalsh():
+     f = function([A], eigvalsh(A, B))
+     w = f(a)
+     refw = scipy.linalg.eigvalsh(a, b)
+-    np.testing.assert_array_almost_equal(w, refw)
++    assert w == pytest.approx(refw)
+ 
+ 
+ def test_eigvalsh_grad():
+@@ -323,7 +313,7 @@ def test_expm():
+     expm_f = function([x], m)
+ 
+     val = expm_f(A)
+-    np.testing.assert_array_almost_equal(val, ref)
++    assert val == pytest.approx(ref)
+ 
+ 
+ def test_expm_grad_1():
+--- a/theano/tests/test_flake8.py
++++ b/theano/tests/test_flake8.py
+@@ -1,12 +1,15 @@
+ """
+ Test flake8 errors.
+ """
+-from __future__ import absolute_import, print_function, division
+-from nose.plugins.skip import SkipTest
++from __future__ import absolute_import, division, print_function
++
+ import os
+ import sys
+ from fnmatch import fnmatch
++from unittest import SkipTest
++
+ import theano
++
+ new_flake8 = True
+ try:
+     import flake8.main
+--- a/theano/tests/test_ifelse.py
++++ b/theano/tests/test_ifelse.py
+@@ -1,27 +1,26 @@
+ """
+  Tests fof the lazy conditiona
+ """
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+-from __future__ import absolute_import, print_function, division
+-import unittest
+ import numpy as np
+-from nose.plugins.skip import SkipTest
+ from six.moves import reduce
+ 
+ import theano
+-from theano import tensor
+ import theano.ifelse
++from theano import tensor
+ from theano.ifelse import IfElse, ifelse
+ from theano.tests import unittest_tools as utt
+ 
+-
+ __docformat__ = 'restructedtext en'
+ __authors__ = ("Razvan Pascanu ")
+ __copyright__ = "(c) 2010, Universite de Montreal"
+ __contact__ = "Razvan Pascanu <r.pascanu@gmail>"
+ 
+ 
+-class test_ifelse(unittest.TestCase, utt.TestOptimizationMixin):
++class test_ifelse(TestCase, utt.TestOptimizationMixin):
+     mode = None
+     dtype = theano.config.floatX
+     cast_output = staticmethod(tensor.as_tensor_variable)
+--- a/theano/tests/test_printing.py
++++ b/theano/tests/test_printing.py
+@@ -1,18 +1,17 @@
+ """
+ Tests of printing functionality
+ """
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import logging
++from unittest import SkipTest
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
+-
+ from six.moves import StringIO
+ 
+ import theano
+ import theano.tensor as tensor
+-
+-from theano.printing import min_informative_str, debugprint
++from theano.printing import debugprint, min_informative_str
+ 
+ 
+ def test_pydotprint_cond_highlight():
+--- a/theano/tests/unittest_tools.py
++++ b/theano/tests/unittest_tools.py
+@@ -1,35 +1,21 @@
+-from __future__ import absolute_import, print_function, division
+-from copy import copy, deepcopy
+-from functools import wraps
++from __future__ import absolute_import, division, print_function
++
+ import logging
+ import sys
+-import unittest
+-from parameterized import parameterized
+-from nose.tools import assert_raises
++from copy import copy, deepcopy
++from functools import wraps
++from unittest import SkipTest, TestCase
+ 
++import numpy as np
++import pytest
++from parameterized import parameterized
+ from six import integer_types
+ from six.moves import StringIO
+ 
+-try:
+-    from nose.plugins.attrib import attr
+-except ImportError:
+-    # This is an old version of nose
+-    def attr(tag):
+-        def func(f):
+-            return f
+-        return func
+-import numpy as np
+-
+ import theano
+ import theano.tensor as T
+ from theano import config
+-try:
+-    from nose.plugins.skip import SkipTest
+-except ImportError:
+-    class SkipTest(Exception):
+-        """
+-        Skip this test
+-        """
++
+ _logger = logging.getLogger("theano.tests.unittest_tools")
+ 
+ 
+@@ -200,7 +186,7 @@ class T_OpContractMixin(object):
+             assert s       # names should not be empty
+ 
+ 
+-class InferShapeTester(unittest.TestCase):
++class InferShapeTester(TestCase):
+ 
+     def setUp(self):
+         seed_rng()
+@@ -454,7 +440,7 @@ def assertFailure_fast(f):
+     """
+     if theano.config.cycle_detection == 'fast':
+         def test_with_assert(*args, **kwargs):
+-            with assert_raises(Exception):
++            with pytest.raises(Exception):
+                 f(*args, **kwargs)
+         return test_with_assert
+     else:
+--- a/theano/typed_list/tests/test_basic.py
++++ b/theano/typed_list/tests/test_basic.py
+@@ -1,19 +1,20 @@
+-from __future__ import absolute_import, print_function, division
+-import unittest
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
+ 
+-from nose.plugins.skip import SkipTest
+ import numpy as np
+ 
+ import theano
+ import theano.typed_list
++from theano import sparse
+ from theano import tensor as T
+ from theano.tensor.type_other import SliceType
+-from theano.typed_list.type import TypedListType
+-from theano.typed_list.basic import (GetItem, Insert,
+-                                     Append, Extend, Remove, Reverse,
+-                                     Index, Count, Length, make_list)
+-from theano import sparse
+ from theano.tests import unittest_tools as utt
++from theano.typed_list.basic import (Append, Count, Extend, GetItem, Index,
++                                     Insert, Length, Remove, Reverse,
++                                     make_list)
++from theano.typed_list.type import TypedListType
++
+ # TODO, handle the case where scipy isn't installed.
+ try:
+     import scipy.sparse as sp
+@@ -47,7 +48,7 @@ def random_lil(shape, dtype, nnz):
+     return rval
+ 
+ 
+-class test_get_item(unittest.TestCase):
++class test_get_item(TestCase):
+ 
+     def setUp(self):
+         utt.seed_rng()
+@@ -140,7 +141,7 @@ class test_get_item(unittest.TestCase):
+         self.assertTrue(np.array_equal(f([x]), [x]))
+ 
+ 
+-class test_append(unittest.TestCase):
++class test_append(TestCase):
+ 
+     def test_inplace(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -189,7 +190,7 @@ class test_append(unittest.TestCase):
+         self.assertTrue(np.array_equal(f([x], y), [x, y]))
+ 
+ 
+-class test_extend(unittest.TestCase):
++class test_extend(TestCase):
+ 
+     def test_inplace(self):
+         mySymbolicMatricesList1 = TypedListType(T.TensorType(
+@@ -243,7 +244,7 @@ class test_extend(unittest.TestCase):
+         self.assertTrue(np.array_equal(f([x], [y]), [x, y]))
+ 
+ 
+-class test_insert(unittest.TestCase):
++class test_insert(TestCase):
+ 
+     def test_inplace(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -302,7 +303,7 @@ class test_insert(unittest.TestCase):
+                                        [x, y]))
+ 
+ 
+-class test_remove(unittest.TestCase):
++class test_remove(TestCase):
+ 
+     def test_inplace(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -351,7 +352,7 @@ class test_remove(unittest.TestCase):
+         self.assertTrue(np.array_equal(f([x, y], y), [x]))
+ 
+ 
+-class test_reverse(unittest.TestCase):
++class test_reverse(TestCase):
+ 
+     def test_inplace(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -397,7 +398,7 @@ class test_reverse(unittest.TestCase):
+         self.assertTrue(np.array_equal(f([x, y]), [y, x]))
+ 
+ 
+-class test_index(unittest.TestCase):
++class test_index(TestCase):
+ 
+     def test_sanity_check(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -463,7 +464,7 @@ class test_index(unittest.TestCase):
+         self.assertTrue(f([x, y], y) == 1)
+ 
+ 
+-class test_count(unittest.TestCase):
++class test_count(TestCase):
+ 
+     def test_sanity_check(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -529,7 +530,7 @@ class test_count(unittest.TestCase):
+         self.assertTrue(f([x, y, y], y) == 2)
+ 
+ 
+-class test_length(unittest.TestCase):
++class test_length(TestCase):
+ 
+     def test_sanity_check(self):
+         mySymbolicMatricesList = TypedListType(T.TensorType(
+@@ -555,7 +556,7 @@ class test_length(unittest.TestCase):
+         self.assertTrue(f([x, x]) == 2)
+ 
+ 
+-class TestMakeList(unittest.TestCase):
++class TestMakeList(TestCase):
+ 
+     def test_wrong_shape(self):
+         a = T.vector()
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -2,6 +2,10 @@
+ match = ^test
+ nocapture = 1
+ 
++[tool:pytest]
++markers =
++    slow
++
+ [flake8]
+ ignore = E501,E123,E133,FI12,FI14,FI15,FI50,FI51,FI53
+ 
+--- a/theano/compile/tests/test_nanguardmode.py
++++ b/theano/compile/tests/test_nanguardmode.py
+@@ -4,7 +4,7 @@ This test is for testing the NanGuardMod
+ from __future__ import absolute_import, print_function, division
+ 
+ import logging
+-from nose.tools import assert_raises
++import pytest
+ 
+ import numpy as np
+ 
+@@ -39,9 +39,9 @@ def test_NanGuardMode():
+     _logger = logging.getLogger("theano.compile.nanguardmode")
+     try:
+         _logger.propagate = False
+-        assert_raises(AssertionError, fun, infa)  # INFs
+-        assert_raises(AssertionError, fun, nana)  # NANs
+-        assert_raises(AssertionError, fun, biga)  # big values
++        pytest.raises(AssertionError, fun, infa)  # INFs
++        pytest.raises(AssertionError, fun, nana)  # NANs
++        pytest.raises(AssertionError, fun, biga)  # big values
+     finally:
+         _logger.propagate = True
+ 
+@@ -64,8 +64,8 @@ def test_NanGuardMode():
+     fun(a)  # normal values
+     try:
+         _logger.propagate = False
+-        assert_raises(AssertionError, fun, infa)  # INFs
+-        assert_raises(AssertionError, fun, nana)  # NANs
+-        assert_raises(AssertionError, fun, biga)  # big values
++        pytest.raises(AssertionError, fun, infa)  # INFs
++        pytest.raises(AssertionError, fun, nana)  # NANs
++        pytest.raises(AssertionError, fun, biga)  # big values
+     finally:
+         _logger.propagate = True
+--- a/theano/gpuarray/tests/test_linalg.py
++++ b/theano/gpuarray/tests/test_linalg.py
+@@ -23,7 +23,7 @@ from theano.tests import unittest_tools
+ from .. import gpuarray_shared_constructor
+ from .config import mode_with_gpu, mode_without_gpu
+ from .test_basic_ops import rand
+-from nose.tools import assert_raises
++import pytest
+ 
+ 
+ class TestCusolver(unittest.TestCase):
+@@ -623,7 +623,7 @@ def test_cholesky_grad_indef():
+     matrix = np.array([[1, 0.2], [0.2, -2]]).astype(config.floatX)
+     cholesky = GpuCholesky(lower=True)
+     chol_f = theano.function([x], theano.tensor.grad(cholesky(x).sum(), [x]))
+-    with assert_raises(LinAlgError):
++    with pytest.raises(LinAlgError):
+         chol_f(matrix)
+     # cholesky = GpuCholesky(lower=True, on_error='nan')
+     # chol_f = function([x], grad(gpu_cholesky(x).sum(), [x]))
+--- a/theano/gpuarray/tests/test_opt.py
++++ b/theano/gpuarray/tests/test_opt.py
+@@ -1,31 +1,33 @@
+-from __future__ import absolute_import, print_function, division
+-from nose.tools import assert_raises
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest, TestCase
++
+ import numpy as np
++import pytest
+ 
+ import theano
+-from theano import tensor
++import theano.gpuarray
+ import theano.tensor.slinalg as slinalg
+-from theano.tests.breakpoint import PdbBreakpoint
+-from theano.tests import unittest_tools as utt, test_ifelse
+-from theano.tensor.tests import test_basic
++from theano import tensor
+ from theano.gof.opt import check_stack_trace
++from theano.gpuarray import blas, dnn, opt
++from theano.tensor.nnet import abstract_conv
++from theano.tensor.tests import test_basic
++from theano.tests import test_ifelse
++from theano.tests import unittest_tools as utt
++from theano.tests.breakpoint import PdbBreakpoint
+ 
+-import theano.gpuarray
+ from .. import basic_ops
+-from ..type import GpuArrayType, gpuarray_shared_constructor, get_context
+-from ..basic_ops import (
+-    GpuAlloc, GpuAllocEmpty, GpuReshape, GpuFromHost, HostFromGpu, host_from_gpu)
++from ..basic_ops import (GpuAlloc, GpuAllocEmpty, GpuFromHost, GpuReshape,
++                         HostFromGpu, host_from_gpu)
+ from ..blas import GpuGemm
+-from ..elemwise import (
+-    GpuCAReduceCuda, GpuCAReduceCPY, GpuElemwise, Elemwise, max_inputs_to_GpuElemwise)
+ from ..dnn import GpuDnnReduction
++from ..elemwise import (Elemwise, GpuCAReduceCPY, GpuCAReduceCuda, GpuElemwise,
++                        max_inputs_to_GpuElemwise)
++from ..linalg import GpuCholesky, GpuCusolverSolve, cusolver_available
+ from ..subtensor import GpuSubtensor
+-from ..linalg import GpuCusolverSolve, cusolver_available, GpuCholesky
+-
+-from .config import mode_with_gpu, mode_without_gpu, test_ctx_name, SkipTest
+-import unittest
+-from theano.tensor.nnet import abstract_conv
+-from theano.gpuarray import dnn, blas, opt
++from ..type import GpuArrayType, get_context, gpuarray_shared_constructor
++from .config import mode_with_gpu, mode_without_gpu, test_ctx_name
+ 
+ 
+ def _check_stack_trace(thing):
+@@ -623,7 +625,7 @@ def test_local_assert_no_cpu_op():
+         theano.config.assert_no_cpu_op = 'raise'
+         theano.config.on_opt_error = 'ignore'
+ 
+-        assert_raises(AssertionError, theano.function,
++        pytest.raises(AssertionError, theano.function,
+                       [], out, mode=mode_local_assert)
+     finally:
+         theano.config.assert_no_cpu_op = old
+@@ -772,7 +774,7 @@ def test_crossentropycategorical1hot_lif
+       rng.randint(5, size=(13,)))
+ 
+ 
+-class Conv_opt_test(unittest.TestCase):
++class Conv_opt_test(TestCase):
+ 
+     def optimizer_2d(self, input_shapes, direction, include_tags, exclude_tags,
+                      op, border_mode='valid', subsample=(1, 1),
+--- a/theano/gpuarray/tests/test_type.py
++++ b/theano/gpuarray/tests/test_type.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+ import os
+ 
+-import nose
++import pytest
+ import numpy as np
+ 
+ import theano
+@@ -110,7 +110,7 @@ def test_filter_variable():
+ 
+ def test_gpuarray_shared_scalar():
+     # By default, we don't put scalar as shared variable on the GPU
+-    nose.tools.assert_raises(
++    pytest.raises(
+         TypeError, gpuarray_shared_constructor, np.asarray(1, dtype='float32'))
+ 
+     # But we can force that
+--- a/theano/sandbox/tests/test_rng_mrg.py
++++ b/theano/sandbox/tests/test_rng_mrg.py
+@@ -4,7 +4,7 @@ import sys
+ import time
+ import unittest
+ 
+-from nose.tools import assert_raises
++import pytest
+ import numpy as np
+ from six.moves import xrange
+ 
+@@ -13,7 +13,6 @@ from theano import change_flags, config,
+ from theano.sandbox import rng_mrg
+ from theano.sandbox.rng_mrg import MRG_RandomStreams
+ from theano.tests import unittest_tools as utt
+-from theano.tests.unittest_tools import attr
+ 
+ # TODO: test MRG_RandomStreams
+ # Partly done in test_consistency_randomstreams
+@@ -320,7 +319,7 @@ def test_broadcastable():
+             assert uu.broadcastable == (False, True)
+ 
+ 
+-@attr('slow')
++@pytest.mark.slow
+ def test_binomial():
+     # TODO: test size=None, ndim=X
+     # TODO: test size=X, ndim!=X.ndim
+@@ -377,7 +376,7 @@ def t_binomial(mean, size, const_size, v
+               inputs=input, target_avg=mean, mean_rtol=rtol)
+ 
+ 
+-@attr('slow')
++@pytest.mark.slow
+ def test_normal0():
+     steps = 50
+     std = 2.
+@@ -439,7 +438,7 @@ def test_normal0():
+                   prefix='numpy ', allow_01=True, inputs=input, mean_rtol=rtol)
+ 
+ 
+-@attr('slow')
++@pytest.mark.slow
+ def test_normal_truncation():
+     # just a copy of test_normal0 with extra bound check
+     steps = 50
+@@ -504,7 +503,7 @@ def test_normal_truncation():
+         sys.stdout.flush()
+ 
+ 
+-@attr('slow')
++@pytest.mark.slow
+ def test_truncated_normal():
+     # just a copy of test_normal0 for truncated normal
+     steps = 50
+@@ -771,7 +770,7 @@ def rng_mrg_overflow(sizes, fct, mode, s
+         y = fct(size=size)
+         f = theano.function([], y, mode=mode)
+         if should_raise_error:
+-            assert_raises(ValueError, f)
++            pytest.raises(ValueError, f)
+         else:
+             f()
+ 
+@@ -799,74 +798,74 @@ def test_undefined_grad():
+     # checking uniform distribution
+     low = tensor.scalar()
+     out = srng.uniform((), low=low)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, low)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, low)
+ 
+     high = tensor.scalar()
+     out = srng.uniform((), low=0, high=high)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, high)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, high)
+ 
+     out = srng.uniform((), low=low, high=high)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out,
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out,
+                   (low, high))
+ 
+     # checking binomial distribution
+     prob = tensor.scalar()
+     out = srng.binomial((), p=prob)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, prob)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, prob)
+ 
+     # checking multinomial distribution
+     prob1 = tensor.scalar()
+     prob2 = tensor.scalar()
+     p = [theano.tensor.as_tensor_variable([prob1, 0.5, 0.25])]
+     out = srng.multinomial(size=None, pvals=p, n=4)[0]
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad,
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad,
+                   theano.tensor.sum(out), prob1)
+ 
+     p = [theano.tensor.as_tensor_variable([prob1, prob2])]
+     out = srng.multinomial(size=None, pvals=p, n=4)[0]
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad,
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad,
+                   theano.tensor.sum(out), (prob1, prob2))
+ 
+     # checking choice
+     p = [theano.tensor.as_tensor_variable([prob1, prob2, 0.1, 0.2])]
+     out = srng.choice(a=None, size=1, p=p, replace=False)[0]
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
+                   (prob1, prob2))
+ 
+     p = [theano.tensor.as_tensor_variable([prob1, prob2])]
+     out = srng.choice(a=None, size=1, p=p, replace=False)[0]
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
+                   (prob1, prob2))
+ 
+     p = [theano.tensor.as_tensor_variable([prob1, 0.2, 0.3])]
+     out = srng.choice(a=None, size=1, p=p, replace=False)[0]
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out[0],
+                   prob1)
+ 
+     # checking normal distribution
+     avg = tensor.scalar()
+     out = srng.normal((), avg=avg)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, avg)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, avg)
+ 
+     std = tensor.scalar()
+     out = srng.normal((), avg=0, std=std)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, std)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, std)
+ 
+     out = srng.normal((), avg=avg, std=std)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out,
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out,
+                   (avg, std))
+ 
+     # checking truncated normal distribution
+     avg = tensor.scalar()
+     out = srng.truncated_normal((), avg=avg)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, avg)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, avg)
+ 
+     std = tensor.scalar()
+     out = srng.truncated_normal((), avg=0, std=std)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out, std)
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out, std)
+ 
+     out = srng.truncated_normal((), avg=avg, std=std)
+-    assert_raises(theano.gradient.NullTypeGradError, theano.grad, out,
++    pytest.raises(theano.gradient.NullTypeGradError, theano.grad, out,
+                   (avg, std))
+ 
+ 
+--- a/theano/tensor/tests/test_blas.py
++++ b/theano/tensor/tests/test_blas.py
+@@ -1,6 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+ from copy import copy
+ from itertools import product as itertools_product
++import pytest
+ from unittest import TestCase
+ 
+ import numpy as np
+@@ -24,7 +25,6 @@ from theano.tests import unittest_tools
+ from .test_basic import (as_tensor_variable, inplace_func,
+                          compile, inplace)
+ import theano.tensor.blas_scipy
+-from theano.tests.unittest_tools import attr
+ 
+ 
+ if config.mode == 'FAST_COMPILE':
+@@ -942,7 +942,7 @@ def test_dot22():
+             cmp((0, 0), (0, 0))
+ 
+ 
+-@attr('slow')
++@pytest.mark.slow
+ def test_dot22scalar():
+     # including does not seem to work for 'local_dot_to_dot22' and
+     # 'local_dot22_to_dot22scalar'
+@@ -1255,7 +1255,7 @@ class TestGemv(TestCase, unittest_tools.
+         assert np.allclose(v2.get_value(),
+                            np.dot(m.get_value(), v1.get_value()) + v2_orig)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_gemv1(self):
+         self.t_gemv1((3, 2))
+         self.t_gemv1((0, 2))
+--- a/theano/tensor/tests/test_extra_ops.py
++++ b/theano/tensor/tests/test_extra_ops.py
+@@ -1,22 +1,23 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
++from unittest import SkipTest
+ 
+ import numpy as np
++import pytest
+ 
+ import theano
+-from theano.tests import unittest_tools as utt
+-
+-from theano.tensor.extra_ops import (SearchsortedOp, searchsorted,
+-                                     CumOp, cumsum, cumprod,
+-                                     CpuContiguous, cpu_contiguous,
+-                                     bincount, DiffOp, diff, squeeze, compress,
+-                                     RepeatOp, repeat, Bartlett, bartlett,
+-                                     FillDiagonal, fill_diagonal,
+-                                     FillDiagonalOffset, fill_diagonal_offset,
+-                                     to_one_hot, Unique, unravel_index, UnravelIndex,
+-                                     ravel_multi_index, RavelMultiIndex)
++from theano import config, function
++from theano import tensor
+ from theano import tensor as T
+-from theano import config, tensor, function
+-from theano.tests.unittest_tools import attr
++from theano.tensor.extra_ops import (Bartlett, CpuContiguous, CumOp, DiffOp,
++                                     FillDiagonal, FillDiagonalOffset,
++                                     RavelMultiIndex, RepeatOp, SearchsortedOp,
++                                     Unique, UnravelIndex, bartlett, bincount,
++                                     compress, cpu_contiguous, cumprod, cumsum,
++                                     diff, fill_diagonal, fill_diagonal_offset,
++                                     ravel_multi_index, repeat, searchsorted,
++                                     squeeze, to_one_hot, unravel_index)
++from theano.tests import unittest_tools as utt
+ 
+ 
+ def test_cpu_contiguous():
+@@ -436,7 +437,7 @@ class TestRepeatOp(utt.InferShapeTester)
+                         assert not np.any([isinstance(n.op, RepeatOp)
+                                            for n in f.maker.fgraph.toposort()])
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape(self):
+         for ndim in [1, 3]:
+             x = T.TensorType(config.floatX, [False] * ndim)()
+@@ -550,7 +551,7 @@ class TestFillDiagonal(utt.InferShapeTes
+         assert out[2, 2, 2] == val
+         assert (out == val).sum() == min(a.shape)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_gradient(self):
+         utt.verify_grad(fill_diagonal, [np.random.rand(5, 8),
+                                         np.random.rand()],
+@@ -798,7 +799,7 @@ class test_Unique_axis(utt.InferShapeTes
+ 
+     def test_basic_vector(self):
+         if not self.expect_success:
+-            raise utt.SkipTest('Requires numpy >= 1.13')
++            raise SkipTest('Requires numpy >= 1.13')
+         # Basic test for a vector.
+         # Done by using the op and checking that it returns the right
+         # answer.
+@@ -820,7 +821,7 @@ class test_Unique_axis(utt.InferShapeTes
+ 
+     def test_basic_matrix(self):
+         if not self.expect_success:
+-            raise utt.SkipTest('Requires numpy >= 1.13')
++            raise SkipTest('Requires numpy >= 1.13')
+         # Basic test for a matrix.
+         # Done by using the op and checking that it returns the right
+         # answer.
+@@ -842,7 +843,7 @@ class test_Unique_axis(utt.InferShapeTes
+ 
+     def test_infer_shape_vector(self):
+         if not self.expect_success:
+-            raise utt.SkipTest('Requires numpy >= 1.13')
++            raise SkipTest('Requires numpy >= 1.13')
+         # Testing the infer_shape with a vector.
+ 
+         x = theano.tensor.vector()
+@@ -864,7 +865,7 @@ class test_Unique_axis(utt.InferShapeTes
+ 
+     def test_infer_shape_matrix(self):
+         if not self.expect_success:
+-            raise utt.SkipTest('Requires numpy >= 1.13')
++            raise SkipTest('Requires numpy >= 1.13')
+         # Testing the infer_shape with a matrix.
+ 
+         x = theano.tensor.matrix()
+--- a/theano/tensor/tests/test_keepdims.py
++++ b/theano/tensor/tests/test_keepdims.py
+@@ -1,12 +1,12 @@
+ from __future__ import absolute_import, print_function, division
+ import unittest
++import pytest
+ 
+ import numpy as np
+ from six import integer_types
+ 
+ import theano
+ from theano import tensor, function
+-from theano.tests.unittest_tools import attr
+ 
+ 
+ # this tests other ops to ensure they keep the dimensions of their
+@@ -38,7 +38,7 @@ class TestKeepDims(unittest.TestCase):
+ 
+         return tensor.DimShuffle(y.type.broadcastable, new_dims)(y)
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_keepdims(self):
+ 
+         x = tensor.dtensor3()
+--- a/theano/tensor/tests/test_subtensor.py
++++ b/theano/tensor/tests/test_subtensor.py
+@@ -4,8 +4,8 @@ import logging
+ import sys
+ import unittest
+ 
++import pytest
+ import numpy as np
+-from nose.tools import assert_equal
+ from numpy.testing import assert_array_equal
+ from six import StringIO
+ from six.moves import xrange
+@@ -33,7 +33,6 @@ from theano.tensor.subtensor import (Adv
+ 
+ from theano.tensor.tests.test_basic import inplace_func, rand, randint_ranged
+ from theano.tests import unittest_tools as utt
+-from theano.tests.unittest_tools import attr
+ from theano import change_flags
+ 
+ if PY3:
+@@ -116,7 +115,7 @@ class T_subtensor(unittest.TestCase, utt
+         topo = f.maker.fgraph.toposort()
+         topo_ = [node for node in topo if not isinstance(node.op,
+                                                          self.ignore_topo)]
+-        assert_equal(len(topo_), length)
++        assert len(topo_) == length
+         if length == 1:
+             assert isinstance(topo_[0].op, op_type)
+         tval = f()
+@@ -354,8 +353,8 @@ class T_subtensor(unittest.TestCase, utt
+             tval = self.eval_output_and_check(t,
+                                               op_type=op_type_opt,
+                                               length=length)
+-            assert_equal(tval.shape, numpy_tval.shape)
+-            assert_array_equal(tval, numpy_tval)
++            assert tval.shape == numpy_tval.shape
++            assert tval == numpy_tval
+ 
+     def test_boolean(self):
+         def numpy_inc_subtensor(x, idx, a):
+@@ -559,7 +558,7 @@ class T_subtensor(unittest.TestCase, utt
+         topo_ = [node for node in topo
+                  if not isinstance(node.op, self.ignore_topo)]
+         if not self.fast_compile:
+-            assert_equal(len(topo_), 6)
++            assert len(topo_) == 6
+         assert np.sum([isinstance(node.op, self.inc_sub)
+                        for node in topo_]) == 1
+         assert np.sum([isinstance(node.op, self.sub)
+@@ -753,7 +752,7 @@ class T_subtensor(unittest.TestCase, utt
+         self.assertTrue(np.allclose(g_0[0], 1))
+         self.assertTrue(np.allclose(g_0[1:], 0))
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_shape_i_const(self):
+         # Each axis is treated independently by shape_i/shape operators
+ 
+@@ -1011,7 +1010,7 @@ class T_subtensor(unittest.TestCase, utt
+         except TypeError:
+             pass
+ 
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_grad_list(self):
+         data = rand(4)
+         data = np.asarray(data, dtype=self.dtype)
+@@ -1804,7 +1803,7 @@ class TestAdvancedSubtensor(unittest.Tes
+ 
+ 
+ class TestInferShape(utt.InferShapeTester):
+-    @attr('slow')
++    @pytest.mark.slow
+     def test_infer_shape(self):
+         # IncSubtensor
+         admat = dmatrix()
+--- a/theano/tests/test_rop.py
++++ b/theano/tests/test_rop.py
+@@ -10,19 +10,20 @@ For function to automatically test your
+ the docstring of the functions: check_mat_rop_lop, check_rop_lop,
+ check_nondiff_rop,
+ """
+-from __future__ import absolute_import, print_function, division
+-import unittest
+-from theano.tests import unittest_tools as utt
+-from theano import function
+-import theano
+-from theano import tensor
++from __future__ import absolute_import, division, print_function
++
+ import itertools
++from unittest import SkipTest, TestCase
++
+ import numpy as np
+-from theano.gof import Op, Apply
++
++import theano
++from theano import function, tensor
++from theano.gof import Apply, Op
+ from theano.gradient import grad_undefined
+-from theano.tests.unittest_tools import SkipTest
+-from theano.tensor.signal.pool import Pool
+ from theano.tensor.nnet import conv, conv2d
++from theano.tensor.signal.pool import Pool
++from theano.tests import unittest_tools as utt
+ 
+ '''
+ Special Op created to test what happens when you have one op that is not
+@@ -50,14 +51,16 @@ class BreakRop(Op):
+     def R_op(self, inputs, eval_points):
+         return [None]
+ 
++
+ break_op = BreakRop()
+ 
+ 
+-class RopLop_checker(unittest.TestCase):
++class RopLop_checker(TestCase):
+     """
+     Don't peform any test, but provide the function to test the
+     Rop to class that inherit from it.
+     """
++
+     def setUp(self):
+         utt.seed_rng()
+         # Using vectors make things a lot simpler for generating the same
+@@ -187,7 +190,7 @@ class RopLop_checker(unittest.TestCase):
+ 
+         if known_fail:
+             raise SkipTest('Rop does not handle non-differentiable inputs '
+-                           'correctly. Bug exposed by fixing Add.grad method.')
++                                    'correctly. Bug exposed by fixing Add.grad method.')
+ 
+ 
+ class test_RopLop(RopLop_checker):
+--- a/theano/compile/tests/test_function_module.py
++++ b/theano/compile/tests/test_function_module.py
+@@ -1,23 +1,21 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ import copy
+-import six.moves.cPickle as pickle
+-import numpy as np
+-import unittest
+ import time
++import unittest
+ 
+-
+-from theano import config, gof
++import numpy as np
++import six.moves.cPickle as pickle
+ from six import iteritems
+-from theano.compile.io import In, Out
+-from theano.compile import function
+-from theano.compile import UnusedInputError
+-from theano.gof import MissingInputError
+-from theano.compat import exc_message
+-from theano.tests.unittest_tools import SkipTest
+ 
++import theano
++from theano import config, gof
+ from theano import tensor
+ from theano import tensor as T
+-import theano
++from theano.compat import exc_message
++from theano.compile import UnusedInputError, function
++from theano.compile.io import In, Out
++from theano.gof import MissingInputError
+ 
+ 
+ def PatternOptimizer(p1, p2, ign=True):
+@@ -43,8 +41,8 @@ class T_function(unittest.TestCase):
+         fn = function([], None)  # ok
+         rval = fn()
+         if rval == []:
+-            raise SkipTest("See #254: Using None as function output leads "
+-                           "to [] return value")
++            raise unittest.SkipTest("See #254: Using None as function output leads "
++                                    "to [] return value")
+         else:
+             assert rval is None
+ 
+@@ -980,8 +978,8 @@ def test_sync_update():
+     import theano.gpuarray.tests.config
+ 
+     if theano.config.mode == 'DEBUG_MODE':
+-        raise SkipTest("DEBUG_MODE forces synchronous behaviour "
+-                       "which breaks this test")
++        raise unittest.SkipTest("DEBUG_MODE forces synchronous behaviour "
++                                "which breaks this test")
+ 
+     if theano.gpuarray.pygpu_activated:
+         sizes = [100, 500, 1000, 2000, 5000, 10000, 20000, 40000]
+@@ -1039,7 +1037,7 @@ def test_sync_update():
+         d2 = (t_2 - t_1)
+         assert d1 > d2, (d1, d2)
+     else:
+-        raise SkipTest("Sync is only available when pygpu is activated.")
++        raise unittest.SkipTest("Sync is only available when pygpu is activated.")
+ 
+ 
+ if __name__ == '__main__':
+--- a/theano/gpuarray/tests/test_elemwise.py
++++ b/theano/gpuarray/tests/test_elemwise.py
+@@ -1,25 +1,23 @@
+-from __future__ import absolute_import, print_function, division
++from __future__ import absolute_import, division, print_function
++
+ from copy import copy
+-from unittest import TestCase
++from unittest import SkipTest, TestCase
+ 
+ import numpy as np
++from pygpu import ndgpuarray as gpuarray
+ 
+ import theano
+-from theano import scalar, gof, tensor
++from theano import gof, scalar, tensor
+ from theano.compile import DebugMode, Mode
+-from theano.tests.unittest_tools import SkipTest, assert_allclose
+-
+ from theano.tensor.tests import test_elemwise
++from theano.tests.unittest_tools import assert_allclose
+ 
+-from .config import mode_with_gpu, mode_without_gpu, test_ctx_name
+-from .test_basic_ops import rand_gpuarray
+-from ..elemwise import (GpuElemwise, GpuDimShuffle,
+-                        GpuCAReduceCuda, GpuCAReduceCPY, GpuErfinv, GpuErfcinv)
+ from ..dnn import GpuDnnReduction
++from ..elemwise import (GpuCAReduceCPY, GpuCAReduceCuda, GpuDimShuffle,
++                        GpuElemwise, GpuErfcinv, GpuErfinv)
+ from ..type import GpuArrayType, get_context, gpuarray_shared_constructor
+-
+-
+-from pygpu import ndgpuarray as gpuarray
++from .config import mode_with_gpu, mode_without_gpu, test_ctx_name
++from .test_basic_ops import rand_gpuarray
+ 
+ imported_scipy_special = False
+ try:
+--- a/theano/gpuarray/tests/test_extra_ops.py
++++ b/theano/gpuarray/tests/test_extra_ops.py
+@@ -1,6 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+ from functools import partial
+ from itertools import product
++from unittest import SkipTest
+ 
+ import numpy as np
+ from six.moves import xrange
+@@ -10,7 +11,6 @@ import theano
+ import theano.tensor.tests.test_extra_ops
+ 
+ from theano.tensor.extra_ops import CumOp
+-from theano.tests.unittest_tools import SkipTest
+ from theano.tests import unittest_tools as utt
+ 
+ from .config import mode_with_gpu, test_ctx_name
+--- a/theano/gpuarray/tests/test_reduction.py
++++ b/theano/gpuarray/tests/test_reduction.py
+@@ -1,19 +1,19 @@
+-from __future__ import print_function, absolute_import, division
+-from unittest import TestCase
++from __future__ import absolute_import, division, print_function
++
++import math
++from unittest import SkipTest, TestCase
++
+ import numpy as np
+ 
+ import theano
+ import theano.tensor as T
+ from theano.tests import unittest_tools as utt
+-from theano.tests.unittest_tools import SkipTest
+ 
+-from .config import mode_with_gpu, mode_without_gpu
+-from .test_basic_ops import rand_gpuarray
+ from .. import GpuArrayType
+-from ..reduction import GpuMaxAndArgmax
+ from ..dnn import GpuDnnReduction
+-
+-import math
++from ..reduction import GpuMaxAndArgmax
++from .config import mode_with_gpu, mode_without_gpu
++from .test_basic_ops import rand_gpuarray
+ 
+ # Number of values to be used in test tensors (except with 0-D tensors!).
+ test_size = 10000
+--- a/theano/scan_module/tests/test_scan_checkpoints.py
++++ b/theano/scan_module/tests/test_scan_checkpoints.py
+@@ -1,7 +1,7 @@
+ from __future__ import absolute_import, print_function, division
+ 
+ import numpy as np
+-import unittest
++from unittest import SkipTest, TestCase, skipUnless
+ 
+ import theano
+ import theano.tensor as T
+@@ -13,7 +13,7 @@ except ImportError:
+     PYGPU_AVAILABLE = False
+ 
+ 
+-class TestScanCheckpoint(unittest.TestCase):
++class TestScanCheckpoint(TestCase):
+ 
+     def setUp(self):
+         self.k = T.iscalar("k")
+@@ -48,11 +48,11 @@ class TestScanCheckpoint(unittest.TestCa
+         out, out_check = f(range(10), 101)
+         assert np.allclose(out, out_check)
+ 
+-    @unittest.skipUnless(PYGPU_AVAILABLE, 'Requires pygpu.')
++    @skipUnless(PYGPU_AVAILABLE, 'Requires pygpu.')
+     def test_memory(self):
+         # Test that scan_checkpoint reduces memory usage.
+         if None not in theano.gpuarray.type.list_contexts():
+-            return unittest.SkipTest('Requires gpuarray backend.')
++            return SkipTest('Requires gpuarray backend.')
+         from theano.gpuarray.tests.config import mode_with_gpu  # noqa
+         f = theano.function(inputs=[self.A, self.k],
+                             outputs=self.grad_A, mode=mode_with_gpu)
+--- a/theano/tensor/tests/test_blas_scipy.py
++++ b/theano/tensor/tests/test_blas_scipy.py
+@@ -1,13 +1,16 @@
+-from __future__ import absolute_import, print_function, division
+-import sys
++from __future__ import absolute_import, division, print_function
++
++from unittest import TestCase
++
+ import numpy as np
++
+ import theano
+ import theano.tensor as tensor
+ from theano.tensor.blas_scipy import ScipyGer
+-
+-from .test_blas import TestCase, gemm_no_inplace, TestBlasStrides
+ from theano.tests.unittest_tools import TestOptimizationMixin
+ 
++from .test_blas import TestBlasStrides, gemm_no_inplace
++
+ 
+ class TestScipyGer(TestCase, TestOptimizationMixin):
+ 

@@ -51,4 +51,15 @@
     <comment></comment>
     <requestid>824191</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4e37d0b0d319f6e6762962dda6effbf1</srcmd5>
+    <version>1.0.5</version>
+    <time>1603875707</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches remove_nose.patch and remove_warnings.patch to port the
+  test suite from nose to pytest (and unittest), and to clean up some
+  deprecation warnings (gh#Theano/Theano#6764).
+</comment>
+    <requestid>844472</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,86 @@
+---
+ theano/gpuarray/fft.py           |    4 ++--
+ theano/printing.py               |    2 +-
+ theano/tensor/nnet/neighbours.py |    2 +-
+ theano/tensor/slinalg.py         |    2 +-
+ theano/tests/breakpoint.py       |   10 +++-------
+ 5 files changed, 8 insertions(+), 12 deletions(-)
+
+--- a/theano/tests/breakpoint.py
++++ b/theano/tests/breakpoint.py
+@@ -1,6 +1,6 @@
+ from __future__ import absolute_import, print_function, division
+ import numpy as np
+-import imp
++import sys
+ 
+ import theano
+ from theano.gof import Op, Apply
+@@ -118,12 +118,8 @@ class PdbBreakpoint(Op):
+             print("resumes, the updated values will be used.")
+             print("-------------------------------------------------")
+ 
+-            if imp.find_module('pudb'):
+-                import pudb
+-                pudb.set_trace()
+-            elif imp.find_module('ipdb'):
+-                import ipdb
+-                ipdb.set_trace()
++            if sys.version[:2] >= (3, 7):
++                breakpoint()
+             else:
+                 import pdb
+                 pdb.set_trace()
+--- a/theano/gpuarray/fft.py
++++ b/theano/gpuarray/fft.py
+@@ -302,7 +302,7 @@ def curfft(inp, norm=None):
+     norm : {None, 'ortho', 'no_norm'}
+         Normalization of transform. Following numpy, default *None* normalizes
+         only the inverse transform by n, 'ortho' yields the unitary transform
+-        (:math:`1/\sqrt n` forward and inverse). In addition, 'no_norm' leaves
++        (:math:`1/\\sqrt n` forward and inverse). In addition, 'no_norm' leaves
+         the transform unnormalized.
+ 
+     """
+@@ -337,7 +337,7 @@ def cuirfft(inp, norm=None, is_odd=False
+     norm : {None, 'ortho', 'no_norm'}
+         Normalization of transform. Following numpy, default *None* normalizes
+         only the inverse transform by n, 'ortho' yields the unitary transform
+-        (:math:`1/\sqrt n` forward and inverse). In addition, 'no_norm' leaves
++        (:math:`1/\\sqrt n` forward and inverse). In addition, 'no_norm' leaves
+         the transform unnormalized.
+     is_odd : {True, False}
+         Set to True to get a real inverse transform output with an odd last dimension
+--- a/theano/printing.py
++++ b/theano/printing.py
+@@ -1265,7 +1265,7 @@ def hex_digest(x):
+     Returns a short, mostly hexadecimal hash of a numpy ndarray
+     """
+     assert isinstance(x, np.ndarray)
+-    rval = hashlib.sha256(x.tostring()).hexdigest()
++    rval = hashlib.sha256(x.tobytes()).hexdigest()
+     # hex digest must be annotated with strides to avoid collisions
+     # because the buffer interface only exposes the raw data, not
+     # any info about the semantics of how that data should be arranged
+--- a/theano/tensor/nnet/neighbours.py
++++ b/theano/tensor/nnet/neighbours.py
+@@ -687,7 +687,7 @@ def images2neibs(ten4, neib_shape, neib_
+     .. note::
+         Currently the step size should be chosen in the way that the
+         corresponding dimension :math:`i` (width or height) is equal
+-        to :math:`n * step\_size_i + neib\_shape_i` for some :math:`n`.
++        to :math:`n * step\\_size_i + neib\\_shape_i` for some :math:`n`.
+ 
+     Examples
+     --------
+--- a/theano/tensor/slinalg.py
++++ b/theano/tensor/slinalg.py
+@@ -267,7 +267,7 @@ class Solve(Op):
+ 
+     def L_op(self, inputs, outputs, output_gradients):
+         """
+-        Reverse-mode gradient updates for matrix solve operation c = A \\\ b.
++        Reverse-mode gradient updates for matrix solve operation c = A \\ b.
+ 
+         Symbolic expression for updates taken from [#]_.
+ 

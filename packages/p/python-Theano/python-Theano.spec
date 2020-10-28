@@ -34,6 +34,12 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/Theano/Theano
 Source:         https://files.pythonhosted.org/packages/source/T/Theano/Theano-%{version}.tar.gz
 Source1:        python-Theano.rpmlintrc
+# PATCH-FIX-UPSTREAM remove_warnings.patch gh#Theano/Theano#6764 mcepl@suse.com
+# Remove various deprecations
+Patch0:         remove_warnings.patch
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#Theano/Theano#6764 mcepl@suse.com
+# port the test suite from nose to pytest
+Patch1:         remove_nose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -52,10 +58,10 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %endif
 %if %{with test}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy >= 1.9.1}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.14}
 BuildRequires:  %{python_module six >= 1.9.0}
 %endif
@@ -78,6 +84,14 @@ Theano features:
 
 %prep
 %setup -q -n Theano-%{version}
+%autopatch -p1
+
+for script in theano/gpuarray/tests/check_dnn_conv.py \
+    theano/misc/buildbot_filter.py theano/gpuarray/tests/check_dnn_conv.py \
+    theano/misc/check_*.py theano/tests/run_tests_in_batch.py
+    do
+        sed -i -e '1s@/usr/bin/env python@/usr/bin/python@' "$script"
+    done
 
 %build
 %python_build
@@ -85,7 +99,6 @@ Theano features:
 %install
 %if !%{with test}
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/theano-nose
 %python_clone -a %{buildroot}%{_bindir}/theano-cache
 
 # remove binaries and stuff thats not supposed to end up on system
@@ -103,23 +116,20 @@ Theano features:
 %if %{with test}
 # https://github.com/Theano/Theano/issues/6719
 rm theano/tensor/tests/test_var.py
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} nosetests-%{$python_bin_suffix} theano/tests -v -e '(test_scan_err1|test_remove0|test_csm_unsorted|test_good|test_vector_arguments|test_vector_arguments)'
+%pytest -k 'not (test_scan_err1 or test_remove0 or test_csm_unsorted or test_good or test_vector_arguments or test_vector_arguments)' theano/tests 
 %endif
 
 %if !%{with test}
 %post
-%python_install_alternative theano-nose
 %python_install_alternative theano-cache
 
 %postun
-%python_uninstall_alternative theano-nose
 %python_uninstall_alternative theano-cache
 
 %files %{python_files}
 %doc DESCRIPTION.txt EMAIL.txt HISTORY.txt NEWS.txt README.rst
 %license doc/LICENSE.txt
 %python_alternative %{_bindir}/theano-cache
-%python_alternative %{_bindir}/theano-nose
 %{python_sitelib}/theano
 %{python_sitelib}/Theano-%{version}-*.egg-info
 %endif
