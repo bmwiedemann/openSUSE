@@ -1,0 +1,630 @@
+From b37ff1f5af380f705b17a250c2a762e2fdf8e032 Mon Sep 17 00:00:00 2001
+From: Harald Welte <laforge@osmocom.org>
+Date: Sat, 24 Oct 2020 13:29:36 +0200
+Subject: [PATCH 1/3] port to Python 3.  Python 2 was EOL since January 1st,
+ 2020
+
+---
+ cp210x-program      | 20 ++++++++++----------
+ cp210x/cp210x.py    | 11 ++++++-----
+ cp210x/eeprom.py    | 10 +++++-----
+ cp210x/valuefile.py | 14 +++++++-------
+ 4 files changed, 28 insertions(+), 27 deletions(-)
+
+diff --git a/cp210x-program b/cp210x-program
+index 3a1209c..1d5071d 100755
+--- a/cp210x-program
++++ b/cp210x-program
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ # Copyright (c) 2007 Johannes Hölzl <johannes.hoelzl@gmx.de>
+ #
+@@ -20,7 +20,7 @@ import optparse
+ from cp210x import valuefile, cp210x
+ from cp210x.eeprom import EEPROM, HexFileError
+ from cp210x.valuefile import read_baudrate_info, update_values, ValuesFileError
+-TRANS_UNDERSCORE = string.maketrans('_', '-')
++TRANS_UNDERSCORE = str.maketrans('_', '-')
+     
+ ERR_OK = 0
+ ERR_WRONG_INPUT = -1
+@@ -37,14 +37,14 @@ def error(message, retval=-1):
+ class Option(optparse.Option):
+     TYPES = list(optparse.Option.TYPES)
+     TYPE_CHECKER = dict(optparse.Option.TYPE_CHECKER)
+-    for type, (reader, _) in valuefile.TYPES.items():
++    for type, (reader, _) in list(valuefile.TYPES.items()):
+         if type in TYPES:
+             continue
+         TYPES.append(type)
+         def checker(self, name, value, reader=reader):
+             try:
+                 return reader(value)
+-            except ValueError, err:
++            except ValueError as err:
+                 raise optparse.OptionValueError("option %s: %s" % (name,
+                                                                    str(err)))
+         TYPE_CHECKER[type] = checker
+@@ -90,7 +90,7 @@ def options_to_values(options):
+             try:
+                 baudrate_table.append(read_baudrate_info(info) + 
+                                       (int(baudrate), ))
+-            except ValueError, err:
++            except ValueError as err:
+                 error("option --set-baudrate: %s" % str(err), 
+                       ERR_WRONG_INPUT)
+             
+@@ -242,19 +242,19 @@ if __name__ == '__main__':
+         error("Can not write data to device. Device is locked.", 
+               ERR_DEVICE_LOCKED)
+ 
+-    except cp210x.Cp210xError, err:
++    except cp210x.Cp210xError as err:
+         error(str(err), ERR_DEVICE_ERROR)
+ 
+-    except IOError, err:
++    except IOError as err:
+         error(str(err), ERR_OTHER)
+ 
+-    except HexFileError, err:
++    except HexFileError as err:
+         error(str(err), ERR_OTHER)
+         
+-    except ValuesFileError, err:
++    except ValuesFileError as err:
+         error(str(err), ERR_OTHER)
+ 
+-    except SystemExit, err:
++    except SystemExit as err:
+         raise
+ 
+     except:
+diff --git a/cp210x/cp210x.py b/cp210x/cp210x.py
+index 4036baf..bbddccf 100644
+--- a/cp210x/cp210x.py
++++ b/cp210x/cp210x.py
+@@ -73,7 +73,8 @@ def to_bcd(i):
+     assert i >= 0 and i <= 99
+     return (i // 10) << 4 | (i % 10)
+ 
+-def to_bcd2( (i, j) ):
++def to_bcd2(i_j_tuple):
++    (i, j) = i_j_tuple
+     return to_bcd(i) << 8 | to_bcd(j)
+ 
+ def from_bcd(num):
+@@ -87,7 +88,7 @@ def from_binary(data, le=True):
+     if le:
+         data = data[::-1]
+     for byte in data:
+-        value = value << 8 | ord(byte)
++        value = value << 8 | int(byte)
+     return value
+ 
+ def to_binary(value, size=2, le=True):
+@@ -122,7 +123,7 @@ def __init__(self, patterns):
+ 
+     def __call__(self, dev):
+         for pattern in self.patterns:
+-            for name, value in pattern.items():
++            for name, value in list(pattern.items()):
+                 if getattr(dev, name) != value:
+                     return False
+             return True
+@@ -209,7 +210,7 @@ def _set_config(self, value, index=0, data=None, request=CP210x_CONFIG):
+                               % (res, len(data)))
+ 
+     def _set_config_string(self, value, content, max_desc_size):
+-        assert isinstance(content, basestring)
++        assert isinstance(content, str)
+         encoded = content.encode('utf-16-le')
+         desc_size = len(encoded) + 2
+         assert desc_size <= max_desc_size
+@@ -352,7 +353,7 @@ def set_locked(self, locked):
+             self._set_config(REG_LOCK_VALUE, LCK_UNLOCKED)
+ 
+     def set_values(self, values):
+-        for name, value in values.items():
++        for name, value in list(values.items()):
+             if name not in ['part_number', 'vendor_string']:
+                 getattr(self, "set_" + name) (value)
+             
+diff --git a/cp210x/eeprom.py b/cp210x/eeprom.py
+index 22f9937..efc5c39 100644
+--- a/cp210x/eeprom.py
++++ b/cp210x/eeprom.py
+@@ -11,8 +11,8 @@ class EEPROM:
+     of a CP210x. Also provides access to single fields in the EEPROM.
+ """
+ 
+-import cp210x
+-from cp210x import from_binary, to_binary, VALUES
++from . import cp210x
++from .cp210x import from_binary, to_binary, VALUES
+ 
+ __all__ = ['EEPROM', 'HexFileError']
+ 
+@@ -29,7 +29,7 @@ class EEPROM:
+ POS_VENDOR_STRING   = 0x03C3
+ POS_LOCK_VALUE      = 0x03FF
+ 
+-class HexFileError(StandardError):
++class HexFileError(Exception):
+     pass
+ 
+ def checksum(line):
+@@ -46,7 +46,7 @@ def _str_value(position, max_desc_size):
+     def get(self):
+         desc_size = from_binary(self.get(position, 1))
+         assert desc_size <= max_desc_size and desc_size >= 2, "desc_size: %d, max: %d" % (desc_size, max_desc_size)
+-        assert self.get(position + 1, 1) == '\x03', "Missing 0x03 at %04X" % (position + 1)
++        assert self.get(position + 1, 1) == b'\x03', "Missing 0x03 at %04X" % (position + 1)
+         return self.get(position + 2, desc_size - 2).decode('utf-16-le')
+         
+     def set(self, value):
+@@ -184,7 +184,7 @@ def get_values(self):
+         return dict((name, getattr(self, name)) for name, type in VALUES)
+ 
+     def set_values(self, values):
+-        for name, value in values.items():
++        for name, value in list(values.items()):
+             setattr(self, name, value)
+ 
+             
+diff --git a/cp210x/valuefile.py b/cp210x/valuefile.py
+index ae665d2..aeaa8b6 100644
+--- a/cp210x/valuefile.py
++++ b/cp210x/valuefile.py
+@@ -9,15 +9,15 @@
+ # http://www.silabs.com/public/documents/tpub_doc/anote/Microcontrollers/Interface/en/an205.pdf
+ 
+ import re
+-from ConfigParser import ConfigParser
++from configparser import ConfigParser
+ 
+-import cp210x
+-from cp210x import VALUES, SIZE_BAUDRATES
++from . import cp210x
++from .cp210x import VALUES, SIZE_BAUDRATES
+ 
+ __all__ = ['read_file', 'write_file', 'update_values', 'PrescalerIsZero',
+            'ValuesFileError']
+ 
+-class ValuesError(StandardError):
++class ValuesError(Exception):
+     pass
+ 
+ class PrescalerIsZero(ValuesError):
+@@ -89,13 +89,13 @@ def read_file(fp):
+     values = {}
+     
+     for name, type in VALUES:
+-        if name is 'baudrate_table':
++        if name == 'baudrate_table':
+             continue
+         reader, _ = TYPES[type]
+         if cp.has_option('usb device', name):
+             try:
+                 values[name] = reader(cp.get('usb device', name))
+-            except ValueError, err:
++            except ValueError as err:
+                 raise ValuesFileError("Key '%s': %s" % (name, str(err)))
+     
+     if cp.has_section('baudrate table'):
+@@ -108,7 +108,7 @@ def read_file(fp):
+                                       " baudrate numbers.")
+             try:
+                 baudrate_table.append(read_baudrate_info(value) + (baudrate, ))
+-            except ValueError, err:
++            except ValueError as err:
+                 raise ValuesFileError("Wrong baudrate info %i: %s"
+                                       % (baudrate, str(err)))
+         baudrate_table.sort(key=(lambda i: i[3]), reverse=True)
+
+From cc7716cd66fa4cd2637ab31a7bbe42bb6028508a Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sat, 24 Oct 2020 21:53:10 +0200
+Subject: [PATCH 2/3] Fix -p option.
+
+---
+ cp210x-program   |  4 ++--
+ cp210x/cp210x.py |  8 ++++----
+ cp210x/eeprom.py | 18 +++++++++---------
+ 3 files changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/cp210x-program b/cp210x-program
+index 1d5071d..cef399b 100755
+--- a/cp210x-program
++++ b/cp210x-program
+@@ -62,13 +62,13 @@ def input_file(arg):
+     if arg is None or arg == '-':
+         return sys.stdin
+     else:
+-        return file(arg, 'rb')
++        return open(arg, 'r')
+ 
+ def output_file(arg):
+     if arg is None or arg == '-':
+         return sys.stdout
+     else:
+-        return file(arg, 'wb')
++        return open(arg, 'w')
+ 
+ def options_to_values(options):
+     values = {}
+diff --git a/cp210x/cp210x.py b/cp210x/cp210x.py
+index bbddccf..b8d57ae 100644
+--- a/cp210x/cp210x.py
++++ b/cp210x/cp210x.py
+@@ -92,14 +92,14 @@ def from_binary(data, le=True):
+     return value
+ 
+ def to_binary(value, size=2, le=True):
+-    data = ''
++    data = []
+     for i in range(size):
+-        data += chr(value & 0xFF)
++        data.append(value & 0xFF)
+         value >>= 8
+     if le:
+-        return data
++        return bytes(data)
+     else:
+-        return data[::-1]
++        return bytes(data[::-1])
+     
+ def parse_baudrate_cfg(data):
+     return (from_binary(data[0:2], le=False), 
+diff --git a/cp210x/eeprom.py b/cp210x/eeprom.py
+index efc5c39..dd47190 100644
+--- a/cp210x/eeprom.py
++++ b/cp210x/eeprom.py
+@@ -33,7 +33,7 @@ class HexFileError(Exception):
+     pass
+ 
+ def checksum(line):
+-    return sum(ord(c) for c in line) & 0xFF
++    return sum((c) for c in line) & 0xFF
+ 
+ def _int_value(position, size, read=lambda x:x, write=lambda x:x):
+     def get(self):
+@@ -53,7 +53,7 @@ def set(self, value):
+         encoded = value.encode('utf-16-le')
+         desc_size = len(encoded) + 2
+         assert desc_size <= max_desc_size
+-        self.set(position, chr(desc_size) + '\x03' + encoded)
++        self.set(position, bytes([desc_size]) + b'\x03' + encoded)
+         
+     return property(get, set)
+ 
+@@ -72,14 +72,14 @@ def write_to_cp210x(self, cp210xDevice):
+         cp210xDevice.set_eeprom_content(self.content)
+             
+     def parse_hex_file(self, hex_content):
+-        self.content = ''
++        self.content = b''
+         address = self.START_ADDRESS
+         for tag in hex_content.split('\n'):
+             if not tag.startswith(':'):
+                 raise HexFileError("Line doesn't start with ':'")
+             
+             try:
+-                content = tag[1:].decode('hex')
++                content = bytes.fromhex(tag[1:])
+             except TypeError:
+                 raise HexFileError("Hex data expected")
+             
+@@ -89,7 +89,7 @@ def parse_hex_file(self, hex_content):
+             if checksum(content) != 0:
+                 raise HexFileError("Checksum error")
+         
+-            size = from_binary(content[0])
++            size = from_binary(content[0:1])
+             tag_address = from_binary(content[1:3], le=False)
+             tag_type = from_binary(content[3:4])
+             line = content[4:-1]
+@@ -114,14 +114,14 @@ def build_hex_file(self):
+             address = self.START_ADDRESS + tag_start
+             tag = (to_binary(len(line), 1) + 
+                    to_binary(address, le=False) + 
+-                   '\x00' + 
++                   b'\x00' + 
+                    line)
+             cs = checksum(tag)
+             if cs == 0:
+-                tag += '\x00'
++                tag += b'\x00'
+             else:
+-                tag += chr(0x100 - cs)
+-            yield ":%s\n" % tag.encode('hex')
++                tag += bytes([0x100 - cs])
++            yield ":%s\n" % tag.hex()
+         yield ":00000001FF\n"
+ 
+     def write_hex_file(self, f):
+
+From 85f4118b32f63b2992fb5db597181f2f2cff0a37 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Sun, 25 Oct 2020 10:07:50 +0100
+Subject: [PATCH 3/3] Add basic test.
+
+---
+ test.sh                  | 15 ++++++++++
+ testdata/cp2102-opi.hex  | 65 ++++++++++++++++++++++++++++++++++++++++
+ testdata/cp2102-opi.ini  | 45 ++++++++++++++++++++++++++++
+ testdata/cp2102-orig.hex | 65 ++++++++++++++++++++++++++++++++++++++++
+ testdata/cp2102-orig.ini | 45 ++++++++++++++++++++++++++++
+ 5 files changed, 235 insertions(+)
+ create mode 100755 test.sh
+ create mode 100644 testdata/cp2102-opi.hex
+ create mode 100644 testdata/cp2102-opi.ini
+ create mode 100644 testdata/cp2102-orig.hex
+ create mode 100644 testdata/cp2102-orig.ini
+
+diff --git a/test.sh b/test.sh
+new file mode 100755
+index 0000000..2187a20
+--- /dev/null
++++ b/test.sh
+@@ -0,0 +1,15 @@
++#!/bin/sh -e
++./cp210x-program -p -F testdata/cp2102-orig.hex > test.out
++diff -us testdata/cp2102-orig.ini test.out
++./cp210x-program -p -F testdata/cp2102-orig.hex -i test.out
++diff -us testdata/cp2102-orig.ini test.out
++./cp210x-program -pc -F testdata/cp2102-orig.hex -f test.out
++diff -us testdata/cp2102-orig.hex test.out
++./cp210x-program -pc \
++  --set-product-string='Orange Pi Zero LTS 512' --set-serial-number='02c00142499c98f8' \
++  --set-vendor-string='Xunlong' --set-bus-powered=yes \
++  -F testdata/cp2102-orig.hex -i test.out.2 > test.out
++diff -us testdata/cp2102-opi.ini test.out.2
++diff -us testdata/cp2102-opi.hex test.out
++
++rm -vf test.out.2 test.out
+diff --git a/testdata/cp2102-opi.hex b/testdata/cp2102-opi.hex
+new file mode 100644
+index 0000000..1e0f3ac
+--- /dev/null
++++ b/testdata/cp2102-opi.hex
+@@ -0,0 +1,65 @@
++:10360000fff0fffa010060e31600fff0fffa01008f
++:1036100060e31600ffecfff80100804f1200ffe6a8
++:10362000fff6010000100e00ffd6fff0010000caf7
++:103630000800ffd0ffee010020a10700ffccffec47
++:10364000010000080700ffa2ffdc010000e8030002
++:10365000ffa0ffdc010090d00300ff98ffd901001c
++:1036600000840300ff64ffc5010000580200ff440e
++:10367000ffb9010000f40100ff30ffb2010000c2f9
++:103680000100fec8ff8b0100002c0100fe89ff73c2
++:10369000010000fa0000fe5fff63010000e100008e
++:1036a000fe53ff5f0100c0da0000fe2bff50010057
++:1036b00000c80000fd8fff15010000960000fcbf50
++:1036c000fec7010080700000fb1efe2b0100004bb6
++:1036d0000000fa24fe0c0100803e0000f97dfe0c83
++:1036e000010040380000f63cfe0c0100802500007f
++:1036f000f2fbfe0c0100201c0000ec78fe0c010027
++:10370000c0120000e890fe0c0100a00f0000d8f0ed
++:10371000fe0c010060090000cbebfe0c0100080765
++:103720000000b1e0fe0c0100b004000063c0fe0c1c
++:10373000010058020000b1e0fe0c04002c01000062
++:103740000000000000000000000000000000000079
++:103750000000000000000000000000000000000069
++:103760000000000000000000000000000000000059
++:103770000000000000000000000000000000000049
++:103780000000000000000000000000000000000039
++:103790000000000000000000000000000000000029
++:1037a0000000000000000000000000000000000019
++:1037b0000000000000000000000000000000000009
++:1037c00000000000000000000000000000000000f9
++:1037d00000000000000000000000000000000000e9
++:1037e00000000000000000000000000000000000d9
++:1037f00000000000000000000000000000000002c7
++:1038000004030904000000002e034f007200610051
++:103810006e006700650020005000690020005a001b
++:10382000650072006f0020004c005400530020001f
++:10383000350031003200640067006500200043005d
++:103840006f006e00740072006f006c006c00650009
++:1038500072000000000000000000000000000000f6
++:103860000000000000000000000000000000000058
++:103870000000000000000000000000000000000048
++:103880000000000000000000000000000000000038
++:103890000000000000000000000000000000000028
++:1038a0000000000000000000000000000000000018
++:1038b0000000000000000000000000000000000008
++:1038c00000000000000000000000000000000000f8
++:1038d00000000000000000000000000000000000e8
++:1038e00000000000000000000000000000000000d8
++:1038f00000000000000000000000000000000000c8
++:10390000000000000000002203300032006300309d
++:1039100000300031003400320034003900390063d7
++:103920000039003800660038000000000000000088
++:103930000000000000000000000000000000000087
++:103940000000000000000000000000000000000077
++:103950000000000000000000000000000000000067
++:103960000000000000000000000000000000000057
++:103970000000000000000000000000000000000047
++:1039800000000000000000021201100100000040d1
++:10399000c41060ea000101020301090220000101d4
++:1039a00000c0320904000002ff0000020705810286
++:1039b0004000000705010240000000000000000078
++:1039c0000000001003580075006e006c006f006e60
++:1039d00000670020004c00610062007300000000de
++:1039e00000000000000000000000000000000000d7
++:1039f000000000000000000000000000000000ffc8
++:00000001FF
+diff --git a/testdata/cp2102-opi.ini b/testdata/cp2102-opi.ini
+new file mode 100644
+index 0000000..71c7832
+--- /dev/null
++++ b/testdata/cp2102-opi.ini
+@@ -0,0 +1,45 @@
++[usb device]
++product_string = Orange Pi Zero LTS 512
++serial_number = 02c00142499c98f8
++vendor_id = 10C4
++product_id = EA60
++version = 1.00
++bus_powered = yes
++max_power = 100
++locked = no
++part_number = 2
++vendor_string = Xunlong
++
++[baudrate table]
++1500000 = FFF0, FFFA, 1 # 1500000 Baud, 12 us
++1500000 = FFF0, FFFA, 1 # 1500000 Baud, 12 us
++1200000 = FFEC, FFF8, 1 # 1200000 Baud, 16 us
++ 921600 = FFE6, FFF6, 1 #  923077 Baud, 20 us
++ 576000 = FFD6, FFF0, 1 #  571429 Baud, 32 us
++ 500000 = FFD0, FFEE, 1 #  500000 Baud, 36 us
++ 460800 = FFCC, FFEC, 1 #  461538 Baud, 40 us
++ 256000 = FFA2, FFDC, 1 #  255319 Baud, 72 us
++ 250000 = FFA0, FFDC, 1 #  250000 Baud, 72 us
++ 230400 = FF98, FFD9, 1 #  230769 Baud, 78 us
++ 153600 = FF64, FFC5, 1 #  153846 Baud, 118 us
++ 128000 = FF44, FFB9, 1 #  127660 Baud, 142 us
++ 115200 = FF30, FFB2, 1 #  115385 Baud, 156 us
++  76800 = FEC8, FF8B, 1 #   76923 Baud, 234 us
++  64000 = FE89, FF73, 1 #   64000 Baud, 282 us
++  57600 = FE5F, FF63, 1 #   57554 Baud, 314 us
++  56000 = FE53, FF5F, 1 #   55944 Baud, 322 us
++  51200 = FE2B, FF50, 1 #   51173 Baud, 352 us
++  38400 = FD8F, FF15, 1 #   38400 Baud, 470 us
++  28800 = FCBF, FEC7, 1 #   28812 Baud, 626 us
++  19200 = FB1E, FE2B, 1 #   19200 Baud, 938 us
++  16000 = FA24, FE0C, 1 #   16000 Baud, 1.000 ms
++  14400 = F97D, FE0C, 1 #   14397 Baud, 1.000 ms
++   9600 = F63C, FE0C, 1 #    9600 Baud, 1.000 ms
++   7200 = F2FB, FE0C, 1 #    7201 Baud, 1.000 ms
++   4800 = EC78, FE0C, 1 #    4800 Baud, 1.000 ms
++   4000 = E890, FE0C, 1 #    4000 Baud, 1.000 ms
++   2400 = D8F0, FE0C, 1 #    2400 Baud, 1.000 ms
++   1800 = CBEB, FE0C, 1 #    1800 Baud, 1.000 ms
++   1200 = B1E0, FE0C, 1 #    1200 Baud, 1.000 ms
++    600 = 63C0, FE0C, 1 #     600 Baud, 1.000 ms
++    300 = B1E0, FE0C, 4 #     300 Baud, 1.000 ms
+diff --git a/testdata/cp2102-orig.hex b/testdata/cp2102-orig.hex
+new file mode 100644
+index 0000000..08b5250
+--- /dev/null
++++ b/testdata/cp2102-orig.hex
+@@ -0,0 +1,65 @@
++:10360000fff0fffa010060e31600fff0fffa01008f
++:1036100060e31600ffecfff80100804f1200ffe6a8
++:10362000fff6010000100e00ffd6fff0010000caf7
++:103630000800ffd0ffee010020a10700ffccffec47
++:10364000010000080700ffa2ffdc010000e8030002
++:10365000ffa0ffdc010090d00300ff98ffd901001c
++:1036600000840300ff64ffc5010000580200ff440e
++:10367000ffb9010000f40100ff30ffb2010000c2f9
++:103680000100fec8ff8b0100002c0100fe89ff73c2
++:10369000010000fa0000fe5fff63010000e100008e
++:1036a000fe53ff5f0100c0da0000fe2bff50010057
++:1036b00000c80000fd8fff15010000960000fcbf50
++:1036c000fec7010080700000fb1efe2b0100004bb6
++:1036d0000000fa24fe0c0100803e0000f97dfe0c83
++:1036e000010040380000f63cfe0c0100802500007f
++:1036f000f2fbfe0c0100201c0000ec78fe0c010027
++:10370000c0120000e890fe0c0100a00f0000d8f0ed
++:10371000fe0c010060090000cbebfe0c0100080765
++:103720000000b1e0fe0c0100b004000063c0fe0c1c
++:10373000010058020000b1e0fe0c04002c01000062
++:103740000000000000000000000000000000000079
++:103750000000000000000000000000000000000069
++:103760000000000000000000000000000000000059
++:103770000000000000000000000000000000000049
++:103780000000000000000000000000000000000039
++:103790000000000000000000000000000000000029
++:1037a0000000000000000000000000000000000019
++:1037b0000000000000000000000000000000000009
++:1037c00000000000000000000000000000000000f9
++:1037d00000000000000000000000000000000000e9
++:1037e00000000000000000000000000000000000d9
++:1037f00000000000000000000000000000000002c7
++:1038000004030904000000004a0343005000320092
++:1038100031003000320020005500530042002000eb
++:1038200074006f0020005500410052005400200039
++:1038300042007200690064006700650020004300d8
++:103840006f006e00740072006f006c006c00650009
++:1038500072000000000000000000000000000000f6
++:103860000000000000000000000000000000000058
++:103870000000000000000000000000000000000048
++:103880000000000000000000000000000000000038
++:103890000000000000000000000000000000000028
++:1038a0000000000000000000000000000000000018
++:1038b0000000000000000000000000000000000008
++:1038c00000000000000000000000000000000000f8
++:1038d00000000000000000000000000000000000e8
++:1038e00000000000000000000000000000000000d8
++:1038f00000000000000000000000000000000000c8
++:10390000000000000000000a0330003000300031e9
++:1039100000000000000000000000000000000000a7
++:103920000000000000000000000000000000000097
++:103930000000000000000000000000000000000087
++:103940000000000000000000000000000000000077
++:103950000000000000000000000000000000000067
++:103960000000000000000000000000000000000057
++:103970000000000000000000000000000000000047
++:1039800000000000000000021201100100000040d1
++:10399000c41060ea000101020301090220000101d4
++:1039a0000080320904000002ff00000207058102c6
++:1039b0004000000705010240000000000000000078
++:1039c0000000001a03530069006c00690063006f77
++:1039d000006e0020004c00610062007300000000d7
++:1039e00000000000000000000000000000000000d7
++:1039f000000000000000000000000000000000ffc8
++:00000001FF
+diff --git a/testdata/cp2102-orig.ini b/testdata/cp2102-orig.ini
+new file mode 100644
+index 0000000..3e2fa6d
+--- /dev/null
++++ b/testdata/cp2102-orig.ini
+@@ -0,0 +1,45 @@
++[usb device]
++product_string = CP2102 USB to UART Bridge Controller
++serial_number = 0001
++vendor_id = 10C4
++product_id = EA60
++version = 1.00
++bus_powered = no
++max_power = 100
++locked = no
++part_number = 2
++vendor_string = Silicon Labs
++
++[baudrate table]
++1500000 = FFF0, FFFA, 1 # 1500000 Baud, 12 us
++1500000 = FFF0, FFFA, 1 # 1500000 Baud, 12 us
++1200000 = FFEC, FFF8, 1 # 1200000 Baud, 16 us
++ 921600 = FFE6, FFF6, 1 #  923077 Baud, 20 us
++ 576000 = FFD6, FFF0, 1 #  571429 Baud, 32 us
++ 500000 = FFD0, FFEE, 1 #  500000 Baud, 36 us
++ 460800 = FFCC, FFEC, 1 #  461538 Baud, 40 us
++ 256000 = FFA2, FFDC, 1 #  255319 Baud, 72 us
++ 250000 = FFA0, FFDC, 1 #  250000 Baud, 72 us
++ 230400 = FF98, FFD9, 1 #  230769 Baud, 78 us
++ 153600 = FF64, FFC5, 1 #  153846 Baud, 118 us
++ 128000 = FF44, FFB9, 1 #  127660 Baud, 142 us
++ 115200 = FF30, FFB2, 1 #  115385 Baud, 156 us
++  76800 = FEC8, FF8B, 1 #   76923 Baud, 234 us
++  64000 = FE89, FF73, 1 #   64000 Baud, 282 us
++  57600 = FE5F, FF63, 1 #   57554 Baud, 314 us
++  56000 = FE53, FF5F, 1 #   55944 Baud, 322 us
++  51200 = FE2B, FF50, 1 #   51173 Baud, 352 us
++  38400 = FD8F, FF15, 1 #   38400 Baud, 470 us
++  28800 = FCBF, FEC7, 1 #   28812 Baud, 626 us
++  19200 = FB1E, FE2B, 1 #   19200 Baud, 938 us
++  16000 = FA24, FE0C, 1 #   16000 Baud, 1.000 ms
++  14400 = F97D, FE0C, 1 #   14397 Baud, 1.000 ms
++   9600 = F63C, FE0C, 1 #    9600 Baud, 1.000 ms
++   7200 = F2FB, FE0C, 1 #    7201 Baud, 1.000 ms
++   4800 = EC78, FE0C, 1 #    4800 Baud, 1.000 ms
++   4000 = E890, FE0C, 1 #    4000 Baud, 1.000 ms
++   2400 = D8F0, FE0C, 1 #    2400 Baud, 1.000 ms
++   1800 = CBEB, FE0C, 1 #    1800 Baud, 1.000 ms
++   1200 = B1E0, FE0C, 1 #    1200 Baud, 1.000 ms
++    600 = 63C0, FE0C, 1 #     600 Baud, 1.000 ms
++    300 = B1E0, FE0C, 4 #     300 Baud, 1.000 ms

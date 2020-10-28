@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Sun Oct 25 10:11:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use updated patch for the python3 conversion
+  * https://github.com/VCTLabs/cp210x-program/pull/3.patch
+- Run testsuite
+
+-------------------------------------------------------------------
+Sat Oct 24 14:48:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.3
+- Add patches:
+  * 0001-docs-fix-example-of-reading-EEPROM.patch
+  * https://github.com/VCTLabs/cp210x-program/pull/2.patch
