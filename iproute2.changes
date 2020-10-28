@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 17 11:23:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9
+  * iplink: hsr: add support for creating PRP device similar to HSR
+- Drop 0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch
+  (merged)
+
+-------------------------------------------------------------------
 Wed Sep 23 21:57:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch

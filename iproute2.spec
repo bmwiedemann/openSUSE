@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -37,7 +37,6 @@ Patch2:         use-sysconf-_SC_CLK_TCK-if-HZ-undefined.patch
 Patch3:         add-explicit-typecast-to-avoid-gcc-warning.patch
 Patch4:         xfrm-support-displaying-transformations-used-for-Mob.patch
 Patch6:         split-link-and-compile-steps-for-binaries.patch
-Patch7:         0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -96,6 +95,7 @@ depending on type) of the kernel ARP cache.
 
 %prep
 %autosetup -p1
+
 find . -name *.orig -delete
 
 %build
