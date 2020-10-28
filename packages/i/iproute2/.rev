@@ -921,4 +921,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Add 0001-ip-add-error-reporting-when-RTM_GETNSID-failed.patch</comment>
     <requestid>836420</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>de7eebd90b628b3ce41172cce8863d89</srcmd5>
+    <version>5.9.0</version>
+    <time>1603875458</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843768</requestid>
+  </revision>
 </revisionlist>
