@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:02:40 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.12
+  + Add the DNF_SYSTEM_UPGRADE_NO_REBOOT env variable to control system-upgrade reboot.
+  + [system-upgrade] Upgrade groups and environments (rh#1845562, rh#1860408)
+
+-------------------------------------------------------------------
 Tue Jul  7 11:53:45 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.10

@@ -61,4 +61,14 @@
 - test package and test it with pytest (drop dependency on nose)</comment>
     <requestid>819225</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d64c08d26eb2c553fd8b05b44e4ffcc8</srcmd5>
+    <version>4.0.12</version>
+    <time>1603880768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.12
+  + Add the DNF_SYSTEM_UPGRADE_NO_REBOOT env variable to control system-upgrade reboot.
+  + [system-upgrade] Upgrade groups and environments (rh#1845562, rh#1860408)</comment>
+    <requestid>843805</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,7 @@
 %bcond_with tracer
 %bcond_without tests
 Name:           dnf-plugins-extras
-Version:        4.0.10
+Version:        4.0.12
 Release:        0
 Summary:        Extras Plugins for DNF
 License:        GPL-2.0-or-later
