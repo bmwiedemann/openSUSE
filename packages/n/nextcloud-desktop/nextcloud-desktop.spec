@@ -60,6 +60,8 @@ BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{soname}%{sover} = %{version}
+Requires:       libqt5-qtgraphicaleffects
+Requires:       libqt5-qtquickcontrols2
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}
