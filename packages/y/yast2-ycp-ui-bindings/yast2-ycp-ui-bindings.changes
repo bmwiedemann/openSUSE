@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 16:52:12 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added example for more in-depth MultiSelectionBox testing
+- 4.3.5
+
+-------------------------------------------------------------------
+Thu Oct 15 13:45:24 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added support for OpenItems property for (nested) tables (bsc#1176402)
+- 4.3.4
+
+-------------------------------------------------------------------
 Fri Oct  9 12:04:21 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Added Nested Tables (bsc#1176402)
