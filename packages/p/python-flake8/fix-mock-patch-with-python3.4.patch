@@ -5,7 +5,7 @@ In python 3.5, mock.patch uses create=True automatically if you are patching
 builtins in a module, but in python 3.4 the argument is still needed.
 --- a/tests/unit/test_debug.py
 +++ b/tests/unit/test_debug.py
-@@ -70,7 +70,7 @@ def test_information(system, pyversion,
+@@ -64,7 +64,7 @@ def test_information(system, pyversion,
      system.assert_called_once_with()
  
  
@@ -14,7 +14,7 @@ builtins in a module, but in python 3.4 the argument is still needed.
  @mock.patch('flake8.main.debug.information', return_value={})
  @mock.patch('json.dumps', return_value='{}')
  def test_print_information_no_plugins(dumps, information, print_mock):
-@@ -84,7 +84,7 @@ def test_print_information_no_plugins(du
+@@ -79,7 +79,7 @@ def test_print_information_no_plugins(du
      assert print_mock.called is False
  
  
@@ -25,7 +25,7 @@ builtins in a module, but in python 3.4 the argument is still needed.
  def test_print_information(dumps, information, print_mock):
 --- a/tests/unit/test_base_formatter.py
 +++ b/tests/unit/test_base_formatter.py
-@@ -23,7 +23,7 @@ def test_start(filename):
+@@ -20,7 +20,7 @@ def test_start(filename):
      """Verify we open a new file in the start method."""
      mock_open = mock.mock_open()
      formatter = base.BaseFormatter(options(output_file=filename))
@@ -34,7 +34,7 @@ builtins in a module, but in python 3.4 the argument is still needed.
          formatter.start()
  
      if filename is None:
-@@ -93,7 +93,7 @@ def test_write_uses_an_output_file(tee):
+@@ -100,7 +100,7 @@ def test_write_uses_an_output_file(tee):
      formatter = base.BaseFormatter(options(tee=tee))
      formatter.output_fd = filemock
  
@@ -43,7 +43,7 @@ builtins in a module, but in python 3.4 the argument is still needed.
          formatter.write(line, source)
          if tee:
              assert print_func.called
-@@ -112,7 +112,7 @@ def test_write_uses_an_output_file(tee):
+@@ -119,7 +119,7 @@ def test_write_uses_an_output_file(tee):
      ]
  
  

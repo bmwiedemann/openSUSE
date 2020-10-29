@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct 10 18:37:52 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update patch lines numbers
+  * removed pytest6.patch (included upstream)
+
+- update to version 3.8.4:
+  * Fix multiprocessing errors on platforms without sem_open syscall.
+    (See also GitLab!448)
+  * Fix skipping of physical checks on the last line of a file which
+    does not end in a newline (See also GitLab!451)
+
+-------------------------------------------------------------------
 Mon Aug 31 10:20:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with pytest 6:

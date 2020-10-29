@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.8.3
+Version:        3.8.4
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
 URL:            https://gitlab.com/pycqa/flake8
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
 Patch0:         fix-mock-patch-with-python3.4.patch
-Patch1:         pytest6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
