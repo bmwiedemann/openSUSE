@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 27 21:03:02 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 1.2.2:
+  * Update URLs and copyright year
+  * Add basic GitLab pipeline
+  * Fix compilation with gcc-10
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16156)
+  * s/http/https
+  * Fix build with panel 4.15
+  * Replace GtkStock buttons
+  * Rename applet to plugin (bxo#15582)
+  * Post release tag bump
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Jun  8 10:34:43 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - add -fcommon to CFLAGS as temporary work around for gcc10 default 
