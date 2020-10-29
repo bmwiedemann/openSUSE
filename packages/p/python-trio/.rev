@@ -79,4 +79,33 @@
     <comment></comment>
     <requestid>822413</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>77b69357d4989657fdbc929b219bb6fb</srcmd5>
+    <version>0.17.0</version>
+    <time>1603961249</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove hashbang and tests in runtime package
+- Disable test test_close_at_bad_time_for_send_all due to failure on PPC
+- Update to v0.17.0
+  * trio.open_tcp_stream has a new local_address= keyword argument
+    that can be used on machines with multiple IP addresses to
+    control which IP is used for the outgoing connection
+  * If you pass a raw IP address into sendto, it no longer spends
+    any time trying to resolve the hostname. If you're using UDP,
+    this should substantially reduce your per-packet overhead
+  * trio.lowlevel.checkpoint is now much faster
+  * new, lower-overhead data structure to track upcoming timeouts,
+    which should make your programs faster
+  * Trio can now be imported when sys.excepthook is a functools.partial
+    instance, which might occur in a pytest-qt test function
+  * The thread cache didn't release its reference to the previous job
+  * Remove wait_socket_*, notify_socket_closing, notify_fd_closing,
+    run_sync_in_worker_thread and current_default_worker_thread_limiter
+  * When using &quot;instruments&quot;, you now only &quot;pay for what you use&quot;:
+    if there are no instruments installed that override a particular
+    hook such as `abc.Instrument.before_task_step`, then Trio doesn't
+    waste any effort on checking its instruments when the event
+    corresponding to that hook occurs.</comment>
+    <requestid>841142</requestid>
+  </revision>
 </revisionlist>

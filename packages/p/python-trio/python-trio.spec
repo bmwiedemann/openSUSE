@@ -19,9 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
-Summary:        An async/await-native I/O library
+Summary:        Python async/await-native I/O library
 License:        MIT OR Apache-2.0
 URL:            https://github.com/python-trio/trio
 Source:         https://github.com/python-trio/trio/archive/v%{version}.tar.gz#/trio-%{version}.tar.gz
@@ -69,19 +69,23 @@ has an obsessive focus on usability and correctness.
 
 %prep
 %setup -q -n trio-%{version}
+sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/trio/tests/
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 # test_static_tool_sees_all_symbols uses jedi/pylint for static analysis,
 #   pointless for us.
 # test_SSLStream_generic deadlocks in OBS
-%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic)'
+# test_close_at_bad_time_for_send_all fails on PPC https://github.com/python-trio/trio/issues/1753
+%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all)'
 
 %files %{python_files}
 %doc README.rst
