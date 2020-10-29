@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:10:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to eliminate nose dependency. The patch
+  is not very good, it still skips plenty of yield tests (which
+  were ignored even before, so it is not even a regression).
+
+-------------------------------------------------------------------
 Fri Aug 14 03:29:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate testing with pytest runner

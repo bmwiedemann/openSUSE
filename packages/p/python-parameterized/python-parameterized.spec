@@ -27,14 +27,15 @@ Source:         https://files.pythonhosted.org/packages/source/p/parameterized/p
 # PATCH-FIX-UPSTREAM skip_Documentation_tests.patch gh#wolever/parameterized#84 mcepl@suse.com
 # Skip tests failing with Python 3.8
 Patch0:         skip_Documentation_tests.patch
+# PATCH-FIX-UPSTREAM remove_nose.patch mcepl@suse.com
+# Remove nose dependency (patch is not very good, DO NOT SEND UPSTREAM!)
+Patch1:         remove_nose.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nose2}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-nose
 Suggests:       python-nose2
 BuildArch:      noarch
 %python_subpackages
@@ -55,8 +56,7 @@ Parameterized testing with any Python test framework.
 
 %check
 export LANG=en_US.UTF8
-%{python_expand nosetests-%$python_version}
-%{python_expand nose2-%$python_version}
+%{python_expand nose2-%$python_version -v -B --pretty-assert}
 %python_exec -m unittest parameterized.test
 %pytest parameterized/test.py
 

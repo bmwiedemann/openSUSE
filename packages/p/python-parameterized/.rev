@@ -75,4 +75,15 @@
     <comment></comment>
     <requestid>826613</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>16f72c0fd2818217c948a21abb0cde47</srcmd5>
+    <version>0.7.4</version>
+    <time>1603961104</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove_nose.patch to eliminate nose dependency. The patch
+  is not very good, it still skips plenty of yield tests (which
+  were ignored even before, so it is not even a regression).
+</comment>
+    <requestid>834328</requestid>
+  </revision>
 </revisionlist>

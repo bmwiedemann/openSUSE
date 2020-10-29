@@ -1,0 +1,128 @@
+---
+ parameterized/parameterized.py |    7 ++++---
+ parameterized/test.py          |   30 ++++++++++++++++--------------
+ 2 files changed, 20 insertions(+), 17 deletions(-)
+
+--- a/parameterized/test.py
++++ b/parameterized/test.py
+@@ -4,7 +4,7 @@ import inspect
+ import mock
+ import sys
+ from unittest import TestCase, skipIf
+-from nose.tools import assert_equal, assert_raises
++import pytest
+ 
+ from .parameterized import (
+     PY3, PY2, parameterized, param, parameterized_argument_value_pairs,
+@@ -88,12 +88,12 @@ if not PYTEST:
+             self.actual_order = self.stack.pop(0)
+ 
+         def tearDown(self):
+-            missing_tests.remove("teardown_called(%s)" %(self.stack.pop(0), ))
++            missing_tests.remove("teardown_called(%s)" % (self.stack.pop(0), ))
+ 
+         @parameterized([(1, ), (2, )])
+         def test_setup(self, count, *a):
+-            assert_equal(self.actual_order, "setup %s" %(count, ))
+-            missing_tests.remove("test_setup(%s)" %(self.actual_order, ))
++            assert self.actual_order == "setup %s" % count
++            missing_tests.remove("test_setup(%s)" % self.actual_order)
+ 
+ 
+ def custom_naming_func(custom_tag):
+@@ -236,9 +236,9 @@ class TestParamerizedOnTestCase(TestCase
+         frame_locals = frame[0].f_locals
+         nose_test_method_name = frame_locals['a'][0]._testMethodName
+         expected_name = "test_on_TestCase2_custom_name_" + str(foo)
+-        assert_equal(nose_test_method_name, expected_name,
+-                     "Test Method name '%s' did not get customized to expected: '%s'" %
+-                     (nose_test_method_name, expected_name))
++        assert nose_test_method_name == expected_name, \
++                     "Test Method name '%s' did not get customized to expected: '%s'" % \
++                     (nose_test_method_name, expected_name)
+         missing_tests.remove("%s(%r, bar=%r)" %(expected_name, foo, bar))
+ 
+ 
+@@ -261,7 +261,7 @@ class TestParameterizedExpandDocstring(T
+         actual_docstring = test_method.__doc__
+         if rstrip:
+             actual_docstring = actual_docstring.rstrip()
+-        assert_equal(actual_docstring, expected_docstring)
++        assert actual_docstring == expected_docstring
+ 
+     @parameterized.expand([param("foo")],
+                           doc_func=lambda f, n, p: "stuff")
+@@ -337,7 +337,7 @@ def test_helpful_error_on_empty_iterable
+ 
+ def test_skip_test_on_empty_iterable():
+     func = parameterized([], skip_on_empty=True)(lambda: None)
+-    assert_raises(SkipTest, func)
++    pytest.raises(SkipTest, func)
+ 
+ 
+ def test_helpful_error_on_empty_iterable_input_expand():
+@@ -370,7 +370,7 @@ def test_helpful_error_on_non_iterable_i
+ 
+ def tearDownModule():
+     missing = sorted(list(missing_tests))
+-    assert_equal(missing, [])
++    assert missing == []
+ 
+ def test_old_style_classes():
+     if PY3:
+@@ -420,7 +420,7 @@ class TestOldStyleClass:
+ def test_parameterized_argument_value_pairs(func_params, p, expected):
+     helper = eval("lambda %s: None" %(func_params, ))
+     actual = parameterized_argument_value_pairs(helper, p)
+-    assert_equal(actual, expected)
++    assert actual == expected
+ 
+ 
+ @parameterized([
+@@ -430,7 +430,7 @@ def test_parameterized_argument_value_pa
+     (123456789, "12...89", 4),
+ ])
+ def test_short_repr(input, expected, n=6):
+-    assert_equal(short_repr(input, n=n), expected)
++    assert short_repr(input, n=n) == expected
+ 
+ @parameterized([
+     ("foo", ),
+@@ -444,7 +444,7 @@ cases_over_10 = [(i, i+1) for i in range
+ 
+ @parameterized(cases_over_10)
+ def test_cases_over_10(input, expected):
+-    assert_equal(input, expected-1)
++    assert input == expected-1
+ 
+ 
+ @parameterized_class(("a", "b", "c"), [
+@@ -461,7 +461,7 @@ class TestParameterizedClass(TestCase):
+ 
+     def _assertions(self, test_name):
+         assert hasattr(self, "a")
+-        assert_equal(self.b + self.c, 3)
++        assert self.b + self.c == 3
+         missing_tests.remove("%s:%s(%r, %r, %r)" %(
+             self.__class__.__name__,
+             test_name,
+--- a/parameterized/parameterized.py
++++ b/parameterized/parameterized.py
+@@ -276,7 +276,7 @@ def default_name_func(func, num, p):
+ 
+ _test_runner_override = None
+ _test_runner_guess = False
+-_test_runners = set(["unittest", "unittest2", "nose", "nose2", "pytest"])
++_test_runners = set(["unittest", "unittest2", "nose2", "pytest"])
+ _test_runner_aliases = {
+     "_pytest": "pytest",
+ }
+@@ -582,7 +582,7 @@ def parameterized_class(attrs, input_val
+     )
+ 
+     class_name_func = class_name_func or default_class_name_func
+-    
++
+     if classname_func:
+         warnings.warn(
+             "classname_func= is deprecated; use class_name_func= instead. "
