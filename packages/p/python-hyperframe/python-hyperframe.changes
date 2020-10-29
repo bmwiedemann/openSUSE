@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Sep 14 06:37:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.0.0:
+  * API Changes (Backward-incompatible)
+    + Introduce ``HyperframeError`` base exception class for all errors
+      raised within hyperframe.
+    + Change exception base class of ``UnknownFrameError`` to
+      ``HyperframeError``
+    + Change exception base class of ``InvalidPaddingError`` to
+      ``HyperframeError``
+    + Change exception base class of ``InvalidFrameError`` to
+      ``HyperframeError``
+    + Invalid frames with wrong stream id (zero vs. non-zero) now raise
+      ``InvalidDataError``.
+    + Invalid SETTINGS frames (non-empty but ACK) now raise
+      ``InvalidDataError``.
+    + Invalid ALTSVC frames with non-bytestring field or origin now raise
+      ``InvalidDataError``.
+  * API Changes (Backward-compatible)
+    + Deprecate ``total_padding`` - use `pad_length` instead.
+    + Improve repr() output for all frame classes.
+    + Introduce Frame.explain(data) for quick introspection of raw data.
+  * Bugfixes
+    + Fixed padding parsing for ``PushPromiseFrame``.
+    + Fixed unchecked frame length for ``PriorityFrame``. It now correctly
+      raises ``InvalidFrameError``.
+    + Fixed promised stream id validation for ``PushPromiseFrame``. It now
+      raises ``InvalidDataError``.
+    + Fixed unchecked frame length for ``WindowUpdateFrame``. It now correctly
+      raises ``InvalidFrameError``.
+    + Fixed window increment value range validation. It now raises
+      ``InvalidDataError``.
+    + Fixed parsing of ``SettingsFrame`` with mutual exclusion of ACK flag and
+      payload.
+  * Other Changes
+    + Removed support for Python 2.7, 3.4, 3.5, pypy.
+    + Added support for Python 3.8.
+
+-------------------------------------------------------------------
 Tue Mar 26 13:59:58 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 5.2.0:

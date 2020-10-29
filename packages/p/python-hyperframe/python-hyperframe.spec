@@ -1,7 +1,7 @@
 #
 # spec file for package python-hyperframe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-hyperframe
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        HTTP/2 framing layer for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/python-hyper/hyperframe
 Source0:        https://files.pythonhosted.org/packages/source/h/hyperframe/hyperframe-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
@@ -52,7 +52,7 @@ stream into HTTP/2 frames.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CONTRIBUTORS.rst HISTORY.rst
+%doc README.rst CONTRIBUTORS.rst CHANGELOG.rst
 %{python_sitelib}/hyperframe
 %{python_sitelib}/hyperframe-%{version}-py%{python_version}.egg-info
 
