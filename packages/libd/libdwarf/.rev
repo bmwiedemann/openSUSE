@@ -192,4 +192,13 @@
   make check actually does run dwarfdump and</comment>
     <requestid>832032</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>98561b3c883d96553691dee5000f8748</srcmd5>
+    <version>20201020</version>
+    <time>1603959701</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20201020: 
+  * Fix various read and write outside bounds found via fuzzing</comment>
+    <requestid>844033</requestid>
+  </revision>
 </revisionlist>

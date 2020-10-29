@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:29:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20201020: 
+  * Fix various read and write outside bounds found via fuzzing
+
+-------------------------------------------------------------------
 Fri Sep  4 08:28:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - move libdwarf headers back to the old location 
