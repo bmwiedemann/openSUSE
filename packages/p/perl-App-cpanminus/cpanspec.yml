@@ -5,7 +5,7 @@
 #  foo.patch: -p1
 #  bar.patch:
 sources:
- - http://pkgs.fedoraproject.org/cgit/perl-App-cpanminus.git/plain/fatunpack
+ - fatunpack
 preamble: |-
  # Run-time:
  # Nothing special. The tests are very poor. But we run perl -c at built-time
@@ -46,6 +46,7 @@ preamble: |-
  # YAML not needed for compilation
  # Tests:
  BuildRequires:  perl(Test::More)
+ BuildRequires:  perl(Pod::Select)
  # Current dependency generator cannot parse compressed code. Use PPI to find
  # them, and list them manually:
  # Archive::Tar is optional

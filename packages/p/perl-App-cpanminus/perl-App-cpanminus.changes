@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 15:32:37 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.7044
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+
+-------------------------------------------------------------------
 Tue Jun  6 13:59:45 UTC 2017 - sriedel@suse.com
 
 - fix missing dependency on perl-Parse-PMFile
