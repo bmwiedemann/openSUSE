@@ -28,9 +28,9 @@ URL:            https://github.com/greenbone/gvm-tools/
 Source:         https://github.com/greenbone/gvm-tools/archive/v%{version}.tar.gz#/gvm-tools-%{version}.tar.gz
 #Source98:       https://github.com/greenbone/gvm-tools/releases/download/v%%{version}/v%%{version}.tar.gz.asc#/gvm-tools-%%{version}.tar.gz.sig
 #Source99:       https://www.greenbone.net/GBCommunitySigningKey.asc#/gvm-tools.keyring
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-python-gvm >= 1.4.0
 BuildArch:      noarch
@@ -54,25 +54,22 @@ without programming in Python.
 
 %prep
 %setup -q -n gvm-tools-%{version}
-%dephell_gensetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gvm-cli
 %python_clone -a %{buildroot}%{_bindir}/gvm-pyshell
 %python_clone -a %{buildroot}%{_bindir}/gvm-script
-# Remove tests from sitelib
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
 %python_install_alternative gvm-cli gvm-pyshell gvm-script
 
 %postun
-%python_uninstall_alternative gvm-cli gvm-pyshell gvm-script
+%python_uninstall_alternative gvm-cli
 
 %check
 %pytest
@@ -83,6 +80,7 @@ without programming in Python.
 %python_alternative %{_bindir}/gvm-cli
 %python_alternative %{_bindir}/gvm-pyshell
 %python_alternative %{_bindir}/gvm-script
-%{python_sitelib}/*
+%{python_sitelib}/gvmtools
+%{python_sitelib}/gvm_tools-%{version}*-info
 
 %changelog
