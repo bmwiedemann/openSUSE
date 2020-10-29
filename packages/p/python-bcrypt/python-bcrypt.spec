@@ -61,7 +61,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch tests/
 
 %files %{python_files}
 %license LICENSE

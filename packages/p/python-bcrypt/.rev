@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>830197</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8180fe2f3ecaedf7bee2713cd41d2729</srcmd5>
+    <version>3.2.0</version>
+    <time>1603961226</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use deprecated 'python setup.py test', use pytest directly.
+</comment>
+    <requestid>840262</requestid>
+  </revision>
 </revisionlist>

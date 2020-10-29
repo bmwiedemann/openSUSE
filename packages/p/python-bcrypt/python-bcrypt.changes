@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 10:13:31 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Don't use deprecated 'python setup.py test', use pytest directly.
+
+-------------------------------------------------------------------
 Thu Aug 27 22:04:24 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Disable Python2 support to fix the build on older distributions
