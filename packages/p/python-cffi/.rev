@@ -295,4 +295,13 @@
  * CPython 3 on Windows: we again try to compile with Py_LIMITED_API by default</comment>
     <requestid>828166</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>1ad0b6e4fd48d20af02d804cb6265b0d</srcmd5>
+    <version>1.14.3</version>
+    <time>1603961170</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.3:
+  * no upstream changelog provided</comment>
+    <requestid>838259</requestid>
+  </revision>
 </revisionlist>
