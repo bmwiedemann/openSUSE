@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-bowler
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Safe code refactoring for modern Python projects
 License:        MIT
@@ -30,15 +30,17 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module fissix}
+BuildRequires:  %{python_module moreorless}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
-BuildRequires:  %{python_module sh}
+BuildRequires:  %{python_module volatile}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-fissix
+Requires:       python-moreorless
 Requires:       python-setuptools
-Requires:       python-sh
+Requires:       python-volatile
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

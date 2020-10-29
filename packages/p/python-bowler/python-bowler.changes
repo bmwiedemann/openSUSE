@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 11 07:34:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.9.0
+  * Added bowler test command for testing codemod scripts
+  * Added python_version option to load files with Python 2 print statement
+  * Implemented Query.encapsulate() to generate @property wrappers
+  * Improvements to Query.add_argument() and positional arguments
+  * No longer depends on shelling-out to patch command for applying diffs
+  * Fix Query.write() to be non-interactive and silent
+  * Fix unexpected error code after successful queries
+  * Marked package as typed for PEP 561 support
+
+-------------------------------------------------------------------
 Wed May 27 09:36:30 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
