@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 21 18:19:51 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1176437, CVE-2020-6097]
+  * A specially crafted sequence of RRQ-Multicast requests can
+    trigger an assert() call resulting denial-of-service.
+- Add atftp-CVE-2020-6097.patch
+
+-------------------------------------------------------------------
 Sat Apr 25 13:16:41 UTC 2020 - chris@computersalat.de
 
 - fix logrotate
