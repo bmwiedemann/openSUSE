@@ -26,12 +26,13 @@ URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
 Patch0:         https://github.com/bitprophet/pytest-relaxed/pull/10.patch#/pytest-relaxed-pr10.patch
 BuildRequires:  %{python_module decorator >= 4}
-BuildRequires:  %{python_module pytest >= 3}
+# gh#bitprophet/pytest-relaxed#12
+BuildRequires:  %{python_module pytest < 6.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
-Requires:       python-pytest >= 3
+Requires:       python-pytest < 6.1
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
@@ -43,8 +44,8 @@ Relaxed test discovery/organization plugin for pytest from python-paramiko autho
 %setup -q -n pytest-relaxed-%{version}
 # do not hardcode deps
 sed -i setup.py \
-    -e 's:pytest>=3,<3.3:pytest>=3:g' \
-    -e 's:decorator>=4,<5:decorator>=4:g'
+    -e 's:pytest>=3,<5:pytest>=3:' \
+    -e 's:decorator>=4,<5:decorator>=4:'
 %patch0 -p1
 
 %build
@@ -62,6 +63,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_relaxed
+%{python_sitelib}/pytest_relaxed-%{version}*-info
 
 %changelog

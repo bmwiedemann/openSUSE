@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Fri May 15 22:10:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - fix test failure by pytest-relaxed-pr10.patch
