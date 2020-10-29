@@ -133,7 +133,7 @@ you can disable unnecessary or disable everything.
 %patch14
 %patch17
 %patch18
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
 %patch21
 %endif
 %patch22

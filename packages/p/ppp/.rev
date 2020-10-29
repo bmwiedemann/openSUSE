@@ -360,4 +360,12 @@ GPL-2.0 matches found in ppp-2.4.5/include/linux/if_pppol2tp.h             (forw
 - bsc#1172916: Fix an outdated comment for lcp-echo-interval.</comment>
     <requestid>824334</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>239d0b80c565dcebd4b7c4d7d7cef3a5</srcmd5>
+    <version>2.4.8</version>
+    <time>1603959724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844105</requestid>
+  </revision>
 </revisionlist>
