@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:03:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * #57 and bpo-40564: Mutate the passed ZipFile object
+  type instead of making a copy. Prevents issues when
+  both the local copy and the caller's copy attempt to
+  close the same file handle.
+  * #56 and bpo-41035: ``Path._next`` now honors
+  subclasses.
+  * #55: ``Path.is_file()`` now returns False for non-existent names.
+
+-------------------------------------------------------------------
 Fri Mar 13 07:52:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop not-removed py2 dependencies

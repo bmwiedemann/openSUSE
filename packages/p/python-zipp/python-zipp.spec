@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
