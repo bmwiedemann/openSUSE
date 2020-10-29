@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Wed Oct 28 21:39:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.5
+  * Revert deprecation
+  * Support Python-3.8. Update tests for Python-3.8 compatibility.
+  * Use correct language level for building Cython extension.
+  * Fix FreeTDS version checks. Add check for version 7.4.
+  * Drop bundled FreeTDS-0.95 binaries.
+
+-------------------------------------------------------------------
+Tue Oct  2 13:05:31 UTC 2018 - mardnh@gmx.de
+
+- Convert to singlespec
+- Update to version 2.1.4
+
+-------------------------------------------------------------------
+Fri Apr 10 06:50:00 UTC 2015 - hanke@rzg.mpg.de
+
+- Update to version 2.1.1
+  * Buildrequire python-setuptools-git
+
+-------------------------------------------------------------------
+Thu Dec  5 01:17:46 UTC 2013 - termim@gmail.com
+
+- Update to release version (2.0.0)
+
+-------------------------------------------------------------------
+Thu Oct 24 11:12:09 UTC 2013 - speilicke@suse.com
+
+- Require python-setuptools instead of distribute (upstreams merged)
+
+-------------------------------------------------------------------
+Wed Jun 19 12:41:25 UTC 2013 - speilicke@suse.com
+
+- Many spec fixes
+
+-------------------------------------------------------------------
+Wed Jun 12 02:34:06 UTC 2013 - termim@gmail.com
+
+- Initial checkin
+
+
