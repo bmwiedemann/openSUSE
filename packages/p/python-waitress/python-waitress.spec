@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "doc"
+%define psuffix -doc
+%endif
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-waitress
-Version:        1.4.3
+Name:           python-waitress%{psuffix}
+Version:        1.4.4
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -29,19 +38,26 @@ Source:         https://files.pythonhosted.org/packages/source/w/waitress/waitre
 # https://docs.python.org/3/objects.inv -> python3.inv
 Source1:        python3.inv
 Source2:        fetch-intersphinx-inventories.sh
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if "%{flavor}" == ""
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-# SECTION documentation requirements
+%else
+# Documentation requirements
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  python3-pylons-sphinx-themes
-# /SECTION
+BuildRequires:  python3-waitress = %{version}
+Recommends:     python3-waitress = %{version}
+%endif
+BuildArch:      noarch
 %python_subpackages
 
+%if "%{flavor}" == ""
 %description
 Waitress is a pure-Python WSGI server. It has no dependencies except
 ones which live in the Python standard library. It supports HTTP/1.0
@@ -50,22 +66,11 @@ and HTTP/1.1.
 For more information, see the "docs" directory of the Waitress package or
 http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 
-%package doc
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
-Requires:       %{name} = %{version}
-
-%description doc
-This package contains documentation files for %{name}.
-
 %prep
 %setup -q -n waitress-%{version}
-cp %{SOURCE1} docs/
 
 %build
 %python_build
-export SPHINXOPTS=-vvv
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %install
 %python_install
@@ -73,12 +78,8 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests require a network connection
-rm waitress/tests/test_adjustments.py
-# make sure utf8 locale is set or tests could fail with:
-#    ValueError: underlying buffer has been detached
-export LANG=en_US.UTF8
-%python_exec setup.py test
+# disable one test, that requires network
+%pytest -k 'not test_service_port'
 
 %post
 %python_install_alternative waitress-serve
@@ -92,8 +93,22 @@ export LANG=en_US.UTF8
 %python_alternative %{_bindir}/waitress-serve
 %{python_sitelib}/*
 
-%files %{python_files doc}
+%else
+# doc flavor
+%description
+This package contains documentation files for %{name}.
+
+%prep
+%setup -q -n waitress-%{version}
+# python3.inv
+cp %{SOURCE1} docs/
+
+%build
+python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
+
+%files %{python_files}
 %license LICENSE.txt
 %doc build/sphinx/html
+%endif
 
 %changelog
