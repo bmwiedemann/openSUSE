@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 13:47:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 6.1.1
+  * Some of the features which have been deprecated in the 5.X series are now
+    removed, some are getting deprecated. See upstream changelog.
+  * Many fixtures and various cleanups.
+
+-------------------------------------------------------------------
 Mon Aug 24 18:05:51 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 6.0.1
