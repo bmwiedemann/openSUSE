@@ -456,4 +456,13 @@ A powertop_libc++_fix.patch</comment>
   until I ping them</comment>
     <requestid>814111</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>d3e4751e1a86d66eeab00f7ad1dd057c</srcmd5>
+    <version>2.13</version>
+    <time>1603979519</time>
+    <user>dimstar_suse</user>
+    <comment>- Add workaround for `error: too many loops` which happens with
+  sle15sp3: run autoreconf twice</comment>
+    <requestid>844779</requestid>
+  </revision>
 </revisionlist>

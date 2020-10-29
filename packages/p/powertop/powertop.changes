@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 08:36:16 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Add workaround for `error: too many loops` which happens with
+  sle15sp3: run autoreconf twice
+
+-------------------------------------------------------------------
 Fri Jun 12 08:58:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.13:

@@ -57,7 +57,9 @@ doing in terms of power savings.
 find . -name '*.o' -delete
 
 %build
-autoreconf -fi
+# workaround for 'error: too many loops' in sle15sp3
+# also see rhbz#1826935
+autoreconf -fi || autoreconf -fi
 export CFLAGS="%{optflags} -D_GNU_SOURCE"
 %configure
 %make_build
