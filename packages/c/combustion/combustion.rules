@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: 2020 SUSE LLC
-# SPDX-License-Identifier: GPL-2.0-only
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 # These rules are needed to work around two systemd limitations:
 # - It's not possible to wait for one of multiple devices to appear 

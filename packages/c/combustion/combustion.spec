@@ -20,7 +20,7 @@ Name:           combustion
 Version:        0.2
 Release:        0
 Summary:        System for initial configuration of appliances
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://build.opensuse.org/package/show/home:Vogtinator:combustion/combustion
 Source1:        LICENSE

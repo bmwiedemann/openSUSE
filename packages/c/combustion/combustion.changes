@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 22 07:26:03 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Change license to GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Tue Oct 13 09:00:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Also stop ignition-mount.service if there's no config
