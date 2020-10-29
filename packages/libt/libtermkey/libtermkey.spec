@@ -1,7 +1,7 @@
 #
 # spec file for package libtermkey
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define sover 1
 Name:           libtermkey
-Version:        0.20
+Version:        0.22
 Release:        0
 Summary:        Library for processing of keyboard entry from terminal-based programs
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://www.leonerd.org.uk/code/libtermkey/
+URL:            http://www.leonerd.org.uk/code/libtermkey/
 Source:         http://www.leonerd.org.uk/code/libtermkey/libtermkey-%{version}.tar.gz
 Patch0:         fix-syntax.patch
 BuildRequires:  gcc
@@ -91,7 +91,7 @@ find %{buildroot} -type f -name "*.a"  -delete -print
 
 %files -n %{name}%{sover}
 %defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libtermkey.so.%{sover}
 %{_libdir}/libtermkey.so.%{sover}.*
 
