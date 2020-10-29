@@ -18,94 +18,97 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define dephell_loglevel DEBUG
 Name:           python-poetry
-Version:        1.0.10
+Version:        1.1.4
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://poetry.eustace.io/
-# GitHub archive doesnt contain setup.py; sdist doesnt contain tests
-Source:         https://github.com/sdispater/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-# https://github.com/dephell/dephell/issues/330
-Patch0:         simplify-toml.patch
+URL:            https://python-poetry.org/
+# PyPI sdist doesnt contain tests
+Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/3255#issuecomment-713442094 -- remove external http call requirement for lock --no-update
+Patch0:         poetry-1645-1.1.patch
+# PATCH-FIX-OPENSUSE simplify-toml.patch https://github.com/dephell/dephell/issues/330 -- we abandoned dephell but keep the simplification
+Patch1:         simplify-toml.patch
 BuildRequires:  %{python_module CacheControl >= 0.12.4}
 BuildRequires:  %{python_module cachy >= 0.3.0}
-BuildRequires:  %{python_module cleo >= 0.7.6}
-BuildRequires:  %{python_module clikit >= 0.4.2}
-BuildRequires:  %{python_module dephell}
-BuildRequires:  %{python_module devel}
+# upstream requires cleo >= 0.8.1, but that only bumped its deps
+BuildRequires:  %{python_module cleo >= 0.8.0}
+BuildRequires:  %{python_module clikit >= 0.6.2}
 BuildRequires:  %{python_module html5lib >= 1.0}
-BuildRequires:  %{python_module httpretty}
-BuildRequires:  %{python_module jsonschema >= 3.1}
-BuildRequires:  %{python_module keyring >= 20.0.1}
+BuildRequires:  %{python_module keyring >= 21.2.0}
 BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module pexpect >= 4.7.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkginfo >= 1.4}
-BuildRequires:  %{python_module pyparsing >= 2.2}
-BuildRequires:  %{python_module pyrsistent >= 0.14.2}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module requests >= 2.18}
-BuildRequires:  %{python_module requests-toolbelt >= 0.8.0}
+BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module shellingham >= 1.1}
-BuildRequires:  %{python_module tomlkit >= 0.5.11}
+BuildRequires:  %{python_module tomlkit >= 0.7.0}
+BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
-BuildRequires:  git-core
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.4
 Requires:       python-cachy >= 0.3.0
-Requires:       python-cleo >= 0.7.6
-Requires:       python-clikit >= 0.4.2
+Requires:       python-cleo >= 0.8.0
+Requires:       python-clikit >= 0.6.2
 Requires:       python-html5lib >= 1.0
-Requires:       python-jsonschema >= 3.1
-Requires:       python-keyring >= 20.0.1
+Requires:       python-keyring >= 21.2.0
 Requires:       python-lockfile
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.4
+Requires:       python-poetry-core >= 1.0.0
 Requires:       python-pyparsing >= 2.2
-Requires:       python-pyrsistent >= 0.14.2
 Requires:       python-requests >= 2.18
-Requires:       python-requests-toolbelt >= 0.8.0
+Requires:       python-requests-toolbelt >= 0.9.1
 Requires:       python-setuptools
 Requires:       python-shellingham >= 1.1
-Requires:       python-tomlkit >= 0.5.11
+Requires:       python-tomlkit >= 0.7.0
+Requires:       python-virtualenv >= 20.0.26
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+# SECTION test requirements
+BuildRequires:  %{python_module httpretty}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  git-core
+# /SECTION
 %python_subpackages
 
 %description
 Python dependency management and packaging made easy.
 
 %prep
-%setup -q -n poetry-%{version}
-%patch0 -p1
-%{dephell_gensetup}
+%autosetup -p1 -n poetry-%{version}
+rm poetry/_vendor/.gitignore
+rmdir poetry/_vendor
+find poetry -name '*.py' -executable -print0 | xargs -0 chmod a-x
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/poetry
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# A venv is necessary gh#python-poetry/poetry#1645#issuecomment-566872684
-python3 -m venv testenv
-source testenv/bin/activate
-# test_default_with_excluded_data fails, see the above ticket for
-# discussion on this.
-# test_publish_returns_non_zero_code_for_upload_errors fails with clikit 0.6.0+
-# which uses crashtest, which outputs extra information not expected by the test
-# This does not occur in the poetry 1.1.0a test suite.
-%pytest -vv -k 'not (test_default_with_excluded_data or test_publish_returns_non_zero_code_for_upload_errors)'
+# discussion of this section: gh#python-poetry/poetry#1645
+%{python_expand # a virtualenv is necessary
+virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
+source testenv-%{$python_bin_suffix}/bin/activate
+export PYTHONPATH="%{buildroot}%{$python_sitelib}"
+export PYTHONDONTWRITEBYTECODE=1
+# pytest needs to be called from the virtualenv python interpreter
+python -m pytest -v tests
+deactivate
+}
 
 %post
 %python_install_alternative poetry
@@ -114,10 +117,10 @@ source testenv/bin/activate
 %python_uninstall_alternative poetry
 
 %files %{python_files}
-%doc README.md
+%doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/poetry
-%{python_sitelib}/poetry-%{version}-py*.egg-info
+%{python_sitelib}/poetry-%{version}*-info
 %python_alternative %{_bindir}/poetry
 
 %changelog

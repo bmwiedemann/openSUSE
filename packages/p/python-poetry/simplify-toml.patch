@@ -1,24 +1,36 @@
---- poetry-1.0.9/pyproject.toml
-+++ poetry-1.0.9/pyproject.toml
-@@ -49,19 +49,13 @@
- virtualenv = { version = "^16.7.9", python = "~2.7" }
+Index: poetry-1.1.2/pyproject.toml
+===================================================================
+--- poetry-1.1.2.orig/pyproject.toml
++++ poetry-1.1.2/pyproject.toml
+@@ -25,7 +25,7 @@ classifiers = [
+ python = "~2.7 || ^3.5"
+ 
+ poetry-core = "^1.0.0"
+-cleo = "^0.8.1"
++cleo = "^0.8.0"
+ clikit = "^0.6.2"
+ crashtest = { version = "^0.3.0", python = "^3.6" }
+ requests = "^2.18"
+@@ -51,20 +51,13 @@ futures = { version = "^3.3.0", python =
+ glob2 = { version = "^0.6", python = "~2.7" }
  # functools32 is needed for Python 2.7
  functools32 = { version = "^3.2.3", python = "~2.7" }
 -keyring = [
--    { version = "^18.0.1", python = "~2.7 || ~3.4" },
--    { version = "^20.0.1", python = "^3.5" }
+-    { version = "^18.0.1", python = "~2.7" },
+-    { version = "^20.0.1", python = "~3.5" },
+-    { version = "^21.2.0", python = "^3.6" }
 -]
-+keyring = { version = ">=20.0.1" }
- # Use subprocess32 for Python 2.7 and 3.4
- subprocess32 = { version = "^3.5", python = "~2.7 || ~3.4" }
- importlib-metadata = {version = "~1.1.3", python = "<3.8"}
++keyring =  "^21.2.0"
+ # Use subprocess32 for Python 2.7
+ subprocess32 = { version = "^3.5", python = "~2.7" }
+ importlib-metadata = {version = "^1.6.0", python = "<3.8"}
  
  [tool.poetry.dev-dependencies]
 -pytest = [
 -    {version = "^4.1", python = "<3.5"},
 -    {version = "^5.4.3", python = ">=3.5"}
 -]
-+pytest = {version = "^5.4.3" }
++pytest = "^5.4.3"
  pytest-cov = "^2.5"
- mkdocs = { version = "^1.0", python = "~2.7.9 || ^3.4" }
- pymdown-extensions = "^6.0"
+ pytest-mock = "^1.9"
+ pre-commit = { version = "^2.6", python = "^3.6.1" }
