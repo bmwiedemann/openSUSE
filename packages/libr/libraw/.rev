@@ -590,4 +590,19 @@
     <comment></comment>
     <requestid>824129</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>bb85042f7a575c307707e49ddb714b0e</srcmd5>
+    <version>0.20.2</version>
+    <time>1603959702</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.2:
+  * corrected GPS EXIF output
+  * Olympus XZ-1: do not provide linear_max 
+  * Pentax Optio 33WR: maker index was incorrect
+  * dcraw_emu: corrected help line for -6 option.
+  * raw-identify: corrected range check for color matrices print
+  * use_camera_matrix option: fixed a bug introduced when making compiler more happy
+  * multiple camera support improvements (forwarded request 844032 from dirkmueller)</comment>
+    <requestid>844046</requestid>
+  </revision>
 </revisionlist>
