@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.0.9
+Version:        2.0.10
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        SUSE-Public-Domain AND BSD-3-Clause
@@ -99,12 +99,8 @@ BuildRequires:  texlive-ec
 %endif
 # PATCH-FIX-OPENSUSE install README.openSUSE and sbclrc.sample
 Patch0:         sbcl-1.1.2-install.patch
-# PATCH-FIX-OPENSUSE  disable localport bsd sockets tests broken in kvm builds for some toganm@opensuse.org
-Patch1:         disable-localport-bsd-sockets-test.patch
-# PATCH-FIX-OPENSUSE  fix some unsafe tests for our build hosts
-Patch2:         fix-tests.patch
 # PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
-Patch3:         strip-arm-CFLAGS.patch
+Patch1:         strip-arm-CFLAGS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390x
 
@@ -124,9 +120,7 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %endif
 %setup -q
 %patch0 -p1 -b install
-%patch1 -p1 -b sockets
-%patch2 -p1
-%patch3 -p1
+%patch1 -p1
 
 cp %{S:1} .
 cp %{S:2} .
