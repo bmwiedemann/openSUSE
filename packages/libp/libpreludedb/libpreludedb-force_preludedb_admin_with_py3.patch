@@ -2,11 +2,13 @@ Description: Force preludedb-admin to use python3
 Author: Thomas Andrejak <thomas.andrejak@gmail.com>
 Last-Update: 2019-09-20
 
---- ./preludedb-admin	2019-09-17 19:29:40.157500525 -0400
-+++ ./preludedb-admin	2019-09-22 08:41:53.217541434 -0400
+Index: preludedb-admin
+===================================================================
+--- preludedb-admin.orig
++++ preludedb-admin
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
  #
- # Copyright (C) 2019 CS-SI. All Rights Reserved.
+ # Copyright (C) 2019-2020 CS GROUP - France. All Rights Reserved.
  # Author: Yoann Vandoorselaere <yoannv@gmail.com>

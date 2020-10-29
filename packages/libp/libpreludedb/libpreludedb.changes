@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:06:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libpreludedb 5.2.0:
+  * build system fixes
+  * Python 3.7/3.8 support
+  * Update to SWIG 4.0.1
+  * Escaping fixes with LIKE operator
+- drop upstreamed patches:
+  * libpreludedb-fix_py38.patch
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Sun Mar 15 02:34:56 UTC 2020 - Max Lin <mlin@suse.com>
 
 - BuildRequires postgresql-server-devel on Leap >= 15.2 as well

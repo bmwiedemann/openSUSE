@@ -20,7 +20,7 @@
 %define sover 7
 %define sover_cpp 2
 Name:           libpreludedb
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Framework to easy access to the Prelude database
 # Prelude is GPL-2.0+
@@ -30,25 +30,25 @@ License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz.sig
+Source2:        https://www.prelude-siem.org/attachments/download/233/RPM-GPG-KEY-Prelude-IDS#/%{name}.keyring
 # Fix undefined non weak symbol
 Patch0:         libpreludedb-undefined_non_weak_symbol.patch
 Patch1:         libpreludedb-fix_gtkdoc_1.32.patch
-Patch2:         libpreludedb-fix_py38.patch
 Patch3:         libpreludedb-force_preludedb_admin_with_py3.patch
 Patch4:         libpreludedb-update_m4_postgresql.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-doc
-BuildRequires:  libprelude-devel
+BuildRequires:  libprelude-devel >= 5.2.0
 BuildRequires:  mysql-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
+BuildRequires:  python3-devel
+BuildRequires:  sqlite-devel >= 3.0.0
+Requires:       libprelude-tools >= 5.2.0
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  postgresql-server-devel
 %endif
-BuildRequires:  python3-devel
-BuildRequires:  sqlite-devel
-Requires:       libprelude-tools
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The PreludeDB Library provides an abstraction layer upon the type and the
@@ -83,7 +83,7 @@ type/format of the database.
 Summary:        Development files for libpreludedb
 Group:          Development/Libraries/C and C++
 Requires:       automake
-Requires:       libprelude-devel
+Requires:       libprelude-devel >= 5.2.0
 Requires:       libpreludedb%{sover} = %{version}
 Requires:       libpreludedbcpp%{sover_cpp} = %{version}
 Requires:       mysql-devel
@@ -177,7 +177,6 @@ Libprelude documentation files.
 %setup -q
 %patch0
 %patch1
-%patch2
 %patch3
 %patch4
 
@@ -190,7 +189,7 @@ Libprelude documentation files.
 sed -i.rpath -e 's|LD_RUN_PATH=""||' bindings/Makefile
 sed -i.rpath -e 's|^sys_lib_dlsearch_path_spec="/lib %{_prefix}/lib|sys_lib_dlsearch_path_spec="/%{_lib} %{_libdir}|' libtool
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -206,35 +205,35 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %postun -n libpreludedbcpp%{sover_cpp} -p /sbin/ldconfig
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/libpreludedb.so.%{sover}*
 
 %files -n %{name}cpp%{sover_cpp}
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/libpreludedbcpp.so.%{sover_cpp}*
 
 %files -n preludedb-tools
-%defattr(-,root,root)
-%{_mandir}/man1/preludedb-admin.1%{ext_man}
+%license COPYING
+%{_mandir}/man1/preludedb-admin.1%{?ext_man}
 %{_bindir}/preludedb-admin
 
 %files plugins
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %{_libdir}/%{name}/plugins/formats/
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_bindir}/libpreludedb-config
 %{_includedir}/libpreludedb
 %{_libdir}/libpreludedb.so
 %{_libdir}/libpreludedbcpp.so
 %{_datadir}/aclocal/libpreludedb.m4
-%{_mandir}/man1/libpreludedb-config.1%{ext_man}
+%{_mandir}/man1/libpreludedb-config.1%{?ext_man}
 
 %files devel-bindings
-%defattr(-,root,root)
+%license COPYING
 %dir %{_datadir}/libpreludedb%{sover}/
 %dir %{_datadir}/libpreludedb%{sover}/swig/
 %{_datadir}/libpreludedb%{sover}/swig/libpreludedbcpp.i
@@ -242,10 +241,11 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_datadir}/libpreludedb%{sover}/swig/python/libpreludedbcpp-python.i
 
 %files -n python3-%{name}
-%defattr(-,root,root)
+%license COPYING
 %{python_sitearch3}/*
 
 %files mysql
+%license COPYING
 %defattr(0755,root,root)
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
@@ -257,7 +257,7 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %attr(0755,root,root) %{_datadir}/%{name}/classic/*.sh
 
 %files sqlite
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %dir %{_libdir}/%{name}/plugins/sql
@@ -267,7 +267,7 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_datadir}/%{name}/classic/sqlite*
 
 %files pgsql
-%defattr(-,root,root)
+%license COPYING
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
 %dir %{_libdir}/%{name}/plugins/sql
@@ -277,9 +277,8 @@ find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
 %{_datadir}/%{name}/classic/pgsql*
 
 %files doc
-%defattr(-,root,root)
-%doc %{_docdir}/%{name}-%{version}
 %license COPYING LICENSE.README
+%doc %{_docdir}/%{name}-%{version}
 %doc ChangeLog README NEWS HACKING.README
 
 %changelog

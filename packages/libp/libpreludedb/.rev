@@ -96,4 +96,12 @@ libprelude and libpreludedb will also be submitted</comment>
     <comment></comment>
     <requestid>786239</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d28ed5ef3da8d99427a3cad95c663146</srcmd5>
+    <version>5.2.0</version>
+    <time>1603959788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844632</requestid>
+  </revision>
 </revisionlist>
