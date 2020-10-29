@@ -93,4 +93,14 @@
   (https://gitlab.freedesktop.org/xdg/pyxdg/-/issues/20)</comment>
     <requestid>821300</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>79b2630ed95bd8f6a828c387b7312864</srcmd5>
+    <version>0.26</version>
+    <time>1603961190</time>
+    <user>dimstar_suse</user>
+    <comment>- Also conflict with the python-xdg as we provide same namespace
+
+- Do not provide xdg namespace as there is python-xdg package now</comment>
+    <requestid>839568</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:47:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Also conflict with the python-xdg as we provide same namespace
+
+-------------------------------------------------------------------
+Wed Sep 30 08:38:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not provide xdg namespace as there is python-xdg package now
+
+-------------------------------------------------------------------
 Thu Jul 16 12:13:19 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skip over RulesTest.test_rule_from_node test

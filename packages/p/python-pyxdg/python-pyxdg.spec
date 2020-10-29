@@ -35,13 +35,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  shared-mime-info
 Requires:       hicolor-icon-theme
 Requires:       shared-mime-info
-Provides:       python-xdg = %{version}
-Obsoletes:      python-xdg < %{version}
+Conflicts:      python-xdg
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-xdg < %{version}
-Provides:       %{oldpython}-xdg = %{version}
-%endif
 %python_subpackages
 
 %description
