@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:30:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 6.14.2:
+  - Fix bug where ``ignore_eq`` had no effect on nested objects when using :func:`compare`
+- remove python383.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jun 23 15:51:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - use local source dir for pytest imports (tests are not installed)

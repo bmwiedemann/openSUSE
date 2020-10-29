@@ -19,13 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-testfixtures
-Version:        6.14.1
+Version:        6.14.2
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-Patch0:         python383.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
@@ -58,7 +57,6 @@ their own library and give them some tests of their own!
 
 %prep
 %setup -q -n testfixtures-%{version}
-%patch0 -p1
 chmod a-x docs/*.txt
 
 %build

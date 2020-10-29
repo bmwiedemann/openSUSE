@@ -137,4 +137,14 @@
     <comment></comment>
     <requestid>816634</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a736cc7c11b7cc94edf7164508001149</srcmd5>
+    <version>6.14.2</version>
+    <time>1603961123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.14.2:
+  - Fix bug where ``ignore_eq`` had no effect on nested objects when using :func:`compare`
+- remove python383.patch (upstream)</comment>
+    <requestid>835017</requestid>
+  </revision>
 </revisionlist>
