@@ -28,12 +28,14 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.48.2
+Version:        4.50.2
 Release:        0
 Summary:        An extensible progress meter
 License:        MPL-2.0 AND MIT
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
+# https://github.com/tqdm/tqdm/pull/1052
+Patch0:         python-tqdm-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,9 +44,9 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  python3-ipython
 BuildRequires:  python3-ipywidgets
@@ -60,6 +62,7 @@ and does not require ncurses.
 
 %prep
 %setup -q -n tqdm-%{version}
+%patch0 -p1
 
 %build
 %python_build
@@ -82,9 +85,12 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 
 %if %{with test}
 %check
-%{python_expand PYTHONPATH=%{$python_sitelib}
-nosetests-%%{$python_bin_suffix} --ignore-files="tests_perf\.py" --ignore-files="tests_synchronisation\.py" tqdm/
-}
+# test_perf: flaky
+# test_synchronisation: hangs
+# test_main: todo upstream, TypeError: a bytes-like object is required, not 'str'
+#            also disabled in https://github.com/tqdm/tqdm/pull/1052
+#            and left upstream to solve
+%pytest -k "not (tests_perf or tests_synchronisation or test_main)" tqdm/
 %endif
 
 %if !%{with test}

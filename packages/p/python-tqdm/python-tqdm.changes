@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Oct 23 13:47:03 UTC 2020 - pgajdos@suse.com
+
+- added patches
+  https://github.com/tqdm/tqdm/pull/1052
+  + python-tqdm-remove-nose.patch
+
+-------------------------------------------------------------------
+Sat Oct 10 18:46:08 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.50.2:
+  * fixed platform.system() causing fork() warnings (#691)
+  * fixed contrib.concurrent.process_map pickling error with
+    threading.RLock (#920)
+  * updated documentation & examples
+  * updated CI framework
+  * updated tests
+  * misc code tidy
+
+- changes from version 4.50.1 :
+  * fix multiprocessing lock creation leak (#982, #936, #759)
+    + fixes #617 which introduced this bug (v4.29.0, released
+      2019-01-06, undiagnosed until now) where multiple threads could
+      concurrently create and append process locks to a global list,
+      then try to release them without first acquiring 👿
+  * major test overhaul: fix, update, and speed up
+  * misc CI framework updates
+  * code linting
+  * minor documentation tidy
+
+- changes from version 4.50.0:
+  * add bar colour option (#1040 <- #450)
+    + for notebook as well as std/CLI
+    + plain text as well as hex (e.g. 'green' or '#00ff00')
+  * notebook improvements (#1032 <- #1031)
+    + split bar description into separate widget
+    + improve reset() (handle width and colour)
+  * fix exceptions when file is closed (#1041, #1036 <- #1033)
+  * add & update tests
+  * minor documentation updates
+  * move and configure issue/pr templates
+
+-------------------------------------------------------------------
+Sat Sep 19 15:28:17 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.49.0:
+  * CLI: add --tee (#1014 <- #1013)
+  * CLI: add --update and --update_to (#996 <- #975)
+  * CLI: add --null (#996)
+  * CLI: accept - instead of _ in options (e.g. --update-to)
+  * make update() return True on display to ease efficient use of
+    custom callbacks (#845)
+  * fix py>=3 CLI --delim encoding error
+  * fix py>=3.5 version detection in tqdm.auto (#1029 <- #1028)
+  * fix final ETA when using initial (#1021 <- #689)
+  * update documentation
+    + add & update custom callback examples
+    + improve help formatting of boolean CLI options
+  * add & update tests
+
+-------------------------------------------------------------------
 Sat Aug 15 16:43:55 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.48.2:
