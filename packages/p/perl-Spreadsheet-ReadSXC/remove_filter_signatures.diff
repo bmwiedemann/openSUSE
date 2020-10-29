@@ -1,0 +1,75 @@
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Cell.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Cell.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Cell.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Cell.pm	2020-10-15 16:18:27.748900421 +0200
+@@ -1,6 +1,5 @@
+ package Spreadsheet::ParseODS::Cell;
+ use Moo 2;
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ 
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Settings.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Settings.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Settings.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Settings.pm	2020-10-15 16:18:18.132747780 +0200
+@@ -1,7 +1,6 @@
+ package Spreadsheet::ParseODS::Settings;
+ use Moo 2;
+ use Carp qw(croak);
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ use PerlX::Maybe;
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Styles.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Styles.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Styles.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Styles.pm	2020-10-15 16:18:25.564865752 +0200
+@@ -2,7 +2,6 @@
+ use 5.010; # for //
+ use Moo 2;
+ use Carp qw(croak);
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ use PerlX::Maybe;
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Workbook.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Workbook.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Workbook.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Workbook.pm	2020-10-15 16:18:20.468784860 +0200
+@@ -1,6 +1,5 @@
+ package Spreadsheet::ParseODS::Workbook;
+ use Moo 2;
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ 
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Worksheet.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Worksheet.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS/Worksheet.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS/Worksheet.pm	2020-10-15 16:18:23.116826893 +0200
+@@ -1,7 +1,6 @@
+ package Spreadsheet::ParseODS::Worksheet;
+ use Moo 2;
+ use Carp qw(croak);
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ use PerlX::Maybe;
+diff -ur Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS.pm Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS.pm
+--- Spreadsheet-ReadSXC-0.32/lib/Spreadsheet/ParseODS.pm	2020-10-15 16:17:17.475784988 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/lib/Spreadsheet/ParseODS.pm	2020-10-15 16:18:15.296702765 +0200
+@@ -12,7 +12,6 @@
+ our $VERSION = '0.32';
+ our @CARP_NOT = (qw(XML::Twig));
+ 
+-use Filter::signatures;
+ use feature 'signatures';
+ no warnings 'experimental::signatures';
+ use PerlX::Maybe;
+diff -ur Spreadsheet-ReadSXC-0.32/Makefile.PL Spreadsheet-ReadSXC-0.32_fix/Makefile.PL
+--- Spreadsheet-ReadSXC-0.32/Makefile.PL	2020-10-15 16:17:17.471784925 +0200
++++ Spreadsheet-ReadSXC-0.32_fix/Makefile.PL	2020-10-15 16:18:37.057048163 +0200
+@@ -49,7 +49,6 @@
+     PREREQ_PM => {
+         'Carp'               => 0,
+         'PerlX::Maybe'       => 0,
+-        'Filter::signatures' => '0.16',
+         'Archive::Zip'       => '1.34', # for seekable streams, verified thanks to Backpan
+         'PerlIO::gzip'       => 0,
+         'XML::Twig'          => 0,

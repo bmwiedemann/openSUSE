@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ReadSXC
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,39 @@
 
 
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.24
+Version:        0.32
 Release:        0
 %define cpan_name Spreadsheet-ReadSXC
 Summary:        Extract OpenOffice 1.x spreadsheet data
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-OPENSUSE Do not requires Filter:signatures, as we have perl > 5.20
+Patch0:         remove_filter_signatures.diff
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Archive::Zip) >= 1.34
+#BuildRequires:  perl(Filter::signatures) >= 0.16
+BuildRequires:  perl(Moo) >= 2
 BuildRequires:  perl(PerlIO::gzip)
-BuildRequires:  perl(XML::Parser)
+BuildRequires:  perl(PerlX::Maybe)
+BuildRequires:  perl(XML::Twig)
+BuildRequires:  perl(XML::Twig::XPath)
+BuildRequires:  perl(XML::XPath)
+BuildRequires:  perl(XML::XPathEngine)
 Requires:       perl(Archive::Zip) >= 1.34
+#Requires:       perl(Filter::signatures) >= 0.16
+Requires:       perl(Moo) >= 2
 Requires:       perl(PerlIO::gzip)
-Requires:       perl(XML::Parser)
+Requires:       perl(PerlX::Maybe)
+Requires:       perl(XML::Twig)
+Requires:       perl(XML::Twig::XPath)
+Requires:       perl(XML::XPath)
+Requires:       perl(XML::XPathEngine)
 %{perl_requires}
 
 %description
@@ -55,9 +69,9 @@ you can extract the XML string from content.xml and pass the string to the
 function read_xml_string(). Both functions also take a reference to a hash
 of options as an optional second argument.
 
-Spreadsheet::ReadSXC requires XML::Parser to parse the XML contained in
-.sxc files. Only the contents of text:p elements are returned, not the
-actual values of table:value attributes. For example, a cell might have a
+Spreadsheet::ReadSXC uses XML::Twig to parse the XML contained in .sxc
+files. Only the contents of text:p elements are returned, not the actual
+values of table:value attributes. For example, a cell might have a
 table:value-type attribute of "currency", a table:value attribute of
 "-1500.99" and a table:currency attribute of "USD". The text:p element
 would contain "-$1,500.99". This is the string which is returned by the
@@ -115,7 +129,8 @@ before making another call. Thanks to H. Merijn Brand for fixing this.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%patch0 -p1
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
