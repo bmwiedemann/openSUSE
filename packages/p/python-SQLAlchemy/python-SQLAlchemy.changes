@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Oct 19 07:04:45 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- added gpg pub key for source validation
+- Update to version 1.3.20
+  pytest_depr_from_parent.patch is obsolete again
+  orm
+   * An ArgumentError with more detail is now raised if the target
+     parameter for Query.join() is set to an unmapped object. Prior
+     to this change a less detailed AttributeError was raised. Pull
+     request courtesy Ramon Williams.  References: #4428
+
+   * Fixed issue where using a loader option against a string attribute
+     name that is not actually a mapped attribute, such as a plain
+     Python descriptor, would raise an uninformative AttributeError;
+     a descriptive error is now raised.  References: #4589
+
+  engine
+  * Fixed issue where a non-string object sent to SQLAlchemyError or a
+    subclass, as occurs with some third party dialects, would fail to
+    stringify correctly. Pull request courtesy Andrzej Bartosiński. 
+    References: #5599
+
+  * Repaired a function-level import that was not using SQLAlchemy’s
+    standard late-import system within the sqlalchemy.exc module.
+    References: #5632
+
+  sql
+  * Fixed issue where the pickle.dumps() operation against Over construct
+    would produce a recursion overflow.  References: #5644
+
+  * Fixed bug where an error was not raised in the case where a column()
+    were added to more than one table() at a time. This raised correctly
+    for the Column and Table objects. An ArgumentError is now raised when
+    this occurs.  References: #5618
+
+  postgresql
+  * The psycopg2 dialect now support PostgreSQL multiple host connections,
+    by passing host/port combinations to the query string.
+    References: #4392
+
+  * Adjusted the Comparator.any() and Comparator.all() methods to implement
+    a straight “NOT” operation for negation, rather than negating the
+    comparison operator.  References: #5518
+
+  * Fixed issue where the ENUM type would not consult the schema translate
+    map when emitting a CREATE TYPE or DROP TYPE during the test to see if
+    the type exists or not. Additionally, repaired an issue where if the
+    same enum were encountered multiple times in a single DDL sequence,
+    the “check” query would run repeatedly rather than relying upon a cached value.
+    References: #5520
+
+  mysql
+  * Adjusted the MySQL dialect to correctly parenthesize functional index
+    expressions as accepted by MySQL 8. Pull request courtesy Ramon Williams.
+    References: #5462
+
+  * The “skip_locked” keyword used with with_for_update() will emit a warning
+    when used on MariaDB backends, and will then be ignored. This is a
+    deprecated behavior that will raise in SQLAlchemy 1.4, as an application
+    that requests “skip locked” is looking for a non-blocking operation which
+    is not available on those backends.
+    References: #5568
+
+  * Fixed bug where an UPDATE statement against a JOIN using MySQL multi-table
+    format would fail to include the table prefix for the target table if the
+    statement had no WHERE clause, as only the WHERE clause were scanned to
+    detect a “multi table update” at that particular point. The target is now
+    also scanned if it’s a JOIN to get the leftmost table as the primary table
+    and the additional entries as additional FROM entries.
+    References: #5617
+
+  * Add new MySQL reserved words: cube, lateral added in MySQL 8.0.1 and 8.0.14,
+    respectively; this indicates that these terms will be quoted if used as table
+    or column identifier names.
+    References: #5539
+
+
+-------------------------------------------------------------------
+Fri Oct  9 13:02:39 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Replace pytest_depr_from_parent.patch with the upstream commit resolving
+  same issue (gh#sqlalchemy/sqlalchemy#commit40cdb9c0bf4d).
+
+-------------------------------------------------------------------
+Thu Oct  8 15:45:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add pytest_depr_from_parent.patch to fix FTBGS with pytest 6.*
+  (gh#sqlalchemy/sqlalchemy#5635)
+
+-------------------------------------------------------------------
 Thu Aug 20 12:00:42 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.3.19
