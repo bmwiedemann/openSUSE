@@ -26,26 +26,25 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/crashtest
 Source:         https://github.com/sdispater/crashtest/archive/%{version}.tar.gz#/crashtest-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Manage Python errors with ease.
+A Python library that makes exceptions handling and inspection easier
 
 %prep
 %setup -q -n crashtest-%{version}
-%dephell_gensetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +53,7 @@ Manage Python errors with ease.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/crashtest
+%{python_sitelib}/crashtest-%{version}*-info
 
 %changelog
