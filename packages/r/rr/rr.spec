@@ -17,7 +17,7 @@
 
 
 Name:           rr
-Version:        5.3.0
+Version:        5.4.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
@@ -50,7 +50,7 @@ data watchpoints and quickly reverse-execute to where they were hit.
 %build
 # Fix incorrect path to bash
 sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
-sed -i "s|#!.*/usr/bin/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols.py
+sed -i "s|#!.*%{_bindir}/env.*|#!%{_bindir}/python3|" scripts/rr-collect-symbols.py
 CXXFLAGS=-std=c++14 %cmake \
   -DBUILD_TESTS=OFF
 CXXFLAGS=-std=c++14 %make_jobs
@@ -65,10 +65,10 @@ CXXFLAGS=-std=c++14 %make_jobs
 %dir %{_libdir}/rr
 %{_bindir}/rr
 %{_bindir}/rr_exec_stub*
-%{_bindir}/rr_page_*
 %{_bindir}/signal-rr-recording.sh
 %{_datadir}/rr/*
 %{_libdir}/rr/librrpreload*.so
+%{_libdir}/rr/librraudit_32.so
 %{_datadir}/bash-completion/completions/rr
 %{_bindir}/rr-collect-symbols.py
 

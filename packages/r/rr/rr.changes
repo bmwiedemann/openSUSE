@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:39:40 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.4.0:
+  * As usual there are many bug fixes, improvements to system call
+    coverage, and incremental performance improvements.
+  * AMD Zen CPUs are now supported, with some caveats.
+  * There is experimental support for ARM AArch64 platforms that
+    avoid the STREX instruction.
+  * rr record has a new option --nested=detach which lets nested
+    rr recordings run "detached" to create a separate recording.
+
+-------------------------------------------------------------------
 Wed Dec 18 11:56:00 UTC 2019 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.3.0:
