@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 28 20:18:55 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.1
+  Enhancement:
+  * Refactored docs for mkdocs-material theme.
+  * Testing is done on a per-python interpreter basis, meaning
+    that tox is no longer needed.
+
+-------------------------------------------------------------------
+Mon Oct 26 23:10:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Kill dephell dependency 
+
+-------------------------------------------------------------------
 Wed Jun  3 06:36:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.7.0
