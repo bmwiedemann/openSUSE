@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spotipy
-Version:        2.13.0
+Version:        2.16.1
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 1.0
+Requires:       python-requests >= 2.20.0
 Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 # SECTION test requirements

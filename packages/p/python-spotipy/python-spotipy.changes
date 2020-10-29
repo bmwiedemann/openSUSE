@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:29:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.16.1:
+  * Fixed
+    + playlist_tracks example code no longer prints extra
+      characters on final loop iteration
+    + SpotifyException now thrown when a request fails & has no
+      response (#571, #581)
+    + Added scope, playlist-read-private, to examples that access
+      user playlists using the spotipy api:
+      current_user_playlists()
+    + Enable retries for POST, DELETE, PUT (#577)
+  * Changed
+    + both inline and starting import lists are sorted using isort
+      module
+    + changed Max Retries exception code from 599 to 429
+- Update to 2.16.0:
+  * Added
+    + open_browser can be passed to the constructors of
+      SpotifyOAuth and SpotifyPKCE to make it easier to authorize
+      in browserless environments
+- Update to 2.15.0:
+  * Added
+    + SpotifyPKCE.parse_auth_response_url, mirroring that method in
+      SpotifyOAuth
+  * Changed
+    + Specifying a cache_path or username is now optional
+  * Fixed
+    + Using SpotifyPKCE.get_authorization_url will now generate a
+      code challenge if needed
+- Update to 2.14.0:
+  * Added
+    + (experimental) Support to search multiple/all markets at
+      once.
+    + Support to test whether the current user is following certain
+      users or artists
+    + Proper replacements for all deprecated playlist endpoints (See
+      https://developer.spotify.com/community/news/2018/06/12/changes-to-playlist-uris/
+      and below)
+    + Allow for OAuth 2.0 authorization by instructing the user to
+      open the URL in a browser instead of opening the browser.
+    + Reason for 403 error in SpotifyException
+    + Support for the PKCE Auth Flow
+    + Support to advertise different language to Spotify
+    + Added 'collaborative' parameter to user_playlist_create
+      method.
+    + Enforce CHANGELOG update on PR
+    + Adds additional_types parameter to retrieve currently playing
+      podcast episode
+    + Support to get info about a single category
+  * Deprecated
+    + user_playlist_change_details in favor of
+      playlist_change_details
+    + user_playlist_unfollow in favor of
+      current_user_unfollow_playlist
+    + user_playlist_add_tracks in favor of playlist_add_items
+    + user_playlist_replace_tracks in favor of
+      playlist_replace_items
+    + user_playlist_reorder_tracks in favor of
+      playlist_reorder_items
+    + user_playlist_remove_all_occurrences_of_tracks in favor of
+      playlist_remove_all_occurrences_of_items
+    + user_playlist_remove_specific_occurrences_of_tracks in favor
+      of playlist_remove_specific_occurrences_of_items
+    + user_playlist_follow_playlist in favor of
+      current_user_follow_playlist
+    + user_playlist_is_following in favor of playlist_is_following
+    + playlist_tracks in favor of playlist_items
+  * Fixed
+    + fixed issue where episode URIs were being converted to track
+      URIs in playlist calls
+
+-------------------------------------------------------------------
 Tue Jul  7 06:56:38 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.13.0:

@@ -77,4 +77,12 @@
 - Skip one test that requires external internet access</comment>
     <requestid>819125</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3da72a7da4d35766bface53546aae6c</srcmd5>
+    <version>2.16.1</version>
+    <time>1603979582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844848</requestid>
+  </revision>
 </revisionlist>
