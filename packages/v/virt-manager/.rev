@@ -1678,4 +1678,12 @@
     <comment>Fix for boo#1178141 - Accomodate qemu modularization</comment>
     <requestid>844154</requestid>
   </revision>
+  <revision rev="213" vrev="3">
+    <srcmd5>c5de6136d24aa32ac1ec50157b026da4</srcmd5>
+    <version>3.1.0</version>
+    <time>1603959763</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1177620. Let libvirt decide which nic to default to for HVM guests</comment>
+    <requestid>844628</requestid>
+  </revision>
 </revisionlist>

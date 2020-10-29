@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:16:41 MDT 2020 - carnold@suse.com
+
+- bsc#1177620 - [xen] deployed WIN2K19 guest system could not find
+  a driver for network adapter
+  virtinst-set-default-nic.patch
+
+-------------------------------------------------------------------
 Sun Oct 25 02:34:44 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - boo#1178141 - Accomodate qemu modularization with respect to
