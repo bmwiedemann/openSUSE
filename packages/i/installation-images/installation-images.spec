@@ -646,7 +646,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.24
+Version:        16.25
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
@@ -752,6 +752,9 @@ export BOOTMENU_NO_UPGRADE=1
 %if 0%{?config_yast_selfupdate:1}
 export YAST_SELFUPDATE=%{config_yast_selfupdate}
 %endif
+# check that we are generally ok
+make test
+# build it
 make THEMES=%theme
 %ifarch %ix86 x86_64
 %if %{with xen}

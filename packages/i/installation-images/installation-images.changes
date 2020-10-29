@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Fri Oct 23 14:27:46 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#434
+- add framework for perl tests
+- cleanup Conv2Image
+- remove minix support
+- cleanup MakeExt2Image
+- move shellcheck checks into test framework
+- add regression test for dash bug bsc#1177691
+- add tests for CompressImage
+- add tests for Conv2Image
+- documented CompressImage.pm
+- documented lib/Conv2Image.pm
+- reworked doc in MakeExt2Image.pm
+- adjusted 10_lib_compress_image.t
+- added test for MakeExt2Image
+- removed obsolete FAT fs modules
+- enable tests
+- 16.25
+
+--------------------------------------------------------------------
 Tue Oct 13 08:21:31 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#430
