@@ -24,4 +24,20 @@
     <comment>py38 fix</comment>
     <requestid>782830</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0533b731b72be88ad3af17dc2f7b2a9</srcmd5>
+    <version>0.14</version>
+    <time>1603961265</time>
+    <user>dimstar_suse</user>
+    <comment>- skip tests that fail on 32bit 
+
+- update to 0.14:
+  * python 3.8 support
+  * Various improvements w.r.t. type annotations &amp; typing
+  * Fix pure-Python implementation to accept keyword argument
+  * Fix the mutation API to maintain elements count correctly
+  * Allow None to be used as key in pure-Python implementation.
+- remove py38.patch (upstream)</comment>
+    <requestid>841417</requestid>
+  </revision>
 </revisionlist>
