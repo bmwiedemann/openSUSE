@@ -65,6 +65,8 @@ release files, which this project aims to track.
 %prep
 %setup -q -n wcwidth-%{version}
 sed -i 's/--cov[-=a-z]*//g' tox.ini
+# this option is nonsense
+sed -i 's/looponfailroots.*//' tox.ini
 
 %build
 %python_build

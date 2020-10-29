@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:12:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Remove nonsense keyword (breaks pytest)
+
+-------------------------------------------------------------------
 Fri Jul 17 07:47:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.2.5
