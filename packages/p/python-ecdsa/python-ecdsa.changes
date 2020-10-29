@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:14:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Support for reading and writing private keys in PKCS#8 format.
+  * `to_pem` and `to_der` now accept new parameter, `format`, to specify
+  * the format of the encoded files, either the dafault, legacy "ssleay", or
+  * the new `pkcs8` to use PKCS#8. Note that only unencrypted PKCS#8 files are
+  * supported.
+  * Add `allow_truncate` to `verify` in `VerifyingKey`, it defaults to True,
+  * when specified as False, use of large hashes smaller than curves will be
+  * disallowed (as it was in 0.14.1 and earlier).
+  * Correctly calculate signatures for private keys equal to n-1.
+  * Make `PointJacobi` and thus `SigningKey` and `VerifyingKey` pickleable.
+
+-------------------------------------------------------------------
 Mon Feb 24 15:34:49 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15
