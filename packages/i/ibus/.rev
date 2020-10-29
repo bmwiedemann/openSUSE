@@ -933,4 +933,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
 - Move xim.d files to /usr/etc when available, which is</comment>
     <requestid>839481</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>f4e8df7b188d5a98cd47d8a028f7ec23</srcmd5>
+    <version>1.5.23</version>
+    <time>1603959718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844097</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:18:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Add vala-0.50.patch: Fix build with vala 0.50 (gh#ibus/ibus#2265)
+
+-------------------------------------------------------------------
 Wed Sep 30 06:02:24 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.5.23

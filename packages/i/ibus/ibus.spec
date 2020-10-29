@@ -59,6 +59,8 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
+# PATCH-FIX-UPSTREAM Fix build with vala 0.50 - gh#ibus/ibus#2265
+Patch13:        vala-0.50.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -195,6 +197,7 @@ cp -r %{SOURCE11} .
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 autoreconf -fi
