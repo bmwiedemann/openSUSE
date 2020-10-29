@@ -321,6 +321,7 @@ Recommends:     plasma-nm5
 Recommends:     plasma5-pa
 Recommends:     plasma5-pk-updates
 Recommends:     plasma5-addons
+Recommends:     plasma5-disks
 Recommends:     plasma5-thunderbolt
 Recommends:     kgamma5
 # boo#1177628
@@ -773,13 +774,8 @@ Obsoletes:      patterns-openSUSE-sw_management_kde4 < %{version}
 Supplements:    packageand(patterns-kde-kde_plasma:patterns-yast-yast2_basis)
 # from data/KDE4-YaST
 Requires:       libyui-qt-pkg
-# SLE/Leap 15.1 or Tumbleweed
-%if 0%{?sle_version} > 150000 || 0%{?suse_version} >= 1550
-Requires:       yast2-theme-oxygen
-%else
-Requires:       yast2-branding-openSUSE-Oxygen
-%endif
 Requires:       yast2-control-center-qt
+Recommends:     (yast2-theme-oxygen if oxygen5-icon-theme)
 
 %description kde_yast
 Graphical YaST user interfaces for the KDE desktop.
