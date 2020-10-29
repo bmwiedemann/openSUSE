@@ -18,11 +18,10 @@
 
 %define skip_python2 1
 Name:           python-breathe
-Version:        4.19.2
+Version:        4.22.1
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/michaeljones/breathe
 Source:         https://github.com/michaeljones/breathe/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx >= 3.0.4}
