@@ -69,4 +69,12 @@ Needed for future versions of fwupd</comment>
     <comment>New stable release</comment>
     <requestid>820048</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>49a87f4fe3dcc221bac127b6413cb589</srcmd5>
+    <version>0.2.1</version>
+    <time>1603959716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844081</requestid>
+  </revision>
 </revisionlist>
