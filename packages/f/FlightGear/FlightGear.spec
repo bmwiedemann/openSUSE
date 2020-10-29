@@ -16,17 +16,15 @@
 #
 
 
-%define main_version 2020.1
+%define main_version 2020.3
 Name:           FlightGear
-Version:        %{main_version}.3
+Version:        %{main_version}.1
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/flightgear-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix_language_detection.patch
 
 BuildRequires:  SimGear-devel = %{version}
 BuildRequires:  cmake
@@ -49,6 +47,7 @@ BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 
 # Additional dependencies to enable FlightGear's new Qt launcher interface
+BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
@@ -65,7 +64,6 @@ expanded and improved upon by anyone interested in contributing
 
 %prep
 %setup -q -n flightgear-%{version}
-%patch0 -p1
 
 # remove some unneeded doc files
 for ext in Cygwin IRIX Joystick Linux MSVC MSVC8 MacOS SimGear Unix Win32-X autoconf mingw plib src xmlsyntax; do
@@ -109,6 +107,7 @@ cd %{buildroot}%{_bindir} && rm -f GPSsmooth MIDGsmooth UGsmooth metar yasim yas
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
+%{_datadir}/metainfo/org.flightgear.FlightGear.metainfo.xml
 %{_datadir}/bash-completion/completions/fgfs
 %{_datadir}/zsh/site-functions/_fgfs
 
