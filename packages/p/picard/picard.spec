@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.5
+Version:        2.5.1
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:47:43 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.5.1:
+  Bugfixes:
+  * PICARD-1987 - Special variables %_multiartist%, %_pregap%,
+    %_datatrack% and %_totalalbumtracks% missing after files
+    got matched to a track
+  * PICARD-1988 - Aborts if directory scan finds a directory which
+    cannot be read
+  * PICARD-1989 - Auto-sizing does not work right on first column
+  * PICARD-1990 - Case-only changes to file names are not applied
+    on Windows if running with Python >= 3.8
+  Improvements:
+  * PICARD-1985 - Support chorus master recording relationships
+    as "performer:chorus master" instead of second conductor
+  * PICARD-1995 - Add command line parameter --no-player to
+    disable media player
+  * PICARD-1997 - Reduce performance impact of fingerprinting column
+
+-------------------------------------------------------------------
 Tue Oct 27 06:29:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.5:
