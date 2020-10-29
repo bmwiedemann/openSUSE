@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:50:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use the correct, upstream provided tarball.
+
+-------------------------------------------------------------------
+Tue Oct 20 13:33:56 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 20.10.0:
+  + core:
+    - Filter out repeated forms.
+    - Implement EmbedStream::reset().
+    - CairoOutputDev: evict just font faces owned solely by cache.
+    - Splash: Rename Yd to Ydown, Xu to Xup, etc.
+    - Splash: fix crash in out-of-memory situation.
+    - Fix some undefined behaviour situation with forged files.
+    - Compability fix for Forms.
+    - Fix fetching of Objects failing in some cases.
+    - Fix clearing date in Annot setModified/setDate.
+    - TextSelectionPainter: support glyphless fonts.
+    - Splash: Don't try read past end of image.
+    - avoid abort() on large memory allocation.
+    - Fix memory leak on broken files.
+    - Fix potential invalid memory read.
+    - Small code improvements.
+    - Sub-page objects: initialize clip max values considering the
+      render resolution.
+    - Splash: Set initial line width to 1.
+    - Fix stack overflow with specially crafted files.
+    - GfxShading: Simplify holding the Function.
+    - Splash: Fix x86 + windows asm build.
+    - Fix regression on PS conversion..
+      Regression only happened on applications that are locale
+      enabled i.e. Okular but not pdftops, when using a quite new
+      lcms and the user locale uses , as decimal separator instead
+      of .
+    - Add UTF16LE support to TextStringToUCS4, even if the standard
+      clearly says it should be UTF16BE
+  + qt5:
+    - Document TextAnnotation::inplaceAlign.
+    - Make Annotation::setModification/CreationDate work on
+      existing annots.
+    - Be a bit more stubborn converting dates that come from xml.
+    - Clean as many null characters from the end as possible when
+      converting strings.
+    - Deprecate Document::toc.
+    - Deprecate AnnotationUtils.
+  + glib:
+    - Add accessor functions for PopplerAttachment.
+    - Deprecate PopplerAttachment GTime fields.
+    - Deprecate PopplerDocument date properties.
+  + utils:
+    - pdftoppm: report error and exit if output file cannot be
+      written.
+    - Document that PDF-file can be '-' to read it from stdin.
+  + build system:
+    - cmake: Modern way to link against libpng, zlib and libtiff.
+    - cmake: Remove stray support for lcms1 in pdftocairo.
+  + qt6:
+    - Add work in progress qt6 port.
+
+-------------------------------------------------------------------
 Fri Jul  3 15:15:56 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to version 0.90.0
