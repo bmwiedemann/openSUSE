@@ -688,4 +688,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>830124</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>eea3bd18c91532907f553da22c2d6802</srcmd5>
+    <version>3.2.1</version>
+    <time>1603961177</time>
+    <user>dimstar_suse</user>
+    <comment>- add sphinx-pygments-compat.patch (fix tests with newer pygments)</comment>
+    <requestid>838296</requestid>
+  </revision>
 </revisionlist>

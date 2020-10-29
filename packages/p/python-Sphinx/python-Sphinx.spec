@@ -38,6 +38,8 @@ Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%
 Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
 Source2:        python3.inv
 Source99:       python-Sphinx-rpmlintrc
+# PATCH-FIX-UPSTREAM: https://patch-diff.githubusercontent.com/raw/sphinx-doc/sphinx/pull/8205.patch
+Patch0:         sphinx-pygments-compat.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -217,6 +219,7 @@ This package contains the HTML documentation for Sphinx.
 
 %prep
 %setup -q -n Sphinx-%{version}
+%autopatch -p1
 
 sed -i 's/\r$//' sphinx/themes/basic/static/jquery.js # Fix wrong end-of-line encoding
 

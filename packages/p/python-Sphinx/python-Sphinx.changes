@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:45:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add sphinx-pygments-compat.patch (fix tests with newer pygments) 
+
+-------------------------------------------------------------------
 Tue Aug 18 14:44:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.2.1:

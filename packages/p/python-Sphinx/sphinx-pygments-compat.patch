@@ -1,0 +1,36 @@
+From 85b24a2e88ea71edc728aff3b078d34c2f374f06 Mon Sep 17 00:00:00 2001
+From: Takeshi KOMIYA <i.tkomiya@gmail.com>
+Date: Sun, 13 Sep 2020 09:16:32 +0900
+Subject: [PATCH] Fix our test failed with pygments-2.7.0
+
+Since pygments-2.7.0, it has changed the style of output HTML.
+That makes our test broken.  This fixes it to pass with new pygments.
+---
+ tests/test_build_html.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_build_html.py b/tests/test_build_html.py
+index e949f11572..1efc6c14a6 100644
+--- a/tests/test_build_html.py
++++ b/tests/test_build_html.py
+@@ -10,8 +10,10 @@
+ 
+ import os
+ import re
++from distutils.version import LooseVersion
+ from itertools import cycle, chain
+ 
++import pygments
+ import pytest
+ from html5lib import HTMLParser
+ 
+@@ -1591,4 +1593,8 @@ def test_html_codeblock_linenos_style_inline(app):
+     app.build()
+     content = (app.outdir / 'index.html').read_text()
+ 
+-    assert '<span class="lineno">1 </span>' in content
++    pygments_version = tuple(LooseVersion(pygments.__version__).version)
++    if pygments_version > (2, 7):
++        assert '<span class="linenos">1</span>' in content
++    else:
++        assert '<span class="lineno">1 </span>' in content
