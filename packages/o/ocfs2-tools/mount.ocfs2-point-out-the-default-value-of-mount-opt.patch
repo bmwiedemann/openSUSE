@@ -1,0 +1,44 @@
+From faf103905ec641f1266b93e584d4949cd4ef49cd Mon Sep 17 00:00:00 2001
+From: Gang He <ghe@suse.com>
+Date: Thu, 29 Oct 2020 17:34:35 +0800
+Subject: [PATCH] mount.ocfs2: point out the default value of mount options
+
+The default value of some mount options should be clearly pointed
+out in the man page. e.g. update access time, acl, user_xattr.
+This can help users to simplify mount command line.
+
+Signed-off-by: Gang He <ghe@suse.com>
+---
+ mount.ocfs2/mount.ocfs2.8.in | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/mount.ocfs2/mount.ocfs2.8.in b/mount.ocfs2/mount.ocfs2.8.in
+index a36bdc8c..ff78d193 100644
+--- a/mount.ocfs2/mount.ocfs2.8.in
++++ b/mount.ocfs2/mount.ocfs2.8.in
+@@ -26,7 +26,7 @@ The file system will not update access time.
+ .TP
+ \fBrelatime\fR
+ The file system will update atime only if the on-disk atime is older than mtime
+-or ctime.
++or ctime. This is the default mode.
+ 
+ .TP
+ \fBstrictatime,atime\_quantum=nrsec\fR
+@@ -36,11 +36,11 @@ zero to always update atime. These two options need work together.
+ 
+ .TP
+ \fB[no]acl\fR
+-Enables / disables POSIX ACLs (access control lists) support.
++Enables / disables POSIX ACLs (access control lists) support. It is enabled by default.
+ 
+ .TP
+ \fB[no]user_xattr\fR
+-Enables / disables extended user attributes.
++Enables / disables extended user attributes. It is enabled by default.
+ 
+ .TP
+ \fBcommit=nrsec\fR
+-- 
+2.12.3
+

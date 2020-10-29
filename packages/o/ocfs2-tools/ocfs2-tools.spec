@@ -62,6 +62,7 @@ Patch503:       mounted.ocfs2-use-sys-sysmacros.h-include-for-makede.patch
 Patch504:       fix-build-failure-with-glibc-2.28.patch
 Patch505:       debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
 Patch506:       mount.ocfs2-add-nocluster-mount-option-support.patch
+Patch507:       mount.ocfs2-point-out-the-default-value-of-mount-opt.patch
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -176,6 +177,7 @@ OCFS2 filesystem.
 %patch504 -p1
 %patch505 -p1
 %patch506 -p1
+%patch507 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

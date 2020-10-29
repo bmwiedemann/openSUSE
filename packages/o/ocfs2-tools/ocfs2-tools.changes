@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:10:30 UTC 2020 - ghe@suse.com
+
+- Point out the default value of mount options (bsc#1178248)
+  + mount.ocfs2-point-out-the-default-value-of-mount-opt.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 10:50:30 UTC 2020 - ghe@suse.com
 
 - Add nocluster mount option support (bsc#1174943)
