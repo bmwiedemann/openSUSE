@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Oct 29 03:13:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012000	2020-10-28
+   [ Documentation ]
+   - Update NEWS file.
+  1.011_011	2020-10-16
+   [ Test Suite ]
+   - Bugs in old versions of Return::Type prevent integration tests from
+     passing on Perl 5.8.x; those tests now require Return::Type 0.007 or
+     above.
+   - More tests for Type::Coercion::FromMoose.
+   [ Packaging ]
+   - If the EXTENDED_TESTING environment variable is true, Perl 5.8.9 or
+     above is being used, and either Type::Tiny's version contains '_' or
+     testing is running on Travis CI, then Makefile.PL will add extra testing
+     dependencies.
+   [ Other ]
+   - Remove unnecessary BEGIN block in Eval::TypeTiny.
+  1.011_010	2020-10-16
+   - Simple useful coercions from Str for Type::Tiny::Enum (and
+     Types::Standard::Enum).
+  1.011_009	2020-10-09
+   [ Documentation ]
+   - Add _ForeignTypeConstraint to AllTypes.pod.
+   [ Test Suite ]
+   - Add tests for _ForeignTypeConstraint.
+   - Improve test coverage by adding tests for various esoteric parts of the
+     distribution and edge cases.
+   [ Other ]
+   - More efficient use of Type::Tiny::XS by Types::TypeTiny.
+   - Refactoring of Types::TypeTiny.
+   - Where various parts of Type::Tiny internally use type constraints to
+     check values, prefer is_* and assert_* functions over method calls.
+  1.011_008	2020-10-07
+   [ Documentation ]
+   - Some minor tidyups and updates to Type::Tiny::Manual.
+   [ Test Suite ]
+   - Better tests for the placeholder type constraints created by
+     Type::Library -declare flag.
+   - Test integration with Type::Nano as an example of a generic
+     non-Type::Tiny type constraint class.
+   - Test that $type->() works with subclasses that override the
+     assert_return method.
+   - Write tests for some internal undocumented methods.
+   [ Other ]
+   - Added: Type::Utils::assert() function.
+  1.011_007	2020-10-06
+   [ Bug Fixes ]
+   - ArgsObject inlining was closing over a coderef in a way that didn't work
+     on archaic versions of Perl. Resolve by calling the coderef outside the
+     closure.
+  1.011_006	2020-10-02
+   [ Documentation ]
+   - Include JSONCapable type example.
+   [ Test Suite ]
+   - Improved test coverage for Type::Library.
+   - Improved test coverage for Type::Params.
+   - Improved test coverage for Type::Registry.
+   - Improved test coverage for Type::Tiny::Union.
+   - Improved tests for Type::Utils::is().
+   - Various tests for garbage collection using Devel::Refcount.
+   [ Other ]
+   - Added: Type::Params now exports an ArgsObject type constraint.
+   - Test::TypeTiny's should_pass and should_fail exercise type constraints
+     in even more ways in EXTENDED_TESTING mode.
+  1.011_005	2020-09-30
+   - Added: Type::Library import now supports -extends and -utils flags.
+   - Type::Library -base import flag now marks the caller package as loaded
+     in %INC.
+  1.011_004	2020-09-30
+   [ Bug Fixes ]
+   - Make predeclared type constraints work better for Zydeco.
+   [ Documentation ]
+   - Document that ArrayLike and HashLike are now parameterizable.
+   [ Test Suite ]
+   - Make test suite work better with App::Yath.
+  1.011_003	2020-09-25
+   [ Bug Fixes ]
+   - Old versions of Data::Dumper would sometimes die when dumping certain
+     overloaded objects. Type::Tiny::_dd() now catches this in an eval {}.
+   - Types::Standard would sometimes complain about very old versions of
+     Scalar::Util.
+   [ Other ]
+   - ArrayLike and HashLike are now parameterizable, though the
+     implementation for the parameterized version is in pure Perl, not XS.
+   - Type::Tiny::Enum better caches regexps.
+   - Updated: ArrayLike, HashLike, CodeLike, and StringLike type constraints
+     can use XS if Type::Tiny::XS 0.022 is installed.
+  1.011_002	2020-09-22
+   - Added: Type::Utils now exports an `is` function but it needs to be
+     requested explicitly.
+  1.011_001	2020-09-21
+   [ Documentation ]
+   - Update the NEWS file.
+   [ Other ]
+   - Added: Add new list processing functions to Type::Tiny.
+  1.011_000	2020-09-15
+   [ Documentation ]
+   - Describe deficiencies of is_* functions for parameterized types.
+     Fixes RT#132918.
+     <https://rt.cpan.org/Public/Bug/Display.html?id=132918>
+   [ Other ]
+   - Type::Tiny::Enum now generates faster regexps to validate enums. (Code
+     stolen from Regexp::Trie.)
+
+-------------------------------------------------------------------
 Sat Sep  5 03:26:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.010006
