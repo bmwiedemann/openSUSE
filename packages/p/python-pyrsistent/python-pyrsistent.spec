@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-pyrsistent
-Version:        0.16.0
+Version:        0.17.3
 Release:        0
 Summary:        Persistent, Functional, Immutable data structures
 License:        MIT

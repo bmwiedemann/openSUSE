@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:11:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.17.3:
+ * Fix #208, release v0.17.3 with proper meta data requiring Python >= 3.5.
+ * Add "python_requires >= 2.7" to setup.py in preparation for Python 2.7 incompatible updates
+ * Same as 0.17.1 released with more recent version of setuptools to get proper meta data for in place.
+ * Restrict package to Python >= 3.5 to not break unpinned Python 2 dependencies. Thanks @vphilippon
+ * Remove Python 2 support code. This includes dropping some compatibility code and the dependency on
+   six. Thanks @djailla for this.
+ * Fix #200, python 3 exception chaining. This is a minor backwards incompatibility, hence stepping
+   to 0.17.0. Thanks @cool-RR for this! 
+
+-------------------------------------------------------------------
 Fri Jul 17 07:40:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.16.0:
