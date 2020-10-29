@@ -24,13 +24,12 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.7.0
+Version:        5.7.2
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
-Patch0:         skip-flaky-i586.patch
 Patch1:         skip-obs.patch
 # PATCH-FIX-UPSTREAM skip_failing_tests.patch gh#giampaolo/psutil#1635 mcepl@suse.com
 # skip tests failing because of incomplete emulation of the environment in osc build

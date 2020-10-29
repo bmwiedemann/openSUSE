@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:09:55 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.7.2:
+  * parallel tests on UNIX (make test-parallel). They're twice as fast!
+  * 1741: "make build/install" is now run in parallel and it's about 15% faster on UNIX.
+  * 1747: Process.wait() on POSIX returns an enum, showing the negative signal which was used to terminate the process
+  * 1747: Process.wait() return value is cached so that the exit code can be retrieved on then next call.
+  * 1747: Process provides more info about the process on str() and repr() (status and exit code):
+  * 1757: memory leak tests are now stable.
+  * 1768: [Windows] added support for Windows Nano Server. (contributed by Julien Lebot)
+  * 1726: [Linux] cpu_freq() parsing should use spaces instead of tabs on ia64. (patch by Michał Górny)
+  * 1760: [Linux] Process.rlimit() does not handle long long type properly.
+  * 1766: [macOS] NoSuchProcess may be raised instead of ZombieProcess.
+  * 1781: fix signature of callback function for getloadavg(). (patch by Ammar Askar)
+  - remove skip-flaky-i586.patch (obsolete)
+
+-------------------------------------------------------------------
 Fri Aug 21 15:27:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_failing_tests.patch to skip tests failing because of

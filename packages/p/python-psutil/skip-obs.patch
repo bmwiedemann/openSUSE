@@ -1,8 +1,8 @@
-Index: psutil-5.7.0/psutil/tests/__init__.py
+Index: psutil-5.7.2/psutil/tests/__init__.py
 ===================================================================
---- psutil-5.7.0.orig/psutil/tests/__init__.py
-+++ psutil-5.7.0/psutil/tests/__init__.py
-@@ -174,7 +174,7 @@ HAS_SENSORS_BATTERY = hasattr(psutil, "s
+--- psutil-5.7.2.orig/psutil/tests/__init__.py
++++ psutil-5.7.2/psutil/tests/__init__.py
+@@ -185,7 +185,7 @@ HAS_SENSORS_BATTERY = hasattr(psutil, "s
  try:
      HAS_BATTERY = HAS_SENSORS_BATTERY and bool(psutil.sensors_battery())
  except Exception:
@@ -11,11 +11,11 @@ Index: psutil-5.7.0/psutil/tests/__init__.py
  HAS_SENSORS_FANS = hasattr(psutil, "sensors_fans")
  HAS_SENSORS_TEMPERATURES = hasattr(psutil, "sensors_temperatures")
  HAS_THREADS = hasattr(psutil.Process, "threads")
-Index: psutil-5.7.0/psutil/tests/test_misc.py
+Index: psutil-5.7.2/psutil/tests/test_misc.py
 ===================================================================
---- psutil-5.7.0.orig/psutil/tests/test_misc.py
-+++ psutil-5.7.0/psutil/tests/test_misc.py
-@@ -684,7 +684,7 @@ class TestScripts(unittest.TestCase):
+--- psutil-5.7.2.orig/psutil/tests/test_misc.py
++++ psutil-5.7.2/psutil/tests/test_misc.py
+@@ -664,7 +664,7 @@ class TestScripts(PsutilTestCase):
              src = f.read()
          ast.parse(src)
  
@@ -24,7 +24,7 @@ Index: psutil-5.7.0/psutil/tests/test_misc.py
          # make sure all example scripts have a test method defined
          meths = dir(self)
          for name in os.listdir(SCRIPTS_DIR):
-@@ -702,7 +702,7 @@ class TestScripts(unittest.TestCase):
+@@ -682,7 +682,7 @@ class TestScripts(PsutilTestCase):
                  if not stat.S_IXUSR & os.stat(path)[stat.ST_MODE]:
                      self.fail('%r is not executable' % path)
  
@@ -33,7 +33,7 @@ Index: psutil-5.7.0/psutil/tests/test_misc.py
          self.assert_stdout('disk_usage.py')
  
      def test_free(self):
-@@ -783,6 +783,8 @@ class TestScripts(unittest.TestCase):
+@@ -763,6 +763,8 @@ class TestScripts(PsutilTestCase):
      def test_battery(self):
          self.assert_stdout('battery.py')
  
@@ -42,11 +42,11 @@ Index: psutil-5.7.0/psutil/tests/test_misc.py
      def test_sensors(self):
          self.assert_stdout('sensors.py')
  
-Index: psutil-5.7.0/psutil/tests/test_linux.py
+Index: psutil-5.7.2/psutil/tests/test_linux.py
 ===================================================================
---- psutil-5.7.0.orig/psutil/tests/test_linux.py
-+++ psutil-5.7.0/psutil/tests/test_linux.py
-@@ -636,7 +636,7 @@ class TestSystemCPUCountLogical(unittest
+--- psutil-5.7.2.orig/psutil/tests/test_linux.py
++++ psutil-5.7.2/psutil/tests/test_linux.py
+@@ -637,7 +637,7 @@ class TestSystemCPUCountLogical(PsutilTe
          self.assertEqual(psutil.cpu_count(logical=True), num)
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
@@ -55,8 +55,8 @@ Index: psutil-5.7.0/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          num = len([x for x in out.split('\n') if not x.startswith('#')])
          self.assertEqual(psutil.cpu_count(logical=True), num)
-@@ -679,7 +679,7 @@ class TestSystemCPUCountLogical(unittest
- class TestSystemCPUCountPhysical(unittest.TestCase):
+@@ -680,7 +680,7 @@ class TestSystemCPUCountLogical(PsutilTe
+ class TestSystemCPUCountPhysical(PsutilTestCase):
  
      @unittest.skipIf(not which("lscpu"), "lscpu utility not available")
 -    def test_against_lscpu(self):
@@ -64,7 +64,7 @@ Index: psutil-5.7.0/psutil/tests/test_linux.py
          out = sh("lscpu -p")
          core_ids = set()
          for line in out.split('\n'):
-@@ -1008,7 +1008,7 @@ class TestSystemDiskPartitions(unittest.
+@@ -1009,7 +1009,7 @@ class TestSystemDiskPartitions(PsutilTes
  
      @unittest.skipIf(not hasattr(os, 'statvfs'), "os.statvfs() not available")
      @skip_on_not_implemented()
@@ -73,7 +73,7 @@ Index: psutil-5.7.0/psutil/tests/test_linux.py
          # test psutil.disk_usage() and psutil.disk_partitions()
          # against "df -a"
          def df(path):
-@@ -1183,7 +1183,7 @@ class TestSystemDiskIoCounters(unittest.
+@@ -1183,7 +1183,7 @@ class TestSystemDiskIoCounters(PsutilTes
                  self.assertEqual(ret.read_count, 1)
                  self.assertEqual(ret.write_count, 5)
  
@@ -82,11 +82,11 @@ Index: psutil-5.7.0/psutil/tests/test_linux.py
          def exists(path):
              if path == '/proc/diskstats':
                  return False
-Index: psutil-5.7.0/psutil/tests/test_posix.py
+Index: psutil-5.7.2/psutil/tests/test_posix.py
 ===================================================================
---- psutil-5.7.0.orig/psutil/tests/test_posix.py
-+++ psutil-5.7.0/psutil/tests/test_posix.py
-@@ -414,7 +414,7 @@ class TestSystemAPIs(unittest.TestCase):
+--- psutil-5.7.2.orig/psutil/tests/test_posix.py
++++ psutil-5.7.2/psutil/tests/test_posix.py
+@@ -371,7 +371,7 @@ class TestSystemAPIs(PsutilTestCase):
  
      # AIX can return '-' in df output instead of numbers, e.g. for /proc
      @unittest.skipIf(AIX, "unreliable on AIX")
@@ -95,24 +95,11 @@ Index: psutil-5.7.0/psutil/tests/test_posix.py
          def df(device):
              out = sh("df -k %s" % device).strip()
              line = out.split('\n')[1]
-Index: psutil-5.7.0/psutil/tests/test_contracts.py
+Index: psutil-5.7.2/psutil/tests/test_system.py
 ===================================================================
---- psutil-5.7.0.orig/psutil/tests/test_contracts.py
-+++ psutil-5.7.0/psutil/tests/test_contracts.py
-@@ -114,7 +114,7 @@ class TestAvailSystemAPIs(unittest.TestC
-     def test_win_service_get(self):
-         self.assertEqual(hasattr(psutil, "win_service_get"), WINDOWS)
- 
--    def test_cpu_freq(self):
-+    def _test_cpu_freq(self):
-         linux = (LINUX and
-                  (os.path.exists("/sys/devices/system/cpu/cpufreq") or
-                   os.path.exists("/sys/devices/system/cpu/cpu0/cpufreq")))
-Index: psutil-5.7.0/psutil/tests/test_system.py
-===================================================================
---- psutil-5.7.0.orig/psutil/tests/test_system.py
-+++ psutil-5.7.0/psutil/tests/test_system.py
-@@ -604,7 +604,7 @@ class TestDiskAPIs(unittest.TestCase):
+--- psutil-5.7.2.orig/psutil/tests/test_system.py
++++ psutil-5.7.2/psutil/tests/test_system.py
+@@ -589,7 +589,7 @@ class TestDiskAPIs(PsutilTestCase):
      def test_disk_usage_bytes(self):
          psutil.disk_usage(b'.')
  
