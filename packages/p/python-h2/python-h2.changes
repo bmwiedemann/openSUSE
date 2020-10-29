@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 13:10:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add hyperframe.patch to fix build with hyperframe 6
+
+-------------------------------------------------------------------
 Sat Mar 14 08:37:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

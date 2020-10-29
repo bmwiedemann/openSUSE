@@ -25,14 +25,16 @@ Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-hyper/hyper-h2/commit/c5d962a14373acf534be620d4e597dfeaff8a2ef bump hyperframe and fix protocol error
+Patch0:         hyperframe.patch
 BuildRequires:  %{python_module hpack >= 2.3}
-BuildRequires:  %{python_module hyperframe >= 5.2.0}
+BuildRequires:  %{python_module hyperframe >= 6.0}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-hpack >= 2.3
-Requires:       python-hyperframe >= 5.2.0
+Requires:       python-hyperframe >= 6.0
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.1.6
@@ -50,6 +52,7 @@ your programming paradigm.
 
 %prep
 %setup -q -n h2-%{version}
+%patch0 -p1
 
 %build
 %python_build

@@ -1,0 +1,192 @@
+From c5d962a14373acf534be620d4e597dfeaff8a2ef Mon Sep 17 00:00:00 2001
+From: Thomas Kriechbaumer <Kriechi@users.noreply.github.com>
+Date: Sun, 6 Sep 2020 12:56:48 +0200
+Subject: [PATCH] bump hyperframe and fix protocol error (#1238)
+
+---
+ setup.py                             |  2 +-
+ src/h2/connection.py                 |  8 ++------
+ src/h2/exceptions.py                 | 19 ++++++++++---------
+ src/h2/frame_buffer.py               | 26 ++++++++------------------
+ test/test_invalid_frame_sequences.py |  2 +-
+ 5 files changed, 22 insertions(+), 35 deletions(-)
+
+Index: h2-3.2.0/setup.py
+===================================================================
+--- h2-3.2.0.orig/setup.py
++++ h2-3.2.0/setup.py
+@@ -67,7 +67,7 @@ setup(
+         'Programming Language :: Python :: Implementation :: PyPy',
+     ],
+     install_requires=[
+-        'hyperframe>=5.2.0, <6',
++        'hyperframe>=6.0, <7',
+         'hpack>=3.0,<4',
+     ],
+     extras_require={
+Index: h2-3.2.0/h2/connection.py
+===================================================================
+--- h2-3.2.0.orig/h2/connection.py
++++ h2-3.2.0/h2/connection.py
+@@ -1721,12 +1721,8 @@ class H2Connection(object):
+         """
+         Receive a WINDOW_UPDATE frame on the connection.
+         """
+-        # Validate the frame.
+-        if not (1 <= frame.window_increment <= self.MAX_WINDOW_INCREMENT):
+-            raise ProtocolError(
+-                "Flow control increment must be between 1 and %d, received %d"
+-                % (self.MAX_WINDOW_INCREMENT, frame.window_increment)
+-            )
++        # hyperframe will take care of validating the window_increment.
++        # If we reach in here, we can assume a valid value.
+ 
+         events = self.state_machine.process_input(
+             ConnectionInputs.RECV_WINDOW_UPDATE
+Index: h2-3.2.0/h2/exceptions.py
+===================================================================
+--- h2-3.2.0.orig/h2/exceptions.py
++++ h2-3.2.0/h2/exceptions.py
+@@ -26,7 +26,7 @@ class FrameTooLargeError(ProtocolError):
+     """
+     The frame that we tried to send or that we received was too large.
+     """
+-    #: This error code that corresponds to this kind of Protocol Error.
++    #: The error code corresponds to this kind of Protocol Error.
+     error_code = h2.errors.ErrorCodes.FRAME_SIZE_ERROR
+ 
+ 
+@@ -36,7 +36,7 @@ class FrameDataMissingError(ProtocolErro
+ 
+     .. versionadded:: 2.0.0
+     """
+-    #: The error code that corresponds to this kind of Protocol Error
++    #: The error code corresponds to this kind of Protocol Error.
+     error_code = h2.errors.ErrorCodes.FRAME_SIZE_ERROR
+ 
+ 
+@@ -52,8 +52,7 @@ class FlowControlError(ProtocolError):
+     """
+     An attempted action violates flow control constraints.
+     """
+-    #: The error code that corresponds to this kind of
+-    #: :class:`ProtocolError <h2.exceptions.ProtocolError>`
++    #: The error code corresponds to this kind of Protocol Error.
+     error_code = h2.errors.ErrorCodes.FLOW_CONTROL_ERROR
+ 
+ 
+@@ -94,7 +93,7 @@ class NoSuchStreamError(ProtocolError):
+        <h2.exceptions.ProtocolError>`
+     """
+     def __init__(self, stream_id):
+-        #: The stream ID that corresponds to the non-existent stream.
++        #: The stream ID corresponds to the non-existent stream.
+         self.stream_id = stream_id
+ 
+ 
+@@ -106,7 +105,7 @@ class StreamClosedError(NoSuchStreamErro
+     stream has been removed.
+     """
+     def __init__(self, stream_id):
+-        #: The stream ID that corresponds to the nonexistent stream.
++        #: The stream ID corresponds to the nonexistent stream.
+         self.stream_id = stream_id
+ 
+         #: The relevant HTTP/2 error code.
+@@ -145,13 +144,15 @@ class InvalidBodyLengthError(ProtocolErr
+         )
+ 
+ 
+-class UnsupportedFrameError(ProtocolError, KeyError):
++class UnsupportedFrameError(ProtocolError):
+     """
+     The remote peer sent a frame that is unsupported in this context.
+ 
+     .. versionadded:: 2.1.0
++
++    .. versionchanged:: 4.0.0
++       Removed deprecated KeyError parent class.
+     """
+-    # TODO: Remove the KeyError in 3.0.0
+     pass
+ 
+ 
+@@ -181,6 +182,6 @@ class DenialOfServiceError(ProtocolError
+ 
+     .. versionadded:: 2.5.0
+     """
+-    #: The error code that corresponds to this kind of
++    #: The error code corresponds to this kind of
+     #: :class:`ProtocolError <h2.exceptions.ProtocolError>`
+     error_code = h2.errors.ErrorCodes.ENHANCE_YOUR_CALM
+Index: h2-3.2.0/h2/frame_buffer.py
+===================================================================
+--- h2-3.2.0.orig/h2/frame_buffer.py
++++ h2-3.2.0/h2/frame_buffer.py
+@@ -6,7 +6,7 @@ h2/frame_buffer
+ A data structure that provides a way to iterate over a byte buffer in terms of
+ frames.
+ """
+-from hyperframe.exceptions import InvalidFrameError
++from hyperframe.exceptions import InvalidFrameError, InvalidDataError
+ from hyperframe.frame import (
+     Frame, HeadersFrame, ContinuationFrame, PushPromiseFrame
+ )
+@@ -57,20 +57,6 @@ class FrameBuffer(object):
+ 
+         self.data += data
+ 
+-    def _parse_frame_header(self, data):
+-        """
+-        Parses the frame header from the data. Either returns a tuple of
+-        (frame, length), or throws an exception. The returned frame may be None
+-        if the frame is of unknown type.
+-        """
+-        try:
+-            frame, length = Frame.parse_frame_header(data[:9])
+-        except ValueError as e:
+-            # The frame header is invalid. This is a ProtocolError
+-            raise ProtocolError("Invalid frame header received: %s" % str(e))
+-
+-        return frame, length
+-
+     def _validate_frame_length(self, length):
+         """
+         Confirm that the frame is an appropriate length.
+@@ -137,9 +123,11 @@ class FrameBuffer(object):
+             raise StopIteration()
+ 
+         try:
+-            f, length = self._parse_frame_header(self.data)
+-        except InvalidFrameError:  # pragma: no cover
+-            raise ProtocolError("Received frame with invalid frame header.")
++            f, length = Frame.parse_frame_header(self.data[:9])
++        except (InvalidDataError, InvalidFrameError) as e:  # pragma: no cover
++            raise ProtocolError(
++                "Received frame with invalid header: %s" % str(e)
++            )
+ 
+         # Next, check that we have enough length to parse the frame body. If
+         # not, bail, leaving the frame header data in the buffer for next time.
+@@ -154,6 +142,8 @@ class FrameBuffer(object):
+         if f is not None:
+             try:
+                 f.parse_body(memoryview(self.data[9:9+length]))
++            except InvalidDataError:
++                raise ProtocolError("Received frame with non-compliant data")
+             except InvalidFrameError:
+                 raise FrameDataMissingError("Frame data missing or invalid")
+ 
+Index: h2-3.2.0/test/test_invalid_frame_sequences.py
+===================================================================
+--- h2-3.2.0.orig/test/test_invalid_frame_sequences.py
++++ h2-3.2.0/test/test_invalid_frame_sequences.py
+@@ -277,7 +277,7 @@ class TestInvalidFrameSequences(object):
+         with pytest.raises(h2.exceptions.ProtocolError) as e:
+             c.receive_data(frame_data)
+ 
+-        assert "Stream ID must be non-zero" in str(e.value)
++        assert "Received frame with invalid header" in str(e.value)
+ 
+     def test_get_stream_reset_event_on_auto_reset(self, frame_factory):
+         """
