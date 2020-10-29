@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:06:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.2.1:
+  * readme conversion to markdown
+  * pytest and readme updates
+  * code formatting improvements
+- remove remove_nose.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Aug 14 14:07:27 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add missing runtime dependencies

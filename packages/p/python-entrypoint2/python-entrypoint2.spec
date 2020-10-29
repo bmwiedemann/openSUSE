@@ -26,15 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-entrypoint2
-Version:        0.2
+Version:        0.2.1
 Release:        0
 Summary:        Command-line interface for python modules
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ponty/entrypoint2
 Source:         https://github.com/ponty/entrypoint2/archive/%{version}.tar.gz#/entrypoint2-%{version}.tar.gz
-# https://github.com/ponty/entrypoint2/pull/6
-Patch0:         remove_nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +55,6 @@ off entrypoint.
 
 %prep
 %setup -q -n entrypoint2-%{version}
-%patch0 -p1
 # argparse is py2.6 or older
 sed -i -e '/argparse/d' requirements.txt
 
@@ -74,13 +71,13 @@ sed -i -e '/argparse/d' requirements.txt
 
 %if %{with test}
 %check
-%pytest tests/test.py
+%pytest tests/test_all.py
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 %endif
 
