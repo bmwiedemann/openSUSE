@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:51:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove dependency on pytest-relaxed
+  * paramiko-pr1655-remove-pytest-relaxed.patch
+  * gh#paramiko/paramiko#1655 
+
+-------------------------------------------------------------------
 Fri Sep  4 06:29:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.7.2

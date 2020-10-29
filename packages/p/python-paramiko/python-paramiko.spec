@@ -26,6 +26,8 @@ Group:          Documentation/Other
 URL:            http://www.paramiko.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
+# PATCH-FIX-UPSTREAM paramiko-pr1655-remove-pytest-relaxed.patch gh#paramiko/paramiko#1655 -- pytest-relaxed is broken
+Patch1:         paramiko-pr1655-remove-pytest-relaxed.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.5}
@@ -33,8 +35,8 @@ BuildRequires:  %{python_module gssapi}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pyasn1 >= 0.1.7}
-BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +48,6 @@ Requires:       python-cryptography >= 2.5
 Requires:       python-pyasn1 >= 0.1.7
 BuildArch:      noarch
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
@@ -83,7 +84,6 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
 %pytest
 
 %files %{python_files}
