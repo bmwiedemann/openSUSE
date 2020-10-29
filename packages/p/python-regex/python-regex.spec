@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-regex
-Version:        2020.4.4
+Version:        2020.9.27
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Python-2.0
@@ -57,7 +57,8 @@ An alternate regex implementation. It differs from "re" in that
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-%pytest_arch %{buildroot}%{$python_sitearch}/regex
+# test_main invokes unittest.main, which raises SystemExit, which fails on pytest.
+%pytest_arch %{buildroot}%{$python_sitearch}/regex -k 'not test_main'
 
 %files %{python_files}
 %doc README.rst

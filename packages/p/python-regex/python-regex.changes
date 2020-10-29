@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  7 04:29:20 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to 2020.9.27
+  * Fuzzy-matching fixes
+  * Fix Memory Error in regex.findall 
+  * Added \h as an alias to [[:blank:]].
+  * Improved performance of string sets.
+
+-------------------------------------------------------------------
 Wed Apr 15 15:25:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2020.4.4
