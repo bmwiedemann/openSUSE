@@ -66,6 +66,7 @@ Requires:       runc >= 1.0.0~rc4
 Requires:       slirp4netns >= 0.4.0
 Requires:       catatonit
 Requires:       fuse-overlayfs
+Requires:       timezone
 Recommends:     %{name}-cni-config = %{version}
 Suggests:       katacontainers
 %{go_nostrip}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 14:08:32 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- add dependency to timezone package or podman fails to build a 
+  container (bsc#1178122)
+
+-------------------------------------------------------------------
 Wed Sep 30 14:07:34 UTC 2020 - rhafer@suse.com
 - Added patch varlink.patch to disable needless varlink code
   generation. This would cause compile failures in OBS.
