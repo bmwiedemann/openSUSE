@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:57:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.7.7.1:
+  * Fixed a memory leak in ``readdb()``.
+  * Fixed the ``Body.copy()`` method to correctly copy
+  object-specific fields across to the new object, like Saturn ring tilt
+  and Earth satellite catalog number.
+
+-------------------------------------------------------------------
 Fri Sep 13 12:22:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by the convertdate

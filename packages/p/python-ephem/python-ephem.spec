@@ -1,7 +1,7 @@
 #
 # spec file for package python-ephem
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pyname pyephem
 Name:           python-ephem
-Version:        3.7.7.0
+Version:        3.7.7.1
 Release:        0
 Summary:        Scientific-grade astronomy routines for Python
 License:        LGPL-3.0-only
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
-PyEphem provides an ephem Python package for performing high-precision astronomy computations. 
+PyEphem provides an ephem Python package for performing high-precision astronomy computations.
 
 %prep
 %setup -q -n %{pyname}-%{version}

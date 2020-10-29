@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>730704</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13fcb6eb64f79e362cf533239054c489</srcmd5>
+    <version>3.7.7.1</version>
+    <time>1603961125</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.7.1:
+  * Fixed a memory leak in ``readdb()``.
+  * Fixed the ``Body.copy()`` method to correctly copy
+  object-specific fields across to the new object, like Saturn ring tilt
+  and Earth satellite catalog number.</comment>
+    <requestid>835116</requestid>
+  </revision>
 </revisionlist>
