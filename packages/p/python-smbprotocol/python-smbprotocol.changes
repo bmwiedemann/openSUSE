@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 25 15:55:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  * Added experimental support for DFS shares when using smbclient
+    function.
+  * Added smbclient.ClientConfig() to set global default options
+    on new connections.
+  * Moved the SMB Header structures to smbprotocol.header.
+  * Added null_terminated option for a TextField value.
+  * Fix broken pipe errors that occur on long running connections
+    by sending a echo request for each connection session every
+    10 minutes.
+
+-------------------------------------------------------------------
 Tue Aug 25 12:38:01 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.0
