@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:42:06 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.30.6:
+  * Fix various minor warnings and other code quality issues
+  * Improve reader error handling
+  * Make all free functions tolerant of NULL
+  * Parse prefixed names more strictly
+
+-------------------------------------------------------------------
 Tue May 26 15:00:35 UTC 2020 - Giordano Boschetti <geekosdaw@gmail.com>
 
 - Updated to version 0.30.4

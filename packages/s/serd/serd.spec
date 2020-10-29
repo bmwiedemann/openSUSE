@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           serd
-Version:        0.30.4
+Version:        0.30.6
 Release:        0
 Summary:        A lightweight C library for RDF syntax
 License:        ISC
