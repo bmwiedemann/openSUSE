@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
 Sat Mar 14 08:35:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

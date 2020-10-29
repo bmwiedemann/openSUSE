@@ -32,7 +32,8 @@ BuildRequires:  %{python_module invoke >= 1.0}
 BuildRequires:  %{python_module lexicon}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-relaxed}
-BuildRequires:  %{python_module pytest}
+# gh#bitprophet/pytest-relaxed#12
+BuildRequires:  %{python_module pytest < 6.1}
 BuildRequires:  %{python_module releases >= 1.2}
 BuildRequires:  %{python_module semantic_version >= 2.4}
 BuildRequires:  %{python_module setuptools}
@@ -73,8 +74,6 @@ the Invoke project's communication channels for updates. Thanks!
 %setup -q -n invocations-%{version}
 %patch0 -p1
 %patch1 -p1
-# remove useless releasing test
-rm tests/packaging/release.py
 
 %build
 %python_build
@@ -84,13 +83,16 @@ rm tests/packaging/release.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-# With new sphinx this does not work at all so skip it
-#%%pytest
+# autodoc: With new sphinx this does not work at all so skip it
+# packaging: not applicable to openSUSE
+# cannot use --ignore because of pytest-relaxed plugin
+rm -r tests/autodoc/ tests/packaging/
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/invocations
+%{python_sitelib}/invocations-%{version}*info
 
 %changelog
