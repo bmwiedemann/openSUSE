@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 22 10:32:30 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201022.3934deb8:
+  * pkglistgen gocd: remove wrong -s target option for Leap MicroOS
+
+-------------------------------------------------------------------
+Thu Oct 22 09:21:33 UTC 2020 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20201022.fccc3b92:
+  * pkglistgen: add Leap 15.2 MicroOS back to pipeline
+
+-------------------------------------------------------------------
 Wed Oct 07 11:06:27 UTC 2020 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20201007.ccac00af:
