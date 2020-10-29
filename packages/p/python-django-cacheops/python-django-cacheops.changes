@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 26 04:16:31 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Switch to PyPI source
+- Update to v5.1
+  * support subqueries in annotations
+  * included tests into distro
+  * fixed .invalidated_update(), if updated QuerySet had related
+    fields selected
+  * fixed possible deadlock in .invalidated_update()
+  * fixed filtering with expressions
+  * fixed queries filtering in Exists
+  * updated min redis-py to 3.0.0
+
+-------------------------------------------------------------------
 Mon Sep  7 05:13:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

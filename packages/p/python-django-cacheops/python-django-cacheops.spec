@@ -19,29 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-cacheops
-Version:        5.0.1
+Version:        5.1
 Release:        0
 Summary:        Django ORM cache with automatic granular event-driven invalidation
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://github.com/Suor/django-cacheops
-Source:         https://github.com/Suor/django-cacheops/archive/%{version}.tar.gz#/django-cacheops-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-cacheops/django-cacheops-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-django >= 1.8
 Requires:       python-funcy >= 1.8
-Requires:       python-redis >= 2.9.1
+Requires:       python-redis >= 3.0.0
 Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module before-after}
 BuildRequires:  %{python_module django >= 1.8}
 BuildRequires:  %{python_module funcy >= 1.8}
-BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module redis >= 2.9.1}
+BuildRequires:  %{python_module redis >= 3.0.0}
 BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  redis
 # /SECTION
