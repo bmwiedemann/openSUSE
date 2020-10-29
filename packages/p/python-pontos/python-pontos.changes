@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:04:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 0.3.0
+  * Add possibility to update the version within a cmake project.
+  * Add possibility to execute version script via poetry run
+    version
+  * Add CHANGELOG.md handling (updating unreleased, get unreleased
+    information)
+  * Add release command to make a release
+  * Add prepare release command
+  * __main__ checks if there is CMakeLists.txt or pyproject.toml 
+    in path.
+  * Based on that it decide which version command it will execute.
+- Kill dephell dependency by using the PyPI sdist setup.py
+- Switch to plain python unittest because pytest finds some broken
+  functions in test_changelog_changelog.py
+- package for Python3.6 with dataclasses backport  despite upstream
+  not supporting it
+
+-------------------------------------------------------------------
 Tue Aug 11 13:50:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.2.0
