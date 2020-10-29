@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 04:05:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.3:
+  * Fix context handling in cycle statements
+  * Change constructor's label to 'constructor function'
+  * Add regex translator to package API
+  * More than 99% of W3C XPath 2.0 tests pass
+  * Add regex transpiler (for XPath/XQuery and XML Schema regular expressions)
+  * Hotfix for issue #30
+  * Extensive testing with W3C XPath 2.0 tests (~98% passed)
+  * Split context variables from in-scope variables (types)
+  * Add other XSD builtin atomic types 
+
+-------------------------------------------------------------------
 Wed Jun 24 03:51:04 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.6:

@@ -53,4 +53,21 @@
   * Integrate pull requests and fix bug on predicate selector</comment>
     <requestid>816748</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce542a336852028e901c306d7302639f</srcmd5>
+    <version>2.0.3</version>
+    <time>1603961200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.3:
+  * Fix context handling in cycle statements
+  * Change constructor's label to 'constructor function'
+  * Add regex translator to package API
+  * More than 99% of W3C XPath 2.0 tests pass
+  * Add regex transpiler (for XPath/XQuery and XML Schema regular expressions)
+  * Hotfix for issue #30
+  * Extensive testing with W3C XPath 2.0 tests (~98% passed)
+  * Split context variables from in-scope variables (types)
+  * Add other XSD builtin atomic types</comment>
+    <requestid>839912</requestid>
+  </revision>
 </revisionlist>
