@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 27 13:07:54 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.37:
+  * Save main and project configuration whenever documents are
+    opened/closed to reduce accidental loss of current session in the
+    event of a crash (can be disabled).
+  * Fix a possible crash when quitting
+  * Show OS info in debug messages which can and should be included
+    in bug reports to ease support and debugging.
+  * Update Scintilla to version 3.21.1.
+  * Add BibTeX (Mirco Schoenfeld) and Smalltalk
+  * Update FreeBasic, JavaScript, Lua, and Python filetypes.
+- Remove geany-avoid-segfault-on-quit.patch
+
+-------------------------------------------------------------------
 Wed Apr  8 21:24:34 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - geany-avoid-segfault-on-quit.patch: Add patch. (boo#1166820)

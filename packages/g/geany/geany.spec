@@ -17,7 +17,7 @@
 
 
 Name:           geany
-Version:        1.36
+Version:        1.37
 Release:        0
 Summary:        GTK-based integrated development environment
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream
 Patch0:         geany-appstream.patch
-Patch100:       geany-avoid-segfault-on-quit.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docutils
@@ -75,7 +74,6 @@ Geany's developers documentation
 %prep
 %setup -q
 %patch0 -p1
-%patch100 -p1
 
 %build
 autoreconf -i

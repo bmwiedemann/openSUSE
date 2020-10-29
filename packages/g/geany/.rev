@@ -429,4 +429,22 @@
 - geany.spec: Reference above new patch. (forwarded request 796769 from berny)</comment>
     <requestid>798371</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8d0bc96b182f60cb4f158c82b02b2e79</srcmd5>
+    <version>1.37</version>
+    <time>1603959760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.37:
+  * Save main and project configuration whenever documents are
+    opened/closed to reduce accidental loss of current session in the
+    event of a crash (can be disabled).
+  * Fix a possible crash when quitting
+  * Show OS info in debug messages which can and should be included
+    in bug reports to ease support and debugging.
+  * Update Scintilla to version 3.21.1.
+  * Add BibTeX (Mirco Schoenfeld) and Smalltalk
+  * Update FreeBasic, JavaScript, Lua, and Python filetypes.
+- Remove geany-avoid-segfault-on-quit.patch (forwarded request 844555 from polslinux)</comment>
+    <requestid>844558</requestid>
+  </revision>
 </revisionlist>
