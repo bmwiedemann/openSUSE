@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 20:56:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.4
+  * Update URLs and use https where possible
+  * Fix font size in speedreader (gxo#apps/xfce-dict#3)
+  * Added new icons and use reverse DNS file names
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Oct  7 09:06:51 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.3

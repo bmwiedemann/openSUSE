@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define panel_version 4.12.0
 Name:           xfce4-dict
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Xfce Dictionary Client Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
-Url:            https://goodies.xfce.org/projects/applications/xfce4-dict
+URL:            https://goodies.xfce.org/projects/applications/xfce4-dict
 Source:         https://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
