@@ -124,4 +124,13 @@ Changes from 0.16.0 to 0.17.0:
 </comment>
     <requestid>827972</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>90b6d88f44da1ef49102cfbaffba7ddf</srcmd5>
+    <version>0.18.1</version>
+    <time>1603961243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.1:
+  * Made uuid validator accept UUID objects</comment>
+    <requestid>841079</requestid>
+  </revision>
 </revisionlist>
