@@ -50,4 +50,24 @@
 - Remove merged patch pycountry-19.7.15-fix-reading-description.patch</comment>
     <requestid>729875</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d9196f7f6f4c37589ba79a0f6989b051</srcmd5>
+    <version>20.7.3</version>
+    <time>1603961167</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.7.3:
+  - Fix bug #37: (accidental) unconditional pkg_resources import.
+  - Add (auto-generated) __version__ attribute to the main module.
+  - Add fuzzy search to historic countries. (Fixe issue #26)
+  - Update to iso-codes 4.5.0.
+  - PR 9: Clean up the normalization (lower casing) of values in indexes and searches.
+    See PR https://github.com/flyingcircusio/pycountry/pull/9 for detailed
+    discussion. This also fixed issue #8.
+  - Smaller cleanups and build environment version bumps.
+  - PR 35: Python 3-only cleanups and updated Python minor version compatibility
+  - PR 33: Remove defunct bugtracker link from README (thanks, jwilk)
+  - P3 32: (Somewhat hilarious) Typo (thanks, jwilk)
+  - Moved to Git/Github; switched from Bitbucket Pipelines to Travis builds.</comment>
+    <requestid>838242</requestid>
+  </revision>
 </revisionlist>

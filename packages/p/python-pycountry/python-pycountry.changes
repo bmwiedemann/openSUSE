@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:13:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 20.7.3:
+  - Fix bug #37: (accidental) unconditional pkg_resources import.
+  - Add (auto-generated) __version__ attribute to the main module.
+  - Add fuzzy search to historic countries. (Fixe issue #26)
+  - Update to iso-codes 4.5.0.
+  - PR 9: Clean up the normalization (lower casing) of values in indexes and searches.
+    See PR https://github.com/flyingcircusio/pycountry/pull/9 for detailed
+    discussion. This also fixed issue #8.
+  - Smaller cleanups and build environment version bumps.
+  - PR 35: Python 3-only cleanups and updated Python minor version compatibility
+  - PR 33: Remove defunct bugtracker link from README (thanks, jwilk)
+  - P3 32: (Somewhat hilarious) Typo (thanks, jwilk)
+  - Moved to Git/Github; switched from Bitbucket Pipelines to Travis builds.
+
+-------------------------------------------------------------------
 Tue Sep 10 12:35:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 19.8.18:

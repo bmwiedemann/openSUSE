@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycountry
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %define real_name pycountry
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-pycountry
-Version:        19.8.18
+Version:        20.7.3
 Release:        0
 Summary:        Databases for ISO standards 639 3166 3166-2 4217 15924
 License:        LGPL-2.1-only
