@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 28 22:02:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1
+  Technical fixes
+  * When supplying a display scale on the command line, the
+    correct scaling mode is now applied, resulting in less
+    pixelated graphics.
+  General improvements
+  * Mission victory and intro videos now scale up to fullscreen
+
+-------------------------------------------------------------------
 Tue Oct 27 18:54:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.0
