@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-reportlab
-Version:        3.5.46
+Version:        3.5.51
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
@@ -56,7 +56,7 @@ sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,test
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%python_build --no-download-t1-files
 
 PYTHONPATH=$(readlink -f build/lib.linux-*/) \
     python3 docs/genAll.py

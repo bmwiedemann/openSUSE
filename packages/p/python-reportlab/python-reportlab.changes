@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:54:30 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.5.51
+  * fix malloc(0) issue in \_rl_accel.c \_fp_str
+    thanks to Hans-Peter Jansen <hpj@urpla.net> @ openSUSE
+- remove fix-rl_accel-crash.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 11:09:33 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add fix-rl_accel-crash.patch to fix a crash in rl_accel.
+
+-------------------------------------------------------------------
+Tue Sep 22 13:35:04 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.5.50
+  * Add BM ExtGState option (suggestion by tjj021 @ github
+  * Fix memory leak in _renderPM.c
+- Update to 3.5.49
+  * ViewerPreferencesPDFDictionary add /Duplex as possibility
+  * Doctemplate add support for all ViewerPreferencesPDFDictionary keys
+  * fix bugs in USPS_4State; Barcode inherits from Flowable and object.
+- Update to 3.5.48
+  * bug fix for balanced column special case unsplittable half column
+- Update to 3.5.47
+  * try to limit table style cell ranges
+
+-------------------------------------------------------------------
 Wed Jul 22 10:14:37 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to 3.5.46
