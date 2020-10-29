@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 12:47:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.25:
+  * Preserve non-updated contents of info sector, just in case
+    it contains program code
+  * When parsing config file, always use "C" locale for
+    case-insensitive comparisons
+
+-------------------------------------------------------------------
 Sat Mar 28 10:08:26 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.24:
