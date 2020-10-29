@@ -57,4 +57,18 @@
     <comment></comment>
     <requestid>822437</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb5e33de30a4754cc46a2692e8eacc65</srcmd5>
+    <version>0.7.0</version>
+    <time>1603961195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0
+  * Added support for sorting keys when dumping raw 
+    dictionaries by passing sort_keys=True to dumps() (#103).
+  * Keys are not longer sorted by default when dumping a raw 
+    dictionary but the original order will be preserved (#103).
+  * Fixed compliance with the 1.0.0rc1 TOML specification (#102).
+</comment>
+    <requestid>839722</requestid>
+  </revision>
 </revisionlist>

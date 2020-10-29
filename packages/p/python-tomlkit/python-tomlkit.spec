@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tomlkit
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
 URL:            https://github.com/sdispater/tomlkit
 Source:         https://files.pythonhosted.org/packages/source/t/tomlkit/tomlkit-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing >= 3.6}
@@ -64,6 +65,7 @@ Style preserving TOML library
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/tomlkit
+%{python_sitelib}/tomlkit-%{version}-py*.egg-info
 
 %changelog
