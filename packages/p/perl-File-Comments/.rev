@@ -35,4 +35,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>1f530c9bd00d82e588197ec6698dc044</srcmd5>
+    <version>0.08</version>
+    <time>1603959799</time>
+    <user>dimstar_suse</user>
+    <comment>- Regenerate spec file with cpanspec to fix build with perl 5.32
+</comment>
+    <requestid>844660</requestid>
+  </revision>
 </revisionlist>

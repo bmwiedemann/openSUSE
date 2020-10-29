@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 17:34:25 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Regenerate spec file with cpanspec to fix build with perl 5.32
+
+-------------------------------------------------------------------
 Thu Mar 31 10:11:47 UTC 2011 - coolo@novell.com
 
 - initial package 0.08

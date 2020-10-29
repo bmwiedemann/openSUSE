@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Comments
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           perl-File-Comments
 Version:        0.08
 Release:        0
 %define cpan_name File-Comments
 Summary:        Recognizes file formats and extracts format-specific comments
-License:        GPL-1.0+ or Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-Comments/
-Source:         http://www.cpan.org/authors/id/M/MS/MSCHILLI/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSCHILLI/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -33,6 +35,7 @@ BuildRequires:  perl(HTML::TreeBuilder)
 BuildRequires:  perl(Log::Log4perl) >= 0.5
 BuildRequires:  perl(Module::Pluggable) >= 2.4
 BuildRequires:  perl(PPI) >= 1.115
+BuildRequires:  perl(Pod::Parser) >= 1.14
 BuildRequires:  perl(Sysadm::Install) >= 0.11
 Requires:       perl(Archive::Tar) >= 1.22
 Requires:       perl(HTML::TokeParser) >= 2.28
@@ -40,6 +43,7 @@ Requires:       perl(HTML::TreeBuilder)
 Requires:       perl(Log::Log4perl) >= 0.5
 Requires:       perl(Module::Pluggable) >= 2.4
 Requires:       perl(PPI) >= 1.115
+Requires:       perl(Pod::Parser) >= 1.14
 Requires:       perl(Sysadm::Install) >= 0.11
 %{perl_requires}
 
@@ -68,14 +72,14 @@ BUGS, OR WANT TO CONTRIBUTE PLUGINS, PLEASE SEND THEM MY WAY.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
