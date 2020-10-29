@@ -27,8 +27,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/willmcgugan/rich
 Source:         https://github.com/willmcgugan/rich/archive/v%{version}.tar.gz#/rich-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-dephell-rpm-macros
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.4.0}
@@ -56,11 +56,10 @@ markdown and more to the terminal.
 %setup -q -n rich-%{version}
 
 %build
-%dephell_gensetup
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +68,7 @@ markdown and more to the terminal.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/rich
+%{python_sitelib}/rich-%{version}*-info
 
 %changelog
