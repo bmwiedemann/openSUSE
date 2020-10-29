@@ -17,17 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-modernize
-Version:        0.7
+Version:        0.8.0
 Release:        0
 Summary:        A tool for modernizing Python code using lib2to3
 License:        BSD-3-Clause AND Python-2.0
-URL:            https://github.com/python-modernize/python-modernize
-Source:         https://github.com/python-modernize/python-modernize/archive/%{version}.tar.gz#//modernize-%{version}.tar.gz
+URL:            https://github.com/PyCQA/modernize
+Source:         https://github.com/PyCQA/modernize/archive/v%{version}.tar.gz#/modernize-%{version}.tar.gz
+BuildRequires:  %{python_module fissix}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dbm
+Requires:       python-fissix
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -38,17 +41,19 @@ BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
-A hack on top of 2to3 for modernizing Python code.
+A hack on top of fissix for modernizing Python code.
 
 %prep
-%setup -q -n python-modernize-%{version}
-sed -i '/nose/d' setup.py
+%setup -q -n modernize-%{version}
+# disable pytest-cov
+sed -i 's/"--cov.*",//g' pyproject.toml
 
 %build
 %python_build
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/modernize
 %python_clone -a %{buildroot}%{_bindir}/python-modernize
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -56,14 +61,17 @@ sed -i '/nose/d' setup.py
 %pytest
 
 %post
+%python_install_alternative modernize
 %python_install_alternative python-modernize
 
 %postun
+%python_uninstall_alternative modernize
 %python_uninstall_alternative python-modernize
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
+%python_alternative %{_bindir}/modernize
 %python_alternative %{_bindir}/python-modernize
 %{python_sitelib}/*
 
