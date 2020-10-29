@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-urwid
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
