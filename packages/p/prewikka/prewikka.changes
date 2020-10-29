@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:30:37 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- prewikka 5.2.0:
+  * Allow periodic deletion of no-severity alerts
+  * Deprecate apps requiring deprecated apps
+  * Add a system for reloading failed plugins
+  * Compatibility with Elasticsearch 7
+  * Allow binary file import in prewikka-cli
+  * Add new plugins
+    + Local DB authentication
+    + Dataprovider and view for logs
+    + Statistics pages
+    + Risk overview
+    + External website embedding
+  * Improve DataSearch aggregation page
+  * Add JSON and text representations in IDMEF details
+  * Support multi-column sorting in DataSearch
+  * Add ability to disable session redirection mechanism
+  * Updates to CSRF protection
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Fri Oct 25 08:00:00 UTC 2019 - thomas.andrejak@gmail.com
 
 Bump version 5.1.1

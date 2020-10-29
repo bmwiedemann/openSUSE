@@ -76,4 +76,12 @@ Bump version 5.1.0
 </comment>
     <requestid>750892</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd074b716bfb5654e96ae9615855aa68</srcmd5>
+    <version>5.2.0</version>
+    <time>1603959798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844637</requestid>
+  </revision>
 </revisionlist>

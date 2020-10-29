@@ -1,7 +1,7 @@
 #
 # spec file for package prewikka
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           prewikka
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Graphical front-end analysis console for the Prelude Framework
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Frontends
-Url:            https://www.prelude-siem.org
-Source0:        https://www.prelude-siem.org/pkg/src/5.1.0/%{name}-%{version}.tar.gz
+URL:            https://www.prelude-siem.org
+Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz.sig
+Source2:        https://www.prelude-siem.org/attachments/download/233/RPM-GPG-KEY-Prelude-IDS#/%{name}.keyring
 Patch0:         prewikka-fix_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -46,10 +48,9 @@ Requires:       python3-python-dateutil
 Requires:       python3-pytz
 Requires:       python3-voluptuous
 Requires:       xorg-x11-fonts
-BuildArch:      noarch
 Obsoletes:      prewikka-core < %{version}-%{release}
 Provides:       prewikka-core = %{version}-%{release}
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -59,6 +60,7 @@ hearbeat views, and has user management and configurable filters, as
 well as access to external tools such as whois and traceroute.
 
 %package lang
+# FIXME: consider using %%lang_package macro
 Summary:        Prewikka lang files
 Group:          Productivity/Networking/Web/Frontends
 
@@ -87,12 +89,14 @@ find %{buildroot} -name __pycache__ -exec rm -rfv {} +
 %find_lang %{name}
 
 %files -n python3-%{name}
-%defattr(-, root, root, -)
+%license COPYING*
+%doc AUTHORS README NEWS HACKING.README
 %attr(0750, -,-) %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0640, -,-) %{_sysconfdir}/%{name}/%{name}.conf
 %config(noreplace) %attr(0640, -,-) %{_sysconfdir}/%{name}/menu.yml
+%attr(0750, -,-) %dir %{_sysconfdir}/%{name}/conf.d
+%config(noreplace) %attr(0640, -,-) %{_sysconfdir}/%{name}/conf.d/*.conf
 %{_datadir}/%{name}
-%doc COPYING* AUTHORS README NEWS HACKING.README
 %{python3_sitelib}/prewikka/
 %{python3_sitelib}/prewikka*.egg-info
 %{_bindir}/prewikka-httpd
