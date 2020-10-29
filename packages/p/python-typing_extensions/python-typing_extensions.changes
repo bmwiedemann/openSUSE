@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 15 12:51:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to version 3.7.4.3:
+  * enables PEP 613 Typealias to typing_extensions
+  * Fix tests for Python 3.9 
+
+-------------------------------------------------------------------
 Mon Apr  6 08:53:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 3.7.4.2

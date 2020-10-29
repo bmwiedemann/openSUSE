@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-typing_extensions
-Version:        3.7.4.2
+Version:        3.7.4.3
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0

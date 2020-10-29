@@ -75,4 +75,14 @@
     <comment></comment>
     <requestid>791701</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dfe9b29d6f62213560ec94dbd08f8526</srcmd5>
+    <version>3.7.4.3</version>
+    <time>1603961289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.4.3:
+  * enables PEP 613 Typealias to typing_extensions
+  * Fix tests for Python 3.9</comment>
+    <requestid>841925</requestid>
+  </revision>
 </revisionlist>
