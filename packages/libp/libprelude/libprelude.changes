@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:48:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libprelude 5.2.0:
+  * license switched to LGPL
+  * Add Python 3.7/3.8 suppo
+  * Update to SWIG 4.0.1
+  * Implement prelude_msg_clone()
+  * Update libprelude-error for GAWK 5.0
+  * Various IDMEF criteria improvements
+- drop upstreamed patches:
+  * libprelude-linking.patch
+  * libprelude-fix_awk_error.patch
+  * libprelude-fix_py38.patch
+- add libprelude-5.2.0-ruby2.7.patch on Tumbleweed to fix build
+  with ruby 2.7
+- package license with every package
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Fri Oct 25 07:00:00 UTC 2019 - thomas.andrejak@gmail.com
 
 Bump version 5.1.1
