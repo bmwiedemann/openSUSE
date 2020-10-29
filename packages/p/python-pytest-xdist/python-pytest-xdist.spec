@@ -83,7 +83,8 @@ sed -i 's/\r//' README.rst
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pytest-dev/pytest-xdist/issues/601
+%pytest -k "not test_warning_captured_deprecated_in_pytest_6"
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

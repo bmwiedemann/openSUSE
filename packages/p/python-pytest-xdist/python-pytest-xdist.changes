@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 11:46:40 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Skip test failing with the new pytest
+
+-------------------------------------------------------------------
 Mon Aug 31 13:01:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.1.0
