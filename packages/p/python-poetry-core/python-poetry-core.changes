@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Fri Oct 16 17:01:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Let the pyproject_install macro do the compiling
+
+-------------------------------------------------------------------
+Sat Oct 10 20:06:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- unbundle vendored packages 
+
+-------------------------------------------------------------------
+Thu Oct  8 18:49:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove dephell dependency. poetry-core can build and install
+  itself as a PEP517 backend (using pip as frontend)
+- precompile the python files as in setuptools
+  * gh#openSUSE/python-rpm-macros#37
+
+-------------------------------------------------------------------
+Mon Oct  5 13:35:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to v1.0.0
+  * first stable release. See CHANGLOG.md for changes between a6
+    and release
+- The released PyPI package does not have the tests. Use Github.
+
+-------------------------------------------------------------------
+Sun Jul 12 05:48:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.0a8
+
+-------------------------------------------------------------------
+Thu May  7 05:58:22 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0.0a6
