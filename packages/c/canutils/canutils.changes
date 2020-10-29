@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:03:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2020.04.02.g192 (4573e852f9)
+  * isotpsend: add support for blocking write flag
+  * add cansequence tool
+
+-------------------------------------------------------------------
 Tue Sep  1 10:09:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 2020.04.02.g119 (ea844bdc5e)

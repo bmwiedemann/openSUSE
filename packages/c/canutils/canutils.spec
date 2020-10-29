@@ -20,7 +20,7 @@ Name:           canutils
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Hardware/Other
-Version:        2020.02.04.g119
+Version:        2020.02.04.g192
 Release:        0
 URL:            https://github.com/linux-can/can-utils
 
