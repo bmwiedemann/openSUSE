@@ -84,4 +84,12 @@
     <comment>- Update patch pytest4.patch to make it really work with new pytests</comment>
     <requestid>731477</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5c2d1024066fc7726d3defa818808465</srcmd5>
+    <version>1.4.1</version>
+    <time>1603961298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842127</requestid>
+  </revision>
 </revisionlist>

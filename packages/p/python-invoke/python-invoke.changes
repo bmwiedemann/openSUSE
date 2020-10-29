@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 16 12:55:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- disable test suite with bcond because of unmaintained
+  pytest-relaxed gh#bitprophet/pytest-relaxed#12
+
+-------------------------------------------------------------------
+Tue Apr 14 14:13:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 1.4.1
+  * Fix an issue with `~invoke.run` & friends having intermittent
+    problems at exit time.
+  * Many other fixes.
+
+-------------------------------------------------------------------
 Tue Sep 17 10:08:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update patch pytest4.patch to make it really work with new pytests

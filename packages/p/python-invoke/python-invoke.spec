@@ -1,7 +1,7 @@
 #
 # spec file for package python-invoke
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
+# broken with pytest-relaxed (same author -- all of this is unmaintained)
+%bcond_with test
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-invoke
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
@@ -27,15 +30,7 @@ URL:            http://www.pyinvoke.org
 Source:         https://files.pythonhosted.org/packages/source/i/invoke/invoke-%{version}.tar.gz
 Patch0:         0001-Make-test-fallback-to-system-modules-when-vendorized.patch
 Patch1:         pytest4.patch
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module fluidity-sm}
-BuildRequires:  %{python_module lexicon}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pexpect}
-BuildRequires:  %{python_module pytest-relaxed}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
@@ -46,6 +41,18 @@ Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module fluidity-sm}
+BuildRequires:  %{python_module lexicon}
+BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pexpect}
+# pytest < 6.1 to resolve pytest-relaxed constraint
+# https://github.com/bitprophet/pytest-relaxed/issues/12
+BuildRequires:  %{python_module pytest < 6.1}
+BuildRequires:  %{python_module pytest-relaxed}
+BuildRequires:  %{python_module six}
+%endif
 %python_subpackages
 
 %description
@@ -70,10 +77,10 @@ rm -fr invoke/vendor/*
 %python_clone -a %{buildroot}%{_bindir}/inv
 %python_clone -a %{buildroot}%{_bindir}/invoke
 
+%if %{with test}
 %check
-# broken with new pytest-relaxed (same author), just disable until he
-# gets around to release new version
-#%%pytest
+%pytest -s
+%endif
 
 %post
 %{python_install_alternative inv invoke}
