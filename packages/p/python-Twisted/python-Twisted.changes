@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 12 21:14:33 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add no-test_successResultOfWithFailureHasTraceback.patch to
+  skip sted.conch.test.test_keys.KeyTests.test_fromOpenSSH,
+  which fails. Upstream suggests
+  https://twistedmatrix.com/trac/ticket/9665, but it has never
+  been confirmed, even less fixed.
+
+-------------------------------------------------------------------
 Thu May 28 12:43:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 20.3.0

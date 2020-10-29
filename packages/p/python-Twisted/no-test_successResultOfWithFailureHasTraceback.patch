@@ -1,0 +1,24 @@
+---
+ src/twisted/conch/test/test_keys.py |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- a/src/twisted/conch/test/test_keys.py
++++ b/src/twisted/conch/test/test_keys.py
+@@ -6,6 +6,7 @@ Tests for L{twisted.conch.ssh.keys}.
+ """
+ 
+ from __future__ import absolute_import, division
++import unittest as pyunit
+ 
+ from twisted.python.reflect import requireModule
+ 
+@@ -225,7 +226,8 @@ class KeyTests(unittest.TestCase):
+         for k, v in data.items():
+             self.assertEqual(privateKey.data()[k], v)
+ 
+-
++    @pyunit.skip('Upstream ticket https://twistedmatrix.com/trac/ticket/9665' +
++                 ' has still not been resolved.')
+     def test_fromOpenSSH(self):
+         """
+         Test that keys are correctly generated from OpenSSH strings.

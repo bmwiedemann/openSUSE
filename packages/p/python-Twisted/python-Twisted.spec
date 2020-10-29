@@ -33,6 +33,9 @@ Patch3:         test-mktime-invalid-tm_isdst.patch
 Patch5:         python-38-hmac-digestmod.patch
 Patch6:         python-38-no-cgi-parseqs.patch
 Patch7:         true-binary.patch
+# PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
+# skip over the test test_successResultOfWithFailureHasTraceback
+Patch8:         no-test_successResultOfWithFailureHasTraceback.patch
 BuildRequires:  %{python_module Automat >= 0.3.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}

@@ -409,4 +409,16 @@
     <comment></comment>
     <requestid>810158</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>27e6c5ae03666b06872803a6c381e10f</srcmd5>
+    <version>20.3.0</version>
+    <time>1603961276</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-test_successResultOfWithFailureHasTraceback.patch to
+  skip sted.conch.test.test_keys.KeyTests.test_fromOpenSSH,
+  which fails. Upstream suggests
+  https://twistedmatrix.com/trac/ticket/9665, but it has never
+  been confirmed, even less fixed.</comment>
+    <requestid>841601</requestid>
+  </revision>
 </revisionlist>
