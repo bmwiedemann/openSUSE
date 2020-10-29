@@ -182,4 +182,16 @@
     <comment></comment>
     <requestid>831466</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>60c902ad35039d669fcb2e235ec6c6e2</srcmd5>
+    <version>0.8.3</version>
+    <time>1603961351</time>
+    <user>dimstar_suse</user>
+    <comment>- Support newer pip version
+  * dephell-pr473-pip-20-2.patch gh#dephell/dephell#473
+- Support newer bowler version using a different patch lib 
+  * dephell-pr474-bowler-09.patch gh#dephell/dephell#474
+</comment>
+    <requestid>844696</requestid>
+  </revision>
 </revisionlist>

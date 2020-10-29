@@ -38,8 +38,12 @@ Source:         https://files.pythonhosted.org/packages/source/d/dephell/dephell
 Source1:        macros.py-dephell
 # PATCH-FIX-OPENSUSE we don't pin package versions
 Patch0:         never-pin-deps.patch
-# PATCH-FIX-UPSTREAM support the pytest 6 entrypoints. Part of https://github.com/dephell/dephell/pull/458 
+# PATCH-FIX-UPSTREAM dephell-pytest6.patch -- support the pytest 6 entrypoints. Part of gh#dephell/dephell#458 
 Patch1:         https://github.com/dephell/dephell/commit/b34011c04e49562b5afe3e946f01024ad5629ac1.patch#/dephell-pytest6.patch
+# PATCH-FIX-UPSTREAM dephell-pr473-pip-20-2.patch gh#dephell#dephell#473 -- support pip 20.2 changed internal API (rebased because of patch1)
+Patch2:         dephell-pr473-pip-20-2.patch
+# PATCH-FIX-UPSTREAM dephell-pr474-bowler-09.patch gh#dephell#dephell#474 -- support updated bowler 0.9
+Patch3:         https://patch-diff.githubusercontent.com/raw/dephell/dephell/pull/474.patch#/dephell-pr474-bowler-09.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  bash
@@ -143,9 +147,7 @@ Manage packages: convert between formats, lock, install, resolve, isolate,
 test, build graph, show outdated, audit. Manage venvs, build package, bump version.
 
 %prep
-%setup -q -n dephell-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n dephell-%{version}
 
 sed -i -e '1i #!/bin/sh' dephell/templates/docker_prepare.sh
 

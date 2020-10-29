@@ -1,0 +1,29 @@
+From 46b11204afc2b26e33164705519af47980023b95 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Tue, 27 Oct 2020 22:23:50 +0100
+Subject: [PATCH] add trailing newline for patch test
+
+---
+ tests/test_commands/test_vendor_import.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_commands/test_vendor_import.py b/tests/test_commands/test_vendor_import.py
+index 995a9b93..3f6a00ac 100644
+--- a/tests/test_commands/test_vendor_import.py
++++ b/tests/test_commands/test_vendor_import.py
+@@ -16,7 +16,7 @@
+ @pytest.mark.skipif(IS_WINDOWS, reason='unsupported on windows')
+ def test_patch_imports(temp_path: Path):
+     (temp_path / 'project').mkdir()
+-    (temp_path / 'project' / '__init__.py').write_text('import requests\nimport django')
++    (temp_path / 'project' / '__init__.py').write_text('import requests\nimport django\n')
+     (temp_path / 'project' / 'vendor' / 'requests').mkdir(parents=True)
+     (temp_path / 'project' / 'vendor' / 'requests' / '__init__.py').touch()
+ 
+@@ -34,5 +34,5 @@ def test_patch_imports(temp_path: Path):
+         output_path=temp_path / 'project' / 'vendor',
+     )
+ 
+-    expected = 'import project.vendor.requests as requests\nimport django'
++    expected = 'import project.vendor.requests as requests\nimport django\n'
+     assert (temp_path / 'project' / '__init__.py').read_text() == expected
