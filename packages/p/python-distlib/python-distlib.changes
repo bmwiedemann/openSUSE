@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  8 03:44:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.1:
+  * scripts
+    + Fixed #132: Added documentation to help with relative interpreter paths.
+    + Fixed #134: Allowed specifying a different target Python version when
+      generating scripts.
+    + Fixed #135: Exposed the ``enquote_executable`` function previously
+      implemented as an internal function.
+    + Addressed #138: Improved metadata support for newer metadata versions.
+  * wheel
+    + Changed the output of flags in entry point definitions.
+    + Stopped writing JSON metadata. Only old-style metadata is written now.
+- Refreshed remove-backports.patch
+
+-------------------------------------------------------------------
 Fri Mar 13 08:37:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.0:

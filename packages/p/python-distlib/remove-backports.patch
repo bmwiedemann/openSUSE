@@ -1,19 +1,21 @@
-diff -ur distlib-0.2.8-orig/distlib/_backport/shutil.py distlib-0.2.8/distlib/_backport/shutil.py
---- distlib-0.2.8-orig/distlib/_backport/shutil.py	2019-03-08 21:07:05.882089921 +0700
-+++ distlib-0.2.8/distlib/_backport/shutil.py	2019-03-08 21:07:30.806286099 +0700
-@@ -16,7 +16,7 @@
- import fnmatch
- import collections
+Index: distlib-0.3.1/distlib/_backport/shutil.py
+===================================================================
+--- distlib-0.3.1.orig/distlib/_backport/shutil.py
++++ distlib-0.3.1/distlib/_backport/shutil.py
+@@ -19,7 +19,7 @@ try:
+ except ImportError:
+     from collections import Callable
  import errno
 -from . import tarfile
 +import tarfile
  
  try:
      import bz2
-diff -ur distlib-0.2.8-orig/distlib/compat.py distlib-0.2.8/distlib/compat.py
---- distlib-0.2.8-orig/distlib/compat.py	2019-03-08 21:07:05.882089921 +0700
-+++ distlib-0.2.8/distlib/compat.py	2019-03-08 21:08:56.770962447 +0700
-@@ -311,10 +311,7 @@
+Index: distlib-0.3.1/distlib/compat.py
+===================================================================
+--- distlib-0.3.1.orig/distlib/compat.py
++++ distlib-0.3.1/distlib/compat.py
+@@ -311,10 +311,7 @@ except ImportError: # pragma: no cover
              return 'IronPython'
          return 'CPython'
  
@@ -25,9 +27,10 @@ diff -ur distlib-0.2.8-orig/distlib/compat.py distlib-0.2.8/distlib/compat.py
  
  try:
      callable = callable
-diff -ur distlib-0.2.8-orig/setup.py distlib-0.2.8/setup.py
---- distlib-0.2.8-orig/setup.py	2019-03-08 21:07:05.894090015 +0700
-+++ distlib-0.2.8/setup.py	2019-03-08 21:07:30.794286005 +0700
+Index: distlib-0.3.1/setup.py
+===================================================================
+--- distlib-0.3.1.orig/setup.py
++++ distlib-0.3.1/setup.py
 @@ -6,7 +6,6 @@
  #
  
@@ -36,7 +39,7 @@ diff -ur distlib-0.2.8-orig/setup.py distlib-0.2.8/setup.py
  from os.path import join, dirname, abspath
  import re
  import sys
-@@ -68,7 +67,6 @@
+@@ -69,7 +68,6 @@ distutils.core.setup(
          'distlib._backport',
      ],
      package_data={
@@ -44,10 +47,11 @@ diff -ur distlib-0.2.8-orig/setup.py distlib-0.2.8/setup.py
          'distlib': ['t32.exe', 't64.exe', 'w32.exe', 'w64.exe'],
      },
      cmdclass={
-diff -ur distlib-0.2.8-orig/tests/distlib_tests.py distlib-0.2.8/tests/distlib_tests.py
---- distlib-0.2.8-orig/tests/distlib_tests.py	2019-03-08 21:07:05.890089984 +0700
-+++ distlib-0.2.8/tests/distlib_tests.py	2019-03-08 21:07:30.782285911 +0700
-@@ -10,7 +10,6 @@
+Index: distlib-0.3.1/tests/distlib_tests.py
+===================================================================
+--- distlib-0.3.1.orig/tests/distlib_tests.py
++++ distlib-0.3.1/tests/distlib_tests.py
+@@ -10,7 +10,6 @@ _ver = sys.version_info[:2]
  from test_database import (DataFilesTestCase, TestDatabase, TestDistribution,
                             TestEggInfoDistribution, DepGraphTestCase)
  from test_index import PackageIndexTestCase
@@ -55,17 +59,18 @@ diff -ur distlib-0.2.8-orig/tests/distlib_tests.py distlib-0.2.8/tests/distlib_t
  from test_manifest import ManifestTestCase
  from test_markers import MarkersTestCase
  from test_metadata import MetadataTestCase, LegacyMetadataTestCase
-@@ -23,6 +22,5 @@
+@@ -23,6 +22,5 @@ from test_wheel import WheelTestCase
  
  if _ver == (2, 6):
      from test_shutil import TestCopyFile, TestMove, TestShutil
 -    from test_sysconfig import TestSysConfig, MakefileTests
  from test_util import (UtilTestCase, ProgressTestCase, FileOpsTestCase,
                         GlobTestCase)
-diff -ur distlib-0.2.8-orig/tests/test_shutil.py distlib-0.2.8/tests/test_shutil.py
---- distlib-0.2.8-orig/tests/test_shutil.py	2019-03-08 21:07:05.890089984 +0700
-+++ distlib-0.2.8/tests/test_shutil.py	2019-03-08 21:07:30.818286194 +0700
-@@ -20,7 +20,7 @@
+Index: distlib-0.3.1/tests/test_shutil.py
+===================================================================
+--- distlib-0.3.1.orig/tests/test_shutil.py
++++ distlib-0.3.1/tests/test_shutil.py
+@@ -20,7 +20,7 @@ import tempfile
  from compat import unittest
  
  

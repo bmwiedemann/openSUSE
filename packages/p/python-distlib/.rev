@@ -210,4 +210,23 @@
   * correct_large_version_number.patch</comment>
     <requestid>784576</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b8928b0e515f7282eb1189facbeb3344</srcmd5>
+    <version>0.3.1</version>
+    <time>1603961211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * scripts
+    + Fixed #132: Added documentation to help with relative interpreter paths.
+    + Fixed #134: Allowed specifying a different target Python version when
+      generating scripts.
+    + Fixed #135: Exposed the ``enquote_executable`` function previously
+      implemented as an internal function.
+    + Addressed #138: Improved metadata support for newer metadata versions.
+  * wheel
+    + Changed the output of flags in entry point definitions.
+    + Stopped writing JSON metadata. Only old-style metadata is written now.
+- Refreshed remove-backports.patch</comment>
+    <requestid>840141</requestid>
+  </revision>
 </revisionlist>
