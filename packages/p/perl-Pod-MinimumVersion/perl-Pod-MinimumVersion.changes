@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 17:24:36 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+Refresh spec file with cpanspec to fix build with perl 5.32
+
+-------------------------------------------------------------------
 Wed Feb 15 05:39:48 UTC 2017 - coolo@suse.com
 
 - initial package 50

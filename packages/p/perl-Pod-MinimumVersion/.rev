@@ -7,4 +7,13 @@
     <comment>new policies</comment>
     <requestid>458773</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a06b8b97869bddb9dede3f3bd830ca29</srcmd5>
+    <version>50</version>
+    <time>1603959767</time>
+    <user>dimstar_suse</user>
+    <comment>Refresh spec file with cpanspec to fix build with perl 5.32
+</comment>
+    <requestid>844656</requestid>
+  </revision>
 </revisionlist>
