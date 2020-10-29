@@ -20,7 +20,7 @@
 # On next update, try enabling each of the disabled libs (in the %%else section) and check if they build with gtk3 or not. When all of them compile against gtk3, remove the macro and conditional.
 %define gtk3_ready 1
 Name:           geany-plugins
-Version:        1.36
+Version:        1.37
 Release:        0
 # FIXME: gendoc requires ctpl (http://ctpl.tuxfamily.org/)
 Summary:        A collection of different plugins for Geany
@@ -28,9 +28,6 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
-
-# PATCH-FIX-UPSTREAM geany-plugins-Make-libgit2-compatible.patch -- Make libgit2 version preprocessor conditionals compatible with libgit2-0.99
-Patch0:         geany-plugins-Make-libgit2-compatible.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes

@@ -323,4 +323,27 @@
     <comment>Scripted push of project GNOME:Next (forwarded request 794992 from iznogood)</comment>
     <requestid>795148</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>76bca13b37c619ec7444785aa53fd3d7</srcmd5>
+    <version>1.37</version>
+    <time>1603959757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.37:
+  * Addons: Improve sizes of color calltip
+  * Autoclose: Remove all pairing quotes
+  * GeanyVC: Add support for Fossil SCM
+  * GeanyVC: Allow to toggle single files with Space and Return
+    keys in commit dialog
+  * GitChangebar: Add compatibility with libgit2 0.99
+  * LaTeX: Indent line in new environment
+  * PairTagHighligher: Allow to select a matching tag
+  * ProjectOrganizer: Make showing empty directories in the
+    sidebar configurable
+  * ProjectOrganizer: Add a keybinding for focusing the sidebar
+  * ProjectOrganizer: Re-read base path when updating project
+  * Vimmode: Don't use word navigation from Scintilla
+  * Vimmode: Make o/O respect auto indentation
+- Remove deprecated geany-plugins-Make-libgit2-compatible.patch (forwarded request 844348 from polslinux)</comment>
+    <requestid>844557</requestid>
+  </revision>
 </revisionlist>
