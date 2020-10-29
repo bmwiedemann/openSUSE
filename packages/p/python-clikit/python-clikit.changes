@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 20 13:36:23 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+Skip python2: poetry no longer works with python2 thereby breaking this package on Leap.
+
+-------------------------------------------------------------------
+Thu Oct  8 15:52:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- dephell incorrectly converts the typing-extension dependency
+  marker. Use upstreams install method pip with poetry.core backend 
+  instead
+
+-------------------------------------------------------------------
 Sun Jul 12 07:50:09 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.6.2

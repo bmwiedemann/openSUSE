@@ -1,7 +1,7 @@
 #
 # spec file for package python-clikit
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,27 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-clikit
 Version:        0.6.2
 Release:        0
 Summary:        Helper to build testable command line interfaces
 License:        MIT
 URL:            https://github.com/sdispater/clikit
-Source:         https://github.com/sdispater/clikit/archive/%{version}.tar.gz#/clikit-%{version}.tar.gz
+Source:         %{URL}/archive/%{version}.tar.gz#/clikit-%{version}.tar.gz
 BuildRequires:  %{python_module crashtest}
 BuildRequires:  %{python_module pastel >= 0.2.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pylev >= 1.3}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing >= 3.6}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dephell
 Requires:       python-crashtest
 Requires:       python-pastel >= 0.2.0
 Requires:       python-pylev >= 1.3
-Requires:       python-typing >= 3.6
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34 >= 1.1
@@ -55,13 +52,12 @@ command line interfaces.
 
 %prep
 %setup -q -n clikit-%{version}
-%dephell_gensetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +66,7 @@ command line interfaces.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/clikit
+%{python_sitelib}/clikit-%{version}.dist-info
 
 %changelog
