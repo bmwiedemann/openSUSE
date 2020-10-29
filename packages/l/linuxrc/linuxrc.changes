@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Wed Oct 28 16:00:05 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#232
+- fix linuxrc module option parsing
+- 7.0.21
+
+--------------------------------------------------------------------
+Wed Oct 28 15:21:50 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#231
+- add insmod.pre option to linuxrc (bsc#1174912)
+- fix potential buffer overflow (correctly detected by gcc)
+- don't use modprobe before modprobe config files are available
+- 7.0.20
+
+--------------------------------------------------------------------
+Fri Oct 23 11:22:25 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#230
+- add rfc2132 keyword to ifcfg option (jsc#SLE-15770, jsc#SLE-15488)
+- 7.0.19
+
+--------------------------------------------------------------------
 Wed Jun 24 12:01:57 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#225
