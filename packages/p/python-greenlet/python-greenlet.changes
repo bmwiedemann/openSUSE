@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:54:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.17:
+  - Support for PEP 567 ContextVars 
+
+-------------------------------------------------------------------
 Mon Jun  8 19:32:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.4.16:

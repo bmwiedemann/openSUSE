@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-greenlet
-Version:        0.4.16
+Version:        0.4.17
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
