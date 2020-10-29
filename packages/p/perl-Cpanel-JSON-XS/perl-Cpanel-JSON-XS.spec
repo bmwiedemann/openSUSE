@@ -17,7 +17,7 @@
 
 
 Name:           perl-Cpanel-JSON-XS
-Version:        4.24
+Version:        4.25
 Release:        0
 %define cpan_name Cpanel-JSON-XS
 Summary:        CPanel fork of JSON::XS, fast and correct serializing
