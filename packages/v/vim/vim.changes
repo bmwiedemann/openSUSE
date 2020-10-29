@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Oct 25 11:44:15 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.1900, fixes the following problems
+  * Vim9: error message is not clear about compilation error.
+  * Vim9: test for compilation error fails in normal build.
+  * Crash when USE_FNAME_CASE is defined and using :browse.
+  * Netbeans: with huge buffer number memory allocation may fail.
+  * Using "q" at the more prompt doesn't stop a long message.
+  * Vim9: function defined in a block can't use variables defined in that
+  block.
+  * Vim9: variables declared in a local block are not found in when a function
+  is compiled.
+  * Vim9: using negative value for unsigned type.
+  * Crash when passing a NULL string or list to popup_settext().
+  * Vim9: garbage collection frees block-local variables.
+  * "vat" does not select tags correctly over line break.
+  * Vim9: "!" followed by space incorrectly used.
+  * map() returing zero for NULL list is unexpected.
+  * "to_f" is recognized at "topleft" modifier.
+  * Vim9: crash when throwing exception for NULL string. (Dhiraj Mishra)
+  * Vim9: get error message when nothing is wrong.
+  * "2resize" uses size of current window. (Daniel Steinberg)
+  * Vim9: using job_status() on an unused var gives an error.
+  * Vim9: filter functions return number instead of bool.
+  * Vim9: crash in unpack assignment.
+  * Vim9: memory leak when throwing empty string.
+  * Vim9: no specific error when parsing lambda fails.
+  * vim9: memory leak when compiling lambda fails.
+  * Json code not sufficiently tested.
+  * Vim9: no error for wrong list type.
+  * Vim9: add() does not check type of argument.
+  * Vim9: add() does not check type of argument.
+  * Vim9: argument to add() not checked for blob.
+  * Vim9: no error for missing space after comma in dict.
+  * Vim9: memory leak when using add().
+  * Vim9: no need to keep all script variables.
+  * Using %v in 'errorformat' may fail before %Z.
+  * Matchfuzzy() does not prefer sequential matches.
+  * Vim9: missing white space when using <f-args>.
+  * Can't do something just before leaving Insert mode.
+  * Warning when building GTK gui.
+  * Vim9: argument types for builtin functions are not checked at compile time.
+  * Test for function list fails.
+  * GTK: error for redefining function. (Tony Mechelynck)
+  * Vim9: argument types of insert() not checked when compiling.
+  * Vim9: Asan complains about adding zero to NULL.
+  * Cannot build with GTK3.
+  * Vim9: v:disallow_let is no longer needed.
+  * Compiler warnings when using Python.
+  * Compiler warning for uninitialized variable. (John Marriott)
+  * Filetype tests unnessarily creates swap files.
+  * Using ":silent!" in a popup filter has unexpected effect.
+  * Github actions not optimally configured.
+  * Vim9: Getbufline(-1, 1, '$') gives an error.
+  * Vim9: errornous error for missing white space after {}.
+  * Vim9: strange error for subtracting from a list.
+  * Vim9: skipping over expression doesn't handle line breaks.
+  * Valgrind warns for using uninitialized access in tests.
+  * Fuzzy matching does not support multiple words.
+  * Vim9: command modifiers are not supported.
+  * Vim9: silent command modifier test fails.
+  * Valgrind warns for using uninitialized memory.
+  * Command modifiers are saved and set inconsistently.
+  * Command modifier parsing always uses global cmdmod.
+  * Crash in out-of-memory situation.
+  * Vim9: command modifiers do not work.
+
+-------------------------------------------------------------------
 Tue Oct 13 06:21:33 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.1840, fixes the following problems
