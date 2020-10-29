@@ -27,6 +27,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/samuelcolvin/pydantic
 Source:         https://github.com/samuelcolvin/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/samuelcolvin/pydantic/commit/9c4860ce964a4eb2e22eedc21f21d406c596a82f Valdiate arguments config (#1663)
+Patch0:         validate-config.patch
 BuildRequires:  %{python_module email_validator >= 1.0.3}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pytest}
@@ -46,6 +48,7 @@ Data validation and settings management using Python type hinting.
 
 %prep
 %setup -q -n pydantic-%{version}
+%patch0 -p1
 sed -i /dataclasses/d setup.py
 
 %build

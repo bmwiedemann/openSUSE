@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 08:58:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add upstream patch validate-config.patch which fixes build with new pytest
+
+-------------------------------------------------------------------
 Sun Aug  2 15:14:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add optional test dependencies
