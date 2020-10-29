@@ -18,7 +18,7 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.21.3
+Version:        2.23.1
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
@@ -53,5 +53,6 @@ cd "$HOME/go/src/%{gopackagepath}"
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_mandir}/man1/%{name}-stdlib.1%{ext_man}
 %{_mandir}/man1/%{name}.toml.1%{ext_man}
+%{_mandir}/man1/%{name}-fetchurl.1%{ext_man}
 
 %changelog
