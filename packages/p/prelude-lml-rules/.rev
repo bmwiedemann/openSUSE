@@ -46,4 +46,12 @@ Add patch:
 </comment>
     <requestid>744329</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b39901cf70edabca1e6a2bc4737b7b85</srcmd5>
+    <version>5.2.0</version>
+    <time>1603959792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844634</requestid>
+  </revision>
 </revisionlist>
