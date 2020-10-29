@@ -529,4 +529,27 @@ So preferably for 13.1 as well.</comment>
   * Exclude /dev by default (forwarded request 838780 from polslinux)</comment>
     <requestid>839598</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>7311cf32653e5c038fb60ba5521b8284</srcmd5>
+    <version>42.5</version>
+    <time>1603959756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 42.5: 
+  * Fix &quot;Resume later&quot; from resetting your backup schedule
+  * Fix difficulty in selecting an internal drive as your storage
+    location when using the file browser dialog
+  * Fix using &quot;/&quot; as an included folder being ignored
+  * Fix silently refusing to restore filenames with illegal
+    characters to a FAT filesystem; we now show an error
+  * Fix restoring filenames with an apostrophe followed by a space
+    (' ) in them
+  * Always exclude ~/.cache, even if its not our current
+    cache folder
+  * Clarify deletion policy (that it can take up to three
+    months longer than
+    you might think) and allow a deletion policy of 3 months
+    (previously 6 months was earliest allowed policy,
+    which could mean up to 9 months) (forwarded request 844338 from polslinux)</comment>
+    <requestid>844556</requestid>
+  </revision>
 </revisionlist>
