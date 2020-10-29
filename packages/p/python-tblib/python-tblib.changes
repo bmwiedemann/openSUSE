@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:26:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.7.0:
+* Add more attributes to ``Frame`` and ``Code`` objects for pytest compatibility.
+
+-------------------------------------------------------------------
 Sun Dec 15 16:02:49 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Move the Twisted test out of the main package to avoid the

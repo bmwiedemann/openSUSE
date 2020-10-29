@@ -45,4 +45,13 @@ see https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:73
     <comment></comment>
     <requestid>757222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f049d1a398adca3be13291ee98e3b41f</srcmd5>
+    <version>1.7.0</version>
+    <time>1603961118</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+* Add more attributes to ``Frame`` and ``Code`` objects for pytest compatibility.</comment>
+    <requestid>835015</requestid>
+  </revision>
 </revisionlist>
