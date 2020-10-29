@@ -39,4 +39,25 @@
     <comment></comment>
     <requestid>704967</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>34babdd107d7c67cd37e60717f7f9b91</srcmd5>
+    <version>7.0.0</version>
+    <time>1603961111</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.0.0:
+  * CPU flags vary between runs on Mac OS X
+  * Change 'byte code' to 'machine code'
+  * Overhead from generating machine code throws off CPUID HZ
+  * On non BeOS systems, calling sysinfo may open GUI program
+  * Invalid escape sequences warn when building in Python 3.8
+  * Remove extended_model and extended_family fields
+  * Remove empty and zeroed fields
+  * Missing data on Ryzen CPUs
+  * Rename fields to be more clear
+  * Add option to return --version
+  * Make test suite also check SELinux
+  * Make unit tests also test CPUID
+  * Add s390x support</comment>
+    <requestid>835007</requestid>
+  </revision>
 </revisionlist>
