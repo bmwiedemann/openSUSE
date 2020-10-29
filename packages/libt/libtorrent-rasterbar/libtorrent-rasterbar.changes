@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 08:54:02 UTC 2020 - aloisio@gmx.com
+
+- Drop libtorrent-rasterbar-fix_pkgconfig_path.patch after changes
+  to the %cmake macro
+
+-------------------------------------------------------------------
 Thu Sep 17 16:20:30 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.0

@@ -31,8 +31,6 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         https://github.com/arvidn/%{_name}/releases/download/%{_ver}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libtorrent-rasterbar-fix_pkgconfig_path.patch
-Patch0:         libtorrent-rasterbar-fix_pkgconfig_path.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
