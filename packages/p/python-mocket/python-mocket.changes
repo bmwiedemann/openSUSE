@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 11 07:03:02 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.9.1:
+ - Multiple HTTP writes (#125)
+ - Fix for #111.
+
+-------------------------------------------------------------------
+Sat Sep 26 07:39:57 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.9.0:
+ - MockHTTP uses `http-parser` as parser
+   Fix for second sendall used for delivering request's body.
+- Update to version 3.8.9:
+ - Small refactor for HTTPretty plugin
+   Now the import line can be written as from mocket.plugins.httpretty import httpretty, httprettified.
+- Update to version 3.8.8:
+ - Small fix applied to `setup.py`
+
+-------------------------------------------------------------------
 Tue Aug 11 07:17:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 3.8.7
