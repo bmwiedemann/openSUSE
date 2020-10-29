@@ -22,7 +22,7 @@
 %define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -173,7 +173,6 @@ understanding of applied cryptography is required to use Libgcrypt.
 
 %build
 echo building with build_hmac256 set to %{build_hmac256}
-%{?suse_update_config}
 autoreconf -fi
 date=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
 sed -e "s,BUILD_TIMESTAMP=.*,BUILD_TIMESTAMP=$date," -i configure
@@ -187,7 +186,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %endif
            --enable-hmac-binary-check \
            --enable-random=linux
-make %{?_smp_mflags}
+%make_build
 
 %if 0%{?build_hmac256}
 # this is a hack that re-defines the __os_install_post macro
@@ -205,7 +204,7 @@ make %{?_smp_mflags}
 
 %check
 fipshmac src/.libs/libgcrypt.so.??
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
