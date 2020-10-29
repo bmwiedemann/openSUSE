@@ -79,4 +79,12 @@
   * Rename jcat et al to j1939cat</comment>
     <requestid>831043</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>19944008b3f9ea75443efa06d908a7f7</srcmd5>
+    <version>2020.02.04.g192</version>
+    <time>1603979557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 2020.04.02.g192 (4573e852f9)</comment>
+    <requestid>844829</requestid>
+  </revision>
 </revisionlist>
