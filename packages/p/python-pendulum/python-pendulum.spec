@@ -17,28 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-pendulum
-Version:        2.1.0
+Version:        2.1.2
 Release:        0
 Summary:        Python datetimes made easy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pendulum.eustace.io
 # https://github.com/sdispater/pendulum/issues/453
-Source:         https://github.com/sdispater/pendulum/archive/%{version}.tar.gz
+Source:         https://github.com/sdispater/pendulum/archive/%{version}.tar.gz#/pendulum-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6}
-BuildRequires:  %{python_module pytz >= 2018.3}
-BuildRequires:  %{python_module pytzdata >= 2018.3}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytz >= 2020.1}
+BuildRequires:  %{python_module pytzdata >= 2020.1}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dephell
 Requires:       python-python-dateutil >= 2.6
-Requires:       python-pytz >= 2018.3
-Requires:       python-pytzdata >= 2018.3
+Requires:       python-pytz >= 2020.1
+Requires:       python-pytzdata >= 2020.1
 Requires:       python-typing
 %python_subpackages
 
@@ -47,22 +49,25 @@ Python datetimes made easy
 
 %prep
 %setup -q -n pendulum-%{version}
-%dephell_gensetup
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%{python_expand # remove source files
+find %{buildroot}%{$python_sitearch} -name '*.c' -delete
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
-%pytest
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitearch}/pendulum
+%{python_sitearch}/pendulum-%{version}*-info
 
 %changelog

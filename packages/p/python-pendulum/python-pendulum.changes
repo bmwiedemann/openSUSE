@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:26:38 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version 2.1.2
+  * Added support for build scripts without the setup.py file
+    generation in the editable builder (#2718).
+  * Fixed an error occurring when using older lock files (#2717).
+- Changelog for version 2.1.1
+  * Fixed errors where invalid timezones were matched in 
+    from_format() (#374).
+  * Fixed errors when subtracting negative timedeltas (#419).
+  * Fixed errors in total units computation for durations 
+    with years and months (#482).
+  * Fixed an error where the fold attribute was overridden 
+    when using replace() (#414).
+  * Fixed an error where now() was not returning the 
+    correct result on DST transitions (#483).
+  * Fixed inconsistent typing annotation for the parse() 
+    function (#452).
+  * Added the pl locale (#459).
+- Build the extensions
+- Kill dephell dependency 
+- Disable python2 package (no python2-poetry-core in Leaps 
+  sr#842815)
+
+-------------------------------------------------------------------
 Mon Apr 27 08:48:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Depend on python-dateutil not just dateutil to solve on Leap
