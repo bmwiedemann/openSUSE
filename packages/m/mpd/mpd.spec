@@ -20,7 +20,7 @@
 %bcond_with    faad
 %bcond_without mpd_iso9660
 Name:           mpd
-Version:        0.22
+Version:        0.22.2
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -221,8 +221,6 @@ install -pm0644 %{SOURCE2} %{SOURCE3} .
 install -Dpm0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 install -Dpm0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dpm0644 doc/mpdconf.example %{buildroot}%{_sysconfdir}/%{name}.conf
-install -pm0644 build/doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
-install -pm0644 build/doc/%{name}.conf.5 %{buildroot}%{_mandir}/man5/%{name}.conf.5
 # Remove duplicate for mpd.socket and replace it with a symlink.
 rm %{buildroot}%{_userunitdir}/%{name}.socket
 ln -s ../system/%{name}.socket %{buildroot}%{_userunitdir}/%{name}.socket

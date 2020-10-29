@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 28 22:04:23 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 0.22.2
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.22.2/NEWS
+  * database: simple: purge songs and virtual directories for unavailable
+    plugins on update
+  * decoder
+    * opus: apply the OpusHead output gain even if there is no EBU R128 tag
+    * opus: fix track/album ReplayGain fallback
+  * input
+    * qobuz/tidal: fix protocol errors due to newlines in error messages
+    * smbclient: disable by default due to libsmbclient crash bug
+  * output
+    * alsa: don't deadlock when the ALSA driver is buggy
+    * jack, pulse: reduce the delay when stopping or pausing playback
+  * playlist
+    * cue: fix two crash bugs
+    * soundcloud: fix protocol errors due to newlines in error messages
+  * state_file
+    * fix the state_file_interval setting
+    * save on shutdown
+
+-------------------------------------------------------------------
 Wed Sep 30 01:36:05 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner and manual optimizations
