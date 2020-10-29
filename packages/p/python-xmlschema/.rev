@@ -76,4 +76,24 @@
     <comment></comment>
     <requestid>822102</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21b155b8bce6cd5e0deea71f99bc267f</srcmd5>
+    <version>1.2.5</version>
+    <time>1603961239</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_network_tests.patch to skip test
+  test_export_remote__issue_187 which fails without the network
+  connection (gh#sissaschool/xmlschema#206).
+- Update to 1.2.5:
+  - All W3C tests now run successful. Only W3C tests for
+    unavailable features (XML 1.1) or unimplemented features
+    (dynamic schema load) are still failing. This release requires
+    elementpath v2.0.x.
+  - The internal XML regular expressions parser has been moved to
+    XPath package elementpath (v2.0.2+). From this release
+    the regex patterns are parsed through elementpath's API
+    translate_pattern().'
+</comment>
+    <requestid>841053</requestid>
+  </revision>
 </revisionlist>

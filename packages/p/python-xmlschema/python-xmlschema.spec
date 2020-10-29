@@ -19,12 +19,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.2.2
+Version:        1.2.5
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/brunato/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip_network_tests.patch gh#sissaschool/xmlschema#206 mcepl@suse.com
+# Just skip test_export_remote__issue_187 test when not connected to the network.
+Patch0:         skip_network_tests.patch
 BuildRequires:  %{python_module elementpath >= 1.4.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
@@ -43,7 +46,8 @@ The *xmlschema* library is an implementation of `XML Schema <http://www.w3.org/2
 for Python.
 
 %prep
-%setup -q -n xmlschema-%{version}
+%autosetup -p1 -n xmlschema-%{version}
+
 # do not hardcode versions
 sed -i -e 's:~=:>=:' setup.py
 # do not bother with memory validation

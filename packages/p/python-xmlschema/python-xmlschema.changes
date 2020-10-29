@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 11 16:18:52 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_network_tests.patch to skip test
+  test_export_remote__issue_187 which fails without the network
+  connection (gh#sissaschool/xmlschema#206).
+
+-------------------------------------------------------------------
+Sat Oct 10 10:28:03 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.2.5:
+  - All W3C tests now run successful. Only W3C tests for
+    unavailable features (XML 1.1) or unimplemented features
+    (dynamic schema load) are still failing. This release requires
+    elementpath v2.0.x.
+  - The internal XML regular expressions parser has been moved to
+    XPath package elementpath (v2.0.2+). From this release
+    the regex patterns are parsed through elementpath's API
+    translate_pattern().'
+
+-------------------------------------------------------------------
 Tue Jul 21 11:50:05 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.2.2
