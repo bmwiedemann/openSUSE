@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:16:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- prelude-correlator 5.2.0:
+  * Take timeout into account for CTI data
+  * Fix DownloadCache initialization
+  * Add SELinux rule for service startup
+  * Add 'CTI' in CTI related alerts
+  * Change 300s to 20s for CTI correlation rules
+  * Fix grouping option with listed path
+  * Avoid undefined analyzerid when referencing alerts
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Mon Feb  3 15:43:35 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

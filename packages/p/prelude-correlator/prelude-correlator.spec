@@ -17,7 +17,7 @@
 
 
 Name:           prelude-correlator
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Real time correlator of events received by Prelude Manager
 License:        GPL-2.0-or-later
@@ -26,17 +26,19 @@ URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}-tmpfiles.conf
+Source3:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz.sig
+Source4:        https://www.prelude-siem.org/attachments/download/233/RPM-GPG-KEY-Prelude-IDS#/%{name}.keyring
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(systemd)
-BuildArch:      noarch
+Requires:       python3-%{name} >= %{version}
 Obsoletes:      %{name}-core < %{version}-%{release}
 Provides:       %{name}-core = %{version}-%{release}
-
+BuildArch:      noarch
 %{?systemd_requires}
-Requires:       python3-%{name} >= %{version}
 
 %description
 Prelude-Correlator allows conducting multi-stream correlations
@@ -91,8 +93,8 @@ rm -rf %{buildroot}/%{python3_sitelib}/preludecorrelator/__pycache__
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root,-)
-%doc AUTHORS COPYING NEWS HACKING.README
+%license COPYING
+%doc AUTHORS NEWS HACKING.README
 %dir %attr(0750,-,-) %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0640,-,-) %{_sysconfdir}/%{name}/%{name}.conf
 %dir %attr(0750,-,-) %{_sysconfdir}/%{name}/rules
@@ -109,6 +111,7 @@ rm -rf %{buildroot}/%{python3_sitelib}/preludecorrelator/__pycache__
 %{_unitdir}/%{name}.service
 
 %files -n python3-%{name}
+%license COPYING
 %{python3_sitelib}/preludecorrelator/
 %{python3_sitelib}/prelude_correlator*.egg-info
 %{_bindir}/prelude-correlator
