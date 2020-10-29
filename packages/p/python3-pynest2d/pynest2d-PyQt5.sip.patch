@@ -1,0 +1,23 @@
+diff -up a/cmake/FindSIP.cmake.sip b/cmake/FindSIP.cmake
+--- a/cmake/FindSIP.cmake.sip	2019-04-10 02:00:57.000000000 -0500
++++ b/cmake/FindSIP.cmake	2019-09-16 10:55:35.906667181 -0500
+@@ -66,7 +66,7 @@ find_path(SIP_INCLUDE_DIRS sip.h
+ )
+
+ execute_process(
+-    COMMAND ${Python3_EXECUTABLE} -c "import sip; print(sip.SIP_VERSION_STR)"
++    COMMAND ${Python3_EXECUTABLE} -c "import PyQt5.sip; print(PyQt5.sip.SIP_VERSION_STR)"
+     RESULT_VARIABLE _process_status
+     OUTPUT_VARIABLE _process_output
+     OUTPUT_STRIP_TRAILING_WHITESPACE
+diff -up a/CMakeLists.txt.sip b/CMakeLists.txt
+--- a/CMakeLists.txt.sip	2019-04-10 02:00:57.000000000 -0500
++++ b/CMakeLists.txt	2019-09-16 10:53:36.334104707 -0500
+@@ -44,6 +44,6 @@ endif()
+     src/String.sip
+ )
+ 
+-set(SIP_EXTRA_OPTIONS -g)  # Always release the GIL before calling C++ methods.
++set(SIP_EXTRA_OPTIONS -g -n PyQt5.sip) # -g means always release the GIL before calling C++ methods.
+ include_directories(src/ ${SIP_INCLUDE_DIRS} ${Python3_INCLUDE_DIRS} ${CLIPPER_INCLUDE_DIRS} ${NLopt_INCLUDE_DIRS} ${LIBNEST2D_INCLUDE_DIRS})
+ add_sip_python_module(pynest2d src/Pynest2D.sip ${CLIPPER_LIBRARIES} ${NLopt_LIBRARIES})

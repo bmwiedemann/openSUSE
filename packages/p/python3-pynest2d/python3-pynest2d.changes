@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Oct 25 06:22:04 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Initial package version 4.8.0
+- Add pynest2d-PyQt5.sip.patch
+- Add Retrieve-required-flags-from-Libnest2D-target.patch
