@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 11:33:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.1:
+  #14: Removed unnecessary compatibility libraries in testing.
+
+-------------------------------------------------------------------
 Sat Mar 14 08:13:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Femove leftover py2 dependencies

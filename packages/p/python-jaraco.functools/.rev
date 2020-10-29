@@ -44,4 +44,13 @@
   * Require Python 3.6 or later.</comment>
     <requestid>784821</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6442cbb8105b296357329e085be73541</srcmd5>
+    <version>3.0.1</version>
+    <time>1603961133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  #14: Removed unnecessary compatibility libraries in testing.</comment>
+    <requestid>835170</requestid>
+  </revision>
 </revisionlist>
