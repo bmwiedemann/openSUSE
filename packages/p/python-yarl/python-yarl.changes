@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:05:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.6.0:
+  - Allow for int and float subclasses in query, while still denying bool.
+    `#492 <https://github.com/aio-libs/yarl/issues/492>`_
+  - Do not requote arguments in ``URL.build()``, ``with_xxx()`` and in ``/`` operator.
+    `#502 <https://github.com/aio-libs/yarl/issues/502>`_
+  - Keep IPv6 brackets in ``origin()``.
+    `#504 <https://github.com/aio-libs/yarl/issues/504>`_
+
+-------------------------------------------------------------------
 Tue Jul 28 21:28:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove c source file from package (rpmlint error)

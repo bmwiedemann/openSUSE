@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yarl
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Yet another URL library
 License:        Apache-2.0

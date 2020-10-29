@@ -113,4 +113,18 @@
     <comment></comment>
     <requestid>823367</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>09723edec6f32b5bc4e2a922bc38a42b</srcmd5>
+    <version>1.6.0</version>
+    <time>1603961175</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  - Allow for int and float subclasses in query, while still denying bool.
+    `#492 &lt;https://github.com/aio-libs/yarl/issues/492&gt;`_
+  - Do not requote arguments in ``URL.build()``, ``with_xxx()`` and in ``/`` operator.
+    `#502 &lt;https://github.com/aio-libs/yarl/issues/502&gt;`_
+  - Keep IPv6 brackets in ``origin()``.
+    `#504 &lt;https://github.com/aio-libs/yarl/issues/504&gt;`_</comment>
+    <requestid>838272</requestid>
+  </revision>
 </revisionlist>
