@@ -594,4 +594,12 @@
     <comment>- Skip virtualenv tests that are pinned to old virtualenv 16</comment>
     <requestid>786378</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a84e2e1940d49821c53b688bb561473e</srcmd5>
+    <version>20.2.3</version>
+    <time>1603961285</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841872</requestid>
+  </revision>
 </revisionlist>

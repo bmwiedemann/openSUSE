@@ -1,4 +1,256 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 20.2.3
+  Deprecations and Removals
+  * Deprecate support for Python 3.5 (#8181)
+  Features
+  * Make the setup.py install deprecation warning less 
+    noisy. We warn only when setup.py install succeeded and 
+    setup.py bdist_wheel failed, as situations where both 
+    fails are most probably irrelevant to this deprecation. 
+    (#8752)
+- 20.2.2 
+  Bug Fixes
+  * Only attempt to use the keyring once and if it fails, don’t try 
+    again. This prevents spamming users with several keyring unlock 
+    prompts when they cannot unlock or don’t want to do so. (#8090)
+  * Fix regression that distributions in system site-packages are 
+    not correctly found when a virtual environment is configured 
+    with system-site-packages on. (#8695)
+  * Disable caching for range requests, which causes corrupted 
+    wheels when pip tries to obtain metadata using the feature 
+    fast-deps. (#8701, #8716)
+  * Always use UTF-8 to read pyvenv.cfg to match the built-in venv.    
+    (#8717)
+  * 2020 Resolver: Correctly handle marker evaluation in 
+    constraints and exclude them if their markers do not match the 
+    current environment. (#8724)
+- 20.2.1
+  Features
+  * Ignore require-virtualenv in pip list (#8603)
+  Bug Fixes
+  * Correctly find already-installed distributions with dot (.) in 
+    the name and uninstall them when needed. (#8645)
+  * Trace a better error message on installation failure due to 
+    invalid .data files in wheels. (#8654)
+  * Fix SVN version detection for alternative SVN distributions. 
+    (#8665)
+  * New resolver: Correctly include the base package when specified 
+    with extras in --no-deps mode. (#8677)
+  * Use UTF-8 to handle ZIP archive entries on Python 2 according 
+    to PEP 427, so non-ASCII paths can be resolved as expected. 
+    (#8684)
+  Improved Documentation
+  * Add details on old resolver deprecation and removal to
+    migration documentation. (#8371)
+  * Fix feature flag name in docs. (#8660)
+- 20.2 (2020-07-29)
+  Deprecations and Removals
+  * Deprecate setup.py-based builds that do not generate an .egg-
+    info directory. (#6998, #8617)
+  * Disallow passing install-location-related arguments in --
+    install-options. (#7309)
+  * Add deprecation warning for invalid requirements format 
+    “base>=1.0[extra]” (#8288)
+  * Deprecate legacy setup.py install when building a wheel failed 
+    for source distributions without pyproject.toml (#8368)
+  * Deprecate -b/--build/--build-dir/--build-directory. Its current 
+    behaviour is confusing and breaks in case different versions of 
+    the same distribution need to be built during the resolution 
+    process. Using the TMPDIR/TEMP/TMP environment variable, 
+    possibly combined with --no-clean covers known use cases. 
+    (#8372)
+  * Remove undocumented and deprecated option --always-unzip 
+    (#8408)
+  Features
+  * Log debugging information about pip, in pip install --verbose. 
+    (#3166)
+  * Refine error messages to avoid showing Python tracebacks when 
+    an HTTP error occurs. (#5380)
+  * Install wheel files directly instead of extracting them to a 
+    temp directory. (#6030)
+  * Add a beta version of pip’s next-generation dependency 
+    resolver.
+  * Move pip’s new resolver into beta, remove the --unstable-
+    feature=resolver flag, and enable the --use-feature=2020-
+    resolver flag. The new resolver is significantly stricter and 
+    more consistent when it receives incompatible instructions, and 
+    reduces support for certain kinds of Constraints Files, so some 
+    workarounds and workflows may break. More details about how to 
+    test and migrate, and how to report issues, at Changes to the 
+    pip dependency resolver in 20.2 (2020) . Maintainers are 
+    preparing to release pip 20.3, with the new resolver on by 
+    default, in October. (#6536)
+  * Introduce a new ResolutionImpossible error, raised when pip 
+    encounters un-satisfiable dependency conflicts (#8546, #8377)
+  * Add a subcommand debug to pip config to list available 
+    configuration sources and the key-value pairs defined in them. 
+    (#6741)
+  * Warn if index pages have unexpected content-type (#6754)
+  * Allow specifying --prefer-binary option in a requirements file (#7693)
+  * Generate PEP 376 REQUESTED metadata for user supplied 
+    requirements installed by pip. (#7811)
+  * Warn if package url is a vcs or an archive url with invalid 
+    scheme (#8128)
+  * Parallelize network operations in pip list. (#8504)
+  * Allow the new resolver to obtain dependency information through 
+    wheels lazily downloaded using HTTP range requests. To enable 
+    this feature, invoke pip with --use-feature=fast-deps. (#8588)
+  * Support --use-feature in requirements files (#8601)
+  * Bug Fixes
+  * Use canonical package names while looking up already installed 
+    packages. (#5021)
+  * Fix normalizing path on Windows when installing package on 
+    another logical disk. (#7625)
+  * The VCS commands run by pip as subprocesses don’t merge stdout 
+    and stderr anymore, improving the output parsing by subsequent 
+    commands. (#7968)
+  * Correctly treat non-ASCII entry point declarations in wheels so 
+    they can be installed on Windows. (#8342)
+  * Update author email in config and tests to reflect 
+    decommissioning of pypa-dev list. (#8454)
+  * Headers provided by wheels in .data directories are now 
+    correctly installed into the user-provided locations, such as 
+    --prefix, instead of the virtual environment pip is running in. 
+    (#8521)
+  Vendored Libraries
+  * Vendored htmlib5 no longer imports deprecated 
+    xml.etree.cElementTree on Python 3.
+  * Upgrade appdirs to 1.4.4
+  * Upgrade certifi to 2020.6.20
+  * Upgrade distlib to 0.3.1
+  * Upgrade html5lib to 1.1
+  * Upgrade idna to 2.10
+  * Upgrade packaging to 20.4
+  * Upgrade requests to 2.24.0
+  * Upgrade six to 1.15.0
+  * Upgrade toml to 0.10.1
+  * Upgrade urllib3 to 1.25.9
+  Improved Documentation
+  * Add --no-input option to pip docs (#7688)
+  * List of options supported in requirements file are extracted 
+    from source of truth, instead of being maintained manually. 
+    (#7908)
+  * Fix pip config docstring so that the subcommands render 
+    correctly in the docs (#8072)
+  * replace links to the old pypa-dev mailing list with https://
+    mail.python.org/mailman3/lists/distutils-sig.python.org/ 
+    (#8353)
+  * Fix example for defining multiple values for options which 
+    support them (#8373)
+  * Add documentation for the ResolutionImpossible error that helps 
+    the user fix dependency conflicts (#8459)
+  * Add feature flags to docs (#8512)
+  * Document how to install package extras from git branch and 
+    source distributions. (#8576)
+- 20.2b1
+  Bug Fixes
+  * Correctly treat wheels containing non-ASCII file contents so 
+    they can be installed on Windows. (#5712)
+  * Prompt the user for password if the keyring backend doesn’t 
+    return one (#7998)
+  Improved Documentation
+  * Add GitHub issue template for reporting when the dependency 
+    resolver fails (#8207)
+- 20.1.1
+  Deprecations and Removals
+  * Revert building of local directories in place, restoring the 
+    pre-20.1 behaviour of copying to a temporary directory. (#7555)
+  * Drop parallelization from pip list --outdated. (#8167)
+  Bug Fixes
+  * Fix metadata permission issues when umask has the executable 
+    bit set. (#8164)
+  * Avoid unnecessary message about the wheel package not being 
+    installed when a wheel would not have been built. Additionally, 
+    clarify the message. (#8178)
+- 20.1
+  Process
+  * Document that pip 21.0 will drop support for Python 2.7.
+  Features
+  * Add pip cache dir to show the cache directory. (#7350)
+  Bug Fixes
+  * Abort pip cache commands early when cache is disabled. (#8124)
+  * Correctly set permissions on metadata files during wheel 
+    installation, to permit non-privileged users to read from 
+    system site-packages. (#8139)
+- 20.1b1
+  Deprecations and Removals
+  * Remove emails from AUTHORS.txt to prevent usage for spamming, 
+    and only populate names in AUTHORS.txt at time of release 
+    (#5979)
+  * Remove deprecated --skip-requirements-regex option. (#7297)
+  * Building of local directories is now done in place, instead of 
+    a temporary location containing a copy of the directory tree. 
+    (#7555)
+  * Remove unused tests/scripts/test_all_pip.py test script and the 
+    tests/scripts folder. (#7680)
+  Features
+  * pip now implements PEP 610, so pip freeze has better fidelity   
+    in presence of distributions installed from Direct URL 
+    requirements. (#609)
+  * Add pip cache command for inspecting/managing pip’s wheel 
+    cache. (#6391)
+  * Raise error if --user and --target are used together in pip 
+    install (#7249)
+  * Significantly improve performance when --find-links points to a 
+    very large HTML page. (#7729)
+  * Indicate when wheel building is skipped, due to lack of the 
+    wheel package. (#7768)
+  * Change default behaviour to always cache responses from 
+    trusted-host source. (#7847)
+  * An alpha version of a new resolver is available via --unstable-
+    feature=resolver. (#988)
+  Bug Fixes
+  * Correctly freeze a VCS editable package when it is nested 
+    inside another VCS repository. (#3988)
+  * Correctly handle %2F in URL parameters to avoid accidentally 
+    unescape them into /. (#6446)
+  * Reject VCS URLs with an empty revision. (#7402)
+  * Warn when an invalid URL is passed with --index-url (#7430)
+  * Use better mechanism for handling temporary files, when 
+    recording metadata about installed files (RECORD) and the 
+    installer (INSTALLER). (#7699)
+  * Correctly detect global site-packages availability of virtual 
+    environments created by PyPA’s virtualenv>=20.0. (#7718)
+  * Remove current directory from sys.path when invoked as 
+    python -m pip <command> (#7731)
+  * Stop failing uninstallation, when trying to remove non-
+    existent files. (#7856)
+  * Prevent an infinite recursion with pip wheel when $TMPDIR is 
+    within the source directory. (#7872)
+  * Significantly speedup pip list --outdated by parallelizing 
+    index interaction. (#7962)
+  * Improve Windows compatibility when detecting writability in 
+    folder. (#8013)
+  Vendored Libraries
+  * Update semi-supported debundling script to reflect that   
+    appdirs is vendored.
+  * Add ResolveLib as a vendored dependency.
+  * Upgrade certifi to 2020.04.05.1
+  * Upgrade contextlib2 to 0.6.0.post1
+  * Upgrade distro to 1.5.0.
+  * Upgrade idna to 2.9.
+  * Upgrade msgpack to 1.0.0.
+  * Upgrade packaging to 20.3.
+  * Upgrade pep517 to 0.8.2.
+  * Upgrade pyparsing to 2.4.7.
+  * Remove pytoml as a vendored dependency.
+  * Upgrade requests to 2.23.0.
+  * Add toml as a vendored dependency.
+  * Upgrade urllib3 to 1.25.8.
+  Improved Documentation
+  * Emphasize that VCS URLs using git, git+git and git+http are 
+    insecure due to lack of authentication and encryption (#1983)
+  * Clarify the usage of --no-binary command. (#3191)
+  * Clarify the usage of freeze command in the example of Using pip in your program (#7008)
+  * Add a “Copyright” page. (#7767)
+  * Added example of defining multiple values for options which 
+    support them (#7803)
+- Test on test flavor without installing package 
+- Update pip-shipped-requests-cabundle.patch for newer certifi
+
+-------------------------------------------------------------------
 Thu Mar 19 09:42:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip virtualenv tests that are pinned to old virtualenv 16

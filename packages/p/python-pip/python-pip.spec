@@ -26,15 +26,19 @@
 %bcond_with test
 %endif
 Name:           python-pip%{psuffix}
-Version:        20.0.2
+Version:        20.2.3
 Release:        0
 Summary:        A Python package management system
 License:        MIT
 URL:            http://www.pip-installer.org
-Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz
-Source1:        setuptools-45.1.0-py3-none-any.whl
+# The PyPI archive lacks the tests
+Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
+# Wheel used for testing, no need to update regularly beyond the minimum version specified in 
+# tools/requirements/tests-common_wheels.txt
+Source1:        https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-45.1.0-py3-none-any.whl
+# PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
@@ -50,14 +54,15 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module csv23}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scripttest >= 1.3}
+BuildRequires:  %{python_module scripttest}
 BuildRequires:  %{python_module virtualenv >= 1.10}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  git
 BuildRequires:  subversion
@@ -71,7 +76,11 @@ pip-installable as well.
 
 %prep
 %setup -q -n pip-%{version}
+# Unbundling is not advised by upstream. See src/pip/_vendor/README.rst
+# Exception: Use our own cabundle. Adapted patch from python-certifi package
 %patch0 -p1
+rm src/pip/_vendor/certifi/cacert.pem
+
 %if %{with test}
 mkdir -p tests/data/common_wheels
 cp %{SOURCE1} tests/data/common_wheels/
@@ -80,13 +89,12 @@ cp %{SOURCE1} tests/data/common_wheels/
 for f in $(find src -name \*.py -exec grep -l '^#!%{_bindir}/env' {} \;); do
     sed -i 's|^#!%{_bindir}/env .*$||g' $f
 done
-rm src/pip/_vendor/certifi/cacert.pem
 
 %build
 %python_build
 
-%install
 %if ! %{with test}
+%install
 %python_install
 %prepare_alternative pip
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -94,8 +102,19 @@ rm src/pip/_vendor/certifi/cacert.pem
 
 %if %{with test}
 %check
-export PYTHONPATH=build/lib
-%pytest -k 'not network and not (test_build_env_allow_only_one_install or test_build_env_requirements_check or test_build_env_overlay_prefix_has_priority or test_build_env_isolation or test_should_cache_git_sha)' tests/unit
+export PYTHONPATH=$(pwd)/build/lib
+# no network on OBS
+donttest="test_network or test_remote_reqs_parse"
+# incompatible virtualenv version
+donttest+=" or test_build_env_allow_only_one_install"
+donttest+=" or test_build_env_isolation"
+donttest+=" or test_build_env_requirements_check"
+donttest+=" or test_build_env_overlay_prefix_has_priority"
+donttest+=" or test_should_cache_git_sha"
+# incompatible virtualenv version and no coverage wheel in common_wheels
+donttest+=" or test_from_link_vcs_with_source_dir_obtains_commit_id"
+donttest+=" or test_from_link_vcs_without_source_dir"
+%pytest -k "not ($donttest)" tests/unit
 %endif
 
 %pre
