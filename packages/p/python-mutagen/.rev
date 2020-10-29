@@ -271,4 +271,34 @@
     <comment></comment>
     <requestid>790056</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>86594a10a3b47c7239769613e98f556b</srcmd5>
+    <version>1.45.1</version>
+    <time>1603961142</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.45.1:
+  * Fix flake8 tests when run after calling ``setup.py build`` :bug:`482`
+  * No longer use mmap when rewriting files. Fixes slow save performance with Windows network shares, ZFS and more :pr:`483` :pr:`484`
+  * WAVE support with ID3 tags :pr:`408` (:user:`Philipp Wolfer &lt;phw&gt;`, :user:`Borewit`)
+  * DSDIFF support with ID3 tags :pr:`473` :pr:`472` (:user:`Philipp Wolfer &lt;phw&gt;`)
+  * MP4: Add support for nero chapters :pr:`398` (:user:`Martin Weinelt &lt;mweinelt&gt;`)
+  * wavpack: add support for wavpack DSD :pr:`464` (:user:`Timothy Redaelli &lt;drizzt&gt;`)
+  * wavpack: add bits_per_sample :pr:`467` (:user:`Timothy Redaelli &lt;drizzt&gt;`)
+  * MP4: handle DecoderSpecificInfo with wrong instance size :pr:`465`
+  * docs: various fixes :pr:`461` (:user:`Terence Eden &lt;edent&gt;`), :pr:`474` (:user:`naglis`)
+  * tests: depend on flake8 now (instead of pycodestyle and pyflakes)
+  * docs: fix warnings with sphinx v3
+  * Fuzzing integration with `python-afl &lt;https://github.com/jwilk/python-afl&gt;`__ :pr:`449`
+  * Fix various unhandled error cases in ogg, asf, oggvorbis, id3 :pr:`441`, :pr:`445`, :pr:`446`, :pr:`447`, :pr:`448`, :pr:`454` (:user:`Julien Voisin &lt;jvoisin&gt;`)
+  * aac: Fix ZeroDivisionError in case frequency is unknown
+  * musepack: handle truncated stream header
+  * musepack: handle invalid sample rate index
+  * musepack: handle duplicate RG/SH packets
+  * oggtheora: handle truncated header packet
+  * oggtheora: fail if FRN in the header packet is zero
+  * oggtheora: handle empty pages in more cases
+  * ogg: handle empty pages in to_packets()
+  * aiff: handle overflow in read_float() :pr:`456`</comment>
+    <requestid>835174</requestid>
+  </revision>
 </revisionlist>
