@@ -461,4 +461,14 @@
     <comment>submit new version 4.3.14</comment>
     <requestid>841655</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d84406c239b8293bef443517eeaa8d8c</srcmd5>
+    <version>4.3.15</version>
+    <time>1603959736</time>
+    <user>dimstar_suse</user>
+    <comment>- Registration/Addons: Architecture and version are optional.
+  (jsc#SLE-16195).
+- 4.3.15</comment>
+    <requestid>844134</requestid>
+  </revision>
 </revisionlist>
