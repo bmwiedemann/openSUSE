@@ -1,7 +1,7 @@
 #
 # spec file for package libassuan
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           libassuan
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        IPC library used by GnuPG version 2
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.gnupg.org/related_software/libassuan/index.en.html
+URL:            https://www.gnupg.org/related_software/libassuan/index.en.html
 Source0:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2.sig
@@ -30,7 +30,6 @@ Source2:        ftp://ftp.gnupg.org/gcrypt/libassuan/%{name}-%{version}.tar.bz2.
 Source3:        libassuan.keyring
 BuildRequires:  libgpg-error-devel >= 1.17
 Requires:       %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libassuan is the IPC library used by gpg2 (GnuPG version 2)
@@ -62,19 +61,17 @@ v2 server, but it uses it's own copy of libassuan.
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 export LDFLAGS="-fPIC"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post -n libassuan0 -p /sbin/ldconfig
-
 %postun -n libassuan0 -p /sbin/ldconfig
-
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/assuan.info.gz
 
@@ -82,13 +79,11 @@ make check %{?_smp_mflags}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/assuan.info.gz
 
 %files -n libassuan0
-%defattr(-,root,root)
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README THANKS
 %{_libdir}/libassuan.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/pkgconfig/libassuan.pc
 %{_infodir}/assuan*
 %{_includedir}/*.h
