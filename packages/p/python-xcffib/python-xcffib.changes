@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 13:01:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate tests
+- Update to 0.10.1
+  * testing: handle lock file open() failures gracefully 
+- from v0.10.0
+  * Drop support for Python 2.7
+  * testing: protect find_display() with flock()
+  * testing: don't leak discard FD
+
+-------------------------------------------------------------------
 Fri Feb 21 09:11:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable tests to avoid deadlock in xvfb

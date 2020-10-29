@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-xcffib
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        A drop in replacement for xpyb, an XCB python binding
 License:        Apache-2.0
@@ -45,8 +46,6 @@ replacement for xpyb.
 
 %prep
 %setup -q -n xcffib-%{version}
-# upstream moves files compared to git repository
-sed -i -e 's:from \.testing:from testing:g' test/*.py
 
 %build
 %python_build
@@ -56,9 +55,7 @@ sed -i -e 's:from \.testing:from testing:g' test/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Skip the tests as they deadlock here and there in xvfb
-# self.conn.wait_for_event() waits without end
-#%%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run nosetests-%{$python_bin_suffix} -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run nosetests-%{$python_bin_suffix} -v
 
 %files %{python_files}
 %license LICENSE

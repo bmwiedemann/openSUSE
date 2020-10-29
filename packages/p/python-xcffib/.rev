@@ -67,4 +67,12 @@
     <comment>- Disable tests to avoid deadlock in xvfb</comment>
     <requestid>777875</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ca77504e7fe5ebb7b937119f3aa46d9</srcmd5>
+    <version>0.10.1</version>
+    <time>1603959732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844109</requestid>
+  </revision>
 </revisionlist>
