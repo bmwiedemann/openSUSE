@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:51:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * API: add getters for all properties (fixes #56)
+  * API: add gtk_layer_is_supported() (fixes #83)
+  * API: add gtk_layer_is_layer_window(window)
+  * Docs: add Since: annotations for functions added since the
+    initial release (fixes #82)
+  * Fix: accept non-1 true boolean values
+  * Tests: fix license test for release tarball (fixes #73)
+  * Tests: test popup with grab (the most likely thing to break
+    on an incompatible GTK version) (fixes #68)
+
+-------------------------------------------------------------------
 Thu Oct 22 08:32:00 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.0:
