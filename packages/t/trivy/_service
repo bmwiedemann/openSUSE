@@ -2,8 +2,9 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/aquasecurity/trivy</param>
     <param name="scm">git</param>
-    <param name="versionformat">0.12.0</param>
     <param name="revision">v0.12.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">

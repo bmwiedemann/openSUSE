@@ -16,6 +16,8 @@
 #
 # nodebuginfo
 
+
+%global goipath github.com/aquasecurity/trivy
 Name:           trivy
 Version:        0.12.0
 Release:        0
@@ -26,12 +28,9 @@ URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.13
-
-# As specified in their documentation. The version of these packages doesn't
-# seem to matter too much.
-Requires:       git-core
+BuildRequires:  golang(API) >= 1.15
 Requires:       ca-certificates
+Requires:       git-core
 Requires:       rpm
 %{go_nostrip}
 
@@ -46,19 +45,18 @@ scan. All you need to do for scanning is to specify a target such as an image
 name of the container.
 
 %prep
-%setup -q -a1
-
-# Even though this is a bit ugly because it falls outside of the scope of the
-# original intent of the `LDFLAGS` variable, it's useful to do it once just so
-# we don't have to patch both `build` and `install`.
-sed -i -e 's|LDFLAGS=|LDFLAGS=-buildmode=pie -mod vendor |g' Makefile
+%setup -qa1
+%autopatch -p1
 
 %build
-make build VERSION=%{version}
+%goprep %{goipath}
+
+export CGO_ENABLED=0
+
+%gobuild -mod vendor -ldflags "-X=main.version=%{version}" cmd/trivy
 
 %install
-make install VERSION=%{version}
-install -D -m 0755 ~/go/bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+%goinstall
 
 %files
 %license LICENSE

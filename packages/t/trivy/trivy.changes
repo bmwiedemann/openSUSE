@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 28 12:47:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- revert _service and build changes in last update to use
+  the proper macros
+- set VERSION parameter properly (jsc#CAPS-105)
+- remove update-end-of-life-dates.patch
+
+-------------------------------------------------------------------
+Thu Oct 22 14:20:24 UTC 2020 - Stefan Nica <snica@suse.com>
+
+- Require golang >= 1.15 to fix EINTR read issues (jsc#CAPS-170)
+
+-------------------------------------------------------------------
+Thu Oct 22 13:16:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- add update-end-of-life-dates.patch 
+
+-------------------------------------------------------------------
 Tue Oct 20 13:13:39 UTC 2020 - msabate@suse.com
 
 - Update to version 0.12.0:
