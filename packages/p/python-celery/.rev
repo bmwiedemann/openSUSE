@@ -290,4 +290,30 @@
     <comment></comment>
     <requestid>820094</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bf62e497ab5b88922693ca202301d5ec</srcmd5>
+    <version>4.4.7</version>
+    <time>1603961184</time>
+    <user>dimstar_suse</user>
+    <comment>- Use really the upstream tarball
+
+- Don't update to 5.0.0 because missing dependencies
+- Update to version 4.4.7
+  + Add task_received, task_rejected and task_unknown to signals
+    module.
+  + [ES backend] add 401 as safe for retry.
+  + treat internal errors as failure.
+  + Remove redis fanout caveats.
+  + FIX: -A and --args should behave the same. (#6223)
+  + Class-based tasks autoretry (#6233)
+  + Preserve order of group results with Redis result backend
+    (#6218)
+  + Replace future with celery.five Fixes #6250, and reraise to
+    include
+  + Fix REMAP_SIGTERM=SIGQUIT not working
+  + (Fixes#6258) MongoDB: fix for serialization issue (#6259)
+  + Make use of ordered sets in Redis opt-in
+  + Test, CI, Docker, style and minor doc impovements.</comment>
+    <requestid>838700</requestid>
+  </revision>
 </revisionlist>

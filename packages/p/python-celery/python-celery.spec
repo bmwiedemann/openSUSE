@@ -28,7 +28,7 @@
 %bcond_with ringdisabled
 %bcond_without python2
 Name:           python-celery%{psuffix}
-Version:        4.4.6
+Version:        4.4.7
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
