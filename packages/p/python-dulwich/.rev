@@ -382,4 +382,16 @@
      back a 401. The client can then retry with credentials.</comment>
     <requestid>819989</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>145777be72cf0b26f03e1f49f6e52548</srcmd5>
+    <version>0.20.6</version>
+    <time>1603961110</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.6:
+ * Add a ``RefsContainer.watch`` interface.
+ * Fix pushing of new branches from porcelain.push.
+ * Honor shallows when pushing from a shallow clone.
+ * Fix porcelain.path_to_tree_path for Python 3.5.</comment>
+    <requestid>834874</requestid>
+  </revision>
 </revisionlist>

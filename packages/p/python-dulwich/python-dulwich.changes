@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:03:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.20.6:
+ * Add a ``RefsContainer.watch`` interface.
+ * Fix pushing of new branches from porcelain.push.
+ * Honor shallows when pushing from a shallow clone.
+ * Fix porcelain.path_to_tree_path for Python 3.5.
+
+-------------------------------------------------------------------
 Fri Jul 10 12:24:52 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.20.5:
