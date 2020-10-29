@@ -17,7 +17,7 @@
 
 
 Name:           polkit
-Version:        0.117
+Version:        0.118
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(mozjs-68)
+BuildRequires:  pkgconfig(mozjs-78)
 BuildRequires:  pkgconfig(systemd)
 # gtk-doc drags indirectyly ruby in for one of the helpers. This in turn causes a build cycle.
 #!BuildIgnore:  ruby
