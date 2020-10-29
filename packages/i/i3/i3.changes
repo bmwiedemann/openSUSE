@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 21 07:01:29 UTC 2020 - Christian Prause <42@wonko.de>
+
+- Update to version 4.18.3
+  * Bugfixes
+    + kick tray clients before destroying the bar 
+
+-------------------------------------------------------------------
 Wed Jul 29 20:39:17 UTC 2020 - Martin Rey <mrey@suse.com>
 
 - Update to version 4.18.2:
