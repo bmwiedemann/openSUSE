@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 29 13:28:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5f95dfda (2020-10-22) - boo#1178262
+  * firmware: hdmi: Timeout HDMI EDID reads
+  * firmware: arm_ldconfig: Don't invalidate the dcache for most of memory
+    See: #1445
+  * firmware: arm_loader: Allow arm to see force_turbo and uart boosts
+  * bootcode: usb: Fix USB init for 2835 bootcode.bin
+  * firmware: arm_loader: Update armstubs with those from PR 117 …
+    See: raspberrypi/tools#117
+  * firmware: Revert sdcard: Reduce SD read overhead
+  * firmware: arm_loader: Add GET/SET_VPU_VECTOR mailbox calls
+  * firmware: arm_loader: enable simple_fb iff there is a display
+    See: raspberrypi/linux#3878
+  * firmware: arm_loader: Mark V3D early boost as for the ARM
+    See: #1469
+
+-------------------------------------------------------------------
 Thu Oct  1 12:34:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to e7464dd (2020-09-30):

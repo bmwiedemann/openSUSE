@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-config
-Version:        2020.09.30
+Version:        2020.10.22
 Release:        0
 Summary:        Configuration for the Raspberry Pi firmware loader
 License:        MIT
