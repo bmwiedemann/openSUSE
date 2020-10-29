@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:22:20 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- prelude-manager 5.2.0:
+  * Fix script execution plugin
+  * Add relaying and reverse relaying plugin
+  * Add script execution plugin
+  * Use a bufpool for reverse relaying
+  * Properly restore buffer pool state
+  * Fix possible deadlock with multiple thread evicting
+  * Add SNMP traps plugin
+- build with libmaxminddb for GeoIP support
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Mon Feb  3 15:46:37 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
