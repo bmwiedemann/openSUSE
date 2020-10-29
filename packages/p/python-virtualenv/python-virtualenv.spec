@@ -26,19 +26,18 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        20.0.25
+Version:        20.0.33
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
-Patch0:         tests.patch
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
-Requires:       python-distlib >= 0.3.0
+Requires:       python-distlib >= 0.3.1
 Requires:       python-filelock >= 3.0.0
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-importlib_resources >= 1.0
@@ -88,7 +87,6 @@ libraries either).
 
 %prep
 %setup -q -n virtualenv-%{version}
-%autopatch -p1
 
 %build
 %python_build

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  8 04:11:15 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20.0.33:
+  * Fix ``None`` type error in cygwin if POSIX path in dest - by :user:`danyeaw`. (`#1962 <https://github.com/pypa/virtualenv/issues/1962>`_)
+  * Fix Python 3.4 incompatibilities (added back to the CI) - by :user:`gaborbernat`. (`#1963 <https://github.com/pypa/virtualenv/issues/1963>`_)
+  * For activation scripts always use UNIX line endings (unless it's BATCH shell related) - by :user:`saytosid`. (`#1818 <https://github.com/pypa/virtualenv/issues/1818>`_)
+  * Avoid spawning new windows when doing seed package upgrades in the background on Windows - by :user:`gaborbernat`. (`#1928 <https://github.com/pypa/virtualenv/issues/1928>`_)
+  * Fix a bug that reading and writing on the same file may cause race on multiple processes. (`#1938 <https://github.com/pypa/virtualenv/issues/1938>`_)
+  * Provide correct path for bash activator in cygwin or msys2 - by :user:`danyeaw`. (`#1940 <https://github.com/pypa/virtualenv/issues/1940>`_)
+  * Relax importlib requirement to allow version<3 - by :user:`usamasadiq` (`#1953 <https://github.com/pypa/virtualenv/issues/1953>`_)
+  * pth files were not processed on CPython2 if $PYTHONPATH was pointing to site-packages/ - by :user:`navytux`. (`#1959 <https://github.com/pypa/virtualenv/issues/1959>`_) (`#1960 <https://github.com/pypa/virtualenv/issues/1960>`_)
+  * Fix test suite failing if run from system Python - by :user:`gaborbernat`. (`#1882 <https://github.com/pypa/virtualenv/issues/1882>`_)
+  * Provide ``setup_logging`` flag to python API so that users can bypass logging handling if their application already
+  * performs this - by :user:`gaborbernat`. (`#1896 <https://github.com/pypa/virtualenv/issues/1896>`_)
+  * Use ``\n`` instead if ``\r\n`` as line separator for report (because Python already performs this transformation
+  * automatically upon write to the logging pipe) - by :user:`gaborbernat`. (`#1905 <https://github.com/pypa/virtualenv/issues/1905>`_)
+  * No longer preimport threading to fix support for `gpython <https://pypi.org/project/pygolang/#gpython>`_ and `gevent <https://www.gevent.org/>`_ - by :user:`navytux`. (`#1897 <https://github.com/pypa/virtualenv/issues/1897>`_)
+  * Bump dependency ``distutils >= 0.3.1`` - by :user:`gaborbernat`. (`#1880 <https://github.com/pypa/virtualenv/issues/1880>`_)
+  * Improve periodic update handling:
+    + better logging output while running and enable logging on background process call (``_VIRTUALENV_PERIODIC_UPDATE_INLINE`` may be used to debug behaviour inline)
+    + fallback to unverified context when querying the PyPi for release date,
+    + stop downloading wheels once we reach the embedded version, by :user:`gaborbernat`. (`#1883 <https://github.com/pypa/virtualenv/issues/1883>`_)
+  * Do not print error message if the application exists with ``SystemExit(0)`` - by :user:`gaborbernat`. (`#1885 <https://github.com/pypa/virtualenv/issues/1885>`_)
+- Update Requires of python-distlib
+- Drop tests.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Jul  7 07:20:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch from upstream to fix one failing test:
