@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 15:03:29 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Remove unused and broken dependency on libatomic
+
+-------------------------------------------------------------------
 Sun Oct 18 12:17:11 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Replace armv7_disable_WASM_EMULATE_ARM_UNALIGNED_FP_ACCESS.patch

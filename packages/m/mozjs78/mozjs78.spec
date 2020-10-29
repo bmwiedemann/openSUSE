@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _lto_cflags %{nil}
 %ifarch %{ix86}
 %global rust_arch i686
@@ -33,10 +34,6 @@ BuildArch:      i686
 # Require tests to pass?
 %global require_tests     0
 # LTO is default since F33 and F32 package is backported as is, so no LTO there
-# Require libatomic for ppc
-%ifarch ppc
-%global system_libatomic 1
-%endif
 # Big endian platforms
 %ifarch ppc ppc64 s390 s390x
 %global big_endian 1
@@ -46,6 +43,7 @@ Version:        78.4.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
+Group:          System/Libraries
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 Source0:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/source/firefox-%{version}esr.source.tar.xz
 Source1:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/source/firefox-%{version}esr.source.tar.xz.asc
@@ -87,9 +85,6 @@ BuildRequires:  rust
 BuildRequires:  pkgconfig(icu-i18n) >= 63.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?system_libatomic}
-BuildRequires:  libatomic
-%endif
 %if 0%{?big_endian}
 BuildRequires:  icu
 %endif
