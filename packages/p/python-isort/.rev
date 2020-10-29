@@ -245,4 +245,88 @@ Let's see which package is missing in ringX for test flavor</comment>
 - URL moved to https://pycqa.github.io/isort/</comment>
     <requestid>833014</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>15231dbb74dfe2a28d386fbb223912f1</srcmd5>
+    <version>5.6.4</version>
+    <time>1603961283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.6.4
+  * Fixed #1556: Empty line added between imports that should be 
+    skipped.
+- Version 5.6.3
+  * Improved packaging of test files alongside source distribution 
+    (see: https://github.com/PyCQA/isort/pull/1555).
+- Version 5.6.2
+  * Fixed #1548: On rare occasions an unecessary empty line can be 
+    added when an import is marked as skipped.
+  * Fixed #1542: Bug in VERTICAL_PREFIX_FROM_MODULE_IMPORT wrap 
+    mode.
+  * Fixed #1552: Pylama test dependent on source layout.
+  * Goal Zero: (Tickets related to aspirational goal of achieving 0 
+    regressions for remaining 5.0.0 lifespan):
+  * Zope added to integration test suite
+  * Additional testing of CLI (simulate unseekable streams)
+- now only requires poetry.core as PEP517 backend
+  
+- Fix building and installation of exampleprojects for testing
+- Update to 5.6.1
+  * Fixed #1546: Unstable (non-idempotent) behavior with certain 
+    src trees.
+- Changelog for 5.6.0
+  * Implemented #1433: Provide helpful feedback in case a custom 
+    config file is specified without a configuration.
+  * Implemented #1494: Default to sorting imports within .pxd 
+    files.
+  * Implemented #1502: Improved float-to-top behavior when there 
+    is an existing import section present at top-of-file.
+  * Implemented #1511: Support for easily seeing all files isort 
+    will be ran against using isort . --show-files.
+  * Implemented #1487: Improved handling of encoding errors.
+  * Improved handling of unsupported configuration option errors 
+    (see #1475).  
+  * Fixed #1463: Better interactive documentation for future 
+    option.
+  * Fixed #1461: Quiet config option not respected by file API in 
+    some circumstances.
+  * Fixed #1482: pylama integration is not working correctly out-
+    of-the-box.
+  * Fixed #1492: --check does not work with stdin source.
+  * Fixed #1499: isort gets confused by single line, multi-line 
+    style comments when using float-to-top.
+  * Fixed #1525: Some warnings can't be disabled with --quiet.
+  * Fixed #1523: in rare cases isort can ignore direct from import 
+    if as import is also on same line.
+  + Potentially breaking changes:
+  * Implemented #1540: Officially support Python 3.9 stdlib 
+    imports by default.
+  * Fixed #1443: Incorrect third vs first party categorization - 
+    namespace packages.
+  * Fixed #1486: &quot;Google&quot; profile is not quite Google style.
+  * Fixed &quot;PyCharm&quot; profile to always add 2 lines to be consistent 
+    with what PyCharm &quot;Optimize Imports&quot; does.
+  + Goal Zero:
+  * Implemented #1472: Full testing of stdin CLI Options
+  * Added additional branch coverage.
+  * More projects added to integration test suite. 
+- Changelog for 5.5.5
+  * Fixed #1539: in extremely rare cases isort 5.5.4 introduces
+    syntax error by removing closing paren.
+- Changelog for 5.5.4
+  * Fixed #1507: in rare cases isort changes the content of
+    multiline strings after a yield statement.
+  * Fixed #1505: Support case where known_SECTION points to a
+    section not listed in sections.
+- Use upstream's way of PIP with Poetry PEP517 backend to install 
+  the package so we can use Github archive only
+- A Poetry update required to modify the examples installation for
+  testing
+- Test flavor does not depend on installed base package anymore
+- Update to 5.5.3
+  * Fixed #1488: in rare cases isort can mangle yield from or raise
+    from statements.
+- Version 5.5.2 
+  * Fixed #1469: --diff option is ignored when input is from stdin. 
+</comment>
+    <requestid>841728</requestid>
+  </revision>
 </revisionlist>

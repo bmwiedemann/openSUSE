@@ -27,35 +27,31 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.5.1
+Version:        5.6.4
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
 URL:            https://pycqa.github.io/isort/
-# only PyPI archive contains setup.py
-Source:         https://files.pythonhosted.org/packages/source/i/isort/isort-%{version}.tar.gz
-# ... but test data are not packaged for PyPI, get them from git sources
-Source1:        https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
-BuildRequires:  %{python_module setuptools}
+# tests and example projects are not packaged for PyPI, get them from Github
+Source:         https://github.com/PyCQA/isort/archive/%{version}.tar.gz#/isort-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python-colorama >= 0.4.3
 Recommends:     python-hypothesmith
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
-Recommends:     python-requirementslib >= 1.5.4
-Recommends:     python-tomlkit
+Recommends:     python-requirementslib
 Suggests:       git
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
 BuildRequires:  %{python_module hypothesis-auto}
 BuildRequires:  %{python_module hypothesmith}
-# we cannot just use the source dir on test flavor because tests expect the
-# installed entrypoint (through alternatives)
-BuildRequires:  %{python_module isort = %{version}}
 BuildRequires:  %{python_module libcst}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip-api}
@@ -64,8 +60,7 @@ BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requirementslib >= 1.5.4}
-BuildRequires:  %{python_module tomlkit}
+BuildRequires:  %{python_module requirementslib >= 1.5}
 BuildRequires:  git
 %endif
 %python_subpackages
@@ -82,47 +77,43 @@ too.
 %prep
 %setup -q -n isort-%{version}
 chmod -x LICENSE
-%if %{with test}
-tar -x --strip-components=1 -f %{SOURCE1} \
-    isort-%{version}/example_isort_formatting_plugin \
-    isort-%{version}/example_shared_isort_profile \
-    isort-%{version}/.isort.cfg \
-    isort-%{version}/setup.cfg
-%endif
 
-%if !%{with test}
 %build
-%python_build
-%endif
+%pyproject_wheel
 
 %if !%{with test}
 %install
-%python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/isort
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%{python_expand # create egg-info for example projects
-for exampledir in example_shared_isort_profile example_isort_formatting_plugin; do
-  pushd $exampledir
-  # don't enforce exact same environment as upstream's devel project
-  rm poetry.lock
-  # no dependency download, we have them all by BuildRequires
-  sed -i '/tool.poetry.dependencies/,/^$/ d' pyproject.toml
-  poetry-%{$python_bin_suffix} install
-  # append current dir, only use colon if not empty
-  export PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}$(pwd)"
-  popd
+ORIGPATH=$PATH
+%{python_expand # install isort and required example projects into custom root
+mkdir isort-test-%{$python_bin_suffix}
+for proj in isort*.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
+  $python -m pip install --verbose \
+                         --no-index \
+                         --root $(pwd)/isort-test-%{$python_bin_suffix} \
+                         --no-deps \
+                         --use-pep517 \
+                         --no-build-isolation \
+                         --progress-bar off \
+                         --disable-pip-version-check \
+                         ${proj}
 done
-}
+
+export PATH="$(pwd)/isort-test-%{$python_bin_suffix}/usr/bin:$ORIGPATH"
+export PYTHONPATH="$(pwd)/isort-test-%{$python_bin_suffix}%{$python_sitelib}"
+export PYTHONDONTWRITEBYTECODE=1
 # test_projects_using_isort.py: these tests try to clone from
 # online git repositories.
 # test_settung_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
-%{pytest -W "ignore::UserWarning" \
+pytest-%{$python_bin_suffix} -v \
+         -W "ignore::UserWarning" \
          -W "ignore::DeprecationWarning" \
          --ignore tests/integration/test_projects_using_isort.py \
          -k "not (test_setting_combinations and test_isort_is_idempotent)"
@@ -141,7 +132,7 @@ done
 %license LICENSE
 %python_alternative %{_bindir}/isort
 %{python_sitelib}/isort
-%{python_sitelib}/isort-%{version}-py*.egg-info
+%{python_sitelib}/isort-%{version}.dist-info
 %endif
 
 %changelog
