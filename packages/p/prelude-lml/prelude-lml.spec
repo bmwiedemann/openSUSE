@@ -17,7 +17,7 @@
 
 
 Name:           prelude-lml
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        The prelude log analyzer
 # Prelude is GPL-2.0+
@@ -29,6 +29,8 @@ URL:            https://www.prelude-siem.org
 Source0:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}-tmpfiles.conf
+Source3:        https://www.prelude-siem.org/pkg/src/%{version}/%{name}-%{version}.tar.gz.sig
+Source4:        https://www.prelude-siem.org/attachments/download/233/RPM-GPG-KEY-Prelude-IDS#/%{name}.keyring
 # Add default syslog format to work out of the box
 Patch0:         %{name}-conf_rsyslog.patch
 # Fix make check
@@ -36,8 +38,11 @@ Patch1:         %{name}-fix_check.patch
 # Fix etc files permissions
 Patch2:         %{name}-fix_etc_perms.patch
 BuildRequires:  gamin-devel
-BuildRequires:  libprelude-devel
-BuildRequires:  pcre-devel
+BuildRequires:  libprelude-devel >= 5.2.0
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gnutls) >= 1.0.17
+BuildRequires:  pkgconfig(icu-io) >= 3.0
+BuildRequires:  pkgconfig(libpcre) >= 4.1
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -52,7 +57,7 @@ by a large set of applications
 Summary:        Header files and libraries for prelude-lml development
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}-%{release}
-Requires:       libprelude-devel
+Requires:       libprelude-devel >= 5.2.0
 
 %description devel
 Libraries, include files, etc you can use to develop custom
@@ -66,7 +71,7 @@ Prelude LML plugins.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}/%{_sysconfdir}/%{name}/ruleset/
@@ -97,8 +102,8 @@ install -D -m 444 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 %service_del_postun %{name}.service
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING NEWS HACKING.README README
+%license COPYING
+%doc NEWS HACKING.README README
 %attr(0770,-,-) %dir %{_sysconfdir}/%{name}/
 %config(noreplace) %attr(0640,-,-) %{_sysconfdir}/%{name}/plugins.rules
 %config(noreplace) %attr(0640,-,-) %{_sysconfdir}/%{name}/%{name}.conf
@@ -115,7 +120,7 @@ install -D -m 444 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 %ghost /run/%{name}
 
 %files devel
-%defattr(-,root,root,-)
+%license COPYING
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/%{name}.h
 

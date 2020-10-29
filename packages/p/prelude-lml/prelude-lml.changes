@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:29:49 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- prelude-lml 5.2.0:
+  * Fix max-rotation-size-offset parsing
+  * Document the log-max-length option
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Mon Feb  3 15:45:03 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to
