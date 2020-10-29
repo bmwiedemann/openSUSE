@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 13 12:17:03 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 1.1.1
+  * for a full HUGE changelog see
+    https://pywbem.readthedocs.io/en/stable_1.1/changes.html
+- remove coverage runs
+- the cli is now in python-pywbemtools
+  
+-------------------------------------------------------------------
 Wed May 13 12:31:48 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Update to 0.17.2:
