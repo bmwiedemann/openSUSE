@@ -1,0 +1,118 @@
+---
+ pytest.ini                               |    5 ++++-
+ tests/_device_tests/_attributes_tests.py |    1 +
+ tests/_device_tests/_device_tests.py     |    1 +
+ tests/_device_tests/_devices_tests.py    |    3 +++
+ tests/test_enumerate.py                  |    8 +++++---
+ tests/test_util.py                       |    2 ++
+ 6 files changed, 16 insertions(+), 4 deletions(-)
+
+--- a/pytest.ini
++++ b/pytest.ini
+@@ -1,3 +1,6 @@
+-[tool:pytest]
++[pytest]
+ # do not search for tests in build directory
+ norecursedirs = .* _* build
++markers =
++    conversion
++    real_udev
+--- a/tests/_device_tests/_attributes_tests.py
++++ b/tests/_device_tests/_attributes_tests.py
+@@ -124,6 +124,7 @@ class TestAttributes(object):
+                 with pytest.raises(ValueError):
+                     device.attributes.asbool(key)
+ 
++    @pytest.mark.real_udev
+     @_UDEV_TEST(167, "test_available_attributes")
+     @given(strategies.sampled_from(_DEVICES))
+     @settings(max_examples=5)
+--- a/tests/_device_tests/_devices_tests.py
++++ b/tests/_device_tests/_devices_tests.py
+@@ -127,6 +127,7 @@ class TestDevices(object):
+         assert error.subsystem == 'no_such_subsystem'
+         assert error.sys_name == 'foobar'
+ 
++    @pytest.mark.real_udev
+     @failed_health_check_wrapper
+     @given(
+         _CONTEXT_STRATEGY,
+@@ -142,6 +143,7 @@ class TestDevices(object):
+            Devices.from_device_number(a_context, typ, a_device.device_number)
+         assert a_device == device
+ 
++    @pytest.mark.real_udev
+     @failed_health_check_wrapper
+     @given(
+         _CONTEXT_STRATEGY,
+@@ -177,6 +179,7 @@ class TestDevices(object):
+         with pytest.raises(DeviceNotFoundByNumberError):
+             Devices.from_device_number(_CONTEXT, 'foobar', 100)
+ 
++    @pytest.mark.real_udev
+     @failed_health_check_wrapper
+     @given(
+         _CONTEXT_STRATEGY,
+--- a/tests/test_util.py
++++ b/tests/test_util.py
+@@ -124,6 +124,7 @@ def raise_valueerror():
+ _CHAR_DEVICES = list(_CONTEXT.list_devices(subsystem="tty"))
+ 
+ 
++@pytest.mark.real_udev
+ @pytest.mark.skipif(len(_CHAR_DEVICES) == 0, reason='no tty devices')
+ @given(strategies.sampled_from(_CHAR_DEVICES))
+ @settings(max_examples=5)
+@@ -137,6 +138,7 @@ def test_get_device_type_character_devic
+ _BLOCK_DEVICES = list(_CONTEXT.list_devices(subsystem="block"))
+ 
+ 
++@pytest.mark.real_udev
+ @pytest.mark.skipif(len(_BLOCK_DEVICES) == 0, reason='no block devices')
+ @given(strategies.sampled_from(_BLOCK_DEVICES))
+ @settings(max_examples=5)
+--- a/tests/test_enumerate.py
++++ b/tests/test_enumerate.py
+@@ -19,6 +19,7 @@ from __future__ import (print_function,
+                         absolute_import)
+ 
+ import mock
++import pytest
+ 
+ from hypothesis import given
+ from hypothesis import settings
+@@ -98,7 +99,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=None)
+     def test_match_subsystem_nomatch(self, context, subsystem):
+         """
+         Subsystem no match gets no subsystem with subsystem.
+@@ -151,7 +152,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _MATCH_PROPERTY_STRATEGY)
+-    @settings(max_examples=25)
++    @settings(max_examples=25, deadline=None)
+     def test_match_property_string(self, context, pair):
+         """
+         Match property only gets devices with that property.
+@@ -233,6 +234,7 @@ class TestEnumeratorMatchCombinations(ob
+     Test combinations of matches.
+     """
+ 
++    @pytest.mark.real_udev
+     @given(_CONTEXT_STRATEGY,
+            strategies.lists(
+                elements=_MATCH_PROPERTY_STRATEGY,
+@@ -262,7 +264,7 @@ class TestEnumeratorMatchCombinations(ob
+ 
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY, _SYSNAME_STRATEGY,
+            _MATCH_PROPERTY_STRATEGY)
+-    @settings(max_examples=10)
++    @settings(max_examples=10, deadline=None)
+     def test_match(self, context, subsystem, sysname, ppair):
+         """
+         Test that matches from different categories are a conjunction.

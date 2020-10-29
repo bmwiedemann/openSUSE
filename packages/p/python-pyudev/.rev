@@ -167,4 +167,15 @@
   - Various documentation fixes and updates</comment>
     <requestid>780386</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3c91ed26426f4209797f3dd28c46f208</srcmd5>
+    <version>0.22.0</version>
+    <time>1603961234</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest_register_mark.patch to make the test suite at least
+  syntactically correct and skip over tests we cannot run because
+  of missing /dev gh#pyudev/pyudev#404.
+</comment>
+    <requestid>840460</requestid>
+  </revision>
 </revisionlist>
