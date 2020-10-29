@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:47:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3.3: bug-fix release
+  * Unify all block-level tags (#1047).
+  * Fix issue where some empty elements would have text rendered
+    as None when using md_in_html (#1049).
+  * Avoid catastrophic backtracking in hr regex (#1055).
+  * Fix hr HTML handling (#1053).
+
+-------------------------------------------------------------------
+Tue Oct 20 18:31:38 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3.2: bug-fix release
+  * Properly parse inline HTML in md_in_html (#1040 & #1045).
+  * Avoid crashing when md_in_html fails (#1040).
+
+-------------------------------------------------------------------
+Tue Oct 13 19:17:33 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3.1: bug-fix release
+  * Correctly parse raw script and style tags (#1036).
+  * Ensure consistent class handling by fenced_code and codehilite
+    (#1032).
+
+-------------------------------------------------------------------
+Wed Oct  7 18:52:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.3: major release
+  see https://python-markdown.github.io/change_log/release-3.3/
+  for details
+
+-------------------------------------------------------------------
 Sat May  9 18:45:23 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.2.2:
