@@ -28,7 +28,7 @@ URL:            https://github.com/jaraco/rst.linker
 Source:         https://files.pythonhosted.org/packages/source/r/%{_name}/%{_name}-%{version}.tar.gz
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.packaging >= 3.2}
-BuildRequires:  %{python_module path.py}
+BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools_scm}
