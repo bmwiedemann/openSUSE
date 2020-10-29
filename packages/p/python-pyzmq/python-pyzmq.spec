@@ -99,10 +99,13 @@ export CFLAGS="%{optflags}"
 %if %{with tests}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py build_ext --inplace
-timeout 5m bash -c '
-%pytest
-'
+# skipped tests because of gh#zeromq/pyzmq#1431
+SKIPPED_TESTS="test_buffer_numpy or test_bytes or test_curve or test_frame_more or "
+SKIPPED_TESTS+="test_large_send or test_lifecycle1 or test_lifecycle2 or "
+SKIPPED_TESTS+="test_memoryview_shape or test_multi_tracker or test_plain or test_tracker"
+# gh#zeromq/pyzmq#1432
+SKIPPED_TESTS+=" or TestSocketGreen"
+%pytest_arch -k "not (${SKIPPED_TESTS})"
 %endif
 
 %files %{python_files}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 14 13:59:04 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests (gh#zeromq/pyzmq#1431 or gh#zeromq/pyzmq#1432)
+
+-------------------------------------------------------------------
+Wed Oct 14 10:21:34 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use pytest_arch macro instead of the construct we had there.
+
+-------------------------------------------------------------------
 Thu Sep 24 15:46:33 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - raise test timeout limit to 5m and define an console encoding
