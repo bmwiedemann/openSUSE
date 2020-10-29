@@ -16,16 +16,16 @@
 #
 
 
-%bcond_with test
+%bcond_without test
 Name:           qtile
-Version:        0.15.1
+Version:        0.16.1
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
 License:        MIT AND GPL-3.0-or-later
 Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
-Source:         https://github.com/qtile/qtile/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  libpulse-devel
@@ -34,6 +34,7 @@ BuildRequires:  python3-cairocffi >= 1.0.2
 BuildRequires:  python3-cffi >= 1.11.5
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  python3-xcffib >= 0.8.1
 BuildRequires:  update-desktop-files
@@ -54,30 +55,29 @@ Recommends:     python3-python-mpd2
 Recommends:     python3-pyxdg
 Suggests:       python3-jupyter_console
 Suggests:       python3-jupyter_ipykernel
+Suggests:       python3-tk
 %if %{with test}
 BuildRequires:  ImageMagick
 BuildRequires:  python3-cairocffi-pixbuf >= 0.9.0
 BuildRequires:  python3-curses
 BuildRequires:  python3-dbus-python
-BuildRequires:  python3-flake8
 BuildRequires:  python3-iwlib
 BuildRequires:  python3-jupyter_console
 BuildRequires:  python3-jupyter_ipykernel
 BuildRequires:  python3-keyring
-BuildRequires:  python3-pep8-naming
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-python-mpd2
 BuildRequires:  python3-pyxdg
+BuildRequires:  python3-tk
 BuildRequires:  xcalc
 BuildRequires:  xclock
 BuildRequires:  xeyes
-BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xrandr
 BuildRequires:  xterm
+BuildRequires:  xvfb-run
 %endif
 
 %description
@@ -93,13 +93,20 @@ A pure-Python tiling window manager.
 %prep
 %setup -q -n qtile-%{version}
 # Fix rpmlint warnings
-sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' %{_builddir}/qtile-%{version}/bin/dqtile-cmd
-sed -i '/#!\/usr\/bin\/env python/d' %{_builddir}/qtile-%{version}/libqtile/scripts/qtile_cmd.py
+sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' bin/dqtile-cmd
+sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/qtile_cmd.py
 
 %build
 %python3_build
 
 %install
+# Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
+echo "building pango"
+python3 ./libqtile/pango_ffi_build.py
+echo "building xcursors"
+python3 ./libqtile/backend/x11/xcursors_ffi_build.py
+echo "building pulseaudio volume control"
+python3 ./libqtile/widget/pulseaudio_ffi.py
 %python3_install
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
@@ -115,10 +122,9 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
-sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' bin/qtile-cmd
-sed -i -e 's/python/python3/g' scripts/ffibuild
-./scripts/ffibuild
-%pytest -k  "not test_images"
+cp %{buildroot}%{_bindir}/qtile-cmd bin/
+# test_images_good and other svg tests fail https://github.com/qtile/qtile/issues/1352
+PYTHONPATH=%{buildroot}%{python3_sitearch} xvfb-run python3 -m pytest -rs -k "not (svg or test_images_good)"
 %endif
 
 %post

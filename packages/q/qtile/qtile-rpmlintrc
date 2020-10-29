@@ -1,1 +1,2 @@
+# dqtile-cmd contains ^M within script logic, and incorrectly triggers EOL check
 addFilter("wrong-script-end-of-line-encoding /usr/bin/dqtile-cmd")
