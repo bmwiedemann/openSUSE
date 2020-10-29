@@ -1,6 +1,6 @@
 %rb_default_ruby_suffix ruby2.7
 
-%rb_default_ruby        ruby26
+%rb_default_ruby        ruby27
 %rb_default_ruby_abi    ruby:2.7.0
 
 %rb_build_versions      %rb_default_ruby

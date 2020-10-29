@@ -6,11 +6,11 @@
 #
 # IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
 #
-%rubygemsruby26() rubygem(ruby:2.7.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
-%rubygemsxruby26() %{expand:%%{rubygemsx%*}}
+%rubygemsruby27() rubygem(ruby:2.7.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby27() %{expand:%%{rubygemsx%*}}
 
-%rubyruby26() ruby2.7 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
-%rubyxruby26() %{expand:%%{rubyx%*}}
+%rubyruby27() ruby2.7 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby27() %{expand:%%{rubyx%*}}
 
-%rubydevelruby26() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
-%rubydevelxruby26() %{expand:%%{rubydevelx%*}}
+%rubydevelruby27() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby27() %{expand:%%{rubydevelx%*}}

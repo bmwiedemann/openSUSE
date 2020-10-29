@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:31:24 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix typo in ruby macros file
+
+-------------------------------------------------------------------
+Sun Oct 25 18:07:56 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix typo in ruby2.7-default.macros which still referenced ruby
+  2.6
+
+-------------------------------------------------------------------
 Fri Oct  9 18:10:19 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.7.2 (boo#1177125)
