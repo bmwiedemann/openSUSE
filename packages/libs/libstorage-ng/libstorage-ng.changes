@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Fri Oct 23 12:00:28 UTC 2020 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#775
+- allow to specify view in utils
+- coding style
+- fixed sanity check during btrfs probing
+- allow views to also filter devices
+- 4.3.52
+
+--------------------------------------------------------------------
 Mon Oct 19 10:40:34 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#774
