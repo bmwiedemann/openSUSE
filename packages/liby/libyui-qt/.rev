@@ -592,4 +592,12 @@
     <comment>submit new version 2.56.0</comment>
     <requestid>841244</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>636e3aadd237b4aaab81ca5eee694fd3</srcmd5>
+    <version>2.56.1</version>
+    <time>1603959677</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 2.56.1</comment>
+    <requestid>843582</requestid>
+  </revision>
 </revisionlist>
