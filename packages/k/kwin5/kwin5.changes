@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 27 22:23:22 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * Provide cursor geometry in device-independent pixels
+  * platform/drm: Fix clipped HiDPI hardware cursors
+  * Clip software cursors
+  * Mark the cursor as rendered after performing compositing
+  * [kwinrules] Allow negative numbers in position (kde#428083)
+  * screencast: Handle the case where pipewire is not installed (kde#427949)
+  * scenes/opengl: Properly render cursors with hidpi
+  * wayland: Fix drag-and-drop cursors with hidpi
+  * platforms/drm: Use a heuristic to determine if EGLDevice backend can be used
+  * ScreenshotEffect: don't expect authorization for interactive screenshots
+- Drop patches, now upstream:
+  * 0001-screencast-Handle-the-case-where-pipewire-is-not-ins.patch
+
+-------------------------------------------------------------------
 Mon Oct 26 09:40:33 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crash if pipewire fails to initialize (boo#1178101, kde#427949):
