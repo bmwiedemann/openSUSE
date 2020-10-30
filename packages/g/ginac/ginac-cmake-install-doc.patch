@@ -1,0 +1,64 @@
+Index: ginac-1.7.11.git20200829/tools/CMakeLists.txt
+===================================================================
+--- ginac-1.7.11.git20200829.orig/tools/CMakeLists.txt
++++ ginac-1.7.11.git20200829/tools/CMakeLists.txt
+@@ -2,6 +2,8 @@
+ add_executable(viewgar viewgar.cpp)
+ target_link_libraries(viewgar ginac::ginac)
+ install(TARGETS viewgar RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/viewgar.1.in ${CMAKE_CURRENT_SOURCE_DIR}/viewgar.1)
++install(FILES viewgar.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
+ 
+ if (CMAKE_COMPILER_IS_GNUCC)
+ 	set (CC gcc)
+Index: ginac-1.7.11.git20200829/ginsh/CMakeLists.txt
+===================================================================
+--- ginac-1.7.11.git20200829.orig/ginsh/CMakeLists.txt
++++ ginac-1.7.11.git20200829/ginsh/CMakeLists.txt
+@@ -60,3 +60,6 @@ target_link_libraries(ginsh ginac::ginac
+ target_include_directories(ginsh PRIVATE ${ginsh_include_directories})
+ target_compile_definitions(ginsh PRIVATE HAVE_CONFIG_H)
+ install(TARGETS ginsh RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
++
++configure_file(${CMAKE_CURRENT_SOURCE_DIR}/ginsh.1.in ${CMAKE_CURRENT_SOURCE_DIR}/ginsh.1)
++install(FILES ginsh.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1/)
+Index: ginac-1.7.11.git20200829/doc/reference/CMakeLists.txt
+===================================================================
+--- ginac-1.7.11.git20200829.orig/doc/reference/CMakeLists.txt
++++ ginac-1.7.11.git20200829/doc/reference/CMakeLists.txt
+@@ -14,7 +14,7 @@ configure_file(${CMAKE_CURRENT_SOURCE_DI
+ 	       ${CMAKE_CURRENT_BINARY_DIR}/Doxyfooter
+ 	       @ONLY)
+ 
+-add_custom_target(html_dox
++add_custom_target(html_dox ALL
+ 	COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/DoxyfileHTML
+ 	WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+ 	COMMENT "DOXYGEN DoxyfileHTML")
+@@ -33,8 +33,11 @@ add_custom_command(
+ 
+ if (LATEX_FOUND)
+ 	pdflatex_process(${CMAKE_CURRENT_BINARY_DIR}/pdflatex/reference.tex)
+-	add_custom_target(pdf_dox DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pdflatex/reference.pdf)
++	add_custom_target(pdf_dox ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/pdflatex/reference.pdf)
+ 	add_dependencies(pdf pdf_dox)
+ endif()
+ 
+-
++install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html_files/ DESTINATION ${CMAKE_INSTALL_DOCDIR}/html)
++if (LATEX_FOUND)
++	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/pdflatex/reference.pdf DESTINATION ${CMAKE_INSTALL_DOCDIR})
++endif()
+Index: ginac-1.7.11.git20200829/doc/tutorial/CMakeLists.txt
+===================================================================
+--- ginac-1.7.11.git20200829.orig/doc/tutorial/CMakeLists.txt
++++ ginac-1.7.11.git20200829/doc/tutorial/CMakeLists.txt
+@@ -43,7 +43,7 @@ macro(add_doc_format src fmt)
+ 		DEPENDS ${_src} ${_${src}_tutorial_figures_${fmt}}
+ 		COMMENT "TEXI2DVI ${src}.texi => ${src}.${fmt}"
+ 		VERBATIM)
+-	add_custom_target(${fmt}_${src}_tutorial DEPENDS ${_out})
++	add_custom_target(${fmt}_${src}_tutorial ALL DEPENDS ${_out})
+ 	add_dependencies(${fmt} ${fmt}_${src}_tutorial)
+ endmacro()
+ 

@@ -16,33 +16,74 @@
 #
 
 
-%define library_version 6
-Name:           ginac
-Version:        1.7.8
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%global srcname ginac
+
+%if "%{flavor}" == "doc"
+%bcond_without doc
+%define pkg_suffix -doc
+BuildArch:      noarch
+%endif
+
+%if "%{flavor}" == ""
+%bcond_with doc
+%endif
+
+%define library_version 11
+Name:           %{srcname}%{?pkg_suffix}
+Version:        1.8.0
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://www.ginac.de/
-Source0:        https://www.ginac.de/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM ginac-check-for-python3.patch badshah400@gmail.com -- Check for python3 if python not found during configure.
-Patch0:         ginac-check-for-python3.patch
+Source0:        https://www.ginac.de/%{srcname}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM ginac-fix-makeindex.patch badshah400@gmail.com -- Fix input file path when running makeindex which does not like absolute paths
+Patch0:         ginac-fix-makeindex.patch
+# PATCH-FIX-UPSTREAM ginac-cmake-install-doc.patch badshah400@gmail.com -- Install man and other documentation files when cmake is used for building
+Patch1:         ginac-cmake-install-doc.patch
 BuildRequires:  bison
 BuildRequires:  cln-devel
-BuildRequires:  doxygen
+BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  graphviz
-BuildRequires:  libtool
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  readline-devel
+# SECTION Requirements for building documentation
+%if %{with doc}
+BuildRequires:  doxygen
 BuildRequires:  texinfo
+BuildRequires:  texlive-courier
 BuildRequires:  texlive-dvips-bin
+BuildRequires:  texlive-helvetic
 BuildRequires:  texlive-latex-bin
+BuildRequires:  texlive-makeindex-bin
+BuildRequires:  texlive-metafont-bin
+BuildRequires:  texlive-wasy
 BuildRequires:  transfig
+BuildRequires:  tex(adjustbox.sty)
+BuildRequires:  tex(caption.sty)
+BuildRequires:  tex(colortbl.sty)
+BuildRequires:  tex(etoc.sty)
+BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(float.sty)
+BuildRequires:  tex(hanging.sty)
+BuildRequires:  tex(helvet.sty)
+BuildRequires:  tex(multirow.sty)
+BuildRequires:  tex(natbib.sty)
 BuildRequires:  tex(newunicodechar.sty)
+BuildRequires:  tex(sectsty.sty)
+BuildRequires:  tex(stackengine.sty)
+BuildRequires:  tex(tabu.sty)
+BuildRequires:  tex(tocloft.sty)
+BuildRequires:  tex(ulem.sty)
+BuildRequires:  tex(wasysym.sty)
+%endif
+# /SECTION
 
 %description
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -50,7 +91,6 @@ open framework for symbolic computation within the C++ programming language.
 
 %package -n libginac%{library_version}
 Summary:        C++ library for symbolic calculations
-Group:          System/Libraries
 
 %description -n libginac%{library_version}
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -58,13 +98,15 @@ open framework for symbolic computation within the C++ programming language.
 
 %package devel
 Summary:        GiNaC development libraries and header files
-Group:          Development/Libraries/C and C++
 Requires:       cln-devel
 Requires:       libginac%{library_version} = %{version}
-Requires(pre):  %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Provides:       lib%{name}-devel = %{version}
 Obsoletes:      lib%{name}-devel < %{version}
+%if 0%{?suse_version} < 1550
+Requires(pre):  %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
+%endif
+Recommends:     ginac-doc-tutorial
 
 %description devel
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -73,30 +115,86 @@ open framework for symbolic computation within the C++ programming language.
 This package contains the libraries, include files and other resources you
 use to develop GiNaC applications.
 
+%if "%{flavor}" == "doc"
+%package pdf
+Summary:        API documentation for GiNaC in PDF format
+
+%description pdf
+GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
+open framework for symbolic computation within the C++ programming language.
+
+This package provides the API documentation for GiNaC in PDF format.
+
+%package html
+Summary:        API documentation for GiNaC in HTML format
+
+%description html
+GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
+open framework for symbolic computation within the C++ programming language.
+
+This package provides the API documentation for GiNaC in HTML format.
+
+%package tutorial
+Summary:        The GiNaC tutorial in PDF format
+
+%description tutorial
+GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
+open framework for symbolic computation within the C++ programming language.
+
+This package provides a tutorial file for GiNaC in PDF format.
+
+%endif
+
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1 -n %{srcname}-%{version}
 
 %build
-autoreconf -fvi
-%configure --docdir=%{_docdir}/%{name} --disable-static --disable-rpath
-make %{?_smp_mflags}
-make %{?_smp_mflags} html
+export LDFLAGS="-Wl,--no-undefined"
+%cmake -DCMAKE_SKIP_RPATH:BOOL=ON \
+       -DCMAKE_INSTALL_LIBEXECDIR:PATH=%{_libexecdir} \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
+
+%if "%{flavor}" == "doc"
+# Build just the reference doc for the "doc" flavour
+pushd doc/reference
+%cmake_build pdf_dox html_dox
+popd
+pushd doc/tutorial
+%cmake_build pdf_ginac_tutorial
+popd
+%else
+%cmake_build
+%endif
 
 %install
-%make_install install-html
+%if "%{flavor}" == "doc"
+pushd build/doc/reference
+%make_install
+popd
+%else
+%cmake_install
+%endif
+
 find %{buildroot} -type f -name "*.la" -delete -print
 
+# SECTION Unflavoured Pkg
+%if "%{flavor}" == ""
 %check
-make %{?_smp_mflags} check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+%cmake_build check
 
 %post -n libginac%{library_version} -p /sbin/ldconfig
 %postun -n libginac%{library_version} -p /sbin/ldconfig
 
+%if 0%{?suse_version} < 1550
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/ginac.info.gz
+%install_info --info-dir=%{_infodir} %{_infodir}/ginac-examples.info.gz
+
 %preun devel
 %install_info_delete  --info-dir=%{_infodir} %{_infodir}/ginac.info.gz
+%install_info_delete  --info-dir=%{_infodir} %{_infodir}/ginac-examples.info.gz
+%endif
 
 %files -n libginac%{library_version}
 %{_libdir}/libginac.so.%{library_version}*
@@ -106,10 +204,9 @@ make %{?_smp_mflags} check
 %doc AUTHORS ChangeLog NEWS README
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/ginac.pc
-%dir %{_includedir}/ginac
-%{_includedir}/ginac/*.h
+%{_libdir}/cmake/ginac/
+%{_includedir}/ginac/
 %{_infodir}/*.info%{?ext_info}
-%{_docdir}/%{name}/
 
 %files
 %{_bindir}/ginsh
@@ -117,5 +214,22 @@ make %{?_smp_mflags} check
 %{_libexecdir}/ginac-excompiler
 %{_mandir}/man1/ginsh.1%{?ext_man}
 %{_mandir}/man1/viewgar.1%{?ext_man}
+%endif
+# /SECTION
+
+# SECTION doc flavoured pkg
+%if "%{flavor}" == "doc"
+%files pdf
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/reference.pdf
+
+%files html
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/html/
+
+%files tutorial
+%doc %__builddir/doc/tutorial/ginac.pdf
+%endif
+# /SECTION
 
 %changelog

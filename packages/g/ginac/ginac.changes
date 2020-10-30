@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Oct 15 21:25:16 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.0
+  * New routines for the numerical evaluation of iterated
+    integrals like elliptic multiple polylogarithms or iterated
+    integrals of modular forms.
+  * Stronger normalization methods for expressions with powers.
+    Where this is safe, GiNaC now tries replacing various kinds of
+    powers in order to find and cancel common subexpressions.
+  * Improved CMake build.
+- Drop _service file and go back to using full URL for Source.
+- Update so version in keeping with upstream.
+
+-------------------------------------------------------------------
+Sun Oct 11 15:27:09 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use multibuild to split off documentation building from main
+  package, whereby we build only the reference documentation and
+  tutorial pdf for the "doc" flavour and the main libraries and
+  binaries for the unflavoured pkg.
+- Move ginac.pdf from the -devel pkg into separate -doc-tutorial
+  package as it requires texinfo and texlive to build, and bloats
+  the main pkg BuildRequires; add Recommends: ginac-doc-tutorial
+  for ginac-devel.
+- BuildRequires: python3-base instead of python3.
+
+-------------------------------------------------------------------
+Tue Sep 22 23:51:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add _service file to use git version at commit 9b53600 as it
+  includes various build related fixes over latest tagged version
+  1.7.11.
+- Add patches to fix/improve builds when using cmake:
+  * ginac-fix-makeindex.patch: Fix input file path when running
+    `makeindex` which does not like absolute paths.
+  * ginac-cmake-install-doc.patch: Install man and other
+    documentation files when cmake is used for building.
+- Drop ginac-check-for-python3.patch: incorporated upstream.
+- Use cmake for build (Add BuildRequires: cmake and drop libtool).
+- Build API documentation in PDF and HTML formats and package as
+  part of new %{name}-doc-pdf and %{name}-doc-html packages
+  respectively (add appropriate BuildRequires).
+- Drop Group tags from packages.
+
+-------------------------------------------------------------------
+Tue Sep 22 10:14:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.11:
+  * Fix elusive bugs in factor() and in expand().
+- Changes from version 1.7.10:
+  * Fix collect_common_factors() for hidden zero arguments.
+  * Fix build on modern systems (C++20 and Python3).
+- Changes from version 1.7.9:
+  * Fix unarchiving of overloaded functions.
+  * Fix MinGW64 build.
+
+-------------------------------------------------------------------
+Mon Sep 21 12:05:39 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Fail to build if there are undefined symbols in the shared library 
+
+-------------------------------------------------------------------
 Thu Feb  6 11:01:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.7.8
