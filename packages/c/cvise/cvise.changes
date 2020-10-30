@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 29 14:45:05 UTC 2020 - mliska@suse.cz
+
+- Update to version 1.8.0+git.20201029.d32ab1b:
+  * Fix verbose output for sanity check.
+  * Improve wording for transformation opportunities.
+  * Improve debugging for InsaneTestCaseError.
+
+-------------------------------------------------------------------
 Wed Oct 21 15:19:16 UTC 2020 - mliska@suse.cz
 
 - Update to version 1.8.0+git.20201021.07d465a:
