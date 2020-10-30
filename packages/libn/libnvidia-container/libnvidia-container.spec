@@ -42,6 +42,7 @@ Source1:        https://github.com/NVIDIA/nvidia-modprobe/archive/%{modprobe_ver
 Patch0:         libnvidia-container-fix-revision.patch
 Patch1:         libnvidia-container-fix-makefile.patch
 Patch2:         no-manual-debuginfo.patch
+Patch3:         reproducible.patch
 BuildRequires:  bmake
 BuildRequires:  distribution-release
 BuildRequires:  groff
@@ -107,6 +108,7 @@ This package contains command-line tools that facilitate using the library.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # META_NOECHO=echo is required to work around a bug in Leap 15's version of bmake,

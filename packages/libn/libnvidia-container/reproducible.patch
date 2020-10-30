@@ -1,0 +1,35 @@
+https://github.com/NVIDIA/libnvidia-container/pull/94
+
+From 76fe1a2f5a9ae1896ea8e526a363e77e858a1a03 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Thu, 25 Jun 2020 16:12:11 +0200
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+This date call only works with GNU date.
+
+Signed-off-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+---
+ mk/common.mk | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+===================================================================
+--- libnvidia-container-1.1.1.orig/mk/common.mk
++++ libnvidia-container-1.1.1/mk/common.mk
+@@ -21,7 +21,11 @@ REVISION ?= $(shell git rev-parse HEAD)
+ 
+ UID      := $(shell id -u)
+ GID      := $(shell id -g)
+-DATE     := $(shell date -u --iso-8601=minutes)
++ifdef SOURCE_DATE_EPOCH
++    DATE := $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" --iso-8601=minutes)
++else
++    DATE := $(shell date -u --iso-8601=minutes)
++endif
+ COMPILER := $(realpath $(shell which $(CC)))
+ PLATFORM ?= $(shell uname -m)
+ 
