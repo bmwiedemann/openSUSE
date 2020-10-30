@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libintl-perl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-libintl-perl
-Version:        1.31
+Version:        1.32
 Release:        0
-#Upstream: CHECK(GPL-1.0+ or Artistic-1.0)
+#Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
 %define cpan_name libintl-perl
 Summary:        High-Level Interface to Uniforum Message Translation
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUIDO/%{cpan_name}-%{version}.tar.gz
 Source1:        libintl-perl-rpmlintrc
 Source2:        cpanspec.yml
@@ -46,7 +46,7 @@ for example in GNU gettext.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
