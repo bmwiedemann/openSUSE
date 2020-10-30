@@ -3000,4 +3000,12 @@
     <comment>submit new version 4.3.9</comment>
     <requestid>841251</requestid>
   </revision>
+  <revision rev="404" vrev="1">
+    <srcmd5>c0ab696f1f0d248c8c85405eceabfb6d</srcmd5>
+    <version>4.3.10</version>
+    <time>1604054756</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.3.10</comment>
+    <requestid>844233</requestid>
+  </revision>
 </revisionlist>

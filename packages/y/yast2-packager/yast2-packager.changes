@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:01:37 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Confirm abort in product license dialog (bsc#1178005)
+- 4.3.10
+
+-------------------------------------------------------------------
 Mon Oct 12 11:39:08 CEST 2020 - schubi@suse.de
 
 - VNC installation: Removed xorg-x11 package from the needed
