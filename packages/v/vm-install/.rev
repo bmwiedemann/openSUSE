@@ -1329,4 +1329,12 @@
     <comment>jsc#SLE-11981 - Dev: vm-install: sync SLE and openSUSE Leap differences</comment>
     <requestid>843491</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>3cac9e0310fbd0ac3c41848156ce0e6f</srcmd5>
+    <version>0.10.10</version>
+    <time>1604054785</time>
+    <user>dimstar_suse</user>
+    <comment>Trivial changelog adjustment to use Jira Epic number and not Jira Dev task number</comment>
+    <requestid>844907</requestid>
+  </revision>
 </revisionlist>

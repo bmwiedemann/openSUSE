@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Oct 22 15:10:30 MDT 2020 - carnold@suse.com
 
-- jsc#SLE-11981 - Dev: vm-install: sync SLE and openSUSE Leap
+- jsc#SLE-11885 - vm-install: sync SLE and openSUSE Leap
   differences
   Modify the PV PXE booting feature to only allow a pxe server
   address passed on command line. The use of udhcp to lookup a pxe
