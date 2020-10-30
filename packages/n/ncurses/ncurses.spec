@@ -24,6 +24,7 @@
 %endif
 %bcond_with     memleakck
 %bcond_without  onlytinfo
+%bcond_with     libbsd
 
 %if %{with onlytinfo}
 %global soname_tinfo tinfo
@@ -42,6 +43,9 @@ BuildRequires:  db-devel
 BuildRequires:  expect
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+%if %{with libbsd}
+BuildRequires:  pkgconfig(libbsd)
+%endif
 BuildRequires:  screen
 %if 0%{?suse_version} > 1130
 BuildRequires:  gpm-devel
@@ -73,7 +77,7 @@ Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20200202.tgz
+Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20200220.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Patch0:         ncurses-6.2.dif
@@ -397,6 +401,24 @@ mv tack-* tack
     cflags -Wl,--hash-size=8599     LDFLAGS
     cflags -Wl,--as-needed          LDFLAGS
     CXXFLAGS=$CFLAGS
+    CPPFLAGS=
+    include=
+    for header in stddef.h limits.h
+    do
+	set -- $(echo '#include <'$header'>'|gcc -E -|sed -rn 's@[^/]*"([a-z0-9/\._-]+)/'$header'".*@\1@p'| sort -u)
+	for found
+	do
+	    case "$found" in
+	    /usr/include*) continue ;;
+	    esac
+	    include=${include+"-I$found $include"}
+	done
+    done
+    if test -n "$include"
+    then
+        CPPFLAGS="$include"
+	unset include
+    fi
     test -n "$TERM" || TERM=linux
     mkdir gzip
     cat > gzip/gzip <<-'EOF'
@@ -405,7 +427,7 @@ mv tack-* tack
 	EOF
     chmod 0755 gzip/gzip
     PATH=$PWD/gzip:$PATH
-    export CC CFLAGS CXX CXXFLAGS TERM LDFLAGS
+    export CC CFLAGS CXX CXXFLAGS CPPFLAGS TERM LDFLAGS
     #
     # Detect 64bit architecures and be sure that we use an
     # unsigned long for chtype to be backward compatible with

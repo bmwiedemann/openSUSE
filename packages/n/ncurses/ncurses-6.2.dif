@@ -22,8 +22,8 @@
 
 --- aclocal.m4
 +++ aclocal.m4	2020-08-31 12:06:53.682411288 +0000
-@@ -617,7 +617,7 @@ AC_MSG_CHECKING([for size of bool])
- AC_CACHE_VAL(cf_cv_type_of_bool,[
+@@ -639,7 +639,7 @@ AC_CHECK_SIZEOF(bool,,[
+ AC_CACHE_CHECK(for type of bool, cf_cv_type_of_bool,[
  	rm -f cf_test.out
  	AC_TRY_RUN([
 -#include <stdlib.h>
@@ -31,7 +31,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5476,12 +5476,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5506,12 +5506,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo '? missing rename for '\$cf_source
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +49,7 @@
  	sed	-f $cf_man_alias \\
  CF_EOF
  
-@@ -5491,7 +5494,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5521,7 +5524,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +58,7 @@
  CF_EOF
  fi
  
-@@ -5531,7 +5534,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5561,7 +5564,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +67,7 @@
  CF_EOF
  fi
  
-@@ -5540,23 +5543,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5570,23 +5573,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test \$form = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +97,7 @@
  				for cf_alias in \$aliases
  				do
  					if test \$section = 1 ; then
-@@ -5565,7 +5568,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5595,7 +5598,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f \$cf_alias\${suffix} ; then
@@ -106,7 +106,7 @@
  							then
  								continue
  							fi
-@@ -5575,18 +5578,18 @@ CF_EOF
+@@ -5605,18 +5608,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +128,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5606,9 +5609,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5636,9 +5639,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test \$verb = removing ; then
@@ -141,7 +141,7 @@
  		)
  		test -d \$cf_subdir\${section} &&
  		test -n "\$aliases" && (
-@@ -5628,6 +5631,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5658,6 +5661,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi

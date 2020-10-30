@@ -2960,4 +2960,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842479</requestid>
   </revision>
+  <revision rev="179" vrev="10">
+    <srcmd5>64855253683724a4259490c96965e76c</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1604054739</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable usage of libbsd as this one is not in bootstrap image 
+
+- Add ncurses patch 20201024
+  + provide workaround configure-check for bool when cross-compiling.
+  + fix a potential indexing error in _nc_parse_entry(), seen with
+    Herlim's test data using address-sanitizer.
+  + change a null-pointer check in set_curterm to a valid-string check,
+    needed in to tic's use-resolution work pad_char is cancelled
+    (report/testcase by Robert Sebastian Herlim)
+  + improve tic's -c option to validate the number and type of parameters
+    and compare against expected number/type before deciding which set of
+    parameter-lists to use in tparm calls (report/testcase by Robert
+    Sebastian Herlim).
+  + fix a link for tabs.1 manpage in announce.html.in (report by Nick
+    Black), as well as some fixes via linklint.
+- Update to tack 1.9 (patch 20200220)
+  * sysdep.c: gcc-warning
+  * tack.c: fix gcc warning for non-ncurses configuration
+  * init.c: zero-out the debug/log-pointers after closing them
+  * tack.1: add -d option, for debug.log
+  * output.c: use debug.log to record putp's and tput's which hint at
+    the testing done
+  * sysdep.c: use debug.log to record when the tty is set/reset
+  * tack.h: split-out log_chr and log_str
+  * tack.c: add -d option, for debug.log
+  * tack.1, tack.c, tack.h: add -l option
+  * tack.c: eliminate a confusing comparison for the logging-menu-entry
+    state by using #define'd strings for that and the hex-output menu.
+  * tack.c: use getopt
+  * fun.c, crum.c, edit.c:</comment>
+    <requestid>844100</requestid>
+  </revision>
 </revisionlist>
