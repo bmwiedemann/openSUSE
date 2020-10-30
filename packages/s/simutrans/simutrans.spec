@@ -44,6 +44,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
 Recommends:     %{name}-pak128
+Suggests:       %{name}-pak128-german
 Suggests:       %{name}-pak64
 Suggests:       %{name}-makeobj
 

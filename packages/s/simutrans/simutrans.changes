@@ -2,6 +2,14 @@
 Sun Oct 11 17:08:01 UTC 2020 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 122-0
 
 - update to version 122.0
+- In the words of "prissi": It packed with new things hidden and in plain view. 
+  Like a much more stable server, optimisations for tablet usage and only games in lists, 
+  fast map creation, multi-tiled rotatable city buildings, 
+  better use of fixed monthly convoi costs, further improvement of the GUI, depot list, 
+  list of all existing vehicles, climates optional calculated from height and humidity 
+  and tons of bug fixes, also the scripted AI got rail support (still under optimisation).
+- Complete history can be found at (unofficial):
+  https://github.com/aburch/simutrans/blob/master/simutrans/history.txt
 
 -------------------------------------------------------------------
 Wed Oct  7 17:29:22 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
