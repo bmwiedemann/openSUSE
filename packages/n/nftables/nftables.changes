@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:08:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.9.7
+  * Support for implicit chains
+  * Support for ingress inet chains
+  * Support for reject from prerouting chain
+  * Support for --terse option in json
+  * Support for the reset command with json
+
+-------------------------------------------------------------------
 Tue Jun 16 13:37:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.6

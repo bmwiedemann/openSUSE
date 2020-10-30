@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -37,7 +37,7 @@ BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.3
-BuildRequires:  pkgconfig(libnftnl) >= 1.1.7
+BuildRequires:  pkgconfig(libnftnl) >= 1.1.8
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 
 %description
@@ -90,7 +90,7 @@ pushd obj/
 %configure --disable-silent-rules --disable-static --docdir="%_docdir/%name" \
 	--includedir="%_includedir/%name" --with-json \
 	--enable-python --with-python-bin="$(which python3)"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
