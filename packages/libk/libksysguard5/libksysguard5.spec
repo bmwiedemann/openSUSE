@@ -18,18 +18,20 @@
 
 %bcond_without lang
 Name:           libksysguard5
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         libksysguard-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
 %if %{with lang}
-Source1:        libksysguard-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Autodelete-smapsRunnable.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
