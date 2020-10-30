@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:56:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Use %pycache_only %python_sitelib instead of %python3_sitelib in
+  order to support multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+- Enable test suite. It is mandatory for python packages and
+  upstream's next major version update will have more tests.
+
+-------------------------------------------------------------------
 Mon Oct 12 19:34:25 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - fix constructor param name for virDomain{Checkpoint,Snapshot}

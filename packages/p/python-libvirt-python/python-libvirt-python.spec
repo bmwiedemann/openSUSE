@@ -19,7 +19,7 @@
 # No longer build for python2. Support was dropped upstream in the 6.0.0 release
 %define skip_python2  1
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define srcname libvirt-python
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
@@ -37,6 +37,7 @@ BuildRequires:  libvirt-devel = %{version}
 BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xml}
 %ifpython2
 Provides:       libvirt-python = %{version}
@@ -68,9 +69,13 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%check
+%pytest_arch
+
 %files %{python_files}
 %doc ChangeLog AUTHORS README COPYING COPYING.LESSER examples/
-%{python_sitearch}/*
-%pycache_only %{python3_sitearch}/__pycache__/*
+%{python_sitearch}/libvirt*
+%{python_sitearch}/libvirt_python-%{version}*info
+%pycache_only %{python_sitearch}/__pycache__/libvirt*
 
 %changelog

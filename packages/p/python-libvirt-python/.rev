@@ -408,4 +408,12 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
   boo#1177559</comment>
     <requestid>841348</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>ca9021a9f79dd1ab8f347c5071849c9d</srcmd5>
+    <version>6.8.0</version>
+    <time>1604054742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844156</requestid>
+  </revision>
 </revisionlist>
