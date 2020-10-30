@@ -5260,6 +5260,9 @@ unsorted:
   - gimp-save-for-web-lang 
   - ginac 
   - ginac-devel 
+  - ginac-doc-html 
+  - ginac-doc-pdf 
+  - ginac-doc-tutorial 
   - gio-branding-upstream 
   - gio-sharp 
   - gio-sharp-devel 
@@ -6839,6 +6842,7 @@ unsorted:
   - instlux 
   - instsource-susedata 
   - int10h-oldschoolpc-fonts 
+  - int10h-oldschoolpc-fonts-stretched 
   - intel-SINIT 
   - intel-cmt-cat 
   - intel-hybrid-driver 
@@ -10774,7 +10778,7 @@ unsorted:
   - libgig9 
   - libgimp-2_0-0-32bit: [x86_64] 
   - libgimpui-2_0-0-32bit: [x86_64] 
-  - libginac6 
+  - libginac11 
   - libgio-fam 
   - libgio-fam-32bit: [x86_64] 
   - libgiomm-2_4-1-32bit: [x86_64] 
@@ -22451,6 +22455,7 @@ unsorted:
   - python3-libvshadow 
   - python3-libvslvm 
   - python3-license-expression 
+  - python3-ligo-segments 
   - python3-lilv 
   - python3-limnoria 
   - python3-line_profiler 
