@@ -24,7 +24,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.4.5
+Version:        1.5.0
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -248,6 +248,7 @@ fi
 %endif
 
 %files
+
 %license COPYING
 %doc README.md
 %{_unitdir}/fwupd.service
@@ -257,6 +258,7 @@ fi
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
+%{_bindir}/dbxtool
 %{_bindir}/fwupdagent
 %if %{with efi_fw_update}
 %{_bindir}/fwupdate
@@ -286,6 +288,7 @@ fi
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
+%{_mandir}/man1/dbxtool.1%{?ext_man}
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
 %if %{with efi_fw_update}
 %{_mandir}/man1/fwupdate.1%{?ext_man}
@@ -293,6 +296,8 @@ fi
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
+%{_sysconfdir}/modules-load.d/fwupd-msr.conf
+%{_sysconfdir}/modules-load.d/fwupd-platform-integrity.conf
 %config %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd

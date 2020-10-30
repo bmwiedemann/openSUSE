@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 26 12:18:38 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.5.0:
+  + Add a compatible re-implementation of the rhboot dbxtool.
+  + Add async versions of the library for GUI tools.
+  + Add commands for interacting with the ESP to fwupdtool.
+  + Add firmware-extract subcommand to fwupdtool.
+  + Add FwupdPlugin so we can convey enumerated system errors to
+    the end user.
+  + Add plugin for Goodix fingerprint sensors.
+  + Add plugin that can update the BCM5719 network adapter.
+  + Add plugin to update Elan Touchpads using HID.
+  + Add support for a delayed activation flow for Thunderbolt.
+  + Add support for ChromeOS Quiche and Gingerbread.
+  + Add support for Hyper hardware.
+  + Add support for the Host Security ID.
+  + Add support for ThunderBolt retimers.
+  + Add switch-branch command to fwupdtool and fwupdmgr.
+  + Allow blocking specific firmware releases by checksum.
+  + Allow contructing a firmware with multiple images.
+  + Allow firmware to require specific features from front-end
+    clients.
+  + Allow updating the dbx using the LVFS, validating it is safe to
+    apply.
+  + Include the HSI results and attributes in the uploaded report.
+  + Support loading DMI data from DT systems.
+  + Support LVFS::UpdateImage for GUI clients.
+
+-------------------------------------------------------------------
 Wed Sep  2 10:18:55 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add fwupd-jscSLE-11766-close-efidir-leap-gap.patch: Set SLE and
