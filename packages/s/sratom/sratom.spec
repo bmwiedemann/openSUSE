@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           sratom
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        A library for serialising LV2 atoms to/from RDF
 License:        ISC
