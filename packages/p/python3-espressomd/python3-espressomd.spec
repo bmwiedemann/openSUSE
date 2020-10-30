@@ -35,13 +35,15 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
-Version:        4.1.3
+Version:        4.1.4
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM boost-1.74.patch gh#espressomd/espresso#3864
+Patch0:         boost-1.74.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -63,7 +65,7 @@ BuildRequires:  python3-h5py
 %else
 BuildRequires:  boost-devel
 %endif
-Obsoletes:      libEspresso4
+Obsoletes:      libEspresso4 < 4.1
 Requires:       python3-numpy
 Requires:       python3-h5py
 # make sure rpm pulls in the right dependency
@@ -79,6 +81,7 @@ systems, for example DNA and lipid membranes.
 
 %prep
 %setup -q -n %{pkgname}
+%patch0 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
@@ -103,7 +106,7 @@ export HDF5_USE_SHLIB=yes
 rm -f %{buildroot}%{_libdir}/lib*.so
 
 %check
-# https://github.com/espressomd/espresso/issues/3315
+# gh#espressomd/espresso#3315
 %ifarch i586
 %define testargs ARGS='-E collision_detection'
 %endif

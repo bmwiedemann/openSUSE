@@ -1,0 +1,32 @@
+From a392907978506408482d0bdd388534455ba8dfba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jean-No=C3=ABl=20Grad?= <jgrad@icp.uni-stuttgart.de>
+Date: Wed, 28 Oct 2020 21:22:39 +0100
+Subject: [PATCH] core: Add guard for boost 1.74.0
+
+This <boost/serialization/version.hpp> include guards against an issue
+in boost::serialization from boost 1.74.0 that leads to compiler error
+"explicit specialization of undeclared template struct 'version'" when
+including <boost/serialization/optional.hpp>. More details in tickets:
+https://github.com/boostorg/serialization/issues/210
+https://github.com/boostorg/serialization/issues/217
+
+diff --git a/src/core/grid_based_algorithms/lb_particle_coupling.hpp b/src/core/grid_based_algorithms/lb_particle_coupling.hpp
+index de12cb4..13111ab 100644
+--- a/src/core/grid_based_algorithms/lb_particle_coupling.hpp
++++ b/src/core/grid_based_algorithms/lb_particle_coupling.hpp
+@@ -21,6 +21,15 @@
+
+ #include "ParticleRange.hpp"
+
++/* This <boost/serialization/version.hpp> include guards against an issue
++ * in boost::serialization from boost 1.74.0 that leads to compiler error
++ * "explicit specialization of undeclared template struct 'version'" when
++ * including <boost/serialization/optional.hpp>. More details in tickets:
++ * https://github.com/boostorg/serialization/issues/210
++ * https://github.com/boostorg/serialization/issues/217
++ */
++#include <boost/serialization/version.hpp>
++
+ #include <boost/serialization/optional.hpp>
+
+ #include "ParticleRange.hpp"
