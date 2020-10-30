@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:48:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Kill dephell dependency by using released sdist setup.py but
+  get testfile and data from Github
+
+-------------------------------------------------------------------
 Sun Aug 16 02:31:58 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite, replacing nose with pytest

@@ -24,13 +24,15 @@ Summary:        Interface Python with pkg-config
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matze/pkgconfig
-Source:         https://github.com/matze/pkgconfig/archive/v%{version}.tar.gz#/pkgconfig-%{version}.tar.gz
+# PyPI sdist has generated setup.py ..
+Source0:        https://files.pythonhosted.org/packages/source/p/pkgconfig/pkgconfig-%{version}.tar.gz
+# .. get the tests from github
+Source1:        https://github.com/matze/pkgconfig/archive/v%{version}.tar.gz#/pkgconfig-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       pkgconfig
 BuildArch:      noarch
@@ -38,11 +40,11 @@ BuildArch:      noarch
 
 %description
 A Python module to interface with the pkg-config
-command line tool and supports Python 2.6+.
+command line tool 
 
 %prep
 %setup -q -n pkgconfig-%{version}
-%dephell_gensetup
+(cd ..; tar xf %{SOURCE1} pkgconfig-%{version}/{test_pkgconfig.py,data})
 
 %build
 %python_build
@@ -57,6 +59,7 @@ command line tool and supports Python 2.6+.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pkgconfig
+%{python_sitelib}/pkgconfig-%{version}*-info
 
 %changelog
