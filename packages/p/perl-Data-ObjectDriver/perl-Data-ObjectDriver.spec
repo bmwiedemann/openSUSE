@@ -17,7 +17,7 @@
 
 
 Name:           perl-Data-ObjectDriver
-Version:        0.20
+Version:        0.21
 Release:        0
 %define cpan_name Data-ObjectDriver
 Summary:        Simple, transparent data interface, with caching
