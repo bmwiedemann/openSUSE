@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.30.1
+Version:        2.30.2
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        LGPL-2.0-or-later AND BSD-3-Clause

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 23 09:35:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.30.2:
+  + Fix scrolling when smooth scrolling is enabled in async
+    scrolling mode.
+  + Fix WebSocket requests with same-site cookies.
+  + Fix TLS certificate information for service workers.
+  + Handle chassis type when its value is quoted.
+  + Fix the build with ENABLE_MEDIA_STREAM enabled and
+    ENABLE_WEB_RTC_DISABLED.
+  + Fix the build with ENABLE_GAMEPAD enabled.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Wed Sep 30 19:03:18 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Enable c_loop on aarch64: currently needed for compilation to
@@ -8,7 +22,7 @@ Wed Sep 30 19:03:18 UTC 2020 - Michael Gorse <mgorse@suse.com>
 -------------------------------------------------------------------
 Tue Sep 22 01:34:43 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.30.1: 
+- Update to version 2.30.1:
   + Bring back the environment variable to force single process
     mode when PSON is disabled.
   + Fix downloads started by an ephemeral web context.

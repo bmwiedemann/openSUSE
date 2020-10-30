@@ -925,4 +925,12 @@
   it conflicts with c_loop (boo#1177087). (forwarded request 838863 from mgorse)</comment>
     <requestid>839602</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>04cfba1afb5878441de21a45f2dda2ab</srcmd5>
+    <version>2.30.2</version>
+    <time>1604054757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844241</requestid>
+  </revision>
 </revisionlist>
