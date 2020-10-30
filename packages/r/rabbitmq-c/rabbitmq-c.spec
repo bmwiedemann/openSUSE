@@ -45,6 +45,7 @@ speaking protocol versions 0-9-1.
 
 %package -n %{libname}%{majsonum}
 Summary:        Client library for AMQP
+Group:          Development/Libraries/C and C++
 
 %description -n %{libname}%{majsonum}
 This is a C-language AMQP client library for use with AMQP servers
@@ -52,6 +53,7 @@ speaking protocol versions 0-9-1.
 
 %package -n %{libname}-devel
 Summary:        Header files and development libraries for %{name}
+Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{majsonum} = %{version}
 
 %description -n %{libname}-devel
@@ -60,6 +62,7 @@ for %{name}.
 
 %package -n %{name}-tools
 Summary:        Example tools built using the librabbitmq package
+Group:          Development/Libraries/C and C++
 
 %description -n %{name}-tools
 This package contains example tools built using %{name}. It provides:
@@ -92,16 +95,20 @@ grep @ %{buildroot}%{_libdir}/pkgconfig/librabbitmq.pc && exit 1
 # rabbitmq-server needs to run only for test_basic,
 # which can be skipped in case this will bring some
 # issues
-RABBITMQ_PID_FILE=/home/abuild/rabbitmq/rabbitmq.pid \
-RABBITMQ_LOG_BASE=/home/abuild/rabbitmq/log/ \
-RABBITMQ_MNESIA_BASE=/home/abuild/rabbitmq/mnesia/ \
+export RABBITMQ_PID_FILE=/home/abuild/rabbitmq/rabbitmq.pid
+export RABBITMQ_LOG_BASE=/home/abuild/rabbitmq/log
+export RABBITMQ_MNESIA_BASE=/home/abuild/rabbitmq/mnesia
+%if 0%{?suse_version} <= 1500
+export RABBITMQ_SCHEMA_DIR=/home/abuild/rabbitmq/schema
+export RABBITMQ_GENERATED_CONFIG_DIR=/home/abuild/rabbitmq/config
+%endif
 %{_libdir}/rabbitmq/lib/rabbitmq_server-*/sbin/rabbitmq-server&
 # wait for server start
 sleep 20
 %ctest
 kill `cat /home/abuild/rabbitmq/rabbitmq.pid`
 # needs to wait: Killing not allowed - living nodes in database.
-sleep 2
+sleep 5
 epmd -kill
 
 %post -n %{libname}%{majsonum} -p /sbin/ldconfig
