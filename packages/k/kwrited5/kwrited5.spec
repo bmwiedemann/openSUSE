@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           kwrited5
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        Daemon listening for wall and write messages
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         kwrited-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kwrited-%{version}.tar.xz
 %if %{with lang}
-Source1:        kwrited-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kwrited-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.11
