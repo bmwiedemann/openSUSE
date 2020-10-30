@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 27 01:01:54 UTC 2020 - William Brown <william.brown@suse.com>
+
+- bsc#1175568 CVE-2020-8027
+  openldap_update_modules_path.sh has a number of issues in it's
+  design that lead to security issues. This file has been removed,
+  from the package, and the %post execution of the install. The
+  function is replaced by /usr/sbin/slapd-ldif-update-crc and
+  /usr/lib/openldap/fixup-modulepath, through the addition of the
+  source files:
+  * fixup-modulepath.sh
+  * slapd-ldif-update-crc.sh
+  * update-crc.sh
+
+-------------------------------------------------------------------
+Mon Oct 26 21:48:45 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.55
+
+OpenLDAP 2.4.55 Release (2020/10/26)
+  Fixed slapd normalization handling with modrdn (ITS#9370)
+  Fixed slapd-meta to check ldap_install_tls return code (ITS#9366)
+  Contrib
+    Fixed nssov misplaced semicolon (ITS#8731, ITS#9368)
+
+LMDB 0.9.27 Release (2020/10/26)
+  ITS#9376 fix repeated DUPSORT cursor deletes
+
+-------------------------------------------------------------------
 Mon Oct 12 20:21:23 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.54

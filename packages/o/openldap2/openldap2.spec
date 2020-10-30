@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.54
+%define version_main 2.4.55
 %define name_ppolicy_check_module ppolicy-check-password
 %define version_ppolicy_check_module 1.2
 %define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}
@@ -47,9 +47,11 @@ Source12:       slapd.conf.example
 Source13:       start
 Source14:       slapd.service
 Source16:       sysconfig.openldap
-Source17:       openldap_update_modules_path.sh
 Source18:       openldap2.conf
 Source19:       ldap-user.conf
+Source20:       fixup-modulepath.sh
+Source21:       slapd-ldif-update-crc.sh
+Source22:       update-crc.sh
 Patch1:         0001-ITS-8866-slapo-unique-to-return-filter-used-in-diagn.patch
 Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
@@ -80,6 +82,7 @@ BuildRequires:  pkgconfig(systemd)
 %if %{suse_version} < 1500
 %{?systemd_requires}
 %endif
+Requires:       gawk
 Requires:       libldap-2_4-2 = %{version_main}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
@@ -358,11 +361,14 @@ install -m 755 -d %{buildroot}/var/lib/ldap
 chmod a+x %{buildroot}%{_libdir}/liblber.so*
 chmod a+x %{buildroot}%{_libdir}/libldap_r.so*
 install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/schema2ldif
-install -m 755 %{SOURCE17} %{buildroot}%{_sbindir}
 mkdir -p  %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE18} %{buildroot}%{_tmpfilesdir}/
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/
+
+install -m 755 %{SOURCE19}  ${RPM_BUILD_ROOT}/usr/lib/openldap/fixup-modulepath
+install -m 755 %{SOURCE20}  ${RPM_BUILD_ROOT}/%{_sbindir}/slapd-ldif-update-crc
+install -m 755 %{SOURCE21}  ${RPM_BUILD_ROOT}/usr/lib/openldap/update-crc
 
 # Install ppolicy check module
 make -C contrib/slapd-modules/ppolicy-check-password STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libexecdir}" install
@@ -433,9 +439,6 @@ gcc -shared -o "%{buildroot}%{_libdir}/libldap-2.4.so.2" -Wl,--no-as-needed \
 %service_add_pre slapd.service
 
 %post
-if [ ${1:-0} -gt 1 ] && [ ! -f /var/adm/openldap_modules_path_updated ] ; then
-    /usr/sbin/openldap_update_modules_path.sh
-fi
 %{fillup_only -n openldap ldap}
 %tmpfiles_create %{name}.conf
 %service_add_post slapd.service
@@ -468,7 +471,6 @@ fi
 %{_fillupdir}/sysconfig.openldap
 %{_sbindir}/slap*
 %{_sbindir}/rcslapd
-%{_sbindir}/openldap_update_modules_path.sh
 %{_libdir}/openldap/back_bdb*
 %{_libdir}/openldap/back_hdb*
 %{_libdir}/openldap/back_ldap*
@@ -498,6 +500,8 @@ fi
 %{_libdir}/openldap/valsort*
 %{_libdir}/slapd
 /usr/lib/openldap/start
+/usr/lib/openldap/update-crc
+/usr/lib/openldap/fixup-modulepath
 %{_unitdir}/slapd.service
 %{_tmpfilesdir}/%{name}.conf
 %{_sysusersdir}/ldap-user.conf
