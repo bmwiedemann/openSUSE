@@ -17,7 +17,7 @@
 
 
 Name:           perl-Verilog-Perl
-Version:        3.472
+Version:        3.474
 Release:        0
 %define cpan_name Verilog-Perl
 Summary:        Verilog language utilities and parsing

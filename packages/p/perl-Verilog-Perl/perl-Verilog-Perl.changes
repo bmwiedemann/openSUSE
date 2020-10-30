@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 30 03:11:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.474
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.474 2020-10-29
+
+  ****  Add filenames in vhier --xml cells.
+
+  ****  Fix duplicates in vhier --includes. [Gregory Pierce]
+
+-------------------------------------------------------------------
 Mon Oct 19 03:13:05 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.472
