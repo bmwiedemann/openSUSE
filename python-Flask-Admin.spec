@@ -25,6 +25,9 @@ Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#flask-admin/flask-admin#2047 mcepl@suse.com
+# port from nose to pytest (mostly just pure asserts)
+Patch0:         remove_nose.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
@@ -33,8 +36,8 @@ BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module colour}
-BuildRequires:  %{python_module nose >= 1.0}
 BuildRequires:  %{python_module peewee}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -60,6 +63,8 @@ the resulting application.
 
 %prep
 %setup -q -n Flask-Admin-%{version}
+%autopatch -p1
+
 # remove contrib tests that pull in too many dependencies
 rm -rf flask_admin/tests/geoa
 rm -rf flask_admin/tests/{mongoengine,pymongo}
@@ -76,8 +81,7 @@ rm -f flask_admin/tests/test_form_upload.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%python_expand nosetests-%{$python_bin_suffix} -e test_ajax_fk
+%pytest
 
 %files %{python_files}
 %license LICENSE

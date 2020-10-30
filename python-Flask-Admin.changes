@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 20:46:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add remove_nose.patch to remove dependency on nose
+  (gh#flask-admin/flask-admin#2047).
+
+-------------------------------------------------------------------
 Mon Sep 28 11:33:32 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Exclude a failing test
