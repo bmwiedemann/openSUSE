@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:23:12 UTC 2020 - andreas.stieger@gmx.de
+
+- Update to version 20201026:
+  * gTLD autopull: 2020-10-12
+  * Remove algorithmia.com
+  * Add azurestaticapps.net dns suffixes
+  * Adds *.gateway.dev
+  * Add cdn-edges.net
+  * Sort Alphabet entries by TLD first and then by SLDD
+  * Add service.one as a public suffix
+  * Add tlon.network
+  * Add iopsys.se
+  * The list of Jelastic public domains was extended
+  * Add wapblog's domain
+  * added localzone.xyz
+  * Adds translate.goog and tr-test.goog
+  * Add bip.sh
+  * Add .tm.dz
+  * Add js.wpenginepowered.com
+  * Updated comments with new URLs to the different lists of domains
+
+-------------------------------------------------------------------
 Sat Sep 12 07:18:57 UTC 2020 - andreas.stieger@gmx.de
 
 - Update to version 20200909:

@@ -700,4 +700,12 @@ Now with build cycle removed.</comment>
     <comment>publicsuffix 20200909 (forwarded request 833904 from AndreasStieger)</comment>
     <requestid>833905</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>43a0cc196aae927dd769541f8df7db2f</srcmd5>
+    <version>20201026</version>
+    <time>1604054763</time>
+    <user>dimstar_suse</user>
+    <comment>publicsuffix 20201026</comment>
+    <requestid>844252</requestid>
+  </revision>
 </revisionlist>
