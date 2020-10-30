@@ -24,6 +24,8 @@ install libxslt-tools
 # Remove useless xfce panel plugins
 buildignore xfce4-panel-plugin-xkb
 buildignore xfce4-panel-plugin-notes
+buildignore systemd-doc
+buildignore engrampa-lang
 
 # Remove Libreoffice as it's too big
 buildignore libreoffice
