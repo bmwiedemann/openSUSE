@@ -26,6 +26,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{version}.tar.xz
+#Git-Clone:     https://git.ligo.org/lscsoft/lalsuite.git
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 6.21.0}
 BuildRequires:  %{python_module numpy-devel}
