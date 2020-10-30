@@ -1,9 +1,11 @@
 -------------------------------------------------------------------
 Wed Oct 21 22:28:16 UTC 2020 - Mark Post <mpost@suse.com>
 
-- Upgraded to version 3.15.0 (jsc#SLE-13749, jsc#SLE-13666,
+- Upgraded to version 3.15.1 (jsc#SLE-13749, jsc#SLE-13666,
   jsc#SLE-13813, jsc#SLE-13812, jsc#SLE-13723, jsc#SLE-13714,
   jsc#SLE-13715, jsc#SLE-13710, jsc#SLE-13774, jsc#SLE-13786)
+  * openCryptoki 3.15.1
+    - Bug fixes
   * openCryptoki 3.15.0
     - common: conform to PKCS 11 3.0 Baseline Provider profile
     - Introduce new vendor defined interface named "Vendor IBM"
