@@ -790,4 +790,12 @@
     <comment>New plasma release</comment>
     <requestid>843125</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>1fbd8053f4681e7278a15a46a001334f</srcmd5>
+    <version>5.20.2</version>
+    <time>1604054842</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844604</requestid>
+  </revision>
 </revisionlist>
