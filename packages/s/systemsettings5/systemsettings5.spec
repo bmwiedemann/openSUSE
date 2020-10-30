@@ -18,17 +18,19 @@
 
 %bcond_without lang
 Name:           systemsettings5
-Version:        5.20.1.1
+Version:        5.20.2
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/5.20.1/systemsettings-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.20.1/systemsettings-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-call-to-KWorkSpace-detectPlatform.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -72,8 +74,9 @@ Conflicts:      kdebase4-workspace-devel
 Provides KDE's control center modules. Development files.
 
 %lang_package
+
 %prep
-%setup -q -n systemsettings-%{version}
+%autosetup -p1 -n systemsettings-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}

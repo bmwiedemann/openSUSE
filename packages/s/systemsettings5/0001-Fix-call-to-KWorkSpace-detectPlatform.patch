@@ -1,0 +1,38 @@
+From f8f235cc31dbb01fab042b7ec5a3185ab193b0bd Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 28 Oct 2020 20:06:34 +0100
+Subject: [PATCH] Fix call to KWorkSpace::detectPlatform
+
+This sets QT_QPA_PLATFORM, so has to happen before the QApplication is
+created.
+
+BUG: 428339
+---
+ app/main.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/app/main.cpp b/app/main.cpp
+index 79c03b7..67d52d5 100644
+--- a/app/main.cpp
++++ b/app/main.cpp
+@@ -76,6 +76,9 @@ int main( int argc, char *argv[] )
+     //which is before KAboutData::setApplicationData
+     QCoreApplication::setApplicationName(binaryName);
+ 
++    // This has to be before the QApplication is created.
++    KWorkSpace::detectPlatform(argc, argv);
++
+     QApplication application(argc, argv);
+     application.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+ 
+@@ -166,7 +169,6 @@ int main( int argc, char *argv[] )
+ 
+     KDBusService service(KDBusService::Unique);
+ 
+-    KWorkSpace::detectPlatform(argc, argv);
+     KQuickAddons::QtQuickSettings::init();
+     KCrash::initialize();
+ 
+-- 
+2.25.1
+
