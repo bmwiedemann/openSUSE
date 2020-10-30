@@ -20,15 +20,15 @@
 
 %bcond_without lang
 Name:           kactivitymanagerd
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Url:            http://projects.kde.org/kactivitymanagerd
-Source:         kactivitymanagerd-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz
 %if %{with lang}
-Source1:        kactivitymanagerd-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kactivitymanagerd-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 %if 0%{?suse_version} > 1325
@@ -65,9 +65,9 @@ Recommends:     %{name}-lang
 # for kactivitymanagerd_plugin_sqlite.so
 Requires:       libQt5Sql5-sqlite
 Provides:       kactivities4 = %{version}
-Provides:       kactivities5 = 5.20.1
 Obsoletes:      kactivities4 < %{version}
-Obsoletes:      kactivities5 < 5.20.1
+Provides:       kactivities5 = 5.20.0
+Obsoletes:      kactivities5 < 5.20.0
 
 %description
 Kactivities provides an API for using and interacting with the Plasma Activities Manager.
@@ -76,8 +76,8 @@ Kactivities provides an API for using and interacting with the Plasma Activities
 Summary:        KDE Plasma Activities support
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
-Provides:       libKF5Activities5-lang = 5.20.1
-Obsoletes:      libKF5Activities5-lang < 5.20.1
+Provides:       libKF5Activities5-lang = 5.20.0
+Obsoletes:      libKF5Activities5-lang < 5.20.0
 
 %description lang
 Provides translations to the package %{name}.
