@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:14:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.8
+  * libnftnl: export nftnl_set_elem_fprintf
+  * examples: add support for NF_PROTO_INET family
+  * table: add userdata support
+  * object: add userdata and comment support
+  * chain: add userdata and comment support
+  * src: add support for chain ID attribute
+
+-------------------------------------------------------------------
 Fri Jun  5 13:04:57 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.7
