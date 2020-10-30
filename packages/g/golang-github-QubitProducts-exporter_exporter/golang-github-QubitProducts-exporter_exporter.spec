@@ -44,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
 %else
-BuildRequires:  golang
+BuildRequires:  golang >= 1.14
 %endif
 %if 0%{?suse_version}
 Requires(post): %fillup_prereq

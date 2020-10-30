@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:43:31 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go >= 1.14 also for CentOS
+
+-------------------------------------------------------------------
 Fri Oct  9 12:24:58 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add support for CentOS
