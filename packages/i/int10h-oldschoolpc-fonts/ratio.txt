@@ -1,3 +1,6 @@
+
+== Introduction ==
+
 In classic IBM PC text mode, the graphics card stretches the font
 such that it fills the screen.
 
@@ -15,6 +18,9 @@ leads to a pixel aspect ratio of 20:27.
 To faithfully recreate the same visual look as such a monitor would
 show, this aspect ratio needs to be applied when making use of the
 font.
+
+
+== Application support for stretching ==
 
 For cool-retro-term, there is a "Font Width" slider in the settings;
 set it to 74%, 83%, or whatever is necessary. (Notice the pattern of
@@ -42,3 +48,45 @@ different size than the main characters. For a stretching matrix like
 1/1.35, not specifying -fd and, as a result, having smaller CJK chars
 is not as bad a problem as having bigger truncated CJK chars with a
 compressing matrix like 0.74/1.
+
+
+== Application-independent approach ==
+
+Not all programs support specifying a matrix or a scaling factor.
+Under systems using fontconfig (such as Linux distributions),
+it is possible to override the stretch for an existing font
+like so (~/.config/fontconfig/fonts.conf):
+
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <match target="font">
+  <test qual="any" name="family">
+   <string>Px437 IBM VGA 9x16</string>
+  </test>
+  <edit name="matrix" mode="assign">
+   <times>
+    <name>matrix</name>
+    <matrix>
+     <double>0.73</double>
+     <double>0</double>
+     <double>0</double>
+     <double>1</double>
+    </matrix>
+   </times>
+  </edit>
+ </match>
+ <dir>~/.fonts</dir>
+</fontconfig>
+
+
+== Framework-independent approach ==
+
+The int10h project offers font files that have their aspect
+correction applied at the font level. As a result, they won't need
+support from fontconfig or applications at all. These font files are
+provided in the
+
+	int10h-oldschoolpc-fonts-stretched
+
+subpackage in openSUSE.

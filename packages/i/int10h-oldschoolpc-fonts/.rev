@@ -15,4 +15,12 @@
     <comment>- Expand font scaling notes and separate out to extra file</comment>
     <requestid>667895</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>946a7c3cdf943afb4c6565a8ae443f62</srcmd5>
+    <version>2.0</version>
+    <time>1604054869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0</comment>
+    <requestid>844872</requestid>
+  </revision>
 </revisionlist>

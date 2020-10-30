@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:37:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 2.0
+  * Added new variants: Ac (aspect corrected) and
+    Mx (Mixed outline + bitmap).
+  * New fonts (overview): AMI EGA, AST PremiumExec (quite like
+    VGA SquarePx), Acer-*, Apricot-*, Compaq Port3, DOS V, EpsonMGA,
+    EverexME (like EGA), IBM Model30, IBM PS/55, LE Model D, NEC APC3, Nix8810,
+    Olivetti M15/MX, Trident
+  * ToshibaLCD was renamed to ToshibaSat; a few other minor
+    renames.
+- All pre-stretched fonts (both Ac or Px-2X/Px-2Y variants) were
+  moved to the -stretched subpackage.
+   
+-------------------------------------------------------------------
 Tue Jan 22 23:14:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Expand font scaling notes and separate out to extra file

@@ -1,7 +1,7 @@
 #
 # spec file for package int10h-oldschoolpc-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,38 @@
 
 
 Name:           int10h-oldschoolpc-fonts
-Version:        1.0
+Version:        2.0
 Release:        0
 Summary:        Remakes of old computer hardware fonts
 License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            http://int10h.org/oldschool-pc-fonts/
 
-Source:         http://int10h.org/oldschool-pc-fonts/download/ultimate_oldschool_pc_font_pack_v1.0.zip
+Source:         https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.0_ttf.zip
 Source8:        ratio.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-This fontpack contains remakes of various type styles
-from text-mode era PCs — in modern Unicode-compatible TrueType form
-(plus straight bitmap versions). The main focus is on hardware
-character sets: the kind that's located in a ROM and shown by default
-when working in text (or graphics) mode.
+This fontpack contains remakes of various type styles from text-mode
+era PCs — in modern Unicode-compatible TrueType form (plus straight
+bitmap versions). The main focus is on hardware character sets: the
+kind that's located in a ROM and shown by default when working in
+text (or graphics) mode.
 
 [ Classic hardware text mode stretches the fonts to fit the screen!
 To recreate the same visuals of that, a stretch factor must be
 applied. For details, see ratio.txt inside the package. ]
+
+%package stretched
+Summary:        Pre-stretched versions of int10h-oldschoolpc-fonts
+Group:          System/X11/Fonts
+
+%description stretched
+This package contains aspect-corrected and non-corrected-but-stretched
+variants of the main font files.
 
 %prep
 %setup -Tcqa0
@@ -54,13 +61,21 @@ mv LICENSE.TXT license.txt
 %install
 c="%buildroot/%_ttfontsdir"
 mkdir -p "$c"
+rm -fv */Mx*.ttf
 install -pm 0644 */*.ttf "$c/"
 
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-, root,root)
 %doc readme.txt license.txt ratio.txt
-%_ttfontsdir/
+%_ttfontsdir/Px*
+%exclude %_ttfontsdir/*-2x.ttf
+%exclude %_ttfontsdir/*-2y.ttf
+
+%files stretched
+%dir %_ttfontsdir/
+%_ttfontsdir/Ac*
+%_ttfontsdir/*-2x.ttf
+%_ttfontsdir/*-2y.ttf
 
 %changelog
