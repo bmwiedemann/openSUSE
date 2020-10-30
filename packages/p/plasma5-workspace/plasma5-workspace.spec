@@ -27,16 +27,16 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.20.1.1
+Version:        5.20.2
 Release:        0
 %global _plasma5_bugfix 5.20.1
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/5.20.1/plasma-workspace-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.20.1/plasma-workspace-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -291,6 +291,8 @@ Requires:       libqt5-qtwayland
 Requires:       plasma5-session >= %{version}
 Requires:       xf86-input-libinput
 Requires:       xorg-x11-server-wayland
+# For screen sharing and window thumbnails in plasmashell
+Requires:       pipewire
 
 %description -n plasma5-session-wayland
 This package contains the startup scripts necessary to start a KDE

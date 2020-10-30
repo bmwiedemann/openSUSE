@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 27 22:23:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * [plasma-session] Fix application lifespan (kde#422948)
+  * Sync OSD properties (kde#425908)
+  * [applets/systemtray] Fixes for vertical and huge panel (kde#428158,kde#428127,kde#428198)
+  * [applets/systemtray] Make highlight wider (kde#427638)
+  * Fix tile expansion in ShellRunner (kde#427824)
+
+-------------------------------------------------------------------
+Sun Oct 25 13:39:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Require pipewire in plasma5-session-wayland
+
+-------------------------------------------------------------------
 Thu Oct 22 07:20:57 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop workaround for old powerdevil
