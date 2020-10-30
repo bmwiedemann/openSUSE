@@ -21,15 +21,15 @@
 %global have_fwupd (!0%{?sle_version} || 0%{?sle_version} >= 150200)
 
 Name:           discover
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://quickgit.kde.org/?p=discover.git
-Source:         discover-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz
 %if %{with lang}
-Source1:        discover-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/discover-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
