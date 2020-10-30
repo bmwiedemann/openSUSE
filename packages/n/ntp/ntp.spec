@@ -28,7 +28,7 @@ Release:        0
 Summary:        Network Time Protocol daemon (version 4)
 License:        (MIT AND BSD-3-Clause AND BSD-4-Clause) AND GPL-2.0-only
 Group:          Productivity/Networking/Other
-Url:            http://www.ntp.org/
+URL:            http://www.ntp.org/
 # main source
 Source0:        http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-%{version}.tar.gz
 # configuration
@@ -82,7 +82,6 @@ Provides:       xntp3 = %{version}
 Obsoletes:      xntp < %{version}
 Obsoletes:      xntp3 < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
 Conflicts:      openntpd
 
 %description
@@ -114,7 +113,7 @@ first try on a non-technical Mini-HOWTO and FAQ on NTP). Edited by
 Ulrich Windl and David Dalton.
 
 %prep
-%setup -q -n ntp-%{version}
+%setup -q
 # unpack ntp-faq
 tar -x -C html -j -f %{SOURCE10}
 %patch1
@@ -169,7 +168,7 @@ export LDFLAGS="-pie"
 %make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 # Change permissions
 chmod 644 html/pic/neoclock4x.gif
 %fdupes -s html
@@ -191,7 +190,7 @@ install -m 0644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/ntpd.service
 install -m 0644 -D %{SOURCE9} %{buildroot}/%{_unitdir}/ntp-wait.service
 install -d %{buildroot}%{_prefix}/sbin
 install -m 755 -D %{SOURCE8} %{buildroot}%{_sbindir}/start-ntpd
-%__install -d %{buildroot}%{_libexecdir}/initscripts/legacy-actions/ntpd
+install -d %{buildroot}/%{_libexecdir}/initscripts/legacy-actions/ntpd
 for f in ntptimeset addserver; do
 	F=%{buildroot}%{_libexecdir}/initscripts/legacy-actions/ntpd/$f
 	cat >$F <<-EOF
@@ -230,8 +229,9 @@ install -d %{buildroot}/var/lib/ntp
 install -m 644 /dev/null %{buildroot}/var/lib/ntp/kod
 
 %pre
-%{_sbindir}/groupadd -r ntp 2> /dev/null || :
-%{_sbindir}/useradd -r -o -g ntp -u 74 -s /bin/false -c "NTP daemon" -d %{_localstatedir}/lib/ntp ntp 2> /dev/null || :
+getent group ntp >/dev/null || %{_sbindir}/groupadd -r ntp
+getent passwd ntp >/dev/null || %{_sbindir}/useradd -r -o -g ntp -u 74 \
+	-s /bin/false -c "NTP daemon" -d %{_localstatedir}/lib/ntp ntp
 %{_sbindir}/usermod -g ntp ntp 2>/dev/null || :
 test -L %{_localstatedir}/run/ntp  || rm -rf %{_localstatedir}/run/ntp && :
 %service_add_pre ntp.service ntpd.service
@@ -360,8 +360,8 @@ fi
 %service_del_postun ntp-wait.service
 
 %files
-%defattr(-,root,root)
-%doc COPYRIGHT ChangeLog NEWS README* TODO WHERE-TO-START conf
+%license COPYRIGHT
+%doc ChangeLog NEWS README* TODO WHERE-TO-START conf
 %attr(0640,root,ntp) %config(noreplace) %{_sysconfdir}/ntp.conf
 %dir %{_sysconfdir}/slp.reg.d
 %{_unitdir}/ntpd.service
@@ -391,7 +391,6 @@ fi
 /var/lib/ntp
 
 %files doc
-%defattr(-,root,root)
 %doc %{_docdir}/ntp-doc
 
 %changelog
