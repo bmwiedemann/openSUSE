@@ -18,7 +18,7 @@
 
 %define kf5_version 5.25.0
 Name:           konversation
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later

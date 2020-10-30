@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 27 13:02:16 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.7.7:
+  * Fixed outdated color of existing nick items in the list after
+    system color change
+  * Fixed accidental large potential nick sorting timeout
+  * Fixed tweak input box size to stop the text jumping around when
+    selected
+  * Fixed unneeded and potentially encoding switching re-encoding
+    of key
+  * Fixed disconnect for wrong slot for
+    Chat::/TransferRecv::sendReverseAck
+  * Support SVG nick icon themes, switch default to SVG
+  * Add dark variant of default nick icon theme
+  * Translations improved
+
+-------------------------------------------------------------------
 Wed Sep 30 10:54:25 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.7.6:
