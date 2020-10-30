@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 27 22:23:23 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.20.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma-5.20.2
+- Changes since 5.20.1:
+  * [desktoppackage] Don't set a widget on an item in a layout (kde#428214)
+  * [Widget Explorer] Don't set the list index to something random on mouse exit (kde#428174)
+  * Fix bug: Some user profile fields won't apply unless they all have unique new values. (kde#427348)
+  * [kcms/activities] Port to QQuickWidget from nested QQuickWindows (kde#394899,kde#423682,kde#416253)
+  * Fix bug: plasmashell high cpu usage
+
+-------------------------------------------------------------------
+Thu Oct 22 06:31:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Fix kactivities5 conflict version
+
+-------------------------------------------------------------------
 Tue Oct 20 14:30:35 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.20.1
