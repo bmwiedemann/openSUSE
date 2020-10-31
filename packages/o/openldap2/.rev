@@ -1363,4 +1363,11 @@ Removal of SuSEfirewall2 service.
     <user>dimstar_suse</user>
     <comment>/usr/bin/gawk instead of gawk, to support busybox-gawk</comment>
   </revision>
+  <revision rev="161" vrev="61">
+    <srcmd5>f0f5427dd2bb7e6fc5a2d0e261a709c5</srcmd5>
+    <version>unknown</version>
+    <time>1604153542</time>
+    <user>dimstar_suse</user>
+    <comment>Bin, not usr bin</comment>
+  </revision>
 </revisionlist>

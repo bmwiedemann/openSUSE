@@ -82,7 +82,7 @@ BuildRequires:  pkgconfig(systemd)
 %if %{suse_version} < 1500
 %{?systemd_requires}
 %endif
-Requires:       /usr/bin/gawk
+Requires:       /bin/gawk
 Requires:       libldap-2_4-2 = %{version_main}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
