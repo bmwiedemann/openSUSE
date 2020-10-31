@@ -1370,4 +1370,10 @@ Removal of SuSEfirewall2 service.
     <user>dimstar_suse</user>
     <comment>Bin, not usr bin</comment>
   </revision>
+  <revision rev="162" vrev="62">
+    <srcmd5>f0af5fab3c6dbf8eb5bcb129a60b6142</srcmd5>
+    <version>unknown</version>
+    <time>1604175531</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
