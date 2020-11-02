@@ -1,7 +1,7 @@
 #
 # spec file for package intel-SINIT
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,13 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           intel-SINIT
 BuildRequires:  fdupes
-Url:            http://software.intel.com/en-us/articles/intel-trusted-execution-technology/
+URL:            http://software.intel.com/en-us/articles/intel-trusted-execution-technology/
 Summary:        Intel SINIT AC (Secure Inititalization Authenticated Code) modules
 License:        SUSE-Firmware
 Group:          Development/Tools/Other
@@ -53,6 +53,10 @@ Source12:       5th_gen_i5_i7-SINIT_79.zip
 Source13:       6th_gen_i5_i7-SINIT_71.zip
 # https://software.intel.com/system/files/managed/dc/a9/7th_gen_i5_i7-SINIT_74.zip
 Source14:       7th_gen_i5_i7-SINIT_74.zip
+# https://software.intel.com/protected-download/267276/183305
+Source15:       6th_7th_gen_i5_i7-SINIT_79.zip
+# https://software.intel.com/content/dam/develop/external/us/en/protected/6th_7th_gen_i5_i7-SINIT_79.zip
+Source16:       8th_9th_gen_i5_i7-SINIT_81.zip
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -80,14 +84,27 @@ unzip %{S:7}
 unzip %{S:12}
 unzip %{S:13}
 unzip %{S:14}
+
+mkdir 6th_7th_gen_i5_i7-SINIT_79
+pushd 6th_7th_gen_i5_i7-SINIT_79
+unzip %{S:15}
+popd
+
+mkdir 8th_9th_gen_i5_i7-SINIT_81
+pushd 8th_9th_gen_i5_i7-SINIT_81
+unzip %{S:16}
+popd
+
 mkdir xeon-5600-3500-sinit
 pushd xeon-5600-3500-sinit
 	unzip %{S:8}
 popd
+
 mkdir xeon-e7-8800-4800-2800-sinit
 pushd xeon-e7-8800-4800-2800-sinit
 	unzip %{S:9}
 popd
+
 unzip %{S:10}
 chmod 644 */*
 cp %{SOURCE11} .
@@ -106,6 +123,7 @@ chmod 644 $RPM_BUILD_ROOT/usr/lib/sinit/*.BIN
 %defattr(-,root,root)
 %doc i7_QUAD-SINIT_51 2nd_gen_i5_i7-SINIT_51 GM45_GS45_PM45-SINIT_51 3rd_gen_i5_i7-SINIT_67 xeon-5600-3500-sinit xeon-e7-8800-4800-2800-sinit
 %doc i5_i7_DUAL-SINIT_51 3rd_gen_i5_i7_RACM-SINIT_67 4th_gen_i5_i7-SINIT_75 5th_gen_i5_i7-SINIT_79 6th_gen_i5_i7-SINIT_71 7th_gen_i5_i7-SINIT_74 Q45_Q43-SINIT_51 Q35-SINIT_51
+%doc 6th_7th_gen_i5_i7-SINIT_79 8th_9th_gen_i5_i7-SINIT_81
 %doc SINIT-guide.txt
 %dir /usr/lib/sinit
 /usr/lib/sinit/*

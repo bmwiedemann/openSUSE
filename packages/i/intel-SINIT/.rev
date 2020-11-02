@@ -51,4 +51,16 @@
   instead of into the documentation dirs.</comment>
     <requestid>545895</requestid>
   </revision>
+  <revision rev="7" vrev="88">
+    <srcmd5>68bab277c0168411565d0e79f422bb77</srcmd5>
+    <version>2.3</version>
+    <time>1604306493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current zipfiles available from
+  https://software.intel.com/content/www/us/en/develop/articles/intel-trusted-execution-technology.html
+  - it seems 7th_gen_i5_i7-SINIT_74.zip was replaced by
+    6th_7th_gen_i5_i7-SINIT_79.zip. The old variant is still packaged though.
+  - new 8th_9th_gen_i5_i7-SINIT_81.zip for Coffee Lake platforms.</comment>
+    <requestid>845032</requestid>
+  </revision>
 </revisionlist>

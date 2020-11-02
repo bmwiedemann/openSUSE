@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 30 12:13:37 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to current zipfiles available from
+  https://software.intel.com/content/www/us/en/develop/articles/intel-trusted-execution-technology.html
+
+  - it seems 7th_gen_i5_i7-SINIT_74.zip was replaced by
+    6th_7th_gen_i5_i7-SINIT_79.zip. The old variant is still packaged though.
+  - new 8th_9th_gen_i5_i7-SINIT_81.zip for Coffee Lake platforms.
+
+-------------------------------------------------------------------
 Mon Nov 27 09:36:15 UTC 2017 - matthias.gerstner@suse.com
 
 - Correctly install SINIT files ending in lower case .bin into /usr/lib/sinit,
