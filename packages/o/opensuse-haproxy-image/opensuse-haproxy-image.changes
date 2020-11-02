@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  1 09:54:54 UTC 2020 - Boris Manojlovic <boris@steki.net>
+
+- haproxy requires libgcc_s add it to kiwi 
+
+-------------------------------------------------------------------
 Fri Jun  5 10:46:52 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove "--" from the package list to separate pkgs from

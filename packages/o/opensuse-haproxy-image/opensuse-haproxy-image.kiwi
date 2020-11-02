@@ -47,5 +47,6 @@
     <package name="mandoc"/>
     <archive name="entrypoint.tar.gz"/>
     <package name="-busybox-man"/>
+    <package name="libgcc_s1"/>
   </packages>
 </image>
