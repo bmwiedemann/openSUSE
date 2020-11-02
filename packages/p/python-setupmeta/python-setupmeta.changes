@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:02:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Use PyPI tarball
+- Update to v2.8.1
+  * Packaging improvements
+- from v2.8.0
+  * Removed commands ``twine`` and ``uber_egg``
+
+-------------------------------------------------------------------
 Tue Oct 27 05:10:41 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite

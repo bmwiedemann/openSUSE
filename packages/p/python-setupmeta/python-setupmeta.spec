@@ -18,29 +18,23 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-setupmeta
-Version:        2.7.16
+Version:        2.8.1
 Release:        0
 Summary:        Simplify your setup.py
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/zsimic/setupmeta
-Source:         https://github.com/zsimic/setupmeta/archive/v%{version}.tar.gz#/setupmeta-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/setupmeta/setupmeta-%{version}.tar.gz
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module twine}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Recommends:     git-core
-Recommends:     python-pip
-Recommends:     python-setuptools_scm
-Recommends:     python-twine
-Recommends:     python-wheel
 BuildArch:      noarch
 %python_subpackages
 
@@ -63,11 +57,10 @@ git config --global user.name "Your Name"
 git init
 export LANG=en_US.UTF-8
 # test_check_dependencies needs to be run in a venv
-# test_wheel is https://github.com/zsimic/setupmeta/issues/61
-%pytest -k 'not (test_check_dependencies or test_wheel)'
+%pytest -k 'not test_check_dependencies'
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst HISTORY.rst
 %license LICENSE
 %{python_sitelib}/*
 
