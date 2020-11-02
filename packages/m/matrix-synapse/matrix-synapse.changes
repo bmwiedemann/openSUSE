@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 30 16:04:21 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.22.1
+  - Fix a bug where an appservice may not be forwarded events for a
+    room it was recently invited to. Broke in v1.22.0. (#8676)
+  - Fix Object of type frozendict is not JSON serializable
+    exceptions when using third-party event rules. Broke in
+    v1.22.0. (#8678)
+
+-------------------------------------------------------------------
 Tue Oct 27 12:19:54 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.22.0
