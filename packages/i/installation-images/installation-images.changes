@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Oct 29 17:30:13 UTC 2020 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#435
+- don't forget .lib*.hmac files (bsc#1178208)
+- 16.26
+
+--------------------------------------------------------------------
 Fri Oct 23 14:27:46 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#434
