@@ -165,52 +165,51 @@ popd
 }
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-
 %{python_expand pushd build_%{$python_bin_suffix}
 %make_install
 popd
 
-# Prepare for update-alternatives usage
-mv %{buildroot}%{_bindir}/sip %{buildroot}%{_bindir}/sip-%{$python_bin_suffix}
+pushd build_PyQt4_%{$python_bin_suffix}/siplib
+%make_install
+popd
+
+pushd build_PyQt5_%{$python_bin_suffix}/siplib
+%make_install
+popd
+
 # Make sure the correct sip executable is picked
-sed -i 's,%{_bindir}/sip,%{_bindir}/sip-%{$python_bin_suffix},' %{buildroot}%{python_sitearch}/sipconfig.py
-}
-
-%{python_expand pushd build_PyQt4_%{$python_bin_suffix}
-%make_install
-popd
-}
-
-%{python_expand pushd build_PyQt5_%{$python_bin_suffix}
-%make_install
-popd
-
-%fdupes %{buildroot}%{python_sitearch}
+sed -i 's,%{_bindir}/sip,%{_bindir}/sip-%{$python_bin_suffix},' %{buildroot}%{$python_sitearch}/sipconfig.py
 }
 
 mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
 
 echo "%%python_sip_api_ver %{python_sip_api}" > %{buildroot}%{_rpmconfigdir}/macros.d/macros.python_all-sip
 
-%if 0%{?have_python2}
-echo "%%requires_python2_sip_api Requires: %{python2_prefix}-sip(api) = %%python_sip_api_ver" > %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{python2_prefix}-sip
-echo "%%requires_python_sip_api Requires: %{python2_prefix}-sip(api) = %%python_sip_api_ver" >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{python2_prefix}-sip
-
-%py_compile %{buildroot}%{python2_sitearch}
+%{python_expand # flavor specific macros
+echo "%%requires_$python_sip_api Requires: %{$python_prefix}-sip(api) = %%python_sip_api_ver" \
+    > %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{$python_prefix}-sip
+}
+# macro for old python2 name
+%if 0%{?have_python2} && ! 0%{?skip_python2}
+echo "%%requires_python_sip_api Requires: %{python2_prefix}-sip(api) = %%python_sip_api_ver"  \
+    >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{python2_prefix}-sip
+%endif
+# additional: default python3 in case of multiple python3 flavors
+%if 0%{?have_python3} && ! 0%{?skip_python3}
+grep '%%requires_%{python3_prefix}_sip_api'  %{buildroot}%{_rpmconfigdir}/macros.d/macros.*-sip || \
+  echo "%%requires_%{python3_prefix}_sip_api Requires: %{python_prefix}-sip(api) = %%python_sip_api_ver" >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.python_all-sip
 %endif
 
-%if 0%{?have_python3}
-echo "%%requires_python3_sip_api Requires: %{python3_prefix}-sip(api) = %%python_sip_api_ver" > %{buildroot}%{_rpmconfigdir}/macros.d/macros.%{python3_prefix}-sip
-
-%py3_compile %{buildroot}%{python3_sitearch}
-%endif
-
-%prepare_alternative sip
+%{python_expand # TODO replace with python_compileall as soon as it is available
+$python -m compileall %{buildroot}%{$python_sitearch}
+$python -O -m compileall %{buildroot}%{$python_sitearch}
+}
+%python_clone -a %{buildroot}/%{_bindir}/sip
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 mkdir -p %{buildroot}%{_datadir}/sip
 
 %post devel
-%{python_install_alternative sip}
+%python_install_alternative sip
 
 %postun devel
 %python_uninstall_alternative sip
@@ -234,7 +233,7 @@ mkdir -p %{buildroot}%{_datadir}/sip
 %{python_sitearch}/PyQt4/sip.pyi
 %dir %{python_sitearch}/PyQt5
 %{python_sitearch}/PyQt5/sip.pyi
-%{_includedir}/python%{python_version}*/sip.h
+%{_includedir}/python%{python_bin_suffix}*/sip.h
 %{python_sitearch}/sipconfig.py*
 %{python_sitearch}/sipdistutils.py*
 %{python_sitearch}/sip.pyi

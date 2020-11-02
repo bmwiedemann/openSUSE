@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 25 21:22:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix for multiple python3 flavors gh#openSUSE/python-rpm-macros#64
+- clean up alternatives: use %python_clone -a 
+- only make install in siplib for PyQt4.sip and PyQt5.sip libraries
+
+-------------------------------------------------------------------
 Thu Aug 27 19:26:56 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 4.19.24
