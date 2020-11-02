@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:16:46 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Build shared libraries of abseil for use by grpc
+  (related to https://github.com/grpc/grpc/issues/24476)
+
+-------------------------------------------------------------------
 Sat Sep  5 20:03:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch the package to noarch.
