@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 30 12:47:57 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Skip conflictive 'ParamikoSSHClientTests.test_key_file_non_pem_format_error' test
+  since our SLE python-paramiko package already has OpenSSH support on version < 2.7.0 
+
+-------------------------------------------------------------------
+Fri Oct 30 09:26:42 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add pyOpenSSL as build dependency to allow tests to pass on SLE15 family 
+
+-------------------------------------------------------------------
+Wed Oct 28 13:45:19 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do not build Python2 subpackage since 3.2.0 does not support Python2
+- Adjust skipped SSH unit tests when paramiko <= 2.7.0  
+
+- Add:
+  * skip-some-tests-for-older-paramiko-versions.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 01:17:39 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.0:

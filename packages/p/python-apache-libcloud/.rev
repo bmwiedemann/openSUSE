@@ -371,4 +371,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
   * [Gandi Live] Don't throw if extra['rrset_ttl'] argument is not passed to the create_record method. (GITHUB-1463) [Tomaz Muraus]</comment>
     <requestid>843040</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f002ac3a132dd6874afd0db0416304b0</srcmd5>
+    <version>3.2.0</version>
+    <time>1604306457</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845056</requestid>
+  </revision>
 </revisionlist>
