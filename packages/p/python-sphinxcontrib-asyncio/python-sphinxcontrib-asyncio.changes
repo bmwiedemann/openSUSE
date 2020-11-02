@@ -2,7 +2,7 @@
 Sat Aug 22 08:39:57 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.3.0:
- - Add asyncio trove classifier (#3) 
+ - Make the plugin compatible with Sphinx 3
 
 -------------------------------------------------------------------
 Fri Dec  7 20:51:50 UTC 2018 - Matej Cepl <mcepl@suse.com>
