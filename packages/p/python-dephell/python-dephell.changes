@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 22:01:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- python-rpm-macros %python_subpackages will be more strict
+  about python- prefixed package names and the %files header. Fix
+  by using %{unflavoredpython}-dephell-rpm-macros name
+
+-------------------------------------------------------------------
 Tue Oct 27 21:13:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Support newer pip version

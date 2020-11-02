@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define oldpython python
+%define unflavoredpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -94,7 +94,7 @@ Recommends:     python-graphviz
 Suggests:       python-autopep8
 Suggests:       python-yapf
 # For python-dephell-rpm-macros
-Provides:       %{oldpython}-dephell = %{version}
+Provides:       %{unflavoredpython}-dephell = %{version}
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
@@ -151,12 +151,12 @@ test, build graph, show outdated, audit. Manage venvs, build package, bump versi
 
 sed -i -e '1i #!/bin/sh' dephell/templates/docker_prepare.sh
 
-%package rpm-macros
+%package -n %{unflavoredpython}-dephell-rpm-macros
 Summary:        RPM macros to help develop Python packages using python-dephell
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
-%description rpm-macros
+%description -n %{unflavoredpython}-dephell-rpm-macros
 Contains the RPM definition of the macro dephell_gensetup, which
 generates setup.py from the provided pyproject.toml.
 
@@ -194,7 +194,7 @@ export TRAVIS_OS_NAME=1
 %python_alternative %{_bindir}/dephell
 %{python_sitelib}/*
 
-%files rpm-macros
+%files -n %{unflavoredpython}-dephell-rpm-macros
 %{_rpmmacrodir}/macros.py-dephell
 %endif
 
