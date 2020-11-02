@@ -17,7 +17,7 @@
 
 
 Name:           tup
-Version:        0.7.9
+Version:        0.7.10
 Release:        0
 Summary:        File-based build system
 License:        GPL-2.0-only
@@ -25,10 +25,12 @@ URL:            http://gittup.org/tup/
 Source0:        https://github.com/gittup/tup/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       %{name}.rpmlintrc
 Patch0:         tup-add_archs.patch
+# PATCH-FIX-UPSTREAM tup-32bit.patch
+Patch1:         tup-32bit.patch
 BuildRequires:  awk
 BuildRequires:  pkgconfig
 BuildRequires:  vim
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libpcre)
 Requires:       vim
 

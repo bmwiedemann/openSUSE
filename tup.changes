@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 30 14:41:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.10
+  * Fixed several 'tup version' issues with bootstrapped or
+    non-git tup
+  * Fixed an error in setting PGID for subprocesses
+  * Fixed a few issues with generated files that become normal
+    (user-created) files
+  * Improvements to 'tup generate' build scripts
+  * Now uses fuse3 by default, though fuse2 should still work.
+    (Setting CONFIG_TUP_SERVER=fuse in tup.config will use
+    fuse2 when building tup)
+- Refreshed tup-add_archs.patch
+- Added tup-32bit.patch
+
+-------------------------------------------------------------------
 Sat Jun 13 12:52:31 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to verison 0.7.9
