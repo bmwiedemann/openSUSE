@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 10
+%define _sonum 11
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -24,8 +24,17 @@
 %define has_lldb_python 1
 %endif
 %endif
+
+# obsolete_llvm_versioned() prefix postfix
+# Obsolete packages <prefix>X or <prefix>X-<postfix> with X being a set of older versions.
+%define obsolete_llvm_versioned() \
+Obsoletes:      %{1}10%{?2:-%{2}} \
+Obsoletes:      %{1}7%{?2:-%{2}} \
+Obsoletes:      %{1}8%{?2:-%{2}} \
+Obsoletes:      %{1}9%{?2:-%{2}}
+
 Name:           llvm
-Version:        10.0.1
+Version:        11.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA
@@ -37,9 +46,12 @@ Source101:      baselibs.conf
 # Avoid multiple providers error
 BuildRequires:  clang%{_sonum} = %{version}
 BuildRequires:  clang%{_sonum}-devel = %{version}
+BuildRequires:  clang%{_sonum}-doc = %{version}
+BuildRequires:  lld%{_sonum} = %{version}
 BuildRequires:  llvm%{_sonum} = %{version}
 BuildRequires:  llvm%{_sonum}-LTO-devel = %{version}
 BuildRequires:  llvm%{_sonum}-devel = %{version}
+BuildRequires:  llvm%{_sonum}-doc = %{version}
 BuildRequires:  llvm%{_sonum}-gold = %{version}
 BuildRequires:  llvm%{_sonum}-vim-plugins = %{version}
 Requires:       llvm%{_sonum} = %{version}
@@ -71,6 +83,7 @@ Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-devel = %{version}
 Requires:       llvm-gold
+%obsolete_llvm_versioned llvm devel
 
 %description devel
 This package contains library and header files needed to develop
@@ -85,6 +98,7 @@ Summary:        Documentation for LLVM
 Group:          Documentation/HTML
 Requires:       %{name} = %{version}
 Requires:       llvm%{_sonum}-doc = %{version}
+%obsolete_llvm_versioned llvm doc
 
 %description doc
 This package contains documentation for the LLVM infrastructure.
@@ -118,6 +132,7 @@ Provides:       llvm-clang-devel = %{version}
 Obsoletes:      llvm-clang-devel < %{version}
 Provides:       clang-devel-static = %{version}
 Obsoletes:      clang-devel-static < %{version}
+%obsolete_llvm_versioned clang devel
 
 %description -n clang-devel
 This package contains the clang (C language) frontend for LLVM.
@@ -132,6 +147,7 @@ Summary:        Documentation for Clang
 Group:          Documentation/HTML
 Requires:       clang = %{version}
 Requires:       clang%{_sonum}-doc = %{version}
+%obsolete_llvm_versioned clang doc
 
 %description -n clang-doc
 This package contains documentation for the Clang compiler.
@@ -144,6 +160,7 @@ don't require a specific Clang version should depend on this.
 Summary:        Link-time optimizer for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       llvm%{_sonum}-LTO-devel = %{version}
+%obsolete_llvm_versioned llvm LTO-devel
 
 %description LTO-devel
 This package contains the link-time optimizer for LLVM.
@@ -157,6 +174,7 @@ don't require a specific LLVM version should depend on this.
 Summary:        Gold linker plugin for LLVM
 Group:          Development/Tools/Building
 Requires:       llvm%{_sonum}-gold = %{version}
+%obsolete_llvm_versioned llvm gold
 
 %description gold
 This package contains the Gold linker plugin for LLVM.
@@ -170,6 +188,7 @@ Summary:        Vim plugins for LLVM
 Group:          Productivity/Text/Editors
 Requires:       llvm%{_sonum}-vim-plugins = %{version}
 Supplements:    packageand(llvm:vim)
+%obsolete_llvm_versioned llvm vim-plugins
 BuildArch:      noarch
 
 %description    vim-plugins
@@ -177,6 +196,22 @@ This package contains vim plugins for LLVM like syntax highlighting.
 
 This package is a dummy package that depends on the version of
 llvm-vim-plugins that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
+
+%package opt-viewer
+Summary:        Tools for visualising the LLVM optimization records
+Group:          Development/Languages/Other
+Requires:       llvm%{_sonum}-opt-viewer = %{version}
+%obsolete_llvm_versioned llvm opt-viewer
+BuildArch:      noarch
+
+%description opt-viewer
+Set of tools for visualising the LLVM optimization records generated
+with -fsave-optimization-record. Used for compiler-assisted performance
+analysis.
+
+This package is a dummy package that depends on the version of
+llvm-opt-viewer that openSUSE currently supports.  Packages that
 don't require a specific LLVM version should depend on this.
 
 %package -n lldb
@@ -200,6 +235,7 @@ don't require a specific LLDB version should depend on this.
 Summary:        Development files for LLDB
 Group:          Development/Libraries/C and C++
 Requires:       lldb%{_sonum}-devel = %{version}
+%obsolete_llvm_versioned lldb devel
 
 %description -n lldb-devel
 This package contains the development files for LLDB.
@@ -212,6 +248,7 @@ don't require a specific LLDB version should depend on this.
 Summary:        Python bindings for liblldb
 Group:          Development/Libraries/Python
 Requires:       python3-lldb%{_sonum} = %{version}
+%obsolete_llvm_versioned python3-lldb
 
 %description -n python3-lldb
 This package contains the Python bindings to clang (C language) frontend for LLVM.
@@ -230,6 +267,39 @@ Requires:       lld%{_sonum} = %{version}
 LLD is a linker from the LLVM project. That is a drop-in replacement for
 system linkers and runs much faster than them. It also provides features that
 are useful for toolchain developers.
+
+%package polly
+Summary:        LLVM Framework for High-Level Loop and Data-Locality Optimizations
+Group:          Development/Languages/Other
+URL:            https://polly.llvm.org/
+Requires:       llvm%{_sonum}-polly = %{version}
+%obsolete_llvm_versioned llvm polly
+
+%description polly
+Polly is a high-level loop and data-locality optimizer and optimization
+infrastructure for LLVM. It uses an abstract mathematical representation based
+on integer polyhedra to analyze and optimize the memory access pattern of a
+program. Polly can currently perform classical loop transformations, especially
+tiling and loop fusion to improve data-locality. It can also exploit OpenMP
+level parallelism and expose SIMDization opportunities.
+
+This package is a dummy package that depends on the version of
+llvm-polly that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
+
+%package polly-devel
+Summary:        Development files for Polly
+Group:          Development/Libraries/C and C++
+Requires:       llvm%{_sonum}-polly-devel = %{version}
+Requires:       llvm-polly = %{version}
+%obsolete_llvm_versioned llvm polly-devel
+
+%description polly-devel
+This package contains the development files for Polly.
+
+This package is a dummy package that depends on the version of
+llvm-polly-devel that openSUSE currently supports.  Packages that
+don't require a specific LLVM version should depend on this.
 
 %prep
 # Not needed
@@ -261,6 +331,9 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %files vim-plugins
 %doc README
 
+%files opt-viewer
+%doc README
+
 %if 0%{?has_lldb}
 %files -n lldb
 %doc README
@@ -277,6 +350,12 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %endif
 
 %files -n lld
+%doc README
+
+%files polly
+%doc README
+
+%files polly-devel
 %doc README
 
 %changelog

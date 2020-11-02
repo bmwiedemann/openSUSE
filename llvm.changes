@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 19 21:57:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 11.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/11.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/lld/docs/ReleaseNotes.html
+- Let the metapackages obsolete older versions. (boo#1175983)
+- Introduce additional metapackages llvm-opt-viewer, llvm-polly and
+  llvm-polly-devel so that we can obsolete through them as well.
+
+-------------------------------------------------------------------
 Wed Jul 22 21:54:01 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 10.0.1.
