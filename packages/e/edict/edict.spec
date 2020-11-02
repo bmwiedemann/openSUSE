@@ -17,7 +17,7 @@
 
 
 Name:           edict
-Version:        20191016
+Version:        20201102
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
