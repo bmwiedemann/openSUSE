@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 29 08:24:59 UTC 2020 - pgajdos@suse.com
+
+- Add decode support for RCECs 
+- added patches
+  https://github.com/pciutils/pciutils/commit/e12bd01eea67ca8cf539263124843ba281eb6ecc
+  + pciutils-add-decode-support-for-RCECs.patch
+
+-------------------------------------------------------------------
 Mon Jun  1 07:19:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.7.0:

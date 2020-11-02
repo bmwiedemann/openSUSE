@@ -32,6 +32,8 @@ Source3:        https://mj.ucw.cz/pgpkey.txt#/%{name}.keyring
 Patch1:         pciutils-3.1.9_pkgconfig.patch
 Patch2:         pciutils-ocloexec.patch
 Patch3:         pciutils-endianh.patch
+# https://github.com/pciutils/pciutils/commit/e12bd01eea67ca8cf539263124843ba281eb6ecc
+Patch4:         pciutils-add-decode-support-for-RCECs.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(zlib)
