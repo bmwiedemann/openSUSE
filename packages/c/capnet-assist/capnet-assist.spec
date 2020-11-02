@@ -17,7 +17,7 @@
 
 
 Name:           capnet-assist
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Captive Portal Assistant
 License:        GPL-3.0-only
