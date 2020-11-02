@@ -21,7 +21,7 @@
 %endif
 
 %define libname lib%{name}
-%define soname 4_4
+%define soname 4_5
 # disabled by default as many fail
 %bcond_with tests
 %bcond_without gapi
@@ -34,7 +34,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 28 21:15:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.0, see
+  https://github.com/opencv/opencv/wiki/ChangeLog#version450
+  for details, highlights:
+  * OpenCV license has been changed to Apache 2 (OpenCV 3.x will
+    keep using BSD)
+  * GSoC is over, all projects were success and most of them have
+    already been merged. Optimizations for RISC-V, bindings for
+    Julia language, real-time single object tracking, improved SIFT
+    and others
+  * OpenJPEG is now used by default for JPEG2000
+  * Supported multiple OpenCL contexts
+  * Improvements in dnn module:
+    + Support latest OpenVINO 2021.1 release
+    + Tengine lite support for inference on ARM
+    + Many fixes and optimizations in CUDA backend
+  * Added Python bindings for G-API module
+  * Multiple fixes and improvements in flann module
+  * Added Robot-World/Hand-Eye calibration function
+
+-------------------------------------------------------------------
 Sun Sep 13 16:55:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.4.0:
