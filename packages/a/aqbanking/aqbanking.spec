@@ -28,7 +28,7 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.2.2
+Version:        6.2.5
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -42,8 +42,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
-BuildRequires:  gwenhywfar-devel >= 5.0.0
-BuildRequires:  gwenhywfar-tools >= 5.0.0
+BuildRequires:  gwenhywfar-devel >= 5.2.0.1
+BuildRequires:  gwenhywfar-tools >= 5.2.0.1
 BuildRequires:  ktoblzcheck-devel >= 1.10
 BuildRequires:  libltdl-devel
 BuildRequires:  pkgconfig
@@ -65,7 +65,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       cmake
 Requires:       glibc-devel
-Requires:       gwenhywfar-devel >= 4.99.24
+Requires:       gwenhywfar-devel >= 5.2.0.1
 Requires:       ktoblzcheck-devel
 Requires:       libltdl-devel
 Requires:       xmlsec1-gnutls-devel
