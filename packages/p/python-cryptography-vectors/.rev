@@ -41,4 +41,12 @@
   * updated vectors for the cryptography 3.0 testing</comment>
     <requestid>823206</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f5cb9633599afdf2557c546665fd643b</srcmd5>
+    <version>3.2.1</version>
+    <time>1604306327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844676</requestid>
+  </revision>
 </revisionlist>
