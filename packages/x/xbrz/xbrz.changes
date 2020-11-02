@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 31 12:22:00 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8
+  * Consider ARGB outside area as transparent
+  * Fixed ARGB scaling issue on image borders
+
+-------------------------------------------------------------------
 Sat Aug 24 13:53:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.7

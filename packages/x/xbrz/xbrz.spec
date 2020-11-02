@@ -1,7 +1,7 @@
 #
 # spec file for package xbrz
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           xbrz
-%define lname   libxbrz-1_7
-Version:        1.7
+%define lname   libxbrz-1_8
+Version:        1.8
 Release:        0
 Summary:        Pattern recognition rule-based bitmap upscaler
 License:        GPL-3.0-only
@@ -62,7 +62,7 @@ substituion rules. ("xBRZ" = Scale By Rules, Zenju enhanced variant.)
 
 %build
 c++ -DNDEBUG -D"__declspec(x)=" -fPIC -shared -Wl,-soname,libxbrz-%version.so \
-	-o libxbrz-%version.so xbrz.cpp
+	-o libxbrz-%version.so -std=c++17 xbrz.cpp
 
 %install
 b="%buildroot"
@@ -75,12 +75,10 @@ ln -s libxbrz-%version.so "$b/%_libdir/libxbrz.so"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%defattr(-,root,root)
 %_libdir/libxbrz-%version.so
 %license License.txt
 
 %files devel
-%defattr(-,root,root)
 %_includedir/xbrz*.h
 %_libdir/libxbrz.so
 
