@@ -1,0 +1,56 @@
+# Commit a7952a320c1e202a218702bfdb14f75132f04894
+# Date 2020-10-16 11:56:59 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/smpboot: Don't unconditionally call memguard_guard_stack() in cpu_smpboot_alloc()
+
+cpu_smpboot_alloc() is designed to be idempotent with respect to partially
+initialised state.  This occurs for S3 and CPU parking, where enough state to
+handle NMIs/#MCs needs to remain valid for the entire lifetime of Xen, even
+when we otherwise want to offline the CPU.
+
+For simplicity between various configuration, Xen always uses shadow stack
+mappings (Read-only + Dirty) for the guard page, irrespective of whether
+CET-SS is enabled.
+
+Unfortunately, the CET-SS changes in memguard_guard_stack() broke idempotency
+by first writing out the supervisor shadow stack tokens with plain writes,
+then changing the mapping to being read-only.
+
+This ordering is strictly necessary to configure the BSP, which cannot have
+the supervisor tokens be written with WRSS.
+
+Instead of calling memguard_guard_stack() unconditionally, call it only when
+actually allocating a new stack.  Xenheap allocates are guaranteed to be
+writeable, and the net result is idempotency WRT configuring stack_base[].
+
+Fixes: 91d26ed304f ("x86/shstk: Create shadow stacks")
+Reported-by: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/smpboot.c
++++ b/xen/arch/x86/smpboot.c
+@@ -997,16 +997,18 @@ static int cpu_smpboot_alloc(unsigned in
+         memflags = MEMF_node(node);
+ 
+     if ( stack_base[cpu] == NULL )
++    {
+         stack_base[cpu] = alloc_xenheap_pages(STACK_ORDER, memflags);
+-    if ( stack_base[cpu] == NULL )
+-        goto out;
++        if ( !stack_base[cpu] )
++            goto out;
++
++        memguard_guard_stack(stack_base[cpu]);
++    }
+ 
+     info = get_cpu_info_from_stack((unsigned long)stack_base[cpu]);
+     info->processor_id = cpu;
+     info->per_cpu_offset = __per_cpu_offset[cpu];
+ 
+-    memguard_guard_stack(stack_base[cpu]);
+-
+     gdt = per_cpu(gdt, cpu) ?: alloc_xenheap_pages(0, memflags);
+     if ( gdt == NULL )
+         goto out;

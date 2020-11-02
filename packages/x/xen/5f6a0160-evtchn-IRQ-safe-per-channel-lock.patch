@@ -1,7 +1,8 @@
-Subject: evtchn: convert per-channel lock to be IRQ-safe
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:14:56 2020 +0200
-Date: Tue Sep 22 16:14:56 2020 +0200:
-Git: 2ee270e126458471b178ca1e5d7d8d0afc48be39
+# Commit c0ddc8634845aba50774add6e4b73fdaffc82656
+# Date 2020-09-22 15:51:28 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn: convert per-channel lock to be IRQ-safe
 
 ... in order for send_guest_{global,vcpu}_virq() to be able to make use
 of it.
@@ -11,11 +12,9 @@ This is part of XSA-343.
 Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Acked-by: Julien Grall <jgrall@amazon.com>
 
-diff --git a/xen/common/event_channel.c b/xen/common/event_channel.c
-index 6a566917b1..0e550e9c7a 100644
 --- a/xen/common/event_channel.c
 +++ b/xen/common/event_channel.c
-@@ -248,6 +248,7 @@ static long evtchn_alloc_unbound(evtchn_alloc_unbound_t *alloc)
+@@ -248,6 +248,7 @@ static long evtchn_alloc_unbound(evtchn_
      int            port;
      domid_t        dom = alloc->dom;
      long           rc;
@@ -23,7 +22,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      d = rcu_lock_domain_by_any_id(dom);
      if ( d == NULL )
-@@ -263,14 +264,14 @@ static long evtchn_alloc_unbound(evtchn_alloc_unbound_t *alloc)
+@@ -263,14 +264,14 @@ static long evtchn_alloc_unbound(evtchn_
      if ( rc )
          goto out;
  
@@ -40,7 +39,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      alloc->port = port;
  
-@@ -283,26 +284,32 @@ static long evtchn_alloc_unbound(evtchn_alloc_unbound_t *alloc)
+@@ -283,26 +284,32 @@ static long evtchn_alloc_unbound(evtchn_
  }
  
  
@@ -82,7 +81,7 @@ index 6a566917b1..0e550e9c7a 100644
  }
  
  static long evtchn_bind_interdomain(evtchn_bind_interdomain_t *bind)
-@@ -312,6 +319,7 @@ static long evtchn_bind_interdomain(evtchn_bind_interdomain_t *bind)
+@@ -312,6 +319,7 @@ static long evtchn_bind_interdomain(evtc
      int            lport, rport = bind->remote_port;
      domid_t        rdom = bind->remote_dom;
      long           rc;
@@ -90,7 +89,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      if ( rdom == DOMID_SELF )
          rdom = current->domain->domain_id;
-@@ -347,7 +355,7 @@ static long evtchn_bind_interdomain(evtchn_bind_interdomain_t *bind)
+@@ -347,7 +355,7 @@ static long evtchn_bind_interdomain(evtc
      if ( rc )
          goto out;
  
@@ -99,7 +98,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      lchn->u.interdomain.remote_dom  = rd;
      lchn->u.interdomain.remote_port = rport;
-@@ -364,7 +372,7 @@ static long evtchn_bind_interdomain(evtchn_bind_interdomain_t *bind)
+@@ -364,7 +372,7 @@ static long evtchn_bind_interdomain(evtc
       */
      evtchn_port_set_pending(ld, lchn->notify_vcpu_id, lchn);
  
@@ -108,7 +107,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      bind->local_port = lport;
  
-@@ -387,6 +395,7 @@ int evtchn_bind_virq(evtchn_bind_virq_t *bind, evtchn_port_t port)
+@@ -387,6 +395,7 @@ int evtchn_bind_virq(evtchn_bind_virq_t
      struct domain *d = current->domain;
      int            virq = bind->virq, vcpu = bind->vcpu;
      int            rc = 0;
@@ -116,7 +115,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      if ( (virq < 0) || (virq >= ARRAY_SIZE(v->virq_to_evtchn)) )
          return -EINVAL;
-@@ -424,14 +433,14 @@ int evtchn_bind_virq(evtchn_bind_virq_t *bind, evtchn_port_t port)
+@@ -424,14 +433,14 @@ int evtchn_bind_virq(evtchn_bind_virq_t
  
      chn = evtchn_from_port(d, port);
  
@@ -133,7 +132,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      v->virq_to_evtchn[virq] = bind->port = port;
  
-@@ -448,6 +457,7 @@ static long evtchn_bind_ipi(evtchn_bind_ipi_t *bind)
+@@ -448,6 +457,7 @@ static long evtchn_bind_ipi(evtchn_bind_
      struct domain *d = current->domain;
      int            port, vcpu = bind->vcpu;
      long           rc = 0;
@@ -141,7 +140,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      if ( domain_vcpu(d, vcpu) == NULL )
          return -ENOENT;
-@@ -459,13 +469,13 @@ static long evtchn_bind_ipi(evtchn_bind_ipi_t *bind)
+@@ -459,13 +469,13 @@ static long evtchn_bind_ipi(evtchn_bind_
  
      chn = evtchn_from_port(d, port);
  
@@ -157,7 +156,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      bind->port = port;
  
-@@ -509,6 +519,7 @@ static long evtchn_bind_pirq(evtchn_bind_pirq_t *bind)
+@@ -509,6 +519,7 @@ static long evtchn_bind_pirq(evtchn_bind
      struct pirq   *info;
      int            port = 0, pirq = bind->pirq;
      long           rc;
@@ -165,7 +164,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      if ( (pirq < 0) || (pirq >= d->nr_pirqs) )
          return -EINVAL;
-@@ -541,14 +552,14 @@ static long evtchn_bind_pirq(evtchn_bind_pirq_t *bind)
+@@ -541,14 +552,14 @@ static long evtchn_bind_pirq(evtchn_bind
          goto out;
      }
  
@@ -182,7 +181,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      bind->port = port;
  
-@@ -569,6 +580,7 @@ int evtchn_close(struct domain *d1, int port1, bool guest)
+@@ -569,6 +580,7 @@ int evtchn_close(struct domain *d1, int
      struct evtchn *chn1, *chn2;
      int            port2;
      long           rc = 0;
@@ -190,7 +189,7 @@ index 6a566917b1..0e550e9c7a 100644
  
   again:
      spin_lock(&d1->event_lock);
-@@ -668,14 +680,14 @@ int evtchn_close(struct domain *d1, int port1, bool guest)
+@@ -668,14 +680,14 @@ int evtchn_close(struct domain *d1, int
          BUG_ON(chn2->state != ECS_INTERDOMAIN);
          BUG_ON(chn2->u.interdomain.remote_dom != d1);
  
@@ -207,7 +206,7 @@ index 6a566917b1..0e550e9c7a 100644
  
          goto out;
  
-@@ -683,9 +695,9 @@ int evtchn_close(struct domain *d1, int port1, bool guest)
+@@ -683,9 +695,9 @@ int evtchn_close(struct domain *d1, int
          BUG();
      }
  
@@ -219,7 +218,7 @@ index 6a566917b1..0e550e9c7a 100644
  
   out:
      if ( d2 != NULL )
-@@ -705,13 +717,14 @@ int evtchn_send(struct domain *ld, unsigned int lport)
+@@ -705,13 +717,14 @@ int evtchn_send(struct domain *ld, unsig
      struct evtchn *lchn, *rchn;
      struct domain *rd;
      int            rport, ret = 0;
@@ -235,7 +234,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      /* Guest cannot send via a Xen-attached event channel. */
      if ( unlikely(consumer_is_xen(lchn)) )
-@@ -746,7 +759,7 @@ int evtchn_send(struct domain *ld, unsigned int lport)
+@@ -746,7 +759,7 @@ int evtchn_send(struct domain *ld, unsig
      }
  
  out:
@@ -269,7 +268,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      write_atomic(&ld->xen_evtchns, ld->xen_evtchns + 1);
  
-@@ -1280,11 +1294,12 @@ void notify_via_xen_event_channel(struct domain *ld, int lport)
+@@ -1280,11 +1294,12 @@ void notify_via_xen_event_channel(struct
  {
      struct evtchn *lchn, *rchn;
      struct domain *rd;
@@ -283,7 +282,7 @@ index 6a566917b1..0e550e9c7a 100644
  
      if ( likely(lchn->state == ECS_INTERDOMAIN) )
      {
-@@ -1294,7 +1309,7 @@ void notify_via_xen_event_channel(struct domain *ld, int lport)
+@@ -1294,7 +1309,7 @@ void notify_via_xen_event_channel(struct
          evtchn_port_set_pending(rd, rchn->notify_vcpu_id, rchn);
      }
  

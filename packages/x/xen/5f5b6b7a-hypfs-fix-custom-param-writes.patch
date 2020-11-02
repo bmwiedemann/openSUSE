@@ -1,0 +1,88 @@
+# Commit b4e41b1750d550bf2b1ccf97ee46f4f682bdbb62
+# Date 2020-09-11 14:20:10 +0200
+# Author Juergen Gross <jgross@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+xen/hypfs: fix writing of custom parameter
+
+Today the maximum allowed data length for writing a hypfs node is
+tested in the generic hypfs_write() function. For custom runtime
+parameters this might be wrong, as the maximum allowed size is derived
+from the buffer holding the current setting, while there might be ways
+to set the parameter needing more characters than the minimal
+representation of that value.
+
+One example for this is the "ept" parameter. Its value buffer is sized
+to be able to hold the string "exec-sp=0" or "exec-sp=1", while it is
+allowed to use e.g. "no-exec-sp" or "exec-sp=yes" for setting it.
+
+Fix that by moving the length check one level down to the type
+specific write function.
+
+In order to avoid allocation of arbitrary sized buffers use a new
+MAX_PARAM_SIZE macro as an upper limit for custom writes. The value
+of MAX_PARAM_SIZE is the same as the limit in parse_params() for a
+single parameter.
+
+Fixes: a659d7cab9af ("xen: add runtime parameter access support to hypfs")
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Tested-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/common/hypfs.c
++++ b/xen/common/hypfs.c
+@@ -297,7 +297,9 @@ int hypfs_write_leaf(struct hypfs_entry_
+     int ret;
+ 
+     ASSERT(this_cpu(hypfs_locked) == hypfs_write_locked);
+-    ASSERT(ulen <= leaf->e.max_size);
++
++    if ( ulen > leaf->e.max_size )
++        return -ENOSPC;
+ 
+     if ( leaf->e.type != XEN_HYPFS_TYPE_STRING &&
+          leaf->e.type != XEN_HYPFS_TYPE_BLOB && ulen != leaf->e.size )
+@@ -356,6 +358,10 @@ int hypfs_write_custom(struct hypfs_entr
+ 
+     ASSERT(this_cpu(hypfs_locked) == hypfs_write_locked);
+ 
++    /* Avoid oversized buffer allocation. */
++    if ( ulen > MAX_PARAM_SIZE )
++        return -ENOSPC;
++
+     buf = xzalloc_array(char, ulen);
+     if ( !buf )
+         return -ENOMEM;
+@@ -386,9 +392,6 @@ static int hypfs_write(struct hypfs_entr
+ 
+     ASSERT(entry->max_size);
+ 
+-    if ( ulen > entry->max_size )
+-        return -ENOSPC;
+-
+     l = container_of(entry, struct hypfs_entry_leaf, e);
+ 
+     return entry->write(l, uaddr, ulen);
+--- a/xen/common/kernel.c
++++ b/xen/common/kernel.c
+@@ -57,7 +57,7 @@ static int assign_integer_param(const st
+ static int parse_params(const char *cmdline, const struct kernel_param *start,
+                         const struct kernel_param *end)
+ {
+-    char opt[128], *optval, *optkey, *q;
++    char opt[MAX_PARAM_SIZE], *optval, *optkey, *q;
+     const char *p = cmdline, *key;
+     const struct kernel_param *param;
+     int rc, final_rc = 0;
+--- a/xen/include/xen/param.h
++++ b/xen/include/xen/param.h
+@@ -26,6 +26,9 @@ struct kernel_param {
+     } par;
+ };
+ 
++/* Maximum length of a single parameter string. */
++#define MAX_PARAM_SIZE 128
++
+ extern const struct kernel_param __setup_start[], __setup_end[];
+ 
+ #define __param(att)      static const att \

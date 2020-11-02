@@ -1,7 +1,8 @@
-Subject: evtchn: evtchn_reset() shouldn't succeed with still-open ports
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:14:22 2020 +0200
-Date: Tue Sep 22 16:14:22 2020 +0200:
-Git: 9b9fc8e391b6d5afa83f90271fdbd0e13871e841
+# Commit 8d385b247bca40ece40c9279391054bc98934325
+# Date 2020-09-22 15:50:55 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn: evtchn_reset() shouldn't succeed with still-open ports
 
 While the function closes all ports, it does so without holding any
 lock, and hence racing requests may be issued causing new ports to get
@@ -28,11 +29,9 @@ Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 Reviewed-by: Julien Grall <jgrall@amazon.com>
 
-diff --git a/xen/common/event_channel.c b/xen/common/event_channel.c
-index 08ffe0f063..6a566917b1 100644
 --- a/xen/common/event_channel.c
 +++ b/xen/common/event_channel.c
-@@ -188,6 +188,8 @@ int evtchn_allocate_port(struct domain *d, evtchn_port_t port)
+@@ -188,6 +188,8 @@ int evtchn_allocate_port(struct domain *
          write_atomic(&d->valid_evtchns, d->valid_evtchns + EVTCHNS_PER_BUCKET);
      }
  
@@ -41,7 +40,7 @@ index 08ffe0f063..6a566917b1 100644
      return 0;
  }
  
-@@ -211,11 +213,26 @@ static int get_free_port(struct domain *d)
+@@ -211,11 +213,26 @@ static int get_free_port(struct domain *
      return -ENOSPC;
  }
  
@@ -68,7 +67,7 @@ index 08ffe0f063..6a566917b1 100644
      /* Reset binding to vcpu0 when the channel is freed. */
      chn->state          = ECS_FREE;
      chn->notify_vcpu_id = 0;
-@@ -258,6 +275,7 @@ static long evtchn_alloc_unbound(evtchn_alloc_unbound_t *alloc)
+@@ -258,6 +275,7 @@ static long evtchn_alloc_unbound(evtchn_
      alloc->port = port;
  
   out:
@@ -76,7 +75,7 @@ index 08ffe0f063..6a566917b1 100644
      spin_unlock(&d->event_lock);
      rcu_unlock_domain(d);
  
-@@ -351,6 +369,7 @@ static long evtchn_bind_interdomain(evtchn_bind_interdomain_t *bind)
+@@ -351,6 +369,7 @@ static long evtchn_bind_interdomain(evtc
      bind->local_port = lport;
  
   out:
@@ -84,7 +83,7 @@ index 08ffe0f063..6a566917b1 100644
      spin_unlock(&ld->event_lock);
      if ( ld != rd )
          spin_unlock(&rd->event_lock);
-@@ -488,7 +507,7 @@ static long evtchn_bind_pirq(evtchn_bind_pirq_t *bind)
+@@ -488,7 +507,7 @@ static long evtchn_bind_pirq(evtchn_bind
      struct domain *d = current->domain;
      struct vcpu   *v = d->vcpu[0];
      struct pirq   *info;
@@ -93,7 +92,7 @@ index 08ffe0f063..6a566917b1 100644
      long           rc;
  
      if ( (pirq < 0) || (pirq >= d->nr_pirqs) )
-@@ -536,6 +555,7 @@ static long evtchn_bind_pirq(evtchn_bind_pirq_t *bind)
+@@ -536,6 +555,7 @@ static long evtchn_bind_pirq(evtchn_bind
      arch_evtchn_bind_pirq(d, pirq);
  
   out:
@@ -156,7 +155,7 @@ index 08ffe0f063..6a566917b1 100644
      spin_unlock(&ld->event_lock);
  
      return rc < 0 ? rc : port;
-@@ -1314,6 +1338,7 @@ int evtchn_init(struct domain *d, unsigned int max_port)
+@@ -1314,6 +1338,7 @@ int evtchn_init(struct domain *d, unsign
          return -EINVAL;
      }
      evtchn_from_port(d, 0)->state = ECS_RESERVED;
@@ -173,8 +172,6 @@ index 08ffe0f063..6a566917b1 100644
      clear_global_virq_handlers(d);
  
      evtchn_fifo_destroy(d);
-diff --git a/xen/include/xen/sched.h b/xen/include/xen/sched.h
-index 545f2bdcd0..b9c70da4b0 100644
 --- a/xen/include/xen/sched.h
 +++ b/xen/include/xen/sched.h
 @@ -361,6 +361,16 @@ struct domain

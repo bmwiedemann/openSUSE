@@ -1,0 +1,77 @@
+# Commit 6065a05adf152a556fb9f11a5218c89e41b62893
+# Date 2020-10-16 11:55:33 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/traps: 'Fix' safety of read_registers() in #DF path
+
+All interrupts and exceptions pass a struct cpu_user_regs up into C.  This
+contains the legacy vm86 fields from 32bit days, which are beyond the
+hardware-pushed frame.
+
+Accessing these fields is generally illegal, as they are logically out of
+bounds for anything other than an interrupt/exception hitting ring1/3 code.
+
+show_registers() unconditionally reads these fields, but the content is
+discarded before use.  This is benign right now, as all parts of the stack are
+readable, including the guard pages.
+
+However, read_registers() in the #DF handler writes to these fields as part of
+preparing the state dump, and being IST, hits the adjacent stack frame.
+
+This has been broken forever, but c/s 6001660473 "x86/shstk: Rework the stack
+layout to support shadow stacks" repositioned the #DF stack to be adjacent to
+the guard page, which turns this OoB write into a fatal pagefault:
+
+  (XEN) *** DOUBLE FAULT ***
+  (XEN) ----[ Xen-4.15-unstable  x86_64  debug=y   Tainted:  C   ]----
+  (XEN) ----[ Xen-4.15-unstable  x86_64  debug=y   Tainted:  C   ]----
+  (XEN) CPU:    4
+  (XEN) RIP:    e008:[<ffff82d04031fd4f>] traps.c#read_registers+0x29/0xc1
+  (XEN) RFLAGS: 0000000000050086   CONTEXT: hypervisor (d1v0)
+  ...
+  (XEN) Xen call trace:
+  (XEN)    [<ffff82d04031fd4f>] R traps.c#read_registers+0x29/0xc1
+  (XEN)    [<ffff82d0403207b3>] F do_double_fault+0x3d/0x7e
+  (XEN)    [<ffff82d04039acd7>] F double_fault+0x107/0x110
+  (XEN)
+  (XEN) Pagetable walk from ffff830236f6d008:
+  (XEN)  L4[0x106] = 80000000bfa9b063 ffffffffffffffff
+  (XEN)  L3[0x008] = 0000000236ffd063 ffffffffffffffff
+  (XEN)  L2[0x1b7] = 0000000236ffc063 ffffffffffffffff
+  (XEN)  L1[0x16d] = 8000000236f6d161 ffffffffffffffff
+  (XEN)
+  (XEN) ****************************************
+  (XEN) Panic on CPU 4:
+  (XEN) FATAL PAGE FAULT
+  (XEN) [error_code=0003]
+  (XEN) Faulting linear address: ffff830236f6d008
+  (XEN) ****************************************
+  (XEN)
+
+and rendering the main #DF analysis broken.
+
+The proper fix is to delete cpu_user_regs.es and later, so no
+interrupt/exception path can access OoB, but this needs disentangling from the
+PV ABI first.
+
+Not-really-fixes: 6001660473 ("x86/shstk: Rework the stack layout to support shadow stacks")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpu/common.c
++++ b/xen/arch/x86/cpu/common.c
+@@ -770,7 +770,13 @@ void load_system_tables(void)
+ 	tss->ist[IST_MCE - 1] = stack_top + (1 + IST_MCE) * PAGE_SIZE;
+ 	tss->ist[IST_NMI - 1] = stack_top + (1 + IST_NMI) * PAGE_SIZE;
+ 	tss->ist[IST_DB  - 1] = stack_top + (1 + IST_DB)  * PAGE_SIZE;
+-	tss->ist[IST_DF  - 1] = stack_top + (1 + IST_DF)  * PAGE_SIZE;
++	/*
++	 * Gross bodge.  The #DF handler uses the vm86 fields of cpu_user_regs
++	 * beyond the hardware frame.  Adjust the stack entrypoint so this
++	 * doesn't manifest as an OoB write which hits the guard page.
++	 */
++	tss->ist[IST_DF  - 1] = stack_top + (1 + IST_DF)  * PAGE_SIZE -
++		(sizeof(struct cpu_user_regs) - offsetof(struct cpu_user_regs, es));
+ 	tss->bitmap = IOBMP_INVALID_OFFSET;
+ 
+ 	/* All other stack pointers poisioned. */

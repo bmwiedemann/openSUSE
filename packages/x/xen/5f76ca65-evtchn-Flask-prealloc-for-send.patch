@@ -1,0 +1,180 @@
+# Commit 52e1fc47abc3a0123d2b5bb7e9172e84fd571851
+# Date 2020-10-02 08:36:21 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn/Flask: pre-allocate node on send path
+
+xmalloc() & Co may not be called with IRQs off, or else check_lock()
+will have its assertion trigger about locks getting acquired
+inconsistently. Re-arranging the locking in evtchn_send() doesn't seem
+very reasonable, especially since the per-channel lock was introduced to
+avoid acquiring the per-domain event lock on the send paths. Issue a
+second call to xsm_evtchn_send() instead, before acquiring the lock, to
+give XSM / Flask a chance to pre-allocate whatever it may need.
+
+As these nodes are used merely for caching earlier decisions' results,
+allocate just one node in AVC code despite two potentially being needed.
+Things will merely be not as performant if a second allocation was
+wanted, just like when the pre-allocation fails.
+
+Fixes: c0ddc8634845 ("evtchn: convert per-channel lock to be IRQ-safe")
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Tested-by: Jason Andryuk <jandryuk@gmail.com>
+Acked-by: Julien Grall <jgrall@amazon.com>
+Reviewed-by: Jason Andryuk <jandryuk@gmail.com>
+
+--- a/xen/common/event_channel.c
++++ b/xen/common/event_channel.c
+@@ -723,6 +723,12 @@ int evtchn_send(struct domain *ld, unsig
+     if ( !port_is_valid(ld, lport) )
+         return -EINVAL;
+ 
++    /*
++     * As the call further down needs to avoid allocations (due to running
++     * with IRQs off), give XSM a chance to pre-allocate if needed.
++     */
++    xsm_evtchn_send(XSM_HOOK, ld, NULL);
++
+     lchn = evtchn_from_port(ld, lport);
+ 
+     spin_lock_irqsave(&lchn->lock, flags);
+--- a/xen/include/xsm/xsm.h
++++ b/xen/include/xsm/xsm.h
+@@ -59,6 +59,7 @@ struct xsm_operations {
+     int (*evtchn_interdomain) (struct domain *d1, struct evtchn *chn1,
+                                         struct domain *d2, struct evtchn *chn2);
+     void (*evtchn_close_post) (struct evtchn *chn);
++    /* Note: Next hook may be called with 'chn' set to NULL. See call site. */
+     int (*evtchn_send) (struct domain *d, struct evtchn *chn);
+     int (*evtchn_status) (struct domain *d, struct evtchn *chn);
+     int (*evtchn_reset) (struct domain *d1, struct domain *d2);
+--- a/xen/xsm/flask/avc.c
++++ b/xen/xsm/flask/avc.c
+@@ -24,7 +24,9 @@
+ #include <xen/prefetch.h>
+ #include <xen/kernel.h>
+ #include <xen/sched.h>
++#include <xen/cpu.h>
+ #include <xen/init.h>
++#include <xen/percpu.h>
+ #include <xen/rcupdate.h>
+ #include <asm/atomic.h>
+ #include <asm/current.h>
+@@ -341,17 +343,79 @@ static inline int avc_reclaim_node(void)
+     return ecx;
+ }
+ 
++static struct avc_node *new_node(void)
++{
++    struct avc_node *node = xzalloc(struct avc_node);
++
++    if ( node )
++    {
++        INIT_RCU_HEAD(&node->rhead);
++        INIT_HLIST_NODE(&node->list);
++        avc_cache_stats_incr(allocations);
++    }
++
++    return node;
++}
++
++/*
++ * avc_has_perm_noaudit() may consume up to two nodes, which we may not be
++ * able to obtain from the allocator at that point. Since the is merely
++ * about caching earlier decisions, allow for (just) one pre-allocated node.
++ */
++static DEFINE_PER_CPU(struct avc_node *, prealloc_node);
++
++void avc_prealloc(void)
++{
++    struct avc_node **prealloc = &this_cpu(prealloc_node);
++
++    if ( !*prealloc )
++        *prealloc = new_node();
++}
++
++static int cpu_callback(struct notifier_block *nfb, unsigned long action,
++                        void *hcpu)
++{
++    unsigned int cpu = (unsigned long)hcpu;
++    struct avc_node **prealloc = &per_cpu(prealloc_node, cpu);
++
++    if ( action == CPU_DEAD && *prealloc )
++    {
++        xfree(*prealloc);
++        *prealloc = NULL;
++        avc_cache_stats_incr(frees);
++    }
++
++    return NOTIFY_DONE;
++}
++
++static struct notifier_block cpu_nfb = {
++    .notifier_call = cpu_callback,
++    .priority = 99
++};
++
++static int __init cpu_nfb_init(void)
++{
++    register_cpu_notifier(&cpu_nfb);
++    return 0;
++}
++__initcall(cpu_nfb_init);
++
+ static struct avc_node *avc_alloc_node(void)
+ {
+-    struct avc_node *node;
++    struct avc_node *node, **prealloc = &this_cpu(prealloc_node);
+ 
+-    node = xzalloc(struct avc_node);
+-    if (!node)
+-        goto out;
+-
+-    INIT_RCU_HEAD(&node->rhead);
+-    INIT_HLIST_NODE(&node->list);
+-    avc_cache_stats_incr(allocations);
++    node = *prealloc;
++    *prealloc = NULL;
++
++    if ( !node )
++    {
++        /* Must not call xmalloc() & Co with IRQs off. */
++        if ( !local_irq_is_enabled() )
++            goto out;
++        node = new_node();
++        if ( !node )
++            goto out;
++    }
+ 
+     atomic_inc(&avc_cache.active_nodes);
+     if ( atomic_read(&avc_cache.active_nodes) > avc_cache_threshold )
+--- a/xen/xsm/flask/hooks.c
++++ b/xen/xsm/flask/hooks.c
+@@ -281,6 +281,16 @@ static int flask_evtchn_send(struct doma
+ {
+     int rc;
+ 
++    /*
++     * When called with non-NULL chn, memory allocation may not be permitted.
++     * Allow AVC to preallocate nodes as necessary upon early notification.
++     */
++    if ( !chn )
++    {
++        avc_prealloc();
++        return 0;
++    }
++
+     switch ( chn->state )
+     {
+     case ECS_INTERDOMAIN:
+--- a/xen/xsm/flask/include/avc.h
++++ b/xen/xsm/flask/include/avc.h
+@@ -91,6 +91,8 @@ int avc_has_perm_noaudit(u32 ssid, u32 t
+ int avc_has_perm(u32 ssid, u32 tsid, u16 tclass, u32 requested,
+                                              struct avc_audit_data *auditdata);
+ 
++void avc_prealloc(void);
++
+ /* Exported to selinuxfs */
+ struct xen_flask_hash_stats;
+ int avc_get_hash_stats(struct xen_flask_hash_stats *arg);

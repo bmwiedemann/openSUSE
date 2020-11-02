@@ -1,0 +1,26 @@
+# Commit 61d4a04349895edc5a5868274b906ba61ef24f47
+# Date 2020-09-24 21:02:35 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/pv: Don't deliver #GP for a SYSENTER with NT set
+
+It is a matter of guest kernel policy what to do with offending userspace, and
+terminating said userspace may not be the action chosen.
+
+Linux explicitly tolerates this case.
+
+Reported-by: Andy Lutomirski <luto@kernel.org>
+Fixes: fdac951560 ("x86: clear EFLAGS.NT in SYSENTER entry path")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/x86_64/entry.S
++++ b/xen/arch/x86/x86_64/entry.S
+@@ -313,7 +313,6 @@ UNLIKELY_START(nz, sysenter_nt_set)
+         pushfq
+         andl  $~X86_EFLAGS_NT,(%rsp)
+         popfq
+-        xorl  %eax,%eax
+ UNLIKELY_END(sysenter_nt_set)
+         testq %rax,%rax
+         leal  (,%rcx,TBF_INTERRUPT),%ecx

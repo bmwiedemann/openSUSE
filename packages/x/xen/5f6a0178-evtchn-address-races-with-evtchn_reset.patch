@@ -1,7 +1,8 @@
-Subject: evtchn: address races with evtchn_reset()
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:15:14 2020 +0200
-Date: Tue Sep 22 16:15:14 2020 +0200:
-Git: ecc6428b7ea63a24e244f747e8568c0ccc03a6f8
+# Commit e045199c7c9c5433d7f1461a741ed539a75cbfad
+# Date 2020-09-22 15:51:52 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn: address races with evtchn_reset()
 
 Neither d->evtchn_port_ops nor max_evtchns(d) may be used in an entirely
 lock-less manner, as both may change by a racing evtchn_reset(). In the
@@ -29,8 +30,6 @@ Reported-by: Julien Grall <jgrall@amazon.com>
 Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Acked-by: Julien Grall <jgrall@amazon.com>
 
-diff --git a/xen/arch/x86/irq.c b/xen/arch/x86/irq.c
-index a69937c840..93c4fb9a79 100644
 --- a/xen/arch/x86/irq.c
 +++ b/xen/arch/x86/irq.c
 @@ -2488,14 +2488,24 @@ static void dump_irqs(unsigned char key)
@@ -62,11 +61,9 @@ index a69937c840..93c4fb9a79 100644
                         i < action->nr_guests ? ',' : '\n');
              }
          }
-diff --git a/xen/arch/x86/pv/shim.c b/xen/arch/x86/pv/shim.c
-index 3a0525c209..9aef7a860a 100644
 --- a/xen/arch/x86/pv/shim.c
 +++ b/xen/arch/x86/pv/shim.c
-@@ -660,8 +660,11 @@ void pv_shim_inject_evtchn(unsigned int port)
+@@ -660,8 +660,11 @@ void pv_shim_inject_evtchn(unsigned int
      if ( port_is_valid(guest, port) )
      {
          struct evtchn *chn = evtchn_from_port(guest, port);
@@ -78,11 +75,9 @@ index 3a0525c209..9aef7a860a 100644
      }
  }
  
-diff --git a/xen/common/event_2l.c b/xen/common/event_2l.c
-index a229d35271..083d04be3c 100644
 --- a/xen/common/event_2l.c
 +++ b/xen/common/event_2l.c
-@@ -63,8 +63,10 @@ static void evtchn_2l_unmask(struct domain *d, struct evtchn *evtchn)
+@@ -63,8 +63,10 @@ static void evtchn_2l_unmask(struct doma
      }
  }
  
@@ -94,7 +89,7 @@ index a229d35271..083d04be3c 100644
      unsigned int max_ports = BITS_PER_EVTCHN_WORD(d) * BITS_PER_EVTCHN_WORD(d);
  
      ASSERT(port < max_ports);
-@@ -72,8 +74,10 @@ static bool evtchn_2l_is_pending(const struct domain *d, evtchn_port_t port)
+@@ -72,8 +74,10 @@ static bool evtchn_2l_is_pending(const s
              guest_test_bit(d, port, &shared_info(d, evtchn_pending)));
  }
  
@@ -106,11 +101,9 @@ index a229d35271..083d04be3c 100644
      unsigned int max_ports = BITS_PER_EVTCHN_WORD(d) * BITS_PER_EVTCHN_WORD(d);
  
      ASSERT(port < max_ports);
-diff --git a/xen/common/event_channel.c b/xen/common/event_channel.c
-index 0e550e9c7a..878e4250ed 100644
 --- a/xen/common/event_channel.c
 +++ b/xen/common/event_channel.c
-@@ -156,8 +156,9 @@ int evtchn_allocate_port(struct domain *d, evtchn_port_t port)
+@@ -156,8 +156,9 @@ int evtchn_allocate_port(struct domain *
  
      if ( port_is_valid(d, port) )
      {
@@ -122,7 +115,7 @@ index 0e550e9c7a..878e4250ed 100644
              return -EBUSY;
      }
      else
-@@ -774,6 +775,7 @@ void send_guest_vcpu_virq(struct vcpu *v, uint32_t virq)
+@@ -774,6 +775,7 @@ void send_guest_vcpu_virq(struct vcpu *v
      unsigned long flags;
      int port;
      struct domain *d;
@@ -130,7 +123,7 @@ index 0e550e9c7a..878e4250ed 100644
  
      ASSERT(!virq_is_global(virq));
  
-@@ -784,7 +786,10 @@ void send_guest_vcpu_virq(struct vcpu *v, uint32_t virq)
+@@ -784,7 +786,10 @@ void send_guest_vcpu_virq(struct vcpu *v
          goto out;
  
      d = v->domain;
@@ -142,7 +135,7 @@ index 0e550e9c7a..878e4250ed 100644
  
   out:
      spin_unlock_irqrestore(&v->virq_lock, flags);
-@@ -813,7 +818,9 @@ void send_guest_global_virq(struct domain *d, uint32_t virq)
+@@ -813,7 +818,9 @@ void send_guest_global_virq(struct domai
          goto out;
  
      chn = evtchn_from_port(d, port);
@@ -152,7 +145,7 @@ index 0e550e9c7a..878e4250ed 100644
  
   out:
      spin_unlock_irqrestore(&v->virq_lock, flags);
-@@ -823,6 +830,7 @@ void send_guest_pirq(struct domain *d, const struct pirq *pirq)
+@@ -823,6 +830,7 @@ void send_guest_pirq(struct domain *d, c
  {
      int port;
      struct evtchn *chn;
@@ -160,7 +153,7 @@ index 0e550e9c7a..878e4250ed 100644
  
      /*
       * PV guests: It should not be possible to race with __evtchn_close(). The
-@@ -837,7 +845,9 @@ void send_guest_pirq(struct domain *d, const struct pirq *pirq)
+@@ -837,7 +845,9 @@ void send_guest_pirq(struct domain *d, c
      }
  
      chn = evtchn_from_port(d, port);
@@ -186,7 +179,7 @@ index 0e550e9c7a..878e4250ed 100644
  
      return 0;
  }
-@@ -1449,8 +1462,8 @@ static void domain_dump_evtchn_info(struct domain *d)
+@@ -1449,8 +1462,8 @@ static void domain_dump_evtchn_info(stru
  
          printk("    %4u [%d/%d/",
                 port,
@@ -197,11 +190,9 @@ index 0e550e9c7a..878e4250ed 100644
          evtchn_port_print_state(d, chn);
          printk("]: s=%d n=%d x=%d",
                 chn->state, chn->notify_vcpu_id, chn->xen_consumer);
-diff --git a/xen/common/event_fifo.c b/xen/common/event_fifo.c
-index 2f13d92128..68d0c7a632 100644
 --- a/xen/common/event_fifo.c
 +++ b/xen/common/event_fifo.c
-@@ -296,23 +296,26 @@ static void evtchn_fifo_unmask(struct domain *d, struct evtchn *evtchn)
+@@ -296,23 +296,26 @@ static void evtchn_fifo_unmask(struct do
          evtchn_fifo_set_pending(v, evtchn);
  }
  
@@ -234,11 +225,9 @@ index 2f13d92128..68d0c7a632 100644
  
      return word && guest_test_bit(d, EVTCHN_FIFO_LINKED, word);
  }
-diff --git a/xen/include/asm-x86/event.h b/xen/include/asm-x86/event.h
-index 98a85233cb..5e09ede6d7 100644
 --- a/xen/include/asm-x86/event.h
 +++ b/xen/include/asm-x86/event.h
-@@ -47,4 +47,10 @@ static inline bool arch_virq_is_global(unsigned int virq)
+@@ -47,4 +47,10 @@ static inline bool arch_virq_is_global(u
      return true;
  }
  
@@ -249,11 +238,9 @@ index 98a85233cb..5e09ede6d7 100644
 +#endif
 +
  #endif
-diff --git a/xen/include/xen/event.h b/xen/include/xen/event.h
-index e1b299e8df..bc9aa68650 100644
 --- a/xen/include/xen/event.h
 +++ b/xen/include/xen/event.h
-@@ -133,6 +133,24 @@ static inline struct evtchn *evtchn_from_port(struct domain *d, unsigned int p)
+@@ -133,6 +133,24 @@ static inline struct evtchn *evtchn_from
      return bucket_from_port(d, p) + (p % EVTCHNS_PER_BUCKET);
  }
  
@@ -306,7 +293,7 @@ index e1b299e8df..bc9aa68650 100644
      int (*set_priority)(struct domain *d, struct evtchn *evtchn,
                          unsigned int priority);
      void (*print_state)(struct domain *d, const struct evtchn *evtchn);
-@@ -193,38 +216,67 @@ static inline void evtchn_port_set_pending(struct domain *d,
+@@ -193,38 +216,67 @@ static inline void evtchn_port_set_pendi
                                             unsigned int vcpu_id,
                                             struct evtchn *evtchn)
  {
@@ -386,7 +373,7 @@ index e1b299e8df..bc9aa68650 100644
  }
  
  static inline int evtchn_port_set_priority(struct domain *d,
-@@ -233,6 +285,8 @@ static inline int evtchn_port_set_priority(struct domain *d,
+@@ -233,6 +285,8 @@ static inline int evtchn_port_set_priori
  {
      if ( !d->evtchn_port_ops->set_priority )
          return -ENOSYS;

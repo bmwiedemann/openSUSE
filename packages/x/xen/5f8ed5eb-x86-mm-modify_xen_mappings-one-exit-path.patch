@@ -1,0 +1,60 @@
+# Commit b733f8a8b8db83f2d438cab3adb38b387cecfce0
+# Date 2020-10-20 14:19:55 +0200
+# Author Wei Liu <wei.liu2@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/mm: Refactor modify_xen_mappings to have one exit path
+
+We will soon need to perform clean-ups before returning.
+
+No functional change.
+
+This is part of XSA-345.
+
+Reported-by: Hongyan Xia <hongyxia@amazon.com>
+Signed-off-by: Wei Liu <wei.liu2@citrix.com>
+Signed-off-by: Hongyan Xia <hongyxia@amazon.com>
+Signed-off-by: George Dunlap <george.dunlap@citrix.com>
+Acked-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/mm.c
++++ b/xen/arch/x86/mm.c
+@@ -5477,6 +5477,7 @@ int modify_xen_mappings(unsigned long s,
+     l1_pgentry_t *pl1e;
+     unsigned int  i;
+     unsigned long v = s;
++    int rc = -ENOMEM;
+ 
+     /* Set of valid PTE bits which may be altered. */
+ #define FLAGS_MASK (_PAGE_NX|_PAGE_DIRTY|_PAGE_ACCESSED|_PAGE_RW|_PAGE_PRESENT)
+@@ -5520,7 +5521,8 @@ int modify_xen_mappings(unsigned long s,
+             /* PAGE1GB: shatter the superpage and fall through. */
+             l2t = alloc_xen_pagetable();
+             if ( !l2t )
+-                return -ENOMEM;
++                goto out;
++
+             for ( i = 0; i < L2_PAGETABLE_ENTRIES; i++ )
+                 l2e_write(l2t + i,
+                           l2e_from_pfn(l3e_get_pfn(*pl3e) +
+@@ -5577,7 +5579,8 @@ int modify_xen_mappings(unsigned long s,
+                 /* PSE: shatter the superpage and try again. */
+                 l1t = alloc_xen_pagetable();
+                 if ( !l1t )
+-                    return -ENOMEM;
++                    goto out;
++
+                 for ( i = 0; i < L1_PAGETABLE_ENTRIES; i++ )
+                     l1e_write(&l1t[i],
+                               l1e_from_pfn(l2e_get_pfn(*pl2e) + i,
+@@ -5710,7 +5713,10 @@ int modify_xen_mappings(unsigned long s,
+     flush_area(NULL, FLUSH_TLB_GLOBAL);
+ 
+ #undef FLAGS_MASK
+-    return 0;
++    rc = 0;
++
++ out:
++    return rc;
+ }
+ 
+ #undef flush_area

@@ -1,7 +1,8 @@
-Subject: evtchn/x86: enforce correct upper limit for 32-bit guests
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:13:34 2020 +0200
-Date: Tue Sep 22 16:13:34 2020 +0200:
-Git: b8c2efbe7b3e8fa5f0b0a3679afccd1204949070
+# Commit 62bcdc4edbf6d8c6e8a25544d48de22ccf75310d
+# Date 2020-09-22 15:50:09 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn/x86: enforce correct upper limit for 32-bit guests
 
 The recording of d->max_evtchns in evtchn_2l_init(), in particular with
 the limited set of callers of the function, is insufficient. Neither for
@@ -34,11 +35,9 @@ Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 Reviewed-by: Julien Grall <jgrall@amazon.com>
 
-diff --git a/xen/common/event_2l.c b/xen/common/event_2l.c
-index e1dbb860f4..a229d35271 100644
 --- a/xen/common/event_2l.c
 +++ b/xen/common/event_2l.c
-@@ -103,7 +103,6 @@ static const struct evtchn_port_ops evtchn_port_ops_2l =
+@@ -103,7 +103,6 @@ static const struct evtchn_port_ops evtc
  void evtchn_2l_init(struct domain *d)
  {
      d->evtchn_port_ops = &evtchn_port_ops_2l;
@@ -46,11 +45,9 @@ index e1dbb860f4..a229d35271 100644
  }
  
  /*
-diff --git a/xen/common/event_channel.c b/xen/common/event_channel.c
-index 53c17bd354..08ffe0f063 100644
 --- a/xen/common/event_channel.c
 +++ b/xen/common/event_channel.c
-@@ -151,7 +151,7 @@ static void free_evtchn_bucket(struct domain *d, struct evtchn *bucket)
+@@ -151,7 +151,7 @@ static void free_evtchn_bucket(struct do
  
  int evtchn_allocate_port(struct domain *d, evtchn_port_t port)
  {
@@ -59,7 +56,7 @@ index 53c17bd354..08ffe0f063 100644
          return -ENOSPC;
  
      if ( port_is_valid(d, port) )
-@@ -1396,13 +1396,11 @@ static void domain_dump_evtchn_info(struct domain *d)
+@@ -1396,13 +1396,11 @@ static void domain_dump_evtchn_info(stru
  
      spin_lock(&d->event_lock);
  
@@ -74,11 +71,9 @@ index 53c17bd354..08ffe0f063 100644
          chn = evtchn_from_port(d, port);
          if ( chn->state == ECS_FREE )
              continue;
-diff --git a/xen/common/event_fifo.c b/xen/common/event_fifo.c
-index 230f440f14..2f13d92128 100644
 --- a/xen/common/event_fifo.c
 +++ b/xen/common/event_fifo.c
-@@ -478,7 +478,7 @@ static void cleanup_event_array(struct domain *d)
+@@ -478,7 +478,7 @@ static void cleanup_event_array(struct d
      d->evtchn_fifo = NULL;
  }
  
@@ -87,7 +82,7 @@ index 230f440f14..2f13d92128 100644
  {
      unsigned int port;
  
-@@ -488,7 +488,7 @@ static void setup_ports(struct domain *d)
+@@ -488,7 +488,7 @@ static void setup_ports(struct domain *d
       * - save its pending state.
       * - set default priority.
       */
@@ -96,7 +91,7 @@ index 230f440f14..2f13d92128 100644
      {
          struct evtchn *evtchn;
  
-@@ -546,6 +546,8 @@ int evtchn_fifo_init_control(struct evtchn_init_control *init_control)
+@@ -546,6 +546,8 @@ int evtchn_fifo_init_control(struct evtc
      if ( !d->evtchn_fifo )
      {
          struct vcpu *vcb;
@@ -105,7 +100,7 @@ index 230f440f14..2f13d92128 100644
  
          for_each_vcpu ( d, vcb ) {
              rc = setup_control_block(vcb);
-@@ -562,8 +564,7 @@ int evtchn_fifo_init_control(struct evtchn_init_control *init_control)
+@@ -562,8 +564,7 @@ int evtchn_fifo_init_control(struct evtc
              goto error;
  
          d->evtchn_port_ops = &evtchn_port_ops_fifo;
@@ -115,11 +110,9 @@ index 230f440f14..2f13d92128 100644
      }
      else
          rc = map_control_block(v, gfn, offset);
-diff --git a/xen/common/sched/core.c b/xen/common/sched/core.c
-index cb49a8bc02..ab94d2ec3a 100644
 --- a/xen/common/sched/core.c
 +++ b/xen/common/sched/core.c
-@@ -1428,7 +1428,7 @@ static long do_poll(struct sched_poll *sched_poll)
+@@ -1428,7 +1428,7 @@ static long do_poll(struct sched_poll *s
              goto out;
  
          rc = -EINVAL;
@@ -128,11 +121,9 @@ index cb49a8bc02..ab94d2ec3a 100644
              goto out;
  
          rc = 0;
-diff --git a/xen/include/xen/event.h b/xen/include/xen/event.h
-index c35f4b23b6..e1b299e8df 100644
 --- a/xen/include/xen/event.h
 +++ b/xen/include/xen/event.h
-@@ -105,6 +105,12 @@ void notify_via_xen_event_channel(struct domain *ld, int lport);
+@@ -105,6 +105,12 @@ void notify_via_xen_event_channel(struct
  #define bucket_from_port(d, p) \
      ((group_from_port(d, p))[((p) % EVTCHNS_PER_GROUP) / EVTCHNS_PER_BUCKET])
  
@@ -145,8 +136,6 @@ index c35f4b23b6..e1b299e8df 100644
  static inline bool_t port_is_valid(struct domain *d, unsigned int p)
  {
      if ( p >= read_atomic(&d->valid_evtchns) )
-diff --git a/xen/include/xen/sched.h b/xen/include/xen/sched.h
-index ac53519d7f..545f2bdcd0 100644
 --- a/xen/include/xen/sched.h
 +++ b/xen/include/xen/sched.h
 @@ -359,7 +359,6 @@ struct domain

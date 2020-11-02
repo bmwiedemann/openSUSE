@@ -1,7 +1,8 @@
-Subject: x86/pv: Handle the Intel-specific MSR_MISC_ENABLE correctly
-From: Andrew Cooper andrew.cooper3@citrix.com Tue Sep 22 16:09:36 2020 +0200
-Date: Tue Sep 22 16:09:36 2020 +0200:
-Git: b04d6731eedd639e078e0f0d8147c6b156875ac3
+# Commit e71301ecd50f2d3bd1b960bbf7dcf850d02e7e8a
+# Date 2020-09-22 15:46:21 +0200
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/pv: Handle the Intel-specific MSR_MISC_ENABLE correctly
 
 This MSR doesn't exist on AMD hardware, and switching away from the safe
 functions in the common MSR path was an erroneous change.
@@ -15,11 +16,9 @@ Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
 Reviewed-by: Jan Beulich <jbeulich@suse.com>
 Reviewed-by: Wei Liu <wl@xen.org>
 
-diff --git a/xen/arch/x86/pv/emul-priv-op.c b/xen/arch/x86/pv/emul-priv-op.c
-index 7c21076dd0..85a9fd4767 100644
 --- a/xen/arch/x86/pv/emul-priv-op.c
 +++ b/xen/arch/x86/pv/emul-priv-op.c
-@@ -913,7 +913,8 @@ static int read_msr(unsigned int reg, uint64_t *val,
+@@ -913,7 +913,8 @@ static int read_msr(unsigned int reg, ui
          return X86EMUL_OKAY;
  
      case MSR_IA32_MISC_ENABLE:
@@ -29,7 +28,7 @@ index 7c21076dd0..85a9fd4767 100644
          *val = guest_misc_enable(*val);
          return X86EMUL_OKAY;
  
-@@ -1053,7 +1054,8 @@ static int write_msr(unsigned int reg, uint64_t val,
+@@ -1053,7 +1054,8 @@ static int write_msr(unsigned int reg, u
          break;
  
      case MSR_IA32_MISC_ENABLE:

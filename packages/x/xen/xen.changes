@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Oct 21 09:34:32 MDT 2020 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  5f479d9e-x86-begin-to-support-MSR_ARCH_CAPS.patch
+  5f4cf06e-x86-Dom0-expose-MSR_ARCH_CAPS.patch
+  5f4cf96a-x86-PV-fix-SEGBASE_GS_USER_SEL.patch
+  5f560c42-x86-PV-rewrite-segment-ctxt-switch.patch
+  5f5b6b7a-hypfs-fix-custom-param-writes.patch
+  5f607915-x86-HVM-more-consistent-IO-completion.patch
+  5f6cfb5b-x86-PV-dont-GP-for-SYSENTER-with-NT-set.patch
+  5f6cfb5b-x86-PV-dont-clobber-NT-on-return-to-guest.patch
+  5f71a21e-x86-S3-fix-shadow-stack-resume.patch
+  5f76ca65-evtchn-Flask-prealloc-for-send.patch
+  5f76caaf-evtchn-FIFO-use-stable-fields.patch
+  5f897c25-x86-traps-fix-read_registers-for-DF.patch
+  5f897c7b-x86-smpboot-restrict-memguard_guard_stack.patch
+- Renamed patches
+  5f560c42-x86-PV-64bit-segbase-consistency.patch
+    Replaces 5f5b6951-x86-PV-64bit-segbase-consistency.patch
+  5f6a002d-x86-PV-handle-MSR_MISC_ENABLE-correctly.patch
+    Replaces 5f6a05a0-pv-Handle-the-Intel-specific-MSR_MISC_ENABLE-correctly.patch
+  5f6a0049-memory-dont-skip-RCU-unlock-in-acquire_resource.patch
+    Replaces 5f6a05b7-xen-memory-Dont-skip-the-RCU-unlock-path-in-acquire_resource.patch
+  5f6a0067-x86-vPT-fix-race-when-migrating-timers.patch
+    Replaces 5f6a05dd-vpt-fix-race-when-migrating-timers-between-vCPUs.patch
+  5f6a008e-x86-MSI-drop-read_msi_msg.patch
+    Replaces 5f6a05fa-msi-get-rid-of-read_msi_msg.patch
+  5f6a00aa-x86-MSI-X-restrict-reading-of-PBA-bases.patch
+    Replaces 5f6a061a-MSI-X-restrict-reading-of-table-PBA-bases-from-BARs.patch
+  5f6a00c4-evtchn-relax-port_is_valid.patch
+    Replaces 5f6a062c-evtchn-relax-port_is_valid.patch
+  5f6a00df-x86-PV-avoid-double-exception-injection.patch
+    Replaces 5f6a065c-pv-Avoid-double-exception-injection.patch
+  5f6a00f4-evtchn-add-missing-barriers.patch
+    Replaces 5f6a0674-xen-evtchn-Add-missing-barriers-when-accessing-allocating-an-event-channel.patch
+  5f6a0111-evtchn-x86-enforce-correct-upper-limit.patch
+    Replaces 5f6a068e-evtchn-x86-enforce-correct-upper-limit-for-32-bit-guests.patch
+  5f6a013f-evtchn_reset-shouldnt-succeed-with.patch
+    Replaces 5f6a06be-evtchn-evtchn_reset-shouldnt-succeed-with-still-open-ports.patch
+  5f6a0160-evtchn-IRQ-safe-per-channel-lock.patch
+    Replaces 5f6a06e0-evtchn-convert-per-channel-lock-to-be-IRQ-safe.patch
+  5f6a0178-evtchn-address-races-with-evtchn_reset.patch
+    Replaces 5f6a06f2-evtchn-address-races-with-evtchn_reset.patch
+  5f6a01a4-evtchn-preempt-in-evtchn_destroy.patch
+    Replaces 5f6a071f-evtchn-arrange-for-preemption-in-evtchn_destroy.patch
+  5f6a01c6-evtchn-preempt-in-evtchn_reset.patch
+    Replaces 5f6a0754-evtchn-arrange-for-preemption-in-evtchn_reset.patch
+
+-------------------------------------------------------------------
+Tue Oct 13 10:48:04 MDT 2020 - carnold@suse.com
+
+- bsc#1177409 - VUL-0: xen: x86 PV guest INVLPG-like flushes may
+  leave stale TLB entries (XSA-286)
+  xsa286-1.patch
+  xsa286-2.patch
+  xsa286-3.patch
+  xsa286-4.patch
+  xsa286-5.patch
+  xsa286-6.patch
+- bsc#1177412 - VUL-0: xen: Race condition in Xen mapping code
+  (XSA-345)
+  5f8ed5d3-x86-mm-map_pages_to_xen-single-exit-path.patch
+  5f8ed5eb-x86-mm-modify_xen_mappings-one-exit-path.patch
+  5f8ed603-x86-mm-prevent-races-in-mapping-updates.patch
+- bsc#1177413 - VUL-0: xen: undue deferral of IOMMU TLB flushes
+  (XSA-346)
+  5f8ed635-IOMMU-suppress-iommu_dont_flush_iotlb-when.patch
+  5f8ed64c-IOMMU-hold-page-ref-until-TLB-flush.patch
+- bsc#1177414 - VUL-0: xen: unsafe AMD IOMMU page table updates
+  (XSA-347)
+  5f8ed682-AMD-IOMMU-convert-amd_iommu_pte.patch
+  5f8ed69c-AMD-IOMMU-update-live-PTEs-atomically.patch
+  5f8ed6b0-AMD-IOMMU-suitably-order-DTE-mods.patch
+
+-------------------------------------------------------------------
+Mon Oct 12 10:10:10 UTC 2020 - ohering@suse.de
+
+- Update libxc.sr.superpage.patch
+  set errno in x86_hvm_alloc_4k (bsc#1177112)
+
+-------------------------------------------------------------------
 Tue Sep 22 10:54:28 MDT 2020 - carnold@suse.com
 
 - bsc#1176339 - VUL-0: CVE-2020-25602: xen: x86 pv: Crash when

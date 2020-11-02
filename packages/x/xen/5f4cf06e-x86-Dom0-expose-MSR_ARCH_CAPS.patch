@@ -1,0 +1,60 @@
+# Commit e46474278a0e87e2b32ad5dd5fc20e8d2cb0688b
+# Date 2020-08-31 13:43:26 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/intel: Expose MSR_ARCH_CAPS to dom0
+
+The overhead of (the lack of) MDS_NO alone has been measured at 30% on some
+workloads.  While we're not in a position yet to offer MSR_ARCH_CAPS generally
+to guests, dom0 doesn't migrate, so we can pass a subset of hardware values
+straight through.
+
+This will cause PVH dom0's not to use KPTI by default, and all dom0's not to
+use VERW flushing by default, and to use eIBRS in preference to retpoline on
+recent Intel CPUs.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/cpuid.c
++++ b/xen/arch/x86/cpuid.c
+@@ -719,6 +719,14 @@ int init_domain_cpuid_policy(struct doma
+     if ( d->disable_migrate )
+         p->extd.itsc = cpu_has_itsc;
+ 
++    /*
++     * Expose the "hardware speculation behaviour" bits of ARCH_CAPS to dom0,
++     * so dom0 can turn off workarounds as appropriate.  Temporary, until the
++     * domain policy logic gains a better understanding of MSRs.
++     */
++    if ( is_hardware_domain(d) && boot_cpu_has(X86_FEATURE_ARCH_CAPS) )
++        p->feat.arch_caps = true;
++
+     d->arch.cpuid = p;
+ 
+     recalculate_cpuid_policy(d);
+--- a/xen/arch/x86/msr.c
++++ b/xen/arch/x86/msr.c
+@@ -130,6 +130,22 @@ int init_domain_msr_policy(struct domain
+     if ( !opt_dom0_cpuid_faulting && is_control_domain(d) && is_pv_domain(d) )
+         mp->platform_info.cpuid_faulting = false;
+ 
++    /*
++     * Expose the "hardware speculation behaviour" bits of ARCH_CAPS to dom0,
++     * so dom0 can turn off workarounds as appropriate.  Temporary, until the
++     * domain policy logic gains a better understanding of MSRs.
++     */
++    if ( is_hardware_domain(d) && boot_cpu_has(X86_FEATURE_ARCH_CAPS) )
++    {
++        uint64_t val;
++
++        rdmsrl(MSR_ARCH_CAPABILITIES, val);
++
++        mp->arch_caps.raw = val &
++            (ARCH_CAPS_RDCL_NO | ARCH_CAPS_IBRS_ALL | ARCH_CAPS_RSBA |
++             ARCH_CAPS_SSB_NO | ARCH_CAPS_MDS_NO | ARCH_CAPS_TAA_NO);
++    }
++
+     d->arch.msr = mp;
+ 
+     return 0;

@@ -1,7 +1,8 @@
-Subject: evtchn: relax port_is_valid()
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:11:56 2020 +0200
-Date: Tue Sep 22 16:11:56 2020 +0200:
-Git: e417504febf4ef5cc3442ebaa00da1a5c7939b22
+# Commit e59ce972d1280c6c55065da822e0860845582053
+# Date 2020-09-22 15:48:52 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn: relax port_is_valid()
 
 To avoid ports potentially becoming invalid behind the back of certain
 other functions (due to ->max_evtchn shrinking) because of
@@ -29,11 +30,9 @@ Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 Reviewed-by: Julien Grall <jgrall@amazon.com>
 
-diff --git a/xen/include/xen/event.h b/xen/include/xen/event.h
-index a7798f6765..ce45298377 100644
 --- a/xen/include/xen/event.h
 +++ b/xen/include/xen/event.h
-@@ -107,8 +107,6 @@ void notify_via_xen_event_channel(struct domain *ld, int lport);
+@@ -107,8 +107,6 @@ void notify_via_xen_event_channel(struct
  
  static inline bool_t port_is_valid(struct domain *d, unsigned int p)
  {

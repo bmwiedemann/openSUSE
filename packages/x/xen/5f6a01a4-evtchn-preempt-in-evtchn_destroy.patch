@@ -1,7 +1,8 @@
-Subject: evtchn: arrange for preemption in evtchn_destroy()
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:15:59 2020 +0200
-Date: Tue Sep 22 16:15:59 2020 +0200:
-Git: 66cdf341428ae38f6426408a95de9830b5c9c83c
+# Commit 8fe7b5f9960f4d9ec46787af394d180c39c6b2db
+# Date 2020-09-22 15:52:36 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn: arrange for preemption in evtchn_destroy()
 
 Especially closing of fully established interdomain channels can take
 quite some time, due to the locking involved. Therefore we shouldn't
@@ -21,8 +22,6 @@ Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Acked-by: Julien Grall <jgrall@amazon.com>
 Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
 
-diff --git a/xen/common/domain.c b/xen/common/domain.c
-index e9be05f1d0..364fcbabb2 100644
 --- a/xen/common/domain.c
 +++ b/xen/common/domain.c
 @@ -715,12 +715,14 @@ int domain_kill(struct domain *d)
@@ -41,8 +40,6 @@ index e9be05f1d0..364fcbabb2 100644
          rc = domain_relinquish_resources(d);
          if ( rc != 0 )
              break;
-diff --git a/xen/common/event_channel.c b/xen/common/event_channel.c
-index 878e4250ed..3b1fe423df 100644
 --- a/xen/common/event_channel.c
 +++ b/xen/common/event_channel.c
 @@ -1297,7 +1297,16 @@ int alloc_unbound_xen_event_channel(
@@ -63,7 +60,7 @@ index 878e4250ed..3b1fe423df 100644
  
      evtchn_close(d, port, 0);
  }
-@@ -1309,7 +1318,17 @@ void notify_via_xen_event_channel(struct domain *ld, int lport)
+@@ -1309,7 +1318,17 @@ void notify_via_xen_event_channel(struct
      struct domain *rd;
      unsigned long flags;
  
@@ -82,7 +79,7 @@ index 878e4250ed..3b1fe423df 100644
      lchn = evtchn_from_port(ld, lport);
  
      spin_lock_irqsave(&lchn->lock, flags);
-@@ -1380,8 +1399,7 @@ int evtchn_init(struct domain *d, unsigned int max_port)
+@@ -1380,8 +1399,7 @@ int evtchn_init(struct domain *d, unsign
      return 0;
  }
  
@@ -123,8 +120,6 @@ index 878e4250ed..3b1fe423df 100644
  }
  
  
-diff --git a/xen/include/xen/sched.h b/xen/include/xen/sched.h
-index b9c70da4b0..57d34b2205 100644
 --- a/xen/include/xen/sched.h
 +++ b/xen/include/xen/sched.h
 @@ -138,7 +138,7 @@ struct evtchn

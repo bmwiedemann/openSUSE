@@ -1,7 +1,8 @@
-Subject: x86/MSI-X: restrict reading of table/PBA bases from BARs
-From: Jan Beulich jbeulich@suse.com Tue Sep 22 16:11:38 2020 +0200
-Date: Tue Sep 22 16:11:38 2020 +0200:
-Git: 0bc4177e6b0d7a98464913af95d3bfe4b59b7a2c
+# Commit beb54596cfdaf15f6a86d7b1bf84ca8a0b9c6b9b
+# Date 2020-09-22 15:48:26 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/MSI-X: restrict reading of table/PBA bases from BARs
 
 When assigned to less trusted or un-trusted guests, devices may change
 state behind our backs (they may e.g. get reset by means we may not know
@@ -30,11 +31,9 @@ This is part of XSA-337.
 Signed-off-by: Jan Beulich <jbeulich@suse.com>
 Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
 
-diff --git a/xen/arch/x86/msi.c b/xen/arch/x86/msi.c
-index 6a00bc9312..c8b0e5334f 100644
 --- a/xen/arch/x86/msi.c
 +++ b/xen/arch/x86/msi.c
-@@ -771,16 +771,14 @@ static int msix_capability_init(struct pci_dev *dev,
+@@ -771,16 +771,14 @@ static int msix_capability_init(struct p
  {
      struct arch_msix *msix = dev->msix;
      struct msi_desc *entry = NULL;
@@ -52,19 +51,24 @@ index 6a00bc9312..c8b0e5334f 100644
      unsigned int pos = pci_find_cap_offset(seg, bus, slot, func,
                                             PCI_CAP_ID_MSIX);
  
-@@ -822,43 +820,45 @@ static int msix_capability_init(struct pci_dev *dev,
+@@ -822,43 +820,45 @@ static int msix_capability_init(struct p
  
      /* Locate MSI-X table region */
      table_offset = pci_conf_read32(dev->sbdf, msix_table_offset_reg(pos));
 -    bir = (u8)(table_offset & PCI_MSIX_BIRMASK);
 -    table_offset &= ~PCI_MSIX_BIRMASK;
--
--    if ( !dev->info.is_virtfn )
 +    if ( !msix->used_entries &&
 +         (!msi ||
 +          (is_hardware_domain(current->domain) &&
 +           (dev->domain == current->domain || dev->domain == dom_io))) )
-     {
++    {
++        unsigned int bir = table_offset & PCI_MSIX_BIRMASK, pbus, pslot, pfunc;
++        int vf;
++        paddr_t pba_paddr;
++        unsigned int pba_offset;
+ 
+-    if ( !dev->info.is_virtfn )
+-    {
 -        pbus = bus;
 -        pslot = slot;
 -        pfunc = func;
@@ -77,11 +81,7 @@ index 6a00bc9312..c8b0e5334f 100644
 -        pfunc = PCI_FUNC(dev->info.physfn.devfn);
 -        vf = PCI_BDF2(dev->bus, dev->devfn);
 -    }
-+        unsigned int bir = table_offset & PCI_MSIX_BIRMASK, pbus, pslot, pfunc;
-+        int vf;
-+        paddr_t pba_paddr;
-+        unsigned int pba_offset;
- 
+-
 -    table_paddr = read_pci_mem_bar(seg, pbus, pslot, pfunc, bir, vf);
 -    WARN_ON(msi && msi->table_base != table_paddr);
 -    if ( !table_paddr )
@@ -130,7 +130,7 @@ index 6a00bc9312..c8b0e5334f 100644
  
          msix->table.first = PFN_DOWN(table_paddr);
          msix->table.last = PFN_DOWN(table_paddr +
-@@ -877,7 +877,18 @@ static int msix_capability_init(struct pci_dev *dev,
+@@ -877,7 +877,18 @@ static int msix_capability_init(struct p
                                    BITS_TO_LONGS(msix->nr_entries) - 1);
          WARN_ON(rangeset_overlaps_range(mmio_ro_ranges, msix->pba.first,
                                          msix->pba.last));
@@ -149,7 +149,7 @@ index 6a00bc9312..c8b0e5334f 100644
  
      if ( entry )
      {
-@@ -888,8 +899,15 @@ static int msix_capability_init(struct pci_dev *dev,
+@@ -888,8 +899,15 @@ static int msix_capability_init(struct p
  
          if ( idx < 0 )
          {
@@ -167,7 +167,7 @@ index 6a00bc9312..c8b0e5334f 100644
              xfree(entry);
              return idx;
          }
-@@ -1078,9 +1096,14 @@ static void _pci_cleanup_msix(struct arch_msix *msix)
+@@ -1078,9 +1096,14 @@ static void _pci_cleanup_msix(struct arc
          if ( rangeset_remove_range(mmio_ro_ranges, msix->table.first,
                                     msix->table.last) )
              WARN();

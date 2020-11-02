@@ -1,7 +1,8 @@
-Subject: x86/pv: Avoid double exception injection
-From: Andrew Cooper andrew.cooper3@citrix.com Tue Sep 22 16:12:44 2020 +0200
-Date: Tue Sep 22 16:12:44 2020 +0200:
-Git: eb4a543a47df33038f4f6e915375ea898670c7dc
+# Commit 910093d54fc758e7d69261b344fdc8da3a7bd81e
+# Date 2020-09-22 15:49:19 +0200
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/pv: Avoid double exception injection
 
 There is at least one path (SYSENTER with NT set, Xen converts to #GP) which
 ends up injecting the #GP fault twice, first in compat_sysenter(), and then a
@@ -26,8 +27,6 @@ Fixes: fdac9515607b ("x86: clear EFLAGS.NT in SYSENTER entry path")
 Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
 Reviewed-by: Jan Beulich <jbeulich@suse.com>
 
-diff --git a/xen/arch/x86/x86_64/compat/entry.S b/xen/arch/x86/x86_64/compat/entry.S
-index c3e62f8734..73619f57ca 100644
 --- a/xen/arch/x86/x86_64/compat/entry.S
 +++ b/xen/arch/x86/x86_64/compat/entry.S
 @@ -78,7 +78,6 @@ compat_process_softirqs:
@@ -38,7 +37,7 @@ index c3e62f8734..73619f57ca 100644
          jmp   compat_test_all_events
  
  	ALIGN
-@@ -352,7 +351,13 @@ __UNLIKELY_END(compat_bounce_null_selector)
+@@ -352,7 +351,13 @@ __UNLIKELY_END(compat_bounce_null_select
          movl  %eax,UREGS_cs+8(%rsp)
          movl  TRAPBOUNCE_eip(%rdx),%eax
          movl  %eax,UREGS_rip+8(%rsp)
@@ -52,8 +51,6 @@ index c3e62f8734..73619f57ca 100644
  .section .fixup,"ax"
  .Lfx13:
          xorl  %edi,%edi
-diff --git a/xen/arch/x86/x86_64/entry.S b/xen/arch/x86/x86_64/entry.S
-index 1e880eb9f6..71a00e846b 100644
 --- a/xen/arch/x86/x86_64/entry.S
 +++ b/xen/arch/x86/x86_64/entry.S
 @@ -90,7 +90,6 @@ process_softirqs:
@@ -64,7 +61,7 @@ index 1e880eb9f6..71a00e846b 100644
          jmp   test_all_events
  
          ALIGN
-@@ -512,6 +511,11 @@ UNLIKELY_START(z, create_bounce_frame_bad_bounce_ip)
+@@ -512,6 +511,11 @@ UNLIKELY_START(z, create_bounce_frame_ba
          jmp   asm_domain_crash_synchronous  /* Does not return */
  __UNLIKELY_END(create_bounce_frame_bad_bounce_ip)
          movq  %rax,UREGS_rip+8(%rsp)

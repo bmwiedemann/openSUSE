@@ -1,7 +1,8 @@
-Subject: x86/vpt: fix race when migrating timers between vCPUs
-From: Roger Pau Monné roger.pau@citrix.com Tue Sep 22 16:10:37 2020 +0200
-Date: Tue Sep 22 16:10:37 2020 +0200:
-Git: fc8200a6ad5248d8fb6b0fbf3f3dc80f29dfe0c7
+# Commit 8e76aef72820435e766c7f339ed36da33da90c40
+# Date 2020-09-22 15:47:19 +0200
+# Author Roger Pau Monné <roger.pau@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/vpt: fix race when migrating timers between vCPUs
 
 The current vPT code will migrate the emulated timers between vCPUs
 (change the pt->vcpu field) while just holding the destination lock,
@@ -29,11 +30,9 @@ Tested-by: Igor Druzhinin <igor.druzhinin@citrix.com>
 Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
 Reviewed-by: Jan Beulich <jbeulich@suse.com>
 
-diff --git a/xen/arch/x86/hvm/hvm.c b/xen/arch/x86/hvm/hvm.c
-index 5bb47583b3..f965ca3155 100644
 --- a/xen/arch/x86/hvm/hvm.c
 +++ b/xen/arch/x86/hvm/hvm.c
-@@ -658,6 +658,8 @@ int hvm_domain_initialise(struct domain *d)
+@@ -658,6 +658,8 @@ int hvm_domain_initialise(struct domain
      /* need link to containing domain */
      d->arch.hvm.pl_time->domain = d;
  
@@ -42,11 +41,9 @@ index 5bb47583b3..f965ca3155 100644
      /* Set the default IO Bitmap. */
      if ( is_hardware_domain(d) )
      {
-diff --git a/xen/arch/x86/hvm/vpt.c b/xen/arch/x86/hvm/vpt.c
-index 47f2c2aa64..d64467b631 100644
 --- a/xen/arch/x86/hvm/vpt.c
 +++ b/xen/arch/x86/hvm/vpt.c
-@@ -153,23 +153,32 @@ static int pt_irq_masked(struct periodic_time *pt)
+@@ -153,23 +153,32 @@ static int pt_irq_masked(struct periodic
      return 1;
  }
  
@@ -171,7 +168,7 @@ index 47f2c2aa64..d64467b631 100644
  
                  if ( cb != NULL )
                      cb(v, cb_priv);
-@@ -441,12 +450,12 @@ void pt_intr_post(struct vcpu *v, struct hvm_intack intack)
+@@ -441,12 +450,12 @@ void pt_intr_post(struct vcpu *v, struct
      if ( intack.source == hvm_intsrc_vector )
          return;
  
@@ -186,7 +183,7 @@ index 47f2c2aa64..d64467b631 100644
          return;
      }
  
-@@ -455,7 +464,7 @@ void pt_intr_post(struct vcpu *v, struct hvm_intack intack)
+@@ -455,7 +464,7 @@ void pt_intr_post(struct vcpu *v, struct
      cb = pt->cb;
      cb_priv = pt->priv;
  
@@ -228,7 +225,7 @@ index 47f2c2aa64..d64467b631 100644
  }
  
  void destroy_periodic_time(struct periodic_time *pt)
-@@ -565,30 +574,20 @@ void destroy_periodic_time(struct periodic_time *pt)
+@@ -565,30 +574,20 @@ void destroy_periodic_time(struct period
  
  static void pt_adjust_vcpu(struct periodic_time *pt, struct vcpu *v)
  {
@@ -263,8 +260,6 @@ index 47f2c2aa64..d64467b631 100644
  }
  
  void pt_adjust_global_vcpu_target(struct vcpu *v)
-diff --git a/xen/include/asm-x86/hvm/vpt.h b/xen/include/asm-x86/hvm/vpt.h
-index f0e0eaec83..39d26cbda4 100644
 --- a/xen/include/asm-x86/hvm/vpt.h
 +++ b/xen/include/asm-x86/hvm/vpt.h
 @@ -128,6 +128,13 @@ struct pl_time {    /* platform time */

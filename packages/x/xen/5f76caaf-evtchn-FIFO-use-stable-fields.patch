@@ -1,0 +1,31 @@
+# Commit 6f6f07b64cbe90e54f8e62b4d6f2404cf5306536
+# Date 2020-10-02 08:37:35 +0200
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+evtchn/fifo: use stable fields when recording "last queue" information
+
+Both evtchn->priority and evtchn->notify_vcpu_id could change behind the
+back of evtchn_fifo_set_pending(), as for it - in the case of
+interdomain channels - only the remote side's per-channel lock is held.
+Neither the queue's priority nor the vCPU's vcpu_id fields have similar
+properties, so they seem better suited for the purpose. In particular
+they reflect the respective evtchn fields' values at the time they were
+used to determine queue and vCPU.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Julien Grall <jgrall@amazon.com>
+Reviewed-by: Paul Durrant <paul@xen.org>
+
+--- a/xen/common/event_fifo.c
++++ b/xen/common/event_fifo.c
+@@ -225,8 +225,8 @@ static void evtchn_fifo_set_pending(stru
+         /* Moved to a different queue? */
+         if ( old_q != q )
+         {
+-            evtchn->last_vcpu_id = evtchn->notify_vcpu_id;
+-            evtchn->last_priority = evtchn->priority;
++            evtchn->last_vcpu_id = v->vcpu_id;
++            evtchn->last_priority = q->priority;
+ 
+             spin_unlock_irqrestore(&old_q->lock, flags);
+             spin_lock_irqsave(&q->lock, flags);

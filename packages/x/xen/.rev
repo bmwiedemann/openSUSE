@@ -2499,4 +2499,12 @@
     <comment>Security and Maintenance update for Tumbleweed</comment>
     <requestid>836146</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>5218cc5940d23244b46a377923e2a000</srcmd5>
+    <version>4.14.0_10</version>
+    <time>1604306301</time>
+    <user>dimstar_suse</user>
+    <comment>Security and Maintenance update for Tumbleweed</comment>
+    <requestid>844630</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,51 @@
+# Commit 5bcac985498ed83d89666959175ca9c9ed561ae1
+# Date 2020-09-24 21:02:35 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/pv: Don't clobber NT on return-to-guest
+
+A 64bit IRET can restore NT - the faulting case is when NT is set in the live
+flags.  This change had an unintended consequence of causing the NT flag to
+spontaneously disappear from guest context whenever a interrupt/exception
+occurred.
+
+In combination with a SYSENTER which sets both TF and NT, Xen's handling of
+the #DB exceptions clears NT before it is even recorded suitably in the guest
+kernel's view of what userspace was doing.
+
+Reported-by: Andy Lutomirski <luto@kernel.org>
+Fixes: 0e47f92b0 ("x86: force EFLAGS.IF on when exiting to PV guests")
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/x86_64/compat/entry.S
++++ b/xen/arch/x86/x86_64/compat/entry.S
+@@ -119,7 +119,7 @@ compat_process_trap:
+ /* %rbx: struct vcpu, interrupts disabled */
+ ENTRY(compat_restore_all_guest)
+         ASSERT_INTERRUPTS_DISABLED
+-        mov   $~(X86_EFLAGS_IOPL|X86_EFLAGS_NT|X86_EFLAGS_VM),%r11d
++        mov   $~(X86_EFLAGS_IOPL | X86_EFLAGS_VM), %r11d
+         and   UREGS_eflags(%rsp),%r11d
+ 
+ .macro alt_cr4_pv32
+--- a/xen/arch/x86/x86_64/entry.S
++++ b/xen/arch/x86/x86_64/entry.S
+@@ -182,7 +182,7 @@ restore_all_guest:
+         jz    iret_exit_to_guest
+ 
+         movq  24(%rsp),%r11           # RFLAGS
+-        andq  $~(X86_EFLAGS_IOPL|X86_EFLAGS_NT|X86_EFLAGS_VM),%r11
++        andq  $~(X86_EFLAGS_IOPL | X86_EFLAGS_VM), %r11
+         orq   $X86_EFLAGS_IF,%r11
+ 
+         /* Don't use SYSRET path if the return address is not canonical. */
+@@ -213,7 +213,7 @@ restore_all_guest:
+         movq  8(%rsp), %rcx           # RIP
+ /* No special register assumptions. */
+ iret_exit_to_guest:
+-        andl  $~(X86_EFLAGS_IOPL|X86_EFLAGS_NT|X86_EFLAGS_VM),24(%rsp)
++        andl  $~(X86_EFLAGS_IOPL | X86_EFLAGS_VM), 24(%rsp)
+         orl   $X86_EFLAGS_IF,24(%rsp)
+         addq  $8,%rsp
+ .Lft0:  iretq

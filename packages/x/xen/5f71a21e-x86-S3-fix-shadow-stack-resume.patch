@@ -1,0 +1,25 @@
+# Commit 4bdbf746ac9152e70f264f87db4472707da805ce
+# Date 2020-09-28 10:43:10 +0200
+# Author Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/S3: fix shadow stack resume path
+
+Fix the resume path to load the shadow stack pointer from saved_ssp (not
+saved_rsp), to match what suspend path does.
+
+Fixes: 633ecc4a7cb2 ("x86/S3: Save and restore Shadow Stack configuration")
+Backport: 4.14
+Signed-off-by: Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/acpi/wakeup_prot.S
++++ b/xen/arch/x86/acpi/wakeup_prot.S
+@@ -69,7 +69,7 @@ ENTRY(s3_resume)
+          * so SETSSBSY will successfully load a value useful for us, then
+          * reset MSR_PL0_SSP to its usual value and pop the temporary token.
+          */
+-        mov     saved_rsp(%rip), %rdi
++        mov     saved_ssp(%rip), %rdi
+         cmpq    $1, %rdi
+         je      .L_shstk_done
+ 

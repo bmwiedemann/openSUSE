@@ -1,0 +1,95 @@
+x86/mm: restrict use of linear page tables to shadow mode code
+
+Other code does not require them to be set up anymore, so restrict when
+to populate the respective L4 slot and reduce visibility of the
+accessors.
+
+While with the removal of all uses the vulnerability is actually fixed,
+removing the creation of the linear mapping adds an extra layer of
+protection. Similarly reducing visibility of the accessors mostly
+eliminates the risk of undue re-introduction of uses of the linear
+mappings.
+
+This is (not strictly) part of XSA-286.
+
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: George Dunlap <george.dunlap@citrix.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+
+--- a/xen/arch/x86/mm.c
++++ b/xen/arch/x86/mm.c
+@@ -1682,9 +1682,10 @@ void init_xen_l4_slots(l4_pgentry_t *l4t
+     l4t[l4_table_offset(PCI_MCFG_VIRT_START)] =
+         idle_pg_table[l4_table_offset(PCI_MCFG_VIRT_START)];
+ 
+-    /* Slot 258: Self linear mappings. */
++    /* Slot 258: Self linear mappings (shadow pt only). */
+     ASSERT(!mfn_eq(l4mfn, INVALID_MFN));
+     l4t[l4_table_offset(LINEAR_PT_VIRT_START)] =
++        !shadow_mode_external(d) ? l4e_empty() :
+         l4e_from_mfn(l4mfn, __PAGE_HYPERVISOR_RW);
+ 
+     /* Slot 259: Shadow linear mappings (if applicable) .*/
+--- a/xen/arch/x86/mm/shadow/private.h
++++ b/xen/arch/x86/mm/shadow/private.h
+@@ -139,6 +139,15 @@ enum {
+ # define GUEST_PTE_SIZE 4
+ #endif
+ 
++/* Where to find each level of the linear mapping */
++#define __linear_l1_table ((l1_pgentry_t *)(LINEAR_PT_VIRT_START))
++#define __linear_l2_table \
++ ((l2_pgentry_t *)(__linear_l1_table + l1_linear_offset(LINEAR_PT_VIRT_START)))
++#define __linear_l3_table \
++ ((l3_pgentry_t *)(__linear_l2_table + l2_linear_offset(LINEAR_PT_VIRT_START)))
++#define __linear_l4_table \
++ ((l4_pgentry_t *)(__linear_l3_table + l3_linear_offset(LINEAR_PT_VIRT_START)))
++
+ /******************************************************************************
+  * Auditing routines
+  */
+--- a/xen/arch/x86/x86_64/mm.c
++++ b/xen/arch/x86/x86_64/mm.c
+@@ -808,9 +808,6 @@ void __init paging_init(void)
+ 
+     machine_to_phys_mapping_valid = 1;
+ 
+-    /* Set up linear page table mapping. */
+-    l4e_write(&idle_pg_table[l4_table_offset(LINEAR_PT_VIRT_START)],
+-              l4e_from_paddr(__pa(idle_pg_table), __PAGE_HYPERVISOR_RW));
+     return;
+ 
+  nomem:
+--- a/xen/include/asm-x86/config.h
++++ b/xen/include/asm-x86/config.h
+@@ -199,7 +199,7 @@ extern unsigned char boot_edid_info[128]
+  */
+ #define PCI_MCFG_VIRT_START     (PML4_ADDR(257))
+ #define PCI_MCFG_VIRT_END       (PCI_MCFG_VIRT_START + PML4_ENTRY_BYTES)
+-/* Slot 258: linear page table (guest table). */
++/* Slot 258: linear page table (monitor table, HVM only). */
+ #define LINEAR_PT_VIRT_START    (PML4_ADDR(258))
+ #define LINEAR_PT_VIRT_END      (LINEAR_PT_VIRT_START + PML4_ENTRY_BYTES)
+ /* Slot 259: linear page table (shadow table). */
+--- a/xen/include/asm-x86/page.h
++++ b/xen/include/asm-x86/page.h
+@@ -294,19 +294,6 @@ void copy_page_sse2(void *, const void *
+ #define vmap_to_mfn(va)     _mfn(l1e_get_pfn(*virt_to_xen_l1e((unsigned long)(va))))
+ #define vmap_to_page(va)    mfn_to_page(vmap_to_mfn(va))
+ 
+-#endif /* !defined(__ASSEMBLY__) */
+-
+-/* Where to find each level of the linear mapping */
+-#define __linear_l1_table ((l1_pgentry_t *)(LINEAR_PT_VIRT_START))
+-#define __linear_l2_table \
+- ((l2_pgentry_t *)(__linear_l1_table + l1_linear_offset(LINEAR_PT_VIRT_START)))
+-#define __linear_l3_table \
+- ((l3_pgentry_t *)(__linear_l2_table + l2_linear_offset(LINEAR_PT_VIRT_START)))
+-#define __linear_l4_table \
+- ((l4_pgentry_t *)(__linear_l3_table + l3_linear_offset(LINEAR_PT_VIRT_START)))
+-
+-
+-#ifndef __ASSEMBLY__
+ extern root_pgentry_t idle_pg_table[ROOT_PAGETABLE_ENTRIES];
+ extern l2_pgentry_t  *compat_idle_pg_table_l2;
+ extern unsigned int   m2p_compat_vstart;

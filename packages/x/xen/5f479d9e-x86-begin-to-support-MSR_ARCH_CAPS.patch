@@ -1,0 +1,113 @@
+# Commit e32605b07ef2e01c9d05da9b2d5d7b8f9a5c7c1b
+# Date 2020-08-27 12:48:46 +0100
+# Author Andrew Cooper <andrew.cooper3@citrix.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86: Begin to introduce support for MSR_ARCH_CAPS
+
+... including serialisation/deserialisation logic and unit tests.
+
+There is no current way to configure this MSR correctly for guests.
+The toolstack side this logic needs building, which is far easier to
+do with it in place.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/tools/tests/cpu-policy/test-cpu-policy.c
++++ b/tools/tests/cpu-policy/test-cpu-policy.c
+@@ -374,6 +374,11 @@ static void test_msr_deserialise_failure
+             .msr = { .idx = 0xce, .val = ~0ull },
+             .rc = -EOVERFLOW,
+         },
++        {
++            .name = "truncated val",
++            .msr = { .idx = 0x10a, .val = ~0ull },
++            .rc = -EOVERFLOW,
++        },
+     };
+ 
+     printf("Testing MSR deserialise failure:\n");
+--- a/xen/arch/x86/msr.c
++++ b/xen/arch/x86/msr.c
+@@ -220,8 +220,10 @@ int guest_rdmsr(struct vcpu *v, uint32_t
+         break;
+ 
+     case MSR_ARCH_CAPABILITIES:
+-        /* Not implemented yet. */
+-        goto gp_fault;
++        if ( !cp->feat.arch_caps )
++            goto gp_fault;
++        *val = mp->arch_caps.raw;
++        break;
+ 
+     case MSR_INTEL_MISC_FEATURES_ENABLES:
+         *val = msrs->misc_features_enables.raw;
+--- a/xen/include/public/arch-x86/cpufeatureset.h
++++ b/xen/include/public/arch-x86/cpufeatureset.h
+@@ -267,7 +267,7 @@ XEN_CPUFEATURE(CET_IBT,       9*32+20) /
+ XEN_CPUFEATURE(IBRSB,         9*32+26) /*A  IBRS and IBPB support (used by Intel) */
+ XEN_CPUFEATURE(STIBP,         9*32+27) /*A  STIBP */
+ XEN_CPUFEATURE(L1D_FLUSH,     9*32+28) /*S  MSR_FLUSH_CMD and L1D flush. */
+-XEN_CPUFEATURE(ARCH_CAPS,     9*32+29) /*   IA32_ARCH_CAPABILITIES MSR */
++XEN_CPUFEATURE(ARCH_CAPS,     9*32+29) /*a  IA32_ARCH_CAPABILITIES MSR */
+ XEN_CPUFEATURE(CORE_CAPS,     9*32+30) /*   IA32_CORE_CAPABILITIES MSR */
+ XEN_CPUFEATURE(SSBD,          9*32+31) /*A  MSR_SPEC_CTRL.SSBD available */
+ 
+--- a/xen/include/xen/lib/x86/msr.h
++++ b/xen/include/xen/lib/x86/msr.h
+@@ -3,7 +3,7 @@
+ #define XEN_LIB_X86_MSR_H
+ 
+ /* Maximum number of MSRs written when serialising msr_policy. */
+-#define MSR_MAX_SERIALISED_ENTRIES 1
++#define MSR_MAX_SERIALISED_ENTRIES 2
+ 
+ /* MSR policy object for shared per-domain MSRs */
+ struct msr_policy
+@@ -23,6 +23,28 @@ struct msr_policy
+             bool cpuid_faulting:1;
+         };
+     } platform_info;
++
++    /*
++     * 0x0000010a - MSR_ARCH_CAPABILITIES
++     *
++     * This is an Intel-only MSR, which provides miscellaneous enumeration,
++     * including those which indicate that microarchitectrual sidechannels are
++     * fixed in hardware.
++     */
++    union {
++        uint32_t raw;
++        struct {
++            bool rdcl_no:1;
++            bool ibrs_all:1;
++            bool rsba:1;
++            bool skip_l1dfl:1;
++            bool ssb_no:1;
++            bool mds_no:1;
++            bool if_pschange_mc_no:1;
++            bool tsx_ctrl:1;
++            bool taa_no:1;
++        };
++    } arch_caps;
+ };
+ 
+ #ifdef __XEN__
+--- a/xen/lib/x86/msr.c
++++ b/xen/lib/x86/msr.c
+@@ -39,6 +39,7 @@ int x86_msr_copy_to_buffer(const struct
+     })
+ 
+     COPY_MSR(MSR_INTEL_PLATFORM_INFO, p->platform_info.raw);
++    COPY_MSR(MSR_ARCH_CAPABILITIES,   p->arch_caps.raw);
+ 
+ #undef COPY_MSR
+ 
+@@ -99,6 +100,7 @@ int x86_msr_copy_from_buffer(struct msr_
+ })
+ 
+         case MSR_INTEL_PLATFORM_INFO: ASSIGN(platform_info.raw); break;
++        case MSR_ARCH_CAPABILITIES:   ASSIGN(arch_caps.raw);     break;
+ 
+ #undef ASSIGN
+ 

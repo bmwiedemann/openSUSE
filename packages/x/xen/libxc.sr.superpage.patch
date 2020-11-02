@@ -482,7 +482,7 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
  
      free(ctx->x86.restore.cpuid.ptr);
      free(ctx->x86.restore.msr.ptr);
-@@ -249,6 +277,318 @@ static int x86_hvm_cleanup(struct xc_sr_
+@@ -249,6 +277,322 @@ static int x86_hvm_cleanup(struct xc_sr_
      return 0;
  }
  
@@ -601,8 +601,10 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +    sp->count = 1ULL << order;
 +
 +    /* Allocate only if there is room for another page */
-+    if ( ctx->restore.tot_pages + sp->count > ctx->restore.max_pages )
++    if ( ctx->restore.tot_pages + sp->count > ctx->restore.max_pages ) {
++        errno = E2BIG;
 +        return false;
++    }
 +
 +    extent = sp->base_pfn = (sp->pfn >> order) << order;
 +    done = xc_domain_populate_physmap(xch, ctx->domid, 1, order, 0, &extent);
@@ -610,8 +612,10 @@ Index: xen-4.14.0-testing/tools/libxc/xc_sr_restore_x86_hvm.c
 +        PERROR("populate_physmap failed.");
 +        return false;
 +    }
-+    if ( done == 0 )
++    if ( done == 0 ) {
++        errno = ENOMEM;
 +        return false;
++    }
 +
 +    DPRINTF("4K base_pfn %" PRI_xen_pfn "\n", sp->base_pfn);
 +    return true;
