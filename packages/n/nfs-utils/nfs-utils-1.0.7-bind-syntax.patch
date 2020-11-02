@@ -8,7 +8,7 @@
 
 --- a/support/nfs/exports.c
 +++ b/support/nfs/exports.c
-@@ -658,6 +658,8 @@ bad_option:
+@@ -682,6 +682,8 @@ bad_option:
  		} else if (strncmp(opt, "replicas=", 9) == 0) {
  			ep->e_fslocmethod = FSLOC_REPLICA;
  			ep->e_fslocdata = strdup(opt+9);

@@ -1478,4 +1478,16 @@
   - many bug-fixes</comment>
     <requestid>838679</requestid>
   </revision>
+  <revision rev="158" vrev="19">
+    <srcmd5>dfe52f2a8fa07df84d5078abe94fa756</srcmd5>
+    <version>unknown</version>
+    <time>1604322229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.2
+  - fixed a couple memory leaks and other bug fixes,
+  - a lot of clean up
+- Refresh nfs-utils-1.0.7-bind-syntax.patch
+- Use %autosetup -p1 (forwarded request 844899 from pevik)</comment>
+    <requestid>844948</requestid>
+  </revision>
 </revisionlist>

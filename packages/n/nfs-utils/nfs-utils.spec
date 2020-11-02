@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -125,8 +125,7 @@ and group ID. Both the NFS server and client code in the kernel need to
 translate these to numeric IDs.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi

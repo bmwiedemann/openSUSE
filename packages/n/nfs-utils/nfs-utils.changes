@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 29 15:21:57 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.5.2
+  - fixed a couple memory leaks and other bug fixes,
+  - a lot of clean up
+- Refresh nfs-utils-1.0.7-bind-syntax.patch
+- Use %autosetup -p1
+
+-------------------------------------------------------------------
 Wed Sep 30 06:24:22 UTC 2020 - Neil Brown <nfbrown@suse.com>
 
 - Remove nfs-doc package.  The documentation is 20 years old
