@@ -17,7 +17,7 @@
 
 
 Name:           herbstluftwm
-Version:        0.8.3
+Version:        0.9.0
 Release:        0
 Summary:        A manual tiling window manager
 License:        BSD-2-Clause
@@ -121,6 +121,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man7/%{name}-tutorial.7%{?ext_man}
 %{_datadir}/xsessions/%{name}.desktop
+%{_datadir}/doc/herbstluftwm/hlwm-doc.json
 
 %files examples
 %dir %{_datadir}/doc/%{name}/examples
@@ -143,6 +144,7 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE,BUGS}
 %{_datadir}/doc/%{name}/examples/toggledualhead.sh
 %{_datadir}/doc/%{name}/examples/windowmenu.sh
 %{_datadir}/doc/%{name}/examples/wselect.sh
+%{_datadir}/doc/herbstluftwm/examples/perclient_kb_layout.sh
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_herbstclient

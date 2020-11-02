@@ -128,4 +128,41 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
   * Update and add new tests</comment>
     <requestid>812452</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cc498be72aa072aff529650d1b5d742b</srcmd5>
+    <version>0.9.0</version>
+    <time>1604306654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * When an application fails to focus itself (because
+    focus_stealing_prevention is active), then the window is marked
+    as urgent.
+  * New optional argument for the 'split' command for splitting
+    non-leaf frames
+  * Frame objects: the frame layout can be introspected via the
+    'tiling' object present in each tag, e.g.: 'tags.focus.tiling'.
+  * New command 'foreach' for iterating over objects
+  * New attribute 'urgent_count' for tags, counting the number of
+    urgent clients on a tag
+  * New rule consequence 'floatplacement' that updates the placement
+    of floating clients ('floatplacement=smart' for little overlap,
+    'floatplacement=center' for centering) or leaves the floating
+    position as is ('floatplacement=none')
+  * New rule condition 'pgid'
+  * New format specifier '%c' in the 'sprintf' command (useful
+    in combination with 'foreach')
+  * The 'new_attr' command now also accepts an initial value
+  * React to a change of the 'floating_focused' attribute of the
+    tag object
+  * New frame index character 'p' for accessing the parent frame
+  * Object tree documentation as a json file
+  Bug fixes:
+  * Fix wrong behaviour in 'cycle_layout' in the case where the
+    current layout is not contained in the layout list passed
+    to 'cycle_layout'.
+  * Fix handling of delta -1 in 'focus_monitor' and 'cycle_monitor'
+  * Fixed precision decimals in the layout tree (more reliable
+    in- and output of fractions in frame splits)</comment>
+    <requestid>845299</requestid>
+  </revision>
 </revisionlist>
