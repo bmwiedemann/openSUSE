@@ -21,8 +21,8 @@ index 62690d5..11534af 100644
  # Define install
  # ---------------------------------------
  
--set(qhull_TARGETS_INSTALL ${qhull_TARGETS_TOOLS})
-+install(TARGETS ${qhull_TARGETS_TOOLS} EXPORT
+-set(qhull_TARGETS_INSTALL ${qhull_TARGETS_APPLICATIONS})
++install(TARGETS ${qhull_TARGETS_APPLICATIONS} EXPORT
 +        RUNTIME DESTINATION ${BIN_INSTALL_DIR})
 +
  if (BUILD_SHARED_LIBS)

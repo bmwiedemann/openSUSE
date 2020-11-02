@@ -160,4 +160,12 @@ Use SUSE- proprietary prefix until Qhull (incidentially, also the Fedora designa
     <comment></comment>
     <requestid>820425</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0545090d24f8523d20d02bf98a50e599</srcmd5>
+    <version>2020.2</version>
+    <time>1604306438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844901</requestid>
+  </revision>
 </revisionlist>

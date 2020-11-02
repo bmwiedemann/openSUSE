@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:27:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- updated to 2020.2 (8.0.2):
+  * Qhull 202.2 updates Qhull's builds and Qhull's C++ interface. 
+    See https://github.com/qhull/qhull/wiki for details.
+- updated to 2020.1 (8.0.2):
+  * Qhull 2020.1 enhances the C++ interface with QhullUser and
+    support for Voronoi diagrams. See user_eg3 for C++ examples.
+  * Qhull builds support pkg-config, SONAME, DESTDIR for staged
+    installs, PREFIX, QhullExport, and CMAKE_CURRENT_SOURCE_DIR.
+- Drop 0001-Allow-disabling-of-static-or-shared-library-builds.patch
+- Rebase 0002-Remove-tools-from-CMake-exported-targets.patch
+
+-------------------------------------------------------------------
 Wed Jul  8 19:22:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix static library references in CMake files, replace
