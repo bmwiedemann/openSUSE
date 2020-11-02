@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 19 21:57:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm11 now (boo#1168935).
+- Remove version requirement from clang-tools dependency.
+- Give riscv64 jobs a bit more disk space.
+
+-------------------------------------------------------------------
 Mon Sep 28 07:04:16 UTC 2020 - Tom de Vries <tdevries@suse.com>
 
 - Fix dsymutil crash on ELF file. (bsc#1176964)

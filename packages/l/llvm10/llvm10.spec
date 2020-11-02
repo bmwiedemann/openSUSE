@@ -25,11 +25,7 @@
 %define _uaver  1001
 %define _socxx  1
 
-%ifarch x86_64 aarch64 %arm
-%bcond_without libcxx
-%else
 %bcond_with libcxx
-%endif
 
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
@@ -64,7 +60,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without clang_scripts
+%bcond_with clang_scripts
 %bcond_without polly
 %bcond_without lld
 
@@ -286,7 +282,10 @@ Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
-Requires:       clang-tools = %{version}
+# This is just a pro-forma requirement so that CMake doesn't complain about
+# missing binaries. We don't care if it's the same version, and we have to
+# allow different versions to keep older versions of clangX-devel installable.
+Requires:       clang-tools
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel
