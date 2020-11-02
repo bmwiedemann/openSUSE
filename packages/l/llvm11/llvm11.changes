@@ -1,0 +1,2255 @@
+-------------------------------------------------------------------
+Sat Oct 24 15:12:33 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Disable ThinLTO on aarch64 because of hangs. (boo#1178070)
+- Enable ThinLTO on ppc64 and ppc64le, the internal error is gone.
+
+-------------------------------------------------------------------
+Mon Oct 19 21:57:00 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 11.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/11.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools: llvm-gsymutil, llvm-ml.
+  * clang-import-test was removed.
+- Drop obsolete patches:
+  * clang-ignore-stack-clash-protector.patch
+  * fix-atomics-test.patch
+  * restore-llvm10-abi.patch
+- Rebase patches:
+  * clang-resourcedirs.patch
+  * default-to-i586.patch
+  * link-clang-shared.patch
+  * link-clang-tools-extra-shared.patch
+  * lldb-cmake.patch
+  * llvm-do-not-install-static-libraries.patch
+  * lto-disable-cache.patch
+- Add llvm-exegesis-link-dylib.patch: link llvm-exegesis with
+  libLLVM.so, the advanced functionality is not available anyway.
+- Remove -fstack-clash-protection on architectures where it isn't
+  actually supported, because that prevents feature detection.
+- Make sure we also build AttributeReference for the documentation.
+  This requires building via CMake. Also shorten the paths.
+
+-------------------------------------------------------------------
+Thu Jul 30 21:20:08 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add ld.lld as an alternative for ld. (boo#1174656)
+
+-------------------------------------------------------------------
+Wed Jul 22 21:54:01 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 10.0.1.
+  * This release contains bug-fixes for the LLVM 10.0.0 release.
+    This release is API and ABI compatible with 10.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Replace ValueLattice-Add-new-state-for-undef-constants.patch,
+  which landed upstream in a modified version, by
+  restore-llvm10-abi.patch that resets the ABI to our 10.0.0.
+- Rewrite lld-default-sha1.patch to be version-independent.
+- Set flags consistently, so that we don't lose -DNDEBUG on 32-bit
+  architectures. Also we don't need the opt flags twice. This leads
+  to a significant reduction in binary sizes on 32-bit arches.
+- Make it easier to package release candidates.
+- Enable most tests on 32-bit ARM, but not for libcxx.
+- Add fix-atomics-test.patch for architectures where native atomics
+  are not available.
+- Lower build constraints for riscv64 a bit to allow building on
+  more workers.
+- Allow more compile jobs in stage 2.
+
+-------------------------------------------------------------------
+Sun Jul 12 11:49:47 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Factor out computation of the number of jobs into a macro.
+- Choose mem_per_compile_job dependent on build stage, let stage 1
+  on x86_64 use more memory.
+- More generous memory allocation on riscv64.
+
+-------------------------------------------------------------------
+Tue Jun 23 07:18:55 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Add lld-default-sha1.patch to make lld generate SHA1 build-ids by
+  default, otherwise our tools cannot process the debuginfo.
+
+-------------------------------------------------------------------
+Tue Mar 24 22:30:06 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 10.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/10.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools: llvm-ifs, llvm-install-name-tool, llvm-reduce.
+  * New Clang tools: clang-move, clang-offload-wrapper, pp-trace.
+  * lldb-mi moved to a separate project and is no longer available.
+- Dropped obsolete patches:
+  * clang-fix-powerpc-triplet.patch
+  * clang-riscv64-rv64gc.diff
+  * compiler-rt-move-fdp.patch
+  * compiler-rt-sanitizer-ipc-perm.patch
+  * D60657-riscv-pcrel_lo.diff
+  * gwp-asan-lto.patch
+  * libcxx-tests-linux-distribution.patch
+  * link-lldb-shared.patch
+  * llvm-riscv64-fix-cffi.diff
+  * openmp-export-fini.patch
+  * riscv-eh-frame-fixup.patch
+  * riscv64-suse-linux.patch
+- Rebased patches:
+  * assume-opensuse.patch
+  * link-clang-tools-extra-shared.patch
+  * lldb-cmake.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-remove-clang-only-flags.patch
+  * lto-disable-cache.patch
+  * polly-pthread.patch
+  * tests-use-python3.patch
+- Add tablegen-test-link-static.patch: fix TableGenTests.
+- Add ValueLattice-Add-new-state-for-undef-constants.patch: fix
+  miscompilation on ppc64/s390x that was leading to test crashes.
+- Enable ThinLTO on aarch64.
+- Disable ThinLTO on ppc64le due to internal error in gold.
+- Delete object files and static libraries from build tree in
+  %install already, because debuginfo extraction happens after
+  that. If we do it after %check, we run out of disk space.
+- Run tests "manually", because we've already removed many targets.
+- Don't build unit tests, because some of them are now statically
+  linked, which is very expensive with LTO. Also unit tests are
+  probably not very interesting on the distribution level, we don't
+  expect them to perform different than in upstream. The relevant
+  upstream change for this is https://reviews.llvm.org/D54439.
+- Drop %if for openSUSE 13.2.
+
+-------------------------------------------------------------------
+Mon Mar 23 22:42:09 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
+  relevant binaries have been removed from those packages. This
+  allows having clang-tools together with older versions of llvm.
+  For a smooth installation we add OrderWithRequires dependencies.
+- Fix typos in (still inactive) !%{with clang_scripts} part.
+
+-------------------------------------------------------------------
+Wed Mar 11 22:58:26 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require clang-tools for clangX-devel.
+
+-------------------------------------------------------------------
+Sat Mar  7 22:41:55 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move all clang-related scripts (including those originally in
+  clangX-checker), hmaptool and clang-doc into a common
+  unversioned subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  The clang-doc executable will come with assets in Clang 10, so
+  we have to take it out of update-alternatives as well.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Fix lldb version string, adapt lldb-cmake.patch (boo#1165517).
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+
+-------------------------------------------------------------------
+Fri Feb  7 10:29:11 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add vim-plugin-llvm Conflicts to clang subpackage which now
+  contains files formerly in llvmN-vim-plugins, conflicting with
+  packages from older llvm releases.
+
+-------------------------------------------------------------------
+Thu Feb  6 10:58:59 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add back emacs-llvm Provides and Conflicts to clang subpackage
+  originally in llvm-emacs-plugins to properly conflict with
+  llvm-emacs-plugins from older llvm releases.
+
+-------------------------------------------------------------------
+Tue Feb  4 08:41:49 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add clang5-devel to clang9-doc conflicts.
+
+-------------------------------------------------------------------
+Mon Feb  3 08:53:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Add compiler-rt-sanitizer-ipc-perm.patch: Fix sanitizer-common
+  build with glibc 2.31.
+
+-------------------------------------------------------------------
+Wed Jan 29 22:33:02 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move clang-{format,include-fixer,rename}.{el,py} files from
+  llvm-*-plugins to clang package. (boo#1161873)
+- Drop the now empty llvm-emacs-plugins package.
+
+-------------------------------------------------------------------
+Mon Jan 27 08:03:55 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Add polly and lld build conditionals, remove excessive Requires
+  to clang from docs.  Fix conditional for libc++ use.
+  [jsc#SLE-7400, jsc#SLE-7614, jsc#SLE-7452, jsc#SLE-8920, jsc#SLE-7390,
+   jsc#SLE-7587]
+
+-------------------------------------------------------------------
+Wed Jan 15 14:34:50 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Undo spec-cleaner changes that we don't want.
+  * Reintroduce blank lines in configuration.
+  * Use packageand syntax that works for older versions of RPM.
+  * Don't use %{_bindir} on left-hand side of sed replacements.
+
+-------------------------------------------------------------------
+Sat Jan 11 20:14:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv-eh-frame-fixup.patch: Remove changesets that alter the libLLVM ABI
+
+-------------------------------------------------------------------
+Fri Jan  8 15:30:21 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Add upstream patch to export compiler-rt FuzzedDataProvider header, 
+  required by Envoy 1.12.2:
+  * compiler-rt-move-fdp.patch 
+
+-------------------------------------------------------------------
+Mon Jan  6 19:31:23 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- riscv-eh-frame-fixup.patch: Fix handling of .eh_frame on RISC-V
+- polly-pthread.patch: Add missing -lpthread
+
+-------------------------------------------------------------------
+Fri Jan  3 15:28:52 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- Enable support for riscv64
+- clang-riscv64-rv64gc.diff, riscv64-suse-linux.patch,
+  llvm-riscv64-fix-cffi.diff, D60657-riscv-pcrel_lo.diff: Backports from
+  master
+
+-------------------------------------------------------------------
+Fri Dec 20 21:13:19 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.0.1.
+  * This release contains bug-fixes for the LLVM 9.0.0 release.
+    This release is API and ABI compatible with 9.0.0.
+- Drop patches that have landed upstream:
+  * dont-install-example-analyzer-plugins.patch
+  * fix-module-test.patch
+  * llvm-add-missing-include.patch
+- Drop set-revision.patch, don't provide revision number in clang.
+  The upstream repository has moved from Subversion to git, so the
+  revision number is just a hash, which limits its usefulness.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
+Thu Dec  5 23:49:17 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Modify libcxx-tests-linux-distribution.patch to remove dependency
+  on python-distro again: we don't have expected failures.
+
+-------------------------------------------------------------------
+Thu Dec  5 08:31:30 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Add llvm-add-missing-include.patch in order to fix
+  boo#1158367.
+
+-------------------------------------------------------------------
+Tue Dec  3 23:52:49 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add gwp-asan-lto.patch: Make sure there are no LLVM IR files in
+  static libraries that we package.
+- Add libcxx-tests-linux-distribution.patch (boo#1158293):
+  Replace platform.linux_distribution by distro.linux_distribution.
+- Make documentation packages noarch.
+
+-------------------------------------------------------------------
+Mon Nov  4 02:34:19 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add openmp-export-fini.patch: Export termination function for
+  libomp.so, solves boo#1155108.
+- Remove flaky test case in libcxx.
+
+-------------------------------------------------------------------
+Wed Oct 30 08:44:49 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Fix typo, BOLL -> BOOL
+
+-------------------------------------------------------------------
+Sat Oct 19 11:12:03 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Let new {llvm,clang}*-doc packages "Conflict" with older devel
+  packages, which they were split from.
+- Let doc packages conflict with older versions of themselves.
+
+-------------------------------------------------------------------
+Mon Oct 14 14:16:20 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- (Build)Require only python3-base instead of full python3 package,
+  the additional modules are not required. Helps shortening the
+  build dependency chain.
+- Remove python3-* requires from lldb9 subpackage, and add it to
+  the bindings/pretty-printer subpackage (python3-lldb9).
+- Add python3-base Requires to python3-clang subpackage
+
+-------------------------------------------------------------------
+Sat Sep 28 13:28:45 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add dont-install-example-analyzer-plugins.patch: Remove example
+  analyzer plugins from install targets instead of deleting them.
+- Add fix-module-test.patch: fix test instead of deleting it.
+- Don't build static libc++ (with ThinLTO that's not useful anyway).
+- Don't build libc++experimental.
+- Don't package libc++abi.so with libc++-devel, it's already contained
+  in the (required) libc++abi-devel.
+- Be more specific about files in libc++-devel.
+
+-------------------------------------------------------------------
+Sun Sep 22 19:42:25 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 9.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/9.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/lld/docs/ReleaseNotes.html
+- Change License to "Apache-2.0 WITH LLVM-exception OR NCSA".
+  (https://llvm.org/foundation/relicensing/)
+- Allow building with ThinLTO and enable it on some architectures.
+- Disable LTO cache in lto-disable-cache.patch.
+- Unset MALLOC_CHECK_ for compilation to mitigate lock contention.
+- No debug info for ppc like for the other 32-bit targets.
+- Clean up _constraints: same constraints for 32-bit targets.
+- Don't use BUILD_SHARED_LIBS for Clang anymore, since the newly
+  available libclang-cpp.so should expose the full C++ API.
+- Link tools with libclang-cpp.so by using CLANG_LINK_CLANG_DYLIB,
+  similar to LLVM_BUILD_LLVM_DYLIB for libLLVM.so.
+- Remove obsolete n_clang_allow_BUILD_SHARED_LIBRARY.patch.
+- Add link-clang-shared.patch to link more clang targets with
+  libclang-cpp.so, especially libclang.so.
+- Add link-clang-tools-extra-shared.patch, link-lldb-shared.patch:
+  link targets in clang-tools-extra and lldb with libclang-cpp.so.
+- Simplify llvm-do-not-install-static-libraries.patch, also handle
+  Clang, for which we now get static libraries.
+- Package documentation for llvm and clang separately, recommend
+  them for the main package: they are not required for development,
+  but actually useful for working with the non-devel packages.
+- Recommend editor plugins not just for llvm-devel.
+- Recommend libstdc++ for Clang again.
+- Move diagtool from llvm to clang subpackage.
+- Properly distinguish between %{_relver} and %{version}.
+- Drop aarch64-disable-memorytest.patch and reactivate test.
+- Rebase clang-resourcedirs.patch.
+- Rebase llvm-normally-versioned-libllvm.patch.
+- Rebase llvm-remove-clang-only-flags.patch.
+- Rebase llvm_build_tablegen_component_as_shared_library.patch.
+- Rebase set-revision.patch.
+- Increase disk space for build.
+
+-------------------------------------------------------------------
+Sun Sep 22 11:13:10 UTC 2019 - Lubos Lunak <l.lunak@centrum.cz>
+
+- Make lldb recommend python3-lldb (it contains pretty printers).
+
+-------------------------------------------------------------------
+Wed Aug 21 21:53:49 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use python3 shebangs everywhere (boo#1146533).
+- Drop obsolete opt-viewer-Do-not-require-python-2.patch.
+
+-------------------------------------------------------------------
+Fri Aug 16 09:53:24 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove unneccesary dependencies:
+  * groff, bison and flex don't seem to be used.
+  * jsoncpp is no longer used since r338461.
+  * Move some BuildRequires to subpackages.
+  * Don't recommend scan-{build,view} in clang (boo#1145444).
+  * Devel packages are only required in other devel packages,
+    when their headers are included in the installed headers.
+- Add versions to Provides/Conflicts except for files.
+- Remove unused (since r268685) CMake flags LLVM_ENABLE_TIMESTAMPS.
+- Fix installation of opt-viewer files when python3-clang is no
+  longer built.
+
+-------------------------------------------------------------------
+Sat Jul 20 18:45:23 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.0.1.
+  * This release contains bug-fixes for the LLVM 8.0.0 release.
+    This release is API and ABI compatible with 8.0.0.
+- Don't run LLVM tests on ppc at all because of sporadic hangs.
+
+-------------------------------------------------------------------
+Fri Jun 28 09:55:21 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase RAM for armv6/7 to avoid OOM and be scheduled on fast
+  worker
+
+-------------------------------------------------------------------
+Thu Jun 27 23:03:49 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use the documented LLVM_ENABLE_RTTI to enable RTTI instead of
+  LLVM_REQUIRES_RTTI, which "is an internal flag that individual
+  targets can use to force RTTI". (boo#1139584)
+- Drop obsolete llvm-build-tests-with-rtti.patch.
+
+-------------------------------------------------------------------
+Tue Jun 18 21:26:33 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Exclude riscv64 for now since it fails to build.
+
+-------------------------------------------------------------------
+Sat Jun 15 20:11:03 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Change some groups:
+  * put libraries in System/Libraries,
+  * devel packages in Development/Libraries,
+  * clang in Development/Languages/C and C++,
+  * the gold plugin in Development/Tools/Building.
+- Add some URLs, use https:// when possible.
+- Remove unneeded devel dependencies.
+- Only suggest a C++ standard library for clang. It's also a
+  C compiler and needs no C++ library when only used as such.
+- Fix Supplements for editor plugins.
+- Fix some rpmlint issues:
+  * Reword summary and description for Polly.
+  * Fix /usr/bin/env shebangs.
+  * Remove executable bit where not needed.
+  * Move bash completion to /usr.
+  * Remove hard dependency of libclang8 to libstdc++-devel.
+- Make rpm macros work properly.
+- Remove sources from documentation.
+- Run %fdupes on the right directories.
+- Enable tests for libcxx.
+- Reduce memory requirements for compile jobs depending on arch.
+
+-------------------------------------------------------------------
+Sun May 12 19:11:24 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Avoid relocation overflow on ppc by not building GPU backends.
+- Update baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Apr 24 17:20:07 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133254).
+
+-------------------------------------------------------------------
+Sat Mar 23 23:29:21 UTC 2019 - aaronpuchert@alice-dsl.net
+
+- Fix packaging on ppc: the sanitizers aren't available there, so
+  the directories /usr/lib/clang/*/{lib,share} are missing.
+- Package LLVMgold even when we don't use gold for linking.
+  It's promised in /usr/lib/cmake/llvm/LLVMExports.cmake.
+- Unignore test failures on PowerPC64 architectures. The failures
+  in ppc are unrelated to AMDGPU, so we remove that remark.
+- Fix dependencies: the gold plugin shouldn't depend on llvm-devel.
+  libc++abi-devel should depend on libc++abi.
+- Fix typo.
+
+-------------------------------------------------------------------
+Tue Mar 19 09:16:11 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- Enable libc++ on ARM (Needed for tensorflow)
+
+-------------------------------------------------------------------
+Mon Mar 11 12:53:39 UTC 2019 - msrb@suse.com
+
+- Update to 8.0.0
+  * For details, see the release notes:
+      https://llvm.org/releases/8.0.0/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/clang/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/lld/docs/ReleaseNotes.html
+
+- Drop llvm-unittests-Don-t-install-TestPlugin.so.patch,
+  llvm-drop-llvm-optional-clang-specific-optimization.patch,
+  llvm-D51108.patch,
+  llvm-Ensure-that-variant-part-discriminator-is-read-by-Me.patch,
+  llvm-test-Fix-Assembler-debug-info.ll.patch
+  * Already included upstream
+
+- Add 0001-CMake-Add-install-targets-for-utilities-to-LLVM-expo.patch
+
+-------------------------------------------------------------------
+Sun Mar 10 20:24:03 UTC 2019 - aaronpuchert@alice-dsl.net
+
+- Remove -fno-strict-aliasing, which upstream doesn't use any more
+  since r245304 in 2015. (http://reviews.llvm.org/D12036)
+  It's probably also not needed for modern versions of GCC.
+  It was enabled in r105644 because of some bugs there.
+- Add a clang-%{_sonum} symlink, which is referenced by
+  /usr/lib64/cmake/clang/ClangTargets.cmake (boo#1120098)
+- Package clang builtin headers with libclang. The library is
+  basically unusable without the builtin headers. Currently
+  consumers of libclang have to require clang as well, although
+  only the headers are needed.
+
+-------------------------------------------------------------------
+Tue Feb 26 09:44:21 UTC 2019 - msrb@suse.com
+
+- llvm-Ensure-that-variant-part-discriminator-is-read-by-Me.patch,
+  llvm-test-Fix-Assembler-debug-info.ll.patch
+  * Fix crash in rustc (boo#1126907)
+
+-------------------------------------------------------------------
+Sun Feb 17 21:38:04 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Allow use of Gold linker to be conditional
+- Disable Gold linker on ppc
+  + LLVM currently doesn't build with Gold on ppc
+
+-------------------------------------------------------------------
+Tue Jan 15 10:28:38 UTC 2019 - msrb@suse.com
+
+- Readd clang-7 and clang++-7 symlinks
+  * Fixes uses of clang-devel (boo#1120098)
+
+-------------------------------------------------------------------
+Mon Jan 14 13:06:55 UTC 2019 - msrb@suse.com
+
+- Update to llvm 7.0.1
+  * This release contains bug-fixes for the LLVM 7.0.0 release.
+    This release is API and ABI compatible with 7.0.0.
+
+-------------------------------------------------------------------
+Sun Dec 30 19:11:05 UTC 2018 - Dirk Mueller <dmueller@suse.com>
+
+- enable gold unconditionally like with llvm6 and older
+- reenable openmp support again for aarch64 (like it was already in llvm6)
+
+-------------------------------------------------------------------
+Wed Dec 19 19:45:44 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use %license macro
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+
+-------------------------------------------------------------------
+Fri Dec 14 23:08:04 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Remove ppc from Exclude field in spec file
+- Allow use of Gold linker to be conditional
+- Disable Gold linker on ppc
+- Add patch to fix SUSE GNU triplet on ppc
+  * clang-fix-powerpc-triplet.patch
+- Add patch from upstream to fix ABI issue on ppc
+  * llvm-D51108.patch
+- Limit list of enabled targets on ppc
+  * PowerPC;AMDGPU;BPF;NVPTX
+- Ignore testsuite failures on ppc
+
+-------------------------------------------------------------------
+Tue Dec 11 10:26:04 UTC 2018 - msrb@suse.com
+
+- llvm-drop-llvm-optional-clang-specific-optimization.patch
+  * Fix ABI incompatibility when libLLVM (built with clang) is
+    linked to a program build with gcc. (boo#1119092)
+
+-------------------------------------------------------------------
+Tue Oct 23 07:52:09 UTC 2018 - msrb@suse.com
+
+- opt-viewer-Find-style-css-in-usr-share.patch
+  * Make sure opt-viewer installed in /usr/bin can find resources
+    from /usr/share/opt-viewer. (boo#1112730)
+
+-------------------------------------------------------------------
+Fri Oct 19 12:32:11 UTC 2018 - msrb@suse.com
+
+- llvm-unittests-Don-t-install-TestPlugin.so.patch
+  * It is only used for testing and is causing failures when
+    processing LLVMExports.cmake.
+
+-------------------------------------------------------------------
+Tue Aug 28 06:58:07 UTC 2018 - msrb@suse.com
+
+- Update to llvm 7.0.0
+  * For details, see the release notes:
+      https://llvm.org/releases/7.0.0/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/clang/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/lld/docs/ReleaseNotes.html
+
+- Remove no longer needed patches:
+  * llvm6-fix-gdb-index-crash.patch
+  * lldb-fix-build-with-python-3.7.patch
+  * lldb-add-pthread-dl-libs.patch
+  * polly-cmake-Trust-pkg-config-in-FindJsoncpp.patch
+
+- Add tests-use-python3.patch
+  * Prevents tests from failing because of missing python 2.
+
+- Add llvm-better-detect-64bit-atomics-support.patch
+  * Fixes build on i586.
+
+-------------------------------------------------------------------
+Mon Aug 27 11:30:36 UTC 2018 - msrb@suse.com
+
+- Updated llvm-remove-clang-only-flags.patch
+  - Exclude also "-Werror=unguarded-availability-new" (bsc#1106000)
+
+-------------------------------------------------------------------
+Wed Jul 25 07:29:54 UTC 2018 - msrb@suse.com
+
+- Update to llvm 6.0.1
+  * This release contains bug-fixes for the LLVM 6.0.0 release. It
+    is API and ABI compatible with 6.0.0.
+- Remove no longer needed llvm6-fix-InstCombine.patch
+- Add lldb-fix-build-with-python-3.7.patch
+  * Fix build with python 3.7
+
+-------------------------------------------------------------------
+Fri Jun 29 00:21:52 UTC 2018 - l.lunak@centrum.cz
+
+- llvm6-fix-gdb-index-crash.patch
+  * From upstream, fix lld --gdb-index crash.
+
+-------------------------------------------------------------------
+Thu Jun 14 10:21:57 UTC 2018 - msrb@suse.com
+
+- Do not requires gcc6 for older sle versions.
+  * llvm6 is not built on <= 12 SP3 and this was preventing build
+    on 12 SP4.
+
+-------------------------------------------------------------------
+Thu May 17 15:26:21 UTC 2018 - msrb@suse.com
+
+- llvm_build_tablegen_component_as_shared_library.patch
+  * Build TableGen component as its own shared library because it
+    is not included in the libLLVM library and is needed for ldc.
+    (bsc#1086445)
+
+-------------------------------------------------------------------
+Thu May 17 11:18:46 UTC 2018 - tchvatal@suse.com
+
+- Add patch llvm6-fix-InstCombine.patch to fix InstCombine init
+  * Will be fixed in 6.0.1 release
+
+-------------------------------------------------------------------
+Wed May  9 10:32:04 UTC 2018 - msrb@suse.com
+
+- Do not build stage1 with debug info. It was accidentally added
+  with the use of %optflags. This should fix out of memory errors
+  on 32bit architectures and speed up build everywhere else.
+  (bsc#1092697)
+
+-------------------------------------------------------------------
+Wed Apr 11 09:18:29 UTC 2018 - msrb@suse.com
+
+- llvm-build-tests-with-rtti.patch
+  * Fixes build failure with gcc 8. (bnc#1087136)
+
+-------------------------------------------------------------------
+Thu Apr  5 09:33:40 UTC 2018 - msrb@suse.com
+
+- Do not export Polly static libraries which we do not distribute.
+  * Updated llvm-do-not-install-static-libraries.patch
+- Use external jsoncpp instead of the bundled one.
+  * Added polly-cmake-Trust-pkg-config-in-FindJsoncpp.patch
+- llvm6-devel must require llvm6-polly-devel
+  * Files in llvm6-devel reference Polly.
+
+-------------------------------------------------------------------
+Mon Mar 19 13:53:06 UTC 2018 - msrb@suse.com
+
+- Update to llvm 6.0.0
+  * Added polly
+  * Notable changes:
+    - Retpoline Spectre variant 2 mitigation
+    - GlobalISel by default for AArch64 at -O0
+    - improved scheduling on several x86 micro-architectures
+    - Clang defaults to -std=gnu++14 instead of -std=gnu++98
+    - support for some upcoming C++2a features
+    - improved optimizations, new compiler warnings, many bug
+      fixes, and more.
+
+- Use alternatives for clang's bash autocomplete to prevent
+  conflicts with other versions.
+
+-------------------------------------------------------------------
+Thu Feb 15 11:38:38 UTC 2018 - msrb@suse.com
+
+- Remove liblldb5 and lldb5-devel from baselibs.conf. They are only
+  build for x86_64, so no point having them in baselibs.conf.
+
+-------------------------------------------------------------------
+Wed Feb  7 14:21:48 UTC 2018 - msrb@suse.com
+
+- Use %optflags, except for FORTIFY_SOURCE which is not compatible
+  with compiler-rt.
+- Exclude static libraries differently.
+  * Drop llvm-split-static-library-exports-into-their-own-export-file.diff
+  * Drop clang-split-static-library-exports-into-their-own-export-file.diff
+  * Update llvm-do-not-install-static-libraries.patch to not use
+    EXCLUDE_FROM_ALL which is not available in cmake 3.5.
+    - This fixes build on SLE12.
+- Do not force gcc6 on OpenSUSE - fixes build.
+- Reduce the amount of concurent link jobs by increasing their
+  memory requirement - to reduce stalls in OBS.
+
+-------------------------------------------------------------------
+Wed Jan 31 08:48:48 UTC 2018 - msrb@suse.com
+
+- Cleanup %ifarch conditions, remove targets unintentionally added
+  to s390/s390x. (bnc#1078436)
+
+-------------------------------------------------------------------
+Tue Jan 30 09:24:22 UTC 2018 - msrb@suse.com
+
+- Limit the amount of parallel link jobs, but no longer limit
+  compile jobs. This should prevent running out of memory during
+  linking while not longer slowing down compilation.
+- Remove build dependency on procps
+
+-------------------------------------------------------------------
+Mon Jan 29 12:17:55 UTC 2018 - msrb@suse.com
+
+- Reduce disk size requirement to 30GB in _constraints. We no
+  longer need that much since we stopped building static libraries.
+
+-------------------------------------------------------------------
+Thu Jan 18 15:23:59 UTC 2018 - msrb@suse.com
+
+- n_clang_allow_BUILD_SHARED_LIBRARY.patch
+  * Allow buildling clang with BUILD_SHARED_LIBRARY while the rest
+    is built with LLVM_LINK_LLVM_DYLIB. (bnc#1065464)
+- Remove clang-devel-static.
+
+-------------------------------------------------------------------
+Wed Jan 10 14:56:18 UTC 2018 - msrb@suse.com
+
+- Place gold plugin to the right directory. (bnc#1073210)
+  * It must be in /usr/lib/bfd-plugins on all architectures.
+  * Remove llvm5-gold from baselibs.conf - nothing needs a 32bit
+    version of it and it would now conflict with the 64bit one.
+- Reduce _constraints requirements on 32bit architectures.
+  * Since we had to disable debuginfo on them, they require much
+    less.
+
+-------------------------------------------------------------------
+Wed Jan 10 10:24:49 UTC 2018 - normand@linux.vnet.ibm.com
+
+- ignore make check error for PowerPC as bypass
+  https://bugs.llvm.org/show_bug.cgi?id=35871
+
+-------------------------------------------------------------------
+Mon Jan  8 13:12:13 UTC 2018 - dmueller@suse.com
+
+- disable debuginfo build for ARM as well
+
+-------------------------------------------------------------------
+Fri Jan  5 08:55:59 UTC 2018 - msrb@suse.com
+
+- Delete intermediate files during build to reduce total disk usage
+  (bnc#1074625)
+
+-------------------------------------------------------------------
+Thu Jan  4 10:28:07 UTC 2018 - msrb@suse.com
+
+- Update to llvm 5.0.1
+  * This release contains bug-fixes for the LLVM 5.0.0 release.
+  * This release is API and ABI compatible with 5.0.0.
+- llvm-do-not-install-static-libraries.patch
+  * Updated.
+
+-------------------------------------------------------------------
+Fri Dec 22 08:56:05 UTC 2017 - fcrozat@suse.com
+
+- Increase minimum memory and disk sizes required for building in
+  _constraints.
+
+-------------------------------------------------------------------
+Wed Dec 13 16:30:20 UTC 2017 - msrb@suse.com
+
+- Rename python3-lldb to python3-lldb5 so it can work with llvm
+  meta package.
+
+-------------------------------------------------------------------
+Mon Dec 11 10:33:00 UTC 2017 - msrb@suse.com
+
+- Rename python packages to follow naming conventions.
+- Remove unnecessary dependencies on python3.
+- Make opt-viewer not require python2.
+  * opt-viewer-Do-not-require-python-2.patch
+
+-------------------------------------------------------------------
+Mon Dec  4 15:41:52 UTC 2017 - msrb@suse.com
+
+- Switch to python3.
+- Fix %check tests when used with python3.
+  * Define LANG=C.UTF-8 when running the tests.
+- Add explicit Provides/Conflicts to llvm5-devel,
+  clang5-devel-static and lldb5-devel.
+  * These are required to be validated by obs repo-checker.
+
+-------------------------------------------------------------------
+Fri Dec  1 08:52:55 UTC 2017 - msrb@suse.com
+
+- Use LLVM_OPTIMIZED_TABLEGEN to speed up build. (bnc#1064786)
+- Fix files of lldb4 to work correctly with update-alternatives.
+- Remove Conflicts clang(LLDB) from lldb4-devel - it does not
+  exist. It would be provided automatically, but no such cmake file
+  is installed.
+- llvm-do-not-install-static-libraries.patch
+  * Do not install static libraries instead of installing them and
+    deleting after.
+  * Reduces disk usage during build. (bnc#1064786)
+- Do not build unnecessary parts during stage1.
+  * Speeds up build a bit. (bnc#1064786)
+
+-------------------------------------------------------------------
+Mon Nov 20 08:45:53 UTC 2017 - msrb@suse.com
+
+- Updated baselibs.conf to reference version 5 packages.
+- Deleted rogue llvm5.spec.r29 file.
+- Deleted arm_suse_support.diff, llvm-add_a_LLVM_USE_LINKER.patch,
+  libsanitizer.patch.
+  - No longer used, applied already in the source.
+
+-------------------------------------------------------------------
+Tue Oct 17 07:31:06 UTC 2017 - msrb@suse.com
+
+- llvm-normally-versioned-libllvm.patch
+  * Change libLLVM naming scheme to match our naming guidelines.
+  * The reasons for the original naming scheme are no longer valid,
+    more details in the patch.
+
+-------------------------------------------------------------------
+Fri Oct 13 09:09:15 UTC 2017 - msrb@suse.com
+
+- Disable all thread related tests in libcxx. Many of them use
+  timeouts to detect failure. They can fail randomly if the machine
+  is under heavy load (happens often in OBS).
+
+-------------------------------------------------------------------
+Tue Oct 10 12:14:31 UTC 2017 - msrb@suse.com
+
+- Drop llvm5-devel-static. llvm5-devel contains shared library with 
+  the same content.
+
+-------------------------------------------------------------------
+Mon Oct  9 10:58:51 UTC 2017 - msrb@suse.com
+
+- Increase disk space requirement in _constraints to 45GB.
+  Otherwise the build gets stuck in random places.
+
+- Skip build of lldb5 python on distributions with swig < 3.0.11
+
+-------------------------------------------------------------------
+Wed Aug 30 12:08:18 UTC 2017 - msrb@suse.com
+
+- Copy from llvm4.
+- Update to llvm 5.0.0.
+
+-------------------------------------------------------------------
+Wed Aug 30 12:08:17 UTC 2017 - msrb@suse.com
+
+- Use LLVM_BUILD_LLVM_DYLIB instead of BUILD_SHARED_LIBS to build
+  single libLLVM library. This is the recommended way. The old way
+  was causing various issues.
+  * llvm-split-static-library-exports-into-their-own-export-file.diff
+  * clang-split-static-library-exports-into-their-own-export-file.diff
+  (bnc#1049703)
+
+- Add lld, linker for Clang/LLVM
+  (sr#517692)
+
+- Include clang++-MAJOR.MINOR symbolic link
+  (bnc#1012260)
+
+- Remove unnecessary dependency on flex and bison.
+
+- Make sure all binaries are managed by update-alternatives
+
+- Add llvm-add_a_LLVM_USE_LINKER.patch and link using gold to
+  prevent memory exhaustion on some build machines.
+
+- Reduce debuginfo on x86 architecture. LLVM libraries are so big that they
+  exhaust all memory on 32 bit machine if linked with full debuginfo.
+
+- Speed up build by skipping parts that are not required in stage1.
+
+- Build lldb in-tree as one of the llvm tools.
+
+-------------------------------------------------------------------
+Tue Aug 29 11:32:24 UTC 2017 - meissner@suse.com
+
+- clang-ignore-stack-clash-protector.patch: ignore -fstack-clash-protection
+  for now.
+
+-------------------------------------------------------------------
+Tue Aug  8 08:02:38 UTC 2017 - schwab@suse.de
+
+- xlocale.patch: don't use obsolete <xlocale.h>
+- libsanitizer.patch: fix use of undocumented types
+
+-------------------------------------------------------------------
+Sun Jul 16 18:16:07 UTC 2017 - dmueller@suse.com
+
+- build fixes for armv6 (skip testsuite as it requires 64bit,
+  set the list of targets to include ARM and remove triplet hack)
+
+-------------------------------------------------------------------
+Sat Jul  1 01:52:09 UTC 2017 - jimmy@boombatower.com
+
+- Include provides and conflics in baselibs.conf for llvm4-devel,
+  clang4-devel, llvm4-LTO-devel, and llvm4-gold.
+
+-------------------------------------------------------------------
+Mon Jun 26 09:10:01 UTC 2017 - idonmez@suse.com
+
+- Update to version 4.0.1
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Fri Jun  2 12:42:08 UTC 2017 - idonmez@suse.com
+
+- Use gcc6 only for SLE boo#1041469
+
+-------------------------------------------------------------------
+Tue May  9 08:29:31 UTC 2017 - idonmez@suse.com
+
+- Package libLLVMFuzzer 
+
+-------------------------------------------------------------------
+Wed Apr 19 15:08:25 UTC 2017 - dmueller@suse.com
+
+- readd arm_suse_support.diff which was accidentally removed
+  in the 4.0.0 update
+
+-------------------------------------------------------------------
+Wed Apr  5 12:09:39 UTC 2017 - afaerber@suse.de
+
+- Enable AMDGPU and NVPTX targets everywhere except for S/390.
+  The AMDGPU target is needed for Mesa Clover (sr#485802).
+
+-------------------------------------------------------------------
+Tue Apr  4 09:14:41 UTC 2017 - idonmez@suse.com
+
+- Use gcc6 on SLE12 
+
+-------------------------------------------------------------------
+Thu Mar 30 11:33:27 UTC 2017 - idonmez@suse.com
+
+- Package license & credits 
+
+-------------------------------------------------------------------
+Mon Mar 27 07:58:36 UTC 2017 - idonmez@suse.com
+
+- Update to version 4.0.0
+  * See 
+    + http://releases.llvm.org/4.0.0/docs/ReleaseNotes.html and
+    + http://releases.llvm.org/4.0.0/tools/clang/docs/ReleaseNotes.html
+    + http://releases.llvm.org/4.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+- Drop the following patches, fixed upstream:
+  amdgpu_revert_r280589.patch
+  arm_suse_support.diff
+  clang-fix-substitutions-abi_tag.patch
+  clang-incomplete-field-types.patch
+  glibc-2.24-libcxx.patch
+  llvm-install-CheckAtomic.patch
+  revert-cmake-soname.patch
+
+-------------------------------------------------------------------
+Fri Feb 24 13:26:11 UTC 2017 - idonmez@suse.com
+
+- Enable BPF for all arches bsc#1026191 
+
+-------------------------------------------------------------------
+Wed Jan 25 12:06:36 UTC 2017 - idonmez@suse.com
+
+- libc++ must depend on libc++abi 
+
+-------------------------------------------------------------------
+Wed Jan 25 10:13:44 UTC 2017 - idonmez@suse.com
+
+- Stop using otherproviders() due to an rpm parser bug, use
+  self-conflicts instead as suggested by mls.
+
+-------------------------------------------------------------------
+Tue Jan 24 08:38:09 UTC 2017 - idonmez@suse.com
+
+- Add amdgpu_revert_r280589.patch to fix an amdgpu regression
+  bsc#1021577
+
+-------------------------------------------------------------------
+Tue Jan 17 09:37:34 UTC 2017 - jslaby@suse.com
+
+- Require LLVMgold and libLTO in llvm-devel, otherwise we get in CMake:
+  The imported target "LLVMgold" references the file
+  "/usr/lib64/LLVMgold.so" but this file does not exist.
+  This happens when requiring llvm3_9-devel directly, not llvm-devel.
+
+-------------------------------------------------------------------
+Wed Dec 21 10:47:15 UTC 2016 - idonmez@suse.com
+
+- Update to version 3.9.1
+  * See:
+    + http://llvm.org/releases/3.9.1/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
+Wed Sep 28 22:06:59 UTC 2016 - toddrme2178@gmail.com
+
+- Update to version 3.9.0
+  * Clang now supports the G++ abi_tag attribute.
+  * Clang will no longer pass --build-id by default to the linker.
+  * Improved C++1z support in Clang.
+  * Clang now has support for all OpenCL 2.0 features.
+  * Added support for all non-offloading features from OpenMP 4.5,
+  * The static analyzer now checks for incorrect usage of MPI APIs in C and C++.
+  * LLVM no longer does inter-procedural analysis and optimization
+    (except inlining) on functions with comdat linkage.
+  * LLVM now supports the Intel CPUs Skylake Server with AVX512
+    (-march=skylake-avx512) and Knights Landing (-march=knl).
+  * More at:
+    + http://llvm.org/releases/3.9.0/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+  * Fix the following patches:
+    + arm_suse_support.diff
+    + assume-opensuse.patch
+    + clang-resourcedirs.patch
+    + default-to-i586.patch
+    + glibc-2.23-libcxx.patch
+    + glibc-2.24-libcxx.patch
+    + lldb-add-pthread-dl-libs.patch
+    + lldb-cmake.patch
+    + llvm-fix-find-gcc5-install.patch
+    + llvm-remove-clang-only-flags.patch
+    + revert-cmake-soname.patch
+    + set-revision.patch
+  * Remove upstream-included patch:
+    + llvm-nonvoid-return.patch
+  * Remove patch for removed files:
+    + glibc-2.23-libcxx.patch
+- Backport upstream patches:
+  * clang-fix-substitutions-abi_tag.patch
+  * clang-incomplete-field-types.patch
+  * llvm-install-CheckAtomic.patch
+- Add clang%{_sonum}-include-fixer subpackage and associated
+  libfindAllSymbols%{_sonum} and libfindAllSymbols%{_sonum}-devel
+  subpackages.
+- Add sanstats to llvm binary list.
+
+-------------------------------------------------------------------
+Fri Sep 23 18:01:42 UTC 2016 - toddrme2178@gmail.com
+
+- Change update-alternatives to use %postun instead of %preun,
+  which is now what Factory maintainers are requesting.
+- Use the minor version to set the update-alternatives priority so
+  the most recent version of the LLVM, Clang, and LLDB are used by
+  default.
+- Add LLVM rpm macros so downstream packages can have some idea how
+  LLVM was built.
+
+-------------------------------------------------------------------
+Tue Sep 20 15:47:16 UTC 2016 - toddrme2178@gmail.com
+
+- Rename libomp to make it possible to have multiple versions available.
+
+-------------------------------------------------------------------
+Fri Sep  9 18:27:26 UTC 2016 - toddrme2178@gmail.com
+
+- Split the old llvm package into this version-specific package
+  and a wrapper package.
+- Implement update-alternatives to allow parallel installation
+  of many of the subpackages.
+- Rename subpackages that can be parallel-installed to a
+  version-specific name based on the associated shared library's
+  current .so number.
+- Various fixes to support the above changes.
+
+-------------------------------------------------------------------
+Wed Sep  7 10:05:32 UTC 2016 - tchvatal@suse.com
+
+- Sort a bit with spec-cleaner
+- Remove the latest switch for now, things should be either coinstallable
+  or not, we don't need to bother around with compilation like this
+
+-------------------------------------------------------------------
+Thu Aug 31 20:36:58 UTC 2016 - toddrme2178@gmail.com
+
+- Update to llvm 3.8.1
+  * See http://llvm.org/releases/3.8.1/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.1/tools/docs/ReleaseNotes.html
+- Use versioned libLLVM (to libLLVM3_8) and libclang (to libclang3_8)
+- Change versioning of liblldb3_8 to liblldb-3_8 and use a variable
+  to control the name instead of hard-coding it.
+- Use bcond_with and bcond_without to enable/disable build options
+  instead of hard-coding them.
+- Put buildrequires as requires in -devel packages to avoid linker errors
+  when building packages against the -devel packages.
+- Add ffi support (disabled by default).
+- Add oprofile support (disabled by default).
+- Add valgrind support (disabled by default).
+- Link cmake files to the normal cmake file directory to allow autodetection
+  of cmake interfaces.
+- Remove unused lldb components from main spec file.
+- Split llvm python bindings into own subpackage.
+- Split emacs plugin into own subpackage
+- Move additional vim plugins into vim plugins package
+- Split libc++, libLTO, LLVMgold, libomp, clang-chekers into own subpackages
+- Make python-clang, llvm-vim-plugins, and llvm-emacs-plugins noarch since
+  they aren't architecture-specific.
+- Make packages besides llvm, llvm-clang, and the shared libraries conflict
+  with other versions.  This will be important when multiple LLVM versions
+  are supported.
+- Various spec file cleanups
+- Rebase patches:
+  * arm_suse_support.diff
+  * assume-opensuse.patch
+  * clang-resourcedirs.patch
+  * default-to-i586.patch
+  * glibc-2.23-libcxx.patch
+  * glibc-2.24-libcxx.patch
+  * lldb-add-pthread-dl-libs.patch
+  * lldb-cmake.patch
+  * llvm-fix-find-gcc5-install.patch
+  * llvm-nonvoid-return.patch
+  * llvm-remove-clang-only-flags.patch
+  * revert-cmake-soname.patch
+  * set-revision.patch
+
+-------------------------------------------------------------------
+Fri Aug 26 10:03:56 UTC 2016 - tchvatal@suse.com
+
+- Start conversion to use cmake macros with now introduced
+  compatibility for ninja
+- Reduce number of threads if we don't have enough memory
+- Add patch for the nonvoid returns:
+  * llvm-nonvoid-return.patch
+
+-------------------------------------------------------------------
+Thu Jul 28 09:59:01 UTC 2016 - normand@linux.vnet.ibm.com
+
+- for ppc64le set memory to 4GB in _constraints file
+  (failure in Factory:PowerPC)
+
+-------------------------------------------------------------------
+Wed Jul 13 12:26:46 UTC 2016 - schwab@suse.de
+
+- glibc-2.24-libcxx.patch: fix libcxx testsuite for glibc 2.24
+
+-------------------------------------------------------------------
+Wed May 18 13:22:17 UTC 2016 - ronisbr@gmail.com
+
+- Build LLDB separated from LLVM.
+- Re-enable python bindings for the LLDB API.
+
+-------------------------------------------------------------------
+Wed May 18 11:14:38 UTC 2016 - idonmez@suse.com
+
+- Disable libcxx/lldb/openmp for SLE fate#319582 
+
+-------------------------------------------------------------------
+Mon Apr 25 07:25:22 UTC 2016 - idonmez@suse.com
+
+- Update rpmlintrc to whitelist libLTO.so 
+
+-------------------------------------------------------------------
+Mon Apr 11 08:45:56 UTC 2016 - idonmez@suse.com
+
+- Re-enable glibc-2.23 patch for Tumbleweed 
+
+-------------------------------------------------------------------
+Sun Apr 10 19:18:41 UTC 2016 - dmueller@suse.com
+
+- fix arm_suse_support.diff for armv6hl
+- adjust compile flags for llvm on armv6hl (fixes Mesa build)
+
+-------------------------------------------------------------------
+Mon Apr  4 17:53:14 UTC 2016 - idonmez@suse.com
+
+- Update llvm-remove-clang-only-flags.patch to remove
+  -Wcovered-switch-default flag for gcc compatibility.
+
+-------------------------------------------------------------------
+Wed Mar 16 09:28:51 UTC 2016 - idonmez@suse.com
+
+- Use gcc for stage1 bootstrap
+- Add back libstdc++-devel dependency for clang since libc++ is
+  only available for x86-64 atm.
+
+-------------------------------------------------------------------
+Thu Mar 10 12:05:39 UTC 2016 - idonmez@suse.com
+
+- Comment out glibc-2.23-libcxx.patch until glibc 2.23 actually
+  hits the Factory.
+
+-------------------------------------------------------------------
+Tue Mar  8 18:52:11 UTC 2016 - idonmez@suse.com
+
+- Update to llvm 3.8.0
+  * See http://llvm.org/releases/3.8.0/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.0/tools/clang/docs/ReleaseNotes.html
+- Fold lldb build into llvm and disable python support
+- Drop clang-disable-ada-extension.patch, libcxxabi-exceptions.patch
+  and cmake-host-triple.patch
+- Add revert-cmake-soname.patch to fix soname handling
+
+-------------------------------------------------------------------
+Wed Mar  2 09:08:12 UTC 2016 - idonmez@suse.com
+
+- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23 
+
+-------------------------------------------------------------------
+Sat Oct  3 17:00:28 UTC 2015 - mimi.vx@gmail.com
+
+-  Remove FFI support because its fragile 
+
+-------------------------------------------------------------------
+Sun Sep 27 12:03:57 UTC 2015 - idonmez@suse.com
+
+- Enable OpenMP for x86, x86_64, ppc64 and ppc64le 
+
+-------------------------------------------------------------------
+Mon Sep 14 13:10:49 UTC 2015 - idonmez@suse.com
+
+- Enable all targets on x86, x86_64 
+
+-------------------------------------------------------------------
+Wed Sep  2 08:14:39 UTC 2015 - idonmez@suse.com
+
+- Update to version 3.7.0
+  * See http://llvm.org/releases/3.7.0/docs/ReleaseNotes.html
+- Merge aarch64-suse-support.patch into arm_suse_support.diff
+- Refresh arm_suse_support.diff, llvm-fix-find-gcc5-install.patch
+- Remove llvm-fix-parsearmarch.patch, upstream.
+
+-------------------------------------------------------------------
+Tue May 26 11:54:49 CEST 2015 - ro@suse.de
+
+- fix build on s390x (one typo in ifarch and one change in filelist) 
+
+-------------------------------------------------------------------
+Mon May 25 13:59:37 UTC 2015 - idonmez@suse.com
+
+- Update to version 3.6.1
+  * No changelog upstream
+
+-------------------------------------------------------------------
+Fri Apr 24 12:19:33 UTC 2015 - idonmez@suse.com
+
+- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs. 
+
+-------------------------------------------------------------------
+Mon Mar  2 10:12:32 UTC 2015 - idonmez@suse.com
+
+- Update to version 3.6.0
+  * See http://llvm.org/releases/3.6.0/docs/ReleaseNotes.html
+- Add python-xml dependency for regression tests
+- Removed the following patches, fixed upstream:
+  * arm-remove-xfails.diff
+  * libcxx-libdir.patch
+  * llvm-config-lib64.patch
+  * llvm-fix-intrusiverefcntptr.patch
+
+-------------------------------------------------------------------
+Fri Feb 20 13:40:11 UTC 2015 - rguenther@suse.com
+
+- Add llvm-fix-intrusiverefcntptr.patch to fix build of LLVM tools
+  with GCC 5.
+- Add llvm-fix-find-gcc5-install.patch to properly find installed GCC 5.
+
+-------------------------------------------------------------------
+Wed Jan 28 10:08:43 UTC 2015 - idonmez@suse.com
+
+- Add a gcc dependency for clang, this is heavyweight but we need
+  libgcc_s which comes with the gcc package (bnc#893359)
+
+-------------------------------------------------------------------
+Fri Dec 12 12:36:22 UTC 2014 - idonmez@suse.com
+
+- Conditionalize libcxx{abi} build on build_libcxx variable
+- Turn libc++.so into an ldscript so it links to libc++abi
+  automatically.
+
+-------------------------------------------------------------------
+Tue Oct 21 08:39:22 UTC 2014 - dmueller@suse.com
+
+- fix constraints for armv6l/armv7l (there is no 4GB RAM on 32bit)
+
+-------------------------------------------------------------------
+Mon Sep 29 09:40:52 UTC 2014 - idonmez@suse.com
+
+- Rename llvm-remove-werror-date-time.patch to 
+  llvm-remove-clang-only-flags.patch and remove more clang only
+  flags.
+
+-------------------------------------------------------------------
+Fri Sep 26 08:54:08 UTC 2014 - idonmez@suse.com
+
+- Enable shared libs on PPC64
+
+-------------------------------------------------------------------
+Thu Sep 25 10:16:50 UTC 2014 - idonmez@suse.com
+
+- Require llvm-clang not just clang 
+
+-------------------------------------------------------------------
+Wed Sep 17 11:01:31 UTC 2014 - idonmez@suse.com
+
+- Add llvm-remove-werror-date-time.patch to remove -Werror=date-time
+  for CXXFLAGS, gcc does not support it and it creeps into
+  llvm-config --cflags
+
+-------------------------------------------------------------------
+Wed Sep 17 10:53:20 UTC 2014 - idonmez@suse.com
+
+- Remove wrong Requires from the llvm-devel package
+
+-------------------------------------------------------------------
+Wed Sep 17 08:09:17 UTC 2014 - idonmez@suse.com
+
+- Add default target triple form ARM, fixes bnc#893359
+
+-------------------------------------------------------------------
+Fri Sep  5 16:09:45 UTC 2014 - idonmez@suse.com
+
+- Use ninja for building
+
+-------------------------------------------------------------------
+Thu Sep  4 12:26:10 UTC 2014 - idonmez@suse.com
+
+- Update to llvm 3.5.0
+  * Major update, see http://llvm.org/releases/3.5.0/docs/ReleaseNotes.html
+- Use upstream pristine tarballs
+- Add libc++/libc++abi support clang (only on x86_64)
+- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling 
+- Add libcxx-libdir.patch to fix libdir on 64bit arches
+- Remove asan-disable-hugemalloctest.patch and 
+  cmake-patchversion.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Fri Aug 15 14:23:39 UTC 2014 - idonmez@suse.com
+
+- Fix the sed line for minimal damage.
+
+-------------------------------------------------------------------
+Wed Jul 23 19:45:30 UTC 2014 - idonmez@suse.com
+
+- Add baselibs.conf to source files
+
+-------------------------------------------------------------------
+Wed Jul 23 17:00:40 UTC 2014 - idonmez@suse.com
+
+- Add cmake-patchversion.patch to sync config.h.in
+  with config.h.cmake
+
+-------------------------------------------------------------------
+Tue Jul 22 12:09:53 UTC 2014 - idonmez@suse.com
+
+- Update to llvm 3.4.2
+  * Minor bugfix release
+- Drop clang-max_align_t.patch, applied upstream.
+
+-------------------------------------------------------------------
+Sat Jun 21 13:40:52 UTC 2014 - arnaud@versini.eu
+
+- Add clang-max_align_t.patch to resolve issue with libstdc++ 4.9
+  max_align_t missing declaration
+
+-------------------------------------------------------------------
+Tue May 13 10:44:33 UTC 2014 - peter.trommler@ohm-hochschule.de
+
+- build compiler-rt on ppc64 (don't delete it) 
+
+-------------------------------------------------------------------
+Thu Apr  3 11:58:28 UTC 2014 - idonmez@suse.com
+
+- Fix resource dir for libclang case (clang-resourcedirs.patch)
+- Always build tests
+
+-------------------------------------------------------------------
+Sat Feb 22 18:18:57 CET 2014 - ro@suse.de
+
+- complete ifarchs for s390 
+
+-------------------------------------------------------------------
+Fri Jan 24 13:15:48 UTC 2014 - idonmez@suse.com
+
+- Remove non-existing doc subpackage 
+
+-------------------------------------------------------------------
+Fri Jan 24 09:23:08 UTC 2014 - idonmez@suse.com
+
+- Add a dependency on ncurses-devel since libLLVM now links to
+  tinfo.
+
+-------------------------------------------------------------------
+Tue Jan 14 13:57:57 UTC 2014 - idonmez@suse.com
+
+- Add 32bit libclang bnc#857131
+
+-------------------------------------------------------------------
+Tue Jan  7 08:47:50 UTC 2014 - idonmez@suse.com
+
+- Update to final llvm 3.4 release
+  * See http://llvm.org/releases/3.4/docs/ReleaseNotes.html for
+    complete changelog.
+
+-------------------------------------------------------------------
+Tue Dec 24 13:47:24 UTC 2013 - idonmez@suse.com
+
+- Update to final release candidate (r197980)
+
+-------------------------------------------------------------------
+Sat Dec 21 18:20:20 UTC 2013 - idonmez@suse.com
+
+- Update to r197866 from release_34 branch
+
+-------------------------------------------------------------------
+Tue Dec 17 11:31:23 UTC 2013 - idonmez@suse.com
+
+- Update to r197490 from release_34 branch
+
+-------------------------------------------------------------------
+Thu Dec 12 10:43:42 UTC 2013 - idonmez@suse.com
+
+- Update to r197142 from release_34 branch
+- Disable assertions again now that PPC64 backend is fixed
+
+-------------------------------------------------------------------
+Tue Dec 10 09:48:59 UTC 2013 - idonmez@suse.com
+
+- Update to r196899 from release_34 branch
+- Remove compiler_rt-r196612.patch, merged upstream
+
+-------------------------------------------------------------------
+Mon Dec  9 11:42:44 UTC 2013 - idonmez@suse.com
+
+- Add compiler_rt-r196612.patch to fix ubsan failures on i586
+
+-------------------------------------------------------------------
+Mon Dec  9 08:54:48 UTC 2013 - idonmez@suse.com
+
+- Update to r196762 from release_34 branch
+
+-------------------------------------------------------------------
+Mon Dec  9 02:23:07 UTC 2013 - dvaleev@suse.com
+
+- enable ppc64le
+
+-------------------------------------------------------------------
+Thu Dec  5 13:10:13 UTC 2013 - idonmez@suse.com
+
+- Update to r196503 from release_34 branch to get compiler_rt fixes
+
+-------------------------------------------------------------------
+Thu Dec  5 08:31:52 UTC 2013 - idonmez@suse.com
+
+- Update to r196487 from release_34 branch to get compiler_rt fixes
+
+-------------------------------------------------------------------
+Wed Dec  4 13:33:55 UTC 2013 - idonmez@suse.com
+
+- Ship cmake files for llvm (needed for lldb and such)
+
+-------------------------------------------------------------------
+Wed Dec  4 10:07:59 UTC 2013 - idonmez@suse.com
+
+- Update to r196371 from release_34 branch 
+
+-------------------------------------------------------------------
+Wed Dec  4 03:27:29 UTC 2013 - termim@gmail.com
+
+- install python binding to libclang
+
+-------------------------------------------------------------------
+Mon Dec  1 08:42:08 UTC 2013 - idonmez@suse.com
+
+- Update to r196358 from llvm 3.4 branch
+- Add asan-disable-hugemalloctest.patch to disable
+  ASAN HugeMallocTest, it requires 4.1+ GB of RAM.
+- Refresh patches
+  * aarch64-suse-support.patch
+  * arm_suse_support.diff
+  * assume-opensuse.patch
+  * default-to-i586.patch
+- Drop upstream patches
+  * llvm-disable-pretty-stack-trace.patch
+  * r189852.diff
+  * unreachable-code.patch
+  * llvm-no-visibility.patch
+
+-------------------------------------------------------------------
+Tue Oct 22 20:57:00 UTC 2013 - dmueller@suse.com
+
+- add r189852.diff: Remove vtables optimisation that breaks ARM
+  and PowerPC
+- Disable testsuite on ARMv7, takes forever to run
+
+-------------------------------------------------------------------
+Thu Oct 17 10:23:32 UTC 2013 - schwab@suse.de
+
+- Fix file list for %arm
+
+-------------------------------------------------------------------
+Wed Oct  9 11:16:08 UTC 2013 - dmueller@suse.com
+
+- use %arm, not arm in arch conditions 
+- add arm-remove-xfails.diff: remove XFAILs in testsuite
+  that pass and thereby make check fail
+
+-------------------------------------------------------------------
+Fri Sep 27 15:15:58 UTC 2013 - idonmez@suse.com
+
+- Set DisablePrettyStackTrace to true since it messes up signal
+  handling. bnc#839074 and fdo#60929 implemented with
+  llvm-disable-pretty-stack-trace.patch)
+
+-------------------------------------------------------------------
+Wed Aug 28 20:31:11 UTC 2013 - schwab@suse.de
+
+- Fix filelist for aarch64
+
+-------------------------------------------------------------------
+Wed Aug 28 11:07:16 UTC 2013 - schwab@suse.de
+
+- aarch64-suse-support.patch: Enable AArch64 suse toolchain support
+
+-------------------------------------------------------------------
+Wed Aug 28 11:02:06 UTC 2013 - idonmez@suse.com
+
+- Add s390x support 
+
+-------------------------------------------------------------------
+Wed Aug 28 10:57:32 UTC 2013 - idonmez@suse.com
+
+- Remove unused chrpath dependency
+- Re-enable ARCMT since libclang depends on it
+
+-------------------------------------------------------------------
+Mon Aug 26 07:23:57 UTC 2013 - schwab@suse.de
+
+- Define host_triple for aarch64
+
+-------------------------------------------------------------------
+Thu Aug 22 10:59:28 UTC 2013 - idonmez@suse.com
+
+- Fix ARMv6 build
+
+-------------------------------------------------------------------
+Wed Aug 21 11:04:35 UTC 2013 - idonmez@suse.com
+
+- Only enable PowerPC on ppc64 
+
+-------------------------------------------------------------------
+Mon Aug 12 16:43:26 UTC 2013 - idonmez@suse.com
+
+- Disable shared libs on PowerPC 
+- Disable ARCMT, it only makes sense for iOS/OSX
+
+-------------------------------------------------------------------
+Tue Aug  6 05:51:46 UTC 2013 - idonmez@suse.com
+
+- Fix build 
+
+-------------------------------------------------------------------
+Wed Jul 17 12:54:40 UTC 2013 - idonmez@suse.com
+
+- Disable building unit-tests, should fix undefined reference
+  problem on ARM & PowerPC 
+
+-------------------------------------------------------------------
+Tue Jul 16 08:35:00 UTC 2013 - coolo@suse.com
+
+- do not build on slow or low memory workers
+
+-------------------------------------------------------------------
+Thu Jul  4 11:55:43 UTC 2013 - idonmez@suse.com
+
+- Drop disable_neon_in_armv7.diff, neon seems to be working fine
+- Add cmake-host-triple.patch to pass a host triple argument
+
+-------------------------------------------------------------------
+Wed Jul  3 13:13:25 UTC 2013 - idonmez@suse.com
+
+- Create libLLVM and libclang subpackages.
+
+-------------------------------------------------------------------
+Wed Jun 19 12:58:24 UTC 2013 - llunak@suse.com
+
+- Fix finding internal headers on x86_64
+
+-------------------------------------------------------------------
+Wed Jun 19 12:41:30 UTC 2013 - idonmez@suse.com
+
+- Fix ARM v5/v7 builds
+
+-------------------------------------------------------------------
+Tue Jun 18 13:42:57 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Create a baselibs.conf
+  Provide *-32 Bit Packages for x86_64
+
+-------------------------------------------------------------------
+Thu Jun 13 18:33:31 UTC 2013 - tobias.johannes.klausmann@mni.thm.de
+
+- Initial version of a cmake based buildscript
+  + Updated arm_suse_support.diff (patch6) to work with llvm 3.3
+  + Set version in spec to 3.3
+
+-------------------------------------------------------------------
+Thu Jun 13 11:42:33 UTC 2013 - idonmez@suse.com
+
+- Update to final 3.3 release (r183898)
+
+-------------------------------------------------------------------
+Fri May 24 11:21:39 UTC 2013 - idonmez@suse.com
+
+- Disable debug symbols on PPC64
+
+-------------------------------------------------------------------
+Tue May 21 09:46:02 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.3 RC2
+  * Small bugfixes
+
+-------------------------------------------------------------------
+Tue May 14 11:23:07 UTC 2013 - idonmez@suse.com
+
+- Enable ARM64 support
+
+-------------------------------------------------------------------
+Thu May  9 09:05:41 UTC 2013 - idonmez@suse.com
+
+- Add unreachable-code.patch to fix unreachable code warnings on SLE 
+
+-------------------------------------------------------------------
+Wed May  8 08:56:28 UTC 2013 - idonmez@suse.com
+
+- Update to version 3.3 RC1
+    * Added support for AArch64, ARM’s 64-bit architecture.
+    * LLVM now has a new SLP vectorizer.
+    * LLVM and clang now support IBM’s z/Architecture.
+    * The R600 backend was added in this release, it supports
+      AMD GPUs (HD2XXX - HD7XXX).
+    * See http://llvm.org/releases/3.3/docs/ReleaseNotes.html for
+      complete changelog.
+
+- Drop upstream patches:
+    * pr13303.patch
+    * pr14795.patch
+    * pr14831.patch
+    * python-ulimit.patch
+
+-------------------------------------------------------------------
+Wed Jan 16 18:38:01 UTC 2013 - llunak@suse.com
+
+- pr13303.patch: reapply, was temporarily reverted upstream
+
+-------------------------------------------------------------------
+Fri Jan 11 11:56:09 UTC 2013 - idonmez@suse.com
+
+- Add pre-generated doc files, remove sphinx dependency 
+
+-------------------------------------------------------------------
+Tue Jan  8 15:16:56 UTC 2013 - llunak@suse.com
+
+- pr14795.patch: Fix incorrect line numbers after -frewrite-includes
+  (PR#14795)
+- pr14831.patch: Do not incorrectly warn about pragmas in -frewrite-includes
+  (PR#14831)
+
+-------------------------------------------------------------------
+Mon Dec 31 09:29:12 UTC 2012 - dmueller@suse.com
+
+- disable cross-compile mode in stage2 for armv5/v7
+
+-------------------------------------------------------------------
+Thu Dec 20 14:51:18 UTC 2012 - idonmez@suse.com
+
+- Update to final 3.2 release
+  * No code changes since rc3
+
+-------------------------------------------------------------------
+Sun Dec 16 08:44:03 UTC 2012 - idonmez@suse.com
+
+- Update to r170281 from release_32 branch
+  * SROA fixes
+
+-------------------------------------------------------------------
+Fri Dec 14 18:13:40 UTC 2012 - idonmez@suse.com
+
+- Disable compilation on PPC, only PPC64 is supported.
+
+-------------------------------------------------------------------
+Fri Dec 14 13:18:39 UTC 2012 - idonmez@suse.com
+
+- Add python-ulimit.patch: Don't set a limit on address space.
+  This enables us running tests on PowerPC.
+
+-------------------------------------------------------------------
+Wed Dec 12 11:08:16 UTC 2012 - idonmez@suse.com
+
+- Unbreak PowerPC support
+
+-------------------------------------------------------------------
+Sat Dec  8 15:45:07 UTC 2012 - idonmez@suse.com
+
+- Update to r169678 from release_32 branch
+  * This is 3.2rc3
+
+-------------------------------------------------------------------
+Wed Dec  5 17:27:57 UTC 2012 - idonmez@suse.com
+
+- Update to r169391 from release_32 branch
+  * SROA fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 13:15:12 UTC 2012 - guillaume@opensuse.org
+
+- Fix ARM build
+
+-------------------------------------------------------------------
+Mon Dec  3 13:32:14 UTC 2012 - schuetzm@gmx.net
+
+- Fix llvm-config --libdir to return /usr/lib64 where appropriate.
+  The old method of using sed on the executable does no longer
+  work, because llvm-config is now a binary.
+
+-------------------------------------------------------------------
+Fri Nov 30 07:27:46 UTC 2012 - idonmez@suse.com
+
+- Update to r168987 from release_32 branch
+  * Crash fixes
+  * Miscompilation fixes
+
+-------------------------------------------------------------------
+Tue Nov 20 08:59:09 UTC 2012 - idonmez@suse.com
+
+- Stop excluding ppc64 architecture 
+
+-------------------------------------------------------------------
+Tue Nov 20 08:25:54 UTC 2012 - idonmez@suse.com
+
+- Update to r168357 from release_32 branch
+  * Fixes a miscompilation with gcc 4.7
+
+-------------------------------------------------------------------
+Sun Nov 18 15:28:10 UTC 2012 - idonmez@suse.com
+
+- Update to r168286 from release_32 branch
+  * Fixes llvm PR14309
+
+-------------------------------------------------------------------
+Thu Nov 15 08:21:58 UTC 2012 - idonmez@suse.com
+
+- Update to r168031 from release_32 branch
+  * This is 3.2rc1
+
+-------------------------------------------------------------------
+Mon Nov 12 08:05:08 UTC 2012 - idonmez@suse.com
+
+- Update to r167720 from release_32 branch
+  * Thread local variables may have a specified TLS model.
+  * LLVM now has a loop optimizer.
+  * SROA has been rewritten to be more powerful.
+  * A new optimization pass added to merge stack objects
+    which are used in disjoint areas of the code.
+  * LLVM now merge consecutive loads and stores.
+  * New TableGen infrastructure to support bundling for
+    Very Long Instruction Word (VLIW) architectures.
+  * Added a new target independent VLIW packetizer.
+  * A probability based block placement and code layout algorithm
+    was added to LLVM's code generator.
+  * The ARM target now includes a full featured macro assembler,
+    including direct-to-object module support for clang.
+  * A new IR-level pass, called "TargetTransformInfo" provides
+    a number of low-level interfaces.
+
+- Refresh default-to-i586.patch to apply again
+- Drop following patches (fixed upstream)
+  * arm-suse-support.patch
+  * pr12463.patch
+  * pr13141.patch
+  * pr13303.patch
+  * rewrite-includes.patch
+  * clang-fix-mips-test.patch (fixed differently in spec file)
+
+-------------------------------------------------------------------
+Sat Oct 27 06:01:06 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire groff for man pages
+
+-------------------------------------------------------------------
+Mon Sep 10 10:16:41 UTC 2012 - idonmez@suse.com
+
+- Fix debuginfo generation
+
+-------------------------------------------------------------------
+Thu Jul 19 14:14:20 UTC 2012 - llunak@suse.com
+
+- make link time optimization plugin accessible to ar/nm/ranlib
+- build the plugin properly
+
+-------------------------------------------------------------------
+Thu Jul 14 17:30:58 UTC 2012 - adrian@suse.de
+
+- fix arm build
+
+-------------------------------------------------------------------
+Fri Jul 13 21:03:40 UTC 2012 - llunak@suse.com
+
+- change rewrite-includes patch to use options to match upstream
+  changed option names
+
+-------------------------------------------------------------------
+Fri Jul 13 10:14:15 UTC 2012 - llunak@suse.com
+
+- fix debuginfo generation (PR#13303)
+
+-------------------------------------------------------------------
+Mon Jun 18 20:26:51 UTC 2012 - llunak@suse.com
+
+- Do not reject PCH because of -DFOO duplication (PR#13141)
+
+-------------------------------------------------------------------
+Tue May 15 09:01:26 UTC 2012 - idonmez@suse.com
+
+- Update to final 3.1 release 
+
+-------------------------------------------------------------------
+Thu May 10 11:40:06 UTC 2012 - idonmez@suse.com
+
+- Depend on python-base so we don't pull whole Mesa 
+
+-------------------------------------------------------------------
+Tue May  8 08:21:42 UTC 2012 - llunak@suse.com
+
+- make -rewrite-includes support -C and -CC
+
+-------------------------------------------------------------------
+Thu May  3 07:32:06 UTC 2012 - llunak@suse.com
+
+- patch for -rewrite-includes feature
+
+-------------------------------------------------------------------
+Mon Apr 30 12:39:14 UTC 2012 - idonmez@suse.com
+
+- Update to svn revision 155819 from 3.1 branch
+  * C++11 fixes
+
+-------------------------------------------------------------------
+Fri Apr 27 10:02:17 UTC 2012 - idonmez@suse.com
+
+- Update to svn revision 155700 from 3.1 branch
+  * Crash fixes
+  * C++11 fixes
+
+-------------------------------------------------------------------
+Thu Apr 26 12:35:35 UTC 2012 - idonmez@suse.com
+
+- Update to svn revision 155574 from 3.1 branch
+  * Crash fixes
+  * Correctly enable compiler-rt
+  * Remove unneeded runtime python dependencies
+
+-------------------------------------------------------------------
+Thu Apr 26 10:55:02 UTC 2012 - idonmez@suse.com
+
+- Switch to 2-stage bootstrap because we don't do build-compare
+  anyway.
+
+-------------------------------------------------------------------
+Wed Apr 25 09:40:32 UTC 2012 - idonmez@suse.com
+
+- More fixes to llvm-config 
+
+-------------------------------------------------------------------
+Tue Apr 24 10:12:32 UTC 2012 - idonmez@suse.com
+
+- Fix llvm-config --libs output 
+
+-------------------------------------------------------------------
+Sun Apr 22 19:24:24 UTC 2012 - idonmez@suse.com
+
+- Update to svn revision 155320 from 3.1 branch
+  * AVX fixes 
+
+-------------------------------------------------------------------
+Tue Apr 17 07:48:50 UTC 2012 - idonmez@suse.com
+
+- Update to svn revision 154914 from 3.1 branch 
+
+  Major new features:
+
+      * AddressSanitizer, a fast memory error detector.
+      * MachineInstr Bundles, Support to model instruction 
+        bundling / packing.
+      * ARM Integrated Assembler, A full featured assembler 
+        and direct-to-object support for ARM.
+      * Basic Block Placement Probability driven basic block placement.
+  
+  LLVM IR and Core Improvements
+     
+      * IR support for half float
+      * IR support for vectors of pointers, including vector GEPs.
+      * Module flags have been introduced.
+      * Loads can now have range metadata attached to them to 
+        describe the possible values being loaded. 
+      * Inline cost heuristics have been completely overhauled 
+        and now closely model constant propagation through call sites, 
+        disregard trivially dead code costs, and 
+        can model C++ STL iterator patterns.
+   
+  Optimizer Improvements
+
+      * The loop unroll pass now is able to unroll loops with 
+        run-time trip counts. This feature is turned off by default, 
+        and is enabled with the -unroll-runtime flag.
+      * A new basic-block autovectorization pass is available. 
+        Pass -vectorize to run this pass along with some associated 
+        post-vectorization cleanup passes. 
+
+   X86-32 and X86-64 Target Improvements
+
+      * Bug fixes and improved support for AVX1
+      * Support for AVX2 (still incomplete at this point)
+   
+   ARM Target Improvements
+
+      * The constant island pass now supports basic block and 
+        constant pool entry alignments greater than 4 bytes.
+
+   Clang Changes
+
+      * New: -Wdangling-else, -Wstrncat-size
+      * Improved: -Wformat, -Wempty-body, -Wliteral-conversion
+      * Clang 3.1 adds support for anonymous structs and anonymous unions, 
+        added in the latest ISO C standard. Use -std=c11 or -std=gnu11 
+        to enable support for the new language standard. 
+        The new C11 features are backwards-compatible and are available 
+        as an extension in all language modes.
+      * All warning and language selection flags which previously accepted 
+        c1x have been updated to accept c11. The old c1x forms have been removed.
+      * Generalized constant expressions
+      * Lambda expressions
+      * Generalized initializers
+      * Unrestricted unions
+      * User-defined literals
+      * Forward-declared enumerations
+      * Atomics (both libc++'s and libstdc++4.7's <atomic> are supported)
+      
+
+-------------------------------------------------------------------
+Tue Mar 20 12:40:27 UTC 2012 - idonmez@suse.com
+
+- Target i586-linux for 32bit builds 
+
+-------------------------------------------------------------------
+Tue Dec 27 21:33:48 UTC 2011 - idonmez@suse.com
+
+- Add upstream fix for llvm PR11642 
+
+-------------------------------------------------------------------
+Sun Dec 25 15:29:46 UTC 2011 - idonmez@suse.com
+
+- Don't run gcc for ada files, just fail instead. 
+
+-------------------------------------------------------------------
+Thu Dec 22 15:33:24 UTC 2011 - idonmez@suse.com
+
+- Add clang-glibc2.14.patch to support glibc 2.14 headers
+- Install profiling support
+
+-------------------------------------------------------------------
+Mon Dec  5 13:19:22 UTC 2011 - idoenmez@suse.de
+
+- Switch to 3-stage bootstrap 
+
+-------------------------------------------------------------------
+Fri Dec  2 12:22:07 UTC 2011 - idoenmez@suse.de
+
+- Build first stage compiler with -O0 to workaround gcc 4.5 bug 
+
+-------------------------------------------------------------------
+Thu Dec  1 18:04:15 UTC 2011 - idoenmez@suse.de
+
+- Update to final 3.0 release
+  * No real change since rc2
+
+-------------------------------------------------------------------
+Tue Nov 29 13:23:32 UTC 2011 - idoenmez@suse.de
+
+- Use %{_lib} macro instead of checking for x86_64
+
+-------------------------------------------------------------------
+Wed Nov 16 14:28:17 UTC 2011 - idonmez@suse.com
+
+- Enable ARM support again
+- Switch to optimized build
+
+-------------------------------------------------------------------
+Thu Nov 10 14:54:50 UTC 2011 - idonmez@suse.com
+
+- Disable ARM support, VM goes out of memory while compiling it 
+
+-------------------------------------------------------------------
+Thu Nov 10 10:33:01 UTC 2011 - idonmez@suse.com
+
+- Really enable ARM support
+- Remove forcing -frtti
+
+-------------------------------------------------------------------
+Mon Nov  7 15:05:52 UTC 2011 - idonmez@suse.com
+
+- Update to r143961 from llvm-3.0 branch
+  * No longer hardcoding include paths
+
+-------------------------------------------------------------------
+Mon Nov  7 09:17:40 UTC 2011 - idonmez@suse.com
+
+- Fix LLVMgold.so path for x86-64 
+
+-------------------------------------------------------------------
+Sun Nov  6 22:03:12 UTC 2011 - idonmez@suse.com
+
+- Enable ld gold support 
+
+-------------------------------------------------------------------
+Tue Nov  1 11:31:57 UTC 2011 - idonmez@suse.com
+
+- Update r143456 from llvm-3.0 branch
+  * llvm/clang 3.0rc2
+
+-------------------------------------------------------------------
+Fri Oct 28 20:54:16 UTC 2011 - idonmez@suse.com
+
+- Add llvm-pr9614-part{1,2}.patch to fix LLVM PR9614 
+
+-------------------------------------------------------------------
+Fri Oct 28 08:23:03 UTC 2011 - idonmez@suse.com
+
+- Fixup dependencies so that llvm-clang doesn't depend 
+  on llvm-clang-devel
+
+-------------------------------------------------------------------
+Tue Oct 25 07:13:47 UTC 2011 - idonmez@suse.com
+
+- Update to r142912 llvm-3.0 branch
+  * Fixes to python bindings
+
+-------------------------------------------------------------------
+Fri Oct 21 06:57:07 UTC 2011 - idonmez@suse.com
+
+- Update to r142641
+  * llvm/clang 3.0 rc1
+
+-------------------------------------------------------------------
+Thu Oct 20 17:56:08 UTC 2011 - idonmez@suse.com
+
+- Enable ARM code generation 
+
+-------------------------------------------------------------------
+Wed Oct 19 15:47:10 UTC 2011 - idonmez@suse.com
+
+- Fix libdir on x86_64 
+
+-------------------------------------------------------------------
+Tue Oct 18 10:42:09 UTC 2011 - idonmez@suse.com
+
+- Update to r142341
+  * First build from 3.0 branch
+  * -Wc++98-compat warnings for the lexer
+  * Add flags for the remaining shift related warnings
+    (-Wshift-count-negative, -Wshift-count-overflow).
+  * Only warn in -Wliteral-conversion if the conversion 
+    loses information
+  * Added clang_getCompletionAnnotation and 
+    clang_getCompletionNumAnnotations to retrieve annotations 
+    from completion string.
+  * Add support for -std=gnu90 and -std=c++03, for compatibility 
+    with modern gcc.
+- Switch to tar.bz2 and remove xz dependency
+
+-------------------------------------------------------------------
+Thu Sep 29 08:10:42 UTC 2011 - idonmez@suse.com
+
+- Update to r140780
+  * Code cleanup
+  * Crash fixes
+  * Add support for alignment-specifiers in C1X and C++11
+  * Introduce a new compiler switch: -fms-compatility
+  * Emit debug info for c++0x nullptr.
+
+-------------------------------------------------------------------
+Tue Sep 13 07:36:30 UTC 2011 - idonmez@suse.com
+
+- Update to r139589
+  * C++0x fixes
+  * PCH fixes
+
+-------------------------------------------------------------------
+Thu Sep  1 14:03:14 UTC 2011 - idonmez@suse.com
+
+- Update to r138939
+  * Many crash fixes.
+  * Performance optimizations.
+  * Allow C99 hexfloats in C++0x mode.
+  * Add missing function _mm_ucomige_sd to emmintrin.h.
+
+-------------------------------------------------------------------
+Fri Aug 12 09:22:18 UTC 2011 - idonmez@novell.com
+
+- Update to r137452
+  * Fix problems found by PVS-Studio
+  * More AVX fixes
+  * Many C++ fixes
+- Add assume-opensuse.patch to remove dependency on openSUSE-release
+
+-------------------------------------------------------------------
+Wed Aug  3 11:18:31 UTC 2011 - idonmez@novell.com
+
+- Update to r136773 
+  * Many AVX fixes
+  * Support for C++0x unicode string and character literals
+
+-------------------------------------------------------------------
+Tue Jul 19 14:03:21 UTC 2011 - vljn@ovi.com
+
+- Update to r135431
+  * API changes to match Mesa requirements
+
+-------------------------------------------------------------------
+Mon Jul 11 08:33:59 UTC 2011 - idonmez@novell.com
+
+- Update to r134888
+  * Type system rewrite 
+
+-------------------------------------------------------------------
+Sat Jul  9 09:27:17 UTC 2011 - idonmez@novell.com
+
+- Update to r134813
+  * Mainly gcc compatibility fixes 
+
+-------------------------------------------------------------------
+Fri Jul  8 11:31:27 UTC 2011 - idonmez@novell.com
+
+- Update to r134698
+  * Up to 80x speed improvements with -Wuninitialized 
+
+-------------------------------------------------------------------
+Thu Jul  7 11:37:40 UTC 2011 - idonmez@novell.com
+
+- Enable RTTI support
+- Disable assertions because they are not thread safe
+- Update to r134611
+  * Many C++ fixes and speedups
+  * Updates for AVX instruction support 
+  * gcc 4.6.1 support
+
+-------------------------------------------------------------------
+Sat Jul  2 19:31:38 UTC 2011 - idonmez@novell.com
+
+-  Fix manpage generation (bnc #703591)
+
+-------------------------------------------------------------------
+Sun Jun  5 14:39:53 UTC 2011 - idonmez@novell.com
+
+- Update to r132667 
+
+-------------------------------------------------------------------
+Sun May 29 16:34:46 UTC 2011 - idonmez@novell.com
+
+- Update to use cmake buildsystem
+- Remove unmaintained ocaml support 
+
+-------------------------------------------------------------------
+Thu May 26 11:01:57 UTC 2011 - idonmez@novell.com
+
+- Drop ocaml support because its unmaintained
+- Update to latest svn revision 132050 
+  + Start of the upcoming 3.0 version
+  + Support for gcc 4.6 c++ headers
+  + Better support for C++0x
+
+-------------------------------------------------------------------
+Fri Apr 29 12:07:59 UTC 2011 - idoenmez@novell.com
+
+- Fix ocaml dependency 
+
+-------------------------------------------------------------------
+Thu Apr  7 08:22:48 UTC 2011 - idoenmez@novell.com
+
+- Update to 2.9
+  + Type Based Alias Analysis (TBAA) is now implemented in clang
+  + LLVM now generates better debug information
+  + Inline assembly now supports multiple alternative constraints
+
+-------------------------------------------------------------------
+Wed Apr  6 18:50:59 CEST 2011 - stepan@coresystems.de
+
+- drop revision from Requires: fields
+- update to 2.8.99 revision 129008.
+
+-------------------------------------------------------------------
+Mon Mar  7 20:09:51 CET 2011 - jslaby@suse.de
+
+- spec file cleanup
+
+-------------------------------------------------------------------
+Wed Dec 22 11:41:15 UTC 2010 - dmacvicar@suse.de
+
+- Do not require specific ffi version but gather the
+  appropiate one from the distro 
+
+-------------------------------------------------------------------
+Fri Dec 10 04:57:21 UTC 2010 - reddwarf@opensuse.org
+
+- Fix compatibility with C++0x compilers (g++ 4.5)
+
+-------------------------------------------------------------------
+Mon Nov 29 10:31:49 UTC 2010 - ismail@namtrac.org
+
+- Fix C include paths 
+
+-------------------------------------------------------------------
+Fri Nov 26 12:48:54 UTC 2010 - ismail@namtrac.org
+
+- Fix header path for openSUSE 11.4
+- Enabled PIC for x86 for loadable module support
+- Enable package tests for llvm and clang
+- Disable package timestamps to silence an rpmlint warning 
+
+-------------------------------------------------------------------
+Wed Jun  2 00:00:00 UTC 2010 - anschneider@exsuse.de
+
+- Fixed the build on x86 plattforms.
+- Package the clang c++-analyzer.
+
+-------------------------------------------------------------------
+Sat May  1 00:00:00 UTC 2010 - jslaby@suse.de
+
+- update to llvm 2.7
+
+-------------------------------------------------------------------
+Mon Mar 15 00:00:00 UTC 2010 - jslaby@suse.de
+
+- added vim plugins
+
+-------------------------------------------------------------------
+Sun Mar 14 00:00:00 UTC 2010 - jslaby@suse.de
+
+- added libffi-devel to llvm-devel requires so that build does not fail
+- fixed build of explicit constructors with gcc45
+
+-------------------------------------------------------------------
+Mon Nov  2 00:00:00 UTC 2009 - jslaby@suse.de
+
+- Initial 2.6 release
+

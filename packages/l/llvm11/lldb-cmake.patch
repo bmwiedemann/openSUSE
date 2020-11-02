@@ -1,0 +1,28 @@
+Index: lldb-10.0.0rc1.src/source/Core/IOHandlerCursesGUI.cpp
+===================================================================
+--- lldb-10.0.0rc1.src.orig/source/Core/IOHandlerCursesGUI.cpp
++++ lldb-10.0.0rc1.src/source/Core/IOHandlerCursesGUI.cpp
+@@ -10,8 +10,8 @@
+ #include "lldb/Host/Config.h"
+ 
+ #if LLDB_ENABLE_CURSES
+-#include <curses.h>
+-#include <panel.h>
++#include <ncurses/curses.h>
++#include <ncurses/panel.h>
+ #endif
+ 
+ #if defined(__APPLE__)
+Index: lldb-10.0.0rc1.src/source/Host/CMakeLists.txt
+===================================================================
+--- lldb-10.0.0rc1.src.orig/source/Host/CMakeLists.txt
++++ lldb-10.0.0rc1.src/source/Host/CMakeLists.txt
+@@ -143,6 +143,8 @@ endif()
+ set(EXTRA_LIBS)
+ if (CMAKE_SYSTEM_NAME MATCHES "NetBSD")
+   list(APPEND EXTRA_LIBS kvm)
++elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
++  list(APPEND EXTRA_LIBS dl pthread)
+ endif()
+ if (LLDB_ENABLE_LIBXML2)
+   list(APPEND EXTRA_LIBS ${LIBXML2_LIBRARIES})

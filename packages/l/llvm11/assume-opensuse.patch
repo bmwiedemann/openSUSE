@@ -1,0 +1,34 @@
+Index: cfe-8.0.0rc3.src/lib/Driver/Distro.cpp
+===================================================================
+--- cfe-8.0.0rc3.src.orig/lib/Driver/Distro.cpp
++++ cfe-8.0.0rc3.src/lib/Driver/Distro.cpp
+@@ -19,6 +19,8 @@ using namespace clang::driver;
+ 
+ static Distro::DistroType DetectDistro(llvm::vfs::FileSystem &VFS,
+                                        const llvm::Triple &TargetOrHost) {
++    return Distro::OpenSUSE;
++/*
+   // If we don't target Linux, no need to check the distro. This saves a few
+   // OS calls.
+   if (!TargetOrHost.isOSLinux())
+@@ -141,7 +143,7 @@ static Distro::DistroType DetectDistro(l
+   if (VFS.exists("/etc/gentoo-release"))
+     return Distro::Gentoo;
+ 
+-  return Distro::UnknownDistro;
++  return Distro::UnknownDistro;*/
+ }
+ 
+ Distro::Distro(llvm::vfs::FileSystem &VFS, const llvm::Triple &TargetOrHost)
+Index: cfe-8.0.0rc3.src/unittests/Driver/CMakeLists.txt
+===================================================================
+--- cfe-8.0.0rc3.src.orig/unittests/Driver/CMakeLists.txt
++++ cfe-8.0.0rc3.src/unittests/Driver/CMakeLists.txt
+@@ -5,7 +5,6 @@ set(LLVM_LINK_COMPONENTS
+   )
+ 
+ add_clang_unittest(ClangDriverTests
+-  DistroTest.cpp
+   ToolChainTest.cpp
+   ModuleCacheTest.cpp
+   MultilibTest.cpp

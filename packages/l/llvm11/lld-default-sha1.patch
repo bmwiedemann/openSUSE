@@ -1,0 +1,13 @@
+Index: lld-10.0.0.src/ELF/Driver.cpp
+===================================================================
+--- lld-10.0.0.src.orig/ELF/Driver.cpp
++++ lld-10.0.0.src/ELF/Driver.cpp
+@@ -693,7 +693,7 @@ getBuildId(opt::InputArgList &args) {
+     return {BuildIdKind::None, {}};
+ 
+   if (arg->getOption().getID() == OPT_build_id)
+-    return {BuildIdKind::Fast, {}};
++    return {BuildIdKind::Sha1, {}};
+ 
+   StringRef s = arg->getValue();
+   if (s == "fast")
