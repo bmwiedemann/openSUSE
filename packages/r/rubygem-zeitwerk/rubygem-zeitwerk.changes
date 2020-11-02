@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 13:09:57 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.4.1
+
+  * Use `__send__` instead of `send` internally.
+
+-------------------------------------------------------------------
 Thu Jul 16 08:43:36 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.0
