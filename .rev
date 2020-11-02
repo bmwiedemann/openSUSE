@@ -284,4 +284,12 @@
   * Create new file when writing pidfile (CVE-2020-14367, bsc#1174911)</comment>
     <requestid>834313</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>0afcba5c454c81c77d26d4e07cef86b9</srcmd5>
+    <version>3.5.1</version>
+    <time>1604306443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844909</requestid>
+  </revision>
 </revisionlist>

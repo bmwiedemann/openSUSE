@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 07:49:37 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- By default we don't write log files but log to journald, so
+  only recommend logrotate.
+
+-------------------------------------------------------------------
 Mon Sep 14 10:41:58 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Adjust and rename the sysconfig file, so that it matches the
