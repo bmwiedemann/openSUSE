@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 06:52:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Tests: fix integration test timeout on GTK v3.24.23 (#91)
+
+-------------------------------------------------------------------
 Thu Oct 29 07:51:54 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

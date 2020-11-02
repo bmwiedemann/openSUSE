@@ -17,7 +17,7 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Library to create desktop components for Wayland
 License:        MIT AND LGPL-3.0-or-later AND GPL-3.0-or-later
@@ -91,7 +91,7 @@ This package provides the GObject Introspection bindings for gtk-layer-shell.
 %license LICENSE_MIT.txt LICENSE_LGPL.txt
 %doc README.md
 %{_libdir}/libgtk-layer-shell.so.0
-%{_libdir}/libgtk-layer-shell.so.0.?.0
+%{_libdir}/libgtk-layer-shell.so.0.?.?
 
 %files -n gtk-layer-shell-devel
 %{_libdir}/libgtk-layer-shell.so
