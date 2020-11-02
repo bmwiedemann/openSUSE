@@ -52,8 +52,8 @@ gzip opi.8.gz
 %install
 mkdir -p %{buildroot}%{_bindir}
 install %{name} %{buildroot}%{_bindir}
-mkdir -p %{buildroot}%{_datadir}/metadata
-cp org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metadata
+mkdir -p %{buildroot}%{_datadir}/metainfo
+cp org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo
 mkdir -p %{buildroot}%{_datadir}/man/man8
 cp opi.8.gz %{buildroot}%{_datadir}/man/man8
 
@@ -61,8 +61,8 @@ cp opi.8.gz %{buildroot}%{_datadir}/man/man8
 %license LICENSE
 %doc README.md screenshot.png
 %{_bindir}/%{name}
-%dir %{_datadir}/metadata
-%{_datadir}/metadata/org.openSUSE.opi.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
 %dir %{_datadir}/man
 %dir %{_datadir}/man/man8
 %{_datadir}/man/man8/opi.8.gz
