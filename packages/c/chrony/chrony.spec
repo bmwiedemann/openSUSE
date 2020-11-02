@@ -63,7 +63,7 @@ BuildRequires:  pps-tools-devel
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  rubygem(asciidoctor)
-Requires:       logrotate
+Recommends:     logrotate
 Requires(post): %fillup_prereq
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
