@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 18:20:34 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.12: This is a bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.12
+
+-------------------------------------------------------------------
 Wed Oct  7 08:48:06 UTC 2020 - pgajdos@suse.com
 
 - fix build for 15 and 15sp1

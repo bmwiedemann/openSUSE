@@ -960,4 +960,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>841752</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>95eb13a02195a74e12020bba8d2bc7bc</srcmd5>
+    <version>7.4.12</version>
+    <time>1604322240</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.12: This is a bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.12 (forwarded request 844919 from adkorte)</comment>
+    <requestid>844983</requestid>
+  </revision>
 </revisionlist>
