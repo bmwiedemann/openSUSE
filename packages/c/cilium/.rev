@@ -301,4 +301,28 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>826668</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5f495179f61bcc1b82c7876476f308a4</srcmd5>
+    <version>1.8.5</version>
+    <time>1604306478</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.5
+  * Release notes: https://github.com/cilium/cilium/releases/tag/v1.8.5
+- Remove patches which were included upstream:
+  * 0001-option-mark-keep-bpf-templates-as-deprecated.patch
+  * 0002-make-remove-the-need-for-go-bindata.patch
+  * 0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
+  * 0005-bpf-re-add-a-proper-types.h-mapper.patch
+  * 0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
+  * 0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
+  * 0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
+  * 0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
+  * 0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
+- Remove downstream patch which is not needed anymore (now it's
+  enough to just modify the Helm chart with sed to set out images):
+  * 0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
+- Add upstream patch for installing the operator binary:
+  * 0001-operator-make-Add-install-target.patch (forwarded request 845099 from mrostecki)</comment>
+    <requestid>845100</requestid>
+  </revision>
 </revisionlist>

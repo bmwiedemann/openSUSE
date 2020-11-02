@@ -35,7 +35,7 @@
 %endif
 
 Name:           cilium
-Version:        1.7.6
+Version:        1.8.5
 Release:        0
 Summary:        Linux Native, HTTP Aware Networking and Security for Containers
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -44,28 +44,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        cilium-cni-install
 Source3:        cilium-cni-uninstall
-# PATCH-FIX-UPSTREAM 0001-option-mark-keep-bpf-templates-as-deprecated.patch
-Patch1:         0001-option-mark-keep-bpf-templates-as-deprecated.patch
-# PATCH-FIX-UPSTREAM 0002-make-remove-the-need-for-go-bindata.patch
-Patch2:         0002-make-remove-the-need-for-go-bindata.patch
-# PATCH-FIX-UPSTREAM 0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
-Patch3:         0003-bpf-don-t-use-fixed-size-integer-types-from-stdint.h.patch
-# PATCH-FIX-OPENSUSE 0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
-# TODO(mrostecki): Submit it upstream after we confirm that our images work 100%
-# fine, also on aarch64.
-Patch4:         0004-helm-Allow-variables-for-compatibility-with-openSUSE.patch
-# PATCH-FIX-UPSTREAM 0005-bpf-re-add-a-proper-types.h-mapper.patch
-Patch5:         0005-bpf-re-add-a-proper-types.h-mapper.patch
-# PATCH-FIX-UPSTREAM 0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
-Patch6:         0006-build-Avoid-using-git-if-not-in-a-git-repo.patch
-# PATCH-FIX-UPSTREAM 0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
-Patch7:         0007-option-rename-PolicyMapMaxEntries-to-PolicyMapEntrie.patch
-# PATCH-FIX-UPSTREAM 0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
-Patch8:         0008-helm-allow-to-configure-bpf-nat-global-max-using-Hel.patch
-# PATCH-FIX-UPSTREAM 0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
-Patch9:         0009-option-reduce-default-number-for-TCP-CT-and-NAT-tabl.patch
-# PATCH-FIX-UPSTREAM 0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
-Patch10:        0010-daemon-add-option-to-dynamically-size-BPF-maps-based.patch
+# PATCH-FIX-UPSTREAM 0001-operator-make-Add-install-target.patch
+Patch0:         0001-operator-make-Add-install-target.patch
 # Cilium needs to be aware of the version string of cilium-proxy
 BuildRequires:  cilium-proxy
 BuildRequires:  clang
@@ -262,10 +242,10 @@ sed -i \
     -e 's|tag: v%{version}|tag: %{version}|' \
     %{buildroot}%{_datadir}/k8s-helm/cilium/values.yaml
 sed -i \
-    -e 's|cniInstallScript: /cni-install.sh|cniInstallScript: cilium-cni-install|' \
-    -e 's|cniUninstallScript: /cni-uninstall.sh|cniUninstallScript: cilium-cni-uninstall|' \
-    -e 's|initScript: /init-container.sh|initScript: cilium-init|' \
-    %{buildroot}%{_datadir}/k8s-helm/cilium/charts/agent/values.yaml
+    -e 's|/cni-install.sh|cilium-cni-install|' \
+    -e 's|/cni-uninstall.sh|cilium-cni-uninstall|' \
+    -e 's|/init-container.sh|cilium-init|' \
+    %{buildroot}%{_datadir}/k8s-helm/cilium/charts/agent/templates/daemonset.yaml
 sed -i \
     -e 's|image: operator|image: cilium-operator|' \
     %{buildroot}%{_datadir}/k8s-helm/cilium/charts/operator/values.yaml
@@ -273,6 +253,7 @@ sed -i \
 mkdir -p %{buildroot}%{bash_completion_dir}
 %{buildroot}%{_bindir}/cilium completion > %{buildroot}%{bash_completion_dir}/cilium
 rm %{buildroot}%{_sysconfdir}/bash_completion.d/cilium
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/hubble-relay %{buildroot}%{bash_completion_dir}/hubble-relay
 
 mv %{buildroot}%{_sysconfdir}/cni/net.d/05-cilium-cni.conf %{buildroot}%{_sysconfdir}/cni/net.d/10-cilium-cni.conf
 
@@ -308,6 +289,7 @@ getent group cilium >/dev/null || groupadd -r cilium
 
 %files
 %{bash_completion_dir}/cilium
+%{bash_completion_dir}/hubble-relay
 %{_fillupdir}/sysconfig.cilium
 %{_unitdir}/cilium-consul.service
 %{_unitdir}/cilium-etcd.service
@@ -324,6 +306,8 @@ getent group cilium >/dev/null || groupadd -r cilium
 %{_bindir}/cilium-init
 %{_bindir}/cilium-map-migrate
 %{_bindir}/cilium-node-monitor
+%{_bindir}/cilium-probe-kernel-hz
+%{_bindir}/hubble-relay
 %{_bindir}/maptool
 %{_localstatedir}/lib/cilium
 %license LICENSE
@@ -344,6 +328,9 @@ getent group cilium >/dev/null || groupadd -r cilium
 
 %files operator
 %{_bindir}/cilium-operator
+%{_bindir}/cilium-operator-aws
+%{_bindir}/cilium-operator-azure
+%{_bindir}/cilium-operator-generic
 
 %files -n %{lname}
 %{_libdir}/libcilium.so.%{sover}
