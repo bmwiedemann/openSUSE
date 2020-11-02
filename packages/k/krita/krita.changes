@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:56:59 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.4.1:
+  * See https://krita.org/en/item/krita-4-4-1-released/
+  * Fix a crash when loading a file with a pattern fill layer
+    (kde#427866)
+  * Fix loading masks with vector selections (kde#428332)
+  * Fix a crash in the text tool when opening the editor by
+    double-clicking the text (kde#427858)
+  * Fix a crash when using the move tool on a pixel selection
+    (kde#428260)
+- Add libheif-devel BuildRequires on Tumbleweed to enable HEIF
+  import/export filter
+
+-------------------------------------------------------------------
 Tue Oct 13 17:09:36 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Increase the minimum disk size for all archs.

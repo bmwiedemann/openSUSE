@@ -24,7 +24,7 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
@@ -43,6 +43,9 @@ BuildRequires:  gsl-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  libheif-devel
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel

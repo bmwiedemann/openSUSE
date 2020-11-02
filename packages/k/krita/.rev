@@ -502,4 +502,12 @@
   * Make Ctrl+C/X/V shortcut work with layers when there is nothing</comment>
     <requestid>841605</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>07936155567383e282ba80970c4ded59</srcmd5>
+    <version>4.4.1</version>
+    <time>1604306528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845095</requestid>
+  </revision>
 </revisionlist>
