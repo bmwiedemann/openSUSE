@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:37:22 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop use of $DISABLE_RESTART_ON_UPDATE in %postrans
+
+  Testing "$DISABLE_RESTART_ON_UPDATE != yes" had no effect since its
+  value is supposed to be read from /etc/sysconfig/services.
+
+-------------------------------------------------------------------
 Wed Oct 14 16:44:22 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Fix 'make check' with all downstream patches applied. Some

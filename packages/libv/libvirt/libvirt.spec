@@ -1229,7 +1229,7 @@ fi
 # shutdown. We can't use try-restart as libvirtd will own the sockets again
 # after restart. So we must instead shutdown libvirtd, start the sockets,
 # then start libvirtd.
-if test "$YAST_IS_RUNNING" != "instsys" -a "$DISABLE_RESTART_ON_UPDATE" != yes ; then
+if test "$YAST_IS_RUNNING" != "instsys"; then
     /usr/bin/systemctl is-active libvirtd.service >/dev/null 2>&1
     if test $? = 0 ; then
         /usr/bin/systemctl stop libvirtd.service >/dev/null 2>&1 || :
