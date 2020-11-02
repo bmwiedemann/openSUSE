@@ -89,20 +89,21 @@ Mon Nov  4 10:57:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
        in REVmd (allow only FFC groups with prime >= 3072 bits and ECC
        groups with prime >= 256)
      - minimize timing and memory use differences in PWE derivation
-       [https://w1.fi/security/2019-1/] (CVE-2019-9494)
+       [https://w1.fi/security/2019-1/] (CVE-2019-9494, bsc#1131868)
    * EAP-pwd changes
      - minimize timing and memory use differences in PWE derivation
-       [https://w1.fi/security/2019-2/] (CVE-2019-9495)
+       [https://w1.fi/security/2019-2/] (CVE-2019-9495, bsc#1131870)
      - verify server scalar/element
-       [https://w1.fi/security/2019-4/] (CVE-2019-9497, CVE-2019-9498, CVE-2019-9499)
+       [https://w1.fi/security/2019-4/] (CVE-2019-9497, CVE-2019-9498,
+       CVE-2019-9499, bsc#1131874, bsc#1131872, bsc#1131871, bsc#1131644)
      - fix message reassembly issue with unexpected fragment
-       [https://w1.fi/security/2019-5/] (CVE-2019-11555)
+       [https://w1.fi/security/2019-5/] (CVE-2019-11555, bsc#1133640)
      - enforce rand,mask generation rules more strictly
      - fix a memory leak in PWE derivation
      - disallow ECC groups with a prime under 256 bits (groups 25, 26, and
        27)
      - SAE/EAP-pwd side-channel attack update
-       [https://w1.fi/security/2019-6/] (CVE-2019-13377)
+       [https://w1.fi/security/2019-6/] (CVE-2019-13377, bsc#1144443)
    * fixed CONFIG_IEEE80211R=y (FT) build without CONFIG_FILS=y
    * Hotspot 2.0 changes
      - do not indicate release number that is higher than the one

@@ -1,7 +1,7 @@
 [Unit]
 Description=WPA Supplicant daemon
 After=dbus.service
-Before=network-pre.target 
+Before=network-pre.target
 Wants=network-pre.target
 
 [Service]
