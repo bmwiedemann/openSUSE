@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 14:46:59 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.4.9
+
+  * [Windows support](https://github.com/Shopify/bootsnap/pull/319)
+  * [Fix potential crash](https://github.com/Shopify/bootsnap/pull/322)
+
+-------------------------------------------------------------------
 Sat Aug 22 12:59:34 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.4.8

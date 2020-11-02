@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-bootsnap
-Version:        1.4.8
+Version:        1.4.9
 Release:        0
 %define mod_name bootsnap
 %define mod_full_name %{mod_name}-%{version}
