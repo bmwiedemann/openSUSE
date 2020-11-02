@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:25:29 UTC 2020 - Aleksei Burlakov <aburlakov@suse.com>
+
+- (Again) Fix bsc#1163460 Corosync does not support link-local IPv6 addresses
+   Added: bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
+
+   Reason: This time the path will NOT cause problems when doing rolling
+            upgrade, see bsc#1168771
+
+-------------------------------------------------------------------
 Wed Aug 19 10:18:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Stop mangling libexecdir: it's not needed at all.

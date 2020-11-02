@@ -63,6 +63,7 @@ Patch7:         corosync-2.3.4-fix-bashisms.patch
 Patch8:         corosync-init-lockfile-path-error.patch
 Patch9:         corosync-start-stop-level.patch
 Patch10:        bug-1166899-quorumtool-Fix-exit-status-codes.patch
+Patch11:        bug-1163460-totemip-Add-support-for-sin6_scope_id.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # openais is indeed gone and should be uninstalled. Yes, we do not
@@ -138,6 +139,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 %if %{with runautogen}
