@@ -1947,4 +1947,21 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>822552</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>91203826d3d9b9a0b6fc1b5f17ecf871</srcmd5>
+    <version>11.0.0</version>
+    <time>1604306471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/11.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/11.0.0/tools/lld/docs/ReleaseNotes.html
+- Let the metapackages obsolete older versions. (boo#1175983)
+- Introduce additional metapackages llvm-opt-viewer, llvm-polly and
+  llvm-polly-devel so that we can obsolete through them as well.</comment>
+    <requestid>843890</requestid>
+  </revision>
 </revisionlist>
