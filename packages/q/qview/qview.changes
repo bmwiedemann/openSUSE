@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 31 08:34:08 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 4.0
+  * Integrate native cocoa components on macOS for a more native-like experience, as well as just working on the macOS experience in general
+  * Add rename function
+  * Include support for .heif, .avif, and .apng images
+  * Extra titlebar mode that shows only the image name and the position in the folder
+  * Opt-in update notification system that works right after the program starts
+  * Add randomized sort option
+  * You can now close a window with Ctrl/⌘+W
+  * Text in the file info dialog is now selectable
+  * Added configurable minimum size for "window matches image size" option
+  * Improved error messages
+  * Add icons to recents menu
+  * Fix weird titlebar vibrancy on macOS
+  * Fix image not filling window properly with titlebar enabled
+  * Fixed window position issue with vertical monitor setups
+  * Fixed fullscreen causing window size to reset
+  * Fixed various bugs with recents, shortcuts, and options due to a massive refactoring project to hopefully make maintenance easier in the future
+  * Fix awful hi-dpi sizing
+  * Fix bug with opening images from Finder replacing currently open images on macOS
+  * Distribute Appimages for Linux through a new CI pipeline
+  * Distribute build for legacy OS X 10.10+
+  * Include symbolic icon on linux (for GNOME, primarily)
+  * Include appdata manifest on linux
+
+-------------------------------------------------------------------
 Wed Mar  4 20:42:31 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - fix download source link (bnc#1165355)

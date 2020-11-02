@@ -17,7 +17,7 @@
 
 
 Name:           qview
-Version:        3.0
+Version:        4.0
 Release:        0
 Summary:        Practical and minimal image viewer
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ No cluttered interface, just your image and a titlebar.
 %setup -q -n qView
 
 %build
-%qmake5
+%qmake5 PREFIX=%{_prefix}
 %make_build
 
 %install
@@ -49,5 +49,6 @@ INSTALL_ROOT=%{buildroot} %make_install
 %{_bindir}/*
 %{_datadir}/icons/*
 %{_datadir}/applications/*
+%{_datadir}/metainfo/
 
 %changelog
