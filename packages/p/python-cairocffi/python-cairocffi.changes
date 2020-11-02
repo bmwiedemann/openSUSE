@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 30 06:20:59 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  * #152: Add NumPy support
+  * #143: Make write_to_png function work on hardened systems
+  * #156: Use major version name to open shared libraries
+  * #165: Don’t list setuptools as required for installation
+
+-------------------------------------------------------------------
 Mon Sep  9 07:41:31 UTC 2019 - mvetter@suse.com
 
 - Update to 1.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-cairocffi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-cairocffi
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python cairo bindings based on cffi
 License:        BSD-3-Clause
@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.1.0}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module xcffib >= 0.3.2}
