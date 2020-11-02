@@ -1,0 +1,22 @@
+diff --git a/gns3-gui.desktop b/gns3-gui.desktop
+index cbfb835..21c6ebb 100644
+--- a/gns3-gui.desktop
++++ b/gns3-gui.desktop
+@@ -6,4 +6,4 @@ Exec=gns3
+ Icon=gns3
+ Terminal=false
+ Type=Application
+-Categories=Application;Network;Qt;
++Categories=System;Emulator;
+diff --git a/resources/linux/applications/gns3.desktop b/resources/linux/applications/gns3.desktop
+index 121ee22..3217153 100644
+--- a/resources/linux/applications/gns3.desktop
++++ b/resources/linux/applications/gns3.desktop
+@@ -6,6 +6,6 @@ Exec=gns3 %f
+ Name=GNS3
+ Comment=GNS3 Graphical Network Simulator
+ Icon=gns3
+-Categories=Education;Network;
++Categories=System;Emulator;
+ MimeType=application/x-gns3;application/x-gns3appliance;application/x-gns3project;
+ Keywords=simulator;network;netsim;

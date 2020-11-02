@@ -1,0 +1,1089 @@
+-------------------------------------------------------------------
+Fri Sep 18 21:45:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.14
+  GUI
+  * Improvements to add a new version of an appliance from wizard.
+- Update to version 2.2.13
+  GUI
+  * No changes
+
+-------------------------------------------------------------------
+Sun Aug  9 14:50:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.12
+  * Downgrade psutil to version 5.6.7
+  * Fix log shows the GUI command line without spaces between its
+    arguments.
+  * Use server host is console host is equal to "0:0:0:0:0:0:0:0"
+  * Remove VMware promotion.
+- Update to version 2.2.11
+  * Try to fix "Recent project" selection not working. Ref #3007
+  * Fix debug entries shown twice in console window and double
+    error messages with remote GNS3VM. Fixes #3010
+  * Fix deprecation warning. Ref #3009
+  * Fix sentry SDK is configured twice.
+
+-------------------------------------------------------------------
+Thu Jun 18 18:55:11 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update patch:
+  * gns3-gui-fix-requirements.patch
+- Update to version 2.2.10
+  * New fix for multi-device selection/deselection not working as
+    expected with right click.
+  * Optimize snap-to-grid code for drawing items.
+  * Move jsonschema 2.6.0 requirement in build repository.
+  * Disable default integrations for sentry sdk.
+- Update to version 2.2.9
+  * Support to activate/deactive network connection state
+    replication in Qemu.
+  * Option to reset or not all MAC addresses when exporting or
+    duplicating a project.
+  * Fix Multi-device selection/deselection not working as expected
+    with right click.
+  * Replace Raven by Sentry SDK.
+  * Fix online help menu URL.
+  * Restore editReadme attribute which was removed in Change
+    'New export project wizard'
+  * Updated GUI pyqt files from Tab Order 'fixes' in "Tab Order
+    in Preferences and Project Dialog.
+
+-------------------------------------------------------------------
+Wed Jun  3 13:03:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.8
+  - https://github.com/GNS3/gns3-gui/releases/tag/v2.2.8
+- Add patch:
+  * gns3-gui-fix-requirements.patch
+- Update patch:
+  * gns3-gui_fix_desktop_file.patch
+- Remove not longer needed source files:
+  * application-x-gns3-gui.png
+  * gns3-gui.xml
+
+-------------------------------------------------------------------
+Tue Aug  6 13:38:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- This package doesn't support jsonschema 3.
+
+-------------------------------------------------------------------
+Tue Apr 16 11:10:41 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Build Version 2.1.16
+  ## 2.1.16 15/04/2019
+    * Do not make NPF or NPCAP service mandatory to start the local server on Windows.
+    * Fix OverflowError error with progress dialog. Fixes #2767
+    * More fixes for stuck progress window. Fixes #2765
+    * Fix adding multiple devices - stuck progress window. Fixes #2765
+    * Make sure the latest PyQt5 version 5.12.x is used on Windows.
+    * Show a warning when a config export is not supported. Ref #2762
+  ## 2.1.15 21/03/2019
+    * No changes on the GUI.
+  ## 2.1.14 27/02/2019
+    * Better description to why an appliance cannot be installed.
+  ## 2.1.13 26/02/2019
+    * Disable computer hibernation detection mechanism. Ref #2678
+    * Add some advice for request timeout message. Fixes #2652
+    * Show/Hide interface labels when status points are not shown. Fixes #2690
+    * Do not print critical message twice on stderr. Replace QMessageBox calls with no parent by log.error()/log.warning().
+    * Show critical messages before the main window runs.
+    * Avoid using PyQt5.Qt, which imports unneeded stuff. Fixes #2592
+    * Fix SIP import error with recent PyQt versions. Fixes #2709
+    * Upgrade to Qt 5.12. Fixes #2636
+    * Adjust the setup wizard (VMware image size, layouts).
+  ## 2.1.12 23/01/2019
+    * Option to resize SVG symbols that are too big (height above 80px, activated by default). Ref #2674.
+    * Update VMware banners and links.
+    * Allow users to refresh the template list in the nodes view panel.
+    * Fix Dynamips decompress doesn't work with relative images. Fixes #2648.
+    * Update download URL for "Check For Update". 
+
+-------------------------------------------------------------------
+Mon Nov  5 12:38:22 UTC 2018 - chri@gallochri.com
+
+- update to 2.1.11
+  - https://github.com/GNS3/gns3-gui/releases/tag/v2.1.11 
+
+-------------------------------------------------------------------
+Sat Jun 24 19:38:21 UTC 2017 - mrueckert@suse.de
+
+- update to 2.0.3
+  - https://github.com/GNS3/gns3-gui/releases/tag/v2.0.1
+  - https://github.com/GNS3/gns3-gui/releases/tag/v2.0.2
+  - https://github.com/GNS3/gns3-gui/releases/tag/v2.0.3
+
+-------------------------------------------------------------------
+Wed May  3 07:21:24 UTC 2017 - andrea@opensuse.org
+
+- new upstream version 2.0.0
+  * full changelog here: https://github.com/GNS3/gns3-gui/releases
+- removed gns3-net-converter requirement
+
+-------------------------------------------------------------------
+Wed Aug 24 08:28:37 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.5.2
+  * Make more clear that VMware VM are not ESXi
+  * Add AppData and Desktop files
+  * Fix you can not select the server for VPCS
+  * Fix error when removing an interface from a cloud
+  * Fix crash when scanning a directory for image and you don't have permission on a file
+  * Bring back the warning dialog when no router is configured
+  * Fix rare crash in server summary
+  * Fix crash during export
+
+-------------------------------------------------------------------
+Fri Jul  8 20:54:13 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.5.1
+  * Try to fix a crash when reseting interface label
+  * Fix a crash with broken file system
+  * Fix EtherSwitch default name format
+  * Fix crash when you have utf-8 char in the README
+  * Fix rare crash when creating a link
+  * Stop node before hot unlink
+  * Prevent a crash due to issue in Qt
+  * Add another security to prevent client to send empty hostname
+  * Fix rare crash when deleting interface from the cloud
+  * Fix rare crash in topology summary view
+  * Ask user to send explanation if they cross a rare error
+  * Fix rare crash when deleting a node
+  * Hotlink support for Docker
+  * Fix typo in the a warning dialog
+  * Fix Remote GNS3 VM requires local server
+  * Fix AttributeError: 'NoneType' object has no attribute '_server'
+  * No timeout when importing a .gns3project
+
+-------------------------------------------------------------------
+Tue Jun 28 19:25:48 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.5.0
+  * Fix double extension of portable project
+  * Disallow export of project with a cloud
+  * Change view grid -> show the grid.
+  * Check if a link can be removed from a running node. Fixes #1320.
+  * Hide non implemented console options in general preferences. Ref #1315.
+  * Improve snap to grid
+  * Change grid color
+  * Avoid a crash with snap to grid and ostinato logo
+  * Add a view grid
+  * Fix you can no longer capture if you start stop capture multiple time
+  * A button to open the file browser with the configuration file location
+  * Add snap to grid feature
+
+-------------------------------------------------------------------
+Mon May 16 08:42:17 UTC 2016 - andrea@opensuse.org
+
+- gns3-converter has been replaced by gns3-net-converter
+
+-------------------------------------------------------------------
+Fri Apr 29 07:47:04 UTC 2016 - andrea@opensuse.org
+
+- new upstream version 1.4.6
+  * Fix a typo in Qemu preferences
+  * Fix upload of large image to the VM
+  * Reduce the number of connection tries from 120 to 40 when connecting the GNS3 server
+    running inside the GNS3 VM.
+  * Include link to the GNS3 academy. Fixes #1178.
+  * Snapback feature for port labels. Fixes #1182.
+  * Prevent users to select VirtualBox.exe instead of VBoxManage.exe. Fixes #1195.
+  * Improve the vmrun error message
+  * If we can not read the registry try to guess vmware type from vmrun path
+  * Ensure that you can not duplicate an interface in a cloud
+  * Dissallow removal of link of running emulator without support of hotlink
+  * Check PyQT version support dev version
+  * Show server CPU usage if it's 0
+  * Clear warnings about using linked clones with VMware Player.
+  * Double click center on link
+  * Double click on an element in topology summary center the view on it
+  * Fix a very very rare crash when closing a project
+  * Avoid a small blink of the waiting text
+  * Fix a crash with image item
+  * Show a symbol in the middle of the link when packet capturing is activated. Ref #789.
+  * GNS3 doctor: check if the NPF service is running. Fixes #1124.
+  * Fixes progress dialog is None in accept()
+  * Fix another race conditions in progress dialog
+  * Replace the installation instructions by a link to the doc
+  * More robust save/restore for VirtualBox linked clone VM hard disks.
+  * Prevent non linked cloned hard disks to be detached when using VirtualBox linked cloned VMs. Fixes #1184.
+  * Stricter checks to match VMware version to the right vmrun (VIX library) version.
+  * Also checks the VIX library version when only using the GNS3 VM running in VMware.
+  * Allow only .pcap to be downloaded from remote stream API
+  * Fix incrementation of qemu mac address
+  * Clear warnings about using linked clones with VMware Player.
+  * Alternative method to find the Documents folder on Windows.
+  * Add IOU support and install config in /etc
+
+-------------------------------------------------------------------
+Mon Mar 28 12:48:31 UTC 2016 - andrea@opensuse.org
+
+- new upstream version 1.4.5
+  * Change some sentences.
+  * Sort snapshots by date
+  * Block save as and snapshot when a device is running
+  * If you hit enter in the new project dialog it's work
+  * Display upload size during progress
+  * This should avoid blinking dialog. And display better progress
+  * SetupWizard: limit the number of vCPUs for the GNS3 VM to the number of physical cores.
+  * Remove blocking code. Ref #1109.
+  * Fixes "QThread: Destroyed while thread is still running",
+  * Add a timeout when you are not able to join the remote server
+  * Remove bad smell from progress dialog and handle ESC key
+  * Remove root required messages in cloud node. Ref #608.
+  * Show a warning when the GUI is run with root rights. Fixes #608.
+  * Change message when closing GNS3 with running device.
+  * Ask the user to stop device before closing
+  * At startup display a warning if another GUI is already running
+  * Fix a crash if you delete a file while refreshing the list of appliances
+  * Fix double opening of serial console
+  * Always ask the server for builtin
+  * Improve detection of vmrun on OSX
+  * Delete image from images dir when no longer need
+  * Sort node name in topology summary
+  * Allow to show a message box for test without starting GNS3
+  * Drop licence for paramiko since we no longer use it
+
+-------------------------------------------------------------------
+Sat Feb 27 17:33:29 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.4.4
+  * Fix crash when selecting no image in GNS3A but clicking on Download
+  * Fix crash when you have a file size None (testing a new gns3a)
+  * Prevent the progress dialog to cancel the GNS3VM when it's finish
+  * Add a command show gns3vm to get the GNS3 VM status
+  * Prevent setup wizard to appear if VM is running
+  * Display error dialog if a custom console is invalid
+  * Crash when you import GNS3A just after installing gns3 Fix #1063
+  * Change the way we check is setup wizard has been turned off Fix #1071
+  * Do not failed if GNS3 VM server has an incorrect version
+  * Include the output from vmrun or VBoxManage when they return an error code.
+  * Fixes bug that forced the GNS3 VM running in VirtualBox to restart even if no preferences had been changed.
+  * Allows to cancel the progress dialog when GNS3 tries to contact the server running in the GNS3 VM.
+  * Ask user to upgrade via the VM menu
+
+-------------------------------------------------------------------
+Sat Feb 20 20:46:24 UTC 2016 - andrea@opensuse.org
+
+- new upstream version 1.4.3
+  * Allow idlepc 0x0 in topology
+  * Show an explicit error message when status code 0 is returned. Fixes #1034.
+  * Fixes minor bug when dropping a VirtualBox VM on the scene. Fixes #748.
+  * Correctly check local server if only local is available in vm wizard
+  * Make the GNS3 VM server running value more reliable
+  * Make VM configuration dialog modal
+  * Cannot take GIF screenshots (write is not supported by Qt).
+
+-------------------------------------------------------------------
+Mon Feb 15 13:30:07 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.4.1
+  * Improvement to detect VMware Player on Linux. Ref #970.
+  * You can move Dock widgets everywhere
+  * Link to download VIX api
+  * Fix SSH present in the server preferences
+  * Check dynamips and ubridge permission.
+  * Show a dialog for checking some common issues
+  * Show a summary with server usages
+  * Close project on VM when closing the project on all servers
+  * Allow to not rotate the text when changing all text colors
+  * Raise an error when psutil is too old
+  * Fix a race condition when closing the server
+  * Fix a very very rare crash in topology summary view
+  * Reset port label positions. Fixes #811.
+  * Drop SSH support
+  * Fix inversion of port label when loading a topology
+  * Fix error when importing Windows XP OVA
+  * Warn if configuration file contain invalid unicode characters
+  * Fix a crash when importing some OVA
+  * Reset the telnet command on Mac
+  * Fix only one console work for OSX
+  * Fix a rare crash when loading topology with missing image
+  * Fix a rare race condition when inserting an image
+  * Fix a crash when pid file is empty
+  * Fix a rare crash in progress dialogs
+  * Fix a crash if you don't have vms when importing a gns3a
+  * Warn user during appliance install if server is not avaible
+  * Fix error when you stop the GNS3 VM but break the config before
+  * startup_config is not mandatory inside .gns3 file
+  * Fix wrong host on SSH connection
+  * Fix select of image broken if you need to select multiple images
+  * Fix a crash when changing qemu cluster size to more than 512
+  * Fix IOU support in gns3a
+  * Add urxvt support
+  * Add a step in the wizard checking KVM support
+
+-------------------------------------------------------------------
+Thu Jan 14 09:22:26 UTC 2016 - andrea@opensuse.org
+
+- New upstream version 1.4.0
+
+-------------------------------------------------------------------
+Mon Dec 21 11:12:24 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.13
+  * Fix warning when closing GUI
+  * Update links for new website.
+  * Ask user to send bug reports to GNS3.com
+  * Fix travis dependencies installation
+  * Drop Webkit from 1.3.X
+  * Fix crash when opening a new topologies after gns3 converter failure
+  * Set Wireshark 2.0 as default OSX version
+  * iTerm 2.9 support
+  * Add informations about GNS3 VM
+  * Drops securecrt.vbs
+  * Fix analytics report on OSX
+  * Analytics send windows
+  * Fix the progress dialog freeze bug
+  * Fix typo in analytics
+  * Send stats to GNS3 team
+  * Licenses compliance.
+  * Fix error when importing dynamips config from non existent directory
+  * Fix crash when url is invalid
+  * Add a debug level 2 in the console
+
+-------------------------------------------------------------------
+Fri Oct  9 09:21:24 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.11
+
+-------------------------------------------------------------------
+Wed Sep 16 13:32:37 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.10
+  * Updates kernel command line of ASA.
+  * Fix file not found exception in vpcs list dir
+  * Fix saveAs error unsupported operand type(s) for +=: 'NoneType' and 'str'
+  * Catch error when antivirus corrupt our own JSON errors
+  * Use Qemu 0.11.0 instead of version 0.13.0 on Windows.
+  * Use Qemu 2.4.0 instead of version 2.2.0 on Windows.
+  * Removes "resources_type" references. Fixes #493.
+  * Fixes bug when opening Node properties dialog via a double click.
+  * SecureCRT (installed on personal profile) command line.
+
+-------------------------------------------------------------------
+Sat Aug  8 14:15:53 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.9
+  * Catch exception when trying to launch Wireshark.
+  * Backport: fixes migration of cloud interfaces.
+
+-------------------------------------------------------------------
+Tue Jun 23 11:20:01 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.7
+  * Makes sure Hub Ethernet port names are string.
+  * Support spaces in the local server log path.
+  * Fixes issue when setting the local server settings.
+  * Fix a crash with Python 3.3
+  * Fixes WICs are not displayed correctly. Fixes #434.
+  * Do not load settings that the GUI doesn't use.
+
+-------------------------------------------------------------------
+Wed Jun 17 07:11:44 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.6
+  * Ignore invalid characters when reading the output of a process
+  * Turn on / off authentication
+  * Do not stop saving IOS router configs when there is an exception while a project is committed.
+  * Fixed crash if a private config exist in IOS but not a private config file
+  * Basic Authentication support for servers.
+  * Fixed crash when Virtualbox list of VMS returns an empty line.
+  
+-------------------------------------------------------------------
+Thu Jun  4 16:41:28 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.4
+  * Check if an IOS image is set in the IOS router template
+  * Ensure the version number is written in the GNS3 configuration file
+  * Prevent users to add links to running Qemu VMs and start a capture on running VirtualBox VMs.
+  * Fix resize issue in server preference page.
+  * Fix segfault when starting OSX server with allow connection from anywhere
+  * Fixes bug when editing c7200 templates.
+  * Fixes IOS decompression. Fixes #370.
+  * Topology auto start work for VPCS
+  * Avoid moving .gns3_temporary files.
+  * Handles MemoryError.
+  * Fixes crash when a process listen on GNS3 port return an empty JSON
+  * Another fix for the topology None error
+  * Fixes a rare crash in completion
+  * Fixes crash when loading topology in rare conditions
+  * Drop useless dependencies dateutil
+  * Check if port or adapter is connected before starting/stopping a packet capture. Fixes #196.
+  * Prevent users to add links to running Qemu VMs and start a capture on running VirtualBox VMs.
+  * Fixes bug: couldn't set PCMCIA disk1 size for IOS routers.
+  * Fixes crash if you pass an invalid hostname
+  * Catch VPCS kill errors
+  * Raise a VirtualBox error if adapter doesn't exists
+  * Ignore VirtualBox VM names with a carriage return in name
+  * Cleanup the temporary project after modules have been notified of the path change
+  * Do not return error if we can't remove the old project directory
+  * Catch encoding errors in windows logger
+  * Use setter for the qemu_path (allow to pass only the binary name)
+  * Fixes TAP connection when using VPCS.
+  * Fixes crash when launching Qemu on OSX from another location.
+  * Adds NAT NIO in device schema validation so they can return an error that it is not supported.
+
+-------------------------------------------------------------------
+Fri May 15 09:13:01 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.3
+  * New inline help text for the idle-pc dialog.
+  * Reactivate auto idle-pc in device contextual menu + save a chosen idle-pc value in template.
+  * Adds name to the thank you section.
+  * Prevent users to use VirtualBox linked clone VMs in temporary projects (for now).
+  * Capture error if the command is invalid
+  * Cleanup egg cache when exit
+  * Fix a crash in console when you used non UTF-8 terminal
+  * Fix crash during save as
+  * Change title when exporting an IOS startup-config.
+  * Removes analytics client on closing.
+  * Check for empty iourc path.
+  * Fixes bugs with IOS router configs. Fixes #354.
+  * Use a temporary directory as egg cache
+  * Catch crash error in IOU in case of permission denied
+  - full changelog here: https://github.com/GNS3/gns3-gui/releases
+- removed gns3-1.3.0-requires.patch
+  
+-------------------------------------------------------------------
+Fri May  1 20:19:17 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.2
+  * Fixes bug when IOS configs are not in VM settings.
+  * Fixes small issue with Qemu VM monitor.
+  * Fixes issue when only one port is added after a QEMU VM is created. Fixes #296.
+  * Avoid Cygwin warning with VPCS on Windows.
+  * Fixes issues with QThread handling.
+  * Fixes missing title + icon in layer position warning message box.
+  * Allows the warning message box to be displayed once only when moving an object to a background layer.
+  * Fixes small issue with old monitor setting.
+  * Check the config path is set when creating a IOU or IOS router.
+  * Removes residual link when a NIO cannot be created on the server. Fixes #294.
+  - full changelog here: https://github.com/GNS3/gns3-gui/releases
+
+
+-------------------------------------------------------------------
+Sun Apr 12 11:11:56 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.1
+  * Fix crash when save as can't create a directory
+  * Initial config file content can be empty (fix export issues)
+  * Return more informations about bad requests for crash reports
+  * Allow less strict dependencies for easier install
+  *   * Some spring cleaning
+  * Fix missing IOU documentation
+  * Add missing project name in curl documentation
+  * Look in old IOU images location in order to smooth transition
+  * Send HTTP errors 400 to the crash report system
+  * Fix race condition during old project import
+  * Do not overwrite initial-config IOU if client send an empty
+  * Fix documentation about /ports/udp
+  * Fix rare occasion when user manage to put text in port field
+  * Fix a crash when exporting vpcs startup script
+  * Fix an issue with sending iourc when a topologies is reloaded
+  * Solve issue when iourc contains non ascii characters
+  * Handle corrupted zip file with IOS image
+  * Don't crash if we try to contact a non GNS3 remote server returning JSON
+  * Skip tests in package
+  * Check port range
+  * Add a warning about too much ram for IOS
+  * Fix crash if project is already closed
+  * Check if wait for connection thread still running before emitting a signal.
+  * Check if process files thread still running before emitting a signal.
+  * Raven is an optional dependencies for Debian
+  * Fix crash if a dumped topology as no node during save as
+  * Fix: remove old ID references for ATM and Frame-Relay switches
+
+-------------------------------------------------------------------
+Wed Apr  1 13:01:57 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.3.0
+  * Fix etherswitch router
+  * Fix issues with progress dialog
+  * Fix save as
+  * Fix crash when in same occasion the project name is missing
+  * Update sentry key
+  * Display adapters in the tooltips in the correct order.
+  * Open consoles in alphanumerical order.
+  * Auto idle-PC improvements.
+  * Adds project id when requesting UDP port.
+  * Fixes Thread problem. Fixes #229.
+  * Cancel network requests if the progress dialog itself is canceled.
+    Avoid closing the preferences dialog or any configuration dialog if there is a pending request. Fixes #227.
+  * Fixes #228 (no alternative interface has been chosen).
+  * Catch OSError when reading or writing the local server config file.
+  * Fixes GUI that could not be closed when using an already running local server.
+  * Save configs when project is committed.
+  * Del key deletes selected link
+  * Fix crash is no remote servers is available
+  * For more detailed changelog, check https://github.com/GNS3/gns3-gui/releases
+
+- added gns3-1.3.0-requires.patch
+
+-------------------------------------------------------------------
+Sat Jan 17 11:35:10 UTC 2015 - andrea@opensuse.org
+
+- New upstream version 1.2.3
+  * Fixed temporary files path setting in general preferences which was not used.
+  * Fixed missing devices from the node view when they use a remote server.
+  * Fixed broken ASA kernel/initrd file browsers.
+  * Fixed bug with WICs interfaces no showing up in the port list.
+  * Fixed broken -netdev + legacy virtio in Qemu support.
+
+- New upstream version 1.2.2
+  - Small improvements / new features
+   * Auxiliary console support for IOS routers.
+   * Suspend / resume support for Qemu.
+   * Dynamically configure network connections of running Qemu VMs (only with recent Qemu versions).
+   * VPCS multi-host support (useful for old .net labs).
+   * EtherSwitch routers can be added and configured like other IOS routers.
+   * Change hostname option in the contextual device menu.
+   * Import & export config options in contextual device menu.
+   * Auto screenshot when saving a project.
+   * Auto start project support (you have to manually edit your .gns3 project file).
+   * Possibility to run VirtualBox as another user (Linux/OSX only).
+   * Changes to the IOU L2 initial-config (16 Ethernet interfaces, no shutdown by default and 0 serial interfaces).
+   * Upgraded SuperPutty to version 1.4.0.5 in the all-in-one installer.
+   * Support for IOURC file on the server side.
+   * Bumped the maximum network adapters to 32 for Qemu (depending on Qemu version you cannot go above 8 or
+     even 28, Qemu will just not start).
+   * Possibility to apply or not the same text to all selected items when editing notes.
+   * Added snapshot named 'reset' to linked cloned VirtualBox VMs.
+   * Base configs are now stored in the GNS3 config directory.
+   * Short port names in the topology summary.
+   * Added the VirtualBox VM name in VirtualBox device tooltips.
+   * More network interface options to the Qemu VM configuration interface as well as descriptions for all NICs.
+   * Set 5 seconds timeout for local server connections.
+   * Check if any device runs and warn the user before closing a project.
+   * Restore the debug level status when starting.
+   * Automatically select the symbol and category corresponding the edited item in the symbol selection dialog.
+   * Scale SVG images to icon sizes.
+   * Console switching from local/remote to remote/local while a VirtualBox VM is running.
+   * More checks on minimum RAM for IOS routers and updates default values to match the latest IOS image requirements.
+   * Default Jungle dock location is now bottom right corner.
+  - Bug fixes
+   * Fixed the default jungle news loading on Windows.
+   * Fixed SuperPutty integration (not the default, still have to select it in the preferences).
+   * Avoid uninitialized nodes to be saved in the project file.
+   * Fixed bug when importing Host node with UDP NIOs.
+   * Prevent GNS3 to crash on Windows when importing GNS3 config file.
+   * Fixed resource access on Mac OS X.
+   * Fixed transparency or border style restoration for ellipses and rectangles.
+   * Support spaces in the controller name of VirtualBox clones.
+   * Ignore Unicode errors when executing vboxmanage.
+   * Get Windows interface list from the registry if the COM service fails.
+
+- removed gns3-1.2.1-fix_transparency.patch now upstream 
+
+-------------------------------------------------------------------
+Fri Jan  9 08:22:33 UTC 2015 - andrea@opensuse.org
+
+- make a better use of distro specific macros
+
+-------------------------------------------------------------------
+Wed Dec 10 18:48:59 UTC 2014 - andrea@opensuse.org
+
+- added gns3-1.2.1-fix_transparency.patch to fix a transparency issue with shapes 
+
+-------------------------------------------------------------------
+Fri Dec  5 12:21:26 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.2.1
+  * Early support for IOSv and IOSv-L2 (with Qemu for now, which is slow on Windows/Mac OS X).
+  * Support for CPU throttling and process priority for Qemu.
+  * Support for full screen mode (View -> Fullscreen).
+  * Bundled Qemu 0.13.0 in the Windows all-in-one. Default for all local Qemu VMs.
+  * Bundled Qemu 0.14.1 in the Mac OS X App. Default for all local Qemu VMs.
+  * Changed ASA defaults to use Qemu 0.13.0 (on Windows), have 4 interfaces and CPU throttling to 65%.
+  * Fixed SecureCRT command line when space in the device name.
+  * Fixed C7200 IO cards insert/remove issues and makes C7200-IO-FE the default.
+  * Fixed port sorting issues.
+  * Added default path for VBoxManage on Mac OS X
+  * Upgraded gns3-converter to version 1.1.1 for Windows all-in-one and Mac OS X DMG.
+  * New idle-PC field validation.
+  * Possibility to load the project from command line (or double-click on a project on Windows).
+  * Fixed Unicode error when using VirtualBox VM with a name containing non-english characters.
+  * Updated the IOU VM with iouyap version 0.95 (packet capture). 
+
+-------------------------------------------------------------------
+Tue Nov 25 12:30:44 UTC 2014 - andrea@opensuse.org
+
+- Fixed license tag
+
+-------------------------------------------------------------------
+Thu Nov 20 08:15:53 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 1.2
+  * New VirtualBox support.
+  * New GUI styles: charcoal (default) & classic. Changing GUI Preferences
+  * Integration of GNS3 converter (allows old .net topologies to be opened).
+  * VirtualBox linked clones support (experimental, still some problems with temporary projects).
+  * Allow Qemu VM to have no interface.
+  * Option to allow console connections to any local IP address when using the local server.
+  * Automatically extract IOS configs when a project is closed.
+  * Fix "new project" bug when using the GNS3 IOU VM.
+  * qemu-system-i386 is the new default on 32-bit platforms.
+  * Option to deactivate the new project dialog at startup.
+  * Add "open a project" and "recent projects" buttons to the new project dialog.
+  * New host node (cloud with all available Ethernet & TAP interfaces added).
+  * Fix platform detection issue with some Cisco IOS image file name.
+  * Add delay (default 500 ms) when Console to all nodes.
+  * Check for duplicate node names in Preferences.
+  * Fix bug when editing a Qemu VM configured to run on a remote server.
+  * News dock widget is smaller.
+  * Add detection of qemu and qemu.exe binaries.
+  * New Telnet server for VirtualBox.
+- added gns3-converter and python3-configobj as runtime dependencies
+
+-------------------------------------------------------------------
+Sat Nov 08 05:34:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashisms in post/postun scripts
+
+-------------------------------------------------------------------
+Thu Oct 23 09:06:12 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 1.1
+- bug fixes
+  * Warning message when using a remote server with IOU
+  * Serial console for VirtualBox
+  * Fixes EtherSwitch router
+  * New Idle-PC dialog
+  * Fixes #123 (Qemu binaries list not showing up)
+  * Fixes #119
+  * Fixes #126 (broken remote server feature)
+  * Fixes #120 (broken cloud)
+- removed broken_cloud.patch and broken_server.patch now upstream
+
+-------------------------------------------------------------------
+Wed Oct 22 18:44:54 UTC 2014 - andrea@opensuse.org
+
+- added broken_cloud.patch and broken_server.patch from upstream
+  gitcode to fix issue 120 and 121
+
+-------------------------------------------------------------------
+Tue Oct 21 20:52:35 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0
+- New features
+  * Snapshots support (currently only for local projects).
+  * Possibility to configure a category for nodes (routers,
+    switches, end devices or security devices).
+  * Added support for xfce4-terminal, for Xubuntu.
+  * Remote servers and load-balancing (some bugs, still
+    things to improve).
+  * Check for update feature.
+  * GNS3 Jungle dock widget.
+  * Getting started dialog.
+  * Added path lookup directory for Qemu on OSX.
+  * Bug fix when loading a project containing a remote server.
+- Know issues and notes
+  * VirtualBox support doesn’t work on Mac OS X.
+  * VirtualBox support on other platforms hasn’t been fully tested
+    and bugs may still be present.
+  * Again, regarding VirtualBox integration, we have plans to rewrite
+    the back-end to add more features and remove the dependency
+    on vboxwrapper.
+
+-------------------------------------------------------------------
+Mon Oct 20 20:56:56 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 Beta 4
+- New features:
+  * Preferences has been completely re-vamped for the
+    various emulators: Dynamips, IOU, VirtualBox and Qemu.
+-Know issues and notes
+ * VirtualBox/QEMU on Mac OS X hasn’t been tested at all.
+ * VirtualBox support on other platforms hasn’t been fully tested
+   and bugs may still be present.
+ * Regarding VirtualBox integration, we have plans to rewrite the
+   back-end to add more features and remove the dependency on vboxwrapper.
+
+-------------------------------------------------------------------
+Thu Sep 25 08:31:21 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 Beta 3
+- New features
+  * QEMU integration with ASA and IDS pre-configuration options.
+  * Solarwinds Response Time Viewer integration (Windows 64-bit only).
+- know issues and notes
+  * VirtualBox support on other platforms hasn’t been fully tested and
+    bugs may still be present.
+  * Regarding VirtualBox integration, we have plans to rewrite the
+    back-end to add more features and remove the dependency on vboxwrapper.
+  * We still have a couple of beta releases planned before
+    our first release candidate.
+
+-------------------------------------------------------------------
+Wed Sep 3 07:41:38 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 Beta 2
+  * Improved VirtualBox support on Windows and Linux.
+  * VirtualBox support on Linux/OSX requires VirtualBox wrapper version >= 9.1
+  * New “enable console” option for VirtualBox VMs.
+  * New “start at” option for VirtualBox VMs (adapter start index, 0 by default).
+  * EtherSwitch support (based on a c3745 image).
+  * Multi-drop feature (use SHIFT key while dropping a new node on the drawing area).
+  * Default font and color for labels.
+  * Support for rectangle and ellipse color transparency.
+  * New topology summary options: filter devices with capture(s) and stop all captures.
+  * Commands for the GNS3 console (version, start, stop, suspend, reload, show device, show run, help and debug).
+  * Layers implementation (anything below layer 0 will be locked to the drawing area).
+  * Numeric sorting for Ethernet/hub ports.
+  * Restore default buttons for general, packet capture and GNS3 server preferences.
+  * Changed the default port ranges.
+  * Normalized capture file names.
+  * More checks on device names, especially for IOS and IOU which forbid some characters.
+  * Handles zoom in or out using the mouse wheel + CTRL. Resets the zoom using CTRL+0.
+  * Prevent node labels to be deleted.
+  * The sparse memory feature is off by default for c1700 and c2600 platforms (to prevent a bug on reboot).
+
+-------------------------------------------------------------------
+Thu Jul 24 07:42:09 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 Beta 1
+  * Base VirtualBox support (still some issues, most of them on Linux and Mac OS X).
+  * Prevent users to set the port and VLAN settings to 0 on Ethernet swithes.
+  * Fixed issue when spaces are in capture file paths.
+  * Fixed bug with live capture on Windows.
+  * Work around for the c7200 reload bug in Dynamips <= 0.2.13.
+  * Fixed some inconsistencies when exporting configs.
+  * The early release dialog is gone!
+
+
+-------------------------------------------------------------------
+Thu Jul 10 09:45:26 UTC 2014 - andrea@opensuse.org
+ 
+- New upstream version 1.0 alpha 8
+  * New feature: insert an image on the view.
+  * New feature: change node symbols.
+  * Default port configuration for Ethernet switch and hub devices.
+  * New feature: import/export device configs.
+  * Fixed issue when deleting note items that had parent items.
+  * Check the minimum required amount of RAM when adding IOS images.
+  * Start a packet capture from the device contextual menu.
+  * Improvements on the topology summary and link highlighting.
+  * Find an alternative IOS or IOU image if one cannot be found when importing a topology.
+  * Find an alternative Ethernet interface if one cannot be found when importing a topology.
+  * Use Windows interface names instead of their GUID (more user friendly).
+  * Fixed IOU and VPCS renaming issues.
+  * Fixed size restoration issues for rectangles and ellipses when loading a project.
+  * Check for VPCS version >= 0.5b1
+  * Fixed errors when connecting an IOU device to a cloud.
+  * Packet capture for IOU works with the latest iouyap version (0.95) available here.
+
+-------------------------------------------------------------------
+Tue Jul  1 07:08:30 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 alpha 7
+  * Packet capture for IOS routers.
+  * Packet capture for the Ethernet hub and Ethernet,
+    ATM and Frame relay switches.
+  * Packet capture for IOU (not working, issue with iouyap).
+  * Add notes, rectangles & ellipses to topologies.
+  * Show/hide interface labels.
+  * Contextual device menu.
+  * Recent file menu.
+  * Lab instructions support (automatically open any file named
+     instructions.* in the project directory or from the Help menu)
+  * Load a project by dropping the project file on the view.
+  * Duplicate option for notes, rectangles and ellipses.
+  * Style settings for note, rectangle and ellipse items. Possibility
+    to edit interface and node labels.
+  * Fix: use Dynamips, IOU and VPCS identifiers to correctly
+    load topologies.
+  * IOU: rename startup-config to initial-config (makes more
+    sense for IOU).
+  * Option to uncompress IOS images.
+  * Check for sticky bit when checking for executable access.
+  * Fix: IOS image relative path problems.
+  * Lots of small bug fixes.
+
+-------------------------------------------------------------------
+Sat May 31 09:31:58 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 alpha 6
+  * New host names management.
+  * New project dialog (in preparation for cloud support).
+  * Logs saved to files (GNS3_client.log and GNS3_server.log).
+  * Relative paths support for IOS/IOU images in project files.
+  * Fixed decoding errors when reading device configs.
+  * Fixed privileged access checks for IOU.
+  * Fixed validation issue with c2600 XM chassis.
+  * Fixed VPCS start on Linux/UNIX.
+  * Fixed Ethernet hub when loading a project.
+
+-------------------------------------------------------------------
+Tue May 27 12:48:32 UTC 2014 - andrea@opensuse.org
+
+- added new dependency python3-requests
+
+-------------------------------------------------------------------
+Thu May 22 06:08:46 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 alpha 5
+  * VPCS support (only version >= 0.5b1
+  * Fixed console port errors when loading a project.
+  * Fixed startup-config errors when loading a project.
+  * Fixed minor issues on Mac OS X (DMG file coming soon).
+  * IOU default startup-configs for layer 2 and layer 3 images.
+    Allowing for faster loading times too.
+  * Option to prevent starting the local server when openning the GUI.
+  * Prevent devices to be started, stopped or suspended if their status is not right
+  * More checks for cloud connections.
+  * Show item coordinates in the status bar.
+  * Amend device configs (hostname) when renaming.
+  * UDP connection checks.
+
+-------------------------------------------------------------------
+Thu May 15 07:42:16 UTC 2014 - andrea@opensuse.org
+
+- New upstream version 1.0 alpha 4
+  * Show Windows interface names in cloud tooltips.
+  * Disconnect the server if the version differs from the GUI version.
+  * Move cloud code to a builtin module and support for clouds on remote servers.
+  * Options to use the default IOU RAM & NVRAM values.
+  * Changed the name of default base startup and private configs.
+  * Added “All files” filter when looking for an IOU or IOS image in the file broswer.
+  * Graceful server shutdown on Windows.
+  * Error message that JIT sharing is only supported in Dynamips unstable.
+  * New UDP and console port allocation system for IOU. Fixes duplicated port issues.
+  * Delete some Dynamips files that are useless to save in projects.
+  * Fix: the path to GNS3 server was not saved.
+  * Fix: RAM and NVRAM IOU image settings not propagated when creating an IOU device.
+  * Fix: bug where IOS nvram/disk files were not kept after closing a topology.
+  * Fix: bug that prevented changing any IOU device setting when connected to another node.
+  * Fix: duplicated node id issue.
+  * Fix: major bug with ghost instance overwriting any second router files (R2).
+  * Fix: error when ldd cannot be found.
+  * Fix: issues with local base configs for IOS.
+
+-------------------------------------------------------------------
+Thu May  8 12:58:16 UTC 2014 - andrea@opensuse.org
+
+- Improved spec file, added fdupes and made rpmlint happy
+
+-------------------------------------------------------------------
+Wed May  7 07:51:48 UTC 2014 - andrea@opensuse.org
+
+- Spec file clean up
+
+-------------------------------------------------------------------
+Fri Apr 25 14:49:56 UTC 2014 - andrea@opensuse.org
+
+- new upstream version 0.8.7
+  * no changelog provided
+  * no URL exist for the tarball, taken from GIT-HUB
+
+-------------------------------------------------------------------
+Sat Nov 16 05:19:42 UTC 2013 - badshah400@gmail.com
+ 
+- Minor spec file cleanups:
+  + Remove package name from summary tag in spec file
+  + Use full URL for source tarball.
+
+-------------------------------------------------------------------
+Sat Nov 9 14:49:56 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 0.8.6
+  * Fixed the broken snapshot feature.
+  * Host devices don’t automatically add tap interfaces in the
+    generic Ethernet NIO list anymore.
+  * Auto open for instructions files when opening the topology via
+    the command line, a file explorer or a drag & drop on the workspace.
+  * Modified the default Etherswitch configuration (renamed some macros
+    + added vtp file nvram:vlan.dat)
+  * Fixed small bugs with “idlepc get” command and Ethernet
+    switch auto port allocation.
+  * New Dutch translation & Italian translation updated.
+
+
+-------------------------------------------------------------------
+Sun Sep 15 14:49:56 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 0.8.5
+  * New symbols for ASA, Qemu guest and Vbox guest.
+  * Fixed a major issue that prevented to use the auto
+    idle-pc calculation feature.
+  * Implemented the Restore snapshot feature following
+    Rednectar’s suggestions (http://forum.gns3.net/post20664.html#p20664)
+  * Snapshots are now stored in a separate directory inside project directory.
+  * Increased lowest and max zoom values.
+  * Updated Italian translation.
+  * Added Xshell 4 command lines in terminal settings.
+  * Fixed issue with the contextual device menu.
+  * Fixed bug when launching VPCS and there was a space in the project path.
+  * Option ‘Use hypervisor manager’ changed to ‘Bind to external
+    hypervisor(s)’ (logic is inverted) in IOS images and hypervisors dialog.
+  * Checks: if VPCS is installed and if Dynamips is marked as executable.
+  * Added instructions entry to Help menu.
+  * Automatic opening of instructions file when loading a project.
+  * Fixed Teraterm, SecureCRT and Konsole terminal command lines.
+  * Added “-vga none” option to ASA Pre-configuration.
+  * Updated the SecureCRT script to automatically reconnect if disconnected.
+  * Fixed a bug with load-balancing on multiple external hypervisors.
+  * Fixed issue when binding Qemuwrapper to a PC’s real IP address.
+  * Various other small bug fixes.
+
+-------------------------------------------------------------------
+Sun Jul  7 14:49:56 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 0.8.4
+  * Lots of GUI improvements.
+  * New hub device.
+  * New Idlemax and Idlesleep settings (advanced manipulation of IDLE PC).
+  * IOS image and settings test button.
+  * New Tool menu to start external scripts/tools.
+  * Drag & drop of multiple devices when pressing SHIFT.
+  * Temporary projects are created by default.
+  * VirtualBox interface numbering starts at 0 (e.g. e0 = VirtualBox
+    interface 1 = eth0 on Linux).
+  * Support for 36 network cards in VirtualBox (using ICH9 chipset)
+  * New option to save traffic captures in project directories.
+  * Experimental auto IDLE PC calculation feature.
+  * Added entries to have Dynamips/Qemu/VirtualBox hypervisors bind/listen to
+    all available IP/host addresses (optional).
+  * AW+ router support by Allied Telesis from New Zealand (educational version of
+    their OS to be released).
+  * Removed the “Save IOS configs option” in project settings. IOS configs are
+    always saved.
+  * Qemu FLASH files are automatically saved in a directory named
+    ‘qemu-flash-drives’ (in the project directory).
+
+-------------------------------------------------------------------
+Mon Jan  7 14:49:56 UTC 2013 - andrea@opensuse.org
+
+- new upstream version 0.8.3.1
+  * minor fixes and support for access to GNS3 VirtualBox VM hostnames
+    from inside VMs (e.g. VBoxControl guestproperty get NameInGNS3)
+  * includes updated vboxwrapper that work with the new VirtualBox 4.2
+- removed gns3-0.8.3-defaults.diff now in upstream code
+
+-------------------------------------------------------------------
+Sun Aug  5 18:09:27 UTC 2012 - andrea@opensuse.org
+
+- added gns3-0.8.3-defaults.diff to fix wrong default VBOX paths
+
+-------------------------------------------------------------------
+Sun Aug  5 11:27:04 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 0.8.3
+  * New base configuration (startup-config) for devices with
+    NM-16ESW (named baseconfig_sw.txt). =
+  * Support for drag & drop of topology files inside GNS3.
+  * Global TCP port tracker to allocate ports and avoid conflicts
+    (console + AUX ports for IOS routers and console ports for
+    Qemu-like/VirtualBox devices are tracked).
+  * Option to freely use the first VBox interface inside VMs
+    (i.e. eth0 on Linux).
+  * Backup nvram export when Dynamips has crashed.
+  * Complete IPv6 support (with correct functions).
+  * Support for binding on specific addresses when loading a topology.
+  * Option to track opened node consoles in order to close them when the
+    node gets deleted.  
+    
+-------------------------------------------------------------------
+Wed Apr 18 10:14:05 UTC 2012 - lars@linux-schulserver.de
+
+- fix license to be in spdx format
+
+-------------------------------------------------------------------
+Sun Apr 15 20:54:43 UTC 2012 - andrea@opensuse.org
+
+- New upstream version 0.8.2 (Virtual box support) 
+
+-------------------------------------------------------------------
+Tue May 31 19:01:34 UTC 2011 - coolo@novell.com
+
+- brequire update-desktop-file
+
+-------------------------------------------------------------------
+Mon May  9 14:37:18 UTC 2011 - andrea@opensuse.org
+
+- Added vde2 as recommended app 
+
+-------------------------------------------------------------------
+Sun May  8 21:46:03 UTC 2011 - andrea@opensuse.org
+
+- Removed from spec files instructions for unsupported suse version
+- Moved qemu and wireshark to Recommends and not Requires 
+
+-------------------------------------------------------------------
+Mon Apr 18 21:52:34 UTC 2011 - andrea@opensuse.org
+
+- added man page 
+
+-------------------------------------------------------------------
+Tue Apr 12 07:39:02 UTC 2011 - andrea@opensuse.org
+
+- new upstream version 0.7.4
+  * Greek translation
+  * Hypervisor allocation per IOS type
+  * Improvements on Ethernet Switch (dynamic remapping of VLAN or type)
+  * Adaptations to support Dynamips 0.2.8 RC3 community
+  * Integration of a loopback manager for Windows
+ 
+-------------------------------------------------------------------
+Sun Apr 10 23:22:31 UTC 2011 - andrea@opensuse.org
+
+- added mime type for .net topology files 
+
+-------------------------------------------------------------------
+Mon Feb  7 18:35:08 UTC 2011 - andrea@opensuse.org
+
+- New upstream version 0.7.3
+ * Only the necessary files (nvram, flash, disks etc.) are copied
+   or kept when creating projects and snapshots.
+ * Preventing unsaved interface labels to show up after loading a
+   topology. This can be reset using the
+   "show interface labels" button.
+ * Improvements for ATM and Frame Relay switches: proper naming,
+   dynamic mapping support and it is not needed to remove a link to
+   change its DLCI/VC mapping.
+ * PCAP capture support for Qemu based devices
+   (Qemu host, JunOS ASA, PIX, IDS). This option cannot be used after
+   the selected device is started.
+ * Fixed many issues with the snapshot feature.
+   Now it should work as expected.
+ * New node type: EtherSwitch router. This is a c3700 router
+   with a Etherswitch NM-16ESW loaded.
+ * Better consistency between buttons and menus. Many items have
+   been renamed, toolbar buttons accessible from the menu etc.
+ * Possibility to configure the AUX port. Only works for c7200 routers
+   (Preferences -> Dynamips -> Base AUX port).
+ * Changed standard naming convention for project and snapshots.
+   Topology file is named topology.net, working directory: working and
+   configurations directory: configs.
+ * Double click on a running node opens a console.
+ * Reload all devices option.
+ * Translation updates.
+ * Many more
+
+-------------------------------------------------------------------
+Mon Oct 25 00:57:29 UTC 2010 - andrea@opensuse.org
+
+- New upstream version 0.7.2 
+- Installed qemuwrapper utils
+- added qemu as dependency
+
+-------------------------------------------------------------------
+Fri Jun  4 08:13:13 UTC 2010 - andrea@opensuse.org
+
+- New upstream version 0.7.1 
+
+-------------------------------------------------------------------
+Tue Dec  1 00:12:42 UTC 2009 - andrea@opensuse.org
+
+- fixed 11.2 building (as noarch)
+
+-------------------------------------------------------------------
+* Sun Jun 07 2009 - Andrea Florio <andrea@opensuse.org> 0.6.1
+- new upstream version 0.6.1
+* Fri Dec 19 2008 - Andrea Florio <andrea@opensuse.org> 0.6
+- new upstream version 0.6
+* Wed Nov 05 2008 - Andrea Florio <andrea@opensuse.org>
+- no longer a no arch. py_sitedit is /usr/lib/ecc or /usr/lib64/ecc
+* Mon Aug 04 2008 - Andrea Florio <andrea@opensuse.org>
+- new package
+- added menu icon
+
