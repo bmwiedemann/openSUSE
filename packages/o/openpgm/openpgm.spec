@@ -2,7 +2,7 @@
 #
 # spec file for package openpgm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -87,10 +87,13 @@ This subpackage contains the header files for OpenPGM.
 %patch3 -p1
 
 %build
+export ac_cv_func_ftime=no
 mkdir -p m4
 autoreconf -fi
 %{configure} \
     --disable-static
+
+%make_build
 
 %install
 %make_install

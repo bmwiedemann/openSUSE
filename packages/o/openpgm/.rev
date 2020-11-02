@@ -71,4 +71,12 @@ Added:
 changes file with SLE</comment>
     <requestid>744451</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>c5a0cd3f1166564fc3d7e1b1cc8f8898</srcmd5>
+    <version>5.2.122</version>
+    <time>1604322291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845050</requestid>
+  </revision>
 </revisionlist>
