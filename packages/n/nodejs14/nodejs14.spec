@@ -26,7 +26,7 @@
 ###########################################################
 
 Name:           nodejs14
-Version:        14.14.0
+Version:        14.15.0
 Release:        0
 
 %define node_version_number 14
@@ -57,7 +57,7 @@ Release:        0
 %define _libexecdir %{_exec_prefix}/lib
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 120500
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 120400
 %bcond_with    intree_openssl
 %else
 %bcond_without intree_openssl
@@ -250,7 +250,7 @@ Provides:       bundled(libcares2) = 1.16.1
 %endif
 
 %if ! 0%{with intree_icu}
-BuildRequires:  pkgconfig(icu-i18n) >= 63
+BuildRequires:  pkgconfig(icu-i18n) >= 65
 %else
 Provides:       bundled(icu) = 67.1
 %endif
