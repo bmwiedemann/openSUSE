@@ -78,4 +78,12 @@
   * allow ISO-646.1991-IRV as well, adobe standard for bdf</comment>
     <requestid>761498</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>29264285c0e32ac85a72e09ac39f4172</srcmd5>
+    <version>1.2.0</version>
+    <time>1604306271</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>844523</requestid>
+  </revision>
 </revisionlist>
