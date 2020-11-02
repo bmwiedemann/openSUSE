@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 09:18:19 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.3
+  - desktop#2479 [stable-3.0] Free IconJob after use
+  - desktop#2491 [stable-3.0] Connect signal guiLog to slot to display systray message.
+  - desktop#2498 [stable-3.0] Update propagateupload.cpp
+  - desktop#2502 [stable-3.0] macOS: Fix memory leak in FolderWatcherPrivate::startWatching
+  - desktop#2511 [stable-3.0] Windows MSI: Update Docs & add SKIPAUTOUPDATE property
+  - desktop#2513 [stable-3.0] Handle redirects when downloading updates
+  - desktop#2524 [stable-3.0] Handle ask for optional password capability
+  - desktop#2533 [stable-3.0] Repair the Windows build
+  - desktop#2567 [stable-3.0] Fix share dialog animation for enforced password policy
+  - desktop#2570 [stable-3.0] Fix crash when clicking on folder with status 403 in 
+    the main dialog.
+  - desktop#2576 [stable-3.0] Avoid depth infinity propfind for e2ee
+  - desktop#2577 [stable-3.0] Expose branding values to qtquick
+  - desktop#2592 [stable-3.0] Also output the event flags in the debug logs
+
+-------------------------------------------------------------------
 Tue Oct 27 23:42:49 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Add missing dependencies (boo#1178209)
