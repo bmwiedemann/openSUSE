@@ -19,15 +19,15 @@
 %define sover 2
 %define libname libimaevm%{sover}
 Name:           ima-evm-utils
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        IMA/EVM control utility
 License:        LGPL-2.1-or-later
 Group:          System/Base
 URL:            http://sourceforge.net/projects/linux-ima/
 Source0:        http://downloads.sourceforge.net/project/linux-ima/ima-evm-utils/%{name}-%{version}.tar.gz
-Patch1:         0001-help-Add-missing-new-line-for-ignore-violations.patch
 BuildRequires:  asciidoc
+BuildRequires:  attr
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -38,6 +38,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  vim
 
 %description
 This package provides the control utility for IMA/EVM (Integrity
@@ -85,6 +86,9 @@ make %{?_smp_mflags}
 # Let do it by ourselves later...
 rm -rf %{buildroot}%{_datadir}/doc
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+make %{?_smp_mflags} check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

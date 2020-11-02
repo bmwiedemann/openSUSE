@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 29 06:12:46 UTC 2020 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.3.2
+	* Bugfixes: importing keys
+	* NEW: Docker based travis distro testing
+	* Travis bugfixes, code cleanup, software version update,
+	  and script removal
+	* Initial travis testing
+- Remove 0001-help-Add-missing-new-line-for-ignore-violations.patch
+  (patch from this release)
+- Add make check + dependencies (getfattr => attr, xxd => vim)
+
+-------------------------------------------------------------------
 Thu Oct  1 13:42:17 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Fix missing new line in help
