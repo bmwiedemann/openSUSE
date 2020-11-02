@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 30 20:12:41 UTC 2020 - dmulder@suse.com
+
+- Update to 2.0:
+  + Major rewrite uses samba python bindings for most commands
+
+-------------------------------------------------------------------
 Tue Jan 28 15:31:57 UTC 2020 - Samuel Cabrero <scabrero@suse.de>
 
 - Add missing BuildRequires to spec file

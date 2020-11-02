@@ -17,30 +17,38 @@
 
 
 Name:           ads
-Version:        1.5+git.6.ae0dafd
+Version:        2.0+git.0.bdc680d
 Release:        0
 Summary:        Swiss army knife for samba
 License:        GPL-3.0-only
-URL:            http://www.github.com/dmulder/ads
+Group:          Productivity/Networking/Samba
+URL:            https://github.com/suse-samba-tools/ads
 Source:         %{name}-%{version}.tar.bz2
+BuildArch:      noarch
 Requires:       krb5-client
 Requires:       ntp
 Requires:       python3-dnspython
-Requires:       python3-ldap
+Requires:       python3-ldb
 Requires:       python3-netifaces
+Requires:       python3-psutil
 Requires:       python3-python-pam
 Requires:       samba-client
+Requires:       samba-dsdb-modules
 Requires:       samba-python3
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  python3
+%if 0%{?sle_version} > 150100
 BuildRequires:  python3-argparse-manpage
+%endif
 BuildRequires:  python3-dnspython
-BuildRequires:  python3-ldap
+BuildRequires:  python3-ldb
 BuildRequires:  python3-netifaces
+BuildRequires:  python3-psutil
 BuildRequires:  python3-python-pam
-BuildRequires:  python3-setuptools
 BuildRequires:  samba-python3
+Provides:       vasclnt
+Provides:       vastool
 
 %description
 Active Directory services tool for samba.
@@ -56,14 +64,29 @@ while also adding additional features relevant to samba (such as kdc provisionin
 %build
 autoreconf -if
 %configure
+%if 0%{?sle_version} <= 150100
+pushd src
+%endif
 make
+%if 0%{?sle_version} <= 150100
+popd
+%endif
 
 %install
+%if 0%{?sle_version} <= 150100
+pushd src
+%endif
 %make_install
+%if 0%{?sle_version} <= 150100
+popd
+%endif
 
 %files
 %defattr(-,root,root)
 %{_bindir}/ads
+%{_bindir}/vastool
+%if 0%{?sle_version} > 150100
 %{_mandir}/man1/ads.1*
+%endif
 
 %changelog
