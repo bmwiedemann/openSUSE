@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  1 09:15:44 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * Improved “core.call” RPC for PlatformIO Home
+  * Fixed a “KeyError: ‘versions’” when dependency does not exist in the
+  registry
+  * Fixed an issue with GCC linker when “native” dev-platform is used in pair
+  with library dependencies
+  * Fixed an “AssertionError: ensure_dir_exists” when checking library updates
+  from simultaneous subprocesses
+  * Fixed an issue when pio package publish command removes original archive
+  after submitting to the registry
+  * Fixed an issue when multiple pio lib install command with the same local
+  library results in duplicates in lib_deps (issue #3715) Fixed an issue with
+  a “wrong” timestamp in device monitor output using “time” filter
+
+-------------------------------------------------------------------
 Fri Oct  9 20:37:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.0.1:
