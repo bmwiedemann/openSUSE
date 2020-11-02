@@ -27,14 +27,15 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
-Summary:        Python testing tool with autodiscovery and detailed asserts
+Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 17.4.0
@@ -69,7 +70,6 @@ BuildRequires:  %{python_module pytest >= %{version}}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
 %endif
@@ -79,17 +79,8 @@ Requires:       python-pathlib2 >= 2.2.0
 %python_subpackages
 
 %description
-pytest is a cross-project Python testing tool. It provides:
-
-* auto-discovery of test modules and functions,
-* detailed info on failing assert statements (no need to remember
-  self.assert* names),
-* modular fixtures for managing small or parametrized long-lived test resources.
-* multi-paradigm support: you can use py.test to run test suites based on
-  unittest (or trial), nose,
-* single-source compatibility to Python2.4 all the way up to Python3.3,
-  PyPy-1.9 and Jython-2.5.1, and
-* many external plugins.
+The pytest framework makes it easy to write small tests, yet scales to support
+complex functional testing for applications and libraries.
 
 %prep
 %setup -q -n pytest-%{version}
@@ -100,16 +91,8 @@ pytest is a cross-project Python testing tool. It provides:
 %install
 %if ! %{with test}
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/py.test
 %python_clone -a %{buildroot}%{_bindir}/pytest
-
-if [ -x %{buildroot}%{_bindir}/py.test-%{python2_bin_suffix} ]; then
-    ln -s py.test-%{python2_bin_suffix} %{buildroot}%{_bindir}/py.test2
-fi
-if [ -x %{buildroot}%{_bindir}/py.test-%{python3_bin_suffix} ]; then
-    ln -s py.test-%{python3_bin_suffix} %{buildroot}%{_bindir}/py.test3
-fi
-
+%python_clone -a %{buildroot}%{_bindir}/py.test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -120,20 +103,19 @@ fi
 
 %if ! %{with test}
 %post
-%{python_install_alternative py.test} \
-   --slave %{_bindir}/pytest pytest %{_bindir}/pytest-%{python_version}
+%python_install_alternative pytest py.test
 
 %postun
-%python_uninstall_alternative py.test
+%python_uninstall_alternative pytest
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.rst
 %license LICENSE
-%python_alternative %{_bindir}/py.test
 %python_alternative %{_bindir}/pytest
-%python2_only %{_bindir}/py.test2
-%python3_only %{_bindir}/py.test3
-%{python_sitelib}/*
+%python_alternative %{_bindir}/py.test
+%{python_sitelib}/_pytest
+%{python_sitelib}/pytest
+%{python_sitelib}/pytest-%{version}*-info
 %endif
 
 %changelog

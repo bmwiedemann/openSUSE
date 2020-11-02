@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:12:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 6.1.2 
+  * #7758: Fixed an issue where some files in packages are 
+    getting lost from --lf even though they contain
+    tests that failed. Regressed in pytest 5.4.0.
+  * #7911: Directories created by tmpdir are now considered 
+    stale after 3 days without modification (previous value 
+    was 3 hours) to avoid deleting directories still in use 
+    in long running test suites.
+  * #7815: Improve deprecation warning message for 
+    pytest._fillfuncargs().
+- remove old py.test2 and py.test3 entry points
+
+-------------------------------------------------------------------
+Wed Oct 28 00:12:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix py.test3 conflict for python3 flavors by alternatives
+  * gh#openSUSE/python-rpm-macros#66
+  * Make pytest the main alternative as py.test is the deprecated
+    name
+- Fix gh#pytest-dev/pytest#7891 : require toml for build
+
+-------------------------------------------------------------------
 Wed Oct  7 13:47:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 6.1.1
