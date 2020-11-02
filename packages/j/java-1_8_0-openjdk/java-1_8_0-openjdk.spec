@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.16.0
+%global icedtea_version 3.17.0
 %global icedtea_sound_version 1.0.1
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,8 +32,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       252
-%global buildver        09
+%global updatever       272
+%global buildver        10
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -194,6 +194,7 @@ Patch103:       ppc-zero-hotspot.patch
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
 Patch2001:      disable-doclint-by-default.patch
+Patch2002:      JDK_1_8_0-8208602.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -466,6 +467,7 @@ sh autogen.sh
 %endif
 %if %{with zero}
         --enable-zero \
+        --disable-jfr \
 %endif
 %if 0%{?suse_version} <= 1110
         --disable-system-gio \
@@ -525,6 +527,7 @@ patch -p0 -i %{PATCH103}
 %endif
 
 patch -p0 -i %{PATCH2001}
+patch -p0 -i %{PATCH2002}
 
 (cd openjdk/common/autoconf
  bash ./autogen.sh
@@ -1041,6 +1044,9 @@ fi
 %dir %{_jvmdir}/%{jredir}/lib/ext
 %dir %{_jvmdir}/%{jredir}/lib/images
 %dir %{_jvmdir}/%{jredir}/lib/images/cursors
+%if %{without zero}
+%dir %{_jvmdir}/%{jredir}/lib/jfr
+%endif
 %dir %{_jvmdir}/%{jredir}/lib/management
 %dir %{_jvmdir}/%{jredir}/lib/security
 %dir %{_jvmdir}/%{jredir}/lib/security/policy

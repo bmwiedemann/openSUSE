@@ -1,22 +1,22 @@
 --- openjdk/jdk/src/share/lib/security/java.security-linux	2014-07-15 23:08:27.000000000 +0200
 +++ openjdk/jdk/src/share/lib/security/java.security-linux	2014-07-18 09:04:45.127566697 +0200
 @@ -227,7 +227,9 @@
-                jdk.nashorn.internal.,\
-                jdk.nashorn.tools.,\
-                jdk.xml.internal.,\
--               com.sun.activation.registries.
-+               com.sun.activation.registries.,\
+                com.sun.activation.registries.,\
+                jdk.jfr.events.,\
+                jdk.jfr.internal.,\
+-               jdk.management.jfr.internal.
++               jdk.management.jfr.internal.\
 +               org.GNOME.Accessibility.,\
 +               org.GNOME.Bonobo.
  
  #
  # List of comma-separated packages that start with or equal this string
-@@ -277,7 +279,9 @@
-                    jdk.nashorn.internal.,\
-                    jdk.nashorn.tools.,\
-                    jdk.xml.internal.,\
--                   com.sun.activation.registries.
-+                   com.sun.activation.registries.,\
+@@ -280,7 +282,9 @@
+                    com.sun.activation.registries.,\
+                    jdk.jfr.events.,\
+                    jdk.jfr.internal.,\
+-                   jdk.management.jfr.internal.
++                   jdk.management.jfr.internal.\
 +                   org.GNOME.Accessibility.,\
 +                   org.GNOME.Bonobo.
  

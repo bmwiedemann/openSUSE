@@ -1,0 +1,93 @@
+
+# HG changeset patch
+# User weijun
+# Date 1533101708 -28800
+# Node ID 9d92ff04a29c12a5d47f2ca4e772f7716bfdb8ff
+# Parent  b6e0bfe4a6ec5d8d9d9476c05627dfb47f2263e1
+8208602: Cannot read PEM X.509 cert if there is whitespace after the header or footer
+Reviewed-by: xuelei
+
+diff -r b6e0bfe4a6ec -r 9d92ff04a29c src/java.base/share/classes/sun/security/provider/X509Factory.java
+--- openjdk/jdk/src/share/classes/sun/security/provider/X509Factory.java	Wed Aug 01 01:40:44 2018 -0400
++++ openjdk/jdk/src/share/classes/sun/security/provider/X509Factory.java	Wed Aug 01 13:35:08 2018 +0800
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 1998, 2018, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -635,7 +635,8 @@
+                 if (next != '\r') footer.append((char)next);
+             }
+ 
+-            checkHeaderFooter(header.toString(), footer.toString());
++            checkHeaderFooter(header.toString().replaceFirst("\\s++$", ""),
++                    footer.toString().replaceFirst("\\s++$", ""));
+ 
+             return Pem.decode(new String(data, 0, pos));
+         }
+diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/BadPem.java
+--- openjdk/jdk/test/sun/security/provider/X509Factory/BadPem.java	Wed Aug 01 01:40:44 2018 -0400
++++ openjdk/jdk/test/sun/security/provider/X509Factory/BadPem.java	Wed Aug 01 13:35:08 2018 +0800
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2015, 2018, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -23,14 +23,13 @@
+ 
+ /*
+  * @test
+- * @bug 8074935
+- * @summary jdk8 keytool doesn't validate pem files for RFC 1421 correctness, as jdk7 did
++ * @bug 8074935 8208602
++ * @summary X.509 cert PEM format read
+  */
+ 
+ import java.io.ByteArrayOutputStream;
+ import java.io.FileInputStream;
+-import java.io.FileOutputStream;
+ import java.io.PrintStream;
+ import java.security.KeyStore;
+ import java.security.cert.CertificateException;
+ import java.util.Arrays;
+@@ -49,10 +48,12 @@
+         String pass = "passphrase";
+         String alias = "dummy";
+ 
++        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+         KeyStore keyStore = KeyStore.getInstance("JKS");
+         keyStore.load(new FileInputStream(ks), pass.toCharArray());
+         byte[] cert = keyStore.getCertificate(alias).getEncoded();
+ 
++        // 8074935
+         ByteArrayOutputStream bout = new ByteArrayOutputStream();
+         PrintStream pout = new PrintStream(bout);
+         byte[] CRLF = new byte[] {'\r', '\n'};
+@@ -64,14 +65,20 @@
+         }
+         pout.println(X509Factory.END_CERT);
+ 
+-        CertificateFactory cf = CertificateFactory.getInstance("X.509");
+-
+         try {
+             cf.generateCertificate(new ByteArrayInputStream(bout.toByteArray()));
+             throw new Exception("Should fail");
+         } catch (CertificateException e) {
+             // Good
+         }
++
++        // 8208602
++        bout.reset();
++        pout.println(X509Factory.BEGIN_CERT + "  ");
++        pout.println(Base64.getMimeEncoder().encodeToString(cert));
++        pout.println(X509Factory.END_CERT + "    ");
++
++        cf.generateCertificate(new ByteArrayInputStream(bout.toByteArray()));
+     }
+ }
+ 
+

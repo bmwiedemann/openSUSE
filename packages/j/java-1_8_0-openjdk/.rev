@@ -586,4 +586,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>823568</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ccd339041f0d16a10013430c405081e1</srcmd5>
+    <version>1.8.0.272</version>
+    <time>1604306282</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle July and October 2020 CPU</comment>
+    <requestid>844535</requestid>
+  </revision>
 </revisionlist>
