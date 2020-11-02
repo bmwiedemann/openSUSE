@@ -244,4 +244,12 @@
   * procmail-formisc.c.patch</comment>
     <requestid>746559</requestid>
   </revision>
+  <revision rev="33" vrev="275">
+    <srcmd5>6e153932131e73d62dace531f54c2ca9</srcmd5>
+    <version>3.22</version>
+    <time>1604322236</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>844980</requestid>
+  </revision>
 </revisionlist>

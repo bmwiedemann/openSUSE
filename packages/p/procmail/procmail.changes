@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 23 06:58:01 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Do not use lto compiler flags at all with this kind of code 
+
+-------------------------------------------------------------------
 Fri Nov  8 11:05:25 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add latest patch sets from Debian:

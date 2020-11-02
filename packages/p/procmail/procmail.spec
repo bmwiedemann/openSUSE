@@ -1,7 +1,7 @@
 #
 # spec file for package procmail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A program for local e-mail delivery
 License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-Url:            http://www.procmail.org/
+URL:            http://www.procmail.org/
 Source0:        ftp://ftp.informatik.rwth-aachen.de/pub/packages/procmail/procmail-%{version}.tar.gz
 Source1:        procmail-%{version}-patches.tar.bz2
 Patch0:         procmail-%{version}-mailstat.patch
@@ -66,6 +66,7 @@ sed -ri '\@^/\*@,\@\*/@{ s@^(/\*[^*]*)(/\*)@\1\*/ \2@; }' src/includes.h
 sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' src/includes.h
 
 %build
+%define _lto_cflags %{nil}
     cflags ()
     {
 	local flag=$1; shift
