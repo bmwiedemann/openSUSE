@@ -475,4 +475,21 @@
     <comment></comment>
     <requestid>844378</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c671e9269b053087becc1c8ba9ebf551</srcmd5>
+    <version>2.4.5</version>
+    <time>1604306610</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.5
+  * Pin several messages in any chat, including one-on-one chats.
+  * Jump between pinned messages or open them all on a separate page
+    via the top bar.
+  * Send several music tracks as a playlist. 
+  * Send several files as an album in one chat bubble.
+  * Send a :slot_machine: emoji to any chat to see if you
+    hit the jackpot.
+  * Hide Telegram taskbar icon on Linux in Settings &amp;gt; Advanced.
+- Update tg_owt (forwarded request 845093 from tux93)</comment>
+    <requestid>845206</requestid>
+  </revision>
 </revisionlist>
