@@ -1,0 +1,228 @@
+From 5e7bd462ee91793708d6f0c34c46fb904bee7efb Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 17 Aug 2020 00:40:17 +0800
+Subject: [PATCH 09/17] bcache-tools: upgrade super block versions for feature
+ sets
+Git-commit: 5e7bd462ee91793708d6f0c34c46fb904bee7efb
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+This patch upgrades super block versions for adding feature sets into
+struct cache_sb_disk,
+128         __u64                   feature_compat;
+129         __u64                   feature_incompat;
+130         __u64                   feature_ro_compat;
+
+With the feature set flags, it will be convenient to add new features
+without upgrade super block version again (at least for a long time).
+
+The new added versions are,
+- BCACHE_SB_VERSION_CDEV_WITH_FEATURES for cache device super block
+- BCACHE_SB_VERSION_BDEV_WITH_FEATURES for backing device super block
+
+The feature set flags are also added into the in-memory super block
+struct cache_sb. The feature sets conversion between cache_sb_disk and
+cache_sb also added into to_cache_sb() and to_cache_sb_disk().
+
+Some feature sets related macros are also added into bcache.h, and a new
+file feature.c is added for future new features record and display.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Makefile   |  2 +-
+ bcache.h   | 85 ++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ features.c | 22 ++++++++++++++
+ lib.c      | 12 ++++++++
+ 4 files changed, 118 insertions(+), 3 deletions(-)
+ create mode 100644 features.c
+
+diff --git a/Makefile b/Makefile
+index b4546a1..8b87a67 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,4 +38,4 @@ bcache-register: bcache-register.o
+ bcache: CFLAGS += `pkg-config --cflags blkid uuid smartcols`
+ bcache: LDLIBS += `pkg-config --libs blkid uuid smartcols`
+ bcache: CFLAGS += -std=gnu99
+-bcache: crc64.o lib.o make.o zoned.o
++bcache: crc64.o lib.o make.o zoned.o features.o
+diff --git a/bcache.h b/bcache.h
+index 250da9d..9d969e1 100644
+--- a/bcache.h
++++ b/bcache.h
+@@ -29,12 +29,16 @@ static const char bcache_magic[] = {
+  * Version 2: Seed pointer into btree node checksum
+  * Version 3: Cache device with new UUID format
+  * Version 4: Backing device with data offset
++ * Version 5: Cache adn backing devices with compat/incompat/ro_compat
++ *            feature sets
+  */
+ #define BCACHE_SB_VERSION_CDEV			0
+ #define BCACHE_SB_VERSION_BDEV			1
+ #define BCACHE_SB_VERSION_CDEV_WITH_UUID	3
+ #define BCACHE_SB_VERSION_BDEV_WITH_OFFSET	4
+-#define BCACHE_SB_MAX_VERSION			4
++#define BCACHE_SB_VERSION_CDEV_WITH_FEATURES	5
++#define BCACHE_SB_VERSION_BDEV_WITH_FEATURES	6
++#define BCACHE_SB_MAX_VERSION			6
+ 
+ #define SB_SECTOR		8
+ #define SB_LABEL_SIZE		32
+@@ -59,7 +63,11 @@ struct cache_sb_disk {
+ 	__le64			flags;
+ 	__le64			seq;
+ 
+-	__le64			pad[8];
++	__le64			feature_compat;
++	__le64			feature_incompat;
++	__le64			feature_ro_compat;
++
++	__le64			pad[5];
+ 
+ 	union {
+ 	struct {
+@@ -116,6 +124,10 @@ struct cache_sb {
+ 	__u64			flags;
+ 	__u64			seq;
+ 
++	__u64			feature_compat;
++	__u64			feature_incompat;
++	__u64			feature_ro_compat;
++
+ 	union {
+ 	struct {
+ 		/* Cache devices */
+@@ -180,4 +192,73 @@ uint64_t crc64(const void *data, size_t len);
+ #define csum_set(i)							\
+ 	crc64(((void *) (i)) + 8, ((void *) end(i)) - (((void *) (i)) + 8))
+ 
++/* Feature set definition */
++
++#define BCH_FEATURE_COMPAT	0
++#define BCH_FEATURE_RO_COMPAT	1
++#define BCH_FEATURE_INCOMPAT	2
++#define BCH_FEATURE_TYPE_MASK	0x03
++
++#define BCH_FEATURE_COMPAT_SUUP		0
++#define BCH_FEATURE_INCOMPAT_SUUP	0
++#define BCH_FEATURE_RO_COMPAT_SUUP	0
++
++#define BCH_HAS_COMPAT_FEATURE(sb, mask) \
++		((sb)->feature_compat & (mask))
++#define BCH_HAS_RO_COMPAT_FEATURE(sb, mask) \
++		((sb)->feature_ro_compat & (mask))
++#define BCH_HAS_INCOMPAT_FEATURE(sb, mask) \
++		((sb)->feature_incompat & (mask))
++
++#define BCH_FEATURE_COMPAT_FUNCS(name, flagname) \
++static inline int bch_has_feature_##name(struct cache_sb *sb) \
++{ \
++	return (((sb)->feature_compat & \
++		BCH##_FEATURE_COMPAT_##flagname) != 0); \
++} \
++static inline void bch_set_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_compat |= \
++		BCH##_FEATURE_COMPAT_##flagname; \
++} \
++static inline void bch_clear_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_compat &= \
++		~BCH##_FEATURE_COMPAT_##flagname; \
++}
++
++#define BCH_FEATURE_RO_COMPAT_FUNCS(name, flagname) \
++static inline int bch_has_feature_##name(struct cache_sb *sb) \
++{ \
++	return (((sb)->feature_ro_compat & \
++		BCH##_FEATURE_RO_COMPAT_##flagname) != 0); \
++} \
++static inline void bch_set_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_ro_compat |= \
++		BCH##_FEATURE_RO_COMPAT_##flagname; \
++} \
++static inline void bch_clear_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_ro_compat &= \
++		~BCH##_FEATURE_RO_COMPAT_##flagname; \
++}
++
++#define BCH_FEATURE_INCOMPAT_FUNCS(name, flagname) \
++static inline int bch_has_feature_##name(struct cache_sb *sb) \
++{ \
++	return (((sb)->feature_incompat & \
++		BCH##_FEATURE_INCOMPAT_##flagname) != 0); \
++} \
++static inline void bch_set_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_incompat |= \
++		BCH##_FEATURE_INCOMPAT_##flagname; \
++} \
++static inline void bch_clear_feature_##name(struct cache_sb *sb) \
++{ \
++	(sb)->feature_incompat &= \
++		~BCH##_FEATURE_INCOMPAT_##flagname; \
++}
++
+ #endif
+diff --git a/features.c b/features.c
+new file mode 100644
+index 0000000..a1c9884
+--- /dev/null
++++ b/features.c
+@@ -0,0 +1,22 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Author: Coly Li <colyli@suse.de>
++ *
++ * Inspired by e2fsprogs features compat/incompat/ro_compat
++ * related code.
++ */
++#include <stdbool.h>
++#include <stdint.h>
++#include <sys/types.h>
++
++#include "bcache.h"
++
++struct feature {
++	int		compat;
++	unsigned int	mask;
++	const char	*string;
++};
++
++static struct feature feature_list[] = {
++	{0, 0, 0 },
++};
+diff --git a/lib.c b/lib.c
+index 9a2fa26..dcf752c 100644
+--- a/lib.c
++++ b/lib.c
+@@ -730,6 +730,12 @@ struct cache_sb *to_cache_sb(struct cache_sb *sb,
+ 			sb->d[i]= le64_to_cpu(sb_disk->d[i]);
+ 	}
+ 
++	if (sb->version >= BCACHE_SB_VERSION_CDEV_WITH_FEATURES) {
++		sb->feature_compat = le64_to_cpu(sb_disk->feature_compat);
++		sb->feature_incompat = le64_to_cpu(sb_disk->feature_incompat);
++		sb->feature_ro_compat = le64_to_cpu(sb_disk->feature_ro_compat);
++	}
++
+ 	return sb;
+ }
+ 
+@@ -772,5 +778,11 @@ struct cache_sb_disk *to_cache_sb_disk(struct cache_sb_disk *sb_disk,
+ 			sb_disk->d[i] = cpu_to_le64(sb->d[i]);
+ 	}
+ 
++	if (sb->version >= BCACHE_SB_VERSION_CDEV_WITH_FEATURES) {
++		sb_disk->feature_compat = cpu_to_le64(sb->feature_compat);
++		sb_disk->feature_incompat = cpu_to_le64(sb->feature_incompat);
++		sb_disk->feature_ro_compat = cpu_to_le64(sb->feature_ro_compat);
++	}
++
+ 	return sb_disk;
+ }
+-- 
+2.26.2
+

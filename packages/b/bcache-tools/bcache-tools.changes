@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Oct 13 04:32:51 UTC 2020 - Coly Li <colyli@suse.com>
+
+- Remove dependence of smartcols bcache-tools.spec, bcache-tools
+  code doesn't need it now. (jsc#SLE-9807)
+- Remove 1001-udev-do-not-rely-on-DRIVER-variable.patch because
+  we have 0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+  to provide static UUIDs. (jsc#SLE-9807)
+- bcache-tools: add man page bcache-status.8 (jsc#SLE-9807)
+  0017-bcache-tools-add-man-page-bcache-status.8.patch
+- bcache-tools: add bcache-status (jsc#SLE-9807)
+  0016-bcache-tools-add-bcache-status.patch
+- bcache-tools: make: permit only one cache device to be
+  specified (jsc#SLE-9807)
+  0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
+- bcache-tools: Remove the dependency on libsmartcols
+  (jsc#SLE-9807)
+  0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
+- bcache-tools: Export CACHED_UUID and CACHED_LABEL
+  (jsc#SLE-9807)
+  0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+- bcache-tools: Fix potential coredump issues (jsc#SLE-9807)
+  0012-bcache-tools-Fix-potential-coredump-issues.patch
+- bcache-tools: add print_cache_set_supported_feature_sets()
+  in lib.c (jsc#SLE-9807)
+  0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
+- bcache-tools: add large_bucket incompat feature (jsc#SLE-9807)
+  0010-bcache-tools-add-large_bucket-incompat-feature.patch
+- bcache-tools: upgrade super block versions for feature sets
+  (jsc#SLE-9807)
+  0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
+- bcache-tools: define separated super block for in-memory and
+  on-disk format (jsc#SLE-9807)
+  0008-bcache-tools-define-separated-super-block-for-in-mem.patch
+- bcache-tools: add to_cache_sb() and to_cache_sb_disk()
+  (jsc#SLE-9807)
+  0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
+- bcache-tools: list.h: only define offsetof() when it is
+  undefined (jsc#SLE-9807)
+  0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
+- bcache-tools: bitwise.h: more swap bitwise for different
+  CPU endians (jsc#SLE-9807)
+  0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
+- bcache-tools: add struct cache_sb_disk into bcache.h (jsc#SLE-9807)
+  0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
+- bcache-tools: convert writeback to writethrough mode for zoned
+  backing device (jsc#SLE-9807)
+  0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
+- bcache-tools: add is_zoned_device() (jsc#SLE-9807)
+  0002-bcache-tools-add-is_zoned_device.patch
+- bcache-tools: set zoned size aligned data_offset on backing device
+  for zoned devive (jsc#SLE-9807)
+  0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 11:58:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]

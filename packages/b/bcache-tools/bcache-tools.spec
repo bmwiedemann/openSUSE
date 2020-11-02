@@ -25,11 +25,26 @@ Group:          System/Base
 URL:            http://bcache.evilpiepirate.org/
 
 Source:         %name-%version.tar.xz
-Patch1:         1001-udev-do-not-rely-on-DRIVER-variable.patch
+Patch1:         0001-bcache-tools-set-zoned-size-aligned-data_offset-on-b.patch
+Patch2:         0002-bcache-tools-add-is_zoned_device.patch
+Patch3:         0003-bcache-tools-convert-writeback-to-writethrough-mode-.patch
+Patch4:         0004-bcache-tools-add-struct-cache_sb_disk-into-bcache.h.patch
+Patch5:         0005-bcache-tools-bitwise.h-more-swap-bitwise-for-differe.patch
+Patch6:         0006-bcache-tools-list.h-only-define-offsetof-when-it-is-.patch
+Patch7:         0007-bcache-tools-add-to_cache_sb-and-to_cache_sb_disk.patch
+Patch8:         0008-bcache-tools-define-separated-super-block-for-in-mem.patch
+Patch9:         0009-bcache-tools-upgrade-super-block-versions-for-featur.patch
+Patch10:        0010-bcache-tools-add-large_bucket-incompat-feature.patch
+Patch11:        0011-bcache-tools-add-print_cache_set_supported_feature_s.patch
+Patch12:        0012-bcache-tools-Fix-potential-coredump-issues.patch
+Patch13:        0013-bcache-tools-Export-CACHED_UUID-and-CACHED_LABEL.patch
+Patch14:        0014-bcache-tools-Remove-the-dependency-on-libsmartcols.patch
+Patch15:        0015-bcache-tools-make-permit-only-one-cache-device-to-be.patch
+Patch16:        0016-bcache-tools-add-bcache-status.patch
+Patch17:        0017-bcache-tools-add-man-page-bcache-status.8.patch
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
-BuildRequires:  pkgconfig(smartcols)
 BuildRequires:  pkgconfig(uuid)
 
 %description
@@ -41,8 +56,8 @@ This package contains utilities for configuring the bcache Module.
 %build
 export SUSE_ASNEEDED=0
 %make_build all \
-	CFLAGS="%optflags $(pkg-config blkid uuid smartcols --cflags) -std=gnu99" \
-	LDFLAGS="$(pkg-config blkid uuid smartcols --libs)"
+	CFLAGS="%optflags $(pkg-config blkid uuid --cflags) -std=gnu99" \
+	LDFLAGS="$(pkg-config blkid uuid --libs)"
 
 %install
 b="%buildroot"

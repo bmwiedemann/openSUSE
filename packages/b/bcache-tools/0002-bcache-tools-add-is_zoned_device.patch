@@ -1,0 +1,44 @@
+From 0898a6c8899355b75a13bf490c09e21289d28478 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sat, 16 May 2020 21:46:29 +0800
+Subject: [PATCH 02/17] bcache-tools: add is_zoned_device()
+Git-commit: 0898a6c8899355b75a13bf490c09e21289d28478
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+This is a wrapper of get_zone_size(), to check whether a device is
+zoned device or not by checking its chunk_sectors.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ zoned.c | 5 +++++
+ zoned.h | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/zoned.c b/zoned.c
+index 31c9136..d078286 100644
+--- a/zoned.c
++++ b/zoned.c
+@@ -87,3 +87,8 @@ void check_data_offset_for_zoned_device(char *devname,
+ 
+ 	*data_offset = _data_offset;
+ }
++
++int is_zoned_device(char *devname)
++{
++	return (get_zone_size(devname) != 0);
++}
+diff --git a/zoned.h b/zoned.h
+index 1c5cce8..25e5c91 100644
+--- a/zoned.h
++++ b/zoned.h
+@@ -9,5 +9,6 @@
+ #define __ZONED_H
+ 
+ void check_data_offset_for_zoned_device(char *devname, uint64_t *data_offset);
++int is_zoned_device(char *devname);
+ 
+ #endif
+-- 
+2.26.2
+

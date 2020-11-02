@@ -1,0 +1,40 @@
+From 1129319af1cb5ec0cd38b283a4a3d14e55d616c7 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 16 Aug 2020 23:57:56 +0800
+Subject: [PATCH 06/17] bcache-tools: list.h: only define offsetof() when it is
+ undefined
+Git-commit: 1129319af1cb5ec0cd38b283a4a3d14e55d616c7
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+For new gcc headers, offsetof() is defined, the definition in list.h
+will be warned as redefined.
+
+This patch checks whether offsetof() is defined, and only defines local
+version of offsetof() when it is not defined by gcc headers.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ list.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/list.h b/list.h
+index 55d2bb4..458281d 100644
+--- a/list.h
++++ b/list.h
+@@ -25,10 +25,12 @@
+  */
+ /*@{*/
+ 
++#ifndef offsetof
+ /**
+  * Get offset of a member
+  */
+ #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
++#endif /* offsetof*/
+ 
+ /**
+  * Casts a member of a structure out to the containing structure
+-- 
+2.26.2
+

@@ -96,4 +96,12 @@
     <comment>- Cure fallout from %_libexecdir change [boo#1174075, boo#1176244]</comment>
     <requestid>832982</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e76be2d966621027b17fdc61287d16b0</srcmd5>
+    <version>1.1</version>
+    <time>1604322281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845049</requestid>
+  </revision>
 </revisionlist>

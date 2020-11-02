@@ -1,0 +1,40 @@
+From 67163cc86255bb93d524051e488de15172ab396c Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 23 Aug 2020 00:26:31 +0800
+Subject: [PATCH 15/17] bcache-tools: make: permit only one cache device to be
+ specified
+Git-commit: 67163cc86255bb93d524051e488de15172ab396c
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+Now a cache set only has a single cache, therefore "bcache make" should
+permit only one cache device to be specified for a cache set.
+
+This patch checks if more than one cache devices are specified by "-C"
+an error message "Please specify only one cache device" will be printed
+and bcache exits with usage information.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ make.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/make.c b/make.c
+index 9631857..ad89377 100644
+--- a/make.c
++++ b/make.c
+@@ -604,6 +604,11 @@ int make_bcache(int argc, char **argv)
+ 		usage();
+ 	}
+ 
++	if (ncache_devices > 1) {
++		fprintf(stderr, "Please specify only one cache device\n");
++		usage();
++	}
++
+ 	if (bucket_size < block_size) {
+ 		fprintf(stderr,
+ 			"Bucket size cannot be smaller than block size\n");
+-- 
+2.26.2
+

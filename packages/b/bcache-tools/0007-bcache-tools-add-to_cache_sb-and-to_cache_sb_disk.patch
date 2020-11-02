@@ -1,0 +1,150 @@
+From 9642a1d29d8d1034039344bdd0cf55f71b5c16c8 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Mon, 17 Aug 2020 00:02:23 +0800
+Subject: [PATCH 07/17] bcache-tools: add to_cache_sb() and to_cache_sb_disk()
+Git-commit: 9642a1d29d8d1034039344bdd0cf55f71b5c16c8
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+This patch adds routines to_cache_sb() to_cache_sb_disk() to lib.c,
+which convert bcache super block between in-memory and on-disk formats.
+
+This is a preparation to separate current struct cache_sb into two
+structures,
+- struct cache_sb is for in-memory super block
+- struct cache_sb_disk is for on-disk super block
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ lib.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ lib.h |  3 +-
+ 2 files changed, 90 insertions(+), 4 deletions(-)
+
+diff --git a/lib.c b/lib.c
+index 9e69419..542f115 100644
+--- a/lib.c
++++ b/lib.c
+@@ -8,14 +8,14 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <fcntl.h>
+-#include "bcache.h"
+-#include "lib.h"
+ #include <uuid.h>
+ #include <string.h>
+ #include <malloc.h>
+ #include <regex.h>
+ 
+-
++#include "bcache.h"
++#include "lib.h"
++#include "bitwise.h"
+ /*
+  * utils function
+  */
+@@ -681,3 +681,88 @@ int set_label(char *devname, char *label)
+ 	close(fd);
+ 	return 0;
+ }
++
++
++struct cache_sb *to_cache_sb(struct cache_sb *sb,
++			     struct cache_sb_disk *sb_disk)
++{
++	/* Convert common part */
++	sb->offset = le64_to_cpu(sb_disk->offset);
++	sb->version = le64_to_cpu(sb_disk->version);
++	memcpy(sb->magic, sb_disk->magic, 16);
++	memcpy(sb->uuid, sb_disk->uuid, 16);
++	memcpy(sb->set_uuid, sb_disk->set_uuid, 16);
++	memcpy(sb->label, sb_disk->label, SB_LABEL_SIZE);
++	sb->flags = le64_to_cpu(sb_disk->flags);
++	sb->seq = le64_to_cpu(sb_disk->seq);
++	sb->block_size = le16_to_cpu(sb_disk->block_size);
++	sb->last_mount = le32_to_cpu(sb_disk->last_mount);
++	sb->first_bucket = le16_to_cpu(sb_disk->first_bucket);
++	sb->keys = le16_to_cpu(sb_disk->keys);
++
++	/* For cache or backing devices*/
++
++	if (sb->version > BCACHE_SB_MAX_VERSION) {
++		/* Unsupported version */
++		fprintf(stderr, "Unsupported super block version: %lld\n",
++			sb->version);
++	} else if (SB_IS_BDEV(sb)) {
++		/* Backing device */
++		sb->data_offset = le64_to_cpu(sb_disk->data_offset);
++	} else {
++		int i;
++
++		/* Cache device */
++		sb->nbuckets = le64_to_cpu(sb_disk->nbuckets);
++		sb->nr_in_set = le16_to_cpu(sb_disk->nr_in_set);
++		sb->nr_this_dev = le16_to_cpu(sb_disk->nr_this_dev);
++		sb->bucket_size = le32_to_cpu(sb_disk->bucket_size);
++
++		for (i = 0; i < SB_JOURNAL_BUCKETS; i++)
++			sb->d[i]= le64_to_cpu(sb_disk->d[i]);
++	}
++
++	return sb;
++}
++
++struct cache_sb_disk *to_cache_sb_disk(struct cache_sb_disk *sb_disk,
++				       struct cache_sb *sb)
++{
++	/* Convert common part */
++	sb_disk->offset = cpu_to_le64(sb->offset);
++	sb_disk->version = cpu_to_le64(sb->version);
++	memcpy(sb_disk->magic, sb->magic, 16);
++	memcpy(sb_disk->uuid, sb->uuid, 16);
++	memcpy(sb_disk->set_uuid, sb->set_uuid, 16);
++	memcpy(sb_disk->label, sb->label, SB_LABEL_SIZE);
++	sb_disk->flags = cpu_to_le64(sb->flags);
++	sb_disk->seq = cpu_to_le64(sb->seq);
++	sb_disk->block_size = cpu_to_le16(sb->block_size);
++	sb_disk->last_mount = cpu_to_le32(sb->last_mount);
++	sb_disk->first_bucket = cpu_to_le16(sb->first_bucket);
++	sb_disk->keys = cpu_to_le16(sb->keys);
++
++	/* For cache and backing devices */
++
++	if (sb->version > BCACHE_SB_MAX_VERSION) {
++		/* Unsupported version */
++		fprintf(stderr, "Unsupported super block version: %lld\n",
++			sb->version);
++	} else if (SB_IS_BDEV(sb)) {
++		/* Backing device */
++		sb_disk->data_offset = cpu_to_le64(sb->data_offset);
++	} else {
++		int i;
++
++		/* Cache device */
++		sb_disk->nbuckets = cpu_to_le64(sb->nbuckets);
++		sb_disk->nr_in_set = cpu_to_le16(sb->nr_in_set);
++		sb_disk->nr_this_dev = cpu_to_le16(sb->nr_this_dev);
++		sb_disk->bucket_size = cpu_to_le32(sb->bucket_size);
++
++		for (i = 0; i < SB_JOURNAL_BUCKETS; i++)
++			sb_disk->d[i] = cpu_to_le64(sb->d[i]);
++	}
++
++	return sb_disk;
++}
+diff --git a/lib.h b/lib.h
+index d4537b0..b37608e 100644
+--- a/lib.h
++++ b/lib.h
+@@ -50,7 +50,8 @@ int detach_backdev(char *devname);
+ int set_backdev_cachemode(char *devname, char *cachemode);
+ int set_label(char *devname, char *label);
+ int cset_to_devname(struct list_head *head, char *cset, char *devname);
+-
++struct cache_sb *to_cache_sb(struct cache_sb *sb, struct cache_sb_disk *sb_disk);
++struct cache_sb_disk *to_cache_sb_disk(struct cache_sb_disk *sb_disk,struct cache_sb *sb);
+ 
+ #define DEVLEN sizeof(struct dev)
+ 
+-- 
+2.26.2
+

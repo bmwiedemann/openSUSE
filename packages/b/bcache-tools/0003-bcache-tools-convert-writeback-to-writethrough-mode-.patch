@@ -1,0 +1,50 @@
+From 33b90323056f65225c5b557d7f578b7f37abee3c Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sat, 16 May 2020 21:57:17 +0800
+Subject: [PATCH 03/17] bcache-tools: convert writeback to writethrough mode
+ for zoned backing device
+Git-commit: 33b90323056f65225c5b557d7f578b7f37abee3c
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+Currently bcache does not support writeback cache mode for zoned device
+as backing device.
+
+If the backing device is zoned device, and cache mode is explicitly set
+to writeback mode, a information will be print to terminal,
+  "Zoned device <device name> detected: convert to writethrough mode."
+Then the cache mode will be automatically converted to writethrough,
+which is the default cache mode of bcache-tools.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ make.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/make.c b/make.c
+index c1090a6..cc76863 100644
+--- a/make.c
++++ b/make.c
+@@ -378,6 +378,19 @@ static void write_sb(char *dev, unsigned int block_size,
+ 		SET_BDEV_CACHE_MODE(&sb, writeback ?
+ 			CACHE_MODE_WRITEBACK : CACHE_MODE_WRITETHROUGH);
+ 
++		/*
++		 * Currently bcache does not support writeback mode for
++		 * zoned device as backing device. If the cache mode is
++		 * explicitly set to writeback, automatically convert to
++		 * writethough mode.
++		 */
++		if (is_zoned_device(dev) &&
++		    BDEV_CACHE_MODE(&sb) == CACHE_MODE_WRITEBACK) {
++			printf("Zoned device %s detected: convert to writethrough mode.\n\n",
++				dev);
++			SET_BDEV_CACHE_MODE(&sb, CACHE_MODE_WRITETHROUGH);
++		}
++
+ 		if (data_offset != BDEV_DATA_START_DEFAULT) {
+ 			sb.version = BCACHE_SB_VERSION_BDEV_WITH_OFFSET;
+ 			sb.data_offset = data_offset;
+-- 
+2.26.2
+

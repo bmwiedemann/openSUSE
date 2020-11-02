@@ -1,0 +1,93 @@
+From e46282f62364379a6c79b88afd5ed3b78c9781b7 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 16 Aug 2020 21:45:28 +0800
+Subject: [PATCH 04/17] bcache-tools: add struct cache_sb_disk into bcache.h
+Git-commit: e46282f62364379a6c79b88afd5ed3b78c9781b7
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+This is to sync the data structure from bcache kernel code uapi header.
+The new added struct cache_sb_disk is used to define the on-disk format
+bcache super block. Later struct cache_sb will be used for the in-memory
+format bcache super block.
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ bcache.h | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+
+diff --git a/bcache.h b/bcache.h
+index c83f838..82fe580 100644
+--- a/bcache.h
++++ b/bcache.h
+@@ -7,6 +7,8 @@
+ #ifndef _BCACHE_H
+ #define _BCACHE_H
+ 
++#include <linux/types.h>
++
+ #define BITMASK(name, type, field, offset, size)		\
+ static inline uint64_t name(const type *k)			\
+ { return (k->field >> offset) & ~(((uint64_t) ~0) << size); }	\
+@@ -40,6 +42,58 @@ static const char bcache_magic[] = {
+ #define BDEV_DATA_START_DEFAULT	16	/* sectors */
+ #define SB_START		(SB_SECTOR * 512)
+ 
++struct cache_sb_disk {
++	__le64			csum;
++	__le64			offset; /* sector where this sb was written */
++	__le64			version;
++
++	__u8			magic[16];
++
++	__u8			uuid[16];
++	union {
++		__u8		set_uuid[16];
++		__le64		set_magic;
++	};
++	__u8			label[SB_LABEL_SIZE];
++
++	__le64			flags;
++	__le64			seq;
++
++	__le64			pad[8];
++
++	union {
++	struct {
++		/* Cache devices */
++		__le64		nbuckets;	/* device size */
++
++		__le16		block_size;	/* sectors */
++		__le16		bucket_size;	/* sectors */
++
++		__le16		nr_in_set;
++		__le16		nr_this_dev;
++	};
++	struct {
++		/* Backing devices */
++		__le64		data_offset;
++
++		/*
++		 * block_size from the cache device section is still used by
++		 * backing devices, so don't add anything here until we fix
++		 * things to not need it for backing devices anymore
++		 */
++	};
++	};
++
++	__le32			last_mount;		/* time overflow in y2106 */
++
++	__le16			first_bucket;
++	union {
++		__le16		njournal_buckets;
++		__le16		keys;
++	};
++	__le64			d[SB_JOURNAL_BUCKETS];	/* journal buckets */
++};
++
+ struct cache_sb {
+ 	uint64_t		csum;
+ 	uint64_t		offset;	/* sector where this sb was written */
+-- 
+2.26.2
+

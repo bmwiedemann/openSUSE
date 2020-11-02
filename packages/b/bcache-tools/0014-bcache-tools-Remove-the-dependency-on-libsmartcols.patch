@@ -1,0 +1,150 @@
+From 38726cd652e3a3b75f2ae26f8b73e05dff7ed662 Mon Sep 17 00:00:00 2001
+From: Shaoxiong Li <dahefanteng@gmail.com>
+Date: Wed, 19 Aug 2020 18:51:28 +0800
+Subject: [PATCH 14/17] bcache-tools: Remove the dependency on libsmartcols
+Git-commit: 38726cd652e3a3b75f2ae26f8b73e05dff7ed662
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+The bcache tree function relies on the libsmartcols library to
+display the relationship between the cache device and the bdev
+device in a tree shape. However, it is difficult for many old
+operating systems (such as Ubuntu 12) to install this library.
+
+For better compatibility, a simpler implementation is used to
+achieve the same purpose, while removing the dependency on
+libsmartcols.
+
+Signed-off-by: Shaoxiong Li <dahefanteng@gmail.com>
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ Makefile |  8 ++++----
+ bcache.c | 53 +++++++++++++++++++++++++++++++++++------------------
+ 2 files changed, 39 insertions(+), 22 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 90db951..df44085 100644
+--- a/Makefile
++++ b/Makefile
+@@ -22,8 +22,8 @@ clean:
+ 
+ bcache-test: LDLIBS += `pkg-config --libs openssl` -lm
+ 
+-make-bcache: LDLIBS += `pkg-config --libs uuid blkid smartcols`
+-make-bcache: CFLAGS += `pkg-config --cflags uuid blkid smartcols`
++make-bcache: LDLIBS += `pkg-config --libs uuid blkid`
++make-bcache: CFLAGS += `pkg-config --cflags uuid blkid`
+ make-bcache: make.o crc64.o lib.o zoned.o
+ 
+ probe-bcache: LDLIBS += `pkg-config --libs uuid blkid`
+@@ -35,7 +35,7 @@ bcache-super-show: crc64.o lib.o
+ 
+ bcache-register: bcache-register.o
+ 
+-bcache: CFLAGS += `pkg-config --cflags blkid uuid smartcols`
+-bcache: LDLIBS += `pkg-config --libs blkid uuid smartcols`
++bcache: CFLAGS += `pkg-config --cflags blkid uuid`
++bcache: LDLIBS += `pkg-config --libs blkid uuid`
+ bcache: CFLAGS += -std=gnu99
+ bcache: crc64.o lib.o make.o zoned.o features.o
+diff --git a/bcache.c b/bcache.c
+index 3b963e4..a0c5a67 100644
+--- a/bcache.c
++++ b/bcache.c
+@@ -10,13 +10,13 @@
+ #include <unistd.h>
+ #include <getopt.h>
+ #include <regex.h>
+-#include <libsmartcols/libsmartcols.h>
+ #include "bcache.h"
+ #include "lib.h"
+ #include "make.h"
+ #include <locale.h>
+ #include "list.h"
+ #include <limits.h>
++#include <assert.h>
+ 
+ #include "features.h"
+ 
+@@ -425,8 +425,34 @@ int detail_single(char *devname)
+ 	return 0;
+ }
+ 
++void replace_line(char **dest, const char *from, const char *to)
++{
++	assert(strlen(from) == strlen(to));
++	char sub[4096] = "";
++	char new[4096] = "";
++
++	strcpy(sub, *dest);
++	while (1) {
++		char *tmp = strpbrk(sub, from);
++
++		if (tmp != NULL) {
++			strcpy(new, tmp);
++			strcpy(sub, tmp + strlen(from));
++		} else
++			break;
++	}
++	if (strlen(new) > 0) {
++		strncpy(new, to, strlen(to));
++		sprintf(*dest + strlen(*dest) - strlen(new), new, strlen(new));
++	}
++}
++
+ int tree(void)
+ {
++	char *out = (char *)malloc(4096);
++	const char *begin = ".\n";
++	const char *middle = "├─";
++	const char *tail = "└─";
+ 	struct list_head head;
+ 	struct dev *devs, *tmp, *n, *m;
+ 
+@@ -438,35 +464,26 @@ int tree(void)
+ 		fprintf(stderr, "Failed to list devices\n");
+ 		return ret;
+ 	}
+-	struct libscols_table *tb;
+-	struct libscols_line *dad, *son;
+-	enum { COL_CSET, COL_BNAME };
+-	setlocale(LC_ALL, "");
+-	tb = scols_new_table();
+-	scols_table_new_column(tb, ".", 0.1, SCOLS_FL_TREE);
+-	scols_table_new_column(tb, "", 2, SCOLS_FL_TRUNC);
++	sprintf(out, "%s", begin);
+ 	list_for_each_entry_safe(devs, n, &head, dev_list) {
+ 		if ((devs->version == BCACHE_SB_VERSION_CDEV
+ 		     || devs->version == BCACHE_SB_VERSION_CDEV_WITH_UUID)
+ 		    && strcmp(devs->state, BCACHE_BASIC_STATE_ACTIVE) == 0) {
+-			dad = scols_table_new_line(tb, NULL);
+-			scols_line_set_data(dad, COL_CSET, devs->name);
++			sprintf(out + strlen(out), "%s\n", devs->name);
+ 			list_for_each_entry_safe(tmp, m, &head, dev_list) {
+ 				if (strcmp(devs->cset, tmp->attachuuid) ==
+ 				    0) {
+-					son =
+-					    scols_table_new_line(tb, dad);
+-					scols_line_set_data(son, COL_CSET,
+-							    tmp->name);
+-					scols_line_set_data(son, COL_BNAME,
+-							    tmp->bname);
++					replace_line(&out, tail, middle);
++					sprintf(out + strlen(out), "%s%s %s\n",
++						tail, tmp->name, tmp->bname);
+ 				}
+ 			}
+ 		}
+ 	}
+-	scols_print_table(tb);
+-	scols_unref_table(tb);
++	if (strlen(out) > strlen(begin))
++		printf("%s", out);
+ 	free_dev(&head);
++	free(out);
+ 	return 0;
+ }
+ 
+-- 
+2.26.2
+

@@ -1,0 +1,48 @@
+From 45d1412ee834b062a03b42596ee945d9916d3242 Mon Sep 17 00:00:00 2001
+From: Coly Li <colyli@suse.de>
+Date: Sun, 16 Aug 2020 23:41:32 +0800
+Subject: [PATCH 05/17] bcache-tools: bitwise.h: more swap bitwise for
+ different CPU endians
+Git-commit: 45d1412ee834b062a03b42596ee945d9916d3242
+Patch-mainline: bcache-tools-1.1
+References: jsc#SLE-9807
+
+This patch adds more swap routines to bitwise.h,
+	le16_to_cpu()
+	le32_to_cpu()
+	le64_to_cpu()
+
+Signed-off-by: Coly Li <colyli@suse.de>
+---
+ bitwise.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/bitwise.h b/bitwise.h
+index 968002f..1194b27 100644
+--- a/bitwise.h
++++ b/bitwise.h
+@@ -45,11 +45,21 @@
+ #define cpu_to_le16(val)	((__le16)(val))
+ #define cpu_to_le32(val)	((__le32)(val))
+ #define cpu_to_le64(val)	((__le64)(val))
++
++#define le16_to_cpu(val)	((__le16)(val))
++#define le32_to_cpu(val)	((__le32)(val))
++#define le64_to_cpu(val)	((__le64)(val))
++
+ #else
+ /* For big endian */
+ #define cpu_to_le16(val)	((__be16)__swab16((__u16)(val)))
+ #define cpu_to_le32(val)	((__be32)__swab32((__u32)(val)))
+ #define cpu_to_le64(val)	((__be64)__swab64((__u64)(val)))
++
++#define le16_to_cpu(val)	((__be16)__swab16((__u16)(val)))
++#define le32_to_cpu(val)	((__be32)__swab32((__u32)(val)))
++#define le64_to_cpu(val)	((__be64)__swab64((__u64)(val)))
++
+ #endif
+ 
+ #endif
+-- 
+2.26.2
+
