@@ -266,6 +266,9 @@
       <package name="MozillaFirefox-buildsymbols"/>
       <package name="MozillaFirefox-translations-common"/>
       <package name="MozillaFirefox-translations-other"/>
+      <package name="libmozjs-78-0"/>
+      <package name="mozjs78"/>
+      <package name="mozjs78-devel"/>
     </packagelist>
   </group>
 

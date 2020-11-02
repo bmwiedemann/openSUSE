@@ -997,4 +997,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Minor cleanup - yast2-trans-en_US no longer exists</comment>
     <requestid>841301</requestid>
   </revision>
+  <revision rev="138" vrev="136">
+    <srcmd5>b227ac420c30359f3307831c778a597b</srcmd5>
+    <version>unknown</version>
+    <time>1604306870</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs78 is i686</comment>
+  </revision>
 </revisionlist>
