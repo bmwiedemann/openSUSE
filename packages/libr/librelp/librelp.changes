@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 23 11:49:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- librelp 1.8.0:
+  * gnutls "bugfix": handle receivers who break connection on
+    close
+  * gnutls bugfix: per-session memory leak
+  * tls bugfix: RETRY not correctly handled in TLS Mode
+  * openssl: Fix error output for all error cases
+  * bugfix: librelp.h contains duplicate function definition
+  * removed some more externally visible symbols not being part of
+    API
+
+-------------------------------------------------------------------
 Mon Sep  7 19:27:38 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - librelp 1.7.0:
