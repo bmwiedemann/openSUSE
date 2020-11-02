@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 27 19:12:44 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.0.9:
+  * potential heap overflow when using a heap allocator other
+    than jemalloc or glibc's malloc. Does not affect the openSUSE
+    package - boo#1178205 
+  * Memory reporting of clients argv
+  * Add redis-cli control on raw format line delimiter
+  * Add redis-cli support for rediss:// -u prefix
+  * WATCH no longer ignores keys which have expired for MULTI/EXEC
+  * Correct OBJECT ENCODING response for stream type
+  * Allow blocked XREAD on a cluster replica
+  * TLS: Do not require CA config if not used
+  * multiple bug fixes
+  * Additions to modules API
+  
+-------------------------------------------------------------------
 Fri Sep 11 06:38:43 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.0.8 (jsc#PM-1615, jsc#PM-1622, jsc#PM-1681, jsc#ECO-2417, jsc#ECO-2867, jsc#PM-1547, jsc#CAPS-56, jsc#SLE-11578, jsc#SLE-12821):
