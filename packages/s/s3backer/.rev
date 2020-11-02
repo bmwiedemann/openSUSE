@@ -162,4 +162,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>839054</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>be9520223ab55c244baf79717746a8e2</srcmd5>
+    <version>1.5.6</version>
+    <time>1604306546</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 1.5.6
+  + Fixed phantom write error when server-side-encryption used (issue #135)
+  + Allow bucket names with &quot;subdirectory&quot; for prefix (issue #130)
+  + Added `--configFile' flag (issue #129)
+  + Added `--accessKeyEnv' flag (issue #128)
+  + Removed deprecated `--rrs' flag
+</comment>
+    <requestid>845089</requestid>
+  </revision>
 </revisionlist>

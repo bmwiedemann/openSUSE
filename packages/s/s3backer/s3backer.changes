@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 30 17:03:54 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 1.5.6
+  + Fixed phantom write error when server-side-encryption used (issue #135)
+  + Allow bucket names with "subdirectory" for prefix (issue #130)
+  + Added `--configFile' flag (issue #129)
+  + Added `--accessKeyEnv' flag (issue #128)
+  + Removed deprecated `--rrs' flag
+
+-------------------------------------------------------------------
 Sat Aug 22 17:43:05 UTC 2020 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 1.5.5
