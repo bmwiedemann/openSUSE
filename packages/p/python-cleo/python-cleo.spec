@@ -18,26 +18,25 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cleo
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Python module for creating testable command-line interfaces
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sdispater/cleo
-Source:         https://github.com/sdispater/cleo/archive/%{version}.tar.gz
-BuildRequires:  %{python_module clikit >= 0.4.0}
-BuildRequires:  %{python_module pastel >= 0.1.0}
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module clikit >= 0.6.0}
+BuildRequires:  %{python_module pastel >= 0.2.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pylev >= 1.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
-BuildRequires:  python-dephell-rpm-macros
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dephell
-Requires:       python-clikit >= 0.4.0
-Requires:       python-pastel >= 0.1.0
+Requires:       python-clikit >= 0.6.0
+Requires:       python-pastel >= 0.2.0
 Requires:       python-pylev >= 1.3
 Requires:       python-typing
 BuildArch:      noarch
@@ -48,13 +47,12 @@ Cleo allows creating testable command-line interfaces.
 
 %prep
 %setup -q -n cleo-%{version}
-%dephell_gensetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +61,7 @@ Cleo allows creating testable command-line interfaces.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cleo
+%{python_sitelib}/cleo-%{version}*info
 
 %changelog

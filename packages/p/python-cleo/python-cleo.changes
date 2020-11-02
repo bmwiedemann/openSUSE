@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:42:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.8.1
+  * Upgraded clikit to version ^0.6.0
+- Kill dephell dependency
+
+-------------------------------------------------------------------
 Tue Mar 31 11:45:54 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.8.0
