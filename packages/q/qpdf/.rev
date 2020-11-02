@@ -602,4 +602,18 @@
   * Fixes a regression in QPDFObjectHandle::getStreamData</comment>
     <requestid>792831</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>c2ddba85fb8a8a4f70c550364a15652a</srcmd5>
+    <version>10.0.3</version>
+    <time>1604306318</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.0.3
+  * Fixes a regression introduced in 10.0.2
+
+- Update to version 10.0.2
+  * Bug fixes and performance improvements
+  * See http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.release-notes
+    for a complete changelog.</comment>
+    <requestid>845210</requestid>
+  </revision>
 </revisionlist>
