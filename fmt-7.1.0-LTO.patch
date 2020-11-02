@@ -1,0 +1,25 @@
+From cb224ecaa375e22ace3b844358a63ba16b4df061 Mon Sep 17 00:00:00 2001
+From: Victor Zverovich <victor.zverovich@gmail.com>
+Date: Tue, 27 Oct 2020 07:44:12 -0700
+Subject: [PATCH] Instantiate to_decimal to make gcc lto happy (#1955)
+
+---
+ src/format.cc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/format.cc b/src/format.cc
+index 727134166..88565e602 100644
+--- a/src/format.cc
++++ b/src/format.cc
+@@ -23,6 +23,11 @@ int format_float(char* buf, std::size_t size, const char* format, int precision,
+   return precision < 0 ? snprintf_ptr(buf, size, format, value)
+                        : snprintf_ptr(buf, size, format, precision, value);
+ }
++
++template dragonbox::decimal_fp<float> dragonbox::to_decimal(float x)
++    FMT_NOEXCEPT;
++template dragonbox::decimal_fp<double> dragonbox::to_decimal(double x)
++    FMT_NOEXCEPT;
+ }  // namespace detail
+ 
+ template struct FMT_INSTANTIATION_DEF_API detail::basic_data<void>;

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Oct 26 14:54:41 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.1.0
+  * Switched from Grisu3 to Dragonbox for the default
+    floating-point formatting which gives the shortest decimal
+    representation with round-trip guarantee and correct rounding.
+    This makes {fmt} up to 20-30x faster than common
+    implementations of std::ostringstream and sprintf on
+    dtoa-benchmark and faster than double-conversion and Ryū. It
+    is possible to get even better performance at the cost of
+    larger binary size by compiling with the
+    FMT_USE_FULL_CACHE_DRAGONBOX macro set to 1.
+  * Added an experimental unsynchronized file output API which,
+    together with format string compilation can give 5-9 times
+    speed up compared to fprintf on common platforms.
+  * Added a formatter for std::chrono::time_point<system_clock>
+  * Added support for ranges with non-const begin/end to fmt::join
+  * Added a memory_buffer::append overload that takes a range.
+  * Improved handling of single code units in FMT_COMPILE.
+  * Added dynamic width support to format string compilation.
+  * Improved error reporting for unformattable types: now you'll
+    get the type name directly in the error message instead of
+    the note.
+  * Added the make_args_checked function template that allows
+    you to write formatting functions with compile-time format
+    string checks and avoid binary code bloat.
+  * Replaced snprintf fallback with a faster internal IEEE 754
+    float and double formatter for arbitrary precision.
+  * Made format_to_n and formatted_size part of the core API.
+  * Added fmt::format_to_n overload with format string
+    compilation.
+  * Added fmt::format_to overload that take text_style.
+  * Made the # specifier emit trailing zeros in addition to the
+    decimal point.
+  * Changed the default floating point format to not include .0
+    for consistency with std::format and std::to_chars. It is
+    possible to get the decimal point and trailing zero with the
+    # specifier.
+  * Fixed an issue with floating-point formatting that could
+    result in addition of a non-significant trailing zero in
+    rare cases e.g. 1.00e-34 instead of 1.0e-34.
+  * Made fmt::to_string fallback on ostream insertion operator
+    if the formatter specialization is not provided.
+  * Added support for the append mode to the experimental file
+    API and improved fcntl.h detection.
+  * Fixed handling of types that have both an implicit
+    conversion operator and an overloaded ostream insertion
+    operator.
+  * Fixed a slicing issue in an internal iterator type.
+  * Fixed an issue in locale-specific integer formatting.
+  * Fixed handling of exotic code unit types.
+  * Improved FMT_ALWAYS_INLINE.
+  * Improved documentation.
+  * Added the FMT_REDUCE_INT_INSTANTIATIONS CMake option that
+    reduces the binary code size at the cost of some integer
+    formatting performance. This can be useful for extremely
+    memory-constrained embedded systems.
+  * Added the FMT_USE_INLINE_NAMESPACES macro to control usage
+    of inline namespaces.
+  * Improved build configuration.
+  * Fixed various warnings and compilation issues.
+- Add fmt-7.1.0-LTO.patch
+
+-------------------------------------------------------------------
 Fri Aug  7 19:56:36 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.0.3
