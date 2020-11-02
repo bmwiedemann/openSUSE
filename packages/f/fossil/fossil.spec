@@ -16,13 +16,9 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without system_sqlite
-%else
 %bcond_with system_sqlite
-%endif
 Name:           fossil
-Version:        2.12.1
+Version:        2.13
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
@@ -35,7 +31,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  tcl
 BuildRequires:  zlib-devel
 %if %{with system_sqlite}
-BuildRequires:  sqlite3-devel >= 3.25.0
+BuildRequires:  sqlite3-devel >= 3.34.0
 %endif
 
 %description
@@ -62,7 +58,7 @@ export CFLAGS="%{optflags}"
         --disable-internal-sqlite
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

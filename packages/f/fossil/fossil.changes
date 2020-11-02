@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  1 08:39:46 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.13:
+  * wiki improvements: interwiki links, markup features
+  * support for rendering pikchr markup scriptions
+  * line number modes support interactive selection of range of
+    lines to hyperlink to
+  * Enhance finfo page to track a file across renames
+- minimum/bundled version of sqlite increased to 3.34.0
+
+-------------------------------------------------------------------
 Wed Aug 26 13:53:19 UTC 2020 - Reinhard Max <max@suse.com>
 
 - fossil 2.12.1:
