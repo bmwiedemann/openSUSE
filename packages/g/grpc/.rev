@@ -206,4 +206,14 @@
     <comment></comment>
     <requestid>843436</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1b1e0ef0631efb375c003f3f316e2dbf</srcmd5>
+    <version>1.33.2</version>
+    <time>1604306389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.33.2
+
+put together with abseil-cpp</comment>
+    <requestid>844726</requestid>
+  </revision>
 </revisionlist>

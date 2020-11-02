@@ -21,7 +21,7 @@
 %define lverplugin 1
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.33.1
+Version:        1.33.2
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
 Source2:        %name-rpmlintrc
 # PATCH-FIX-UPSTREAM grpc-correct-pkgconfig-path.patch badshah400@gmail.com -- Make path for pkgconfig file installation consistent with gRPC_INSTALL_LIBDIR specification
 Patch1:         grpc-correct-pkgconfig-path.patch
-BuildRequires:  abseil-cpp-source
+BuildRequires:  abseil-cpp-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -129,8 +129,7 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -p1
-# Copy abseil-cpp source into empty third_party/abseil-cpp dir
-cp -r %_prefix/src/abseil-cpp/* third_party/abseil-cpp/
+rm -Rf third_party/abseil-cpp/
 
 %build
 %define _lto_cflags %nil
@@ -141,8 +140,8 @@ export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
 %cmake -DgRPC_INSTALL=ON                  \
        -DgRPC_INSTALL_LIBDIR:PATH="%_lib" \
-       -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir"/cmake/grpc \
-       -DgRPC_ABSL_PROVIDER=module        \
+       -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir/cmake/grpc" \
+       -DgRPC_ABSL_PROVIDER=package \
        -DgRPC_CARES_PROVIDER=package      \
        -DgRPC_PROTOBUF_PROVIDER=package   \
        -DgRPC_RE2_PROVIDER=package        \
