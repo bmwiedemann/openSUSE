@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 31 11:23:54 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2020.10.1
+  * Fix bug when using --root option on Linux installer.
+  version 2020.10.0:
+  * Fix bug when copying files from a high speed device.
+  * Fix Google Photos uploader bug when folder has no name.
+  * Improved installation, particularly start menu shortcuts.
+  * Minor other fixes and improvements.
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Apr 28 16:02:25 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2020.4.0

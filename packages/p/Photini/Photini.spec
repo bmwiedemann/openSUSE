@@ -17,7 +17,7 @@
 
 
 Name:           Photini
-Version:        2020.4.0
+Version:        2020.10.1
 Release:        0
 Summary:        Digital photograph metadata (EXIF, IPTC, XMP) editing application
 License:        GPL-3.0-or-later
@@ -57,25 +57,22 @@ camera's position when the picture was taken.
 
 %prep
 %setup -q
-sed '/^Icon/cIcon=photini' -i src/linux/photini.desktop
-# remove shebang
-sed -e '1d' -i src/photini/importer.py src/photini/spelling.py src/photini/editor.py
+sed -e 's/{exec_path}/photini/' -e 's/{icon_path}/photini/' -i src/linux/photini.desktop.template
 
 %build
 python3 setup.py build
-for s in 22 32 48 64 96 128 192 256; do
-    convert -strip src/windows/icon.ico[0] -resize ${s}x${s} ${s}.png
+for s in 22 32 48 64 96 128 192 256 512; do
+    convert -strip src/misc/icon_master.png -resize ${s}x${s} ${s}.png
 done
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root %{buildroot}
-for s in 22 32 48 64 96 128 192 256; do
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+for s in 22 32 48 64 96 128 192 256 512; do
 mkdir -pv %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps
 install -m0644 ${s}.png -T \
-               %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps/photini.png
+          %{buildroot}%{_datadir}/icons//hicolor/${s}x${s}/apps/photini.png
 done
-chmod -x %{buildroot}%{_datadir}/applications/photini.desktop
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %files
 %doc CHANGELOG.txt README.rst
