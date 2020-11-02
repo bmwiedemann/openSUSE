@@ -185,4 +185,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>840495</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>be3d482ac4c0d81fb02a8f7ece6705b3</srcmd5>
+    <version>1.18.g19</version>
+    <time>1604306213</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _service file / move to 1.18.g19 (863e6f0f)
+(bsc#1177921):</comment>
+    <requestid>844380</requestid>
+  </revision>
 </revisionlist>

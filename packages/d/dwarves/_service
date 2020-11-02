@@ -1,0 +1,16 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git://git.kernel.org/pub/scm/devel/pahole/pahole</param>
+		<param name="filename">dwarves</param>
+		<param name="revision">863e6f0f2cc08592a18239824e7604f955c74134</param>
+		<param name="parent-tag">v1.18</param>
+		<param name="versionformat">1.18.g@TAG_OFFSET@</param>
+		<param name="submodules">enable</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

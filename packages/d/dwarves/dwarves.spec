@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.18
+Version:        1.18.g19
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -25,10 +25,10 @@ Group:          Development/Tools/Debuggers
 URL:            http://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
-Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
-Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
+#Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
+#Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
+Source:         %name-%version.tar.xz
 Source9:        baselibs.conf
-Patch1:         libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.170
 %if 0%{?suse_version} < 1550

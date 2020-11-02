@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:52:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Add _service file / move to 1.18.g19 (863e6f0f)
+  * btf_encoder: Ignore zero-sized ELF symbols
+
+-------------------------------------------------------------------
+Tue Oct 27 13:00:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.18_15g040fd7f (bsc#1177921):
+  * btf_encoder: Support cross-compiled ELF binaries with different endianness
+  * strings: use BTF's string APIs for strings management
+  * strings: Rename strings.h to avoid clashing with /usr/include/strings.h
+  * dwarf_loader: increase the size of lookup hash map
+  * btf_encoder: revamp how per-CPU variables are encoded
+  * btf_encoder: Discard CUs after BTF encoding
+  * btf_encoder: Fix emitting __ARRAY_SIZE_TYPE__ as index range type
+  * btf_encoder: Use libbpf APIs to encode BTF type info
+  * btf_loader: Use libbpf to load BTF
+  * dwarves: Expose and maintain active debug info loader operations
+  * btf_encoder: detect BTF encoding errors and exit
+  * libbpf: Update to latest libbpf version
+  * dwarf_loader: Conditionally define DW_AT_alignment
+  * pahole: Implement --packed
+  * man-pages: Fix 'coimbine' typo
+- remove libbpf-Fix-libbpf-hashmap-on-I-LP32-architectures.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Oct  2 22:00:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18
