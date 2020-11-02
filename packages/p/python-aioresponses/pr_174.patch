@@ -1,0 +1,30 @@
+From ab7e43b0575f0ed6d194b1e10e7c5ca4e672607a Mon Sep 17 00:00:00 2001
+From: David Buxton <david@gasmark6.com>
+Date: Sat, 24 Oct 2020 13:28:56 +0100
+Subject: [PATCH] Fix compatibility with aiohttp==3.7.0
+
+The new version of aiohttp has made `limit` a required argument for the
+StreamReader class. This change adds an explicit limit of 2 ** 16 which
+is the same as what aiohttp uses internally.
+
+Using `limit` as a keyword (rather than a positional argument) keeps
+compatibility with previous versions of aiohttp.
+
+Fixes #173
+---
+ aioresponses/compat.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/aioresponses/compat.py b/aioresponses/compat.py
+index 321a33a..d2624ad 100644
+--- a/aioresponses/compat.py
++++ b/aioresponses/compat.py
+@@ -45,7 +45,7 @@ def stream_reader_factory(  # noqa
+         loop: 'Optional[asyncio.AbstractEventLoop]' = None
+     ):
+         protocol = ResponseHandler(loop=loop)
+-        return StreamReader(protocol, loop=loop)
++        return StreamReader(protocol, limit=2 ** 16, loop=loop)
+ 
+ else:
+ 

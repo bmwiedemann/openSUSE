@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioresponses
-Version:        0.6.4
+Version:        0.7.0
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
 URL:            https://github.com/pnuckowski/aioresponses
 Source:         https://files.pythonhosted.org/packages/source/a/aioresponses/aioresponses-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM aioresponses-replace-asynctest.patch gh#pnuckowski/aioresponses#166
-Patch0:         aioresponses-replace-asynctest.patch
+# PATCH-FIX-UPSTREAM pr_174.patch gh#pnuckowski/aioresponses#174
+Patch0:         pr_174.patch
 BuildRequires:  %{python_module aiohttp >= 2.0.0}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module ddt >= 1.1.0}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:43:39 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove no longer necessary aioresponses-replace-asynctest.patch
+- Add pr_174.patch to add compatibility with aiohttp 3.7.0
+- Update to v0.7.0
+  * fixes race condition while removing matchers
+  * drop support for py3.5 and aiohttp2.x
+  * replace asynctest with native Python 3.8 unittest
+
+-------------------------------------------------------------------
 Tue Aug 11 08:37:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - replace asynctest with native python 3.8 unittest async test class
