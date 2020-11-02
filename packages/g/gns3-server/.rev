@@ -88,4 +88,12 @@
 - Use find &quot;-exec +&quot; mode and remove wrong backslash. (forwarded request 695822 from jengelh)</comment>
     <requestid>697356</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>42525a906ca4e673dfdc369d8cce08d4</srcmd5>
+    <version>2.2.14</version>
+    <time>1604309758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835879</requestid>
+  </revision>
 </revisionlist>

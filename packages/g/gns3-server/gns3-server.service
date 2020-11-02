@@ -1,0 +1,14 @@
+[Unit]
+Description=GNS3 server
+
+[Service]
+Type=simple
+Environment=statedir=/var/lib/gns3
+ExecStart=/usr/bin/gns3server
+Restart=on-abort
+User=_gns3
+Group=_gns3
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

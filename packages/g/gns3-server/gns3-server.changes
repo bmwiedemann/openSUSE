@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Sep 21 15:21:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
+Fri Sep 18 21:47:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.14
+  * Release Web-Ui version 2020.3.0-beta.4
+  * Add '-smp sockets=1' by default for Qemu VMs. 
+  * Implement full restart if user reload a Qemu VM which has been
+    updated. Fixes 
+- Update to version 2.2.13
+  Server
+  * Release Web-Ui 2020.3.0-beta.3
+  * Fix issue when resuming Qemu VM. 
+
+-------------------------------------------------------------------
+Sun Aug  9 14:47:28 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.12
+  * Release Web-Ui version 2020.3.0-beta.2
+  * Catch exception when psutil returns OSError
+  * Downgrade psutil to version 5.6.7
+  * Use parent directory as working directory for project
+    duplication and snapshots. Fixes GNS3/gns3-gui#2909
+  * Fix Key Error "vendor_id" is missing when configuring GNS3 VM
+    with VirtualBox. Fixes GNS3/gns3-gui#3018
+- Update to version 2.2.11
+  * Fix crash when project sets 'auto_open' option and a remote
+    GNS3 VM is used. Fixes GNS3/gns3-gui#3014
+  * Fix Dynamips ghost image support when project contains a space.
+  * Release Web-Ui version 2020.3.0-beta.1
+  * Fix issue when cannot skip slots for Dynamips routers.
+  * Allow tests to be run by root.
+  * Update classifiers in setup.py
+
+-------------------------------------------------------------------
+Thu Jun 18 16:24:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.10
+  * Don't require hardware acceleration.
+  * Release Web-Ui version 2020.2.0-beta.5
+  * Tests can be run with Python 3.8
+  * Wait longer for x11 socket file to be created. Ref #1761
+  * Show error message if IPv6 is not enabled when using SPICE console.
+  * Only use jsonschema 2.6.0 on Windows and macOS.
+  * Disable default integrations for sentry sdk.
+  * Remove unused bytes2human function.
+- Update to version 2.2.9
+  * Release Web-Ui version 2020.2.0-beta.4
+  * Support to activate/deactive network connection state
+    replication in Qemu.
+  * Possible fix for problem connecting to the GNS3 VM.
+  * Option to reset or not all MAC addresses when exporting or
+    duplicating a project.
+  * Fix bug when changing properties for closed project.
+  * Fix issues with crash reporting & bump version to 2.2.9dev2.
+  * Lock listing VMs.
+  * Try to fix error when listing Hyper-V VMs.
+  * Catch VirtualBox errors when listing VMs.
+  * Deprecate running with Python 3.5
+  * aiocontextvars is only necessary for Python < 3.7
+  * Replace Raven by Sentry SDK. Fixes #1758
+  * Require setuptools>=17.1 in setup.py.
+
+-------------------------------------------------------------------
+Tue Jun  2 14:25:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.8
+  - https://github.com/GNS3/gns3-server/releases/tag/v2.2.8
+- Remove patches (not longer needed):
+  * gns3-server-timeout-fix.patch
+  * gns3-server-requirements-fix.patch
+- Specfile cleanup
+- Add systemd service file
+- Filter auto-generated deps from bundled shell scripts
+
+-------------------------------------------------------------------
+Tue Aug  6 13:38:47 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- This package doesn't support jsonschema 3.
+
+-------------------------------------------------------------------
 Thu Apr 18 17:54:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim name repetition from summary. (rpmlint would warn about this)
