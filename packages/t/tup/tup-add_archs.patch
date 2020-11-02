@@ -1,8 +1,8 @@
-Index: tup-0.7.6/src/tup/platform.c
+Index: tup-0.7.10/src/tup/platform.c
 ===================================================================
---- tup-0.7.6.orig/src/tup/platform.c
-+++ tup-0.7.6/src/tup/platform.c
-@@ -56,6 +56,8 @@ const char *tup_arch = "sparc";
+--- tup-0.7.10.orig/src/tup/platform.c
++++ tup-0.7.10/src/tup/platform.c
+@@ -58,6 +58,8 @@ const char *tup_arch = "sparc";
  const char *tup_arch = "arm";
  #elif __aarch64__
  const char *tup_arch = "arm64";
@@ -11,12 +11,12 @@ Index: tup-0.7.6/src/tup/platform.c
  #else
  #error Unsupported cpu architecture. Please add support in tup/platform.c
  #endif
-Index: tup-0.7.6/tup.1
+Index: tup-0.7.10/tup.1
 ===================================================================
---- tup-0.7.6.orig/tup.1
-+++ tup-0.7.6/tup.1
-@@ -753,7 +753,7 @@ In this case, the @-variable "FOO" is ex
- TUP_PLATFORM is a special @-variable. If CONFIG_TUP_PLATFORM is not set in the tup.config file, it has a default value according to the platform that tup itself was compiled in. Currently the default value is one of "linux", "solaris", "macosx", "win32", or "freebsd".
+--- tup-0.7.10.orig/tup.1
++++ tup-0.7.10/tup.1
+@@ -755,7 +755,7 @@ In this case, the @-variable "FOO" is ex
+ TUP_PLATFORM is a special @-variable. If CONFIG_TUP_PLATFORM is not set in the tup.config file, it has a default value according to the platform that tup itself was compiled in. Currently the default value is one of "linux", "solaris", "macosx", "win32", "freebsd" or "netbsd".
  .TP
  .B @(TUP_ARCH)
 -TUP_ARCH is another special @-variable. If CONFIG_TUP_ARCH is not set in the tup.config file, it has a default value according to the processor architecture that tup itself was compiled in. Currently the default value is one of "i386", "x86_64", "powerpc", "powerpc64", "ia64", "alpha", "sparc", "arm64", or "arm".
