@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 30 00:18:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Make executables setup compatible with multiple python3 flavors
+  * gh#openSUSE/python-rpm-macros#66
+  * update-alternatives for pip3
+  * use %python_clone and %python_install_alternative for sip and 
+    sip3
+  * use original bin/sip%{python_bin_suffix} as is
+  * effect: consistent shebangs and specifiers inside the
+    entry_point scripts
+
+-------------------------------------------------------------------
 Sun Oct 11 13:08:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 20.2.3

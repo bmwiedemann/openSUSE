@@ -96,7 +96,10 @@ done
 %if ! %{with test}
 %install
 %python_install
-%prepare_alternative pip
+%python_clone -a %{buildroot}%{_bindir}/pip
+%python_clone -a %{buildroot}%{_bindir}/pip3
+# if we just cloned to pip3-2.7 delete it
+rm -f %{buildroot}%{_bindir}/pip3-2*
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -121,25 +124,32 @@ donttest+=" or test_from_link_vcs_without_source_dir"
 # Since /usr/bin/pip became ghosted to be used with update-alternatives, we have to get rid
 # of the old binary resulting from the non-update-alternatives-ified package:
 [ -h %{_bindir}/pip ] || rm -f %{_bindir}/pip
+[ -h %{_bindir}/pip3 ] || rm -f %{_bindir}/pip3
 
 %post
-# can't use `python_install_alternative` because it's pipX.Y, not pip-X.Y
-PRIO=$(echo %{python_version} | tr -d .)
-%install_alternative pip %{_bindir}/pip%{python_version} $PRIO
+# keep the alternative groups separate. Users could decide to let pip and pip3 point to
+# different flavors
+%python_install_alternative pip
+%if "%python_flavor" != "python2"
+%python_install_alternative pip3
+%endif
 
 %postun
-%uninstall_alternative pip %{_bindir}/pip%{python_version}
+%python_uninstall_alternative pip
+%python_uninstall_alternative pip3
 
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc AUTHORS.txt NEWS.rst README.rst
-%python3_only %{_bindir}/pip
-%{_bindir}/pip%{python_version}
-%python2_only %{_bindir}/pip2
-%python3_only %{_bindir}/pip3
-%ghost %{_sysconfdir}/alternatives/pip
-%{python_sitelib}/pip-%{version}-py%{python_version}.egg-info
+%python_alternative %{_bindir}/pip
+%if "%{python_flavor}" == "python2"
+%{_bindir}/pip2
+%else
+%python_alternative %{_bindir}/pip3
+%endif
+%{_bindir}/pip%{python_bin_suffix}
+%{python_sitelib}/pip-%{version}*-info
 %{python_sitelib}/pip
 %endif
 
