@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:18:00 UTC 2020 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.23.0:
+  * deps: upgrade npm to 6.14.8
+  * n-api:
+    + create N-API version 7
+    + expose napi_build_version variable
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Fri Oct  9 09:34:16 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - fix_ci_tests.patch: add support to SUSE's ECDH backport errors

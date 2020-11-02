@@ -379,4 +379,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842083</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9d07689088bad5680a1eb0f0dff471ef</srcmd5>
+    <version>10.23.0</version>
+    <time>1604306415</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream LTS version 10.23.0:
+  * deps: upgrade npm to 6.14.8
+  * n-api:
+    + create N-API version 7
+    + expose napi_build_version variable
+- versioned.patch: refreshed</comment>
+    <requestid>844833</requestid>
+  </revision>
 </revisionlist>
