@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysmb
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
 License:        Zlib
@@ -32,7 +31,12 @@ BuildRequires:  unzip
 Requires:       python-pyasn1
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyasn1}
+BuildRequires:  %{python_module pytest}
+%if 0%{?suse_version} < 1550
+BuildRequires:  python-twisted
+%endif
 # /SECTION
 %python_subpackages
 
@@ -55,7 +59,8 @@ sed -Ei "1{/^#!\/usr\/bin\/python/d}" %{buildroot}%{$python_sitelib}/smb/utils/s
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# Run only the tests that can work without network (and only from the right pythoni2/3 dir)
+%python_expand %pytest $python -k 'not SMB and not test_broadcast'
 
 %files %{python_files}
 %doc CHANGELOG README.txt
