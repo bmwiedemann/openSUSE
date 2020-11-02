@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 30 10:47:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.25.3 (no changelog)
+- Removed fakeroot-1.24-fix-chown.patch
+- Removed fakeroot-1.21-hide-dlsym-error.patch
+- Rebased fakeroot-1.20-lib32.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 11:54:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add fakeroot-1.24-fix-chown.patch:

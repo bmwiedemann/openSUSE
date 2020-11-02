@@ -65,4 +65,12 @@
 - skip testsuite on Tumbleweed until underlying issue has been fixed</comment>
     <requestid>836310</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35e7a0363af5c7f68e37c582b712f5a8</srcmd5>
+    <version>1.25.3</version>
+    <time>1604306507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845044</requestid>
+  </revision>
 </revisionlist>

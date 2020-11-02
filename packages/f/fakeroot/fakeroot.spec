@@ -17,7 +17,7 @@
 
 
 Name:           fakeroot
-Version:        1.24
+Version:        1.25.3
 Release:        0
 Summary:        Wrapper that gives a fake root environment
 License:        GPL-3.0-or-later
@@ -27,13 +27,9 @@ Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{vers
 Source99:       baselibs.conf
 Patch0:         %{name}-1.20-lib32.patch
 Patch2:         %{name}-1.20-eglibc-fts-without-LFS.patch
-# PATCH-FIX-UPSTREAM fakeroot-1.21-hide-dlsym-error.patch (deb#830912)
-Patch3:         %{name}-1.21-hide-dlsym-error.patch
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
 Patch4:         %{name}-1.21-fix-shell-in-fakeroot
 Patch5:         fakeroot-drop-tartest.patch
-# PATCH-FIX-UPSTREAM https://salsa.debian.org/clint/fakeroot/-/commit/55e12cb8b02d65b9fc9c3e607794db5e01e2f94f.diff
-Patch6:         fakeroot-1.24-fix-chown.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite

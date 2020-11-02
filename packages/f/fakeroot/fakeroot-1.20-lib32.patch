@@ -1,17 +1,9 @@
-From: Adam Mizerski <adam@mizerski.pl>
-Date: 2013-10-26 16:57:11 +0200
-Subject: Fix lib32 path.
-Upstream: no
-
-Fix lib32 path to allow running 32bit fakeroot on 64bit system.
-
-diff -ru fakeroot-1.20/scripts/fakeroot.in fakeroot-1.20_mod/scripts/fakeroot.in
---- fakeroot-1.20/scripts/fakeroot.in	2013-09-20 15:54:24.000000000 +0200
-+++ fakeroot-1.20_mod/scripts/fakeroot.in	2013-10-26 16:54:22.935621993 +0200
+--- fakeroot-1.25.3/scripts/fakeroot.in.orig	2020-10-30 11:40:54.365410673 +0100
++++ fakeroot-1.25.3/scripts/fakeroot.in	2020-10-30 11:40:59.913425822 +0100
 @@ -35,7 +35,7 @@
  
  USEABSLIBPATH=@LDPRELOADABS@
- LIB=lib@fakeroot_transformed@@DLSUFFIX@
+ FAKEROOT_LIB=lib@fakeroot_transformed@@DLSUFFIX@
 -PATHS=@libdir@:${FAKEROOT_PREFIX}/lib64/libfakeroot:${FAKEROOT_PREFIX}/lib32/libfakeroot
 +PATHS=@libdir@:${FAKEROOT_PREFIX}/lib64/libfakeroot:${FAKEROOT_PREFIX}/lib/libfakeroot
  FAKED=${FAKEROOT_BINDIR}/@faked_transformed@
