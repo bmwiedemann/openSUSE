@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 31 06:05:03 UTC 2020 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.11.2.
+  * Support for LLVM 11.
+
+-------------------------------------------------------------------
 Wed Jul 15 22:26:55 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to bpftrace 0.11.0.
