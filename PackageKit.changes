@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 30 03:12:47 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-bsc1169739.patch: main: notify the service manager
+  when it's beginning to shutdown
+  (gh#/hughsie/PackageKit/commit/d8dd484d, bsc#1169739).
+
+-------------------------------------------------------------------
+Wed Oct 28 07:04:45 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace $DISABLE_RESTART_ON_UPDATE=yes with %service_del_postun_without_restart
+
+  Use of $DISABLE_RESTART_ON_UPDATE is deprecated.
+
+-------------------------------------------------------------------
 Tue Oct 13 01:56:23 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-dont-refresh-repos-on-offline-update.patch:
