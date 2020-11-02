@@ -2889,4 +2889,13 @@ Petr</comment>
   * 0001-Upgrade-liborcus-to-0.16.0.patch</comment>
     <requestid>841867</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>d485215df6a773711d97f8520c5edab1</srcmd5>
+    <version>7.0.3.1</version>
+    <time>1604322250</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.3:
+  * .3 bugfix release of 7.0 series</comment>
+    <requestid>845004</requestid>
+  </revision>
 </revisionlist>

@@ -50,7 +50,7 @@
 %bcond_with system_gpgme
 %endif
 Name:           libreoffice
-Version:        7.0.2.2
+Version:        7.0.3.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -94,7 +94,7 @@ Source2008:     %{external_url}/pdfium-4137.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m84-c1baf6e1c2a5454148adb516f0f833483b5a0353.tar.xz
+Source2010:     %{external_url}/skia-m85-e684c6daef6bfb774a325a069eda1f76ca6ac26c.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
