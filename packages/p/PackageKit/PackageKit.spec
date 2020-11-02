@@ -56,6 +56,8 @@ Patch4:         PackageKit-test-Install-required-helper-files.patch
 Patch5:         PackageKit-zypp-set-PATH.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-repos-on-offline-update.patch gh#/hughsie/PackageKit/commit/81207bd3, bsc#1173562 sckang@suse.com -- zypp: Don’t refresh repos again when actually updating packages
 Patch6:         PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
+# PATCH-FIX-UPSTREAM PackageKit-bsc1169739.patch gh#/hughsie/PackageKit/commit/d8dd484d, bsc#1169739 sckang@suse.com -- main: notify the service manager when it's beginning to shutdown
+Patch7:         PackageKit-bsc1169739.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -335,11 +337,10 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %postun
 %mime_database_postun
 # Do not restart PackageKit on upgrade - it kills the transaction
-export DISABLE_RESTART_ON_UPDATE=yes
-%service_del_postun packagekit.service
-%service_del_postun packagekit-background.service packagekit-background.timer
+%service_del_postun_without_restart packagekit.service
+%service_del_postun_without_restart packagekit-background.service packagekit-background.timer
 %if %{with offline_updates}
-%service_del_postun packagekit-offline-update.service
+%service_del_postun_without_restart packagekit-offline-update.service
 %endif
 
 %post gstreamer-plugin
