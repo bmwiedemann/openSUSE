@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:42:42 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Use %pycache_only %python_sitelib instead of %python3_sitelib
+  fixes gh#openSUSE/python-rpm-macros#64#issuecomment-715373348
+
+-------------------------------------------------------------------
 Tue Apr 14 10:24:24 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Switch from nose to pytest 

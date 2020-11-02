@@ -52,7 +52,7 @@ A markdown parser in pure Python, inspired by marked.
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/mistune.py*
-%pycache_only %{python3_sitelib}/__pycache__/*
+%pycache_only %{python_sitelib}/__pycache__/*
 %dir %{python_sitelib}/mistune-%{version}-py*.egg-info
 %{python_sitelib}/mistune-%{version}-py*.egg-info/*
 
