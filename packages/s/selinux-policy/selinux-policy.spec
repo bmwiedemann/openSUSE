@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20201016
+Version:        20201029
 Release:        0
 Source:         fedora-policy.%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc

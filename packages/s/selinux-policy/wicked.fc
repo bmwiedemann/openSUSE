@@ -19,6 +19,7 @@
 /usr/sbin/rcwicked.*		--	gen_context(system_u:object_r:wicked_initrc_exec_t,s0)
 
 /usr/lib/wicked/bin(/.*)?		gen_context(system_u:object_r:wicked_exec_t,s0)
+/usr/libexec/wicked/bin(/.*)?		gen_context(system_u:object_r:wicked_exec_t,s0)
 
 #/usr/lib64/libwicked-0.6.63.so
 

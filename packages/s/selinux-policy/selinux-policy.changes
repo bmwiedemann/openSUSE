@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 08:47:51 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- wicked.fc: add libexec directories
+- Update to version 20201029
+  - update container policy
+
+-------------------------------------------------------------------
 Fri Oct 16 08:50:06 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20201016
