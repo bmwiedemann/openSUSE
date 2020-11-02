@@ -16,6 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "python"
+%global pprefix python-
+%define oldpython python
+%bcond_without python
+%bcond_without python2
+%else
+%global pprefix %{nil}
+%bcond_with python
+%bcond_with python2
+%endif
+
 %define with_fence_sanlockd 0
 %define with_sanlk_reset    0
 %if 0%{?suse_version} > 1320
@@ -26,15 +38,21 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%bcond_without python2
-Name:           sanlock
+%define pname   sanlock
+Name:           %{pprefix}%{pname}
 Version:        3.8.2
 Release:        0
+%if ! %{with python}
 Summary:        A shared disk lock manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
+%else
+Summary:        Python bindings for the sanlock library
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/Base
+%endif
 URL:            https://pagure.io/sanlock
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{pname}-%{version}.tar.xz
 Source1:        sysconfig.sanlock
 Source2:        sysconfig.wdmd
 Source3:        fence_sanlockd.init
@@ -51,6 +69,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(uuid)
+%if ! %{with python}
 Requires(pre):  %fillup_prereq
 Requires(pre):  shadow
 Recommends:     logrotate
@@ -58,11 +77,24 @@ Recommends:     logrotate
 %if 0%{?suse_version} >= 1500
 Requires(pre):  group(disk)
 %endif
+%else
+BuildRequires:  %{pname}-devel = %{version}
+Provides:       sanlock-python
+%if "%{python_flavor}" == "python2"
+Provides:       %{oldpython}-%{pname}
+%endif
+%endif
+%python_subpackages
 
 %description
 sanlock uses disk paxos to manage leases on shared storage.
 Hosts connected to a common SAN can use this to synchronize their
 access to the shared disks.
+%if %{with python}
+This package provides a module that permits applications written in
+the Python programming language to use the interface supplied by the
+sanlock library.
+%endif
 
 %package        -n libsanlock1
 Summary:        A shared disk lock manager library
@@ -74,35 +106,14 @@ The runtime libraries for sanlock, a shared disk lock manager.
 Hosts connected to a common SAN can use this to synchronize their
 access to the shared disks.
 
-%package        -n python2-%{name}
-Summary:        Python bindings for the sanlock library
-Group:          Development/Libraries/Python
-Requires:       libsanlock1 = %{version}-%{release}
-Provides:       python-%{name}
-Provides:       sanlock-python
-
-%description    -n python2-%{name}
-A module that permits applications written in the Python programming
-language to use the interface supplied by the sanlock library.
-
-%package        -n python3-%{name}
-Summary:        Python bindings for the sanlock library
-Group:          Development/Libraries/Python
-Requires:       libsanlock1 = %{version}-%{release}
-
-%description    -n python3-%{name}
-A module that permits applications written in the Python programming
-language to use the interface supplied by the sanlock library.
-
-
-%package        devel
-Summary:        Development files for %{name}
+%package        -n %{pname}-devel
+Summary:        Development files for %{pname}
 Group:          Development/Libraries/C and C++
 Requires:       libsanlock1 = %{version}-%{release}
 
-%description    devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
+%description    -n %{pname}-devel
+The %{pname}-devel package contains libraries and header files for
+developing applications that use %{pname}.
 
 %package        -n fence-sanlock
 Summary:        Fence agent using sanlock and wdmd
@@ -125,33 +136,34 @@ running the client, so long as both maintain access to a
 common sanlock lockspace.
 
 %prep
-%setup -q
+%setup -q -n %{pname}-%{version}
 %patch100
 %patch101
 %patch102 -p1
 %patch103 -p1
 
 %build
+%if ! %{with python}
 # upstream does not require configure
 # upstream does not support _smp_mflags
 CFLAGS="%{optflags}" make -j1 -C wdmd
 CFLAGS="%{optflags}" make -j1 -C src
-pushd python
-CFLAGS="%{optflags} -fno-strict-aliasing" %python_build
-popd
 %if %{with_fence_sanlockd}
 CFLAGS="%{optflags}" make -j1 -C fence_sanlock
 %endif
 %if %{with_sanlk_reset}
 CFLAGS="%{optflags}" make -j1 -C reset
 %endif
+%else
+pushd python
+CFLAGS="%{optflags} -fno-strict-aliasing" %python_build
+popd
+%endif
 
 %install
+%if ! %{with python}
 %make_install LIBDIR=%{_libdir} -C src
 %make_install LIBDIR=%{_libdir} -C wdmd
-pushd python
-%python_install
-popd
 %if %{with_fence_sanlockd}
 %make_install LIBDIR=%{_libdir} -C fence_sanlock
 %endif
@@ -181,8 +193,14 @@ install -Dm 0644 src/logrotate.sanlock \
 	%{buildroot}%{_sysconfdir}/logrotate.d/sanlock
 
 install -Dd -m 0755 %{buildroot}%{_sysconfdir}/wdmd.d
+%else
+pushd python
+%python_install
+popd
+%endif
 
-%pre
+%if ! %{with python}
+%pre -n %{pname}
 getent group sanlock > /dev/null || groupadd \
 	-g 179 sanlock
 getent passwd sanlock > /dev/null || useradd \
@@ -198,7 +216,7 @@ getent passwd sanlock > /dev/null || useradd \
 %pre -n sanlk-reset
 %service_add_pre sanlk-resetd.service
 
-%post
+%post -n %{pname}
 %service_add_post wdmd.service sanlock.service
 
 %fillup_only -n wdmd
@@ -214,7 +232,7 @@ getent passwd sanlock > /dev/null || useradd \
 %post -n sanlk-reset
 %service_add_post sanlk-resetd.service
 
-%preun
+%preun -n %{pname}
 %service_del_preun wdmd.service sanlock.service
 
 %preun -n fence-sanlock
@@ -223,7 +241,7 @@ getent passwd sanlock > /dev/null || useradd \
 %preun -n sanlk-reset
 %service_del_preun sanlk-resetd.service
 
-%postun
+%postun -n %{pname}
 %service_del_postun wdmd.service sanlock.service
 
 %postun -n libsanlock1 -p /sbin/ldconfig
@@ -233,7 +251,7 @@ getent passwd sanlock > /dev/null || useradd \
 %postun -n sanlk-reset
 %service_del_postun sanlk-resetd.service
 
-%files
+%files -n %{pname}
 %dir %attr(0700, root, root) %{_sysconfdir}/wdmd.d/
 %dir %attr(0700, root, root) %{_sysconfdir}/sanlock/
 %config(noreplace) %{_sysconfdir}/sanlock/sanlock.conf
@@ -254,15 +272,7 @@ getent passwd sanlock > /dev/null || useradd \
 %{_libdir}/libsanlock_client.so.*
 %{_libdir}/libwdmd.so.*
 
-%if %{with python2}
-%files -n python2-%{name}
-%{python2_sitearch}/*
-%endif
-
-%files -n python3-%{name}
-%{python3_sitearch}/*
-
-%files devel
+%files -n %{pname}-devel
 %{_libdir}/libwdmd.so
 %{_includedir}/wdmd.h
 %{_libdir}/libsanlock.so
@@ -294,6 +304,12 @@ getent passwd sanlock > /dev/null || useradd \
 %{_unitdir}/sanlk-resetd.service
 %{_mandir}/man8/sanlk-reset.8%{?ext_man}
 %{_mandir}/man8/sanlk-resetd.8%{?ext_man}
+%endif
+
+%else
+%files %{python_files}
+%{python_sitearch}/sanlock*.so
+%{python_sitearch}/sanlock_python-%{version}*info
 %endif
 
 %changelog
