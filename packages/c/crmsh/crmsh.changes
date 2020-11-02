@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 30 16:54:56 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1604052559.2a348644:
+  * Dev: behave: collect corosync.log if it defined in config file
+  * Fix: hb_report: collect corosync.log if it defined in config file(bsc#1148874)
+  * Dev: unittest: remove .travis.yml
+  * Dev: unittest: remove test case which might rely on runtime environment
+  * Dev: unittest: Create .github/workflows/crmsh-ci.yml, to use github action
+  * Dev: unittest: adjust duplicated test function name
+
+-------------------------------------------------------------------
+Tue Oct 27 19:54:05 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1603805337.0e19de06:
+  * Dev: unittest: unit test for function do_start/do_stop
+  * Fix: ui_cluster: check service status while start/stop(bsc#1177980)
+
+-------------------------------------------------------------------
+Tue Oct 27 10:41:09 UTC 2020 - XLiang@suse.com
+
+- Update to version 4.2.0+git.1603785356.e1de2810:
+  * Dev: unittest: adjust unit test for stop_services change
+  * Dev: bootstrap: stop service which is active, not which is available
+
+-------------------------------------------------------------------
 Wed Oct 21 18:31:29 UTC 2020 - XLiang@suse.com
 
 - Update to version 4.2.0+git.1603292079.8fae778b:
