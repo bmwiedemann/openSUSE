@@ -18,20 +18,21 @@
 
 # Only pick versions released as /^sdk-.*/ tags
 %define lname	libvulkan1
+%define hdrreq	1.2.154
 Name:           vulkan-loader
-Version:        1.2.154
+Version:        1.2.154.1
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Loader
-Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/v%version.tar.gz
+Source:         https://github.com/KhronosGroup/Vulkan-Loader/archive/sdk-%version.tar.gz
 Source9:        baselibs.conf
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  vulkan-headers >= %version
+BuildRequires:  vulkan-headers >= %hdrreq
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -56,7 +57,7 @@ graphics applications such as games and interactive media.
 Summary:        Vulkan development package
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version-%release
-Requires:       vulkan-headers >= %version
+Requires:       vulkan-headers >= %hdrreq
 
 %description -n vulkan-devel
 Vulkan is a 3D graphics and compute API providing cross-platform
@@ -67,7 +68,7 @@ This subpackage contains the development headers for packages wanting
 to make use of Vulkan.
 
 %prep
-%autosetup -p1 -n Vulkan-Loader-%version
+%autosetup -p1 -n Vulkan-Loader-sdk-%version
 
 %build
 %cmake \

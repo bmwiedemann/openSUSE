@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 15:12:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.154.1
+  * Fix some issues when EnumerateAdapterPhysicalDevices is available
+
+-------------------------------------------------------------------
 Mon Sep 28 22:02:51 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.154
