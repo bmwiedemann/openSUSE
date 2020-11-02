@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 13:23:39 UTC 2020 - Michal Svec <msvec@suse.com>
+
+- Fixed bugzilla link (bsc#1177527)
+
+-------------------------------------------------------------------
 Wed Jul  8 10:40:44 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec
