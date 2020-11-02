@@ -120,21 +120,22 @@ make FAKEROOT="%{buildroot}" \
      SECUREDIR=/%{_lib}/security install
 
 %verifyscript
-%verify_permissions -e /usr/bin/opiepasswd -e /usr/bin/opiesu -e /etc/opiekeys
+%verify_permissions /usr/bin/opiepasswd
 
 %post
-%set_permissions /usr/bin/opiepasswd /usr/bin/opiesu /etc/opiekeys
+%set_permissions /usr/bin/opiepasswd
 
 %files
 %dir /etc/opielocks
-%config(noreplace) /etc/opiekeys
+%attr(0600,root,root) %config(noreplace) /etc/opiekeys
 /usr/bin/opieftpd
 /usr/bin/opiegen
 /usr/bin/opieinfo
 /usr/bin/opiekey
 /usr/bin/opielogin
 %verify(not mode) /usr/bin/opiepasswd
-%verify(not mode) /usr/bin/opiesu
+# packaged without setuid-root, because of bad code quality (bsc#882035)
+%verify(not mode) %attr(0755,root,root) /usr/bin/opiesu
 /usr/bin/otp-md4
 /usr/bin/otp-md5
 /%{_lib}/security/pam_opie.so

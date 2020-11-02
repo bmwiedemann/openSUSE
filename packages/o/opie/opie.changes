@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 28 09:37:53 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- remove opiekeys and opiesu from permissions profiles. Package them normally,
+  because neither of them receives special permissions and we want to keep the
+  permissions profiles clean.
+
+-------------------------------------------------------------------
 Tue May 26 11:16:45 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - allso apply permissions macros to /etc/opiekeys
