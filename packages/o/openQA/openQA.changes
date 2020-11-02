@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 07:26:51 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1604127002.7df8de5ee:
+  * Return wait_for_element based on the element
+  * No empty IOLoop timer for 5 second wait
+  * docs: Explain that test runtime limits are automatically scaled
+  * Dependency cron 2020-10-30
+  * The cache service will now try to recover from corrupted SQLite files during startup
+  * Add test for help popover next to "Submit comment" button
+  * Speed up t/ui/15-comments.t
+  * worker: Use WORKER_HOSTNAME instead of real hostname
+  * Prevent failed 'finalize_job_results' Minion jobs for skipped jobs
+  * Add descriptions for all checks in subtest 'finalize job results'
+  * Fix help popup next to "Submit comment"
+  * Dependency cron 2020-10-28
+  * Deprioritize jobs with broken directly chained dependencies
+  * scheduler: Handle cycles in directly chained dependencies
+
+-------------------------------------------------------------------
 Wed Oct 28 05:32:48 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1603819052.0daa7dd96:
