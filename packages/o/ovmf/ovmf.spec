@@ -283,6 +283,9 @@ cp Build/OvmfIa32/DEBUG_*/FV/OVMF.fd ovmf-ia32.bin
 cp Build/OvmfIa32/DEBUG_*/FV/OVMF_CODE.fd ovmf-ia32-code.bin
 cp Build/OvmfIa32/DEBUG_*/FV/OVMF_VARS.fd ovmf-ia32-vars.bin
 
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/OvmfIa32/
+
 ### Build x86_64 UEFI Images ###
 %ifarch x86_64
 collect_x86_64_debug_files()
@@ -342,6 +345,9 @@ find $src_list \( -name "*.c" -o -name "*.h" \) -type f -exec cp --parents -a {}
 find source/ovmf-x86_64 -name *.c -type f -exec chmod 0644 {} \;
 %endif
 
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/OvmfX64/
+
 # Build with keys done later (shared between archs)
 
 ### Build AARCH64 UEFI Images ###
@@ -362,6 +368,9 @@ mkdir AARCH64
 cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/Shell.efi AARCH64
 cp Build/ArmVirtQemu-AARCH64/DEBUG_*/AARCH64/EnrollDefaultKeys.efi AARCH64
 
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/ArmVirtQemu-AARCH64/
+
 # Build with keys done later (shared between archs)
 
 ### Build AARCH32 UEFI Images ###
@@ -376,6 +385,9 @@ cp Build/ArmVirtQemu-ARM/DEBUG_GCC*/FV/QEMU_EFI.fd qemu-uefi-aarch32.bin
 dd of="aavmf-aarch32-code.bin" if="/dev/zero" bs=1M count=64
 dd of="aavmf-aarch32-code.bin" if="qemu-uefi-aarch32.bin" conv=notrunc
 dd of="aavmf-aarch32-vars.bin" if="/dev/zero" bs=1M count=64
+
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/ArmVirtQemu-ARM/
 
 ### Build the variable store templates ###
 

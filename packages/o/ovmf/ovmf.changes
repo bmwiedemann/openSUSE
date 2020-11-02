@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 02:15:13 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add _constraints to request at least 6GB disk (bsc#1178244)
+- Remove the build files after finishing the build to reduce the
+  disk usage (bsc#1178244)
+
+-------------------------------------------------------------------
 Mon Sep  7 03:55:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to edk2-stable202008
