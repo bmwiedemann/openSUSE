@@ -608,4 +608,13 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - SELinux: Fix /etc / overlay labeling</comment>
     <requestid>843423</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0feb0dff04be726c27ccd5c1628d9d72</srcmd5>
+    <version>2.28.2</version>
+    <time>1604306451</time>
+    <user>dimstar_suse</user>
+    <comment>Version 2.28.2
+* SELinux: Exclude security.selinux attribute from rsyncing (again)</comment>
+    <requestid>844985</requestid>
+  </revision>
 </revisionlist>
