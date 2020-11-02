@@ -17,7 +17,7 @@
 
 
 Name:           perl-Net-DNS
-Version:        1.27
+Version:        1.28
 Release:        0
 %define cpan_name Net-DNS
 Summary:        Perl Interface to the Domain Name System
@@ -34,6 +34,7 @@ BuildRequires:  perl(Carp) >= 1.1
 BuildRequires:  perl(Digest::HMAC) >= 1.03
 BuildRequires:  perl(Digest::SHA) >= 5.23
 BuildRequires:  perl(Encode) >= 2.26
+BuildRequires:  perl(Getopt::Long) >= 2.43
 BuildRequires:  perl(IO::Socket::IP) >= 0.38
 BuildRequires:  perl(PerlIO) >= 1.05
 BuildRequires:  perl(Scalar::Util) >= 1.25
