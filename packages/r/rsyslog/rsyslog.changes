@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:30:46 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2010.0:
+  * gnutls TLS subsystem bugfix: handshake error handling
+  * core/msg bugfix: memory leak
+  * core/msg bugfix: segfault in jsonPathFindNext() when <root> not an object
+  * openssl TLS subsystem: improvments of error and status messages
+  * add 'exists()' script function to check if variable exists
+  * core bugfix: do not create empty JSON objects on non-existent key access
+  * gnutls subsysem bugfix: potential hang on session closure
+  * core/network bugfix: obey net.enableDNS=off when querying local hostname
+  * core bugfix: potential segfault on query of PROGRAMNAME property
+  * imtcp bugfix: broken connection not necessariy detected
+  * new module: imhttp - http input
+  * mmdarwin bugfix: potential zero uuid when reusing existing one
+  * imdocker bugfix: build issue on some platforms
+  * omudpspoof bugfix: make compatbile with Solaris build
+  * testbench fix: python 3 incompatibility
+  * core bugfix: segfault if disk-queue file cannot be created
+  * cosmetic: fix dummy module name in debug output
+  * config bugfix: intended warning emitted as error
+
+-------------------------------------------------------------------
 Sat Aug 29 13:23:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Upgrade to rsyslog 8.2008.0
