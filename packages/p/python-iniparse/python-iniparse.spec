@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 # python2-devel contains test module, even for noarch package
 BuildRequires:  python2-devel
 # tests require testsuite modules
-BuildRequires:  python3-testsuite
+BuildRequires:  %{python_module testsuite}
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
