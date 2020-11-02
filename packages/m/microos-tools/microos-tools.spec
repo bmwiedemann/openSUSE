@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/kubic-project/microos-tools
 Source:         microos-tools-%{version}.tar.xz
 Source1:        tmp.mount
-Source2:        tmp.conf
+Source2:        microos-tmp.conf
 Source99:       microos-tools-rpmlintrc
 BuildRequires:  distribution-release
 BuildRequires:  pkgconfig
@@ -48,6 +48,7 @@ Files, scripts and directories for openSUSE MicroOS.
 %make_install
 %if 0%{?suse_version} <= 1500
 install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
+install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %endif
 
 %pre
@@ -94,7 +95,7 @@ install -m 0644 %{SOURCE1} %{buildroot}/%{_unitdir}/
 %{_bindir}/locale-check
 %if 0%{?suse_version} <= 1500
 %{_unitdir}/tmp.mount
-%{_tmpfilesdir}/tmp.conf
+%{_tmpfilesdir}/microos-tmp.conf
 %endif
 
 %changelog

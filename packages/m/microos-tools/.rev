@@ -128,4 +128,16 @@
   - Don't delete autorelabel file in initrd</comment>
     <requestid>843263</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73d7499f906808e0330c7ae76de5591d</srcmd5>
+    <version>2.7</version>
+    <time>1604306434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7
+  - Add workaround if /.autorelabel is used, don't ignore it
+- Rename tmp.conf to microos-tmp.conf on SUSE MicroOS
+
+- Fix building on SUSE MicroOS</comment>
+    <requestid>844898</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 28 10:43:48 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.7
+  - Add workaround if /.autorelabel is used, don't ignore it
+- Rename tmp.conf to microos-tmp.conf on SUSE MicroOS
+
+-------------------------------------------------------------------
+Thu Oct 22 13:04:15 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix building on SUSE MicroOS
+
+-------------------------------------------------------------------
 Wed Oct 21 15:54:44 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.6
