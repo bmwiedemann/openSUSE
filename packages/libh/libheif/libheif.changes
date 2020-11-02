@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:21:34 UTC 2020 - malcolmlewis@opensuse.org
+
+- Add build condition to enable additional options, codecs and
+  example binaries.
+- Remove rav1e and dav1d support for the moment as still WIP.
+
+-------------------------------------------------------------------
 Tue Oct 13 16:49:04 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix the License

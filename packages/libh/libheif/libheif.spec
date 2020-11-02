@@ -12,8 +12,11 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
+%bcond_with x265
 
 %define gdk_pixbuf_binary_version 2.10.0
 
@@ -30,17 +33,16 @@ Source0:        https://github.com/strukturag/libheif/releases/download/v%{versi
 #
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(aom)
-BuildRequires:  pkgconfig(dav1d)
-%if 0%{?sle_version} > 150200 || 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(rav1e)
-%endif
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(aom)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+%if %{with x265}
+BuildRequires:  pkgconfig(libde265)
+BuildRequires:  pkgconfig(x265)
+%endif
 Recommends:     %{name}-lang
-
 
 %description
 libheif is an ISO/IEC 23008-12:2017 HEIF and AVIF (AV1 Image File Format) file
@@ -69,7 +71,6 @@ Summary:        Devel Package for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       libheif1 = %{version}-%{release}
 
-
 %description devel
 libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder. 
 This package contains the header files.
@@ -79,40 +80,60 @@ This package contains the header files.
 Summary:        GDK PixBuf Loader for %{name}
 Group:          System/Libraries
 
-
 %description -n gdk-pixbuf-loader-libheif
 A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 
 This package contains the GDK PixBuf Loader for %{name}.
 
+%if %{with x265}
+%package -n heif-examples
+Summary:        Example binary programs for %{name}
+Group:          Productivity/Graphics/Other
+Requires:       libheif1 = %{version}-%{release}
+
+%description -n heif-examples
+A ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
+
+This package contains example binary programs for %{name}.
+%endif
 
 %prep
 %autosetup -p1
 
-
 %build
+%if %{with x265}
+%cmake
+%else
 %cmake \
     -DWITH_LIBDE265=OFF \
     -DWITH_X265=OFF \
     -DWITH_EXAMPLES=OFF
-
+%endif
 %cmake_build
-
 
 %install
 %cmake_install
+%if %{with x265}
+#Install examples and man pages
+install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1/
+for e in heif-convert \
+         heif-enc \
+         heif-info \
+         heif-thumbnailer
+         do
+            install -m 0755 build/examples/$e %{buildroot}%{_bindir}/$e
+            install -m 0644 examples/$e.1 %{buildroot}%{_mandir}/man1/$e.1
+         done
 
+%endif
 %fdupes -s %{buildroot}%{_includedir}
-
 
 %post -n libheif1 -p /sbin/ldconfig
 %postun -n libheif1 -p /sbin/ldconfig
 
-
 %files -n libheif1
 %license COPYING
 %{_libdir}/libheif.so.*
-
 
 %files devel
 %doc README.md
@@ -121,8 +142,19 @@ This package contains the GDK PixBuf Loader for %{name}.
 %{_libdir}/cmake/libheif
 %{_libdir}/pkgconfig/libheif.pc
 
-
 %files -n gdk-pixbuf-loader-libheif
 %{_libdir}/gdk-pixbuf-2.0/%{gdk_pixbuf_binary_version}/loaders/*.so
+
+%if %{with x265}
+%files -n heif-examples
+%{_bindir}/heif-convert
+%{_bindir}/heif-enc
+%{_bindir}/heif-info
+%{_bindir}/heif-thumbnailer
+%{_mandir}/man1/heif-convert.1%{?ext_man}
+%{_mandir}/man1/heif-enc.1%{?ext_man}
+%{_mandir}/man1/heif-info.1%{?ext_man}
+%{_mandir}/man1/heif-thumbnailer.1%{?ext_man}
+%endif
 
 %changelog
