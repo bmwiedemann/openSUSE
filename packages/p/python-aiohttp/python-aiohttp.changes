@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Wed Oct 28 15:33:18 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate tests
+- Update to v3.7.2
+  * Fixed static files handling for loops without .sendfile() support
+- from v3.7.1
+  * Fixed a type error caused by the conditional import of Protocol
+  * Server doesn't send Content-Length for 1xx or 204
+  * Fix run_app typing
+  * Always require typing_extensions library
+  * Fix a variable-shadowing bug causing ThreadedResolver.resolve
+    to return the resolved IP as the ``hostname`` in each record,
+    which prevented validation of HTTPS connections
+  * Added annotations to all public attributes
+  * Fix flaky test_when_timeout_smaller_second
+  * Ensure sending a zero byte file does not throw an exception
+- from v3.7.0
+  * Response headers are now prepared prior to running 
+    ``on_response_prepare`` hooks, directly before headers are
+    sent to the client
+  * Add a ``quote_cookie`` option to ``CookieJar``, a way to skip
+    quotation wrapping of cookies containing special characters
+  * Call AccessLogger.log with the current exception available
+    from sys.exc_info()
+  * web.UrlDispatcher.add_routes and web.Application.add_routes
+    return a list of registered AbstractRoute instances.
+    `AbstractRouteDef.register` (and all subclasses) return a
+    list of registered resources registered resource
+  * Added properties of default ClientSession params to
+    ClientSession class so it is available for introspection
+  * Don't cancel web handler on peer disconnection, raise
+    `OSError` on reading/writing instead.
+  * Implement BaseRequest.get_extra_info() to access a protocol
+    transports' extra info.
+  * Added `ClientSession.timeout` property
+  * Allow use of SameSite in cookies
+  * Use loop.sendfile() instead of custom implementation if available
+  * Apply SO_REUSEADDR to test server's socket
+  * Use .raw_host instead of slower .host in client API
+  * Allow configuring the buffer size of input stream by passing
+    ``read_bufsize`` argument
+  * Add method and url attributes to TraceRequestChunkSentParams
+    and TraceResponseChunkReceivedParams.
+  * Add ClientResponse.ok property for checking status code under 400
+  * Don't ceil timeouts that are smaller than 5 seconds.
+  * TCPSite now listens by default on all interfaces instead
+    of just IPv4 when `None` is passed in as the host
+  * Bump ``http_parser`` to 2.9.4
+  * Fix keepalive connections not being closed in time
+  * Fix failed websocket handshake leaving connection hanging.
+  * Fix tasks cancellation order on exit.
+    The run_app task needs to be cancelled first for cleanup hooks
+    to run with all tasks intact.
+  * Don't start heartbeat until _writer is set
+  * Fix handling of multipart file uploads without a content type
+  * Preserve view handler function attributes across middlewares
+  * Fix the string representation of ServerDisconnectedError
+  * Raising RuntimeError when trying to get encoding from not read body
+  * Remove warning messages from noop.
+  * Raise ClientPayloadError if FormData re-processed.
+  * Fix a warning about unfinished task in web_protocol.py
+  * Fixed 'deflate' compression. According to RFC 2616 now.
+  * Fixed OverflowError on platforms with 32-bit time_t
+  * Fixed request.body_exists returns wrong value for methods
+    without body
+  * Fix connecting to link-local IPv6 addresses.
+  * Fix a problem with connection waiters that are never awaited
+  * Always make sure transport is not closing before reuse a
+    connection.
+    Reuse a protocol based on keepalive in headers is unreliable.
+    For example, uWSGI will not support keepalive even it serves a
+    HTTP 1.1 request, except explicitly configure uWSGI with a
+    ``--http-keepalive`` option.
+    Servers designed like uWSGI could cause aiohttp intermittently
+    raise a ConnectionResetException when the protocol poll runs
+    out and some protocol is reused.
+  * Handle the last CRLF correctly even if it is received via
+    separate TCP segment.
+  * Fix the register_resource function to validate route name
+    before splitting it so that route name can include python
+    keywords
+  * Fix resolver task is not awaited when connector is cancelled
+  * Fix Aiohttp doesn't return any error on invalid request methods
+  * Fix HEAD requests for static content.
+  * Fix incorrect size calculation for memoryview
+  * Add HTTPMove to _all__.
+  * Fixed the type annotations in the ``tracing`` module.
+  * Fix typing for multipart ``__aiter__``.
+  * Fix for race condition on connections in BaseConnector that
+    leads to exceeding the connection limit.
+  * Add forced UTF-8 encoding for ``application/rdap+json``
+    responses.
+  * Fix inconsistency between Python and C http request parsers
+    in parsing pct-encoded URL
+  * Fix connection closing issue in HEAD request.
+  * Fix type hint on BaseRunner.addresses
+    (from ``List[str]`` to ``List[Any]``)
+- from v3.6.3
+  * Pin yarl to `<1.6.0` to avoid buggy behavior
+
+-------------------------------------------------------------------
 Tue Mar 10 08:33:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.6.2:

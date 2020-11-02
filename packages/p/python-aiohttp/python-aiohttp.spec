@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiohttp
-Version:        3.6.2
+Version:        3.7.2
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module chardet >= 2.0}
 BuildRequires:  %{python_module devel >= 3.5.3}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module multidict >= 4.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,28 +44,28 @@ Requires:       python-brotlipy
 Requires:       python-chardet >= 2.0
 Requires:       python-gunicorn
 Requires:       python-multidict >= 4.5
+Requires:       python-typing_extensions >= 3.6.5
 Requires:       python-yarl >= 1.0
 Recommends:     python-aiodns
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
 %if 0%{?suse_version} < 1550
 BuildRequires:  %{python_module idna_ssl >= 1.0}
-BuildRequires:  %{python_module typing_extensions >= 3.6.5}
 Requires:       python-idna_ssl
-Requires:       python-typing_extensions
 %endif
 # SECTION test requirements
+BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module brotlipy}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module typing_extensions >= 3.6.5}
 BuildRequires:  %{python_module yarl >= 1.0}
 # /SECTION
 # SECTION docs
@@ -94,6 +95,8 @@ HTML documentation on the API and examples for %{name}.
 %prep
 %setup -q -n aiohttp-%{version}
 %patch0 -p1
+# Prevent building with vendor version
+rm vendor/http-parser/*.c
 
 %build
 export CFLAGS="%{optflags}"
@@ -110,8 +113,10 @@ find %{buildroot}%{$python_sitearch} -name "*.c" -delete
 }
 
 %check
-# rm setup.cfg
-#%%python_exec setup.py test
+rm setup.cfg
+mv aiohttp .aiohttp
+%pytest_arch -rs -k 'not (test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async)'
+mv .aiohttp aiohttp
 
 %files %{python_files}
 %license LICENSE.txt
