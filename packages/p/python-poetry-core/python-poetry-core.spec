@@ -16,6 +16,7 @@
 #
 
 
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-poetry-core
 Version:        1.0.0
@@ -25,7 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
-Source:         https://github.com/python-poetry/poetry-core/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
+Source:         %{URL}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
 BuildRequires:  %{python_module attrs >= 19.3.0}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module lark-parser >= 0.9.0}
@@ -35,7 +36,6 @@ BuildRequires:  %{python_module pyparsing >= 2.4.7}
 BuildRequires:  %{python_module pyrsistent >= 0.16.0}
 BuildRequires:  %{python_module six >= 1.15.0}
 BuildRequires:  %{python_module tomlkit >= 0.7.0}
-BuildRequires:  %{python_module typing >= 3.7.4}
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.3.0
 Requires:       python-jsonschema >= 3.2.0
@@ -45,7 +45,6 @@ Requires:       python-pyparsing >= 2.4.7
 Requires:       python-pyrsistent >= 0.16.0
 Requires:       python-six >= 1.15.0
 Requires:       python-tomlkit >= 0.7.0
-Requires:       python-typing >= 3.7.4
 BuildArch:      noarch
 # SECTION these are all test dependencies, including devel and git
 BuildRequires:  %{python_module devel}

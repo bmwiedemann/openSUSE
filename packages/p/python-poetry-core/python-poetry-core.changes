@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 20 11:20:59 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+Remove python2 subpackage:
+python2 requires the typing package as a dependency, but we ship a too recent version of that and thus cannot build it for Leap + Python2 anymore
+
+-------------------------------------------------------------------
 Fri Oct 16 17:01:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Let the pyproject_install macro do the compiling
