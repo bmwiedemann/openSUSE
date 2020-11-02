@@ -88,7 +88,7 @@ for flavor in %flavors_to_build; do
 	rm -rf obj/$flavor
 	mkdir -p obj/$flavor
 	cp -a kernel/* obj/$flavor
-	make -C /usr/src/linux-obj/%_target_cpu/$flavor EXTRA_CFLAGS="-Iinclude -DMHVTL_DEBUG" modules \
+	make -C /usr/src/linux-obj/%_target_cpu/$flavor EXTRA_CFLAGS="-Iinclude -DMHVTL_DEBUG -DHAVE_UNLOCKED_IOCTL" modules \
 	      M=$PWD/obj/$flavor
 done
 %endif
@@ -101,7 +101,7 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=updates
 for flavor in %flavors_to_build; do
-	make -C /usr/src/linux-obj/%_target_cpu/$flavor EXTRA_CFLAGS="-Iinclude -DMHVTL_DEBUG" modules_install \
+	make -C /usr/src/linux-obj/%_target_cpu/$flavor EXTRA_CFLAGS="-Iinclude -DMHVTL_DEBUG -DHAVE_UNLOCKED_IOCTL" modules_install \
 	      M=$PWD/obj/$flavor
 done
 %endif

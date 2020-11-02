@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 18:09:33 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Added "-DHAVE_UNLOCKED_IOCTL" to kernel module build in SPEC file
+
+-------------------------------------------------------------------
 Mon Jun 22 17:02:05 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 -Do not Require insserv or fillup which are no longer needed 
