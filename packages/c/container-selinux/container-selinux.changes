@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 29 07:52:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.150.0
+  - Add additional allow rules for kvm based containers using
+    virtiofsd.
+
+-------------------------------------------------------------------
 Wed Oct 14 12:57:07 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.145.0
