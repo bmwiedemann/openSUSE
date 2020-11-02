@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 23:07:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.29.2: "--committer-date-is-author-date" option of "rebase"
+  and "am" subcommands lost the e-mail address by mistake in 2.29
+
+-------------------------------------------------------------------
 Fri Oct 23 19:03:18 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.29.1:

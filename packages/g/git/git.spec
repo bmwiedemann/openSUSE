@@ -36,7 +36,7 @@
 %endif
 
 Name:           git
-Version:        2.29.1
+Version:        2.29.2
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
