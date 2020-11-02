@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sun Nov  1 23:45:04 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to verion 20201031
+ 
+  - Added icons
+    
+    * Blobby Volley 2 #2414
+    * Boxy SVG Editor #2399
+    * Chiaki (Flathub) #2007
+    * Chromium (Freeworld) #2391
+    * CLion (Flathub) #2007
+    * DevilutionX #2407
+    * Extraterm #2408
+    * Flameshot
+    * GDLauncher (app and tray icons) #2409
+    * guiscrcpy #2382
+    * Homebank (mimetype icon) #2394
+    * Jamulus #2389
+    * Joplin #2404
+    * KeepassXC (tray icons) #2397
+    * Kiten (Flathub) #2007
+    * Konquest (Flathub) #2007
+    * KTorrent (Flathub) #2007
+    * Micro #2395
+    * Microsoft Edge (stable/beta/dev) #2402
+    * Musikcube #2403
+    * NetRadiant #2401
+    * Oolite #2393
+    * OpenMW-CS #2405
+    * QCalcFileHash #2406
+    * Todoist (Flathub) #2007
+    * Veusz #2386
+    * Xfce Dictionary #2406
+    * xfce4-notifyd #2406 #2412
+  
+  - Updated icons
+   
+    * Arch Linux #2385
+    * GMail
+  
+  - Changes and fixes
+    
+    * Fixed invalid icon name for Prepros #2415
+    * Remap im.riot.Riot symlink to element-desktop #2418
+
+- Version 20201001
+
+  - Added icons
+   
+    * adriconf #2007
+    * AntiMicroX #2007
+    * AppImage (mime type icon)
+    * Blinken #2007
+    * DDraceNetwork #2362
+    * Detwinner #2377
+    * Dynamic Wallpaper Editor
+    * Eclipse IDE for Web and JavaScript Developers #2007
+    * Element #2366
+    * Gerbera Media Server #2368
+    * Gestures
+    * GitBlade
+    * GitEye
+    * GNOME Layout Switcher
+    * Google Play (Anbox) #2369
+    * JabRef #2007
+    * jMonkeyEngine SDK #2367
+    * Kanagram #2007
+    * KiCad (mime type icon) #2333
+    * Kig #2007
+    * KLettres #2007
+    * KTurtle #2007
+    * Ledger Live #2365
+    * Marble #2007
+    * MellowPlayer #2007
+    * mntray (app and tray icons)
+    * MoonPlayer (AppImage)
+    * MystiQ
+    * Nextcloud desktop sync client #2007
+    * PortProton
+    * Renoise #2363
+    * revelation #2007
+    * sFTP Client
+    * Sound Juicer #2007
+    * Tibia #2315
+    * Tipp10 #2007
+    * Video Downloader #2378
+
+  - Updated icons 
+
+    * Conky Manager 2 #2387
+    * Eddy #820
+    * GColor 3 #2379
+    * GNOME Calculator #2370
+    * GNOME Logs #2376
+    * Hyper
+    * MKVMergeGUI
+    * Postman #1338
+    * Todoist & added tray icon
+
+  - Changes and fixes
+
+    * Fixed bomi app icon
+
+-------------------------------------------------------------------
 Tue Sep 15 23:02:55 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20200901 
