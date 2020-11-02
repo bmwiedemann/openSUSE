@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  1 23:14:53 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20201022
+  * --termseq now works for jobs running remotely.
+
+-------------------------------------------------------------------
 Fri Oct  9 18:12:26 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200922

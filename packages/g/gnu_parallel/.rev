@@ -493,4 +493,12 @@
     <comment>- Update to release 20200922</comment>
     <requestid>840485</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ac315567bc78ffe289ce152e7a12eab1</srcmd5>
+    <version>20201022</version>
+    <time>1604309797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20201022</comment>
+    <requestid>845305</requestid>
+  </revision>
 </revisionlist>
