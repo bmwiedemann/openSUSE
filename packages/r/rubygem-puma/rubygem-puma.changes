@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Nov  1 16:31:28 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.0.4
+
+  * Bugfixes
+    * Pass preloaded application into new workers if available when using `preload_app` ([#2461], [#2454])
+
+  ## 5.0.3 / 2020-10-26
+
+  * Bugfixes
+    * Add Client#io_ok?, check before Reactor#register ([#2432])
+    * Fix hang on shutdown in refork ([#2442])
+    * Fix `Bundler::GemNotFound` errors for `nio4r` gem during phased restarts ([#2427], [#2018])
+    * Server run thread safety fix ([#2435])
+    * Fire `on_booted` after server starts ([#2431], [#2212])
+    * Cleanup daemonization in rc.d script ([#2409])
+
+  * Refactor
+    * Remove accept_nonblock.rb, add test_integration_ssl.rb ([#2448])
+    * Refactor status.rb - dry it up a bit ([#2450])
+    * Extract req/resp methods to new request.rb from server.rb ([#2419])
+    * Refactor Reactor and Client request buffering ([#2279])
+    * client.rb - remove JRuby specific 'finish' code ([#2412])
+    * Consolidate fast_write calls in Server, extract early_hints assembly ([#2405])
+    * Remove upstart from docs ([#2408])
+    * Extract worker process into separate class ([#2374])
+    * Consolidate option handling in Server, Server small refactors, doc changes ([#2389])
+
+  ## 5.0.2 / 2020-09-28
+
+  * Bugfixes
+    * Reverted API changes to Server.
+
+  ## 5.0.1 / 2020-09-28
+
+  * Bugfixes
+    * Fix LoadError in CentOS 8 ([#2381])
+    * Better error handling during force shutdown ([#2271])
+    * Prevent connections from entering Reactor after shutdown begins ([#2377])
+    * Fix error backtrace debug logging && Do not log request dump if it is not parsed ([#2376])
+    * Split TCP_CORK and TCP_INFO ([#2372])
+    * Do not log EOFError when a client connection is closed without write ([#2384])
+
+  * Refactor
+    * Change Events#ssl_error signature from (error, peeraddr, peercert) to (error, ssl_socket) ([#2375])
+    * Consolidate option handling in Server, Server small refactors, doc chang ([#2373])
+
+-------------------------------------------------------------------
 Fri Sep 25 14:40:42 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.0.0
