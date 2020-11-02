@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-junos-eznc
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
