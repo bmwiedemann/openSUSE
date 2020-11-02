@@ -16,9 +16,9 @@
 #
 
 
-%define sover 201
+%define sover 206
 Name:           duktape
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Embeddable Javascript engine
 License:        MIT
@@ -68,7 +68,7 @@ sed -e '/^INSTALL_PREFIX/s|[^=]*$|%{_prefix}|' \
     -e 's/\(\$.INSTALL_PREFIX.\)/$(DESTDIR)\1/' \
     -e 's/\/lib\b/\/%{_lib}/g' \
      < Makefile.sharedlibrary > Makefile
-%make_build -j1
+%make_build
 
 %install
 %make_install
