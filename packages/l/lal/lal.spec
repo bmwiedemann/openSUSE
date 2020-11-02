@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define shliblal liblal20
 %define shliblalsupport liblalsupport14
 %bcond_without octave
@@ -24,7 +25,7 @@ Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
-URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
+URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         http://software.ligo.org/lscsoft/source/lalsuite/lal-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lal-implicit-conversion-XLALError.patch badshah400@gmail.com -- Fix an implicit coversion issue flagged by GCC 10
 Patch0:         lal-implicit-conversion-XLALError.patch
@@ -43,21 +44,40 @@ BuildRequires:  swig >= 4.0
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
+Requires:       python-freezegun
+Requires:       python-ligo-segments
+Requires:       python-lscsoft-glue
+Requires:       python-numpy
+Requires:       python-python-dateutil
+Requires:       python-scipy
+Requires:       python-six
+ExcludeArch:    %{ix86}
 %if %{with octave}
 BuildRequires:  octave-devel
 %endif
-Requires:       python-lscsoft-glue
-Requires:       python-numpy
+# SECTION For tests (only with python3)
+BuildRequires:  python3-freezegun
+BuildRequires:  python3-ligo-segments
+BuildRequires:  python3-pytest
+BuildRequires:  python3-python-dateutil
+BuildRequires:  python3-scipy
+# /SECTION
+
+%python_subpackages
 
 %description
-The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+The LSC Algorithm Library Suite (LALSuite) is comprised of various
+gravitational wave data analysis routines written in C following the ISO/IEC
+9899:1999 standard.
 
 %package -n %{shliblal}
 Summary:        Shared library for LAL
 Group:          System/Libraries
 
 %description -n %{shliblal}
-The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+The LSC Algorithm Library Suite (LALSuite) is comprised of various
+gravitational wave data analysis routines written in C following the ISO/IEC
+9899:1999 standard.
 
 This package provides the shared library for lal.
 
@@ -66,7 +86,9 @@ Summary:        Shared library for LALSupport
 Group:          System/Libraries
 
 %description -n %{shliblalsupport}
-The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+The LSC Algorithm Library Suite (LALSuite) is comprised of various
+gravitational wave data analysis routines written in C following the ISO/IEC
+9899:1999 standard.
 
 This package provides the shared library for lalsupport.
 
@@ -75,12 +97,14 @@ Summary:        Headers and source files for building against lal
 Group:          Productivity/Scientific/Physics
 Requires:       %{shliblalsupport} = %{version}
 Requires:       %{shliblal} = %{version}
-Requires:       pkgconfig(zlib)
 Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(gsl)
+Requires:       pkgconfig(zlib)
 
 %description -n %{name}-devel
-The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+The LSC Algorithm Library Suite (LALSuite) is comprised of various
+gravitational wave data analysis routines written in C following the ISO/IEC
+9899:1999 standard.
 
 This package provides the header files and sources need for building software against lal.
 
@@ -90,11 +114,11 @@ Group:          Productivity/Scientific/Physics
 %requires_eq    octave-cli
 
 %description -n octave-lal
-The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C following the ISO/IEC 9899:1999 standard.
+The LSC Algorithm Library Suite (LALSuite) is comprised of various
+gravitational wave data analysis routines written in C following the ISO/IEC
+9899:1999 standard.
 
 This package provides the octave module for lal.
-
-%python_subpackages
 
 %prep
 %autosetup -p1
@@ -103,12 +127,12 @@ This package provides the octave module for lal.
 %{python_expand # Necessary to run %%configure with both py2 and py3
 export PYTHON=$python
 mkdir ../${PYTHON}_build
-cp -pr ./ ../${PYTHON}_build  
+cp -pr ./ ../${PYTHON}_build
 pushd ../${PYTHON}_build
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}
-make %{?_smp_mflags}
+%make_build
 popd
 }
 
@@ -132,6 +156,14 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/gp
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/series.py
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" %{buildroot}%{$python_sitearch}/lal/antenna.py
 }
+
+%ifpython3
+%check
+# Run tests from the python3 build dir
+pushd ../python3_build
+%make_build check
+popd
+%endif
 
 %post -n %{shliblal} -p /sbin/ldconfig
 %post -n %{shliblalsupport} -p /sbin/ldconfig
