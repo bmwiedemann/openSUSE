@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 27 20:23:09 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.4
+  * https://nginx.org/en/CHANGES
+  * Add the "ssl_conf_command", "proxy_ssl_conf_command",
+    "grpc_ssl_conf_command", and "uwsgi_ssl_conf_command" directives.
+  * Add the "ssl_reject_handshake" directive.
+  * Add the "proxy_smtp_auth" directive in mail proxy.
+
+-------------------------------------------------------------------
 Wed Sep 30 11:28:16 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.19.3
