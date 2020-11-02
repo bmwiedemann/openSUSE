@@ -17,20 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-pytest-django
-Version:        3.9.0
+Version:        4.1.0
 Release:        0
 Summary:        A Django plugin for py.test
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
-# fix tests
-Patch0:         ignore-warnings.patch
-# PATCH-FIX-UPSTREAM fix test failure with pytest 6, is part of https://github.com/pytest-dev/pytest-django/pull/855
-Patch1:         https://github.com/pytest-dev/pytest-django/commit/3f03d0a7890e987086042b42db346e47398ffed3.patch#/pytest-django-pytest6.patch
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest > 5.4.0}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools_scm >= 1.11.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -38,14 +35,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sqlite3
 Requires:       python-Django
-Requires:       python-pytest
+Requires:       python-pytest > 5.4.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-pathlib2
-%endif
-%ifpython2
-Requires:       python-pathlib2
-%endif
 %python_subpackages
 
 %description
@@ -65,8 +56,6 @@ that are already present in pytest:
 
 %prep
 %setup -q -n pytest-django-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build

@@ -137,4 +137,12 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>831465</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bfebb8a495a92827357a42ae1881e10c</srcmd5>
+    <version>4.1.0</version>
+    <time>1604306339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844823</requestid>
+  </revision>
 </revisionlist>

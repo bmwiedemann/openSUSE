@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 28 23:58:45 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Disable Python 2
+- Drop no longer needed patches:
+  * ignore-warnings.patch
+  * pytest-django-pytest6.patch 
+- Update to v4.1.0
+  * Add the async_client and async_rf fixtures
+  * Add django_debug_mode to configure how DEBUG is set in tests
+  * Make admin_user work for custom user models without an email
+    field.
+- from v4.0.0
+  * Drop support for Python versions before 3.5
+  * Drop support for Django versions before 2.2
+  * Drop support for pytest versions before 5.4
+  * Officialy support Python 3.9.
+  * Add pytest_django.__version__
+  * Make the admin_user and admin_client fixtures compatible with
+    custom user models which don’t have a username field
+  * Change the admin_user fixture to use get_by_natural_key()
+    to get the user instead of directly using USERNAME_FIELD,
+    in case it is overridden, and to match Django
+
+-------------------------------------------------------------------
 Wed Sep  2 13:19:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test failure with pytest 6
