@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 27 14:38:07 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- cleanup the sendmail permissions profile:
+  - /var/run/sendmail was last used in SLE-11 with systemv init, is no longer
+    required.
+  - /var/spool/clientmqueue is now owned by the system-user-mail package.
+    Nobody is calling %set_permissions and %verify_permissions on this
+    directory anymore, therefore the permissions entry is useless.
+  - /var/spool/mail is the same for all permissions profiles and also managed
+    by systemd-tmpfiles via the filesystem package (fs-var.conf).
+
+-------------------------------------------------------------------
 Thu Oct  8 07:58:21 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - adjust permissions.d entries to new %libexedir location (bsc#1171164).
