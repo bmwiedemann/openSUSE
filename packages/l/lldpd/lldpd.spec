@@ -26,7 +26,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lldpd
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 09:57:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.7:
+  Fix:
+  * Do not listen only to LLDP packets on Linux. When an interface
+    is enslaved to an Open vSwitch, incoming packets are missed.
+
+-------------------------------------------------------------------
 Tue Oct 13 10:04:13 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace old specfile constructs. Do not suppress errors from
