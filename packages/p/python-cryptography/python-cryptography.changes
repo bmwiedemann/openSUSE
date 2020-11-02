@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Oct 28 14:29:05 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.2.1:
+  Disable blinding on RSA public keys to address an error with
+  some versions of OpenSSL.
+
+-------------------------------------------------------------------
+Mon Oct 26 11:39:02 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 3.2:
+  * CVE-2020-25659: Attempted to make RSA PKCS#1v1.5 decryption more constant time,
+    to protect against Bleichenbacher vulnerabilities. Due to limitations imposed
+    by our API, we cannot completely mitigate this vulnerability.
+  * Support for OpenSSL 1.0.2 has been removed.
+  * Added basic support for PKCS7 signing (including SMIME) via PKCS7SignatureBuilder.
+
+-------------------------------------------------------------------
+Mon Sep 28 10:49:56 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1.1:
+  * wheels compiled with OpenSSL 1.1.1h. 
+
+-------------------------------------------------------------------
+Fri Sep 18 11:15:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.1:
+  * **BACKWARDS INCOMPATIBLE:** Removed support for ``idna`` based
+    :term:`U-label` parsing in various X.509 classes. This support was originally
+    deprecated in version 2.1 and moved to an extra in 2.5.
+  * Deprecated OpenSSL 1.0.2 support. OpenSSL 1.0.2 is no longer supported by
+    the OpenSSL project. The next version of ``cryptography`` will drop support
+    for it.
+  * Deprecated support for Python 3.5. This version sees very little use and will
+    be removed in the next release.
+  * ``backend`` arguments to functions are no longer required and the
+    default backend will automatically be selected if no ``backend`` is provided.
+  * Added initial support for parsing certificates from PKCS7 files with
+    :func:`~cryptography.hazmat.primitives.serialization.pkcs7.load_pem_pkcs7_certificates`
+    and
+    :func:`~cryptography.hazmat.primitives.serialization.pkcs7.load_der_pkcs7_certificates`
+    .
+  * Calling ``update`` or ``update_into`` on
+    :class:`~cryptography.hazmat.primitives.ciphers.CipherContext` with ``data``
+    longer than 2\ :sup:`31` bytes no longer raises an ``OverflowError``. This
+    also resolves the same issue in :doc:`/fernet`.
+
+-------------------------------------------------------------------
 Tue Jul 28 17:16:47 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.0
