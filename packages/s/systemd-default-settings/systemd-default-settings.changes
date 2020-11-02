@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:00:12 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- rpm file lists are now generated from the spec file.
+
+-------------------------------------------------------------------
+Mon Oct 26 14:40:56 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Make sure the release number between the main and the branding
+  packages match
+
+-------------------------------------------------------------------
+Fri Oct 23 08:09:00 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Import 0.3
+
+  d299248 List drop-in directories in SUSE.list exclusively
+  e4651a7 Disable memory accounting by default for all distros (jsc#PM-2229 jsc#PM-2230)
+
+-------------------------------------------------------------------
 Tue Oct 13 08:43:43 UTC 2020 - Franck Bui <fbui@suse.com>
 
-- Import v0.2
+- Import 0.2
 
   cc4e951 timesyncd: add default ntp servers for SUSE and openSUSE distros
 

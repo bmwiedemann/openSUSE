@@ -18,7 +18,7 @@
 
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.2
+Version:        0.4
 Release:        0
 Summary:        Customization of systemd default settings for SUSE distributions
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          System/Base
 Source0:        %{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
-Requires:       %{name}-branding = %{version}
+Requires:       %{name}-branding = %{version}-%{release}
 
 %description
 This package overrides some of the upstream default settings which are
@@ -38,9 +38,9 @@ pulled in by the branding package instead.
 %package branding-SLE
 Summary:        Specific customization of systemd defaults settings for SLE
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Supplements:    packageand(%{name}:branding-SLE)
-Provides:       %{name}-branding = %{version}
+Provides:       %{name}-branding = %{version}-%{release}
 Conflicts:      otherproviders(%{name}-branding)
 
 %description branding-SLE
@@ -50,9 +50,9 @@ them better suited for SLE distributions.
 %package branding-openSUSE
 Summary:        Specific customization of systemd defaults settings for openSUSE
 Group:          System/Base
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Supplements:    packageand(%{name}:branding-openSUSE)
-Provides:       %{name}-branding = %{version}
+Provides:       %{name}-branding = %{version}-%{release}
 Conflicts:      otherproviders(%{name}-branding)
 
 %description branding-openSUSE
@@ -62,7 +62,7 @@ them better suited for openSUSE distributions.
 %package branding-upstream
 Summary:        Restore upstream systemd defaults settings
 Group:          System/Base
-Provides:       %{name}-branding = %{version}
+Provides:       %{name}-branding = %{version}-%{release}
 Conflicts:      %{name}
 Conflicts:      otherproviders(%{name}-branding)
 
@@ -75,10 +75,14 @@ package.
 %setup -q
 
 %build
-%make_build
 
 %install
 %make_install
+
+find %{buildroot} -name \*.d -type d -printf "%%%%dir /%%P\n" >SUSE.list
+find %{buildroot} -name 20-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list
+find %{buildroot} -name 25-defaults-SLE.conf -printf "/%%P\n" >SLE.list
+find %{buildroot} -name 25-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.list
 
 %files -f SUSE.list
 %defattr(-,root,root)
