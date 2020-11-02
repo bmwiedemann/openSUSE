@@ -897,4 +897,13 @@
   + Bugfixes</comment>
     <requestid>828186</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>07b82889f637a5a7f4cd2d5a8a51f80f</srcmd5>
+    <version>5.4.1</version>
+    <time>1604306631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.1
+  + Streamline openSSL integration</comment>
+    <requestid>845297</requestid>
+  </revision>
 </revisionlist>

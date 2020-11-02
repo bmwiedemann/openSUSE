@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 31 20:27:10 UTC 2020 - Johannes Engel <jcnengel@gmail.com>
+
+- Update to 5.4.1
+  + Streamline openSSL integration
+
+-------------------------------------------------------------------
 Tue Aug 18 20:27:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - replace tarball with upstream one so that download_files verfication
