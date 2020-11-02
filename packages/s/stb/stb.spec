@@ -1,7 +1,7 @@
 #
 # spec file for package stb
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           stb
-Version:        2.35.1565568185.bcb2815
+Version:        2.36.1594640766.b42009b
 Release:        0
 Summary:        Single-File Public Domain Libraries for C/C++ 
 License:        MIT OR Unlicense
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/nothings/stb
+URL:            https://github.com/nothings/stb
 Source0:        stb-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildArch:      noarch

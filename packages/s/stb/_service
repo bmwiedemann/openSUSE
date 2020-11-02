@@ -3,7 +3,7 @@
     <param name="url">https://github.com/nothings/stb.git</param>
     <param name="scm">git</param>
 <!-- defined in stb.h file -->
-    <param name="versionprefix">2.35</param>
+    <param name="versionprefix">2.36</param>
   </service>
   <service mode="disabled" name="set_version" />
 
