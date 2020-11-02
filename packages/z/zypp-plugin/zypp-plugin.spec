@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-plugin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,16 @@ Name:           zypp-plugin
 Version:        0.6.3
 Release:        0
 Summary:        Helper that makes writing ZYpp plugins easier
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Packages
-Url:            https://github.com/openSUSE/zypp-plugin
+URL:            https://github.com/openSUSE/zypp-plugin
 Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
 %if %{singlespec_py3}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 BuildRequires:  %{python_module devel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base
 # provide old names for py2 package
@@ -62,6 +63,16 @@ and implementing the commands you want to respond to as python methods.
 :
 
 %install
+%if %{singlespec_py3}
+%{python_expand #
+mkdir -p %{buildroot}%{$python_sitelib}
+install -m 0644 python/zypp_plugin.py %{buildroot}%{$python_sitelib}/zypp_plugin.py
+# TODO: replace by $python_compileall as soon as it is available sr#843481
+$python -m compileall %{buildroot}%{$python_sitelib}
+$python -O -m compileall %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{$python_sitelib}
+}
+%else
 %if 0%{?have_python2}
 mkdir -p %{buildroot}%{python_sitelib}
 install -m 0644 python/zypp_plugin.py %{buildroot}%{python_sitelib}/zypp_plugin.py
@@ -72,11 +83,13 @@ mkdir -p %{buildroot}%{python3_sitelib}
 install -m 0644 python/zypp_plugin.py %{buildroot}%{python3_sitelib}/zypp_plugin.py
 %py3_compile -O %{buildroot}/%{python3_sitelib}
 %endif
+%endif
 
 %if %{singlespec_py3}
 %files %{python_files}
 %doc COPYING
-%{python_sitelib}/*
+%{python_sitelib}/zypp_plugin*
+%pycache_only %{python_sitelib}/__pycache__/*
 
 ### ----------------------------------------
 ### SLE-12* and even older

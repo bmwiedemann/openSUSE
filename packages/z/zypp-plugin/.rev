@@ -113,4 +113,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>621126</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>1b062143e5e4f40a9206b63db86ba6ad</srcmd5>
+    <version>0.6.3</version>
+    <time>1604306404</time>
+    <user>dimstar_suse</user>
+    <comment>update for multiple python3 flavors. See https://github.com/openSUSE/zypp-plugin/pull/3</comment>
+    <requestid>844816</requestid>
+  </revision>
 </revisionlist>

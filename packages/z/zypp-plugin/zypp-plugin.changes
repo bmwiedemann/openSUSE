@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 21:31:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- singlespec in Tumbleweed must support multiple python3 flavors
+  in the future gh#openSUSE/python-rpm-macros#66 
+
+-------------------------------------------------------------------
 Tue Mar 13 14:51:18 CET 2018 - ma@suse.com
 
 - Provide python3-zypp-plugin down to SLE12 (bsc#1081596)
