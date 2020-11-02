@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 29 19:40:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.4
+  Features Added
+  * cRPD model check to be added for on-box junos.
+  Bugs Fixed
+  * support use-fast-diff in diff/pdff function.
+  * Zeroize handling modified for scenario where only warning is
+    returned in the rpc-reply.
+  * ntc_template and textfsm module's installation made optional
+    and to be done explicitly if one want to use PyEZ table/view
+    for other vendors cli o/p parsing.
+  * Checksum algorithm argument to be passed during remote
+    checksum in software installation.
+  * docstring initialized with empty string as it becomes empty
+    if optimization flag is added.
+
+-------------------------------------------------------------------
 Fri Sep 18 10:55:57 UTC 2020 - pgajdos@suse.com
 
 - use pytest instead of nose and replace deprecated
