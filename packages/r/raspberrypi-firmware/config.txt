@@ -61,7 +61,6 @@ dtoverlay=dwc2
 
 armstub=armstub8-rpi4.bin
 dtoverlay=disable-vc4
-dtoverlay=vl805-firmware-loader
 
 [all]
 

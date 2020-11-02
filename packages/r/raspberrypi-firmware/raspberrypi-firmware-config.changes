@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 29 16:50:40 UTC 2020 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Remove vl805-firmware-loader overlay as it now reached upstream.
+
+-------------------------------------------------------------------
 Thu Oct 29 13:28:06 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 5f95dfda (2020-10-22) - boo#1178262
