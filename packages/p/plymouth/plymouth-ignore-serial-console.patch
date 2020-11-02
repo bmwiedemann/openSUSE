@@ -1,0 +1,13 @@
+diff -Nura plymouth-0.9.5+git20200921+20778f2/src/main.c plymouth-0.9.5+git20200921+20778f2_new/src/main.c
+--- plymouth-0.9.5+git20200921+20778f2/src/main.c	2020-08-31 21:10:11.000000000 +0800
++++ plymouth-0.9.5+git20200921+20778f2_new/src/main.c	2020-10-29 18:21:35.007441834 +0800
+@@ -2260,8 +2260,7 @@
+         find_system_default_splash (&state);
+         find_distribution_default_splash (&state);
+ 
+-        if (ply_kernel_command_line_has_argument ("plymouth.ignore-serial-consoles"))
+-                device_manager_flags |= PLY_DEVICE_MANAGER_FLAGS_IGNORE_SERIAL_CONSOLES;
++        device_manager_flags |= PLY_DEVICE_MANAGER_FLAGS_IGNORE_SERIAL_CONSOLES;
+ 
+         if (ply_kernel_command_line_has_argument ("plymouth.ignore-udev") ||
+             (getenv ("DISPLAY") != NULL))

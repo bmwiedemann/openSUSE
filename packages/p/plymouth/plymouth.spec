@@ -45,6 +45,8 @@ Patch2:         plymouth-correct-runtime-dir.patch
 Patch3:         plymouth-manpages.patch
 # PATCH-FIX-SLE plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch qzhao@suse.com  jsc#SLE-11637 -- plymouth will use plymouthd.defaults instead of plymouth.conf to close the leap gap.
 Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
+# PATCH-FIX-OPENSUSE plymouth-ignore-serial-console.patch qzhao@opensuse.org bnc#1051692 bnc#1164123 bnc#1170906 -- Don't output in serial console for openQA need to take serial in the test, and yast-installation prgram has a feature to install system through it.
+Patch5:         plymouth-ignore-serial-console.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.

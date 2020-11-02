@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 06:38:44 UTC 2020 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-ignore-serial-console.patch:
+  Don't output in serial console for openQA need to take serial in
+  the test, and yast-installation prgram has a feature to install 
+  system through it (bnc#1051692 bnc#1164123 bnc#1170906). 
+
+-------------------------------------------------------------------
 Wed Oct  7 14:53:06 UTC 2020 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version: 0.9.5+git20200921+20778f2:

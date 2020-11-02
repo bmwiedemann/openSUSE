@@ -812,4 +812,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
   been merged to upstream.</comment>
     <requestid>842430</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>2e25856cba6465afa13b354d8e5bcfe4</srcmd5>
+    <version>0.9.5+git20200921+20778f2</version>
+    <time>1604306424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844851</requestid>
+  </revision>
 </revisionlist>
