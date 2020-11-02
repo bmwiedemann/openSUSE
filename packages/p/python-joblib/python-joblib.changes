@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:23:38 UTC 2020 - pgajdos@suse.com
+
+- disable test_hash_numpy_noncontiguous,
+  test_hashes_are_different_between_c_and_fortran_contiguous_arrays,
+  test_hashes_stay_the_same_with_numpy_objects,
+  test_non_contiguous_array_pickling [bsc#1177209]
+
+-------------------------------------------------------------------
+Tue Oct 27 12:01:23 UTC 2020 - pgajdos@suse.com
+
+- disable test_nested_loop_error_in_grandchild_resource_tracker_silent
+  [bsc#1177209]
+
+-------------------------------------------------------------------
 Mon Oct  5 14:18:31 UTC 2020 - pgajdos@suse.com
 
 - disable yet another tests [bsc#1177209]

@@ -86,13 +86,25 @@ export LANG=en_US.UTF-8
 #  aarch64:
 #  test_resource_tracker_silent_when_reference_cycles
 #  test_child_raises_parent_exits_cleanly
+#  i586:
+#  test_nested_loop_error_in_grandchild_resource_tracker_silent
+#  s390x:
+#  test_hash_numpy_noncontiguous
+#  test_hashes_are_different_between_c_and_fortran_contiguous_arrays
+#  test_hashes_stay_the_same_with_numpy_objects
+#  test_non_contiguous_array_pickling
 DISABLED_TESTS="test_hash_numpy_noncontiguous or \
                 test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
                 test_hashes_stay_the_same_with_numpy_objects or \
                 test_non_contiguous_array_pickling or \
                 test_multithreaded_parallel_termination_resource_tracker_silent or \
                 test_resource_tracker_silent_when_reference_cycles or \
-                test_child_raises_parent_exits_cleanly"
+                test_child_raises_parent_exits_cleanly or \
+                test_nested_loop_error_in_grandchild_resource_tracker_silent or \
+                test_hash_numpy_noncontiguous or \
+                test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
+                test_hashes_stay_the_same_with_numpy_objects or \
+                test_non_contiguous_array_pickling"
 %pytest -k "not ($DISABLED_TESTS)"
 
 %files %{python_files}
