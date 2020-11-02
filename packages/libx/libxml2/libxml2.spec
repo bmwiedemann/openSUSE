@@ -20,21 +20,26 @@
 # Define "python" as a package in _multibuild file
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "python"
-%define psuffix -python
+%global pprefix python-
 %define oldpython python
 %bcond_without python
 %bcond_without python2
 %else
-%define psuffix %{nil}
+%global pprefix %{nil}
 %bcond_with python
 %endif
 %define bname libxml2
 %define lname libxml2-2
-Name:           %{bname}%{psuffix}
+Name:           %{pprefix}%{bname}
 Version:        2.9.10
 Release:        0
+%if !%{with python}
 Summary:        A Library to Manipulate XML Files
 License:        MIT
+%else
+Summary:        Python  Bindings for libxml2
+License:        MIT
+%endif
 URL:            http://xmlsoft.org
 Source:         ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz
 Source1:        ftp://xmlsoft.org/libxml2/%{bname}-%{version}.tar.gz.asc
@@ -57,29 +62,41 @@ Patch6:         libxml2-CVE-2019-19956.patch
 Patch7:         libxml2-CVE-2020-24977.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 %if !%{with python}
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(zlib)
-%endif
-%if %{with python}
+%else
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module xml}
-BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libxml-2.0)
-Requires:       libxml2-2 = %{version}
+Requires:       %{lname} = %{version}
+Provides:       python-libxml2-python = %{version}-%{release}
+Obsoletes:      %{bname}-python < %{version}-%{release}
+Obsoletes:      python-libxml2-python < %{version}-%{release}
 %if "%{python_flavor}" == "python2"
-Obsoletes:      %{bname}-python < %{version}
-Provides:       %{bname}-python = %{version}
-Obsoletes:      %{oldpython}-libxml2 < %{version}
-Provides:       %{oldpython}-libxml2 = %{version}
+Provides:       %{bname}-python = %{version}-%{release}
+Provides:       %{oldpython}-libxml2 = %{version}-%{release}
+Obsoletes:      %{oldpython}-libxml2 < %{version}-%{release}
 %endif
 %endif
+%python_subpackages
 
 %description
 The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
+%if %{with python}
+This package contains a module that permits
+applications written in the Python programming language to use the
+interface supplied by the libxml2 library to manipulate XML files.
+
+This library allows manipulation of XML files. It includes support for
+reading, modifying, and writing XML and HTML files. There is DTD
+support that includes parsing and validation even with complex DTDs,
+either at parse time or later once the document has been modified.
+%endif
 
 %package -n %{lname}
 Summary:        A Library to Manipulate XML Files
@@ -135,38 +152,6 @@ BuildArch:      noarch
 The XML C library was initially developed for the GNOME project. It is
 now used by many programs to load and save extensible data structures
 or manipulate any kind of XML files.
-
-%package -n python2-libxml2
-Summary:        Python 2 Bindings for libxml2
-Obsoletes:      libxml2-python
-Provides:       python2-libxml2-python
-Obsoletes:      python2-libxml2-python
-
-%description -n python2-libxml2
-The python2-libxml2 package contains a module that permits
-applications written in the Python programming language to use the
-interface supplied by the libxml2 library to manipulate XML files.
-
-This library allows manipulation of XML files. It includes support for
-reading, modifying, and writing XML and HTML files. There is DTD
-support that includes parsing and validation even with complex DTDs,
-either at parse time or later once the document has been modified.
-
-%package -n python3-libxml2
-Summary:        Python 3 Bindings for libxml2
-Obsoletes:      libxml2-python
-Provides:       python3-libxml2-python
-Obsoletes:      python3-libxml2-python
-
-%description -n python3-libxml2
-The python3-libxml2 package contains a module that permits
-applications written in the Python programming language to use the
-interface supplied by the libxml2 library to manipulate XML files.
-
-This library allows manipulation of XML files. It includes support for
-reading, modifying, and writing XML and HTML files. There is DTD
-support that includes parsing and validation even with complex DTDs,
-either at parse time or later once the document has been modified.
 
 %prep
 %setup -q -n libxml2-%{version}
@@ -240,13 +225,14 @@ chmod a-x python/tests/*.py
 %doc %dir %{_docdir}/%{bname}
 %doc %{_docdir}/%{bname}/[ANRCT]*
 
-%files tools
+# the -n %%bname tag is necessary so that python_subpackages does not interfere
+%files -n %{bname}-tools
 %{_bindir}/xmllint
 %{_bindir}/xmlcatalog
 %{_mandir}/man1/xmllint.1%{?ext_man}
 %{_mandir}/man1/xmlcatalog.1%{?ext_man}
 
-%files devel
+%files -n %{bname}-devel
 %{_bindir}/xml2-config
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/libxml.m4
@@ -259,7 +245,7 @@ chmod a-x python/tests/*.py
 %{_mandir}/man1/xml2-config.1%{?ext_man}
 %{_mandir}/man3/libxml.3%{?ext_man}
 
-%files doc
+%files -n %{bname}-doc
 %{_datadir}/gtk-doc/html/*
 %doc %{_docdir}/%{bname}/examples
 %doc %{_docdir}/%{bname}/html
@@ -268,21 +254,14 @@ chmod a-x python/tests/*.py
 %dir %{_datadir}/gtk-doc/html
 
 %else
-%files -n python3-libxml2
+%files %{python_files}
 %doc python/TODO
 %doc python/libxml2class.txt
 %doc doc/*.py
 %doc doc/python.html
-%{python3_sitearch}/*
+%pycache_only %{python_sitearch}/__pycache__/*libxml2*
+%{python_sitearch}/*libxml2*
 
-%if %{with python2}
-%files -n python2-libxml2
-%doc python/TODO
-%doc python/libxml2class.txt
-%doc doc/*.py
-%doc doc/python.html
-%{python_sitearch}/*
-%endif
 %endif
 
 %changelog

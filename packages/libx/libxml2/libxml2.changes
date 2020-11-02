@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 23 19:11:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Make python subpackage ready for multiple python3 flavors
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
 Mon Sep  7 08:12:29 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1176179, CVE-2020-24977]
