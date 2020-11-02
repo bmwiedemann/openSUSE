@@ -17,17 +17,17 @@
 
 
 # define libraries
+%define libcodecs libwscodecs2
+%define libtap libwiretap10
 %define libutil libwsutil11
 %define libwire libwireshark13
-%define libtap libwiretap10
-%define libcodecs libwscodecs2
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
 %else
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.2.7
+Version:        3.2.8
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

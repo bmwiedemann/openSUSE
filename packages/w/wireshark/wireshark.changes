@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 30 08:06:41 UTC 2020 - Robert Frohl <rfrohl@suse.com>
+
+- wireshark 3.2.8:
+  * CVE-2020-26575: FBZERO dissector crash (boo#1177406)
+  * CVE-2020-28030: GQUIC dissector crash (boo#1178291)
+  * Infinite memory allocation while parsing this tcp packet
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.2.8.html
+
+-------------------------------------------------------------------
 Thu Sep 24 07:56:52 UTC 2020 - Robert Frohl <rfrohl@suse.com>
 
 - wireshark 3.2.7:
