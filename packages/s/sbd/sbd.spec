@@ -108,10 +108,12 @@ fi
 %service_add_pre sbd.service sbd_remote.service
 
 %preun
-%service_del_preun -n sbd.service sbd_remote.service
+if [ $1 -eq 0 ]; then
+    systemctl disable sbd.service sbd_remote.service
+fi
 
 %postun
-%service_del_postun -n sbd.service sbd_remote.service
+%service_del_postun_without_restart sbd.service sbd_remote.service
 
 %post devel -p /sbin/ldconfig
 %postun devel -p /sbin/ldconfig

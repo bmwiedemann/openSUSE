@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 30 16:02:05 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Update the uses of the systemd rpm macros
+  * use '%service_del_postun_without_restart' instead of '%service_del_postun -n'
+  * drop use of '%service_del_preun -n' as '-n' is unsafe and is deprecated
+    This part still needs to be reworked as leaving services running why their
+    package has been removed is unsafe.
+
+-------------------------------------------------------------------
 Thu Aug 27 16:11:49 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.4.1+20200819.4a02ef2:

@@ -406,4 +406,12 @@ the sources.</comment>
 - Doc: add environment section to man-page (forwarded request 830057 from yan_gao)</comment>
     <requestid>830058</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f8240f3df37f43a6c3685c07bee00db3</srcmd5>
+    <version>1.4.1+20200819.4a02ef2</version>
+    <time>1604306516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845071</requestid>
+  </revision>
 </revisionlist>
