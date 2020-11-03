@@ -1,0 +1,26 @@
+From ff943d9cb19aa46b555826a053642ac2e84d392d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 19 Jul 2020 13:02:33 +0200
+Subject: [PATCH] Use local cmake modules first
+
+Although FindTaglib.cmake was fixed in previous commit, local cmake modules
+should not be overriden by system versions anyway.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index c9d9bee..7a92898 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -19,7 +19,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
+ 
+ # kde libs
+ find_package(ECM REQUIRED NO_MODULE)
+-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
++set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH})
+ 
+ add_definitions(-DSOUNDKONVERTER_KF5_BUILD)
+ 
