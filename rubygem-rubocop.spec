@@ -16,33 +16,32 @@
 #
 
 
+%define mod_name rubocop
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-rubocop
-Version:        0.92.0
+Version:        1.1.0
 Release:        0
-%define mod_name rubocop
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Automatic Ruby code style checking tool
+License:        MIT
+Group:          Development/Languages/Ruby
+URL:            https://github.com/rubocop-hq/rubocop
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-URL:            https://github.com/rubocop-hq/rubocop
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+# FIXME: use proper Requires(pre/post/preun/...)
+PreReq:         update-alternatives
 # MANUAL
 Patch0:         0001-Use-usr-bin-bash-instead-of-env-as-the-shebang.patch
 # /MANUAL
-Summary:        Automatic Ruby code style checking tool
-License:        MIT
-Group:          Development/Languages/Ruby
-PreReq:         update-alternatives
 
 %description
 RuboCop is a Ruby code style checking and code formatting tool.
@@ -51,8 +50,8 @@ It aims to enforce the community-driven Ruby Style Guide.
 %prep
 %gem_unpack
 %patch0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
+find -type f -print0 | xargs -0 touch -r %{SOURCE0}
+%{gem_build}
 
 %build
 

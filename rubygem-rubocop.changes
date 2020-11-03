@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:39:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.1.0
+
+## 1.1.0 (2020-10-29)
+
+### New features
+
+* [#8896](https://github.com/rubocop-hq/rubocop/pull/8896): Add new `Lint/DuplicateRegexpCharacterClassElement` cop. ([@owst][])
+* [#8895](https://github.com/rubocop-hq/rubocop/pull/8895): Add new `Lint/EmptyBlock` cop. ([@fatkodima][])
+* [#8934](https://github.com/rubocop-hq/rubocop/pull/8934): Add new `Style/SwapValues` cop. ([@fatkodima][])
+* [#7549](https://github.com/rubocop-hq/rubocop/issues/7549): Add new `Style/ArgumentsForwarding` cop. ([@koic][])
+* [#8859](https://github.com/rubocop-hq/rubocop/issues/8859): Add new `Lint/UnmodifiedReduceAccumulator` cop. ([@dvandersluis][])
+* [#8951](https://github.com/rubocop-hq/rubocop/pull/8951): Support auto-correction for `Style/MultipleComparison`. ([@koic][])
+* [#8953](https://github.com/rubocop-hq/rubocop/pull/8953): Add `AllowMethodComparison` option for `Lint/MultipleComparison`. ([@koic][])
+* [#8960](https://github.com/rubocop-hq/rubocop/pull/8960): Add `Regexp::Expression#loc` and `#expression` to replace `parsed_tree_expr_loc`. ([@marcandre][])
+* [#8930](https://github.com/rubocop-hq/rubocop/pull/8930): Add rake tasks for alternative way to specify Changelog entries. ([@marcandre][])
+* [#8940](https://github.com/rubocop-hq/rubocop/pull/8940): Add new `Style/DocumentDynamicEvalDefinition` cop. ([@fatkodima][])
+* [#7753](https://github.com/rubocop-hq/rubocop/issues/7753): Add new `Lint/ToEnumArguments` cop. ([@fatkodima][])
+
+### Bug fixes
+
+* [#8921](https://github.com/rubocop-hq/rubocop/pull/8921): Prevent `Lint/LiteralInInterpolation` from removing necessary interpolation in `%W[]` and `%I[]` literals. ([@knu][])
+* [#8708](https://github.com/rubocop-hq/rubocop/pull/8708): Fix bad regexp recognition in `Lint/OutOfRangeRegexpRef` when there are multiple regexps. ([@dvandersluis][])
+* [#8945](https://github.com/rubocop-hq/rubocop/pull/8945): Fix changelog task to build a correct changelog item when `Fix #123` is encountered. ([@dvandersluis][])
+* [#8914](https://github.com/rubocop-hq/rubocop/pull/8914): Fix autocorrection for `Layout/TrailingWhitespace` in heredocs. ([@marcandre][])
+
+### Changes
+
+* [#8920](https://github.com/rubocop-hq/rubocop/pull/8920): Remove Capybara's `save_screenshot` from `Lint/Debugger`. ([@ybiquitous][])
+* [#8919](https://github.com/rubocop-hq/rubocop/issues/8919): Require RuboCop AST 1.0.1 or higher. ([@koic][])
+* [#8939](https://github.com/rubocop-hq/rubocop/pull/8939): Accept comparisons of multiple method calls for `Style/MultipleComparison`. ([@koic][])
+* [#8950](https://github.com/rubocop-hq/rubocop/issues/8950): Add `IgnoredMethods` and `IgnoredClasses` to `Lint/NumberConversion`. ([@dvandersluis][])
+
+## 1.0.0 (2020-10-21)
+
+### New features
+
+* [#7944](https://github.com/rubocop-hq/rubocop/issues/7944): Add `MaxUnannotatedPlaceholdersAllowed` option to `Style/FormatStringToken` cop. ([@Tietew][])
+* [#8379](https://github.com/rubocop-hq/rubocop/issues/8379): Handle redundant parentheses around an interpolated expression for `Style/RedundantParentheses` cop. ([@fatkodima][])
+
+### Bug fixes
+
+* [#8892](https://github.com/rubocop-hq/rubocop/issues/8892): Fix an error for `Style/StringConcatenation` when correcting nested concatenable parts. ([@fatkodima][])
+* [#8781](https://github.com/rubocop-hq/rubocop/issues/8781): Fix handling of comments in `Style/SafeNavigation` autocorrection. ([@dvandersluis][])
+* [#8907](https://github.com/rubocop-hq/rubocop/pull/8907): Fix an incorrect auto-correct for `Layout/ClassStructure` when heredoc constant is defined after public method. ([@koic][])
+* [#8889](https://github.com/rubocop-hq/rubocop/pull/8889): Cops can use new `after_<type>` callbacks (only for nodes that may have children nodes, like `:send` and unlike `:sym`). ([@marcandre][])
+* [#8906](https://github.com/rubocop-hq/rubocop/pull/8906): Fix a false positive for `Layout/SpaceAroundOperators` when upward alignment. ([@koic][])
+* [#8585](https://github.com/rubocop-hq/rubocop/pull/8585): Fix false positive in `Style/RedundantSelf` cop with nested `self` access. ([@marcotc][])
+* [#8692](https://github.com/rubocop-hq/rubocop/pull/8692): Fix `Layout/TrailingWhitespace` auto-correction in heredoc. ([@marcandre][])
+
+### Changes
+
+* [#8882](https://github.com/rubocop-hq/rubocop/pull/8882): **(Potentially breaking)** RuboCop assumes that Cop classes do not define new `on_<type>` methods at runtime (e.g. via `extend` in `initialize`). ([@marcandre][])
+* [#7966](https://github.com/rubocop-hq/rubocop/issues/7966): **(Breaking)** Enable all pending cops for RuboCop 1.0. ([@koic][])
+* [#8490](https://github.com/rubocop-hq/rubocop/pull/8490): **(Breaking)** Change logic for cop department name computation. Cops inside deep namespaces (5 or more levels deep) now belong to departments with names that are calculated by joining module names starting from the third one with slashes as separators. For example, cop `Rubocop::Cop::Foo::Bar::Baz` now belongs to `Foo/Bar` department (previously it was `Bar`). ([@dsavochkin][])
+* [#8692](https://github.com/rubocop-hq/rubocop/pull/8692): Default changed to disallow `Layout/TrailingWhitespace` in heredoc. ([@marcandre][])
+* [#8894](https://github.com/rubocop-hq/rubocop/issues/8894): Make `Security/Open` aware of `URI.open`. ([@koic][])
+* [#8901](https://github.com/rubocop-hq/rubocop/issues/8901): Fix false positive for `Naming/BinaryOperatorParameterName` when defining `=~`. ([@zajn][])
+* [#8908](https://github.com/rubocop-hq/rubocop/pull/8908): Show extension cop versions when using `--verbose-version` option. ([@koic][])
+
+-------------------------------------------------------------------
+Wed Oct 14 13:46:43 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.93.1
+
+### Bug fixes
+
+* [#8782](https://github.com/rubocop-hq/rubocop/issues/8782): Fix incorrect autocorrection for `Style/TernaryParentheses` with `defined?`. ([@dvandersluis][])
+* [#8867](https://github.com/rubocop-hq/rubocop/issues/8867): Rework `Lint/RedundantSafeNavigation` to be more safe. ([@fatkodima][])
+* [#8864](https://github.com/rubocop-hq/rubocop/issues/8864): Fix false positive for `Style/RedundantBegin` with a postfix `while` or `until`. ([@dvandersluis][])
+* [#8869](https://github.com/rubocop-hq/rubocop/issues/8869): Fix a false positive for `Style/RedundantBegin` when using `begin` for or assignment and method call. ([@koic][])
+* [#8862](https://github.com/rubocop-hq/rubocop/issues/8862): Fix an error for `Lint/AmbiguousRegexpLiteral` when using regexp without method calls in nested structure. ([@koic][])
+* [#8872](https://github.com/rubocop-hq/rubocop/issues/8872): Fix an error for `Metrics/ClassLength` when multiple assignments to constants. ([@koic][])
+* [#8871](https://github.com/rubocop-hq/rubocop/issues/8871): Fix a false positive for `Style/RedundantBegin` when using `begin` for method argument or part of conditions. ([@koic][])
+* [#8875](https://github.com/rubocop-hq/rubocop/issues/8875): Fix an incorrect auto-correct for `Style/ClassEqualityComparison` when comparing class name. ([@koic][])
+* [#8880](https://github.com/rubocop-hq/rubocop/issues/8880): Fix an error for `Style/ClassLength` when overlapping constant assignments. ([@koic][])
+
+- New upstream release 0.93
+
+### New features
+
+* [#8796](https://github.com/rubocop-hq/rubocop/pull/8796): Add new `Lint/HashCompareByIdentity` cop. ([@fatkodima][])
+* [#8833](https://github.com/rubocop-hq/rubocop/pull/8833): Add new `Style/ClassEqualityComparison` cop. ([@fatkodima][])
+* [#8668](https://github.com/rubocop-hq/rubocop/pull/8668): Add new `Lint/RedundantSafeNavigation` cop. ([@fatkodima][])
+* [#8842](https://github.com/rubocop-hq/rubocop/issues/8842): Add notification about cache being used to debug mode. ([@hatkyinc2][])
+* [#8822](https://github.com/rubocop-hq/rubocop/pull/8822): Make `Style/RedundantBegin` aware of `begin` without `rescue` or `ensure`. ([@koic][])
+
+### Bug fixes
+
+* [#8810](https://github.com/rubocop-hq/rubocop/pull/8810): Fix multiple offense detection for `Style/RaiseArgs`. ([@pbernays][])
+* [#8151](https://github.com/rubocop-hq/rubocop/issues/8151): Fix a false positive for `Lint/BooleanSymbol` when used within `%i[...]`. ([@fatkodima][])
+* [#8809](https://github.com/rubocop-hq/rubocop/pull/8809): Fix multiple offense detection for `Style/For`. ([@pbernays][])
+* [#8801](https://github.com/rubocop-hq/rubocop/issues/8801): Fix `Layout/SpaceAroundEqualsInParameterDefault` only registered once in a line. ([@rdunlop][])
+* [#8514](https://github.com/rubocop-hq/rubocop/issues/8514): Correct multiple `Style/MethodDefParentheses` per file. ([@rdunlop][])
+* [#8825](https://github.com/rubocop-hq/rubocop/issues/8825): Fix crash in `Style/ExplicitBlockArgument` when code is called outside of a method. ([@ghiculescu][])
+* [#8718](https://github.com/rubocop-hq/rubocop/issues/8718): Fix undefined methods of pseudo location. ([@ybiquitous][])
+* [#8354](https://github.com/rubocop-hq/rubocop/issues/8354): Detect regexp named captures in `Style/CaseLikeIf` cop. ([@dsavochkin][])
+* [#8821](https://github.com/rubocop-hq/rubocop/issues/8821): Fix an incorrect autocorrect for `Style/NestedTernaryOperator` when using a nested ternary operator expression with no parentheses
+on the outside. ([@koic][])
+* [#8834](https://github.com/rubocop-hq/rubocop/issues/8834): Fix a false positive for `Style/ParenthesesAsGroupedExpression` when method argument parentheses are omitted and hash argument key
+is enclosed in parentheses. ([@koic][])
+* [#8830](https://github.com/rubocop-hq/rubocop/issues/8830): Fix bad autocorrect of `Style/StringConcatenation` when string includes double quotes. ([@tleish][])
+* [#8807](https://github.com/rubocop-hq/rubocop/pull/8807): Fix a false positive for `Style/RedundantCondition` when using assignment by hash key access. ([@koic][])
+* [#8848](https://github.com/rubocop-hq/rubocop/issues/8848): Fix a false positive for `Style/CombinableLoops` when using the same method with different arguments. ([@dvandersluis][])
+* [#8843](https://github.com/rubocop-hq/rubocop/issues/8843): Fix an incorrect autocorrect for `Lint/AmbiguousRegexpLiteral` when sending method to regexp literal receiver. ([@koic][])
+* [#8842](https://github.com/rubocop-hq/rubocop/issues/8842): Save actual status to cache, except corrected. ([@hatkyinc2][])
+* [#8835](https://github.com/rubocop-hq/rubocop/issues/8835): Fix an incorrect autocorrect for `Style/RedundantInterpolation` when using string interpolation for non-operator methods.
+([@koic][])
+* [#7495](https://github.com/rubocop-hq/rubocop/issues/7495): Example for `Lint/AmbiguousBlockAssociation` cop. ([@AllanSiqueira][])
+* [#8855](https://github.com/rubocop-hq/rubocop/issues/8855): Fix an error for `Layout/EmptyLinesAroundAccessModifier` and `Style/AccessModifierDeclarations` when using only access modifier.
+([@koic][])
+
+### Changes
+
+* [#8803](https://github.com/rubocop-hq/rubocop/pull/8803): **(Breaking)** `RegexpNode#parsed_tree` now processes regexps including interpolation (by blanking the interpolation before parsing,
+rather than skipping). ([@owst][])
+* [#8625](https://github.com/rubocop-hq/rubocop/pull/8625): Improve `Style/RedundantRegexpCharacterClass` and `Style/RedundantRegexpEscape` by using `regexp_parser` gem. ([@owst][])
+* [#8646](https://github.com/rubocop-hq/rubocop/issues/8646): Faster find of all files in `TargetFinder` class which improves initial startup speed. ([@tleish][])
+* [#8102](https://github.com/rubocop-hq/rubocop/issues/8102): Consider class length instead of block length for `Struct.new`. ([@tejasbubane][])
+* [#7408](https://github.com/rubocop-hq/rubocop/issues/7408): Make `Gemspec/RequiredRubyVersion` cop aware of `Gem::Requirement`. ([@tejasbubane][])
+
+[@fatkodima]: https://github.com/fatkodima
+[@hatkyinc2]: https://github.com/hatkyinc2
+[@koic]: https://github.com/koic
+[@pbernays]: https://github.com/pbernays
+[@rdunlop]: https://github.com/rdunlop
+[@ghiculescu]: https://github.com/ghiculescu
+[@ybiquitous]: https://github.com/ybiquitous
+[@dsavochkin]: https://github.com/dsavochkin
+[@tleish]: https://github.com/tleish
+[@dvandersluis]: https://github.com/dvandersluis
+[@AllanSiqueira]: https://github.com/AllanSiqueira
+[@owst]: https://github.com/owst
+[@tejasbubane]: https://github.com/tejasbubane
+
+
+-------------------------------------------------------------------
 Fri Sep 25 14:49:57 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.92.0
