@@ -17,7 +17,7 @@
 
 
 Name:           perl-Prima
-Version:        1.59
+Version:        1.60
 Release:        0
 #Upstream: SUSE-Public-Domain
 %define cpan_name Prima

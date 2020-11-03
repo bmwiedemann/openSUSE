@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  1 03:12:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.60
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.60 2020-10-31
+   - Added ProgressBar with 3d look
+   - Added PDF generation
+     -- PrintDialog has extra "Save As PDF" target now
+   - Clipboard enhancements
+     -- cmClipboard added for X11 to select type of data to be pasted
+     -- Image codecs return MIME as part of codec data
+     -- Special formats Text and Image are documented
+     -- Added Clipboard.[text/image/copy] KEEP parameter
+   - Image.put_image supports new rop::ConstantColor
+   - Optimizations for cache misses in Drawable.text_wrap
+   - Fixes for unicode handling in FileDialog and Utils::get_dir
+   - Fixes for XRandr extension
+   - Fixes for scrolling with synthetic transparency in win32
+
+-------------------------------------------------------------------
 Thu May 28 03:12:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 1.59
