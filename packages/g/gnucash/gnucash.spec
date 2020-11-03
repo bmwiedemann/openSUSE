@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnucash
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -171,13 +171,13 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %{_datadir}/icons/hicolor/scalable/apps/gnucash-icon.svg
 %dir %{_datadir}/guile/site/%{guile_version}
 %{_datadir}/guile/site/%{guile_version}/gnucash
-%{_datadir}/guile/site/%{guile_version}/tests
+#%{_datadir}/guile/site/%{guile_version}/tests
 %doc %{_docdir}/%{name}
 %{_libdir}/*.so
 %{_libdir}/gnucash
 %dir %{_libdir}/guile/%{guile_version}/site-ccache
 %{_libdir}/guile/%{guile_version}/site-ccache/gnucash
-%{_libdir}/guile/%{guile_version}/site-ccache/tests
+#%{_libdir}/guile/%{guile_version}/site-ccache/tests
 %{_mandir}/man?/*%{?ext_man}
 %dir %{_sysconfdir}/gnucash
 %config %{_sysconfdir}/gnucash/environment

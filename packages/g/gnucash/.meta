@@ -6,5 +6,5 @@ currency trades. A full set of reports allows you to see the state
 ofyour finances. The interface is designed to be simple and easy to
 use, but is backed with double-entry accounting principles to
 ensurebalanced books.</description>
-  <devel project="GNOME:Apps" package="gnucash"/>
+  <devel project="Office" package="gnucash"/>
 </package>
