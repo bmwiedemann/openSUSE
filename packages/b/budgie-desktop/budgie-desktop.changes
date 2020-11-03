@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  2 19:30:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 10.5.1+21060898:
+  * Consolidate WindowType checking code into Abomination.
+- Cleaned nemo-instead-of-nautilus.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 16:20:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Update to version 10.5.1+9197f3f0:

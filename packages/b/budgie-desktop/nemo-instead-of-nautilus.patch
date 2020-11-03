@@ -1,16 +1,45 @@
-From b5a7f3e3890f050ed4b76923abda5459652c3338 Mon Sep 17 00:00:00 2001
+From 39b046fb57d744ac33244aacb53fdb15096860d6 Mon Sep 17 00:00:00 2001
 From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Thu, 22 Oct 2020 19:35:27 +0100
+Date: Mon, 2 Nov 2020 19:14:07 +0000
 Subject: [PATCH] patch update
 
 ---
+ meson.build                                   |  4 ++--
+ meson_options.txt                             |  2 +-
  .../icon-tasklist/IconTasklistApplet.vala     |  2 +-
  src/panel/meson.build                         |  4 ++--
  src/panel/settings/settings_desktop.vala      | 20 +++++++++----------
- 3 files changed, 13 insertions(+), 13 deletions(-)
+ src/panel/settings/settings_main.vala         |  4 ++--
+ 6 files changed, 18 insertions(+), 18 deletions(-)
 
+diff --git a/meson.build b/meson.build
+index dea589fc..655b22f4 100644
+--- a/meson.build
++++ b/meson.build
+@@ -101,8 +101,8 @@ cdata.set_quoted('LOCALEDIR', localedir)
+ cdata.set_quoted('PACKAGE_URL', 'https://budgie-desktop.org')
+ 
+ with_desktop_icons = get_option('with-desktop-icons')
+-if with_desktop_icons ==  'nautilus'
+-    warning('You must have Nautilus 3.26 or older for desktop icons with Budgie')
++if with_desktop_icons ==  'nemo'
++    warning('You must have Nemo for desktop icons with Budgie')
+ endif
+ 
+ with_stateless = get_option('with-stateless')
+diff --git a/meson_options.txt b/meson_options.txt
+index e6ac4d36..ae8ad40c 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,5 +1,5 @@
+ option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
+ option('with-polkit', type: 'boolean', value: true, description: 'Enable PolKit support')
+ option('with-gtk-doc', type: 'boolean', value: true, description: 'Build gtk-doc documentation')
+-option('with-desktop-icons', type: 'combo', choices: ['nautilus', 'none'], value: 'nautilus', description: 'Desktop icon handling')
++option('with-desktop-icons', type: 'combo', choices: ['nemo', 'none'], value: 'nemo', description: 'Desktop icon handling')
+ option('xdg-appdir', type: 'string', description: 'XDG autostart path')
 diff --git a/src/applets/icon-tasklist/IconTasklistApplet.vala b/src/applets/icon-tasklist/IconTasklistApplet.vala
-index ef056683..47ecb4bc 100644
+index e23610e6..d2962257 100644
 --- a/src/applets/icon-tasklist/IconTasklistApplet.vala
 +++ b/src/applets/icon-tasklist/IconTasklistApplet.vala
 @@ -255,7 +255,7 @@ public class IconTasklistApplet : Budgie.Applet {
@@ -97,18 +126,6 @@ index 633923cd..c8713951 100644
  		void update_switches() {
  			bool b = bg_settings.get_boolean("show-desktop-icons");
  			switch_home.sensitive = b;
--- 
-
-
-From 84eadfbdb629f6c040e2c21604500d35ae1d9f52 Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Thu, 22 Oct 2020 19:23:08 +0100
-Subject: [PATCH] patch update
-
----
- src/panel/settings/settings_main.vala | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/src/panel/settings/settings_main.vala b/src/panel/settings/settings_main.vala
 index dc68ae99..f73542aa 100644
 --- a/src/panel/settings/settings_main.vala
@@ -124,56 +141,3 @@ index dc68ae99..f73542aa 100644
  				this.add_page(new Budgie.DesktopPage());
  			}
  	#endif
--- 
-
-
-From 13453baef09a081ea157cc3e16b22ccf77d317b2 Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:04:41 +0100
-Subject: [PATCH] Update meson_options.txt
-
----
- meson_options.txt | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/meson_options.txt b/meson_options.txt
-index e6ac4d36..ae8ad40c 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -1,5 +1,5 @@
- option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
- option('with-polkit', type: 'boolean', value: true, description: 'Enable PolKit support')
- option('with-gtk-doc', type: 'boolean', value: true, description: 'Build gtk-doc documentation')
--option('with-desktop-icons', type: 'combo', choices: ['nautilus', 'none'], value: 'nautilus', description: 'Desktop icon handling')
-+option('with-desktop-icons', type: 'combo', choices: ['nemo', 'none'], value: 'nemo', description: 'Desktop icon handling')
- option('xdg-appdir', type: 'string', description: 'XDG autostart path')
--- 
-
-
-From 4aa6070cc472a77d89d5238050fde077844478d4 Mon Sep 17 00:00:00 2001
-From: Callum Farmer <callumjfarmer13@gmail.com>
-Date: Mon, 31 Aug 2020 17:04:09 +0100
-Subject: [PATCH] Update meson.build
-
----
- meson.build | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/meson.build b/meson.build
-index dea589fc..655b22f4 100644
---- a/meson.build
-+++ b/meson.build
-@@ -101,8 +101,8 @@ cdata.set_quoted('LOCALEDIR', localedir)
- cdata.set_quoted('PACKAGE_URL', 'https://budgie-desktop.org')
- 
- with_desktop_icons = get_option('with-desktop-icons')
--if with_desktop_icons ==  'nautilus'
--    warning('You must have Nautilus 3.26 or older for desktop icons with Budgie')
-+if with_desktop_icons ==  'nemo'
-+    warning('You must have Nemo for desktop icons with Budgie')
- endif
- 
- with_stateless = get_option('with-stateless')
--- 
-
-
