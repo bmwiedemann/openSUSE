@@ -17,7 +17,7 @@
 
 
 Name:           perl-Dist-Zilla
-Version:        6.015
+Version:        6.017
 Release:        0
 %define cpan_name Dist-Zilla
 Summary:        Distribution builder; installer not included!
@@ -172,6 +172,7 @@ Requires:       perl(autodie)
 Requires:       perl(namespace::autoclean)
 Requires:       perl(parent)
 Requires:       perl(version)
+Recommends:     perl(App::cpanminus)
 Recommends:     perl(Archive::Tar::Wrapper) >= 0.15
 Recommends:     perl(Data::OptList) >= 0.110
 Recommends:     perl(Term::ReadLine::Gnu)
