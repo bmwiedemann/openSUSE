@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firewall
-Version:        4.3.8
+Version:        4.3.9
 Release:        0
 Summary:        YaST2 - Firewall Configuration
 License:        GPL-2.0-only

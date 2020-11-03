@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:47:21 UTC 2020 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: When no firewall section is defined, write the service
+  settings according to the proposal (bsc#1178050)
+- 4.3.9
+
+-------------------------------------------------------------------
 Thu Oct 22 20:44:20 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Do not warn user about ssh key only authentication when
