@@ -1297,4 +1297,12 @@
     <comment>- Update to release 2020.09.20</comment>
     <requestid>835672</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>754b6656a92a4dbcf0cd293cf39ebe42</srcmd5>
+    <version>2020.11.01.1</version>
+    <time>1604412995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2020.11.01.1</comment>
+    <requestid>845526</requestid>
+  </revision>
 </revisionlist>

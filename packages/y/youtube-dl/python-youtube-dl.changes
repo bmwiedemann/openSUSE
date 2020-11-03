@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  2 12:59:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2020.11.01.1
+  * youtube: Fix JS player URL extraction
+  * ytsearch: Fix extraction
+  * ustream: Add support for video.ibm.com
+  * expressen: Add support for di.se
+
+-------------------------------------------------------------------
 Sun Sep 20 09:50:37 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.09.20
