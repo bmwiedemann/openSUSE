@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-bpython
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
