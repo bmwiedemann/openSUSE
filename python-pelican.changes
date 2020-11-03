@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  2 17:39:30 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 4.5.1:
+  * Refactor intra-site link discovery in order to match more
+    permissively (#2646)
+  * Fix plugins running twice in auto-reload mode (#2817)
+  * Add notice to use from pelican import signals instead of
+    import pelican.signals (#2805)
+- drop removal of macos hidden temporary files: fixed upstream
+- remove CONTRIBUTING.rst THANKS and docs from the package:
+  not provided any more
+- correctly identify the license file
+
+-------------------------------------------------------------------
 Fri Aug 28 18:28:19 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.5.0:
