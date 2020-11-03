@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Oct 22 15:45:01 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+New upstream release 0.2.1
+
+## [0.2.1](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.2.1) (2020-10-03)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.2.0...0.2.1)
+
+**Closed issues:**
+
+- Erubis dependency #1142
+
+
+## [0.2.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.2.0) (2020-10-03)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.1.2...0.2.0)
+
+**Closed issues:**
+
+- First time using - vagrant up fails with network related errors [\#1146](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1146)
+- Waiting for domain to get an IP address [\#1145](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1145)
+- CentOS 8   fail to install libvirt Failed to build gem native extension [\#1135](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1135)
+- `\<module:Util\>': uninitialized constant VagrantPlugins::ProviderLibvirt::Util::ErbTemplate \(NameError\) [\#1131](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1131)
+- vagrant asking for VBoxManage binary [\#1125](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1125)
+- after upgrading vagrant to 2.2.9 \(from 2.2.7\) a vagrant up destroys the domain on error [\#1122](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1122)
+- Failure to detect second machine instance using Vagrant CLI [\#1121](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1121)
+- Help/Feature-Request: Host-only management network [\#1117](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1117)
+- libvirt plugin install FAILs to find existing "package configuration for libvirt is not found" [\#1104](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1104)
+- Fedora box download is not available  [\#1070](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1070)
+
+**Merged pull requests:**
+
+- Support release notes generation [\#1150](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1150) ([electrofelix](https://github.com/electrofelix))
+- Add docker image for vagrant-libvirt [\#1149](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1149) ([electrofelix](https://github.com/electrofelix))
+- Use Vagrant::Util::TemplateRenderer instead of Erubis. [\#1144](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1144) ([voxik](https://github.com/voxik))
+- config: allow for setting URI from environment [\#1141](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1141) ([electrofelix](https://github.com/electrofelix))
+- Limit CI jobs to a subset of combinations [\#1140](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1140) ([electrofelix](https://github.com/electrofelix))
+- Add @uri config tests and minor refactor [\#1139](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1139) ([electrofelix](https://github.com/electrofelix))
+- Update test syntax to remove stubs [\#1138](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1138) ([electrofelix](https://github.com/electrofelix))
+- let the user set the domain title and description [\#1137](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1137) ([rgl](https://github.com/rgl))
+- remove redundant setting of default volume/backingStore mode [\#1134](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1134) ([eighthave](https://github.com/eighthave))
+- Add WWN support [\#1123](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1123) ([cvoltz](https://github.com/cvoltz))
+- update examples to use fedora/32-cloud-base [\#1119](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1119) ([timhughes](https://github.com/timhughes))
+- add snapshot\_pool\_name to README [\#1114](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1114) ([abbbi](https://github.com/abbbi))
+- action/forward\_ports.rb: Fix SSH tunnel spawning and PID tracking [\#1037](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1037) ([zakame](https://github.com/zakame))
+- Add public\_address provider capability [\#1036](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1036) ([zakame](https://github.com/zakame))
+
+-------------------------------------------------------------------
 Thu Sep 10 16:59:58 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Require qemu-x86/arm on the x86/arm respectively
