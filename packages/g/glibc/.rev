@@ -2339,4 +2339,14 @@ for more fun options (forwarded request 147495 from coolo)</comment>
 - ifunc-fma4.patch: x86-64: Fix FMA4 detection in ifunc (BZ #26534) (forwarded request 832940 from Andreas_Schwab)</comment>
     <requestid>832941</requestid>
   </revision>
+  <revision rev="241" vrev="2">
+    <srcmd5>698e906908fe587c9c9a0733cf9f7467</srcmd5>
+    <version>2.32</version>
+    <time>1604412911</time>
+    <user>dimstar_suse</user>
+    <comment>- Use --enable-cet on x86_64 to instrument glibc for indirect branch
+  tracking and shadow stack use.  Enable indirect branch tracking
+  and shadow stack in the dynamic loader.  [jsc#PM-2110] [bsc#1175154] (forwarded request 844127 from rguenther)</comment>
+    <requestid>844528</requestid>
+  </revision>
 </revisionlist>

@@ -630,6 +630,11 @@ configure_and_build_glibc() {
 %ifarch ppc64p7
 		--with-cpu=power7 \
 %endif
+%ifarch x86_64
+%if %suse_version > 1500
+		--enable-cet \
+%endif
+%endif
 %if %{enable_stackguard_randomization}
 		--enable-stackguard-randomization \
 %endif
