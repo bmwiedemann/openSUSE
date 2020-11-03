@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 31 17:34:55 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
+
+- Add package with built YAML manifests used to install kubevirt
+
+-------------------------------------------------------------------
+Thu Oct 29 17:03:40 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Remove needless use of chmod and build-copy-artifacts.sh
+
+-------------------------------------------------------------------
+Fri Oct 23 19:45:30 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix typo in date command
+
+-------------------------------------------------------------------
 Wed Oct 07 14:08:47 UTC 2020 - jfehlig@suse.com
 
 - Update to version 0.34.0:

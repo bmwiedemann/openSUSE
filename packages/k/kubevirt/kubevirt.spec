@@ -85,6 +85,15 @@ Group:          System/Packages
 %description    virt-operator
 The virt-opertor package provides an operator for kubevirt CRD
 
+%package        manifests
+Summary:        YAML manifests used to install kubevirt
+Group:          System/Packages
+
+%description    manifests
+This contains the built YAML manifests used to install kubevirt into a
+kubernetes installation with kubectl apply.
+
+
 %prep
 %autosetup -p1
 
@@ -97,7 +106,7 @@ cd ${GOPATH}/src/kubevirt.io/kubevirt
 env \
 KUBEVIRT_GO_BASE_PKGDIR="${GOPATH}/pkg" \
 KUBEVIRT_VERSION=%{version} \
-KUBEVIRT_SOURCE_DATE_EPOCH="$(date -r LICENSE +%{s})" \
+KUBEVIRT_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)" \
 KUBEVIRT_GIT_COMMIT='v%{version}' \
 KUBEVIRT_GIT_VERSION='v%{version}' \
 KUBEVIRT_GIT_TREE_STATE="clean" \
@@ -111,29 +120,23 @@ KUBEVIRT_GIT_TREE_STATE="clean" \
 	cmd/virt-operator \
 	tools/csv-generator \
 	%{nil}
-./hack/build-copy-artifacts.sh
+env DOCKER_PREFIX=registry.opensuse.org/opensuse/tumbleweed/virt-operator DOCKER_TAG=%{version} ./hack/build-manifests.sh --skipj2
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 
-chmod 0755 _out/cmd/container-disk-v2alpha/container-disk
 install -p -m 0755 _out/cmd/container-disk-v2alpha/container-disk %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virtctl/virtctl
 install -p -m 0755 _out/cmd/virtctl/virtctl %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-api/virt-api
 install -p -m 0755 _out/cmd/virt-api/virt-api %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-controller/virt-controller
 install -p -m 0755 _out/cmd/virt-controller/virt-controller %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-chroot/virt-chroot
 install -p -m 0755 _out/cmd/virt-chroot/virt-chroot %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-handler/virt-handler
 install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-launcher/virt-launcher
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/virt-operator/virt-operator
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
-chmod 0755 _out/cmd/csv-generator/csv-generator
 install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
+
+mkdir -p %{buildroot}%{_datadir}/kube-virt
+cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
 
 %files virtctl
 %license LICENSE
@@ -171,5 +174,11 @@ install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
 %doc README.md
 %{_bindir}/virt-operator
 %{_bindir}/csv-generator
+
+%files manifests
+%license LICENSE
+%doc README.md
+%dir %{_datadir}/kube-virt
+%{_datadir}/kube-virt/manifests
 
 %changelog
