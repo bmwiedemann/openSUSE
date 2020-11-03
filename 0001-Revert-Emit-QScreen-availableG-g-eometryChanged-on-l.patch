@@ -1,0 +1,98 @@
+From b885b4a189db2889f3f934a18a9ffc17a9c9077f Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 20 Sep 2020 18:19:10 +0200
+Subject: [PATCH] Revert "Emit QScreen::(availableG|g)eometryChanged() on
+ logical DPI change"
+
+This reverts commit 370289bef68d8505b66cb27150a3f596e23c5ed3.
+---
+ src/gui/kernel/qguiapplication.cpp | 10 ++++++++--
+ src/gui/kernel/qscreen.cpp         | 24 +++---------------------
+ src/gui/kernel/qscreen_p.h         |  2 --
+ 3 files changed, 11 insertions(+), 25 deletions(-)
+
+diff --git a/src/gui/kernel/qguiapplication.cpp b/src/gui/kernel/qguiapplication.cpp
+index 239a78313c..2eee145f27 100644
+--- a/src/gui/kernel/qguiapplication.cpp
++++ b/src/gui/kernel/qguiapplication.cpp
+@@ -3178,7 +3178,14 @@ void QGuiApplicationPrivate::processScreenGeometryChange(QWindowSystemInterfaceP
+             updateFilteredScreenOrientation(s);
+     }
+ 
+-    s->d_func()->emitGeometryChangeSignals(geometryChanged, availableGeometryChanged);
++    if (availableGeometryChanged)
++        emit s->availableGeometryChanged(s->availableGeometry());
++
++    if (geometryChanged || availableGeometryChanged) {
++        const auto siblings = s->virtualSiblings();
++        for (QScreen* sibling : siblings)
++            emit sibling->virtualGeometryChanged(sibling->virtualGeometry());
++    }
+ 
+     resetCachedDevicePixelRatio();
+ }
+@@ -3198,7 +3205,6 @@ void QGuiApplicationPrivate::processScreenLogicalDotsPerInchChange(QWindowSystem
+     s->d_func()->logicalDpi = QDpi(e->dpiX, e->dpiY);
+ 
+     emit s->logicalDotsPerInchChanged(s->logicalDotsPerInch());
+-    s->d_func()->updateGeometriesWithSignals();
+ 
+     resetCachedDevicePixelRatio();
+ }
+diff --git a/src/gui/kernel/qscreen.cpp b/src/gui/kernel/qscreen.cpp
+index df628fcc73..d5a4b7c027 100644
+--- a/src/gui/kernel/qscreen.cpp
++++ b/src/gui/kernel/qscreen.cpp
+@@ -77,33 +77,15 @@ QScreen::QScreen(QPlatformScreen *screen)
+     d->setPlatformScreen(screen);
+ }
+ 
+-void QScreenPrivate::updateGeometriesWithSignals()
+-{
+-    const QRect oldGeometry = geometry;
+-    const QRect oldAvailableGeometry = availableGeometry;
+-    updateHighDpi();
+-    emitGeometryChangeSignals(oldGeometry != geometry, oldAvailableGeometry != availableGeometry);
+-}
+-
+-void QScreenPrivate::emitGeometryChangeSignals(bool geometryChanged, bool availableGeometryChanged)
+-{
+-    Q_Q(QScreen);
+-    if (availableGeometryChanged)
+-        emit q->availableGeometryChanged(availableGeometry);
+-
+-    if (geometryChanged || availableGeometryChanged) {
+-        const auto siblings = q->virtualSiblings();
+-        for (QScreen* sibling : siblings)
+-            emit sibling->virtualGeometryChanged(sibling->virtualGeometry());
+-    }
+-}
+-
+ void QScreenPrivate::setPlatformScreen(QPlatformScreen *screen)
+ {
+     Q_Q(QScreen);
+     platformScreen = screen;
+     platformScreen->d_func()->screen = q;
+     orientation = platformScreen->orientation();
++    geometry = platformScreen->deviceIndependentGeometry();
++    availableGeometry = QHighDpi::fromNative(platformScreen->availableGeometry(),
++                        QHighDpiScaling::factor(platformScreen), geometry.topLeft());
+ 
+     logicalDpi = QPlatformScreen::overrideDpi(platformScreen->logicalDpi());
+ 
+diff --git a/src/gui/kernel/qscreen_p.h b/src/gui/kernel/qscreen_p.h
+index 7da542c25e..e5988ff829 100644
+--- a/src/gui/kernel/qscreen_p.h
++++ b/src/gui/kernel/qscreen_p.h
+@@ -72,8 +72,6 @@ public:
+     }
+ 
+     void updatePrimaryOrientation();
+-    void updateGeometriesWithSignals();
+-    void emitGeometryChangeSignals(bool geometryChanged, bool availableGeometryChanged);
+ 
+     QPlatformScreen *platformScreen = nullptr;
+ 
+-- 
+2.25.1
+

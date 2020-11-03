@@ -1,0 +1,14 @@
+Index: qtbase-opensource-src-5.5.1/src/network/ssl/qsslsocket_openssl.cpp
+===================================================================
+--- qtbase-opensource-src-5.5.1.orig/src/network/ssl/qsslsocket_openssl.cpp
++++ qtbase-opensource-src-5.5.1/src/network/ssl/qsslsocket_openssl.cpp
+@@ -645,7 +645,8 @@ void QSslSocketPrivate::resetDefaultCiph
+                     !ciph.name().toLower().startsWith(QLatin1String("aecdh"))) {
+                     ciphers << ciph;
+ 
+-                    if (ciph.usedBits() >= 128)
++                    if (ciph.usedBits() >= 128 &&
++                        !ciph.encryptionMethod().toLower().startsWith(QLatin1String("rc4")))
+                         defaultCiphers << ciph;
+                 }
+             }
