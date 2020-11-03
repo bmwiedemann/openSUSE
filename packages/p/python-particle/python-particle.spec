@@ -19,7 +19,7 @@
 %global modname particle
 %define skip_python2 1
 Name:           python-particle
-Version:        0.10.0
+Version:        0.13.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2
-Requires:       python-hepunits >= 1.2.0
+Requires:       python-hepunits >= 2.0.0
 Recommends:     python-pandas
 Recommends:     python-tabulate
 BuildArch:      noarch
@@ -50,12 +50,6 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" src/particle/__main__.py
 
 %install
 %python_install
-# setuptools < 42 isn't able to pick up the right versioning, so move the egg-info dir manually
-%if 0%{?suse_version} < 1550
-%{python_expand mv %{buildroot}%{$python_sitelib}/%{modname}-0.0.0-py%{$python_version}.egg-info \
-                   %{buildroot}%{$python_sitelib}/%{modname}-%{version}-py%{$python_version}.egg-info
-}
-%endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # NO TESTS DEFINED
