@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-param
-Version:        1.9.3
+Version:        1.10.0
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause
@@ -62,9 +62,11 @@ echo '{"git_describe": "v%{version}", "version_string": "%{version}"}' > param/.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%ifpython3
 %check
 # Exclusion documented in gh#holoviz/param#423
 %pytest -k 'not test_abstract_class' tests/*/*.py
+%endif
 
 %files %{python_files}
 %license LICENSE.txt

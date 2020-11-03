@@ -1,40 +1,147 @@
----
- param/parameterized.py                |    2 
- setup.py                              |    1 
- tests/API0/testclassselector.py       |   12 +-
- tests/API0/testcompositeparams.py     |    4 
- tests/API0/testdefaults.py            |   11 -
- tests/API0/testdynamicparams.py       |    4 
- tests/API0/testipythonmagic.py        |    8 -
- tests/API0/testlistselector.py        |    4 
- tests/API0/testnumbergen.py           |    4 
- tests/API0/testnumpy.py               |    4 
- tests/API0/testobjectselector.py      |    6 -
- tests/API0/testparameterizedobject.py |  103 +++++++----------
- tests/API0/testparameterizedrepr.py   |    4 
- tests/API0/teststringparam.py         |    8 -
- tests/API0/testtimedependent.py       |    6 -
- tests/API1/testclassselector.py       |   14 +-
- tests/API1/testcompositeparams.py     |    4 
- tests/API1/testdefaults.py            |   11 -
- tests/API1/testdynamicparams.py       |    4 
- tests/API1/testipythonmagic.py        |    8 -
- tests/API1/testlistselector.py        |    4 
- tests/API1/testnumbergen.py           |    4 
- tests/API1/testnumberparameter.py     |    8 -
- tests/API1/testnumpy.py               |    4 
- tests/API1/testobjectselector.py      |    4 
- tests/API1/testpandas.py              |   32 ++---
- tests/API1/testparameterizedobject.py |  198 ++++++++++++++--------------------
- tests/API1/testparameterizedrepr.py   |    4 
- tests/API1/testselector.py            |    4 
- tests/API1/teststringparam.py         |   10 -
- tests/API1/testtimedependent.py       |    6 -
- tests/API1/testwatch.py               |    4 
- 32 files changed, 207 insertions(+), 297 deletions(-)
+From d24abdc4e4fb7f032076e01b4fe780afad810203 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 3 Aug 2020 16:47:44 +0200
+Subject: [PATCH 1/2] Remove dependency on nose (no explicit dependency on
+ pytest)
 
---- a/tests/API0/testcompositeparams.py
-+++ b/tests/API0/testcompositeparams.py
+Also, clear up a lot of warning and removing deprecated constructs.
+
+Still remaining:
+
+* Failing test methods test_abstract_class in
+  tests/API1/testparameterizedobject.py and
+  tests/API0/testparameterizedobject.py with:
+
+=================================== FAILURES ===================================
+____________________ TestParameterized.test_abstract_class _____________________
+
+self = <tests.API0.testparameterizedobject.TestParameterized testMethod=test_abstract_class>
+
+    def test_abstract_class(self):
+        """Check that a class declared abstract actually shows up as abstract."""
+>       self.assertEqual(_TestAbstractPO.abstract,True)
+E       AssertionError: False != True
+
+tests/API0/testparameterizedobject.py:117: AssertionError
+____________________ TestParameterized.test_abstract_class _____________________
+
+self = <tests.API1.testparameterizedobject.TestParameterized testMethod=test_abstract_class>
+
+    def test_abstract_class(self):
+        """Check that a class declared abstract actually shows up as abstract."""
+>       self.assertEqual(_TestAbstractPO.abstract, True)
+E       AssertionError: False != True
+
+tests/API1/testparameterizedobject.py:134: AssertionError
+
+* still unresolved use of deprecated method inspect.getargspec() on the
+  line 2446 of param/parameterized.py.
+---
+ param/parameterized.py                |   2 +-
+ setup.py                              |   1 -
+ tests/API0/testclassselector.py       |  12 +-
+ tests/API0/testcompositeparams.py     |   4 +-
+ tests/API0/testdefaults.py            |  11 +-
+ tests/API0/testdynamicparams.py       |   4 +-
+ tests/API0/testipythonmagic.py        |   8 +-
+ tests/API0/testlistselector.py        |   4 +-
+ tests/API0/testnumbergen.py           |   4 +-
+ tests/API0/testnumpy.py               |   4 +-
+ tests/API0/testobjectselector.py      |   6 +-
+ tests/API0/testparameterizedobject.py | 103 ++++++--------
+ tests/API0/testparameterizedrepr.py   |   4 +-
+ tests/API0/teststringparam.py         |   8 +-
+ tests/API0/testtimedependent.py       |   6 +-
+ tests/API1/testclassselector.py       |  14 +-
+ tests/API1/testcompositeparams.py     |   4 +-
+ tests/API1/testdefaults.py            |  11 +-
+ tests/API1/testdynamicparams.py       |   4 +-
+ tests/API1/testipythonmagic.py        |   8 +-
+ tests/API1/testlistselector.py        |   4 +-
+ tests/API1/testnumbergen.py           |   4 +-
+ tests/API1/testnumberparameter.py     |   8 +-
+ tests/API1/testnumpy.py               |   4 +-
+ tests/API1/testobjectselector.py      |   4 +-
+ tests/API1/testpandas.py              |  32 ++---
+ tests/API1/testparameterizedobject.py | 198 +++++++++++---------------
+ tests/API1/testparameterizedrepr.py   |   4 +-
+ tests/API1/testselector.py            |   4 +-
+ tests/API1/teststringparam.py         |  12 +-
+ tests/API1/testtimedependent.py       |   6 +-
+ tests/API1/testwatch.py               |   4 +-
+ 32 files changed, 207 insertions(+), 299 deletions(-)
+
+Index: param-1.10.0/param/parameterized.py
+===================================================================
+--- param-1.10.0.orig/param/parameterized.py
++++ param-1.10.0/param/parameterized.py
+@@ -982,7 +982,7 @@ class String(Parameter):
+       class IPAddress(String):
+         '''IPv4 address as a string (dotted decimal notation)'''
+        def __init__(self, default="0.0.0.0", allow_None=False, **kwargs):
+-           ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
++           ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
+            super(IPAddress, self).__init__(default=default, regex=ip_regex, **kwargs)
+ 
+ 
+Index: param-1.10.0/setup.py
+===================================================================
+--- param-1.10.0.orig/setup.py
++++ param-1.10.0/setup.py
+@@ -19,7 +19,6 @@ extras_require = {
+     # pip doesn't support tests_require
+     # (https://github.com/pypa/pip/issues/1197)
+     'tests': [
+-        'nose',
+         'flake8',
+     ]
+ }
+Index: param-1.10.0/tests/API0/testclassselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testclassselector.py
++++ param-1.10.0/tests/API0/testclassselector.py
+@@ -26,7 +26,7 @@ class TestClassSelectorParameters(unitte
+ 
+     def test_single_class_instance_error(self):
+         exception = "Parameter 'e' value must be an instance of int, not 'a'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(e='a')
+ 
+     def test_single_class_type_constructor(self):
+@@ -35,7 +35,7 @@ class TestClassSelectorParameters(unitte
+ 
+     def test_single_class_type_error(self):
+         exception = "Parameter 'str' must be a subclass of Number, not 'type'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(f=str)
+ 
+     def test_multiple_class_instance_constructor1(self):
+@@ -47,8 +47,8 @@ class TestClassSelectorParameters(unitte
+         self.assertEqual(p.g, 'A')
+ 
+     def test_multiple_class_instance_error(self):
+-        exception = "Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        exception = r"Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(g=3.0)
+ 
+     def test_multiple_class_type_constructor1(self):
+@@ -60,6 +60,6 @@ class TestClassSelectorParameters(unitte
+         self.assertEqual(p.h, str)
+ 
+     def test_multiple_class_type_error(self):
+-        exception = "Parameter 'float' must be a subclass of \(int, str\), not 'type'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        exception = r"Parameter 'float' must be a subclass of \(int, str\), not 'type'"
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(h=float)
+Index: param-1.10.0/tests/API0/testcompositeparams.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testcompositeparams.py
++++ param-1.10.0/tests/API0/testcompositeparams.py
 @@ -94,6 +94,4 @@ class TestCompositeParameters(unittest.T
          self.assertEqual(iy(), 5)
  
@@ -43,14 +150,16 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testdefaults.py
-+++ b/tests/API0/testdefaults.py
+Index: param-1.10.0/tests/API0/testdefaults.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testdefaults.py
++++ param-1.10.0/tests/API0/testdefaults.py
 @@ -30,11 +30,11 @@ except ImportError:
      skip.append('Series')
  
  
 -class TestDefaultsMetaclass(type):
-+class _TestDefaultsMetaclass(type):
++class MyTestDefaultsMetaclass(type):
      def __new__(mcs, name, bases, dict_):
  
          def test_skip(*args,**kw):
@@ -64,7 +173,7 @@
  
  
 -@add_metaclass(TestDefaultsMetaclass)
-+@add_metaclass(_TestDefaultsMetaclass)
++@add_metaclass(MyTestDefaultsMetaclass)
  class TestDefaults(unittest.TestCase):
      pass
 -
@@ -72,8 +181,10 @@
 -if __name__ == "__main__":
 -    import nose
 -    nose.runmodule()
---- a/tests/API0/testdynamicparams.py
-+++ b/tests/API0/testdynamicparams.py
+Index: param-1.10.0/tests/API0/testdynamicparams.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testdynamicparams.py
++++ param-1.10.0/tests/API0/testdynamicparams.py
 @@ -248,9 +248,7 @@ class TestDynamicSharedNumbergen(TestDyn
  
  
@@ -85,8 +196,36 @@
  
  
  # Commented out block in the original doctest version.
---- a/tests/API0/testlistselector.py
-+++ b/tests/API0/testlistselector.py
+Index: param-1.10.0/tests/API0/testipythonmagic.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testipythonmagic.py
++++ param-1.10.0/tests/API0/testipythonmagic.py
+@@ -43,8 +43,8 @@ class TestParamPager(unittest.TestCase):
+     def test_parameterized_class(self):
+         page_string = self.pager(self.TestClass)
+         # Remove params automatic numbered names
+-        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
+-        ref_string = re.sub('TestClass(\d+)', 'TestClass', test1_repr)
++        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
++        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test1_repr)
+ 
+         try:
+             self.assertEqual(page_string, ref_string)
+@@ -56,8 +56,8 @@ class TestParamPager(unittest.TestCase):
+     def test_parameterized_instance(self):
+         page_string = self.pager(self.TestClass())
+         # Remove params automatic numbered names
+-        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
+-        ref_string = re.sub('TestClass(\d+)', 'TestClass', test2_repr)
++        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
++        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test2_repr)
+ 
+         try:
+             self.assertEqual(page_string, ref_string)
+Index: param-1.10.0/tests/API0/testlistselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testlistselector.py
++++ param-1.10.0/tests/API0/testlistselector.py
 @@ -156,6 +156,4 @@ class TestListSelectorParameters(unittes
          with self.assertRaises(TypeError):
              Q.params('r').compute_default()
@@ -95,8 +234,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testnumbergen.py
-+++ b/tests/API0/testnumbergen.py
+Index: param-1.10.0/tests/API0/testnumbergen.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testnumbergen.py
++++ param-1.10.0/tests/API0/testnumbergen.py
 @@ -34,6 +34,4 @@ class TestUniformRandomOffset(unittest.T
              value = gen()
              self.assertTrue(lbound <= value < ubound)
@@ -105,8 +246,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testnumpy.py
-+++ b/tests/API0/testnumpy.py
+Index: param-1.10.0/tests/API0/testnumpy.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testnumpy.py
++++ param-1.10.0/tests/API0/testnumpy.py
 @@ -35,6 +35,4 @@ class TestNumpy(unittest.TestCase):
          _is_array_and_equal(z.z,[1,2])
  
@@ -115,8 +258,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testobjectselector.py
-+++ b/tests/API0/testobjectselector.py
+Index: param-1.10.0/tests/API0/testobjectselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testobjectselector.py
++++ param-1.10.0/tests/API0/testobjectselector.py
 @@ -23,7 +23,7 @@ class TestObjectSelectorParameters(unitt
              g = param.ObjectSelector(default=None,objects=[7,8])
              i = param.ObjectSelector(default=7,objects=[9],check_on_set=False)
@@ -134,33 +279,35 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testparameterizedobject.py
-+++ b/tests/API0/testparameterizedobject.py
-@@ -8,20 +8,17 @@ import numbergen
+Index: param-1.10.0/tests/API0/testparameterizedobject.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testparameterizedobject.py
++++ param-1.10.0/tests/API0/testparameterizedobject.py
+@@ -8,20 +8,12 @@ import numbergen
  
  # CEBALERT: not anything like a complete test of Parameterized!
  
 -
- import random
+-import random
 -from nose.tools import istest, nottest
 -
- 
+-
  from param.parameterized import ParamOverrides, shared_parameters
  
 -@nottest
-+
- class _SomeRandomNumbers(object):
-     def __call__(self):
-         return random.random()
+-class _SomeRandomNumbers(object):
+-    def __call__(self):
+-        return random.random()
++from tests.API1.utils import SomeRandomNumbers
  
 -@nottest
 -class TestPO(param.Parameterized):
 +
-+class _TestPO(param.Parameterized):
++class MyTestPO(param.Parameterized):
      inst = param.Parameter(default=[1,2,3],instantiate=True)
      notinst = param.Parameter(default=[1,2,3],instantiate=False)
      const = param.Parameter(default=1,constant=True)
-@@ -30,46 +27,46 @@ class TestPO(param.Parameterized):
+@@ -30,50 +22,49 @@ class TestPO(param.Parameterized):
  
      dyn = param.Dynamic(default=1)
  
@@ -171,126 +318,133 @@
  
 -@nottest
 -class TestAbstractPO(param.Parameterized):
-+class _AnotherTestPO(param.Parameterized):
-+    instPO = param.Parameter(default=_TestPO(), instantiate=True)
-+    notinstPO = param.Parameter(default=_TestPO(), instantiate=False)
+-    __abstract = True
++class MyAnotherTestPO(param.Parameterized):
++    instPO = param.Parameter(default=MyTestPO(), instantiate=True)
++    notinstPO = param.Parameter(default=MyTestPO(), instantiate=False)
 +
+ 
+-class _AnotherAbstractPO(param.Parameterized):
++class MyTestAbstractPO(param.Parameterized):
++     __abstract = True
 +
-+class _TestAbstractPO(param.Parameterized):
++class MyAnotherAbstractPO(param.Parameterized):
      __abstract = True
+ 
  
 -@nottest
 -class TestParamInstantiation(AnotherTestPO):
 -    instPO = param.Parameter(default=AnotherTestPO(),instantiate=False)
++class MyTestParamInstantiation(MyAnotherTestPO):
++    instPO = param.Parameter(default=MyAnotherTestPO(), instantiate=False)
++
  
 -@istest
-+class _TestParamInstantiation(_AnotherTestPO):
-+    instPO = param.Parameter(default=_AnotherTestPO(), instantiate=False)
-+
-+
  class TestParameterized(unittest.TestCase):
  
      def test_constant_parameter(self):
          """Test that you can't set a constant parameter after construction."""
 -        testpo = TestPO(const=17)
-+        testpo = _TestPO(const=17)
++        testpo = MyTestPO(const=17)
          self.assertEqual(testpo.const,17)
          self.assertRaises(TypeError,setattr,testpo,'const',10)
  
          # check you can set on class
 -        TestPO.const=9
 -        testpo = TestPO()
-+        _TestPO.const=9
-+        testpo = _TestPO()
++        MyTestPO.const=9
++        testpo = MyTestPO()
          self.assertEqual(testpo.const,9)
  
      def test_readonly_parameter(self):
          """Test that you can't set a read-only parameter on construction or as an attribute."""
 -        testpo = TestPO()
-+        testpo = _TestPO()
++        testpo = MyTestPO()
          self.assertEqual(testpo.ro,"Hello")
  
          with self.assertRaises(TypeError):
 -            t = TestPO(ro=20)
-+            t = _TestPO(ro=20)
++            t = MyTestPO(ro=20)
  
 -        t=TestPO()
-+        t=_TestPO()
++        t=MyTestPO()
          self.assertRaises(TypeError,setattr,t,'ro',10)
  
          # check you cannot set on class
 -        self.assertRaises(TypeError,setattr,TestPO,'ro',5)
-+        self.assertRaises(TypeError,setattr,_TestPO,'ro',5)
++        self.assertRaises(TypeError,setattr,MyTestPO,'ro',5)
  
          self.assertEqual(testpo.params()['ro'].constant,True)
  
-@@ -81,13 +78,13 @@ class TestParameterized(unittest.TestCas
+@@ -85,13 +76,13 @@ class TestParameterized(unittest.TestCas
      def test_basic_instantiation(self):
          """Check that instantiated parameters are copied into objects."""
  
 -        testpo = TestPO()
-+        testpo = _TestPO()
++        testpo = MyTestPO()
  
 -        self.assertEqual(testpo.inst,TestPO.inst)
 -        self.assertEqual(testpo.notinst,TestPO.notinst)
-+        self.assertEqual(testpo.inst,_TestPO.inst)
-+        self.assertEqual(testpo.notinst,_TestPO.notinst)
++        self.assertEqual(testpo.inst,MyTestPO.inst)
++        self.assertEqual(testpo.notinst,MyTestPO.notinst)
  
 -        TestPO.inst[1]=7
 -        TestPO.notinst[1]=7
-+        _TestPO.inst[1]=7
-+        _TestPO.notinst[1]=7
++        MyTestPO.inst[1]=7
++        MyTestPO.notinst[1]=7
  
          self.assertEqual(testpo.notinst,[1,7,3])
          self.assertEqual(testpo.inst,[1,2,3])
-@@ -95,14 +92,14 @@ class TestParameterized(unittest.TestCas
+@@ -99,14 +90,14 @@ class TestParameterized(unittest.TestCas
  
      def test_more_instantiation(self):
          """Show that objects in instantiated Parameters can still share data."""
 -        anothertestpo = AnotherTestPO()
-+        anothertestpo = _AnotherTestPO()
++        anothertestpo = MyAnotherTestPO()
  
 -        ### CB: AnotherTestPO.instPO is instantiated, but
 -        ### TestPO.notinst is not instantiated - so notinst is still
 -        ### shared, even by instantiated parameters of AnotherTestPO.
-+        ### CB: _AnotherTestPO.instPO is instantiated, but
-+        ### _TestPO.notinst is not instantiated - so notinst is still
-+        ### shared, even by instantiated parameters of _AnotherTestPO.
++        ### CB: MyAnotherTestPO.instPO is instantiated, but
++        ### MyTestPO.notinst is not instantiated - so notinst is still
++        ### shared, even by instantiated parameters of MyAnotherTestPO.
          ### Seems like this behavior of Parameterized could be
          ### confusing, so maybe mention it in documentation somewhere.
 -        TestPO.notinst[1]=7
-+        _TestPO.notinst[1]=7
++        MyTestPO.notinst[1]=7
          # (if you thought your instPO was completely an independent object, you
          # might be expecting [1,2,3] here)
          self.assertEqual(anothertestpo.instPO.notinst,[1,7,3])
-@@ -110,15 +107,15 @@ class TestParameterized(unittest.TestCas
+@@ -114,16 +105,16 @@ class TestParameterized(unittest.TestCas
  
      def test_instantiation_inheritance(self):
          """Check that instantiate=True is always inherited (SF.net #2483932)."""
 -        t = TestParamInstantiation()
-+        t = _TestParamInstantiation()
++        t = MyTestParamInstantiation()
          assert t.params('instPO').instantiate is True
 -        assert isinstance(t.instPO,AnotherTestPO)
-+        assert isinstance(t.instPO,_AnotherTestPO)
++        assert isinstance(t.instPO,MyAnotherTestPO)
  
  
      def test_abstract_class(self):
          """Check that a class declared abstract actually shows up as abstract."""
 -        self.assertEqual(TestAbstractPO.abstract,True)
+-        self.assertEqual(_AnotherAbstractPO.abstract,True)
 -        self.assertEqual(TestPO.abstract,False)
-+        self.assertEqual(_TestAbstractPO.abstract,True)
-+        self.assertEqual(_TestPO.abstract,False)
++        self.assertEqual(MyTestAbstractPO.abstract,True)
++        self.assertEqual(MyAnotherAbstractPO.abstract,True)
++        self.assertEqual(MyTestPO.abstract,False)
  
  
      def test_params(self):
-@@ -132,15 +129,15 @@ class TestParameterized(unittest.TestCas
+@@ -137,15 +128,15 @@ class TestParameterized(unittest.TestCas
  
          ## check for bug where subclass Parameters were not showing up
          ## if params() already called on a super class.
 -        assert 'inst' in TestPO.params()
 -        assert 'notinst' in TestPO.params()
-+        assert 'inst' in _TestPO.params()
-+        assert 'notinst' in _TestPO.params()
++        assert 'inst' in MyTestPO.params()
++        assert 'notinst' in MyTestPO.params()
  
          ## check caching
          assert param.Parameterized.params() is param.Parameterized().params(), "Results of params() should be cached." # just for performance reasons
@@ -298,11 +452,11 @@
  
      def test_state_saving(self):
 -        t = TestPO(dyn=_SomeRandomNumbers())
-+        t = _TestPO(dyn=_SomeRandomNumbers())
++        t = MyTestPO(dyn=SomeRandomNumbers())
          g = t.get_value_generator('dyn')
          g._Dynamic_time_fn=None
          assert t.dyn!=t.dyn
-@@ -155,7 +152,6 @@ class TestParameterized(unittest.TestCas
+@@ -160,7 +151,6 @@ class TestParameterized(unittest.TestCas
  
  from param import parameterized
  
@@ -310,7 +464,7 @@
  class some_fn(param.ParameterizedFunction):
     num_phase = param.Number(18)
     frequencies = param.List([99])
-@@ -170,7 +166,6 @@ class some_fn(param.ParameterizedFunctio
+@@ -175,7 +165,6 @@ class some_fn(param.ParameterizedFunctio
  
  instance = some_fn.instance()
  
@@ -318,13 +472,13 @@
  class TestParameterizedFunction(unittest.TestCase):
  
      def _basic_tests(self,fn):
-@@ -196,16 +191,14 @@ class TestParameterizedFunction(unittest
+@@ -201,16 +190,14 @@ class TestParameterizedFunction(unittest
          self.assertEqual(i(),(0.3,18,[10,20,30]))
  
  
 -@nottest
 -class TestPO1(param.Parameterized):
-+class _TestPO1(param.Parameterized):
++class MyTestPO1(param.Parameterized):
      x = param.Number(default=numbergen.UniformRandom(lbound=-1,ubound=1,seed=1),bounds=(-1,1))
      y = param.Number(default=1,bounds=(-1,1))
  
@@ -333,20 +487,20 @@
  
      def test_outside_bounds(self):
 -        t1 = TestPO1()
-+        t1 = _TestPO1()
++        t1 = MyTestPO1()
          # Test bounds (non-dynamic number)
          try:
              t1.y = 10
-@@ -215,7 +208,7 @@ class TestNumberParameter(unittest.TestC
+@@ -220,7 +207,7 @@ class TestNumberParameter(unittest.TestC
              assert False, "Should raise ValueError."
  
      def test_outside_bounds_numbergen(self):
 -        t1 = TestPO1()
-+        t1 = _TestPO1()
++        t1 = MyTestPO1()
          # Test bounds (dynamic number)
          t1.x = numbergen.UniformRandom(lbound=2,ubound=3)  # bounds not checked on set
          try:
-@@ -226,7 +219,6 @@ class TestNumberParameter(unittest.TestC
+@@ -231,7 +218,6 @@ class TestNumberParameter(unittest.TestC
              assert False, "Should raise ValueError."
  
  
@@ -354,7 +508,7 @@
  class TestStringParameter(unittest.TestCase):
  
      def setUp(self):
-@@ -251,7 +243,6 @@ class TestStringParameter(unittest.TestC
+@@ -256,7 +242,6 @@ class TestStringParameter(unittest.TestC
  
  
  
@@ -362,7 +516,7 @@
  class TestParamOverrides(unittest.TestCase):
  
      def setUp(self):
-@@ -280,10 +271,10 @@ class TestSharedParameters(unittest.Test
+@@ -285,10 +270,10 @@ class TestSharedParameters(unittest.Test
  
      def setUp(self):
          with shared_parameters():
@@ -370,14 +524,14 @@
 -            self.p2 = TestPO(name='B', print_level=0)
 -            self.ap1 = AnotherTestPO(name='A', print_level=0)
 -            self.ap2 = AnotherTestPO(name='B', print_level=0)
-+            self.p1 = _TestPO(name='A', print_level=0)
-+            self.p2 = _TestPO(name='B', print_level=0)
-+            self.ap1 = _AnotherTestPO(name='A', print_level=0)
-+            self.ap2 = _AnotherTestPO(name='B', print_level=0)
++            self.p1 = MyTestPO(name='A', print_level=0)
++            self.p2 = MyTestPO(name='B', print_level=0)
++            self.ap1 = MyAnotherTestPO(name='A', print_level=0)
++            self.ap2 = MyAnotherTestPO(name='B', print_level=0)
  
      def test_shared_object(self):
          self.assertTrue(self.ap1.instPO is self.ap2.instPO)
-@@ -292,9 +283,3 @@ class TestSharedParameters(unittest.Test
+@@ -297,9 +282,3 @@ class TestSharedParameters(unittest.Test
      def test_shared_list(self):
          self.assertTrue(self.p1.inst is self.p2.inst)
          self.assertTrue(self.p1.params('inst').default is not self.p2.inst)
@@ -387,8 +541,10 @@
 -if __name__ == "__main__":
 -    import nose
 -    nose.runmodule()
---- a/tests/API0/testparameterizedrepr.py
-+++ b/tests/API0/testparameterizedrepr.py
+Index: param-1.10.0/tests/API0/testparameterizedrepr.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testparameterizedrepr.py
++++ param-1.10.0/tests/API0/testparameterizedrepr.py
 @@ -162,6 +162,4 @@ class TestParameterizedRepr(unittest.Tes
  
  
@@ -397,8 +553,48 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API0/testtimedependent.py
-+++ b/tests/API0/testtimedependent.py
+Index: param-1.10.0/tests/API0/teststringparam.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/teststringparam.py
++++ param-1.10.0/tests/API0/teststringparam.py
+@@ -7,7 +7,7 @@ import unittest
+ import param
+ 
+ 
+-ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
++ip_regex = r'^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
+ 
+ class TestStringParameters(unittest.TestCase):
+ 
+@@ -25,7 +25,7 @@ class TestStringParameters(unittest.Test
+         a = A()
+ 
+         exception = "String 's' only takes a string value."
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             a.s = None  # because allow_None should be False
+ 
+     def test_default_none(self):
+@@ -44,13 +44,13 @@ class TestStringParameters(unittest.Test
+         a = A()
+ 
+         exception = "String 's': '123.123.0.256' does not match regex"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             a.s = '123.123.0.256'
+ 
+     def test_regex_incorrect_default(self):
+ 
+         exception = "String 'None': '' does not match regex"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             class A(param.Parameterized):
+                 s = param.String(regex=ip_regex)  # default value '' does not match regular expression
+ 
+Index: param-1.10.0/tests/API0/testtimedependent.py
+===================================================================
+--- param-1.10.0.orig/tests/API0/testtimedependent.py
++++ param-1.10.0/tests/API0/testtimedependent.py
 @@ -7,7 +7,7 @@ import param
  import numbergen
  import copy
@@ -408,7 +604,7 @@
  import fractions
  
  try:
-@@ -297,6 +297,4 @@ class TestTimeDependentDynamic(unittest.
+@@ -300,6 +300,4 @@ class TestTimeDependentDynamic(unittest.
  
  
  
@@ -416,8 +612,61 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testcompositeparams.py
-+++ b/tests/API1/testcompositeparams.py
+Index: param-1.10.0/tests/API1/testclassselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testclassselector.py
++++ param-1.10.0/tests/API1/testclassselector.py
+@@ -27,7 +27,7 @@ class TestClassSelectorParameters(API1Te
+ 
+     def test_single_class_instance_error(self):
+         exception = "Parameter 'e' value must be an instance of int, not 'a'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(e='a')
+ 
+     def test_single_class_type_constructor(self):
+@@ -36,7 +36,7 @@ class TestClassSelectorParameters(API1Te
+ 
+     def test_single_class_type_error(self):
+         exception = "Parameter 'str' must be a subclass of Number, not 'type'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(f=str)
+ 
+     def test_multiple_class_instance_constructor1(self):
+@@ -48,8 +48,8 @@ class TestClassSelectorParameters(API1Te
+         self.assertEqual(p.g, 'A')
+ 
+     def test_multiple_class_instance_error(self):
+-        exception = "Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        exception = r"Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(g=3.0)
+ 
+     def test_multiple_class_type_constructor1(self):
+@@ -67,8 +67,8 @@ class TestClassSelectorParameters(API1Te
+         self.assertIn('str', classes)
+ 
+     def test_multiple_class_type_error(self):
+-        exception = "Parameter 'float' must be a subclass of \(int, str\), not 'type'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        exception = r"Parameter 'float' must be a subclass of \(int, str\), not 'type'"
++        with self.assertRaisesRegex(ValueError, exception):
+             self.P(h=float)
+ 
+ 
+@@ -93,5 +93,5 @@ class TestDictParameters(API1TestCase):
+ 
+         test = Test()
+         exception = "Parameter 'items' value must be an instance of dict, not '3'"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             test.items = 3
+Index: param-1.10.0/tests/API1/testcompositeparams.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testcompositeparams.py
++++ param-1.10.0/tests/API1/testcompositeparams.py
 @@ -95,6 +95,4 @@ class TestCompositeParameters(API1TestCa
          self.assertEqual(iy(), 5)
  
@@ -426,14 +675,16 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testdefaults.py
-+++ b/tests/API1/testdefaults.py
+Index: param-1.10.0/tests/API1/testdefaults.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testdefaults.py
++++ param-1.10.0/tests/API1/testdefaults.py
 @@ -27,11 +27,11 @@ except ImportError:
      skip.append('Series')
  
  
 -class TestDefaultsMetaclass(type):
-+class _TestDefaultsMetaclass(type):
++class MyTestDefaultsMetaclass(type):
      def __new__(mcs, name, bases, dict_):
  
          def test_skip(*args,**kw):
@@ -447,7 +698,7 @@
  
  
 -@add_metaclass(TestDefaultsMetaclass)
-+@add_metaclass(_TestDefaultsMetaclass)
++@add_metaclass(MyTestDefaultsMetaclass)
  class TestDefaults(API1TestCase):
      pass
 -
@@ -455,8 +706,10 @@
 -if __name__ == "__main__":
 -    import nose
 -    nose.runmodule()
---- a/tests/API1/testdynamicparams.py
-+++ b/tests/API1/testdynamicparams.py
+Index: param-1.10.0/tests/API1/testdynamicparams.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testdynamicparams.py
++++ param-1.10.0/tests/API1/testdynamicparams.py
 @@ -249,9 +249,7 @@ class TestDynamicSharedNumbergen(TestDyn
  
  
@@ -468,8 +721,36 @@
  
  
  # Commented out block in the original doctest version.
---- a/tests/API1/testlistselector.py
-+++ b/tests/API1/testlistselector.py
+Index: param-1.10.0/tests/API1/testipythonmagic.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testipythonmagic.py
++++ param-1.10.0/tests/API1/testipythonmagic.py
+@@ -43,8 +43,8 @@ class TestParamPager(API1TestCase):
+     def test_parameterized_class(self):
+         page_string = self.pager(self.TestClass)
+         # Remove params automatic numbered names
+-        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
+-        ref_string = re.sub('TestClass(\d+)', 'TestClass', test1_repr)
++        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
++        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test1_repr)
+ 
+         try:
+             self.assertEqual(page_string, ref_string)
+@@ -56,8 +56,8 @@ class TestParamPager(API1TestCase):
+     def test_parameterized_instance(self):
+         page_string = self.pager(self.TestClass())
+         # Remove params automatic numbered names
+-        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
+-        ref_string = re.sub('TestClass(\d+)', 'TestClass', test2_repr)
++        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
++        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test2_repr)
+ 
+         try:
+             self.assertEqual(page_string, ref_string)
+Index: param-1.10.0/tests/API1/testlistselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testlistselector.py
++++ param-1.10.0/tests/API1/testlistselector.py
 @@ -155,6 +155,4 @@ class TestListSelectorParameters(API1Tes
          with self.assertRaises(TypeError):
              Q.param.params('r').compute_default()
@@ -478,8 +759,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testnumbergen.py
-+++ b/tests/API1/testnumbergen.py
+Index: param-1.10.0/tests/API1/testnumbergen.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testnumbergen.py
++++ param-1.10.0/tests/API1/testnumbergen.py
 @@ -32,6 +32,4 @@ class TestUniformRandomOffset(API1TestCa
              value = gen()
              self.assertTrue(lbound <= value < ubound)
@@ -488,8 +771,39 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testnumpy.py
-+++ b/tests/API1/testnumpy.py
+Index: param-1.10.0/tests/API1/testnumberparameter.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testnumberparameter.py
++++ param-1.10.0/tests/API1/testnumberparameter.py
+@@ -35,20 +35,20 @@ class TestNumberParameters(API1TestCase)
+ 
+     def test_step_invalid_type_number_parameter(self):
+         exception = "Step parameter can only be None or a numeric value"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             param.Number(step='invalid value')
+ 
+     def test_step_invalid_type_integer_parameter(self):
+         exception = "Step parameter can only be None or an integer value"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             param.Integer(step=3.4)
+ 
+     def test_step_invalid_type_datetime_parameter(self):
+         exception = "Step parameter can only be None, a datetime or datetime type"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             param.Date(dt.datetime(2017,2,27), step=3.2)
+ 
+     def test_step_invalid_type_date_parameter(self):
+         exception = "Step parameter can only be None or a date type"
+-        with self.assertRaisesRegexp(ValueError, exception):
++        with self.assertRaisesRegex(ValueError, exception):
+             param.CalendarDate(dt.date(2017,2,27), step=3.2)
+Index: param-1.10.0/tests/API1/testnumpy.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testnumpy.py
++++ param-1.10.0/tests/API1/testnumpy.py
 @@ -42,6 +42,4 @@ class TestNumpy(API1TestCase):
          z = Z(z=numpy.array([1,2]))
          _is_array_and_equal(z.z,[1,2])
@@ -498,8 +812,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testobjectselector.py
-+++ b/tests/API1/testobjectselector.py
+Index: param-1.10.0/tests/API1/testobjectselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testobjectselector.py
++++ param-1.10.0/tests/API1/testobjectselector.py
 @@ -115,6 +115,4 @@ class TestObjectSelectorParameters(API1T
              raise AssertionError("ObjectSelector created without range.")
  
@@ -508,8 +824,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testpandas.py
-+++ b/tests/API1/testpandas.py
+Index: param-1.10.0/tests/API1/testpandas.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testpandas.py
++++ param-1.10.0/tests/API1/testpandas.py
 @@ -31,7 +31,7 @@ class TestDataFrame(API1TestCase):
  
          test = Test()
@@ -604,199 +922,213 @@
 -if __name__ == "__main__":
 -    import nose
 -    nose.runmodule()
---- a/tests/API1/testparameterizedobject.py
-+++ b/tests/API1/testparameterizedobject.py
-@@ -10,21 +10,16 @@ from .utils import MockLoggingHandler
+Index: param-1.10.0/tests/API1/testparameterizedobject.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testparameterizedobject.py
++++ param-1.10.0/tests/API1/testparameterizedobject.py
+@@ -6,25 +6,14 @@ import param
+ import numbergen
+ 
+ from . import API1TestCase
+-from .utils import MockLoggingHandler
++from .utils import MockLoggingHandler, SomeRandomNumbers
  
  # CEBALERT: not anything like a complete test of Parameterized!
  
 -
- import random
+-import random
 -from nose.tools import istest, nottest
 -
- 
+-
  from param.parameterized import ParamOverrides, shared_parameters
  from param.parameterized import default_label_formatter, no_instance_params
  
 -@nottest
- class _SomeRandomNumbers(object):
-     def __call__(self):
-         return random.random()
- 
+-class _SomeRandomNumbers(object):
+-    def __call__(self):
+-        return random.random()
+-
 -@nottest
 -class TestPO(param.Parameterized):
-+class _TestPO(param.Parameterized):
++class MyTestPO(param.Parameterized):
      inst = param.Parameter(default=[1,2,3],instantiate=True)
      notinst = param.Parameter(default=[1,2,3],instantiate=False, per_instance=False)
      const = param.Parameter(default=1,constant=True)
-@@ -35,29 +30,28 @@ class TestPO(param.Parameterized):
+@@ -35,37 +24,31 @@ class TestPO(param.Parameterized):
  
      dyn = param.Dynamic(default=1)
  
 -@nottest
 -class TestPOValidation(param.Parameterized):
-+class _TestPOValidation(param.Parameterized):
++class MyTestPOValidation(param.Parameterized):
      value = param.Number(default=2, bounds=(0, 4))
  
 -@nottest
-+
  @no_instance_params
 -class TestPONoInstance(TestPO):
-+class _TestPONoInstance(_TestPO):
++class MyTestPONoInstance(MyTestPO):
      pass
  
 -@nottest
 -class AnotherTestPO(param.Parameterized):
 -    instPO = param.Parameter(default=TestPO(),instantiate=True)
 -    notinstPO = param.Parameter(default=TestPO(),instantiate=False)
++class MyAnotherTestPO(param.Parameterized):
++    instPO = param.Parameter(default=MyTestPO(),instantiate=True)
++    notinstPO = param.Parameter(default=MyTestPO(),instantiate=False)
  
 -@nottest
 -class TestAbstractPO(param.Parameterized):
-+class _AnotherTestPO(param.Parameterized):
-+    instPO = param.Parameter(default=_TestPO(), instantiate=True)
-+    notinstPO = param.Parameter(default=_TestPO(), instantiate=False)
-+
-+
-+class _TestAbstractPO(param.Parameterized):
++class MyTestAbstractPO(param.Parameterized):
+     __abstract = True
+ 
+-class _AnotherAbstractPO(param.Parameterized):
++class MyAnotherAbstractPO(param.Parameterized):
      __abstract = True
  
 -@nottest
 -class TestParamInstantiation(AnotherTestPO):
 -    instPO = param.Parameter(default=AnotherTestPO(),instantiate=False)
++class MyTestParamInstantiation(MyAnotherTestPO):
++    instPO = param.Parameter(default=MyAnotherTestPO(),instantiate=False)
  
 -@istest
-+class _TestParamInstantiation(_AnotherTestPO):
-+    instPO = param.Parameter(default=_AnotherTestPO(), instantiate=False)
-+
-+
- class TestParameterized(API1TestCase):
+-class TestParameterized(API1TestCase):
++class MyTestParameterized(API1TestCase):
  
      @classmethod
-@@ -70,29 +64,29 @@ class TestParameterized(API1TestCase):
+     def setUpClass(cls):
+-        super(TestParameterized, cls).setUpClass()
++        super(MyTestParameterized, cls).setUpClass()
+         log = param.parameterized.get_logger()
+         cls.log_handler = MockLoggingHandler(level='DEBUG')
+         log.addHandler(cls.log_handler)
+@@ -73,29 +56,29 @@ class TestParameterized(API1TestCase):
  
      def test_constant_parameter(self):
          """Test that you can't set a constant parameter after construction."""
 -        testpo = TestPO(const=17)
-+        testpo = _TestPO(const=17)
++        testpo = MyTestPO(const=17)
          self.assertEqual(testpo.const,17)
          self.assertRaises(TypeError,setattr,testpo,'const',10)
  
          # check you can set on class
 -        TestPO.const=9
 -        testpo = TestPO()
-+        _TestPO.const=9
-+        testpo = _TestPO()
++        MyTestPO.const=9
++        testpo = MyTestPO()
          self.assertEqual(testpo.const,9)
  
  
      def test_readonly_parameter(self):
          """Test that you can't set a read-only parameter on construction or as an attribute."""
 -        testpo = TestPO()
-+        testpo = _TestPO()
++        testpo = MyTestPO()
          self.assertEqual(testpo.ro,"Hello")
  
          with self.assertRaises(TypeError):
 -            t = TestPO(ro=20)
-+            t = _TestPO(ro=20)
++            t = MyTestPO(ro=20)
  
 -        t=TestPO()
-+        t=_TestPO()
++        t=MyTestPO()
          self.assertRaises(TypeError,setattr,t,'ro',10)
  
          # check you cannot set on class
 -        self.assertRaises(TypeError,setattr,TestPO,'ro',5)
-+        self.assertRaises(TypeError,setattr,_TestPO,'ro',5)
++        self.assertRaises(TypeError,setattr,MyTestPO,'ro',5)
  
          self.assertEqual(testpo.param.params()['ro'].constant,True)
  
-@@ -103,13 +97,13 @@ class TestParameterized(API1TestCase):
+@@ -106,13 +89,13 @@ class TestParameterized(API1TestCase):
      def test_basic_instantiation(self):
          """Check that instantiated parameters are copied into objects."""
  
 -        testpo = TestPO()
-+        testpo = _TestPO()
++        testpo = MyTestPO()
  
 -        self.assertEqual(testpo.inst,TestPO.inst)
 -        self.assertEqual(testpo.notinst,TestPO.notinst)
-+        self.assertEqual(testpo.inst,_TestPO.inst)
-+        self.assertEqual(testpo.notinst,_TestPO.notinst)
++        self.assertEqual(testpo.inst,MyTestPO.inst)
++        self.assertEqual(testpo.notinst,MyTestPO.notinst)
  
 -        TestPO.inst[1]=7
 -        TestPO.notinst[1]=7
-+        _TestPO.inst[1]=7
-+        _TestPO.notinst[1]=7
++        MyTestPO.inst[1]=7
++        MyTestPO.notinst[1]=7
  
          self.assertEqual(testpo.notinst,[1,7,3])
          self.assertEqual(testpo.inst,[1,2,3])
-@@ -117,47 +111,42 @@ class TestParameterized(API1TestCase):
+@@ -120,14 +103,14 @@ class TestParameterized(API1TestCase):
  
      def test_more_instantiation(self):
          """Show that objects in instantiated Parameters can still share data."""
 -        anothertestpo = AnotherTestPO()
-+        anothertestpo = _AnotherTestPO()
++        anothertestpo = MyAnotherTestPO()
  
 -        ### CB: AnotherTestPO.instPO is instantiated, but
 -        ### TestPO.notinst is not instantiated - so notinst is still
 -        ### shared, even by instantiated parameters of AnotherTestPO.
-+        ### CB: _AnotherTestPO.instPO is instantiated, but
-+        ### _TestPO.notinst is not instantiated - so notinst is still
-+        ### shared, even by instantiated parameters of _AnotherTestPO.
++        ### CB: MyAnotherTestPO.instPO is instantiated, but
++        ### MyTestPO.notinst is not instantiated - so notinst is still
++        ### shared, even by instantiated parameters of MyAnotherTestPO.
          ### Seems like this behavior of Parameterized could be
          ### confusing, so maybe mention it in documentation somewhere.
 -        TestPO.notinst[1]=7
-+        _TestPO.notinst[1]=7
++        MyTestPO.notinst[1]=7
          # (if you thought your instPO was completely an independent object, you
          # might be expecting [1,2,3] here)
          self.assertEqual(anothertestpo.instPO.notinst,[1,7,3])
+@@ -135,32 +118,32 @@ class TestParameterized(API1TestCase):
  
--
      def test_instantiation_inheritance(self):
          """Check that instantiate=True is always inherited (SF.net #2483932)."""
 -        t = TestParamInstantiation()
-+        t = _TestParamInstantiation()
++        t = MyTestParamInstantiation()
          assert t.param.params('instPO').instantiate is True
 -        assert isinstance(t.instPO,AnotherTestPO)
--
-+        assert isinstance(t.instPO,_AnotherTestPO)
++        assert isinstance(t.instPO,MyAnotherTestPO)
+ 
  
      def test_abstract_class(self):
          """Check that a class declared abstract actually shows up as abstract."""
 -        self.assertEqual(TestAbstractPO.abstract,True)
+-        self.assertEqual(_AnotherAbstractPO.abstract,True)
 -        self.assertEqual(TestPO.abstract,False)
--
-+        self.assertEqual(_TestAbstractPO.abstract, True)
-+        self.assertEqual(_TestPO.abstract, False)
++        self.assertEqual(MyTestAbstractPO.abstract,True)
++        self.assertEqual(MyAnotherAbstractPO.abstract,True)
++        self.assertEqual(MyTestPO.abstract,False)
+ 
  
      def test_override_class_param_validation(self):
 -        test = TestPOValidation()
-+        test = _TestPOValidation()
++        test = MyTestPOValidation()
          test.param.value.bounds = (0, 3)
          with self.assertRaises(ValueError):
              test.value = 4
 -        TestPOValidation.value = 4
--
-+        _TestPOValidation.value = 4
++        MyTestPOValidation.value = 4
+ 
  
      def test_remove_class_param_validation(self):
 -        test = TestPOValidation()
-+        test = _TestPOValidation()
++        test = MyTestPOValidation()
          test.param.value.bounds = None
          test.value = 20
          with self.assertRaises(ValueError):
 -            TestPOValidation.value = 10
--
-+            _TestPOValidation.value = 10
++            MyTestPOValidation.value = 10
+ 
  
      def test_params(self):
-         """Basic tests of params() method."""
-@@ -169,55 +158,55 @@ class TestParameterized(API1TestCase):
+@@ -173,55 +156,55 @@ class TestParameterized(API1TestCase):
  
          ## check for bug where subclass Parameters were not showing up
          ## if params() already called on a super class.
 -        assert 'inst' in TestPO.param.params()
 -        assert 'notinst' in TestPO.param.params()
-+        assert 'inst' in _TestPO.param.params()
-+        assert 'notinst' in _TestPO.param.params()
++        assert 'inst' in MyTestPO.param.params()
++        assert 'notinst' in MyTestPO.param.params()
  
          ## check caching
          assert param.Parameterized.param.params() is param.Parameterized().param.params(), "Results of params() should be cached." # just for performance reasons
@@ -804,19 +1136,19 @@
  
      def test_param_iterator(self):
 -        self.assertEqual(set(TestPO.param), {'name', 'inst', 'notinst', 'const', 'dyn',
-+        self.assertEqual(set(_TestPO.param), {'name', 'inst', 'notinst', 'const', 'dyn',
++        self.assertEqual(set(MyTestPO.param), {'name', 'inst', 'notinst', 'const', 'dyn',
                                               'ro', 'ro2', 'ro_label', 'ro_format'})
  
  
      def test_param_contains(self):
          for p in ['name', 'inst', 'notinst', 'const', 'dyn', 'ro', 'ro2']:
 -            self.assertIn(p, TestPO.param)
-+            self.assertIn(p, _TestPO.param)
++            self.assertIn(p, MyTestPO.param)
  
  
      def test_class_param_objects(self):
 -        objects = TestPO.param.objects()
-+        objects = _TestPO.param.objects()
++        objects = MyTestPO.param.objects()
  
          self.assertEqual(set(objects),
                           {'name', 'inst', 'notinst', 'const', 'dyn',
@@ -824,170 +1156,170 @@
  
          # Check caching
 -        assert TestPO.param.objects() is objects
-+        assert _TestPO.param.objects() is objects
++        assert MyTestPO.param.objects() is objects
  
  
      def test_instance_param_objects(self):
 -        inst = TestPO()
-+        inst = _TestPO()
++        inst = MyTestPO()
          objects = inst.param.objects()
  
          for p, obj in objects.items():
              if p == 'notinst':
 -                assert obj is TestPO.param[p]
-+                assert obj is _TestPO.param[p]
++                assert obj is MyTestPO.param[p]
              else:
 -                assert obj is not TestPO.param[p]
-+                assert obj is not _TestPO.param[p]
++                assert obj is not MyTestPO.param[p]
  
  
      def test_instance_param_objects_set_to_false(self):
 -        inst = TestPO()
-+        inst = _TestPO()
++        inst = MyTestPO()
          objects = inst.param.objects(instance=False)
  
          for p, obj in objects.items():
 -            assert obj is TestPO.param[p]
-+            assert obj is _TestPO.param[p]
++            assert obj is MyTestPO.param[p]
  
  
      def test_instance_param_objects_set_to_current(self):
 -        inst = TestPO()
-+        inst = _TestPO()
++        inst = MyTestPO()
          inst_param = inst.param.inst
          objects = inst.param.objects(instance='existing')
  
-@@ -225,11 +214,11 @@ class TestParameterized(API1TestCase):
+@@ -229,11 +212,11 @@ class TestParameterized(API1TestCase):
              if p == 'inst':
                  assert obj is inst_param
              else:
 -                assert obj is TestPO.param[p]
-+                assert obj is _TestPO.param[p]
++                assert obj is MyTestPO.param[p]
  
  
      def test_instance_param_objects_warn_on_params(self):
 -        inst = TestPO()
-+        inst = _TestPO()
++        inst = MyTestPO()
          inst.param['inst']
  
          inst.param.params()
-@@ -238,62 +227,62 @@ class TestParameterized(API1TestCase):
+@@ -243,62 +226,62 @@ class TestParameterized(API1TestCase):
  
  
      def test_instance_param_getitem(self):
 -        test = TestPO()
 -        assert test.param['inst'] is not TestPO.param['inst']
-+        test = _TestPO()
-+        assert test.param['inst'] is not _TestPO.param['inst']
++        test = MyTestPO()
++        assert test.param['inst'] is not MyTestPO.param['inst']
  
  
      def test_instance_param_getitem_not_per_instance(self):
 -        test = TestPO()
 -        assert test.param['notinst'] is TestPO.param['notinst']
-+        test = _TestPO()
-+        assert test.param['notinst'] is _TestPO.param['notinst']
++        test = MyTestPO()
++        assert test.param['notinst'] is MyTestPO.param['notinst']
  
  
      def test_instance_param_getitem_no_instance_params(self):
 -        test = TestPONoInstance()
 -        assert test.param['inst'] is TestPO.param['inst']
-+        test = _TestPONoInstance()
-+        assert test.param['inst'] is _TestPO.param['inst']
++        test = MyTestPONoInstance()
++        assert test.param['inst'] is MyTestPO.param['inst']
  
  
      def test_instance_param_getattr(self):
 -        test = TestPO()
 -        assert test.param.inst is not TestPO.param.inst
-+        test = _TestPO()
-+        assert test.param.inst is not _TestPO.param.inst
++        test = MyTestPO()
++        assert test.param.inst is not MyTestPO.param.inst
  
          # Assert no deep copy
 -        assert test.param.inst.default is TestPO.param.inst.default
-+        assert test.param.inst.default is _TestPO.param.inst.default
++        assert test.param.inst.default is MyTestPO.param.inst.default
  
  
      def test_pprint_instance_params(self):
          # Ensure pprint does not make instance parameter copies
 -        test = TestPO()
-+        test = _TestPO()
++        test = MyTestPO()
          test.pprint()
 -        for p, obj in TestPO.param.objects('current').items():
 -            assert obj is TestPO.param[p]
-+        for p, obj in _TestPO.param.objects('current').items():
-+            assert obj is _TestPO.param[p]
++        for p, obj in MyTestPO.param.objects('current').items():
++            assert obj is MyTestPO.param[p]
  
  
      def test_set_param_instance_params(self):
          # Ensure set_param does not make instance parameter copies
 -        test = TestPO()
-+        test = _TestPO()
++        test = MyTestPO()
          test.param.set_param(inst=3)
 -        for p, obj in TestPO.param.objects('current').items():
 -            assert obj is TestPO.param[p]
-+        for p, obj in _TestPO.param.objects('current').items():
-+            assert obj is _TestPO.param[p]
++        for p, obj in MyTestPO.param.objects('current').items():
++            assert obj is MyTestPO.param[p]
  
  
      def test_get_param_values_instance_params(self):
          # Ensure get_param_values does not make instance parameter copies
 -        test = TestPO()
-+        test = _TestPO()
++        test = MyTestPO()
          test.param.get_param_values()
 -        for p, obj in TestPO.param.objects('current').items():
 -            assert obj is TestPO.param[p]
-+        for p, obj in _TestPO.param.objects('current').items():
-+            assert obj is _TestPO.param[p]
++        for p, obj in MyTestPO.param.objects('current').items():
++            assert obj is MyTestPO.param[p]
  
  
      def test_defaults_instance_params(self):
          # Ensure get_param_values does not make instance parameter copies
 -        test = TestPO()
-+        test = _TestPO()
++        test = MyTestPO()
          test.param.defaults()
 -        for p, obj in TestPO.param.objects('current').items():
 -            assert obj is TestPO.param[p]
-+        for p, obj in _TestPO.param.objects('current').items():
-+            assert obj is _TestPO.param[p]
++        for p, obj in MyTestPO.param.objects('current').items():
++            assert obj is MyTestPO.param[p]
  
  
      def test_state_saving(self):
 -        t = TestPO(dyn=_SomeRandomNumbers())
-+        t = _TestPO(dyn=_SomeRandomNumbers())
++        t = MyTestPO(dyn=SomeRandomNumbers())
          g = t.param.get_value_generator('dyn')
          g._Dynamic_time_fn=None
          assert t.dyn!=t.dyn
-@@ -306,36 +295,35 @@ class TestParameterized(API1TestCase):
+@@ -311,36 +294,35 @@ class TestParameterized(API1TestCase):
  
  
      def test_label(self):
 -        t = TestPO()
-+        t = _TestPO()
++        t = MyTestPO()
          assert t.param.params('ro_label').label == 'Ro Label'
  
      def test_label_set(self):
 -        t = TestPO()
-+        t = _TestPO()
++        t = MyTestPO()
          assert t.param.params('ro_label').label == 'Ro Label'
          t.param.params('ro_label').label = 'Ro relabeled'
          assert t.param.params('ro_label').label == 'Ro relabeled'
  
      def test_label_default_format(self):
 -        t = TestPO()
-+        t = _TestPO()
++        t = MyTestPO()
          assert t.param.params('ro_format').label == 'Ro format'
  
  
      def test_label_custom_format(self):
          param.parameterized.label_formatter = default_label_formatter.instance(capitalize=False)
 -        t = TestPO()
-+        t = _TestPO()
++        t = MyTestPO()
          assert t.param.params('ro_format').label == 'ro format'
          param.parameterized.label_formatter = default_label_formatter
  
      def test_label_constant_format(self):
          param.parameterized.label_formatter = lambda x: 'Foo'
 -        t = TestPO()
-+        t = _TestPO()
++        t = MyTestPO()
          assert t.param.params('ro_format').label == 'Foo'
          param.parameterized.label_formatter = default_label_formatter
  
@@ -998,21 +1330,23 @@
  class some_fn(param.ParameterizedFunction):
     num_phase = param.Number(18)
     frequencies = param.List([99])
-@@ -350,7 +338,6 @@ class some_fn(param.ParameterizedFunctio
+@@ -355,8 +337,7 @@ class some_fn(param.ParameterizedFunctio
  
  instance = some_fn.instance()
  
 -@istest
- class TestParameterizedFunction(API1TestCase):
+-class TestParameterizedFunction(API1TestCase):
++class MyTestParameterizedFunction(API1TestCase):
  
      def _basic_tests(self,fn):
-@@ -376,16 +363,14 @@ class TestParameterizedFunction(API1Test
+         self.assertEqual(fn(),(0.3,18,[99]))
+@@ -381,16 +362,14 @@ class TestParameterizedFunction(API1Test
          self.assertEqual(i(),(0.3,18,[10,20,30]))
  
  
 -@nottest
 -class TestPO1(param.Parameterized):
-+class _TestPO1(param.Parameterized):
++class MyTestPO1(param.Parameterized):
      x = param.Number(default=numbergen.UniformRandom(lbound=-1,ubound=1,seed=1),bounds=(-1,1))
      y = param.Number(default=1,bounds=(-1,1))
  
@@ -1021,20 +1355,20 @@
  
      def test_outside_bounds(self):
 -        t1 = TestPO1()
-+        t1 = _TestPO1()
++        t1 = MyTestPO1()
          # Test bounds (non-dynamic number)
          try:
              t1.y = 10
-@@ -395,7 +380,7 @@ class TestNumberParameter(API1TestCase):
+@@ -400,7 +379,7 @@ class TestNumberParameter(API1TestCase):
              assert False, "Should raise ValueError."
  
      def test_outside_bounds_numbergen(self):
 -        t1 = TestPO1()
-+        t1 = _TestPO1()
++        t1 = MyTestPO1()
          # Test bounds (dynamic number)
          t1.x = numbergen.UniformRandom(lbound=2,ubound=3)  # bounds not checked on set
          try:
-@@ -406,7 +391,6 @@ class TestNumberParameter(API1TestCase):
+@@ -411,7 +390,6 @@ class TestNumberParameter(API1TestCase):
              assert False, "Should raise ValueError."
  
  
@@ -1042,15 +1376,21 @@
  class TestStringParameter(API1TestCase):
  
      def setUp(self):
-@@ -430,7 +414,6 @@ class TestStringParameter(API1TestCase):
+@@ -435,11 +413,10 @@ class TestStringParameter(API1TestCase):
          assert t.c is None
  
  
 -@istest
- class TestParameterizedUtilities(API1TestCase):
+-class TestParameterizedUtilities(API1TestCase):
++class MyTestParameterizedUtilities(API1TestCase):
  
      def setUp(self):
-@@ -450,7 +433,6 @@ class TestParameterizedUtilities(API1Tes
+-        super(TestParameterizedUtilities, self).setUp()
++        super(MyTestParameterizedUtilities, self).setUp()
+ 
+ 
+     def test_default_label_formatter(self):
+@@ -455,7 +432,6 @@ class TestParameterizedUtilities(API1Tes
      def test_default_label_formatter_overrides(self):
          assert default_label_formatter.instance(overrides={'a': 'b'})('a') == 'b'
  
@@ -1058,7 +1398,7 @@
  class TestParamOverrides(API1TestCase):
  
      def setUp(self):
-@@ -480,10 +462,10 @@ class TestSharedParameters(API1TestCase)
+@@ -485,10 +461,10 @@ class TestSharedParameters(API1TestCase)
      def setUp(self):
          super(TestSharedParameters, self).setUp()
          with shared_parameters():
@@ -1066,14 +1406,14 @@
 -            self.p2 = TestPO(name='B', print_level=0)
 -            self.ap1 = AnotherTestPO(name='A', print_level=0)
 -            self.ap2 = AnotherTestPO(name='B', print_level=0)
-+            self.p1 = _TestPO(name='A', print_level=0)
-+            self.p2 = _TestPO(name='B', print_level=0)
-+            self.ap1 = _AnotherTestPO(name='A', print_level=0)
-+            self.ap2 = _AnotherTestPO(name='B', print_level=0)
++            self.p1 = MyTestPO(name='A', print_level=0)
++            self.p2 = MyTestPO(name='B', print_level=0)
++            self.ap1 = MyAnotherTestPO(name='A', print_level=0)
++            self.ap2 = MyAnotherTestPO(name='B', print_level=0)
  
      def test_shared_object(self):
          self.assertTrue(self.ap1.instPO is self.ap2.instPO)
-@@ -492,9 +474,3 @@ class TestSharedParameters(API1TestCase)
+@@ -497,9 +473,3 @@ class TestSharedParameters(API1TestCase)
      def test_shared_list(self):
          self.assertTrue(self.p1.inst is self.p2.inst)
          self.assertTrue(self.p1.param.params('inst').default is not self.p2.inst)
@@ -1083,8 +1423,10 @@
 -if __name__ == "__main__":
 -    import nose
 -    nose.runmodule()
---- a/tests/API1/testparameterizedrepr.py
-+++ b/tests/API1/testparameterizedrepr.py
+Index: param-1.10.0/tests/API1/testparameterizedrepr.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testparameterizedrepr.py
++++ param-1.10.0/tests/API1/testparameterizedrepr.py
 @@ -162,6 +162,4 @@ class TestParameterizedRepr(API1TestCase
  
  
@@ -1093,8 +1435,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testselector.py
-+++ b/tests/API1/testselector.py
+Index: param-1.10.0/tests/API1/testselector.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testselector.py
++++ param-1.10.0/tests/API1/testselector.py
 @@ -115,6 +115,4 @@ class TestSelectorParameters(API1TestCas
              raise AssertionError("Selector created without range.")
  
@@ -1103,199 +1447,10 @@
 -    import nose
 -    nose.runmodule()
 +
---- a/tests/API1/testtimedependent.py
-+++ b/tests/API1/testtimedependent.py
-@@ -7,7 +7,7 @@ import numbergen
- import copy
- 
- from . import API1TestCase
--from nose.plugins.skip import SkipTest
-+from unittest import SkipTest
- import fractions
- 
- try:
-@@ -297,6 +297,4 @@ class TestTimeDependentDynamic(API1TestC
- 
- 
- 
--if __name__ == "__main__":
--    import nose
--    nose.runmodule()
-+
---- a/tests/API1/testwatch.py
-+++ b/tests/API1/testwatch.py
-@@ -706,6 +706,4 @@ class TestTrigger(API1TestCase):
-         self.assertEqual(args[1].type, 'triggered')
- 
- 
--if __name__ == "__main__":
--    import nose
--    nose.runmodule()
-+
---- a/setup.py
-+++ b/setup.py
-@@ -19,7 +19,6 @@ extras_require = {
-     # pip doesn't support tests_require
-     # (https://github.com/pypa/pip/issues/1197)
-     'tests': [
--        'nose',
-         'flake8'
-     ]
- }
---- a/tests/API0/testclassselector.py
-+++ b/tests/API0/testclassselector.py
-@@ -26,7 +26,7 @@ class TestClassSelectorParameters(unitte
- 
-     def test_single_class_instance_error(self):
-         exception = "Parameter 'e' value must be an instance of int, not 'a'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(e='a')
- 
-     def test_single_class_type_constructor(self):
-@@ -35,7 +35,7 @@ class TestClassSelectorParameters(unitte
- 
-     def test_single_class_type_error(self):
-         exception = "Parameter 'str' must be a subclass of Number, not 'type'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(f=str)
- 
-     def test_multiple_class_instance_constructor1(self):
-@@ -47,8 +47,8 @@ class TestClassSelectorParameters(unitte
-         self.assertEqual(p.g, 'A')
- 
-     def test_multiple_class_instance_error(self):
--        exception = "Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        exception = r"Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(g=3.0)
- 
-     def test_multiple_class_type_constructor1(self):
-@@ -60,6 +60,6 @@ class TestClassSelectorParameters(unitte
-         self.assertEqual(p.h, str)
- 
-     def test_multiple_class_type_error(self):
--        exception = "Parameter 'float' must be a subclass of \(int, str\), not 'type'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        exception = r"Parameter 'float' must be a subclass of \(int, str\), not 'type'"
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(h=float)
---- a/tests/API0/teststringparam.py
-+++ b/tests/API0/teststringparam.py
-@@ -7,7 +7,7 @@ import unittest
- import param
- 
- 
--ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
-+ip_regex = r'^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
- 
- class TestStringParameters(unittest.TestCase):
- 
-@@ -25,7 +25,7 @@ class TestStringParameters(unittest.Test
-         a = A()
- 
-         exception = "String 's' only takes a string value."
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             a.s = None  # because allow_None should be False
- 
-     def test_default_none(self):
-@@ -44,13 +44,13 @@ class TestStringParameters(unittest.Test
-         a = A()
- 
-         exception = "String 's': '123.123.0.256' does not match regex"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             a.s = '123.123.0.256'
- 
-     def test_regex_incorrect_default(self):
- 
-         exception = "String 'None': '' does not match regex"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             class A(param.Parameterized):
-                 s = param.String(regex=ip_regex)  # default value '' does not match regular expression
- 
---- a/tests/API1/testclassselector.py
-+++ b/tests/API1/testclassselector.py
-@@ -27,7 +27,7 @@ class TestClassSelectorParameters(API1Te
- 
-     def test_single_class_instance_error(self):
-         exception = "Parameter 'e' value must be an instance of int, not 'a'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(e='a')
- 
-     def test_single_class_type_constructor(self):
-@@ -36,7 +36,7 @@ class TestClassSelectorParameters(API1Te
- 
-     def test_single_class_type_error(self):
-         exception = "Parameter 'str' must be a subclass of Number, not 'type'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(f=str)
- 
-     def test_multiple_class_instance_constructor1(self):
-@@ -48,8 +48,8 @@ class TestClassSelectorParameters(API1Te
-         self.assertEqual(p.g, 'A')
- 
-     def test_multiple_class_instance_error(self):
--        exception = "Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        exception = r"Parameter 'g' value must be an instance of \(int, str\), not '3.0'"
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(g=3.0)
- 
-     def test_multiple_class_type_constructor1(self):
-@@ -67,8 +67,8 @@ class TestClassSelectorParameters(API1Te
-         self.assertIn('str', classes)
- 
-     def test_multiple_class_type_error(self):
--        exception = "Parameter 'float' must be a subclass of \(int, str\), not 'type'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        exception = r"Parameter 'float' must be a subclass of \(int, str\), not 'type'"
-+        with self.assertRaisesRegex(ValueError, exception):
-             self.P(h=float)
- 
- 
-@@ -93,5 +93,5 @@ class TestDictParameters(API1TestCase):
- 
-         test = Test()
-         exception = "Parameter 'items' value must be an instance of dict, not '3'"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             test.items = 3
---- a/tests/API1/testnumberparameter.py
-+++ b/tests/API1/testnumberparameter.py
-@@ -35,20 +35,20 @@ class TestNumberParameters(API1TestCase)
- 
-     def test_step_invalid_type_number_parameter(self):
-         exception = "Step parameter can only be None or a numeric value"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             param.Number(step='invalid value')
- 
-     def test_step_invalid_type_integer_parameter(self):
-         exception = "Step parameter can only be None or an integer value"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             param.Integer(step=3.4)
- 
-     def test_step_invalid_type_datetime_parameter(self):
-         exception = "Step parameter can only be None, a datetime or datetime type"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             param.Date(dt.datetime(2017,2,27), step=3.2)
- 
-     def test_step_invalid_type_date_parameter(self):
-         exception = "Step parameter can only be None or a date type"
--        with self.assertRaisesRegexp(ValueError, exception):
-+        with self.assertRaisesRegex(ValueError, exception):
-             param.CalendarDate(dt.date(2017,2,27), step=3.2)
---- a/tests/API1/teststringparam.py
-+++ b/tests/API1/teststringparam.py
+Index: param-1.10.0/tests/API1/teststringparam.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/teststringparam.py
++++ param-1.10.0/tests/API1/teststringparam.py
 @@ -6,7 +6,7 @@ from . import API1TestCase
  import param
  
@@ -1333,62 +1488,54 @@
                  s = param.String(regex=ip_regex)  # default value '' does not match regular expression
 -
 -
---- a/param/parameterized.py
-+++ b/param/parameterized.py
-@@ -929,7 +929,7 @@ class String(Parameter):
-       class IPAddress(String):
-         '''IPv4 address as a string (dotted decimal notation)'''
-        def __init__(self, default="0.0.0.0", allow_None=False, **kwargs):
--           ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
-+           ip_regex = '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
-            super(IPAddress, self).__init__(default=default, regex=ip_regex, **kwargs)
+Index: param-1.10.0/tests/API1/testtimedependent.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testtimedependent.py
++++ param-1.10.0/tests/API1/testtimedependent.py
+@@ -7,7 +7,7 @@ import numbergen
+ import copy
+ 
+ from . import API1TestCase
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ import fractions
+ 
+ try:
+@@ -300,6 +300,4 @@ class TestTimeDependentDynamic(API1TestC
  
  
---- a/tests/API0/testipythonmagic.py
-+++ b/tests/API0/testipythonmagic.py
-@@ -43,8 +43,8 @@ class TestParamPager(unittest.TestCase):
-     def test_parameterized_class(self):
-         page_string = self.pager(self.TestClass)
-         # Remove params automatic numbered names
--        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
--        ref_string = re.sub('TestClass(\d+)', 'TestClass', test1_repr)
-+        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
-+        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test1_repr)
  
-         try:
-             self.assertEqual(page_string, ref_string)
-@@ -56,8 +56,8 @@ class TestParamPager(unittest.TestCase):
-     def test_parameterized_instance(self):
-         page_string = self.pager(self.TestClass())
-         # Remove params automatic numbered names
--        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
--        ref_string = re.sub('TestClass(\d+)', 'TestClass', test2_repr)
-+        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
-+        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test2_repr)
+-if __name__ == "__main__":
+-    import nose
+-    nose.runmodule()
++
+Index: param-1.10.0/tests/API1/testwatch.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/testwatch.py
++++ param-1.10.0/tests/API1/testwatch.py
+@@ -778,6 +778,4 @@ class TestTrigger(API1TestCase):
+         self.assertEqual(args[1].type, 'triggered')
  
-         try:
-             self.assertEqual(page_string, ref_string)
---- a/tests/API1/testipythonmagic.py
-+++ b/tests/API1/testipythonmagic.py
-@@ -43,8 +43,8 @@ class TestParamPager(API1TestCase):
-     def test_parameterized_class(self):
-         page_string = self.pager(self.TestClass)
-         # Remove params automatic numbered names
--        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
--        ref_string = re.sub('TestClass(\d+)', 'TestClass', test1_repr)
-+        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
-+        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test1_repr)
  
-         try:
-             self.assertEqual(page_string, ref_string)
-@@ -56,8 +56,8 @@ class TestParamPager(API1TestCase):
-     def test_parameterized_instance(self):
-         page_string = self.pager(self.TestClass())
-         # Remove params automatic numbered names
--        page_string = re.sub('TestClass(\d+)', 'TestClass', page_string)
--        ref_string = re.sub('TestClass(\d+)', 'TestClass', test2_repr)
-+        page_string = re.sub(r'TestClass(\d+)', 'TestClass', page_string)
-+        ref_string = re.sub(r'TestClass(\d+)', 'TestClass', test2_repr)
+-if __name__ == "__main__":
+-    import nose
+-    nose.runmodule()
++
+Index: param-1.10.0/tests/API1/utils.py
+===================================================================
+--- param-1.10.0.orig/tests/API1/utils.py
++++ param-1.10.0/tests/API1/utils.py
+@@ -1,3 +1,4 @@
++import random
+ import logging
  
-         try:
-             self.assertEqual(page_string, ref_string)
+ class MockLoggingHandler(logging.Handler):
+@@ -75,3 +76,8 @@ class MockLoggingHandler(logging.Handler
+             raise AssertionError(msg.format(method=self.param_methods[level],
+                                             last_line=repr(last_line[0]),
+                                             substring=repr(substring)))
++
++
++class SomeRandomNumbers(object):
++    def __call__(self):
++        return random.random()
