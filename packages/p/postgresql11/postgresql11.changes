@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 13:54:38 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org
+
+-------------------------------------------------------------------
 Thu Aug 13 14:33:16 UTC 2020 - Reinhard Max <max@suse.com>
 
 - update to 11.9:

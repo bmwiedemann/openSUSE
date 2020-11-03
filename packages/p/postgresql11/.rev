@@ -112,4 +112,13 @@
   avoid confusion with the debuginfo packages (bsc#1148643).</comment>
     <requestid>826607</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>eca7325bde40294b4e613714beba0cbf</srcmd5>
+    <version>11.9</version>
+    <time>1604415577</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
+    <requestid>845765</requestid>
+  </revision>
 </revisionlist>
