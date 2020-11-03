@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:08:05 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.15
+  Doxygen cleanup
+    * Clean up warnings on Doxygen txt files
+  documentation update
+    * remove deprecated pages
+    * reorganize Table Of Contents
+    * insure no missing page references
+  VUmeter
+    * add VU style input signal level monitor to main dialog
+      - shares space on status bar
+    * modify vumeter class to allow widget resize and partial
+      display of 130 db Vu scale.
+    * restore state of main dialog vumeter on startup
+    * update documentation
+  W1AW-macros
+    * Add <LOCAL>
+    * use local time for all subsequent scheduling macros
+    * add macro tag <BUFFERED>
+      - transmit characters are saved to and retrieved from
+        a hidden text buffer.
+      - prevents user from moving Tx cursor into middle of
+        macro which causes macro to pause
+      - Tx panel text is used if <BUFFERED> not present in the
+        macro text
+    * fix Farnsworth WPM macro tag
+  County Lists
+    * added Alberta, Saskatchewan
+    xmlrpc rig timeout
+    kml
+  DXCC lookup
+    * Change all references to "United States" to USA
+    status locale
+    Level indicator
+  FeldHell
+    * Fix font resize bug
+      - caused intermittent seg fault
+      - caused loss of raster
+  hamlib NET
+    * fixes for connecting to rigctld from fldigi
+    * added "Default" button to hamlib configure panel    
+  NanoIO
+    * MORTTY V4 compatibility changes
+  cluster dupcheck
+    * add dupcheck to dxcluster CALL select
+  ADIF Conformity
+    * The ADIF-specification defines number-values as dot-separated.
+    * Localization seperates by comma on non-english systems. This
+      changes the behavior to dot separation in the FREQ-value.
+    XmlRpc Exit
+  Navtex
+    * Fix and simplify the correlator
+      - Make sure the correlator only ever jumps +delta or -delta to
+        the early or late accumulator, and never the long way around.
+      - The adjustment limiting code had a bug that never seemed to break
+        anything; simplify that code by removing the special case.
+  * fixed memory leaks, simplifiedexit code, improved C++17 compatibility
+
+-------------------------------------------------------------------
 Mon Jul 20 22:32:45 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.14
