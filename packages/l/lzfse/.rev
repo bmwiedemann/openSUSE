@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>578266</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>67050a0bf98787598406bb6cfeb1ff75</srcmd5>
+    <version>1.0</version>
+    <time>1604412939</time>
+    <user>dimstar_suse</user>
+    <comment>- Use proper macro for cmake building</comment>
+    <requestid>845072</requestid>
+  </revision>
 </revisionlist>
