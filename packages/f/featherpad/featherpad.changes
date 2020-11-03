@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:10:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * A right-click item is added to tab/side-pane for opening
+    containing folder.
+  *  Natural sorting of items in the side-pane and session dialog.
+  *  The warning bar disappears when clicked or, automatically,
+     after 10 seconds.
+  *  "To Start Case" is added to the case changing actions.
+  *  The 50-ms delay of format updating is removed because
+     Qt's update requests seem appropriate now.
+  *  Focus the editor's view with the Escape key.
+  *  Current line highlight is made customizable.
+  *  The recent files feature can be disabled by setting its
+     number to zero.
+  *  Added a "standalone" option to the command-line.It's
+     especially useful when FeatherPad is chosen as the "git" editor.
+  *  Fixes and improvements here and there.
+
+-------------------------------------------------------------------
 Mon Aug 24 08:04:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:
