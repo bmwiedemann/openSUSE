@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:53:08 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.16.0:
+  * Now userspace PRNG objects (such as AutoSeeded_RNG and HMAC_DRBG)
+    use an internal lock, which allows safe concurrent use. This
+    however is purely a precaution in case of accidental sharing of
+    such RNG objects; for performance reasons it is always preferable
+    to use a RNG per thread if a userspace RNG is needed.
+  * DL_Group and EC_Group objects now track if they were created
+    from a known trusted group (such as P-256 or an IPsec DH
+    parameter). If so, then verification tests can be relaxed, as
+    compared to parameters which may have been maliciously
+    constructed in order to pass primality checks.
+  * RandomNumberGenerator::add_entropy_T assumed its input was a POD
+    type but did not verify this.
+  * Support OCSP responders that live on a non-standard port.
+  * Add support for Solaris sandbox.
+  * Support suffixes on release numbers for alpha/beta releases.
+  * Fix a bug in EAX which allowed requesting a 0 length tag, which
+    had the effect of using a full length tag. Instead omit the
+    length field, or request the full tag length explicitly.
+  * Fix a memory leak in GCM where if passed an unsuitable block
+    cipher (eg not 128 bit) it would throw an exception and leak
+    the cipher object.
+
+-------------------------------------------------------------------
 Sun Aug 16 01:57:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.15:

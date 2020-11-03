@@ -575,4 +575,12 @@
   due to a bug in that version (GH #2326 #2324)</comment>
     <requestid>826938</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f78e09c121b5bf7b2602d50d5ac556e2</srcmd5>
+    <version>2.16.0</version>
+    <time>1604413002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845615</requestid>
+  </revision>
 </revisionlist>
