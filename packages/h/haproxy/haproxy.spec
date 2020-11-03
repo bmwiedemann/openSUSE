@@ -203,6 +203,7 @@ install -D -m 0644 contrib/syntax-highlight/haproxy.vim     %{buildroot}%{vim_da
 install -D -m 0644 doc/%{pkg_name}.1        %{buildroot}%{_mandir}/man1/%{pkg_name}.1
 %if %{with apparmor}
 install -D -m 0644 %{S:2}                   %{buildroot}/etc/apparmor.d/usr.sbin.haproxy
+install -D -m 0644 %{S:3}                   %{buildroot}/etc/apparmor.d/local/haproxy
 install -D -m 0644 %{S:3}                   %{buildroot}/etc/apparmor.d/local/usr.sbin.haproxy
 %endif
 
@@ -281,8 +282,9 @@ getent passwd %{pkg_name} >/dev/null || \
 %if 0%{?suse_version} == 1110
 %dir /etc/apparmor.d/local/
 %endif
-%config(noreplace) /etc/apparmor.d/usr.sbin.haproxy
-%config(noreplace) /etc/apparmor.d/local/usr.sbin.haproxy
+%config(noreplace)        /etc/apparmor.d/usr.sbin.haproxy
+%config(noreplace) %ghost /etc/apparmor.d/local/haproxy
+%config(noreplace) %ghost /etc/apparmor.d/local/usr.sbin.haproxy
 %endif
 
 %changelog

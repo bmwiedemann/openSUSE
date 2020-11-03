@@ -2,6 +2,9 @@
 
 profile haproxy /usr/sbin/haproxy {
   #include <abstractions/base>
+  #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/ssl_keys>
   #include <abstractions/nameservice>
   capability net_bind_service,
   capability setgid,
@@ -29,5 +32,6 @@ profile haproxy /usr/sbin/haproxy {
   /{,var/}run/haproxy-master.sock* rwlk,
 
   # Site-specific additions and overrides. See local/README for details.
-  #include <local/usr.sbin.haproxy>
+  #include if exists <local/haproxy>
+  #include if exists <local/usr.sbin.haproxy>
 }

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 24 01:18:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor profile fixes:
+  - include abstractions that give access to the openssl config,
+    ssl certs and ssl keys
+  - include local configs only with "if exists" so they do not have
+    to exist.
+- move local files to %ghost
+
+-------------------------------------------------------------------
 Fri Oct  2 14:38:51 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - use parallel build 

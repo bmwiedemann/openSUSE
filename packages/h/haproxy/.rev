@@ -982,4 +982,12 @@
   * BUILD: threads: better workaround for late loading of libgcc_s</comment>
     <requestid>839173</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>2291e0c1506a0bb4934165a5c815ab02</srcmd5>
+    <version>2.2.4+git0.de456726d</version>
+    <time>1604412945</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>845120</requestid>
+  </revision>
 </revisionlist>
