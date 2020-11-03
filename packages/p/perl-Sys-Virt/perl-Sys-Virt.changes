@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 22:44:24 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to 6.8.0
+  - Add all new APIs and constants in libvirt 6.8.0
+  - jsc#SLE-13688, jsc#SLE-16754
+- Add new file _service for tar_scm source service
+
+-------------------------------------------------------------------
 Wed May  6 21:04:34 UTC 2020 - James Fehlig <jfehlig@suse.com>
 
 - Update to 6.3.0

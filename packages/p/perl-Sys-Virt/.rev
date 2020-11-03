@@ -735,4 +735,20 @@ libvirt package, so the perl bindings should have them too.
   - Add all new APIs and constants in libvirt 6.3.0</comment>
     <requestid>801288</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d05fa1b52fdc527d3ceb994e09b86002</srcmd5>
+    <version>6.8.0</version>
+    <time>1604412989</time>
+    <user>dimstar_suse</user>
+    <comment>Updated perl bindings for libvirt 6.9.0. Supersedes req#845545 to
+fix a jira reference in the changelog. Note that the latest
+upstream release is 6.8.0, which is much better than the 6.3.0
+bindings we currently have in Factory.
+
+- Update to 6.8.0
+  - Add all new APIs and constants in libvirt 6.8.0
+  - jsc#SLE-13688, jsc#SLE-16754
+- Add new file _service for tar_scm source service</comment>
+    <requestid>845551</requestid>
+  </revision>
 </revisionlist>

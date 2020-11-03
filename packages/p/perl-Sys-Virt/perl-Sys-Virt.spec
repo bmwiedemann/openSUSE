@@ -17,14 +17,14 @@
 
 
 Name:           perl-Sys-Virt
-Version:        6.3.0
+Version:        6.8.0
 Release:        0
 %define cpan_name Sys-Virt
 Summary:        Represent and manage a libvirt hypervisor connection
 License:        GPL-2.0-or-later OR ClArtistic
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/Sys-Virt
-Source:         %{cpan_name}-v%{version}.tar.gz
+Source:         %{cpan_name}-%{version}.tar.gz
 Patch0:         suse-set-migration-constraints.patch
 # Build
 BuildRequires:  libvirt-devel >= %{version}
@@ -57,7 +57,7 @@ machine management APIs. This allows machines running within arbitrary
 virtualization containers to be managed with a consistent API.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%setup -q -n %{cpan_name}-%{version}
 %patch0 -p1
 
 %build
