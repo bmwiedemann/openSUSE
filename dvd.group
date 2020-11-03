@@ -2236,6 +2236,7 @@
     <package name="metatheme-greybird-geeko-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="metatheme-sonar-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mgopen-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="mhvtl-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="minicom" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="minicom-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="mjpegtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3936,6 +3937,7 @@
   <packagelist relationship="recommends">
     <package name="elinks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <!-- inkscape uninstallable: nothing provides libpoppler.so.101 needed by inkscape-1.0.1-2.1.i586-->
+    <package name="libLLVM11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="nodejs10-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
