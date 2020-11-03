@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:03:09 UTC 2020 - Christian Goll <cgoll@suse.com>
+
+- updated to 0.11.0:
+  * Various fixes
+
+-------------------------------------------------------------------
 Wed Apr 22 10:03:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

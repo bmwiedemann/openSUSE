@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-abseil
-Version:        0.9.0
+Version:        0.11.0
 Release:        0
 Summary:        Abseil Python Common Libraries
 License:        Apache-2.0
