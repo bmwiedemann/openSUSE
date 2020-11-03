@@ -18,13 +18,14 @@
 
 %define pkg_rel -2
 Name:           dracut-sshd
-Version:        0.5.1
+Version:        0.6.1
 Release:        0
 Summary:        Provide SSH access to initramfs early user space
 License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
-Source:         https://github.com/gsauthof/dracut-sshd/archive/%{name}-%{version}%{pkg_rel}.tar.gz
+Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}%{pkg_rel}/%{name}-%{version}%{pkg_rel}.tar.gz
+Patch1:         0001-Give-users-better-hints-after-logging-in.patch
 BuildRequires:  dracut
 Requires:       dracut
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,8 +38,7 @@ root filesystem and remote access to the Dracut emergency shell
 (i.e. early userspace).
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}%{pkg_rel}
-%autopatch -p1
+%autosetup -p1 -n %{name}-%{version}%{pkg_rel}
 
 %build
 # empty
@@ -50,6 +50,7 @@ cp -r 46sshd %{buildroot}%{_prefix}/lib/dracut/modules.d/
 %files
 %dir %{_prefix}/lib/dracut/modules.d/46sshd
 %{_prefix}/lib/dracut/modules.d/46sshd/module-setup.sh
+%{_prefix}/lib/dracut/modules.d/46sshd/profile
 %{_prefix}/lib/dracut/modules.d/46sshd/sshd.service
 %config(noreplace) 	
 %{_prefix}/lib/dracut/modules.d/46sshd/sshd_config

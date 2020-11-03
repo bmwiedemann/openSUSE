@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  2 14:00:13 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
+
+- Update to upstream version 0.6.1-2 (jsc#SLE-12273)
+- Add patch to provide hints after logging in via SSH for 
+  Adds 0001-Give-users-better-hints-after-logging-in.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 13:34:05 UTC 2020 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - spec: Add full Github URL for tar archive. 

@@ -1,0 +1,50 @@
+From a4309f3b986ffb9a8ca50c3a9a2eaad43a6c97bb Mon Sep 17 00:00:00 2001
+From: Daniel Molkentin <dmolkentin@suse.com>
+Date: Tue, 27 Oct 2020 18:50:08 +0100
+Subject: [PATCH] Give users better hints after logging in
+
+Uses .profile and only executes for SSH sessions
+---
+ 46sshd/module-setup.sh |  3 +++
+ 46sshd/profile         | 15 +++++++++++++++
+ 2 files changed, 18 insertions(+)
+ create mode 100644 46sshd/profile
+
+diff --git a/46sshd/module-setup.sh b/46sshd/module-setup.sh
+index c9caca6..56a19b9 100755
+--- a/46sshd/module-setup.sh
++++ b/46sshd/module-setup.sh
+@@ -52,6 +52,9 @@ install() {
+     /usr/bin/install -m 600 "$authorized_keys" \
+             "$initdir/root/.ssh/authorized_keys"
+ 
++    /usr/bin/install -m 600 "${moddir}/profile" \
++            "$initdir/root/.profile"
++
+     inst_binary /usr/sbin/sshd
+     inst_multiple -o /etc/sysconfig/sshd /etc/sysconfig/ssh \
+             /etc/sysconfig/dracut-sshd
+diff --git a/46sshd/profile b/46sshd/profile
+new file mode 100644
+index 0000000..3950349
+--- /dev/null
++++ b/46sshd/profile
+@@ -0,0 +1,15 @@
++if [ -n "$SSH_TTY" ]; then
++  export PS1="initramfs-ssh:\${PWD}# "
++  cat << EOF
++
++Welcome to the early boot SSH environment. Please type
++
++  systemd-tty-ask-password-agent
++
++(or press "arrow up") to unlock your disks and continue
++the boot process. This shell will terminate automatically
++a few seconds after the unlocking process has succeeded.
++
++EOF
++fi
++
+-- 
+2.28.0
+
