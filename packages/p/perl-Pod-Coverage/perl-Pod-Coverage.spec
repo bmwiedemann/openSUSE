@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Coverage
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,19 +21,20 @@ Version:        0.23
 Release:        0
 %define cpan_name Pod-Coverage
 Summary:        Checks if the documentation of a module is comprehensive
-License:        GPL-1.0+ or Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Pod-Coverage/
-Source:         http://www.cpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::Symdump) >= 2.01
-#BuildRequires: perl(GrandParent)
-#BuildRequires: perl(Parent)
-#BuildRequires: perl(Pod::Coverage)
+BuildRequires:  perl(Pod::Find) >= 0.21
+BuildRequires:  perl(Pod::Parser) >= 1.13
 Requires:       perl(Devel::Symdump) >= 2.01
+Requires:       perl(Pod::Find) >= 0.21
+Requires:       perl(Pod::Parser) >= 1.13
 %{perl_requires}
 
 %description
@@ -68,11 +69,11 @@ package is only 50% (0.5) covered
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 13:44:33 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build with perl 5.32 by regenerating spec with cpanspec
+
+-------------------------------------------------------------------
 Thu May 16 12:59:16 CEST 2013 - pth@suse.de
 
 - Update to 0.23:
