@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 19:02:53 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix default config
+  - turn off chroot by default as it is not supported on systemd
+    enabled systems
+  - set query-local-address to ::,0.0.0.0
+    to make ipv6 only nameservers work out of the box
+
+-------------------------------------------------------------------
 Mon Oct 19 13:02:01 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - update to 4.4.0 with these major enhancements:
