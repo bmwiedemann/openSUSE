@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  3 09:39:35 CET 2020 - tiwai@suse.de
+
+- Update to version 1.6-rc3 (bsc#1178306):
+  * Support for Intel Tigerlake
+  * Support for Maxim Smart Amplifiers
+  * Beamformer Microphone support
+  * DC blocker audio processing component
+  * Major feature and performance improvements for ASRC, KWD and FIR/IIR
+  * Numerous bug fixes and performance improvements for Intel and NXP
+    platforms
+
+-------------------------------------------------------------------
 Mon Sep  7 17:24:46 CEST 2020 - tiwai@suse.de
 
 - Update to version 1.5.1 (bsc#1176200):

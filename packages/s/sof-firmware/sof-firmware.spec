@@ -1,7 +1,7 @@
 #
 # spec file for package sof-firmware
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,14 @@
 #
 
 
+%define repo_version 1.6
+%define package_version	1.6-rc3
+
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.5.1
+Version:        1.6~rc3
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
@@ -29,7 +32,7 @@ BuildRequires:  fdupes
 # Note that this doesn't contain sources; the unsigned firmware can be built
 # from SOF sources with external toolchains, but we need signed firmware from
 # Intel, and hence the repo above collects the resultant binaries.
-Source:         sof-bin-%{version}.tar.xz
+Source:         sof-bin-%{package_version}.tar.xz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -65,7 +68,7 @@ Various firmware data files for SOF drivers.
 %prep
 %setup -q -n sof-bin
 # drop version number from sof-tplg directory
-mv lib/firmware/intel/sof-tplg-v%{version} lib/firmware/intel/sof-tplg
+mv lib/firmware/intel/sof-tplg-v%{repo_version} lib/firmware/intel/sof-tplg
 
 %build
 
@@ -74,8 +77,8 @@ mkdir -p %{buildroot}/lib/firmware/intel/
 cp -a lib/firmware/intel/* %{buildroot}/lib/firmware/intel/
 # create symlinks
 (cd %{buildroot}/lib/firmware/intel/sof
-for i in v%{version}/intel-signed/*.ri v%{version}/*.ri; do
-    f=${i%%-v%{version}.ri}
+for i in v%{repo_version}/intel-signed/*.ri v%{repo_version}/*.ri; do
+    f=${i%%-v%{repo_version}.ri}
     f=${f##*/}
     ln -s $i $f.ri
 done
@@ -86,8 +89,8 @@ test -f sof-cfl.ri || ln -s sof-cnl.ri sof-cfl.ri
 
 mkdir -p debug
 cd debug
-for i in ../v%{version}/*.ldc; do
-    f=${i%%-v%{version}.ldc}
+for i in ../v%{repo_version}/*.ldc; do
+    f=${i%%-v%{repo_version}.ldc}
     f=${f##*/}
     ln -s $i $f.ldc
 done
