@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20190823.4
+Version:        0.20201025
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -26,11 +26,6 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-# FIXME: drop this patch on the next release after 0.20190823.5
-# cherry picked from: https://github.com/MaskRay/ccls/pull/519
-Patch0:         0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
-# fix build with llvm 10
-Patch1:         0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 7.0

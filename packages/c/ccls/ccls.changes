@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  2 17:55:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.20201025
+
+  Remove patches:
+  * 0001-cmake-support-CLANG_LINK_CLANG_DYLIB.patch
+  * 0002-Adapt-llvmorg-10-init-12036-g3b9715cb2193-handleDecl.patch
+
+This release supports Clang 7~11.
+
+# LSP conformance
+
+* Support 3.15.0 `serverInfo`
+
+# Misc
+
+* Infer -target and --driver-mode from argv[0] #511 
+* Support CMake variable `CLANG_LINK_CLANG_DYLIB` (some distributions use this to provide `libclang-cpp.so` instead of `libclang*.a` or `libclang*.so`. This option is needed to link against `libclang-cpp.so`)
+* `textDocument/documentSymbol`: support unopened files #548
+
+-------------------------------------------------------------------
 Mon Aug 24 09:25:51 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Require only 500MB per core.
