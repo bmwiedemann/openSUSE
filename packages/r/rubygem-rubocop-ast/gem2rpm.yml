@@ -15,8 +15,8 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-# :preamble: |-
-#   BuildRequires: foobar
+:preamble: |-
+  BuildRequires: fdupes
 #   Requires: foobar
 # ## used by gem2rpm
 # :patches:
@@ -35,9 +35,10 @@
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
 # ## used by gem2rpm
-# :post_install: |-
-#   # delete custom files here or do other fancy stuff
-#   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
+:post_install: |-
+  for dir in %{buildroot}%{_libdir}/ruby/gems/* ; do
+      %fdupes $dir
+  done
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)

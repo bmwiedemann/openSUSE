@@ -16,28 +16,29 @@
 #
 
 
+%define mod_name rubocop-ast
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-rubocop-ast
-Version:        0.5.0
+Version:        1.1.0
 Release:        0
-%define mod_name rubocop-ast
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.3.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/rubocop-hq/rubocop-ast
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
 Summary:        RuboCop tools to deal with Ruby code AST
 License:        MIT
 Group:          Development/Languages/Ruby
+URL:            https://github.com/rubocop-hq/rubocop-ast
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{ruby >= 2.3.0}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
+# MANUAL
+BuildRequires:  fdupes
+# /MANUAL
 
 %description
 RuboCop's Node and NodePattern classes.
@@ -50,6 +51,11 @@ RuboCop's Node and NodePattern classes.
 %gem_install \
   --doc-files="LICENSE.txt README.md" \
   -f
+# MANUAL
+for dir in %{buildroot}%{_libdir}/ruby/gems/* ; do
+%fdupes $dir
+done
+# /MANUAL
 
 %gem_packages
 
