@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 29 18:30:03 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mpc 1.2.1:
+  * Fix an incompatibility problem with GMP 6.0 and before
+  * Fix an intermediate overflow in asin
+
+-------------------------------------------------------------------
+Mon Oct 26 08:44:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- express build dependencies explicitly to match the versions
+  required by configue, so that the OBS scheduler is aware of them
+- move texinfo requirements to -devel package where they are
+  are actually used
+- package license in every subpackage and mark as license
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Aug 24 08:07:46 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to version 1.2.0.

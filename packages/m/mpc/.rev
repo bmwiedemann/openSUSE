@@ -240,4 +240,12 @@
   on standard precision floating-point numbers.</comment>
     <requestid>828882</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f2c98d1048e18e1f79018f5593ec1a82</srcmd5>
+    <version>1.2.1</version>
+    <time>1604412908</time>
+    <user>dimstar_suse</user>
+    <comment>mpc 1.2.1 (forwarded request 844916 from AndreasStieger)</comment>
+    <requestid>844997</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           mpc
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        MPC multiple-precision complex shared library
 License:        LGPL-3.0-or-later
@@ -27,11 +27,9 @@ Source0:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/mpc/mpc-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-BuildRequires:  gmp-devel
-BuildRequires:  mpfr-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gmp) >= 5.0.0
+BuildRequires:  pkgconfig(mpfr) >= 4.1.0
 
 %description
 MPC is a C library for the arithmetic of complex numbers with
@@ -51,9 +49,10 @@ built upon and follows the same principles as MPFR.
 Summary:        MPC multiple-precision complex library development files
 Group:          Development/Libraries/C and C++
 Requires:       libmpc3 = %{version}
-Requires:       mpfr-devel
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %{install_info_prereq}
+Requires:       pkgconfig(gmp) >= 5.0.0
+Requires:       pkgconfig(mpfr) >= 4.1.0
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description devel
 MPC multiple-precision complex library development files.
@@ -64,33 +63,33 @@ MPC multiple-precision complex library development files.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-rm %{buildroot}%{_libdir}/libmpc.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libmpc3 -p /sbin/ldconfig
-
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %postun -n libmpc3 -p /sbin/ldconfig
-
 %preun devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -n libmpc3
 %defattr(-,root,root)
+%license COPYING.LESSER
 %{_libdir}/libmpc.so.3*
 
 %files devel
 %defattr(-,root,root)
-%doc AUTHORS NEWS COPYING.LESSER
-%{_infodir}/mpc.info.gz
+%license COPYING.LESSER
+%doc AUTHORS NEWS
+%{_infodir}/mpc.info%{?ext_info}
 %{_libdir}/libmpc.a
 %{_libdir}/libmpc.so
 %{_includedir}/mpc.h
