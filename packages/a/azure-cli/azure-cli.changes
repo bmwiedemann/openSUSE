@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:15:15 UTC 2020 - olaf@aepfle.de
+
+- Remove trailing .sh suffix from bash-completion to make sure
+  az is actually recognized as a command with completions
+  Drop also the string 'completion' from resulting filename
+
+-------------------------------------------------------------------
 Tue Oct 13 11:20:30 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

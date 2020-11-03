@@ -384,7 +384,7 @@ python3 setup.py build
 %define debug_package %{nil}
 %else
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib}
-install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az.completion.sh
+install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/bash-completion/completions/az
 %fdupes %{buildroot}%{python3_sitelib}
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__init__.*
 rm -rf %{buildroot}%{python3_sitelib}/azure/cli/command_modules/__pycache__
@@ -400,7 +400,7 @@ rm -rf %{buildroot}%{python3_sitelib}/azure/__pycache__
 %doc HISTORY.rst README.rst
 %license LICENSE.txt
 %{_bindir}/az
-%{_datadir}/bash-completion/completions/az.completion.sh
+%{_datadir}/bash-completion/completions/az
 %exclude /usr/bin/az.bat
 %exclude /usr/bin/az.completion.sh
 %{python3_sitelib}/azure/cli
