@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon Nov  2 04:43:14 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 1.2:
+  * Now supports FontAwesome 5 in addition to FontAwesome 4.
+  * New multimedia keys for: bluetooth, tools, favorites.
+  * New Catalan translation 
+  * Updated Simplified Chinese translation 
+  * New flag --start-disabled to start screenkey in disabled state.
+  * Fix crash due to a race condition 
+  * Fix incorrect value for "Compress repeats" in settings.
+- 1.1 changes:
+  * Fix PyGI warning during startup when using AppIndicator.
+  * Fix running with GTK versions older than 3.23.
+- 1.0 changes:
+  * Switch to Python 3 and GTK 3
+  * "ISO_Left_Tab" is now also shown as Tab.
+  * Shift+Shift or Alt+Alt can now be used to toggle screenkey
+    as an alternative to Ctrl+Ctrl.
+  * More multimedia keys are supported (volume, brightness,
+    playback).
+  * Transparency of the window is now independent from the text
+  * Screenkey no longer detaches by default from the terminal.
+  * New "Windows" and "Linux" modifier modes.
+  * French Translation improvements
+  * Improved geometry handling
+- cleanup with spec-cleaner
+- remove screenkey_icon.patch
+
+-------------------------------------------------------------------
+Tue Dec  4 11:21:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Compact description. Use multi-argument find -exec.
+
+-------------------------------------------------------------------
+Thu Nov 29 12:16:22 UTC 2018 - mvetter@suse.com
+
+- Update to 0.9:
+  * Ctrl+Ctrl detection now works correctly in more scenarios.
+  * Ctrl++ (and similar sequences with repeated characters) are now shown as Ctrl+”+” for improved readability.
+  * Shift+Backspace is now recognized and shown correctly.
+  * Several multimedia keys are now supported. If “FontAwesome” is installed, the correct symbol is also displayed instead of a text abbreviation.
+  * Visualization of whitespace characters can now be controlled.
+  * Repeated key sequences are now abbreviated with a repeat count if above the specified threshold (3 by default).
+- For full ChangeLog since 0.2 see:
+  https://www.thregr.org/~wavexx/software/screenkey/NEWS.html
+- Run spec-cleaner
+- Remove screenkey-fix-popup.patch: upstreamed
+- Update screenkey_icon.patch
+- Adjust URL, Source and Group
+- Add proper requirements
+
+------------------------------------------------------------------
+Thu Oct  4 17:38:11 UTC 2012 - gregkh@opensuse.org
+
+- fix python-xlib dependancy
+- added patch to fix popup not working properly (from upstream)
+- cleaned up the spec file a bit
+- fixed license to be GPLv3+
+
+------------------------------------------------------------------
+Mon Oct  1 20:41:05 UTC 2012 - gregkh@opensuse.org
+
+- fixed spec file and got things working for 0.2 release
+
+------------------------------------------------------------------
+* Tue Jun 11 2010 - William Witt <william@witt-family.net>
+- modify icon
+- used gnomesu instead of gksu
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - William Witt <william@witt-family.net>
+- add to OBS
+
+------------------------------------------------------------------
+* Tue Jun 08 2010 - Ivan Makfinsky <ivan.makfinsky@endosys.com>
+- Initial Build
+
