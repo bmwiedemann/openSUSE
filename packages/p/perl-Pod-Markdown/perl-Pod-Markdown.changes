@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  1 03:10:08 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.300
+   see /usr/share/doc/packages/perl-Pod-Markdown/Changes
+
+  3.300     2020-10-31T22:57:42Z
+
+    - Add escape_url option to allow disabling it (defaults to true).
+      Thanks plicease! (gh-19)
+
+-------------------------------------------------------------------
 Thu Oct 10 08:57:05 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 3.200
