@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:20:33 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.2:
+  - Fixed regression of the convergence rate of Minuit.migrad for
+    low precision cost functions by restoring a heuristic that
+    calls Migrad several times if convergence is not reached on
+    first try; made this heuristic configurable with iterate
+    keyword.
+  - Clarify in FMin display how the EDM convergence criterion uses
+    the EDM goal.
+- Changes from version 1.5.1:
+  - Fixed mistake in “parameter at limit” warning, which did not
+    report correctly if parameter was at the upper limit.
+- Changes from version 1.5.0:
+  * New features
+    - New more compact function minimum display with warning about
+      parameters at limit.
+    - Colours adjusted in HTML display to enhance contrast for
+      people with color blindness.
+    - Allow subclasses to use Minuit.from_array_func
+      (gh#scikit-hep/iminuit#467).
+    - Nicer tables on terminal thanks to unicode characters.
+    - Wrapped functions’ parameters are now recognised by iminuit.
+    - Dark theme friendlier HTML style
+      (gh#scikit-hep/iminuit#481).
+  * Bug-Fixes
+    - Fixed reported EDM goal for really small tolerances.
+    - Minuit.np_merrors now works correctly when some parameters
+      are fixed.
+    - Fixed HTML display of Minuit.matrix when some diagonal
+      elements are zero.
+  * Deprecated
+    - Removed nsplit option from Minuit.migrad
+      (gh#scikit-hep/iminuit#462).
+
+-------------------------------------------------------------------
 Wed Aug  5 10:13:54 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.9:

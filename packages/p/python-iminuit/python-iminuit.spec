@@ -20,7 +20,7 @@
 # Python2 support dropped since version 1.4.0
 %define skip_python2 1
 Name:           python-iminuit
-Version:        1.4.9
+Version:        1.5.2
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
