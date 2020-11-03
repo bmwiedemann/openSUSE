@@ -1,7 +1,7 @@
 #
 # spec file for package timezone-java
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,16 @@ BuildRequires:  java
 BuildRequires:  javazic
 BuildRequires:  tzdb
 Summary:        Time Zone Descriptions
-License:        BSD-3-Clause and SUSE-Public-Domain
+License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 # COMMON-BEGIN
 # COMMON-END
-Url:            https://www.iana.org/time-zones
+URL:            https://www.iana.org/time-zones
 Requires(pre):  filesystem, coreutils
-BuildArch:      noarch
 Provides:       tzdata-java = %{version}-%{release}
 Provides:       tzdata-java8 = %{version}-%{release}
 #!BuildIgnore:  tzdata-java tzdata-java8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
 
 %description
 These are configuration files that describe available time zones - this
@@ -50,15 +49,15 @@ echo "tzdata%{version}" >> VERSION
 # Java 6/7 data
 java -jar %{_javadir}/javazic.jar -V %{version} \
      -d javazi \
-     africa antarctica asia australasia europe northamerica pacificnew \
-     southamerica backward etcetera systemv  \
+     africa antarctica asia australasia europe northamerica \
+     southamerica backward etcetera  \
      %{_datadir}/javazic/tzdata_jdk/gmt \
      %{_datadir}/javazic/tzdata_jdk/jdk11_backward
 # Java 8/9 data
 java -jar %{_javadir}/tzdb.jar \
      -srcdir . -dstfile javazi/tzdb.dat \
-     africa antarctica asia australasia europe northamerica pacificnew \
-     southamerica backward etcetera systemv  \
+     africa antarctica asia australasia europe northamerica \
+     southamerica backward etcetera  \
      %{_datadir}/tzdb/tzdata_jdk/gmt \
      %{_datadir}/tzdb/tzdata_jdk/jdk11_backward
 

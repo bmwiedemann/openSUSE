@@ -25,7 +25,7 @@ Summary:        Time Zone Descriptions
 # COMMON-BEGIN
 License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
-Version:        2020a
+Version:        2020d
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -40,11 +40,10 @@ Patch4:         timezone-2018f-bsc1112310.patch
 # COMMON-END
 URL:            https://www.iana.org/time-zones
 Requires(pre):  filesystem, coreutils
-BuildArch:      noarch
 Provides:       tzdata-java = %{version}-%{release}
 Provides:       tzdata-java8 = %{version}-%{release}
 #!BuildIgnore:  tzdata-java tzdata-java8
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
 
 %description
 These are configuration files that describe available time zones - this
@@ -69,15 +68,15 @@ echo "tzdata%{version}" >> VERSION
 # Java 6/7 data
 java -jar %{_javadir}/javazic.jar -V %{version} \
      -d javazi \
-     africa antarctica asia australasia europe northamerica pacificnew \
-     southamerica backward etcetera systemv  \
+     africa antarctica asia australasia europe northamerica \
+     southamerica backward etcetera  \
      %{_datadir}/javazic/tzdata_jdk/gmt \
      %{_datadir}/javazic/tzdata_jdk/jdk11_backward
 # Java 8/9 data
 java -jar %{_javadir}/tzdb.jar \
      -srcdir . -dstfile javazi/tzdb.dat \
-     africa antarctica asia australasia europe northamerica pacificnew \
-     southamerica backward etcetera systemv  \
+     africa antarctica asia australasia europe northamerica \
+     southamerica backward etcetera  \
      %{_datadir}/tzdb/tzdata_jdk/gmt \
      %{_datadir}/tzdb/tzdata_jdk/jdk11_backward
 

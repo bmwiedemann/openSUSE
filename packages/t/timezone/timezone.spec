@@ -22,7 +22,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 URL:            http://www.iana.org/time-zones
 # COMMON-BEGIN
-Version:        2020a
+Version:        2020d
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -33,6 +33,7 @@ Source5:        %{name}.changes
 Patch0:         tzdata-china.diff
 Patch3:         iso3166-uk.diff
 Patch4:         timezone-2018f-bsc1112310.patch
+Patch5:         fat.patch
 # COMMON-END
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -51,6 +52,7 @@ can select an appropriate time zone for your system with YaST.
 %patch0 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 sed -ri 's@/usr/local/etc/zoneinfo@%{_datadir}/zoneinfo@g' *.[1358]
 # COMMON-PREP-END
 
@@ -66,7 +68,7 @@ export AREA LANG LC_ALL ZONE
 make %{?_smp_mflags} TZDIR=%{_datadir}/zoneinfo CFLAGS="%{optflags} -DHAVE_GETTEXT=1 -DTZDEFAULT='\"/etc/localtime\"' -DTM_GMTOFF=tm_gmtoff -DTM_ZONE=tm_zone -Dlint" AWK=awk BUGEMAIL="opensuse-support@opensuse.org"
 make %{?_smp_mflags} TZDIR=zoneinfo AWK=awk zones
 # Generate posixrules
-./zic -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
+./zic -b fat -y ./yearistype -d zoneinfo -p %{AREA}/%{ZONE}
 
 %install
 mkdir -p %{buildroot}%{_prefix}/share/zoneinfo

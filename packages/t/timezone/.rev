@@ -1252,4 +1252,40 @@ bsc#1024677</comment>
     <comment></comment>
     <requestid>837191</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>aec0c6ac6ca52054618fab3f37cae43a</srcmd5>
+    <version>2020d</version>
+    <time>1604412910</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fat.patch to generate &quot;fat&quot; timezone files (was default before 2020b).
+
+- Adjust timezone-java.spec.in to avoid build failures when running
+  pre_checkin.sh
+
+- timezone update 2020d
+  * Palestine ends DST earlier than predicted, on 2020-10-24.
+
+- timezone update 2020c
+  * Fiji starts DST later than usual, on 2020-12-20.
+
+- timezone update 2020b (bsc#1177460)
+  * Revised predictions for Morocco's changes starting in 2023.
+  * Canada's Yukon changes to -07 on 2020-11-01, not 2020-03-08.
+  * Macquarie Island has stayed in sync with Tasmania since 2011.
+  * Casey, Antarctica is at +08 in winter and +11 in summer.
+  * zic no longer supports -y, nor the TYPE field of Rules.
+- Rebased timezone-2018f-bsc1112310.patch
+
+- Fixup tzdata-china.diff: zone.tab and zone1970.tab MUST be tab
+  delimited (boo#1176927).
+
+- Add fat.patch to generate &quot;fat&quot; timezone files (was default before 2020b).
+
+- Adjust timezone-java.spec.in to avoid build failures when running
+  pre_checkin.sh
+
+- timezone update 2020d
+  * Palestine ends DST earlier than predicted, on 2020-10-24.</comment>
+    <requestid>845019</requestid>
+  </revision>
 </revisionlist>

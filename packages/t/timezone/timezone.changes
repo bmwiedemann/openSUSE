@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:43:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Add fat.patch to generate "fat" timezone files (was default before 2020b).
+
+-------------------------------------------------------------------
+Fri Oct 23 09:24:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Adjust timezone-java.spec.in to avoid build failures when running
+  pre_checkin.sh
+
+-------------------------------------------------------------------
+Thu Oct 22 07:08:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2020d
+  * Palestine ends DST earlier than predicted, on 2020-10-24.
+
+-------------------------------------------------------------------
+Mon Oct 19 08:05:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2020c
+  * Fiji starts DST later than usual, on 2020-12-20.
+
+-------------------------------------------------------------------
+Thu Oct  8 07:52:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- timezone update 2020b (bsc#1177460)
+  * Revised predictions for Morocco's changes starting in 2023.
+  * Canada's Yukon changes to -07 on 2020-11-01, not 2020-03-08.
+  * Macquarie Island has stayed in sync with Tasmania since 2011.
+  * Casey, Antarctica is at +08 in winter and +11 in summer.
+  * zic no longer supports -y, nor the TYPE field of Rules.
+- Rebased timezone-2018f-bsc1112310.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 15:02:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fixup tzdata-china.diff: zone.tab and zone1970.tab MUST be tab

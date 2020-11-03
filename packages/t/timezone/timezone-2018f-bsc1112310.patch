@@ -18,13 +18,13 @@ Base:System/timezone (timezone-java.spec) fails with:
 The bug is actually in Java. Use an alternative format to fix build.
 
 
-Index: timezone-2018f/asia
+Index: timezone-2020b/asia
 ===================================================================
---- timezone-2018f.orig/asia	2018-10-18 15:18:13.461299301 +0200
-+++ timezone-2018f/asia	2018-10-18 15:23:20.330642692 +0200
-@@ -1657,7 +1657,7 @@ Zone	Asia/Jerusalem	2:20:54 -	LMT	1880
+--- timezone-2020b.orig/asia
++++ timezone-2020b/asia
+@@ -2021,7 +2021,7 @@ Zone	Asia/Jerusalem	2:20:54 -	LMT	1880
  
- # Rule	NAME	FROM	TO	TYPE	IN	ON	AT	SAVE	LETTER/S
+ # Rule	NAME	FROM	TO	-	IN	ON	AT	SAVE	LETTER/S
  Rule	Japan	1948	only	-	May	Sat>=1	24:00	1:00	D
 -Rule	Japan	1948	1951	-	Sep	Sat>=8	25:00	0	S
 +Rule	Japan	1948	1951	-	Sep	Sun>=9	 1:00	0	S
