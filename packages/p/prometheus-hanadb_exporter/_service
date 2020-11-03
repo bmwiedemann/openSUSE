@@ -1,0 +1,24 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/SUSE/hanadb_exporter.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.ci</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">dashboards</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">packaging</param>
+    <param name="filename">prometheus-hanadb_exporter</param>
+    <param name="version">0.7.3+git.1604318097.c2b074f</param>
+    <param name="revision">0.7.3</param>
+  </service>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="set_version" mode="disabled">
+    <param name="basename">prometheus-hanadb_exporter</param>
+  </service>
+</services>
