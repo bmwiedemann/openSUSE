@@ -21,8 +21,12 @@
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
-#./Build build flags=%{?_smp_mflags} --myflag
+custom_build: |
+  # no parallel build, otherwise we get:
+  #   make -j8
+  #   make: *** No rule to make target 'blib/lib/IO/Pager/tp', needed by 'manifypods'.  Stop.
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module

@@ -17,7 +17,7 @@
 
 
 Name:           perl-IO-Pager
-Version:        1.03
+Version:        2.00
 Release:        0
 %define cpan_name IO-Pager
 Summary:        Select a pager (possibly perl-based) & pipe it text if a TTY
@@ -53,8 +53,11 @@ appropriate subclass for implementation specific details.
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
+# no parallel build, otherwise we get:
+#   make -j8
+#   make: *** No rule to make target 'blib/lib/IO/Pager/tp', needed by 'manifypods'.  Stop.
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+make
 
 %check
 make test

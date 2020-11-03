@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:53:28 UTC 2020 - Tina Müller <tina.mueller@suse.com>
+
+- Don't do parallel build
+
+-------------------------------------------------------------------
+Tue Nov  3 03:12:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-IO-Pager/CHANGES
+
+  2.00	Nov 01 2020
+  	Fix interactive tests 7 and 16 in bogus environments w/o PAGER. RT#13330
+  	Add tp to local script installation. RT#133651
+  	Add suport for visible scrollbar. RT#133652
+  	::Perl Rename prompt() to status(), I18N{prompt} to I18N{minihelp},
+  	       and I18N{status} to I18N{prompt}
+  	::Perl Fix long lines in absence of Text::Wrap
+  	::Perl Consolidate dialog()
+  	::Perl Add ability to open file interactively
+  	::Perl Prevent jumping to invalid bookmark
+  	::Perl Fix tp -j
+
+-------------------------------------------------------------------
 Sun Jun 14 03:09:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.03
