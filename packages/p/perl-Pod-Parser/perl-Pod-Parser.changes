@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Mar  8 10:51:44 UTC 2016 - coolo@suse.com
+
+- updated to 1.63
+   see /usr/share/doc/packages/perl-Pod-Parser/CHANGES
+
+-------------------------------------------------------------------
+Wed May  8 11:45:09 UTC 2013 - lars@linux-schulserver.de
+
+- update to 1.60:
+  + removed Pod::Checker and Pod::Usage from this distribution - they 
+    are now separate distros and are subjects to be refactored
+  + fix CPAN#74271: Pod::Parser should not flag L<text|hyperlink>
+- add version string to binaries to avoid file conflicts with 
+  integrated perl versions
+
+-------------------------------------------------------------------
+Thu Jun  7 18:09:48 UTC 2012 - lars@linux-schulserver.de
+
+- initial package 1.51
+  * created by cpanspec 1.78.03
+
