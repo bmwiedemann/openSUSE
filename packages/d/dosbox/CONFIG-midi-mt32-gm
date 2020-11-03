@@ -1,0 +1,92 @@
+This dosbox version supports the built-in emulation of the Roland MT-32 synthesizer,
+which is used in games that support the MT-32 sound device.
+
+For it to work, you need to configure dosbox.
+
+1 If you already have the config ~/.dosbox/dosbox-0.74-3.conf, if necessary, make a backup and delete it.
+Then. start dosbox from the console, then type exit.
+You will have a clean config, which already contains a description of the midi options required
+to enable and configure the mt32 device.
+
+2 Minimum settings to enable mt32:
+mpu401=intelligent
+mididevice=default
+midiconfig=128:0
+#mt32.romdir=/home/your_username/.dosbox
+
+Please note, unfortunately, you cannot write mt32.romdir=~/.dosbox in the mt32.romdir option,
+so for now you only need to write the absolute path.
+By default, roms are looked for in the directory with the game executable file.
+
+3 Place the ROMs in the ~/.dosbox config directory and rename the two firmware files to the correct names.
+CM32L_CONTROL.ROM 64kB SHA1 a439fbb390da38cada95a7cbb1d6ca199cd66ef8
+CM32L_PCM.ROM      1MB SHA1 289cc298ad532b702461bfc738009d9ebe8025ea
+
+This section of the vogons forum https://www.vogons.org/viewtopic.php?t=31362 has a link to download them.
+Please note that ROMs must be named exactly the same, with the same case,
+all letters are capitalized, otherwise they will not be found!
+
+4 Please note that the GM and MT-32 audio devices use the same mpu401 midi interface and the same port
+(default 128:0), and they are configured in the game the same, but they are not compatible with each other.
+If you use the MT-32, on a game that only supports GM, and vice versa, then the sound will be there,
+but it will not play correctly.
+Therefore, when launching the game, you must know in advance which midi device (GM or MT-32) each game supports!
+This can be found by running the sound setup, usually the setup.exe file.
+Then there are 3 ways to enable mt32 as well as GM.
+
+Therefore, there are 3 ways to enable mt32, considering GM.
+
+4.1 MT-32 is enabled globally and always. The MT-32 will be turned on all the time for all games,
+including those that support only GM, while GM cannot be turned on, even via fluidsynth.
+To do this, uncomment the mt32.romdir configuration parameter without forgetting to specify your username.
+mt32.romdir=/home/your_username/.dosbox
+
+4.2 MT-32 is enabled locally for every game that supports MT-32.
+MT-32 will only be enabled for games that support it, and other games can use GM via fluidsynth.
+To do this, comment out the mt32.romdir configuration parameter if you uncommented it earlier.
+#mt32.romdir=/home/your_username/.dosbox
+
+For each game that supports MT-32, you need to create 2 symlinks for each ROM from ~/.dosbox
+and place them in the directory with the executable file of this game.
+
+4.3 MT-32 or GM is manually turned on every time before starting the game.
+To install / uninstall MT-32, run "sudo zypper in mt32emu-qt" / "sudo zypper rm mt32emu-qt"
+in the console and enter the root password.
+To start MT-32, run "Munt: MT-32 Emulator" from KDE menu or run krunner (Alt+F2) and enter mt32emu-qt and Enter.
+To configure mt32emu-qt, start and stop mt32emu-qt, copy two ROMs files
+from ~/.dosbox to ~/.config/muntemu.org, start mt32emu-qt again, check all checkboxes in the options,
+then select the "ROM Configuration..." and specify the path to the ~/.config/muntemu.org directory
+2 ROMs should appear with marked checkboxes and click OK.
+
+To install / uninstall fluidsynth from GM, run "sudo zypper in fluidsynth" / "sudo zypper rm fluidsynth"
+in the console and enter the root password.
+To start / stop fluidsynth from the GM, run "sudo systemctl start fluidsynth" / "sudo systemctl stop fluidsynth"
+in the console and enter the root password.
+To enable / disable fluidsynth immediately at boot time, run the command "sudo systemctl enable fluidsynth" /
+"sudo systemctl disable fluidsynth" in the console and enter the root password.
+Remember that fluidsynth with GM soundfont loaded (default) consumes 157 MB of RAM!
+To check if midi ports are available, run "aplaymidi -l".
+
+If you run mt32emu-qt and fluidsynth at the same time, they will end up on different ports "aplaymidi -l".
+The device will be used, the port of which is specified in the value of the midiconfig option
+(previously we specified 128:0).
+
+It is recommended to use method 4.2, it allows you to automatically start games with correct midi devices
+without any additional actions on your part, except for setting, specifying synlinks
+and autorun fluidsynth, if the extra 157 MB of RAM is acceptable for you.
+
+If you find it easier to manually start mt32emu-qt or fluidsynth in advance, and not configure anything,
+then use method 4.3.
+
+If you only have games with MT-32 support, and method 4.2 does not suit you,
+and you do not want to manually launch mt32emu-qt each time, use method 4.1.
+
+P.S. One note about alsa parameter period_size and possible extraneous clicks and jerks in the sound!
+fluidsynth asks to set period_size (alsa config parameter) to 64, although it works fine at higher values.
+However, if you do this, you will have problems with methods 4.1 and 4.2,
+expressed in extraneous clicks and jerks in the sound.
+Methods 4.1 and 4.2 require a period_size (alsa config parameter) of at least 128,
+but method 4.3 works fine with period_size 64.
+Even if you set period_size to 128, you will have these problems in native games,
+for example in Dune Legacy, where even 128 is too small.
+If you know how to do this, I recommend setting the period_size parameter to 256 (by default, 1024).
