@@ -4,7 +4,7 @@
     <product>
       <vendor>openSUSE</vendor>
       <name>openSUSE</name>
-      <version>20201030</version>
+      <version>20201102</version>
       <release>0</release>
 
       <productline>openSUSE</productline>
@@ -266,6 +266,9 @@
       <package name="MozillaFirefox-buildsymbols"/>
       <package name="MozillaFirefox-translations-common"/>
       <package name="MozillaFirefox-translations-other"/>
+      <package name="libmozjs-78-0"/>
+      <package name="mozjs78"/>
+      <package name="mozjs78-devel"/>
     </packagelist>
   </group>
 

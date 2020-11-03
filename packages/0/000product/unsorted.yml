@@ -308,6 +308,8 @@ unsorted:
   - abook 
   - abook-lang 
   - abootimg 
+  - abseil-cpp 
+  - abseil-cpp-devel 
   - abseil-cpp-source 
   - abxtest 
   - acars-examples 
@@ -1940,6 +1942,10 @@ unsorted:
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
   - clang10-doc: [i586] 
+  - clang11 
+  - clang11-devel 
+  - clang11-devel-32bit: [x86_64] 
+  - clang11-doc 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -5657,6 +5663,7 @@ unsorted:
   - gnonograms-lang 
   - gnote 
   - gnote-lang 
+  - gns3-gui 
   - gns3-server 
   - gnu-cobol 
   - gnu-compilers-hpc 
@@ -8305,7 +8312,7 @@ unsorted:
   - ladspa-zam-plugins 
   - laf-plugin 
   - laf-plugin-javadoc 
-  - lal-devel 
+  - lal-devel: [x86_64] 
   - lalmetaio-devel 
   - lame: [i586] 
   - lame-doc 
@@ -8830,6 +8837,8 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_3_0 
   - libLLVM10-32bit: [x86_64] 
+  - libLLVM11: [x86_64] 
+  - libLLVM11-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM8 
@@ -8838,6 +8847,8 @@ unsorted:
   - libLLVM9-32bit: [x86_64] 
   - libLTO10: [i586] 
   - libLTO10-32bit: [x86_64] 
+  - libLTO11 
+  - libLTO11-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO8 
@@ -9965,6 +9976,8 @@ unsorted:
   - libclFFT2: [x86_64] 
   - libclang10: [i586] 
   - libclang10-32bit: [x86_64] 
+  - libclang11 
+  - libclang11-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang8 
@@ -10291,7 +10304,7 @@ unsorted:
   - libdtkcore2 
   - libdtkwidget2 
   - libdtkwm2 
-  - libduktape201 
+  - libduktape206 
   - libdv 
   - libdv-devel 
   - libdv-playdv 
@@ -11637,9 +11650,9 @@ unsorted:
   - libkwnn0 
   - libkyotocabinet-devel 
   - libkyotocabinet16-32bit: [x86_64] 
-  - liblal20 
+  - liblal20: [x86_64] 
   - liblalmetaio8 
-  - liblalsupport14 
+  - liblalsupport14: [x86_64] 
   - liblammps0 
   - liblangtag-devel 
   - liblangtag-doc 
@@ -11727,6 +11740,7 @@ unsorted:
   - liblirc_driver0-32bit: [x86_64] 
   - liblittleb0 
   - liblldb10: [x86_64] 
+  - liblldb11: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb8: [x86_64] 
   - liblldb9: [x86_64] 
@@ -12317,6 +12331,7 @@ unsorted:
   - libolecf1 
   - libomniORB4 
   - libomp10-devel 
+  - libomp11-devel 
   - libomp7-devel 
   - libomp8-devel 
   - libomp9-devel 
@@ -12360,7 +12375,7 @@ unsorted:
   - libopencsd_c_api0 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv4_4 
+  - libopencv4_5 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit: [x86_64] 
@@ -12878,7 +12893,7 @@ unsorted:
   - libqgpgme7: [i586] 
   - libqgpgme7-32bit: [x86_64] 
   - libqhexedit4 
-  - libqhull7 
+  - libqhull_r8_0 
   - libqimageblitz5-1 
   - libqimageblitz5-devel 
   - libqjack-devel 
@@ -14499,7 +14514,7 @@ unsorted:
   - libxar1 
   - libxatracker-devel 
   - libxbase64-1 
-  - libxbrz-1_7 
+  - libxbrz-1_8 
   - libxbsql0 
   - libxc-devel 
   - libxc5 
@@ -14867,6 +14882,7 @@ unsorted:
   - llcbench 
   - lld 
   - lld10 
+  - lld11 
   - lld7 
   - lld8 
   - lld9 
@@ -14874,6 +14890,8 @@ unsorted:
   - lldb-devel: [x86_64] 
   - lldb10: [x86_64] 
   - lldb10-devel: [x86_64] # devel package of dvd:libLLVM10 
+  - lldb11: [x86_64] 
+  - lldb11-devel: [x86_64] # devel package of dvd:libLLVM11 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
@@ -14887,6 +14905,9 @@ unsorted:
   - llvm-LTO-devel 
   - llvm-devel 
   - llvm-gold 
+  - llvm-opt-viewer: [i586] 
+  - llvm-polly: [i586] 
+  - llvm-polly-devel: [i586] 
   - llvm-vim-plugins 
   - llvm10 
   - llvm10-LTO-devel 
@@ -14899,6 +14920,17 @@ unsorted:
   - llvm10-polly 
   - llvm10-polly-devel 
   - llvm10-vim-plugins 
+  - llvm11 
+  - llvm11-LTO-devel 
+  - llvm11-LTO-devel-32bit: [x86_64] 
+  - llvm11-devel 
+  - llvm11-devel-32bit: [x86_64] 
+  - llvm11-doc 
+  - llvm11-gold 
+  - llvm11-opt-viewer 
+  - llvm11-polly 
+  - llvm11-polly-devel 
+  - llvm11-vim-plugins 
   - llvm7 
   - llvm7-LTO-devel 
   - llvm7-LTO-devel-32bit: [x86_64] 
@@ -15818,7 +15850,6 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -17528,7 +17559,7 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
-  - octave-lal 
+  - octave-lal: [x86_64] 
   - octave-lalmetaio 
   - octave-mathgl 
   - octave-nlopt_optimize 
@@ -22363,7 +22394,7 @@ unsorted:
   - python3-l20n 
   - python3-labelImg 
   - python3-labels 
-  - python3-lal 
+  - python3-lal: [x86_64] 
   - python3-lalmetaio 
   - python3-lancet-ioam 
   - python3-langdetect 
@@ -22468,6 +22499,7 @@ unsorted:
   - python3-lit 
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
+  - python3-lldb11: [x86_64] 
   - python3-lldb7: [x86_64] 
   - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
@@ -25568,6 +25600,7 @@ unsorted:
   - segment 
   - segment-javadoc 
   - segv_handler 
+  - selinux-autorelabel 
   - selinux-policy: [i586] 
   - selinux-policy-devel 
   - selinux-policy-doc 
@@ -34795,6 +34828,7 @@ unsorted:
   - u3-tool 
   - uacme 
   - ubi_reader 
+  - ubridge 
   - ubuntu-fonts 
   - ubuntu-mate-icon-theme 
   - ubuntu-mate-wallpapers 
