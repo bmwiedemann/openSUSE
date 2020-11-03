@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:49:35 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Upgrade to version 52
+- Full changelog:
+  * github.com/apache/commons-parent/blob/master/RELEASE-NOTES.txt
+
+-------------------------------------------------------------------
 Fri Apr  5 14:40:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Make the package suitable for building with maven. Do not patch

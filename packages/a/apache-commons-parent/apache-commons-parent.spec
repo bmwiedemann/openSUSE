@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-parent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name       parent
 %define short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        47
+Version:        52
 Release:        0
 Summary:        Apache Commons Parent Pom
 License:        Apache-2.0
