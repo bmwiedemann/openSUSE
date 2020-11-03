@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-CBuilder
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           perl-ExtUtils-CBuilder
-Version:        0.280234
+Version:        0.280235
 Release:        0
 %define cpan_name ExtUtils-CBuilder
 Summary:        Compile and link C code for Perl modules
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AM/AMBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
@@ -63,7 +63,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING NOTAS-Alberto README README.mkdn README.patching README.release
+%doc Changes CONTRIBUTING README README.mkdn README.patching README.release
 %license LICENSE
 
 %changelog

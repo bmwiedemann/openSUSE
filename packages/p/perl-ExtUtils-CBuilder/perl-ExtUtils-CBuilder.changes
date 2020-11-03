@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  2 03:07:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.280235
+   see /usr/share/doc/packages/perl-ExtUtils-CBuilder/Changes
+
+  0.280235 - 2020-11-01
+
+    Fix:
+
+    - Fix compilation on darwin with XCode 12 (-Werror=implicit-function-declaration)
+      Thanks to DrHyde for the patch.
+
+-------------------------------------------------------------------
 Wed Jan 22 03:07:25 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.280234
