@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  2 19:07:34 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.14.2
+  * Avoid redundant calls to backdrop_changed_cb (bxo#16773)
+  * Fix memory leak when reconnecting DP monitor (bxo#16314)
+    (obsoletes xfce-backdrop.patch)
+  * Fix transparent background color (bxo#16380)
+  * Do not insert hyphens at intra-word line breaks (bxo#16339)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Apr  9 13:53:48 UTC 2020 - Jonas Kvinge <jonas@jkvinge.net>
 
 - Add xfce-backdrop.patch for bxo#16314 - Possible memory leak

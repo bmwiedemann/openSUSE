@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfdesktop
-Version:        4.14.2
+Version:        4.14.3
 Release:        0
 Summary:        Desktop Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ Source0:        https://archive.xfce.org/src/xfce/xfdesktop/4.14/%{name}-%{versi
 Patch0:         xfdesktop-backgrounds-path.patch
 # PATCH-FEATURE-OPENSUSE xfdesktop-default-backdrop-image.patch gber@opensuse.org -- Sets the default background image to a symlink that is delivered by branding packages
 Patch1:         xfdesktop-default-background-image.patch
-# PATCH-FIX-UPSTREAM xfce-backdrop.patch jonas@jkvinge.net -- Backport fix for bxo#16314 - Possible memory leak in xfdesktop when connecting and disconnecting DP monitor.
-Patch2:         xfce-backdrop.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  update-desktop-files
