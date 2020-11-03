@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Fri Sep 25 14:31:12 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.1.1
+ see installed ChangeLog
+
+
+-------------------------------------------------------------------
+Thu May  7 21:11:30 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.1.0
+ see installed ChangeLog
+
+-------------------------------------------------------------------
+Sun May  5 09:37:41 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.0.1
+ see installed ChangeLog
+
+  1.0.1
+    add within docker method
+
+-------------------------------------------------------------------
+Tue Feb 21 05:34:06 UTC 2017 - coolo@suse.com
+
+- updated to version 1.0.0
+ see installed ChangeLog
+
+  0.10.0
+    freebsd? also some cleanup
+  
+  0.9.7 use same version number in VERSION and os.gemspec
+
+-------------------------------------------------------------------
+Sat Jan 14 17:05:36 UTC 2017 - tampakrap@opensuse.org
+
+- Initial package
+
