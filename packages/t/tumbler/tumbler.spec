@@ -64,8 +64,6 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       %libname = %{version}
-Recommends:     %{name}-folder-thumbnailer = %{version}
-Recommends:     %{name}-webp-thumbnailer = %{version}
 
 %description
 Tumbler is a D-Bus service for applications to request thumbnails for various
@@ -78,7 +76,8 @@ implemented in accordance to the thumbnail management D-Bus specification.
 Summary:        Thumbnailer for folders
 Group:          Productivity/Graphics/Other
 Requires:       ImageMagick
-Requires:       thunar >= 1.8.2
+Suggests:       thunar >= 1.8.2
+Supplements:    (%{name} and thunar)
 
 %description -n %{name}-folder-thumbnailer
 A thumbnailer to show custom folder thumbnails in Thunar
@@ -87,6 +86,7 @@ A thumbnailer to show custom folder thumbnails in Thunar
 Summary:        Thumbnailer for WebP images
 Group:          Productivity/Graphics/Other
 Requires:       ImageMagick
+Supplements:    (%{name} and ImageMagick)
 
 %description -n %{name}-webp-thumbnailer
 A thumbnailer for WebP images

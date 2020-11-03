@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  2 22:06:53 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Remove hard dependency to Thunar 1.8.2. We use "Suggests" instead
+  to make sure the correct version is picked while keeping a soft
+  dependency.
+
+-------------------------------------------------------------------
+Sun Nov  1 17:03:35 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Weak dependencies: Use Supplements tag as recommended 
+  tumbler-folder-thumbnailer/tumbler-webp-thumbnailer dependencies 
+  for main package
+
+-------------------------------------------------------------------
 Thu Aug  6 13:12:56 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.2.9
