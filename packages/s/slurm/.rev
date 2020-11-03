@@ -620,4 +620,12 @@
 - Disable build on s390 (requires 64bit).</comment>
     <requestid>819285</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3b75d19cb168eb616ae65ef7f3ea9737</srcmd5>
+    <version>20.02.5</version>
+    <time>1604413330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845437</requestid>
+  </revision>
 </revisionlist>

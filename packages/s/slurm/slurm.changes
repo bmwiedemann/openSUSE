@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Thu Oct 29 12:35:18 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Updated to 20.02.5, changes:
+ * Fix leak of TRESRunMins when job time is changed with --time-min
+ * pam_slurm - explicitly initialize slurm config to support configless mode.
+ * scontrol - Fix exit code when creating/updating reservations with wrong
+   Flags.
+ * When a GRES has a no_consume flag, report 0 for allocated.
+ * Fix cgroup cleanup by jobacct_gather/cgroup.
+ * When creating reservations/jobs don't allow counts on a feature unless
+   using an XOR.
+ * Improve number of boards discovery
+ * Fix updating a reservation NodeCnt on a zero-count reservation.
+ * slurmrestd - provide an explicit error messages when PSK auth fails.
+ * cons_tres - fix job requesting single gres per-node getting two or more
+   nodes with less CPUs than requested per-task.
+ * cons_tres - fix calculation of cores when using gres and cpus-per-task.
+ * cons_tres - fix job not getting access to socket without GPU or with less
+   than --gpus-per-socket when not enough cpus available on required socket
+   and not using --gres-flags=enforce binding.
+ * Fix HDF5 type version build error.
+ * Fix creation of CoreCnt only reservations when the first node isn't
+   available.
+ * Fix wrong DBD Agent queue size in sdiag when using accounting_storage/none.
+ * Improve job constraints XOR option logic.
+ * Fix preemption of hetjobs when needed nodes not in leader component.
+ * Fix wrong bit_or() messing potential preemptor jobs node bitmap, causing
+   bad node deallocations and even allocation of nodes from other partitions.
+ * Fix double-deallocation of preempted non-leader hetjob components.
+ * slurmdbd - prevent truncation of the step nodelists over 4095.
+ * Fix nodes remaining in drain state state after rebooting with ASAP option.
+
+ - changes from 20.02.4:
+ * srun - suppress job step creation warning message when waiting on
+   PrologSlurmctld.
+ * slurmrestd - fix incorrect return values in data_list_for_each() functions.
+ * mpi/pmix - fix issue where HetJobs could fail to launch.
+ * slurmrestd - set content-type header in responses.
+ * Fix cons_res GRES overallocation for --gres-flags=disable-binding.
+ * Fix cons_res incorrectly filtering cores with respect to GRES locality for
+   --gres-flags=disable-binding requests.
+ * Fix regression where a dependency on multiple jobs in a single array using
+   underscores would only add the first job.
+ * slurmrestd - fix corrupted output due to incorrect use of memcpy().
+ * slurmrestd - address a number of minor Coverity warnings.
+ * Handle retry failure when slurmstepd is communicating with srun correctly.
+ * Fix jobacct_gather possibly duplicate stats when _is_a_lwp error shows up.
+ * Fix tasks binding to GRES which are closest to the allocated CPUs.
+ * Fix AMD GPU ROCM 3.5 support.
+ * Fix handling of job arrays in sacct when querying specific steps.
+ * slurmrestd - avoid fallback to local socket authentication if JWT
+   authentication is ill-formed.
+ * slurmrestd - restrict ability of requests to use different authentication
+   plugins.
+ * slurmrestd - unlink named unix sockets before closing.
+ * slurmrestd - fix invalid formatting in openapi.json.
+ * Fix batch jobs stuck in CF state on FrontEnd mode.
+ * Add a separate explicit error message when rejecting changes to active node
+   features.
+ * cons_common/job_test - fix slurmctld SIGABRT due to double-free.
+ * Fix updating reservations to set the duration correctly if updating the
+   start time.
+ * Fix update reservation to promiscuous mode.
+ * Fix override of job tasks count to max when ntasks-per-node present.
+ * Fix min CPUs per node not being at least CPUs per task requested.
+ * Fix CPUs allocated to match CPUs requested when requesting GRES and
+   threads per core equal to one.
+ * Fix NodeName config parsing with Boards and without CPUs.
+ * Ensure SLURM_JOB_USER and SLURM_JOB_UID are set in SrunProlog/Epilog.
+ * Fix error messages for certain invalid salloc/sbatch/srun options.
+ * pmi2 - clean up sockets at step termination.
+ * Fix 'scontrol hold' to work with 'JobName'.
+ * sbatch - handle --uid/--gid in #SBATCH directives properly.
+ * Fix race condition in job termination on slurmd.
+ * Print specific error messages if trying to run use certain
+   priority/multifactor factors that cannot work without SlurmDBD.
+ * Avoid partial GRES allocation when --gpus-per-job is not satisfied.
+ * Cray - Avoid referencing a variable outside of it's correct scope when
+   dealing with creating steps within a het job.
+ * slurmrestd - correctly handle larger addresses from accept().
+ * Avoid freeing wrong pointer with SlurmctldParameters=max_dbd_msg_action
+   with another option after that.
+ * Restore MCS label when suspended job is resumed.
+ * Fix insufficient lock levels.
+ * slurmrestd - use errno from job submission.
+ * Fix "user" filter for sacctmgr show transactions.
+ * Fix preemption logic.
+ * Fix no_consume GRES for exclusive (whole node) requests.
+ * Fix regression in 20.02 that caused an infinite loop in slurmctld when
+   requesting --distribution=plane for the job.
+ * Fix parsing of the --distribution option.
+ * Add CONF READ_LOCK to _handle_fed_send_job_sync.
+ * prep/script - always call slurmctld PrEp callback in _run_script().
+ * Fix node estimation for jobs that use GPUs or --cpus-per-task.
+ * Fix jobcomp, job_submit and cli_filter Lua implementation plugins causing
+   slurmctld and/or job submission CLI tools segfaults due to bad return
+   handling when the respective Lua script failed to load.
+ * Fix propagation of gpu options through hetjob components.
+ * Add SLURM_CLUSTERS environment variable to scancel.
+ * Fix packing/unpacking of "unlinked" jobs.
+ * Connect slurmstepd's stderr to srun for steps launched with --pty.
+ * Handle MPS correctly when doing exclusive allocations.
+ * slurmrestd - fix compiling against libhttpparser in a non-default path.
+ * slurmrestd - avoid compilation issues with libhttpparser < 2.6.
+ * Fix compile issues when compiling slurmrestd without --enable-debug.
+ * Reset idle time on a reservation that is getting purged.
+ * Fix reoccurring reservations that have Purge_comp= to keep correct
+   duration if they are purged.
+ * scontrol - changed the "PROMISCUOUS" flag to "MAGNETIC"
+ * Early return from epilog_set_env in case of no_consume.
+ * Fix cons_common/job_test start time discovery logic to prevent skewed
+   results between "will run test" executions.
+ * Ensure TRESRunMins limits are maintained during "scontrol reconfigure".
+ * Improve error message when host lookup fails.
+
+- Refresh patch: pam_slurm-Initialize-arrays-and-pass-sizes.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 09:05:40 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Add support for openPMIx also for Leap/SLE 15.0/1 (bsc#1173805).
