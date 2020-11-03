@@ -1,8 +1,6 @@
-Index: perl-5.26.1/ext/POSIX/POSIX.xs
-===================================================================
---- perl-5.26.1.orig/ext/POSIX/POSIX.xs
-+++ perl-5.26.1/ext/POSIX/POSIX.xs
-@@ -3158,6 +3158,10 @@ sigaction(sig, optaction, oldaction = 0)
+--- ./ext/POSIX/POSIX.xs.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./ext/POSIX/POSIX.xs	2020-10-27 10:53:50.744531872 +0000
+@@ -3110,6 +3110,10 @@ sigaction(sig, optaction, oldaction = 0)
  		/* Set up any desired flags. */
  		svp = hv_fetchs(action, "FLAGS", FALSE);
  		act.sa_flags = svp ? SvIV(*svp) : 0;
@@ -11,5 +9,5 @@ Index: perl-5.26.1/ext/POSIX/POSIX.xs
 +		act.sa_flags |= SA_SIGINFO;
 +#endif
  
- 		/* Don't worry about cleaning up *sigsvp if this fails,
- 		 * because that means we tried to disposition a
+ 		/* Safe signals use "csighandler", which vectors through the
+ 		   PL_sighandlerp pointer when it's safe to do so.

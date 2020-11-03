@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 27 11:38:55 CET 2020 - mls@suse.de
+
+- update to perl-5.32.0
+  * new experimental infix "isa" operator
+  * support of unicode 13.0
+  * chained comparisons capability
+- updated patches:
+  * perl-HiRes.t-timeout.diff
+  * posix-sigaction.patch
+  * perl-fix2020.patch
+  * perl-reproducible2.patch
+  * perl_skip_flaky_tests_powerpc.patch
+
+-------------------------------------------------------------------
 Fri Sep 11 15:35:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.30.3 (bsc#1171863, bsc#1171864, bsc#1171866):

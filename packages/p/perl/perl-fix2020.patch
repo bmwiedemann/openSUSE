@@ -72,14 +72,3 @@ https://rt.perl.org/Ticket/Display.html?id=132897 perl doc
      : undef;
  }
  
---- ./pod/perlport.pod.orig	2019-11-19 13:48:45.327065973 +0000
-+++ ./pod/perlport.pod	2019-11-19 13:48:49.983054613 +0000
-@@ -670,7 +670,7 @@ When calculating specific times, such as
- it may be appropriate to calculate an offset for the epoch.
- 
-     use Time::Local qw(timegm);
--    my $offset = timegm(0, 0, 0, 1, 0, 70);
-+    my $offset = timegm(0, 0, 0, 1, 0, 1970);
- 
- The value for C<$offset> in Unix will be C<0>, but in Mac OS Classic
- will be some large number.  C<$offset> can then be added to a Unix time

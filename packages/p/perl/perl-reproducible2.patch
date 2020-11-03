@@ -1,26 +1,7 @@
-commit 3b3217087ecdc7a51bfeba5233e1a4612da9ea5b
-Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
-Date:   Thu Dec 27 11:24:43 2018 +0100
-
-    Avoid recursion depth variations across builds
-    
-    See https://reproducible-builds.org/ for why this is good.
-    
-    Variations are likely coming from ASLR.
-    
-    On an openSUSE Linux system, this changed
-    $Storable::recursion_limit
-    from varying between 14265 and 14267 to a constant 14256
-    
-    There could be a chance for remaining variations.
-    
-    --- 
-    Better fixes welcome.
-
---- ./dist/Storable/stacksize.orig	2019-11-19 13:55:21.210100584 +0000
-+++ ./dist/Storable/stacksize	2019-11-19 13:56:37.537914451 +0000
+--- ./dist/Storable/stacksize.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./dist/Storable/stacksize	2020-10-27 10:57:33.147900085 +0000
 @@ -164,8 +164,8 @@ my $max_depth_hash = $n;
- # be fairly aggressive in trimming this, smoke testing showed several
+ # be fairly aggressive in trimming this, smoke testing showed
  # several apparently random failures here, eg. working in one
  # configuration, but not in a very similar configuration.
 -$max_depth = int(0.6 * $max_depth);

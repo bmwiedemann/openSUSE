@@ -16,10 +16,10 @@
 #
 
 
-%define pversion 5.30.3
-%global versionlist 5.30.1
+%define pversion 5.32.0
+%global versionlist %nil
 Name:           perl
-Version:        5.30.3
+Version:        5.32.0
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-2.0-or-later
@@ -58,58 +58,57 @@ BuildRequires:  zlib-devel
 Requires:       perl-base = %{version}
 Suggests:       perl-doc = %{version}
 Provides:       perl-500
-Provides:       perl-Filter-Simple = 0.95
+Provides:       perl-Filter-Simple = 0.96
 Provides:       perl(:MODULE_COMPAT_%{pversion})
-Provides:       perl(:MODULE_COMPAT_5.30.1)
-Obsoletes:      perl-Filter-Simple <= 0.95
-Provides:       perl-I18N-LangTags = 0.43
-Obsoletes:      perl-I18N-LangTags <= 0.43
+Obsoletes:      perl-Filter-Simple <= 0.96
+Provides:       perl-I18N-LangTags = 0.44
+Obsoletes:      perl-I18N-LangTags <= 0.44
 Provides:       perl-MIME-Base64 = 3.15
 Obsoletes:      perl-MIME-Base64 <= 3.15
-Provides:       perl-Storable = 3.15
-Obsoletes:      perl-Storable <= 3.15
-Provides:       perl-Test-Simple = 1.302162
-Obsoletes:      perl-Test-Simple <= 1.302162
+Provides:       perl-Storable = 3.21
+Obsoletes:      perl-Storable <= 3.21
+Provides:       perl-Test-Simple = 1.302175
+Obsoletes:      perl-Test-Simple <= 1.302175
 Provides:       perl-Text-Balanced = 2.03
 Obsoletes:      perl-Text-Balanced <= 2.03
-Provides:       perl-Time-HiRes = 1.9760
-Obsoletes:      perl-Time-HiRes <= 1.9760
+Provides:       perl-Time-HiRes = 1.9764
+Obsoletes:      perl-Time-HiRes <= 1.9764
 Provides:       perl-libnet = 3.11
 Obsoletes:      perl-libnet <= 3.11
-Provides:       perl-Compress-Raw-Zlib = 2.084
-Obsoletes:      perl-Compress-Raw-Zlib <= 2.084
-Provides:       perl-Compress-Zlib = 2.084
-Obsoletes:      perl-Compress-Zlib <= 2.084
-Provides:       perl-IO-Compress-Base = 2.084
-Obsoletes:      perl-IO-Compress-Base <= 2.084
-Provides:       perl-IO-Compress-Zlib = 2.084
-Obsoletes:      perl-IO-Compress-Zlib <= 2.084
+Provides:       perl-Compress-Raw-Zlib = 2.093
+Obsoletes:      perl-Compress-Raw-Zlib <= 2.093
+Provides:       perl-Compress-Zlib = 2.093
+Obsoletes:      perl-Compress-Zlib <= 2.093
+Provides:       perl-IO-Compress-Base = 2.093
+Obsoletes:      perl-IO-Compress-Base <= 2.093
+Provides:       perl-IO-Compress-Zlib = 2.093
+Obsoletes:      perl-IO-Compress-Zlib <= 2.093
 Provides:       perl-IO-Zlib = 1.10
 Obsoletes:      perl-IO-Zlib <= 1.10
-Provides:       perl-Archive-Tar = 2.32
-Obsoletes:      perl-Archive-Tar <= 2.32
+Provides:       perl-Archive-Tar = 2.36
+Obsoletes:      perl-Archive-Tar <= 2.36
 Provides:       perl-Locale-Maketext-Simple = 0.21
 Obsoletes:      perl-Locale-Maketext-Simple <= 0.21
 Provides:       perl-Pod-Escapes = 1.07
 Obsoletes:      perl-Pod-Escapes <= 1.07
-Provides:       perl-Pod-Simple = 3.35
-Obsoletes:      perl-Pod-Simple <= 3.35
+Provides:       perl-Pod-Simple = 3.40
+Obsoletes:      perl-Pod-Simple <= 3.40
 Provides:       perl-ExtUtils-ParseXS = 3.40
 Obsoletes:      perl-ExtUtils-ParseXS <= 3.40
 Provides:       perl-CPAN-Meta = 2.150010
 Obsoletes:      perl-CPAN-Meta <= 2.150010
 Provides:       perl-CPAN-Meta-YAML = 0.018
 Obsoletes:      perl-CPAN-Meta-YAML <= 0.018
-Provides:       perl-ExtUtils-CBuilder = 0.280231
-Obsoletes:      perl-ExtUtils-CBuilder <= 0.280231
+Provides:       perl-ExtUtils-CBuilder = 0.280234
+Obsoletes:      perl-ExtUtils-CBuilder <= 0.280234
 Provides:       perl-IO-Socket-IP = 0.39
 Obsoletes:      perl-IO-Socket-IP <= 0.39
 Provides:       perl-Parse-CPAN-Meta = 2.150010
 Obsoletes:      perl-Parse-CPAN-Meta <= 2.150010
 Provides:       perl-PathTools = 3.75
 Obsoletes:      perl-PathTools <= 3.75
-Provides:       perl-autodie = 2.29
-Obsoletes:      perl-autodie <= 2.29
+Provides:       perl-autodie = 2.32
+Obsoletes:      perl-autodie <= 2.32
 Provides:       perl-Test-Harness = 3.42
 Obsoletes:      perl-Test-Harness <= 3.42
 Provides:       perl-version = 0.9924
@@ -180,7 +179,7 @@ cp -p %{SOURCE3} .
 %patch9
 %patch11
 %patch12 -p1
-%patch14 -p1
+%patch14
 %patch15
 %patch17
 %patch18
@@ -296,9 +295,7 @@ cat << EOF > perl-base-filelist
 /usr/lib/perl5/%{pversion}/overloading.pm
 /usr/lib/perl5/%{pversion}/parent.pm
 /usr/lib/perl5/%{pversion}/strict.pm
-/usr/lib/perl5/%{pversion}/unicore/Heavy.pl
 /usr/lib/perl5/%{pversion}/utf8.pm
-/usr/lib/perl5/%{pversion}/utf8_heavy.pl
 /usr/lib/perl5/%{pversion}/vars.pm
 /usr/lib/perl5/%{pversion}/version.pm
 /usr/lib/perl5/%{pversion}/*-linux-thread-multi*/Data/

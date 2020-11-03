@@ -7,17 +7,18 @@ as bypass https://bugzilla.suse.com/show_bug.cgi?id=1063176
 
 Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
 
---- ./cpan/Memoize/t/expmod_t.t.orig	2018-03-20 20:06:35.000000000 +0000
-+++ ./cpan/Memoize/t/expmod_t.t	2018-09-26 11:05:08.908018123 +0000
-@@ -1,5 +1,6 @@
- #!/usr/bin/perl
+--- ./cpan/Memoize/t/expmod_t.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./cpan/Memoize/t/expmod_t.t	2020-10-27 15:29:28.166018437 +0000
+@@ -2,6 +2,7 @@
+ 
+ # test caching timeout
  
 +use Test::More skip_all => "ppc workers are too busy";
  use lib '..';
  use Memoize;
- BEGIN {
---- ./dist/Time-HiRes/t/alarm.t.orig	2018-09-26 11:04:59.936040917 +0000
-+++ ./dist/Time-HiRes/t/alarm.t	2018-09-26 11:05:08.908018123 +0000
+ 
+--- ./dist/Time-HiRes/t/alarm.t.orig	2020-10-27 15:29:07.838063807 +0000
++++ ./dist/Time-HiRes/t/alarm.t	2020-10-27 15:29:28.166018437 +0000
 @@ -1,6 +1,6 @@
  use strict;
  
@@ -26,8 +27,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  BEGIN { push @INC, '.' }
  use t::Watchdog;
  
---- ./dist/Time-HiRes/t/clock.t.orig	2018-09-26 11:04:59.936040917 +0000
-+++ ./dist/Time-HiRes/t/clock.t	2018-09-26 11:05:08.908018123 +0000
+--- ./dist/Time-HiRes/t/clock.t.orig	2020-10-27 15:29:07.838063807 +0000
++++ ./dist/Time-HiRes/t/clock.t	2020-10-27 15:29:28.166018437 +0000
 @@ -1,6 +1,6 @@
  use strict;
  
@@ -36,8 +37,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  BEGIN { push @INC, '.' }
  use t::Watchdog;
  
---- ./dist/Time-HiRes/t/nanosleep.t.orig	2018-09-26 11:05:08.908018123 +0000
-+++ ./dist/Time-HiRes/t/nanosleep.t	2018-09-26 11:06:17.203844610 +0000
+--- ./dist/Time-HiRes/t/nanosleep.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./dist/Time-HiRes/t/nanosleep.t	2020-10-27 15:29:28.166018437 +0000
 @@ -8,7 +8,7 @@ BEGIN {
      }
  }
@@ -47,8 +48,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  BEGIN { push @INC, '.' }
  use t::Watchdog;
  
---- ./dist/Time-HiRes/t/usleep.t.orig	2018-09-26 11:04:59.936040917 +0000
-+++ ./dist/Time-HiRes/t/usleep.t	2018-09-26 11:05:08.908018123 +0000
+--- ./dist/Time-HiRes/t/usleep.t.orig	2020-10-27 15:29:07.838063807 +0000
++++ ./dist/Time-HiRes/t/usleep.t	2020-10-27 15:29:28.166018437 +0000
 @@ -8,7 +8,7 @@ BEGIN {
      }
  }
@@ -58,8 +59,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  BEGIN { push @INC, '.' }
  use t::Watchdog;
  
---- ./t/op/alarm.t.orig	2018-05-21 10:44:04.000000000 +0000
-+++ ./t/op/alarm.t	2018-09-26 11:05:08.908018123 +0000
+--- ./t/op/alarm.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./t/op/alarm.t	2020-10-27 15:29:28.170018428 +0000
 @@ -11,6 +11,7 @@ use Config;
  if ( !$Config{d_alarm} ) {
      skip_all("alarm() not implemented on this platform");
@@ -68,8 +69,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  
  plan tests => 5;
  my $Perl = which_perl();
---- ./t/op/sigsystem.t.orig	2018-03-20 20:06:37.000000000 +0000
-+++ ./t/op/sigsystem.t	2018-09-26 11:05:08.908018123 +0000
+--- ./t/op/sigsystem.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./t/op/sigsystem.t	2020-10-27 15:29:28.170018428 +0000
 @@ -11,6 +11,7 @@ use strict;
  use constant TRUE => ($^X, '-e', 'exit 0');
  use Data::Dumper;
@@ -78,8 +79,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  plan tests => 4;
  
  SKIP: {
---- ./t/op/sselect.t.orig	2018-05-21 12:29:23.000000000 +0000
-+++ ./t/op/sselect.t	2018-09-26 11:05:08.908018123 +0000
+--- ./t/op/sselect.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./t/op/sselect.t	2020-10-27 15:29:28.170018428 +0000
 @@ -13,6 +13,8 @@ BEGIN {
  skip_all("Win32 miniperl has no socket select")
    if $^O eq "MSWin32" && is_miniperl();
@@ -89,8 +90,8 @@ Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
  plan (16);
  
  my $blank = "";
---- ./t/op/stat.t.orig	2018-05-21 12:29:23.000000000 +0000
-+++ ./t/op/stat.t	2018-09-26 11:05:08.908018123 +0000
+--- ./t/op/stat.t.orig	2020-06-14 23:01:25.000000000 +0000
++++ ./t/op/stat.t	2020-10-27 15:29:28.170018428 +0000
 @@ -9,6 +9,7 @@ BEGIN {
  use strict;
  use warnings;
