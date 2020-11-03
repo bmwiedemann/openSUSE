@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 13:39:44 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.4.10:
+  * Use LMOD_ALLOW_ROOT_USE to control whether root uses Lmod or not
+  * Documentation updates
+
+-------------------------------------------------------------------
 Tue Sep 22 10:50:21 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 8.4.5:
