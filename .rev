@@ -2217,4 +2217,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   boo#1115541 (xcb) and kde#418793.</comment>
     <requestid>841905</requestid>
   </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>59b7b0c4eea88d33e9a44fbefe6a254c</srcmd5>
+    <version>5.15.1</version>
+    <time>1604412937</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable -reduce-relocations for now (boo#1175278, QTBUG-86173)</comment>
+    <requestid>845064</requestid>
+  </revision>
 </revisionlist>
