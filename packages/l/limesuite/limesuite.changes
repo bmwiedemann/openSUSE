@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct 30 18:42:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.10.0
+  LimeSuite library changes:
+  * Fixed GFIR floating point comparison.
+  * Disabled caller-saves optimization for GCC versions 9.3 onwards
+  * Changed USB processing, FIFO and remote thread priorities.
+  * Fixed null pointer dereferences in StreamChannel write/read
+    functions.
+  * Added option to configure data link format from API.
+  * TDD mode registers are reset after initialization on
+    LimeSDR-Core boards.
+  * Changed default Common Control Signal value for most boards.
+  * Changed LMS_Init to tune SXR/SXT PLL's.
+  * Changed LMS_Init to calibrate Tx frontend IAMP gain.
+  * Updated SXR/SXT MCU tune algorithm to match host.
+  * Added optional gain behavior where TIA/IAMP gain elements are
+    removed from available gain range.
+  * Improved spurious USB transfer handling.
+  LimeSuiteGUI:
+  * Fixed an issue of file close not being called in FFTviewer.
+  * Fixed compilation for wxWidgets STL.
+  SoapyLMS:
+  * Updated linkFormat stream option so it changes link format
+    in LimeSuite library.
+  Other changes:
+  * Added LimeSuite library information to QuickTest.
+  * Added CMake option to enable optional gain behavior.
+- Drop patch (included upstream):
+  * 0001-Allow-compilation-with-wxWidgets-STL-build.patch
+
+-------------------------------------------------------------------
 Sun Sep  6 00:13:04 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use wxGTK3 instead of wxWidgets (GTK2), allow building with

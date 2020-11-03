@@ -2,7 +2,7 @@
 # spec file for package limesuite
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 #
 
 
-%define sover 20_07-1
+%define sover 20_10-1
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.7
 Name:           limesuite
-Version:        20.07.2
+Version:        20.10.0
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0
@@ -29,8 +29,6 @@ Group:          Productivity/Hamradio/Other
 URL:            https://myriadrf.org/projects/lime-suite/
 #Git-Clone:     https://github.com/myriadrf/LimeSuite.git
 Source:         https://github.com/myriadrf/LimeSuite/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- https://github.com/myriadrf/LimeSuite/pull/316
-Patch0:         0001-Allow-compilation-with-wxWidgets-STL-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gnuplot
@@ -83,7 +81,6 @@ A Soapy module that supports LimeSDR devices within the Soapy API.
 
 %prep
 %setup -q -n LimeSuite-%{version}
-%patch0 -p1
 
 # HACK: set udev permissions to 666
 sed -i 's|MODE="660"|MODE="666"|g' udev-rules/64-limesuite.rules
