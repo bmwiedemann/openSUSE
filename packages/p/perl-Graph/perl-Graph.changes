@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  1 03:07:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9707
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9707 2020-10-31
+  - can't use Safe, ergo Storable, on 5.8
+
+-------------------------------------------------------------------
 Wed Oct 21 03:11:11 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9706

@@ -17,7 +17,7 @@
 
 
 Name:           perl-Graph
-Version:        0.9706
+Version:        0.9707
 Release:        0
 %define cpan_name Graph
 Summary:        Graph data structures and algorithms
