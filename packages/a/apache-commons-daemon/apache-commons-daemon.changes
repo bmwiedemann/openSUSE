@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 27 08:26:44 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.2.3
+  * Fix: Procrun. Correct multiple issues related to enabling a
+    service to interact with the desktop. Provide a better error
+    message if this option is used with an invalid user, install
+    the service with the option enabled if requested and correctly
+    save the setting if it is enabled in the GUI.
+  * Fix: jsvc. Update the list of paths searched for libjvm.so to
+    include the path used by OpenJDK 11.
+  * Add: Procrun. Add additional debug logging for Java start mode.
+  * Fix: jsvc. Remove incorrect definition 'supported_os' which
+    defined in psupport.m4 file to fix jsvc build error on s390,
+    arm, aarch64, mipsel and mips.
+  * Add: More debug logging in prunsrv.c and javajni.c.
+  * Add: Update arguments.c to support Java 11 --enable-preview.
+  * Add: jsvc and Procrun. Add support for Java native memory tracking.
+  * Add: Procrun. Add a new command, print, that outputs the command to
+    (re-)configure the service with the current settings. This is
+    intended to be used to save settings such as before an upgrade.
+- Rebase apache-commons-daemon-riscv64.patch
+- Remove apache-commons-daemon-s390x.patch fixed upstream
+
+-------------------------------------------------------------------
 Tue Jun  9 07:26:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Generate ant build file and customize it in order to be able to

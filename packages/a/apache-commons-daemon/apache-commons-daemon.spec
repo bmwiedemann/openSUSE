@@ -18,7 +18,7 @@
 
 %define short_name commons-daemon
 Name:           apache-%{short_name}
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0
@@ -29,8 +29,7 @@ Source1:        https://archive.apache.org/dist/commons/daemon/source/%{short_na
 Source2:        apache-commons-daemon.keyring
 Source10:       apache-commons-daemon-build.xml
 Patch0:         apache-commons-daemon-JAVA_OS.patch
-Patch1:         apache-commons-daemon-s390x.patch
-Patch2:         apache-commons-daemon-riscv64.patch
+Patch1:         apache-commons-daemon-riscv64.patch
 BuildRequires:  ant
 BuildRequires:  autoconf
 BuildRequires:  fdupes
@@ -78,7 +77,6 @@ The Javadoc Documentation for Commons Daemon.
 cp %{SOURCE10} build.xml
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # remove java binaries from sources
 rm -rf src/samples/build/
