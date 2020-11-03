@@ -1,5 +1,5 @@
 #
-# spec file for package postgresql12
+# spec file for package postgresql13
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -141,6 +141,7 @@ Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
+Patch10:        postgresql-timetz.patch
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -448,6 +449,7 @@ touch -r configure tmp
 %patch6
 %patch8 -p1
 %patch9
+%patch10
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete

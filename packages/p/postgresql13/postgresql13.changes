@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 13:54:38 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org
+
+-------------------------------------------------------------------
 Fri Sep 25 06:57:55 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Initial packaging of PostgreSQL 13:
