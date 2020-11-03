@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 28 13:22:24 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable -reduce-relocations for now (boo#1175278, QTBUG-86173)
+
+-------------------------------------------------------------------
 Wed Oct 14 19:28:37 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Silence xcb errors and qml connection warnings by default, see

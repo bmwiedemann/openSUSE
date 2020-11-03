@@ -834,6 +834,11 @@ sed -i 's|qt_instdate=`date +%Y-%m-%d`|qt_instdate=$CHANGES|g' configure
 sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 
 # -no-feature-relocatable is needed to support /usr/lib/sse2 etc., see QTBUG-78948
+# -reduce-relocations means copy relocations aren't allowed, and so special
+# flags like -fPIC need to be passed when building an application. This breaks
+# with LTO (PIE overrides that) and CMake (doesn't pass -fPIC when linking).
+# Due to a binutils bug/misunderstanding, this option didn't do as much before 2.35,
+# so just disable it for now until a proper alternative appears.
 
 echo yes | ./configure \
 	-prefix %{_prefix} \
@@ -851,11 +856,7 @@ echo yes | ./configure \
 	-sysconfdir %{libqt5_sysconfdir} \
 	-translationdir %{libqt5_translationdir} \
 	-verbose \
-%ifarch %ix86 x86_64
-	-reduce-relocations \
-%else
 	-no-reduce-relocations \
-%endif
 %ifarch %ix86
 %if 0%{?sle_version} < 150000
 	-no-sse2 -no-pch \
