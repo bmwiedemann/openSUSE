@@ -263,7 +263,7 @@ BuildRequires: gdb
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 10.2.1+git583
+Version: 10.2.1+git872
 Release:      1
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -1299,6 +1299,18 @@ amdgcn-amdhsa=%{_prefix}/amdgcn-amdhsa,\
 	--with-abi=aapcs-linux \
 	--with-fpu=vfp \
 	--disable-sjlj-exceptions \
+%endif
+%if "%{TARGET_ARCH}" == "arm-none"
+	--enable-multilib \
+	--with-multilib-list=aprofile,rmprofile \
+	--disable-decimal-float \
+	--disable-libffi \
+	--disable-libgomp \
+	--disable-libmudflap \
+	--disable-libquadmath \
+	--disable-shared \
+	--disable-threads \
+	--disable-tls \
 %endif
 %if "%{TARGET_ARCH}" == "armv5tel"
 	--with-arch=armv5te \

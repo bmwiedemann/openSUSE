@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 28 09:45:37 UTC 2020 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (a78cd759754c92cecbf235ac9b), git872.
+
+-------------------------------------------------------------------
+Tue Oct 27 03:25:06 UTC 2020 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Build complete set of multilibs for arm-none target [bsc#1106014]
+  * Fixes inadvertant mixture of ARM and Thumb instructions in linker output
+
+-------------------------------------------------------------------
 Tue Aug 25 07:15:46 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (c0746a1beb1ba073c7981eb09f), git583.
