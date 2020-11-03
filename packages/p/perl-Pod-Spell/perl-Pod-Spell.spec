@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Spell
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           perl-Pod-Spell
 Version:        1.20
 Release:        0
 %define cpan_name Pod-Spell
-Summary:        Formatter for Spellchecking Pod
+Summary:        Formatter for spellchecking Pod
 License:        Artistic-2.0
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Pod-Spell/
-Source0:        http://www.cpan.org/authors/id/D/DO/DOLMEN/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOLMEN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -36,6 +36,7 @@ BuildRequires:  perl(File::ShareDir::Install) >= 0.06
 BuildRequires:  perl(Lingua::EN::Inflect)
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Pod::Escapes)
+BuildRequires:  perl(Pod::Parser)
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(parent)
 Requires:       perl(Class::Tiny)
@@ -43,6 +44,7 @@ Requires:       perl(File::ShareDir)
 Requires:       perl(Lingua::EN::Inflect)
 Requires:       perl(Path::Tiny)
 Requires:       perl(Pod::Escapes)
+Requires:       perl(Pod::Parser)
 Requires:       perl(parent)
 %{perl_requires}
 
@@ -71,11 +73,11 @@ can be supplemented (on a per-document basis) by having '"=for stopwords"'
 %setup -q -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+make %{?_smp_mflags}
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -84,6 +86,7 @@ can be supplemented (on a per-document basis) by having '"=for stopwords"'
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING LICENSE README
+%doc Changes CONTRIBUTING README
+%license LICENSE
 
 %changelog

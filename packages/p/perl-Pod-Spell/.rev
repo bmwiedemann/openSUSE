@@ -143,4 +143,13 @@
     <comment>1</comment>
     <requestid>394625</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>12adbe1c87d0d26b2d9ac699ed910c87</srcmd5>
+    <version>1.20</version>
+    <time>1604412929</time>
+    <user>dimstar_suse</user>
+    <comment>- update specfile with cpanspec to fix build
+</comment>
+    <requestid>844620</requestid>
+  </revision>
 </revisionlist>
