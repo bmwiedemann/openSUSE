@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:10:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add perl(Pod::Parser) BuildRequires: explicitly checked for by
+  the build system. Used to be part of perl, but is no longer so in
+  perl 5.32.
+
+-------------------------------------------------------------------
 Thu Sep  3 12:36:36 UTC 2020 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Fix boo#1175977

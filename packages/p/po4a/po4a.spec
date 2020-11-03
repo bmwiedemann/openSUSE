@@ -36,6 +36,7 @@ BuildRequires:  perl-Unicode-LineBreak
 BuildRequires:  perl-YAML-Tiny
 BuildRequires:  perl-base
 BuildRequires:  perl-gettext >= 1.01
+BuildRequires:  perl(Pod::Parser)
 
 # for test suite
 BuildRequires:  docbook_4
