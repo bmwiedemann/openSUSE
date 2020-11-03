@@ -213,4 +213,30 @@
   * Various crash fixes</comment>
     <requestid>800601</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1a81358a8ed3402a79e200235bc11eca</srcmd5>
+    <version>1.3.0</version>
+    <time>1604413019</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libgit2_1.patch for compatibility with libgit 1.1.0
+- Update to v1.3.0
+  * New Repository.applies, Repository.revparse, Repository.revparse_ext,
+    Repository.add_submodule, Repository.raw_listall_branches, and
+    Repository.raw_listall_references
+  * New optional flags and file_flags arguments in
+    Repository.merge_commits and Repository.merge_trees
+  * New Reference.raw_target
+  * Allow bytes in Repository.lookup_branch and Repository.diff
+  * New GIT_BLAME_FIRST_PARENT and GIT_BLAME_USE_MAILMAP constants
+  * New IndexEntry supports repr(), str(), == and !=
+  * New Object supports repr()
+  * New accept tuples of strings (not only lists) in a number of places
+  * Fix compatibility with old macOS 10.9
+  * Fix check argument type in Repository.apply(...)
+  * Fix raise exception if error in Repository.listall_submodules()
+  * Fix a couple of refcount errors in OdbBackend.refresh() and
+    Worktree_is_prunable
+</comment>
+    <requestid>845686</requestid>
+  </revision>
 </revisionlist>
