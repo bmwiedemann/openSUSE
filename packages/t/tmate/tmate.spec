@@ -22,7 +22,7 @@ Release:        0
 Summary:        Instant terminal sharing
 License:        MIT
 Group:          Productivity/Networking/Other
-URL:            https://www.tmate.io
+URL:            https://tmate.io
 Source:         https://github.com/tmate-io/tmate/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
