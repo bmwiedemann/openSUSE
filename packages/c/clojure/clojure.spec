@@ -16,17 +16,16 @@
 #
 
 
-%define         toolsver 708
 Name:           clojure
-Version:        1.10.1
+Version:        1.10.1.727
 Release:        0
 Summary:        A dynamic programming language that targets the JVM
 License:        EPL-1.0
 Group:          Development/Languages/Other
-URL:            http://clojure.org/
-Source0:        https://download.clojure.org/install/clojure-tools-%{version}.%{toolsver}.tar.gz
-Requires:       java >= 1.8.0
+URL:            https://clojure.org/
+Source0:        https://download.clojure.org/install/clojure-tools-%{version}.tar.gz
 BuildRequires:  fdupes
+Requires:       java >= 1.8.0
 BuildArch:      noarch
 
 %description
@@ -45,14 +44,15 @@ can avoid reflection.
 %setup -q -n clojure-tools
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clj
 sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clojure
-sed -i "s|PREFIX|%{_prefix}/clojure|" clojure
+sed -i "s|PREFIX|%{_datadir}/clojure|" clojure
 
 %build
 
 %install
 install -Dm644 deps.edn "%{buildroot}/%{_datadir}/clojure/deps.edn"
 install -Dm644 example-deps.edn "%{buildroot}/%{_datadir}/clojure/example-deps.edn"
-install -Dm644 clojure-tools-%{version}.%{toolsver}.jar "%{buildroot}/%{_datadir}/clojure/libexec/clojure-tools-%{version}.%{toolsver}.jar"
+install -Dm644 exec.jar "%{buildroot}/%{_datadir}/clojure/libexec/exec.jar"
+install -Dm644 clojure-tools-%{version}.jar "%{buildroot}/%{_datadir}/clojure/libexec/clojure-tools-%{version}.jar"
 install -Dm755 clojure "%{buildroot}/%{_bindir}/clojure"
 install -Dm755 clj "%{buildroot}/%{_bindir}/clj"
 install -Dm644 clojure.1 "%{buildroot}%{_mandir}/man1/clojure.1"
@@ -67,7 +67,8 @@ install -Dm644 clj.1 "%{buildroot}%{_mandir}/man1/clj.1"
 %{_bindir}/clojure
 %{_datadir}/clojure/deps.edn
 %{_datadir}/clojure/example-deps.edn
-%{_datadir}/clojure/libexec/clojure-tools-%{version}.%{toolsver}.jar
-%doc %{_mandir}/man1/*
+%{_datadir}/clojure/libexec/exec.jar
+%{_datadir}/clojure/libexec/clojure-tools-%{version}.jar
+%{_mandir}/man1/*
 
 %changelog

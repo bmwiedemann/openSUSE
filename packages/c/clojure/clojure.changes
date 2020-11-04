@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:40:43 UTC 2020 - Petr Cervinka <petr@cervinka.net>
+
+- Fix could not find or load main class clojure.main (boo#1178408)
+- Add missing clojure/libexec/exec.jar (boo#1178408)
+- Add tool version to package to increase version visibility
+- Apply spec-cleaner
+- Update to 1.10.1.727
+  * Fix clj -X:deps tree adding tools.deps.alpha to tree
+  * Fix clj -X:deps mvn-pom adding tools.deps.alpha to pom deps
+  * Fix clj -X:deps git-resolve-tags not working
+  * TDEPS-169 - Fix clj -X:deps mvn-install on jar to also install embedded pom
+  * Fix clj -Spom not respecting dep modifications from -A (regression)
+- Changes in 1.10.1.716
+  * Make edn reading tolerant of unknown tagged literals
+  * Update to latest dependencies for maven-resolver and aws-api
+  * Use tools.deps.alpha 0.9.821
+
+-------------------------------------------------------------------
 Sat Oct 10 21:37:56 UTC 2020 - Chris Coutinho <chrisbcoutinho@gmail.com>
 
 - Update tool version to 708
