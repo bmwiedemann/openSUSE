@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define		github_version 20.02
+%define		github_version 20.10
 Name:           python-acoular
-Version:        20.2
+Version:        20.10
 Release:        0
 Summary:        Library for acoustic beamforming
 License:        BSD-3-Clause
@@ -39,6 +39,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numba >= 0.40.0}
 BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-learn >= 0.19.1}
 BuildRequires:  %{python_module scipy >= 0.1.0}
 BuildRequires:  %{python_module tables >= 3.4.4}
@@ -66,7 +67,6 @@ rm acoular/nidaqimport.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-rm %{buildroot}%{_bindir}/acoular_demo.py
 
 %check
 %python_expand $python -c 'import acoular';
