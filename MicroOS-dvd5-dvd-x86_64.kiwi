@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20201102" schemaversion="4.1">
+<image name="OBS__MicroOS___20201103" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20201102</productvar>
+      <productvar name="VERSION">20201103</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201102,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20201103,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201102/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20201103/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -760,7 +760,7 @@
       <repopackage name="libldb2" arch="x86_64"/>
       <repopackage name="liblilv-0-0" arch="x86_64"/>
       <repopackage name="liblldp_clif1" arch="x86_64"/>
-      <repopackage name="libLLVM10" arch="x86_64"/>
+      <repopackage name="libLLVM11" arch="x86_64"/>
       <repopackage name="liblmdb-0_9_24" arch="x86_64"/>
       <repopackage name="liblockdev1" arch="x86_64"/>
       <repopackage name="liblrdf2" arch="x86_64"/>

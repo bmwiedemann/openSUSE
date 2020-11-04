@@ -1942,10 +1942,10 @@ unsorted:
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
   - clang10-doc: [i586] 
-  - clang11 
+  - clang11: [i586] 
   - clang11-devel 
   - clang11-devel-32bit: [x86_64] 
-  - clang11-doc 
+  - clang11-doc: [i586] 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -8221,6 +8221,7 @@ unsorted:
   - kubernetes1.19-proxy: [x86_64] 
   - kubernetes1.19-scheduler: [x86_64] 
   - kubevirt-container-disk: [x86_64] 
+  - kubevirt-manifests: [x86_64] 
   - kubevirt-virt-api: [x86_64] 
   - kubevirt-virt-controller: [x86_64] 
   - kubevirt-virt-handler: [x86_64] 
@@ -8836,8 +8837,8 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
+  - libLLVM10: [i586] 
   - libLLVM10-32bit: [x86_64] 
-  - libLLVM11: [x86_64] 
   - libLLVM11-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
@@ -8847,7 +8848,7 @@ unsorted:
   - libLLVM9-32bit: [x86_64] 
   - libLTO10: [i586] 
   - libLTO10-32bit: [x86_64] 
-  - libLTO11 
+  - libLTO11: [i586] 
   - libLTO11-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
@@ -8855,7 +8856,7 @@ unsorted:
   - libLTO8-32bit: [x86_64] 
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
-  - libLimeSuite20_07-1 
+  - libLimeSuite20_10-1 
   - libMagick++-7_Q16HDRI4-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -9772,8 +9773,8 @@ unsorted:
   - libboost_wave1_74_0-32bit: [x86_64] 
   - libboost_wave1_74_0-devel 
   - libboringssl1 
-  - libbotan-2-15 
-  - libbotan-2-15-32bit: [x86_64] 
+  - libbotan-2-16 
+  - libbotan-2-16-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbpf-devel 
@@ -9976,7 +9977,7 @@ unsorted:
   - libclFFT2: [x86_64] 
   - libclang10: [i586] 
   - libclang10-32bit: [x86_64] 
-  - libclang11 
+  - libclang11: [i586] 
   - libclang11-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
@@ -14889,7 +14890,7 @@ unsorted:
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
   - lldb10: [x86_64] 
-  - lldb10-devel: [x86_64] # devel package of dvd:libLLVM10 
+  - lldb10-devel: [x86_64] # devel package of dvd:clang10-doc 
   - lldb11: [x86_64] 
   - lldb11-devel: [x86_64] # devel package of dvd:libLLVM11 
   - lldb7: [x86_64] 
@@ -14905,9 +14906,9 @@ unsorted:
   - llvm-LTO-devel 
   - llvm-devel 
   - llvm-gold 
-  - llvm-opt-viewer: [i586] 
-  - llvm-polly: [i586] 
-  - llvm-polly-devel: [i586] 
+  - llvm-opt-viewer 
+  - llvm-polly 
+  - llvm-polly-devel 
   - llvm-vim-plugins 
   - llvm10 
   - llvm10-LTO-devel 
@@ -18898,6 +18899,7 @@ unsorted:
   - perl-Email-Sender 
   - perl-Email-Simple 
   - perl-Email-Valid 
+  - perl-Encode 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -19404,6 +19406,7 @@ unsorted:
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
+  - perl-Pod-Parser 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
@@ -20513,6 +20516,7 @@ unsorted:
   - prometheus-client-model-source 
   - prometheus-cpp-devel 
   - prometheus-ha_cluster_exporter: [x86_64] 
+  - prometheus-hanadb_exporter 
   - prometheus-sap_host_exporter: [x86_64] 
   - prometheus-simpleclient-java 
   - prometheus-simpleclient-java-common 
@@ -21526,7 +21530,6 @@ unsorted:
   - python3-bytecode 
   - python3-cPyparsing 
   - python3-caca 
-  - python3-cached-property 
   - python3-cachelib 
   - python3-cachetools 
   - python3-cachey 
@@ -23059,7 +23062,6 @@ unsorted:
   - python3-pygame-devel 
   - python3-pygerrit2 
   - python3-pyghmi 
-  - python3-pygit2 
   - python3-pyglet 
   - python3-pygments-ansi-color 
   - python3-pygments-pytest 
@@ -24990,6 +24992,8 @@ unsorted:
   - ruby2.7-rubygem-optimist-testsuite 
   - ruby2.7-rubygem-orm_adapter-doc 
   - ruby2.7-rubygem-orm_adapter-testsuite 
+  - ruby2.7-rubygem-os-doc 
+  - ruby2.7-rubygem-os-testsuite 
   - ruby2.7-rubygem-owncloud-admin-doc 
   - ruby2.7-rubygem-packaging_rake_tasks-doc 
   - ruby2.7-rubygem-paint-doc 
@@ -25557,6 +25561,7 @@ unsorted:
   - screenfetch 
   - screengrab 
   - screengrab-lang 
+  - screenkey 
   - scribus 
   - scribus-doc 
   - scrot 
@@ -25931,6 +25936,7 @@ unsorted:
   - sound-theme-yaru 
   - soundconverter 
   - soundconverter-lang 
+  - soundkonverter 
   - soundtouch 
   - soundtouch-devel 
   - soup-sharp 
@@ -34268,7 +34274,7 @@ unsorted:
   - threadweaver-devel-32bit: [x86_64] 
   - thrift 
   - thttpd 
-  - thunar: [i586] 
+  - thunar: [i586] # suggested by dvd:suggested:patterns-xfce-xfce 
   - thunar-devel 
   - thunar-lang: [i586] 
   - thunar-plugin-archive: [i586] 
