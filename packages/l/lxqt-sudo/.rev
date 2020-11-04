@@ -111,4 +111,13 @@
     <comment></comment>
     <requestid>798539</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>665f0dc1ee38c5673e8f6b304bd636a5</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Use QFlags default constructor.</comment>
+    <requestid>846009</requestid>
+  </revision>
 </revisionlist>
