@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>819448</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5ac516a8884eaae0309eab3516732bbd</srcmd5>
+    <version>1.77</version>
+    <time>1604510812</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ridiculously wide find commands in %prep, which break a lot
+  (binary) files.
+</comment>
+    <requestid>845786</requestid>
+  </revision>
 </revisionlist>
