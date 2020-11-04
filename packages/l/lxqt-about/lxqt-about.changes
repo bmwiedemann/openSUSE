@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 14:16:03 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Bumped version to 0.16.0.
+  * Fixed Razor-qt link.
+  * Fixed Weblate links.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:48:28 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-about.keyring to tsujan's key
