@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?is_opensuse} == 1
+%if 0%{?suse_version} > 1500
 %ifarch %ix86 x86_64
 %{!?with_lua: %global with_lua 1}
 %else
@@ -26,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.1.1
+%define libbpf_version 0.2
 
 Name:           bcc
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
