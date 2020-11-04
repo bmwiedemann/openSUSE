@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e627abf94d1a036f531ca894d683cd42</srcmd5>
+    <version>1.5.3</version>
+    <time>1574783551</time>
+    <user>dimstar_suse</user>
+    <comment>Add foliate, maintained by the GNOME Team</comment>
+    <requestid>747646</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8c5511f9fc7cc278b20c38fdfe6cdac</srcmd5>
+    <version>1.5.3</version>
+    <time>1575563632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754119</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>54a74982bde5b59f859fc181ffa1be9f</srcmd5>
+    <version>1.5.3+54</version>
+    <time>1575923663</time>
+    <user>dimstar_suse</user>
+    <comment>See debate in sr 754119
+
+- Update to version 1.5.3+54:
+  * Right align doesn't work well with tables
+  * Update package info
+  * Update Indonesian translation (#182)
+  * Fix glyph clipping in WebKit (#179)
+  * Set WebKit default font size
+  * Flatpak: prevent X11 access in Wayland
+  * Remove unnecessary global variables for TTS, footnotes, images
+  * Initial change to WebKitUserContentManager for messaging
+  * Add copy to selection options (#172)
+  * Set vendored code for Linguist
+  * Updated Dutch (Netherlands) translation (#169)
+  * Add link to wiki in README.md
+  * Update French translation (#163)
+  * Fix unable to add bookmark when section not found
+  * Fix stuff not escaped for Pango markup
+  * Move constant out of the loop
+  * Show author in headerbar
+  * Fallback when unable to get section
+  * Show chapter name in bookmarks list
+  * Update Brazilian Portuguese translation (#160)
+  * Fix wrong Wiktionary link when looking up again due to capitalization
+  * Fix Wikipedia lookup broken after previous commit
+  * Make internal links work in footnote popover
+  * Make TTS available for selection
+  * Fix wrong popover position in continous scrolling mode
+  * Make navbar buttons flat
+  * Temporary fix for invisible popovers due to wrong position values
+  * Fix internal link broken when popup footnote is disabled
+  * Add continuous scrolling option
+  * Support getting current chapter for TOC items with anchors
+  * Update translations
+  * Improve HTML to Pango markup conversion
+  * Don't push to history if the location doesn't change
+  * Fix empty state padding
+  * Suppress promise rejection warnings
+  * Change &quot;chapter&quot; to &quot;section&quot;
+  * Add option to go to CFI
+  * Extract code for getting popover position to a function
+  * Move util functions forward and main functions to the end
+  * Add some comments
+  * Move wheel and keyboard event code to more sensible location
+  * Make it possible to select across pages
+  * Fix pt_BR.po
+  * Update Brazilian Portuguese translation (#153)
+  * Lint assets
+  * Lint main.js
+  * Cleanup HTML and txt export code
+  * Fix ampersand troubles
+  * Use markup for Wikipedia extract
+  * Fix soft hyphens confusing Festival
+  * Add translation info to AppData
+  * Update French translation (#151)
+  * Update Dutch translation (#150)
+  * Update README.md (forwarded request 754483 from iznogood)</comment>
+    <requestid>754977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>88bf096a91f94cacc40b7389b4472611</srcmd5>
+    <version>2.0.0</version>
+    <time>1586248262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791769</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>116fd154c12d63d2c3bed9552ab71f23</srcmd5>
+    <version>2.1.1</version>
+    <time>1586555632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * Fixed wrong version number.
+- Update to version 2.1.0:
+  * New and improved icon
+  * Option to disable turn page on tap
+  * A menu on the welcome screen for opening recent files
+  * Restored shortcuts for showing ToC, annotations, and bookmarks
+  * Fixed application not translated.
+</comment>
+    <requestid>792946</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b61cf75fb7710e8a6ccae13d97d5949d</srcmd5>
+    <version>2.2.0</version>
+    <time>1590780237</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 2.2.0:
+  * Library:
+    - A library view showing recent books and reading progress
+    - Search books by metadata
+    - E-book discovery with OPDS
+  * New supported formats:
+    - FictionBook (.fb2, .fb2.zip) (#128)
+    - Comic book archive (.cbr, .cbz, .cbt, .cb7)
+    - Plain text (.txt) (#226)
+    - Unpacked EPUB files
+  * Layout:
+    - Option to set maximum page width
+    - The &quot;Automatic&quot; layout will now show four columns 
+      when the page width is wide
+  * Image viewer:
+    - Improved image viewer, with new shortcuts and the ability 
+      to rotate and invert images
+    - Option to disable image viewer, or to open images on double, 
+      middle, or right click
+  * Text-to-speech:
+    - Improved text-to-speech configuration UI
+    - Ability to set text-to-speech voice based on book language
+  * Annotations
+    - Import annotations from JSON
+    - Search in annotations
+    - Annotations are now sorted in the same order as they appear 
+      in the book
+  * Security:
+    - &quot;Allow Unsafe Content&quot; now only enables JavaScript; external 
+      content will no longer be loaded. This is an important 
+      security fix. If you are running an old version of Foliate 
+      and cannot upgrade, you should disable 
+      &quot;Allow Unsafe Content&quot;.
+    - WebKit processes are now sandboxed
+  * Other featues and fixes:
+    - Improved support for vertical and right-to-left books
+    - Support for StarDict dictionaries
+    - Fixed current location not preserved when resizing
+    - Fixed auto-hiding header bar under some themes
+    - Command-line options for showing version and adding books 
+      to library
+    - Option to clear or disable cache
+    - When an HTML page contains invalid self-closing anchor tags, 
+      it is now parsed as XHTML
+- Add fdupes BuildRequires and macro call, remove duplicate files.
+</comment>
+    <requestid>810176</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e491a030e1fd2eba205df492835ff76d</srcmd5>
+    <version>2.2.1</version>
+    <time>1591880449</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter &quot;typelib(Handy) = 1&quot; dependency. We use handy 0.0. (forwarded request 813436 from dimstar)</comment>
+    <requestid>813498</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6b5912928fe660ea0e2605bfdebbe5c</srcmd5>
+    <version>2.3.0</version>
+    <time>1593292953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+  * OPDS catalogs:
+    - Catalogs are now opened in the main library window (#403)
+    - View current location
+    - Go to catalog start page
+    - Reload catalog
+    - Add current feed to catalogs
+    - HTTP authentication support (#421)
+  * Other changes:
+    - Fixed unique identifier extraction for 
+      FictionBook (.fb2, .fb2.zip) files (#462)
+    - Fixed newlines being ignored when copying text (#463)
+    - “Turn page on tap” is now disabled in 
+      non-paginated layouts (#464)
+    - Opening a book from the library view now closes the 
+      library window (#446)
+    - Language and publication dates in metadata are now parsed 
+      and formatted
+    - Export annotations from the library view
+</comment>
+    <requestid>817303</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7796228431bacb157afa3a062cafa64e</srcmd5>
+    <version>2.4.0</version>
+    <time>1593728101</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.4.0 (forwarded request 818269 from Dead_Mozay)</comment>
+    <requestid>818347</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>16176a4cb9ec679ff2f8c61dff3a721a</srcmd5>
+    <version>2.4.2</version>
+    <time>1594387864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.2:
+  * Fixed unable to open some EPUB files (forwarded request 818960 from Dead_Mozay)</comment>
+    <requestid>819929</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a204034ee77968609235cde1305263b4</srcmd5>
+    <version>2.5.0</version>
+    <time>1602762713</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.5.0 (forwarded request 841834 from Dead_Mozay)</comment>
+    <requestid>841895</requestid>
+  </revision>
+</revisionlist>

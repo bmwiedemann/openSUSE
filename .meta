@@ -1,0 +1,5 @@
+<package name="foliate" project="openSUSE:Factory">
+  <title>foliate</title>
+  <description>A simple and modern GTK eBook reader</description>
+  <devel project="GNOME:Apps" package="foliate"/>
+</package>
