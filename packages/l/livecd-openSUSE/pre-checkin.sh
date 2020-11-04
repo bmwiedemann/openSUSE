@@ -50,7 +50,7 @@ for distro in leap tumbleweed; do
 		else
 			name="${distroname} ${uppercaseflavor} Live"
 		fi
-	
+
 		PACKAGES="\n    <!-- list-common.sh -->"
 		. "$PWD/list-common.sh"
 		PACKAGES="$PACKAGES\n\n    <!-- list-${flavor}.sh -->"

@@ -154,7 +154,7 @@ baseUpdateSysConfig /etc/sysconfig/displaymanager DISPLAYMANAGER $displaymanager
 # boo#1039756
 [ "$desktop" = "gnome" ] && baseUpdateSysConfig /etc/sysconfig/windowmanager DEFAULT_WM gnome
 
-#Disable journal write to disk in live mode, bug 950999
+# Disable journal write to disk in live mode, bug 950999
 echo "Storage=volatile" >> /etc/systemd/journald.conf
 
 # Remove generated files (boo#1098535)
@@ -162,7 +162,6 @@ rm -rf /var/cache/zypp/* /var/lib/zypp/AnonymousUniqueId /var/lib/systemd/random
 
 # Remove netronome firmware (part of kernel-firmware): this sums up to 125MB
 rm -rf /lib/firmware/netronome/
-
 
 cat >/etc/systemd/system/fixupbootloader.service <<EOF
 # boo#1155545 - LOADER_TYPE has to be nil for the upgrade to work properly.

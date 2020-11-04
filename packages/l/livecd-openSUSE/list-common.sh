@@ -190,12 +190,20 @@ buildignore open-vm-tools
 # Pulls in tcl
 buildignore usb_modeswitch
 
+# Make vim smaller
+buildignore vim-data
+if [ "$distro" = "tumbleweed" ]; then
+        buildignore vim
+        install vim-small
+fi
+
 # This was previously required by base
 install patterns-yast-yast2_basis
 installPattern yast2_basis
 
 # This was previously required by rest_cd_core
 install kernel-default
+# The compressed (-all) version results in a bigger .iso!
 install kernel-firmware
 install patterns-base-enhanced_base
 installPattern enhanced_base

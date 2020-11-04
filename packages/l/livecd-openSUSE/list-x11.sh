@@ -47,11 +47,6 @@ buildignore avahi
 buildignore fprintd
 buildignore accountsservice
 buildignore MozillaFirefox
-buildignore vim-data
-if [ "$distro" = "tumbleweed" ]; then
-	buildignore vim
-	install vim-small
-fi
 buildignore tcpdump
 
 install gparted

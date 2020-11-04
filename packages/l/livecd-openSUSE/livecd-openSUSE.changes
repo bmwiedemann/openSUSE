@@ -13,6 +13,13 @@ Fri Oct 30 10:10:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 - Use tr [:lower:] [:upper:] instead of tr a-z A-Z.
 
 -------------------------------------------------------------------
+Wed Oct 14 08:36:12 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Drop set -e, it breaks when there's a conditional experssion as
+  last statement in a file
+- Use vim-small for non-Rescue as well
+
+-------------------------------------------------------------------
 Mon Sep  7 09:07:51 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Switch "leap" over to "Jump":

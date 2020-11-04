@@ -317,6 +317,11 @@
     <ignore name="open-vm-tools"/>
     <package name="aaa_base" replaces="usb_modeswitch"/>
     <ignore name="usb_modeswitch"/>
+    <package name="aaa_base" replaces="vim-data"/>
+    <ignore name="vim-data"/>
+    <package name="aaa_base" replaces="vim"/>
+    <ignore name="vim"/>
+    <package name="vim-small"/>
     <package name="patterns-yast-yast2_basis"/>
     <namedCollection name="yast2_basis"/>
     <package name="kernel-default"/>
@@ -483,11 +488,6 @@
     <ignore name="accountsservice"/>
     <package name="aaa_base" replaces="MozillaFirefox"/>
     <ignore name="MozillaFirefox"/>
-    <package name="aaa_base" replaces="vim-data"/>
-    <ignore name="vim-data"/>
-    <package name="aaa_base" replaces="vim"/>
-    <ignore name="vim"/>
-    <package name="vim-small"/>
     <package name="aaa_base" replaces="tcpdump"/>
     <ignore name="tcpdump"/>
     <package name="gparted"/>
