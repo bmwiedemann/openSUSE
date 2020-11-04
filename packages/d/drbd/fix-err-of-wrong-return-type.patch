@@ -1,0 +1,11 @@
+diff -Naur drbd-9.0.16+git.ab9777df.orig/drbd/drbd-kernel-compat/tests/have_blk_qc_t_make_request.c drbd-9.0.16+git.ab9777df/drbd/drbd-kernel-compat/tests/have_blk_qc_t_make_request.c
+--- drbd-9.0.16+git.ab9777df.orig/drbd/drbd-kernel-compat/tests/have_blk_qc_t_make_request.c	2020-11-03 17:45:49.362231056 +0800
++++ drbd-9.0.16+git.ab9777df/drbd/drbd-kernel-compat/tests/have_blk_qc_t_make_request.c	2020-11-03 19:11:54.843913135 +0800
+@@ -11,6 +11,7 @@
+ 
+ blk_qc_t drbd_make_request(struct request_queue *q, struct bio *bio)
+ {
++		return 0;
+ }
+ 
+ #ifndef __same_type

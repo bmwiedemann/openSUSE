@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:21:13 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1178388, build error with -Wreturn-type
+  Add patch fix-err-of-wrong-return-type.patch
+
+-------------------------------------------------------------------
 Tue Oct 20 03:49:16 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1177910, compat to kernel v5.9
