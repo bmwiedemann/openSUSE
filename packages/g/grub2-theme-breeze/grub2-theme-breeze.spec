@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           grub2-theme-breeze
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        Plasma branding for GRUB2's graphical console
 License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            https://www.kde.org
-Source:         breeze-grub-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/breeze-grub-%{version}.tar.xz
 %if %{with lang}
-Source1:        breeze-grub-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-grub-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildArch:      noarch
