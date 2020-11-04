@@ -1008,4 +1008,11 @@
   and then not consume it.
 - Use tr [:lower:] [:upper:] instead of tr a-z A-Z.</comment>
   </revision>
+  <revision rev="124" vrev="124">
+    <srcmd5>a8444e085a76052a10a932fb6bdbb835</srcmd5>
+    <version>unknown</version>
+    <time>1604481264</time>
+    <user>dimstar_suse</user>
+    <comment>- Block systemd-doc and man-pages from all flavors, not only xfce.</comment>
+  </revision>
 </revisionlist>

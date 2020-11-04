@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Nov  4 08:17:48 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
-- Block systemd-doc from all flavors, not only xfce.
+- Block systemd-doc and man-pages from all flavors, not only xfce.
 
 -------------------------------------------------------------------
 Fri Oct 30 10:10:31 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
