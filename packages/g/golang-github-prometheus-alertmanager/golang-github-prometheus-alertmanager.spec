@@ -58,7 +58,7 @@ GOPATH=%{_builddir}/go promu build
 %install
 %goinstall
 install -D -m0755 %{_builddir}/alertmanager-%{version}/alertmanager %{buildroot}/%{_bindir}/alertmanager
-install -D -m0755 %{_builddir}/alertmanager-%{version}/alertmanager %{buildroot}/%{_bindir}/amtool
+install -D -m0755 %{_builddir}/alertmanager-%{version}/amtool %{buildroot}/%{_bindir}/amtool
 %gosrc
 mv %{buildroot}%{_bindir}/alertmanager %{buildroot}%{_bindir}/prometheus-alertmanager
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus-alertmanager.service
