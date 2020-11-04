@@ -612,4 +612,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>New plasma release</comment>
     <requestid>843108</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>f4d08be8c025632a5eeb0fcdf1db3d0d</srcmd5>
+    <version>5.20.2</version>
+    <time>1604510664</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844589</requestid>
+  </revision>
 </revisionlist>
