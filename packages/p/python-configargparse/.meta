@@ -1,5 +1,0 @@
-<package name="python-configargparse" project="openSUSE:Factory">
-  <title>Python configuration parser</title>
-  <description></description>
-  <devel project="devel:languages:python" package="python-configargparse"/>
-</package>

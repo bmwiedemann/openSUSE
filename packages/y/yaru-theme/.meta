@@ -1,5 +1,0 @@
-<package name="yaru-theme" project="openSUSE:Factory">
-  <title>Yaru theme from the Ubuntu community</title>
-  <description>This is the theme shaped by the community on the Ubuntu hub.</description>
-  <devel project="X11:Unity" package="yaru-theme"/>
-</package>

@@ -1,5 +1,0 @@
-<package name="python-minio" project="openSUSE:Factory">
-  <title></title>
-  <description>Minio Python Library for Amazon S3 Compatible Cloud Storage for Python.</description>
-  <devel project="devel:languages:python" package="python-minio"/>
-</package>

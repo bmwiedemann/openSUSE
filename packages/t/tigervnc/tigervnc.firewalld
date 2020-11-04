@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>VNC display :1</short>
-  <description>VNC is protocol for remote desktop. The TigerVNC service and the vncmanager service use VNC display number :1.</description>
-  <port protocol="tcp" port="5901"/>
-</service>
-

@@ -1,5 +1,0 @@
-<package name="python-ruamel.yaml.cmd" project="openSUSE:Factory">
-  <title>python-ruamel.yaml.cmd</title>
-  <description>Command line utility to manipulate YAML files</description>
-  <devel project="devel:languages:python" package="python-ruamel.yaml.cmd"/>
-</package>

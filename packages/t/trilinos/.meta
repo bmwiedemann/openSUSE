@@ -1,5 +1,0 @@
-<package name="trilinos" project="openSUSE:Factory">
-  <title>A collection of libraries of numerical algorithms</title>
-  <description>Trilinos is a collection of compatible software packages that support parallel linear algebra computations, solution of linear, non-linear and eigen systems of equations and related capabilities. The majority of packages are written in C++ using object-oriented techniques. All packages are self-contained, with the Trilinos top layer providing a common look-and-feel and infrastructure.</description>
-  <devel project="science" package="trilinos"/>
-</package>

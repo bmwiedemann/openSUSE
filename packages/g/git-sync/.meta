@@ -1,5 +1,0 @@
-<package name="git-sync" project="openSUSE:Factory">
-  <title>git-sync</title>
-  <description>Safe and simple one-script git synchronization</description>
-  <devel project="devel:tools:scm" package="git-sync"/>
-</package>

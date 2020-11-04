@@ -1,6 +1,0 @@
-<package name="python-humanfriendly" project="openSUSE:Factory">
-  <title>python-humanfriendly</title>
-  <description>iHuman friendly input/output for text interfaces using Python https://humanfriendly.readthedocs.org</description>
-  <devel project="devel:languages:python" package="python-humanfriendly"/>
-  <url>https://github.com/xolox/python-humanfriendly</url>
-</package>

@@ -1,6 +1,0 @@
-<package name="ufiformat" project="openSUSE:Factory">
-  <title>Low-level format tool for USB floppy drives under Linux</title>
-  <description>ufiformat is a tool to low-level format USB floppy disks.
-</description>
-  <devel project="hardware" package="ufiformat"/>
-</package>

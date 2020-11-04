@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Exec=/usr/bin/set_trusted.sh
-Name=Set trusted
-Comment=Set desktop file trusted
-Terminal=false
-OnlyShowIn=GNOME
-Type=Application
-X-GNOME-Autostart-enabled=true

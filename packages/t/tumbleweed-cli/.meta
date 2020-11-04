@@ -1,5 +1,0 @@
-<package name="tumbleweed-cli" project="openSUSE:Factory">
-  <title>Tumbleweed CLI</title>
-  <description>Command line interface for interacting with tumbleweed snapshots.</description>
-  <devel project="openSUSE:Tools" package="tumbleweed-cli"/>
-</package>

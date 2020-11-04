@@ -1,5 +1,0 @@
-<package name="knewstuff" project="openSUSE:Factory">
-  <title>knewstuff</title>
-  <description>KNewStuff</description>
-  <devel project="KDE:Frameworks5" package="knewstuff"/>
-</package>

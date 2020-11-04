@@ -1,7 +1,0 @@
-<package name="wm-icons" project="openSUSE:Factory">
-  <title>Window Manager Icons, themable icon distribution</title>
-  <description>The Window Manager Icons is an efficient icon distribution designed to
-be standardized and configurable.  Includes several themed icon sets,
-scripts, and configurations for several window managers.</description>
-  <devel project="M17N" package="wm-icons"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="libgdamm" project="openSUSE:Factory">
-  <title>C++ wrappers for libgda</title>
-  <description>C++ wrappers for libgda. libgdamm is part of a set of powerful
-C++ bindings for the GNOME libraries, which provide additional
-functionality above GTK+/gtkmm.
-
-</description>
-  <devel project="GNOME:Factory" package="libgdamm"/>
-</package>

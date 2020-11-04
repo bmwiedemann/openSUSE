@@ -1,8 +1,0 @@
-<package name="lsdvd" project="openSUSE:Factory">
-  <title>A ls for video DVDs</title>
-  <description>A tool to display the directory of a video DVDs
-
-</description>
-  <devel project="multimedia:apps" package="lsdvd"/>
-  <url>https://sourceforge.net/projects/lsdvd</url>
-</package>

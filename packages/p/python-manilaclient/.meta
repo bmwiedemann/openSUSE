@@ -1,5 +1,0 @@
-<package name="python-manilaclient" project="openSUSE:Factory">
-  <title>OpenStack shared file system service API client</title>
-  <description>This is a client for the OpenStack shared file system service API (Manila).</description>
-  <devel project="Cloud:OpenStack:Factory" package="python-manilaclient"/>
-</package>

@@ -1,9 +1,0 @@
-<package name="jsmn" project="openSUSE:Factory">
-  <title>Minimalistic JSON parser library in C</title>
-  <description>jsmn (pronounced like ‘jasmine’) is a minimalistic JSON parser in C with a
-focus on simplicity and efficiency.
-
-</description>
-  <devel project="devel:libraries:c_c++" package="jsmn"/>
-  <url>http://zserge.com/jsmn.html</url>
-</package>

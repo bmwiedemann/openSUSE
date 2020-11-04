@@ -1,5 +1,0 @@
-<package name="python-ijson" project="openSUSE:Factory">
-  <title></title>
-  <description>Iterative JSON parser with a standard Python iterator interface.</description>
-  <devel project="devel:languages:python" package="python-ijson"/>
-</package>

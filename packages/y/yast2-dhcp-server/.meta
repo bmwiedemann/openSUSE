@@ -1,6 +1,0 @@
-<package name="yast2-dhcp-server" project="openSUSE:Factory">
-  <title>YaST2 - DHCP Server Configuration</title>
-  <description>This package contains the YaST2 component for DHCP server
-configuration.</description>
-  <devel project="YaST:Head" package="yast2-dhcp-server"/>
-</package>

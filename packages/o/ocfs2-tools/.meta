@@ -1,8 +1,0 @@
-<package name="ocfs2-tools" project="openSUSE:Factory">
-  <title>Oracle Cluster File System 2 Core Tools</title>
-  <description>OCFS is the Oracle Cluster File System.
-
-This package contains the core user-space tools needed for creating and
-managing the file system.</description>
-  <devel project="network:ha-clustering:Factory" package="ocfs2-tools"/>
-</package>

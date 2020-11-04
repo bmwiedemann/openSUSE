@@ -1,7 +1,0 @@
-<package name="xplatproviders" project="openSUSE:Factory">
-  <title></title>
-  <description>
-
-  </description>
-  <devel project="systemsmanagement:wbem" package="xplatproviders"/>
-</package>

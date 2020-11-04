@@ -1,9 +1,0 @@
-<services>
- <service name="download_url" mode="disabled">
-   <param name="protocol">https</param>
-   <param name="host">download.gnome.org</param>
-   <param name="path">sources/gdk-pixbuf/2.40/gdk-pixbuf-2.40.0.tar.xz</param>
- </service>
- <service name="set_version" mode="disabled" />
-</services>
-

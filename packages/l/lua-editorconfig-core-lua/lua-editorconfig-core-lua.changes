@@ -1,9 +1,0 @@
--------------------------------------------------------------------
-Mon Jul  6 19:03:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
-
-- Add lua54 as new build target
-
--------------------------------------------------------------------
-Thu Mar 26 11:44:08 UTC 2020 - Matej Cepl <mcepl@suse.com>
-
-- Initial commit. For lua53 only (requires >= 5.2)

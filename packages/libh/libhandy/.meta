@@ -1,8 +1,0 @@
-<package name="libhandy" project="openSUSE:Factory">
-  <title>A GTK+ library to develop UI for mobile devices</title>
-  <description>libhandy is a library to help with developing UI for mobile devices using GTK+/GNOME.
-
-</description>
-  <devel project="GNOME:Factory" package="libhandy"/>
-  <url>https://source.puri.sm/Librem5/libhandy/</url>
-</package>

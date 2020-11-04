@@ -1,2 +1,0 @@
-# Filter out pointless libgxps-tools.x86_64: W: shlib-policy-missing-lib
-addFilter("shlib-policy-missing-lib")

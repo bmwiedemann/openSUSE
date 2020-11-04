@@ -1,9 +1,0 @@
-<package name="sfml2" project="openSUSE:Factory">
-  <title>Free multimedia C++ API</title>
-  <description>SFML is a free multimedia C++ API that provides you low and high level access to graphics, input, audio, etc.
-SFML is a portable and easy to use multimedia API written in C++. You can see it as a modern, object-oriented alternative to SDL.
-SFML is composed of several packages to perfectly suit your needs. You can use SFML as a minimal windowing system to interface with OpenGL, or as a fully-featured multimedia library for building games or interactive programs.
-
-</description>
-  <devel project="games" package="sfml2"/>
-</package>

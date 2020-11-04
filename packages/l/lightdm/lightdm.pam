@@ -1,5 +1,0 @@
-#%PAM-1.0
-auth	 include	xdm
-account	 include	xdm
-password include	xdm
-session	 include	xdm

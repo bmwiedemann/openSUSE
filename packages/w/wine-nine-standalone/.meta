@@ -1,5 +1,0 @@
-<package name="wine-nine-standalone" project="openSUSE:Factory">
-  <title>Wine Nine standalone </title>
-  <description>The Wine Gallium Nine Standalone</description>
-  <devel project="Emulators" package="wine-nine-standalone"/>
-</package>

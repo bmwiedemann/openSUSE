@@ -1,4 +1,0 @@
-# Even after running fdupes there are files with the same content.
-addFilter("envoy-build-tools.* files-duplicate")
-# There are some .bazelrc files which are hidden, but they should be there.
-addFilter("envoy-build-tools.* hidden-file-or-dir")

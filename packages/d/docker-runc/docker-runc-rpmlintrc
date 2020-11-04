@@ -1,2 +1,0 @@
-# -test is something that is used internally and isn't actually shipped -- it's a pseudo-source package.
-addFilter ("^docker-runc(-kubic)?-test.*")

@@ -1,5 +1,0 @@
-<package name="steamtricks" project="openSUSE:Factory">
-  <title>steamtricks</title>
-  <description>steamtricks provides workarounds for problems with Steam on Linux.</description>
-  <devel project="games:tools" package="steamtricks"/>
-</package>

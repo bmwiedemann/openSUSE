@@ -1,5 +1,0 @@
-<package name="QMPlay2" project="openSUSE:Factory">
-  <title></title>
-  <description>QMPlay2 is a video player, it can play and stream all formats supported by ffmpeg and libmodplug (including J2B). It has an integrated Youtube browser.</description>
-  <devel project="multimedia:apps" package="QMPlay2"/>
-</package>

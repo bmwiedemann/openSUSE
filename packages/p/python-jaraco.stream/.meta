@@ -1,5 +1,0 @@
-<package name="python-jaraco.stream" project="openSUSE:Factory">
-  <title>Routines for dealing with data streams</title>
-  <description>Routines for handling streaming data, including a set of generators for loading gzip data on the fly.</description>
-  <devel project="devel:languages:python" package="python-jaraco.stream"/>
-</package>
