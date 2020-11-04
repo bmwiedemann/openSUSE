@@ -490,4 +490,21 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
     <comment></comment>
     <requestid>798580</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5ab138242ba85f1d76457778a4c56904</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Better UI for lxqt-config-brightness.
+  * Avoid C++11 range for possible container detachment.
+  * Only use QStringLiteral where it avoids allocations.
+  * Initialize monitor settings config in &quot;lxqt-config-monitor/monitor.h&quot;.
+  * Use QFlags default constructor.
+  * Fixed a crash in lxqt-config-monitor.
+  * Fixed type associations and added &quot;Default Application&quot;.
+  * Detailed palette customization in lxqt-config-appearance.
+  * Remember sizes of appearance and file associations dialogs.</comment>
+    <requestid>846002</requestid>
+  </revision>
 </revisionlist>
