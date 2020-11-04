@@ -1615,4 +1615,17 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
     <comment></comment>
     <requestid>833186</requestid>
   </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>54ec9de440ff4f43ff1f22b1f1e87dfd</srcmd5>
+    <version>7.1.0</version>
+    <time>1604510808</time>
+    <user>dimstar_suse</user>
+    <comment>- Use cmake() style BuildRequires when possible.
+
+- Remove several unused build dependencies (doxygen, graphviz,
+  all of boost but libboost_graph).
+- Remove __DATE_/__TIME__ mangling, handled by SOURCE_DATE_EPOCH.
+- Bump disk constraints, TW needs 9.3 GB currently.</comment>
+    <requestid>845791</requestid>
+  </revision>
 </revisionlist>
