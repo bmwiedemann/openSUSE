@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:56:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Made closing of tab on middle-clicking optional.
+  * Avoid loop variable copy.
+  * Emit signals with Q_EMIT.
+  * Use the default constructor of QFlags.
+  * Dropped qmake .pro file.
+  * Made the color scheme dirs comply with XDG Base Directory Specification.
+  * Added an optopn for openning the new tab to the right of the active tab.
+  * Added virtual destructor to a base class.
+  * Let QStandardPaths::locateAll() handle application name.
+  * Put drop-down QTerminal on screen with cursor.
+
+-------------------------------------------------------------------
 Wed Jun 24 10:57:05 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Don't package filesystem dirs 
