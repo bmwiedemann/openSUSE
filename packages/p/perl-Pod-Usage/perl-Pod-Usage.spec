@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Usage
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,26 @@
 
 
 Name:           perl-Pod-Usage
-Version:        1.70
+Version:        2.01
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 %define cpan_name Pod-Usage
-Summary:        Print a usage message from embedded pod documentation
+Summary:        Extracts POD documentation and shows usage information
 License:        GPL-1.0-or-later OR Artistic-1.0
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAREKR/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Pod::Text) >= 4
-Requires:       perl(Pod::Text) >= 4
+BuildRequires:  perl(Pod::Perldoc) >= 3.28
+BuildRequires:  perl(Pod::Simple) >= 3.40
+BuildRequires:  perl(Pod::Text) >= 4.00
+Requires:       perl(Pod::Perldoc) >= 3.28
+Requires:       perl(Pod::Simple) >= 3.40
+Requires:       perl(Pod::Text) >= 4.00
 %{perl_requires}
 
 %description
@@ -79,6 +83,7 @@ popd >/dev/null
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc CHANGES README
+%doc Changes README
+%license LICENSE
 
 %changelog
