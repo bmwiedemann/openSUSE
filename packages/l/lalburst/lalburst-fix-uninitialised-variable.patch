@@ -1,0 +1,14 @@
+Index: lalburst-1.5.2/python/lalburst/cs_gamma.c
+===================================================================
+--- lalburst-1.5.2.orig/python/lalburst/cs_gamma.c
++++ lalburst-1.5.2/python/lalburst/cs_gamma.c
+@@ -220,7 +220,7 @@ static double nu(double Gmu, double Gamm
+ 	double cuspdist;
+ 	double teq=8.122570474611143e+11;
+ 	double crateR, crateRadStragglers, crateM;
+-	double crate;
++	double crate = 0;
+ 
+ 	if (strcmp(model,"Siemens06") == 0) {
+ 		alpha=1e-1;
+
