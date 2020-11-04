@@ -1,7 +1,7 @@
 #
 # spec file for package qps
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,16 +31,16 @@ BuildRequires:  gcc-c++
 BuildRequires:  glibc
 BuildRequires:  glibc-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5WindowSystem) >= 5.5.0
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(lxqt) >= 0.15.0
 BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12
 BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(lxqt) >= 0.16.0
 BuildRequires:  pkgconfig(xrender)
 
 %description

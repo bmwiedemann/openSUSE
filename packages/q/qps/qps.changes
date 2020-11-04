@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 14:14:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * Avoided compiler warnings.
+  * Avoided overflow in "proc.cpp".
+
+-------------------------------------------------------------------
 Wed Jun 10 10:01:40 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Change to verified source and add keyring
