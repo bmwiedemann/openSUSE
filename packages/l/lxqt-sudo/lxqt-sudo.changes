@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:50:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Use QFlags default constructor.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:03:56 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-sudo.keyring to tsujan's key
