@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -31,17 +31,16 @@ Patch0:         pcmanfm-qt-default-wallpaper.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libfm-qt) >= 0.15.1
-BuildRequires:  pkgconfig(libmenu-cache) >= 0.4.0
+BuildRequires:  pkgconfig(libfm-qt) >= 0.16.0
 BuildRequires:  pkgconfig(lxqt) >= 0.15.0
 #bsc#1100208 - mvetter@suse.de
 Requires:       wallpaper-branding-openSUSE
