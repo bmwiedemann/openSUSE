@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 05:08:44 UTC 2020 - nick wang <nwang@suse.com>
+
+- bsc#1178373, include "/etc/sysconfig/nfs" into csync2.cfg
+- Version 4.3.4
+
+-------------------------------------------------------------------
 Tue Aug 25 01:18:40 UTC 2020 - nick wang <nwang@suse.com>
 
 - bsc#1175648, fix UI label switch to turn off csync2 service
