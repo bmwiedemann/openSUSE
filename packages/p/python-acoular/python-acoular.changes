@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  2 14:36:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 20.10
+  * Supports Python 3.6, 3.7, 3.8
+  * New base classes for time signal processing: Filter, FilterBank
+    * New filter classes: TimeExpAverage, FiltFreqWeight, OctaveFilterBank
+    * Demo script is now part of module (see Getting Started for usage)
+  * New class for processing sound card input: SoundDeviceSamplesGenerator
+  * New class for cumulative averaging: TimeCumAverage
+  * New grid classes ImportGrid, LineGrid, MergeGrid
+  * New versatile integration sector classes RectSector, CircSector, PolySector, ConvexSector, MultiSector
+  * New class for mixing multiple channels ChannelMixer
+  * New class for using arbitrary sources as signal: GenericSignalGenerator
+  * New time-domain beamforming classes for CLEAN-T method: BeamformerCleant, BeamformerCleantSq, BeamformerCleantTraj, BeamformerCleantSqTraj
+  * Adds possibility to store/load metadata to/from HDF files with WriteH5/TimeSamples classes
+  * New submodule tools containing several helper functions, e.g. for data aggregation
+  * WriteWAV: user can optionally set name of output wav file
+  * Bugfix: PowerSpectra.freq_range / .ind_low / .ind_high are now correctly updated depending on changed attributes
+  * Bugfix: SineGenerator amplitude is now set via amplitude attribute
+  * Some minor fixes
+
+-------------------------------------------------------------------
 Mon Apr 27 08:39:59 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 20.2
