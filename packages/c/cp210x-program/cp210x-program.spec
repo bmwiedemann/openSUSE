@@ -15,20 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define realver 0-4
 Name:           cp210x-program
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        EEPROM tool for Silabs CP210x USB-Serial adapters
 License:        LGPL-2.1-only
 Group:          Hardware/Other
 URL:            http://cp210x-program.sourceforge.net/
 #Git-Clone:     https://github.com/VCTLabs/cp210x-program.git
-Source:         https://github.com/VCTLabs/cp210x-program/archive/%{name}-0-3.tar.gz
-# PATCH-FIX-UPSTREAM: documentation fixes
-Patch0:         0001-docs-fix-example-of-reading-EEPROM.patch
-# PATCH-FIX-UPSTREAM: python3 compatibility
-Patch1:         https://github.com/VCTLabs/cp210x-program/pull/3.patch
+Source:         https://github.com/VCTLabs/cp210x-program/archive/%{name}-%{realver}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
@@ -42,9 +38,7 @@ FTDIs and PL2303). The CP210x has a EEPROM on the chip which can be programmed
 with this tool via USB.
 
 %prep
-%setup -q -n %{name}-%{name}-0-3/
-%patch0 -p1
-%patch1 -p1
+%setup -q -n %{name}-%{name}-%{realver}
 
 %build
 %python3_build

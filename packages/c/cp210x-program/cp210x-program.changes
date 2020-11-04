@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:54:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.4
+  * Port to Python3
+  * Add basic tests
+  * Fix -p option
+  * docs: fix example of reading EEPROM
+- Drop not longer used patches (included upstream)
+  * 0001-docs-fix-example-of-reading-EEPROM.patch
+  * https://github.com/VCTLabs/cp210x-program/pull/3.patch
+
+-------------------------------------------------------------------
 Sun Oct 25 10:11:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Use updated patch for the python3 conversion
