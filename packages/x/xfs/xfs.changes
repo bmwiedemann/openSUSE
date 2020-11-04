@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  3 15:17:06 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop '-f' option with %service_del_preun/%service_del_postun
+
+  With %service_del_preun, the option is already ignored with as
+  support for DISABLE_STOP_ON_REMOVAL has been dropped.
+
+  With %service_del_postun, this option shouldn't be needed besides
+  very few special cases. But this package doesn't seem to belong to
+  this category.
+
+-------------------------------------------------------------------
 Mon Jul 27 15:30:53 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved config file to /usr/etc/X11/fs (boo#1173050)
