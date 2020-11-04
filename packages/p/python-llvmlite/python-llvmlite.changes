@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 14:56:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.34.0
+  * This release upgrades to LLVM 10 and drops support for LLVM versions older than 9.
+    * except aarch64, which stays on LLVM 9 for some reason
+- Drop support-clang9.patch
+
+-------------------------------------------------------------------
 Sun Oct 25 22:16:52 UTC 2020 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Use default compiler (g++) instead of clang++. (boo#1174233)
