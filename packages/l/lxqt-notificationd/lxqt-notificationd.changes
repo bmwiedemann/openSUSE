@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:41:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Avoided container detachment.
+  * Dropped deprecated QProcess method.
+  * Added an option for showing notifications in the screen with
+    the mouse pointer.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:52:42 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-notificationd.keyring to tsujan's key
