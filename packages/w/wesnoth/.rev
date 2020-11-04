@@ -135,4 +135,13 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>836244</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ec1e1aa6d3228562c257c17c8be0f34</srcmd5>
+    <version>1.15.6</version>
+    <time>1604510688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.6:
+  See https://raw.githubusercontent.com/wesnoth/wesnoth/1.15.6/changelog.md</comment>
+    <requestid>845301</requestid>
+  </revision>
 </revisionlist>
