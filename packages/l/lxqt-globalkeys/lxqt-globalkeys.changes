@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:39:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Added shortcut to configure display.
+  * Silenced unused function parameters warnings.
+  * Do not grab keys of disabled client actions.
+  * Do not requite daemon restart for enabling shortcuts.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:51:37 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-globalkeys.keyring to tsujan's key

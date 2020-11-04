@@ -338,4 +338,16 @@
     <comment></comment>
     <requestid>798549</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3d44ceae12d45766366397e12567731e</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Added shortcut to configure display.
+  * Silenced unused function parameters warnings.
+  * Do not grab keys of disabled client actions.
+  * Do not requite daemon restart for enabling shortcuts.</comment>
+    <requestid>846003</requestid>
+  </revision>
 </revisionlist>
