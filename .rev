@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a70968974ec7f607413b90f00a958ca8</srcmd5>
+    <version>0.9.3</version>
+    <time>1574783521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746285</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cc412f094ddc8f11c3789f8672ce339c</srcmd5>
+    <version>0.12.0</version>
+    <time>1578950171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.0
+  - Performance fixes
+  - Searchable Logs
+  - APIServer Dud
+  - FullScreen Logs
+
+- Update to version 0.11.2
+  - Many bug fixes
+  - Prelimary support for Helm 3 charts
+  - Major rework of the core
+  - Custom skins per cluster</comment>
+    <requestid>763924</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28a444ca1a50798d04e0eee39a36fd75</srcmd5>
+    <version>0.13.0</version>
+    <time>1579729324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.0
+  - Add Dracula Skin
+  - Add XRay Vision
+  - Bug fixes
+- Update vendor.tar.gz</comment>
+    <requestid>765735</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3035ca4b6fecbf42dbfa1b239e1380a</srcmd5>
+    <version>0.15.2</version>
+    <time>1582299567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.2
+  - Many bug fixes
+  - Many new features</comment>
+    <requestid>775135</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8e3557a133bb9a2ff0dd41a14426b0c</srcmd5>
+    <version>0.18.1</version>
+    <time>1585995521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.1
+  - Many bug fixes
+  - Many new features (auto suggestions, revisited logs, k9 plugins)
+  - see https://github.com/derailed/k9s/releases/ (forwarded request 789866 from mvyskocil)</comment>
+    <requestid>789869</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ec1237af820e8befddcfe251f48142b0</srcmd5>
+    <version>0.21.7</version>
+    <time>1597955241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827439</requestid>
+  </revision>
+</revisionlist>
