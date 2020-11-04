@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:56:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Fix javadoc build on some systems
+
+-------------------------------------------------------------------
 Mon Mar  2 11:31:02 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of apache-commons-ognl git checkout from

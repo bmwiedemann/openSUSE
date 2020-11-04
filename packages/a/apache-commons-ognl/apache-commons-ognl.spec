@@ -54,10 +54,11 @@ This package contains the API documentation for %{name}.
 %{mvn_file} :%{short_name} %{short_name} %{name}
 
 %build
-%{mvn_build} -f \
+%{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
+	-Dmaven.compiler.release=6 \
 %endif
+    -Dmaven.compiler.source=6
 
 %install
 %mvn_install
