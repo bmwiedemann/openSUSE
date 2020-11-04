@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Nov 01 15:18:44 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3+git20201027:
+  * Fixing code scanning alerts.
+  * Removing unnecessary dependencies.
+  * Adding codeql analysis
+  * Adjustments for KP_ALTERNATIVE option.
+  * Fixing 'kpalternative' option.
+  * Adjustments in the file dialog.
+  * Adding usefull gtk extension methods from pw3270 application.
+  * Enabling copy-as-image action.
+  * Adding "copy-as-html" action.
+  * Refactoring error popup.
+  * Adding signal for customized action fire.
+  * Checking for invalid key-file.
+  * Adding styles to popup dialog.
+  * Adding dynamic font spacing option on settings.
+  * Blinking SSL indicator while downloadin CRL.
+  * Fixing default keycode for "PF-12".
+  * Fixing warnings.
+  * Refactoring PFkey engine to allow remapping from accelerator dialog.
+  * Working on load/save settings engine.
+  * Changing SSL toggle to dropdown to allow more options.
+  * Fixing load/save popup return signals.
+  * Refactoring popup engine.
+  * Delaying "has_timer" signal to avoid thread issues.
+  * Adding property with the OIA-Timer state.
+  * Enabling keytable search.
+  * Allowing image formats on clipboard.
+  * Updating filename extension based on file type.
+  * Auto selecting format from file extension.
+  * Implementing "save as image".
+  * Allow to override build date with SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Thu Jun 04 18:30:11 UTC 2020 - perry.werneck@gmail.com
 
 - Update to version 5.3:
