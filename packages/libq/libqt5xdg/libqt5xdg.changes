@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:17:31 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  *￼Dropped deprecated QLinkedList.
+  *￼Code cleanup.
+  * Memory leaks are fixed.
+  *￼Fixed setting of default apps with GLib backend.
+  *￼Fixed (recommended) apps list given by GLib backend.
+  *￼Added a XdgDefaultApps class with email client, file
+    manager and web browser set/get methods.
+  *￼Used Qt's fix for too big SVG icons with scale factors > 1.
+  *￼Added methods to ￼XdgDefaultApps for getting special applications.
+  *￼Fixed unneeded URL encoding for %U/%u in "xdgdesktopfile.cpp".
+
+-------------------------------------------------------------------
 Mon Apr 27 10:45:27 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed libqt5xdg.keyring to tsujan's key
