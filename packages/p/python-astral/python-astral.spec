@@ -25,6 +25,10 @@ Summary:        Calculations for the position of the sun and moon
 License:        Apache-2.0
 URL:            https://github.com/sffjunkie/astral
 Source:         https://files.pythonhosted.org/packages/source/a/astral/astral-%{version}.tar.gz
+%if 0%{?suse_version} <= 1500
+# Not required for Tumbleweed
+BuildRequires:  %{python_module dataclasses}
+%endif
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
