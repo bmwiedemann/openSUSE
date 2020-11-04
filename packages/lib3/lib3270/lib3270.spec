@@ -1,7 +1,7 @@
 #
 # spec file for package lib3270
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) <2008> <Banco do Brasil S.A.>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,6 +22,7 @@ Version:        5.3
 Release:        0
 Summary:        TN3270 Access library
 License:        LGPL-3.0-only
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/PerryWerneck/lib3270
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.61
@@ -33,11 +34,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  m4
 BuildRequires:  pkgconfig
+BuildRequires:  xz
 BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  xz
 
 %if 0%{?centos_version}
 # CENTOS Requires gdb for debuginfo
@@ -50,11 +51,12 @@ TN3270 access library, originally designed as part of the pw3270 application.
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %define MAJOR_VERSION %(echo %{version} | cut -d. -f1)
-%define MINOR_VERSION %(echo %{version} | cut -d. -f2)
+%define MINOR_VERSION %(echo %{version} | cut -d. -f2 | cut -d+ -f1)
 %define _libvrs %{MAJOR_VERSION}_%{MINOR_VERSION}
 
 %package -n %{name}-%{_libvrs}
-Summary:    TN3270 Access library
+Summary:        TN3270 Access library
+Group:          Development/Libraries/C and C++
 
 %description -n %{name}-%{_libvrs}
 TN3270 access library, originally designed as part of the pw3270 application.
@@ -62,8 +64,9 @@ TN3270 access library, originally designed as part of the pw3270 application.
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %package devel
-Summary:    TN3270 Access library development files
-Requires:   %{name}-%{_libvrs} = %{version}
+Summary:        TN3270 Access library development files
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-%{_libvrs} = %{version}
 
 %description devel
 Header files for the TN3270 access library.

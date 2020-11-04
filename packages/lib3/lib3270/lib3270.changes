@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Oct 31 14:50:08 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3+git20201030:
+  * Fixing SSL connect error messages.
+  * Updating README.md
+  * Adding property methods.
+  * Adding method to get translated cursor position.
+  * Updating get host and get service methods.
+  * Allowing extended actions.
+  * On TN3270-E the model name should be "IBM-3279-4-E" and not "IBM-3279-4"
+  * Adding new SSL state active when downloading CRL.
+  * Moving SSL related method to their own include file.
+  * Removing unused code.
+  * Adding auto-cleanup macro for windows registry.
+  * Creating include dir and files based on operating system.
+  * Fixing charset conversion.
+  * wait_for_ready should wait for "reconnect" process to complete.
+  * Fixing popup dialog when connection fails.
+  * Host connect now respects timeout.
+  * Fixing keyboard lock status and program messages issues.
+  * Adding property to enable/disable the CRL download.
+  * Looking for performance issues in lib3270_wait_for_ready.
+  * Fixing timers.
+  * Refactoring timer engine to avoid an abnormal delay when calling wait_for_ready on windows.
+  * Adding userdata pointer on timer handle.
+  * Enabling dstrace by testprogram command-line option.
+  * Refactoring network subsystem for modularity.
+  * Updating popup handler replacement (required for IPC modules).
+  * Removing unnecessary callbacks from table.
+  * Refactoring and centralizing auto-reconnect feature.
+  * Using standard popup as default for ssl error.
+  * Adding retry option in the connection failed dialog.
+  * Refactoring popup engine.
+  * Removing unused D-Bus references. Updating keytable.
+  * Setting default keyvalue for PAs.
+  * Adding PA Key actions on the keytable.
+  * Clear & Kybdreset were missing in v3270's accelerator dialogs.
+  * Fixing unexpected hangs on windows version.
+
+-------------------------------------------------------------------
 Thu Jun 04 13:35:16 UTC 2020 - perry.werneck@gmail.com
 
 - Update to version 5.3:
