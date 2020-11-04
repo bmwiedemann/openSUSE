@@ -71,10 +71,10 @@ install -D -m 0755 %{SOURCE2} %{buildroot}%{_sbindir}/rcxfs
 %service_add_post xfs.service
 
 %preun
-%service_del_preun -f xfs.service
+%service_del_preun xfs.service
 
 %postun
-%service_del_postun -f xfs.service
+%service_del_postun xfs.service
 
 %files
 %defattr(-,root,root)
