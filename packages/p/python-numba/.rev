@@ -218,4 +218,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>809224</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>39cf4692e93758099632a6eaa33ed091</srcmd5>
+    <version>0.51.2</version>
+    <time>1604510783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845716</requestid>
+  </revision>
 </revisionlist>

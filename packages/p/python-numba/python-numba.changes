@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov  2 16:34:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.51.2
+  * The compilation chain is now based on LLVM 10 (Valentin Haenel).
+  * Numba has internally switched to prefer non-literal types over literal ones so
+    as to reduce function over-specialisation, this with view of speeding up
+    compile times (Siu Kwan Lam).
+  * On the CUDA target: Support for CUDA Toolkit 11, Ampere, and Compute
+    Capability 8.0; Printing of ``SASS`` code for kernels; Callbacks to Python
+    functions can be inserted into CUDA streams, and streams are async awaitable;
+    Atomic ``nanmin`` and ``nanmax`` functions are added; Fixes for various
+    miscompilations and segfaults. (mostly Graham Markall; call backs on
+    streams by Peter Würtz).
+  * Support for heterogeneous immutable lists and heterogeneous immutable string
+    key dictionaries. Also optional initial/construction value capturing for all
+    lists and dictionaries containing literal values (Stuart Archibald).
+  * A new pass-by-reference mutable structure extension type ``StructRef`` (Siu
+    Kwan Lam).
+  * Object mode blocks are now cacheable, with the side effect of numerous bug
+    fixes and performance improvements in caching. This also permits caching of
+    functions defined in closures (Siu Kwan Lam).
+  * The error handling and reporting system has been improved to reduce the size
+    of error messages, and also improve quality and specificity.
+  * The CUDA target has more stream constructors available and a new function for
+    compiling to PTX without linking and loading the code to a device. Further,
+    the macro-based system for describing CUDA threads and blocks has been
+    replaced with standard typing and lowering implementations, for improved
+    debugging and extensibility.
+- Better unpin llvmlite with unpin-llvmlite.patch to avoid breakages
+
+-------------------------------------------------------------------
 Wed May 27 07:24:32 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.49.1
