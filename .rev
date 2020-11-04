@@ -1,0 +1,413 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>59117a8b38fccd33d201f1cb0ae4e340</srcmd5>
+    <version>4.1.1</version>
+    <time>1168902478</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="29">
+    <srcmd5>56918bea0b0a9662330e36e453ef6bbf</srcmd5>
+    <version>4.1.1</version>
+    <time>1169471864</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="30">
+    <srcmd5>6b0135d4e0862417efe98e234ec10b07</srcmd5>
+    <version>4.1.1</version>
+    <time>1170686242</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91a973fd67d16448fd2c7cfd62aa6107</srcmd5>
+    <version>4.1.2</version>
+    <time>1173696869</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9d509023cd8f0e4b28d4a008ab42d652</srcmd5>
+    <version>4.1.2</version>
+    <time>1174592672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>4c583b40a8b438449a8403dfcbb7f631</srcmd5>
+    <version>4.1.2</version>
+    <time>1174951628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8882ea192b961da5fd874293d44ad299</srcmd5>
+    <version>4.1.2</version>
+    <time>1175161952</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>4a591ae84fdb71564501f01b548c6f9f</srcmd5>
+    <version>4.1.2</version>
+    <time>1177362933</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>09ebbbc9693a61bd0f3cccdb3c1e3bd0</srcmd5>
+    <version>4.1.3</version>
+    <time>1177542070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="51">
+    <srcmd5>f21150098941d01383ea09e72bd33507</srcmd5>
+    <version>4.1.3</version>
+    <time>1193069707</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="59">
+    <srcmd5>ea58209286a0d888478665c367c246f3</srcmd5>
+    <version>4.1.3</version>
+    <time>1195214310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="62">
+    <srcmd5>c36749e2a7b95ee904032fd4d4840185</srcmd5>
+    <version>4.1.3</version>
+    <time>1195679630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b09e4c1d6b01e75de27d02fc7a20d45b</srcmd5>
+    <version>4.3.0</version>
+    <time>1200604878</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5546eff34bdd5cbfda923818d9163385</srcmd5>
+    <version>4.3.1</version>
+    <time>1207581624</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>14c2c433bde7ff79455d5e1846bf3b72</srcmd5>
+    <version>4.3.1</version>
+    <time>1208188580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="51">
+    <srcmd5>14c2c433bde7ff79455d5e1846bf3b72</srcmd5>
+    <version>4.3.1</version>
+    <time>1208188580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a86ab114b67748a012a393283ed72c69</srcmd5>
+    <version>4.4.1</version>
+    <time>1223907452</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>579ecc71e29d5036bd059cae9f9fd3a0</srcmd5>
+    <version>4.5.0</version>
+    <time>1251843028</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 18563 from user hennevogel
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>e2505c71af2a833c8136d70570da55d5</srcmd5>
+    <version>4.5.0</version>
+    <time>1251918073</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 19529 from user computersalat
+</comment>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>e2505c71af2a833c8136d70570da55d5</srcmd5>
+    <version>4.5.0</version>
+    <time>1251918073</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 19529 from user computersalat
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>04d36edf271920fc9c07bb2ffb2161ca</srcmd5>
+    <version>4.6.0</version>
+    <time>1258390182</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 24154 from user computersalat
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c8f6fb95056e63aa124e3731eba27c27</srcmd5>
+    <version>4.7.0</version>
+    <time>1267955716</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 34214 from user coolo
+</comment>
+    <requestid>34214</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2554bcb0abd5fd0b448166fdbce5707b</srcmd5>
+    <version>4.7.0</version>
+    <time>1268923247</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a8c3e8f41278bda01e49753783089689</srcmd5>
+    <version>4.7.0</version>
+    <time>1278336119</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 42465 from user computersalat
+</comment>
+    <requestid>42465</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>a8c3e8f41278bda01e49753783089689</srcmd5>
+    <version>4.7.0</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>a8c3e8f41278bda01e49753783089689</srcmd5>
+    <version>4.7.0</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c8ac83666d59bfcbd307de368a4ab6df</srcmd5>
+    <version>4.8.0</version>
+    <time>1279920106</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 43580 from user computersalat
+</comment>
+    <requestid>43580</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9b1d47c216f3dc1de2a02ed89021101a</srcmd5>
+    <version>4.8.0</version>
+    <time>1285105174</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 46028 from user computersalat
+</comment>
+    <requestid>46028</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a2fa97588c8667bb3cf2f9404048199</srcmd5>
+    <version>4.8.1</version>
+    <time>1287010482</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/courier-imap based on submit request 50341 from user computersalat
+</comment>
+    <requestid>50341</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>2a2fa97588c8667bb3cf2f9404048199</srcmd5>
+    <version>4.8.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5da1134bbe0ad1037d4493877aa3afd9</srcmd5>
+    <version>4.9.1</version>
+    <time>1305897832</time>
+    <user>saschpe</user>
+    <comment>update to 4.9.1</comment>
+    <requestid>68971</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a2dfa710fa9b3932d977cd1b46036a0a</srcmd5>
+    <version>4.9.3</version>
+    <time>1310373036</time>
+    <user>saschpe</user>
+    <comment>update to 4.9.3</comment>
+    <requestid>75960</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>497fcf413c8b89b89ff893dc8f2a9fe4</srcmd5>
+    <version>4.9.3</version>
+    <time>1318501089</time>
+    <user>lrupp</user>
+    <comment>adapt changes made to authlib, required</comment>
+    <requestid>87393</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>497fcf413c8b89b89ff893dc8f2a9fe4</srcmd5>
+    <version>4.9.3</version>
+    <time>1319181824</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>db89ac0fe6cb6efdb0f5d6a7fb2144e5</srcmd5>
+    <version>4.9.3</version>
+    <time>1323191057</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>db89ac0fe6cb6efdb0f5d6a7fb2144e5</srcmd5>
+    <version>4.9.3</version>
+    <time>1340183249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fb030d663126953affac045a21441aa9</srcmd5>
+    <version>4.11.0</version>
+    <time>1348380113</time>
+    <user>coolo</user>
+    <comment>update to 4.11.0 (forwarded request 135249 from computersalat)</comment>
+    <requestid>135253</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>db87eed421c60b43cf7fef83e8324612</srcmd5>
+    <version>4.12.0</version>
+    <time>1358431775</time>
+    <user>coolo</user>
+    <comment>update to 4.12.0 (forwarded request 148651 from computersalat)</comment>
+    <requestid>148778</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>db87eed421c60b43cf7fef83e8324612</srcmd5>
+    <version>4.12.0</version>
+    <time>1359108769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>db87eed421c60b43cf7fef83e8324612</srcmd5>
+    <version>4.12.0</version>
+    <time>1379662149</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>4d55872dbd55d376164f46b01496cead</srcmd5>
+    <version>4.14</version>
+    <time>1386182945</time>
+    <user>coolo</user>
+    <comment>update to 0.14 (forwarded request 206677 from computersalat)</comment>
+    <requestid>206709</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>cb685649257b843b8533f819ca55a49b</srcmd5>
+    <version>4.14</version>
+    <time>1389277723</time>
+    <user>coolo</user>
+    <comment>I am about to drop fam package in factory (more then 10 years unmaintained in upstream), so please forward this to avoid breakage (forwarded request 213180 from adrianSuSE)</comment>
+    <requestid>213273</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>158be41b449f5fcbd5f8d0d2258c29bf</srcmd5>
+    <version>4.15</version>
+    <time>1395295485</time>
+    <user>coolo</user>
+    <comment>update to 4.15, add systemd stuff (forwarded request 226279 from computersalat)</comment>
+    <requestid>226280</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>158be41b449f5fcbd5f8d0d2258c29bf</srcmd5>
+    <version>4.15</version>
+    <time>1409300677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>2bf7d7ca0f72f19a0d267d50a84a88e8</srcmd5>
+    <version>4.15</version>
+    <time>1411721549</time>
+    <user>coolo</user>
+    <comment>courier-imap.service (forwarded request 252312 from computersalat)</comment>
+    <requestid>252313</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3e7f6821c8971d53c134299fffc06cfe</srcmd5>
+    <version>4.16.2</version>
+    <time>1438794869</time>
+    <user>coolo</user>
+    <comment>update to 4.16.2 (forwarded request 320487 from computersalat)</comment>
+    <requestid>320488</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b3b27080959e24c42b4e6f582bd8ed1c</srcmd5>
+    <version>4.17.1</version>
+    <time>1463498186</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.17.1 (forwarded request 396002 from computersalat)</comment>
+    <requestid>396003</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>02106e211804e93cadf1f97c0e35b5df</srcmd5>
+    <version>4.17.1</version>
+    <time>1464014367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397211</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>a4ad7a99efb2e07a121cee057d1950d9</srcmd5>
+    <version>4.17.1</version>
+    <time>1489345240</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>476937</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0da0e3e76fc7b35308be0d5ba88483de</srcmd5>
+    <version>4.18.2</version>
+    <time>1512651206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548103</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>5500c452eb12c0a7320915a8c2588e57</srcmd5>
+    <version>4.18.2</version>
+    <time>1549624221</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672070</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>4e49134048167cb7e94a0f7c007bcadd</srcmd5>
+    <version>4.18.2</version>
+    <time>1562056680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710237</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>364f8e8ffbf4e58beb5392dfa7aa5f5c</srcmd5>
+    <version>4.18.2</version>
+    <time>1563790884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717390</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4c0c557993fd4107bd7b04cdf081049a</srcmd5>
+    <version>5.0.8</version>
+    <time>1580724836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769134</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8fe814ee623fbae3990c24453e25c6b8</srcmd5>
+    <version>5.0.10</version>
+    <time>1591381504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811838</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>19dc42e082314c57a2dae2da7e268b34</srcmd5>
+    <version>5.0.11</version>
+    <time>1592939097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.11
+  * courier-authlib API update.
+  * Add AC_PROG_CC_C99 to configure
+- remove courier-imap-stdc.patch (no longer needed)
+</comment>
+    <requestid>816098</requestid>
+  </revision>
+</revisionlist>
