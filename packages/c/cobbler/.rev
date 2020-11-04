@@ -1167,4 +1167,12 @@ D fixes-a-template-rendering-error.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>838538</requestid>
   </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>608ca8ff1c8c47aea4c5ac34916ead86</srcmd5>
+    <version>3.1.2</version>
+    <time>1604510861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845906</requestid>
+  </revision>
 </revisionlist>
