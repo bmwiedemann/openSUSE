@@ -349,4 +349,22 @@
     <comment></comment>
     <requestid>798582</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4c00a7e0da9ae7aa7542cfd99a127a8e</srcmd5>
+    <version>3.6.0</version>
+    <time>1604510872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0:
+  *￼Dropped deprecated QLinkedList.
+  *￼Code cleanup.
+  * Memory leaks are fixed.
+  *￼Fixed setting of default apps with GLib backend.
+  *￼Fixed (recommended) apps list given by GLib backend.
+  *￼Added a XdgDefaultApps class with email client, file
+    manager and web browser set/get methods.
+  *￼Used Qt's fix for too big SVG icons with scale factors &gt; 1.
+  *￼Added methods to ￼XdgDefaultApps for getting special applications.
+  *￼Fixed unneeded URL encoding for %U/%u in &quot;xdgdesktopfile.cpp&quot;.</comment>
+    <requestid>845994</requestid>
+  </revision>
 </revisionlist>
