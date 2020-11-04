@@ -230,4 +230,14 @@
     <comment></comment>
     <requestid>798545</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f796dc083985bc11988af896ba7ef732</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Bumped version to 0.16.0.
+  * Translation updates.</comment>
+    <requestid>846005</requestid>
+  </revision>
 </revisionlist>
