@@ -250,4 +250,14 @@
   * Made the window color configurable.</comment>
     <requestid>810524</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>866f9c3c0eb1c7349d4a274444016fbf</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510881</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Do not reset widget palettes on changing style.
+  * Support more palette colors for better customization.</comment>
+    <requestid>845998</requestid>
+  </revision>
 </revisionlist>
