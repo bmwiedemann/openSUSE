@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>670347fc6ef4f47fedb2169a9442a800</srcmd5>
+    <version>51</version>
+    <time>1600879219</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see https://lists.opensuse.org/opensuse-factory/2020-09/msg00136.html
+
+This request addresses the issue of improper library file and package naming that
+war rightfully raised in my previous one.</comment>
+    <requestid>835612</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3cb55f689e51263e387133e4a233b41</srcmd5>
+    <version>52</version>
+    <time>1602857732</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 52
+  * Add INI_CUSTOM_ALLOCATOR to allow using a custom memory
+    allocator.
+- Drop workaround for library name not matching its soname as this
+  was fixed upstream.</comment>
+    <requestid>841999</requestid>
+  </revision>
+</revisionlist>
