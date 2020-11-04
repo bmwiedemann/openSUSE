@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63be745314ff319259fa19bfe57e87b0</srcmd5>
+    <version>0.23</version>
+    <time>1380112669</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>198538</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0cc744d516c277d0b8a3ff465e1fa36</srcmd5>
+    <version>0.24</version>
+    <time>1405750590</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>241529</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0cc744d516c277d0b8a3ff465e1fa36</srcmd5>
+    <version>0.24</version>
+    <time>1409302895</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e4e0a7a56ac77503fcd696f24164f0c0</srcmd5>
+    <version>0.24</version>
+    <time>1480341990</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441853</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9c10f7a642b61f5fd0831c072cc4ebe4</srcmd5>
+    <version>0.24</version>
+    <time>1493020079</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>487846</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0726356e26f90a4b7d27e8c4c7d73b23</srcmd5>
+    <version>0.24</version>
+    <time>1544816809</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package, but
+  keep testsuite passing.</comment>
+    <requestid>655849</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20cf568957d0e50008458556f40038b9</srcmd5>
+    <version>1.1.0</version>
+    <time>1561405702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709086</requestid>
+  </revision>
+</revisionlist>
