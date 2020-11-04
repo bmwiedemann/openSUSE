@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:26:06 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Removed a redundant method from desktop code.
+  * Added an option to switch to newly opened tab.
+  * Added an option to open tabs of last window.
+  * Fixed a regression in restoring vertical scroll position.
+  * Guarantee a correct cursor shape on opening a folder.
+  * Scroll to current item on removing/changing filter.
+  * Keep the current focus when opening new tab in background.
+  * Reversed the workaround for RTL statusbar text because
+    it isn't needed anymore.
+  * Fixed DND into desktop trash.
+  * Handle ampersand and newline in tab text.
+  * Handle text tabs in statusbar.
+  * Added an option to open desktop folders in default file manager.
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Sun May 17 20:30:37 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Requires libfm-qt version 0.15.1
