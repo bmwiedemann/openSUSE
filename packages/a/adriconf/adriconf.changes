@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov  4 08:57:19 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4:
+  * Renamed application from br.com.jeanhertel.adriconf to
+    org.freedesktop.adriconf.
+  * Handle string and float options.
+  * Add Polish translations. @baryluk
+  * Make various cosmetic fixes.
+- Changes for older versions in 2.* series:
+  * Rename application to org.freedesktop.adriconf
+  * Make sure themes don't add shadows to button.
+  * Add tooltips to add profile screen.
+  * Fix Spin Button fields, so that increment/decrement fields are
+    correctly visible.
+  * Improve Switch buttons with more visible colors.
+  * Small fix fox incorrect shadows with default GTK+ theme.
+  * User Interface is dark by default
+  * Completely removed dialogs and replaced them with screens,
+    giving a more natural navigation.
+  * Profiles are now saved independently giving the user more
+    control on what to save.
+  * Mesa-defined profiles are not shown anymore, avoiding previous
+    confusion on what the user added and what is defined by mesa
+    itself.
+  * Better validate when the user adds a new profile.
+  * Bug-fix: When switching the GPU on PRIME settings now we keep
+    the same application selected.
+
+-------------------------------------------------------------------
 Sat May  9 08:10:37 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.7:
