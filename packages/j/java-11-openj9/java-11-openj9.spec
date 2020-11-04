@@ -28,20 +28,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       7
+%global updatever       9
 %global patchver        0
-%global datever         2020-04-14
-%global buildver        10
+%global datever         2020-10-20
+%global buildver        11
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   838028fc9d9a8cb83630927ca476674f5080b1c3
-%global root_branch     openj9-0.20.0
+%global root_revision   3b09cfd7e972ed3f67e7c89d079d06bef1c81d04
+%global root_branch     openj9-0.23.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    d4365f371ce896bead71bc601cbdb53cc35ab47b
-%global omr_branch      v0.20.0-release
+%global omr_revision    582366ae54510a48f7815921091db00357c4338a
+%global omr_branch      v0.23.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 05fa2d3611f757a1ca7bd45d7312f99dd60403cc
-%global openj9_branch   v0.20.0-release
-%global openj9_tag      openj9-0.20.0
+%global openj9_revision 0394ef7545243942a4b27227a22174c1be67ed60
+%global openj9_branch   v0.23.0-release
+%global openj9_tag      openj9-0.23.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # JavaEE modules
@@ -159,8 +159,7 @@ Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
-Patch32:        gcc-fno-common-fix.patch
-Patch33:        gcc10.patch
+Patch32:        omr-no-return-in-nonvoid-function.patch
 #
 # OpenJDK specific patches
 #
@@ -178,6 +177,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
 BuildRequires:  binutils
+BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -448,8 +448,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch30 -p1
 %patch31 -p1
-%patch32 -p1
-%patch33
+%patch32
 
 %patch302 -p1
 %patch303 -p1
