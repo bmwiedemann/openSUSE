@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:12:24 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.4.6
+  * Fix image compression option when sending files with drag-n-drop.
+  * Fix caption text selection in media albums.
+  * Fix drafts display in personal chats in the chats list.
+  * Bug fixes and other minor improvements.
+- Update tg_owt
+
+-------------------------------------------------------------------
 Fri Oct 30 19:08:36 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.4.5
