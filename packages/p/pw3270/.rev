@@ -63,4 +63,12 @@
     <comment>Updating to version 5.3; fix build errors on latest gcc.</comment>
     <requestid>812655</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1e96345c637f2efc5a596d24165a1c0b</srcmd5>
+    <version>5.3</version>
+    <time>1604510834</time>
+    <user>dimstar_suse</user>
+    <comment>Updating from git.</comment>
+    <requestid>845854</requestid>
+  </revision>
 </revisionlist>

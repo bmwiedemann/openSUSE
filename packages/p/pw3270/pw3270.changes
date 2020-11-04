@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Nov 02 13:05:18 UTC 2020 - perry.werneck@gmail.com
+
+- Update to version 5.3+git20201102:
+  * Fixing package build.
+  * Removing .png files, using only the svg ones.
+  * Adjusting header bar defaults.
+  * Adjustments for openSUSE 15.2.
+  * Update README.md
+  * Use 'gnome' style as default on linux and classic in other OSs.
+  * Disabling F10 redirection.
+  * Adjusting default action lists.
+  * Enabling set/reset of kpalternative in the modern interface.
+  * Moving generic tools to libv3270.
+  * Auto updating toolbar when icon style changes.
+  * Implementing standard models for menus & comboboxes.
+  * Adding copy-image menu option.
+  * Adding "copy-as-html" action.
+  * Adding 'view trace' option on the popup menus.
+  * Pre-defining session file name on save dialogs.
+  * Creating session file when a desktop icon is built with default session.
+  * Adding method to suggest session filename and path.
+  * Processing toolbar-position settings.
+  * Adding tooltips in the header bar buttons.
+  * Moving application icons to the 'icons' folder.
+  * Adding support for customized icons.
+  * Adding option for symbolic icons in the header bar.
+  * Implementing use of symbolic icons in toolbar.
+  * Updating appdata.
+  * Scanning standard directories for session definition files.
+  * Adding appdata.xml
+  * Adding architecture in about window. Usefull for windows users.
+  * Project URL changes by locale.
+  * Loading/saving dialog responses from session file.
+  * Renaming default filename.
+  * Adding custom mime-type for pw3270 session settings file
+  * Using PIE instead of pic.
+  * Refactoring keypads.
+  * Adding deb post install/uninstall scripts.
+  * removed patch: optional_optipng.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 12:55:06 UTC 2020 - Perry Werneck <perry.werneck@gmail.com>
 
 - Optipng is not in the SLE-15 default repositories
