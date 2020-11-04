@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:21:11 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 2.1.4
+  * Security Release for CVE-2020-15238 (bsc#1178196)
+  * Force cython to use python language version 3
+  * Do not use exitcode 1 when we expect to fail
+  * Mark more strings translatable
+  * Unstranslated strings
+  * Fix searching (with Ctrl+F in manager device list) did not work
+  * Default PIN lookup
+  * Fix device removal handling
+  * Only use LaunchContext when we have proper event time 
+
+-------------------------------------------------------------------
 Sun Jul 12 13:08:12 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 2.1.3
