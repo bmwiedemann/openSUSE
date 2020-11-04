@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Sun Oct 25 18:36:35 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update URL.
+- Specfile cleanups using spec-cleaner.
+
+-------------------------------------------------------------------
+Sat Aug 15 17:00:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Implement tests as part of %check; needs additional
+  BuildRequires: python3-pytest and python3-astropy.
+- ExcludeArch 32-bit, as tests fail and upstream confirms that it
+  is not supported
+  (https://git.ligo.org/lscsoft/lalsuite/-/issues/371).
+
+-------------------------------------------------------------------
+Tue Jul 21 12:45:56 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalpulsar-printf-type-mismatch.patch: Fix type mismatch when
+  passing variables to printf; fixes building on i586.
+
+-------------------------------------------------------------------
+Tue Jul  7 01:36:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.0:
+  * No release notes.
+- Update shlib package name with so number.
+- Drop lalpulsar-build-octave44-with-swig3.patch: fixed upstream;
+  also drop autoreconf command before configure and BuildRequires:
+  libtool all required for this patch.
+- Re-enable octave bindings: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 30 09:49:21 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Wed Apr 22 18:25:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- BuildRequires: python-xml only for openSUSE <= 15.2 since
+  python2 is disabled for newer openSUSE.
+
+-------------------------------------------------------------------
+Mon Feb  3 01:13:37 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.18.2:
+  * O3b release.
+- Rebase lalpulsar-build-octave44-with-swig3.patch for updated
+  version.
+
+-------------------------------------------------------------------
+Mon Sep 30 16:20:27 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build packages for both python2 and python3.
+
+-------------------------------------------------------------------
+Thu Sep 26 13:03:55 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.18.1:
+  * fix the no-signal bug with MFDv5 when using aPlus/aCross in a
+    config file.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:32:04 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.18.0:
+  * O3 release.
+- Update shared lib package names in keeping with upstream so
+  versioning.
+- Rebase lalpulsar-build-octave44-with-swig3.patch to conform to
+  upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:38 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2; add python-xml to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:49:29 UTC 2019 - badshah400@gmail.com
+
+- Add octave-cli Requires for octave-%{name}.
+
+-------------------------------------------------------------------
+Thu Feb  7 14:43:34 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for python- pkg.
+
+-------------------------------------------------------------------
+Sun Jan 27 21:50:48 UTC 2019 - badshah400@gmail.com
+
+- Initial package
+- Add lalburst-build-octave44-with-swig3.patch: allow building
+  octave bindings with swig 3.0.x rather than requiring swig 4.x.
