@@ -18,25 +18,3 @@
    endif
  endif
  
---- openj9-openjdk-jdk11/openj9/buildspecs/linux_aarch64_cmprssptrs.spec	2020-04-21 15:53:11.364316690 +0200
-+++ openj9-openjdk-jdk11/openj9/buildspecs/linux_aarch64_cmprssptrs.spec	2020-04-21 19:13:31.087227448 +0200
-@@ -223,7 +223,7 @@
- 		<flag id="opt_zipSupport" value="true"/>
- 		<flag id="opt_zlibCompression" value="true"/>
- 		<flag id="opt_zlibSupport" value="true"/>
--		<flag id="port_omrsigSupport" value="false"/>
-+		<flag id="port_omrsigSupport" value="true"/>
- 		<flag id="port_signalSupport" value="true"/>
- 		<flag id="prof_eventReporting" value="true"/>
- 		<flag id="ras_dumpAgents" value="true"/>
---- openj9-openjdk-jdk11/openj9/buildspecs/linux_aarch64.spec	2020-04-21 15:53:11.364316690 +0200
-+++ openj9-openjdk-jdk11/openj9/buildspecs/linux_aarch64.spec	2020-04-21 19:13:31.087227448 +0200
-@@ -222,7 +222,7 @@
- 		<flag id="opt_zipSupport" value="true"/>
- 		<flag id="opt_zlibCompression" value="true"/>
- 		<flag id="opt_zlibSupport" value="true"/>
--		<flag id="port_omrsigSupport" value="false"/>
-+		<flag id="port_omrsigSupport" value="true"/>
- 		<flag id="port_signalSupport" value="true"/>
- 		<flag id="prof_eventReporting" value="true"/>
- 		<flag id="ras_dumpAgents" value="true"/>
