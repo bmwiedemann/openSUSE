@@ -1,13 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:11:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * New fonts: Acer 710 Mono, HP 100LX, Olivetti MS-DOS, Sanyo
+    MBC-55x, Sanyo MBC-775, Sharp PC-3000, TeleVideo Tele-PC, CL
+    Eagle II, CL Eagle III, CL Stingray, InteGraphics VGA,
+    PhoenixVGA, Sigma Designs RealMagic, STB AutoEGA, early
+    Trident/TVGA8800CS, Tseng EVA-480 ET2000, Various/ACM VGA,
+    Acorn BBC Master 512, Atari Portfolio, Philips :YES G-2x,
+    Texas Instruments PC/PPC, Wang Professional Computer.
+  * Removed Olivetti MxVGA: superseded by CL Stingray.
+- Switched to the Mx437/MxPlus variant font files and made
+  Px437/PxPlus a fontconfig-level alias for compatibility.
+
+-------------------------------------------------------------------
 Thu Oct 29 11:37:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to version 2.0
+- Update to release 2.0
   * Added new variants: Ac (aspect corrected) and
     Mx (Mixed outline + bitmap).
-  * New fonts (overview): AMI EGA, AST PremiumExec (quite like
-    VGA SquarePx), Acer-*, Apricot-*, Compaq Port3, DOS V, EpsonMGA,
-    EverexME (like EGA), IBM Model30, IBM PS/55, LE Model D, NEC APC3, Nix8810,
-    Olivetti M15/MX, Trident
+  * New fonts (overview): AMI EGA, Acer-*, Apricot-*, Compaq
+    Port3, DOS V, EpsonMGA, EverexME (like EGA), IBM Model30, IBM
+    PS/55, LE Model D, NEC APC3, Nix8810, Olivetti M15/MX,
+    Trident.
+  * VGA SquarePx was renamed to AST PremiumExec.
   * ToshibaLCD was renamed to ToshibaSat; a few other minor
     renames.
 - All pre-stretched fonts (both Ac or Px-2X/Px-2Y variants) were

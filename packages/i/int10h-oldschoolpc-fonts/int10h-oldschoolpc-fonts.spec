@@ -17,16 +17,17 @@
 
 
 Name:           int10h-oldschoolpc-fonts
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Remakes of old computer hardware fonts
 License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            http://int10h.org/oldschool-pc-fonts/
 
-Source:         https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.0_ttf.zip
+Source:         https://int10h.org/oldschool-pc-fonts/download/oldschool_pc_font_pack_v2.1_FULL.zip
 Source8:        ratio.txt
 BuildRequires:  fontpackages-devel
+BuildRequires:  lcdf-typetools
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
 BuildArch:      noarch
@@ -45,6 +46,9 @@ applied. For details, see ratio.txt inside the package. ]
 %package stretched
 Summary:        Pre-stretched versions of int10h-oldschoolpc-fonts
 Group:          System/X11/Fonts
+Conflicts:      %name < %version
+Conflicts:      %name > %version
+%reconfigure_fonts_prereq
 
 %description stretched
 This package contains aspect-corrected and non-corrected-but-stretched
@@ -59,23 +63,55 @@ iconv -f cp437 -t utf-8 <README.NFO | perl -i -pe 's{\r}{}g' >readme.txt
 mv LICENSE.TXT license.txt
 
 %install
-c="%buildroot/%_ttfontsdir"
-mkdir -p "$c"
-rm -fv */Mx*.ttf
-install -pm 0644 */*.ttf "$c/"
+mkdir mxs
+mv */Mx*-2[xy]*.ttf mxs/
+
+c="%buildroot/%_sharedir/fontconfig/conf.avail"
+tt="%buildroot/%_ttfontsdir"
+mkdir -p "$c" "$tt"
+
+genalias()
+{
+	echo "<?xml version='1.0'?>"
+	echo '<!DOCTYPE'" fontconfig SYSTEM 'fonts.dtd'>"
+	echo "<fontconfig>"
+	for i in "$@"; do
+		mx="$(otfinfo -i "$i" | perl -lne 'if(/^Family:\s*(.*)/){$_=$1;s{&}{&amp;}g;print}')"
+		px="Px${mx:2}"
+		echo "<alias><family>$px</family><prefer><family>$mx</family></prefer></alias>"
+	done
+	echo "</fontconfig>"
+}
+
+genalias mxs/Mx*.ttf >31-int10h-stretch-alias.conf
+mv mxs/*.ttf "$tt/"
+genalias */Mx*.ttf >31-int10h-alias.conf
+mv */Ac*.ttf */Mx*.ttf "$tt/"
+%install_fontsconf 31-int10h-alias.conf
+%install_fontsconf 31-int10h-stretch-alias.conf
 
 %reconfigure_fonts_scriptlets
+%reconfigure_fonts_scriptlets -n %name-stretched
 
 %files
-%doc readme.txt license.txt ratio.txt
-%_ttfontsdir/Px*
+%license license.txt
+%doc readme.txt ratio.txt
+%_ttfontsdir/Mx*
 %exclude %_ttfontsdir/*-2x.ttf
 %exclude %_ttfontsdir/*-2y.ttf
+%dir %_sysconfdir/fonts
+%dir %_sysconfdir/fonts/conf.d
+%files_fontsconf_availdir
+%files_fontsconf_file -l 31-int10h-alias.conf
 
 %files stretched
 %dir %_ttfontsdir/
 %_ttfontsdir/Ac*
-%_ttfontsdir/*-2x.ttf
-%_ttfontsdir/*-2y.ttf
+%_ttfontsdir/Mx*-2x.ttf
+%_ttfontsdir/Mx*-2y.ttf
+%dir %_sysconfdir/fonts
+%dir %_sysconfdir/fonts/conf.d
+%files_fontsconf_availdir
+%files_fontsconf_file -l 31-int10h-stretch-alias.conf
 
 %changelog
