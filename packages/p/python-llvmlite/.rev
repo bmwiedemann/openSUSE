@@ -180,4 +180,12 @@ This version works with llvm 4.</comment>
     <comment></comment>
     <requestid>844036</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6caf9a55fadfca11c052067d089ec2d5</srcmd5>
+    <version>0.34.0</version>
+    <time>1604510780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845715</requestid>
+  </revision>
 </revisionlist>
