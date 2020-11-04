@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 08:44:13 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Update-websocketpp-configVersion.cmake.patch to fix noarch
+  violations and make the package really noarch again
+
+-------------------------------------------------------------------
 Wed Aug 19 12:29:24 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
