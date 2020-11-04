@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 30 16:45:34 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix building amtool (bsc#1176943)
+
+-------------------------------------------------------------------
 Fri Aug 28 12:43:59 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Fix permissions for /var/lib/prometheus to match
