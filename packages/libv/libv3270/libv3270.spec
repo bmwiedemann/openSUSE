@@ -1,7 +1,7 @@
 #
 # spec file for package libv3270
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2008 Banco do Brasil S.A.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,6 +22,7 @@ Version:        5.3
 Release:        0
 Summary:        3270 Virtual Terminal for GTK
 License:        LGPL-3.0-only
+Group:          Development/Languages/C and C++
 URL:            https://github.com/PerryWerneck/libv3270
 Source:         libv3270-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.61
@@ -51,7 +52,8 @@ For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 %define _product %(pkg-config --variable=product_name lib3270)
 
 %package -n %{name}-%{_libvrs}
-Summary:    TN3270 access library
+Summary:        TN3270 access library
+Group:          Development/Languages/C and C++
 
 %description -n %{name}-%{_libvrs}
 Originally designed as part of the pw3270 application, this library
@@ -60,15 +62,17 @@ provides a TN3270 virtual terminal widget for GTK 3.
 For more details, see https://softwarepublico.gov.br/social/pw3270/ .
 
 %package devel
-Summary:    Header files for the 3270 Virtual Terminal library
-Requires:   %{name}-%{_libvrs} = %{version}
+Summary:        Header files for the 3270 Virtual Terminal library
+Group:          Development/Languages/C and C++
+Requires:       %{name}-%{_libvrs} = %{version}
 
 %description devel
-GTK development files for the 3270 Virtual Terminal.
+Originally designed as part of the pw3270 application, this package provides the development files required to %{name}.
 
 %package -n glade-catalog-v3270
-Summary:    Glade catalog for the TN3270 terminal emulator library
-Requires:   glade
+Summary:        Glade catalog for the TN3270 terminal emulator library
+Group:          Development/Languages/C and C++
+Requires:       glade
 
 %description -n glade-catalog-v3270
 This package provides a catalog for Glade to allow the use of V3270
