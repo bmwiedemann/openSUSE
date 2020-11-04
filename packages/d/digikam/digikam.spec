@@ -18,6 +18,7 @@
 
 %define soversion 7
 %bcond_without lang
+%bcond_with    apidocs
 Name:           digikam
 Version:        7.1.0
 Release:        0
@@ -30,44 +31,46 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
-BuildRequires:  boost-devel
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  graphviz-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  kconfig-devel
-BuildRequires:  kcoreaddons-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  kfilemetadata5-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  knotifications-devel
-BuildRequires:  knotifyconfig-devel
-BuildRequires:  kservice-devel
-BuildRequires:  kwindowsystem-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  lensfun
 BuildRequires:  lensfun-devel
+BuildRequires:  libboost_graph-devel
 BuildRequires:  libeigen3-devel
 BuildRequires:  libexiv2-devel >= 0.26
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
-BuildRequires:  libksane-devel >= 15.12.0
 BuildRequires:  liblcms2-devel
 BuildRequires:  liblqr-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  marble-devel
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
-BuildRequires:  solid-devel
-BuildRequires:  threadweaver-devel >= 5.5.0
 BuildRequires:  update-desktop-files
+%if %{with apidocs}
+BuildRequires:  doxygen
+BuildRequires:  graphviz-devel
+BuildRequires:  cmake(KF5DocTools)
+%endif
 BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5FileMetaData)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Sane)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5ThreadWeaver) >= 5.5.0
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Marble)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.9.0
 BuildRequires:  cmake(Qt5DBus)
@@ -76,7 +79,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
@@ -111,7 +113,7 @@ Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
 # QWebEngine is not available on ppc64
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-BuildRequires:  akonadi-contact-devel
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %else
 %global qwebengine -DENABLE_QWEBENGINE:BOOL=OFF
@@ -174,16 +176,13 @@ The main digikam libraries that are being shared between showfoto and digikam
 sed -i 's/set(DNN_DETECTION TRUE)/set(DNN_DETECTION FALSE)/' core/libs/facesengine/CMakeLists.txt
 %endif
 
-# Remove build time references so build-compare can do its work
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" core/app/utils/digikam_version.h.cmake.in
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" core/libs/dimg/filters/greycstoration/cimg/CImg.h
-sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" core/libs/dimg/filters/greycstoration/cimg/CImg.h
-
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine}
-%make_jobs VERBOSE=1
+%cmake_build
+
+%if %{with apidocs}
+%cmake_build doc
+%endif
 
 %install
 %kf5_makeinstall -C build

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  3 16:33:35 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use cmake() style BuildRequires when possible.
+
+-------------------------------------------------------------------
+Tue Nov  3 14:24:06 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove several unused build dependencies (doxygen, graphviz,
+  all of boost but libboost_graph).
+- Remove __DATE_/__TIME__ mangling, handled by SOURCE_DATE_EPOCH.
+- Bump disk constraints, TW needs 9.3 GB currently.
+
+-------------------------------------------------------------------
 Tue Sep  8 11:33:35 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.1.0
