@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c046662f0acaab2ffae9dd5dfb96c20f</srcmd5>
+    <version>unknown</version>
+    <time>1601997270</time>
+    <user>dimstar_suse</user>
+    <comment>please readd, necessary for aspell</comment>
+    <requestid>839781</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0edcb121c02ac793e8dd0923a8517fa4</srcmd5>
+    <version>unknown</version>
+    <time>1602596563</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require aspell binary, dictionaries can be used even
+  by the aspell library [bsc#1177523]</comment>
+    <requestid>841265</requestid>
+  </revision>
+</revisionlist>
