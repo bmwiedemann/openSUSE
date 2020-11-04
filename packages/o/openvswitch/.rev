@@ -628,4 +628,12 @@
   * 0001-ipsec-Fix-Strongswan-configuration-syntax.patch</comment>
     <requestid>838587</requestid>
   </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>445739827a2401816a6e92def881879b</srcmd5>
+    <version>unknown</version>
+    <time>1604510764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845688</requestid>
+  </revision>
 </revisionlist>

@@ -797,7 +797,7 @@ fi
 # admin decide when it's the best time for an OvS restart.
 # 5771f476573445710834234a6a9f7bd999a027e7 ("fedora: do not restart the service on a pkg upgrade")
 %if 0%{?suse_version}
-    %service_del_postun -n ovsdb-server.service -n ovs-vswitchd.service -n openvswitch.service -n ovs-delete-transient-ports.service
+    %service_del_postun_without_restart ovsdb-server.service ovs-vswitchd.service openvswitch.service ovs-delete-transient-ports.service
 %else
     %if 0%{?systemd_postun:1}
         %systemd_postun openvswitch.service
@@ -808,12 +808,12 @@ fi
 
 %postun ipsec
 %if 0%{?suse_version}
-	%service_del_postun -n openvswitch-ipsec.service
+	%service_del_postun_without_restart openvswitch-ipsec.service
 %endif
 
 %postun test
 %if 0%{?suse_version}
-    %service_del_postun -n openvswitch-testcontroller
+    %service_del_postun_without_restart openvswitch-testcontroller
 %else
     %if 0%{?systemd_postun:1}
         %systemd_postun openvswitch-testcontroller.service
@@ -1015,7 +1015,7 @@ fi
 
 %postun -n ovn-central
 %if 0%{?suse_version}
-    %service_del_postun -n ovn-northd.service
+    %service_del_postun_without_restart ovn-northd.service
 %else
     %if 0%{?systemd_postun:1}
         %systemd_postun ovn-northd.service
@@ -1026,7 +1026,7 @@ fi
 
 %postun -n ovn-host
 %if 0%{?suse_version}
-    %service_del_postun -n ovn-controller.service
+    %service_del_postun_without_restart ovn-controller.service
 %else
     %if 0%{?systemd_postun:1}
         %systemd_postun ovn-controller.service
@@ -1037,7 +1037,7 @@ fi
 
 %postun -n ovn-vtep
 %if 0%{?suse_version}
-    %service_del_postun -n ovn-controller-vtep.service
+    %service_del_postun_without_restart ovn-controller-vtep.service
 %else
     %if 0%{?systemd_postun:1}
         %systemd_postun ovn-controller-vtep.service
