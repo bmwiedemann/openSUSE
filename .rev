@@ -319,4 +319,24 @@
     <comment></comment>
     <requestid>798551</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>129c1c5de1ade9d0f7580a724a9f3a83</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510937</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated recommends on lang package
+
+- Update to 0.16.0:
+  * Added image size and path to statusbar.
+  * Added copy Path action.
+  * Fixed memory leaks in annotations.
+  * Show error message if saving with a format is not supported.
+  * Added resize image feature.
+  * Use QFlags default constructor.
+  * Prevent users from defining ambiguous shortcuts.
+  * Consult Qt for supported mimetypes.
+  * Start app on screen with mouse cursor when opening image.
+  * Added depreciation notice to screenshot command line options.</comment>
+    <requestid>846027</requestid>
+  </revision>
 </revisionlist>
