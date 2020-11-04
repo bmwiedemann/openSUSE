@@ -69,4 +69,16 @@
     <comment></comment>
     <requestid>797664</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b26f00b1737f6971401ea5cefa71accf</srcmd5>
+    <version>0.8.0</version>
+    <time>1604510870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Removed version checks for some LXQt dependencies.
+  * Added a Fontconfig CMake find module.
+  * Suppressed warning about find_package_handle_standard_args
+    package name mismatch.</comment>
+    <requestid>845993</requestid>
+  </revision>
 </revisionlist>
