@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8739b708c4daf53281e1471c8e47ae08</srcmd5>
+    <version>3.1.6</version>
+    <time>1594293532</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>819565</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec887e2cd781174b2f8c604ed1e01932</srcmd5>
+    <version>3.1.6</version>
+    <time>1598643736</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829522</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a804cc513681dfef74b053e0bd8858b</srcmd5>
+    <version>3.2</version>
+    <time>1601200148</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835957</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d09886dc0bebbfc9204852c0b40a626e</srcmd5>
+    <version>3.2.1</version>
+    <time>1603458944</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842779</requestid>
+  </revision>
+</revisionlist>
