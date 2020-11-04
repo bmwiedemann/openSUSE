@@ -73,4 +73,12 @@ See also https://bugzilla.novell.com/show_bug.cgi?id=803028#c7</comment>
   + Run %post commands with reduced privileges (bsc#1154200)</comment>
     <requestid>742953</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6cdab040064d11b7d7e2a6d0570044b3</srcmd5>
+    <version>1.1.1</version>
+    <time>1604510793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845746</requestid>
+  </revision>
 </revisionlist>
