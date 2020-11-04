@@ -1,0 +1,5 @@
+<package name="python-ctypescrypto" project="openSUSE:Factory">
+  <title>python-ctypescrypto</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-ctypescrypto"/>
+</package>
