@@ -45,6 +45,7 @@ Patch7:         compat_generic_make_request.patch
 Patch8:         blk_alloc_queue_make_request.patch
 Patch9:         remove_congested_fn_congested_data.patch
 Patch10:        compat_blk_queue_stack_limits.patch
+Patch11:        fix-err-of-wrong-return-type.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -88,6 +89,7 @@ installed kernel.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 %patch99 -p1
 
 mkdir source
