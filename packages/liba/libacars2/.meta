@@ -1,0 +1,8 @@
+<package name="libacars2" project="openSUSE:Factory">
+  <title>A library for decoding various ACARS message payloads</title>
+  <description>libacars is a library for decoding various ACARS message payloads.
+
+</description>
+  <devel project="hardware:sdr" package="libacars2"/>
+  <url>https://github.com/szpajder/libacars</url>
+</package>

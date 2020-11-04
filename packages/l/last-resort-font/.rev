@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aef38eb81705db1dc03f7effab548a45</srcmd5>
+    <version>13.000</version>
+    <time>1602503895</time>
+    <user>dimstar_suse</user>
+    <comment>A very useful font from Unicode Consortium to show missing glyphs in fonts in a nice way</comment>
+    <requestid>840874</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>20407fba946691581f16049b88756410</srcmd5>
+    <version>13.001</version>
+    <time>1603448533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 13.001
+  * No functional change on Linux, just the file name changed.</comment>
+    <requestid>843477</requestid>
+  </revision>
+</revisionlist>

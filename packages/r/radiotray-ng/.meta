@@ -1,0 +1,5 @@
+<package name="radiotray-ng" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="radiotray-ng"/>
+</package>

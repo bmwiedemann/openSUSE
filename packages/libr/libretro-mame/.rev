@@ -1,0 +1,467 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc7a4495d67e9de9d03491cd420d0425</srcmd5>
+    <version>0~git20200205</version>
+    <time>1582018495</time>
+    <user>dimstar_suse</user>
+    <comment>Remove non-free third-party sources</comment>
+    <requestid>773800</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0408f86be5e1de6ee4ba0b138b13c94f</srcmd5>
+    <version>0~git20200205</version>
+    <time>1582206898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777330</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e6c5ee8a9dbdaf15d258aae1c5b7dfb2</srcmd5>
+    <version>0~git20200205</version>
+    <time>1582394812</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 32bit builds
+- Make use of all cpu cores to reduce the build time
+</comment>
+    <requestid>778105</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4aec455299d139dfc721872252261ea3</srcmd5>
+    <version>0~git20200329</version>
+    <time>1585602190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200329:
+  * Revert &quot;Link libgcc statically on Linux&quot;
+  * Link libgcc statically on Linux
+  * version bump (nw)
+  * Revert &quot;added support for reading/writing hiscore files from cart images (#6130)&quot;
+  * get #include guards in line with filenames, avoid expensive things in static initialisation (nw)
+  * mobigo_cart.xml, pi_storyreader_cart.xml: a couple more corrections (nw)
+  * nes_sh6578.cpp: Use text off the device as the description, not 'Gamppad' (nw)
+  * fix up some software lists (nw)
+  * clean up various stuff (nw)
+  * i8279: Fix accidentally uncovered crash in turbo (nw)
+  * upd78k2d, upd78k3d: Fix order of operands in instructions using two saddrs/saddrps (nw)
+  * upd78k2d: Fix a whole batch of mistakes with disassembling 01-prefixed alternate-bank instructions (nw)
+  * i8279: Correct keyboard scan rate and logging thereof
+  * aussieby:   [Robbbert] New working software list additions --------------------------- Boot disk (CPM Plus v3.1)   [from &quot;the collection&quot;]
+  * applix: [Robbbert] New working software list additions --------------------- Boot disk  [from &quot;the collection&quot;]
+  * altos8600: [Robbbert] New working software list additions --------------- Altos Diagnostic Executive   [from &quot;the collection&quot;]
+  * sbrain: [Robbbert] New working software list additions -------------- Boot disk CP/M 2.2  [from &quot;the collection&quot;]
+  * srcclean and manual adjustments (nw)
+  * Plug and Play work (#6348)
+  * (nw) beena : fixed crash when cart loaded
+  * ampex230: Rename to ampex230p as ROM mentions being a &quot;plus&quot; model
+  * naomigd.cpp: changed dipsetting macro into confsetting macro (nw)
+  * ampex210.cpp: Add various stub handlers (nw)
+  * xavix2: minimal i2c hookup that, unsurprisingly, doesn't work (nw)
+  * ks0164: First try at a disassembler [David Carne, O. Galibert]
+  * -stuntcyc: Assorted fixes to nl_stuntcyc. [Ryan Holtz]
+  * New working clones ------------------ New Fruit Bonus '96 Special Edition (v3.61, DK PCB) [Ioannis Bampoulas] New Fruit Bonus '96 Special Edition (v3.60, DK PCB) [Ioannis Bampoulas]
+  * New working clones ------------------ New Fruit Bonus '96 Special Edition (v3.61a, DK PCB) [Ioannis Bampoulas]
+  * New working clones ------------------ New Fruit Bonus '96 Special Edition (v3.61a, C1 PCB) [Ioannis Bampoulas]
+  * hh_sm510: fix spaces (nw) (#6345)
+  * New working clones ------------------ Final Star Force (World?) [Jorge Silva]
+  * rii: Fix TBRD address calculation; fix carry logic for several instructions (nw)
+  * psikyo.cpp : Fix gunbird PCB clock related to XTAL
+  * upd78k3d: Fix disassembly of 01-prefixed SFR + immediate word/byte instructions (nw)
+  * new NOT WORKING software list entries ----- pi_storyreader_cart.xml [TeamEurope] Cars (Germany) Das Dschungel-Buch (Germany) Der Konig der Lowen (Germany) Findet Nemo (Germany) Peter Pan (Germany) Winnie Puuh - Ein sturmischer Tag (Germany) Winnie Puuh hat keinen Hunger (Germany)
+  * new WORKING machine (#6342)
+  * Add dumps of D-50 v1.x: v1.10(custom?), v1.04; D-50 v2.x: v2.21, v2.20, also add dumps of both old older/split and newer/combined D-50 PCM ROMs, and add chip locations to all roms, PCB notes, chip label notes and version string notes. [Lord Nightmare, anonymous, Erik Gavriluk]
+  * naomigd.cpp: add two debug-only dipswitches to configure emulation (nw) In the first one &quot;enabled&quot; means the dimm board is really emulated and &quot;disabled&quot; means everything works as before, that is like running a rom cartridge version of the game. In the second one &quot;yes&quot; means the dimm ram already contains valid game data when the machine is turned on, &quot;no&quot; means there is no valid data and the firmware will load it all from the gd-rom. By default real emulation is disabled and valid data is already present.
+  * peoplepc: graphics (nw)
+  * Add skeleton LZ8420M device (#6339)
+  * Finish midqslvr.cpp's documentation (nw) (#6340)
+  * gstream.cpp : Implement sprite limit per frame
+  * isbc8010:issue #6336 (corrected 1 bad byte in the rom)[Robbbert, Colin Douglas Howell] issue #6338 - added a pointer to this issue.
+  * epg3231: Add speech timer interrupt (nw)
+  * peoplepc: screen attributes (nw)
+  * roland_d50.cpp: Use full system titles; unify PCM regions (nw)
+  * sdk80: issue #6324 (corrected 3 bad bytes in the rom)[Robbbert, Colin Douglas Howell]
+  * wd_fdc: Increase HLD idle timeout to 15 revolutions except for FD1771 and FD1781
+  * naomi.cpp: Sega Atomiswave BIOS dumped [CoolFox, MetalliC]
+  * i8279: More fine-tuning (nw)
+  * sdk85, sdk86: More accurate 8279 interfaces; reduce tag lookups (nw)
+  * i8279: Remove timing hack; make sure SL3 gets output (Pied Piper needs it)
+  * i8279: Simplify handler signatures; add save state; disable read side effects (nw)
+  * pp: Use better floppy type; add timer interrupt (still fails test, alas); fix key definition (nw)
+  * bbl380.cpp: Improve notes (nw)
+  * New working clones ------------------ Puzzle &amp; Action: Tant-R (Japan) (bootleg set 4) [Puzzle &amp; Action: Tant-R (Japan) (bootleg set 4)]
+  * psikyo.cpp: some measurements for s1945 (HSync, VSync, etc) [Guru]
+  * New machines marked as NOT_WORKING ---------------------------------- Gegege no Kitaro Yokai Yokocho Matsuri De Batoru Ja (GYM1 Ver.A) [Porchy, SpinalFeyd] Keroro Gunso Chikyu Shinryaku Shirei Dearimasu! (KRG1 Ver.A) [Porchy, SpinalFeyd]
+  * Plug and Play work (#6334)
+  * Apple update for Feb 18th, 2020 (#6335)
+  * (nw) sorted flt files.
+  * xyonix: Hook up 6845 CRTC, add screen raw parameters
+  * (nw) v1050 : fixed regression
+  * gnw_pinball: nintendo cheat mode (nw)
+  * Added some missing french carts
+  * New working machines -------------------- GTAC Do-Do [R. Belmont, rfka01]
+  * New working machine added (#6333)
+  * pp: Floppy checkpoint (nw)
+  * ibm5150.xml: Add new dump
+  * tvsprt10: Fix typo in title (nw)
+  * Plug and Play work (#6330)
+  * fmtowns_cd.xml: one new dump, replacements and re-tests
+  * -spg2xx_audio: Added preliminary ADPCM36 decoding, significantly improves pballpup samples. [Lord Nightmare, Ryan Holtz]
+  * spg2xx: Added rudimentary SPI support. [Ryan Holtz]
+  * New working machines -------------------- Conchess (standard) [hap, Berger]
+  * seibuspi.cpp attempt to really fix linescroll (nw)
+  * boogwing.cpp : Fix tilemap in some final stage effects, Fix palette effect boundary deco_ace.cpp : Add notes, Use fixed point values for palette fading behavior
+  * New working software list additions
+  * New working software list additions
+  * wd_fdc: Condition command completion interrupt on busy flag having been set
+  * boogwing.cpp : Further priority acknowledge This commit fixes transporter pilot priority incorrection.
+  * Fix clang error: private field m_porta_latch is not used [-Werror,-Wunused-private-field] (nw)
+  * This wasn't supposed to go in (nw)
+  * apple2: figured out C800 banking on the Applesurance card, it now works 100% (nw)
+  * New machines marked as NOT_WORKING ---------------------------------- Pied Piper Communicator 1 [Adrian Graham]
+  * (nw) spg2xx: fixed 6 compilation errors
+  * -i2cmem: Added 24C04 device type. [Ryan Holtz]
+  * alphatpc16: keys and display (nw)
+  * boogwing.cpp : Fix museum stage windows
+  * apple2.cpp: The Albert (#6322)
+  * mjsister: Hook up 6845 CRTC, screen raw parameters
+  * (\s+) police (nw)
+  * fixed gaps on capcom logo on title screen to match pictures from real hardware, sprites are rendered to a line buffer one scanline before the are displayed. [smf]
+  * (nw) macrossp.cpp: Show how clocks are derived for sound
+  * (nw) Correct Lives dipswitch setting for Ribbit (Japan)
+  * upd78k3d: Correct indexing for 0A-prefixed instructions; misc. other notes &amp; formatting adjustments (nw)
+  * boogwing.cpp : Further blending implementation, Typo (#6316)
+  * netlist: updated VS files for standalone build. (nw)
+  * netlist: fix log file option in nltool. (nw)
+  * pc98.xml: testing notes (nw)
+  * netlist: change output impedance to more realistic values. (nw)
+  * Turn off alignas to please -Wattributes on arm. (nw)
+  * new NOT WORKING (#6320)
+  * testing note (nw)
+  * Main screen turn on (nw)
+  * subsino2.cpp: fix missing ron button [Angelo Salese]
+  * ddenlovr.cpp: add coin counters and fix metadata to all games
+  * More opcodes and some fixes (nw)
+  * New clones marked as NOT_WORKING -------------------------------- Cherry Angel (set 2) [Ioannis Bampoulas]
+  * PG police (nw)
+  * Partial updates aren't required and they broke 1942p which has it's own timer and sprite drawing code. Confirmation of title screen sprite effect on Tecfri version is required. (nw)
+  * ssv.cpp: identified ROM board for some of the games [twistedsymphony]
+  * -1942: Fixed per-scanline sprite ordering. Removed MACHINE_IMPERFECT_GRAPHICS once again. [Ryan Holtz]
+  * New working clones ------------------ Puzzli (revision A) [SpinalFeyd]
+  * galaxian.cpp: added proper inputs for olmandingo, now works (nw)
+  * Fix opcodes 20/24 (nw)
+  * new working clone ----------------------------- The Lord of King (bootleg) [hammy, caius]
+  * romp: disassembler improvements (nw)
+  * deco16ic.cpp : Fix 1 pixel glitch
+  * New working machines -------------------- Dream Life Superstar (Version 0.3, Mar 16 2007) [Sean Riddle, David Haywood, Ryan Holtz]
+  * apple2: improved monochrome-mode drawing in lores, hires, and double lores [R. Belmont]
+  * give dreamlss some inputs, bypass SEEPROM check because I can't get it to work for the life of me (#6317)
+  * -1942: Improved sprite priorities, but not yet perfect. Improved IRQ timing accuracy. Demoted to MACHINE_IMPERFECT_GRAPHICS. [Ryan Holtz, David Haywood, smf, Olivier Galibert]
+  * (nw) Verified &amp; corrected the EPROM labels for the new Ribbit (Japan) set
+  * luaengine: Back out part of unrelated WIP I didn't mean to commit (nw)
+  * luaengine: Expose osd_subst_env as emu.subst_env (nw)
+  * alphatpc16: key fixes (nw)
+  * alphatpc16: keyboard sort of working (nw)
+  * upd78k3: Include IRAM in program space; clean up code using shared pointer finder and helpers (nw)
+  * New working clones
+  * netlist: added min and max to pfunction. (nw)
+  * netlist: Add support for pots to spice conversion. [Couriersud]
+  * Document current state of congo bongo development. (nw)
+  * (nw) konin: fixed regression
+  * Plug and Play work etc. (#6313)
+  * Fix Jaguar Tom/Jerry movei disassembly, previously the immediate value included two bytes of the following instruction. [ElectronAsh]
+  * MM5837: Documented frequency by supply voltage. [Couriersud]
+  * (nw) sort mess.flt
+  * New working clone
+  * -spg2xx_audio: Turn off debugging, remove leftover debugging code, nw
+  * new WORKING software list additions (#6307)
+  *  New working clones  (#6309)
+  * -elan_eu3a05: Added OKI ADPCM decoding. [Ryan Holtz]
+  * New working clone
+  * ibm5170.xml: Add new dump
+  * gpu logging (nw)
+  * Plug and Play work (#6311)
+  * apple2 updates: - Allow cards to see CFFF accesses [R. Belmont] - Preliminary support for Applesurance floppy controller [R. Belmont, DiskBlitz]
+  * upd78k3d: PUSHU/POPU save/restore PSW instead of RP5 (nw)
+  * gus: fix divide by zero (nw)
+  * document some error (nw)
+  * Branch fixes (nw)
+  * -spg2xx_audio: Added logging of ADPCM36 samples, nw
+  * goodejan.cpp: add difficulty dip, converted screen refresh rate to set_raw [Angelo Salese]
+  * new not working ---------------------- Triumph-Adler alphatronic PC-16 [Carl, rfka01]
+  * hp86b: new working machine
+  * macse30: make Sigma Designs L-View SE/30 PDS card work and eliminate deprecated device lookup [R. Belmont]
+  * alphatpc16.cpp: specs and documentation (#6303)
+  * New working clones (#6305)
+  * bloodbro_ms.cpp: Add some missing PROMs and PLDs to 'bloodbrom' [jordigahan, ClawGrip]
+  * Branches reorg (nw)
+  * n64.xml, ique.xml - XML format fixes (nw)
+  * Misc (nw)
+  * More memory fixes (nw)
+  * Plug and Play work (#6304)
+  * Cheating a little (nw)
+  * better dma, maybe ? (nw)
+  * Add the debug port, naruto only, pc=40000004 to see it (nw)
+  * Tahg is a genius (nw)
+  * New machines marked as NOT_WORKING ---------------------------------- CompuData Tulip System I [rfka01, nIGHTFALL crew, Dirk Best]
+  * added support for reading/writing hiscore files from cart images (#6130)
+  * c64_cass.xml/c64_flop_orig.xml: Add all coverdisks/tapes from Input64 (#6299)
+  * galaxian.cpp: Demote 'sirio2' to MACHINE_NOT_WORKING (nw) (#6300)
+  * romp: hex prefix (nw)
+  * romp: new device
+  * ics2115.cpp : Calculated sample rate related to clock, Activated osc numbers, Add notes
+  * gus.cpp : Calculated GF1 sample rate
+  * vgmplay.xml:  Fix reported badly formatted/invalid characters from labels (nw)
+  * (nw) removed more invalid characters from software lists
+  * Bunch of fixes (nw)
+  * xavix2: plug a hole (nw)
+  * upd78k2: Fix register order (nw)
+  * New machines marked as NOT_WORKING ---------------------------------- Roland D-50 (Ver. 2.xx) [DBWBP, depblue]
+  * Rename Roland drivers (nw)
+  * Plug and Play work (#6295)
+  * New working clones (#6296)
+  * xavix2: Add dma, completion issues (nw)
+  * SH6578: has 10k of wram in this config (nw)
+  * naomi: converted 315-6154 device into a real pci host [Samuele Zannoli] And updated dimm board accordingly.
+  * fix various things.  checkpointed the alphatpc16, will credit before next release (nw)
+  * upd78k1d: Bad masking, oops (nw)
+  * seibuspi: fix MT7562 (revert&amp;fix cam900's 96969fa32c84db98c22f2e8069226cedf027f3d4 )
+  * Fix issue #6293. (nw)
+  * upd78k1d: Various subtle fixes (nw)
+  * pc.cpp: P50 specs and Sanyo MBC-16LT
+  * hack some interrupts in
+  * More fixes (nw)
+  * xavix2: Checkpoint (nw)
+  * New working clones ------------------ Seicross (set 2) [Zab, The Dumping Union]
+  * Add disassemblers for NEC 78K/0, 78K/I and 78K/II MCU types
+  * New working clone
+  * New working clone
+  * Alfaskop 4110 keyboard and related improvements (#6291)
+  * New working clones (#6292)
+  * Plug &amp; Play work (#6284)
+  * goodejan.cpp: OKI pin 7 is high from PCB readme, fix voice pitches [Angelo Salese]
+  * swtpc09: the OS9 DC5 variant needs a unique id.
+  * More xavix2 (nw)
+  * New working machines -------------------- Mephisto 1X [Berger, blitzchess.fr]
+  * at.cpp: Victor V286c
+  * xavix2: Finish the branches, hopefully [O. Galibert, N. Gilbert]
+  * xavix2: Work on branches [O. Galibert, N. Gilbert]
+  * xavix2: More cpu work [O. Galibert, N. Gilbert]
+  * spg2xx_smarttv.cpp: tentative title for smartvad (nw)
+  * spectrum_cass.xml: Added verified dump of Load'N'Run (Spain) (Especial) [Manu128k] (#6287)
+  * c64_cass.xml: Add new dumps. (#6285)
+  * New NOT_WORKING software list additions
+  * New working clone
+  * wxstar4k: all CPUs present now (nw)
+  * -unspdrc: Added support for fir_mov and muls opcodes. Fixed S flag calculation. [Ryan Holtz]
+  * pastelg.cpp: subclasses (nw)
+  * Partially revert 3e6ace480ade79e63ac80c51abd5371f4f9cea02 to simplify calling update_nzsc() &amp; fix s flag calculation so it's correct in all cases (the previous commit was wrong for sbc, prior to that it was only correct for cmp). (nw)
+  * util/strformat.h: future-proof for C++20 (GitHub #6275)
+  * swtpc09: OS9 support, misc fixes.
+  * flex_dsk: include an identify() method.
+  * new working machines -------------------------- Triumph-Adler Alphatronic P10 [rfka01] Triumph-Adler Alphatronic P50 [rfka01, Carl]
+  * m68k: allow RTE to unwind type 1000 (68010 bus error) stack frames [R. Belmont]
+  * -jak_care: Hooked up spg2xx software wave-in channel, hooked up muls and fir_mov ops in unsp. Allows voice to work. [Ryan Holtz, Tahg, smf]
+  * New working clones (#6278)
+  * Update n64.xml (#6277)
+  * ampex230: No daisy chain, surprisingly (nw)
+  * ampex230: These should be the DART clocks (nw)
+  * QA stuff for gekisou (nw)
+  * n64.xml: Document a few more N64 game PCBs
+  * New working clones ------------------ Three Ds - Three Dealers Casino House (set 2) [tbd]
+  * New working clones ------------------ El Estivador (Spanish bootleg of Port Man on Galaxian hardware) [Juan Romero, ClawGrip]
+  * (nw) yet again...
+  * Uzebox: files with headers don't always have the identification string. Changed to use extensions instead.
+  * Go all the way ajr :-) (nw)
+  * midzeus.cpp: decapped PIC for thegrid [Caps0ff]
+  * goldstar.cpp: small corrections to yesterday's commit, infos thanks to Ioannis Bampoulas (nw)
+  * (nw) minor corrections
+  * New working clones
+  * missed this earlier (nw)
+  * New machines added as MACHINE_NOT_WORKING ----------------------------------------- WeatherSTAR 4000 [R. Belmont, Techknight]
+  * New machines marked as NOT_WORKING ---------------------------------- PDT 3100 [ArcadeHacker, ClawGrip]
+  * konendev: additional inputs mapped, additional documentation, cleanups [Heihachi_73]
+  * New machines marked as NOT_WORKING ---------------------------------- Ampex 230 [Bitsavers]
+  * (nw) clean up a mess
+  * Gimix: improve IRQs, OS9 improvements, four floppies,
+  * SS50 DC5 FDC: OS9 support, misc corrections.
+  * xavix2.h: Fix clang build [-Werror,-Wreturn-type] (nw)
+  * sblaster: support more playback commands (nw)
+  * This is anything but preliminary (nw)
+  * Oops (nw)
+  * xavix2: First stab at the cpu [O. Galibert, N. Gilbert]
+  * -spg2xx_audio: Hooked up channel FIQ. [Ryan Holtz]
+  * New machines marked as NOT_WORKING ---------------------------------- 3 Cards Poker 96 (V1.6) [Ioannis Bampoulas]
+  * Plug &amp; Play work (#6267)
+  * ymf271.cpp : Correct envelope release time
+  * -spg2xx_audio: Turn logging back off, nw
+  * -spg2xx_audio: Fixed off-by-one on Beat Count timer, fixing timing in icanpian and to an extent shredmjr. [Ryan Holtz]
+  * ymf278b.cpp : Fix output rate and clock divider of FM part, Fix mixing behavior ymf262.cpp : Support clock divider difference vgmplay.cpp : Fix YMF278B volume
+  * vgmplay.cpp : Fix YMF262 handling
+  * wd177x_dsk: generalize to allow custom track format variations
+  * that should be the rest of the devcb arrays switched to new syntax (nw)
+  * sweeten most of the remaining arrays of delegates (nw)
+  * Add a tip on how to enter the debugger.
+  * Fix Mega Duck description (nw) (#6268)
+  * New machines marked as NOT_WORKING ---------------------------------- TRMA VIA [Juan Romero, ClawGrip] TeleTUP [Juan Romero, ClawGrip]
+  * Confirm raster bug for puzzli (nw)
+  * Syntactic sugar (nw)
+  * doh (nw)
+  * Plug and Play work (#6261)
+  * New working clones ------------------ Galaxian (Spanish bootleg) [Juan Romero, ClawGrip]
+  * clang 9.0.0 bundled with Visual Studio 2019 doesn't like this &amp; there is little hope of a virtual method being inlined when called from a base class. (nw)
+  * jazz: make chd names unique (nw)
+  * jazz: add softlist (nw)
+  * r4000: cosmetic change (nw)
+  * stvvdp1.cpp : Minor fix for gouraud shading
+  * fmtowns: remove log (nw)
+  * fmtowns: fix cdda gain (nw)
+  * Sync with GENie upstream revision ce9f3c5 (#6262)
+  * n64.xml:  Fix xml validation (nw)
+  * Revert &quot;Sync with GENie upstream revision ce9f3c5 (#6262)&quot; (#6263)
+  * Sync with GENie upstream revision ce9f3c5 (#6262)
+  * konamigs.cpp: document I/O, hook bookkeeping (nw)
+  * -cmi: Hooked up AIC interrupt, all interrupt tests now pass. [Ryan Holtz]
+  * n64.xml: Rework the N64 softlist (#6259)
+  * msm5205.cpp : Add DAC output bit difference, Fix Data capture timing… (#6260)
+  * mondl68k: add display DP segments (nw)
+  * -cmi: Started adding handlers for the CMI-07 AIC board, nw
+  * fmtowns: fix cdda volume and 1 layer 15bit color (nw)
+  * mondl68k: rom region too big (nw)
+  * (nw) whole lot less of { *this }
+  * (nw) spg2xx : validation error
+  * devcb.cpp: syntactic sugar for constructing/resolving arrays of callbacks (nw)
+  * netlist: Fix VC compile. (nw)
+  * ti99: Added VRAM size option to Enhanced Video Processor Card.
+  * fmtowns_cd.xml: additions, replacements and notes
+  * suna8: dink fixed MT7079, sparkman buttons read (nw)
+  * -ms6102: Actually fix regressions, nw
+  * ym2413: update description (nw)
+  * Plug and Play work (#6254)
+  * -6840ptm: Undid previous changes other than the addition of logmacro. Should fix reported regression in ginganin, nw
+  * -konin,ms6102: Fixed regression(s), nw
+  * -audio/cmi01a: Derived PTM clocks from /CAS clock, fixing TIM tests in CMITST diagnostics. [Ryan Holtz]
+  * kyocera.cpp: Minor updates (nw) - Simplify handlers - Add U(S)ART interrupt to all sets - Fix one region length
+  * (nw) housekeeping
+  * (nw) gameboy.xml : removed invalid characters
+  * vbaby_cart.xml: Move V.Baby info to its own softlist (nw) (#6253)
+  * vsmileb_cart.xml: removed offset, added bad dump flag for poohhawa (nw)
+  * vsmileb_cart.xml: fixed MT07428 (nw)
+  * Yamaha product number of VRC7 is DS1001
+  * ym2413.cpp : Fix description related to Chip ...
+  * vrc6.cpp : Fix description related to Chip marking
+  * twin16.cpp : Restrict sprite drawing routine into screen cliprect
+  * a2bus: Add 8251-based RS232 serial interface from BYTE magazine
+  * i8251: Resolve callbacks at device_resolve_objects time (nw)
+  * netlist: code maintenance. (nw)
+  * new not working clone -------------------------------- Time Crisis 4 (Japan, TSF1001-NA-A) [Guru]
+  * beezer.cpp: updated set names (nw)
+  * sfbonus.cpp: templates, arrays, configured banking and save state support (nw)
+  * chess*: split program versions 'bios' sets to separate game drivers (nw)
+  * naomi.cpp: fixed one of f355p ROMs (nw)
+  * fix MT7557
+  * Dead for me too (nw)
+  * sound.lua: fixed mm5837 entry, allows clean single driver build of beezer.cpp to complete (nw)
+  * cleanup - removed &quot;dead&quot; email addresses (nw)
+  * (nw) sega_beena_cart.xml: removed illegal character
+  * netlist: align nltool -c convert with mame/discrete/README.md (nw)
+  * New working machines -------------------- Merry Circus (Version 1.0.2) [Ioannis Bampoulas]
+  * i8155: Make timer more efficient by not counting each cycle
+  * -6840ptm: Added specific logging channels. Added direct output state getter. Set output state to 0 when clearing the output callback. [Ryan Holtz, Phil Bennett]
+  * new WORKING machines (#6252)
+  * netlist: spice-to-netlis conversion sync with mame/discrete. (nw)
+  * jaguar: Now you see it, now you don't (nw)
+  * jaguar: Hardware note (nw)
+  * jaguar.xml: Some exceptions fixed (nw)
+  * jaguar: Eliminate unsafe raw memory pointer usage from blitter (stops tempst2k from crashing)
+  * misc cleanup (nw)
+  * no &quot;u&quot; locations (nw)
+  * New working clones ------------------ Mephisto II (set 2) [Berger]
+  * Update spc700.cpp
+  * New machines marked as NOT_WORKING ---------------------------------- Super Shanghai 2001 [Ioannis Bampoulas]
+  * esq5505.cpp: added PCB layout for SQ-2 [Guru]
+  * Clones promoted to working ---------------------------- Witch Card (ICP-1) [Ivan Vangelista]
+  * snk.cpp: Correct ROM labels for Lee Trevino's Fighting Golf (US, Ver 2, set 1) [Brian Troha]
+  * New working clones (#6247)
+  * Rename Segasa -&gt; SegaSA, as in every other driver (nw)
+  * aim_dsk: use splice position recorded in the image, if available (nw)
+  * netlist: Document Congo Bongo progress and fix devices.
+  * netlist: Code symplification and bugfixes. (nw)
+  * netlist: clang lint fixes. (nw)
+  * Ferrari F355 Challenge (private show version) [coolmod]
+  * pace: Specify storage class (nw)
+  * loop around full array in sunplus reset (nw) (#6243)
+  * Revert &quot;Alfaskop improvements&quot;
+  * copy-paste error (nw)
+  * New working clone
+  * there are reasons for things being the way they were (nw)
+  * tsamurai.cpp: Corrected ROM labels for the Ring Fighter sets and added PCB locations to them. [Brian Troha]
+  * atarigx2.cpp: Corrected program ROM names for the Moto Frenzy &quot;motofren&quot; set. [Brian Troha]
+  * fixed some modernize-use-auto clang-tidy warnings (nw) (#6238)
+  * fixed some modernize-use-equals-default clang-tidy warnings (nw) (#6237)
+  * fixed some clang-tidy warnings (nw) (#6236)
+  * spectrum_cass.xml: Added Load'N'Run (Spain) cover tapes [SPA2, retroLEL, Jander, ICEknight]
+  * likely resolve sunplus crashes on linux (nw)
+  * New machines marked as NOT_WORKING ---------------------------------- Formula 1 [PinMAME] Ice Mania [PinMAME]
+  * iphone2g: Fix validation (nw)
+  * New working clones (#6233)
+  * New working clones ------------------ Rampart (Joystick, smaller ROMs) [Juan Romero, ClawGrip]
+  * ouput -&gt; output (nw)
+  * dialong -&gt; dialog (nw)
+  * alfaskop4110: WIP added keyboard
+  * mc6854.cpp: WIP Fixed old obvious cut and paste errors and started to fix transmit part, a lot more needs to be fixed though
+  * mc6846: Removed nonexistant CP1 output callback and added a CP1 input interface call
+  * 6850acia.cpp: Updated use of logmacro.h
+  * sdk85: Updates and expansion - Make second 8355 into ROM expansion slot that can load custom 8755 programs - Add software list for expansion ROMs, including Peter Naszvadi's version of Mastermind - Add optional TTY interface - Improve accuracy of button labels and change key bindings - Add vectored interrupt and soft reset buttons
+  * i8355: Simplify handlers (nw)
+  * ptime: change operators to align with c++ textbooks. (nw)
+  * netlist: Parameters evaluated when netlist is created. [Couriersud]
+  * netlist: fix parameter update recalculation. (nw)
+  * netlist: Fix crash in infix function evaluation. (nw)
+  * netlist: make gain parameter mandatory for controoled sources. (nw)
+  * Add files via upload (#6220)
+  * Add some new Sonic prototype dumps (#6097)
+  * ymf278b.cpp : Add notes for internal functions (#6227)
+  * iphone2g wip (nw) (#6226)
+  * Plug and Play work (#6221)
+  * New NOT_WORKING software list additions (#6225)
+  * c64_cass.xml - Add two new dumps (#6228)
+  * fixed some clang-tidy warnings (nw) (#6229)
+  * montec: correct romlabel (nw)
+  * tti: No 53C90 registers used past offset 29 (nw)
+  * model3.cpp redumped ecap set [coolmod, MetalliC]
+  * tti: Support both firmware revisions
+  * remove outdated note (nw)
+  * new NOT_WORKING clone --------------------- Club Kart: European Session (2003, prototype, set 2) [coolmod, MetalliC]
+  * seta.cpp: actual default dips for Twin Eagle (nw)
+  * la120: Add skeleton DC305 device (nw)
+  * jazz: srcclean (nw)
+  * machines promoted to working
+  * jazz: mct_adr address mapping (nw)
+  * ims_cvc: hack for host/guest endianness mismatch (nw)
+  * New working software list additions ----------------------------------- odyssey2: Death Race (USA) [SSJ, TeamEurope], Death Race (Euro) [anonymous] lynx: Weltenschlächter [anonymous]
+  * s3c24xx, s3c44b0: Replace get_read_ptr with memory_access_cache (nw)
+  * netlist: Code maintenance. (nw)
+  * New working clones ------------------ Space Pilot (set 2) [chaneman]
+  * -iris3130: Renamed from sgi_ip2 to iris3130, converted to logmacro, added preliminary MMU support, added ROM board support. [Ryan Holtz]
+  * superga2.cpp: fixed player two inputs [xotmatrix] (#6219)
+  * konmedal.cpp update game flags (nw)
+  * k052109.cpp fix/cleanup tilemap scrolls, fixes fuusenpn and MT6790
+  * netlist: Fix/extend SPICE format conversion. [Couriersud]
+  * netlist: add current controlled voltage source (CCVS). [Couriersud]
+  * netlist: Fix issue in inactive code-path. (nw)
+  * netlist: MAJOR bug fix. Expect other bugs to surface. [Couriersud]
+  * nl_zac1b11142.cpp: Minor update. (nw)
+  * we32100d.cpp: Less goofy formatting (nw)
+  * mc68901: Automatic turnaround is only done once (nw)
+  * konendev: hooked up H8/3007 &quot;IFU&quot; CPU [R. Belmont]
+  * armedf.cpp : Use pdrawgfx for sprite drawing, Minor cleanups Fix namings, Make text VRAM into shared_ptr, Reduce duplicates, Move install_handler into address map, Fix naming, Fix terraf_io without NB1414M4, Simplify handlers, Simplify gfxdecode, Use shorter/correct type values, Add notes
+  * alfaskop41xx.cpp, jedparse.h, mc6844.cpp : addressed PR feedback
+  * alfaskop41xx.cpp: enabled PLA based IRQ vector modifications
+  * mc6854.cpp: improved LOG messages and fine tuning of IRQ handling
+  * alfaskop4110 WIP: Added DMA, ADLC and initial support for interrupts. An SDLC frame can be handfed to the ADLC and then DMA:ed to memory now
+  * pla.cpp, jedparse, jedutil: Added recognition and some support for alternative PLA binary format DataIO
+  * mc6854: WIP added support for external clocks and DMA
+  * 6821pia.cpp: improved LOG messages a bit
+  * WIP NEW DEVICE Motorola mc6844 DMA controller (devicified from swtpc09.cpp)
+</comment>
+    <requestid>789662</requestid>
+  </revision>
+</revisionlist>

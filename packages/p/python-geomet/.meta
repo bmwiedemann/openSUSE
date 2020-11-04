@@ -1,0 +1,5 @@
+<package name="python-geomet" project="openSUSE:Factory">
+  <title>python-geomet</title>
+  <description>Convert GeoJSON to WKT/WKB (Well-Known Text/Binary), and vice versa. Extended WKB/WKT are also supported. Conversion functions are exposed through idiomatic load/loads/dump/dumps interfaces.</description>
+  <devel project="devel:languages:python" package="python-geomet"/>
+</package>

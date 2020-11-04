@@ -1,0 +1,17 @@
+<package name="postgresql12" project="openSUSE:Factory">
+  <title>Basic Clients and Utilities for PostgreSQL</title>
+  <description>PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, subqueries, triggers, and user-defined
+types and functions.
+
+This package contains the basic utility and client programs necessary
+to maintain and work with local or remote PostgreSQL databases as well
+as manual pages for the SQL commands that PostgreSQL supports. Full
+HTML documentation for PostgreSQL can be found in the postgresql-docs
+package.
+
+</description>
+  <devel project="server:database:postgresql" package="postgresql12"/>
+  <url>https://www.postgresql.org/</url>
+</package>

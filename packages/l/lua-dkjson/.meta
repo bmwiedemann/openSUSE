@@ -1,0 +1,9 @@
+<package name="lua-dkjson" project="openSUSE:Factory">
+  <title>David Kolf's JSON module for Lua</title>
+  <description>dkjson is a module for encoding and decoding JSON data. It supports UTF-8.
+
+JSON (JavaScript Object Notation) is a format for serializing data based on the syntax for JavaScript data structures.
+
+dkjson is written in Lua without any dependencies, but when LPeg is available dkjson uses it to speed up decoding.</description>
+  <devel project="devel:languages:lua" package="lua-dkjson"/>
+</package>

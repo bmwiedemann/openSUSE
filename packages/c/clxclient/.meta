@@ -1,0 +1,8 @@
+<package name="clxclient" project="openSUSE:Factory">
+  <title>C++ wrapper library around the X Window System API</title>
+  <description>C++ wrapper library around the X Window System API.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="clxclient"/>
+  <url>https://kokkinizita.linuxaudio.org/linuxaudio/</url>
+</package>

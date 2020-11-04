@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>706193e46f2fa74d64b225f52102f7a7</srcmd5>
+    <version>0.2.3.4</version>
+    <time>1528022298</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-PsychoPy</comment>
+    <requestid>613336</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2220b122ca4188c0420a568fb63daf8c</srcmd5>
+    <version>0.2.3.4</version>
+    <time>1528196012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614083</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5feaaa6dd00e627f25613dd01e33272e</srcmd5>
+    <version>0.2.3.5</version>
+    <time>1528492467</time>
+    <user>dimstar_suse</user>
+    <comment>- I don't think we need to protect the test files, especially given the
+  testsuite can hardly be run on plain openSUSE withtout packages from
+  additional non-standard repositories.
+- Fix stupid typo</comment>
+    <requestid>614244</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3ff1fe86cc7c380fc9581dfa0cf75028</srcmd5>
+    <version>0.2.3.5</version>
+    <time>1533045588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626117</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6c5c3b642acc7ebf2858ddb1c40fb398</srcmd5>
+    <version>0.2.3.5</version>
+    <time>1548335650</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667864</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>616eb4c34c819a7e8b2153268f706b08</srcmd5>
+    <version>1.0.0</version>
+    <time>1558532326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698245</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aa9686fc9ec9e57855da9ffc65e4b427</srcmd5>
+    <version>1.0.2</version>
+    <time>1585760946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790164</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="perl-YAML-Syck" project="openSUSE:Factory">
+  <title>Fast, lightweight YAML loader and dumper</title>
+  <description>This module provides a Perl interface to the *libsyck* data serialization
+library. It exports the 'Dump' and 'Load' functions for converting Perl
+data structures to YAML strings, and the other way around.
+
+*NOTE*: If you are working with other language's YAML/Syck bindings (such
+as Ruby), please set '$YAML::Syck::ImplicitTyping' to '1' before calling
+the 'Load'/'Dump' functions. The default setting is for preserving
+backward-compatibility with 'YAML.pm'.</description>
+  <devel project="devel:languages:perl" package="perl-YAML-Syck"/>
+</package>

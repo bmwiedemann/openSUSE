@@ -1,0 +1,72 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69e726f6b79ccc38426635bd307cacb9</srcmd5>
+    <version>1.0.0beta6</version>
+    <time>1581694602</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773669</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02fcd204b3cc832c7bd87ca186241ab0</srcmd5>
+    <version>1.0.0beta7</version>
+    <time>1583094461</time>
+    <user>dimstar_suse</user>
+    <comment>Release 1.0.0beta7</comment>
+    <requestid>780336</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ea596bd95c5aecb79bc3ff75e4d09651</srcmd5>
+    <version>1.0.0beta8</version>
+    <time>1584050874</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.0.0beta8
+  ## Changed
+  - Reduced log verbosity of collect cycles to `DEBUG` level. (#137)
+  - Moved OBS related files to `packaging/obs`. (#139)
+  ## Fixed
+  - Pacemaker CIB parsing errors with some time values. (#138)
+  - Regression in CI changelog generator. (#136)</comment>
+    <requestid>784301</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>771457e4ea36b9d51b28484b5eb380b2</srcmd5>
+    <version>1.0.0rc1+git.1585388847.f12111c</version>
+    <time>1585676490</time>
+    <user>dimstar_suse</user>
+    <comment>New version of prometheus-ha_cluster_exporter released</comment>
+    <requestid>790167</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>715bf8aa3aae1bc4613a0eadde620544</srcmd5>
+    <version>1.0.1+git.1588608085.3a3faf7</version>
+    <time>1588697734</time>
+    <user>dimstar_suse</user>
+    <comment>New version of prometheus-ha_cluster_exporter released</comment>
+    <requestid>800112</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ab5021f6f1af5f018d12221c2ad5e6ec</srcmd5>
+    <version>1.0.1+git.1588608085.3a3faf7</version>
+    <time>1589892485</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport to SLE12SP3 and SLE15. (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818)</comment>
+    <requestid>806869</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dfa45a95b29288d54b8686cd4fb078cd</srcmd5>
+    <version>1.1.0+git.1594637514.c1eae0c</version>
+    <time>1594706435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820681</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7d7e58386128cf6234c14eab37ab95d2</srcmd5>
+    <version>1.2.0+git.1599131770.8912739</version>
+    <time>1599862413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833805</requestid>
+  </revision>
+</revisionlist>

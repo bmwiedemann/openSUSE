@@ -1,0 +1,6 @@
+<package name="perl-Any-URI-Escape" project="openSUSE:Factory">
+  <title>perl-Any-URI-Escape - Load URI::Escape::XS preferentially over URI::Escape</title>
+  <description>URI::Escape is great, but URI::Escape::XS is faster. This module loads URI::Escape::XS and imports the two most common methods if XS is installed.</description>
+  <devel project="devel:languages:perl" package="perl-Any-URI-Escape"/>
+  <url>https://metacpan.org/release/Any-URI-Escape</url>
+</package>

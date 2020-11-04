@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02e1dc7860d37882735a75d3d43a4e35</srcmd5>
+    <version>3.0.4</version>
+    <time>1575463790</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission to factory</comment>
+    <requestid>745534</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d47435df584026b9b357cdd8a49ca6a5</srcmd5>
+    <version>3.0.5</version>
+    <time>1585602157</time>
+    <user>dimstar_suse</user>
+    <comment>- poppler_api.patch added to fix API changes in poppler 
+- version 3.0.5
+  * fix for API change in poppler
+</comment>
+    <requestid>789544</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>16a608df577986753cfb8f97b6667c13</srcmd5>
+    <version>3.0.5</version>
+    <time>1586973291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793956</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5dc5b87ddd96e65e7b32f26efe2e7586</srcmd5>
+    <version>3.0.5</version>
+    <time>1591742929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812770</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>812829dd747340e384b4254a3b49c772</srcmd5>
+    <version>3.0.6</version>
+    <time>1592245797</time>
+    <user>dimstar_suse</user>
+    <comment>- version 3.0.6
+  * no changelog available
+  * poppler_api.patch removed (included in source)</comment>
+    <requestid>814644</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c4236cec5b775d3716840cbeb756beed</srcmd5>
+    <version>3.0.7</version>
+    <time>1593727938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818300</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>91a17d7bbf4a8f2bb371c1b38680275a</srcmd5>
+    <version>3.0.8</version>
+    <time>1603202726</time>
+    <user>dimstar_suse</user>
+    <comment>- version 3.0.8
+  * Fix TestScanner1 test
+
+Well, that changelog is not so much better than none. Seems upstream is very tight-lipped :-)</comment>
+    <requestid>842383</requestid>
+  </revision>
+</revisionlist>

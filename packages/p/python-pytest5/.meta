@@ -1,0 +1,5 @@
+<package name="python-pytest5" project="openSUSE:Factory">
+  <title>Python Test Framework</title>
+  <description>The pytest framework makes it easy to write small tests, yet scales to support complex functional testing for applications and libraries.</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest5"/>
+</package>

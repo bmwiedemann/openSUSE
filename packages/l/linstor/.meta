@@ -1,0 +1,5 @@
+<package name="linstor" project="openSUSE:Factory">
+  <title>linstor-common, linstor-controller and linstor-satellite</title>
+  <description>github.com:LINBIT/linstor-server.git</description>
+  <devel project="network:ha-clustering:Factory" package="linstor"/>
+</package>

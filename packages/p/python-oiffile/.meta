@@ -1,0 +1,6 @@
+<package name="python-oiffile" project="openSUSE:Factory">
+  <title>python-oiffile</title>
+  <description>Oiffile is a Python library to read image and metadata from Olympus Image Format files. OIF is the native file format of the Olympus FluoView(tm) software for confocal microscopy.</description>
+  <devel project="devel:languages:python:numeric" package="python-oiffile"/>
+  <url>https://www.lfd.uci.edu/~gohlke/</url>
+</package>

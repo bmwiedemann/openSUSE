@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ac64aaf2b96a17c19deda4b56fb64488</srcmd5>
+    <version>2.0.5</version>
+    <time>1575463864</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>751861</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b494db00cbf7f8e45470423a0a3672dc</srcmd5>
+    <version>2.0.5</version>
+    <time>1583526446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781317</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20d41307677f0cc0a54362937746523c</srcmd5>
+    <version>2.1.0</version>
+    <time>1585262057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788489</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5493ff3a929416d014bd207cbc2e1f1e</srcmd5>
+    <version>2.1.0</version>
+    <time>1587467378</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795784</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9658c44fcf5ee9de64efd9a48a276cd1</srcmd5>
+    <version>2.1.0</version>
+    <time>1588023429</time>
+    <user>dimstar_suse</user>
+    <comment>- Depend on python-dateutil not just dateutil to solve on Leap</comment>
+    <requestid>798127</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>834e11c459162f3509bc3f308cc5f7df</srcmd5>
+    <version>2.1.2</version>
+    <time>1603979507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844257</requestid>
+  </revision>
+</revisionlist>

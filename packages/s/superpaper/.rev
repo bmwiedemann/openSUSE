@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>43219c67698dfa8b37b77666c1465734</srcmd5>
+    <version>2.0.2</version>
+    <time>1590780196</time>
+    <user>maxlin_factory</user>
+    <comment>Wallpaper manager.
+Initial package release.</comment>
+    <requestid>809960</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5fda8f8c236629f017fa7e3620f1c951</srcmd5>
+    <version>2.1.0</version>
+    <time>1603645635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0.
+  * New features
+    * Span groups: span wallpapers on groups of displays.
+    * New tool to set the physical display positions for advanced 
+      span. Enables accurate fine tuning of dragged positions.
+    * Control system wallpaper span setting. No more need to check
+      the setting in the system settings.
+  * Fixes
+    * Fix out of order wallpaper changes when user and slideshow 
+      acted concurrently
+    * Support capitalized file extensions
+    * Default locale is now system locale
+- Clean up spec file, update python-system_hotkey dependency.
+</comment>
+    <requestid>843809</requestid>
+  </revision>
+</revisionlist>

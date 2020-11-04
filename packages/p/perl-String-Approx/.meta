@@ -1,0 +1,16 @@
+<package name="perl-String-Approx" project="openSUSE:Factory">
+  <title>Perl extension for approximate matching (fuzzy matching)</title>
+  <description>String::Approx lets you match and substitute strings approximately.
+With this you can emulate errors: typing errorrs, speling errors,
+closely related vocabularies (colour color),
+genetic mutations (GAG ACT), abbreviations (McScot, MacScot).
+
+NOTE: String::Approx suits the task of string matching,
+not string comparison, and it works for strings, not for text.
+
+ Authors:	Jarkko Hietaniemi &lt;jhi@iki.fi&gt;
+
+</description>
+  <devel project="devel:languages:perl" package="perl-String-Approx"/>
+  <url>http://search.cpan.org/dist/String-Approx</url>
+</package>

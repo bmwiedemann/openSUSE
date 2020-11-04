@@ -1,0 +1,5 @@
+<package name="python-azure-synapse-nspkg" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:azure" package="python-azure-synapse-nspkg"/>
+</package>

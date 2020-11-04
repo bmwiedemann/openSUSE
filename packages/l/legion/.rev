@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>699037a944c8813dcbbec1636fbf61c8</srcmd5>
+    <version>16.10.0</version>
+    <time>1487149404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>437950</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a128e1a65df046f62586788dad47b000</srcmd5>
+    <version>17.02.0</version>
+    <time>1488125379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>460323</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>be07a4079eaa279b50b63f39bac1dc20</srcmd5>
+    <version>17.05.0</version>
+    <time>1496226143</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>499845</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>be4e14dc8267d607135ab414e1669e3e</srcmd5>
+    <version>17.05.0</version>
+    <time>1497518659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503427</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>28f3b81b6c862ead71de29bd7cc89d0c</srcmd5>
+    <version>17.05.0</version>
+    <time>1498840972</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>507148</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>212f70cb6c2c6c1b086c7308fd1b6db2</srcmd5>
+    <version>17.08.0</version>
+    <time>1503926151</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 17.08.0 
+  * Build system
+    - Added HDF_ROOT variable to customize HDF5 install location
+  * Legion
+    - New error message format and online reference at
+        http://legion.stanford.edu/messages
+  * Legion Prof
+    - Added new compact binary format for profile logs
+    - Added flag: -hl:prof_logfile prof_%.gz
+  * Realm
+    - Fixes to support big-endian systems
+    - Several performance improvements to DMA subsystem
+    - Added REALM_DEFAULT_ARGS environment variable
+        containing flags to be inserted at front of command line
+  * Regent
+    - Removed new operator. Unstructured regions are now
+        fully allocated by default
+    - Added optimization to automatically skip empty tasks
+    - Initial support for extern tasks that are defined elsewhere
+    - Tasks that use __demand(__openmp) are now constrained
+        to run on OpenMP processors by default
+    - RDIR: Better support for deeper nested region trees
+- drop realm-detect-big-endian-systems-and-reverse-order-of-ID-fields.patch, upstream
+- drop tutorial-fix-bad-type-size-causing-crash-on-big-endian-systems.patch, upstream
+</comment>
+    <requestid>518608</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ad7a6b5de5f16faa244bc420ba4f2a42</srcmd5>
+    <version>17.08.0</version>
+    <time>1504981527</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _service to allow easier updates from github
+
+legion breaks sometime when running in VM. This is due to a bug in gasnet fixed by SR#521636</comment>
+    <requestid>521637</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>60a179f8b284b1212a7e41edde0e5ae8</srcmd5>
+    <version>17.08.0</version>
+    <time>1507571030</time>
+    <user>dimstar_suse</user>
+    <comment>- Force load of MPI environment
+- Use OpenMPI2 instead of OpenMPI1 except for ppc64be (unsupported by OpenMPI &gt;= 2)
+
+Requires and fixes SR#532253, SR#532254 and SR#532255</comment>
+    <requestid>532256</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>63b858ed8706d56d982ff158d8f7e707</srcmd5>
+    <version>17.10.0</version>
+    <time>1510960881</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542626</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b2332d9a6a638988df14d3bbd59dbbb5</srcmd5>
+    <version>18.02.0</version>
+    <time>1518025359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573697</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>705eed28f845b4ba9cfcaeaf4e44bbac</srcmd5>
+    <version>18.02.0</version>
+    <time>1529402456</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616656</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d7edc4d027267c9a1cdb3a3ad441a89c</srcmd5>
+    <version>18.05.0</version>
+    <time>1531135696</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621104</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f59abafd29feb39aba7e78cb8690c378</srcmd5>
+    <version>18.05.0</version>
+    <time>1531592680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622458</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fa89accdd25185ab2638111b1bbf9f4d</srcmd5>
+    <version>18.05.0</version>
+    <time>1533732857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628003</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>31b40a21ddd5ed7cfa14d32da2c5488a</srcmd5>
+    <version>18.05.0</version>
+    <time>1570800043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737378</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>5c0adc4cbe871672efb4632175399103</srcmd5>
+    <version>18.05.0</version>
+    <time>1602762687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841875</requestid>
+  </revision>
+</revisionlist>

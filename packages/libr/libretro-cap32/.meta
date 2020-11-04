@@ -1,0 +1,7 @@
+<package name="libretro-cap32" project="openSUSE:Factory">
+  <title>Caprice32 libretro core for Amstrad CPC emulation</title>
+  <description>Caprice32 is a software emulator of the Amstrad CPC 8bit home computer series running on Linux and Windows. The emulator faithfully imitates the CPC464, CPC664, and CPC6128 models. By recreating the operations of all hardware components at a low level, the emulator achieves a high degree of compatibility with original CPC software. These programs or games can be run unmodified at real-time or higher speeds, depending on the emulator host environment.
+
+This package is for RetroArch/libretro front-end.</description>
+  <devel project="Emulators" package="libretro-cap32"/>
+</package>

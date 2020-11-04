@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53b5985b974ca672b3cb117ba5afe08e</srcmd5>
+    <version>0.12.2</version>
+    <time>1600701618</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-hotdoc, that provides the hotdoc
+documentation generator framework, used by gstreamer 1.18.0</comment>
+    <requestid>835245</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>370786cfb4bcf1aff034dd37847c8a48</srcmd5>
+    <version>0.12.2</version>
+    <time>1603821493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843410</requestid>
+  </revision>
+</revisionlist>

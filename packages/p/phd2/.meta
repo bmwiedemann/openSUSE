@@ -1,0 +1,5 @@
+<package name="phd2" project="openSUSE:Factory">
+  <title>phd2</title>
+  <description></description>
+  <devel project="Application:Geo" package="phd2"/>
+</package>

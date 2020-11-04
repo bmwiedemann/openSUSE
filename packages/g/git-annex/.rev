@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d3c2f070b03e65e48968f3008f09920</srcmd5>
+    <version>8.20200522</version>
+    <time>1592578258</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6209d6c6b92a3cacbad8ed192d9f370d</srcmd5>
+    <version>8.20200617</version>
+    <time>1594293592</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819597</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>987fec2eb37e4a0fe3e7422c237c4ec1</srcmd5>
+    <version>8.20200810</version>
+    <time>1597746300</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>825809</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>df2753862329ed9b97165a16fa9cf42e</srcmd5>
+    <version>8.20200810</version>
+    <time>1598643727</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829517</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68f23d65034631b136a019549ad38172</srcmd5>
+    <version>8.20200908</version>
+    <time>1600179703</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>833312</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>265861f79d639d1157b0bcb70b4a3745</srcmd5>
+    <version>8.20200908</version>
+    <time>1600879525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836237</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b1ae74dd00a8558c2415d4041d64c057</srcmd5>
+    <version>8.20201007</version>
+    <time>1603458941</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842778</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a8f928e54e2eb08005921320aa0ccaa</srcmd5>
+    <version>0.9.1</version>
+    <time>1603645623</time>
+    <user>dimstar_suse</user>
+    <comment>The test dev_tools/bash_scripts_test.py failed, I ask the dev but they could not reproduce the error, but the dev said that it does not effect the package validity so try to submit the package anyway.
+https://github.com/quantumlib/Cirq/issues/3154</comment>
+    <requestid>841898</requestid>
+  </revision>
+</revisionlist>

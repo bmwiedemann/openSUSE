@@ -1,0 +1,11 @@
+<package name="kvantum" project="openSUSE:Factory">
+  <title>SVG-based theme engine for Qt5</title>
+  <description>Kvantum is an SVG-based theme engine for Qt, tuned to Plasma and LXQt, with an emphasis on elegance, usability and practicality.
+Its homepage is https://github.com/tsujan/Kvantum.
+
+Kvantum also comes with extra themes that can be selected and activated by using Kvantum Manager.
+
+</description>
+  <devel project="KDE:Extra" package="kvantum"/>
+  <url>https://github.com/tsujan/Kvantum</url>
+</package>

@@ -1,0 +1,7 @@
+<package name="obs-service-tar_scm" project="openSUSE:Factory">
+  <title>An OBS source service: checkout or update a tar ball from svn/git/hg</title>
+  <description>This is a source service for openSUSE Build Service.
+
+It supports downloading from svn, git, hg and bzr repositories.</description>
+  <devel project="openSUSE:Tools" package="obs-service-tar_scm"/>
+</package>

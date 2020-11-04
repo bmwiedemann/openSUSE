@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2acd067c7880691bbe8fef999debcb8</srcmd5>
+    <version>1.4.1</version>
+    <time>1592939181</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>816523</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09235289f1a7a16c801616d170295ed2</srcmd5>
+    <version>1.4.2</version>
+    <time>1595272162</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint warnings
+- Update to 1.4.2
+Enhancements:
+  * Added more helpful aliases for MIDI events/controllers
+    constants
+Examples:
+  * Added ccstore advanced example to show how to remember last
+    seen controller change values
+</comment>
+    <requestid>821968</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7f32ba4aa8eba63d5acc9312542def3</srcmd5>
+    <version>1.4.5</version>
+    <time>1602596508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.5
+  * Fixed error when trying to import version number from
+    ``rtmidi.release`` when Python is running with ``-OO``
+    optimization enabled.</comment>
+    <requestid>841083</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>870a6caa4bf87ede191098be6a5096ca</srcmd5>
+    <version>1.4.6</version>
+    <time>1602857723</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.6
+  * Declare/document Python 3.9 support
+  * Drop official support for Python 3.5</comment>
+    <requestid>842008</requestid>
+  </revision>
+</revisionlist>

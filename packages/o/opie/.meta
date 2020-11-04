@@ -1,0 +1,10 @@
+<package name="opie" project="openSUSE:Factory">
+  <title>Support for One-Time Passwords</title>
+  <description>OPIE stands for One-time Passwords In Everything. One-time passwords
+can be used to foil password sniffers because they cannot be reused by
+the attacker.
+
+This package provides a PAM module and several utility programs that
+let you use one-time passwords for authentication.</description>
+  <devel project="Base:System" package="opie"/>
+</package>

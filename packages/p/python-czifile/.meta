@@ -1,0 +1,5 @@
+<package name="python-czifile" project="openSUSE:Factory">
+  <title>python-czifile</title>
+  <description>Czifile is a Python library to read Carl Zeiss Image (CZI) files, the native file format of the ZEN(r) software by Carl Zeiss Microscopy GmbH. CZI files contain multidimensional images and metadata from microscopy experiments.</description>
+  <devel project="devel:languages:python:numeric" package="python-czifile"/>
+</package>

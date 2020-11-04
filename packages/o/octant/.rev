@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a758f344d7f921e7e646ad0205780188</srcmd5>
+    <version>0.16.1</version>
+    <time>1603448507</time>
+    <user>dimstar_suse</user>
+    <comment>New Kubernetes package</comment>
+    <requestid>843364</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>549e154d8b71d97037e12aaf5d3f499e</srcmd5>
+    <version>0.16.1</version>
+    <time>1603821631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844182</requestid>
+  </revision>
+</revisionlist>

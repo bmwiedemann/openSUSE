@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>223a14a8548f948c22d250adcb85d41a</srcmd5>
+    <version>2.0.0</version>
+    <time>1586368510</time>
+    <user>dimstar_suse</user>
+    <comment>Initial effort to package the module.</comment>
+    <requestid>792042</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16e7ed9c499b2f96aa28e869fd760a16</srcmd5>
+    <version>2.0.0</version>
+    <time>1597220559</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820746</requestid>
+  </revision>
+</revisionlist>

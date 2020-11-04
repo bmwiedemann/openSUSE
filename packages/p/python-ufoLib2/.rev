@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db42826e2e25994114e3bd9fb097b5af</srcmd5>
+    <version>0.7.1</version>
+    <time>1590780138</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808972</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a29e7e25621fdd31f0b245ee7e31930</srcmd5>
+    <version>0.8.0</version>
+    <time>1602595876</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0
+  * Added bounds and controlPointBounds properties to Layer and Font objects, like in defcon API.
+</comment>
+    <requestid>839731</requestid>
+  </revision>
+</revisionlist>

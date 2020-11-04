@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71d632a3b2c22b9e6618b5d380226ad3</srcmd5>
+    <version>1.6.0</version>
+    <time>1586368498</time>
+    <user>dimstar_suse</user>
+    <comment>Initial effort to package the module.</comment>
+    <requestid>790913</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c83a8df899ea1131921c50065414f795</srcmd5>
+    <version>1.6.0</version>
+    <time>1594817683</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54.patch adding compatiblity with Lua 5.4
+  (gh#Tieske/Penlight#320)
+
+- Add lua54 as new build target</comment>
+    <requestid>819286</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0327b2071128515c068668ad449b0794</srcmd5>
+    <version>1</version>
+    <time>1600180379</time>
+    <user>dimstar_suse</user>
+    <comment>CSI sidecar container, used when deploying ceph on k8s with rook</comment>
+    <requestid>834565</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fd67a4c540f137361bad48ede355bcdf</srcmd5>
+    <version>1</version>
+    <time>1600347483</time>
+    <user>dimstar_suse</user>
+    <comment>Add LICENSE file</comment>
+    <requestid>835054</requestid>
+  </revision>
+</revisionlist>

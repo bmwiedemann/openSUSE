@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9f7db3f21f5e63cabf7635f676abfb23</srcmd5>
+    <version>1.2.0</version>
+    <time>1553436002</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685842</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8db9f6a433dddc9eb994289ab159fba8</srcmd5>
+    <version>1.2.1</version>
+    <time>1558939142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * Added support for subprocess timeouts while discovering python paths. #62
+- Merged patch setup-ascii.patch</comment>
+    <requestid>705387</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e84cef734f111c8ba4d7fc67acc1894a</srcmd5>
+    <version>1.2.1</version>
+    <time>1578606834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762519</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c8a74e6ea88f22e3a62c9b59489fe113</srcmd5>
+    <version>1.2.1</version>
+    <time>1578675090</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not skip the python2 build manually but wait for the prjconf
+  declearation</comment>
+    <requestid>762867</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>faf100651c21e55844fb96a071aaf7b5</srcmd5>
+    <version>1.2.1</version>
+    <time>1590506285</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807672</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48bc5d86a48c28e81191397e7b1440f9</srcmd5>
+    <version>1.2.4</version>
+    <time>1596565280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824172</requestid>
+  </revision>
+</revisionlist>

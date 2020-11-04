@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>badc8b2b2be1020d9ce4dba52e30e289</srcmd5>
+    <version>3.1.1</version>
+    <time>1593727442</time>
+    <user>dimstar_suse</user>
+    <comment>Trim redundancies from description.
+Drop redundant (autodetected) pkgconfig require.</comment>
+    <requestid>811619</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>edb833c65c4eb5efc8c5c19821a2e11c</srcmd5>
+    <version>3.1.2</version>
+    <time>1594818236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.2.
+  * Fixed: Internal refactorings that reduce function templates in
+    utils and finder.
+  * Changed: File utils.hxx is not installed any more. It is a 
+    private header.
+  * Deprecated: Some functions for searching dictionaries in class
+    Finder are deprecated as they were searching in directories that
+    no longer contain dictionaries.
+- Fix build for Leap by enabling cmake rpath flag. 
+</comment>
+    <requestid>820818</requestid>
+  </revision>
+</revisionlist>

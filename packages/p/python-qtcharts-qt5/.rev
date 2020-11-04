@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f012a337c2736bbe025f281b27ee51b</srcmd5>
+    <version>5.12</version>
+    <time>1551284944</time>
+    <user>dimstar_suse</user>
+    <comment>python bindings for Qt5 Charts</comment>
+    <requestid>678247</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea0be6587117fb596ac0c33fe9b1c700</srcmd5>
+    <version>5.12</version>
+    <time>1551785188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681642</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f5863227aeb8b68e340f15036f8bacd</srcmd5>
+    <version>5.13.0</version>
+    <time>1563259229</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.13.0</comment>
+    <requestid>714850</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1cca69adbd625dd6cd3ea80d596091d6</srcmd5>
+    <version>5.13.1</version>
+    <time>1574783598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748566</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5b7e0f75ad4bbcfa69c9e6e3e37caba4</srcmd5>
+    <version>5.15.0</version>
+    <time>1599210563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830361</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7ec1582c429494039f0386edc43ec94c</srcmd5>
+    <version>5.15.1</version>
+    <time>1600180136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 5.15.1
+  * A bug-fix release.
+- remove the superfluous Tumbleweed python2 skip hack</comment>
+    <requestid>834346</requestid>
+  </revision>
+</revisionlist>

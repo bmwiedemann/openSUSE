@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6ce753367f83650db5a155ab923b33ab</srcmd5>
+    <version>5.1.2</version>
+    <time>1596565386</time>
+    <user>dimstar_suse</user>
+    <comment>- Metadata query tool for Azure</comment>
+    <requestid>824216</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4d8043643a28e00ca398418333a510c</srcmd5>
+    <version>5.1.2</version>
+    <time>1598726601</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830284</requestid>
+  </revision>
+</revisionlist>

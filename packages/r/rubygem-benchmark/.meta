@@ -1,0 +1,8 @@
+<package name="rubygem-benchmark" project="openSUSE:Factory">
+  <title>A performance benchmarking library</title>
+  <description>The Benchmark module provides methods for benchmarking Ruby code, giving
+detailed reports on the time taken for each task.
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-benchmark"/>
+  <url>https://github.com/ruby/benchmark</url>
+</package>

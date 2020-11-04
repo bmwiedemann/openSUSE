@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0cb9370d5c52ab6ea1b4459f520374bc</srcmd5>
+    <version>5.0.0</version>
+    <time>1575463936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753121</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>735309d9e48ad53dad9f99236dfb7b98</srcmd5>
+    <version>5.1.0</version>
+    <time>1598885446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * Ability to specify proxies for a Service definition so all calls to the
+    service use the defined proxies
+  * Ability to specify auth for a Service definition so all calls to the
+    service use the defined authentication
+  * Ability to specify return_raw_response_object at the endpoint level,
+    overridden by any value specified at call time</comment>
+    <requestid>830623</requestid>
+  </revision>
+</revisionlist>

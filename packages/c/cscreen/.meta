@@ -1,0 +1,5 @@
+<package name="cscreen" project="openSUSE:Factory">
+  <title>Console screen</title>
+  <description></description>
+  <devel project="systemsmanagement" package="cscreen"/>
+</package>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11fffc1bc99c1135ef8770a74683922a</srcmd5>
+    <version>1.4.2.pl01</version>
+    <time>1469629733</time>
+    <user>dimstar_suse</user>
+    <comment>Split libburnia to libburn, libisofs and libisoburn as they are released as separate packages: 1st package libburn. Also update libburn to version 1.4.2.pl01</comment>
+    <requestid>407669</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>be2bf21d45e17900a7aa932da5aedbae</srcmd5>
+    <version>1.4.4</version>
+    <time>1470217330</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415653</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29d16428e1f4488eeef9926ebbe94ee4</srcmd5>
+    <version>1.4.6</version>
+    <time>1485862109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453350</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbc8d92281c7de3ceba25cd50a64ebe0</srcmd5>
+    <version>1.4.8</version>
+    <time>1518187328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574400</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e7cd2877a6ee8bfe935c33e80a98173</srcmd5>
+    <version>1.5.0</version>
+    <time>1541509909</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644500</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8154c0bc45c7f963b4a163b1244f18f3</srcmd5>
+    <version>1.5.2.pl01</version>
+    <time>1588450363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799316</requestid>
+  </revision>
+</revisionlist>

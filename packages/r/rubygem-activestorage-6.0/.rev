@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>507d0d6cdbfc2950d6403b3be3e3a4a2</srcmd5>
+    <version>6.0.0</version>
+    <time>1566243647</time>
+    <user>dimstar_suse</user>
+    <comment>initialize rails 6 - has to go with the other modules submitted to factory</comment>
+    <requestid>724302</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e328aa69a7beb0e6275037a67ef752d2</srcmd5>
+    <version>6.0.1</version>
+    <time>1573647916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747687</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1f0ad39fd53861c06fccbfe57d3877dc</srcmd5>
+    <version>6.0.2</version>
+    <time>1576322494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756930</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e65adc81b4dc4f174bee756f1aa14bc</srcmd5>
+    <version>6.0.2.1</version>
+    <time>1576927908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758391</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>beae208873302a4a625ebbf436184045</srcmd5>
+    <version>6.0.2.2</version>
+    <time>1588023638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798226</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e10fddc07949d0d9fac757f2bab085ac</srcmd5>
+    <version>6.0.3</version>
+    <time>1589197125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802322</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44e73a02cd78d0fe156b93f9efbfaf42</srcmd5>
+    <version>6.0.3.1</version>
+    <time>1590650344</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809487</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>96ad8632156bf4d93152782d7a97b379</srcmd5>
+    <version>6.0.3.2</version>
+    <time>1593090655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817011</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>583c2a9661c1f2940f116920b7effbf4</srcmd5>
+    <version>6.0.3.3</version>
+    <time>1600079342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833961</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d223f05ee3eeed6fbfa3302598010b8e</srcmd5>
+    <version>6.0.3.4</version>
+    <time>1603031651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842159</requestid>
+  </revision>
+</revisionlist>

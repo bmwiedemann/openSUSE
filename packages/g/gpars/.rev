@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c86dc3fe5df0c4450d45866f88b50137</srcmd5>
+    <version>1.2.1</version>
+    <time>1574167475</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>749219</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9879130ed358680e9ceeb6862a954d64</srcmd5>
+    <version>1.2.1</version>
+    <time>1575923777</time>
+    <user>dimstar_suse</user>
+    <comment>Allow buildign with Java 11</comment>
+    <requestid>755231</requestid>
+  </revision>
+</revisionlist>

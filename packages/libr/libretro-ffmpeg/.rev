@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b11113337e8cba2175bf5d981d63bfa</srcmd5>
+    <version>0~git20191123</version>
+    <time>1582018503</time>
+    <user>dimstar_suse</user>
+    <comment>Remove non-free sources</comment>
+    <requestid>773980</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e3617a0f3ac60b8828a1689e6d73798e</srcmd5>
+    <version>0~git20191123</version>
+    <time>1582725974</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove binaries that was added to source archive by accident
+</comment>
+    <requestid>779333</requestid>
+  </revision>
+</revisionlist>

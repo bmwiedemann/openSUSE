@@ -1,0 +1,7 @@
+<package name="libretro-easyrpg" project="openSUSE:Factory">
+  <title>EasyRPG libretro core</title>
+  <description>EasyRPG is a community project to create a free, open source, role playing game creation tool, compatible with RPG Maker 2000/2003 games.
+
+This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-easyrpg"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="blitz" project="openSUSE:Factory">
+  <title>Blitz++ Multi-Dimensional Array Library for C++</title>
+  <description>Blitz++ is a C++ template class library that provides high-performance
+multidimensional array containers for scientific computing.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="blitz"/>
+  <url>https://github.com/blitzpp/blitz/</url>
+</package>

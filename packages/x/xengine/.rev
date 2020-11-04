@@ -1,0 +1,129 @@
+<revisionlist>
+  <revision rev="1" vrev="896">
+    <srcmd5>50f5557c158e583ee44fb42a7526f545</srcmd5>
+    <version>1.11</version>
+    <time>1168904531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1092">
+    <srcmd5>50f5557c158e583ee44fb42a7526f545</srcmd5>
+    <version>1.11</version>
+    <time>1168904531</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1093">
+    <srcmd5>9d34370148321aa4355c6267bdbf71d7</srcmd5>
+    <version>1.11</version>
+    <time>1245276500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1095">
+    <srcmd5>9d34370148321aa4355c6267bdbf71d7</srcmd5>
+    <version>1.11</version>
+    <time>1245276500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1096">
+    <srcmd5>3501f3854c6486507a5f3c7db8774b22</srcmd5>
+    <version>1.11</version>
+    <time>1268926562</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="1098">
+    <srcmd5>3501f3854c6486507a5f3c7db8774b22</srcmd5>
+    <version>1.11</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1099">
+    <srcmd5>3501f3854c6486507a5f3c7db8774b22</srcmd5>
+    <version>1.11</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1100">
+    <srcmd5>16aaca2da6533c809678af9b99055b2e</srcmd5>
+    <version>1.11</version>
+    <time>1289415399</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52499 from user anubisg1
+</comment>
+    <requestid>52499</requestid>
+  </revision>
+  <revision rev="9" vrev="1101">
+    <srcmd5>0e84d2d5a36f1d353882e81fc2f9a693</srcmd5>
+    <version>1.11</version>
+    <time>1289415406</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52499
+</comment>
+  </revision>
+  <revision rev="10" vrev="1104">
+    <srcmd5>0e84d2d5a36f1d353882e81fc2f9a693</srcmd5>
+    <version>1.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="1106">
+    <srcmd5>0e84d2d5a36f1d353882e81fc2f9a693</srcmd5>
+    <version>1.11</version>
+    <time>1319182584</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="1107">
+    <srcmd5>b38eb7c6e935bea5d48b817f766bd6c1</srcmd5>
+    <version>1.11</version>
+    <time>1333014184</time>
+    <user>coolo</user>
+    <comment>license update: ISC
+Obligations in this packages^s licenses are most akin to the ISC license (http://www.spdx.org/licenses/ISC) (forwarded request 111581 from lrupp)</comment>
+    <requestid>111607</requestid>
+  </revision>
+  <revision rev="13" vrev="1109">
+    <srcmd5>b38eb7c6e935bea5d48b817f766bd6c1</srcmd5>
+    <version>1.11</version>
+    <time>1340184343</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1111">
+    <srcmd5>b38eb7c6e935bea5d48b817f766bd6c1</srcmd5>
+    <version>1.11</version>
+    <time>1359110604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1113">
+    <srcmd5>b38eb7c6e935bea5d48b817f766bd6c1</srcmd5>
+    <version>1.11</version>
+    <time>1379665014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1115">
+    <srcmd5>b38eb7c6e935bea5d48b817f766bd6c1</srcmd5>
+    <version>1.11</version>
+    <time>1409303696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1116">
+    <srcmd5>881a987fccee999fc0acc8b7b94f35c9</srcmd5>
+    <version>1.11</version>
+    <time>1413476099</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256857</requestid>
+  </revision>
+  <revision rev="18" vrev="1117">
+    <srcmd5>79f6e6194ce6f9dee9e9c6daa9dfa630</srcmd5>
+    <version>1.11</version>
+    <time>1415016723</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259217</requestid>
+  </revision>
+</revisionlist>

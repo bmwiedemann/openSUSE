@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>4269eb01b9a28ae11d5f8117426e7c9a</srcmd5>
+    <version>0.4.1</version>
+    <time>1373396507</time>
+    <user>coolo</user>
+    <comment>include COPYING in %doc</comment>
+    <requestid>182385</requestid>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>4269eb01b9a28ae11d5f8117426e7c9a</srcmd5>
+    <version>0.4.1</version>
+    <time>1379664129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>281564e25daafa365fdc96047c1615bd</srcmd5>
+    <version>0.4.1</version>
+    <time>1386773037</time>
+    <user>coolo</user>
+    <comment>Various changes again (BuildArch, spec cleaning) (forwarded request 210410 from aeneas_jaissle)</comment>
+    <requestid>210447</requestid>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>281564e25daafa365fdc96047c1615bd</srcmd5>
+    <version>0.4.1</version>
+    <time>1409302818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9172baca9033818527e4f23387397fba</srcmd5>
+    <version>0.5.0</version>
+    <time>1451674041</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349375</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>79bb0e49bc57b4425831709bc4c08022</srcmd5>
+    <version>0.5.0</version>
+    <time>1518514295</time>
+    <user>dimstar_suse</user>
+    <comment>- Sort out a bit with spec-cleaner and remove all the sle11
+  conditions
+
+- singlespec auto-conversion</comment>
+    <requestid>575807</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>873e011908a0bf83f487eae5a48ed92e</srcmd5>
+    <version>0.5.0</version>
+    <time>1544631995</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+- Add missing BR
+</comment>
+    <requestid>655586</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>affc464ea81da5a749f006d8be2e9a42</srcmd5>
+    <version>1.0.0b5</version>
+    <time>1583949157</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768423</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0ad5b598a59db59afeb51518d4783d1</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1601652286</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.md to CHANGELOG.md in %files section (forwarded request 833085 from glaubitz)</comment>
+    <requestid>833108</requestid>
+  </revision>
+</revisionlist>

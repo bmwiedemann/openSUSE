@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8756aca5a418cd91f6a763750dccce0</srcmd5>
+    <version>1.5.0</version>
+    <time>1432799607</time>
+    <user>dimstar_suse</user>
+    <comment>X.509 collection accessing and storing methods</comment>
+    <requestid>308004</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d7ba5eb2b4395e009c0c02b5c709306</srcmd5>
+    <version>1.6.0</version>
+    <time>1440479965</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324497</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d5dd8a6ce548da30c61daf8d9afbdc4a</srcmd5>
+    <version>1.6.1</version>
+    <time>1442474381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1</comment>
+    <requestid>330778</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3e8fba84b7807c2ca64a4ffffc374ccf</srcmd5>
+    <version>1.6.1</version>
+    <time>1468999193</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411616</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e42d67fd506cd2de9c01b4a788376804</srcmd5>
+    <version>1.6.2</version>
+    <time>1478377618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2 with cabal2obs.</comment>
+    <requestid>438557</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f04efe2f28aa4c25682801f932978dfa</srcmd5>
+    <version>1.6.3</version>
+    <time>1504206109</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513541</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a29ab0b0fdd00f4df70f135538288b74</srcmd5>
+    <version>1.6.6</version>
+    <time>1527675355</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-x509-store to the latest version.</comment>
+    <requestid>607926</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>df82c1f9f8365a2114de5342ee3acbc1</srcmd5>
+    <version>1.6.6</version>
+    <time>1532161466</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 1.6.1
+- update to 1.6.0
+- initial commit</comment>
+    <requestid>623896</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>cbd7c931ff628faa610798f7996319c6</srcmd5>
+    <version>1.6.6</version>
+    <time>1540451245</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643492</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7454c557622f217cf0c963efe46de6c7</srcmd5>
+    <version>1.6.7</version>
+    <time>1541746386</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>646365</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d7f54d09983b9639d219762052c04891</srcmd5>
+    <version>1.6.7</version>
+    <time>1550402443</time>
+    <user>coolo</user>
+    <comment>version update</comment>
+    <requestid>674313</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a00a23dec1863560b1be64a6b991248f</srcmd5>
+    <version>1.6.7</version>
+    <time>1577451548</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759561</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>5511cb61cbd4bbaa549ffc988ad6811f</srcmd5>
+    <version>1.6.7</version>
+    <time>1592580075</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815219</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>dd204ac475816504b9e70d4307976d22</srcmd5>
+    <version>1.6.7</version>
+    <time>1598643685</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829499</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>a9f8a6eb39308a09fac43aa630299750</srcmd5>
+    <version>1.6.7</version>
+    <time>1599509076</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832342</requestid>
+  </revision>
+</revisionlist>

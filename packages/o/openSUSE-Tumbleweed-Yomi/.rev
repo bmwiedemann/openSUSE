@@ -1,0 +1,156 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3194a52ae2bee580acfa3c4c650bb8ac</srcmd5>
+    <version>1.0.0</version>
+    <time>1564994268</time>
+    <user>dimstar_suse</user>
+    <comment>Request to include openSUSE-Tumbleweed-Yomi image into Factory
+
+This image is a KIWI profile heavily based on the JeOS one, but
+simplified to be build under a single architecure (x86-64)
+
+The image is EFI, and contains the CLI required to have a successful
+installation when Yomi takes over the salt-minion installed in the
+image.
+
+In the future, for different architectures there will be again
+different profiles.</comment>
+    <requestid>720232</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff0f8ff17e9bb9da0c0c6df322ee05cd</srcmd5>
+    <version>1.0.0</version>
+    <time>1565097105</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 'PermitEmptyPasswords yes' in sshd_config</comment>
+    <requestid>721090</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0463482b85a044d0aa195c10e24b893f</srcmd5>
+    <version>1.0.0</version>
+    <time>1565267025</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the FQDN for the minion ID in case that hostname is not
+  localhost
+- Add e2fsprogs and xfsprogs packages</comment>
+    <requestid>721566</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>041d7301be135889ad682a39a7f9ac60</srcmd5>
+    <version>1.0.0</version>
+    <time>1565695680</time>
+    <user>dimstar_suse</user>
+    <comment>- Build for now only in x86_64
+
+- Add hwinfo package for hardware detection</comment>
+    <requestid>723025</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>93753859c73023d3950aa9a3f674e768</srcmd5>
+    <version>1.0.0</version>
+    <time>1565876634</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &lt;!-- OBS-ExclusiveArch: aarch64 x86_64 --&gt;: Do not attempt to
+  build on archs like i586, where uefi is not supported.</comment>
+    <requestid>723529</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fa3f48e0fdf5e3b1ba0ba95475318394</srcmd5>
+    <version>1.0.0</version>
+    <time>1566665092</time>
+    <user>dimstar_suse</user>
+    <comment>- Create a _multibuild configuration
+- Add a OEM Ramdisk profile for PXE Boot
+- Replace vim with nano</comment>
+    <requestid>725534</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>ce874812ae4610a9fc22f9b3731b208c</srcmd5>
+    <version>1.0.0</version>
+    <time>1568720328</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>731236</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>5603602089ca5075a969bdfb0445d50d</srcmd5>
+    <version>1.0.0</version>
+    <time>1569392315</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>732683</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>47b38c3673b2dfa9d772bab839c08500</srcmd5>
+    <version>1.0.0</version>
+    <time>1570557495</time>
+    <user>dimstar_suse</user>
+    <comment>- Add basic configuration for nano in /etc/nanorc</comment>
+    <requestid>735876</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>c5210770a2be94a9530fb53338af5181</srcmd5>
+    <version>1.0.0</version>
+    <time>1571402193</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>739202</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>2ee3064ab3da8dbe9c869193dc86906e</srcmd5>
+    <version>1.0.0</version>
+    <time>1580901065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770213</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>862dbf9ae916562f89a89ca46c0751c1</srcmd5>
+    <version>1.0.0</version>
+    <time>1583446901</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>781600</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>5fc8a7059f8a8edadbc2e383f08caf1c</srcmd5>
+    <version>1.0.0</version>
+    <time>1583775255</time>
+    <user>dimstar_suse</user>
+    <comment>- Set JEOS_EULA_ALREADY_AGREED for the image</comment>
+    <requestid>782974</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>80ec5efc82d46d3dc40d7b0ff0c46f8d</srcmd5>
+    <version>1.0.0</version>
+    <time>1585342894</time>
+    <user>dimstar_suse</user>
+    <comment>- Set JEOS_HIDE_SUSECONNECT for the image</comment>
+    <requestid>789061</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>f23eeac74a3b37b1bbaab5fd423dc748</srcmd5>
+    <version>1.0.0</version>
+    <time>1593728089</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818338</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>8347555133e579f7ffc370c16feea6e5</srcmd5>
+    <version>1.0.0</version>
+    <time>1601652926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update config.sh based on last JeOS template
+- Update JEOS_LOCALE to en_US.UTF-8</comment>
+    <requestid>838795</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>e7032ee7bf96d5158a2947f6e85732ec</srcmd5>
+    <version>1.0.0</version>
+    <time>1602682747</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>841592</requestid>
+  </revision>
+</revisionlist>

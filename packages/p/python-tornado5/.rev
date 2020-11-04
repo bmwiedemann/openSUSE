@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7dd06ebad086c1a68c909ebc398b3280</srcmd5>
+    <version>5.1.1</version>
+    <time>1573164760</time>
+    <user>dimstar_suse</user>
+    <comment>Add py-tornado5
+
+Fixes build failure in previous submission #737142</comment>
+    <requestid>745544</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b0f358cb23f16137be894f00865ce69</srcmd5>
+    <version>5.1.1</version>
+    <time>1574414499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746639</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>32ec0ec5e979d75981ca730c2dcaaf44</srcmd5>
+    <version>5.1.1</version>
+    <time>1583702445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to build with python 3.8:
+  * py38-0001-test-silence-deprecation-warning.patch
+  * py38-0002-dont-log-CancelledError.patch</comment>
+    <requestid>761564</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="spindle" project="openSUSE:Factory">
+  <title>Scalable shared library loading in HPC environments</title>
+  <description></description>
+  <devel project="network:cluster" package="spindle"/>
+</package>

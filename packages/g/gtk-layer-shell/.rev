@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5b5b6162c61d89c8a3264b3b452f13ef</srcmd5>
+    <version>0.1.0</version>
+    <time>1578069251</time>
+    <user>dimstar_suse</user>
+    <comment>Now? :)</comment>
+    <requestid>760622</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7f27fbec3dd6fe44ca8ba5122437e679</srcmd5>
+    <version>0.1.0</version>
+    <time>1588186305</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire gobject introspection devel files correctly</comment>
+    <requestid>798821</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>77bca1e9c6a3cc167c48aa08192dd0d8</srcmd5>
+    <version>0.2.0</version>
+    <time>1596104733</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Relicense to LGPL v3
+  * Fix long standing issue with popup grabs
+  * Fix potential compatibility issues between GTK versions with
+    gtk-priv headers
+  * Add GitHub Actions CI (just building and license check for now)
+  * Add script to check that are files are licensed correctly
+  * Use layer_surface-&gt;set_layer instead of remapping (when available)</comment>
+    <requestid>823299</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9de3adc0e9a4cdfeabe9bf1cce734be0</srcmd5>
+    <version>0.3.0</version>
+    <time>1600440220</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GPL3 to Licenses
+
+- Update to 0.3.0:
+  * Demo: Display GTK version
+  * Demo: Add option for disabling gtk-layer-shell for testing
+  * Fix intermittent crash relating to popovers (#51)
+  * Clarify that our license is LGPL version 3 or any later version
+  * Use system XDG Shell protocol when available
+  * Allow accessing the underlying layer shell surface
+    (EDIT: this change was accidentally omitted from the release)
+  * Bump explicitly supported GTK version to 3.24.22</comment>
+    <requestid>827594</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d77de921f6a736595097acbdda91413d</srcmd5>
+    <version>0.4.0</version>
+    <time>1603369562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Demo: show GTK Layer Shell version
+  * Demo: fix initially set auto-exclusive zone and fixed size
+    properties (fixes #64)
+  * API: expose GTK Layer Shell version
+  * API: expose the underlying layer shell surface (fixes #41)
+  * Tests: add mock server
+  * Tests: add integration tests (fixes #60)
+  * Diagnostics: remove &quot;transient_for != window transient_for&quot; warning
+  * Diagnostics: improve warning when GTK version may not work by
+    linking to a compatibility table (fixes #66)
+  * Compat: bump supported GTK to v3.24.23</comment>
+    <requestid>843371</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>83b6978c429de03b6213fc73e8fdeb55</srcmd5>
+    <version>0.5.0</version>
+    <time>1603959809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * API: add getters for all properties (fixes #56)
+  * API: add gtk_layer_is_supported() (fixes #83)
+  * API: add gtk_layer_is_layer_window(window)
+  * Docs: add Since: annotations for functions added since the
+    initial release (fixes #82)
+  * Fix: accept non-1 true boolean values
+  * Tests: fix license test for release tarball (fixes #73)
+  * Tests: test popup with grab (the most likely thing to break
+    on an incompatible GTK version) (fixes #68)</comment>
+    <requestid>844723</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>abf90348d1e2e640e1fe0cc9830e7391</srcmd5>
+    <version>0.5.1</version>
+    <time>1604306646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * Tests: fix integration test timeout on GTK v3.24.23 (#91)</comment>
+    <requestid>845362</requestid>
+  </revision>
+</revisionlist>

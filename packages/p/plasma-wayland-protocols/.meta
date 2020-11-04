@@ -1,0 +1,5 @@
+<package name="plasma-wayland-protocols" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="plasma-wayland-protocols"/>
+</package>

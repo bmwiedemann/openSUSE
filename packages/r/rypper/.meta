@@ -1,0 +1,7 @@
+<package name="rypper" project="openSUSE:Factory">
+  <title>rypper</title>
+  <description>
+rypper is an extension for managing multiple repositories via zypper.
+  </description>
+  <devel project="system:packagemanager" package="rypper"/>
+</package>

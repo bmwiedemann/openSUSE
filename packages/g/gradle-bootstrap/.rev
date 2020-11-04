@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2c47c9f76c1ce7e75f633145904927b8</srcmd5>
+    <version>unknown</version>
+    <time>1574167485</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>749224</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>124f17c35df277259701121b2908691d</srcmd5>
+    <version>unknown</version>
+    <time>1574783665</time>
+    <user>dimstar_suse</user>
+    <comment>sync with the gradle package built from sources</comment>
+    <requestid>750482</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>fc7ff865adf2a87fbb77f2dde29e2c2a</srcmd5>
+    <version>unknown</version>
+    <time>1574945445</time>
+    <user>dimstar_suse</user>
+    <comment>Regenerate to include asm 7.2</comment>
+    <requestid>751521</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da9d6be078c8e0fd1600e6a66de58593</srcmd5>
+    <version>unknown</version>
+    <time>1575923768</time>
+    <user>dimstar_suse</user>
+    <comment>Allow buildign with Java 11</comment>
+    <requestid>755230</requestid>
+  </revision>
+</revisionlist>

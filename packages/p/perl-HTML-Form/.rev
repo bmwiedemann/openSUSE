@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>912b4ea4b973ed1730c6ea939c1bf28b</srcmd5>
+    <version>6.00</version>
+    <time>1300454991</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64412 from user vitezslav_cizek
+</comment>
+    <requestid>64412</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>039f91b48d31c6428650ffb49b61ff3a</srcmd5>
+    <version>6.00</version>
+    <time>1300455004</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64412
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>039f91b48d31c6428650ffb49b61ff3a</srcmd5>
+    <version>6.00</version>
+    <time>1319182273</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f09aeae1f5af671c52ee8db9cfbb15d7</srcmd5>
+    <version>6.00</version>
+    <time>1323193345</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d276ffc38d5b4133f36f924a3122f12a</srcmd5>
+    <version>6.01</version>
+    <time>1330618993</time>
+    <user>coolo</user>
+    <comment>- updated to 6.01
+  Don't pick up label text from textarea [RT#72925]
+  Restore perl-5.8.1 compatiblity.</comment>
+    <requestid>105998</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d276ffc38d5b4133f36f924a3122f12a</srcmd5>
+    <version>6.01</version>
+    <time>1340183850</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>d276ffc38d5b4133f36f924a3122f12a</srcmd5>
+    <version>6.01</version>
+    <time>1359109687</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6c2bebf11384663ccaa066ac7ef6061</srcmd5>
+    <version>6.03</version>
+    <time>1375901616</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184393</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d6c2bebf11384663ccaa066ac7ef6061</srcmd5>
+    <version>6.03</version>
+    <time>1379663696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d6c2bebf11384663ccaa066ac7ef6061</srcmd5>
+    <version>6.03</version>
+    <time>1409302318</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>502109f1841b28cba5e2653b779a3bf8</srcmd5>
+    <version>6.04</version>
+    <time>1554379892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690510</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f14b97bf6b904112b5ae2145c42fc955</srcmd5>
+    <version>6.05</version>
+    <time>1570701134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736085</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>314e7b6b9edaf34cc2b42763cc11b6ab</srcmd5>
+    <version>6.07</version>
+    <time>1582725679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778786</requestid>
+  </revision>
+</revisionlist>

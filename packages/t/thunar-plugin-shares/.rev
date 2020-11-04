@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0535430fbbb73a4ed48a267bce1526ac</srcmd5>
+    <version>0.2.0</version>
+    <time>1300435993</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64279 from user gberh
+</comment>
+    <requestid>64279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5b3aa6a8925aec9d49194ae9107b42a2</srcmd5>
+    <version>0.2.0</version>
+    <time>1300436002</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64279
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5b3aa6a8925aec9d49194ae9107b42a2</srcmd5>
+    <version>0.2.0</version>
+    <time>1319182518</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>aa546aaafd2b2be8a824842811c494f1</srcmd5>
+    <version>0.2.0</version>
+    <time>1323194906</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>9780cf36cdaa8b269b823ace9f984847</srcmd5>
+    <version>0.2.0</version>
+    <time>1334824855</time>
+    <user>coolo</user>
+    <comment>- use upstream tarball instead of recompressed source
+
+- added source URL
+
+- corrected URL
+- require samba, it does not make much sense without it
+- updated build dependencies</comment>
+    <requestid>114230</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>9780cf36cdaa8b269b823ace9f984847</srcmd5>
+    <version>0.2.0</version>
+    <time>1340184273</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>9780cf36cdaa8b269b823ace9f984847</srcmd5>
+    <version>0.2.0</version>
+    <time>1359110488</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>9780cf36cdaa8b269b823ace9f984847</srcmd5>
+    <version>0.2.0</version>
+    <time>1379664818</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>9780cf36cdaa8b269b823ace9f984847</srcmd5>
+    <version>0.2.0</version>
+    <time>1409303494</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>703dfeb90d8486fe324b84460ab7415f</srcmd5>
+    <version>0.3.0</version>
+    <time>1529501105</time>
+    <user>maxlin_factory</user>
+    <comment>update to version 0.3.0: (forwarded request 617410 from seife)</comment>
+    <requestid>617420</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c979f1795e8f9812faa6786c90940f5a</srcmd5>
+    <version>0.3.1</version>
+    <time>1586368586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792332</requestid>
+  </revision>
+</revisionlist>

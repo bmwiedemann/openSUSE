@@ -1,0 +1,5 @@
+<package name="zathura-plugin-pdf-poppler" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Utilities" package="zathura-plugin-pdf-poppler"/>
+</package>

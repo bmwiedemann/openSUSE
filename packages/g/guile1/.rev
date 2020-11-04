@@ -1,0 +1,157 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06601eda5edc8707c323fd9eef09b71a</srcmd5>
+    <version>1.8.8</version>
+    <time>1327087424</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>100606</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41ddd5b9e0a4f7884725185856054b38</srcmd5>
+    <version>1.8.8</version>
+    <time>1327500104</time>
+    <user>coolo</user>
+    <comment>- package /usr/share/aclocal/guile1.m4 (gnucash uses autoreconf)
+  (GUILE_* macros renamed to GUILE1_*) [bnc#724917]</comment>
+    <requestid>101484</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6fd5df6ba718bde2aebc002d33882aca</srcmd5>
+    <version>1.8.8</version>
+    <time>1328093582</time>
+    <user>coolo</user>
+    <comment>- fix requires of devel package</comment>
+    <requestid>102306</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6fd5df6ba718bde2aebc002d33882aca</srcmd5>
+    <version>1.8.8</version>
+    <time>1340183427</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>28ebab5bec40c39008c8266bfa2dc00e</srcmd5>
+    <version>1.8.8</version>
+    <time>1344078555</time>
+    <user>coolo</user>
+    <comment>- move *.so files into main package [bnc#772490]</comment>
+    <requestid>129643</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>3a319b328e592b06e352e1eec9ac300e</srcmd5>
+    <version>1.8.8</version>
+    <time>1347347227</time>
+    <user>coolo</user>
+    <comment>Fix having dangling symlinks.. we do require the libs in a decent enough version (forwarded request 133449 from dimstar)</comment>
+    <requestid>133450</requestid>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>3a319b328e592b06e352e1eec9ac300e</srcmd5>
+    <version>1.8.8</version>
+    <time>1359109031</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>ee002c3831aac7cfe8dc61586146ab0f</srcmd5>
+    <version>1.8.8</version>
+    <time>1362462270</time>
+    <user>coolo</user>
+    <comment>- build with new automake
+  * automake-1.13.patch</comment>
+    <requestid>157232</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>a83eb2d9fae868aa7b9ce412b7f5e2a9</srcmd5>
+    <version>1.8.8</version>
+    <time>1367222009</time>
+    <user>coolo</user>
+    <comment>- Added makeinfo BuildRequire to fix build with new automake (forwarded request 173447 from m_meister)</comment>
+    <requestid>173554</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>834703a0d8de5f78e76241fb64d5a6ed</srcmd5>
+    <version>1.8.8</version>
+    <time>1371543629</time>
+    <user>coolo</user>
+    <comment>- do not run test simultaneously</comment>
+    <requestid>179327</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>834703a0d8de5f78e76241fb64d5a6ed</srcmd5>
+    <version>1.8.8</version>
+    <time>1379662593</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>03be450b1d8f72c447457a271554d1e1</srcmd5>
+    <version>1.8.8</version>
+    <time>1387451515</time>
+    <user>coolo</user>
+    <comment>- Make `socket.test' more robust
+  * guile-socket-test.patch (from git branch_release-1-8) (forwarded request 211261 from uweigand)</comment>
+    <requestid>211324</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>03be450b1d8f72c447457a271554d1e1</srcmd5>
+    <version>1.8.8</version>
+    <time>1409301141</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>9548397dd4733aa379b65cfbc9c8a6fc</srcmd5>
+    <version>1.8.8</version>
+    <time>1426495121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290823</requestid>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>f82fb86f23bace92c0b24919c7092a48</srcmd5>
+    <version>1.8.8</version>
+    <time>1476875626</time>
+    <user>dimstar_suse</user>
+    <comment>fix typo in changes file</comment>
+    <requestid>435799</requestid>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>cbf29e252818183a8db749a3991c6a1f</srcmd5>
+    <version>1.8.8</version>
+    <time>1484660275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450637</requestid>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>70b9000bc26947597eeab2f082ac81e8</srcmd5>
+    <version>1.8.8</version>
+    <time>1567850015</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build by disabling LTO</comment>
+    <requestid>728707</requestid>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>403ba2fcd38880aa6db478ab3d0bf7eb</srcmd5>
+    <version>1.8.8</version>
+    <time>1574552770</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new texinfo, which now assumes UTF8 in the texi
+  files with guile1-fix-texinfo-default-utf8.patch.
+</comment>
+    <requestid>750430</requestid>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>0e7c50755fe3dbcc5686a312cee11d53</srcmd5>
+    <version>1.8.8</version>
+    <time>1591654112</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc10 by removing optimization from the build flags
+  Thanks to the lilypond devs.
+</comment>
+    <requestid>812590</requestid>
+  </revision>
+</revisionlist>

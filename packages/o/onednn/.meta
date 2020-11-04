@@ -1,0 +1,7 @@
+<package name="onednn" project="openSUSE:Factory">
+  <title>oneAPI Deep Neural Network Library (oneDNN)</title>
+  <description>This software was previously known as Intel(R) Math Kernel Library for Deep Neural Networks (Intel(R) MKL-DNN) and Deep Neural Network Library (DNNL).
+
+oneAPI Deep Neural Network Library (oneDNN) is an open-source cross-platform performance library of basic building blocks for deep learning applications. </description>
+  <devel project="science:machinelearning" package="onednn"/>
+</package>

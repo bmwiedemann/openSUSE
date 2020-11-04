@@ -1,0 +1,5 @@
+<package name="python-djangorestframework-camel-case" project="openSUSE:Factory">
+  <title></title>
+  <description>Camel case JSON support for Django REST framework</description>
+  <devel project="devel:languages:python:django" package="python-djangorestframework-camel-case"/>
+</package>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad02ab92813e2520bb949ec8e8ffd193</srcmd5>
+    <version>2.1</version>
+    <time>1429948321</time>
+    <user>coolo</user>
+    <comment>Add back python-gammu package after upstream split (see also https://build.opensuse.org/request/show/296738).</comment>
+    <requestid>296794</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b25e2af17d32d8f1040d3a7367fff036</srcmd5>
+    <version>2.2</version>
+    <time>1431753284</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307343</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>120f4c01634e3eca3b3dbe6a53cafcaf</srcmd5>
+    <version>2.3</version>
+    <time>1436888689</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316398</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a9fd339df96b8e8b4911a1d72cc2a0d4</srcmd5>
+    <version>2.4</version>
+    <time>1443585030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>328645</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2aa16d83c8ca29348a5f9873f47803b4</srcmd5>
+    <version>2.5</version>
+    <time>1464690287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398813</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>705ed76a9a39de0fdb31bad37defa547</srcmd5>
+    <version>2.7</version>
+    <time>1485382928</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444112</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c289a7f05b56eaf15c329219417fe93</srcmd5>
+    <version>2.11</version>
+    <time>1515506013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562306</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b24c0052362596d5cbb6864d48742ff7</srcmd5>
+    <version>2.12</version>
+    <time>1557751807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701752</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fc8a983d189df93b915874c41b18d912</srcmd5>
+    <version>3.0</version>
+    <time>1594228386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819188</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>03f5850d0c7ea6cb3ff946d8d738a11d</srcmd5>
+    <version>3.1</version>
+    <time>1595864419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822782</requestid>
+  </revision>
+</revisionlist>

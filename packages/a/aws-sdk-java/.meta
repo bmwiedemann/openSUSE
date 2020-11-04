@@ -1,0 +1,5 @@
+<package name="aws-sdk-java" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="aws-sdk-java"/>
+</package>

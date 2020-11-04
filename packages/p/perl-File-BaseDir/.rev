@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d4d3ce0e238fe35712c4c2781565d8b</srcmd5>
+    <version>0.03</version>
+    <time>1332763305</time>
+    <user>coolo</user>
+    <comment>for shutter</comment>
+    <requestid>110973</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0d4d3ce0e238fe35712c4c2781565d8b</srcmd5>
+    <version>0.03</version>
+    <time>1340183838</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>0d4d3ce0e238fe35712c4c2781565d8b</srcmd5>
+    <version>0.03</version>
+    <time>1359109661</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>0d4d3ce0e238fe35712c4c2781565d8b</srcmd5>
+    <version>0.03</version>
+    <time>1379663670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>0d4d3ce0e238fe35712c4c2781565d8b</srcmd5>
+    <version>0.03</version>
+    <time>1409302285</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75d48349ec68a2c31a15666b79f9fafb</srcmd5>
+    <version>0.06</version>
+    <time>1429107887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>689cdf7ed5276e2474f8c50a733e6fb4</srcmd5>
+    <version>0.07</version>
+    <time>1429658358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298262</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e38a237f888fa85be0af9983fe819f8a</srcmd5>
+    <version>0.08</version>
+    <time>1524144474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593462</requestid>
+  </revision>
+</revisionlist>

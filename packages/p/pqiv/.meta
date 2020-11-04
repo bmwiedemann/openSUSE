@@ -1,0 +1,5 @@
+<package name="pqiv" project="openSUSE:Factory">
+  <title>Minimalist Image Viewer</title>
+  <description>Originally, PQIV was written as a drop-in replacement for QIV. This is common package, install either gtk2, gtk3 subpackages (or both).</description>
+  <devel project="graphics" package="pqiv"/>
+</package>

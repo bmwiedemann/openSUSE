@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>886401fb098230501fa2ecda0d3cd57a</srcmd5>
+    <version>4.4.0</version>
+    <time>1594045670</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial package release.
+
+- Previously, there are security issue with the package, but it was reviewes by opensuse security team and was fixed in the latest version.
+https://bugzilla.opensuse.org/show_bug.cgi?id=1172318
+
+- polkit white list was added for Veyon.
+https://github.com/openSUSE/polkit-default-privs/pull/19</comment>
+    <requestid>818756</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>eae286b99df94960991fe595702ac519</srcmd5>
+    <version>4.4.1</version>
+    <time>1595271553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821663</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a33c04dab2eb8108824733ac20282ed0</srcmd5>
+    <version>4.4.2</version>
+    <time>1599088602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831400</requestid>
+  </revision>
+</revisionlist>

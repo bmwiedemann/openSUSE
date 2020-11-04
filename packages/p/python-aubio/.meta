@@ -1,0 +1,10 @@
+<package name="python-aubio" project="openSUSE:Factory">
+  <title>Library for real-time audio labelling</title>
+  <description>Aubio is a library for real time audio labelling. Its features include
+segmenting a sound file before each of its attacks, performing pitch
+detection, tapping the beat and producing midi streams from live audio.
+The name aubio comes from 'audio' with a typo: several transcription
+errors are likely to be found in the results too.</description>
+  <devel project="openSUSE:Factory" package="aubio"/>
+  <bcntsynctag>aubio</bcntsynctag>
+</package>

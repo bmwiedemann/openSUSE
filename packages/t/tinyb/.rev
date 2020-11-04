@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6cf22bac1b89c8b12bb56c4a41ca8bc3</srcmd5>
+    <version>0.5.0</version>
+    <time>1485382586</time>
+    <user>dimstar_suse</user>
+    <comment>new package, usefull for IOT</comment>
+    <requestid>421324</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13c8c66936c58281712c46636a92140b</srcmd5>
+    <version>0.5.0</version>
+    <time>1497274451</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building on gcc7:
+  * tinyb-gcc7.patch</comment>
+    <requestid>502768</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>49a9e0d4534ca4a23c53bd70ffab887d</srcmd5>
+    <version>0.5.1</version>
+    <time>1551276509</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679563</requestid>
+  </revision>
+</revisionlist>

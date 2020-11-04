@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2d2ebbc200343d3d84101abe6d5b23e</srcmd5>
+    <version>0.6</version>
+    <time>1576322249</time>
+    <user>dimstar_suse</user>
+    <comment>new plugin for Orthanc</comment>
+    <requestid>756778</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4634b321021665ae06daf6e145ec4a2f</srcmd5>
+    <version>0.6</version>
+    <time>1587581450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795516</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a1c5e8b5eb7b57abeaee0298bc6b07bc</srcmd5>
+    <version>0.7</version>
+    <time>1591101271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809645</requestid>
+  </revision>
+</revisionlist>

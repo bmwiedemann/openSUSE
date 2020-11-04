@@ -1,0 +1,8 @@
+<package name="python-pyvdr" project="openSUSE:Factory">
+  <title>Python library for accessing a Linux VDR via SVDRP</title>
+  <description>Python library for accessing a Linux VDR via SVDRP.
+
+</description>
+  <devel project="devel:languages:python" package="python-pyvdr"/>
+  <url>https://github.com/baschno/pyvdr</url>
+</package>

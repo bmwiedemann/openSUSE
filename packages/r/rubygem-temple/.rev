@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>45c7dcb70539b6fb93565f04fbb246ba</srcmd5>
+    <version>0.8.0</version>
+    <time>1496926925</time>
+    <user>dimstar_suse</user>
+    <comment>needed for adi:8</comment>
+    <requestid>500779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>979d4d984d3194a3f75a20cf7926797a</srcmd5>
+    <version>0.8.1</version>
+    <time>1553699851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685120</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28e60754eb146a75d5b12000899538d4</srcmd5>
+    <version>0.8.2</version>
+    <time>1583613621</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773857</requestid>
+  </revision>
+</revisionlist>

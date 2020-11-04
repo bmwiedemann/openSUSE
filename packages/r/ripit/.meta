@@ -1,0 +1,6 @@
+<package name="ripit" project="openSUSE:Factory">
+  <title>Perl Script to Create .ogg or .mp3 Files from an Audio CD</title>
+  <description>This Perl script makes it easy to create MP3 files from an audio CD. It
+tries to find the artist and song titles with the help of CDDB.</description>
+  <devel project="multimedia:apps" package="ripit"/>
+</package>

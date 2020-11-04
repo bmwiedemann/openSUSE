@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccbeddd1d64ea2bea079190a0f683186</srcmd5>
+    <version>11.4</version>
+    <time>1318457018</time>
+    <user>lrupp</user>
+    <comment>Resubmit, with fixed license tag</comment>
+    <requestid>87522</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ccbeddd1d64ea2bea079190a0f683186</srcmd5>
+    <version>11.4</version>
+    <time>1319181859</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8d5e00b08c18f2d33cc64add2e55faba</srcmd5>
+    <version>11.4</version>
+    <time>1323191247</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>8d5e00b08c18f2d33cc64add2e55faba</srcmd5>
+    <version>11.4</version>
+    <time>1340183296</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>8d5e00b08c18f2d33cc64add2e55faba</srcmd5>
+    <version>11.4</version>
+    <time>1359108832</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>25687ad2b2e1ed65d9633e89e78741e8</srcmd5>
+    <version>11.4</version>
+    <time>1362166822</time>
+    <user>coolo</user>
+    <comment>Update license tag</comment>
+    <requestid>156976</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>25687ad2b2e1ed65d9633e89e78741e8</srcmd5>
+    <version>11.4</version>
+    <time>1379662265</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>25687ad2b2e1ed65d9633e89e78741e8</srcmd5>
+    <version>11.4</version>
+    <time>1409300802</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

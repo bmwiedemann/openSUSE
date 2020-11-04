@@ -1,0 +1,12 @@
+<package name="python-slackclient" project="openSUSE:Factory">
+  <title>Slack API clients for Web API and RTM API</title>
+  <description>A client for Slack, which supports the Slack Web API and Real Time Messaging (RTM) API.
+
+Whether you're building a custom app for your team, or integrating a third
+party service into your Slack workflows, Slack Developer Kit for Python allows
+you to leverage the flexibility of Python to get your project up and running as
+quickly as possible.
+
+</description>
+  <devel project="devel:languages:python" package="python-slackclient"/>
+</package>

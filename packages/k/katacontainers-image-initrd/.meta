@@ -1,0 +1,5 @@
+<package name="katacontainers-image-initrd" project="openSUSE:Factory">
+  <title>dracut-based OS image for Kata Containers</title>
+  <description></description>
+  <devel project="devel:kubic" package="katacontainers-image-initrd"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="tracker2-miners" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Factory" package="tracker2-miners"/>
+</package>

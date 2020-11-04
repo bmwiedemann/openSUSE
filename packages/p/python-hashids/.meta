@@ -1,0 +1,5 @@
+<package name="python-hashids" project="openSUSE:Factory">
+  <title></title>
+  <description>Python implementation of hashids</description>
+  <devel project="devel:languages:python" package="python-hashids"/>
+</package>

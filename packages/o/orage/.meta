@@ -1,0 +1,8 @@
+<package name="orage" project="openSUSE:Factory">
+  <title>Time-managing Application for the Xfce Desktop Environment</title>
+  <description>Orage is a fast and easy to use graphical calendar for the Xfce desktop
+environment. It uses the portable ical format and includes common calendar
+features like repeating appointments and multiple alarming possibilities. Orage
+does not have group calendar features and can only be used for single user.</description>
+  <devel project="X11:xfce" package="orage"/>
+</package>

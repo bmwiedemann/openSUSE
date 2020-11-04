@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>638adc28de1595873b155149bd20d571</srcmd5>
+    <version>1.1.4</version>
+    <time>1579346234</time>
+    <user>dimstar_suse</user>
+    <comment>SRPM rename; stage together with iptraf SR</comment>
+    <requestid>763659</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4a152601252ce2086adf23413b0acef</srcmd5>
+    <version>1.2.0</version>
+    <time>1591862993</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.0</comment>
+    <requestid>813275</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdaaf590b8615ed4c3f3c247b2dbde4c</srcmd5>
+    <version>1.2.1</version>
+    <time>1597658708</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Makefile: protect mandatory compile flags
+  * packet capture: don't reuse socket for multiple receive functions
+  * TPACKET_V[23]: continue even if mlock() fails
+- remove 0001-Revert-TPACKET_V3-mlock-mmap-ed-address-space-into-R.patch:
+  fixed differently upstream</comment>
+    <requestid>827057</requestid>
+  </revision>
+</revisionlist>

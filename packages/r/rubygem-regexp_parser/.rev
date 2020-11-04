@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd9611f3414e38ba053bde44ad2b181d</srcmd5>
+    <version>1.7.1</version>
+    <time>1592840817</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of a new dependency of rubocop</comment>
+    <requestid>816379</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c754bc529bf23c99598df252d0484bf3</srcmd5>
+    <version>1.8.0</version>
+    <time>1601919192</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838073</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4814fe3b5a05665d534caa82a309ddee</srcmd5>
+    <version>0.1</version>
+    <time>1579032483</time>
+    <user>dimstar_suse</user>
+    <comment>new package for creating appx packages</comment>
+    <requestid>764199</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>023e3f9a062af854eda50ecccce9f6ef</srcmd5>
+    <version>0.1</version>
+    <time>1591863005</time>
+    <user>dimstar_suse</user>
+    <comment>Revise fix-gcc10-include-stdexcept.patch to Factory standards (forwarded request 813295 from jfkw)</comment>
+    <requestid>813297</requestid>
+  </revision>
+</revisionlist>

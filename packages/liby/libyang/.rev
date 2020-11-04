@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a3da4f68f985bf836321a77fa1310270</srcmd5>
+    <version>0.16r3</version>
+    <time>1551284869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674508</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f7235dfb72d4d161f92f9eda39b6cf4</srcmd5>
+    <version>1.0r5</version>
+    <time>1577451022</time>
+    <user>dimstar_suse</user>
+    <comment>- Package extensions in a separate package - libyang-extentions
+
+- Update to version 1.0r5
+  Main features of this release are:
+  * value canonization support in API functions
+  * new debug message categories
+  * nested notification/action validation clarifications and fixes
+  * LYB format decimal64 value handling fixed
+  * C++ bindings minor improvements
+  * other minor fixes
+
+- Update to version 1.0r4
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + schema and data validation
+    + manipulation with internal schemas and loading user schemas
+      in the context
+    + xpath
+    + LYB format
+
+- Update to version 1.0r3
+  Main features of this release are:
+  * many bugfixes in various parts of the library
+    + LYB format
+    + schema
+    + data
+    + xpath
+
+- Build with ENABLE_LYD_PRIV=ON</comment>
+    <requestid>758498</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>267428e516e28c4e037a956bbf601fb4</srcmd5>
+    <version>1.0r5</version>
+    <time>1577972477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760257</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23ecc632b90b58339c4d8d8aee647e23</srcmd5>
+    <version>1.0.130</version>
+    <time>1582038988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775208</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e1ab0d262f7b2dd0a02fb4c9806d505</srcmd5>
+    <version>1.0.167</version>
+    <time>1589579520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805751</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cefe69383686092a731b994d37c450c</srcmd5>
+    <version>1.0.184</version>
+    <time>1597064590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825276</requestid>
+  </revision>
+</revisionlist>

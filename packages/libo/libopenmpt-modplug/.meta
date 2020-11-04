@@ -1,0 +1,5 @@
+<package name="libopenmpt-modplug" project="openSUSE:Factory">
+  <title>libopenmpt-modplug release 0.8.9.0-openmpt1</title>
+  <description>libopenmpt is a cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream. openmpt123 is a cross-platform command-line or terminal based module file player. </description>
+  <devel project="multimedia:libs" package="libopenmpt-modplug"/>
+</package>

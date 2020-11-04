@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>967dfc53a250ab91765c3a47a5556ff1</srcmd5>
+    <version>0~git20190911</version>
+    <time>1581456125</time>
+    <user>dimstar_suse</user>
+    <comment>LYNX handheld emulator</comment>
+    <requestid>771783</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cad86b3241fa5923c45cbc72a59225a</srcmd5>
+    <version>0~git20200518</version>
+    <time>1591558555</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812081</requestid>
+  </revision>
+</revisionlist>

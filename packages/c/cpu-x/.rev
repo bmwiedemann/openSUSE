@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71417e4405a4ab2074db07baa9cd69a0</srcmd5>
+    <version>4.0.1</version>
+    <time>1602503957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a5fa9939134e1ac158fcfc88efcd46e</srcmd5>
+    <version>4.0.1</version>
+    <time>1602596573</time>
+    <user>dimstar_suse</user>
+    <comment>- Split language files to -lang subpackage.
+- Make powerpc builds possible. Split shell completions.</comment>
+    <requestid>841491</requestid>
+  </revision>
+</revisionlist>

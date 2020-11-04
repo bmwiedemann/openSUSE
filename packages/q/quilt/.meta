@@ -1,0 +1,10 @@
+<package name="quilt" project="openSUSE:Factory">
+  <title>A Tool for Working with Many Patches</title>
+  <description>Quilt allows you to easily manage large numbers of patches by keeping
+track of the changes each patch makes. Patches can be applied,
+un-applied, refreshed, and more.
+
+Quilt originally was based on Andrew Morton's patch scripts found at
+http://www.zip.com.au/~akpm/linux/patches/.</description>
+  <devel project="devel:tools:scm" package="quilt"/>
+</package>

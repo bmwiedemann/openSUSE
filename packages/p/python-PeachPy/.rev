@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>faab8c5cd87a8e10931c435a66cc9138</srcmd5>
+    <version>0.2.0</version>
+    <time>1574859136</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package of yet unreleased 0.2.0 version.</comment>
+    <requestid>746295</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>59b1b4452a72f5ede73e61f8c822c717</srcmd5>
+    <version>0.2.0</version>
+    <time>1576189112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755905</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8cedc0a009f8d533b95d631d1ea3820e</srcmd5>
+    <version>0.2.0~pre.1583266105.f189ad2</version>
+    <time>1587659697</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2
+- Fix the version to match reality as it is git repo snapshot</comment>
+    <requestid>796480</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c2116a59679685694c6e50915efb04fb</srcmd5>
+    <version>0.2.0~pre.1583266105.f189ad2</version>
+    <time>1600277987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834843</requestid>
+  </revision>
+</revisionlist>

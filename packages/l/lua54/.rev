@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bafa55801043a0945516ea599da66af2</srcmd5>
+    <version>5.4.0</version>
+    <time>1594228696</time>
+    <user>dimstar_suse</user>
+    <comment>Lua 5.4</comment>
+    <requestid>819392</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>89757f9c0b42b4c335f0a9d60a96ded0</srcmd5>
+    <version>5.4.0</version>
+    <time>1595576873</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches 7 &amp; 8
+- Add upstream-bugs.patch, upstream fixes from https://www.lua.org/bugs.html
+- files_test.patch: use proper check for 64-bit time_t
+- Amend list of 64bit architectures
+</comment>
+    <requestid>821867</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1cbd82405f60ed6536ea5fdd6b47be94</srcmd5>
+    <version>5.4.0</version>
+    <time>1597955251</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch for CVE-2020-15945, boo#1174540 (un-numbered)
+- Add upstream patches 9,10,11,12
+  * Patch 9: CVE-2020-24342, boo#1175339
+  * Patch 10: CVE-2020-24371, boo#1175449
+  * Patch 11: CVE-2020-24370, boo#1175448
+  * Patch 12: CVE-2020-24369, boo#1175447
+</comment>
+    <requestid>827619</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e06a15931f7063951c4fbeebf1d2dea6</srcmd5>
+    <version>5.4.0</version>
+    <time>1598651087</time>
+    <user>dimstar_suse</user>
+    <comment>- Add final part of patch for CVE-2020-15888, boo#1174367
+- Add upstream patch 13
+</comment>
+    <requestid>828560</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a7b60e7a856a71345a21a12a9b4b48eb</srcmd5>
+    <version>5.4.1</version>
+    <time>1602503198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.1:
+  * Fixes bugs found in Lua 5.4.0
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+</comment>
+    <requestid>840777</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,193 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53740bd8a9187e9d4041a32da76a7d99</srcmd5>
+    <version>0.4.0</version>
+    <time>1168903341</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="63">
+    <srcmd5>539eeafcd2590420b7ff0b1e8d022c9d</srcmd5>
+    <version>0.4.0</version>
+    <time>1176849545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="67">
+    <srcmd5>98e13308849da6eadc87426ca08b83a7</srcmd5>
+    <version>0.4.0</version>
+    <time>1178167344</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="69">
+    <srcmd5>507a5f9b231b438affc166a96dd86f62</srcmd5>
+    <version>0.4.0</version>
+    <time>1178230698</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="121">
+    <srcmd5>91ec1a1288f0d3d04d6c0b04642786ce</srcmd5>
+    <version>0.4.0</version>
+    <time>1198165441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="123">
+    <srcmd5>91ec1a1288f0d3d04d6c0b04642786ce</srcmd5>
+    <version>0.4.0</version>
+    <time>1198165441</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="124">
+    <srcmd5>b3fe060c9f2345a785381729dc6271f7</srcmd5>
+    <version>0.4.0</version>
+    <time>1239836051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="126">
+    <srcmd5>b3fe060c9f2345a785381729dc6271f7</srcmd5>
+    <version>0.4.0</version>
+    <time>1239836051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="127">
+    <srcmd5>27906c91994680475ec574d3d19f9e6a</srcmd5>
+    <version>0.4.0</version>
+    <time>1268924623</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="129">
+    <srcmd5>27906c91994680475ec574d3d19f9e6a</srcmd5>
+    <version>0.4.0</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="130">
+    <srcmd5>27906c91994680475ec574d3d19f9e6a</srcmd5>
+    <version>0.4.0</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="133">
+    <srcmd5>27906c91994680475ec574d3d19f9e6a</srcmd5>
+    <version>0.4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="134">
+    <srcmd5>345c7cd79b72dd77384c991f7727308b</srcmd5>
+    <version>0.4.0</version>
+    <time>1305901803</time>
+    <user>saschpe</user>
+    <comment>Added 32bit compatibility libraries. Removed self-obsoletes (fix for RPMLINT warning) (forwarded request 69481 from TheBlackCat)</comment>
+    <requestid>70808</requestid>
+  </revision>
+  <revision rev="14" vrev="135">
+    <srcmd5>1c1a8aef89d1f5f3b0a69b650f028dba</srcmd5>
+    <version>0.4.0</version>
+    <time>1305901818</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70808
+</comment>
+  </revision>
+  <revision rev="15" vrev="136">
+    <srcmd5>96e9d32d45c5839058f9c0f98dbc03b4</srcmd5>
+    <version>0.4.0</version>
+    <time>1316516148</time>
+    <user>saschpe</user>
+    <comment>The current version of liblrdf does not build with raptor v2. However upstream already resolved this issue and the official support will come with version 0.5. In the meantime the attached patch will make liblrdf 0.4 build with raptor v2. Please do not accept until raptor v2 has been accepted in Factory (SR#83580 (forwarded request 83589 from tittiatcoke)</comment>
+    <requestid>83628</requestid>
+  </revision>
+  <revision rev="16" vrev="138">
+    <srcmd5>96e9d32d45c5839058f9c0f98dbc03b4</srcmd5>
+    <version>0.4.0</version>
+    <time>1319182108</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="139">
+    <srcmd5>6675b9bbd24579eb92180a5db367df7d</srcmd5>
+    <version>0.4.0</version>
+    <time>1321886786</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92538 from coolo)</comment>
+    <requestid>92566</requestid>
+  </revision>
+  <revision rev="18" vrev="140">
+    <srcmd5>6b0b5fdf08cbe4e315dd402e64e54385</srcmd5>
+    <version>0.4.0</version>
+    <time>1323192267</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="19" vrev="142">
+    <srcmd5>6b0b5fdf08cbe4e315dd402e64e54385</srcmd5>
+    <version>0.4.0</version>
+    <time>1340183603</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="144">
+    <srcmd5>6b0b5fdf08cbe4e315dd402e64e54385</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109300</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="146">
+    <srcmd5>6b0b5fdf08cbe4e315dd402e64e54385</srcmd5>
+    <version>0.4.0</version>
+    <time>1379662998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="148">
+    <srcmd5>6b0b5fdf08cbe4e315dd402e64e54385</srcmd5>
+    <version>0.4.0</version>
+    <time>1409301613</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="149">
+    <srcmd5>7c5d9a8ba191242f207c91e97eb53663</srcmd5>
+    <version>0.4.0</version>
+    <time>1422358568</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf as source file
+- Run spec-cleaner
+
+- BuildRequire libraptor-devel &gt;= 0.9.11</comment>
+    <requestid>282868</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>02848700da1b57a3f88f4d5fc08f7912</srcmd5>
+    <version>0.5.0</version>
+    <time>1424068569</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285774</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>76087c5afe2bb33606e943afb0b68ff6</srcmd5>
+    <version>0.5.0</version>
+    <time>1522503371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592126</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>01aa382d45dbfdf25876fe12d6f9794a</srcmd5>
+    <version>0.5.0</version>
+    <time>1523956313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595400</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>040aae130a6f2e43bb4d2f4fce43aab1</srcmd5>
+    <version>0.6.1</version>
+    <time>1597860177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827583</requestid>
+  </revision>
+</revisionlist>

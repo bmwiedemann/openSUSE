@@ -1,0 +1,8 @@
+<package name="python-pikepdf" project="openSUSE:Factory">
+  <title>Read and write PDFs with Python, powered by qpdf</title>
+  <description>Read and write PDFs with Python, powered by qpdf.
+
+</description>
+  <devel project="devel:languages:python" package="python-pikepdf"/>
+  <url>https://github.com/pikepdf/pikepdf</url>
+</package>

@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc25f95a2be3b3506cad0b9f7728c617</srcmd5>
+    <version>1.0.8</version>
+    <time>1370430652</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>176597</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4918136c9ff0991406a516ee3511614a</srcmd5>
+    <version>1.0.8</version>
+    <time>1371153539</time>
+    <user>coolo</user>
+    <comment>- Use -j1 for install to avoid missing symlink creation.
+  ppc and others force -j1 so install failed for them. (forwarded request 178018 from scarabeus_iv)</comment>
+    <requestid>178028</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>4918136c9ff0991406a516ee3511614a</srcmd5>
+    <version>1.0.8</version>
+    <time>1379664445</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>4918136c9ff0991406a516ee3511614a</srcmd5>
+    <version>1.0.8</version>
+    <time>1409303177</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa7fa192dff9dc8e12fa056ab9f75c2e</srcmd5>
+    <version>1.0.9</version>
+    <time>1410534249</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246688</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d46e5812c22ad5bdc7e7d9e4965b57e2</srcmd5>
+    <version>1.1.0</version>
+    <time>1441727149</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>329634</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8b9cb4f23a7777ad2841de8e4401240a</srcmd5>
+    <version>1.1.0</version>
+    <time>1504521361</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-static.diff.</comment>
+    <requestid>520347</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>079ea452895aa059e9f191865c2b69c7</srcmd5>
+    <version>1.2.1</version>
+    <time>1513941577</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>555766</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ecd7e7d2304a26ef99b5e21f26d9d145</srcmd5>
+    <version>1.2.1</version>
+    <time>1566665081</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernize specfile.</comment>
+    <requestid>725531</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b52e22a80ccb6d4a5303eb716469599f</srcmd5>
+    <version>2.0.0</version>
+    <time>1578437850</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761691</requestid>
+  </revision>
+</revisionlist>

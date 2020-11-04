@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d0bea51fa02c1fa6f27be76ced850eab</srcmd5>
+    <version>1.4.0</version>
+    <time>1595271504</time>
+    <user>dimstar_suse</user>
+    <comment>New package libvirt-dbus needed by cockpit-machines.</comment>
+    <requestid>819304</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91bdb7ce3837fc29662eecf61fa61c5f</srcmd5>
+    <version>1.4.0</version>
+    <time>1601996949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839605</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-dephell-setuptools" project="openSUSE:Factory">
+  <title>python-dephell plugin to extract meta information from setup.py</title>
+  <description>python-dephell plugin to extract meta information from setup.py</description>
+  <devel project="devel:languages:python" package="python-dephell-setuptools"/>
+</package>

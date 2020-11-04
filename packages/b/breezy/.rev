@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b0950467fffe5a101239bfb288873b5</srcmd5>
+    <version>3.0.2</version>
+    <time>1587325729</time>
+    <user>dimstar_suse</user>
+    <comment>New package breezy, a bzr &quot;friendly&quot; fork.
+
+This requires https://build.opensuse.org/request/show/790036 to build (already accepted, but not yet in TW)</comment>
+    <requestid>791943</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>849e120922ff2a48fdcd0108edfe586e</srcmd5>
+    <version>3.0.2</version>
+    <time>1589751763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805967</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>085b326e013dd9e9dac3593cb13a7028</srcmd5>
+    <version>3.1.0</version>
+    <time>1592758189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813476</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0c1ffc737d4723d38e7c7b3bc39a85da</srcmd5>
+    <version>3.1.0</version>
+    <time>1599209936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829985</requestid>
+  </revision>
+</revisionlist>

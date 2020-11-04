@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9553d6f94516d2c85e3eb7bce4039044</srcmd5>
+    <version>0.79.9</version>
+    <time>1586869870</time>
+    <user>dimstar_suse</user>
+    <comment>Needed component for the FreeIPA inclusion</comment>
+    <requestid>793622</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>228efd5b1151e0c65fbcb6624975e2f5</srcmd5>
+    <version>0.79.11</version>
+    <time>1598983719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830794</requestid>
+  </revision>
+</revisionlist>

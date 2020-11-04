@@ -1,0 +1,16 @@
+<package name="hiawatha" project="openSUSE:Factory">
+  <title>A secure webserver for Unix</title>
+  <description>Hiawatha is a secure webserver for Unix. It has been written with 'being
+secure' as its main goal. Hiawatha has many security features that no other
+webserver has. This and the fact that Hiawatha's source code is free of
+security-bugs, makes Hiawatha the most secure webserver available.
+
+
+Authors:
+--------
+    Hugo Leisink &lt;hugo@leisink.net&gt;
+
+
+</description>
+  <devel project="server:http" package="hiawatha"/>
+</package>

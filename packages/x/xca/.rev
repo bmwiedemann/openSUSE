@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24dab2d35724e868a340e10047104785</srcmd5>
+    <version>2.1.2</version>
+    <time>1579636824</time>
+    <user>dimstar_suse</user>
+    <comment>xca 2.1.2 should be here</comment>
+    <requestid>765925</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d002b460c10eb00bd06f7516d2a2cf4</srcmd5>
+    <version>2.2.0</version>
+    <time>1580373746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768500</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>985b8816fe511c44ad6de956cff15021</srcmd5>
+    <version>2.2.1</version>
+    <time>1580842604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769131</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8d3a620d3c4ae9c4d49fe760de52602</srcmd5>
+    <version>2.3.0</version>
+    <time>1595864737</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.3.0 (forwarded request 822873 from computersalat)</comment>
+    <requestid>822874</requestid>
+  </revision>
+</revisionlist>

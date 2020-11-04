@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6acab535d567f3a1396eb44732a6ad56</srcmd5>
+    <version>0.22</version>
+    <time>1301927971</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65626 from user babelworx
+</comment>
+    <requestid>65626</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>12e8d0ead5a142498c91afc78f6d07d3</srcmd5>
+    <version>0.22</version>
+    <time>1301927982</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65626
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3f0f5c972629034fa7236e5e1b3e5333</srcmd5>
+    <version>0.22</version>
+    <time>1309861112</time>
+    <user>saschpe</user>
+    <comment>- fix build on distributions with old Test::More module
+  ( perl-Package-Stash-XS-old_Test-More.patch )</comment>
+    <requestid>75391</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7a829b9caa3c6db5d768dc436b21a244</srcmd5>
+    <version>0.22</version>
+    <time>1309861157</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75391
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>7a829b9caa3c6db5d768dc436b21a244</srcmd5>
+    <version>0.22</version>
+    <time>1319182296</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d93a78058daae3bdb97f6ca85f37dca9</srcmd5>
+    <version>0.25</version>
+    <time>1319716356</time>
+    <user>coolo</user>
+    <comment>update to 0.25 (forwarded request 89444 from tabraham1)</comment>
+    <requestid>89492</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>42a238d59d13504fffadf40eecaeafaa</srcmd5>
+    <version>0.25</version>
+    <time>1323193548</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b363d0d509e90ebabbb29d84c9de39af</srcmd5>
+    <version>0.25</version>
+    <time>1331324761</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>108540</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b363d0d509e90ebabbb29d84c9de39af</srcmd5>
+    <version>0.25</version>
+    <time>1340183900</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b363d0d509e90ebabbb29d84c9de39af</srcmd5>
+    <version>0.25</version>
+    <time>1359109773</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2a0a56539709795e8a9058b62c404e82</srcmd5>
+    <version>0.26</version>
+    <time>1371140354</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178276 from coolo)</comment>
+    <requestid>178291</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7cf783491036d2aa79a97d0a50f0eb61</srcmd5>
+    <version>0.28</version>
+    <time>1375185824</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184836</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7cf783491036d2aa79a97d0a50f0eb61</srcmd5>
+    <version>0.28</version>
+    <time>1379663807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>7cf783491036d2aa79a97d0a50f0eb61</srcmd5>
+    <version>0.28</version>
+    <time>1409302443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ae9bad2c39231b8e0bbda9277f0afd3</srcmd5>
+    <version>0.29</version>
+    <time>1546695660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662488</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>570dd12f9146b3d62e06435e8ef5592e</srcmd5>
+    <version>20180406</version>
+    <time>1523447799</time>
+    <user>maxlin_factory</user>
+    <comment>Fixed the other phases which do not limit the threading to keep working and
+not contain empty values</comment>
+    <requestid>594238</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c7f3e73ee46f395aa6192d4565aa6e71</srcmd5>
+    <version>20180406</version>
+    <time>1561195349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710310</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>82477b0a52937b105694e6923f81705d</srcmd5>
+    <version>20180406</version>
+    <time>1588856736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800104</requestid>
+  </revision>
+</revisionlist>

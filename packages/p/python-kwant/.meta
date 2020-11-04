@@ -1,0 +1,16 @@
+<package name="python-kwant" project="openSUSE:Factory">
+  <title>Python library for numerical quantum transport calculations</title>
+  <description>Kwant is a Python library for numerical calculations on tight-binding
+models with a strong focus on quantum transport. Kwant can be used to
+simulate a variety of systems and phenomena in quantum physics
+including: metals, graphene, topological insulators, quantum Hall
+effect, superconductivity, spintronics, molecular electronics, any
+combination of the above, and many other things. Kwant can calculate
+transport properties (conductance, noise, scattering matrix),
+dispersion relations, modes, wave functions, various Green’s
+functions, out-of-equilibrium local quantities.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-kwant"/>
+  <url>https://kwant-project.org/</url>
+</package>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8529b78297ee15f8682fb713e5121a53</srcmd5>
+    <version>1.6.18</version>
+    <time>1592579176</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814998</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0901b40aa813ecdd7d862e6d5ba6ac9</srcmd5>
+    <version>1.6.18</version>
+    <time>1598643716</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829510</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0114007fd75cbdb2cad49a5a3374f02</srcmd5>
+    <version>1.6.18</version>
+    <time>1599509081</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832344</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4cebdccfa9b1c09153e49cd40b625edb</srcmd5>
+    <version>1.6.18.4</version>
+    <time>1601488428</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>838498</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>74bf3f619be33bf8368f22d0f0d584d5</srcmd5>
+    <version>1.6.18.5</version>
+    <time>1603458933</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>842777</requestid>
+  </revision>
+</revisionlist>

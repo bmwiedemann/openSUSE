@@ -1,0 +1,175 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dabea5a82bea9611cfa3af8dab58174b</srcmd5>
+    <version>1.14</version>
+    <time>1582725933</time>
+    <user>dimstar_suse</user>
+    <comment>go1.14 (released 2020-02-25) is a major release of Go.
+Most changes are in the implementation of the toolchain, runtime,
+and libraries. As always, the release maintains the Go 1 promise
+of compatibility. We expect almost all Go programs to continue to
+compile and run as before.</comment>
+    <requestid>779257</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4129c15f0465ecfa6d209092aaafd50d</srcmd5>
+    <version>1.14.1</version>
+    <time>1584883051</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.1 (released 2020-03-19) includes fixes to the go command,
+  tools, and the runtime.
+  Refs boo#1164903 go1.14 release tracking
+- Packaging sync accumulated changes from go1.12
+  Refs boo#1164903 go1.14 release tracking
+- Use gcc9 by default by updating define gcc_go_version 9 (was 8)
+  * drop unneeded patch gcc8-go.patch
+- Fix broken go_api evaluation (1.12 &amp;lt; 1.5, when evaluated as floats),
+  let RPM evaluate the expression, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb.
+- Add %ifarch %arm aarch64 BuildRequires: binutils-gold to fix
+  collect2: fatal error: cannot find 'ld'- (forwarded request 787030 from jfkw)</comment>
+    <requestid>787072</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6caa34e5fded9ae4d93ada7819aff907</srcmd5>
+    <version>1.14.2</version>
+    <time>1586973932</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.2 (released 2020-04-08) includes fixes to cgo, the go command,
+  the runtime, os/exec, and testing packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#38156 doc: BuildNameToCertificate deprecated in go 1.14 not mentioned in the release notes
+  * go#38118 runtime/pprof: lostProfileEvent stack breaks gentraceback guarantee
+  * go#38083 cmd/go/internal/test: data race in (*runCache).builderRunTest
+  * go#38072 runtime: timer self-deadlock due to preemption point
+  * go#38051 runtime: loops forever on sched_yield sometimes(timer related)
+  * go#38005 runtime: &quot;pipe failed with -89&quot; at program startup(mipsle only), timer related netpoll init.
+  * go#37970 runtime/pprof: panic: runtime error: index out of range [-1]
+  * go#37968 runtime: fatal error: found bad pointer in Go heap (incorrect use of unsafe or cgo?)
+  * go#37959 testing: data race between parallel panicking and normal subtest
+  * go#37931 cmd/go: explain automatic vendoring in 'go help modules'
+  * go#37928 runtime: GC pacing exhibits strange behavior with a low GOGC
+  * go#37800 cmd/go: 'Access is denied' when renaming module cache directory
+  * go#37699 PowerRegisterSuspendResumeNotification error on Azure App Services with go 1.13.7
+  * go#37622 cmd/cgo: fails to generate certain types with Go 1.14
+  * go#37480 runtime: &quot;fatal error: unexpected signal&quot; 0xC0000005 on Windows for a small program with a large allocation
+  * go#37471 os/exec: environForSysProcAttr is never called as sysattr.Env is never nil (forwarded request 792591 from jfkw)</comment>
+    <requestid>792592</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cc7fa06f4f97317bf8f38175ad035763</srcmd5>
+    <version>1.14.2</version>
+    <time>1588450434</time>
+    <user>dimstar_suse</user>
+    <comment>- Requires binutils-gold for %arm and aarch64 - boo#1170826 (forwarded request 798920 from Guillaume_G)</comment>
+    <requestid>799327</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9f1c21869b58463bfb1f2d337257dd1</srcmd5>
+    <version>1.14.4</version>
+    <time>1591879369</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.4 (released 2020-06-01) includes fixes to the go doc command,
+  the runtime, and the encoding/json and os packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#39158 os: opening an existing file with O_CREATE|O_TRUNC and permission 0 changes file to be read-only on Windows
+  * go#38993 cmd/doc: -src flag misbehaves on some systems
+  * go#38933 runtime: preemption in startTemplateThread may cause infinite hang
+  * go#38178 encoding/json: marshal result of string type struct field with &quot;,string&quot; option change in go1.14
+  * go#38106 encoding/json: mangled unmarshal string result (forwarded request 813061 from jfkw)</comment>
+    <requestid>813076</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1d244cb5f88a1c4a783ddd5cee9450eb</srcmd5>
+    <version>1.14.4</version>
+    <time>1591990604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Prefer-etc-hosts-over-DNS.patch to ensure /etc/hosts is used if /etc/nsswitch.conf is not present boo#1172868 gh#golang/go#35305 (forwarded request 814159 from RBrownSUSE)</comment>
+    <requestid>814163</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b6ed1a8830dcc9b6c3770b2d59949d2c</srcmd5>
+    <version>1.14.6</version>
+    <time>1595338999</time>
+    <user>dimstar_suse</user>
+    <comment>Update to go1.14.6 addressing security CVEs. Improve packaging with
+incrementing update-alternatives priority. Use %license tag. Rename
+go1.x-prefer-etc-hosts-over-dns.patch and add info per packaging guidelines in
+preparation for submit to SUSE. Remove %defattr(-,root,root,-) in %files</comment>
+    <requestid>821469</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa12034eadcd7670397d6920f7d3e59f</srcmd5>
+    <version>1.14.7</version>
+    <time>1597220357</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.7 (released 2020-08-06) includes security fixes to the
+  encoding/binary package.
+  CVE-2020-16845
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1174977 CVE-2020-16845
+  * go#40619 encoding/binary: ReadUvarint and ReadVarint can read an unlimited number of bytes from invalid inputs (forwarded request 824740 from jfkw)</comment>
+    <requestid>824741</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>297c15edcb8f3563e8896519ce6fb3a0</srcmd5>
+    <version>1.14.8</version>
+    <time>1599343036</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.8 (released 2020-09-01) includes security fixes to the
+  net/http/cgi, net/http/fcgi packages.
+  CVE-2020-24553
+  Refs boo#1164903 go1.14 release tracking
+  * boo#1176031 CVE-2020-24553
+  * go#41164 net/http/cgi,net/http/fcgi: Cross-Site Scripting (XSS) when Content-Type is not specified (forwarded request 831301 from jfkw)</comment>
+    <requestid>831306</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fd9065e0fff2f7013172b8bd2733b67</srcmd5>
+    <version>1.14.9</version>
+    <time>1600078702</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.9 (released 2020-09-09) includes fixes to the compiler,
+  linker, runtime, documentation, and the net/http and testing
+  packages.
+  Refs boo#1164903 go1.14 release tracking
+  * go#41192 net/http/fcgi: race detected during execution of TestResponseWriterSniffsContentType test
+  * go#41016 net/http: Transport.CancelRequest no longer cancels in-flight request
+  * go#40973 net/http: RoundTrip unexpectedly changes Request
+  * go#40968 runtime: checkptr incorrectly -race flagging when using &amp;amp;^ arithmetic
+  * go#40938 cmd/compile: R12 can be clobbered for write barrier call on PPC64
+  * go#40848 testing: &quot;=== PAUSE&quot; lines do not change the test name for the next log line
+  * go#40797 cmd/compile: inline marker targets not reachable after assembly on arm
+  * go#40766 cmd/compile: inline marker targets not reachable after assembly on ppc64x
+  * go#40501 cmd/compile: for range loop reading past slice end
+  * go#40411 runtime: Windows service lifecycle events behave incorrectly when called within a golang environment
+  * go#40398 runtime: fatal error: checkdead: runnable g
+  * go#40192 runtime: pageAlloc.searchAddr may point to unmapped memory in discontiguous heaps, violating its invariant
+  * go#39955 cmd/link: incorrect GC bitmap when global's type is in another shared object
+  * go#39690 cmd/compile: s390x floating point &amp;lt;-&amp;gt; integer conversions clobbering the condition code
+  * go#39279 net/http: Re-connect with upgraded HTTP2 connection fails to send Request.body
+  * go#38904 doc: include fix for #34437 in Go 1.14 release notes
+- Use go_api instead of version for update-alternatives priority
+- Add missing '?' before 'suse_version' test by Xia Lei &amp;lt;emricg2@gmail.com&amp;gt;
+
+- replace binutils-gold requires by recommends for aarch64 on SLE. (bsc#1170826) (forwarded request 833830 from jfkw)</comment>
+    <requestid>833837</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e405edac79e947535e71a2b36776bc3f</srcmd5>
+    <version>1.14.10</version>
+    <time>1603031173</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.14.10 (released 2020-10-14) includes fixes to the compiler,
+  runtime, and the plugin and testing packages.
+  * go#41815 database/sql: TestTxCannotCommitAfterRollback failures on windows-amd64-2008 builder
+  * go#41796 runtime: memory corruption from stack-allocated defer on 32-bit
+  * go#41619 memory corruption on linux/386 with float32 arithmetic, GO386=387, buildmode pie/c-archive
+  * go#41322 runtime: &quot;fatal error: unexpected signal during runtime execution&quot; on windows-amd64-longtest builder of Go 1.15.2 commit
+  * go#40880 testing: summary and test output interleaved
+  * go#40694 plugin: program on linux/s390x sometimes hangs after calling &quot;plugin.Open&quot;
+  * go#40647 runtime: pcdata is -2 and 12 locals stack map entries error on nil pointer
+  * go#40642 runtime: race between stack shrinking and channel send/recv leads to bad sudog values (forwarded request 841835 from jfkw)</comment>
+    <requestid>841837</requestid>
+  </revision>
+</revisionlist>

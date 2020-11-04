@@ -1,0 +1,6 @@
+<package name="libslirp" project="openSUSE:Factory">
+  <title>libslirp</title>
+  <description>A user-mode networking library used by virtual machines,
+containers or various tools.</description>
+  <devel project="devel:kubic" package="libslirp"/>
+</package>

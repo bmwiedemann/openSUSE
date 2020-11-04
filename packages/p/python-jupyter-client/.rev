@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>276464d0a44497111672a305ff0691ff</srcmd5>
+    <version>5.3.4</version>
+    <time>1574414606</time>
+    <user>dimstar_suse</user>
+    <comment>Rename to python-jupyter-client to follow python package naming guidelines since upstream was renamed.
+
+Update to 5.3.4</comment>
+    <requestid>747866</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d84c131df22ed0a94b9770b6f4d9cc7c</srcmd5>
+    <version>6.0.0</version>
+    <time>1587838265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.0.0
+  + New Features:
+    * Added async API
+  + Changes:
+    * Python 3.8 testing and support added
+    * Session.msg_id optimization
+    * Only cache ports if the cache_ports flag is set to True
+    * Removed direct dependency on pywin32 as this is now in jupyter core
+  + Fixes:
+    * Prevent two kernels to have the same ports
+  + Docs:
+    * Document the handling of error in do_execute
+  + Breaking changes:
+    * Dropped support for Python 2.7!
+- Implement tests via multibuild
+- Drop doc subpackage.  This was only around to resolve dependency
+  cycles in testing, which the multibuild now does.  Keeping up
+  with rapid changes in readthedocs was becoming difficult.
+</comment>
+    <requestid>795894</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aac22634c9a646d1975e6e95238254f4</srcmd5>
+    <version>6.1.3</version>
+    <time>1588323911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797791</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a431c42aa52bc5914308debc1499d2ca</srcmd5>
+    <version>6.1.7</version>
+    <time>1599666404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832537</requestid>
+  </revision>
+</revisionlist>

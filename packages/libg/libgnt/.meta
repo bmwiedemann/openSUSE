@@ -1,0 +1,5 @@
+<package name="libgnt" project="openSUSE:Factory">
+  <title>TUI toolkit based on GLib and ncurses</title>
+  <description>GNT is an ncurses toolkit for creating text-mode graphical user interfaces in a fast and easy way.</description>
+  <devel project="network:pidgin" package="libgnt"/>
+</package>

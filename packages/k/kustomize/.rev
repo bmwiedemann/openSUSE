@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5d59455d77f3300cefeb34a06bfb5c0</srcmd5>
+    <version>3.5.3</version>
+    <time>1577194213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759012</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c88edcbf910fbcd8d47ef9e884eb5ec8</srcmd5>
+    <version>3.5.3</version>
+    <time>1577630988</time>
+    <user>dimstar_suse</user>
+    <comment>- Use binutils-gold on ARM
+</comment>
+    <requestid>759810</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8965e2542b4aa7446b159c1bab67cae</srcmd5>
+    <version>3.5.4</version>
+    <time>1578950501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.4
+  - Upgrade some deps in kustomize.
+  - Update VERSIONS for cmd/resource and cmd/config</comment>
+    <requestid>763876</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4bfcd427d17aa05ad50eeca323f92302</srcmd5>
+    <version>3.6.1</version>
+    <time>1591879042</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.6.1
+  - pin kustomize to cmd/kubectl_v0_1_0
+- Refresh vendor.tar.xz</comment>
+    <requestid>810232</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f5d83eae288ddb491b670d8143b8ecb6</srcmd5>
+    <version>3.8.0</version>
+    <time>1594309737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.0
+  - use kyaml
+  - swtich to api 0.5.0
+- Refresh vendor.tar.xz</comment>
+    <requestid>818995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cdaa70c157f6d41c29d618aa4f67b44f</srcmd5>
+    <version>3.8.4</version>
+    <time>1600956762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.4
+  - Update api to v0.6.2
+  - Update kyaml to v0.8.1
+- Refresh vendor.tar.xz
+
+  - switch to api 0.5.0</comment>
+    <requestid>835781</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>176a341e9b410e90ee4317abe7d1e358</srcmd5>
+    <version>3.8.5</version>
+    <time>1602682648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841143</requestid>
+  </revision>
+</revisionlist>

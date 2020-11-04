@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05775a2e780e92605a948b62197d9664</srcmd5>
+    <version>0.7.0</version>
+    <time>1573648103</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>747897</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec7ededa4a7ebb5b2a9850abf2b42569</srcmd5>
+    <version>0.7.0</version>
+    <time>1575282940</time>
+    <user>dimstar_suse</user>
+    <comment>clean-up dependencies</comment>
+    <requestid>752795</requestid>
+  </revision>
+</revisionlist>

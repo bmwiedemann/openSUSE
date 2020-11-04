@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14d44014d8d3a62e331d57f10b9c9ece</srcmd5>
+    <version>2.2.1</version>
+    <time>1358786315</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>149149</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>14d44014d8d3a62e331d57f10b9c9ece</srcmd5>
+    <version>2.2.1</version>
+    <time>1359109286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b8d3b0c6173e1611e2a9f76f8cba4c16</srcmd5>
+    <version>2.2.1</version>
+    <time>1362736219</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157685</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6edbff50256f176c6d8a0a463075610b</srcmd5>
+    <version>2.2.1</version>
+    <time>1365618354</time>
+    <user>coolo</user>
+    <comment>- builds also with libpng16
+  * png16.patch</comment>
+    <requestid>163390</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6edbff50256f176c6d8a0a463075610b</srcmd5>
+    <version>2.2.1</version>
+    <time>1379662976</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>6edbff50256f176c6d8a0a463075610b</srcmd5>
+    <version>2.2.1</version>
+    <time>1409301587</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>68c03f0bd31ec3b53acafc5ae9311bbf</srcmd5>
+    <version>2.2.1</version>
+    <time>1450284145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348323</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2927430c427b3fe9121cd3a60b4defd0</srcmd5>
+    <version>2.3.0</version>
+    <time>1516359061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560502</requestid>
+  </revision>
+</revisionlist>

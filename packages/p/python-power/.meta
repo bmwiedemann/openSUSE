@@ -1,0 +1,8 @@
+<package name="python-power" project="openSUSE:Factory">
+  <title>python-power</title>
+  <description>
+    Python module that allows you to get power and battery status of the system. Windows, Mac OS X, Linux
+    https://github.com/Kentzo/Power
+  </description>
+  <devel project="science" package="python-power"/>
+</package>

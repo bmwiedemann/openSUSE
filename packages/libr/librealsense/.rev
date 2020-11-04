@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>92e0a55c59bc0a791abc5d427d059397</srcmd5>
+    <version>2.32.1+git20200123.g83f952a4b</version>
+    <time>1581087231</time>
+    <user>dimstar_suse</user>
+    <comment>add librealsense which is a library for Intel RealSense depth cameras like
+D435.</comment>
+    <requestid>770779</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1756b07aa7aeb0205805624489960174</srcmd5>
+    <version>2.33.1+git20200305.ge0b160f01</version>
+    <time>1583949244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783734</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a64beba14931479e0976db2d5d153b99</srcmd5>
+    <version>2.33.1+git20200305.ge0b160f01</version>
+    <time>1588186385</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on %arm and aarch64:
+  * 0001-Fix-aarch64-arm-detection.patch (forwarded request 798849 from Guillaume_G)</comment>
+    <requestid>798860</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0b906c2610fc19974a86588fd709c2e</srcmd5>
+    <version>2.38.1</version>
+    <time>1601653348</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>839133</requestid>
+  </revision>
+</revisionlist>

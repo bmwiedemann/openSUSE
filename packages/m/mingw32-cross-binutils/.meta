@@ -1,0 +1,8 @@
+<package name="mingw32-cross-binutils" project="openSUSE:Factory">
+  <title>MinGW Windows binutils</title>
+  <description>MinGW Windows binutils (utilities like 'strip', 'as', 'ld') which
+understand Windows executables and DLLs.</description>
+  <devel project="openSUSE:Factory" package="mingw32-binutils"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+  <bcntsynctag>mingw32-binutils</bcntsynctag>
+</package>

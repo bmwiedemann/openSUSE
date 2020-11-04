@@ -1,0 +1,14 @@
+<package name="xinetd" project="openSUSE:Factory">
+  <title>An 'inetd' with Expanded Functionality</title>
+  <description>xinetd takes the abilities of inetd and appends additional
+functionality:
+
+- Access Control
+
+- Prevention of 'denial of access' attacks
+
+- Extensive logging abilities
+
+- Clear configuration file</description>
+  <devel project="network:utilities" package="xinetd"/>
+</package>

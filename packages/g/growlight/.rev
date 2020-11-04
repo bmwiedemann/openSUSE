@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>642b505e72f03643c9decfaa998093a1</srcmd5>
+    <version>1.2.8</version>
+    <time>1600879210</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain growlight in Factory</comment>
+    <requestid>830333</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59d37680d574b52dc7e39c4e0a3a8ece</srcmd5>
+    <version>1.2.11</version>
+    <time>1600956838</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836380</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65ec6e93afc946ad60a940674b5139ef</srcmd5>
+    <version>1.2.14</version>
+    <time>1602762631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841639</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a7c24d856b0e235c8bcaa8a1534e37a</srcmd5>
+    <version>1.2.16</version>
+    <time>1603203241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842619</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe86a7919a08be4ddecbdef22422bac8</srcmd5>
+    <version>1.2.17</version>
+    <time>1603821565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844111</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-dephell-argparse" project="openSUSE:Factory">
+  <title>python-dephell-argparse</title>
+  <description>Argparse with groups, commands, colors</description>
+  <devel project="devel:languages:python" package="python-dephell-argparse"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="retroarch-assets" project="openSUSE:Factory">
+  <title>RetroArch Assets</title>
+  <description>Assets needed for RetroArch - e.g. menu drivers, etc. Also contains the official branding.</description>
+  <devel project="Emulators" package="retroarch-assets"/>
+</package>

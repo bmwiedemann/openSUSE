@@ -1,0 +1,5 @@
+<package name="lunar-date" project="openSUSE:Factory">
+  <title>Chinese Lunar calendar library</title>
+  <description>Library to support date conversion from/to chinese lunar calendar</description>
+  <devel project="M17N" package="lunar-date"/>
+</package>

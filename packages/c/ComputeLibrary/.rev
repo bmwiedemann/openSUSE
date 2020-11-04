@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89608781d0fe08982ec24ae402aea1a3</srcmd5>
+    <version>19.08</version>
+    <time>1574783426</time>
+    <user>dimstar_suse</user>
+    <comment>Add ComputeLibrary to Factory</comment>
+    <requestid>736686</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a105d01ad3f6c2b6c9f7734a6c9a3383</srcmd5>
+    <version>19.08</version>
+    <time>1574859307</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable neon on armv7</comment>
+    <requestid>751088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e830d6597eef685f8e3b20be73f0c96f</srcmd5>
+    <version>19.11.1</version>
+    <time>1583094447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.11.1:
+  * Fix offset calculation in NEReductionOperationKernel.
+  * Fix data layout in NEScaleKernel for nhwc.
+  * Retain configuration step data layout to avoid side-effects.
+  * Perform sqrt in double domain for L2 pooling.
+  * Fix output shape calculation for Reduce Mean.
+
+- Cleanup a bit with spec-cleaner
+
+- Update to 19.11 (no upstream changelog)
+- Revert previous commit to disable neon on armv7</comment>
+    <requestid>779344</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>edfa8f7ab14f5e25de95f4d7e5a4b9c5</srcmd5>
+    <version>20.02.1</version>
+    <time>1583948989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783448</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c3ec6221605cc38c9a3fa07d4b4e8ea</srcmd5>
+    <version>20.05</version>
+    <time>1591990744</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812529</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d75f2cdfefdfae9dbda764e948d5d582</srcmd5>
+    <version>20.08</version>
+    <time>1599597998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.08:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v20.08/
+</comment>
+    <requestid>832532</requestid>
+  </revision>
+</revisionlist>

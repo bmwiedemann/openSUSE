@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6f862bd72ec698cbc81a05268a21002</srcmd5>
+    <version>0.6.0</version>
+    <time>1590780054</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808938</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c9993062e36a12150a9efd66822f027</srcmd5>
+    <version>0.7.2</version>
+    <time>1592245845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.2:
+  * Name the wheel file as non-universal (py3-only).
+  * [setup.py] Mark library as requiring Python 3.6+, or else pip2 will attempt to install it on Python 2.7, which is no longer supported (#293).
+  * Dropped support for Py2, now only Py3
+  * Updated documentation: #232
+  * Fixed docstring typos (thanks @Space0726!): #263
+  * added notification: Font.GuidelineWillBeAdded: #239
+  * Fixes for UFOZ (#209 testForExternalChanges and #218 glyphSet is required): #220
+  * Added close to font: #269
+  * Setting glyph.unicode will now set glyph.unicodes to a one member list: #258
+  * Add notifications for: Glyph.LeftMarginWillChange, Glyph.LeftMarginDidChange, Glyph.RightMarginWillChange, Glyph.RightMarginDidChange, Glyph.TopMarginWillChange, Glyph.TopMarginDidChange, Glyph.BottomMarginWillChange, Glyph.BottomMarginDidChange: #253
+  * Improved joinSegments: #259
+  * Added identifier to addComponent callback: #268
+  * Fix glyphs with components getting proper area value: #272
+  * Use ufoFormatTuple: #289
+  * Add ufoFormatVersionTuple property, deprecate ufoFormatVersion: #291</comment>
+    <requestid>814613</requestid>
+  </revision>
+</revisionlist>

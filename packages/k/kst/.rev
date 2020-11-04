@@ -1,0 +1,435 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>637175fec0cb9c76d81a5e80ba46cd44</srcmd5>
+    <version>1.3.1</version>
+    <time>1168903247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="55">
+    <srcmd5>b81e0d8a87f2f2d5abbc95c21776ddc5</srcmd5>
+    <version>1.3.1</version>
+    <time>1179929892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="59">
+    <srcmd5>913d2dba540b6da29365106d2bc6ba9e</srcmd5>
+    <version>1.3.1</version>
+    <time>1180480486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="61">
+    <srcmd5>c73f677afe1445ffffcfde2a0154d068</srcmd5>
+    <version>1.3.1</version>
+    <time>1180683440</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="69">
+    <srcmd5>842b7acbcaaabba58e2528429841f098</srcmd5>
+    <version>1.3.1</version>
+    <time>1182458305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c1ff0228d016f97d1d15b9719ff1a41</srcmd5>
+    <version>1.4.0</version>
+    <time>1186306880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="52">
+    <srcmd5>2ad327c914feb1bdc9f6325655586723</srcmd5>
+    <version>1.4.0</version>
+    <time>1196899378</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="87">
+    <srcmd5>96ea5b37d48eb92d9711c1fbc51e8a1d</srcmd5>
+    <version>1.4.0</version>
+    <time>1205431386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84eb645a7fea71bb5e4003ccef4d5b70</srcmd5>
+    <version>1.5.0</version>
+    <time>1205513213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b3ed9ef3ccbdcb4436b6b806ed1ca5e8</srcmd5>
+    <version>1.6.0</version>
+    <time>1209133831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="21">
+    <srcmd5>7135422bb44d819e439d68c00b098cfe</srcmd5>
+    <version>1.6.0</version>
+    <time>1215637821</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7163942d840d202087e340997021a035</srcmd5>
+    <version>1.7.0</version>
+    <time>1224854103</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>59937bf97487318aafc7350250f80797</srcmd5>
+    <version>1.7.0</version>
+    <time>1234743812</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>abc3b64c1722e7be51b1e99cb329bcb1</srcmd5>
+    <version>1.8.0</version>
+    <time>1247515191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b34a1ba4cc96de4886ba3064e2304511</srcmd5>
+    <version>2.0.0beta2</version>
+    <time>1249920937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b34a1ba4cc96de4886ba3064e2304511</srcmd5>
+    <version>2.0.0beta2</version>
+    <time>1249920937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>7f88b3f6971f797736f544c377177162</srcmd5>
+    <version>2.0.0beta2</version>
+    <time>1268924321</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>7f88b3f6971f797736f544c377177162</srcmd5>
+    <version>2.0.0beta2</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>7f88b3f6971f797736f544c377177162</srcmd5>
+    <version>2.0.0beta2</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>fbda94180eedd437116594ff19e3a0cc</srcmd5>
+    <version>2.0.0</version>
+    <time>1283525616</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/kst based on submit request 47040 from user llunak
+</comment>
+    <requestid>47040</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>243a26b097481d09093e591d6cec8fcd</srcmd5>
+    <version>2.0.2</version>
+    <time>1292322349</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55838 from user wstephenson
+</comment>
+    <requestid>55838</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>021a2d9f1d48b99fc3a0ccb974a79ff9</srcmd5>
+    <version>2.0.2</version>
+    <time>1292322362</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55838
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>dad959a35f503ef3aa739f05407e1b2b</srcmd5>
+    <version>2.0.2</version>
+    <time>1294664605</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57323 from user dirkmueller
+</comment>
+    <requestid>57323</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>cc1fbe428e5d22b9d4eab814679517bf</srcmd5>
+    <version>2.0.2</version>
+    <time>1294664611</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57323
+</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>cc1fbe428e5d22b9d4eab814679517bf</srcmd5>
+    <version>2.0.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>51ba5ade472b142bf7d2dbac21217887</srcmd5>
+    <version>2.0.3</version>
+    <time>1303381151</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68004 from user coolo
+</comment>
+    <requestid>68004</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>423ca0e57e2e4d60efc9e78dbae34c35</srcmd5>
+    <version>2.0.3</version>
+    <time>1303381167</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68004
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ccef11f11326fb2db335b73d46251f3e</srcmd5>
+    <version>2.0.4</version>
+    <time>1316005021</time>
+    <user>saschpe</user>
+    <comment>- Update to kst 2.0.4
+  * A major re-write of the auto-layout command: it works much 
+    better now and no longer gets in the way
+  * Improvements to automatic legend names
+  * Fixes to the layout mode, with better visual feedback during 
+    drag operations
+  * Numerous other bugfixes and improvements (point density, 
+    scientific notation, issues with log mode, bar colors, fixed 
+    aspect ratio in images and svg annotation items)
+  * UI and usability improvements: for instance you can now just 
+    double-click on labels or axes to open the corresponding dialog
+  * The introduction of a Settings-&gt;Theme dialog which sets brush, 
+    stroke, and font for all view items, optionally applying to all 
+    existing objects, and/or saving as the default for all future 
+    objects
+  * A great new auto-completer for the the equation editor and 
+    label editor, including support for wildcards
+  * A number of crashes fixed in various plugins</comment>
+    <requestid>82083</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>93644088ef7f8f386e54cb5de74b35ca</srcmd5>
+    <version>2.0.4</version>
+    <time>1319025129</time>
+    <user>coolo</user>
+    <comment>- Switched to using KDE macros
+- Switched release build (this is supposed to optimize performance)
+- Cleaned up spec file formatting (forwarded request 88457 from TheBlackCat)</comment>
+    <requestid>88575</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>93644088ef7f8f386e54cb5de74b35ca</srcmd5>
+    <version>2.0.4</version>
+    <time>1319182059</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>941a4c4a6b8a2137e8bbe02debb0d33b</srcmd5>
+    <version>2.0.4</version>
+    <time>1323192126</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>05d29779233f01497cf7a3a19199c20f</srcmd5>
+    <version>2.0.4</version>
+    <time>1332752562</time>
+    <user>coolo</user>
+    <comment>- Depend on netcdf-devel for openSUSE &gt;= 12.2
+- Build in parallel</comment>
+    <requestid>110897</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>26678a4a3272af4d1f53424e102a967c</srcmd5>
+    <version>2.0.5</version>
+    <time>1337667370</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.5
+  * Data-fixed annotation objects (e.g. text and arrows which
+    scroll along with the curves)
+  * Support for Matlab's .mat file format for strigns, matrices, 
+    vectors and scalars
+  * Beta version of python scripting (on Linux only for now, 
+    depending on NumPy 1.6 and SciPy and requiring .py and .pyc
+    files installed in the right place). See documentation at 
+    http://hen.astro.utoronto.ca/pyKst/ and don't hesitate to ask 
+    for help on the mailing list as this feature is still in 
+    beta stage
+  * Drag &amp; Drop support: simply drop a .kst file onto Kst and it 
+    will open, if you drop any data file it will open in the data
+    wizard
+  * Improved printing to vector formats (printer, PDF, SVG)
+  * Optional antialiasing (may be slow on some systems)
+  * A number of bugs and crashes fixed in various areas, like 
+    shared axis boxes. See detailed changelog at 
+    http://kst-plot.kde.org/files/Log_messages_2.0.4_to_2.0.5.txt
+    for more information (forwarded request 121704 from christiantrippe)</comment>
+    <requestid>121711</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>26678a4a3272af4d1f53424e102a967c</srcmd5>
+    <version>2.0.5</version>
+    <time>1340183539</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>da3430e0c53b1fdf60433b5bf5e4ab10</srcmd5>
+    <version>2.0.5</version>
+    <time>1342171903</time>
+    <user>namtrac</user>
+    <comment>- BuildRequire libnetcdf_c++-devel after the package split (forwarded request 126924 from RedDwarf)</comment>
+    <requestid>127732</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>59ef98547c6db886526ac8e2141ecff8</srcmd5>
+    <version>2.0.6</version>
+    <time>1344064763</time>
+    <user>coolo</user>
+    <comment>This is for Factory only IMHO, so feel free to wait with an accept if you fist want to create KDS from KDF for 12.2
+
+- Update to 2.0.6, for a complete list of changes see 
+  http://kst-plot.kde.org/files/Log_messages_2.0.5_to_2.0.6.txt
+  * When loading a kst file, prompt the user for an alternate if a 
+    datasource can't be found
+  * Save/use arrow head property defaults
+  * Don't invert Z order of viewItems which are direct children of
+    the View
+  * Data wizard fixes (spectrum format, speed improvements when 
+    there are many vectors,
+  * Properly handle missing data in custom-delimited ASCII to avoid 
+    mixing the vectors
+  * Large speedup (x10!) for ASCII with very many columns
+  * Allow SVG and pixmap view objects to have adjustable aspect ratios
+  * Fix apply button in view item dialogs (including labels)
+- Build python-kst for scripting (forwarded request 129359 from christiantrippe)</comment>
+    <requestid>129391</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>59ef98547c6db886526ac8e2141ecff8</srcmd5>
+    <version>2.0.6</version>
+    <time>1359109210</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>4acf8fcd3fa08fbccadd8159718e5940</srcmd5>
+    <version>2.0.6</version>
+    <time>1363511217</time>
+    <user>coolo</user>
+    <comment>Change desktop menu category to Science (forwarded request 159572 from Dmitry_R)</comment>
+    <requestid>159600</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c84cb9b5fc7732bf12a016a0d4ef030b</srcmd5>
+    <version>2.0.7</version>
+    <time>1374386968</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.7
+  * Automatic formatting of X axis time display from the datawizard when reading string-formatted time
+  * More speed for files with very many columns
+  * Scripting: major rework adding support for histograms, spectrums and plugins 
+  * Allow the x and y plot labels to be changed from the command line
+  * Fix a bug where if you drag a plot to a new tab, it wasn't picked up by future autoformat actions nor listed in plot lists
+  * Cumulative sum plugin now returns a vector of the same size as the input vector
+  * Fix toggling tied zoom
+  * Save/reload &quot;automatically scale number axis&quot; setting in plots.
+  * Fix regression in which re-scaling font sizes when adding plots didn't work.
+  * Fix gaussian + Lorentzian fits so that they actually fit
+  * Respect dialog defaults and curve properties for point density.
+  * Restore proper behavior of font scaling when adding plots to tabs (forwarded request 183701 from christiantrippe)</comment>
+    <requestid>183776</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>c84cb9b5fc7732bf12a016a0d4ef030b</srcmd5>
+    <version>2.0.7</version>
+    <time>1379662841</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>486b766a7dd7d1686ab909439ab7cf2d</srcmd5>
+    <version>2.0.8</version>
+    <time>1406836214</time>
+    <user>coolo</user>
+    <comment>- Build with MAT files support
+
+- Update to 2.0.8
+
+-Removed python-kst and added an obsolete for this. (Sorry I missed the comment in the first srq)</comment>
+    <requestid>242856</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>486b766a7dd7d1686ab909439ab7cf2d</srcmd5>
+    <version>2.0.8</version>
+    <time>1409301429</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>5f30bb7c58877d518a06207449bda8f0</srcmd5>
+    <version>2.0.8</version>
+    <time>1440743191</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325788</requestid>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>8a8bcb501ece732c34b6b22d62dfb0a3</srcmd5>
+    <version>2.0.8</version>
+    <time>1470934414</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417048</requestid>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>4b86ee3369d7a3e06c476685ebfb4d10</srcmd5>
+    <version>2.0.8</version>
+    <time>1519396278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579260</requestid>
+  </revision>
+  <revision rev="46" vrev="7">
+    <srcmd5>b5b2e850fbba88539707cf0413ab31e6</srcmd5>
+    <version>2.0.8</version>
+    <time>1528896906</time>
+    <user>maxlin_factory</user>
+    <comment>- Add Fix-build-with-Qt-511.patch.
+- Run spec-cleaner
+</comment>
+    <requestid>613817</requestid>
+  </revision>
+  <revision rev="47" vrev="8">
+    <srcmd5>0908b3603e8036b50fd8f0a5dc1916f5</srcmd5>
+    <version>2.0.8</version>
+    <time>1550402478</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676546</requestid>
+  </revision>
+  <revision rev="48" vrev="9">
+    <srcmd5>d1d694e5d24a3293962cfcae87d72599</srcmd5>
+    <version>2.0.8</version>
+    <time>1568025248</time>
+    <user>dimstar_suse</user>
+    <comment>- Use -ffat-lto-objects</comment>
+    <requestid>729083</requestid>
+  </revision>
+  <revision rev="49" vrev="10">
+    <srcmd5>d6ac80ae9d8e382296b48e4fb923825a</srcmd5>
+    <version>2.0.8</version>
+    <time>1579273683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765264</requestid>
+  </revision>
+  <revision rev="50" vrev="11">
+    <srcmd5>2b00495f3c96b80d237b9e847681fc0c</srcmd5>
+    <version>2.0.8</version>
+    <time>1595339398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822061</requestid>
+  </revision>
+</revisionlist>

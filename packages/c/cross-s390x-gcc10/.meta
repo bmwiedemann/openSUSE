@@ -1,0 +1,6 @@
+<package name="cross-s390x-gcc10" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="gcc10"/>
+  <bcntsynctag>gcc10</bcntsynctag>
+</package>

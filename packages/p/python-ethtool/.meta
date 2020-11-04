@@ -1,0 +1,8 @@
+<package name="python-ethtool" project="openSUSE:Factory">
+  <title>python-ethtool</title>
+  <description>Python bindings for the ethtool kernel interface, that allows querying and
+changing of ethernet card settings, such as speed, port, autonegotiation, and
+PCI locations.</description>
+  <devel project="devel:languages:python" package="python-ethtool"/>
+  <url>http://userweb.kernel.org/~acme/python-ethtool</url>
+</package>

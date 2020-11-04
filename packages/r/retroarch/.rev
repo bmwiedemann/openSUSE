@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82e2ac4e53619da22dfc30596536d4d8</srcmd5>
+    <version>1.8.4</version>
+    <time>1579729371</time>
+    <user>dimstar_suse</user>
+    <comment>Exclude unneeded lib directory with license issues</comment>
+    <requestid>766266</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ffc514b0727bb62305abeb43d723329a</srcmd5>
+    <version>1.8.4</version>
+    <time>1580842514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769792</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>26e8497252019e9624fe81d13d8618f2</srcmd5>
+    <version>1.8.4</version>
+    <time>1582810688</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779667</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>844a64170db6c14be0331a7fa6e0e067</srcmd5>
+    <version>1.8.5</version>
+    <time>1586248027</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.5
+  * Full changelog at https://github.com/libretro/RetroArch/blob/master/CHANGES.md#185
+</comment>
+    <requestid>791683</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99fc51c7eb2a67ee11b2f9ae523c6a96</srcmd5>
+    <version>1.8.6</version>
+    <time>1589491561</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805492</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30581732c41c176685eb1ef6475791f8</srcmd5>
+    <version>1.8.8</version>
+    <time>1591558480</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>811477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>defcf13efe6e9cd6cd2eec539542aa6a</srcmd5>
+    <version>1.8.9</version>
+    <time>1593006526</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.9
+  * Full changelog at https://github.com/libretro/RetroArch/blob/master/CHANGES.md#189
+</comment>
+    <requestid>816704</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2677ddf4e1ac9953e82af09c25b92feb</srcmd5>
+    <version>1.9.0</version>
+    <time>1597064261</time>
+    <user>dimstar_suse</user>
+    <comment>- Change broken libretro-blastem to libretro-picodrive
+- Version 1.9.0
+  * Full changelog at https://github.com/libretro/RetroArch/blob/master/CHANGES.md#190
+- Add libretro-glsl-shaders recommends
+</comment>
+    <requestid>825154</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9611875fb0b19fcc499e08b8d933c481</srcmd5>
+    <version>1.9.0</version>
+    <time>1597955318</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827941</requestid>
+  </revision>
+</revisionlist>

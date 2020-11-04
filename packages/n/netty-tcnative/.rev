@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a61833281dd8a47c1a7ed662f1b09c7</srcmd5>
+    <version>1.1.30</version>
+    <time>1574104094</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748715</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5e28af439f4672318140dbdda6d0c1d</srcmd5>
+    <version>1.1.33</version>
+    <time>1578606803</time>
+    <user>dimstar_suse</user>
+    <comment>depend on libtcnative-1-0 and don't get locked into openssl 1.0</comment>
+    <requestid>762263</requestid>
+  </revision>
+</revisionlist>

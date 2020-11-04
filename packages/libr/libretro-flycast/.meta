@@ -1,0 +1,5 @@
+<package name="libretro-flycast" project="openSUSE:Factory">
+  <title>Flycast libretro core for Sega Dreamcast</title>
+  <description></description>
+  <devel project="Emulators" package="libretro-flycast"/>
+</package>

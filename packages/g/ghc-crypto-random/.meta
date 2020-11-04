@@ -1,0 +1,5 @@
+<package name="ghc-crypto-random" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-crypto-random"/>
+</package>

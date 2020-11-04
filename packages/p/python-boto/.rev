@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f38e1c66406fc7cc544a4ec90a0631f</srcmd5>
+    <version>2.48.0</version>
+    <time>1539013734</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-bokeh</comment>
+    <requestid>640489</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>476e8d95c33a2d9f3b6ac47f3541a91e</srcmd5>
+    <version>2.49.0</version>
+    <time>1541666948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646670</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f592a068a733bfab2833e8d2a090915f</srcmd5>
+    <version>2.49.0</version>
+    <time>1543953413</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653700</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fbd45c3a4568d8aa1da357424f8b7e12</srcmd5>
+    <version>2.49.0</version>
+    <time>1549916651</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove root certs (bsc#1116204)
+  + Add boto-no-builtin-certs.patch
+  + Remove the upstream builtin root certificate data for trusted CAs
+
+- Undo previous change, name confusion between boto and boto3</comment>
+    <requestid>672880</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>8a382f6a4a1df9ba78c0f2af33b79da9</srcmd5>
+    <version>2.49.0</version>
+    <time>1552985959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685951</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ee9ca5d487c323b2665f2cdd739cfb13</srcmd5>
+    <version>2.49.0</version>
+    <time>1583702447</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build under python3.8 by skipping more tests
+  that break with that release (upstream is dead so not worth
+  spending the time fixing them) (forwarded request 764241 from scarabeus_iv)</comment>
+    <requestid>764242</requestid>
+  </revision>
+</revisionlist>

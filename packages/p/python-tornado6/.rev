@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63819717db50d86e5c9af3515b83239b</srcmd5>
+    <version>6.0.3</version>
+    <time>1573164741</time>
+    <user>dimstar_suse</user>
+    <comment>Add py-tornado5</comment>
+    <requestid>737143</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fb25c3625a20e68af15c74fb58043dad</srcmd5>
+    <version>6.0.3</version>
+    <time>1574414733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ignore-resourcewarning-doctests.patch to ignore ResourceWarnings
+  when running doctests.
+- Use %autopatch macro instead of specific patch number macros
+
+- Define TRAVIS to disable unreliable tests
+
+- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>749161</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d179bc485210478ced5df4398837746</srcmd5>
+    <version>6.0.4</version>
+    <time>1585264793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783780</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d6159d5fc6b8548833bb984c225f10de</srcmd5>
+    <version>6.0.4</version>
+    <time>1588971640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800447</requestid>
+  </revision>
+</revisionlist>

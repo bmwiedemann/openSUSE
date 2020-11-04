@@ -1,0 +1,9 @@
+<package name="archmage" project="openSUSE:Factory">
+  <title>A reader and decompiler for files in the CHM format</title>
+  <description>arCHMage is a reader and decompiler for files in the CHM format. This is
+the format used by Microsoft HTML Help, and is also known as Compiled HTML.
+
+</description>
+  <devel project="Archiving" package="archmage"/>
+  <url>https://github.com/dottedmag/archmage</url>
+</package>

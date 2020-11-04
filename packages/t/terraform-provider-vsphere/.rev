@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a66b0bdf54693b2a536574aaad29f4e</srcmd5>
+    <version>1.16.1</version>
+    <time>1584050830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784217</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f70db3861f98af70fbc2fc9d1c46e921</srcmd5>
+    <version>1.18.3</version>
+    <time>1592245922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814652</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fb7a675998c34f425a31b16e737d9465</srcmd5>
+    <version>1.18.3</version>
+    <time>1593904641</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818372</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22d85885ad1bf36ada037aaf16903171</srcmd5>
+    <version>1.21.0</version>
+    <time>1594894495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820874</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2bf57e0cbe7d78f5c0f7d76074ecce41</srcmd5>
+    <version>1.22.0</version>
+    <time>1597064632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0:
+  * Fix vsan disk name and computed.
+  * Add import for vsphere_virtual_disk (#1) (#1120)
+  * Add roles and permission resources  (#1144)
+  * Add host_thumbprint data source (#1142)
+  * r/vm: Set guest_id before customization (#1139)
+  * Add go-version file (#1135)</comment>
+    <requestid>825291</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e07be35cdb02efc30dcff8c6d44e847</srcmd5>
+    <version>1.24.1</version>
+    <time>1603726027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844103</requestid>
+  </revision>
+</revisionlist>

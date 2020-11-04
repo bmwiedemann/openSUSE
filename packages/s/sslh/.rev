@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d35572144584e5e02fe9fbe3eec1d8e0</srcmd5>
+    <version>1.20</version>
+    <time>1579346318</time>
+    <user>dimstar_suse</user>
+    <comment>Tidied up, now submitting again</comment>
+    <requestid>765434</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>101aebc1b7df40ea037313be73dafdc0</srcmd5>
+    <version>1.21</version>
+    <time>1594706428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820686</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98ce95144fd4742d0226708c8689eb78</srcmd5>
+    <version>1.21b</version>
+    <time>1595271796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21b:
+  * Moved configuration and command-line management to
+    use conf2struct. Changes are:
+    - command line option &lt;-F|--config&gt; no longer defaults to
+	  /etc/sslh.cfg, so you have to specify it explicitly.
+	- command line option &lt;-v|--verbose&gt; takes a mandatory
+	  integer parameter
+  * Changed exit code for illegal command line parameter
+	from 1 to 6 (for testing purposes)</comment>
+    <requestid>821821</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3c478c1aaa597ba5fbaa4f14bd415a9</srcmd5>
+    <version>1.21c</version>
+    <time>1596204012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21c:
+  * Removed support for 'ssl' and fix a related segfault bug.</comment>
+    <requestid>823701</requestid>
+  </revision>
+</revisionlist>

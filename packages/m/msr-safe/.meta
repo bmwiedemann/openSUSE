@@ -1,0 +1,5 @@
+<package name="msr-safe" project="openSUSE:Factory">
+  <title>msr-safe</title>
+  <description>Allows safer access to model specific registers (MSRs)</description>
+  <devel project="hardware" package="msr-safe"/>
+</package>

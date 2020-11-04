@@ -1,0 +1,5 @@
+<package name="perl-Sub-Exporter-Progressive" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Sub-Exporter-Progressive"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f11c363a8bee68368ec67c3101903015</srcmd5>
+    <version>1.6.0</version>
+    <time>1597668053</time>
+    <user>dimstar_suse</user>
+    <comment>Missing dependency for adi:54.</comment>
+    <requestid>827316</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f2c155fc8f956a7ce98c0fb27fa1ce7</srcmd5>
+    <version>20.8.0</version>
+    <time>1598274850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828873</requestid>
+  </revision>
+</revisionlist>

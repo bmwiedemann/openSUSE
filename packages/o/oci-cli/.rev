@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b13ce782e71159da35ab0837054515cf</srcmd5>
+    <version>2.12.2</version>
+    <time>1594894487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12.2
+  + Support for Autonomous DataWarehouse and Autonomous Transaction Processing features to
+    allow switching from Non PE to PE (and vice versa) for existing databases as a part of
+    the Database Service for Autonomous Databases
+    * ``oci db autonomous-database update --private-endpoint-label ``
+    * ``oci db autonomous-database update --subnet-id ``
+  + Support for private endpoint (ingress) and public endpoint whitelisting in Analytics Service
+    * ``oci analytics analytics-instance create --network-endpoint-details``
+    * ``oci analytics analytics-instance change-network-endpoint --network-endpoint-details``
+  + Support for re-encrypting an object in the Object Storage Service, by introducing a command
+    line option to specify a new encryption key.
+    * ``oci os object reencrypt``
+  + Support to register and deregister autonomous dedicated databases with Datasafe
+    * ``oci db autonomous-database data-safe register``
+    * ``oci db autonomous-database data-safe deregister``
+- from version 2.12.1
+  + Support for Usage API service
+    * ``oci usage``
+  + Support for Oracle Cloud VMware Solution service
+    * ``oci ocvs``
+  + Support for one-off patches in Database service
+    * ``oci db database patch --one-off-patches``
+  + Support for Vlan features as part of support Layer 2 Virtual Networking
+    * ``oci network vlan``
+    * ``oci network private-ip list --vlan-id``
+    * ``oci network vnic assign-private-ip --vlan-id``
+    * ``oci compute instance attach-vnic --vlan-id``
+  + Validator parameter added for updating tags in Identity service
+    * ``oci iam tag update --validator``
+  + Improve Create Instance Configuration to include the latest AttachVolumeDetails
+    properties in the Compute Management service
+    * ``oci compute-management instance-configuration create --instance-details``</comment>
+    <requestid>821106</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d980e457fdd4434f3ee2f8af724bd1fe</srcmd5>
+    <version>2.12.10</version>
+    <time>1599862025</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12.10
+  * Support for searching Oracle Cloud resources across tenancies in the Search Service
+    * ``oci search resource free-text-search --tenant-id``
+    * ``oci search resource structured-search --tenant-id``
+  * Support for Management Agent Cloud Service
+    * ``oci management-agent``
+  * Support for sending diagnostic interrupt to a VM instance in the Compute Service
+    * ``oci compute instance action --action SENDDIAGNOSTICINTERRUPT --instance-id``
+  * Support for custom Database Software Images in the Database Service
+    * ``oci db database-software-image``
+  * Support for Management Dashboard Service
+    * ``oci management-dashboard``
+  * Support for Logging Analytics Service
+    * `oci log-analytics`
+  * Support for Logging Service
+    * ``oci logging``
+  * Support for Logging Ingestion Service
+    * ``oci logging-ingestion``
+  * Support for Logging Search Service
+    * ``oci logging-search``
+  * Support for Service Connector Hub service
+    * ``oci sch``
+  * Support for getting and listing container database patches for Autonomous Container
+    Database resources in the Database Service
+    * ``oci db autonomous-patch get --autonomous-patch-id``
+    * ``oci db autonomous-patch list-container-database-patches --autonomous-container-database-id``
+  * Support for updating patch id on maintenance run for Autonomous Container Database
+    resources in the Database Service
+    * ``oci db maintenance-run update --patch-id``
+  * Support for Policy based Request/Response transformation (forwarded request 833318 from glaubitz)</comment>
+    <requestid>833333</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b3cc6a11157f11f8d014cffdb47c4e6</srcmd5>
+    <version>2.14.0</version>
+    <time>1603031407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.14.0
+  * Support for API definitions in the API Gateway service
+    * ``oci api-gateway api --help``
+  * Support for pattern-based Logical Entities, namespace-bound Custom Properties,
+    and faceted search in the Data Catalog service
+    * ``oci data-catalog pattern``
+    * ``oci data-catalog data-asset add-data-selector-patterns``
+    * ``oci data-catalog entity list-aggregated-physical``
+    * ``oci data-catalog namespace``
+    * ``oci data-catalog custom-property``
+    * ``oci data-catalog type associate-custom-properties``
+    * ``oci data-catalog search query``
+  * Support for Autonomous Data Guard for Autonomous Infrastructure
+    * ``oci autonomous-container-database-dataguard``
+    * ``oci autonomous-database-dataguard``
+  * Support for creating a Data Guard association on an existing standby
+    database home in the Database service.
+    * ``oci db data-guard-association create from-existing-db-system --peer-db-home-id``
+    * ``oci db data-guard-association create from-existing-vm-cluster --peer-db-home-id``
+  * Support for list database homes by version.
+    * ``oci db db-home list --db-version``
+  * Support for upgrading Cloud VM Cluster Grid Infrastructure
+    * ``oci db cloud-vm-cluster update [options]``
+  * Help messages for Logging Ingestion Service
+  * Support for updating saved search logs for Logging Service
+    * ``oci logging log-saved-search``
+    * ``oci logging log-included-search``
+  * [Breaking]  Required param ``is-quick-start`` is deleted from ``oci logging
+    log-saved-search create/update``
+- from version 2.13.0 (forwarded request 841902 from glaubitz)</comment>
+    <requestid>841940</requestid>
+  </revision>
+</revisionlist>

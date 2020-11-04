@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="314">
+    <srcmd5>7ae4137067aaee13851dc3e83b38bdbd</srcmd5>
+    <version>2.1.1</version>
+    <time>1166483805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>207f4e85858fd952c40676b6a9c0ab96</srcmd5>
+    <version>2.3</version>
+    <time>1184085796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="40">
+    <srcmd5>628579e42fd50478a4dac8d9d660384d</srcmd5>
+    <version>2.3</version>
+    <time>1205693691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="78">
+    <srcmd5>628579e42fd50478a4dac8d9d660384d</srcmd5>
+    <version>2.3</version>
+    <time>1205693691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="79">
+    <srcmd5>634b82674468744600ebb85a0df6daf4</srcmd5>
+    <version>2.3</version>
+    <time>1234048448</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="80">
+    <srcmd5>884c7574e72d820e5077e567b0833af3</srcmd5>
+    <version>2.3</version>
+    <time>1251301187</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/hello based on submit request 18873 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="82">
+    <srcmd5>884c7574e72d820e5077e567b0833af3</srcmd5>
+    <version>2.3</version>
+    <time>1251301187</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/hello based on submit request 18873 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="83">
+    <srcmd5>a17e90461e400e02bc0d889536e28c3f</srcmd5>
+    <version>2.3</version>
+    <time>1268923938</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="85">
+    <srcmd5>a17e90461e400e02bc0d889536e28c3f</srcmd5>
+    <version>2.3</version>
+    <time>1278667350</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="86">
+    <srcmd5>a17e90461e400e02bc0d889536e28c3f</srcmd5>
+    <version>2.3</version>
+    <time>1278678581</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="89">
+    <srcmd5>a17e90461e400e02bc0d889536e28c3f</srcmd5>
+    <version>2.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="91">
+    <srcmd5>a17e90461e400e02bc0d889536e28c3f</srcmd5>
+    <version>2.3</version>
+    <time>1319181965</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="92">
+    <srcmd5>51209cc497848b6eabb1209622050b54</srcmd5>
+    <version>2.3</version>
+    <time>1323191872</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3bc830efe72af0ef790257bdf57d1c6a</srcmd5>
+    <version>2.8</version>
+    <time>1335190255</time>
+    <user>coolo</user>
+    <comment>- update to version 2.8 
+  - use newer autotools and friends
+  - update translations</comment>
+    <requestid>114936</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3bc830efe72af0ef790257bdf57d1c6a</srcmd5>
+    <version>2.8</version>
+    <time>1340183434</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>ce610ecda6024fdaac30a793ceb341b4</srcmd5>
+    <version>2.8</version>
+    <time>1343632343</time>
+    <user>coolo</user>
+    <comment>- buildrequire makeinfo</comment>
+    <requestid>128999</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>ce610ecda6024fdaac30a793ceb341b4</srcmd5>
+    <version>2.8</version>
+    <time>1359109044</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>07f17596407de332cb736475393de555</srcmd5>
+    <version>2.8</version>
+    <time>1361348695</time>
+    <user>coolo</user>
+    <comment>- Added GPG Offline checking. (forwarded request 155752 from abergmann)</comment>
+    <requestid>155815</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>07f17596407de332cb736475393de555</srcmd5>
+    <version>2.8</version>
+    <time>1379662609</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>56adecb414439877b05a544a54c1a316</srcmd5>
+    <version>2.9</version>
+    <time>1389111621</time>
+    <user>coolo</user>
+    <comment>- update to version 2.9:
+  * modernized and improved build system
+  * added the possibility of user-defined new-style greetings
+  * added support for unicode
+  * various translations have been updated (forwarded request 206769 from WernerFink)</comment>
+    <requestid>213046</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>56adecb414439877b05a544a54c1a316</srcmd5>
+    <version>2.9</version>
+    <time>1409301159</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>b2e1b1ad23b8aca3179c5c0ec29bea4d</srcmd5>
+    <version>2.9</version>
+    <time>1416347220</time>
+    <user>dimstar_suse</user>
+    <comment>- removed gpg-offline usage as its checked by source services.</comment>
+    <requestid>261890</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ef521827053c2e3b3cc735662c5d5bb0</srcmd5>
+    <version>2.10</version>
+    <time>1485167777</time>
+    <user>dimstar_suse</user>
+    <comment>- new keyring fetched from savannah homepage, for new maintainer. (forwarded request 450485 from msmeissn)</comment>
+    <requestid>450487</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>77c37ba68391b04e18672810e2c2f606</srcmd5>
+    <version>2.10</version>
+    <time>1572278344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743439</requestid>
+  </revision>
+</revisionlist>

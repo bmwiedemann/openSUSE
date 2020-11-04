@@ -1,0 +1,22 @@
+<package name="dirac" project="openSUSE:Factory">
+  <title>The Dirac_Video Codec</title>
+  <description>Dirac is an open source video codec. It uses a traditional hybrid video
+codec architecture, but with the wavelet transform instead of the usual
+block transforms.  Motion compensation uses overlapped blocks to reduce
+block artefacts that would upset the transform coding stage.
+
+Dirac can code just about any size of video, from streaming up to HD
+and beyond, although certain presets are defined for different
+applications and standards.  These cover the parameters that need to be
+set for the encoder to work, such as block sizes and temporal
+prediction structures, which must otherwise be set by hand.
+
+Dirac is intended to develop into real coding and decoding software,
+capable of plugging into video processing applications and media
+players that need compression. It is intended to develop into a simple
+set of reliable but effective coding tools that work over a wide
+variety of content and formats, using well-understood compression
+techniques, in a clear and accessible software structure. It is not
+intended as a demonstration or reference coder.</description>
+  <devel project="multimedia:libs" package="dirac"/>
+</package>

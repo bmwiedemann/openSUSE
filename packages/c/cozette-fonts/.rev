@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a6e56636de59c0b91b6e5a8f5836496</srcmd5>
+    <version>1.4.0+git.1581781581.7882aee</version>
+    <time>1582206853</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package for cozette fonts. The source file does not contain the generated font but the generated font is in the same github repo. Not sure if it will be a problem.</comment>
+    <requestid>775826</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9045c021e7ac205c2880b1ee7c60dc2e</srcmd5>
+    <version>1.7.0+git.1585209341.9923dd8</version>
+    <time>1585995760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790964</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d9713566a0dfc506df061872aff3c8d5</srcmd5>
+    <version>1.8.0+git.1586169539.b90b7be</version>
+    <time>1589315549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802795</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e6c60a38b8960b139d46fbdda812e97</srcmd5>
+    <version>1.9.2+git.1601275698.ea2ec2b</version>
+    <time>1603203130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842595</requestid>
+  </revision>
+</revisionlist>

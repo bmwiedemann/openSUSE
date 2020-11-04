@@ -1,0 +1,213 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6c08c8f149150043af3e5f1eef99389</srcmd5>
+    <version>0.104</version>
+    <time>1249381384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f6c08c8f149150043af3e5f1eef99389</srcmd5>
+    <version>0.104</version>
+    <time>1249381384</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8df6499c4a3e9d1146149325d4633da0</srcmd5>
+    <version>0.106</version>
+    <time>1259335139</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Deep based on submit request 25089 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4ec3150c054240b15a8ccd3fff229390</srcmd5>
+    <version>0.106</version>
+    <time>1263294803</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Deep based on submit request 29272 from user coolo
+</comment>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1712c2a69f6e67890322271c3a7e6e01</srcmd5>
+    <version>0.106</version>
+    <time>1268925619</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>1712c2a69f6e67890322271c3a7e6e01</srcmd5>
+    <version>0.106</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>1712c2a69f6e67890322271c3a7e6e01</srcmd5>
+    <version>0.106</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dece654d8036e191a1bea73e981dc134</srcmd5>
+    <version>0.107</version>
+    <time>1286398050</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Deep based on submit request 49881 from user coolo
+</comment>
+    <requestid>49881</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f2c8e41dad3c35c04f6d76e933fa7ba8</srcmd5>
+    <version>0.108</version>
+    <time>1287486852</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50947 from user coolo
+</comment>
+    <requestid>50947</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>80c9ca13e057a65c4a37a336e8c9fcce</srcmd5>
+    <version>0.108</version>
+    <time>1291584017</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54657 from user coolo
+</comment>
+    <requestid>54657</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>aa64b95a3bb077474db5d2763c046a66</srcmd5>
+    <version>0.108</version>
+    <time>1291584022</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54657
+</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>aa64b95a3bb077474db5d2763c046a66</srcmd5>
+    <version>0.108</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>aa64b95a3bb077474db5d2763c046a66</srcmd5>
+    <version>0.108</version>
+    <time>1319182310</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>adcf54ee03f80d8fe34c9e329a23fb52</srcmd5>
+    <version>0.108</version>
+    <time>1321876009</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92144</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>5cdbba9ae743c6acf8adea6de4c43e51</srcmd5>
+    <version>0.108</version>
+    <time>1323193680</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a231342f0a8352a2adef920ec0a490df</srcmd5>
+    <version>0.109</version>
+    <time>1329750992</time>
+    <user>coolo</user>
+    <comment>- updated to 0.109
+       UNIVERSAL::isa and UNIVERAL::can are no longer called as functions:
+       this was deprecated in UNIVERSAL 1.03. (RT#74760, Karen Etheridge)
+       the code that builds the exporter configuration is cleaned up; more
+       documentation of how it may change (for the better, without breaking
+       stuff) should appear in the near future</comment>
+    <requestid>105942</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>a231342f0a8352a2adef920ec0a490df</srcmd5>
+    <version>0.109</version>
+    <time>1340183929</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>a231342f0a8352a2adef920ec0a490df</srcmd5>
+    <version>0.109</version>
+    <time>1359109812</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9867d222cc49abf0bad43882f3ed3b00</srcmd5>
+    <version>0.110</version>
+    <time>1370518283</time>
+    <user>coolo</user>
+    <comment>- updated to 0.110
+       Allow methods() and listmethods() to work again on class methods
+       (RT#77804) (thanks, Ricardo Signes!) (forwarded request 177488 from coolo)</comment>
+    <requestid>177516</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9867d222cc49abf0bad43882f3ed3b00</srcmd5>
+    <version>0.110</version>
+    <time>1379663866</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c8978610909394473db9cf6170396042</srcmd5>
+    <version>0.112</version>
+    <time>1386843724</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>210540</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c8978610909394473db9cf6170396042</srcmd5>
+    <version>0.112</version>
+    <time>1409302510</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>54ce04062a12ea3a9607d1a5d2e8f6d2</srcmd5>
+    <version>0.115</version>
+    <time>1426680221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290131</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>53f6a8e6892beb39c1aba0dc130f053c</srcmd5>
+    <version>1.126</version>
+    <time>1484041106</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.126
+   see /usr/share/doc/packages/perl-Test-Deep/Changes</comment>
+    <requestid>449018</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7084df63163c63cc599178fca6951d70</srcmd5>
+    <version>1.127</version>
+    <time>1495267668</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494767</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c32afaf90330df579abe5b2f1a740d55</srcmd5>
+    <version>1.128</version>
+    <time>1524742444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599318</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c9a13ff37a96b00bfe8b7e8b49cdf463</srcmd5>
+    <version>1.130</version>
+    <time>1583446684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781130</requestid>
+  </revision>
+</revisionlist>

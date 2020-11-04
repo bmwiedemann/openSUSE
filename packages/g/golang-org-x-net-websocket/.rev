@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6303b9c4dd0a3d9e3a515abfc40ef9e9</srcmd5>
+    <version>0.0.0+git20170227.906cda9</version>
+    <time>1496327443</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed to build golang-org-x-net. Please merge into https://build.opensuse.org/project/monitor/openSUSE:Factory:Staging:adi:90</comment>
+    <requestid>491942</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7209ce556d8fa7a801ff1891d83c1386</srcmd5>
+    <version>0.0.0+git20170424.da118f7</version>
+    <time>1505416418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500593</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>16291a9d58fe9f80187f6b08744eac32</srcmd5>
+    <version>1.12+git20190812.cdfb69a</version>
+    <time>1573556196</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12+git20190812.cdfb69a:
+  * [release-branch.go1.12] http2: limit number of control frames in server send queue
+  * http2/h2demo: fix the HTTP/1-vs-HTTP/2 demo after HSTS breakage
+  * html: update inSelectIM and inSelectInTableIM for the latest spec
+  * html: make (*nodeStack)contains distinguish namespace
+  * http2: Revert a closed stream cannot receive data
+  * trace: tighten the check for duplicate registration
+  * route: update package docs
+  * route: fix TestRouteMessage
+  * proxy: support socks5h scheme in proxy URL
+  * ipv4, ipv6: directly initialize ctlOpts and sockOpts (forwarded request 746414 from mrostecki)</comment>
+    <requestid>747497</requestid>
+  </revision>
+</revisionlist>

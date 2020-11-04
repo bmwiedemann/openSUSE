@@ -1,0 +1,5 @@
+<package name="perl-XString" project="openSUSE:Factory">
+  <title>perl-XString - Isolated String helpers from B</title>
+  <description>XString provides the B string helpers in one isolated package. Right now only cstring and perlstring are available.</description>
+  <devel project="devel:languages:perl" package="perl-XString"/>
+</package>

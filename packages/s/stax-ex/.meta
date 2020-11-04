@@ -1,0 +1,15 @@
+<package name="stax-ex" project="openSUSE:Factory">
+  <title>StAX API extensions</title>
+  <description>This project develops a few extensions to complement JSR-173 StAX API in the
+following area.
+
+* Enable parser instance reuse (which is important in the
+  high-performance environment like JAXB and JAX-WS)
+* Improve the support for reading from non-text XML infoset,
+  such as FastInfoset.
+* Improve the namespace support.
+
+</description>
+  <devel project="Java:packages" package="stax-ex"/>
+  <url>https://stax-ex.dev.java.net</url>
+</package>

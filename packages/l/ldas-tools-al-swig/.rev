@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e87405cb4253c2406da1bd2bbc6ce4c7</srcmd5>
+    <version>2.6.7</version>
+    <time>1603545466</time>
+    <user>dimstar_suse</user>
+    <comment>[NOTE: Depends on sr#843533] Different language bindings for LDAS tools.</comment>
+    <requestid>843534</requestid>
+  </revision>
+</revisionlist>

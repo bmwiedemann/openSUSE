@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a466f8a20b5f52cf71252bebb0b6279</srcmd5>
+    <version>0.4.4.2</version>
+    <time>1549458475</time>
+    <user>coolo</user>
+    <comment>msgpack serialization for numpy
+
+required by python-intake</comment>
+    <requestid>671967</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00a095a8ae856aab3368e87026339454</srcmd5>
+    <version>0.4.4.3</version>
+    <time>1563993269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718008</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c90cb63b2e7990cc822a6416d3f2ec5</srcmd5>
+    <version>0.4.5</version>
+    <time>1587839690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797255</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9ab4cd44d8439d92f8b3f8b7917e5616</srcmd5>
+    <version>0.4.7.1</version>
+    <time>1603645604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841148</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>402252a4754393cbf6779b672b9d3c3c</srcmd5>
+    <version>1.3.0</version>
+    <time>1553263725</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v1.3.0
+</comment>
+    <requestid>687300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05dab451575a477687be922594e57030</srcmd5>
+    <version>1.3.1</version>
+    <time>1573045598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Add python_requires to setup.py so pip will not try to install
+    pytest-datadir in incompatible Python versions.</comment>
+    <requestid>745445</requestid>
+  </revision>
+</revisionlist>

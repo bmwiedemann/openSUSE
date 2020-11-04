@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1053fb4494d5f0b5ef89ac44a7cfe8b9</srcmd5>
+    <version>1.00</version>
+    <time>1302786232</time>
+    <user>darix</user>
+    <comment>Accepted submit request 66695 from user babelworx
+</comment>
+    <requestid>66695</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd38c7bffbffda5cff80de15ad3783da</srcmd5>
+    <version>1.00</version>
+    <time>1302786244</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 66695
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>cd38c7bffbffda5cff80de15ad3783da</srcmd5>
+    <version>1.00</version>
+    <time>1319182243</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>7d808674de19ab4ea3708c30c1546955</srcmd5>
+    <version>1.00</version>
+    <time>1321875353</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92115</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>7f11c2f12dfff34e330a269552ae03aa</srcmd5>
+    <version>1.00</version>
+    <time>1323193099</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>7f11c2f12dfff34e330a269552ae03aa</srcmd5>
+    <version>1.00</version>
+    <time>1340183799</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>7f11c2f12dfff34e330a269552ae03aa</srcmd5>
+    <version>1.00</version>
+    <time>1359109606</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>7f11c2f12dfff34e330a269552ae03aa</srcmd5>
+    <version>1.00</version>
+    <time>1379663567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>7f11c2f12dfff34e330a269552ae03aa</srcmd5>
+    <version>1.00</version>
+    <time>1409302179</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

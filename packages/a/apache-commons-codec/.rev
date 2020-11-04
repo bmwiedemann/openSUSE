@@ -1,0 +1,205 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>545ce7f85e067c6c255c5e1a9f704ce4</srcmd5>
+    <version>1.6</version>
+    <time>1334215096</time>
+    <user>coolo</user>
+    <comment>replaces jakarta-commons-codec</comment>
+    <requestid>112379</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>545ce7f85e067c6c255c5e1a9f704ce4</srcmd5>
+    <version>1.6</version>
+    <time>1340183173</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>545ce7f85e067c6c255c5e1a9f704ce4</srcmd5>
+    <version>1.6</version>
+    <time>1359108653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7329db76393bba8ec04e431c28763720</srcmd5>
+    <version>1.8</version>
+    <time>1378238822</time>
+    <user>coolo</user>
+    <comment>- update to 1.8 
+  * Add DigestUtils.updateDigest(MessageDigest, InputStream). Thanks to Daniel Cassidy.
+  * Add JUnit to test our decode with pad character in the middle.
+  * Add Match Rating Approach (MRA) phonetic algorithm encoder. Thanks to crice.
+  * ColognePhonetic encoder unnecessarily creates many char arrays on every loop run. Thanks to leo141.
+  * Base64.encodeBase64URLSafeString doesn't add padding characters at the end.
+- temporary add mozilla-nss to BR: to pass tests
+- drop unecessary source files
+- add signature verification
+- use newer add_maven_depmap
+- fix source urls</comment>
+    <requestid>196498</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6fa546a2399657b9403051cb9150a183</srcmd5>
+    <version>1.8</version>
+    <time>1378899573</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198250</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>6fa546a2399657b9403051cb9150a183</srcmd5>
+    <version>1.8</version>
+    <time>1379661968</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>6222ce4809481ad4ce10bb91a4f1bfec</srcmd5>
+    <version>1.8</version>
+    <time>1400301802</time>
+    <user>coolo</user>
+    <comment>disable bytecode check on sle_11 (forwarded request 234212 from deadpoint)</comment>
+    <requestid>234214</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>211b5b1649b4cf14aba6c4470a5e91a5</srcmd5>
+    <version>1.8</version>
+    <time>1403762424</time>
+    <user>coolo</user>
+    <comment>- timeout.patch: avoid spurious timeout in BeiderMorse tests</comment>
+    <requestid>238320</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>a2364915293669cd05d193580e7d69be</srcmd5>
+    <version>1.8</version>
+    <time>1404996897</time>
+    <user>coolo</user>
+    <comment>- Depend on junit not junit4.</comment>
+    <requestid>239810</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>a47c408762a9b0abb4dca90f53e7ba67</srcmd5>
+    <version>1.8</version>
+    <time>1405522163</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240320</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>a47c408762a9b0abb4dca90f53e7ba67</srcmd5>
+    <version>1.8</version>
+    <time>1409300492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>413feb220b637e5ff18afd1d531c3403</srcmd5>
+    <version>1.10</version>
+    <time>1418251628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10
+  New features:
+  + Add Daitch-Mokotoff Soundex  
+    Issue: CODEC-192.
+  + QuotedPrintableCodec does not support soft line break per the
+    'quoted-printable' example on Wikipedia
+    Issue: CODEC-121.
+  + Make possible to provide padding byte to BaseNCodec in constructor  
+    Issue: CODEC-181.
+  Fixed Bugs:
+  + Added clarification to Javadoc of Base64 concerning the use of the
+    urlSafe parameter  
+    Issue: CODEC-185.
+  + Added clarification to the Javadoc of Base[32|64]OutputStream that it
+    is mandatory to call close()  
+    Issue: CODEC-191.
+  + Add support for HMAC Message Authentication Code (MAC) digests  
+    Issue: CODEC-188.
+  + Beider Morse Phonetic Matching producing incorrect tokens  
+    Issue: CODEC-187.
+  + NullPointerException in DoubleMetaPhone.isDoubleMetaphoneEqual when
+    using empty strings  
+    Issue: CODEC-184. 
+  + Fix Javadoc 1.8.0 errors  
+    Issue: CODEC-180.
+  + Fix Java 8 build Javadoc errors  
+    Issue: CODEC-189. 
+  Changes:
+  + Deprecate Charsets Charset constants in favor of Java 7's 
+    java.nio.charset.StandardCharsets</comment>
+    <requestid>264396</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0d72056196542ae0a9e3e8b9e6a08ad5</srcmd5>
+    <version>1.10</version>
+    <time>1427982739</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292594</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d08b6cd81038fa5c0b890e46a47b52ea</srcmd5>
+    <version>1.10</version>
+    <time>1496230074</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with new javapackages-tools</comment>
+    <requestid>496507</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>dd6f03bb24b8626a136673669923b148</srcmd5>
+    <version>1.10</version>
+    <time>1505333946</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>521988</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>74d59c2c6d6a6f2407b637d2c34536db</srcmd5>
+    <version>1.10</version>
+    <time>1508508715</time>
+    <user>dimstar_suse</user>
+    <comment>Condition correctly the maven defines</comment>
+    <requestid>533047</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>c07ee4fdee7a287a812113872e4ee7a1</srcmd5>
+    <version>1.10</version>
+    <time>1532446215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620745</requestid>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>43fb5113fe00d679f7a80b8ffa43d314</srcmd5>
+    <version>1.10</version>
+    <time>1549464437</time>
+    <user>coolo</user>
+    <comment>Clean-up the spec</comment>
+    <requestid>671842</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02870eabd693504d5205e87815102ea1</srcmd5>
+    <version>1.11</version>
+    <time>1551276249</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.11</comment>
+    <requestid>678584</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ba5711eae033e28ad40027015f83fb14</srcmd5>
+    <version>1.11</version>
+    <time>1553809502</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689040</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f4bdbde482663ebcd09ac1890b0b00cd</srcmd5>
+    <version>1.14</version>
+    <time>1591652641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811274</requestid>
+  </revision>
+</revisionlist>

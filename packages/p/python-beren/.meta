@@ -1,0 +1,7 @@
+<package name="python-beren" project="openSUSE:Factory">
+  <title>REST client for Orthanc DICOM servers</title>
+  <description>Provides a REST client targeted at Orthanc REST API endpoints.
+
+Based on the excellent apiron library.</description>
+  <devel project="devel:languages:python" package="python-beren"/>
+</package>

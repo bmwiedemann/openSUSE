@@ -1,0 +1,1120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ca2ce3b2790f89fc56c7bd1665db0a6c</srcmd5>
+    <version>10.0.0</version>
+    <time>1586247986</time>
+    <user>dimstar_suse</user>
+    <comment>- Initialize package with version 10.0.0.</comment>
+    <requestid>789917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d63bbd3a7905dbdfbd44becb884533a7</srcmd5>
+    <version>10.0.0</version>
+    <time>1593096398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816546</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9347c73e4572e17f620afd5d3b866ffb</srcmd5>
+    <version>10.0.0</version>
+    <time>1594894073</time>
+    <user>dimstar_suse</user>
+    <comment>- Factor out computation of the number of jobs into a macro.
+- Choose mem_per_compile_job dependent on build stage, let stage 1
+  on x86_64 use more memory.
+- More generous memory allocation on riscv64.</comment>
+    <requestid>820759</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f798c4d7a18bbe7f45f66fa9f200aa6c</srcmd5>
+    <version>10.0.1</version>
+    <time>1596035664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.0.1.
+  * This release contains bug-fixes for the LLVM 10.0.0 release.
+    This release is API and ABI compatible with 10.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Replace ValueLattice-Add-new-state-for-undef-constants.patch,
+  which landed upstream in a modified version, by
+  restore-llvm10-abi.patch that resets the ABI to our 10.0.0.
+- Rewrite lld-default-sha1.patch to be version-independent.
+- Set flags consistently, so that we don't lose -DNDEBUG on 32-bit
+  architectures. Also we don't need the opt flags twice. This leads
+  to a significant reduction in binary sizes on 32-bit arches.
+- Make it easier to package release candidates.
+- Enable most tests on 32-bit ARM, but not for libcxx.
+- Add fix-atomics-test.patch for architectures where native atomics
+  are not available.
+- Lower build constraints for riscv64 a bit to allow building on
+  more workers.
+- Allow more compile jobs in stage 2.
+- Factor out computation of the number of jobs into a macro.
+- Choose mem_per_compile_job dependent on build stage, let stage 1
+  on x86_64 use more memory.
+- More generous memory allocation on riscv64.
+- Add lld-default-sha1.patch to make lld generate SHA1 build-ids by
+  default, otherwise our tools cannot process the debuginfo.
+- Update to version 10.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/10.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/10.0.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools: llvm-ifs, llvm-install-name-tool, llvm-reduce.
+  * New Clang tools: clang-move, clang-offload-wrapper, pp-trace.
+  * lldb-mi moved to a separate project and is no longer available.
+- Dropped obsolete patches:
+  * clang-fix-powerpc-triplet.patch
+  * clang-riscv64-rv64gc.diff
+  * compiler-rt-move-fdp.patch
+  * compiler-rt-sanitizer-ipc-perm.patch
+  * D60657-riscv-pcrel_lo.diff
+  * gwp-asan-lto.patch
+  * libcxx-tests-linux-distribution.patch
+  * link-lldb-shared.patch
+  * llvm-riscv64-fix-cffi.diff
+  * openmp-export-fini.patch
+  * riscv-eh-frame-fixup.patch
+  * riscv64-suse-linux.patch
+- Rebased patches:
+  * assume-opensuse.patch
+  * link-clang-tools-extra-shared.patch
+  * lldb-cmake.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-remove-clang-only-flags.patch
+  * lto-disable-cache.patch
+  * polly-pthread.patch
+  * tests-use-python3.patch
+- Add tablegen-test-link-static.patch: fix TableGenTests.
+- Add ValueLattice-Add-new-state-for-undef-constants.patch: fix
+  miscompilation on ppc64/s390x that was leading to test crashes.
+- Enable ThinLTO on aarch64.
+- Disable ThinLTO on ppc64le due to internal error in gold.
+- Delete object files and static libraries from build tree in
+  %install already, because debuginfo extraction happens after
+  that. If we do it after %check, we run out of disk space.
+- Run tests &quot;manually&quot;, because we've already removed many targets.
+- Don't build unit tests, because some of them are now statically
+  linked, which is very expensive with LTO. Also unit tests are
+  probably not very interesting on the distribution level, we don't
+  expect them to perform different than in upstream. The relevant
+  upstream change for this is https://reviews.llvm.org/D54439.
+- Drop %if for openSUSE 13.2.
+- Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
+  relevant binaries have been removed from those packages. This
+  allows having clang-tools together with older versions of llvm.
+  For a smooth installation we add OrderWithRequires dependencies.
+- Fix typos in (still inactive) !%{with clang_scripts} part.
+- Require clang-tools for clangX-devel.
+- Move all clang-related scripts (including those originally in
+  clangX-checker), hmaptool and clang-doc into a common
+  unversioned subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  The clang-doc executable will come with assets in Clang 10, so
+  we have to take it out of update-alternatives as well.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Fix lldb version string, adapt lldb-cmake.patch (boo#1165517).
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+- Add vim-plugin-llvm Conflicts to clang subpackage which now
+  contains files formerly in llvmN-vim-plugins, conflicting with
+  packages from older llvm releases.
+- Add back emacs-llvm Provides and Conflicts to clang subpackage
+  originally in llvm-emacs-plugins to properly conflict with
+  llvm-emacs-plugins from older llvm releases.
+- Add clang5-devel to clang9-doc conflicts.
+- Add compiler-rt-sanitizer-ipc-perm.patch: Fix sanitizer-common
+  build with glibc 2.31.
+- Move clang-{format,include-fixer,rename}.{el,py} files from
+  llvm-*-plugins to clang package. (boo#1161873)
+- Drop the now empty llvm-emacs-plugins package.
+- Add polly and lld build conditionals, remove excessive Requires
+  to clang from docs.  Fix conditional for libc++ use.
+  [jsc#SLE-7400, jsc#SLE-7614, jsc#SLE-7452, jsc#SLE-8920, jsc#SLE-7390,
+   jsc#SLE-7587]
+- Undo spec-cleaner changes that we don't want.
+  * Reintroduce blank lines in configuration.
+  * Use packageand syntax that works for older versions of RPM.
+  * Don't use %{_bindir} on left-hand side of sed replacements.
+- riscv-eh-frame-fixup.patch: Remove changesets that alter the libLLVM ABI
+- Add upstream patch to export compiler-rt FuzzedDataProvider header, 
+  required by Envoy 1.12.2:
+  * compiler-rt-move-fdp.patch 
+- riscv-eh-frame-fixup.patch: Fix handling of .eh_frame on RISC-V
+- polly-pthread.patch: Add missing -lpthread
+- Enable support for riscv64
+- clang-riscv64-rv64gc.diff, riscv64-suse-linux.patch,
+  llvm-riscv64-fix-cffi.diff, D60657-riscv-pcrel_lo.diff: Backports from
+  master
+- Update to version 9.0.1.
+  * This release contains bug-fixes for the LLVM 9.0.0 release.
+    This release is API and ABI compatible with 9.0.0.
+- Drop patches that have landed upstream:
+  * dont-install-example-analyzer-plugins.patch
+  * fix-module-test.patch
+  * llvm-add-missing-include.patch
+- Drop set-revision.patch, don't provide revision number in clang.
+  The upstream repository has moved from Subversion to git, so the
+  revision number is just a hash, which limits its usefulness.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Modify libcxx-tests-linux-distribution.patch to remove dependency
+  on python-distro again: we don't have expected failures.
+- Add llvm-add-missing-include.patch in order to fix
+  boo#1158367.
+- Add gwp-asan-lto.patch: Make sure there are no LLVM IR files in
+  static libraries that we package.
+- Add libcxx-tests-linux-distribution.patch (boo#1158293):
+  Replace platform.linux_distribution by distro.linux_distribution.
+- Make documentation packages noarch.
+- Add openmp-export-fini.patch: Export termination function for
+  libomp.so, solves boo#1155108.
+- Remove flaky test case in libcxx.
+- Fix typo, BOLL -&gt; BOOL
+- Let new {llvm,clang}*-doc packages &quot;Conflict&quot; with older devel
+  packages, which they were split from.
+- Let doc packages conflict with older versions of themselves.
+- (Build)Require only python3-base instead of full python3 package,
+  the additional modules are not required. Helps shortening the
+  build dependency chain.
+- Remove python3-* requires from lldb9 subpackage, and add it to
+  the bindings/pretty-printer subpackage (python3-lldb9).
+- Add python3-base Requires to python3-clang subpackage
+- Add dont-install-example-analyzer-plugins.patch: Remove example
+  analyzer plugins from install targets instead of deleting them.
+- Add fix-module-test.patch: fix test instead of deleting it.
+- Don't build static libc++ (with ThinLTO that's not useful anyway).
+- Don't build libc++experimental.
+- Don't package libc++abi.so with libc++-devel, it's already contained
+  in the (required) libc++abi-devel.
+- Be more specific about files in libc++-devel.
+- Update to version 9.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/9.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/9.0.0/tools/lld/docs/ReleaseNotes.html
+- Change License to &quot;Apache-2.0 WITH LLVM-exception OR NCSA&quot;.
+  (https://llvm.org/foundation/relicensing/)
+- Allow building with ThinLTO and enable it on some architectures.
+- Disable LTO cache in lto-disable-cache.patch.
+- Unset MALLOC_CHECK_ for compilation to mitigate lock contention.
+- No debug info for ppc like for the other 32-bit targets.
+- Clean up _constraints: same constraints for 32-bit targets.
+- Don't use BUILD_SHARED_LIBS for Clang anymore, since the newly
+  available libclang-cpp.so should expose the full C++ API.
+- Link tools with libclang-cpp.so by using CLANG_LINK_CLANG_DYLIB,
+  similar to LLVM_BUILD_LLVM_DYLIB for libLLVM.so.
+- Remove obsolete n_clang_allow_BUILD_SHARED_LIBRARY.patch.
+- Add link-clang-shared.patch to link more clang targets with
+  libclang-cpp.so, especially libclang.so.
+- Add link-clang-tools-extra-shared.patch, link-lldb-shared.patch:
+  link targets in clang-tools-extra and lldb with libclang-cpp.so.
+- Simplify llvm-do-not-install-static-libraries.patch, also handle
+  Clang, for which we now get static libraries.
+- Package documentation for llvm and clang separately, recommend
+  them for the main package: they are not required for development,
+  but actually useful for working with the non-devel packages.
+- Recommend editor plugins not just for llvm-devel.
+- Recommend libstdc++ for Clang again.
+- Move diagtool from llvm to clang subpackage.
+- Properly distinguish between %{_relver} and %{version}.
+- Drop aarch64-disable-memorytest.patch and reactivate test.
+- Rebase clang-resourcedirs.patch.
+- Rebase llvm-normally-versioned-libllvm.patch.
+- Rebase llvm-remove-clang-only-flags.patch.
+- Rebase llvm_build_tablegen_component_as_shared_library.patch.
+- Rebase set-revision.patch.
+- Increase disk space for build.
+- Make lldb recommend python3-lldb (it contains pretty printers).
+- Use python3 shebangs everywhere (boo#1146533).
+- Drop obsolete opt-viewer-Do-not-require-python-2.patch.
+- Remove unneccesary dependencies:
+  * groff, bison and flex don't seem to be used.
+  * jsoncpp is no longer used since r338461.
+  * Move some BuildRequires to subpackages.
+  * Don't recommend scan-{build,view} in clang (boo#1145444).
+  * Devel packages are only required in other devel packages,
+    when their headers are included in the installed headers.
+- Add versions to Provides/Conflicts except for files.
+- Remove unused (since r268685) CMake flags LLVM_ENABLE_TIMESTAMPS.
+- Fix installation of opt-viewer files when python3-clang is no
+  longer built.
+- Update to version 8.0.1.
+  * This release contains bug-fixes for the LLVM 8.0.0 release.
+    This release is API and ABI compatible with 8.0.0.
+- Don't run LLVM tests on ppc at all because of sporadic hangs.
+- Increase RAM for armv6/7 to avoid OOM and be scheduled on fast
+  worker
+- Use the documented LLVM_ENABLE_RTTI to enable RTTI instead of
+  LLVM_REQUIRES_RTTI, which &quot;is an internal flag that individual
+  targets can use to force RTTI&quot;. (boo#1139584)
+- Drop obsolete llvm-build-tests-with-rtti.patch.
+- Exclude riscv64 for now since it fails to build.
+- Change some groups:
+  * put libraries in System/Libraries,
+  * devel packages in Development/Libraries,
+  * clang in Development/Languages/C and C++,
+  * the gold plugin in Development/Tools/Building.
+- Add some URLs, use https:// when possible.
+- Remove unneeded devel dependencies.
+- Only suggest a C++ standard library for clang. It's also a
+  C compiler and needs no C++ library when only used as such.
+- Fix Supplements for editor plugins.
+- Fix some rpmlint issues:
+  * Reword summary and description for Polly.
+  * Fix /usr/bin/env shebangs.
+  * Remove executable bit where not needed.
+  * Move bash completion to /usr.
+  * Remove hard dependency of libclang8 to libstdc++-devel.
+- Make rpm macros work properly.
+- Remove sources from documentation.
+- Run %fdupes on the right directories.
+- Enable tests for libcxx.
+- Reduce memory requirements for compile jobs depending on arch.
+- Avoid relocation overflow on ppc by not building GPU backends.
+- Update baselibs.conf.
+- Disable LTO (boo#1133254).
+- Fix packaging on ppc: the sanitizers aren't available there, so
+  the directories /usr/lib/clang/*/{lib,share} are missing.
+- Package LLVMgold even when we don't use gold for linking.
+  It's promised in /usr/lib/cmake/llvm/LLVMExports.cmake.
+- Unignore test failures on PowerPC64 architectures. The failures
+  in ppc are unrelated to AMDGPU, so we remove that remark.
+- Fix dependencies: the gold plugin shouldn't depend on llvm-devel.
+  libc++abi-devel should depend on libc++abi.
+- Fix typo.
+- Enable libc++ on ARM (Needed for tensorflow)
+- Update to 8.0.0
+  * For details, see the release notes:
+      https://llvm.org/releases/8.0.0/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/clang/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+      https://llvm.org/releases/8.0.0/tools/lld/docs/ReleaseNotes.html
+- Drop llvm-unittests-Don-t-install-TestPlugin.so.patch,
+  llvm-drop-llvm-optional-clang-specific-optimization.patch,
+  llvm-D51108.patch,
+  llvm-Ensure-that-variant-part-discriminator-is-read-by-Me.patch,
+  llvm-test-Fix-Assembler-debug-info.ll.patch
+  * Already included upstream
+- Add 0001-CMake-Add-install-targets-for-utilities-to-LLVM-expo.patch
+- Remove -fno-strict-aliasing, which upstream doesn't use any more
+  since r245304 in 2015. (http://reviews.llvm.org/D12036)
+  It's probably also not needed for modern versions of GCC.
+  It was enabled in r105644 because of some bugs there.
+- Add a clang-%{_sonum} symlink, which is referenced by
+  /usr/lib64/cmake/clang/ClangTargets.cmake (boo#1120098)
+- Package clang builtin headers with libclang. The library is
+  basically unusable without the builtin headers. Currently
+  consumers of libclang have to require clang as well, although
+  only the headers are needed.
+- llvm-Ensure-that-variant-part-discriminator-is-read-by-Me.patch,
+  llvm-test-Fix-Assembler-debug-info.ll.patch
+  * Fix crash in rustc (boo#1126907)
+- Allow use of Gold linker to be conditional
+- Disable Gold linker on ppc
+  + LLVM currently doesn't build with Gold on ppc
+- Readd clang-7 and clang++-7 symlinks
+  * Fixes uses of clang-devel (boo#1120098)
+- Update to llvm 7.0.1
+  * This release contains bug-fixes for the LLVM 7.0.0 release.
+    This release is API and ABI compatible with 7.0.0.
+- enable gold unconditionally like with llvm6 and older
+- reenable openmp support again for aarch64 (like it was already in llvm6)
+- Use %license macro
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+- Remove ppc from Exclude field in spec file
+- Allow use of Gold linker to be conditional
+- Disable Gold linker on ppc
+- Add patch to fix SUSE GNU triplet on ppc
+  * clang-fix-powerpc-triplet.patch
+- Add patch from upstream to fix ABI issue on ppc
+  * llvm-D51108.patch
+- Limit list of enabled targets on ppc
+  * PowerPC;AMDGPU;BPF;NVPTX
+- Ignore testsuite failures on ppc
+- llvm-drop-llvm-optional-clang-specific-optimization.patch
+  * Fix ABI incompatibility when libLLVM (built with clang) is
+    linked to a program build with gcc. (boo#1119092)
+- opt-viewer-Find-style-css-in-usr-share.patch
+  * Make sure opt-viewer installed in /usr/bin can find resources
+    from /usr/share/opt-viewer. (boo#1112730)
+- llvm-unittests-Don-t-install-TestPlugin.so.patch
+  * It is only used for testing and is causing failures when
+    processing LLVMExports.cmake.
+- Update to llvm 7.0.0
+  * For details, see the release notes:
+      https://llvm.org/releases/7.0.0/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/clang/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+      https://llvm.org/releases/7.0.0/tools/lld/docs/ReleaseNotes.html
+- Remove no longer needed patches:
+  * llvm6-fix-gdb-index-crash.patch
+  * lldb-fix-build-with-python-3.7.patch
+  * lldb-add-pthread-dl-libs.patch
+  * polly-cmake-Trust-pkg-config-in-FindJsoncpp.patch
+- Add tests-use-python3.patch
+  * Prevents tests from failing because of missing python 2.
+- Add llvm-better-detect-64bit-atomics-support.patch
+  * Fixes build on i586.
+- Updated llvm-remove-clang-only-flags.patch
+  - Exclude also &quot;-Werror=unguarded-availability-new&quot; (bsc#1106000)
+- Update to llvm 6.0.1
+  * This release contains bug-fixes for the LLVM 6.0.0 release. It
+    is API and ABI compatible with 6.0.0.
+- Remove no longer needed llvm6-fix-InstCombine.patch
+- Add lldb-fix-build-with-python-3.7.patch
+  * Fix build with python 3.7
+- llvm6-fix-gdb-index-crash.patch
+  * From upstream, fix lld --gdb-index crash.
+- Do not requires gcc6 for older sle versions.
+  * llvm6 is not built on &lt;= 12 SP3 and this was preventing build
+    on 12 SP4.
+- llvm_build_tablegen_component_as_shared_library.patch
+  * Build TableGen component as its own shared library because it
+    is not included in the libLLVM library and is needed for ldc.
+    (bsc#1086445)
+- Add patch llvm6-fix-InstCombine.patch to fix InstCombine init
+  * Will be fixed in 6.0.1 release
+- Do not build stage1 with debug info. It was accidentally added
+  with the use of %optflags. This should fix out of memory errors
+  on 32bit architectures and speed up build everywhere else.
+  (bsc#1092697)
+- llvm-build-tests-with-rtti.patch
+  * Fixes build failure with gcc 8. (bnc#1087136)
+- Do not export Polly static libraries which we do not distribute.
+  * Updated llvm-do-not-install-static-libraries.patch
+- Use external jsoncpp instead of the bundled one.
+  * Added polly-cmake-Trust-pkg-config-in-FindJsoncpp.patch
+- llvm6-devel must require llvm6-polly-devel
+  * Files in llvm6-devel reference Polly.
+- Update to llvm 6.0.0
+  * Added polly
+  * Notable changes:
+    - Retpoline Spectre variant 2 mitigation
+    - GlobalISel by default for AArch64 at -O0
+    - improved scheduling on several x86 micro-architectures
+    - Clang defaults to -std=gnu++14 instead of -std=gnu++98
+    - support for some upcoming C++2a features
+    - improved optimizations, new compiler warnings, many bug
+      fixes, and more.
+- Use alternatives for clang's bash autocomplete to prevent
+  conflicts with other versions.
+- Remove liblldb5 and lldb5-devel from baselibs.conf. They are only
+  build for x86_64, so no point having them in baselibs.conf.
+- Use %optflags, except for FORTIFY_SOURCE which is not compatible
+  with compiler-rt.
+- Exclude static libraries differently.
+  * Drop llvm-split-static-library-exports-into-their-own-export-file.diff
+  * Drop clang-split-static-library-exports-into-their-own-export-file.diff
+  * Update llvm-do-not-install-static-libraries.patch to not use
+    EXCLUDE_FROM_ALL which is not available in cmake 3.5.
+    - This fixes build on SLE12.
+- Do not force gcc6 on OpenSUSE - fixes build.
+- Reduce the amount of concurent link jobs by increasing their
+  memory requirement - to reduce stalls in OBS.
+- Cleanup %ifarch conditions, remove targets unintentionally added
+  to s390/s390x. (bnc#1078436)
+- Limit the amount of parallel link jobs, but no longer limit
+  compile jobs. This should prevent running out of memory during
+  linking while not longer slowing down compilation.
+- Remove build dependency on procps
+- Reduce disk size requirement to 30GB in _constraints. We no
+  longer need that much since we stopped building static libraries.
+- n_clang_allow_BUILD_SHARED_LIBRARY.patch
+  * Allow buildling clang with BUILD_SHARED_LIBRARY while the rest
+    is built with LLVM_LINK_LLVM_DYLIB. (bnc#1065464)
+- Remove clang-devel-static.
+- Place gold plugin to the right directory. (bnc#1073210)
+  * It must be in /usr/lib/bfd-plugins on all architectures.
+  * Remove llvm5-gold from baselibs.conf - nothing needs a 32bit
+    version of it and it would now conflict with the 64bit one.
+- Reduce _constraints requirements on 32bit architectures.
+  * Since we had to disable debuginfo on them, they require much
+    less.
+- ignore make check error for PowerPC as bypass
+  https://bugs.llvm.org/show_bug.cgi?id=35871
+- disable debuginfo build for ARM as well
+- Delete intermediate files during build to reduce total disk usage
+  (bnc#1074625)
+- Update to llvm 5.0.1
+  * This release contains bug-fixes for the LLVM 5.0.0 release.
+  * This release is API and ABI compatible with 5.0.0.
+- llvm-do-not-install-static-libraries.patch
+  * Updated.
+- Increase minimum memory and disk sizes required for building in
+  _constraints.
+- Rename python3-lldb to python3-lldb5 so it can work with llvm
+  meta package.
+- Rename python packages to follow naming conventions.
+- Remove unnecessary dependencies on python3.
+- Make opt-viewer not require python2.
+  * opt-viewer-Do-not-require-python-2.patch
+- Switch to python3.
+- Fix %check tests when used with python3.
+  * Define LANG=C.UTF-8 when running the tests.
+- Add explicit Provides/Conflicts to llvm5-devel,
+  clang5-devel-static and lldb5-devel.
+  * These are required to be validated by obs repo-checker.
+- Use LLVM_OPTIMIZED_TABLEGEN to speed up build. (bnc#1064786)
+- Fix files of lldb4 to work correctly with update-alternatives.
+- Remove Conflicts clang(LLDB) from lldb4-devel - it does not
+  exist. It would be provided automatically, but no such cmake file
+  is installed.
+- llvm-do-not-install-static-libraries.patch
+  * Do not install static libraries instead of installing them and
+    deleting after.
+  * Reduces disk usage during build. (bnc#1064786)
+- Do not build unnecessary parts during stage1.
+  * Speeds up build a bit. (bnc#1064786)
+- Updated baselibs.conf to reference version 5 packages.
+- Deleted rogue llvm5.spec.r29 file.
+- Deleted arm_suse_support.diff, llvm-add_a_LLVM_USE_LINKER.patch,
+  libsanitizer.patch.
+  - No longer used, applied already in the source.
+- llvm-normally-versioned-libllvm.patch
+  * Change libLLVM naming scheme to match our naming guidelines.
+  * The reasons for the original naming scheme are no longer valid,
+    more details in the patch.
+- Disable all thread related tests in libcxx. Many of them use
+  timeouts to detect failure. They can fail randomly if the machine
+  is under heavy load (happens often in OBS).
+- Drop llvm5-devel-static. llvm5-devel contains shared library with 
+  the same content.
+- Increase disk space requirement in _constraints to 45GB.
+  Otherwise the build gets stuck in random places.
+- Skip build of lldb5 python on distributions with swig &lt; 3.0.11
+- Copy from llvm4.
+- Update to llvm 5.0.0.
+- Use LLVM_BUILD_LLVM_DYLIB instead of BUILD_SHARED_LIBS to build
+  single libLLVM library. This is the recommended way. The old way
+  was causing various issues.
+  * llvm-split-static-library-exports-into-their-own-export-file.diff
+  * clang-split-static-library-exports-into-their-own-export-file.diff
+  (bnc#1049703)
+- Add lld, linker for Clang/LLVM
+  (sr#517692)
+- Include clang++-MAJOR.MINOR symbolic link
+  (bnc#1012260)
+- Remove unnecessary dependency on flex and bison.
+- Make sure all binaries are managed by update-alternatives
+- Add llvm-add_a_LLVM_USE_LINKER.patch and link using gold to
+  prevent memory exhaustion on some build machines.
+- Reduce debuginfo on x86 architecture. LLVM libraries are so big that they
+  exhaust all memory on 32 bit machine if linked with full debuginfo.
+- Speed up build by skipping parts that are not required in stage1.
+- Build lldb in-tree as one of the llvm tools.
+- clang-ignore-stack-clash-protector.patch: ignore -fstack-clash-protection
+  for now.
+- xlocale.patch: don't use obsolete &lt;xlocale.h&gt;
+- libsanitizer.patch: fix use of undocumented types
+- build fixes for armv6 (skip testsuite as it requires 64bit,
+  set the list of targets to include ARM and remove triplet hack)
+- Include provides and conflics in baselibs.conf for llvm4-devel,
+  clang4-devel, llvm4-LTO-devel, and llvm4-gold.
+- Update to version 4.0.1
+  * Minor bugfixes
+- Use gcc6 only for SLE boo#1041469
+- Package libLLVMFuzzer 
+- readd arm_suse_support.diff which was accidentally removed
+  in the 4.0.0 update
+- Enable AMDGPU and NVPTX targets everywhere except for S/390.
+  The AMDGPU target is needed for Mesa Clover (sr#485802).
+- Use gcc6 on SLE12 
+- Package license &amp; credits 
+- Update to version 4.0.0
+  * See 
+    + http://releases.llvm.org/4.0.0/docs/ReleaseNotes.html and
+    + http://releases.llvm.org/4.0.0/tools/clang/docs/ReleaseNotes.html
+    + http://releases.llvm.org/4.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+- Drop the following patches, fixed upstream:
+  amdgpu_revert_r280589.patch
+  arm_suse_support.diff
+  clang-fix-substitutions-abi_tag.patch
+  clang-incomplete-field-types.patch
+  glibc-2.24-libcxx.patch
+  llvm-install-CheckAtomic.patch
+  revert-cmake-soname.patch
+- Enable BPF for all arches bsc#1026191 
+- libc++ must depend on libc++abi 
+- Stop using otherproviders() due to an rpm parser bug, use
+  self-conflicts instead as suggested by mls.
+- Add amdgpu_revert_r280589.patch to fix an amdgpu regression
+  bsc#1021577
+- Require LLVMgold and libLTO in llvm-devel, otherwise we get in CMake:
+  The imported target &quot;LLVMgold&quot; references the file
+  &quot;/usr/lib64/LLVMgold.so&quot; but this file does not exist.
+  This happens when requiring llvm3_9-devel directly, not llvm-devel.
+- Update to version 3.9.1
+  * See:
+    + http://llvm.org/releases/3.9.1/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+- Update to version 3.9.0
+  * Clang now supports the G++ abi_tag attribute.
+  * Clang will no longer pass --build-id by default to the linker.
+  * Improved C++1z support in Clang.
+  * Clang now has support for all OpenCL 2.0 features.
+  * Added support for all non-offloading features from OpenMP 4.5,
+  * The static analyzer now checks for incorrect usage of MPI APIs in C and C++.
+  * LLVM no longer does inter-procedural analysis and optimization
+    (except inlining) on functions with comdat linkage.
+  * LLVM now supports the Intel CPUs Skylake Server with AVX512
+    (-march=skylake-avx512) and Knights Landing (-march=knl).
+  * More at:
+    + http://llvm.org/releases/3.9.0/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/docs/ReleaseNotes.html
+    + http://llvm.org/releases/3.9.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+  * Fix the following patches:
+    + arm_suse_support.diff
+    + assume-opensuse.patch
+    + clang-resourcedirs.patch
+    + default-to-i586.patch
+    + glibc-2.23-libcxx.patch
+    + glibc-2.24-libcxx.patch
+    + lldb-add-pthread-dl-libs.patch
+    + lldb-cmake.patch
+    + llvm-fix-find-gcc5-install.patch
+    + llvm-remove-clang-only-flags.patch
+    + revert-cmake-soname.patch
+    + set-revision.patch
+  * Remove upstream-included patch:
+    + llvm-nonvoid-return.patch
+  * Remove patch for removed files:
+    + glibc-2.23-libcxx.patch
+- Backport upstream patches:
+  * clang-fix-substitutions-abi_tag.patch
+  * clang-incomplete-field-types.patch
+  * llvm-install-CheckAtomic.patch
+- Add clang%{_sonum}-include-fixer subpackage and associated
+  libfindAllSymbols%{_sonum} and libfindAllSymbols%{_sonum}-devel
+  subpackages.
+- Add sanstats to llvm binary list.
+- Change update-alternatives to use %postun instead of %preun,
+  which is now what Factory maintainers are requesting.
+- Use the minor version to set the update-alternatives priority so
+  the most recent version of the LLVM, Clang, and LLDB are used by
+  default.
+- Add LLVM rpm macros so downstream packages can have some idea how
+  LLVM was built.
+- Rename libomp to make it possible to have multiple versions available.
+- Split the old llvm package into this version-specific package
+  and a wrapper package.
+- Implement update-alternatives to allow parallel installation
+  of many of the subpackages.
+- Rename subpackages that can be parallel-installed to a
+  version-specific name based on the associated shared library's
+  current .so number.
+- Various fixes to support the above changes.
+- Sort a bit with spec-cleaner
+- Remove the latest switch for now, things should be either coinstallable
+  or not, we don't need to bother around with compilation like this
+- Update to llvm 3.8.1
+  * See http://llvm.org/releases/3.8.1/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.1/tools/docs/ReleaseNotes.html
+- Use versioned libLLVM (to libLLVM3_8) and libclang (to libclang3_8)
+- Change versioning of liblldb3_8 to liblldb-3_8 and use a variable
+  to control the name instead of hard-coding it.
+- Use bcond_with and bcond_without to enable/disable build options
+  instead of hard-coding them.
+- Put buildrequires as requires in -devel packages to avoid linker errors
+  when building packages against the -devel packages.
+- Add ffi support (disabled by default).
+- Add oprofile support (disabled by default).
+- Add valgrind support (disabled by default).
+- Link cmake files to the normal cmake file directory to allow autodetection
+  of cmake interfaces.
+- Remove unused lldb components from main spec file.
+- Split llvm python bindings into own subpackage.
+- Split emacs plugin into own subpackage
+- Move additional vim plugins into vim plugins package
+- Split libc++, libLTO, LLVMgold, libomp, clang-chekers into own subpackages
+- Make python-clang, llvm-vim-plugins, and llvm-emacs-plugins noarch since
+  they aren't architecture-specific.
+- Make packages besides llvm, llvm-clang, and the shared libraries conflict
+  with other versions.  This will be important when multiple LLVM versions
+  are supported.
+- Various spec file cleanups
+- Rebase patches:
+  * arm_suse_support.diff
+  * assume-opensuse.patch
+  * clang-resourcedirs.patch
+  * default-to-i586.patch
+  * glibc-2.23-libcxx.patch
+  * glibc-2.24-libcxx.patch
+  * lldb-add-pthread-dl-libs.patch
+  * lldb-cmake.patch
+  * llvm-fix-find-gcc5-install.patch
+  * llvm-nonvoid-return.patch
+  * llvm-remove-clang-only-flags.patch
+  * revert-cmake-soname.patch
+  * set-revision.patch
+- Start conversion to use cmake macros with now introduced
+  compatibility for ninja
+- Reduce number of threads if we don't have enough memory
+- Add patch for the nonvoid returns:
+  * llvm-nonvoid-return.patch
+- for ppc64le set memory to 4GB in _constraints file
+  (failure in Factory:PowerPC)
+- glibc-2.24-libcxx.patch: fix libcxx testsuite for glibc 2.24
+- Build LLDB separated from LLVM.
+- Re-enable python bindings for the LLDB API.
+- Disable libcxx/lldb/openmp for SLE fate#319582 
+- Update rpmlintrc to whitelist libLTO.so 
+- Re-enable glibc-2.23 patch for Tumbleweed 
+- fix arm_suse_support.diff for armv6hl
+- adjust compile flags for llvm on armv6hl (fixes Mesa build)
+- Update llvm-remove-clang-only-flags.patch to remove
+  -Wcovered-switch-default flag for gcc compatibility.
+- Use gcc for stage1 bootstrap
+- Add back libstdc++-devel dependency for clang since libc++ is
+  only available for x86-64 atm.
+- Comment out glibc-2.23-libcxx.patch until glibc 2.23 actually
+  hits the Factory.
+- Update to llvm 3.8.0
+  * See http://llvm.org/releases/3.8.0/docs/ReleaseNotes.html and
+    http://llvm.org/releases/3.8.0/tools/clang/docs/ReleaseNotes.html
+- Fold lldb build into llvm and disable python support
+- Drop clang-disable-ada-extension.patch, libcxxabi-exceptions.patch
+  and cmake-host-triple.patch
+- Add revert-cmake-soname.patch to fix soname handling
+- Add glibc-2.23-libcxx.patch to fix test failures with glibc 2.23 
+-  Remove FFI support because its fragile 
+- Enable OpenMP for x86, x86_64, ppc64 and ppc64le 
+- Enable all targets on x86, x86_64 
+- Update to version 3.7.0
+  * See http://llvm.org/releases/3.7.0/docs/ReleaseNotes.html
+- Merge aarch64-suse-support.patch into arm_suse_support.diff
+- Refresh arm_suse_support.diff, llvm-fix-find-gcc5-install.patch
+- Remove llvm-fix-parsearmarch.patch, upstream.
+- fix build on s390x (one typo in ifarch and one change in filelist) 
+- Update to version 3.6.1
+  * No changelog upstream
+- Add llvm-fix-parsearmarch.patch to fix parsing armv{6,7}hl archs. 
+- Update to version 3.6.0
+  * See http://llvm.org/releases/3.6.0/docs/ReleaseNotes.html
+- Add python-xml dependency for regression tests
+- Removed the following patches, fixed upstream:
+  * arm-remove-xfails.diff
+  * libcxx-libdir.patch
+  * llvm-config-lib64.patch
+  * llvm-fix-intrusiverefcntptr.patch
+- Add llvm-fix-intrusiverefcntptr.patch to fix build of LLVM tools
+  with GCC 5.
+- Add llvm-fix-find-gcc5-install.patch to properly find installed GCC 5.
+- Add a gcc dependency for clang, this is heavyweight but we need
+  libgcc_s which comes with the gcc package (bnc#893359)
+- Conditionalize libcxx{abi} build on build_libcxx variable
+- Turn libc++.so into an ldscript so it links to libc++abi
+  automatically.
+- fix constraints for armv6l/armv7l (there is no 4GB RAM on 32bit)
+- Rename llvm-remove-werror-date-time.patch to 
+  llvm-remove-clang-only-flags.patch and remove more clang only
+  flags.
+- Enable shared libs on PPC64
+- Require llvm-clang not just clang 
+- Add llvm-remove-werror-date-time.patch to remove -Werror=date-time
+  for CXXFLAGS, gcc does not support it and it creeps into
+  llvm-config --cflags
+- Remove wrong Requires from the llvm-devel package
+- Add default target triple form ARM, fixes bnc#893359
+- Use ninja for building
+- Update to llvm 3.5.0
+  * Major update, see http://llvm.org/releases/3.5.0/docs/ReleaseNotes.html
+- Use upstream pristine tarballs
+- Add libc++/libc++abi support clang (only on x86_64)
+- Add libcxxabi-exceptions.patch to fix libcxxabi exception handling 
+- Add libcxx-libdir.patch to fix libdir on 64bit arches
+- Remove asan-disable-hugemalloctest.patch and 
+  cmake-patchversion.patch, fixed upstream.
+- Fix the sed line for minimal damage.
+- Add baselibs.conf to source files
+- Add cmake-patchversion.patch to sync config.h.in
+  with config.h.cmake
+- Update to llvm 3.4.2
+  * Minor bugfix release
+- Drop clang-max_align_t.patch, applied upstream.
+- Add clang-max_align_t.patch to resolve issue with libstdc++ 4.9
+  max_align_t missing declaration
+- build compiler-rt on ppc64 (don't delete it) 
+- Fix resource dir for libclang case (clang-resourcedirs.patch)
+- Always build tests
+- complete ifarchs for s390 
+- Remove non-existing doc subpackage 
+- Add a dependency on ncurses-devel since libLLVM now links to
+  tinfo.
+- Add 32bit libclang bnc#857131
+- Update to final llvm 3.4 release
+  * See http://llvm.org/releases/3.4/docs/ReleaseNotes.html for
+    complete changelog.
+- Update to final release candidate (r197980)
+- Update to r197866 from release_34 branch
+- Update to r197490 from release_34 branch
+- Update to r197142 from release_34 branch
+- Disable assertions again now that PPC64 backend is fixed
+- Update to r196899 from release_34 branch
+- Remove compiler_rt-r196612.patch, merged upstream
+- Add compiler_rt-r196612.patch to fix ubsan failures on i586
+- Update to r196762 from release_34 branch
+- enable ppc64le
+- Update to r196503 from release_34 branch to get compiler_rt fixes
+- Update to r196487 from release_34 branch to get compiler_rt fixes
+- Ship cmake files for llvm (needed for lldb and such)
+- Update to r196371 from release_34 branch 
+- install python binding to libclang
+- Update to r196358 from llvm 3.4 branch
+- Add asan-disable-hugemalloctest.patch to disable
+  ASAN HugeMallocTest, it requires 4.1+ GB of RAM.
+- Refresh patches
+  * aarch64-suse-support.patch
+  * arm_suse_support.diff
+  * assume-opensuse.patch
+  * default-to-i586.patch
+- Drop upstream patches
+  * llvm-disable-pretty-stack-trace.patch
+  * r189852.diff
+  * unreachable-code.patch
+  * llvm-no-visibility.patch
+- add r189852.diff: Remove vtables optimisation that breaks ARM
+  and PowerPC
+- Disable testsuite on ARMv7, takes forever to run
+- Fix file list for %arm
+- use %arm, not arm in arch conditions 
+- add arm-remove-xfails.diff: remove XFAILs in testsuite
+  that pass and thereby make check fail
+- Set DisablePrettyStackTrace to true since it messes up signal
+  handling. bnc#839074 and fdo#60929 implemented with
+  llvm-disable-pretty-stack-trace.patch)
+- Fix filelist for aarch64
+- aarch64-suse-support.patch: Enable AArch64 suse toolchain support
+- Add s390x support 
+- Remove unused chrpath dependency
+- Re-enable ARCMT since libclang depends on it
+- Define host_triple for aarch64
+- Fix ARMv6 build
+- Only enable PowerPC on ppc64 
+- Disable shared libs on PowerPC 
+- Disable ARCMT, it only makes sense for iOS/OSX
+- Fix build 
+- Disable building unit-tests, should fix undefined reference
+  problem on ARM &amp; PowerPC 
+- do not build on slow or low memory workers
+- Drop disable_neon_in_armv7.diff, neon seems to be working fine
+- Add cmake-host-triple.patch to pass a host triple argument
+- Create libLLVM and libclang subpackages.
+- Fix finding internal headers on x86_64
+- Fix ARM v5/v7 builds
+- Create a baselibs.conf
+  Provide *-32 Bit Packages for x86_64
+- Initial version of a cmake based buildscript
+  + Updated arm_suse_support.diff (patch6) to work with llvm 3.3
+  + Set version in spec to 3.3
+- Update to final 3.3 release (r183898)
+- Disable debug symbols on PPC64
+- Update to version 3.3 RC2
+  * Small bugfixes
+- Enable ARM64 support
+- Add unreachable-code.patch to fix unreachable code warnings on SLE 
+- Update to version 3.3 RC1
+    * Added support for AArch64, ARM’s 64-bit architecture.
+    * LLVM now has a new SLP vectorizer.
+    * LLVM and clang now support IBM’s z/Architecture.
+    * The R600 backend was added in this release, it supports
+      AMD GPUs (HD2XXX - HD7XXX).
+    * See http://llvm.org/releases/3.3/docs/ReleaseNotes.html for
+      complete changelog.
+- Drop upstream patches:
+    * pr13303.patch
+    * pr14795.patch
+    * pr14831.patch
+    * python-ulimit.patch
+- pr13303.patch: reapply, was temporarily reverted upstream
+- Add pre-generated doc files, remove sphinx dependency 
+- pr14795.patch: Fix incorrect line numbers after -frewrite-includes
+  (PR#14795)
+- pr14831.patch: Do not incorrectly warn about pragmas in -frewrite-includes
+  (PR#14831)
+- disable cross-compile mode in stage2 for armv5/v7
+- Update to final 3.2 release
+  * No code changes since rc3
+- Update to r170281 from release_32 branch
+  * SROA fixes
+- Disable compilation on PPC, only PPC64 is supported.
+- Add python-ulimit.patch: Don't set a limit on address space.
+  This enables us running tests on PowerPC.
+- Unbreak PowerPC support
+- Update to r169678 from release_32 branch
+  * This is 3.2rc3
+- Update to r169391 from release_32 branch
+  * SROA fixes
+- Fix ARM build
+- Fix llvm-config --libdir to return /usr/lib64 where appropriate.
+  The old method of using sed on the executable does no longer
+  work, because llvm-config is now a binary.
+- Update to r168987 from release_32 branch
+  * Crash fixes
+  * Miscompilation fixes
+- Stop excluding ppc64 architecture 
+- Update to r168357 from release_32 branch
+  * Fixes a miscompilation with gcc 4.7
+- Update to r168286 from release_32 branch
+  * Fixes llvm PR14309
+- Update to r168031 from release_32 branch
+  * This is 3.2rc1
+- Update to r167720 from release_32 branch
+  * Thread local variables may have a specified TLS model.
+  * LLVM now has a loop optimizer.
+  * SROA has been rewritten to be more powerful.
+  * A new optimization pass added to merge stack objects
+    which are used in disjoint areas of the code.
+  * LLVM now merge consecutive loads and stores.
+  * New TableGen infrastructure to support bundling for
+    Very Long Instruction Word (VLIW) architectures.
+  * Added a new target independent VLIW packetizer.
+  * A probability based block placement and code layout algorithm
+    was added to LLVM's code generator.
+  * The ARM target now includes a full featured macro assembler,
+    including direct-to-object module support for clang.
+  * A new IR-level pass, called &quot;TargetTransformInfo&quot; provides
+    a number of low-level interfaces.
+- Refresh default-to-i586.patch to apply again
+- Drop following patches (fixed upstream)
+  * arm-suse-support.patch
+  * pr12463.patch
+  * pr13141.patch
+  * pr13303.patch
+  * rewrite-includes.patch
+  * clang-fix-mips-test.patch (fixed differently in spec file)
+- add explicit buildrequire groff for man pages
+- Fix debuginfo generation
+- make link time optimization plugin accessible to ar/nm/ranlib
+- build the plugin properly
+- fix arm build
+- change rewrite-includes patch to use options to match upstream
+  changed option names
+- fix debuginfo generation (PR#13303)
+- Do not reject PCH because of -DFOO duplication (PR#13141)
+- Update to final 3.1 release 
+- Depend on python-base so we don't pull whole Mesa 
+- make -rewrite-includes support -C and -CC
+- patch for -rewrite-includes feature
+- Update to svn revision 155819 from 3.1 branch
+  * C++11 fixes
+- Update to svn revision 155700 from 3.1 branch
+  * Crash fixes
+  * C++11 fixes
+- Update to svn revision 155574 from 3.1 branch
+  * Crash fixes
+  * Correctly enable compiler-rt
+  * Remove unneeded runtime python dependencies
+- Switch to 2-stage bootstrap because we don't do build-compare
+  anyway.
+- More fixes to llvm-config 
+- Fix llvm-config --libs output 
+- Update to svn revision 155320 from 3.1 branch
+  * AVX fixes 
+- Update to svn revision 154914 from 3.1 branch 
+  Major new features:
+      * AddressSanitizer, a fast memory error detector.
+      * MachineInstr Bundles, Support to model instruction 
+        bundling / packing.
+      * ARM Integrated Assembler, A full featured assembler 
+        and direct-to-object support for ARM.
+      * Basic Block Placement Probability driven basic block placement.
+  
+  LLVM IR and Core Improvements
+     
+      * IR support for half float
+      * IR support for vectors of pointers, including vector GEPs.
+      * Module flags have been introduced.
+      * Loads can now have range metadata attached to them to 
+        describe the possible values being loaded. 
+      * Inline cost heuristics have been completely overhauled 
+        and now closely model constant propagation through call sites, 
+        disregard trivially dead code costs, and 
+        can model C++ STL iterator patterns.
+   
+  Optimizer Improvements
+      * The loop unroll pass now is able to unroll loops with 
+        run-time trip counts. This feature is turned off by default, 
+        and is enabled with the -unroll-runtime flag.
+      * A new basic-block autovectorization pass is available. 
+        Pass -vectorize to run this pass along with some associated 
+        post-vectorization cleanup passes. 
+   X86-32 and X86-64 Target Improvements
+      * Bug fixes and improved support for AVX1
+      * Support for AVX2 (still incomplete at this point)
+   
+   ARM Target Improvements
+      * The constant island pass now supports basic block and 
+        constant pool entry alignments greater than 4 bytes.
+   Clang Changes
+      * New: -Wdangling-else, -Wstrncat-size
+      * Improved: -Wformat, -Wempty-body, -Wliteral-conversion
+      * Clang 3.1 adds support for anonymous structs and anonymous unions, 
+        added in the latest ISO C standard. Use -std=c11 or -std=gnu11 
+        to enable support for the new language standard. 
+        The new C11 features are backwards-compatible and are available 
+        as an extension in all language modes.
+      * All warning and language selection flags which previously accepted 
+        c1x have been updated to accept c11. The old c1x forms have been removed.
+      * Generalized constant expressions
+      * Lambda expressions
+      * Generalized initializers
+      * Unrestricted unions
+      * User-defined literals
+      * Forward-declared enumerations
+      * Atomics (both libc++'s and libstdc++4.7's &lt;atomic&gt; are supported)
+      
+- Target i586-linux for 32bit builds 
+- Add upstream fix for llvm PR11642 
+- Don't run gcc for ada files, just fail instead. 
+- Add clang-glibc2.14.patch to support glibc 2.14 headers
+- Install profiling support
+- Switch to 3-stage bootstrap 
+- Build first stage compiler with -O0 to workaround gcc 4.5 bug 
+- Update to final 3.0 release
+  * No real change since rc2
+- Use %{_lib} macro instead of checking for x86_64
+- Enable ARM support again
+- Switch to optimized build
+- Disable ARM support, VM goes out of memory while compiling it 
+- Really enable ARM support
+- Remove forcing -frtti
+- Update to r143961 from llvm-3.0 branch
+  * No longer hardcoding include paths
+- Fix LLVMgold.so path for x86-64 
+- Enable ld gold support 
+- Update r143456 from llvm-3.0 branch
+  * llvm/clang 3.0rc2
+- Add llvm-pr9614-part{1,2}.patch to fix LLVM PR9614 
+- Fixup dependencies so that llvm-clang doesn't depend 
+  on llvm-clang-devel
+- Update to r142912 llvm-3.0 branch
+  * Fixes to python bindings
+- Update to r142641
+  * llvm/clang 3.0 rc1
+- Enable ARM code generation 
+- Fix libdir on x86_64 
+- Update to r142341
+  * First build from 3.0 branch
+  * -Wc++98-compat warnings for the lexer
+  * Add flags for the remaining shift related warnings
+    (-Wshift-count-negative, -Wshift-count-overflow).
+  * Only warn in -Wliteral-conversion if the conversion 
+    loses information
+  * Added clang_getCompletionAnnotation and 
+    clang_getCompletionNumAnnotations to retrieve annotations 
+    from completion string.
+  * Add support for -std=gnu90 and -std=c++03, for compatibility 
+    with modern gcc.
+- Switch to tar.bz2 and remove xz dependency
+- Update to r140780
+  * Code cleanup
+  * Crash fixes
+  * Add support for alignment-specifiers in C1X and C++11
+  * Introduce a new compiler switch: -fms-compatility
+  * Emit debug info for c++0x nullptr.
+- Update to r139589
+  * C++0x fixes
+  * PCH fixes
+- Update to r138939
+  * Many crash fixes.
+  * Performance optimizations.
+  * Allow C99 hexfloats in C++0x mode.
+  * Add missing function _mm_ucomige_sd to emmintrin.h.
+- Update to r137452
+  * Fix problems found by PVS-Studio
+  * More AVX fixes
+  * Many C++ fixes
+- Add assume-opensuse.patch to remove dependency on openSUSE-release
+- Update to r136773 
+  * Many AVX fixes
+  * Support for C++0x unicode string and character literals
+- Update to r135431
+  * API changes to match Mesa requirements
+- Update to r134888
+  * Type system rewrite 
+- Update to r134813
+  * Mainly gcc compatibility fixes 
+- Update to r134698
+  * Up to 80x speed improvements with -Wuninitialized 
+- Enable RTTI support
+- Disable assertions because they are not thread safe
+- Update to r134611
+  * Many C++ fixes and speedups
+  * Updates for AVX instruction support 
+  * gcc 4.6.1 support
+-  Fix manpage generation (bnc #703591)
+- Update to r132667 
+- Update to use cmake buildsystem
+- Remove unmaintained ocaml support 
+- Drop ocaml support because its unmaintained
+- Update to latest svn revision 132050 
+  + Start of the upcoming 3.0 version
+  + Support for gcc 4.6 c++ headers
+  + Better support for C++0x
+- Fix ocaml dependency 
+- Update to 2.9
+  + Type Based Alias Analysis (TBAA) is now implemented in clang
+  + LLVM now generates better debug information
+  + Inline assembly now supports multiple alternative constraints
+- drop revision from Requires: fields
+- update to 2.8.99 revision 129008.
+- spec file cleanup
+- Do not require specific ffi version but gather the
+  appropiate one from the distro 
+- Fix compatibility with C++0x compilers (g++ 4.5)
+- Fix C include paths 
+- Fix header path for openSUSE 11.4
+- Enabled PIC for x86 for loadable module support
+- Enable package tests for llvm and clang
+- Disable package timestamps to silence an rpmlint warning 
+- Fixed the build on x86 plattforms.
+- Package the clang c++-analyzer.
+- update to llvm 2.7
+- added vim plugins
+- added libffi-devel to llvm-devel requires so that build does not fail
+- fixed build of explicit constructors with gcc45
+- Initial 2.6 release
+</comment>
+    <requestid>822551</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>b327bda75d3052a48b689defacf25a82</srcmd5>
+    <version>10.0.1</version>
+    <time>1596456732</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ld.lld as an alternative for ld. (boo#1174656)</comment>
+    <requestid>823638</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>fb36ede5ee8def9a428020caf6af8fd5</srcmd5>
+    <version>10.0.1</version>
+    <time>1601743993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838295</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8f1f7de4bb4edd0c2985800e92dd0100</srcmd5>
+    <version>10.0.1</version>
+    <time>1604306464</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm11 now (boo#1168935).
+- Remove version requirement from clang-tools dependency.
+- Give riscv64 jobs a bit more disk space.</comment>
+    <requestid>843889</requestid>
+  </revision>
+</revisionlist>

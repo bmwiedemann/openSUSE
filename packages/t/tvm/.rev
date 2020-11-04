@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78a6dc38dd69832a140aad3018750f5f</srcmd5>
+    <version>0.6.1</version>
+    <time>1599210686</time>
+    <user>dimstar_suse</user>
+    <comment>v0.6.1</comment>
+    <requestid>831646</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d8a5454e911290a31ecff96438e87171</srcmd5>
+    <version>0.6.1</version>
+    <time>1599667267</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo
+
+- Exclude %arm %{ix86} as tests fail
+
+- Skip tests requiring opencl
+- Skip test requiring a specific arch
+
+- Split cmake folder to not override it with python builds
+- Fix detection of this folder in the python modules:
+  * lib-finder-python-cmake.patch
+
+- Add provides/obsoletes on TVM
+
+- Build fails on Tumbleweed with llvm10, so use llvm9 - boo#1176220
+
+- Format with spec-cleaner
+- Expand properly the fdupes call
+- Fix headers install
+- Fix python pkg names
+- Fix python requires
+
+- Package nnvm and topi python packages</comment>
+    <requestid>833203</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>58fa5086e49fbbf9cdaf06704fa070a7</srcmd5>
+    <version>0.6.1</version>
+    <time>1601653410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839146</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>76b80f94efd597b730de603160ed319d</srcmd5>
+    <version>0.6.1</version>
+    <time>1603462155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839532</requestid>
+  </revision>
+</revisionlist>

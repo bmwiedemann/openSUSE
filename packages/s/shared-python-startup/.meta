@@ -1,0 +1,5 @@
+<package name="shared-python-startup" project="openSUSE:Factory">
+  <title>Startup script shared by all Python interpreters</title>
+  <description>The primary purpose of this package is to share script which can be run via PYTHONSTARTUP variable of any Python interpreter.</description>
+  <devel project="devel:languages:python:Factory" package="shared-python-startup"/>
+</package>

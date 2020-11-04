@@ -1,0 +1,8 @@
+<package name="libretro-mame" project="openSUSE:Factory">
+  <title>MAME libretro core for arcade emulation</title>
+  <description>MAME is a multi-purpose emulation framework.
+
+This package is for RetroArch/libretro front-end.
+</description>
+  <devel project="Emulators" package="libretro-mame"/>
+</package>

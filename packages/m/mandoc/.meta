@@ -1,0 +1,7 @@
+<package name="mandoc" project="openSUSE:Factory">
+  <title>UNIX manpage compiler</title>
+  <description>mandoc is a suite of tools compiling mdoc, the roff macro language of choice for BSD manual pages, and man, the predominant historical language for UNIX manuals. It is small, ISO C, ISC-licensed, and quite fast. The main component of the toolset is the mandoc utility program, based on the libmandoc validating compiler, to format output for UTF-8 and ASCII UNIX terminals, HTML 5, PostScript, and PDF.
+
+mandoc has predominantly been developed on OpenBSD and is both an OpenBSD and a BSD.lv project. We strive to support all interested free operating systems, in particular FreeBSD, NetBSD, DragonFly, illumos, Minix 3, and both GNU- and musl-based Linux distributions, as well as all systems running the pkgsrc portable package build system. To support mandoc development, consider donating to the OpenBSD foundation. </description>
+  <devel project="Documentation" package="mandoc"/>
+</package>

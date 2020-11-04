@@ -1,0 +1,9 @@
+<package name="python-configshell-fb" project="openSUSE:Factory">
+  <title>A python library for building configuration shells</title>
+  <description>configshell-fb is a Python library that provides a framework for building simple but nice CLI-based applications.
+
+This runs with Python 2 and 2to3 is run by setup.py to run on Python 3.
+
+configshell-fb is a fork of the &quot;configshell&quot; code written by RisingTide Systems. The &quot;-fb&quot; differentiates between the original and this version. Please ensure to use either all &quot;fb&quot; versions of the targetcli components -- targetcli, rtslib, and configshell, or stick with all non-fb versions, since they are no longer strictly compatible.</description>
+  <devel project="devel:languages:python" package="python-configshell-fb"/>
+</package>

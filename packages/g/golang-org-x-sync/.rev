@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9955af26168d7a3a4b85b042e5533e6</srcmd5>
+    <version>0.0.0+git20190911.cd5d95a</version>
+    <time>1579636804</time>
+    <user>dimstar_suse</user>
+    <comment>A dependency for https://build.opensuse.org/request/show/757899</comment>
+    <requestid>765225</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a25b3e7f18fe70473d13fb4aeb419c2d</srcmd5>
+    <version>0.0.0+git20200317.43a5402</version>
+    <time>1589660594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.0+git20200317.43a5402:
+  * semaphore: unblock waiters when the front waiter cancels
+  * syncmap: use type alias for Map
+  * semaphore: better error message when releasing more than held
+  * singleflight: fix duplicate deleting key when Forget called
+  * all: add a go.mod file
+  * semaphore: add more Acquire documentation
+  * all: remove x/net/context in favour of context
+  * CONTRIBUTING.md: remove note about not accepting Pull Requests
+  * semaphore: add worker-pool example
+  * README: switch to Markdown, add better links
+- Move LICENSE from %doc to %license section
+- Set BuildArch to noarch</comment>
+    <requestid>805474</requestid>
+  </revision>
+</revisionlist>

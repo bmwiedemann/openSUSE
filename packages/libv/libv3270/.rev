@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>baf6a547de102f605d4a500a2b73732d</srcmd5>
+    <version>5.2</version>
+    <time>1574104069</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing conflict with version 5.1 based on request 736258 comment.</comment>
+    <requestid>741136</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6044c2a6ff15a6aa489000d39bff8a6a</srcmd5>
+    <version>5.3</version>
+    <time>1591742833</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to version 5.3; fix build errors on latest gcc.</comment>
+    <requestid>812585</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fe1e7bd99454a07782b48e25367e633f</srcmd5>
+    <version>5.3</version>
+    <time>1604510830</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to the latest revision of version 5.3</comment>
+    <requestid>845850</requestid>
+  </revision>
+</revisionlist>

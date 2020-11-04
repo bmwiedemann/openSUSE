@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16d92c362b2aafa7be75fd62bfbfdf9e</srcmd5>
+    <version>2.32</version>
+    <time>1563914075</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release based on version 2.32.</comment>
+    <requestid>715459</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>caa0f64b178e23832b65a968767381aa</srcmd5>
+    <version>2.32</version>
+    <time>1572779476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744750</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f0cf3c852a179fee60f00e71fe9e24e</srcmd5>
+    <version>2.33</version>
+    <time>1581801911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.33.
+  * Modifications to cope with upcoming ocaml 4.10.0.</comment>
+    <requestid>774439</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20146f890c225c8dde221a985b5e46e7</srcmd5>
+    <version>2.34</version>
+    <time>1585602166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.34.
+  * Add command \formatlinks for greater control over navigation links.</comment>
+    <requestid>789579</requestid>
+  </revision>
+</revisionlist>

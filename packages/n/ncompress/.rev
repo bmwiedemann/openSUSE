@@ -1,0 +1,99 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bb9c7ee56537ca889afe6747dc7100b8</srcmd5>
+    <version>4.2.4.4</version>
+    <time>1477904103</time>
+    <user>dimstar_suse</user>
+    <comment>not so new package, this outdated format is still used in the geodetic world so it makes sense to have it in Factory</comment>
+    <requestid>436955</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>43ceef43684d2957c0862dfaf4b69d8e</srcmd5>
+    <version>4.2.4.4</version>
+    <time>1495469315</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497147</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>111bedcd63539279cfbc7f5108c72cfc</srcmd5>
+    <version>4.2.4.4</version>
+    <time>1496225878</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498492</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e99dc514b39d41e13d18807c8676272</srcmd5>
+    <version>4.2.4.4</version>
+    <time>1501227733</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512225</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b020ab46273e6b509f25b8e0af9e9978</srcmd5>
+    <version>4.2.4.4</version>
+    <time>1551468554</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679446</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18edff971a3ae8a7769b76a57079c248</srcmd5>
+    <version>4.2.4.5</version>
+    <time>1576062158</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.4.5:
+  * New homepage https://github.com/vapier/ncompress
+  * Switch to intmax_t for nlink_t fields when printing
+  * Make builds more reproducible by dropping datestamps
+  * Fix integer overflow in maxmaxcode computation by Jakub Wilk
+  * Don't leak file descriptor in error cases by Pavel Raiskup
+  * Drop 8.3 filename checks for old DOS/Windows
+  * Change signal ifdef logic to the signal names
+  * Fix -Werror=parentheses errors with newer compilers
+  * Define LSTAT=1 in modern builds by default
+  * Change pathnames to be dynamic to avoid hardcoded 1k limit
+  * Add a standard -h (help) option
+  * Change version output to go to stdout
+  * Start a testsuite!
+  * Add support for -- to halt option parsing
+  * Add a uncompress(1) link to compress(1)
+- Drop all upstreamed patches:
+  * ncompress-2GB.patch
+  * ncompress-4.2.4.4-drop-datestamp.patch
+  * ncompress-4.2.4.4-filenamelen.patch
+  * ncompress-4.2.4.4-lfs2.patch
+  * ncompress-4.2.4-endians.patch
+  * ncompress-4.2.4-make.patch</comment>
+    <requestid>754459</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f1bb732d30bebfd95be31d011411f3f1</srcmd5>
+    <version>4.2.4.6</version>
+    <time>1589660590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.4.6:
+  * Fix tests under macOS
+  * Drop support for NOFUNCDEF
+  * Drop old unused MARK &amp; SIZE_INNER_LOOP defines
+  * Add chmod/chown stubs for AMIGA/DOS
+  * Add a WINDOWS define for disabling chmod/chown
+  * Simplify LSTAT checking
+  * Disable utime usage on AMIGA/DOS/WINDOWS
+  * Add a fallback for access() for DOS &amp; WINDOWS
+  * Disable unistd.h include on DOS &amp; WINDOWS
+  * Disable chmod/chown/utime for mingw builds
+  * Add xxx-&gt;_xxx redirects on WINDOWS for filesystem funcs
+  * Add support for Windows in Travis
+  * Add PREFIX conformance, add option to only install main program by Eli Schwartz
+  * Don't strip binaries by default by Eli Schwartz
+  * Set the mandir to use $(PREFIX)/share/man by default by Eli Schwartz
+  * Do not set exit_code when an error is ignored by Petr Kubat
+  * Use default CFLAGS when using GNU make
+  * Fix typos in Makefile.def
+  * Tweak Changes style for better markdown integration</comment>
+    <requestid>805468</requestid>
+  </revision>
+</revisionlist>

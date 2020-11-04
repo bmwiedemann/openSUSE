@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44820e164e8b2650854d81361ac4551c</srcmd5>
+    <version>1.0.1</version>
+    <time>1553888279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688819</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a67e6d56161de3b6dd2f220123afaba</srcmd5>
+    <version>1.0.1</version>
+    <time>1564484527</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with new pytest releases</comment>
+    <requestid>717012</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4f30152e82277afa2992df82886d4a52</srcmd5>
+    <version>1.0.2</version>
+    <time>1597306323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824897</requestid>
+  </revision>
+</revisionlist>

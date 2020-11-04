@@ -1,0 +1,16 @@
+<package name="python-wptools" project="openSUSE:Factory">
+  <title>Wikipedia tools (for Humans)</title>
+  <description>Python and command-line MediaWiki access for Humans.
+
+Features:
+* get an HTML or plain text &quot;extract&quot; (lead or summary)
+* get a representative image (pageimage, thumb, etc.)
+* get an Infobox as a python dictionary
+* get any/all Wikidata by title
+* get info in any language
+* get random info
+
+</description>
+  <devel project="devel:languages:python" package="python-wptools"/>
+  <url>https://github.com/siznax/wptools/</url>
+</package>

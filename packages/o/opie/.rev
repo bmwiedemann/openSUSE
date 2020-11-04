@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="560">
+    <srcmd5>e40f0e044cec6e992fe1e3e77c353b91</srcmd5>
+    <version>2.4</version>
+    <time>1166483840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="587">
+    <srcmd5>e335435d754f1fbf2b484c937227f83b</srcmd5>
+    <version>2.4</version>
+    <time>1169080672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="589">
+    <srcmd5>85e66c9d5949ba18e7c260d24fd354bb</srcmd5>
+    <version>2.4</version>
+    <time>1171036979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="593">
+    <srcmd5>d1784ee17a96129decae2a2b68b1e41c</srcmd5>
+    <version>2.4</version>
+    <time>1174052668</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="596">
+    <srcmd5>6a14c2806c74a9360ba82f1d2e2d5daf</srcmd5>
+    <version>2.4</version>
+    <time>1175162939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="662">
+    <srcmd5>492d9cd40245a2301b19ce8320f5cdbf</srcmd5>
+    <version>2.4</version>
+    <time>1207833583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="697">
+    <srcmd5>492d9cd40245a2301b19ce8320f5cdbf</srcmd5>
+    <version>2.4</version>
+    <time>1207833583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="698">
+    <srcmd5>4f8e9cd33103ad4eda4506e56c51bc0b</srcmd5>
+    <version>2.4</version>
+    <time>1243938256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="699">
+    <srcmd5>1230ddddc3e5007a6bf383aa0ec79826</srcmd5>
+    <version>2.4</version>
+    <time>1246279907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="700">
+    <srcmd5>e626c81796b211c4eb90320c2a1ebc6d</srcmd5>
+    <version>2.4</version>
+    <time>1254774216</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/opie based on submit request 21636 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="11" vrev="702">
+    <srcmd5>e626c81796b211c4eb90320c2a1ebc6d</srcmd5>
+    <version>2.4</version>
+    <time>1254774216</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/opie based on submit request 21636 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="12" vrev="703">
+    <srcmd5>646450724e802b6f88ee271b56a046dd</srcmd5>
+    <version>2.4</version>
+    <time>1260951041</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/opie based on submit request 26701 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="13" vrev="704">
+    <srcmd5>97d0e469442a99a77a5b3d522b78224d</srcmd5>
+    <version>2.4</version>
+    <time>1268925245</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="706">
+    <srcmd5>97d0e469442a99a77a5b3d522b78224d</srcmd5>
+    <version>2.4</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="707">
+    <srcmd5>97d0e469442a99a77a5b3d522b78224d</srcmd5>
+    <version>2.4</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="708">
+    <srcmd5>c3f0a4f9cb89d4bf88ad68c3993d4015</srcmd5>
+    <version>2.4</version>
+    <time>1288691204</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51920 from user coolo
+</comment>
+    <requestid>51920</requestid>
+  </revision>
+  <revision rev="17" vrev="709">
+    <srcmd5>0ae2538e7672d358a25799981d0d8141</srcmd5>
+    <version>2.4</version>
+    <time>1288691209</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51920
+</comment>
+  </revision>
+  <revision rev="18" vrev="712">
+    <srcmd5>0ae2538e7672d358a25799981d0d8141</srcmd5>
+    <version>2.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="713">
+    <srcmd5>7d235aad01edda9e7eea9984d190e64a</srcmd5>
+    <version>2.4</version>
+    <time>1309940343</time>
+    <user>saschpe</user>
+    <comment>fixed security issues (forwarded request 75448 from msmeissn)</comment>
+    <requestid>75459</requestid>
+  </revision>
+  <revision rev="20" vrev="714">
+    <srcmd5>080d674707a4fe273f60f2d7431079e9</srcmd5>
+    <version>2.4</version>
+    <time>1309940358</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75459
+</comment>
+  </revision>
+  <revision rev="21" vrev="716">
+    <srcmd5>080d674707a4fe273f60f2d7431079e9</srcmd5>
+    <version>2.4</version>
+    <time>1319182220</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="717">
+    <srcmd5>6ff1164c48e67a8970576cdffc576476</srcmd5>
+    <version>2.4</version>
+    <time>1323190798</time>
+    <user>coolo</user>
+    <comment>fixed license and some spec issues</comment>
+    <requestid>95429</requestid>
+  </revision>
+  <revision rev="23" vrev="718">
+    <srcmd5>cd9a4dcce57c7f6d981a4314998e512b</srcmd5>
+    <version>2.4</version>
+    <time>1331538827</time>
+    <user>coolo</user>
+    <comment>- make opie program position independent (bnc#743136)</comment>
+    <requestid>108643</requestid>
+  </revision>
+  <revision rev="24" vrev="720">
+    <srcmd5>cd9a4dcce57c7f6d981a4314998e512b</srcmd5>
+    <version>2.4</version>
+    <time>1340183766</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="722">
+    <srcmd5>cd9a4dcce57c7f6d981a4314998e512b</srcmd5>
+    <version>2.4</version>
+    <time>1359109555</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="724">
+    <srcmd5>cd9a4dcce57c7f6d981a4314998e512b</srcmd5>
+    <version>2.4</version>
+    <time>1379663450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="726">
+    <srcmd5>cd9a4dcce57c7f6d981a4314998e512b</srcmd5>
+    <version>2.4</version>
+    <time>1409302074</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="727">
+    <srcmd5>e84512f1ec87a729612e6eecf0d39707</srcmd5>
+    <version>2.4</version>
+    <time>1493103247</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484789</requestid>
+  </revision>
+  <revision rev="29" vrev="728">
+    <srcmd5>fa9d7a1f1e1fac36f57904a56d265a7c</srcmd5>
+    <version>2.4</version>
+    <time>1567678199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721693</requestid>
+  </revision>
+  <revision rev="30" vrev="729">
+    <srcmd5>1c6efe6cc61fb23889fbf12b67ae1e71</srcmd5>
+    <version>2.4</version>
+    <time>1568983286</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>729443</requestid>
+  </revision>
+  <revision rev="31" vrev="730">
+    <srcmd5>c9b9921873f023090565ca7b4d7bcf31</srcmd5>
+    <version>2.4</version>
+    <time>1591208932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809762</requestid>
+  </revision>
+  <revision rev="32" vrev="731">
+    <srcmd5>abf6842b9be84172628c9b24cb5af887</srcmd5>
+    <version>2.4</version>
+    <time>1604306275</time>
+    <user>dimstar_suse</user>
+    <comment>- remove opiekeys and opiesu from permissions profiles. Package them normally,
+  because neither of them receives special permissions and we want to keep the
+  permissions profiles clean. (forwarded request 844521 from mgerstner)</comment>
+    <requestid>844524</requestid>
+  </revision>
+</revisionlist>

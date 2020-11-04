@@ -1,0 +1,5 @@
+<package name="ghc-liquid-fixpoint" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-liquid-fixpoint"/>
+</package>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b0a30b26f5089a762352266104335fd</srcmd5>
+    <version>0.1.6</version>
+    <time>1533214640</time>
+    <user>dimstar_suse</user>
+    <comment>New package, required by the next mycroft release</comment>
+    <requestid>625453</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5815e83e8af78d933ed7b59bddabc9cc</srcmd5>
+    <version>0.1.6</version>
+    <time>1533292784</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>627152</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a9092826f83d7d1c57e13b974867f15</srcmd5>
+    <version>0.1.7</version>
+    <time>1541510994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646019</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7a3254d4cfb8187ef7d3679d02841ff0</srcmd5>
+    <version>0.1.7</version>
+    <time>1545648040</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659529</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e3116d86d77bf01f9f7cf350a270997</srcmd5>
+    <version>0.1.9</version>
+    <time>1549286699</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670888</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a17f78ce7dcb1ddef7e035d7f4e2b6a</srcmd5>
+    <version>0.1.10</version>
+    <time>1556622298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698091</requestid>
+  </revision>
+</revisionlist>

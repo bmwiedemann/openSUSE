@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e7eeea2474611febd7e3363146dff7d</srcmd5>
+    <version>0.0.1</version>
+    <time>1583227142</time>
+    <user>dimstar_suse</user>
+    <comment>The initial submit request for new package.</comment>
+    <requestid>781050</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>380e01236f78282e0abace566bdaf63d</srcmd5>
+    <version>0.0.1</version>
+    <time>1583311619</time>
+    <user>dimstar_suse</user>
+    <comment>- Add generated setup.py to the tarball, until we have working
+  dephell in the system.</comment>
+    <requestid>781259</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3eeb84d86d96fad68a5640c5a63f02ab</srcmd5>
+    <version>0.0.1</version>
+    <time>1583845556</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783364</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da0310d5c6b524a0d1fbf94d21426269</srcmd5>
+    <version>0.0.1</version>
+    <time>1585176301</time>
+    <user>dimstar_suse</user>
+    <comment>- Add macro %dephell_genspec to generate setup.py (temporarily switched of because of gh#dephell/dephell_changelogs#5)</comment>
+    <requestid>787828</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>edddb8cc0b8fa4334e20407d4f1edabf</srcmd5>
+    <version>0.0.1</version>
+    <time>1591101327</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in the dephell-macros for now as it cycles</comment>
+    <requestid>810115</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0bdee818b56c54757953604b3a3e4bce</srcmd5>
+    <version>0.0.1</version>
+    <time>1595577822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822313</requestid>
+  </revision>
+</revisionlist>

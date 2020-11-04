@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c97e998969ae00d21297e6786762d968</srcmd5>
+    <version>0~git20191129</version>
+    <time>1581456185</time>
+    <user>dimstar_suse</user>
+    <comment>RetroArch core</comment>
+    <requestid>771865</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ca7a67e82e79f34754b1e8d3d413c92</srcmd5>
+    <version>0~git20200506</version>
+    <time>1591558750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200506:
+  * Emscripten fixes
+  * Fix a crash on core load
+  * (tvOS) support building with tvOS SDK
+</comment>
+    <requestid>812240</requestid>
+  </revision>
+</revisionlist>

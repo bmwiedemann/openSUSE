@@ -1,0 +1,330 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>144b6453bb6202bafdc00db221b67b2e</srcmd5>
+    <version>1.5.0.0</version>
+    <time>1168904258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>4b8da5572502c65d4b00c830ffe84313</srcmd5>
+    <version>1.5.0.0</version>
+    <time>1174610887</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee05bec2f7efd25db70aab9254d3aee4</srcmd5>
+    <version>1.6.0.1</version>
+    <time>1203036068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="51">
+    <srcmd5>ee05bec2f7efd25db70aab9254d3aee4</srcmd5>
+    <version>1.6.0.1</version>
+    <time>1203036068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>960bcf40611829873cc1632be29e524d</srcmd5>
+    <version>1.7.0.0</version>
+    <time>1224694218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>960bcf40611829873cc1632be29e524d</srcmd5>
+    <version>1.7.0.0</version>
+    <time>1224694218</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cd519aa695f56001a04e8c4656c1b7e</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1263224007</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/socat based on submit request 29118 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f0b0c2d18d0ea4a2e92bcccfb3e02a77</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1268926200</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f0b0c2d18d0ea4a2e92bcccfb3e02a77</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1278667390</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f0b0c2d18d0ea4a2e92bcccfb3e02a77</srcmd5>
+    <version>1.7.1.2</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff135cbf80cf26a5b4a6d937abba29cd</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1288265358</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51540 from user coolo
+</comment>
+    <requestid>51540</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>1f8ac2bf632c53e2c77e57cdaa6598cd</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1288265366</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51540
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>1f8ac2bf632c53e2c77e57cdaa6598cd</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>15c093be2fc96cfc7a7f743908aee1f9</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1303386231</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 67008 from user coolo
+</comment>
+    <requestid>67008</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>85c4a20b5cf08ae58bd3dd43b7e3d739</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1303386239</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 67008
+</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>85c4a20b5cf08ae58bd3dd43b7e3d739</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1319182478</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>017cef8c22427c20419952c7665d7ea5</srcmd5>
+    <version>1.7.1.3</version>
+    <time>1323194705</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>e1662247db07bdb7b63a67dd80ee91d6</srcmd5>
+    <version>1.7.2.0</version>
+    <time>1323340276</time>
+    <user>coolo</user>
+    <comment>updated to 1.7.2.0 (forwarded request 95859 from msmeissn)</comment>
+    <requestid>95870</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>cf536efd2f230b1ea81dd1a17bb6d7b7</srcmd5>
+    <version>1.7.2.0</version>
+    <time>1324831293</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97736 from coolo)</comment>
+    <requestid>97869</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>658d8dd071596ec02fe5199ac2f67896</srcmd5>
+    <version>1.7.2.1</version>
+    <time>1338903323</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>123356</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>658d8dd071596ec02fe5199ac2f67896</srcmd5>
+    <version>1.7.2.1</version>
+    <time>1340184226</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>658d8dd071596ec02fe5199ac2f67896</srcmd5>
+    <version>1.7.2.1</version>
+    <time>1359110420</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>e8a21881e1cbab658252acdcf51281d2</srcmd5>
+    <version>1.7.2.1</version>
+    <time>1362493212</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0-with-openssl-exception and MIT
+See README (forwarded request 157221 from babelworx)</comment>
+    <requestid>157223</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0a32883e9d0ddc505535dd2766a8a6b2</srcmd5>
+    <version>1.7.2.2</version>
+    <time>1370430791</time>
+    <user>coolo</user>
+    <comment>- updated to 1.7.2.2
+  This release fixes a security issue: Under certain circumstances,
+  an FD leak occurs and may be misused for denial-of-service attacks
+  against socat running in server mode (CVE-2013-3571)
+
+  security fix for READLINE bnc#759859 (forwarded request 176867 from msmeissn)</comment>
+    <requestid>176868</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>0a32883e9d0ddc505535dd2766a8a6b2</srcmd5>
+    <version>1.7.2.2</version>
+    <time>1379664703</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0898369363885fa2a867b55794eca4c4</srcmd5>
+    <version>1.7.2.3</version>
+    <time>1394130573</time>
+    <user>coolo</user>
+    <comment>update to 1.7.2.3, fixes CVE-2014-0019</comment>
+    <requestid>224535</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ff033b536040bd17b64e90338e7d95fc</srcmd5>
+    <version>1.7.2.4</version>
+    <time>1395495941</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>226534</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>ff033b536040bd17b64e90338e7d95fc</srcmd5>
+    <version>1.7.2.4</version>
+    <time>1409303386</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>b22536be6264c48e512b8633084dd71e</srcmd5>
+    <version>1.7.2.4</version>
+    <time>1415118447</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258346</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ffbbe726ba69eba8d32490b38b49592c</srcmd5>
+    <version>1.7.3.0</version>
+    <time>1427652922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293131</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1a5c8997ebfa69341eb229953a2ef7df</srcmd5>
+    <version>1.7.3.1</version>
+    <time>1454833308</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.3.1, security fixes:
+  * Socat security advisory 7 and MSVR-1499: &quot;Bad DH p parameter in
+    OpenSSL&quot; 
+  * Socat security advisory 8: &quot;Stack overflow in arguments parser&quot; 
+
+- test-suite, use a small but safe subset of all tests
+- don't remove &quot;example&quot; scripts from builddir, they are needed for
+  tests
+
+- remove socat-remove_date.patch, export BUILD_DATE instead
+  (new feature since 1.7.2.4)
+- run tests, don't abort yet
+- require tcpd-devel only on SUSE systems at build time</comment>
+    <requestid>357374</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>225f5e2c4a53b2c3cfa29796e7f71b9e</srcmd5>
+    <version>1.7.3.1</version>
+    <time>1456242860</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359292</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>639f4496537d71790b7da5c4e84295f6</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1492714042</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487585</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>cd055e7e679913a7924004d354a447ca</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1503392740</time>
+    <user>dimstar_suse</user>
+    <comment>- socat-openssl-1.1-tests.patch: make tests work on openssl1. (bsc#1042674) (forwarded request 517388 from msmeissn)</comment>
+    <requestid>517414</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>992b3c66fb6933547c66efe651cf5e8b</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1517931976</time>
+    <user>dimstar_suse</user>
+    <comment>- Add socat-ignore-tests-failure-boo1078346.patch
+  flaky test failures PowerPC and s390 , bypass boo#1078346 (forwarded request 572019 from michel_mno)</comment>
+    <requestid>572514</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>695f300ca878e5e927ebae6febe5416d</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1523346529</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>593334</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>294e1a9e2ff48e3484ab46ea1f96f0ad</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1536094150</time>
+    <user>dimstar_suse</user>
+    <comment>- We HAVE_SSLv23_*_method, just not as functions, but macros
+  add the relevant defines in the command line so support for
+  autonegotiation of the highest TLS version is restored. (forwarded request 632361 from elvigia)</comment>
+    <requestid>632455</requestid>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>40300c5121f92ba12c25f8699279daef</srcmd5>
+    <version>1.7.3.2</version>
+    <time>1537263665</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635272</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fd19d82f73e731ca49c50fff50a2d673</srcmd5>
+    <version>1.7.3.3</version>
+    <time>1554930574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692059</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c59c64ca3bed8afb8050f5016dd5e545</srcmd5>
+    <version>1.7.3.3</version>
+    <time>1581087114</time>
+    <user>dimstar_suse</user>
+    <comment>- socat-common-fixes.patch: include tcpd.h where needed to fix
+  -fno-common bsc#1160293 (forwarded request 769978 from msmeissn)</comment>
+    <requestid>769984</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>743edfae3303eef30d3445654a56ed16</srcmd5>
+    <version>1.7.3.4</version>
+    <time>1587838025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795509</requestid>
+  </revision>
+</revisionlist>

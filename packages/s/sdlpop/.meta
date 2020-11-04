@@ -1,0 +1,5 @@
+<package name="sdlpop" project="openSUSE:Factory">
+  <title>SDLPoP</title>
+  <description>An open-source port of Prince of Persia.</description>
+  <devel project="games" package="sdlpop"/>
+</package>

@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a300e16fa5a9ab56cd0398344d2ba996</srcmd5>
+    <version>2.0.8</version>
+    <time>1575923838</time>
+    <user>dimstar_suse</user>
+    <comment>Library for text processing and analysis</comment>
+    <requestid>755320</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b8553558f9b10c78ab9f7d4a2871cb8b</srcmd5>
+    <version>2.0.9</version>
+    <time>1585262064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788508</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>06c391d9e125d0d1a950d9bd209dd200</srcmd5>
+    <version>2.0.9</version>
+    <time>1586973320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794053</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8fde98495e634f85c43d77104055cf4</srcmd5>
+    <version>2.0.12</version>
+    <time>1603283952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.12:
+  * Update setup.py
+  * ordered annotation keys</comment>
+    <requestid>843041</requestid>
+  </revision>
+</revisionlist>

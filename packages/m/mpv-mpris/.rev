@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63e629aee7326763fb126633ee358518</srcmd5>
+    <version>0.5</version>
+    <time>1589892373</time>
+    <user>dimstar_suse</user>
+    <comment>This package contains a plugin for mpv which allows control of the player using the MPRIS D-Bus interface, which enables control with multimedia keys in desktop environments such as GNOME and KDE as well as through tools like playerctl.</comment>
+    <requestid>806784</requestid>
+  </revision>
+</revisionlist>

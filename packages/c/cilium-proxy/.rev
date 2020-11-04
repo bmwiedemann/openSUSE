@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>62f0597e9e81efacce07af0bba3a73c5</srcmd5>
+    <version>20200109</version>
+    <time>1582028949</time>
+    <user>dimstar_suse</user>
+    <comment>Package for Envoy with additional filters for Cilium</comment>
+    <requestid>774853</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>370cce9d98c712447a21d8dd94f5f6a7</srcmd5>
+    <version>20200109</version>
+    <time>1582643224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779005</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e0143f82c15a3041f92bf3d9ce63c92a</srcmd5>
+    <version>20200109</version>
+    <time>1583948556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783295</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3bc532aa3319c68c86075559df8cea9b</srcmd5>
+    <version>20200109</version>
+    <time>1587580981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794966</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>643b4c2a5a92850930630762a659d84f</srcmd5>
+    <version>20200109</version>
+    <time>1596565064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824001</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>322ce9de4a241e3a3454785cb41da742</srcmd5>
+    <version>20200813</version>
+    <time>1601398809</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>837188</requestid>
+  </revision>
+</revisionlist>

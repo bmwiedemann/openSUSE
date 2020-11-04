@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5ef62fcd0310cde0bcb099fdba19567</srcmd5>
+    <version>1.6.3</version>
+    <time>1416048084</time>
+    <user>dimstar_suse</user>
+    <comment>initial commit</comment>
+    <requestid>260806</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fff236b20cff3e27fc2d593e565a5edb</srcmd5>
+    <version>1.6.5</version>
+    <time>1422521873</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump 1.6.5:
+  * 1.6.4 Changelog:
+    * Features:
+      * &quot;add&quot; is an alias of &quot;insert&quot;
+      * `pass edit` will no longer make a commit if the password does not change
+      * Symbolic links are now followed
+      * Remove gpg agent check, due to the auto-starting gpg-agent in GnuPG 2.1
+    * Bug Fixes:
+      * Avoid trailing slash in `pass grep`
+      * Account for $CLIP_TIME in messages
+      * revelation2pass, keepassx2pass, and other script improvements
+      * Fix .gpg extension in tree listings, and preserve colors
+      * Improved support for getopt on OSX
+      * Updates for zsh and fish completion autoloading
+      * Always preserve TTY for pinentry
+      * Only use encryption subkeys
+      * Better clip error messages
+      * No longer use hidden recipients
+  * 1.6.5 Changelog:
+    * Features:
+      * Support Gpg4win alongside Cygwin
+    * Bug Fixes:
+      * Work around unit tests bug with GnuPG 2.1.0 and 2.1.1
+      * Manually migrate unit tests keys to GnuPG 2.1 series
+      * Restore support for GnuPG 2.0 series
+- Add a few builddeps so that we don't own the dirs of the completion files</comment>
+    <requestid>283209</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>da84749c07ed43b1e4103dc518f6e509</srcmd5>
+    <version>1.6.5</version>
+    <time>1423214582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284196</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7239e866285fd01696353fdc3d162293</srcmd5>
+    <version>1.7</version>
+    <time>1489653788</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump 1.7 
+  * Features
+    * Extensions: pass can now load user-defined extensions from a system
+      directory or a user directory. There's already a nice ecosystem of
+      extensions being built, even at this early stage. See the pass man page for
+      more information.
+    * Signatures: there is now an option to enforce signatures of the .gpg-id file
+      and extensions using an environment variable.
+    * QRCodes: generate and show have now learned the --qrcode/-q switch. Note to
+      package maintainers: this adds a dependency on the popular qrencode package.
+    * Password generation: rather than use pwgen, we now use /dev/urandom more
+      directly, which results in more assured password security, as well as
+      customizable character sets, via an environment variable. See the pass man
+      page for more information on this customization. Package maintainers: you
+      may now drop the dependency on pwgen.
+    * Importers: there now are several more importers. More and more folks are
+      moving to pass!
+    * Selectable clipping: you can now specify which line you wish to copy to the
+      clipboard or display with a qrcode when using -c or -q.
+    * Git discovery: The PASSWORD_STORE_GIT environment variable has been removed,
+      and instead pass will automatically choose the git repository closest to the
+      file being modified (but not out of the actual password store itself). This
+      should help people who like to nest git repos for different organizations.
+  * Bug fixes: too many to count.
+- New dependency qrencode
+- Make pwgen a recommended tool
+- Add patch password-store-gpg-2.1.patch to be able to handle new gpg behaviour
+  boo#1028867 (forwarded request 478528 from WernerFink)</comment>
+    <requestid>479463</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>954aef07afe6759a1578b84b421db2f7</srcmd5>
+    <version>1.7</version>
+    <time>1490133069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update password-store-gpg-2.1.patch to upstream version done
+  by Andreas Stieger</comment>
+    <requestid>481393</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>45da1fca05ca58b3140c4e3a7af7a939</srcmd5>
+    <version>1.7.1</version>
+    <time>1510761700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541849</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>456e6bbd325b50437b756bfd11b4e34d</srcmd5>
+    <version>1.7.2</version>
+    <time>1530304284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618071</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>274f6d6e00137252031f5af7ba94d313</srcmd5>
+    <version>1.7.2</version>
+    <time>1533292766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627137</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>242d549ec6c480a576ee41002579915d</srcmd5>
+    <version>1.7.3</version>
+    <time>1533627767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627621</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>070921126d90e9fb043467d30c9b4fef</srcmd5>
+    <version>1.7.3</version>
+    <time>1555053332</time>
+    <user>dimstar_suse</user>
+    <comment>- small fixes to the pass spec file: 
+  * cleanup rpmlint warnings
+  * require xclip instead of recommending it
+  * preserve timestamps of fish completion files during installation</comment>
+    <requestid>693156</requestid>
+  </revision>
+</revisionlist>

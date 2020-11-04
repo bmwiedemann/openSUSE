@@ -1,0 +1,8 @@
+<package name="termrec" project="openSUSE:Factory">
+  <title>Records Videos of Terminal Output</title>
+  <description>&quot;Termrec&quot; is a program for recording &quot;videos&quot; of terminal output.
+
+</description>
+  <devel project="utilities" package="termrec"/>
+  <url>http://angband.pl/termrec.html</url>
+</package>

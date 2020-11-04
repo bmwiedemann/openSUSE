@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3da9ea5afa29d7c729645210e3ef9684</srcmd5>
+    <version>0.8.16</version>
+    <time>1582899634</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop support for old openSUSE versions.</comment>
+    <requestid>779990</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e633b0704bc05f208241a7857d1e4f2d</srcmd5>
+    <version>0.8.18</version>
+    <time>1586112978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.18.</comment>
+    <requestid>791512</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1b979859f452e7054c4b57a2a39597de</srcmd5>
+    <version>0.8.18</version>
+    <time>1593201004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817259</requestid>
+  </revision>
+</revisionlist>

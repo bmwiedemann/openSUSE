@@ -1,0 +1,5 @@
+<package name="rubygem-rubyzip-1.3" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rubyzip-1.3"/>
+</package>

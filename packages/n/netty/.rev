@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dccb57e8de0a0d474c99878cb6391fee</srcmd5>
+    <version>4.1.13</version>
+    <time>1573772354</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748480</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4b34b563bc5fe623940acdb36dcd56d2</srcmd5>
+    <version>4.1.13</version>
+    <time>1578606800</time>
+    <user>dimstar_suse</user>
+    <comment>split pom-only artifacts into separate package</comment>
+    <requestid>762262</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>96d38ed261d9cd3fca8cdb3643cc3f20</srcmd5>
+    <version>4.1.13</version>
+    <time>1586466969</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1168932, CVE-2020-11612, bsc#1169082, CVE-2020-10707</comment>
+    <requestid>792763</requestid>
+  </revision>
+</revisionlist>

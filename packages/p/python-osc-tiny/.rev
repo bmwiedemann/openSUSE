@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>666d22e97da580b24fc54649ac9fea9c</srcmd5>
+    <version>0.1.10</version>
+    <time>1575463952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753188</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d9ffa29d58ba25797221f051949804e</srcmd5>
+    <version>0.1.11</version>
+    <time>1577972584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760366</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e7c44673c01ef9fcf14ddb1b8a81fa7</srcmd5>
+    <version>0.2.1</version>
+    <time>1579194865</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 0.2.1
+- Allow invalid timestamps during changelog parsing
+- Removed dependency of the future package
+- Backport for Python2 compatibility
+- Bugfixes for :py:mod:`osctiny.utils.changelog`</comment>
+    <requestid>763923</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>801c9c66b3f23c1f9f8140034b241873</srcmd5>
+    <version>0.2.2</version>
+    <time>1585342891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789044</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ad7402d98e13aade9934ca78f37735f7</srcmd5>
+    <version>0.2.2</version>
+    <time>1591742742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810903</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>517c12e2029dcb56dec2c2a6f937a867</srcmd5>
+    <version>0.2.3</version>
+    <time>1593458234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817628</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a3bde40aa9198378e312254882a95bf8</srcmd5>
+    <version>0.2.4</version>
+    <time>1600180439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834590</requestid>
+  </revision>
+</revisionlist>

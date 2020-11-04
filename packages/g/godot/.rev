@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85514bb6d033a8f936c423cbbbedb42b</srcmd5>
+    <version>3.1.2</version>
+    <time>1579032465</time>
+    <user>dimstar_suse</user>
+    <comment>Restore package in factory after it got deleted by rampaging ex-maintainer.</comment>
+    <requestid>764133</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bffb1fc800bb860a1fa03d79b9c4fed5</srcmd5>
+    <version>3.2</version>
+    <time>1583446692</time>
+    <user>dimstar_suse</user>
+    <comment>- Added &quot;linker_pie_flag.patch&quot; in order to link with &quot;-pie&quot;.
+    Replaces previous &quot;fix-pie-warning.patch&quot;.
+- &quot;project_certs_fallback.patch&quot; renamed to &quot;certs_fallback.patch&quot;.
+    Modified and adapted to Godot source code changes.
+- Bash completion files &quot;godot&quot;, &quot;godot-headless&quot;, &quot;godot-runner&quot;
+    and &quot;godot-server&quot; added.
+- Package &quot;godot-bash-completion&quot; added.
+- Location of documentation in man page adjusted.
+- godot-rpmlintrc deleted with filter &quot;no-manual-page-for-binary&quot;
+    because this warning doesn't seems to be thrown anymore.
+- Build option &quot;faster_build&quot; introduced to speed up build
+    during tests.
+- Removed patch &quot;fix-pie-warning.patch&quot;
+- Removed export_presets.cfg file as games should supply this file
+- Update to v3.2
+  Added:
+  * Support for importing 3D scense using Assimp
+  * Support for high-level multiplayer API and NAT traversal for 
+    WebRTC
+  * Support for enabling / disabling parts of the editor or specific 
+    nodes
+  * Added language server for GDScript
+  * Added version control integration into the editor
+  * Added a network profiler
+  * Editor is now capped to 20FPS when the window is unfocused
+  * Added MSAA support in the GLES2 renderer
+  * Ability to define script templates on a per-project basis
+  * Ability to limit the minimum and maximum window size
+  * Minimap in the script editor
+  * CSV files can now be imported as non-translation files
+  * Multicast support in PacketPeerUDP
+  * WebSocket improvements.
+      * Support for SSL in WebSocketServer.
+      * WebSocketClient can now use custom SSL certificates 
+        (except on HTML5).
+      * WebSocketClient can now define custom headers.
+  * The editor now features a built-in Web server for testing HTML5 
+    projects
+  * Reimplemented support for embedding project data in the PCK file
+  Changed:
+  * Tabs and space indentation can no longer be mixed in the same 
+    GDScript file
+  * assert() in GDScript must now always be used with parentheses
+  * UDP broadcasting is now disabled by default and must be enabled 
+    by calling 
+    set_broadcast_enabled(true) on the PacketPeerUDP instance
+  * 3D collision shapes and RayCasts are now drawn in gray when disabled
+  * The SCons build system now automatically detects the host platform
+  * Exporting a project PCK or ZIP from the command line must now 
+    be done with the new --export-pack command-line argument
+  * Exported PCK files now contain the Godot patch version in their 
+    header
+  * &quot;Set as Main Scene&quot; context option for scenes in the FileSystem dock
+  Removed:
+  * Unused Panel panelf and panelnc styles.
+  * thekla_atlas dependency, as light baking now relies on xatlas 
+    for UV unwrapping.
+  * Rating icons in the Asset Library
+  * Some editor languages are no longer available due to missing 
+    support for RTL and text shaping in Godot.
+      * Arabic
+      * Bengali
+      * Persian
+      * Hebrew
+      * Hindi
+      * Malayalam
+      * Sinhalese
+      * Tamil
+      * Telugu
+      * Urdu
+  * Android: ARMv6 support.
+  * iOS: ARMv7 support.
+  Fixed:
+  * The Project Manager now remembers the sorting option that was 
+    previously set
+  * Fixed issues with PBR environment mapping
+  * Several fixes to the GLES2 renderer
+  * Fixed importing BMP images
+  * Exporting a project via the command-line now returns a non-zero 
+    exit code if an error occurred during exporting
+  * Fixed autocompletion in the script editor
+  And more:
+  https://github.com/godotengine/godot/blob/3.2/CHANGELOG.md
+</comment>
+    <requestid>781677</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a0c319ee01f57077803deb2e2dff5aa</srcmd5>
+    <version>3.2.1</version>
+    <time>1583949287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1
+  Fixed:
+  * Bullet: Fix detection of concave shape in Area.
+  * Camera2D: Fix inverted use of Camera2D offset_v.
+  * Debugger: Fix crash inspecting freed objects.
+  * Expression: Fix parsing integers as 32-bit.
+  * Particles: Fix undefined behavior with atan in GPU Particles.
+  * TileSet: Hide TileSet properties from Inspector, fixing
+    OOM crash on huge tilesets.
+  * Video: Workaround WebM playback bug after AudioServer latency fixes.
+  Added:
+  * Skin: Add support for named binds.
+  * API documentation updates.
+  * Editor translation updates.
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_changelog_chrono.txt
+- &quot;linker_pie_flag.patch&quot; adjusted.
+</comment>
+    <requestid>783807</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d469360599ee058cf2ba35f56879f335</srcmd5>
+    <version>3.2.2</version>
+    <time>1593292977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817324</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>611f85557a1737f0e1e541f47fd2c756</srcmd5>
+    <version>3.2.2</version>
+    <time>1594293636</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>819617</requestid>
+  </revision>
+</revisionlist>

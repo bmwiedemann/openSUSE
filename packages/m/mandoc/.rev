@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abd1592a372819b5450618b12a3efd8e</srcmd5>
+    <version>1.14.5</version>
+    <time>1579463761</time>
+    <user>dimstar_suse</user>
+    <comment>Add putting /usr/sbin/makewhatis to alternatives.</comment>
+    <requestid>757359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>18637c152e786d28a9fdba5e5b8b880d</srcmd5>
+    <version>1.14.5</version>
+    <time>1580724753</time>
+    <user>dimstar_suse</user>
+    <comment>- get rid of alternatives altogether, just conflict (boo#1160568)
+
+- update-alternatives --remove must be in %postun
+- own mandoc.db
+- add file triggers to update mandoc.db</comment>
+    <requestid>769150</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc6a5c74065bbb3b1fcce1de9f3d9bd0</srcmd5>
+    <version>1.14.5</version>
+    <time>1584446857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784376</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43112a093786f4effbdc46f13aeb7169</srcmd5>
+    <version>1.14.5</version>
+    <time>1600956849</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836372</requestid>
+  </revision>
+</revisionlist>

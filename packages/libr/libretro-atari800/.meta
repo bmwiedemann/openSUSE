@@ -1,0 +1,6 @@
+<package name="libretro-atari800" project="openSUSE:Factory">
+  <title>Atari800 libretro core for Atari 5200 emulation</title>
+  <description>atari800 3.1.0 for libretro/libco WIP
+</description>
+  <devel project="Emulators" package="libretro-atari800"/>
+</package>

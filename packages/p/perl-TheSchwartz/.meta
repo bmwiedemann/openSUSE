@@ -1,0 +1,5 @@
+<package name="perl-TheSchwartz" project="openSUSE:Factory">
+  <title>TheSchwartz- reliable job queue</title>
+  <description>TheSchwartz - This perl module provides a reliable job queue</description>
+  <devel project="devel:languages:perl" package="perl-TheSchwartz"/>
+</package>

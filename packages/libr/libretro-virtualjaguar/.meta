@@ -1,0 +1,7 @@
+<package name="libretro-virtualjaguar" project="openSUSE:Factory">
+  <title>Virtual Jaguar libretro core for Atari Jaguar emulation</title>
+  <description>Port of Virtual Jaguar to Libretro.
+
+This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-virtualjaguar"/>
+</package>

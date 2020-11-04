@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2b4909ade7e460135d2c642e405e43f</srcmd5>
+    <version>2.0.4.15</version>
+    <time>1593006483</time>
+    <user>dimstar_suse</user>
+    <comment>This is the user-space driver to access the BlueField SoC via the rshim
+interface. It provides ways to push boot stream, debug the target or login
+via the virtual console or network interface.</comment>
+    <requestid>814739</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e7d68b1a3f8565fefee2ad09a47948fe</srcmd5>
+    <version>2.0.4.32</version>
+    <time>1601919740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839574</requestid>
+  </revision>
+</revisionlist>

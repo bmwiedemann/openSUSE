@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5ff10d5f056337efd5abf6ae3663221</srcmd5>
+    <version>1.0.0b2</version>
+    <time>1588971949</time>
+    <user>dimstar_suse</user>
+    <comment>- New package part of the Azure SDK</comment>
+    <requestid>801198</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2d107a89207e533a7848002701b1c46</srcmd5>
+    <version>11.0.0</version>
+    <time>1601652169</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 11.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 830772 from glaubitz)</comment>
+    <requestid>830909</requestid>
+  </revision>
+</revisionlist>

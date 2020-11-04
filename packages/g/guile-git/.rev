@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6ed10cc895849916dd4058f1e807a19</srcmd5>
+    <version>0.0</version>
+    <time>1520853102</time>
+    <user>dimstar_suse</user>
+    <comment>guile-git, git module for guile language
+dependency of guix</comment>
+    <requestid>585327</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b1b9782138495c29b72462daf6a74da</srcmd5>
+    <version>0.1.0</version>
+    <time>1537264051</time>
+    <user>maxlin_factory</user>
+    <comment>- remove needless _service and tar file 
+- bump to 0.1.0:
+  - support remote-ls
+  - support repository-close
+  - small fixes
+- switch from git service to release tarball
+- order build requires alphabetical
+- install info files
+- COPYING now as license 
+</comment>
+    <requestid>636190</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a5036b321802aafd81fb57170ed2bb5</srcmd5>
+    <version>0.2.0</version>
+    <time>1551276466</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679503</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b8cc7e077cbbb6ee4fb235cfb48dcbb</srcmd5>
+    <version>0.3.0</version>
+    <time>1579032709</time>
+    <user>dimstar_suse</user>
+    <comment>Update and make ready for Guile 3.0</comment>
+    <requestid>764390</requestid>
+  </revision>
+</revisionlist>

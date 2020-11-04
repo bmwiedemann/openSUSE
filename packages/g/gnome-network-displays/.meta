@@ -1,0 +1,15 @@
+<package name="gnome-network-displays" project="openSUSE:Factory">
+  <title>Miracast implementation for GNOME</title>
+  <description>This is an experimental implementation of Wi-Fi Display (aka Miracast).
+The application will stream the selected monitor if the mutter screencast
+portal is available. If it is unavailable, a fallback to X11 based frame
+grabbing will happen. As such, it should work fine in almost all setups.
+To get audio streaming, you need to change the audio output in pulseaudio
+to use the created &quot;Network-Displays&quot; sink.
+To use it, you will need:
+  * openh264 or x264
+  * For audio supporting using AAC one of fdkaacenc, faac or avenc_aac
+  * NetworkManager version &gt; 1.15.2</description>
+  <devel project="GNOME:Apps" package="gnome-network-displays"/>
+  <url>https://gitlab.gnome.org/GNOME/gnome-network-displays</url>
+</package>

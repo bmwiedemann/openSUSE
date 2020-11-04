@@ -1,0 +1,12 @@
+<package name="git-filter-repo" project="openSUSE:Factory">
+  <title>Quickly rewrite git repository history (git-filter-branch replacement)</title>
+  <description>git filter-repo is a versatile tool for rewriting history, which includes
+capabilities not found anywhere else. It roughly falls into the same space of
+tool as git filter-branch but without the capitulation-inducing poor
+performance, with far more capabilities, and with a design that scales
+usability-wise beyond trivial rewriting cases.
+
+</description>
+  <devel project="devel:tools:scm" package="git-filter-repo"/>
+  <url>https://github.com/newren/git-filter-repo</url>
+</package>

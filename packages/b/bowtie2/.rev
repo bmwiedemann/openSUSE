@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30740f21760a06406402979493de2cb7</srcmd5>
+    <version>2.3.5.1</version>
+    <time>1575106589</time>
+    <user>dimstar_suse</user>
+    <comment>Bowtie2 is an ultrafast, memory-efficient short read aligner.</comment>
+    <requestid>746523</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b3aa8e65bbc2e973153d4ccbf250fe5</srcmd5>
+    <version>2.3.5.1</version>
+    <time>1589403411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805305</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07926a768b04bfc4538c75a48056d9bd</srcmd5>
+    <version>2.4.1</version>
+    <time>1590780227</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809909</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e14bdc1d9b24ba97b37e06cb4468bd3e</srcmd5>
+    <version>2.4.1</version>
+    <time>1592245958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814674</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7923a395730087f07f8420f0919e6664</srcmd5>
+    <version>2.4.1</version>
+    <time>1603202931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842506</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>48b006fb2672b2f91b82f97f39748888</srcmd5>
+    <version>2.4.2</version>
+    <time>1603448519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843449</requestid>
+  </revision>
+</revisionlist>

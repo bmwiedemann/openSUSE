@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5079a6bb510dbb4c08060800d16f682b</srcmd5>
+    <version>0~20130329</version>
+    <time>1366357772</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.
+</comment>
+    <requestid>163825</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>273d70093e1f58e059f7f900b04b1317</srcmd5>
+    <version>0~20130609</version>
+    <time>1375284220</time>
+    <user>coolo</user>
+    <comment>update to 0~20130609
+part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185035</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>273d70093e1f58e059f7f900b04b1317</srcmd5>
+    <version>0~20130609</version>
+    <time>1379662915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afe64455d676b6ccae42423d745a2ffe</srcmd5>
+    <version>0~20130809</version>
+    <time>1383810019</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>205882</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e4f56177ce751aecac62a918b33a2e00</srcmd5>
+    <version>0~20130809</version>
+    <time>1386156446</time>
+    <user>coolo</user>
+    <comment>- don't buildrequire ourselves</comment>
+    <requestid>209311</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d27e441b4c635b89d3715972d3b3c5b7</srcmd5>
+    <version>0~20140624</version>
+    <time>1408089344</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244701</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>d27e441b4c635b89d3715972d3b3c5b7</srcmd5>
+    <version>0~20140624</version>
+    <time>1409301518</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecdb8616a73df822916fceea141014a5</srcmd5>
+    <version>0~20150101</version>
+    <time>1420927501</time>
+    <user>dimstar_suse</user>
+    <comment>Part of libyal 2015 refresh - may need to go to ring D.  libcstring is a dependency and is currently in ring D.</comment>
+    <requestid>280460</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f5df4929a965ac6a7baeae0a2d7d5bcd</srcmd5>
+    <version>0~20170105</version>
+    <time>1487681253</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458545</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0b5fc4e470de34b2818b2fdf1d9e56b</srcmd5>
+    <version>0~20190314</version>
+    <time>1557141723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693953</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c60fa5e97837cce12eb04c65b405e382</srcmd5>
+    <version>1.0.0</version>
+    <time>1587467102</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with all the other kubernetes multi-version stuff</comment>
+    <requestid>793837</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6260f2ba719a841dfdbfa0ba650f811e</srcmd5>
+    <version>1.0.0</version>
+    <time>1587659947</time>
+    <user>dimstar_suse</user>
+    <comment>- Add LICENSE</comment>
+    <requestid>796531</requestid>
+  </revision>
+</revisionlist>

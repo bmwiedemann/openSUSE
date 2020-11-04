@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6f1a174f087ad04dd9a9b2a983117ea</srcmd5>
+    <version>0.8.4</version>
+    <time>1410795652</time>
+    <user>coolo</user>
+    <comment>I want to maintain python-compizconfig in factory and would like to use X11:Compiz as development base. rev48.</comment>
+    <requestid>248980</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>66708d248a2bea3faab4b84d459ccb8d</srcmd5>
+    <version>0.8.9</version>
+    <time>1448553685</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345340</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e6772326820ef3006104ee8edc375cf0</srcmd5>
+    <version>0.8.9</version>
+    <time>1450856997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>349696</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bcb8c6d59b1fc7a45fb2f8227f797144</srcmd5>
+    <version>0.8.12</version>
+    <time>1456434204</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>360624</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e119fed5415552cb68a4ea811724d557</srcmd5>
+    <version>0.8.12.1</version>
+    <time>1461855383</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391424</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6952738d9c3ccc9bd29a9268d40f17ac</srcmd5>
+    <version>0.8.14</version>
+    <time>1494938766</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>494987</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1fd3c475c4bd18cd521a7a84bf10d16f</srcmd5>
+    <version>0.8.14</version>
+    <time>1498742460</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>506985</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5447de77a497afbfec197a7059f39781</srcmd5>
+    <version>0.8.14</version>
+    <time>1527084542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611191</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>625046e35e76348a9429f456c789cd8f</srcmd5>
+    <version>0.8.14</version>
+    <time>1530087699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618980</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e0f6aa0a2d6ae0a63a70a094c320acc0</srcmd5>
+    <version>0.8.16</version>
+    <time>1543223970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.16.</comment>
+    <requestid>648278</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3ab57a7235be625b80fe01ee3cbd4b78</srcmd5>
+    <version>0.8.16</version>
+    <time>1554833916</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Python 3.7 compatibility issues.</comment>
+    <requestid>692383</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a9e88bc51aa70c3c72646d1fc107eb10</srcmd5>
+    <version>0.8.18</version>
+    <time>1586113003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.18.</comment>
+    <requestid>791519</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6b38dfedc3b9231f81e244756fd18011</srcmd5>
+    <version>0.8.18</version>
+    <time>1588105973</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>798698</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6c628bcd333670fcf1a8e4ba2427fae</srcmd5>
+    <version>2.9.0</version>
+    <time>1580373734</time>
+    <user>dimstar_suse</user>
+    <comment>- SDK for Oracle Cloud Infrastructure access</comment>
+    <requestid>768455</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7db28acef4da9afd57ac74da23c8c9bb</srcmd5>
+    <version>2.10.3</version>
+    <time>1581087525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>771584</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b9e10825ca160e36c8e18ce7a3457c1</srcmd5>
+    <version>2.11.0</version>
+    <time>1584530971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785587</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>caa51f96cc4ff6b9fcff1279990ce9ab</srcmd5>
+    <version>2.11.0</version>
+    <time>1587659749</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796486</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e46f63ebabc931a35d5ef160a29c17fd</srcmd5>
+    <version>2.13.0</version>
+    <time>1588023587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798195</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>42df0a287500f2ce6aa2974e79987fc3</srcmd5>
+    <version>2.14.3</version>
+    <time>1591209123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.14.3
+  * Support for returning the private IP of a private
+    endpoint database in the Database service
+  * Support for native JWT validation in the API Gateway service
+- from version 2.14.2
+  * Support for drift detection in the Resource Manager service
+- from version 2.14.1
+  * Support for updating the license type of database systems in the Database service
+  * Support for updating the version of 19c autonomous databases in the Database service
+  * Support for backup and restore functionality in the Key Management service
+  * Support for reports in the Marketplace service
+  * Support for calling Oracle Cloud Infrastructure services in the ap-hyderabad-1 region
+- from version 2.14.0
+   * Support for the MySQL Database service
+   * Support for updating the database home of a database in the Database service
+   * Support for government regions in the Marketplace service
+   * Support for starting and stopping instances in the Integration service
+   * Support for installing Windows updates in the OS Management service
+   * Deleted models ErrataId, ManagedInstanceUpdateDetails and UpdatablePackageSummary
+     from the os_management service
+- Update file list to fix Python imports for unvendoring
+- Update ops_relax-python-depends.patch to drop configparser from Python requirements</comment>
+    <requestid>810918</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2742e5a9372f1e008e54a3ae307d5ed6</srcmd5>
+    <version>2.17.2</version>
+    <time>1594894477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820873</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>edaba4787cc2b6d5d4ec704ecd0a51ee</srcmd5>
+    <version>2.21.3</version>
+    <time>1599771170</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21.3
+  * Support for Logging Service
+  * Support for Logging Analytics Service
+  * Support for Logging Search Service
+  * Support for Logging Ingestion Service
+  * Support for Management Agent Cloud Service
+  * Support for Management Dashboard Service
+  * Support for Service Connector Hub service
+  * Support for Policy based Request/Response transformation in the API Gateway Service
+  * Support for sending diagnostic interrupt to a VM instance in the Compute Service
+  * Support for custom Database Software Images in the Database Service
+  * Support for getting and listing container database patches for Autonomous
+    Container Database resources in the Database Service
+  * Support for updating patch id on maintenance run for Autonomous
+    Container Database resources in the Database Service
+  * Support for searching Oracle Cloud resources across tenancies in the Search Service
+  * Documentation update for Logging Policies in the API Gateway service
+  * Support for Python SDK in Cloud Shell
+- from version 2.21.2
+  * Support for custom boot volume size and other node pool updates in
+    the Container Engine for Kubernetes service
+  * Support for Data Guard on Exadata Cloud at Customer VM clusters in the Database service
+  * Support for stopping VM instances after scheduled maintenance
+    or hypervisor reboots in the Compute service
+  * Support for creating and managing private endpoints in the Data Flow service
+- from version 2.21.1
+  * Support for custom boot volume size and other node pool updates
+    in the Container Engine for Kubernetes service
+  * Support for Data Guard on Exadata Cloud at Customer VM clusters in the Database service
+  * Support for stopping VM instances after scheduled maintenance or (forwarded request 833317 from glaubitz)</comment>
+    <requestid>833323</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9fa3923c057623c6b9b43515ba41c090</srcmd5>
+    <version>2.23.0</version>
+    <time>1602857604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.23.0
+  * Support for API definitions in the API Gateway service
+  * Support for pattern-based logical entities, namespace-bound custom
+    properties, and faceted search in the Data Catalog service
+  * Support for autonomous Data Guard on autonomous infrastructure
+    in the Database service
+  * Support for creating a Data Guard association on an existing standby
+    database home in the Database service
+  * Support for upgrading cloud VM cluster grid infrastructure
+    in the Database service
+  * Attribute `is_quick_start` in models `CreateLogSavedSearchDetails`,
+    `LogSavedSearchSummary` and `LogSavedSearch` is removed from the
+     Logging Management service
+  * Lifecycle State `DELETED` is removed from the Logging Management service
+- from version 2.22.0 - 2020-10-06
+  * Support for calling Oracle Cloud Infrastructure services in the me-dubai-1 region
+  * Support for rotating keys on autonomous container databases and autonomous
+    databases in the Database service
+  * Support for cloud Exadata infrastructure and cloud VM clusters
+    in the Database service
+  * Support for controlling the display of tax banners in the Marketplace service
+  * Support for application references, patch changes, generic JDBC and MySQL data asset
+    types, and publishing tasks to OCI Dataflow in the Data Integration service
+  * Support for disabling the legacy Instance Metadata endpoints v1
+    in the Compute service
+  * Support for instance configurations specifying instance options
+    in the Compute Management service
+  * The attribute `model_type` in `TypedObject` model now raises `ValueError`
+    when provided with an invalid value. Please see the documentation for a
+    list of allowed values. (forwarded request 841901 from glaubitz)</comment>
+    <requestid>841907</requestid>
+  </revision>
+</revisionlist>

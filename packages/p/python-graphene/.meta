@@ -1,0 +1,5 @@
+<package name="python-graphene" project="openSUSE:Factory">
+  <title>GraphQL Framework for Python</title>
+  <description>Graphene is a Python library for building GraphQL schemas/types fast and easily.</description>
+  <devel project="devel:languages:python" package="python-graphene"/>
+</package>

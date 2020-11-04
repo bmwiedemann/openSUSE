@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d7f9e8ad7b7af5ec99e823dd601e6fc</srcmd5>
+    <version>0.9.2</version>
+    <time>1468579688</time>
+    <user>dimstar_suse</user>
+    <comment>ocaml 4.03 (fate#320836)</comment>
+    <requestid>404518</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84725c505b949c8dd0fbb5bc496b2f21</srcmd5>
+    <version>0.11.0</version>
+    <time>1503061410</time>
+    <user>dimstar_suse</user>
+    <comment>- Use Group: Development/Languages/OCaml
+
+- Update to version 0.11.0
+  See included Changes for details
+
+- Wrap specfile conditionals to fix quilt setup
+
+- Remove autodeps for pre openSUSE 12.1 releases</comment>
+    <requestid>517019</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>25a1aae982bf046c8c4f0f7024552a1b</srcmd5>
+    <version>0.14.0</version>
+    <time>1570448442</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>734136</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c8ffdd4b24a35722f06be4d54d2f0a47</srcmd5>
+    <version>0.14.0</version>
+    <time>1582725699</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros</comment>
+    <requestid>778535</requestid>
+  </revision>
+</revisionlist>

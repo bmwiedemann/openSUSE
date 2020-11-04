@@ -1,0 +1,1683 @@
+<revisionlist>
+  <revision rev="1" vrev="30">
+    <srcmd5>75775efc02d2260a127de4d1e4c0165e</srcmd5>
+    <version>0.5.4</version>
+    <time>1168562099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="31">
+    <srcmd5>5c8e3940ef4b6f7c450e673e14426c66</srcmd5>
+    <version>0.5.4</version>
+    <time>1168689153</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="32">
+    <srcmd5>4013b7f24ac57faab33c744d73609c41</srcmd5>
+    <version>0.5.4</version>
+    <time>1168902904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="33">
+    <srcmd5>be5dc55ca6efa3e2c785d0f542bfeb51</srcmd5>
+    <version>0.5.4</version>
+    <time>1169231034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="34">
+    <srcmd5>e6753f2b81af804862ab86c5a637feae</srcmd5>
+    <version>0.5.4</version>
+    <time>1170686456</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="39">
+    <srcmd5>e9e27474cf124e9d81ed4b0c96084e9d</srcmd5>
+    <version>0.5.4</version>
+    <time>1173168611</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="41">
+    <srcmd5>38ff6a804615817785f3cb690ba7dd4a</srcmd5>
+    <version>0.5.4</version>
+    <time>1173568111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>744e4479782984ed143b9ee597c251bb</srcmd5>
+    <version>0.6</version>
+    <time>1191947075</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b6f77dbb444d6f17e4e9873ffd74fdfe</srcmd5>
+    <version>0.6</version>
+    <time>1192122469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6f1c4e9fd7c356d21d167bacfdf18daf</srcmd5>
+    <version>0.6.1</version>
+    <time>1193273051</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b298787115342c0140c023eca589cb56</srcmd5>
+    <version>0.6.1</version>
+    <time>1193847230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>93f2a55570badb5c2804277b956969ff</srcmd5>
+    <version>0.6.1</version>
+    <time>1194985711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>955dbff779bd5cf028cb56a13c1a41ae</srcmd5>
+    <version>0.6.1</version>
+    <time>1201567468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3972d181791a3d6ad9a5bebb51c1bbfb</srcmd5>
+    <version>0.6.4</version>
+    <time>1201905123</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>226e598d31395f4b473d9914ed922b86</srcmd5>
+    <version>0.8.0</version>
+    <time>1207771685</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d26e629e27da1b1ca63c4abbaf3e1f5e</srcmd5>
+    <version>0.8.0</version>
+    <time>1208023954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>978fa2a43be8b64f0ee41caa9d3a1f93</srcmd5>
+    <version>0.8.0</version>
+    <time>1208698040</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b94e5eeaa2e0b2de0eb4ba8c3d7ecaa</srcmd5>
+    <version>0.8.1</version>
+    <time>1209647427</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9c2bf57d860d57670a740cbdbd8c5b3a</srcmd5>
+    <version>0.8.1</version>
+    <time>1210982700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>e59533181af3625355c38ee4fa994fb5</srcmd5>
+    <version>0.8.1</version>
+    <time>1211413410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4bd099b0eed18d9f2747441b2caa16c2</srcmd5>
+    <version>0.8.2</version>
+    <time>1212681364</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>63d1e4d8e716539c2b24a004bdeefd77</srcmd5>
+    <version>0.8.2</version>
+    <time>1215811229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>75a9f38f79d20b7db0224c61b2ed0cda</srcmd5>
+    <version>0.8.5</version>
+    <time>1218845438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>bc568ac44bc8e907fa144c7c57a4c036</srcmd5>
+    <version>0.8.5</version>
+    <time>1220052126</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9cfe173a4fe1c3e07b51aab976445418</srcmd5>
+    <version>0.8.7</version>
+    <time>1221310916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>925c804d2236556ef98f3dc40a4aaa09</srcmd5>
+    <version>0.10.1</version>
+    <time>1227883924</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cb92b4b0a55ff8dbe0ac43a9c3d91fcc</srcmd5>
+    <version>0.10.3</version>
+    <time>1233940368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8485d04637ad10e1d0d58cd819314c01</srcmd5>
+    <version>0.10.4</version>
+    <time>1234474494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a92e505ebb192c07b4d27ae7b9b37c93</srcmd5>
+    <version>0.10.4</version>
+    <time>1235647204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5fbb06a0b1eaa5f076bedd48fa032b33</srcmd5>
+    <version>0.10.5</version>
+    <time>1237305450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>bbea8004fce6cc0e303781fa3c111ca5</srcmd5>
+    <version>0.10.5</version>
+    <time>1238688608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6e6ccdbda0208597f472191d441184b6</srcmd5>
+    <version>0.10.6</version>
+    <time>1240056207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dcc949660dc1dc30391f85e47e54f890</srcmd5>
+    <version>0.11.0</version>
+    <time>1242688913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a43f1f5c7d05d5311494bc4109f7c5fd</srcmd5>
+    <version>0.11.0</version>
+    <time>1243466375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e353613e7017bd308afdd00c2df8452c</srcmd5>
+    <version>0.11.1</version>
+    <time>1248880495</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>78e2b4eee054b2e4cd97676ab7e14eb4</srcmd5>
+    <version>0.11.2</version>
+    <time>1249574759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b357489704fc95ab98ce9f31bcb6b42f</srcmd5>
+    <version>0.11.3</version>
+    <time>1251500893</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 19173 from user coolo
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0603a1167d26c52d7388948adcd6016b</srcmd5>
+    <version>0.12.0</version>
+    <time>1252579603</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 20267 from user vuntz
+</comment>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fd1594965f7cc1d12e3c1eb4443b5da4</srcmd5>
+    <version>0.12.0</version>
+    <time>1254520762</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 21586 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>fd1594965f7cc1d12e3c1eb4443b5da4</srcmd5>
+    <version>0.12.0</version>
+    <time>1254520762</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 21586 from user wstephenson
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e539d6b111ef539d81cfcbf2556113dc</srcmd5>
+    <version>0.12.1</version>
+    <time>1258368192</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 24268 from user vuntz
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>ce405b14e35f1ed29edf90146e5f72ba</srcmd5>
+    <version>0.12.2</version>
+    <time>1260270336</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 25681 from user vuntz
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a63f29430cf6ab6dbbbc8ddedf54777e</srcmd5>
+    <version>0.12.3</version>
+    <time>1261831313</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 27634 from user vuntz
+</comment>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>484e720babbc90d9965f45035491b02a</srcmd5>
+    <version>0.12.3</version>
+    <time>1268925746</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>e756c37bfc80852b94f7156a391ae550</srcmd5>
+    <version>0.12.3</version>
+    <time>1274792208</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 40454 from user coolo
+</comment>
+    <requestid>40454</requestid>
+  </revision>
+  <revision rev="46" vrev="5">
+    <srcmd5>e756c37bfc80852b94f7156a391ae550</srcmd5>
+    <version>0.12.3</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>e756c37bfc80852b94f7156a391ae550</srcmd5>
+    <version>0.12.3</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>88570b967fc10088177bfafa961be3c0</srcmd5>
+    <version>0.14.1</version>
+    <time>1279650855</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 43458 from user coolo
+</comment>
+    <requestid>43458</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f32c63323f88266e9504d1f57a546e08</srcmd5>
+    <version>0.14.2</version>
+    <time>1282664113</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 45837 from user vuntz
+</comment>
+    <requestid>45837</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>378361085b00f0456cbd402bcd2bb588</srcmd5>
+    <version>unknown</version>
+    <time>1284370926</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 47883 from user vuntz
+</comment>
+    <requestid>47883</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>c5114a17c80e872bf397209f5abd9607</srcmd5>
+    <version>0.14.4</version>
+    <time>1286791807</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/poppler based on submit request 50135 from user vuntz
+</comment>
+    <requestid>50135</requestid>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>7690dff03c6e6a6ff91c7fc0c9f59cc6</srcmd5>
+    <version>0.14.4</version>
+    <time>1289569141</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52807 from user coolo
+</comment>
+    <requestid>52807</requestid>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>edc2701353a512717fb9cbf3f75f5e3c</srcmd5>
+    <version>0.14.4</version>
+    <time>1289569145</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52807
+</comment>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>edc2701353a512717fb9cbf3f75f5e3c</srcmd5>
+    <version>0.14.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>e0a86781e2548e537c7c031ab1dbd977</srcmd5>
+    <version>0.16.2</version>
+    <time>1299227033</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63365 from user vuntz
+</comment>
+    <requestid>63365</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>f3e6b3df52bffdb6652980d262462c75</srcmd5>
+    <version>0.16.2</version>
+    <time>1299227045</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63365
+</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>58cf4f2c31e9a6df85c8cdda435d46c9</srcmd5>
+    <version>0.16.5</version>
+    <time>1305630303</time>
+    <user>darix</user>
+    <comment>    - Increase precision in PS output device
+    - Workaround bug when converting pdf to ps with level1
+      (fdo#31926)
+    - Fix crash in Splash output device in some broken pdf
+    - Fix infinite loop in some broken files
+    - Fix rendering of some substituted fonts (fdo#34522)</comment>
+    <requestid>70416</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>f49f87d38deb13c28673412edac6589c</srcmd5>
+    <version>0.16.5</version>
+    <time>1305630313</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 70416
+</comment>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>0d3b42fc4a675897482e005c3d2226bf</srcmd5>
+    <version>0.16.5</version>
+    <time>1306144792</time>
+    <user>saschpe</user>
+    <comment>Add poppler-0.16.5-disable-demo.patch: disable glib demo, its not used and not 64bit safe. (forwarded request 70784 from namtrac)</comment>
+    <requestid>70866</requestid>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>b5dd7d97da90708bbfdd860213c6c270</srcmd5>
+    <version>0.16.5</version>
+    <time>1306144806</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70866
+</comment>
+  </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>bcc58e88b94e1a47400d63b1125a5386</srcmd5>
+    <version>0.16.5</version>
+    <time>1306157195</time>
+    <user>saschpe</user>
+    <comment>- Fix patch to modify Makefile.am
+- Fix patch reason, add a link to upstream bug number (forwarded request 71023 from namtrac)</comment>
+    <requestid>71025</requestid>
+  </revision>
+  <revision rev="62" vrev="6">
+    <srcmd5>900a23ab57f70cc8d49cf1a0d509bc78</srcmd5>
+    <version>0.16.5</version>
+    <time>1306157206</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71025
+</comment>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>5e1e3b0943c0cf4d43670a14c4b16314</srcmd5>
+    <version>0.17.4</version>
+    <time>1316460311</time>
+    <user>lrupp</user>
+    <comment>Update to 0.17.4; 0.18.0 will be released on Sept 26th (forwarded request 82368 from vuntz)</comment>
+    <requestid>82965</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>83358f49950e8c369b9f4afa2d895d74</srcmd5>
+    <version>0.18.0</version>
+    <time>1317543917</time>
+    <user>lrupp</user>
+    <comment>Update to 0.18.0 (forwarded request 85030 from vuntz)</comment>
+    <requestid>85074</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>83358f49950e8c369b9f4afa2d895d74</srcmd5>
+    <version>0.18.0</version>
+    <time>1319182364</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d2259f2fcba4d57dccfd3528a7e80296</srcmd5>
+    <version>0.18.1</version>
+    <time>1321460454</time>
+    <user>coolo</user>
+    <comment>Update to 0.18.1 (forwarded request 91706 from vuntz)</comment>
+    <requestid>91725</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>1d55a972c99c03738782afd5136a6226</srcmd5>
+    <version>0.18.1</version>
+    <time>1323193949</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>c7ab74280f92f2a1ff8c5cdb52cf6e38</srcmd5>
+    <version>0.18.1</version>
+    <time>1323193950</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7dbf1c9cc1e5d61fc7026ad774f3c950</srcmd5>
+    <version>0.18.2</version>
+    <time>1325846798</time>
+    <user>coolo</user>
+    <comment>Update to 0.18.2 (forwarded request 98767 from vuntz)</comment>
+    <requestid>98770</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>d7988e90be208bde4a8f4e747df994a0</srcmd5>
+    <version>0.18.2</version>
+    <time>1326292667</time>
+    <user>coolo</user>
+    <comment>Split typelib file out (forwarded request 99429 from vuntz)</comment>
+    <requestid>99436</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>537d46b956321d8125025fd0373df664</srcmd5>
+    <version>0.18.3</version>
+    <time>1326962643</time>
+    <user>coolo</user>
+    <comment>Update to 0.18.3 (forwarded request 100230 from vuntz)</comment>
+    <requestid>100469</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>5221d2d892973e0e6a45432b5756b132</srcmd5>
+    <version>0.18.4</version>
+    <time>1329476904</time>
+    <user>coolo</user>
+    <comment>Update to 0.18.4 (forwarded request 105360 from vuntz)</comment>
+    <requestid>105622</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>7cc1228cfdb921615ccf7c28ff520f45</srcmd5>
+    <version>0.18.4</version>
+    <time>1331147422</time>
+    <user>coolo</user>
+    <comment>Enabled build requirement for openjpeg (forwarded request 107935 from adra)</comment>
+    <requestid>107971</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c67ceec96a00435cd9333ccc6ca0cf6a</srcmd5>
+    <version>0.20.0</version>
+    <time>1337163978</time>
+    <user>coolo</user>
+    <comment>Update to 0.20.0</comment>
+    <requestid>120941</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>c67ceec96a00435cd9333ccc6ca0cf6a</srcmd5>
+    <version>0.20.0</version>
+    <time>1340184011</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>7fe7cffe1ac7f4390bf277e3f761c04c</srcmd5>
+    <version>0.20.2</version>
+    <time>1344524115</time>
+    <user>coolo</user>
+    <comment>Update to version 0.20.2
+
+This is my first submit request so sorry if I'm doing stuff wrong
+
+I've been bitten by current Factory's okular stopping with Bogus memory
+allocation size on certain PDFs, see
+https://bugs.kde.org/show_bug.cgi?id=304051. This is actually a poppler bug,
+see https://bugs.freedesktop.org/show_bug.cgi?id=49523, which is fixed in git
+on the 0.20 branch but not available in a release yet. I expect 0.20.3 to be
+out around August 10 and then I'll submit another update to that version. I
+did this submission separately to try out the process and see how it goes.
+
+There's an SO name bump unfortunately, I don't know if that means this update
+can't go into 12.2. (forwarded request 129489 from cataliniacob)</comment>
+    <requestid>129529</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>5bc68e59532c9528f37e7093fa84d303</srcmd5>
+    <version>0.20.2</version>
+    <time>1345630588</time>
+    <user>namtrac</user>
+    <comment>license update: GPL-2.0 or GPL-3.0
+poppler has a dual license (either GPL-2.0 or GPL-3.0) and emphasise that it does not use &quot;or later&quot; (forwarded request 131302 from babelworx)</comment>
+    <requestid>131336</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b98f197b4971c63e1e87e6ff2fa30566</srcmd5>
+    <version>0.20.3</version>
+    <time>1348149615</time>
+    <user>coolo</user>
+    <comment>Resubmit of sr#133366.
+
+Now I know I mangle old changelog entries, but this HAS to be done, if not future maintenance of poppler and poppler-qt will become a pita.
+
+The 2 last SR that got acked of poppler should have been rejected, since pre-checkin.sh had not been run, and hence we got the 2 specs and changes files out of sync.  (forwarded request 134540 from Zaitor)</comment>
+    <requestid>134688</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>4b8f072e5260c2c5261fee42f3f7f8ae</srcmd5>
+    <version>0.21.0</version>
+    <time>1350393839</time>
+    <user>coolo</user>
+    <comment>Update and soname bump (forwarded request 138106 from Zaitor)</comment>
+    <requestid>138145</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b48fd9122b486633ca37a40aca832044</srcmd5>
+    <version>0.21.1</version>
+    <time>1352700286</time>
+    <user>coolo</user>
+    <comment>Update to version 0.21.1 (forwarded request 140783 from sumski)</comment>
+    <requestid>140806</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>e2a55f78f4a6519420ab6e57fcae6a5f</srcmd5>
+    <version>0.21.4</version>
+    <time>1355997972</time>
+    <user>coolo</user>
+    <comment>Update to 0.21.4 - release candidate for new stable 0.22 (forwarded request 145745 from Zaitor)</comment>
+    <requestid>145946</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>65f786cc36e674d6deeb91b8e1f79d64</srcmd5>
+    <version>0.22.0</version>
+    <time>1357576409</time>
+    <user>coolo</user>
+    <comment>Update to version 0.22.0 (forwarded request 146974 from sumski)</comment>
+    <requestid>146976</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>65f786cc36e674d6deeb91b8e1f79d64</srcmd5>
+    <version>0.22.0</version>
+    <time>1359109940</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c3b17d85e57f5decb70b30b99385376c</srcmd5>
+    <version>0.22.1</version>
+    <time>1361888630</time>
+    <user>coolo</user>
+    <comment>Update to version 0.22.1, stable bugfix update, no .so name bump (forwarded request 156359 from Zaitor)</comment>
+    <requestid>156364</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>c99150e6e38849e516c5704013216c87</srcmd5>
+    <version>0.22.1</version>
+    <time>1362414812</time>
+    <user>coolo</user>
+    <comment>Add security bug references
+
+- Following security bugs are fixed: CVE-2013-1788, CVE-2013-1789,
+  CVE-2013-1790 (bnc#806793)</comment>
+    <requestid>157010</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>3626c03b6e499d7f821b78c9cfa891ff</srcmd5>
+    <version>0.22.2</version>
+    <time>1363105107</time>
+    <user>coolo</user>
+    <comment>Soname bumped to 35.
+
+- Update to version 0.22.2:
+  + core:
+    - Correct rendering of underline and strike out annotations
+      (fdo#61518)
+    - Workaround broken jpeg stream definitions (fdo#61994)
+    - SplashOutputDev: Restore CTM on early exits (fdo#61413)
+    - SplashOutputDev: Make sure we don't try to paint in x &lt; 0
+      (kde#315432)
+    - Fix latin page labels. (fdo#61034)
+    - Fix minor valgrind warning
+  + utils:
+    - pdfimages: Fix extraction of some images (fdo#61168)
+  + build system:
+    - Fix the build with automake-1.13</comment>
+    <requestid>158685</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>297bbc311a476dd554b7e396ddc35f4f</srcmd5>
+    <version>0.22.3</version>
+    <time>1366183492</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.22.3 (forwarded request 170922 from Zaitor)</comment>
+    <requestid>170935</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>2f80711db0f35d09b08873e5727bb1f2</srcmd5>
+    <version>0.22.4</version>
+    <time>1370430472</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.22.4, latest stable (forwarded request 177129 from Zaitor)</comment>
+    <requestid>177220</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7dd5dc17e7a0ed295ba0b5ab11caee55</srcmd5>
+    <version>0.22.5</version>
+    <time>1372139284</time>
+    <user>coolo</user>
+    <comment>Update to 0.22.5, latest stable release (forwarded request 180693 from Zaitor)</comment>
+    <requestid>180710</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f9d052961dd5448cb54e0efe949c2f78</srcmd5>
+    <version>0.23.3</version>
+    <time>1373542212</time>
+    <user>coolo</user>
+    <comment>Update to 0.23.3 - 0.24 beta3 - needed for evince 3.9.3 (forwarded request 182681 from dimstar)</comment>
+    <requestid>182691</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>87689ccedbacb354943f6ff47693dfad</srcmd5>
+    <version>0.24.0</version>
+    <time>1375372534</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.24.0 (forwarded request 184964 from Zaitor)</comment>
+    <requestid>185059</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>6dffe7cce75eac280bc4309aadcc8d32</srcmd5>
+    <version>0.24.0</version>
+    <time>1378134165</time>
+    <user>coolo</user>
+    <comment>Adjust spec files so they build correctly the Qt5 port (forwarded request 196838 from sumski)</comment>
+    <requestid>196862</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>6e14e8243f94eb0e3fab68fbbfd918d2</srcmd5>
+    <version>0.24.1</version>
+    <time>1378717017</time>
+    <user>coolo</user>
+    <comment>Update to version 0.24.1 -- stable bugfix release. (forwarded request 197843 from Zaitor)</comment>
+    <requestid>197846</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>6e14e8243f94eb0e3fab68fbbfd918d2</srcmd5>
+    <version>0.24.1</version>
+    <time>1379664047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>8ef3fcb0ea5c426129085987bd23333e</srcmd5>
+    <version>0.24.2</version>
+    <time>1380475666</time>
+    <user>coolo</user>
+    <comment>Update to version 0.24.2, stable bugfix release, wanted for 13.1 (forwarded request 201309 from Zaitor)</comment>
+    <requestid>201371</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>76f877215a91e69282e1b7f41b44a964</srcmd5>
+    <version>0.24.3</version>
+    <time>1383211538</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.24.3, please fasttrack it as it is needed for 13.1 RC2 (has security fixes)  (forwarded request 205171 from Zaitor)</comment>
+    <requestid>205172</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>e245b59cb87ae90a0b49b7e2c38536d0</srcmd5>
+    <version>0.24.4</version>
+    <time>1386527648</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.24.4 (forwarded request 209772 from Zaitor)</comment>
+    <requestid>209803</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>e7e62e756cc5830c87bef8e04e5ba09d</srcmd5>
+    <version>0.24.5</version>
+    <time>1390231469</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.24.5, stable branch, minor bugfix only (forwarded request 214432 from Zaitor)</comment>
+    <requestid>214434</requestid>
+  </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>5d90930dcf232d8690d0e3486f4d8d04</srcmd5>
+    <version>0.24.5</version>
+    <time>1393681116</time>
+    <user>coolo</user>
+    <comment>- bnc#864299 was fixed: libpoppler-devel includes poppler-cpp.pc
+  and libpoppler-cpp.so (symlink to libpoppler-cpp.so.*).
+  So libpoppler-devel must require libpoppler-cpp.
+
+&gt; one could also split it into a subpackage (see libpoppler-glib-devel) - but as of now I'm undecided. I'll have to think about it 
+a bit.
+
+If pkgconfig() is used nothing will change, but if devel package name is used some packages will become broken. DPlease don't 
+forget to reassign a bugreport. (forwarded request 224029 from DarkSS)</comment>
+    <requestid>224035</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>29eaae0a482c9a17f6a5fa064fbbd02b</srcmd5>
+    <version>0.26.0</version>
+    <time>1399051279</time>
+    <user>coolo</user>
+    <comment>New stable branch.
+
+- Update to version 0.26.0:
+  + qt4: Fix mismatched boolean logic in
+    TextAnnotation::setInplaceIntent.
+  + qt5: Fix mismatched boolean logic in
+    TextAnnotation::setInplaceIntent.
+  + core: Very small code cleanup.
+  + cpp: Very small code cleanup.
+- Changes from version 0.25.3:
+  + core:
+    - Fix crashes on broken files.
+    - Avoid MinGW/Cygwin warnings due to redefinition of NOMINMAX.
+    - Fix some small memory leaks.
+  + qt5:
+    - Fix some kinds of OCG models.
+    - Cleanup some deprecated methods.
+  + glib:
+    - Fix the first coord of the quadrilateral in
+      create_poppler_quads_from_annot_quads() (fdo#76504).
+  + utils: pdftohtml: Fix typo in manpage.
+  + qt4: Fix some kinds of OCG models.
+- Changes from version 0.25.2:
+  + core:
+    - Tagged-PDF support.
+    - Open some broken files (fdo#75232).
+    - Fix crashes on broken files.
+    - Fix regression parsing some broken files (kde#329600).
+    - Improve compilation under Win 8 with Visual Studio 2012
+      (fdo#73111).
+    - PSOutputDev:
+      . Ensure paper size takes into account rotation (fdo#72312). (forwarded request 232065 from Zaitor)</comment>
+    <requestid>232096</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>328b3a8082e8edca15f098e6925df88c</srcmd5>
+    <version>0.26.0</version>
+    <time>1403176784</time>
+    <user>coolo</user>
+    <comment>- Enable build of Qt5 subpackage</comment>
+    <requestid>235759</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>906388321daabeafc28e290123a1c8da</srcmd5>
+    <version>0.26.2</version>
+    <time>1405971532</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240741</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>dbd72e0de36591ccf516e63a26d409d3</srcmd5>
+    <version>0.26.3</version>
+    <time>1407331901</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243659</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>dbd72e0de36591ccf516e63a26d409d3</srcmd5>
+    <version>0.26.3</version>
+    <time>1409302726</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>858fcbfd475a510464eadb361aa16230</srcmd5>
+    <version>0.26.4</version>
+    <time>1410528293</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248227</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>e4761431ef451a30d804075e5420e34a</srcmd5>
+    <version>0.26.5</version>
+    <time>1413382761</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252715</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>e46eda4429aeaf1a1c71f44b5add3325</srcmd5>
+    <version>0.26.5</version>
+    <time>1413739667</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257359</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>0c768729e6c600c0887a7398a0a97956</srcmd5>
+    <version>0.28.1</version>
+    <time>1415288987</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259795</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>9f1e18068e31ff413b43f8afc415c393</srcmd5>
+    <version>0.28.1</version>
+    <time>1418840108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265106</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>a02c3861b525bb27a3ef768a6d439e70</srcmd5>
+    <version>0.29.0</version>
+    <time>1419896965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266449</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>0b7ac71c21e20baab606eb6ca2227da6</srcmd5>
+    <version>0.30.0</version>
+    <time>1420833121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280090</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>20b23d7f5647141d5f184e82cfd2d9c2</srcmd5>
+    <version>0.30.0</version>
+    <time>1423258575</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284146</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>ce3d6cd968a0f1e8891e1f7e7f95cafa</srcmd5>
+    <version>0.32.0</version>
+    <time>1427273697</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292319</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c44333ba3b4f3f70ddd78af29975cd92</srcmd5>
+    <version>0.33.0</version>
+    <time>1432157200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307728</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>e133f50475a9eb43fc0fe6aadac78dbf</srcmd5>
+    <version>0.34.0</version>
+    <time>1438794801</time>
+    <user>coolo</user>
+    <comment>New release.
+Needs to be in the same &quot;staging&quot; as sr#318945 - as cups-filters needed a patch to build with this version.</comment>
+    <requestid>318951</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>ce3940b92135afb338bd1f65e4f6c624</srcmd5>
+    <version>0.35.0</version>
+    <time>1439825145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323127</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>0e0070418b0bcbb026afb5439387f23a</srcmd5>
+    <version>0.36.0</version>
+    <time>1443067952</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330613</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>2a13c7539193cde1d5a34cec66b93e5a</srcmd5>
+    <version>0.37.0</version>
+    <time>1445092614</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>338529</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>5136f4e317df73f7012b98b84c72c4a5</srcmd5>
+    <version>0.38.0</version>
+    <time>1448260195</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>344913</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>b9d925d03b161954bcdd70b2d20fcc90</srcmd5>
+    <version>0.39.0</version>
+    <time>1450605074</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349548</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a1831f869ade04b300352f4bbd1195cd</srcmd5>
+    <version>0.40.0</version>
+    <time>1453508081</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354839</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>7f9b52e3936543f2d54e024653d19919</srcmd5>
+    <version>0.41.0</version>
+    <time>1456432959</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360905</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>f2cd17ab2c8272d44c7f34a9cd1ea0d0</srcmd5>
+    <version>0.42.0</version>
+    <time>1459001366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375354</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>7b232c21566203de05f0b2d86019d13c</srcmd5>
+    <version>0.42.0</version>
+    <time>1460101075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384582</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>f34a6090ce975b62add2056250f4f929</srcmd5>
+    <version>0.43.0</version>
+    <time>1462443098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393289</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>23adcc9ba8393efce8c36f415fd25477</srcmd5>
+    <version>0.44.0</version>
+    <time>1464204130</time>
+    <user>dimstar_suse</user>
+    <comment>Versionbump, resub without obsolete tarball</comment>
+    <requestid>397667</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>f93a316cdd0dcfe7da3e381f178cb423</srcmd5>
+    <version>0.45.0</version>
+    <time>1468482127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406999</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>ae0e5f590a345aa554df781d00059203</srcmd5>
+    <version>0.46.0</version>
+    <time>1470217020</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415912</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>6701350d5e943062af08ce290645d89c</srcmd5>
+    <version>0.47.0</version>
+    <time>1472245984</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>420631</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>243431539ba974955dd65a184d58f2e8</srcmd5>
+    <version>0.48.0</version>
+    <time>1476429976</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434211</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>98e773f3a32c4b9b305b54d5d6144c0e</srcmd5>
+    <version>0.49.0</version>
+    <time>1480071817</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441190</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>9d65201901bc1b07b05ae63f4881ee69</srcmd5>
+    <version>0.50.0</version>
+    <time>1482784909</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446908</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>324a69bd7ddcf663920332f5d4573118</srcmd5>
+    <version>0.51.0</version>
+    <time>1485379863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451179</requestid>
+  </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>2765d0b1563b458d9ddacb4343655f8b</srcmd5>
+    <version>0.51.0</version>
+    <time>1486465010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453982</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>78d1c2630cf924b0576c532757c2de24</srcmd5>
+    <version>0.52.0</version>
+    <time>1487680489</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, old tarball removed this time.
+New upstream release</comment>
+    <requestid>459034</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>251040cad2ee96bb44aae2d07ec92d9f</srcmd5>
+    <version>0.53.0</version>
+    <time>1490965509</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482380</requestid>
+  </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>48e19221c7cea7821272f48031795111</srcmd5>
+    <version>0.55.0</version>
+    <time>1496327346</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497436</requestid>
+  </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>2400f371b7c2f5c4f544821437d70e23</srcmd5>
+    <version>0.55.0</version>
+    <time>1497603229</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503259</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>caa7c04e97d04d1b8706c55406124fa0</srcmd5>
+    <version>0.56.0</version>
+    <time>1498840698</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream stable release</comment>
+    <requestid>505792</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>1060f5f3aad7d34536ca4e75052dfb25</srcmd5>
+    <version>0.57.0</version>
+    <time>1502559452</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514674</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>e4ec6e73da540883fe05c880667bd870</srcmd5>
+    <version>0.59.0</version>
+    <time>1506453141</time>
+    <user>dimstar_suse</user>
+    <comment>Yet a resub, sorry, fixed inkscape in https://build.opensuse.org/request/show/528400 
+- Apply CVE-2017-14517.patch from upstream to fix a NULL pointer
+  dereference in the XRef::parseEntry() function that may have lead
+  to potential denial-of-service attack when handling malicious PDF
+  files. [CVE-2017-14517, bsc#1059066]
+- Update to version 0.59.0:
+  + core: Fix infinite recursion in NameTree parsing in broken
+    files.
+  + utils:
+    - pdfunite: Fix API porting error that caused abort in some
+      cases.
+    - pdfinfo:
+      . Fix crashes and memory leaks when using -dests.
+      . Use GooString.append instead of sprintf/strcat.
+    - pdfimages: Fix warning when compiling with cygwin.
+  + build system:
+    - Fix cygwin 32-bit compile.
+    - Cmake tweaks.
+- Bump soversion following upstream changes.
+- Update to version 0.58.0:
+  + core:
+    - CairoOutputDev: cairo 1.14 now has high quality downscaling.
+    - Signature related improvements (fdo#99271).
+    - Tweak which cmap we use (fdo#101855).
+    - Memory leak fixes.
+    - Substantial rework of the internals.
+    - win32: call ANSI functions directly (fdo#100312).
+    - Add some documentation.
+  + qt5:
+    - Expose signature information.
+    - ArthurOutputDev: initialize the image with the paper color
+      (fdo#102129).
+    - Fix copy'n'paste bugs: Qt4 -&gt; Qt5.
+    - ArthurOutputDev: Properly set the QPainter transformation.
+    - ArthurOutputDev: Use Qt::SvgMiterJoin instead of
+      Qt::MiterJoin (fdo#102356).
+  + utils:
+    - pdfinfo: add -dests option to print named destinations
+      (fdo#97262).
+    - pdftocairo: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdftoppm: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdfimages: support listing/extracting inline images
+      (fdo#25625).
+  + build system:
+    - cmake: Various Windows fixes.
+    - cmake: Use -std=c++11 instead of -std=gnu++11.
+  + cpp: Fix page.text() not taking page orientation into account
+    (fdo#94517).
+- Bump soversion following upstream changes.
+- Apply CVE-2017-14517.patch from upstream to fix a NULL pointer
+  dereference in the XRef::parseEntry() function that may have lead
+  to potential denial-of-service attack when handling malicious PDF
+  files. [CVE-2017-14517, bsc#1059066]
+- Update to version 0.59.0:
+  + core: Fix infinite recursion in NameTree parsing in broken
+    files.
+  + utils:
+    - pdfunite: Fix API porting error that caused abort in some
+      cases.
+    - pdfinfo:
+      . Fix crashes and memory leaks when using -dests.
+      . Use GooString.append instead of sprintf/strcat.
+    - pdfimages: Fix warning when compiling with cygwin.
+  + build system:
+    - Fix cygwin 32-bit compile.
+    - Cmake tweaks.
+- Bump soversion following upstream changes.
+- Update to version 0.58.0:
+  + core:
+    - CairoOutputDev: cairo 1.14 now has high quality downscaling.
+    - Signature related improvements (fdo#99271).
+    - Tweak which cmap we use (fdo#101855).
+    - Memory leak fixes.
+    - Substantial rework of the internals.
+    - win32: call ANSI functions directly (fdo#100312).
+    - Add some documentation.
+  + qt5:
+    - Expose signature information.
+    - ArthurOutputDev: initialize the image with the paper color
+      (fdo#102129).
+    - Fix copy'n'paste bugs: Qt4 -&gt; Qt5.
+    - ArthurOutputDev: Properly set the QPainter transformation.
+    - ArthurOutputDev: Use Qt::SvgMiterJoin instead of
+      Qt::MiterJoin (fdo#102356).
+  + utils:
+    - pdfinfo: add -dests option to print named destinations
+      (fdo#97262).
+    - pdftocairo: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdftoppm: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdfimages: support listing/extracting inline images
+      (fdo#25625).
+  + build system:
+    - cmake: Various Windows fixes.
+    - cmake: Use -std=c++11 instead of -std=gnu++11.
+  + cpp: Fix page.text() not taking page orientation into account
+    (fdo#94517).
+- Bump soversion following upstream changes.
+- Apply CVE-2017-14517.patch from upstream to fix a NULL pointer
+  dereference in the XRef::parseEntry() function that may have lead
+  to potential denial-of-service attack when handling malicious PDF
+  files. [CVE-2017-14517, bsc#1059066]
+- Update to version 0.59.0:
+  + core: Fix infinite recursion in NameTree parsing in broken
+    files.
+  + utils:
+    - pdfunite: Fix API porting error that caused abort in some
+      cases.
+    - pdfinfo:
+      . Fix crashes and memory leaks when using -dests.
+      . Use GooString.append instead of sprintf/strcat.
+    - pdfimages: Fix warning when compiling with cygwin.
+  + build system:
+    - Fix cygwin 32-bit compile.
+    - Cmake tweaks.
+- Bump soversion following upstream changes.
+- Update to version 0.58.0:
+  + core:
+    - CairoOutputDev: cairo 1.14 now has high quality downscaling.
+    - Signature related improvements (fdo#99271).
+    - Tweak which cmap we use (fdo#101855).
+    - Memory leak fixes.
+    - Substantial rework of the internals.
+    - win32: call ANSI functions directly (fdo#100312).
+    - Add some documentation.
+  + qt5:
+    - Expose signature information.
+    - ArthurOutputDev: initialize the image with the paper color
+      (fdo#102129).
+    - Fix copy'n'paste bugs: Qt4 -&gt; Qt5.
+    - ArthurOutputDev: Properly set the QPainter transformation.
+    - ArthurOutputDev: Use Qt::SvgMiterJoin instead of
+      Qt::MiterJoin (fdo#102356).
+  + utils:
+    - pdfinfo: add -dests option to print named destinations
+      (fdo#97262).
+    - pdftocairo: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdftoppm: add -jpegopt for setting jpeg compression
+      parameters (fdo#45727).
+    - pdfimages: support listing/extracting inline images
+      (fdo#25625).
+  + build system:
+    - cmake: Various Windows fixes.
+    - cmake: Use -std=c++11 instead of -std=gnu++11.
+  + cpp: Fix page.text() not taking page orientation into account
+    (fdo#94517).
+- Bump soversion following upstream changes.
+</comment>
+    <requestid>528401</requestid>
+  </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>1060f5f3aad7d34536ca4e75052dfb25</srcmd5>
+    <version>0.57.0</version>
+    <time>1506524359</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 0.57 - boo#1060652</comment>
+    <requestid>528976</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>ecd7bb1da138137369f73d16695cda98</srcmd5>
+    <version>0.59.0</version>
+    <time>1510664692</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>534289</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f5a3cb4081639466079457b18e03f88e</srcmd5>
+    <version>0.61.1</version>
+    <time>1512041692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544555</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>8ab5aef630e6b6da7384c517626906ca</srcmd5>
+    <version>0.62.0</version>
+    <time>1515505679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557962</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>cdc01f1bba60754deccaa1f254a6b21c</srcmd5>
+    <version>0.62.0</version>
+    <time>1516443904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>565800</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>e822944bef0ee0411b8190f632d2c890</srcmd5>
+    <version>0.63.0</version>
+    <time>1524237878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593769</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>bbe10023ef3849c9b73d3a732b243d0a</srcmd5>
+    <version>0.66.0</version>
+    <time>1532361547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.66.0:
+  + core:
+    - Fix lots of security/leak issues found by oss-fuzz
+    - Splash: Optimize some files, making them 20% faster
+    - Splash: Correctly manipulate spot colors if SPOT_NCOMPS != 4
+    - Fix compilation with some strict compilers
+- Changes from version 0.65.0:
+  + core:
+    - SplashOutputDev: Add the invisible character check 
+      beginType3Char. (fdo#106244)
+    - XRef: Fix runtime undefined behaviour. (fdo#105970)
+    - Fix issues with malformed documents. 
+      (fdo#104942), (fdo#103238)
+    - Remove GooHash after replacing it by std::unordered_map
+    - Add conversion methods between GooString and std::string.
+  + cpp:
+    - Add newline after error message
+    - Expose more image modes, add option to select mode in 
+      renderer. (fdo#105558)
+  + build system:
+    - Fix compilation with libc++
+    - Small improvement to FindLIBOPENJPEG2.cmake
+  + qt5:
+    - Add widget annot actions to FormFields
+  + utils:
+    - pdffonts: Minor formatting changes in the man page. 
+      (fdo#105194)
+- Changes from version 0.64.0:
+  + core:
+    - Workaround form field text not being drawn on broken files.
+      (fdo#103245)
+    - Add read only setter for form fields
+    - Add support for Link Hide action
+    - Add support for Next actions in Links
+    - Fix parsing of Annot focus out actions
+    - Fix PDFDoc::checkHeader() for PDFs smaller than 1 KiB. 
+      (fdo#105674)
+    - Add const to several classes and members
+    - gfile: Fix build on some platforms
+    - Fix issues with on malformed documents. 
+      (fdo#105972), (fdo#105969), (fdo#106059), (fdo#106061)
+    - Several small code improvements
+  + qt5:
+    - Allow setting of Form visibility status
+    - Allow setting of Form read only status
+    - Add support for Link Hide action
+    - Add support for Next actions in Links
+    - ArthurOutputDev: Implement axialShadedFill
+    - ArthurOutputDev: Implement drawImageMask. (fdo#105531)
+    - ArthurOutputDev: Implement Type3 font support
+  + utils:
+    - pdfsig: Add -dump which writes signatures to disk
+      (fdo#104881)
+  + glib:
+    - less deprecated calls
+  + build system:
+    - bring back the option to disable GObject introspection
+    - Add iconv include dir when compiling
+    - Make it possible to build poppler without fontconfig.
+      Default for Android.
+- Bump soversion and data_version to 77 and 0.4.9 respectively.
+- Update to version 0.66.0:
+  + core:
+    - Fix lots of security/leak issues found by oss-fuzz
+    - Splash: Optimize some files, making them 20% faster
+    - Splash: Correctly manipulate spot colors if SPOT_NCOMPS != 4
+    - Fix compilation with some strict compilers
+- Changes from version 0.65.0:
+  + core:
+    - SplashOutputDev: Add the invisible character check 
+      beginType3Char. (fdo#106244)
+    - XRef: Fix runtime undefined behaviour. (fdo#105970)
+    - Fix issues with malformed documents. 
+      (fdo#104942), (fdo#103238)
+    - Remove GooHash after replacing it by std::unordered_map
+    - Add conversion methods between GooString and std::string.
+  + cpp:
+    - Add newline after error message
+    - Expose more image modes, add option to select mode in 
+      renderer. (fdo#105558)
+  + build system:
+    - Fix compilation with libc++
+    - Small improvement to FindLIBOPENJPEG2.cmake
+  + qt5:
+    - Add widget annot actions to FormFields
+  + utils:
+    - pdffonts: Minor formatting changes in the man page. 
+      (fdo#105194)
+- Changes from version 0.64.0:
+  + core:
+    - Workaround form field text not being drawn on broken files.
+      (fdo#103245)
+    - Add read only setter for form fields
+    - Add support for Link Hide action
+    - Add support for Next actions in Links
+    - Fix parsing of Annot focus out actions
+    - Fix PDFDoc::checkHeader() for PDFs smaller than 1 KiB. 
+      (fdo#105674)
+    - Add const to several classes and members
+    - gfile: Fix build on some platforms
+    - Fix issues with on malformed documents. 
+      (fdo#105972), (fdo#105969), (fdo#106059), (fdo#106061)
+    - Several small code improvements
+  + qt5:
+    - Allow setting of Form visibility status
+    - Allow setting of Form read only status
+    - Add support for Link Hide action
+    - Add support for Next actions in Links
+    - ArthurOutputDev: Implement axialShadedFill
+    - ArthurOutputDev: Implement drawImageMask. (fdo#105531)
+    - ArthurOutputDev: Implement Type3 font support
+  + utils:
+    - pdfsig: Add -dump which writes signatures to disk
+      (fdo#104881)
+  + glib:
+    - less deprecated calls
+  + build system:
+    - bring back the option to disable GObject introspection
+    - Add iconv include dir when compiling
+    - Make it possible to build poppler without fontconfig.
+      Default for Android.
+- Bump soversion and data_version to 77 and 0.4.9 respectively.
+</comment>
+    <requestid>621182</requestid>
+  </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>f4237519a561d8e4a15bf8a379bf7e8f</srcmd5>
+    <version>0.68.0</version>
+    <time>1536327249</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631897</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>3129bc00d11530380e61d35e46ba648c</srcmd5>
+    <version>0.72.0</version>
+    <time>1548537475</time>
+    <user>dimstar_suse</user>
+    <comment>Resub previous version, we finaly have most of failing packages ready for that version</comment>
+    <requestid>666159</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>8d8907cad444e4ab6491f6dc3c86bb06</srcmd5>
+    <version>0.79.0</version>
+    <time>1566550945</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release. - New version new try  -- expect texlive to fail still......</comment>
+    <requestid>720737</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>f8a1e81f7cdf13ac81c322be1b735bb9</srcmd5>
+    <version>0.81.0</version>
+    <time>1570112020</time>
+    <user>dimstar_suse</user>
+    <comment>- Depends on fixed texlive available in devel repo.
+
+- Update to version 0.81.0:
+  + core:
+    - Splash: Always enable support for CMYK rasterization.
+    - CairoOutputDev: Check scaled dimensions for 0.
+    - BaseCryptStream: Fix potential uninitialized memory read.
+    - SplashBitmap: Fix wrong width condition for
+      splashModeDeviceN8.
+    - Fix crashes in malformed files.
+- Bump poppler_sover following upstream changes.
+- Convert linked package to _multibuild
+- Cleanup spec file (remove defattr)
+- Add boost_headers to BuildRequires, speedup Splash backend
+- Update to version 0.80.0:
+  + core:
+    - Annotations: Implement support for setting a different text
+      in the appearance stream than the real text.
+    - Splash: Optionally use small_vector from boost.
+    - Fix memory leaks on broken files.
+    - Fix abort on broken files.
+    - Small code simplifications.
+    - Remove USE_FIXEDPOINT support.
+  + qt5:
+    - Fix MSVC build.
+    - Add subsitute-font information.
+    - Fix since marker of some functions.
+    - Fix leak when aborting text extraction.
+    - Small code simplifications.
+  + glib:
+    - Make print scaling getter visible.
+    - Make Duplex/NumCopies/PrintPageRange preference available in
+      API.
+    - Implement Movie API.
+  + utils: pdftotext: Add -nodiag flag to remove diagonal text on
+    output.
+  + build system: Mark external lib include dirs as SYSTEM.
+- Bump poppler_sover following upstream changes.
+- Use cmake_build macro.
+</comment>
+    <requestid>733646</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>1ce5a3efa29f1b5213858c6eb12510cc</srcmd5>
+    <version>0.81.0</version>
+    <time>1570701160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736318</requestid>
+  </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>6324be8fb05f88dab360f3198b2c8679</srcmd5>
+    <version>0.83.0</version>
+    <time>1579463727</time>
+    <user>dimstar_suse</user>
+    <comment>Lets go with last release for now</comment>
+    <requestid>764588</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>1baf8da5cb17cbdd5c4c3719a614fa94</srcmd5>
+    <version>0.84.0</version>
+    <time>1579636692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.84.0:
+  + core:
+    - Fix crash when converting from Unicode to ASCII-7
+    - Splash::scaleImageYdXu: Protect against crash if srcWidth is
+      too big
+    - JBIG2Stream:
+      . Fix potential crash in malformed documents
+      . Fix leak in reset() if called several times
+    - Internal code improvements
+  + utils:
+    - pdfimages: Add error message if first page is larger then
+      number of pages
+    - pdfinfo: Improved paper size recognition
+    - pdfsig: Fix exit code when dumping signatures
+    - pdftocairo: Error out when even/odd selects 0 pages
+    - pdftohtml: Fix memory leak
+    - pdftoppm:
+      . Add an option to scale before rotate
+      . Add -hide-annotations option
+      . Error out when even/odd selects 0 pages
+    - pdftops: Improve -optimizecolorspace
+  + qt5: Code cleanups
+  + glib: Fix compiler warnings
+- Bump poppler_sover following upstream changes.
+</comment>
+    <requestid>765628</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>9d4ad8d4073d1c2595b395d7cece96d4</srcmd5>
+    <version>0.86.1</version>
+    <time>1586112742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789710</requestid>
+  </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>e68ac47674c5d5232618238ff5ee365f</srcmd5>
+    <version>0.87.0</version>
+    <time>1587162585</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>794550</requestid>
+  </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>1760376bdc4476944ed8e4fade2357bf</srcmd5>
+    <version>0.88.0</version>
+    <time>1588450479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799487</requestid>
+  </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>cf1b5a76c9a1723025bd73165a8137b1</srcmd5>
+    <version>0.89.0</version>
+    <time>1591652798</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, lets see what breaks this time :-)</comment>
+    <requestid>811372</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>81bd76d93ec5c4a7be487840f13bea25</srcmd5>
+    <version>0.90.0</version>
+    <time>1594293352</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.90.0
+  + core:
+    - Color profile tweaks
+    - Small signature improvements
+    - BBoxOutputDev: Fix calculation when type3 fonts are involved
+    - Fix potential crash when reading Forms
+    - Fix infinite loop in broken file
+  + glib:
+    - Fix adding annots in rotated pages
+    - Add ability to reset forms
+    - Several fixes to the documentation
+  + qt5:
+    - Make it clear we require Qt 5.5
+    - demo: Fix crash on broken files
+    - Small documentation improvements
+  + utils:
+    - pdftoppm: Add option to set display profile
+    - pdftops: Add a -rasterize option with values always, never,
+      or whenneeded
+  + build system:
+    - Require cmake 3.5
+    - More modern cmake way to link against curl
+- Bump poppler_sover following upstream changes.
+</comment>
+    <requestid>818845</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>19b7cd492ac4a37b2f9844e47336f244</srcmd5>
+    <version>20.10.0</version>
+    <time>1603959746</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the correct, upstream provided tarball.
+
+- update to version 20.10.0:
+  + core:
+    - Filter out repeated forms.
+    - Implement EmbedStream::reset().
+    - CairoOutputDev: evict just font faces owned solely by cache.
+    - Splash: Rename Yd to Ydown, Xu to Xup, etc.
+    - Splash: fix crash in out-of-memory situation.
+    - Fix some undefined behaviour situation with forged files.
+    - Compability fix for Forms.
+    - Fix fetching of Objects failing in some cases.
+    - Fix clearing date in Annot setModified/setDate.
+    - TextSelectionPainter: support glyphless fonts.
+    - Splash: Don't try read past end of image.
+    - avoid abort() on large memory allocation.
+    - Fix memory leak on broken files.
+    - Fix potential invalid memory read.
+    - Small code improvements.
+    - Sub-page objects: initialize clip max values considering the
+      render resolution.
+    - Splash: Set initial line width to 1.
+    - Fix stack overflow with specially crafted files.
+    - GfxShading: Simplify holding the Function.
+    - Splash: Fix x86 + windows asm build.
+    - Fix regression on PS conversion..
+      Regression only happened on applications that are locale
+      enabled i.e. Okular but not pdftops, when using a quite new
+      lcms and the user locale uses , as decimal separator instead
+      of .</comment>
+    <requestid>844239</requestid>
+  </revision>
+</revisionlist>

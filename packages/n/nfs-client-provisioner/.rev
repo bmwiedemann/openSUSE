@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>008abd97addb1da3aa35c4ff9b9cd98a</srcmd5>
+    <version>2.3.0+git20200220.a14bfd72</version>
+    <time>1582394875</time>
+    <user>dimstar_suse</user>
+    <comment>For nfs-client-provisioner container</comment>
+    <requestid>778088</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8ddbd2a5b85de160e3348410973465a</srcmd5>
+    <version>2.3.0+git20200220.a14bfd72</version>
+    <time>1583227121</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust yaml files
+  - use openSUSE container images
+  - add kustomization.yaml file</comment>
+    <requestid>781008</requestid>
+  </revision>
+</revisionlist>

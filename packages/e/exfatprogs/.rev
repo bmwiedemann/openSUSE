@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e5dfa45e7a344442d1636d73da04396</srcmd5>
+    <version>1.0.2</version>
+    <time>1587839184</time>
+    <user>dimstar_suse</user>
+    <comment>Initial release on OBS.</comment>
+    <requestid>796600</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>379cc33c1b7f5f347f2b5501f497cebf</srcmd5>
+    <version>1.0.3</version>
+    <time>1589403369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  * libexfat0 library is no longer installed
+  * Rename label.exfat to tune.exfat.
+  * tune.exfat: change argument style
+    (-l option for print level, -L option for setting label)
+  * mkfs.exfat: harmonize set volume label option with tune.exfat.
+  * Fix the reported build warnings/errors.
+  * Add memset to clean garbage in allocation.
+  * Fix wrong volume label array size.
+  * Open a device using O_EXCL to avoid formatting it while it is mounted.
+  * Add man page.</comment>
+    <requestid>804462</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3febe003fff9a603a2d968302d27fbc</srcmd5>
+    <version>1.0.4</version>
+    <time>1596457116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4
+  * fsck.exfat: display sector, cluster, and volume sizes in the human
+    readable format.
+  * fsck.exfat: reduce the elapsed time using read-ahead.
+  * mkfs.exfat: generate pseudo unique serials while creating filesystems.
+  * mkfs.exfat: add the &quot;-b&quot; option to align the start offset of FAT and
+    data clusters.
+  * fsck.exfat: repair zero-byte files which have the NoFatChain attribute.
+  * Fix memory leaks on error handling paths.
+  * fsck.exfat: fix the bug that cannot access space beyond 2TB.</comment>
+    <requestid>824032</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>df89222a75b3702ff078d677aaea6a9e</srcmd5>
+    <version>1.0.4</version>
+    <time>1599507422</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ExclusiveArch, the code compiles on all arches cleanly now.</comment>
+    <requestid>832777</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>344b1edb54b8f0395669a88fc650709c</srcmd5>
+    <version>1.0.4</version>
+    <time>1599862298</time>
+    <user>dimstar_suse</user>
+    <comment>- jsc#SLE-16186: Add exfatprogs to SLE
+</comment>
+    <requestid>833765</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ffcec16d9687aa6a22b0244a1a9f0c4b</srcmd5>
+    <version>1.0.4</version>
+    <time>1600278023</time>
+    <user>dimstar_suse</user>
+    <comment>Sorry I used the dev task instead of the epic.
+- jsc#SLE-16156: Add exfatprogs to SLE</comment>
+    <requestid>834916</requestid>
+  </revision>
+</revisionlist>

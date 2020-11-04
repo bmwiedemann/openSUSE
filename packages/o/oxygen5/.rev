@@ -1,0 +1,888 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad0edbc27b1e7b30d524c12c108bd6e6</srcmd5>
+    <version>4.97.0</version>
+    <time>1404157511</time>
+    <user>coolo</user>
+    <comment>Activate oxygen5 package</comment>
+    <requestid>238790</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>580558372470489e6d494e79fca17583</srcmd5>
+    <version>4.98.0</version>
+    <time>1404973097</time>
+    <user>coolo</user>
+    <comment>Update to 4.98.0</comment>
+    <requestid>240081</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e14f5a3131d87f94ff5b9105b71208d0</srcmd5>
+    <version>5.0.0</version>
+    <time>1406272161</time>
+    <user>coolo</user>
+    <comment>Update to 5.0.0</comment>
+    <requestid>242255</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fea262fac16dad83b8f07b74e3b5105c</srcmd5>
+    <version>5.0.1</version>
+    <time>1408196567</time>
+    <user>lnussel</user>
+    <comment>Update to 5.0.1</comment>
+    <requestid>244462</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>fea262fac16dad83b8f07b74e3b5105c</srcmd5>
+    <version>5.0.1</version>
+    <time>1409302089</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e5073054685db77c38d6142c13a4a95f</srcmd5>
+    <version>5.0.95</version>
+    <time>1412155377</time>
+    <user>coolo</user>
+    <comment>- Update to 5.0.95:
+   * Minor changes to Oxygen style and decoration
+- Install translations
+- Add rpmlintrc file for file-not-in-%lang warnings: we don't use
+  find_lang macro as it doesn't searches in subdirectories</comment>
+    <requestid>252530</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>53464a57ee522f583ce80bd008e7d86b</srcmd5>
+    <version>5.1.0.1</version>
+    <time>1413355872</time>
+    <user>coolo</user>
+    <comment>Update to 5.1 Final</comment>
+    <requestid>256547</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0d6b2227e9f622747374895ae7c81d36</srcmd5>
+    <version>5.1.1</version>
+    <time>1415866930</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.1.1</comment>
+    <requestid>260964</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>468c2f2a38297ff1510f42ff35729a33</srcmd5>
+    <version>5.1.2</version>
+    <time>1419159587</time>
+    <user>coolo</user>
+    <comment>Update to 5.1.2</comment>
+    <requestid>265501</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>31cc23fb9a75dcd95eea65189baeb3af</srcmd5>
+    <version>5.2.0</version>
+    <time>1422533860</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>282977</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>79749803262b89c1ceb09c1b381bc141</srcmd5>
+    <version>5.2.1</version>
+    <time>1425218754</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.1</comment>
+    <requestid>287756</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27a56f704d2c49c36a3f2c4767ad1e5a</srcmd5>
+    <version>5.2.2</version>
+    <time>1427273958</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.2</comment>
+    <requestid>292708</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5692ea48f2bd6abed87877dd4a761f5b</srcmd5>
+    <version>5.3.0</version>
+    <time>1431365454</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0</comment>
+    <requestid>304375</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>973b282bad8fc70d23a391b8023df0ac</srcmd5>
+    <version>5.3.1</version>
+    <time>1432887806</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.3.1</comment>
+    <requestid>308768</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>92f6f46cdc014ca73af2e76c830219b6</srcmd5>
+    <version>5.3.2</version>
+    <time>1436331482</time>
+    <user>coolo</user>
+    <comment>Update to last Plasma 5.3 bugfix release</comment>
+    <requestid>314590</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5c431d9dd714a47fdc490d8b64d762c7</srcmd5>
+    <version>5.3.2</version>
+    <time>1436888579</time>
+    <user>coolo</user>
+    <comment>Obsolete oxygen4-cursors on openSUSE &gt; 13.2. For 13.2 and older,
+  conflict with both old and new named cursors from kdebas4-workspace</comment>
+    <requestid>316596</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>bae06822c6570dd9638e67ec303e944c</srcmd5>
+    <version>5.3.2</version>
+    <time>1438548314</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Oboletes/Provides versions regarding Leap versioning</comment>
+    <requestid>318782</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>477d5f4064dbf0541670d62d99a351fc</srcmd5>
+    <version>5.4.0</version>
+    <time>1441173140</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>327204</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fbca5b3954764513a93971a5522c9421</srcmd5>
+    <version>5.4.1</version>
+    <time>1443071273</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>330395</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6ed9b75ee84485ad2e991232ee33ef8e</srcmd5>
+    <version>5.4.2</version>
+    <time>1445285948</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.2</comment>
+    <requestid>336789</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4e62564645ad5e7417b7bc7e47ddbe96</srcmd5>
+    <version>5.4.3</version>
+    <time>1448400444</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.3</comment>
+    <requestid>344585</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e0c5829051e018f3ca3c772ae77c2017</srcmd5>
+    <version>5.5.1</version>
+    <time>1451390242</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.5.1</comment>
+    <requestid>349229</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cc0a130e44f6117eec1d4c17c18efcf3</srcmd5>
+    <version>5.5.2</version>
+    <time>1451823982</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.5.2</comment>
+    <requestid>351238</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>25226a1e641e588aae5b71a82ee46e60</srcmd5>
+    <version>5.5.3</version>
+    <time>1453279923</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.5.3</comment>
+    <requestid>352931</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2818b745d15f6d36dda90c87de6ac172</srcmd5>
+    <version>5.5.4</version>
+    <time>1455190496</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.5.4</comment>
+    <requestid>357185</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>de2cef3f7cd1a68358c963d439ee7442</srcmd5>
+    <version>5.5.5</version>
+    <time>1457014505</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.5.5</comment>
+    <requestid>364835</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2064ad09aeffbfa60e2c2227b0f9a388</srcmd5>
+    <version>5.6.1</version>
+    <time>1460028619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.1</comment>
+    <requestid>381981</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>59f46ccfaec3a17cdc394c0c31ba2f8e</srcmd5>
+    <version>5.6.2</version>
+    <time>1460480743</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.2</comment>
+    <requestid>385857</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a860186dc5aa4dc2666763b7fd06c016</srcmd5>
+    <version>5.6.3</version>
+    <time>1462697014</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.3</comment>
+    <requestid>393687</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7c8676ee1c0ef6485bdca0aebc2a313e</srcmd5>
+    <version>5.6.4</version>
+    <time>1463652787</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.4</comment>
+    <requestid>396045</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5fa0d02c4e523dd69bfe0a55c6a1b60b</srcmd5>
+    <version>5.7.0</version>
+    <time>1468578423</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.7.0</comment>
+    <requestid>406789</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5ec1cd15c28b7984feacffb9aee589e5</srcmd5>
+    <version>5.7.2</version>
+    <time>1470657262</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.7.2</comment>
+    <requestid>414749</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>716928143e0347d58296fc13b92cd61f</srcmd5>
+    <version>5.7.3</version>
+    <time>1471009240</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.7.3</comment>
+    <requestid>417821</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>efe9f390c8a5e007e642e6ed97a6286e</srcmd5>
+    <version>5.7.4</version>
+    <time>1472477358</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 423298 from Vogtinator)</comment>
+    <requestid>423326</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7c2a80dd9674d09d39e6f40ea63e2e9a</srcmd5>
+    <version>5.8.0</version>
+    <time>1475589233</time>
+    <user>dimstar_suse</user>
+    <comment>Do NOT accept! Plasma 5.8 pre-final for 42.2 only!</comment>
+    <requestid>432381</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>0c814615fbf79b0d84bfc84a6583e687</srcmd5>
+    <version>5.8.1</version>
+    <time>1476777668</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.1</comment>
+    <requestid>434442</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f1b9be2759c7f0e1db9433f3b3fc6261</srcmd5>
+    <version>5.8.2</version>
+    <time>1477134546</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.2</comment>
+    <requestid>436405</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>963d9105916fadcb16b0928c3431202c</srcmd5>
+    <version>5.8.3</version>
+    <time>1478289391</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.8.3</comment>
+    <requestid>438326</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>b34d5ab774dff137853d37d5a780098c</srcmd5>
+    <version>5.8.3</version>
+    <time>1478782713</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Fix-broken-kcfgc-files.patch from upstream
+
+- Introduce new _plasma5_bugfix global for more fine-tuned dependencies</comment>
+    <requestid>438923</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>91c1883a04611615d3b992cb862f88be</srcmd5>
+    <version>5.8.4</version>
+    <time>1480072226</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Plasma 5.8.4</comment>
+    <requestid>441798</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>697de770ab43144c33123a3a212c98a5</srcmd5>
+    <version>5.8.5</version>
+    <time>1483547172</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 5.8.5</comment>
+    <requestid>448074</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>61a43b06aa94cedd61f45fd335be0227</srcmd5>
+    <version>5.9.0</version>
+    <time>1485861744</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.9.0 tars (forwarded request 452894 from Vogtinator)</comment>
+    <requestid>453084</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d42f432378988cb08762d29ab81b509d</srcmd5>
+    <version>5.9.1</version>
+    <time>1486717146</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.9.1</comment>
+    <requestid>455697</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>24f7446f2a5b9cbf17ded24d0033cd66</srcmd5>
+    <version>5.9.2</version>
+    <time>1487463158</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 457141 from Vogtinator)</comment>
+    <requestid>457302</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b6d2e492230415a237170a6f56fd2f7b</srcmd5>
+    <version>5.9.3</version>
+    <time>1488558332</time>
+    <user>dimstar_suse</user>
+    <comment>Update to KDE Frameworks 5.31 and KDE Plasma 5.9.3</comment>
+    <requestid>461483</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>de6de3e6161bf6cb4fa20e206068c9e6</srcmd5>
+    <version>5.9.4</version>
+    <time>1490706980</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 482045 from Vogtinator)</comment>
+    <requestid>482116</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cdeff9849dfc5e6a6ae564136323ebe7</srcmd5>
+    <version>5.9.5</version>
+    <time>1493579649</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491309</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>35093d305e58e1ee2c046feae904d2d1</srcmd5>
+    <version>5.10.0</version>
+    <time>1496327184</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.10 final</comment>
+    <requestid>498809</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>06250562673c3e4511d6c831b5bc3757</srcmd5>
+    <version>5.10.1</version>
+    <time>1497110135</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.10.1</comment>
+    <requestid>501489</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4284b25d60b527fcdc56264e40284329</srcmd5>
+    <version>5.10.2</version>
+    <time>1497603066</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.10.2</comment>
+    <requestid>503584</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>f11531ccc59db7d604393f52a2ff4506</srcmd5>
+    <version>5.10.3</version>
+    <time>1498995329</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.10.3</comment>
+    <requestid>506553</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9eee815b0b53a619dcbf09872d3c2b8c</srcmd5>
+    <version>5.10.4</version>
+    <time>1500975484</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 511247 from Vogtinator)</comment>
+    <requestid>511280</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0c4d340f3b8450e102705a89bcacdaf9</srcmd5>
+    <version>5.10.5</version>
+    <time>1503590977</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.10.5 (forwarded request 518189 from Vogtinator)</comment>
+    <requestid>518276</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>9ff08cf5ee116ee74b2d032f3251bc56</srcmd5>
+    <version>5.11.0</version>
+    <time>1507570740</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.11.0</comment>
+    <requestid>532036</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3ccf36ac1e99643a01ba9e32b933bfb2</srcmd5>
+    <version>5.11.1</version>
+    <time>1508768648</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 534518 from Vogtinator)</comment>
+    <requestid>534570</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>02ac733b5ed822e3fbb639b13ad7a80d</srcmd5>
+    <version>5.11.2</version>
+    <time>1509105048</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.11.2 (forwarded request 536434 from Vogtinator)</comment>
+    <requestid>536672</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>acbb684b1f4ec2e4ded255b70be7d4f3</srcmd5>
+    <version>5.11.3</version>
+    <time>1510321752</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.11.3</comment>
+    <requestid>539716</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>21b052124fe1e54f82fae9f6c02f268b</srcmd5>
+    <version>5.11.4</version>
+    <time>1512733625</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.11.4</comment>
+    <requestid>547203</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>cd076a6caa93daf3feff761311977af9</srcmd5>
+    <version>5.11.5</version>
+    <time>1514983028</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 561183 from Vogtinator)</comment>
+    <requestid>561215</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0f5db8edc6b3d4f5190dbca7d0ce9a30</srcmd5>
+    <version>5.11.95</version>
+    <time>1516633574</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12 Beta</comment>
+    <requestid>566834</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e955a12d1f5e8aa899f0f2afe45ce3f1</srcmd5>
+    <version>5.12.0</version>
+    <time>1517931871</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12.0</comment>
+    <requestid>573038</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0319863476f7ac879fce6ee618d44ecf</srcmd5>
+    <version>5.12.1</version>
+    <time>1519041344</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12.1</comment>
+    <requestid>577810</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>92d6a0f9fd5b95ab4795589e02f9718c</srcmd5>
+    <version>5.12.2</version>
+    <time>1519844327</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12.2</comment>
+    <requestid>579146</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>96e81e8ddad3cf59e7ff868891138f24</srcmd5>
+    <version>5.12.3</version>
+    <time>1520587963</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12.3</comment>
+    <requestid>584059</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>f3464e0905d7b967a67a2d6721810377</srcmd5>
+    <version>5.12.4</version>
+    <time>1522404329</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 591716 from Vogtinator)</comment>
+    <requestid>591843</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>3d0cda58b806e190aed15a3fe147be5e</srcmd5>
+    <version>5.12.5</version>
+    <time>1525779309</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.12.5</comment>
+    <requestid>603262</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7a02232decaadce5e130a0265535ba1b</srcmd5>
+    <version>5.13.0</version>
+    <time>1528896704</time>
+    <user>maxlin_factory</user>
+    <comment>Plasma 5.13.0 - not released yet</comment>
+    <requestid>615753</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>996de014384b72c64266e1e418ea863a</srcmd5>
+    <version>5.13.1</version>
+    <time>1530002144</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.13.1</comment>
+    <requestid>617976</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>a886d3d45ced7ecf0a4cd6b3799903c0</srcmd5>
+    <version>5.13.2</version>
+    <time>1530472983</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.13.2</comment>
+    <requestid>619315</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>ddabb06daa24718048d263109348f140</srcmd5>
+    <version>5.13.3</version>
+    <time>1531592332</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.13.3</comment>
+    <requestid>622123</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b3418568c7cc60e47a7387b09287da5b</srcmd5>
+    <version>5.13.4</version>
+    <time>1533292431</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.13.4</comment>
+    <requestid>626841</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>13c9397849a4b3f4facd47af6340078d</srcmd5>
+    <version>5.13.5</version>
+    <time>1536875537</time>
+    <user>maxlin_factory</user>
+    <comment>Plamsa 5.13.5</comment>
+    <requestid>633158</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>05210776cfb30911aaf2a80ace89ea34</srcmd5>
+    <version>5.14.0</version>
+    <time>1539013287</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.0 final (attempt 2) (forwarded request 640244 from Vogtinator)</comment>
+    <requestid>640308</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>ac852e3426e933baf6cfc14dea23e46d</srcmd5>
+    <version>5.14.1</version>
+    <time>1540200024</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.1 (forwarded request 642367 from Vogtinator)</comment>
+    <requestid>642464</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ef236a52d0ac6a3ac31ca11b1ad26421</srcmd5>
+    <version>5.14.2</version>
+    <time>1540819137</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.2</comment>
+    <requestid>644053</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e01ec52b1c65cdd6e04a4f8be6ab5c6a</srcmd5>
+    <version>5.14.3</version>
+    <time>1541865206</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.3</comment>
+    <requestid>646866</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>cfb4b7fa53e9dda6f5be77dcc73da4db</srcmd5>
+    <version>5.14.4</version>
+    <time>1543999383</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.4, this time with .changes (forwarded request 652265 from Vogtinator)</comment>
+    <requestid>652332</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>497611c0db0ae627faf584e8347b9de3</srcmd5>
+    <version>5.14.5</version>
+    <time>1547129937</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.14.5</comment>
+    <requestid>663993</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>c2eaf0e240c32a290f7b2b46a504e952</srcmd5>
+    <version>5.15.0</version>
+    <time>1549916484</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.15.0 - maybe final tars (forwarded request 672547 from Vogtinator)</comment>
+    <requestid>672594</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2b0027ec5ce797a55eebc4b456f56960</srcmd5>
+    <version>5.15.2</version>
+    <time>1551386176</time>
+    <user>coolo</user>
+    <comment>Plasma 5.15.2</comment>
+    <requestid>679638</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>156e9577f3b8e03fa8cfdc2281a9bc7a</srcmd5>
+    <version>5.15.3</version>
+    <time>1552643441</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.15.3</comment>
+    <requestid>684611</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>8112d2d129810e8947f5fcee7b6704bc</srcmd5>
+    <version>5.15.4</version>
+    <time>1554384042</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.15.4</comment>
+    <requestid>690747</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>b740ae4c5c6d9c43a402262f5c605e7b</srcmd5>
+    <version>5.15.5</version>
+    <time>1557389227</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.15.5</comment>
+    <requestid>701388</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ba409159e3811df34edf149b466016a7</srcmd5>
+    <version>5.16.0</version>
+    <time>1560339004</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.16 final (tentative)</comment>
+    <requestid>708315</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>2958e324c3f28e10a15c0999f9794329</srcmd5>
+    <version>5.16.1</version>
+    <time>1561195151</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.16.1</comment>
+    <requestid>711097</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>1288e8d1b22c441b7e4b0bee2673a7be</srcmd5>
+    <version>5.16.2</version>
+    <time>1561645312</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.16.2</comment>
+    <requestid>711979</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>0e19a8a802456d49232cd7458a4758ab</srcmd5>
+    <version>5.16.3</version>
+    <time>1564137146</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.16.3</comment>
+    <requestid>717055</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>191fee936e90b9b7a8d7406cb8ce994d</srcmd5>
+    <version>5.16.4</version>
+    <time>1564993993</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.16.4</comment>
+    <requestid>719922</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f7544166a036b4fad2d5527fd6aaee44</srcmd5>
+    <version>5.16.5</version>
+    <time>1567849286</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.16.5</comment>
+    <requestid>728199</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>982e5e554bc11667eb6177e532f61a55</srcmd5>
+    <version>5.17.0</version>
+    <time>1571049507</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.0 pre-release tars. Please publish disable before accept. (forwarded request 737387 from Vogtinator)</comment>
+    <requestid>737480</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>b83cceb3dc162e2b50b95fff61a4625a</srcmd5>
+    <version>5.17.1</version>
+    <time>1572179915</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.1</comment>
+    <requestid>742065</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>8e9dea1bed5a8c2dabdae58d053cb565</srcmd5>
+    <version>5.17.2</version>
+    <time>1572541921</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.2 (forwarded request 744043 from Vogtinator)</comment>
+    <requestid>744234</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e634ca2b5cc1dfe5811b38c555ab1fbe</srcmd5>
+    <version>5.17.3</version>
+    <time>1573853761</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.3</comment>
+    <requestid>747851</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>3833b3a0e7383b55e3fecef87b51188a</srcmd5>
+    <version>5.17.4</version>
+    <time>1576062443</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.4</comment>
+    <requestid>754021</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d02d759f03a38ce1c7ac69c868fdbabc</srcmd5>
+    <version>5.17.5</version>
+    <time>1578749951</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.17.5 (forwarded request 761737 from Vogtinator)</comment>
+    <requestid>761994</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>580dae25a5688e92bed99c17257657c9</srcmd5>
+    <version>5.18.0</version>
+    <time>1581367901</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.0, not yet final tars. Please publish disable KF5 before accepting. (forwarded request 770821 from Vogtinator)</comment>
+    <requestid>772250</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>f84439d380acff05c5620eeeb58d6470</srcmd5>
+    <version>5.18.1</version>
+    <time>1582394726</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.1</comment>
+    <requestid>776792</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>0743b2fc6cde07a804c47fecdaa07d1d</srcmd5>
+    <version>5.18.2</version>
+    <time>1583007761</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.2</comment>
+    <requestid>779196</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>eaed47874a43bc39c1be3e781d86377d</srcmd5>
+    <version>5.18.3</version>
+    <time>1584050399</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.3</comment>
+    <requestid>783644</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>35cda46788d885ae7ea8a7a2a8122339</srcmd5>
+    <version>5.18.4.1</version>
+    <time>1585995179</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.4.1 - second try</comment>
+    <requestid>790436</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e90fe31b6f98ddca6a50d1b245971d0b</srcmd5>
+    <version>5.18.5</version>
+    <time>1588857024</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.18.5</comment>
+    <requestid>800488</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>79c31b3148572fc09e6310bd45623b14</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653273</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.0</comment>
+    <requestid>812325</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>6573772acedad346760750b07f8266fa</srcmd5>
+    <version>5.19.1</version>
+    <time>1592676701</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.1</comment>
+    <requestid>815469</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>84bbf3c64eaa690fef692105ae0f920d</srcmd5>
+    <version>5.19.2</version>
+    <time>1593090338</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.2</comment>
+    <requestid>816686</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>b6da216105540d7ab3f7b1907455226d</srcmd5>
+    <version>5.19.3</version>
+    <time>1594383115</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.3</comment>
+    <requestid>819420</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>c3b1ead0b1bef2b8497391ff467f75af</srcmd5>
+    <version>5.19.4</version>
+    <time>1596035952</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.4</comment>
+    <requestid>823252</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>06b7f027efe9392e76d1142274da15a4</srcmd5>
+    <version>5.19.5</version>
+    <time>1599210461</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.5</comment>
+    <requestid>831173</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>26766c8371925d039904828372560f6a</srcmd5>
+    <version>5.20.0</version>
+    <time>1602595763</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.0</comment>
+    <requestid>840999</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>ff0995e876d4c5741260f85c119e3868</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369455</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843107</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>5c16f4b3175feb6d0abc0bf829d9a13e</srcmd5>
+    <version>5.20.2</version>
+    <time>1604054826</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844588</requestid>
+  </revision>
+</revisionlist>

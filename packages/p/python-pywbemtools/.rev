@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c697e7824fdc7d6cea1d3dd42ef5c90</srcmd5>
+    <version>0.7.3</version>
+    <time>1603979505</time>
+    <user>dimstar_suse</user>
+    <comment>pywbem outsourced the cli to this package
+Staging:H currently fails with old python-pywbem
+See also https://build.opensuse.org/request/show/841582</comment>
+    <requestid>842094</requestid>
+  </revision>
+</revisionlist>

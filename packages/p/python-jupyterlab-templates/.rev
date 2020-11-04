@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a8ae9d8349a6731105a0238c6bfede2</srcmd5>
+    <version>0.2.2</version>
+    <time>1576189055</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed from jupyter-jupyterlab_templates</comment>
+    <requestid>756133</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bebc1f1773edac92932af62eec16cf43</srcmd5>
+    <version>0.2.2</version>
+    <time>1578069435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760470</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63191a924489b4b23419bd240b2ff271</srcmd5>
+    <version>0.2.3</version>
+    <time>1590506520</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix download url
+
+- specfile:
+  * update copyright year
+- update to version 0.2.3:
+  * set long description type</comment>
+    <requestid>808520</requestid>
+  </revision>
+</revisionlist>

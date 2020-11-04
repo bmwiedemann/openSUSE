@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe8e9be3762f9a5faf4315d7332550c4</srcmd5>
+    <version>3.4.0</version>
+    <time>1593090409</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>810908</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3be60a02501b8449da3add4c4711478e</srcmd5>
+    <version>3.4.0</version>
+    <time>1593200892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>817065</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8a64dafdf7e88274e60a9d94239fc41</srcmd5>
+    <version>3.5.0</version>
+    <time>1597751671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0: 
+  * [docs] fix broken links, add new links, fix typos, add templates
+  * [tx] many fixes related to uninitialized variables, buffer/stack overflows,
+    etc.
+  * [makeotf] Drop Multiple Master in OpenType support
+  * [checkoutlinesufo] Improve overlap removal
+  * [fontsetplot, ttfdecomponentizer] Fix proofing issues
+  * [requirements] remove dependency on standalone cu2qu (integrated into
+    fontTools 4.7.0)
+  * [makeinstancesufo] fix `use-varlib` flag, check for extrapolation/warn when
+    using varLib
+  * [makeotf] update a misleading comment regarding how CodePageRange bits are
+    set
+  * [sfntedit, sfntdiff] fix failures with long file/pathnames
+  * [tx] don't write FontMatrix in CFF2 FontDict
+  * [makeotf, makeotfexe] STAT table updates and improvements
+  * [makeotf] Check for PostScript name in FontMenuNameDB
+  * [autohint, stemhist] **REMOVED FROM AFDKO** (use psautohint/psstemhist)
+  * [makeotfexe] fix stack buffer overflow and use-after-free issues
+  * [mergefonts] fix stack buffer overflow issue
+  * [spot] fix heap buffer overflow issue
+- Update BuildRequires/Requires
+- No longer install 2 removed binaries</comment>
+    <requestid>822561</requestid>
+  </revision>
+</revisionlist>

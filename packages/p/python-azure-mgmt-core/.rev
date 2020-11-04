@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>277797492e7a85cd1dea7d14a471eed6</srcmd5>
+    <version>1.0.0</version>
+    <time>1588971887</time>
+    <user>dimstar_suse</user>
+    <comment>- New package that is part of the Azure SDK</comment>
+    <requestid>801178</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a32d6988637f7a4ed3504d1d90ddd0ba</srcmd5>
+    <version>1.2.0</version>
+    <time>1598726090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829650</requestid>
+  </revision>
+</revisionlist>

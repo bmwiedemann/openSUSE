@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5a828894ea86f3103b505ab0c49a51a</srcmd5>
+    <version>0.6.2</version>
+    <time>1541865425</time>
+    <user>dimstar_suse</user>
+    <comment>Required by latest version of python-flexx</comment>
+    <requestid>645301</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d693e5b1323e895c5f86fa88f8b84417</srcmd5>
+    <version>0.6.2</version>
+    <time>1544817219</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653695</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f78e09c643cb812a3e9460761152e673</srcmd5>
+    <version>0.7.0</version>
+    <time>1553635905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Add ability to reduce overloading of add, mul, equals and truthy</comment>
+    <requestid>686471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>538e3e3d77414ae3d6281cb4e25939f7</srcmd5>
+    <version>0.7.1</version>
+    <time>1559375132</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705241</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>273e4d40d36a271abba78173c887ccdc</srcmd5>
+    <version>0.7.3</version>
+    <time>1579955103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>766960</requestid>
+  </revision>
+</revisionlist>

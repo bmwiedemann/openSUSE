@@ -1,0 +1,5 @@
+<package name="python-pyliblo" project="openSUSE:Factory">
+  <title>python-pyliblo</title>
+  <description>Python bindings for the liblo Open Sound Control (OSC) library</description>
+  <devel project="multimedia:libs" package="python-pyliblo"/>
+</package>

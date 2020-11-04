@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc9279d93baf50ff7f537f98b39cc2b1</srcmd5>
+    <version>1.0.1</version>
+    <time>1517424739</time>
+    <user>dimstar_suse</user>
+    <comment>- initial version 1.0.1
+</comment>
+    <requestid>571148</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a4e397ecdeb0aada545771ada3817854</srcmd5>
+    <version>1.0.1</version>
+    <time>1518025290</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>573549</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76eead197f7a70d9c027deea6105873d</srcmd5>
+    <version>1.1.0</version>
+    <time>1525426230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603639</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6abe409e10ce4ef1036f75d3b2c42b1e</srcmd5>
+    <version>1.1.0</version>
+    <time>1549140553</time>
+    <user>coolo</user>
+    <comment>- Really run tests
+- Disable docs building it is distributed by upstream and does not
+  work on older openSUSE releases</comment>
+    <requestid>669839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f30c1d38e3b33775e84ac364b37f1a3</srcmd5>
+    <version>1.2.0</version>
+    <time>1564137596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718287</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6ee172fe477313e9b4230c8f1278a0c2</srcmd5>
+    <version>1.2.0</version>
+    <time>1574859103</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>745367</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9af7530a0546e1f71b2cdd2870271cf2</srcmd5>
+    <version>1.3.0</version>
+    <time>1585667703</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0:
+  * Deprecated support for Python 3.4.
+  * Officially add support for Python 3.8.</comment>
+    <requestid>789927</requestid>
+  </revision>
+</revisionlist>

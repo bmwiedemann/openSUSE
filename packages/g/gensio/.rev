@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdcda5c50cc1c2ef8128230cdcd82f34</srcmd5>
+    <version>2.0.5</version>
+    <time>1589660808</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain gensio in Factory</comment>
+    <requestid>806029</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da30d424705a982bad8f1bd586eca944</srcmd5>
+    <version>2.0.5</version>
+    <time>1591880038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813441</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f30a10de898ecdc3f8f86d7403f4b74c</srcmd5>
+    <version>2.1.3</version>
+    <time>1596203729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823617</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37cbae6c16cb0624732f395f0116ed86</srcmd5>
+    <version>2.1.4</version>
+    <time>1597392296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826311</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28fb9d7e611b931660677be50291d557</srcmd5>
+    <version>2.1.7</version>
+    <time>1603283906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841801</requestid>
+  </revision>
+</revisionlist>

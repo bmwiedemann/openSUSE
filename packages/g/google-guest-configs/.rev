@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cfd2120c7dda8b148a585127da4dd457</srcmd5>
+    <version>20200626.00</version>
+    <time>1597667959</time>
+    <user>dimstar_suse</user>
+    <comment>- New package replaces parts of google-compute-engine source package</comment>
+    <requestid>822648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50056ffcf7be68f79e7b940e1b924ceb</srcmd5>
+    <version>20200731.00</version>
+    <time>1598725963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829587</requestid>
+  </revision>
+</revisionlist>

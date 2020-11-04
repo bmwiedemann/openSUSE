@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>891905f7ce9ea0fc6ed5443364297f43</srcmd5>
+    <version>0~git20200107</version>
+    <time>1581456202</time>
+    <user>dimstar_suse</user>
+    <comment>Update to latest git version</comment>
+    <requestid>772403</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>859f18a2185a374200af2b84ae66a2af</srcmd5>
+    <version>0~git20200625</version>
+    <time>1597658474</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826803</requestid>
+  </revision>
+</revisionlist>

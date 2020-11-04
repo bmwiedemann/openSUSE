@@ -1,0 +1,6 @@
+<package name="kImageAnnotator" project="openSUSE:Factory">
+  <title>Tool for annotating images.</title>
+  <description></description>
+  <devel project="X11:LXQt:Other" package="kImageAnnotator"/>
+  <url>https://github.com/DamirPorobic/kImageAnnotator</url>
+</package>

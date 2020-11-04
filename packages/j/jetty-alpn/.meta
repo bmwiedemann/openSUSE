@@ -1,0 +1,5 @@
+<package name="jetty-alpn" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jetty-alpn"/>
+</package>

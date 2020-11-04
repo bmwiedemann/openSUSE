@@ -1,0 +1,5 @@
+<package name="pocketsphinx5" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:voice-assistant" package="pocketsphinx5"/>
+</package>

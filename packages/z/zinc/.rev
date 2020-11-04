@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eebea2a0d29008e0d2076ac586d30ea3</srcmd5>
+    <version>0.3.1</version>
+    <time>1574104107</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1e31e459c0399f16a07174cf4fb53d03</srcmd5>
+    <version>0.3.1</version>
+    <time>1575373278</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with jdk11</comment>
+    <requestid>752809</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>094f9c28a0fac9e794a160f87c2f81a3</srcmd5>
+    <version>0.3.15</version>
+    <time>1576506052</time>
+    <user>dimstar_suse</user>
+    <comment>0.3.15</comment>
+    <requestid>757285</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1768ea76bf448d9f6fb7548f2eff86fb</srcmd5>
+    <version>0.3.15</version>
+    <time>1583526546</time>
+    <user>dimstar_suse</user>
+    <comment>Require directly sbt to avoid choice with sbt-bootstrap</comment>
+    <requestid>782004</requestid>
+  </revision>
+</revisionlist>

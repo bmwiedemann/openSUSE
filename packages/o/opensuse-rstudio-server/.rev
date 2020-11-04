@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e7a25c30ddb40304df577a6248d3b83</srcmd5>
+    <version>1.0.0</version>
+    <time>1586467057</time>
+    <user>dimstar_suse</user>
+    <comment>First submission for RStudio-server container image.</comment>
+    <requestid>792711</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aab7b697c06466cc567deb20d3f6845b</srcmd5>
+    <version>1.0.0</version>
+    <time>1595577717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822256</requestid>
+  </revision>
+</revisionlist>

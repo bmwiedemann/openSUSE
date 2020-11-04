@@ -1,0 +1,7 @@
+<package name="hevea" project="openSUSE:Factory">
+  <title>A fast LaTeX to HTML translator</title>
+  <description>HEVEA is a LaTeX to HTML translator.  The input language is a fairly 
+complete subset of LaTeX2e (old LaTeX style is also accepted) and 
+the output language is HTML.</description>
+  <devel project="Publishing" package="hevea"/>
+</package>

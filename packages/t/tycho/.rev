@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9c13674c61d35d89b6cc3b03b22566be</srcmd5>
+    <version>1.2.0</version>
+    <time>1574167418</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748149</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ad89a29a1045be33099ca9c315b88db8</srcmd5>
+    <version>1.2.0</version>
+    <time>1584531027</time>
+    <user>dimstar_suse</user>
+    <comment>Build with right bootstrap packages to avoid cycles</comment>
+    <requestid>785646</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>30582a8f055ef5446ffc9a967517cc81</srcmd5>
+    <version>1.2.0</version>
+    <time>1585761548</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against the new felix-scr</comment>
+    <requestid>790528</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7af791412ea57c8e475cbf9d771a048b</srcmd5>
+    <version>1.6.0</version>
+    <time>1594894327</time>
+    <user>dimstar_suse</user>
+    <comment>1.6.0</comment>
+    <requestid>818536</requestid>
+  </revision>
+</revisionlist>

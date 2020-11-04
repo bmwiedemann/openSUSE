@@ -1,0 +1,161 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef329a7328794d01352dab13da006351</srcmd5>
+    <version>3.4.7</version>
+    <time>1506453267</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-Beaker, which is already in openSUSE:Factory.</comment>
+    <requestid>522090</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ebaad2afe06c98fe756af7e344bd5db</srcmd5>
+    <version>3.6.1</version>
+    <time>1526030861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605242</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5dd4da4cd840a544477f999bc24d55d5</srcmd5>
+    <version>3.6.1</version>
+    <time>1526473703</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide/obsolete also python-crypto for py2 package</comment>
+    <requestid>609135</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e75b48c7b165db374b38ac128448cc8</srcmd5>
+    <version>3.6.3</version>
+    <time>1530741284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620468</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32e8aa64171e2dfaaf79d7ebf8df896a</srcmd5>
+    <version>3.6.6</version>
+    <time>1536575776</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633517</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>189d0547715be9f86a687b51057e9e56</srcmd5>
+    <version>3.6.6</version>
+    <time>1540447826</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pycryptodomex copy in this package container</comment>
+    <requestid>643190</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9947f603d6e7f8a2bab4e949be97fe4</srcmd5>
+    <version>3.7.2</version>
+    <time>1545866977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.7.2
+  - Resolved issues
+    * GH#242: Fixed compilation problem on ARM platforms.
+- Update to 3.7.1
+  - New features
+    * Added type stubs to enable static type checking with mypy.
+      Thanks to Michael Nix.
+    * New ``update_after_digest`` flag for CMAC.
+  - Resolved issues
+    * GH#232: Fixed problem with gcc 4.x when compiling
+      ``ghash_clmul.c``.
+    * GH#238: Incorrect digest value produced by CMAC after cloning
+      the object.
+    * Method ``update()`` of an EAX cipher object was returning the
+      underlying CMAC object, instead of the EAX object itself.
+    * Method ``update()`` of a CMAC object was not throwing an
+      exception after the digest was computed (with ``digest()`` or
+      ``verify()``).
+
+- checked in python-pycrytodomex as separate package on request of
+  Dirk Müller
+
+- fixed source url
+
+- Update to 3.7.0
+  - New features
+    * Added support for Poly1305 MAC (with AES and ChaCha20 ciphers
+      for key derivation).
+    * Added support for ChaCha20-Poly1305 AEAD cipher.
+    * New parameter output for Crypto.Util.strxor.strxor,</comment>
+    <requestid>660002</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0ac8fe4df7dd6cfd25436dd081b403a3</srcmd5>
+    <version>3.7.2</version>
+    <time>1548704749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664990</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47c366bf11e833d04211087cd0ec307d</srcmd5>
+    <version>3.8.1</version>
+    <time>1558340693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702874</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>91efa08961718a04fb595f84159da0f7</srcmd5>
+    <version>3.8.1</version>
+    <time>1558783025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705218</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4892fc3925ad7aca3524e7b3475eb13e</srcmd5>
+    <version>3.8.2</version>
+    <time>1560861879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706523</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e44e7c873939870260ff76faa79593d3</srcmd5>
+    <version>3.9.0</version>
+    <time>1569233122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0:
+  * Add support for loading PEM files encrypted with AES256-CBC.
+  * Add support for XChaCha20 and XChaCha20-Poly1305 ciphers.
+  * Add support for bcrypt key derivation function (Crypto.Protocol.KDF.bcrypt).
+  * Add support for left multiplication of an EC point by a scalar.
+  * Add support for importing ECC and RSA keys in the new OpenSSH format.</comment>
+    <requestid>729873</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f2267135c05a588f6afb663800be8691</srcmd5>
+    <version>3.9.2</version>
+    <time>1574414515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747336</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4704e9b91ff4f7532b0794395ce2eb26</srcmd5>
+    <version>3.9.7</version>
+    <time>1585265254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786476</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f911f579a1eb5c4a2d0d0eebf3900cb3</srcmd5>
+    <version>3.9.8</version>
+    <time>1596727910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.9.8:
+  * GH#426: The Shamir's secret sharing implementation is not actually compatible with ``ssss``.
+  Added an optional parameter to enable interoperability.
+  * GH#427: Skip altogether loading of ``gmp.dll`` on Windows.
+  * GH#420: Fix incorrect CFB decryption when the input and the output are the same buffer.
+  * Speed up Shamir's secret sharing routines. Thanks to ncarve.</comment>
+    <requestid>824348</requestid>
+  </revision>
+</revisionlist>

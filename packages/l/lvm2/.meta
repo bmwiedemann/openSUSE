@@ -1,0 +1,6 @@
+<package name="lvm2" project="openSUSE:Factory">
+  <title>LVM2 Tools</title>
+  <description>Programs and man pages for configuring and using the LVM2 Logical
+Volume Manager.</description>
+  <devel project="Base:System" package="lvm2"/>
+</package>

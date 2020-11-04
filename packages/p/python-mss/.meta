@@ -1,0 +1,5 @@
+<package name="python-mss" project="openSUSE:Factory">
+  <title></title>
+  <description>An ultra fast cross-platform multiple screenshots module in pure Python using ctypes.</description>
+  <devel project="devel:languages:python" package="python-mss"/>
+</package>

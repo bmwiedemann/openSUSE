@@ -1,0 +1,5 @@
+<package name="kafka-kit" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:messaging:kafka" package="kafka-kit"/>
+</package>

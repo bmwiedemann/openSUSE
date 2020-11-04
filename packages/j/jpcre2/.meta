@@ -1,0 +1,6 @@
+<package name="jpcre2" project="openSUSE:Factory">
+  <title>jpcre2</title>
+  <description>C++ wrapper for the PCRE2 library (header only)</description>
+  <devel project="devel:libraries:c_c++" package="jpcre2"/>
+  <url>https://github.com/jpcre2/jpcre2</url>
+</package>

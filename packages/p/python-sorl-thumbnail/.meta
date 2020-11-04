@@ -1,0 +1,8 @@
+<package name="python-sorl-thumbnail" project="openSUSE:Factory">
+  <title>Thumbnails for Django</title>
+  <description>The sorl.thumbnail package provides an easy way to generate image thumbnails by using either the {% thumbnail %} template tag or the ImageWithThumbnailsField.
+
+It requires the Python Imaging Library (PIL).
+</description>
+  <devel project="devel:languages:python:django" package="python-sorl-thumbnail"/>
+</package>

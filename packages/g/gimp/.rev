@@ -1,0 +1,1955 @@
+<revisionlist>
+  <revision rev="1" vrev="40">
+    <srcmd5>ab3c96c3e34c55cf88da2d8fb342100e</srcmd5>
+    <version>2.2.13</version>
+    <time>1168361060</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="46">
+    <srcmd5>744851acbed4e2048fbef858c11c80f5</srcmd5>
+    <version>2.2.13</version>
+    <time>1172777830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="60">
+    <srcmd5>4ebbcc414fbb6d3bb0ba0907ea5ed301</srcmd5>
+    <version>2.2.13</version>
+    <time>1178291944</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="87">
+    <srcmd5>63e306c4657488f002b75defcd5e6f21</srcmd5>
+    <version>2.2.13</version>
+    <time>1183623155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="91">
+    <srcmd5>6df521254956c7b4fa6e7f71a9507f20</srcmd5>
+    <version>2.2.13</version>
+    <time>1185031878</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1b88c0f5522ed04fe01edeb088d70d3</srcmd5>
+    <version>2.2.17</version>
+    <time>1185493416</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>4da0ebd14b6e057ee0328acdc350124b</srcmd5>
+    <version>2.2.17</version>
+    <time>1186701471</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>399e9afb66bb2680536ce8b7f2082c3f</srcmd5>
+    <version>2.2.17</version>
+    <time>1188719062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="30">
+    <srcmd5>b8d278afe8cdbe0a1477065066f8d8e3</srcmd5>
+    <version>2.2.17</version>
+    <time>1189722585</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="33">
+    <srcmd5>a9075240c87c83fcdaece3c70fdb8a78</srcmd5>
+    <version>2.2.17</version>
+    <time>1189934770</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d9f4917dac24849165ab34c8eac7d3e</srcmd5>
+    <version>2.4.0</version>
+    <time>1193318908</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>c0af61e4997d2f8fba396c1d4215a3ef</srcmd5>
+    <version>2.4.0</version>
+    <time>1197054593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="35">
+    <srcmd5>9df70d872fbddc02a8652e94df8170ca</srcmd5>
+    <version>2.4.0</version>
+    <time>1201713281</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c1b6a398363d4df27d17ab963068e515</srcmd5>
+    <version>2.4.5</version>
+    <time>1204767520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>0588ca145ee33b1ae747b1e0f239ef9f</srcmd5>
+    <version>2.4.5</version>
+    <time>1206651135</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>3a99d2ff98b101c235da9f5cd00b23cb</srcmd5>
+    <version>2.4.5</version>
+    <time>1208195104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>14bc3fb7a4f25844f22221759d861da4</srcmd5>
+    <version>2.4.5</version>
+    <time>1208719689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2a50e595b5887ffde5a39ed0101336e5</srcmd5>
+    <version>2.4.6</version>
+    <time>1216236733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c9445427c3bc1403a6458b0577858d4e</srcmd5>
+    <version>2.4.7</version>
+    <time>1219444204</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>7c83d20a6e20a8dd9db8f8d94c69f1cf</srcmd5>
+    <version>2.4.7</version>
+    <time>1220570226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a831dc324d1356544315ee9a9419d715</srcmd5>
+    <version>2.6.0</version>
+    <time>1223303055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ca5b1fbba850756cddc25dba871fd604</srcmd5>
+    <version>2.6.1</version>
+    <time>1223762009</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>feceffcfd34d7b06238458923b2b7961</srcmd5>
+    <version>2.6.2</version>
+    <time>1225710451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>03b190ddda96ae0d64fc802ce6c16233</srcmd5>
+    <version>2.6.2</version>
+    <time>1225816632</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>8f4ce90193130b27848076746dc118f0</srcmd5>
+    <version>2.6.2</version>
+    <time>1229873535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>03ea61794b9c91c990001af9110b8ce5</srcmd5>
+    <version>2.6.2</version>
+    <time>1232585801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a391f02b41a30c0e7eda2095dcdc3ccd</srcmd5>
+    <version>2.6.4</version>
+    <time>1233960217</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e08f79a15f7d78a631626088077b4855</srcmd5>
+    <version>2.6.4</version>
+    <time>1234448277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3558488ea2c0f91fbb60202ef3e05c42</srcmd5>
+    <version>2.6.5</version>
+    <time>1235065500</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2486acf884fde6f491e7afc8f9dc7edc</srcmd5>
+    <version>2.6.6</version>
+    <time>1238003266</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>5dbed4ab66b91e263899eeb30d8f58d8</srcmd5>
+    <version>2.6.6</version>
+    <time>1244823468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>25c3d67ae4392559cc2f206c08e76003</srcmd5>
+    <version>2.6.6</version>
+    <time>1249060875</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fff8bb7bc89db849d097e4c1bae3388c</srcmd5>
+    <version>2.6.7</version>
+    <time>1250513415</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 17860 from user vuntz
+</comment>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>f7f8be552c49ed6da0ed535d365bd0a6</srcmd5>
+    <version>2.6.7</version>
+    <time>1251412242</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 19045 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>ccd719dbd482fdffc0d611ee70de661b</srcmd5>
+    <version>2.6.7</version>
+    <time>1253652714</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 20745 from user dimstar
+</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>ccd719dbd482fdffc0d611ee70de661b</srcmd5>
+    <version>2.6.7</version>
+    <time>1253652714</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 20745 from user dimstar
+</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>7a6d78c105b625956972c88f74ee4477</srcmd5>
+    <version>2.6.7</version>
+    <time>1256657161</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 23180 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5a5f09f67e9c467a91633bdb9f1ab22a</srcmd5>
+    <version>2.6.8</version>
+    <time>1261140365</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gimp based on submit request 26995 from user vuntz
+</comment>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>fbab2849093e313ca6cd8cf01753ae0b</srcmd5>
+    <version>2.6.8</version>
+    <time>1268923716</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>edd1adb0a7ca4fd5c297d234e8592f17</srcmd5>
+    <version>2.6.8</version>
+    <time>1270585395</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gimp based on submit request 37078 from user vuntz
+</comment>
+    <requestid>37078</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>6a3f72bdc4a0c621deb2a62ab77e1a69</srcmd5>
+    <version>2.6.8</version>
+    <time>1274653915</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gimp based on submit request 40547 from user vuntz
+</comment>
+    <requestid>40547</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>902c4eb4fe766f4a1af1e26d441226b3</srcmd5>
+    <version>2.6.8</version>
+    <time>1277136693</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gimp based on submit request 41686 from user vuntz
+</comment>
+    <requestid>41686</requestid>
+  </revision>
+  <revision rev="43" vrev="7">
+    <srcmd5>902c4eb4fe766f4a1af1e26d441226b3</srcmd5>
+    <version>2.6.8</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>902c4eb4fe766f4a1af1e26d441226b3</srcmd5>
+    <version>2.6.8</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7a66de023bc94141ee4dc3e8a048be98</srcmd5>
+    <version>2.6.10</version>
+    <time>1281401937</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gimp based on submit request 45219 from user vuntz
+</comment>
+    <requestid>45219</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dcc2d93f68f05e82611d5d2b07fd5ef6</srcmd5>
+    <version>2.6.11</version>
+    <time>1287153743</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gimp based on submit request 50617 from user vuntz
+</comment>
+    <requestid>50617</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>52dd18a9f0453b25386b791af9066c1b</srcmd5>
+    <version>2.6.11</version>
+    <time>1290504667</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 53753 from user dimstar
+</comment>
+    <requestid>53753</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>eb48584615de58b340e948e06c17dc3b</srcmd5>
+    <version>2.6.11</version>
+    <time>1290504676</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 53753
+</comment>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>ebb90961aadeee646a40fe7a45026157</srcmd5>
+    <version>2.6.11</version>
+    <time>1292852459</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56404 from user dimstar
+</comment>
+    <requestid>56404</requestid>
+  </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>29d47ede585828fbe030d30d451b52ca</srcmd5>
+    <version>2.6.11</version>
+    <time>1292852466</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56404
+</comment>
+  </revision>
+  <revision rev="51" vrev="6">
+    <srcmd5>407474748f38e5ec91dda27ad20cc215</srcmd5>
+    <version>2.6.11</version>
+    <time>1294654150</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57512 from user vuntz
+</comment>
+    <requestid>57512</requestid>
+  </revision>
+  <revision rev="52" vrev="7">
+    <srcmd5>8e63755fa3b36f52e2f688358e808581</srcmd5>
+    <version>2.6.11</version>
+    <time>1294654163</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57512
+</comment>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>98cc6fe49c967e345760589a97ab0ca4</srcmd5>
+    <version>2.6.11</version>
+    <time>1297642286</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60930 from user vuntz
+</comment>
+    <requestid>60930</requestid>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>dcabc359015c6d8e5f0b082746e79da2</srcmd5>
+    <version>2.6.11</version>
+    <time>1297642292</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60930
+</comment>
+  </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>746cfb7b88806f099114fc46bb2e6aed</srcmd5>
+    <version>2.6.11</version>
+    <time>1297784741</time>
+    <user>darix</user>
+    <comment>Accepted submit request 61245 from user vuntz
+</comment>
+    <requestid>61245</requestid>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>2bcfb88bcd56a51b9a8c3b2da94b5ff9</srcmd5>
+    <version>2.6.11</version>
+    <time>1297784747</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 61245
+</comment>
+  </revision>
+  <revision rev="57" vrev="14">
+    <srcmd5>2bcfb88bcd56a51b9a8c3b2da94b5ff9</srcmd5>
+    <version>2.6.11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="58" vrev="15">
+    <srcmd5>97e464967dcba8d83ec7a1c6c0a54a17</srcmd5>
+    <version>2.6.11</version>
+    <time>1308045803</time>
+    <user>saschpe</user>
+    <comment>Drop hal dep on 12.1 and later (bnc#697016) (forwarded request 73399 from vuntz)</comment>
+    <requestid>73438</requestid>
+  </revision>
+  <revision rev="59" vrev="16">
+    <srcmd5>f7a8686f37e34ac0209a54dc8908d18b</srcmd5>
+    <version>2.6.11</version>
+    <time>1308045817</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73438
+</comment>
+  </revision>
+  <revision rev="60" vrev="17">
+    <srcmd5>16f3a8257b0393cffb1ca0b2b7da757a</srcmd5>
+    <version>2.6.11</version>
+    <time>1308297767</time>
+    <user>saschpe</user>
+    <comment>Fix build (forwarded request 73763 from vuntz)</comment>
+    <requestid>73801</requestid>
+  </revision>
+  <revision rev="61" vrev="18">
+    <srcmd5>55d9c1f9e64bfceaf022ab25b0613529</srcmd5>
+    <version>2.6.11</version>
+    <time>1308297780</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73801
+</comment>
+  </revision>
+  <revision rev="62" vrev="19">
+    <srcmd5>fe5ad97cc9ad1938e98439416b4cbf63</srcmd5>
+    <version>2.6.11</version>
+    <time>1310110463</time>
+    <user>saschpe</user>
+    <comment>Pushing bits of G:A</comment>
+    <requestid>75685</requestid>
+  </revision>
+  <revision rev="63" vrev="20">
+    <srcmd5>84df6a70c7b10fe5e264abb3d29ab286</srcmd5>
+    <version>2.6.11</version>
+    <time>1310110474</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75685
+</comment>
+  </revision>
+  <revision rev="64" vrev="21">
+    <srcmd5>1ff4b544b2ac97ee080bf166f0c1461e</srcmd5>
+    <version>2.6.11</version>
+    <time>1315760873</time>
+    <user>saschpe</user>
+    <comment>Fix build + CVE-2011-2896 + crash (forwarded request 81711 from vuntz)</comment>
+    <requestid>81712</requestid>
+  </revision>
+  <revision rev="65" vrev="22">
+    <srcmd5>aebc65e41b1b334bb614692b274a306f</srcmd5>
+    <version>2.6.11</version>
+    <time>1315760879</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81712
+</comment>
+  </revision>
+  <revision rev="66" vrev="23">
+    <srcmd5>eee93118d89351577b7841928665e23c</srcmd5>
+    <version>2.6.11</version>
+    <time>1316597663</time>
+    <user>saschpe</user>
+    <comment>Fix build</comment>
+    <requestid>83989</requestid>
+  </revision>
+  <revision rev="67" vrev="24">
+    <srcmd5>70c03d19c75668b771373a201d6951cf</srcmd5>
+    <version>2.6.11</version>
+    <time>1316597670</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 83989
+</comment>
+  </revision>
+  <revision rev="68" vrev="25">
+    <srcmd5>241e9e6100357a59c9fc621059f2f4ef</srcmd5>
+    <version>2.6.11</version>
+    <time>1317996434</time>
+    <user>lrupp</user>
+    <comment>Add iso-codes Recommends (forwarded request 86992 from vuntz)</comment>
+    <requestid>87010</requestid>
+  </revision>
+  <revision rev="69" vrev="26">
+    <srcmd5>42fd6272f60bd7f4993b67983d76b763</srcmd5>
+    <version>2.6.11</version>
+    <time>1318501227</time>
+    <user>lrupp</user>
+    <comment>Pushing G:A</comment>
+    <requestid>87618</requestid>
+  </revision>
+  <revision rev="70" vrev="27">
+    <srcmd5>691fe39a17c5c3789f50f9db00ab571a</srcmd5>
+    <version>2.6.11</version>
+    <time>1318761871</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequire to avoid a hidden require from projconfig (forwarded request 87951 from coolo)</comment>
+    <requestid>87979</requestid>
+  </revision>
+  <revision rev="71" vrev="29">
+    <srcmd5>691fe39a17c5c3789f50f9db00ab571a</srcmd5>
+    <version>2.6.11</version>
+    <time>1319181905</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="72" vrev="30">
+    <srcmd5>1c4e42ee3530d9f51e4a734944925616</srcmd5>
+    <version>2.6.11</version>
+    <time>1319550841</time>
+    <user>coolo</user>
+    <comment>Change gimp-2.0-scanner-plugin Recommends to a Suggests (forwarded request 88953 from vuntz)</comment>
+    <requestid>88954</requestid>
+  </revision>
+  <revision rev="73" vrev="31">
+    <srcmd5>95c79d12af5b8c54a321bc76e6092e49</srcmd5>
+    <version>2.6.11</version>
+    <time>1323191560</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8e4991cef0544aabe6c6850b69d95424</srcmd5>
+    <version>2.6.12</version>
+    <time>1328260942</time>
+    <user>coolo</user>
+    <comment>Update to 2.6.12 (forwarded request 102347 from vuntz)</comment>
+    <requestid>102529</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>6618e83c8b9fb7dffb0fd01989877d2b</srcmd5>
+    <version>2.7.99_2.8.0rc1</version>
+    <time>1335190230</time>
+    <user>coolo</user>
+    <comment>Pushing G:A</comment>
+    <requestid>114795</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ce81ad9774d210f935466e1d83d12949</srcmd5>
+    <version>2.8.0</version>
+    <time>1336471784</time>
+    <user>coolo</user>
+    <comment>Update to version 2.8.0 final. (forwarded request 116392 from dimstar)</comment>
+    <requestid>116394</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>87412b1b79907c30e5d53fb71d9081f4</srcmd5>
+    <version>2.8.0</version>
+    <time>1337674980</time>
+    <user>coolo</user>
+    <comment>Push G:A</comment>
+    <requestid>121472</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>87412b1b79907c30e5d53fb71d9081f4</srcmd5>
+    <version>2.8.0</version>
+    <time>1340183365</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>744c8e9aecc71725610b2f618af22f3a</srcmd5>
+    <version>2.8.0</version>
+    <time>1340717876</time>
+    <user>coolo</user>
+    <comment>CVE-2012-3236 (forwarded request 125930 from dimstar)</comment>
+    <requestid>125934</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>8ee61ec51ac7c4d88debf9305b0fef96</srcmd5>
+    <version>2.8.2</version>
+    <time>1347722835</time>
+    <user>namtrac</user>
+    <comment>Pushing G:A bits</comment>
+    <requestid>134312</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>159a2340b4a95a6addfc58adc0047415</srcmd5>
+    <version>2.8.2</version>
+    <time>1354523671</time>
+    <user>coolo</user>
+    <comment> (forwarded request 143057 from vuntz)</comment>
+    <requestid>143763</requestid>
+  </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>159a2340b4a95a6addfc58adc0047415</srcmd5>
+    <version>2.8.2</version>
+    <time>1359108935</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>db2dd21eb0fc3c65c44fa76899905d0d</srcmd5>
+    <version>2.8.4</version>
+    <time>1363255060</time>
+    <user>coolo</user>
+    <comment>Update to 2.8.4 (forwarded request 157653 from Zaitor)</comment>
+    <requestid>158796</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>88c7f1a464b80433ddfb457a863df3a7</srcmd5>
+    <version>2.8.6</version>
+    <time>1372058886</time>
+    <user>coolo</user>
+    <comment>Update to ver 2.8.6 (forwarded request 180528 from dimstar)</comment>
+    <requestid>180554</requestid>
+  </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>d3e8373c55feaad4c99b7aa982a113c2</srcmd5>
+    <version>2.8.6</version>
+    <time>1377628967</time>
+    <user>coolo</user>
+    <comment>- Drop branding-upstream subpackage: starting with openSUSE 13.1,
+  we will no longer replace the gimp splashcreen with a branded
+  version. This in order to maintain the identity of gimp.
+- Remove gimp-branding Requires.
+- Obsolete gimp-branding. (forwarded request 195588 from Zaitor)</comment>
+    <requestid>195616</requestid>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>d3e8373c55feaad4c99b7aa982a113c2</srcmd5>
+    <version>2.8.6</version>
+    <time>1379662446</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="87" vrev="5">
+    <srcmd5>7dadc21179c8fee9f358e6a2f1871457</srcmd5>
+    <version>2.8.6</version>
+    <time>1379940969</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>200131</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>237a8d0f71e1dda1a984b1acc2a20b5e</srcmd5>
+    <version>2.8.8</version>
+    <time>1385562511</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.8.8:
+  + General:
+    - Fix lots of places to use GIO to get proper file sizes and
+      times on windows.
+    - Add an AppData file for GIMP.
+    - Backport lcms2 support from master, because lcms1 is not
+      getting bug fixes any longer.
+    - Lots of bug fixes.
+  + Core:
+    - Make sure indexed images always have a colormap.
+    - Fix language selection via preferences on Windows.
+    - Don't crash on setting a large text size.
+  + GUI:
+    - Keep the same image active when switching between MWM and
+      SWM.
+    - Make sure all dockables are properly resizable (particularly
+      shrinkable).
+    - Add links to jump directly to Save/Export from the
+      Export/Save file extension warning dialogs.
+  + Libgimp: Fix GimpPickButton on OSX.
+  + Plug-ins:
+    - Properly document plug-in-autocrop-layer's PDB interface.
+    - Fix importing of indexed BMPs.
+  + Updated translations.
+- Split out ASCII-Art plugin in subpackage gimp-plugin-aa. The
+  package supplements gimp and libaa1, so any user having both
+  installed will get the plugin as well (bnc#851509). (forwarded request 208572 from Zaitor)</comment>
+    <requestid>208606</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>1b15f12a0d1b1b31716434bd147ae7c3</srcmd5>
+    <version>2.8.10</version>
+    <time>1387823591</time>
+    <user>coolo</user>
+    <comment>- Add gimp-use-recommended-freetype-include.patch: 
+  Freetype upstream recommends using their macros together with
+  ft2build include. Positive sideeffect is that this patch makes
+  it build with both freetype2 2.5.1, and older versions.
+
+- Update to version 2.8.10:
+  + Core:
+    - Set manifest as Windows 8 compatible.
+  + GUI:
+    - Indicate if a file was exported in the Quit dialog.
+    - Add shortcuts and hint labels to the close and quit dialogs
+      that make closing and quitting easier and more consistent.
+    - Rename the File-&gt;Export menu labels to match Save/Save as.
+    - Fix keyboard shortcuts on OSX Mavericks.
+    - Don't open lots of progress popups when opening many files.
+    - Correctly restore the hidden state of docks in single window
+      mode.
+  + Libgimp:
+    - Fix exporting an image consisting of a single layer group.
+    - Don't attempt to pick transparent colors.
+  + Plug-ins: Fix crash in LCMS plugin if RGB profile was missing.
+  + General:
+    - Fix compile on NetBSD (missing -lexecinfo).
+    - Bug fixes.
+  + Updated translations.</comment>
+    <requestid>212065</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>1b15f12a0d1b1b31716434bd147ae7c3</srcmd5>
+    <version>2.8.10</version>
+    <time>1409300985</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f86c8730c77acec51d9f3801bc6992a0</srcmd5>
+    <version>2.8.14</version>
+    <time>1411404620</time>
+    <user>coolo</user>
+    <comment>Update to 2.8.14</comment>
+    <requestid>250471</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>bd86b69dd802ee3b921bedf54929aa89</srcmd5>
+    <version>2.8.14</version>
+    <time>1428652107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295036</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>ed7c2a2eafe58dac1ffd1aea6320dd8d</srcmd5>
+    <version>2.8.16</version>
+    <time>1449689632</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347514</requestid>
+  </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>c02f9507cb3333986e8e0db4b22a5352</srcmd5>
+    <version>2.8.16</version>
+    <time>1467359699</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404202</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>3c3e8f1afeb1024ea414a5a85ecb92b7</srcmd5>
+    <version>2.8.18</version>
+    <time>1470413584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416338</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>7e9780dbbebb674417b346a0fd57ea1f</srcmd5>
+    <version>2.8.20</version>
+    <time>1486547618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455390</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>9d48bea39aa8828df52947cb1ad9eb14</srcmd5>
+    <version>2.8.20</version>
+    <time>1487029010</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455789</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>820433ef1fdef6a7a00204d306299bde</srcmd5>
+    <version>2.8.20</version>
+    <time>1487767655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459528</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>a70d6b897bd0e105db62361ff2366295</srcmd5>
+    <version>2.8.22</version>
+    <time>1496225511</time>
+    <user>dimstar_suse</user>
+    <comment>drop mypaint support until it is in Factory</comment>
+    <requestid>499883</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>39324d37035b690e82eee78fdb5e6b3d</srcmd5>
+    <version>2.8.22</version>
+    <time>1516091196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563455</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>a2003d436b4c7abdd541a41395eb7589</srcmd5>
+    <version>2.8.22</version>
+    <time>1520852555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585013</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>950865211fa2ca32ee8ceecc3ebf24e2</srcmd5>
+    <version>2.10.0</version>
+    <time>1525343527</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gimp-Fix-reference-to-gegl-0.3.patch: gimp.pc: Fix reference
+  to gegl-0.3 - we require and build for gegl-0.4 now.
+- Update BuildRequires versions to be consistent with configure
+  script.
+- libbabl is required in version 0.1.46+
+- add BR for gdk-pixbuf-loader-rsvg to enable svg icons
+- enable jpeg2000 support: new BR pkgconfig(libopenjp2)
+- enable webp support: new BR pkgconfig(libwebp) &gt;= 0.6.0
+- enable OpenEXR support: new BR pkgconfig(OpenEXR)
+- enable email support: new BR/R for xdg-utils for xdg-email
+- set LC_ALL/LANG in %prep and %build to silence warnings about
+  encoding of the translations
+- make sure we can see the compiler cmdlines by disabling the
+  silent rules
+- Update to version 2.10.0:
+  + Image processing nearly fully ported to GEGL, allowing high bit
+    depth processing, multi-threaded and hardware accelerated pixel
+    processing, and more. 
+  + Color management is a core feature now, most widgets and
+    preview areas are color-managed.
+  + Many improved tools, and several new and exciting tools, such
+    as the Warp transform, the Unified transform and the Handle
+    transform tools.
+  + On-canvas preview for all filters ported to GEGL.
+  + Improved digital painting with canvas rotation and flipping,
+    symmetry painting, MyPaint brush support.
+  + Support for several new image formats added (OpenEXR, RGBE,
+    WebP, HGT), as well as improved support for many existing
+    formats (in particular more robust PSD importing).
+  + Metadata viewing and editing for Exif, XMP, IPTC, and DICOM.
+  + Basic HiDPI support: automatic or user-selected icon size.
+  + New themes for GIMP (Light, Gray, Dark, and System) and new
+    symbolic icons meant to somewhat dim the environment and shift
+    the focus towards content (former theme and color icons are
+    still available in Preferences).
+  + And more, better, more, and even more awesome!
+- Drop gimp-gegl03-buildfix.patch: Fixed upstream, following this
+  drop libtool BuildRequires and no longer pass autoreconf.
+- Replace pkgconfig(gegl-0.3) with gegl-0.4) BuildRequires.
+- Add gcc-c++, gegl, glib-networking, pkgconfig(gexiv2),
+  pkgconfig(liblzma), pkgconfig(libmypaint),
+  pkgconfig(mypaint-brushes-1.0) and pkgconfig(poppler-data)
+  BuildRequires: New dependencies.
+- Add gimp-gegl03-buildfix.patch: Port to gegl-03, patch taken from
+  debian.
+- Following the above port, replace pkgconfig(gegl-0.2) with
+  pkgconfig(gegl-0.3) BuildRequires and add libtool BuildRequires:
+  and pass autoreconf as the above patch touches the buildsystem.
+- Run spec-cleaner, modernize spec, drop Obsoletes for versions
+  no longer supported.
+- Don't build with webkit1, as it is no longer maintained and has
+  plenty of security bugs.  This disables the GIMP's built-in help
+  browser; it will use an external browser when configured this way.
+  This works around a number of security vulnerabilities in Webkit1:
+  https://bugzilla.suse.com/show_bug.cgi?id=923223
+  https://bugzilla.suse.com/show_bug.cgi?id=906375
+  https://bugzilla.suse.com/show_bug.cgi?id=906374
+  https://bugzilla.suse.com/show_bug.cgi?id=906373
+  https://bugzilla.suse.com/show_bug.cgi?id=1034856
+  https://bugzilla.suse.com/show_bug.cgi?id=871792
+  https://bugzilla.suse.com/show_bug.cgi?id=879607
+  https://bugzilla.suse.com/show_bug.cgi?id=892084
+- drop mypaint until it is in Factory. 
+- update to 2.8.22
+- drop upstream patches - now in the the source
+- drop gimp-fix-PDF-Import-filter-crash.patch
+- drop gimp-bgo773233-CVE-2007-3126.patch
+- conditionalize mypaint support
+- full change log:
+  https://git.gnome.org/browse/gimp/plain/NEWS?h=GIMP_2_8_22
+- Build with libmypaint support.
+- Add gimp-bgo773233-CVE-2007-3126.patch: Gimp 2.3.14 allows
+  context-dependent attackers to cause a denial of service (crash)
+  via an ICO file with an InfoHeader containing a Height of zero
+  (bgo#773233, CVE-2007-3126).
+- Add gimp-fix-PDF-Import-filter-crash.patch: Fix a crash in PDF
+  Import filter when importing large image PDF or specifying high
+  resolution (bgo#593576).
+- Add conditional gimp-help-browser Obsoletes for Tumbleweed and
+  Leap newer than 42.x.
+- Remove --with-pic, this is only for static libs.
+- Trim description on non-main subpackages.
+ - update to 2.8.20
+- Core:
+ - Avoid D-Bus error message when built without D-Bus support
+ - fix OS X min required conditional in gimpimagewindow.c
+ - Saving to existing .xcf.bz and .xcf.gz files didn't truncate them
+   and could lead to unnecessarily large files
+ - Text layer created by gimp-text-fontname doesn't respect border
+   when resized
+ - avoid seeking when saving XCF files to prevent corruption with
+   file network shares (fixed since 2014, but not mentioned in NEWS yet)
+GUI:
+ - Flow on Paint Dynamics editor dialog: the 'y' axis is indicating
+   'Rate' instead 'Flow'
+ - Vertical ruler shows artifacts if the status bar isn't showing
+ - Tablet stylus misbehaves when crossing the edge of a dock in
+   multi-window-mode
+ - Disable the new &quot;automatic window tabbing&quot; feature introduced on macOS
+   Sierra
+ - Improve the visiblity of slider handles with dark themes
+ - Make it harder to switch to renaming if selecting already selected
+   items in resource lists
+Tools:
+ - make toggling to color picker mode of paint tools more robust
+Libgimp:
+ - call gimp_file_entry_set_filename() with filename encoding
+Plug-ins:
+ - Prevent the Python console from closing by the Escape key
+ - Help browser does not launch on OS X
+ - Filter 'Edge Detect/Difference of Gaussians' returns empty image
+ - only use -xobjective-c for compile commands
+ - mkgen.pl: fix calls to write_file() routine to write to current
+   directory
+ - When printing, the images are composed onto a white background to
+   prevent printing a black box instead of a transaprent image
+ - Fix color visison deficiency display filters to apply gamma
+   correction directly
+Updated Translations:
+ - Catalan  - Czech  - Danish  - Finnish  - French  - German 
+ - Greek  - Hungarian  - Icelandic  - Italian  - Polish
+ - Portuguese  - Slovak  - Slovenian  - Scottish Gaelic 
+ - Spanish  - Swedish
+General:
+ - Bug fixes
+- Replace -devel BuildRequires for their pkgconfig version aligned
+  with what configure looks for:
+  - babl-devel for pkgconfig(babl).
+  - gegl-devel for pkgconfig(gegl-0.2).
+  - libpng-devel for pkgconfig(libpng).
+  - libpoppler-glib-devel for pkgconfig(poppler-glib).
+  - xorg-x11-libXfixes-devel for pkgconfig(xfixes).
+  - xorg-x11-libXpm-devel for pkgconfig(xpm).
+  - zlib-devel for pkgconfig(zlib).
+- Add an explicit pkgconfig(cairo-pdf) BuildRequires: configure
+  checks for it (full pdf support).
+- Run spec-cleaner: drop obsolete clean, modernise macros.
+- No longer depend on libwebkit-devel for Tumbleweed and pass
+  --disable-webkit to configure for Tumbleweed.
+- update to 2.8.18
+- Drop gimp-Multiple-Use-After-Free.patch - upstreamed
+ +Core: - Initialize fontconfig cache in separate thread to keep GUI
+   responsive on first startup
+ - Properly recognize layer masks as deactivated, e.g. for moving layers
+ - Create $XDG_DATA_HOME if it doesn't exist
+ - (CVE-2016-4994) Multiple Use-After-Free when parsing XCF channel
+   and layer properties
+ - Fix progress access to prevent crash on rapid sequence of commands
+ - Fix crash in gimp-gradient-segment-range-move
++GUI:
+ - Disable color picker buttons on OS X to prevent a GUI lockup
+ - Disable &quot;new-style&quot; full-screen mode on OS X to prevent a crash
+ - Pulsing progress bar in splash screen to indicate unknown durations
+ - Fix gamut warning color for lcms display filter
+ - Fix unbolding of bold font on edit
+ - Prevent accidental renaming of wrong adjacent item
++Installer:
+ - Change compression settings to decrease size by 20%
+ - Add Catalan, Danish, French, Dutch
++Plug-ins:
+ - Fix crash on sRGB JPEG image drag &amp; drop
+ - Fix ambiguous octal-escaped output of c-source
+ - Fix KISS CEL export
+ - Fix progress bar for file-compressor
+ - Make Script-Fu regex match return proper character indexes for
+   Unicode characters
+ - Fix Script-Fu modulo for large numbers
++General:
+ - Documentation updates
+ - Bug fixes
+ - Translation updates
+- Fix CVE-2016-4994 (boo#986021, bgo#767873):
+  + Add gimp-Multiple-Use-After-Free.patch: Multiple Use-After-Free
+    when parsing XCF channel and layer properties.
+- Explcitly declare the libgimp version in Requires, so upgrades
+  bring in the updated libraries as well. Makes the upgrade from
+  2.8.x &gt; 2.8.16 seamless and avoids an error on start.
+- update to version 2.8.16
+- fix a couple of rpmlint warnings
+ +Core:
+ - Seek much less when writing XCF
+ - Don't seek past the end of the file when writing XCF
+ - Windows: call SetDLLDirectory() for less DLL hell
+ - Fix velocity parameter on .GIH brushes
+ - Fix brokenness while transforming certain sets of linked layers
+  +GUI:
+ - Always show image tabs in single window mode
+ - Fix switching of dock tabs by DND hovering
+ - Don't make the scroll area for tags too small
+ - Fixed a crash in the save dialog
+ - Fix issue where ruler updates made things very slow on Windows
+  +Plug-ins:
+ - Fix several issues in the BMP plug-in
+ - Make Gfig work with the new brush size behavior again
+ - Fix font export in the PDF plug-in
+ - Support layer groups in OpenRaster files
+ - Fix loading of PSD files with layer groups
+ + General:
+ - OSX build system fixes
+ - Bug fixes
+ - Translation updates
+- Replace liblcms-devel BuildRequires with pkgconfig(lcms2): gimp
+  has been ported to lcms2 since version 2.8.8.
+- update to version 2.8.14:
+  + Fix libtool versioning (forgot to bump gimp_interface_age).
+- Changes from Version 2.8.12:
+  + Core:
+    - Fix brush sizes when used from plug-ins.
+    - Make XCF loading more robust against broken files.
+  + GUI:
+    - Make sure the widget direction matches the GUI language.
+    - Remove the option to disable the warning when closing a
+      modified image.
+    - Fix canvas overlay widgets (like the text options) for
+      tablets.
+    - Make DND work between images in one dockable.
+  + Libgimp: Make gimp_image_get_name() return the string used for
+    the image title.
+  + Plug-ins:
+    - Make script-fu-server more secure by listening to 127.0.0.1
+      by default and add a warning about changing that IP. This
+      breaks the procedure's API, but for security reasons.
+    - Bring back proper script-fu translations.
+  + General:
+    - Add Jenkins tutorial.
+    - Documentation updates.
+    - Bug fixes.
+  + Updated translations.
+- Drop gimp-use-recommended-freetype-include.patch: fixed upstream.
+- Add gimp-use-recommended-freetype-include.patch:
+  Freetype upstream recommends using their macros together with
+  ft2build include. Positive sideeffect is that this patch makes
+  it build with both freetype2 2.5.1, and older versions.
+- Update to version 2.8.10:
+  + Core:
+    - Set manifest as Windows 8 compatible.
+  + GUI:
+    - Indicate if a file was exported in the Quit dialog.
+    - Add shortcuts and hint labels to the close and quit dialogs
+      that make closing and quitting easier and more consistent.
+    - Rename the File-&gt;Export menu labels to match Save/Save as.
+    - Fix keyboard shortcuts on OSX Mavericks.
+    - Don't open lots of progress popups when opening many files.
+    - Correctly restore the hidden state of docks in single window
+      mode.
+  + Libgimp:
+    - Fix exporting an image consisting of a single layer group.
+    - Don't attempt to pick transparent colors.
+  + Plug-ins: Fix crash in LCMS plugin if RGB profile was missing.
+  + General:
+    - Fix compile on NetBSD (missing -lexecinfo).
+    - Bug fixes.
+  + Updated translations.
+- Update to version 2.8.8:
+  + General:
+    - Fix lots of places to use GIO to get proper file sizes and
+      times on windows.
+    - Add an AppData file for GIMP.
+    - Backport lcms2 support from master, because lcms1 is not
+      getting bug fixes any longer.
+    - Lots of bug fixes.
+  + Core:
+    - Make sure indexed images always have a colormap.
+    - Fix language selection via preferences on Windows.
+    - Don't crash on setting a large text size.
+  + GUI:
+    - Keep the same image active when switching between MWM and
+      SWM.
+    - Make sure all dockables are properly resizable (particularly
+      shrinkable).
+    - Add links to jump directly to Save/Export from the
+      Export/Save file extension warning dialogs.
+  + Libgimp: Fix GimpPickButton on OSX.
+  + Plug-ins:
+    - Properly document plug-in-autocrop-layer's PDB interface.
+    - Fix importing of indexed BMPs.
+  + Updated translations.
+- Split out ASCII-Art plugin in subpackage gimp-plugin-aa. The
+  package supplements gimp and libaa1, so any user having both
+  installed will get the plugin as well (bnc#851509).
+- Change RPM Group of shared library package to System/Libraries.
+- Drop branding-upstream subpackage: starting with openSUSE 13.1,
+  we will no longer replace the gimp splashcreen with a branded
+  version. This in order to maintain the identity of gimp.
+- Remove gimp-branding Requires.
+- Obsolete gimp-branding.
+- Update to version 2.8.6:
+  + Core:
+    - Fix saving to URIs, it was broken to only allow exporting,
+      and fix save/export of compressed files.
+    - Fix brush spacing for drawing in any direction.
+    - Increase the maximum size of clipboard brushes and patterns
+      to 1024x1024.
+    - Make sure data objects are saved when only their name was
+      changed.
+  + GUI:
+    - Don't allow single-window docks to shrink smaller than their
+      requisition.
+    - Make sure a single-window's right docks keep their size
+      across sessions.
+    - Allow to change the spacing of non-generated brushes again.
+    - In single-window mode, make Escape move the focus to the
+      canvas, and beep if the focus is already there.
+    - Be smarter about unavailable fonts, and don't crash.
+    - Make clicking the single-window's close button quit GIMP.
+    - Make view-close (Ctrl+W) only close image windows and tabs,
+      not docks.
+  + Libgimp: Add SIGNED_ROUND() which also rounds negative values
+    correctly.
+  + Plug-ins:
+    - Make GIMP_PLUGIN_DEBUG work again after GLib changed logging.
+    - Fix zealous crop for transparent borders.
+  + Installer: Add Hungarian translation.
+  + Data: Add a default &quot;Color from Gradient&quot; dynamics and tool
+    preset.
+  + General: Lots of bug fixes.
+  + Updated translations. 
+- Update to version 2.8.4:
+  + Core:
+    - Move the OSX gimpdir to &quot;~/Library/Application Support&quot;.
+  + GUI:
+    - Better names for the default filters in save and export
+    - Make tool drawing (esp. the brush outline) much more
+      responsive
+    - Remember the &quot;maximized&quot; state across sessions
+    - Simplify the splash image code a lot, makes it appear
+      immediately again
+    - Allow the text tool to start on an image without layers
+    - Various fixes for text style attribute handling
+    - Set unconfigured input devices to eraser if GTK+ says they
+      are erasers
+    - Make language selectable in Preferences on OSX
+  + Libgimp:
+    - Make libgimp drawable combo boxes aware of layer groups
+    - Make sure plug-in windows appear on top on OSX
+    - Fix item width in GimpPageSelector (used e.g. in PDF import)
+  + Plug-ins:
+    - Better default values in the Drop Shadow script
+    - Fix a whole bunch of bugs in the BMP plug-in
+    - On OSX, use the system's screenshot utility
+  + Installer:
+    - Add Brazilian-Portuguese translation to the Windows installer
+  + Source and build system:
+    - Many improvements to the OSX bundle build system
+    - Support automake 1.13
+  + General: Lots of bug fixes
+  + Updated translations.
+- Drop gimp-CVE-2012-5576.patch: fixed upstream.
+- Add gimp-CVE-2012-5576.patch: fix memory corruption vulnerability
+  when reading XWD files (bnc#791372, bgo#687392, CVE-2012-5576).
+- Update to version 2.8.2:
+  + Core:
+    - Make tag matching always case-insensitive
+    - Let the tile-cache-size default to half the physical memory
+  + GUI:
+    - Mention that the image was exported in the close warning
+      dialog
+    - Make sure popup windows appear on top on OSX
+    - Allow file opening by dropping to the OSX dock
+    - Fix the visibility logic of the export/overwrite menu items
+    - Remove all &quot;Use GEGL&quot; menu items, they only add bugs and zero
+      function
+    - Improve performance of display filters, especially color
+      management
+    - Fix the image window title to comply with the save/export
+      spec and use the same image name everywhere, not only in the
+      title
+    - Fix positioning of pasted/dropped stuff to be more reasonable
+  + Libgimp:
+    - Move gimpdir and thumbnails to proper locations on OSX
+    - Implement relocation on OSX
+    - Allow to use $(gimp_installation_dir) in config files
+  + Plug-ins:
+    - Fix remembering of JPEG load/save defaults
+    - Revive the page setup dialog on Windows
+  + Source and build system:
+    - Add Windows installer infrastructure
+    - Add infrastructure to build GIMP.app on OSX
+  + General:
+    - Lots of bug fixes
+  + Updated translations.
+- Drop gimp-CVE-2012-3236.patch: fixed upstream.
+- Clean spec-file using spec-cleaner.
+- Add gimp-CVE-2012-3236.patch: fix crash in file handling for fit
+  files. Fix CVE-2012-3236, bnc#768376.
+- Correctly version librsvg-devel BuildRequires: 2.36.0 is needed.
+  We don't version the BuildRequires on 12.1 and earlier to avoid
+  useless unresolvables; it will just result in file-svg plugin not
+  being built when librsvg is not recent enough there.
+- Update to version 2.8.0:
+  + Core: Add gimp's own GimpOperationBrightnessContrast because
+    GEGL one is different
+  + Plug-ins: Fix some GFig rendering issues
+  + Source and build system: Depend on Babl 0.1.10, GEGL 0.2.0
+    and some other new library versions.
+- Update license from GPL-2.0+ to GPL-3.0+, following upstream
+  change.
+- Completely drop HAL-related packaging since it is now gone
+  upstream:
+  + Remove build_hal macro
+  + Remove optional hal-devel BuildRequires.
+  + Remove optional gimp-module-hal subpackage.
+  + Note that we already have a Obsoletes for gimp-module-hal.
+- Add pkgconfig(gudev-1.0) BuildRequires for the new gudev input
+  module.
+- Add ghostscript-devel, ghostscript-library, libbz2-devel,
+  libjasper-devel, pkgconfig(atk), pkgconfig(xcursor)
+  BuildRequires: new dependencies upstream.
+  + Note about ghostscript-library: ideally, we'd avoid listing it
+    explicitly, but in OBS, ghostscript-mini is preferred by
+    default, but it is not enough for gimp.
+- Add explicit pkgconfig(gdk-pixbuf-2.0) BuildRequires so it can be
+  versioned.
+- Add explicit libjpeg-devel, xorg-x11-libXpm-devel, zlib-devel
+  BuildRequires: they were missing before.
+- Add libxslt-tools BuildRequires (or libxslt-devel on versions of
+  openSUSE &lt;= 12.1) to have xsltproc installed.
+- Add fdupes BuildRequires and use %fdupes in %install to avoid
+  duplicated files.
+- Change gimp-doc Obsoletes in devel subpackage from &lt;= to &lt; to
+  avoid rpmlint warning about self-obsoletion.
+- Update to 2.8.0-RC1:
+  + User Interface:
+    - Single-Window Mode
+    - Multi-Column Dock Windows
+    - More Screen Real Estate For Dockable Dialogs
+    - Save And Export
+    - Layer Groups
+    - Tools Drawn With Cairo
+    - On-Canvas Text Editing
+    - Keyboard Shortcut Changes
+    - Simple Math In Size Entries
+  + Tools &amp; Plug-ins:
+    - Brush System Improvements
+    - Tool Preset Improvements
+    - Cage Transform Tool
+    - File Plug-Ins
+    - For Tablet Users
+    - Resource Tagging
+  + Miscellaneous:
+    - Enhancements to scripting abilities
+    - API changes
+  + For detailed changes, see NEWS file and
+    http://www.gimp.org/release-notes/gimp-2.7.html
+- Update to version 2.6.12:
+  + Bugs fixed: bgo#623045, bgo#627328, bgo#631728, bgo#631885,
+    bgo#639203, bgo#640219, bgo#640612, bgo#641259, bgo#646947,
+    bgo#652280, bgo#660305.
+  + Updated translations.
+- Drop gimp-CVE-2010-4540-and-more.patch: fixed upstream.
+- Drop gimp-CVE-2010-4543.patch: fixed upstream.
+- Drop gimp-fix-linking.patch: fixed upstream.
+- Drop gimp-CVE-2011-2896.patch: fixed upstream.
+- Drop gimp-pyslice-cellspacing-fix.patch: fixed upstream.
+- Drop gimp-poppler-0.18.patch: fixed upstream.
+- Remove call to autoreconf and libtool BuildRequires: they were
+  only needed for gimp-fix-linking.patch.
+- Change gimp-2.0-scanner-plugin Recommends to a Suggests: this
+  installs xsane by default, and really, xsane is so horribly
+  broken UI-wise that we don't want that.
+- add libtool as buildrequire to make the spec file more reliable
+- Add a warning comment about changing the content of the branding
+  package, to make our life easier in branding-openSUSE.
+- Add iso-codes Recommends since the iso-codes data is used at
+  runtime, but its presence is not mandatory.
+- Remove explicit gtk2 Requires: the library will get
+  automatically added to the list of Requires.
+- Update gimp-fix-linking.patch: add another missing -lm.
+- Add gimp-poppler-0.18.patch: fix build with poppler 0.17/0.18.
+- Add gimp-fix-linking.patch: fix linking issue.
+- Add gimp-CVE-2011-2896.patch: Fix heap corruption and buffer
+  overflow in LZW code. Fix bnc#711491, CVE-2011-2896.
+- Add gimp-pyslice-cellspacing-fix.patch: fix a crash in the
+  pyslice plugin.
+- Add call to autoreconf, needed by gimp-fix-linking.patch.
+- Change branding-upstream subpackage:
+  + Add Requires for gimp since the branding package is useless
+    without it.
+  + Update summary and description.
+  + Make noarch.
+- Change branding Requires in main subpackage to be &quot;= %{version}&quot;,
+  instead of &quot;&gt;= 2.4&quot;, which is wrong.
+- Fix build on Factory, by not excluding the
+  libcontroller-linux-input.so module from the file list of the
+  main package when we build without hal. It was only excluded to
+  be part of a hal subpackage when there is the hal dependency.
+- On 12.1 and later, stop building the gimp-module-hal subpackage:
+  + we don't want hal anymore on 12.1 and later (see bnc#697016).
+    We use a build_hal define to control that behavior.
+  + remove hal-devel BuildRequires
+  + do not build a gimp-module-hal subpackage anymore
+  + add gimp-module-hal Obsoletes for smooth upgrades
+- Add gimp-CVE-2010-4540-and-more.patch and
+  gimp-CVE-2010-4543.patch to fix buffer overflows: CVE-2010-4540,
+  CVE-2010-4541, CVE-2010-4542, CVE-2010-4543. Fix bnc#662043.
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Move ownership from various directories from gimp to
+  libgimp-2_0-0, to not force external gimp plug-ins/modules/etc.
+  to have a gimp BuildRequires for directory ownership.
+- Split gimp libraries in libgimp-2_0-0 and libgimpui-2_0-0
+  subpackages, and add baselibs.conf for those. Fix bnc#660439.
+- Change accordingly the Requires of the devel package, and the
+  scriptlets to run ldconfig.
+- Remove explicit glib2-devel and gtk2-devel Requires in devel
+  package: they will automatically be added the pkgconfig() way.
+- Move the gimptool-2.0 man page to the devel subpackage, where the
+  binary lives.
+- Change lang package Requires to Recommends since it is not
+  mandatory at runtime.
+- Update to version 2.6.11:
+  + bgo#631199: Printing and Print preview broken with cairo 1.10
+  + Other bugs fixed: bgo#572865, bgo#628893, bgo#623850,
+    bgo#624487, bgo#557380, bgo#627009, bgo#626020, bgo#624698,
+    bgo#624275.
+  + Updated translations.
+- Add alsa-devel BuildRequires to build the MIDI Input module.
+- Update to version 2.6.10:
+  + bgo#613328: TGA files saved with incorrect header yOrigin data
+  + bgo#623290: Save As... does not save Windows Bitmap as default
+                in dialog
+  + bgo#621363: CMYK decompose broken
+  + bgo#595170: brush - color from gradient works wrong in
+                greyscale
+  + bgo#613838: Error in gimp-hue-saturation PDB call
+  + bgo#622608: GIMP crashes when clicking any scroll bar from
+                combo boxes
+  + bgo#565459: newly opened images are put into the background
+- Changes from version 2.6.9:
+  + bgo#612618: Font selection remains visible
+  + bgo#620604: Description of &quot;histogram&quot; procedure is slightly
+                inaccurate
+  + bgo#541586: Tool options not saved/loaded correctly?
+  + bgo#614153: Importing PDF files with long titles
+  + bgo#599233: Dialog of &quot;Save as BMP&quot; ignores changes which are
+                not made with a mouse
+  + bgo#610478: Layer preview suddenly stops getting updated
+  + bgo#609026: leaks shared memory
+  + bgo#609056: Exporting to Alias PIX format fails
+                are always in English
+  + bgo#607242: GIMP 2.7.0 fails to build against libpng 1.4.0
+  + bgo#606372: Saving to .ppm fails on indexed colorspace
+  + bgo#604508: gimp-layer-new-from-visible should work from
+                updated projection
+  + Fix crashes: bgo#600112, bgo#565001, bgo#604820, bgo#603711
+  + Other fixes: bgo#622234, bgo#622196, bgo#608188, bgo#605237
+  + Updated translations.
+- Drop gimp-new-libpng.patch and gimp-fix-statusbar.patch, both
+  came from upstream git and are now included.
+- Ship the openSUSE palette so that it's available in GIMP.
+- Add gimp-fix-statusbar.patch to fix missing widgets in status
+  bar. Fix bnc#601712.
+- Move the input device module to a specific package, to isolate
+  the HAL dependency. Fix bnc#601947.
+- Add gimp-new-libpng.patch to fix build with newer libpng.
+- Update to version 2.6.8:
+  + bgo#470698 - MapObject cannot modify highlight
+  + bgo#593848 - FG color changed to black when FG-BG Editor tab
+                 created
+  + bgo#594651 - layer.scale() raises RuntimeError
+  + bgo#594998 - Keyboard shortcuts does not work for first image
+                 when dock is focused
+  + bgo#599765 - F1 key on gimp-tool-align in menu have wrong link
+                 and it open gimp-tool-move
+  + bgo#600484 - Gimp BMP Integer Overflow Vulnerability
+  + bgo#600741 - &quot;read_channel_data()&quot; Integer Overflow
+                 Vulnerability
+  + bgo#601891 - gimp_image_get_selection returns None
+  + bgo#602761 - plug-in-grid: Parameters Horizontal/Vertical
+                 Spacing and Horizontal/Vertical Offset are
+                 reversed.
+  + bgo#603995 - PCX plugin doesn't sanitize input to avoid
+                 allocation overflows.
+  + bgo#603998 - PCX: Calculating amount of memory to allocate may
+                 overflow.
+  + bgo#604000 - SGI: sanitize input
+  + bgo#604001 - SGI: Calculating amount of memory to allocate may
+                 overflow.
+  + bgo#604002 - SGI: RLE encoded input data may write beyond
+                 allocated buffers
+  + bgo#604004 - SGI: allocate memory consistently
+  + bgo#604008 - GBR, PAT: sanitize input data
+  + bgo#604078 - Crash when pressing Backspace with Free Select
+                 Tool
+  + Updated translations.
+- Added support for translation-update-upstream (FATE#301344).
+- Change Name in .desktop file to &quot;GIMP&quot;, not &quot;The GIMP&quot;. The
+  project has stopped calling it the GIMP.
+- add support for versioning external plugins, providing
+  rpm macros gimp_abi_version and gimp_api_version
+- Everyone calls it &quot;GIMP&quot; so let us follow that in the application
+  start menu, fixes problem with launcher finding it (bnc#508279).
+- Update to version 2.6.7:
+   + bgo#591017 - Tablet pan is not working as fast as it should
+   + bgo#577581 - Crashes when using any colors tool/function on
+                  Windows
+   + bgo#589667 - GIMP crashes when clicking GEGL Operation on
+                  Windows
+   + bgo#569833 - file-jpeg-save erroneous with small quality
+                  values
+   + bgo#590638 - Changing palettes from list to grid view loses
+                  &quot;locked to dock&quot; status
+   + bgo#589674 - &quot;Send by Email&quot; does not update &quot;Filename&quot;
+   + bgo#589674 - &quot;Send by Email&quot; does not update &quot;Filename&quot;
+   + bgo#586851 - Transparent BMP files fail to load
+   + bgo#589205 - help-browser uses deprecated (and sometimes
+                  broken) webkit call
+   + bgo#582821 - 'Sphere Designer' does not reset correctly...
+   + bgo#570353 - first time open of .svg file ignores the
+                  requested units
+   + bgo#555777 - Export to MNG animation fails
+   + bgo#577301 - Dithering with transparency is broken for
+                  &quot;positioned&quot; method
+   + bgo#493778 - metadata plug-in crashes on some images
+   + bgo#567466 - PNG comment not found if more than 1 tEXt chunks
+   + bgo#585665 - Exporting to PSD with a blank text layer creates
+                  a corrupt file
+   + bgo#586316 - Levels tool does not adjust output levels
+                  correctly if input levels are changed
+   + bgo#569661 - Import from PDF throws errors when entering
+                  resolution in pixels per millimetre
+   + bgo#567262 - Black pixels appear in &quot;Spread&quot; filter preview
+   + bgo#554658 - Path Dialog: Path preview pics not to see
+                  constantly
+   + bgo#167604 - gimp_gradient_get_color_at() may return
+                  out-of-bounds values
+   + bgo#567393 - Rectangle select tool size shrinks to 0 if size
+                  is larger than the image and the up or down arrow
+                  is pressed
+   + bgo#587543 - crash when invoking certain actions by keyboard
+                  shortcut
+   + bgo#563029 - Closing maximized image doesn't restore document
+                  window size
+   + bgo#585488 - Perspective transformation on a layer with a mask
+                  causes crash
+   + bgo#586008 - GIMP crashes when right-click canceling a drawing
+                  action initiated outside layer boundaries
+   + bgo#584345 - when printing, the number of copies should be
+                  reset to 1
+   + bgo#557061 - Alpha to Logo
+   + bgo#472644 - Rotate with clipping crops the whole layer
+   + bgo#577575 - transform tool fills underlying extracted area
+                  wrongly
+   + bgo#555738 - Image display is wrong after undoing canvas size
+   + bgo#577024 - help-browser plugin crashes when used with webkit
+                  1.1.3
+   + bgo#555025 - Action GEGL box widgets weirdness
+- Drop gimp-gegl-babl-versions-check.patch: fixed upstream.
+- Add a Supplements between gimp and gimp-help to get the
+  help-browser package automatically installed.
+- Update descriptions of packages.
+- Split off gnome-help-browser sub-package to save 4MB libwebkit
+  dependency on Live-CDs where gimp-help is not included.
+- Only include latest ChangeLog.
+- Add gimp-gegl-babl-versions-check.patch to fix the code used to
+  check the babl and gegl version. Taken from Fedora/upstream.
+- Update to version 2.6.6:
+  + bgo#571117 - lcms plug-in crashes on broken profile
+  + bgo#575154 - changing the help browser preference may not work
+  + bgo#573542 - blur plugin: bug in the first line
+  + bgo#572403 - gimp-2.6 crashed with SIGSEGV in
+    IA__g_object_get()
+  + bgo#573695 - 1-bit white background saved as PBM becomes all
+    black
+  + bgo#573488 - Small bug in Filter&gt;Distorts&gt;Ripple
+  + bgo#572156 - top left pixel position/coordinate is not 0,0 but
+    1,1
+  + bgo#472644 - Rotate with clipping crops the whole layer
+  + Translation updates
+- Remove glibc-devel from Requires in -devel package
+- Use py_requires.
+- Remove gimp-enable-gtk-deprecated.patch: unneeded now.
+- Remove some BuildRequires:
+  + libcurl-devel: not needed since we have gio
+  + gnome-keyring-devel, gnome-vfs2-devel, libgnomeui-devel: not
+    needed either since we have gio
+- Fix Provides/Obsoletes for gimp-doc in devel package.
+- Update to version 2.6.5:
+  + bgo#571628 - Scaling image to 25% turn background from white
+    to grey
+  + bgo#567840 - GIMP's GtkScaleButton conflicts with GTK's
+  + bgo#569043 - GEGL tool - missing Operation Settings for all
+    sub-tools
+  + bgo#568890 - don't rely on GtkAction implementation details
+  + bgo#568909 - wrong RGB values for color names in
+    libgimpcolor/gimprgb-parse.c
+  + bgo#568839 - wrong hex RGB value for the color names slategrey
+    and slategray
+  + bgo#559408 - Brushes dragged to the image window look strange
+  + bgo#563337 - Rectangle Select Tool does not allow 1:1 fixed
+    ratio
+  + bgo#568016 - Black pullout parameter of plug-in-newsprint has
+    no effect
+  + bgo#562818 - First image opened in GIMP offset
+  + bgo#562213 - Align Tool doesn't work properly if it is the
+    active tool at startup
+  + Translation updates
+- Add gimp-enable-gtk-deprecated.patch due to using deprecated
+  API call gtk_widget_get_action. Upstream is working on it so
+  could probably be removed with the next version update
+- Merge gtk-doc from -doc to -devel
+- Fix BuildRequires according to what's in configure.ac:
+    * Add: babl-devel, cairo-devel, fontconfig-devel, glib2-devel,
+           gnome-keyring-devel, gnome-vfs2-devel, gtk2-devel,
+           libcurl-devel, libpng-devel, pango-devel,
+           xorg-x11-libXfixes-devel
+    * Remove: BuildRequires: alsa-devel, cups, cups-devel,
+              curl-devel, gnome-common, gnutls-devel, gtk-doc,
+              libgimpprint, libgimpprint-devel, libglade2-devel,
+              libgnomeprintui-devel, libgtkhtml-devel,
+              libwnck-devel, perl-XML-Parser, postfix,
+              python-devel, slang-devel
+- Remove non-upstream translations: they'll get out-of-date.
+- remove &quot;la&quot; files [BNC#357465]
+- Update to version 2.6.4:
+  + bgo#565223 - Perspective transformation jagged edges / comb effect
+  + bgo#563985 - jpg save dialog: &quot;cancel&quot; is treated like &quot;commit&quot;
+    for settings
+  + bgo#564087 - Using clone tool on a layer with a part out of canvas
+    causes crashes
+  + bgo#564593 - crash when the drawable is changed while a color tool
+    is active
+  + bgo#564869 - GIMP crashes on selecting Tools-&gt;GEGL operation
+  + bgo#565138 - python-fu-foggify does not check if image is in rgb mode
+  + bgo#563130 - Hue selection mode does not cross the 0-360 degrees line
+  + bgo#563179 - Scrollbars not resized when we extend the canvas size
+  + bgo#562459 - PF_PALETTE: 'TypeError' when used in a plugin that is
+    registered in &lt;Image&gt;
+  + bgo#562427 - Compilation with --as-needed
+  + bgo#562386 - PF_SLIDER and PF_SPINNER 'Step' values do not change
+    consistently...
+  + bgo#562366 - Default image dimensions are not correctly
+    transferred in the file/new dialog box
+  + bgo#561899 - GIMP can't save to mounted filesystem if file exists
+  + Translation updates
+- Update to version 2.6.3:
+  + bgo#558454 - Plugin Map Color Range disappears from GIMP
+  + bgo#559239 - Error while loading psd-data
+  + bgo#560903 - Explicit zooming with e.g. '1' should handle
+    zoom-focus better
+  + bgo#560245 - Zoom selection always centered in the Navigation tab
+  + bgo#559490 - Wrong lang tags for 'no'
+  + bgo#559292 - SOTA Chrome cannot accept different textures
+  + bgo#560375 - Clearing an already empty document history crashes GIMP
+  + bgo#559580 - Image windows need better default locations
+  + bgo#560283 - &quot;Scale image...&quot; causes distortion around edges
+  + bgo#559716 - Changing crop size in Crop Tool Options can make UI
+    unresponsive
+  + bgo#558549 - Stroking a single-point path with a paint tool
+    crashes GIMP
+  + bgo#559015 - Move tool gives bad information about px moved
+  + bgo#558660 - help behavior for locales without manual translation
+  + Translation updates
+- Remove gimp-help-fallback-en.patch. Fixed upstream
+- Added hu-po.tar.bz2 to fix bnc#460663
+  + Updated hungarian translation.
+- If help translation does not exist, fallback to English
+  (bgo#558660).
+- Updated to version 2.6.2:
+  * scaling speed improved
+  * several crash, bug and regression against 2.4 fixes
+  * translation updates
+  * See NEWS for more
+- Updated to version 2.6.1:
+  * 10 important crash and bug fixes
+  * translation updates
+  * See NEWS for more
+- Conflict with other branding providers (FATE#304881, bnc#429324).
+- Updated to version 2.6.0, the new stable branch:
+  * depends on GEGL and uses it optionally in some color operations
+  * UI refactoring
+  * many improvements and new features
+  * See NEWS for details.
+- Recommend gimp-2.0-scanner-plugin (bnc#422558).
+- Updated to version 2.4.7:
+  * python binding fixes
+  * fixed memory leak
+  * bug fixes
+  * translation updates
+  * See NEWS for details.
+- Updated to version 2.4.6:
+  * many fixes
+  * translation updates
+  * See NEWS for details.
+- Fixed dependencies of the branding package.
+- Use packageand form of branding supplement.
+- Added support for vendor branding (bnc#372091).
+- Updated to version 2.4.5:
+  * many fixes
+  * many corrections
+  * translation updates
+  * See NEWS for details.
+- Split plugins requiring python-gtk into a separate package
+  (bnc#339862).
+- Removed gutenprint from BuildRequires (#245683#c23).
+- Require python-gtk (#339862).
+- Updated to version 2.4.0:
+  * further improved the rectangle select and crop tools
+  * allow to mark out-of-gamut colors when doing a soft proof
+  * bug fixes
+- Package renamed from gimp-unstable to gimp.
+- poppler devel package names prepended by &quot;lib&quot;.
+-  Use binding specific poppler devel package.
+- update to GIMP 2.3 Release Candidate 3 (#327516)
+   * Changes in GIMP 2.4.0-rc3:
+    - use the new format for storing recently used files
+    - added conversion options to the color profile conversion plug-in
+    - allow to disable the toolbox menu on all platforms
+    - further improved handling of the JPEG settings
+    - switch tabs when hovering over them
+    - added a PDB function to remove the alpha channel from a layer
+    - plug-in previews remember the state of the Preview checkbox
+    - allow to grow the image/layer using the Crop tool
+   * Changes in GIMP 2.4.0-rc2:
+    - more improvements and bug fixes in the rectangle tools
+    - antialias the display for zoom levels between 100% and 200%
+    - fix zoomed-out display problems
+    - improve handling of JPEG settings
+    - fix script-fu error reporting
+    - on OS X, get rid of menubars in windows and use the global menubar
+    - fix plug-ins using GimpZoomPreview
+    - throw properly catchable exceptions from foreign script-fu function
+      (like PDB wrappers)
+   * Changes in GIMP 2.4.0-rc1:
+    - further improvement to the Print plug-in
+    - completed the color management functionality for 2.4
+    - store JPEG setting with the image and use them when saving as JPEG
+    - further improved the rectangle tools, in particular handling of the
+      fixed aspect ratio
+   - added color profile selector widget
+   - further improved the display quality for zoomed-out views
+- add Conflict with gimp-lang (#307289)
+- Update to version 2.3.19:
+  + support long layer names in PSD files
+  + improved EXIF handling in the JPEG file plug-in
+  + added control for the playback speed in the Animation Playback plug-in
+  + avoid needless image preview invalidation
+  + allow to edit the image comment in the Image Properties dialog
+  + further improved rectangle tools
+  + made JPEG save parameters user-configurable
+  + avoid color conversions between identical ICC color profiles
+  + improved Print plug-in
+  + improved loading and saving of indexed TGA images
+  + temporarily show the hidden image statusbar while the progress is active
+  + added support for loading .abr v6 Photoshop brushes
+  + improved usability of color scales
+  + improved display quality of zoomed-out image view
+  + improved import of multi-page TIFF files
+  + reduced rounding errors in Blur routines (core and plug-ins)
+  + further improved parameter checks in the PDB
+  + added support for loading .abr v2 Photoshop brushes
+  + improved border behavior of the Blur tool
+  + show the brush outline at the Clone tool's source position
+  + added libgimpbase API to retrieve the user's Pictures folder
+  + add a shortcut to the user's Pictures folder to the file-chooser dialog
+  + improved the quality of the Motion Blur filter
+  + save paths in TIFF files
+  + let the Screenshot plug-in name the new layer after the window
+  + use memory slices to reduce memory fragmentation
+  + some code cleanup
+  + lots of bug fixes
+- Remove upstreamed gimp-psd-overflow.patch and gimp-sunras-overflow.patch.
+- Respin gimp-psd-overflow.patch (http://bugzilla.gnome.org/show_bug.cgi?id=456042
+  and https://bugzilla.novell.com/show_bug.cgi?id=284288#c13).
+- Add gimp-psd-overflow.patch (#284288 and CVE-2007-2949), fixing
+  a buffer overflow.
+- removed gnome-icon-theme from BuildRequires and Requires
+  [#247450]
+ 
+  * Updated to version gimp-2.3.16:
+  * XOR color configurable as a workaround for broken drivers
+  * keyboard shortcuts can assign to procedures without menu entry
+  * configurable height of the preview area in data editors
+  * improved file detection in TGA plug-in
+  * improved brush scaling code, now also scales up
+  * converted standard pixmap brushes to parametric ones
+  * improved zoom tool behavior
+  * D-Bus methods have a return value indicating success or failure
+  * added more menu tooltips
+  * procedures can request the display ID they are called from
+  * depend on GTK+ &gt;= 2.10.6
+  * filename passed on the command-line can open new image
+  * various optimizations, bug fixes and code cleanup
+- Fixed buffer overflow in sunras plugin (#270506, GNOME#433902,
+  CVE-2007-2356).
+- Updated to version gimp-2.3.15:
+  * Fixes, improvements, UI and API changes. See NEWS for more.
+- Removed obsolete hicolor icon symlink (#248676).
+- fixed 'warning: subscript out of range' (#231161) 
+- subscript-outrng.patch
+- adjust buildrequires: libexif -&gt; libexif-devel 
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Updated to version 2.3.11:
+  * Many new features, see
+    /usr/share/doc/packages/gimp-unstable/NEWS for more.
+  * Many bug fixes and code cleanup.
+- Removed dcraw hack.
+- buildrequire python-gtk-devel instead of python-gtk
+- Fixed buffer overflow in xcf_load_vector (CVE-2006-3404,
+  #190901, GNOME#346742).
+- do not use deprecated libpng functions
+- use just &quot;Gimp&quot; as name, don't duplicate GenericName description
+- Updated to version 2.3.7.
+- converted neededforbuild to BuildRequires
+- Updated to version 2.3.6.
+- Enabled parallel build.
+- Suggest AdobeICCProfiles.
+- Moved gimptool to -devel subpackage.
+- Provide gimp symlink.
+- Build with strict aliasing.
+- Fixed random return value.
+- Updated to version 2.3.5.
+- don't build as root 
+- Updated to version 2.3.4.
+- Provide gimp-2.0 virtual.
+- Updated to version 2.3.3.
+- Do not self-conflict.
+- Provide and conflict with gimp.
+- Fixed MMX patch reject.
+- Created SuSE package for unstable branch.
+- Updated to version 2.3.2.
+- Removed unneeded static modules and .la files for modules.
+- Fix use of uninitialized variables
+- Fix to work with -D_FORTIFY_SOURCE=2 
+- Fixed multiple processors option.
+- Fixed devel requirements.
+- Updated to version 2.2.7.
+- use -mmmx and -msse to compile asm-code for these extensions 
+- Updated to version 2.2.6.
+- Fixed incomplete array element type.
+- Updated to version 2.2.4.
+- Updated to version 2.2.3.
+- Updated to version 2.2.2.
+- postfix is in neededforbuild, so add &quot;-sendmail&quot; for PLUS
+- Updated to version 2.2.1.
+- locale rename no to nb
+- add MimeTypes line to desktop file. Gimp does support .xcf files now
+- upgrade to gimp 2.0.4 (Ximian bug #64677)
+- Fixes bug #63425
+  Fixes GIMP Crash at the time of acquiring screen-shot and select
+  extension type as png
+- Partially fixes bug #63420
+  Doesn't allow to crash.
+- Fixes bug #63006.
+  Added the gtk-file-chooser dialog to Open/Save a file. 
+- Updated to version 2.0.2.
+- Updated to bugfix version 2.0.1.
+- added libcroco to neededforbuild
+- German translation update from Karl Eichwalder.
+- Better fix (fork() instead of fail wrapper) of gimp-remote bug
+  (#38512), backported from gimp-2.0.1.
+  http://bugzilla.gnome.org/show_bug.cgi?id=139158
+- Work around of gimp-remote bug (#38512).
+  http://bugzilla.gnome.org/show_bug.cgi?id=139158
+- Fixed WMF plugin (#38582).
+- Add postfix to # neededforbuild
+- updated to version 2.0.0 finally 
+- Provide gimp2-devel.
+- Updated to version 2.0rc1.
+- GIMP GNOME MIME info files linked to proper place,
+- Obsolete gimp2-devel, too.
+- updated to 2.0pre4 
+- removed gimp-po-de.patch, it's upstream
+- adapted tiff_no_lzw patch
+- Symlink binaries for convenience.
+- German typo fix (bug #34349).
+- Fix broken configure check.
+- Provide and obsolete gimp2.
+- Package renamed to gimp.
+- updated to version 2.0pre3
+- remove desktop file patch, it's called gimp2 now  
+- updated to version 2.0pre2 
+- updated to version 2.0pre1
+- renew patch for LZW deactivation 
+- Updated to version 1.3.21. Fixes screenshot bug (#32288).
+- Build SVG plug-in.
+- Clean-up of neededforbuild.
+- run full autoreconf 
+- Do not show LZW in tiff save dialog at all (bug #29849).
+- name label &quot;Gimp 1.3&quot; in desktop file (Bug Id #30841) 
+- Updated to version 1.3.20.
+- Updated to version 1.3.19.
+- Enabled EXIF support.
+- install desktop file
+- Updated to version 1.3.18.
+- Updated to version 1.3.17.
+- fix build 
+- Updated to version 1.3.15.
+- Used system libgimpprint.
+- added directories to filelist
+- Initial SuSE version of GTK2 port.
+</comment>
+    <requestid>603017</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>23a3b356e94e7d0ce011a85797cfe33a</srcmd5>
+    <version>2.10.0</version>
+    <time>1527084335</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609801</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>4ef455916b2ddc98e37bb32471858e24</srcmd5>
+    <version>2.10.2</version>
+    <time>1528021743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612998</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>f5241acf7f44b009963bcfb28f3a18bc</srcmd5>
+    <version>2.10.4</version>
+    <time>1531469844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621364</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>5d6d1a2fe626232907f49293d9168bc7</srcmd5>
+    <version>2.10.6</version>
+    <time>1536575349</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>631257</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>c2b55913adf29986299ed8d1339e07f9</srcmd5>
+    <version>2.10.6</version>
+    <time>1538502287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638399</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>ca0a4cc6a9cda6f0e65529f0d2e0919d</srcmd5>
+    <version>2.10.8</version>
+    <time>1542012709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647523</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>ae31cc09d04c8eb8878198c4db1bfdcb</srcmd5>
+    <version>2.10.8</version>
+    <time>1554458179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691317</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>aa7878f0534a37a130e3eda43cb13ef6</srcmd5>
+    <version>2.10.10</version>
+    <time>1558036839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692316</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>d967dfe217f0dbc3fb232e5fd77a41a5</srcmd5>
+    <version>2.10.10</version>
+    <time>1559580147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704676</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>88463b25f0bcccd74d48b9253e9810ba</srcmd5>
+    <version>2.10.12</version>
+    <time>1561049630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710404</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>7dc823af06d15b1f227835b2202447ca</srcmd5>
+    <version>2.10.14</version>
+    <time>1573420644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746502</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>ca4a9016ffe5fefd7171afe1e31261d0</srcmd5>
+    <version>2.10.14</version>
+    <time>1574548548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749858</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>cf111f09ea9fe2dea2a5c9841805448d</srcmd5>
+    <version>2.10.18</version>
+    <time>1583226880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778972</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>f221e5e39dfd3793b27e3b42808bc655</srcmd5>
+    <version>2.10.20</version>
+    <time>1592151367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814106</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>2c1dceb3531a621c143f4636bbced08d</srcmd5>
+    <version>2.10.20</version>
+    <time>1595576890</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075) (forwarded request 820852 from gmbr3)</comment>
+    <requestid>821749</requestid>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>5632615e799137defe9c5eda98dbfd4b</srcmd5>
+    <version>2.10.20</version>
+    <time>1596203616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823169</requestid>
+  </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>95f509ebd04c20566dd21795105986d5</srcmd5>
+    <version>2.10.20</version>
+    <time>1600700711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835241</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>824158e465dd46d4d586865d5d3e36ac</srcmd5>
+    <version>2.10.22</version>
+    <time>1602155453</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839676</requestid>
+  </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>c001258406e7e91afe46e07d848b77f3</srcmd5>
+    <version>2.10.22</version>
+    <time>1603369282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842491</requestid>
+  </revision>
+</revisionlist>

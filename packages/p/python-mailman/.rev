@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c0eae620520d0f1977322d3fca45ad6</srcmd5>
+    <version>3.3.0</version>
+    <time>1576014283</time>
+    <user>dimstar_suse</user>
+    <comment>Disable the failing test.</comment>
+    <requestid>755651</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1373893a53b9169585a68570b4f921a5</srcmd5>
+    <version>3.3.0</version>
+    <time>1579346279</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686 (forwarded request 765299 from pgajdos)</comment>
+    <requestid>765303</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>07b1d586c3edd5e57a194d27708c7bfc</srcmd5>
+    <version>3.3.0</version>
+    <time>1579867918</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require python-cffi, it will be required by
+  python-PyNaCl (forwarded request 766647 from pgajdos)</comment>
+    <requestid>766648</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0871b51d41fe04bd3c7cd946fd4828b7</srcmd5>
+    <version>3.3.1</version>
+    <time>1587839464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1:
+  * No obvious changelog</comment>
+    <requestid>796939</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>10e964889587b70067424162e15326ae</srcmd5>
+    <version>3.3.1</version>
+    <time>1590506628</time>
+    <user>maxlin_factory</user>
+    <comment>submit (forwarded request 808637 from pgajdos)</comment>
+    <requestid>808659</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>554fc270fcb300909b4d3c42fbfd70cc</srcmd5>
+    <version>3.3.1</version>
+    <time>1602155519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840224</requestid>
+  </revision>
+</revisionlist>

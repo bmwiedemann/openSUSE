@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>430a47f075ceae4ef912fa16730a7bf9</srcmd5>
+    <version>0~git20191009</version>
+    <time>1581456137</time>
+    <user>dimstar_suse</user>
+    <comment>PlayStation emulator</comment>
+    <requestid>771809</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c63a75734fd4f9a399d349730b46ad2d</srcmd5>
+    <version>0~git20200529</version>
+    <time>1591558581</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812085</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b5bc4e2e520b4dcc03fb13b22e3b4f8</srcmd5>
+    <version>0~git20200610</version>
+    <time>1592840665</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816087</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c9e2d74d2d3a8fd4314a2e151648318</srcmd5>
+    <version>0~git20190907</version>
+    <time>1581456121</time>
+    <user>dimstar_suse</user>
+    <comment>Atari 5200 Emulator</comment>
+    <requestid>771765</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>15238ca82da23d1810d8bcea09483158</srcmd5>
+    <version>0~git20200429</version>
+    <time>1591558538</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812074</requestid>
+  </revision>
+</revisionlist>

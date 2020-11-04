@@ -1,0 +1,5 @@
+<package name="vala-panel-plugin-sntray" project="openSUSE:Factory">
+  <title>StatusNotifierItem (appindicator) plugin for vala-panel</title>
+  <description>StatusNotifierItem is the new D-Bus standard for system tray.</description>
+  <devel project="X11:Utilities" package="vala-panel-plugin-sntray"/>
+</package>

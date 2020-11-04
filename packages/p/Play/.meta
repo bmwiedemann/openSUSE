@@ -1,0 +1,5 @@
+<package name="Play" project="openSUSE:Factory">
+  <title>Play! - PlayStation 2 Emulator</title>
+  <description>Play! is a PlayStation 2 emulator for Windows, macOS, UNIX, Android &amp; iOS platforms.</description>
+  <devel project="Emulators" package="Play"/>
+</package>

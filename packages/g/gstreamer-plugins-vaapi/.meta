@@ -1,0 +1,5 @@
+<package name="gstreamer-plugins-vaapi" project="openSUSE:Factory">
+  <title>gstreamer vaapi plugin</title>
+  <description></description>
+  <devel project="multimedia:libs" package="gstreamer-plugins-vaapi"/>
+</package>

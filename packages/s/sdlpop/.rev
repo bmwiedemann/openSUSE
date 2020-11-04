@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8a4107869d323ea1aea5bee66384239</srcmd5>
+    <version>1.20</version>
+    <time>1575463745</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain sdlpop in Factory</comment>
+    <requestid>742172</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c46dd8b1e615af2795cf45c0424a3c9</srcmd5>
+    <version>1.20</version>
+    <time>1575563645</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>753981</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f644b49fea82b55c4dea44ac8b2192d4</srcmd5>
+    <version>1.21</version>
+    <time>1598274891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828885</requestid>
+  </revision>
+</revisionlist>

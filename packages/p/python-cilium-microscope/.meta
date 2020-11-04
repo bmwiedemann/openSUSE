@@ -1,0 +1,5 @@
+<package name="python-cilium-microscope" project="openSUSE:Factory">
+  <title>cilium-microscope</title>
+  <description>Gather monitor data data from all cilium nodes in your cluster</description>
+  <devel project="devel:kubic" package="python-cilium-microscope"/>
+</package>

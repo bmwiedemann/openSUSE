@@ -1,0 +1,5 @@
+<package name="libretro-3dengine" project="openSUSE:Factory">
+  <title>3D Engine libretro core</title>
+  <description>3D Engine for libretro GL with additional features (camera/location/etc). Should be compatible from libretro 3D/GLES 2.0 and up.</description>
+  <devel project="Emulators" package="libretro-3dengine"/>
+</package>

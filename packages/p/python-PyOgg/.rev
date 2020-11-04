@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3556a1cb2324cb1ae1d24a4fd0d0e839</srcmd5>
+    <version>0.6.4a1</version>
+    <time>1542281926</time>
+    <user>dimstar_suse</user>
+    <comment>Python bindings for Xiphorg's Ogg Vorbis, Opus and FLAC</comment>
+    <requestid>646500</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01decb3ea9b8ab432419275f0b7c0d4d</srcmd5>
+    <version>0.6.4a1</version>
+    <time>1548334970</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659289</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>086dd036ca6ec9948c51985b5e60fcbc</srcmd5>
+    <version>0.6.7a1</version>
+    <time>1551785094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7a1:
+  * no upstream changelog</comment>
+    <requestid>681516</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>688c17ddaa728e8289794b67c6b7d2c5</srcmd5>
+    <version>0.6.9a1</version>
+    <time>1554749575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.9a1:
+  * no upstream changelog</comment>
+    <requestid>691780</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>255e1e49cc5318706cbcdd06f75b045b</srcmd5>
+    <version>0.6.11a1</version>
+    <time>1569393677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.11a1:
+  * no upstream changelog</comment>
+    <requestid>732895</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de5fcf34880dd7b0a63327ec24672387</srcmd5>
+    <version>0.6.12a1</version>
+    <time>1579101505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764648</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>397bf5f0d98c7e219b32de68a49ea45e</srcmd5>
+    <version>0.6.12a1</version>
+    <time>1579729467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766151</requestid>
+  </revision>
+</revisionlist>

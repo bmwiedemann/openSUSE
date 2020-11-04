@@ -1,0 +1,5 @@
+<package name="python-vatnumber" project="openSUSE:Factory">
+  <title>python-vatnumber</title>
+  <description>Python module to validate VAT numbers.</description>
+  <devel project="devel:languages:python" package="python-vatnumber"/>
+</package>

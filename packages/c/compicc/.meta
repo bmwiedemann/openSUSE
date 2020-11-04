@@ -1,0 +1,7 @@
+<package name="compicc" project="openSUSE:Factory">
+  <title>Compiz ICC Colour Management Server</title>
+  <description>The Compiz ICC colour server, or short compicc, lets you colour manage your whole desktop at once and in hardware.
+Play movies, watch images on wide or narrow gamut displays.
+Each connected monitor is colour corrected for its own.</description>
+  <devel project="X11:Compiz" package="compicc"/>
+</package>

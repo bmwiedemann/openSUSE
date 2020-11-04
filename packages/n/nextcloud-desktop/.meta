@@ -1,0 +1,9 @@
+<package name="nextcloud-desktop" project="openSUSE:Factory">
+  <title>Nextcloud desktop synchronisation client</title>
+  <description>The Nextcloud Desktop Client is a tool to synchronise files from the Nextcloud Server with your computer.
+
+Nextcloud Desktop enables you to connect to your private Nextcloud Server.
+With it you can create directories in your home directory, and keep the contents of those directories synced with the server.
+Simply copy a file into the directory and the desktop synchronisation client does the rest.</description>
+  <devel project="network" package="nextcloud-desktop"/>
+</package>

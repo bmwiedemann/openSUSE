@@ -1,0 +1,205 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>30cac5ffb21f9c3c8172a1e2ed5dd74d</srcmd5>
+    <version>0.4b41</version>
+    <time>1168902642</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>fc4a5a655c49e9ad01146591aad585ac</srcmd5>
+    <version>0.4b41</version>
+    <time>1175422042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="159">
+    <srcmd5>fc4a5a655c49e9ad01146591aad585ac</srcmd5>
+    <version>0.4b41</version>
+    <time>1175422042</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="160">
+    <srcmd5>51454f2f020e059d5a4ffeb06cc10ec8</srcmd5>
+    <version>0.4b41</version>
+    <time>1224728989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="162">
+    <srcmd5>51454f2f020e059d5a4ffeb06cc10ec8</srcmd5>
+    <version>0.4b41</version>
+    <time>1224728989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="163">
+    <srcmd5>a2ce77b5721ee839b354e76e68243ce0</srcmd5>
+    <version>0.4b41</version>
+    <time>1268923406</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="165">
+    <srcmd5>a2ce77b5721ee839b354e76e68243ce0</srcmd5>
+    <version>0.4b41</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="166">
+    <srcmd5>a2ce77b5721ee839b354e76e68243ce0</srcmd5>
+    <version>0.4b41</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>059dcf6e3762b559ee735ff839c06550</srcmd5>
+    <version>0.4b43</version>
+    <time>1286313904</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/dump based on submit request 49726 from user nadvornik
+</comment>
+    <requestid>49726</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>059dcf6e3762b559ee735ff839c06550</srcmd5>
+    <version>0.4b43</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>4d0fdde87aae3d94fd4fd5f1abd54f88</srcmd5>
+    <version>0.4b43</version>
+    <time>1316692527</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83303 from jengelh)</comment>
+    <requestid>84424</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>4d0fdde87aae3d94fd4fd5f1abd54f88</srcmd5>
+    <version>0.4b43</version>
+    <time>1319181857</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>d4f2aa13e67933935b4db205d3c772d4</srcmd5>
+    <version>0.4b43</version>
+    <time>1323290438</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95002 from coolo)</comment>
+    <requestid>95176</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>d4f2aa13e67933935b4db205d3c772d4</srcmd5>
+    <version>0.4b43</version>
+    <time>1340183293</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>9838ee6b48fdc9e93fd6cc6f8dd3936f</srcmd5>
+    <version>0.4b43</version>
+    <time>1358016401</time>
+    <user>namtrac</user>
+    <comment>- remove suse_update_config (forwarded request 148163 from coolo)</comment>
+    <requestid>148165</requestid>
+  </revision>
+  <revision rev="16" vrev="13">
+    <srcmd5>9838ee6b48fdc9e93fd6cc6f8dd3936f</srcmd5>
+    <version>0.4b43</version>
+    <time>1359108829</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>9838ee6b48fdc9e93fd6cc6f8dd3936f</srcmd5>
+    <version>0.4b43</version>
+    <time>1379662258</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>9838ee6b48fdc9e93fd6cc6f8dd3936f</srcmd5>
+    <version>0.4b43</version>
+    <time>1409300796</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>0af0bfd59f50ca5079e2a2593229dfb2</srcmd5>
+    <version>0.4b43</version>
+    <time>1418840216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265411</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>de2c6599bf19b5f46c2a338fda88f699</srcmd5>
+    <version>0.4b44</version>
+    <time>1425217924</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287653</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>df8a8bdc154d3efab728ff3bcfdabb05</srcmd5>
+    <version>0.4b44</version>
+    <time>1431247977</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305697</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>de0ac98c12281bd8585d155b9b280bf0</srcmd5>
+    <version>0.4b46</version>
+    <time>1495283431</time>
+    <user>dimstar_suse</user>
+    <comment>- Conform to packaging guidelines with update-alternatives
+- Clenaup with spec-cleaner
+
+- Update to 0.4b44
+  * Improve data throughput when using compression in dump by
+    allowing multiple slaves to compress in parallel. Thanks
+    to Phillip Susi &lt;psusi@cfl.rr.com&gt; for the patch.
+  * Add dump encryption support and reorganise the whole
+    compression/encryption code as plugins. Thanks to
+    Bear Giles &lt;bgiles@coyotesong.com&gt; for the patch.
+  * Add sqlite index support and reorganize the QFA code
+    as plugins. Thanks to Bear Giles &lt;bgiles@coyotesong.com&gt; for
+    the patch.
+  * Lots of various build cleanups and minor bugfixes.
+  * Use pkg-config to locate openssl dependencies to fix ermt linking.
+  * Fix building when QFA code is disabled (Alexander Zangerl).
+  * Fix crash with the -Q option (Alexander Zangerl).
+  * Fix crash with legacy indexer (Alexander Zangerl).
+  * Fix handling of the -A flag.
+  * Fix compression enabling logic (Alexander Zangerl).
+  * Skip unhandled fstab entries (Josef Ridky).
+- Add ermt (1) man page
+- A new version of dump have an updated make system, because of this
+  * remove patches dump-0.4b43-configure.patch, dump-0.4b43-destdir.patch, dump-buildfix.patch
+  * rebase patch dump-0.4b43-pathnames.patch to dump-0.4b46-pathnames.patch
+- Add dump-0.4b46-lzo-no-return.patch - fixing rpmlint 
+  no-return-in-nonvoid-function error in dump
+- Add dump-0.4b46-rmt-ermt.patch - independent rmt and ermt build,
+  change its locations to _bindir
+- Cleanup spec file with spec-cleaner</comment>
+    <requestid>482870</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>5fb14c4fa9df962bffca3eef46784d4b</srcmd5>
+    <version>0.4b46</version>
+    <time>1497949150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503946</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>a06ed284bf94cb7fc5cf33e743eb33ba</srcmd5>
+    <version>0.4b46</version>
+    <time>1585995516</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789864</requestid>
+  </revision>
+</revisionlist>

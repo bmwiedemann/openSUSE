@@ -1,0 +1,12 @@
+<package name="dynamic-wallpapers-11x" project="openSUSE:Factory">
+  <title>Dynamic wallpapers for GNOME, from previous versions of openSUSE</title>
+  <description>This package contains dynamic wallpapers from previous versions of
+openSUSE.
+
+A dynamic wallpaper changes depending on the time of the day: it is
+generally bright during the day, and dark during the night.
+
+</description>
+  <devel project="GNOME:Apps" package="dynamic-wallpapers-11x"/>
+  <url>http://gitorious.org/opensuse/art/trees/master/wallpaper</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-String-Util" project="openSUSE:Factory">
+  <title>perl-String-Util - String processing utility functions</title>
+  <description>String::Util provides a collection of small, handy functions for processing strings in various ways.</description>
+  <devel project="devel:languages:perl" package="perl-String-Util"/>
+</package>

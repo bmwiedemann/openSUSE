@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d73cd6f1b880538ad9b70b7759019c2a</srcmd5>
+    <version>0.9.0</version>
+    <time>1586555606</time>
+    <user>dimstar_suse</user>
+    <comment>MoleQueue is a system-tray resident desktop application for abstracting, managing, and coordinating the execution of tasks both locally and on remote computational resources.
+
+It is also dependency for Avogadro2.</comment>
+    <requestid>792807</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8fa122a0271e4abae957d620356bad1</srcmd5>
+    <version>0.9.0</version>
+    <time>1588450747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799689</requestid>
+  </revision>
+</revisionlist>

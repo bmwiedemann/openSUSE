@@ -1,0 +1,7 @@
+<package name="qgis" project="openSUSE:Factory">
+  <title>QGIS is a user friendly Open Source Geographic Information System (GIS)</title>
+  <description>QGIS is a user friendly Open Source Geographic Information System (GIS) licensed under the GNU General Public License. QGIS is an official project of the Open Source Geospatial Foundation (OSGeo). It runs on Linux, Unix, Mac OSX, Windows and Android and supports numerous vector, raster, and database formats and functionalities.
+</description>
+  <devel project="Application:Geo" package="qgis"/>
+  <url>https://qgis.org/</url>
+</package>

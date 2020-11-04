@@ -1,0 +1,6 @@
+<package name="warewulf-nhc" project="openSUSE:Factory">
+  <title>Warewulf Node Health Check (NHC)</title>
+  <description>Warewulf Node Health Check (NHC) is a periodic &quot;node health check&quot; script to be executed on each compute node to verify that the node is working properly. Nodes which are determined to be &quot;unhealthy&quot; can be marked as down or offline so as to
+prevent jobs from being scheduled or run on them. This helps increase the reliability and throughput of a cluster by reducing preventable job failures due to misconfiguration, hardware failures, etc.</description>
+  <devel project="network:cluster" package="warewulf-nhc"/>
+</package>

@@ -1,0 +1,11 @@
+<package name="jline1" project="openSUSE:Factory">
+  <title>Java library for reading and editing user input in console applications</title>
+  <description>JLine is a java library for reading and editing user input in console
+applications. It features tab-completion, command history, password
+masking, customizable keybindings, and pass-through handlers to use to
+chain to other console applications.
+
+</description>
+  <devel project="Java:packages" package="jline1"/>
+  <url>http://jline.sourceforge.net/</url>
+</package>

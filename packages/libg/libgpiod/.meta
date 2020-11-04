@@ -1,0 +1,5 @@
+<package name="libgpiod" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="libgpiod"/>
+</package>

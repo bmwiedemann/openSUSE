@@ -1,0 +1,7 @@
+<package name="tesseract-ocr-traineddata" project="openSUSE:Factory">
+  <title>Tesseract Language Data</title>
+  <description>
+Tesseract data for various languages.
+</description>
+  <devel project="Publishing" package="tesseract-ocr-traineddata"/>
+</package>

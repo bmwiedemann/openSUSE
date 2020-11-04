@@ -1,0 +1,168 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42e14f855eb2ac9d88937a2805d28b99</srcmd5>
+    <version>10.5.1</version>
+    <time>1597064498</time>
+    <user>dimstar_suse</user>
+    <comment>Re-inclusion requested on Reddit</comment>
+    <requestid>825264</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64d4720e2895a02fe4c24b1e6d83e0d3</srcmd5>
+    <version>10.5.1</version>
+    <time>1597220960</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gnome-session dependency
+- Fix desktop icons
+- Add patches:
+  * Rework-grab-and-ungrab-keys.patch (gh#solus-project/budgie-desktop#1907)
+  * mutter-3-35-91.patch (gh#solus-project/budgie-desktop#1939)
+  * gnome-coexistance.patch (gh#solus-project/budgie-desktop#1984)
+- Remove old %post and %postun
+- Add new Requires:
+  * ibus
+  * typelib-1_0-PeasGtk-1_0
+  * typelib-1_0-Budgie-1_0
+- Add xsession update-alternatives
+</comment>
+    <requestid>825762</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>22690a91f2e9a1cf26224692ef7deb99</srcmd5>
+    <version>10.5.1</version>
+    <time>1597306754</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-session-core as a dependency
+- Spec file cleanups
+- Correct URL
+</comment>
+    <requestid>826117</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43385cee3917492ba3f47314aba9eb17</srcmd5>
+    <version>10.5.1</version>
+    <time>1597390406</time>
+    <user>dimstar_suse</user>
+    <comment>- Change gnome-control-center from Recommends to Requires:
+  * Needed for changing desktop background
+- Add gnome-software to Requires:
+  * Needed for links in gnome-control-center
+</comment>
+    <requestid>826273</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>78427e7451b7ad005ac9540f36b6c522</srcmd5>
+    <version>10.5.1</version>
+    <time>1598885356</time>
+    <user>dimstar_suse</user>
+    <comment>- Add desktop-override.patch from Debian: fixes overlap between 
+  Budgie and GNOME in gschema
+- Add budgie-screensaver to Requires
+- Change gnome-software from Requires to Recommends:
+  * Asked for by S. B. &lt;sb56637@gmail.com&gt;
+</comment>
+    <requestid>830518</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1f8b54bfda1f6c0cb425c0360ba8e51b</srcmd5>
+    <version>10.5.1</version>
+    <time>1598983792</time>
+    <user>dimstar_suse</user>
+    <comment>- Add nemo-instead-of-nautilus.patch: Nautilus doesn't have support
+  for desktop icons anymore
+- Add nemo to Requires for desktop icons
+</comment>
+    <requestid>830934</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>cb2d62f949f44fed57930812b63a94e7</srcmd5>
+    <version>10.5.1</version>
+    <time>1599421040</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix boo#1176016:
+  * replace-na-tray-with-carbontray.patch 
+    (gh#solus-project/budgie-desktop#1998)
+  * clean-up-carbontray.patch
+    (gh#solus-project/budgie-desktop#2002)
+  * fix-integration-issues-with-carbontray.patch
+    (gh#solus-project/budgie-desktop#2009)
+</comment>
+    <requestid>832518</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83190a832853278f5204ba0b87f8e481</srcmd5>
+    <version>10.5.1+1ed6276b</version>
+    <time>1599862047</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert vala path changes
+- Add patch vala-0.49.patch: fixes build with vala 0.49
+  (gh#solus-project/budgie-desktop#2029)
+- Update to git version 10.5.1+1ed6276b:
+  * Prevents keeping a load of patches, 10.5.2 might be ages away
+  * Added support for GNOME 3.38
+  * Removed support for GNOME 3.34 and below
+- Removed patches:
+  * support-libmutter6.patch
+  * Rework-grab-and-ungrab-keys.patch
+  * mutter-3-35-91.patch
+  * gnome-coexistance.patch
+  * replace-na-tray-with-carbontray.patch
+  * clean-up-carbontray.patch
+  * fix-integration-issues-with-carbontray.patch
+- Updated BuildRequires:
+  * pkgconfig(libmutter-5/6) &gt;&gt; pkgconfig(libmutter-6/7)
+</comment>
+    <requestid>833543</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>54c0abd1978e338e249818b0c0f10d4d</srcmd5>
+    <version>10.5.1+1ed6276b</version>
+    <time>1600180011</time>
+    <user>dimstar_suse</user>
+    <comment>- Add budgie-desktop-branding to Recommends
+- Add patch Revert-GNOME-3.38-support.patch: Leap 15.2 only
+- Updated BuildRequires:
+  * pkgconfig(libmutter-6/7) &gt;&gt; pkgconfig(libmutter-5/6/7)
+</comment>
+    <requestid>834311</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5ee39c711bd07344dcb7936087c20872</srcmd5>
+    <version>10.5.1+1ed6276b</version>
+    <time>1600801900</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a better format for testing gnome versions
+</comment>
+    <requestid>835892</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9764bb0930438c9b19e6a25d6ee858a5</srcmd5>
+    <version>10.5.1+9197f3f0</version>
+    <time>1603545480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.1+9197f3f0:
+  * Support to set XDG directory
+  * Fix build with vala 0.49
+  * Changes and fixes in Budgie Menu
+  * Update translations
+- Removed vala-0.49.patch: contained in upstream
+- Removed Revert-GNOME-3.38-support.patch: end of Leap 15.2 support
+- Rebased nemo-instead-of-nautilus.patch
+- Updated BuildRequires:
+  * pkgconfig(libmutter-5/6/7) &gt;&gt; pkgconfig(libmutter-6/7)
+- Follow UsrEtc move for autostart desktop files
+</comment>
+    <requestid>843653</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>9e2eb9b1f7f26acd4804a669ae945db6</srcmd5>
+    <version>10.5.1+21060898</version>
+    <time>1604413925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.1+21060898:
+  * Consolidate WindowType checking code into Abomination.
+- Cleaned nemo-instead-of-nautilus.patch
+</comment>
+    <requestid>845528</requestid>
+  </revision>
+</revisionlist>

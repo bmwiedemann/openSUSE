@@ -1,0 +1,5 @@
+<package name="oci-seccomp-bpf-hook" project="openSUSE:Factory">
+  <title>OCI seccomp BPF Hook</title>
+  <description>OCI hook to trace syscalls and generate a seccomp profile</description>
+  <devel project="devel:kubic" package="oci-seccomp-bpf-hook"/>
+</package>

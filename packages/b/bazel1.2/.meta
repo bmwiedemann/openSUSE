@@ -1,0 +1,6 @@
+<package name="bazel1.2" project="openSUSE:Factory">
+  <title>bazel1.2</title>
+  <description>Tool for the automation of building and testing of software</description>
+  <devel project="devel:tools:building" package="bazel1.2"/>
+  <url>https://bazel.build/</url>
+</package>

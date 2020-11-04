@@ -1,0 +1,9 @@
+<package name="python-humanreadable" project="openSUSE:Factory">
+  <title>A Python library to convert from human-readable values to Python values</title>
+  <description>humanreadable is a Python library to convert from human-readable
+values to Python values.
+
+</description>
+  <devel project="devel:languages:python" package="python-humanreadable"/>
+  <url>https://github.com/thombashi/humanreadable</url>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5804d89bd57fae37763486c911b8ed6d</srcmd5>
+    <version>0.8.0</version>
+    <time>1578950468</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain ocli in Factory</comment>
+    <requestid>763719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7461ecbd91a6da5bda178e9e02bb8351</srcmd5>
+    <version>0.9.0</version>
+    <time>1582810603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779443</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>96b2bfb03f0b92b59666091305ccbabe</srcmd5>
+    <version>0.9.0</version>
+    <time>1591479623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812021</requestid>
+  </revision>
+</revisionlist>

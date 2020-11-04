@@ -1,0 +1,5 @@
+<package name="glassfish-websocket-api" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="glassfish-websocket-api"/>
+</package>

@@ -1,0 +1,13 @@
+<package name="dh-make" project="openSUSE:Factory">
+  <title>Tool that converts source archives into Debian package source</title>
+  <description>This package allows you to take a standard (or upstream) source package
+and convert it into a format that will allow you to build Debian packages.
+
+After answering a few questions, dh_make will then provide a set of
+templates that, after some small editing, will allow you to create a
+Debian package.
+
+</description>
+  <devel project="system:packagemanager" package="dh-make"/>
+  <url>http://www.debian.org</url>
+</package>

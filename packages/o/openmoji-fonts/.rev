@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3bea03525be30163ebea7f4162de35b9</srcmd5>
+    <version>12.2+git.1581783086.1a0d6f8c</version>
+    <time>1582018546</time>
+    <user>dimstar_suse</user>
+    <comment>Add license to spec file.
+The license is part of the FAQ.md file. I cannot find the separated license file, not sure if it a problem.</comment>
+    <requestid>774687</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>553488399cf238db57109184538f6dc6</srcmd5>
+    <version>12.3.0+git.1590131834.9ea5516a1</version>
+    <time>1593904424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>817450</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>03051b15657bfa2d0ec52b373ab2ae4f</srcmd5>
+    <version>12.4.0+git.1595925010.16e293b40</version>
+    <time>1603821545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.4.0.
+  * More Emoji 13, only 20 missing
+  * New set of gardening related things
+  * Lots of fixes
+  * New Code of Conduct
+</comment>
+    <requestid>843801</requestid>
+  </revision>
+</revisionlist>

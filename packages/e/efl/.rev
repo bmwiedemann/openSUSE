@@ -1,0 +1,403 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>494a4ac8a138c61944e2830f705bb811</srcmd5>
+    <version>1.8.4</version>
+    <time>1392110832</time>
+    <user>coolo</user>
+    <comment>Enlightenment Foundation Libraries:
+This is the new build process for the efl, this package will replace most of the existing efl packages (eina, eet, evas, ecore, edje etc) 
+
+* This request Supersedes 213817 and 213662 
+** Removes requirement on bullet for efl-devel (Should have been in a have physics check)
+** Puts a conflict in libefreet-mime and trash due to current incorrect libefreet package
+** removes Man pages as they conflict alot and fixes a file that had moved from the devel package into the main package</comment>
+    <requestid>215338</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06230a0f334215d5c078f34c50e3499d</srcmd5>
+    <version>1.9.0</version>
+    <time>1393609960</time>
+    <user>coolo</user>
+    <comment>1.9.0 feature release (forwarded request 224063 from simotek)</comment>
+    <requestid>224068</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce5d27eb42d33dca06089435c0d71d68</srcmd5>
+    <version>1.9.2</version>
+    <time>1397041972</time>
+    <user>coolo</user>
+    <comment>Time for 1.9.2</comment>
+    <requestid>229444</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b801fd729e6fcd9d73b014b6d060137e</srcmd5>
+    <version>1.9.2</version>
+    <time>1397499911</time>
+    <user>coolo</user>
+    <comment>- Only use valgrind when it exists (forwarded request 229956 from Andreas_Schwab)</comment>
+    <requestid>230014</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25295ae7146e7ff59b8d3beefaf2dd2c</srcmd5>
+    <version>1.10.2</version>
+    <time>1406146034</time>
+    <user>coolo</user>
+    <comment>* Fix Issues raised in SR 241807
+
+* From 241807
+ * Fix Build
+ * fix for CVE-2014-4611
+ * Update to version 1.10.2
+    * Add DRM support (Not Compiled atm)
+    * Multiple fixes and minor features</comment>
+    <requestid>241968</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>835e8d0e20ad93dcd77505ed63421c3a</srcmd5>
+    <version>1.10.2</version>
+    <time>1407407876</time>
+    <user>coolo</user>
+    <comment>Re enable ephysics now that bullet has been accepted into factory
+this will cause the creation of a new libephysics1 package</comment>
+    <requestid>243832</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>835e8d0e20ad93dcd77505ed63421c3a</srcmd5>
+    <version>1.10.2</version>
+    <time>1409300817</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b372c03e80750595f6897bc98bdfa9f</srcmd5>
+    <version>1.11.2</version>
+    <time>1410941485</time>
+    <user>coolo</user>
+    <comment>Update to 1.11.2
+
+Disable docs as they don't build in factory
+
+Disable neon-cflags.patch apparently fixed upstream, will remove the patch once the fix is confirmed by the arm team</comment>
+    <requestid>249553</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d4fcefce239f7e4e672dcd880492791f</srcmd5>
+    <version>1.11.2</version>
+    <time>1411127780</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250095</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1bc5db49a975b1bc5ecc24d8190a31ca</srcmd5>
+    <version>1.11.3</version>
+    <time>1413616172</time>
+    <user>coolo</user>
+    <comment>Bugfix release to 1.11.3:
+also fixes some regressions in the sysactions files 
+fixes the openSUSE:Factory build.
+Adds a patch to fix a bug in the 1.11.3 release that has already been fixed for 1.11.4
+
+it would be great if this made it into openSUSE 13.2</comment>
+    <requestid>257356</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2560756f5a19d0784bfa17201e58c167</srcmd5>
+    <version>1.11.3</version>
+    <time>1415289037</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259912</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6804749d3d5f7ca8b27294a0b985e982</srcmd5>
+    <version>1.13.1</version>
+    <time>1426796487</time>
+    <user>dimstar_suse</user>
+    <comment>Updates to the current stable release 1.13.1 
+* no longer uses neon-cflags.patch but file still exists until that has been 100% confirmed.</comment>
+    <requestid>291375</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9bdd52580253fc293edee51a2ae8cce5</srcmd5>
+    <version>1.13.1</version>
+    <time>1427274040</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292408</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b1d285d92094e4b6ff997588f91eb3f9</srcmd5>
+    <version>1.13.2</version>
+    <time>1428652247</time>
+    <user>dimstar_suse</user>
+    <comment>1.13.2 bugfix release nothing to exciting</comment>
+    <requestid>294713</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>16b6831fea84cd6b2197fed653fcda66</srcmd5>
+    <version>1.14.1</version>
+    <time>1434003800</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 1.14.1
+- Drop gstreamer 0.10 unless gstreamer 1 not present
+- Fix file list for !%luajit_present</comment>
+    <requestid>311457</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>447ea766d21ca9d8da3b8650a7e98754</srcmd5>
+    <version>1.15.0</version>
+    <time>1440658538</time>
+    <user>coolo</user>
+    <comment>Fix python-efl build in openSUSE:Factory:Staging:adi:30 with a version bump</comment>
+    <requestid>324615</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>76355d318dac44da2e62bb8c64b3513e</srcmd5>
+    <version>1.15.0</version>
+    <time>1441296258</time>
+    <user>dimstar_suse</user>
+    <comment>Should either depend on luajit or lua not both, and if using lua it needs to be below 5.2</comment>
+    <requestid>328652</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a675ba851b66bbe63f9ae6847b8a975b</srcmd5>
+    <version>1.15.1</version>
+    <time>1443335986</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333040</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>55abf287ac2d778a510fd759b6b7f63f</srcmd5>
+    <version>1.15.2</version>
+    <time>1445511512</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to 1.15.2 (Candidate for Leap Release)
+
+Also includes sleep_walkers full set of changes to build wayland support for factory</comment>
+    <requestid>337349</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c914490594d45192ac3ae7e96834961d</srcmd5>
+    <version>1.16.0</version>
+    <time>1452377605</time>
+    <user>dimstar_suse</user>
+    <comment>New efl release (1.16.0)</comment>
+    <requestid>349578</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a76b0b9a70b04052d4346bea771389cd</srcmd5>
+    <version>1.17.0</version>
+    <time>1457116223</time>
+    <user>dimstar_suse</user>
+    <comment>Bump to 1.17.0</comment>
+    <requestid>365490</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c2663f43f94e4bc685793746971cc740</srcmd5>
+    <version>1.17.0</version>
+    <time>1460482804</time>
+    <user>dimstar_suse</user>
+    <comment>Cleaned up changelog whitespace</comment>
+    <requestid>387759</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ed28b336e31154dd22f70415eda2343a</srcmd5>
+    <version>1.17.2</version>
+    <time>1466814166</time>
+    <user>dimstar_suse</user>
+    <comment>And actually remove the patch files that are no longer used</comment>
+    <requestid>404151</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3d884a32de0208b4d88da15bf4e2d931</srcmd5>
+    <version>unknown</version>
+    <time>1472646686</time>
+    <user>dimstar_suse</user>
+    <comment>I'll just resubmit to make the factory auto checker happy, (This new version removes poppler from fedora and SLE builds)</comment>
+    <requestid>423353</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>1874dc30ff210afd38d4387db24f4ed7</srcmd5>
+    <version>unknown</version>
+    <time>1474016457</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427099</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>e822f19f9d37528fca06b5f020f1b557</srcmd5>
+    <version>unknown</version>
+    <time>1474723685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>428695</requestid>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>9bf8450a681957ccea2b513766c705c1</srcmd5>
+    <version>unknown</version>
+    <time>1476997795</time>
+    <user>dimstar_suse</user>
+    <comment>1.18.2 Bugfix release</comment>
+    <requestid>436460</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>b7d57b3fa200c718ec1a62bc38dc39e9</srcmd5>
+    <version>unknown</version>
+    <time>1486135820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>454330</requestid>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>5686d266a6037daa6eaada3ab134a094</srcmd5>
+    <version>unknown</version>
+    <time>1496327557</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497955</requestid>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>eb8cb83bec7ef8fc604943febf314e1c</srcmd5>
+    <version>unknown</version>
+    <time>1499510098</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build issues.</comment>
+    <requestid>508676</requestid>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>8ca0d2202d671f8511046c41b95c156d</srcmd5>
+    <version>unknown</version>
+    <time>1503482141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518312</requestid>
+  </revision>
+  <revision rev="32" vrev="10">
+    <srcmd5>82cc5482676f3ca3c09392d0676ff618</srcmd5>
+    <version>unknown</version>
+    <time>1510322164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538209</requestid>
+  </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>7e3a2927c9b8aed9f6061a80090ec2cc</srcmd5>
+    <version>unknown</version>
+    <time>1512547172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548487</requestid>
+  </revision>
+  <revision rev="34" vrev="12">
+    <srcmd5>d76617d7365909055ca95009b1c3e524</srcmd5>
+    <version>unknown</version>
+    <time>1513015051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555901</requestid>
+  </revision>
+  <revision rev="35" vrev="13">
+    <srcmd5>1b6ec6c7ffcfff019b3b897d649b2cf7</srcmd5>
+    <version>unknown</version>
+    <time>1522225770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590938</requestid>
+  </revision>
+  <revision rev="36" vrev="14">
+    <srcmd5>c6f56a6a294f515376681d48bc7a4ed9</srcmd5>
+    <version>unknown</version>
+    <time>1524643374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>600806</requestid>
+  </revision>
+  <revision rev="37" vrev="15">
+    <srcmd5>565505c10654e8c6ae05ec3a2734bbc2</srcmd5>
+    <version>unknown</version>
+    <time>1560862586</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.22.2 + some tidy up</comment>
+    <requestid>706308</requestid>
+  </revision>
+  <revision rev="38" vrev="16">
+    <srcmd5>520ab5a3cbb3efdbaecfb6e4bdab1d6b</srcmd5>
+    <version>unknown</version>
+    <time>1561557891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712072</requestid>
+  </revision>
+  <revision rev="39" vrev="17">
+    <srcmd5>cf9272b749d68a812d07662b30062ee8</srcmd5>
+    <version>unknown</version>
+    <time>1579636743</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.23 Release
+  * Again, the primary focus of this release has been stabilizing
+    the EO library as well as an extending the set of unified API
+    which is based on it. From this release onwards we also switched
+    to meson as our only build system (RIP autotools, you served us
+    well for a long time). The 2110 commits contain more changes to
+    possible list here, but you will find improved DRM support, a new
+    widget for controlling vector animations, a first step towards
+    MVVM support, general bugfixes and more.
+    Please see the NEWS file for more details.
+  * spec file cleanup
+- 1.22.4 Release - Various minor bugfixes
+- 1.22.3 Release - Various minor bugfixes
+</comment>
+    <requestid>761069</requestid>
+  </revision>
+  <revision rev="40" vrev="18">
+    <srcmd5>10b2d0af05027da8b0b3e3e81e78c0c5</srcmd5>
+    <version>unknown</version>
+    <time>1579791251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766433</requestid>
+  </revision>
+  <revision rev="41" vrev="19">
+    <srcmd5>aff491909d76b5a17c2ff15d9bcb624c</srcmd5>
+    <version>unknown</version>
+    <time>1580511499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769097</requestid>
+  </revision>
+  <revision rev="42" vrev="20">
+    <srcmd5>9ef9087e6c6a007b8ac5580e4a4de4f6</srcmd5>
+    <version>unknown</version>
+    <time>1593904355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>808889</requestid>
+  </revision>
+  <revision rev="43" vrev="21">
+    <srcmd5>5c5bcffad2631f37fe33da4cd8596b59</srcmd5>
+    <version>unknown</version>
+    <time>1597221430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825874</requestid>
+  </revision>
+  <revision rev="44" vrev="22">
+    <srcmd5>6a1b7eac8128ac77885102e2e8af1203</srcmd5>
+    <version>unknown</version>
+    <time>1599210690</time>
+    <user>dimstar_suse</user>
+    <comment>- split out ecore_imf-module-scim to reduce dependencies of base efl package
+(found more fine grained license assignment and fixed the value in this round)</comment>
+    <requestid>831679</requestid>
+  </revision>
+  <revision rev="45" vrev="23">
+    <srcmd5>cfd587dfadac2de7347b11b7305084a8</srcmd5>
+    <version>unknown</version>
+    <time>1602073028</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839669</requestid>
+  </revision>
+</revisionlist>

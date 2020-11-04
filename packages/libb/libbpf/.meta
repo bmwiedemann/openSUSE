@@ -1,0 +1,5 @@
+<package name="libbpf" project="openSUSE:Factory">
+  <title>libbpf</title>
+  <description>C library for managing eBPF programs and maps</description>
+  <devel project="devel:libraries:c_c++" package="libbpf"/>
+</package>

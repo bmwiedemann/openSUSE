@@ -1,0 +1,8 @@
+<package name="python-shodan" project="openSUSE:Factory">
+  <title>Python library and command-line utility for Shodan</title>
+  <description>Shodan is a search engine for Internet-connected devices. Google lets you search for websites, Shodan lets you search for devices. This library provides developers easy access to all of the data stored in Shodan in order to automate tasks and integrate into existing tools.
+
+</description>
+  <devel project="devel:languages:python" package="python-shodan"/>
+  <url>http://github.com/achillean/shodan-python/</url>
+</package>

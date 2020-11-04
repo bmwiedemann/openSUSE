@@ -1,0 +1,5 @@
+<package name="python-typing-inspect" project="openSUSE:Factory">
+  <title></title>
+  <description>Python runtime inspection utilities for typing</description>
+  <devel project="devel:languages:python" package="python-typing-inspect"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bf9ca607c2a4b61e2ecf7b7476d66ef4</srcmd5>
+    <version>1.50~git20190921</version>
+    <time>1581456187</time>
+    <user>dimstar_suse</user>
+    <comment>NES emulator</comment>
+    <requestid>772095</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a24b92625a3462fead5760d1c4169949</srcmd5>
+    <version>1.50~git20200510</version>
+    <time>1592939167</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816504</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85c3f5d96311ca1cd4c684e07e0d2180</srcmd5>
+    <version>0~git20190911</version>
+    <time>1581456133</time>
+    <user>dimstar_suse</user>
+    <comment>PCFX emulator</comment>
+    <requestid>771807</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23f80cd5434ea3ed610b3885fba81807</srcmd5>
+    <version>0~git20200520</version>
+    <time>1591558572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812084</requestid>
+  </revision>
+</revisionlist>

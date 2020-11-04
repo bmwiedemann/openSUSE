@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e248b54db2f7fbe7714f41aa53bfc040</srcmd5>
+    <version>0.30</version>
+    <time>1301573530</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65627 from user babelworx
+</comment>
+    <requestid>65627</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e4966f138ba6408b79ed12f41040a4f8</srcmd5>
+    <version>0.30</version>
+    <time>1301573543</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65627
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e4966f138ba6408b79ed12f41040a4f8</srcmd5>
+    <version>0.30</version>
+    <time>1319182325</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>64070418af7d6ca5f5ee7143ede92502</srcmd5>
+    <version>0.30</version>
+    <time>1321627560</time>
+    <user>coolo</user>
+    <comment>- regnerate with cpanspec 1.78.05</comment>
+    <requestid>91932</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0d23fcc92fa0017d17137fd462f50a74</srcmd5>
+    <version>0.30</version>
+    <time>1323193041</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>0d23fcc92fa0017d17137fd462f50a74</srcmd5>
+    <version>0.30</version>
+    <time>1340183958</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>0d23fcc92fa0017d17137fd462f50a74</srcmd5>
+    <version>0.30</version>
+    <time>1359109860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e876eec8356f6d839e626060fbf0a8da</srcmd5>
+    <version>0.31</version>
+    <time>1373228481</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>182287</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e876eec8356f6d839e626060fbf0a8da</srcmd5>
+    <version>0.31</version>
+    <time>1379663931</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>e876eec8356f6d839e626060fbf0a8da</srcmd5>
+    <version>0.31</version>
+    <time>1409302583</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>60097a932defa4b0e47c3d18d6c0fef1</srcmd5>
+    <version>0.33</version>
+    <time>1420021345</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>266841</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>680bb91e50fa8f8b904ed757d83506d4</srcmd5>
+    <version>0.34</version>
+    <time>1429346441</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.34
+   see /usr/share/doc/packages/perl-aliased/Changes
+  0.34  2015-01-03 20:39:44Z
+        - re-release to fix problematic $VERSION declaration (RT#101095)</comment>
+    <requestid>297611</requestid>
+  </revision>
+</revisionlist>

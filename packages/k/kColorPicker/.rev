@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17e93b0fd104dd76be097fea6ef90de7</srcmd5>
+    <version>0.1.0</version>
+    <time>1579032448</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain kColorPicker in Factory</comment>
+    <requestid>764021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf40e15a527bb233ebbc4c08566c307c</srcmd5>
+    <version>0.1.1</version>
+    <time>1582810891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779830</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>abee98f380ee3aa3b5727e20c74a08b1</srcmd5>
+    <version>0.1.4</version>
+    <time>1592676762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815912</requestid>
+  </revision>
+</revisionlist>

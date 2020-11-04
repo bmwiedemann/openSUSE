@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a88518b57dbacf9350507f37d1f6bda1</srcmd5>
+    <version>2.10.6</version>
+    <time>1553809693</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>688265</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2b59eb12b4cc5d4d09252ed3f1294f50</srcmd5>
+    <version>2.10.7</version>
+    <time>1575373227</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade 2.10.7 + bootstrap with 2.10.7: allows building with jdk11</comment>
+    <requestid>752799</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d921b7bb13de4713375bca06565195e8</srcmd5>
+    <version>2.10.7</version>
+    <time>1575464162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753931</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9d5e43a56132d540b35cd2f1c06cd3a5</srcmd5>
+    <version>2.10.7</version>
+    <time>1576322274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756800</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>90d57998139a9a97206e80397dbc222e</srcmd5>
+    <version>2.10.7</version>
+    <time>1576585792</time>
+    <user>dimstar_suse</user>
+    <comment>Stop overriding default patch fuzz in spec file</comment>
+    <requestid>757444</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>9aad9400b86e7de080c0b4378791ddfd</srcmd5>
+    <version>2.10.7</version>
+    <time>1593200994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817260</requestid>
+  </revision>
+</revisionlist>

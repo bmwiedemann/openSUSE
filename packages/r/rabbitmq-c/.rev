@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96ed6ee9d2f26d0fe30b124d33be01eb</srcmd5>
+    <version>0.10.0</version>
+    <time>1599597976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832899</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c408a362f1b0551349dfdb0e32925c60</srcmd5>
+    <version>0.10.0</version>
+    <time>1604054985</time>
+    <user>dimstar_suse</user>
+    <comment>- fix tests for SLE15</comment>
+    <requestid>844990</requestid>
+  </revision>
+</revisionlist>

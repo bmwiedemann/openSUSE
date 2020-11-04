@@ -1,0 +1,15 @@
+<package name="libsoup" project="openSUSE:Factory">
+  <title>HTTP client/server library for GNOME</title>
+  <description>Libsoup is an HTTP client/server library for GNOME. It uses GObjects
+and the glib main loop, to integrate well with GNOME applications.
+
+Features:
+  * Both asynchronous (GMainLoop and callback-based) and synchronous APIs
+  * Automatically caches connections
+  * SSL Support using GnuTLS
+  * Proxy support, including authentication and SSL tunneling
+  * Client support for Digest, NTLM, and Basic authentication
+  * Server support for Digest and Basic authentication
+  * XML-RPC support</description>
+  <devel project="GNOME:Factory" package="libsoup"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="rubygem-Ascii85" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-Ascii85"/>
+</package>

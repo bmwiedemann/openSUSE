@@ -1,0 +1,6 @@
+<package name="jetty-websocket" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="jetty-minimal"/>
+  <bcntsynctag>jetty-minimal</bcntsynctag>
+</package>

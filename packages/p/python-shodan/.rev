@@ -1,0 +1,219 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7fb7139effa6010e26d05cfcf089a0e0</srcmd5>
+    <version>1.7.5</version>
+    <time>1504617530</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 1.7.5
+- fix build for leap
+- initial version
+</comment>
+    <requestid>520935</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae105d92334b36384193ad2672485953</srcmd5>
+    <version>1.7.7</version>
+    <time>1515623538</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>557847</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7eb7829170772b42ada970ccb0de9c55</srcmd5>
+    <version>1.8.0</version>
+    <time>1530304035</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.8.0:
+ * Shodan CLI now installs properly on Windows (#66)
+ * Improved output of &quot;shodan host&quot; (#64, #67)
+ * Fixed bug that prevented an open port from being shown in &quot;shodan host&quot; (#63)
+ * No longer show an empty page if &quot;shodan search&quot; didn't return results (#62)
+ * Updated docs to make them Python3 compatible
+</comment>
+    <requestid>617155</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8e71bed0b8de9c679fa077ac2174087</srcmd5>
+    <version>1.9.0</version>
+    <time>1536094459</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>628028</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5be46731f8a320f8afac15a283bb3f3f</srcmd5>
+    <version>1.10.0</version>
+    <time>1536679120</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>634548</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38c1efa8fa03c7e59fcfa1a48ea029bd</srcmd5>
+    <version>1.10.3</version>
+    <time>1539251285</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639123</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc6140caa772dc1ffc1a7cb302d8c555</srcmd5>
+    <version>1.10.4</version>
+    <time>1540987929</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>643570</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>58a23b6ac6f678170cb981eb2868b492</srcmd5>
+    <version>1.10.4</version>
+    <time>1545648235</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659672</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f260b52c073f3914e986b38b38b1c465</srcmd5>
+    <version>1.11.1</version>
+    <time>1554458218</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.11.1:
+ * Allow a single network alert to monitor multiple IP ranges (#93)
+- update to version 1.11.0:
+ * New command **shodan scan list** to list recently launched scans
+ * New command **shodan alert triggers** to list the available notification triggers
+ * New command **shodan alert enable** to enable a notification trigger
+ * New command **shodan alert disable** to disable a notification trigger
+ * New command **shodan alert info** to show details of a specific alert
+ * Include timestamp, vulns and tags in CSV converter (#85)
+ * Fixed bug that caused an exception when parsing uncompressed data files in Python3
+ * Code quality improvements</comment>
+    <requestid>687605</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>328f34067491a29d34d465691555a46d</srcmd5>
+    <version>1.12.0</version>
+    <time>1555574236</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.12.0:
+ * Add new methods to ignore/ unignore trigger notifications
+</comment>
+    <requestid>695329</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ee3aa961c97fd0228f0375035c3f4d2b</srcmd5>
+    <version>1.12.1</version>
+    <time>1556622233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697759</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5e86781324f953522277bba55faacec9</srcmd5>
+    <version>1.13.0</version>
+    <time>1557751771</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.0:
+ * New command **shodan domain** to lookup a domain in Shodan's DNS database
+ * Override environment configured settings if explicit proxy settings are supplied (@cudeso)</comment>
+    <requestid>701018</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e840a1914565596b02f79740b336520a</srcmd5>
+    <version>1.14.0</version>
+    <time>1564414209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719384</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a810274666946ce676fc0352fef43a49</srcmd5>
+    <version>1.15.0</version>
+    <time>1568190933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.0:
+  * New option --skip for the shodan download command to skip results</comment>
+    <requestid>729778</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7145ded8ca7a8b102f30e0b668643884</srcmd5>
+    <version>1.19.0</version>
+    <time>1570010443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734407</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c534b29eba11cce148c83840b39601c5</srcmd5>
+    <version>1.20.0</version>
+    <time>1575463968</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>753263</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2410a96494ee9c5db86fd9e090c55fd1</srcmd5>
+    <version>1.21.0</version>
+    <time>1577137514</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758832</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>652b268ad742e2df1a9c5c6f56ac9d48</srcmd5>
+    <version>1.21.1</version>
+    <time>1578320667</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.21.1:
+ - Add ``history`` and ``type`` parameters to ``Shodan.dns.domain_info()`` method and CLI command</comment>
+    <requestid>761126</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f768e03b1b579952836a37df16cd62e2</srcmd5>
+    <version>1.21.2</version>
+    <time>1579955132</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>767034</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e46867cfa1f895ca04c8175f1d444721</srcmd5>
+    <version>1.21.3</version>
+    <time>1581277773</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>772355</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eb7e2d1a1b35279dab71f5a85d2391e9</srcmd5>
+    <version>1.22.0</version>
+    <time>1585342877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789033</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>12b95a00908f5c118e4d1258587cec7e</srcmd5>
+    <version>1.23.0</version>
+    <time>1586869882</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>793756</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>693e577473676680b88eb1a6aa1dfeee</srcmd5>
+    <version>1.23.0</version>
+    <time>1589893119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807291</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1840dcf4b47c867cf49ed5dc0f349be1</srcmd5>
+    <version>1.23.1</version>
+    <time>1600702549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835500</requestid>
+  </revision>
+</revisionlist>

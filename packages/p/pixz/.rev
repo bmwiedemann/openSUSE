@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7306d6fa24c3fb2846c89ff25cef6f22</srcmd5>
+    <version>0.0+git20110808</version>
+    <time>1346691365</time>
+    <user>namtrac</user>
+    <comment>Parallel xz.</comment>
+    <requestid>132296</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57b6f842afde3a88bb0783c717ed8a78</srcmd5>
+    <version>0.0+git20120918</version>
+    <time>1348427367</time>
+    <user>coolo</user>
+    <comment>- Update to git snapshot c5f99bf4b4
+  * Removed pixz-link-pthread.patch, fixed upstream.
+  * 32bit fix</comment>
+    <requestid>135382</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e30ec1a656abfb8fc0b0817f140c09e8</srcmd5>
+    <version>1.0</version>
+    <time>1354177734</time>
+    <user>coolo</user>
+    <comment>- update to first official release 1.0
+  * Support streaming input, still decompressing in parallel
+  * Platform independent endian support
+  * Allow capping the number of threads (new switch -p)
+  * Add help option (-h)
+  * Write the compressed/uncompressed size into block headers (forwarded request 143388 from rudi_m)</comment>
+    <requestid>143401</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9f38c5efa957c82741ad8554c2ad262</srcmd5>
+    <version>1.0.2</version>
+    <time>1357822275</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.2
+  * Fix a crashing bug when input is incompressible
+    https://github.com/vasi/pixz/issues/10
+  * Add a man page
+  * Add tuning options -e, -q, -f
+- Add pixz-underlinking.patch to explicitly link to -lm</comment>
+    <requestid>147827</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>f9f38c5efa957c82741ad8554c2ad262</srcmd5>
+    <version>1.0.2</version>
+    <time>1359109930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>f9f38c5efa957c82741ad8554c2ad262</srcmd5>
+    <version>1.0.2</version>
+    <time>1379664035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>f7cdc5adefbce83098e7ba56a71436bd</srcmd5>
+    <version>1.0.2</version>
+    <time>1387349510</time>
+    <user>coolo</user>
+    <comment>- support building on CentOS/RHEL, statically linking against
+  libarchive and xz (pixz-use-static.patch) 
+  and patching in missing endianess functions
+  (pixz-endianess-functions.patch)</comment>
+    <requestid>211073</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f7cdc5adefbce83098e7ba56a71436bd</srcmd5>
+    <version>1.0.2</version>
+    <time>1409302708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>53a8a616ae2d49480a3308f9d5f30172</srcmd5>
+    <version>1.0.2</version>
+    <time>1414613432</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258746</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>880d08d1a80c8feddcf939bce9c0ab23</srcmd5>
+    <version>1.0.5</version>
+    <time>1443068132</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>332611</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67446ab5fb5aa1d68ed6bb14efca1a3d</srcmd5>
+    <version>1.0.6</version>
+    <time>1447882496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345086</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>830ae35ef94231a305c6288cdc8f1d6f</srcmd5>
+    <version>1.0.6</version>
+    <time>1466814159</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404098</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>5a77088596a5bd5ffefa9a18b8783779</srcmd5>
+    <version>1.0.6</version>
+    <time>1497944454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504716</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>24c920e48df22eb5335960eb482aea78</srcmd5>
+    <version>1.0.6</version>
+    <time>1591879960</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Simplify spec file</comment>
+    <requestid>813434</requestid>
+  </revision>
+</revisionlist>

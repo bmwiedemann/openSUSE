@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>402b464a8a5e5b964c4b2465431cfa56</srcmd5>
+    <version>0.5.4</version>
+    <time>1581087175</time>
+    <user>dimstar_suse</user>
+    <comment>Re-adding lutris</comment>
+    <requestid>770538</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>01f1842138c368afd4942622553b6950</srcmd5>
+    <version>0.5.4</version>
+    <time>1583227155</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781088</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64db7957ffcde797708d40c07a34a15d</srcmd5>
+    <version>0.5.5</version>
+    <time>1585760890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5:
+  * Initial support for Humble Bundle
+  * Add resolution switching support for Wayland (Mutter only)
+  * Add option to enable ACO shader compiler on Mesa &gt;= 19.3
+  * DXVK is enabled by default
+  * Add initial support for VKD3D
+  * Migrate D9VK configs to use DXVK
+  * Remove d3d10 and d3d10_1 from dlls handled by DXVK
+  * Fix an API breakage occuring with a Gtk update
+  * Add a System info tab in Preferences
+  * Better handle authentication failure for GOG
+  * Fix case issue with key lookup in Steam VDF files
+  * Add Yuzu runner
+  * Add bsnes-hd beta and smsplus libretro cores
+  * Add sound device option for Mednafen
+  * Remove bundled winetricks
+  * Remove xboxdrv integration
+- Remove lutris-0.5.4-boo1161650-remove-polkit.patch: upstreamed
+- Remove lutris-0.5.4-sort_new_with_model_fix.patch: upstreamed</comment>
+    <requestid>789981</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>085123b00474ef6f0f23f5bde19cec8e</srcmd5>
+    <version>0.5.6</version>
+    <time>1586973332</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.6:
+  * Add some wine core processes to be excluded from monitor (Fixes Battle.net
+    and Origin installation issues)
+  * Convert play time from string to float in the database. Do not downgrade
+    back to older versions or you'll experience issues.
+  * Fix for the wine sandbox on non English systems
+  * Allow Citra and MAME to be launched as standalone programs
+  * Avoid a crash if ldconfig -p returns corrupt data
+  * Allow custom messages to be displayed at the end of install scripts
+  * Add option to provide alternate config file for PCSX2 games
+  * Fix issue with usernames containing accented characters
+  * Fix &quot;Restrict to display&quot; option on Wayland/Mutter
+  * Fix blurry icons on KDE
+  * Remove broken translation files (until internationalization is done properly)
+  * Switch source of DXVK builds to Lutris' own (allows Lutris to delay broken
+    DXVK releases and ship custom ones)</comment>
+    <requestid>794008</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60f06c339e5ab41742498b3c463a029d</srcmd5>
+    <version>0.5.7</version>
+    <time>1594045823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.7:
+  * Use Meson and Ninja to build translation files
+  * Improve Debian package compliance with standards
+  * Add translation strings for the code base
+  * Set a default directory to manually added games,
+    allowing to remove them
+  * Deprecate MESS runner
+  * Migrate all MESS games to MAME
+  * Get full supported system list from the XML given by MAME
+  * Allow to run MAME games by ID if the ROM path is set
+  * Add a no-GUI option to RPCS3
+  * Fix GalliumNine conflicts with DXVK
+  * Improve performance of DirectX 12 games running on AMD GPU by
+    setting RADV_DEBUG=zerovram
+  * Code style fixes. Pylint is now used in the Travis checks.</comment>
+    <requestid>818830</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>771481debef2316c52541bda3cc65cf6</srcmd5>
+    <version>0.5.7.1</version>
+    <time>1595271772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.7.1:
+  * Provide D3D12.DLL, based on vkd3d3-proton project
+   (https://github.com/HansKristian-Work/vkd3d-proton),
+   as part of our DXVK runtime. This will help push updates faster
+   and provide better compatibility for Direct3D 12 titles such as
+   World of Warcraft.</comment>
+    <requestid>821824</requestid>
+  </revision>
+</revisionlist>

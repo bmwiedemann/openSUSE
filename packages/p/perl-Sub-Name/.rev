@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b290ca2663713d2b6837cf83c0cf889</srcmd5>
+    <version>0.04</version>
+    <time>1249916562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8b290ca2663713d2b6837cf83c0cf889</srcmd5>
+    <version>0.04</version>
+    <time>1249916562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1f732d39a53c8b3136baeb6c7580934c</srcmd5>
+    <version>0.04</version>
+    <time>1263294836</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Name based on submit request 29255 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6e9d3777c250ab315f29a9c5423923f0</srcmd5>
+    <version>0.04</version>
+    <time>1268832324</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Name based on submit request 35009 from user computersalat
+</comment>
+    <requestid>35009</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>76753435f9c8b93c872d8e6f815662b3</srcmd5>
+    <version>0.04</version>
+    <time>1268925609</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>76753435f9c8b93c872d8e6f815662b3</srcmd5>
+    <version>0.04</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>76753435f9c8b93c872d8e6f815662b3</srcmd5>
+    <version>0.04</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>abfb24f09aef3fb1058ae076902d511e</srcmd5>
+    <version>unknown</version>
+    <time>1284126621</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Sub-Name based on submit request 47549 from user computersalat
+</comment>
+    <requestid>47549</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>75d84c91722bbfca708d2312a9df8cb0</srcmd5>
+    <version>0.05</version>
+    <time>1291583915</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54647 from user coolo
+</comment>
+    <requestid>54647</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>8b3845ddff784e70a974547e0f3669d0</srcmd5>
+    <version>0.05</version>
+    <time>1291583928</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54647
+</comment>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>8b3845ddff784e70a974547e0f3669d0</srcmd5>
+    <version>0.05</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>ed2112896e6cae232c4c0083c948882f</srcmd5>
+    <version>0.05</version>
+    <time>1314190687</time>
+    <user>saschpe</user>
+    <comment>- Fixed summary and description
+
+- updated to 0.05</comment>
+    <requestid>79587</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>09d9635d9ab3dd71aacdf57348040604</srcmd5>
+    <version>0.05</version>
+    <time>1314190696</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79587
+</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>09d9635d9ab3dd71aacdf57348040604</srcmd5>
+    <version>0.05</version>
+    <time>1319182307</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>304d7ad040535b729f3cdd8879f33d30</srcmd5>
+    <version>0.05</version>
+    <time>1323193652</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="22">
+    <srcmd5>304d7ad040535b729f3cdd8879f33d30</srcmd5>
+    <version>0.05</version>
+    <time>1340183921</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="24">
+    <srcmd5>304d7ad040535b729f3cdd8879f33d30</srcmd5>
+    <version>0.05</version>
+    <time>1359109800</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="25">
+    <srcmd5>72dd60ce6811f16d7ec42cb8f1a64ffa</srcmd5>
+    <version>0.05</version>
+    <time>1362120298</time>
+    <user>coolo</user>
+    <comment>ciaran wants it with 'or' now</comment>
+    <requestid>156751</requestid>
+  </revision>
+  <revision rev="19" vrev="27">
+    <srcmd5>72dd60ce6811f16d7ec42cb8f1a64ffa</srcmd5>
+    <version>0.05</version>
+    <time>1379663848</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>98a4ad0210c888f93213ad1a3c0a7c75</srcmd5>
+    <version>0.07</version>
+    <time>1406360522</time>
+    <user>coolo</user>
+    <comment>- updated to 0.07
+     - skip optional test if B::C 1.48 is not installed (Reini Urban)
+ 
+ 0.06 -- 2014-07-10
+     * Do not change the string arg in XS, use copy instead. Fixes perlcc -O3
+       RT#96893 (Reini Urban)
+     * add README make target
+     * add more distribution metadata</comment>
+    <requestid>242331</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>98a4ad0210c888f93213ad1a3c0a7c75</srcmd5>
+    <version>0.07</version>
+    <time>1409302490</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7bbe2867dfa93a947afbe91fd53bc427</srcmd5>
+    <version>0.12</version>
+    <time>1412100579</time>
+    <user>coolo</user>
+    <comment>- updated to 0.12
+     - fix licence in LICENSE and pod
+ 
+ 0.11      2014-08-20 04:44:25Z (TRIAL RELEASE)
+     - move variable declaration to fix warning under
+       -Werror=declaration-after-statement, to allow compilation under MSVC
+       (J.R.Mash, github #3)
+ 
+ 0.10      2014-08-16 00:46:35Z (TRIAL RELEASE)
+     - converted distribution packaging to Dist::Zilla
+ 
+ 0.09      2014-08-09
+     - Copy the contents of the %DB::sub entry if it exists; fixes
+       Devel::NYTProf's anon sub handling (RT#50524, ilmari)
+ 
+ 0.08      2014-08-04
+     - Fix leak when setting a fully-qualified name (ilmari, github#1)</comment>
+    <requestid>250226</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>107558c7d8b82b2e3ec6149fa6d8b56f</srcmd5>
+    <version>0.13</version>
+    <time>1429346381</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297272</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aa6c864f7d48930cef99b26fc10453a6</srcmd5>
+    <version>0.14</version>
+    <time>1429948458</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>303822</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>63340bbe549f9dc39901f9832f9fa842</srcmd5>
+    <version>0.15</version>
+    <time>1461334996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>378501</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3fc6142d63c3fc54547e00481317fa72</srcmd5>
+    <version>0.19</version>
+    <time>1471855804</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420456</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2879ae2514da47fb93b34abf529857d0</srcmd5>
+    <version>0.21</version>
+    <time>1476113258</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>433439</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5c3736ac7b588137f5a25f2c1b9ecec8</srcmd5>
+    <version>0.26</version>
+    <time>1570701145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736088</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="netty-tcnative" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="netty-tcnative"/>
+</package>

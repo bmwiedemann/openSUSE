@@ -1,0 +1,5 @@
+<package name="python-xkbgroup" project="openSUSE:Factory">
+  <title>python-xkbgroup</title>
+  <description>Python library to query and change XKB layout state</description>
+  <devel project="devel:languages:python" package="python-xkbgroup"/>
+</package>

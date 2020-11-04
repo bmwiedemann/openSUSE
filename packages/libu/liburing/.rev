@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1975f7e2ad0a674eb7aa4e030a844e03</srcmd5>
+    <version>0.2</version>
+    <time>1574859449</time>
+    <user>dimstar_suse</user>
+    <comment>liburing native async IO for the Linux kernel, in a fast and efficient manner, for both buffered and O_DIRECT.</comment>
+    <requestid>751263</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>932a6b1be203d4393a286bd09e2f5153</srcmd5>
+    <version>0.2</version>
+    <time>1575039532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751545</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>608e9d0ebd39a44b3e616fc2ac085325</srcmd5>
+    <version>0.2</version>
+    <time>1576189178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756024</requestid>
+  </revision>
+</revisionlist>

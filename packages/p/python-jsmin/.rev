@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a056527b43b2b0ff497f6ac41e980a90</srcmd5>
+    <version>2.2.2</version>
+    <time>1575282845</time>
+    <user>dimstar_suse</user>
+    <comment>- New python dependency required for new azure-cli</comment>
+    <requestid>752693</requestid>
+  </revision>
+</revisionlist>

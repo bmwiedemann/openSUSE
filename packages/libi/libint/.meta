@@ -1,0 +1,5 @@
+<package name="libint" project="openSUSE:Factory">
+  <title>libint</title>
+  <description>a library for the evaluation of molecular integrals of many-body operators over Gaussian functions</description>
+  <devel project="science" package="libint"/>
+</package>

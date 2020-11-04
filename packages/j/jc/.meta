@@ -1,0 +1,9 @@
+<package name="jc" project="openSUSE:Factory">
+  <title>JSON CLI output utility</title>
+  <description>jc is used to JSONify the output of many standard linux cli tools
+and file types for easier parsing in scripts.
+
+</description>
+  <devel project="utilities" package="jc"/>
+  <url>https://github.com/kellyjonbrazil/jc</url>
+</package>

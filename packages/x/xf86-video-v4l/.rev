@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f39098b7fd50f52b4125c1400fc76272</srcmd5>
+    <version>0.2.0</version>
+    <time>1470413764</time>
+    <user>dimstar_suse</user>
+    <comment>fixed build for latest xorg-server ...</comment>
+    <requestid>412811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97985322c0dec711116230cdedfa0a28</srcmd5>
+    <version>0.3.0</version>
+    <time>1534543593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0
+  * This long overdue release features build compatibility with
+    newer X servers and support for v4l2 devices.
+- supersedes patches:
+  * n_added-definition-of-VIDEO_INVERT_CLIPLIST.patch
+  * n_added-defines-for-xalloc-xrealloc.patch</comment>
+    <requestid>629906</requestid>
+  </revision>
+</revisionlist>

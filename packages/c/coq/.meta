@@ -1,0 +1,7 @@
+<package name="coq" project="openSUSE:Factory">
+  <title>The Coq Proof Assistant</title>
+  <description>Coq is a proof assistant which allows to handle calculus assertions, check mechanically proofs of these assertions, helps to find formal proofs and extracts a certified program from the constructive proof of its formal specification.
+
+</description>
+  <devel project="science" package="coq"/>
+</package>

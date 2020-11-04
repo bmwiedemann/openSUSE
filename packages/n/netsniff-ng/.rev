@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4ab0cfc95db2bc886c52e99b2f9110b</srcmd5>
+    <version>0.6.3</version>
+    <time>1503593305</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain netsniff-ng in Factory</comment>
+    <requestid>515160</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b2fc0f9aa9a6bbfd0e6f8f0d3a28f794</srcmd5>
+    <version>0.6.4</version>
+    <time>1515506031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562316</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8455cd474e4bad5881c368a9efbdda88</srcmd5>
+    <version>0.6.4</version>
+    <time>1542666638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649353</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e8877d7038be695f2d7073b0d87ebee</srcmd5>
+    <version>0.6.6</version>
+    <time>1560970611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702481</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2608313031cc48e6c9f8912343bce770</srcmd5>
+    <version>0.6.6</version>
+    <time>1573422465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747189</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58e7d2d0d8650766c09cf27593baefd5</srcmd5>
+    <version>0.6.7</version>
+    <time>1590506470</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808095</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1c72c8f42c62a5c3be8f62853aedbf13</srcmd5>
+    <version>0.6.7</version>
+    <time>1592840724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816046</requestid>
+  </revision>
+</revisionlist>

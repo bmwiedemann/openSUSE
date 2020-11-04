@@ -1,0 +1,204 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>3d66d6a99b7556937f33b8eff0044dc0</srcmd5>
+    <version>1.0.0</version>
+    <time>1226460568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>b6c4c5e76d9c2ac80eabc2f739fd0861</srcmd5>
+    <version>1.0.0</version>
+    <time>1227880578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd53fb8e63b873ce57619f88c2637ced</srcmd5>
+    <version>1.0.2</version>
+    <time>1246694095</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>77e9c3556612876015f762092ac48790</srcmd5>
+    <version>1.0.2</version>
+    <time>1247500444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>77e9c3556612876015f762092ac48790</srcmd5>
+    <version>1.0.2</version>
+    <time>1247500444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>8618bfc92176592408a7a888297c6945</srcmd5>
+    <version>1.0.2</version>
+    <time>1261824760</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/dirac based on submit request 27609 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>17365df8af312d9df963601e9ccc03a1</srcmd5>
+    <version>1.0.2</version>
+    <time>1268923343</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>3afdd36e7016ecb62385902b99821ca2</srcmd5>
+    <version>1.0.2</version>
+    <time>1273681369</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/dirac based on submit request 39695 from user plater
+</comment>
+    <requestid>39695</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>723eb06031cf04391f6ff0a033207f44</srcmd5>
+    <version>1.0.2</version>
+    <time>1274789404</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/dirac based on submit request 40589 from user plater
+</comment>
+    <requestid>40589</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>723eb06031cf04391f6ff0a033207f44</srcmd5>
+    <version>1.0.2</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>723eb06031cf04391f6ff0a033207f44</srcmd5>
+    <version>1.0.2</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>723eb06031cf04391f6ff0a033207f44</srcmd5>
+    <version>1.0.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>1eddab815b66011f3a2bdaaf9620c6ca</srcmd5>
+    <version>1.0.2</version>
+    <time>1315908589</time>
+    <user>saschpe</user>
+    <comment>   
+- added 32bit compatibility libraries</comment>
+    <requestid>81893</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>4ffac470f5973f8bb56ca1fd34706628</srcmd5>
+    <version>1.0.2</version>
+    <time>1315908597</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81893
+</comment>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>6dc3022a0ccf6b907042b99946823cc5</srcmd5>
+    <version>1.0.2</version>
+    <time>1316443335</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+- Add dirac-devel to baselibs (forwarded request 83259 from jengelh)</comment>
+    <requestid>83374</requestid>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>566bc3db57bf525c38742177558d1f37</srcmd5>
+    <version>1.0.2</version>
+    <time>1317626155</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85986 from coolo)</comment>
+    <requestid>86095</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>566bc3db57bf525c38742177558d1f37</srcmd5>
+    <version>1.0.2</version>
+    <time>1319181849</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>503c15c60a1bbacca3479782883083c7</srcmd5>
+    <version>1.0.2</version>
+    <time>1323961542</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96090 from coolo)</comment>
+    <requestid>96096</requestid>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>503c15c60a1bbacca3479782883083c7</srcmd5>
+    <version>1.0.2</version>
+    <time>1340183281</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>39ca1fe3891b60e18cf5ed956a4beba2</srcmd5>
+    <version>1.0.2</version>
+    <time>1356096912</time>
+    <user>coolo</user>
+    <comment>- buildrequire pkg-config regardless of build-architecture (forwarded request 145950 from oertel)</comment>
+    <requestid>146116</requestid>
+  </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>39ca1fe3891b60e18cf5ed956a4beba2</srcmd5>
+    <version>1.0.2</version>
+    <time>1359108814</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="28">
+    <srcmd5>39ca1fe3891b60e18cf5ed956a4beba2</srcmd5>
+    <version>1.0.2</version>
+    <time>1379662228</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="29">
+    <srcmd5>639d82570556ec2cb92043dc3219baea</srcmd5>
+    <version>1.0.2</version>
+    <time>1386936247</time>
+    <user>coolo</user>
+    <comment>valgrind can optionally indeed be used by the developer of the
+package to run the testsuite in a special mode.  The testsuite
+isn't run at all during package build and doing that in valgrind
+mode wouldn't be particularly appropriate anyway.
+Via gstreamer-plugins--&gt;cheese there's a dependency
+on dirac from gnome-control-center, and it seems even more inappropriate
+to delay building that one until valgrind built on any architecture.
+Please forward to factory.
+
+- Don't buildrequire valgrind-devel anywhere, it's unused. (forwarded request 209773 from matz2)</comment>
+    <requestid>210639</requestid>
+  </revision>
+  <revision rev="24" vrev="31">
+    <srcmd5>639d82570556ec2cb92043dc3219baea</srcmd5>
+    <version>1.0.2</version>
+    <time>1409300766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="32">
+    <srcmd5>25dc265c4be5940a5f1ae8dcd8211339</srcmd5>
+    <version>1.0.2</version>
+    <time>1432885834</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308825</requestid>
+  </revision>
+  <revision rev="26" vrev="33">
+    <srcmd5>e96485b15e5a115091694e907d844f0f</srcmd5>
+    <version>1.0.2</version>
+    <time>1499754872</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508148</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="libsoundio" project="openSUSE:Factory">
+  <title>A C99 library for realtime audio input/output</title>
+  <description>This library is an abstraction; however in the delicate balance between
+performance and power, and API convenience, the scale is tipped closer to
+the former. Features that only exist in some sound backends are exposed.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="libsoundio"/>
+  <url>https://libsound.io/</url>
+</package>

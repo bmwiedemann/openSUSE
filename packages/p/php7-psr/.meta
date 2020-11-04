@@ -1,0 +1,5 @@
+<package name="php7-psr" project="openSUSE:Factory">
+  <title>PSR Extension Module</title>
+  <description>This extension provides the accepted PSR interfaces, so they can be used in an extension.</description>
+  <devel project="server:php:extensions:php7" package="php7-psr"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3810f99f5590eca0d79218d10bbb08f6</srcmd5>
+    <version>44.0.0</version>
+    <time>1586368467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791933</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>68a75d5bf17b06fcf872f976dfd3aab1</srcmd5>
+    <version>44.0.0</version>
+    <time>1587581679</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix using update_alternatives.</comment>
+    <requestid>796056</requestid>
+  </revision>
+</revisionlist>

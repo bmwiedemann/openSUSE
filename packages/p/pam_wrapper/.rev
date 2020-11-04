@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94a2fe2a164684d98c4832cf2e050848</srcmd5>
+    <version>1.0.1</version>
+    <time>1455790019</time>
+    <user>dimstar_suse</user>
+    <comment>This is pam_wrapper an new tool of https://cwrap.org to test PAM modules or PAM applications.</comment>
+    <requestid>354815</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b14e0f5cce14a26e7aa6b50f4d457315</srcmd5>
+    <version>1.0.1</version>
+    <time>1456521556</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>361460</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c0722d56339bc2969c997c43aa9db9b5</srcmd5>
+    <version>1.0.2</version>
+    <time>1465481541</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>400384</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9910d41752c0ceb09546bdd94a21da0</srcmd5>
+    <version>1.0.3</version>
+    <time>1491896807</time>
+    <user>maxlin_factory</user>
+    <comment>Update to bugfix release 1.0.3.</comment>
+    <requestid>486451</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>370ee788ac1a6d3eb999600ac276315d</srcmd5>
+    <version>1.0.3</version>
+    <time>1518601916</time>
+    <user>dimstar_suse</user>
+    <comment>- Build python2 and python3 packages
+- Added pam_wrapper-1.0.3-build-python2-and-python3-modules.patch
+- Add missing build require to python-rpm-macros
+</comment>
+    <requestid>576310</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8102712646b429f2bd7fdaedb0626c1</srcmd5>
+    <version>1.0.5</version>
+    <time>1519396189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * Added support to build python2 and python3 module at the same time
+  * Improved pam test directory creating
+  * Fixed python 2.6 compatibilty
+  * Fixed some build issues on FreeBSD
+  * Fix build on OpenBSD
+  * Fix a resource leak
+- Removed pam_wrapper-1.0.3-build-python2-and-python3-modules.patch
+</comment>
+    <requestid>579098</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4dc607df271231dbec20917c0d73a48</srcmd5>
+    <version>1.0.7</version>
+    <time>1538672502</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639759</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0385544ad20ce8273012ff4172138aac</srcmd5>
+    <version>1.0.7</version>
+    <time>1564137547</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>717828</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>58cc13b312668e3ba86d7f11d30e9bfc</srcmd5>
+    <version>1.0.7</version>
+    <time>1575923845</time>
+    <user>dimstar_suse</user>
+    <comment>Fix pam_wrapper with Linux-PAM master
+
+</comment>
+    <requestid>755277</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>69fab4f86b7c53c130ea6dd8d682736a</srcmd5>
+    <version>1.0.7</version>
+    <time>1584643907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786397</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>918cabff44b36ae8cf52dbab5420e490</srcmd5>
+    <version>1.1.2</version>
+    <time>1585085820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+- Update to version 1.1.1
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+- Update to version 1.1.0
+  * Added support for pam_start_confdir()
+  * Added pam_chatty module
+  * Added gitlab CI support
+  * Fixed crash when a PAM module outputs too much data
+- Removed pam_wrapper-1.0.8-fix_with_latest_pam.patch
+- Removed fix-pam-module-output-crash.patch
+</comment>
+    <requestid>787816</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>43df92e5a405376091c3bcc26cad4dec</srcmd5>
+    <version>1.1.3</version>
+    <time>1585262091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3
+  * https://gitlab.com/cwrap/pam_wrapper/-/blob/master/CHANGELOG
+</comment>
+    <requestid>788579</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>edc585cdc36183846fd8b95cefa1a6b6</srcmd5>
+    <version>1.1.3</version>
+    <time>1589993207</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the build (remove py2 lib if built without py2 support)
+</comment>
+    <requestid>807457</requestid>
+  </revision>
+</revisionlist>

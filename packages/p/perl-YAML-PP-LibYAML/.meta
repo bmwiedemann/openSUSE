@@ -1,0 +1,5 @@
+<package name="perl-YAML-PP-LibYAML" project="openSUSE:Factory">
+  <title>YAML::PP::LibYAML - Faster parsing for YAML::PP</title>
+  <description>YAML::PP::LibYAML is a subclass of YAML::PP. Instead of using YAML::PP::Parser as a the backend parser, it uses YAML::PP::LibYAML::Parser which calls YAML::LibYAML::API, an XS wrapper around the C libyaml.</description>
+  <devel project="devel:languages:perl" package="perl-YAML-PP-LibYAML"/>
+</package>

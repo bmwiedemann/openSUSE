@@ -1,0 +1,10 @@
+<package name="perl-Test-Memory-Cycle" project="openSUSE:Factory">
+  <title>Check for memory leaks and circular memory references</title>
+  <description>Perl's garbage collection has one big problem: Circular references can't 
+get cleaned up. A circular reference can be as simple as two reference 
+that refer to each other.
+
+Test::Memory::Cycle is built on top of Devel::Cycle to give you an easy 
+way to check for these circular references.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Memory-Cycle"/>
+</package>

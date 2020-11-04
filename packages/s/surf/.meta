@@ -1,0 +1,6 @@
+<package name="surf" project="openSUSE:Factory">
+  <title>Algebraic geometry visualizer</title>
+  <description>surf is a tool to visualize some real algebraic geometry: plane algebraic curves, algebraic surfaces and hyperplane sections of surfaces. surf is script driven and has (optionally) a nifty GUI using the Gtk widget set.
+  </description>
+  <devel project="science" package="surf"/>
+</package>

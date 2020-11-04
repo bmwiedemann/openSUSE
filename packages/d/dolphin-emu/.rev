@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06a403bee5c312f8f4893aac6e7e4968</srcmd5>
+    <version>5.0+git.1579717236.ea9b96370d</version>
+    <time>1579791244</time>
+    <user>dimstar_suse</user>
+    <comment>Exclude some stuff to help licensedigger</comment>
+    <requestid>766513</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f6052165c4642bf061e3ca0d78854bf</srcmd5>
+    <version>5.0+git.1580163603.57f4837e4d</version>
+    <time>1580300165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1580163603.57f4837e4d:
+  * DolphinQt/GCMemcardManager: Make use of QLatin1Char within GetErrorMessagesForErrorCode()
+  * DolphinQt/GCMemcardManager: Mark string as translatable within GetErrorMessagesForErrorCode()
+  * DolphinQt/GameConfigWidget: Remove unimplemented EditUserConfig() member function
+  * DolphinQt/GameConfigEdit: Remove unimplemented SetReadOnly() member function
+  * DolphinQt/MainWindow: Surround prototype of OnSignal() with relevant ifdef
+  * DolphinQt/NetPlayDialog: Remove unimplemented SetGame() prototype
+  * VertexLoaderX64: Don't use PDEP on AMD Zen
+  * Jit64: Don't use PEXT in DoubleToSingle on AMD Zen
+  * x64CPUDetect: Add flag for slow PDEP/PEXT on AMD Zen
+  * x64CPUDetect: Add detection for AMD Zen architecture
+  * DolphinQt/TASCheckBox: Mark GetValue() as const
+  * Translation resources sync with Transifex
+  * Common/Analytics: Replace mutex with shared_mutex and minor cleanups.
+  * VolumeVerifier: Report read errors to the user
+  * IOS/ES: Remove now unnecessary title sorting hack
+  * UnitTests/FS: Improve deletion test
+  * Tools: Add a small Python tool to print FSTs
+  * UnitTests/FS: Add ReadDirectory ordering test (issue 10234)
+  * UnitTests/FS: Fix file rename tests
+  * UnitTests/FS: Add path validity and splitting tests
+  * UnitTests/FS: Add metadata tests
+  * IOS/FS: Actually implement SetMetadata
+  * IOS/FS: Implement GetMetadata properly and remove GID hack
+  * IOS/FS: Implement ReadDirectory properly and remove sorting hack
+  * IOS/FS: Implement Rename properly
+  * IOS/FS: Implement Delete properly
+  * IOS/FS: Implement CreateFile and CreateDir properly
+  * Core: Fix a few misuses of FS::CreateDirectory
+  * IOS/FS: Implement Format properly</comment>
+    <requestid>768003</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d742306ab54cfa56bbe1da90927f584</srcmd5>
+    <version>5.0+git.1580849962.a205ecb446</version>
+    <time>1581087189</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1580849962.a205ecb446:
+  * Common: Amend includes to handle the upgrade to fmt
+  * Core: Amend includes to handle the upgrade to fmt
+  * VideoCommon: Amend formatting code to handle the upgrade to fmt
+  * Externals: Update fmt to 6.1.2
+  * Report use of DI interrupt mask commands as a game quirk
+  * WiimoteEmu: Fix default IMU accelerometer mappings.
+  * Fix assignment of DI interrupt mask ioctls
+  * Translation resources sync with Transifex
+  * Android: Fix typo in Skip Presenting Duplicate Frames setting name
+  * Vulkan: Treat VK_SUBOPTIMAL_KHR as VK_SUCCESS on Android
+  * Vulkan: Log when a swap chain resize is occurring
+  * IOS/FS: Fix CreateFullPath to not create directories that already exist
+  * WiiRoot: Fix CopySysmenuFilesToFS directory creation
+  * ButtonManager: Fix handling of empty device id.
+  * ControllerInterface/DSUClient: Eliminate m_accl/m_gyro state by accessing the pad data directly like every other input.</comment>
+    <requestid>770555</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e3731f20a6757a8fd48f5d4915eb260</srcmd5>
+    <version>5.0+git.1581377336.a9dc4ac3f0</version>
+    <time>1581694630</time>
+    <user>okurz-factory</user>
+    <comment>Now without the holy sin.
+
+- Update to version 5.0+git.1581377336.a9dc4ac3f0:
+  * InputCommon: Clean up creation of inputs.
+  * InputCommon: Only update setting expressions when the input gate is enabled.
+  * Update to Qt 5.14.1
+  * VolumeVerifier: Ignore invalid partitions in GetBiggestReferencedOffset
+  * Fix VolumeVerifier not showing a problem for invalid partitions
+  * InputCommon: Eliminate some duplicated button threshold logic.
+  * Fix another implicit false-to-nullptr conversion
+  * DiscIO: Check for DirectoryBlob seek failure
+  * DolphinQt/Debugger: Fix crash with floating debugger windows
+  * CMake: add DOLPHIN_CXX_FLAGS option
+  * Cleanup: Use std::abs instead of abs.
+  * InputCommon: Allow Wii remote extension to be set with an input expression.
+  * InputCommon: XInput cleanups.
+  * InputCommon: Expose XInput battery level as an input.
+  * InputCommon: Allow controller settings specified with input expresions.
+  * DolphinQt: Kill some unused member variables.
+  * DolphinQt: Fix stereoscopy hotkeys.
+  * DolphinQt: setTabKeyNavigation(false) on QTableWidget and QTableView.
+  * Core/NetPlayClient: Add documentation for SendPadHostPoll
+  * DolphinQt/Mapping: Change &quot;Dead Zone&quot; color from shadow color of
+    palette to a transparent black or white depending on theme.
+    Tweak order of &quot;shake&quot; indicator axis colors so red is more often shown.
+  * VolumeVerifier: Don't return early when file is too small
+  * VolumeVerifier: Don't show an assert for files that are too small
+  * Core/Jits: Adds an option to disable the register cache.</comment>
+    <requestid>774162</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>41a4c1840c1ce13351182644584e1c61</srcmd5>
+    <version>5.0+git.1582525609.25d5f0d9ef</version>
+    <time>1582556093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1582525609.25d5f0d9ef:
+  * InputCommon: Constify Device::Input::IsDetectable function.
+  * Translation resources sync with Transifex
+  * Qt/TAS: Improve TAS windows
+  * InputCommon: Remove Wii Remote real-time calibration of M+ in favor of functionality provided by ControllerEmu.
+  * InputCommon: Add real Wii Remote support to ControllerInterface. Add option to connect additional Wii Remotes.
+  * InputCommon/ControllerInterface: Make devices mutex recursive so RemoveDevice can be used within UpdateInput.
+  * Core/WiimoteEmu: Add functions to Nunchuk, Classic Controller, and MotionPlus extensions to get/set data without duplicate bithacks everywhere.
+  * InputCommon: Add types to ControllerEmu that represent raw controller inputs and calibration data to calculate normalized input values.
+  * Common: Add additional Vector operations.
+  * InputCommon: Add calibration functionality to IMUGyroscope.
+  * MathUtil: Add RunningMean/RunningVariance classes.
+  * InputCommon: Add &quot;Dead Zone&quot; setting to raw gyro inputs.
+  * Windows GUI: Use QMenu font (Segoe UI) for entire application
+  * Common: Avoid std::function overhead in ScopeGuard
+  * Core/GeckoCodeConfig : Fix Gecko codes formatting
+  * CMake: Fix building ARM64 on Windows</comment>
+    <requestid>778733</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94538562f92d79c10bdf15b405570b38</srcmd5>
+    <version>5.0+git.1583642222.c507370ba2</version>
+    <time>1583763787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1583642222.c507370ba2:
+  * AudioPane: Do not enable Dolby Pro Logic II quality slider if DPLII is disabled
+  * Resources: Make dolphin_logo.png square
+  * Source/Core/Core/DSP/DSPTables.cpp: include &lt;cstdio&gt; for sprintf
+  * Source/Core/Common/StringUtil.h: include &lt;limits&gt; for std::numeric_limits
+  * Used whole path instead of relative path
+  * Add path to File Name column of game grid Fixes https://bugs.dolphin-emu.org/issues/10567
+
+- Update to version 5.0+git.1582988926.1add30994b:
+  * Translation resources sync with Transifex
+  * HW/WiimoteEmu: Fix Classic Controller triggers.
+  * Qt: Re-enable Dark Mode support
+  * DolphinQt: Tweak indicator raw-input/input-shape color for better contrast in some dark themes.
+  * DolphinQt: Eliminiate redundant swing indicator logic.
+  * DolphinQt: Clean up mapping indicator code and draw lines on &quot;pixel centers&quot;.
+  * DolphinQt: Eliminate redundant cursor indicator logic.
+  * DolphinQt: Break mapping indicators into separate classes. Ensure &quot;state lock&quot; is held on redraw.
+  * InputCommon: Remove racy UpdateInput call in DetectInput.
+  * InputCommon: Mark GetStateLock with [[nodiscard]] and fix discarding calls.</comment>
+    <requestid>782950</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b20afc9257b43362887307e52066b332</srcmd5>
+    <version>5.0+git.1585813619.4ff855921e</version>
+    <time>1585995832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1585813619.4ff855921e:
+  * Android: Force an AppCompat theme in the analytics AlertDialog
+  * Translation resources sync with Transifex
+  * Translation resources sync with Transifex
+  * Android: Don't let onSettingChanged clobber ConfirmRunnable changes
+  * Cleanup warnings of -Wunused-lambda-capture
+  * use s_ prefix for local variables
+  * Fix build with Qt 5.15+
+  * Wiimote: Cleanup warnings of -Wmissing-variable-declarations
+  * NoGUI: missing override keyword GetWindowSystemInfo
+  * Cleanup warnings of -Wpessimizing-move
+  * Cleanup warnings of -Wunused-const-variable
+  * InputCommon: cleanup warnings of -Wclass-memaccess
+  * Cleanup warnings of -Wunused-variable
+  * DiscIO: cleanup warnings of -Wmaybe-uninitialized
+  * Android: Don't use SettingsAdapter's static state in file picker
+  * Android: Add Paths to UI
+  * Parse arguments before Qt
+  * Qt/CodeWidget: Typo in settings key.
+  * SettingsHandler: Always decode the whole settings.txt file
+  * Qt/GameListModel: Use native separators in File Path column
+  * Boot: Change pre-defined setting.txt CODE values
+  * Android: add lighter accent color for dark mode
+  * Qt/CodeViewWidget: Make columns resizable by the user and set sensible defaults.
+  * Translation resources sync with Transifex
+  * Android/JNI: Remove odd usage of the comma operator
+  * Fix Load Wii System Menu not updating after performing a disc update
+  * DolphinQt: Fix gyro mapping indicator's &quot;jitter&quot; drawing.
+  * Core/HotkeyManager: Fix group names in config
+  * Android: Set up Day/Night mode for system-compatible optional dark theme</comment>
+    <requestid>791195</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3a06b9679e208d6b4a0734640ceae8f6</srcmd5>
+    <version>5.0+git.1586380832.9a2d8a9623</version>
+    <time>1586466944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.1586380832.9a2d8a9623:
+  * Vulkan: Switch from vkCreateMacOSSurfaceMVK() to vkCreateMetalSurfaceEXT()
+  * Externals: Update MoltenVK to SDK version 1.2.131.2
+  * DolphinQt: Fix the panic alert deadlock (a.k.a. &quot;Question&quot; issue)</comment>
+    <requestid>792630</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f005c8fabaf61e4b18ee8ba419e873df</srcmd5>
+    <version>5.0+git.20200427T203812.7a77abb815</version>
+    <time>1588105811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.20200427T203812.7a77abb815:
+  * Debugger: Add a Network widget
+  * Android: Use touch emulation of IR by default
+  * Don't defer EFB Copies to RAM - PMTTYD Issues
+  * VolumeVerifier: Show desync warning for dual layer discs too
+  * Externals: Add libLZMA.
+  * Externals: Add bzip2.
+  * DiscIO: Use a struct for Wii hashes
+  * DiscIO: Parallelize the re-encryption code
+  * DiscIO: Implement re-encryption of Wii partition data
+  * DiscIO: Use partition data offset for ReadWiiDecrypted parameter
+  * Analytics: Report correct quirk for mismatched xf/bp colors
+  * Android: Run installWAD on separate thread
+  * Android: Add Install WAD to menu_game_grid
+  * Socket: Abort pending operations on close
+  * Jit64: subfx - Use LEA when possible
+  * Jit64: addx - Skip ADD after MOV when possible
+  * Jit64: addx - Prefer smaller MOV+ADD sequence
+  * Jit64: addx - Emit MOV when possible
+  * Jit64: addx - Emit nothing when possible
+  * Jit64: addx - Deduplicate branches part 2
+  * Jit64: addx - Deduplicate branches part 1
+  * Remove unnecessary EFB to Texture disabling for Spider-Man 2
+  * WiimoteEmu: Rename some variables from &quot;cursor&quot; to &quot;point&quot;.
+  * WiimoteEmu: Apply &quot;Tilt&quot; rotations separately and before those of &quot;Point&quot; and &quot;Swing&quot; for proper tilted pointing.
+  * IOS/FS: Fix FST write failure on some platforms
+  * Translation resources sync with Transifex
+  * Android: Set Insert SD Card default setting to true
+  * DiscIO: Clean up decompression size calculation
+  * Qt/Debugger: Refresh windows on savestate load.</comment>
+    <requestid>798519</requestid>
+  </revision>
+</revisionlist>

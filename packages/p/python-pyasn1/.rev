@@ -1,0 +1,356 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c077e297b58a0ef21dce5ceb064db6ea</srcmd5>
+    <version>0.0.13</version>
+    <time>1314891288</time>
+    <user>darix</user>
+    <comment>Replaces python-asn1</comment>
+    <requestid>80429</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1012d48706a6075712a19a3ed7efa59f</srcmd5>
+    <version>0.0.13</version>
+    <time>1314891299</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 80429
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1012d48706a6075712a19a3ed7efa59f</srcmd5>
+    <version>0.0.13</version>
+    <time>1319182401</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1cd20491722a6e163af4e28b3ca9c1be</srcmd5>
+    <version>0.1.1</version>
+    <time>1321274158</time>
+    <user>coolo</user>
+    <comment>Update pyasn1 to 0.1.1, required for pysnmp. Current pysnmp doesnt work with 0.0.13 that avaliable in repository now (forwarded request 90507 from HighwayStar)</comment>
+    <requestid>90508</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e89b045ee96e08697d5d4055b62ba6c3</srcmd5>
+    <version>0.1.1</version>
+    <time>1323440718</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 95973 from coolo)</comment>
+    <requestid>95984</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a86a1b9c457de43cb97f40a10f01831a</srcmd5>
+    <version>0.1.2</version>
+    <time>1332616209</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.2 hopefully now compliant with OBS policy (forwarded request 110733 from stroeder)</comment>
+    <requestid>110795</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>737d8f34db36b91012ec564519539b98</srcmd5>
+    <version>0.1.3</version>
+    <time>1336035606</time>
+    <user>coolo</user>
+    <comment>updated to upstrean release 0.1.3 (forwarded request 115535 from stroeder)</comment>
+    <requestid>115596</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>737d8f34db36b91012ec564519539b98</srcmd5>
+    <version>0.1.3</version>
+    <time>1340184079</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ddfaca487e7ffa841a57d0edc51a8c70</srcmd5>
+    <version>0.1.4</version>
+    <time>1343633931</time>
+    <user>coolo</user>
+    <comment>Update to upstrean release 0.1.4 (forwarded request 129125 from stroeder)</comment>
+    <requestid>129160</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b80b58d62b66f86cec27f73aa142b959</srcmd5>
+    <version>0.1.6</version>
+    <time>1358786748</time>
+    <user>coolo</user>
+    <comment>Update to upstream release 0.1.6 successfully tested with python-ldap/web2ldap. (forwarded request 149141 from stroeder)</comment>
+    <requestid>149300</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b80b58d62b66f86cec27f73aa142b959</srcmd5>
+    <version>0.1.6</version>
+    <time>1359110094</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>6da1be00f1ac0897c3003f1334fe125c</srcmd5>
+    <version>0.1.6</version>
+    <time>1366812020</time>
+    <user>coolo</user>
+    <comment>python3 package added (forwarded request 173116 from HighwayStar)</comment>
+    <requestid>173151</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fb79d6332f1cd92bce0dd8a5c2c8e7a3</srcmd5>
+    <version>0.1.7</version>
+    <time>1368451558</time>
+    <user>coolo</user>
+    <comment>Update to upstream release 0.1.7 (forwarded request 174829 from stroeder)</comment>
+    <requestid>174957</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>76b957030c0b3dc9520ae1e3252d1365</srcmd5>
+    <version>0.1.7</version>
+    <time>1371653180</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179944</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>76b957030c0b3dc9520ae1e3252d1365</srcmd5>
+    <version>0.1.7</version>
+    <time>1379664249</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>d5d83fdceb9fb881500a82f963401a4c</srcmd5>
+    <version>0.1.7</version>
+    <time>1382693228</time>
+    <user>scarabeus_factory</user>
+    <comment>- Require python-setuptools instead of distribute (upstreams merged)
+- Fix changes file
+
+- updated to upstrean release 0.1.7
+  - License updated to vanilla BSD 2-Clause to ease package use
+    (http://opensource.org/licenses/BSD-2-Clause).
+  - Test suite made discoverable by unittest/unittest2 discovery feature.
+  - Fix to decoder working on indefinite length substrate -- end-of-octets
+    marker is now detected by both tag and value. Otherwise zero values may
+    interfere with end-of-octets marker.
+  - Fix to decoder to fail in cases where tagFormat indicates inappropriate
+    format for the type (e.g. BOOLEAN is always PRIMITIVE, SET is always 
+    CONSTRUCTED and OCTET STRING is either of the two)
+  - Fix to REAL type encoder to force primitive encoding form encoding.
+  - Fix to CHOICE decoder to handle explicitly tagged, indefinite length
+    mode encoding
+  - Fix to REAL type decoder to handle negative REAL values correctly. Test
+    case added.
+  - The compact (valueless) way of encoding zero INTEGERs introduced in
+    0.1.5 seems to fail miserably as the world is filled with broken
+    BER decoders. So we had to back off the *encoder* for a while.
+    There's still the IntegerEncoder.supportCompactZero flag which
+    enables compact encoding form whenever it evaluates to True.
+  - Report package version on debugging code initialization.
+- Changes from version 0.1.5:
+  - Documentation updated and split into chapters to better match
+    web-site contents.
+  - Make prettyPrint() working for non-initialized pyasn1 data objects. It
+    used to throw an exception.
+  - Fix to encoder to produce empty-payload INTEGER values for zeros</comment>
+    <requestid>204634</requestid>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>d5d83fdceb9fb881500a82f963401a4c</srcmd5>
+    <version>0.1.7</version>
+    <time>1409302951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>e10709ccf80f4bf3ff12fb9972d8a3b7</srcmd5>
+    <version>0.1.7</version>
+    <time>1425566488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288732</requestid>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>787131cfa856e17f12430b22d9e58423</srcmd5>
+    <version>0.1.7</version>
+    <time>1429769090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298582</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>83a4fb327e648a44b3241a17cf0f9be3</srcmd5>
+    <version>0.1.8</version>
+    <time>1437059744</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>315668</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>2111207c3651e64e9527060627f22740</srcmd5>
+    <version>0.1.8</version>
+    <time>1440871333</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327583</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7b1bfe2292c2b8824eca7b397f6d75aa</srcmd5>
+    <version>0.1.9</version>
+    <time>1444833760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>336723</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>02bb1b5c2e564c9b9516ee09ba2f607d</srcmd5>
+    <version>0.2.2</version>
+    <time>1486716766</time>
+    <user>dimstar_suse</user>
+    <comment>corrected source URL</comment>
+    <requestid>455463</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b813ef5c8538672d437848d1b6648d0d</srcmd5>
+    <version>0.2.3</version>
+    <time>1489020264</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.2.3</comment>
+    <requestid>477283</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f3371ef89964745d60014373415ef13a</srcmd5>
+    <version>0.2.3</version>
+    <time>1492617418</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480631</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>a8ee8a6e3a912dba8890f6a1e74efa13</srcmd5>
+    <version>0.2.3</version>
+    <time>1494345570</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493148</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>60d47c67aeb5c9e0ae2f8e381c5ac281</srcmd5>
+    <version>0.2.3</version>
+    <time>1499162198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507289</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f4eac24ee5c13598503b8c4bb050239d</srcmd5>
+    <version>0.3.1</version>
+    <time>1501572283</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513051</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f71eee31898a84fc5bfa3f925a33de4d</srcmd5>
+    <version>0.3.2</version>
+    <time>1503392658</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517059</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9d6e23bf28c829c82dc7112b189fe0c3</srcmd5>
+    <version>0.3.4</version>
+    <time>1504981433</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521997</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>00bebb6d42aeb37b0a269c10c8ab7220</srcmd5>
+    <version>0.3.5</version>
+    <time>1505989638</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to upstream release 0.3.5
+  - Codecs signatures unified and pass the options kwargs through the
+    call chain
+  - Explicit tag encoding optimized to avoid unnecessary copying
+  - End-of-octets sentinel encoding optimized
+  - Refactored ASN.1 codecs properties to silently enforce proper
+    length and chunk size encoding modes
+  - Fixed DER encoder to always produce primitive encoding
+  - Fixed crash at SequenceOf native decoder
+  - Fixed Real.prettyPrint() to fail gracefully on overflow
+  - Fixed a couple of crashes when debug mode is enabled</comment>
+    <requestid>527254</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>48967a41682a8c9fc243a887836e22ea</srcmd5>
+    <version>0.3.6</version>
+    <time>1506340489</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528027</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de06e49f1042bc22a0c9eb03ff02b315</srcmd5>
+    <version>0.3.7</version>
+    <time>1508323829</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533652</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>182040b931861a0410b74aebbefde010</srcmd5>
+    <version>0.4.2</version>
+    <time>1512216619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545779</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2083a8837c284e2990833b2af57ffa1e</srcmd5>
+    <version>0.4.3</version>
+    <time>1527582381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612441</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>19df8a733929a43304e24978ba8a007d</srcmd5>
+    <version>0.4.4</version>
+    <time>1533887207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627900</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>8bfd90aeaaedd67669c04ae7df8ba8c4</srcmd5>
+    <version>0.4.4</version>
+    <time>1544816855</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>656009</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>707b1ba7a71234184269574625617dd1</srcmd5>
+    <version>0.4.5</version>
+    <time>1549140321</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>669378</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>f859a8a4cce1027764f1b11bc4b6e548</srcmd5>
+    <version>0.4.7</version>
+    <time>1569233142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.7:
+  * Many bugfixes all around, see CHANGES.rst</comment>
+    <requestid>729878</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>55662e5b68a9d58a85a68f333a0003bf</srcmd5>
+    <version>0.4.8</version>
+    <time>1574414717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749146</requestid>
+  </revision>
+</revisionlist>

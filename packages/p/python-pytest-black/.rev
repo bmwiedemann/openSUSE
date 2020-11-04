@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>624641e7c264541afbb7352634e4d0c5</srcmd5>
+    <version>0.3.8</version>
+    <time>1582643205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778961</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e88a85c6d4881edea2edf56ad1280d55</srcmd5>
+    <version>0.3.9</version>
+    <time>1589892462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.9:
+  * Fix a number of deprecation warnings and lint issues.</comment>
+    <requestid>806850</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7592bc18de9385cb6b226e9f1532dd04</srcmd5>
+    <version>0.3.10</version>
+    <time>1594228506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819186</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd19177421003a66a20d5fdd7852c087</srcmd5>
+    <version>0.3.12</version>
+    <time>1602155621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840074</requestid>
+  </revision>
+</revisionlist>

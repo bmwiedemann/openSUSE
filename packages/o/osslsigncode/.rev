@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>56e04ffb08ea69733b208cc84fe7ec3f</srcmd5>
+    <version>1.4</version>
+    <time>1359455387</time>
+    <user>coolo</user>
+    <comment>new package, needed to sign CAB file before submission to UEFI Signing Service (aka Microsoft).</comment>
+    <requestid>149697</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>56e04ffb08ea69733b208cc84fe7ec3f</srcmd5>
+    <version>1.4</version>
+    <time>1379663459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>56e04ffb08ea69733b208cc84fe7ec3f</srcmd5>
+    <version>1.4</version>
+    <time>1409302085</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>721111d2a18242517e95817435fcf100</srcmd5>
+    <version>1.7.1</version>
+    <time>1426064260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289919</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f375903c17027f5b4d1e3700e0d5cde4</srcmd5>
+    <version>1.7.1</version>
+    <time>1444285482</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>336517</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>efb703150979298f4fbedbb8660a22a4</srcmd5>
+    <version>1.7.1</version>
+    <time>1515506117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562578</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>8edddaaa5c0698cba6ac801a4d811cfa</srcmd5>
+    <version>1.7.1</version>
+    <time>1543953351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653625</requestid>
+  </revision>
+</revisionlist>

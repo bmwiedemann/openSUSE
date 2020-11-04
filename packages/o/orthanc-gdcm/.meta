@@ -1,0 +1,5 @@
+<package name="orthanc-gdcm" project="openSUSE:Factory">
+  <title>GDCM plugin for Orthanc</title>
+  <description>Initially located in the orthanc package itself, the plugin was moved to a separate package</description>
+  <devel project="graphics" package="orthanc-gdcm"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="http-builder" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="http-builder"/>
+</package>

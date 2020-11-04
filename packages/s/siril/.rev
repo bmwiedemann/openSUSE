@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a507b83fecb055f0f722e9ea37442bba</srcmd5>
+    <version>0.99.4</version>
+    <time>1601919400</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>839104</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb3af6398f58709baa9721a265549aca</srcmd5>
+    <version>0.99.6</version>
+    <time>1602155623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>840090</requestid>
+  </revision>
+</revisionlist>

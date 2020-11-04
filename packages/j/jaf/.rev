@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87d68a14ab49ddda8e6e6c6332807516</srcmd5>
+    <version>1.2.0</version>
+    <time>1584643933</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>782896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d261ca0b900b5847b7d1c2cd8b529fdd</srcmd5>
+    <version>1.2.0</version>
+    <time>1587469068</time>
+    <user>dimstar_suse</user>
+    <comment>- Add alias for the new jakarta name
+</comment>
+    <requestid>796003</requestid>
+  </revision>
+</revisionlist>

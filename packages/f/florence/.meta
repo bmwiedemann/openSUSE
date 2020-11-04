@@ -1,0 +1,5 @@
+<package name="florence" project="openSUSE:Factory">
+  <title>Florence is an extensible scalable virtual keyboard</title>
+  <description>You need it if you can't use a real hardware keyboard, for example because you are disabled, your keyboard is broken or because you use a tablet PC, but you must be able to use a pointing device (as a mouse, a trackball or a touchscreen). Florence stays out of your way when you don't need it: it appears on the screen only when you need it. A Timer-based auto-click functionality is available to help disabled people having difficulties to click.</description>
+  <devel project="GNOME:Apps" package="florence"/>
+</package>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>efc19d06da3fbfd037410583b38a68a9</srcmd5>
+    <version>3.10.6</version>
+    <time>1574104102</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748717</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6c5ec20d655eb0fd9250f27164b9a156</srcmd5>
+    <version>3.10.6</version>
+    <time>1574783871</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with recent changes</comment>
+    <requestid>750554</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f9452e11ba54c004874be0ae8939f8c9</srcmd5>
+    <version>3.10.6</version>
+    <time>1574945454</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk &gt;= 9</comment>
+    <requestid>751525</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>790cea0d0d3bd3f78b47b784e51645f1</srcmd5>
+    <version>3.10.6</version>
+    <time>1585761536</time>
+    <user>dimstar_suse</user>
+    <comment>migrate away from felix-osgi implementation</comment>
+    <requestid>790525</requestid>
+  </revision>
+</revisionlist>

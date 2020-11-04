@@ -1,0 +1,9 @@
+<package name="languagetool-core" project="openSUSE:Factory">
+  <title>Style and Grammar Checker for 25+ Languages</title>
+  <description>LanguageTool is a free and open-source grammar checker.
+
+</description>
+  <devel project="openSUSE:Factory" package="languagetool"/>
+  <url>https://languagetool.org</url>
+  <bcntsynctag>languagetool</bcntsynctag>
+</package>

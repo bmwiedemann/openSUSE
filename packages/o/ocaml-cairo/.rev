@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>02b265a97aa666f5a724c8fd89546d5f</srcmd5>
+    <version>0.6.1</version>
+    <time>1581087392</time>
+    <user>dimstar_suse</user>
+    <comment>required by ocaml-lablgtk3</comment>
+    <requestid>770782</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f576381b5bbbf5bc0a57290c61f02a2d</srcmd5>
+    <version>0.6.1</version>
+    <time>1583763767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ocaml-cairo.patch to handle -fno-common
+- Require current ocaml-rpm-macros</comment>
+    <requestid>777964</requestid>
+  </revision>
+</revisionlist>

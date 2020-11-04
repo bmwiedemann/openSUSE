@@ -1,0 +1,8 @@
+<package name="ddrescueview" project="openSUSE:Factory">
+  <title>Graphical viewer for GNU ddrescue mapfiles</title>
+  <description>This small tool allows the user to graphically examine ddrescue's map files in a user friendly GUI application. The Main window displays a block grid with each block's color representing the block types it contains. Many people know this type of view from defragmentation programs. 
+
+</description>
+  <devel project="security:forensics" package="ddrescueview"/>
+  <url>https://sourceforge.net/projects/ddrescueview/</url>
+</package>

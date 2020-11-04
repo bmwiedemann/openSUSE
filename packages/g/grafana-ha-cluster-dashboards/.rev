@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a11b37355b768dd796ab6283f5c8472a</srcmd5>
+    <version>1.0.0+git.1592473335.140c2fa</version>
+    <time>1592580185</time>
+    <user>dimstar_suse</user>
+    <comment>new package from SUSE's SHAP team.</comment>
+    <requestid>815719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0603290c871898310848278cdf57737a</srcmd5>
+    <version>1.0.1+git.1594734541.4222fc5</version>
+    <time>1594894574</time>
+    <user>dimstar_suse</user>
+    <comment>new package release</comment>
+    <requestid>820935</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55e5b7c89aff8650b1cedffa83f739ac</srcmd5>
+    <version>1.0.2+git.1596627252.62154d3</version>
+    <time>1596652137</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.0.2
+  * update title and description</comment>
+    <requestid>824479</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01c47e6f5832371a2c25b6dba144d3bc</srcmd5>
+    <version>1.0.3+git.1600360477.8b8f9ce</version>
+    <time>1600801656</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.0.3
+  * don't use require grafana, use recommends
+  * fix permissions accordingly
+  * fix minor typo on dashboard spec file
+</comment>
+    <requestid>835269</requestid>
+  </revision>
+</revisionlist>

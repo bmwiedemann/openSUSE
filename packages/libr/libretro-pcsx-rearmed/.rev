@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7007b93b54a7e35e56ef08a8a605045f</srcmd5>
+    <version>0~git20200201</version>
+    <time>1581277756</time>
+    <user>dimstar_suse</user>
+    <comment>PlayStation emulator. Replace libretro-pcsx_rearmed</comment>
+    <requestid>772331</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3569b45284c6a5cc5279caa85e7a3aeb</srcmd5>
+    <version>0~git20200209</version>
+    <time>1582018951</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774985</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>836438fe842637bba67616846cd12311</srcmd5>
+    <version>0~git20200507</version>
+    <time>1589751800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>806121</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27c3b8d50dd1e42408c9607fbeefcb03</srcmd5>
+    <version>0~git20200805</version>
+    <time>1597955333</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827949</requestid>
+  </revision>
+</revisionlist>

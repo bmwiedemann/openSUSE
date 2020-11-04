@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>474801a5f1b924d42d789e759fab35b4</srcmd5>
+    <version>0.2.0</version>
+    <time>1515623651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562062</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>387c3a3a42250ff95a87438fd27ddc2c</srcmd5>
+    <version>0.2.0</version>
+    <time>1530866829</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621092</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c03ad8e624b5386ad88071fb56deb39</srcmd5>
+    <version>0.3.0</version>
+    <time>1546695708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.3.0</comment>
+    <requestid>657199</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0cd9b0a75bd1b4558aad2b8cc82f576b</srcmd5>
+    <version>0.3.0</version>
+    <time>1547130152</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663767</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>841d011ea9099e0eba7c95e6c3e721c2</srcmd5>
+    <version>0.4.0</version>
+    <time>1551386555</time>
+    <user>coolo</user>
+    <comment>Forward the current version of osmo-iuh to Factory</comment>
+    <requestid>678107</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f38b678286baa3d7133d079e497a5b1</srcmd5>
+    <version>0.5.0</version>
+    <time>1566463818</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.5.0</comment>
+    <requestid>723424</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1285d7c65602dc388039f68cc9346c27</srcmd5>
+    <version>0.6.0</version>
+    <time>1578502518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.6.0</comment>
+    <requestid>761610</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>606110e30cfd24b1803689330231ee42</srcmd5>
+    <version>0.6.0</version>
+    <time>1591558709</time>
+    <user>dimstar_suse</user>
+    <comment>- Set CFLAGS+=-fcommon.</comment>
+    <requestid>812122</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bfd7507962b2b7541bae47282c3d42c1</srcmd5>
+    <version>0.6.1</version>
+    <time>1596363606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823899</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,212 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>609d3d8f74f72613970153d81ba39d45</srcmd5>
+    <version>0.4.8</version>
+    <time>1396451947</time>
+    <user>coolo</user>
+    <comment>New packages for pandoc. See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00341.html</comment>
+    <requestid>227657</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>609d3d8f74f72613970153d81ba39d45</srcmd5>
+    <version>0.4.8</version>
+    <time>1409300971</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28f8ef1b317460419f5c2f62642df4d1</srcmd5>
+    <version>1.1.3.3</version>
+    <time>1425031150</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287600</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb6c721566f46a22a79f3fcfd6dc0cb8</srcmd5>
+    <version>1.1.4.1</version>
+    <time>1432188725</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306405</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>742e628cd00a94fe56542bd9b1f04604</srcmd5>
+    <version>1.1.5</version>
+    <time>1432636603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.5
+* Add pass-through instances for Alternative and MonadPlus</comment>
+    <requestid>308708</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f73daf649c67d90d7ec21a731224fd7</srcmd5>
+    <version>1.1.6</version>
+    <time>1438750321</time>
+    <user>coolo</user>
+    <comment>- update to 1.1.6
+* Safe/Trustworthy for resourcet</comment>
+    <requestid>320301</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>417df9366b02a6a829d8f415ae81cb3b</srcmd5>
+    <version>1.1.7</version>
+    <time>1449687178</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7
+* Canonicalise Monad instances</comment>
+    <requestid>347745</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f6cb523eb93a27787ee7699ba7514f7d</srcmd5>
+    <version>1.1.7.1</version>
+    <time>1455021112</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7.1
+* transformers-compat 0.5 (forwarded request 356947 from mimi_vx)</comment>
+    <requestid>356948</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87e8499417db5cc22a67eb5cf460c3d6</srcmd5>
+    <version>1.1.7.2</version>
+    <time>1456243064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7.2
+* Remove upper bound on transformers (forwarded request 360809 from mimi_vx)</comment>
+    <requestid>360810</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>668559e906953f7ad37964b507b31367</srcmd5>
+    <version>1.1.7.3</version>
+    <time>1458120820</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7.3 (forwarded request 368115 from mimi_vx)</comment>
+    <requestid>368118</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>631ba326d298300abb2d5003d4da1476</srcmd5>
+    <version>1.1.7.4</version>
+    <time>1463038448</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.7.4
+* Make test suite slightly more robust (forwarded request 394892 from mimi_vx)</comment>
+    <requestid>394893</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>7331d5a58a8f86521286f822f432b8cb</srcmd5>
+    <version>1.1.7.4</version>
+    <time>1469628631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411985</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ff9c6374f41045ed5f5c576d9d3cb2c4</srcmd5>
+    <version>1.1.7.5</version>
+    <time>1473103247</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421673 from psimons)</comment>
+    <requestid>421751</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c61c139f6deec705778deb5dd7712bc0</srcmd5>
+    <version>1.1.8</version>
+    <time>1478289675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.8 with cabal2obs.</comment>
+    <requestid>438568</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>63cb31e65f6aa61511c5eeea53a97984</srcmd5>
+    <version>1.1.8.1</version>
+    <time>1481030732</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>442867</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d230d892f28bb9da1d6f4a74e442c35b</srcmd5>
+    <version>1.1.9</version>
+    <time>1484772260</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450617</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a4cf234446db768269ae0a8439b96b32</srcmd5>
+    <version>1.1.9</version>
+    <time>1505506193</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>525304</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>508c5c367fb4105a332846e55a6a4fa7</srcmd5>
+    <version>1.2.1</version>
+    <time>1527675146</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-resourcet to the latest version.</comment>
+    <requestid>607873</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ce7b18cf6832ffa23ea59a2c89fade74</srcmd5>
+    <version>1.2.1</version>
+    <time>1532161366</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- update to 1.1.7.3
+  + Provide the `withEx` function to interact nicely with the
+- Initial package - version 0.4.8</comment>
+    <requestid>623845</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6d079bfdd264903c1d66217f5536a5ca</srcmd5>
+    <version>1.2.2</version>
+    <time>1540448299</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642893</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ccda74583a5abe168d014f712f8641e0</srcmd5>
+    <version>1.2.2</version>
+    <time>1577451411</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759493</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6d7589f687b2ec00f4c3197e42dd7cc6</srcmd5>
+    <version>1.2.4</version>
+    <time>1589196964</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801048</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>10a4b231cc68bc0dc1b3cdb20ddf33b3</srcmd5>
+    <version>1.2.4.1</version>
+    <time>1592579857</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815165</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>375c759e0cab5f261df8ddff316575d6</srcmd5>
+    <version>1.2.4.2</version>
+    <time>1594293573</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819587</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>91ef8c7ba39359129e84232609be4097</srcmd5>
+    <version>1.2.4.2</version>
+    <time>1598643456</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829405</requestid>
+  </revision>
+</revisionlist>

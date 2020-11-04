@@ -1,0 +1,8 @@
+<package name="liblockfile" project="openSUSE:Factory">
+  <title>Library with NFS-safe locking functions</title>
+  <description>This library implements a number of functions found in -lmail on SysV
+systems. These functions are designed to lock the standard mailboxes in
+</description>
+  <devel project="devel:libraries:c_c++" package="liblockfile"/>
+  <url>https://github.com/miquels/liblockfile</url>
+</package>

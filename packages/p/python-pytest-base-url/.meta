@@ -1,0 +1,5 @@
+<package name="python-pytest-base-url" project="openSUSE:Factory">
+  <title></title>
+  <description>Pytest plugin for URL based testing</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-base-url"/>
+</package>

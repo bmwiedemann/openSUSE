@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6eaa6c6533b843123822e0f1247f6854</srcmd5>
+    <version>1.6+git145.18037a0</version>
+    <time>1590506179</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807556</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65207c594788e8351c8547d7fccb0b47</srcmd5>
+    <version>1.6+git145.18037a0</version>
+    <time>1591101566</time>
+    <user>dimstar_suse</user>
+    <comment>Pick TTF format fonts back: the desktop needs ttf to render gui program, This feature is necessary for SLE-15:SP2(jsc#SLE-12421). (forwarded request 809850 from qzhao)</comment>
+    <requestid>810643</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1e9c4c183b7f97ec03c3ed6c867f1280</srcmd5>
+    <version>1.6+git145.18037a0</version>
+    <time>1591209223</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix _service file to include TTF file instead of just overwriting
+  the tarball.
+- Use fixed revision 18037a0b49722b70379d9bca074fa4503fb136bd instead
+  of master.
+- Don't install WOFF files, TTF is good enough and in line with other
+  fonts.</comment>
+    <requestid>810988</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d1bfadc3184bc3ae3ee43f41865e4bab</srcmd5>
+    <version>1.6+git145.18037a0</version>
+    <time>1591990923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814117</requestid>
+  </revision>
+</revisionlist>

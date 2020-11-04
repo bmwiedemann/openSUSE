@@ -1,0 +1,432 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c68909ebeba2ec27436ff6f59d4132b3</srcmd5>
+    <version>2.3.0</version>
+    <time>1273095676</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:building/protobuf based on submit request 39309 from user prusnak
+</comment>
+    <requestid>39309</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c68909ebeba2ec27436ff6f59d4132b3</srcmd5>
+    <version>2.3.0</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c68909ebeba2ec27436ff6f59d4132b3</srcmd5>
+    <version>2.3.0</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a196efcc36df61801a1d1582d301a972</srcmd5>
+    <version>2.3.0</version>
+    <time>1294823797</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57816 from user lnussel
+</comment>
+    <requestid>57816</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>66cc9067a31403f416603234bf4c37a8</srcmd5>
+    <version>2.3.0</version>
+    <time>1294823804</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57816
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>66cc9067a31403f416603234bf4c37a8</srcmd5>
+    <version>2.3.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>c670e75b4594e0878cf9dd35617dc3f4</srcmd5>
+    <version>2.3.0</version>
+    <time>1303198393</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67840 from user coolo
+</comment>
+    <requestid>67840</requestid>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>ea4a4e910101c3f9645eca1fa82e6e2a</srcmd5>
+    <version>2.3.0</version>
+    <time>1303198406</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67840
+</comment>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>ea4a4e910101c3f9645eca1fa82e6e2a</srcmd5>
+    <version>2.3.0</version>
+    <time>1319182371</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d028120370a0ee0bec881cac46c5116f</srcmd5>
+    <version>2.4.1</version>
+    <time>1325658597</time>
+    <user>coolo</user>
+    <comment>- remove %release from requires
+
+- Update to Protobuf 2.4.1:
+ C++
+  * Fixed the frendship problem for old compilers to make the library now gcc 3
+    compatible again.
+  * Fixed vcprojects/extract_includes.bat to extract compiler/plugin.h.
+  Java
+  * Removed usages of JDK 1.6 only features to make the library now JDK 1.5
+    compatible again.
+  * Fixed a bug about negative enum values.
+  * serialVersionUID is now defined in generated messages for java serializing.
+  * Fixed protoc to use java.lang.Object, which makes &quot;Object&quot; now a valid
+    message name again.
+  Python
+  * Experimental C++ implementation now requires C++ protobuf library installed.
+    See the README.txt in the python directory for details.
+
+- update baselibs.conf</comment>
+    <requestid>97515</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d4763c2e6f775a74aeb7eea6ee1c5c8c</srcmd5>
+    <version>2.4.1</version>
+    <time>1334745300</time>
+    <user>coolo</user>
+    <comment>inject gtest 1.5.0 - fixes build with gcc 4.7 (forwarded request 109741 from dimstar)</comment>
+    <requestid>114225</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>fb0a9957257c44536a27d3192927492a</srcmd5>
+    <version>2.4.1</version>
+    <time>1337667483</time>
+    <user>coolo</user>
+    <comment>- BuildRequire zlib-devel otherwise gzip_stream is not built 
+  thus breaking newer releases of mosh. (forwarded request 121524 from elvigia)</comment>
+    <requestid>121527</requestid>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>fb0a9957257c44536a27d3192927492a</srcmd5>
+    <version>2.4.1</version>
+    <time>1340184019</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>fb0a9957257c44536a27d3192927492a</srcmd5>
+    <version>2.4.1</version>
+    <time>1359109958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e7d72da2da1e38924e0a9cd50743f6d2</srcmd5>
+    <version>2.5.0</version>
+    <time>1366233381</time>
+    <user>coolo</user>
+    <comment>- Upstream update to 2.5.0
+  * New construct &quot;import public&quot;
+  * New enum option &quot;allow_alias&quot;
+  * C++: New generated method set_allocated_foo(Type* foo)
+  * C++: Added SetAllocatedExtension() and ReleaseExtension()
+    to extensions API
+  * Java: Added getters/setters to access the underlying ByteString
+    of a string field
+  * Java: New operations for substring(), prepend(), and append()
+  * Java: New method findInitializationErrors()
+  * Python: Support for dynamic message creation
+  * Python: Fixed custom options were not correctly populated
+  * Python: Added EnumTypeWrapper
+  * Python: Added ParseMessage(descriptor, bytes)
+  * Various bug fixes and optimazations
+- Drop gtest-1.5, which is now included by the archive from
+  the upstream</comment>
+    <requestid>171248</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9e89dde54ef2bbccb9d0d83f2bddc4a5</srcmd5>
+    <version>2.5.0</version>
+    <time>1370430492</time>
+    <user>coolo</user>
+    <comment>- Build on architectures where no specialized code has been written
+  0001-Add-generic-GCC-support-for-atomic-operations.patch (forwarded request 176725 from k0da)</comment>
+    <requestid>176726</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>fddd3df46fa0d71a1f6a751454a2b4e2</srcmd5>
+    <version>2.5.0</version>
+    <time>1370925467</time>
+    <user>coolo</user>
+    <comment>- package google/protobuf/stubs/atomicops_internals_generic_gcc.h
+  mosh reqires it (forwarded request 178026 from k0da)</comment>
+    <requestid>178317</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>fddd3df46fa0d71a1f6a751454a2b4e2</srcmd5>
+    <version>2.5.0</version>
+    <time>1379664075</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>ebd81190194299a2685e5d1580ce6f54</srcmd5>
+    <version>2.5.0</version>
+    <time>1383810223</time>
+    <user>coolo</user>
+    <comment>- fix java flags to build package for SLE_11_SP3 (forwarded request 205913 from sleep_walker)</comment>
+    <requestid>205914</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>ebd81190194299a2685e5d1580ce6f54</srcmd5>
+    <version>2.5.0</version>
+    <time>1409302754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3c6ce2f450b7512a3401ea9e22974b56</srcmd5>
+    <version>2.6.1</version>
+    <time>1427736652</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>290213</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f805376cd7a644d680947c1e796628d1</srcmd5>
+    <version>2.6.1</version>
+    <time>1439190741</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319443</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>fc3a6744e8c46bc9eda449801abe66de</srcmd5>
+    <version>2.6.1</version>
+    <time>1447766428</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344031</requestid>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>8428ddf5312f0ab06dbd0b4c3669a277</srcmd5>
+    <version>2.6.1</version>
+    <time>1449995878</time>
+    <user>coolo</user>
+    <comment>- disable google-apputils usage. They are only used for the testsuite which
+  wasn't called anyways. The next upstream version will not use
+  apputils anymore anyways. Fixes build on SLE12.
+  https://github.com/google/protobuf/commit/9f42f5f4a423b923f7b07ae8c5e8db4943df49c6
+  bnc#957472</comment>
+    <requestid>347701</requestid>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>a62ebb0972077b7071c24dea632d4db9</srcmd5>
+    <version>2.6.1</version>
+    <time>1483047730</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447591</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fb357ead9282a3a651f1439fc9640780</srcmd5>
+    <version>3.1.0</version>
+    <time>1484818851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449582</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5813e926be45269499d6f86bde8eb06d</srcmd5>
+    <version>3.1.0</version>
+    <time>1485380131</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451796</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>87133343c3be2bf737d21a2cc5935dcf</srcmd5>
+    <version>3.3.0</version>
+    <time>1498202184</time>
+    <user>dimstar_suse</user>
+    <comment>- Install LICENSE 
+
+- Update to 3.3.0 :
+  * C++:
+    * Fixed map fields serialization of DynamicMessage to correctly serialize
+      both key and value regardless of their presence.
+    * Parser now rejects field number 0 correctly.
+    * New API Message::SpaceUsedLong() that’s equivalent to
+      Message::SpaceUsed() but returns the value in size_t.
+    * JSON support
+      - New flag always_print_enums_as_ints in JsonPrintOptions.
+      - New flag preserve_proto_field_names in JsonPrintOptions. It will instruct
+        the JSON printer to use the original field name declared in the .proto
+        file instead of converting them to lowerCamelCase when printing JSON.
+      - JsonPrintOptions.always_print_primtive_fields now works for oneof message
+        fields.
+      - Fixed a bug that doesn’t allow different fields to set the same json_name
+        value.
+      - Fixed a performance bug that causes excessive memory copy when printing
+        large messages.
+    * Various performance optimizations.
+  * Java:
+    * Map field setters eagerly validate inputs and throw NullPointerExceptions
+      as appropriate.
+    * Added ByteBuffer overloads to the generated parsing methods and the Parser
+      interface.
+    * proto3 enum's getNumber() method now throws on UNRECOGNIZED values.
+    * Output of JsonFormat is now locale independent.
+  * Python:
+    * Added FindServiceByName() in the pure-Python DescriptorPool. This works only</comment>
+    <requestid>504018</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ee97d3d578c0ab5879d0db065fa4be03</srcmd5>
+    <version>3.5.0</version>
+    <time>1514569570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556422</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b42575e9213d88ab4ab8b442822d3a69</srcmd5>
+    <version>3.5.0</version>
+    <time>1516970082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568227</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>23977017053291edd6e640485866dff0</srcmd5>
+    <version>3.5.0</version>
+    <time>1519554778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579472</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d25da0b1531772258cb53e2ce88c0fb4</srcmd5>
+    <version>3.5.2</version>
+    <time>1527084304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>609121</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>45c363189cebb3099ec0f47a048f0685</srcmd5>
+    <version>3.6.1</version>
+    <time>1539251106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>635281</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>5bd224ca756c0e19fae6f9f79c571c8f</srcmd5>
+    <version>3.6.1</version>
+    <time>1545376773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659285</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>5ab834e19eae315c8b355fc1aa674c96</srcmd5>
+    <version>3.6.1</version>
+    <time>1549311711</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>667019</requestid>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>767dfdd4e14da8029d449563375e9e74</srcmd5>
+    <version>3.6.1</version>
+    <time>1551468507</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679166</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>e95fcbe9719ad5f4d4b0af00b4ae4e70</srcmd5>
+    <version>3.6.1</version>
+    <time>1556915161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700030</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>36371a50083a3d526c929e25db9c851f</srcmd5>
+    <version>3.8.0</version>
+    <time>1560458300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708760</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7e990d85f2f9e2fd59be2931636939fc</srcmd5>
+    <version>3.9.1</version>
+    <time>1566893667</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725308</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>8ecbb46ce8d2dae4ed46c6e4807e09e9</srcmd5>
+    <version>3.9.1</version>
+    <time>1570010131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733606</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2c8eb2d8ae196519b6f3875fdd010e74</srcmd5>
+    <version>3.9.2</version>
+    <time>1577887013</time>
+    <user>dimstar_suse</user>
+    <comment>- Use tarball provided by upstream
+- Small package cleanup
+
+- Updated to version 3.9.2
+   (Objective-C)
+  * Remove OSReadLittle* due to alignment requirements. (#6678)
+  * Don't use unions and instead use memcpy for the type swaps. (#6672)</comment>
+    <requestid>758459</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>f42370f8857f0764b714394e5a1eb064</srcmd5>
+    <version>3.9.2</version>
+    <time>1582394422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775096</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8e523bcf08a74b900af83172cfbc4832</srcmd5>
+    <version>3.11.4</version>
+    <time>1583948542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782138</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>1b0a93f5682c76fff5a5ac764bff709f</srcmd5>
+    <version>3.11.4</version>
+    <time>1592840507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814654</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>db00f861fc0562c33f934b598f9e2437</srcmd5>
+    <version>3.12.3</version>
+    <time>1593726879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817959</requestid>
+  </revision>
+</revisionlist>

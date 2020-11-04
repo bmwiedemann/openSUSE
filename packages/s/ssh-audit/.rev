@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e298f94395ff69ed15f1c348a44129cd</srcmd5>
+    <version>2.1.1</version>
+    <time>1580842670</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain ssh-audit in Factory</comment>
+    <requestid>770009</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29a600c075fb7bc1afccb3d62b3bcfae</srcmd5>
+    <version>2.2.0</version>
+    <time>1584050774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784062</requestid>
+  </revision>
+</revisionlist>

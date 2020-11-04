@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>28c41ec06e59fe3ca79c64bd022ae285</srcmd5>
+    <version>0.13.0</version>
+    <time>1505139502</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-pyrsistent</comment>
+    <requestid>522406</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a19aa6e6976d727ca636a7758a7d3f90</srcmd5>
+    <version>0.14.4</version>
+    <time>1534100148</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the test conditional
+- Use %license macro
+
+- Version jump to 0.14.4
+  * Fix PClass double-factory-ing in a few situations.
+  * Fix #121, regression in PClass.set() 
+  * Fix regression where type names break sequence fields
+  * Allowing 'set' as a valid container for multiple fields.
+  * Fix #131 Clarify that dot-notation can be used for element access on PMaps
+  * Fix #133 Python 3.7 compatibility</comment>
+    <requestid>628726</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4827deeaa75304f5f081709f60ac60b2</srcmd5>
+    <version>0.14.11</version>
+    <time>1552986017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.11:
+  * Fix #152 Don't use __builtin_popcount, this hopefully fixes #147 Error in pvectorc.cp37-win_amd64.pyd file, as well.
+    Thanks @benrg for this!
+  * Fix #151 Fix compatibility for hypothesis 4. Thanks @felixonmars for this!
+  * Fix #148, only require pytest-runner if running tests. Thanks @ccorbacho for this!
+  * Fix #144, Compile pvectormodule.c on windows. Thanks @ganwell for this!
+  * Fix #142, Improve type stubs. Thanks @arxanas for this!
+  * Fix #102, add PEP 561 type annotation stubs for most pyrsistent types. Thanks @nattofriends for this!
+  * Fix #135, Type classes for Python 3 type annotations of pyrsistent types. Thanks @nattofriends for this!
+  * Fix #128, Allow PClass and PRecord to ignore input parameters to constructor that are not part of the spec
+    instead of blowing up with a type error. Thanks @agberk for this!
+  * Fix #137, deprecation warnings in Python 3.7. Thanks @thombashi for this!
+  * Fix #129, building via setuptools and setup.py. Thanks @galuszkak for this!</comment>
+    <requestid>686035</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2808a431de61e0ccb4a722870a4b408c</srcmd5>
+    <version>0.15.2</version>
+    <time>1559902609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707795</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>645a3f7d29b4225343480fcd6ad2df6c</srcmd5>
+    <version>0.15.4</version>
+    <time>1564484815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.4:
+  * support new pytest
+  * Fix #174, fix a GC traversal bug in pvector evolver C extension.
+
+- Use pytest4 for testing as pytest 5.x series do not work; bug
+  was reported upstream
+
+- Update to 0.15.3:
+  * Fix #172, catch all exceptions during extension build to reduce chance of corner cases that prevents installation.
+  * Fix #171, in PVector equality comparison don's assume that other object has a length, check before calling len.
+  * Fix #168, write warning about failing build of C extension directly to stderr to avoid that pip silences it.
+  * Fix #155, update PMapEvolver type stub to better reflect implementation.
+
+- Update to 0.15.2</comment>
+    <requestid>719530</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1d9d327ec65c590710030190d4efec5</srcmd5>
+    <version>0.15.7</version>
+    <time>1583702505</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.7:
+   * Fix #186, type errors with more recent versions of MyPy. Thanks @qhesz for this!
+   * Build and test on ARM during CI. Thanks @ossdev07 for this!
+   * Set absolute imports for python2 compatibility. Thanks @michalvi for this!
+   * Fix #182 moduleinit name clash.
+   * Fix #179 Fixed 'ignore_extra' factory parameter for pvector. Thanks @ss18 for this!</comment>
+    <requestid>780400</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea482774a65ef862ef586da03e5ba7f3</srcmd5>
+    <version>0.16.0</version>
+    <time>1595338830</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.0:
+   * No major updates but Python 2 support no longer guaranteed.
+   * Fix #192, 'ignore_extra' for 'pvector_field'. Thanks @ss18 for this!
+   * Fix #191, include LICENCE in distribution. Thanks @johnthagen for this!
+   * Fix #190, minor MyPy errors. Thanks @Qhesz for this!</comment>
+    <requestid>821441</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6cc1259fecdedad63fd550921c202536</srcmd5>
+    <version>0.17.3</version>
+    <time>1603961164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.3:
+ * Fix #208, release v0.17.3 with proper meta data requiring Python &gt;= 3.5.
+ * Add &quot;python_requires &gt;= 2.7&quot; to setup.py in preparation for Python 2.7 incompatible updates
+ * Same as 0.17.1 released with more recent version of setuptools to get proper meta data for in place.
+ * Restrict package to Python &gt;= 3.5 to not break unpinned Python 2 dependencies. Thanks @vphilippon
+ * Remove Python 2 support code. This includes dropping some compatibility code and the dependency on
+   six. Thanks @djailla for this.
+ * Fix #200, python 3 exception chaining. This is a minor backwards incompatibility, hence stepping
+   to 0.17.0. Thanks @cool-RR for this!</comment>
+    <requestid>838241</requestid>
+  </revision>
+</revisionlist>

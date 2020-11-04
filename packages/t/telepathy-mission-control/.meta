@@ -1,0 +1,10 @@
+<package name="telepathy-mission-control" project="openSUSE:Factory">
+  <title>Telepathy Mission Control instant messaging connection manager</title>
+  <description>Mission Control, or MC, is a Telepathy component providing a way for
+&quot;end-user&quot; applications to abstract some of the details of connection
+managers, to provide a simple way to manipulate a bunch of connection
+managers at once, to remove the need to have in each program the
+account definitions and credentials, to manage channel handling/request
+and to manage presence statuses.</description>
+  <devel project="GNOME:Factory" package="telepathy-mission-control"/>
+</package>

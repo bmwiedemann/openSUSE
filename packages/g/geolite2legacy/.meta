@@ -1,0 +1,5 @@
+<package name="geolite2legacy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Application:Geo" package="geolite2legacy"/>
+</package>

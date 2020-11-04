@@ -1,0 +1,6 @@
+<package name="libretro-beetle-pce-fast" project="openSUSE:Factory">
+  <title>Mednafen PCE Fast libretro core for TurboGrafx-16/PC Engine emulation</title>
+  <description>Standalone port of Mednafen PCE Fast to libretro.
+</description>
+  <devel project="Emulators" package="libretro-beetle-pce-fast"/>
+</package>

@@ -1,0 +1,4311 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>cc779c7d5dd2199a9a8360d00040f88b</srcmd5>
+    <version>6.5.2</version>
+    <time>1168390623</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>2252c0091126f2ee40400cf1a60d43d0</srcmd5>
+    <version>6.5.2</version>
+    <time>1169080528</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>ec91ffd1189e3a8de220b5f50406eb99</srcmd5>
+    <version>6.5.2</version>
+    <time>1169165599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="15">
+    <srcmd5>1a05d3c3290f4e7b8c497c310be79642</srcmd5>
+    <version>6.5.2</version>
+    <time>1169829979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="20">
+    <srcmd5>76793aa8ca10c4f97cf200744c3cf8cc</srcmd5>
+    <version>6.5.2</version>
+    <time>1173919484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="21">
+    <srcmd5>8a77cd0695b63a8228a9bade0ae66e2a</srcmd5>
+    <version>6.5.2</version>
+    <time>1174350234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="25">
+    <srcmd5>72323b3bc24a364d12c9f8bd12f033aa</srcmd5>
+    <version>6.5.2</version>
+    <time>1175811935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="27">
+    <srcmd5>26bf5c1b1534740a989be90de88f1b1d</srcmd5>
+    <version>6.5.2</version>
+    <time>1176394259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20d188467182dba8aa70d4505abb1380</srcmd5>
+    <version>6.5.3</version>
+    <time>1177276120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>b4c79ed5e8af3604d9ae0d3d549db25c</srcmd5>
+    <version>6.5.3</version>
+    <time>1177532855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="28">
+    <srcmd5>d25174115e8f915920fc76583f4737bc</srcmd5>
+    <version>6.5.2</version>
+    <time>1177688822</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>e49d28ba33f1deb25fe80c5e2d54a211</srcmd5>
+    <version>6.5.3</version>
+    <time>1178231907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>1486bcd3656a195d618970b4f71e26d1</srcmd5>
+    <version>6.5.3</version>
+    <time>1179395097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>290a85793d261a14336f306981a8815e</srcmd5>
+    <version>6.5.3</version>
+    <time>1179846544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>9299039b410d2b66a0f441a45571a106</srcmd5>
+    <version>6.5.3</version>
+    <time>1180106450</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>8b8f7f4809c866b4ca8b0729abc6ec63</srcmd5>
+    <version>6.5.3</version>
+    <time>1180187169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>261905d8c4cfbae79095b0630cb7c7b2</srcmd5>
+    <version>6.5.3</version>
+    <time>1180218249</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="20">
+    <srcmd5>baf1e82ea72e8b77277db65fb1add477</srcmd5>
+    <version>6.5.3</version>
+    <time>1180387808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>fa498d99d680a770f18c046d92121b47</srcmd5>
+    <version>7.0</version>
+    <time>1182464423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1a81b9c92213318fe1819bcccf48e7fc</srcmd5>
+    <version>7.0</version>
+    <time>1182678807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4bab4ecddd4142327dbf0eb822d38f27</srcmd5>
+    <version>7.0</version>
+    <time>1183590571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>09d9424b241505e9c7cbaa187ba8d719</srcmd5>
+    <version>7.0.1</version>
+    <time>1186419305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>28c4f8f6a5fde045fcebd3b26ff36f95</srcmd5>
+    <version>7.0.1</version>
+    <time>1186911512</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>bdf7da8a2325f1db6196dcaebcbdbc80</srcmd5>
+    <version>7.0.1</version>
+    <time>1187202794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>17d77d93aad349b5c01db05aaba03d41</srcmd5>
+    <version>7.0.2</version>
+    <time>1193847054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>aa63721e82ff30ab8ea2063b9b3a6c9d</srcmd5>
+    <version>7.0.2</version>
+    <time>1194303025</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>d0f55b899e5de7940781cfdb21590978</srcmd5>
+    <version>7.0.2</version>
+    <time>1194564752</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>c92d0c9afd3fd22f5103de35bb33eaa1</srcmd5>
+    <version>7.0.2</version>
+    <time>1194889214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ca5c642e7a308fa95636b1d64e1cded6</srcmd5>
+    <version>7.0.3</version>
+    <time>1201126125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>bb2a7bd5e91a987c7acc1cbb1d46695d</srcmd5>
+    <version>7.0.3</version>
+    <time>1203956979</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="14">
+    <srcmd5>b79e4e28842293022d65cfd80175de7b</srcmd5>
+    <version>7.0.3</version>
+    <time>1205513494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>151e62f33d25d2e3a93bb344d862eb5e</srcmd5>
+    <version>7.0.3</version>
+    <time>1207176357</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="21">
+    <srcmd5>0fee2086093acaf783473ee114d9194d</srcmd5>
+    <version>7.0.3</version>
+    <time>1207456559</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="23">
+    <srcmd5>2b2a5ff8060a7055a9d823f23b413ee8</srcmd5>
+    <version>7.0.3</version>
+    <time>1207832029</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="25">
+    <srcmd5>595afd7041ec6cb24e13433f7b2ce9c5</srcmd5>
+    <version>7.0.3</version>
+    <time>1208716526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>80ed53fac01597b3eccb6c3cbd95c5ed</srcmd5>
+    <version>7.1</version>
+    <time>1215548508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>14b6fc3dec39f6b23b172da1579b14f7</srcmd5>
+    <version>7.1</version>
+    <time>1215564230</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>5fb038183b677d91da0d540b6deef7fe</srcmd5>
+    <version>7.1</version>
+    <time>1215620734</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>dfb7ec6b9a348eabe483f1550e171788</srcmd5>
+    <version>7.1</version>
+    <time>1215806633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="13">
+    <srcmd5>558797326c3e0d00fde52dbfe2ae667a</srcmd5>
+    <version>7.1</version>
+    <time>1217645302</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="20">
+    <srcmd5>63531dffa056316e51e51f5155a400de</srcmd5>
+    <version>7.1</version>
+    <time>1218488730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="27">
+    <srcmd5>cd12891b06a72f5a06a7525184a84177</srcmd5>
+    <version>7.1</version>
+    <time>1219446907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="29">
+    <srcmd5>1ca28c05ebbb2c7e5258e57a1a38c84b</srcmd5>
+    <version>7.1</version>
+    <time>1220050486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>097aa220dad70d10eaa1d02bab4d627c</srcmd5>
+    <version>7.2</version>
+    <time>1222269157</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>fbde4840725178f872cd67c34ab24d7f</srcmd5>
+    <version>7.2</version>
+    <time>1223307216</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>3785d979c5aac75c645166eab48e4ed0</srcmd5>
+    <version>7.2</version>
+    <time>1223763954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>04494702bd8665395e01b7021605dda0</srcmd5>
+    <version>7.2</version>
+    <time>1224692573</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="6">
+    <srcmd5>1e2d4cf5d2da6bf275f838a3ab56a5bf</srcmd5>
+    <version>7.2</version>
+    <time>1225711600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="7">
+    <srcmd5>b2e3cfb3d6e661251f59b3db918c3a9f</srcmd5>
+    <version>7.2</version>
+    <time>1226939007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="8">
+    <srcmd5>8b78f5cd976534c279b98a7f6610d5f6</srcmd5>
+    <version>7.2</version>
+    <time>1227011446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>7b1f4c823f56a2870c0f5cd70ad0f67c</srcmd5>
+    <version>7.2</version>
+    <time>1227883148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="10">
+    <srcmd5>090194fdb8666153d3b79cad6bdb061b</srcmd5>
+    <version>7.2</version>
+    <time>1229342389</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="11">
+    <srcmd5>1de6a262a9bfefb2faefe90d2407fd9c</srcmd5>
+    <version>7.2</version>
+    <time>1231592679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="12">
+    <srcmd5>b42ddd1559d2056adda1195baf4b3255</srcmd5>
+    <version>7.2</version>
+    <time>1231952214</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="13">
+    <srcmd5>280390466313a4f0faf155461fbbcd9a</srcmd5>
+    <version>7.2</version>
+    <time>1231976482</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="17">
+    <srcmd5>6c138bd1c6b7bf8e375acbd7b8f92fb7</srcmd5>
+    <version>7.2</version>
+    <time>1232749787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="18">
+    <srcmd5>982bd87ac622dac43dac7ce1b0bb0f66</srcmd5>
+    <version>7.2</version>
+    <time>1234473291</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b4df2c4aa2cb5b9a9de05f6ad86e6fde</srcmd5>
+    <version>7.3</version>
+    <time>1235647036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>49844ae153180c7a455ab3f023d7730e</srcmd5>
+    <version>7.3</version>
+    <time>1235954549</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>9bc8a10381158e25c8d53b703b7fd9ba</srcmd5>
+    <version>7.3</version>
+    <time>1236554720</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>1c9061340c7d1f6fa69d71058071b75f</srcmd5>
+    <version>7.4</version>
+    <time>1238084745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>9b1476896521b3974f5066813f3be29f</srcmd5>
+    <version>7.4</version>
+    <time>1238686275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7d447fc1a558d9ee808f8b510a0d5f5c</srcmd5>
+    <version>7.4.1</version>
+    <time>1240513099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>639c2b4b31b2f0106c5fa4b523442be1</srcmd5>
+    <version>7.4.2</version>
+    <time>1242416845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>59fdfc9f9324070a541d3b1e47276edb</srcmd5>
+    <version>7.4.3</version>
+    <time>1245471120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>6929f8d3765dda358430df84938e6f3d</srcmd5>
+    <version>7.4.4</version>
+    <time>1245831577</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b14643a387307f59f8117c8c3df47462</srcmd5>
+    <version>7.5</version>
+    <time>1248356525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>be10817c4495bfbed6d8b31d9979e7c9</srcmd5>
+    <version>7.5</version>
+    <time>1249057100</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>e5823d0de7b56035d9f2a628f752b2f2</srcmd5>
+    <version>7.5</version>
+    <time>1249573489</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>a00547a3c4bea285a51ff119d4a3ded5</srcmd5>
+    <version>7.5.1</version>
+    <time>1252579268</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 19978 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>f38e6878c03fc56be8325cf2adb89c75</srcmd5>
+    <version>7.5.1</version>
+    <time>1253132523</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 20386 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>35c4e44bff9272d6195a7c82b323db1f</srcmd5>
+    <version>7.6</version>
+    <time>1254519290</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 21403 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>2dcb4d45669161a8a575c1b2df492731</srcmd5>
+    <version>7.6</version>
+    <time>1255339023</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 22028 from user mhopf
+</comment>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>2dcb4d45669161a8a575c1b2df492731</srcmd5>
+    <version>7.6</version>
+    <time>1255339023</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 22028 from user mhopf
+</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>56a59d31da0b59fddfb7f8c52588bf54</srcmd5>
+    <version>7.7</version>
+    <time>1259918413</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 25352 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>22413111b3f3a291123a78aa496829b2</srcmd5>
+    <version>7.7</version>
+    <time>1260272817</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 25955 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>bf058c6836cbed57c8a00c9b06a09595</srcmd5>
+    <version>7.7</version>
+    <time>1260951720</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 26727 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>35ab0cfac5ad296aa3771b23a3e4dcb9</srcmd5>
+    <version>7.7</version>
+    <time>1261433576</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 27142 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="79" vrev="5">
+    <srcmd5>bb86d74ee3ba90b7607e278c7217d942</srcmd5>
+    <version>7.7</version>
+    <time>1261823888</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 27382 from user sndirsch
+</comment>
+  </revision>
+  <revision rev="80" vrev="6">
+    <srcmd5>6c53c5e06113fdc842189a36c0369c9b</srcmd5>
+    <version>7.7</version>
+    <time>1264773700</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 30735 from user coolo
+</comment>
+  </revision>
+  <revision rev="81" vrev="7">
+    <srcmd5>a5c5a13eca6bd19b3b1bdb32fd88cb74</srcmd5>
+    <version>7.7</version>
+    <time>1267751334</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 33641 from user sndirsch
+</comment>
+    <requestid>33641</requestid>
+  </revision>
+  <revision rev="82" vrev="8">
+    <srcmd5>811aac3c2cdc0e2a1fe87fa481354bc7</srcmd5>
+    <version>7.7</version>
+    <time>1268922738</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>6cdc1cf5d7a2d2f09a9c30a7f53743b6</srcmd5>
+    <version>7.7.99</version>
+    <time>1269559178</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 35605 from user sndirsch
+</comment>
+    <requestid>35605</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e4c7bc6dfa38fe8dcbc7c288887ce746</srcmd5>
+    <version>7.8</version>
+    <time>1270054653</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 36473 from user oertel
+</comment>
+    <requestid>36473</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>8ed320f0e22a07a693dc1e94edd37a00</srcmd5>
+    <version>7.8.1</version>
+    <time>1270639300</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 37008 from user sndirsch
+</comment>
+    <requestid>37008</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>a4f70ffa9c41af081c87cb0b964fb455</srcmd5>
+    <version>7.8.1</version>
+    <time>1271186295</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 37643 from user sndirsch
+</comment>
+    <requestid>37643</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>d2bd66b1efea4371d99439e2808121bb</srcmd5>
+    <version>7.8.1</version>
+    <time>1274776535</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 40500 from user sndirsch
+</comment>
+    <requestid>40500</requestid>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>c43463c59c9cc85c75344f359decad12</srcmd5>
+    <version>7.8.1</version>
+    <time>1276094718</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 41273 from user sndirsch
+</comment>
+    <requestid>41273</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>a1bb786162ae954380360ffadf86a2a9</srcmd5>
+    <version>7.8.1</version>
+    <time>1277134899</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 41727 from user coolo
+</comment>
+    <requestid>41727</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>38f604b9f882cfb4ff944723a5d9eb80</srcmd5>
+    <version>7.8.2</version>
+    <time>1277733759</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 42058 from user sndirsch
+</comment>
+    <requestid>42058</requestid>
+  </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>38f604b9f882cfb4ff944723a5d9eb80</srcmd5>
+    <version>7.8.2</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>38f604b9f882cfb4ff944723a5d9eb80</srcmd5>
+    <version>7.8.2</version>
+    <time>1278678596</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>2cbd860fd9769a49cc26a36db5c36f8f</srcmd5>
+    <version>7.8.2</version>
+    <time>1279538999</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 42715 from user sndirsch
+</comment>
+    <requestid>42715</requestid>
+  </revision>
+  <revision rev="94" vrev="5">
+    <srcmd5>eb9a5d2cf256aed2366fc8065a520ccd</srcmd5>
+    <version>7.8.2</version>
+    <time>1279920844</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 43865 from user sndirsch
+</comment>
+    <requestid>43865</requestid>
+  </revision>
+  <revision rev="95" vrev="6">
+    <srcmd5>1acc64f3942327c77c8e441aab7346bd</srcmd5>
+    <version>unknown</version>
+    <time>1284123421</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 47606 from user sndirsch
+</comment>
+    <requestid>47606</requestid>
+  </revision>
+  <revision rev="96" vrev="7">
+    <srcmd5>9df2d3025edd76dffa0bc166a8db19f6</srcmd5>
+    <version>7.8.2</version>
+    <time>1284750245</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 48178 from user sndirsch
+</comment>
+    <requestid>48178</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>3e8f7db97db9416b0ed8078756790197</srcmd5>
+    <version>7.9</version>
+    <time>1285625059</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 49266 from user sndirsch
+</comment>
+    <requestid>49266</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>e86e70937aa76858d511ad17d60a5507</srcmd5>
+    <version>7.9</version>
+    <time>1285970283</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 49550 from user sndirsch
+</comment>
+    <requestid>49550</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>79e3a3b21e3ac8cd301c28f56d2a716f</srcmd5>
+    <version>7.9</version>
+    <time>1286486519</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 49938 from user sndirsch
+</comment>
+    <requestid>49938</requestid>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>a503fb2a06f50e0ee0a2feb2c39331df</srcmd5>
+    <version>7.9</version>
+    <time>1286791071</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:XOrg/Mesa based on submit request 50126 from user sndirsch
+</comment>
+    <requestid>50126</requestid>
+  </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>cdc57183c3629f4d2b4e20e87fffb353</srcmd5>
+    <version>7.9</version>
+    <time>1288963670</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52114 from user sndirsch
+</comment>
+    <requestid>52114</requestid>
+  </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>c8b7d089ff0737b1ac6279208f054725</srcmd5>
+    <version>7.9</version>
+    <time>1288963676</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52114
+</comment>
+  </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>f3f3574996d0f3692e957fa809c4ddf4</srcmd5>
+    <version>7.9</version>
+    <time>1289217007</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52291 from user sndirsch
+</comment>
+    <requestid>52291</requestid>
+  </revision>
+  <revision rev="104" vrev="8">
+    <srcmd5>12af18a274daaebdeeddabfd97a5c047</srcmd5>
+    <version>7.9</version>
+    <time>1289217017</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52291
+</comment>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>c30a3a4c701f967053697db451197cdb</srcmd5>
+    <version>7.9.801</version>
+    <time>1293576714</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56445 from user sndirsch
+</comment>
+    <requestid>56445</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>fb8315c73ca1c4e9c0a419d28cb6b191</srcmd5>
+    <version>7.9.801</version>
+    <time>1293576724</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56445
+</comment>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d29d788210d8b470a8c191e606828d2e</srcmd5>
+    <version>7.9.802</version>
+    <time>1294239267</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57053 from user sndirsch
+</comment>
+    <requestid>57053</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>f4f4e627b4268c0aae743414ce7d6c0e</srcmd5>
+    <version>7.9.802</version>
+    <time>1294239279</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57053
+</comment>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>e468be50ed54db606ea5d8f2b250b1cd</srcmd5>
+    <version>7.10</version>
+    <time>1294652611</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57565 from user sndirsch
+</comment>
+    <requestid>57565</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>be25d34ad69853c2bb21ed376061d573</srcmd5>
+    <version>7.10</version>
+    <time>1294652631</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57565
+</comment>
+  </revision>
+  <revision rev="111" vrev="5">
+    <srcmd5>be25d34ad69853c2bb21ed376061d573</srcmd5>
+    <version>7.10</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="112" vrev="6">
+    <srcmd5>02f50bdaa1d142a9d177c3df759fd19f</srcmd5>
+    <version>7.10</version>
+    <time>1303888086</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 68194 from user coolo
+</comment>
+    <requestid>68194</requestid>
+  </revision>
+  <revision rev="113" vrev="7">
+    <srcmd5>4b011dbbc919a0d554bb4629ca86ad40</srcmd5>
+    <version>7.10</version>
+    <time>1303888095</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68194
+</comment>
+  </revision>
+  <revision rev="114" vrev="6">
+    <srcmd5>8a1a22d1e0b8748f1aa078e5e7e94f12</srcmd5>
+    <version>7.10.2</version>
+    <time>1305185112</time>
+    <user>azouhr</user>
+    <comment>- Update to 7.10.2
+  * Many crash and rendering fixes
+  * Fixes bug 678264 (Xserver crash with radeon/radeonhd UMS)</comment>
+    <requestid>69957</requestid>
+  </revision>
+  <revision rev="115" vrev="7">
+    <srcmd5>e47dca5f3836ec516f40854ac3425d8f</srcmd5>
+    <version>7.10.2</version>
+    <time>1305185124</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 69957
+</comment>
+  </revision>
+  <revision rev="116" vrev="8">
+    <srcmd5>47f9a3b7dbc29a900990f8ee88bfaf89</srcmd5>
+    <version>7.10.2</version>
+    <time>1306138289</time>
+    <user>saschpe</user>
+    <comment>- Add intel-add-gem-string.patch: Add back &quot;GEM&quot; string to Intel
+  driver's version output to fix OpenGL effects in kwin.</comment>
+    <requestid>70819</requestid>
+  </revision>
+  <revision rev="117" vrev="9">
+    <srcmd5>3548144756e3bbc58d509a4eeec16c11</srcmd5>
+    <version>7.10.2</version>
+    <time>1306138300</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70819
+</comment>
+  </revision>
+  <revision rev="118" vrev="10">
+    <srcmd5>cef7368692feb3de1370aad6a5a7785e</srcmd5>
+    <version>7.10.2</version>
+    <time>1308041722</time>
+    <user>saschpe</user>
+    <comment>- u_Fix-crash-in-swrast-when-setting-a-texture-for-a-pix.patch:
+  Update this patch closing a giant memory leak.
+
+- Replace patches:
+  * add: u_GLX-SWrast-Make-GLX-with-SWrast-enabled-work-on-olde.patch
+    This patch falls back to indirect rendering if SWrast doesn't work
+    with older Xservers as no common configs/visuals can be found.
+  * remove: Mesa_indirect_old_xserver_compatibility.diff
+    this patch is superseded.
+  * rename: 0001-Fix-crash-in-swrast-when-setting-a-texture-for-a-pix.patch
+    to u_Fix-crash-in-swrast-when-setting-a-texture-for-a-pix.patch
+
+- Remove: intel-add-gem-string.patch
+  This patch was barking up the wrong tree anyway.
+  As discussed with Martin Grässlin from the Kwin project
+  a patch from the upstream git master has been cherry-picked
+  and added to kdebase4-workspace which makes this patch unneciessary.
+  The patch to Kwin will become obsolete once Kwin is updated,
+  this will be noticed easily in kdebase4-workspace.
+
+- Fix the driver directory search path in the spec file.
+  This makes dri_driver_dir.diff obsolete.
+
+- Add packaging information for GLES2 devel files. 
+
+- Add GLES2 support.</comment>
+    <requestid>73289</requestid>
+  </revision>
+  <revision rev="119" vrev="11">
+    <srcmd5>226d1f1ce113e29e3339e32a087459c2</srcmd5>
+    <version>7.10.2</version>
+    <time>1308041739</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73289
+</comment>
+  </revision>
+  <revision rev="120" vrev="12">
+    <srcmd5>dc0111fd49f06a55ad1f9a13281e46b1</srcmd5>
+    <version>7.10.2</version>
+    <time>1308554831</time>
+    <user>saschpe</user>
+    <comment>- Don't unpack MesaDemos during build; it's not needed any more.</comment>
+    <requestid>74032</requestid>
+  </revision>
+  <revision rev="121" vrev="13">
+    <srcmd5>263ad327ce2dcef6f3c6b9197eeb31d3</srcmd5>
+    <version>7.10.2</version>
+    <time>1308554841</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74032
+</comment>
+  </revision>
+  <revision rev="122" vrev="12">
+    <srcmd5>dfa809931e5cbffd3bc4c7fe6953f50e</srcmd5>
+    <version>7.10.3</version>
+    <time>1309853261</time>
+    <user>saschpe</user>
+    <comment>- Update Mesa 7.10.3
+  * Few crashes and rendering fixes.
+
+- libdrm-2.4.26-nouveau.diff
+  * Fixes build of Mesa 7.10.2 nouveau driver with libdrm 2.4.26
+   (fdo #35562)</comment>
+    <requestid>75329</requestid>
+  </revision>
+  <revision rev="123" vrev="13">
+    <srcmd5>380d23d5da9629c94446a26278e15d4d</srcmd5>
+    <version>7.10.3</version>
+    <time>1309853279</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75329
+</comment>
+  </revision>
+  <revision rev="124" vrev="14">
+    <srcmd5>590df1919896e8ed9497c20316bafcf8</srcmd5>
+    <version>7.10.3</version>
+    <time>1311923269</time>
+    <user>saschpe</user>
+    <comment>- Also let ppc64 build the noveau driver, fixing build on ppc64.</comment>
+    <requestid>77352</requestid>
+  </revision>
+  <revision rev="125" vrev="15">
+    <srcmd5>3a3ce089fd0679427cdbc2869d3e4d93</srcmd5>
+    <version>7.10.3</version>
+    <time>1311923282</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77352
+</comment>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5f0e6bfaddc33cedf0472e6999ba5e31</srcmd5>
+    <version>7.11</version>
+    <time>1314876797</time>
+    <user>saschpe</user>
+    <comment>- add fix for bfo #28125 (DRI2 prevents indirect glx)
+
+- Obsolete Mesa-nouveau3d (included in standard Mesa package now)
+- Also nuke from baselibs.conf
+
+- Update to Mesa 7.11-rc3
+- U_Mesa-7.11-llvm3.patch: fix compatibility with llvm 3.0 (and pre-releases)
+- gallium is now required for r300, r600
+- nouveau is now built by default (except on &lt; OS11.3)</comment>
+    <requestid>80104</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>e38c8f48ad786e9612109da5f287e956</srcmd5>
+    <version>7.11</version>
+    <time>1314876809</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80104
+</comment>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>bdfdb6a23e9c321377a651087cf527a4</srcmd5>
+    <version>7.11</version>
+    <time>1315313627</time>
+    <user>saschpe</user>
+    <comment>- llvm is only available for *x86* currently</comment>
+    <requestid>80905</requestid>
+  </revision>
+  <revision rev="129" vrev="4">
+    <srcmd5>9d58a8971a49a8b412afbcda5931bd1a</srcmd5>
+    <version>7.11</version>
+    <time>1315313633</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80905
+</comment>
+  </revision>
+  <revision rev="130" vrev="5">
+    <srcmd5>6a5d5fa7b7ff266c3b5b13c90cd7f03c</srcmd5>
+    <version>7.11</version>
+    <time>1315815733</time>
+    <user>saschpe</user>
+    <comment>- Fix openSUSE 11.3 11.4 build
+
+- Update to Mesa 7.11 final</comment>
+    <requestid>81830</requestid>
+  </revision>
+  <revision rev="131" vrev="6">
+    <srcmd5>31bc1fffbedd8f16c87f3d0b8134c0e2</srcmd5>
+    <version>7.11</version>
+    <time>1315815740</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81830
+</comment>
+  </revision>
+  <revision rev="132" vrev="7">
+    <srcmd5>60d3b8b3958791685fa27a6ded09d903</srcmd5>
+    <version>7.11</version>
+    <time>1316438762</time>
+    <user>lrupp</user>
+    <comment>- Fix build with newest llvm, fdo#40754
+- Fix build with Factory</comment>
+    <requestid>82188</requestid>
+  </revision>
+  <revision rev="133" vrev="8">
+    <srcmd5>7e2e65654dcc7a9420a2cbe119aeabc5</srcmd5>
+    <version>7.11</version>
+    <time>1316438770</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 82188
+</comment>
+  </revision>
+  <revision rev="134" vrev="9">
+    <srcmd5>1e07af711b0b07fcc71a5b04d84ef027</srcmd5>
+    <version>7.11</version>
+    <time>1316680769</time>
+    <user>saschpe</user>
+    <comment>Enable build of OpenGL-ES
+
+With this patch, I can build and run KWin on top of OpenGL-ES on Intel and Radeon hardware. (forwarded request 82603 from vizzzion)</comment>
+    <requestid>84159</requestid>
+  </revision>
+  <revision rev="135" vrev="10">
+    <srcmd5>c564e295aa63ea28c8dddf540630ecc3</srcmd5>
+    <version>7.11</version>
+    <time>1317905836</time>
+    <user>lrupp</user>
+    <comment>- Update Mesa-llvm-3.0.patch again to fix compilation 
+
+- Update Mesa-llvm-3.0.patch for new llvm snapshot</comment>
+    <requestid>86879</requestid>
+  </revision>
+  <revision rev="136" vrev="12">
+    <srcmd5>c564e295aa63ea28c8dddf540630ecc3</srcmd5>
+    <version>7.11</version>
+    <time>1319181752</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="137" vrev="5">
+    <srcmd5>6ebb892e55f1a65727a7fdb18b017229</srcmd5>
+    <version>7.11.1</version>
+    <time>1321980522</time>
+    <user>coolo</user>
+    <comment>- Update to Mesa 7.11.1 
+  * U_glx-ignore-BadRequest-errors-from-DRI2Connect.diff included</comment>
+    <requestid>92937</requestid>
+  </revision>
+  <revision rev="138" vrev="6">
+    <srcmd5>a812903310a5f3d5351d8fe6d7d05687</srcmd5>
+    <version>7.11.1</version>
+    <time>1323705466</time>
+    <user>coolo</user>
+    <comment>- add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>94687</requestid>
+  </revision>
+  <revision rev="139" vrev="7">
+    <srcmd5>b825d98693891a73e3b5db967630f789</srcmd5>
+    <version>7.11.1</version>
+    <time>1329476760</time>
+    <user>coolo</user>
+    <comment>- Update dependencies according to configure.ac,
+  use pkgconfig symbols
+- Parallel build with %_smp_mflags
+- Remove redundant tags/sections
+
+- fixed buildreqs due to splitted xorg-x11-libs</comment>
+    <requestid>105524</requestid>
+  </revision>
+  <revision rev="140" vrev="8">
+    <srcmd5>85542a1642654ddac0ec7963dfb6b9e8</srcmd5>
+    <version>unknown</version>
+    <time>1330081552</time>
+    <user>coolo</user>
+    <comment>- Update to Mesa 8.0.1
+  * Removed all DRI drivers that did not support DRI2. 
+    Specifically, i810, mach64, mga, r128, savage, sis, tdfx, and
+    unichrome were removed.
+  * Removed all remnants of paletted texture support. As required
+    by desktop OpenGL, GL_COLOR_INDEX data can still be uploaded
+    to a color (e.g., RGBA) texture. However, the data cannot be
+    stored internally as color-index.
+  * Removed support for GL_APPLE_client_storage extension.
+  * Removed the classic Mesa r300 and r600 drivers, which are
+    superseded by the gallium drivers for this hardware.
+  * Removed the dead Gallium i965, cell and failover drivers,
+    which were either broken and with nobody in sight to fix
+    the situation or deprecated.
+- obsoletes u_GLX-SWrast-Make-GLX-with-SWrast-enabled-work-on-olde.patch
+  (git commit #63a6fd6603574c1c01324fbeb0863e39d3864c16)
+- obsoletes U_Mesa-7.11-llvm3.patch
+- obsoletes Mesa-llvm-3.0.patch
+- disabled u_Fix-crash-in-swrast-when-setting-a-texture-for-a-pix.patch
+  for now (obsolete as well?)
+- use --enable-shared-dricore, saves ~33 MB
+
+- readded build of non-gallium nouveau driver (&quot;nouveau_vieux&quot;) to
+  support again older NVIDIA GPUs
+
+- fix requires of devel package in moving the %package before the
+  other packages that have custom versions.
+  %version in rpm is tricky - it's the _last_ version before the 
+  macro, not the main one.</comment>
+    <requestid>106690</requestid>
+  </revision>
+  <revision rev="141" vrev="9">
+    <srcmd5>94461fff01ae3f8e5074035c823c926b</srcmd5>
+    <version>unknown</version>
+    <time>1330151443</time>
+    <user>coolo</user>
+    <comment>- Switch software rasterizer to llvmpipe (gallium driver now)
+  * Performance improvement especially on multicore system.
+- minimal specfile cleanup
+
+- only require drm_intel on intel.</comment>
+    <requestid>106837</requestid>
+  </revision>
+  <revision rev="142" vrev="10">
+    <srcmd5>094a082b3249ca4d8a87e572b15b824f</srcmd5>
+    <version>unknown</version>
+    <time>1331039131</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf after update of libOSMesa
+- do not put the date in generated code, this breaks build-compare
+  for little to no gain as we know the build date from rpm header</comment>
+    <requestid>107704</requestid>
+  </revision>
+  <revision rev="143" vrev="11">
+    <srcmd5>44d2d72205b8254164bfb8b32237a8c1</srcmd5>
+    <version>unknown</version>
+    <time>1332511897</time>
+    <user>coolo</user>
+    <comment>-- Updated software rasterizer to use llvmpipe the advanced,
+-  multithreaded,software rasterizer if availaible for that
+-  archetecture (ie. X86/X86-64).
+
+- Adjust baselibs.conf for OSMesa soname change
+
+- U_gallium-rtasm-properly-detect-SSE-and-SSE2.patch 
+  * gallium/rtasm: properly detect SSE and SSE2;  this should fix
+    crashes on ancient processors. (bnc#728737)</comment>
+    <requestid>110727</requestid>
+  </revision>
+  <revision rev="144" vrev="12">
+    <srcmd5>6ef72b59e4d9631db5e004a9579cb7ca</srcmd5>
+    <version>unknown</version>
+    <time>1336492874</time>
+    <user>coolo</user>
+    <comment>Added upstream patches from Master to resolve build issues with llvm 3.1. (forwarded request 115850 from tittiatcoke)</comment>
+    <requestid>116730</requestid>
+  </revision>
+  <revision rev="145" vrev="13">
+    <srcmd5>96a0df128e302a6337e326f4456c19a6</srcmd5>
+    <version>unknown</version>
+    <time>1337580292</time>
+    <user>coolo</user>
+    <comment>- fix build on platforms without gallium (s390 &amp; arm)</comment>
+    <requestid>121187</requestid>
+  </revision>
+  <revision rev="146" vrev="14">
+    <srcmd5>c3b0ff6e88953974d3cf0bbbf8d57878</srcmd5>
+    <version>unknown</version>
+    <time>1337674251</time>
+    <user>coolo</user>
+    <comment>- Trivial change to Version 8.0.3; tarball from here:
+  http://cgit.freedesktop.org/mesa/mesa/snapshot/mesa-8.0.3.tar.gz</comment>
+    <requestid>121655</requestid>
+  </revision>
+  <revision rev="147" vrev="15">
+    <srcmd5>a43dd7406462187101e81ba11c78536d</srcmd5>
+    <version>unknown</version>
+    <time>1338029711</time>
+    <user>coolo</user>
+    <comment>- libxatracker is also not built on ppc*.</comment>
+    <requestid>122431</requestid>
+  </revision>
+  <revision rev="148" vrev="16">
+    <srcmd5>5c8627ce29b6447f148e56cb5a40e23c</srcmd5>
+    <version>unknown</version>
+    <time>1338569629</time>
+    <user>coolo</user>
+    <comment>- Add u_mesa-8.0.1-fix-16bpp.patch (Fedora): fix 16bpp mode under
+  llvmpipe.
+
+- added configure options &quot;--enable-gbm --enable-glx-tls&quot; (required
+  for glamor support)</comment>
+    <requestid>122971</requestid>
+  </revision>
+  <revision rev="149" vrev="17">
+    <srcmd5>5dfc2a6c3fa26f2b4f0bc21049549f6f</srcmd5>
+    <version>unknown</version>
+    <time>1339352496</time>
+    <user>coolo</user>
+    <comment>- let libGL1-Mesa require Mesa, since that package includes the DRI
+  drivers (including the &quot;swrast&quot; DRI driver for software rendering)
+  (bnc#765241)</comment>
+    <requestid>124239</requestid>
+  </revision>
+  <revision rev="150" vrev="18">
+    <srcmd5>9fa912d28e16c2c9b7563023932778a6</srcmd5>
+    <version>unknown</version>
+    <time>1339767773</time>
+    <user>coolo</user>
+    <comment>- enabled build of XvMC/VDPAU state trackers for Nouveau, R300,
+  R600, Softpipe (Software implementation)
+
+- u_remove-os-abi-tag.patch 
+  * Remove OS ABI tag from libGL, so it is no longer preferred over
+    libGLs without OS ABI tag (bnc#765294, fdo#26663)</comment>
+    <requestid>124854</requestid>
+  </revision>
+  <revision rev="151" vrev="19">
+    <srcmd5>328dab310fcae714c97aa67f9c116c89</srcmd5>
+    <version>unknown</version>
+    <time>1340023848</time>
+    <user>coolo</user>
+    <comment>- remove buildrequire on vim, it creates a pretty big cycle for
+  no (obvious) benefit (forwarded request 125181 from coolo)</comment>
+    <requestid>125182</requestid>
+  </revision>
+  <revision rev="152" vrev="21">
+    <srcmd5>328dab310fcae714c97aa67f9c116c89</srcmd5>
+    <version>unknown</version>
+    <time>1340183151</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="153" vrev="22">
+    <srcmd5>807b12c5a3e4ce3cc98a4491bb5bd43e</srcmd5>
+    <version>unknown</version>
+    <time>1342252470</time>
+    <user>coolo</user>
+    <comment>- Update to Version 8.0.4 (minor bugfix release)
+- Back to bz2 tarballs</comment>
+    <requestid>127740</requestid>
+  </revision>
+  <revision rev="154" vrev="23">
+    <srcmd5>450e7fa15a841dafa42b0a8ff8917034</srcmd5>
+    <version>unknown</version>
+    <time>1344455748</time>
+    <user>coolo</user>
+    <comment>- U_i965-gen7-Reduce-GT1-WM-thread-count-according-to-up.patch
+  * Fix GPU hang with IVB GT1 desktop (bnc#775048)</comment>
+    <requestid>130430</requestid>
+  </revision>
+  <revision rev="155" vrev="24">
+    <srcmd5>d1e7e4522551f6100274193ff8bac3db</srcmd5>
+    <version>unknown</version>
+    <time>1345809310</time>
+    <user>namtrac</user>
+    <comment>  llvmpipe, if available (bnc#766498). (forwarded request 131513 from fcrozat)</comment>
+    <requestid>131514</requestid>
+  </revision>
+  <revision rev="156" vrev="25">
+    <srcmd5>08c56be0d69f56953b990cbbb9a4e84a</srcmd5>
+    <version>unknown</version>
+    <time>1347887896</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134012</requestid>
+  </revision>
+  <revision rev="157" vrev="26">
+    <srcmd5>0ff3ec082c7cc9ae13646976e578f571</srcmd5>
+    <version>unknown</version>
+    <time>1348574672</time>
+    <user>coolo</user>
+    <comment>- removed any .la file
+- moved libglapi.so from Mesa-devel to Mesa-libglapi-devel package;
+  Mesa-devel requires Mesa-libglapi-devel package anyway
+
+- fixed libOSMesa packaging (only a dangling symlink has been
+  packaged) 
+
+- fix baselibs.conf after package split
+
+- instead of using &quot;make install&quot; for installing libIndirectGL/
+  libOSMesa, do install these libs manually, so we no longer end
+  up with linking *everything* against libIndirectGL (instead of
+  having it correctly linked against GL!)</comment>
+    <requestid>135763</requestid>
+  </revision>
+  <revision rev="158" vrev="27">
+    <srcmd5>e81275763a72994120581d11c8ff824d</srcmd5>
+    <version>unknown</version>
+    <time>1349244282</time>
+    <user>coolo</user>
+    <comment>Update Mesa
+the real purpose was to enable the radeonsi driver which always builds locally using osc but never at the buildservice itself, maybe you have an idea how to fix this!
+Thanks (forwarded request 136107 from klausi123)</comment>
+    <requestid>136152</requestid>
+  </revision>
+  <revision rev="159" vrev="28">
+    <srcmd5>a4f0cde4da6b0f307f73b0ebe8bafba9</srcmd5>
+    <version>unknown</version>
+    <time>1350022017</time>
+    <user>coolo</user>
+    <comment>- Update to version 9.0:
+  Mesa 9.0 has been released.  Mesa 9.0 is a feature release.
+  &quot;The&quot; big feature is the availability of OpenGL 3.1 on some
+  supported hardware.
+  + Remove the Git Commit ID</comment>
+    <requestid>137720</requestid>
+  </revision>
+  <revision rev="160" vrev="29">
+    <srcmd5>34a4562ca7a5b43a3776e17955e194be</srcmd5>
+    <version>unknown</version>
+    <time>1350590138</time>
+    <user>coolo</user>
+    <comment>- improved packages descriptions</comment>
+    <requestid>138411</requestid>
+  </revision>
+  <revision rev="161" vrev="30">
+    <srcmd5>45152e4c38a742ec0e25fc6b7d681ed1</srcmd5>
+    <version>unknown</version>
+    <time>1355474711</time>
+    <user>coolo</user>
+    <comment>- Update to Version 9.0.1
+  * bug fix release</comment>
+    <requestid>144966</requestid>
+  </revision>
+  <revision rev="162" vrev="31">
+    <srcmd5>1ca98731633d6e599e0c63112482a0f0</srcmd5>
+    <version>unknown</version>
+    <time>1355733361</time>
+    <user>coolo</user>
+    <comment>Minor cleanup (forwarded request 145457 from tobijk)</comment>
+    <requestid>145462</requestid>
+  </revision>
+  <revision rev="163" vrev="32">
+    <srcmd5>63b44cfd6484efc3ed23c4da43abf8f2</srcmd5>
+    <version>unknown</version>
+    <time>1359020692</time>
+    <user>coolo</user>
+    <comment>- reverted removing Libs.private/Requires.private in pkgconfig
+  files
+
+- enable llvm backend also for ARM
+
+- Add requires for Mesa to Mesa-libGL1 in baselibs.conf
+ * Mesa required for many applications in wine
+ * wine-32bit pulls through Mesa-libGL1-32bit without Mesa-32bit
+
+- Remove Requires.private and Libs.private from *.pc files
+ * Both are needed only for static linking
+ * This package provides only shared libraries
+ * the rpm pkgconfig dependency generator considers &quot;Requires.private&quot;
+   a valid dependency even though there are no static libraries in the 
+   packages
+ * This cause bloat and hides broken &quot;buildRequires&quot; in other packages.</comment>
+    <requestid>149732</requestid>
+  </revision>
+  <revision rev="164" vrev="33">
+    <srcmd5>543f25775fd79b1703ba8f603fce7910</srcmd5>
+    <version>unknown</version>
+    <time>1359102837</time>
+    <user>coolo</user>
+    <comment>- update to Mesa 9.0.2: a bugfix release
+ * [KMS] mesa demo spectex broken on rv280 (fdo#22576)
+ * KMS/R200: Bad shading in NWN since Mesa rewrite (fdo#26809)
+ * [bisected regression] Oglc fbo(negative.invalidParams3)
+   Segmentation fault (fdo#45877)
+ * st_glsl_to_tgsi.cpp:4006:dst_register: Assertion 
+   `index &lt; VERT_RESULT_MAX' failed (fdo#54402)
+ * Memoryleak with glPopAttrib only on Intel GM45 (fdo#55175)
+ * glcpp accepts junk after #else/#elif/#endif tokens (fdo#56442)
+ * EGL sets error to EGL_SUCCESS when DRI driver fails to create
+   context (fdo#56706)
+ * Webgl conformance shader-with-non-reserved-words crash. (fdo#57622)
+ * r200: Culling is broken when rendering to an FBO (fdo#57842)
+ * r300g: blend sfactor=GL_DST_COLOR fails with FBOs (fdo#57984)
+ * [llvmpipe] src/gallium/auxiliary/gallivm/lp_bld_tgsi_info.c:75:analyse_src: Assertion `src-&gt;Index &lt; (sizeof(ctx-&gt;imm)/sizeof((ctx-&gt;imm)[0]))' failed. (fdo#58545)
+ * src/glsl/tests/Makefile.am missing $(top_srcdir)/include (fdo#59383)</comment>
+    <requestid>149811</requestid>
+  </revision>
+  <revision rev="165" vrev="35">
+    <srcmd5>543f25775fd79b1703ba8f603fce7910</srcmd5>
+    <version>unknown</version>
+    <time>1359108618</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="166" vrev="36">
+    <srcmd5>6337d6bdc3d88ccfd23aaf591b2da4d9</srcmd5>
+    <version>unknown</version>
+    <time>1360062791</time>
+    <user>coolo</user>
+    <comment>- enable build of subpackage libwayland-egl1
+
+Mesa9 comes with support for the wayland framework:
+the mesa drivers can be used for wayland clients'
+direct rendering. This is mostly done via EGL; only
+special windowing functions for windowed applications
+are not present in the general EGL libs, and provided by
+this extra package. Now that we have libwayland in Factory,
+it's time to build and provide this standard interface. (forwarded request 151111 from duwe)</comment>
+    <requestid>151162</requestid>
+  </revision>
+  <revision rev="167" vrev="37">
+    <srcmd5>373eb0eddae2e86623bf280acfeb1515</srcmd5>
+    <version>unknown</version>
+    <time>1361548527</time>
+    <user>coolo</user>
+    <comment>update to Mesa 9.0.3 (forwarded request 156021 from sumski)</comment>
+    <requestid>156060</requestid>
+  </revision>
+  <revision rev="168" vrev="38">
+    <srcmd5>7758999b2d570c5fd70a75b850d4bb9c</srcmd5>
+    <version>unknown</version>
+    <time>1362119703</time>
+    <user>coolo</user>
+    <comment>Patch applied upstream for Mesa 9.1, updated patch description (forwarded request 156766 from StefanBruens)</comment>
+    <requestid>156815</requestid>
+  </revision>
+  <revision rev="169" vrev="39">
+    <srcmd5>b7c1e6b5d80f668043bad2bbf863f563</srcmd5>
+    <version>unknown</version>
+    <time>1362142633</time>
+    <user>coolo</user>
+    <comment>- only enable swrast for aarch64 for now (forwarded request 156884 from dirkmueller)</comment>
+    <requestid>156950</requestid>
+  </revision>
+  <revision rev="170" vrev="40">
+    <srcmd5>29c5b9ba059095ad97b4cfa1ce558939</srcmd5>
+    <version>unknown</version>
+    <time>1363276417</time>
+    <user>coolo</user>
+    <comment>Update to Mesa 9.1 (forwarded request 157192 from tobijk)</comment>
+    <requestid>159204</requestid>
+  </revision>
+  <revision rev="171" vrev="41">
+    <srcmd5>79956459e90fbdfcd9ee99ac6bc71c80</srcmd5>
+    <version>unknown</version>
+    <time>1363950220</time>
+    <user>coolo</user>
+    <comment>- Don't enable xa on ppc and ppc64
+- Fix glapi_dispatch #bfo56710 (u_mesa-glapi_dispatch.patch) (forwarded request 160489 from k0da)</comment>
+    <requestid>160491</requestid>
+  </revision>
+  <revision rev="172" vrev="42">
+    <srcmd5>41e96cd39623fae6e4619586c279102e</srcmd5>
+    <version>unknown</version>
+    <time>1365140746</time>
+    <user>coolo</user>
+    <comment>- fix baselibs.conf (forwarded request 162338 from coolo)</comment>
+    <requestid>162353</requestid>
+  </revision>
+  <revision rev="173" vrev="43">
+    <srcmd5>99c643becdfbdc3b6c5cc0448620e6f6</srcmd5>
+    <version>unknown</version>
+    <time>1367559291</time>
+    <user>coolo</user>
+    <comment>Update to 9.1.2 (forwarded request 174307 from sumski)</comment>
+    <requestid>174308</requestid>
+  </revision>
+  <revision rev="174" vrev="44">
+    <srcmd5>33a9119f2692a5472ae1bc7ea4ca3b6c</srcmd5>
+    <version>unknown</version>
+    <time>1369719659</time>
+    <user>coolo</user>
+    <comment>update to Mesa 9.1.3 (forwarded request 176539 from sumski)</comment>
+    <requestid>176641</requestid>
+  </revision>
+  <revision rev="175" vrev="45">
+    <srcmd5>e833b35b989e9dee7b3044776f2394ac</srcmd5>
+    <version>unknown</version>
+    <time>1370431865</time>
+    <user>coolo</user>
+    <comment>- fixed compilation against latest lvm: llvm-3.3.patch (forwarded request 176903 from -miska-)</comment>
+    <requestid>176915</requestid>
+  </revision>
+  <revision rev="176" vrev="46">
+    <srcmd5>63c827866b78c8c35f0998ea6081a72c</srcmd5>
+    <version>unknown</version>
+    <time>1372839897</time>
+    <user>coolo</user>
+    <comment>Update to 9.1.4 (forwarded request 181754 from sumski)</comment>
+    <requestid>181759</requestid>
+  </revision>
+  <revision rev="177" vrev="47">
+    <srcmd5>304da76f9c6096e61aed7ea730669b14</srcmd5>
+    <version>unknown</version>
+    <time>1373982248</time>
+    <user>coolo</user>
+    <comment>Update to 9.2 snapshot (forwarded request 183076 from sumski)</comment>
+    <requestid>183121</requestid>
+  </revision>
+  <revision rev="178" vrev="48">
+    <srcmd5>9bea52e522d9767e947f23ab0d16f81d</srcmd5>
+    <version>unknown</version>
+    <time>1374050165</time>
+    <user>coolo</user>
+    <comment>- The llvm with the R600 backend is finally in Factory, lets use it :)</comment>
+    <requestid>183486</requestid>
+  </revision>
+  <revision rev="179" vrev="49">
+    <srcmd5>4bad0330d664fbb2c23e9f72e1c6bf72</srcmd5>
+    <version>unknown</version>
+    <time>1374932898</time>
+    <user>coolo</user>
+    <comment> (forwarded request 184348 from k0da)</comment>
+    <requestid>184398</requestid>
+  </revision>
+  <revision rev="180" vrev="50">
+    <srcmd5>12a62a2d6ffdfd5818b1005816777c25</srcmd5>
+    <version>unknown</version>
+    <time>1375124902</time>
+    <user>coolo</user>
+    <comment>- Make a symlink to libGL.so.1.2 for compatibility (bnc#809359, 
+  bnc#831306) 
+- u_mesa-9.0-i965-Make-sure-we-do-render-between-two-hiz-flushes.patch
+  * Prevent hangs with rc6. (bnc#804910, bnc#831306)</comment>
+    <requestid>184850</requestid>
+  </revision>
+  <revision rev="181" vrev="51">
+    <srcmd5>3419e639d7a59f8917d137e7acc89efd</srcmd5>
+    <version>unknown</version>
+    <time>1376315530</time>
+    <user>scarabeus_factory</user>
+    <comment>- Don't enable gallium-egl without Gallium
+- Enable llvm_r600 only on %ix86 x86_64 (forwarded request 186643 from Andreas_Schwab)</comment>
+    <requestid>186724</requestid>
+  </revision>
+  <revision rev="182" vrev="52">
+    <srcmd5>6f8a9bbeacf8139e50e1230f2af57a7a</srcmd5>
+    <version>unknown</version>
+    <time>1376651626</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix build on armv7 (forwarded request 186964 from dirkmueller)</comment>
+    <requestid>186966</requestid>
+  </revision>
+  <revision rev="183" vrev="53">
+    <srcmd5>8494ace793492f93582b2b84e0ca1461</srcmd5>
+    <version>unknown</version>
+    <time>1377156209</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 9.2 rc1 (forwarded request 195702 from sumski)</comment>
+    <requestid>195803</requestid>
+  </revision>
+  <revision rev="184" vrev="54">
+    <srcmd5>36ed221d76e64498d92cd76add6ea0ad</srcmd5>
+    <version>unknown</version>
+    <time>1377717727</time>
+    <user>coolo</user>
+    <comment>update to final 9.2 (forwarded request 196588 from tobijk)</comment>
+    <requestid>196631</requestid>
+  </revision>
+  <revision rev="185" vrev="55">
+    <srcmd5>3160f4c1fd90308e715a9cc44227fe82</srcmd5>
+    <version>unknown</version>
+    <time>1378126825</time>
+    <user>coolo</user>
+    <comment>- Enable llvmpipe and xa on s390x (forwarded request 196973 from namtrac)</comment>
+    <requestid>197054</requestid>
+  </revision>
+  <revision rev="186" vrev="56">
+    <srcmd5>1d5ff2b6d7b875e10b0a9482891c5996</srcmd5>
+    <version>unknown</version>
+    <time>1378748748</time>
+    <user>coolo</user>
+    <comment>- u_wayland-egl-pc-require-wayland.patch: after finding wayland
+  for egl, make sure its pkconfig is used as well. (forwarded request 198016 from duwe)</comment>
+    <requestid>198025</requestid>
+  </revision>
+  <revision rev="187" vrev="57">
+    <srcmd5>8619b6461d1f56b3a2152ef9e1e99591</srcmd5>
+    <version>unknown</version>
+    <time>1378890534</time>
+    <user>coolo</user>
+    <comment>Remove custom drirc
+Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
+    <requestid>198324</requestid>
+  </revision>
+  <revision rev="188" vrev="58">
+    <srcmd5>a6b8e5c6eff876e93802f140576bc2d7</srcmd5>
+    <version>unknown</version>
+    <time>1379076211</time>
+    <user>scarabeus_factory</user>
+    <comment>- drirc is only installed if there are hardware DRI drivers (forwarded request 198705 from Andreas_Schwab)</comment>
+    <requestid>198707</requestid>
+  </revision>
+  <revision rev="189" vrev="59">
+    <srcmd5>9c79c7a4e3cff1225f69bb9798e5e52f</srcmd5>
+    <version>unknown</version>
+    <time>1379178495</time>
+    <user>scarabeus_factory</user>
+    <comment>- wayland-egl-pc-require-wayland is now mainline (forwarded request 198946 from duwe)</comment>
+    <requestid>198949</requestid>
+  </revision>
+  <revision rev="190" vrev="60">
+    <srcmd5>12d8a2cc4c774e73a4b2f844ff6d75fd</srcmd5>
+    <version>unknown</version>
+    <time>1379353037</time>
+    <user>coolo</user>
+    <comment>- updated to latest available version of
+  * u_mesa-8.0-llvmpipe-shmget.patch
+  * u_mesa-8.0.1-fix-16bpp.patch
+  and applying it now in the opposite order.</comment>
+    <requestid>199255</requestid>
+  </revision>
+  <revision rev="191" vrev="62">
+    <srcmd5>12d8a2cc4c774e73a4b2f844ff6d75fd</srcmd5>
+    <version>unknown</version>
+    <time>1379661910</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="192" vrev="63">
+    <srcmd5>97dcc3ccc2f1c47f95af1b0fac14a60f</srcmd5>
+    <version>unknown</version>
+    <time>1379923477</time>
+    <user>coolo</user>
+    <comment>Added U_radeon-pad-CS-to-8-DW.patch from upstream -- aligns the IB to 8 DWs. r6xx also require at least 4 DW alignment to avoid a hw bug. (forwarded request 199428 from sumski)</comment>
+    <requestid>199483</requestid>
+  </revision>
+  <revision rev="193" vrev="64">
+    <srcmd5>3fb140932dd6d5d2fb4d0779381ee36b</srcmd5>
+    <version>unknown</version>
+    <time>1380296787</time>
+    <user>coolo</user>
+    <comment>- Enable llvmpipe on PPC64 (forwarded request 200156 from namtrac)</comment>
+    <requestid>200512</requestid>
+  </revision>
+  <revision rev="194" vrev="65">
+    <srcmd5>98432cb76e68b61afd3435957ecd6581</srcmd5>
+    <version>unknown</version>
+    <time>1381224787</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 9.2.1. Pure bugfix release, if possible, please checkin to 13.1 also (forwarded request 202392 from sumski)</comment>
+    <requestid>202532</requestid>
+  </revision>
+  <revision rev="195" vrev="66">
+    <srcmd5>ea1d5a23a09b33ac20618088ff3c8539</srcmd5>
+    <version>unknown</version>
+    <time>1382361164</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 9.2.2. Minor bugfix release, might worth to checkin to 13.1? (forwarded request 204102 from sumski)</comment>
+    <requestid>204111</requestid>
+  </revision>
+  <revision rev="196" vrev="67">
+    <srcmd5>9ae8d88e1c59a5ae4b81600bb204cf48</srcmd5>
+    <version>unknown</version>
+    <time>1382720005</time>
+    <user>scarabeus_factory</user>
+    <comment>- no longer install install libvdpau_r300 subpackage by default and
+  update descriptions of libvdpau_{nouveau,r600,radeonsi,softpipe} 
+  subpackages (bnc#847269)
+
+- install libvdpau_{nouveau,r300,r600,radeonsi} package on 
+  appropriate hardware by default (bnc#847269)</comment>
+    <requestid>204795</requestid>
+  </revision>
+  <revision rev="197" vrev="68">
+    <srcmd5>fef0fea60226c6cfe03323e2c52a34ab</srcmd5>
+    <version>unknown</version>
+    <time>1385442749</time>
+    <user>coolo</user>
+    <comment>- Add support for m68k (forwarded request 206652 from Andreas_Schwab)</comment>
+    <requestid>208307</requestid>
+  </revision>
+  <revision rev="198" vrev="69">
+    <srcmd5>52235659c996f2d91b282be2ce22776b</srcmd5>
+    <version>unknown</version>
+    <time>1385620656</time>
+    <user>coolo</user>
+    <comment>Update to 9.2.3 (forwarded request 208313 from sumski)</comment>
+    <requestid>208674</requestid>
+  </revision>
+  <revision rev="199" vrev="70">
+    <srcmd5>ece0897068375cd53bbc09eb5d8c320d</srcmd5>
+    <version>unknown</version>
+    <time>1386779808</time>
+    <user>coolo</user>
+    <comment>second attempt for ppc64le (forwarded request 209581 from adrianSuSE)</comment>
+    <requestid>209602</requestid>
+  </revision>
+  <revision rev="200" vrev="71">
+    <srcmd5>8251748f2d7fe933a7cdb249930b03ee</srcmd5>
+    <version>unknown</version>
+    <time>1387174098</time>
+    <user>coolo</user>
+    <comment>update to version 10.0.1 (forwarded request 210965 from tobijk)</comment>
+    <requestid>210971</requestid>
+  </revision>
+  <revision rev="201" vrev="72">
+    <srcmd5>bd5d1b4041a3a82f310545ee39997532</srcmd5>
+    <version>unknown</version>
+    <time>1387261664</time>
+    <user>coolo</user>
+    <comment>- Fix filelist: /etc/drirc is now always installed (forwarded request 211075 from Andreas_Schwab)</comment>
+    <requestid>211079</requestid>
+  </revision>
+  <revision rev="202" vrev="73">
+    <srcmd5>0aef2fdb27f235d7815e77a5770eaae2</srcmd5>
+    <version>unknown</version>
+    <time>1387453791</time>
+    <user>coolo</user>
+    <comment>- Make proper use of %build and %install
+- Use verbose make rules (forwarded request 211220 from Andreas_Schwab)</comment>
+    <requestid>211227</requestid>
+  </revision>
+  <revision rev="203" vrev="74">
+    <srcmd5>d50c5eb2552a1c85e8d8a671af0bc3f6</srcmd5>
+    <version>unknown</version>
+    <time>1389953082</time>
+    <user>coolo</user>
+    <comment>Enable freedreno gallium driver on arm for Qualcomm Adreno (Snapdragon) (forwarded request 214047 from a_faerber)</comment>
+    <requestid>214076</requestid>
+  </revision>
+  <revision rev="204" vrev="75">
+    <srcmd5>97fb5d7246bdd365e38c86ef0ef7ebac</srcmd5>
+    <version>unknown</version>
+    <time>1391787861</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 10.0.3
+  * Mesa 10.0.3 is a bug fix release which fixes bugs fixed since
+    the 10.0.2 release</comment>
+    <requestid>220952</requestid>
+  </revision>
+  <revision rev="205" vrev="76">
+    <srcmd5>c273d8a7fe80343d537ef4de91c9a634</srcmd5>
+    <version>unknown</version>
+    <time>1394566402</time>
+    <user>coolo</user>
+    <comment>update to version 10.1
++ left the patches untouched (forwarded request 224739 from tobijk)</comment>
+    <requestid>225143</requestid>
+  </revision>
+  <revision rev="206" vrev="77">
+    <srcmd5>21653611945a7877d11eb33294716035</srcmd5>
+    <version>unknown</version>
+    <time>1395513960</time>
+    <user>coolo</user>
+    <comment>Fixes for BNC#866445 (forwarded request 225987 from tobijk)</comment>
+    <requestid>226575</requestid>
+  </revision>
+  <revision rev="207" vrev="78">
+    <srcmd5>7e39963da258292dd9e9805cf52934a8</srcmd5>
+    <version>unknown</version>
+    <time>1396761016</time>
+    <user>coolo</user>
+    <comment>- Clean up specfile
+- Turn negative arch checks into positive ones for non-default configure
+  settings
+- libxsmfence is also available on ppc64le
+- Don't enable gallium-egl on ppc64 for now to work around llvm bug (forwarded request 228347 from Andreas_Schwab)</comment>
+    <requestid>228406</requestid>
+  </revision>
+  <revision rev="208" vrev="79">
+    <srcmd5>bba22979fc9147bdaf8b8aa57db7991a</srcmd5>
+    <version>unknown</version>
+    <time>1397041270</time>
+    <user>coolo</user>
+    <comment>- Include XA tracker sub packages on s390x (forwarded request 229290 from Andreas_Schwab)</comment>
+    <requestid>229294</requestid>
+  </revision>
+  <revision rev="209" vrev="80">
+    <srcmd5>cd149a2629e2dd4bcfe8d67354ac2892</srcmd5>
+    <version>unknown</version>
+    <time>1398533650</time>
+    <user>coolo</user>
+    <comment>Fix build without xorg-x11-*-devel (forwarded request 231327 from tobijk)</comment>
+    <requestid>231355</requestid>
+  </revision>
+  <revision rev="210" vrev="81">
+    <srcmd5>fbe01361b6413d0d7d5f9717f0b650d1</srcmd5>
+    <version>unknown</version>
+    <time>1399376374</time>
+    <user>coolo</user>
+    <comment>Mesa 10.2-rc1 (forwarded request 232615 from tobijk)</comment>
+    <requestid>232654</requestid>
+  </revision>
+  <revision rev="211" vrev="82">
+    <srcmd5>cb0e7361ddd74f1e314cbc68b5e3ddd0</srcmd5>
+    <version>unknown</version>
+    <time>1399879715</time>
+    <user>coolo</user>
+    <comment>10.2-rc2 (forwarded request 233341 from tobijk)</comment>
+    <requestid>233388</requestid>
+  </revision>
+  <revision rev="212" vrev="83">
+    <srcmd5>c343371006b84f50299dc610a3cc7409</srcmd5>
+    <version>unknown</version>
+    <time>1400006755</time>
+    <user>coolo</user>
+    <comment>- no shared llvm libs on ppc64
+- vdpau no longer enabled by default
+- xa or gallium-gbm implies gallium-loader (forwarded request 233580 from Andreas_Schwab)</comment>
+    <requestid>233592</requestid>
+  </revision>
+  <revision rev="213" vrev="84">
+    <srcmd5>d3569847b170b0ce974f22b7cb7248a0</srcmd5>
+    <version>unknown</version>
+    <time>1401685464</time>
+    <user>coolo</user>
+    <comment>- Fix zero-division with empty height (bnc#879462)
+  u_mesa-gallium-llvmpipe-fix-SIGFPE.patch (forwarded request 235536 from tiwai)</comment>
+    <requestid>235538</requestid>
+  </revision>
+  <revision rev="214" vrev="85">
+    <srcmd5>20e52d8640b8c0cf6fac5eeefadc29d1</srcmd5>
+    <version>unknown</version>
+    <time>1403081964</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236704</requestid>
+  </revision>
+  <revision rev="215" vrev="86">
+    <srcmd5>acec0502bfc06616852ad27fe5da0ed9</srcmd5>
+    <version>unknown</version>
+    <time>1405253147</time>
+    <user>coolo</user>
+    <comment>- Update to version 10.2.3
+  * Mesa 10.2.3 is a bug fix release which fixes bugs fixed since
+    the 10.2.2 release
+- obsoletes u_mesa-gallium-llvmpipe-fix-SIGFPE.patch</comment>
+    <requestid>239960</requestid>
+  </revision>
+  <revision rev="216" vrev="87">
+    <srcmd5>9583f7f35411e3157c954dd7a3b7cf0b</srcmd5>
+    <version>unknown</version>
+    <time>1406661705</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242753</requestid>
+  </revision>
+  <revision rev="217" vrev="88">
+    <srcmd5>1c3a657fdf26ef2f1e1d79a7b1dc669d</srcmd5>
+    <version>unknown</version>
+    <time>1406793840</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242945</requestid>
+  </revision>
+  <revision rev="218" vrev="89">
+    <srcmd5>d9489a66d5763505f0b9e36899c7bad8</srcmd5>
+    <version>unknown</version>
+    <time>1407744578</time>
+    <user>lnussel</user>
+    <comment>- Update to version 10.2.5
+  * Mesa 10.2.5 is a bug fix release which fixes bugs fixed since
+    the 10.2.4 release</comment>
+    <requestid>243870</requestid>
+  </revision>
+  <revision rev="219" vrev="90">
+    <srcmd5>5c7f6e99a0b733f5b6223e684257c2a8</srcmd5>
+    <version>unknown</version>
+    <time>1408549964</time>
+    <user>lnussel</user>
+    <comment>- no longer add /usr/%{_lib}/dri/updates to DRI driver search path
+  (FATE#317822)</comment>
+    <requestid>244836</requestid>
+  </revision>
+  <revision rev="220" vrev="92">
+    <srcmd5>5c7f6e99a0b733f5b6223e684257c2a8</srcmd5>
+    <version>unknown</version>
+    <time>1409300432</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="221" vrev="93">
+    <srcmd5>e1eca227ab47e0197fc00975590d90aa</srcmd5>
+    <version>unknown</version>
+    <time>1409583520</time>
+    <user>coolo</user>
+    <comment>- Update to version 10.3.0-RC1
+  * Mesa 10.3 brings many performance improvements, more 
+    OpenGL 4.x functionality, the VC4 Gallium3D driver, 
+    and much more.
+  * supersedes U_mesa-glx-Reduce-error-log-level.patch
+
+- Package vdpau_r600 for ppc64le as well (bnc#893275) 
+
+- u_Suppress-any-libGL-.-warnings-when-LIBGL_DEBUG-is-se.patch
+  Suppress any &quot;libGL:...&quot; warnings when LIBGL_DEBUG == &quot;quiet&quot;
+  (bnc#892896)</comment>
+    <requestid>246335</requestid>
+  </revision>
+  <revision rev="222" vrev="94">
+    <srcmd5>2e3cbea10580fa0528d75d62e99ca7ed</srcmd5>
+    <version>unknown</version>
+    <time>1411627351</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>251647</requestid>
+  </revision>
+  <revision rev="223" vrev="95">
+    <srcmd5>d360e5ab08606ba929d53ff3397ef5b9</srcmd5>
+    <version>unknown</version>
+    <time>1412142022</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253099</requestid>
+  </revision>
+  <revision rev="224" vrev="96">
+    <srcmd5>2c3be453b210ea67ac1102053a9e953b</srcmd5>
+    <version>unknown</version>
+    <time>1413403129</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>256193</requestid>
+  </revision>
+  <revision rev="225" vrev="97">
+    <srcmd5>610e33338ce9354ce5372d65d604f787</srcmd5>
+    <version>unknown</version>
+    <time>1414744767</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258979</requestid>
+  </revision>
+  <revision rev="226" vrev="98">
+    <srcmd5>f3233cb4241f9638edfd3441ca565ab8</srcmd5>
+    <version>unknown</version>
+    <time>1415347550</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259654</requestid>
+  </revision>
+  <revision rev="227" vrev="99">
+    <srcmd5>1e61cd8acafa8c33e8c2145cb58b25a8</srcmd5>
+    <version>unknown</version>
+    <time>1416347750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262010</requestid>
+  </revision>
+  <revision rev="228" vrev="100">
+    <srcmd5>afb929c80222d9d4964be79f68e3cf18</srcmd5>
+    <version>unknown</version>
+    <time>1418840123</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>265259</requestid>
+  </revision>
+  <revision rev="229" vrev="101">
+    <srcmd5>df3708c9d32a03d9319371fb07adf0ea</srcmd5>
+    <version>unknown</version>
+    <time>1421959710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281933</requestid>
+  </revision>
+  <revision rev="230" vrev="102">
+    <srcmd5>b216f9f31113119ebace30a496b29f41</srcmd5>
+    <version>unknown</version>
+    <time>1422346121</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282805</requestid>
+  </revision>
+  <revision rev="231" vrev="103">
+    <srcmd5>b5602dd4ff2a2e1a94cd8aabc0a7f252</srcmd5>
+    <version>unknown</version>
+    <time>1422594252</time>
+    <user>dimstar_suse</user>
+    <comment>- moved definition of Mesa-libd3d package above definition of
+  libxatracker packages in order to fix version requires
+
+- fixed Requires for libd3d-devel 
+
+- enabled build of Direct3D 9 (Gallium3D Nine) state tracker (bnc#910109)
+- removed obsolete patch u_be_assert_include.patch, addressed by
+  upstream commit 2a13ff9 &quot;gallium/util: add missing u_debug include&quot;
+  (bnc#910109)
+
+- Set xvmc_support also on ppc</comment>
+    <requestid>283301</requestid>
+  </revision>
+  <revision rev="232" vrev="104">
+    <srcmd5>80793df2fbf360f48f67900fab2d488f</srcmd5>
+    <version>unknown</version>
+    <time>1423215655</time>
+    <user>dimstar_suse</user>
+    <comment>- baselibs.conf: enabled build of 32bit Mesa-libd3d package
+  (bnc#910109)</comment>
+    <requestid>283733</requestid>
+  </revision>
+  <revision rev="233" vrev="105">
+    <srcmd5>878a8a67cb48ff193f06214106de6734</srcmd5>
+    <version>unknown</version>
+    <time>1423732820</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285096</requestid>
+  </revision>
+  <revision rev="234" vrev="106">
+    <srcmd5>baae1960ef2eb66e831ec197d05f387f</srcmd5>
+    <version>unknown</version>
+    <time>1425031740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287561</requestid>
+  </revision>
+  <revision rev="235" vrev="107">
+    <srcmd5>cc6791fc800d69d67fba627332871403</srcmd5>
+    <version>unknown</version>
+    <time>1425566113</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288634</requestid>
+  </revision>
+  <revision rev="236" vrev="108">
+    <srcmd5>7223b27426b5078ffaa805a7269dad3e</srcmd5>
+    <version>unknown</version>
+    <time>1426174675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.0:
+  + Initial support for the new Intel Skylake GPUs and Adreno 4xx 
+    GPUs.
+  + Experimental EGL support for Haiku.
+  + The new IR - NIR. A flat, typeless IR, supporting SSA.
+  + GLX/DRI3 fixes and improvements.
+  + A lot of preparation work for GL_ARB_direct_state_access.
+  + The usual amount of piglit and drawElements Quality Program
+    (dEQP) fixes.
+  + Building mesa with GCC 4.1 or earlier is no longer supported.
+  + The distribution tarball has been renamed and now contains all
+    the generated sources.
+- New GL features:
+  + GL_ARB_framebuffer_sRGB on freedreno
+  + GL_ARB_texture_rg on freedreno
+  + GL_EXT_packed_float on freedreno
+  + GL_EXT_polygon_offset_clamp on i965, nv50, nvc0, r600, radeonsi,
+    llvmpipe
+  + GL_EXT_texture_shared_exponent on freedreno
+  + GL_EXT_texture_snorm on freedreno
+- Changes to Package:
+  + switch to xz compressed sources
+  + remove Patch16: u_gallivm_Update_for_RTDyldMemoryManager_unique_ptr.patch
+  + add Patch100: U_0001_gallium_include_util_macros.patch
+  + add Patch101: U_0002_st_nine_mark_end_of_non_void_function_unreachable.patch
+  + add Patch102: U_0003_fix_build_after_macro_include.patch</comment>
+    <requestid>290174</requestid>
+  </revision>
+  <revision rev="237" vrev="109">
+    <srcmd5>03fa08fb09c9689b3c053243a49897f0</srcmd5>
+    <version>unknown</version>
+    <time>1426793278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290947</requestid>
+  </revision>
+  <revision rev="238" vrev="110">
+    <srcmd5>68d461974efc239644132d1ff695d1b6</srcmd5>
+    <version>unknown</version>
+    <time>1428064365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to  10.5.2
+ + fdo#88534 - include/c11/threads_posix.h PTHREAD_MUTEX_RECURSIVE_NP not defined
+ + fdo#89328 - python required to build Mesa release tarballs
+ + fdo#89530 - FTBFS in loader: missing fstat
+ + fdo#89590 - Crash in glLinkProgram with shaders with multiple constant arrays
+ + fdo#89680 - Hard link exist in Mesa 10.5.1 sources
+ + glsl: Generate link error for non-matching gl_FragCoord redeclarations
+ + docs: Add sha256 sums for the 10.5.1 release
+ + automake: add missing egl files to the tarball
+ + st/egl: don't ship the dri2.c link at the tarball
+ + loader: include &lt;sys/stat.h&gt; for non-sysfs builds
+ + auxiliary/os: fix the android build - s/drm_munmap/os_munmap/
+ + cherry-ignore: add commit non applicable for 10.5
+ + c11/threads: Use PTHREAD_MUTEX_RECURSIVE by default
+ + i965: Set nr_params to the number of uniform components in the VS/GS path.
+ + freedreno/a3xx: use the same layer size for all slices
+ + freedreno: fix slice pitch calculations
+ + radeonsi: increase coords array size for radeon_llvm_emit_prepare_cube_coords
+ + glx: Handle out-of-sequence swap completion events correctly. (v2)
+ + mapi: Make private copies of name strings provided by client.
+ + freedreno: update generated headers
+ + glsl: optimize (0 cmp x + y) into (-x cmp y).
+ + glsl: fix names in lower_constant_arrays_to_uniforms
+ + clover: Return 0 as storage size for local kernel args that are not set v2</comment>
+    <requestid>293716</requestid>
+  </revision>
+  <revision rev="239" vrev="111">
+    <srcmd5>0173108061e8631e0b56fdd74d8b0c03</srcmd5>
+    <version>unknown</version>
+    <time>1429658151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.5.3
+ + fdo#83962 - [HSW/BYT]Piglit spec_ARB_gpu_shader5_arb_gpu_shader5-emitstreamvertex_nodraw fails
+ + fdo#89679 - [NV50] Portal/Half-Life 2 will not start (native Steam)
+ + fdo#89746 - Mesa and LLVM 3.6+ break opengl for genymotion
+ + fdo#89754 - vertexAttrib fails WebGL Conformance test with mesa drivers
+ + fdo#89758 - pow WebGL Conformance test with mesa drivers
+ + fdo#89759 - WebGL OGL ES GLSL conformance test with mesa drivers fails
+ + fdo#89905 - scons build broken on 10.5.2 due to activated vega st
+ + st_glsl_to_tgsi: only do mov copy propagation on temps (v2)
+ + xmlpool: don't forget to ship the MOS
+ + configure.ac: error out if python/mako is not found when required
+ + dist: add the VG depedencies into the tarball
+ + i965: Do not render primitives in non-zero streams then TF is disabled
+ + st/mesa: update arrays when the current attrib has been updated
+ + nv50/ir: take postFactor into account when doing peephole optimizations
+ + nv50/ir/gk110: fix offset flag position for TXD opcode
+ + freedreno/a3xx: fix 3d texture layout
+ + freedreno/a3xx: point size should not be divided by 2
+ + nv50: allocate more offset space for occlusion queries
+ + nv50,nvc0: limit the y-tiling of 3d textures to the first level's tiling
+ + i965: Fix instanced geometry shaders on Gen8+.
+ + i965: Add forgotten multi-stream code to Gen8 SOL state.
+ + nouveau: synchronize &quot;scratch runout&quot; destruction with the command stream
+ + radeonsi: Cache LLVMTargetMachineRef in context instead of in screen
+ + clover: Return CL_BUILD_ERROR for CL_PROGRAM_BUILD_STATUS when compilation fails v2
+ + i965: Fix URB size for CHV</comment>
+    <requestid>298126</requestid>
+  </revision>
+  <revision rev="240" vrev="112">
+    <srcmd5>a431f399fda58a7f3cc4290b499be4bb</srcmd5>
+    <version>unknown</version>
+    <time>1430246534</time>
+    <user>coolo</user>
+    <comment>- Update to 10.5.4
+  * This release includes fixes for the mesa state-tracker used by
+    all the gallium drivers, a drirc workaround for Second Life, 
+    plus i965 fixes. For the Android users out there, this release
+    includes many compilation fixes with more to come shortly.</comment>
+    <requestid>304162</requestid>
+  </revision>
+  <revision rev="241" vrev="113">
+    <srcmd5>6a6b4457eb51c48e773826242beef9df</srcmd5>
+    <version>unknown</version>
+    <time>1432280744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307719</requestid>
+  </revision>
+  <revision rev="242" vrev="114">
+    <srcmd5>335cd42b71d0969d4a1f7151b1dbb929</srcmd5>
+    <version>unknown</version>
+    <time>1432799379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308715</requestid>
+  </revision>
+  <revision rev="243" vrev="115">
+    <srcmd5>9302c0b484b12e70079b60d92a8ba29c</srcmd5>
+    <version>unknown</version>
+    <time>1434006622</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311456</requestid>
+  </revision>
+  <revision rev="244" vrev="116">
+    <srcmd5>1fcac36e7114b82d84786ff763bd8787</srcmd5>
+    <version>unknown</version>
+    <time>1436111910</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>314401</requestid>
+  </revision>
+  <revision rev="245" vrev="117">
+    <srcmd5>e9adbe5603c28b51c0195079ae08e03f</srcmd5>
+    <version>unknown</version>
+    <time>1437059766</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316367</requestid>
+  </revision>
+  <revision rev="246" vrev="118">
+    <srcmd5>ce08c94c255ef34f686bee6ff6272985</srcmd5>
+    <version>unknown</version>
+    <time>1439190764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319519</requestid>
+  </revision>
+  <revision rev="247" vrev="119">
+    <srcmd5>a91cd5042cfcd99a163d468e2968593c</srcmd5>
+    <version>unknown</version>
+    <time>1439818381</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.6.4
+  * In this release we have a few GL specific fixes (in both dri
+    drivers and the EGL loader), an updated mesa.icd file and a
+    crashfix for the standalone glcpp tool.</comment>
+    <requestid>322057</requestid>
+  </revision>
+  <revision rev="248" vrev="120">
+    <srcmd5>994a799245f70c8e7a4544049e784bbf</srcmd5>
+    <version>unknown</version>
+    <time>1440743068</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325766</requestid>
+  </revision>
+  <revision rev="249" vrev="121">
+    <srcmd5>c31a43795110d999bed4c72128014300</srcmd5>
+    <version>unknown</version>
+    <time>1441955004</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329651</requestid>
+  </revision>
+  <revision rev="250" vrev="122">
+    <srcmd5>0b2622ac3368fe3252e78bc3234137cd</srcmd5>
+    <version>unknown</version>
+    <time>1443067987</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330918</requestid>
+  </revision>
+  <revision rev="251" vrev="123">
+    <srcmd5>0b23e017109951e35f937c7bb1a753f1</srcmd5>
+    <version>unknown</version>
+    <time>1445092565</time>
+    <user>coolo</user>
+    <comment>- Update to 11.0.2
+  * This is a emergency release which covers the final dEQP
+    regressions introduced in the 11.0 development cycle.
+
+- update upstream status:
+  * remove n_i965-Remove-early-release-of-DRI2-miptree.patch
+  * add U_i965-Remove-early-release-of-DRI2-miptree.patch
+
+- Update to 11.0.1
+  * i965/vec4: Fix saturation errors when coalescing registers
+  * i965/vec4_nir: Load constants as integers
+  * meta: Abort meta pbo path if TexSubImage need signed unsigned 
+    conversion
+  * docs: add sha256 checksums for 11.0.0
+  * Update version to 11.0.1
+  * docs: add release notes for 11.0.1
+  * mesa: Fix GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE for default 
+    framebuffer.
+  * t_dd_dmatmp: Make &quot;count&quot; actually be the count
+  * t_dd_dmatmp: Clean up improper code formatting from previous 
+    patch
+  * t_dd_dmatmp: Use '&amp; 3' instead of '% 4' everywhere
+  * t_dd_dmatmp: Pull out common 'count -= count &amp; 3' code
+  * t_dd_dmatmp: Use addition instead of subtraction in loop 
+    bounds
+  * st/mesa: avoid integer overflows with buffers &gt;= 512MB
+  * nv50, nvc0: fix max texture buffer size to 128M elements
+  * freedreno/a3xx: fix blending of L8 format
+  * nv50,nvc0: detect underlying resource changes and update tic
+  * nv50,nvc0: flush texture cache in presence of coherent bufs
+  * radeonsi: load fmask ptr relative to the resources array
+  * nir: Fix a bunch of ralloc parenting errors
+  * i965/vec4: Don't reswizzle hardware registers
+  * configure.ac: Add support to enable read-only text segment on 
+    x86.
+  * gbm: convert gbm bo format to fourcc format on dma-buf import
+  * mesa: fix errors when reading depth with glReadPixels
+  * i965: fix textureGrad for cubemaps
+  * mesa: Fix texture compression on big-endian systems</comment>
+    <requestid>335448</requestid>
+  </revision>
+  <revision rev="252" vrev="124">
+    <srcmd5>3df69abfe1dea80089d716b65efdd520</srcmd5>
+    <version>unknown</version>
+    <time>1445782268</time>
+    <user>coolo</user>
+    <comment>- U_gallium-add-PIPE_SHADER_CAP_MAX_UNROLL_ITERATIONS_HI.patch
+  * This avoids a serious r600g bug leading to a GPU hang (bnc#951298)
+
+- Update to 11.0.3
+  * bug fix release which fixes bugs found since the 11.0.2 release</comment>
+    <requestid>340418</requestid>
+  </revision>
+  <revision rev="253" vrev="125">
+    <srcmd5>4cc0ae336ac640758692107dc5aef337</srcmd5>
+    <version>unknown</version>
+    <time>1446049682</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340933</requestid>
+  </revision>
+  <revision rev="254" vrev="126">
+    <srcmd5>ffb27c2c750b94a2d41579c6410f9527</srcmd5>
+    <version>unknown</version>
+    <time>1447766465</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.0.5
+* With this release we have some driver patches for i965 and nouveau, a couple
+    of llvm 3.7 related fixes and a some bugfixes in the VA state-tracker.
+* Additionally we have a few new PCI ids for i965 and radeonsi.</comment>
+    <requestid>344079</requestid>
+  </revision>
+  <revision rev="255" vrev="127">
+    <srcmd5>693b6f1b4374496869052bdfc2f50a9e</srcmd5>
+    <version>unknown</version>
+    <time>1449145606</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345835</requestid>
+  </revision>
+  <revision rev="256" vrev="128">
+    <srcmd5>92df2baa59af8b39329066985bd0db5a</srcmd5>
+    <version>unknown</version>
+    <time>1449995968</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>348222</requestid>
+  </revision>
+  <revision rev="257" vrev="129">
+    <srcmd5>2d7c87e2ab16493473b7709b033453b3</srcmd5>
+    <version>unknown</version>
+    <time>1452027242</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349921</requestid>
+  </revision>
+  <revision rev="258" vrev="130">
+    <srcmd5>d07435e3680e9878ddb1f47c04f56ed5</srcmd5>
+    <version>unknown</version>
+    <time>1452377384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>352422</requestid>
+  </revision>
+  <revision rev="259" vrev="131">
+    <srcmd5>444ff9119fb6e2493cd11d228a88a26c</srcmd5>
+    <version>unknown</version>
+    <time>1453507464</time>
+    <user>dimstar_suse</user>
+    <comment>- u_dri2-Check-for-dummyContext-to-see-if-the-glx_context-is-valid.patch
+  Check for dummyContext to see if the glx_context is valid (boo#962609).</comment>
+    <requestid>355068</requestid>
+  </revision>
+  <revision rev="260" vrev="132">
+    <srcmd5>03cf84893dbd57fdf91efd7d807b6632</srcmd5>
+    <version>unknown</version>
+    <time>1454833341</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356474</requestid>
+  </revision>
+  <revision rev="261" vrev="133">
+    <srcmd5>aa546a6cc3bd3bc6f3868dbc06ea5b80</srcmd5>
+    <version>unknown</version>
+    <time>1455701532</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>358872</requestid>
+  </revision>
+  <revision rev="262" vrev="134">
+    <srcmd5>0b0a22707c6dd6f222601b9ab085a7a0</srcmd5>
+    <version>unknown</version>
+    <time>1458333173</time>
+    <user>dimstar_suse</user>
+    <comment>- n_Define-GLAPIVAR-separate-from-GLAPI.patch:
+  Add separate definition GLAPIVAR as GLAPI
+  doesn't have the an 'extern' for some compiler
+  versions. This is needed for GLw (bsc#970725).
+
+- U_llvmpipe-Do-not-use-barriers-if-not-using-threads.patch
+  * llvmpipe: Do not use barriers if not using threads; triggers
+    on single cpu machines (like KVM in openQA) with gcc6 and
+    latest glibc(bnc#971350)
+
+- enable llvmpipe for aarch64 (fate#320649)</comment>
+    <requestid>373998</requestid>
+  </revision>
+  <revision rev="263" vrev="135">
+    <srcmd5>b2cc49a41524e306446bda6ee83dcf36</srcmd5>
+    <version>unknown</version>
+    <time>1460101137</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385218</requestid>
+  </revision>
+  <revision rev="264" vrev="136">
+    <srcmd5>69b213752f00748241b2035ef7c15d48</srcmd5>
+    <version>unknown</version>
+    <time>1462260837</time>
+    <user>dimstar_suse</user>
+    <comment>- u_dri3-Check-for-dummyContext-to-see-if-the-glx_contex.patch 
+  * dri3: Check for dummyContext to see if the glx_context is valid
+    According to the comments in src/glx/glxcurrent.c 
+    __glXGetCurrentContext() always returns a valid pointer. If no
+    context is made current, it will contain dummyContext. Thus a
+    test for NULL will always fail.
+
+- update to 11.2.1
+* It fixes crashes in VAAPI, some build problems in Nine has been addressed,
+    adds a drirc workaround for Warsow and resolves issues in the nouveau,
+    radeonsi and i965 drivers.
+* fdo#93962 ES2-CTS.gtf.GL2FixedTests.scissor.scissor - segfault/asserts</comment>
+    <requestid>391125</requestid>
+  </revision>
+  <revision rev="265" vrev="137">
+    <srcmd5>b20273b84b08c1cafa2a8fbc4b8e86fa</srcmd5>
+    <version>unknown</version>
+    <time>1463497626</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394650</requestid>
+  </revision>
+  <revision rev="266" vrev="138">
+    <srcmd5>c0c37dc995977001da0f20b1e737257f</srcmd5>
+    <version>unknown</version>
+    <time>1464017411</time>
+    <user>dimstar_suse</user>
+    <comment>- u_glxcmds-glXGetFBConfigs-fix-screen-bounds.patch:
+  Fix crash due to oud of founds screen (boo#980382).</comment>
+    <requestid>396679</requestid>
+  </revision>
+  <revision rev="267" vrev="139">
+    <srcmd5>e7bdc3b6cea5bb99b511964f1b570f1b</srcmd5>
+    <version>unknown</version>
+    <time>1464964516</time>
+    <user>dimstar_suse</user>
+    <comment>- U_gallivm-disable-avx512-features.patch:
+  Fix crashes on some Skykake CPUs by disabling avx512 features
+  (bsc#980557, bsc#981532).</comment>
+    <requestid>399516</requestid>
+  </revision>
+  <revision rev="268" vrev="140">
+    <srcmd5>8de8860f794a8527fbf9ceb23c8137da</srcmd5>
+    <version>unknown</version>
+    <time>1467205435</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403990</requestid>
+  </revision>
+  <revision rev="269" vrev="141">
+    <srcmd5>e6683a17fe031c00345a123184a59799</srcmd5>
+    <version>unknown</version>
+    <time>1468482164</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407458</requestid>
+  </revision>
+  <revision rev="270" vrev="142">
+    <srcmd5>8d35b5243ab770033c9427af4279a93d</srcmd5>
+    <version>unknown</version>
+    <time>1473409053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424914</requestid>
+  </revision>
+  <revision rev="271" vrev="143">
+    <srcmd5>79e07d3d11fc72a24d278b70229d570e</srcmd5>
+    <version>unknown</version>
+    <time>1474622606</time>
+    <user>dimstar_suse</user>
+    <comment>- Add u_Mesa_i965-import-prime-buffers.patch: i965: import prime
+  buffers in the current context, not screen (fdo#71759,
+  boo#991638).
+
+- update to 12.0.3
+* fdo#97781 - [HSW, BYT, IVB] es2-cts.gtf.gl2extensiontests.depth_texture_cube_map.depth_texture_cube_map
+* Revert &quot;i965/miptree: Stop multiplying cube depth by 6 in HiZ calculations&quot;</comment>
+    <requestid>428656</requestid>
+  </revision>
+  <revision rev="272" vrev="144">
+    <srcmd5>f9054eb77762e709f03dc868008f0995</srcmd5>
+    <version>unknown</version>
+    <time>1477644154</time>
+    <user>dimstar_suse</user>
+    <comment>- let Mesa-dri-nouveau supplement xf86-video-nouveau, so it  gets
+  preselected as well once hardware supplements for Mesa-dri-nouveau
+  match (bnc#1005323)
+
+- Mesa.spec: %ifdef'd out patches by mistake
+
+- Split off nouveau*_dri.so into Mesa-dri-nouveau.
+  Nouveau's 3D support is too unstable to enable by default.
+
+- Mesa.spec: Disable Nouveau locking patches by default
+
+- U_r300g-Set-R300_VAP_CNTL-on-RSxxx-to-avoid-triangle-flickering.patch:
+  Initialize RSxxx chipsets correctly (bsc#985650)
+
+- N_01-WIP-nouveau-add-locking.patch
+  N_02-nouveau-more-locking-make-sure-that-fence-work-is-always-done-with-the-push-mutex-acquired.patch
+  N_03-nv30-locking-fixes.patch
+  N_04-nv50-Fix-double-lock-in-nv50_hw_sm_get_query_result.patch
+  N_05-Use-nv50_render_condition-in-nv50_blitctx_post_blit.patch
+  Backport nouveau locking workaround to enable multithreading.
+  Source: https://github.com/imirkin/mesa/commits/locking
+  According to the author, crashes may still happen, but much more rarely.
+  Tested on GK107.
+  N_04-* and N_05-* include untested fixes for nv50.
+  Fixes (boo#997171) as suggested in (fdo#91632).</comment>
+    <requestid>437257</requestid>
+  </revision>
+  <revision rev="273" vrev="145">
+    <srcmd5>41d326fa245532017db9aebfdf02316b</srcmd5>
+    <version>unknown</version>
+    <time>1478377365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438299</requestid>
+  </revision>
+  <revision rev="274" vrev="146">
+    <srcmd5>b4e82db6a72db3d0152cf34f4372df23</srcmd5>
+    <version>unknown</version>
+    <time>1478780091</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439196</requestid>
+  </revision>
+  <revision rev="275" vrev="147">
+    <srcmd5>76b243cb57f5567ceca75a7873079939</srcmd5>
+    <version>unknown</version>
+    <time>1479381739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440359</requestid>
+  </revision>
+  <revision rev="276" vrev="148">
+    <srcmd5>9b1780eafa865fce90f763bc05df0639</srcmd5>
+    <version>unknown</version>
+    <time>1480693059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442666</requestid>
+  </revision>
+  <revision rev="277" vrev="149">
+    <srcmd5>4684a45cb92ba102908f5d1404ca122c</srcmd5>
+    <version>unknown</version>
+    <time>1481708926</time>
+    <user>dimstar_suse</user>
+    <comment>- U_cso-don-t-release-sampler-states-that-are-bound.patch:
+  This avoids Radeon hangs due to a use-after-free bug in Gallium.
+  Fixes (boo#1015012), (fdo#93649)</comment>
+    <requestid>445455</requestid>
+  </revision>
+  <revision rev="278" vrev="150">
+    <srcmd5>eb0b41d0480448d41e0eacccf1d4dd29</srcmd5>
+    <version>unknown</version>
+    <time>1483954259</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448428</requestid>
+  </revision>
+  <revision rev="279" vrev="151">
+    <srcmd5>7c0d0b621526ab19efa0f45ae7d6020a</srcmd5>
+    <version>unknown</version>
+    <time>1484041130</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449325</requestid>
+  </revision>
+  <revision rev="280" vrev="152">
+    <srcmd5>15fc033735676eef9238f8d1f1ce98f2</srcmd5>
+    <version>unknown</version>
+    <time>1485166984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451432</requestid>
+  </revision>
+  <revision rev="281" vrev="153">
+    <srcmd5>fe55163c971bea47087052aacd3a0e94</srcmd5>
+    <version>unknown</version>
+    <time>1486045816</time>
+    <user>dimstar_suse</user>
+    <comment>- baselibs.conf: replaced definition of packages, which default is
+  not set to be built in specfile to 
+    arch aarch64 ppc64 ppc64le s390x x86_64 package &lt;package&gt;
+ in order to make &quot;osc service localrun source_validator&quot; happy :-(
+
+- Update baselibs.conf to ship i386 vulkan json files on x86_64</comment>
+    <requestid>453418</requestid>
+  </revision>
+  <revision rev="282" vrev="154">
+    <srcmd5>c417e3231627ef00ec7259d53f46c7b1</srcmd5>
+    <version>unknown</version>
+    <time>1486547501</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile: fix build configuration for arm, ppc and s390 platforms
+
+- update to 13.0.4
+  * Multiple fixes for the i965 and radeonsi drivers. An odd glitch
+    in glxgears when using the freedreno driver was also addressed.
+  * The ANV driver being the prime source of patches - from
+    compatibility improvements with newer Vulkan loaders, 
+    smoketesting and various rendering and compliance fixes.
+  * A couple of longstanding issues in the VA state tracker have
+    also been resolved.</comment>
+    <requestid>454704</requestid>
+  </revision>
+  <revision rev="283" vrev="155">
+    <srcmd5>0bbe388a9c70b0fc44b74570c23ce53f</srcmd5>
+    <version>unknown</version>
+    <time>1487462284</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.0.0
+- removed n_Fixed-build-against-wayland-1.2.1.patch , version requirement
+   bumped up by upstream.
+* Vulkan drivers:
+  + Correctly return (and implement) VK_INCOMPLETE on multiple WSI queries
+  + Support for the VK_KHR_sampler_mirror_clamp_to_edge extension
+  + We now use the Khoronos vk.xml file to generate the entrypoints
+* ANV:
+  + HiZ and performance improvements
+  + Float64 support and tessellation shader support.
+* RADV:
+  + Support multiple devices
+  + Support for the VK_AMD_draw_indirect_count extension
+  + Support for the VK_AMD_negative_viewport_height extension
+* Mesa core:
+  + Noticeable refactoring en route to GLSL Shader Cache
+  + Groundwork for int64
+* i965:
+  + OpenGL 4.5 support on Haswell hardware
+  + Reuse the same BLORP and ISL code as the ANV driver
+* Gallium:
+  + HUD: A number of race issues and memory leaks were resolved.
+* freedreno
+  + Support for a5xx
+* nouveau:
+  + OpenGL 4.3 support on Maxwell hardware
+  + Improved performance due to instruction pipelining (Maxwell)
+* r600/radeonsi
+  + VCE: Handle H.264 level 5.2
+  + Polaris12 support
+  + Dozens of performance improvements
+* Clover:
+  + Implement clGetExtensionFunctionAddressForPlatform.
+  + Add missing clGetDeviceInfo CL1.2 queries
+* VDPAU:
+  + Use dri3 to directly send the buffer to X
+* Build:
+  + Building RADV requires --enable-gallium-llvm
+  + Compatibility fixes for building mesa as part of ARC
+  + The vulkan headers vk_platform.h and vulkan.h are no longer installed
+  + A couple of configure options (--with-sha1 and --disable-shader-cache) are
+    removed alongside their respective library requirements.</comment>
+    <requestid>457123</requestid>
+  </revision>
+  <revision rev="284" vrev="156">
+    <srcmd5>a350c4ab4f53e8fb9be95d69b5555998</srcmd5>
+    <version>unknown</version>
+    <time>1487980650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459633</requestid>
+  </revision>
+  <revision rev="285" vrev="157">
+    <srcmd5>7294ac55c06b001a0019335c8cd36efc</srcmd5>
+    <version>unknown</version>
+    <time>1489175132</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477059</requestid>
+  </revision>
+  <revision rev="286" vrev="158">
+    <srcmd5>3d93b314148653e2fc65976e982350f9</srcmd5>
+    <version>unknown</version>
+    <time>1491567530</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485819</requestid>
+  </revision>
+  <revision rev="287" vrev="159">
+    <srcmd5>1375ccba6426c890f07afa8bcf199ff0</srcmd5>
+    <version>unknown</version>
+    <time>1492417220</time>
+    <user>maxlin_factory</user>
+    <comment>- only reverse-apply 'U_draw-use-SoA-fetch-not-AoS-one.patch' on 
+  s390x (bsc#1032272)
+
+- build wayland on Leap &gt;= 42.3
+- separate package 'Mesa-dri-nouveau' on Leap
+
+- removed broken locking patches for nouveau DRI driver
+  * N_01-WIP-nouveau-add-locking.patch
+  * N_02-nouveau-more-locking-make-sure-that-fence-work-is-always-done-with-the-push-mutex-acquired.patch
+  * N_03-nv30-locking-fixes.patch
+  * N_04-nv50-Fix-double-lock-in-nv50_hw_sm_get_query_result.patch
+  * N_05-Use-nv50_render_condition-in-nv50_blitctx_post_blit.patch
+
+- let Mesa require Mesa-libGL1 for a libglvnd build (bsc#1033708)
+
+- U_draw-use-SoA-fetch-not-AoS-one.patch 
+  * reverse-apply this patch to fix OpenGL support on s390x
+    (bsc#1032272)</comment>
+    <requestid>487587</requestid>
+  </revision>
+  <revision rev="288" vrev="160">
+    <srcmd5>d802e3ee738828534fdf63a1b8b39e27</srcmd5>
+    <version>unknown</version>
+    <time>1493103482</time>
+    <user>dimstar_suse</user>
+    <comment>- let Mesa require Mesa-libEGL1 for a libglvnd build; 
+  xf86-video-amdgpu driver needs it for 2D support via glamor
+  (boo#1034832)
+
+- Add u_add_llvm_codegen_dependencies.patch to link to
+  libLLVMCodegen to fix cyclic linking problems. bsc#981975
+
+- Enable OpenCL for aarch64, ppc64 and ppc64le now, too.
+  %arm is still left out, waiting for llvm4 to build.
+
+- update to 17.0.4
+ * fdo#100391 - SachaWillems deferredmultisampling asserts
+ * fdo#100452 - push_constants host memory leak when resetting command buffer
+ * fdo#100582 - piglit.spec.arb_stencil_texturing.glblitframebuffer corrupts
+    state.gl_texture* assertions
+ * radeonsi: add new polaris10 pci ids
+ * fixes for anv, radv, i965 and nouveau drivers</comment>
+    <requestid>489771</requestid>
+  </revision>
+  <revision rev="289" vrev="161">
+    <srcmd5>b5d0509f38738b773710de012425d678</srcmd5>
+    <version>unknown</version>
+    <time>1493880895</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492016</requestid>
+  </revision>
+  <revision rev="290" vrev="162">
+    <srcmd5>3b21adc1684f431e9f8f2458d1c5cfbe</srcmd5>
+    <version>unknown</version>
+    <time>1495267639</time>
+    <user>dimstar_suse</user>
+    <comment>- baselibs.conf: libglvnd0 -&gt; libglvnd; missed the package name
+  change in libglvnd package (boo#1038619)
+
+- update to 17.1.0
+- drop upstreamed patches:
+    archlinux_0002-fixup-EGL-Implement-the-libglvnd-interface-for-EGL-v.patch
+    archlinux_0001-EGL-Implement-the-libglvnd-interface-for-EGL-v2.patch
+    archlinux_glapi-Link-with-glapi-when-built-shared.patch
++ New major release with:
+  + OpenGL 4.2 support for Intel Ivy Bridge chips.
+  + The RADV driver passes the Khronos CTS
+  + Shader on-disk cache. Improving the startup and shader compilation
+      times in some games.
+  + This release includes significant performance improvements for games by
+     Feral Interactive.
+ * for full list of changes please check docs/relnotes/17.1.0.html</comment>
+    <requestid>494543</requestid>
+  </revision>
+  <revision rev="291" vrev="163">
+    <srcmd5>a89db6cd80d56427377cf96e82193c71</srcmd5>
+    <version>unknown</version>
+    <time>1496327363</time>
+    <user>dimstar_suse</user>
+    <comment>- u_llvmpipe-lp_build_gather_elem_vec-BE-fix-for-3x16-lo.patch
+  * Fix loading of a 3x16 vector as a single 48-bit load on 
+    big-endian systems (PPC64, S390). [fdo#100613]
+
+- update to 17.1.1
+- dropped patch:
+    fedora_0001-glxglvnddispatch-Add-missing-dispatch-for-GetDriverC.patch
+ * fdo#100854 - YUV to RGB Color Space Conversion result is not precise
+ * fdo#100925 - [HSW/BSW/BDW/SKL] Google Earth is not resolving
+    all the details in the map correctly
+ * radeonsi: add new vega10 pci ids
+ * gbm/dri: Fix sign-extension in modifier query
+ * radeon: automake: remove unneeded elf Cflags/Libs
+ * egl: add g_egldispatchstubs.h to the release tarball
+ * renderonly: Initialize fields of struct winsys_handle
+ * vc4: Don't allocate new BOs to avoid synchronization when they're shared
+ * anv: fix possible stack corruption
+ * anv: don't leak DRM devices
+ * glxglvnddispatch: Add missing dispatch for GetDriverConfig
+ * nvc0/ir: SHLADD's middle source must be an immediate
+ * nir/lower_tex: Fix minor error in YUV color conversion matrix
+ * amd/addrlib: import Raven support
+ * radeonsi/gfx9: add support for Raven
+ * anv/formats: Update the three-channel BC1 mappings
+ * 965/formats: Update the three-channel DXT1 mapping
+ * radeonsi: mark fast-cleared textures as compressed when dirtying
+ * radeonsi: fix primitive ID in fragment shader when using tessellation
+ * radeonsi: fix gl_PrimitiveID in tessellation with instanced draws on SI
+ * radeonsi: fix gl_PrimitiveIDIn in geometry shader when using tessellation
+ * intel/isl/gen7: Use stencil vertical alignment of 8 instead of 4
+ * mesa/st: fix yuv EGLImage's
+ * virgl: fix virgl_bo_transfer_{put, get} box struct cop
+ * 965/vec4/gs: restore the uniform values which was overwritten by failed
+    vec4_gs_visitor execution
+ * i965/vec4: fix swizzle and writemask when loading an uniform with constant offset
+ * i965/vec4: load dvec3/4 uniforms first in the push constant buffer
+ * gallivm: Make sure module has the correct data layout when pass manager runs
+
+- specfile: libglvnd0 -&gt; libglvnd; missed the package name
+  change in libglvnd package (boo#1038619, comment#5)</comment>
+    <requestid>500026</requestid>
+  </revision>
+  <revision rev="292" vrev="164">
+    <srcmd5>d38ed27032ba8b34efb7b166d4015ed2</srcmd5>
+    <version>unknown</version>
+    <time>1497687700</time>
+    <user>dimstar_suse</user>
+    <comment>- added &quot;Requires: libclc&quot; to Mesa-libOpenCL packages (boo#1044646) 
+
+- specfile: Remove requires to vulkan libs from baselibs.conf on
+  platforms where vulkan build is disabled; ugly ... (bsc#1042900)
+
+- update to 17.1.2
+ * fdo#98833 - [REGRESSION, bisected] Wayland revert commit breaks
+    non-Vsync fullscreen frame updates
+ * fdo#100741 - Chromium - Memory leak
+ * fdo#100877 - vulkan/tests/block_pool_no_free regression
+ * fdo#101110 - Build failure in GNOME Continuous
+ * many ANV, RADV, vulkan, i965 and egl fixes</comment>
+    <requestid>504023</requestid>
+  </revision>
+  <revision rev="293" vrev="165">
+    <srcmd5>a37d764b0451f0381617a6822a0d1fd4</srcmd5>
+    <version>unknown</version>
+    <time>1498045936</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504710</requestid>
+  </revision>
+  <revision rev="294" vrev="166">
+    <srcmd5>6a0060723492d55aa24be1d1097e5ce9</srcmd5>
+    <version>unknown</version>
+    <time>1499677246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507827</requestid>
+  </revision>
+  <revision rev="295" vrev="167">
+    <srcmd5>4ddd16cc0b0f0ea07c918ac49614b8af</srcmd5>
+    <version>unknown</version>
+    <time>1500669728</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511071</requestid>
+  </revision>
+  <revision rev="296" vrev="168">
+    <srcmd5>67e7202ffe6e962df11647fa9d82f8a7</srcmd5>
+    <version>unknown</version>
+    <time>1500892343</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511990</requestid>
+  </revision>
+  <revision rev="297" vrev="169">
+    <srcmd5>07e30486bbc2703c732ae6a489236cde</srcmd5>
+    <version>unknown</version>
+    <time>1502561077</time>
+    <user>maxlin_factory</user>
+    <comment>- n_glesv2.pc-Add-lGL-for-libglvnd-builds-boo-1052776.patch
+  glesv2.pc: Add &quot;-lGL&quot; for libglvnd builds (boo#1052776)
+
+- update to 17.1.6
+ * fdo#97957 - Awful screen tearing in a separate X server with DRI3
+ * fdo#101683 - Some games hang while loading when compositing is shut
+    off or absent
+ * fdo#101867 - Launch options window renders black in Feral Games
+    in current Mesa trunk
+ * and some other fixes as usualy</comment>
+    <requestid>515319</requestid>
+  </revision>
+  <revision rev="298" vrev="170">
+    <srcmd5>ffcbbe7cc9e88870dc4c91327f503126</srcmd5>
+    <version>unknown</version>
+    <time>1503061030</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516979</requestid>
+  </revision>
+  <revision rev="299" vrev="171">
+    <srcmd5>098a56fa698c051ca166a701db848858</srcmd5>
+    <version>unknown</version>
+    <time>1503591489</time>
+    <user>dimstar_suse</user>
+    <comment>- u_llvmpipe-lp_build_gather_elem_vec-BE-fix-for-3x16-lo.patch
+  updated; fixes three of the four regressions observed (PPC64, S390)
+  [fdo#100613, comment#42]</comment>
+    <requestid>518356</requestid>
+  </revision>
+  <revision rev="300" vrev="172">
+    <srcmd5>05b9e9debafbe8abc3d457be0ec7bd41</srcmd5>
+    <version>unknown</version>
+    <time>1504520828</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.1.8 
+ * fdo#101334 - AMD SI cards: Some vulkan apps freeze the system
+ * fdo#101766 - Assertion `!&amp;quot;invalid type&amp;quot;' failed when constant
+    expression involves literal of different type&lt;
+ * fdo#102024 - FORMAT_FEATURE_SAMPLED_IMAGE_BIT not supported for D16_UNORM
+    and D32_SFLOAT
+ * fdo#102148 - Crash when running qopenglwidget example on mesa llvmpipe win32
+ * fdo#102241 - gallium/wgl: SwapBuffers freezing regularly with swap
+    interval enabled
+ * fdo#101910 - [BYT]
+    ES31-CTS.functional.copy_image.non_compressed.viewclass_96_bits.rgb32f_rgb32f
+  * fdo#102308 - segfault in glCompressedTextureSubImage3D
+
+- Add patch to fix strtod on non-EN locale (boo#1055929):
+  * n_force-xlocale-funcs.patch</comment>
+    <requestid>519329</requestid>
+  </revision>
+  <revision rev="301" vrev="173">
+    <srcmd5>f77df6a1d477fe352072445933850d68</srcmd5>
+    <version>unknown</version>
+    <time>1504981438</time>
+    <user>dimstar_suse</user>
+    <comment>- u_svga-Fix-build-on-ppc64le.patch
+  * This let us compile the code on ppc64le, but it no-ops the log
+    function.
+
+- update to 17.2.0
+  * many RADV/ANV Vulkan driver improvements
+  * Vulkan and OpenGL performance improvements
+  * more work towards OpenGL 4.6 compliance
+  * a wealth of other open-source driver improvements
+  * initial Raven Ridge support (used on Vega-class graphics)
+  * Intel Cannonlake Support 
+- adjusted archlinux_0001-Fix-linkage-against-shared-glapi.patch</comment>
+    <requestid>522001</requestid>
+  </revision>
+  <revision rev="302" vrev="174">
+    <srcmd5>57513b1caec28dfb52153b9f6ba10382</srcmd5>
+    <version>unknown</version>
+    <time>1505830815</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527051</requestid>
+  </revision>
+  <revision rev="303" vrev="175">
+    <srcmd5>a917065b945c7dbc56c60c3ad6f982f1</srcmd5>
+    <version>unknown</version>
+    <time>1507391287</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.2.2
+  * several Vulkan ANV/RADV driver fixes including Wayland WSI 
+    improvements, RadeonSI / i965 / VC4 OpenGL fixes among other
+    work, some fixes to common Gallium3D code, support for LLVM 5.0
+    in Gallium3D when using the SCons build system, and a range of
+    other fixes/improvements. 
+
+- Drop gallium svga driver for arm/aarch64. The svga driver is a vmware
+  guest driver, thus only usable on x86(_64) platforms
+- Also enable OpenCL on arm (32bit), llvm4 has reached Factory</comment>
+    <requestid>531201</requestid>
+  </revision>
+  <revision rev="304" vrev="176">
+    <srcmd5>0405b0a00dbae63b88da7de4837ddf50</srcmd5>
+    <version>unknown</version>
+    <time>1508434285</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534472</requestid>
+  </revision>
+  <revision rev="305" vrev="177">
+    <srcmd5>af0f410dbf000898347787a74f33fe62</srcmd5>
+    <version>unknown</version>
+    <time>1509035975</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17.2.3
+  * The Vulkan drivers ANV and RADV have multiple small fixes.
+  * The EGL code has improved handling of the new wl_dmabuf codepath.
+  * SWR no longer crashes when checking environment variables.
+  * Other gallium drivers have also seen updates - freedreno, nouveau and
+    radeonsi. The gallivm module, used by llvmpipe et al. has gained little
+    endian PPC64 fixes.
+  * The VA and VDPAU state-trackers have seems improvements handling
+    interlaced videos.
+  * We're using python3 compatible constructs which gives us SCons 3.0
+    support.</comment>
+    <requestid>535942</requestid>
+  </revision>
+  <revision rev="306" vrev="178">
+    <srcmd5>dd59fb8951fc5cc2c44cd831ebcaecef</srcmd5>
+    <version>unknown</version>
+    <time>1510231885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538487</requestid>
+  </revision>
+  <revision rev="307" vrev="179">
+    <srcmd5>d36c9f99393cf88f83ee763232cc37f1</srcmd5>
+    <version>unknown</version>
+    <time>1510665869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540761</requestid>
+  </revision>
+  <revision rev="308" vrev="180">
+    <srcmd5>8674de3d12a60a37c1db13801e53faae</srcmd5>
+    <version>unknown</version>
+    <time>1512216669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545922</requestid>
+  </revision>
+  <revision rev="309" vrev="181">
+    <srcmd5>a89068a95eb725e1bba11ed02a0b1708</srcmd5>
+    <version>unknown</version>
+    <time>1516091952</time>
+    <user>dimstar_suse</user>
+    <comment>- U_intel-Add-more-Coffee-Lake-PCI-IDs.patch
+  * Add more Coffeelake PCI IDs (request by Intel)
+
+- Update to 17.3.2
+  * Multiple fixes in the RADV Vulkan driver, workaround when using
+    slibtool and a GLSL workaround for various titles using Unreal
+    Engine 4.
+- Drop upstreamed u_r600-Add-support-for-B5G5R5A1.patch
+- Modify u_mesa-python3-only.patch to not break python 2.
+
+- Update to 17.3.1
+  * Multiple fixes and improvements of the GLSL shader cache. The
+    RADV driver no longer advertises VK_EXT_debug_report - there is
+    no support for it.
+  * The i965, radeonsi, nvc0 and freedreno drivers have received a
+    few small fixes each.
+  * A number of big endian fixes have been merged.
+
+- Switch to python3 during build instead of python2
+  * Add patch u_mesa-python3-only.patch
+
+- Add Mesa-dri and Mesa-gallium to baselibs.conf.
+- Require llvm &gt;= 3.9.0
+  * The build fails otherwise because it is required for multiple
+    Mesa components.
+
+- Drop some redundant wording from descriptions.
+  Drop redundant %if guard around a %post section.
+
+- Use different form of split for faster build (bnc#1071297)</comment>
+    <requestid>565814</requestid>
+  </revision>
+  <revision rev="310" vrev="182">
+    <srcmd5>9bb8e5a0bfc1998cf5c9cd1d8792173b</srcmd5>
+    <version>unknown</version>
+    <time>1516443643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567741</requestid>
+  </revision>
+  <revision rev="311" vrev="183">
+    <srcmd5>358801ca047fee2be495996d972103c7</srcmd5>
+    <version>unknown</version>
+    <time>1516970047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568122</requestid>
+  </revision>
+  <revision rev="312" vrev="184">
+    <srcmd5>0f65bc9a3af201b5f9a72c722d65b0b6</srcmd5>
+    <version>unknown</version>
+    <time>1517323154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570623</requestid>
+  </revision>
+  <revision rev="313" vrev="185">
+    <srcmd5>de2cb569ab094a91872ad80cf8c8d079</srcmd5>
+    <version>unknown</version>
+    <time>1517668837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.0-rc3
+  * includes significant improvements for OpenGL and Vulkan support
+    and performance.
+- supersedes U_intel-Add-more-Coffee-Lake-PCI-IDs.patch
+
+- Remove dependency on clang-devel-static. (bnc#1065464)
+  * It was removed, clang-devel now again provides everything
+    necessary as shared libraries.
+
+- Require Mesa-dri-32bit and Mesa-gallium-32bit by Mesa-32bit. It
+  mirrors the requirement of the normal packages. (bnc#1078261)
+
+- Update to 18.0.0-rc3
+  * includes significant improvements for OpenGL and Vulkan support
+    and performance.
+- supersedes U_intel-Add-more-Coffee-Lake-PCI-IDs.patch
+
+- Remove dependency on clang-devel-static. (bnc#1065464)
+  * It was removed, clang-devel now again provides everything
+    necessary as shared libraries.
+
+- Require Mesa-dri-32bit and Mesa-gallium-32bit by Mesa-32bit. It
+  mirrors the requirement of the normal packages. (bnc#1078261)</comment>
+    <requestid>572112</requestid>
+  </revision>
+  <revision rev="314" vrev="186">
+    <srcmd5>e43b32b629ee0a94fffeab00acc1cda9</srcmd5>
+    <version>unknown</version>
+    <time>1517992405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573596</requestid>
+  </revision>
+  <revision rev="315" vrev="187">
+    <srcmd5>f5277c937ba084349e7d31e6f35ff1bc</srcmd5>
+    <version>unknown</version>
+    <time>1519041577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577310</requestid>
+  </revision>
+  <revision rev="316" vrev="188">
+    <srcmd5>0cd68aa8b9235d8b17baaaa214697575</srcmd5>
+    <version>unknown</version>
+    <time>1519557682</time>
+    <user>dimstar_suse</user>
+    <comment>- removed no longer needed ncurses-devel BuildRequires (boo#1082315)
+
+- redone u_add_llvm_codegen_dependencies.patch and renamed to
+  u_configure.ac-Link-to-libLLVMCodegen-to-fix-cyclic-li.patch
+  (boo#1082307)
+
+- removed u_mesa-8.0.1-fix-16bpp.patch and
+  u_mesa-8.0-llvmpipe-shmget.patch, which we no longer apply since
+  about 5 years (boo#1082305)
+
+- recreated u_mesa-python3-only.patch and renamed to
+  u_r600-egd_tables.py-added-support-for-python-3.patch; also
+  removed first hunk (boo#1082303)
+
+- removed n_Define-GLAPIVAR-separate-from-GLAPI.patch 
+  * bits moved to libGLw's n_Use-newly-introduced-GLAPIVAR-for-variables.patch
+    (boo#1082297)
+
+- Mesa-gallium only exists if %{with_opencl}
+- Add support for riscv64</comment>
+    <requestid>579528</requestid>
+  </revision>
+  <revision rev="317" vrev="189">
+    <srcmd5>4cddc3d6209bc9ab67e228a6ea193b39</srcmd5>
+    <version>unknown</version>
+    <time>1519902168</time>
+    <user>dimstar_suse</user>
+    <comment>- removed more unneeded buildrequires: libudev, openssl, bison, 
+  flex (boo#1082312)
+
+- removed u_configure.ac-Link-to-libLLVMCodegen-to-fix-cyclic-li.patch
+  which is no longer needed due to changed LLVM build (boo#1082307)
+
+- merge content of new rpmlintrc into existing Mesa-rpmlintrc file
+
+- no longer run ldconfig for the follwing backend (ICD) drivers,
+  since it's considered wrong: xvmc, vdpau, va, opencl, and vulkan;
+  required adding a rpmlintrc file with appropriate rules
+  (boo#1082316)</comment>
+    <requestid>581007</requestid>
+  </revision>
+  <revision rev="318" vrev="190">
+    <srcmd5>355b3977df2e9ad0d458ab230a23a45b</srcmd5>
+    <version>unknown</version>
+    <time>1520160846</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced u_r600-egd_tables.py-added-support-for-python-3.patch
+  with fixed u_r600-egd_tables.py-make-the-script-python-2-3-compat.patch 
+  and enabled it again; removed again n_egd_tables_h.patch (boo#1082303)
+
+- added n_egd_tables_h.patch and disabled u_mesa-python3-only.patch
+  * use pregenerated egd_tables.h (via python2) instead of trying
+    to generate it during buildtime with python3 using an apparently
+    broken patch (boo#1082303)</comment>
+    <requestid>581791</requestid>
+  </revision>
+  <revision rev="319" vrev="191">
+    <srcmd5>ce769434ebc98044a6828c86e9a9e823</srcmd5>
+    <version>unknown</version>
+    <time>1521904021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.0-rc5
+  * The fifth and final release candidate for Mesa 18.0.0. Modulo
+    serious regressions, it is anticipated that it will become
+    Mesa 18.0.0 this Friday (2018-03-23) around 16:00 GMT
+- supersedes u_glsl-linker-error.patch
+
+- no longer try to use non-existing python3-mako as BuildRequires
+  on Leap 42.3
+
+- u_st-dri-don-t-set-queryDmaBufFormats-queryDmaBufModif.patch
+  * Fixes laggy mouse in Wayland. (fdo#104926)</comment>
+    <requestid>590319</requestid>
+  </revision>
+  <revision rev="320" vrev="192">
+    <srcmd5>b7a602880e7d82c80d39c6ac3f0b6da9</srcmd5>
+    <version>unknown</version>
+    <time>1522404081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.0 final
+  * one-and-only change since 18.0.0-rc5: updated release notes
+- Changes since 17.3  
+  * The top highlights include:
+    + Cannonlake support on i965 and anv
+    + GL 4.3/GLES 3.1 support  on r600/evergreen with hw fp64 support
+    + Meson build system
+  * ANV Extensions:
+    + VK_EXT_external_memory_dma_buf
+  * RADV Extensions:
+    + VK_ANDROID_native_buffer
+    + VK_KHR_external_fence
+    + VK_KHR_external_fence_capabilities
+    + VK_KHR_external_fence_fd
+    + VK_KHR_get_surface_capabilities2
+    + VK_EXT_discard_rectangles
+    + VK_EXT_external_memory_dma_buf
+    + VK_AMD_shader_info
+  * EGL:
+    + Support for RGBA/RGBX 1010102 formats
+    + EGL_EXT_pixel_format_float
+    + Final planned release to ship wayland-egl. Now provided by wayland.
+  * GLX:
+    + Darwin/Apple fixes
+  * Mesa core
+    + Support 1 binary format for GL_ARB_get_program_binary on i965
+    + drirc workarounds:
+      (*) Unreal 4 Editor
+      (*) Observer
+      (*) Steamroll
+      (*) Refunct
+  * drirc mesa_glthread whitelists:
+    + Mount and Blade Warband
+- i965:
+  * Disk shader cache when MESA_GLSL_CACHE_DISABLE is set to &quot;false&quot;
+  * GL_EXT_disjoint_timer_query on gen6+</comment>
+    <requestid>591959</requestid>
+  </revision>
+  <revision rev="321" vrev="193">
+    <srcmd5>c452b47d3246e0c36882efb7c1c36951</srcmd5>
+    <version>unknown</version>
+    <time>1523346655</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>593742</requestid>
+  </revision>
+  <revision rev="322" vrev="194">
+    <srcmd5>c01c109779c735387dca3bd8884803ae</srcmd5>
+    <version>unknown</version>
+    <time>1524400505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.1
+  * In this release we have:
+  * On the build system to highlight Meson is get improved thorugh several patches
+    that fix issues around it.
+  * On the drivers part, RADV get several fixes: one for multisample regressions on
+   Vega, another around GFX9 buffer views, and a couple of them more to related
+   with avoiding emitting unneeded vertex state.
+  * St/Nine get fixes around face register, lighting constants, math check for
+    inversible matrix, implicit conversions and bad tracking of vertex textures.
+  * Freedreno/a5xx get fixes around missaligned heigh for PIPE_BUFFER, and around
+    page faults.
+  * Several fixes are also enqueued for Intel driver: set right channel_sizes for
+   MOV_INDIRECT sources, set right config registration for uploading to kernel,
+   return the fourcc stored in __DRIimage when possible, fix negative sign in
+   64-bit return values, fix null destination register in assembly instructions
+   with 3 source operands, a fix for failed TCS/TES shader compilation
+  * Queue also contains a couple of fixes around Gallium drivers, one to fix a typo
+    in code that was causing wrong return value, and another one to fix an
+    unitialized modifier for DRI2.
+  * Mesa core gets a couple of patches to fix issues around overriding OpenGL/ES
+    supported version through environment variables, and a patch to fix an issue
+    with texture samples found in &quot;The Witness&quot; through Wine.
+  * A couple of bugs around unrolling loops have also been fixed, these patches were
+    applied for NIR and GLSL.
+  * On top of above, NIR gets more fixes in a couple of lowering functions used:
+    coalesce in lower_vec_to_movs if vec had a SSA destination, and interp_var_at
+    intrinsic support in lower_indirect_derefs. It also gets a fix around
+    vars_to_ssa function.
+  * Finally, there are other fixes affecting Radeonsi, AC, EGL/Wayland and SPIR-V
+    compiler.
+
+- enabled opencl and that way also Mesa-gallium on 42.3 since we
+  now build against llvm 6; this also fixes the requirements from
+  Mesa-32bit to Mesa-gallium-32bit in baselibs.conf (reported by
+  community)</comment>
+    <requestid>598492</requestid>
+  </revision>
+  <revision rev="323" vrev="195">
+    <srcmd5>60e708de664917eab6418531200a65bd</srcmd5>
+    <version>unknown</version>
+    <time>1525611380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.2
+  * A couple of fixes for Meson that solves some problems regarding
+    building tests and installation.
+  * A couple of fixes in state tracker / DRI that was causing crashes
+    in QtCreator and Firefox, among other problems.
+  * A couple of fixes for GFX9, that solves a hang in the driver, and
+    a problem with buffer views.
+  * SVGA gets also a patch to fix incorrect advertizing of
+    EGL_KHR_gl_colorspace extension.
+  * Etnaviv gets a fix for swizzled texture formats.
+  * Intel drivers get also several patches.
+  * RADV gets a patch to solve a problem of lot of games complaining
+    about not having enough memory.</comment>
+    <requestid>602486</requestid>
+  </revision>
+  <revision rev="324" vrev="196">
+    <srcmd5>90098b5d9b2a7a12aac9d76164619633</srcmd5>
+    <version>unknown</version>
+    <time>1526030894</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.3
+  * The is a fairly small release consisting of patches to fix leaks
+    in RADV and Winsys, fix deadlock in internal queue, fix issues
+    with ANV allocator, fix blit setup for YUV LoadImage, and some
+    other patches.</comment>
+    <requestid>605329</requestid>
+  </revision>
+  <revision rev="325" vrev="197">
+    <srcmd5>09d85c41359917af1e07275eecafea93</srcmd5>
+    <version>unknown</version>
+    <time>1526829608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 18.0.4
+  * r600 driver gets a fix for constant buffer boounds, which
+    fixes rendering bugs in Trine and Witcher 1.
+  * Several fixes for RADV driver: fixes around alpha channel
+    in Pre-Vega, fix in multisample image copies, and fixes
+    around multilayer images in compute path.
+  * For the case of ANV/i965 drivers, also a couple of fixes, 
+    all of them around ISP. On top, there are a couple of fixes
+    relative to code emission around 16-bit integers, and a a
+    fix for a leak in blorp for Gen4 and Gen5.
+  * Speaking of leaks, there are also fixes for 
+    winsys/radeon/amdgpu and pipe-loader.gets a couple of patches
+    to fix a couple of leaks.
+  * SPIR-V part gets a patch to apply OriginUpperLeft to FragCoord.
+  * Mesa core gets a couple of patches to fix error handling in
+    get_framebuffer_parameteriv, and to add missing support for
+    glFogiv(GL_FOG_DISTANCE_MODE_NV).</comment>
+    <requestid>610637</requestid>
+  </revision>
+  <revision rev="326" vrev="198">
+    <srcmd5>1b863e495243863a69f2445b6a4e4cc7</srcmd5>
+    <version>unknown</version>
+    <time>1527277011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611368</requestid>
+  </revision>
+  <revision rev="327" vrev="199">
+    <srcmd5>e324cc4d802ed70439205f77c9aa97aa</srcmd5>
+    <version>unknown</version>
+    <time>1528492266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614242</requestid>
+  </revision>
+  <revision rev="328" vrev="200">
+    <srcmd5>baf2ce5e88e691936f6818594b6521b8</srcmd5>
+    <version>unknown</version>
+    <time>1530087282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>617346</requestid>
+  </revision>
+  <revision rev="329" vrev="201">
+    <srcmd5>ef028c55fd0f28d3820e6dc34dd874e1</srcmd5>
+    <version>unknown</version>
+    <time>1530993355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620175</requestid>
+  </revision>
+  <revision rev="330" vrev="202">
+    <srcmd5>72371e0ff277ba190f8cb541d15020fa</srcmd5>
+    <version>unknown</version>
+    <time>1531946188</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.1.4
+  * Several fixes for i965
+  * Several fixes for anv
+  * A few fixes each for radeonsi, glx, the glsl compiler, the
+    autotools build, nir, st/dri, and r600
+
+- Make build verbose as outlined in openSUSE:Specfile guidelines
+  https://en.opensuse.org/openSUSE:Specfile_guidelines#Verbose_mode</comment>
+    <requestid>623191</requestid>
+  </revision>
+  <revision rev="331" vrev="203">
+    <srcmd5>284a9df9ef5baabc868efe2aa64db882</srcmd5>
+    <version>unknown</version>
+    <time>1533214156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625429</requestid>
+  </revision>
+  <revision rev="332" vrev="204">
+    <srcmd5>532c97af1ba49acd5244f36701309fa3</srcmd5>
+    <version>unknown</version>
+    <time>1533631788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627290</requestid>
+  </revision>
+  <revision rev="333" vrev="205">
+    <srcmd5>38d76c8c9c639ee89e39423f78cc57de</srcmd5>
+    <version>unknown</version>
+    <time>1534774673</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.1.6
+  * autotools fixes for libglvnd, libgl naming, and pkgconfig
+  * meson fixed its handling of stale symlinks wrt megadrivers
+  * windows relaged fixes
+  * some bug fixes for clover
+  * plenty of egl, wayland, glx, and dri3 fixes
+  * a couple of nir fixes
+  * and on the driver side, radv, intel, vc4, etnaviv, swr, r600, amd, and
+    nouveau all had a few fixes
+- supersedes archlinux_glvnd-fix-gl-dot-pc.patch
+
+- disabled build of libwayland-egl for factory/sle16/Leap 16 now
+  being provided by Wayland itself and probably be removed from
+  Mesa soon; see also https://build.opensuse.org/request/show/613048</comment>
+    <requestid>629933</requestid>
+  </revision>
+  <revision rev="334" vrev="206">
+    <srcmd5>62019ca52f17b2214b62c12ae7a89ce9</srcmd5>
+    <version>unknown</version>
+    <time>1536678767</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 18.1.7
+  * Mesa 18.1.7 is now available for general consumption. This
+    release has been rather small compared to the last few
+    release, There's just a handful of fixes in total. Meson,
+    radv, anv, gallium winsys, intel, i965, and r600 were the
+    only recipients of fixs this go around.
+
+- Add wayland to egl_platforms for Leap 15.0+ and TW again (boo#1105798)</comment>
+    <requestid>631796</requestid>
+  </revision>
+  <revision rev="335" vrev="207">
+    <srcmd5>0a57ea09e7cc9a30765b9338046349f3</srcmd5>
+    <version>unknown</version>
+    <time>1537263443</time>
+    <user>maxlin_factory</user>
+    <comment>- get rid of libwayland-egl1/libwayland-egl-devel completely; also
+  for older Leap versions
+
+- update to 18.2.0
+  * This release consists of nearly 2200 commits from approximately
+    130 developers.
+  * The top highlights include:
+    - OpenGL 4.3 on virgl.
+    - OpenGL 4.4 Compatibility profile on radeonsi.
+    - OpenGL ES 3.2 on radeonsi and virgl.
+    - GL_ARB_ES3_2_compatibility on radeonsi.
+    - GL_ARB_fragment_shader_interlock on i965.
+    - GL_ARB_sample_locations and GL_NV_sample_locations on nvc0 (GM200+).
+    - GL_ANDROID_extension_pack_es31a on radeonsi.
+    - GL_KHR_texture_compression_astc_ldr on radeonsi.
+    - GL_NV_conservative_raster and GL_NV_conservative_raster_dilate on
+      nvc0 (GM200+).
+    - GL_NV_conservative_raster_pre_snap_triangles on nvc0 (GP102+).
+    - multisampled images on nvc0 (GM107+) (now supported on GF100+).
+  * Additional features:
+    - ANV Extensions:
+      - VK_KHR_bind_memory2.
+      - VK_KHR_external_fence.
+      - VK_KHR_external_fence_capabilities.
+      - VK_KHR_external_semaphore.
+      - VK_KHR_external_semaphore_capabilities.
+      - VK_KHR_maintenance2.
+      - VK_KHR_maintenance3.
+      - VK_KHR_multiview.
+      - VK_KHR_relaxed_block_layout.
+      - VK_KHR_sampler_ycbcr_conversion.
+      - VK_KHR_8bit_storage.
+      - VK_KHR_create_renderpass2.
+      - VK_KHR_display.
+      - VK_KHR_display_swapchain.
+      - VK_KHR_external_fence_fd.
+      - VK_KHR_external_semaphore_fd.
+      - VK_KHR_get_display_properties2.
+      - VK_KHR_image_format_list.
+    - RADV Extensions:
+      - VK_KHR_bind_memory2.
+      - VK_KHR_external_fence.
+      - VK_KHR_external_fence_capabilities.
+      - VK_KHR_maintenance2.
+      - VK_KHR_maintenance3.
+      - VK_KHR_multiview.
+      - VK_KHR_relaxed_block_layout.
+      - VK_KHR_create_renderpass2.
+      - VK_KHR_display.
+      - VK_KHR_display_swapchain.
+      - VK_KHR_draw_indirect_count.
+      - VK_KHR_external_fence_fd.
+      - VK_KHR_get_display_properties2.
+      - VK_KHR_get_surface_capabilities2.
+      - VK_KHR_image_format_list.
+    - New GL extensions supported by all drivers:
+      - GL_OES_EGL_image_external.
+      - GL_OES_EGL_image_external_essl3.
+    - freedreno:
+      - GL 3.0's multisample anti-aliasing support on a5xx.
+      - GL_ARB_texture_multisample support on a5xx.
+      - GLES3.1's GS5 Packing/bitfield/conversion functions support on a5xx.
+      - Dynamically uniform UBO array indices.
+      - Packing/bitfield/conversion functions.
+      - Enhanced textureGather.
+      - GL_OES_texture_buffer.
+      - GL_ARB_seamless_cubemap_per_texture.
+    - i965:
+      - GL_OES_texture_view on gen8+.
+      - GL_EXT_texture_norm16.
+    - nouveau:
+      - GL_ARB_post_depth_coverage.
+      - GL_ARB_sample_locations.
+      - GL_EXT_texture_norm16.
+    - r600:
+      - GL_EXT_texture_norm16.
+    - radeonsi:
+      - GL_EXT_texture_norm16.
+    - virgl:
+      - GL_ARB_seamless_cubemap_per_texture.
+      - GL_ARB_shader_stencil_export.
+- supersedes u_r600-egd_tables.py-make-the-script-python-2-3-compat.patch,
+  u_intel_anv-make-scripts-python-2-3-compat.patch
+- U_intel-decoder-mark-total_length-as-MAYBE_UNUSED-in-g.patch,
+  U_intel-aubinator-mark-ftruncate_res-as-MAYBE_UNUSED-i.patch,
+  U_python-Fix-rich-comparisons.patch,
+  U_python-Use-key-functions-when-sorting-containers.patch
+  * buildfixes ...</comment>
+    <requestid>635013</requestid>
+  </revision>
+  <revision rev="336" vrev="208">
+    <srcmd5>909e494d1c54fda9139f37b89e6b82a8</srcmd5>
+    <version>unknown</version>
+    <time>1537360451</time>
+    <user>maxlin_factory</user>
+    <comment>seems cause several strange issue, not quite confident, revert for checking</comment>
+  </revision>
+  <revision rev="337" vrev="209">
+    <srcmd5>de3e5e540ea2de3f450fcf256d74a627</srcmd5>
+    <version>unknown</version>
+    <time>1544817010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657600</requestid>
+  </revision>
+  <revision rev="338" vrev="210">
+    <srcmd5>1a4f89f8f26382e09f7c9b810beff93c</srcmd5>
+    <version>unknown</version>
+    <time>1547211758</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable the surfaceless platform, which is needed by KDE CI 
+  environment for testing (https://phabricator.kde.org/T10245)
+
+- Add etnaviv and imx support for %arm and arch64</comment>
+    <requestid>664063</requestid>
+  </revision>
+  <revision rev="339" vrev="211">
+    <srcmd5>37fa5555ea4b30adc5b21351ac6b4e1e</srcmd5>
+    <version>unknown</version>
+    <time>1549311791</time>
+    <user>coolo</user>
+    <comment>- Update to 18.3.2
+  * In this release candidate we have added more PCI IDs for AMD
+    Vega devices and a number of fixes for the RADV Vulkan drivers.
+  * On the Intel side we have a selection ranging from quad swizzles
+    support for ICL to compiler fixes.
+  * The nine state tracker has also seen some love as do the
+    Broadcom drivers.
+  * To top it all up, we have a healthy mount of build system fixes.</comment>
+    <requestid>667671</requestid>
+  </revision>
+  <revision rev="340" vrev="212">
+    <srcmd5>1dbc9a508b2a76c379e47f6c177d682a</srcmd5>
+    <version>unknown</version>
+    <time>1551029847</time>
+    <user>coolo</user>
+    <comment>- remove n_Disable-Xshm-for-now-since-it-results-in-render-erro.patch;
+  keeping that one reintroduced render errors and missing screen
+  refreshes on GNOME3 in a qemu VM (cirrus emulation); the issue has
+  been fixed in a different and better way since 18.3.3; this is
+  related to bsc#1118149
+
+- Update to 18.3.4
+  * A fix in the XvMC state-tracker, which was causing some video attributes to
+    not take affect. On the video front the VAAPI state tracker has seen
+    improvements with VP9 streams while the amdgpu driver advertises all available
+    profiles.
+  * On Intel side we have compiler fixes and extra PCI IDs for Coffee Lake and
+    Ice Lake parts. In the Broadcom drivers a couple of memory leaks were
+    addressed and the NEON assembly should compile properly on armhf.
+  * Other drivers such as radeonsi, nouveau and freedreno have also seen some
+    love. The RADV driver has seen addressed to compile correctly with GCC9
+    amongst other changes.
+  * The Xlib based libGL have been addressed to work with X servers, which lacks
+    the MIT-SHM extension such as XMing.
+  * To top it up we have a few fixes to the meson build system.
+
+- Update to 18.3.3
+  * In this release we have:
+    A memory leak fix in the etnaviv driver, better NEON assembly code in vc4 and
+    couple of stability improvements to the radeonsi driver. Another memory leak
+    affecting all gallium drivers have also been addressed.
+  * The time required to compile GLSL shaders with large amount of uniforms, such
+    as Godot, has been improved.
+  * GLX and swrast have also seen some improvements.
+  * On the Vulkan side, the ANV driver adjusted the number of images supported
+    for gen8 and earlier to 8, while for newer hardware it remains the same 64.
+    The RADV driver has seens a collection of stability improvements and fix for
+    the Vulkan version advertised in some corner cases.
+  * To top it all up, the meson build system has seen a steady amount of fixes:
+    the DSO version for the VDPAU drivers is now included, ICC compatibility
+    patches, opencl handling and relaxed handling when building osmesa.
+- adjusted n_Disable-Xshm-for-now-since-it-results-in-render-erro.patch
+
+- Build Mesa with meson instead of automake
+  + Build classic swrast with Mesa, as its a dependency for osmesa - delete it
+    while installing
+  + Build egl with Mesa-drivers as it demands one windowing-system - 
+    delete it while installing</comment>
+    <requestid>677779</requestid>
+  </revision>
+  <revision rev="341" vrev="213">
+    <srcmd5>cfe190dded1abc1838724244f119d9ce</srcmd5>
+    <version>unknown</version>
+    <time>1552042822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681542</requestid>
+  </revision>
+  <revision rev="342" vrev="214">
+    <srcmd5>ac8eb055332ee98979585e543aef7563</srcmd5>
+    <version>unknown</version>
+    <time>1552985838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685481</requestid>
+  </revision>
+  <revision rev="343" vrev="215">
+    <srcmd5>2c407a187056b93b53d0731fc830595e</srcmd5>
+    <version>unknown</version>
+    <time>1553163492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687173</requestid>
+  </revision>
+  <revision rev="344" vrev="216">
+    <srcmd5>87a5cffe16f8f33b505266acfdfee945</srcmd5>
+    <version>unknown</version>
+    <time>1553635758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687563</requestid>
+  </revision>
+  <revision rev="345" vrev="217">
+    <srcmd5>ff6a17cac797840760ba5b212d299576</srcmd5>
+    <version>unknown</version>
+    <time>1553888010</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.0.1
+  * &quot;This is the first bug fix release of the 19.0 branch. It's
+    been a pretty calm cycle, and there's not too much here. I
+    think things are looking pretty good overall.&quot;
+
+- baselibs.conf: Mesa-libEGL-devel needs Mesa-KHR-devel (bsc#1117365) 
+
+- Mesa-libEGL-devel needs Mesa-KHR-devel (bsc#1117365)</comment>
+    <requestid>689350</requestid>
+  </revision>
+  <revision rev="346" vrev="218">
+    <srcmd5>aa1fae8f1be4e3f830927d46d9679d92</srcmd5>
+    <version>unknown</version>
+    <time>1555773141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695395</requestid>
+  </revision>
+  <revision rev="347" vrev="219">
+    <srcmd5>f3370ec39f18481fcb8d04c7dfb013b4</srcmd5>
+    <version>unknown</version>
+    <time>1556474352</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 19.0.3
+  * quiet release with just 19 patches (excluding release churn)
+    since 19.0.2
+  * no sub component was touched too much
+  * virgl, glsl, nir, intel, radeonsi, radv, ac, and gallivm 
+    received a few patches
+
+- Disable LTO (boo#1133265).</comment>
+    <requestid>698207</requestid>
+  </revision>
+  <revision rev="348" vrev="220">
+    <srcmd5>d38e8f501ec7fce45a2540673fdb9547</srcmd5>
+    <version>unknown</version>
+    <time>1558129046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.0.4
+  * It's been a pretty active release, especially for how late in
+    the cyle we are. Radv was the busiest component, but there
+    were also a few changes for intel, radeonsi, some core vulkan
+    work, and a little bit of other stuff here and there.</comment>
+    <requestid>702828</requestid>
+  </revision>
+  <revision rev="349" vrev="221">
+    <srcmd5>c808dd2b5fbd165e89b70409bc589575</srcmd5>
+    <version>unknown</version>
+    <time>1559580548</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 19.0.5
+  * Things have slowed back down from the last release, which is
+    good for this late in the series. No one area has received too
+    much work, with a little bit sprinkled in here and there in
+    both core code and drivers.</comment>
+    <requestid>704704</requestid>
+  </revision>
+  <revision rev="350" vrev="222">
+    <srcmd5>b9244493ede7781da9bd52ec50611ed6</srcmd5>
+    <version>unknown</version>
+    <time>1561643530</time>
+    <user>dimstar_suse</user>
+    <comment>- reverted latest change in specfile; it's not needed; llvm8 is
+  already been chosen on factory/TW by default ...
+
+- use llvm8 on factory/TW 
+
+- n_glesv1_cm-glesv2.patch
+  * reenables build of GLESv1_CM and GLESv2 ...
+- readded pkgconfig files for GLESv1_CM and GLESv2 to filelists
+- removed again virtual provides for 
+  * pkgconfig(glesv1_cm)
+  * pkgconfig(glesv2)
+
+- reenable LTO with Mesa 19.1 (boo#1133265, comment#5) 
+- enabled new gallium drivers
+  * iris (newer Intel GPUs) 
+  * lima, panfrost on ARM64
+- virtually provide
+  * pkgconfig(glesv1_cm)
+  * pkgconfig(glesv2)
+  in libGLESv1_CM-devel/libGLESv2-devel packages, since these files
+  have been removed from Mesa via git commit #1587586
+
+- Update to 19.1.0:
+  * Mesa 19.1.0 implements the OpenGL 4.5 API, but the version
+    reported by glGetString(GL_VERSION) or
+    glGetIntegerv(GL_MAJOR_VERSION) /
+    glGetIntegerv(GL_MINOR_VERSION) depends on the particular
+    driver being used. Some drivers don't support all the features
+    required in OpenGL 4.5. OpenGL 4.5 is only available if
+    requested at context creation. Compatibility contexts may
+    report a lower version depending on each driver.
+  * The top highlights include:
+    - GL_ARB_parallel_shader_compile for all drivers.
+    - GL_EXT_gpu_shader4 on all GL 3.1 drivers.
+    - GL_EXT_shader_image_load_formatted on radeonsi.
+    - GL_EXT_texture_buffer_object on all GL 3.1 drivers.
+    - GL_EXT_texture_compression_s3tc_srgb on Gallium and i965
+      drivers (ES extension).
+    - GL_NV_compute_shader_derivatives on Iris and i965 drivers.
+    - GL_KHR_parallel_shader_compile on all drivers.
+    - GL_INTEL_conservative_rasterization on Iris.
+- Refresh patches with quilt.
+- Clean-up spec files for .pc and other files no longer built.</comment>
+    <requestid>710853</requestid>
+  </revision>
+  <revision rev="351" vrev="223">
+    <srcmd5>6c17d1e8ac0fc2e1e6e5fc1d959586bd</srcmd5>
+    <version>unknown</version>
+    <time>1562073452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712676</requestid>
+  </revision>
+  <revision rev="352" vrev="224">
+    <srcmd5>8232b58b354988f0119e6cfa8d7b621b</srcmd5>
+    <version>unknown</version>
+    <time>1562926072</time>
+    <user>dimstar_suse</user>
+    <comment>- U_llvmpipe-Don-t-use-u_ringbuffer-for-lp_scene_queue.patch 
+  * may fix crashes in llvmpipe on SMP systems with LTO enabled
+    builds (boo#1133265)
+
+- Update to version 19.1.2:
+  * Different fixes for the Intel and AMD Vulkan drivers,
+    Freedreno, the Meson build system, and some other fixes for
+    other parts and/or drivers.
+  * Worth to mention a fix for a crash in Wolfenstein II with the
+    RADV driver, and another fix relevant for DXVK on Intel gen7
+    drivers.
+- Update Source urls from ftp to https.</comment>
+    <requestid>714812</requestid>
+  </revision>
+  <revision rev="353" vrev="225">
+    <srcmd5>ff9525b68940f749a07f3df46d1f9261</srcmd5>
+    <version>unknown</version>
+    <time>1563914007</time>
+    <user>dimstar_suse</user>
+    <comment>- n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * added totem as another affected application (boo#1142270) 
+
+- Add v3d support (VC5/V6 driver) for %arm and aarch64 
+
+- Add kmsro for %arm and aarch64</comment>
+    <requestid>717526</requestid>
+  </revision>
+  <revision rev="354" vrev="226">
+    <srcmd5>506abcde4ec7fddf110e919a11f717f2</srcmd5>
+    <version>unknown</version>
+    <time>1564302035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718183</requestid>
+  </revision>
+  <revision rev="355" vrev="227">
+    <srcmd5>11a17678c9f8603d619c110b79f74ab3</srcmd5>
+    <version>unknown</version>
+    <time>1566912236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.1.5
+  * bugfix release 
+
+- Build radeonsi and libvdpau_radeonsi on ppc64le 
+
+- Update to version 19.1.4:
+  * Mostly, as usual, in fixes for different drivers (anv, radv,
+    radeon, nv50, nvc0) as well as in backend parts (egl, spirv,
+    nir, ...).
+  * Of those fixes, we could highlight several ones:
+    - Vulkan 24/48 bit formats are now not supported on Ivybridge.
+    - R8G8B8_UNORM_SRGB is not supported on Haswell.
+    - A fix for hair artifacts in Max Payne 3 on AMD/RADV.
+    - Vulkan transform feedback extension is disabled on Intel</comment>
+    <requestid>726100</requestid>
+  </revision>
+  <revision rev="356" vrev="228">
+    <srcmd5>c87f1696f9f5818443a4118b1f7a5cf1</srcmd5>
+    <version>unknown</version>
+    <time>1568983739</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 19.1.7
+  * another bugfix release ....
+
+- Add ppc64 for radeonsi to avoid build error
+
+- Update to version 19.1.6
+  * bugfix release</comment>
+    <requestid>731650</requestid>
+  </revision>
+  <revision rev="357" vrev="229">
+    <srcmd5>ef214500cfce8b5754d03766ef32bf6e</srcmd5>
+    <version>unknown</version>
+    <time>1571950832</time>
+    <user>dimstar_suse</user>
+    <comment>- let Mesa-libEGL-devel require libX11 devel via &quot;pkgconfig(x11)&quot;
+  since EGL/eglplatform.h includes X11/Xlib.h
+
+- Update to version 19.2.1
+  * fixes all over the tree: intel, amd, nine, nir, egl, gallium,
+    scons, meson, glsl, haiku, android, and nouveau all got fixes.
+
+- pickup gl, egl, glesv1_cm and glesv2 pkgconfig files from 
+  libglvnd build and add them to the appropriate devel subpackages
+
+- reintroduce GL, EGL, GLES* devel subpackages since corresponding
+  header and pkgconfig files from libglvnd didn't work out ... 
+
+- Rebase n_opencl_dep_libclang.patch after update.
+
+- Update to version 19.2.0 including changes to
+  * release-infastructure
+  * the build
+  * drivers: turnip, radv, android, intel and amd common code
+  * new features: check Phoronix
+    https://www.phoronix.com/scan.php?page=news_item&amp;px=Mesa-19.2-Released
+- supersedes U_llvmpipe-Don-t-use-u_ringbuffer-for-lp_scene_queue.patch
+- adjusted n_drirc-disable-rgb10-for-chromium-on-amd.patch
+- supersedes n_glesv1_cm-glesv2.patch
+
+- no longer build 
+  * Mesa-libGL-devel
+  * Mesa-libEGL-devel
+  * Mesa-libGLESv1_CM-devel
+  * Mesa-libGLESv2-devel
+  * Mesa-libGLESv3-devel
+  Instead of requiring these let Mesa-devel package require 
+  libglvnd-devel &gt;= 1.2.0, which provides the contents of these
+  packages now (header files for OpenGL, GLES, EGL, and GLX). 
+  Adjusted baselibs.conf accordingly.
+- modified check for llvm version in a way so it works also with
+  older llvm packages (by making use of &quot;llvm-config -version&quot;), 
+  where there is %{_llvm_sonum} macro defined yet
+- moved manual pages to Mesa-devel package
+
+- n_opencl_dep_libclang.patch
+  * Link OpenCL library with libclang-cpp.so instead of the
+    component libraries for LLVM &gt;= 9.</comment>
+    <requestid>740902</requestid>
+  </revision>
+  <revision rev="358" vrev="230">
+    <srcmd5>45208297b7dca49b856fe2e83425b8e4</srcmd5>
+    <version>unknown</version>
+    <time>1572779071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744800</requestid>
+  </revision>
+  <revision rev="359" vrev="231">
+    <srcmd5>02d38ae513e995617c8e769eb8c68906</srcmd5>
+    <version>unknown</version>
+    <time>1573164879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745416</requestid>
+  </revision>
+  <revision rev="360" vrev="232">
+    <srcmd5>e7df97e3b5f9f0d8023b1cd552105681</srcmd5>
+    <version>unknown</version>
+    <time>1573421528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.3
+  In this release: iris, meson, radv, anv, turnip, 965, svga,
+  utils, core mesa, glsl, etanviv, and gallium/rbug
+- This Mesa release includes support for latest GPUs including Intel 
+  (jsc#SLE-7962, jsc#SLE-8024, jsc#SLE-8022, jsc#SLE-10182, jsc#SLE-4983, 
+   bsc#1137515) and fixes for boo#1127672, bsc#1117365
+
+- Dont conflict with vulkan-devel anymore as there is no file
+  conflict</comment>
+    <requestid>746609</requestid>
+  </revision>
+  <revision rev="361" vrev="233">
+    <srcmd5>c6f63a602cad9f4b0c9e0b176ad3bd0b</srcmd5>
+    <version>unknown</version>
+    <time>1574103776</time>
+    <user>dimstar_suse</user>
+    <comment>- u_call-shmget-with-permission-0600-instead-of-0777.patch
+  * CVE-2019-5068 (bsc#1156015)
+
+- Update to version 19.2.4
+  * This is an emergency release, to fix a critical bug found in
+    the 19.2.3 release which causes incomplete rendering on all
+    mesa drivers. This release contains a single patch to fix
+    that bug. 
+
+- Update _contraints, Mesa-drivers needs 7GB of disk to build
+  safely.</comment>
+    <requestid>749087</requestid>
+  </revision>
+  <revision rev="362" vrev="234">
+    <srcmd5>fc4eefbf71fceabf635c34ad966d9569</srcmd5>
+    <version>unknown</version>
+    <time>1574677449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.2.6
+  * fixes build on PPC
+  * couple of additional stable patches 
+
+- Update to version 19.2.5
+  * There's a little bit over everything in here, with anv and
+    radeonsi standing out as the two biggest components getting
+    changes, but core mesa, core gallium, llvmpipe, nir, egl,
+    i965, tgsi, st/mesa, spirv, and the Intel compiler also
+    fixes in this release.
+- supersedes u_call-shmget-with-permission-0600-instead-of-0777.patch</comment>
+    <requestid>750318</requestid>
+  </revision>
+  <revision rev="363" vrev="235">
+    <srcmd5>509bdc641dd4766d73db0731591ea35f</srcmd5>
+    <version>unknown</version>
+    <time>1578437477</time>
+    <user>dimstar_suse</user>
+    <comment>- n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * fixes patch (boo#1145188)  
+
+- Update to version 19.3.1
+  * Bugfixes for i965/iris, anv and radv
+
+- Update to version 19.3.0
+  * Mainly changes to the build system, i965, aco, radv and anv
+  * New features, check Phoronix:
+    https://www.phoronix.com/scan.php?page=article&amp;item=mesa-193-features</comment>
+    <requestid>761001</requestid>
+  </revision>
+  <revision rev="364" vrev="236">
+    <srcmd5>478a335b861e826d7349757bfb463e02</srcmd5>
+    <version>unknown</version>
+    <time>1579195130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764253</requestid>
+  </revision>
+  <revision rev="365" vrev="237">
+    <srcmd5>6badafb916019031659b1f16610eba2f</srcmd5>
+    <version>unknown</version>
+    <time>1579867647</time>
+    <user>dimstar_suse</user>
+    <comment>- U_0001-gallium-Fix-a-couple-of-multiple-definition-warnings.patch
+  U_0002-r600-Move-get_pic_param-to-radeon_vce.c.patch
+  U_0003-radeon-Move-si_get_pic_param-to-radeon_vce.c.patch
+  U_0004-radeon-Fix-multiple-definition-error-with-radeon_deb.patch
+  U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+  U_0006-nouveau-nvc0-add-extern-keyword-to-nvc0_miptree_vtbl.patch
+  * fixes build with gcc10 using -fno-common as default now (boo#1160578)</comment>
+    <requestid>766379</requestid>
+  </revision>
+  <revision rev="366" vrev="238">
+    <srcmd5>c43b7be938a4065b16b8adf788fa8646</srcmd5>
+    <version>unknown</version>
+    <time>1580373484</time>
+    <user>dimstar_suse</user>
+    <comment>- require llvm9 (jsc#IBM-369, jsc#SLE-7452)</comment>
+    <requestid>767994</requestid>
+  </revision>
+  <revision rev="367" vrev="239">
+    <srcmd5>7505e489720c374e4bd57654e19d0235</srcmd5>
+    <version>unknown</version>
+    <time>1580725603</time>
+    <user>dimstar_suse</user>
+    <comment>- require and check for llvm-devel &gt;= 9 instead of llvm9-devel on
+  openSUSE
+
+- enabled build of gallium based llvmpipe driver for s390x
+  (related to jsc#IBM-369, jsc#SLE-7452)
+
+- Update to version 19.3.3
+  * There's plenty of changes here, but intel, docs, radeonsi,
+    and aco are the biggest sets of changes.
+- supersedes U_0005-radv-Remove-syncobj_handle-variable-in-header.patch
+
+- set optflags also for g++ compiler</comment>
+    <requestid>768651</requestid>
+  </revision>
+  <revision rev="368" vrev="240">
+    <srcmd5>3683b16e069064468967330751da0ac6</srcmd5>
+    <version>unknown</version>
+    <time>1580991522</time>
+    <user>dimstar_suse</user>
+    <comment>- U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
+  * reverse apply since it caused a regression in rendering on
+    s390x (bsc#1162252)</comment>
+    <requestid>769757</requestid>
+  </revision>
+  <revision rev="369" vrev="241">
+    <srcmd5>88ce9eee9e3d66d28f855e7230f0e78e</srcmd5>
+    <version>unknown</version>
+    <time>1581694226</time>
+    <user>okurz-factory</user>
+    <comment>- u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch
+  * replaces U_gallium-Fix-big-endian-addressing-of-non-bitmask-arr.patch
+    by an official merge request (bsc#1162252, gitlab issue#2472)</comment>
+    <requestid>770593</requestid>
+  </revision>
+  <revision rev="370" vrev="242">
+    <srcmd5>c5ec783d818a03938d5fedbf8ffb3be3</srcmd5>
+    <version>unknown</version>
+    <time>1582394349</time>
+    <user>dimstar_suse</user>
+    <comment>- use 7G disk constraints also for x86_64 and i586 (bsc#1164488) 
+
+- only use 'BuildRequires:llvm-devel &gt;= 9.0.0' for TW/factory; for 
+  older products still use 'BuildRequires: llvm9-devel'; fixed
+  build on openSUSE Leap 15.2
+
+- Update to version 19.3.4
+  * changes all over the tree, but aco and anv are leading the
+    way in changes
+- supersedes u_Revert_gallium_Fix_big-endian_addressing_of_non-bitmask_array_formats.patch</comment>
+    <requestid>777801</requestid>
+  </revision>
+  <revision rev="371" vrev="243">
+    <srcmd5>9c307c1230d630dd260e725960cf10ea</srcmd5>
+    <version>unknown</version>
+    <time>1582726447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778461</requestid>
+  </revision>
+  <revision rev="372" vrev="244">
+    <srcmd5>436e0f274ccf094a49f2f77477331ce7</srcmd5>
+    <version>unknown</version>
+    <time>1583226831</time>
+    <user>dimstar_suse</user>
+    <comment>- Loosen dependencies to allow building with newer versions of
+  clang-devel, similar to llvm-devel.</comment>
+    <requestid>780325</requestid>
+  </revision>
+  <revision rev="373" vrev="245">
+    <srcmd5>c9568d4a9dcfab9a34a34b5e6f0cc329</srcmd5>
+    <version>unknown</version>
+    <time>1583948019</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.1
+  * bugfix release 
+
+- cleanup in specfile: get rid of is_opensuse macro, which is no
+  longer needed at all (jira#PM-1623)</comment>
+    <requestid>783007</requestid>
+  </revision>
+  <revision rev="374" vrev="246">
+    <srcmd5>031e077f9753130bcf4d910ffe86204f</srcmd5>
+    <version>unknown</version>
+    <time>1585176130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.2
+  * bugfix release: fixes all over the code base</comment>
+    <requestid>786430</requestid>
+  </revision>
+  <revision rev="375" vrev="247">
+    <srcmd5>e9dafced68794420e39aafe1920b1591</srcmd5>
+    <version>unknown</version>
+    <time>1586112788</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.4
+  * emergency release, which reverts a serious SPIR-V regression
+    in the 20.0.3 release.
+- supersedes U_Revert-spirv-Implement-OpCopyObject-and-OpCopyLogica.patch
+
+- U_Revert-spirv-Implement-OpCopyObject-and-OpCopyLogica.patch
+  * revert severe spirv regression; emergency release will be
+    available soon ...
+
+- update to Mesa 20.0.3
+  * bugfix release:  fixes all over the tree; mostly AMD (radv, 
+    aco), NIR and Intel (isl, anv)</comment>
+    <requestid>791235</requestid>
+  </revision>
+  <revision rev="376" vrev="248">
+    <srcmd5>1e3c248f993133a2081c83f916257776</srcmd5>
+    <version>unknown</version>
+    <time>1586247956</time>
+    <user>dimstar_suse</user>
+    <comment>- U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
+  * Fix Weston launch on tumbleweed by backporting commit bfb9c08e</comment>
+    <requestid>791558</requestid>
+  </revision>
+  <revision rev="377" vrev="249">
+    <srcmd5>0045dc4d0286c4c9c83f1105de64a36a</srcmd5>
+    <version>unknown</version>
+    <time>1588022934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.5
+  *  pretty big release with AMD and Intel drivers receiving the 
+     majority of the work.
+- supersedes U_EGL-Add-eglSetDamageRegionKHR-to-GLVND-dispatch-list.patch
+- supersedes n_opencl_dep_libclang.patch
+
+- Disable LTO on armv6 to fix build</comment>
+    <requestid>797123</requestid>
+  </revision>
+  <revision rev="378" vrev="250">
+    <srcmd5>e90f78ebb72f8bc8c4855003c8781ec4</srcmd5>
+    <version>unknown</version>
+    <time>1588450538</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.6
+  * fairly small release (a little bit of everything in here)
+
+- require llvm/clang 10</comment>
+    <requestid>799279</requestid>
+  </revision>
+  <revision rev="379" vrev="251">
+    <srcmd5>feb716fc062135c85e1834995a5d7147</srcmd5>
+    <version>unknown</version>
+    <time>1588697693</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800151</requestid>
+  </revision>
+  <revision rev="380" vrev="252">
+    <srcmd5>c036429522da5829699dd9d3b6464061</srcmd5>
+    <version>unknown</version>
+    <time>1589751767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to Mesa 20.0.7
+  * most fixes in Radv, but there are fixes all over the tree</comment>
+    <requestid>806009</requestid>
+  </revision>
+  <revision rev="381" vrev="253">
+    <srcmd5>9be486592ca1d3dceca01f09f05335ba</srcmd5>
+    <version>unknown</version>
+    <time>1590780015</time>
+    <user>maxlin_factory</user>
+    <comment>- Add U_add-lifetime-dse-fix.patch as a proper fix for boo#1171855.
+
+- Disable LTO for now as there's a known upstream bug
+  that hasn't been resolved with GCC 10:
+  boo#1171855.</comment>
+    <requestid>809625</requestid>
+  </revision>
+  <revision rev="382" vrev="254">
+    <srcmd5>4c999cf629e999e1c88ffde85aecd07d</srcmd5>
+    <version>unknown</version>
+    <time>1592397979</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.1
+  * first bugfix release for the 20.1 branch
+  * fixes issue affecting Unreal Engine 4 games on i965 
+
+- update to 20.1.0
+  * first release for the 20.1 branch
+  * One already known issue is that Unreal Engine 4 has a bug in
+    its usage of glDrawRangeElements() causing it to be called
+    with a number of vertices in place of the `end` parameter,
+    that was recently revealed. This is an annoying bug that we 
+    haven't worked around yet. For more details:
+    https://gitlab.freedesktop.org/mesa/mesa/-/issues/2917
+- supersedes U_add-lifetime-dse-fix.patch</comment>
+    <requestid>814751</requestid>
+  </revision>
+  <revision rev="383" vrev="255">
+    <srcmd5>08d3884af24642cb53a2931a20927f37</srcmd5>
+    <version>unknown</version>
+    <time>1592840616</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to /usr/etc/OpenCL/vendors for mesa.icd OpenCL file
+  location (boo#1173005)</comment>
+    <requestid>815765</requestid>
+  </revision>
+  <revision rev="384" vrev="256">
+    <srcmd5>01c26efea41231074c8ec0d7fd1d01a8</srcmd5>
+    <version>unknown</version>
+    <time>1593096427</time>
+    <user>dimstar_suse</user>
+    <comment>- move mesa.icd from /usr/etc/OpenCL/vendors to 
+  /usr/share/OpenCL/vendors (boo#1173005)</comment>
+    <requestid>816652</requestid>
+  </revision>
+  <revision rev="385" vrev="257">
+    <srcmd5>6279e1b0b1617fd0275646d355ef5210</srcmd5>
+    <version>unknown</version>
+    <time>1593378330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.2
+  * second bugfix release for the 20.1 branch
+  * most of the fixes here are to the AMD drivers, and the rest
+    is scattered over the tree.
+
+- enable valgrind support (boo#1173355)</comment>
+    <requestid>817253</requestid>
+  </revision>
+  <revision rev="386" vrev="258">
+    <srcmd5>35deac0dfa125366b2dd2fbf0a3981e7</srcmd5>
+    <version>unknown</version>
+    <time>1593727058</time>
+    <user>dimstar_suse</user>
+    <comment>- force valgrind support only on officially supported platforms
+  (boo#1173355)</comment>
+    <requestid>818127</requestid>
+  </revision>
+  <revision rev="387" vrev="259">
+    <srcmd5>9664ddaed7979d0bd6f3f76b98cf2a1f</srcmd5>
+    <version>unknown</version>
+    <time>1595339110</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>821518</requestid>
+  </revision>
+  <revision rev="388" vrev="260">
+    <srcmd5>7b20acd6c0c67adc6ada91b9d8d08c20</srcmd5>
+    <version>unknown</version>
+    <time>1595772954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.4
+  * fourth bugfix release for the 20.1 branch
+  * just a few fixes here and there, nothing major</comment>
+    <requestid>822405</requestid>
+  </revision>
+  <revision rev="389" vrev="261">
+    <srcmd5>fac2c4c9fc8f1667a458a7210859c32e</srcmd5>
+    <version>unknown</version>
+    <time>1598340728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.6
+  * sixth bugfix release for the 20.1 branch 
+
+- baselibs.conf:
+  + Require Mesa-KHR-devel instead of Mesa-KHR-devel-&lt;targettype&gt;:
+    KHR-devel consists only of header files there is thus no
+    -&lt;targettype&gt; flavor being generated.
+  + Do not require Mesa-libGLESv1_CM1 and Mesa-libGLESv2-2 from
+    their respective -32bit devel packages: with libglvnd defined
+    to 0, the native packages are being generated, but are empty.
+    For baselibs, this trick does not work and empty packages are
+    being skipped. So we drop the dependency (with a note in the
+    .spec to enable the deps when changing the defines).
+
+  * lots of updates to our testing infrastructure</comment>
+    <requestid>828816</requestid>
+  </revision>
+  <revision rev="390" vrev="262">
+    <srcmd5>4c074e4c8df0393556ec5df85931ffbe</srcmd5>
+    <version>unknown</version>
+    <time>1598642112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829732</requestid>
+  </revision>
+  <revision rev="391" vrev="263">
+    <srcmd5>444c3830eb4db4c7db44fb077e9f7a91</srcmd5>
+    <version>unknown</version>
+    <time>1599343204</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.1.7
+  * seventh bugfix release for the 20.1 branch
+
+- switched to llvm9 usage for Leap/SLE15 since llvm10 is not (yet)
+  in Leap/SLE15
+
+- version 20.1.6 needed for jira#SLE/SLE-12880, jira#SLE/SLE-12882 
+
+- use again /etc/OpenCL/vendors for openSUSE Leap, i.e. use
+  /usr/etc/OpenCL/vendors only for Tumbleweed</comment>
+    <requestid>831650</requestid>
+  </revision>
+  <revision rev="392" vrev="264">
+    <srcmd5>7b1978a13792ac7d76eaf22165a40b70</srcmd5>
+    <version>unknown</version>
+    <time>1600701101</time>
+    <user>dimstar_suse</user>
+    <comment>- buildfix-ppc64le.patch
+  * buildfix for ppc64le (boo#1176562)
+
+- update to 20.1.8:
+  * mainly bugfixes, highlights:
+   - Crash in ruvd_end_frame when calling vaBeginPicture/vaEndPicture without rendering anything
+   - khr_debug-push-pop-group_gl: ../src/util/simple_mtx.h:86: simple_mtx_lock: Assertion `c != _SIMPLE_MTX_INVALID_VALUE&amp;#x27; failed.
+   - Amber test opt_peel_loop_initial_if: Assertion failed
+   - Dirt Rally: Flickering glitches on certain foliage since Mesa 20.1.0 caused by MSAA
+   - [BRW] WRC 5 asserts with gallium nine and iris.</comment>
+    <requestid>835442</requestid>
+  </revision>
+  <revision rev="393" vrev="265">
+    <srcmd5>532b4500b84dd67a12568ac5cf93a9b2</srcmd5>
+    <version>unknown</version>
+    <time>1603031090</time>
+    <user>dimstar_suse</user>
+    <comment>- reenabled U_fix-mpeg1_2-decode-mesa-20.2.patch due to regression
+  reported in boo#1173185 
+
+- update to 20.2.1
+  * first bugfix release for the 20.1 branch
+- supersedes U_fix-mpeg1_2-decode.patch
+- disabled U_fix-mpeg1_2-decode-mesa-20.2.patch; likely no longer
+  needed (boo#1173185)
+
+- U_fix-mpeg1_2-decode-mesa-20.2.patch
+  * additional patch currently needed for Mesa 20.2 (boo#1173185) 
+
+- update to 20.2.0
+  * includes Intel Rocket Lake Platform Support 
+    (jsc#SLE/SLE-12880, jsc#SLE/SLE-12882)
+- adjusted/refreshed patches:
+  * n_add-Mesa-headers-again.patch
+  * n_drirc-disable-rgb10-for-chromium-on-amd.patch
+  * u_dep_xcb.patch
+- docs now available in .rst format (html before)
+
+- Add U_fix-mpeg1_2-decode.patch (boo#1173185)
+  * fixes colors in kaffeine on Radeon (r600 VAAPI driver)</comment>
+    <requestid>841954</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="picom" project="openSUSE:Factory">
+  <title>Stand-alone compositor for X11</title>
+  <description>Picom is a stand-alone compositor for X11. It supports both GLX and XRender backends and has various options to control shadows, blur and fade animations.</description>
+  <devel project="X11:XOrg" package="picom"/>
+</package>

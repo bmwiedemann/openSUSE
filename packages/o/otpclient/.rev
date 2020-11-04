@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e75ceb3e3f43036c1e7c42d2bc657cc</srcmd5>
+    <version>2.1.0</version>
+    <time>1585484857</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00221.html</comment>
+    <requestid>789349</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9173bd60df879ef7260800eb95067c67</srcmd5>
+    <version>2.2.1</version>
+    <time>1586973375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1:
+  + Fixed a bug that prevented andOTP backup encrypted using a long
+    password to be correctly imported.
+
+* Update to version 2.2.0:
+  + Add support for FreeOTPPlus.
+  + Fix first startup dialog wording.
+
+- run spec cleaner.
+* Update to v2.1.0:
+* Update to v2.0.1:</comment>
+    <requestid>794143</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f77cb6b5770f1fefee4a430afaa91fd</srcmd5>
+    <version>2.3.1</version>
+    <time>1589579537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1
+  * Fix possible memory leak in freeotp.c
+
+- Update to 2.3.0
+  + Add support for Aeigs backups (forwarded request 805337 from polslinux)</comment>
+    <requestid>805779</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6800bf799968d8f64383ce23177c3d65</srcmd5>
+    <version>2.3.2</version>
+    <time>1595864923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2
+  * Fix wrong code when entries are sorted
+  * new icon (forwarded request 822663 from polslinux)</comment>
+    <requestid>822967</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="python-formats" project="openSUSE:Factory">
+  <title>Support multiple formats with ease</title>
+  <description>Formats will provide you with a consistent API to parse and compose data.
+
+</description>
+  <devel project="devel:languages:python" package="python-formats"/>
+  <url>https://github.com/redodo/formats</url>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79979faf3c756e5979acb48f643b8434</srcmd5>
+    <version>1.0.0</version>
+    <time>1582038987</time>
+    <user>dimstar_suse</user>
+    <comment>New squid container</comment>
+    <requestid>775120</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>17615542fa66bc85365ba065d8d5ac8a</srcmd5>
+    <version>1.0.0</version>
+    <time>1589055572</time>
+    <user>dimstar_suse</user>
+    <comment>- De-install busybox-man in favour of mandoc</comment>
+    <requestid>795659</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ebc9c9e900c154e11470b46e66cffc71</srcmd5>
+    <version>1.0.0</version>
+    <time>1591424026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811769</requestid>
+  </revision>
+</revisionlist>

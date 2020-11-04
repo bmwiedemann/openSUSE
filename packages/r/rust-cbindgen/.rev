@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>18c440f36ec5b7a3b6e9ec821ad1dd40</srcmd5>
+    <version>0.6.7</version>
+    <time>1543224250</time>
+    <user>dimstar_suse</user>
+    <comment>Build dependency for Firefox &gt;= 63 boo#1115645
+</comment>
+    <requestid>650291</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>97c21174db0d7f6730b38ddbcb7e6f8d</srcmd5>
+    <version>0.6.8</version>
+    <time>1553699511</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.8 to satisfy Firefox 66.0 build requirements
+</comment>
+    <requestid>686025</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fa3c015eca8b82e01e80327504647cf9</srcmd5>
+    <version>0.8.7</version>
+    <time>1558938528</time>
+    <user>dimstar_suse</user>
+    <comment>* there is no upstream changelog provided (forwarded request 705194 from wrosenauer)</comment>
+    <requestid>705196</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4c519747297677415c7a3db9fc7ba53d</srcmd5>
+    <version>0.9.0</version>
+    <time>1565694725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721882</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>362e7e3ae536ef05e7e8549b701e1cc4</srcmd5>
+    <version>0.9.1</version>
+    <time>1571751731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741334</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52d17d7b59b4468af23cbd06054cd68b</srcmd5>
+    <version>0.12.0</version>
+    <time>1581694081</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772453</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>885d2183ca9eb921b27cbb645c4ecbc5</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782698</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d391ef0804d03bb1bbb53152f96746b3</srcmd5>
+    <version>0.13.1</version>
+    <time>1585667587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789912</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6fa66d149413e8ba85c6ce02dd31b162</srcmd5>
+    <version>0.14.1</version>
+    <time>1591380111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810403</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ba31933f8d26e3d18ae6950cbb613d8</srcmd5>
+    <version>0.14.3</version>
+    <time>1595949873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822975</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31c048eb811ce1cde1f628109454ec3b</srcmd5>
+    <version>0.15.0</version>
+    <time>1603202623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842309</requestid>
+  </revision>
+</revisionlist>

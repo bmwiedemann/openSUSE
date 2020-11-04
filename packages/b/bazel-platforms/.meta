@@ -1,0 +1,6 @@
+<package name="bazel-platforms" project="openSUSE:Factory">
+  <title>bazel-platforms</title>
+  <description>Constraint values for specifying platforms and toolchains</description>
+  <devel project="devel:tools:building" package="bazel-platforms"/>
+  <url>https://github.com/bazelbuild/platforms</url>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ef84a3fe1a393b1725db39bf887cabf</srcmd5>
+    <version>0.6.2</version>
+    <time>1576014102</time>
+    <user>dimstar_suse</user>
+    <comment>Tensor-based phase-Amplitude coupling package</comment>
+    <requestid>755281</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3dc39ca3442df982ec35a1d0f226842a</srcmd5>
+    <version>0.6.3</version>
+    <time>1586248226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3:
+  * no upstream changelog</comment>
+    <requestid>791712</requestid>
+  </revision>
+</revisionlist>

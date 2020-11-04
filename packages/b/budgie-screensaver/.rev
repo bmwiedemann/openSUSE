@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22862b24d7d3b75d0e3e5556fbec3453</srcmd5>
+    <version>20190923</version>
+    <time>1598885339</time>
+    <user>dimstar_suse</user>
+    <comment>Fork of GNOME Screensaver for Budgie 10</comment>
+    <requestid>830469</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e6ab1db4759c5e534cea1fbb6c4a4a9e</srcmd5>
+    <version>20190923</version>
+    <time>1600801913</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a better format for testing gnome versions
+</comment>
+    <requestid>835894</requestid>
+  </revision>
+</revisionlist>

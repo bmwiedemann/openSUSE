@@ -1,0 +1,5 @@
+<package name="ghc-zlib-bindings" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-zlib-bindings"/>
+</package>

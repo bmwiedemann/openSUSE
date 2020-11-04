@@ -1,0 +1,7 @@
+<package name="libretro-dosbox" project="openSUSE:Factory">
+  <title>DOSBOX libretro core for DOS emulation</title>
+  <description>DOSBox is a DOS-emulator that uses the SDL-library which makes DOSBox very easy to port to different platforms. DOSBox has already been ported to many different platforms, such as Windows, BeOS, Linux, MacOS X...
+
+This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-dosbox"/>
+</package>

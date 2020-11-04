@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>89d4a6e7a904dbdc77b38a0e543115c3</srcmd5>
+    <version>1.6</version>
+    <time>1594045847</time>
+    <user>dimstar_suse</user>
+    <comment>aircrack-ng, a wireless network security auditing tool.
+
+Germany's supreme court clarified that &quot;Dual use&quot; software is not categorically covered by §202c StGB. As a consequence this software can be distributed as part of openSUSE, which contains other network security assessment tools.
+https://www.bundesverfassungsgericht.de/entscheidungen/rk20090518_2bvr223307.html
+</comment>
+    <requestid>818826</requestid>
+  </revision>
+</revisionlist>

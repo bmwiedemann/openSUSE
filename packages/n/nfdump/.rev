@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53b85552b57e5924453fa72bb1ec7508</srcmd5>
+    <version>1.6.19</version>
+    <time>1582810821</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain nfdump in Factory</comment>
+    <requestid>779804</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84a72f45be5bbfc797e475d7f0618f1b</srcmd5>
+    <version>1.6.20</version>
+    <time>1585761627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790580</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5420ccdc8b4d0a574a601764db3752ad</srcmd5>
+    <version>1.6.21</version>
+    <time>1596565244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.21
+  * Implement rfc 7011 and include sender UDP port into unique
+    template identification.
+  * Add token 'dir' equivalent to 'flowdir' in filter syntax.
+  * Add optional print direction ascending or descending to output
+    of statistics -s and ordered printing -O.
+  * Avoid use_syslog name clash on certain OS.
+  * Honor -n flag when printing sorted flow cache.
+  * Fix uninitialized variable printPlain.
+  * Fix bug #223 limit matchig flows -c
+  * Restore old behaviour unlimiting output flows unless in -s stat
+  * Fix ft2nfdump nexthop fields
+  * Fix ft2nfdump extension map size
+  * internal: put output parameters in a single struct
+  * Fix GuessDir bug - issue #215
+</comment>
+    <requestid>824142</requestid>
+  </revision>
+</revisionlist>

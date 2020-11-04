@@ -1,0 +1,5 @@
+<package name="linstor-client" project="openSUSE:Factory">
+  <title></title>
+  <description>Python client for LINSTOR</description>
+  <devel project="network:ha-clustering:Factory" package="linstor-client"/>
+</package>

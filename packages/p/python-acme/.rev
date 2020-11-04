@@ -1,0 +1,523 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>96a022f9087fd04c0adc07657ff6ccde</srcmd5>
+    <version>0.10.2</version>
+    <time>1486389873</time>
+    <user>dimstar_suse</user>
+    <comment>needed for certbot. An Lets' Encrypt cient.</comment>
+    <requestid>453169</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd80afc1894703467fa0d6839e2bb739</srcmd5>
+    <version>0.11.1</version>
+    <time>1487260250</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455610</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d2489dc2af736f10f10281b6c7b75862</srcmd5>
+    <version>0.12.0</version>
+    <time>1489021436</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>477337</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>41c2801c3e530de9ab3f3d58eb7e73a2</srcmd5>
+    <version>0.12.0</version>
+    <time>1491469296</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482807</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8061bb0acecf72d68262c490e40785de</srcmd5>
+    <version>0.14.0</version>
+    <time>1495034326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495251</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>25a58d209980511a065b7b832a82cccd</srcmd5>
+    <version>0.14.1</version>
+    <time>1495133325</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495673</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bbe959046023fa536f1eb0633ab5ed39</srcmd5>
+    <version>0.14.2</version>
+    <time>1496392459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500460</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bdd219290105721c02cb6644d9655c06</srcmd5>
+    <version>0.15.0</version>
+    <time>1497274481</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502854</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7b9e7904fa0758b45a7af1164df97036</srcmd5>
+    <version>0.16.0</version>
+    <time>1501840718</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508785</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>796d0d2928dae3d211c0f8873aa8c6e1</srcmd5>
+    <version>0.17.0</version>
+    <time>1502562514</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516190</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>689a4a6d7021cec412f6e209357ae6f0</srcmd5>
+    <version>0.18.1</version>
+    <time>1505238980</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523430</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>599405731467ffc689a2245c3640921c</srcmd5>
+    <version>0.18.2</version>
+    <time>1506956063</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530235</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a9116044d40f6b4e1bf6bd5ecf422de6</srcmd5>
+    <version>0.19.0</version>
+    <time>1507486506</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532439</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50bc8410b9e14cacb6e66803a7cefdff</srcmd5>
+    <version>0.20.0</version>
+    <time>1513110176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556038</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7ae2f8d011355bd5346b3512ca49d941</srcmd5>
+    <version>0.21.1</version>
+    <time>1517516915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570567</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>56644659708006e85effd0c818e6333b</srcmd5>
+    <version>0.22.2</version>
+    <time>1522062314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590444</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>429eb87b45d2bdfc852d63c1a515b889</srcmd5>
+    <version>0.23.0</version>
+    <time>1524576688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596521</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>19d3400940612e12adcaa9570975cea4</srcmd5>
+    <version>0.24.0</version>
+    <time>1525426269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603739</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>62cb1e88dc60a9ba1563d811847cbba2</srcmd5>
+    <version>0.25.1</version>
+    <time>1530866498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620603</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>503f45f98a61c434a9898c751ae2490b</srcmd5>
+    <version>0.26.0</version>
+    <time>1531947302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.0
+  - No changelog from upstream
+- update to 0.25.1
+  - No changelog from upstream
+  
+- update to 0.25.0
+  - No changelog from upstream
+- update to 0.24.0
+  - No changelog from upstream
+- update to 0.23.0
+  - No changelog from upstream
+- update to 0.22.2
+  - No changelog from upstream
+- update to 0.22.0
+  - No changelog from upstream
+- update to 0.21.1
+  - No changelog from upstream
+- update to 0.20.0
+  - No changelog from upstream
+- update to 0.19.0
+  - No changelog from upstream
+- update to 0.18.2
+  - No changelog from upstream
+- Convert to singlespec
+- update to 0.18.1
+  - No changelog from upstream
+- update to 0.17.0
+  - No changelog from upstream
+- update to 0.16.0
+  - No changelog from upstream
+- update to 0.15.0
+  - No changelog from upstream
+- update to 0.14.2
+  - No changelog from upstream
+- update to 0.14.1
+  - No changelog from upstream
+- fix build error in Tumbleweed
+- update to 0.14.0
+  - No changelog provides by upstream
+- update to 0.13.0
+  - No changelog provides by upstream
+- insert BuildRequires: python-packaging to prevent build errors
+  for Leap 42.1
+- change require version to python-requests &gt;= 2.10
+- update to 0.12.0
+  - No changelog provides by upstream
+  
+- update to 0.11.1
+  - No changelog provides by upstream
+- update to 0.10.2
+  - No changelog provides by upstream
+- update to 0.10.1
+  - No changelog provides by upstream
+- update to 0.10.0
+  - No changelog provides by upstream
+- update to 0.9.3
+  - No changelog provides by upstream
+- update to 0.9.0
+  - No changelog provides by upstream
+- drop patch acme-build-on-python-older-than-2_7.patch
+- update to 0.8.1
+  - No changelog provides by upstream
+- update to 0.8.0
+  - No changelog provided by upstream
+- Drop fix-AttributeError-on-mock-older-than_2.0.patch because
+  now in upstream
+- update to 0.7.0
+  - No changelog provided by upstream
+- add fix-AttributeError-on-mock-older-than_2.0.patch
+- update to 0.6.0
+  - No changelog provided by upstream
+- update Source with new pypi url
+- Update to version 0.5.0
+  - No changelog provided by upstream
+- add BuildRequires python-setuptools &gt;= 1.0
+- Update to version 0.4.2
+  - No changelog provided by upstream
+- Update to version 0.4.1
+  - No changelog provided by upstream
+- Updated to version 0.4.0
+  - No changelog provided by upstream
+- updated requirement: python-pyOpenSSL &gt;= 0.13
+- Updated to version 0.3.0
+  - No changelog provided by upstream
+- Added python-mock requirement
+- acme-build-on-python-older-than-2_7.patch allows building on 
+  python version &lt; 2.7
+- Updated to latest version 0.2.0
+  - No changelog provided by upstream
+- Fixed description and url
+- Added group
+- Initial version 0.1.1
+</comment>
+    <requestid>623161</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3ade93ab6196943994d72f1f7c3f0ad3</srcmd5>
+    <version>0.26.1</version>
+    <time>1532681764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625326</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>6285f0d94b43f5cb0b2372148c1b7d25</srcmd5>
+    <version>0.26.1</version>
+    <time>1536094678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633009</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>16bb18f527a883cd192808d3fd9d81e2</srcmd5>
+    <version>0.27.1</version>
+    <time>1537018864</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>635679</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f0563896275153bf5002ee74da8fd04a</srcmd5>
+    <version>0.28.0</version>
+    <time>1542580396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649947</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fc8d7c3cf0dd0980a8da8e5ac79b6856</srcmd5>
+    <version>0.29.1</version>
+    <time>1545141470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.1:
+  * Release 0.29.1
+  * Release 0.29.0
+  * WIP External Account Binding (#6059)
+  * Implement POST-as-GET requests (#6522)
+  * ignore erroneously no-member lint error
+  * Revert acme/acme/client.py
+  * Bump version to 0.29.0
+  * remove unused six imports
+  * Remove module-level ignore::ResourceWarnings
+  * bring requests back down to 2.4.1 in setup and oldest constraints
+  * Requests no longer vendorizes urllib3
+  * Use a newer version of requests because of the upcoming Callable import
+    Deprecation in Python 3.8 that warns in Python 3.7
+  * Cover is run on 2.7, so mark 3-only lines as no cover
+  * Ignore ResourceWarnings in various modules in a 2-compatible way.
+  * ignore ResourceWarnings in acme tests
+  * s/assertEquals/assertEqual
+- Adjust Requires</comment>
+    <requestid>658303</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a088a6d9ad29fb8c0fbc5c0a4088639f</srcmd5>
+    <version>0.30.2</version>
+    <time>1549140528</time>
+    <user>coolo</user>
+    <comment>- Update to 0.30.2:
+  * Remove josepy helpers that are no longer needed</comment>
+    <requestid>669787</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8f5a0d5d3edaf520abe9a173049190c7</srcmd5>
+    <version>0.31.0</version>
+    <time>1549916774</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673115</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>942a48b445db15b946ff6c216cfde3b0</srcmd5>
+    <version>0.32.0</version>
+    <time>1552985965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685977</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0e6212fa661e82f51b4bf48c8c2eca39</srcmd5>
+    <version>0.34.2</version>
+    <time>1559580596</time>
+    <user>dimstar_suse</user>
+    <comment>up</comment>
+    <requestid>705621</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>de94471353d1c4acdd322259227b623c</srcmd5>
+    <version>0.34.2</version>
+    <time>1559581101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>707190</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d1efd98879ca14b9e997e309075851e0</srcmd5>
+    <version>0.35.1</version>
+    <time>1560862770</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.35.1
+  * sync with main certbot package</comment>
+    <requestid>710518</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4bde37b4f4cbdf1946f57299ba929165</srcmd5>
+    <version>0.36.0</version>
+    <time>1563456145</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.36.0
+  * Added missing error types from RFC8555</comment>
+    <requestid>716074</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>2e06407176fb9c24f9e97f46196bf218</srcmd5>
+    <version>0.36.0</version>
+    <time>1564414052</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>718483</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e392fdad657ce5fac529b213a3a80b6f</srcmd5>
+    <version>0.37.2</version>
+    <time>1567001021</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>726139</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4b72ceaeef13656c48e53885842bbead</srcmd5>
+    <version>0.38.0</version>
+    <time>1568379540</time>
+    <user>lnussel_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>730160</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f8bccc05c58f1793671b976db752a4ac</srcmd5>
+    <version>0.39.0</version>
+    <time>1570020962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.</comment>
+    <requestid>734564</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>46d9592090f1e16b6d9bdc76fa13d383</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739154</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>91e22cd001aababf237259edea740022</srcmd5>
+    <version>0.40.1</version>
+    <time>1573773617</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>748663</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3dd5ede58bcec0791719f479f951df9c</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069569</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0 (bsc#1160066)
+  * Deprecated attributes related to the TLS-SNI-01 challenge in
+    acme.challenges and acme.standalone have been removed.</comment>
+    <requestid>760670</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>99cb7d3e3cd03b0155572b38a8677fdb</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636907</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.0
+  * Removed the fallback introduced with 0.34.0 in acme to retry a POST-as-GET
+    request as a GET request when the targeted ACME CA server seems to not support
+    POST-as-GET requests.
+  * Support for Python 3.4 in Certbot and its ACME library is deprecated and will be
+    removed in the next release of Certbot.</comment>
+    <requestid>766003</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b77cdd9fda87ae02662e0deb6b3d353b</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725746</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.2.0
+  * Support for Python 3.4 has been removed.
+  * Fix collections.abc imports for Python 3.9.</comment>
+    <requestid>778029</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>25fb9b5c02ec73e8d5db981a6023ac78</srcmd5>
+    <version>1.3.0</version>
+    <time>1583949293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.0
+  * Don't verify the existing certificate in HTTP01Response.simple_verify, for
+    compatibility with the real-world ACME challenge checks.
+  * Fix acme module warnings when response Content-Type includes params (e.g. charset).</comment>
+    <requestid>783841</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b7699b6a66a495ea510fa45d097f1347</srcmd5>
+    <version>1.4.0</version>
+    <time>1589491592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.4.0
+  * Added TLS-ALPN-01 challenge support in the acme library. Support of this
+    challenge in the Certbot client is planned to be added in a future release.
+  * mock dependency is now conditional on Python 2 in all of our packages.
+  * When using an RFC 8555 compliant endpoint, the acme library no longer sends the
+    resource field in any requests or the type field when responding to challenges.
+</comment>
+    <requestid>805531</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>aa0300c42741c12f27cca9d23a384fd9</srcmd5>
+    <version>1.5.0</version>
+    <time>1591881325</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.0
+  * Fix TLS-ALPN test that fails when run with newer versions of OpenSSL.</comment>
+    <requestid>813504</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a47cde6e9660c4623572c8f5e3370fb2</srcmd5>
+    <version>1.6.0</version>
+    <time>1594818082</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.6.0
+  * Support for alternative certificate chains in the acme module.
+  * Added --preferred-chain &lt;issuer CN&gt;. If a CA offers multiple 
+    certificate chains, it may be used to indicate to Certbot which 
+    chain should be preferred.</comment>
+    <requestid>820645</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e4cd7fb6bfbc614db610f90b0c17b847</srcmd5>
+    <version>1.7.0</version>
+    <time>1598029918</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0
+  * We deprecated support for Python 3.5 in Certbot and its ACME library.
+    Support for Python 3.5 will be removed in the next major release of Certbot.</comment>
+    <requestid>828416</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2c38016caf9c333e6a42369ce8adeb9f</srcmd5>
+    <version>1.9.0</version>
+    <time>1602073143</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.0
+  * sync with the main certbot package
+- update to version 1.8.0
+  * Support for Python 3.5 has been removed.
+  * The acme library can now tell the ACME server to clear contact information by passing an empty
+    tuple to the contact field of a Registration message.
+</comment>
+    <requestid>839987</requestid>
+  </revision>
+</revisionlist>

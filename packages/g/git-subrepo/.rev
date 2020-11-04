@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b4bd55407cbefd3c2d307c50ed05cf07</srcmd5>
+    <version>0.4.1</version>
+    <time>1591286183</time>
+    <user>dimstar_suse</user>
+    <comment>git-subrepo is a nice and well tested tool for adding contents from other repositories to your git repositories.
+It has been added already to several distributions and will soon be added to Debian and Ubuntu:
+https://repology.org/project/git-subrepo/versions</comment>
+    <requestid>811390</requestid>
+  </revision>
+</revisionlist>

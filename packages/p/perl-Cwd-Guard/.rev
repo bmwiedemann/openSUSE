@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e635894d29e1ecd534a12dc8a6d56704</srcmd5>
+    <version>0.04</version>
+    <time>1410967583</time>
+    <user>coolo</user>
+    <comment>needed for perl-Module-Build-XSUtil</comment>
+    <requestid>249532</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e061864933dc4725ec080c00d1b50f4</srcmd5>
+    <version>0.05</version>
+    <time>1464204440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396912</requestid>
+  </revision>
+</revisionlist>

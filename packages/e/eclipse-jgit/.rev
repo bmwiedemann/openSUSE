@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4205d1d113ee8a5d4e0a0d4a296aa4f8</srcmd5>
+    <version>5.1.3</version>
+    <time>1574167445</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748173</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8168001829c92eaa01fd7e5d94ac3c43</srcmd5>
+    <version>5.1.3</version>
+    <time>1586641545</time>
+    <user>dimstar_suse</user>
+    <comment>split the jgit and eclipse-jgit parts into two spec files</comment>
+    <requestid>792665</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7e0caf2d0481b61d21129ff71f7503f</srcmd5>
+    <version>5.8.0</version>
+    <time>1594894335</time>
+    <user>dimstar_suse</user>
+    <comment>5.8.0</comment>
+    <requestid>818538</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>00d514e6acefa6e2f66ce43419a2b3df</srcmd5>
+    <version>5.8.0</version>
+    <time>1595011783</time>
+    <user>dimstar_suse</user>
+    <comment>Restore java 8 compatibility</comment>
+    <requestid>821363</requestid>
+  </revision>
+</revisionlist>

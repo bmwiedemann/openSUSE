@@ -1,0 +1,702 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c0d339c38176efd11ef5f9fa08bd0a2</srcmd5>
+    <version>1.0.0</version>
+    <time>1290519951</time>
+    <user>darix</user>
+    <comment>Accepted submit request 52612 from user coolo
+</comment>
+    <requestid>52612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>750d764cdf7d2389a0da3c4d1ffff402</srcmd5>
+    <version>1.0.0</version>
+    <time>1290519957</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 52612
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a7e350500634d1135c0bd09edb92a550</srcmd5>
+    <version>1.0.0</version>
+    <time>1292242661</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 55675 from user coolo
+</comment>
+    <requestid>55675</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0987b109967919c775548f478827bcf9</srcmd5>
+    <version>1.0.0</version>
+    <time>1292242666</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 55675
+</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>661f2ca7a7b1afb5ab8d4e0f59c05402</srcmd5>
+    <version>1.0.0</version>
+    <time>1295348893</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58647 from user coolo
+</comment>
+    <requestid>58647</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>c832456ce54ea1d8a7da491b4650e0f4</srcmd5>
+    <version>1.0.0</version>
+    <time>1295348905</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58647
+</comment>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>49bc17f03f97857c9cd9d94683f98dac</srcmd5>
+    <version>1.0.1</version>
+    <time>1297119078</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60257 from user lrupp
+</comment>
+    <requestid>60257</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5b88c10ad1d647416dc1a3894dadc6b7</srcmd5>
+    <version>1.0.1</version>
+    <time>1297119084</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60257
+</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>5b88c10ad1d647416dc1a3894dadc6b7</srcmd5>
+    <version>1.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>73ccd4d1afa22ba17827340fb75f4665</srcmd5>
+    <version>1.0.1</version>
+    <time>1313618734</time>
+    <user>darix</user>
+    <comment>- fix build for platform == linux3 (forwarded request 78835 from oertel)</comment>
+    <requestid>78852</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>87e29539d66da6f539d13760b7d76ecd</srcmd5>
+    <version>1.0.1</version>
+    <time>1313618749</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 78852
+</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>0532e73e15c964f6a66bebfd55d6da7a</srcmd5>
+    <version>1.0.1</version>
+    <time>1318578518</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>87756</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>0532e73e15c964f6a66bebfd55d6da7a</srcmd5>
+    <version>1.0.1</version>
+    <time>1319182396</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>8c92fccb4aed86cb176d004ca2bc0a38</srcmd5>
+    <version>1.0.1</version>
+    <time>1323705531</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 95999 from coolo)</comment>
+    <requestid>96010</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>888f08f780e5f532b51fa2516a20927c</srcmd5>
+    <version>1.1.0</version>
+    <time>1324913352</time>
+    <user>coolo</user>
+    <comment>1.1.0 update  (forwarded request 96818 from HighwayStar)</comment>
+    <requestid>96956</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3703d5c9c0bf09741c51110896189ac9</srcmd5>
+    <version>1.1.0</version>
+    <time>1326988613</time>
+    <user>coolo</user>
+    <comment>- Fix spec file for SLE11 (Group entries did go lost) (forwarded request 99603 from namtrac)</comment>
+    <requestid>99605</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c0c3d06f9d992dcbcb21d3d9e7021ab6</srcmd5>
+    <version>1.1.0</version>
+    <time>1332239619</time>
+    <user>coolo</user>
+    <comment>- Cleaned up spec file formatting
+- Removed tests for obsolete openSUSE versions
+- Added Qt Designer plugin from Python(x,y) project (forwarded request 109846 from TheBlackCat)</comment>
+    <requestid>109897</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>87168e1d08c81b73fd8c808ae8f0f3f2</srcmd5>
+    <version>1.1.0</version>
+    <time>1332416347</time>
+    <user>coolo</user>
+    <comment>Fix Qt Designer plugin directories.  I have tested Qt Designer with these directories and they work, so this version should fix the problem. (forwarded request 110123 from TheBlackCat)</comment>
+    <requestid>110186</requestid>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>3114a46618028088c7a2c59dc5a6192c</srcmd5>
+    <version>1.1.0</version>
+    <time>1336423800</time>
+    <user>coolo</user>
+    <comment>- Remove configobj buildrequires, all configobj files should have  been removed from matplotlib years ago (forwarded request 115721 from TheBlackCat)</comment>
+    <requestid>115837</requestid>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>3114a46618028088c7a2c59dc5a6192c</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184067</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4c2d4b612a05d1b30a3bee7beb72921d</srcmd5>
+    <version>1.1.1</version>
+    <time>1345973632</time>
+    <user>namtrac</user>
+    <comment>new upstream release 1.1.1 (forwarded request 131261 from HighwayStar)</comment>
+    <requestid>131264</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8283197da9928ba1c90a8dfbb3f2da8f</srcmd5>
+    <version>1.2.0</version>
+    <time>1352908594</time>
+    <user>coolo</user>
+    <comment>update to 1.2.0
+python3 package added
+removed unneded hacks for 11.4
+__pycache__ hacks still here, because python3-base not fixed yet (forwarded request 141073 from HighwayStar)</comment>
+    <requestid>141081</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8283197da9928ba1c90a8dfbb3f2da8f</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110068</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>04da0d8a6aa1481c14b1f4cc0158c278</srcmd5>
+    <version>1.2.0</version>
+    <time>1371652768</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179888</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>dcab1dcf1dc34a46c17be8c086f1cb79</srcmd5>
+    <version>1.3.0</version>
+    <time>1377260474</time>
+    <user>scarabeus_factory</user>
+    <comment>updated to 1.3.0 (forwarded request 195788 from HighwayStar)</comment>
+    <requestid>196017</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1639d971bd0f2b83f3b51d4b0de73c8b</srcmd5>
+    <version>1.3.0</version>
+    <time>1378238620</time>
+    <user>coolo</user>
+    <comment>- add Requires: python-pyparsing
+  (the pyparsing module is required for mathtext rendering) (forwarded request 196799 from matejcik)</comment>
+    <requestid>197049</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>1639d971bd0f2b83f3b51d4b0de73c8b</srcmd5>
+    <version>1.3.0</version>
+    <time>1379664216</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1f21e34aa4cf5789e5f675306ed24baa</srcmd5>
+    <version>1.3.1</version>
+    <time>1382692892</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.3.1:
+  + Many changes</comment>
+    <requestid>204620</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>15cb07419401aa8636fc44c38e86b912</srcmd5>
+    <version>1.3.1</version>
+    <time>1394392478</time>
+    <user>coolo</user>
+    <comment>- remove qt4/designer subpackages for SLE11, as those can
+  not be installed without additional updates on a SLES+SDK system (forwarded request 213292 from dirkmueller)</comment>
+    <requestid>213409</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>234febc851dbb31a1293bc3fd782b667</srcmd5>
+    <version>1.3.1</version>
+    <time>1394631989</time>
+    <user>coolo</user>
+    <comment>Recommend python-matplotlib-tk because it is the default config
+
+solves a problem hit by 3+ people:
+http://stackoverflow.com/questions/20582384/importerror-no-module-named-backend-tkagg
+http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded request 225175 from bmwiedemann)</comment>
+    <requestid>225588</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>13582fa0772f552e4c0f1e1176bddd59</srcmd5>
+    <version>1.3.1</version>
+    <time>1395147689</time>
+    <user>coolo</user>
+    <comment>fix bnc#863451 (forwarded request 226376 from MargueriteSu)</comment>
+    <requestid>226396</requestid>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>2a420b4b1a15394e1a35f635791ad4bc</srcmd5>
+    <version>1.3.1</version>
+    <time>1396159113</time>
+    <user>coolo</user>
+    <comment>- Package doc/users/license.rst</comment>
+    <requestid>228122</requestid>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>800a13c2604ed2a21d71d48025c5e873</srcmd5>
+    <version>1.3.1</version>
+    <time>1406146039</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>242026</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>800a13c2604ed2a21d71d48025c5e873</srcmd5>
+    <version>1.3.1</version>
+    <time>1409302915</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f1bd39689e0751d029687a24856da9f0</srcmd5>
+    <version>1.4.0</version>
+    <time>1409761377</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247122</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>07d05c6bcfb766c6fb3193b79efadbba</srcmd5>
+    <version>1.4.0</version>
+    <time>1410967595</time>
+    <user>coolo</user>
+    <comment>- Dependency and spec file cleanups
+- Remove unneeded use-setuptools.diff</comment>
+    <requestid>249564</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>64263e0d045a04a466758da8232a3828</srcmd5>
+    <version>1.4.0</version>
+    <time>1411017175</time>
+    <user>coolo</user>
+    <comment>- downgrade Recommends for texlive (and other big packages) to Suggests
+  (this means texlive is not pulled in by default zypper settings)</comment>
+    <requestid>249989</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>8c23bb79f55f488e48f669890e3185cd</srcmd5>
+    <version>1.4.0</version>
+    <time>1411127786</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>250125</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8cf05df1e832bdf6010703e4ef14ae06</srcmd5>
+    <version>1.4.1</version>
+    <time>1414140471</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257762</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c6f54b0587bd1c167116b1660cb30e3e</srcmd5>
+    <version>1.4.2</version>
+    <time>1414613401</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258511</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7b369797dda9ba472ffd494c671ad833</srcmd5>
+    <version>1.4.3</version>
+    <time>1425377746</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288529</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3811c3bab3f67b0f4e82e20260b7a812</srcmd5>
+    <version>1.4.3</version>
+    <time>1432488896</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308497</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>3b354ca74af968f63f19dffc21bd38d5</srcmd5>
+    <version>1.4.3</version>
+    <time>1435870249</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314735</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0fbaab35bab5e8a8c4cdd55d5b3b0b9a</srcmd5>
+    <version>1.5.0</version>
+    <time>1446647584</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341648</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>6e96aeea83585cf46d51a953d2fc798f</srcmd5>
+    <version>1.5.0</version>
+    <time>1448957916</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346298</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>93a1b2f80706260b7e4501ff2c1c4a78</srcmd5>
+    <version>1.5.1</version>
+    <time>1452611592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353007</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>a25d646082b5e9e2932176ad5d9e8d1e</srcmd5>
+    <version>1.5.1</version>
+    <time>1457353398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361874</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>131b4255296e1c8e855a0c3d3f52660c</srcmd5>
+    <version>1.5.1</version>
+    <time>1470773682</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417069</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ee0866187a1487ea42d17c7c73d67e8c</srcmd5>
+    <version>1.5.3</version>
+    <time>1484041539</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448462</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>62f0c6611c46eafb06699b185b7d644f</srcmd5>
+    <version>2.0.0</version>
+    <time>1485383429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451740</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>52223c5fa83925f4eaace6632aaa4028</srcmd5>
+    <version>2.0.0</version>
+    <time>1489345514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478550</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>b9de2fdeddf6398dfdef2aade239b498</srcmd5>
+    <version>2.0.0</version>
+    <time>1494088188</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492245</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>5f2569b347edc94cdfc9abc8bdfb3b30</srcmd5>
+    <version>2.0.0</version>
+    <time>1500275521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510271</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>d8e8d14bb6313d72cd8d4507bbab6351</srcmd5>
+    <version>2.0.2</version>
+    <time>1502629138</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516044</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>d2e7d49433157f0d26f9e39b8dc7f98e</srcmd5>
+    <version>2.0.2</version>
+    <time>1508197924</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533942</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>7865e03dcfa1292f6f0ece32122b1a04</srcmd5>
+    <version>2.1.0</version>
+    <time>1510232245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537215</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f29f04a213fd6f7ff7e4b8d925394964</srcmd5>
+    <version>2.1.1</version>
+    <time>1516359199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>566559</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>dbe6c6e04cb6110a15f9440d31e3d3d2</srcmd5>
+    <version>2.1.1</version>
+    <time>1517424676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570907</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>eaef9c42f20ad6ce8abdf93b17c3f7e9</srcmd5>
+    <version>2.1.2</version>
+    <time>1518597899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575268</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>07d34987b9e0d31ddebf864062c4233a</srcmd5>
+    <version>2.2.2</version>
+    <time>1522062801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590819</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>6b50abf20a9a3d58b9120dc87545e039</srcmd5>
+    <version>2.2.2</version>
+    <time>1526023133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606286</requestid>
+  </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>38d7afdf3566f042d9e3debed8318eb5</srcmd5>
+    <version>2.2.2</version>
+    <time>1526463762</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requires for python-backports.functools_lru_cache (boo#1074491)</comment>
+    <requestid>607681</requestid>
+  </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>88f5d77dfafb4272a937e326d484486a</srcmd5>
+    <version>2.2.2</version>
+    <time>1527934527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613571</requestid>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>928bbf75a33d90fc1a13381948a0703e</srcmd5>
+    <version>2.2.2</version>
+    <time>1529066260</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>613765</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>c14f10e0492d9c75468d369266a86960</srcmd5>
+    <version>2.2.3</version>
+    <time>1534543398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.3
+  * Fix import failure on BSD systems
+  * Fix import errors in Qt shims for PyQt5 5.11 and PyQt4 4.12
+  * Fix import errors if bz2 module is not in standard library
+  * Fix overflow in _path.h
+  * Fix infinite recursion in transform repr
+  * Fix bug with XKCD style
+  * Remove unsafe usage of Popen
+</comment>
+    <requestid>629427</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>749143a7f2315666d5795bf44f78db10</srcmd5>
+    <version>3.0.0</version>
+    <time>1537971085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636488</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d307337ad60e1edc16613e8bec606b04</srcmd5>
+    <version>3.0.1</version>
+    <time>1540819338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644951</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f1e3a260d610b0958c18a317aaf33f7c</srcmd5>
+    <version>3.0.2</version>
+    <time>1543224577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651332</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>b1dfa4a1ae4cb9d793052ad493a6caba</srcmd5>
+    <version>3.0.2</version>
+    <time>1551298333</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679805</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>4ef5b20db1a6456de1f960d654d6a35a</srcmd5>
+    <version>3.0.3</version>
+    <time>1551687094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680626</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>958884faf56558e32efa1f13a4482b71</srcmd5>
+    <version>3.1.0</version>
+    <time>1558350997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703997</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>fc5ceb2bb99bd3dfc2f1a27678f95b4f</srcmd5>
+    <version>3.1.1</version>
+    <time>1564484400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713875</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>8f823f4394cb98dbd68ca76352a78336</srcmd5>
+    <version>3.1.1</version>
+    <time>1572883536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738242</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>370bbcd1327e6bacc0b60190035300f5</srcmd5>
+    <version>3.1.2</version>
+    <time>1576062215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754780</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>80a8d863cbe9482d3b16529211c9ef79</srcmd5>
+    <version>3.1.3</version>
+    <time>1581693923</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773163</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>ea3c544ffcf5801949526da74249449b</srcmd5>
+    <version>3.2.1</version>
+    <time>1587325649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789360</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>39698677fdebe35d60ec9f2626d97e9b</srcmd5>
+    <version>3.2.1</version>
+    <time>1591380085</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that randomly fail
+- Run the tests on 64bit arm and intel only as elsewhere there are
+  &gt;100 test failures
+
+- Add patch no-builddir-freetype.patch to not require freetype
+  in build/ subfolder which we use in python macros
+  * This is SUSE specific patch
+- Make the package multibuild and execute the testsuite
+
+- Remove the is_opensuse literals as we don't want to have matplotlib
+  behave differently between openSUSE and SLE jsc#SLE-11752
+
+- Remove the qt4 code support as we do just Qt5 everywhere</comment>
+    <requestid>811473</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>7bec0c2704271ab89758fa3597715b21</srcmd5>
+    <version>3.2.2</version>
+    <time>1593200666</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816747</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7093ce5a8854659b8a972a1ef6b7a37f</srcmd5>
+    <version>3.3.0</version>
+    <time>1596727943</time>
+    <user>dimstar_suse</user>
+    <comment>- Require Pillow
+- Bump dependency versions 
+
+- Work on unit testing
+  * Move architecture selection to bcond definition at top of 
+    specfile. This makes it clear in the OBS web UI that the test
+    flavor is only built for x86_64 and aarch64
+  * do not build everything a second time during check (in-place)
+  * instead use new subpackage testdata wich contains the baseline
+    images created at regular build time
+  * use pytest-xvfb and %pytest macro 
+    (buildroot path actually not required)
+  * tidy test skip definitions
+  * add python-gobject-Gdk to pass the gtk3 backend testso
+- include version for obsoletes -qt-shared (rpmlint warning)
+- move some cairo files to backend packages
+- remove python2 transition requirements mock and six
+- update matplotlib-setup.cfg
+
+- update to version 3.3.0
+  + Figure and Axes creation / management
+    * Provisional API for composing semantic axes layouts from text or nested lists
+    * GridSpec.subplots()
+    * New Axes.sharex, Axes.sharey methods
+    * tight_layout now supports suptitle
+    * Setting axes box aspect
+  + Colors and colormaps
+    * Turbo colormap
+    * colors.BoundaryNorm supports extend keyword argument
+    * Text color for legend labels</comment>
+    <requestid>824485</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>503b16f2217837257c23df8970be5e12</srcmd5>
+    <version>3.3.0</version>
+    <time>1603448354</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843432</requestid>
+  </revision>
+</revisionlist>

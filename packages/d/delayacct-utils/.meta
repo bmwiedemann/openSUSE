@@ -1,0 +1,7 @@
+<package name="delayacct-utils" project="openSUSE:Factory">
+  <title>Delay Accounting Utilities</title>
+  <description>Delay accounting allows the administrator to track the time an
+application spends waiting on disk I/O, swap I/O and CPU scheduling.
+This can help pin-point resource shortages in a system configuration.</description>
+  <devel project="Base:System" package="delayacct-utils"/>
+</package>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2fd127df8a20a81f510f0353af584af1</srcmd5>
+    <version>7.2</version>
+    <time>1580842304</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain frr in Factory</comment>
+    <requestid>765390</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>53acc0c36d4c57db2817bc66ea822bed</srcmd5>
+    <version>7.2.1</version>
+    <time>1580928111</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770084</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b856998387c8e76d289b60c28e379673</srcmd5>
+    <version>7.3</version>
+    <time>1586248122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791565</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ea7dadc148d26b6327c8edc5fc7822e3</srcmd5>
+    <version>7.3</version>
+    <time>1586466938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792567</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b3bfdb8c0286cec1322e9376ea76240</srcmd5>
+    <version>7.3.1</version>
+    <time>1588856111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800828</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a45aeb189931eb19238adba1f1ebeabe</srcmd5>
+    <version>7.3.1</version>
+    <time>1591209117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810509</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9618dd2c76938a4a194cbe98f2bced38</srcmd5>
+    <version>7.4</version>
+    <time>1593727857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818119</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b995d8e27a88a4b593ecc2273e9cc0fa</srcmd5>
+    <version>7.4</version>
+    <time>1601919521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839177</requestid>
+  </revision>
+</revisionlist>

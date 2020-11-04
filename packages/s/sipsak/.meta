@@ -1,0 +1,12 @@
+<package name="sipsak" project="openSUSE:Factory">
+  <title>SIP Swiss Army Knife</title>
+  <description>Sipsak is a small command line tool for developers and administrators
+of Session Initiation Protocol (SIP) applications. It can be used for
+some simple tests on SIP applications and devices, including sending
+OPTIONS requests, sending text files with SIP requests, traceroute,
+user location test, flooding test, etc
+
+</description>
+  <devel project="network:telephony" package="sipsak"/>
+  <url>https://github.com/nils-ohlmeier/sipsak</url>
+</package>

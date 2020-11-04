@@ -1,0 +1,10 @@
+<package name="zfp" project="openSUSE:Factory">
+  <title>zfp</title>
+  <description>zfp is a compressed format for representing multidimensional floating-point and integer arrays. zfp provides compressed-array classes that support high throughput read and write random access to individual array elements. zfp also supports serial and parallel (OpenMP and CUDA) compression of whole arrays, e.g., for applications that read and write large data sets to and from disk.
+
+zfp uses lossy but optionally error-bounded compression to achieve high compression ratios. Bit-for-bit lossless compression is also possible through one of zfp's compression modes. zfp works best for 2D, 3D, and 4D arrays that exhibit spatial correlation, such as continuous fields from physics simulations, natural images, regularly sampled terrain surfaces, etc. zfp compression of 1D arrays is possible but generally discouraged.
+
+zfp is freely available as open source and is distributed under a BSD license. zfp is primarily written in C and C++ but also includes Python and Fortran bindings. zfp conforms to various language standards, including C89, C99, C11, C++98, C++11, and C++14, and is supported on Linux, macOS, and Windows.</description>
+  <devel project="science" package="zfp"/>
+  <url>https://github.com/LLNL/zfp</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="python-DataProperty" project="openSUSE:Factory">
+  <title>Python library for extract property from data</title>
+  <description>Python library for extract property from data.
+
+</description>
+  <devel project="devel:languages:python" package="python-DataProperty"/>
+  <url>https://github.com/thombashi/DataProperty</url>
+</package>

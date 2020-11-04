@@ -1,0 +1,5 @@
+<package name="xcalib" project="openSUSE:Factory">
+  <title>xcalib is a small tool to load icc profiles to the X-Windows system</title>
+  <description>xcalib is a small tool to load icc profiles to the X-Windows system</description>
+  <devel project="multimedia:color_management" package="xcalib"/>
+</package>

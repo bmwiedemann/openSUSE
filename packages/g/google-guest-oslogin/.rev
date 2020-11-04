@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e339ee3e6a824c95f71dedd1631742d</srcmd5>
+    <version>20200507.00</version>
+    <time>1597667969</time>
+    <user>dimstar_suse</user>
+    <comment>- Replaces google-compute-engine-oslogin</comment>
+    <requestid>822651</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ba237f7e4ab5ac33a6173b42f531b97</srcmd5>
+    <version>20200819.00</version>
+    <time>1598725970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829588</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e646f254347133bc458a23c2455efb9</srcmd5>
+    <version>20200925.00</version>
+    <time>1602282514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840261</requestid>
+  </revision>
+</revisionlist>

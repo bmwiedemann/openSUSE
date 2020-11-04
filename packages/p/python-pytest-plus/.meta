@@ -1,0 +1,5 @@
+<package name="python-pytest-plus" project="openSUSE:Factory">
+  <title></title>
+  <description>PyTest Plus extends pytest functionality.</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-plus"/>
+</package>

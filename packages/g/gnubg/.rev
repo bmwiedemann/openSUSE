@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>206d135c59698f84df03507408089385</srcmd5>
+    <version>0.9.0.99_20120711</version>
+    <time>1343661164</time>
+    <user>namtrac</user>
+    <comment>One of the worlds best backgammon games should be in Factory.</comment>
+    <requestid>128399</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acde9ab78dfa6f7cbb02d011f4712339</srcmd5>
+    <version>0.9.0.99_20120711</version>
+    <time>1346755458</time>
+    <user>coolo</user>
+    <comment>- Disable gtkglext-devel dependency for openSUSE &gt; 12.2 
+
+- first try to make it building for Fedora 17</comment>
+    <requestid>132433</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>acde9ab78dfa6f7cbb02d011f4712339</srcmd5>
+    <version>0.9.0.99_20120711</version>
+    <time>1359108974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca0c10ecc8da382ed6ddf167004f79fc</srcmd5>
+    <version>0.9.0.99_20130725</version>
+    <time>1375176668</time>
+    <user>coolo</user>
+    <comment>Updated to snapshot 20130725</comment>
+    <requestid>184821</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ca0c10ecc8da382ed6ddf167004f79fc</srcmd5>
+    <version>0.9.0.99_20130725</version>
+    <time>1379662517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>684cd783b976a1bbfb3a2b207ee43d65</srcmd5>
+    <version>1.02.000</version>
+    <time>1379921082</time>
+    <user>coolo</user>
+    <comment>Updated to released version. Enabled several features by updating build dependencies. Fixed tarball.</comment>
+    <requestid>199493</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0cb01482b507b6455f759b3e06757a6a</srcmd5>
+    <version>1.03.000</version>
+    <time>1407485430</time>
+    <user>lnussel</user>
+    <comment>Again</comment>
+    <requestid>243866</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0cb01482b507b6455f759b3e06757a6a</srcmd5>
+    <version>1.03.000</version>
+    <time>1409301054</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3122533abde6bf208374f55922ae1e1</srcmd5>
+    <version>1.04.001</version>
+    <time>1421776877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>281686</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>23afc04d6d8f6525fe1637668adc90cc</srcmd5>
+    <version>1.04.001</version>
+    <time>1461855284</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390549</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>edbeac70cc38d832d2249bfd62da64bc</srcmd5>
+    <version>1.04.001</version>
+    <time>1533214675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626043</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1bfd78141fc2890b4bf52106ef618d0d</srcmd5>
+    <version>1.06.002</version>
+    <time>1535704937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631112</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>dc0f786a47d7bbe7a000b5560e3f5765</srcmd5>
+    <version>1.06.002</version>
+    <time>1580842537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769814</requestid>
+  </revision>
+</revisionlist>

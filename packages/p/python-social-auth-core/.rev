@@ -1,0 +1,125 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c2cfe10d145ba539183538e6a96b0d96</srcmd5>
+    <version>1.7.0</version>
+    <time>1532774571</time>
+    <user>dimstar_suse</user>
+    <comment>Add to factory</comment>
+    <requestid>625579</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>10113d77d50649bf0e6d2b822b17c088</srcmd5>
+    <version>1.7.0</version>
+    <time>1533292612</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Run the tests with %python_expand rather than %python_exec
+
+- Ensure neutrality of description. Address punctuation issues.</comment>
+    <requestid>626909</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d61afd0d124780cc1b61c3c46f31e319</srcmd5>
+    <version>2.0.0</version>
+    <time>1544189640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655556</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a15a6fa756e7b536746f5707f1c056d7</srcmd5>
+    <version>3.1.0</version>
+    <time>1554276477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Universe Ticketing backend
+  * Auth0.com authentication backend
+  * Update Bungie backend dropping any Django reference
+  * Enable and fix JWT related tests
+  * Remove PyPy support from Tox
+  * Drop support for Python 3.4 in Tox
+  * Allow to override JWT decode options in Open ID Connect base backend
+  * Pass access token via Authorization header to Google user data url
+  * Updated user_data method in AzureADOAuth2 to return access_token if id_token is not present in response
+  * Updated Azure B2C to extract first email from list if it's a list
+  * Replace deprecated Google+ API usage with https://www.googleapis.com/oauth2/v3/userinfo
+  * Updated Azure Tenant to fix Nonetype error
+  * Updated comment denoting incorrect setting name
+  * Yandex: do not fail when no email is present
+  * Mediawiki: do not fail when no email is present
+  * Mediawiki: enhance get_user_details to return more details</comment>
+    <requestid>690607</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9b57fcfac7802d01032da825ac8fe3ed</srcmd5>
+    <version>3.1.0</version>
+    <time>1554372412</time>
+    <user>dimstar_suse</user>
+    <comment>- Lower down PyJWT dependency the higher is not really needed</comment>
+    <requestid>690899</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f49f03c3eebb900e289315d902cf4eeb</srcmd5>
+    <version>3.1.0</version>
+    <time>1557141696</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove build dependency on unittest2, as this was also a missing
+  runtime dependency on both Python 2 and 3 as the tests are
+  distributed in the runtime package, and are used by the test suite
+  of other packages.
+  * Add patch remove-unittest2.patch
+- Suggest python3-saml dependency for both Python 2 &amp; 3, and
+  activate the SAML tests, adding missing saml_config.json for tests.
+  Not recommended due to dependency chain including libxmlsec,
+  which at the moment is unsupported v1.2.20
+- Add README.md to %doc</comment>
+    <requestid>693141</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cd3500030edd867e7e8e6283ec2fab8</srcmd5>
+    <version>3.2.0</version>
+    <time>1559581073</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0:
+  * Cognito backend
+  * OpenStack (openstackid and openstackid-dev) backends
+  * Many fixes to all existing Backends to match up upstream projects</comment>
+    <requestid>707119</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fbd5cc4107aae30405e1221b517f06e0</srcmd5>
+    <version>3.3.0</version>
+    <time>1585342911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789079</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27fc9fcd1c5347bd51cd70db740f4496</srcmd5>
+    <version>3.3.3</version>
+    <time>1587162671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  * Reverted PR #388 due to dependency license incompatibility
+  * Updated package upload method to use twine
+  * Updated list of default user protected fields to include admin flags and password</comment>
+    <requestid>794808</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ef90a245e5361c1f5cf215fce2121da7</srcmd5>
+    <version>3.3.3</version>
+    <time>1587659921</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>796519</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>12db9385c0a1f1ded55825176c114b04</srcmd5>
+    <version>3.3.3</version>
+    <time>1597675281</time>
+    <user>dimstar_suse</user>
+    <comment>- Add resolve_depreciations.patch to clean deprecation warnings
+  (gh#python-social-auth/social-core#500)</comment>
+    <requestid>827286</requestid>
+  </revision>
+</revisionlist>

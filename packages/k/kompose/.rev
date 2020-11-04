@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e87469341465957fce5e979612009d5e</srcmd5>
+    <version>1.19.0</version>
+    <time>1574932463</time>
+    <user>dimstar_suse</user>
+    <comment>kompose is a tool to help users who are familiar with docker-compose move to Kubernetes. kompose takes a Docker Compose file and translates it into Kubernetes resources.</comment>
+    <requestid>751267</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9441a8ba29fa1caee561687d18bb5184</srcmd5>
+    <version>1.19.0</version>
+    <time>1595864894</time>
+    <user>dimstar_suse</user>
+    <comment>- Require python3-PyYAML (forwarded request 822957 from RBrownSUSE)</comment>
+    <requestid>822958</requestid>
+  </revision>
+</revisionlist>

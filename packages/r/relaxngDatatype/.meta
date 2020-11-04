@@ -1,0 +1,7 @@
+<package name="relaxngDatatype" project="openSUSE:Factory">
+  <title>RELAX NG Datatype API</title>
+  <description>RELAX NG is a public space for test cases and other ancillary software
+related to the construction of the RELAX NG language and its
+implementations.</description>
+  <devel project="Java:packages" package="relaxngDatatype"/>
+</package>

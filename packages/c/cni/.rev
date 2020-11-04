@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d88baab2b020130f61cbc8a28a8084f3</srcmd5>
+    <version>0.6.0</version>
+    <time>1517516902</time>
+    <user>dimstar_suse</user>
+    <comment>- Add snapper as a requirement, to provide mksubvolume
+- Make /var/lib/cni writable
+- Remove the dependency with the cni-plugins
+- Recommend the cni-plugins
+- Update to version 0.6.0:
+  * Conventions: add convention around chaining interfaces
+  * pkg/types: safer typecasting for TextUnmarshaler when loading args
+  * pkg/types: modify LoadArgs to return a named error when an unmarshalable condition is detected
+  * Update note about next Community Sync, 2017-06-21
+  * types: fix marshalling of omitted &quot;interfaces&quot; key in IPConfig JSON
+  * Update and document release process
+  * scripts/release.sh: Add in s390x architecture
+  * cnitool: add support for CNI_ARGS
+  * README plugins list: add Linen CNI plugin
+- Update to version 0.5.2:
+  * Rename build script to avoid conflict with bazel
+  * Enable s390x build
+  * Update community sync detail
+  * Added entry for CNI-Genie
+  * travis: shift forward to Go 1.8 and 1.7
+  * spec/plugins: fix 'ip'-&gt;'ips' in the spec, bump to 0.3.1
+  * libcni: Improved error messages.
+  * libcni: Fixed tests that were checking error strings.
+  * Documentation: Added documentation for `cnitool`.
+- Update to version 0.5.1:
+  * readme.md: Add link to community sync
+  * pkg/ip: do not leak types from vendored netlink package
+  * pkg/ip: SetupVeth returns net.Interface
+  * pkg/ip: improve docstring for SetupVeth
+  * Added Romana to list of CNI providers...
+  * plugins/meta/flannel: If net config is missing do not return err on DEL
+  * plugins/*: Don't error if the device doesn't exist
+- Update to version 0.5.0:
+  * Documentation: Add conventions doc
+  * noop: allow specifying debug file in config JSON
+  * Spec/Conventions: Update to include plugin config
+  * spec: add network configuration list specification
+  * api,libcni: add network config list-based plugin chaining
+  * Update CONVENTIONS.md
+  * skel: adds PluginMainWithError which returns a *types.Error
+  * testutils: pass netConf in for version operations; pass raw result out for tests
+  * types: make Result an interface and move existing Result to separate package
+  * macvlan/ipvlan: use common RenameLink method
+  * plugins/flannel: organize test JSON alphabetically
+  * pkg/ipam: add testcases
+  * spec/plugins: return interface details and multiple IP addresses to runtime
+  * spec, libcni, pkg/invoke: Use OS-agnostic separator when parsing CNI_PATH
+  * pkg/utils/sysctl/sysctl_linux.go: fix build tag.
+  * pkg/utils/sysctl/sysctl_linux.go: fix typo.
+  * invoke: Enable plugin file names with extensions
+  * CONVENTIONS.md: Update details on port-mappings
+  * Update with feedback
+  * More markups
+  * spec: Remove `routes` from Network Configuration
+  * docs: consolidate host-local documentation
+  * pkg/ns: refactored so that builds succeed on non-linux platforms
+  * Fix grammar
+  * plugins/main/ptp: set the Sandbox property on the response
+  * README: List multus as 3rd party plugin
+  * Replace Michael Bridgen with Bryan Boreham
+  * pkg/ns, pkg/types: refactored non linux build fix code to
+  * pkg/ip: refactored so that builds succeed on non-linux platforms
+  * vendor: Update vishvanana/netlink dependency
+  * libcni: up-convert a Config to a ConfigList when no other configs are found.
+  * docs: CNI versioning for 0.3.0 upgrade
+  * docs: Edits to v0.3.0 upgrade guidance
+  * docs: minor improvements to 0.3.0 upgrade guidance
+  * docs: add small upgrade instructions
+  * docs: minor improvements to spec-upgrades
+  * docs: fill-out and correct version conversion table
+  * docs: table formatting is hard
+  * pkg/testutils: return errors after restoring stdout
+  * pkg/types: misc current types testcase cleanups
+  * Minor rewording about default config version
+  * spec,libcni: add support for injecting runtimeConfig into plugin stdin data
+  * Check n.IPAM before use it in LoadIPAMConfig function
+  * do not error if last_reserved_ip is missing for host local ipam
+  * add test for ensuring initial subnet creation does not contain an error
+  * fix unrelated failing tests
+- Update to version 0.4.0:
+  * plugins/noop: return a helpful message for test authors
+  * host-local: trim whitespace from container IDs and disk file contents
+  * travis: roll forward the versions of Go that we test
+  * MAINTAINERS: hi CaseyC!
+  * ipam/host-local: Move allocator and config to backend
+  * ipam/host-local: add ResolvConf argument for DNS configuration
+  * spec: notice of version
+- Initial version
+</comment>
+    <requestid>570481</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0600eaabc3ee0f118cf28ab6d68c86dd</srcmd5>
+    <version>0.6.0</version>
+    <time>1517932125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>572985</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a7d7a5a7b1172ad251ee3df82364c945</srcmd5>
+    <version>0.6.0</version>
+    <time>1523447978</time>
+    <user>maxlin_factory</user>
+    <comment>autosubmit from concourse</comment>
+    <requestid>594872</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>51a4bd93319966ec628c3c60bdaf5661</srcmd5>
+    <version>0.6.0</version>
+    <time>1528195958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>613967</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b188e7c438967199479e33a258f1ab6d</srcmd5>
+    <version>0.6.0</version>
+    <time>1530866669</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620951</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>43b9b3d9067a95810a90d7e4d4e6c6bd</srcmd5>
+    <version>0.7.0</version>
+    <time>1558515031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703715</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da7ce9754c4a1b489a4c005ec16626a6</srcmd5>
+    <version>0.7.1</version>
+    <time>1564137429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716935</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ab4fc07753fd2a866af5012c71c5ead7</srcmd5>
+    <version>0.7.1</version>
+    <time>1578950168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763882</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5927912de081bb4b2f883bf7e74654a1</srcmd5>
+    <version>0.7.1</version>
+    <time>1583226926</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>780245</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9bef86a4bc684b252789aebd2a76fa2f</srcmd5>
+    <version>0.8.0</version>
+    <time>1602155158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839000</requestid>
+  </revision>
+</revisionlist>

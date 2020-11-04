@@ -1,0 +1,5 @@
+<package name="libnbcompat" project="openSUSE:Factory">
+  <title>libnbcompat - NetBSD compatibility library</title>
+  <description>libnbcompat is a NetBSD compatibility library that supplies routines used by NetBSD bootstrap tools that are missing on other operating systems.</description>
+  <devel project="devel:libraries:c_c++" package="libnbcompat"/>
+</package>

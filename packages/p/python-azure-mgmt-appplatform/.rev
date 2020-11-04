@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9d7b8af3478e95b7f60ddae956e2371</srcmd5>
+    <version>0.1.0</version>
+    <time>1582899580</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure SDK component package</comment>
+    <requestid>775173</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d76177bc0031d62f3b33ce889a49af0e</srcmd5>
+    <version>1.0.0</version>
+    <time>1601652331</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833091 from glaubitz)</comment>
+    <requestid>833113</requestid>
+  </revision>
+</revisionlist>

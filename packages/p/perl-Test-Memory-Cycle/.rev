@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>119dc15738208b87d4a77bafeb861c72</srcmd5>
+    <version>1.04</version>
+    <time>1292764316</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 55214 from user rjschwei
+</comment>
+    <requestid>55214</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>119dc15738208b87d4a77bafeb861c72</srcmd5>
+    <version>1.04</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f22c96cd5b89c704b86f249ec9af250b</srcmd5>
+    <version>1.04</version>
+    <time>1302512473</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66570 from user coolo
+</comment>
+    <requestid>66570</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>e6686e3b69699106f9ac87d10feefc91</srcmd5>
+    <version>1.04</version>
+    <time>1302512481</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66570
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f4b60a3d4e649d475de285bca49dcbdd</srcmd5>
+    <version>1.04</version>
+    <time>1309866209</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>75399</requestid>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>6c2bcab3a51b980bfd113ccb9a52cc54</srcmd5>
+    <version>1.04</version>
+    <time>1309866220</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75399
+</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>6c2bcab3a51b980bfd113ccb9a52cc54</srcmd5>
+    <version>1.04</version>
+    <time>1319182312</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>b974d6efab5545ab7983944f45fdb971</srcmd5>
+    <version>1.04</version>
+    <time>1323193699</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>b974d6efab5545ab7983944f45fdb971</srcmd5>
+    <version>1.04</version>
+    <time>1340183932</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>b974d6efab5545ab7983944f45fdb971</srcmd5>
+    <version>1.04</version>
+    <time>1359109816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>b974d6efab5545ab7983944f45fdb971</srcmd5>
+    <version>1.04</version>
+    <time>1379663874</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="19">
+    <srcmd5>b974d6efab5545ab7983944f45fdb971</srcmd5>
+    <version>1.04</version>
+    <time>1409302517</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>a2f4e90d882d08b92792bb6742ed9fcd</srcmd5>
+    <version>1.04</version>
+    <time>1440871492</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327597</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2bae241e60a0129692acae3433232b5</srcmd5>
+    <version>1.06</version>
+    <time>1456434291</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360659</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>52860ee379f098d73cc19897c813d2ce</srcmd5>
+    <version>1.06</version>
+    <time>1461335073</time>
+    <user>dimstar_suse</user>
+    <comment>- add the license also to cpanspec.yml</comment>
+    <requestid>389472</requestid>
+  </revision>
+</revisionlist>

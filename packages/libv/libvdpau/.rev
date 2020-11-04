@@ -1,0 +1,364 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7513fba1c77934bd8c9250760b9e2895</srcmd5>
+    <version>0.4</version>
+    <time>1271934074</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Drivers:Video/libvdpau based on submit request 38474 from user sndirsch
+</comment>
+    <requestid>38474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99bd3501c2e9902262e8f729b2b8a9a2</srcmd5>
+    <version>0.4</version>
+    <time>1271979490</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hgraeber:branches:openSUSE:Factory/libvdpau based on submit request 38549 from user hgraeber
+</comment>
+    <requestid>38549</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d97de226689728757f22bd63a74824df</srcmd5>
+    <version>0.4</version>
+    <time>1272101941</time>
+    <user>autobuild</user>
+    <comment>Copy from home:sndirsch:branches:openSUSE:Factory/libvdpau based on submit request 38641 from user sndirsch
+</comment>
+    <requestid>38641</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>005abad0dd532c7dfb713a71955777d3</srcmd5>
+    <version>0.4</version>
+    <time>1272214279</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Drivers:Video/libvdpau based on submit request 38689 from user sndirsch
+</comment>
+    <requestid>38689</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a08fe01452ce59b1ed19d195dbdf0b75</srcmd5>
+    <version>0.4</version>
+    <time>1277141287</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Drivers:Video/libvdpau based on submit request 41756 from user sndirsch
+</comment>
+    <requestid>41756</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a08fe01452ce59b1ed19d195dbdf0b75</srcmd5>
+    <version>0.4</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>a08fe01452ce59b1ed19d195dbdf0b75</srcmd5>
+    <version>0.4</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>a7abd558154f4319b44c34ffd1eeea24</srcmd5>
+    <version>unknown</version>
+    <time>1284373261</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Drivers:Video/libvdpau based on submit request 47519 from user sndirsch
+</comment>
+    <requestid>47519</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>5c4f73eb30154d54096b99345d73047c</srcmd5>
+    <version>0.4.1</version>
+    <time>1285145947</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Drivers:Video/libvdpau based on submit request 48767 from user sndirsch
+</comment>
+    <requestid>48767</requestid>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>5c4f73eb30154d54096b99345d73047c</srcmd5>
+    <version>0.4.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>697e927b1ac7b434994569901b8b4df0</srcmd5>
+    <version>0.4.1</version>
+    <time>1314628999</time>
+    <user>saschpe</user>
+    <comment>- vdpau needs an explicit &quot;-lX11&quot; with latest toolchain</comment>
+    <requestid>80047</requestid>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>a5682ea9071a812987b0d43a4f5c5999</srcmd5>
+    <version>0.4.1</version>
+    <time>1314629019</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80047
+</comment>
+  </revision>
+  <revision rev="13" vrev="15">
+    <srcmd5>d41875aee24db49bfe32a048a8d32133</srcmd5>
+    <version>0.4.1</version>
+    <time>1314780721</time>
+    <user>saschpe</user>
+    <comment>- fixes the build in a more correct way :-) Hopefully!</comment>
+    <requestid>80092</requestid>
+  </revision>
+  <revision rev="14" vrev="16">
+    <srcmd5>b3a6fae3e9e313154e19909cc0fadcba</srcmd5>
+    <version>0.4.1</version>
+    <time>1314780733</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80092
+</comment>
+  </revision>
+  <revision rev="15" vrev="18">
+    <srcmd5>b3a6fae3e9e313154e19909cc0fadcba</srcmd5>
+    <version>0.4.1</version>
+    <time>1319182143</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="19">
+    <srcmd5>91cd12ed0de1fb666d448ef6df2c968c</srcmd5>
+    <version>0.4.1</version>
+    <time>1323192369</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>91cd12ed0de1fb666d448ef6df2c968c</srcmd5>
+    <version>0.4.1</version>
+    <time>1340183649</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>688334f9e899650382f8d63e3d5a4815</srcmd5>
+    <version>0.4.1</version>
+    <time>1340725582</time>
+    <user>coolo</user>
+    <comment>- back to building the HTML documentation (instead of prebuilding
+  and then extracting it during the build), but this time without
+  requiring texlive, since pdftex apparently isn't used for this
+  purpose anyway (libvdpau-nopdftex.patch)
+
+- do not build the documentation but package a prebuilt tar of it
+  to avoid huge build cycle</comment>
+    <requestid>126177</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a67cf64f8bb45032ab59a89b0d3dc7b0</srcmd5>
+    <version>0.5</version>
+    <time>1347512521</time>
+    <user>coolo</user>
+    <comment>- Update to v0.5
+  * vdpau_wrapper.c: Track dynamic library handles and free them 
+    on exit
+  * Implement workarounds for Adobe Flash bugs
+- Add libvdpau-alway-workaround-libflash.patch: always enable
+  Flash workarounds and not depend on kernel command line. Users
+  can disable this in the /etc/vdpau_wrapper.cfg file. (forwarded request 132823 from namtrac)</comment>
+    <requestid>133166</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>a67cf64f8bb45032ab59a89b0d3dc7b0</srcmd5>
+    <version>0.5</version>
+    <time>1359109370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6c37a885ff6121e132109ed64dc317a2</srcmd5>
+    <version>0.6</version>
+    <time>1360007581</time>
+    <user>coolo</user>
+    <comment>Update to v0.6 (forwarded request 150884 from sumski)</comment>
+    <requestid>150935</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9e0a8a9da6119aa4cd48753174d3ebeb</srcmd5>
+    <version>0.6</version>
+    <time>1364240252</time>
+    <user>coolo</user>
+    <comment>- Drop libvdpau-alway-workaround-libflash.patch: while this
+  fixes flash plugin, it breaks all the other apps. (bnc#811360) (forwarded request 160935 from namtrac)</comment>
+    <requestid>160946</requestid>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>9e0a8a9da6119aa4cd48753174d3ebeb</srcmd5>
+    <version>0.6</version>
+    <time>1379663123</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>ae368adb49b0e8f4ccdb96410e07c13b</srcmd5>
+    <version>0.6</version>
+    <time>1383035961</time>
+    <user>coolo</user>
+    <comment>- update to vdpauinfo 0.1
+  * This release fixes a problem where ranges were queried for
+    mixer parameters and attributes where ranges were not allowed.</comment>
+    <requestid>204887</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2367071e23757360074ae09fe0397d94</srcmd5>
+    <version>0.8</version>
+    <time>1404973133</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239254</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>2367071e23757360074ae09fe0397d94</srcmd5>
+    <version>0.8</version>
+    <time>1409301750</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>34172eff3c89c788452d065b00461732</srcmd5>
+    <version>0.9</version>
+    <time>1419809654</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266525</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dc63ffcba7134d4d04cee7c977acba39</srcmd5>
+    <version>1.1</version>
+    <time>1426794636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libvdpau to version 1.1
+  * This release fixes a bug in the new VdpPictureInfoHEVC structure:
+    the column_width_minus1 and row_height_minus1 arrays had the wrong
+    dimensions. To avoid the incorrect structure being used, the profile
+    numbers for the HEVC profiles have been changed. Please use the new
+    profiles rather than the ones from libvdpau 1.0. 
+
+- Update libvdpau to version 1.0
+  * This release adds support for the following HEVC / H.265 profiles:
+    VDP_DECODER_PROFILE_HEVC_MAIN
+    VDP_DECODER_PROFILE_HEVC_MAIN_10
+    VDP_DECODER_PROFILE_HEVC_MAIN_STILL
+    VDP_DECODER_PROFILE_HEVC_MAIN_12
+    VDP_DECODER_PROFILE_HEVC_MAIN_444
+- Updated vdpauinfo to version 0.9
+  * This release adds support for querying the new profiles added in 
+    libvdpau 1.0 (see above)
+- cleanup: removed empty patch 'vdpauinfo-missing-lX11.diff'</comment>
+    <requestid>291154</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>34f8438b919ce7b2b39c446f942a6ceb</srcmd5>
+    <version>1.1.1</version>
+    <time>1441954973</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced u_src-mesa_dri2.c-define-_GNU_SOURCE.patch with upstream
+  U_Add_missing_include_of_config_h_to_define_GNU_SOURCE.patch
+
+- added missing BuildRequires for pkgconfig(dri2proto)
+- u_src-mesa_dri2.c-define-_GNU_SOURCE.patch
+  * Without having defined _GNU_SOURCE __USE_GNU isn't defined
+    either. Though secure_getenv() in stdlib.h isn't declared.
+
+- Update libvdpau to version 1.1.1 (bnc#943967,#943968,#943969)
+  libvdpau versions 1.1 and earlier, when used in setuid or setgid
+  applications, contain vulnerabilities related to environment
+  variable handling that could allow an attacker to execute
+  arbitrary code or overwrite arbitrary files.  See CVE-2015-5198,
+  CVE-2015-5199, and CVE-2015-5200 for more details.
+  This release uses the secure_getenv() function, when available,
+  to fix these problems. The updated libvdpau will instead use a
+  fallback implementation of secure_getenv() when the platform
+  doesn't provide one.
+  If you use the NVIDIA .run installer packages, please see
+  https://devtalk.nvidia.com/default/topic/873035 for additional
+  information.
+  This release also adds tracing of HEVC picture structures to
+  libvdpau_trace.
+- supersedes patch: libvdpau-nopdftex.patch</comment>
+    <requestid>329483</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0d3fc52fe3791b7ae7f45bbfe6ce6fb5</srcmd5>
+    <version>1.1.1</version>
+    <time>1496533594</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  * fate #315643-315645, 319159-319161, 319618 (bsc#1041623)
+  * bnc#943967, bnc#943968, bnc#943969 (bsc#1041623)
+  * CVE-2015-5198, CVE-2015-5199, CVE-2015-5200 (bsc#1041623)</comment>
+    <requestid>499646</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>de348ea8ca7e9c00a67694eeb2b32d4b</srcmd5>
+    <version>1.1.1</version>
+    <time>1545866591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657585</requestid>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>3fd3c4b39cd698b108a0a26412d71e6c</srcmd5>
+    <version>1.1.1</version>
+    <time>1547211655</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663030</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>441dd238821d06b649f7ca8f89291a07</srcmd5>
+    <version>1.2</version>
+    <time>1551686928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libvdpau to version 1.2
+  * This version of libvdpau adds new chroma types defining whether
+    surfaces contain frames or fields, and a new picture parameter
+    structure that supports HEVC 4:4:4 pictures.
+- supersedes U_Add_missing_include_of_config_h_to_define_GNU_SOURCE.patch</comment>
+    <requestid>680494</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7c0851cf572875479e74fa197111839f</srcmd5>
+    <version>1.3</version>
+    <time>1567423326</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed source URL in specfile 
+
+- Update libvdpau to version 1.3
+  * This release of libvdpau switches the build system from
+    automake &amp; autoconf to meson and adds definitions to support
+    decoding of the VP9 video format.</comment>
+    <requestid>727027</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>76b99ca0dfc4d01ed5b84b42964ba1c7</srcmd5>
+    <version>1.4</version>
+    <time>1586973155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update libvdpau to version 1.4
+  * adds 10,12-Bit decode support to VDPAU API
+  * Adds HEVC Main 10/12 and HEVC Main 444 10/12 decode support in
+    VDPAU API by Adding new profiles present in Range Extension
+    profiles.Also Adds new VdpChromaTypes for 16bit. 
+- Updated vdpauinfo to version 1.3
+  * Add names for the new 4:4:4 surface formats
+  * Add support for VP9 in vdpauinfo
+  * Depend on vdpau &gt;= 1.3 for VP9 support</comment>
+    <requestid>793247</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7eafb1044125c91f59f9859415e65a00</srcmd5>
+    <version>1.4</version>
+    <time>1596456776</time>
+    <user>dimstar_suse</user>
+    <comment>- n_UsrEtc.patch
+  * switch to /usr/etc location for vdpau_wrapper.cfg, but first
+    try /etc (boo#1173038)</comment>
+    <requestid>823739</requestid>
+  </revision>
+</revisionlist>

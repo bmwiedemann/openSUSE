@@ -1,0 +1,9 @@
+<package name="python-cloud-sptheme" project="openSUSE:Factory">
+  <title>Sphinx theme named 'Cloud', and some related extensions</title>
+  <description>This package contains the Sphinx theme named &quot;Cloud&quot;,
+along with some related Sphinx extensions.
+
+</description>
+  <devel project="devel:languages:python" package="python-cloud-sptheme"/>
+  <url>https://cloud-sptheme.readthedocs.io</url>
+</package>

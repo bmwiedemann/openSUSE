@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8576dbabab043ade43317483cacb9b02</srcmd5>
+    <version>1.33.1</version>
+    <time>1594293457</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>819539</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ddc85761fb49585620696546c47c19fa</srcmd5>
+    <version>1.33.1</version>
+    <time>1597064186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825257</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>62fb16133e4a8ce0fdb250f34bfd3621</srcmd5>
+    <version>1.33.1</version>
+    <time>1597746304</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>826252</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2c7cf5f1df703b4159f7f06711c565b9</srcmd5>
+    <version>1.33.1</version>
+    <time>1598642970</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829250</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>35a2bc866e36051ffd0e5a59efa4bcc3</srcmd5>
+    <version>1.33.1</version>
+    <time>1599507007</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832267</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3d9dcaa8e2ae416010035eb85a13fc2</srcmd5>
+    <version>1.34.0</version>
+    <time>1600179650</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>833306</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed3d726f0f708d85581e481b59cf08a5</srcmd5>
+    <version>1.35.0</version>
+    <time>1601200162</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836317</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6d64addec7b81f025483fa3645a7a98c</srcmd5>
+    <version>1.35.0</version>
+    <time>1603458783</time>
+    <user>dimstar_suse</user>
+    <comment>minor version update</comment>
+    <requestid>842731</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0625164f868a8cad485cee741e75e8d5</srcmd5>
+    <version>1.36.0</version>
+    <time>1603821778</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>844306</requestid>
+  </revision>
+</revisionlist>

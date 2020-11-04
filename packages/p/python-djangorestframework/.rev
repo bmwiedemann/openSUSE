@@ -1,0 +1,121 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc2bec9c3ed803a702171052a7fa48a7</srcmd5>
+    <version>3.8.2</version>
+    <time>1533292592</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626895</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6995537aa2dc98ff5390dc4a943114f</srcmd5>
+    <version>3.8.2</version>
+    <time>1533887372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628215</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>040719eca63d42fdf81ba2a0ab4179e1</srcmd5>
+    <version>3.9.0</version>
+    <time>1542202964</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.9.0:
+  * (fix) link to disqus article on cursor pagination (#6020)
+  * Add kloudless as a new premium sponsor (#6241)
+  * Add building with drf book (#6102)
+  * Documentation fix for django-admin commands (#6232)
+  * Remove unnecessary models.py file (#6142)
+  * Add Oct 18 release date
+  * Clean up unnecessary if statement (#6163)
+  * codecov: enable status for patch/changes, comment: diff (#6080)
+  * Add &quot;optionals not required&quot; build (#6047)
+  * Fix typo in docs (#6212)
+  * Update JWT docs. (#6138)
+  * Fix dist build (#6139)
+  * Add Django 2.1 to classifiers (#6099)
+  * Correct schema parsing for JSONField (#5878)
+  * Ensure that html forms (multipart form data) respect optional fields (#5927)
+  * Render markdown readme on PyPI (#6004)
+  * requirements-testing: update pytest and pytest-django (#5972)
+  * tox/pytest: move posargs, use -ra (#6039)
+  * Fixed instance being overwritten in pk-only optimization try/except block (#5747)
+  * Update to Django 2.0 Routing Syntax (#6049)
+  * requirements-optionals: use psycopg2-binary (#5969)
+  * [DOCS] python print syntax
+  * Added djangorestframework-datatables to third-party packages (#5931)
+  * Fix upload parser test (#6044)
+  * Allow nullable BooleanField in Django 2.1 (#6183)
+  * Simplify job matrix on Travis (#6174)
+  * tests: fix skipping with TestPosgresFieldsMapping (#5965)
+  * Add docs link to Caching API Guide. (#6012)
+  * Allow hashing of ErrorDetail to fix #5919 (#5932)</comment>
+    <requestid>648256</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dd8176518328377fb1231f1e592d7480</srcmd5>
+    <version>3.9.1</version>
+    <time>1551455409</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to avoid buildcycle with django-filter
+
+- Activate test suite
+- Add Recommends and Suggests for optional runtime dependencies
+- Update to v3.9.1
+  * Resolve XSS issue in browsable API
+  * Resolve issues with composable permissions
+  * Respect `limit_choices_to` on foreign keys</comment>
+    <requestid>680460</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>055fd48a21ccb404ee4af28719e4e5e1</srcmd5>
+    <version>3.9.2</version>
+    <time>1551883867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682053</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8cd452804b2b2be4314d7f1dafb82bff</srcmd5>
+    <version>3.9.3</version>
+    <time>1557170252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.3:
+  * This is the last Django REST Framework release that will support Python 2.
+  * Adjusted the compat check for django-guardian to allow the last guardian
+    version (v1.4.9) compatible with Python 2. #6613</comment>
+    <requestid>701068</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c2127b15035da3c6067b61a6f9029c14</srcmd5>
+    <version>3.10.3</version>
+    <time>1569588503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.3:
+  * Drop python2 support
+  * Various bugfixes</comment>
+    <requestid>731201</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6d346ccc38c04a4fe5573f76fda4b1d</srcmd5>
+    <version>3.11.0</version>
+    <time>1578437631</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.0:
+  * various minor updates
+  * django 3.x compatibility</comment>
+    <requestid>761156</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1168b192528c113d90ec16753fad784b</srcmd5>
+    <version>3.11.1</version>
+    <time>1599210675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.11.1
+  * update Django for APIs book to 3.0 edition
+  * decode base64 credentials as utf8; adjust tests
+  * Remove compat urls for Django &lt; 2.0
+</comment>
+    <requestid>831632</requestid>
+  </revision>
+</revisionlist>

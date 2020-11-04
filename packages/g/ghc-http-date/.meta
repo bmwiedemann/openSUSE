@@ -1,0 +1,5 @@
+<package name="ghc-http-date" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-http-date"/>
+</package>

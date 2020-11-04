@@ -1,0 +1,7 @@
+<package name="mingw64-binutils" project="openSUSE:Factory">
+  <title>MinGW Windows binutils</title>
+  <description>MinGW Windows binutils (utilities like 'strip', 'as', 'ld') which
+understand Windows executables and DLLs.</description>
+  <devel project="windows:mingw:win64" package="mingw64-binutils"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

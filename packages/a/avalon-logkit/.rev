@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5059749449068a610b3a91883470b20</srcmd5>
+    <version>2.1</version>
+    <time>1330007536</time>
+    <user>coolo</user>
+    <comment>add avalon-logkit to Factory</comment>
+    <requestid>106286</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3554190d006c1fde12954d78c690630</srcmd5>
+    <version>2.1</version>
+    <time>1339587040</time>
+    <user>coolo</user>
+    <comment>- add pom file
+- fix a build with openjdk7
+- change the jms to jms_api in classpath</comment>
+    <requestid>124672</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c3554190d006c1fde12954d78c690630</srcmd5>
+    <version>2.1</version>
+    <time>1340183193</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9863953eb983b0d8ecc6024380966eba</srcmd5>
+    <version>2.1</version>
+    <time>1340617429</time>
+    <user>coolo</user>
+    <comment>- bump servletapi to 30 (tomcat7)</comment>
+    <requestid>125494</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9863953eb983b0d8ecc6024380966eba</srcmd5>
+    <version>2.1</version>
+    <time>1359108686</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>9afaeecb62b90f046a3e39e464d08b4f</srcmd5>
+    <version>2.1</version>
+    <time>1378899563</time>
+    <user>coolo</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198257</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>9afaeecb62b90f046a3e39e464d08b4f</srcmd5>
+    <version>2.1</version>
+    <time>1379662016</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>d11c051e27d7b88cc26441eb7c3dde30</srcmd5>
+    <version>2.1</version>
+    <time>1404161381</time>
+    <user>coolo</user>
+    <comment>FWD Java:packages fixes</comment>
+    <requestid>238885</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>d11c051e27d7b88cc26441eb7c3dde30</srcmd5>
+    <version>2.1</version>
+    <time>1409300541</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>a0d37db85f452cbe6dc337d0b64b6838</srcmd5>
+    <version>2.1</version>
+    <time>1427982841</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292603</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>c144bb28f3a9b7ffc9291c290b73487e</srcmd5>
+    <version>2.1</version>
+    <time>1433486764</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310284</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>6910df3391d1682894fddb58069311c1</srcmd5>
+    <version>2.1</version>
+    <time>1495442919</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded dependencies
+
+- New build dependency: javapackages-local</comment>
+    <requestid>497066</requestid>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>a6d841cf6fc8b2f8a72bf80f4de98901</srcmd5>
+    <version>2.1</version>
+    <time>1505680630</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526401</requestid>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>fd0e0428374f88232e801a050645918c</srcmd5>
+    <version>2.1</version>
+    <time>1532446266</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620767</requestid>
+  </revision>
+  <revision rev="15" vrev="19">
+    <srcmd5>9a84ac619965fec1c52a5bc15b5efb29</srcmd5>
+    <version>2.1</version>
+    <time>1549464428</time>
+    <user>coolo</user>
+    <comment>Require dependencies by their maven groupId:artifactId</comment>
+    <requestid>671838</requestid>
+  </revision>
+  <revision rev="16" vrev="20">
+    <srcmd5>2d4671bc6a6a51404cc6a46bf48b961a</srcmd5>
+    <version>2.1</version>
+    <time>1551276237</time>
+    <user>dimstar_suse</user>
+    <comment>Build against glassfish-servlet-api</comment>
+    <requestid>678582</requestid>
+  </revision>
+  <revision rev="17" vrev="21">
+    <srcmd5>ad57d37f111f90adba81ca07f66fe0c3</srcmd5>
+    <version>2.1</version>
+    <time>1555588460</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694539</requestid>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>1e8e4c168cd1238aec37af01613bc511</srcmd5>
+    <version>2.1</version>
+    <time>1570112157</time>
+    <user>dimstar_suse</user>
+    <comment>Build against log4j12</comment>
+    <requestid>734286</requestid>
+  </revision>
+</revisionlist>

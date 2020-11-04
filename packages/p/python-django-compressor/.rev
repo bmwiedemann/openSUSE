@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4715e5bd221a65a7ceea49765701569a</srcmd5>
+    <version>2.4</version>
+    <time>1578437685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761549</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8bc24a1504df087a0e5a35332553533f</srcmd5>
+    <version>2.4</version>
+    <time>1585995898</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump the version requirement on django to be &gt;= 2.2
+- Enable verbose testing</comment>
+    <requestid>791104</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>383af51cc2f67a06d610151a5560bef2</srcmd5>
+    <version>2.4</version>
+    <time>1591101600</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests until upstream makes them work with new python
+  Beautifulsoup</comment>
+    <requestid>810559</requestid>
+  </revision>
+</revisionlist>

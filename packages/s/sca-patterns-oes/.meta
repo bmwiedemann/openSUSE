@@ -1,0 +1,5 @@
+<package name="sca-patterns-oes" project="openSUSE:Factory">
+  <title>Supportconfig Analysis Patterns for OES</title>
+  <description>Supportconfig Analysis (SCA) appliance patterns to identify known issues relating to all versions of Open Enterprise Server (OES)</description>
+  <devel project="Novell:NTS:Unstable" package="sca-patterns-oes"/>
+</package>

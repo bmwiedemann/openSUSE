@@ -1,0 +1,5 @@
+<package name="lua-luassert" project="openSUSE:Factory">
+  <title>Lua Assertions Extension</title>
+  <description>Adds a framework that allows registering new assertions without compromising builtin assertion functionality.</description>
+  <devel project="devel:languages:lua" package="lua-luassert"/>
+</package>

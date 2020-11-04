@@ -1,0 +1,5 @@
+<package name="python-pyserial" project="openSUSE:Factory">
+  <title></title>
+  <description>Python Serial Port Extension for Win32, Linux, BSD, Jython, IronPython</description>
+  <devel project="devel:languages:python" package="python-pyserial"/>
+</package>

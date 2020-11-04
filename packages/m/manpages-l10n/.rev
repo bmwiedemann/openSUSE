@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4efb61647d1760c3dd442726a923528f</srcmd5>
+    <version>4.1.0</version>
+    <time>1600801272</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides translations of man pages in different languages provided by the manpages-l10n project: https://manpages-l10n-team.pages.debian.net/manpages-l10n/.
+
+This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be removed from Tumbleweed and from Documentation project) and man-pages-de (to be removed from Packman) which are quite outdated.</comment>
+    <requestid>824378</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ee0edab4183579509f7dfe8748d1c1f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1602857656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2.0:
+  * Updated and added many translations.
+  * Still skip Italian and Spanish, will be included in the next
+    or any future release.</comment>
+    <requestid>842000</requestid>
+  </revision>
+</revisionlist>

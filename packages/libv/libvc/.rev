@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a4f41775c0061c8489d3c4475411c15</srcmd5>
+    <version>006</version>
+    <time>1592398115</time>
+    <user>dimstar_suse</user>
+    <comment>libvc</comment>
+    <requestid>815243</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e12f399b84f049a8f48b6d560ec4add</srcmd5>
+    <version>006</version>
+    <time>1592580149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815688</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f28a5eecc169ec8581aafeae54b5adf2</srcmd5>
+    <version>007</version>
+    <time>1594894546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 007:
+  * This releases uses mktemp instead of the deprecated tempfile
+    command in the unit tests.</comment>
+    <requestid>821036</requestid>
+  </revision>
+</revisionlist>

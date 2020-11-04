@@ -1,0 +1,5 @@
+<package name="dropwatch" project="openSUSE:Factory">
+  <title>kernel dropped packet monitoring utility </title>
+  <description>dropwatch is an interactive utility for monitoring and recording packets that are dropped by the kernel</description>
+  <devel project="network:utilities" package="dropwatch"/>
+</package>

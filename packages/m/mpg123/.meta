@@ -1,0 +1,5 @@
+<package name="mpg123" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="mpg123"/>
+</package>

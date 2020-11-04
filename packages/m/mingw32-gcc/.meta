@@ -1,0 +1,6 @@
+<package name="mingw32-gcc" project="openSUSE:Factory">
+  <title>MinGW Windows cross-compiler (GCC) for C</title>
+  <description>MinGW Windows cross-compiler (GCC) for C</description>
+  <devel project="windows:mingw:win32" package="mingw32-gcc"/>
+  <url>PUT_UPSTREAM_URL_HERE</url>
+</package>

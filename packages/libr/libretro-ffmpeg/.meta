@@ -1,0 +1,7 @@
+<package name="libretro-ffmpeg" project="openSUSE:Factory">
+  <title>FFmpeg libretro core</title>
+  <description>FFmpeg is a collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.
+
+This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-ffmpeg"/>
+</package>

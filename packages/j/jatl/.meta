@@ -1,0 +1,5 @@
+<package name="jatl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jatl"/>
+</package>

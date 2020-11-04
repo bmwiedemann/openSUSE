@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d921f7389d0345aee832957b67b12b1</srcmd5>
+    <version>2.5.1</version>
+    <time>1574932379</time>
+    <user>dimstar_suse</user>
+    <comment>Advanced Recording Format for physiology and behavior</comment>
+    <requestid>750126</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37f05900bb4bdf62f7f410835becf22f</srcmd5>
+    <version>2.5.1</version>
+    <time>1595577542</time>
+    <user>dimstar_suse</user>
+    <comment>- Add denose.patch which eliminates dependency on nose
+  (gh#melizalab/arf#7).</comment>
+    <requestid>822190</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6298bec1dce2fb91a1ad0b2831183f9f</srcmd5>
+    <version>2.6.0</version>
+    <time>1601919711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  - Remove our denose.patch, because it was included in the
+    upstream tarball.
+</comment>
+    <requestid>839512</requestid>
+  </revision>
+</revisionlist>

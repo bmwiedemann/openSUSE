@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3abd424697a3ed074716d0037396bc44</srcmd5>
+    <version>20140113</version>
+    <time>1405178084</time>
+    <user>coolo</user>
+    <comment>Small app for webcams, useful for automation in any kind of
+scripts, eg. for time laps movies or surveillance</comment>
+    <requestid>240230</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3abd424697a3ed074716d0037396bc44</srcmd5>
+    <version>20140113</version>
+    <time>1409300909</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8774e7da278dbe483bcbf0bfe62ab29</srcmd5>
+    <version>20190307</version>
+    <time>1578069410</time>
+    <user>dimstar_suse</user>
+    <comment>- update to current version from git
+  * new support for VYUY format
+  * new bayer formats
+  * WebP output support
+  * update videodev2.h header
+  * optflags are taken into account
+  * documentation and build env updates
+- fix URL references</comment>
+    <requestid>760453</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f7d07b476d4072b48defbef8e7355ac0</srcmd5>
+    <version>20200725</version>
+    <time>1601919396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839038</requestid>
+  </revision>
+</revisionlist>

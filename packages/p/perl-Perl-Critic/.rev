@@ -1,0 +1,310 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f52e9041957c88fcca1797e31090cd4c</srcmd5>
+    <version>1.109</version>
+    <time>1291808655</time>
+    <user>darix</user>
+    <comment>Accepted submit request 53929 from user coolo
+</comment>
+    <requestid>53929</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61a6dbfb2ba367be86ca2abc691bf3f4</srcmd5>
+    <version>1.109</version>
+    <time>1292243049</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55712 from user coolo
+</comment>
+    <requestid>55712</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cee5567739347ce90b63be86827bf991</srcmd5>
+    <version>1.109</version>
+    <time>1292243053</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55712
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>cee5567739347ce90b63be86827bf991</srcmd5>
+    <version>1.109</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f164d4e6b887c91fd7d2c7ccdd326e80</srcmd5>
+    <version>1.115</version>
+    <time>1301826224</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65737 from user coolo
+</comment>
+    <requestid>65737</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a88202e72758c28994b7f7ba48ad63db</srcmd5>
+    <version>1.115</version>
+    <time>1301826239</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65737
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>a88202e72758c28994b7f7ba48ad63db</srcmd5>
+    <version>1.115</version>
+    <time>1319182298</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>90a772011c366b72554e1e1ece9e725d</srcmd5>
+    <version>1.115</version>
+    <time>1320672517</time>
+    <user>coolo</user>
+    <comment>- Set executable permission for commandline interface (/usr/bin/perlcritic)</comment>
+    <requestid>90173</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>782fbdc36748e8a26223cae1e6702f9a</srcmd5>
+    <version>1.116</version>
+    <time>1324831169</time>
+    <user>coolo</user>
+    <comment>- update to 1.116
+    Policy Changes:
+    * BuiltInFunctions::ProhibitLvalueSubstr does not report violations
+      if the document contains an explicit 'use n.nnn;' where the
+      version is before 5.005.  RT #59112
+    * Documentation::RequirePodSections no longer blows up on code
+      having POD but no =head1. This problem was introduced with RT
+      #59268. RT #67231
+    * RegularExpressions::ProhibitUnusedCapture should more reliably
+      find things like s/(a)/${1}2/.  RT #67273.
+    * ValuesAndExpressions::ProhibitMagicNumbers and
+      Module::RequireVersionVar now treat versions passed as the second
+      argument of a 'package' statement the same as versions declared as
+      'our $VERSION ...'.  RT #67159
+    * Variables::RequireLexicalLoopIterators does not report violations
+      if the document contains an explicit 'use n.nnn;' where the
+      version is before 5.004.  RT #67760</comment>
+    <requestid>97099</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7b967d17a5225e581c5a91eca4260dbe</srcmd5>
+    <version>1.117</version>
+    <time>1329391550</time>
+    <user>coolo</user>
+    <comment>- updated to 1.117
+  New Policies:
+  * Variables::ProhibitAugmentedAssignmentInDeclaration reports
+    constructs like 'my $x += 1'. Contributed by Mike O'Regan
+  Policy Changes:
+  * BuiltinFunctions::ProhibitLvalueSubstr: Add explicit 'use version'.
+    RT #68498.
+  * CodeLayout::ProhibitHardTabs: Add 'pbp' to the default_themes list.
+    RT #71093.
+  * ControlStructures::ProhibitMutatingListFunctions now understands that
+    tr///r (introduced in 5.13.7) does not change its operand.
+  * ControlStructures::ProhibitMutatingListFunctions now understands that
+    '//=', '&lt;&lt;=', and '&gt;&gt;=' are assignment operators. RT #70901.
+  * ErrorHandling::RequireCheckingReturnValueOfEval now allows things
+    like grep { eval $_ }. RT #69489.
+  * Modules::RequireExplicitPackage now has configuraion option
+    allow_import_of, to allow the import of specified modules before
+    the package statement. RT #72660.
+  * RegularExpressions::ProhibitEnumeratedClasses no longer thinks
+    that [A-Za-z_] matches \w. RT #69322.
+  * RegularExpressions::ProhibitUnusedCaptures now skips the first
+    block of an 'if' or 'elsif' if the regular expression is bound to
+    its operand with the '!~' operator. RT #69867.
+  * RegularExpressions::ProhibitUnusedCaptures now looks into lists
+    and blocks in the replacement portion of the regular expression if
+    /e is asserted. RT #72086.
+  * RegularExpressions::RequireDotMatchAnything,
+    RegularExpressions::RequireExtendedFormatting and
+    RegularExpressions::RequireLineBoundaryMatching now honor defaults
+    set with 'use re &quot;/modifiers&quot;'. RT #72151.</comment>
+    <requestid>104888</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7b967d17a5225e581c5a91eca4260dbe</srcmd5>
+    <version>1.117</version>
+    <time>1340183903</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>7b967d17a5225e581c5a91eca4260dbe</srcmd5>
+    <version>1.117</version>
+    <time>1359109778</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a76fc9e04121f0073c3bd8bf3cb193a6</srcmd5>
+    <version>1.118</version>
+    <time>1371146778</time>
+    <user>coolo</user>
+    <comment>- updated to 1.118
+  Policy Changes:
+    * CodeLayout::RequireTidyCode: Revise to work with incompatible
+      changes in Perl::Tidy 20120619. RT #77977.
+    * TestingAndDebugging::ProhibitNoWarnings: Correct the parse of the
+      'no warnings' statement, so that 'no warnings &quot;qw&quot;' is recognized
+      as supressing just 'qw' warnings. RT #74647.
+    * Miscellanea::RequireRcsKeywords has been moved to the Perl-Critic-More
+      distribution,  RT #69546
+    Other Changes:
+    * Make all unescaped literal &quot;{&quot; characters in regexps into
+      character classes. These are deprecated, and became noisy with
+      Perl 5.17.0.  RT #77510.</comment>
+    <requestid>178070</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a76fc9e04121f0073c3bd8bf3cb193a6</srcmd5>
+    <version>1.118</version>
+    <time>1379663813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7ada64240794f68bcd8d1e25de3d4e5c</srcmd5>
+    <version>1.119</version>
+    <time>1380608408</time>
+    <user>coolo</user>
+    <comment>-- OK for 13.1 if desired
+
+- updated to 1.119
+     Bug Fixes:
+     * Tests were failing with Config::Tiny 2.17 or later, due to a
+       change in the error messages produced by that module. 
+       This fixes #16 on Github,  #88679 &amp; #88889 on RT.
+     Policy Changes:
+     * BuiltinFunctions::ProhibitVoidGrep and ::ProhibitVoidMap: grep
+       and map called as functions are now allowed in slice operations.
+       RT #79289
+       Thanks to Wade at Anomaly dot org for the patch.
+     * Subroutines::RequireArgUnpacking: Most tests of the size of @_
+       are now allowed.  RT #79138
+     Other Changes:
+     * Modernized our usage of Exporter.  See RT #75300.  
+       Thanks to Olivier MenguÃ© for the patch.</comment>
+    <requestid>201489</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>62900bb267b757c7ffe05102d2871fc7</srcmd5>
+    <version>1.120</version>
+    <time>1383565597</time>
+    <user>coolo</user>
+    <comment>- update to 1.120
+    Bug Fixes:
+     * Corrected &quot;Possible precedence issue with control flow operator&quot; 
+       warning.  This fixes RT #88866</comment>
+    <requestid>205384</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>de755aed03c232d6b1201adcfe6c131d</srcmd5>
+    <version>1.121</version>
+    <time>1384266181</time>
+    <user>scarabeus_factory</user>
+    <comment>- Added new themes based on CERT guidelines.</comment>
+    <requestid>206496</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>de755aed03c232d6b1201adcfe6c131d</srcmd5>
+    <version>1.121</version>
+    <time>1409302450</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b9fb91270738aacc749fb24e096c551d</srcmd5>
+    <version>1.122</version>
+    <time>1411461741</time>
+    <user>coolo</user>
+    <comment>- updated to 1.122
+ 
+     [Dependencies]
+     * Now requires PPI-1.218 which has numerous enahncements and bug fixes.
+       Also now requires Readonly-2.00, which obviates the need for Readonly::XS
+       to get fast constants.
+ 
+     * File::HomeDir, File::Which, and Term::ANSIColor are all required now
+       instead of being optional or recommended. This simplifies our test code
+       and ensures consistent optimal behavior for all users.
+ 
+     [New Policies]
+     * Added two new policies: BuiltinFunctions::ProhibitUselessTopic and
+       RegularExpressions::ProhibitUselessTopic.
+ 
+     [Miscellanea]
+     * Updated the perlcritic.el script to use modern Emacs hooks.
+       Thanks to @intrigeri and the Debian team for the patch.  Fixes GH #556.
+ 
+     * Removed all the internal RCS keyword boilerplate blocks that were never
+       getting expanded.</comment>
+    <requestid>249340</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7ac92fea07d6cafbe3fb3a773c0698d0</srcmd5>
+    <version>1.125</version>
+    <time>1430595225</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304313</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b3cbb0c5fd19f47509f4f36e2fac751</srcmd5>
+    <version>1.126</version>
+    <time>1440658578</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>325686</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f437fa27f55faae79205aba44cca8f93</srcmd5>
+    <version>1.128</version>
+    <time>1498046237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504925</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>40a9a4276b4d1c27ac103ffb80f95a64</srcmd5>
+    <version>1.130</version>
+    <time>1502366611</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512158</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4b0d4bc0b22865b620abe26fd0a4b80c</srcmd5>
+    <version>1.132</version>
+    <time>1554458112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691009</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8c9e531b7d69e51e43d4688056297cd9</srcmd5>
+    <version>1.134</version>
+    <time>1559923251</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704995</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c03ad89ea0648f906bb3bfb14f74cd56</srcmd5>
+    <version>1.136</version>
+    <time>1575728300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751733</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9d06942f774f195b6a548d3249b56831</srcmd5>
+    <version>1.138</version>
+    <time>1580373366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767810</requestid>
+  </revision>
+</revisionlist>

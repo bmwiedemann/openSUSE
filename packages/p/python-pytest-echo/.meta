@@ -1,0 +1,5 @@
+<package name="python-pytest-echo" project="openSUSE:Factory">
+  <title></title>
+  <description>pytest plugin with mechanisms for echoing environment variables, package version and generic attributes</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-echo"/>
+</package>

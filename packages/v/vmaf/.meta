@@ -1,0 +1,5 @@
+<package name="vmaf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="vmaf"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="json-lib" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="json-lib"/>
+</package>

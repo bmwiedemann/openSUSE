@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70b4135df7c668120e26421fb14b2cf2</srcmd5>
+    <version>1.0.0+git.1594631529.7740731</version>
+    <time>1594894587</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>820938</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>991b6a961d2bb5b46f4e815e3b0087cf</srcmd5>
+    <version>1.0.1+git.1596627316.015380b</version>
+    <time>1596652161</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.0.1
+  * Remove &quot;detail&quot; word from file names for simplicity
+  * Update title and description</comment>
+    <requestid>824489</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e404121ea6e159c3b19bab95d57ddafd</srcmd5>
+    <version>1.0.2+git.1600361067.f7c00d1</version>
+    <time>1600801685</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.0.2
+  * Remove useless macro and fix typo in the meanwhile</comment>
+    <requestid>835271</requestid>
+  </revision>
+</revisionlist>

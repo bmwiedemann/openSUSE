@@ -1,0 +1,6 @@
+<package name="mingw64-cross-pkgconf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="mingw64-pkgconf"/>
+  <bcntsynctag>mingw64-pkgconf</bcntsynctag>
+</package>

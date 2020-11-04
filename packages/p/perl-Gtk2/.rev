@@ -1,0 +1,451 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4dc7f1bf4f4d0ef58c61a252fc0ab56</srcmd5>
+    <version>1.141</version>
+    <time>1166715011</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b0b654001368b8ad6148cbc19fe29179</srcmd5>
+    <version>1.142</version>
+    <time>1169769909</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7673c090b372e602707bf4b0011812db</srcmd5>
+    <version>1.143</version>
+    <time>1172492620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>979f5f9c437568e02530de821567cb9d</srcmd5>
+    <version>1.144</version>
+    <time>1173919724</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="17">
+    <srcmd5>81e11e30b2fb3c6d5b380a3236331662</srcmd5>
+    <version>1.144</version>
+    <time>1182458887</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="19">
+    <srcmd5>6f9beaa36f3257ebd15fb6b73159a815</srcmd5>
+    <version>1.144</version>
+    <time>1183624656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e2db312bb98f4476f261d57648e9ab14</srcmd5>
+    <version>1.145</version>
+    <time>1184087269</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0550ef8168ed242456b45ac77810914d</srcmd5>
+    <version>1.145</version>
+    <time>1184347247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>75d73af6bd3c6855c166cf27945dba8b</srcmd5>
+    <version>1.146</version>
+    <time>1187657766</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eb21ea67e84b4a8624f29ca2063b40f8</srcmd5>
+    <version>1.160</version>
+    <time>1193356248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>942676671c91832475cc1db640a144ce</srcmd5>
+    <version>1.161</version>
+    <time>1194645034</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5c0b9cae6565a96920c81936b8fdb5e1</srcmd5>
+    <version>1.162</version>
+    <time>1195762791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7828d8625fe0939736625e88d8e7d793</srcmd5>
+    <version>1.164</version>
+    <time>1200611360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5784b92980454b1a36c66e060292c3a</srcmd5>
+    <version>1.181</version>
+    <time>1205928494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cddc867e2ba9272cdf16601c447571a2</srcmd5>
+    <version>1.182</version>
+    <time>1207770301</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4bff0d8681d4f8603de6f053fee97585</srcmd5>
+    <version>1.183</version>
+    <time>1214261806</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2257aa2375d3eab4fe5464134397d61e</srcmd5>
+    <version>1.200</version>
+    <time>1223306283</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8f3de9d0384728e236661cef5b14d099</srcmd5>
+    <version>1.202</version>
+    <time>1232501732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a0375919149db5a2f698e1cab7433080</srcmd5>
+    <version>1.220</version>
+    <time>1238021083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>766379144c4fdc4d2d0af44335db7c63</srcmd5>
+    <version>1.221</version>
+    <time>1249422688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c66f6ab2e5793404913830e119cde722</srcmd5>
+    <version>1.221</version>
+    <time>1255358786</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Gtk2 based on submit request 22274 from user anicka
+</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>c66f6ab2e5793404913830e119cde722</srcmd5>
+    <version>1.221</version>
+    <time>1255358786</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Gtk2 based on submit request 22274 from user anicka
+</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>340b6aee28a410d1c791ff0b121a8368</srcmd5>
+    <version>1.221</version>
+    <time>1263300694</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Gtk2 based on submit request 28912 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>31424c49ca452ca2128a30df007cce00</srcmd5>
+    <version>1.221</version>
+    <time>1268925481</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="8">
+    <srcmd5>31424c49ca452ca2128a30df007cce00</srcmd5>
+    <version>1.221</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="9">
+    <srcmd5>31424c49ca452ca2128a30df007cce00</srcmd5>
+    <version>1.221</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d2f1683a8f57a31cd0afa2e44c1e2eb1</srcmd5>
+    <version>1.222</version>
+    <time>1279544620</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Gtk2 based on submit request 43072 from user anicka
+</comment>
+    <requestid>43072</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9bfffbd8cb8f74e0ebfbc0a7921e8309</srcmd5>
+    <version>1.222</version>
+    <time>1279565587</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Gtk2 based on submit request 43388 from user computersalat
+</comment>
+    <requestid>43388</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>9062c8a318004d7c1f6dc0efbbcf3b1e</srcmd5>
+    <version>1.222</version>
+    <time>1289417247</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52541 from user coolo
+</comment>
+    <requestid>52541</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>7aa5488e43742d6b77898f3f3df27ddc</srcmd5>
+    <version>1.222</version>
+    <time>1289417254</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52541
+</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>a56d171560bc6a522521694135e82432</srcmd5>
+    <version>1.222</version>
+    <time>1291582526</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54550 from user coolo
+</comment>
+    <requestid>54550</requestid>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>f99469257804793fc2fff3c07161a3f4</srcmd5>
+    <version>1.222</version>
+    <time>1291582531</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54550
+</comment>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>3dcff09eca4b19e70ae1ee501640e95a</srcmd5>
+    <version>1.222</version>
+    <time>1296608507</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59576 from user vitezslav_cizek
+</comment>
+    <requestid>59576</requestid>
+  </revision>
+  <revision rev="34" vrev="8">
+    <srcmd5>117134d8ea28640cc6d5b2dd4ed9b41d</srcmd5>
+    <version>1.222</version>
+    <time>1296608515</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59576
+</comment>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>117134d8ea28640cc6d5b2dd4ed9b41d</srcmd5>
+    <version>1.222</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>6ebbc968ef91800f8523ce7b47a9d38c</srcmd5>
+    <version>1.223</version>
+    <time>1299236977</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63415 from user vitezslav_cizek
+</comment>
+    <requestid>63415</requestid>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>6c10a4cbd3e8953c0f02d60ec2ae5c8d</srcmd5>
+    <version>1.223</version>
+    <time>1299236986</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63415
+</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f2a5187b9670e8a3cdfcb3c9c9ea7eed</srcmd5>
+    <version>1.224</version>
+    <time>1312735802</time>
+    <user>saschpe</user>
+    <comment>- update to 1.224
+  fix a few test failures
+  removed a patch (fixed in upstream)
+  keep original tarball, no bzip2 anymore</comment>
+    <requestid>78094</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>f2a5187b9670e8a3cdfcb3c9c9ea7eed</srcmd5>
+    <version>1.224</version>
+    <time>1319182272</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a9a1e890431fe05b135c1d9de76f00ab</srcmd5>
+    <version>1.241</version>
+    <time>1322073447</time>
+    <user>coolo</user>
+    <comment>- update to 1.241
+  * Fix a test failure in t/GtkEntryBuffer.t
+  * Fix a test failure in t/tied-objects.t
+  * Add the missing NEWS entries from the stable branch.
+  * Wrap missing gdk, gdk-pixbuf and gtk+ 2.12, 2.14, 2.16, 2.18, 2.20 and 2.22 API
+  * Add Gtk2::Gdk::Image
+  * Add Gtk2::Container-&gt;find_child_property and list_child_properties
+  * Add Gtk2::Widget-&gt;find_style_property and list_style_properties
+  * Add Gtk2::Gdk::Pixbuf-&gt;get_option
+  * Add is_writable field to Gtk2::Gdk::PixbufFormat
+  * Make Gtk2::FontButton-&gt;new and Gtk2::ColorButton-&gt;new more flexible
+  * Accept format strings in Gtk2::MessageDialog-&gt;format_secondary_markup
+  * In syntax check mode, do not call gtk_init
+  * Improve the documentation in many places</comment>
+    <requestid>93245</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>84939fa7f5ca6758073047e17ec8d639</srcmd5>
+    <version>1.241</version>
+    <time>1323193331</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b82b53abfdc951d42579e52bce3df455</srcmd5>
+    <version>1.242</version>
+    <time>1328713727</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>103116</requestid>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>b82b53abfdc951d42579e52bce3df455</srcmd5>
+    <version>1.242</version>
+    <time>1340183849</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="44" vrev="5">
+    <srcmd5>b82b53abfdc951d42579e52bce3df455</srcmd5>
+    <version>1.242</version>
+    <time>1359109684</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>3e87954551e87fd5d2ece3d5aed4d910</srcmd5>
+    <version>1.242</version>
+    <time>1359624483</time>
+    <user>coolo</user>
+    <comment>applied upstream patch to fix GtkRecentChooser test fails (forwarded request 150504 from mlin7442)</comment>
+    <requestid>150511</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>0c3d8023c17f16bef7280bcf0956ce78</srcmd5>
+    <version>1.247</version>
+    <time>1373315107</time>
+    <user>coolo</user>
+    <comment>- updated to 1.247
+  * Require Glib 1.280 for the fixes to custom signal marshalling.
+  * Fix a test failure in t/GtkRecentChooser.t.
+  * Created %meta_merge which follows v2 of CPAN Meta Spec
+    - %meta_merge is used for generating metadata via
+      ExtUtils::MakeMaker/CPAN::Meta
+  
+  * Improve the failure diagnostics of some tests
+  * Fix two test failures.
+  * Disable the correct potentially annoying test for GtkDnD.
+  * Tell CPAN to some ignore POD fragments
+  * Avoid trying to re-register a GType for GConnectFlags.
+- remove perl-Gtk2-fix-GtkRecentChooser-test-fails.patch</comment>
+    <requestid>182489</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>0c3d8023c17f16bef7280bcf0956ce78</srcmd5>
+    <version>1.247</version>
+    <time>1379663693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>6b3db7d6488917909e51b041d70b2af9</srcmd5>
+    <version>1.248</version>
+    <time>1381062676</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202209</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>b3cbd82724a1377c32d88555660198e1</srcmd5>
+    <version>1.249</version>
+    <time>1400006811</time>
+    <user>coolo</user>
+    <comment>- fix build with newer gdk-pixbuf
+  * added perl-Gtk2-fix_GdkPixbufLoader_test.patch (forwarded request 233531 from vitezslav_cizek)</comment>
+    <requestid>233533</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8be5d87c3ab35b86b86a880d82bb9bd3</srcmd5>
+    <version>1.2492</version>
+    <time>1406557258</time>
+    <user>coolo</user>
+    <comment>- updated to 1.2492
+ * Fix compatibility with perl 5.20 and non-dot locales.
+ * Disable some tests that are known to behave erratically in certain
+   environments.  They are still available in the &quot;xt&quot; directory, but they will
+   not be run by default.
+ 
+ Overview of changes in Gtk2 1.2491
+ ==================================
+ 
+ * Fix a test failure in t/GdkPixbufLoader.t.
+- removed perl-Gtk2-fix_GdkPixbufLoader_test.patch again</comment>
+    <requestid>242674</requestid>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>8be5d87c3ab35b86b86a880d82bb9bd3</srcmd5>
+    <version>1.2492</version>
+    <time>1409302315</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>710d341c1da3d722b215682b6e739b5f</srcmd5>
+    <version>1.2496</version>
+    <time>1440871490</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327596</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a524dba5a7716a598a360fc540a13833</srcmd5>
+    <version>1.2497</version>
+    <time>1449384177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>347449</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2805752f895efb2fb6d3a40506592daa</srcmd5>
+    <version>1.2498</version>
+    <time>1455610743</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359245</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>357fd5633ed690b5a7fc913c715b2439</srcmd5>
+    <version>1.24992</version>
+    <time>1494938578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494267</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cb085762eef0c4c1a1741d1877c661c8</srcmd5>
+    <version>1.24993</version>
+    <time>1571951488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742654</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>25ee7ddd34e39dc841d87daf67f9aa9f</srcmd5>
+    <version>1.24993</version>
+    <time>1601653282</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839112</requestid>
+  </revision>
+</revisionlist>

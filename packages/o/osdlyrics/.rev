@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27adfcae56dfb45aaa1091de6b919143</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1577972523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760326</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c546f8d71045f57e884307aa427d6409</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1578234150</time>
+    <user>dimstar_suse</user>
+    <comment>- Change appdata install path. (forwarded request 760924 from hillwood)</comment>
+    <requestid>760925</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7f993cf1cbbca884d61ce34e09256afe</srcmd5>
+    <version>0.4.99.1</version>
+    <time>1591101671</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename osdlyrics-appdata.xml to osdlyrics.appdata.xml (forwarded request 810637 from hillwood)</comment>
+    <requestid>810638</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c9b6e859378dd1b09fd45070d7b52e03</srcmd5>
+    <version>0.4.99.2</version>
+    <time>1591991173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.5RC2
+  * Fix python logging (forwarded request 814184 from hillwood)</comment>
+    <requestid>814187</requestid>
+  </revision>
+</revisionlist>

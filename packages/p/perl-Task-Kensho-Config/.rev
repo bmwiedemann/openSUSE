@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70ac6f9dc84f6dd49c70e4d6f5cf7c8c</srcmd5>
+    <version>0.28</version>
+    <time>1325767766</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>98364</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>70ac6f9dc84f6dd49c70e4d6f5cf7c8c</srcmd5>
+    <version>0.28</version>
+    <time>1340183924</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>70ac6f9dc84f6dd49c70e4d6f5cf7c8c</srcmd5>
+    <version>0.28</version>
+    <time>1359109804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>70ac6f9dc84f6dd49c70e4d6f5cf7c8c</srcmd5>
+    <version>0.28</version>
+    <time>1379663854</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>94e8841239ef8b2dcbbb361c76149e70</srcmd5>
+    <version>0.35</version>
+    <time>1392186152</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221905</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>94e8841239ef8b2dcbbb361c76149e70</srcmd5>
+    <version>0.35</version>
+    <time>1409302498</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0308fd99de42d2ccef37beab7d732626</srcmd5>
+    <version>0.38</version>
+    <time>1411370611</time>
+    <user>coolo</user>
+    <comment>- updated to 0.38
+           - WebDev: Template::Toolkit is not indexed (see RT#92588) -
+             refer to Template instead
+           - subtask distributions now just use regular prereqs on their
+             component modules, rather than using optional_features metadata
+           - Task-Kensho now once again prompts at install time for each
+             subtask to be optionally installed
+ 
+ 0.37      2014-08-16
+           - ModuleDev: Switch Carp::Always over to Devel::Confess (per mst)
+           - ModuleDev: Add Data::Printer (per Sawyer X)
+           - ModuleDev: Add Devel::Dwarn (per mst)
+           - Toolchain: Add Pinto (per Sawyer X)
+           - Toolchain: Add App::FatPacker (per perigrin)
+ 
+ 0.36      2014-03-08
+           - fix pod markup error in main Task::Kensho distribution
+           - module list revisions to CLI, Dates, Toolchain, WebCrawling,
+             WebDev</comment>
+    <requestid>250221</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c079f15c39041822bafe3d947aa39c44</srcmd5>
+    <version>0.39</version>
+    <time>1464204560</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>397842</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>84960c59f15c19c58bde0be7fd368098</srcmd5>
+    <version>0.40</version>
+    <time>1544632042</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655824</requestid>
+  </revision>
+</revisionlist>

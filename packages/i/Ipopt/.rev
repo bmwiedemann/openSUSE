@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d813e0dcdacb3ae6d87826cbc81daee5</srcmd5>
+    <version>3.13.2</version>
+    <time>1594228208</time>
+    <user>dimstar_suse</user>
+    <comment>A package for large-scale non-linear optimisation.</comment>
+    <requestid>811328</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e266ab441597b7af76a20ba78ec3c32a</srcmd5>
+    <version>3.13.2</version>
+    <time>1594894635</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire graphviz-gd for dot -Tpng to work
+- Normalize jar timestamps with strip-nondeterminism
+- Create docs in a separate step for reproducible build results
+  (boo#1102408).
+</comment>
+    <requestid>821093</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14503fe56806c42a54531f7016d387e7</srcmd5>
+    <version>3.13.3</version>
+    <time>1603545454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843299</requestid>
+  </revision>
+</revisionlist>

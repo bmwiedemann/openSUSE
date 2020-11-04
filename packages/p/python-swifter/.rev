@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f9ef74254e2efee4f3bb995eb7691bc</srcmd5>
+    <version>0.296</version>
+    <time>1575464067</time>
+    <user>dimstar_suse</user>
+    <comment>Tool to speed up pandas calculations</comment>
+    <requestid>753785</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1cbd858e50babbaebd812ca763908f8f</srcmd5>
+    <version>0.300</version>
+    <time>1580724809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768875</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f25ae90f90b58b8737744db26699e671</srcmd5>
+    <version>0.301</version>
+    <time>1581456350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773484</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>33a88bf992e88abc0212a0a7ffa722c9</srcmd5>
+    <version>0.304</version>
+    <time>1588866710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.304:
+  * Various fixes for updated dependencies</comment>
+    <requestid>800953</requestid>
+  </revision>
+</revisionlist>

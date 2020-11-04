@@ -1,0 +1,5 @@
+<package name="cockpit-podman" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:cockpit" package="cockpit-podman"/>
+</package>

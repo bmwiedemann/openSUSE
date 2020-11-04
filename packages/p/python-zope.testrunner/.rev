@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef7f63e39ddd43b8ecdab916993d706a</srcmd5>
+    <version>4.3.3</version>
+    <time>1363587261</time>
+    <user>coolo</user>
+    <comment>Replaces python-zope-event</comment>
+    <requestid>159556</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ef7f63e39ddd43b8ecdab916993d706a</srcmd5>
+    <version>4.3.3</version>
+    <time>1379664325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c2790cce5e34b33b7bb7949e7d9e0864</srcmd5>
+    <version>4.3.3</version>
+    <time>1382693829</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204697</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52e42245a9034d91ce4914cb25f58036</srcmd5>
+    <version>4.4.1</version>
+    <time>1384415033</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 206748 from posophe)</comment>
+    <requestid>206749</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>eb8d3be48f015722e63cc11897d6c468</srcmd5>
+    <version>4.4.1</version>
+    <time>1384501101</time>
+    <user>scarabeus_factory</user>
+    <comment>Update + update-alternatives (forwarded request 206907 from posophe)</comment>
+    <requestid>206908</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>eb8d3be48f015722e63cc11897d6c468</srcmd5>
+    <version>4.4.1</version>
+    <time>1409303035</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3182aa90beb00c02ceaecd1d5dfb537b</srcmd5>
+    <version>4.4.1</version>
+    <time>1416347127</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261689</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eadf1618c33327c776f4a7dee411e4a6</srcmd5>
+    <version>4.4.8</version>
+    <time>1471428324</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419470</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b9997d24a122407e8b0c002c39d7a3ea</srcmd5>
+    <version>4.7.0</version>
+    <time>1499510022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507389</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5e30fdca1dc8954870275290a483bffb</srcmd5>
+    <version>4.7.0</version>
+    <time>1544726802</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654094</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44466efc508213d6b4816f41168261e3</srcmd5>
+    <version>5.0</version>
+    <time>1554930654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692309</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>457321c8abf65692101cd7e0f41da0f4</srcmd5>
+    <version>5.1</version>
+    <time>1574414412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1:
+  * Recover more gracefully when layer setUp or tearDown fails, producing useful subunit output.
+  * Prevent a spurious warning from the --require-unique option if the --module option was not used.
+  * Add optional buffering of standard output and standard error during tests, requested via the --buffer option or enabled by default for subunit.
+  * Fix incorrect failure counts in per-layer summary output, broken in 4.0.1.</comment>
+    <requestid>745976</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>fd2622c04bc1b17e565b84c1b77b4acd</srcmd5>
+    <version>5.2</version>
+    <time>1596277723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822035</requestid>
+  </revision>
+</revisionlist>

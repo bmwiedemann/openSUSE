@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eab7c0b4dc7caae701f29720f59b2e52</srcmd5>
+    <version>11.0.6</version>
+    <time>1580152367</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>766484</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>55bd351031248e265059bd0fcfdef532</srcmd5>
+    <version>11.0.7</version>
+    <time>1588023563</time>
+    <user>dimstar_suse</user>
+    <comment>11.0.7</comment>
+    <requestid>798260</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>681734852a2a4d48947b230cb926e3b4</srcmd5>
+    <version>11.0.8</version>
+    <time>1595595775</time>
+    <user>dimstar_suse</user>
+    <comment>July 2020 CPU</comment>
+    <requestid>822623</requestid>
+  </revision>
+</revisionlist>

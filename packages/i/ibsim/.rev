@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>786e874fd55f4cbe8e34c058641cb390</srcmd5>
+    <version>0.6</version>
+    <time>1404459262</time>
+    <user>coolo</user>
+    <comment>Update to version in SLE12</comment>
+    <requestid>238600</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>786e874fd55f4cbe8e34c058641cb390</srcmd5>
+    <version>0.6</version>
+    <time>1409301192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1145c357718e90adac5b3d6ffe11f9c2</srcmd5>
+    <version>0.6</version>
+    <time>1459002242</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>375177</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>9a3af3c1b19309c19f4685163f00038a</srcmd5>
+    <version>0.6</version>
+    <time>1495637186</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485746</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e2032588a1f058ad280483e9bfb98f97</srcmd5>
+    <version>0.7</version>
+    <time>1497016616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501893</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ea56059307126669556d47769192da6e</srcmd5>
+    <version>0.7</version>
+    <time>1498485261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505930</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ab8abf66656a7296acdd98a0acebd6c1</srcmd5>
+    <version>0.7</version>
+    <time>1529919482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Source and URL as ibsim was moved to GitHub
+- Add a _service file to be able to auto-fetch from github</comment>
+    <requestid>617079</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>458189467ebc89f30a8d90792ad16cde</srcmd5>
+    <version>0.8</version>
+    <time>1555574213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695176</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ca2b43ee2bd8be160dcbedf5907c697f</srcmd5>
+    <version>0.8</version>
+    <time>1555691967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695786</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5b62f087e1af0875633a34fa0d701794</srcmd5>
+    <version>0.8</version>
+    <time>1570800098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737383</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>574f081cf758dd009a39e22da74402ee</srcmd5>
+    <version>0.9</version>
+    <time>1584744976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>786518</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="python-roifile" project="openSUSE:Factory">
+  <title>python-roifile</title>
+  <description>Roifile is a Python library to read, write, create, and plot ImageJ ROIs,
+an undocumented and ImageJ application specific format to store regions 
+of interest, geometric shapes, paths, text, and whatnot for image
+overlays.</description>
+  <devel project="devel:languages:python:numeric" package="python-roifile"/>
+  <url>https://www.lfd.uci.edu/~gohlke/</url>
+</package>

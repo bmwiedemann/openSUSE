@@ -1,0 +1,5 @@
+<package name="timeshift" project="openSUSE:Factory">
+  <title>timeshift</title>
+  <description></description>
+  <devel project="Archiving:Backup" package="timeshift"/>
+</package>

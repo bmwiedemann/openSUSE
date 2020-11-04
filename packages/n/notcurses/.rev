@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54e2e5af441ee456991c27ebd5bf39da</srcmd5>
+    <version>1.6.19</version>
+    <time>1600801614</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain notcurses in Factory</comment>
+    <requestid>830341</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8af5a8677796940622b258fc95d93b65</srcmd5>
+    <version>1.7.2</version>
+    <time>1600956836</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>836150</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb06e8d2f39f93924934df22a17f02ef</srcmd5>
+    <version>1.7.6</version>
+    <time>1602682785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841631</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e4666ec4434d3934cf5a3ab1a3e0292</srcmd5>
+    <version>2.0.1</version>
+    <time>1603203265</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842620</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25b8ecce8fc2c8be5589617590f69e5c</srcmd5>
+    <version>2.0.2</version>
+    <time>1603725795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844106</requestid>
+  </revision>
+</revisionlist>

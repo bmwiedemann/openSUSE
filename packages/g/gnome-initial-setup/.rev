@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f627485b3fcbe27ba4ad405a50d7ca36</srcmd5>
+    <version>3.36.1</version>
+    <time>1587839149</time>
+    <user>dimstar_suse</user>
+    <comment>This package got nuked from TW for failing to build, somehow I and fellow gnome maintainers missed that.
+Resub it :-)</comment>
+    <requestid>796006</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e47e1f64b8080f1d9f5861da49757c8</srcmd5>
+    <version>3.36.2</version>
+    <time>1588023834</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release, not buildtested! (forwarded request 798005 from iznogood)</comment>
+    <requestid>798359</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a5e378594e043b507401246b55a5597</srcmd5>
+    <version>3.36.3</version>
+    <time>1591286203</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 811378 from iznogood)</comment>
+    <requestid>811439</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fd427edbcfdd9307a87ce94283552c1f</srcmd5>
+    <version>3.36.3</version>
+    <time>1593292955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817302</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>911decb67df708ca4c41c9aef09b3a6e</srcmd5>
+    <version>3.36.4</version>
+    <time>1594387914</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 818861 from iznogood)</comment>
+    <requestid>819945</requestid>
+  </revision>
+</revisionlist>

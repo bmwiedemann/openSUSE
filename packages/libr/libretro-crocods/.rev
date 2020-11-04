@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49b600603cea1141d72b43b8cb35ccb4</srcmd5>
+    <version>0~git20190902</version>
+    <time>1581456159</time>
+    <user>dimstar_suse</user>
+    <comment>Amstrad emulator</comment>
+    <requestid>771835</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5907956ef5fe222aad1e81f20ceb218b</srcmd5>
+    <version>0~git20200508</version>
+    <time>1592939185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816541</requestid>
+  </revision>
+</revisionlist>

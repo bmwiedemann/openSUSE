@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a68dd4970b3b5e07726c089f449cd3e</srcmd5>
+    <version>2.2.9</version>
+    <time>1168902859</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4facc74f824b23b749a74277e9edef97</srcmd5>
+    <version>2.3.0</version>
+    <time>1185098073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e460a44ba1f65de296c988ef8b5eb1a6</srcmd5>
+    <version>2.3.1</version>
+    <time>1197378828</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="30">
+    <srcmd5>ba4797e25518cc5e2a9a9a32e5e98f28</srcmd5>
+    <version>2.3.1</version>
+    <time>1205693644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="98">
+    <srcmd5>ba4797e25518cc5e2a9a9a32e5e98f28</srcmd5>
+    <version>2.3.1</version>
+    <time>1205693644</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="99">
+    <srcmd5>8640b02727ea4851a8cfc020bd248433</srcmd5>
+    <version>2.3.1</version>
+    <time>1231779246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9584aa32ed907ec0f7f39e87b23ff227</srcmd5>
+    <version>2.3.2</version>
+    <time>1232409716</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9c631291bce2fcd3709af5091fb2d39b</srcmd5>
+    <version>2.3.2</version>
+    <time>1244454727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>68d6d39f6c1258e856bdb965b11c3c07</srcmd5>
+    <version>2.3.2</version>
+    <time>1252111411</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gkrellm based on submit request 19927 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>68d6d39f6c1258e856bdb965b11c3c07</srcmd5>
+    <version>2.3.2</version>
+    <time>1252111411</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gkrellm based on submit request 19927 from user vuntz
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>ae05f3eb9e12654e4c0e963a97174d3c</srcmd5>
+    <version>2.3.2</version>
+    <time>1259756125</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gkrellm based on submit request 25319 from user vuntz
+</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4e6a065ccea9f3ea8c4b7abc6732132</srcmd5>
+    <version>2.3.4</version>
+    <time>1265750466</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gkrellm based on submit request 31732 from user pgajdos
+</comment>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d3f2c7799b4d9de723d171c98d289642</srcmd5>
+    <version>2.3.4</version>
+    <time>1268923726</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d3f2c7799b4d9de723d171c98d289642</srcmd5>
+    <version>2.3.4</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>d3f2c7799b4d9de723d171c98d289642</srcmd5>
+    <version>2.3.4</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>84ce775dd529b8d68ec175625d62ad3a</srcmd5>
+    <version>2.3.5</version>
+    <time>1287155562</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Apps/gkrellm based on submit request 50618 from user vuntz
+</comment>
+    <requestid>50618</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>feb0236372f5a3931c5a91593f8f0559</srcmd5>
+    <version>2.3.5</version>
+    <time>1297644188</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60933 from user vuntz
+</comment>
+    <requestid>60933</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1d14c755f02a392bba75d884453ae61a</srcmd5>
+    <version>2.3.5</version>
+    <time>1297644193</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60933
+</comment>
+  </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>1d14c755f02a392bba75d884453ae61a</srcmd5>
+    <version>2.3.5</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>1d14c755f02a392bba75d884453ae61a</srcmd5>
+    <version>2.3.5</version>
+    <time>1319181907</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>12916a541b1f4046a73de4b21cf6d328</srcmd5>
+    <version>2.3.5</version>
+    <time>1323191580</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>863477230393b6edd0c5f38d3a7c67bd</srcmd5>
+    <version>2.3.5</version>
+    <time>1328260952</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>102560</requestid>
+  </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>40466816dbaea3d7070a638609d28911</srcmd5>
+    <version>2.3.5</version>
+    <time>1329750651</time>
+    <user>coolo</user>
+    <comment>- add xorg-x11-libSM-devel into buildrequires</comment>
+    <requestid>105964</requestid>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>40466816dbaea3d7070a638609d28911</srcmd5>
+    <version>2.3.5</version>
+    <time>1340183368</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="15">
+    <srcmd5>40466816dbaea3d7070a638609d28911</srcmd5>
+    <version>2.3.5</version>
+    <time>1359108939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>bbde79f6c507f69d0cea064a889162bf</srcmd5>
+    <version>2.3.5</version>
+    <time>1363104906</time>
+    <user>coolo</user>
+    <comment>push staged updates from GNOME:Apps</comment>
+    <requestid>158675</requestid>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>eb145f067999ccd21d58995009411e58</srcmd5>
+    <version>2.3.5</version>
+    <time>1366730375</time>
+    <user>coolo</user>
+    <comment>- really build against libsensors [bnc#803967] and [bnc#803081]</comment>
+    <requestid>173042</requestid>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>f29d6fbd25b13b593cf2f6ea4c30af50</srcmd5>
+    <version>2.3.5</version>
+    <time>1367826695</time>
+    <user>coolo</user>
+    <comment>- Compile with %{optflags} (forwarded request 174323 from dimstar)</comment>
+    <requestid>174570</requestid>
+  </revision>
+  <revision rev="29" vrev="20">
+    <srcmd5>f29d6fbd25b13b593cf2f6ea4c30af50</srcmd5>
+    <version>2.3.5</version>
+    <time>1379662454</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="21">
+    <srcmd5>2aae80130edddf08b313db25b3d5b4c5</srcmd5>
+    <version>2.3.5</version>
+    <time>1384518069</time>
+    <user>coolo</user>
+    <comment>- Install /usr/lib{,64}/gkrellm2/plugins directories (bnc#841818).
+- Add gkrellm-lib64-plugins-dir.patch: Look in
+  /usr/lib64/gkrellm2/plugins on 64bit systems.</comment>
+    <requestid>206940</requestid>
+  </revision>
+  <revision rev="31" vrev="22">
+    <srcmd5>b64897f5fe69e81171631d5daec42139</srcmd5>
+    <version>2.3.5</version>
+    <time>1392637952</time>
+    <user>coolo</user>
+    <comment>fix</comment>
+    <requestid>221984</requestid>
+  </revision>
+  <revision rev="32" vrev="23">
+    <srcmd5>433cf975e3bd48ec9a65fb3799a42684</srcmd5>
+    <version>2.3.5</version>
+    <time>1392789311</time>
+    <user>coolo</user>
+    <comment>submit to Factory</comment>
+    <requestid>222679</requestid>
+  </revision>
+  <revision rev="33" vrev="24">
+    <srcmd5>dcecc69393af9404f8185f9ea83e7c26</srcmd5>
+    <version>2.3.5</version>
+    <time>1402403920</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236557</requestid>
+  </revision>
+  <revision rev="34" vrev="26">
+    <srcmd5>dcecc69393af9404f8185f9ea83e7c26</srcmd5>
+    <version>2.3.5</version>
+    <time>1409300991</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="27">
+    <srcmd5>ad8b77da59427ecceadba201b9613df5</srcmd5>
+    <version>2.3.5</version>
+    <time>1430980157</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305599</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>002390512f590502112af321ca20aecb</srcmd5>
+    <version>2.3.10</version>
+    <time>1481654059</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire systemd-rpm-macros instead of
+  pkgconfig(libsystemd-daemon): The libs is not used at all.
+- Fix minor copy/paste error: run the post script for the right
+  service name. (forwarded request 445465 from dimstar)</comment>
+    <requestid>445483</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e4d3ad671394c5a0173e9ad4de9282d8</srcmd5>
+    <version>2.3.10</version>
+    <time>1543224555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651318</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>904d027da967fd6839d91d5d562a5a77</srcmd5>
+    <version>2.3.10</version>
+    <time>1555691920</time>
+    <user>dimstar_suse</user>
+    <comment>- apply patch gkrellm-2.3.10-d51b57616e.patch with upstream git master
+  changes, contains a number of important fixes, including improved
+  gkrellm-2.3.5-fix-diskio-corruption.patch and 
+  gkrellm-2.3.5-fix-sdX-sort-order.patch (forwarded request 695185 from frispete)</comment>
+    <requestid>695555</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aa1d2012131e78556818f2ed8c979b0b</srcmd5>
+    <version>2.3.11</version>
+    <time>1573774758</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.3.11:
+  * see http://git.srcbox.net/gkrellm/log/
+- removed gkrellm-2.3.10-d51b57616e.patch (released upstream now)</comment>
+    <requestid>748752</requestid>
+  </revision>
+</revisionlist>

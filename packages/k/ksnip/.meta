@@ -1,0 +1,8 @@
+<package name="ksnip" project="openSUSE:Factory">
+  <title>Screenshot tool.</title>
+  <description>Ksnip is a Qt based cross-platform screenshot tool that provides many
+annotation features for your screenshots.
+  </description>
+  <devel project="X11:LXQt:Other" package="ksnip"/>
+  <url>https://github.com/DamirPorobic/ksnip</url>
+</package>

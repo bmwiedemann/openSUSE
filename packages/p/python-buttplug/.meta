@@ -1,0 +1,8 @@
+<package name="python-buttplug" project="openSUSE:Factory">
+  <title>python-buttplug</title>
+  <description>Buttplug-py is a python implementation of the Core and Client portions of
+the Buttplug Sex Toy Control Protocol. It allows users to write applications
+that can connect to Buttplug Servers, such as the Intiface Desktop
+Application or Intiface C# CLI or Node CLI.</description>
+  <devel project="devel:languages:python" package="python-buttplug"/>
+</package>

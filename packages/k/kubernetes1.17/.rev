@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17afb3c167f0ca0ede8f5ccb6421120e</srcmd5>
+    <version>1.17.4</version>
+    <time>1587162571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794834</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0711dff4a74a1da2760c1caa05148974</srcmd5>
+    <version>1.17.5</version>
+    <time>1588023018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.5:
+  * Fix GCE ILB for large clusters
+  * gce-addons: Make sure default/limit-range doesn't get overridden
+  * Restore the ability to `kubectl apply --prune` without -n flag
+  * Fix client watch reestablishment handling of client-side timeouts
+  * Fix priorityClass typo, add numeric priority to static pods
+  * Test dropped round-trip annotations in HPA conversion
+  * Drop round-trip annotations in HPA conversion
+  * Ensure Azure availability zone is always in lower cases
+  * Clean up event messages for errors.
+  * Fix permissions for endpointslice controller
+  * Allow list-resources.sh to continue if a resource fails to list
+  * Check that ImageInspect pointer is not nil
+  * Fix bug about unintentional scale out during updating deployment.
+  * kubeadm: increase timeouts in the etcd client
+  * kubeadm: handle multiple members without names during concurrent join
+  * build/dependencies: Remove bazel WORKSPACE go_version check
+  * deps: Update to Golang 1.13.9
+  * build: Remove kube-cross image building
+  * Fix the VMSS name and resource group name when updating VMSS for LoadBalancer backendPools.
+  * Remove wait.Until for running Kubelet Bootstrap
+  * Parallelize attach operations across different nodes for volumes that allow multi-attach
+  * Add nil nodeinfo check in podFitsOnNode
+  * fix: check disk status before disk azure disk
+  * Update kube-openapi to release-1.17
+  * Update tag for structured-merge-diff to v2.0.1
+  * EndpointSlice and Endpoints should treat terminating pods the same
+  * EndpointSliceTracker should track updated resource version
+  * Ensuring EndpointSlices are not used for Windows kube-proxy implementations
+  * Ensuring kube-proxy does not mutate shared EndpointSlices</comment>
+    <requestid>797067</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f79984ba96963d3c1881ce9ee3e359d0</srcmd5>
+    <version>1.17.5</version>
+    <time>1589992683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807589</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a180711b46dbb5cb9a1e6cc144565e09</srcmd5>
+    <version>1.17.5</version>
+    <time>1591380417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811146</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34ce7037e838020a434fdd6ab8a57ca3</srcmd5>
+    <version>1.17.6</version>
+    <time>1591990531</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reproducible-buildid.patch to make package build reproducible
+- Remove %{?_smp_mflags} to make build more reliable [boo#1172744] (forwarded request 813228 from RBrownSUSE)</comment>
+    <requestid>813231</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>858f051a56992acadd4ee246beca1314</srcmd5>
+    <version>1.17.7</version>
+    <time>1592938966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815819</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1f9fbc844d195c368779691a6c8f09d9</srcmd5>
+    <version>1.17.9</version>
+    <time>1595011471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821310</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>22dd47a518220d341066014e1ad6f46a</srcmd5>
+    <version>1.17.11</version>
+    <time>1597602796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826703</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>eecc214b8ed6b12f0cb5bfc0bf99e65e</srcmd5>
+    <version>1.17.11</version>
+    <time>1597955263</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib</comment>
+    <requestid>827637</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5262ddf739bdd4de18cba1ec940739b8</srcmd5>
+    <version>1.17.11</version>
+    <time>1599088440</time>
+    <user>dimstar_suse</user>
+    <comment>- Require update-altrernatives for client %post and %postun
+
+- Relax constraints on kubeadm, remove old macro on maxcriversion</comment>
+    <requestid>830298</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>76775822402d753cefd498c3533810f9</srcmd5>
+    <version>1.17.12</version>
+    <time>1600700534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.12:
+  * e2e: backport regenerate namespace name if the name is already taken #90591
+  * Bump kubernetes-cni in RPM specs
+  * Update CNI plugins to v0.8.7
+  * azure: use the parsed value from the configuration
+  * test(kuberuntime): deflake TestRemoveContainer
+  * Fix an issue when rotated logs of dead containers are not removed.
+  * cleanup: print warning message after timeout
+  * Revert &quot;cleanup: decrease log level from warn to v3&quot;
+  * cleanup: decrease log level from warn to v3
+  * let panics propagate up when processLoop panic
+  * Add impersonated user to system:authenticated group
+  * fix(azure): check error returned by scaleSet.getVMSS
+  * remove oom_watcher_linux_test
+  * Clean up conformance tar test data
+  * Update json-patch to v4.9.0 tagged release
+  * Updating EndpointSlice controller to wait for all caches to be synced
+  * Fix bug for inconsistent lists served from etcd
+  * test(kubelet): add a regression test to verify kubelet would not panic
+  * fix(kubelet): protect `containerCleanupInfos` from concurrent map writes
+  * correctly handle resetting cpuacct in a live container
+  * add sjenning as kubelet approver
+  * Update CHANGELOG/CHANGELOG-1.17.md for v1.17.11
+  * Add tests for out of band attachments
+  * Make AttachDisk idempotent again
+  * fix incorrect configuration of kubepods.slice unit by kubelet (issue #88197)
+  * Do not evict pods which tolerate all NoExecute taints
+  * Fix namespace controller cleanup orphaning
+  * Use NLB Subnet CIDRs instead of VPC CIDRs in updateInstanceSecurityGroupsForNLB
+  * Add v6 tests</comment>
+    <requestid>835143</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>224743a34f46fc194b564af1ae6bc910</srcmd5>
+    <version>1.17.13</version>
+    <time>1603202579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842199</requestid>
+  </revision>
+</revisionlist>

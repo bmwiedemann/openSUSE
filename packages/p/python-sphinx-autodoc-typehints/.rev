@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00f949b76d0ca561f5aecf4d32430022</srcmd5>
+    <version>1.6.0</version>
+    <time>1553436095</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove patch setup-tests.patch, we are using pytest now.
+- initial package for version 1.6.0
+</comment>
+    <requestid>687908</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d7081849caf45c1a443a1d9bf219028</srcmd5>
+    <version>1.6.0</version>
+    <time>1562247808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new sphinx:
+  * sphinx21.patch
+
+- Drop not really needed devel dependency</comment>
+    <requestid>713192</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1add5ffb27293ac8807c5cf9986b7dac</srcmd5>
+    <version>1.7.0</version>
+    <time>1568190914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0:
+  * Fixed unwrapped local functions causing errors (PR by Kimiyuki Onaka)
+  * Fixed AttributeError when documenting the __init__() method of a data class
+  * Added support for type hint comments (PR by Markus Unterwaditzer)
+  * Added flag for rendering classes with their fully qualified names (PR by Holly Becker)
+- Remove merged patch sphinx21.patch</comment>
+    <requestid>729759</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d439d5d3f01adb2c284720eb87664692</srcmd5>
+    <version>1.8.0</version>
+    <time>1568720352</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.8.0:
+  * Fixed regression which caused TypeError or OSError when trying to set annotations due to PR #87
+  * Fixed unintentional mangling of annotation type names
+  * Added proper :py:data targets for NoReturn, ClassVar and Tuple
+  * Added support for inline type comments (like (int, str) -&gt; None) (PR by Bernát Gábor)
+  * Use the native AST parser for type comment support on Python 3.8+</comment>
+    <requestid>731298</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6f8bc96435488570a2e26552599a27d</srcmd5>
+    <version>1.10.3</version>
+    <time>1583845552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782837</requestid>
+  </revision>
+</revisionlist>

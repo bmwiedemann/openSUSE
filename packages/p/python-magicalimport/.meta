@@ -1,0 +1,5 @@
+<package name="python-magicalimport" project="openSUSE:Factory">
+  <title></title>
+  <description>Importing Python modules by physical file path</description>
+  <devel project="devel:languages:python" package="python-magicalimport"/>
+</package>

@@ -1,0 +1,1365 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>46fe4d23c41b9315bcd2d95c51e2993e</srcmd5>
+    <version>4.18</version>
+    <time>1166483753</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="11">
+    <srcmd5>13fc95e0b8ae3fe508e65509ef96f49d</srcmd5>
+    <version>4.18</version>
+    <time>1173228368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eaff6efedcf034202a0ed8b6cc17ed3</srcmd5>
+    <version>4.20</version>
+    <time>1174561576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a6e267e3fab839255e75e338e56252ad</srcmd5>
+    <version>4.20</version>
+    <time>1174951769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>04824ad95585d07ef3155a570c3ae7cd</srcmd5>
+    <version>4.20</version>
+    <time>1176391368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>dcacd4236bd056e56e9c00ee86ccce34</srcmd5>
+    <version>4.20</version>
+    <time>1176762689</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>bdd2e936b84de92d28cc91ff91b3a8a5</srcmd5>
+    <version>4.20</version>
+    <time>1179394312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="15">
+    <srcmd5>553406b0d584c5312f44fc4f57de2225</srcmd5>
+    <version>4.20</version>
+    <time>1179744252</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="17">
+    <srcmd5>22f242f5f2f5dfa2628c08b3a0aa94a1</srcmd5>
+    <version>4.20</version>
+    <time>1180046426</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8bafaeebb1e7eb90adc16d399f415cd3</srcmd5>
+    <version>4.21</version>
+    <time>1188419203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ebb777d871bd61b8e73906686d5683a7</srcmd5>
+    <version>4.21</version>
+    <time>1188578451</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>94c1e2820df758b72406635f6f9df59d</srcmd5>
+    <version>4.21</version>
+    <time>1196896282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="25">
+    <srcmd5>79e21eb2b0d637690a59640d9ddf8987</srcmd5>
+    <version>4.21</version>
+    <time>1200606655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="30">
+    <srcmd5>b54a915bf48ece2a1a838d4ae52d73d6</srcmd5>
+    <version>4.21</version>
+    <time>1201566962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="40">
+    <srcmd5>dfb1835321f8667103b1a766ff60b29c</srcmd5>
+    <version>4.21</version>
+    <time>1206060023</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="46">
+    <srcmd5>ff67f201537928aaea264b48d3b92c9d</srcmd5>
+    <version>4.21</version>
+    <time>1207829576</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d00667ab396d22822ee54b34b200ce0c</srcmd5>
+    <version>4.24</version>
+    <time>1208194356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>faabac2a3dc3801ecc76b987cdf92c2d</srcmd5>
+    <version>4.24</version>
+    <time>1208716569</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>14ba0c768c99acea3109a8da146375d3</srcmd5>
+    <version>4.24</version>
+    <time>1209129070</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>923b1733e066c001116316b68c92feb5</srcmd5>
+    <version>4.24</version>
+    <time>1210105147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="31">
+    <srcmd5>c26b2734457237de727a02333c4984f3</srcmd5>
+    <version>4.24</version>
+    <time>1219334825</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="41">
+    <srcmd5>acd509e024edcb07c86e5f7dd884a625</srcmd5>
+    <version>4.24</version>
+    <time>1225636805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="42">
+    <srcmd5>48e2c88f81849eafee248c12f7c43d8a</srcmd5>
+    <version>4.24</version>
+    <time>1227880745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="43">
+    <srcmd5>fb73f6edd106f61c797dcf062b3bb031</srcmd5>
+    <version>4.24</version>
+    <time>1229340591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="44">
+    <srcmd5>a377c2deb51722b4b239dac544096657</srcmd5>
+    <version>4.24</version>
+    <time>1233266772</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dd34de926de8b39409674a2754c85eaf</srcmd5>
+    <version>5.02</version>
+    <time>1241627919</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>9ed9cfd8c2ada58a1bf14581c07881f7</srcmd5>
+    <version>5.02</version>
+    <time>1242420164</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>32fb682093fa0f1b1edb3ecd2e5a142d</srcmd5>
+    <version>5.02</version>
+    <time>1244235757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1253411d12cce0b1939d02de5145c3dc</srcmd5>
+    <version>5.03</version>
+    <time>1244562026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1253411d12cce0b1939d02de5145c3dc</srcmd5>
+    <version>5.03</version>
+    <time>1244562026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>02610bee17a313500e4d3cfccc0f018f</srcmd5>
+    <version>5.03</version>
+    <time>1256690056</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 23284 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>4dff740a963bc72d3d1be75de61b2897</srcmd5>
+    <version>5.03</version>
+    <time>1258361724</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 24415 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>0a375342f1a024f7523695f63237370c</srcmd5>
+    <version>5.03</version>
+    <time>1260949973</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 26690 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3498bc0bbbf0c9cbf28bbc49f5a183a2</srcmd5>
+    <version>5.04</version>
+    <time>1265911527</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 31647 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>f12d9986b631c447d7e6216491141fbf</srcmd5>
+    <version>5.04</version>
+    <time>1268923525</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>39f67e3a0d54833aa5fdae4fecdd1e5f</srcmd5>
+    <version>5.04</version>
+    <time>1272042634</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 38235 from user WernerFink
+</comment>
+    <requestid>38235</requestid>
+  </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>39f67e3a0d54833aa5fdae4fecdd1e5f</srcmd5>
+    <version>5.04</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="38" vrev="6">
+    <srcmd5>39f67e3a0d54833aa5fdae4fecdd1e5f</srcmd5>
+    <version>5.04</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="39" vrev="7">
+    <srcmd5>92d904823a01a76c3645228d25aa47bc</srcmd5>
+    <version>5.04</version>
+    <time>1279649692</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/file based on submit request 43446 from user coolo
+</comment>
+    <requestid>43446</requestid>
+  </revision>
+  <revision rev="40" vrev="8">
+    <srcmd5>1475aae29b786d1f723acc0a759674f5</srcmd5>
+    <version>5.04</version>
+    <time>1291991740</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55503 from user coolo
+</comment>
+    <requestid>55503</requestid>
+  </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>064a0f498a5e4a757e6ff45b997865d8</srcmd5>
+    <version>5.04</version>
+    <time>1291991746</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55503
+</comment>
+  </revision>
+  <revision rev="42" vrev="12">
+    <srcmd5>064a0f498a5e4a757e6ff45b997865d8</srcmd5>
+    <version>5.04</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d73cf8c9cfb23333bdc4096789f86974</srcmd5>
+    <version>5.07</version>
+    <time>1309432089</time>
+    <user>saschpe</user>
+    <comment>Update to file version 5.07</comment>
+    <requestid>74709</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>717ffa8911415a201725316da9b83e16</srcmd5>
+    <version>5.07</version>
+    <time>1309432113</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74709
+</comment>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>018b7e8fcdeadfd9001540e09be4a237</srcmd5>
+    <version>5.07</version>
+    <time>1311075335</time>
+    <user>saschpe</user>
+    <comment>- Fixed regression on zip archive detection (bnc#706310)</comment>
+    <requestid>76401</requestid>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>304fd4b3d1ffd054557fd380ecf2cdba</srcmd5>
+    <version>5.07</version>
+    <time>1311075344</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76401
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>23d0129192c98419bfa82d50df52606b</srcmd5>
+    <version>5.08</version>
+    <time>1314178422</time>
+    <user>saschpe</user>
+    <comment>- Update to file version 5.08
+  * Fix detection of Zip files (Mantis #128).
+  * Make some minor improvements to file(1).
+  * Rename MIME types for filesystem objects for consistency with
+    xdg-utils. Typically this means that application/x-foo becomes
+    inode/foo, but some names also change slightly, e.g.
+    application/x-character-device becomes inode/chardevice.</comment>
+    <requestid>79591</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>bc6e18fa250f65ee9d0d59be71eac5e2</srcmd5>
+    <version>5.08</version>
+    <time>1314178433</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79591
+</comment>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>8b07b44dca1c599bdccf0d48800e4d66</srcmd5>
+    <version>5.08</version>
+    <time>1314619513</time>
+    <user>saschpe</user>
+    <comment>- ran pre_checkin.sh</comment>
+    <requestid>80032</requestid>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>1b63cee33e1f0a74534e34a9435221fa</srcmd5>
+    <version>5.08</version>
+    <time>1314619523</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80032
+</comment>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>eebc61629774c798ec19e2a115af671e</srcmd5>
+    <version>5.08</version>
+    <time>1316516043</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83513 from jengelh)</comment>
+    <requestid>83731</requestid>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>21e0e4ea25a515c11d021d376b4d0f9f</srcmd5>
+    <version>5.08</version>
+    <time>1317626268</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86006 from coolo)</comment>
+    <requestid>86051</requestid>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>21e0e4ea25a515c11d021d376b4d0f9f</srcmd5>
+    <version>5.08</version>
+    <time>1319181877</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>697d2ecba21182b7827d031f2bdd8a0a</srcmd5>
+    <version>5.08</version>
+    <time>1320671691</time>
+    <user>coolo</user>
+    <comment>- libmagic: use O_CLOEXEC where needed, as there is no warranty 
+  that calling applications will not fork() and we end up leaking 
+  file descriptors to their child processes. (forwarded request 90162 from elvigia)</comment>
+    <requestid>90163</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a7b7fe249f703f3d56ebb589c55608a6</srcmd5>
+    <version>5.10</version>
+    <time>1326962493</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.10 
+  * Add magic for /usr/bin/env Perl scripts
+  * Weaken generic script magic to avoid clashing with
+    language-specific magic.
+  * Remove hardwired token finding (names.h), turning it into soft
+    magic. Patterns are either anchored regexs or search/8192. English
+    language detection and PL/1 detection have been removed as they
+    were too fragile. -e tokens is still accepted for backwards
+    compatibility.
+  * Move 3ds patterns (which are commented out anyway) into autodesk
+    (they were, oddly, in c-lang).
+  * Tweak strength of generic hash-bang detectors to be less than
+    specific ones.
+  * Make an inconsistent description of Python scripts consistent.
+  * Python3 binding fixes from Kelly Anderson
+  * If a string type magic entry is marked as text or binary
+    only match text files against text entries and binary
+    files against binary entries.
+  * If the application name is not set in a cdf file, try to see
+    if it has a directory with the application name on it.
+  * Fix ELF lseek(2) madness. Inspired by PR/134 by Jan Kaluza
+  * Don't use variable string formats.</comment>
+    <requestid>100249</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0bc1c7cdb286616a7014e349ef244914</srcmd5>
+    <version>5.11</version>
+    <time>1332831384</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.11 (bnc#753303, CVE-2012-1571)
+  * Fix CDF parsing issues found by CERT's fuzzing tool (Will Dormann)
+
+- Update to file version 5.10</comment>
+    <requestid>110835</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2472a0dd854f0d6a5ebf6aa52b315bfb</srcmd5>
+    <version>5.11</version>
+    <time>1333356236</time>
+    <user>coolo</user>
+    <comment>Fix build - run pre_checkin.sh (forwarded request 111313 from a_jaeger)</comment>
+    <requestid>111389</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>2472a0dd854f0d6a5ebf6aa52b315bfb</srcmd5>
+    <version>5.11</version>
+    <time>1340183327</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>5842ec78f859c28f1b6123aa2e224bb8</srcmd5>
+    <version>5.11</version>
+    <time>1340725531</time>
+    <user>coolo</user>
+    <comment>license update: BSD-2-Clause
+SPDX format (forwarded request 126065 from babelworx)</comment>
+    <requestid>126168</requestid>
+  </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>2fb94b8de1ec47d9639939d24123cd1d</srcmd5>
+    <version>5.11</version>
+    <time>1345973483</time>
+    <user>namtrac</user>
+    <comment>add documentation (bnc#776532) (forwarded request 131178 from yecril71pl)</comment>
+    <requestid>131364</requestid>
+  </revision>
+  <revision rev="61" vrev="7">
+    <srcmd5>978a7d949094d09400d615e74b5b421e</srcmd5>
+    <version>5.11</version>
+    <time>1348427760</time>
+    <user>coolo</user>
+    <comment>- Add small patch to make clear if file follows symbloc links or not
+  as tihs depend on the environment variable POSIXLY_CORRECT
+- Remove the README file as this is for packagers and not for users</comment>
+    <requestid>134825</requestid>
+  </revision>
+  <revision rev="62" vrev="8">
+    <srcmd5>a9600f295a56c949346c3a1b71b07f12</srcmd5>
+    <version>5.11</version>
+    <time>1351869219</time>
+    <user>coolo</user>
+    <comment>!!!! MAKE SURE TO CHANGE PREINSTALL AFTER ACCEPTING !!!
+
+- implement shared library policy for libmagic1 (forwarded request 139753 from coolo)</comment>
+    <requestid>139772</requestid>
+  </revision>
+  <revision rev="63" vrev="9">
+    <srcmd5>43e66374db906b4b1f6e1dbd9cc2eb98</srcmd5>
+    <version>5.11</version>
+    <time>1351927587</time>
+    <user>coolo</user>
+    <comment>disable mkbaselibs for the moment</comment>
+  </revision>
+  <revision rev="64" vrev="10">
+    <srcmd5>0e870e6781dae8c37686a9608e1e8c82</srcmd5>
+    <version>5.11</version>
+    <time>1351927869</time>
+    <user>coolo</user>
+    <comment>revert again</comment>
+  </revision>
+  <revision rev="65" vrev="11">
+    <srcmd5>ca9dbccb24bf818102b47c49583cbd38</srcmd5>
+    <version>5.11</version>
+    <time>1354094329</time>
+    <user>coolo</user>
+    <comment>- Add file-5.11-extfs-minix.dif: Change detection order of ext2/3/4
+  fs and minix to avoid the for the free inode numbers 4991,5007,
+  9320,9336 and multiple of 65536 the ext2/3/4 fs will be detected
+  as minix fs (bnc#788435)</comment>
+    <requestid>143281</requestid>
+  </revision>
+  <revision rev="66" vrev="13">
+    <srcmd5>ca9dbccb24bf818102b47c49583cbd38</srcmd5>
+    <version>5.11</version>
+    <time>1359108876</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>37fb5f9ded86db172f7bb7037e310c4b</srcmd5>
+    <version>5.12</version>
+    <time>1359438947</time>
+    <user>coolo</user>
+    <comment>- Make if build on ppc64, that is re-add the configure check for
+  sizeof long long otherwise readelf will fail on ppc64
+
+- Update to file version 5.12
+  * Warn about inconsistent continuation levels.
+  * Change fsmagic to add a space after it prints.
+  * Make getline public so that file can link against it.
+    Perhaps it is better to rename it, or hide it differently.
+    Fixes builds on platforms that do not provide it.
+  * Add SuS d{,1,2,4,8}, u{,1,2,4,8} and document
+    what long, int, short, etc is (Guy Harris)
+  * add magic_version function and constant
+  * Redo memory allocation and de-allocation.
+    (prevents double frees on non mmap platforms)
+  * Fix bug with name/use having to do with passing
+    found state from the parent to the child and back.
+  * Only print elf capabilities for archs we know (Jan Kaluza)
+  * Add &quot;name&quot; and &quot;use&quot; file types in order to look
+    inside mach-o files.
+  * add string/T (Jan Kaluza)
+  * search for $HOME/.magic.mgc if it is there first
+  * fix reads from a pipe, and preserve errno
+  * use ctime_r, asctime_r
+  * Fixes for indirect offsets to handle apple disk formats
+- Also includes our extfs-minix patch</comment>
+    <requestid>149700</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>b16b061eb810b4cd01bf84ba3e90134a</srcmd5>
+    <version>5.12</version>
+    <time>1361287047</time>
+    <user>coolo</user>
+    <comment>- Use %libname macro and make that file-magic obsoletes libmagic-data
+  compare with bnc# 804323 to avoid trouble with interim package name</comment>
+    <requestid>155787</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>34179feb8df54bfaa839855db555b4d7</srcmd5>
+    <version>5.13</version>
+    <time>1362118655</time>
+    <user>coolo</user>
+    <comment>- Add patch file-5.13-return.patch: avoid doubled return
+
+- Update to file version 5.13 (mainly bug fixes)
+  * add elf reading of debug info to determine if file is stripped
+  * use pread()
+  * change mime description size from 64 to 80 to accommodate OOXML.
+  * Warn about inconsistent continuation levels.
+  * Change fsmagic to add a space after it prints.
+  * Make getline public so that file can link against it.
+    Perhaps it is better to rename it, or hide it differently.
+    Fixes builds on platforms that do not provide it.
+  * Add SuS d{,1,2,4,8}, u{,1,2,4,8} and document
+    what long, int, short, etc is (Guy Harris)
+  * add magic_version function and constant
+  * Redo memory allocation and de-allocation.
+    (prevents double frees on non mmap platforms)
+  * Fix bug with name/use having to do with passing
+    found state from the parent to the child and back.</comment>
+    <requestid>156456</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>c4ac896b6f66f560f92086b1fb3de2f0</srcmd5>
+    <version>5.13</version>
+    <time>1363096729</time>
+    <user>coolo</user>
+    <comment>- Run pre_checkin.sh</comment>
+    <requestid>158645</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>bc151e7b7623095194db344f53ac606e</srcmd5>
+    <version>5.14</version>
+    <time>1364157149</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.14 (also mainly bug fixes)
+  * fix recursive magic separator printing
+  * limit recursion level for mget
+  * fix pread() related breakage in cdf
+  * handle offsets properly in recursive &quot;use&quot; 
+- Remove patch file-5.13-return.patch</comment>
+    <requestid>160568</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>c223abaf089f69a632e8995c64604e1f</srcmd5>
+    <version>5.14</version>
+    <time>1364986203</time>
+    <user>coolo</user>
+    <comment>- Refresh patches and remove the visibility patch that I
+ upstreamed few releases ago in a different form. (forwarded request 161841 from WernerFink)</comment>
+    <requestid>162084</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>70f99025a69b0a0ac022ef9e36b86ff7</srcmd5>
+    <version>5.14</version>
+    <time>1369642718</time>
+    <user>coolo</user>
+    <comment>- elf-invalid-byte-order.patch: remove bogus &quot;invalid byte order&quot; from elf
+  magic (forwarded request 176595 from Andreas_Schwab)</comment>
+    <requestid>176637</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>70f99025a69b0a0ac022ef9e36b86ff7</srcmd5>
+    <version>5.14</version>
+    <time>1379662338</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fb2de8c53676c27cac56867cfa63aac9</srcmd5>
+    <version>5.15</version>
+    <time>1380696496</time>
+    <user>coolo</user>
+    <comment>- Add changes of Andreas Stieger 
+
+- Update to file version 5.15 (bug fix release, no new featuress)
+  * Don't mix errors and regular output if there was an error
+  * in magic_descriptor() don't close the file and try to restore
+    its position
+  * Don't treat magic as an error if offset was past EOF (Christoph Biedl)
+  * Fix spacing issues in softmagic and elf (Jan Kaluza)
+  * Fix segmentation fault with multiple magic_load commands.
+  * The way &quot;default&quot; was implemented was not very useful because
+    the &quot;if something was printed at that level&quot; was not easily
+    controlled by the user, and the format was bound to a string
+    which is too restrictive. Add a &quot;clear&quot; for that level keyword
+    and make &quot;default&quot; void.
+  * disallow strength setting in &quot;name&quot; entries
+- Adjust for upstream changes:
+  * file-5.14-tex.dif
+  * file-5.07-elf.dif
+  * file-5.12-ocloexec.patch
+  * file-5.12-nitpick.dif
+  * file-5.13.dif
+- Drop patches, applied upstream:
+  * file-5.13-whitespace.patch
+  * elf-invalid-byte-order.patch
+
+ 
+- add file-5.15-clear-invalid.patch to fix an invalid format
+
+- Make if ready for file 5.15</comment>
+    <requestid>201588</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>56ba9dd67ec4e13292ae1012e5fdaec5</srcmd5>
+    <version>5.15</version>
+    <time>1383655949</time>
+    <user>coolo</user>
+    <comment>- Set RPM groups (forwarded request 205655 from jengelh)</comment>
+    <requestid>205819</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>814d55027e1a30c28bc1499a6b271f6a</srcmd5>
+    <version>5.16</version>
+    <time>1386222873</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.16 (bug fix release)
+  * always leave magic file loaded, don't unload for magic_check, etc.
+  * fix default encoding to binary instead of unknown which broke recently
+  * handle empty and one byte files, less specially so that
+    --mime-encoding does not break completely.
+  * fix erroneous non-zero exit code from non-existant file and message
+  * add CDF MSI file detection (Guy Helmer)
+
+- Make it ready for file 5.16
+
+- Make it ready for file 5.15</comment>
+    <requestid>209187</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>7fa4c63ce5befb967d299160fa20d6af</srcmd5>
+    <version>5.17</version>
+    <time>1393600923</time>
+    <user>scarabeus_factory</user>
+    <comment>fix python-magic, 5.17. links to file which was changed without branching (forwarded request 223584 from AndreasStieger)</comment>
+    <requestid>223729</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>bb1c9902d55da551b5e73c84cdcbe348</srcmd5>
+    <version>5.17</version>
+    <time>1395146224</time>
+    <user>coolo</user>
+    <comment>- Add patch 
+  0001-off-by-one-in-out-of-bounds-calculations-Jan-Kaluza.patch
+  to finally fix bnc#866750
+
+- adapt version in specfile to 5.17</comment>
+    <requestid>226461</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ef58acc1cee842c7534d64d88731d4ce</srcmd5>
+    <version>5.18</version>
+    <time>1396770971</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229009</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>0f4fef2d4d835fa1d54f8cb323a25fe7</srcmd5>
+    <version>5.18</version>
+    <time>1400783878</time>
+    <user>coolo</user>
+    <comment>- file-secure_getenv.patch use secure_getenv only as we 
+  can't know in which context the shared library is used. (forwarded request 233200 from elvigia)</comment>
+    <requestid>233546</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>47fd4a2345475f6a6bfd2a5bf915afce</srcmd5>
+    <version>5.19</version>
+    <time>1403788031</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.19
+  * Misc buffer overruns and missing buffer size tests in cdf parsing
+    (Francisco Alonso, Jan Kaluza)
+  * Enforce limit of 8K on regex searches that have no limits
+  * Allow the l modifier for regex to mean line count. Default
+    to byte count. If line count is specified, assume a max
+    of 80 characters per line to limit the byte count.
+  * Don't allow conversions to be used for dates, allowing
+    the mask field to be used as an offset.
+  * Make the range operator limit the length of the
+    regex search.
+  * PR/347: Windows fixes
+  * PR/352: Hangul word processor recognition
+  * PR/354: Encoding irregularities in text files
+  * Fix uninitialized title in CDF files (Jan Kaluza)
+  * PR/351: Fix compilation of empty files 
+  * Fix integer formats: We don't specify 'l' or
+    'h' and 'hh' specifiers anymore, only 'll' for
+    quads and nothing for the rest. This is so that
+    magic writing is simpler.
+  * PR/341: Jan Kaluza, fix memory leak
+  * PR/342: Jan Kaluza, fix out of bounds read
+  * Fix issue with long formats not matching fmtcheck
+- Rename and change patch file-5.14-misc.dif to file-5.19-misc.dif
+- Rename and change patch file-5.14-printf.dif to file-5.19-printf.dif 
+- Rename and change patch file-5.07-biorad.dif to file-5.19-biorad.dif
+- Rename and change patch file-5.19.dif to file-5.17.dif
+- Rename and change patch file-4.24-cromfs.dif to file-5.19-cromfs.dif
+- Rename and change patch file-4.24-solv.dif to file-5.19-solv.dif
+- Rename and change patch file-5.12-zip2.0.dif to file-5.19-zip2.0.dif</comment>
+    <requestid>238593</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>2fcad781f73cbe0358214cba60497f6a</srcmd5>
+    <version>5.19</version>
+    <time>1408524641</time>
+    <user>lnussel</user>
+    <comment>-  correctly identify GDBM files created by libgdbm4 [bnc#888308]
+  * add file-5.19-gdbm.patch (forwarded request 245157 from pgajdos)</comment>
+    <requestid>245165</requestid>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>2fcad781f73cbe0358214cba60497f6a</srcmd5>
+    <version>5.19</version>
+    <time>1409300874</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>3083e69bc653194d96b49c788930f366</srcmd5>
+    <version>5.20</version>
+    <time>1413382783</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.20
+  * recognize encrypted CDF documents
+  * add magic_load_buffers from Brooks Davis
+  * add thumbs.db support
+- Remove file-5.07-iso9660.dif as now upstream 
+- Remove file-5.19-gdbm.patch as now upstream 
+- Adapt and rename file-5.18-endian.patch to file-5.20-endian.patch
+- Adapt and rename file-5.19.dif file-5.20.dif
+
+- adapt version in specfile to 5.20</comment>
+    <requestid>255754</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>162d7b4b0117ed1f7457d3a00f580ebe</srcmd5>
+    <version>5.21</version>
+    <time>1419159064</time>
+    <user>coolo</user>
+    <comment>- Drop patch file-5.20-CVE-2014-3710.patch as now part of upstream 
+- Update to file version 5.21
+  * Fix CVE-2014-8116 and CVE-2014-8117 (bsc#910252 and bsc#910253)
+  * there was an incorrect free in magic_load_buffers()
+  * there was an out of bounds read for some pascal strings
+  * there was a memory leak in magic lists
+  * don't interpret strings printed from files using the current
+    locale, convert them to ascii format first.
+  * there was an out of bounds read in elf note reads
+  * fix MacOS/X locale.h vs. xlocale.h issues
+
+- Add patch file-5.20-CVE-2014-3710.patch to fic bsc#902367
+  CVE-2014-3710: file: out-of-bounds read in elf note headers    
+
+- adapt version in specfile to 5.21</comment>
+    <requestid>265566</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>ed17acdd34daf01c5760cc68884a80b4</srcmd5>
+    <version>5.21</version>
+    <time>1419334384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266113</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>62fd4bf0fbc8f8e1ff91a6c3b4ba9f7a</srcmd5>
+    <version>5.22</version>
+    <time>1422594070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.22 (also related to bsc#913650 and bsc#913651)
+  * add indirect relative for TIFF/Exif
+  * restructure elf note printing to avoid repeated messages
+  * add note limit, suggested by Alexander Cherepanov
+  * Bail out on partial pread()'s (Alexander Cherepanov)
+  * Fix incorrect bounds check in file_printable (Alexander Cherepanov)
+  * PR/405: ignore SIGPIPE from uncompress programs
+  * change printable -&gt; file_printable and use it in
+    more places for safety
+  * in ELF, instead of &quot;(uses dynamic libraries)&quot; when PT_INTERP
+    is present print the interpreter name.
+- Patch file-5.18-elf.dif is modified and renamed to file-5.22-elf.dif
+- Patch file-5.20.dif s modified and renamed to file-5.22.dif
+
+- adapt version in specfile to 5.22</comment>
+    <requestid>282049</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>310ecbca0172f213783dfc8920715043</srcmd5>
+    <version>5.23</version>
+    <time>1436111394</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.23
+  * Fix issue with regex range for magic with offset
+  * Always return true from mget with USE (success to mget not match
+    indication). Fixes mime evaluation after USE magic
+  * PR/459: Don't insert magic entries to the list if there are parsing
+    errors for them.
+  * PR/455: Add utf-7 encoding
+  * PR/455: Implement -Z, look inside, but don't report on compression
+  * PR/454: Fix allocation error on bad magic.
+  * handle MAGIC_CONTINUE everywhere, not just in softmagic
+  * don't print descriptions for NAME types when mime.
+  * Add --extension to list the known extensions for this file type
+    Idea by Andrew J Roazen
+  * Bump file search buffer size to 1M.
+  * Fix multiple issues with date formats reported by Christoph Biedl:
+          - T_LOCAL meaning was reversed
+          - Arithmetic did not work
+    Also stop adjusting daylight savings for gmt printing.
+  * PR/411: Fix memory corruption from corrupt cdf file.
+- Refresh and rename patches
+  file-5.20-endian.patch becomes file-5.23-endian.patch
+  file-5.22.dif becomes file-5.23.dif
+  Refresh patch file-secure_getenv.patch
+
+- adapt version in specfile to 5.23</comment>
+    <requestid>311662</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>8b0630e8a108298454099fe2a8d38f4d</srcmd5>
+    <version>5.24</version>
+    <time>1437477914</time>
+    <user>coolo</user>
+    <comment>- Update to file version 5.24 
+  * redo long option encoding to fix off-by-one in 5.23
+- Adapt and rename patch
+  file-5.12-nitpick.dif becomes file-5.24-nitpick.dif
+
+- adapt version in specfile to 5.24</comment>
+    <requestid>316705</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>eb9492caaadf741a375117f798fa1519</srcmd5>
+    <version>5.25</version>
+    <time>1444833286</time>
+    <user>dimstar_suse</user>
+    <comment>file 5.25 (forwarded request 336306 from AndreasStieger)</comment>
+    <requestid>336505</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>032108e847a8353924e847b8e8e37f4e</srcmd5>
+    <version>5.25</version>
+    <time>1453799664</time>
+    <user>dimstar_suse</user>
+    <comment>- add file-5.25-avoid-double-evaluation-in-python-bindings.dif (bsc#949905)
+
+- add file-5.25-avoid-double-evaluation-in-python-bindings.dif (bsc#949905)</comment>
+    <requestid>355237</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>b48075deee443d12d26d021c452d5f1e</srcmd5>
+    <version>5.25</version>
+    <time>1456132185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360111</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>596471791221e55e039701d48411d3ea</srcmd5>
+    <version>5.28</version>
+    <time>1471855815</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch file-5.28-compress.patch
+  to fix crash as found in build system
+
+- Update to file version 5.28
+  * fix leak on allocation failure
+  * PR/555: Avoid overflow for offset &gt; nbytes
+  * PR/550: Segv on DER parsing:
+      - use the correct variable for length
+      - set offset to 0 on failure.
+- Port patches to 5.28
+  file-4.24-autoconf.dif
+  file-5.15-clear-invalid.patch
+  file-5.16-ocloexec.patch
+  file-5.19-biorad.dif
+  file-5.23-endian.patch
+  file-5.24-nitpick.dif
+  file-secure_getenv.patch
+- Remove patches now upstream
+  file-5.26-revert-close.patch
+- Rename patches
+  file-5.26.dif becomes file-5.28.dif
+
+- Update to file version 5.27
+  * Errors comparing DER entries or computing offsets
+    are just indications of malformed non-DER files.
+    Don't print them.
+  * Offset comparison was off-by-one.
+  * Fix compression code (Werner Fink)
+  * Put new bytes constant in the right file (not the generated one)
+- Remove patches</comment>
+    <requestid>419961</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>384dd373d75f1edc1c6958603cf66329</srcmd5>
+    <version>5.28</version>
+    <time>1472245939</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix boo#995089:
+  * Do not attempt to produce a file-magic-32bit package: there is
+    nothing arch-dependant in this package (for completeness, this
+    was already fixed just before by Marcus)
+  * Fix baselibs.conf for libmagic1-32bit to require file-magic
+    instead of file-magic-32bit.
+  * Build file-magic as noarch on openSUSE &amp;gt;= 1200 (where rpm is
+    new enough to support this). (forwarded request 421756 from dimstar)</comment>
+    <requestid>421776</requestid>
+  </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>cd8cae5582f86ae93c384b7f3e021746</srcmd5>
+    <version>5.28</version>
+    <time>1478086067</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437228</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>b1d6f9011e527fa345c2b57acfa54f6a</srcmd5>
+    <version>5.29</version>
+    <time>1480341767</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.29
+  * der getlength overflow (Jonas Wagner)
+  * multiple magic file load failure (Christoph Biedl)
+  * CDF parsing improvements (Guy Helmer)
+  * Add support for signed indirect offsets
+  * cat /dev/null | file - should print empty (Christoph Biedl)
+  * Bump string size from 64 to 96.
+  * PR/556: Fix separators on annotations.
+- Remove patch file-5.28-compress.patch now upstream
+- Rename patch file-5.28.dif which becomes now file-5.29.dif</comment>
+    <requestid>441837</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>235a982aea62f0b5c2ebd63511dca227</srcmd5>
+    <version>5.29</version>
+    <time>1480785780</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch file-5.29.dif that is
+  replace colon with dot in offset (boo#1012779)</comment>
+    <requestid>442832</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>17b2ee1ab9317af7e90879cb5fe3e589</srcmd5>
+    <version>5.30</version>
+    <time>1488930121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.30
+  * If we exceeded the offset in a search return no match
+    (Christoph Biedl)
+  * Be more lenient on corrupt CDF files (Christoph Biedl)
+  * pacify ubsan sign extension (oss-fuzz/524)
+  * off by one in cdf parsing (PR/593)
+  * report debugging sections in elf (PR/591)
+  * Allow @@@ in extensions
+  * Add missing overflow check in der magic (Jonas Wagner)
+- Mofify the patches
+    file-5.16-ocloexec.patch
+    file-5.19-biorad.dif
+    file-5.28-btrfs-image.dif
+- Rename patch file-5.29.dif to file-5.30.dif
+- Add upstream patches
+    file-5.30-150735.patch
+    file-5.30-3c60e5.patch</comment>
+    <requestid>461937</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>48eac49f8f92e14fbba15503ffb38a62</srcmd5>
+    <version>5.31</version>
+    <time>1496392203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.31
+  * remove trailing spaces from magic files
+  * refactor is_tar
+  * better bounds checks for cdf
+- Remove patches now upstream
+  * file-5.30-150735.patch
+  * file-5.30-3c60e5.patch
+- Rename patch file-5.30.dif which becomes file-5.31.dif
+- Modify the patches
+  * file-4.24-autoconf.dif
+  * file-5.14-tex.dif
+  * file-5.16-ocloexec.patch
+  * file-5.19-printf.dif
+  * file-5.23-endian.patch</comment>
+    <requestid>497934</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>60caaef9458fbe95be0335f0284d49f8</srcmd5>
+    <version>5.31</version>
+    <time>1497273036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501318</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>079effc529d372bf33678b2a9db5e516</srcmd5>
+    <version>5.32</version>
+    <time>1506340128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.32
+  * Always reset state in {file,buffer}_apprentice (Krzysztof Wilczynski)
+  * Fix always true condition (Thomas Jarosch)
+  * pickier parsing of numeric values in magic files.
+  * PR/615 add magic_getflags()
+- This release fix the bug bsc#1056838 for CVE-2017-1000249
+- Remove patch file-5.31-fix-tga.dif as now upstream
+- Rename patch file-5.31.dif which now becomes file-5.32.dif
+- Modify the patches
+  * file-5.16-ocloexec.patch
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.23-endian.patch
+  * file-5.28-btrfs-image.dif</comment>
+    <requestid>528198</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>0a1197b3002d7fb634967610ad13ee8a</srcmd5>
+    <version>5.32</version>
+    <time>1507570567</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532411</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>05f1dcf342f7aec5efb243052bc9f78f</srcmd5>
+    <version>5.32</version>
+    <time>1508946202</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533649</requestid>
+  </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>7a035436b5b14a7ea552d0fed8a6a2b1</srcmd5>
+    <version>5.32</version>
+    <time>1516970041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch file-5.32-ncurses-6.1.patch to support extend magic
+  format for new ncurses 6.1</comment>
+    <requestid>568099</requestid>
+  </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>8985c087d268b5d3729905d2dfbc598e</srcmd5>
+    <version>5.32</version>
+    <time>1520414889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580535</requestid>
+  </revision>
+  <revision rev="107" vrev="6">
+    <srcmd5>dcadf357834b86f3c4a264b17e5e37e7</srcmd5>
+    <version>5.32</version>
+    <time>1523346718</time>
+    <user>maxlin_factory</user>
+    <comment>- Correct line break in patch file-5.24-nitpick.dif (boo#1087924)</comment>
+    <requestid>593898</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>f4b31b116c194e311d97198b1ca12c70</srcmd5>
+    <version>5.33</version>
+    <time>1531592022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.33
+  * extend the support for ${x?:} expansions for magic descriptions
+  * add support for ${x?:} in mime types to handle
+    pie binaries.
+  * add support for negative offsets (offsets from the end of file)
+  * close the file on error when writing magic (Steve Grubb)
+  * seccomp support (Paul Moore)
+- Rename patch file-5.32.dif to file-5.33.dif
+- Remove patch file-5.32-ncurses-6.1.patch now upstream
+- Modify and port patches
+  * file-5.12-zip.dif
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.24-nitpick.dif
+- Add patch file-a642587a9c.patch for bsc#1096974, bsc#1096984, and
+  CVE-2018-10360 -- Avoid reading past the end of buffer
+
+- Correct version of file which is now 5.33</comment>
+    <requestid>616455</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>5a4ec6849da1d0615a123140c82840e2</srcmd5>
+    <version>5.33</version>
+    <time>1535440726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628958</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>3a110a8352bf6a4df558f980be94a024</srcmd5>
+    <version>5.35</version>
+    <time>1540818839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.35
+  * Add FreeBSD ELF core file support (John Baldwin)
+  * PR/30: Allow all parameter values to be set (don't treat 0 specially)
+  * handle default annotations on the softmagic match instead at the
+    end.
+  * PR/23: Recognize JSON files
+  * PR/18: file --mime-encoding should not print mime-type
+- Modify the patches
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.22-elf.dif
+  * file-5.23-endian.patch
+  * file-5.24-nitpick.dif
+  * file-secure_getenv.patch
+- Modify and rename patch file-5.34.dif which becomes file-5.35.dif
+
+- Update new signing key file as well
+
+- Update to file version 5.34
+  * Add Quad indirect offsets
+  * Enable parsing of ELF dynamic sections to handle PIE better
+- Remove upstream patch file-a642587a9c.patch
+- Rename patch file-5.33.dif which now becomes file-5.34.dif
+
+- Correct version of file which is now 5.35</comment>
+    <requestid>644483</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>e789b7d3bed3c47084eec0797460ebda</srcmd5>
+    <version>5.36</version>
+    <time>1551215600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.36 (bsc#1126117, bsc#1126118, bsc#1126119,
+  and bsc#1126121 which is CVE-2019-8904, CVE-2019-8905, CVE-2019-8906,
+  and CVE-2019-8907)
+  * Fix cast to use cast macros
+  * Add UCS-32 builtin detection (PR/61) reported by tmc
+  * Fix stack read (PR/62) and write (PR/64) stack overflows
+    reported by spinpx
+- Modify the patches
+  * file-5.12-zip.dif
+  * file-5.15-clear-invalid.patch
+  * file-5.16-ocloexec.patch
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.23-endian.patch
+  * file-5.28-btrfs-image.dif
+- Modify and rename patch file-5.35.dif which becomes file-5.36.dif
+
+- Correct version of file which is now 5.36</comment>
+    <requestid>677928</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>b35fa63cc58ff86b261cd4ce29c1609b</srcmd5>
+    <version>5.37</version>
+    <time>1560337333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to file version 5.37
+  * Make sure that continuation separators are printed
+    with -k within softmagic
+  * Change SIGPIPE saving and restoring during compression to use
+    sigaction(2) instead of signal(3) and cache it. (Denys Vlasenko)
+  * Cache stat(2) calls more to reduce number of calls (Denys Vlasenko)
+  * PR/77: Handle --mime-type and -k correctly.
+  * Switch decompression code to use vfork() because
+    tools like rpmdiff and rpmbuild call libmagic
+    with large process footprints (Denys Vlasenko)
+  * PR/75: --enable-zlib, did not work.
+  * Improve regex efficiency (Michael Schroeder) by:
+    1. Prefixing regex searches with regular search
+       for keywords where possible
+    2. Using memmem(3) where available
+- Modify the patches
+  * file-5.12-zip.dif
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.24-nitpick.dif
+  * file-5.28-btrfs-image.dif
+  * file-secure_getenv.patch
+- Modify and rename patch file-5.36.dif which becomes file-5.37.dif
+
+- - Correct version of file which is now 5.37</comment>
+    <requestid>706185</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>c5a9a837439bb23195f44dc397591cd0</srcmd5>
+    <version>5.37</version>
+    <time>1563017609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>710542</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>113aff16d86307507498eecfb8890397</srcmd5>
+    <version>5.37</version>
+    <time>1572021552</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch CVE-2019-18218-46a8443f.patch from upstream
+  to fix bsc#1154661 -- heap-based buffer overflow in cdf_read_property_info in cdf.c
+
+- Let python-magic build with latest rpm 
+
+- Let python-magic build with latest rpm
+
+- Correct version of file which is now 5.37</comment>
+    <requestid>741869</requestid>
+  </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>56c1e8d71adacb9eeb0efe40c147cacf</srcmd5>
+    <version>5.37</version>
+    <time>1572617563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743447</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>08b48109c0b161623ae03d68c0d95501</srcmd5>
+    <version>5.38</version>
+    <time>1577887035</time>
+    <user>dimstar_suse</user>
+    <comment>- Require pkgconfig(libseccomp) to enable the sandboxing feature
+
+- Update to file version 5.38
+  * Always accept -S (no sandbox) even if we don't support sandboxing
+  * More syscalls elided for sandboxiing
+  * For ELF dynamic means having an interpreter not just PT_DYNAMIC
+  * Check for large ELF session header offset
+  * When saving and restoring a locale, keep the locale name in our
+    own storage.
+  * Add a flag to disable CSV file detection.
+  * Don't pass NULL/0 to memset to appease sanitizers.
+  * Avoid spurious prints when looks for extensions or apple strings
+    in fsmagic.
+  * Add builtin decompressors for xz and and bzip.
+  * Add a limit for the number of CDF elements.
+  * More checks for overflow in CDF.
+- Removed patches fixed upstream
+  * CVE-2019-18218-46a8443f.patch
+  * file-5.15-clear-invalid.patch
+  * file-upstream.patch
+- Modify patches
+  * file-5.12-zip.dif
+  * file-5.16-ocloexec.patch
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.23-endian.patch
+  * file-5.24-nitpick.dif
+  * file-5.28-btrfs-image.dif</comment>
+    <requestid>758529</requestid>
+  </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>6579e97eb69cd3ffed0a0f6c222b2d18</srcmd5>
+    <version>5.38</version>
+    <time>1579556926</time>
+    <user>dimstar_suse</user>
+    <comment>- Looks like libseccomp filter stumble over decompressors like
+  xz (without liblmza) or zstd hence disable it (boo#1160649)
+- Require at build devel packages for liblzma and libbz2
+
+- file-5.38-allow-readlinkat.dif: allow readlinkat() systemcall,
+  reenable sandboxing. (bsc#1160303)
+
+- Currently file command receives SIGSYS/31 with sandboxing enabled
+  via libseccomp</comment>
+    <requestid>764572</requestid>
+  </revision>
+  <revision rev="118" vrev="3">
+    <srcmd5>8f2f45c17a7d927ec4e8bd3e7267fb16</srcmd5>
+    <version>5.38</version>
+    <time>1587838032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795512</requestid>
+  </revision>
+  <revision rev="119" vrev="4">
+    <srcmd5>ea8b3a2d9e948fed91879c5d64858bac</srcmd5>
+    <version>5.38</version>
+    <time>1589196345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add temporary patch undo-24c9c0.patch to undo commit 24c9c0 (boo#1169192)</comment>
+    <requestid>800076</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>248ecbcf7074d67bbf136525ae0995e4</srcmd5>
+    <version>5.39</version>
+    <time>1593904167</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream commit 85b7ab832 as patch file-5.39-alternate_format.dif
+  to also allow alternate format switch '#'
+- Replace patch file-5.38.dif with file-5.39.dif
+
+- Update to 5.39 
+  * Remove unused subtype_mime (Steve Grubb)
+  * Remove unused check in okstat (Steve Grubb)
+  * Fix mime-type in elf binaries by making sure $x is set
+  * Fix indirect negative offsets broken by OFFNEGATIVE
+  * Fix GUID equality check
+  * PR/165: Handle empty array and strings in JSON
+  * PR/162: Add --exclude-quiet
+  * Various fixes
+  * add guid support
+- Removed undo-24c9c0.patch as it is now part of upstream
+- Updated file-5.17-option.dif
+
+- Update to 5.39</comment>
+    <requestid>818050</requestid>
+  </revision>
+</revisionlist>

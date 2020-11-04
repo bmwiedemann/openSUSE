@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7baac124a5166ce38135e2ac1b4a4d0</srcmd5>
+    <version>0.6.0</version>
+    <time>1500669540</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission; requirement for matrix-synapse</comment>
+    <requestid>509336</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0adcd4cf67c91730bae13775a0a87480</srcmd5>
+    <version>0.7.0</version>
+    <time>1552039299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mulitbuild to make sure we do not cycle
+
+- Update to version 0.7.0:
+  * test updates
+  * pep fixes
+- Run tests
+
+- update to version v0.6.0</comment>
+    <requestid>682364</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>23e9f1482dab9cb5f08471d9532c0ac9</srcmd5>
+    <version>0.8.0</version>
+    <time>1575039346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0:
+  * Retrieve the version from the installed distribution.
+  * Add support for Python 3.8
+  * Remove support for 3.4</comment>
+    <requestid>750658</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b3abf17528cbc2b66e4af32b74e5beb1</srcmd5>
+    <version>20.2.0</version>
+    <time>1582394554</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20.2.0
+ * Fix attrs warnings</comment>
+    <requestid>775301</requestid>
+  </revision>
+</revisionlist>

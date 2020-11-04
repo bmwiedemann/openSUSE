@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34df4bd3583699fab19bd872fef6a5f4</srcmd5>
+    <version>4000.2.5</version>
+    <time>1357828081</time>
+    <user>coolo</user>
+    <comment>New package for Haskell Platform. See: http://lists.opensuse.org/opensuse-factory/2012-12/msg00178.html.</comment>
+    <requestid>147568</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>34df4bd3583699fab19bd872fef6a5f4</srcmd5>
+    <version>4000.2.5</version>
+    <time>1359108925</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e0886ae84212e4013eda6597b84fab90</srcmd5>
+    <version>4000.2.8</version>
+    <time>1375764673</time>
+    <user>coolo</user>
+    <comment>Update for Haskell Platform 2013.2.0.0 (forwarded request 185242 from ptrommler)</comment>
+    <requestid>185481</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e0886ae84212e4013eda6597b84fab90</srcmd5>
+    <version>4000.2.8</version>
+    <time>1379662423</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6cd623e5d5fc93dc65579dae8ad4c2f3</srcmd5>
+    <version>4000.2.8</version>
+    <time>1408957466</time>
+    <user>coolo</user>
+    <comment>enable PowerPC builds</comment>
+    <requestid>245992</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>6cd623e5d5fc93dc65579dae8ad4c2f3</srcmd5>
+    <version>4000.2.8</version>
+    <time>1409300954</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8c8e7be58d6c69d7c3c466080654e36e</srcmd5>
+    <version>4000.2.10</version>
+    <time>1417031686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260154</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb0e8f6c8fcc6a8ce2172db9f160eb5f</srcmd5>
+    <version>4000.2.19</version>
+    <time>1432188658</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306069</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1bc736646788dbfca5dd952596539775</srcmd5>
+    <version>4000.2.20</version>
+    <time>1435652336</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.2.20
+* If the URI contains &quot;user:pass@&quot; part, use it for Basic Authorization
+* Add a test harness.
+* Don't leak a socket when getHostAddr throws an exception.
+* Send cookies in request format, not response format.
+* Moved BrowserAction to be a StateT IO, with instances for
+   Applicative, MonadIO, MonadState.
+* Add method to control size of connection pool.
+* Consider both host and port when reusing connections.
+* Handle response code 304 &quot;not modified&quot; properly.
+* Fix digest authentication by fixing md5 output string rep.
+* Make the default user agent string follow the package version.
+* Document lack of HTTPS support and fail when clients try
+   to use it instead of silently falling back to HTTP.
+* Add helper to set the request type and body.</comment>
+    <requestid>314262</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6306e3af81fd41a188e3f441ad2e57a3</srcmd5>
+    <version>4000.2.21</version>
+    <time>1448957968</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.2.21</comment>
+    <requestid>346741</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>903b39a2312953d9afc298f51bdb4458</srcmd5>
+    <version>4000.2.22</version>
+    <time>1449687216</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.2.22</comment>
+    <requestid>347774</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d91b940a97dc5e937d4b9c882c4377f1</srcmd5>
+    <version>4000.2.23</version>
+    <time>1452262981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.2.23 (forwarded request 352136 from mimi_vx)</comment>
+    <requestid>352192</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4024959f606e290af3c517ab6a8d49e9</srcmd5>
+    <version>4000.3.2</version>
+    <time>1453998230</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.3.2
+* If the URI contains &quot;user:pass@&quot; part, use it for Basic Authorization
+* Add a test harness.
+* Don't leak a socket when getHostAddr throws an exception.
+* Send cookies in request format, not response format.
+* Moved BrowserAction to be a StateT IO, with instances for
+   Applicative, MonadIO, MonadState.
+* Add method to control size of connection pool.
+* Consider both host and port when reusing connections.
+* Handle response code 304 &quot;not modified&quot; properly.
+* Fix digest authentication by fixing md5 output string rep.
+* Make the default user agent string follow the package version.
+* Document lack of HTTPS support and fail when clients try
+   to use it instead of silently falling back to HTTP.
+* Add helper to set the request type and body. (forwarded request 355962 from mimi_vx)</comment>
+    <requestid>355963</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>41af3b84c76a29d21932e397fc1f4456</srcmd5>
+    <version>4000.3.3</version>
+    <time>1455701147</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4000.3.3 (forwarded request 359340 from mimi_vx)</comment>
+    <requestid>359341</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>e5e76a9948d88b57ea429f687005a199</srcmd5>
+    <version>4000.3.3</version>
+    <time>1469081090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411378</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>774c0f67ed1fdf235fc953cd1124017a</srcmd5>
+    <version>4000.3.5</version>
+    <time>1490025998</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>477437</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>20cafc687955dbeabcdffb3d88ff43d5</srcmd5>
+    <version>4000.3.6</version>
+    <time>1492169831</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485101</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c68ac978319f4046ced2edbc406eed82</srcmd5>
+    <version>4000.3.7</version>
+    <time>1496534212</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499684</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1b91142928ae366535f19fa03cb6f038</srcmd5>
+    <version>4000.3.7</version>
+    <time>1505502769</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>523951</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d34dafe1d721e8ce88ccd785aa45f1c7</srcmd5>
+    <version>4000.3.11</version>
+    <time>1527674964</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-HTTP to the latest version.</comment>
+    <requestid>607818</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c2487469ef2203eff4c764138c20e72c</srcmd5>
+    <version>4000.3.12</version>
+    <time>1532445138</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update HTTP to version 4000.3.12.
+  Upstream has not updated the file &quot;CHANGES&quot; since the last
+  release.
+
+* for Haskell Platform 2014.2.0.0
+- more transparent packaging (fewer macros)
+- expand macro in name tag to help source validator
+- make service localonly for Factory submission
+- required by Haskell Platform 2012.4.0.0
+- required by Haskell Platform 2012.2.0.0
+- Adjust version number for platform 2011.4
+- Fixed arches.
+- Initial packaging.</comment>
+    <requestid>623698</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>84eb9b0c5c63c6deaae5da38658548e9</srcmd5>
+    <version>4000.3.12</version>
+    <time>1540448464</time>
+    <user>dimstar_suse</user>
+    <comment>trivial version update</comment>
+    <requestid>643194</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>edad3eeb1f6998ab8f4839bbbe75263a</srcmd5>
+    <version>4000.3.13</version>
+    <time>1554276414</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690176</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>dbf699d16e8015c04f7869a766e5340d</srcmd5>
+    <version>4000.3.14</version>
+    <time>1560971407</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710617</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>cbda3aedf5204f61e7bc5a0cafbce835</srcmd5>
+    <version>4000.3.14</version>
+    <time>1577451043</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759316</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>219f13b7a2b21c71b5a2802f8133e01c</srcmd5>
+    <version>4000.3.14</version>
+    <time>1583759845</time>
+    <user>dimstar_suse</user>
+    <comment>missing version updates for openSUSE:Factory:Staging:adi:22</comment>
+    <requestid>780175</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>406efb64e695828f8ca896813ae98920</srcmd5>
+    <version>4000.3.14</version>
+    <time>1589196911</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801024</requestid>
+  </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>c980c496940ec4ff8952566ec8fe19dd</srcmd5>
+    <version>4000.3.14</version>
+    <time>1592579216</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815011</requestid>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>2331cfd7025ba37a4884568e6caf3e3f</srcmd5>
+    <version>4000.3.14</version>
+    <time>1598642620</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829149</requestid>
+  </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>a98245f02064cbd17f9fd797de454447</srcmd5>
+    <version>4000.3.14</version>
+    <time>1599506742</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832234</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>69ea27e89c06fb980e8c7613fd2d1a31</srcmd5>
+    <version>4000.3.15</version>
+    <time>1601200143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835955</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>e205ec2e5ce9ee64d953e75c6510b3e0</srcmd5>
+    <version>4000.3.15</version>
+    <time>1601488392</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>838485</requestid>
+  </revision>
+</revisionlist>

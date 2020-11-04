@@ -1,0 +1,9 @@
+<package name="fbi" project="openSUSE:Factory">
+  <title>Image Viewer for the Linux Framebuffer Console</title>
+  <description>This is a image viewer for Linux framebuffer devices. It has PhotoCD,
+jpeg, ppm, gif, tiff, xwd, bmp, and png support built-in.  Unknown
+formats are piped through convert (ImageMagick), which hopefully can
+handle it.
+</description>
+  <devel project="graphics" package="fbi"/>
+</package>

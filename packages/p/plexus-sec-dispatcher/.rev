@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>01a6503601ec8a61f12dcfe3cebdfd69</srcmd5>
+    <version>1.4</version>
+    <time>1554281407</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f0b002760f8c740ee3964cd05aab36c3</srcmd5>
+    <version>1.4</version>
+    <time>1570448783</time>
+    <user>dimstar_suse</user>
+    <comment>avoid version-less dependencies that gradle does not like</comment>
+    <requestid>735440</requestid>
+  </revision>
+</revisionlist>

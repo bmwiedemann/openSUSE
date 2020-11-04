@@ -1,0 +1,5 @@
+<package name="python-onnxconverter-common" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-onnxconverter-common"/>
+</package>

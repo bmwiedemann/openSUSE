@@ -1,0 +1,8 @@
+<package name="OpenCSD" project="openSUSE:Factory">
+  <title>CodeSight Trace Decode library</title>
+  <description>opencsd is an Arm CoreSight Trace Decode library.
+
+</description>
+  <devel project="devel:tools" package="OpenCSD"/>
+  <url>https://github.com/Linaro/OpenCSD</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="libretro-stella" project="openSUSE:Factory">
+  <title>Stella libretro core for Atari 2600 emulation</title>
+  <description>Stella is a multi-platform Atari 2600 VCS emulator which allows you to play all of your favourite Atari 2600 games on your PC. This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-stella"/>
+</package>

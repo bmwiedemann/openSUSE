@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8983cb26f05ff181d70ba491e24efb18</srcmd5>
+    <version>1.4.631</version>
+    <time>1532293425</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed from w3m-el</comment>
+    <requestid>621754</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1d6ed0752e349ece66f88e39c015ae6</srcmd5>
+    <version>1.4.631</version>
+    <time>1532361724</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from description.
+- Replace old RPM shell vars by macros.</comment>
+    <requestid>624607</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>341156eb28976093eb04d4352c78c530</srcmd5>
+    <version>1.4.632</version>
+    <time>1582725895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current GIT HEAD (6eda3828)</comment>
+    <requestid>779228</requestid>
+  </revision>
+</revisionlist>

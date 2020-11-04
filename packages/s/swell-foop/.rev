@@ -1,0 +1,234 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0b3af5b05c3104ffa4f21b3fee843e2</srcmd5>
+    <version>3.7.90</version>
+    <time>1363693241</time>
+    <user>coolo</user>
+    <comment>New package - enter legal queue prior the big GNOME 3.8 push</comment>
+    <requestid>159217</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47c112e8878e15806b2922cc2e9e9cea</srcmd5>
+    <version>3.8.0</version>
+    <time>1364409202</time>
+    <user>coolo</user>
+    <comment>Update to 3.8.0 (forwarded request 161323 from Zaitor)</comment>
+    <requestid>161357</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>761580e091c5990c296aa7f9d360cc2b</srcmd5>
+    <version>3.8.1</version>
+    <time>1366984413</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.8.1 to Factory - mostly small bug fixes over the existing 3.8.0 we have</comment>
+    <requestid>173281</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>130bccbc740f1bc295533914d640f429</srcmd5>
+    <version>3.8.2</version>
+    <time>1377875667</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.90</comment>
+    <requestid>196276</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>130bccbc740f1bc295533914d640f429</srcmd5>
+    <version>3.8.2</version>
+    <time>1379664749</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0377941511af4999e1addf97d6c87bf6</srcmd5>
+    <version>3.9.92</version>
+    <time>1379927028</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.92</comment>
+    <requestid>200043</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d09b394c0d4e57439950e66f34ea4275</srcmd5>
+    <version>3.10.0</version>
+    <time>1380299463</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200981</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>401d8d3993f4310f59175b4b014fae38</srcmd5>
+    <version>3.10.1</version>
+    <time>1381753879</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 3.10.1 - NICE TO HAVE for 13.1 - Translations only (forwarded request 203098 from Zaitor)</comment>
+    <requestid>203186</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a5b5b11ab9a0ad2c1602ec013df194c2</srcmd5>
+    <version>3.12.1</version>
+    <time>1399317402</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231776</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b7cbf2e9d17a4aa3060c2754977de929</srcmd5>
+    <version>3.12.2</version>
+    <time>1400588668</time>
+    <user>coolo</user>
+    <comment>Stable update (forwarded request 234450 from Zaitor)</comment>
+    <requestid>234500</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b7cbf2e9d17a4aa3060c2754977de929</srcmd5>
+    <version>3.12.2</version>
+    <time>1409303433</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e92f90ec2c05587c251cf22578da2bce</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098643</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251957 from Zaitor)</comment>
+    <requestid>252043</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>433bf72b335e2c20a517d2ac11c82dd6</srcmd5>
+    <version>3.16.0</version>
+    <time>1427735984</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292768 from dimstar)</comment>
+    <requestid>292961</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4d68e9312fdfff87b432b7db7981e652</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768665</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298426</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>17009888863c12dc28c0cd6c2c33f231</srcmd5>
+    <version>3.16.2</version>
+    <time>1439556409</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>322591</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0a4e42e704669ab6834f950435a6d60b</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141680</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332789 from dimstar)</comment>
+    <requestid>332881</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>02e9a91a1c2427785ed227916977f35c</srcmd5>
+    <version>3.18.1</version>
+    <time>1447234304</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343368</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2e846d4f855a6770d1409e99e332fe48</srcmd5>
+    <version>3.20.0</version>
+    <time>1459255436</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 377352 from dimstar)</comment>
+    <requestid>377442</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>16515eaee5f6dcb0d0d08d38ecad5743</srcmd5>
+    <version>3.22.0</version>
+    <time>1474623392</time>
+    <user>dimstar_suse</user>
+    <comment>New stable (forwarded request 428791 from Zaitor)</comment>
+    <requestid>429108</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7eb0315fefa661ba0747464ca2d0098a</srcmd5>
+    <version>3.22.2</version>
+    <time>1478958523</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.22.2 (forwarded request 439603 from dimstar)</comment>
+    <requestid>439890</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b3e60aa0b7d654f9f8859a4d9cc7c6ed</srcmd5>
+    <version>3.24.0</version>
+    <time>1490220814</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.24.0 (forwarded request 481698 from dimstar)</comment>
+    <requestid>481737</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5f3ecab5c2f08b69d1cdce7f9d831f7f</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332374</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 523447 from Zaitor)</comment>
+    <requestid>523536</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a8c74ffeaace09eb5ab582adbdac44f3</srcmd5>
+    <version>3.27.92</version>
+    <time>1521051771</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583523 from dimstar)</comment>
+    <requestid>584689</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>967980b50d064efaaff2888a99fafba8</srcmd5>
+    <version>3.28.0</version>
+    <time>1521498725</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 587033 from dimstar)</comment>
+    <requestid>587051</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a27aa2467b97e59967652c7b23f36e49</srcmd5>
+    <version>3.30.0</version>
+    <time>1539756743</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 636051 from luc14n0)</comment>
+    <requestid>637366</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cdd0f4b3204ef85c66b1899d977fd8ad</srcmd5>
+    <version>3.32.0</version>
+    <time>1554114697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689459</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7681ad13de33ba27f442f060effa4697</srcmd5>
+    <version>3.34.1</version>
+    <time>1571310440</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.1:
+  + Fixed crash.
+  + Updated translations. (forwarded request 738591 from iznogood)</comment>
+    <requestid>738632</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7c583a241bb4ef5e7e28243278ecab2e</srcmd5>
+    <version>3.34.1</version>
+    <time>1580205180</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767221 from dimstar)</comment>
+    <requestid>767481</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>8e1bdeb82bc5ec46e7905a9798cb7ea5</srcmd5>
+    <version>3.34.1</version>
+    <time>1602349328</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 840112 from iznogood)</comment>
+    <requestid>840245</requestid>
+  </revision>
+</revisionlist>

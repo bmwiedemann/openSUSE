@@ -1,0 +1,17 @@
+<package name="python-pdfminer.six" project="openSUSE:Factory">
+  <title>PDF parser and analyzer</title>
+  <description>Fork of PDFMiner using six for Python3 compatibility.
+
+PDFMiner is a tool for extracting information from PDF documents.
+Unlike other PDF-related tools, it focuses entirely on getting
+and analyzing text data. PDFMiner allows to obtain the exact
+location of texts in a page, as well as other information such
+as fonts or lines. It includes a PDF converter that can transform
+PDF files into other text formats (such as HTML). It has an
+extensible PDF parser that can be used for other purposes instead
+of text analysis.
+
+</description>
+  <devel project="devel:languages:python" package="python-pdfminer.six"/>
+  <url>https://github.com/pdfminer/pdfminer.six</url>
+</package>

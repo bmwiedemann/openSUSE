@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e3ef4a5ed4121cbd51600f56f432963</srcmd5>
+    <version>3.14.1</version>
+    <time>1574167443</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748156</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bf125603e97fce7d07fd1665d4efd8d9</srcmd5>
+    <version>3.14.1</version>
+    <time>1574945431</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with objectweb-asm &gt;=  7</comment>
+    <requestid>751515</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>310cd92d364372900dbca0b836e3b901</srcmd5>
+    <version>3.14.1</version>
+    <time>1584531063</time>
+    <user>dimstar_suse</user>
+    <comment>Fix launching of eclipse bsc#1166426 jsc#SLE-8786</comment>
+    <requestid>785880</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5a8f2a6d964cca3a6be25e27a54205cb</srcmd5>
+    <version>3.14.1</version>
+    <time>1586641548</time>
+    <user>dimstar_suse</user>
+    <comment>jgit-bootstrap will not exist</comment>
+    <requestid>792666</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6d43aac92b2bb51b34e4c5aeb487759</srcmd5>
+    <version>3.14.7</version>
+    <time>1591286024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811275</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0499ec424f35e4c91b0b0a106119cad2</srcmd5>
+    <version>3.14.8</version>
+    <time>1594894343</time>
+    <user>dimstar_suse</user>
+    <comment>3.14.8</comment>
+    <requestid>818542</requestid>
+  </revision>
+</revisionlist>

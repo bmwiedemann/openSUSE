@@ -1,0 +1,9 @@
+<package name="python-netifaces" project="openSUSE:Factory">
+  <title>Portable network interface information.</title>
+  <description>netifaces provides a (hopefully portable-ish) way for Python programmers to get access to a list of the network interfaces on the local machine, and to obtain the addresses of those network interfaces.
+
+The package has been tested on Mac OS X, Windows 2000 and Linux. On Windows, it is currently not able to retrieve IPv6 addresses, owing to shortcomings of the Windows API.
+
+It should work on other UNIX-like systems provided they implement either getifaddrs() or support the SIOCGIFxxx socket options, although the data provided by the socket options is normally less complete.</description>
+  <devel project="devel:languages:python" package="python-netifaces"/>
+</package>

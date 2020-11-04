@@ -1,0 +1,7 @@
+<package name="CoreFreq" project="openSUSE:Factory">
+  <title>CoreFreq</title>
+  <description>CoreFreq is a CPU monitoring software designed for the 64-bits Processors. 
+
+https://github.com/cyring/CoreFreq</description>
+  <devel project="hardware" package="CoreFreq"/>
+</package>

@@ -1,0 +1,138 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1273d747e042b6fc24419a50aac0929f</srcmd5>
+    <version>0.1.5</version>
+    <time>1575289991</time>
+    <user>dimstar_suse</user>
+    <comment>New SAP Netweaver Salt Formula</comment>
+    <requestid>751756</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c1a0848569f0ce3db15b0086f42252e</srcmd5>
+    <version>0.1.7</version>
+    <time>1575923896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755361</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55d4f4487ca8347526e5250c7cef9747</srcmd5>
+    <version>0.1.8</version>
+    <time>1576927953</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758456</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fffc900472c202ea447c8e9277a230c1</srcmd5>
+    <version>0.2.0</version>
+    <time>1579955089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766940</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6a967bab45281920b80f117605128f17</srcmd5>
+    <version>0.2.3</version>
+    <time>1580300277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768021</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d10ecdd350acce90aa20740b0c6bbd0b</srcmd5>
+    <version>0.2.4</version>
+    <time>1583446986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781774</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3f1a7c142c7d3cbf69b25acc60c29838</srcmd5>
+    <version>0.2.4</version>
+    <time>1583702478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782128</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9a9134ec9c84dcfed5d535fb4a20d963</srcmd5>
+    <version>0.2.5</version>
+    <time>1583948905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783305</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>568ea11eac1e37430374e0730027f4a1</srcmd5>
+    <version>0.4.4</version>
+    <time>1589892573</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>807024</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>032ac195bf775c44ea08671507b1b006</srcmd5>
+    <version>0.4.4+git.1591284148.611687e</version>
+    <time>1591297050</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>811547</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>74afe0ca98400e70a6daa13c276971e3</srcmd5>
+    <version>0.4.4+git.1594058536.82f1049</version>
+    <time>1594119654</time>
+    <user>maxlin_factory</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>819051</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6c52d6fa6db1fc3b0291dcdffa30616c</srcmd5>
+    <version>0.5.1+git.1597913457.86e3b88</version>
+    <time>1597955480</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>828069</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>94b4be7e18c1e2fbc83b99a0daac1159</srcmd5>
+    <version>0.5.1+git.1600700160.9b359fd</version>
+    <time>1600801980</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>835850</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5dcd1397b25703edaf924b37dab21b5b</srcmd5>
+    <version>0.5.1+git.1601302344.84ced23</version>
+    <time>1601398951</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>838312</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ba417a29137d1b631cc7a8117eaaca1</srcmd5>
+    <version>0.5.2+git.1602610350.43801ea</version>
+    <time>1602682804</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>841615</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>154eaa4eb7ffba2ff5b9cf8f3f3b57b1</srcmd5>
+    <version>0.5.2+git.1602863532.8e1acf4</version>
+    <time>1603031704</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>842175</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>56dad73ad8a0771a7567c37c4b92f353</srcmd5>
+    <version>0.5.2+git.1603119567.f2c4fc5</version>
+    <time>1603203351</time>
+    <user>dimstar_suse</user>
+    <comment>New version of sapnwbootstrap-formula released</comment>
+    <requestid>842591</requestid>
+  </revision>
+</revisionlist>

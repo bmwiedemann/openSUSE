@@ -1,0 +1,5 @@
+<package name="perl-Plack-Middleware-RemoveRedundantBody" project="openSUSE:Factory">
+  <title>perl-Plack-Middleware-RemoveRedundantBody</title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Plack-Middleware-RemoveRedundantBody"/>
+</package>

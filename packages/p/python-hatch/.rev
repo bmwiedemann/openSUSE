@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>326de3ca339f686c440b9a0fdfb72a0e</srcmd5>
+    <version>0.22.0</version>
+    <time>1574859077</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>745356</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c4d87be057082e73fc327267b92e4a9e</srcmd5>
+    <version>0.23.0</version>
+    <time>1586112928</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky test
+
+- Update to 0.23.0:
+  * fixes wheel packaging a bit</comment>
+    <requestid>791483</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>030c3e9bf7c4cb6085853991628b502e</srcmd5>
+    <version>0.23.0</version>
+    <time>1590508194</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808802</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a5b8f51aa664e33108a59804f16c2dd4</srcmd5>
+    <version>0.23.0</version>
+    <time>1591654132</time>
+    <user>dimstar_suse</user>
+    <comment>- Testsuite is too flaky, just skip the stuff overall unless someone
+  invests more time into it
+
+- Skip more flaky tests</comment>
+    <requestid>812555</requestid>
+  </revision>
+</revisionlist>

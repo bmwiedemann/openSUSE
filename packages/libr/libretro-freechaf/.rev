@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>005ae7fc2a219191acf541eabc289cc1</srcmd5>
+    <version>0~git20200109</version>
+    <time>1581456179</time>
+    <user>dimstar_suse</user>
+    <comment>RetroArch core</comment>
+    <requestid>771862</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>933439108a086f2613cbe73e9372f6dd</srcmd5>
+    <version>0~git20200512</version>
+    <time>1591558748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200512:
+  * Clean up flags for Gekko platforms
+  * Recognize platform=unix-armv7-hardfloat-neon
+  * Provide default CC and CXX values for qnx
+  * Switch from hand-written endian handlers to retro_endianness.h
+  * Add libretro-common as submodule
+  * Remove libretro-common
+  * Remove unused endianness defines
+  * Fixes #12
+  * added channelf_hle.c
+  * Cleanup
+  * Added GLP notice
+  * Fixes warning
+  * Change psp to bpp=16 and pitch=320*2
+  * Support for non-packed framebuffers
+  * Support 16-bit bpp
+  * Add PSP support
+  * Convert Application.mk into unix EOL
+  * Experimental BIOS-less mode
+  * Move A register in serialize to avoid unnecessarry padding
+  * Remove leftover keyboard callback
+  * Update file_path.c
+  * Support emscripten
+  * Fix memory declaration
+  * Expose memory to frontend
+  * Use VFS API to load BIOS
+  * Remove libm linking
+  * Optimize CHANNELF_loadROM_mem by using memcpy
+  * Update libretro.h
+  * switch to integer-driven audio synthesis
+  * Use batch audio
+  * Support serialization and deserialization
+  * Use right types for memory and registers
+  * Support loading rom from ram
+  * Add missing chf extension
+  * Fix android compilation
+</comment>
+    <requestid>812236</requestid>
+  </revision>
+</revisionlist>

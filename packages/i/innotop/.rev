@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e85def5536988df4a629ecc6007b915</srcmd5>
+    <version>1.9.1</version>
+    <time>1374679751</time>
+    <user>coolo</user>
+    <comment>kindly review innotop for inclusion in the distribution</comment>
+    <requestid>184052</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8e85def5536988df4a629ecc6007b915</srcmd5>
+    <version>1.9.1</version>
+    <time>1379662670</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>8e85def5536988df4a629ecc6007b915</srcmd5>
+    <version>1.9.1</version>
+    <time>1409301230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10e747dc884ef0df72d6b5ab88922067</srcmd5>
+    <version>1.11.1</version>
+    <time>1485250606</time>
+    <user>dimstar_suse</user>
+    <comment>1.11.1 (forwarded request 451503 from AndreasStieger)</comment>
+    <requestid>451504</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39b32aa4beba4816fd77f78583883ecc</srcmd5>
+    <version>1.11.4</version>
+    <time>1491896019</time>
+    <user>maxlin_factory</user>
+    <comment>innotop 1.11.4 (forwarded request 482737 from AndreasStieger)</comment>
+    <requestid>482738</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-dtfabric" project="openSUSE:Factory">
+  <title>Data type fabric (dtfabric)</title>
+  <description>dtFabric, or data type fabric, is a project to manage data types and structures, as used in the libyal projects.</description>
+  <devel project="security:forensics" package="python-dtfabric"/>
+</package>

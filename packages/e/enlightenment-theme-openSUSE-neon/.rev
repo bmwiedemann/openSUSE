@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>268b55b59deda878f454b7bf1fa677df</srcmd5>
+    <version>20200101</version>
+    <time>1579729559</time>
+    <user>dimstar_suse</user>
+    <comment>Remove conflict with default theme as it is not the default theme</comment>
+    <requestid>766159</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4550a5a4270e67296dc06875fccb4704</srcmd5>
+    <version>20200529</version>
+    <time>1591101298</time>
+    <user>dimstar_suse</user>
+    <comment>- 20200529 - efl 1.24 
+</comment>
+    <requestid>810215</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>86207929df97610f51f31b2fd89ed20a</srcmd5>
+    <version>1.19.0</version>
+    <time>1599088463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830738</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>61780713c518f2ce6bcedf690725278c</srcmd5>
+    <version>1.19.0</version>
+    <time>1599509084</time>
+    <user>dimstar_suse</user>
+    <comment>- kubernetes%{baseversion}-kubeadm now obsoletes kubernetes%{baseversionminus1}-kubeadm</comment>
+    <requestid>832704</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f26db7bcc003729b5e0a6e39d5bc00c</srcmd5>
+    <version>1.19.1</version>
+    <time>1600079026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.1:
+  * build/lib/release: Explicitly use '--platform' in building server images
+  * build/common.sh: Remove extraneous reference to debian-base image
+  * Update default etcd server to 3.4.13
+  * kubeadm: remove the CoreDNS check for supported image digests
+  * Update snapshot controller to use k8s.gcr.io
+  * kubeadm: make the scheduler and KCM connect to local endpoint
+  * Fixed reflector not recovering from &quot;Too large resource version&quot; errors with API servers 1.17.0-1.18.5
+  * let panics propagate up when processLoop panic
+  * kubeadm: Fix `upgrade plan` for air-gapped setups
+  * Add impersonated user to system:authenticated group
+  * cleanup: print warning message after timeout
+  * Revert &quot;cleanup: decrease log level from warn to v3&quot;
+  * cleanup: decrease log level from warn to v3
+  * Remove duplicate nodeSelector
+  * test(kubelet): add a regression test to verify kubelet would not panic
+  * fix(kubelet): protect `containerCleanupInfos` from concurrent map writes
+  * fix(azure): check error returned by scaleSet.getVMSS
+  * Fix issue on skipTest in storage suits
+  * Use NLB Subnet CIDRs instead of VPC CIDRs in updateInstanceSecurityGroupsForNLB
+  * Add PR #89069 Action Required
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.0</comment>
+    <requestid>833435</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d55c9f666861a7f176fe447cd5021dac</srcmd5>
+    <version>1.19.2</version>
+    <time>1600700501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.2:
+  * Fix index out of range panic for kubectl alpha debug
+  * kubectl describe pod: use ReportingController as an event source
+  * Update CNI plugins to v0.8.7
+  * Add roundtrip tests for metrics repo
+  * Cleanup custom metrics conversion functions
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.1
+  * Sort list of formats for --logging-format description to make it deterministic</comment>
+    <requestid>835142</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>80a014c7e1b8fd232e2813495a56f088</srcmd5>
+    <version>1.19.2</version>
+    <time>1602349291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840143</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9369c906f8ee5ccf0b631f87008b5144</srcmd5>
+    <version>1.19.3</version>
+    <time>1603031360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.3:
+  * Azure: fix node removal race condition on VMSS deletion
+  * Fix reporting network_programming_latency metrics in kube-proxy
+  * make download-or-bust compatible with both sha512/sha1
+  * replace sha1 with sha512
+  * avoid potential secret leaking while reading .dockercfg
+  * Mask Ceph RBD adminSecrets in logs when logLevel &gt;= 4
+  * upgrade test for BoundServiceAccountTokenVolume
+  * fix detach azure disk issue when vm not exist
+  * vsphere: improve logging message on node cache refresh event
+  * Fix UpdateSnapshot when Node is partially removed
+  * kubeadm: make the CP join handling of kubeconfig similar to &quot;init&quot;
+  * kubeadm: warn but do not error out on missing CA keys on CP join
+  * Return the Kubernetes version which stopped serving deprecated APIs by default
+  * fix: detach azure disk broken on Azure Stack
+  * Ensuring EndpointSlices are recreated after Service recreation
+  * Handle nil elements when sorting, instead of panicking
+  * use more granular buckets for azure api calls
+  * do not mutate endpoints in the apiserver
+  * Remove HeadlessService label in endpoints controller before comparing
+  * test: add unit-test for TranslateCSIPVToInTree.
+  * fix azure file migration panic
+  * kubeadm: relax the validation of kubeconfig server URLs
+  * portforward: Fix UDP-only ports calculation
+  * make kube::util::find-binary not dependent on bazel-out/ structure
+  * output go_binary rule directly from go_binary_conditional_pure
+  * hack/lib/util.sh: some bash cleanups
+  * bazel: Replace --features with Starlark build settings flag
+  * [go1.15] staging/publishing: Set default go version to go1.15.2
+  * [go1.15] build: Use go-runner:buster-v2.0.1 (built using go1.15.1)</comment>
+    <requestid>841982</requestid>
+  </revision>
+</revisionlist>

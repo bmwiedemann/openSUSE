@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>4ca302844b87707b30b15836568469d4</srcmd5>
+    <version>3.0.1</version>
+    <time>1238554517</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>4c05de8e188fbc6d287da669bf338aee</srcmd5>
+    <version>3.0.1</version>
+    <time>1251145716</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/xerces-c based on submit request 17720 from user prusnak
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>2bcaf3b30320e10f0fc6395e6c729341</srcmd5>
+    <version>3.0.1</version>
+    <time>1254960085</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/xerces-c based on submit request 22008 from user prusnak
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>2bcaf3b30320e10f0fc6395e6c729341</srcmd5>
+    <version>3.0.1</version>
+    <time>1254960085</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/xerces-c based on submit request 22008 from user prusnak
+</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>6e5177e4c8f29362d50ef41a558ec1ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1268926566</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>6e5177e4c8f29362d50ef41a558ec1ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>6e5177e4c8f29362d50ef41a558ec1ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="13">
+    <srcmd5>6e5177e4c8f29362d50ef41a558ec1ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="15">
+    <srcmd5>6e5177e4c8f29362d50ef41a558ec1ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1319182584</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>08e12c58e3535fba67f8e3cd50346ac5</srcmd5>
+    <version>3.0.1</version>
+    <time>1323195267</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="17">
+    <srcmd5>0222eb7f4005587312e317f748139f0f</srcmd5>
+    <version>3.0.1</version>
+    <time>1329242983</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104019</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>c86f30f871b9ed4e3e69031644ba9a87</srcmd5>
+    <version>3.1.1</version>
+    <time>1334641841</time>
+    <user>coolo</user>
+    <comment>update to most recent version (forwarded request 113448 from behrisch)</comment>
+    <requestid>113453</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>c86f30f871b9ed4e3e69031644ba9a87</srcmd5>
+    <version>3.1.1</version>
+    <time>1340184343</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>c86f30f871b9ed4e3e69031644ba9a87</srcmd5>
+    <version>3.1.1</version>
+    <time>1359110604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>c86f30f871b9ed4e3e69031644ba9a87</srcmd5>
+    <version>3.1.1</version>
+    <time>1379665014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>d97275f6f33cd0c3b902d0f3ed0bda04</srcmd5>
+    <version>3.1.1</version>
+    <time>1382351730</time>
+    <user>scarabeus_factory</user>
+    <comment>Disable sse2 instructions on non x86_64 arches, bnc#846539 (forwarded request 204065 from sumski)</comment>
+    <requestid>204068</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>0e4ba32cece6cb68841be8fc90cf349a</srcmd5>
+    <version>3.1.1</version>
+    <time>1386936709</time>
+    <user>coolo</user>
+    <comment>Add baselibs.conf -- Citrix reciver (ICAclient) needs libxerces-c-3_1-32bit  (forwarded request 210742 from Zaitor)</comment>
+    <requestid>210759</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>0e4ba32cece6cb68841be8fc90cf349a</srcmd5>
+    <version>3.1.1</version>
+    <time>1409303697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>b1e17455a8a94f520975bb4938f5771f</srcmd5>
+    <version>3.1.1</version>
+    <time>1424622082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287041</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6f235077fe441bc60c24380522038f15</srcmd5>
+    <version>3.1.2</version>
+    <time>1444833519</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334657</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>349c7aaf4d4002daa6c9e17d4d972e16</srcmd5>
+    <version>3.1.4</version>
+    <time>1467896954</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 3.1.4:
+  * Fixes bnc#985860 CVE-2016-4463
+  * xerces-c-CVE-2016-2099.patch removed as it was included upstream
+
+- Use pkgconfig requires
+- Disable &quot;pretty&quot; make to make it bit faster
+- Fix the selfobsoleting provides/requires to silence rpmlint
+- Use valid group for the docs
+
+- Resolve rpmlint warnings of type &quot;version-control-internal-file&quot;
+
+- Update to 3.1.3
+  * bug fixes
+    + memcpy used on overlapping memory regions causes sanity test failure
+    + Typo in XMLUni::fgUnknownURIName constant
+    + Buffer overruns in prolog parsing and error handling
+- Dropped xerces-c-CVE-2016-0729.patch, fixed upstream.
+
+- added xerces-c-CVE-2016-2099.patch
+  Exception handling mistake causing use after free
+  (bsc#979208, CVE-2016-2099)
+- xerces-c-CVE-2016-0729.patch
+  Fix for mishandling certain kinds of malformed input documents,
+  resulting in buffer overlows during processing and error reporting.
+  The overflows can manifest as a segmentation fault or as memory
+  corruption during a parse operation. (bsc#966822, CVE-2016-0729)</comment>
+    <requestid>406725</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bba854b1466fe42e194bcb757e6bc94b</srcmd5>
+    <version>3.2.2</version>
+    <time>1539250678</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the libname dependency in devel pkg, typo after libname
+  change
+
+- Version update to 3.2.2:
+  * Fixes CVE-2017-12627 bsc#1083630
+- Remove the switch to disable SSE2 on i586, we support pentium4 as
+  lowest and that has sse2</comment>
+    <requestid>639559</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>47acd910ead6d7d063e5638be3cbbc08</srcmd5>
+    <version>3.2.2</version>
+    <time>1581801885</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixup rpmlint warning about installed Makefiles (forwarded request 773617 from scarabeus_iv)</comment>
+    <requestid>773618</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5659e5d26bfc4ffacf07dbb974a10fe6</srcmd5>
+    <version>3.2.3</version>
+    <time>1597855453</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * Custom HTTP headers missing with CURL NetAccessor 
+  * Type Confusion from DTDGrammar to SchemaGrammar
+  * Patch to build with older GCC
+   * fix build without pthread
+   * XMLUTF8Transcoder: One multibyte UTF8 character is swallowed from the srcData when the resulting surrogate pair does not fit in toFill at the end
+   * Postpone freeing the memory being used by CURL
+   * Memory leak in ValueVectorOf
+   * There is an error in the parameters of the ThreadTtest8 script in Apache xerces-c++ XML's tests/script
+   * Incorrect symbolic links created for Linux static library and MacOS static and shared libraries
+   * invalid windows version check for `onXPOrLater`
+   * Handle surrogate pairs when reading a QName instead of ASSERTing
+   * Janitor.hpp fails to compile on Solaris with Solaris Studio 12.2 and 12.4
+   * undef symbols on HPUX for ArrayJanitor
+   * DOM tests crash on AIX
+   * XMLChar with NEED_TO_GEN_TABLE has 2 buffer out of bounds reads
+   * Including Xerces_autoconf_config.hpp on Windows fails due to undefined ssize_t</comment>
+    <requestid>826884</requestid>
+  </revision>
+</revisionlist>

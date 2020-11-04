@@ -1,0 +1,6 @@
+<package name="pgsql-ogr-fdw" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Application:Geo" package="pgsql-ogr-fdw"/>
+  <url>https://github.com/pramsey/pgsql-ogr-fdw</url>
+</package>

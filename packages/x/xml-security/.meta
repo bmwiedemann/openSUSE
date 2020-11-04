@@ -1,0 +1,11 @@
+<package name="xml-security" project="openSUSE:Factory">
+  <title>Apache XML Security for Java</title>
+  <description>Apache XML Security for Java supports XML-Signature Syntax and Processing,
+W3C Recommendation 12 February 2002, and XML Encryption Syntax and
+Processing, W3C Recommendation 10 December 2002. As of version 1.4,
+the library supports the standard Java API JSR-105: XML Digital Signature APIs.
+
+</description>
+  <devel project="Java:packages" package="xml-security"/>
+  <url>http://santuario.apache.org/</url>
+</package>

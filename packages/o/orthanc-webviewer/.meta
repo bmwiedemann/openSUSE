@@ -1,0 +1,5 @@
+<package name="orthanc-webviewer" project="openSUSE:Factory">
+  <title>A Webviewer plugin for Othanc</title>
+  <description></description>
+  <devel project="graphics" package="orthanc-webviewer"/>
+</package>

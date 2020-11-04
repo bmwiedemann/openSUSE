@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>476cf4ce3d4edc508adb792124324dc2</srcmd5>
+    <version>14.1.0</version>
+    <time>1588697712</time>
+    <user>dimstar_suse</user>
+    <comment>Node 14.1.0 -- next LTS line for node
+
+fixed unit tests</comment>
+    <requestid>800086</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccc47034aee7fbcc2263c4d6d1b8d143</srcmd5>
+    <version>14.4.0</version>
+    <time>1591479518</time>
+    <user>dimstar_suse</user>
+    <comment>Requires nghttp2 1.41.0 for Factory
+
+- Update to version 14.4.0:
+  * napi: fix various types of memory corruption in napi_get_value_string_*()
+    (CVE-2020-8174, bsc#1172443)
+  * http2: fix HTTP/2 Large Settings Frame DoS
+    (CVE-2020-11080, bsc#1172442)
+  * TLS session reuse can lead to host certificate verification bypass
+    (CVE-2020-8172, bsc#1172441)
+
+- Update to version 14.3.0:
+  * repl: previews improvements with autocompletion
+  * it's now possible to use the await keyword outside of async functions,
+    with the --experimental-top-level-await flag
+- Changes in version 14.2.0:
+  * console: Support for console constructor groupIndentation options
+- skip_no_console.patch: refreshed
+- versioned.patch, fix_ci_tests.patch: refreshed</comment>
+    <requestid>811805</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1468ca453b5d0d72d71de8b778db98b2</srcmd5>
+    <version>14.4.0</version>
+    <time>1591743162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Require for nodejs14 when intalling npm14. (bsc#1172728)</comment>
+    <requestid>812978</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ccaf691c8d4f55c4501b963234ca23ba</srcmd5>
+    <version>14.5.0</version>
+    <time>1594894195</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>820664</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2379c82bb8957f0d1f65c55e1b79a94b</srcmd5>
+    <version>14.6.0</version>
+    <time>1596364095</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>823432</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77e6180a5258f79d3f21694db0d34782</srcmd5>
+    <version>14.7.0</version>
+    <time>1597222620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>825387</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>beeb2b03bf17760da3f2d903ae85662e</srcmd5>
+    <version>14.9.0</version>
+    <time>1600078640</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833796</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e4d33252a74816e7f1d57fe239abee26</srcmd5>
+    <version>14.12.0</version>
+    <time>1601398782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.12.0:
+  * n-api:
+    + create N-API version 7
+    + add more property defaults
+- Changes since version 14.9.0
+  * deps:
+    + update llhttp to 2.1.2 (bsc#1176605, CVE-2020-8201)
+    + http: add requestTimeout. Fixes Denial of Service by
+      resource exhaustion due to unfinished HTTP/1.1 requests
+      (bsc#1176604, CVE-2020-8251)
+    + buffer: also alias BigUInt methods
+    + crypto: add randomInt function
+    + perf_hooks: add idleTime and event loop util
+    + stream: simpler and faster Readable async iterator
+    + stream: save error in state</comment>
+    <requestid>838274</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe28e4f0f01b156aac33c9d8588877fc</srcmd5>
+    <version>14.13.0</version>
+    <time>1602155510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.13.0:
+  * deps: upgrade to libuv 1.40.0 #35333
+  * module: named exports for CJS via static analysis #35249
+  * module: exports pattern support #34718
+  * src: allow N-API addon in AddLinkedBinding()</comment>
+    <requestid>839882</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cbda14acad40242cdd17c8f10bc356cf</srcmd5>
+    <version>14.13.1</version>
+    <time>1602349404</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.13.1:
+  * fs: rmdir recursive is no longer considered experimental
+- fix_ci_tests.patch: add support to SUSE's ECDH backport errors
+  in SLE's openssl</comment>
+    <requestid>840301</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a0961e6259f7b1a3d7ce7dcff72004cc</srcmd5>
+    <version>14.14.0</version>
+    <time>1603202476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.14.0:
+  * fs: add rm method
+  * http: allow passing array of key/val into writeHead
+  * src: expose v8::Isolate setup callbacks
+- sle12_python3_compat.patch: refreshed</comment>
+    <requestid>842107</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f865a541aaa53954354cd4fb0e576baa</srcmd5>
+    <version>14.15.0</version>
+    <time>1604306410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS version 14.15.0: (jsc#SLE-15774)
+  * no major changes
+  * test: reverts marking test-webcrypto-encrypt-decrypt-aes flaky
+
+- Use SLE OpenSSL version with 12-SP4+, and not just 12-SP5+
+- Bump mininum ICU version to 65</comment>
+    <requestid>844832</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="glassfish-jaxb-api" project="openSUSE:Factory">
+  <title>Java Architecture for XML Binding</title>
+  <description>Glassfish - JAXB (JSR 222) API.
+
+</description>
+  <devel project="Java:packages" package="glassfish-jaxb-api"/>
+  <url>http://jaxb.java.net/</url>
+</package>

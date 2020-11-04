@@ -1,0 +1,170 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95f61634b2f0a7391f63203a6124c79d</srcmd5>
+    <version>0.4.1</version>
+    <time>1441727059</time>
+    <user>dimstar_suse</user>
+    <comment>ShellCheck - A shell script static analysis tool</comment>
+    <requestid>329423</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>169755134af96ef9845b16caef3e8b31</srcmd5>
+    <version>0.4.2</version>
+    <time>1452721557</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.2</comment>
+    <requestid>353198</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>adf9cde415b3b6a87dadf114884dd178</srcmd5>
+    <version>0.4.3</version>
+    <time>1453799711</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3</comment>
+    <requestid>355553</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80b807b3ab796da0eabe39a9f7f3f2f6</srcmd5>
+    <version>0.4.4</version>
+    <time>1464014378</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.4 (forwarded request 397265 from mimi_vx)</comment>
+    <requestid>397266</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>64b3ecb74d46450a95ce74ebc183699c</srcmd5>
+    <version>0.4.4</version>
+    <time>1469080887</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411165</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3676c9cf08d2c27ca3c3511d6fa45cd4</srcmd5>
+    <version>0.4.5</version>
+    <time>1489482231</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461516</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85403634d45b38080d353e5df099cc8a</srcmd5>
+    <version>0.4.6</version>
+    <time>1492011279</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>485097</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e7dccbc0ee0f2fb82bdb807d7ce03326</srcmd5>
+    <version>0.4.6</version>
+    <time>1505502624</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>523899</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>00391082b5f837265189de8be51df031</srcmd5>
+    <version>0.4.7</version>
+    <time>1523956697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>597148</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c5b3698d54e3b6ef7b813a49c9b2191b</srcmd5>
+    <version>0.4.7</version>
+    <time>1527675702</time>
+    <user>dimstar_suse</user>
+    <comment>Update ShellCheck to latest version.</comment>
+    <requestid>609837</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b4f1e479e08d1ae2ba0f4664f27d81de</srcmd5>
+    <version>0.5.0</version>
+    <time>1532445127</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update ShellCheck to version 0.5.0.
+  Upstream does not provide a change log file.
+
+- Add _constraints to avoid OOM error with a special case for
+- update to 0.4.2
+- initial commit</comment>
+    <requestid>623691</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c64cb82a33a29cf2a3ba03f10273cb30</srcmd5>
+    <version>0.5.0</version>
+    <time>1540448390</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642914</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d2874c606d5653648a84c11e5581a984</srcmd5>
+    <version>0.6.0</version>
+    <time>1544441374</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>656584</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d81605d22a78e4fa8f1da8dbc80ff9cf</srcmd5>
+    <version>0.7.0</version>
+    <time>1565694888</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>721027</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>842df0c1480b80c45d489d5b77a9df62</srcmd5>
+    <version>0.7.0</version>
+    <time>1577451023</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759310</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>aac770ae6cb9f3131b2e68be276a6e78</srcmd5>
+    <version>0.7.0</version>
+    <time>1578069296</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>760275</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b20ff35b03cbae988ff86938ab63f218</srcmd5>
+    <version>0.7.1</version>
+    <time>1589197031</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801070</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>051a98a790279bb8c1f5df2d9a3d3a74</srcmd5>
+    <version>0.7.1</version>
+    <time>1592579200</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815005</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>c9785a5c14cbd0e6a1f222e880ac6161</srcmd5>
+    <version>0.7.1</version>
+    <time>1597746266</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>825792</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>b333b8f647be391c498ebb7de94c97dd</srcmd5>
+    <version>0.7.1</version>
+    <time>1598642590</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829139</requestid>
+  </revision>
+</revisionlist>

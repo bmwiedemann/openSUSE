@@ -1,0 +1,5 @@
+<package name="budgie-screensaver" project="openSUSE:Factory">
+  <title>Fork of GNOME Screensaver for Budgie 10</title>
+  <description></description>
+  <devel project="X11:Solus" package="budgie-screensaver"/>
+</package>

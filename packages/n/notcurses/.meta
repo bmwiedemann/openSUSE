@@ -1,0 +1,12 @@
+<package name="notcurses" project="openSUSE:Factory">
+  <title>Character graphics and TUI library</title>
+  <description>notcurses facilitates the creation of modern TUI programs, making
+full use of Unicode and 24-bit TrueColor. Its API is similar
+to that of NCURSES, but extends that with z-buffering, rendering
+of images and video using ffmpeg, alpha blending, widgets, palette
+fades, resize awareness, and multithreading support.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="notcurses"/>
+  <url>https://nick-black.com/dankwiki/index.php/Notcurses</url>
+</package>

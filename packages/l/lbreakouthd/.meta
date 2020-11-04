@@ -1,0 +1,8 @@
+<package name="lbreakouthd" project="openSUSE:Factory">
+  <title>Classic Breakout-Style Game</title>
+  <description>A Breakout-style arcade game for Linux featuring a number of added
+graphical enhancements and effects. You control a paddle at the bottom
+of the playing field and must destroy bricks at the top by bouncing
+balls against them.</description>
+  <devel project="games" package="lbreakouthd"/>
+</package>

@@ -1,0 +1,145 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4972c350283b74e64ee4f4d39ce115e</srcmd5>
+    <version>4.23.4</version>
+    <time>1592245663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812573</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>12321cea305fecd62dd986fe3efeec5f</srcmd5>
+    <version>4.25.0</version>
+    <time>1592840753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version  to 4.25.0
+  * VMess's new header format experiment begins. You can now enable VMessAEAD to
+    be better protected. Documents EN CH are updated. See extra-VMessAEADdoc.zip
+    for a more detailed explanation available in both Chinese and English.
+  * mKCP can now be encrypted to resist recognition, address issue mentioned in
+    #2530 #2253 #2131. Documents EN CH are updated.
+  * Updated Golang tool-chain. Thanks @rprx
+  * LocalAddr() in UDP workers will now return correct local addr. Thanks
+    @zhuobixin
+  * Further remove the identity leakage with TLS ClientHello from #2521 thank
+    @darhwa
+  * Fix UDP stability issue in Socks5 inbound, Shadowsocks inbound, and
+    Dokodemo( TProxy ) inbound. This should alleviate unnecessary CPU, memory
+    usage, and premature disconnection issue typically triggered by playing
+    games, video conference, and Torrenting. See #2565 thank @JimHan75d8c5
+    @xiaokangwang and Other testers @1265578519 @zhj9709 @Kylejustknows etc
+  * Added ARM v5 binary in the release. This should allow legacy ARM devices to
+    run V2Ray correctly. See #2536 (forwarded request 816221 from hillwood)</comment>
+    <requestid>816222</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f63ac0683ac86ea7765f4f58d693dea3</srcmd5>
+    <version>4.25.0</version>
+    <time>1593200941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summary with something useful. Trim filler wording
+  from description. (forwarded request 817108 from jengelh)</comment>
+    <requestid>817137</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8fa17074f3fa1f97934f27ab018f958</srcmd5>
+    <version>4.26.0</version>
+    <time>1594706280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.26.0
+  * Update Signing key
+  * Update geoip, geosite
+  * Fix bug with tag name extract
+  * Generate Manifest for bleeding edge release
+  * Adjust arm build
+  * Allow the use of Browser Bridge (forwarded request 820329 from hillwood)</comment>
+    <requestid>820330</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>73be1f59cb35e94cd8d0a2fd820d55b0</srcmd5>
+    <version>4.26.0</version>
+    <time>1596457128</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix out-of-box usability (forwarded request 823969 from Sam0523)</comment>
+    <requestid>824026</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5ad1da5584dbb1f3f02dcef67c19c3b2</srcmd5>
+    <version>4.27.4</version>
+    <time>1598726710</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.27.4
+  * get source tarball from latest release page.
+  * update vendor use latest project git directory.
+  * update changes from version 4.26.0
+- update upstream source url
+- update systemd units follow upstream
+- change asset data directory follow upstream and downstream (forwarded request 830473 from zzndb)</comment>
+    <requestid>830477</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf21081d6653c97a39590bc5facdff09</srcmd5>
+    <version>4.27.5</version>
+    <time>1599088742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.27.5
+  * Features
+    - Parse X-Forwarded-For in http transport @lucifer9
+  * Fix
+    - Fix according to staticcheck result @Loyalsoldier
+    - Fix: Bound check when accessing DNS server's ipIndexMap @Vigilans
+    - Refine code @Loyalsoldier
+  * Warning
+    - In version v4.28.0 and later, VMess AEAD will be enabled when alterId is
+    set to 0 (forwarded request 831436 from zzndb)</comment>
+    <requestid>831478</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6d8b454118b30b192fd818ab2903338</srcmd5>
+    <version>4.28.1</version>
+    <time>1600079705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 4.28.1
+  * Fix incorrect IV usage which slightly reduced security
+- Update version to 4.28.0
+  * Changes
+    - VMess AEAD will be used when alterId is 0. (&quot;testsEnabled&quot; is discarded)
+  * Fixes
+    - Fix dns tests by setting v2ray.location.asset @felixonmars
+    - fix abstract UDS &amp;amp; add PROXY protocol support to DS inbound @lucifer9 @rprx
+    - Systemd: prevent restart on corrupt config @DuckSoft
+  * Chores
+    - Upgrade all dependencies @rprx
+    - Change lint order to avoid file changes notice @Loyalsoldier
+    - Update geoip, geosite (forwarded request 833934 from zzndb)</comment>
+    <requestid>834221</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d850946112210e61a3dfbb0b139d9971</srcmd5>
+    <version>4.29.0</version>
+    <time>1601399078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838411</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d5bf3d45b0c95fbad1d1568d84efe40b</srcmd5>
+    <version>4.32.0</version>
+    <time>1604510790</time>
+    <user>dimstar_suse</user>
+    <comment>- update version to 4.32.0
+  * loads JSON internally by default @forever8938
+  * Refine UNIX domain socket @lucifer9
+  * Fix mKCP sending window @p4gefau1t
+  * Fix JSON parsing dependency introduced by mutijson config @xiaokangwang
+  * Fix proto.go ProtoFilesUsingProtocGenGoFast on Windows @JimhHan
+- other changes before this version
+  * Add full VLESS fallbacks support to Trojan
+  * Add Trojan over XTLS support @maskedeken
+  * Add XTLS Direct Mode
+  * Add XTLS support to mKCP
+  * Add padding to abstract UNIX domain socket in fallbacks
+  * Add XTLS support to DomainSocket @rprx (forwarded request 845261 from zzndb)</comment>
+    <requestid>845725</requestid>
+  </revision>
+</revisionlist>

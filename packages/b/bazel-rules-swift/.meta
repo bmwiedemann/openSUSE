@@ -1,0 +1,6 @@
+<package name="bazel-rules-swift" project="openSUSE:Factory">
+  <title>bazel-rules-swift</title>
+  <description>Swift rules for Bazel</description>
+  <devel project="devel:tools:building" package="bazel-rules-swift"/>
+  <url>https://github.com/bazelbuild/rules_swift</url>
+</package>

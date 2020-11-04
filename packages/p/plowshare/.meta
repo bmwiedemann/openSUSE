@@ -1,0 +1,6 @@
+<package name="plowshare" project="openSUSE:Factory">
+  <title>plowshare</title>
+  <description>plowshare is a command-line (CLI) download/upload tool for popular file sharing websites (aka file hosting provider or One-Click hoster). With plowshare, you will be able to download or upload files and manage remote folders and link deletion. It runs on Linux/BSD/Unix operating system.
+</description>
+  <devel project="network" package="plowshare"/>
+</package>

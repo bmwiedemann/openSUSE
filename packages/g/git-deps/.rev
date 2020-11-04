@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8228e7cb73ce30dc3e5ed48a07996fb5</srcmd5>
+    <version>1.0.2+git.1559732444.7c75531</version>
+    <time>1593904566</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package submission</comment>
+    <requestid>818393</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57c3cd5e6e6aa51a6aafe49aaa3cf5c2</srcmd5>
+    <version>1.0.2+git.1559732444.7c75531</version>
+    <time>1604510686</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Fix-issue-with-unbuffered-text-I-O-under-python3.patch,
+  which fixes the issue with unbuffered text I/O under python3,
+  (gh#aspiers/git-deps#93). (forwarded request 845066 from mcepl)</comment>
+    <requestid>845067</requestid>
+  </revision>
+</revisionlist>

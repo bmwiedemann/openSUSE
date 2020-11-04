@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a8d037e03525f27e7af3617e943a2b4</srcmd5>
+    <version>0.4.1</version>
+    <time>1490965556</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>478844</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1d97d689f336a9423491807632098538</srcmd5>
+    <version>0.4.1</version>
+    <time>1544726628</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654036</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ea4510dd129f6ea84faabdf8408ae898</srcmd5>
+    <version>0.4.1</version>
+    <time>1560337999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708373</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a2994afdacd93b363862ad79c8b46c42</srcmd5>
+    <version>0.4.1</version>
+    <time>1584350285</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784872</requestid>
+  </revision>
+</revisionlist>

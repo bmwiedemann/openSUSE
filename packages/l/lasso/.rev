@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cd4b227a3ca5896fcc6a2f40d95ad3c</srcmd5>
+    <version>2.6.0</version>
+    <time>1582899619</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging for openSUSE</comment>
+    <requestid>779395</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>058fb7027081cee423f63e34fc7a2525</srcmd5>
+    <version>2.6.1</version>
+    <time>1589315455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802697</requestid>
+  </revision>
+</revisionlist>

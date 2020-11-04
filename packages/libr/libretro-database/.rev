@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99f0234b540a2a84307014246fd936c5</srcmd5>
+    <version>1.8.2</version>
+    <time>1579729363</time>
+    <user>dimstar_suse</user>
+    <comment>rom database for retroarch</comment>
+    <requestid>763351</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c5464df2344b2d47a71c5bbe8f272746</srcmd5>
+    <version>1.8.4</version>
+    <time>1582206890</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.4
+  * Update Sony - PlayStation
+  * Update FBNeo
+  * Fix PS1 list serial code
+  * Update PSX, PSP, PS2
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.2...v1.8.4
+- Version 1.8.2
+  * Update Resident Evil 3 - Nemesis (Demo) (USA, Europe) (GameShark).cht
+  * Create Resident Evil 3 - Nemesis (NTSC-U) (USA, Europe) (GameShark).cht
+  * Create Beavis and Butt-Head (USA) (GameGenie)
+  * Create Comix Zone (USA) (GameGenie)
+  * Create Doom Troopers (USA) (GameGenie)
+  * Update Gaiares (USA, Japan) (Action Replay).cht
+  * Create RoboCop versus The Terminator (USA) (GameGenie)
+  * Update Beavis and Butt-Head (USA, Europe) (Action Replay).cht
+  * Added SIGIL v1.21
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.7.8...v1.8.2
+- Version 1.7.8
+</comment>
+    <requestid>777327</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1772983fa95b620564650d99fb54a848</srcmd5>
+    <version>1.8.5</version>
+    <time>1586247992</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.5
+  * Fix tic80 cheats documentation
+  * Renmae BIOS.dat to System.dat
+  * Add Nintendo Famicon cheats
+  * Add TurboGrax16 new Cheats
+  * Move summonthethunder's cheats to NES
+  * Create Nintendo - Nintendo Entertainment System.dat
+  * Add Nintendo Famicon
+  * Add N64 cheats
+  * Add Nintendo Game Boy cheats
+  * Add TurboGrafx-16 CD cheats
+  * Add SNES cheats
+  * Update MAME 0.218
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.4...v1.8.5
+</comment>
+    <requestid>788685</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>679e6acec92a03dd6e57896ee870907c</srcmd5>
+    <version>1.8.7</version>
+    <time>1591558464</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.7
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.6...v1.8.7 
+- Version 1.8.6
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.5...v1.8.6
+</comment>
+    <requestid>808457</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8752ab2e57f56b12e068e69f8304432d</srcmd5>
+    <version>1.8.8</version>
+    <time>1592939099</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816159</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a0dfb4b15744fa3f64abf73023c472f</srcmd5>
+    <version>1.8.9</version>
+    <time>1593006539</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.9
+  * Full changes at https://github.com/libretro/libretro-database/compare/v1.8.8...v1.8.9
+</comment>
+    <requestid>816711</requestid>
+  </revision>
+</revisionlist>

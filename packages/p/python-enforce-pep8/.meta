@@ -1,0 +1,5 @@
+<package name="python-enforce-pep8" project="openSUSE:Factory">
+  <title></title>
+  <description>Python interfaces to enforce PEP8 coding conventions</description>
+  <devel project="devel:languages:python" package="python-enforce-pep8"/>
+</package>

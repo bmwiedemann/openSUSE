@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a7decb65af05719a47e0a93f7fe5445</srcmd5>
+    <version>0.02</version>
+    <time>1576014305</time>
+    <user>dimstar_suse</user>
+    <comment>needed by perl-HTTP-Entity-Parser which is needed by perl-Plack which is already in Factory</comment>
+    <requestid>755574</requestid>
+  </revision>
+</revisionlist>

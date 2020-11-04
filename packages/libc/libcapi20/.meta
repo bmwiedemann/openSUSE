@@ -1,0 +1,5 @@
+<package name="libcapi20" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="libcapi20"/>
+</package>

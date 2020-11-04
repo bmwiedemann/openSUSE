@@ -1,0 +1,7 @@
+<package name="libretro-ppsspp" project="openSUSE:Factory">
+  <title>PPSSPP libretro core for PSP emulation</title>
+  <description>A PSP emulator for Android, Windows, Mac and Linux, written in C++.
+
+This package is for RetroArch/libretro front-end.</description>
+  <devel project="Emulators" package="libretro-ppsspp"/>
+</package>

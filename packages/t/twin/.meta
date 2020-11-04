@@ -1,0 +1,5 @@
+<package name="twin" project="openSUSE:Factory">
+  <title>twin</title>
+  <description>Twin is a text-mode window environment. It supports mouse and multiple windows, has a built-in terminal emulator and window manager, and can serve as display for client applications. Its retro look-and-feel comes with very modern features: it is best described as a VNC-like server, that can use a variety of displays - all with mouse support: from a plain text terminal, to a Linux console, to a full kde, gnome or X11 desktop.</description>
+  <devel project="utilities" package="twin"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-towncrier" project="openSUSE:Factory">
+  <title>python-towncrier</title>
+  <description>Building newsfiles for your project</description>
+  <devel project="devel:languages:python" package="python-towncrier"/>
+</package>

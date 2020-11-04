@@ -1,0 +1,5 @@
+<package name="python-ctypeslib2" project="openSUSE:Factory">
+  <title>python-ctypeslib2</title>
+  <description>Python FFI toolkit using clang</description>
+  <devel project="devel:languages:python" package="python-ctypeslib2"/>
+</package>

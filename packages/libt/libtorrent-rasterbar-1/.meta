@@ -1,0 +1,11 @@
+<package name="libtorrent-rasterbar-1" project="openSUSE:Factory">
+  <title>libtorrent is a C++ implementation of the BitTorrent protocol</title>
+  <description>libtorrent-rasterbar is a C++ library that aims to be a good alternative to all the other bittorrent implementations around.
+It is a library and not a full featured client, although it comes with a working example client.
+
+The main goals of libtorrent-rasterbar are:
+ * To be cpu efficient.
+ * To be memory efficient.
+ * To be very easy to use.</description>
+  <devel project="devel:libraries:c_c++" package="libtorrent-rasterbar-1"/>
+</package>

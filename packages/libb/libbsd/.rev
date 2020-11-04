@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7af24648c35a545439d4266cb33a40f3</srcmd5>
+    <version>0.8.1</version>
+    <time>1451824039</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for Swift on Linux.</comment>
+    <requestid>351587</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2afe793cc38bc899b89f155092501ed</srcmd5>
+    <version>0.8.3</version>
+    <time>1463652919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396546</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50b870ab9d4bd6b71e4b70fd5f31a9c7</srcmd5>
+    <version>0.8.6</version>
+    <time>1509193070</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535336</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c98c693f84ece058bed1f14f936cbccd</srcmd5>
+    <version>0.8.7</version>
+    <time>1516971469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>568912</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f07f31cab21278464ef7ef7e7cadd08a</srcmd5>
+    <version>0.9.1</version>
+    <time>1530741060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619381</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c8a782515b008538dbe876cabe20a4fe</srcmd5>
+    <version>0.9.1</version>
+    <time>1556621786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>697860</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>045c33a01c37c80ad6cf4057edf247a0</srcmd5>
+    <version>0.10.0</version>
+    <time>1577887052</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758535</requestid>
+  </revision>
+</revisionlist>

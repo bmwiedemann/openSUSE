@@ -1,0 +1,7 @@
+<package name="python-hvac" project="openSUSE:Factory">
+  <title>HashiCorp Vault API client</title>
+  <description>HashiCorp Vault API client for Python 2/3
+
+</description>
+  <devel project="devel:languages:python" package="python-hvac"/>
+</package>

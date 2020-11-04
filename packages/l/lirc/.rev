@@ -1,0 +1,531 @@
+<revisionlist>
+  <revision rev="1" vrev="5">
+    <srcmd5>41b8c16d66000589d1d809d538639376</srcmd5>
+    <version>0.8.1</version>
+    <time>1172591406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>f02bd82b303dc8b14c7b200acc6064a6</srcmd5>
+    <version>0.8.1</version>
+    <time>1172783393</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="7">
+    <srcmd5>11cf9b6298f51ac93d9aaa829bbbbfc1</srcmd5>
+    <version>0.8.1</version>
+    <time>1175716799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="8">
+    <srcmd5>363d49af3372b8f3058d61f2b8ac1dbb</srcmd5>
+    <version>0.8.1</version>
+    <time>1177363191</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>56e5f0bf2cc22613f97553835e6acc89</srcmd5>
+    <version>0.8.1</version>
+    <time>1180638323</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>675eff452f0ba9383a925ecf501d490d</srcmd5>
+    <version>0.8.1_0.8.2pre3</version>
+    <time>1180685101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f36c3ab80b3d673c28ceab12e6549e6a</srcmd5>
+    <version>0.8.1_0.8.2pre3</version>
+    <time>1182417250</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2548177fa6a0a93f04498c9a16565382</srcmd5>
+    <version>0.8.2</version>
+    <time>1186758687</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8714f0eb8323e9e1af0cc209b941556b</srcmd5>
+    <version>0.8.2</version>
+    <time>1192727329</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a125f11f57847ac8479ce2c414ee8670</srcmd5>
+    <version>0.8.2</version>
+    <time>1196289768</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a4f729302519ec5d85fc2ce2927568a6</srcmd5>
+    <version>0.8.2</version>
+    <time>1203640663</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>07136f77ab2502ea34cf263673df9a19</srcmd5>
+    <version>0.8.2</version>
+    <time>1207831922</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>dbee7a04a87fd8370c408deeb3de487b</srcmd5>
+    <version>0.8.2</version>
+    <time>1209508015</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f30028c725c4ce34c87853555abeb81b</srcmd5>
+    <version>0.8.3</version>
+    <time>1210106138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7bb96ae976726afd03df93ac59d3c69f</srcmd5>
+    <version>0.8.3</version>
+    <time>1210195602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>2feff3cc2163bb69a63e54d62e20247b</srcmd5>
+    <version>0.8.3</version>
+    <time>1214842896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>ad2ee3b111fe06ac064702c8a7e624a5</srcmd5>
+    <version>0.8.3</version>
+    <time>1219358026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>29d576501d59cb4d99ac392c03153c0d</srcmd5>
+    <version>0.8.3</version>
+    <time>1220229460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="44">
+    <srcmd5>29d576501d59cb4d99ac392c03153c0d</srcmd5>
+    <version>0.8.3</version>
+    <time>1220229460</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>55686626cc1925069ac1933c5bb088aa</srcmd5>
+    <version>0.8.4</version>
+    <time>1223908672</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>5c17cb22366492433b485cbb3e03573a</srcmd5>
+    <version>0.8.4</version>
+    <time>1226938901</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>230d3fdb9664705ca685ae2c1e693817</srcmd5>
+    <version>0.8.4</version>
+    <time>1231436805</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>be10db163d3bd770e5e6b4c86346c1e0</srcmd5>
+    <version>0.8.4</version>
+    <time>1235390253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4ae7d4bf83069170e4bd660e2f7c07ce</srcmd5>
+    <version>0.8.5</version>
+    <time>1243467059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>6b41941edc1b2853b2f1df0a5ebdce72</srcmd5>
+    <version>0.8.5</version>
+    <time>1251393418</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 19054 from user lnussel
+</comment>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>133dc2ff06e2561946ea3bed9ac17fd5</srcmd5>
+    <version>0.8.5</version>
+    <time>1253133769</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 20495 from user lnussel
+</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>133dc2ff06e2561946ea3bed9ac17fd5</srcmd5>
+    <version>0.8.5</version>
+    <time>1253133769</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 20495 from user lnussel
+</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e9cf6dd582b852aa5a2aede4819154ba</srcmd5>
+    <version>0.8.6</version>
+    <time>1256035570</time>
+    <user>autobuild</user>
+    <comment>Copy from vdr/lirc based on submit request 22577 from user lnussel
+</comment>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>e2b8a82f7f0494cadc1a606af858e2de</srcmd5>
+    <version>0.8.6</version>
+    <time>1263482290</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 29003 from user coolo
+</comment>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>cb9cb4ca369f6ba73075100c21935931</srcmd5>
+    <version>0.8.6</version>
+    <time>1268411762</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 34687 from user lnussel
+</comment>
+    <requestid>34687</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>7a616fed8a77f4e1ffc3eac7697216b4</srcmd5>
+    <version>0.8.6</version>
+    <time>1268924836</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>ccae6443f4c474ed95f8844d1f76feb3</srcmd5>
+    <version>0.8.6</version>
+    <time>1273090330</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/lirc based on submit request 39385 from user lnussel
+</comment>
+    <requestid>39385</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cf935ba8ab607633ef200047b932f0e5</srcmd5>
+    <version>0.8.6_0.8.7_0CVS201005120922</version>
+    <time>1273789283</time>
+    <user>autobuild</user>
+    <comment>Copy from vdr/lirc based on submit request 39855 from user lnussel
+</comment>
+    <requestid>39855</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a9b710e52ea228eabab0d9a028ee16a8</srcmd5>
+    <version>0.8.6_0.8.7pre1</version>
+    <time>1274805654</time>
+    <user>autobuild</user>
+    <comment>Copy from vdr/lirc based on submit request 40637 from user lnussel
+</comment>
+    <requestid>40637</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>a9b710e52ea228eabab0d9a028ee16a8</srcmd5>
+    <version>0.8.6_0.8.7pre1</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>a9b710e52ea228eabab0d9a028ee16a8</srcmd5>
+    <version>0.8.6_0.8.7pre1</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>e314d77d0cb54b9c152deec18f02d285</srcmd5>
+    <version>unknown</version>
+    <time>1284041345</time>
+    <user>autobuild</user>
+    <comment>Copy from vdr/lirc based on submit request 47345 from user lnussel
+</comment>
+    <requestid>47345</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>6b62bd1469fa61689b391e00f60af121</srcmd5>
+    <version>0.8.7</version>
+    <time>1294652620</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57626 from user lnussel
+</comment>
+    <requestid>57626</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>da47cc52522ff1a6dd6e2befa9912286</srcmd5>
+    <version>0.8.7</version>
+    <time>1294652631</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57626
+</comment>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>e81586eb269e003cbc15467b0eed658a</srcmd5>
+    <version>0.8.7</version>
+    <time>1297383985</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60375 from user lnussel
+</comment>
+    <requestid>60375</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>7936ce14f340c2b86fa35390dafa95b3</srcmd5>
+    <version>0.8.7</version>
+    <time>1297383994</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60375
+</comment>
+  </revision>
+  <revision rev="42" vrev="11">
+    <srcmd5>7936ce14f340c2b86fa35390dafa95b3</srcmd5>
+    <version>0.8.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="43" vrev="13">
+    <srcmd5>7936ce14f340c2b86fa35390dafa95b3</srcmd5>
+    <version>0.8.7</version>
+    <time>1319182155</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="44" vrev="14">
+    <srcmd5>551fa11d07d9b6fa03f1003eaed0c4c2</srcmd5>
+    <version>0.8.7</version>
+    <time>1322259120</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93404 from coolo)</comment>
+    <requestid>93645</requestid>
+  </revision>
+  <revision rev="45" vrev="15">
+    <srcmd5>0290e75967f3f670c509c408bc61a030</srcmd5>
+    <version>0.8.7</version>
+    <time>1323192407</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>3fce3b87c29d394bb4934a5f08c63410</srcmd5>
+    <version>0.9.0</version>
+    <time>1330081544</time>
+    <user>coolo</user>
+    <comment>- move udev rules files from /etc to /lib
+
+- update to version 0.9.0:
+  * Remove mceusb, streamzap, it8x, ene0100 drivers, as they're
+    now redundant with upstream kernel drivers
+  * fix oops unplugging igorplugusb receiver while in use
+  * more error-checking for NULL irctl in various lirc_dev paths
+  * add support for Monueal Moncaso IR to mplay driver
+  * add another PNP device ID to lirc_it87
+  * drop references to static chardev major number 61, we use dynamic
+  * resync lirc_dev with what was merged in the kernel
+  * reformat code using indent to look more like Linux kernel code
+  * drop explicit support for kernels older than 2.6.18
+  * adapt to using lirc.h as merged in the upstream linux kernel
+  * non-LONG_IR_CODE option dropped, its been the default for years
+  * use portable type definitions all over the place
+  * drop an old GLIBC work-around for printing 64-bit values
+  * fix timing-specific repeat-after-release issue
+- drop lirc-0.8.7-lirc_h.diff and lirc-0.8.7-lirc_h_2.diff: fixed
+  upstream
+- clean spec file with spec-cleaner
+
+- build with Igor Cesko receiver and transmitter diode support</comment>
+    <requestid>106345</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>3fce3b87c29d394bb4934a5f08c63410</srcmd5>
+    <version>0.9.0</version>
+    <time>1340183668</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>35fbe85fa5a047e8f05752604f5ba764</srcmd5>
+    <version>0.9.0</version>
+    <time>1354097308</time>
+    <user>coolo</user>
+    <comment>- install the udev rules in /usr/lib/udev for factory and above (forwarded request 143319 from ealin)</comment>
+    <requestid>143334</requestid>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>35fbe85fa5a047e8f05752604f5ba764</srcmd5>
+    <version>0.9.0</version>
+    <time>1359109401</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>52ecd84defef22f72986134a96e2534e</srcmd5>
+    <version>0.9.0</version>
+    <time>1362414545</time>
+    <user>coolo</user>
+    <comment>fix build with automake-1.13.1 (forwarded request 157120 from seife)</comment>
+    <requestid>157121</requestid>
+  </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>52ecd84defef22f72986134a96e2534e</srcmd5>
+    <version>0.9.0</version>
+    <time>1379663168</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="10">
+    <srcmd5>b8d7714d46f5743bc2d65166362d269c</srcmd5>
+    <version>0.9.0</version>
+    <time>1400783867</time>
+    <user>coolo</user>
+    <comment>- use _rundir macro (forwarded request 233010 from oertel)</comment>
+    <requestid>233441</requestid>
+  </revision>
+  <revision rev="53" vrev="12">
+    <srcmd5>b8d7714d46f5743bc2d65166362d269c</srcmd5>
+    <version>0.9.0</version>
+    <time>1409301804</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>94751c608c5fdd3db68931db9269cb2b</srcmd5>
+    <version>0.9.1a</version>
+    <time>1412533841</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253645</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>45c59ef52a0e6c6a9fa9c6e650b2238c</srcmd5>
+    <version>0.9.1a</version>
+    <time>1414613349</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>258284</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>2f057c556091486aed4338193dbcf765</srcmd5>
+    <version>0.9.1a</version>
+    <time>1418113015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264288</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>86479ce74ca31107b7272e4ded24d808</srcmd5>
+    <version>0.9.2a</version>
+    <time>1427445460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292423</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>5136c735a62e1c670c3a737801999025</srcmd5>
+    <version>0.9.2a</version>
+    <time>1440135410</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320114</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>6397c8a7041125a92e7a4183dd6f7d59</srcmd5>
+    <version>0.9.3</version>
+    <time>1442638386</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329632</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>7759e401f2fa3ab196a1de78948388a8</srcmd5>
+    <version>0.9.3</version>
+    <time>1444833554</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334972</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>930fabfc420d416d38446406a94d3c9f</srcmd5>
+    <version>0.9.3a</version>
+    <time>1446219338</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341286</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>f0f2d74bbf074ed7087a5bfa503e04d3</srcmd5>
+    <version>0.9.3a</version>
+    <time>1449995832</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>347661</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>d3d29cc9cc9203f14f6326e2ce636fe3</srcmd5>
+    <version>0.9.3a</version>
+    <time>1459001386</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>375762</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>65f29ad68f619a4dea081751007940d6</srcmd5>
+    <version>0.9.4a</version>
+    <time>1467359531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405516</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>05688967392a6d97515261dc274de25a</srcmd5>
+    <version>0.9.4c</version>
+    <time>1478687850</time>
+    <user>dimstar_suse</user>
+    <comment>Final fix</comment>
+    <requestid>439256</requestid>
+  </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>63aeb875e56b71583479d7637831fc11</srcmd5>
+    <version>0.9.4c</version>
+    <time>1521051706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586326</requestid>
+  </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>b8e2ecff8b2ab259c56e7524297451aa</srcmd5>
+    <version>0.9.4c</version>
+    <time>1527001092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610243</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>58db2d44fde3a9ad761d6c3e1c73ea76</srcmd5>
+    <version>0.10.1</version>
+    <time>1542122989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647390</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2af4957ef1596c11102c8ab60555cc39</srcmd5>
+    <version>0.10.1</version>
+    <time>1543399706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650787</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>79824f24fa0e763a269b046eb359cc2d</srcmd5>
+    <version>0.10.1</version>
+    <time>1575728431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752565</requestid>
+  </revision>
+</revisionlist>

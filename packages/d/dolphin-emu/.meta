@@ -1,0 +1,5 @@
+<package name="dolphin-emu" project="openSUSE:Factory">
+  <title>Dolphin, a Gamecube / Wii / Triforce Emulator </title>
+  <description>Dolphin is a Gamecube, Wii and Triforce (the arcade machine based on the Gamecube) emulator which supports many extra features and abilities not present on the original consoles. Gamecube and Wii compatibility is okay - one can expect &quot;mainstream&quot; titles to be running in some form or another; lesser known titles can be hit or miss. Triforce compatibility is currently limited to one game - others require more of the Triforce-specific peripheral devices to be emulated. Check (and update!) the Compatibility Wiki for more specific information. http://wiki.dolphin-emu.org/</description>
+  <devel project="Emulators" package="dolphin-emu"/>
+</package>

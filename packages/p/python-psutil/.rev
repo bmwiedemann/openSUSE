@@ -1,0 +1,536 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3326c6700f53984064cf88971693dcac</srcmd5>
+    <version>0.4.1</version>
+    <time>1338476976</time>
+    <user>coolo</user>
+    <comment>Needed by recent versions of spyder, which is already in factory</comment>
+    <requestid>122717</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3326c6700f53984064cf88971693dcac</srcmd5>
+    <version>0.4.1</version>
+    <time>1340184077</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9dfccc340547378bed75095a447b2f75</srcmd5>
+    <version>0.4.1</version>
+    <time>1347283361</time>
+    <user>coolo</user>
+    <comment>Minor changes (forwarded request 132971 from TheBlackCat) (forwarded request 132972 from TheBlackCat)</comment>
+    <requestid>133147</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c84b0b2aa5aa71fa9538a7b1690d689</srcmd5>
+    <version>0.6.1</version>
+    <time>1349721246</time>
+    <user>coolo</user>
+    <comment>Update to 0.6.1, remove references to deleted docs dir., remove unnecessary shebangs from python scripts. (forwarded request 137337 from poorboywilly)</comment>
+    <requestid>137464</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>745c681761b887efc7e1e2821a06e89f</srcmd5>
+    <version>0.6.1</version>
+    <time>1354109634</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142749 from TheBlackCat) (forwarded request 142788 from TheBlackCat)</comment>
+    <requestid>142796</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>745c681761b887efc7e1e2821a06e89f</srcmd5>
+    <version>0.6.1</version>
+    <time>1359110092</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>bb08077480614e783efda6198621be7b</srcmd5>
+    <version>0.6.1</version>
+    <time>1362745637</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157732</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4bc54ee6335906d30426e1157cacf298</srcmd5>
+    <version>0.7.1</version>
+    <time>1370432146</time>
+    <user>coolo</user>
+    <comment>Submit this again.
+It does not make sense to double the whole HISTORY of upstream source in .changes files. (forwarded request 176365 from stroeder)</comment>
+    <requestid>176817</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>49957c626627359251bcdb6e185275e6</srcmd5>
+    <version>0.7.1</version>
+    <time>1371653125</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179935</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>006a49e94e4f0589493e6232571f4652</srcmd5>
+    <version>1.0.0</version>
+    <time>1373566399</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.0:
+  * Process.get_connections() 'status' strings are now constants.
+  * test suite exits with non-zero on failure.  (patch by floppymaster)
+  * extensively use unittest2 module in unit tests and provide
+  workarounds if this is not installed on python &lt; 2.7.
+  * Process.get_memory_maps() may raise ValueError.
+  * Process.get_connections() 'status' field is no longer a string but a constant
+    object (psutil.CONN_*).
+  * Process.get_connections() 'local_address' and 'remote_address' fields renamed
+    to 'laddr' and 'raddr'.
+  * psutil.network_io_counters() renamed to psutil.net_io_counters().</comment>
+    <requestid>182847</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e51ec849a87f7a146c14d85640dca362</srcmd5>
+    <version>1.0.1</version>
+    <time>1374493970</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.1:
+  * network_io_counters(pernic=True) no longer works as intended in 1.0.0. (forwarded request 183718 from dirkmueller)</comment>
+    <requestid>183948</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>e51ec849a87f7a146c14d85640dca362</srcmd5>
+    <version>1.0.1</version>
+    <time>1379664245</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d36c48b80b9c69552f4d1e29703ee98c</srcmd5>
+    <version>1.1.1</version>
+    <time>1382378530</time>
+    <user>scarabeus_factory</user>
+    <comment>- update to 1.1.1:
+ * #410: tar.gz and windows binary files are now hosted on PYPI.
+ * #412: [Linux] get/set process resource limits.
+ * #415: [Windows] Process.get_children() is an order of magnitude faster.
+ * #426: [Windows] Process.name is an order of magnitude faster.
+ * #431: [UNIX] Process.name is slightly faster because it unnecessarily
+         retrieved also process cmdline. (forwarded request 204139 from dirkmueller)</comment>
+    <requestid>204144</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1ea6f3252c54bc5183658849e53c3bab</srcmd5>
+    <version>1.2.1</version>
+    <time>1385661906</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.1
+  * #348: [Windows XP] fixed &quot;ImportError: DLL load failed&quot; occurring
+          on module import.
+  * #425: [Solaris] crash on import due to failure at determining BOOT_TIME.
+  * #443: [Linux] can't set CPU affinity with systems with more than 64 cores.
+- Changes from version 1.2.0
+  * #439: assume os.getpid() if no argument is passed to psutil.Process
+          constructor.
+  * #440: new psutil.wait_procs() utility function which waits for multiple
+          processes to terminate.
+  * #348: [Windows XP/Vista] fixed &quot;ImportError: DLL load failed&quot; occurring on
+          module import.
+- Changes from version 1.1.3
+  * #442: [Linux] psutil won't compile on certain version of Linux because of
+          missing prlimit(2) syscall.
+- Changes from version 1.1.2
+  * #442: [Linux] psutil won't compile on Debian 6.0 because of missing
+          prlimit(2) syscall. (forwarded request 208748 from posophe)</comment>
+    <requestid>208749</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>1ea6f3252c54bc5183658849e53c3bab</srcmd5>
+    <version>1.2.1</version>
+    <time>1409302948</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2070f0e985560fe5950a654fd2ff3141</srcmd5>
+    <version>2.1.2</version>
+    <time>1412098840</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253189</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>793e384120cab8d2dcb01e76dfd41dbf</srcmd5>
+    <version>2.1.3</version>
+    <time>1416425209</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.1.3</comment>
+    <requestid>262188</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e94a7e4b8214d34e8eaa9af20919f650</srcmd5>
+    <version>2.2.0</version>
+    <time>1420754563</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280204</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0b22718fd92e122c00cc8161b99be1b5</srcmd5>
+    <version>2.2.1</version>
+    <time>1423130451</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284005</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a4374006dd210aa2ae3e43fbf4999414</srcmd5>
+    <version>3.0.1</version>
+    <time>1435652368</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314355</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c814e8b0f6cf3669d13406eb30a9990b</srcmd5>
+    <version>3.1.1</version>
+    <time>1437657785</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317966</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f0aaa4bc7db608eb8084c1a6f020c731</srcmd5>
+    <version>3.2.0</version>
+    <time>1441296326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328757</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>86b59b8ed49a49c8e3417b2f672aeb78</srcmd5>
+    <version>3.2.1</version>
+    <time>1443684559</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>333461</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>59e6cd5b958fa4572ff754edac6f2f3c</srcmd5>
+    <version>3.2.2</version>
+    <time>1446049841</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341079</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>490e9dbbff7ef8384680af2c7a67d49b</srcmd5>
+    <version>3.3.0</version>
+    <time>1448957982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346815</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7058a0a7fe6c838ddd13013e80687344</srcmd5>
+    <version>3.4.2</version>
+    <time>1453799688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355224</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>668bc94a530c7fab15c09035b8bdbdad</srcmd5>
+    <version>4.0.0</version>
+    <time>1456924878</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360903</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>62c1e4ff337c33205f300d049d7c24f8</srcmd5>
+    <version>4.1.0</version>
+    <time>1458333691</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>372936</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5c98ad64251f2155505034cf15de16b7</srcmd5>
+    <version>4.2.0</version>
+    <time>1464690316</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398952</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5b2cc2134fa5a8e13ed0078ced1f3a23</srcmd5>
+    <version>4.3.0</version>
+    <time>1468482381</time>
+    <user>dimstar_suse</user>
+    <comment>- fix source url
+
+- update to version 4.3.0:
+  * #819: [Linux] different speedup improvements:
+    Process.ppid() is 20% faster
+    Process.status() is 28% faster
+    Process.name() is 25% faster
+    Process.num_threads is 20% faster on Python 3
+  * #810: [Windows] Windows wheels are incompatible with pip 7.1.2.
+  * #812: [NetBSD] fix compilation on NetBSD-5.x.
+  * #823: [NetBSD] virtual_memory() raises TypeError on Python 3.
+  * #829: [UNIX] psutil.disk_usage() percent field takes root reserved space
+    into account.
+  * #816: [Windows] fixed net_io_counter() values wrapping after 4.3GB in
+    Windows Vista (NT 6.0) and above using 64bit values from newer win APIs.</comment>
+    <requestid>407226</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>89299e5b6c9bbf25f8f0ca1b3e668069</srcmd5>
+    <version>4.3.1</version>
+    <time>1474976706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>430376</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>851ca6e20f6dc467f0f70d0e9ab35735</srcmd5>
+    <version>5.0.0</version>
+    <time>1479662320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440006</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8350610cad3f44e26ee1a020af79c8ba</srcmd5>
+    <version>5.2.0</version>
+    <time>1490318551</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481785</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>273c71515480f8f48b6ee2f6ab1f6412</srcmd5>
+    <version>5.2.2</version>
+    <time>1495267783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>494951</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>96937557851b868c3110db53899823a9</srcmd5>
+    <version>5.2.2</version>
+    <time>1501406502</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>510263</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>69ab983bdebdf1f502e96ccbeb2bd475</srcmd5>
+    <version>5.3.0</version>
+    <time>1505237851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522428</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>f302f9e4457a832cf91bac7b763d5a8e</srcmd5>
+    <version>5.3.1</version>
+    <time>1506955443</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528619</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fc585d37ec4a4185ef72fe17f210d41a</srcmd5>
+    <version>5.4.0</version>
+    <time>1509035919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535809</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6118368d8c47b68dcd7a46bb564480d9</srcmd5>
+    <version>5.4.1</version>
+    <time>1510506069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540778</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>e0c11b25a3086b3d87a565fe9e71744a</srcmd5>
+    <version>5.4.2</version>
+    <time>1512926215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555531</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>03fd98d09482d46e3fab6bd106f604bf</srcmd5>
+    <version>5.4.3</version>
+    <time>1515342060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561485</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>efa533c141c4fe2a4294834b6129542d</srcmd5>
+    <version>5.4.5</version>
+    <time>1524400186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596551</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>943ca1a5af632c9bec2ccef0872691c7</srcmd5>
+    <version>5.4.6</version>
+    <time>1529322522</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616701</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e837d033909f96fd8bf5956c7d4db70d</srcmd5>
+    <version>5.4.7</version>
+    <time>1535367293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630325</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3e8cb24e2837f568db88595a704f1330</srcmd5>
+    <version>5.4.8</version>
+    <time>1541746237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646017</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c3efd450ad5884d9cc067c27dbdbbf12</srcmd5>
+    <version>5.5.0</version>
+    <time>1549017787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668832</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4107f1c6e9da92fb4f8baa51a3a623ef</srcmd5>
+    <version>5.5.1</version>
+    <time>1551037554</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676974</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>26a3c21bfa3986f99c9a6155613ba1a0</srcmd5>
+    <version>5.6.0</version>
+    <time>1552380358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683033</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5caaddb324cb05bf29fc1db9a95e05e0</srcmd5>
+    <version>5.6.1</version>
+    <time>1553888187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687163</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f99878c3525e00f8e5bb316f875c95ac</srcmd5>
+    <version>5.6.3</version>
+    <time>1569233153</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to skip more tests that won't work in OBS:
+  * skip-obs.patch
+
+- Update to 5.6.3:
+  * 1494: [AIX] added support for Process.environ(). (patch by Arnon Yaari)
+  * 1276: [AIX] can't get whole cmdline(). (patch by Arnon Yaari)
+  * 1501_: [Windows] Process cmdline() and exe() raise unhandled &quot;WinError 1168 element not found&quot; exceptions for &quot;Registry&quot; and &quot;Memory Compression&quot; psuedo processes on Windows 10.
+  * 1526_: [NetBSD] process cmdline() could raise MemoryError. (patch by Kamil Rytarowski)
+
+- Update to 5.6.2:
+  * 1404: [Linux] cpu_count(logical=False) uses a second method (read from /sys/devices/system/cpu/cpu[0-9]/topology/core_id) in order to determine the number of physical CPUs in case /proc/cpuinfo does not provide this info.
+  * 1458: provide coloured test output. Also show failures on KeyboardInterrupt.
+  * 1464: various docfixes (always point to python3 doc, fix links, etc.).
+  * 1478: add make command to re-run tests failed on last run.
+  * 1456: [Linux] cpu_freq() returns None instead of 0.0 when min/max not available (patch by Alex Manuskin)
+  * 1462: [Linux] (tests) make tests invariant to LANG setting (patch by Benjamin Drung)
+  * 1463: cpu_distribution.py script was broken.
+  * 1470: [Linux] disk_partitions(): fix corner case when /etc/mtab doesn't exist. (patch by Cedric Lamoriniere)
+  * 1472: [Linux] cpu_freq() does not return all CPUs on Rasbperry-pi 3.
+  * 1493: [Linux] cpu_freq(): handle the case where /sys/devices/system/cpu/cpufreq/ exists but is empty.</comment>
+    <requestid>729891</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>141e1f4da0869f75e1c0eb6950f8d1b1</srcmd5>
+    <version>5.6.5</version>
+    <time>1574414503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747243</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>6ad5c7eefb54ba4ee1e01837acda291c</srcmd5>
+    <version>5.6.7</version>
+    <time>1575728276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751674</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>6bb674d73ce004c5cad862d91f022b63</srcmd5>
+    <version>5.6.7</version>
+    <time>1580511281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768438</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>885bcc08c77e14f0ed5e4a6ceca8824e</srcmd5>
+    <version>5.7.0</version>
+    <time>1585265004</time>
+    <user>dimstar_suse</user>
+    <comment>For staging:I to fix py3 only build
+
+- Update to 5.7.0:
+  * Various fixes to build with updated kernel/etc.
+- Remove merged patch pr_1665.patch and pr_1364.patch
+- Update patch skip-obs.patch
+- Remove skip-test-missing-warnings.patch as it can be fixed by
+  properly calling the tests</comment>
+    <requestid>784805</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8ad22bbc6dd1c64ba090e3910276284c</srcmd5>
+    <version>5.7.0</version>
+    <time>1598352044</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_failing_tests.patch to skip tests failing because of
+  incomplete emulation of the environment in osc build
+  environment (gh#giampaolo/psutil#1635).
+</comment>
+    <requestid>828549</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>199e94857ed746e4a620ea92736edffa</srcmd5>
+    <version>5.7.2</version>
+    <time>1603961115</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.7.2:
+  * parallel tests on UNIX (make test-parallel). They're twice as fast!
+  * 1741: &quot;make build/install&quot; is now run in parallel and it's about 15% faster on UNIX.
+  * 1747: Process.wait() on POSIX returns an enum, showing the negative signal which was used to terminate the process
+  * 1747: Process.wait() return value is cached so that the exit code can be retrieved on then next call.
+  * 1747: Process provides more info about the process on str() and repr() (status and exit code):
+  * 1757: memory leak tests are now stable.
+  * 1768: [Windows] added support for Windows Nano Server. (contributed by Julien Lebot)
+  * 1726: [Linux] cpu_freq() parsing should use spaces instead of tabs on ia64. (patch by Michał Górny)
+  * 1760: [Linux] Process.rlimit() does not handle long long type properly.
+  * 1766: [macOS] NoSuchProcess may be raised instead of ZombieProcess.
+  * 1781: fix signature of callback function for getloadavg(). (patch by Ammar Askar)
+  - remove skip-flaky-i586.patch (obsolete)</comment>
+    <requestid>835008</requestid>
+  </revision>
+</revisionlist>

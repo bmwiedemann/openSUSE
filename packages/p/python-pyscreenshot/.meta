@@ -1,0 +1,7 @@
+<package name="python-pyscreenshot" project="openSUSE:Factory">
+  <title></title>
+  <description>The pyscreenshot module can be used to copy the contents of the screen
+to a Pillow image memory using various back-ends.
+Replacement for the ImageGrab Module.</description>
+  <devel project="devel:languages:python" package="python-pyscreenshot"/>
+</package>

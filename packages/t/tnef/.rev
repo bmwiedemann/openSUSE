@@ -1,0 +1,183 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c842fba513033bbcab88fc7d66655396</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1168904365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="135">
+    <srcmd5>c842fba513033bbcab88fc7d66655396</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1168904365</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="136">
+    <srcmd5>68cea925c15d17066c03489fb7f40208</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1245277801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="138">
+    <srcmd5>68cea925c15d17066c03489fb7f40208</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1245277801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="139">
+    <srcmd5>e15f2331cfab824ae18018fe8a873b32</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1268926354</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="141">
+    <srcmd5>e15f2331cfab824ae18018fe8a873b32</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1278667392</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="142">
+    <srcmd5>e15f2331cfab824ae18018fe8a873b32</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1278678622</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="145">
+    <srcmd5>e15f2331cfab824ae18018fe8a873b32</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>93e851240e5697a57f008fa4260dfcdd</srcmd5>
+    <version>1.4.7</version>
+    <time>1298246187</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62155 from user computersalat
+</comment>
+    <requestid>62155</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2bee20b9d0e7400b58366e8f75f5a016</srcmd5>
+    <version>1.4.7</version>
+    <time>1298246195</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62155
+</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04cae6ae31bb3157248737c676ed4095</srcmd5>
+    <version>1.4.8</version>
+    <time>1304337524</time>
+    <user>saschpe</user>
+    <comment>Update to 1.4.8, Minor spec file updates, Removed patch from upstream to fix some manpage errors (fixed in new version) (forwarded request 68616 from adra)</comment>
+    <requestid>68712</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>04cae6ae31bb3157248737c676ed4095</srcmd5>
+    <version>1.4.8</version>
+    <time>1319182525</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>180e6d49da02f27321e16a03a2b95918</srcmd5>
+    <version>1.4.8</version>
+    <time>1323194943</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>28230cee1a78f4d78114e5563edc93d2</srcmd5>
+    <version>1.4.9</version>
+    <time>1331579832</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.9 (forwarded request 108824 from adra)</comment>
+    <requestid>108864</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>28230cee1a78f4d78114e5563edc93d2</srcmd5>
+    <version>1.4.9</version>
+    <time>1340184280</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>28230cee1a78f4d78114e5563edc93d2</srcmd5>
+    <version>1.4.9</version>
+    <time>1359110497</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>28230cee1a78f4d78114e5563edc93d2</srcmd5>
+    <version>1.4.9</version>
+    <time>1379664831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b825a31c72b5106287c7598f132b560</srcmd5>
+    <version>1.4.10</version>
+    <time>1400006924</time>
+    <user>coolo</user>
+    <comment>Update to 1.4.10 (forwarded request 232626 from adra)</comment>
+    <requestid>233653</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>3b825a31c72b5106287c7598f132b560</srcmd5>
+    <version>1.4.10</version>
+    <time>1409303512</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2796ac7d9e4ef19aba45f228692b87e8</srcmd5>
+    <version>1.4.12</version>
+    <time>1428652320</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294831</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>32148f23c583a44b1eeea48e6026b5aa</srcmd5>
+    <version>1.4.13</version>
+    <time>1488559483</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new upstream release 1.13</comment>
+    <requestid>460999</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cff773188291b138745eb8eb594c519c</srcmd5>
+    <version>1.4.15</version>
+    <time>1499415460</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508491</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>4785cbc0f9e9923db393d9fe6b11c650</srcmd5>
+    <version>1.4.15</version>
+    <time>1510912630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542476</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7e4aa80b18af6cd2cfede00fe87257f5</srcmd5>
+    <version>1.4.17</version>
+    <time>1518025280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573533</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>210976903575f925b18bde5413caba17</srcmd5>
+    <version>1.4.18</version>
+    <time>1600346987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834965</requestid>
+  </revision>
+</revisionlist>

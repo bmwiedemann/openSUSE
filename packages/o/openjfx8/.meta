@@ -1,0 +1,5 @@
+<package name="openjfx8" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="openjfx8"/>
+</package>

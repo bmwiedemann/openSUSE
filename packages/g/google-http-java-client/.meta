@@ -1,0 +1,5 @@
+<package name="google-http-java-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="google-http-java-client"/>
+</package>

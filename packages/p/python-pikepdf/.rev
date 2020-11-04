@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae72872973e9a387cd41936dc9032882</srcmd5>
+    <version>1.10.1</version>
+    <time>1582035535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775138</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f6cd517fe40d1d3c3579b03ddf7b14c</srcmd5>
+    <version>1.10.2</version>
+    <time>1584446930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785543</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bc83ab65d754c5ac9dae81a32da10db</srcmd5>
+    <version>1.10.3</version>
+    <time>1585085791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787784</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>69d16e70482c158d4123be50677af371</srcmd5>
+    <version>1.11.1</version>
+    <time>1587467199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795619</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6144e404ce08c0d1abf515754dcc22c8</srcmd5>
+    <version>1.11.1</version>
+    <time>1587659692</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in python2 package on py3 only software</comment>
+    <requestid>796475</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c12755ce8e01de23148a0dcb5407d236</srcmd5>
+    <version>1.17.3</version>
+    <time>1600346494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823713</requestid>
+  </revision>
+</revisionlist>

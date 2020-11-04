@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>748b1f7c9f7d1542ae8acdec41da2183</srcmd5>
+    <version>1.30.0</version>
+    <time>1598642390</time>
+    <user>dimstar_suse</user>
+    <comment>gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere</comment>
+    <requestid>825367</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0914c2b5d851cacb87e3613838492e3b</srcmd5>
+    <version>1.30.0</version>
+    <time>1598726644</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>830354</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a769274864327d2768943f836955fa2</srcmd5>
+    <version>1.31.0</version>
+    <time>1600278129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.31.0
+  * no upstream changelog available</comment>
+    <requestid>834877</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4fa768bf4d8b91ed5c681ca3f0b8212c</srcmd5>
+    <version>1.33.1</version>
+    <time>1603821568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844101</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c1903523544dda0a856a11c4f583d777</srcmd5>
+    <version>0.6.3</version>
+    <time>1474623032</time>
+    <user>dimstar_suse</user>
+    <comment>Required for GNU Health</comment>
+    <requestid>422030</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58474b607e95aa47c2e2bc097a5d2a07</srcmd5>
+    <version>0.6.4</version>
+    <time>1492714134</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>481783</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cecaaba7e875165629a6163151cb432a</srcmd5>
+    <version>0.7.0</version>
+    <time>1501666073</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>513733</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c2a976fd5c56735de759a715cf9885cd</srcmd5>
+    <version>0.7.1</version>
+    <time>1508610095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535484</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d0dd7848e62f2020bcfe4f93a2edc54</srcmd5>
+    <version>0.8.0</version>
+    <time>1513245446</time>
+    <user>dimstar_suse</user>
+    <comment>- Explain why the tests are conditioned around
+- Specify all the runtime dependencies based on setup.py
+
+- version 0.8.0 
+  * Do not guess_type on styled cell content
+  * Remove type attributes when guessing type
+  * Add support for Python 3.6
+  * Remove soft-page-break 
+  * tests added to spec file</comment>
+    <requestid>555893</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>530da081a78fef401d12091ca5fb9cdd</srcmd5>
+    <version>0.8.1</version>
+    <time>1538672522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639874</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9fbf8d92d71de0935c25ecbfa4bacfd5</srcmd5>
+    <version>0.8.1</version>
+    <time>1562591463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713707</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6ba7d6ac60424a0015e2f5031a7c9ba</srcmd5>
+    <version>0.9.0</version>
+    <time>1564576614</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests
+- Run fdupes
+
+- version 0.9.0
+  * Support out parameter of render
+  * Write opendocument stream directly to the ZipFile</comment>
+    <requestid>720017</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c8617e3ddbcae0dc875095aefe2f3983</srcmd5>
+    <version>0.9.1</version>
+    <time>1580300142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767950</requestid>
+  </revision>
+</revisionlist>

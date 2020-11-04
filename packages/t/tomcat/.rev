@@ -1,0 +1,708 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3b41d394dd9c8e9161542e27375473f</srcmd5>
+    <version>7.0.27</version>
+    <time>1340033687</time>
+    <user>coolo</user>
+    <comment>new name of tomcat7</comment>
+    <requestid>125169</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d3b41d394dd9c8e9161542e27375473f</srcmd5>
+    <version>7.0.27</version>
+    <time>1340184281</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8df1921f5d58a24e7a462265c045b47c</srcmd5>
+    <version>7.0.27</version>
+    <time>1342713648</time>
+    <user>coolo</user>
+    <comment>- fix bnc#771802 - systemd support is broken
+  * change type froking to simple as it does not make a sense run java in a
+    background to emulate that
+  * remove the need of nested wrappers, so /usr/sbin/tomcat-sysd now relies on
+    systemd features like User/EnvironmentFile
+  * workaround the 143 exit code in Stop phase - return 0 in this case
+  * merge the jsvc into tomcat-sysd code, the -jsvc-sysd is a symlink
+  * properly use jsvc with pid file to start and stop</comment>
+    <requestid>128320</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>54d97ad17cea6d713ae83545bd8d5585</srcmd5>
+    <version>7.0.30</version>
+    <time>1347356308</time>
+    <user>coolo</user>
+    <comment>- update to 7.0.30 (bugfix release) 
+  * SSI and CGI disabled by default
+- fix bnc#779538: change the working dir to $CATALINA_BASE
+- document the CATALINA_BASE and CATALINA_HOME in tomcat.conf better
+- fix rpmlintrc file</comment>
+    <requestid>133593</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b512a31f2660198a47431512cc94980e</srcmd5>
+    <version>7.0.33</version>
+    <time>1354118653</time>
+    <user>coolo</user>
+    <comment>- update to 7.0.33 (bugfix release)</comment>
+    <requestid>142909</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0575936cf9e2d779627b6ee72d39bf0d</srcmd5>
+    <version>7.0.33</version>
+    <time>1355920298</time>
+    <user>coolo</user>
+    <comment>- Require gpg-offline on 12.2+ 
+
+- Verify GPG signature.</comment>
+    <requestid>145725</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0c58dc0381d1f2012bdf443063a173fc</srcmd5>
+    <version>7.0.33</version>
+    <time>1357217308</time>
+    <user>namtrac</user>
+    <comment>What these changes do:
+
+1. Fix this tomcat warning:
+
+    SEVERE: An incompatible version 1.1.23 of the APR based Apache Tomcat Native library is installed, while Tomcat requires version 1.1.24
+
+2. Fix this tomcat warning:
+
+    WARNING: Problem with JAR file [/usr/share/java/tomcat/log4j.jar], exists: [false], canRead: [false]
+
+3. Ensure tomcat stdout/stderr output ends up in catalina.out
+
+4. Fix several issues in the init script
+
+Thanks. (forwarded request 146513 from archie172)</comment>
+    <requestid>146833</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c6227d78c4cbfd819f940e04909dba23</srcmd5>
+    <version>7.0.35</version>
+    <time>1358873945</time>
+    <user>coolo</user>
+    <comment>
+can be accepted after ecj-4.2.1 version upgrade
+
+- update to 7.0.35 (bugfix release)
+  require ecj &gt;= 4.2.1, like upstream do
+- make gpg-offline work distros after 12.2</comment>
+    <requestid>149433</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c6227d78c4cbfd819f940e04909dba23</srcmd5>
+    <version>7.0.35</version>
+    <time>1359110499</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>f3360b3246b1188939a5d3157bf0222d</srcmd5>
+    <version>7.0.35</version>
+    <time>1361558137</time>
+    <user>coolo</user>
+    <comment>- Fix tomcat init scripts generating malformed classpath
+  (http://youtrack.jetbrains.com/issue/JT-18545)
+  bnc#804992</comment>
+    <requestid>155984</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67a57a9151b0b0d4a4ff6255747e9eb6</srcmd5>
+    <version>7.0.39</version>
+    <time>1366473768</time>
+    <user>coolo</user>
+    <comment>- update to 7.0.39 (bugfix release)
+- install only systemd unit files on openSUSE 12.1+
+  * and call proper code when init script still exists
+- add a proper scripplets for -jsvc subpackage
+- don't use catalina.out, systemd redirects stderr/stdout to syslog
+- don't use and recommends logrotate
+- package /etc/ant.d properly, mark only catalina-ant as a config file</comment>
+    <requestid>172490</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca325eb0992d6177a1383016e6dfe452</srcmd5>
+    <version>7.0.42</version>
+    <time>1377248669</time>
+    <user>scarabeus_factory</user>
+    <comment>- add _constraints to not schedule build on some build machines
+  workaround for bnc#832762
+
+- Add missing 'su root tomcat' line to logrotate. See also
+  https://bugzilla.redhat.com/show_bug.cgi?id=790334 
+
+- call chown --no-dereference in init script
+  (bnc#822177#c7/prevents CVE-2013-1976)
+ 
+
+- update to 7.0.42 (bugfix release)
+  see http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+- fix file list to be compatible for new rpm</comment>
+    <requestid>186566</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>86438eb6bdf5da90359c4eb31a5d935e</srcmd5>
+    <version>7.0.42</version>
+    <time>1378533765</time>
+    <user>coolo</user>
+    <comment>- drop a dependency on unecessary -tomcat5 packages 
+- use commons-dbcp.jar for build
+- add missing commons-pool.jar to libdir</comment>
+    <requestid>197504</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>e0c57de6dc4adee43b125f9e7f5ffecb</srcmd5>
+    <version>7.0.42</version>
+    <time>1378912306</time>
+    <user>scarabeus_factory</user>
+    <comment>Submit of succeeding java packages for factory</comment>
+    <requestid>198316</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>e0c57de6dc4adee43b125f9e7f5ffecb</srcmd5>
+    <version>7.0.42</version>
+    <time>1379664834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>73d474516632eef5a1437ee6f3bf709f</srcmd5>
+    <version>7.0.47</version>
+    <time>1384519147</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>206502</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>33b64af9b9293f9ac679470aa5d42695</srcmd5>
+    <version>7.0.47</version>
+    <time>1386932473</time>
+    <user>coolo</user>
+    <comment>- Add missing commons-pool-tomcat5 symlink (bnc#847505c#13)
+
+- Update to 7.0.47</comment>
+    <requestid>210647</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b78bc734bea482fbdbc5e416eeeb8896</srcmd5>
+    <version>7.0.54</version>
+    <time>1401108265</time>
+    <user>coolo</user>
+    <comment>- Version bump to 7.0.54:
+  * bugfix update
+  * See http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+
+- Update to 7.0.53
+  * bugfix release
+  * Update the Eclipse JDT compiler to enable full Java 8 support in JSPs.
+  * See http://tomcat.apache.org/tomcat-7.0-doc/changelog.html
+- Patch for Bug 56373
+  * See https://issues.apache.org/bugzilla/show_bug.cgi?id=56373
+  * tomcat-7.0.53-JDTCompiler-java.patch
+- Rename tomcat-7.0.2-property-build.windows.patch to
+  tomcat-7.0.52-property-build.windows.patch
+
+- remove saxon build requirement for sles
+- disable bytecode check for sles 
+
+- remove unknown option from fillup_only macro
+- wrap systemd %pre[un]/%post[un] in conditional
+- specify required ant version
+
+- Update to 7.0.52
+  * bugfix release
+  * Fix CVE-2014-0050, a DoS vulnerability related to multi-part processing
+- Update to 7.0.50
+  * bugfix release</comment>
+    <requestid>235273</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>022262d2d08821a6385184a66c8ecfab</srcmd5>
+    <version>7.0.54</version>
+    <time>1406914029</time>
+    <user>coolo</user>
+    <comment>- Do not define default defattr as it is pointless.
+
+- One file here was not supposed to be ghost.
+
+- Fix once more the alternatives.
+
+- Add path to rm command.
+
+- Silence loads of warnings by rpmlintrc
+
+- Cleanup with spec-cleaner and format few things a bit.
+
+- Remove few deps not really needed for sle11.
+
+- Drop unused files obs.bl and local.lb
+- Drop unused collections-tomcat-build.xml</comment>
+    <requestid>242840</requestid>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>022262d2d08821a6385184a66c8ecfab</srcmd5>
+    <version>7.0.54</version>
+    <time>1409303515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>128c2d9fbce72c9d3ef13e7793f914a8</srcmd5>
+    <version>7.0.55</version>
+    <time>1410236486</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248019</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3cc773880d53967f41dea2d4bb61f89f</srcmd5>
+    <version>7.0.55</version>
+    <time>1411370574</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249943</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>004db042530f86ca9c7285b7a3842ef9</srcmd5>
+    <version>7.0.55</version>
+    <time>1427983144</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292643</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2c1e77d8cd176afc504c3ef5e745574c</srcmd5>
+    <version>8.0.23</version>
+    <time>1433232593</time>
+    <user>dimstar_suse</user>
+    <comment>- Some whitespace cleanups
+
+- Remove pointless conflicts on provide/obsolete symbols
+
+- Version bump to 8.0.23:
+  * Multiple testfixes all around, read upstream changelog at:
+  http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.23_(markt)
+
+- update to Tomcat 8.0.18:
+  * Major update for tomcat8 from tomcat7
+  * For full changelog please read upstream changes at:
+    + http://tomcat.apache.org/tomcat-8.0-doc/changelog.html
+  * Rename all tomcat-7.0-* files to tomcat-8.0-*
+  * Update keyring file
+- Update windows patch to apply again:
+  * Deleted: tomcat-7.0.52-property-build.windows.patch
+  * Added: tomcat-8.0.9-property-build.windows.patch
+  * Added:tomcat-8.0-tomcat-users-webapp.patch
+  * Deleted: tomcat-7.0-tomcat-users-webapp.patch
+  * Added: tomcat-8.0-bootstrap-MANIFEST.MF.patch
+  * Deleted: tomcat-7.0-bootstrap-MANIFEST.MF.patch</comment>
+    <requestid>309552</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>61f1835bf7d58e893900166177d0f274</srcmd5>
+    <version>8.0.28</version>
+    <time>1447234317</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343405</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f9feaef831f3b241d79f76d9077cc983</srcmd5>
+    <version>8.0.32</version>
+    <time>1456127847</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 8.0.32:
+  * Another bugfix release for 8.0 series, full details:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.32_(markt)
+- Rebase patch:
+  * tomcat-8.0.9-property-build.windows.patch</comment>
+    <requestid>360027</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e6213e08f94de4d4dc271fd4e69c5475</srcmd5>
+    <version>8.0.32</version>
+    <time>1457533041</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>367674</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>41cba7332518615b75f0fb883c861b07</srcmd5>
+    <version>8.0.32</version>
+    <time>1460482480</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fixme for the prereq preamble value
+- It seems systemd prints error on adding the @ services to macros
+  so do not do that
+
+- package was partly merged with the scripts used in the
+  Fedora distribution
+- support running multiple tomcat instances on the same server
+  (fate#317783)
+- add catalina-jmx-remote.jar (fate#318403)
+- remove sysvinit support: systemd is required</comment>
+    <requestid>385752</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c35da0805342c93ceb18d931b9634eb3</srcmd5>
+    <version>8.0.33</version>
+    <time>1461855354</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 8.0.33:
+  * Another bugfix release for 8.0 series, full details:
+    http://tomcat.apache.org/tomcat-8.0-doc/changelog.html#Tomcat_8.0.33_(markt)
+- Rebase tomcat-8.0-tomcat-users-webapp.patch
+- Rebase tomcat-7.0.53-JDTCompiler-java.patch
+  to tomcat-8.0.33-JDTCompiler-java.patch</comment>
+    <requestid>391265</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8817896364fea52edd0d2c83e9967b8e</srcmd5>
+    <version>8.0.33</version>
+    <time>1462178674</time>
+    <user>dimstar_suse</user>
+    <comment>Retroactively add some missing changelog entries in order to keep sharing package with SLE</comment>
+    <requestid>392763</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>e5f15ce3c259da584174e36218be43f1</srcmd5>
+    <version>8.0.33</version>
+    <time>1463221406</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>394573</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2f716ec1fda8540fc7db08746390d93a</srcmd5>
+    <version>8.0.36</version>
+    <time>1468482582</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407907</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>202742ce6ed8ce5cedd7f9bddda907c7</srcmd5>
+    <version>8.0.36</version>
+    <time>1474623102</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424744</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>b2a59372d6b626857e69f453594fcbe2</srcmd5>
+    <version>8.0.36</version>
+    <time>1476350990</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to commons-dbcp2 fate#321029</comment>
+    <requestid>433401</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8e7e9ef122d9fb207fb5ae306adb1fce</srcmd5>
+    <version>8.0.39</version>
+    <time>1484041547</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448470</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>1d3f3ff16135c50b87d357e7c6eb7642</srcmd5>
+    <version>8.0.43</version>
+    <time>1494442383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493810</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>ac36756ebed9d3cf020042262dfe2cce</srcmd5>
+    <version>8.0.43</version>
+    <time>1495442866</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496804</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>61feb6036e1652aa01873c09c55a3a5c</srcmd5>
+    <version>8.0.44</version>
+    <time>1498286084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505919</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>b4defe7bebb7310c3da533ce0aa722a2</srcmd5>
+    <version>8.0.44</version>
+    <time>1505920287</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527265</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c1fdc90251f4d816ccb8b58b71eebea5</srcmd5>
+    <version>9.0.2</version>
+    <time>1512547121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548123</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>f1a28940d4b5f7cb9ba14e6f202953ac</srcmd5>
+    <version>9.0.2</version>
+    <time>1516222723</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>566591</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d4f1b142581546e0eeca913c95f77271</srcmd5>
+    <version>9.0.5</version>
+    <time>1518814003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>577307</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2b27740a2cf6fcad3ef4295e5effa946</srcmd5>
+    <version>9.0.5</version>
+    <time>1532361768</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>624709</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c11025accaa3a4fdeb1be5efe34f4819</srcmd5>
+    <version>9.0.10</version>
+    <time>1539250719</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639608</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>056409262190815271d7924bd398ccaa</srcmd5>
+    <version>9.0.12</version>
+    <time>1540447769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642920</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>804a7776bc1f3e9c8fd4bcfdd471a011</srcmd5>
+    <version>9.0.13</version>
+    <time>1542579600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648705</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>e99ab293d97ea0eae664e7343c7ef028</srcmd5>
+    <version>9.0.13</version>
+    <time>1544189566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655046</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0fe707238aa00aa33cee8eb4889ffa89</srcmd5>
+    <version>9.0.14</version>
+    <time>1547540071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664713</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>f81d4084718897410df265181d9d495f</srcmd5>
+    <version>9.0.14</version>
+    <time>1549464462</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671958</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>02625b1080365a1a4ecaadf0cbea8d69</srcmd5>
+    <version>9.0.14</version>
+    <time>1551113246</time>
+    <user>coolo</user>
+    <comment>Consolidate the requests</comment>
+    <requestid>678590</requestid>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>d02b41ed589fc0eb367b71c44b9e56bc</srcmd5>
+    <version>9.0.14</version>
+    <time>1555588466</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against upcoming geronimo-specs</comment>
+    <requestid>694541</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1b71d36a4d5f15c2131b056c9fc6cfa3</srcmd5>
+    <version>9.0.19</version>
+    <time>1556915358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696888</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>69ec663dc59005a502b99d806794db9e</srcmd5>
+    <version>9.0.20</version>
+    <time>1558783104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704517</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>7545028cac8853c76284d85837e49d9c</srcmd5>
+    <version>9.0.20</version>
+    <time>1561557672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709512</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>bd682279613b309f07a480286bab78e6</srcmd5>
+    <version>9.0.20</version>
+    <time>1569588319</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with the new ecj</comment>
+    <requestid>733223</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>4aaed6029fc4f40d2abb107781134028</srcmd5>
+    <version>9.0.20</version>
+    <time>1570112164</time>
+    <user>dimstar_suse</user>
+    <comment>Build against log4j12</comment>
+    <requestid>734299</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>cf43b42e6fc6cb9113f4fb8dabc1d2cb</srcmd5>
+    <version>9.0.20</version>
+    <time>1570448523</time>
+    <user>dimstar_suse</user>
+    <comment>Add maven metadata for tomcat-util-scan + avoid duplicate metadata</comment>
+    <requestid>735434</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>cb22c72aa05f8d7bafbac40c53c42e49</srcmd5>
+    <version>9.0.27</version>
+    <time>1574104269</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.0.27 + generate OSGi manifest using aqute-bnd</comment>
+    <requestid>749212</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>bff82b70fd2f737c5ae4d23271b77b06</srcmd5>
+    <version>9.0.30</version>
+    <time>1578502555</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing CVE numbers</comment>
+    <requestid>761823</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>b949fa31a4c6c15a19f1f186a049ec16</srcmd5>
+    <version>9.0.30</version>
+    <time>1579346289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765337</requestid>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>2de169bab586a53bc2393653e7b7ae5e</srcmd5>
+    <version>9.0.30</version>
+    <time>1579557369</time>
+    <user>dimstar_suse</user>
+    <comment>Restore the capacity to build with jdk 9+</comment>
+    <requestid>765850</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>593689d1e6ef127efb36796d8ddfffda</srcmd5>
+    <version>9.0.30</version>
+    <time>1580373707</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1162081</comment>
+    <requestid>768399</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>c034f32194abef727e90f5059f6a4acf</srcmd5>
+    <version>9.0.31</version>
+    <time>1582643303</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.0.31 - Security fixes</comment>
+    <requestid>779100</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>f023c267a9d5697c004ba603c3ffa516</srcmd5>
+    <version>9.0.31</version>
+    <time>1582725919</time>
+    <user>dimstar_suse</user>
+    <comment>missing bsc#</comment>
+    <requestid>779268</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>080b747c44e28032c3e541cd58369744</srcmd5>
+    <version>9.0.31</version>
+    <time>1582899740</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780241</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>0e62092606641b8c5e6f16ec5c105470</srcmd5>
+    <version>9.0.33</version>
+    <time>1585602340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789763</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>442e850c9c275d81e34075c359a8ab2e</srcmd5>
+    <version>9.0.34</version>
+    <time>1586869801</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793742</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>566eec3fb939a121b34f197ead70aea6</srcmd5>
+    <version>9.0.35</version>
+    <time>1590650103</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809216</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>63bb5f3e73a98a5ad73aedb5ed927d6b</srcmd5>
+    <version>9.0.36</version>
+    <time>1593200966</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2020-11996 (bsc#1173389)</comment>
+    <requestid>817202</requestid>
+  </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>c8ad430a6ef075d4464654f88b30d36e</srcmd5>
+    <version>9.0.36</version>
+    <time>1596203704</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823636</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>31451319bbad343d6a015b4a5087d491</srcmd5>
+    <version>9.0.36</version>
+    <time>1598726024</time>
+    <user>dimstar_suse</user>
+    <comment>libexecdir fixes</comment>
+    <requestid>829682</requestid>
+  </revision>
+  <revision rev="72" vrev="4">
+    <srcmd5>c9fd84f836a0e85a30d49f10737d19be</srcmd5>
+    <version>9.0.36</version>
+    <time>1602682815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841719</requestid>
+  </revision>
+</revisionlist>

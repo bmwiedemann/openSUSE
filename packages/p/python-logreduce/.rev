@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a806ba5cd7100a70d6e1bc6cf124babf</srcmd5>
+    <version>0.1.2</version>
+    <time>1527583187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611369</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94e1e3f0fcbcf4a2bc256f19815effb8</srcmd5>
+    <version>0.1.3</version>
+    <time>1531232141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.1.3:
+ * Update zuul-jobs log-classify role
+ * Fix ARA report directory link to ara-report
+ * Automatically set the zuul-web url for logs.rdoproject.org
+ * Add tripleo-ci job tokenization
+ * Update README todo lists
+ * Fix typo in ARA Records Ansible
+ * Start with a capitalized pypi summary
+ * Move flake8 from test-requirements to the linter env</comment>
+    <requestid>621700</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>41d9b52d79930936620e3ea45eb10e88</srcmd5>
+    <version>0.1.3</version>
+    <time>1533887392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628236</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1943a7c824549b4479026bdde5052f6b</srcmd5>
+    <version>0.2.0</version>
+    <time>1540451584</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.0:
+  * Use ara[-\_]\*.\*/ in the default ignore paths list
+  * Fix download asyncio loop and logger names
+  * Record test command used to train models
+  * Add a uuid to model object
+  * Remove chunk grouping in the process function
+  * Rewrite html output using patternfly
+  * Collect ZuulBuild in anomaly report
+  * Add --cacheonly argument to skip file download
+  * Add ara-.\* to the default ignore list
+  * Rewrite ZuulBuilds download module to discover base log\_url
+  * common: small fixes for automated process</comment>
+    <requestid>644414</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc1e75e2cc3501529bcbbc8590ef209f</srcmd5>
+    <version>0.3.0</version>
+    <time>1540988065</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0:
+  * Add support for ara database classification
+  * Add webui sub-package to the spec file
+  * tokenizer: handle hexa numbers
+  * react: fix typo and add build time
+  * Add React web interface
+  * Add worker service to process user report
+  * Add anomaly update method
+  * Add model skeleton and report import method
+  * Add api skeleton</comment>
+    <requestid>645294</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>43bb2f34a1c0871093ebb2b66d9de39d</srcmd5>
+    <version>0.3.0</version>
+    <time>1545647964</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659481</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>761ac269825c158e6e63b156b3445e1c</srcmd5>
+    <version>0.4.0</version>
+    <time>1554114903</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0:
+  * Bump model version and fix typo
+  * Add HashingAnnoy model
+  * Add hashing\_nn benchmark in doc string
+  * Add HashingApproximateNeighbors model
+  * Implement iterator interface for file-like objects
+  * Refactor TokenizerTests
+  * Provide a bit more info about timings of the training
+  * Remove support for bag-of-words\_lshf
+  * Don't store duplicate data in model
+  * Fix heat\_uuid regexp formatting
+  * Relax digits\_re again a bit
+  * Vectorizer optimisation: don't do word analysing
+  * debug\_lineprocess: Handle more than one input file
+  * debug\_lineprocess: Format output slightly nicer and remove duplicates
+  * Tighten heat\_uuid regexp
+  * Tighten length-based regexp matches properly
+  * debug\_lineprocess add some simple word / token statistics
+  * Blacklist .xml extension
+  * Use for loop instead of handcrafted while construct
+  * tests: use free tcp port for gearman server
+  * Add --model-type argument to top-level command
+  * tokenizer: remove sshd warnings
+  * Make debugging scripts callable again
+  * Reduce code duplication a bit
+  * Micro-optimize the tokenization
+  * ci: enable gate jobs
+  * Make systemd service file SCL independent
+  * Transition webui related files to the log-classify name
+  * Match uuid\_re before heat\_re</comment>
+    <requestid>686071</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c6ea90cc2dd3bc7fd4ece4a5958dfbba</srcmd5>
+    <version>0.4.0</version>
+    <time>1554189828</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0 (bsc#1131198)</comment>
+    <requestid>690460</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>df1251221aa4b35839ff645ce4112270</srcmd5>
+    <version>0.4.0</version>
+    <time>1568379729</time>
+    <user>lnussel_factory</user>
+    <comment>- Add aptch to fix build with new scikit:
+  * scikit.patch</comment>
+    <requestid>730452</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c59bc8e63de5930e280987b6a7c64bfd</srcmd5>
+    <version>0.5.2</version>
+    <time>1586973364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794114</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0ef838749a1d607e629b14277d0188f9</srcmd5>
+    <version>0.5.2</version>
+    <time>1597856221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827756</requestid>
+  </revision>
+</revisionlist>

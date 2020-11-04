@@ -1,0 +1,6 @@
+<package name="xclass" project="openSUSE:Factory">
+  <title>Library for Uniform Presentation of fvwm95 Programs</title>
+  <description>This package contains a library for uniform presentation of fvwm95
+programs.</description>
+  <devel project="X11:Utilities" package="xclass"/>
+</package>

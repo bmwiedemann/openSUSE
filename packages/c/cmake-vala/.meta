@@ -1,0 +1,5 @@
+<package name="cmake-vala" project="openSUSE:Factory">
+  <title>Vala CMake modules</title>
+  <description>This is a set of CMake modules: Translations, GSettings, and Vala modules.</description>
+  <devel project="X11:Utilities" package="cmake-vala"/>
+</package>

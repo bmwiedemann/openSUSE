@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10a24c96e8556690518005d9eb3aceb3</srcmd5>
+    <version>0.4</version>
+    <time>1578437775</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+This should be in SLES (jsc#10894), but we don't have it in Factory yet.
+</comment>
+    <requestid>761627</requestid>
+  </revision>
+</revisionlist>

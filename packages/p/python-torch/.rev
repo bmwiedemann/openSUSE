@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b7b62a30479235b198fef348174479a</srcmd5>
+    <version>1.4.0</version>
+    <time>1583949028</time>
+    <user>dimstar_suse</user>
+    <comment>major machine learning framework needed by SLE-11537</comment>
+    <requestid>779507</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c6f9ce4b94b39e148d95a3d69dfb29bd</srcmd5>
+    <version>1.4.0</version>
+    <time>1587659719</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in python2 only dependencies</comment>
+    <requestid>796470</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f14f0ec82c3667e78cb9873bbf69a3cc</srcmd5>
+    <version>1.4.0</version>
+    <time>1588324548</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>799282</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96bf4ebe2a6cdeea41d54f7b4de29087</srcmd5>
+    <version>1.5.1</version>
+    <time>1593546994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817740</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>639acff1355c8f17ea65368a8ac3acc7</srcmd5>
+    <version>1.5.1</version>
+    <time>1598726596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828105</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>671520d1fa87944d42d47d505063689d</srcmd5>
+    <version>1.5.1</version>
+    <time>1602155635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840089</requestid>
+  </revision>
+</revisionlist>

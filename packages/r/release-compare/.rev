@@ -1,0 +1,150 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5985e104681ae56d4f4359a81911945e</srcmd5>
+    <version>0.1</version>
+    <time>1585176435</time>
+    <user>dimstar_suse</user>
+    <comment>new package for diffing appliance and product build results</comment>
+    <requestid>788153</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>48bf7c5407b5327c16e29c0763d1b0fb</srcmd5>
+    <version>0.1</version>
+    <time>1598642503</time>
+    <user>dimstar_suse</user>
+    <comment>- write changelogs in UTF-8 encoding
+
+- speedup it a lot to avoid timeout errors
+
+- running based on .report instead of .packages files</comment>
+    <requestid>830269</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79299e71c13c1785aa7ab515fa6f0545</srcmd5>
+    <version>0.3.1</version>
+    <time>1598983886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.1
+  * added support for Dockerfile builds
+- use git repo as resource
+
+- support also plain kiwi builds</comment>
+    <requestid>831063</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f306d8b2ec6bd308b706ab29ca35589f</srcmd5>
+    <version>0.3.2</version>
+    <time>1599088708</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.2
+  * handling changed version of a medium</comment>
+    <requestid>831434</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6e6edf3f213816824945c0d0fec3259</srcmd5>
+    <version>0.3.4</version>
+    <time>1599667649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.4
+   * avoid double Changelog txt suffix
+   * guess file names need to work with -Snapshot file names on factory
+   * work on source rpm name base only
+   * strip &quot;first&quot; lines of changes to hide the email adresses
+
+- update to version 0.3.3
+  * beautify diff of import packages</comment>
+    <requestid>833233</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ece4e678f40de0ff9872272f5ecb9f9</srcmd5>
+    <version>0.3.5</version>
+    <time>1599771219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.5
+  * List added/removed rpm binary names, but diff changes
+    via src rpm names
+  * syntax fix</comment>
+    <requestid>833454</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2bc0458084badd89093dfe224df69cba</srcmd5>
+    <version>0.3.6</version>
+    <time>1599862395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.6
+  * fix touching used rpms</comment>
+    <requestid>833787</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b23d7d90d561a2e7271f6167557d428</srcmd5>
+    <version>0.3.7</version>
+    <time>1600079652</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.7
+  * update for missing Build numbers in media
+    (eg openSUSE ftp tree builds)</comment>
+    <requestid>834235</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ba78a58ab9046a6841ed33983e333d0</srcmd5>
+    <version>0.3.11</version>
+    <time>1600278166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.11
+  * relax report parsing
+    (either single or double quotes might be used depending on
+     the build stage)
+  * hide author (and email) lines in diff
+
+- update to version 0.3.10
+  * fixed escaping in sed statement
+
+- update to version 0.3.9
+  * fix one more subtile difference in kiwi appliance builds
+
+- update to version 0.3.8
+  * fix parsing of kiwi appliance packages files</comment>
+    <requestid>834935</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c1d27b41310ff43debbc40f28f5ea6c2</srcmd5>
+    <version>0.3.12</version>
+    <time>1600701484</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.12
+  * get right package container name from disturl
+
+transfered the wrong version into git :/</comment>
+    <requestid>835178</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>898e21332440010af694e75bb32697f0</srcmd5>
+    <version>0.3.13</version>
+    <time>1600956862</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.13
+  * strip package name containers from incident projects
+  * drop wrong and needless stripping of package names</comment>
+    <requestid>836370</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3a036ccd3bf0b3de6bf601482d363e21</srcmd5>
+    <version>0.4.0</version>
+    <time>1601398954</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.4.0
+  * requires new build script!
+  * move script into obsgendiff.d directory
+  * minor output improvement
+
+- update to version 0.3.15
+  * allow to run further plugins by providing executables
+    in /usr/lib/build/obsgendiff.d
+    NOTE: we may move this functionality into build script
+
+- update to version 0.3.14
+  * Pick newest obsgendiff archive if multiple exists
+    in maintenance_release projects</comment>
+    <requestid>838300</requestid>
+  </revision>
+</revisionlist>

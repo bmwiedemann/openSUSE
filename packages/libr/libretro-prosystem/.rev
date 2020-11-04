@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>243eecac30725123eca72188c1de82d1</srcmd5>
+    <version>0~git20190914</version>
+    <time>1581456194</time>
+    <user>dimstar_suse</user>
+    <comment>Atari 7800 emulator</comment>
+    <requestid>772100</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b1569d5170c20d91f72e18e268bbc2a5</srcmd5>
+    <version>0~git20200107</version>
+    <time>1592939168</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816505</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+<package name="stuntman" project="openSUSE:Factory">
+  <title>STUN server and client</title>
+  <description>Open source implementation of the STUN protocol (Session Traversal
+Utilities for NAT) as specified in RFCs 5389, 5769, and 5780.
+It also includes backwards compatibility for RFC 3489. It includes
+a high performance STUN server, and a  client application.
+
+</description>
+  <devel project="network:telephony" package="stuntman"/>
+  <url>http://www.stunprotocol.org</url>
+</package>

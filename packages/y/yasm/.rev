@@ -1,0 +1,249 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>59346ffef068ecb480edfe2681464f24</srcmd5>
+    <version>0.4.0</version>
+    <time>1168904650</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="54">
+    <srcmd5>7a04a113e59d08e2990bc20b62c29575</srcmd5>
+    <version>0.4.0</version>
+    <time>1180480745</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>624204024c242fd3a7d6cf531c00198b</srcmd5>
+    <version>0.6.2</version>
+    <time>1193964148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="85">
+    <srcmd5>624204024c242fd3a7d6cf531c00198b</srcmd5>
+    <version>0.6.2</version>
+    <time>1193964148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="86">
+    <srcmd5>71e3edd0b18ad8cea9f98ab5ce552457</srcmd5>
+    <version>0.6.2</version>
+    <time>1245364112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="88">
+    <srcmd5>71e3edd0b18ad8cea9f98ab5ce552457</srcmd5>
+    <version>0.6.2</version>
+    <time>1245364112</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f7d77795fab6897a74bfdceb8637396b</srcmd5>
+    <version>0.7.2</version>
+    <time>1259330324</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/yasm based on submit request 25141 from user psmt
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>347eb2c4c12d8e110c3d49d2c4aca506</srcmd5>
+    <version>0.8.0</version>
+    <time>1263821032</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/yasm based on submit request 29822 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0663371034906b0c3e73d88fadc4902e</srcmd5>
+    <version>0.8.0</version>
+    <time>1268926711</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>0663371034906b0c3e73d88fadc4902e</srcmd5>
+    <version>0.8.0</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>0663371034906b0c3e73d88fadc4902e</srcmd5>
+    <version>0.8.0</version>
+    <time>1278678632</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>ab362fc0641f53a7eeb77785283cfb68</srcmd5>
+    <version>0.8.0</version>
+    <time>1283525039</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:tools:compiler/yasm based on submit request 47050 from user coolo
+</comment>
+    <requestid>47050</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>c988360d9d10f164891c7efe2a41be72</srcmd5>
+    <version>1.1.0</version>
+    <time>1288710603</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51972 from user coolo
+</comment>
+    <requestid>51972</requestid>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>2aff0843e0db220e3c342a16851c47e5</srcmd5>
+    <version>1.1.0</version>
+    <time>1288710610</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51972
+</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>2aff0843e0db220e3c342a16851c47e5</srcmd5>
+    <version>1.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>2aff0843e0db220e3c342a16851c47e5</srcmd5>
+    <version>1.1.0</version>
+    <time>1319182620</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>ae388162e0126410d7b2e69563fcf497</srcmd5>
+    <version>1.1.0</version>
+    <time>1323195517</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>ae388162e0126410d7b2e69563fcf497</srcmd5>
+    <version>1.1.0</version>
+    <time>1340184391</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>873ac5a6532a3ee0564fe9fa15a0f377</srcmd5>
+    <version>1.2.0</version>
+    <time>1344875230</time>
+    <user>namtrac</user>
+    <comment>- Implement %check
+- Fix license string
+
+- update to 1.2.0
+  * Add AVX2 instructions (rev 11 of Intel AVX reference) (#227).
+  * Allow 64-bit LFS/LGS/LSS.
+  * Improve LAR instruction support (#224).
+  * Default win64 .xdata to nobase, add support for “..imagebase” (#135).
+  * Fix “TIMES” relocation handling.
+  * Fix no-suffix push and pop in GAS mode (#212).
+  * See the bug tracker for a full list of bug fixes.
+- rebase no-build-date patch
+- add yasm-no-rpm-opt-flags patch
+- fix License
+  * Artistic-1.0, BSD-2-Clause, BSD-3-Clause, GPL-2.0+, LGPL-2.0+</comment>
+    <requestid>130654</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d13f19b22cff14ab936f6e55ad29fed2</srcmd5>
+    <version>1.2.0</version>
+    <time>1348669902</time>
+    <user>coolo</user>
+    <comment>- BuildRequire python-base to fix build cycle with Mesa (forwarded request 136051 from namtrac)</comment>
+    <requestid>136071</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>67bd489fa92c56295935bd5346beb3ee</srcmd5>
+    <version>1.2.0</version>
+    <time>1355947517</time>
+    <user>coolo</user>
+    <comment>- Ignore make check errors, 2 win64 tests fail which we don't care</comment>
+    <requestid>145877</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>67bd489fa92c56295935bd5346beb3ee</srcmd5>
+    <version>1.2.0</version>
+    <time>1359110708</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>c71f4c1b4fbd6208a4de966254ac69f5</srcmd5>
+    <version>1.2.0</version>
+    <time>1365337786</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Remove CHANGELOG, NEWS, README as those are empty. (forwarded request 162708 from namtrac)</comment>
+    <requestid>162866</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>c71f4c1b4fbd6208a4de966254ac69f5</srcmd5>
+    <version>1.2.0</version>
+    <time>1379665132</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>c71f4c1b4fbd6208a4de966254ac69f5</srcmd5>
+    <version>1.2.0</version>
+    <time>1409303819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1f4c1c27b40dcbce6d670680b86ddca6</srcmd5>
+    <version>1.3.0</version>
+    <time>1413739664</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.0
+  * See http://yasm.tortall.net/releases/Release1.3.0.html for
+    complete changelog.
+- Refresh yasm-no-build-date.patch</comment>
+    <requestid>257357</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4ef370e6d3f8e019a0d4e74b24cbbe90</srcmd5>
+    <version>1.3.0</version>
+    <time>1423214453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283969</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>d50f853fa1ca516de687acdfcffb1cc1</srcmd5>
+    <version>1.3.0</version>
+    <time>1454490976</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356194</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>e5db41df35989f90f0ffa368b2aed62f</srcmd5>
+    <version>1.3.0</version>
+    <time>1509787433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538093</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>195a4a6ce1b28672e9c358dbe701ec71</srcmd5>
+    <version>1.3.0</version>
+    <time>1521192851</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file with spec-cleaner
+- Update dependencies
+- Dropn not needed postun calls</comment>
+    <requestid>587456</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>9c8075100f464ac9106c58b6ab14b263</srcmd5>
+    <version>1.3.0</version>
+    <time>1565864725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721042</requestid>
+  </revision>
+</revisionlist>

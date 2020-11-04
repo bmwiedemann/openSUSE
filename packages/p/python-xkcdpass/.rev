@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>19fc42dd53220eb603a9908d600e9c3c</srcmd5>
+    <version>1.17.3</version>
+    <time>1574859211</time>
+    <user>dimstar_suse</user>
+    <comment>New package, providing a xkcdpass tool to generate XKCD style passwords.</comment>
+    <requestid>750134</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>40cba02f9dc7465e20ed7fb5d4035812</srcmd5>
+    <version>1.17.3</version>
+    <time>1589403404</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires on python-setuptools</comment>
+    <requestid>805338</requestid>
+  </revision>
+</revisionlist>

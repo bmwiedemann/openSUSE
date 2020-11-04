@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a03f06bfa9c0a545dbfcde4b8d96951</srcmd5>
+    <version>1.2.7</version>
+    <time>1168901424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="34">
+    <srcmd5>2f042bbe5a132d4b46ee228838d34adb</srcmd5>
+    <version>1.2.7</version>
+    <time>1169145468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="39">
+    <srcmd5>44128bf4a5ac3e8931d5a14301da118f</srcmd5>
+    <version>1.2.7</version>
+    <time>1172928960</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="45">
+    <srcmd5>a65ebd32a31b19030402fcfbb8cb835f</srcmd5>
+    <version>1.2.7</version>
+    <time>1176394631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="46">
+    <srcmd5>4d2a4c024a04478df498f7378eadfbdf</srcmd5>
+    <version>1.2.7</version>
+    <time>1176627159</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="76">
+    <srcmd5>9cb12cc515616e70019d623e4970faf3</srcmd5>
+    <version>1.2.7</version>
+    <time>1185149964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>615d1797cb25cf794b1c287143acf8ad</srcmd5>
+    <version>1.2.8</version>
+    <time>1185494964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="46">
+    <srcmd5>205439a0d360f36135082eb719dd28b1</srcmd5>
+    <version>1.2.8</version>
+    <time>1197889519</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="83">
+    <srcmd5>b9c22017138cf4bea4d906bd1d5b6346</srcmd5>
+    <version>1.2.8</version>
+    <time>1207834355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="106">
+    <srcmd5>4f88750286dfcb1fc7f7d8a9ec64683a</srcmd5>
+    <version>1.2.8</version>
+    <time>1215559399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="152">
+    <srcmd5>87df31ac7f3f14160f24017f8a0555dc</srcmd5>
+    <version>1.2.8</version>
+    <time>1225637086</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="153">
+    <srcmd5>e214970684bbd62fb99e07c50e43d6ee</srcmd5>
+    <version>1.2.8</version>
+    <time>1229343169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="154">
+    <srcmd5>b052b254266ef482877dd3ab10765b95</srcmd5>
+    <version>1.2.8</version>
+    <time>1243546578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="155">
+    <srcmd5>a41e7f873b7f0ba4ec53959c4b17f4e0</srcmd5>
+    <version>1.2.8</version>
+    <time>1243939044</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="156">
+    <srcmd5>1e8db9566c9c495129d57d69be106a74</srcmd5>
+    <version>1.2.8</version>
+    <time>1254959627</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_mixer based on submit request 22002 from user prusnak
+</comment>
+  </revision>
+  <revision rev="16" vrev="158">
+    <srcmd5>1e8db9566c9c495129d57d69be106a74</srcmd5>
+    <version>1.2.8</version>
+    <time>1254959627</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_mixer based on submit request 22002 from user prusnak
+</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>39f5db3a204278217295d38465a690da</srcmd5>
+    <version>1.2.11</version>
+    <time>1261824225</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_mixer based on submit request 27596 from user coolo
+</comment>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>371e559841cbc5f49e25bc286e4932ed</srcmd5>
+    <version>1.2.11</version>
+    <time>1263488288</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_mixer based on submit request 29332 from user coolo
+</comment>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>161d47a3ef9d0430085f5b499b6b5b1b</srcmd5>
+    <version>1.2.11</version>
+    <time>1268922814</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>161d47a3ef9d0430085f5b499b6b5b1b</srcmd5>
+    <version>1.2.11</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>161d47a3ef9d0430085f5b499b6b5b1b</srcmd5>
+    <version>1.2.11</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>8f044560b5b0c551dd04548d480312cf</srcmd5>
+    <version>1.2.11</version>
+    <time>1280956013</time>
+    <user>autobuild</user>
+    <comment>Copy from games/SDL_mixer based on submit request 44503 from user coolo
+</comment>
+    <requestid>44503</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>8f044560b5b0c551dd04548d480312cf</srcmd5>
+    <version>1.2.11</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>b53954390eff733c5e27c48bd0d2daba</srcmd5>
+    <version>1.2.11</version>
+    <time>1316438968</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+
+- Update baselibs.conf to also ship libSDL_mixer-devel-32bit
+
+- Use %_smp_mflags for parallel building
+- Strip %clean section (not needed on BS)</comment>
+    <requestid>83184</requestid>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>b53954390eff733c5e27c48bd0d2daba</srcmd5>
+    <version>1.2.11</version>
+    <time>1319181757</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>733cd308a5ea3316bb118c8f4f2b779c</srcmd5>
+    <version>1.2.11</version>
+    <time>1323194573</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="16">
+    <srcmd5>733cd308a5ea3316bb118c8f4f2b779c</srcmd5>
+    <version>1.2.11</version>
+    <time>1340183157</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="17">
+    <srcmd5>a1b8da8260e9ef4f979f237ab80cba40</srcmd5>
+    <version>1.2.11</version>
+    <time>1357653564</time>
+    <user>coolo</user>
+    <comment>- Do not use dlopened libraries _ever_. (forwarded request 146875 from elvigia)</comment>
+    <requestid>147403</requestid>
+  </revision>
+  <revision rev="29" vrev="19">
+    <srcmd5>a1b8da8260e9ef4f979f237ab80cba40</srcmd5>
+    <version>1.2.11</version>
+    <time>1359108627</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>607b17a3aa322272d28091ae783dda0c</srcmd5>
+    <version>1.2.12</version>
+    <time>1362341319</time>
+    <user>coolo</user>
+    <comment>update to latest version
+silenced some RPMlint warnings (forwarded request 156238 from Mailaender)</comment>
+    <requestid>156310</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>607b17a3aa322272d28091ae783dda0c</srcmd5>
+    <version>1.2.12</version>
+    <time>1379661927</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>86f05fd755e05f49c8cdd1970f63732d</srcmd5>
+    <version>1.2.12</version>
+    <time>1380299392</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200791</requestid>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>46e3e23808b89cb547548ead0fa9459c</srcmd5>
+    <version>1.2.12</version>
+    <time>1385391849</time>
+    <user>coolo</user>
+    <comment>- import patches from https://projects.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/sdl_mixer
+  to fix mixer / mikmod free corruption (bnc#851996)
+  Add double-free-crash.patch, mikmod1.patch and mikmod2.patch</comment>
+    <requestid>208187</requestid>
+  </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>46e3e23808b89cb547548ead0fa9459c</srcmd5>
+    <version>1.2.12</version>
+    <time>1409300448</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>c853a6136042945001979ca5162e637c</srcmd5>
+    <version>1.2.12</version>
+    <time>1420754596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>280324</requestid>
+  </revision>
+</revisionlist>

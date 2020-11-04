@@ -1,0 +1,7 @@
+<package name="dtkcore" project="openSUSE:Factory">
+  <title>Deepin Tool Kit Core</title>
+  <description>Deepint Tool Kit (Dtk) is the base devlopment tool of all C++/Qt Developer work on Deepin.
+
+You shoud read the [Deepin Application Specification](\ref doc/Specification) firstly.</description>
+  <devel project="X11:Deepin" package="dtkcore"/>
+</package>

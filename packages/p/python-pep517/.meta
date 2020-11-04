@@ -1,0 +1,5 @@
+<package name="python-pep517" project="openSUSE:Factory">
+  <title></title>
+  <description>Wrappers to build Python packages using PEP 517 hooks</description>
+  <devel project="devel:languages:python" package="python-pep517"/>
+</package>

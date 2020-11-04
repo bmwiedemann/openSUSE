@@ -1,0 +1,5 @@
+<package name="libei" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Wayland" package="libei"/>
+</package>

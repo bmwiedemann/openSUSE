@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>740a2dbeaa01538942d3c4c7a513328e</srcmd5>
+    <version>0.5</version>
+    <time>1492617825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>482588</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>87d3081d80557068d71af7c1690869f7</srcmd5>
+    <version>0.5.1</version>
+    <time>1509787446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538109</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cde03a36054ae2b6e1068409653a9b81</srcmd5>
+    <version>0.5.1</version>
+    <time>1545866951</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659753</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5dcbdf72e0879245adc10c3462ab62ab</srcmd5>
+    <version>0.5.1</version>
+    <time>1572883780</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>743972</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5e169f282f950cae8648eb0821d29dee</srcmd5>
+    <version>0.5.1</version>
+    <time>1585264810</time>
+    <user>dimstar_suse</user>
+    <comment>Staging:I</comment>
+    <requestid>783931</requestid>
+  </revision>
+</revisionlist>

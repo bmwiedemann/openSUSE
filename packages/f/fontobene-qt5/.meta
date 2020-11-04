@@ -1,0 +1,6 @@
+<package name="fontobene-qt5" project="openSUSE:Factory">
+  <title>fontobene-qt5</title>
+  <description>FontoBene parser for Qt5 (header-only)</description>
+  <devel project="devel:libraries:c_c++" package="fontobene-qt5"/>
+  <url> https://github.com/fontobene/fontobene-qt5</url>
+</package>

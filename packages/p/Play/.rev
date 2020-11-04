@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>71a5547027125c1ec2134908347b92b5</srcmd5>
+    <version>0~git20191220</version>
+    <time>1577972463</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unrar source</comment>
+    <requestid>760400</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ddb8ad8d0c67d32966d3b6cf235d68ab</srcmd5>
+    <version>0~git20200503</version>
+    <time>1589315533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802836</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e97a7110998ac999de886be7031de0ef</srcmd5>
+    <version>0~git20200525</version>
+    <time>1590780179</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0~git20200525:
+  * fix FreeBSD builds
+  * Add SSE &amp; SSE2 compiler flags to Unix builds.
+  * improve VU MOVE/RNEXT instruction
+  * Disable resume/pause menu when executable is not loaded.
+  * Add few test cases in MinMax test.
+  * Clamp vectors before comparing in MINI/MAX.
+  * Implement CIoman::Mkdir
+  * A sample is 16-bits.
+  * Implement ADDAq.
+  * Prevent ITOF0 &amp; ITOF12 from clobbering VF0.
+  * Add constraint to CheckAsync matcher.
+  * Handle SPU IRQs in CORE0 output area.
+  * Updated README for Ubuntu builds
+  * Update CodeGen submodule.
+  * Update CodeGen submodule.
+  * Update CodeGen submodule.
+  * Use LoadFromRefIdx in ILW.
+  * Update CodeGen submodule.
+  * Use StoreAtRefIdx in ISW.
+  * Use StoreAtRefIdx4 in QueueInFlagPipeline.
+  * Update Dependencies submodule.
+  * update submodules
+  * silence nlohmann_json warning
+  * silence warning
+  * travis linux parallel build
+  * LibMc2: Warn if optional functions are not found.
+  * Make sure we can't ChDir out of the memory card's path.
+  * Add quotes around paths.
+  * Fix symbol error when building libretro core with gcc-8
+</comment>
+    <requestid>809949</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a651ada97d71d257d70db2cbc6143797</srcmd5>
+    <version>0~git20200610</version>
+    <time>1591862520</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires: Mesa-libGLESv3-devel to fix arm build
+- Update to version 0~git20200610:
+  * Fedora32 build fix
+  * std::string needs #include &lt;string&gt;
+  * std::runtime_error needs #include &lt;stdexcept&gt;
+  * std::runtime_error needs #include &lt;stdexcept&gt;
+  * Make sure sticky flags arrive at the proper time.
+  * Add test to check sticky flag handling.
+  * Handle VU branching peculiarities found in Star Ocean 3.
+  * Formatting niceties.
+  * Implement ERSADD.
+  * Spice up test case.
+  * Add VU branch test.
+  * Add label support in VuAssembler.
+  * Cleanup.
+  * Fix build error.
+  * Fix formatting.
+  * Enable linear filtering in some scenarios.
+  * Linear texture sampling (not enabled yet).
+  * Fix warnings.
+  * Apply (0.5, 0.5) offset to snap on pixel grid.
+  * Implement HWREG.
+  * Add support for some missing pixel formats.
+</comment>
+    <requestid>813313</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7025bf7f52a12042ce905dee2e0bf9a1</srcmd5>
+    <version>0~git20200812</version>
+    <time>1597955323</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827947</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1604a3c071128b56c3cebd81954c558f</srcmd5>
+    <version>0~git20200825</version>
+    <time>1599088557</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>831291</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16b8dfd9945f116433c5da09f33179e9</srcmd5>
+    <version>0~git20201003</version>
+    <time>1602073088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839878</requestid>
+  </revision>
+</revisionlist>

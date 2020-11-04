@@ -1,0 +1,308 @@
+<revisionlist>
+  <revision rev="1" vrev="46">
+    <srcmd5>e1493a288ab20bf33e49168d6716732a</srcmd5>
+    <version>1.2.0</version>
+    <time>1168447172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="51">
+    <srcmd5>956ec82104280f6b28181da621dbcd5d</srcmd5>
+    <version>1.2.0</version>
+    <time>1171560236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fb09f852c7b3e96887afc5d072583f98</srcmd5>
+    <version>1.3.0</version>
+    <time>1192760974</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49f8f4e149617dc342ea8da41fe5015c</srcmd5>
+    <version>1.4.2</version>
+    <time>1210983282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="16">
+    <srcmd5>c1feff6bf3acb042594182036a85cd5d</srcmd5>
+    <version>1.4.2</version>
+    <time>1217638765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="46">
+    <srcmd5>787ecbd5da9c6715680d742f4ba5dbd3</srcmd5>
+    <version>1.4.2</version>
+    <time>1237305750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="47">
+    <srcmd5>cf899a9e8c806f5dd9e16a76feba5b1e</srcmd5>
+    <version>1.4.2</version>
+    <time>1238106771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a573f019a3b2ee284aba6a2082ac493</srcmd5>
+    <version>1.5.0</version>
+    <time>1243204251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8a573f019a3b2ee284aba6a2082ac493</srcmd5>
+    <version>1.5.0</version>
+    <time>1243204251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a1082451daa94969fbee6a444a1e3e29</srcmd5>
+    <version>1.5.0</version>
+    <time>1268923462</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f955f66a5633f859ddc9df5057a12e5</srcmd5>
+    <version>1.6.0</version>
+    <time>1270246215</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/enchant based on submit request 36823 from user vuntz
+</comment>
+    <requestid>36823</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c4ce4c259851a2c6d6b440c78a687d8c</srcmd5>
+    <version>1.6.0</version>
+    <time>1276095608</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/enchant based on submit request 41205 from user vuntz
+</comment>
+    <requestid>41205</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c4ce4c259851a2c6d6b440c78a687d8c</srcmd5>
+    <version>1.6.0</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>c4ce4c259851a2c6d6b440c78a687d8c</srcmd5>
+    <version>1.6.0</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>ebfc768f69f5784a8a7c5ae368d9d202</srcmd5>
+    <version>1.6.0</version>
+    <time>1282936566</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/enchant based on submit request 46438 from user vuntz
+</comment>
+    <requestid>46438</requestid>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>de8c2560af85c2214391a98d8b149ae1</srcmd5>
+    <version>1.6.0</version>
+    <time>1287143699</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/enchant based on submit request 50659 from user vuntz
+</comment>
+    <requestid>50659</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>de8c2560af85c2214391a98d8b149ae1</srcmd5>
+    <version>1.6.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>a638fbf6581149ff9eb3106ce0612262</srcmd5>
+    <version>1.6.0</version>
+    <time>1317828955</time>
+    <user>lrupp</user>
+    <comment>Make zemberek subpackage installable (forwarded request 86430 from vuntz)</comment>
+    <requestid>86639</requestid>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>5142bba3a0eb7e4683b38dbc959d2f54</srcmd5>
+    <version>1.6.0</version>
+    <time>1318501102</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>87629</requestid>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>5142bba3a0eb7e4683b38dbc959d2f54</srcmd5>
+    <version>1.6.0</version>
+    <time>1319181865</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="14">
+    <srcmd5>691f51ea98d5d1a8839447144e6605e8</srcmd5>
+    <version>1.6.0</version>
+    <time>1323191291</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>691f51ea98d5d1a8839447144e6605e8</srcmd5>
+    <version>1.6.0</version>
+    <time>1340183305</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="18">
+    <srcmd5>691f51ea98d5d1a8839447144e6605e8</srcmd5>
+    <version>1.6.0</version>
+    <time>1359108849</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="19">
+    <srcmd5>f3b1bb7a9719d9b4f397c0b3c3eb0096</srcmd5>
+    <version>1.6.0</version>
+    <time>1364472636</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 161177 from dimstar)</comment>
+    <requestid>161238</requestid>
+  </revision>
+  <revision rev="25" vrev="21">
+    <srcmd5>f3b1bb7a9719d9b4f397c0b3c3eb0096</srcmd5>
+    <version>1.6.0</version>
+    <time>1379662293</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="23">
+    <srcmd5>f3b1bb7a9719d9b4f397c0b3c3eb0096</srcmd5>
+    <version>1.6.0</version>
+    <time>1409300827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="24">
+    <srcmd5>6fa4198080ba181a2cd9933e61185a75</srcmd5>
+    <version>1.6.0</version>
+    <time>1462428727</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393266</requestid>
+  </revision>
+  <revision rev="28" vrev="25">
+    <srcmd5>81174551dd868b10e174ac4c30ab8f10</srcmd5>
+    <version>1.6.0</version>
+    <time>1503061171</time>
+    <user>dimstar_suse</user>
+    <comment>- aspell to be removed from factory [bsc#1052949] (forwarded request 516071 from pgajdos)</comment>
+    <requestid>516872</requestid>
+  </revision>
+  <revision rev="29" vrev="26">
+    <srcmd5>9b30fdfbc0d6a01b23ba85051c4ef927</srcmd5>
+    <version>1.6.0</version>
+    <time>1503482078</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518073</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ccba2310ce55ec384d58be50b6971e33</srcmd5>
+    <version>2.2.3</version>
+    <time>1521052018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update descriptions. (forwarded request 585259 from jengelh)</comment>
+    <requestid>585845</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>be8f1b44ff911fcba7cad1b7d82c589f</srcmd5>
+    <version>2.2.3</version>
+    <time>1527933344</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix installation of backends (bgo#1089433):
+  + Drop Supplements entirely.
+  + For the shared lib package, add conditional Requires on
+    either/both the hunspell or voikko backends depending on
+    whether the system has libhunspell and/or libvoikko installed.
+  + Add a Suggests on -backend-hunspell for the case where neither
+    libvoikko not libhunspell are installed. (forwarded request 612906 from badshah400)</comment>
+    <requestid>613057</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>1a2952f8f18db3e54898c7a97b57206e</srcmd5>
+    <version>2.2.3</version>
+    <time>1528022876</time>
+    <user>dimstar_suse</user>
+    <comment>Acceptto Factory</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>cc579261e833bec27c5038acf3c18d1d</srcmd5>
+    <version>2.2.3</version>
+    <time>1555488338</time>
+    <user>dimstar_suse</user>
+    <comment>- Add enchant-2-backend-aspell package which provides the aspell
+  backend for enchant. (forwarded request 691412 from mrostecki)</comment>
+    <requestid>693284</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>33223389e068b01a5bee662395c9dda2</srcmd5>
+    <version>2.2.5</version>
+    <time>1564413809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717541</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>96ff54faa45ebf2a2e7614e568f70f0a</srcmd5>
+    <version>2.2.5</version>
+    <time>1572442715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742518</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>95154ce56c508a272a847bc0ef83e5cb</srcmd5>
+    <version>2.2.5</version>
+    <time>1587162526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794541</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d6a5371c3b0eb5ef636044f32c985a05</srcmd5>
+    <version>2.2.8</version>
+    <time>1597955055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.8:
+  + Add a provider back-end for Nuspell. Nuspell is a new
+    spell-checker whose development has been supported by the
+    Mozilla foundation. It is backwards-compatible with Hunspell
+    and Myspell dictionaries, while supporting a wider range of
+    language peculiarities, improved suggestions, and easier
+    maintainability of the code-base.
+  + Doxygen documentation generation is now supported for Enchant.
+  + The command-line parsing of the “enchant” program has been made
+    more friendly and reliable. The -L flag (show line numbers),
+    which had not been working for some time, has been fixed.
+  + A buffer overflow in personal wordlist handling has been fixed.
+  + Minor improvements were made to the tests.
+- Changes in version 2.2.7:
+  + Fix some memory leaks in the hunspell and aspell providers.
+- Changes in version 2.2.6:
+  + Treat PWL as text, not binary.
+- Run spec-cleaner: Remove package groups.</comment>
+    <requestid>827288</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>3ffe498dd7040a722e3c819c0f6d2f53</srcmd5>
+    <version>2.2.8</version>
+    <time>1599666506</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable nuspell backend where it is available (openSUSE &amp;gt;= 1550):
+  + Introduce BuildRequires: nuspell-devel and
+    libboost_headers-devel.
+  + Split out new package enchant-2-backend-nuspell providing the
+    nuspell backend. (forwarded request 832584 from badshah400)</comment>
+    <requestid>832685</requestid>
+  </revision>
+</revisionlist>

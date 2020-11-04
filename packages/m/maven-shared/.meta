@@ -1,0 +1,8 @@
+<package name="maven-shared" project="openSUSE:Factory">
+  <title>Maven Shared Components</title>
+  <description>Maven Shared Components
+
+</description>
+  <devel project="Java:packages" package="maven-shared"/>
+  <url>http://maven.apache.org/shared/</url>
+</package>

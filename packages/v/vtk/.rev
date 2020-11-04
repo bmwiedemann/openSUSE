@@ -1,0 +1,475 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35688ed69ec8d88414995c0923f80c54</srcmd5>
+    <version>5.8.0</version>
+    <time>1330364269</time>
+    <user>coolo</user>
+    <comment>Resubmit with fixed source and license string</comment>
+    <requestid>102641</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2597d7d667d1b03c0858ca12d62751e9</srcmd5>
+    <version>5.8.0</version>
+    <time>1336492931</time>
+    <user>coolo</user>
+    <comment>Use more system libraries (gl2ps and hdf5), Updated/Removed some dependencies, Removed build time references, Compile the package out-of-source (forwarded request 114971 from adra)</comment>
+    <requestid>114978</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>24d90db1e1602b31462ef4822e02d1b8</srcmd5>
+    <version>5.8.0</version>
+    <time>1337005356</time>
+    <user>coolo</user>
+    <comment>- Remove openmotif dependency</comment>
+    <requestid>120590</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d759c5c949f384464088c24bac9a80e9</srcmd5>
+    <version>5.10.0</version>
+    <time>1337667607</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.10.0: See
+  http://www.kitware.com/news/home/browse/408
+  for a detailed list of changes
+- Dropped patches:
+  + vtk-boost149.patch: implemented upstream
+- Patch vtk-sqldatabaseschema.patch now only required for
+  openSUSE 11.4
+- Minor rebasing of existing patches so they apply cleanly
+- No longer use verbose make.</comment>
+    <requestid>121538</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d759c5c949f384464088c24bac9a80e9</srcmd5>
+    <version>5.10.0</version>
+    <time>1340184317</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f742635aeddf7bd8d4f23bf2cd357c7f</srcmd5>
+    <version>5.10.0</version>
+    <time>1342866741</time>
+    <user>namtrac</user>
+    <comment>fix build on SLE 11 by disabling python-vtk-qt an java wrapper. (forwarded request 128509 from scorot)</comment>
+    <requestid>128510</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e159912b62f272ea084f394374bbed1</srcmd5>
+    <version>5.10.1</version>
+    <time>1351688751</time>
+    <user>coolo</user>
+    <comment>Update to version 5.10.1 (forwarded request 139569 from badshah400)</comment>
+    <requestid>139570</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7e159912b62f272ea084f394374bbed1</srcmd5>
+    <version>5.10.1</version>
+    <time>1359110553</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5748ee824d4b175fa0f1e6f3894b0213</srcmd5>
+    <version>6.0.0</version>
+    <time>1373984757</time>
+    <user>coolo</user>
+    <comment>Update to version 6.0.0; lots of packaging cleanups (forwarded request 182962 from badshah400)</comment>
+    <requestid>182973</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>184ab62e88d44d5e00d4dd7d2b5d2205</srcmd5>
+    <version>6.0.0</version>
+    <time>1374417287</time>
+    <user>coolo</user>
+    <comment>Disable R bindings to workaround build failures when it is enabled, in openSUSE:Factory. Will enable back when the real fix is found. (forwarded request 183704 from badshah400)</comment>
+    <requestid>183813</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>184ab62e88d44d5e00d4dd7d2b5d2205</srcmd5>
+    <version>6.0.0</version>
+    <time>1379664942</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f8a45e382a7d5622552159319d9ec89d</srcmd5>
+    <version>6.1.0</version>
+    <time>1393937999</time>
+    <user>coolo</user>
+    <comment>Update to version 6.1.0 (vtkdata = 6.1.0 is already in openSUSE:Factory)</comment>
+    <requestid>224405</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>f8a45e382a7d5622552159319d9ec89d</srcmd5>
+    <version>6.1.0</version>
+    <time>1409303623</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>a5c1367e97078e173f595ac27e46f5ff</srcmd5>
+    <version>6.1.0</version>
+    <time>1410509009</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248461</requestid>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>e62908188e2a41196a093c40943a9ef9</srcmd5>
+    <version>6.1.0</version>
+    <time>1425031827</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288000</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>db424448fda7322b22eaa48ba9f02321</srcmd5>
+    <version>6.2.0</version>
+    <time>1427313911</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>292518</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>502aa6e6e46a0b613ced0ddd83f2fe1d</srcmd5>
+    <version>6.2.0</version>
+    <time>1428652423</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295054</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8bd060668d061ee2624c59cd9fdfd006</srcmd5>
+    <version>6.2.0</version>
+    <time>1435171773</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313177</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>7b0e92f9ef0976d7fa857bf7fe80894d</srcmd5>
+    <version>6.2.0</version>
+    <time>1435652170</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313658</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>facc0d1e276be878c60cc894b49a2377</srcmd5>
+    <version>6.2.0</version>
+    <time>1439631583</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323157</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>34d312799b7576954385dfd89670e315</srcmd5>
+    <version>6.2.0</version>
+    <time>1440135644</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323273</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2e2c8b1c8c8995eae6a502016cb05b6b</srcmd5>
+    <version>6.3.0</version>
+    <time>1442638529</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>331899</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1bdec28dd0afda3c15905c16a6d0bea4</srcmd5>
+    <version>7.0.0</version>
+    <time>1456434309</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360706</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>21ebbb17a136dec10039c37962406e83</srcmd5>
+    <version>7.0.0</version>
+    <time>1461855377</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>391389</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>0759fbf15816bb3da4a15369e56967e1</srcmd5>
+    <version>7.0.0</version>
+    <time>1471105858</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419080</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>89ed8e145b9e9b153074fc4c0eb90269</srcmd5>
+    <version>7.1.0</version>
+    <time>1485682393</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442053</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3ba52057531378bb12e9d72208b6a179</srcmd5>
+    <version>8.0.0</version>
+    <time>1503925977</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518423</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6126c95232ba73aa3c60e311e2ac2101</srcmd5>
+    <version>8.0.1</version>
+    <time>1505238895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.1:  
+  * Fix QVTKOpenGLWidget rendering issues on Windows machines with
+    certain Intel graphics chips. This was a significant issue
+    that broke all rendering and resulted in a black screen.
+  * Fix data array range caching per finite component which would
+    otherwise cause considerable slow-downs when using data
+    arrays.
+  * Fix button and slider widgets to work in multi-viewport render
+    windows. Without this change the widgets would either be
+    placed in the wrong viewport or be non-interactive completely.
+  * Fix image XY sampling in the volume mapper when depth peeling
+    is enabled.
+  * Fix z-fighting issues with dual depth peeling between two
+    layers of geometry that are too close.
+  * Fix crash when reparenting the QVTKWidget to a different
+    window. The application would crash due to lack of OpenGL
+    resources for the reparented widget.
+- Update to version 8.0.1:  
+  * Fix QVTKOpenGLWidget rendering issues on Windows machines with
+    certain Intel graphics chips. This was a significant issue
+    that broke all rendering and resulted in a black screen.
+  * Fix data array range caching per finite component which would
+    otherwise cause considerable slow-downs when using data
+    arrays.
+  * Fix button and slider widgets to work in multi-viewport render
+    windows. Without this change the widgets would either be
+    placed in the wrong viewport or be non-interactive completely.
+  * Fix image XY sampling in the volume mapper when depth peeling
+    is enabled.
+  * Fix z-fighting issues with dual depth peeling between two
+    layers of geometry that are too close.
+  * Fix crash when reparenting the QVTKWidget to a different
+    window. The application would crash due to lack of OpenGL
+    resources for the reparented widget.
+</comment>
+    <requestid>523056</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b557d682274dab8a500619c581ffc92c</srcmd5>
+    <version>8.0.1</version>
+    <time>1507570831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529946</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>65e75c6e673a18fe6a442728098fabf8</srcmd5>
+    <version>8.0.1</version>
+    <time>1509105655</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536862</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>f33a631b6956322da586980c7ad555a4</srcmd5>
+    <version>8.0.1</version>
+    <time>1512734355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554792</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ca2ffd4c2e31aba0f5494a0eeda6221a</srcmd5>
+    <version>8.1.0</version>
+    <time>1516359167</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop vtk-Rinterface-uintptr_t.patch as the related plugin has
+  been retired.
+- Drop vtk-compat_gl: Building against OpenGL1 has now been
+  deprecated with version 8.1.0, and the examples don't build
+  against it already; so, drop all specfile and related
+  modifications catering to OpenGL1 bindings.
+- Update to version 8.1.0:
+  * Full release notes at https://blog.kitware.com/vtk-8-1-0/.
+- Turn OFF building against system libharu, since libharu
+  upstream seems dead, while vtk's included libharu has new
+  features essential for building vtk 8.1. Drop BuildRequires on
+  libharu.
+- Does not build against java 10, so ensure at most java 9 is
+  used by using appropriate versioning for java-devel
+  BuildRequires.
+- Drop cmake options no longer used for build.
+- Drop VERBOSE=1 for make: it makes the compilation too verbose
+  making brp checks for code warnings too slow to execute; this
+  reduces build time by nearly half.
+- Enforce Qt4 for openSUSE &lt;= 1320 explicitly because Qt5 is now
+  the default option.
+</comment>
+    <requestid>563920</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>57f49829141ada003e7534f18fb241ca</srcmd5>
+    <version>8.1.0</version>
+    <time>1516880445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569356</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>1ed5c5b3c2480c3b8dfa4b5a09430d05</srcmd5>
+    <version>8.1.0</version>
+    <time>1522225937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591278</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b964165608fd1b1270fae48738634221</srcmd5>
+    <version>8.1.1</version>
+    <time>1530567115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619762</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>da229129ebfe3a2f79877bc68fea33fd</srcmd5>
+    <version>8.1.2</version>
+    <time>1543311810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652020</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>cb1aa5f236417f42bd3e204624c5840f</srcmd5>
+    <version>8.1.2</version>
+    <time>1545141372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657947</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>89a02f336979513dfe08409261f54f46</srcmd5>
+    <version>8.1.2</version>
+    <time>1547211850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663766</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aee7d69bf8a071b7429fa1bba6457a92</srcmd5>
+    <version>8.2.0</version>
+    <time>1553635875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686429</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>3c9979fc542ef4d84f85716c87896bcc</srcmd5>
+    <version>8.2.0</version>
+    <time>1554833976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692621</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>09a8a12776df5a8c4041a7f03e28abc9</srcmd5>
+    <version>8.2.0</version>
+    <time>1555321981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694090</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>9be75f41efa31cf3629bb7c698a85423</srcmd5>
+    <version>8.2.0</version>
+    <time>1569234978</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build</comment>
+    <requestid>732075</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>9ffbbc559c935125dcb442faaefeb949</srcmd5>
+    <version>8.2.0</version>
+    <time>1573165147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746053</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>a77eca5a87651c807e7647d8d7bc5602</srcmd5>
+    <version>8.2.0</version>
+    <time>1580724831</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmpi3 flavor.
+- Disable openmpi1 for SLE/Leap 15.2, openmpi3 for SLE &lt;= 15.1
+- Adjust disk _constraints.
+- Drop vtk-fix-file-contains-date-time.patch, GCC honors
+  SOURCE_DATE_EPOCH.
+- Drop unused netcdf-c++-devel BuildRequires.
+</comment>
+    <requestid>769140</requestid>
+  </revision>
+  <revision rev="45" vrev="7">
+    <srcmd5>22060bfa859195cfdac48c228e905f4e</srcmd5>
+    <version>8.2.0</version>
+    <time>1584050758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783939</requestid>
+  </revision>
+  <revision rev="46" vrev="8">
+    <srcmd5>a721c9c35aec6a655c8351fa8f4c83c7</srcmd5>
+    <version>8.2.0</version>
+    <time>1588324256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799061</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b4aeb40295fcfa6137a22af993f0b910</srcmd5>
+    <version>9.0.0</version>
+    <time>1591653577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811182</requestid>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>245e5792dbc33c6ccb3e7212c7404db1</srcmd5>
+    <version>9.0.0</version>
+    <time>1592580293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815874</requestid>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>1feb9bd8eeb728f808f2a6c660f7d895</srcmd5>
+    <version>9.0.0</version>
+    <time>1593090430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816845</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8203bb2187750a71732e31c454d18b83</srcmd5>
+    <version>9.0.1</version>
+    <time>1595271698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821695</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>903f3ef4f23b17ace39eb20713131a27</srcmd5>
+    <version>9.0.1</version>
+    <time>1603545459</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843470</requestid>
+  </revision>
+</revisionlist>

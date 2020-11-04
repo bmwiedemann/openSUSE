@@ -1,0 +1,252 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4914e5da24c692712304a1eb74daf1a6</srcmd5>
+    <version>0.9.7+git20170607.7c0008c91</version>
+    <time>1503592189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>501705</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f5db95fd70f129809732c383bab90be</srcmd5>
+    <version>0.9.7+git20170905.2bd5e61d6</version>
+    <time>1504617615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7+git20170905.2bd5e61d6:
+  * Too many members named 'count'. Distinguish one. No logic changes.
+  * Address GitLab issue #367: reslist counting wrong rule
+  * Documentation polishing.
+  * Create and document topic labels for log messages.
+  * Added tests for Authenticator()
+  * Added tests for maic contents of packet.py
+  * pylint: import print_function from future for python2/3
+  * pylint: remove unnecessary parenthesis
+  * Added tests for Packet(), tweaked Packet to not use magic number.
+  * TODO update - we now have a pointer to Debian packaging metadata.
+  * Add script useful for timing ntpd startup
+  * Fix for iburst on DNS for both server and pool
+  * Added tests for SyncPacket, tweaked SyncPacket
+  * Added tests and tweaks for ControlPacket()
+  * Address GitLab issue #237: documentation refclock pps missing unit description
+  * Address GitLab issue #368: warning on openbsd 6.0 with gcc 4.2.1
+  * Address GitLab issue #399: ntpq config command is config-from-file
+  * Fix a minor glitch in processing of config_from_file...
+  * Improve the ntpq help display.
+  * Typo fix.
+  * This is the spec file and README for creating an RPM package
+  * Comment polishing.
+  * Remove references to .refclockd extension, since that plan has been dropped.
+  * Documentation polishing.
+  * Expanded packet.py tests to test error handling.
+  * Added aliases for frequently used objects
+  * Moved slicedata() from agentx.py to util.py
+  * Pythonized __parse_varlist()
+  * Added comments and removed forgotten debugging statements</comment>
+    <requestid>521113</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d06596a992944b34b5ca414da21c8f0</srcmd5>
+    <version>0.9.7+git20170906.6b1b54aee</version>
+    <time>1505139465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7+git20170906.6b1b54aee:
+  * Rationalize a configuration-block copy.
+  * Remove an obfuscatory macro.
+  * Address Gitlab issue #376: Need a symlink from ./tests/pylib/ntp
+  * Force struct pkt to maximum alignment on the host machine.
+  * Address GitLab issue #375: ntpd terminates unexpectedly
+  * It would be nice to put the NULL guard on the right line.
+  * Ignore ntp symlink at the third level as well
+  * docs/rollover.txt: Fix headers.
+  * Add python3 gitlab ci target
+  * Address GitLab issue #379: seccomp crashes ntpd
+  * Correct seccomp whitelist change in previous commit.
+    bsc#1057209
+
+- Conflict and provide ntp-daemon instead of ntp directly
+
+- Fix silently obsoleting ntp wrt bsc#1055821</comment>
+    <requestid>521671</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f50a1e4df682295ad59c29e40282bf6d</srcmd5>
+    <version>0.9.7+git20171002.c79bc6271</version>
+    <time>1507065473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.7+git20171002.c79bc6271:
+  * Fix a comment that became incorrect after the autonomy change.
+  * Fix GitLab issue #378: Misc warnings on RasPi
+  * Address GitLab issue #380: ntpq should not terminate with a traceback
+  * Attempt to suppress some compiler warnings.
+  * Don't build with -Wcast-align
+  * Fully disable -Wcast-align.
+  * Suppress another useless warning.
+  * Abandon -Wsign-conversion, it's too flaky to be useful.
+  * -Wsign-conversion is unreasonably difficult to stamp out.
+  * Revert &quot;Attempt to suppress some compiler warnings.&quot;
+  * Restore build under clang.
+  * Finish rationalization of config block copy.
+  * Thinko fix.
+  * Trial implementation/docs of RFE: Add fudge option to server config
+  * Added tests for missing values in __parse_varlist
+  * Fixed broken test for cook()
+  * Added missing tests for several functions
+  * Explain a scenario in which bias configuration might be useful.
+  * Don't scale the bias report - use units of seconds.
+  * Addtress GitLab issue #381: simple mathematics
+  * Fixed / completed test for NTPStats.__init__()
+  * Change prettydate() to always emit UTC, for reproducibility.
+  * Fixes tests for cook() to match new prettydate()
+  * Address GitLab issue #383: ntpq: invalid file argument ignored
+  * Grammar
+  * Fix spelling of &quot;received&quot;
+  * Typo fix.
+  * Suppress a false-positive Coverity warning.
+  * branch change</comment>
+    <requestid>530459</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c29ea77c0d56302c69bdbcb33f374395</srcmd5>
+    <version>0.9.7+git20171109.2d88a7d84</version>
+    <time>1511086433</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>542768</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2953bf63fa01e78f92800d505d63cd6b</srcmd5>
+    <version>1.0.0</version>
+    <time>1511595851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0 instead of git snapshot:
+  * mostly contains all the previously mentioned stuff nothing else
+    changed</comment>
+    <requestid>545198</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b09db08611bf04cebff1e3a434a03379</srcmd5>
+    <version>1.0.0</version>
+    <time>1512140037</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python3
+</comment>
+    <requestid>546706</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cec3fd0878691d65e0e24a7de7e5ef73</srcmd5>
+    <version>1.1.0</version>
+    <time>1522404484</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1.0:
+  * Digests longer then 20 bytes will be truncated.
+  * We have merged NTP Classic's fix for CVE-2018-7182.
+  * we have dropped support for Broadcast servers.  We had kept it for
+    older desktop operating systems listening on the local network
+    broadcast domain, a use case that is now no longer in use at sane
+    enviroments, and no longer necessary for modern desktop OSs.
+  * It is now possible to unpeer refclocks using a type/unit specification
+    rather than a magic IP address.  This was the last obligatory use of
+    magic IP addresses in the configuration grammar.
+  * OpenBSD has been removed from the list of supported platforms for
+    ntpd. It will be restored if and when its clock API supports drift
+    adjustment via ntp_adjtime() or equivalent facility.
+  * Mac OS X support has been dropped pending the implementation of
+    ntp_adjtime(2).
+  * A bug that caused the rejection of 33% of packets from Amazon time
+    service has been fixed.</comment>
+    <requestid>592276</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3fdeb553eb60bf89021651f26cd7442</srcmd5>
+    <version>1.1.1</version>
+    <time>1530304608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Log timestamps now include the year.  This is useful when
+    investigating bugs involving time-setting and -g.
+  * Many internal cleanups to clear the way for upcoming major features.
+    They should generally not be user visible.  Refer to the git-log if
+    you are interested.</comment>
+    <requestid>619740</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ce3ff9dba280c4fc571f813411b6fabf</srcmd5>
+    <version>1.1.2</version>
+    <time>1539589542</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.1.2:
+  * Use data minimization on client requests
+    https://datatracker.ietf.org/doc/draft-ietf-ntp-data-minimization/
+  * Support AES-128-CMAC for authentication
+    https://datatracker.ietf.org/doc/draft-ietf-ntp-mac/</comment>
+    <requestid>641920</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9b5c1e0f49f11c43cecf9110d8399b4c</srcmd5>
+    <version>1.1.3</version>
+    <time>1548064653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update requirement check for gpsd to less strict one
+
+- Update to 1.1.3 bsc#1122131 CVE-2019-6445 bsc#1122132 
+  CVE-2019-6442 bsc#1122134 CVE-2019-6444 bsc#1122144
+  CVE-2019-6443:
+  * Lots of typo fixes, documentation cleanups, test targets.</comment>
+    <requestid>666438</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b80757b3c3c749c4f426f3f07d0e95c4</srcmd5>
+    <version>1.1.6</version>
+    <time>1567849717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728091</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f8a65fbefd6286293cfeaf8610d95e6f</srcmd5>
+    <version>1.1.7</version>
+    <time>1571049840</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.7 bsc#1153841:
+  * The numeric literal argument of the 'time1' fudge option on a clock
+    can now have one or more letter suffixes that compensate for era
+    rollover in a GPS device.  Each &quot;g&quot; adds the number of seconds in a
+    1024-week (10-bit) GPS era. Each &quot;G&quot; adds the number of seconds in a
+    8192-week (13-bit) GPS era.
+  * The neoclock4x driver has been removed, due to the hardware and the
+    vendor having utterly vanished from the face of the earth.
+  * The NTS ALPN negotiation sequence has been modified for improved
+    interoperability with other NTS implementations.
+  * NTS key rotation now happens every 24 hours.  It used to rotate
+    every hour to enable testing of recovery from stale cookies.
+- Remove merged patch ntpsec-1.1.6-update-waf.patch
+- Enable documentation build</comment>
+    <requestid>738217</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7c68f640d567e80a80481f6ff3a1d5a6</srcmd5>
+    <version>1.1.7</version>
+    <time>1571210006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the unit install commands wrt bsc#1153841</comment>
+    <requestid>738253</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3490fe538b735df68ab55a4a2318bee4</srcmd5>
+    <version>1.1.8</version>
+    <time>1583613651</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.8:
+  * Fix bug in NTS-KE client so that NTP server names work.
+  * Fix/tweak several NTS logging messages.</comment>
+    <requestid>782532</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>518733b2acfd9ca0f65439fa2e59b17b</srcmd5>
+    <version>1.1.9</version>
+    <time>1590780251</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>810123</requestid>
+  </revision>
+</revisionlist>

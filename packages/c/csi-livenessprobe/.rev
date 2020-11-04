@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ce2ba2f785c2ca64a262dd3bd0cddfb</srcmd5>
+    <version>1.1.0</version>
+    <time>1600079780</time>
+    <user>dimstar_suse</user>
+    <comment>CSI sidecar package, used when deploying ceph on k8s with rook</comment>
+    <requestid>834258</requestid>
+  </revision>
+</revisionlist>

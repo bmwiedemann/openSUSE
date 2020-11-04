@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="73">
+    <srcmd5>707d93d916035a4eb931f7e2c7b7cf8c</srcmd5>
+    <version>3.1</version>
+    <time>1316682165</time>
+    <user>saschpe</user>
+    <comment>just a rename of bootsplash-branding-openSUSE</comment>
+    <requestid>84179</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>291474a3949fc6ab7965eacc3e61f80b</srcmd5>
+    <version>3.3</version>
+    <time>1316684468</time>
+    <user>saschpe</user>
+    <comment>
+- remove openSUSE, SLES and SLED branding from here. Preparing 
+  a rename to -upstream</comment>
+    <requestid>84391</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>291474a3949fc6ab7965eacc3e61f80b</srcmd5>
+    <version>3.3</version>
+    <time>1319181793</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bef1a56ecea0339b8d27f00eefc83a05</srcmd5>
+    <version>3.3</version>
+    <time>1323190887</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>bef1a56ecea0339b8d27f00eefc83a05</srcmd5>
+    <version>3.3</version>
+    <time>1340183211</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>bef1a56ecea0339b8d27f00eefc83a05</srcmd5>
+    <version>3.3</version>
+    <time>1359108712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>bef1a56ecea0339b8d27f00eefc83a05</srcmd5>
+    <version>3.3</version>
+    <time>1379662051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>bef1a56ecea0339b8d27f00eefc83a05</srcmd5>
+    <version>3.3</version>
+    <time>1409300579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>03ea7bfecd359ded5e5ddb79fe055ee4</srcmd5>
+    <version>3.3</version>
+    <time>1511817539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546028</requestid>
+  </revision>
+</revisionlist>

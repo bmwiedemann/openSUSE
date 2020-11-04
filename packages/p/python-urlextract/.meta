@@ -1,0 +1,5 @@
+<package name="python-urlextract" project="openSUSE:Factory">
+  <title>python-urlextract</title>
+  <description>Collects and extracts URLs from given text</description>
+  <devel project="devel:languages:python" package="python-urlextract"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-userpath" project="openSUSE:Factory">
+  <title>python-userpath</title>
+  <description>Tool for adding locations to the user PATH</description>
+  <devel project="devel:languages:python" package="python-userpath"/>
+</package>

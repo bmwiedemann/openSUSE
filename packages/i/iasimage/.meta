@@ -1,0 +1,5 @@
+<package name="iasimage" project="openSUSE:Factory">
+  <title>iasimage</title>
+  <description>iasimage is a utility program for creating Intel Automotive Service (IAS) images, a binary file format understood by bootloaders to load and initialize Operating Systems or Hypervisors.</description>
+  <devel project="hardware" package="iasimage"/>
+</package>

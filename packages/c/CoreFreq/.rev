@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78892aaf86f411bec0d531d655f5b81c</srcmd5>
+    <version>1.73.7</version>
+    <time>1583526465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd691fffe4e79341a81b08e5f051a364</srcmd5>
+    <version>1.75.2+git20200418</version>
+    <time>1587581699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796067</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebcc6eb7083fca1ec14123965f651600</srcmd5>
+    <version>1.80.9+git20200914</version>
+    <time>1600180249</time>
+    <user>dimstar_suse</user>
+    <comment>- updated changelog to mention leap15_2.patch
+- updated to git 20200914, fixes compilation on kernel 5.8
+- Fix invalid usage of %{_libexecdir} for systemd owned paths below
+  %{_prefix}/lib.
+</comment>
+    <requestid>834361</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e1af03dd5f71418eb3de1f5be968b4bf</srcmd5>
+    <version>1.81.7+git20201028</version>
+    <time>1603892041</time>
+    <user>dimstar_suse</user>
+    <comment>updated to git 20201028, fixes compilation on kernel 5.9
+</comment>
+    <requestid>844551</requestid>
+  </revision>
+</revisionlist>

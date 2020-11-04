@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>64654afb66ce7814c30db4be7aa1a2b7</srcmd5>
+    <version>0~git20190911</version>
+    <time>1581456127</time>
+    <user>dimstar_suse</user>
+    <comment>NeoGeo Pocket emulator</comment>
+    <requestid>771789</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>661a69e57045a63321b19116eaba8d14</srcmd5>
+    <version>0~git20200518</version>
+    <time>1591558559</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812082</requestid>
+  </revision>
+</revisionlist>

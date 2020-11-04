@@ -1,0 +1,288 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>defeb7f4e0057c725fd7a97fc99db9fa</srcmd5>
+    <version>9.2</version>
+    <time>1382012125</time>
+    <user>scarabeus_factory</user>
+    <comment>Hiawatha is a modern, secure and lightweight webserver.
+It's a new package which I'm going to maintenance.</comment>
+    <requestid>195362</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24c4aaab906df90b04d8a000607f7c19</srcmd5>
+    <version>9.3</version>
+    <time>1385100675</time>
+    <user>coolo</user>
+    <comment>- Update to 9.3:
+  * PolarSSL updated to version 1.3.2.
+  * Added support for Elliptic Curve Cryptography.
+  * TunnelSSH option added.
+  * AnonymizeIP option added.
+  * Keep-alive connections for reverse proxy.
+  * Small improvements. (forwarded request 207892 from Fisiu)</comment>
+    <requestid>207893</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f53635ae1211c62e40e866f4a04e6347</srcmd5>
+    <version>9.3.1</version>
+    <time>1391030142</time>
+    <user>coolo</user>
+    <comment>- Update to 9.3.1:
+  * Several bugfixes in reverse proxy.</comment>
+    <requestid>215554</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>352f6dd3e4b4d25be0def6062612457b</srcmd5>
+    <version>9.3.1</version>
+    <time>1392731080</time>
+    <user>coolo</user>
+    <comment>- Add firewall rules for http and https. (forwarded request 222611 from Fisiu)</comment>
+    <requestid>222612</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>38ee7e9dcef645c0987974597a6a42c0</srcmd5>
+    <version>9.4</version>
+    <time>1395750137</time>
+    <user>coolo</user>
+    <comment>- Update to 9.4:
+  * Keep-Alive connections for reverse proxy made optional.
+  * ErrorXSLTfile option added.
+  * IgnoreDotHiawatha option added.
+  * RandomHeader option added.
+  * Dropped support for RC4.
+  * PolarSSL updated to version 1.3.4.
+  * Added support for Hyper Text Coffee Pot Control Protocol (RFC2324).
+  * Added SSL_CIPHER to CGI environment.
+  * Added Public/Private to UrlToolkit expire option.
+  * Small improvements. (forwarded request 227405 from Fisiu)</comment>
+    <requestid>227406</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b4d4053875051d0d12d6c4dfa6b8a11a</srcmd5>
+    <version>9.5</version>
+    <time>1400588531</time>
+    <user>coolo</user>
+    <comment>- Update to 9.5:
+  * Added support for CGI statistics in Hiawatha Monitor.
+  * MonitorRequests and MonitorStatsInterval option removed.
+  * Added support for Origin HTTP header to prevent CSRF.
+  * EnforceFirstHostname option added.
+  * ScriptAlias option added.
+  * PolarSSL updated to version 1.3.6.
+  * Dropped support for PolarSSL 1.2. (forwarded request 234572 from Fisiu)</comment>
+    <requestid>234573</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1c239bd7069f928e97ee0e394f1b0c4f</srcmd5>
+    <version>9.6</version>
+    <time>1402403926</time>
+    <user>coolo</user>
+    <comment>- Update to 9.6:
+  * Logfile rotation for access logfiles.
+  * HTTP Strict Transport Security header made optional for RequireSSL.
+  * Support for chunked transfer encoded requests (not for PUT).
+  * Support for improved server statistics in Hiawatha Monitor.
+  * The Hiawatha Monitor is now supported without the need for XSLT.
+  * PolarSSL updated to version 1.3.7.
+  * A few bugfixes as reported by Coverity.
+  * Bugfix: SQL injection detection was broken since 8.6.
+  * Bugfix: XSS detection didn't work for reverse proxy.
+  * Small bugfixes. (forwarded request 236592 from Fisiu)</comment>
+    <requestid>236593</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>1c239bd7069f928e97ee0e394f1b0c4f</srcmd5>
+    <version>9.6</version>
+    <time>1409301164</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65958e553f8ceb27523b94c53fdc3284</srcmd5>
+    <version>9.7</version>
+    <time>1410204542</time>
+    <user>coolo</user>
+    <comment>- Update to 9.7:
+  * UseToolkit now possible in .hiawatha file at root of website.
+  *  Method option added to URL Toolkit.
+  *  SetResourceLimit option added.
+  *  ThreadKillRate option added.
+  *  Improved SQL injection detection.
+  *  Default value for DHsize set to 2048.
+  *  PolarSSL updated to version 1.3.8.
+  *  Memory allocation debugger module added.
+  *  Small bugfixes and improvements.
+  *  Bugfix: incorrect file hash printing by wigwam with directory as symlink. (forwarded request 247931 from Fisiu)</comment>
+    <requestid>247969</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1f3926df386ebf76c079826dfbfb05d1</srcmd5>
+    <version>9.7</version>
+    <time>1410508999</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248392</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>558622294f08c077554e8ebf6fb53abb</srcmd5>
+    <version>9.8</version>
+    <time>1415118565</time>
+    <user>coolo</user>
+    <comment>- Update to 9.8:
+  * Added support for websockets. WebSocket option added.
+  * SSL key and certificate checks added to wigwam.
+  * Small bugfixes and improvements. (forwarded request 259401 from Fisiu)</comment>
+    <requestid>259402</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0c467fde7e8a480dc85d49790ca2c4ff</srcmd5>
+    <version>9.9</version>
+    <time>1418737721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.9:
+  * HTTPAuthToCGI option added.
+  * BanByCGI option added.
+  * Improved SSL ciphersuite selections.
+  * CAcertificates options added.
+  * Dropped support for SSL3.0.
+  * Small bugfixes and improvements. (forwarded request 265064 from Fisiu)</comment>
+    <requestid>265066</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6de02bc95c2460faecd4eff46549d113</srcmd5>
+    <version>9.10</version>
+    <time>1421052612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.10:
+  * Support for banning bad clients who connect via a proxy.
+  * UrlToolkit option Do added. Changed how Call and Skip should be called.
+  * General UrlToolkit improvements. See config/toolkit.conf for syntax.
+  * Hiawatha now prefers reverse proxies with a scheme matching the one of the
+    client connection. See config/toolkit.conf for syntax.
+  * Hiawatha will now first process UrlToolkit rules before using ReverseProxy.
+  * Small bugfixes and improvements. (forwarded request 280813 from Fisiu)</comment>
+    <requestid>280814</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>35a3ca7f78c69db288b1cacb801b13b4</srcmd5>
+    <version>9.11</version>
+    <time>1423669485</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285470</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79041d94894e6c00a583117cf7e91e84</srcmd5>
+    <version>9.12</version>
+    <time>1428391801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.12:
+  * Bugfix: memory leak in SSL library.
+  * Small bugfix. (forwarded request 294641 from Fisiu)</comment>
+    <requestid>294642</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7aafdada1d5b2fa0536acdc7c3aff12c</srcmd5>
+    <version>9.13</version>
+    <time>1435053542</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312843</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9168a621547d2350f59f8a202f8b601a</srcmd5>
+    <version>10.3</version>
+    <time>1475750694</time>
+    <user>dimstar_suse</user>
+    <comment>- Build fails with mbedtls &amp;lt; 2. (forwarded request 432631 from Fisiu)</comment>
+    <requestid>432633</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3a82f59ed19fa23b664120aaba559333</srcmd5>
+    <version>10.4</version>
+    <time>1480693351</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442891</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9813a11f97f61e7858d5c06dcf4f111c</srcmd5>
+    <version>10.6</version>
+    <time>1502366547</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506293</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8098694f034fadabd0d35c2839eb0d7a</srcmd5>
+    <version>10.7</version>
+    <time>1510232409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537987</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e895d3a88b17cc0c101d10b794001ec0</srcmd5>
+    <version>10.7</version>
+    <time>1519145736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578148</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b5bca72a71477ba5243831222175c49a</srcmd5>
+    <version>10.8</version>
+    <time>1522503417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592256</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a2f6e2fdb1b8f24764cb5defd7cc5cec</srcmd5>
+    <version>10.8.1</version>
+    <time>1526372062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606704</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2a0557cf950bedbb82865fd642c06360</srcmd5>
+    <version>10.8.3</version>
+    <time>1538374796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639073</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7b11c3d235b7d4caec17f81938c7f85d</srcmd5>
+    <version>10.9</version>
+    <time>1553611183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681986</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>6516ddb52828112f9d4a3a7df6284dfe</srcmd5>
+    <version>10.9</version>
+    <time>1565963055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>723506</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f2e48f5387f8229780aafbc05c67b5a1</srcmd5>
+    <version>10.11</version>
+    <time>1596652181</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>824499</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>621b6d371237f20213fc4ac1f6c57867</srcmd5>
+    <version>10.11</version>
+    <time>1603821682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844159</requestid>
+  </revision>
+</revisionlist>

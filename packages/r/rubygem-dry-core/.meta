@@ -1,0 +1,5 @@
+<package name="rubygem-dry-core" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-dry-core"/>
+</package>

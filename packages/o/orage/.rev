@@ -1,0 +1,393 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0aace279d5dbe5c8d0f3532dcb1c8b7</srcmd5>
+    <version>4.4.0</version>
+    <time>1169769816</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>74caf66c9c4c6b10ac8c283929fdfe53</srcmd5>
+    <version>4.4.1</version>
+    <time>1176475986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cb0fc8a83bfc135cf1cb026356be44c</srcmd5>
+    <version>4.4.2</version>
+    <time>1196720916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="48">
+    <srcmd5>e9b19ce1865fe3a126f30b6ede0bd25e</srcmd5>
+    <version>4.4.2</version>
+    <time>1210373494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="99">
+    <srcmd5>e9b19ce1865fe3a126f30b6ede0bd25e</srcmd5>
+    <version>4.4.2</version>
+    <time>1210373494</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c528c37a4d634455494f1332f7e00053</srcmd5>
+    <version>4.5.14.0</version>
+    <time>1224000787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5ebc20b75567cf09a9f81627bd17eba5</srcmd5>
+    <version>4.5.14.0</version>
+    <time>1227193603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a908b31fd6dcfd130304bb44489f9885</srcmd5>
+    <version>4.6.1</version>
+    <time>1250122474</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/orage based on submit request 17577 from user puzel
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a908b31fd6dcfd130304bb44489f9885</srcmd5>
+    <version>4.6.1</version>
+    <time>1250122474</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/orage based on submit request 17577 from user puzel
+</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>8c6d19a57d53a86d4b54b5276ef9da84</srcmd5>
+    <version>4.6.1</version>
+    <time>1268925250</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9abc2f69f845b9c27a1c38d4d385796d</srcmd5>
+    <version>4.6.1</version>
+    <time>1268989847</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/orage based on submit request 35142 from user prusnak
+</comment>
+    <requestid>35142</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>4d93bf168182dac7ae724a88c90e0bfb</srcmd5>
+    <version>4.6.1</version>
+    <time>1269379760</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/orage based on submit request 35533 from user puzel
+</comment>
+    <requestid>35533</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>d305445344fe1c3ab346c68239c2f514</srcmd5>
+    <version>4.6.1</version>
+    <time>1271867650</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:xfce/orage based on submit request 38401 from user prusnak
+</comment>
+    <requestid>38401</requestid>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>d305445344fe1c3ab346c68239c2f514</srcmd5>
+    <version>4.6.1</version>
+    <time>1278667374</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>d305445344fe1c3ab346c68239c2f514</srcmd5>
+    <version>4.6.1</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>d30eabbeac446bdc2dadc574633294e0</srcmd5>
+    <version>4.7.6.7</version>
+    <time>1292858402</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56152 from user prusnak
+</comment>
+    <requestid>56152</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>801ff67f4c7962e9f2e2b88dc7bf70f2</srcmd5>
+    <version>4.7.6.7</version>
+    <time>1292858411</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56152
+</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>76ffe12e44ec72d3096d704a34b18900</srcmd5>
+    <version>4.7.6.7</version>
+    <time>1294669006</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57383 from user gberh
+</comment>
+    <requestid>57383</requestid>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>af36e975e55cfec6dccbecf1a7536c04</srcmd5>
+    <version>4.7.6.7</version>
+    <time>1294669016</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57383
+</comment>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9413185aa9bb8aa0f74e52bbb2141bbd</srcmd5>
+    <version>4.8.0</version>
+    <time>1295310575</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58593 from user gberh
+</comment>
+    <requestid>58593</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>474502a8e804af2bea3841082e945e25</srcmd5>
+    <version>4.8.0</version>
+    <time>1295310589</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58593
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>474502a8e804af2bea3841082e945e25</srcmd5>
+    <version>4.8.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>29fa5aacafd48e58a8bb121891aec738</srcmd5>
+    <version>4.8.0</version>
+    <time>1298032059</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61697 from user gberh
+</comment>
+    <requestid>61697</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>b0e0af02d874be14069783a273eeec25</srcmd5>
+    <version>4.8.0</version>
+    <time>1298032069</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61697
+</comment>
+  </revision>
+  <revision rev="25" vrev="7">
+    <srcmd5>9cf05636d796c269b9a9ac0390d31e31</srcmd5>
+    <version>4.8.1</version>
+    <time>1304351628</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67082</requestid>
+  </revision>
+  <revision rev="26" vrev="8">
+    <srcmd5>705563802f8fcff80c5fad3feb5a9411</srcmd5>
+    <version>4.8.1</version>
+    <time>1304351642</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67082
+</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4a7448b68f6aa0f429c5434f34ce0755</srcmd5>
+    <version>4.8.2</version>
+    <time>1316618005</time>
+    <user>saschpe</user>
+    <comment>- update to version 4.8.2
+  - possible to export from shell
+  - variable icon can now be changed
+  - procedure alarm replacement parameters
+  - hourly repeat option added
+  - bugfixes
+  - translation updates</comment>
+    <requestid>84054</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>4a7448b68f6aa0f429c5434f34ce0755</srcmd5>
+    <version>4.8.2</version>
+    <time>1319182221</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>6d92bb57f6e03a1549cde600872de7ed</srcmd5>
+    <version>4.8.2</version>
+    <time>1319553966</time>
+    <user>coolo</user>
+    <comment>- added orage-4.8.2-use-docdir.patch in order to use docdir
+  correctly
+- install HTML documentation under /usr/share/xfce4/orage/html
+- make the file list a bit more explicit</comment>
+    <requestid>89080</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>fdc6b1b5814705b08e8804fed4ed9b36</srcmd5>
+    <version>4.8.2</version>
+    <time>1323192910</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>92523edf3d84cafb97e1b1ada8f3eda0</srcmd5>
+    <version>4.8.3</version>
+    <time>1326118822</time>
+    <user>coolo</user>
+    <comment>- update to version 4.8.3
+  - made it impossible to modify read-only events
+  - added location into main calender tooltip
+  - word wrap for note in appointment window
+  - improved time spinners in appointment window
+  - bugfixes
+  - translation updates</comment>
+    <requestid>99302</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>9ab63374cbbedd6575c562c408eced4e</srcmd5>
+    <version>4.8.3</version>
+    <time>1334824835</time>
+    <user>coolo</user>
+    <comment>- recommend the -doc subpackage
+
+- specfile cleanup
+- correct dependencies
+- split off -doc subpackage</comment>
+    <requestid>113651</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>08df9a50cf4d8d6848f20f04f373ed88</srcmd5>
+    <version>4.8.3</version>
+    <time>1336452432</time>
+    <user>coolo</user>
+    <comment>- recommend sox so /usr/bin/play can be used to play notification
+  sounds</comment>
+    <requestid>116148</requestid>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>08df9a50cf4d8d6848f20f04f373ed88</srcmd5>
+    <version>4.8.3</version>
+    <time>1340183767</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="7">
+    <srcmd5>08df9a50cf4d8d6848f20f04f373ed88</srcmd5>
+    <version>4.8.3</version>
+    <time>1359109556</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4ad23825dfb3eef43c62edf1a4429489</srcmd5>
+    <version>4.8.4</version>
+    <time>1359730569</time>
+    <user>coolo</user>
+    <comment>- update to version 4.8.4:
+  - fix bxo#8525: Orage notifies every second on &quot;All day events&quot;
+  - fix bxo#4817: anchor('#') does not work in help links
+  - fix bxo#9243: strptime() needs _XOPEN_SOURCE_EXTENDED defined
+  - fix bxo#9248: internal libical fix SSPM_UNKNOWN_MINOR_TYPE
+  - fix bxo#8231: alarm type is selectable for foreign files
+  - fix bxo#9739: new TODOs start as NOT completed
+  - fix bxo#9738: main window sorts TODOs by due-date
+  - fix bxo#9598: main window tooltip shows title and location bold
+ - translation updates
+- rebase and rename orage-4.8.2-use-docdir.patch to
+  orage-use-docdir.patch
+- add orage-do-not-hardcode-firefox.patch in order to use exo-open
+  instead of hardcoding firefox</comment>
+    <requestid>150695</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>4ad23825dfb3eef43c62edf1a4429489</srcmd5>
+    <version>4.8.4</version>
+    <time>1379663453</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2652ee4a361b0a93e786deef5551659a</srcmd5>
+    <version>4.10.0</version>
+    <time>1386932408</time>
+    <user>coolo</user>
+    <comment>- update to version 4.10.0
+  - fix bxo#9249: Hourly flag missing from event window and tooltip
+  - fix bxo#9830: Pick the date dialog is not localized
+  - fix bxo#9014: Rename Execute button to Postpone for snooze
+    alarms
+  - fix bxo#9017: Clarified Delete confirmation message
+  - fix bxo#9024: Clear nto used extra space from main calendar
+  - fix bxo#10517: Fix archiving to use correct year
+  - fix bxo#10325: Fix startup failure for some languages
+  - fix bxo#10108: Use g_strdup() instead of strdup() with g_free()
+  - fix bxo#10107: Fixed potential memory leak
+  - fix bxo#10473: Fixed crash in file copy with missing files
+  - fix bxo#10401: Use exo-open instead of fixed firefox with help
+  - fix bxo#9507: Older than 1970 periodic events do not work
+  - fix bxo#7929: Some foreign files show time offset in event view
+  - fix bxo#8382: Some events were shown on wrong day
+  - fix bxo#8508: Event ending at midnight is shown on the next day
+  - fix bxo#8426: Missing translations for some timezone names
+  - fix bxo#9028: Orage shows events at +0000 with some iCal files
+  - fix bxo#9810: Do not show &quot;null&quot; when Location or Notes is empty
+  - fix bxo#8231: Make the alarm type selectable for foreign files
+  - fix bxo#8383: Possible to start day view on first day of week
+  - fix bxo#6597: Tooltip enhacements to use Pango markup
+  - fix bxo#9011: Tooltip enhacements to use smaller windows
+  - fix bxo#10432: Possible to make Orage quit when asked to close
+  - fix bxo#9291: Handle external updates to Orage file also
+  - fix bxo#7873: Allow inserting events to foreign files
+  - fix bxo#9250: New list of all events in event list window
+- drop obsolete orage-do-not-hardcode-firefox.patch
+- remove %clean</comment>
+    <requestid>210626</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>2652ee4a361b0a93e786deef5551659a</srcmd5>
+    <version>4.10.0</version>
+    <time>1409302078</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ee6b0b108d25c5bc2b38b800c886063c</srcmd5>
+    <version>4.12.0</version>
+    <time>1428652498</time>
+    <user>dimstar_suse</user>
+    <comment>- add orage-fix-plugin-filename.patch in order to fix the plugin
+  filename so that the plugin is found again (bxo#11807)
+
+- update to version 4.12.0
+  - several issues reported by Coverity fixed.
+  - bxo#10647: missing translations in globaltime
+  - bxo#10648: missing window title translation in globaltime
+  - bxo#10947: Implemented Orage vertical panel clock
+  - bxo#8719: Implemented Orage panel plugin as module
+  - possible to set delayed file close time</comment>
+    <requestid>295242</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>eb544ad1feb737376a60c707044d86f8</srcmd5>
+    <version>4.12.1</version>
+    <time>1428949866</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.12.1
+  - bxo#11807: Wrong plugin module name
+  - bxo#11380: Error in manpage
+- drop obsolete orage-fix-plugin-filename.patch</comment>
+    <requestid>295587</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7903c7883003d1f9b20f3a35f5cd38de</srcmd5>
+    <version>4.12.1</version>
+    <time>1520415224</time>
+    <user>dimstar_suse</user>
+    <comment>add 0001-fix-build-with-libical-version-3.patch (bxo#13997) (forwarded request 582261 from seife)</comment>
+    <requestid>582262</requestid>
+  </revision>
+</revisionlist>

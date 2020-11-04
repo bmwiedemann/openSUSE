@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b71fc5c5eaeaf24fc664962e64d5bb9</srcmd5>
+    <version>0.29.1</version>
+    <time>1573503556</time>
+    <user>dimstar_suse</user>
+    <comment>New package with Bazel in version 0.29.1
+
+Needed for ongoing fixes for Envoy which I'm working on in home:mrostecki:branches:devel:kubic project</comment>
+    <requestid>738814</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95139500b0f30a3613408fc5f295bf2b</srcmd5>
+    <version>0.29.1</version>
+    <time>1574859376</time>
+    <user>dimstar_suse</user>
+    <comment>- revert aarch64 build workarounds, underlying problem has been fixed (bsc#1138529)</comment>
+    <requestid>751254</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>424ce2b915674179afef386b1e9ce878</srcmd5>
+    <version>0.29.1</version>
+    <time>1575464008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753286</requestid>
+  </revision>
+</revisionlist>

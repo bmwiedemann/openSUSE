@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f3e7212845b7ff6a1d83c75d073b901</srcmd5>
+    <version>1.10.1.post20200504175005</version>
+    <time>1599088652</time>
+    <user>dimstar_suse</user>
+    <comment>goes with sphinxcontrib-fulltoc</comment>
+    <requestid>831387</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31c6472116e662e850cec24d0c869d91</srcmd5>
+    <version>1.10.1.post20200504175005</version>
+    <time>1600079417</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833991</requestid>
+  </revision>
+</revisionlist>

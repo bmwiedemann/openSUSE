@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>250fee7a0269f4eae9e5732b0e1e85a0</srcmd5>
+    <version>5.19.2</version>
+    <time>1593200828</time>
+    <user>dimstar_suse</user>
+    <comment>Alternative shell for Plasma</comment>
+    <requestid>816654</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00ce34157c5e45de680696cdf6914a53</srcmd5>
+    <version>5.19.3</version>
+    <time>1594394325</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.3</comment>
+    <requestid>819428</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8c7cc46e6434826a6507c8781cf3d85</srcmd5>
+    <version>5.19.4</version>
+    <time>1596096105</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.4</comment>
+    <requestid>823272</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e11088809c86d8c33e7c31f691503b38</srcmd5>
+    <version>5.19.5</version>
+    <time>1599343289</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.5</comment>
+    <requestid>831178</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3b8abbbc18624fe08b120c1f7515d1b</srcmd5>
+    <version>5.20.0</version>
+    <time>1602682725</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.0</comment>
+    <requestid>841020</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>51e277100ce5b384c8357bfb0b2d52c8</srcmd5>
+    <version>5.20.1</version>
+    <time>1603456066</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843116</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6dc156f5b11906c0c6ae170f2f81993e</srcmd5>
+    <version>5.20.2</version>
+    <time>1604510678</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844613</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="js-technology-fonts" project="openSUSE:Factory">
+  <title>JS Technology fonts</title>
+  <description>JS Technology fonts was initially created to support Thai language for desktop publishing in Windows operating system. Which later was adapted for sewing machine patterns.</description>
+  <devel project="M17N:fonts" package="js-technology-fonts"/>
+</package>

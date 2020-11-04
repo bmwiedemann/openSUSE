@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>177e5f76e0bfc17c2ccc720ce5f7715d</srcmd5>
+    <version>1.6.1</version>
+    <time>1581694868</time>
+    <user>okurz-factory</user>
+    <comment>new package ...</comment>
+    <requestid>774362</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9639a9b95c1129a4831ea38ba1b5e7e1</srcmd5>
+    <version>1.7</version>
+    <time>1589046768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7:
+  * Add IT translation. @albanobattistella
+  * Fix incorrect handling of system wide options when multiple
+    drivers are defined. @jlhertel
+  * Add option to change default config directories. @jlhertel
+  * Add code of conduct. @jlhertel</comment>
+    <requestid>802001</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f53dd7a68e0a624dc2029edf19c6eef</srcmd5>
+    <version>2.4</version>
+    <time>1604510858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4:
+  * Renamed application from br.com.jeanhertel.adriconf to
+    org.freedesktop.adriconf.
+  * Handle string and float options.
+  * Add Polish translations. @baryluk
+  * Make various cosmetic fixes.
+- Changes for older versions in 2.* series:
+  * Rename application to org.freedesktop.adriconf
+  * Make sure themes don't add shadows to button.
+  * Add tooltips to add profile screen.
+  * Fix Spin Button fields, so that increment/decrement fields are
+    correctly visible.
+  * Improve Switch buttons with more visible colors.
+  * Small fix fox incorrect shadows with default GTK+ theme.
+  * User Interface is dark by default
+  * Completely removed dialogs and replaced them with screens,
+    giving a more natural navigation.
+  * Profiles are now saved independently giving the user more
+    control on what to save.
+  * Mesa-defined profiles are not shown anymore, avoiding previous
+    confusion on what the user added and what is defined by mesa
+    itself.
+  * Better validate when the user adds a new profile.
+  * Bug-fix: When switching the GPU on PRIME settings now we keep
+    the same application selected.</comment>
+    <requestid>845910</requestid>
+  </revision>
+</revisionlist>

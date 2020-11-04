@@ -1,0 +1,7 @@
+<package name="samtools" project="openSUSE:Factory">
+  <title>Tools for manipulating next-generation sequencing data</title>
+  <description>Samtools implements various utilities for post-processing alignments in the
+SAM, BAM, and CRAM formats, including indexing, variant calling (in conjunction
+with bcftools), and a simple alignment viewer.</description>
+  <devel project="science" package="samtools"/>
+</package>

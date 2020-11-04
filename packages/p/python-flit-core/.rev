@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc354fc44c951a06f875152bebc279b9</srcmd5>
+    <version>2.1.0</version>
+    <time>1576676813</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort.</comment>
+    <requestid>757718</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df0a914bbd1a9000145cf7be415334d3</srcmd5>
+    <version>2.1.0</version>
+    <time>1576927875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758307</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e28720ace4e907ad82e26fbc8a776eef</srcmd5>
+    <version>2.1.0</version>
+    <time>1584350392</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix generating with new dephell</comment>
+    <requestid>785247</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>808925e48f62504b0f6b0e4e4a26656d</srcmd5>
+    <version>2.1.0</version>
+    <time>1585261923</time>
+    <user>dimstar_suse</user>
+    <comment>- Add macro %dephell_genspec to generate setup.py</comment>
+    <requestid>787818</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0abf65251a12487ea2c74eccabe86ad7</srcmd5>
+    <version>3.0.0</version>
+    <time>1603821635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844213</requestid>
+  </revision>
+</revisionlist>

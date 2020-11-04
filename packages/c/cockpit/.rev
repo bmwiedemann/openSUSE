@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ed950fdf4c1442698bad9b1eb24868e</srcmd5>
+    <version>220</version>
+    <time>1591862502</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>812929</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22d8bbe690cdbf1bba527728b421dce4</srcmd5>
+    <version>222</version>
+    <time>1593201019</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817283</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a91da52f9a73265e461261099650a684</srcmd5>
+    <version>222</version>
+    <time>1597390356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826190</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>799cb8e2d81aeb6ddafdaccd8a5a9f1d</srcmd5>
+    <version>225</version>
+    <time>1597519208</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826690</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4f5cf1ac7063117503017cdf88cb2da7</srcmd5>
+    <version>225</version>
+    <time>1599667271</time>
+    <user>dimstar_suse</user>
+    <comment>- cockpit-ws: don't require systemd (allows to build a very small
+  cockpit-ws container)
+
+- Add README.packaging for packagers</comment>
+    <requestid>832694</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>075e9d47ef9cc374f2f300f2591842ff</srcmd5>
+    <version>225</version>
+    <time>1600701554</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835202</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22682efab1be9e5345c23df3f28f2681</srcmd5>
+    <version>228</version>
+    <time>1601744219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839210</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c918c0c84a8faa1672af1844fe8f59d0</srcmd5>
+    <version>229</version>
+    <time>1602073080</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 229
+  https://cockpit-project.org/blog/cockpit-229.html (forwarded request 839813 from lnussel)</comment>
+    <requestid>839814</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d4bd57e13f96d4ca2e7e66c168c736f5</srcmd5>
+    <version>230</version>
+    <time>1602762705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841891</requestid>
+  </revision>
+</revisionlist>

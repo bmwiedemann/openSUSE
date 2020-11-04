@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>97c9a045cab444c016cb4a985edcc693</srcmd5>
+    <version>1.9.3</version>
+    <time>1580724743</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain poco in Factory</comment>
+    <requestid>765083</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c53715ab3feadca884d6d0844c29a89a</srcmd5>
+    <version>1.9.3</version>
+    <time>1580842347</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769524</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7af43e1bedf2a7e014d65d5a751a1d8b</srcmd5>
+    <version>1.10.1</version>
+    <time>1582028945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775118</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b546629ccc3be08b8fd4e8f8dc90e8e4</srcmd5>
+    <version>1.10.1</version>
+    <time>1588450724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799619</requestid>
+  </revision>
+</revisionlist>

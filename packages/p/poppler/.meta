@@ -1,0 +1,6 @@
+<package name="poppler" project="openSUSE:Factory">
+  <title>PDF Rendering Library</title>
+  <description>Poppler is a PDF rendering library, forked from the xpdf PDF viewer
+developed by Derek Noonburg of Glyph and Cog, LLC.</description>
+  <devel project="X11:common:Factory" package="poppler"/>
+</package>

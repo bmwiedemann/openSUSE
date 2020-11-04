@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d1f6b2b9a87ce971e3e2b5767cfb365</srcmd5>
+    <version>2.6.0</version>
+    <time>1601044082</time>
+    <user>dimstar_suse</user>
+    <comment>Initial commit</comment>
+    <requestid>834462</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ae795584f2f39f5ebbf8ad3e46cbef9f</srcmd5>
+    <version>2.6.0</version>
+    <time>1602682741</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841595</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3c3b90e8a437e678a4a7d804ee0b8dbf</srcmd5>
+    <version>2.6.0</version>
+    <time>1603031710</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842209</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6e32aa691e925e4500943333c32735a7</srcmd5>
+    <version>2.6.0</version>
+    <time>1603821675</time>
+    <user>dimstar_suse</user>
+    <comment>- Build needs 4GB of memory
+</comment>
+    <requestid>844146</requestid>
+  </revision>
+</revisionlist>

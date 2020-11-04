@@ -1,0 +1,5 @@
+<package name="logtop" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:utilities" package="logtop"/>
+</package>

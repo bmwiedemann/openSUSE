@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6750ffa269179c5901d32280481b5845</srcmd5>
+    <version>0.2.0</version>
+    <time>1409998731</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>247714</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ead7d8c9247f405e94b9d5a23b25669</srcmd5>
+    <version>1.0.0</version>
+    <time>1411926856</time>
+    <user>coolo</user>
+    <comment>- update to version 1.0.0:
+  * Add missing six dependency
+- Add Requires for python-Babel and python-six
+
+- update to 0.3.0:
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Imported Translations from Transifex
+  * Document how to add import exceptions</comment>
+    <requestid>252599</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>927bea8df6ab7985421b167bab8bd6fa</srcmd5>
+    <version>1.5.0</version>
+    <time>1435870227</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Updated from global requirements
+
+- update to version 1.4.0:
+  * Add test fixture to prefix lazily translated messages
+
+- update to version 1.3.1:
+  * Clear global cache in test_get_available_languages
+  * Make setup.cfg packages include oslo.i18n
+
+- update to version 1.3.0:
+  * Add a fixture to let tests manage the lazy flag
+  * Fix the link to the bug tracker in the README
+- Add python_requires to _service
+
+- update to version 1.2.0:
+  * Correct the translation domain for loading messages
+  * Move out of the oslo namespace package
+  * Workflow documentation is now in infra-manual
+  * Force code sample to be treated as python
+  * Imported Translations from Transifex
+  * Add note for integration modules in libraries
+  * Activate pep8 check that _ is imported
+  * Add pbr to installation requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Remove extraneous vim editor configuration comments
+  * Make clear in docs to use _LE() when using LOG.exception()
+  * Support building wheels (PEP-427)
+  * Imported Translations from Transifex</comment>
+    <requestid>314666</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20004e8ca66544267ecf387b8a14ee8f</srcmd5>
+    <version>2.2.0</version>
+    <time>1440658488</time>
+    <user>coolo</user>
+    <comment>- Unify spec file #2
+
+- Unify spec file. Use fedora compatible files macros
+
+- update to 2.2.0:
+  * Imported Translations from Transifex
+  * Updated from global requirements
+  * Fix mock use for 1.1.0
+  * Add requirements for pre-release test scripts
+  * Imported Translations from Transifex
+
+- update to 2.1.0:
+  * Support contextual and plural form of gettext functions
+  * Imported Translations from Transifex
+  * clarify translation policy
+  * Add tox target to find missing requirements
+  * Imported Translations from Transifex
+
+- update to 2.0.0:
+  * Updated from global requirements
+  * Remove oslo namespace package
+
+- Further reducing diff
+
+- Reduce diff between SUSE and RDO packaging:
+  * Add extra oslo.i18n-doc package
+
+- update to 1.7.0:
+  * Advertise support for Python3.4 / Remove support for Python 3.3
+  * Updated from global requirements</comment>
+    <requestid>320698</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a2272fab8a8fe8202445476527eb94ba</srcmd5>
+    <version>2.6.0</version>
+    <time>1446208938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+* Updated from global requirements
+* Trap formatting errors
+* Imported Translations from Transifex
+* Clean up _translate_msgid logic a bit</comment>
+    <requestid>337150</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99a093debc3336f9600d9819defd0a87</srcmd5>
+    <version>3.9.0</version>
+    <time>1475242160</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425270</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0f1e996cca80d2fb3b4137cc101849d9</srcmd5>
+    <version>3.12.0</version>
+    <time>1487680926</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.12.0:
+  - Add Constraints support
+  - Typo fix in oslo.i18n
+  - Add reno for release notes management
+  - Show team and repo badges on README
+  - Changed the home-page link
+  - Replace six.iteritems() with .items()
+  - Add missing dependency testscenarios
+  - Updated from global requirements
+  - Add docs on how to display translated strings in your app</comment>
+    <requestid>456685</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40069e73502d24406e348b322e8888a5</srcmd5>
+    <version>3.17.0</version>
+    <time>1503927086</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.17.0
+  - Revert &quot;Remove Babel as a runtime requirement&quot;
+  - Remove Babel as a runtime requirement
+  - Enable some off-by-default checks
+  - Check reStructuredText documents for common style issues
+  - Fix wrong response with language zh-TW.
+  - rearrange the documentation to fit into the new standard layout
+  - Imported Translations from Zanata
+  - add notes about skipping log translation setup
+  - [Fix gate]Update test requirement
+  - Python 3.5 is added
+  - Update reno for stable/ocata
+  - turn on warning-is-error in doc build
+  - Update URLs in documents according to document migration
+  - Updated from global requirements
+  - switch from oslosphinx to openstackdocstheme</comment>
+    <requestid>514994</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9699da77630b275c52a66ae620c98c74</srcmd5>
+    <version>3.18.0</version>
+    <time>1513245298</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.18.0
+  - Update reno for stable/pike
+  - Imported Translations from Zanata
+  - Updated from global requirements</comment>
+    <requestid>555145</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4348ab66e25a0adfc2684d9c878ff961</srcmd5>
+    <version>3.19.0</version>
+    <time>1516804064</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.19.0
+  - Imported Translations from Zanata
+  - Remove setting of version/release from releasenotes
+  - Remove -U from pip install
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support</comment>
+    <requestid>567274</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>077ed24916ecacdbbf8112a08afc1482</srcmd5>
+    <version>3.19.0</version>
+    <time>1521498954</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583339</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>05e0e98354d8922c244d1a3b204d0d1f</srcmd5>
+    <version>3.21.0</version>
+    <time>1536327534</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633100</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3b31570558c35c75ec767207b1ea9467</srcmd5>
+    <version>3.23.1</version>
+    <time>1556916139</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.23.1
+  - Update hacking version
+  - Update mailinglist from dev to discuss
+  - Remove unused code
+  - add lib-forward-testing-python3 test job
+  - Override getttext.find to cache result
+  - Imported Translations from Zanata
+  - Always build universal wheels
+  - Update reno for stable/rocky
+  - Remove references to log translation functions
+  - Clean up .gitignore references to personal tools
+  - Don't quote {posargs} in tox.ini
+  - Change python3.5 job to python3.7 job on Stein+
+  - add python 3.6 unit test job
+  - add python 3.7 unit test job
+  - import zuul job settings from project-config
+  - Use templates for cover and lower-constraints</comment>
+    <requestid>692857</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>31cb93670f2d7632e83f96f8809ed3da</srcmd5>
+    <version>3.24.0</version>
+    <time>1582018874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.24.0
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - Update master for stable/stein
+  - Clarify that translation strings are extracted via source inspection
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Move doc related modules to doc/requirements.txt
+  - Add Python 3 Train unit tests
+  - Dropping the py35 testing
+  - Fix guidelines w.r.t. translation of log messages
+  - OpenDev Migration Patch
+  - Move to releases.openstack.org</comment>
+    <requestid>774913</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5ee7b17b630b2150e27102ba6271181f</srcmd5>
+    <version>3.24.0</version>
+    <time>1585085543</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only builds</comment>
+    <requestid>784948</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b078f759435abd4345f22d48769a7eb1</srcmd5>
+    <version>4.0.1</version>
+    <time>1591380861</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803591</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e86292d04bfc96e1a74bec157925427e</srcmd5>
+    <version>5.0.1</version>
+    <time>1603725404</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841209</requestid>
+  </revision>
+</revisionlist>

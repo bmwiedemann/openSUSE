@@ -1,0 +1,8 @@
+<package name="xml-im-exporter" project="openSUSE:Factory">
+  <title>XML Im-/Exporter</title>
+  <description>XML Im-/Exporter is a low level library to assist you in the straight
+forward process of importing and exporting XML from and to your Java
+classes. All of this is designed having performance and simplicity in
+mind.</description>
+  <devel project="Java:packages" package="xml-im-exporter"/>
+</package>

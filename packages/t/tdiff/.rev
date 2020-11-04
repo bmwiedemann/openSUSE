@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a025dfdb5f66f3fb37cfa14d78ab4805</srcmd5>
+    <version>0.8.5</version>
+    <time>1580373724</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain tdiff in Factory</comment>
+    <requestid>768446</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ea5fe9e14c6e14bdcfe88acbff419665</srcmd5>
+    <version>0.8.5</version>
+    <time>1583948945</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783391</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e46e9d62cdfb62f324638fea7708401f</srcmd5>
+    <version>0.8.5</version>
+    <time>1588186338</time>
+    <user>dimstar_suse</user>
+    <comment>Forward the current version of tdiff to Factory</comment>
+    <requestid>798795</requestid>
+  </revision>
+</revisionlist>

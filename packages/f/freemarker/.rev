@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>34a44e0003755f115ee2973c1d0a332b</srcmd5>
+    <version>2.3.28</version>
+    <time>1574014933</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748034</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ad858c3204b144eb223f734114d0ad8</srcmd5>
+    <version>2.3.28</version>
+    <time>1580152602</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767558</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fe9009b027091c2157d9b56ce867a622</srcmd5>
+    <version>1.2.1</version>
+    <time>1574551697</time>
+    <user>dimstar_suse</user>
+    <comment>devel:languages:python:jupyter</comment>
+    <requestid>749341</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5fa0930d2cac88602793f0626cd622f9</srcmd5>
+    <version>2.0.0</version>
+    <time>1588023107</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove py2 code as upstream says it is py3 only compatible
+
+- Update to version 2.0.0
+  * Papermill is now Python 3.5+ only</comment>
+    <requestid>796430</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>63665f7793749b8f3f41051d32777615</srcmd5>
+    <version>2.0.0</version>
+    <time>1590506411</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808406</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>417cfebdb5461da52027dbf27c1a848b</srcmd5>
+    <version>2.1.1</version>
+    <time>1591742999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * Support for python 3.5 has been dropped
+  * Error cells injected at the top of failed notebooks look nicer now as markdown.
+  * DeadKernelExceptions, usually from OOM, now exit with a status code of 138 from the CLI.
+  * Error cell at the top of failed notebook has been made better. It now also has a link to an injected cell where the error occurred.
+  * Updated a deprecated function to the new function name for nbclient dependency.</comment>
+    <requestid>812824</requestid>
+  </revision>
+</revisionlist>

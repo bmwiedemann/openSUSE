@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27ef6255c8f43c8942e6f71b8db6e6cf</srcmd5>
+    <version>0</version>
+    <time>1576505956</time>
+    <user>dimstar_suse</user>
+    <comment>purge-kernels-service (jsc#SLE-10162, jsc#SLE-10465)
+
+This adds separate package that contains purge-kernels.service
+Requires change to dracut that drops the same.
+Preferably this package should be added to some pattern that pulls it in by default.</comment>
+    <requestid>756998</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e500ee98b118a30d115cd6935c79456</srcmd5>
+    <version>0</version>
+    <time>1579556903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765770</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cfe084874780a65fa7995b3399ef0e0d</srcmd5>
+    <version>0</version>
+    <time>1580373121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766917</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>745d7831f9482e87deea72d5eba8b75b</srcmd5>
+    <version>0</version>
+    <time>1580724658</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769109</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8c6b6e6901629a08b48dea33392c2b95</srcmd5>
+    <version>0</version>
+    <time>1583446689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781150</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>860fe77dfa0f9aa0f7f6138c5b8dbd1d</srcmd5>
+    <version>0</version>
+    <time>1584643272</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>785236</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>835334853b48d3ffcaee579d7d26d98d</srcmd5>
+    <version>0</version>
+    <time>1591879025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809636</requestid>
+  </revision>
+</revisionlist>

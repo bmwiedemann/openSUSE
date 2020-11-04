@@ -1,0 +1,10 @@
+<package name="parcellite" project="openSUSE:Factory">
+  <title>A lightweight GTK+ clipboard manager</title>
+  <description>Parcellite is a stripped down, basic-features-only clipboard manager with a 
+small memory footprint for those who like simplicity.
+
+In GNOME and Xfce the clipboard manager will be started automatically. For 
+other desktops or window managers you should also install a panel with a 
+system tray or notification area if you want to use this package.</description>
+  <devel project="X11:lxde" package="parcellite"/>
+</package>

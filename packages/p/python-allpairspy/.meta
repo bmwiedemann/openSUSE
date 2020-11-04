@@ -1,0 +1,8 @@
+<package name="python-allpairspy" project="openSUSE:Factory">
+  <title>Pairwise test combinations generator</title>
+  <description>Pairwise test combinations generator.
+
+</description>
+  <devel project="devel:languages:python" package="python-allpairspy"/>
+  <url>https://github.com/thombashi/allpairspy</url>
+</package>

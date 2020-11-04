@@ -1,0 +1,5 @@
+<package name="python-telethon-session-sqlalchemy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-telethon-session-sqlalchemy"/>
+</package>

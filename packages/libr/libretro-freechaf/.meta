@@ -1,0 +1,5 @@
+<package name="libretro-freechaf" project="openSUSE:Factory">
+  <title>FreeChaF libretro core for Fairchild ChannelF emulation</title>
+  <description>FreeChaF is a libretro emulation core for the Fairchild ChannelF / Video Entertainment System designed to be compatible with joypads from the SNES era forward. This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-freechaf"/>
+</package>

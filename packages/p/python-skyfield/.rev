@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eb886588a3c97f8a308d0be861416b9</srcmd5>
+    <version>1.23</version>
+    <time>1594706363</time>
+    <user>dimstar_suse</user>
+    <comment>A Python astronomy package that makes it easy to generate high precision
+research-grade positions for planets and Earth satellites.</comment>
+    <requestid>820571</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>57539eec401d5aa60fa7ee043f6e0ce7</srcmd5>
+    <version>1.24</version>
+    <time>1595577744</time>
+    <user>dimstar_suse</user>
+    <comment>- release precision for i586 test
+  gh#skyfielders/python-skyfield#411 
+
+- Update to Version 1.24
+  * Added methods :meth:`~skyfield.timelib.Timescale.from_datetime()`
+    and :meth:`~skyfield.timelib.Timescale.from_datetimes()` to 
+    the :class:`~skyfield.timelib.Timescale` class, to 
+    better advertise the ability to build a Skyfield time 
+    from a Python datetime — an ability that was previously 
+    overloaded into the year parameter of the 
+    :meth:`~skyfield.timelib.Timescale.utc()` method (where 
+    it is still supported for backwards compatibility, but 
+    no longer documented).
+  * Fix: improved the accuracy with which velocity is 
+    converted between the Earth-fixed ITRF frame that rotates 
+    with the Earth and the inertial GCRS frame that does not. 
+    In particular, this should make Earth satellite 
+    velocities more accurate.
+- rebase patches skyfield-pr404-comparefloat.patch
+  and skyfield-pr405-replace-assay-by-pytest.patch</comment>
+    <requestid>822291</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37c12df4890f6bd6cd4ea8d89e5fd718</srcmd5>
+    <version>1.25</version>
+    <time>1595864444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822763</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43c3824f63c5bc923e366a4fb2da6364</srcmd5>
+    <version>1.26</version>
+    <time>1596457030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26
+- make builds reproducible gh#skyfielders/python-skyfield#415</comment>
+    <requestid>823995</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d4d489905e5516a60d3c7a4e208cc2ef</srcmd5>
+    <version>1.26</version>
+    <time>1596727991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update assay to commit 256.23c18c2 in order to fix non x86 builds</comment>
+    <requestid>824700</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a5541b93253ffdbe6df14f57fd8be881</srcmd5>
+    <version>1.27</version>
+    <time>1600278027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27
+  * The printed appearance of both vectors and of vector 
+    functions like Earth locations and Earth satellites 
+    have been rewritten to be more informative and 
+    consistent.
+  * Added compute_calendar_date() which lets the caller 
+    choose the Julian calendar for ancient dates instead of 
+    always using the proleptic Gregorian calendar. This 
+    should be particularly useful for historians.
+  * Added J() that builds a time array from an array of 
+    floating point years. #436
+  * Added four new strftime methods for the non-UTC 
+    timescales (#443). All four of them support %f for 
+    microseconds, and provide a reasonable default format 
+    string for callers who don’t wish to concoct their own:
+      tai_strftime()
+      tt_strftime()
+      tdb_strftime()
+      ut1_strftime() 
+  * Thanks to several fixes, comets and asteroids with 
+    parabolic and hyperbolic orbits should now raise fewer 
+    errors.
+ *  The prototype planetary_magnitude() can now return 
+    magnitudes for Uranus without raising an exception. The 
+    routine does not yet take into account whether the 
+    observer is facing the equator or poles of Uranus, so 
+    the magnitude predicted for the planet will only be 
+    accurate to within about 0.1 magnitudes.</comment>
+    <requestid>834847</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ad6a3660952c75688b5fd9f2ae8f3caa</srcmd5>
+    <version>1.29</version>
+    <time>1601200211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.29
+  * Fix: the new Julian calendar feature was raising an 
+    exception in the calendar methods like 
+    `skyfield.timelib.Time.tt_calendar()` if the time 
+    object was in fact an array of times. #450
+  * Fix: trying to iterate over a time object would raise an 
+    exception if the time was created through 
+    `~skyfield.timelib.Timescale.ut1()`.
+- Version 1.28
+  * Broken URL: Because the VizieR archive apparently decided 
+    to uncompress their copy of the hip_main.dat.gz Hipparcos 
+    catalog file, the old URL now returns a 404 error. As an 
+    emergency fix, this version of Skyfield switches to their 
+    uncompressed hip_main.dat. Hopefully they don’t compress 
+    it again and break the new URL! A more permanent solution 
+    is discussed at: #454
+  * To unblock this release, removed a few deprecated pre-1.0 
+    experiments from April 2015 in skyfield.hipparcos and 
+    skyfield.named_stars that broke because the Hipparcos 
+    catalog is no longer compressed; hopefully no one was 
+    using them.
+  * In a sweeping internal change, the 
+    `~skyfield.timelib.Timescale` and 
+    `~skyfield.timelib.Time` objects now offer support 
+    for the Julian calendar that’s used by historians for 
+    dates preceding the adoption of the Gregorian calendar in 
+    1582. See choice of calendars if you want to turn on 
+    Julian dates in your application. #450</comment>
+    <requestid>837884</requestid>
+  </revision>
+</revisionlist>

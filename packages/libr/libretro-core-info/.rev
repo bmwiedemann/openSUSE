@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c6a457e297da6699cb5c7975aacbcd1a</srcmd5>
+    <version>1.8.2</version>
+    <time>1579729347</time>
+    <user>dimstar_suse</user>
+    <comment>Core info files for RetroArch</comment>
+    <requestid>762933</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a285f3de5f67c74bb73b7f7d894fdf2c</srcmd5>
+    <version>1.8.4</version>
+    <time>1580842385</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.4
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.8.2...v1.8.4
+- Version 1.8.2
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.7.9.2...v1.8.2
+- Version 1.7.9.2
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.7.8...v1.7.9.2
+- Version 1.7.8
+</comment>
+    <requestid>769933</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b5ac7744f81467f84dca33c86492ab24</srcmd5>
+    <version>1.8.5</version>
+    <time>1585995826</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>791024</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bccb530e9f434efaa85421c915866854</srcmd5>
+    <version>1.8.6</version>
+    <time>1589491564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805515</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>80575a04997748f591266cb7602bafa4</srcmd5>
+    <version>1.8.7</version>
+    <time>1591558457</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.7
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.8.6...v1.8.7
+</comment>
+    <requestid>808456</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7dad48d6c47fe98711554761835e1c44</srcmd5>
+    <version>1.8.9</version>
+    <time>1593006535</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.9
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.8.8...v1.8.9
+- Version 1.8.8
+  * Full changes at https://github.com/libretro/libretro-core-info/compare/v1.8.7...v1.8.8
+</comment>
+    <requestid>816710</requestid>
+  </revision>
+</revisionlist>

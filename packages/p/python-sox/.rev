@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57ebbfec6bf9c285482b780844334218</srcmd5>
+    <version>1.3.7</version>
+    <time>1580928229</time>
+    <user>dimstar_suse</user>
+    <comment>Audio processing toolkit for python.
+
+Required by the latest version of python-audiomate, which is already in openSUSE:Factory.</comment>
+    <requestid>770325</requestid>
+  </revision>
+</revisionlist>

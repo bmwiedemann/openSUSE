@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d26c47cb08611184fe40d75efdc6bfa</srcmd5>
+    <version>1.8.1</version>
+    <time>1585760963</time>
+    <user>dimstar_suse</user>
+    <comment>Update with the fix we filed earlier today.</comment>
+    <requestid>790270</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>64ea322888c012e05dd96b2a4ef8e3db</srcmd5>
+    <version>1.9.0</version>
+    <time>1593006571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * Adds support for Patchwork API v1.2 and introduces five new commands:
+    + bundle create
+    + bundle update
+    + bundle delete
+    + bundle add
+    + bundle remove</comment>
+    <requestid>816755</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e2540caaa45855d8083b2ef660535ef</srcmd5>
+    <version>2.0.0</version>
+    <time>1596036069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Drop support for Python 2.7
+  * trivial: Use names for options with multiple=True
+  * Add '--hash' option for 'git-pw patch list'
+  * rpm: Address review comments
+  * Add spec file
+  * Revert &quot;docs: Increase support range for reno&quot;
+  * travis: Add support for GitHub releases
+  * docs: Increase support range for reno</comment>
+    <requestid>823313</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="indriya" project="openSUSE:Factory">
+  <title>Next Generation Units of Measurement Implementation</title>
+  <description>Units of Measurement Libraries - JSR 385 Reference Implementation
+
+</description>
+  <devel project="Java:packages" package="indriya"/>
+  <url>https://github.com/unitsofmeasurement/%{name}</url>
+</package>

@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf25635c4370569b6bd2d52c9375db2f</srcmd5>
+    <version>0.7</version>
+    <time>1277723059</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-cerealizer based on submit request 41908 from user hennevogel
+</comment>
+    <requestid>41908</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf25635c4370569b6bd2d52c9375db2f</srcmd5>
+    <version>0.7</version>
+    <time>1278667400</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cf25635c4370569b6bd2d52c9375db2f</srcmd5>
+    <version>0.7</version>
+    <time>1278678635</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>474391f253994953be9ef634836f80ba</srcmd5>
+    <version>0.7</version>
+    <time>1289416583</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52701 from user elvigia
+</comment>
+    <requestid>52701</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>08962732ddc815810a5b2ce9b8ead1a7</srcmd5>
+    <version>0.7</version>
+    <time>1289416593</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52701
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>08962732ddc815810a5b2ce9b8ead1a7</srcmd5>
+    <version>0.7</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>08962732ddc815810a5b2ce9b8ead1a7</srcmd5>
+    <version>0.7</version>
+    <time>1319182383</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>418c3bd06f45b56f1ec9a1d571f60509</srcmd5>
+    <version>0.7</version>
+    <time>1323194096</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>418c3bd06f45b56f1ec9a1d571f60509</srcmd5>
+    <version>0.7</version>
+    <time>1340184039</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a370c09e193ad47763bc0d764a8eb65c</srcmd5>
+    <version>0.8.1</version>
+    <time>1358161391</time>
+    <user>coolo</user>
+    <comment>Update and add python3 support (forwarded request 148125 from posophe)</comment>
+    <requestid>148363</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a370c09e193ad47763bc0d764a8eb65c</srcmd5>
+    <version>0.8.1</version>
+    <time>1359110001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>5af379a7684fffd054818a764b4f75d3</srcmd5>
+    <version>0.8.1</version>
+    <time>1371652023</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179750</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>5af379a7684fffd054818a764b4f75d3</srcmd5>
+    <version>0.8.1</version>
+    <time>1379664138</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>5af379a7684fffd054818a764b4f75d3</srcmd5>
+    <version>0.8.1</version>
+    <time>1409302830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>9a8008d7e03e5aeccac6dd4b52997072</srcmd5>
+    <version>0.8.1</version>
+    <time>1441726745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328766</requestid>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>fb525814413852f2e440af7c329b816a</srcmd5>
+    <version>0.8.1</version>
+    <time>1504617344</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520194</requestid>
+  </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>363e0c2cbfb4c6cf02f9b9797db0bee3</srcmd5>
+    <version>0.8.1</version>
+    <time>1544726470</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653968</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca8504574794dd107f61d725e29f95e5</srcmd5>
+    <version>0.8.3</version>
+    <time>1553263253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.3:
+  * no upstream changelog provided
+- Run tests</comment>
+    <requestid>682197</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,431 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be1366aa2345c8c72d09ef3224e52f9e</srcmd5>
+    <version>3.1.2</version>
+    <time>1309766786</time>
+    <user>saschpe</user>
+    <comment>needed for WebYaST</comment>
+    <requestid>73996</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f65d4f903fa2d546511598ae4a5a647b</srcmd5>
+    <version>3.1.2</version>
+    <time>1309766796</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73996
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f65d4f903fa2d546511598ae4a5a647b</srcmd5>
+    <version>3.1.2</version>
+    <time>1319182440</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4848ca50af491b94984bc472aa400be8</srcmd5>
+    <version>3.1.10</version>
+    <time>1329383422</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104524 from coolo)</comment>
+    <requestid>104720</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>45600f18dbe76fcc68f993b10755904b</srcmd5>
+    <version>3.1.15</version>
+    <time>1334692939</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.15, see
+  http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html (forwarded request 114048 from coolo)</comment>
+    <requestid>114139</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d7fe318c781affad3b376589f5f0be31</srcmd5>
+    <version>3.1.16</version>
+    <time>1336035635</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.16
+    Fix some bugs in sass-convert selector parsing when converting from CSS.
+    Substantially improve compilation performance on Ruby 1.8.
+    Support the @-moz-document directive’s non-standard url-prefix and domain function syntax.
+    Support the @supports directive.
+    Fix a performance issue when using /*! */ comments with the Rails asset pipeline.
+    Support -moz-element.
+    Properly handle empty lists in sass-convert.
+    Move from FSSM to Listen for file-system monitoring. (forwarded request 115214 from coolo)</comment>
+    <requestid>115569</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f16cd1d02613a15ae328f4e6e34622c1</srcmd5>
+    <version>3.1.17</version>
+    <time>1336423889</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.17
+   Don’t crash when calling #inspect on an internal Sass tree object in Ruby 1.9.
+   Fix some bugs in sass --watch introduced in 3.1.16. Thanks to Maher Sallam.
+   Support bare interpolation in the value portion of attribute selectors (e.g. [name=#{$value}]).
+   Support keyword arguments for the invert() function.
+   Handle backslash-separated paths better on Windows.
+   Fix rake install on Ruby 1.9.
+   Properly convert nested @if statements with sass-convert. (forwarded request 116538 from coolo)</comment>
+    <requestid>116626</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6e58c1744b3524cecfd4b8d457b6062e</srcmd5>
+    <version>3.1.18</version>
+    <time>1337173478</time>
+    <user>coolo</user>
+    <comment>- update to 3.1.18
+  * Ruby 2.0 compatibility. Thanks to Jeremy Kemper.
+  * Deprecate the use of @extend within directives such as @media. 
+    This has never worked correctly, and now it’s officially deprecated. 
+    It will be an error in 3.2. (forwarded request 120760 from coolo)</comment>
+    <requestid>120900</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6e58c1744b3524cecfd4b8d457b6062e</srcmd5>
+    <version>3.1.18</version>
+    <time>1340184175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>edcbcda0c1bb2e6c8e5996529f830bfa</srcmd5>
+    <version>3.1.20</version>
+    <time>1342426255</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>127940</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7fa9c3b536b8aea05c21d5d7b1e493af</srcmd5>
+    <version>3.2.1</version>
+    <time>1346488504</time>
+    <user>namtrac</user>
+    <comment>- updated to version 3.2.1
+  * Fix a buggy interaction with Pow and Capybara that caused EOFErrors.
+
+- updated to version 3.2.0
+  see http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html</comment>
+    <requestid>132182</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>80475f1347c523fde8c7e8d4748247a0</srcmd5>
+    <version>3.2.2</version>
+    <time>1352716644</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>140796</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>588641f38ff9dd54eef3004f2ec5fd1e</srcmd5>
+    <version>3.2.3</version>
+    <time>1353413684</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>141899</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>247cdd6f1fe95f7ce27cf55664c25ac0</srcmd5>
+    <version>3.2.4</version>
+    <time>1357038252</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>146615</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>247cdd6f1fe95f7ce27cf55664c25ac0</srcmd5>
+    <version>3.2.4</version>
+    <time>1359110345</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1d93073e8fb7bbf3ff04a134dcf3e472</srcmd5>
+    <version>3.2.6</version>
+    <time>1363097054</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158225</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e7e5879547fc853988128e10f896dbd9</srcmd5>
+    <version>3.2.7</version>
+    <time>1364158654</time>
+    <user>coolo</user>
+    <comment>- use update-alternatives
+
+- updated to version 3.2.7
+  see http://sass-lang.com/docs/yardoc/file.SASS_CHANGELOG.html</comment>
+    <requestid>160664</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d300904d38bf72f91ab8f76d6900d24a</srcmd5>
+    <version>3.2.8</version>
+    <time>1367488825</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>174106</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cc4f6fd61427eb718817d68da0da5518</srcmd5>
+    <version>3.2.9</version>
+    <time>1369641651</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176163</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a7ab6acab91c1977b7b120c5b3350fd0</srcmd5>
+    <version>3.2.10</version>
+    <time>1375728862</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185511</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a7ab6acab91c1977b7b120c5b3350fd0</srcmd5>
+    <version>3.2.10</version>
+    <time>1379664572</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1fd773095af5b63aa10d29d1b924cd44</srcmd5>
+    <version>3.2.12</version>
+    <time>1382353478</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202917</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>70b7da4ba1817fd63af8d9a8dc28dbe5</srcmd5>
+    <version>3.2.13</version>
+    <time>1389611057</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>213056</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2afb7f6ad76c432c3dd2d1e5450c00c2</srcmd5>
+    <version>3.2.14</version>
+    <time>1392233381</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221438</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7e21c296eff8820b13d80dc8e9998153</srcmd5>
+    <version>3.3.3</version>
+    <time>1395406210</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226632</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>06e0eab23a9542b8430415b53673bd54</srcmd5>
+    <version>3.3.4</version>
+    <time>1395750498</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227183</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ad2ff12676eceb08f52088c8d7a63636</srcmd5>
+    <version>3.3.5</version>
+    <time>1398145299</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>230957</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0d59d89515d29c6d9ba7c6dbf8653741</srcmd5>
+    <version>3.3.7</version>
+    <time>1400734670</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234972</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0d59d89515d29c6d9ba7c6dbf8653741</srcmd5>
+    <version>3.3.7</version>
+    <time>1409303281</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>2d64ffe7df6fdfdac7473c2e3704404c</srcmd5>
+    <version>3.3.7</version>
+    <time>1413263514</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>255469</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1d2f186d1abf24a16bc3aac823ca0a95</srcmd5>
+    <version>3.4.5</version>
+    <time>1413616174</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>257367</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>eb51df852471c80da82bae0dba579c91</srcmd5>
+    <version>3.4.6</version>
+    <time>1414140478</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258113</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2c2516c4003e2e5b9dc32ef931ee7341</srcmd5>
+    <version>3.4.12</version>
+    <time>1424117640</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>286114</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c3a599f4f01991eda68091b57337a990</srcmd5>
+    <version>3.4.13</version>
+    <time>1425217599</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288040</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c634f9ef63a84a82a3e0bb6868d54338</srcmd5>
+    <version>3.4.14</version>
+    <time>1434133830</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311526</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>36837da0d978cee7a4ca1c7017a106a1</srcmd5>
+    <version>3.4.15</version>
+    <time>1435172015</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313227</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>55f066ff171fb8604ae2622a1ab174a2</srcmd5>
+    <version>3.4.16</version>
+    <time>1438750192</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316582</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b710966486b7a632a135200b3ea51551</srcmd5>
+    <version>3.4.18</version>
+    <time>1440658679</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326691</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>55bac393ce90d320df75a7ba46474b83</srcmd5>
+    <version>3.4.19</version>
+    <time>1444833899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>337898</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c7131042e6001282039defe32c6e9218</srcmd5>
+    <version>3.4.22</version>
+    <time>1461855218</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387294</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a16f045fbbdb6acf5341688e910cf3c0</srcmd5>
+    <version>3.4.23</version>
+    <time>1483047955</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447124</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>93d3e093dc5af1d7d3566024b43660ba</srcmd5>
+    <version>3.4.24</version>
+    <time>1496926876</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497694</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>eff90c8f86454c320f5470ffa707774b</srcmd5>
+    <version>3.5.1</version>
+    <time>1503308222</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515061</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9b69cfbe19e9fe05ebcf4072e4bfcc69</srcmd5>
+    <version>3.5.3</version>
+    <time>1512651114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542643</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d2c19859d0a60e4b3908ba3f84d13637</srcmd5>
+    <version>3.5.5</version>
+    <time>1520329552</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>581499</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ed6efe9cbd5ed802bee418be348a4247</srcmd5>
+    <version>3.5.6</version>
+    <time>1531947085</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621034</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9420d436df5a12e6206ead87e7728591</srcmd5>
+    <version>3.5.7</version>
+    <time>1532161478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623997</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>1554ab2b53687ca51f595103e555848c</srcmd5>
+    <version>3.6.0</version>
+    <time>1537787640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>637275</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>01698e6f7d80b09042ab9cb0360f20e3</srcmd5>
+    <version>3.7.2</version>
+    <time>1543953433</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653711</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f341fcbe32d6548de7d87fea136c3530</srcmd5>
+    <version>3.7.3</version>
+    <time>1548064483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666110</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>dc24e84cd954617b38475b342e02aa15</srcmd5>
+    <version>3.7.4</version>
+    <time>1560970861</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706023</requestid>
+  </revision>
+</revisionlist>

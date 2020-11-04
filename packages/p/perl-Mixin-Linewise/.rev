@@ -1,0 +1,115 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ce9c18016f8e4b21553a553e19d6282f</srcmd5>
+    <version>0.003</version>
+    <time>1305011833</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66743</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f38ee48911cf8cef9173151568ce1ac</srcmd5>
+    <version>0.003</version>
+    <time>1305011846</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66743
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4af0133b5d6f59ff11d38f7b7c2b0f1b</srcmd5>
+    <version>0.003</version>
+    <time>1316437776</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82388</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4af0133b5d6f59ff11d38f7b7c2b0f1b</srcmd5>
+    <version>0.003</version>
+    <time>1319182287</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5e9a860c06c2c63e9d0ea58eb44bb6d0</srcmd5>
+    <version>0.003</version>
+    <time>1321875777</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92157</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>82b9ad10014738b689744c0afc453306</srcmd5>
+    <version>0.003</version>
+    <time>1323193463</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>82b9ad10014738b689744c0afc453306</srcmd5>
+    <version>0.003</version>
+    <time>1340183875</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>82b9ad10014738b689744c0afc453306</srcmd5>
+    <version>0.003</version>
+    <time>1359109737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>445ed55bf989500a2858796b2a52507b</srcmd5>
+    <version>0.004</version>
+    <time>1375195519</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184396</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>445ed55bf989500a2858796b2a52507b</srcmd5>
+    <version>0.004</version>
+    <time>1379663744</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1ed06663039db4ce6bdd8849980e2ce5</srcmd5>
+    <version>0.102</version>
+    <time>1385490403</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208389</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>167a03ae85d56bed6ce9e9de2ccbf710</srcmd5>
+    <version>0.104</version>
+    <time>1392185848</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221895</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d79e2a2f0b5455a8181e942894b8cc2a</srcmd5>
+    <version>0.105</version>
+    <time>1395147502</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225381</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d79e2a2f0b5455a8181e942894b8cc2a</srcmd5>
+    <version>0.105</version>
+    <time>1409302379</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>93a8db430f497aa4bbd16f11b964f36d</srcmd5>
+    <version>0.108</version>
+    <time>1429107821</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296062</requestid>
+  </revision>
+</revisionlist>

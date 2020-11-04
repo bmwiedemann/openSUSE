@@ -1,0 +1,15 @@
+<package name="tdiff" project="openSUSE:Factory">
+  <title>File tree diff tool</title>
+  <description>Compare file system trees, showing any differences in their:
+  - file size,
+  - file block count (physical storage size),
+  - owner user and group ids (uid &amp; gid),
+  - access, modification and inode change times,
+  - hard link count, and sets of hard linked files,
+  - extended attributes (if supported),
+  - ACLs (if supported).
+
+</description>
+  <devel project="utilities" package="tdiff"/>
+  <url>https://github.com/F-i-f/tdiff/</url>
+</package>

@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b20ff176cbd8ecf847683c0ca967ace2</srcmd5>
+    <version>1.1</version>
+    <time>1173871682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="19">
+    <srcmd5>7baa9b8584600eabd8919c987810056d</srcmd5>
+    <version>1.1</version>
+    <time>1178225316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="227">
+    <srcmd5>7baa9b8584600eabd8919c987810056d</srcmd5>
+    <version>1.1</version>
+    <time>1178225316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="228">
+    <srcmd5>14f4d68021b01b425608b04b29177cf5</srcmd5>
+    <version>1.1</version>
+    <time>1245260125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="229">
+    <srcmd5>28653f2d315fd1d9185ac036ef16e04a</srcmd5>
+    <version>1.1</version>
+    <time>1248824192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="231">
+    <srcmd5>28653f2d315fd1d9185ac036ef16e04a</srcmd5>
+    <version>1.1</version>
+    <time>1248824192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="232">
+    <srcmd5>9a7e5c5fa16bb9898e08eb59a8b38546</srcmd5>
+    <version>1.1</version>
+    <time>1268923828</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="234">
+    <srcmd5>9a7e5c5fa16bb9898e08eb59a8b38546</srcmd5>
+    <version>1.1</version>
+    <time>1278667348</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="235">
+    <srcmd5>9a7e5c5fa16bb9898e08eb59a8b38546</srcmd5>
+    <version>1.1</version>
+    <time>1278678579</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="238">
+    <srcmd5>9a7e5c5fa16bb9898e08eb59a8b38546</srcmd5>
+    <version>1.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="240">
+    <srcmd5>9a7e5c5fa16bb9898e08eb59a8b38546</srcmd5>
+    <version>1.1</version>
+    <time>1319181930</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="12" vrev="241">
+    <srcmd5>c20fe8ffd5be1ede6eeae7ea2772da39</srcmd5>
+    <version>1.1</version>
+    <time>1323191714</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="13" vrev="243">
+    <srcmd5>c20fe8ffd5be1ede6eeae7ea2772da39</srcmd5>
+    <version>1.1</version>
+    <time>1340183394</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="245">
+    <srcmd5>c20fe8ffd5be1ede6eeae7ea2772da39</srcmd5>
+    <version>1.1</version>
+    <time>1359108973</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="247">
+    <srcmd5>c20fe8ffd5be1ede6eeae7ea2772da39</srcmd5>
+    <version>1.1</version>
+    <time>1379662515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="249">
+    <srcmd5>c20fe8ffd5be1ede6eeae7ea2772da39</srcmd5>
+    <version>1.1</version>
+    <time>1409301052</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="250">
+    <srcmd5>c7b44a3d0fd0400914216c7e44d9fa24</srcmd5>
+    <version>1.1</version>
+    <time>1412690440</time>
+    <user>coolo</user>
+    <comment>- Clean it up with spec-cleaner too
+
+- Remove ancient spec tags and sections</comment>
+    <requestid>254491</requestid>
+  </revision>
+  <revision rev="18" vrev="251">
+    <srcmd5>1b5d76cce61148379daf5420235d024f</srcmd5>
+    <version>1.1</version>
+    <time>1505416870</time>
+    <user>dimstar_suse</user>
+    <comment>Build with something else then java-gcj-compat</comment>
+    <requestid>526175</requestid>
+  </revision>
+  <revision rev="19" vrev="252">
+    <srcmd5>4127c2890904a6b1687b5992bd67c58f</srcmd5>
+    <version>1.1</version>
+    <time>1530993684</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620797</requestid>
+  </revision>
+</revisionlist>

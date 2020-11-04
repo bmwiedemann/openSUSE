@@ -1,0 +1,6 @@
+<package name="perl-JSON-Parse" project="openSUSE:Factory">
+  <title>Convert JSON into a Perl variable</title>
+  <description>Convert JSON (JavaScript Object Notation) into Perl.</description>
+  <devel project="devel:languages:perl" package="perl-JSON-Parse"/>
+  <url>https://metacpan.org/release/JSON-Parse</url>
+</package>

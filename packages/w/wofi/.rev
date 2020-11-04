@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fcd2b8b664a73725c5ea2089456cbf45</srcmd5>
+    <version>v1.1.2</version>
+    <time>1591381241</time>
+    <user>dimstar_suse</user>
+    <comment>
+Wofi
+
+Wofi is a launcher/menu program for wlroots based wayland compositors such as sway
+</comment>
+    <requestid>811664</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5c5eec98edc8c914fe4330cd20ff4d12</srcmd5>
+    <version>v1.2.2</version>
+    <time>1598983860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831070</requestid>
+  </revision>
+</revisionlist>

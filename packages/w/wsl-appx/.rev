@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4bca8c218594c87207cbbd60cdd100cf</srcmd5>
+    <version>1</version>
+    <time>1579791226</time>
+    <user>dimstar_suse</user>
+    <comment>new for WSL</comment>
+    <requestid>764233</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>471c56ab582a4225d5330089dffa1d9b</srcmd5>
+    <version>1</version>
+    <time>1579955035</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>766644</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2ded79e7722ed26b87ca0360b41030ec</srcmd5>
+    <version>1</version>
+    <time>1585995289</time>
+    <user>dimstar_suse</user>
+    <comment>- PUBLISHER_DISPLAY_NAME has to be &quot;SUSE&quot; for the MS store to accept the
+  submission
+
+- set publisher to &quot;SUSE LLC&quot; for SUSE</comment>
+    <requestid>779339</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8e888a433350d8e0bae4f6d48aee791c</srcmd5>
+    <version>1</version>
+    <time>1588783434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800784</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d8235d1b4ca9e43d13cb69960cd69002</srcmd5>
+    <version>1</version>
+    <time>1593727631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818180</requestid>
+  </revision>
+</revisionlist>

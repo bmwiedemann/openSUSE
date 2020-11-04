@@ -1,0 +1,182 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>779713a932fa3f5f12ea605af80ea9c4</srcmd5>
+    <version>0.27.1</version>
+    <time>1537971058</time>
+    <user>dimstar_suse</user>
+    <comment>Split certbot with tests</comment>
+    <requestid>636312</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c031ea6dac72b1f4cd8ba38f29a71799</srcmd5>
+    <version>0.30.2</version>
+    <time>1549140535</time>
+    <user>coolo</user>
+    <comment>- Update to 0.30.2:
+  * Lockstep with main certbot package</comment>
+    <requestid>669790</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bbeea61f712480224cbf1bc765a83ac</srcmd5>
+    <version>0.31.0</version>
+    <time>1549916790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>673118</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>043fc677606742299854e44e632ec233</srcmd5>
+    <version>0.32.0</version>
+    <time>1552985979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686008</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4162b5e0d3ff2af4ff3d741ad842ee9f</srcmd5>
+    <version>0.34.2</version>
+    <time>1559580610</time>
+    <user>dimstar_suse</user>
+    <comment>up</comment>
+    <requestid>705624</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>38b3b9505ac3676bd93a4a84d59e5737</srcmd5>
+    <version>0.35.1</version>
+    <time>1560862779</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.35.1
+  * sync with main certbot package</comment>
+    <requestid>710523</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d31c1ed97f6e9671677a53a5567af1ae</srcmd5>
+    <version>0.36.0</version>
+    <time>1563456099</time>
+    <user>dimstar_suse</user>
+    <comment>version bump</comment>
+    <requestid>716058</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>97e6f143fee62420aa4bccc302672e45</srcmd5>
+    <version>0.36.0</version>
+    <time>1564414059</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>718485</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>091cd6f8f82e71e2309b6a03766b1ae6</srcmd5>
+    <version>0.37.2</version>
+    <time>1567001042</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>726142</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e10d8bef2324e1139d74b08672d02de4</srcmd5>
+    <version>0.38.0</version>
+    <time>1568379546</time>
+    <user>lnussel_factory</user>
+    <comment>certbot version bump</comment>
+    <requestid>730163</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f11a837aadf67a84afc54737d7d0563c</srcmd5>
+    <version>0.39.0</version>
+    <time>1570020971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.39.0
+  * Support for Python 3.8 was added to Certbot and all of its components.</comment>
+    <requestid>734567</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8459a4d25ad2dbcb58f930df62191d1d</srcmd5>
+    <version>0.39.0</version>
+    <time>1572542043</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739157</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1d15a40641f265024ed9092b0ad9fb29</srcmd5>
+    <version>0.40.1</version>
+    <time>1573773742</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>748666</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9cec3386b18ce9fb00dbea7857928b26</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069537</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.0.0
+  * sync with main certbot package</comment>
+    <requestid>760650</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>30fa2197979d3d4a7ffc92bbf176b1a5</srcmd5>
+    <version>1.1.0</version>
+    <time>1579636919</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>766009</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>076533801e8a2af62f9cb12cb5c76737</srcmd5>
+    <version>1.2.0</version>
+    <time>1582725759</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>778038</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>576834327c5cc2e5978a0ecfb9ee950c</srcmd5>
+    <version>1.3.0</version>
+    <time>1583949303</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>783848</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4e48fc4bfa659cf1e7c2cfc646a84bc5</srcmd5>
+    <version>1.4.0</version>
+    <time>1589491604</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>805534</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>87e873a7f85f0db5e9f35c1a880b486d</srcmd5>
+    <version>1.5.0</version>
+    <time>1591881341</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>813509</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bfa5fc0578cb3ad6e5aa67823f3efc47</srcmd5>
+    <version>1.6.0</version>
+    <time>1594818100</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>820650</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>140aedce4bc035a670f326c2af3d0096</srcmd5>
+    <version>1.7.0</version>
+    <time>1598029968</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>828419</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>089d4fe0330ee993be9aeee4efc010fe</srcmd5>
+    <version>1.9.0</version>
+    <time>1602073134</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>839983</requestid>
+  </revision>
+</revisionlist>

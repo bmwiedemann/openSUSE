@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>219c04d3afe7720008f0a32313dbfaee</srcmd5>
+    <version>1.3</version>
+    <time>1578606593</time>
+    <user>dimstar_suse</user>
+    <comment>further cleanup by Ismail</comment>
+    <requestid>761913</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3d81dd9d4379b380f56494ebc07a5fc6</srcmd5>
+    <version>1.3</version>
+    <time>1579463777</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>765489</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6eae38f2c4c4037fb9d81792072cc988</srcmd5>
+    <version>1.3</version>
+    <time>1582206998</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -p option.
+</comment>
+    <requestid>777400</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0f0e1bc620f7d57d8c0cce7992f00727</srcmd5>
+    <version>1.3</version>
+    <time>1582299731</time>
+    <user>dimstar_suse</user>
+    <comment>- include Falkon browser and mpv media player among 
+  the list of programs to terminate preferably
+</comment>
+    <requestid>777756</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>184d124099b21bd12e6145e8bba57172</srcmd5>
+    <version>1.3</version>
+    <time>1582394926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;Web\ Content&quot; before &quot;firefox&quot; in --prefer parameter.
+- Manual optimizations in spec-file.
+</comment>
+    <requestid>778056</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a115783fe3cc6c163b9a638157114880</srcmd5>
+    <version>1.4</version>
+    <time>1584447074</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785804</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0ed196be9d3b5849d366fb6b2d4fb3ba</srcmd5>
+    <version>1.4</version>
+    <time>1584643841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786371</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a6c15d0154cc00ee583be261704b030a</srcmd5>
+    <version>1.6</version>
+    <time>1593904680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818485</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb8a80a5398f379da5d3874d68a03175</srcmd5>
+    <version>1.6.1</version>
+    <time>1597668061</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1:
+  * Clean up dbus-send zombie processes
+  * Skip processes with oom_score_adj=-1000</comment>
+    <requestid>827310</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f7e67817b571609e93a8458ee5af021a</srcmd5>
+    <version>1.6.1</version>
+    <time>1599210688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831647</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e11e55acd748bcfddb1adc5e7b94d532</srcmd5>
+    <version>1.6.1</version>
+    <time>1600347901</time>
+    <user>dimstar_suse</user>
+    <comment>enable testsuite on x86 and arm &amp;amp; adjust system defaults (forwarded request 835149 from dancermak)</comment>
+    <requestid>835156</requestid>
+  </revision>
+</revisionlist>

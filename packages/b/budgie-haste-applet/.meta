@@ -1,0 +1,5 @@
+<package name="budgie-haste-applet" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Solus" package="budgie-haste-applet"/>
+</package>

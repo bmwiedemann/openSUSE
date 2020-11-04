@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9acfcf497bf7c7d5a7e36df07993d630</srcmd5>
+    <version>2.7.0</version>
+    <time>1576014338</time>
+    <user>dimstar_suse</user>
+    <comment>Python library for plotting charts</comment>
+    <requestid>755580</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9e2ebeeb584710e4f92d11d4df4e473</srcmd5>
+    <version>2.7.0</version>
+    <time>1586248160</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable one test that fails due to numpy update</comment>
+    <requestid>791641</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64ff26610bd7aaf8ac38175baa6faeaf</srcmd5>
+    <version>3.0.1</version>
+    <time>1594228726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819468</requestid>
+  </revision>
+</revisionlist>

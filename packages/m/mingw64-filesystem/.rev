@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09cf32f9c490b7d89ca326b65d53fe26</srcmd5>
+    <version>20190529</version>
+    <time>1578502433</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>753300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ea4829219728d0b95920c965115a9c5</srcmd5>
+    <version>20191217</version>
+    <time>1578674937</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761925</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>071c26730177f18ffc36ac0792ea2d1a</srcmd5>
+    <version>20191217</version>
+    <time>1587467413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795758</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>82af542edc60172ab4ddf569d8b6a9fb</srcmd5>
+    <version>20200816</version>
+    <time>1598341025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828963</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b94f685d37b790602e83fa88f8e345dc</srcmd5>
+    <version>20200825</version>
+    <time>1598726341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829913</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ec2b9c90f00857a14952b6b5f1b3dc27</srcmd5>
+    <version>20200825</version>
+    <time>1598885570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830627</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>29deaf2a723db9f709fbe6587efbd6d0</srcmd5>
+    <version>20201017</version>
+    <time>1603203092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842557</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85b5f2819bbecc3757fa1cd85b7d8b19</srcmd5>
+    <version>0.3.1</version>
+    <time>1574932404</time>
+    <user>dimstar_suse</user>
+    <comment>This provides cargo-cbuild and cargo-cinstall for building and installing C libraries of Rust software.
+
+Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)</comment>
+    <requestid>750425</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0ec459df1c9e1c2391cfd1c323eb3efb</srcmd5>
+    <version>0.3.1</version>
+    <time>1576189105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755868</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>917921cc60e815ac2fd971886ae440ee</srcmd5>
+    <version>0.5.0</version>
+    <time>1576505978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757184</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5417dd7361d178b54bf79bfa6a51152</srcmd5>
+    <version>0.6.7</version>
+    <time>1594045451</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818618</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6dd5c693ed4ca628e2d460ce80b011d</srcmd5>
+    <version>0.6.13</version>
+    <time>1602762469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841543</requestid>
+  </revision>
+</revisionlist>

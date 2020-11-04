@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4572de91540e91157c5711ee8efe652</srcmd5>
+    <version>8.0.0</version>
+    <time>1503592223</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>504361</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2e515054d77bce0d0c6909c1d2f0cf00</srcmd5>
+    <version>8.1.0</version>
+    <time>1507896877</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533059</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cb7f3823ef6e2fe5470965bfc4fe29ab</srcmd5>
+    <version>8.1.0</version>
+    <time>1513245715</time>
+    <user>dimstar_suse</user>
+    <comment>- Added frei0r-plugins-opencv as runtime requirement to account
+  for (boo#1068792)
+</comment>
+    <requestid>556605</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4ef2098e9a82eb2f984d439b93b4c9fe</srcmd5>
+    <version>8.1.0</version>
+    <time>1530866787</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621077</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e4b00933ae3e406f47104631773dcaa7</srcmd5>
+    <version>8.1.0</version>
+    <time>1531135789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621571</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2819bd6cdbe73e0d29dd18fea9da58c9</srcmd5>
+    <version>8.5.0</version>
+    <time>1548335605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667777</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d77b7d8dd33926037a2dafb38f94c4d</srcmd5>
+    <version>8.6.0</version>
+    <time>1551883819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681905</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad9e23fc7bb4a0e3823444b66c81c5fe</srcmd5>
+    <version>8.6.1</version>
+    <time>1553611541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.6.1
+  * AppImage now properly show the icon (issue #94).
+  * Use correct subdir for manpage (issue #170, thanks Luigi
+    Baldoni!).
+- Dropped webcamoid-mandir.patch (merged upstream)
+- Drop the qimageblitz dependency. Unused since 5.0.0.
+- Drop the Frei0r dependency. Unused since 5.1.0.
+- Fix the old description 'KDE' is the community, 'plasmoid' is no longer used.
+- Ensure neutrality of description.
+</comment>
+    <requestid>688603</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c534bf07237a8ecde4bb372bbd464847</srcmd5>
+    <version>8.7.0</version>
+    <time>1570010362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734276</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fdb3e68d078468e4ef1956897bd8ae80</srcmd5>
+    <version>8.7.1</version>
+    <time>1571838671</time>
+    <user>dimstar_suse</user>
+    <comment>update to 8.7.1</comment>
+    <requestid>741901</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dbfe0d2ab43c96bd43ed036613b59741</srcmd5>
+    <version>8.7.1</version>
+    <time>1585484921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789456</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="bcftools" project="openSUSE:Factory">
+  <title>Tools for manipulating variant calls in the Variant Call Format (VCF)</title>
+  <description>Package for the new BCFtools: a set of utilities that manipulate variant calls in the Variant Call Format (VCF) and its binary counterpart BCF. It contains all the &quot;vcf...&quot; commands which previously lived in the HTSlib repository (such as vcfcheck, vcfmerge, vcfisec, etc.) and the samtools BCF calling from bcftools subdirectory of samtools. BCFtools are meant as a faster replacement for most of the perl VCFtools commands.</description>
+  <devel project="science" package="bcftools"/>
+</package>

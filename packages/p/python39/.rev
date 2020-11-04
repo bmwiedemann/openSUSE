@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1ce3079067429c989da6608fedcbe86</srcmd5>
+    <version>3.9.0b4</version>
+    <time>1597855698</time>
+    <user>dimstar_suse</user>
+    <comment>Packaging is still Alpha, the tarball is still beta, so this is considered technical preview for testing.</comment>
+    <requestid>821965</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c067ef9632df457b17e5e1c95701f81c</srcmd5>
+    <version>3.9.0b5</version>
+    <time>1597955344</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827942</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c937aa7ec99519caf7671bad53367612</srcmd5>
+    <version>3.9.0b5</version>
+    <time>1598029891</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828415</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>39b66c5bb67244c9fcc3ad2a39c75984</srcmd5>
+    <version>3.9.0rc1</version>
+    <time>1599210607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.0rc1:
+  * Core and Builtins
+      - bpo-38156: Handle interrupts that come after EOF
+        correctly in PyOS_StdioReadline.
+  * Library
+      - bpo-41497: Fix potential UnicodeDecodeError in dis
+        module.
+      - bpo-41490: Update ensurepip to install pip 20.2.1 and
+        setuptools 49.2.1.
+      - bpo-41467: On Windows, fix asyncio recv_into() return
+        value when the socket/pipe is closed (BrokenPipeError):
+        return 0 rather than an empty byte string (b'').
+      - bpo-41425: Make tkinter doc example runnable.
+      - bpo-41384: Raise TclError instead of TypeError when an
+        unknown option is passed to tkinter.OptionMenu.
+      - bpo-38731: Fix NameError in command-line interface of
+        py_compile.
+      - bpo-41317: Use add_done_callback() in
+        asyncio.loop.sock_accept() to unsubscribe reader early on
+        cancellation.
+      - bpo-41364: Reduce import overhead of uuid.
+      - bpo-41341: Recursive evaluation of typing.ForwardRef in
+        get_type_hints.
+      - bpo-41182: selector: use DefaultSelector based upon
+        implementation
+      - bpo-40726: Handle cases where the end_lineno is None on
+        ast.increment_lineno().
+  * Documentation
+      - bpo-41045: Add documentation for debug feature of
+        f-strings.
+      - bpo-41314: Changed the release when from __future__
+        import annotations becomes the default from 4.0 to 3.10
+        (following a change in PEP 563).
+  * Windows
+      - bpo-41492: Fixes the description that appears in UAC
+        prompts.
+      - bpo-40948: Improve post-install message to direct people
+        to the “py” command.
+      - bpo-41412: The installer will now fail to install on
+        Windows 7 and Windows 8. Further, the UCRT dependency is
+        now always downloaded on demand.
+      - bpo-40741: Update Windows release to include SQLite
+        3.32.3.
+  * IDLE
+      - bpo-41468: Improve IDLE run crash error message (which
+        users should never see).
+      - bpo-41373: Save files loaded with no line ending, as when
+        blank, or different line endings, by setting its line
+        ending to the system default. Fix regression in 3.8.4 and
+        3.9.0b4.
+- Synchronize formatting and fixes with python38.
+</comment>
+    <requestid>831521</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>24e0c223f67fab714a3a99b528a259fc</srcmd5>
+    <version>3.9.0rc1</version>
+    <time>1601200184</time>
+    <user>dimstar_suse</user>
+    <comment>- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.</comment>
+    <requestid>837378</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>adff90b2a76f28b120681162a77fcf13</srcmd5>
+    <version>3.9.0</version>
+    <time>1603448495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842480</requestid>
+  </revision>
+</revisionlist>

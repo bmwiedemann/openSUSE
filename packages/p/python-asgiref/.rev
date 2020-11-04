@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bbff884b9775b6f36d19648f81411911</srcmd5>
+    <version>3.2.7</version>
+    <time>1587839372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796777</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>987766241a86fc0611b94b8b5e2d3e39</srcmd5>
+    <version>3.2.10</version>
+    <time>1593726884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.10:
+  * Fixed bugs due to bad WeakRef handling introduced in 3.2.8
+  * Fixed regression with exception handling in 3.2.8 related to the
+    contextvars fix.
+  * Fixed small memory leak in local.Local
+  * contextvars are now persisted through AsyncToSync</comment>
+    <requestid>817963</requestid>
+  </revision>
+</revisionlist>

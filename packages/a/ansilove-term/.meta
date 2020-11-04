@@ -1,0 +1,5 @@
+<package name="ansilove-term" project="openSUSE:Factory">
+  <title>ansilove-term</title>
+  <description></description>
+  <devel project="graphics" package="ansilove-term"/>
+</package>

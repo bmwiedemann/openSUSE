@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c66c56d2d95c43ec8a38df1fdead05db</srcmd5>
+    <version>2.2.3</version>
+    <time>1585261965</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain sacad in Factory</comment>
+    <requestid>788344</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c31951fde42d10a3719cbb299c1528da</srcmd5>
+    <version>2.3.0</version>
+    <time>1592152433</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814322</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e8ae9a5a84bee5a9e0b867ad3ad3d966</srcmd5>
+    <version>2.3.2</version>
+    <time>1596457045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823993</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>956a912825dd6f0799c4ac135726365e</srcmd5>
+    <version>2.3.3</version>
+    <time>1600801428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828654</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87905e54e6f51a0e96c0bf8ddd5c06c2</srcmd5>
+    <version>2.3.4</version>
+    <time>1603725712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844019</requestid>
+  </revision>
+</revisionlist>

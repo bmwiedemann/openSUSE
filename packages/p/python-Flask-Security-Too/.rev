@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f65341dfcbf208cd87cb753472dd2277</srcmd5>
+    <version>3.3.3</version>
+    <time>1585176415</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-Flask-Security-Too
+
+This is a maintained fork of python-Flask-Security</comment>
+    <requestid>788172</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e67031b7c85e04101cb69d5df964ec0c</srcmd5>
+    <version>3.4.0</version>
+    <time>1586113018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * (:pr:`257`) Support a unified sign in feature. Please see :ref:`unified-sign-in`.
+  * (:pr:`265`) Add phone number validation class. This is used in both unified sign in as well as two-factor when using sms.
+  * (:pr:`274`) Add support for 'freshness' of caller's authentication. This permits endpoints to be additionally protected by ensuring a recent authentication.
+  * (:issue:`99`, :issue:`195`) Support pluggable password validators. Provide a default validator that offers complexity and breached support.
+  * (:issue:`266`) Provide interface to two-factor send_token so that applications can provide error mitigation. Defaults to returning errors if can't send the verification code.
+  * (:pr:`247`) Updated all-inclusive data models (fsqlaV2). Add fields necessary for the new unified sign in feature and changed 'username' to be unique (but not required).
+  * (:pr:`245`) Use fs_uniquifier as the default Flask-Login 'alternative token'. Basically this means that changing the fs_uniquifier will cause outstanding auth tokens, session and remember me cookies to be invalidated. So if an account gets compromised, an admin can easily stop access. Prior to this cookies were storing the 'id' which is the user's primary key - difficult to change! (kishi85)
+- Enable the testing
+- Add patch to not require mongodb during testing:
+  * no-mongodb.patch</comment>
+    <requestid>791500</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56c5721a5be430187c73f0c977bb4c71</srcmd5>
+    <version>3.4.2</version>
+    <time>1589403355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801333</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7b7756a5dc25f70a345c6ac0ab54eef9</srcmd5>
+    <version>3.4.2</version>
+    <time>1589491632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805566</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6afdfd0af66931ec69c588e061e88a5c</srcmd5>
+    <version>3.4.3</version>
+    <time>1594383187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819755</requestid>
+  </revision>
+</revisionlist>

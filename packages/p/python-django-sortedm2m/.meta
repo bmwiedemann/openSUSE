@@ -1,0 +1,5 @@
+<package name="python-django-sortedm2m" project="openSUSE:Factory">
+  <title></title>
+  <description>Drop-in replacement for django's many to many field with sorted relations</description>
+  <devel project="devel:languages:python:django" package="python-django-sortedm2m"/>
+</package>

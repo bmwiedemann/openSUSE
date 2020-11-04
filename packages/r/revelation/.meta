@@ -1,0 +1,5 @@
+<package name="revelation" project="openSUSE:Factory">
+  <title>Password manager for GNOME</title>
+  <description>Revelation is a password manager that organizes accounts in a tree structure, and stores them as AES-encrypted XML files.</description>
+  <devel project="GNOME:Apps" package="revelation"/>
+</package>

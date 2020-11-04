@@ -1,0 +1,8 @@
+<package name="uom-lib" project="openSUSE:Factory">
+  <title>Java Unit of Measurement Libraries (JSR 363)</title>
+  <description>Units of Measurement Libraries - extending and complementing JSR 363.
+
+</description>
+  <devel project="Java:packages" package="uom-lib"/>
+  <url>https://github.com/unitsofmeasurement/uom-lib</url>
+</package>

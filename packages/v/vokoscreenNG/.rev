@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ca414ec602d3dd3448195a6f1a25d17b</srcmd5>
+    <version>3.0.0</version>
+    <time>1578069415</time>
+    <user>dimstar_suse</user>
+    <comment>First stable release of the rewritten vokoscreen</comment>
+    <requestid>760459</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>056eec0e547bcf27c38c7c4ec9b0cc7f</srcmd5>
+    <version>3.0.1</version>
+    <time>1580724907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769357</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d673990c4acdddde596cea15fc6e17d</srcmd5>
+    <version>3.0.2</version>
+    <time>1581456312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773404</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29af0d8e3a86b7e0dcc873fd04a4b7e7</srcmd5>
+    <version>3.0.3</version>
+    <time>1585667836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790057</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82d5914a3e1dc1cf754c76537c99d607</srcmd5>
+    <version>3.0.4</version>
+    <time>1588324562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799309</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fd7a509104d5f6d8bc22d55b8adae6b3</srcmd5>
+    <version>3.0.4</version>
+    <time>1591742936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812759</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50514cd6691febfa39372b9c4858a4d8</srcmd5>
+    <version>3.0.5</version>
+    <time>1596457056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823994</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>95e33ca4317028e1f140b66c722b3321</srcmd5>
+    <version>3.0.6</version>
+    <time>1598983880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831066</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c2d163c9b1c0f11659980cadbbfd48c3</srcmd5>
+    <version>3.0.7</version>
+    <time>1601653305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839115</requestid>
+  </revision>
+</revisionlist>

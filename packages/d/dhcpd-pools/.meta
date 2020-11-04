@@ -1,0 +1,13 @@
+<package name="dhcpd-pools" project="openSUSE:Factory">
+  <title>ISC DHCP pool analysis</title>
+  <description>This is dhcpd-pools ISC dhcp shared network and pool range usage
+analysis. Purpose of command is to count usage ratio of each IP range
+and shared network pool which ISC dhcpd is in control of users of the
+command are most likely ISPs and other organizations that have large
+IP space.
+This tools can also be used as a Icinga/Nagios plugin.
+
+</description>
+  <devel project="server:monitoring" package="dhcpd-pools"/>
+  <url>http://dhcpd-pools.sourceforge.net/</url>
+</package>

@@ -1,0 +1,8 @@
+<package name="ocaml-camlbz2" project="openSUSE:Factory">
+  <title>OCaml bindings for bz2</title>
+  <description>OCaml bindings for libbz (AKA, bzip2).
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-camlbz2"/>
+  <url>https://github.com/olafhering/camlbz2</url>
+</package>

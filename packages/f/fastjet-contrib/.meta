@@ -1,0 +1,6 @@
+<package name="fastjet-contrib" project="openSUSE:Factory">
+  <title>A library of 3rd-party add-ons to FastJet</title>
+  <description></description>
+  <devel project="science" package="fastjet-contrib"/>
+  <url>https://fastjet.hepforge.org/contrib/</url>
+</package>

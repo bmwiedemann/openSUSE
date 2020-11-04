@@ -1,0 +1,579 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>13495538fec3c7e8cda4fb0491432564</srcmd5>
+    <version>15.03.01</version>
+    <time>1430903934</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull for hw testing/validation</comment>
+    <requestid>298547</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>446e6ce1b62106d03f358a1be5b7d0a2</srcmd5>
+    <version>15.03.01</version>
+    <time>1431247652</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>306107</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da831a49e471ca71db9d0552f48baad3</srcmd5>
+    <version>15.06.00</version>
+    <time>1434456367</time>
+    <user>coolo</user>
+    <comment>- Update to 15.06.00</comment>
+    <requestid>312242</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e9c920f3bacb68bcb93469c56d7840f8</srcmd5>
+    <version>15.07.00</version>
+    <time>1438421647</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.07.00</comment>
+    <requestid>316609</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99808d10cc6491057e8e3fd247844fb9</srcmd5>
+    <version>15.08.00</version>
+    <time>1440337418</time>
+    <user>coolo</user>
+    <comment>- Update to 15.08.00
+  * new features:
+    + acpi: tpm2: Add ACPI TPM2 test
+    + acpi: method: add support for _CPC revision 2
+    + acpi: add support for FPDT table (LP: #1476954)
+    + acpi: add ACPI IORT test (LP: #1450440)
+    + ACPICA: Update to version 20150717 (LP: #1475733)
+    + acpi: Add support for MCHI Table (LP: #1478951)
+    + acpi: Add support for STAO Table (LP: #1478957)
+    + acpi: Add support for ASF! Table (LP: #1479736)
+    + acpi: Add support for WDAT Table (LP: #1480257)</comment>
+    <requestid>324649</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>44e7d2ea3cbbf790ef0c08624da0f8ab</srcmd5>
+    <version>15.08.00</version>
+    <time>1440658635</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326433</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ed0f3bb647d63874f7ee66fd944bad9</srcmd5>
+    <version>15.09.00</version>
+    <time>1443585091</time>
+    <user>coolo</user>
+    <comment>- Update to 05.09.00</comment>
+    <requestid>333206</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29e74d8871eec263c7746b89f1205f2e</srcmd5>
+    <version>15.11.00</version>
+    <time>1447766620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 05.11.00</comment>
+    <requestid>344890</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>caf1eab0dd6895d541dd236634cea0ae</srcmd5>
+    <version>15.12.00</version>
+    <time>1450955796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 05.12.00</comment>
+    <requestid>349641</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9cba847e772da3f828d9967dd380e2f</srcmd5>
+    <version>16.01.00</version>
+    <time>1453280075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.01.00</comment>
+    <requestid>354386</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>978a58525092c0e2eb70ddbb9b15e3c9</srcmd5>
+    <version>16.02.00</version>
+    <time>1456434675</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.02.00</comment>
+    <requestid>361367</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>752b179b0e070c9bc1bfc8085f500ac0</srcmd5>
+    <version>16.03.00</version>
+    <time>1459002227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 16.03.00</comment>
+    <requestid>374634</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35fc90cd976c030e89e09f432dc59171</srcmd5>
+    <version>16.05.01</version>
+    <time>1464014342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.05.01:</comment>
+    <requestid>396861</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>255f9ca9be66aa02f5ee88de87fe68f7</srcmd5>
+    <version>16.06.00</version>
+    <time>1468999076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.06.01:
+  * lib: acpi: add an acpi category
+  * live-image/fwts-frontend-text: add selections of acpi and uefi 
+    tests
+  * acpi: add tests to acpi category
+  * acpi: fwts-tests: Remove redundant tailing space and update 
+    fwts-tests
+  * auto-packager: mkpackage.sh: remove lucid
+  * auto-packager: mkpackage.sh: add wily
+  * acpi: Add SPCR ACPI table check (LP: #1433604)
+  * dmi: dmicheck: add 4 new DMI chassis types
+  * lots of bugfixes
+- Enable building on all architectures</comment>
+    <requestid>409084</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d6610367ac833a3ffc04b204c9c42247</srcmd5>
+    <version>16.07.00</version>
+    <time>1470217483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.07.00:</comment>
+    <requestid>416157</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f668ea2cbb73c720b0371cb0957f2a2b</srcmd5>
+    <version>16.08.00</version>
+    <time>1471688837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.08.00 (boo#994319):
+  * acpi: nfit: add ACPI NFIT test
+  * lib: acpi: add support for MPST
+  * acpi: mpst: add ACPI MPST test
+  * lib: acpi: add support for PMTT
+  * acpi: pmtt: add ACPI PMTT test
+  * ACPICA: Update to version 20160729
+  * lots of bugfixes</comment>
+    <requestid>419891</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c989e1ebfd168ac74a733a1e361f8402</srcmd5>
+    <version>16.09.00</version>
+    <time>1473679679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 06.09.00:</comment>
+    <requestid>426812</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d2934001611db58d71fe2524a15cadeb</srcmd5>
+    <version>16.11.00</version>
+    <time>1479150957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 06.11.00:
+  * ACPICA: Update to version 20160930
+  * uefibootpath: add test for eMMC device path
+  * uefidump: add dumping for the eMMC device path
+  * miscelanous bugfixes</comment>
+    <requestid>440144</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>58b2a9f09c74312342d1991dd18dca1c</srcmd5>
+    <version>16.11.00</version>
+    <time>1481459302</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>444890</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>118fc277f11dd9e504a8cbebf6bea9d0</srcmd5>
+    <version>16.12.00</version>
+    <time>1483555191</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to version 0.6.12 (boo#1017763):</comment>
+    <requestid>448524</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8e41e20b99b383ebcbf95108c5a40b64</srcmd5>
+    <version>17.01.00</version>
+    <time>1485862946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.01.00:</comment>
+    <requestid>453153</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b20ba7bbdbfdff2c2492bb318d21c6b2</srcmd5>
+    <version>17.02.00</version>
+    <time>1488479851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.02.00:
+- Rebase fwts-no-compiletime.patch</comment>
+    <requestid>460685</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5ff07350cee869d4db62a6a954658786</srcmd5>
+    <version>17.03.00</version>
+    <time>1492011154</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 17.03.00:</comment>
+    <requestid>482441</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>779f2b338b83bf2d3ccc428d22b12c14</srcmd5>
+    <version>17.05.00</version>
+    <time>1496927085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.05.00:</comment>
+    <requestid>501869</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>15295d71859c6bceb75396679d5e8f8d</srcmd5>
+    <version>17.06.00</version>
+    <time>1498202310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.06.00:
+  * ACPICA: Update to version 20170531
+  * olog: olog.json: Update OPAL skiboot errors to check on olog
+    scan
+  * bios: mtrr: print out actual default type of MTRR
+  * lib: fwts_alloc: only parse mem info once we have a valid line
+    read in
+  * lib: fwts_safe_mem: add SIGBUS handling
+  * lib: fwts_alloc: re-work the memory parsing again
+  * acpi: method use correct format specifier for uint32_t type
+  * bios: mtrr: fix compile error in ubuntu trusty
+  * opal: fix tests dependency on libfdt
+  * bios: mtrr: fix overlaped MTRR (LP: #1694710)</comment>
+    <requestid>505681</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>433ce6c9f5eb4fb88b93cb531d561653</srcmd5>
+    <version>17.07.00</version>
+    <time>1503927195</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.07.00 (boo#1055891):
+  * acpi: bgrt: update according to acpi 6.1 errata
+  * acpi: method: update _PSD and _TSD tests according to ACPI 6.1
+    errata
+  * acpi: rsdp: revision 1 must have length 20 according to ACPI
+    6.1 errata
+  * acpi: method: Add _CPC revision 3 according to ACPI 6.2
+  * acpi: hest: add new type 11 introduced in ACPI 6.2
+  * acpi: srat: add new type 4 according to ACPI 6.2
+  * acpi: method: update _GCP according to ACPI 6.2
+  * acpi: hest: add notification type 11 according to ACPI 6.2
+  * acpi: fadt: update minor version to 2 for ACPI 6.2
+  * acpi: hest: add checks for GHES_ASSIST flag value in ACPI 6.2
+  * acpi: wsmt: add wsmt test according to ACPI 6.2
+  * ACPICA: Update to version 20170629
+  * acpi: tpm2: Add additional start method values
+  * acpi: iort: Add PMCG support</comment>
+    <requestid>519080</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>70fed12fe43a1e3697237368140ef7b7</srcmd5>
+    <version>17.08.00</version>
+    <time>1506195439</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.08.00:</comment>
+    <requestid>528280</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9431e1b8b81e27a8c266e56c8c1fe550</srcmd5>
+    <version>17.09.00</version>
+    <time>1507571280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.09.00:</comment>
+    <requestid>532750</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e4b7624faea59ca73b6cf1148a66561e</srcmd5>
+    <version>17.09.02</version>
+    <time>1510837351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.09.02:
+  * No changelog provided</comment>
+    <requestid>542075</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a758900e82a5b23d7f399dcf6620e54e</srcmd5>
+    <version>17.11.00</version>
+    <time>1513677590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.11.00:</comment>
+    <requestid>558220</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4fcb09277bddad7063179bfc52b80673</srcmd5>
+    <version>18.01.00</version>
+    <time>1516970369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.01.00:</comment>
+    <requestid>569517</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>86599c466ef8ea501e25f58f725cb5d5</srcmd5>
+    <version>18.02.00</version>
+    <time>1520778219</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.02.00:</comment>
+    <requestid>584216</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>80bb0481a8be4a7fb7ec6f4a5744edb9</srcmd5>
+    <version>18.03.00</version>
+    <time>1523029739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.03.00:
+  * ACPICA: Update to version 20180313
+  * dmi: dmicheck: add chassis type for Type 3
+  * klog.json: change severity for AE_ALREADY_EXISTS errors
+  * olog:olog.json: Update OPAL skiboot errors to check on olog
+    scan
+  * uefirtauthvar: remove test with
+    EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS</comment>
+    <requestid>593911</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>31ee452b23bc2504c7b2b166ded27d47</srcmd5>
+    <version>18.05.00</version>
+    <time>1526737372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.05.00:</comment>
+    <requestid>610303</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c10cb2f21d5d57f9e78115cc5a728320</srcmd5>
+    <version>18.06.02</version>
+    <time>1531232226</time>
+    <user>dimstar_suse</user>
+    <comment>- Dont build with -Werror (fixes build with gcc8)
+- Update to version 18.06.02:
+- Update to version 18.05.01:
+  * No changelog available</comment>
+    <requestid>621832</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>eb97c5fe570e9d1f7981736bab495b06</srcmd5>
+    <version>18.08.00</version>
+    <time>1535963719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.08.00:
+  * ACPICA: Update to version 20180810
+  * uefi: uefivarinfo: add to UNSAFE category
+  * acpi: gtdt: add checking the valid base physical address
+  * dmicheck: update Processor Upgrade field in Type 4
+  * dmicheck: update connection and port types in Type 8
+  * dmicheck: update Usage and Characteristics 2 fields in Type 9
+  * dmicheck: update memory type and add nvdimm fields for Type 17
+  * coreboot/clog/clog.c: add clog test
+- Refresh patch fwts-no-compiletime.patch
+- Fix typo in changelog
+
+- Don't build with -Werror (fixes build with gcc8)</comment>
+    <requestid>632499</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0d7a0315aa959cb55151a9989c65e988</srcmd5>
+    <version>18.11.00</version>
+    <time>1542282130</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.11.00 (boo#1116172):
+  * dmicheck: checks (Extended) Maximum Capacity for type 16
+  * snapcraft: add libbsd-dev to build-packages
+  * efi_runtime: re-enable the resetsystem runtime interface 
+  * olog:olog.json: Update OPAL skiboot errors to check on olog scan
+  * acpi: button: check fixed hardware &amp; control method power buttons
+  * kernelscan: add -k option to specify klog json filename
+  * src/lib: add module probing helper functions
+  * lib: fwts_efi_module: use the new module loading helper functions
+  * lib/fwts_cpu: use new use the new module loading helper functions</comment>
+    <requestid>649214</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>bcd5012f2713474c77e1f488e328d2b4</srcmd5>
+    <version>19.01.00</version>
+    <time>1550221392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.01.00:
+  * mtrr: check memory type above 4GB on AMD platforms
+  * ACPICA: Update to version 20190108
+  * dmi: dmicheck: remove redundant new lines
+  * lib: fwts_ac_adapter: fix readdir(ac_power_dir) failing
+  * lib: fwts_ac_adapter: fix failing to find AC directory
+  * Update copyright year to 2019
+  * mtrr: fix incorrect mask on amd_sys_conf
+  * sbbr: fadt: clean up major/minor version checking
+  * acpi/madt: clean up indentation issue, remove tab
+  * lib: fw_pm_method: move the sleep t_start time out of
+    logind_on_signal (LP: #1809096)
+- Changes for version 18.12.00:
+  * ACPICA: Update to version 20181213
+  * mtrr: allow uncached type for PCI prefetchable memory
+  * lib: disable /dev/mem access on aarch64
+  * dmicheck: drop unaligned memcpy
+  * lib: drop fwts_memcpy_unaligned
+  * dmicheck: use dmi_load_file in preference to fwts_mmap</comment>
+    <requestid>676175</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0f9b28bbb309d6196eca2bb24406ff79</srcmd5>
+    <version>19.02.00</version>
+    <time>1551883665</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.02.00:
+  * klog.json: add an &quot;IOAPIC .. not in IVRS&quot; message
+  * utilities: kernelscan: add AMD iommu for IVRS errors
+  * acpi/method: check levels on full power and battery power
+  * acpi: add address space types according to mantis 1965 (ACPI 6.2b)
+  * acpi/pptt: check flags by revision (mantis 1870 for ACPI 6.2b)
+  * acpi: pdtt: update flags defintion according to mantis 1867 (ACPI 6.3)
+  * acpi/nfit: update memory mapping attributes (mantis 1873 for ACPI 6.3)
+  * acpi/hmat: update for hmat revision 2 (mantis 1914 for ACPI 6.3)
+  * acpi/madt: remove two reserved bytes (mantis 1934 for ACPI 6.3)
+  * acpi/madt: update for Local APIC Flags (mantis 1948 for ACPI 6.3)
+  * acpi/hmat: update System Locality Latency (mantis 1959 for ACPI 6.3)
+  * acpi/method: add tests for NVDIMM control methods for ACPI 6.3
+  * acpiinfo: update ACPI and ACPICA versions
+  * acpi/srat: add test for Generic Initiator (mantis 1904 for ACPI 6.3)
+  * ACPICA: Update to version 20190215
+  * acpi: fix a typo in comment
+  * fwts: fix up a handful of spelling mistakes
+  * efi_runtime: fix access_ok build issues on 5.0 kernels
+  * Makefiles: workaround address-of-packed-member warnings with gcc-9
+  * acpica: utdecode: fix missing comma in array declaration AcpiGbl_GenericNotify
+
+- Update to version 19.01.00:</comment>
+    <requestid>681698</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>511d3d63213ee9e1e3e3e295acd1b43d</srcmd5>
+    <version>19.05.00</version>
+    <time>1559375538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.05.00:</comment>
+    <requestid>706291</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6be2950ab24d831442dd38c2f2e49237</srcmd5>
+    <version>19.06.00</version>
+    <time>1563914312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.06.00:
+  * acpi/fadt: update latest FADT revision to 6.3
+  * uefitime: add checking the EFI_UNSUPPORTED return code
+  * uefirtvariable: add checking the EFI_UNSUPPORTED return code
+  * uefirtmisc: add checking the EFI_UNSUPPORTED return code</comment>
+    <requestid>717835</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>dfd0e696456462009fe883a38d5af7c5</srcmd5>
+    <version>19.07.00</version>
+    <time>1565695667</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 19.07.00:
+  * cpu/msr: add 3 more CPU IDs for IA32_silvermont_MSRs
+  * cpu/msr: check SGX &amp; LMCE in IA32_FEATURE_CONTROL (3ah)
+  * cpu/msr: move TSC_ADJUST (3bh) to IA32_MSRs
+  * cpu/msr: add SMM_MONITOR_CTL (9bh) to IA32_MSRs
+  * cpu/msr: add MC*_CTL2 MSR registers
+  * cpu/msr: add VMX_VMFUNC MSR register
+  * cpu/msr: add MISC_ENABLE MSR to IA32_atom_MSRs
+  * cpu/msr: add MSR_PMG_IO_CAPTURE_BASE to IA32_silvermont_MSRs
+  * cpu/msr: add MSR_FEATURE_CONFIG to IA32_silvermont_MSRs
+  * cpu/msr: add MSR_TEMPERATURE_TARGET to IA32_silvermont_MSRs
+  * cpu/msr: add MSR_BBL_CR_CTL3 to IA32_silvermont_MSRs
+  * ACPICA: Update to version 20190703</comment>
+    <requestid>723008</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fb905de8a5358db78d65f79d61351813</srcmd5>
+    <version>19.09.00</version>
+    <time>1570104590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.09.00:
+  * acpi/boot: skip ACPI BOOT test on UEFI systems.
+  * acpi: s3: fix typo from 6b94bb6a4b13e
+  * opal: add more bounds checking and zero pstates array
+  * fwtstest: boot-0001: sync with boot table check on efi firmware
+- Changes for version 19.08.00:
+  * ACPICA: Update to version 20190816
+  * auto-packager: mkpackage.sh: remove cosmic
+  * efi_runtime: enable KBUILD_MODPOST_WARN=y to workaround build failures
+  * ACPICA: Update to version 20190816
+  * fwtstest: syntaxcheck-0001: update to keep in sync with ACPICA features
+  * README: Add package dependency notes for ARM64</comment>
+    <requestid>734745</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9e9ba4281275294b6f30ff1263db9805</srcmd5>
+    <version>19.12.00</version>
+    <time>1575923804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.12.00:
+  * Plenty of changes</comment>
+    <requestid>755228</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>28b8286d680eb59f1db7ef7ab90a5446</srcmd5>
+    <version>20.01.00</version>
+    <time>1580928084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.01.00:
+  * Plenty of changes</comment>
+    <requestid>769621</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2a87bb152c1304eaf53452040c80639a</srcmd5>
+    <version>20.03.00</version>
+    <time>1585842223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.03.00:
+  * Plenty of changes</comment>
+    <requestid>790795</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1feac462dd9ca3100b2b50869955379f</srcmd5>
+    <version>20.03.01</version>
+    <time>1589403371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.03.01:
+  * Small fixes</comment>
+    <requestid>804965</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>4a7e39ceb21ca01f0fbdab83b60f85a1</srcmd5>
+    <version>20.05.00</version>
+    <time>1591990633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.05.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>809010</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5104788dd670b5c4387fbc3c43b1c110</srcmd5>
+    <version>20.06.01</version>
+    <time>1595339455</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.06.01:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>822064</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ee6c28c779ad7194040823be738b5828</srcmd5>
+    <version>20.07.00</version>
+    <time>1597306636</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.07.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>826008</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c4e48abf08ab34b10e0c59aac2f49348</srcmd5>
+    <version>20.09.00</version>
+    <time>1600879243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.09.00:
+  * See provided changelog for detailed list of changes</comment>
+    <requestid>836083</requestid>
+  </revision>
+</revisionlist>

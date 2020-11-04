@@ -1,0 +1,8 @@
+<package name="python-casacore" project="openSUSE:Factory">
+  <title>A wrapper around CASACORE, the radio astronomy library</title>
+  <description>A python wrapper around CASACORE, the radio astronomy library
+
+</description>
+  <devel project="science" package="python-casacore"/>
+  <url>https://github.com/casacore/python-casacore</url>
+</package>

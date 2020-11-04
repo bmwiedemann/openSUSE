@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ef3c717c3fe54241de01269c54d98c45</srcmd5>
+    <version>0.14</version>
+    <time>1375901465</time>
+    <user>coolo</user>
+    <comment>Dependency needed for virt-v2v FATE: https://fate.suse.com/315181</comment>
+    <requestid>185993</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b3b89e4efa25d04f814bcce615455ac7</srcmd5>
+    <version>0.14</version>
+    <time>1376212857</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>186516</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b3b89e4efa25d04f814bcce615455ac7</srcmd5>
+    <version>0.14</version>
+    <time>1379663916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>b3b89e4efa25d04f814bcce615455ac7</srcmd5>
+    <version>0.14</version>
+    <time>1409302567</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>7626036c60af99469b888943a25ce588</srcmd5>
+    <version>0.14</version>
+    <time>1506340785</time>
+    <user>dimstar_suse</user>
+    <comment>- add no-more-encoding.diff to fix test with perl 5.26
+  (https://rt.cpan.org/Public/Bug/Display.html?id=115098)</comment>
+    <requestid>528474</requestid>
+  </revision>
+</revisionlist>

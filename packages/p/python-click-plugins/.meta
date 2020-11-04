@@ -1,0 +1,8 @@
+<package name="python-click-plugins" project="openSUSE:Factory">
+  <title>An extension for click to register CLI commands via setuptools entry-points</title>
+  <description>Use a decorator to get setuptools entry points that allows others to use your commandline utility as a home for their related sub-commands. You get to choose where these sub-commands or sub-groups can be registered but the plugin developer gets to choose they ARE registered. You could have all plugins register alongside the core commands, in a special sub-group, across multiple sub-groups, or some combination.
+
+</description>
+  <devel project="devel:languages:python" package="python-click-plugins"/>
+  <url>https://github.com/click-contrib/click-plugins</url>
+</package>

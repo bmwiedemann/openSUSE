@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>77436c51b3b8458e72009144d25d5735</srcmd5>
+    <version>2.2.3</version>
+    <time>1575106640</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain crow-translate in Factory</comment>
+    <requestid>750509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>477d462be37fc35458f6e1bf795cdf70</srcmd5>
+    <version>2.3.0</version>
+    <time>1577137638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758981</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0c7153a8ae0dbed6c17bd6127138037</srcmd5>
+    <version>2.3.1</version>
+    <time>1579463861</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765582</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>51490ac3b1503b80614bee530c7b62c0</srcmd5>
+    <version>2.3.2</version>
+    <time>1589403386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805080</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>efa4cd41d9c14a00c9fdd40d19ec7fed</srcmd5>
+    <version>2.5.1</version>
+    <time>1599088581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831287</requestid>
+  </revision>
+</revisionlist>

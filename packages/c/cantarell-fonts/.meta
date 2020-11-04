@@ -1,0 +1,6 @@
+<package name="cantarell-fonts" project="openSUSE:Factory">
+  <title>Contemporary Humanist Sans Serif Font</title>
+  <description>The Cantarell font family is a contemporary Humanist sans serif designed
+for on-screen reading.</description>
+  <devel project="M17N:fonts" package="cantarell-fonts"/>
+</package>

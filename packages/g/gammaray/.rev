@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>142e1a0078ea73c8a31d802e07538e7e</srcmd5>
+    <version>2.6.0</version>
+    <time>1485250419</time>
+    <user>dimstar_suse</user>
+    <comment>Submit gammaray to Factory</comment>
+    <requestid>451004</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>69f04fa5eaf24b76f4bb95e922f4fe55</srcmd5>
+    <version>2.6.0</version>
+    <time>1485863177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453343</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5aef6684957ade2921307a3a5bb67dc9</srcmd5>
+    <version>2.7.0</version>
+    <time>1488559424</time>
+    <user>dimstar_suse</user>
+    <comment>This submission should be combined with the kdstatemachineeditor package submission. Please put them both in the same staging area. Thanks</comment>
+    <requestid>459037</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01c4fea486c8a3288f069ef07367555e</srcmd5>
+    <version>2.8.0</version>
+    <time>1503592233</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8df4b7dfe55f61c9195b20d2a537d022</srcmd5>
+    <version>2.8.1</version>
+    <time>1510232499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.1</comment>
+    <requestid>538204</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>57248f229ad076bf3ecfdb8c46e79e1f</srcmd5>
+    <version>2.9.0</version>
+    <time>1518281948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574838</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d03db32823e6bf5f654ffc4bdd93118b</srcmd5>
+    <version>2.9.1</version>
+    <time>1539251483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches to fix build against Qt 5.12:
+  * fix-build-qt-5.12.patch
+  * fix-build-qt-5.12-again.patch
+
+- Update to 2.9.1:
+  * Fix crash in in-process mode with networking disabled.
+  * Fix compilation with Qt 5.12.
+  * Update Android toolchain file.
+  * Allow to disable QtScript dependency.
+  * Fix crash on zero-sized paint operations.
+  * Fix plugin deployment on Android.
+  * Fix crash in Qt Quick inspector when encountering invalid bounding rects.
+  * Fix activating the Qt3D plugin when attaching to a Qt3D application at runtime.
+  * Fix out-of-bounds framebuffer read in Qt Quick remote view for some non-integer scaling factors.
+- Use %license</comment>
+    <requestid>640044</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c878c032eb84bff07d77131d2aa4b0fe</srcmd5>
+    <version>2.10.0</version>
+    <time>1553611125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>680359</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a49f86a90a76c1fa36117a0f9979e18</srcmd5>
+    <version>2.10.0</version>
+    <time>1556817380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-with-qt-5.13.patch</comment>
+    <requestid>692997</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>dead14c6e3ecf80ea4e789a47720cf99</srcmd5>
+    <version>2.10.0</version>
+    <time>1559902737</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Make-sure-the-defined-variables-are-relative-before-.patch
+  to fix runtime issues.</comment>
+    <requestid>702829</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>51131966edf92455cb271510c4e9ed23</srcmd5>
+    <version>2.10.0</version>
+    <time>1560971310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710434</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0297f9b8d8eb8d9316f0d94845e1e915</srcmd5>
+    <version>2.11.0</version>
+    <time>1562843905</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.11.0 &amp; disable lto</comment>
+    <requestid>714403</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>93da3e9fcbdf5e480264062dba729ea5</srcmd5>
+    <version>2.11.0</version>
+    <time>1572557479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744392</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>be76e480f90539ab43df48859b73b0f9</srcmd5>
+    <version>2.11.0</version>
+    <time>1575727848</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Fix-build-against-Qt-5.14.patch</comment>
+    <requestid>754879</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>545c4a1f2b35a90f34070f25526dad15</srcmd5>
+    <version>2.11.0</version>
+    <time>1585995927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Fix-build-with-Qt-5.15.patch</comment>
+    <requestid>791144</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>12411254d5071e43e9a9dbf9cad1dbb1</srcmd5>
+    <version>2.11.1</version>
+    <time>1588856195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800963</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>63ba46e49f42760e547ca0c962328a43</srcmd5>
+    <version>2.11.1</version>
+    <time>1591209127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810811</requestid>
+  </revision>
+</revisionlist>

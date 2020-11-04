@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d1e4cbab9a5c25024c6c2ed582dc0e7b</srcmd5>
+    <version>0.11</version>
+    <time>1361215732</time>
+    <user>coolo</user>
+    <comment>new package: jbig2dec -- a decoder library and example utility implementing the JBIG2
+bi-level image compression spec.</comment>
+    <requestid>155675</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>d1e4cbab9a5c25024c6c2ed582dc0e7b</srcmd5>
+    <version>0.11</version>
+    <time>1379662709</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>d1e4cbab9a5c25024c6c2ed582dc0e7b</srcmd5>
+    <version>0.11</version>
+    <time>1409301275</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b91e5d4d47a4d1efd3f3979f232851a3</srcmd5>
+    <version>0.12</version>
+    <time>1450363937</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348421</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>153ac3a177dc4a101b448e4a8fd681b2</srcmd5>
+    <version>0.13</version>
+    <time>1462865119</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>393790</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08ae3c8ab6f1cd28cc8f26bbb5aeb515</srcmd5>
+    <version>0.14</version>
+    <time>1511274615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542901</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c5db0468151c39930b953486c0e568d5</srcmd5>
+    <version>0.18</version>
+    <time>1587581594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794855</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>65ba9efa072c385c91e4f263622d6a06</srcmd5>
+    <version>0.18</version>
+    <time>1590506526</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808539</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d0901222d1771456a33fb23543bf81fa</srcmd5>
+    <version>0.19</version>
+    <time>1600079504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834015</requestid>
+  </revision>
+</revisionlist>

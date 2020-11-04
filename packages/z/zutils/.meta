@@ -1,0 +1,6 @@
+<package name="zutils" project="openSUSE:Factory">
+  <title></title>
+  <description>Zutils is a collection of utilities able to deal with any combination of compressed and uncompressed files transparently. If any given file, including standard input, is compressed, its decompressed content is used. Compressed files are decompressed on the fly; no temporary files are created.
+These utilities are not wrapper scripts but safer and more efficient C++ programs. In particular the &quot;--recursive&quot; option is very efficient in those utilities supporting it.</description>
+  <devel project="Archiving" package="zutils"/>
+</package>

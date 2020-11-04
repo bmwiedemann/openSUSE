@@ -1,0 +1,7 @@
+<package name="libretro-prosystem" project="openSUSE:Factory">
+  <title>ProSystem libretro core for Atari 7800 emulation</title>
+  <description>The ProSystem Emulator is an Atari 7800 emulator for the PC and Windows OS. The emulator was written in C++ using the Windows API and DirectX. It emulates the Atari 7800 NTSC and PAL TV standards.
+
+This package is for RetroArch/Libretro front-end.</description>
+  <devel project="Emulators" package="libretro-prosystem"/>
+</package>

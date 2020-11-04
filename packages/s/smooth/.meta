@@ -1,0 +1,17 @@
+<package name="smooth" project="openSUSE:Factory">
+  <title>C++ class library for widgets, IO, XML and more</title>
+  <description>smooth is an object oriented C++ class library. It provides basic
+functionality and platform support for applications and libraries.
+
+Features provided by smooth include:
+
+    user interface API with various widgets
+    simple to use multithreading API
+    file and network IO interface
+    completely transparent Unicode and software internationalization support
+    a libxml2 based XML parser
+
+</description>
+  <devel project="devel:libraries:c_c++" package="smooth"/>
+  <url>http://www.smooth-project.org</url>
+</package>

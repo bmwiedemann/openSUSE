@@ -1,0 +1,5 @@
+<package name="python-labels" project="openSUSE:Factory">
+  <title>python-labels</title>
+  <description>CLI app for managing GitHub labels</description>
+  <devel project="devel:languages:python" package="python-labels"/>
+</package>

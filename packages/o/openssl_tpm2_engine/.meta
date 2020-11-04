@@ -1,0 +1,5 @@
+<package name="openssl_tpm2_engine" project="openSUSE:Factory">
+  <title>OpenSSL engine for TPM 2.0</title>
+  <description>This package contains a plugin for OpenSSL which connects it with the Trusted Platform Module 2.0 now present in modern Laptops and Servers thanks to the Windows Hardware Requirements.  This package also contains a create_tpm2_key binary to allow you to convert standard OpenSSL keys to TPM format and optionally add key use policy to them.</description>
+  <devel project="security:tls" package="openssl_tpm2_engine"/>
+</package>

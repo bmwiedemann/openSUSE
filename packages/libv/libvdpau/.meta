@@ -1,0 +1,9 @@
+<package name="libvdpau" project="openSUSE:Factory">
+  <title>VDPAU wrapper and trace libraries</title>
+  <description>This package contains the libvdpau wrapper library and the libvdpau_trace
+debugging library, along with the header files needed to build VDPAU
+applications.  To actually use a VDPAU device, you need a vendor-specific
+implementation library.  Currently, this is always libvdpau_nvidia.  You can
+override the driver name by setting the VDPAU_DRIVER environment variable.</description>
+  <devel project="X11:XOrg" package="libvdpau"/>
+</package>

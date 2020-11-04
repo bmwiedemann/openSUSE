@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>443fe6b34e1c425c23f49b56cf5e71c5</srcmd5>
+    <version>1.0.0</version>
+    <time>1582899573</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768426</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2129b3cad3c8ac8c6718fcb499b533e</srcmd5>
+    <version>1.1.0</version>
+    <time>1585761254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790569</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>742ff827de009ac48edaff4d9dede73a</srcmd5>
+    <version>1.1.1</version>
+    <time>1602155536</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839788 from glaubitz)</comment>
+    <requestid>839850</requestid>
+  </revision>
+</revisionlist>

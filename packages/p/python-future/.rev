@@ -1,0 +1,108 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6975668cc7b2de4bba901e22437659e8</srcmd5>
+    <version>0.15.2</version>
+    <time>1474976661</time>
+    <user>dimstar_suse</user>
+    <comment>Fix rpm uninstall warnings by removing alternatives in postun</comment>
+    <requestid>429775</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7cddf054cf2d64b94e05b92f1ef3f978</srcmd5>
+    <version>0.15.2</version>
+    <time>1476997686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434318</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f76d9dd9824cd04d1762c034c9a22ab9</srcmd5>
+    <version>0.16.0</version>
+    <time>1480342107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441966</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>61635e474ec62e6749fd13babfb2d75c</srcmd5>
+    <version>0.16.0</version>
+    <time>1493363545</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>486204</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>068672030144403e8c45888b683e7718</srcmd5>
+    <version>0.17.1</version>
+    <time>1542749219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>649806</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c03ebd62756a28534893d529c416b9d6</srcmd5>
+    <version>0.17.1</version>
+    <time>1545866764</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659390</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f862da12d3bde460465df4a6059e4735</srcmd5>
+    <version>0.17.1</version>
+    <time>1552380394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683765</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e2f29e8574012e09d71a9e1d9ac8bfcb</srcmd5>
+    <version>0.17.1</version>
+    <time>1557321318</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701205</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c46aeb66305d130a4d67ab562e3abdb7</srcmd5>
+    <version>0.17.1</version>
+    <time>1570285227</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python38-compat.patch to fix compatibility with Python 3.8
+  gh#PythonCharmers/python-future#447
+- Add python38-pow.patch not to expect exception on new available
+  parameters for Python 3.8. gh#PythonCharmers/python-future#474</comment>
+    <requestid>734651</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7c7f5c9a6c663e3a18167a4f6c3bc0e1</srcmd5>
+    <version>0.18.0</version>
+    <time>1572883525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.0.
+- Remove python38-compat.patch, already included.
+- Add future-correct-mimetype.patch, since Python 3.8 is able to detect
+  the MIME type now.</comment>
+    <requestid>738188</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8d0261a2470c53e8b9ec1dc6fd74a735</srcmd5>
+    <version>0.18.2</version>
+    <time>1576062573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.2:
+  - Fix min/max functions with generators, and 'None' default (PR #514)
+  - Use BaseException in raise_() (PR #515)
+  - Fix builtins.round() for Decimals (Issue #501)
+  - Fix raise_from() to prevent failures with immutable classes (PR #518)
+  - Make FixInput idempotent (Issue #427)
+  - Fix type in newround (PR #521)
+  - Support mimetype guessing in urllib2 for Py3.8+ (Issue #508)
+  - fix for raise_() when passed an exception that's not an
+    Exception (e.g. BaseException subclasses)
+- Rebase future-correct-mimetype.patch to revert incorrect fix in
+  gh#PythonCharmers/python-future#508</comment>
+    <requestid>754444</requestid>
+  </revision>
+</revisionlist>

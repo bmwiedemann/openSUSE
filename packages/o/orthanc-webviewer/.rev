@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a24b938a08338ea88743c9a6836277a4</srcmd5>
+    <version>2.5</version>
+    <time>1575464170</time>
+    <user>dimstar_suse</user>
+    <comment>includes fix for missing header</comment>
+    <requestid>753945</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1eac38aa78f787baa33a18d7f5453f1a</srcmd5>
+    <version>2.5</version>
+    <time>1587581455</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795517</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af188a497c5f71c5df0ce4b065a23335</srcmd5>
+    <version>2.6</version>
+    <time>1591101275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809646</requestid>
+  </revision>
+</revisionlist>

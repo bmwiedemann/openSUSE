@@ -1,0 +1,70 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eb447a14406a3dd9c9d2e90710f99287</srcmd5>
+    <version>0.2.5</version>
+    <time>1416048100</time>
+    <user>dimstar_suse</user>
+    <comment>PDF plugin for zathura</comment>
+    <requestid>261251</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b1c46316b723b6a751cc3fcd9b8ad93</srcmd5>
+    <version>0.2.5</version>
+    <time>1416823749</time>
+    <user>dimstar_suse</user>
+    <comment>- add requires: zathura</comment>
+    <requestid>262592</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd8784815d89f40c8f8d2a4938927318</srcmd5>
+    <version>0.2.6</version>
+    <time>1456320392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.6 (forwarded request 361169 from mimi_vx)</comment>
+    <requestid>361170</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6db90d6b7dd17e43d7867b5eb8b54590</srcmd5>
+    <version>0.2.7</version>
+    <time>1496089171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498677</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c632bbf5542a05b7852a6bbd1a91620f</srcmd5>
+    <version>0.2.8</version>
+    <time>1517323354</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.8
+* adapt to new plugin interface</comment>
+    <requestid>569897</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>96344b4b0bae9a8fb6188c8123dc10a9</srcmd5>
+    <version>0.2.9</version>
+    <time>1527583633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.9
+* use meson build system
+* Provide page labels (forwarded request 612399 from mimi_vx)</comment>
+    <requestid>612400</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>244e5b256447662e991334bd0c863e0d</srcmd5>
+    <version>0.2.9</version>
+    <time>1533887487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628355</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a23f4eaff43c70b32d85ebfc92ab6af3</srcmd5>
+    <version>0.3.0</version>
+    <time>1581456266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.0
+* Small improvements</comment>
+    <requestid>773360</requestid>
+  </revision>
+</revisionlist>

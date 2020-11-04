@@ -1,0 +1,7 @@
+<package name="python-parsimonious" project="openSUSE:Factory">
+  <title>Pure-Python PEG parser</title>
+  <description>Parsimonious is an arbitrary-lookahead parser written in pure
+Python. It's based on parsing expression grammars (PEGs), which
+means you feed it a simplified sort of EBNF notation.</description>
+  <devel project="devel:languages:python" package="python-parsimonious"/>
+</package>

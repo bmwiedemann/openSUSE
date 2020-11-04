@@ -1,0 +1,10 @@
+<package name="ocaml-camlzip" project="openSUSE:Factory">
+  <title>OCaml ZIP interface</title>
+  <description>This OCaml library provides easy access to compressed files in ZIP
+and GZIP format, as well as to Java JAR files. It provides functions
+for reading from and writing to compressed files in these formats.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-camlzip"/>
+  <url>https://github.com/xavierleroy/camlzip</url>
+</package>

@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38314f477bd36296dd7f73b52940f973</srcmd5>
+    <version>5.0.0</version>
+    <time>1561195471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711283</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c87114293bfc9cfe63b271f85b946a7</srcmd5>
+    <version>5.0.0</version>
+    <time>1561494139</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust _service file</comment>
+    <requestid>711883</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>037187fc3428de7e2da047431d23ad96</srcmd5>
+    <version>5.0.0</version>
+    <time>1589046484</time>
+    <user>dimstar_suse</user>
+    <comment>- Deinstall busybox-sh in favour of bash
+- Deinstall busybox-findutils since ca-certificates requires
+  real findutils
+- net-tools-deprecated are required instead of busybox-net-tools
+
+- Deinstall busybox-iproute2 to be able to install iproute2</comment>
+    <requestid>798610</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f6de0ef0340715dfab459690b6f8ad16</srcmd5>
+    <version>5.0.0</version>
+    <time>1591380531</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811748 from dimstar)</comment>
+    <requestid>811759</requestid>
+  </revision>
+</revisionlist>

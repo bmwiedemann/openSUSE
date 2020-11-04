@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f38588fb58ca7465a6c4424295eb67e2</srcmd5>
+    <version>2.1.0</version>
+    <time>1583094451</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>780275</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f60fc394a6805710cb740cb2147b5e2</srcmd5>
+    <version>2.1.0</version>
+    <time>1583526493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782035</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cfd3ab816ae257a1f99260bd02cdc85a</srcmd5>
+    <version>2.1.0</version>
+    <time>1583948996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783473</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>c0645c8b635a0e6e8b331be6251db894</srcmd5>
+    <version>2.1.0</version>
+    <time>1584530786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785546</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8c952738ce679b9dd1575c0baa305b8a</srcmd5>
+    <version>2.1.0</version>
+    <time>1584882989</time>
+    <user>dimstar_suse</user>
+    <comment>- Lite flavor should not provide python3-tensorflow nor tensorflow
+</comment>
+    <requestid>786719</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>09d88425315782fffeab8d4ddf52bd70</srcmd5>
+    <version>2.1.0</version>
+    <time>1585085757</time>
+    <user>dimstar_suse</user>
+    <comment>Use pip install --no-compile (boo#1094323) (forwarded request 787621 from bmwiedemann)</comment>
+    <requestid>787674</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8fed74bfecfcdbaa458a15ce90620727</srcmd5>
+    <version>2.1.0</version>
+    <time>1585342835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788959</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>0adc87f32c4d7359b2cdf0c11e345980</srcmd5>
+    <version>2.1.0</version>
+    <time>1586368545</time>
+    <user>dimstar_suse</user>
+    <comment>- added mkl-ddn as source and do not use system mkl-dnn (bsc#1168839)
+- removed patches:
+  * fixed-mkl-sgemm-call.patch
+  * added-mkl_dnn-as-syslib.patch
+- added source:
+  mkl-v0.21.2.tar.gz (forwarded request 791969 from mslacken)</comment>
+    <requestid>791970</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>de12f82bfaae2f0bd98c5f2d353d84ac</srcmd5>
+    <version>2.1.0</version>
+    <time>1590649974</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808912</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e07d1317b8375c9e1edfe39a4742534</srcmd5>
+    <version>2.1.1</version>
+    <time>1592398347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815289</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b568601e20ccaa2e2a706989c238d8b6</srcmd5>
+    <version>2.1.1</version>
+    <time>1593292944</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>817242</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>869eed053047e118ad02669f4adb4cf3</srcmd5>
+    <version>2.1.1</version>
+    <time>1593620561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817873</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>2a30b31e478d4d99e1a6487daccfa276</srcmd5>
+    <version>2.1.1</version>
+    <time>1599088513</time>
+    <user>dimstar_suse</user>
+    <comment>- Lower memoryperjob to 1300 MB (as done for tensorflow)
+- Use memoryperjob constraint instead of %limit_build macro.
+</comment>
+    <requestid>828227</requestid>
+  </revision>
+</revisionlist>

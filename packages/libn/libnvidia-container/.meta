@@ -1,0 +1,10 @@
+<package name="libnvidia-container" project="openSUSE:Factory">
+  <title>libnvidia-container</title>
+  <description>Library and a simple CLI utility to automatically configure GNU/Linux containers leveraging NVIDIA hardware.
+The implementation relies on kernel primitives and is designed to be agnostic of the container runtime.
+
+More at 
+
+https://github.com/NVIDIA/libnvidia-container</description>
+  <devel project="devel:kubic" package="libnvidia-container"/>
+</package>

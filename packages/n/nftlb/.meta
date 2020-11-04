@@ -1,0 +1,5 @@
+<package name="nftlb" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:netfilter" package="nftlb"/>
+</package>

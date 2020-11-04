@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a5def1556dd19d5610abe5932908335</srcmd5>
+    <version>0~git20200104</version>
+    <time>1579729355</time>
+    <user>dimstar_suse</user>
+    <comment>Joypad auto config files for RetroArch</comment>
+    <requestid>763350</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85e3d67fd8cb8776534ace9db11fdb55</srcmd5>
+    <version>0~git20200317</version>
+    <time>1586248009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200317:
+  * replace hex vid/pids with decimal; hat-tip to offalynne; closes #631
+  * Add Retro-bit Saturn Bluetooth controller autoconfigs (Dinput and Xin… (#630)
+  * Added Thrustmaster T-Flight Joystick (#629)
+  * Add Nintendo Switch SNES Controller
+  * Add odroidgo2_joypad.cfg to support odroid go advance
+  * Add/Update Switch-compatible controllers (#623)
+  * iPEGA PG-9083S bluetooth controller (#606)
+  * Change That fixes RetroLink N64 Controller Compatibility (#618)
+  * add DragonRise Inc. Generic USB Joystick for Digger USB 2.0 Joypad from flathub (#614)
+  * Add &quot;ShanWan PC_PS3_Android&quot; profile gamepad (#611)
+  * Create JY-P62U Series ONLINE GRIP.cfg (#616)
+  * Create Sanmos JY-P62U Series ONLINE GRIP.cfg (#615)
+  * Create JY-P62U Series ONLINE GRIP.cfg
+  * Moved to appropriate folder
+  * Profile for a wired Dualshock 4 V2 controller
+  * Add SDL Buffalo Controller
+</comment>
+    <requestid>788687</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>32fa3ba76df65572697ab08d289e536c</srcmd5>
+    <version>0~git20200429</version>
+    <time>1589491577</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805518</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f9923479662e335bccdb0a0374d8acc</srcmd5>
+    <version>0~git20200513</version>
+    <time>1591558447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200513:
+  * Fix DragonRise N64 controller mapping
+  * Create SteelSeries Stratus XL.cfg
+  * Remove (wired) appendix from profile name
+</comment>
+    <requestid>808455</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0afa4700bb4b72e1224f93d00a25cfb3</srcmd5>
+    <version>0~git20200622</version>
+    <time>1593006531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200622:
+  * comment pid on EasySMX to avoid conflict with generic 360 pads
+  * comment vid:pid on Switch Pro xinputs to avoid conflicts with generic xinput virtual gamepads
+  * Add comments on start button + R3
+  * Give Google Nexus Controller a start button
+  * Create Xbox_360_Wireless_RF_Module_RF01.cfg
+  * Delete force_run
+  * no message
+  * - Add new autoconfigurations - Update Retrobit 8 Button Arcade Pad file to indicate that it is for Saturn as well
+  * Fix up a few more bad button bindings
+  * Add d-pad up to the Google Nexus Gamepad config
+  * Create Pro Controller.cfg
+  * Create HORI CO.,LTD. HORIPAD mini4.cfg
+  * Add support for Xin-Mo Dual Arcade config based on Playstation and Playstation 2 key legend provided by X-arcade manual here https://ibb.co/yVfsdyb
+  * Add mappings for odroidgo2 v1.1
+  * Create EasySMX_Wireless_Controller.cfg
+  * DualShock 3 autoconfig to OUYA
+</comment>
+    <requestid>816706</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1fe911ac16456db6eb2745de1c1516a3</srcmd5>
+    <version>0~git20200730</version>
+    <time>1597658506</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826807</requestid>
+  </revision>
+</revisionlist>

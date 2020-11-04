@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfef96121d9d22470f7e87c53281cfcd</srcmd5>
+    <version>0.12</version>
+    <time>1485382873</time>
+    <user>dimstar_suse</user>
+    <comment>New package for debuginfo compression inside rpms find-debuginfo</comment>
+    <requestid>442686</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11ec11754350f3ddfbbaed5a8d3ec46e</srcmd5>
+    <version>0.12</version>
+    <time>1488479328</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dwz-0.12-ignore-nobits.patch to ignore SHT_NOBITS sections
+  that are placed out-of-order by objcopy when extracting debuginfo
+  and place them at sh_offset zero. (forwarded request 460022 from rguenther)</comment>
+    <requestid>460023</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bbb1f01d98683e5cad6f396ae49ce66c</srcmd5>
+    <version>0.12</version>
+    <time>1489345369</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust dwz-0.12-ignore-nobits.patch to also handle non-monotonically
+  increasing sh_offset as created by the kernel linker script.</comment>
+    <requestid>477515</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6b03576729ddaeee26b3b33f6c9614d2</srcmd5>
+    <version>0.12</version>
+    <time>1521903862</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner on the package. (forwarded request 586787 from marxin)</comment>
+    <requestid>586792</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>400609c06339c6cc6215a32bdc87cbfc</srcmd5>
+    <version>0.12</version>
+    <time>1523875366</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dwz-0.12-DW_OP_GNU_variable_value.patch to handle
+  DW_OP_GNU_variable_value.</comment>
+    <requestid>595595</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>08afd4c0aa56890e712e3fa5ba3a038e</srcmd5>
+    <version>0.12</version>
+    <time>1552380248</time>
+    <user>dimstar_suse</user>
+    <comment>- Add dwz-low-mem-Fix-DW_OP_GNU_parameter_ref-handling-in-read_exprloc.patch
+  to fix assert on cc1 binary from gcc bootstrap-lto [swo#24195]. (forwarded request 677153 from tomdevries)</comment>
+    <requestid>682493</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5805699f1c1cfa50469b9a9f872c116e</srcmd5>
+    <version>0.13</version>
+    <time>1566900013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724550</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>23d2f64c585cee5975feaa04368a1fa0</srcmd5>
+    <version>0.13</version>
+    <time>1567168886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726858</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>774d0ce5d9a5da30cf57a024d45455f2</srcmd5>
+    <version>0.13</version>
+    <time>1573473428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745484</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>4e58982333c0d55d85cfd79ff4245053</srcmd5>
+    <version>0.13</version>
+    <time>1575727901</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix assertion failure 'refd != NULL' in write_die [swo#24169].
+  * dwz-fix-refd-NULL-assertion-in-write_die.patch
+- Fix assertion failure 'off == cu_size' in recompute_abbrevs
+  [swo#24764].
+  * dwz-fix-assertion-off-cu_size-in-recompute_abbrevs.patch
+</comment>
+    <requestid>751829</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>12de9e38de937efc196c75271169dd3c</srcmd5>
+    <version>0.13</version>
+    <time>1579792080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765149</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>9f5a3869c2eee31f4d55a0f5e7261156</srcmd5>
+    <version>0.13</version>
+    <time>1580724632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766978</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>59b2d29fb8eb6027363ba0dbcaf4fac8</srcmd5>
+    <version>0.13</version>
+    <time>1597658320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824538</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f49eeb56aae94157d55ebae2d94846e9</srcmd5>
+    <version>0.1.13</version>
+    <time>1558515822</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v0.1.13
+</comment>
+    <requestid>697023</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c22b4de924dbf31dbcc202435a44c12</srcmd5>
+    <version>0.2.2</version>
+    <time>1558532479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2:
+  * Fixes in backwards compatibility
+  * Bring back the user compatibility module. However, it's deprecated and
+    will be removed in version 0.3
+  * Show deprecation warnings
+
+- Removed Conflicts with python-nine
+- Update to v0.2
+  * Drop Python 2.6 support.
+  * Change namespace from `nine` to `django_nine`.
+  * Removed `user` compatibility module.
+  * Add travis.</comment>
+    <requestid>704708</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>516b86a7b220c9f40db332bb9818dc36</srcmd5>
+    <version>0.2.3</version>
+    <time>1578950549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.3:
+  * Added more Django versions.</comment>
+    <requestid>764006</requestid>
+  </revision>
+</revisionlist>

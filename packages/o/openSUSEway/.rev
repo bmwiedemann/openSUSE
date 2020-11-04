@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>856fbdf755b4ac9d7cfe40672a639786</srcmd5>
+    <version>0.3</version>
+    <time>1592939091</time>
+    <user>dimstar_suse</user>
+    <comment>openSUSEway branding environment for Sway desktop.
+Requires changes in prj config to resolve correct packages:
+
+```
+Prefer: sway-branding-upstream
+Prefer: waybar-branding-upstream
+
+# try to prevent cycles
+Prefer: -sway-branding-openSUSE
+Prefer: -waybar-branding-openSUSE
+```</comment>
+    <requestid>816428</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4532e0648e8b6ea0cc529431ae0d339</srcmd5>
+    <version>0.6</version>
+    <time>1595864217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821261</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0854f8ae73352af9521a2f29d28810f</srcmd5>
+    <version>0.8</version>
+    <time>1596203949</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823705</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a452ff9e9e73412455fdfbd233b03f61</srcmd5>
+    <version>0.9</version>
+    <time>1596565484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824297</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8ff8303da42e8cf00558012c4246e401</srcmd5>
+    <version>0.9</version>
+    <time>1596652196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824520</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9b41e115a68221648dbd9aad8021d78</srcmd5>
+    <version>0.10</version>
+    <time>1598885429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830583</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>01d6c1ecf5913e5036bd6be1558bfc17</srcmd5>
+    <version>0.11</version>
+    <time>1600179997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834543</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4db3410dff4937b6b82dbf9140f58e67</srcmd5>
+    <version>0.12</version>
+    <time>1602596558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841267</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fef0c73902ddc5cba01088a078ab076</srcmd5>
+    <version>4.1.0</version>
+    <time>1507755485</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531817</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02e12285ee21ab65a69693b7756171f4</srcmd5>
+    <version>5.0.0</version>
+    <time>1518596735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571094</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a189d41831db2bfe407c5a21ef66a53e</srcmd5>
+    <version>5.0.1</version>
+    <time>1537971210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637944</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d660152a76dea310fe951fc0af049dc</srcmd5>
+    <version>6.0.0</version>
+    <time>1557833513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694271 from glaubitz)</comment>
+    <requestid>694392</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39cf15add598b19698d056d08b6d7b84</srcmd5>
+    <version>7.0.0</version>
+    <time>1570710537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735177 from glaubitz)</comment>
+    <requestid>735685</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8881d90ae86da0a7f2dc38dcdc0caa76</srcmd5>
+    <version>8.0.0</version>
+    <time>1588971883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801177</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5af663c9b1135546707b8d0d89cdba4e</srcmd5>
+    <version>9.0.0</version>
+    <time>1595272084</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 821895 from glaubitz)</comment>
+    <requestid>821951</requestid>
+  </revision>
+</revisionlist>

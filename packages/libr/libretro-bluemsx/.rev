@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1756f68cb3774a5b14b31e0bbf114d6c</srcmd5>
+    <version>0~git20190902</version>
+    <time>1581456153</time>
+    <user>dimstar_suse</user>
+    <comment>A MSX emulator</comment>
+    <requestid>771824</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca0f2a22951ebfa93c5afddb58012177</srcmd5>
+    <version>0~git20200507</version>
+    <time>1591558616</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812097</requestid>
+  </revision>
+</revisionlist>

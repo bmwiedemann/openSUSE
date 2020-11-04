@@ -1,0 +1,438 @@
+<revisionlist>
+  <revision rev="1" vrev="40">
+    <srcmd5>afe0b2df004becf3edd6749e657178e5</srcmd5>
+    <version>2.0.3</version>
+    <time>1168902593</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5452782be7672fc588d395538f2c4e83</srcmd5>
+    <version>2.0.5</version>
+    <time>1172442209</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>18bb34f1e835fd02cea3c29e5701902a</srcmd5>
+    <version>2.0.5</version>
+    <time>1173567177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43eb8a5feee56a921ac8d96fcbde0521</srcmd5>
+    <version>2.0.9</version>
+    <time>1177450192</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>f6d900df89ef1b12ad69d0f7aa9d3d49</srcmd5>
+    <version>2.0.9</version>
+    <time>1177685020</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="14">
+    <srcmd5>3d71a08e2b3c974fb688baa25e3ea31c</srcmd5>
+    <version>2.0.9</version>
+    <time>1179067845</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fd5480dca958d761d5fee8743023628b</srcmd5>
+    <version>2.0.11</version>
+    <time>1190289467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="72">
+    <srcmd5>ffd20d1ff766bb6c70b168b899075911</srcmd5>
+    <version>2.0.9</version>
+    <time>1190380750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d8a95d022136bb34d79cc9cf50566ac6</srcmd5>
+    <version>2.0.11</version>
+    <time>1191365484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>40e49628a7eb656530612064b9b5de18</srcmd5>
+    <version>2.0.11</version>
+    <time>1192128092</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="62">
+    <srcmd5>9cdb4b72742c22b71482003df7f0e6dc</srcmd5>
+    <version>2.0.11</version>
+    <time>1204321284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b7fbe95b472dd096fe8e406b4b3bccba</srcmd5>
+    <version>2.0.12</version>
+    <time>1205512372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="80">
+    <srcmd5>b7fbe95b472dd096fe8e406b4b3bccba</srcmd5>
+    <version>2.0.12</version>
+    <time>1205512372</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>81d39cf33754c1ba835aa05497182d05</srcmd5>
+    <version>3.0.0</version>
+    <time>1224690533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>71c9e26b5db5d5c125b191a0d692c2d3</srcmd5>
+    <version>3.0.1</version>
+    <time>1225122296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6ae860dd99db645d97bb2d84d07ad4f8</srcmd5>
+    <version>3.0.1</version>
+    <time>1229340443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>150abc393a1cab9137de2c8491025c64</srcmd5>
+    <version>3.0.1</version>
+    <time>1236810808</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7cf9238cf5a858ca6b2aba430cc4e4c0</srcmd5>
+    <version>3.2.0</version>
+    <time>1241453082</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a18456244798b2f074142884c6953166</srcmd5>
+    <version>3.2.4</version>
+    <time>1243204139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3104879d400cd10c7c25ff3f5063baad</srcmd5>
+    <version>3.2.5</version>
+    <time>1249060022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d5365e672e2e2669b0b4a30a146f3f4d</srcmd5>
+    <version>3.2.5</version>
+    <time>1251996327</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ekiga based on submit request 19697 from user vuntz
+</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>084084b9dd590603332a0d4aa75ee2cf</srcmd5>
+    <version>3.2.6</version>
+    <time>1254962950</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ekiga based on submit request 21990 from user vuntz
+</comment>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>084084b9dd590603332a0d4aa75ee2cf</srcmd5>
+    <version>3.2.6</version>
+    <time>1254962950</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ekiga based on submit request 21990 from user vuntz
+</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>a913aa19f91b20a1441301e1cfcde51f</srcmd5>
+    <version>3.2.6</version>
+    <time>1268923442</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>a913aa19f91b20a1441301e1cfcde51f</srcmd5>
+    <version>3.2.6</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>a913aa19f91b20a1441301e1cfcde51f</srcmd5>
+    <version>3.2.6</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b816e67d9d382dda39f26a1d7572d0d4</srcmd5>
+    <version>3.2.7</version>
+    <time>1281659957</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/ekiga based on submit request 45370 from user vuntz
+</comment>
+    <requestid>45370</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5e8a8df0f42d2fc805062a36876fad10</srcmd5>
+    <version>3.2.7</version>
+    <time>1289532550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>b816e67d9d382dda39f26a1d7572d0d4</srcmd5>
+    <version>3.2.7</version>
+    <time>1289569343</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>cd2d27b57f15554e6e08742952294222</srcmd5>
+    <version>3.2.7</version>
+    <time>1292853378</time>
+    <user>darix</user>
+    <comment>Accepted submit request 56030 from user dimstar
+</comment>
+    <requestid>56030</requestid>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>0aec035169bd01e7ce1e95d265b88094</srcmd5>
+    <version>3.2.7</version>
+    <time>1292853387</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 56030
+</comment>
+  </revision>
+  <revision rev="32" vrev="6">
+    <srcmd5>79aca9c665506613477896887bdccc2c</srcmd5>
+    <version>3.2.7</version>
+    <time>1297643636</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61020 from user vuntz
+</comment>
+    <requestid>61020</requestid>
+  </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>d6ab5839f6be91a047457b4354a5ba92</srcmd5>
+    <version>3.2.7</version>
+    <time>1297643642</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61020
+</comment>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>d6ab5839f6be91a047457b4354a5ba92</srcmd5>
+    <version>3.2.7</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="35" vrev="11">
+    <srcmd5>06405d2d4dd72dc0db0da9f046045380</srcmd5>
+    <version>3.2.7</version>
+    <time>1304422432</time>
+    <user>darix</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69022</requestid>
+  </revision>
+  <revision rev="36" vrev="12">
+    <srcmd5>bba215aa1c67692c126405521c35726e</srcmd5>
+    <version>3.2.7</version>
+    <time>1304422444</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 69022
+</comment>
+  </revision>
+  <revision rev="37" vrev="13">
+    <srcmd5>5491cb7a29c85ce5c1b56a915f3da766</srcmd5>
+    <version>3.2.7</version>
+    <time>1315568096</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81453</requestid>
+  </revision>
+  <revision rev="38" vrev="14">
+    <srcmd5>74647709b49519ca83832b8d0f4a4087</srcmd5>
+    <version>3.2.7</version>
+    <time>1315568101</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81453
+</comment>
+  </revision>
+  <revision rev="39" vrev="15">
+    <srcmd5>96aa06988151706d3ebd7c5a0f5ade12</srcmd5>
+    <version>3.2.7</version>
+    <time>1317542283</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85620</requestid>
+  </revision>
+  <revision rev="40" vrev="17">
+    <srcmd5>96aa06988151706d3ebd7c5a0f5ade12</srcmd5>
+    <version>3.2.7</version>
+    <time>1319181863</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="41" vrev="18">
+    <srcmd5>c864f07fe8d18a4c77ffd8aa1ff607f5</srcmd5>
+    <version>3.2.7</version>
+    <time>1323191278</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="42" vrev="19">
+    <srcmd5>24e5663c9e02eef61750d613ee33f466</srcmd5>
+    <version>3.2.7</version>
+    <time>1329907673</time>
+    <user>saschpe</user>
+    <comment>Fix build after xorg-x11 shuffle.</comment>
+    <requestid>106155</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1a9bea9bdb2a61aedd3379126401fef7</srcmd5>
+    <version>3.3.2</version>
+    <time>1339361988</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0-with-openssl-exception
+Ekiga has an exception for linking against e.g. openssl (forwarded request 123761 from dimstar)</comment>
+    <requestid>123763</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>1a9bea9bdb2a61aedd3379126401fef7</srcmd5>
+    <version>3.3.2</version>
+    <time>1340183301</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>63d2e2090cfcbe76a796093ce4d4f603</srcmd5>
+    <version>3.9.90</version>
+    <time>1349368685</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136648</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>90beb498b5284d29d14fc26fe528ad64</srcmd5>
+    <version>4.0.0</version>
+    <time>1355138355</time>
+    <user>coolo</user>
+    <comment>Push G:F for M2</comment>
+    <requestid>144502</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>90beb498b5284d29d14fc26fe528ad64</srcmd5>
+    <version>4.0.0</version>
+    <time>1359108844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>bef80d18922c96accd012f5fc35d2ad7</srcmd5>
+    <version>4.0.1</version>
+    <time>1364895622</time>
+    <user>coolo</user>
+    <comment>Update to 4.0.1 (we already have libpt and opal)</comment>
+    <requestid>161790</requestid>
+  </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>b47d82afc2631bedb5b1c9e202597b28</srcmd5>
+    <version>4.0.1</version>
+    <time>1372058843</time>
+    <user>coolo</user>
+    <comment>Fix build in Factory - cyrus-sasl-devel is no longer implicit</comment>
+    <requestid>180604</requestid>
+  </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>2b2a3edde9ed5734d3c46b8324f48a2d</srcmd5>
+    <version>4.0.1</version>
+    <time>1372412958</time>
+    <user>coolo</user>
+    <comment>- boost-configure.patch: fix boost configure check (forwarded request 180947 from Andreas_Schwab)</comment>
+    <requestid>181016</requestid>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>2b2a3edde9ed5734d3c46b8324f48a2d</srcmd5>
+    <version>4.0.1</version>
+    <time>1379662285</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>1b330f7d9edbd3ad9c80232a57ae7e7e</srcmd5>
+    <version>4.0.1</version>
+    <time>1402996962</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236438</requestid>
+  </revision>
+  <revision rev="53" vrev="8">
+    <srcmd5>1b330f7d9edbd3ad9c80232a57ae7e7e</srcmd5>
+    <version>4.0.1</version>
+    <time>1409300819</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="54" vrev="9">
+    <srcmd5>12fffdeacaefcd7d14272b093b2bbdd6</srcmd5>
+    <version>4.0.1</version>
+    <time>1446048940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>340413</requestid>
+  </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>f1937ed7df8e811d3a58e411e047743c</srcmd5>
+    <version>4.0.1</version>
+    <time>1470217207</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415742</requestid>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>62a4731e04111e63623f86cb728d2387</srcmd5>
+    <version>4.0.1</version>
+    <time>1486773315</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>455518</requestid>
+  </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>81fae745ca2ce1adca29aebc04087e3f</srcmd5>
+    <version>4.0.1</version>
+    <time>1487597287</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457504</requestid>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>7d9437aa45c6be2ab1d8f4c38483ecad</srcmd5>
+    <version>4.0.1</version>
+    <time>1489019376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460237</requestid>
+  </revision>
+  <revision rev="59" vrev="14">
+    <srcmd5>a1721fd6404f034a4f6643a0b461961c</srcmd5>
+    <version>4.0.1</version>
+    <time>1526030900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605335</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>55d389e293d2ff630f7316b1559f3969</srcmd5>
+    <version>4.1.0</version>
+    <time>1556916366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>696488</requestid>
+  </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>10dc11ec08a4e0aba65b5f24ae53d807</srcmd5>
+    <version>4.1.0</version>
+    <time>1596203805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823643</requestid>
+  </revision>
+</revisionlist>

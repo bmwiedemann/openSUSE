@@ -1,0 +1,322 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9fdd19c892c6d2f71b7a6cefa486d11</srcmd5>
+    <version>4.14.0</version>
+    <time>1501840736</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>508920</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50b25cfd3e053ed859b28d284e1b2296</srcmd5>
+    <version>4.17.1</version>
+    <time>1506679039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>529153</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95043bd6dc1da2babfb3ad13a6e34502</srcmd5>
+    <version>4.18.0</version>
+    <time>1507197488</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d46c42abfe95c7f7d4e761f5a49b33d7</srcmd5>
+    <version>4.19.2</version>
+    <time>1507897090</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533326</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>daf5f47c93525e3422acda218b34c71d</srcmd5>
+    <version>4.19.4</version>
+    <time>1510150199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>536029</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>683c103ad187db0ed68552991c30d5bf</srcmd5>
+    <version>4.19.5</version>
+    <time>1513015036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555843</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5ac3e4f4c167d414c2512f121197f251</srcmd5>
+    <version>4.19.6</version>
+    <time>1520415365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583105</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>619a96a1c9640d90b8c76cb02c29757d</srcmd5>
+    <version>4.19.8</version>
+    <time>1522232812</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591546</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b0e9cdea74d965986309a9e5817777c</srcmd5>
+    <version>4.23.3</version>
+    <time>1526646469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610152</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae927e2b9525ba8b2554d92a87a8d914</srcmd5>
+    <version>4.23.4</version>
+    <time>1531592764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622794</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>20addd226ce0a330052a68dd8e83d30b</srcmd5>
+    <version>4.24.0</version>
+    <time>1533732846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627954</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e474e3e181a8520e2c5d32f0dba1c84a</srcmd5>
+    <version>4.25.0</version>
+    <time>1535367581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631546</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>382b23e2f3169493f487c1e16bb42f13</srcmd5>
+    <version>4.25.0</version>
+    <time>1535538403</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable testsuite</comment>
+    <requestid>631984</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b74077e117eb048b6435435520d74fbe</srcmd5>
+    <version>4.26.0</version>
+    <time>1537263839</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636125</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c9913e5cb99622bb3a6c13ffecba7ce3</srcmd5>
+    <version>4.27.0</version>
+    <time>1540987941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643577</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>68ef89e937f9dd8529513f7d8cec0e2a</srcmd5>
+    <version>4.28.1</version>
+    <time>1546535219</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.28.1:
+  * tqdm.main(): expose argv
+  * cli: add working `--manpath`
+  * fix CLI:--manpath not found issue
+  * update .gitattributes
+  * CLI unit tests
+  * remove deprecated dist options
+  * add missing auto submodule
+  * PyPI fix
+  * remove man page from distribution
+  * cli:add `--man_path` option</comment>
+    <requestid>662206</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>df62ffff7911df897e69bde550eec70f</srcmd5>
+    <version>4.28.1</version>
+    <time>1550048773</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove installed files after running the testsuite
+- Switch to multibuild (with separate test) to avoid large
+  dependencies on the main package.
+</comment>
+    <requestid>673656</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>491fbe27534cb5e0257cf4dc172a387c</srcmd5>
+    <version>4.31.1</version>
+    <time>1551276336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>676949</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>27fca3d8cff650409f7fb864d050b99c</srcmd5>
+    <version>4.32.1</version>
+    <time>1559643154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707289</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0ffe18e01f6769d8f3f2c9350fe4f5d4</srcmd5>
+    <version>4.32.2</version>
+    <time>1561882441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711668</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5cbde43cd33aeab634c0e0b4edfb5094</srcmd5>
+    <version>4.33.0</version>
+    <time>1565694687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>722074</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6f298115c4315d2d65f45193a521bb04</srcmd5>
+    <version>4.35.0</version>
+    <time>1566893476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725979</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c712ac6d96ca64c75b33888f9357d010</srcmd5>
+    <version>4.36.1</version>
+    <time>1569851640</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732611</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1dd9c435356acde27dbfc0840ebf268d</srcmd5>
+    <version>4.38.0</version>
+    <time>1574414530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747340</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3d83b01decc14d00f294bb73e804e212</srcmd5>
+    <version>4.39.0</version>
+    <time>1575728393</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use RPM internal/reserved name %suffix (change to
+  pkg_suffix).
+
+Fix build with RPM 4.15
+See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N/python-tqdm/standard/x86_64 (forwarded request 752569 from dimstar)</comment>
+    <requestid>752762</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1bb5c48de22a2f455d6aeaab6e49a37c</srcmd5>
+    <version>4.40.1</version>
+    <time>1576062664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755168</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0d2632c7470ef72811a16093a5bb10ab</srcmd5>
+    <version>4.40.2</version>
+    <time>1576676652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756727</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2b3197a102bb6e98ce77611917a8b7e5</srcmd5>
+    <version>4.41.0</version>
+    <time>1578162024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760369</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f747b076b6bc7814d0ae5940aee77740</srcmd5>
+    <version>4.41.1</version>
+    <time>1578437464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761183</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>89d9893826358708657423583b4c93d0</srcmd5>
+    <version>4.42.0</version>
+    <time>1580373239</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767565</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e3dd0d88de6a9253d66249c2785c0880</srcmd5>
+    <version>4.42.1</version>
+    <time>1581693915</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>772522</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>44dacd1c3745a815542b829da49347eb</srcmd5>
+    <version>4.43.0</version>
+    <time>1583702480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778508</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>374f42afd48aa927185c6a926c6d81a1</srcmd5>
+    <version>4.45.0</version>
+    <time>1586973849</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.45.0:
+  * propagate and close() on exceptions (#926 &lt;- #548)
+  * fix nested clear()
+  * rework nested close() (#930 &lt;- #924 &lt;- #918, #677)
+  * update all documentation &amp; demos
+  * add and update tests
+  * dev framework: add pre-commit helper
+  * fix _utils ImportError =&gt; DeprecationWarning</comment>
+    <requestid>792334</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>220775396af2f17cb97ea85747fce8ee</srcmd5>
+    <version>4.47.0</version>
+    <time>1594045047</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818498</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1ad8dbc0e077b3a7465e10b98770187d</srcmd5>
+    <version>4.48.0</version>
+    <time>1596277699</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821708</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2716b88a0e0f27c0cc2b47355be60a1e</srcmd5>
+    <version>4.48.2</version>
+    <time>1598351815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826985</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0782c425578b4498dd8dab15207abb60</srcmd5>
+    <version>4.50.2</version>
+    <time>1603961325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843704</requestid>
+  </revision>
+</revisionlist>

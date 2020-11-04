@@ -1,0 +1,5 @@
+<package name="python-quantum-blackbird" project="openSUSE:Factory">
+  <title>python-quantum-blackbird</title>
+  <description>Blackbird is a quantum assembly language for continuous-variable quantum computation, that can be used to program Xanadu's quantum photonics hardware and Strawberry Fields simulator.</description>
+  <devel project="devel:languages:python:numeric" package="python-quantum-blackbird"/>
+</package>

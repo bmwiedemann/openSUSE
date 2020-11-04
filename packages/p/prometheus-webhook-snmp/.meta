@@ -1,0 +1,5 @@
+<package name="prometheus-webhook-snmp" project="openSUSE:Factory">
+  <title>Prometheus Alertmanager receiver for SNMP traps</title>
+  <description>prometheus-webhook-snmp is a Prometheus Alertmanager receiver that translates incoming notifications into SNMP traps.</description>
+  <devel project="server:monitoring" package="prometheus-webhook-snmp"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-automaton" project="openSUSE:Factory">
+  <title>python-automaton</title>
+  <description></description>
+  <devel project="Cloud:OpenStack:Factory" package="python-automaton"/>
+</package>

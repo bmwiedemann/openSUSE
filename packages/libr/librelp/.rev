@@ -1,0 +1,315 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>99a862e4e8e23b4eaf4760680c534d09</srcmd5>
+    <version>1.0.0</version>
+    <time>1271934120</time>
+    <user>autobuild</user>
+    <comment>Copy from home:darix/librelp based on submit request 37906 from user darix
+</comment>
+    <requestid>37906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99a862e4e8e23b4eaf4760680c534d09</srcmd5>
+    <version>1.0.0</version>
+    <time>1278667362</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>99a862e4e8e23b4eaf4760680c534d09</srcmd5>
+    <version>1.0.0</version>
+    <time>1278678592</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>99a862e4e8e23b4eaf4760680c534d09</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>99a862e4e8e23b4eaf4760680c534d09</srcmd5>
+    <version>1.0.0</version>
+    <time>1319182128</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>69855c93af9771d1a7a9f58626eeecdc</srcmd5>
+    <version>1.0.0</version>
+    <time>1329391411</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104391 from coolo)</comment>
+    <requestid>104910</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>c6ec430b6509856f01d6470091be9de4</srcmd5>
+    <version>1.0.0</version>
+    <time>1337096480</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+
+No indication of GPL-3.0 ^only^ files in package. Fedora also using GPL-3.0+ (forwarded request 120954 from babelworx)</comment>
+    <requestid>120957</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>c6ec430b6509856f01d6470091be9de4</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183629</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bca2ea8cbcbf07adcd8f69f8ca489ba3</srcmd5>
+    <version>1.0.1</version>
+    <time>1348562462</time>
+    <user>coolo</user>
+    <comment>1.0.1 (forwarded request 135731 from AndreasStieger)</comment>
+    <requestid>135736</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>bca2ea8cbcbf07adcd8f69f8ca489ba3</srcmd5>
+    <version>1.0.1</version>
+    <time>1359109339</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8303e250cf537aa1e4d382f77fcd1059</srcmd5>
+    <version>1.0.3</version>
+    <time>1366811834</time>
+    <user>coolo</user>
+    <comment>update to 1.0.3 (forwarded request 173094 from AndreasStieger)</comment>
+    <requestid>173097</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>822dfa8e3b6d3de49b1a47f602721ab0</srcmd5>
+    <version>1.1.3</version>
+    <time>1372743501</time>
+    <user>coolo</user>
+    <comment>update to 1.1.3 (forwarded request 181477 from AndreasStieger)</comment>
+    <requestid>181594</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>df3d95a933cfc1a453356e3be01775db</srcmd5>
+    <version>1.1.5</version>
+    <time>1373654876</time>
+    <user>coolo</user>
+    <comment>update to 1.1.5 (forwarded request 182878 from AndreasStieger)</comment>
+    <requestid>182892</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>139825311c368895aca7989eb265425e</srcmd5>
+    <version>1.2.0</version>
+    <time>1373985769</time>
+    <user>coolo</user>
+    <comment>1.2.0 (forwarded request 183207 from AndreasStieger)</comment>
+    <requestid>183208</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>139825311c368895aca7989eb265425e</srcmd5>
+    <version>1.2.0</version>
+    <time>1379663068</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>013890d641dec6b2cc210a37bac766b1</srcmd5>
+    <version>1.2.2</version>
+    <time>1389799521</time>
+    <user>coolo</user>
+    <comment>librelp 1.2.2 (forwarded request 213920 from AndreasStieger)</comment>
+    <requestid>213921</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>72c93a1a6711415751a67ed7e9165faf</srcmd5>
+    <version>1.2.4</version>
+    <time>1395148505</time>
+    <user>coolo</user>
+    <comment>librelp 1.2.4</comment>
+    <requestid>226422</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b935b6a2d4f0b25afa0510aafc168bdb</srcmd5>
+    <version>1.2.5</version>
+    <time>1395475715</time>
+    <user>coolo</user>
+    <comment>librelp 1.2.5 (forwarded request 226891 from AndreasStieger)</comment>
+    <requestid>226896</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>469ded1af898ed747a513f876029c097</srcmd5>
+    <version>1.2.7</version>
+    <time>1398863201</time>
+    <user>coolo</user>
+    <comment>update to 1.2.7 (forwarded request 232076 from AndreasStieger)</comment>
+    <requestid>232078</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>469ded1af898ed747a513f876029c097</srcmd5>
+    <version>1.2.7</version>
+    <time>1409301696</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2071e88d130df0373942ecc0ecdce56c</srcmd5>
+    <version>1.2.8</version>
+    <time>1441822869</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329784</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3de1861d1b61d5b3daf4d6019e4aea9e</srcmd5>
+    <version>1.2.9</version>
+    <time>1451895717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>351647</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>21e59b378394e6b1874bce9665a1acb7</srcmd5>
+    <version>1.2.9</version>
+    <time>1454352972</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356709</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>315e7bb69b4cdec6961e75769c8f74cf</srcmd5>
+    <version>1.2.9</version>
+    <time>1455701189</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>359560</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5e9221b0b684dfff086ea35e49701d78</srcmd5>
+    <version>1.2.10</version>
+    <time>1460028734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384036</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ae2334cb853a4b7c648ef0812c2e01d2</srcmd5>
+    <version>1.2.11</version>
+    <time>1467359983</time>
+    <user>dimstar_suse</user>
+    <comment>librelp 1.2.11 (forwarded request 405274 from AndreasStieger)</comment>
+    <requestid>405275</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>014f51e3cefe339ad98b3a8b68bef9ed</srcmd5>
+    <version>1.2.12</version>
+    <time>1468360382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407656</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2ab37581150ece5f02e9084791cd9ea9</srcmd5>
+    <version>1.2.12</version>
+    <time>1486217847</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453474</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3fc549d34c8378a05254dc2e5bdc82f9</srcmd5>
+    <version>1.2.13</version>
+    <time>1488124920</time>
+    <user>dimstar_suse</user>
+    <comment>librelp 1.2.13</comment>
+    <requestid>460036</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>addc86b462ce3f2b114dd67863d0151f</srcmd5>
+    <version>1.2.14</version>
+    <time>1496821830</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499444</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4baeaac77ff10bf0c51953bf7269be51</srcmd5>
+    <version>1.2.15</version>
+    <time>1522403751</time>
+    <user>dimstar_suse</user>
+    <comment>librelp 1.2.15 CVE-2018-1000140 bsc#1086730 (forwarded request 590807 from AndreasStieger)</comment>
+    <requestid>590808</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bf48fc641bf2e3d53529aeed65deaf60</srcmd5>
+    <version>1.2.16</version>
+    <time>1527932961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607615</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bab382adfc6858ecc0f31637c3d79c6d</srcmd5>
+    <version>1.2.17</version>
+    <time>1536148082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632888</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>39bcad46aaaff21aa1ef00fdd04dbaa6</srcmd5>
+    <version>1.2.18</version>
+    <time>1539250756</time>
+    <user>dimstar_suse</user>
+    <comment>librelp 1.2.18</comment>
+    <requestid>639653</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f533d204041ecc6d04c082479dd92f18</srcmd5>
+    <version>1.3.0</version>
+    <time>1546946107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662382</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>94d9ce4eac50f2843f7e43ed29934f3a</srcmd5>
+    <version>1.4.0</version>
+    <time>1552571547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683742</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>40111dc01a159439f1372c2cca4c43c5</srcmd5>
+    <version>1.5.0</version>
+    <time>1583226884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780644</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a6c2967ee2f6f97956d79004e6a5add4</srcmd5>
+    <version>1.6.0</version>
+    <time>1592938792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816326</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1e578bec8c08159f9f2dcf94337a5d3e</srcmd5>
+    <version>1.7.0</version>
+    <time>1600956729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835746</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d93fe645ee03047668fd2b8cb05c5796</srcmd5>
+    <version>1.8.0</version>
+    <time>1604306206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844377</requestid>
+  </revision>
+</revisionlist>

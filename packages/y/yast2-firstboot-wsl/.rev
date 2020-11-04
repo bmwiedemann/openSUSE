@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16084862deb99e7687403ff67a009123</srcmd5>
+    <version>1</version>
+    <time>1579032500</time>
+    <user>dimstar_suse</user>
+    <comment>new package for WSL</comment>
+    <requestid>764200</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d55974a9b6551e5c8a7c428398034104</srcmd5>
+    <version>1</version>
+    <time>1580397589</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh patch after yast2-firstboot changes</comment>
+    <requestid>768561</requestid>
+  </revision>
+</revisionlist>

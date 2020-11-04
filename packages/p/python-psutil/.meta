@@ -1,0 +1,5 @@
+<package name="python-psutil" project="openSUSE:Factory">
+  <title></title>
+  <description>A graphical interface that lets you easily analyze and introspect unaltered running Python processes.</description>
+  <devel project="devel:languages:python" package="python-psutil"/>
+</package>

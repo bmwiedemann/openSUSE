@@ -1,0 +1,7 @@
+<package name="rshim" project="openSUSE:Factory">
+  <title>User-space driver for Mellanox BlueField SoC</title>
+  <description>This is the user-space driver to access the BlueField SoC via the rshim
+interface. It provides ways to push boot stream, debug the target or login
+via the virtual console or network interface.</description>
+  <devel project="hardware" package="rshim"/>
+</package>

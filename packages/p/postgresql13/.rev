@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>484260073ec3d7fe5bfb59ed17a0a04e</srcmd5>
+    <version>13.0</version>
+    <time>1603545370</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging of PostgreSQL 13</comment>
+    <requestid>843221</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bff602c902efe2bb6b124b06cbf5a3c7</srcmd5>
+    <version>13.0</version>
+    <time>1604415581</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
+    <requestid>845768</requestid>
+  </revision>
+</revisionlist>

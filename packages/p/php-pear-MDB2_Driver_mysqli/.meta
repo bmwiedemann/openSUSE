@@ -1,0 +1,8 @@
+<package name="php-pear-MDB2_Driver_mysqli" project="openSUSE:Factory">
+  <title>MySQLi MDB2 driver</title>
+  <description>This is the MySQLi MDB2 driver.
+
+</description>
+  <devel project="server:php:applications" package="php-pear-MDB2_Driver_mysqli"/>
+  <url>http://pear.php.net/package/MDB2/download/</url>
+</package>

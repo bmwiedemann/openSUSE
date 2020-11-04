@@ -1,0 +1,5 @@
+<package name="container-support-utils" project="openSUSE:Factory">
+  <title>Utilities for diagnosing issues inside containers</title>
+  <description>This utility allows you to run a shell, and use diagnostic utilities, inside an already running container. The main purpose of this is problem diagnosis.</description>
+  <devel project="devel:kubic" package="container-support-utils"/>
+</package>

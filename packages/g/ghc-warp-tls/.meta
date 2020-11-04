@@ -1,0 +1,5 @@
+<package name="ghc-warp-tls" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-warp-tls"/>
+</package>

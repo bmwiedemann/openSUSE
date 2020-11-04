@@ -1,0 +1,669 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b5a095d388b6bdff77f9929668dae806</srcmd5>
+    <version>0.7.23</version>
+    <time>1168854799</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="10">
+    <srcmd5>4e80bb57b6670808d050f45ab491b4e3</srcmd5>
+    <version>0.7.23</version>
+    <time>1175214771</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="11">
+    <srcmd5>2d46034e514b77dc862783c2ab07643c</srcmd5>
+    <version>0.7.23</version>
+    <time>1175264943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="13">
+    <srcmd5>92bd8dbd4d80ca7b66f1a7da62154a04</srcmd5>
+    <version>0.7.23</version>
+    <time>1175717620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8e6e6c041de06590fc76337a81259c5</srcmd5>
+    <version>8.0.6</version>
+    <time>1190041820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc4af6b28b0d584206955b2524014cc0</srcmd5>
+    <version>8.0.6</version>
+    <time>1190110096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="24">
+    <srcmd5>c67083266877e6b55eb918ab2f79eb52</srcmd5>
+    <version>8.0.6</version>
+    <time>1196895817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b9e103b153de6916cb9291ff17b1f353</srcmd5>
+    <version>8.2.5</version>
+    <time>1208266465</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="16">
+    <srcmd5>4a6e53d45b723216610c72e24bd6d56c</srcmd5>
+    <version>8.2.5</version>
+    <time>1212523493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="17">
+    <srcmd5>200f32e5f50762fabdacadd66ba0822c</srcmd5>
+    <version>8.2.5</version>
+    <time>1212577629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>efdec64f482e348171063e4e69eeebfd</srcmd5>
+    <version>8.2.6</version>
+    <time>1216150147</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>73198a3e18047cc6f5d90154331165cb</srcmd5>
+    <version>8.2.6</version>
+    <time>1219076928</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c1d3b00d2adb4e7134a9f28a9696b2bf</srcmd5>
+    <version>8.2.6</version>
+    <time>1220567751</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>803c7deccc1bf75ba8c067f77e6593cc</srcmd5>
+    <version>8.2.6</version>
+    <time>1225122290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3ca5f5fef728f736dd41f9ed8daa4210</srcmd5>
+    <version>8.2.7</version>
+    <time>1227276951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f277f68d7080fc4c126aeff6bd40aa2a</srcmd5>
+    <version>8.2.7</version>
+    <time>1229340439</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>dedcc4749aa208102fd3ad3b80542dcd</srcmd5>
+    <version>8.2.7</version>
+    <time>1231868614</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95e62ced0aa00e207a19dc3bec22dbad</srcmd5>
+    <version>8.3.1</version>
+    <time>1240185005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8bec0d3a3be0b8a1c3129edf67b429cc</srcmd5>
+    <version>8.3.2</version>
+    <time>1247788483</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d2bf3b4e31a7be26466eca000f8b80cf</srcmd5>
+    <version>8.3.2</version>
+    <time>1248732422</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>037d47d7df603559a4676605ad222740</srcmd5>
+    <version>8.3.4</version>
+    <time>1255018291</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/drbd based on submit request 22102 from user coolo
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>037d47d7df603559a4676605ad222740</srcmd5>
+    <version>8.3.4</version>
+    <time>1255018291</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/drbd based on submit request 22102 from user coolo
+</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>5bc6f27f0dba6cadb48597b1fc3629b8</srcmd5>
+    <version>8.3.4</version>
+    <time>1263307772</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/drbd based on submit request 28925 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>ccdcc69451f76d011b072fdc8748585b</srcmd5>
+    <version>8.3.4</version>
+    <time>1268923400</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>aff8d0ef851861bbb1b5feffbe7e5999</srcmd5>
+    <version>8.3.7</version>
+    <time>1271369237</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/drbd based on submit request 37680 from user dirkmueller
+</comment>
+    <requestid>37680</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d1ba44bd8b890af0c5d09d191947f1cb</srcmd5>
+    <version>8.3.7</version>
+    <time>1277720230</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/drbd based on submit request 42070 from user prusnak
+</comment>
+    <requestid>42070</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>d1ba44bd8b890af0c5d09d191947f1cb</srcmd5>
+    <version>8.3.7</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>d1ba44bd8b890af0c5d09d191947f1cb</srcmd5>
+    <version>8.3.7</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>2fb92c99ed0bda6bea4b20cea52050ee</srcmd5>
+    <version>8.3.8.1</version>
+    <time>1287757739</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51252 from user elvigia
+</comment>
+    <requestid>51252</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f61dddbb0c71535659d3014f1badf1a1</srcmd5>
+    <version>8.3.8.1</version>
+    <time>1287757745</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51252
+</comment>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>f61dddbb0c71535659d3014f1badf1a1</srcmd5>
+    <version>8.3.8.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>30f123b6dc2faacefb2fe4a900208ed9</srcmd5>
+    <version>8.3.10</version>
+    <time>1299757695</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63750 from user coolo
+</comment>
+    <requestid>63750</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>0afc46c12330571cb7d9e053e93f7e2e</srcmd5>
+    <version>8.3.10</version>
+    <time>1299757702</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63750
+</comment>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>efcd2d27fcd2d1006c594317f3bd62a4</srcmd5>
+    <version>8.3.10</version>
+    <time>1316515947</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines) (forwarded request 83298 from jengelh)</comment>
+    <requestid>83741</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>efcd2d27fcd2d1006c594317f3bd62a4</srcmd5>
+    <version>8.3.10</version>
+    <time>1319181856</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>92034c0f667b1e2a483d90692ab16df8</srcmd5>
+    <version>8.3.10</version>
+    <time>1323191226</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>71fb635315e90a21fd1e7603999d248b</srcmd5>
+    <version>8.3.11</version>
+    <time>1324457994</time>
+    <user>coolo</user>
+    <comment>- update to 8.3.11 (bnc#734432) (forwarded request 96823 from tserong)</comment>
+    <requestid>96973</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>71fb635315e90a21fd1e7603999d248b</srcmd5>
+    <version>8.3.11</version>
+    <time>1340183291</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>f2c7e0dd9085789de7a1694ecbee92d5</srcmd5>
+    <version>8.3.11</version>
+    <time>1341920461</time>
+    <user>coolo</user>
+    <comment> (forwarded request 127448 from tserong)</comment>
+    <requestid>127449</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>f2c7e0dd9085789de7a1694ecbee92d5</srcmd5>
+    <version>8.3.11</version>
+    <time>1359108827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>102a6978f30d17660736cc297429ed34</srcmd5>
+    <version>8.3.11</version>
+    <time>1368457434</time>
+    <user>coolo</user>
+    <comment>Fix for https://build.opensuse.org/request/show/174892 
+
+- Make /etc/xen mode 0700 to protect vnc passwords. (forwarded request 175231 from olh)</comment>
+    <requestid>175254</requestid>
+  </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>102a6978f30d17660736cc297429ed34</srcmd5>
+    <version>8.3.11</version>
+    <time>1379662254</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="43" vrev="11">
+    <srcmd5>102a6978f30d17660736cc297429ed34</srcmd5>
+    <version>8.3.11</version>
+    <time>1409300789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>532540da68739e153329ad1f3dcfb176</srcmd5>
+    <version>8.4.6</version>
+    <time>1437803070</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318290</requestid>
+  </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>e8d0f5130791c98cebb45d71fcfd7802</srcmd5>
+    <version>8.4.6</version>
+    <time>1438421874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319182</requestid>
+  </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>1c1b99a6cdcd8f83ab226503970ae068</srcmd5>
+    <version>8.4.6</version>
+    <time>1440135678</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>324253</requestid>
+  </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>665ccce55eda961ac8a82fa150ae129e</srcmd5>
+    <version>8.4.6</version>
+    <time>1443585168</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>334152</requestid>
+  </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>dd6446e06b3e9c78d54e9f3e42ca4180</srcmd5>
+    <version>8.4.6</version>
+    <time>1445287912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339249</requestid>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>ae9fefe61afb8e8456d1c29a1f2de843</srcmd5>
+    <version>8.4.6</version>
+    <time>1446208983</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340343</requestid>
+  </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>eed97c584a228869a15e166dbe1352a6</srcmd5>
+    <version>8.4.6</version>
+    <time>1448553688</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>345344</requestid>
+  </revision>
+  <revision rev="51" vrev="8">
+    <srcmd5>b3d55fed659953381d28300eda877d36</srcmd5>
+    <version>8.4.6</version>
+    <time>1458120930</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369891</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>3b2542ef4953f94367ccc5bcba7d7c89</srcmd5>
+    <version>9.0.1+git.86e4439</version>
+    <time>1461335075</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389508</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>9f2e10bb7ef24e53728c5a1525b0ed4d</srcmd5>
+    <version>9.0.2+git.14d2eea</version>
+    <time>1465938532</time>
+    <user>dimstar_suse</user>
+    <comment>Failed to build drbd 9.0.1 against kernel 4.6/4.7-rc2, bsc#983633.</comment>
+    <requestid>401796</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>341bca43dd023a3a7016cd6288340de1</srcmd5>
+    <version>9.0.5+git.8d53d3e</version>
+    <time>1477481387</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>437368</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>1c4359d92ed4d8acd8cadb8eb7f948f2</srcmd5>
+    <version>9.0.5+git.8d53d3e</version>
+    <time>1481153466</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444094</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>d8da31620c93762de42bcd3f6cf60c52</srcmd5>
+    <version>9.0.7rc1+git.093821cd</version>
+    <time>1492011222</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483268</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2d6999cd43b8896f98712c3f9e7cadc8</srcmd5>
+    <version>9.0.7rc2+git.0677d8b1</version>
+    <time>1493363648</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491392</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>076aca2a13b879abac54ff167365e93f</srcmd5>
+    <version>9.0.7rc2+git.36abd387</version>
+    <time>1496089162</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498239</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>0040da0c171fd548e3b5898e5c85b2b3</srcmd5>
+    <version>9.0.8+git.c8bc3670</version>
+    <time>1498202297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505630</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>9967c19eaeb6978466118d3827ae7950</srcmd5>
+    <version>9.0.8+git.c8bc3670</version>
+    <time>1500670183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511431</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>30e595020b8d7d3b54eccab20f652692</srcmd5>
+    <version>9.0.9+git.bffac0d9</version>
+    <time>1507391444</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532109</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>11a6471e18c674bca64e1f19a9255fe8</srcmd5>
+    <version>9.0.9+git.bffac0d9</version>
+    <time>1507897107</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533374</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>18b5f0980e4bc61539877f789e95a4cd</srcmd5>
+    <version>9.0.9+git.a4cc249e</version>
+    <time>1510912654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542525</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>1397c2a6bfd4e48c823c609926188077</srcmd5>
+    <version>9.0.10+git.b7994aa1</version>
+    <time>1514907304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561048</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>402da13657f5e18d61209eb72430f8f7</srcmd5>
+    <version>9.0.12+git.7eb4aef</version>
+    <time>1516880489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569415</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>31c8a8078ec5bb2b9778627451acac54</srcmd5>
+    <version>9.0.12+git.969e477d</version>
+    <time>1518426940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575375</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>f6d6f1b0d75cedec34b92f204ae24276</srcmd5>
+    <version>9.0.13+git.b83ade31</version>
+    <time>1524144770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598069</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>d9a91bf55304e1f70caafa104ded96ed</srcmd5>
+    <version>9.0.14+git.62f906cf</version>
+    <time>1525343684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603419</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>a472932950f3932917a61ba8d2e06431</srcmd5>
+    <version>9.0.15+git.c46d2790</version>
+    <time>1534543337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629363</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d889119dd761ea5d2c60cefa6664c514</srcmd5>
+    <version>9.0.16+git.ab9777df</version>
+    <time>1540819290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644759</requestid>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>c5f397f51af4dd18cff2288e6c058f37</srcmd5>
+    <version>9.0.16+git.ab9777df</version>
+    <time>1542124750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>648426</requestid>
+  </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>7524b674001cbb19dcdb669bf0c6beaf</srcmd5>
+    <version>9.0.16+git.ab9777df</version>
+    <time>1542889519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650583</requestid>
+  </revision>
+  <revision rev="73" vrev="4">
+    <srcmd5>a7363322420facf1d35e14c58b19f915</srcmd5>
+    <version>9.0.16+git.ab9777df</version>
+    <time>1544539676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656770</requestid>
+  </revision>
+  <revision rev="74" vrev="5">
+    <srcmd5>013261fa513c4a95d1c9d1b40a05bf77</srcmd5>
+    <version>9.0.16+git.ab9777df</version>
+    <time>1552464996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684507</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>8fefb596cac1565e2b795196c0d40ab5</srcmd5>
+    <version>9.0.17+git.b9abab2d</version>
+    <time>1554372535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691396</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>708344b03739951ecf3514bca950b743</srcmd5>
+    <version>9.0.18+git.08cff482</version>
+    <time>1559580669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706974</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>5977eb8d6b216a8e0d044ea31d8f459d</srcmd5>
+    <version>9.0.19+git.6f5fa5d3</version>
+    <time>1563701638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716725</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>a4dc188e518bf430424d63ca7c3cc3fe</srcmd5>
+    <version>9.0.19~1+git.8e93a5d9</version>
+    <time>1568025514</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1149945, use drbd-9.0 for kernel 5.2+ support.</comment>
+    <requestid>729354</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>46d48a3010c96d7443ba31ee9b88e0d7</srcmd5>
+    <version>9.0.19~1+git.8e93a5d9</version>
+    <time>1568190838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729692</requestid>
+  </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>2fa52086215f3a056af93e30fa9c187a</srcmd5>
+    <version>9.0.19~1+git.8e93a5d9</version>
+    <time>1569235592</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732597</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d5c3ba58c7e498d4ba13a5d49626c51a</srcmd5>
+    <version>9.0.20~1+git.7dce3c8b</version>
+    <time>1570800010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737345</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>8755cf223e2b7a26951b61ce71f1c83c</srcmd5>
+    <version>9.0.20~1+git.7dce3c8b</version>
+    <time>1576506031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757253</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>97f8f5f4f1590b0798cbfce3a4e17947</srcmd5>
+    <version>9.0.20~1+git.7dce3c8b</version>
+    <time>1577450959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759283</requestid>
+  </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>9e7c60e951f81eef8f5ea9ca5c5da306</srcmd5>
+    <version>9.0.20~1+git.7dce3c8b</version>
+    <time>1578606662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762058</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>b24e05a5ec8f6373bbbdbc1a9fb7d3a3</srcmd5>
+    <version>9.0.22~1+git.fe2b5983</version>
+    <time>1584447078</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785806</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>90939e8985c0030c0a9d5577ec99a3d3</srcmd5>
+    <version>9.0.23~1+git.d16bfab7</version>
+    <time>1591862697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813082</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>73d8dcc6b049bb847de3a53489f5250a</srcmd5>
+    <version>9.0.25~0+git.bd41626d</version>
+    <time>1600702025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835378</requestid>
+  </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>9657cb40a91c0289bced02a1e2e01ac5</srcmd5>
+    <version>9.0.25~0+git.bd41626d</version>
+    <time>1603203321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842703</requestid>
+  </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>e204542b070b369f9c405a0659d485e7</srcmd5>
+    <version>9.0.25~0+git.bd41626d</version>
+    <time>1604510850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845860</requestid>
+  </revision>
+</revisionlist>

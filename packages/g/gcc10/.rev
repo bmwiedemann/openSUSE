@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>342493b7abbb682359e326304225dbb9</srcmd5>
+    <version>10.0.1+git174776</version>
+    <time>1583311907</time>
+    <user>dimstar_suse</user>
+    <comment>conflicts fix</comment>
+    <requestid>779119</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa3d4ac74169d502af5f8ea8f9fd5a5a</srcmd5>
+    <version>10.0.1+git175037</version>
+    <time>1584530635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to master head (778a77357cad11e8dd4c810544330af0fbe843b1).
+  * Includes fix for binutils version parsing [gcc#93965]</comment>
+    <requestid>781409</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75b1e3892f52c4606353a1007a0d350f</srcmd5>
+    <version>10.1.1+git40</version>
+    <time>1589315128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (dd38686d9c810cecbaa80bb82e), git40.
+  * Includes GCC 10.1 release.
+
+- Update to gcc-10 branch head (2aaa1dc3c87372fd55c1c33aa7a), git5.
+  * Includes first release candidate for GCC 10.1.
+  * Includes gcc10-pr94734.patch
+
+- Update to master head (3685c5adf5c0b30268cb8f95c89e4), git176017.
+- Add gcc10-pr94734.patch
+
+- Update to master head (b835645c7a51b7e99092abe61d677), git175845.
+- Drop to 4 jobs as constraint for s390x.
+
+- Update to master head (effcb4181e143bc390286a489ff84), git175831.
+- Package arm_cde.h and arm_mve_types.h for arm.
+- Alter _constraints to also constrain jobs.
+- Add libzstd-devel BuildRequires to cross compiler specs.
+- Switch to release checking builds.
+
+- Update to master head (2dc9294c3c7c81a6d5e1d4dedf58f), git175805.
+
+- Update to master head (13e41d8b9d3d7598c72c38acc86a3), git175688.
+
+- Update to master head (c72a1b6f8b26de37d1a922a8af143), git175641.
+
+- Update to master head (038769535a8cbdd3dd3e100bde314), git175499.
+
+- Update to master head (75c24a08d697d6442fe6c26142f05), git175422.
+
+- Update to master head (7d4549b2cd209eb621453ce13be7f), git175366.</comment>
+    <requestid>801340</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8cb346128a503111541f1a82fe2d5fd</srcmd5>
+    <version>10.1.1+git290</version>
+    <time>1593378198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (c91e43e9363bd119a695d6450), git290. 
+  * Includes fix for PR95719, fixing LibreOffice.
+
+- Enable c++ for arm-none-eabi
+
+- Update to gcc-10 branch head (b0461f44076c26ced5526e4fd6), git68.
+- Add gcc10-foffload-default.patch to make offloading ignore
+  offload targets that have not been installed both at compile
+  and runtime (for the libgomp plugin part).
+
+- Update to gcc-10 branch head (c91e43e9363bd119a695d6450), git290. 
+  * Includes fix for PR95719, fixing LibreOffice.
+
+- Enable c++ for arm-none-eabi
+
+- Update to gcc-10 branch head (b0461f44076c26ced5526e4fd6), git68.
+- Add gcc10-foffload-default.patch to make offloading ignore
+  offload targets that have not been installed both at compile
+  and runtime (for the libgomp plugin part).
+
+- Update to gcc-10 branch head (c91e43e9363bd119a695d6450), git290. 
+  * Includes fix for PR95719, fixing LibreOffice.
+
+- Enable c++ for arm-none-eabi
+
+- Update to gcc-10 branch head (b0461f44076c26ced5526e4fd6), git68.
+- Add gcc10-foffload-default.patch to make offloading ignore
+  offload targets that have not been installed both at compile
+  and runtime (for the libgomp plugin part).</comment>
+    <requestid>816982</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c59663be6463ece05dbb793b1e5786e8</srcmd5>
+    <version>10.2.1+git465</version>
+    <time>1596364061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (c0438ced53bcf57e4ebb1c38c), git465.
+  * Includes GCC 10.2 release.  [bsc#1173972] [jsc#ECO-2373]
+  * Picks up fixes for C++20 coroutines support.  [jsc#SLE-12297]
+  * Picks up fix for a recent chromium build fail.
+- Build x86 CET enabled runtime for Factory.
+- Disable GCN offloading for SLE12 and SLE15 GA.
+
+- Update to gcc-10 branch head (12e1a54b06777db74ce375496), git355.
+  * Includes fix for non-reproducible builds with LTO [bsc#1172846].
+
+- Enable nvptx support for aarch64</comment>
+    <requestid>823312</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3b825f652feeec27b218a842ee471455</srcmd5>
+    <version>10.2.1+git501</version>
+    <time>1596885498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (dda1e9d08434def88ed86557d0), git501.
+  * Includes fix for AARCH64 kernel build failure.  [bsc#1174817]
+  * Includes aarch64 SLS mitigation changes.  [bsc#1172798, CVE-2020-13844]
+- Add gcc10-streamer-backports1.patch and gcc10-streamer-backports2.patch.
+- Enable x86 CET runtime for SLES15 and Leap15 also.
+- Do not enable the now deprecated HSA offloading capability.</comment>
+    <requestid>824504</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5df6b7452b6f47f43e0be8cb56be095a</srcmd5>
+    <version>10.2.1+git583</version>
+    <time>1598642225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (c0746a1beb1ba073c7981eb09f), git583.
+  * Fixes ABI breakage for as-base CDTORs of final classes.  [gcc#95428]
+
+- Update to gcc-10 branch head (d523b5201cce1796717a8ca669), git580.
+  * Includes gcc10-streamer-backports1.patch and
+    gcc10-streamer-backports2.patch.
+  * Includes fixes for LTO ICE [bsc#1175168] and aarc64 128bit
+    CAS miscompilation [bsc#1174753].</comment>
+    <requestid>829092</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>702bcd0a7ba89a91288681c5efefa438</srcmd5>
+    <version>10.2.1+git872</version>
+    <time>1604412918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (a78cd759754c92cecbf235ac9b), git872.
+
+- Build complete set of multilibs for arm-none target [bsc#1106014]
+  * Fixes inadvertant mixture of ARM and Thumb instructions in linker output</comment>
+    <requestid>844614</requestid>
+  </revision>
+</revisionlist>

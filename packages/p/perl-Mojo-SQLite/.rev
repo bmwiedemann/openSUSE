@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cb85afa9cbd53c34aa493755e72a90b4</srcmd5>
+    <version>1.000</version>
+    <time>1485597984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>439176</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77f12716f337f8933418afb5a9a647e2</srcmd5>
+    <version>1.004</version>
+    <time>1485863230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453407</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>979beeacba1c66ff7ad847b723569a28</srcmd5>
+    <version>2.000</version>
+    <time>1487029710</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456552</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7735fdb39b40e05be3e71581a316208d</srcmd5>
+    <version>2.001</version>
+    <time>1487681501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459308</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b487ffd6bdc5aa343286f52dec9a7aaa</srcmd5>
+    <version>2.002</version>
+    <time>1496822157</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501422</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>18f72cc531116debe9d5e654e89193ee</srcmd5>
+    <version>3.000</version>
+    <time>1500670239</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511755</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f2af13ac42006fa04e56459623efb3f</srcmd5>
+    <version>3.001</version>
+    <time>1533045410</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624677</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>078d1c78edb5e23ca2b7910905bfd271</srcmd5>
+    <version>3.002</version>
+    <time>1561405961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711564</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87e94f027dcbe7844b6730c639d3f194</srcmd5>
+    <version>3.003</version>
+    <time>1570557575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736049</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1cafc7de9c09a97a6378660ea8e82889</srcmd5>
+    <version>3.004</version>
+    <time>1595950170</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823161</requestid>
+  </revision>
+</revisionlist>

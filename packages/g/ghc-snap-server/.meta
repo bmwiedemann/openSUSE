@@ -1,0 +1,5 @@
+<package name="ghc-snap-server" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-snap-server"/>
+</package>

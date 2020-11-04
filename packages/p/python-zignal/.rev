@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cf636176efdab06ea1fcbfa96580a33</srcmd5>
+    <version>0.5.0</version>
+    <time>1575630585</time>
+    <user>dimstar_suse</user>
+    <comment>Audio signal processing library</comment>
+    <requestid>754511</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>44dbbd259015e07c79cf2d0ed8e20150</srcmd5>
+    <version>0.6.0</version>
+    <time>1584350374</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip one test failing on python 3.8
+
+- Version update to 0.6:
+  * Fix various syntax warning issues</comment>
+    <requestid>785235</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4e020fc7943bc658ee73caddd95e113a</srcmd5>
+    <version>0.6.0</version>
+    <time>1589660846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805894</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>809945272ac66dca847b9a88a3da3871</srcmd5>
+    <version>0.6.0</version>
+    <time>1593904691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818497</requestid>
+  </revision>
+</revisionlist>

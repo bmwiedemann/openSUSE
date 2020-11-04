@@ -1,0 +1,9 @@
+<package name="python-napalm-arubaos-switch" project="openSUSE:Factory">
+  <title>NAPALM - ArubaOS network driver</title>
+  <description>ArubaOS driver support for NAPLAM network automation.
+This Drivers uses the REST interface.
+
+</description>
+  <devel project="devel:languages:python" package="python-napalm-arubaos-switch"/>
+  <url>https://github.com/napalm-automation-community/napalm-arubaos-switch/</url>
+</package>

@@ -1,0 +1,153 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff3a9f6b82ff9da99b64242d90879f36</srcmd5>
+    <version>4.1.1</version>
+    <time>1585842169</time>
+    <user>dimstar_suse</user>
+    <comment>As discussed in [1] and announced in [2],
+rename the package from spyder3 to spyder.
+
+[1] https://build.opensuse.org/request/show/787012
+[2] https://lists.opensuse.org/opensuse-factory/2020-03/msg00322.html
+</comment>
+    <requestid>790068</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6fd769bbe3b87b351f298c93aa2f32e4</srcmd5>
+    <version>4.1.2</version>
+    <time>1586775180</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 4.1.2
+- New features
+  Add a new entry to the status bar to show the current 
+  state of Python language server. This will allow users to 
+  know if completions, linting and folding are working as 
+  expected or have issues. Clicking on this entry will also 
+  show a menu from which is possible to restart the server 
+  manually.
+- Important fixes
+  * Completely disable warning informing to restart Spyder 
+    when a screeresolution is detected on macOS.
+  * Show an error message when it's not possible to create a 
+    special console for Sympy, Cython or Pylab.
+  * Restore code folding for all files with less than 2000 lines.
+  * Fix showing help for dot object (e.g. `np.sin`) in the 
+    IPython console.
+  * Fix showing kernel initialization error messages on Windows.
+- for a full list of issues closed and PRs merge see CHANGELOG.md
+- remove patch merged upstream
+  spyder-pr11899-fixdeprecation.patch
+</comment>
+    <requestid>793230</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>de9fff461d6ac09535413dd5d543a501</srcmd5>
+    <version>4.1.2</version>
+    <time>1587467588</time>
+    <user>dimstar_suse</user>
+    <comment>- More work on running the unit tests. Do not run the slow tests for
+  now. (They were not run in the previous setup either)
+</comment>
+    <requestid>795918</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>8c7e5c38d42b0658b4312a0b809fabe1</srcmd5>
+    <version>4.1.2</version>
+    <time>1588450719</time>
+    <user>dimstar_suse</user>
+    <comment>- Close leaks in tests for mainwindow and ipythonconsole
+  gh#spyder-ide/spyder#12534
+  spyder-pr12534-closeleaks.patch
+- Now also run the slow tests except for a few.
+- python-opengl is not a requirement
+</comment>
+    <requestid>799656</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee33bf41fd9d6461cf951dda13df0053</srcmd5>
+    <version>4.1.3</version>
+    <time>1589579546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805808</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc22bf6b9a6a32941e745a2c0239c79a</srcmd5>
+    <version>4.1.3</version>
+    <time>1589660875</time>
+    <user>dimstar_suse</user>
+    <comment>Because it currently fails in Factory (it did not in staging)
+- increase memory requirement for builds (the tests consume a lot) 
+</comment>
+    <requestid>806019</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>1e55dcde7077d8bf2611e0203a7eefd2</srcmd5>
+    <version>4.1.3</version>
+    <time>1590780240</time>
+    <user>maxlin_factory</user>
+    <comment>- We can be tested using pytest5
+- Skip one more timeouting test</comment>
+    <requestid>810170</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>005bc9f9773a3ae397887be58945f440</srcmd5>
+    <version>4.1.4</version>
+    <time>1594706199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.1.4
+  * Important fixes
+    * Correctly restart kernels after a crash while running code.
+    * Clear variable explorer after a kernel restart.
+    * Fix several errors when sorting variables in the variable
+      explorer.
+    * Fix selection color in several syntax highlighting themes.
+    * Support Jedi 0.17.1, which fixes several issues with code
+      completion in the editor.
+    * Fix errors when running Dask code in the IPython console. 
+    * Only show folding arrows when the user hovers over them, which
+      improves responsiveness in the editor.
+    * Fix several problems with the integration between our projects
+      and the Python language server.
+    * Handle NaT values in the Variable Explorer. 
+- drop spyder-pr12746-fixtests.patch merged upstream</comment>
+    <requestid>820050</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4a11ae49c53fcabb605717c78c7b89c7</srcmd5>
+    <version>4.1.4</version>
+    <time>1597064216</time>
+    <user>dimstar_suse</user>
+    <comment>- singlespec automatic conversion of &quot;Requires: python-*&quot; does not
+  work for the packagename without &quot;python-&quot;
+- only suggest external more intrusive plugins
+  
+
+- move to Python singlespec
+- do not preload qtpy in runtests.py: avoids &quot;Trace/breakpoint traps&quot;
+- skip newly failing tests because of meta change
+- skip the slow mainwindow test again: the mainwindow fixture is
+  leaking file descriptors and causes undeterministic segfaults
+  gh#spyder-ide/spyder#13483</comment>
+    <requestid>824905</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3a81fcb1ff392482463a1638750ff49f</srcmd5>
+    <version>4.1.5</version>
+    <time>1599210652</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831526</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d596f1d1e72ac818de702adbc034b015</srcmd5>
+    <version>4.1.5</version>
+    <time>1600703062</time>
+    <user>dimstar_suse</user>
+    <comment>- Require a font package for testing to avoid Qt breakpoint trap
+  gh#jupyter/qtconsole#443
+- Reenable tests for all platforms
+- skip another segfaulting test on Leap (forwarded request 835670 from bnavigator)</comment>
+    <requestid>835671</requestid>
+  </revision>
+</revisionlist>

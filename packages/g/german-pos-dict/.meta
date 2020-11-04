@@ -1,0 +1,5 @@
+<package name="german-pos-dict" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="german-pos-dict"/>
+</package>

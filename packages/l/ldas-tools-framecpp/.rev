@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc71c1a60c12780b880b2ba8d04a98b7</srcmd5>
+    <version>2.7.0</version>
+    <time>1603545474</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+[NOTE: Depends on sr#843533] Toolkit providing C++ bindings for dealing with frame data.
+</comment>
+    <requestid>843589</requestid>
+  </revision>
+</revisionlist>

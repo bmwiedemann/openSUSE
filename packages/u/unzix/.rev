@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>795dc369e543954787974979cbcf0fcb</srcmd5>
+    <version>0.4.0</version>
+    <time>1428949850</time>
+    <user>dimstar_suse</user>
+    <comment>New package, somehow usefull tool</comment>
+    <requestid>295557</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e050a59fbe22711056e2319029880076</srcmd5>
+    <version>0.4.0</version>
+    <time>1583948897</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file
+- Do not use source url as it is no longer available</comment>
+    <requestid>783306</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>209851a13fca8064a5c111e2e1f07ebf</srcmd5>
+    <version>0.5.0</version>
+    <time>1440658525</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>323177</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>710e0073a72fb8ba7840397bac043f83</srcmd5>
+    <version>0.7.0</version>
+    <time>1446208951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * Updated from global requirements
+  * Activate pep8 check that _ is imported</comment>
+    <requestid>337159</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>039eb37765dc3c320dc1490863065809</srcmd5>
+    <version>1.2.0</version>
+    <time>1463652877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add a state-space machine building example
+  * Ensure state space can also pass on_enter/exit callbacks
+  * Updated from global requirements
+  * Updated from global requirements
+  * Ensure machine special method(s) include in generated docs
+  * Put py34 first in the envlist order of tox ,remove py33
+  * Removes MANIFEST.in as it is not needed explicitely by PBR
+  * Deprecated tox -downloadcache option removed
+  * Updated from global requirements
+  * Remove python 2.6 and cleanup tox.ini
+  * Added code coverage section to tox
+  * No need for Oslo Incubator Sync
+  * Ignore generated files
+  * docs - Set pbr 'warnerrors' option for doc build
+  * Remove dummy/placeholder 'ChangeLog' as its not needed
+  * Enhance the README
+  * Fix the build path in .gitignore file
+  * Updated from global requirements
+  * Provide a finite machine build() method
+  * Allow for raising on duplicate transition registration
+- update Requires according to requirements.txt</comment>
+    <requestid>393977</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>666aca03e5da736926be664ab8b31031</srcmd5>
+    <version>1.4.0</version>
+    <time>1475242108</time>
+    <user>dimstar_suse</user>
+    <comment>OpenStack client update</comment>
+    <requestid>425243</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>302d34453c5b10d74893e74912af91ff</srcmd5>
+    <version>1.7.0</version>
+    <time>1487680739</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.7.0:
+  - Removes unnecessary utf-8 encoding
+  - Add Constraints support
+  - Updated from global requirements
+  - Don't include openstack/common in flake8 exclude list
+  - Changed the home-page link
+  - Replace six.iteritems() with .items()
+  - Fix release notes gate failure
+  - Add reno for release notes management</comment>
+    <requestid>456024</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de56444d94aa7bc109c743904627b8ba</srcmd5>
+    <version>1.12.0</version>
+    <time>1503927154</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix url
+
+- update to version 1.12.0
+  - rearrange existing documentation according to the new standard layout
+  - Update URLs in documents according to document migration
+  - Remove support for py34
+  - update link to docs in readme
+  - Update reno for stable/ocata
+  - Remove unused dependecy testscenarios
+  - Remove pbr warnerrors in favor of sphinx check
+  - Updated from global requirements
+  - switch from oslosphinx to openstackdocstheme</comment>
+    <requestid>518505</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>317827ba86e46dc7286af6bd164891e7</srcmd5>
+    <version>1.12.1</version>
+    <time>1506678978</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.12.1
+  - Update .gitreview for stable/pike
+  - Updated from global requirements
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike</comment>
+    <requestid>529072</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50d23fb1708ae70542f4642c4fb5f064</srcmd5>
+    <version>1.13.1</version>
+    <time>1513852161</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.13.1
+  - Update reno for stable/pike
+  - Remove setting of version/release from releasenotes
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+  - Remove kwarg default_start_state in the machine constructor</comment>
+    <requestid>558756</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e47586ef38bdabd22c3bcc3b5ada1a45</srcmd5>
+    <version>1.14.0</version>
+    <time>1518601818</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.14.0
+  - Updated from global requirements</comment>
+    <requestid>575929</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>95529b09457f04ca368f76396552fa80</srcmd5>
+    <version>1.14.0</version>
+    <time>1521498848</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583288</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>593c401269e404ae6c0b6837546e6514</srcmd5>
+    <version>1.14.0</version>
+    <time>1536327409</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633059</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a5804d91526128dde14910a716fb4d45</srcmd5>
+    <version>1.15.0</version>
+    <time>1537964566</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.15.0
+  - set default python to python3
+  - fix tox python3 overrides
+  - Update reno for stable/queens
+  - Trivial: Update pypi url to new url
+  - Switch to stestr
+  - fix list of default virtualenvs
+  - Updated from global requirements
+  - add lower-constraints job</comment>
+    <requestid>634900</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f79fbd0ec2dad9d014abd3c9a03ca106</srcmd5>
+    <version>1.16.0</version>
+    <time>1556915990</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.16.0
+  - add lib-forward-testing-python3 test job
+  - Change openstack-dev to openstack-discuss
+  - Update reno for stable/rocky
+  - Use template for lower-constraints
+  - add python 3.6 unit test job
+  - import zuul job settings from project-config</comment>
+    <requestid>692815</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4b0fbdf2ab680ad488fcfce8019e40dd</srcmd5>
+    <version>1.17.0</version>
+    <time>1575463681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.17.0
+  - add python 3.7 unit test job
+  - Add local bindep.txt
+  - Update to opendev
+  - Update master for stable/stein
+  - Add Python 3 Train unit tests
+  - OpenDev Migration Patch
+  - Sync Sphinx requirement</comment>
+    <requestid>736637</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5db5f6c695009324dba7811ff2e50a12</srcmd5>
+    <version>1.17.0</version>
+    <time>1585085535</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python 3.x only build</comment>
+    <requestid>784077</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>88dc2601e87c9365e88236c1f84d52b2</srcmd5>
+    <version>2.0.1</version>
+    <time>1591380556</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803551</requestid>
+  </revision>
+</revisionlist>

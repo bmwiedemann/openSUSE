@@ -1,0 +1,55 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5611e0b2e6d58edd8238f1897c93fc69</srcmd5>
+    <version>1.0.1</version>
+    <time>1493819896</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>492512</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e0ae5bfd3c9acff8f916ae72aa96174a</srcmd5>
+    <version>1.0.1</version>
+    <time>1544726568</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654011</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>44a30ab2b476917fa4fee19ac512b325</srcmd5>
+    <version>2.0.6</version>
+    <time>1552206952</time>
+    <user>coolo</user>
+    <comment>- Update to 2.0.6:
+  * Use sphinx deprecated directive
+  * no upstream changelog
+- Make sure to run tests</comment>
+    <requestid>682479</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2ce81ad2cbf0b51f7a04e4c4771db5d</srcmd5>
+    <version>2.0.7</version>
+    <time>1568379814</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.0.7:
+  * no upstream changelog</comment>
+    <requestid>730639</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3987e94ef90adae68d9fcc044e9ecb85</srcmd5>
+    <version>2.1.0</version>
+    <time>1590650047</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.1.0:
+  * No upstream changelog</comment>
+    <requestid>809125</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d083b4cde804bb8865e02cd1267072f9</srcmd5>
+    <version>2.1.0</version>
+    <time>1591101594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810621</requestid>
+  </revision>
+</revisionlist>

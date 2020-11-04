@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1e44511232267b87ed1589802e66df2</srcmd5>
+    <version>0.5.2</version>
+    <time>1575282858</time>
+    <user>dimstar_suse</user>
+    <comment>- New python dependency required for new azure-cli</comment>
+    <requestid>752694</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e76a82569b9f88caaf27411f48b12c2</srcmd5>
+    <version>0.7.0</version>
+    <time>1587162606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794777</requestid>
+  </revision>
+</revisionlist>

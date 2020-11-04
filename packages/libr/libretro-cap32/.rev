@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76c361f77b7c49aa5e851b7d4d5f9f17</srcmd5>
+    <version>0~git20190907</version>
+    <time>1581456155</time>
+    <user>dimstar_suse</user>
+    <comment>Amstrad CPC emulation</comment>
+    <requestid>771827</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76063323a9478c27940f128df8ccc74d</srcmd5>
+    <version>0~git20200508</version>
+    <time>1591558623</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812100</requestid>
+  </revision>
+</revisionlist>

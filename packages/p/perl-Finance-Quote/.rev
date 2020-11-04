@@ -1,0 +1,479 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee6f503077e37f2421e70acadb5a69e0</srcmd5>
+    <version>1.13</version>
+    <time>1188700835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="71">
+    <srcmd5>ee6f503077e37f2421e70acadb5a69e0</srcmd5>
+    <version>1.13</version>
+    <time>1188700835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58659bbd8b0780ae45cfe493524596a8</srcmd5>
+    <version>1.14</version>
+    <time>1224114628</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d9f9ec10cdfbe64829355f232d11090</srcmd5>
+    <version>1.15</version>
+    <time>1225123648</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50a594394456b1e72ba6eaa6a71819ba</srcmd5>
+    <version>1.16</version>
+    <time>1241138036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>50a594394456b1e72ba6eaa6a71819ba</srcmd5>
+    <version>1.16</version>
+    <time>1241138036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a80bd12f1951f507aa5c4d9ecea6026d</srcmd5>
+    <version>1.17</version>
+    <time>1256035628</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Finance-Quote based on submit request 22595 from user sbrabec
+</comment>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b02830871723140e005b534ee6283c88</srcmd5>
+    <version>1.17</version>
+    <time>1263295084</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Finance-Quote based on submit request 29203 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b900df7699a8e336b7b7f7df6f35043b</srcmd5>
+    <version>1.17</version>
+    <time>1268925469</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>80046340917536ee04946a0768b4808d</srcmd5>
+    <version>1.17</version>
+    <time>1277719124</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Finance-Quote based on submit request 42017 from user sbrabec
+</comment>
+    <requestid>42017</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>80046340917536ee04946a0768b4808d</srcmd5>
+    <version>1.17</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>80046340917536ee04946a0768b4808d</srcmd5>
+    <version>1.17</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>0cc585e6973bd728e905108f25944606</srcmd5>
+    <version>1.17</version>
+    <time>1287485742</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 50990 from user coolo
+</comment>
+    <requestid>50990</requestid>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>462158d3cc942911143540fe75869650</srcmd5>
+    <version>1.17</version>
+    <time>1287485747</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 50990
+</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>16027e9cf27cab5068e191759dcfab64</srcmd5>
+    <version>1.17</version>
+    <time>1291582386</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54539 from user coolo
+</comment>
+    <requestid>54539</requestid>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>219d4f836e53963a9ab3279d685f61ab</srcmd5>
+    <version>1.17</version>
+    <time>1291582392</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54539
+</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>219d4f836e53963a9ab3279d685f61ab</srcmd5>
+    <version>1.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>219d4f836e53963a9ab3279d685f61ab</srcmd5>
+    <version>1.17</version>
+    <time>1319182268</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>4ab75b4bec14edb8aa66f63552cc3434</srcmd5>
+    <version>1.17</version>
+    <time>1321875617</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92223</requestid>
+  </revision>
+  <revision rev="20" vrev="18">
+    <srcmd5>85295d908675248b492bb047dc355a7a</srcmd5>
+    <version>1.17</version>
+    <time>1323193300</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>33b856d7ccc084542d853cfded15713a</srcmd5>
+    <version>1.17.0.20110222</version>
+    <time>1327484435</time>
+    <user>coolo</user>
+    <comment>- Updated to the current upstream GIT snapshot (many updates for
+  server changes).
+- Added fixes from upstream bug tracker:
+  * Fix GoldMoney server changes, add palladium (CPAN#64897).
+  * Rewrite Finance Canada after server changes (CPAN#57401).
+  * Partial rewrite ov VWD due to server changes (CPAN#62619).
+  * Fix Cdnfundlibrary to retrieve newest NAV (CPAN#66235).
+  * Fix use of /tmp file in IndiaMutual (CPAN#70690).
+  * New modules:
+    * Comdirect (CPAN#61750)
+    * Stooq (CPAN#64474)
+    * FTFunds (CPAN#65269)
+- Added Fedora fix:
+  * Fix TIAA-CREF (Redhat#668935).
+- Added all Debian fixes.
+- Yahoo fixes ported to the upstream GIT.</comment>
+    <requestid>101206</requestid>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>33b856d7ccc084542d853cfded15713a</srcmd5>
+    <version>1.17.0.20110222</version>
+    <time>1340183843</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="13">
+    <srcmd5>33b856d7ccc084542d853cfded15713a</srcmd5>
+    <version>1.17.0.20110222</version>
+    <time>1359109673</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cdcbc55626283a75812a31293374281e</srcmd5>
+    <version>1.18</version>
+    <time>1359646559</time>
+    <user>coolo</user>
+    <comment>Please accept version update. This package needs regular update of the backend, otherwise it rots.
+See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
+- Update to version 1.17 (bnc#800797):
+  * many updates for server changes
+  * new modules
+  * code cleanup
+- Drop perl-Finance-Quote-fedora-tiaa-cref.patch: New code is a
+  different implementation and it supports institutional funds as
+  well.
+- Update Requires.</comment>
+    <requestid>150458</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>05c32c1e5edace4ee1695de9e33d8d1c</srcmd5>
+    <version>1.18</version>
+    <time>1360670077</time>
+    <user>coolo</user>
+    <comment>Just a changes typo fix (1.17=&amp;gt;1.18):
+- Update to version 1.18 (bnc#800797): (forwarded request 155149 from sbrabec)</comment>
+    <requestid>155150</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>05c32c1e5edace4ee1695de9e33d8d1c</srcmd5>
+    <version>1.18</version>
+    <time>1379663682</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a12567b40bab53e1039c8415beb084bb</srcmd5>
+    <version>1.35</version>
+    <time>1406645297</time>
+    <user>coolo</user>
+    <comment>- ignore Mozilla:CA
+
+- update to 1.35:
+         * BUGFIX: VWD - currency returned.
+ 
+ 1.34      2014-06-15 21:30:03+02:00 Europe/Brussels
+         * VWD adapted to recent website change.
+ 
+ 1.33      2014-06-01 11:24:24+02:00 Europe/Brussels
+         * BUGFIX: yahoo_json never returns currency. so don't set a default.
+                   yahoo_json returned current timestamp instead of quote date.
+ 
+ 1.32      2014-05-18 21:55:12+02:00 Europe/Brussels
+         * return &quot;symbol&quot; for yahoo_json module
+         * allow to retrieve ISIN codes with VWD module
+ 
+ 1.31      2014-05-04 22:56:45+02:00 Europe/Brussels
+         * Case mismatch in ZA_UnitTrusts pod
+ 
+ 1.30      2014-05-04 21:56:34+02:00 Europe/Brussels
+         * Bourso.pm works on current website changes. Thanks to Guillaume
+         * New module CSE.pm by Hiranya Samarasekera. Covers Colombo Stock
+           Exchange (CSE) in Sri Lanka.
+ 
+ 1.29      2014-04-08 08:28:25+02:00 Europe/Brussels
+         * New module za_unittrusts. kudos to Rolf Endres.
+        * Indiamutual patched to current website. kudos to Vinay S Shastry.
+ 
+ 1.28      2014-03-16 12:05:19+01:00 Europe/Brussels</comment>
+    <requestid>242694</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>a12567b40bab53e1039c8415beb084bb</srcmd5>
+    <version>1.35</version>
+    <time>1409302301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>25958f4b3c513ca163ce6db69fe0d8d8</srcmd5>
+    <version>1.37</version>
+    <time>1429606348</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298018</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8ab0aedde6f071186bb736713895f1a6</srcmd5>
+    <version>1.37</version>
+    <time>1441296165</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328305</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>516b5a5c85f4b2d867be99333c61dc64</srcmd5>
+    <version>1.37</version>
+    <time>1471009444</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>418769</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>58fbbda54f392512ab8e6b40c27aae87</srcmd5>
+    <version>1.38</version>
+    <time>1503593555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>516823</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>03ba1cd5be4102a6fd1d35904ec2a7bd</srcmd5>
+    <version>1.47</version>
+    <time>1529501211</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617446</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>10be8eb393e6a96ebaa6e841e1a72062</srcmd5>
+    <version>1.47</version>
+    <time>1532528045</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies. Require perl(CGI) (boo#1077300).
+</comment>
+    <requestid>625141</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>71cb2f3748e19c2fce1df7c201f0cbf6</srcmd5>
+    <version>1.49</version>
+    <time>1603725606</time>
+    <user>dimstar_suse</user>
+    <comment>- Use metacpan for URL and sources file
+- Update to version 1.49:
+  * Alphavantage: Removed Time::HiRes dependency due to mswin32
+    not supporting clock_gettime calls.
+  * Alphavantage: Add a waiting mechanism to comply to
+    alphavantage use terms
+  * Alphavantage: Added several stock exchange support and
+    currency
+  * Updated modules: Union, Deka, Indiamutual, ASX, Yahoojson,
+    TSP, AEX, Fool
+  * New modules: IEXTrading, MorningstarAU, MorningstarCH,
+    IEXCloud
+  * Yahoo: removed modules referring to yahoo API, which yahoo
+    stopped
+  * BUGFIX: 'use of uninitialized value' returned by perl could
+    make gnucash fail when more than 15 quotes where requested
+  * BUGFIX: MS Windows does not support %T in strftime call
+  * Added new documentation files: Release.txt, Hackers-Guide,
+    Modules-README.yml
+  * We started moving known failing tests into TODO blocks
+  * This release is the result of hard work by Bruce Schuck,
+    Vincent Lucarelli, Pieter-Jan Vandormael, Manuel Friedli,
+    Jalon Avens, Chris Good, Mark J. Cox, Eelco Dolstra, Henrik
+    Ahlgren, Vinay Shastry, Mike Alexander, Erik Colson.
+  * Special thanks go to Bruce Schuck and Vincent Lucarelli
+    which joined the maintainers team!
+- Use Sourceforge as home and download site.
+- Fix dependencies. Require perl(CGI) (boo#1077300).
+- Change package license to GPL-3.0-or-later:
+  MorningstarJP.pm carries this license
+- Change license to GPL-3.0-or-later (MorningstarJP.pm).
+- Clean spec file by spec-cleaner.
+- Update to version 1.47 (boo#1077300):
+  * Yahoojson: module adapted to new URL and returned json
+  * Added currencies for .SA (Brazil) and .TO (Canada/Toronto)
+    markets
+  * Added currency for .DE market
+  * BUGFIX in currency determination regex
+  * BUG resolved: removed time from $last_refresh when markets are
+    open
+  * added AlphaVantage module (Matthew Patterson)
+  * some other module changes: yahoojson, Morningstar, Bourso, TSX
+    (not working)
+  * Use AlphaVantage for currency quotes instead of Yahoo
+- Drop perl-Finance-Quote-debian-04_deka.patch (module rewritten).
+- Update to 1.38
+  * module updates: tiaacref, yahooJSON, FTfunds, MStaruk,
+    USFedBonds, GoldMoney
+  * new modules: fidelityfixed (Peter Ratzlaff), yahooYQL
+  * removed modules: MTGox
+  * more tests: yahoo_speed.t, tiaacref.t
+- Drop perl-Finance-Quote-64897-0001-adopted-to-site-changes.patch,
+  perl-Finance-Quote-64897-0002-support-palladium-lookup.patch,
+  perl-Finance-Quote-goldmoney-decimal-point.patch
+- Add perl(CGI) BuildRequires: needed to be able to pass the
+  test suite with Perl 5.22.
+- updated to 1.37 bnc#955055
+   see /usr/share/doc/packages/perl-Finance-Quote/ChangeLog.1
+- ignore Mozilla:CA
+- update to 1.35:
+         * BUGFIX: VWD - currency returned.
+ 
+ 1.34      2014-06-15 21:30:03+02:00 Europe/Brussels
+         * VWD adapted to recent website change.
+ 
+ 1.33      2014-06-01 11:24:24+02:00 Europe/Brussels
+         * BUGFIX: yahoo_json never returns currency. so don't set a default.
+                   yahoo_json returned current timestamp instead of quote date.
+ 
+ 1.32      2014-05-18 21:55:12+02:00 Europe/Brussels
+         * return &quot;symbol&quot; for yahoo_json module
+         * allow to retrieve ISIN codes with VWD module
+ 
+ 1.31      2014-05-04 22:56:45+02:00 Europe/Brussels
+         * Case mismatch in ZA_UnitTrusts pod
+ 
+ 1.30      2014-05-04 21:56:34+02:00 Europe/Brussels
+         * Bourso.pm works on current website changes. Thanks to Guillaume
+         * New module CSE.pm by Hiranya Samarasekera. Covers Colombo Stock
+           Exchange (CSE) in Sri Lanka.
+ 
+ 1.29      2014-04-08 08:28:25+02:00 Europe/Brussels
+         * New module za_unittrusts. kudos to Rolf Endres.
+        * Indiamutual patched to current website. kudos to Vinay S Shastry.
+ 
+ 1.28      2014-03-16 12:05:19+01:00 Europe/Brussels
+ 
+         * Removed some unnecessary dependencies
+ 
+ 1.27      2014-03-05 15:04:22+01:00 Europe/Brussels
+ 
+         * New module YahooJSON added (Abhijit Kshirsagar)
+         * mtgox.t should not create errors when ONLINE_TEST is not defined
+- remove all patches no longer applying (as maintainer didn't care for 18 months
+  and this module is important to be half way fresh):
+    perl-Finance-Quote-57401-financecanada.patch
+    perl-Finance-Quote-61750-comdirect.patch
+    perl-Finance-Quote-62619-vwd.patch
+    perl-Finance-Quote-64474-stooq.patch
+    perl-Finance-Quote-65269-ftfunds.patch
+    perl-Finance-Quote-70690-IndiaMutual-temp-del.patch
+    perl-Finance-Quote-70690-IndiaMutual-temp.patch
+    perl-Finance-Quote-LeRevenu.patch
+    perl-Finance-Quote-debian-08_deka.patch
+    perl-Finance-Quote-fsf-address.patch
+    perl-Finance-Quote-goldmoney-decimal-point.patch
+- reworked spec file to look a bit more like a standard perl package
+- Update to version 1.18 (bnc#800797):
+  * many updates for server changes
+  * new modules
+  * code cleanup
+- Drop perl-Finance-Quote-fedora-tiaa-cref.patch: New code is a
+  different implementation and it supports institutional funds as
+  well.
+- Update Requires.
+- Updated to the current upstream GIT snapshot (many updates for
+  server changes).
+- Added fixes from upstream bug tracker:
+  * Fix GoldMoney server changes, add palladium (CPAN#64897).
+  * Rewrite Finance Canada after server changes (CPAN#57401).
+  * Partial rewrite ov VWD due to server changes (CPAN#62619).
+  * Fix Cdnfundlibrary to retrieve newest NAV (CPAN#66235).
+  * Fix use of /tmp file in IndiaMutual (CPAN#70690).
+  * New modules:
+    * Comdirect (CPAN#61750)
+    * Stooq (CPAN#64474)
+    * FTFunds (CPAN#65269)
+- Added Fedora fix:
+  * Fix TIAA-CREF (Redhat#668935).
+- Added all Debian fixes.
+- Yahoo fixes ported to the upstream GIT.
+- use original .tar.gz
+- switch to perl_requires macro
+- remove /var/adm/perl-modules
+- add perl as explicit buildrequire
+- Fix of LeRevenu module crash due to a change on lerevenu.com web
+  site (bnc#555687).
+- enable parallel build
+- Updated to version 1.17 (bnc498310#c4):
+  * Site layout updates: Cominvest, Yahoo (currencies adapted to
+    yahoo denomination), ASX.
+  * Fixes for: Yahoo Europe, Goldmoney, IndiaMutual, GBp, possible
+    wrong year range in Yahoo.
+  * New support for: Hungarian stocks, Goldmoney Platinum.
+  * Removed: Broken futures support for AEX.
+- Updated to version 1.16:
+  * Fixed or updated site layout parsing of:
+    Bourso, Morningstar, AEX, ITE is now RZR, ZA, Goldmoney,
+    Ashwin, Finanzpartner.
+  * New currency lookup support.
+  * Fixed 12:XXpm formatted time handling.
+- Require all needed perl modules (bnc#496738).
+- Updated to version 1.15:
+  * IndiaMutual: Fix symbol not set it module.
+  * isoTime - make sure $hours and $mins are treated as numbers,
+    use sprintf
+- Updated to version 1.14:
+  * Added support for Finanzpartner, Cominvest, TSX.
+  * Fixed or updated site layout parsing of TIAA CREF,
+    Stockhouse Canada, DWS, VWD, AEX, Yahoo Brasil, SEB,
+    Association of Mutual Funds in India.
+  * Fixes.
+  * Reorganization of test cases.
+- New SuSE package, version 1.13 (#242504).
+</comment>
+    <requestid>843870</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-python-language-server" project="openSUSE:Factory">
+  <title>python-python-language-server</title>
+  <description>Python Language Server for the Language Server Protocol</description>
+  <devel project="devel:languages:python" package="python-python-language-server"/>
+</package>

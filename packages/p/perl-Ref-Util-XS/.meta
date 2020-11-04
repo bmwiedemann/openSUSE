@@ -1,0 +1,10 @@
+<package name="perl-Ref-Util-XS" project="openSUSE:Factory">
+  <title>perl-Ref-Util-XS - XS implementation for Ref::Util</title>
+  <description>Ref::Util::XS is the XS implementation of Ref::Util, which provides several functions to help identify references in a more convenient way than the usual approach of examining the return value of 'ref'.
+
+You should use Ref::Util::XS by installing Ref::Util itself: if the system you install it on has a C compiler available, 'Ref::Util::XS' will be installed and used automatically, providing a significant speed boost to everything that uses 'Ref::Util'.
+
+See Ref::Util for full documentation of the available functions.</description>
+  <devel project="devel:languages:perl" package="perl-Ref-Util-XS"/>
+  <url>https://metacpan.org/release/Ref-Util-XS</url>
+</package>

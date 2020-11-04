@@ -1,0 +1,13 @@
+<package name="grepcidr" project="openSUSE:Factory">
+  <title>Filter IP addresses matching IPv4/IPv6 CIDR specification</title>
+  <description>grepcidr can be used as a stream filter when you need to compare a list of IP
+addresses against one or more Classless Inter-Domain Routing (CIDR) mask
+specifications. Think of grepcidr as a CIDR-aware grep; instead of using
+'grep 1.2.3.4' you can use 'grepcidr -e 1.2.3.4/30', for example. Multiple
+specifications, of arbitrary mask lengths, can be specified both on the
+command line or loaded from a file.
+
+</description>
+  <devel project="utilities" package="grepcidr"/>
+  <url>http://www.pc-tools.net/unix/grepcidr/</url>
+</package>

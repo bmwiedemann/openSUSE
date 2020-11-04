@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0c01787811efc67bd0db109934b7382</srcmd5>
+    <version>3.3.1</version>
+    <time>1597658732</time>
+    <user>dimstar_suse</user>
+    <comment>A python wrapper around CASACORE, the radio astronomy library (depends on sr#826881).
+</comment>
+    <requestid>826882</requestid>
+  </revision>
+</revisionlist>

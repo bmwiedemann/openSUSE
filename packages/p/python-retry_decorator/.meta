@@ -1,0 +1,5 @@
+<package name="python-retry_decorator" project="openSUSE:Factory">
+  <title>Retry on exception</title>
+  <description>Decorator to support retry when an exception occurs.</description>
+  <devel project="devel:languages:python" package="python-retry_decorator"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="coturn" project="openSUSE:Factory">
+  <title>VoIP media traffic NAT traversal server and gateway</title>
+  <description>The Coturn TURN Server is a VoIP media traffic NAT traversal server and gateway.
+It can be used as a general-purpose network traffic TURN server/gateway, too.</description>
+  <devel project="network:telephony" package="coturn"/>
+  <url>https://github.com/coturn/coturn</url>
+</package>

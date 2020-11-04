@@ -1,0 +1,5 @@
+<package name="efl" project="openSUSE:Factory">
+  <title>efl</title>
+  <description>The Enlightenment Foundation Libraries, used by Enlightenment and Tizan amongst other things</description>
+  <devel project="X11:Enlightenment:Factory" package="efl"/>
+</package>

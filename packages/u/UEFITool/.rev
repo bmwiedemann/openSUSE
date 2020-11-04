@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>631b4557e5c83b28d881092087fc890a</srcmd5>
+    <version>20170212</version>
+    <time>1489536401</time>
+    <user>dimstar_suse</user>
+    <comment>usefull for working with uefi bios</comment>
+    <requestid>476927</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fea125f119b1f26e1929ba9926e8b6f1</srcmd5>
+    <version>20170506</version>
+    <time>1500975640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20170506:
+  * Add UEFIReplace.</comment>
+    <requestid>512273</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e59714bc1fa4cef46946dd06c5e9505e</srcmd5>
+    <version>20180225</version>
+    <time>1520588785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180225:
+  * fixed rebase PEI files with nonstandard alignment
+  * Fixed patches for Skylake-X
+  * multiple fixes
+  * fix for #99
+  * 0.22.1 multiple FFSv3 support fixes, thanks to @osresearch
+  * add FFSv3 support with large files and large sections</comment>
+    <requestid>584443</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2f7a9bed6a364598f0bbcdfea0c93721</srcmd5>
+    <version>20180624</version>
+    <time>1545141408</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20180624:
+  * Unify version scheme
+  * Support replacing raw sections and ffs via -asis
+  * Allow subguid matching for UEFIReplace
+  * Fix recursion in UEFIReplace
+  * Add -o / --output flag to UEFIPatch
+  * Implement replace all and add -o (--output) path to UEFIReplace
+  * Backport decompression updates from new_engine
+  * Add misc patches unrelated to Intel PowerManagement
+  * Implement external patches.txt path for UEFIPatch
+  * Fix Intel descriptor version parsing at reading
+  * Properly read Intel descriptor version, thx @platomav
+  * Recognise B360MHD3.F3 descriptor version
+  * Remove legacy UEFIFind and UEFIExtract in favour of new_engine branch
+  * Fix EC region parse</comment>
+    <requestid>658060</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fdf94b7ed05b3d6de53972d8f6e9add</srcmd5>
+    <version>20181230</version>
+    <time>1571838875</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20181230:
+  * Implement custom LZMA dictionary size support, fixes #154</comment>
+    <requestid>742131</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>46dc26f990e370b1085c8505fcc8012b</srcmd5>
+    <version>20191103</version>
+    <time>1576928000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20191103:
+  * Fix C++03 compatibility
+  * Backport rebuild logic
+  * Support applying patches from terminal, closes #186</comment>
+    <requestid>758501</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5728a2e971d3661f84d7bf41d0b87c9f</srcmd5>
+    <version>20200120</version>
+    <time>1579729579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20200120:
+  * Add 'Do not rebuild' support for volumes
+  * Version bump</comment>
+    <requestid>766319</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>204c18b431c22636d490e35013df5b6c</srcmd5>
+    <version>2019.3</version>
+    <time>1583526449</time>
+    <user>dimstar_suse</user>
+    <comment>this time with python2-support</comment>
+    <requestid>782108</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5611060487a9ef4850460b941f297220</srcmd5>
+    <version>2020.1</version>
+    <time>1596457107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.1:
+  * Use version 2020a of the Oslon data.</comment>
+    <requestid>824065</requestid>
+  </revision>
+</revisionlist>

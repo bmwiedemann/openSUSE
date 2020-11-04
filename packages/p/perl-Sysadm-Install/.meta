@@ -1,0 +1,28 @@
+<package name="perl-Sysadm-Install" project="openSUSE:Factory">
+  <title>Typical installation tasks for system administrators</title>
+  <description>Have you ever wished for your installation shell scripts to run
+reproducably, without much programming fuzz, and even with optional logging
+enabled? Then give up shell programming, use Perl.
+
+'Sysadm::Install' executes shell-like commands performing typical
+installation tasks: Copying files, extracting tarballs, calling 'make'. It
+has a 'fail once and die' policy, meticulously checking the result of every
+operation and calling 'die()' immeditatly if anything fails.
+
+'Sysadm::Install' also supports a _dry_run_ mode, in which it logs
+everything, but suppresses any write actions. Dry run mode is enabled by
+calling 'Sysadm::Install::dry_run(1)'. To switch back to normal, call
+'Sysadm::Install::dry_run(0)'.
+
+As of version 0.17, 'Sysadm::Install' supports a _confirm_ mode, in which
+it interactively asks the user before running any of its functions (just
+like 'rm -i'). _confirm_ mode is enabled by calling
+'Sysadm::Install::confirm(1)'. To switch back to normal, call
+'Sysadm::Install::confirm(0)'.
+
+'Sysadm::Install' is fully Log4perl-enabled. To start logging, just
+initialize 'Log::Log4perl'. 'Sysadm::Install' acts as a wrapper class,
+meaning that file names and line numbers are reported from the calling
+program's point of view.</description>
+  <devel project="devel:languages:perl" package="perl-Sysadm-Install"/>
+</package>

@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f3d38bfa6d24731a6a0483b9a684a70</srcmd5>
+    <version>0.8.7</version>
+    <time>1465335982</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed version of python-xlsxwriter to conform to python package naming rules.
+
+Updated to version 0.8.7.</comment>
+    <requestid>398066</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d45b425884675dedcbbd6c2216afa4a4</srcmd5>
+    <version>0.9.3</version>
+    <time>1470217365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415028</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3df770c98b71c4bb3ffe638044c68589</srcmd5>
+    <version>0.9.3</version>
+    <time>1471428317</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419449</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>898731be487bf3ba8f7757eb3d40ce9d</srcmd5>
+    <version>0.9.6</version>
+    <time>1492169692</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483979</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a04e9c3f9213cca54af4194f108a43f</srcmd5>
+    <version>1.1.2</version>
+    <time>1545648478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660755</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e6d99baaf5924402a37a229f3048aaa2</srcmd5>
+    <version>1.1.4</version>
+    <time>1551025259</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678416</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>832e330e8e8164b6966bbc195dcc6eff</srcmd5>
+    <version>1.1.5</version>
+    <time>1551113857</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678739</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f51fe37701b47581df3927db4c6badf</srcmd5>
+    <version>1.1.8</version>
+    <time>1564484718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717651</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e6c3a5df43557047021ff62a3cf44fef</srcmd5>
+    <version>1.1.8</version>
+    <time>1569233866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731192</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4074c6f015b5fc94da945cf0afd6e3cc</srcmd5>
+    <version>1.2.7</version>
+    <time>1580724720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768823</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>69ab570b97abe690cdedc6414d5e3dc3</srcmd5>
+    <version>1.2.9</version>
+    <time>1593200691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816881</requestid>
+  </revision>
+</revisionlist>

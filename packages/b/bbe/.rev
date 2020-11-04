@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12b3aac1694a81a43d33111fa64403bf</srcmd5>
+    <version>0.2.2</version>
+    <time>1465750506</time>
+    <user>dimstar_suse</user>
+    <comment>New package, dependency of other packages/testuites</comment>
+    <requestid>400719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c8ccb85c25102a534fa6a3362981075</srcmd5>
+    <version>0.2.2</version>
+    <time>1537018484</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernise spec file with spec-cleaner</comment>
+    <requestid>634213</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0f00bd23413176df1c2cc46d5678c748</srcmd5>
+    <version>0.2.2</version>
+    <time>1573045518</time>
+    <user>dimstar_suse</user>
+    <comment>- Use modern macros for building
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>745341</requestid>
+  </revision>
+</revisionlist>

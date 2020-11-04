@@ -1,0 +1,8 @@
+<package name="wxmp3gain" project="openSUSE:Factory">
+  <title>Front-end for mp3gain based on wxWidgets</title>
+  <description>A front-end for mp3gain based on the wxWidgets toolkit.
+
+</description>
+  <devel project="multimedia:apps" package="wxmp3gain"/>
+  <url>https://wxmp3gain.sourceforge.io</url>
+</package>

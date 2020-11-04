@@ -1,0 +1,6 @@
+<package name="libretro-beetle-gba" project="openSUSE:Factory">
+  <title>Mednafen GBA libretro core for GameBoy Advance emulation</title>
+  <description>Standalone port of Mednafen GBA to libretro, itself a fork of VBA-M, itself a fork of Visual Boy Advance.
+</description>
+  <devel project="Emulators" package="libretro-beetle-gba"/>
+</package>

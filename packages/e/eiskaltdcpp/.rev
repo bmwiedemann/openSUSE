@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2ea3e331c17c449256ceb6985dbae656</srcmd5>
+    <version>2.3.0~git20200908.0e0ccde5</version>
+    <time>1601398836</time>
+    <user>dimstar_suse</user>
+    <comment>- Some .spec cleanup:
+  * Use %autosetup
+  * Use %find_lang --with-qt
+  * Remove redundant options to %cmake
+  * Use %cmake_build
+- Use ~git instead of +git to mark it as &quot;before 2.3.0&quot;
+- Add _service to generate the tarball and set the version
+- Update to version 2.3.0~git20200908.0e0ccde5:
+  * Delete hublist.eu
+  * Fix race condition in Search::on</comment>
+    <requestid>838532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>584d435bdb1dd3c2bb6715fd266220f0</srcmd5>
+    <version>2.3.0~git20200908.0e0ccde5</version>
+    <time>1601919516</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't depend on aspell, it will be removed from Factory.</comment>
+    <requestid>839212</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5b46138175ce837e448ec48f5e071e6a</srcmd5>
+    <version>2.3.0~git20200908.0e0ccde5</version>
+    <time>1602073097</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839884</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9c9791aa59241e499af64136af4b792f</srcmd5>
+    <version>2.3.0~git20200908.0e0ccde5</version>
+    <time>1602596731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841357</requestid>
+  </revision>
+</revisionlist>

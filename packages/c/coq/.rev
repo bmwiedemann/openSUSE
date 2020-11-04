@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7526201614b94aad719fc9aa42a8468</srcmd5>
+    <version>8.9.1</version>
+    <time>1575106613</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release based on version 8.9.1.</comment>
+    <requestid>747961</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4970b89ecdc25ff16ef7bdcf0b38046f</srcmd5>
+    <version>8.11.0</version>
+    <time>1581801976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.11.0.
+  * Ltac2, a new tactic language for writing more robust larger
+    scale tactics, with built-in support for datatypes and the
+    multi-goal tactic monad.
+  * Primitive floats are integrated in terms and follow the binary64
+    format of the IEEE 754 standard, as specified in the
+    Coq.Float.Floats library.
+  * Many other cleanups and improvements have been performed and
+    are further described in the changelog.
+  * Special note on compatibility: Fixed bugs of Export and Import
+    that can have a significant impact on user developments.
+- Drop unneeded empty *.vos files.
+- Update to version 8.10.2.
+  * Fixed a critical bug of template polymorphism and nonlinear
+    universes;
+  * Fixed a few anomalies;
+  * Fixed an 8.10 regression related to the printing of coercions
+    associated to notations;
+  * Fixed uneven dimensions of CoqIDE panels when window has been
+    resized;
+  * Fixed queries in CoqIDE.
+- Update to version 8.10.0.
+  * some quality-of-life bug fixes;
+  * a critical bug fix related to template polymorphism;
+  * native 63-bit machine integers;
+  * a new sort of definitionally proof-irrelevant propositions: SProp;
+  * private universes for opaque polymorphic constants;
+  * string notations and numeral notations;
+  * a new simplex-based proof engine for the tactics lia, nia, lra
+    and nra;
+  * new introduction patterns for SSReflect;
+  * a tactic to rewrite under binders: under;
+  * easy input of non-ASCII symbols in CoqIDE, which now uses GTK3.
+- Update to version 8.10.1.
+  * Fix proof of False when using SProp
+  * Fix an anomaly when unsolved evar in Add Ring
+  * Fix Ltac regression in binding free names in uconstr
+  * Fix handling of unicode input before space
+  * Fix custom extraction of inductives to JSON
+- Update version requirements.</comment>
+    <requestid>774603</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d011401c006dfcf8d277daedb0535ef2</srcmd5>
+    <version>8.11.0</version>
+    <time>1585602168</time>
+    <user>dimstar_suse</user>
+    <comment>- The num library is required for OCaml 4.06 or later.
+- Add ocaml-410-build.patch: fix build with OCaml 4.10.</comment>
+    <requestid>789593</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c0abd8b1c6162732c364a49f92b776b</srcmd5>
+    <version>8.11.1</version>
+    <time>1586467036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.11.1, with upstream support for OCaml 4.10.
+  * Allow more inductive types in Unset Positivity Checking mode.
+  * Fixed bugs in dealing with precedence of notations in custom
+    entries.
+  * In primitive floats, print a warning when parsing a decimal
+    value that is not exactly a binary64 floating-point number.
+    For instance, parsing 0.1 will print a warning whereas parsing
+    0.5 won't.
+  * Fixed an issue in CoqIDE about compiling file paths containing
+    spaces.
+  * Fixed an issue where Extraction Implicit on the constructor of
+    a record was leading to an anomaly.
+- Remove now obsolete ocaml-410-build.patch.</comment>
+    <requestid>792575</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>851a4d1c448d7a9a604e1cfa326c9d0e</srcmd5>
+    <version>8.11.2</version>
+    <time>1591558669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.11.2.
+  * Fixed a kernel issue where using Require inside a section
+    caused an anomaly when closing the section.
+  * Fixed normalization in conclusion of custom induction scheme.
+  * Fixed a loss of location of some tactic errors.
+  * Ignore -native-compiler option when built without native
+    compute support.
+  * Fixed a segfault issue with CoqIDE completion.
+  * Highlighting style is now consistently applied to all three
+    buffers of CoqIDE.</comment>
+    <requestid>812064</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d05bfbd1f9365394d139810cb222ddcf</srcmd5>
+    <version>8.12.0</version>
+    <time>1596703364</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.12.0.
+  * New binder notation for non-maximal implicit arguments using []
+    allowing to set and see the implicit status of arguments
+    immediately.
+  * New notation Inductive &quot;I A | x : s := ...&quot; to distinguish the
+    uniform from the non-uniform parameters in inductive
+    definitions.
+  * More robust and expressive treatment of implicit inductive
+    parameters in inductive declarations.
+  * Improvements in the treatment of implicit arguments and
+    partially applied constants in notations, parsing of
+    hexadecimal number notation and better handling of scopes and
+    coercions for printing.
+  * A correct and efficient coercion coherence checking algorithm,
+    avoiding spurious or duplicate warnings.
+  * An improved Search command which accepts complex queries. This
+    takes precedence over the now deprecated ssreflect search.
+  * Many additions and improvements of the standard library.
+  * Improvements to the reference manual include a more logical
+    organization of chapters along with updated syntax descriptions
+    that match Coq's grammar in most but not all chapters.</comment>
+    <requestid>824553</requestid>
+  </revision>
+</revisionlist>

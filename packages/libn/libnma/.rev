@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eed7d915a30f61d2ff32b58ec7c557ee</srcmd5>
+    <version>1.8.26</version>
+    <time>1574783510</time>
+    <user>dimstar_suse</user>
+    <comment>New package, split from NetworkManager-applet</comment>
+    <requestid>744187</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8b83f158ba4719874e06b9d8f0250e63</srcmd5>
+    <version>1.8.26</version>
+    <time>1575923732</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755157</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75e7beefb6596731bbdc43ac8edcd82d</srcmd5>
+    <version>1.8.28</version>
+    <time>1583948744</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.28:
+  + Turned the wireless-security library to a public API.
+  + &quot;org.gnome.nm-applet.gschema.xml&quot; is now part of libnma.
+    Previously, on distributions like Fedora it was packaged as
+    part of nm-connection-editor package. But the schema is used by
+    wireless-security library, gnome-control-center and
+    nm-a/nm-c-e.
+  + Clear key/password input fields when selecting a different
+    certificate in NMACertChooser.
+  + Generate vapi files.
+- Add pkgconfig(vapigen) BuildRequires: New dependency.
+- Drop nma-data Requires: No longer needed. Add nma-data and
+  libnma-data Provides and Obsoletes, make upgrades problemfree
+  for our end-users.
+- Require nma-data by libnma0: the library references the
+  org.gnome.nm-applet schema, which is packaged in nma-data
+  (boo#1157889).
+- Add virtual libnma Provides in the main lib package, make the
+  lang package installable.
+- Inital packaging for openSUSE, version 1.8.26. (forwarded request 783005 from iznogood)</comment>
+    <requestid>783083</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0896154bef2c741b9d99dae4bda51609</srcmd5>
+    <version>1.8.28</version>
+    <time>1587580913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794798</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1f732d9026aa370846fd5bf5bd23f2b8</srcmd5>
+    <version>1.8.28</version>
+    <time>1591652994</time>
+    <user>dimstar_suse</user>
+    <comment>- Make libnma require mobile-broadband-provider-info(bsc#1172499). (forwarded request 811330 from dimstar)</comment>
+    <requestid>811436</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>355a9e03e005dcfc4f8ac499f0b49493</srcmd5>
+    <version>1.8.30</version>
+    <time>1593458084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817298</requestid>
+  </revision>
+</revisionlist>

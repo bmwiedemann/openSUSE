@@ -1,0 +1,5 @@
+<package name="libluksde" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:forensics" package="libluksde"/>
+</package>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d029e8825dc1d31f7e1e17d433f45e7</srcmd5>
+    <version>1.12</version>
+    <time>1507570943</time>
+    <user>dimstar_suse</user>
+    <comment>required for bugzilla adi:39</comment>
+    <requestid>531178</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c6ed9c8cfbf76fee538d29c23c8e5d5</srcmd5>
+    <version>1.13</version>
+    <time>1565362486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721967</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5cc0d6fa38f1a6d3834c07b598b374e7</srcmd5>
+    <version>1.14</version>
+    <time>1571653792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741226</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>022e054cbc87927c8bd1c7eb8a90932b</srcmd5>
+    <version>1.15</version>
+    <time>1580373701</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768345</requestid>
+  </revision>
+</revisionlist>

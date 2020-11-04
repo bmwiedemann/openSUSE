@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>08ef9160dc7a384e311f43c2c5c0a7d1</srcmd5>
+    <version>1.3.11</version>
+    <time>1584964191</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787154</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2746c7747801956722703a310dcdfde1</srcmd5>
+    <version>1.4.1</version>
+    <time>1585342711</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  - Allow dumping the internal state
+  - Plugins Logging API
+  - Support for Signv4
+  - Storage Layer and Buffering
+  - New KeepAlive Support for Network I/O
+  - Config Maps as Configuration Helper
+  - Several new filter</comment>
+    <requestid>788945</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68d640309e22d0a83124b2473d13c206</srcmd5>
+    <version>1.4.4</version>
+    <time>1590506392</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.4.4
+  - Minor bug fix release</comment>
+    <requestid>808236</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a194bed36adb3214ceb36e768424d475</srcmd5>
+    <version>1.4.5</version>
+    <time>1590650111</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.4.5
+  - Minor bug fix release</comment>
+    <requestid>809210</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>302d4c9ac0877cb1c034d40481e0955d</srcmd5>
+    <version>1.4.5</version>
+    <time>1591654151</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround gh#fluent/fluent-bit#1945 by building with -fcommon and disabling LTO
+</comment>
+    <requestid>812615</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c972b197bec08aaeb3f713bdb931556a</srcmd5>
+    <version>1.5.0</version>
+    <time>1594818283</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert workarounds
+- Update to version 1.5.0
+  - https://fluentbit.io/announcements/v1.5.0/</comment>
+    <requestid>820828</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a62ad7627b87603ba0ad0a9c5331a77</srcmd5>
+    <version>1.5.1</version>
+    <time>1595577281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1
+  - https://fluentbit.io/announcements/v1.5.1/</comment>
+    <requestid>822100</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64004cb233dee0c6e50645db71e5eb8a</srcmd5>
+    <version>1.5.3</version>
+    <time>1597519162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3
+  - https://fluentbit.io/announcements/v1.5.3/
+  - https://fluentbit.io/announcements/v1.5.2/</comment>
+    <requestid>826662</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>42aae99d3eee92ec287c55d47a4f490b</srcmd5>
+    <version>1.5.6</version>
+    <time>1601652894</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838779</requestid>
+  </revision>
+</revisionlist>

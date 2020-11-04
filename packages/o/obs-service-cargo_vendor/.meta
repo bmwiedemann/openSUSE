@@ -1,0 +1,5 @@
+<package name="obs-service-cargo_vendor" project="openSUSE:Factory">
+  <title>obs-service-cargo_vendor</title>
+  <description>https://github.com/openSUSE/obs-service-cargo_vendor</description>
+  <devel project="openSUSE:Tools" package="obs-service-cargo_vendor"/>
+</package>

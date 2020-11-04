@@ -1,0 +1,5 @@
+<package name="AusweisApp2" project="openSUSE:Factory">
+  <title>AusweisApp2</title>
+  <description>Official authentication app for German ID cards and residence titles</description>
+  <devel project="security" package="AusweisApp2"/>
+</package>

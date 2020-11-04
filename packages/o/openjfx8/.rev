@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70ca8eb8f5e9132597e6400cb52b2cf7</srcmd5>
+    <version>8.0.202</version>
+    <time>1580152643</time>
+    <user>dimstar_suse</user>
+    <comment>renamed package</comment>
+    <requestid>767612</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b25b5c7f05949397c5b8a949dd23a8cd</srcmd5>
+    <version>8.0.202</version>
+    <time>1602155644</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on systems that don't have the deprecated sys/sysctl.h header
+</comment>
+    <requestid>840179</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>66d9b884e1f847974cdbbaeb3ab60940</srcmd5>
+    <version>8.0.202</version>
+    <time>1602282519</time>
+    <user>dimstar_suse</user>
+    <comment>move out of gradle + fix</comment>
+    <requestid>840272</requestid>
+  </revision>
+</revisionlist>

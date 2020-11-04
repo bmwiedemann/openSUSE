@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8bb2ed6c562255e5357f817373e1eb58</srcmd5>
+    <version>0.4.0</version>
+    <time>1485382921</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission to Factory</comment>
+    <requestid>443697</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2fc6dfd6c231e2cb3c53bab1d7349eea</srcmd5>
+    <version>0.4.1</version>
+    <time>1500975680</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512359</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ebf985730d965ff75471aa66e6554642</srcmd5>
+    <version>0.4.2</version>
+    <time>1501840816</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514244</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>50f7818cd7fdb0b4c22267290210700b</srcmd5>
+    <version>0.4.2</version>
+    <time>1530087696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618972</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf15b5f5751b822bfddbd0f927c6add2</srcmd5>
+    <version>0.5.0</version>
+    <time>1530304606</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream release 0.5.0:
+  * Better validation of JWE
+  * Avoid deprecation warnings
+  * Tested to work with python 3.7</comment>
+    <requestid>619738</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>20a30b8bb7eab941237b19b546cc3c5e</srcmd5>
+    <version>0.5.0</version>
+    <time>1545647932</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659460</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0997ff9c2941db0287f539624ef0d394</srcmd5>
+    <version>0.6.0</version>
+    <time>1553436105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687924</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>170ea02a87fdbd5a9aba0fe620f5e0c8</srcmd5>
+    <version>0.7</version>
+    <time>1587325678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789680</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f12a13951db12495d37236e7e403fc54</srcmd5>
+    <version>0.8</version>
+    <time>1599666489</time>
+    <user>dimstar_suse</user>
+    <comment>- Use constraints on the cryptography dependency
+
+- update to upstream release 0.8
+  * Fix some documentation typos
+  * Rename ambiguous variable
+  * Remove cap on sphinx version
+  * Fix okp key type import
+  * Add method to export Keys ans Sets as dictionaries
+  * Typo rectified
+  * Add secp256k1 curve</comment>
+    <requestid>832630</requestid>
+  </revision>
+</revisionlist>

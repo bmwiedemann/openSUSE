@@ -1,0 +1,5 @@
+<package name="python-click-man" project="openSUSE:Factory">
+  <title>Click Man</title>
+  <description>Automate generation of man pages for Python Click applications.</description>
+  <devel project="devel:languages:python" package="python-click-man"/>
+</package>

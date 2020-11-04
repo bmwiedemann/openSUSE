@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a300ed703807324a5f2558c0d9abc14</srcmd5>
+    <version>0.3.0</version>
+    <time>1601652789</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Add Provides and Obsoletes for the python-azure-synapse package</comment>
+    <requestid>838962</requestid>
+  </revision>
+</revisionlist>

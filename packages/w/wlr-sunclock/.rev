@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>515445ceb1e23422c4bf8d3c6421561f</srcmd5>
+    <version>0.1.0</version>
+    <time>1596802742</time>
+    <user>dimstar_suse</user>
+    <comment>wlr-sunclock</comment>
+    <requestid>824830</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f32034e70d56adffec5b6acac5bcaefa</srcmd5>
+    <version>0.1.1</version>
+    <time>1597064549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.1:
+  * Make colours independant of the Gtk theme</comment>
+    <requestid>825258</requestid>
+  </revision>
+</revisionlist>

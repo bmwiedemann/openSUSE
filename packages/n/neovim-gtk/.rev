@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58cd9825ee70935c4cc05ccee4beee43</srcmd5>
+    <version>0.2.0+git.1570090897.3ace1d2</version>
+    <time>1575106646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750677</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>27422221a31451e8f6ce8f757e120564</srcmd5>
+    <version>0.2.0+git.1575188169.31fd179</version>
+    <time>1575563641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0+git.1575188169.31fd179:
+  * Update text color under cursor
+  * Update README.md
+  * Update rust.yml
+  * Create rust.yml
+  * Major update of dependencies
+  * Cleanup
+  * Create FUNDING.yml
+  * Update README.md
+  * Fix background rendering (#208)
+  * Use f64 instead of i32 for width caulculation (#208)
+  * Try to fix render issues due to changes in pango_1.44 (#208)</comment>
+    <requestid>754205</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>575f6e286e308ea7f2b03d4f3da46f83</srcmd5>
+    <version>0.2.0+git.1579960262.0af8952</version>
+    <time>1580080971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0+git.1579960262.0af8952:
+  * fix build
+  * Fix mouse selection while dragging with leftclick, fixes #185</comment>
+    <requestid>767261</requestid>
+  </revision>
+</revisionlist>

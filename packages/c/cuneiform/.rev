@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7231cedfacf109974f4504d0571c1c94</srcmd5>
+    <version>1.1.0</version>
+    <time>1527582491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607496</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b6d7a07e5fd473e385f217461617dbdc</srcmd5>
+    <version>1.1.0</version>
+    <time>1532361781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624714</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e8f45838af8d3c90a7cf7fc769cf1f84</srcmd5>
+    <version>1.1.0</version>
+    <time>1591990960</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with gcc10
+- Use modern macros in spec file</comment>
+    <requestid>814088</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76c0c6ec445f2b70d0f871b8c8568e0f</srcmd5>
+    <version>1.6</version>
+    <time>1556622379</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>699410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a28729c5b14b5be926a14d25bec75b1</srcmd5>
+    <version>1.6</version>
+    <time>1576506045</time>
+    <user>dimstar_suse</user>
+    <comment>Specify sane java language levels for children projects</comment>
+    <requestid>757278</requestid>
+  </revision>
+</revisionlist>

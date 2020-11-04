@@ -1,0 +1,10 @@
+<package name="ldas-tools-al" project="openSUSE:Factory">
+  <title>LDAS (LIGO Data Analysis System) tools abstraction toolkit</title>
+  <description>LDAS (LIGO Data Analysis System) is a collection of libraries and executables
+aid in the processing of gravitation wave data sets. %{name} provides the
+tools abstraction toolkit for LDAS.
+
+</description>
+  <devel project="science" package="ldas-tools-al"/>
+  <url>https://wiki.ligo.org/Computing/LDASTools</url>
+</package>

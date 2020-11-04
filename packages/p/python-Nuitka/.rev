@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5be5e7c119d95f1e303bd4f55b5b7186</srcmd5>
+    <version>0.6.8.4</version>
+    <time>1600801323</time>
+    <user>dimstar_suse</user>
+    <comment>Python compiler</comment>
+    <requestid>828246</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d77a920565440ab8358fd5712b3dec7d</srcmd5>
+    <version>0.6.9.1</version>
+    <time>1602598627</time>
+    <user>dimstar_suse</user>
+    <comment>- Add debuginfo to BuildRequires and Suggests
+- Enable Brotli, Pwm, and Tk tests
+- Update to v0.6.9.1
+</comment>
+    <requestid>840108</requestid>
+  </revision>
+</revisionlist>

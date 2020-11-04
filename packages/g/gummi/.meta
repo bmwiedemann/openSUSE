@@ -1,0 +1,9 @@
+<package name="gummi" project="openSUSE:Factory">
+  <title>Simple LaTeX editor</title>
+  <description>Gummi is a LaTeX editor written using the GTK+ toolkit. It was designed with
+simplicity in mind, but is useful for both novice and advanced LaTeX writers.
+
+</description>
+  <devel project="Publishing" package="gummi"/>
+  <url>https://github.com/alexandervdm/gummi</url>
+</package>

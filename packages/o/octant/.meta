@@ -1,0 +1,6 @@
+<package name="octant" project="openSUSE:Factory">
+  <title></title>
+  <description>A highly extensible platform for developers to better understand the complexity of Kubernetes clusters
+https://github.com/vmware-tanzu/octant</description>
+  <devel project="devel:kubic" package="octant"/>
+</package>

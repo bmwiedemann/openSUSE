@@ -1,0 +1,6 @@
+<package name="python-pydash" project="openSUSE:Factory">
+  <title></title>
+  <description>The kitchen sink of Python utility libraries for doing &quot;stuff&quot; in a functional way.
+Based on the Lo-Dash Javascript library.</description>
+  <devel project="devel:languages:python" package="python-pydash"/>
+</package>

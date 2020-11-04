@@ -1,0 +1,8 @@
+<package name="python-ldapdomaindump" project="openSUSE:Factory">
+  <title>Active Directory information dumper via LDAP</title>
+  <description>Active Directory information dumper via LDAP.
+
+</description>
+  <devel project="devel:languages:python" package="python-ldapdomaindump"/>
+  <url>https://github.com/dirkjanm/ldapdomaindump/</url>
+</package>

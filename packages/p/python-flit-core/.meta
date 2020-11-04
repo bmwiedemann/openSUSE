@@ -1,0 +1,5 @@
+<package name="python-flit-core" project="openSUSE:Factory">
+  <title>python-flit-core</title>
+  <description>Distribution-building parts of Flit</description>
+  <devel project="devel:languages:python" package="python-flit-core"/>
+</package>

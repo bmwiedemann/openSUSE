@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>229bf4db4da55e8f225bd3499ebd9b42</srcmd5>
+    <version>1.7.11</version>
+    <time>1568983870</time>
+    <user>maxlin_factory</user>
+    <comment>Take three of alembic, an important library, that the current blender will depend upon. Therefore, it is part of official blender builds as well.</comment>
+    <requestid>725699</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16d0453bd58ac50bb686ba7a0a4ac6cf</srcmd5>
+    <version>1.7.12</version>
+    <time>1575463809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750506</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eedf124b501b4fc23ddd40938adf527a</srcmd5>
+    <version>1.7.13</version>
+    <time>1597746337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827519</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>264445853ef521812a7a9c98b91c9299</srcmd5>
+    <version>1.7.14</version>
+    <time>1598726141</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829725</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eaf8786768a1d884606d20b57e613634</srcmd5>
+    <version>1.7.15</version>
+    <time>1599862403</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.15:
+  * Fuzzer issues 25166, 25175, 25185, 25204, and 25236 all test for illegal
+  meta data index values which we more carefully test.
+  * Fuzzer issue 25192 turned up a leak from a malformed file causing OrData to
+  throw.</comment>
+    <requestid>833804</requestid>
+  </revision>
+</revisionlist>

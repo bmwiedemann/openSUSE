@@ -1,0 +1,9 @@
+<package name="mingw64-gmp" project="openSUSE:Factory">
+  <title>The GNU MP Library</title>
+  <description>A library for calculating huge numbers (integer and floating point).
+
+
+</description>
+  <devel project="windows:mingw:win64" package="mingw64-gmp"/>
+  <url>http://gmplib.org/</url>
+</package>

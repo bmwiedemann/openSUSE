@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae8ddd6810610f3c5da210902f521b81</srcmd5>
+    <version>0.4~alpha3</version>
+    <time>1598885371</time>
+    <user>dimstar_suse</user>
+    <comment>A graphical viewer for ddrescue log/map files
+
+Fixed recent build fail</comment>
+    <requestid>830463</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>acc0d4178c2b34cd4fd33a4d354663a4</srcmd5>
+    <version>0.4~alpha4</version>
+    <time>1599507276</time>
+    <user>dimstar_suse</user>
+    <comment>- remove use-getters-for-fields-in-other-classes.patch, integrated upstream.
+- remove pie.patch, setting -fPIE does not work anymore.
+- remove ddrescueview.desktop, upstream has a desktop file.
+- update to version 0.4 apha 4:
+ - Updated to compile on FPC 3.2.0 without errors. Thanks to Peter Green for the patch.
+ - It's now possible to select a range on the Zoom Bar using right click dragging, just like on the Block Grid.
+ - Added an option in the Settings to zoom in on mouse position without centering the Block Grid on that position.
+     This is now the default. It seems more intuitive when the blocks previously under the mouse 
+     stay under the mouse after zooming in or out.
+ - Added an Option 'Center on Current Position' to the View menu, which keeps the Block Grid centered on the 
+     current rescue position. Handy to keep the rescue position on screen when zoomed in. 
+     This overrides much of the usual zooming functionality and deactivates interaction with the Zoom Bar.
+ - Zooming and scrolling in large map files is now considerably faster.
+ - Application title (as reported to the OS, for the task bar etc.) now shows loaded file name.
+ - The program will now make a second attempt to refresh the mapfile, when ddrescue is currently rewriting it.
+ - New application icon in multiple sizes up to 256x256
+ - Reduced compiler warnings and hints
+</comment>
+    <requestid>832621</requestid>
+  </revision>
+</revisionlist>

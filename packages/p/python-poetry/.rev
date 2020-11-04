@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b8c65195190951e7b17694b44390e81</srcmd5>
+    <version>1.0.0</version>
+    <time>1576676820</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging effort.</comment>
+    <requestid>757719</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>88fc2bbd32f0a7ffa389998a2045c7e1</srcmd5>
+    <version>1.0.0</version>
+    <time>1576927874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758306</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35bfe9b4bd75a71af418aafdec227c57</srcmd5>
+    <version>1.0.5</version>
+    <time>1585342619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787752</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ebcf771fa9001b749f7290f27d1d818c</srcmd5>
+    <version>1.0.5</version>
+    <time>1589892556</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>807041</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe2c1a4e0d11616dcf0bbeae49142fc1</srcmd5>
+    <version>1.0.9</version>
+    <time>1594045794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818847</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f4e230f92d223bb8082383a09fafcca3</srcmd5>
+    <version>1.0.9</version>
+    <time>1594706312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820530</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5d2382536aa4730b83003655b388921f</srcmd5>
+    <version>1.0.9</version>
+    <time>1596036993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823428</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dcb15b294568c9bce31a88c41eeebce9</srcmd5>
+    <version>1.0.10</version>
+    <time>1596652150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824493</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cfd964b470066948d71805e7e9a20be9</srcmd5>
+    <version>1.1.4</version>
+    <time>1603961346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844318</requestid>
+  </revision>
+</revisionlist>

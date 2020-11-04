@@ -1,0 +1,5 @@
+<package name="libretro-81" project="openSUSE:Factory">
+  <title>81 libretro core for ZX81 emulation</title>
+  <description>81-libretro is an work in progress port of the EightyOne (a.k.a. THE Sinclair Emulator) to libretro. It's being developed on Windows with MinGW (64 bits) and Debian 8, and tested on RetroArch 1.2 frontend.</description>
+  <devel project="Emulators" package="libretro-81"/>
+</package>

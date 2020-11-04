@@ -1,0 +1,10 @@
+<package name="metslib" project="openSUSE:Factory">
+  <title>Metaheuristic modeling framework and optimization toolkit in modern C++</title>
+  <description>METSlib is a metaheuristic modeling framework and optimization toolkit in modern C++ released as Free/Libre/Open Source Software.
+
+Model and algorithms are modular: any search algorithm can be applied to the same model. On the other hand no assumption is made on the model, you can work on any problem type: timetabling, assignment problems, vehicle routing, bin-packing and so on.
+
+Once you have implemented your model in the problem framework, the library makes easy testing different Tabu Search strategies or even different algorithms (Simulated Annealing or other local search based algorithms) with a few lines of code.</description>
+  <devel project="science" package="metslib"/>
+  <url>https://projects.coin-or.org/metslib</url>
+</package>

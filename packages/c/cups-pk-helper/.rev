@@ -1,0 +1,251 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>bc543550633b8e4fcb36ec221e42f4f8</srcmd5>
+    <version>0.0.3</version>
+    <time>1235705457</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0514442b923dc3cac623a44410a0a82c</srcmd5>
+    <version>0.0.4</version>
+    <time>1236295396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0514442b923dc3cac623a44410a0a82c</srcmd5>
+    <version>0.0.4</version>
+    <time>1236295396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3fcda67e09b16b0d6831771f836f4e87</srcmd5>
+    <version>0.1.0</version>
+    <time>1267786139</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cups-pk-helper based on submit request 33920 from user dimstar
+</comment>
+    <requestid>33920</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>29a7d42ca1faa6632b647a911661bde5</srcmd5>
+    <version>0.1.0</version>
+    <time>1268923274</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bebaacab5e67c498f9c8f58af060631e</srcmd5>
+    <version>0.1.0</version>
+    <time>1270058275</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/cups-pk-helper based on submit request 36283 from user vuntz
+</comment>
+    <requestid>36283</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>bebaacab5e67c498f9c8f58af060631e</srcmd5>
+    <version>0.1.0</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>bebaacab5e67c498f9c8f58af060631e</srcmd5>
+    <version>0.1.0</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2aab616274ae1ba4d60945647db17769</srcmd5>
+    <version>0.1.1</version>
+    <time>1295051774</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58222 from user vuntz
+</comment>
+    <requestid>58222</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>89c20cf951dd93136f281e9018ff9357</srcmd5>
+    <version>0.1.1</version>
+    <time>1295051781</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58222
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>89c20cf951dd93136f281e9018ff9357</srcmd5>
+    <version>0.1.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ed7ed7fa0cd69fc4dfc9b643e11bba32</srcmd5>
+    <version>0.1.2</version>
+    <time>1304691118</time>
+    <user>saschpe</user>
+    <comment>New upstream release</comment>
+    <requestid>69765</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ae1d78f7a1d372385fdb01482712ffcc</srcmd5>
+    <version>0.1.2</version>
+    <time>1304691134</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69765
+</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b50d833523c4566987e2c86a50d0a6f5</srcmd5>
+    <version>0.1.2</version>
+    <time>1308302548</time>
+    <user>saschpe</user>
+    <comment>Drop _service (forwarded request 73951 from vuntz)</comment>
+    <requestid>73962</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>b36821a1dd6232ad177dbd65f3edb18a</srcmd5>
+    <version>0.1.2</version>
+    <time>1308302561</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73962
+</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c6bd5b1af6d40b92b13acaed1b42ee7d</srcmd5>
+    <version>0.1.3</version>
+    <time>1309940018</time>
+    <user>saschpe</user>
+    <comment>Update to 0.1.3 (forwarded request 75420 from vuntz)</comment>
+    <requestid>75442</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>69ac7b17c21b2ff030e17c31158c185b</srcmd5>
+    <version>0.2.0</version>
+    <time>1312363949</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>77774</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b10916c3f4c7ff9fa0284f12d38760dd</srcmd5>
+    <version>0.2.1</version>
+    <time>1317542110</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85616</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>b10916c3f4c7ff9fa0284f12d38760dd</srcmd5>
+    <version>0.2.1</version>
+    <time>1319181838</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>699c2a3fc8d3eb3becf7122fd9ede762</srcmd5>
+    <version>0.2.1</version>
+    <time>1323191102</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6e9a0bfaaf651119091119bdeed7275b</srcmd5>
+    <version>0.2.2</version>
+    <time>1332415904</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.2 (forwarded request 109767 from vuntz)</comment>
+    <requestid>110317</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>6e9a0bfaaf651119091119bdeed7275b</srcmd5>
+    <version>0.2.2</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6c3c9a824fffaafcb60e6898d70bfa95</srcmd5>
+    <version>0.2.3</version>
+    <time>1350379449</time>
+    <user>coolo</user>
+    <comment>Update to 0.2.3 (forwarded request 137976 from dimstar)</comment>
+    <requestid>138036</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ac610f35b6423a2fd82a190fe35baf00</srcmd5>
+    <version>0.2.4</version>
+    <time>1350629139</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.2.4, builds locally, I got tired of waiting for obs (forwarded request 138073 from Zaitor)</comment>
+    <requestid>138637</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3c58e5124f3a30288537f0f3a7f9ed7c</srcmd5>
+    <version>0.2.4</version>
+    <time>1354711703</time>
+    <user>namtrac</user>
+    <comment>minor fix</comment>
+    <requestid>144058</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>3c58e5124f3a30288537f0f3a7f9ed7c</srcmd5>
+    <version>0.2.4</version>
+    <time>1359108790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7cd83ff5076b64913b12d6de80d812a4</srcmd5>
+    <version>0.2.5</version>
+    <time>1372144998</time>
+    <user>coolo</user>
+    <comment>Update to ver 0.2.5 (forwarded request 179147 from dimstar)</comment>
+    <requestid>180643</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>7cd83ff5076b64913b12d6de80d812a4</srcmd5>
+    <version>0.2.5</version>
+    <time>1379662192</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>7cd83ff5076b64913b12d6de80d812a4</srcmd5>
+    <version>0.2.5</version>
+    <time>1409300727</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d761c814482de6d9203f697a8794dbea</srcmd5>
+    <version>0.2.6</version>
+    <time>1456433609</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>360164</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>b8ac205385324f5b8be080a4b38c71dc</srcmd5>
+    <version>0.2.6</version>
+    <time>1493455701</time>
+    <user>dimstar_suse</user>
+    <comment>Refer to particular bug ids for the utf8 fixing. (forwarded request 488876 from yfjiang)</comment>
+    <requestid>490189</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>3936edc52c1d596f0d04fc103c1f3cd1</srcmd5>
+    <version>0.2.6</version>
+    <time>1521051819</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583551 from dimstar)</comment>
+    <requestid>584712</requestid>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>5bab38dacb7cc76718b9f566ca5e034c</srcmd5>
+    <version>0.2.6</version>
+    <time>1579031897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763359</requestid>
+  </revision>
+</revisionlist>

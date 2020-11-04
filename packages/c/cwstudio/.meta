@@ -1,0 +1,5 @@
+<package name="cwstudio" project="openSUSE:Factory">
+  <title>Fast, portable and lightweight Morse code signals generator</title>
+  <description>CWStudio is lightweight, portable, almost library-independent and computationally efficient generator of CW signals for telegraphy training purposes. It can create sound with maximum similarity to real air,  simulating many difficulties.   </description>
+  <devel project="hardware:sdr" package="cwstudio"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="twups" project="openSUSE:Factory">
+  <title>Tumbleweed Update Scrutinizer</title>
+  <description>Fetches snapshot scores from Boombatower and can prompt for update based on stability ratings. Searching the snapshot database is also allowed with regex support.</description>
+  <devel project="utilities" package="twups"/>
+</package>

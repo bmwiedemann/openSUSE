@@ -1,0 +1,14 @@
+<package name="python-Sphinx2" project="openSUSE:Factory">
+  <title></title>
+  <description>Sphinx is a tool that makes it easy to create intelligent and beautiful
+documentation for Python projects (or other documents consisting of multiple
+reStructuredText sources), written by Georg Brandl.  It was originally created
+for the new Python documentation, and has excellent facilities for Python
+project documentation, but C/C++ is supported as well, and more languages are
+planned.
+ 
+Sphinx uses reStructuredText as its markup language, and many of its strengths
+come from the power and straightforwardness of reStructuredText and its parsing
+and translating suite, the Docutils.</description>
+  <devel project="devel:languages:python" package="python-Sphinx2"/>
+</package>

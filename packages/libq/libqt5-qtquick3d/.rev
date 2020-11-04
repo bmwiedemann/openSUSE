@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6db28ab283cc5c3a8b488e31b4f192e9</srcmd5>
+    <version>5.15.0~alpha</version>
+    <time>1582810514</time>
+    <user>dimstar_suse</user>
+    <comment>New package, now hopefully fixed</comment>
+    <requestid>779821</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a562fe97922c96d3ece39c7aa5be25f6</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779680</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809388</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ed5bed7b0a62a5e93a99e29f6dae7305</srcmd5>
+    <version>5.15.1</version>
+    <time>1600179791</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833648</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>626215623e21f82fdd59f581c408d099</srcmd5>
+    <version>5.15.1</version>
+    <time>1601488500</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the system assimp package for openSUSE Tumbleweed.
+- Add patch suggested by upstream to fix build:
+  * 0001-Fix-build-with-the-system-assimp.patch</comment>
+    <requestid>838732</requestid>
+  </revision>
+</revisionlist>

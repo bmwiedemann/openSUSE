@@ -1,0 +1,5 @@
+<package name="python-pytest-toolbox" project="openSUSE:Factory">
+  <title></title>
+  <description>Numerous plugins for pytest</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-toolbox"/>
+</package>

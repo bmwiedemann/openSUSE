@@ -1,0 +1,12 @@
+<package name="perl-UNIVERSAL-moniker" project="openSUSE:Factory">
+  <title>UNIVERAL::moniker</title>
+  <description>Class names in Perl often don't sound great when spoken, or look good when
+written in prose. For this reason, we tend to say things like &quot;customer&quot; or
+&quot;basket&quot; when we are referring to 'My::Site::User::Customer' or
+'My::Site::Shop::Basket'. We thought it would be nice if our classes knew
+what we would prefer to call them.
+
+This module will add a 'moniker' (and 'plural_moniker') method to
+'UNIVERSAL', and so to every class or module.</description>
+  <devel project="devel:languages:perl" package="perl-UNIVERSAL-moniker"/>
+</package>

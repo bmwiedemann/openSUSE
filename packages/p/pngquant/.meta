@@ -1,0 +1,8 @@
+<package name="pngquant" project="openSUSE:Factory">
+  <title>Converts 24/32-bit RGBA PNGs to 8-bit palette with alpha channel preserved</title>
+  <description>pngquant is a command-line utility and a library for lossy compression of PNG images.
+
+The conversion reduces file sizes significantly (often as much as 70%) and preserves full alpha transparency. Generated images are compatible with all modern web browsers, and have better fallback in IE6 than 24-bit PNGs.
+</description>
+  <devel project="graphics" package="pngquant"/>
+</package>

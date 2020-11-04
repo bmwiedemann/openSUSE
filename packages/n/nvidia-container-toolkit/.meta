@@ -1,0 +1,5 @@
+<package name="nvidia-container-toolkit" project="openSUSE:Factory">
+  <title>NVIDIA Container Toolkit</title>
+  <description>https://github.com/NVIDIA/container-toolkit</description>
+  <devel project="devel:kubic" package="nvidia-container-toolkit"/>
+</package>

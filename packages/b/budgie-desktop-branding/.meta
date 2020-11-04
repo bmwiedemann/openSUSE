@@ -1,0 +1,5 @@
+<package name="budgie-desktop-branding" project="openSUSE:Factory">
+  <title>Branding of the Budgie Desktop Environment</title>
+  <description>This package provides the look and feel for the Budgie desktop environment.</description>
+  <devel project="X11:Solus" package="budgie-desktop-branding"/>
+</package>

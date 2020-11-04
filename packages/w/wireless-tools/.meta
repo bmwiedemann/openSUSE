@@ -1,0 +1,7 @@
+<package name="wireless-tools" project="openSUSE:Factory">
+  <title>Tools for a wireless LAN</title>
+  <description>This package contains the wireless tools, used to manipulate the
+wireless extensions. The wireless extension is an interface that allows
+you to set wireless LAN specific parameters and get specific stats.</description>
+  <devel project="hardware" package="wireless-tools"/>
+</package>

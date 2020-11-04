@@ -1,0 +1,5 @@
+<package name="firectl" project="openSUSE:Factory">
+  <title>firectl</title>
+  <description>firectl is a command-line tool to run Firecracker microVMs</description>
+  <devel project="Virtualization" package="firectl"/>
+</package>

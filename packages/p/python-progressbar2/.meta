@@ -1,0 +1,5 @@
+<package name="python-progressbar2" project="openSUSE:Factory">
+  <title></title>
+  <description>A Python Progressbar library to provide visual (yet text based) progress to long running operations.</description>
+  <devel project="devel:languages:python" package="python-progressbar2"/>
+</package>

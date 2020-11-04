@@ -1,0 +1,5 @@
+<package name="openmoji-fonts" project="openSUSE:Factory">
+  <title>OpenMoji fonts</title>
+  <description>OpenMoji was developed with visual guidelines that are not linked to a specific branding. In addition, the goal was to design emojis that integrate well in combination with text.</description>
+  <devel project="M17N:fonts" package="openmoji-fonts"/>
+</package>

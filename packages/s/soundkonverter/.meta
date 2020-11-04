@@ -1,0 +1,8 @@
+<package name="soundkonverter" project="openSUSE:Factory">
+  <title>Audio file converter, CD ripper and Replay Gain tool</title>
+  <description>
+soundKonverter is a frontend to various audio converters.
+  </description>
+  <devel project="multimedia:apps" package="soundkonverter"/>
+  <url>https://github.com/dfaust/soundkonverter</url>
+</package>

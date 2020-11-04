@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1e15d46e456e4da26221ac9c9ac73bf</srcmd5>
+    <version>1.2.1</version>
+    <time>1575282570</time>
+    <user>dimstar_suse</user>
+    <comment>A sort of split from alsa package
+
+Now required by the upcoming alsa-1.2.1 release</comment>
+    <requestid>750709</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>828803a36c429ad186eb5cbf75fee42b</srcmd5>
+    <version>1.2.1.2</version>
+    <time>1579867522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766328</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fa5dfdccd460b962fbe5c830e6066766</srcmd5>
+    <version>1.2.1.2</version>
+    <time>1582299629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774845</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28e8ebda5817da2b058b7d870727146e</srcmd5>
+    <version>1.2.2</version>
+    <time>1584350187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784670</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2d44e91ac203bc2656e5c6c07d17dfab</srcmd5>
+    <version>1.2.2</version>
+    <time>1588023015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796549</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>63aaba549ba9ba2180b102540b9d2816</srcmd5>
+    <version>1.2.2</version>
+    <time>1591101216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809165</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a239dac95e65783dbf3f3969130ddb15</srcmd5>
+    <version>1.2.3</version>
+    <time>1591879560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812899</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9b26efb6dec0055735654da938af8fc6</srcmd5>
+    <version>1.2.3</version>
+    <time>1602155150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838540</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16585da03fa47c535c8b12fa74c3ffa9</srcmd5>
+    <version>1.2.4</version>
+    <time>1603545349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843204</requestid>
+  </revision>
+</revisionlist>

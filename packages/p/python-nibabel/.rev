@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b6cfc7ef21e6715f11ea9924950ce8f</srcmd5>
+    <version>2.4.1</version>
+    <time>1564302120</time>
+    <user>dimstar_suse</user>
+    <comment>Tool to access multiple neuroimaging data formats</comment>
+    <requestid>718909</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dee67395938c10a6405e2cd6148b675b</srcmd5>
+    <version>2.4.1</version>
+    <time>1564483149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719706</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a42461331dd2a2f2dc3de2716880c337</srcmd5>
+    <version>2.5.1</version>
+    <time>1574242121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749762</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a68653d532fd6e4726639ad594310c1a</srcmd5>
+    <version>3.0.1</version>
+    <time>1583526483</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Test failed by using array method on tuple. (pr/860) (Ben Darwin, reviewed by CM)
+  * Validate ExpiredDeprecationErrors, promoted by 3.0 release from DeprecationWarnings. (pr/857) (CM)
+  * Improve testing of data scaling in ArrayProxy API (pr/847) (CM, reviewed by Alejandro de la Vega)
+  * Document SpatialImage.slicer interface (pr/846) (CM)
+  * get_fdata(dtype=np.float32) will attempt to avoid casting data to np.float64 when scaling parameters would otherwise promote the data type unnecessarily. (pr/833) (CM, reviewed by Ross Markello)
+  * ArraySequence now supports a large set of Python operators to combine or update in-place. (pr/811) (MC, reviewed by Serge Koudoro, Philippe Poulin, CM, MB)
+  * Warn, rather than fail, on DICOMs with unreadable Siemens CSA tags (pr/818) (Henry Braun, reviewed by CM)
+  * Improve clarity of coordinate system tutorial (pr/823) (Egor Panfilov, reviewed by MB)</comment>
+    <requestid>782024</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4440cfd0a05f13f726fae5470d7062ee</srcmd5>
+    <version>3.0.1</version>
+    <time>1590506423</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808042</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8c072547b3c920336f9c868411408e73</srcmd5>
+    <version>3.1.1</version>
+    <time>1594387939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819969</requestid>
+  </revision>
+</revisionlist>

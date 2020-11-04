@@ -1,0 +1,8 @@
+<package name="wsl-appx" project="openSUSE:Factory">
+  <title></title>
+  <description>this package builds the WSL Appx package. It is build disabled here and builds in openSUSE:Factory:WSL instead</description>
+  <devel project="Virtualization:WSL" package="wsl-appx"/>
+  <build>
+    <disable/>
+  </build>
+</package>

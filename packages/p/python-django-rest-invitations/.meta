@@ -1,0 +1,5 @@
+<package name="python-django-rest-invitations" project="openSUSE:Factory">
+  <title></title>
+  <description>A set of Django REST API endpoints to handle invitations</description>
+  <devel project="devel:languages:python:django" package="python-django-rest-invitations"/>
+</package>

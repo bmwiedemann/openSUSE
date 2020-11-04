@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3f5a1e0009fbde059a14790d0f3adfa</srcmd5>
+    <version>4.6.1</version>
+    <time>1585760931</time>
+    <user>dimstar_suse</user>
+    <comment>needed for dash</comment>
+    <requestid>790039</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af560ced43f8b42494a9178149794f78</srcmd5>
+    <version>4.6.2</version>
+    <time>1587581411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795468</requestid>
+  </revision>
+</revisionlist>

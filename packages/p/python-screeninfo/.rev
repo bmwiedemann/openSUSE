@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>33702c359ef650da1b78e8340604fee0</srcmd5>
+    <version>0.6.5</version>
+    <time>1587839588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797194</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1cf12c81c26e7ef73e732ef0638b0c69</srcmd5>
+    <version>0.6.5</version>
+    <time>1589197522</time>
+    <user>dimstar_suse</user>
+    <comment>- Add use_dataclasses_when_needed.patch patch.
+- Add python-dataclasses for leap. 
+
+  * No changelog was made available.</comment>
+    <requestid>802646</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="ceph-grafana-image" project="openSUSE:Factory">
+  <title>Grafana dashboards for Ceph</title>
+  <description>Container image which includes dashboards used by Ceph</description>
+  <devel project="filesystems:ceph" package="ceph-grafana-image"/>
+</package>

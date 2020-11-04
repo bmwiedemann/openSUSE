@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>55c895562799b3db924c8355b5a56d01</srcmd5>
+    <version>1.3.0</version>
+    <time>1576014276</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686</comment>
+    <requestid>755542</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7a974ea4b7b4528fa03d314f046b9bf2</srcmd5>
+    <version>1.3.0</version>
+    <time>1579346282</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686 (forwarded request 765301 from pgajdos)</comment>
+    <requestid>765305</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2a40f0e8f1a440aa418bc3d5269916b8</srcmd5>
+    <version>1.3.0</version>
+    <time>1579867922</time>
+    <user>dimstar_suse</user>
+    <comment>- the pytest issue in 15 will be fixed on python rpm macros level</comment>
+    <requestid>766818</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bc5d65583945bd9c7c93b0d027ad14db</srcmd5>
+    <version>1.3.2</version>
+    <time>1586869889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2 (no changelog) (forwarded request 793767 from polslinux)</comment>
+    <requestid>793769</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad808c5a36a1d110ed54be04c339d3f7</srcmd5>
+    <version>1.3.3</version>
+    <time>1596565400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.3
+  * Expose additional list settings.
+  * Correct description of Digest Frequency.
+  * Added links to Reply-To munging articles.
+  * Fix &quot;Show Headers&quot; button to show the held message headers in the
+    held message popup.
+  * Fix the held message popup structure and increase the max width of the popup
+    to be 800px(modal-lg) for larger screens.
+  * Fix FILTER_VHOST = True option to try to find the email host corresponding
+    to the requesting web host.
+  * Allow specifying a reason when rejecting a held message.
+  * Allow users to set their preferred language in their preferences.
+  * Add support to ban addresses for the entire Mailman installation.
+  * Un-handled HTTPError exception raised from MailmanClient now results in an
+    error page and proper logging instead of mysterious KeyError in logs.
+  * Change List settings navigation to be vertical instead of horizontal.
+  * Move bounce processing settings into a new vertical tab for better
+    visibility.
+  * Add URL to edit the Web host for each domain in Domain Index page. Also, show
+    the SITE_ID for each webhost. (forwarded request 824271 from hellcp)</comment>
+    <requestid>824274</requestid>
+  </revision>
+</revisionlist>

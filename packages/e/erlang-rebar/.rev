@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2064eb50bda6dd44f3765f32867cf48c</srcmd5>
+    <version>2.6.1+git20151013.5d73a8d</version>
+    <time>1446208975</time>
+    <user>dimstar_suse</user>
+    <comment>try again for leap</comment>
+    <requestid>339262</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb247918761c251cd6bf2fbd8e843158</srcmd5>
+    <version>2.6.1+git20160115.c534f8a</version>
+    <time>1453280108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354773</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>63215226e6544c2ce63acd01c414b4df</srcmd5>
+    <version>2.6.1+git20160413.9281b84</version>
+    <time>1464594966</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398056</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ebf251ddf3aac3acf8df871efdb56d0f</srcmd5>
+    <version>2.6.4+git20160922.576e121</version>
+    <time>1475359755</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>432077</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c99daadcbeb934581aeb7d9233bdf385</srcmd5>
+    <version>2.6.4+git20160922.576e121</version>
+    <time>1500670199</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511574</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c9ac031f149bb791515653b5d94fdd19</srcmd5>
+    <version>2.6.4+git20160922.576e121</version>
+    <time>1522596435</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>592752</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fbd9cc21a7c2db7a240d6bf32b87f56e</srcmd5>
+    <version>2.6.4+git20180201.b6d3094</version>
+    <time>1536327663</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>633562</requestid>
+  </revision>
+</revisionlist>

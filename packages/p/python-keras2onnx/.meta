@@ -1,0 +1,5 @@
+<package name="python-keras2onnx" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-keras2onnx"/>
+</package>

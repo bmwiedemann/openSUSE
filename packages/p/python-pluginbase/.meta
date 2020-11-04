@@ -1,0 +1,8 @@
+<package name="python-pluginbase" project="openSUSE:Factory">
+  <title>Module for the development of flexible plugin systems</title>
+  <description>PluginBase is a module for Python that enables the development of flexible plugin systems.
+
+</description>
+  <devel project="devel:languages:python" package="python-pluginbase"/>
+  <url>https://github.com/mitsuhiko/pluginbase</url>
+</package>

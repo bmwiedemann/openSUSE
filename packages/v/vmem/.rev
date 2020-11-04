@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>124844f7313fbbaeaa16e808c5cce718</srcmd5>
+    <version>1.8</version>
+    <time>1583526439</time>
+    <user>dimstar_suse</user>
+    <comment>vmem was split out of pmdk 1.8 and now has its own package</comment>
+    <requestid>781098</requestid>
+  </revision>
+</revisionlist>

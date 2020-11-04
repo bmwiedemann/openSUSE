@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>321c5e5f4a82f32a2a38b866b080f7b6</srcmd5>
+    <version>1.8.0</version>
+    <time>1590650456</time>
+    <user>maxlin_factory</user>
+    <comment>watson</comment>
+    <requestid>809689</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f81df5731dc79798660bfaa4baf4909</srcmd5>
+    <version>1.9.0</version>
+    <time>1590780235</time>
+    <user>maxlin_factory</user>
+    <comment>- Use Supplements: packageand(%{name}:bash) instead of Suggests
+
+- Install bash, fish and zsh completions
+
+- Update to 1.9.0:
+  Added:
+  * Improve Arrow 0.15.0 support after changes in arrow.get() behavior
+  (#296)
+  * Watson now suggests correct command if users make small typo (#318)
+  Changed:
+  * Always show total time at bottom of report (#356)
+  * Use the default system newline character for CSV output (#366).
+  Fixed:
+  * Stylize prompt to create new project or tag (#310).
+  * Aggregate calculates wrong time if used with --current (#293)
+  * The start command now correctly checks if project is empty (#322)
+  * Aggregate ignores frames that crosses aggregate boundary (#248)
+  * The report and aggregate commands with --json option now correctly
+    encode Arrow objects (#329)</comment>
+    <requestid>809905</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a65777afe3afa9f40d293bfee99611b2</srcmd5>
+    <version>1.9.0</version>
+    <time>1591381315</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Requires on python3-click-didyoumean
+- Add watson-arrow-version.patch:
+  We have a newer python-arrow version which still works</comment>
+    <requestid>811793</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>523891f54fcef512a02ff6c946234224</srcmd5>
+    <version>1.10.0</version>
+    <time>1594045856</time>
+    <user>dimstar_suse</user>
+    <comment>- Upddate to 1.10.0:
+  Added:
+  * Log output order can now be controlled via the --reverse/--no-reverse
+  flag and the reverse_log configuration option (#369)
+  * Add --at flag to the start and restart commands (#364).
+  * Add --color and --no-color flags to force output to be colored or not
+  respectively (#350).
+  Changed:
+  * Require latest Arrow version 0.15.6 to support ISO week dates (#380)
+  Fixed:
+  * Make after-edit-check ensure that edited time stamps are not in the
+  future (#381)
+- Remove watson-arrow-version.patch:
+  This release depends on python-arrow 0.15.6 anyways</comment>
+    <requestid>818831</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-goobook" project="openSUSE:Factory">
+  <title>python-goobook</title>
+  <description>Access your Google contacts from the command line.</description>
+  <devel project="devel:languages:python" package="python-goobook"/>
+</package>

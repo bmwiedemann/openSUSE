@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2189c2dcbce1482a8b44a0bd6ac8f1c5</srcmd5>
+    <version>0.10.2</version>
+    <time>1558516317</time>
+    <user>dimstar_suse</user>
+    <comment>A Jupyter widget for dynamic Leaflet maps
+
+- Update to 0.10.2
+- Fix dependencies
+</comment>
+    <requestid>702896</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4116c9b6d8a1965fb4564e4823049c9c</srcmd5>
+    <version>0.11.4</version>
+    <time>1574551572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749330</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>09b8f20a58d2310def798c70211f450f</srcmd5>
+    <version>0.11.7</version>
+    <time>1579195238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764789</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>96c52fda308ffa24d920dcded1b4088a</srcmd5>
+    <version>0.12.1</version>
+    <time>1580300344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768095</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>03816360992c1f50e3e1305aeae0edb0</srcmd5>
+    <version>0.12.2</version>
+    <time>1581368180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773173</requestid>
+  </revision>
+</revisionlist>

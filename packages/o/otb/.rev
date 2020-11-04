@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>06607c2daf5a85e2c74e1824c5bc51ba</srcmd5>
+    <version>6.6.1</version>
+    <time>1573164934</time>
+    <user>dimstar_suse</user>
+    <comment>Required for qgis
+Please add to Staging:adi:30</comment>
+    <requestid>725847</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4f8e2464a605374b49d6e537560d0fd5</srcmd5>
+    <version>6.6.1</version>
+    <time>1573223319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746581</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>062f4207f941bd287cbb9e7c909d482d</srcmd5>
+    <version>7.0.0</version>
+    <time>1575039582</time>
+    <user>dimstar_suse</user>
+    <comment>My last try</comment>
+    <requestid>751848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40d0083a0508fe4e4cd278edad640d35</srcmd5>
+    <version>7.1.0</version>
+    <time>1585842253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790844</requestid>
+  </revision>
+</revisionlist>

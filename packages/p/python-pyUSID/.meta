@@ -1,0 +1,5 @@
+<package name="python-pyUSID" project="openSUSE:Factory">
+  <title>python-pyUSID</title>
+  <description>Python framework for storing, visualizing, and processing spectroscopy, imaging or any observational / experimental data</description>
+  <devel project="devel:languages:python:numeric" package="python-pyUSID"/>
+</package>

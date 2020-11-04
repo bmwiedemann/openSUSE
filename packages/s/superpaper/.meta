@@ -1,0 +1,5 @@
+<package name="superpaper" project="openSUSE:Factory">
+  <title>superpaper</title>
+  <description>Superpaper is an advanced multi monitor wallpaper manager for Linux and Windows operating systems, with partial and untested support for Mac OS X.</description>
+  <devel project="X11:common:Factory" package="superpaper"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="silan" project="openSUSE:Factory">
+  <title>silan</title>
+  <description></description>
+  <devel project="multimedia:apps" package="silan"/>
+</package>

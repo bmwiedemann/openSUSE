@@ -1,0 +1,235 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>32552fbc3b69e90d5b2f67529a832a2c</srcmd5>
+    <version>3.0</version>
+    <time>1168904296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="141">
+    <srcmd5>32552fbc3b69e90d5b2f67529a832a2c</srcmd5>
+    <version>3.0</version>
+    <time>1168904296</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="142">
+    <srcmd5>a1d90e637167bdadd425450db9d5a56a</srcmd5>
+    <version>3.0</version>
+    <time>1245277591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="144">
+    <srcmd5>a1d90e637167bdadd425450db9d5a56a</srcmd5>
+    <version>3.0</version>
+    <time>1245277591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="145">
+    <srcmd5>ff05eb162fee2d50427e31d0447362c8</srcmd5>
+    <version>3.0</version>
+    <time>1268926249</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="147">
+    <srcmd5>ff05eb162fee2d50427e31d0447362c8</srcmd5>
+    <version>3.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="148">
+    <srcmd5>ff05eb162fee2d50427e31d0447362c8</srcmd5>
+    <version>3.0</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="151">
+    <srcmd5>ff05eb162fee2d50427e31d0447362c8</srcmd5>
+    <version>3.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="9" vrev="153">
+    <srcmd5>ff05eb162fee2d50427e31d0447362c8</srcmd5>
+    <version>3.0</version>
+    <time>1319182495</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="154">
+    <srcmd5>f0aff763ee8dea3e000dadab41ca5daa</srcmd5>
+    <version>3.0</version>
+    <time>1323194774</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="11" vrev="155">
+    <srcmd5>b7042d15f18851523b1bdc0c674ea541</srcmd5>
+    <version>3.0</version>
+    <time>1328890811</time>
+    <user>coolo</user>
+    <comment>spec cleanup</comment>
+    <requestid>103263</requestid>
+  </revision>
+  <revision rev="12" vrev="157">
+    <srcmd5>b7042d15f18851523b1bdc0c674ea541</srcmd5>
+    <version>3.0</version>
+    <time>1340184245</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14b108e6acc383033122253612eea099</srcmd5>
+    <version>4.3</version>
+    <time>1358789380</time>
+    <user>coolo</user>
+    <comment>- repackage original source tarball in order to remove the
+  HSL mc64ad routine that caonnt be redistributed bnc#796236
+- add README.SUSE file in the %%doci in order to explain 
+  that change
+
+- add patch superlu-4.3-disable-hsl.patch in order to disable HSL
+  code from the library
+- update patch superlu-4.3.diff so that test routines are run
+  against the  shared library
+- build tests routines in %%check section
+
+- Update to SuperLU 4.3:
+  * Remove recursive DFS for postordering elimination tree in
+    sp_coletree.c (The nonrecursive routine nr_etdfs() was
+    contributed by Cedric Doucet, CEDRAT Group, Meylan, France.)
+  * Make supermatrix.h the same for all three libraries
+  * Include an on-line HTML documentation for the source code
+  * Corrected backward error BERR formula when a component of the
+    RHS and the residual are exactly zero
+  * Change parameter &quot;delta&quot; to genmmd() from 1 to 0 in get_perm_c
+    remove &quot;static&quot; declaration in EXAMPLE/xlinsolx*.c
+  * Include threshold-based incomplete factorization (ILU)
+  * Removed the static global variables so that it is thread-safe.
+  * Make superlu_options_t{} structure and enum constants the same
+    for both superlu &amp; superlu_dist.
+  * Replace qsort by &quot;quick select&quot; (qselect) in ILU's secondary
+    dropping.
+  * Replace mc64ad.f by mc64ad.c using f2c. 
+  * Bug fixes in ilu_sdrop_row.c.
+  * Bug fixes in xgsisx.c, so that when mc64 permutation is used</comment>
+    <requestid>149218</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>14b108e6acc383033122253612eea099</srcmd5>
+    <version>4.3</version>
+    <time>1359110449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>14b108e6acc383033122253612eea099</srcmd5>
+    <version>4.3</version>
+    <time>1379664743</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>14b108e6acc383033122253612eea099</srcmd5>
+    <version>4.3</version>
+    <time>1409303427</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>ffe9e4a303a18eaf7b9d36edd186c1ff</srcmd5>
+    <version>4.3</version>
+    <time>1439190722</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319440</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>232b88732f0d9cabfaba18c6cb0b2fb1</srcmd5>
+    <version>5.2.1</version>
+    <time>1467896870</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402085</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>7eb9b5aeb661cf53dc10610e30348473</srcmd5>
+    <version>5.2.1</version>
+    <time>1548537544</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo. (forwarded request 667987 from eeich)</comment>
+    <requestid>667989</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d0326ca8fddb7cda251bb81b65e6e745</srcmd5>
+    <version>5.2.1</version>
+    <time>1549311033</time>
+    <user>coolo</user>
+    <comment>Resync:
+Readded changes dropped by accident:
+- Fix a word in a comment.
+- Remove some colloquialism from a package description.</comment>
+    <requestid>669064</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>c62a5ed4533cb3f563cbfb50e4c320f5</srcmd5>
+    <version>5.2.1</version>
+    <time>1549916178</time>
+    <user>dimstar_suse</user>
+    <comment>- Set default module version correctly when installing
+  master package, unset when deinstalling the default library
+  package.
+- make example make.inc work with non-HPC builds as well.
+
+- Add superlu-examples_Makefile_remove_itersol.patch
+      superlu-make.linux.patch:
+  get a buildable examples test suite (bsc#1124765)
+  fixing Makefile
+  adding missing make.inc (forwarded request 672775 from eeich)</comment>
+    <requestid>672776</requestid>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>e82d565cc053aeb2d373338dd004a289</srcmd5>
+    <version>5.2.1</version>
+    <time>1551113142</time>
+    <user>coolo</user>
+    <comment>- Fix the package group fix.
+
+- Fix dependencies.
+- Fix %%post and %%postun scripts for HPC.
+- Fix HPC modulefile.
+- Fix package groups.
+- Generate and add pkgconfig files.
+
+- add README.SUSE file in the %%doci in order to explain
+  * Replace mc64ad.f by mc64ad.c using f2c.
+  * Update doxygen code documentation.
+- Spec file reformating
+- remove selfprovides
+  * Added &quot;options&quot; input argument and &quot;stat&quot; output argument
+  * fixed a bug in the complex drivers sgssvx/zgssvx when the
+  * prefixed the header files by &quot;slu_&quot;.
+  * Fixed a memory leak in get_perm_c() when bnz=0.
+- add missing function prototypes
+- avoid an endless loop during building (#133820)
+- Pass $(RPM_OPT_FLAGS) -Os -fPIC for files that don't need to be
+- fix owner for README.SuperLU</comment>
+    <requestid>674942</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>ce26bed9f96a358878483301e9db1988</srcmd5>
+    <version>5.2.1</version>
+    <time>1582899558</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for gcc8/9 building (jsc#SLE-8604). (forwarded request 779442 from eeich)</comment>
+    <requestid>779514</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>ebdee39e13b1fe0850ca61593b1fcdcb</srcmd5>
+    <version>5.2.1</version>
+    <time>1600078410</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833681 from eeich)</comment>
+    <requestid>833709</requestid>
+  </revision>
+</revisionlist>

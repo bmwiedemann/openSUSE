@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0e4f07dd433001e066324f8c78a0123</srcmd5>
+    <version>0~git20191031</version>
+    <time>1579729339</time>
+    <user>dimstar_suse</user>
+    <comment>Assets data for RetroArch, like fonts, images, audio</comment>
+    <requestid>762927</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8c92322100dcbc7d7f34dbc81411770</srcmd5>
+    <version>0~git20200326</version>
+    <time>1586248015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200326:
+  * (Ozone) Strip metadata from PNG files
+  * (menu_widgets) Ensure PNG files have white transparent pixels
+  * (XMB/Ozone Monochrome) Update 'export' scripts to ensure white transparent pixels + regenerate assets
+  * (GLUI) Strip PNG metadata
+  * GLUI icon fixes
+  * (Ozone) Ensure all assets have 'white' transparent pixels
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake, Quake 2 &amp; Quake 3 icons
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake, Quake 2 &amp; Quake 3 icons
+  * Added Quake, Quake 2 &amp; 3 icons
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake, Quake 2 &amp; Quake 3 icons
+  * Added Quake, Quake 2 &amp; Quake 3 core icons
+  * Added Quake 2 &amp; 3 icons, Updated Quake
+  * Added Quake trilogy banners
+  * Added Quake 2 &amp; Quake 3 icons, refined Quake icon
+  * (Ozone) Add assets for 'Nord' and 'Gruvbox Dark' themes
+</comment>
+    <requestid>788688</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76dfa0aa40b1ac9cdfdb713aeec2a8f2</srcmd5>
+    <version>0~git20200505</version>
+    <time>1589491571</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805517</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe8ca5b6fa0af03d00f67b4eefb040b3</srcmd5>
+    <version>0~git20200617</version>
+    <time>1594045367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git20200617:
+  * Korean fallback font update
+  * Flip Flop Satellaview
+- Update to version 0~git20200528:
+  * Add korean fallback font
+  * Change cjk-font.ttf to chinese-fallback-font.ttf
+  * Add description file
+  * Add README for fonts
+  * Rename DroidSansFallbackFull.ttf to cjk-font.ttf
+  * Add Droid Sans Fallback as CJK fallback font
+  * Change ar-font.ttf to fallback-font.ttf
+  * Add description file
+  * Add Arabic fallback font
+  * Add README for fonts
+  * Rename DroidSansFallbackFull.ttf to cjk-font.ttf
+  * Add Droid Sans Fallback as CJK fallback font
+</comment>
+    <requestid>816705</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e3806ac442f2f032c26c27113c19598e</srcmd5>
+    <version>0~git20200807</version>
+    <time>1597658495</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>826806</requestid>
+  </revision>
+</revisionlist>

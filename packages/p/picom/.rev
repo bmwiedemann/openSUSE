@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37744d4e77ffd4025081628957fdb320</srcmd5>
+    <version>7.4+159.g9a88d97</version>
+    <time>1574932374</time>
+    <user>dimstar_suse</user>
+    <comment>Picom is an improved fork of the (now unmaintained) compton compositor.</comment>
+    <requestid>749796</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>051d35cfebb137f5f133c775a20fdc80</srcmd5>
+    <version>8</version>
+    <time>1592245782</time>
+    <user>dimstar_suse</user>
+    <comment>- Since it requires dbus, use dbus by default. 
+- Updated to version 8
+  * You can now use the time variable in window shaders to get a
+    timestamp. An example usage is to create animated effects,
+    e.g. https://streamable.com/e0x7r
+  * --max-brightness, which allows you to dim windows that are
+    too bright. When enabled, all windows' average brightness will
+    be clamped to the set value.
+  * Automatic configuration file reloading after it's changed.
+  * A lot of the artifacts seen with blur and use-damage enabled
+    are fixed.
+  * _NET_WM_BYPASS_COMPOSITOR property are now handled.
+    (Related to i3/i3lock#204)
+  * Completely transparent windows won't have a blurred background
+    anymore.
+  * Improved fullscreen window detection. Now EWMH is used to
+    detect fullscreen windows as well. You can turn it off with
+    --no-ewmh-fullscreen
+  * Various improvments to the inverter.sh script
+  * wintype notify has been renamed to notification to match the
+    EWMH names. (Old name still works)
+  * picom no longer sets the opacity property on windows based on
+    opacity rules. This is to fix the problem where picom &quot;forgets&quot;
+    it set the opacity property after, e.g., window manager
+    restarts.
+  * libxdg-basedir is no longer a dependency
+  * Fixed wrong client window detection after i3wm restarts
+  * Fixed wallpaper disappearing after screen resolution changes.
+  * Fixed crashing when a really big window is created with shadow
+  * Fixed --frame-opacity with the experimental backends
+  * --blur-* command line options are now handled properly
+  * Various build fixes
+  * Various memory leakage fixes
+  * Various documentation fixes and improvments
+  * Various other crash, assertion failure fixes
+  * Fixed some left over problems related to terminals in floating
+    scratchpads losing transparency after restarting i3
+  * Using these options is now an error: alpha-step, -d, -S,
+    --no-named-pixmap xrender-sync. They were deprecated in v5.
+    paint-on-overlay, --dbe. They were deprecated in v4.
+  * Error messages will no longer be printed for these removed
+    options: glx-use-copysubbuffermesa, glx-copy-from-front.
+    They were removed in v7
+</comment>
+    <requestid>814595</requestid>
+  </revision>
+</revisionlist>

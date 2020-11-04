@@ -1,0 +1,5 @@
+<package name="prom2json" project="openSUSE:Factory">
+  <title>CLI tool to scrape a Prometheus client and dump the result as JSON</title>
+  <description>prom2json enables scraping a Prometheus client and dump the result as JSON with out using the Prometheus server.</description>
+  <devel project="devel:languages:go" package="prom2json"/>
+</package>

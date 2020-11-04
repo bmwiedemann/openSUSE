@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1f8a08cfa8835d5fe0cf852d3b0b07e8</srcmd5>
+    <version>3.56</version>
+    <time>1168871458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="103">
+    <srcmd5>1f8a08cfa8835d5fe0cf852d3b0b07e8</srcmd5>
+    <version>3.56</version>
+    <time>1168871458</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c56fd66f3f11426027621167d7dcacf2</srcmd5>
+    <version>3.59</version>
+    <time>1232626430</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ccc103e8ec51432404332bb6d9adbc0f</srcmd5>
+    <version>3.60</version>
+    <time>1235747723</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>09137d9239be5fade00e8fe6a3c18aca</srcmd5>
+    <version>3.61</version>
+    <time>1251411429</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 19021 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>09137d9239be5fade00e8fe6a3c18aca</srcmd5>
+    <version>3.61</version>
+    <time>1251411429</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 19021 from user coolo
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>bbebdc62aa589c3e5a31014345a3e97b</srcmd5>
+    <version>3.61</version>
+    <time>1256920567</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 23402 from user anicka
+</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>d11506c2a60b55c4864b11b7b9b0ab0d</srcmd5>
+    <version>3.61</version>
+    <time>1263284645</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 29185 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bb84c4596c0126d82c2a8c79a44e35c1</srcmd5>
+    <version>3.64</version>
+    <time>1263484752</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 29473 from user anicka
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cd689e14a082b3e2b59c40275e4bc808</srcmd5>
+    <version>3.64</version>
+    <time>1268925485</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>88ef0f0c6c4ddac67c3309e5d375e54c</srcmd5>
+    <version>3.65</version>
+    <time>1270722987</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 37285 from user computersalat
+</comment>
+    <requestid>37285</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>88ef0f0c6c4ddac67c3309e5d375e54c</srcmd5>
+    <version>3.65</version>
+    <time>1278667378</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>88ef0f0c6c4ddac67c3309e5d375e54c</srcmd5>
+    <version>3.65</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1f87b115035d6f80ece77db4eb82b827</srcmd5>
+    <version>3.66</version>
+    <time>1279541766</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 42814 from user dirkmueller
+</comment>
+    <requestid>42814</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>35614d8a8e6b8fb5a6e9dbf4fdfe10b1</srcmd5>
+    <version>3.67</version>
+    <time>1282665866</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 45997 from user computersalat
+</comment>
+    <requestid>45997</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>626a933400311de1d1877f81fce27299</srcmd5>
+    <version>unknown</version>
+    <time>1284124211</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-HTML-Parser based on submit request 47507 from user computersalat
+</comment>
+    <requestid>47507</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>43155339fd18f79077b0c199e1b1f1ec</srcmd5>
+    <version>3.68</version>
+    <time>1291582580</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54553 from user coolo
+</comment>
+    <requestid>54553</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>5c2b0d6b349027a54b94ce51ba1599d4</srcmd5>
+    <version>3.68</version>
+    <time>1291582587</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54553
+</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>5c2b0d6b349027a54b94ce51ba1599d4</srcmd5>
+    <version>3.68</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>70bacf4c8189bd922b2d78fd5892959a</srcmd5>
+    <version>3.68</version>
+    <time>1298028324</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61419 from user vitezslav_cizek
+</comment>
+    <requestid>61419</requestid>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>78469650b201e84b0054ab7da59743a8</srcmd5>
+    <version>3.68</version>
+    <time>1298028351</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61419
+</comment>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>26026f7eb8f0cfd30b7b2b1bc1b947d9</srcmd5>
+    <version>3.68</version>
+    <time>1316437632</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82381</requestid>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>11de3c36c49d1a1c9f3ac100cd38034a</srcmd5>
+    <version>3.69</version>
+    <time>1318940803</time>
+    <user>saschpe</user>
+    <comment>- update to 3.69
+      Documentation fix; encode_utf8 mixup [RT#71151]
+      Make it clearer that there are 2 (actually 3) options for handing &quot;UTF-8 garbage&quot;
+      Github is the official repo
+      Can't be bothered to try to fix the failures that occur on perl-5.6
+      fix to TokeParser to correctly handle option configuration
+      Aesthetic change: remove extra ;
+      Trim surrounding whitespace from extracted URLs.
+_______________________________________________________________________________</comment>
+    <requestid>88224</requestid>
+  </revision>
+  <revision rev="24" vrev="10">
+    <srcmd5>11de3c36c49d1a1c9f3ac100cd38034a</srcmd5>
+    <version>3.69</version>
+    <time>1319182273</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="11">
+    <srcmd5>744496e96fed522a405e9ba6158241d8</srcmd5>
+    <version>3.69</version>
+    <time>1323193348</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="13">
+    <srcmd5>744496e96fed522a405e9ba6158241d8</srcmd5>
+    <version>3.69</version>
+    <time>1340183851</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="15">
+    <srcmd5>744496e96fed522a405e9ba6158241d8</srcmd5>
+    <version>3.69</version>
+    <time>1359109689</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="16">
+    <srcmd5>c9bfcce5abdcd0cdb6742a93f71d3a1d</srcmd5>
+    <version>3.69</version>
+    <time>1366178189</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164092 from namtrac)</comment>
+    <requestid>164107</requestid>
+  </revision>
+  <revision rev="29" vrev="18">
+    <srcmd5>c9bfcce5abdcd0cdb6742a93f71d3a1d</srcmd5>
+    <version>3.69</version>
+    <time>1379663697</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>690ebd14f6db72f12eaed08915e52134</srcmd5>
+    <version>3.71</version>
+    <time>1382012710</time>
+    <user>scarabeus_factory</user>
+    <comment>Updated HTML::Parser to get the bugfix in 3.71 (forwarded request 203347 from niner9)</comment>
+    <requestid>203413</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>690ebd14f6db72f12eaed08915e52134</srcmd5>
+    <version>3.71</version>
+    <time>1409302319</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>00249e7ec39eeaa101d8bb600cfa6ebb</srcmd5>
+    <version>3.71</version>
+    <time>1429606230</time>
+    <user>dimstar_suse</user>
+    <comment>- regnererate spec file to be in line with current template</comment>
+    <requestid>295773</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>46abb9a6e2a41c1247160ffaa66aa8d5</srcmd5>
+    <version>3.72</version>
+    <time>1454017801</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355593</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3fb69f679b17a1da6062b695e1ed080b</srcmd5>
+    <version>3.75</version>
+    <time>1599088219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831018</requestid>
+  </revision>
+</revisionlist>

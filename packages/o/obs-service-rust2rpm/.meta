@@ -1,0 +1,10 @@
+<package name="obs-service-rust2rpm" project="openSUSE:Factory">
+  <title>An OBS source service: Generate rpm packaging for Rust crates</title>
+  <description>This is a source service for openSUSE Build Service.
+
+This simply runs rust2rpm for a given Rust crate on crates.io
+to generate RPM packaging to build packages for crates.
+</description>
+  <devel project="devel:languages:rust" package="obs-service-rust2rpm"/>
+  <url>https://pagure.io/fedora-rust/obs-service-rust2rpm</url>
+</package>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abe2fdfe521e6bd291dc7d9369ff2cc4</srcmd5>
+    <version>0.8</version>
+    <time>1596096110</time>
+    <user>dimstar_suse</user>
+    <comment>This package would be very helpful for people using Wayland that want to have a visual cue when changing a value like their display brightness or volume.
+The issue mentioned in the superseded request was fixed.  </comment>
+    <requestid>823442</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c61cfe5e6397a8f76ed5d3d4c9ec4bbe</srcmd5>
+    <version>0.10</version>
+    <time>1599667288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833090</requestid>
+  </revision>
+</revisionlist>

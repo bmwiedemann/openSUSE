@@ -1,0 +1,5 @@
+<package name="bbe" project="openSUSE:Factory">
+  <title>Binary Block Editor</title>
+  <description>bbe is a sed-like editor for binary files. Instead of reading input in lines as sed, bbe reads arbitrary blocks from an input stream and performs byte-related transformations on found blocks.</description>
+  <devel project="devel:tools" package="bbe"/>
+</package>

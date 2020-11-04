@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab376c4db78bf3586d3d7c36f1041c7d</srcmd5>
+    <version>0.31.2</version>
+    <time>1576014153</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>755196</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22da00dfe75d95782ddab7aac14845ee</srcmd5>
+    <version>0.31.4</version>
+    <time>1578437579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.31.4:
+  - Address autopep8 overriding pycodestyle's
+    continued_indentation
+  - Fix TCPServer being bound before allow_reuse_address is set
+  - Fix tests for Jedi 0.15.2
+  - Fix returned line numbers in McCabe plugin
+  - Add --config parameter for flake8</comment>
+    <requestid>761349</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c6bad926c4cff6ebfa3e17743f2e5c0d</srcmd5>
+    <version>0.31.8</version>
+    <time>1582899689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>780063</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6c242070371eaf91ca8477b1939a487b</srcmd5>
+    <version>0.31.8</version>
+    <time>1584744866</time>
+    <user>dimstar_suse</user>
+    <comment>- Add use_newer_ujson.patch which removes non-sensical negative
+  conditions on used packages allowing using system packages
+  for ujson and jedi.
+
+- make python2 conditional</comment>
+    <requestid>786447</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68134570b09b261012d0d841cb94aff0</srcmd5>
+    <version>0.31.9</version>
+    <time>1584964351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787408</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1d272202ff715f26dd9d0ee643c4d9a1</srcmd5>
+    <version>0.31.9</version>
+    <time>1586869918</time>
+    <user>dimstar_suse</user>
+    <comment>- add pyls-pr778-multiplerefs.patch from gh#palantir/python-language-server#778 
+
+- update to newer jedi but deal with gh#palantir/python-language-server#744
+  pyls-pr775-jedi016.patch from gh#palantir/python-language-server#775
+  pyls-pr775-addon.patch on top of it (PR submitted)
+- reactivate the unit tests</comment>
+    <requestid>793824</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>2476ef2e9c3894b3f6bab299c5a02e15</srcmd5>
+    <version>0.31.9</version>
+    <time>1587325819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794577</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>47f2ff90b8efb231e0a4b1e02ec22497</srcmd5>
+    <version>0.31.10</version>
+    <time>1588538814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799809</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6219c3288107012bcc97c6a25c5e8f32</srcmd5>
+    <version>0.31.10</version>
+    <time>1588622481</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use %python3_only command, but properly use alternatives.</comment>
+    <requestid>800145</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c98a7ba31585f3c6f26c732976b3bdf1</srcmd5>
+    <version>0.33.0</version>
+    <time>1590780025</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to Version 0.33.0
+  * Add optional class objects to completion list.
+  * Fix completions with one arg.
+  * Remove pycodestyle plugin's dependency on autopep8. 
+- Update to Version 0.32.0 
+  * Increase minimal supported version of flake8 and match 
+    flake8 requirements to PyLS ones.
+  * Add support for renaming with Jedi.
+  * Update Jedi calls for its 0.17 API
+  * Fix flake8 io deadlock.
+  * Follow LSP protocol when workspace folders are changed.
+  * Adapt root workspace uri if folder is changed.
+  * Add option to activate fuzzy completions in Jedi
+- remove pach pyls-pr781-jedi-017.patch merged
+  gh#palantir/python-language-server#781
+- Bump requirements in spec file 
+</comment>
+    <requestid>810112</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>33bbc122b737d2dda5a08bd1d3ae6f93</srcmd5>
+    <version>0.34.1</version>
+    <time>1593904930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818619</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>09ff85382e0c97ffa52cbfbe476633ba</srcmd5>
+    <version>0.35.0</version>
+    <time>1600702279</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835432</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dead93df5f88fe80b1ed7f41e34f786a</srcmd5>
+    <version>0.35.1</version>
+    <time>1600879664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836295</requestid>
+  </revision>
+</revisionlist>

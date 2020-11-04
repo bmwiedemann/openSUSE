@@ -1,0 +1,209 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24478d46df05b1c61d07ba1c3d59f6ca</srcmd5>
+    <version>0.3</version>
+    <time>1306920032</time>
+    <user>saschpe</user>
+    <comment>original 67691</comment>
+    <requestid>71703</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b8b63a80242ae840ddc0ca6c284f49f</srcmd5>
+    <version>0.3</version>
+    <time>1306920045</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71703
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>802bb4fd3d06da313ff279e3bc62c67e</srcmd5>
+    <version>0.4.3</version>
+    <time>1316088718</time>
+    <user>saschpe</user>
+    <comment>update to 0.4.3 (forwarded request 81942 from etamPL)</comment>
+    <requestid>81943</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>840c9cff2c4c5d0affad5280d0c5e424</srcmd5>
+    <version>0.4.3</version>
+    <time>1316088724</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81943
+</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>840c9cff2c4c5d0affad5280d0c5e424</srcmd5>
+    <version>0.4.3</version>
+    <time>1319182420</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>be57eee51dfb73fc9e6bb791b97d58d3</srcmd5>
+    <version>0.4.3</version>
+    <time>1329242817</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104012</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>be57eee51dfb73fc9e6bb791b97d58d3</srcmd5>
+    <version>0.4.3</version>
+    <time>1340184133</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f0cc63333aec9d91e96ea3a2d4617f8d</srcmd5>
+    <version>0.5</version>
+    <time>1355919412</time>
+    <user>coolo</user>
+    <comment>Update to 0.5 (forwarded request 145552 from posophe)</comment>
+    <requestid>145553</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>f0cc63333aec9d91e96ea3a2d4617f8d</srcmd5>
+    <version>0.5</version>
+    <time>1359110268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>11be160dcfcc41b905e5897f20f2b0aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1378897740</time>
+    <user>coolo</user>
+    <comment>Updated to version 0.5.1. (forwarded request 197861 from linuxrecon)</comment>
+    <requestid>198224</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>11be160dcfcc41b905e5897f20f2b0aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1379664425</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>11be160dcfcc41b905e5897f20f2b0aa</srcmd5>
+    <version>0.5.1</version>
+    <time>1409303151</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>8edc31a827febd4f1f3adb5fac1aa538</srcmd5>
+    <version>0.5.1</version>
+    <time>1414066781</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257484</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>286919ab44ef231ed0b67295e3d90aa2</srcmd5>
+    <version>0.7.1</version>
+    <time>1426680003</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290862</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0105fe683d8f60a404c0d885ed1d76b6</srcmd5>
+    <version>0.7.1</version>
+    <time>1448400014</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>343803</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9ab8aaf893c7093cf3a4009ab7801def</srcmd5>
+    <version>0.7.3</version>
+    <time>1497687535</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500540</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3e1071bd124090c97c42e7107299e447</srcmd5>
+    <version>0.7.6</version>
+    <time>1550220943</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %license
+- Clean spec files
+- Project moved to GitHub
+- Update to 0.7.6:
+  * Fixed the Zip Slip vulnerability in JlCompress
+  * Renamed crypt.h to minizip_crypt.h to avoid conflicts
+- Update to 0.7.5:
+  * Fixed a migration artifact (additional subdirectory in the tarball)
+  * Fixed target_link_libraries call in CMakeLists
+  * Worked around a Qt 4.6 bug (QTBUG-15421) screwing up hidden
+    files handling in JlCompress::compressDir()
+  * Removed Q_FOREACH uses to avoid conflicts (SF patch #32)
+- Update to 0.7.4:
+  * Static analysis patch from Intel Deutschland GmbH
+  * Replaced UNUSED with QUAZIP_UNUSED to avoid name clashes
+   * Minor bug fixes</comment>
+    <requestid>669069</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b98a5326426256935304e5e018bc4a1c</srcmd5>
+    <version>0.7.6</version>
+    <time>1554712561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691810</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>27abc1435355d57a784ada49c41606ce</srcmd5>
+    <version>0.8.1</version>
+    <time>1559581048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1
+  * A bugfix release. Fixes a regression in CMake.
+  version 0.8
+  * Support for UTF-8 in file names and comments
+    (Denis Zavorotnyy)
+  * get/setOsCode(), get/setDefaultOsCode()
+  * Fixed Z_STREAM_END handling in QuaZioDevice</comment>
+    <requestid>707103</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>e60531277b2b378c00dff6e5768095bb</srcmd5>
+    <version>0.8.1</version>
+    <time>1560338201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709067</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b74d11767b2628831eaa220f70647f87</srcmd5>
+    <version>0.9</version>
+    <time>1589579519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805749</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6b858fab2a3baf0d8f065701416487ea</srcmd5>
+    <version>0.9.1</version>
+    <time>1590780203</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809844</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7e35ff2a1a61dd6fe250ac1f2b607cc9</srcmd5>
+    <version>1.0</version>
+    <time>1602282529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840280</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7cded0e65e8e998c0efef7be6ddd50cc</srcmd5>
+    <version>1.1</version>
+    <time>1602503940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841027</requestid>
+  </revision>
+</revisionlist>

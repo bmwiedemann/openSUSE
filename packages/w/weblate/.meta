@@ -1,0 +1,5 @@
+<package name="weblate" project="openSUSE:Factory">
+  <title>Web based translation</title>
+  <description>Weblate is web based translation tool with tight Git integration.</description>
+  <devel project="M17N:l10n.opensuse.org" package="weblate"/>
+</package>

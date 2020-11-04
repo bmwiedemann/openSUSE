@@ -1,0 +1,5 @@
+<package name="lua-luasystem" project="openSUSE:Factory">
+  <title>Platform independent system calls for Lua</title>
+  <description>A pure-lua implementation of the Markdown text-to-html markup system.</description>
+  <devel project="devel:languages:lua" package="lua-luasystem"/>
+</package>

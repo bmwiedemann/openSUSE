@@ -1,0 +1,19 @@
+<package name="unit-api" project="openSUSE:Factory">
+  <title>JSR 363 - Units of Measurement API</title>
+  <description>The Unit of Measurement library provides a set of
+Java language programming interfaces for handling
+units and quantities. The interfaces provide a layer
+which separates client code, which would call the
+API, from library code, which implements the API.
+
+The specification contains Interfaces and abstract
+classes with methods for unit operations:
+
+* Checking of unit compatibility
+* Expression of a quantity in various units
+* Arithmetic operations on units
+
+</description>
+  <devel project="Java:packages" package="unit-api"/>
+  <url>http://unitsofmeasurement.github.io/</url>
+</package>

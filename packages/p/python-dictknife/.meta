@@ -1,0 +1,5 @@
+<package name="python-dictknife" project="openSUSE:Factory">
+  <title></title>
+  <description>Army knife of handling dict</description>
+  <devel project="devel:languages:python" package="python-dictknife"/>
+</package>

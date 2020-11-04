@@ -1,0 +1,5 @@
+<package name="lua54" project="openSUSE:Factory">
+  <title>lua</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="devel:languages:lua" package="lua54"/>
+</package>

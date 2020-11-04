@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27f2f10deb2c5864038bce7296ed33f8</srcmd5>
+    <version>3.0.1</version>
+    <time>1485939084</time>
+    <user>dimstar_suse</user>
+    <comment>New package. Depends on kpmcore (sr 447079)</comment>
+    <requestid>451262</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>234d8d808388621678860ddeb674d3f9</srcmd5>
+    <version>3.1.0</version>
+    <time>1498046256</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505075</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>965db858a8caae062ec9e0f302f5b3d7</srcmd5>
+    <version>3.1.2</version>
+    <time>1505139467</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521701</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f602bcd321e8486f1850f6c1a0b57554</srcmd5>
+    <version>3.2.0</version>
+    <time>1506956076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530295</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40e5fe9a7f5c0db9fc803820367449dc</srcmd5>
+    <version>3.2.1</version>
+    <time>1507486528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1
+  * Fix a broken QRegularExpression in LVM VG name validator.
+</comment>
+    <requestid>532498</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>963166c09c808bd76ea5bf3735470c25</srcmd5>
+    <version>3.3.0</version>
+    <time>1513677432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557634</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36e290e51bf3de38947a49fab6c54a3f</srcmd5>
+    <version>3.3.1</version>
+    <time>1515506158</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562634</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>db0cb95d80954a482997505ba6ae1d9e</srcmd5>
+    <version>3.3.1</version>
+    <time>1539758595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642482</requestid>
+  </revision>
+</revisionlist>

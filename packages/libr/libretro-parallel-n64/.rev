@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d50a4421056ce148e5f36dc785a5a526</srcmd5>
+    <version>0~git20190917</version>
+    <time>1581456190</time>
+    <user>dimstar_suse</user>
+    <comment>Nintendo N64 emulator</comment>
+    <requestid>772097</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f697fa253cabaf2f527d3c71adda8eab</srcmd5>
+    <version>0~git20200529</version>
+    <time>1593727487</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814578</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae8196b78a25cf82426ff4d77212abb9</srcmd5>
+    <version>0~git20201011</version>
+    <time>1602857629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841929</requestid>
+  </revision>
+</revisionlist>

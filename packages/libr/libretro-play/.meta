@@ -1,0 +1,5 @@
+<package name="libretro-play" project="openSUSE:Factory">
+  <title>Play! libretro core for PlayStation 2 emulation</title>
+  <description></description>
+  <devel project="Emulators" package="libretro-play"/>
+</package>

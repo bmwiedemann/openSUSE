@@ -1,0 +1,5 @@
+<package name="linuxrc" project="openSUSE:Factory">
+  <title>SUSE Installation Program</title>
+  <description>SUSE installation program.</description>
+  <devel project="system:install:head" package="linuxrc"/>
+</package>

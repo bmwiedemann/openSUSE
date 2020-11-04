@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7562a5a2b104936d7725c2d8750ec192</srcmd5>
+    <version>0.0.3</version>
+    <time>1592840812</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of rubocop-ast which is a new dependency of rubocop</comment>
+    <requestid>816377</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bc2b19761e0615e712110498edd172b</srcmd5>
+    <version>0.1.0</version>
+    <time>1597752050</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog</comment>
+    <requestid>827558</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ade91eaeba2ddeb4260027434626db0c</srcmd5>
+    <version>0.3.0</version>
+    <time>1599598250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829029</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>84c01e28b1c2778f70d0e7fbe21a985a</srcmd5>
+    <version>0.5.0</version>
+    <time>1601919208</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838077</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0453e6d4d44b8294181dc82f27accabc</srcmd5>
+    <version>1.1.0</version>
+    <time>1604412983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845480</requestid>
+  </revision>
+</revisionlist>

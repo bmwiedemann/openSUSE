@@ -1,0 +1,18 @@
+<package name="python-xsge_tiled" project="openSUSE:Factory">
+  <title>xSGE Tiled Library</title>
+  <description>xSGE is a collection of extensions for the SGE licensed under the GNU
+General Public License.  They are designed to give additional features
+to free/libre software games which aren't necessary, but are nice to
+have.
+
+xSGE extensions are not dependent on any particular SGE implementation.
+They should work with any implementation that follows the specification.
+
+This extension provides support for loading the JSON format of the
+Tiled Map Editor. This allows you to use Tiled to edit your game’s world
+(e.g. levels), rather than building a level editor yourself.
+
+</description>
+  <devel project="devel:languages:python" package="python-xsge_tiled"/>
+  <url>https://python-sge.github.io</url>
+</package>

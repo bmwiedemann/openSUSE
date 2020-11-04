@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a83ae2aa67169f30a725a3b74541125e</srcmd5>
+    <version>0.011</version>
+    <time>1581456333</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed as a dependency for perl-File-Map
+See https://build.opensuse.org/request/show/773420</comment>
+    <requestid>773429</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a0761f0fbe6371dc8c6e6ae5c2894769</srcmd5>
+    <version>0.012</version>
+    <time>1582029027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>775131</requestid>
+  </revision>
+</revisionlist>

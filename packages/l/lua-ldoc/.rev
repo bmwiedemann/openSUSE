@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd42c0e024b2d540c9c1ccb74deb4d71</srcmd5>
+    <version>1.4.6</version>
+    <time>1574859037</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of lua_ldoc version 1.4.6.</comment>
+    <requestid>743879</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce5981a12662e333cbea0d771aca5780</srcmd5>
+    <version>1.4.6</version>
+    <time>1574867104</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>751317</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>acc2f7fdca16bcb2bb4b9c33d12007de</srcmd5>
+    <version>1.4.6</version>
+    <time>1594293609</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819611</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,13 @@
+<package name="dbgl" project="openSUSE:Factory">
+  <title>DOSBox Game Launcher</title>
+  <description>DBGL is a Java front-end for DOSBox, based largely upon the proven
+interface of D-Fend.
+The front-end is by no means finished. It is a work in progress
+and lacking many features, but the core is working, and I think
+the product is somewhat usable as it is. Please bear in mind that
+the interface is still quite rough around the edges.
+
+</description>
+  <devel project="Emulators" package="dbgl"/>
+  <url>http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/</url>
+</package>

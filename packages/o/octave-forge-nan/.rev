@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4dd5aabfad2d450948c4d695edaeb50</srcmd5>
+    <version>2.7.4</version>
+    <time>1434460362</time>
+    <user>coolo</user>
+    <comment>Part of Octave-Forge project</comment>
+    <requestid>310981</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6936b23dc8b90b1dba80f1fe0cbb4b1a</srcmd5>
+    <version>2.8.0</version>
+    <time>1435652286</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0
+  * check for sparse input matrices and convert to full if needed
+  * improve accuracy of normcdf (bug #38170) 
+  * fix compiler issue with __isnan
+  * do not display diagnostic messages</comment>
+    <requestid>314052</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ed20a1e08336282387d7525b93a3653</srcmd5>
+    <version>2.8.1</version>
+    <time>1436734378</time>
+    <user>coolo</user>
+    <comment>- Update to version 2.8.1
+  * Bugfix release</comment>
+    <requestid>315503</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d771ee3b60f0a521c7c15d44b2678751</srcmd5>
+    <version>2.8.1</version>
+    <time>1461855241</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>389936</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d405450b1a8b2272180209bcd1814fcc</srcmd5>
+    <version>3.0.1</version>
+    <time>1465938464</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401274</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2cbba987cc37a55660a9852b166a662e</srcmd5>
+    <version>3.0.3</version>
+    <time>1474476521</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>428407</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>19def416f1b489eb4ab18d4768527b5c</srcmd5>
+    <version>3.1.4</version>
+    <time>1503925996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518454</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a18e5f63aa46667e9f54ce3946c7f274</srcmd5>
+    <version>3.4.3</version>
+    <time>1574932503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.3:
+  + Makefile.*
+    Add missing copyright/licenses
+  + liblinear, libsvm:
+    add license from original author
+  + roc.m: number of data points limited to about 5000
+    add final data point at (1,1).
+- Update to version 3.4.0:
+  + quadratic classifiers:
+    check for positive-definiteness of covariance matrix
+    and return no classification (encoded as NaN), if not.
+  + mad, meandev:
+    make sure source is ascii/utf-8 compliant
+- Update to version 3.3.0:
+  + detrend: the 2nd output (trend) can be interpolated and should
+    not contain NaNs.
+  + train_sc: some supported classifiers should not be used
+    with the short-cut for two-class problems.
+  + xval: report also results w/o crossvaliation
+  + ecdf: fix ylim in case data contains missing values.
+- Update to version 3.2.3:
+  + &lt;NEW&gt; ROC is included. ROC is derived
+    from the implementation in &quot;biosig for octave and matlab&quot;
+    	biosig-code/biosig4matlab/t490_EvaluationCriteria/
+    https://sourceforge.net/p/biosig/code/ci/master/tree/biosig4matlab/t490_EvaluationCriteria/
+  + &lt;NEW&gt; load_cifar100 load_cifar10 load_mnist:
+    loading of various machine-learning databases
+  + &lt;NEW&gt; kolmogorov_smirnov:
+     Multiple two-sample Kolmogorov-Smirnov test
+  + &lt;NEW&gt; kstest2:
+     wrapper for kolmogorov_smirnov
+  + requires Octave 3.8 or later
+  + histo2, histo3:
+    bug fix for case when whole column contains NaNs
+  + &lt;NEW&gt; inst/signrank.m: add Wilcoxon signred rank test
+    Unlike Octave's wilcoxon_test, this works also for
+    sample sizes smaller than N=25
+  + corrcoef: improve documentation on one-
+    and two- pass algorithm
+  + histogram functions (histo.m) included
+  + upgrade to liblinear 2.2.1
+    weightening of samples not supported anymore
+  + upgrade to libsvm 3.2.3
+    weightening of samples not supported anymore
+  + minor changes
+- Fix missing return value for non-void function, add
+  fix_missing_return.patch
+</comment>
+    <requestid>751373</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1f08e79994168263a56b36f8dca863ae</srcmd5>
+    <version>3.4.5</version>
+    <time>1575923856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755318</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4512ec3d471dbe120efd676a1f414997</srcmd5>
+    <version>3.5.0</version>
+    <time>1597658712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826837</requestid>
+  </revision>
+</revisionlist>

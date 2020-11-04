@@ -1,0 +1,11 @@
+<package name="cramfs-tools" project="openSUSE:Factory">
+  <title>Tools for CramFs (Compressed ROM File System)</title>
+  <description>This package contains tools that let you construct a CramFs
+(Compressed ROM File System) image from the contents of a given
+directory, as well as checking a constructed CramFs image and
+extracting its contents.
+
+</description>
+  <devel project="filesystems" package="cramfs-tools"/>
+  <url>https://github.com/npitre/cramfs-tools/</url>
+</package>

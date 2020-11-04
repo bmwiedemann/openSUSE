@@ -1,0 +1,60 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>721a63eea99d7c05a8b860714c068a4c</srcmd5>
+    <version>0.1.0</version>
+    <time>1588023078</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-papermill</comment>
+    <requestid>795893</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7eee4be9320bd97426dc9829cc52ae49</srcmd5>
+    <version>0.2.0</version>
+    <time>1590506510</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808511</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35ce4911229aefc14ca1bb393df71108</srcmd5>
+    <version>0.3.1</version>
+    <time>1591743017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * The (async_)start_new_kernel_client method now supports starting a new client when its kernel manager (self.km) is a MultiKernelManager. The method now returns the kernel id in addition to the kernel client. If the kernel manager was a KernelManager, the returned kernel id is None. #51
+  * Added reset_kc option to reset_execution_trackers, so that the kernel client can be reset and a new one created in calls to (async_)execute #44
+  * Check that a kernel manager exists before cleaning up the kernel #61
+  * Force client class to be async when kernel manager is MultiKernelManager #55
+  * Replace pip install with conda install in Binder #54</comment>
+    <requestid>812836</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a4360a7055229c823d7e0950d1d0a117</srcmd5>
+    <version>0.4.0</version>
+    <time>1593606402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817911</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d1e2455bf4ccc03f33540d6a870b023e</srcmd5>
+    <version>0.5.0</version>
+    <time>1601997171</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * update required version
+- update to version 0.5.0:
+  * Move language_info retrieval before cell execution #102
+  * HistoryManager setting for ipython kernels no longer applies twice
+    (fix for 5.0 trailets release)
+  * Improved error handling around language_info missing
+    (async_)start_new_kernel_client is now split into (async_)start_new_kernel and (async_)start_new_kernel_client
+- update to version 0.4.1:
+  * Python type hinting added to most interfaces! #83
+  * Several documentation fixes and improvements were made #86
+  * An asynchronous heart beat check was added to correctly raise a
+    DeadKernelError when kernels die unexpectantly #90
+</comment>
+    <requestid>839744</requestid>
+  </revision>
+</revisionlist>

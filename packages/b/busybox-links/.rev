@@ -1,0 +1,94 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f90ace3f04b2c7d3c5d830921b038437</srcmd5>
+    <version>MACRO</version>
+    <time>1589046519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800027</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9e4278af9846237dc1eff2b18fae5e81</srcmd5>
+    <version>MACRO</version>
+    <time>1589491499</time>
+    <user>dimstar_suse</user>
+    <comment>- Create own busybox-sendmail sub-package
+
+- Specify conflict between busybox-misc and exim: both provide
+  /usr/sbin/sendmail.</comment>
+    <requestid>803041</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>873886265f0e667a89591f4b753e3d26</srcmd5>
+    <version>MACRO</version>
+    <time>1589992615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806999</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7c47bb112945687133fd4aa16c1c3edd</srcmd5>
+    <version>MACRO</version>
+    <time>1591879046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810353</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>cf69dccbb6c1cbf2c7a5bb5e3ba41aae</srcmd5>
+    <version>MACRO</version>
+    <time>1591990580</time>
+    <user>dimstar_suse</user>
+    <comment>- Create own busybox-adduser sub-package (forwarded request 814040 from kukuk)</comment>
+    <requestid>814041</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>80d92fcca6d668912b5a961e48562f10</srcmd5>
+    <version>MACRO</version>
+    <time>1596203602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823165</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9fceac188cc7853791f394ac05c72a78</srcmd5>
+    <version>MACRO</version>
+    <time>1597390344</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in spec file (forwarded request 826242 from kukuk)</comment>
+    <requestid>826243</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>6f945cdcf36b7dfc2b47173efffe6ecf</srcmd5>
+    <version>MACRO</version>
+    <time>1600078538</time>
+    <user>dimstar_suse</user>
+    <comment>- busybox-vi: conflict with all vi variants</comment>
+    <requestid>833747</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>c521d2f24aadaee2b2e2584c979a2087</srcmd5>
+    <version>MACRO</version>
+    <time>1600346397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835113</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>521ed911d29414f97b7bbc5dc2b1800e</srcmd5>
+    <version>MACRO</version>
+    <time>1600956733</time>
+    <user>dimstar_suse</user>
+    <comment>- Add post/postun requires for busybox to busybox-sh
+  (/usr/bin/ash is a symlink to busybox)</comment>
+    <requestid>835755</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>75a07adf30b33d3927fd38d8d1bca4c2</srcmd5>
+    <version>MACRO</version>
+    <time>1601651707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838876</requestid>
+  </revision>
+</revisionlist>

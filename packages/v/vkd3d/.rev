@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>772cfc0e8f1038472d8ca307559f79f0</srcmd5>
+    <version>1.0</version>
+    <time>1529501516</time>
+    <user>maxlin_factory</user>
+    <comment>add to factory for wine usage</comment>
+    <requestid>617689</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8bc442f21ec49577af50dd99e2117624</srcmd5>
+    <version>1.0</version>
+    <time>1533045599</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix RPM groups. Drop redundant ldconfig requires (they are
+  implicit). (forwarded request 626036 from jengelh)</comment>
+    <requestid>626161</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>034f887cfb64ed5329efe6191768e073</srcmd5>
+    <version>1.1</version>
+    <time>1539013635</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.1
+  - Initial support for placed resources.
+  - MoltenVK support.
+  - Support for geometry shaders.</comment>
+    <requestid>640434</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>262ccd55439612890e1b363860625996</srcmd5>
+    <version>1.1</version>
+    <time>1591101513</time>
+    <user>dimstar_suse</user>
+    <comment>- updated baselibs requires to allow better wine 32bit dependencies (bsc#1172310) (forwarded request 810396 from msmeissn)</comment>
+    <requestid>810397</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7041f53572a2f18c0e601ec61bcfcdb</srcmd5>
+    <version>1.2</version>
+    <time>1600802117</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2
+  - Availability of libvkd3d-shader as a public library.
+  - Support for tessellation shaders.
+  - Version 1.1 root signatures.
+  - Stream output support.
+- added gpg signature and keyring. (forwarded request 836071 from msmeissn)</comment>
+    <requestid>836072</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2890fc9070facb4f79f113b814b17c93</srcmd5>
+    <version>1.2</version>
+    <time>1600956910</time>
+    <user>dimstar_suse</user>
+    <comment>- added also shader library to baselibs.conf (bsc#1176894)</comment>
+    <requestid>836446</requestid>
+  </revision>
+</revisionlist>

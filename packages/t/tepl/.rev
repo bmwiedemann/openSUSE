@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2635ce8329d69f6dd975c63698bb6603</srcmd5>
+    <version>3.0.0</version>
+    <time>1505332007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.0:
+  + Updated translations.</comment>
+    <requestid>522934</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7512715ed1663963e9b53edf30718915</srcmd5>
+    <version>3.0.0</version>
+    <time>1505416558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>525938</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9858b52ac06f7a7eda18122bc22dca69</srcmd5>
+    <version>3.99.1</version>
+    <time>1521052619</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 583615 from dimstar)</comment>
+    <requestid>584777</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8413f4b2e4bed5ac43651cef9b730c8a</srcmd5>
+    <version>4.0.0</version>
+    <time>1523956562</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 594650 from iznogood)</comment>
+    <requestid>596122</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1aca3395e7d1115830f701eae869c4a1</srcmd5>
+    <version>4.2.0</version>
+    <time>1533214622</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 624884 from iznogood)</comment>
+    <requestid>624995</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>54f281e013afd0a98c78a42f51a52362</srcmd5>
+    <version>4.2.1</version>
+    <time>1574784223</time>
+    <user>dimstar_suse</user>
+    <comment>new stable rel (forwarded request 750075 from iznogood)</comment>
+    <requestid>750929</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>43d3152dd2ba4016cec71a4f95d842f0</srcmd5>
+    <version>4.2.1</version>
+    <time>1580152588</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767224 from dimstar)</comment>
+    <requestid>767484</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aed38221e90fc0f4db6220dd4402cdd5</srcmd5>
+    <version>4.4.0</version>
+    <time>1587659296</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795108 from iznogood)</comment>
+    <requestid>795253</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,111 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6286d82388b3159e469867987a30c3ce</srcmd5>
+    <version>0.7.5</version>
+    <time>1531232146</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging based on Mageia package
+</comment>
+    <requestid>621714</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ba7ca0397397722b16ede70cad31364</srcmd5>
+    <version>0.7.6</version>
+    <time>1531947416</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not manually specify dependencies which are automatically
+  generated
+- Make requirements of devel package less strict
+- Update to 0.7.6
+  + SHA-512 and SHA-512/128 support
+  + New default chunk checksum type SHA-512/128
+  + Automatic chunking moved into libzck and is now default
+  + New option to disable automatic chunking
+  + Bugfixes
+</comment>
+    <requestid>623614</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81f0d485d476d9ca21427ad84cc60621</srcmd5>
+    <version>0.9.11</version>
+    <time>1539251273</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump meson build dependency to match meson.build requirement
+- Rebase to 0.9.11
+  + Fix small bug where creating a zck_dl context fails when zck
+    context is NULL
+  + Fix security bugs found by Coverity
+  + Fix test failures for zstd &lt;= 1.3.4
+  + Add gen_xml_dictionary to libexecdir with zck_ prefix
+  + Fix intermittent bug where auto-chunking wasn't deterministic
+  + ABI (but not API change) - Use bool from stdbool.h
+  + Allow specification of output file in zck
+  + Set minimum and maximum chunk sizes for both automatic and
+    manual chunking
+  + New error handling functions
+  + File format changes
+  + API changes
+- Make requirements between subpackages stricter to avoid issues
+  due to inter-subpackage ABI/API changes
+</comment>
+    <requestid>639072</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bfa15ea949ed21b67b33ce37c80c3eb3</srcmd5>
+    <version>0.9.13</version>
+    <time>1540988111</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645358</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30f206d11d9e11f621f1bf5c7e364d19</srcmd5>
+    <version>1.0.3</version>
+    <time>1548452718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3
+  + Fix some small bugs found by Coverity
+  + Fix memory leak and off-by-one errors
+  + Use hash table for finding identical chunks, speeding up process
+    considerably
+  + Add test case to verify that identical chunk checking is working
+  + Turn off some tests for big-endian architectures since zstd
+    isn't deterministic on them
+  + Add zck_gen_zdict binary to generate optimal zdict for a zchunk file
+  + Add functions to API to simplify extracting a single chunk
+  + Change default zstd compression to 9 for a 6x speed increase in
+    compression speed for a 5% increase in compression size
+  + Switch from optional flags to more robust optional elements
+  + Sanity check hex hashes passed in as an option
+</comment>
+    <requestid>668433</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8166d82d208be33a51a6a5cf3205e95a</srcmd5>
+    <version>1.1.0</version>
+    <time>1554371958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  + Fix multipart boundary bug when dealing with lighttpd servers
+  + Optimize chunk matching while downloading, significantly reducing CPU usage
+</comment>
+    <requestid>690189</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6788b70caab4edf9dfdf8e86532c94c4</srcmd5>
+    <version>1.1.4</version>
+    <time>1577137307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757744</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1478bb2ff0353ae827ec76ec60de78c0</srcmd5>
+    <version>1.1.5</version>
+    <time>1579636634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  + Handle write errors correctly</comment>
+    <requestid>765583</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<package name="interceptty" project="openSUSE:Factory">
+  <title>Serial port sniffer</title>
+  <description>IntercepTTY is a program that can sit between a real (or fake)
+serial port and an application, recording any communications
+between the application and the device. It can also be used as a
+network serial server or client, to provide an emulated serial port
+connected to a program, and for various other tasks.
+
+</description>
+  <devel project="hardware" package="interceptty"/>
+  <url>https://github.com/geoffmeyers/interceptty</url>
+</package>

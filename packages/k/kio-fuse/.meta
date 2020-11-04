@@ -1,0 +1,8 @@
+<package name="kio-fuse" project="openSUSE:Factory">
+  <title>Access KIO over the regular filesystem</title>
+  <description>kio-fuse is a daemon which makes KIO URLs accessible to KIO unaware
+applications using FUSE.
+
+</description>
+  <devel project="KDE:Extra" package="kio-fuse"/>
+</package>

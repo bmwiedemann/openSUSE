@@ -1,0 +1,227 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6ab7447a970a2848f908b7cbdc5a83d</srcmd5>
+    <version>0.6.0</version>
+    <time>1344065994</time>
+    <user>coolo</user>
+    <comment>rename of rubygem-i18n-0_6</comment>
+    <requestid>129754</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9790323ed8b4d34828efb91c22f67132</srcmd5>
+    <version>0.6.1</version>
+    <time>1346488447</time>
+    <user>namtrac</user>
+    <comment>- updated to version 0.6.1, no changelog</comment>
+    <requestid>132206</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9790323ed8b4d34828efb91c22f67132</srcmd5>
+    <version>0.6.1</version>
+    <time>1359110323</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19d24e28ae0ab2086a37d5a1a16554e8</srcmd5>
+    <version>0.6.4</version>
+    <time>1362984229</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>158171</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>19d24e28ae0ab2086a37d5a1a16554e8</srcmd5>
+    <version>0.6.4</version>
+    <time>1379664532</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62bdaff38d5f97830dd85642ee49686a</srcmd5>
+    <version>0.6.5</version>
+    <time>1381064362</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to version 0.6.5, use https:// source</comment>
+    <requestid>202201</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3a8dc84eec75a47e4f5bfb87d3907e5d</srcmd5>
+    <version>0.6.9</version>
+    <time>1386224292</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.6.9, no changelog
+
+- updated to version 0.6.8, no changelog</comment>
+    <requestid>209389</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50e66dfb2e5215bb0d6e7e232b7850c8</srcmd5>
+    <version>0.6.11</version>
+    <time>1406557242</time>
+    <user>coolo</user>
+    <comment>- updated to version 0.6.11, no changelog</comment>
+    <requestid>242650</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>50e66dfb2e5215bb0d6e7e232b7850c8</srcmd5>
+    <version>0.6.11</version>
+    <time>1409303240</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>333d2dbfb6564f7cf9e110417f2c8bbc</srcmd5>
+    <version>0.6.11</version>
+    <time>1413263446</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>255183</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>82d03fdd0203d1bcc56ad01306b4724b</srcmd5>
+    <version>0.7.0</version>
+    <time>1422521832</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283156</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce6030c6a7ed990d1b9293121dffc9c6</srcmd5>
+    <version>0.8.1</version>
+    <time>1491895935</time>
+    <user>maxlin_factory</user>
+    <comment> (forwarded request 479087 from hennevogel)</comment>
+    <requestid>479088</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6b0764f5ae1e2afb3280bf20789b618e</srcmd5>
+    <version>0.8.4</version>
+    <time>1496392406</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499979</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dbd0d25165f1d7197380c48f1e921446</srcmd5>
+    <version>0.8.6</version>
+    <time>1502892709</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514196</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f2bd201dc19bed81117f29bd446aa465</srcmd5>
+    <version>0.9.0</version>
+    <time>1508770388</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.9.0
+  * Made Backend::Memoize threadsafe. See #51 and #352.
+  * Added a middleware I18n::Middleware that should be used to ensure that i18n config is reset correctly between requests. See #381 and #382. (forwarded request 535854 from mschnitzer)</comment>
+    <requestid>535855</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>474a439bbf73f492b5f5d46b1cbb0188</srcmd5>
+    <version>0.9.1</version>
+    <time>1510960900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542642</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>603e19331fe53685c9c651ebe9f1b0e2</srcmd5>
+    <version>0.9.4</version>
+    <time>1518426930</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>575368</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8bccd4f45d7af2cfec3d6093ca5771cf</srcmd5>
+    <version>1.0.0</version>
+    <time>1520329523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>577157</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ab42022db4a8e747043a434c9ff814d2</srcmd5>
+    <version>1.0.1</version>
+    <time>1524144785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598291</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8eddd0db8376daa9be1ddc1dd0cb4369</srcmd5>
+    <version>1.1.0</version>
+    <time>1534543439</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>629491</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2cbddb093f78a9c61b0c956d6f9d3376</srcmd5>
+    <version>1.1.1</version>
+    <time>1541865628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646833</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>12d8c91fba4b6a614f1fe417f844f021</srcmd5>
+    <version>1.5.2</version>
+    <time>1548064363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665883</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>31d57c71e33387132ac467ff91351bdf</srcmd5>
+    <version>1.5.3</version>
+    <time>1548704966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668981</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7b631da01427174b5fa22229939f0338</srcmd5>
+    <version>1.6.0</version>
+    <time>1553699903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685139</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>599587905971dfe008a0a2d85cd37226</srcmd5>
+    <version>1.7.0</version>
+    <time>1573647993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747771</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>017b063773f8402432495ef481361621</srcmd5>
+    <version>1.8.2</version>
+    <time>1580152690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767645</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ba80c909568ad13a8a2a6358b4679ac3</srcmd5>
+    <version>1.8.3</version>
+    <time>1592580379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815945</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6dcafdcaf195f960cd80ca1dea5f4b94</srcmd5>
+    <version>1.8.5</version>
+    <time>1597752046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827373</requestid>
+  </revision>
+</revisionlist>

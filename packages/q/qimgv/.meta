@@ -1,0 +1,8 @@
+<package name="qimgv" project="openSUSE:Factory">
+  <title>Qt5 image viewer</title>
+  <description>Qt5 image viewer with webm support.
+
+</description>
+  <devel project="graphics" package="qimgv"/>
+  <url>https://github.com/easymodo/qimgv</url>
+</package>

@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30bd8542f39e08b67adf18bd790011ca</srcmd5>
+    <version>0.8.0</version>
+    <time>1381781066</time>
+    <user>scarabeus_factory</user>
+    <comment>Please add this new package to Factory as requested by fate#313501: Make nethogs part of the distribution</comment>
+    <requestid>202491</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>41f8c41a137774f46f1d9a30e7580a09</srcmd5>
+    <version>0.8.0</version>
+    <time>1382012633</time>
+    <user>scarabeus_factory</user>
+    <comment>Spec file corrected according to the reviewer's request during initial submission.</comment>
+    <requestid>203478</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>41f8c41a137774f46f1d9a30e7580a09</srcmd5>
+    <version>0.8.0</version>
+    <time>1409301973</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>585133ba29b66be8d9503969df50ada7</srcmd5>
+    <version>0.8.0</version>
+    <time>1438750329</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>320371</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3f159738b5843d931bb47374e33eadf6</srcmd5>
+    <version>0.8.1</version>
+    <time>1452611618</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.8.1 + upstream warning patch</comment>
+    <requestid>353087</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3e8570502d68bf9ef0e33e9907e39b9d</srcmd5>
+    <version>0.8.1</version>
+    <time>1467205820</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>404496</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d77ee4e6f4891c35f9a306bf9b3322e7</srcmd5>
+    <version>0.8.5</version>
+    <time>1476351057</time>
+    <user>dimstar_suse</user>
+    <comment>nethogs 0.8.5 (bsc#1003837)</comment>
+    <requestid>434208</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f62141edf2a16aaee0ea0e7669cd7236</srcmd5>
+    <version>0.8.6</version>
+    <time>1600180424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834092</requestid>
+  </revision>
+</revisionlist>

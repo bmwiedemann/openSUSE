@@ -1,0 +1,5 @@
+<package name="otpclient" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="GNOME:Apps" package="otpclient"/>
+</package>

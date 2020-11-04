@@ -1,0 +1,6 @@
+<package name="okular" project="openSUSE:Factory">
+  <title>Document Viewer</title>
+  <description>Document viewing program; supports document in PDF, PS and
+many other formats.</description>
+  <devel project="KDE:Applications" package="okular"/>
+</package>

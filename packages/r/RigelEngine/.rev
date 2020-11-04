@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b57f61a783256d3fbaf862f2eab0ed1</srcmd5>
+    <version>0.6.0beta</version>
+    <time>1593727648</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain RigelEngine in Factory</comment>
+    <requestid>815799</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2c31c1ccb2c9128b84bc8ac030e031bd</srcmd5>
+    <version>0.6.1beta</version>
+    <time>1594045582</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818731</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52b4f59bd9693c66ed39d7ae0828b14d</srcmd5>
+    <version>0.6.1beta</version>
+    <time>1598983745</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830848</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c46fa7e466ad2603cab6adbae81d8e49</srcmd5>
+    <version>0.6.2beta</version>
+    <time>1599507369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832729</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4589cdaa26aa8b8c19f4caef1a5b72f6</srcmd5>
+    <version>0.6.2beta</version>
+    <time>1599667332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833067</requestid>
+  </revision>
+</revisionlist>

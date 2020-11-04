@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>489ca0d114f69c04a786ec01332c6bf8</srcmd5>
+    <version>1.4.1</version>
+    <time>1579032743</time>
+    <user>dimstar_suse</user>
+    <comment>New firmware files required for the recent audio chip supported by SOF
+(Sound Open Firmware) drivers.</comment>
+    <requestid>764328</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e79050f7932962268d73a70cba6695db</srcmd5>
+    <version>1.4.2</version>
+    <time>1582018754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774844</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad4561f28fab224a86e59323d91e57a9</srcmd5>
+    <version>1.5</version>
+    <time>1593727353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812976</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8886f4d7458ad564915fa3bd1de1d4ae</srcmd5>
+    <version>1.5</version>
+    <time>1596652221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824509</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8eac9377d7cc32ef4626af310ae53d7</srcmd5>
+    <version>1.5.1</version>
+    <time>1600703196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835810</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9e718d6f262a6ab906bf519e1647e8a8</srcmd5>
+    <version>1.6~rc3</version>
+    <time>1604413003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6-rc3 (bsc#1178306):
+  * Support for Intel Tigerlake
+  * Support for Maxim Smart Amplifiers
+  * Beamformer Microphone support
+  * DC blocker audio processing component
+  * Major feature and performance improvements for ASRC, KWD and FIR/IIR
+  * Numerous bug fixes and performance improvements for Intel and NXP
+    platforms (forwarded request 845627 from tiwai)</comment>
+    <requestid>845628</requestid>
+  </revision>
+</revisionlist>

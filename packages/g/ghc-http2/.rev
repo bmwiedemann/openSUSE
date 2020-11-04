@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b1c566fc4a1dd3c6103da6132854900</srcmd5>
+    <version>2.0.4</version>
+    <time>1592578899</time>
+    <user>dimstar_suse</user>
+    <comment>initial version</comment>
+    <requestid>814937</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>007f3073ce6ab6aa8e69a316bd15abcc</srcmd5>
+    <version>2.0.5</version>
+    <time>1594293561</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819579</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a0056da7bfe6633cedfdbed0c893d480</srcmd5>
+    <version>2.0.5</version>
+    <time>1598643227</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829314</requestid>
+  </revision>
+</revisionlist>

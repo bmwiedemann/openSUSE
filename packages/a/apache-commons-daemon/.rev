@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1388e6e21ca0fad669bd6f72093925c1</srcmd5>
+    <version>1.0.10</version>
+    <time>1339824207</time>
+    <user>coolo</user>
+    <comment>update&amp;&amp;rename from jakarta-commons-daemon, bring apache-commons-daemon-jsvc needed for tomcat-jsvc</comment>
+    <requestid>125105</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1388e6e21ca0fad669bd6f72093925c1</srcmd5>
+    <version>1.0.10</version>
+    <time>1340183173</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3e653e0906a72ae3ae46d5f9868b0abc</srcmd5>
+    <version>1.0.10</version>
+    <time>1341339901</time>
+    <user>coolo</user>
+    <comment>- read ppc64 as known platform. (forwarded request 126987 from k0da)</comment>
+    <requestid>126998</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>be84a2c7d4723ab4e72438a8c5c1d5ac</srcmd5>
+    <version>1.0.10</version>
+    <time>1342713420</time>
+    <user>coolo</user>
+    <comment>- fix bnc#771802: jsvc fails to load libcap</comment>
+    <requestid>128324</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>be84a2c7d4723ab4e72438a8c5c1d5ac</srcmd5>
+    <version>1.0.10</version>
+    <time>1359108653</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>64e9dda19be94421dd8f4dd9730888ea</srcmd5>
+    <version>1.0.10</version>
+    <time>1364310775</time>
+    <user>coolo</user>
+    <comment>- config-guess-sub-update.patch: update config.guess/sub for aarch64
+- apache-commons-daemon-aarch64.patch: add aarch64 to the list of
+  supported cpus (forwarded request 161101 from Andreas_Schwab)</comment>
+    <requestid>161197</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b70e8fefe758b27c64e74fab009e873</srcmd5>
+    <version>1.0.15</version>
+    <time>1368771930</time>
+    <user>coolo</user>
+    <comment>- update to 1.0.15
+  * bugfix release, see RELEASE-NOTES.txt for a list of fixed bugs
+- obsoleted patches:
+  * 0001-execve-path-warning.patch, already upstream
+  * jsvc-libcap-relative.patch, already upstream
+  * config-guess-sub-update.patch, already upstream
+- don't install pointless filesfor SUSE Linux
+- verify package signature on openSUSE 12.3+
+- use source urls</comment>
+    <requestid>175861</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9092da1277e9cc4696bcdea053c2ff81</srcmd5>
+    <version>1.0.15</version>
+    <time>1379076357</time>
+    <user>scarabeus_factory</user>
+    <comment>- add javapackages-tools to build requires</comment>
+    <requestid>198844</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>9092da1277e9cc4696bcdea053c2ff81</srcmd5>
+    <version>1.0.15</version>
+    <time>1379661969</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9092da1277e9cc4696bcdea053c2ff81</srcmd5>
+    <version>1.0.15</version>
+    <time>1409300492</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>c96e81a38157825f6f58f2b6d255bc8c</srcmd5>
+    <version>1.0.15</version>
+    <time>1427983212</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gpg verification. We can stick to what osc services do for us
+
+- Drop unused patches:
+  * 0001-execve-path-warning.patch                                                                                                                                                           
+  * config-guess-sub-update.patch                                                                                                                                                            
+  * jsvc-libcap-relative.patch
+
+- Fix build with new javapackages-tools</comment>
+    <requestid>293052</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>3a426b44cddecf8a0b7f3380e93cb313</srcmd5>
+    <version>1.0.15</version>
+    <time>1495442828</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496573</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>03339a5bf9d56792b0c3572c4c477ad0</srcmd5>
+    <version>1.0.15</version>
+    <time>1505416731</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>526055</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>5b4dd824c2800c855bb571c3470b68a7</srcmd5>
+    <version>1.0.15</version>
+    <time>1532446373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622501</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>bb2081159329f762d178c4fa7a8b8251</srcmd5>
+    <version>1.0.15</version>
+    <time>1553809511</time>
+    <user>dimstar_suse</user>
+    <comment>Disregard the pom parent</comment>
+    <requestid>689045</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>987536c9f78d5855e503a3641e2ec973</srcmd5>
+    <version>1.2.2</version>
+    <time>1591879519</time>
+    <user>dimstar_suse</user>
+    <comment>1.2.2</comment>
+    <requestid>812796</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>43c3bdea5178fef8258c8669fefdfe93</srcmd5>
+    <version>1.2.3</version>
+    <time>1604412969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845453</requestid>
+  </revision>
+</revisionlist>

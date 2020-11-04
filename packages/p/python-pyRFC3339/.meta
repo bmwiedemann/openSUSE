@@ -1,0 +1,6 @@
+<package name="python-pyRFC3339" project="openSUSE:Factory">
+  <title>Parse and generate RFC3339-compliant timestamps</title>
+  <description>Python library to parse and generate RFC 3339-compliant timestamps using Python datetime.datetime objects.</description>
+  <devel project="devel:languages:python" package="python-pyRFC3339"/>
+  <url>https://github.com/kurtraschke/pyRFC3339</url>
+</package>

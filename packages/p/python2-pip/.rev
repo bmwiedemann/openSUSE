@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0964a64515686f98d822f9932467842c</srcmd5>
+    <version>20.0.2</version>
+    <time>1586368469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791936</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>84753f5bdff03ecbbf4a84077e87b89d</srcmd5>
+    <version>20.0.2</version>
+    <time>1587581932</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix use of alternatives</comment>
+    <requestid>796257</requestid>
+  </revision>
+</revisionlist>

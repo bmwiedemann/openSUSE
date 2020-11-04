@@ -1,0 +1,216 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fbdbda3253c8ba94b13ecc102b13f386</srcmd5>
+    <version>2.0.2</version>
+    <time>1421333908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>259782</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>855296e7a8a5ebbcecd6de3d64caf09f</srcmd5>
+    <version>2.0.2</version>
+    <time>1437059740</time>
+    <user>coolo</user>
+    <comment>- Build BLACS shared libraries
+  * scalapack-2.0.2-shared-blacs.patch (forwarded request 315666 from Dmitry_R)</comment>
+    <requestid>315667</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>73d58faa725a6465ad3ca06b96ad1d1d</srcmd5>
+    <version>2.0.2</version>
+    <time>1438076589</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>318513</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2ca2ae19721262991ffa1152af7a9f25</srcmd5>
+    <version>2.0.2</version>
+    <time>1508316878</time>
+    <user>dimstar_suse</user>
+    <comment>- Add magic to limit the number of flavors built in the
+  in the OBS ring.
+
+- Make sure the Factory validator gets %pname as package name.
+
+- Convert to multibuild
+- Add HPC build using environment modules
+  (FATE#321715).
+- Generate baselib.conf dynamically and only for the non-HPC
+  builds: this avoids issues with the source validator.</comment>
+    <requestid>534482</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5c3c5f4af0656b8104dc3e8523037ddb</srcmd5>
+    <version>2.0.2</version>
+    <time>1508503638</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix blacs master packages. (forwarded request 535290 from eeich)</comment>
+    <requestid>535291</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>fdf18de0019dc2cde4d69339526cd8a4</srcmd5>
+    <version>2.0.2</version>
+    <time>1510578243</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libopenblas*devel as Requires to the devel package for
+  HPC. (forwarded request 541138 from eeich)</comment>
+    <requestid>541139</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>b6e2ad7816aa55f2ffca26a4fd4ee620</srcmd5>
+    <version>2.0.2</version>
+    <time>1510960940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542676</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f920a4d22eeef3f5cc69fc392d74dce6</srcmd5>
+    <version>2.0.2</version>
+    <time>1517932234</time>
+    <user>dimstar_suse</user>
+    <comment>- The HPC build of scalapack requires openBLAS. OpenBLAS is not
+  supported for s390: skip building on s390 for HPC (bsc#1079513). (forwarded request 573244 from eeich)</comment>
+    <requestid>573261</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>287947e62f75f7530f8c105ac8501c91</srcmd5>
+    <version>2.0.2</version>
+    <time>1519218659</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix setting of 
+  * LIBRARY_PATH
+  * PKG_CONFIG_PATH (boo#1080426).
+  * Fix headers (boo#1080434). (forwarded request 575216 from eeich)</comment>
+    <requestid>575217</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>0153bc257c5c558fc05e3ae1f4d82a33</srcmd5>
+    <version>2.0.2</version>
+    <time>1526219959</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix HPC build that broke with last change: the BLACS headers
+  need to be provided always (boo#1092881).
+
+- Only produce blacs-devel-headers package once (in openmpi)
+  (boo#1092881).</comment>
+    <requestid>606359</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>8b620f4799bb36e161847f0c543d63a6</srcmd5>
+    <version>2.0.2</version>
+    <time>1544726954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657614</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>be81da5c86b0835c989d4dd412bc41ac</srcmd5>
+    <version>2.0.2</version>
+    <time>1562327317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678390</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>8e1aa023ea5e73246ffeaf501fdbbe3c</srcmd5>
+    <version>2.0.2</version>
+    <time>1563701587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716004</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>74bc6e3a5d99485404cb1eebc78ac705</srcmd5>
+    <version>2.0.2</version>
+    <time>1568190828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729681</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>cb4ebadab33b65e7dac5bf2f5041f715</srcmd5>
+    <version>2.0.2</version>
+    <time>1574859314</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751101</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dceec136f63778ac4aaecc4363ebf559</srcmd5>
+    <version>2.1.0</version>
+    <time>1575464115</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to v2.1.0 (jsc#SLE-11037)
+  * New robust ScaLAPACK routine for computing the QR factorization with
+    column pivoting by Zvonimir Bujanovic and Zlatko Drmac [Download Lawn 296]
+  * MPI-3+ updates required by Open MPI 4
+  * Improve accuracy of Frobenius norm by making intermediate column sums
+  * miscellaneous minor bug fixes
+  * Improve cmake shared library support
+- Disable openmpi1 builds for SLE/Leap &amp;gt; 15.1.
+- Enable openmpi3 builds for Leap and SLE &amp;gt; 15.1 (jsc#SLE-7773).
+- Add support for gcc8 and gcc9 builds for HPC (jsc#SLE-7766,
+  jsc#SLE-8609).
+- For HPC no longer provide BLACS as a separate library.
+- Remove: 
+  * scalapack-2.0.2-shared-blacs.patch
+  * scalapack-2.0.2-shared-lib.patch
+    Handled in spec file. (forwarded request 753306 from eeich)</comment>
+    <requestid>753897</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a29c68a31e76bfa16d73bc7cdad8a692</srcmd5>
+    <version>2.1.0</version>
+    <time>1575563705</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a Provides: for the removed BLACS library package for HPC.
+  libscalapack contains the BLACS ABI.</comment>
+    <requestid>754343</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>a32a87e92199fefb8239f361a367e4f3</srcmd5>
+    <version>2.1.0</version>
+    <time>1576189083</time>
+    <user>dimstar_suse</user>
+    <comment>  jsc#SLE-8604).</comment>
+    <requestid>755673</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>e6dee9b32233c0a8d93a0441b6683edb</srcmd5>
+    <version>2.1.0</version>
+    <time>1585484843</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove blacs HPC master packages: the libblacs has been removed
+  (boo#1167949). (forwarded request 789285 from eeich)</comment>
+    <requestid>789303</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>7f546929fc7601b525fa2e16826ab50f</srcmd5>
+    <version>2.1.0</version>
+    <time>1592398614</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler flag -fallow-argument-mismatch to allow build with
+  gcc10. (forwarded request 815394 from eeich)</comment>
+    <requestid>815395</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>cbe52e8b701016611b51bf643fdfe576</srcmd5>
+    <version>2.1.0</version>
+    <time>1595011767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmpi4 spport (provided by Alin M Elena)
+- Replace -fallow-argument-mismatch by -std=legacy</comment>
+    <requestid>821325</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>e86f6384de2d5b861f1b2f4342874c5f</srcmd5>
+    <version>2.1.0</version>
+    <time>1600179927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build support for gcc10 to HPC build (bsc#1174439). (forwarded request 833600 from eeich)</comment>
+    <requestid>833715</requestid>
+  </revision>
+</revisionlist>

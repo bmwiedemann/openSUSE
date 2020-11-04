@@ -1,0 +1,8 @@
+<package name="python-ligo-segments" project="openSUSE:Factory">
+  <title>Representations of semi-open intervals</title>
+  <description>ligo-segments defines the segment, segmentlist, and segmentlistdict objects for manipulating semi-open intervals.
+
+</description>
+  <devel project="science" package="python-ligo-segments"/>
+  <url>https://git.ligo.org/lscsoft/ligo-segments</url>
+</package>

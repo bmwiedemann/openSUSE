@@ -1,0 +1,5 @@
+<package name="udpa" project="openSUSE:Factory">
+  <title>Universal Data Plane API</title>
+  <description>The objective of the Universal Data Plane API Working Group (UDPA-WG) is to bring together parties across the industry interested in a common control and configuration API for data plane proxies and load balancers.</description>
+  <devel project="devel:kubic" package="udpa"/>
+</package>

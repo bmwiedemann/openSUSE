@@ -1,0 +1,222 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>9b2d3e73ada74aa216206987934e80b8</srcmd5>
+    <version>3.1.0</version>
+    <time>1168904065</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="121">
+    <srcmd5>eeabc351c2b26e6506cacc2892a3e93e</srcmd5>
+    <version>3.1.0</version>
+    <time>1203555568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="178">
+    <srcmd5>410381285c2c2f9fced16e10182d76d7</srcmd5>
+    <version>3.1.0</version>
+    <time>1222434602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="179">
+    <srcmd5>410381285c2c2f9fced16e10182d76d7</srcmd5>
+    <version>3.1.0</version>
+    <time>1222434602</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="180">
+    <srcmd5>a307b71b67f4b13f551f5dd90abbbd67</srcmd5>
+    <version>3.1.0</version>
+    <time>1249938253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="181">
+    <srcmd5>faca90980582a037523373c052ffc2c2</srcmd5>
+    <version>3.1.0</version>
+    <time>1250124404</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-urlgrabber based on submit request 17633 from user matejcik
+</comment>
+  </revision>
+  <revision rev="7" vrev="183">
+    <srcmd5>faca90980582a037523373c052ffc2c2</srcmd5>
+    <version>3.1.0</version>
+    <time>1250124404</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:python/python-urlgrabber based on submit request 17633 from user matejcik
+</comment>
+  </revision>
+  <revision rev="8" vrev="184">
+    <srcmd5>0e0ef6c8470ffb78aea6b710840b8a29</srcmd5>
+    <version>3.1.0</version>
+    <time>1268925892</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="186">
+    <srcmd5>0e0ef6c8470ffb78aea6b710840b8a29</srcmd5>
+    <version>3.1.0</version>
+    <time>1278667385</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="187">
+    <srcmd5>0e0ef6c8470ffb78aea6b710840b8a29</srcmd5>
+    <version>3.1.0</version>
+    <time>1278678615</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="190">
+    <srcmd5>0e0ef6c8470ffb78aea6b710840b8a29</srcmd5>
+    <version>3.1.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1520fb68d15198df1478760045f26792</srcmd5>
+    <version>3.9.1</version>
+    <time>1316681522</time>
+    <user>saschpe</user>
+    <comment>- Update to version 3.9.1:
+  * cleanup all the old urlgrabber urllib code that's not being used
+  * delete sslfactory and keepalive fix up the unittests to match existing code
+  * make sure the value we get back from the parse150 and other calls is
+    converted to an int before we make it 'size' rhbug: #524705
+- Spec file updates:
+  * Removed authors from description
+  * Dropped useless python-urlgrabber-2.9.9.patch
+  * Dropped obsolete python-urlgrabber-3.1.0.patch (upstream changed)
+  * Require python-pycurl</comment>
+    <requestid>84026</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1520fb68d15198df1478760045f26792</srcmd5>
+    <version>3.9.1</version>
+    <time>1319182407</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>1520fb68d15198df1478760045f26792</srcmd5>
+    <version>3.9.1</version>
+    <time>1340184097</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>3089a61fccb6e79d94c03f04ef9f00e2</srcmd5>
+    <version>3.9.1</version>
+    <time>1349251764</time>
+    <user>coolo</user>
+    <comment>- Fixed wrong license header in urlgrabber/__init__.py (bnc#781323)
+- Updated upstream URL, the project moved the baseurl.org (yum)</comment>
+    <requestid>136507</requestid>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>3089a61fccb6e79d94c03f04ef9f00e2</srcmd5>
+    <version>3.9.1</version>
+    <time>1359110133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>cb96e5cf4c6ec63a9fad4387b22920b8</srcmd5>
+    <version>3.9.1</version>
+    <time>1360591757</time>
+    <user>coolo</user>
+    <comment>- Add grabber_fix.diff: Fixed timeout and other errors breaking yum
+  compatibility (bnc#793650)</comment>
+    <requestid>155091</requestid>
+  </revision>
+  <revision rev="18" vrev="11">
+    <srcmd5>cb96e5cf4c6ec63a9fad4387b22920b8</srcmd5>
+    <version>3.9.1</version>
+    <time>1379664301</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>cb96e5cf4c6ec63a9fad4387b22920b8</srcmd5>
+    <version>3.9.1</version>
+    <time>1409303011</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>c455c963a21f80f9d4c02c59088feee4</srcmd5>
+    <version>3.9.1</version>
+    <time>1411220994</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249964</requestid>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>e9884e169c79eb16357604dca54000ab</srcmd5>
+    <version>3.9.1</version>
+    <time>1438076564</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>318754</requestid>
+  </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>2e144d4d7a14f0717c690505d7186561</srcmd5>
+    <version>3.9.1</version>
+    <time>1527932866</time>
+    <user>dimstar_suse</user>
+    <comment>Clean SPEC file (forwarded request 612884 from mcepl)</comment>
+    <requestid>612885</requestid>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>b06a61b36de4f3f91af5cc244f795242</srcmd5>
+    <version>3.9.1</version>
+    <time>1545648340</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659738</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>80f18e8850f617183bad3c30fd3b7614</srcmd5>
+    <version>4.0.0</version>
+    <time>1551276631</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch grabber_fix.diff that was never upstreamed. Should
+  not be needed anymore
+
+- Update to the upstream version 4.0.0:
+  * Port to Python 3 rocket
+  * Add curl_obj option to grabber
+  * Throw an obvious error message when urlgrabber-ext-down is
+    missing when attempting to use external downloader
+  * Use setuptools for setup.py instead of distutils
+- Remove merged patches:
+  * declare-dollar-sign-as-safe-in-urlquote.patch
+  * python-urlgrabber-3.9.1-set-SSL_VERIFYHOST-correct.dif
+  * python-urlgrabber-3.9.1-preserve-queryparams-in-urls.patch</comment>
+    <requestid>679781</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1a420f8925c387cea1d13d4250dd7598</srcmd5>
+    <version>4.1.0</version>
+    <time>1570627207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Fix confused license header to clarify licensing
+  * Fix Python 3 compatibility with urlgrabber-ext-down
+  * Support HTTP CONNECT with reget. BZ 1585596
+  * Fix for usage of _levelNames from logging module
+  * Fix issue when URLGRABBER_DEBUG is not an integer on Python 3
+  * Revise setup.py to remove need for extra setup-time dependencies
+  * setuptools: Update Development Status to Production/Stable</comment>
+    <requestid>736400</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8c5f6f3534443a7bd173225f87a1f6fc</srcmd5>
+    <version>4.1.0</version>
+    <time>1589993204</time>
+    <user>dimstar_suse</user>
+    <comment>- urlgrabber-ext-down as an alternative
+- %python3_only -&gt; %python_alternative
+- urlgrabber-ext-down is expected to reside under /usr/libexec
+</comment>
+    <requestid>807479</requestid>
+  </revision>
+</revisionlist>

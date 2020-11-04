@@ -1,0 +1,5 @@
+<package name="budgie-calendar-applet" project="openSUSE:Factory">
+  <title></title>
+  <description>Calendar applet for Budgie Desktop</description>
+  <devel project="X11:Solus" package="budgie-calendar-applet"/>
+</package>

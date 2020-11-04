@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="223">
+    <srcmd5>58ff0268929cc9d946969aa8499c9eb7</srcmd5>
+    <version>1.6.1</version>
+    <time>1168901459</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="281">
+    <srcmd5>6fd76c284ce4b1ffa176fc43cb846be4</srcmd5>
+    <version>1.6.1</version>
+    <time>1183633570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>37231c04edc6df7c475359ac1cc38196</srcmd5>
+    <version>1.6.2</version>
+    <time>1201726349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="70">
+    <srcmd5>37231c04edc6df7c475359ac1cc38196</srcmd5>
+    <version>1.6.2</version>
+    <time>1201726349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="71">
+    <srcmd5>611d2b6f52f58bb7e0e9ba87258efe99</srcmd5>
+    <version>1.6.2</version>
+    <time>1245336763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="73">
+    <srcmd5>611d2b6f52f58bb7e0e9ba87258efe99</srcmd5>
+    <version>1.6.2</version>
+    <time>1245336763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="74">
+    <srcmd5>1e9f57cf0603af58bd22d307905ee1c7</srcmd5>
+    <version>1.6.2</version>
+    <time>1259335637</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/alevt based on submit request 25110 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="8" vrev="75">
+    <srcmd5>f8f9922b7223152d299e8448a4480f2c</srcmd5>
+    <version>1.6.2</version>
+    <time>1268922862</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="77">
+    <srcmd5>f8f9922b7223152d299e8448a4480f2c</srcmd5>
+    <version>1.6.2</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="78">
+    <srcmd5>f8f9922b7223152d299e8448a4480f2c</srcmd5>
+    <version>1.6.2</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="81">
+    <srcmd5>f8f9922b7223152d299e8448a4480f2c</srcmd5>
+    <version>1.6.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="82">
+    <srcmd5>db5906f5c3c56b085fa1d30993485cb3</srcmd5>
+    <version>1.6.2</version>
+    <time>1316439272</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82719 from jengelh)</comment>
+    <requestid>82736</requestid>
+  </revision>
+  <revision rev="13" vrev="84">
+    <srcmd5>db5906f5c3c56b085fa1d30993485cb3</srcmd5>
+    <version>1.6.2</version>
+    <time>1319181767</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="85">
+    <srcmd5>becc7793d2c07f4c4e31e7f7db5b8ca4</srcmd5>
+    <version>1.6.2</version>
+    <time>1323190672</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="86">
+    <srcmd5>959abeaaaf47b5dc4cf1a214e207e2c2</srcmd5>
+    <version>1.6.2</version>
+    <time>1326118565</time>
+    <user>coolo</user>
+    <comment>- build also with libpng15
+  * libpng15.patch (forwarded request 99221 from pgajdos)</comment>
+    <requestid>99285</requestid>
+  </revision>
+  <revision rev="16" vrev="88">
+    <srcmd5>959abeaaaf47b5dc4cf1a214e207e2c2</srcmd5>
+    <version>1.6.2</version>
+    <time>1340183168</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="90">
+    <srcmd5>959abeaaaf47b5dc4cf1a214e207e2c2</srcmd5>
+    <version>1.6.2</version>
+    <time>1359108645</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="92">
+    <srcmd5>959abeaaaf47b5dc4cf1a214e207e2c2</srcmd5>
+    <version>1.6.2</version>
+    <time>1379661957</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="94">
+    <srcmd5>959abeaaaf47b5dc4cf1a214e207e2c2</srcmd5>
+    <version>1.6.2</version>
+    <time>1409300478</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="95">
+    <srcmd5>79c98e7d0bda1f9ecfeafad0f7cc9b99</srcmd5>
+    <version>1.6.2</version>
+    <time>1518188021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574645</requestid>
+  </revision>
+  <revision rev="21" vrev="96">
+    <srcmd5>3db15ce6d431de6c7812e8cec115d9ee</srcmd5>
+    <version>1.6.2</version>
+    <time>1573044659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739459</requestid>
+  </revision>
+</revisionlist>

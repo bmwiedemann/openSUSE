@@ -1,0 +1,7 @@
+<package name="xfmpc" project="openSUSE:Factory">
+  <title>Lightweight MPD client for Xfce</title>
+  <description>Xfmpc is a lightweight Music Player Daemon (MPD) client application for the
+Xfce desktop environment.</description>
+  <devel project="X11:xfce" package="xfmpc"/>
+  <url>http://goodies.xfce.org/projects/applications/xfmpc/</url>
+</package>

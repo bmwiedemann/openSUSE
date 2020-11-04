@@ -1,0 +1,9 @@
+<package name="pam-test" project="openSUSE:Factory">
+  <title>Test of a PAM stack for authentication and password change</title>
+  <description>This application can be used to test a PAM stack for authentication and
+password change.
+
+</description>
+  <devel project="Linux-PAM" package="pam-test"/>
+  <url>https://github.com/pbrezina/pam-test</url>
+</package>

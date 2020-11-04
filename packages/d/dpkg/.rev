@@ -1,0 +1,350 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad21a76df596911f1848ba0c5ce54cd9</srcmd5>
+    <version>1.16.8</version>
+    <time>1349720934</time>
+    <user>coolo</user>
+    <comment>split the deb package. See http://lists.opensuse.org/opensuse-factory/2012-06/msg00963.html for context.
+The link of update-alternatives should also be changed from deb to dpkg.</comment>
+    <requestid>136817</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>611b989676f4787468289ad1a7b0d937</srcmd5>
+    <version>1.16.8</version>
+    <time>1350044179</time>
+    <user>coolo</user>
+    <comment>add Recommends on File::FcntlLock, Dpkg::File will use it if available</comment>
+    <requestid>137900</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>611b989676f4787468289ad1a7b0d937</srcmd5>
+    <version>1.16.8</version>
+    <time>1359108826</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>16ee39dc827a03fc90c91543169d4428</srcmd5>
+    <version>1.16.10</version>
+    <time>1364472624</time>
+    <user>coolo</user>
+    <comment>Update to 1.16.10 (forwarded request 161337 from flichtenheld)</comment>
+    <requestid>161338</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f87a70d9676662ef2b88ea9f710b9e66</srcmd5>
+    <version>1.16.10</version>
+    <time>1373395914</time>
+    <user>coolo</user>
+    <comment>pedantic change from %patch -P 6 to %patch6 (forwarded request 182586 from jengelh)</comment>
+    <requestid>182651</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f87a70d9676662ef2b88ea9f710b9e66</srcmd5>
+    <version>1.16.10</version>
+    <time>1379662253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>47b9ab5dde842278ba3defea3d838590</srcmd5>
+    <version>1.16.10</version>
+    <time>1386077141</time>
+    <user>coolo</user>
+    <comment>- add dpkg-ppc64le.diff to fix ppc64 LE build
+
+- add dpkg-ppc64le.diff (adds ppc64le architecture) (forwarded request 209203 from k0da)</comment>
+    <requestid>209228</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>b02676d88fa368c225aa0c7738a777df</srcmd5>
+    <version>1.16.10</version>
+    <time>1400006768</time>
+    <user>coolo</user>
+    <comment>- Use SUSE not SuSE.
+
+- Use SUSE not SuSE.</comment>
+    <requestid>233611</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>07328f97d5b7ec36b9e379c16105ef7d</srcmd5>
+    <version>1.16.10</version>
+    <time>1409252708</time>
+    <user>coolo</user>
+    <comment>Fixed .changes</comment>
+    <requestid>246518</requestid>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>07328f97d5b7ec36b9e379c16105ef7d</srcmd5>
+    <version>1.16.10</version>
+    <time>1409300788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db6c5b936055334cc052fccccca14168</srcmd5>
+    <version>1.17.23</version>
+    <time>1425377568</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288293</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>df4caa9dbff8a58fedf08f8df5834cc0</srcmd5>
+    <version>1.17.24</version>
+    <time>1428391690</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup a bit with-spec-cleaner help
+
+- Version bump to 1.17.24:
+  * Translation updates
+  * Various small fixes
+
+- Cleanup with spec-cleaner
+
+- Update to 1.11.24:
+  * Translation updates
+  * Various small fixes</comment>
+    <requestid>293979</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>98c670ce28e71b32986d3f64466a030d</srcmd5>
+    <version>1.18.1</version>
+    <time>1433577233</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude the update-alternatives manpage to avoid conflict
+
+- Verion bump to 1.18.1:
+  * Bump to latest upstream release
+  * Plenty of fixes with too long changelog, see changelog file in
+    documentation
+  * Also fixes bnc#926749 CVE-2015-0840
+  * Refresh patch:
+    + update-alternatives-suse.patch
+
+- Adjust to the new manpage location
+
+- Verion bump to 1.18.1:
+  * Bump to latest upstream release
+  * Plenty of fixes with too long changelog, see changelog file in
+    documentation
+  * Also fixes bnc#926749 CVE-2015-0840
+  * Refresh patch:
+    + update-alternatives-suse.patch</comment>
+    <requestid>310535</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>adcaa5f6a045f93ca863c2c62e6baeca</srcmd5>
+    <version>1.18.4</version>
+    <time>1459237892</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.18.4:
+  * Various fixes from upstream debian, see changelog file distributed
+    with the package
+  * Refreshed patch update-alternatives-suse.patch
+
+- Update to the 1.18.4:
+  * Rebase patch update-alternatives-suse.patch
+  * Touch the gost file in post</comment>
+    <requestid>379572</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>cd928964a1c7aa449f0d730e5bf5b049</srcmd5>
+    <version>1.18.4</version>
+    <time>1460480278</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bnc#969171 by updating even with equal priority
+  * 0001-In-case-of-equal-priority-rather-update.patch
+
+- Fix bnc#969171 by updating even with equal priority
+  * 0001-In-case-of-equal-priority-rather-update.patch
+- Try to autorefresh all the alternatives in post in case some of
+  them were broken
+
+- The logfile for update-alternatives is /var/log/alternatives.log
+  so stop using update-alternatives.log file which is empty</comment>
+    <requestid>385683</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>406e3d6ac42a67bf040e15af2eb4d036</srcmd5>
+    <version>1.18.4</version>
+    <time>1464075205</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.17.23 also fixes bsc#941619
+- Provide alternatives binary and alternatives = %{version} symbol</comment>
+    <requestid>395153</requestid>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>3d3b823eb44413f468f7c4e3e3209b9a</srcmd5>
+    <version>1.18.4</version>
+    <time>1465129056</time>
+    <user>dimstar_suse</user>
+    <comment>- Require touch in post phase bnc#982336
+
+- Require touch in post phase bnc#982336</comment>
+    <requestid>399124</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fd3d14ed99a7aa18c3d5adfda2314abc</srcmd5>
+    <version>1.18.10</version>
+    <time>1473679282</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.18.10:
+  * Various few fixes, see changelog file in the package
+  * Refresh patch update-alternatives-suse.patch
+  * Remove patch dpkg-sparc.diff
+
+- Version update to 1.18.10:
+  * Various few fixes, see changelog file in the package
+  * Refresh patch update-alternatives-suse.patch
+  * Remove patch dpkg-sparc.diff
+
+- Use ls . instead of * to avoid error when nothing is in alternatives
+  directory</comment>
+    <requestid>425293</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9851de75159b39e6f2b5d518ccefcc58</srcmd5>
+    <version>1.18.23</version>
+    <time>1491210262</time>
+    <user>lnussel_factory</user>
+    <comment>- Version update to 1.18.23:
+  * Various fixes all around
+  * Refreshed patch update-alternatives-suse.patch
+
+- Update to 1.18.23:
+  * Various small fixes and memleaks removed
+- Make sure to generate manpage
+- Refresh patch update-alternatives-suse.patch</comment>
+    <requestid>482883</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b534ee7dc64ded269a519a89914c994a</srcmd5>
+    <version>1.18.23</version>
+    <time>1502706860</time>
+    <user>dimstar_suse</user>
+    <comment>- Silence the update-alternatives regen output wrt bsc#1050848
+  it causes more confusion than benefits</comment>
+    <requestid>515344</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>7294aa90d456f482d7b04884a2707107</srcmd5>
+    <version>1.18.23</version>
+    <time>1512041583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544383</requestid>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>c4bbfb445206401cd166271da69de2c8</srcmd5>
+    <version>1.18.23</version>
+    <time>1513676560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556757</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>69ae1b7a3381a9b8723976381217ad0d</srcmd5>
+    <version>1.19.0.4</version>
+    <time>1516443723</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.19.0.4:
+  * Tons of architecture fixes
+  * Testsuite was expanded
+
+- Update to 1.19.0.4:
+  * No changes in update-alternatives just match step with dpkg
+- Drop patch 0001-In-case-of-equal-priority-rather-update.patch
+  * Causes issues on too eagerly regenerating stuff bsc#1075971
+  * Reason for this patch should no longer be needed as all python
+    packages are singlespec
+  * Also drop the post override</comment>
+    <requestid>566413</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>c7922c34006686ae96f7b51aa20445bd</srcmd5>
+    <version>1.19.0.4</version>
+    <time>1516970088</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop commented out selinux line that is not needed in current
+  buildsystem</comment>
+    <requestid>568264</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>302c5f7674579387af03e77d88dc2fc6</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1530993117</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.19.0.5:
+  * Fix directory traversal with dpkg-deb --raw-extract, by guaranteeing
+    that the DEBIAN pathname does not exist. Closes: #879982
+    Reported by Jakub Wilk &lt;jwilk@jwilk.net&gt;.
+  * Rename DPKG_GAIN_ROOT_CMD to DEB_GAIN_ROOT_CMD in the R³ support, as
+    the variable is expected to be set by any builder, not just dpkg. And
+    introduce ephemereal backwards compatibility even though there are no
+    known users.
+  * Do not set DEB_GAIN_ROOT_CMD in dpkg-buildpackage when the R³ value is
+    &lt;implementations-keywords&gt;, following the specification.
+  * Specify that DEB_GAIN_ROOT_CMD in R³ should preserve the environment.
+    Proposed by Josh Triplett &lt;josh@joshtriplett.org&gt;.
+  * Specify new DEB_RULES_REQUIRES_ROOT variable for R³ support.
+  * Declare R³ specification as &quot;recommendation, stable&quot; with version 1.0.
+  * Architecture support:
+    - Add support for riscv64 CPU. Closes: #822914
+      Thanks to Manuel A. Fernandez Montecelo &lt;mafm@debian.org&gt;
+  * Perl modules:
+    - Dpkg::Vendor::Debian: Use proper %use_feature key. This was causing perl
+      errors on paths not accapted for fixdebugpath.
+      Reported by Mattia Rizzolo &lt;mattia@debian.org&gt;, on IRC. Closes: #881051
+    - Check that $state-&gt;{seen} exists instead of $state being just defined.
+      Fixes regression in dpkg-gensymbols symbols output.
+      Thanks to Dmitry Shachnev &lt;mitya57@debian.org&gt;. Closes: #880166
+    - Mark hurd-i386 as having gcc builtin PIE in Dpkg::Vendor::Debian.
+      Requested by Samuel Thibault &lt;sthibault@debian.org&gt;.
+
+- split the u-a to separate spec file to reduce a build cycle
+- update to debhelper-7.3.12
+- update to debhelper-7.2.16</comment>
+    <requestid>619567</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>8e9d62fcce58686c3c1023c642270628</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1548769123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665996</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>9d9c836fe7c963a5b61570ed1c79fd1a</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1552901620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>684644</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>12c76eac7fa7916fc18aba5fe8bfae5d</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1554458157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690791</requestid>
+  </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>fba1219f6dd96926780c6e6efef5dae8</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1567677714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720467</requestid>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>63534c1fead257255be908fb101a0c9b</srcmd5>
+    <version>1.19.0.5</version>
+    <time>1601996761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829576</requestid>
+  </revision>
+</revisionlist>

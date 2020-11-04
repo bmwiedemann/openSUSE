@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cffd3f1a8bccea653efa307aaf8f9531</srcmd5>
+    <version>7</version>
+    <time>1589403388</time>
+    <user>dimstar_suse</user>
+    <comment>add to factory</comment>
+    <requestid>805164</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccb707cd2bcd0bbb2921e5c2653c55c8</srcmd5>
+    <version>8</version>
+    <time>1597602467</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8:
+  * Make a &quot;make coverity&quot; rule to scan the source
+  * Don't try to apply anything if PK and KEK aren't enrolled
+  * Add --force and --quiet for the PK/KEK checker, and use them in the
+  systemd service.
+  * Add a .syntastic_c_config for vim's Syntastic modules
+  * Use tsearch()/tfind()/tdestroy() from libc instead of ccan htables
+  * Don't open the dbx file with O_RDWR|O_CREAT, use O_RDONLY.
+  * Lots of minor bug fixes gcc -Wextra and friends found.</comment>
+    <requestid>827028</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e031b2663e50466074c5943d8f1a1124</srcmd5>
+    <version>8</version>
+    <time>1600801885</time>
+    <user>dimstar_suse</user>
+    <comment>- dbxtool-fixes.patch: bigger hammer for integer size mismatch to
+  fix build on more architectures. (forwarded request 835982 from msmeissn)</comment>
+    <requestid>835985</requestid>
+  </revision>
+</revisionlist>

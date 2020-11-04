@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3e02688397936ea7886c12fad52b9aa</srcmd5>
+    <version>0.6.6</version>
+    <time>1363899928</time>
+    <user>coolo</user>
+    <comment>Renamed package from libgee to libgee06, in order to provide them in parallel for the migration phase - goal is to drop this package again</comment>
+    <requestid>159998</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f3e02688397936ea7886c12fad52b9aa</srcmd5>
+    <version>0.6.6</version>
+    <time>1379662956</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f3e02688397936ea7886c12fad52b9aa</srcmd5>
+    <version>0.6.6</version>
+    <time>1409301568</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

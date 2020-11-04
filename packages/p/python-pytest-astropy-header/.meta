@@ -1,0 +1,5 @@
+<package name="python-pytest-astropy-header" project="openSUSE:Factory">
+  <title>pytest-astropy-header</title>
+  <description>pytest plugin to add diagnostic information to the header of the test output</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-astropy-header"/>
+</package>

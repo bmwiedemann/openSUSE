@@ -1,0 +1,10 @@
+<package name="relaxngcc" project="openSUSE:Factory">
+  <title>RELAX NG Compiler Compiler</title>
+  <description>RelaxNGCC is a tool for generating Java source code from a given RELAX NG
+grammar. By embedding code fragments in the grammar like yacc or JavaCC, you can
+take appropriate actions while parsing valid XML documents against the grammar.
+
+</description>
+  <devel project="Java:packages" package="relaxngcc"/>
+  <url>http://relaxngcc.sourceforge.net/en/index.htm</url>
+</package>

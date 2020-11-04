@@ -1,0 +1,12 @@
+<package name="python-PyCBC" project="openSUSE:Factory">
+  <title>Core library to analyze gravitational-wave data</title>
+  <description>PyCBC is a software package used to explore astrophysical sources of
+gravitational waves. It contains algorithms to analyze
+gravitational-wave data from the LIGO and Virgo detectors, detect
+coalescing compact binaries, and measure the astrophysical parameters
+of detected sources.
+
+</description>
+  <devel project="science" package="python-PyCBC"/>
+  <url>http://www.pycbc.org/</url>
+</package>

@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>118fa6dd9960af0e3b24d1d9d5a19046</srcmd5>
+    <version>0.006</version>
+    <time>1312463143</time>
+    <user>saschpe</user>
+    <comment>new dep of cpanspec</comment>
+    <requestid>77864</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f422dce3e42d578905e8ee9726e6f7f7</srcmd5>
+    <version>0.006</version>
+    <time>1312463155</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77864
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>f422dce3e42d578905e8ee9726e6f7f7</srcmd5>
+    <version>0.006</version>
+    <time>1319182306</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f4446f20152c9d1aee90a010aad3b11b</srcmd5>
+    <version>0.006</version>
+    <time>1323193645</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f4446f20152c9d1aee90a010aad3b11b</srcmd5>
+    <version>0.006</version>
+    <time>1340183919</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f4446f20152c9d1aee90a010aad3b11b</srcmd5>
+    <version>0.006</version>
+    <time>1359109798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>f4446f20152c9d1aee90a010aad3b11b</srcmd5>
+    <version>0.006</version>
+    <time>1379663844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c6ad18af901fd8e7c174db66e877009</srcmd5>
+    <version>0.007</version>
+    <time>1385562688</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>208470</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6c6ad18af901fd8e7c174db66e877009</srcmd5>
+    <version>0.007</version>
+    <time>1409302485</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e3e145b556da6e96d585fccb9690238b</srcmd5>
+    <version>0.008</version>
+    <time>1580205281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767812</requestid>
+  </revision>
+</revisionlist>

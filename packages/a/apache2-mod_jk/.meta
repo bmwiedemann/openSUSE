@@ -1,0 +1,8 @@
+<package name="apache2-mod_jk" project="openSUSE:Factory">
+  <title>Connectors between Apache and Tomcat Servlet Container</title>
+  <description>This package provides modules for Apache to invisibly integrate Tomcat
+capabilities into an existing Apache installation.
+
+To load the module into Apache, run the command &quot;a2enmod jk&quot; as root.</description>
+  <devel project="Apache:Modules" package="apache2-mod_jk"/>
+</package>

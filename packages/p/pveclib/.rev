@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b25ddaed207c1982b3724a913dcff3a5</srcmd5>
+    <version>1.0.4</version>
+    <time>1600801289</time>
+    <user>dimstar_suse</user>
+    <comment>New package. Removed static libraries. Now using %version</comment>
+    <requestid>829840</requestid>
+  </revision>
+</revisionlist>

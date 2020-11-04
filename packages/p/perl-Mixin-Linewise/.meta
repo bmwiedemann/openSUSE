@@ -1,0 +1,9 @@
+<package name="perl-Mixin-Linewise" project="openSUSE:Factory">
+  <title>write your linewise code for handles; this does the rest</title>
+  <description>It's boring to deal with opening files for IO, converting strings to
+handle-like objects, and all that. With the Mixin::Linewise::Readers
+manpage and the Mixin::Linewise::Writers manpage, you can just write a
+method to handle handles, and methods for handling strings and filenames
+are added for you.</description>
+  <devel project="devel:languages:perl" package="perl-Mixin-Linewise"/>
+</package>

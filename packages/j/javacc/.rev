@@ -1,0 +1,154 @@
+<revisionlist>
+  <revision rev="1" vrev="23">
+    <srcmd5>2b3d7f9678e205ce75a5dff0dedbd4e9</srcmd5>
+    <version>3.2</version>
+    <time>1168903116</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b58faccf793335e3fb4ef75251d57276</srcmd5>
+    <version>4.0</version>
+    <time>1201532410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="108">
+    <srcmd5>b58faccf793335e3fb4ef75251d57276</srcmd5>
+    <version>4.0</version>
+    <time>1201532410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="109">
+    <srcmd5>65fd0b98a92bcc82159a5fa89ebe3d4c</srcmd5>
+    <version>4.0</version>
+    <time>1245364446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="111">
+    <srcmd5>65fd0b98a92bcc82159a5fa89ebe3d4c</srcmd5>
+    <version>4.0</version>
+    <time>1245364446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="112">
+    <srcmd5>76d1cf85cccb0be8da1c05fa628cc21a</srcmd5>
+    <version>4.0</version>
+    <time>1268924120</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="114">
+    <srcmd5>76d1cf85cccb0be8da1c05fa628cc21a</srcmd5>
+    <version>4.0</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="115">
+    <srcmd5>76d1cf85cccb0be8da1c05fa628cc21a</srcmd5>
+    <version>4.0</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="118">
+    <srcmd5>76d1cf85cccb0be8da1c05fa628cc21a</srcmd5>
+    <version>4.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="120">
+    <srcmd5>76d1cf85cccb0be8da1c05fa628cc21a</srcmd5>
+    <version>4.0</version>
+    <time>1319182007</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="11" vrev="121">
+    <srcmd5>020f78cba0e0331c21fc575f407a6e52</srcmd5>
+    <version>4.0</version>
+    <time>1323192028</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="123">
+    <srcmd5>020f78cba0e0331c21fc575f407a6e52</srcmd5>
+    <version>4.0</version>
+    <time>1340183482</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="125">
+    <srcmd5>020f78cba0e0331c21fc575f407a6e52</srcmd5>
+    <version>4.0</version>
+    <time>1359109113</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="127">
+    <srcmd5>020f78cba0e0331c21fc575f407a6e52</srcmd5>
+    <version>4.0</version>
+    <time>1379662705</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="128">
+    <srcmd5>bbf9fdb269e9c64ec66230605f24fa6b</srcmd5>
+    <version>4.0</version>
+    <time>1380171876</time>
+    <user>coolo</user>
+    <comment>[FOR-OPENSUSE-13.1]
+- Build with gcc-java as openjdk7 (1.7.0_40) fails to build it
+
+- Move from jpackage-utils to javapackage-tools</comment>
+    <requestid>200557</requestid>
+  </revision>
+  <revision rev="16" vrev="130">
+    <srcmd5>bbf9fdb269e9c64ec66230605f24fa6b</srcmd5>
+    <version>4.0</version>
+    <time>1409301272</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>24efb5946af3d8e1ddd1a25bcde5bbec</srcmd5>
+    <version>5.0</version>
+    <time>1438421941</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 5.0:
+  * No obvious changelog
+  * Works better with jdk8
+- Updated to match up with fedora version</comment>
+    <requestid>319591</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e0412df7c871c3da5c94878b550515c9</srcmd5>
+    <version>5.0</version>
+    <time>1484041734</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use gcj as it is getting deprecated</comment>
+    <requestid>448903</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>94ee09ab9daaa04b0b8764de9f977a22</srcmd5>
+    <version>5.0</version>
+    <time>1505920171</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>527074</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e87742b34d23997f2121ad492b66b221</srcmd5>
+    <version>7.0.4</version>
+    <time>1549916274</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 7.0.4</comment>
+    <requestid>672435</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>1a4916391830d9b81c192a2bfa6ea5c3</srcmd5>
+    <version>7.0.4</version>
+    <time>1555053105</time>
+    <user>dimstar_suse</user>
+    <comment>Multibuild package for proper bootstrapping</comment>
+    <requestid>692640</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="selinux-autorelabel" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:SELinux" package="selinux-autorelabel"/>
+</package>

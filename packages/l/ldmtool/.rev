@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d7b55d88ad53d288f19ff6327f900fc9</srcmd5>
+    <version>0.2.3</version>
+    <time>1492170039</time>
+    <user>maxlin_factory</user>
+    <comment>Windows dynamic disks management tool and library</comment>
+    <requestid>487019</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51779e48b70cfa5dfb15d7b41f26f1b1</srcmd5>
+    <version>0.2.3</version>
+    <time>1497274296</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501618</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c43f153d4d4bfc89d37bd7777b8cb001</srcmd5>
+    <version>0.2.3</version>
+    <time>1540819363</time>
+    <user>dimstar_suse</user>
+    <comment>fix deprecated api g_type_class_add_private()</comment>
+    <requestid>645047</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6010a2669f976a67972e75981eaca161</srcmd5>
+    <version>0.2.4</version>
+    <time>1582643217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778981</requestid>
+  </revision>
+</revisionlist>

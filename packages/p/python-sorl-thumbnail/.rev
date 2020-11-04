@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b530bf2ddfa06a049121f5bf9c9ade6e</srcmd5>
+    <version>12.6.3</version>
+    <time>1591653849</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>812434</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c3b503f5f5aa8c6e264e9dac5c75ca6</srcmd5>
+    <version>12.6.3</version>
+    <time>1599088682</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix test execution</comment>
+    <requestid>831419</requestid>
+  </revision>
+</revisionlist>

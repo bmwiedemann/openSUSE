@@ -1,0 +1,5 @@
+<package name="ocaml-ppx_tools_versioned" project="openSUSE:Factory">
+  <title>ppx_tools_versioned</title>
+  <description>Tools for authors of ppx rewriters</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_tools_versioned"/>
+</package>

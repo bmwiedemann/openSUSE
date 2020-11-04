@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>22f5a4a283da031313b05417a2afd839</srcmd5>
+    <version>5.2.0</version>
+    <time>1576676700</time>
+    <user>dimstar_suse</user>
+    <comment>rr</comment>
+    <requestid>757592</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>96e0451c8ef1147030148c7e6fbfedcc</srcmd5>
+    <version>5.3.0</version>
+    <time>1588186398</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.0:
+  * This is primarily a maintenance release.
+    There are many bug fixes, improvements to system call coverage,
+	and incremental performance improvements.
+  * The rr sources, rr buildid and rr traceinfo commands have been
+    added to make it easier for external tools to work with rr
+	traces. rr ls has been added to improve management of traces.
+- Remove:
+  * rr-5.2.0-cpp14.patch
+  * rr-5.2.0-python3.patch
+  * rr-5.2.0-remove-ucontext.patch
+</comment>
+    <requestid>798908</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>da733b555cb7c903e9741f4c84e2cb63</srcmd5>
+    <version>5.4.0</version>
+    <time>1603959810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0:
+  * As usual there are many bug fixes, improvements to system call
+    coverage, and incremental performance improvements.
+  * AMD Zen CPUs are now supported, with some caveats.
+  * There is experimental support for ARM AArch64 platforms that
+    avoid the STREX instruction.
+  * rr record has a new option --nested=detach which lets nested
+    rr recordings run &quot;detached&quot; to create a separate recording.</comment>
+    <requestid>844721</requestid>
+  </revision>
+</revisionlist>

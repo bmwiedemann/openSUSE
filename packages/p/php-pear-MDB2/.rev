@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98cf6064043a00f965937fcee3b41aa3</srcmd5>
+    <version>2.5.0b5</version>
+    <time>1576235082</time>
+    <user>dimstar_suse</user>
+    <comment>Replacing PHP7 specific packages by PHP version agnostic packages in preparation of PHP8</comment>
+    <requestid>756752</requestid>
+  </revision>
+</revisionlist>

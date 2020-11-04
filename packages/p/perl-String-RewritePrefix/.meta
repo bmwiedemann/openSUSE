@@ -1,0 +1,6 @@
+<package name="perl-String-RewritePrefix" project="openSUSE:Factory">
+  <title>rewrite strings based on a set of known prefixes</title>
+  <description>rewrite strings based on a set of known prefixes</description>
+  <devel project="devel:languages:perl" package="perl-String-RewritePrefix"/>
+  <url>http://search.cpan.org/dist/String-RewritePrefix/</url>
+</package>

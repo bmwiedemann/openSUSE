@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e7b577ebaae2ce543ffef802f3a813bf</srcmd5>
+    <version>0.5</version>
+    <time>1581368064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772638</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f8e0ab1aed4f3433e2cf69895b78593</srcmd5>
+    <version>0.6</version>
+    <time>1582556132</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 0.6
+  * drop qemu/sifive_u platform
+- align.patch: removed (forwarded request 778750 from Andreas_Schwab)</comment>
+    <requestid>778751</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c9d4126c7d50b5d066cec9240823ca1</srcmd5>
+    <version>0.8</version>
+    <time>1593904394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to opensbi 0.8
+  * Simple FDT timer driver framework
+  * Simple FDT ipi driver framework
+  * Simple FDT irqchip driver framework
+  * Simple FDT serial framework
+  * Generic FDT based platform support
+  * Nuclei UX600 platform support
+  * Detect HART CSRs at boot time
+  * Multi-PLIC support
+  * Multi-CLINT support
+  * Allow multiple builtin DTBs
+  * Hypervisor v0.6.1 specification support
+  * Shakti C-class platform support (forwarded request 816147 from Andreas_Schwab)</comment>
+    <requestid>816148</requestid>
+  </revision>
+</revisionlist>

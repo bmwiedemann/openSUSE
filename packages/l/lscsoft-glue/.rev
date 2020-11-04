@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a65ab69be9b2841e0cfaf420783aa32</srcmd5>
+    <version>2.0.0</version>
+    <time>1594894650</time>
+    <user>dimstar_suse</user>
+    <comment>A collection of utilities for running data analysis pipelines for online and offline analysis as well as accessing various grid utilities. Used by Gravitational Wave collaborations LIGO and VIRGO.</comment>
+    <requestid>821115</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2aedb443e5fbe282554fdeaf853083a4</srcmd5>
+    <version>2.1.0</version>
+    <time>1604510797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0;
+- Run tests as part of %check section (64-bit and python3 only); entails additional BuildRequires: python-ligo-segments, python-matplotlib, and python-numpy.
+- Add python-numpy and python-ligo-segments to Requires as they  are needed for any meaningful usage of the module.
+</comment>
+    <requestid>845779</requestid>
+  </revision>
+</revisionlist>

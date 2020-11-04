@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9db0fd9d74e14700667314a66fc89ef</srcmd5>
+    <version>8.1.13.v20181017</version>
+    <time>1573223083</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>746021</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>804a9e454dbbc9c46a327f437eb7667b</srcmd5>
+    <version>8.1.13.v20181017</version>
+    <time>1588023538</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build after April 2020 CPU</comment>
+    <requestid>798199</requestid>
+  </revision>
+</revisionlist>

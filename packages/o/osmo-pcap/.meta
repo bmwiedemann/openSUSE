@@ -1,0 +1,9 @@
+<package name="osmo-pcap" project="openSUSE:Factory">
+  <title>Osmocom's PCAP client and server</title>
+  <description>Osmocom tools to help with pcap tracing.
+Run osmo_pcap_client locally and send traces to a different system.
+
+</description>
+  <devel project="network:telephony" package="osmo-pcap"/>
+  <url>http://openbsc.osmocom.org</url>
+</package>

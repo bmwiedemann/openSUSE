@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>5ef0a7a18c1c76f42dffe47bb6fe3fab</srcmd5>
+    <version>36</version>
+    <time>1557916428</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2019-05/msg00106.html</comment>
+    <requestid>702724</requestid>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>d24ed4d9248a4c31d79fb57c097ed66f</srcmd5>
+    <version>36</version>
+    <time>1558340986</time>
+    <user>dimstar_suse</user>
+    <comment>updated to build with python3</comment>
+    <requestid>704053</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b01699fd344a3ec56d989d554d0f914e</srcmd5>
+    <version>38</version>
+    <time>1600703190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835795</requestid>
+  </revision>
+</revisionlist>

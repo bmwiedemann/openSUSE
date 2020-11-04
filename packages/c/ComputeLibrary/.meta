@@ -1,0 +1,5 @@
+<package name="ComputeLibrary" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="ComputeLibrary"/>
+</package>

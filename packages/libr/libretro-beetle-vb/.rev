@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05d626ad3a6c23778bb832fddd82527f</srcmd5>
+    <version>0~git20190912</version>
+    <time>1581456145</time>
+    <user>dimstar_suse</user>
+    <comment>Virtual Boy emulator</comment>
+    <requestid>771818</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9f5dc12d632fe77ac133ae7700e5e42</srcmd5>
+    <version>0~git20200518</version>
+    <time>1591558605</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812089</requestid>
+  </revision>
+</revisionlist>

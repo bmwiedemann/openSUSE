@@ -1,0 +1,5 @@
+<package name="redis-operator" project="openSUSE:Factory">
+  <title>Redis Operator</title>
+  <description>Redis Operator creates/configures/manages redis-failovers atop Kubernetes.</description>
+  <devel project="devel:kubic" package="redis-operator"/>
+</package>

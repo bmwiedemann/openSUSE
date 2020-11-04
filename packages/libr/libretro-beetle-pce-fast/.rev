@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>52ecc1a2f914024701c9649142322abc</srcmd5>
+    <version>0~git20190911</version>
+    <time>1581456130</time>
+    <user>dimstar_suse</user>
+    <comment>PC Engine emulator</comment>
+    <requestid>771805</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2751cf2dcd2a0c1c0cb052066682cef3</srcmd5>
+    <version>0~git20200523</version>
+    <time>1591558566</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812083</requestid>
+  </revision>
+</revisionlist>

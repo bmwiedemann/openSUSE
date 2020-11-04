@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>970cfd5c47ef5741399c6a14663503ad</srcmd5>
+    <version>0.11</version>
+    <time>1574783626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749645</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8421d9ffc0ea2666add47ff2fc7101bd</srcmd5>
+    <version>0.12</version>
+    <time>1577137247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757333</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f06df84c4362834845ff4970df9c7f43</srcmd5>
+    <version>0.14</version>
+    <time>1583948810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783420</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8552759120e36e38bc265e387c2ea1b</srcmd5>
+    <version>0.15</version>
+    <time>1585176279</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788067</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6459f0652594b3ddf13e7157cd02388d</srcmd5>
+    <version>0.16</version>
+    <time>1588105755</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>797532</requestid>
+  </revision>
+</revisionlist>

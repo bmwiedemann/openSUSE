@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3467fdab4e939c688810b409ae49e8a7</srcmd5>
+    <version>0.2.0</version>
+    <time>1579101358</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain python-ffmpeg-python in Factory</comment>
+    <requestid>764476</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca166b7b242623687f6a6421e92ec668</srcmd5>
+    <version>0.2.0</version>
+    <time>1584447084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785816</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0367f4737aae4261e5096a5729d906dd</srcmd5>
+    <version>0.2.0</version>
+    <time>1584745032</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Leap</comment>
+    <requestid>786746</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="android-udev-rules" project="openSUSE:Factory">
+  <title>Android udev rules list aimed to be the most comprehensive on the net</title>
+  <description>These rules refer to 'Run Apps on a Hardware Device - Android Studio' and include many suggestions from the Archlinux and Github Communities.</description>
+  <devel project="hardware" package="android-udev-rules"/>
+  <url>https://github.com/M0Rf30/android-udev-rules</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="perl-List-Compare" project="openSUSE:Factory">
+  <title>perl-List-Compare</title>
+  <description>Compare elements of two or more lists</description>
+  <devel project="devel:languages:perl" package="perl-List-Compare"/>
+</package>

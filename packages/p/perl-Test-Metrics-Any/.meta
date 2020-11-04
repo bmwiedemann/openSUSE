@@ -1,0 +1,7 @@
+<package name="perl-Test-Metrics-Any" project="openSUSE:Factory">
+  <title>perl-Test-Metrics-Any - Assert that code produces metrics via L&lt;Metrics::Any&gt;</title>
+  <description>This test module helps write unit tests which assert that the code under test reports metrics via Metrics::Any.
+
+Loading this module automatically sets the Metrics::Any::Adapter type to 'Test'.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Metrics-Any"/>
+</package>

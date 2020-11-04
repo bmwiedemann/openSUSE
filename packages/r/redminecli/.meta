@@ -1,0 +1,8 @@
+<package name="redminecli" project="openSUSE:Factory">
+  <title>Command line interface for Redmine</title>
+  <description>A command line interface for Redmine.
+
+</description>
+  <devel project="devel:tools:scm" package="redminecli"/>
+  <url>https://github.com/egegunes/redmine-cli</url>
+</package>

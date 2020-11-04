@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0aa18574b835811c49256ca22588ee62</srcmd5>
+    <version>5.2</version>
+    <time>1574104061</time>
+    <user>dimstar_suse</user>
+    <comment>Fixing conflict with version 5.1 based on request 736258 comment.</comment>
+    <requestid>741135</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4cc092ad4e5e19ed48d5e5648a43d8e6</srcmd5>
+    <version>5.3</version>
+    <time>1591742831</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to version 5.3 required for fixing pw3270 build errors.
+</comment>
+    <requestid>812584</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>36d578b36459c7226c93493214a0b7bb</srcmd5>
+    <version>5.3</version>
+    <time>1604510827</time>
+    <user>dimstar_suse</user>
+    <comment>Updating to the latest revision of version 5.3</comment>
+    <requestid>845849</requestid>
+  </revision>
+</revisionlist>

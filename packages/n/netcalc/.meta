@@ -1,0 +1,10 @@
+<package name="netcalc" project="openSUSE:Factory">
+  <title>IP subnet calculator</title>
+  <description>netcalc is an IP network calculator that can calcuate host IP ranges, subnet
+masks, and split networks. It is a clone of sipcalc and uses the output format
+of ipcalc.
+
+</description>
+  <devel project="network:utilities" package="netcalc"/>
+  <url>https://github.com/troglobit/netcalc</url>
+</package>

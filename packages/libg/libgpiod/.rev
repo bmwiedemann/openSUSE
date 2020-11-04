@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7bdc9318dc9e48ceb5d2ef520c0b192</srcmd5>
+    <version>1.1</version>
+    <time>1530304131</time>
+    <user>dimstar_suse</user>
+    <comment>- Add C++ bindings
+- Initial package version 1.1
+</comment>
+    <requestid>617513</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>36a6a9a9eaf9596ce9d687da32991e06</srcmd5>
+    <version>1.1</version>
+    <time>1533045639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626371</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>268955adde68796a054d70b2aed5977f</srcmd5>
+    <version>1.1.1</version>
+    <time>1536327601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633486</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>578f949e436b6a66d88ec9779ec74d87</srcmd5>
+    <version>1.2</version>
+    <time>1543953299</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653526</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9baedb728c4bc4cd89a5a2e925a6ad3f</srcmd5>
+    <version>1.3</version>
+    <time>1555237353</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflicts with libgpiod1 to help upgrade
+- devel package now requires libgpiod and libgpiodcxx
+- Move libgpiodcxx to its own package
+- Update to 1.3:
+  * New features:
+    - the gpio-tools now have automatically generated (using help2man) man pages
+      that are bundled with the release tarball
+    - support a singular 'default_val' argument in Line.request() in python
+      bindings
+    - the test executable can now be installed to the bindir along with the
+      gpio-tools and the testing framework will look for the binaries in standard
+      locations if it's not run from the top source directory
+    - gpiomon now supports line buffered output
+  * Improvements:
+    - tweaks to the C API documentation
+    - treewide unification of the naming of local variables
+    - extended helptest in gpioset (explanation of the way the character device
+      works aimed at reducing user confusion when a GPIO line reverts to its
+      default value after gpioset exits)
+    - the source directories have been rearranged and the src/ directory was
+      dropped, lib/ and tools/ now live in the top source directory
+    - minor coding style fixes in python bindings, ctxless functions and tools
+    - automatically generated documentation is now removed by 'make clean'
+    - all Makefiles now use top_builddir instead of relative paths
+    - code shrink in configure.ac
+    - add a brief section about API documentation to README
+    
+  * Bug fixes:
+    - fix a segfault causing bug in C++ bindings
+    - make bitset_cmp::operator() const as this is required by C++17
+    - ignore 'remove' events from udev in the testing framework
+    - don't segfault on num_lines = 0 in ctxless functions
+</comment>
+    <requestid>693637</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>81278a353d7212ed46326e380e9d0896</srcmd5>
+    <version>1.4</version>
+    <time>1560459997</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace *_number with *_soversion
+- Enable build of tests (package gpiod-test and libgpiomockup) for Tumbleweed
+- Update to 1.4:
+  * New features:
+    - updated the testing framework to work with linux v5.1 in which the debugfs
+      interface of the GPIO testing module changed in a backward incompatible way
+    - factored out the code controlling the GPIO testing module into a separate
+      shared library that may be reused by future testing executables for different
+      language bindings
+    - removed the --enable-install-tests build option and the make check target as
+      they were redundant, subsequently tests are now installed as a normal program
+      whenever they're enabled with --enable-tests
+  * Improvements:
+    - removed unnecessary std::move calls from C++ bindings
+    - added the explicit keyword to bool() operators in C++ bindings
+  * Bug fixes:
+    - fix out of source build of man pages
+</comment>
+    <requestid>709751</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e95d89f962a17d5f5d16c4b31ff94607</srcmd5>
+    <version>1.4.1</version>
+    <time>1572443281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.4.1 (Bug fixes release):
+  * fix GCC8 warnings when building python bindings
+  * fix a bug in gpioinfo where lines used by the kernel without any consumer
+    string were reported as unused
+  * fix a bug in line::event_get_fd() in C++ bindings where the exception
+    wouldn't be throws in error cases due to a missing 'throw' keyword
+  * fix a couple bugs in the test-suite
+  * disable a failing assertion in the test-suite that stopped working after
+  linux v5.2.7
+</comment>
+    <requestid>743965</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>36eb187b4b95675e28b7c311e6a70290</srcmd5>
+    <version>1.4.1</version>
+    <time>1572557650</time>
+    <user>dimstar_suse</user>
+    <comment>Rename python package</comment>
+    <requestid>744438</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e5070e2498a8027ac0bac42b38d2299b</srcmd5>
+    <version>1.4.1</version>
+    <time>1580928081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769613</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f40b6e4ef9ba38175d64c2f7baca7ad</srcmd5>
+    <version>1.4.2</version>
+    <time>1583948975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783433</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dea87728361d6c3ae90d5d65d3832209</srcmd5>
+    <version>1.4.2</version>
+    <time>1584744928</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786536</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>71aa9e35ce5104949d4aacd6d2fe51b2</srcmd5>
+    <version>1.4.3</version>
+    <time>1587162778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794919</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b26d4ec78de022f58e4122b4724ed952</srcmd5>
+    <version>1.5.1</version>
+    <time>1587660005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796563</requestid>
+  </revision>
+</revisionlist>

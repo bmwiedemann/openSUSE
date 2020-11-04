@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>616dc79ae12fde993cb4cf42fbb8c92d</srcmd5>
+    <version>1.7.10</version>
+    <time>1589892237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807215</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf0abe48a4d7df164d62d358f291bad5</srcmd5>
+    <version>1.7.10</version>
+    <time>1589993186</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires gobject-introspection and python3-gobject-Gdk</comment>
+    <requestid>807449</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2cb1b851dc2269dfce4dc3a2d701998f</srcmd5>
+    <version>1.7.11</version>
+    <time>1591209232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.11:
+  * Python version-independent launcher script #87</comment>
+    <requestid>810984</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b3c9b7c8940aa4abec1faba75e180543</srcmd5>
+    <version>1.7.12</version>
+    <time>1592939183</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.12:
+  * scale and crop to triple display width / height;
+  * split vertical images vertically (is_horizontal = width &gt;= height);
+  * detect which screen Azote window is displayed on; the screen
+    dimensions will be used as the base of the Scale and crop to
+	double/triple screen width/height option. This may be useful
+	if you use multiple-headed setup with various screen resolutions.
+  * added some error handling on colour definitions missing from
+    the allacritty.yml file.</comment>
+    <requestid>816536</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34bf1b9fe823f46e19fe13197941feab</srcmd5>
+    <version>1.7.14</version>
+    <time>1600079576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.14:
+  * Added possibility to open images with swappy (.png only)
+  * fixed crash on the stored wallpaper folder path not found #102
+  * added support for Wayfire (possibly also for other wlroots-based
+    Wayland compositors); swaybg and wlr-randr packages required.</comment>
+    <requestid>834217</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3c5d2c5d700655d9656b2c97a7cd159</srcmd5>
+    <version>1.8.0</version>
+    <time>1601653015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * added fix to avoid crashes on X11, when a display is connected, but turned off #110
+  * added CLI messages on missing optional dependencies #101
+  * screen height is deprecated #108 issue fixed in slightly tricky way</comment>
+    <requestid>838937</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cdcb969bf12ada28eb002e5c3b1d53d6</srcmd5>
+    <version>1.8.1</version>
+    <time>1601919568</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.1:
+  * screen height measurement on sway simplified
+  * Esc key closes the Azote window
+  * dialog windows' behaviour unified</comment>
+    <requestid>839495</requestid>
+  </revision>
+</revisionlist>

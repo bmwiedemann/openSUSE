@@ -1,0 +1,295 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d0536cfcd56f9b8055b42479e8eba0a</srcmd5>
+    <version>0.4.0.1</version>
+    <time>1459002165</time>
+    <user>dimstar_suse</user>
+    <comment>Fix date/time problem</comment>
+    <requestid>370017</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>25763f86315be2b0e93d1317fbd484a3</srcmd5>
+    <version>0.5.0</version>
+    <time>1461855441</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>391826</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fe02f20b5541d5cc7cf0aca574f832d</srcmd5>
+    <version>0.5.1</version>
+    <time>1463221417</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394811</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7cd7ec12b195142f971672b45756fcd</srcmd5>
+    <version>0.5.2</version>
+    <time>1464595084</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398621</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d516efa4af3adcbb0e5b03429dd7ce5d</srcmd5>
+    <version>0.5.3</version>
+    <time>1468360260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>405477</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8aec262f2ed9cb6f8578188ab14c62a</srcmd5>
+    <version>0.6.1</version>
+    <time>1470413894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417085</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>24f09e591be8af566139161732009ec7</srcmd5>
+    <version>0.7.0</version>
+    <time>1476780171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435107</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e0af98dae27afa8541bf96bdc5a1f929</srcmd5>
+    <version>0.8.0</version>
+    <time>1480018944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>441143</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>34bf33431ac69a1f8e3f9c279d7ae187</srcmd5>
+    <version>0.9.0</version>
+    <time>1481272717</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>444359</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70d99bb5dac4e702db74a25a0ac14633</srcmd5>
+    <version>0.9.1</version>
+    <time>1487980448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459978</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2ec5189bb29995f974356ef415edb95e</srcmd5>
+    <version>0.9.2</version>
+    <time>1499598260</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508948</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b15ab8ecf54de00a1009e6346cd70c7f</srcmd5>
+    <version>0.10.1</version>
+    <time>1503926230</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518836</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2801acaa67bce91b8546a71b648cc1f1</srcmd5>
+    <version>0.11.0</version>
+    <time>1507065468</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530428</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4cc1427db556324f843c44c07f0e4bc9</srcmd5>
+    <version>0.11.1</version>
+    <time>1510506648</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541062</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>179fa948a359c31b9045dd744414fcb0</srcmd5>
+    <version>0.11.2</version>
+    <time>1516970360</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569483</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>788d68b22c89e5a63c178ed31ab4e5aa</srcmd5>
+    <version>0.12.1</version>
+    <time>1519486785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579769</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>69f5482d5a1ad5aecc2d553c13a8ed43</srcmd5>
+    <version>0.12.2</version>
+    <time>1525960114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605297</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>00fa44a9a7160a012310d55423378382</srcmd5>
+    <version>0.12.3</version>
+    <time>1529501659</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617867</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d8cc55a4f92b6075364cc6efe9ac0ea3</srcmd5>
+    <version>0.13.0</version>
+    <time>1533627821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627721</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9ec42a0b1154d808a8d37243ecf3639a</srcmd5>
+    <version>0.14.0</version>
+    <time>1539589627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641965</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5ca2e4a61f001fdb4cd2f3b35ca8cc2c</srcmd5>
+    <version>0.15.0</version>
+    <time>1540819351</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645011</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3fcf1bb911f734ce1fe657fca6f838e1</srcmd5>
+    <version>0.15.1</version>
+    <time>1543828267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653211</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5d1612ef1d7045db5142afb004316c09</srcmd5>
+    <version>0.16.0</version>
+    <time>1557834198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0
+  * New features:
+    - Add fz::socket
+    - Add operator*= to fz::duration
+    - fz::event_loop can now also be created using fz::thread_pool 
+      or threadless.
+  * Bugfixes and minor changes:
+    - fz::async_task now releases the thread back to the pool 
+      immediately when the task has completed without waiting for 
+      the join
+    - *nix: Fix file descriptor leaks on exec()
+</comment>
+    <requestid>702652</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>cd7551bccaa03350926ca188b2354def</srcmd5>
+    <version>0.16.0</version>
+    <time>1558427850</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704137</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>efd7f0b4d37f482b3052cb9508e4c24c</srcmd5>
+    <version>0.17.1</version>
+    <time>1562159702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713092</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b670bd920d48c0199823c92b422c7ff9</srcmd5>
+    <version>0.18.1</version>
+    <time>1566894057</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725933</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2022492111c5063954797b45aafaba62</srcmd5>
+    <version>0.18.2</version>
+    <time>1573045080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745236</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>69e1ee16d2e722cc04aa3d2dcf615cd4</srcmd5>
+    <version>0.19.1</version>
+    <time>1575373349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752989</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d119db0df31405f4285d314e22630d41</srcmd5>
+    <version>0.19.3</version>
+    <time>1581087487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>771213</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>92de0c3ad92bc47f7ad81124e45ee0b9</srcmd5>
+    <version>0.20.2</version>
+    <time>1584050994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784384</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>90d137752b1ec87f84254e03c833c366</srcmd5>
+    <version>0.22.0</version>
+    <time>1589403397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805254</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b426718591aca460c044e102e915e282</srcmd5>
+    <version>0.23.0</version>
+    <time>1597756249</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.0:
+  + Added reader/writer locks
+  - fz::mkdir can now return the the longest created path in case of partial failures</comment>
+    <requestid>826977</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4b4742ce4851e412dce7ed5e793a297f</srcmd5>
+    <version>0.24.0</version>
+    <time>1598274613</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828725</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f92736a1579cc55cad7d72286f98bdac</srcmd5>
+    <version>0.24.1</version>
+    <time>1599598058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832838</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a80b1b3006f5a679873eb5197c64079a</srcmd5>
+    <version>0.25.0</version>
+    <time>1603645638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843779</requestid>
+  </revision>
+</revisionlist>

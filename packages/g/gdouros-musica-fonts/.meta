@@ -1,0 +1,5 @@
+<package name="gdouros-musica-fonts" project="openSUSE:Factory">
+  <title>Font with support for Unicode Musical Notation Symbols</title>
+  <description>Musica covers the following scripts and symbols supported by The Unicode Standard: Basic Latin, Greek and Coptic, some Punctuation and other Symbols, Byzantine Musical Symbols, (Western) Musical Symbols and Archaic Greek Musical Notation.</description>
+  <devel project="M17N:fonts" package="gdouros-musica-fonts"/>
+</package>

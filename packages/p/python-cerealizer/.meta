@@ -1,0 +1,8 @@
+<package name="python-cerealizer" project="openSUSE:Factory">
+  <title>A secure pickle-like module</title>
+  <description>A secure pickle-like module. It support basic types (int, string, unicode,
+tuple, list, dict, set,...), old and new-style classes (you need to register
+the class for security), object cycles, and it can be extended to support
+C-defined type.</description>
+  <devel project="devel:languages:python" package="python-cerealizer"/>
+</package>

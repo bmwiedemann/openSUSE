@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cca5aacec80e23601de49083437176b9</srcmd5>
+    <version>0~git20191105</version>
+    <time>1581456167</time>
+    <user>dimstar_suse</user>
+    <comment>EasyRPG emulator</comment>
+    <requestid>771852</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69503ff01fd9f3a41ab7d7a631a21f6e</srcmd5>
+    <version>0~git20200510</version>
+    <time>1589892435</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>806866</requestid>
+  </revision>
+</revisionlist>

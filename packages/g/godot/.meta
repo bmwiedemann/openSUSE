@@ -1,0 +1,5 @@
+<package name="godot" project="openSUSE:Factory">
+  <title>godot</title>
+  <description>Godot is a fully featured, open source, MIT licensed, game engine. It focuses on having great tools, and a visual oriented workflow that can export to PC, Mobile and Web platforms with no hassle. The editor, language and APIs are feature rich, yet simple to learn, allowing you to become productive in a matter of hours.</description>
+  <devel project="games" package="godot"/>
+</package>

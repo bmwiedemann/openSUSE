@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d2b67ba55fe49e6e527401a0de0d414f</srcmd5>
+    <version>68.6.0</version>
+    <time>1586973248</time>
+    <user>dimstar_suse</user>
+    <comment>New package, needed for upcomming GNOME 3.36
+This package is not in &quot;perfect condition&quot; yet, but good enough to sub for review.</comment>
+    <requestid>791545</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41d73a1244c7414a065f9885d3c16560</srcmd5>
+    <version>68.7.0</version>
+    <time>1587070940</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release, package is now in Factory, subbing witheld version update</comment>
+    <requestid>794321</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>33a06df422abd1c3a4a15d9d79d32b21</srcmd5>
+    <version>68.7.0</version>
+    <time>1587838584</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797144</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>643b3497448be4ba9c0956915082b709</srcmd5>
+    <version>68.7.0</version>
+    <time>1588697641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799700</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>6ef4adc0e3981264e33e998e11f837c6</srcmd5>
+    <version>68.7.0</version>
+    <time>1589491406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805242</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ffff0103e3db053f5e31f497873f4331</srcmd5>
+    <version>68.9.0</version>
+    <time>1591862327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811796</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6620f35c658ce8583e9eff4687dc3aca</srcmd5>
+    <version>68.9.0</version>
+    <time>1598167199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828127</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>3540aed24661309ef7776cab07c70979</srcmd5>
+    <version>68.9.0</version>
+    <time>1599088275</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830031</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ff4625304ffca4935391aaa9bb756830</srcmd5>
+    <version>68.12.0</version>
+    <time>1599666362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832496</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f419dbccb0c2230b35b3e3dbdea9b732</srcmd5>
+    <version>68.12.0</version>
+    <time>1603545250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843022</requestid>
+  </revision>
+</revisionlist>

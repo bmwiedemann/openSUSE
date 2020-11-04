@@ -1,0 +1,5 @@
+<package name="perl-File-Share" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-File-Share"/>
+</package>

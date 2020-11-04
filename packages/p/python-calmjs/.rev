@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69d5125611141ef9ac38a0e7b86d7238</srcmd5>
+    <version>3.4.1</version>
+    <time>1578437649</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761194</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f788b960f3eb739e8f94c63131e04ce2</srcmd5>
+    <version>3.4.1</version>
+    <time>1579557254</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in SLE-15: set en_US.UTF-8 encoding
+- %check the package</comment>
+    <requestid>765716</requestid>
+  </revision>
+</revisionlist>

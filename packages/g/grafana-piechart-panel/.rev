@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>831de05d9d59cc55e9e6595a652e89ba</srcmd5>
+    <version>1.3.9</version>
+    <time>1578606712</time>
+    <user>dimstar_suse</user>
+    <comment>New package. Announcement mail: https://lists.opensuse.org/opensuse-factory/2020-01/msg00111.html</comment>
+    <requestid>762114</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e09f55ec6ecd9cf470085ad557793251</srcmd5>
+    <version>1.4.0</version>
+    <time>1585085645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787469</requestid>
+  </revision>
+</revisionlist>

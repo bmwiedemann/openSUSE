@@ -1,0 +1,7 @@
+<package name="compiz-plugins-extra" project="openSUSE:Factory">
+  <title>OpenGL window and compositing manager community extra plugins</title>
+  <description>This package contains the community extra Compiz compositing manager plugins.
+
+Contains: addhelper, crashhandler, extrawm, firepaint, goto-viewport, mswitch, scalefilter, splash, bench, cubereflex, fadedesktop, gears, group, mblur, reflex, showdesktop, trailfocus.</description>
+  <devel project="X11:Compiz" package="compiz-plugins-extra"/>
+</package>

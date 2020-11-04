@@ -1,0 +1,5 @@
+<package name="python-py-vapid" project="openSUSE:Factory">
+  <title></title>
+  <description>VAPID header generation library</description>
+  <devel project="devel:languages:python" package="python-py-vapid"/>
+</package>

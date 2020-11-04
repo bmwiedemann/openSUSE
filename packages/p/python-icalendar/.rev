@@ -1,0 +1,293 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c12bb74e73fa0c82bbf958dcaa7dc697</srcmd5>
+    <version>2.2</version>
+    <time>1317027027</time>
+    <user>saschpe</user>
+    <comment>fixed bug bnc#714664</comment>
+    <requestid>84498</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c12bb74e73fa0c82bbf958dcaa7dc697</srcmd5>
+    <version>2.2</version>
+    <time>1319182393</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5ed99f8d30d7bec8bb17983c6542593d</srcmd5>
+    <version>2.2</version>
+    <time>1330364144</time>
+    <user>coolo</user>
+    <comment>Submit requested by Coolo</comment>
+    <requestid>105265</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>5ed99f8d30d7bec8bb17983c6542593d</srcmd5>
+    <version>2.2</version>
+    <time>1340184061</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>574c5016191ddea5cf00e7eb76ebbdc1</srcmd5>
+    <version>3.0.1b2</version>
+    <time>1341257601</time>
+    <user>coolo</user>
+    <comment>Resubmit with explanation about licensing </comment>
+    <requestid>126877</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>34231d8851f633ea9df32bb860c36ae0</srcmd5>
+    <version>3.1</version>
+    <time>1347347764</time>
+    <user>coolo</user>
+    <comment>Update to 3.1, remove Sphinx dependency and no need to rm .swp files removed upstream. (forwarded request 133373 from poorboywilly)</comment>
+    <requestid>133397</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>34231d8851f633ea9df32bb860c36ae0</srcmd5>
+    <version>3.1</version>
+    <time>1359110051</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81daa8a5f18834fef739631b4a759c89</srcmd5>
+    <version>3.3</version>
+    <time>1360577531</time>
+    <user>coolo</user>
+    <comment>Update to 3.3 (forwarded request 154985 from posophe)</comment>
+    <requestid>155083</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>81daa8a5f18834fef739631b4a759c89</srcmd5>
+    <version>3.3</version>
+    <time>1379664196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d03b7738794c0c1b0d2fa6e08419c404</srcmd5>
+    <version>3.3</version>
+    <time>1382692734</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204574</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>112efadbffad337688c8cd9a5a51c8e9</srcmd5>
+    <version>3.5</version>
+    <time>1384112215</time>
+    <user>coolo</user>
+    <comment>- Use tarball from https://pypi.python.org/ 
+- Fix download link used as source
+
+- New upstream release 3.5
+- Changelog for 3.5
+  * Let to_unicode be more graceful for non-unicode strings, as like CMFPlone’s safe_unicode does it. [thet] 
+- Changelog for 3.4
+  * Switch to unicode internally. This should fix all en/decoding errors. [thet]
+  * Support for non-ascii parameter values. Fixes #88. [warvariuc]
+  * Added functions to transform chars in string with ‘\’ + any of r’,;:’ chars into ‘%{:02X}’ form to avoid splitting on chars escaped with ‘\’. [warvariuc]
+  * Allow seconds in vUTCOffset properties. Fixes #55. [thet]
+  * Let Component.decode better handle vRecur and vDDDLists properties. Fixes #70. [thet]
+  * Don’t let Component.add re-encode already encoded values. This simplifies the API, since there is no need explicitly pass encode=False. Fixes #82. [thet]
+  * Rename tzinfo_from_dt to tzid_from_dt, which is what it does. [thet]
+  * More support for dateutil parsed tzinfo objects. Fixes #89. [leo-naeka]
+  * Remove python-dateutil version fix at all. Current python-dateutil has Py3 and Py2 compatibility. [thet]
+  * Declare the required python-dateutil dependency in setup.py. Fixes #90. [kleink]
+  * Raise test coverage. [thet]
+  * Remove interfaces module, as it is unused. [thet]
+  * Remove test_doctests.py, test suite already created properly in test_icalendar.py. [rnix]
+  * Transformed doctests into unittests, Test fixes and cleanup. [warvariuc] (forwarded request 206364 from posophe)</comment>
+    <requestid>206365</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>112efadbffad337688c8cd9a5a51c8e9</srcmd5>
+    <version>3.5</version>
+    <time>1409302890</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0c554cf8118d9637d51b558f022f0805</srcmd5>
+    <version>3.8.4</version>
+    <time>1415347561</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>260003</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2ad96121dfa721a18d8a521d9f99a6f0</srcmd5>
+    <version>3.9.0</version>
+    <time>1429948376</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298727</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>897b1805d44e676e5b41aa12cfdbd8eb</srcmd5>
+    <version>3.9.0</version>
+    <time>1438750187</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316574</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6442f7fe6746875287e65d0c2846950f</srcmd5>
+    <version>3.9.1</version>
+    <time>1443336027</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333782</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f524cdd69e160dde3ecb7819fea07fed</srcmd5>
+    <version>3.9.1</version>
+    <time>1446208990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>340451</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9d6ef288c3a433b90770ae87a504cd30</srcmd5>
+    <version>3.9.1</version>
+    <time>1461335022</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust to python-python-dateutil renaming</comment>
+    <requestid>381390</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eb6c96d8196ef632b65bf075885c3f71</srcmd5>
+    <version>3.11.2</version>
+    <time>1485383180</time>
+    <user>dimstar_suse</user>
+    <comment>- correct source url
+
+- update to version 3.11.2 (2017-01-12)
+  - Run tests with python 3.5 and 3.6. [geier]
+  - Allow tests failing with pypy3 on travis.ci. [geier]
+- update to version 3.11.1 (2016-12-19)
+  - Encode error message before adding it to the stack of collected error
+     messages.
+- update to version 3.11 (2016-11-18)
+  - Successfully test with pypy and pypy3. [gforcada]
+  - Minor documentation update. [tpltnt]
+- update to version 3.10 (2016-05-26)
+  - Updated components description to better comply with RFC 5545. Refs #183.
+    [stlaz]
+  - Added PERIOD value type to date types. Also fixes incompatibilities
+    described in #184. Refs #189. [stlaz]
+  - Fix testsuite for use with dateutil&gt;=2.5. Refs #195. [untitaker]
+  - Reintroduce cal.Component.is_broken that was removed with 3.9.2. Refs #185.
+    [geier]
+- update to version 3.9.2 (2016-02-05)
+  - Defined test_suite in setup.py. Now tests can be run via python setup.py
+    test. [geier]
+  - Fixed cal.Component.from_ical() representing an unknown component as one of
+    the known. [stlaz]
+  - Fixed possible IndexError exception during parsing of an ical string. [stlaz]
+  - When doing a boolean test on icalendar.cal.Component, always return True.
+    Before it was returning False due to CaselessDict, if it didn’t contain any
+    items. [stlaz]
+  - Fixed date-time being recognized as date or time during parsing. Added
+    better error handling to parsing from ical strings. [stlaz]</comment>
+    <requestid>451188</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>86e064344ec46e5a806118c0994797e6</srcmd5>
+    <version>3.11.5</version>
+    <time>1502366558</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>508117</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2e03f4e36a387cfb05493af4d4aca930</srcmd5>
+    <version>4.0.2</version>
+    <time>1535123453</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 4.0.2:
+  * Update all pypi.python.org URLs to pypi.org
+  * Added rudimentary command line interface.
+  * Readme, setup and travis updates.
+  * Drop support for Python 2.6 and 3.3.
+  * Accept Windows timezone identifiers as valid. #242 
+  * Fix ResourceWarnings in setup.py when Python warnings are enabled. #244
+  * Fix invalid escape sequences in string and bytes literals. #245
+  * Include license file in the generated wheel package. #243
+  * Fix non-ASCII TZID and TZNAME parameter handling. #238
+  * Docs: update install instructions. #240
+  * added vUTCOffset.ignore_exceptions to allow surpressing of failed TZOFFSET parsing (for now this ignores the check for offsets &gt; 24h) 
+  * Fix VTIMEZONEs including RDATEs #234.
+- Update URL to point to the repo rather than to docs
+- Use %license for license install</comment>
+    <requestid>631046</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>46aed1e45d7003eddd3c4dc8ea386fcc</srcmd5>
+    <version>4.0.2</version>
+    <time>1535705131</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicitly require hypothesis as it is requested in setup.py</comment>
+    <requestid>632125</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c8791166b6f4c2bf23d8fbd5aaf934d6</srcmd5>
+    <version>4.0.3</version>
+    <time>1543224399</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>651058</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>44a42ed4418097244a5c31e8941dd7ac</srcmd5>
+    <version>4.0.3</version>
+    <time>1552207038</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682601</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>a8b6e57129c635cc0ecb376e584897c6</srcmd5>
+    <version>4.0.3</version>
+    <time>1566464161</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes and pytest calls</comment>
+    <requestid>725101</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>40fd940881e72e5509617454e6d8563b</srcmd5>
+    <version>4.0.4</version>
+    <time>1584530874</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.4:
+  - Reduce Hypothesis iterations to speed up testing, allowing PRs to pass</comment>
+    <requestid>785585</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4f9926599bba8c7a0fa39eecb3012437</srcmd5>
+    <version>4.0.5</version>
+    <time>1586467084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792729</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>d04b0b6bcdea62d2abb34a08d56e0af6</srcmd5>
+    <version>4.0.5</version>
+    <time>1590508179</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808791</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>19231e985038694612bf6b1539b51ce4</srcmd5>
+    <version>4.0.6</version>
+    <time>1591742728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.6:
+  - Use ``vText`` as default type, when convert recurrence definition to ical string. [kam193]</comment>
+    <requestid>810895</requestid>
+  </revision>
+</revisionlist>

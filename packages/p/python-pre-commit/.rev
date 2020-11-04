@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74e2199318f9ec3ba8940bd0ab4be56b</srcmd5>
+    <version>1.20.0</version>
+    <time>1575464125</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of the package.</comment>
+    <requestid>753899</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5bf650a3874332144d18cc576e884dab</srcmd5>
+    <version>2.2.0</version>
+    <time>1584643747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786163</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3445937923008507b9a15cdeeb4a963</srcmd5>
+    <version>2.3.0</version>
+    <time>1588610427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799932</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>150fd7fdddb8a9337c73617a8dbf0b67</srcmd5>
+    <version>2.6.0</version>
+    <time>1595271605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821709</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec27682157930b862161c5967e30fe74</srcmd5>
+    <version>2.7.1</version>
+    <time>1598885434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830498</requestid>
+  </revision>
+</revisionlist>

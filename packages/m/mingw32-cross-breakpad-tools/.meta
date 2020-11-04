@@ -1,0 +1,5 @@
+<package name="mingw32-cross-breakpad-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="windows:mingw:win32" package="mingw32-cross-breakpad-tools"/>
+</package>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6768b38979d66cf6051c1c0ed87e16d5</srcmd5>
+    <version>0+git134</version>
+    <time>1597658762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827101</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3a9d3c9707ff0c36d8448204453437b2</srcmd5>
+    <version>0+git134</version>
+    <time>1598726056</time>
+    <user>dimstar_suse</user>
+    <comment>- Add meson_build call.</comment>
+    <requestid>829651</requestid>
+  </revision>
+</revisionlist>

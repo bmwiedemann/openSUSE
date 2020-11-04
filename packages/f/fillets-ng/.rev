@@ -1,0 +1,196 @@
+<revisionlist>
+  <revision rev="1" vrev="27">
+    <srcmd5>21a21a0ccc28b204fdd0412fbc878c3f</srcmd5>
+    <version>0.7.3</version>
+    <time>1168902743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0dcbcb4d87fdce1035c2bed7ef7fea1b</srcmd5>
+    <version>0.7.4</version>
+    <time>1172442234</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="34">
+    <srcmd5>cd76abb9a90dc82cf4926bdbf811ec89</srcmd5>
+    <version>0.7.4</version>
+    <time>1183589343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="72">
+    <srcmd5>5a7d3fcf25805d76bcc92758e9dbf695</srcmd5>
+    <version>0.7.4</version>
+    <time>1193355842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d46c903ef872852f951e03f8f28732af</srcmd5>
+    <version>0.8.0</version>
+    <time>1201712818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="94">
+    <srcmd5>d46c903ef872852f951e03f8f28732af</srcmd5>
+    <version>0.8.0</version>
+    <time>1201712818</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e3e526560bf1ad1bbf8d95d011389a62</srcmd5>
+    <version>0.8.1</version>
+    <time>1232842598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e3e526560bf1ad1bbf8d95d011389a62</srcmd5>
+    <version>0.8.1</version>
+    <time>1232842598</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ad8efa2aef7859f3f6bd1b3925d64cfb</srcmd5>
+    <version>0.9.3</version>
+    <time>1268408791</time>
+    <user>autobuild</user>
+    <comment>Copy from games/fillets-ng based on submit request 34679 from user dimstar
+</comment>
+    <requestid>34679</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>49f27bd997481ddf9dd7a3827e492e48</srcmd5>
+    <version>0.9.3</version>
+    <time>1268923531</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>49f27bd997481ddf9dd7a3827e492e48</srcmd5>
+    <version>0.9.3</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>49f27bd997481ddf9dd7a3827e492e48</srcmd5>
+    <version>0.9.3</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>4c69ba317389eafbbc22a697340c7507</srcmd5>
+    <version>0.9.3</version>
+    <time>1280957464</time>
+    <user>autobuild</user>
+    <comment>Copy from games/fillets-ng based on submit request 44512 from user coolo
+</comment>
+    <requestid>44512</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7afed8d2eacf8772d3937cb2a72c4b16</srcmd5>
+    <version>1.0.0</version>
+    <time>1297119383</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60249 from user lrupp
+</comment>
+    <requestid>60249</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7ca853080631dd7376f621c88f4f26a8</srcmd5>
+    <version>1.0.0</version>
+    <time>1297119392</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60249
+</comment>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>7ca853080631dd7376f621c88f4f26a8</srcmd5>
+    <version>1.0.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>f8c2bf420c48f352846926fe96705b2b</srcmd5>
+    <version>1.0.0</version>
+    <time>1317025819</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83516 from jengelh)</comment>
+    <requestid>83746</requestid>
+  </revision>
+  <revision rev="18" vrev="8">
+    <srcmd5>f8c2bf420c48f352846926fe96705b2b</srcmd5>
+    <version>1.0.0</version>
+    <time>1319181877</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="9">
+    <srcmd5>5caa44ef69ddab9527c0a8999c690461</srcmd5>
+    <version>1.0.0</version>
+    <time>1329400562</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+
+No indication of GPL-1.0+ files. They are all GPL-2.0+ - hence no need for GPL-1.0 reference (forwarded request 105220 from babelworx)</comment>
+    <requestid>105287</requestid>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>5caa44ef69ddab9527c0a8999c690461</srcmd5>
+    <version>1.0.0</version>
+    <time>1340183328</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>5caa44ef69ddab9527c0a8999c690461</srcmd5>
+    <version>1.0.0</version>
+    <time>1359108877</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>5caa44ef69ddab9527c0a8999c690461</srcmd5>
+    <version>1.0.0</version>
+    <time>1379662340</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="17">
+    <srcmd5>5caa44ef69ddab9527c0a8999c690461</srcmd5>
+    <version>1.0.0</version>
+    <time>1409300876</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>04a485541a5dde04859206ca92983232</srcmd5>
+    <version>1.0.1</version>
+    <time>1428652098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293993</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f772bcff8dd2e21dd2839dfbc91dac31</srcmd5>
+    <version>1.0.1</version>
+    <time>1429107734</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295815</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>135e3bbc04a982b86346c52c844beb04</srcmd5>
+    <version>1.0.1</version>
+    <time>1448400820</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345108</requestid>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>519eb7324fbe507a1abbe56f52cecaab</srcmd5>
+    <version>1.0.1</version>
+    <time>1548064271</time>
+    <user>dimstar_suse</user>
+    <comment>use https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines abbreviations</comment>
+    <requestid>665303</requestid>
+  </revision>
+</revisionlist>

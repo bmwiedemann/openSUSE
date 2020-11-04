@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5a9da77288a4aa907faf71df329a37b</srcmd5>
+    <version>3.1.0</version>
+    <time>1581087401</time>
+    <user>dimstar_suse</user>
+    <comment>required by ocaml-coq</comment>
+    <requestid>771561</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>295c7af3fa41592c5a10e6f789476e55</srcmd5>
+    <version>3.1.0</version>
+    <time>1592398546</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix gcc10 build with ocaml-lablgtk3.ml_table_extension_events.patch</comment>
+    <requestid>815367</requestid>
+  </revision>
+</revisionlist>

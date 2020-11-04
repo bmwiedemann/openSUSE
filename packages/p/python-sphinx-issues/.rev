@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>427545e1af27394cca0e66de6e32491c</srcmd5>
+    <version>0.3.1</version>
+    <time>1503926031</time>
+    <user>dimstar_suse</user>
+    <comment>- initial package
+</comment>
+    <requestid>518491</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ce4a7568bcc6134f4521e78ba94504f8</srcmd5>
+    <version>0.3.1</version>
+    <time>1504617373</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>520556</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c2ceded8f271f72520bf3a07f0d23eed</srcmd5>
+    <version>0.3.1</version>
+    <time>1545648261</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659688</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce0f60f91910f207474bf3d0f275cd15</srcmd5>
+    <version>1.2.0</version>
+    <time>1556915834</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698629</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>25ed539dbc1e53b5ef8216f99146363d</srcmd5>
+    <version>1.2.0</version>
+    <time>1560458255</time>
+    <user>dimstar_suse</user>
+    <comment>- Reduce bit conditionals as it is not needed</comment>
+    <requestid>708161</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>00bf3fa2881f83dde990372884ec3f90</srcmd5>
+    <version>1.2.0</version>
+    <time>1585264980</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784638</requestid>
+  </revision>
+</revisionlist>

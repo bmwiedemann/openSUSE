@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>470cd94d7472847b727bee5059c1e5d1</srcmd5>
+    <version>3.0</version>
+    <time>1580205266</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain testssl.sh in Factory</comment>
+    <requestid>766885</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d4ccc3dd2ffc6fdad19035440210c84</srcmd5>
+    <version>3.0</version>
+    <time>1585996029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791270</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3dec23f3706892a5baca8cac29eacdcb</srcmd5>
+    <version>3.0.1</version>
+    <time>1587581644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795500</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>783e3d79b4914317fece7a25e123d9f3</srcmd5>
+    <version>3.0.2</version>
+    <time>1595864514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822701</requestid>
+  </revision>
+</revisionlist>

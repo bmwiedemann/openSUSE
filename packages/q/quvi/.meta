@@ -1,0 +1,6 @@
+<package name="quvi" project="openSUSE:Factory">
+  <title>Parsing video downloads links for Youtube and others</title>
+  <description>quvi is a commandline tool for parsing video download links. It supports
+Youtube and other similar video Web sites.</description>
+  <devel project="multimedia:libs" package="quvi"/>
+</package>

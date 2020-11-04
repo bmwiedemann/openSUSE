@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51f4b3f9656f7c5672273899291c8e2e</srcmd5>
+    <version>1.0</version>
+    <time>1591653081</time>
+    <user>dimstar_suse</user>
+    <comment>New KDE package, needed by kwayland-server.</comment>
+    <requestid>806016</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4dbcb7ae51d99e5fa1b75f96a391ef51</srcmd5>
+    <version>1.1.1</version>
+    <time>1596565038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823966</requestid>
+  </revision>
+</revisionlist>

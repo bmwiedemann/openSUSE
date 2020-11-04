@@ -1,0 +1,5 @@
+<package name="droidcam" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:apps" package="droidcam"/>
+</package>

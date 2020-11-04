@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcb1144357337f7a0240d6038f559950</srcmd5>
+    <version>20200526</version>
+    <time>1590508209</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808944</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be7edec3f10e6d797aca8f0cf67f7181</srcmd5>
+    <version>20200526</version>
+    <time>1591286250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811521</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c05c0f22c69d6b30ed99759d2eb76b53</srcmd5>
+    <version>20200526</version>
+    <time>1591381329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811794</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>100e2951378a36a9fc7a07dda7c3c514</srcmd5>
+    <version>20200619</version>
+    <time>1592939083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816073</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>94359f5f48d71a2ee129b0539ee08e9d</srcmd5>
+    <version>20200619</version>
+    <time>1596457084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824066</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8c01ac5e1faf42d5760d01df8694a108</srcmd5>
+    <version>20200619</version>
+    <time>1600802103</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dmenu since wofi is already required
+  See https://github.com/openSUSE/openSUSEway/issues/30</comment>
+    <requestid>836046</requestid>
+  </revision>
+</revisionlist>

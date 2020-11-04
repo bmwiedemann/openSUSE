@@ -1,0 +1,9 @@
+<package name="rustscan" project="openSUSE:Factory">
+  <title>Fast network port scanner</title>
+  <description>Find all open ports fast with RustScan, then automatically
+pipe them into Nmap.
+
+</description>
+  <devel project="network:utilities" package="rustscan"/>
+  <url>https://github.com/RustScan/RustScan</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="mint-x-icon-theme" project="openSUSE:Factory">
+  <title>Mint-X icon themes</title>
+  <description>A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza.</description>
+  <devel project="X11:Cinnamon:Factory" package="mint-x-icon-theme"/>
+</package>

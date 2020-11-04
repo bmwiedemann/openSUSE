@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6218770ec2578c200e8165d54020d6a</srcmd5>
+    <version>0.3.0+git20200305.66c625d</version>
+    <time>1583750465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782110</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>566f8b2549ed8d7e32153101e1170e15</srcmd5>
+    <version>0.3.0+git20200305.66c625d</version>
+    <time>1584050868</time>
+    <user>dimstar_suse</user>
+    <comment>- 448.patch: fix weave-net selector and metrics port</comment>
+    <requestid>784295</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db8d9cebf5abb1f789f917844beeff9b</srcmd5>
+    <version>0.3.0+git20200317.502f81b</version>
+    <time>1584531877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0+git20200317.502f81b:
+  * manifests: regenerate
+  * jsonnet/prometheus-adapter: use irate for CPU queries
+  * Updated the doc as grafana deployment needs modifications
+  * Fixed the port name for weave-net metrics endpoint
+  * Fixed the label for weave net selector
+  * fix invalid Usage section reference
+  - Includes 448.patch
+- Refresh vendor.tar.xz</comment>
+    <requestid>786079</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87d7104b7ab5b37c412d7346cd5ee84a</srcmd5>
+    <version>0.3.0+git20200320.a5e2783</version>
+    <time>1584883049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0+git20200320.a5e2783:
+  * fix kube-state-metrics namespace override
+  * Add version and image source as config parameters.
+  * adding security context to kube-rbac-proxy (#450)</comment>
+    <requestid>787124</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>711d2236665e92f615cf8f48a7e42325</srcmd5>
+    <version>0.4.0+git20200520.28332b4</version>
+    <time>1590649828</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.4.0+git20200520.28332b4:
+  * update compatibility matrix with note for release-0.4
+  * update generated files for prometheus operator v0.39.0
+  * update generated files for node exporter ignored filesystems
+  * node_exporter: remove outdated comment and CLI arg
+  * node-exporter: ignore kubelet pod mounts
+  * *: regenerate
+  * *: update jsonnet to use prometheus-operator v0.39
+  * Revert &quot;Remove field preserveUnknownFields from CRDs&quot;
+  * Update prometheus version to v2.17.2
+  * custom metrics v1beta2 api
+  * k8s-prometheus-adapter v0.7.0
+  * build.sh: fix json files cleanup
+  * fix readme typos
+  * Convert custom-metrics into an addon
+  * tests/e2e/travis-e2e.sh: Bump kind version
+  * README.md: Change compatibility matrix
+  * scripts,tests: Bump kubernetes version to 1.18
+  * Bump to go 1.13
+  * manifests: Regenerate
+  * go.mod,sum: go mod tidy
+  * jb update
+  * Update kube-prometheus-eks.libsonnet
+  * update prometheus-pvc.jsonnet
+  * Fix rules window
+  * updated generated manifests
+  * Make prometheus-adapter config a real object
+  * go.mod: remove unused packages
+  * test.sh: update PATH to use project tooling
+  * Makefile: export GO111MODULE=on</comment>
+    <requestid>808694</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a316f7c268f89fa2de6fb12143a489a5</srcmd5>
+    <version>0.5.0+git20200729.f0955e0</version>
+    <time>1596364074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git20200729.f0955e0:
+  * Add scraping of endpoint for kubelet probe metrics
+  * prometheus-adapter: Collect metrics from Prometheus Adapter
+  * manifests: regenerate
+  * jsonnet: update kube-rbac-proxy ciphers
+  * make generate
+  * port https-metrics
+  * update secure ports for other cluster
+  * secure scheduler/controller metrics ports, kubeadm discovery services
+  * Regenerate dashboards and alerts
+  * manifests: regenerate
+  * jsonnet: update component versions
+  * manifests: regenerate
+  * jsonnet: remove incorrect instance:node_filesystem_usage:sum rule
+  * manifests/prometheus-rules.yaml: Regenerate
+  * prometheus-operator.libsonnet: Add List error alert and fix threshold to
+  * manifests/prometheus-rules.yaml: Regenerate
+  * prometheus-operator.libsonnet: Add PrometheusOperatorWatchErrors alert
+  * chore(jsonnet): ⬆️  update jsonnet to master
+  * manifests: Regenerate files
+  * jsonnet/kube-prometheus: Bump default versions of prometheus and alertmanager
+  * enable etcd latency metrics in kube-apiserver
+  * Update the Issue templates to redirect to GitHub Discussions.
+  * Update kubernetes-mixin to remove KubeAPILatencyHigh &amp; KubeAPIErrorsHigh
+  * Fix typo
+  * manifests: regenerate
+  * Bump Grafana version to v6.7.4
+  * Updated prometheus adapter deployment to use a multi arch image repo
+  * Allow nodeExporter address to be configured
+  * Allow nodeExporter address to be configured</comment>
+    <requestid>823426</requestid>
+  </revision>
+</revisionlist>

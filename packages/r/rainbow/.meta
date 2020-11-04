@@ -1,0 +1,5 @@
+<package name="rainbow" project="openSUSE:Factory">
+  <title>rainbow</title>
+  <description></description>
+  <devel project="utilities" package="rainbow"/>
+</package>

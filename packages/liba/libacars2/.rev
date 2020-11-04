@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5fe1f817ba1ca535a216bc5d2be17631</srcmd5>
+    <version>2.0.0</version>
+    <time>1585343003</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libacars2 in Factory</comment>
+    <requestid>789139</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>90d00a162be5913b38f39ec68f56927c</srcmd5>
+    <version>2.0.0</version>
+    <time>1586368553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791984</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65dac47f6936cb6b71ff4ebe0bfe8d79</srcmd5>
+    <version>2.0.1</version>
+    <time>1598726626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830331</requestid>
+  </revision>
+</revisionlist>

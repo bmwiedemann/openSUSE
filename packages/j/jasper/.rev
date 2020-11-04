@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4c73e3800d524afdeac67b7a8fb7d406</srcmd5>
+    <version>2.0.19</version>
+    <time>1595950017</time>
+    <user>dimstar_suse</user>
+    <comment>Jasper again! With all CVEs fixed!</comment>
+    <requestid>823122</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>306592d2cabccebeb40937e779897346</srcmd5>
+    <version>2.0.21</version>
+    <time>1600879515</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jasper-2.0.21-glut.patch: Fix glut.h detection
+  See https://github.com/jasper-software/jasper/issues/247
+
+- Update to 2.0.21:
+  * Fix ZDI-15-529
+    https://github.com/jasper-software/jasper/pull/245
+  * Fix CVE-2018-19541 in decoder
+    https://github.com/jasper-software/jasper/pull/244
+
+- Update to 2.0.20:
+  * Fixed several ISO/IEC 15444-4 conformance bugs
+  * Fixed new variant of CVE-2016-9398
+  * Disabled the MIF codec by default for security reasons (but it is still
+    included in the library);
+    in a future release, the MIF codec may also be excluded from the
+    library by default
+  * Added documentation for the I/O streams library API
+  * Improved adherance to specification
+- Move to GitHub repo https://github.com/jasper-software/jasper
+- Update URL to https://jasper-software.github.io/jasper</comment>
+    <requestid>836230</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b7a2a3189e8a3450af2aea3546015c1</srcmd5>
+    <version>2.0.22</version>
+    <time>1601997007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.22:
+  * Update manual
+  * Remove JPEG dummy codec
+  * Fix test suite build failure regarding disabled MIF codec (#249)
+  * Fix OpenGL/glut detection (#247)
+- Remove jasper-2.0.21-glut.patch: upstreamed</comment>
+    <requestid>839698</requestid>
+  </revision>
+</revisionlist>

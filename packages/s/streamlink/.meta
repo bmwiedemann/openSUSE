@@ -1,0 +1,13 @@
+<package name="streamlink" project="openSUSE:Factory">
+  <title>Program to pipe streams from services into a video player</title>
+  <description>Streamlink is a CLI utility that pipes flash videos
+from online streaming services to a variety of video players
+such as MPV, or alternatively, a browser.
+The main purpose of streamlink is to convert CPU-heavy
+flash plugins to a less CPU-intensive format.
+Streamlink is a fork of the livestreamer project.
+
+</description>
+  <devel project="multimedia:apps" package="streamlink"/>
+  <url>https://streamlink.github.io/</url>
+</package>

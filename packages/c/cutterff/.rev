@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2b8f539cbe7745dd648d28ab88a1d42</srcmd5>
+    <version>0.4.1</version>
+    <time>1532774721</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary, and ensure neutrality of description.
+- Enable %desktop_database_post{un} only for suse_version &lt; 1500.
+- Initial package, version 0.4.1
+</comment>
+    <requestid>625796</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7516fabd255909d1df8091cb3ee20cfe</srcmd5>
+    <version>0.4.2</version>
+    <time>1538672454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>639583</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>314b0f008acb4f81314acb71d421a221</srcmd5>
+    <version>0.5</version>
+    <time>1543400084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>652169</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52c7339a0566dda47f0268ccf00276c6</srcmd5>
+    <version>0.6</version>
+    <time>1548064344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665670</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>166588d7ab76a2f7a8eb38af6aea88d6</srcmd5>
+    <version>0.7</version>
+    <time>1549624434</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672428</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1db58d7d0a8bbbca02114a6c81e97baf</srcmd5>
+    <version>0.8</version>
+    <time>1553084488</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686789</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3ea4eeda618d14917e103c89a3f315bb</srcmd5>
+    <version>0.9</version>
+    <time>1565179243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721375</requestid>
+  </revision>
+</revisionlist>

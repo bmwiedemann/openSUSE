@@ -1,0 +1,10 @@
+<package name="zchunk" project="openSUSE:Factory">
+  <title>Compressed file format that allows easy deltas</title>
+  <description>zchunk is a compressed file format that splits the file into independent
+chunks.  This allows you to only download the differences when downloading a
+new version of the file, and also makes zchunk files efficient over rsync.
+zchunk files are protected with strong checksums to verify that the file you
+downloaded is in fact the file you wanted.</description>
+  <devel project="Archiving" package="zchunk"/>
+  <url>https://github.com/zchunk/zchunk</url>
+</package>

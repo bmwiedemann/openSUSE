@@ -1,0 +1,5 @@
+<package name="apache2-mod_auth_gssapi" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Apache:Modules" package="apache2-mod_auth_gssapi"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="lttng-tools" project="openSUSE:Factory">
+  <title>Linux Trace Toolkit Next Generation userspace tools</title>
+  <description>This package provides the userspace tools for controlling the LTTng subsystem from userspace.</description>
+  <devel project="devel:tools:lttng" package="lttng-tools"/>
+</package>

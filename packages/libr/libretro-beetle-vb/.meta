@@ -1,0 +1,6 @@
+<package name="libretro-beetle-vb" project="openSUSE:Factory">
+  <title>Mednafen VB libretro core for Virtual Boy emulation</title>
+  <description>Standalone port of Mednafen VB to libretro.
+</description>
+  <devel project="Emulators" package="libretro-beetle-vb"/>
+</package>

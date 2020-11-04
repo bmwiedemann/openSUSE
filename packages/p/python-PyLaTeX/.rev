@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d774160038500cab43d4da0531362826</srcmd5>
+    <version>1.3.1</version>
+    <time>1573339313</time>
+    <user>dimstar_suse</user>
+    <comment>A Python library for creating LaTeX files and snippets</comment>
+    <requestid>746679</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>456c6c104b58c7f1b681a92d4df2b91e</srcmd5>
+    <version>1.3.2</version>
+    <time>1591742855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812650</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>278337492431d576ae8ac813c21456ce</srcmd5>
+    <version>1.3.2</version>
+    <time>1596457112</time>
+    <user>dimstar_suse</user>
+    <comment>- Add denose.patch removing nose dependency (gh#JelteF/PyLaTeX#294).
+</comment>
+    <requestid>824073</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b24f255595f5a620702fbe7f523076b2</srcmd5>
+    <version>1.3.4</version>
+    <time>1598983801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.4:
+  * Use known working versions for Python 3.5 and lower of ordered-set
+    dependency
+  * The 'at' parameter for TikZNode should now work.
+  * Use a different temporary directory per user.</comment>
+    <requestid>830973</requestid>
+  </revision>
+</revisionlist>

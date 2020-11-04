@@ -1,0 +1,5 @@
+<package name="oxygen5" project="openSUSE:Factory">
+  <title>oxygen5</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="oxygen5"/>
+</package>

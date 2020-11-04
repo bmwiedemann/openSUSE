@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>be44719c46773b174b4d467c1527d529</srcmd5>
+    <version>2.1.2</version>
+    <time>1603464867</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for rubygem-asciidoctor-pdf, which I'm planning to submit.</comment>
+    <requestid>830101</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5f4e58ff6d2f50aff2592d0905baff6</srcmd5>
+    <version>2.1.2</version>
+    <time>1603545479</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843640</requestid>
+  </revision>
+</revisionlist>

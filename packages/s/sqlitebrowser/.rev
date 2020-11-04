@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1e82d081f6bebed393bb3a9f900ccc1</srcmd5>
+    <version>3.0.2</version>
+    <time>1393937982</time>
+    <user>coolo</user>
+    <comment>new package: GUI for sqlite databases</comment>
+    <requestid>224345</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f1e82d081f6bebed393bb3a9f900ccc1</srcmd5>
+    <version>3.0.2</version>
+    <time>1409303407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bde7d9453263badd84fca452f83b7f9d</srcmd5>
+    <version>3.5.1</version>
+    <time>1428064482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>294110</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f024cf863b8c5a580d78cab814093f0b</srcmd5>
+    <version>3.5.1</version>
+    <time>1430595411</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304505</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b7bb437a450df7136d406a251cf6d573</srcmd5>
+    <version>3.7.0</version>
+    <time>1440337427</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>324700</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b22532e9d45f691fbb69e1ee588ccb9e</srcmd5>
+    <version>3.8.0</version>
+    <time>1464014337</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396731</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>890790c4c8942d06c34693a502823bd0</srcmd5>
+    <version>3.8.0</version>
+    <time>1467705143</time>
+    <user>dimstar_suse</user>
+    <comment>- Comment out antrl dependency as it causes build issues on x86_64
+
+- Pass -DBUILD_SHARED_LIBS=OFF to %cmake to fix static linking with
+  the included libraries (boo#984828)</comment>
+    <requestid>406279</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2fd4961b5fda4f0337b8b417928533cb</srcmd5>
+    <version>3.9.1</version>
+    <time>1485250685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451663</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b8f1ab336e04d541315aa7543474545c</srcmd5>
+    <version>3.10.0</version>
+    <time>1504521035</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct license
+- Use more cmake macros
+- Use shared qscintilla library
+
+- update to version 3.10.0
+  * Highlights
+    - DBHub.io integration
+      + Uploading and downloading of databases works
+      + Branching, forking, starring works, as does creating tags and releases
+      + There's a 100MB per database limit at the moment though, as it's still in development
+      + Backups aren't done on it (yet), so don't use it as your only place for storing important things (!!!)
+      + The front page is... not great. We're working on it.
+      + Still lots of upcoming stuff needing to be done. An API to query your databases, a cli, merging, discussions/issues
+      + Please report bugs, ideas, suggestions (etc) on the dbhub.io repo issue tracker as you find them.
+    - Many plot improvements (NULL values, progress dialog, remember settings, better colours, and bug fixes)
+    - Better table editing (foreign key editor, toggling the WITHOUT ROWID flag, temporary tables, ...)
+    - Better Import CSV dialog. It can now handle multiple CSV files at once
+    - Improved Index dialog and better index handling in general
+    - Better handling of virtual tables
+    - Filter improvements (ranges, NULL search)
+    - The usual improvements to the grammar parser
+  * See the full list of changes under
+    https://github.com/sqlitebrowser/sqlitebrowser/releases/tag/v3.10.0
+- switch back to cmake build
+- use system antlr on openSUSE, the problems seem to be fixed
+- unconditionally build with Qt5, Qt4 support has been dropped in
+  this release</comment>
+    <requestid>519688</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>33240b165bce8cf237e728911c99252e</srcmd5>
+    <version>3.10.1</version>
+    <time>1530304621</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619772</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>86947eeb2304b09f7e68cb76dfd1dc4f</srcmd5>
+    <version>3.10.1</version>
+    <time>1533045612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626167</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d337360ee27370244c0ff92c0b0737f2</srcmd5>
+    <version>3.11.2</version>
+    <time>1568191184</time>
+    <user>dimstar_suse</user>
+    <comment>- Added dependencies on Qt5Concurrent and Qt5Xml
+- Update to version 3.11.2:
+  * Added Korean translation updates from PR #1600
+  * Italian translation for v3.11.x
+  * Regenerate translation files for the v3.11.x branch
+  * Updated German translation for 3.11.x
+  * Updated Brazilian Portuguese translation
+  * Fix editing encryption when using SQLCipher 4
+  * Fix transaction detection in SQL import</comment>
+    <requestid>729890</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cd73cb0a6f5a6541e57aee4ea0ced881</srcmd5>
+    <version>3.12.0</version>
+    <time>1600801561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830686</requestid>
+  </revision>
+</revisionlist>

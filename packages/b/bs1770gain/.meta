@@ -1,0 +1,11 @@
+<package name="bs1770gain" project="openSUSE:Factory">
+  <title>A loudness scanner compliant with ITU-R BS.1770</title>
+  <description>The command line tool bs1770gain is a loudness scanner compliant with
+ITU-R BS.1770 and its flavors EBU R128, ATSC A/85, and ReplayGain 2.0.
+It helps normalizing the loudness of audio and video files to the same
+level.
+
+</description>
+  <devel project="multimedia:apps" package="bs1770gain"/>
+  <url>https://sourceforge.net/projects/bs1770gain/</url>
+</package>

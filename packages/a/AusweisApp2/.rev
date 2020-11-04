@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de3c155c4f096918ba42bc0d45b0d30d</srcmd5>
+    <version>1.18.2</version>
+    <time>1575563620</time>
+    <user>dimstar_suse</user>
+    <comment>- Official authentication app for German ID cards and residence titles</comment>
+    <requestid>743521</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>275ce864ffcef2c79029534be3d42548</srcmd5>
+    <version>1.18.2</version>
+    <time>1577137384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758721</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f87e0b6a3060e8bf3a95e09fdc36a62f</srcmd5>
+    <version>1.20.0</version>
+    <time>1579195361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764891</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c41afb4c02677d20f85ecf51d70a44a1</srcmd5>
+    <version>1.20.0</version>
+    <time>1579463826</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765466</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>536da1bc236b26c6f9ab0e74a91a1dbe</srcmd5>
+    <version>1.20.1</version>
+    <time>1593090534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816921</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>253a40fded7151ea26d0dbf1a7e5f476</srcmd5>
+    <version>1.20.2</version>
+    <time>1599210787</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831920</requestid>
+  </revision>
+</revisionlist>

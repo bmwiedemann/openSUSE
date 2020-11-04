@@ -1,0 +1,9 @@
+<package name="cups" project="openSUSE:Factory">
+  <title>The Common UNIX Printing System</title>
+  <description>The Common UNIX Printing System provides a portable printing layer for
+UNIX operating systems like BSD lp or lprng. CUPS provides some
+additional features.
+
+http://www.cups.org</description>
+  <devel project="Printing" package="cups"/>
+</package>

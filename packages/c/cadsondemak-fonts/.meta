@@ -1,0 +1,5 @@
+<package name="cadsondemak-fonts" project="openSUSE:Factory">
+  <title>Cadson Demak fonts</title>
+  <description>Cadson Demak fonts are inspired from an old Thai font design, which give old traditional vibes but works well on modern design.</description>
+  <devel project="M17N:fonts" package="cadsondemak-fonts"/>
+</package>

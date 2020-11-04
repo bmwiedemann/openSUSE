@@ -1,0 +1,206 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>548d20d1e2e5d862b920270f0b0399ca</srcmd5>
+    <version>12.8.0</version>
+    <time>1336471302</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115418</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ae0373c890a82b5580cbe57526cb9e21</srcmd5>
+    <version>12.9.0</version>
+    <time>1338477099</time>
+    <user>coolo</user>
+    <comment>- Update to version 12.9.0:
+  + Revert &quot;Adjust the kernel name in the udev file.&quot;
+  + config: replace obsolete AM_CONFIG_HEADER with
+    with AC_CONFIG_HEADERS.
+  + Enable hardware access during vmmouse preinit.</comment>
+    <requestid>122596</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ae0373c890a82b5580cbe57526cb9e21</srcmd5>
+    <version>12.9.0</version>
+    <time>1340184346</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e6a90a54c2994562efd3e6c991741554</srcmd5>
+    <version>12.9.0</version>
+    <time>1350590734</time>
+    <user>coolo</user>
+    <comment>- Fix build with new udev rules directory location. (forwarded request 138514 from fcrozat)</comment>
+    <requestid>138525</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e110f6ec3ad0a8706561f72e8d902b65</srcmd5>
+    <version>13.0.0</version>
+    <time>1359103245</time>
+    <user>coolo</user>
+    <comment>- xf86-input-vmmouse 13.0.0
+  * Bugfix release for Xserver 1.13. Well tested by our QE so it's
+    advisable to upgrade.</comment>
+    <requestid>149809</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>e110f6ec3ad0a8706561f72e8d902b65</srcmd5>
+    <version>13.0.0</version>
+    <time>1359110607</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>7422df36fe826bc6eddcb0067aa9933d</srcmd5>
+    <version>13.0.0</version>
+    <time>1378133418</time>
+    <user>coolo</user>
+    <comment>- dropped xf86-input-vmmouse-iopl.diff; meanwhile resolved upstream
+  fixing bnc#625041 in a better way, not causing bnc#743401</comment>
+    <requestid>196893</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>7422df36fe826bc6eddcb0067aa9933d</srcmd5>
+    <version>13.0.0</version>
+    <time>1379665019</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>1d43de8ab80da270b6ba642442b50552</srcmd5>
+    <version>13.0.0</version>
+    <time>1389385406</time>
+    <user>coolo</user>
+    <comment>- fix udev checking to also work if build service throws udev-mini
+  at the build (forwarded request 213434 from coolo)</comment>
+    <requestid>213435</requestid>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>7bc3b91e15420f667840779071887553</srcmd5>
+    <version>13.0.0</version>
+    <time>1392450841</time>
+    <user>coolo</user>
+    <comment>- u_Revert-Remove-call-to-iopl-.-It-s-not-portable-and-i.patch:
+  Revert iopl() removal that broke vmmouse on QEMU/KVM (bnc#863750) (forwarded request 222190 from tiwai)</comment>
+    <requestid>222202</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>0a54b9ffe8b8e0d5bf0b63fa1302c2b3</srcmd5>
+    <version>13.0.0</version>
+    <time>1401685452</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>234824</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>035e85119692907a8937f1a543747955</srcmd5>
+    <version>13.0.0</version>
+    <time>1402403834</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236334</requestid>
+  </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>035e85119692907a8937f1a543747955</srcmd5>
+    <version>13.0.0</version>
+    <time>1409303701</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>a989bee149bb27cc6840d276191e7a88</srcmd5>
+    <version>13.0.0</version>
+    <time>1413382770</time>
+    <user>coolo</user>
+    <comment>- u_vmmouse_client.h-Include-xorg-server.h-before-xf86_O.patch
+  * include xorg-server.h before xf86_OSproc.h in order to fix 
+    build with latest glibc</comment>
+    <requestid>254322</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>1722d00322e9cf1d37c904df36fe071d</srcmd5>
+    <version>13.0.0</version>
+    <time>1427109204</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Don-t-de-reference-pMse-if-it-hasn-t-been-initialise.patch
+  * fixes X server crash being started by valgrind (bnc#922188)</comment>
+    <requestid>291293</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>51d701779ef25e3e63a1b29c683b043a</srcmd5>
+    <version>13.1.0</version>
+    <time>1436887222</time>
+    <user>coolo</user>
+    <comment>- xf86-input-vmmouse 13.1.0:
+  This release is intended for general distro inclusion, Testing
+  has been performed on various linux distros, FreeBSD 10.1 and
+  Solaris 11.2.
+  This release contains a number of build fixes and also changes
+  to deal with improved vmmouse port security and backoff if a
+  vmmouse kernel module is encountered. An additional dependency
+  on libudev is introduced on linux.
+- supersedes the following patches:
+  * U_Don-t-de-reference-pMse-if-it-hasn-t-been-initialise.patch
+  * U_Free-the-vmmouse-data-on-UnInit.patch
+  * u_Revert-Remove-call-to-iopl-.-It-s-not-portable-and-i.patch
+  * u_vmmouse_client.h-Include-xorg-server.h-before-xf86_O.patch</comment>
+    <requestid>313841</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>46e8ab99235deb3dc942a58bc9513758</srcmd5>
+    <version>13.1.0</version>
+    <time>1440135345</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319774</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>8b86d7e4fc428bbd39f646e2ec4acb03</srcmd5>
+    <version>13.1.0</version>
+    <time>1443793095</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334130</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>162fd5503f98a8546efb233627934502</srcmd5>
+    <version>13.1.0</version>
+    <time>1457179508</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer install the driver package by default on openSUSE &gt; 13.2
+  or Leap, i.e. remove the supplements to xorg-x11-server 
+  (fate #320612)</comment>
+    <requestid>365880</requestid>
+  </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>68d9610d541e530ea87042b802d85317</srcmd5>
+    <version>13.1.0</version>
+    <time>1465847558</time>
+    <user>dimstar_suse</user>
+    <comment>- u_conf-rename-to-70-vmmouse.conf.patch
+  * renamed config file to give it higher prio than libinput;
+    relevant only for older kernels; on newer kernels vmmouse
+    driver isn't loaded at all (bnc#983702, comment#20)</comment>
+    <requestid>400963</requestid>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>c35a64ae840b4af37c4c8a1bb1186497</srcmd5>
+    <version>13.1.0</version>
+    <time>1496533570</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for missing sle issue entries:
+  fate #320612, fate #315643-315645, 319159-319161, 319618, bnc#922188
+  (bsc#1041589)</comment>
+    <requestid>499620</requestid>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>6fc4b9f09acd8c0ec76a861b03a58f81</srcmd5>
+    <version>13.1.0</version>
+    <time>1564993791</time>
+    <user>dimstar_suse</user>
+    <comment>- move xorg.conf.d snippet from /etc/X11/xorg.conf.d to
+  /usr/share/X11/xorg.conf.d (boo#1139692)</comment>
+    <requestid>719823</requestid>
+  </revision>
+</revisionlist>

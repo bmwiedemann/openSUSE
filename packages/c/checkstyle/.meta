@@ -1,0 +1,8 @@
+<package name="checkstyle" project="openSUSE:Factory">
+  <title>Java source code checker</title>
+  <description>A tool for checking Java source code for adherence to a set of rules.
+
+</description>
+  <devel project="Java:packages" package="checkstyle"/>
+  <url>http://checkstyle.sourceforge.net/</url>
+</package>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc63c0bf303ad447d56467e1dc34811c</srcmd5>
+    <version>0.3.0</version>
+    <time>1523615769</time>
+    <user>maxlin_factory</user>
+    <comment>I want to maintain python-pywinrm in Factory</comment>
+    <requestid>594235</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f4e54b67355430955ccff9355ff6259</srcmd5>
+    <version>0.3.0</version>
+    <time>1545648174</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659627</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f69810dab5a761b8e14033eaff530105</srcmd5>
+    <version>0.4.0</version>
+    <time>1574859063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745108</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>601688985d972c5fd01bad69cb41025a</srcmd5>
+    <version>0.4.1</version>
+    <time>1583949152</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1:
+  * python 3.8</comment>
+    <requestid>783702</requestid>
+  </revision>
+</revisionlist>

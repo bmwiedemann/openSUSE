@@ -1,0 +1,102 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39f2286336e2a02a45b30d7f4bf3155e</srcmd5>
+    <version>0.3.3</version>
+    <time>1549140566</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670345</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>809fbdc303cdbd0ff1a2f35275029b46</srcmd5>
+    <version>0.4.0</version>
+    <time>1557263538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701008</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a7b0659f2ca9bb840c99379c0c1a5ddd</srcmd5>
+    <version>0.5.0</version>
+    <time>1558036803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703034</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>222498515b8732ee7fdc457ac4ce4c49</srcmd5>
+    <version>0.5.1</version>
+    <time>1558340819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703557</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>18d98b8ef7255d5a98dc0f5a03f6fc35</srcmd5>
+    <version>0.5.1</version>
+    <time>1560458281</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to mulitbuild to avoid build cycle</comment>
+    <requestid>708170</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ebda017b69ac7058d3a0bfc04c88b12a</srcmd5>
+    <version>0.5.2</version>
+    <time>1564484670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * #7: Parent of a directory now actually returns the parent.</comment>
+    <requestid>717548</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aabcd955bb2d4b72ae7536a47bff09a3</srcmd5>
+    <version>0.6.0</version>
+    <time>1567580197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727096</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f4a05bc35640d22e63cf1652d2d1f4cf</srcmd5>
+    <version>3.1.0</version>
+    <time>1587325201</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop not-removed py2 dependencies
+
+- version update to 3.1.0
+  * #47: ``.open`` now raises ``FileNotFoundError`` and
+    ``IsADirectoryError`` when appropriate.
+  * #44: ``zipp.Path.open()`` now supports a compatible signature
+    as ``pathlib.Path.open()``, accepting text (default) or binary
+    modes and soliciting keyword parameters passed through to
+    ``io.TextIOWrapper`` (encoding, newline, etc). The stream is
+    opened in text-mode by default now. ``open`` no
+    longer accepts ``pwd`` as a positional argument and does not
+    accept the ``force_zip64`` parameter at all. This change is
+    a backward-incompatible change for that single function.
+  * #43: Restored performance of implicit dir computation.
+  * #36: Rebuild package with minimum Python version declared both
+    in package metadata and in the python tag.
+  * #32: For read-only zip files, complexity of ``.exists`` and
+    ``joinpath`` is now constant time instead of ``O(n)``, preventing
+    quadratic time in common use-cases and rendering large
+    zip files unusable for Path. Big thanks to Benjy Weinberger
+    for the bug report and contributed fix (#33).</comment>
+    <requestid>784549</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>01016c6f7f293e2c301249719091af31</srcmd5>
+    <version>3.2.0</version>
+    <time>1603961173</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * #57 and bpo-40564: Mutate the passed ZipFile object
+  type instead of making a copy. Prevents issues when
+  both the local copy and the caller's copy attempt to
+  close the same file handle.
+  * #56 and bpo-41035: ``Path._next`` now honors
+  subclasses.
+  * #55: ``Path.is_file()`` now returns False for non-existent names.</comment>
+    <requestid>838271</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16b990eb6e4b55cbd5b9969178a0e606</srcmd5>
+    <version>0.1.5</version>
+    <time>1492169689</time>
+    <user>maxlin_factory</user>
+    <comment>Needed by recent versions of the jupyter suite</comment>
+    <requestid>483966</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>020d7f98b044ec9e85cfbc0ebcd24111</srcmd5>
+    <version>0.1.5</version>
+    <time>1520164359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582330</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1ef5dccce7bd5ec36609a5107c429c64</srcmd5>
+    <version>0.1.5</version>
+    <time>1545648017</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659514</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3c97389688ab39195821ea469808e441</srcmd5>
+    <version>0.1.5</version>
+    <time>1547211864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663806</requestid>
+  </revision>
+</revisionlist>

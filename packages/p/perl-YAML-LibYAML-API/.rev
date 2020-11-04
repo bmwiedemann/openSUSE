@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b780deca8dac81493e566c35ca3167d</srcmd5>
+    <version>0.007</version>
+    <time>1579875495</time>
+    <user>dimstar_suse</user>
+    <comment>We would like to use this for openQA related scripts</comment>
+    <requestid>766892</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4625e00744bdb23f90cd354c28d23e34</srcmd5>
+    <version>0.008</version>
+    <time>1582207186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777642</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>df0ec10e17b6b5a97c3f1aa2699e2669</srcmd5>
+    <version>0.009</version>
+    <time>1589993146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807424</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b7ac98a24fe2f7df96ab9712e394620</srcmd5>
+    <version>0.010</version>
+    <time>1598030322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828480</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>145f82a1673a539e09332969942cbf78</srcmd5>
+    <version>0.012</version>
+    <time>1599771245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833505</requestid>
+  </revision>
+</revisionlist>

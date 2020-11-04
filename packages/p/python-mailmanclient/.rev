@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aafa655245dd313a16ed9a6e41f5645</srcmd5>
+    <version>3.3.0</version>
+    <time>1576014271</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686</comment>
+    <requestid>755541</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>218897c31fe9e00f83d4c5ae53ddd29d</srcmd5>
+    <version>3.3.0</version>
+    <time>1579346280</time>
+    <user>dimstar_suse</user>
+    <comment>SLE-7686 (forwarded request 765300 from pgajdos)</comment>
+    <requestid>765304</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bf65e88a6e11a5909c1d0be62cc7f91b</srcmd5>
+    <version>3.3.0</version>
+    <time>1579867915</time>
+    <user>dimstar_suse</user>
+    <comment>- removing 15 conditionals, LANG definition will be removed
+  later anyway (forwarded request 766638 from pgajdos)</comment>
+    <requestid>766639</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a6097327812f9273931d72709e503853</srcmd5>
+    <version>3.3.1</version>
+    <time>1596565411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.1
+  * Held message moderation now supports an optional keyword, reason to
+    specify the reason to reject the message.
+  * Fix a bug where missing display_name attribute with
+    MalingList.subscribe would subscribe the user with a display name of
+    &quot;None&quot;.
+  * Add advertised flag to MailingList object.
+  * MailingList.nonmembers now uses roster/nonmembers resource instead of
+    the find/ API for consistency.
+  * Add Client.get_nonmember and MailingList.get_nonmember to get a
+    non-member by address. (forwarded request 824272 from hellcp)</comment>
+    <requestid>824275</requestid>
+  </revision>
+</revisionlist>

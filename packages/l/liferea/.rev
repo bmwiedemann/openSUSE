@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>68cfc222ebd602097b17acf73439feed</srcmd5>
+    <version>1.12.6</version>
+    <time>1578950512</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroduce liferea - build has been fixed</comment>
+    <requestid>763914</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b9654793944ed117bd90651802e36a92</srcmd5>
+    <version>1.12.6</version>
+    <time>1580511382</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768623 from dimstar)</comment>
+    <requestid>768684</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9da107b62d65a4d7c72341d0a57db91c</srcmd5>
+    <version>1.12.6</version>
+    <time>1589491671</time>
+    <user>dimstar_suse</user>
+    <comment>- Export WEBKIT_DISABLE_COMPOSITING_MODE=1 on Leap 15.2 build</comment>
+    <requestid>805617</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed31b921202ea2e8b32e18ba8d15f444</srcmd5>
+    <version>1.12.8</version>
+    <time>1592246052</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.8:
+  * Fixes #734: crash when selecting empty nodes
+  * Fixes #727: Out-dated documentation on Firefox live bookmarks
+  * Fixes headline large images/videos or images with margins
+    causing horizontal scrolling in headline view
+  * Fixes #840: OPML source subfolders not working
+  * Update of French translation (forwarded request 814167 from tux93)</comment>
+    <requestid>814732</requestid>
+  </revision>
+</revisionlist>

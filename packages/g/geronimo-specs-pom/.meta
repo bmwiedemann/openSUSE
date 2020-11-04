@@ -1,0 +1,5 @@
+<package name="geronimo-specs-pom" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="geronimo-specs-pom"/>
+</package>

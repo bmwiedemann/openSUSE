@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5497cd8b8c36a2373fb348e9515ef0a7</srcmd5>
+    <version>0.13.17</version>
+    <time>1513245801</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by helios</comment>
+    <requestid>556705</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c1528688a86dfe17a7b4b856778b3cdd</srcmd5>
+    <version>0.14.7</version>
+    <time>1553809716</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688745</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87f67103b35937416bf18e2d981da443</srcmd5>
+    <version>0.15.0</version>
+    <time>1587071062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794513</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3be7cc36f212ae18a366f98a3ab417ce</srcmd5>
+    <version>0.15.0</version>
+    <time>1589893071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807280</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cc3e2534eff809d4b8714d796dbfd075</srcmd5>
+    <version>0.15.0</version>
+    <time>1591209306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811061</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>22941e6866b9d4419fd5468a423e1ff4</srcmd5>
+    <version>0.15.0</version>
+    <time>1595099012</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream doesn't care about unittest2 at all
+  (gh#rollbar/pyrollbar#340), we can just ignore it. Adjust
+  python-rollbar-no-unittest2.patch accordingly.
+</comment>
+    <requestid>821667</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9ab62197c32cdd2bacd5f4eff2ba6c1c</srcmd5>
+    <version>0.15.0</version>
+    <time>1596703387</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace self.assertRegex with six.assertRegex in
+  python-rollbar-no-unittest2.patch to finally unrequire
+  unittest2 (gh#rollbar/pyrollbar#340).
+- Update the patch according to the pending pull request
+  gh#rollbar/pyrollbar#346.</comment>
+    <requestid>824631</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="bup" project="openSUSE:Factory">
+  <title>git backup</title>
+  <description>Very efficient backup system based on the git packfile format, providing fast incremental saves and global deduplication (among and within files, including virtual machine images). 
+
+</description>
+  <devel project="Archiving:Backup" package="bup"/>
+  <url>https://bup.github.io/</url>
+</package>

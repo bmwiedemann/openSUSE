@@ -1,0 +1,141 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4710e0cc792b4c17de465a05f7dc290c</srcmd5>
+    <version>5.1</version>
+    <time>1370431653</time>
+    <user>coolo</user>
+    <comment>Nice, lightweight C/C++ IDE based on wxWidgets. License changed to GPL-3.0</comment>
+    <requestid>176764</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>97132f3fda02bd2a20b803d6e349e9e7</srcmd5>
+    <version>5.1</version>
+    <time>1371133194</time>
+    <user>coolo</user>
+    <comment>- Add llvm-clang-devel to buildrequires, so the archs other than
+  x86 would find -lclang (forwarded request 178630 from k0da)</comment>
+    <requestid>178643</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>134bd8228d967495618859f180957efa</srcmd5>
+    <version>5.2</version>
+    <time>1374155267</time>
+    <user>coolo</user>
+    <comment>- Update to 5.2:
+  + Added disassemble window to the debugger
+  + Better dark theme visualization
+  + Improved tab appearance
+  + Debugger pretty printing improvements
+  + Various dialogs were re-designed (setters/getters)
+  + Improved code completion
+  + and much more
+- Enable db explorer plugin with mariadb/mysql support. (forwarded request 183523 from Fisiu)</comment>
+    <requestid>183524</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28638f5a806b3b2c460a50620cb1edbd</srcmd5>
+    <version>5.2</version>
+    <time>1379352960</time>
+    <user>coolo</user>
+    <comment>- add -DCMAKE_SKIP_INSTALL_RPATH=ON to cmake options (forwarded request 198651 from toganm)</comment>
+    <requestid>199254</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>28638f5a806b3b2c460a50620cb1edbd</srcmd5>
+    <version>5.2</version>
+    <time>1379662129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>51211bc9816347ac0dc99018a7627da6</srcmd5>
+    <version>5.2</version>
+    <time>1384267726</time>
+    <user>scarabeus_factory</user>
+    <comment>- Change previous cmake parameter to -DCMAKE_SKIP_RPATH=ON. Fix bnc#848791. (forwarded request 206409 from Fisiu)</comment>
+    <requestid>206611</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>284bccfbbb6c1f84ceae5c9d075b69d4</srcmd5>
+    <version>5.4</version>
+    <time>1395295443</time>
+    <user>coolo</user>
+    <comment>- Fix source tarball url.
+
+- Update to 5.4:
+  + New cmake plugin.
+  + New tweak plugin.
+  + Improved git plugin.
+  + codelite-terminal: new terminal emulator.
+  + Many enhancements and bug fixes.
+
+- Update to 5.3:
+  + Brand new SFTP plugin.
+  + codelite-make: a command-line tool to generate Makefiles from codelite's 
+    project. 
+  + Improved git, database explorer, cscope and Wizard plugins.
+  + Bug fixes.</comment>
+    <requestid>226643</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>284bccfbbb6c1f84ceae5c9d075b69d4</srcmd5>
+    <version>5.4</version>
+    <time>1409300660</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>ddb91ece928cbd161bf74eab6fa0ca67</srcmd5>
+    <version>5.4</version>
+    <time>1412252025</time>
+    <user>coolo</user>
+    <comment>- Removed %wx_requires as it is no longer a valid macro</comment>
+    <requestid>253498</requestid>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>d90aaec3c4061a52a70f74ec95ff8c36</srcmd5>
+    <version>5.4</version>
+    <time>1415696392</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260775</requestid>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>4e29991afa5f2ddc993aa15643142694</srcmd5>
+    <version>5.4</version>
+    <time>1419159874</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>265628</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f5ae8f97884a60e535d493cb753cd46</srcmd5>
+    <version>8.1</version>
+    <time>1461334982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 8.1:</comment>
+    <requestid>376590</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>454d270ce161e92386cdc38083408a7f</srcmd5>
+    <version>8.1</version>
+    <time>1541865556</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix changelog
+- Run spec-cleaner
+- Drop conditions for old distros
+
+- Trim marketing wording from description.
+
+- Don't disable rpath, plugins need that</comment>
+    <requestid>646339</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5b9ca2b1a981891f75ccb924eed7a76</srcmd5>
+    <version>12.0</version>
+    <time>1553611411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686310</requestid>
+  </revision>
+</revisionlist>

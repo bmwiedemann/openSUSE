@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b91ebbb790ae8ecc3c49b6e65e27ae0</srcmd5>
+    <version>1.4.2</version>
+    <time>1551024655</time>
+    <user>coolo</user>
+    <comment>- Trim filler wording from descriptions. Set proper RPM groups,
+  and noarch status for doc subpackage.
+- Drop silly glibc PreReq.
+- Upgrade to libmaa-1.4.2:
+  * Fix build failure on SunOS-5.11 (alloca)
+  * License has been changed from LGPL to MIT, permitted by Rik
+    Faith, original author of this library.
+  * Build system changed from autotools to mk-configure.
+  * Library version/soname was bumped from 3 to 4. I cannot
+    guarantee that mk-configure and libtool build shared library
+    the same way.
+  * Tests were added for stk_*, mem_* and prm_* functions.
+  * stk_isempty function was added.
+  * stk_* and other was reimplemented without obstack functions
+    (glibc extension).
+- Add 02-Spelling-typos.patch and 03-Fix-gcc-8-ftbfs.patch from Debian
+  package.
+- initial package
+</comment>
+    <requestid>670419</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2207253fa927a324cbef30c59b2d8c59</srcmd5>
+    <version>1.4.4</version>
+    <time>1556622040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libmaa-1.4.4:
+  * Fix compilation failure using gcc-8
+- Simplify build process using capabilities of mk-configure
+- Remove patches already applied in upstream, specifically
+  - 02-Spelling-typos.patch
+  - 03-Fix-gcc-8-ftbfs.patch
+- Fix License in rpm spec
+- Remove unnecessary dependencies from rpm spec</comment>
+    <requestid>697416</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ebf6137886980ac3c7d96b2ad226bd0</srcmd5>
+    <version>1.4.7</version>
+    <time>1586869887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793781</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="ocaml-cairo" project="openSUSE:Factory">
+  <title>Binding to Cairo, a 2D Vector Graphics Library.</title>
+  <description>This is an OCaml binding for the Cairo library, a 2D graphics library with support for multiple output devices.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-cairo"/>
+  <url>https://github.com/Chris00/ocaml-cairo</url>
+</package>

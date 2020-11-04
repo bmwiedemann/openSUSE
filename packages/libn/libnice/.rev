@@ -1,0 +1,314 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>752a1e3638adf47168f76787b3fd1194</srcmd5>
+    <version>0.0.4</version>
+    <time>1234151166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>59588edb8eac03c7e9af4c91d713c4a6</srcmd5>
+    <version>0.0.4</version>
+    <time>1234459595</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72d6bf9edacefcf47e4bc2d20f34ae25</srcmd5>
+    <version>0.0.5</version>
+    <time>1236799710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a95437b7676583505010126d5b1ec130</srcmd5>
+    <version>0.0.6</version>
+    <time>1240530292</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55a837723886a4f9f8f71061d2dd3885</srcmd5>
+    <version>0.0.7</version>
+    <time>1244823929</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>91bef908ef1ebb89b33df09aeeaadd28</srcmd5>
+    <version>0.0.8</version>
+    <time>1249063507</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2ea3d61a6b0a98543b3c1283b1ed75ce</srcmd5>
+    <version>0.0.9</version>
+    <time>1249655725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>2ea3d61a6b0a98543b3c1283b1ed75ce</srcmd5>
+    <version>0.0.9</version>
+    <time>1249655725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73bf292492b72cb9ccc25eb00ffd7035</srcmd5>
+    <version>0.0.10</version>
+    <time>1260269793</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libnice based on submit request 25874 from user vuntz
+</comment>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>8d02b90e8fb0c25f6f07d1426098c350</srcmd5>
+    <version>0.0.10</version>
+    <time>1268924647</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6769b8a1f471d5c0223b505699959d97</srcmd5>
+    <version>0.0.11</version>
+    <time>1270085395</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libnice based on submit request 36374 from user vuntz
+</comment>
+    <requestid>36374</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6769b8a1f471d5c0223b505699959d97</srcmd5>
+    <version>0.0.11</version>
+    <time>1278667360</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>6769b8a1f471d5c0223b505699959d97</srcmd5>
+    <version>0.0.11</version>
+    <time>1278678591</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>02f31f0a454f0d64d0b5c4b0dbd2dd91</srcmd5>
+    <version>0.0.13</version>
+    <time>1281387220</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libnice based on submit request 45113 from user vuntz
+</comment>
+    <requestid>45113</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>02f31f0a454f0d64d0b5c4b0dbd2dd91</srcmd5>
+    <version>0.0.13</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a4944928ede6eb4f3cdabf37e910dee0</srcmd5>
+    <version>0.1.0</version>
+    <time>1304407061</time>
+    <user>saschpe</user>
+    <comment>Update to 0.1.0</comment>
+    <requestid>69317</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>de605e94be5a0c169cdff5fa0a9e1ba3</srcmd5>
+    <version>0.1.0</version>
+    <time>1304407073</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69317
+</comment>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>5d0db3d38f2dac986d162a5ea0e7edac</srcmd5>
+    <version>0.1.0</version>
+    <time>1310368023</time>
+    <user>saschpe</user>
+    <comment>Stop using _service</comment>
+    <requestid>75889</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>c6cee51085093b78fc18fa00f67ed25b</srcmd5>
+    <version>0.1.0</version>
+    <time>1310368034</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 75889
+</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8782aa57bb994c6ac016db1b93a21651</srcmd5>
+    <version>0.1.1</version>
+    <time>1315762150</time>
+    <user>saschpe</user>
+    <comment>Update to 0.1.1 (forwarded request 81592 from vuntz)</comment>
+    <requestid>81656</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>8782aa57bb994c6ac016db1b93a21651</srcmd5>
+    <version>0.1.1</version>
+    <time>1319182114</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>447487d67c386c0e4f59369c66b4db88</srcmd5>
+    <version>0.1.1</version>
+    <time>1327583168</time>
+    <user>coolo</user>
+    <comment>- license update: MPL-1.1 or LGPL-2.1
+  is dual license  MPL-1.1 or LGPL-2.1 (forwarded request 101246 from coolo)</comment>
+    <requestid>101249</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19cf9645764bb2232845db44f1b03b94</srcmd5>
+    <version>0.1.2</version>
+    <time>1334216294</time>
+    <user>coolo</user>
+    <comment>Update to 0.1.2 (forwarded request 112435 from dimstar)</comment>
+    <requestid>112826</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>19cf9645764bb2232845db44f1b03b94</srcmd5>
+    <version>0.1.2</version>
+    <time>1340183611</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>7c60484083064e647e1dbb5c55810d25</srcmd5>
+    <version>0.1.2</version>
+    <time>1342625065</time>
+    <user>coolo</user>
+    <comment>qemu is not threadsafe enough atm, please forward to factory. (forwarded request 127558 from Zaitor)</comment>
+    <requestid>128060</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>80fbf919b4704b382598ae2e05219263</srcmd5>
+    <version>0.1.3</version>
+    <time>1349252893</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136747</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>80fbf919b4704b382598ae2e05219263</srcmd5>
+    <version>0.1.3</version>
+    <time>1359109312</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7e3082a7c5058748e602cca2e38b139f</srcmd5>
+    <version>0.1.4</version>
+    <time>1363340447</time>
+    <user>coolo</user>
+    <comment>Fix typo in upstream changelog (forwarded request 158734 from Zaitor)</comment>
+    <requestid>159249</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>7e3082a7c5058748e602cca2e38b139f</srcmd5>
+    <version>0.1.4</version>
+    <time>1379663020</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e209dd17eb867c1eae3758663e51d0d9</srcmd5>
+    <version>0.1.5</version>
+    <time>1396622179</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Next - GNOME 3.12.0 (forwarded request 228680 from RBrownCCB)</comment>
+    <requestid>228946</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>63a93e27009bba52495ad28dc55f57e1</srcmd5>
+    <version>0.1.6</version>
+    <time>1399810583</time>
+    <user>coolo</user>
+    <comment>Update (forwarded request 232767 from Zaitor)</comment>
+    <requestid>233367</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>37afd2a7f9cda2b1ad544fc68b097fc9</srcmd5>
+    <version>0.1.7</version>
+    <time>1404679942</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239027</requestid>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>37afd2a7f9cda2b1ad544fc68b097fc9</srcmd5>
+    <version>0.1.7</version>
+    <time>1409301640</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a8a479636ca948456de354bd49966ec7</srcmd5>
+    <version>0.1.8</version>
+    <time>1414066778</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257292</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9be054c4403a977dc6b4fd63506e5fa0</srcmd5>
+    <version>0.1.10</version>
+    <time>1422790083</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283458</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c2bcb895c3f8f598257e7779f5b41d0f</srcmd5>
+    <version>0.1.11</version>
+    <time>1429768846</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298458</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e832f31e12414937e98b097d0398c2d1</srcmd5>
+    <version>0.1.12</version>
+    <time>1430132289</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>299062</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0cd5d4863e6313878d247ca0733df720</srcmd5>
+    <version>0.1.13</version>
+    <time>1431753222</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307234</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>8ff8acdfd223e2b1b7d553a9ad72bbbb</srcmd5>
+    <version>0.1.13</version>
+    <time>1460358702</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>384021</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>72e36b7d761e83071d5f50196e907545</srcmd5>
+    <version>0.1.13</version>
+    <time>1464964311</time>
+    <user>dimstar_suse</user>
+    <comment>Sync package with SLE12SP2 - just for easier tracking (forwarded request 399221 from dimstar)</comment>
+    <requestid>399427</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9b5d9a0cb79ae95837dbb1f19df461e5</srcmd5>
+    <version>0.1.14</version>
+    <time>1495132613</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.14 (forwarded request 490977 from dimstar)</comment>
+    <requestid>494081</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>eb710a7e3de037612fd55b9a061cda7d</srcmd5>
+    <version>0.1.14</version>
+    <time>1520502499</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581260 from dimstar)</comment>
+    <requestid>582834</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09437b0f0414ad388adc6d190435369a</srcmd5>
+    <version>1.9.2</version>
+    <time>1518281617</time>
+    <user>dimstar_suse</user>
+    <comment>Add go1.9 and go will be a metapackage</comment>
+    <requestid>573749</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>954fc2bfbb464788aa9557d10ed49b25</srcmd5>
+    <version>1.9.4</version>
+    <time>1519902155</time>
+    <user>dimstar_suse</user>
+    <comment>fix changelog (forwarded request 580994 from jordimassaguerpla)</comment>
+    <requestid>580995</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>000d0ac5062a856fefaef891ef03e4e1</srcmd5>
+    <version>1.9.4</version>
+    <time>1520415108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582601</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7ffa6662e5c6555d1a5a44e45931c27f</srcmd5>
+    <version>1.9.4</version>
+    <time>1521499145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588469</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>23b3b407d594cc845ff6e61f4ecb43ab</srcmd5>
+    <version>1.9.7</version>
+    <time>1529665990</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.9.7:
+  * go1.9.7 (released 2018/06/05) includes fixes to the go command, 
+    and the crypto/x509, and strings packages. In particular, it adds 
+    minimal support to the go command for the vgo transition. See the 
+    Go 1.9.7 milestone on our issue tracker for details.
+- Changes in version 1.9.6:
+  * go1.9.6 (released 2018/05/01) includes fixes to the compiler and 
+    go command. See the Go 1.9.6 milestone on our issue tracker for details.
+- Changes in version 1.9.5:
+  * go1.9.5 (released 2018/03/28) includes fixes to the compiler, go 
+    command, and net/http/pprof package. See the Go 1.9.5 milestone 
+    on our issue tracker for details.
+    
+    Includes fix for bsc#1081495 (CVE-2018-7187)</comment>
+    <requestid>617839</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>82184c08eb22064edc35d0bb2ab7c04f</srcmd5>
+    <version>1.9.7</version>
+    <time>1545376702</time>
+    <user>dimstar_suse</user>
+    <comment>- Make our profile.d/go.sh no longer set GOROOT=, in order to make switching
+  between versions no longer break. This ends up removing the need for go.sh
+  entirely (because GOPATH is also set automatically). boo#1119634</comment>
+    <requestid>658806</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>7138042b3e9c4586507f319d36c68dc4</srcmd5>
+    <version>1.9.7</version>
+    <time>1558782906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703506</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b5af6e13f4746aefd694d7c24d347495</srcmd5>
+    <version>1.9.7</version>
+    <time>1561641788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>711930</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>23f774d5a08453ddc0bec7b0f106bd1a</srcmd5>
+    <version>1.9.7</version>
+    <time>1572021486</time>
+    <user>dimstar_suse</user>
+    <comment>- Let RPM evaluate the go_api version compare, drop no longer required bc.
+- Own the gdbinit.d directory, avoid the build dependency on gdb. (forwarded request 741606 from StefanBruens)</comment>
+    <requestid>741611</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>af489f3520c92c239dfc414a7f06bebd</srcmd5>
+    <version>1.9.7</version>
+    <time>1572180021</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded systemd BuildRequires.
+- Remove specific support for Leap 42.x (EOL), treat it like SLE12
+- Add some missing dir-only markers in files section. (forwarded request 742222 from StefanBruens)</comment>
+    <requestid>743079</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>004010810362e5e72e898406454fd115</srcmd5>
+    <version>1.9.7</version>
+    <time>1580990741</time>
+    <user>dimstar_suse</user>
+    <comment>Drop armv6l.patch to fix build on armv6 (forwarded request 769212 from Guillaume_G)</comment>
+    <requestid>769284</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>2f0870be58e727d86dc74fb5f46816e4</srcmd5>
+    <version>1.9.7</version>
+    <time>1591879567</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure ARM arch is set properly - boo#1169832 (forwarded request 812467 from Guillaume_G)</comment>
+    <requestid>812948</requestid>
+  </revision>
+</revisionlist>

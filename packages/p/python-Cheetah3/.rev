@@ -1,0 +1,117 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>30bc2fab2c9af95966a312c56d2c6fb7</srcmd5>
+    <version>3.0.0</version>
+    <time>1515623639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561083</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>553de049d20b74c17c42ac0d0dd106cf</srcmd5>
+    <version>3.1.0</version>
+    <time>1524144507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.0:
+  * Fix Cheetah to work with PyPy.
+  * Code cleanup: fix code style to satisfy flake8 linter.
+  * Rename www directory to docs.</comment>
+    <requestid>593918</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>64f81c2a54a7c40b584582d6a5691907</srcmd5>
+    <version>3.1.0</version>
+    <time>1546535183</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>656827</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a0f56c8e3a79e2d516b2735d3a3880e8</srcmd5>
+    <version>3.2.1</version>
+    <time>1553263833</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable py2 as it supports python2
+- Update to 3.2.1:
+  * Changed LoadTemplate.loadTemplate{Module,Class}: the loaded module’s __name__ set to just the file name.
+  * Use imp for Python 2, importlib for Python 3.
+  * Fix a bug in LoadTemplate.loadTemplate{Module,Class}: raise ImportError if the template was not found.
+
+- Update to 3.2.0:
+  * Dropped support for Python 3.3.
+  * Implement LoadTemplate.loadTemplate{Module,Class} to load templates from .py[co], .py or .tmpl.
+  * CheetahDirOwner caches compiled template in the template directory.
+  * CheetahDirOwner now silently ignores errors on compiled templates writing. To get tracebacks set CheetahDirOwner.debuglevel = 1.
+  * CheetahDirOwner and DirOwner byte-compile compiled templates to .pyc/.pyo. Errors on writing are silently ignored.
+  * Implement Compiler.__unicode__ under Python 2 and Compiler.__bytes__ under Python 3.
+  * Fix a bug in Compiler.__str__: under Python 2 the method now always returns str; it encodes unicode to str using encoding from the compiled source. Under Python 3 the method decodes bytes to str.
+- Execute tests</comment>
+    <requestid>687395</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ff7eb931858132377ede69d0de97e80</srcmd5>
+    <version>3.2.2</version>
+    <time>1556916468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2:
+  * Replaced outdated and insecure mktemp with mkstemp.
+  * Fixed bugs in TemplateCmdLineIface.py: read binary pickles from
+    stdin and files.
+  * Use cgi.escape() for Python 2, html.escape() for Python 3.
+  * Created tests for TemplateCmdLineIface.
+- Update test dependencies</comment>
+    <requestid>700373</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>03c8ffe6f1073411152d6f62d2deb63f</srcmd5>
+    <version>3.2.2</version>
+    <time>1558516567</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not provide Cheetah3 namespace on python2, if someone wants
+  Cheetah3 binary they need the python3 variant anyway</comment>
+    <requestid>704396</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0016749ede6c13c3acaa33f949792118</srcmd5>
+    <version>3.2.3</version>
+    <time>1558690322</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704958</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eea2e0822191561deb6a6d9822e32254</srcmd5>
+    <version>3.2.4</version>
+    <time>1570557485</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.4:
+  * Import from collections for Python 2, from collections.abc for Python 3.
+  * Fixed infinite recursion in ImportManager on importing module _bootlocale inside open().</comment>
+    <requestid>735857</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b179fd1ead8ebdaaff2675c311225be6</srcmd5>
+    <version>3.2.4</version>
+    <time>1582112520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>776239</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>be55e8e4ef900baae2f348842b9eba7f</srcmd5>
+    <version>3.2.4</version>
+    <time>1587581713</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup of the SPEC file, remove warnings.</comment>
+    <requestid>796109</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8481ff10a9f116c4189fdb0b5a653cfa</srcmd5>
+    <version>3.2.5</version>
+    <time>1594228808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.5
+ * build fixes</comment>
+    <requestid>819499</requestid>
+  </revision>
+</revisionlist>

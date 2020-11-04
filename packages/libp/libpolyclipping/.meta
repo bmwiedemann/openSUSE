@@ -1,0 +1,5 @@
+<package name="libpolyclipping" project="openSUSE:Factory">
+  <title>libpolyclipping</title>
+  <description></description>
+  <devel project="graphics" package="libpolyclipping"/>
+</package>

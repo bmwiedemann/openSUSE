@@ -1,0 +1,12 @@
+<package name="keybinder" project="openSUSE:Factory">
+  <title>A Library for Registering Global Keyboard Shortcuts</title>
+  <description>Library for registering global keyboard shortcuts. Keybinder
+  works with GTK-based applications using the X Window System.
+
+  The library contains:
+  - A C library, libkeybinder
+  - Lua bindings, lua-keybinder
+  - Python bindings, python-keybinder
+  - An examples directory with programs in C, Lua, Python and Vala.</description>
+  <devel project="X11:lxde" package="keybinder"/>
+</package>

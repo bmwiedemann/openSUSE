@@ -1,0 +1,5 @@
+<package name="terraform-provider-null" project="openSUSE:Factory">
+  <title>terraform-provider-null</title>
+  <description></description>
+  <devel project="systemsmanagement:terraform" package="terraform-provider-null"/>
+</package>

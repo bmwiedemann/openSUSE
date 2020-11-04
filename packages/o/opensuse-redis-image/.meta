@@ -1,0 +1,5 @@
+<package name="opensuse-redis-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="opensuse-redis-image"/>
+</package>

@@ -1,0 +1,38 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>593c0c6c312575b8abe978770d772902</srcmd5>
+    <version>2.0.9+git20200906</version>
+    <time>1601044345</time>
+    <user>dimstar_suse</user>
+    <comment>One of the best program to protect your eyes from eye strain using periodic breaks.</comment>
+    <requestid>835684</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>60ca70a982a6264c56577c50e4bc11bb</srcmd5>
+    <version>2.0.9+git20200906</version>
+    <time>1601296131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838108</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bce1253731b36307258d5565e837555f</srcmd5>
+    <version>2.0.9+git20201003</version>
+    <time>1602596810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20201003.448e11f:
+  * Fix UnboundLocalError in smartpause plugin (#378)
+  * Add installation instruction for openSUSE Tumbleweed, resolve #376 (#377)
+  * Translated using Weblate (Swedish)
+</comment>
+    <requestid>841514</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cc7f9839904e4f4959933844ad2438dc</srcmd5>
+    <version>2.0.9+git20201003</version>
+    <time>1603448525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843508</requestid>
+  </revision>
+</revisionlist>

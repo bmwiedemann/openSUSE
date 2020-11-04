@@ -1,0 +1,8 @@
+<package name="innotop" project="openSUSE:Factory">
+  <title>A MySQL and InnoDB monitor program</title>
+  <description>innotop connects to a MySQL database server and retrieves information from it,
+then displays it in a manner similar to the UNIX top program.  innotop uses
+the data from SHOW VARIABLES, SHOW GLOBAL STATUS, SHOW FULL PROCESSLIST, and
+SHOW ENGINE INNODB STATUS, among other things.</description>
+  <devel project="server:database" package="innotop"/>
+</package>

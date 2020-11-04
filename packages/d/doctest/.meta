@@ -1,0 +1,6 @@
+<package name="doctest" project="openSUSE:Factory">
+  <title>doctest</title>
+  <description>C++98/C++11 single-header testing framework for unit tests and TDD.
+</description>
+  <devel project="devel:tools" package="doctest"/>
+</package>

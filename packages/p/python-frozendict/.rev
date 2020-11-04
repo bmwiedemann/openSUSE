@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3d2c349fa0a8332fdb2433f997f2a35</srcmd5>
+    <version>1.2</version>
+    <time>1496225796</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for ycmd code completion tool</comment>
+    <requestid>494783</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>886f3383a36fb4831663b5df7443e3ac</srcmd5>
+    <version>1.2</version>
+    <time>1544539708</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call
+
+- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>656858</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5738aaae9f6e1fe624102a05aa7b17af</srcmd5>
+    <version>1.2</version>
+    <time>1559837841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707818</requestid>
+  </revision>
+</revisionlist>

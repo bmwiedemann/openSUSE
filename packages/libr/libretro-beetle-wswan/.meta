@@ -1,0 +1,6 @@
+<package name="libretro-beetle-wswan" project="openSUSE:Factory">
+  <title>Mednafen WonderSwan libretro core for WonderSwan emulation</title>
+  <description>Standalone port of Mednafen WonderSwan to libretro, itself a fork of Cygne.
+</description>
+  <devel project="Emulators" package="libretro-beetle-wswan"/>
+</package>

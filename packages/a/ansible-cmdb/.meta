@@ -1,0 +1,5 @@
+<package name="ansible-cmdb" project="openSUSE:Factory">
+  <title>ansible-cmdb</title>
+  <description></description>
+  <devel project="systemsmanagement" package="ansible-cmdb"/>
+</package>

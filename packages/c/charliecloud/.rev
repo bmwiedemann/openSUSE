@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bfa30e18731fc3a9843a7684b6a379ff</srcmd5>
+    <version>0.9.8</version>
+    <time>1554380017</time>
+    <user>dimstar_suse</user>
+    <comment>Add charliecloud to Factory.
+</comment>
+    <requestid>689058</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c8a04a1a33b30b4b19f622ca00d943b</srcmd5>
+    <version>0.9.8</version>
+    <time>1554833939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692547</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c6f9438bc3fd0c8544a8343f1d20a2a1</srcmd5>
+    <version>0.9.8</version>
+    <time>1554978001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693115</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0fcd6ef0e9034e1fafe358d9b1b5bd1</srcmd5>
+    <version>0.9.9</version>
+    <time>1557834173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702634</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8af56cd7dafbd54b302f9220e1f6dfe</srcmd5>
+    <version>0.9.10</version>
+    <time>1560970712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Source0 to use the tarball created by upstream and not the
+  automatic one created by GitHub.
+- Update to version 0.9.10:
+  - Documentation and examples: misc improvements.
+  - Full changelog at https://groups.io/g/charliecloud/message/88
+- Update Source0 to allow source verification
+- Install prebuilt manpages in Backports:SLE-12. We don't build the
+  documentation in this release because the build requirements don't
+  exist.
+</comment>
+    <requestid>705021</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5cd35dd601bcbbcfd5c090a2c8d551bb</srcmd5>
+    <version>0.10</version>
+    <time>1565695006</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>722038</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>81c3eb7af788d569cd7b254d6eac7c9f</srcmd5>
+    <version>0.11</version>
+    <time>1569392403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732739</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>310f6cd23eb97b3ace71da227ed528a0</srcmd5>
+    <version>0.12</version>
+    <time>1573339397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746683</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b5edb7a4bfded84719ff227775f6e71c</srcmd5>
+    <version>0.12</version>
+    <time>1579729586</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to  python3-Sphinx for building the documentation
+</comment>
+    <requestid>766330</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01430a5509393727331589d91deee192</srcmd5>
+    <version>0.14</version>
+    <time>1583447093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781879</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a89ed6aa498c3d485679e23f45c2adbb</srcmd5>
+    <version>0.15</version>
+    <time>1586973397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794149</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0e1fd13579ce4c5a0edd47ce4f3e2a02</srcmd5>
+    <version>0.16</version>
+    <time>1593201014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817257</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e61eaaa44eb16cc2f7de868b2bbd0f81</srcmd5>
+    <version>0.18</version>
+    <time>1598274622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828564</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cec38b908ed0989b05130c0ecb1b190e</srcmd5>
+    <version>0.19</version>
+    <time>1600802085</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836019</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>82ae1138961bc9ae645d528f4da22b46</srcmd5>
+    <version>0.20</version>
+    <time>1603284003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843193</requestid>
+  </revision>
+</revisionlist>

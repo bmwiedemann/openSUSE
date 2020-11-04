@@ -1,0 +1,5 @@
+<package name="eclipse-egit" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="eclipse-egit"/>
+</package>

@@ -1,0 +1,10 @@
+<package name="python-grpcio" project="openSUSE:Factory">
+  <title>HTTP/2-based RPC framework</title>
+  <description>gRPC is a modern, open source, high-performance remote procedure call (RPC)
+framework that can run anywhere. gRPC enables client and server applications to
+communicate transparently, and simplifies the building of connected systems.
+
+</description>
+  <devel project="network" package="python-grpcio"/>
+  <url>https://grpc.io</url>
+</package>

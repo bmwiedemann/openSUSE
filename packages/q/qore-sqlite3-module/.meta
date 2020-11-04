@@ -1,0 +1,5 @@
+<package name="qore-sqlite3-module" project="openSUSE:Factory">
+  <title>SQLite3 module for the Qore Programming Language</title>
+  <description>Provides a DBI driver for SQLite3 database files so that Qore programs can manipulate data in SQLite3 databases.</description>
+  <devel project="devel:languages:misc" package="qore-sqlite3-module"/>
+</package>

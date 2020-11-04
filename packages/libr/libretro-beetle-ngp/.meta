@@ -1,0 +1,6 @@
+<package name="libretro-beetle-ngp" project="openSUSE:Factory">
+  <title>Mednafen NGP libretro core for NeoGeo Pocket emulation</title>
+  <description>Standalone port of Mednafen NGP to the libretro API, itself a fork of Neopop.
+</description>
+  <devel project="Emulators" package="libretro-beetle-ngp"/>
+</package>

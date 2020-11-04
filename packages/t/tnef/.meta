@@ -1,0 +1,5 @@
+<package name="tnef" project="openSUSE:Factory">
+  <title>Uncompress MS-TNEF Archives</title>
+  <description>This tool uncompresses MS-TNEF archives as used by some mailers.</description>
+  <devel project="server:mail" package="tnef"/>
+</package>

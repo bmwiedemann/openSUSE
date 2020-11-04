@@ -1,0 +1,15 @@
+<package name="perl-Pod-Parser" project="openSUSE:Factory">
+  <title>Base class for creating POD filters and translators</title>
+  <description>*Pod::Parser* is a base class for creating POD filters and translators. It
+handles most of the effort involved with parsing the POD sections from an
+input stream, leaving subclasses free to be concerned only with performing
+the actual translation of text.
+
+*Pod::Parser* parses PODs, and makes method calls to handle the various
+components of the POD. Subclasses of *Pod::Parser* override these methods
+to translate the POD into whatever output format they desire.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Pod-Parser"/>
+  <url>http://search.cpan.org/dist/Pod-Parser/</url>
+</package>

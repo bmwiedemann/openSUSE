@@ -1,0 +1,5 @@
+<package name="sd-mux-ctrl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="sd-mux-ctrl"/>
+</package>

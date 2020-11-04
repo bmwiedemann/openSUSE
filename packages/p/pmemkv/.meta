@@ -1,0 +1,5 @@
+<package name="pmemkv" project="openSUSE:Factory">
+  <title>pmemkv</title>
+  <description>Key/Value Datastore for Persistent Memory</description>
+  <devel project="hardware:nvdimm" package="pmemkv"/>
+</package>

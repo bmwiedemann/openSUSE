@@ -1,0 +1,5 @@
+<package name="libxcam" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="multimedia:libs" package="libxcam"/>
+</package>

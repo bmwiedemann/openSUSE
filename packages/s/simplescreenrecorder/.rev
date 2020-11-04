@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc783bcee01bbab3bb43ee359ba94013</srcmd5>
+    <version>0.3.3</version>
+    <time>1431668568</time>
+    <user>coolo</user>
+    <comment>A feature-rich screen recorder that supports X11 and OpenGL.</comment>
+    <requestid>304975</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>904dbcb80cbfeecac991a07c6948e0df</srcmd5>
+    <version>0.3.6</version>
+    <time>1446647649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.6 (since 0.3.3):
+  * Fix bug in YUV420 fallback converter introduced by refactoring.
+  * Allow user to start recording with hotkey or systray even when
+    not on the recording page.
+  * Fixed JACK input bug that could cause deadlocks in rare cases.
+  * Added full support for NV12. If FFmpeg is compiled with NVENC
+    support, this will allow you to use it.
+  * Removed ssr-0.3.3-fix-disable-x86-asm.diff as merged.
+  * Removed ssr-0.3.3-ffmpeg-pkgconfig.diff as merged by upstream.
+- Qt4 → Qt5.</comment>
+    <requestid>342355</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>455f30754d04389ee6a038a98ad8021f</srcmd5>
+    <version>0.3.6</version>
+    <time>1466326237</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>403114</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>14f3288cfc71e9aea0557937f6bb5ebf</srcmd5>
+    <version>0.3.7</version>
+    <time>1476997740</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435591</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f2dfc4b2f0bc25fde4bc31815072d48</srcmd5>
+    <version>0.3.8</version>
+    <time>1479299578</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440420</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d53a8e4c91b3600df2e12624a689d72e</srcmd5>
+    <version>0.3.11</version>
+    <time>1530303973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616651</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f3929589fbb2afb3e04a228d334e75c</srcmd5>
+    <version>0.4.0</version>
+    <time>1586555627</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792928</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>245fe4ad419f0fc86fb9d6eef422539e</srcmd5>
+    <version>0.4.1</version>
+    <time>1588450694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799601</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e9f84e2c860d134860861b5b27b044a1</srcmd5>
+    <version>0.4.2</version>
+    <time>1590506382</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808011</requestid>
+  </revision>
+</revisionlist>

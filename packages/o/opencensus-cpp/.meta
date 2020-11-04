@@ -1,0 +1,6 @@
+<package name="opencensus-cpp" project="openSUSE:Factory">
+  <title>opencensus-cpp</title>
+  <description>A stats collection and distributed tracing framework</description>
+  <devel project="devel:kubic" package="opencensus-cpp"/>
+  <url>https://github.com/census-instrumentation/opencensus-cpp</url>
+</package>

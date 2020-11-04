@@ -1,0 +1,5 @@
+<package name="vkbasalt" project="openSUSE:Factory">
+  <title>vkbasalt</title>
+  <description></description>
+  <devel project="graphics" package="vkbasalt"/>
+</package>

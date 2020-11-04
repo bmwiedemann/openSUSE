@@ -1,0 +1,11 @@
+<package name="python-tableprint" project="openSUSE:Factory">
+  <title>Pretty console printing of tabular data</title>
+  <description>Formatted console printing of tabular data.
+tableprint lets you easily print formatted tables of data.
+Unlike other modules, you can print single rows of data at a time
+(useful for printing ongoing computation results).
+
+</description>
+  <devel project="devel:languages:python" package="python-tableprint"/>
+  <url>https://github.com/nirum/tableprint</url>
+</package>

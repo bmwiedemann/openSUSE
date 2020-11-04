@@ -1,0 +1,5 @@
+<package name="triggerhappy" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="triggerhappy"/>
+</package>

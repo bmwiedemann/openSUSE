@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df3ca5afc11ace458f5c4c466d4f896d</srcmd5>
+    <version>0.4.3</version>
+    <time>1502892697</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for calibre</comment>
+    <requestid>513750</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d8487f7eda819caac77a6103415915c</srcmd5>
+    <version>0.4.4</version>
+    <time>1503593769</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518433</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c577a1c831c235508bc7c7fe5787c9fb</srcmd5>
+    <version>0.4.4</version>
+    <time>1506956053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530137</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c4af2ce93f94e1784f86453075292828</srcmd5>
+    <version>0.4.5</version>
+    <time>1530191664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619429</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1f543c3b6f353b8764fb781ece3db04a</srcmd5>
+    <version>0.4.5</version>
+    <time>1549458468</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671944</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71a23c8283681a5b28bde50d0f952339</srcmd5>
+    <version>0.4.6</version>
+    <time>1559375721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706354</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a86d18e8454e2ecae6c5582f43f5e0ed</srcmd5>
+    <version>0.4.7</version>
+    <time>1561970681</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712728</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e1e6175e9f2a1d3d55bf4cab421d722f</srcmd5>
+    <version>0.4.8</version>
+    <time>1569588352</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.8</comment>
+    <requestid>730335</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d5465978a7feb23b463402d1d545a8a5</srcmd5>
+    <version>0.4.9</version>
+    <time>1586467063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792714</requestid>
+  </revision>
+</revisionlist>

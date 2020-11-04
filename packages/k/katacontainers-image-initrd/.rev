@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>53b7ca53c41d5693b49269e0ba01986c</srcmd5>
+    <version>1.9.0~alpha0</version>
+    <time>1564994442</time>
+    <user>dimstar_suse</user>
+    <comment>Adding katacontainers to Tumbleweed/Kubic</comment>
+    <requestid>720645</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>39a6eac8f11ab934fc1b9ca38b446fc5</srcmd5>
+    <version>1.9.0~alpha0</version>
+    <time>1565362350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721682</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0c1b073468007c69c77e953b6836fb7a</srcmd5>
+    <version>1.9.0~alpha0</version>
+    <time>1566463958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724844</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6ee067cd77fc0b481a290202b40666b0</srcmd5>
+    <version>1.9.0~alpha0</version>
+    <time>1567423515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727214</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0a1e827cec502731e7aa07ec82dd4a98</srcmd5>
+    <version>1.9.0~alpha0</version>
+    <time>1567680230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728257</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3d762bfeb8f9d88d94c206b87913c047</srcmd5>
+    <version>1.9.0~alpha2</version>
+    <time>1569523367</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733373</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74cdad2641541bfa0cb01428f8e1f394</srcmd5>
+    <version>1.9.0~rc0</version>
+    <time>1571751991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741704</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1a3eb4edf307f4aafaa02630acdab5a3</srcmd5>
+    <version>1.9.0</version>
+    <time>1571951477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742638</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>af2f81e764e20aa0219e8b15c2ae08aa</srcmd5>
+    <version>1.9.0</version>
+    <time>1573571528</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>747691</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1359ccfa331a9d4a8bf6361a5c0328b7</srcmd5>
+    <version>1.9.1</version>
+    <time>1573774502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.1 tarballs, this is just a version bump without
+  any code changes.</comment>
+    <requestid>748725</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ee0279509c9dc745ee64d937263027a</srcmd5>
+    <version>1.9.2</version>
+    <time>1575727666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2 tarballs, this is just a version bump without
+  any code changes.
+- Add more missing virtio kernel modules to initrd to fix
+  issues with SLE15-SP1</comment>
+    <requestid>754683</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81d8588bfa0b3d54684232a4f8af4b62</srcmd5>
+    <version>1.9.3</version>
+    <time>1576928038</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>758537</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>014460d7538a5a0bd6acd2566d5264d0</srcmd5>
+    <version>1.10.0</version>
+    <time>1579636887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765982</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b4d944bbd2b8771de2802cdd2d18dec3</srcmd5>
+    <version>1.10.0</version>
+    <time>1580205452</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767918</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fd65cf7aa818e42ce531a3a5e58e7d70</srcmd5>
+    <version>1.11.0</version>
+    <time>1591101382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810260</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6e60373b64541905761756cdf6a38e62</srcmd5>
+    <version>1.11.1</version>
+    <time>1592840790</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816317</requestid>
+  </revision>
+</revisionlist>

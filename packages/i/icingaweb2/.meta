@@ -1,0 +1,9 @@
+<package name="icingaweb2" project="openSUSE:Factory">
+  <title>Icinga Web 2</title>
+  <description>Icinga Web 2 - the new web interface comes with a completely new design and
+many user-friendly enhancements to find the relevant information even faster.
+
+</description>
+  <devel project="server:monitoring" package="icingaweb2"/>
+  <url>https://icinga.org</url>
+</package>

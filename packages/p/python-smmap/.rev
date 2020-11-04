@@ -1,0 +1,112 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a48c26d31064fe21c591001f01b0121</srcmd5>
+    <version>0.8.2</version>
+    <time>1332239647</time>
+    <user>coolo</user>
+    <comment>Please add</comment>
+    <requestid>109285</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1a48c26d31064fe21c591001f01b0121</srcmd5>
+    <version>0.8.2</version>
+    <time>1340184093</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>1a48c26d31064fe21c591001f01b0121</srcmd5>
+    <version>0.8.2</version>
+    <time>1359110125</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>1a48c26d31064fe21c591001f01b0121</srcmd5>
+    <version>0.8.2</version>
+    <time>1379664286</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>ff0704130e4c691e920c1b55392cf7fd</srcmd5>
+    <version>0.8.2</version>
+    <time>1382693560</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204655</requestid>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>ff0704130e4c691e920c1b55392cf7fd</srcmd5>
+    <version>0.8.2</version>
+    <time>1409302995</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>04bf2a612186f278027a947c1a663ee5</srcmd5>
+    <version>0.9.0</version>
+    <time>1431247581</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305741</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d08df7d9cb81f3b23cda22838fa9daae</srcmd5>
+    <version>0.9.0</version>
+    <time>1503482055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517926</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>7d40c44c02cf928bcda93967ffc0f10d</srcmd5>
+    <version>0.9.0</version>
+    <time>1545648240</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659676</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b679124d0f88a8717530507b1b93b60</srcmd5>
+    <version>3.0.1</version>
+    <time>1585085624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>787441</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bce3ad7a7f67be84e2ca7f83333f4249</srcmd5>
+    <version>3.0.1</version>
+    <time>1585602296</time>
+    <user>dimstar_suse</user>
+    <comment>- Install doc/license
+- Sync the package with smmap2 to have the same fixes in</comment>
+    <requestid>789719</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b9230dffdabb6ba5c6083686a6b7455</srcmd5>
+    <version>3.0.2</version>
+    <time>1587070923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794253</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7eff5cc3360281c1a5fa809575c7d2ba</srcmd5>
+    <version>3.0.4</version>
+    <time>1592245743</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.4
+  * minor changes</comment>
+    <requestid>814554</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>74fa9fddab407da21bf571e6401632c9</srcmd5>
+    <version>3.0.4</version>
+    <time>1598351855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827213</requestid>
+  </revision>
+</revisionlist>

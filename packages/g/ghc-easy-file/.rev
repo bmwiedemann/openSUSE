@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec6c62ef3434af15404f9e8ad475c87b</srcmd5>
+    <version>0.2.1</version>
+    <time>1432190087</time>
+    <user>coolo</user>
+    <comment>Cross-platform File handling for Unix/Mac/Windows in haskell</comment>
+    <requestid>307615</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>acda1aff22b1f42757f071b9c1856e90</srcmd5>
+    <version>0.2.1</version>
+    <time>1469081579</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411602</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>82e1610a242057a724f30174131e1384</srcmd5>
+    <version>0.2.1</version>
+    <time>1505504214</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524448</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f2b08c01e9d1eca6dad4fa7f1663e21d</srcmd5>
+    <version>0.2.1</version>
+    <time>1527675513</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609779</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84f7f69f4efc7d616c4ba8a4e396eac4</srcmd5>
+    <version>0.2.2</version>
+    <time>1532445489</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+- Update easy-file to version 0.2.2.
+  Upstream does not provide a change log file.</comment>
+    <requestid>623762</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>849dfa44b29dfc4a0b45b883ed31d63f</srcmd5>
+    <version>0.2.2</version>
+    <time>1540448692</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643386</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>871c319c62523cb0abacd14d7a32659d</srcmd5>
+    <version>0.2.2</version>
+    <time>1577451187</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759386</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0f0d4c31b654d9955235900c659b3e4f</srcmd5>
+    <version>0.2.2</version>
+    <time>1592579531</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815080</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>270cd3dd55e69fc1567b2bb876586935</srcmd5>
+    <version>0.2.2</version>
+    <time>1598642984</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829259</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6486613816be52a7624c3ec3a70ba03</srcmd5>
+    <version>0.5</version>
+    <time>1396451926</time>
+    <user>coolo</user>
+    <comment>New package for pandoc.
+See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</comment>
+    <requestid>227580</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>f6486613816be52a7624c3ec3a70ba03</srcmd5>
+    <version>0.5</version>
+    <time>1409300961</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2da5a47159e5c8cd271d2f0618eeaea4</srcmd5>
+    <version>0.7.1.1</version>
+    <time>1431493968</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306426</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8d1d7b3af254e91b1cb1a5068516818</srcmd5>
+    <version>0.7.1.2</version>
+    <time>1440658603</time>
+    <user>coolo</user>
+    <comment>- update to 0.7.1.2
+* Fix GHC 7.10 warnings due to imports</comment>
+    <requestid>325728</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e9a8c07b94f32f1378a7818ec9515076</srcmd5>
+    <version>0.7.1.2</version>
+    <time>1469081333</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411526</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad5c03c55ddd62beac79f7db6b04e83b</srcmd5>
+    <version>0.8.0.2</version>
+    <time>1476875041</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433387</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f9d2db914702ee4f4c1d724d87f90c96</srcmd5>
+    <version>0.8.0.3</version>
+    <time>1504205435</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>513233</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1efec9fc0986f7130271187366669a87</srcmd5>
+    <version>0.8.0.3</version>
+    <time>1505504173</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524430</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1ae3d2eb1d00e03982332bf96091bb42</srcmd5>
+    <version>0.8.0.4</version>
+    <time>1527674813</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-dlist to the latest version.</comment>
+    <requestid>607786</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>22d151be4ffef2046d5ed3d4fd7eb35a</srcmd5>
+    <version>0.8.0.4</version>
+    <time>1532445481</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+* macros don't span spec file sections
+- cabal2spec 0.25.5 spec file template</comment>
+    <requestid>623760</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>308655b50dc974efe54474b35d985f3a</srcmd5>
+    <version>0.8.0.5</version>
+    <time>1540448159</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642854</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e0f7fb27d76ec8270c6f842a824796d3</srcmd5>
+    <version>0.8.0.6</version>
+    <time>1554276432</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>690179</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a090e82ba39be3b7485f00a03d5e7c29</srcmd5>
+    <version>0.8.0.6</version>
+    <time>1560971428</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>710623</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8362bf82bef90d24ebf5f596294f45d5</srcmd5>
+    <version>0.8.0.7</version>
+    <time>1565721885</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>723076</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>488f7f0e2e2095840cb987351a2353cd</srcmd5>
+    <version>0.8.0.7</version>
+    <time>1577451182</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759384</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac330d88acaf9ce9c82b2853dff70ea6</srcmd5>
+    <version>0.8.0.8</version>
+    <time>1589196876</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801011</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f3a3162dcf34ffe4e6b4c5bf02ef8009</srcmd5>
+    <version>0.8.0.8</version>
+    <time>1592579524</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815077</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ed2867a44262df49697d1d6d90c6fd18</srcmd5>
+    <version>1.0</version>
+    <time>1598642977</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829255</requestid>
+  </revision>
+</revisionlist>

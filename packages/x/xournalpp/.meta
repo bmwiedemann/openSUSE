@@ -1,0 +1,8 @@
+<package name="xournalpp" project="openSUSE:Factory">
+  <title>Notetaking software designed around a tablet</title>
+  <description>Xournal++ is a hand note taking software with the target of flexibility, functionality and speed. It supports pen input, e.g. Wacom tablets.
+
+</description>
+  <devel project="X11:Utilities" package="xournalpp"/>
+  <url>https://github.com/xournalpp/xournalpp</url>
+</package>

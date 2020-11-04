@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bee675e0cf8ccfe0be09f8a366a78c0e</srcmd5>
+    <version>2.0</version>
+    <time>1498741610</time>
+    <user>dimstar_suse</user>
+    <comment>New package to Factory</comment>
+    <requestid>505062</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcda7d09a55480ab920b709c0bc8fca7</srcmd5>
+    <version>2.1</version>
+    <time>1520164274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581795</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b32a74d904fb975104b76fdedeebc002</srcmd5>
+    <version>2.1</version>
+    <time>1533887422</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner
+- Add patch for django 2.1:
+  * django-21.patch</comment>
+    <requestid>628272</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ebfce037502bf1dca2a7e1d5c43aa6c9</srcmd5>
+    <version>2.1</version>
+    <time>1536833471</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>635001</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>779872bf4ec4f5115e0ab4f304bfe220</srcmd5>
+    <version>2.1</version>
+    <time>1576014178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755462</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>443c8efdd239e95f16e27bb46429c8f5</srcmd5>
+    <version>2.2</version>
+    <time>1578437659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2:
+  * Dropped testing for Django 1.8, 1.9, 1.10.
+  * Dropped support for Python 2.
+  * Added support for Django 2.1, 2.2, 3.0, and Python 3.7.
+  * Updated translations from Transifex.
+- Remove merged patch django-21.patch</comment>
+    <requestid>761486</requestid>
+  </revision>
+</revisionlist>

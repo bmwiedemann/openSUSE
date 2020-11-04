@@ -1,0 +1,6 @@
+<package name="cross-sparc64-gcc7" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="gcc7"/>
+  <bcntsynctag>gcc7</bcntsynctag>
+</package>

@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e9ac850136d1aa94381a4d518a6f536</srcmd5>
+    <version>2.0.2</version>
+    <time>1399390810</time>
+    <user>coolo</user>
+    <comment>Preparing for scilab
+http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
+    <requestid>232429</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8c70a11191b111533d042b71279834d4</srcmd5>
+    <version>2.0.2</version>
+    <time>1403615756</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238084</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>45b5d253ff18aab6e445f290cbc9426f</srcmd5>
+    <version>2.0.2</version>
+    <time>1405522182</time>
+    <user>coolo</user>
+    <comment>javapackages updates submission</comment>
+    <requestid>240339</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>45b5d253ff18aab6e445f290cbc9426f</srcmd5>
+    <version>2.0.2</version>
+    <time>1409301004</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9bd863b518fb38718218aaf3ce76aca</srcmd5>
+    <version>2.3.1</version>
+    <time>1428652392</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the aach64 patch, not sure if still needed and if so we
+  can reintroduce it later:
+  * gluegen2-ppc64-aarch64.patch
+
+- Update to version 2.3.1:
+  + See gluegen changes from
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.1.
+- Add source tarball for jcpp as gluegen now uses jcpp as the
+  default compiler; extract and copy jccp sources into gluegen
+  build tree during %prep.
+- Add BuildRequires: ant-findbugs.
+
+- Update to version 2.3.0:
+  + See gluegen changes from
+    https://jogamp.org/wiki/index.php/SW_Tracking_Report_Objectives_for_the_release_2.3.0.
+- Add gluegen2-disable-tests.patch to disable junit tests as this
+  requires additional dependencies not currently packaged in obs.
+- Rebase existing patches.
+- Disable gluegen2-ppc64-aarch64.patch; needs rebase.</comment>
+    <requestid>294945</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e95052d095d7b647cd12fe5efd31b9c2</srcmd5>
+    <version>2.3.1</version>
+    <time>1441147002</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328263</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>44093f0915eeff76fa34330b273c8b84</srcmd5>
+    <version>2.3.2</version>
+    <time>1445287813</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338009</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0fca7abee1b92c334bec2fb467f5c95d</srcmd5>
+    <version>2.3.2</version>
+    <time>1458120915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>369729</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9a7495c51165e0835a6d2c2f5e71489c</srcmd5>
+    <version>2.3.2</version>
+    <time>1495883746</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ant and junit deps to reduce buildgraph</comment>
+    <requestid>496809</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>9a68adeb2bae37fc9c10838b9dec02cc</srcmd5>
+    <version>2.3.2</version>
+    <time>1505920116</time>
+    <user>dimstar_suse</user>
+    <comment>Force building with jdk &lt; 9</comment>
+    <requestid>526963</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>d07b77548f8c2176b23f67235b21a901</srcmd5>
+    <version>2.3.2</version>
+    <time>1507391470</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>532189</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>947c855208b8d324dc8eaf2422e3d3dc</srcmd5>
+    <version>2.3.2</version>
+    <time>1511817427</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building of dependent packages (e.g. jogl2) on ARMv7/Aarch64
+  * Drop gluegen2-missing-arch-symbol.patch
+  * Add gluegen2-0001-Remove-version-overrides-for-memcpy.patch
+</comment>
+    <requestid>545523</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>d9134ed44c45d3b372a616a4e3f6751c</srcmd5>
+    <version>2.3.2</version>
+    <time>1514028058</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk10</comment>
+    <requestid>559390</requestid>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>b5b5fc4e9ed4be841c82a9784a6b3b81</srcmd5>
+    <version>2.3.2</version>
+    <time>1530993657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620794</requestid>
+  </revision>
+</revisionlist>

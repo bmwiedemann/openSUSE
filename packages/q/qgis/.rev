@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>724959f91acac23b5c7752622bf8faf1</srcmd5>
+    <version>3.8.2</version>
+    <time>1573164936</time>
+    <user>dimstar_suse</user>
+    <comment>Now all issues should be solved I hope.</comment>
+    <requestid>731404</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1671608ab052cab323190fdcb5915035</srcmd5>
+    <version>3.8.3</version>
+    <time>1573223215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746438</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ce724f72eaa10a5f8ebcebc7eecf28b</srcmd5>
+    <version>3.10.0</version>
+    <time>1573773178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748573</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>94045bd7357d6932ba689ce23af91e84</srcmd5>
+    <version>3.10.0</version>
+    <time>1574414872</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>750169</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d775deab60f401ee57cd25a5af444122</srcmd5>
+    <version>3.10.0</version>
+    <time>1574552242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750379</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>88b4fc66d31a0005e942e0fa1e071ccf</srcmd5>
+    <version>3.10.0</version>
+    <time>1575464037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753770</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>ef26ad4f847d5411d6ac7741240da720</srcmd5>
+    <version>3.10.0</version>
+    <time>1578069419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760477</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>271b66dde793ee2ae06da27b8cd95570</srcmd5>
+    <version>3.10.2</version>
+    <time>1581277682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772138</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>622414ec2fa0bb5a2585f76d3d967015</srcmd5>
+    <version>3.10.2</version>
+    <time>1582643086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778800</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>99a3b93dbdc01f101b50f8413cad2a60</srcmd5>
+    <version>3.12.0</version>
+    <time>1584050763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784358</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff654fb9f536e5c75ac08333d620a68b</srcmd5>
+    <version>3.12.1</version>
+    <time>1586973343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794061</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fafdd607476e5867ebf928cd2c8acdc1</srcmd5>
+    <version>3.12.2</version>
+    <time>1588450573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798862</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ea30d71ff47c809823701bcb7ddb1ea3</srcmd5>
+    <version>3.12.3</version>
+    <time>1591742858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812702</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3a03df58ed622e1a011699ffc9b64f87</srcmd5>
+    <version>3.14.0</version>
+    <time>1593606374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816985</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>774f88f3d356e8de8345cd2fc5c82a93</srcmd5>
+    <version>3.14.0</version>
+    <time>1594894441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820780</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dfc636764832abede38d21a1e2f3c825</srcmd5>
+    <version>3.14.16</version>
+    <time>1600346752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834956</requestid>
+  </revision>
+</revisionlist>

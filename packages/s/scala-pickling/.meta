@@ -1,0 +1,5 @@
+<package name="scala-pickling" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="scala-pickling"/>
+</package>

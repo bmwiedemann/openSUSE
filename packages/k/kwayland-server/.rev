@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f57b21936064424101af40342df79474</srcmd5>
+    <version>5.19.0</version>
+    <time>1591653231</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.0</comment>
+    <requestid>812317</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5ddecc569d92133b8e77e5c17d2769c3</srcmd5>
+    <version>5.19.1</version>
+    <time>1592676682</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.1</comment>
+    <requestid>815462</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10e322aa1a58c4135a38a59e435d2353</srcmd5>
+    <version>5.19.2</version>
+    <time>1593090305</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.2</comment>
+    <requestid>816679</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80472f2a6e374d12c9e1e5dc968f43f7</srcmd5>
+    <version>5.19.3</version>
+    <time>1594383101</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.3</comment>
+    <requestid>819413</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4aad347a775b4716af7576f96db33307</srcmd5>
+    <version>5.19.4</version>
+    <time>1596035928</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.4</comment>
+    <requestid>823245</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f18d7ab96e6ffb72c8c07a9d59f5783b</srcmd5>
+    <version>5.19.5</version>
+    <time>1599210428</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.19.5</comment>
+    <requestid>831166</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c62a00e3207a8d42aeccb0499abd66f1</srcmd5>
+    <version>5.20.0</version>
+    <time>1602595740</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.0</comment>
+    <requestid>840991</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5891c3e19de52f72fcad43e5d47b19ab</srcmd5>
+    <version>5.20.1</version>
+    <time>1603369433</time>
+    <user>dimstar_suse</user>
+    <comment>New plasma release</comment>
+    <requestid>843100</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ed3c4b9969abf009bcd19ec3b449a36e</srcmd5>
+    <version>5.20.2</version>
+    <time>1604054815</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.20.2</comment>
+    <requestid>844581</requestid>
+  </revision>
+</revisionlist>

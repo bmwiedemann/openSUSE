@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>839bcf3482d388ac8816fd010079b600</srcmd5>
+    <version>0.2.0</version>
+    <time>1518601781</time>
+    <user>dimstar_suse</user>
+    <comment>New azure sdk component</comment>
+    <requestid>575911</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>058a129ec53a654cdea84c80e5936a8f</srcmd5>
+    <version>1.0.0</version>
+    <time>1524144547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596351</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>64d028c27f0ef772151dd0ce2e3dd01d</srcmd5>
+    <version>2.0.0</version>
+    <time>1537971213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637945</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b32575bf786dae122a12777880b271bd</srcmd5>
+    <version>2.0.0</version>
+    <time>1557833518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694272 from glaubitz)</comment>
+    <requestid>694393</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>4e67eb9612232d3bcee423984bda9983</srcmd5>
+    <version>2.0.0</version>
+    <time>1570710539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735178 from glaubitz)</comment>
+    <requestid>735686</requestid>
+  </revision>
+</revisionlist>

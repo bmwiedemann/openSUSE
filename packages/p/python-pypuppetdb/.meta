@@ -1,0 +1,9 @@
+<package name="python-pypuppetdb" project="openSUSE:Factory">
+  <title>python-pypuppetdb</title>
+  <description>pypuppetdtb is a library to work with PuppetDB's REST API. It is implemented using the requests library.
+
+This library is a thin wrapper around the REST API providing some convinience functions and objects to request and hold data from PuppetDB.
+
+For more information: https://github.com/nedap/pypuppetdb</description>
+  <devel project="devel:languages:python" package="python-pypuppetdb"/>
+</package>

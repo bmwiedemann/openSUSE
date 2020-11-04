@@ -1,0 +1,971 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b58c2e30cae53680f0ad0ca7d4e06b1</srcmd5>
+    <version>unknown</version>
+    <time>1516092126</time>
+    <user>dimstar_suse</user>
+    <comment>- remove addFilter(&quot;permissions-directory-setuid-bit&quot;) and
+  addFilter(&quot;non-standard-gid&quot;)
+- insert missing requires(pre): user(wwwrun) for Tumbleweed
+- fix rpmlint errors, reduce rpmlint warnings
+- Remove redundant %clean section. Fix RPM groups.
+  Update summaries.
+- drop permissions.d and add BuildRequires nagios-rpm-macros &gt;= 14.0
+  to remove setBadness in rpmlintrc
+- removed php5-Zendframework dependency
+- added icingaweb2-vendor-zf1 package
+- update to 2.5.0
+  + Features
+    * You can find issues and features related to this release on our Roadmap
+      (https://github.com/Icinga/icingaweb2/milestone/45?closed=1).
+- update to 2.4.2
+  + Bugfixes
+    * Bug 2965: Transport config: Default port not changing upon auto-submit
+    * Bug 2926: Wrong order when sorting by host_severity
+    * Bug 2923: Number fields should be valid when empty
+    * Bug 2919: Fix cached loading of module config
+    * Bug 2911: Acknowledgements are not working without an expiry time
+    * Bug 2878: process-check-result Button is visible even when user isn't allowed to use it
+    * Bug 2850: Link to acknowledgements is wrong in the timeline
+    * Bug 2841: Wrong menu height when switching back from mobile layout
+    * Bug 2806: Wrong service state count in hostgroup overview
+    * Bug 2805: Response from the Icinga 2 API w/ an empty result set leads to exception
+    * Bug 2801: Wrong help text for the director in the icingacli
+    * Bug 2784: Module and gravatar images are not served with their proper MIME type
+    * Bug 2776: Defaults not respected when acknowledging problems
+    * Bug 2767: Monitoring module: Config field protected vars not updated after zeroing config.ini
+    * Bug 2728: Gracefully handle invalid Icinga 2 API response types
+    * Bug 2718: Hide check attempt for hard states in history views
+    * Bug 2716: Web 2 doesn't detect the browser time zone if the time zone offset is negative
+    * Bug 2714: icingacli module disable fails on consecutive calls
+    * Bug 2695: Macros cannot be used for a navigation item's url-port
+    * Bug 2684: [dev.icinga.com #14027] Translation module should not write absolute path to .po files
+    * Bug 2683: [dev.icinga.com #14025] Translation module should remove temp files
+    * Bug 2661: [dev.icinga.com #13651] Don't offer the Icinga 2 API as transport if PHP cURL is missing
+    * Bug 2660: [dev.icinga.com #13649] Make the Icinga 2 API the default command transport
+    * Bug 2656: [dev.icinga.com #13627] Wrong count of handled critical service in the hover text
+    * Bug 2645: [dev.icinga.com #13539] Improve error handling and validation of multiple LDAP URIs
+    * Bug 2598: [dev.icinga.com #12977] Adding an empty user backend fails
+    * Bug 2545: [dev.icinga.com #12640] MSSQL ressource not working
+    * Bug 2523: [dev.icinga.com #12410] Click on Host in Service Grid can cause &quot;Invalid Filter&quot; error
+    * Bug 2519: [dev.icinga.com #12330] Filter editor may show wrong values after searching
+    * Bug 2509: [dev.icinga.com #12295] group_name_attribute should be &quot;sAMAccountName&quot; by default
+- make package compatible to php7
+- change spec to use php7 also
+- fix build error for Tumbleweed
+- rename package icingacli to icingaweb-icingacli 
+  and make icingacli as Recommends
+- update to 2.4.1
+  + Bugfixes
+    * Bug 2651: [dev.icinga.com #13607] Displayed times messed up in Icinga Web 2.4.0 w/ PostgreSQL
+    * Bug 2654: [dev.icinga.com #13615] Setup wizard: Not possible to setup Icinga Web 2 with an external database
+    * Bug 2663: [dev.icinga.com #13691] Hook::all() is broken on CLI
+    * Bug 2669: [dev.icinga.com #13735] Setup wizard: Progress bar isn't shown correctly, if setup is at finish step
+    * Bug 2681: [dev.icinga.com #13957] Support failover API command transport configuration
+    * Bug 2686: Granular module permissions do not work for hooks
+    * Bug 2687: Update URLs to icinga.com, remove wiki &amp; update to GitHub
+- update to 2.4.0-2
+  + Bugfixes
+    * RPM: Fix specfile
+    * RPM: Update revision
+    * CSS: Reset line-height in the button mixin
+- update to 2.4.0
+  + Feature
+    * Feature 12598 (Authentication &amp; Authorization): Support nested AD groups for Roles and not just login
+    * Feature 11809 (Authentication &amp; Authorization): Test and document multiple LDAP-URIs separated by space in LDAP ressources
+    * Feature 10616 (Authentication &amp; Authorization): Users w/o administrative permissions should be allowed to change their password
+    * Feature 13381 (CLI): Allow to configure the default listen address for the CLI command web serve
+    * Feature 11820 (Configuration): Check whether chosen locale is available
+    * Feature 11214 (Configuration): Logger: Allow to configure the Syslog Facility
+    * Feature 13117 (Framework): Add charset UTF-8 to default content type
+    * Feature 12634 (Framework): Possibitlity to fold and unfold filter by click
+    * Feature 11198 (Framework): Announce banner
+    * Feature 11115 (Framework): Add SSL support to MySQL database resources
+    * Feature 8270 (Installation): Add SELinux policy for Icinga Web 2
+    * Feature 13187 (Monitoring): Command toolbar in the host and service detail views
+    * Feature 12873 (Monitoring): Change default for sticky option of acknowledgements from true to false
+    * Feature 12820 (Monitoring): Export detail views to JSON
+    * Feature 12766 (Monitoring): Show flapping events in the host and service history views
+    * Feature 12764 (Monitoring): Display downtime end even if it hasn't been started yet
+    * Feature 12125 (Monitoring): Allow th in plugin output
+    * Feature 11952 (Monitoring): Allow changing default of 'sticky' in acknowledgement and other command options
+    * Feature 11398 (Monitoring): Send commands over Icinga 2's API
+    * Feature 11835 (UI): Add clear button to search field
+    * Feature 11792 (UI): Show hint if notifications are disabled globally
+    * Feature 11664 (UI): Show git HEAD for modules if available
+    * Feature 13461 (Vendor Libraries): Use Icinga's fork of Zend Framework 1 icingaweb2-vendor-zf1
+  + Bugfixes
+    * Bug 12396 (Authentication &amp; Authorization): Hooks don't respect module permissions
+    * Bug 12164 (Authentication &amp; Authorization): REDIRECT_REMOTE_USER not evaluated during external auth
+    * Bug 12108 (Authentication &amp; Authorization): assertPermission allows everything for unauthenticated requests
+    * Bug 13357 (Configuration): Persistent database resources cannot be made non-persistent
+    * Bug 12848 (Configuration): Empty &quot;Protected Custom Variables&quot; falls back to defaults
+    * Bug 12655 (Configuration): Permission application/log is not configurable
+    * Bug 12170 (Configuration): Adding a DB resource via webinterface requires one to enter a password
+    * Bug 10401 (Configuration): LdapUserGroupBackendForm: user_* settings not purged
+    * Bug 9804 (Configuration): Renaming the resource used for the config backend does not update the global configuration
+    * Bug 11920 (Dashboard): Add to dashboard: wrong url makes whole dashboard unusable
+    * Bug 13387 (Documentation): Can't display documentation of disabled modules
+    * Bug 12923 (Framework): Navigation Item name must be of type string or NavigationItem
+    * Bug 12852 (Framework): Hosts without any services are hidden from roles with monitoring/filter/objects set
+    * Bug 12760 (Framework): Do not log exceptions other than those resulting in a HTTP 500 status-code
+    * Bug 12583 (Framework): Unhandled exceptions while handling REST requests will silently drop the http response code
+    * Bug 12580 (Framework): REST requests cannot be anonymous
+    * Bug 12557 (Framework): Module description cannot be on a single line
+    * Bug 12299 (Framework): FilterExpression renders a&amp;!b as a=1&amp;b!=1
+    * Bug 12161 (Framework): Icinga Web 2 doesn't set Content-Type
+    * Bug 12065 (Framework): IniRepository: update/delete not possible with iterator
+    * Bug 11743 (Framework): INI writer must not persist section keys with a null value
+    * Bug 11185 (Framework): SummaryNavigationItemRenderer should show worst state
+    * Bug 10361 (Framework): Handle E_RECOVERABLE_ERROR
+    * Bug 13459 (Installation): Setup: Can't view monitoring config summary with Icinga 2 API as command transport
+    * Bug 13467 (JavaScript): renderLayout has  side-effects
+    * Bug 13115 (JavaScript): actiontable should not clear active row in case there is no newer one
+    * Bug 12541 (JavaScript): Menu not reloaded in case no search is available
+    * Bug 12328 (JavaScript): Separate vendor JavaScript libraries w/ semicolons and newlines on import
+    * Bug 10704 (JavaScript): JS: Always use the jQuery find method w/ node context when selecting elements
+    * Bug 10703 (JavaScript): JS: Don't use var self = this, but var _this = this
+    * Bug 11431 (Modules): Modules can't require permission on menu items
+    * Bug 10870 (Modules): Refuse erroneous module folder names when enabling the module
+    * Bug 13243 (Monitoring): Inconsistent host and service flags
+    * Bug 12889 (Monitoring): Timeline broken
+    * Bug 12810 (Monitoring): Scheduling a downtime for all services of a host does not work w/ the Icinga 2 API as command transport
+    * Bug 12313 (Monitoring): Multi-line strings within host.notes are being displayed as single line
+    * Bug 12223 (Monitoring): State not highlighted in plugin output if it contains HTML
+    * Bug 12019 (Monitoring): Contact view shows service filters with 'Downtime' even if not set
+    * Bug 11915 (Monitoring): Performance data: negative values not handled
+    * Bug 11859 (Monitoring): Can't separate between SOFT and HARD states in the history views
+    * Bug 11766 (Monitoring): Performance data: Fit label column to show as much text as possible
+    * Bug 11744 (Monitoring): Empty user groups are not displayed
+    * Bug 10774 (Monitoring): Scheduling downtimes for child hosts doesn't work w/ Icinga 2.x (waiting for Icinga 2)
+    * Bug 10537 (Monitoring): Filtering with not-equal on custom variable doesn't show hosts without this cv
+    * Bug 7755 (Monitoring): Remove autosubmit in eventgrid
+    * Bug 12133 (Navigation): Username and password not being passed in navigation item URLs
+    * Bug 12776 (Print &amp; Export): dompdf fails when border-style is set to auto
+    * Bug 12723 (Print &amp; Export): Allowed memory size exhausted when exporting the history view to CSV
+    * Bug 12660 (QA): Choosing the Icinga theme floods the log with error messages
+    * Bug 12774 (UI): Lot's of &lt;span style=&quot;visibility:hidden; display:none;&quot;&gt;&lt;/span&gt; in Output
+    * Bug 12134 (UI): Copy and paste: Plugin output contains unicode zero-width space characters
+    * Bug 10691 (UI): Closing the detail area does not update the rows selected counter
+    * Bug 13095 (Vagrant VM): TicketSalt constant missing
+   * Bug 12717 (Vagrant VM): PluginContribDir constant removed during vagrant provisioning
+- add minimum version 1.12.18 to ZendFramwork, 
+  because of Bug #655: ZF2015-08 breaks binary data
+  https://github.com/zendframework/zf1/issues/655
+- update to 2.3.4
+  + Bugfixes
+    * Bug 11267: Links in plugin output don't behave as expected
+    * Bug 11348: Host aliases are not shown in detail area
+    * Bug 11728: First non whitespace character after comma stripped from plugin output
+    * Bug 11729: Sort by severity depends on state type
+    * Bug 11737: Zero width space characters destroy state highlighting in plugin output
+    * Bug 11796: Zero width space characters may destroy links in plugin output
+    * Bug 11831: module.info parsing fails in case it contains newlines that are not part of the module's description
+    * Bug 11850: &quot;Add to menu&quot; tab unnecessarily appears in command forms
+    * Bug 11871: Colors used in the timeline are not accessible
+    * Bug 11883: Delete action on comments and downtimes in list views not accessible because they lack context
+    * Bug 11885: Database: Asterisk filters ignored when combined w/ other filters
+    * Bug 11910: Web 2 lacks mobile meta tags
+    * Fix remote code execution via remote command transport
+- Changed spec file to work with SLES 11
+- update to 2.3.2
+  + Feature
+    * Feature 11629: Simplified event-history date and time representation
+  + Bugfixes
+    * Fix a privilege escalation issue in the monitoring module for authenticated users
+    * Bug 10486: Menu rendering fails when no monitoring backend was configured
+    * Bug 10847: Warn about illogical dates
+    * Bug 10848: Can't change items per page if filter is in modify state
+    * Bug 11392: Can't configure monitoring backend via the web interface when no monitoring backend was configured
+- update to 2.3.1
+  + Bugfixes
+    * Bug 11598: Invalid SQL queries for PostgreSQL
+- changes from 2.3.0
+  + Features
+    * Feature 10887: lib: Provide User::getRoles()
+    * Feature 10965: Roles: Restrict visibility of custom variables
+    * Feature 11404: Add is_reachable filter column to host and service data views
+    * Feature 11485: lib/LDAP: Support scopes base and one
+    * Feature 11495: Support data URIs in href
+    * Feature 11529: Don't offer command disable notifications /w expire time if backend is Icinga 2
+  + Bugfixes
+    * Bug 9386: Improve order of documentation chapters
+    * Bug 10820: Style problems with long plugin output lines
+    * Bug 11078: Can't remove default dashboards
+    * Bug 11099: Mobile menu icon is mispositioned
+    * Bug 11128: Menu stops refreshing when there is text in the search field
+    * Bug 11145: Pagination compontents should not float around
+    * Bug 11171: Icinga Web 2 tries to load an ifont which results in 404
+    * Bug 11245: icingacli monitoring list --problems throws an exception
+    * Bug 11264: Cannot execute queries while other unbuffered queries are active
+    * Bug 11277: external auth with PHP internal webserver still buggy
+    * Bug 11279: Restrict access to Applicationlog
+    * Bug 11299: Icon images no longer prepend img/icons
+    * Bug 11391: External auth reads REMOTE_USER from process environment instead of request
+    * Bug 11414: Doc module does not render images with relative path
+    * Bug 11465: Stylesheet remains unchanged when module CSS/LESS files have been changed
+    * Bug 11489: lib/LDAP: ordering does explicitly set fields
+    * Bug 11490: lib/LDAP: LdapUtils::explodeDN replace deprecated use of eval in preg_replace
+    * Bug 11516: Accessibility: Focus in Tactical Overview barely visible
+    * Bug 11558: Missing ) in the documentation
+    * Bug 11568: Docs: Global permissions table is broken
+- update to 2.2.0
+  + Features
+    * Feature 8487: Number headings in the documentation module
+    * Feature 8963: Feature commands in the multi select views
+    * Feature 10654: Render links in acknowledgements, comments and downtimes
+    * Feature 11062: Allow style classes in plugin output
+    * Feature 11238: Puppet/Vagrant: Install mod_ssl and forward port 443
+  + Bugfixes
+    * Bug 7350: Tabs are missing if JS is disabled
+    * Bug 9800: Debian packaging: Ship translation module w/ the icingaweb2 package and install its config.ini
+    * Bug 10173: Failed commands give no useful error any more
+    * Bug 10251: Icinga Web 2 fails to run with PHP7
+    * Bug 10277: Special characters are incorrectly escaped for tooltips in the service grid
+    * Bug 10289: Doc module: Headers are cut off when clicking on TOC links
+    * Bug 10309: Move auth backend configuration to app config
+    * Bug 10310: Monitoring details: information/action ordering
+    * Bug 10362: Debian packaging: Separate package for CLI missing
+    * Bug 10366: Text plugin output treated as HTML in too many occasions
+    * Bug 10369: Accessibility: Focus not visible and lost after refresh
+    * Bug 10397: Users with no permissions can check multiple services
+    * Bug 10442: Edit user control should be more prominent
+    * Bug 10469: &quot;Remove Acknowledgement&quot; text missing in multi-select views
+    * Bug 10506: HTTP basic auth request is sent when using Kerberos authentication with Apache2 and mod_php
+    * Bug 10625: Return local date and time when lost connection to the web server
+    * Bug 10640: Respect protected_variables in nested custom variables too
+    * Bug 10778: Filters in the host group and service group overview not applied to state links
+    * Bug 10786: Whitespace characters are ignored in the plugin output in list views
+    * Bug 10805: Setup Wizard: Obsolete PHP sockets requirement
+    * Bug 10856: Benchmark is not rendered on many pages
+    * Bug 10871: Get rid of padding in controls
+    * Bug 10878: Dashboards different depending on username casing
+    * Bug 10881: Move iframe from modules to framework
+    * Bug 10917: Event grid tiles: The filter column &quot;from&quot; is not allowed here
+    * Bug 10918: Error on logout when using external authentication
+    * Bug 10921: icingacli monitoring list --format=csv throws error
+    * Bug 11000: Change license header to only reflect a file's year of creation/initial commit
+    * Bug 11008: Wobbling spinners
+    * Bug 11021: Global default theme is not applied while not authenticated
+    * Bug 11032: Fix icon_image size and provide a CSS class for theming
+    * Bug 11039: Misleading tooltip in Tactical Overview
+    * Bug 11051: Preferences and navigation items stored in INI files rely on case sensitive usernames
+    * Bug 11073: Active row is flickering on refresh
+    * Bug 11091: Custom navigation items: URL is not escaped/encoded
+    * Bug 11100: Comments are always persistent
+    * Bug 11114: Validate that a proper root DN is set for LDAP resources
+    * Bug 11117: Vendor: Update dompdf to version 0.6.2
+    * Bug 11119: icingacli shows ugly exception when unable to access the config directory
+    * Bug 11120: icingacli: command and action shortcuts have been broken
+    * Bug 11126: Invalid cookie value in cookie icingaweb2-tzo
+    * Bug 11142: LDAP User Groups backend group_filter
+    * Bug 11143: Layout: Tabs should be left-aligned
+    * Bug 11151: Having basic authentication on the webserver but not in Icinga Web 2 causes Web 2 to require basic auth
+    * Bug 11168: Debian packaging: Don't patch HTMLPurifier loading and install HTMLPurifier*.php files from the library/vendor root
+    * Bug 11187: Session cookie: Path too broad and unset secure flag on HTTPS
+    * Bug 11197: Menu items without url should ignore the target configuration
+    * Bug 11260: Scheduling downtimes through the API not working
+- changes from 2.1.1
+  + Features
+    * Feature 10488: Use _ENV variables with built-in PHP webserver
+    * Feature 10705: Theming
+    * Feature 10898: Winter theme
+  +  Bugfixes
+    * Bug 9685: Deprecate Module::registerHook() in favor of Hook::provideHook()
+    * Bug 9957: Sort hosts and services by last state change
+    * Bug 10123: CSS loading may fail w/ mkdir(): File exists in FileCache.php
+    * Bug 10126: setup config directory --config should use mkdir -p instead of mkdir()
+    * Bug 10166: library/vendor/HTMLPurifier tree is incorrectly unpacked
+    * Bug 10170: Link to service downtimes from multiple selected services includes host downtimes aswell
+    * Bug 10338: Debian: Failed to open stream HTMLPurifier/HTMLPurifier.php
+    * Bug 10603: Line breaks are not respected in acknowledgements, comments and downtimes
+    * Bug 10658: SUSE packages have the wrong dependencies
+    * Bug 10659: LDAP group members are shown with their DN and membership registration does not work
+    * Bug 10670: State not highlighted in plugin output
+    * Bug 10671: Auto-focus the username field on the login page
+    * Bug 10683: lib/CLI command web serve: rename variable basedir to something meaningful
+    * Bug 10702: Host- and Service-Actions configured in Web 2 do not resolve any macros
+    * Bug 10749: XHR application-state requests pollute the URL if not authenticated
+    * Bug 10771: Login shows &quot;Anmelden........&quot; upon login with the german locale
+    * Bug 10781: LoggingConfigForm.php complains about whitespace but checks with /^[^\W]+$/
+    * Bug 10790: &quot;Problems - Service Grid&quot; does not work with host names that contain only digits
+    * Bug 10884: Tabs MUST throw an exception when activating an inexistant tab
+    * Bug 10886: &quot;impacted&quot; container is no longer fading out
+    * Bug 10892: Wrong mask for FileCache's temp directory
+- changes from 2.1.0
+  + Features
+    * Feature 10613: Extend and simplify Hook api
+  + Bugfixes
+    * Bug 8713: Invalid filter &quot;host_name=*(test)*&quot;, unexpected ) at pos 17
+    * Bug 8999: Navigation and search bar is not available using a small width
+    * Bug 10229: Dashboard requests do not refresh the session
+    * Bug 10268: Unhandled services in the hosts overview list don't stand out
+    * Bug 10287: Redirect after login no longer working
+    * Bug 10288: The order for the limit links is incorrect
+    * Bug 10292: Hovered links in hover menu are unreadable
+    * Bug 10293: Hover menu is missing it's arrow for menu entries providing badges
+    * Bug 10295: Reset static line-height on body
+    * Bug 10296: Scrolling to the bottom of the page does not load more events
+    * Bug 10299: Badges are overridden by menu text
+    * Bug 10301: Format helpers like timeSince are polluted with text-small
+    * Bug 10303: Zooming in, or having another layout destroys the hover menu
+    * Bug 10304: Cannot access a host's customvars for service actions
+    * Bug 10305: Hover menu arrow color no longer fits background color
+    * Bug 10316: Not all Servicegroups / Hostgroups are shown
+    * Bug 10317: Event history style broken
+    * Bug 10319: Recursive sharing navigation items doesn't work.
+    * Bug 10321: Module iframe doesn't show website with parameters as a single column
+    * Bug 10328: ZendFramework packages missing for SLES12
+    * Bug 10359: Charset option not passed thru PDO adapter
+    * Bug 10364: PostgreSQL queries apply LOWER() on selected columns
+    * Bug 10367: Broken user- and group-management
+    * Bug 10389: Host overview: vsprintf(): Too few arguments
+    * Bug 10402: LdapUserGroupBackend: user_base_dn not used from UserBackend
+    * Bug 10419: Swapped icon image order in service header
+    * Bug 10490: Unhandled service counter in the hosts overview shows incorrect values
+    * Bug 10533: Form notifications of type information are green
+    * Bug 10567: Member user name used for basedn when querying usergroup members
+    * Bug 10597: Empty PDO charset option is invalid
+    * Bug 10614: Class loader: hardcode module and Zend prefixes
+    * Bug 10623: Acknowledging multiple selected objects erroneous
+- add set_permission and verify_permissions in spec
+- add permissions to /etc/permissions.d
+- fix some rpmlint-warnings
+- add rpmlintrc
+- remove if statements for deprecated suseversion 
+- comment out requires for not existing packages zend-db-adapter-pdo-mysql,
+  zend-db-adapter-pdo-pgsql
+- enable env, php5 and rewrite in apache on new installations
+- initial version 2.0.0, based on upstream spec file
+</comment>
+    <requestid>563784</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>350c9c99af9885f0d21c93769e066d2e</srcmd5>
+    <version>unknown</version>
+    <time>1516970405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569721</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa010e5c0d6c2ac6680e0b3073b245e6</srcmd5>
+    <version>unknown</version>
+    <time>1525121686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602086</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0cd3192243ad735ad17378d5cecaa55d</srcmd5>
+    <version>unknown</version>
+    <time>1527583202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>611412</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>579ee85be5e752c24ca78f528731d6ca</srcmd5>
+    <version>unknown</version>
+    <time>1531947306</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1101357: Fixed missing dependency php-ctype in spec file.
+</comment>
+    <requestid>623207</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0f5fc2a826e5fb40845679e6c4ac0c9d</srcmd5>
+    <version>unknown</version>
+    <time>1533214663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625979</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c4f8b17d6b085b3506a2baefa508fae1</srcmd5>
+    <version>unknown</version>
+    <time>1534100168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628743</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>7a8fe41bc5ffcc35e7a88b9d2dfc2609</srcmd5>
+    <version>unknown</version>
+    <time>1538117583</time>
+    <user>dimstar_suse</user>
+    <comment>- Add README.SUSE.
+
+sorry. Now it is.</comment>
+    <requestid>638368</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b8f1a85e122cac0fc308b863a78c6539</srcmd5>
+    <version>2.6.2</version>
+    <time>1543311744</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2
+  You can find issues and features related to this release on our Roadmap.
+  This bugfix release addresses the following topics:
+  * Database connections to MySQL 8 no longer fail
+  * LDAP connections now have a timeout configuration which defaults to 5 seconds
+  * User groups are now correctly loaded for externally authenticated users
+  * Filters are respected for all links in the host and service group overviews
+  * Fixed permission problems where host and service actions provided by modules were missing
+  * Fixed an SQL error in the contact list view when filtering for host groups
+  * Fixed time zone (DST) detection
+  * Fixed the contact details view if restrictions are active
+  * Doc parser and documentation fixes
+- Use current spec file from upstream.
+- Insert missing things from old spec file in new upstream spec file.
+- Remove setuid from new upstream spec file for following dirs: 
+  /etc/icingaweb2,
+  /etc/icingaweb/modules,
+  /etc/icingaweb2/modules/setup,
+  /etc/icingaweb2/modules/translation,
+  /var/log/icingaweb2
+</comment>
+    <requestid>651960</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>0bc28e01af3051c72a6718ec6b4204a8</srcmd5>
+    <version>2.6.2</version>
+    <time>1545141588</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.2
+  You can find issues and features related to this release on our Roadmap.
+  This bugfix release addresses the following topics:
+  * Database connections to MySQL 8 no longer fail
+  * LDAP connections now have a timeout configuration which defaults to 5 seconds
+  * User groups are now correctly loaded for externally authenticated users
+  * Filters are respected for all links in the host and service group overviews
+  * Fixed permission problems where host and service actions provided by modules were missing
+  * Fixed an SQL error in the contact list view when filtering for host groups
+  * Fixed time zone (DST) detection
+  * Fixed the contact details view if restrictions are active
+  * Doc parser and documentation fixes
+- Fix security issues:
+      boo#1119784 (CVE-2018-18246) and
+      boo#1119785 (CVE-2018-18247) and
+      boo#1119799 (CVE-2018-18249) and
+      boo#1119800 (CVE-2018-18250) and
+      boo#1119801 (CVE-2018-18248)
+- Use current spec file from upstream.
+- Insert missing things from old spec file in new upstream spec file.
+- Remove setuid from new upstream spec file for following dirs: 
+  /etc/icingaweb2,
+  /etc/icingaweb/modules,
+  /etc/icingaweb2/modules/setup,
+  /etc/icingaweb2/modules/translation,
+  /var/log/icingaweb2
+- Add README.SUSE.
+- update to 2.6.1
+  - You can find issues and features related to this release on our 
+    [Roadmap](https://github.com/Icinga/icingaweb2/milestone/51?closed=1).
+  - The command audit now logs a command's payload as JSON which fixes 
+    a [bug](https://github.com/Icinga/icingaweb2/issues/3535) 
+    that has been introduced in version 2.6.0.
+- updatet to 2.6.0
+  You can find issues and features related to this release on our Roadmap.
+  * Enabling you to do stuff you couldn't before
+    - Support for PHP 7.2 added
+    - Support for SQLite resources added
+    - Login and Command (monitoring) auditing added with the help of a dedicated module
+    - Pluginoutput rendering is now hookable by modules which allows to render custom icons, emojis and .. cute kitties :octocat:
+  * Avoiding that you miss something
+    - It's now possible to toggle between list- and grid-mode for the host- and servicegroup overviews
+    - The servicegrid now supports to flip its axes which allows it to be put into a landscape mode
+    - Contacts only associated with services are visible now when restricted based on host filters
+    - Negated and combined membership filters now work as expected (#2934)
+    - A more prominent error message in case the monitoring backend goes down
+    - The filter editor doesn't get cleared anymore upon hitting Enter
+  * Making your life a bit easier
+    - The tactical overview is now filterable and can be safely put into the dashboard
+    - It is now possible to register new announcements over the REST Api
+    - Filtering for custom variables now works in UTF8 environments
+  * Ensuring you understand everything
+    - The monitoring health is now beautiful to look at and properly behaves in narrow environments
+    - Updated German localization
+    - Updated Italian localization
+  * Freeing you from unrealiable things
+    - Removed support for PHP &lt; 5.6
+    - Removed support for persistent database connections
+- Drop 0001-Don-t-call-session_start-after-ini_set.patch,
+  because now in upstrem
+  
+- boo#1101357: Fixed missing dependency php-ctype in spec file.
+- Backport of fix for PHP 7.2 (upstream git commit dadd2c80f)
+  * 0001-Don-t-call-session_start-after-ini_set.patch
+- update to 2.5.3
+  + Hotfix
+    * This is a hotfix release and addresses an issue with frequent
+      delays/timeouts when viewing hosts and services in the front-end.
+        (https://github.com/Icinga/icingaweb2/milestone/50?closed=1)
+- update to 2.5.2
+  + Features
+    * You can find issues and features related to this release on our Roadmap
+        (https://github.com/Icinga/icingaweb2/milestone/49?closed=1)
+- update to 2.5.1
+  + Features
+    * You can find issues and features related to this release on our Roadmap
+        (https://github.com/Icinga/icingaweb2/milestone/47?closed=1)
+- remove addFilter(&quot;permissions-directory-setuid-bit&quot;) and
+  addFilter(&quot;non-standard-gid&quot;)
+- insert missing requires(pre): user(wwwrun) for Tumbleweed
+- fix rpmlint errors, reduce rpmlint warnings
+- Remove redundant %clean section. Fix RPM groups.
+  Update summaries.
+- drop permissions.d and add BuildRequires nagios-rpm-macros &gt;= 14.0
+  to remove setBadness in rpmlintrc
+- removed php5-Zendframework dependency
+- added icingaweb2-vendor-zf1 package
+- update to 2.5.0
+  + Features
+    * You can find issues and features related to this release on our Roadmap
+      (https://github.com/Icinga/icingaweb2/milestone/45?closed=1).
+- update to 2.4.2
+  + Bugfixes
+    * Bug 2965: Transport config: Default port not changing upon auto-submit
+    * Bug 2926: Wrong order when sorting by host_severity
+    * Bug 2923: Number fields should be valid when empty
+    * Bug 2919: Fix cached loading of module config
+    * Bug 2911: Acknowledgements are not working without an expiry time
+    * Bug 2878: process-check-result Button is visible even when user isn't allowed to use it
+    * Bug 2850: Link to acknowledgements is wrong in the timeline
+    * Bug 2841: Wrong menu height when switching back from mobile layout
+    * Bug 2806: Wrong service state count in hostgroup overview
+    * Bug 2805: Response from the Icinga 2 API w/ an empty result set leads to exception
+    * Bug 2801: Wrong help text for the director in the icingacli
+    * Bug 2784: Module and gravatar images are not served with their proper MIME type
+    * Bug 2776: Defaults not respected when acknowledging problems
+    * Bug 2767: Monitoring module: Config field protected vars not updated after zeroing config.ini
+    * Bug 2728: Gracefully handle invalid Icinga 2 API response types
+    * Bug 2718: Hide check attempt for hard states in history views
+    * Bug 2716: Web 2 doesn't detect the browser time zone if the time zone offset is negative
+    * Bug 2714: icingacli module disable fails on consecutive calls
+    * Bug 2695: Macros cannot be used for a navigation item's url-port
+    * Bug 2684: [dev.icinga.com #14027] Translation module should not write absolute path to .po files
+    * Bug 2683: [dev.icinga.com #14025] Translation module should remove temp files
+    * Bug 2661: [dev.icinga.com #13651] Don't offer the Icinga 2 API as transport if PHP cURL is missing
+    * Bug 2660: [dev.icinga.com #13649] Make the Icinga 2 API the default command transport
+    * Bug 2656: [dev.icinga.com #13627] Wrong count of handled critical service in the hover text
+    * Bug 2645: [dev.icinga.com #13539] Improve error handling and validation of multiple LDAP URIs
+    * Bug 2598: [dev.icinga.com #12977] Adding an empty user backend fails
+    * Bug 2545: [dev.icinga.com #12640] MSSQL ressource not working
+    * Bug 2523: [dev.icinga.com #12410] Click on Host in Service Grid can cause &quot;Invalid Filter&quot; error
+    * Bug 2519: [dev.icinga.com #12330] Filter editor may show wrong values after searching
+    * Bug 2509: [dev.icinga.com #12295] group_name_attribute should be &quot;sAMAccountName&quot; by default
+- make package compatible to php7
+- change spec to use php7 also
+- fix build error for Tumbleweed
+- rename package icingacli to icingaweb-icingacli 
+  and make icingacli as Recommends
+- update to 2.4.1
+  + Bugfixes
+    * Bug 2651: [dev.icinga.com #13607] Displayed times messed up in Icinga Web 2.4.0 w/ PostgreSQL
+    * Bug 2654: [dev.icinga.com #13615] Setup wizard: Not possible to setup Icinga Web 2 with an external database
+    * Bug 2663: [dev.icinga.com #13691] Hook::all() is broken on CLI
+    * Bug 2669: [dev.icinga.com #13735] Setup wizard: Progress bar isn't shown correctly, if setup is at finish step
+    * Bug 2681: [dev.icinga.com #13957] Support failover API command transport configuration
+    * Bug 2686: Granular module permissions do not work for hooks
+    * Bug 2687: Update URLs to icinga.com, remove wiki &amp; update to GitHub
+- update to 2.4.0-2
+  + Bugfixes
+    * RPM: Fix specfile
+    * RPM: Update revision
+    * CSS: Reset line-height in the button mixin
+- update to 2.4.0
+  + Feature
+    * Feature 12598 (Authentication &amp; Authorization): Support nested AD groups for Roles and not just login
+    * Feature 11809 (Authentication &amp; Authorization): Test and document multiple LDAP-URIs separated by space in LDAP ressources
+    * Feature 10616 (Authentication &amp; Authorization): Users w/o administrative permissions should be allowed to change their password
+    * Feature 13381 (CLI): Allow to configure the default listen address for the CLI command web serve
+    * Feature 11820 (Configuration): Check whether chosen locale is available
+    * Feature 11214 (Configuration): Logger: Allow to configure the Syslog Facility
+    * Feature 13117 (Framework): Add charset UTF-8 to default content type
+    * Feature 12634 (Framework): Possibitlity to fold and unfold filter by click
+    * Feature 11198 (Framework): Announce banner
+    * Feature 11115 (Framework): Add SSL support to MySQL database resources
+    * Feature 8270 (Installation): Add SELinux policy for Icinga Web 2
+    * Feature 13187 (Monitoring): Command toolbar in the host and service detail views
+    * Feature 12873 (Monitoring): Change default for sticky option of acknowledgements from true to false
+    * Feature 12820 (Monitoring): Export detail views to JSON
+    * Feature 12766 (Monitoring): Show flapping events in the host and service history views
+    * Feature 12764 (Monitoring): Display downtime end even if it hasn't been started yet
+    * Feature 12125 (Monitoring): Allow th in plugin output
+    * Feature 11952 (Monitoring): Allow changing default of 'sticky' in acknowledgement and other command options
+    * Feature 11398 (Monitoring): Send commands over Icinga 2's API
+    * Feature 11835 (UI): Add clear button to search field
+    * Feature 11792 (UI): Show hint if notifications are disabled globally
+    * Feature 11664 (UI): Show git HEAD for modules if available
+    * Feature 13461 (Vendor Libraries): Use Icinga's fork of Zend Framework 1 icingaweb2-vendor-zf1
+  + Bugfixes
+    * Bug 12396 (Authentication &amp; Authorization): Hooks don't respect module permissions
+    * Bug 12164 (Authentication &amp; Authorization): REDIRECT_REMOTE_USER not evaluated during external auth
+    * Bug 12108 (Authentication &amp; Authorization): assertPermission allows everything for unauthenticated requests
+    * Bug 13357 (Configuration): Persistent database resources cannot be made non-persistent
+    * Bug 12848 (Configuration): Empty &quot;Protected Custom Variables&quot; falls back to defaults
+    * Bug 12655 (Configuration): Permission application/log is not configurable
+    * Bug 12170 (Configuration): Adding a DB resource via webinterface requires one to enter a password
+    * Bug 10401 (Configuration): LdapUserGroupBackendForm: user_* settings not purged
+    * Bug 9804 (Configuration): Renaming the resource used for the config backend does not update the global configuration
+    * Bug 11920 (Dashboard): Add to dashboard: wrong url makes whole dashboard unusable
+    * Bug 13387 (Documentation): Can't display documentation of disabled modules
+    * Bug 12923 (Framework): Navigation Item name must be of type string or NavigationItem
+    * Bug 12852 (Framework): Hosts without any services are hidden from roles with monitoring/filter/objects set
+    * Bug 12760 (Framework): Do not log exceptions other than those resulting in a HTTP 500 status-code
+    * Bug 12583 (Framework): Unhandled exceptions while handling REST requests will silently drop the http response code
+    * Bug 12580 (Framework): REST requests cannot be anonymous
+    * Bug 12557 (Framework): Module description cannot be on a single line
+    * Bug 12299 (Framework): FilterExpression renders a&amp;!b as a=1&amp;b!=1
+    * Bug 12161 (Framework): Icinga Web 2 doesn't set Content-Type
+    * Bug 12065 (Framework): IniRepository: update/delete not possible with iterator
+    * Bug 11743 (Framework): INI writer must not persist section keys with a null value
+    * Bug 11185 (Framework): SummaryNavigationItemRenderer should show worst state
+    * Bug 10361 (Framework): Handle E_RECOVERABLE_ERROR
+    * Bug 13459 (Installation): Setup: Can't view monitoring config summary with Icinga 2 API as command transport
+    * Bug 13467 (JavaScript): renderLayout has  side-effects
+    * Bug 13115 (JavaScript): actiontable should not clear active row in case there is no newer one
+    * Bug 12541 (JavaScript): Menu not reloaded in case no search is available
+    * Bug 12328 (JavaScript): Separate vendor JavaScript libraries w/ semicolons and newlines on import
+    * Bug 10704 (JavaScript): JS: Always use the jQuery find method w/ node context when selecting elements
+    * Bug 10703 (JavaScript): JS: Don't use var self = this, but var _this = this
+    * Bug 11431 (Modules): Modules can't require permission on menu items
+    * Bug 10870 (Modules): Refuse erroneous module folder names when enabling the module
+    * Bug 13243 (Monitoring): Inconsistent host and service flags
+    * Bug 12889 (Monitoring): Timeline broken
+    * Bug 12810 (Monitoring): Scheduling a downtime for all services of a host does not work w/ the Icinga 2 API as command transport
+    * Bug 12313 (Monitoring): Multi-line strings within host.notes are being displayed as single line
+    * Bug 12223 (Monitoring): State not highlighted in plugin output if it contains HTML
+    * Bug 12019 (Monitoring): Contact view shows service filters with 'Downtime' even if not set
+    * Bug 11915 (Monitoring): Performance data: negative values not handled
+    * Bug 11859 (Monitoring): Can't separate between SOFT and HARD states in the history views
+    * Bug 11766 (Monitoring): Performance data: Fit label column to show as much text as possible
+    * Bug 11744 (Monitoring): Empty user groups are not displayed
+    * Bug 10774 (Monitoring): Scheduling downtimes for child hosts doesn't work w/ Icinga 2.x (waiting for Icinga 2)
+    * Bug 10537 (Monitoring): Filtering with not-equal on custom variable doesn't show hosts without this cv
+    * Bug 7755 (Monitoring): Remove autosubmit in eventgrid
+    * Bug 12133 (Navigation): Username and password not being passed in navigation item URLs
+    * Bug 12776 (Print &amp; Export): dompdf fails when border-style is set to auto
+    * Bug 12723 (Print &amp; Export): Allowed memory size exhausted when exporting the history view to CSV
+    * Bug 12660 (QA): Choosing the Icinga theme floods the log with error messages
+    * Bug 12774 (UI): Lot's of &lt;span style=&quot;visibility:hidden; display:none;&quot;&gt;&lt;/span&gt; in Output
+    * Bug 12134 (UI): Copy and paste: Plugin output contains unicode zero-width space characters
+    * Bug 10691 (UI): Closing the detail area does not update the rows selected counter
+    * Bug 13095 (Vagrant VM): TicketSalt constant missing
+   * Bug 12717 (Vagrant VM): PluginContribDir constant removed during vagrant provisioning
+- add minimum version 1.12.18 to ZendFramwork, 
+  because of Bug #655: ZF2015-08 breaks binary data
+  https://github.com/zendframework/zf1/issues/655
+- update to 2.3.4
+  + Bugfixes
+    * Bug 11267: Links in plugin output don't behave as expected
+    * Bug 11348: Host aliases are not shown in detail area
+    * Bug 11728: First non whitespace character after comma stripped from plugin output
+    * Bug 11729: Sort by severity depends on state type
+    * Bug 11737: Zero width space characters destroy state highlighting in plugin output
+    * Bug 11796: Zero width space characters may destroy links in plugin output
+    * Bug 11831: module.info parsing fails in case it contains newlines that are not part of the module's description
+    * Bug 11850: &quot;Add to menu&quot; tab unnecessarily appears in command forms
+    * Bug 11871: Colors used in the timeline are not accessible
+    * Bug 11883: Delete action on comments and downtimes in list views not accessible because they lack context
+    * Bug 11885: Database: Asterisk filters ignored when combined w/ other filters
+    * Bug 11910: Web 2 lacks mobile meta tags
+    * Fix remote code execution via remote command transport
+- Changed spec file to work with SLES 11
+- update to 2.3.2
+  + Feature
+    * Feature 11629: Simplified event-history date and time representation
+  + Bugfixes
+    * Fix a privilege escalation issue in the monitoring module for authenticated users
+    * Bug 10486: Menu rendering fails when no monitoring backend was configured
+    * Bug 10847: Warn about illogical dates
+    * Bug 10848: Can't change items per page if filter is in modify state
+    * Bug 11392: Can't configure monitoring backend via the web interface when no monitoring backend was configured
+- update to 2.3.1
+  + Bugfixes
+    * Bug 11598: Invalid SQL queries for PostgreSQL
+- changes from 2.3.0
+  + Features
+    * Feature 10887: lib: Provide User::getRoles()
+    * Feature 10965: Roles: Restrict visibility of custom variables
+    * Feature 11404: Add is_reachable filter column to host and service data views
+    * Feature 11485: lib/LDAP: Support scopes base and one
+    * Feature 11495: Support data URIs in href
+    * Feature 11529: Don't offer command disable notifications /w expire time if backend is Icinga 2
+  + Bugfixes
+    * Bug 9386: Improve order of documentation chapters
+    * Bug 10820: Style problems with long plugin output lines
+    * Bug 11078: Can't remove default dashboards
+    * Bug 11099: Mobile menu icon is mispositioned
+    * Bug 11128: Menu stops refreshing when there is text in the search field
+    * Bug 11145: Pagination compontents should not float around
+    * Bug 11171: Icinga Web 2 tries to load an ifont which results in 404
+    * Bug 11245: icingacli monitoring list --problems throws an exception
+    * Bug 11264: Cannot execute queries while other unbuffered queries are active
+    * Bug 11277: external auth with PHP internal webserver still buggy
+    * Bug 11279: Restrict access to Applicationlog
+    * Bug 11299: Icon images no longer prepend img/icons
+    * Bug 11391: External auth reads REMOTE_USER from process environment instead of request
+    * Bug 11414: Doc module does not render images with relative path
+    * Bug 11465: Stylesheet remains unchanged when module CSS/LESS files have been changed
+    * Bug 11489: lib/LDAP: ordering does explicitly set fields
+    * Bug 11490: lib/LDAP: LdapUtils::explodeDN replace deprecated use of eval in preg_replace
+    * Bug 11516: Accessibility: Focus in Tactical Overview barely visible
+    * Bug 11558: Missing ) in the documentation
+    * Bug 11568: Docs: Global permissions table is broken
+- update to 2.2.0
+  + Features
+    * Feature 8487: Number headings in the documentation module
+    * Feature 8963: Feature commands in the multi select views
+    * Feature 10654: Render links in acknowledgements, comments and downtimes
+    * Feature 11062: Allow style classes in plugin output
+    * Feature 11238: Puppet/Vagrant: Install mod_ssl and forward port 443
+  + Bugfixes
+    * Bug 7350: Tabs are missing if JS is disabled
+    * Bug 9800: Debian packaging: Ship translation module w/ the icingaweb2 package and install its config.ini
+    * Bug 10173: Failed commands give no useful error any more
+    * Bug 10251: Icinga Web 2 fails to run with PHP7
+    * Bug 10277: Special characters are incorrectly escaped for tooltips in the service grid
+    * Bug 10289: Doc module: Headers are cut off when clicking on TOC links
+    * Bug 10309: Move auth backend configuration to app config
+    * Bug 10310: Monitoring details: information/action ordering
+    * Bug 10362: Debian packaging: Separate package for CLI missing
+    * Bug 10366: Text plugin output treated as HTML in too many occasions
+    * Bug 10369: Accessibility: Focus not visible and lost after refresh
+    * Bug 10397: Users with no permissions can check multiple services
+    * Bug 10442: Edit user control should be more prominent
+    * Bug 10469: &quot;Remove Acknowledgement&quot; text missing in multi-select views
+    * Bug 10506: HTTP basic auth request is sent when using Kerberos authentication with Apache2 and mod_php
+    * Bug 10625: Return local date and time when lost connection to the web server
+    * Bug 10640: Respect protected_variables in nested custom variables too
+    * Bug 10778: Filters in the host group and service group overview not applied to state links
+    * Bug 10786: Whitespace characters are ignored in the plugin output in list views
+    * Bug 10805: Setup Wizard: Obsolete PHP sockets requirement
+    * Bug 10856: Benchmark is not rendered on many pages
+    * Bug 10871: Get rid of padding in controls
+    * Bug 10878: Dashboards different depending on username casing
+    * Bug 10881: Move iframe from modules to framework
+    * Bug 10917: Event grid tiles: The filter column &quot;from&quot; is not allowed here
+    * Bug 10918: Error on logout when using external authentication
+    * Bug 10921: icingacli monitoring list --format=csv throws error
+    * Bug 11000: Change license header to only reflect a file's year of creation/initial commit
+    * Bug 11008: Wobbling spinners
+    * Bug 11021: Global default theme is not applied while not authenticated
+    * Bug 11032: Fix icon_image size and provide a CSS class for theming
+    * Bug 11039: Misleading tooltip in Tactical Overview
+    * Bug 11051: Preferences and navigation items stored in INI files rely on case sensitive usernames
+    * Bug 11073: Active row is flickering on refresh
+    * Bug 11091: Custom navigation items: URL is not escaped/encoded
+    * Bug 11100: Comments are always persistent
+    * Bug 11114: Validate that a proper root DN is set for LDAP resources
+    * Bug 11117: Vendor: Update dompdf to version 0.6.2
+    * Bug 11119: icingacli shows ugly exception when unable to access the config directory
+    * Bug 11120: icingacli: command and action shortcuts have been broken
+    * Bug 11126: Invalid cookie value in cookie icingaweb2-tzo
+    * Bug 11142: LDAP User Groups backend group_filter
+    * Bug 11143: Layout: Tabs should be left-aligned
+    * Bug 11151: Having basic authentication on the webserver but not in Icinga Web 2 causes Web 2 to require basic auth
+    * Bug 11168: Debian packaging: Don't patch HTMLPurifier loading and install HTMLPurifier*.php files from the library/vendor root
+    * Bug 11187: Session cookie: Path too broad and unset secure flag on HTTPS
+    * Bug 11197: Menu items without url should ignore the target configuration
+    * Bug 11260: Scheduling downtimes through the API not working
+- changes from 2.1.1
+  + Features
+    * Feature 10488: Use _ENV variables with built-in PHP webserver
+    * Feature 10705: Theming
+    * Feature 10898: Winter theme
+  +  Bugfixes
+    * Bug 9685: Deprecate Module::registerHook() in favor of Hook::provideHook()
+    * Bug 9957: Sort hosts and services by last state change
+    * Bug 10123: CSS loading may fail w/ mkdir(): File exists in FileCache.php
+    * Bug 10126: setup config directory --config should use mkdir -p instead of mkdir()
+    * Bug 10166: library/vendor/HTMLPurifier tree is incorrectly unpacked
+    * Bug 10170: Link to service downtimes from multiple selected services includes host downtimes aswell
+    * Bug 10338: Debian: Failed to open stream HTMLPurifier/HTMLPurifier.php
+    * Bug 10603: Line breaks are not respected in acknowledgements, comments and downtimes
+    * Bug 10658: SUSE packages have the wrong dependencies
+    * Bug 10659: LDAP group members are shown with their DN and membership registration does not work
+    * Bug 10670: State not highlighted in plugin output
+    * Bug 10671: Auto-focus the username field on the login page
+    * Bug 10683: lib/CLI command web serve: rename variable basedir to something meaningful
+    * Bug 10702: Host- and Service-Actions configured in Web 2 do not resolve any macros
+    * Bug 10749: XHR application-state requests pollute the URL if not authenticated
+    * Bug 10771: Login shows &quot;Anmelden........&quot; upon login with the german locale
+    * Bug 10781: LoggingConfigForm.php complains about whitespace but checks with /^[^\W]+$/
+    * Bug 10790: &quot;Problems - Service Grid&quot; does not work with host names that contain only digits
+    * Bug 10884: Tabs MUST throw an exception when activating an inexistant tab
+    * Bug 10886: &quot;impacted&quot; container is no longer fading out
+    * Bug 10892: Wrong mask for FileCache's temp directory
+- changes from 2.1.0
+  + Features
+    * Feature 10613: Extend and simplify Hook api
+  + Bugfixes
+    * Bug 8713: Invalid filter &quot;host_name=*(test)*&quot;, unexpected ) at pos 17
+    * Bug 8999: Navigation and search bar is not available using a small width
+    * Bug 10229: Dashboard requests do not refresh the session
+    * Bug 10268: Unhandled services in the hosts overview list don't stand out
+    * Bug 10287: Redirect after login no longer working
+    * Bug 10288: The order for the limit links is incorrect
+    * Bug 10292: Hovered links in hover menu are unreadable
+    * Bug 10293: Hover menu is missing it's arrow for menu entries providing badges
+    * Bug 10295: Reset static line-height on body
+    * Bug 10296: Scrolling to the bottom of the page does not load more events
+    * Bug 10299: Badges are overridden by menu text
+    * Bug 10301: Format helpers like timeSince are polluted with text-small
+    * Bug 10303: Zooming in, or having another layout destroys the hover menu
+    * Bug 10304: Cannot access a host's customvars for service actions
+    * Bug 10305: Hover menu arrow color no longer fits background color
+    * Bug 10316: Not all Servicegroups / Hostgroups are shown
+    * Bug 10317: Event history style broken
+    * Bug 10319: Recursive sharing navigation items doesn't work.
+    * Bug 10321: Module iframe doesn't show website with parameters as a single column
+    * Bug 10328: ZendFramework packages missing for SLES12
+    * Bug 10359: Charset option not passed thru PDO adapter
+    * Bug 10364: PostgreSQL queries apply LOWER() on selected columns
+    * Bug 10367: Broken user- and group-management
+    * Bug 10389: Host overview: vsprintf(): Too few arguments
+    * Bug 10402: LdapUserGroupBackend: user_base_dn not used from UserBackend
+    * Bug 10419: Swapped icon image order in service header
+    * Bug 10490: Unhandled service counter in the hosts overview shows incorrect values
+    * Bug 10533: Form notifications of type information are green
+    * Bug 10567: Member user name used for basedn when querying usergroup members
+    * Bug 10597: Empty PDO charset option is invalid
+    * Bug 10614: Class loader: hardcode module and Zend prefixes
+    * Bug 10623: Acknowledging multiple selected objects erroneous
+- add set_permission and verify_permissions in spec
+- add permissions to /etc/permissions.d
+- fix some rpmlint-warnings
+- add rpmlintrc
+- remove if statements for deprecated suseversion 
+- comment out requires for not existing packages zend-db-adapter-pdo-mysql,
+  zend-db-adapter-pdo-pgsql
+- enable env, php5 and rewrite in apache on new installations
+- initial version 2.0.0, based on upstream spec file
+</comment>
+    <requestid>659065</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1585b5c9deef1d833047fccbf902dc49</srcmd5>
+    <version>2.6.3</version>
+    <time>1556312094</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 2.6.3
+  You can find issues related to this release on our Roadmap.
+  * PHP 7.3
+    - Now supported. tada
+  * LDAP - Community contributions, that's the spirit
+    With the help of our users we've finally fixed the issue that 
+    defining multiple hostnames and enabling STARTTLS has never 
+    properly worked. Also, they've identified that defining 
+    multiple hostnames caused a customized port not being utilized 
+    and fixed it themselves.
+    There has also a rare case been fixed that caused no group 
+    members being found in case object classes had a different
+    casing than what we expected. (Good news for all the 
+    non-OpenLdap and non-MSActiveDirectory users)
+    - LDAP connection fails with multiple servers using STARTTLS 
+      #3639
+    - LDAPS authentication ignores custom port setting #3713
+    - LDAP group members not found #3650
+  * We take care about your data even better now
+    With this are newlines and HTML entities (such as &amp;nbsp;) in 
+    plugin output and custom variables meant.
+    Sorry if I've teased some data security folks now. innocent
+    - Newlines in plugin output disappear #3662
+    - Windows path separators are converted to newlines in custom 
+      variables #3636
+    - HTML entities in plugin output are not resolved if no other 
+      HTML is there #3707
+  * You've wondered how you got into a famous blue police box?
+    Don't worry, not only you and the european union are sometimes
+    unsure what's the correct time.
+    - Set client timezone on DB connection #3525
+    - Ensure a valid default timezone is set in any case #3747
+    - Fix that the event detail view is not showing times in 
+      correct timezone #3660
+  * UI - The portal to your monitoring environment, improved
+    The collapsible sidebar introduced with v2.5 has been plagued 
+    by some issues since then. They're now fixed. Also, the UI 
+    should now flicker less and properly preserve the scroll 
+    position when interacting with action links. (This also allows
+    the business process module to behave more stable when using 
+    drag and drop in large configurations.)
+    - Collapsible Sidebar Issues #3187
+    - Fix title when closing right column #3654
+    - Preserve scroll position upon form submits #3661
+  * Corrected things we've broke recently
+    That's due to preemptive changes to protect you from bad 
+    individuals. Unfortunately this meant that some unforeseen
+    side-effects appeared after the release of v2.6.2. 
+    These are now fixed.
+    - Multiline values in ini files broken #3705
+    - PHP ini parser doesn't strip trailing whitespace #3733
+    - Escaped characters in INI values are not unescaped #3648
+    - Though, if you've faced issue #3705 you still need to take 
+      manual action (if not already done) as the provided fix does 
+      only prevent further occurrences of the resulting error. The
+      required changes involve the transformation of all real 
+      newlines in Icinga Web 2's INI files to literal \n or \r\n
+      sequences. (Files likely having such are the roles.ini and 
+      announcements.ini)
+</comment>
+    <requestid>698116</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d1d323c4b3f65d758493bf8f8f61a7e9</srcmd5>
+    <version>2.7.0</version>
+    <time>1564576289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719897</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>018b7b38d3a5c47b39b5376eebe0cd10</srcmd5>
+    <version>2.7.1</version>
+    <time>1566893974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725856</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f31fa04614e74c0bcece4b5faa7a6e78</srcmd5>
+    <version>2.7.2</version>
+    <time>1571307730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738851</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>15f22e34add5c526a22006e701a3f50c</srcmd5>
+    <version>2.7.3</version>
+    <time>1571402243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741029</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5c7c916b167e8258b0bc26e22af9eaaf</srcmd5>
+    <version>2.8.0</version>
+    <time>1591654207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812626</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>de6826b945890e9385154019a42c8faf</srcmd5>
+    <version>2.8.1</version>
+    <time>1593458341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817746</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b70f064822eb864e7e70d257f9bbd802</srcmd5>
+    <version>2.8.2</version>
+    <time>1598274816</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828704</requestid>
+  </revision>
+</revisionlist>

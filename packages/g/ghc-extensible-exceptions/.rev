@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e5fad4d97c4f9ca9e7dfd74d9670408a</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1533412371</time>
+    <user>dimstar_suse</user>
+    <comment>Add xmonad, xmobar, and their dependencies to Factory.</comment>
+    <requestid>627259</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9b7d248154e165b1ffb1791586564278</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1540448164</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>642856</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>63eb79641c822c3af707fd8e3df13c36</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1577451209</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759394</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8d1e8508a710aa5619fe4110ee9f2a1a</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1592579559</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815088</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b22a26a717f68b8545bd598c27109393</srcmd5>
+    <version>0.1.1.4</version>
+    <time>1598643006</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829269</requestid>
+  </revision>
+</revisionlist>

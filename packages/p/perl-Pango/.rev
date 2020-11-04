@@ -1,0 +1,174 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccc8e6861b296cdf8f0efbeaa2331963</srcmd5>
+    <version>1.220</version>
+    <time>1238030796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ccc8e6861b296cdf8f0efbeaa2331963</srcmd5>
+    <version>1.220</version>
+    <time>1238030796</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b38e3eab3c29a457cbc71df96f18a6a4</srcmd5>
+    <version>1.221</version>
+    <time>1263229520</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pango based on submit request 28967 from user coolo
+</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a0226025647829fdc59c0ee050ae3ef0</srcmd5>
+    <version>1.221</version>
+    <time>1268925567</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a0226025647829fdc59c0ee050ae3ef0</srcmd5>
+    <version>1.221</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>a0226025647829fdc59c0ee050ae3ef0</srcmd5>
+    <version>1.221</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>6b152bfafee2dd90f7045234eef2add7</srcmd5>
+    <version>1.221</version>
+    <time>1287155463</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Pango based on submit request 50592 from user computersalat
+</comment>
+    <requestid>50592</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>336d6e5f3a1a8d1a66d95baa1fd589c8</srcmd5>
+    <version>1.221</version>
+    <time>1291583472</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54617 from user coolo
+</comment>
+    <requestid>54617</requestid>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>30578dc6a7a634c2f3c13e066cec8c1c</srcmd5>
+    <version>1.221</version>
+    <time>1291583478</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54617
+</comment>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>30578dc6a7a634c2f3c13e066cec8c1c</srcmd5>
+    <version>1.221</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>aa70bee2474c3018abfa8b71f4eb7ebd</srcmd5>
+    <version>1.222</version>
+    <time>1312735710</time>
+    <user>saschpe</user>
+    <comment>- update to 1.22
+  Don't leak Pango::Attribute objects
+  Fix a few test failures</comment>
+    <requestid>78092</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>b0fdfc8fc10c324fbd82be3dffc715ff</srcmd5>
+    <version>1.222</version>
+    <time>1312735718</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78092
+</comment>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>b0fdfc8fc10c324fbd82be3dffc715ff</srcmd5>
+    <version>1.222</version>
+    <time>1319182297</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2b7f66d1b46eb65e1490f14f0346a267</srcmd5>
+    <version>1.223</version>
+    <time>1322738730</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>94316</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>7f575154256d49f4bcbd437e9fa297bd</srcmd5>
+    <version>1.223</version>
+    <time>1323193549</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>7f575154256d49f4bcbd437e9fa297bd</srcmd5>
+    <version>1.223</version>
+    <time>1340183900</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>7f575154256d49f4bcbd437e9fa297bd</srcmd5>
+    <version>1.223</version>
+    <time>1359109774</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6956bb33a2510226295bd865ade7a060</srcmd5>
+    <version>1.224</version>
+    <time>1371140370</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 178278 from coolo)</comment>
+    <requestid>178293</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>6956bb33a2510226295bd865ade7a060</srcmd5>
+    <version>1.224</version>
+    <time>1379663808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f7bba44f72cb817bd34c694f5b81c05c</srcmd5>
+    <version>1.226</version>
+    <time>1393611356</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>223978</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>f7bba44f72cb817bd34c694f5b81c05c</srcmd5>
+    <version>1.226</version>
+    <time>1409302444</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>68acdad15757ca68a25dd4bb56868ba1</srcmd5>
+    <version>1.226</version>
+    <time>1452850944</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353513</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ca6925f4791759b5c5f23d2cbafb0a5</srcmd5>
+    <version>1.227</version>
+    <time>1569234769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731655</requestid>
+  </revision>
+</revisionlist>

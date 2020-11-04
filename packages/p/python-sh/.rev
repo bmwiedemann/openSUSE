@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f0ff09d8e3ac5389b2d6d18c9af0efed</srcmd5>
+    <version>1.11</version>
+    <time>1423130387</time>
+    <user>dimstar_suse</user>
+    <comment>New package, see http://lists.opensuse.org/opensuse-factory/2015-01/msg00532.html</comment>
+    <requestid>283861</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3c9a0f707499d232b81dbd51a8a48029</srcmd5>
+    <version>1.11</version>
+    <time>1428949902</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295696</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3eb5f93ec40fca438336cb090e77eabe</srcmd5>
+    <version>1.12.14</version>
+    <time>1500275531</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement single-spec version.
+- Update 1.12.14</comment>
+    <requestid>510319</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>657540def397538befe719038c4ac7d2</srcmd5>
+    <version>1.12.14</version>
+    <time>1545648233</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659671</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a45e08981a84684167fa0d70fb8ccbf2</srcmd5>
+    <version>1.12.14</version>
+    <time>1549140607</time>
+    <user>coolo</user>
+    <comment>- Add patches from Fedora:
+  * always-use-fully-versioned-python-command-in-tests.patch
+  * no-coverage.patch
+  * 0001-Fix-tests-for-the-drop-the-unversion-python.patch
+  * pep-0538-test-fix.patch</comment>
+    <requestid>670583</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f7c91e83d599bf58c04255b484fbc540</srcmd5>
+    <version>1.12.14</version>
+    <time>1559029404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705683</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>2b959b7a6201faf66b232190c3a060b1</srcmd5>
+    <version>1.12.14</version>
+    <time>1587467543</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off tests, upstream is dead</comment>
+    <requestid>795884</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>45d590bca29422c7c7f220291bf5416d</srcmd5>
+    <version>1.13.1</version>
+    <time>1592398600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.1:
+  * regression fix if `_fg=False` [#520](https://github.com/amoffat/sh/issues/520)
+  * minor Travis CI fixes [#492](https://github.com/amoffat/sh/pull/492)
+  * bugfix for boolean long options not respecting `_long_prefix` [#488](https://github.com/amoffat/sh/pull/488)
+  * fix deprecation warning on Python 3.6 regexes [#482](https://github.com/amoffat/sh/pull/482)
+  * `_pass_fds` and `_close_fds` special kwargs for controlling file descriptor inheritance in child.
+  * more efficiently closing inherited fds [#406](https://github.com/amoffat/sh/issues/406)
+  * bugfix where passing invalid dictionary to `_env` will cause a mysterious child 255 exit code. [#497](https://github.com/amoffat/sh/pull/497)
+  * bugfix where `_in` using 0 or `sys.stdin` wasn't behaving like a TTY, if it was in fact a TTY. [#514](https://github.com/amoffat/sh/issues/514)
+  * bugfix where `help(sh)` raised an exception [#455](https://github.com/amoffat/sh/issues/455)
+  * bugfix fixing broken interactive ssh tutorial from docs
+  * change to automatic tty merging into a single pty if `_tty_in=True` and `_tty_out=True`
+  * introducing `_unify_ttys`, default False, which allows explicit tty merging into single pty
+  * contrib command for `ssh` connections requiring passwords
+  * performance fix for polling output too fast when using `_iter` [#462](https://github.com/amoffat/sh/issues/462)
+  * execution contexts can now be used in python shell [#466](https://github.com/amoffat/sh/pull/466)
+  * bugfix `ErrorReturnCode` instances can now be pickled
+  * bugfix passing empty string or `None` for `_in` hanged [#427](https://github.com/amoffat/sh/pull/427)
+  * bugfix where passing a filename or file-like object to `_out` wasn't using os.dup2 [#449](https://github.com/amoffat/sh/issues/449)
+  * regression make `_fg` work with `_cwd` again [#330](https://github.com/amoffat/sh/issues/330)
+  * an invalid `_cwd` now raises a `ForkException` not an `OSError`.
+  * AIX support [#477](https://github.com/amoffat/sh/issues/477)
+  * added a `timeout=None` param to `RunningCommand.wait()` [#515](https://github.com/amoffat/sh/issues/515)
+- Re-enable tests.
+- Refresh no-coverage.patch, fix-test_general_signal.diff and
+  fix-test_signal_group.diff
+- Add fix-sleep-path-in-test.patch to fix a test failure.
+- Drop no longer required patches,
+  0001-Fix-tests-for-the-drop-the-unversion-python.patch,
+  always-use-fully-versioned-python-command-in-tests.patch and
+  pep-0538-test-fix.patch</comment>
+    <requestid>815418</requestid>
+  </revision>
+</revisionlist>

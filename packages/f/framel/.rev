@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3844bf1dfb63488b8071ce1cffc85d5a</srcmd5>
+    <version>8.40.1</version>
+    <time>1600346743</time>
+    <user>dimstar_suse</user>
+    <comment>The Frame Library is a software in C language, with interfaces to python and matlab, dedicated to frame data manipulation including file input/output</comment>
+    <requestid>825824</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5ef7d9a903341b1291c05cd51f543038</srcmd5>
+    <version>8.40.1</version>
+    <time>1603448573</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843552</requestid>
+  </revision>
+</revisionlist>

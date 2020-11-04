@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c584ded9e4fae9968e27d1a4f9c75168</srcmd5>
+    <version>0.331</version>
+    <time>1574859050</time>
+    <user>dimstar_suse</user>
+    <comment>Initial import of lua rock Markdown version 0.33</comment>
+    <requestid>745050</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8e95fdae4d54d51cb8b66222e6f96cc</srcmd5>
+    <version>0.331</version>
+    <time>1594293611</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819613</requestid>
+  </revision>
+</revisionlist>

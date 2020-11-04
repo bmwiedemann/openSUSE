@@ -1,0 +1,18 @@
+<package name="spek" project="openSUSE:Factory">
+  <title>Tool for audio spectrum analysis and visualization</title>
+  <description>Spek helps to analyse your audio files by showing their spectrogram.
+It supports all popular lossy and lossless audio file formats.
+
+Features:
+  * Ultra-fast signal processing, uses multiple threads to further
+    speed up the analysis
+  * Shows the codec name and the audio signal parameters
+  * Can save the spectrogram as an image file
+  * Drag-and-drop support; associates with common audio file formats
+  * Auto-fitting time, frequency and spectral density rulers
+  * Adjustable spectral density range
+
+</description>
+  <devel project="multimedia:apps" package="spek"/>
+  <url>http://spek.cc/</url>
+</package>

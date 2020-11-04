@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26705c675c0753670fcabca23577cd9a</srcmd5>
+    <version>3.5.0</version>
+    <time>1592398101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815241</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7f692a0739e18760d64e722ca03531d</srcmd5>
+    <version>3.6.0</version>
+    <time>1596703332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824579</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>32c93ef86e8a44bdb5b83962b12a216a</srcmd5>
+    <version>3.6.0</version>
+    <time>1597856318</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix leap build by disabling py2 as the django-redis version
+  requirement is without py2 support</comment>
+    <requestid>827814</requestid>
+  </revision>
+</revisionlist>

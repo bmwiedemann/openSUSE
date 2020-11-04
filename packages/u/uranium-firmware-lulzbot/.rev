@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a503606596bcdbf9d83c673fa1202799</srcmd5>
+    <version>1.1.8.21_f21ad454a</version>
+    <time>1524238020</time>
+    <user>dimstar_suse</user>
+    <comment>For openSUSE:Factory:Staging:adi:21</comment>
+    <requestid>596113</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b6ad987a2afed8cd8e61b23b6f88e79c</srcmd5>
+    <version>1.1.8.51_f2c6bb3d2</version>
+    <time>1526372152</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>607040</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f3a5c6d551f2960c5614535bf214a2fa</srcmd5>
+    <version>1.1.8.59_883d54474</version>
+    <time>1531135691</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621102</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1623d8e1405497e85746aa2579e124e9</srcmd5>
+    <version>1.1.8.66_80632b8ec</version>
+    <time>1533732759</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.8.66
+  * Security fix for CVE-2018-1000537
+  * bugfixes
+
+- update to version 1.1.8.62
+  * Updates for Mini 2</comment>
+    <requestid>627596</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a03a7e9f16295ba78948d81d64249c4</srcmd5>
+    <version>1.1.9.17_82d1e4ffa</version>
+    <time>1537964631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.9.17
+  * larger list of changes, but no changelog</comment>
+    <requestid>638246</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0baddad320abaa4280d5a79a4f9aa07e</srcmd5>
+    <version>1.1.9.34_5f9c029d1</version>
+    <time>1551113543</time>
+    <user>coolo</user>
+    <comment>cura version update</comment>
+    <requestid>677904</requestid>
+  </revision>
+</revisionlist>

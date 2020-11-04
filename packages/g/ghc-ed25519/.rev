@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f317d71b363c17a234b0d49c182e1a67</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1465336041</time>
+    <user>dimstar_suse</user>
+    <comment>ed25519: Ed25519 cryptographic signatures</comment>
+    <requestid>399920</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>20de017079e734badd65e4a720a2427e</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1469081275</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411511</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ae2340801bca9d57357fe303725879d0</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1505504220</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524450</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>4e399354ff1294c2d48ab3ff0c2cd6ab</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1527675521</time>
+    <user>dimstar_suse</user>
+    <comment>Update to support new ghc-rpm-macros.</comment>
+    <requestid>609781</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0d050ab5a4ebab88d50c6df0cadd3b1a</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1532445498</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623764</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a7075158a42fc3727f967309f99e2c52</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1540448704</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643388</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>42d99ad2228f54669d7bc910c170bef4</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1577451193</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759388</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>f449b8865934f70e9af18b2704aded18</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1589196883</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801013</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>779dcdf8a86e49018567c3cf269f4bcf</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1592579538</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815083</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>5b4d34d1ad94a1e6ff009d5a72d6e712</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1598642989</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829261</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>1f3c9ccd333eadaaaf753228989a1f11</srcmd5>
+    <version>0.0.5.0</version>
+    <time>1599508889</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>832271</requestid>
+  </revision>
+</revisionlist>

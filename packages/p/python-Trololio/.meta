@@ -1,0 +1,10 @@
+<package name="python-Trololio" project="openSUSE:Factory">
+  <title>Trollius and asyncio compatibility library</title>
+  <description>Trololio provides a compatibility layer for Trollius and asyncio (aka Tulip). It addresses the differences listed in Trollius and Tulip:
+
+* Allows the use of Trollius' syntax with asyncio.
+* Provides missing objects and aliases for the others.
+* Synchronizes debug environnement variables.
+</description>
+  <devel project="devel:languages:python" package="python-Trololio"/>
+</package>

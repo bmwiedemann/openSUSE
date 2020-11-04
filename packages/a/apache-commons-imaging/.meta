@@ -1,0 +1,5 @@
+<package name="apache-commons-imaging" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="apache-commons-imaging"/>
+</package>

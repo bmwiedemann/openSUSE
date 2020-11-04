@@ -1,0 +1,5 @@
+<package name="lunar-calendar" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="lunar-calendar"/>
+</package>

@@ -1,0 +1,318 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f39fe1996bbd3feafe71bc48b288693a</srcmd5>
+    <version>0.9.0</version>
+    <time>1527605362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9:
+  * Added an option for the text tab size in terms of spaces.
+  * Added &quot;To Upper Case&quot; and &quot;To Lower Case&quot;.
+  * Disable the language button for documents that are made uneditable because of their contents.
+  * Open the files of the last window instead of starting with all recent files (if the related option is checked).
+  * Restore cursor positions with last window files too.
+  * Remove the lock file only at the end, when the config is written, because writing may take some time with cursor positions.
+  * Before focusing an existing side-pane with its toggling shortcut, ensure its visibility.
+  * Added the overwrite mode, which is toggled by pressing the Insert key.
+  * Added an option for saving unmodified files.
+  * Added an option for closing a window on closing its last tab.
+  * Fixed a regression in recognizing special files (started when QRegExp was replaced by QRegularExpression).
+  * Added Ctrl+Up/Down for scrolling by one line without moving the cursor.
+  * Added Meta+Up/Down for going to the same position in the previous/next unwrapped line.
+  * Added shortcuts (Ctrl+Shift+Up/Down) for moving lines.
+  * Added a history popup to the search bar.
+  * Set the window title to the path.
+  * Also open paths that point to nonexistent files (to save them later).
+  * Don't show the warning bar when there's a modal dialog.
+  * Added command-line options for cursor position.
+  * Deal with relative paths completely.
+  * Added an option to not permit opening of non-text files.
+  * Added the number of pages to tab/side-item context menu.
+  * Made Ctrl+Tab, Ctrl+Meta+Tab and Shift+Tab really align the text.
+  * Covered regex inside QML too (with syntax highlighting).
+  * Never remove trailing spaces with diff files.
+  * Made highlighting of JavaScript regex faster and fixed some bugs in it.
+  * Added an option for thick text cursor.
+  * Made the current line number bold and added a marker for wrapped lines. Also made the line highlighter much milder.
+  * Center the current line on clicking inside the line number strip.
+  * Toggle side-pane by middle clicking an empty space inside it or inside the tab-bar.
+  * Put the line number strip on the right with an RTL layout.
+- Run spec-cleaner
+- Delete _service file
+- Remove desktop and icon cache update
+- Update to 0.8:
+  * Close the warning-bar when the text is scrolled.
+  * Fixed highlighting and markdown.
+  * Added the symlink &quot;fpad&quot;.
+  * Added an options for auto-saving of opened files (disabled by default).
+  * Add a new tab on double clicking an empty space of the tabbar.
+  * An option for showing the cursor position on the statusbar (disabled by default).
+  * Support syntax override (disabled by default).
+  * An option for vertical position lines.
+  * Open hyperlinks of highlighted texts by left-clikcing them while the Ctrl key is pressed and also with an item in the context menu.
+  * Added an option for removing trailing spaces on saving (Markdown's trailing double spaces are taken care of).
+  * Added Undo/Redo to custom shortcuts, although their default shortcuts are hard-coded in Qt.
+  * Show whitespaces or line/document ends with normal texts too (by using the URL syntax highlighting).
+  * Never show the horizontal scrollbar on wrapping (when whitespaces are visible).
+  * Handle &quot;&amp;quot;&quot;, &quot;&amp;gt;&quot; and &quot;&amp;lt;&quot;, especially in XML.
+  * Support hard-coded symbolic icons that change their colors appropriately (adapted from Cantata).
+  * Bug fixes
+- update to version 0.7
+- update to version 0.6.3
+- initial package (version 0.5.8) for openSUSE
+</comment>
+    <requestid>611195</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f954b53910d66e8d492157649806a1ba</srcmd5>
+    <version>0.9.0</version>
+    <time>1534322184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628934</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6fe4d2ef45d163236056671adbace453</srcmd5>
+    <version>0.9.1</version>
+    <time>1539013758</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * The window title is set to the whole file path, including the file name.
+  * The line number strip is enhanced.
+  * Tab switch shortcuts can be customized now.
+  * The warning bar is shown as a translucent layer over the tab widget with animation.
+  * A shortcut is added for activating the last active tab.
+  * &quot;gio&quot; is tried first for opening hyperlinks because Qt may resort to &quot;xdg-open&quot;, which isn't always a good choice.
+  * A workaround is added for a new bug in KDE's file dialog.
+  * Compilation without X11 is possible with qmake WITHOUT_X11=YES. Also, Haiku OS is supported.
+  * Several fixes and improvements.</comment>
+    <requestid>640551</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>406411f83ef3195f7340948c960646fa</srcmd5>
+    <version>0.9.2</version>
+    <time>1545141495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658712</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>77f20ceeda3a3211cfe72bf0576fc225</srcmd5>
+    <version>0.9.3</version>
+    <time>1549361953</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.3:
+  * Added support for highlighting C++11 raw string literals.
+  * Added reStructuredText to syntax highlighting.
+  * Fixes for custom shortcuts with different languages/platforms.
+  * Set the size of default font to that of system font.
+  * Supported optional translations for Help.
+  * Added a (transient) warning bar to root windows.
+  * Fixed small mistakes in the code and dropped the obsolete class QDesktopWidget.
+  * Do not open non-text files by default (because they may take a lot of CPU time -- can be changed in Preferences).</comment>
+    <requestid>671300</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c45e046b2b8f85bc30e743b0098f467a</srcmd5>
+    <version>0.9.4</version>
+    <time>1551113931</time>
+    <user>coolo</user>
+    <comment>- Update to 0.9.4:
+  * Don't toggle the insert mode when a modifier is also pressed.
+  * BSD issues are fixed by Brian Callahan (ibara at GitHub).
+  * Added YAML and Fountain to syntax highlighting.
+  * Don't consider empty shortcuts ambiguous.
+  * Fixed an issue about savable docs in Preferences dialog.</comment>
+    <requestid>678858</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e7180c97df65d96d1f1f08d84e61c638</srcmd5>
+    <version>0.10.0</version>
+    <time>1558532456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * Added support for searching/replacing regular expressions.
+  * Added cmake support.
+  * Replace triple periods and double hyphens with ellipses and em dashes respectively on typing (can be disabled in Preferences).
+  * The Preferences dialog has a better layout and its size is always remembered.
+  * Workaround for a Qt bug that gives non-plain text to clipboard on copying/cutting/selecting text.
+  * Fixed a crash under Wayland.
+  * Fixed a small issue in determining whether files should be opened in tabs or separate windows.
+  * Added lots of cmake patterns for syntax highlighting.
+  * Disabled tab DND without X11, mainly because Wayland still has a serious problem with QDrag.</comment>
+    <requestid>704689</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdc654bac0a815bd3c48925f191fc07d</srcmd5>
+    <version>0.11.1</version>
+    <time>1566291599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.1:
+  * Fix a regression in compilation without X11.
+  * Fixes and improvements to syntax highlighting and support it with printing.
+- Changes from 0.11.0:
+  * FeatherPad supports spell checking with Hunspell. Spell checking
+    requires adding an appropriate Hunspell dictionary (see
+	Preferences → Text → Spell Checking). New words can also be
+    added to each dictionary and are saved in FeatherPad's config directory.
+  * A new font dialog that distinguishes programming fonts from others.
+  * Shift+Enter is made smarter, especially with numbered lists.
+  * Better handling of typed custom shortcuts (including a workaround
+    for a new Qt bug related to Meta key).
+  * False warnings are prevented on startup.
+  * Recent changes to settings won't be lost if the app is running on logout.
+  * Native file dialogs are used by default.
+  * The insert mode is also toggled by the keypad insert key.
+  * Many fixes are made to Perl's syntax highlighting.
+  * Deprecated Qt methods are replaced.</comment>
+    <requestid>724704</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5da6dc9eaaac051cda61797483bb4a4b</srcmd5>
+    <version>0.12.0</version>
+    <time>1577705677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Removed useless options related to icons.
+  * Added an option for a single shared search history.
+  * Don't replace double hyphens with em dashes in programming texts.
+  * Also replace &quot;-&gt;&quot;, &quot;&lt;-&quot;, &quot;&gt;=&quot; and &quot;&lt;=&quot; with &quot;→&quot;, &quot;←&quot;, &quot;≥&quot;
+    and &quot;≤&quot;, respectively, in non-programming texts.
+  * Mark encoded and unencoded ampersands in HTML.
+  * Set the limit of highlighting the syntax of a line
+    to 10,000 characters.
+  * Allow shortcut removal.
+  * Added &quot;Save All Files&quot; for saving modifications to
+    all files that are open inside a window.
+  * Added mnemonics to the close prompt dialog.
+  * Added support for Dart syntax highlighting.
+  * Better JS, YAML and Markdown syntax highlighting.
+  * Added a menu item to open the user dictionary.
+  * Fixed a minor problem in backward search and replacement.
+  * On triple clicking, select the current block without
+    selecting its newline and start and end whitespaces.
+  * Fixes for RTL, including a workaround for a Qt bug.
+  * Added a (temporary) workaround for the text rendering
+    bug of Qt 5.14.0.</comment>
+    <requestid>759903</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d25e993a329d888d397813e4594b2992</srcmd5>
+    <version>0.12.1</version>
+    <time>1578950521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.1:
+  * Allow searching in the language menu by typing continuously.
+  * More informative message when a non-text file isn't opened
+    because of Preferences.
+  * Fixed the disabled sort line actions in context menu.
+  * Considered the new behavior of horizontal wheel
+    scrolling in Qt 5.14.0.
+  * Added a workaround to the text editor for the bug in
+    horizontal scrollbars of Qt 5.14.0.</comment>
+    <requestid>763940</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>69577c94621d123a61768e73446f672d</srcmd5>
+    <version>0.13.0</version>
+    <time>1583948855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  * Support for syntax color customization, with separate settings
+    for light and dark backgrounds.
+  * Color value of whitespaces can be customized, in case they're shown.
+  * Allow dash and some other characters in URLs.
+  * Considered extra cases of valid ampersands in HTML.
+  * Yet smarter Shift+Enter with alphabetical lists.
+  * Removed QCoreApplication::processEvents() to prevent a rare crash.
+  * Remember cursor's horizontal pixel position before Backspace/Enter
+    and restore it after Down/Up.
+  * A few fixes.
+</comment>
+    <requestid>783168</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf32c384c4590c78a641a7e85ec01567</srcmd5>
+    <version>0.13.1</version>
+    <time>1584050838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Don't suggest the last file extension when saving a
+    newly created doc</comment>
+    <requestid>784233</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b744c14b679a5a6514257c12ffeaabf1</srcmd5>
+    <version>0.14.0</version>
+    <time>1588105787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Speed up syntax highlighting
+  * Fix handling relative file paths that contain no slash
+  * JavaScript template literals (back quotes) are supported
+  * CSS syntax highlighting is fixed and improved
+  * Small fixes</comment>
+    <requestid>797595</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bcfeb6c1f6a3a1090e7e995567006814</srcmd5>
+    <version>0.14.1</version>
+    <time>1588697771</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * Fix miscalculation in highlighting of mult-iline CSS values</comment>
+    <requestid>800245</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ab10c6fed83e5be72411d7d9497d113</srcmd5>
+    <version>0.14.2</version>
+    <time>1591881316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.2:
+  * Overrode Qt's default behavior when the Home key is pressed.
+  * Fixed a bug that allowed cutting of read-only texts.
+  * Fixes for Yaml, CSS and JavaScript.
+  * Updated the code for Qt 5.15 (backward compatibly).</comment>
+    <requestid>813500</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>831b4b28d5f2a975a0fa29be857575cb</srcmd5>
+    <version>0.15.0</version>
+    <time>1598274832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.0:
+  * An optional selection highlighting (Preferences → Text →
+    Selection highlighting; also, see Help).
+  * A menu item for converting all text tabs to spaces.
+  * An option for pasting file paths instead of opening files
+    that are copied and pasted into FeatherPad (which is the
+	default behavior).
+  * Highlight only the first 1000 replacements if there are more.
+  * Added a simple syntax highlighting for Haxe (by using
+    JS highlighting).
+  * Fixes and code cleanup.</comment>
+    <requestid>828859</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3d71d43430bf18d80221e39212a76448</srcmd5>
+    <version>0.16.0</version>
+    <time>1604413527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * A right-click item is added to tab/side-pane for opening
+    containing folder.
+  *  Natural sorting of items in the side-pane and session dialog.
+  *  The warning bar disappears when clicked or, automatically,
+     after 10 seconds.
+  *  &quot;To Start Case&quot; is added to the case changing actions.
+  *  The 50-ms delay of format updating is removed because
+     Qt's update requests seem appropriate now.
+  *  Focus the editor's view with the Escape key.
+  *  Current line highlight is made customizable.
+  *  The recent files feature can be disabled by setting its
+     number to zero.
+  *  Added a &quot;standalone&quot; option to the command-line.It's
+     especially useful when FeatherPad is chosen as the &quot;git&quot; editor.
+  *  Fixes and improvements here and there.</comment>
+    <requestid>845464</requestid>
+  </revision>
+</revisionlist>

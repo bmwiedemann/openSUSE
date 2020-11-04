@@ -1,0 +1,13 @@
+<package name="uacme" project="openSUSE:Factory">
+  <title>A minimal ACMEv2 client</title>
+  <description>uacme is a client for the ACMEv2 protocol described in RFC8555,
+written in plain C code with minimal dependencies.
+The ACMEv2 protocol allows a Certificate Authority and an
+applicant to automate the process of verification and certificate
+issuance. The protocol also provides facilities for other
+certificate management functions, such as certificate revocation.
+
+</description>
+  <devel project="network:utilities" package="uacme"/>
+  <url>https://github.com/ndilieto/uacme</url>
+</package>

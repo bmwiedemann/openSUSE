@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd474f35d353b2918a778b1c548576e6</srcmd5>
+    <version>1.5.8</version>
+    <time>1575463915</time>
+    <user>dimstar_suse</user>
+    <comment>license tag corrected</comment>
+    <requestid>752721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3ae62dbc0f26c16d90becfc7fcc87ba9</srcmd5>
+    <version>1.5.8</version>
+    <time>1576585837</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757498</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8957ac8c0ba105131c34ee1a99bc17f3</srcmd5>
+    <version>1.6.0</version>
+    <time>1585484748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789124</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>24c327a6ee29d61171cbc53caf155b25</srcmd5>
+    <version>1.6.0</version>
+    <time>1586113031</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791489</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>904e316fb742409d1a6076018a322f70</srcmd5>
+    <version>1.6.1</version>
+    <time>1588023213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797635</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7155eca208870a3b8d6d2b90e461296</srcmd5>
+    <version>1.7.0</version>
+    <time>1590506453</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808348</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>16d452812eed7088cabc946627b26ed2</srcmd5>
+    <version>1.7.1</version>
+    <time>1591101263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809643</requestid>
+  </revision>
+</revisionlist>

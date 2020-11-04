@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6a8604325744a14a30b9dcf790541c7</srcmd5>
+    <version>1.0.0</version>
+    <time>1581585174</time>
+    <user>dimstar_suse</user>
+    <comment>New haproxy container</comment>
+    <requestid>773812</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c7a755098fb2398204b4f571f0565fa</srcmd5>
+    <version>1.0.0</version>
+    <time>1589055578</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Don't install busybox-man, we want mandoc</comment>
+    <requestid>795674</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dcc27b59988ebc15f97cc3320f6c6ee5</srcmd5>
+    <version>1.0.0</version>
+    <time>1591423979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811765</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>1f8d149bad72410e6ccacb6ab42ae149</srcmd5>
+    <version>1.0.0</version>
+    <time>1604306663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845366</requestid>
+  </revision>
+</revisionlist>

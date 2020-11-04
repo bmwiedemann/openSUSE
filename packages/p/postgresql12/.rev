@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afc614cd2d2f08c654bcb52d9bfc5686</srcmd5>
+    <version>12.1</version>
+    <time>1580204748</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>766657</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>26f13e43f5559627d1ac772193766980</srcmd5>
+    <version>12.1</version>
+    <time>1581694241</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>773397</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81e7fdc82693631d5b932bff85352284</srcmd5>
+    <version>12.2</version>
+    <time>1582112411</time>
+    <user>dimstar_suse</user>
+    <comment>update for CVE-2020-1720 (forwarded request 774443 from darix)</comment>
+    <requestid>774446</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>87e7e6fe3bd1bc88d11509a462e26f19</srcmd5>
+    <version>12.2</version>
+    <time>1583007808</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a few mistakes in the spec file.</comment>
+    <requestid>779839</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e730dc78238990a3a79112afd5e1bbb</srcmd5>
+    <version>12.3</version>
+    <time>1591862278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812779</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c0a00d23f8d3e38a314808f1692ebbf2</srcmd5>
+    <version>12.4</version>
+    <time>1597518843</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.4:
+  * CVE-2020-14349, bsc#1175193: Set a secure search_path in
+    logical replication walsenders and apply workers
+  * CVE-2020-14350, bsc#1175194: Make contrib modules' installation
+    scripts more secure.
+  * https://www.postgresql.org/docs/12/release-12-4.html
+- Remove postgresql-regress.patch, it does not apply anymore and
+  it does not seem to be needed anymore.
+- Pack the /usr/lib/postgresql symlink only into the main package.
+
+- Let postgresqlXX conflict with postgresql-noarch &lt; 12.0.1 to get
+  a clean and complete cutover to the new packaging schema.</comment>
+    <requestid>826609</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>3076e5e322b615472f638466f8e033a2</srcmd5>
+    <version>12.4</version>
+    <time>1603545366</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop building the mini and lib packages as they are now coming
+  from postgresql13.</comment>
+    <requestid>843220</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0686aa4cbe4cb5ac50b8933947830681</srcmd5>
+    <version>12.4</version>
+    <time>1604415579</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org</comment>
+    <requestid>845766</requestid>
+  </revision>
+</revisionlist>

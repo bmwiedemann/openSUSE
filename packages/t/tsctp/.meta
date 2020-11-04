@@ -1,0 +1,10 @@
+<package name="tsctp" project="openSUSE:Factory">
+  <title>SCTP test tool</title>
+  <description>TSCTP is an SCTP test tool. Its purpose is to perform basic SCTP
+functionality tests to check implementations interoperability and
+to verify that the SCTP stack is working.
+
+</description>
+  <devel project="network:utilities" package="tsctp"/>
+  <url>https://www.uni-due.de/~be0001/tsctp/</url>
+</package>

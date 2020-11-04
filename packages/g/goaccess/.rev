@@ -1,0 +1,334 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f5f604508c8269d78781e60cab541557</srcmd5>
+    <version>1.2</version>
+    <time>1539869975</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove filler wording from description.
+- Use %license instead of %doc
+- Remove wrongly added v1.2.tar.gz
+- Clean up spec file
+- Update to 1.2:
+  *  Added a Dockerfile.
+  *  Added a replacement for GNU getline() to dynamically expand line buffer
+     while  maintaining real-time output.
+  *  Added --daemonize command line option to run GoAccess as daemon.
+  *  Added several improvements to the HTML report on small-screen devices.
+  *  Added option to the HTML report to auto-hide tables on small-screen
+  *  Added --process-and-exit command line option to parse log and exit.
+  *  Added several feed readers to the list of browsers.
+  *  Added &quot;-&quot; single dash per convention to read from the standard input.
+  *  Added support for MaxMind GeoIP2.
+  *  Added the ability to read and follow from a pipe such as
+     &quot;tail -f access.log | goaccess -&quot;
+  *  Added time unit (seconds) to the processed time label in the HTML/terminal
+  *  Added visitors' percent column to the terminal dashboard.
+  *  Changed D3 charts to dim Y-axis on mouseover.
+  *  Changed D3 charts to reflect HTML column sort.
+  *  Changed D3 charts to render only if within the viewport. This improves the
+     real-time HTML performance.
+  *  Changed HTML report tables to render only if within the viewport.
+  *  Changed percentage calculation to be based on the total within each panel.
+  *  Ensure start/end dates are updated real-time in the HTML output.
+  *  Ensure &quot;window.location.hostname&quot; is used as the default WS server host.
+  *  most cases, this should avoid the need for specifying &quot;--ws-url=host&quot;.
+  *  using &quot;--real-time-html&quot; should suffice.
+  *  Fixed issue on HTML report to avoid outputting scientific notation for all
+  *  sizes.
+  *  Fixed integer overflow when calculating bar graph length on terminal.
+  *  Fixed issue where global config file would override command line arguments.
+  *  Fixed issue where it wouldn't allow loading from disk without specifying a
+  *  when executed from the cron.
+  *  Fixed issue where parser couldn't read some X-Forwarded-For (XFF) formats.
+     that this breaks compatibility with the original implementation of
+     XFF, but at the same time it gives much more flexibility on different.
+  *  Fixed issue where specifying fifo-in/out wouldn't allow HTML real-time
+  *  Fixed issue where the wrong number of parsed lines upon erroring out was
+  *  Fixed issue where the WebSocket server prevented to establish a connection
+     a client due to invalid UTF-8 sequences.
+  *  Fixed percent issue when calculating visitors field.
+  *  Updated the list of crawlers.
+- update to 0.9
+  * Added ability to double decode an HTTP referer and agent.
+  * Added ability to sort views through the command line on initial load.
+  * Added additional data values to the backtrace report.
+  * Added additional graph to represent the visitors metric on the HTML output.
+  * Added AM_PROG_CC_C_O to configure.ac
+  * Added 'Android Lollipop' to the list of operating systems.
+  * Added 'average time served' metric to all panels.
+  * Added 'bandwidth' metric to all panels.
+  * Added command line option to disable summary metrics on the CSV output.
+  * Added numeric formatting to the HTML output to improve readability.
+  * Added request method specifier to the default W3C log format.
+  * Added support for GeoIP Country IPv6 and GeoIP City IPv6 through --geoip-database.
+  * Added the ability to ignore parsing and displaying given panel(s).
+  * Added the ability to ignore referer sites from being counted.
+    A good case scenario is to ignore own domains. i.e., owndomain.tld
+    This also allows ignoring hosts using wildcards.
+    For instance, *.mydomain.tld or www.mydomain.* or www?.mydomain.tld
+  * Added time/hour distribution module. e.g., 00-23.
+  * Added 'visitors' metrics to all panels.
+  * Added Windows 10 (v6.4) to the real windows user agents.
+  * Changed AC_PREREQ macro version so it builds on old versions of autoconf.
+  * Changed GEOIP database load to GEOIP_MEMORY_CACHE for faster lookups.
+  * Changed maximum number of choices to display per panel to 366 fron 300.
+  * Ensure config file is read from home dir if unable to open it from %sysconfdir% path.
+  * Fixed array overflows when exceeding MAX_* limits on command line options.
+  * Fixed a SEGFAULT where sscanf could not handle special chars within the referer.
+  * Fixed character encoding on geolocation output (ISO-8859 to UTF8).
+  * Fixed issue on wild cards containing '?' at the end of the string.
+  * Fixed issue where a 'Nothing valid to process' error was triggered when the
+    number of invalid hits was equal to the number of valid hits.
+  * Fixed issue where outputting to a file left a zero-byte file in pwd.
+  * Improved parsing of operating systems.
+  * Refactored log parser so it allows with ease the addition of new modules. This
+    also attempts to decouple the core functionality from the rendering functions.
+    It also gives the flexibility to add children metrics to root metrics for any
+    module. e.g., Request A was visited by IP1, IP2, IP3, etc.
+  * Restyled HTML output.
+- Changes to GoAccess 0.8.5 - Sunday, September 14, 2014
+  * Fixed SEGFAULT when parsing a malformed request that doesn't have HTTP status.
+- Changes to GoAccess 0.8.4 - Monday, September 08, 2014
+  * Added ability to handle nginx non-standard status code 444 as 404.
+    `--444-as-404`
+  * Added and updated operating systems, and browsers.
+  * Added excluded IP hits count to the general statistics panel on all reports.
+  * Added HTTP nonstandard code '444' to the status code list.
+  * Added the ability to count client errors (4xx) to the unique visitors count.
+    Now by default it omits client errors (4xx) from being added to the unique
+    visitors count as they are probably not welcomed visitors. 4xx errors are
+    always counted in panels other than visitors, OS &amp; browsers.
+    `--4xx-to-unique-count`
+  * Removed request status field restriction. This allows parsing logs that contain
+    only a valid date, IPv4/6 and host.
+  * Fixed issue when excluding IPv4/v6 ranges.
+  * Fixed compile error due to missing include &lt;sys/types.h&gt; for type off_t
+    (gcc 4.1).
+- Changes to GoAccess 0.8.3 - Monday, July 28, 2014
+  * Fixed SEGFAULT when parsing a CLF log format and using --ignore-crawlers.
+  * Fixed parsing conflict between some Opera browsers and Chrome.
+  * Fixed parsing of several feed readers that are Firefox/Safari-based.
+  * Fixed Steam detection.
+  * Added Huawei to the browser's list and removed it from the OS's list.
+- Changes to GoAccess 0.8.2 - Monday, July 20, 2014
+  * Added ability to parse dates containing whitespaces in between,
+    e.g., Jul 15 20:13:59 (syslog format).
+  * Added a variety of browsers, game systems, feed readers, and podcasts.
+  * Added a '-V --version' command line option.
+  * Added missing up/down arrows to the help section.
+  * Added the ability to ignore crawlers using the '--ignore-crawlers' option.
+  * Added the ability to ignore multiple IPv4/v6 and IP ranges.
+  * Added the PATCH method according to RFC 5789.
+  * Fixed GeoLocation percent issue for the JSON, CSV and HTML outputs.
+  * Fixed memory leak when excluding one or multiple IPs.
+- Changes to GoAccess 0.8.1 - Monday, June 16, 2014
+  * Added ability to add/remove static files by extension through the config
+    file.
+  * Added ability to print backtrace on segmentation fault.
+  * Escaped JSON strings correctly according to [RFC4627].
+  * Fixed encoding issue when extracting keyphrases for some HTTP referers.
+  * Fixed issue where HTML bar graphs were not shown due to numeric locale.
+  * Fixed issue with URIs containing &quot;\r?\n&quot; thus breaking the corresponding
+    output.
+  * Make sure request string is URL decoded on all outputs.
+- Changes to GoAccess 0.8 - Tuesday, May 20, 2014
+  * Added APT-HTTP to the list of browsers.
+  * Added data persistence and ability to load data from disk.
+  * Added IE11 to the list of browsers.
+  * Added IEMobile to the list of browsers.
+  * Added multiple command line options.
+  * Added Nagios check_http to the list of browsers.
+  * Added parsing progress metrics - total requests / requests per second.
+  * Added the ability to parse a GeoLiteCity.dat to get the city given an IPv4.
+  * Change the way the configuration file is parsed. This will parse all
+    configuration options under ~/.goaccessrc or the specified config file and will
+    feed getopt_long with the extracted key/value pairs. This also allows the
+    ability to have comments on the config file which won't be overwritten.
+  * Ensure autoconf determines the location of ncurses headers.
+  * Fixed issue where geo_location_data was NULL.
+  * Fixed issue where GoAccess did not run without a tty allocated to it.
+  * Fixed potential memory leak on --log-file realpath().
+  * Fixed Solaris build errors.
+  * Implemented an on-memory hash database using Tokyo Cabinet. This implementation
+    allows GoAccess not to rely on GLib's hash table if one is needed.
+  * Implemented large file support using an on-disk B+ Tree database. This
+    implementation allows GoAccess not to hold everything in memory but instead it
+    uses an on-disk B+ Tree database.
+  * Trimmed leading and trailing whitespaces from keyphrases module.
+- Changes to GoAccess 0.7.1 - Monday, February 17, 2014
+  * Added ability to get real OS names using --real-os. (Android, Windows, Mac)
+  * Added ability to log debug messages to a file.
+  * Added ability to parse tab-separated log format strings.
+  * Added ability to support terminals without colors.
+  * Added ability to turn off color output by using --no-color flag.
+  * Added command line option to append HTTP method to request.
+  * Added command line option to append HTTP protocol to request.
+  * Added long options to command-line.
+  * Added missing Win 9x 4.90 (Windows Me) user-agent.
+  * Added missing Windows RT user-agent.
+  * Ensure mouse click does not reset expanded module if it is the same.
+  * Fixed Amazon CloudFront tab-separated log format.
+  * Fixed &quot;FreeBSD style&quot; ncursesw built into system.
+  * Fixed HTML report issue where data cell would not wrap.
+  * Fixed issue when isatty() could not find a valid file descriptor.
+  * Fixed SymbianOS user-agent and retrieve its version.
+- update to 0.7:
+  * added a command line option to ignore request query strings
+  * added additional static file extensions
+  * added country per IP to HOSTS module (HTML &amp; JSON)
+  * added GEOLOCATION report to all outputs - includes continents/countries
+  * added IP resolver to HTML and JSON output
+  * added module numbers to each module header
+  * added the ability to output JSON and CSV
+  * fixed buffer overflow issue with realpath
+  * new HTML report - HTML5 + CSS styles
+  * properly split request line into the three request modules
+- update to 0.6:
+  * adds an expandable dashboard, allowing data to be processed in realtime
+  * ability to search across the whole dashboard, with the option to use
+    regular expressions
+  * active modules can now be sorted by multiple fields
+  * parses the time taken to serve the request, in microseconds and seconds
+  * other features and fixes have been added, as well
+- update to 0.5
+   * Added the ability to parse a custom format string.
+   * Added ability to output a full stats report to a file.
+   * Added support for IPv6
+   * Fixed issue on Opera agents where version was not recognized correctly.
+   * Fixed issue on empty Google query strings.
+   * Fixed google cache key-phrases.
+   * Added a new include sys/socket.h - BSD
+   * Added a key shortcut to scroll top/bottom.
+   * Fixed other minor fixes and changes.
+- removed patches (don't apply anymore)
+- add sed to replace __DATE__ and __TIME
+- update to 0.4.2:
+  * UTF-8 support has been implemented
+  * wide-character/UTF-8 is handled properly
+  * -lrt has been removed
+  * a minor bug when adding monthly totals was fixed
+- changes from 0.4.1:
+  * more flexibility when resizing the terminal; should work fine with the standard 80x24
+  * implemented a pipeline from stdin, so the input doesn't have to be only a file
+- update to 0.4:
+  * glib 2.0 or later is now required instead of 2.16, as in previous versions
+  * implemented list of agents for specific hosts
+  * added graphs to the unique_visitors subwin
+  * various bug fixes and code cleanups (mainly in the subwin modules)
+  * bandwidth per day, and host was implemented as well
+- add patch to use getaddrinfo
+- update to 0.33:
+  * a request size parsing issue was fixed: due to malformed syntax on the HTTP protocol, bandwidth was reset to 0
+- update to 0.32:
+  * fixes an agent parsing issue; as a result, operating systems are now properly counted
+- changes from 0.31:
+  * due to the difference of gamma correction on some monitors, a color scheme implementation was added
+- update to 0.3:
+  * a more detailed and comprehensive browser/OS report is produced
+  * real support was added for LFS (files larger than 2 GiB on 32-bit systems)
+  * bandwidth details were added for requested files
+  * other features and bugfixes were made
+- update to 0.2:
+  * Real-time statistics (RTS) were implemented: data will be appended as the log file grows; this is similar to the use of &quot;tail -f&quot; on Unix systems
+  * a keyphrases report coming from the Google search engine was added -- this includes, raw, cache, and translation queries
+  * the screen resize functionality was implemented
+  * several fixes and improvements were made
+- update to 0.12:
+  * fixes a segmentation fault when parsing logs with unusual request type
+- initial package (0.1)
+</comment>
+    <requestid>642812</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4499e8aad6d64275ad7f7de096af3674</srcmd5>
+    <version>1.3</version>
+    <time>1543224652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3
+  * Added ability to store accumulated processing time into DB_GEN_STATS tcb
+    file via '--accumulated-time' command line option.
+  * Added additional Apache status codes to the list.
+  * Added a few feed readers to the list.
+  * Added more OSs to the list of OSs.
+  * Added --anonymize-ip command line option to anonymize ip addresses.
+  * Added --browsers-file command line option to load a list of crawlers from a
+    text file.
+  * Added byte unit (PiB) to formatters
+  * Added translations
+  * Added '%h' date specifier to the allowed date character specifiers.
+  * Added &quot;HeadlessChrome&quot; to the list of browsers.
+  * Added --hide-referer command line option to hide referers from report.
+  * Added HTTP status code 429 (TOO MANY REQUESTS).
+  * Added IGNORE_LEVEL_PANEL and IGNORE_LEVEL_REQ definitions.
+  * Added --ignore-referer-report command line option to hide referers from
+    output.
+  * Added &quot;Mastodon&quot; user-agent to the list of crawlers/unix-like.
+  * Added new fontawesome icons and use angle arrows in HTML paging.
+  * Added new purple theme to HTML report and default to it.
+  * Added --no-parsing-spinner command line option to switch off parsing
+    spinner.
+  * Added .ogv and ogg static file extension (ogg video, Ogg Vorbis audio).
+  * Added OS X version numbers when outputting with --real-os.
+  * Added parsing mechanism in an attempt capture more bots and to include
+    unspecified bots/crawlers.
+  * Added --pidfile command line option to the default config file.
+  * Added SSL support for Docker goaccess build.
+  * Added support to the WebSocket server for openssl-1.1*.</comment>
+    <requestid>651371</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5404b8e3138b1c4609e012dd0ac9006a</srcmd5>
+    <version>1.3</version>
+    <time>1566900097</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bin2c.patch to fix
+  https://github.com/allinurl/goaccess/issues/1415
+  which lead to garbage in HTML reports</comment>
+    <requestid>726410</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f3553b3a985aa3343016811c8461d29b</srcmd5>
+    <version>1.3</version>
+    <time>1583775260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783006</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>27c03cc861b595ed54098c47cd8dd8e6</srcmd5>
+    <version>1.4</version>
+    <time>1589892376</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4:
+  * Added a caching storage mechanism to improve parsing raw data and data
+    rendering.
+  * Added a mechanism to avoid counting duplicate data when restoring persisted
+    data from disk.
+  * Added additional option to the HTML report to set a maximum number of items
+    per page to 3.
+  * Added a list of podcast-related user agents under '%sysconfdir%'.
+  * Added 'Android 10' to the list of Android codenames.
+  * Added a 'widescreen' layout to the HTML report (e.g., 4K TV/KPI Dashboard).
+  * Added 'Beaker', 'Brave', and 'Firefox Focus' to the list of browsers
+  * Added command line option --user-name=username to avoid running GoAccess as
+    root when outputting a real-time report.
+  * Added 'DuckDuckGo' and 'MSNBot' browsers to the browsers.list.
+  * Added 'facebookexternalhit' to the default crawler list.
+  * Added German translation (DE).
+  * Added Kubernetes Nginx Ingress Log Format to the default config file.
+  * Added 'macOS Catalina' to the list of OSX codenames.
+  * Added minor CSS updates to HTML report.
+  * Added missing header '&lt;sys/socket.h&gt;' to fix FreeBSD build
+  * Added new 'Edg' token to the list of browsers.
+  * Added '--no-ip-validation' command line to disable client IP validation
+  * Added '--persist' and '--restore' options to persist to disk and restore a
+    dump from disk.
+  * Added Portuguese translation (pt-BR)
+  * Added Swedish translation (SV)
+  * Added the ability to parse server cache status and a new panel to display
+    those metrics.
+  * Changed accumulated time to work by default on '--persist' and '--restore'.
+  * Changed back how the hits and visitors percentage is calculated to be more</comment>
+    <requestid>806766</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,8 @@
+<package name="libretro-craft" project="openSUSE:Factory">
+  <title>Craft libretro core</title>
+  <description>Minecraft clone for Windows, Mac OS X and Linux. Just a few thousand lines of C using modern OpenGL (shaders). Online multiplayer support is included using a Python-based server.
+
+This package is for RetroArch/libretro front-end.
+</description>
+  <devel project="Emulators" package="libretro-craft"/>
+</package>

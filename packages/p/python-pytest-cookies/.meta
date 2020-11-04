@@ -1,0 +1,5 @@
+<package name="python-pytest-cookies" project="openSUSE:Factory">
+  <title></title>
+  <description>Cookiecutter template pytest plugin</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-cookies"/>
+</package>

@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d9798375ea51c24415b182b251b5bfc</srcmd5>
+    <version>unknown</version>
+    <time>1325922188</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="2" vrev="17">
+    <srcmd5>4214d841824840f7a2b5d166ff0ebb8a</srcmd5>
+    <version>5.1.4</version>
+    <time>1325948283</time>
+    <user>coolo</user>
+    <comment>
+- lua51 branched from lua package
+
+- cross-build fix: use %__cc macro
+
+- use %_smp_mflags
+
+- removed -L/usr/lib from Libs: in etc/lua.pc [bnc#613497]
+- used upstream bugfix patch from http://www.lua.org/download.html
+
+- buildrequire pkg-config to fix provides
+
+- modified LUA_PATH_DEFAULT [bnc#589441]: search modules under
+  /usr/%{_lib}/lua/%{major_version} too
+
+- add baselibs.conf as a source
+- package documentation as noarch
+
+- enable parallel building
+
+- updated patches to apply with fuzz=0
+
+- add baselibs.conf
+
+- package owns /usr/{lib,share}/lua directories from now
+- emoved unneeded root.patch
+
+- updated to 5.1.4: bugfix release
+
+- Set LUA_ROOT to /usr and fix INSTALL_CMOD for lib64</comment>
+    <requestid>99319</requestid>
+  </revision>
+  <revision rev="3" vrev="18">
+    <srcmd5>41c22377d48dad8a3b81c9809f95fc27</srcmd5>
+    <version>5.1.4</version>
+    <time>1329405571</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104407 from coolo)</comment>
+    <requestid>105275</requestid>
+  </revision>
+  <revision rev="4" vrev="19">
+    <srcmd5>c4d6d73a15b5bb4224def48b17de5936</srcmd5>
+    <version>5.1.4</version>
+    <time>1334216390</time>
+    <user>coolo</user>
+    <comment>- Correction in Provides and Obsolete for lua-libs</comment>
+    <requestid>112570</requestid>
+  </revision>
+  <revision rev="5" vrev="21">
+    <srcmd5>c4d6d73a15b5bb4224def48b17de5936</srcmd5>
+    <version>5.1.4</version>
+    <time>1340183677</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1665f6421bfdb8e197034afbb1d6b7f</srcmd5>
+    <version>5.1.5</version>
+    <time>1347883115</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134028</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c1665f6421bfdb8e197034afbb1d6b7f</srcmd5>
+    <version>5.1.5</version>
+    <time>1359109413</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>ee9bdb94b1a56e9adf41b937feec4316</srcmd5>
+    <version>5.1.5</version>
+    <time>1368713648</time>
+    <user>coolo</user>
+    <comment>- move rpm macros back, but install it in /etc/rpm/macros.lua51
+  and call lua5.1 in %lua_version definition
+
+- move the lua rpm macros to the devel package to avoid conflict 
+  with lua 5.2
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls</comment>
+    <requestid>175827</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>ee9bdb94b1a56e9adf41b937feec4316</srcmd5>
+    <version>5.1.5</version>
+    <time>1379663208</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>0910e9045c1bcadb3dda6efae6e4616c</srcmd5>
+    <version>5.1.5</version>
+    <time>1382549020</time>
+    <user>scarabeus_factory</user>
+    <comment>Add -ldl to lua.pc (new patch)
+Refresh lua51-5.1.5-module-path.diff patch (forwarded request 204313 from ptrommler)</comment>
+    <requestid>204414</requestid>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>0da73910e552cf32c8159be173da9f94</srcmd5>
+    <version>5.1.5</version>
+    <time>1398434816</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>230929</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>16b835e65bff23b0a16db7860627f325</srcmd5>
+    <version>5.1.5</version>
+    <time>1399128695</time>
+    <user>coolo</user>
+    <comment>I expect this to fix many &quot;Linux&quot; games that were created and designed for Ubuntu and friends. They will then work outside the Steam runtime with native libraries on SUSE, too. (forwarded request 232302 from Mailaender)</comment>
+    <requestid>232395</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>16b835e65bff23b0a16db7860627f325</srcmd5>
+    <version>5.1.5</version>
+    <time>1409301827</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>bb40cd04d29a1b599ba8a9a9ba353727</srcmd5>
+    <version>5.1.5</version>
+    <time>1410795592</time>
+    <user>coolo</user>
+    <comment>- fix update-alternatives
+
+- fix /etc/rpm/macros.lua51 perms</comment>
+    <requestid>248967</requestid>
+  </revision>
+  <revision rev="15" vrev="13">
+    <srcmd5>aec7c5deb41101d06343caec18a68ba8</srcmd5>
+    <version>5.1.5</version>
+    <time>1442638345</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>329248</requestid>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>f452cda71dca11561535608bed07bf94</srcmd5>
+    <version>5.1.5</version>
+    <time>1502706898</time>
+    <user>dimstar_suse</user>
+    <comment>pkgconf provide</comment>
+    <requestid>512558</requestid>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>60d63752127d30cd87b135e0309bdc86</srcmd5>
+    <version>5.1.5</version>
+    <time>1567677724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720490</requestid>
+  </revision>
+</revisionlist>

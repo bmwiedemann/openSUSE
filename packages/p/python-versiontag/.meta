@@ -1,0 +1,5 @@
+<package name="python-versiontag" project="openSUSE:Factory">
+  <title>python-versiontag</title>
+  <description>Python git tag based version numbers</description>
+  <devel project="devel:languages:python" package="python-versiontag"/>
+</package>

@@ -1,0 +1,1117 @@
+<revisionlist>
+  <revision rev="1" vrev="3">
+    <srcmd5>7c247ece8287f474ae65c289a0ac9a62</srcmd5>
+    <version>6.7</version>
+    <time>1166483728</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>3248b7e0a4c704fa0e6d6aa9da18bf4a</srcmd5>
+    <version>6.7</version>
+    <time>1168360976</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0d2b0e43242d05824529d6111da07b32</srcmd5>
+    <version>6.8</version>
+    <time>1172401830</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9516b9ed5ce3c14f5249c6c6c207188f</srcmd5>
+    <version>6.8</version>
+    <time>1172922327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>ec8bc5af4e1be1182433b3af45c6f9fe</srcmd5>
+    <version>6.8</version>
+    <time>1173168167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5d969040f4503245576f1c950b0bd0e5</srcmd5>
+    <version>6.8</version>
+    <time>1173918149</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e946cc25234cbbe5a093e807bc7a84a</srcmd5>
+    <version>6.9</version>
+    <time>1174681731</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8df66eaeda5745e460a0bb01dea17ee9</srcmd5>
+    <version>6.9</version>
+    <time>1175811248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>5b09de20319bb3726cc61c7d5f804123</srcmd5>
+    <version>6.9</version>
+    <time>1179651807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>c56003b7b6661831784d9c180f835743</srcmd5>
+    <version>6.9</version>
+    <time>1179689394</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="30">
+    <srcmd5>1e2afb7a8fa234824d0e6922d73cd59e</srcmd5>
+    <version>6.9</version>
+    <time>1185213423</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>097b8adb9c74089197ea3fa2964ecfb2</srcmd5>
+    <version>6.9.89.48</version>
+    <time>1196435231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8998032ef06ce45fbdbe4d85ed0ce81c</srcmd5>
+    <version>6.9.90</version>
+    <time>1196676615</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>bc84fb3961ed780364260cc42d81840c</srcmd5>
+    <version>6.9.90</version>
+    <time>1197330842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>51ebcac23334f23222175a92ae1a4843</srcmd5>
+    <version>6.9.90</version>
+    <time>1197479026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>3beb2e80e3135276b92c0198a450a43a</srcmd5>
+    <version>6.9.90</version>
+    <time>1199705045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>048012aa03c04dbeed76f7f645fa887a</srcmd5>
+    <version>6.9.91</version>
+    <time>1200103429</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8b63867339eb7b4420bce2be200fc2e5</srcmd5>
+    <version>6.9.92</version>
+    <time>1200217649</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>78f9ef3a92f8bb45945ed1a60185134b</srcmd5>
+    <version>6.9.92</version>
+    <time>1200232335</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd0283a03e97ca3dd1c59c4ba053e61f</srcmd5>
+    <version>6.10</version>
+    <time>1201117711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>559446796c011aec699add6011f0757c</srcmd5>
+    <version>6.10</version>
+    <time>1202493851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>ce4e948439cc48313e8c4be730c9c955</srcmd5>
+    <version>6.10</version>
+    <time>1203383987</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>6e8435feaba70d1d89f60b50d4efc57f</srcmd5>
+    <version>6.10</version>
+    <time>1207825877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="22">
+    <srcmd5>3cd3fdb25d1c7f1427ece46798852293</srcmd5>
+    <version>6.10</version>
+    <time>1208026398</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>642376772faf6ad03a4b4969f82072ec</srcmd5>
+    <version>6.11</version>
+    <time>1208699014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>739895110483024d493c3fce83ab203c</srcmd5>
+    <version>6.12</version>
+    <time>1214092200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>bbe27ed3afb85293c4ec655ba7465832</srcmd5>
+    <version>6.12</version>
+    <time>1214338676</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="20">
+    <srcmd5>56fd23ad444af349beb0afef0d9b417a</srcmd5>
+    <version>6.12</version>
+    <time>1219350257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>4e087f3815b06fc2b3d497c04e7a3780</srcmd5>
+    <version>6.12</version>
+    <time>1222206578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>51df4a00fe4d715c7d81e54142ed75ef</srcmd5>
+    <version>6.12</version>
+    <time>1224690332</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>b31676f212ed72e17098511831287d96</srcmd5>
+    <version>6.12</version>
+    <time>1227025581</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>09523dc445ad5055d7e0cb77f49dbd9f</srcmd5>
+    <version>6.12</version>
+    <time>1227190605</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>90d3734b72ae60fec4a7c1446dd26fff</srcmd5>
+    <version>7.1</version>
+    <time>1235389486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>3db024a0303dfbd47bfa0dd8ef40b5fe</srcmd5>
+    <version>7.1</version>
+    <time>1237921109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>3db024a0303dfbd47bfa0dd8ef40b5fe</srcmd5>
+    <version>7.1</version>
+    <time>1237921109</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="5">
+    <srcmd5>1ee8504b3982f82fb0f81e88f1350d74</srcmd5>
+    <version>7.1</version>
+    <time>1260953761</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/coreutils based on submit request 26686 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="37" vrev="6">
+    <srcmd5>58fad62eea3e9a6bf645e4052c857f91</srcmd5>
+    <version>7.1</version>
+    <time>1268408663</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/coreutils based on submit request 34676 from user oertel
+</comment>
+    <requestid>34676</requestid>
+  </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>3cc7de3906174342f4437001127bca08</srcmd5>
+    <version>7.1</version>
+    <time>1268923242</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>c8eca825ea281afa29de8960dba791e6</srcmd5>
+    <version>7.1</version>
+    <time>1273090929</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/coreutils based on submit request 39394 from user psmt
+</comment>
+    <requestid>39394</requestid>
+  </revision>
+  <revision rev="40" vrev="9">
+    <srcmd5>a03f2d8ae7b582f902180a7c6ea0ef0f</srcmd5>
+    <version>7.1</version>
+    <time>1278079271</time>
+    <user>autobuild</user>
+    <comment>Copy from home:psmt:branches:openSUSE:Factory/coreutils based on submit request 42290 from user psmt
+</comment>
+    <requestid>42290</requestid>
+  </revision>
+  <revision rev="41" vrev="11">
+    <srcmd5>a03f2d8ae7b582f902180a7c6ea0ef0f</srcmd5>
+    <version>7.1</version>
+    <time>1278667340</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="42" vrev="12">
+    <srcmd5>a03f2d8ae7b582f902180a7c6ea0ef0f</srcmd5>
+    <version>7.1</version>
+    <time>1278678568</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f19ac81b9832b00feeed630a478b84c0</srcmd5>
+    <version>8.5</version>
+    <time>1279541627</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/coreutils based on submit request 42907 from user oertel
+</comment>
+    <requestid>42907</requestid>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>80c417be6b8693ef04fc382b2ca0d9d2</srcmd5>
+    <version>8.5</version>
+    <time>1285085454</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/coreutils based on submit request 48660 from user coolo
+</comment>
+    <requestid>48660</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c7312e216bf311982f58850012f3db92</srcmd5>
+    <version>8.6</version>
+    <time>1289839975</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52848 from user psmt
+</comment>
+    <requestid>52848</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>bdc559edbb9aea933765f9b64304398e</srcmd5>
+    <version>8.6</version>
+    <time>1289839985</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52848
+</comment>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>d1e1bd468556a9f090bedfaa53776cc0</srcmd5>
+    <version>8.6</version>
+    <time>1289986945</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53230 from user coolo
+</comment>
+    <requestid>53230</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>9509f414b1c389efdc726b837b4daef6</srcmd5>
+    <version>8.6</version>
+    <time>1289986958</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53230
+</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>44b4b763d21e5524e8ee4dce9bd3043f</srcmd5>
+    <version>8.9</version>
+    <time>1294389288</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57153 from user psmt
+</comment>
+    <requestid>57153</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>56fd6716fd1735470399ef30ba2138f1</srcmd5>
+    <version>8.9</version>
+    <time>1294389294</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57153
+</comment>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>6fc569e71917e2b0590d55fd37483c2f</srcmd5>
+    <version>8.9</version>
+    <time>1295013528</time>
+    <user>darix</user>
+    <comment>Copy from IBS home:uli_suse/coreutils based on submit request 10077 from user uli_suse
+</comment>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>6fc569e71917e2b0590d55fd37483c2f</srcmd5>
+    <version>8.9</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>abeb650c57f0c4f11fb5765134e798d0</srcmd5>
+    <version>8.10</version>
+    <time>1298032857</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60526 from user psmt
+</comment>
+    <requestid>60526</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>11e670134896ad139f45df900e02c697</srcmd5>
+    <version>8.10</version>
+    <time>1298032866</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60526
+</comment>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>0c370c1766a7f7ccad52e478bff63997</srcmd5>
+    <version>8.10</version>
+    <time>1301669316</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65763 from user coolo
+</comment>
+    <requestid>65763</requestid>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>d9e20ae47ff14a6805d10747928bcaf7</srcmd5>
+    <version>8.10</version>
+    <time>1301669330</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65763
+</comment>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>80f715805db2040f1ba241dc0f40e980</srcmd5>
+    <version>8.11</version>
+    <time>1302891133</time>
+    <user>darix</user>
+    <comment>Accepted submit request 67545 from user coolo
+</comment>
+    <requestid>67545</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>943f5c55a1741841bec06561dcc6b386</srcmd5>
+    <version>8.11</version>
+    <time>1302891147</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67545
+</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e60145d6b109f9dc226dc728343816fa</srcmd5>
+    <version>8.12</version>
+    <time>1304332847</time>
+    <user>saschpe</user>
+    <comment>Update to 8.12 - Main change is handling of FIEMAP based copying</comment>
+    <requestid>68718</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>730becf7aab6dc1875670d1836331a75</srcmd5>
+    <version>8.12</version>
+    <time>1304332861</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 68718
+</comment>
+  </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>e881eae52702fc2ff0415d7ebcc4d5fd</srcmd5>
+    <version>8.12</version>
+    <time>1304493472</time>
+    <user>saschpe</user>
+    <comment>- delete coreutils-testsuite.spec</comment>
+    <requestid>69438</requestid>
+  </revision>
+  <revision rev="62" vrev="4">
+    <srcmd5>87a572e600dcf6f0d17104095a5c6d3d</srcmd5>
+    <version>8.12</version>
+    <time>1304493487</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69438
+</comment>
+  </revision>
+  <revision rev="63" vrev="5">
+    <srcmd5>3e16d7169929122a6ef4d41ff8b675f8</srcmd5>
+    <version>8.12</version>
+    <time>1308131281</time>
+    <user>saschpe</user>
+    <comment>Remove services.</comment>
+    <requestid>73651</requestid>
+  </revision>
+  <revision rev="64" vrev="6">
+    <srcmd5>1cd565f0f3f3a95f5294b2d32a4c72a0</srcmd5>
+    <version>8.12</version>
+    <time>1308131291</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73651
+</comment>
+  </revision>
+  <revision rev="65" vrev="7">
+    <srcmd5>dc476dbcab641777da040b6b0e4f1175</srcmd5>
+    <version>8.12</version>
+    <time>1312286027</time>
+    <user>saschpe</user>
+    <comment>Avoid triggering unwanted AutoFS mounts (bnc#701659). (forwarded request 77635 from leonardocf)</comment>
+    <requestid>77661</requestid>
+  </revision>
+  <revision rev="66" vrev="8">
+    <srcmd5>558b78fc22e12319ff07f9d75242a778</srcmd5>
+    <version>8.12</version>
+    <time>1312286040</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77661
+</comment>
+  </revision>
+  <revision rev="67" vrev="9">
+    <srcmd5>1f0d04a8da12b9de2e42e842760e6b40</srcmd5>
+    <version>8.12</version>
+    <time>1316504288</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83130 from jengelh)</comment>
+    <requestid>83659</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>f707477a7527431835b4bc119e1e6962</srcmd5>
+    <version>8.14</version>
+    <time>1318761740</time>
+    <user>lrupp</user>
+    <comment>Uniformly use german quotes in translated messages</comment>
+    <requestid>87873</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>742bbb176584b637f22df0df43c3259c</srcmd5>
+    <version>8.14</version>
+    <time>1318939190</time>
+    <user>saschpe</user>
+    <comment>Add upstream patch that fixes three bugs in tac</comment>
+    <requestid>88211</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>742bbb176584b637f22df0df43c3259c</srcmd5>
+    <version>8.14</version>
+    <time>1319181823</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>d08ce110a2689baf7b1f6d731b7842b6</srcmd5>
+    <version>8.14</version>
+    <time>1322814363</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94452 from coolo)</comment>
+    <requestid>94517</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>843f131991940ba05427009c1fae3fbb</srcmd5>
+    <version>8.14</version>
+    <time>1325660440</time>
+    <user>coolo</user>
+    <comment>- Adjust license for coreutils-8.6-honor-settings-in-etc-default-su-resp-etc-login.defs.diff
+  [bnc#735081].
+
+- license update: GPL-3.0+
+  Consolidate to GPL-3.0+ and use SPDX format
+  (http://www.spdx.org/licenses). More or less compatible to Fedora package
+  (who don^t use full SPDX implementation)</comment>
+    <requestid>97117</requestid>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>96751fdabc7cf83853a59515325218ce</srcmd5>
+    <version>8.14</version>
+    <time>1329823006</time>
+    <user>coolo</user>
+    <comment>- keep binaries in /usr (UserMerge project)</comment>
+    <requestid>106100</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>a1e703b92a038dc4fabfa898cd34b9f9</srcmd5>
+    <version>8.15</version>
+    <time>1331492617</time>
+    <user>coolo</user>
+    <comment>Update to 8.15 + upstream patches</comment>
+    <requestid>108672</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>bf785b3979baf64f8007c2f1424b98fb</srcmd5>
+    <version>8.16</version>
+    <time>1335165138</time>
+    <user>coolo</user>
+    <comment>Update to 8.16 + Security fix already released for SLES</comment>
+    <requestid>114847</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>5fa1398d7e537b02a0cf18de5c2ccf50</srcmd5>
+    <version>8.16</version>
+    <time>1336035285</time>
+    <user>coolo</user>
+    <comment>Make stdbuf binary find its library</comment>
+    <requestid>115831</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>13d58381b6e55a1a4180a780caa04cf1</srcmd5>
+    <version>8.16</version>
+    <time>1336423472</time>
+    <user>coolo</user>
+    <comment>Fix bnc#760926 and add a second upstream patch for id</comment>
+    <requestid>116644</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>216f7850284f8d66e3bcb86489e19647</srcmd5>
+    <version>8.16</version>
+    <time>1337580182</time>
+    <user>coolo</user>
+    <comment>- Build factor with gmp support (forwarded request 121162 from AndreasSchwab)</comment>
+    <requestid>121165</requestid>
+  </revision>
+  <revision rev="79" vrev="6">
+    <srcmd5>216f7850284f8d66e3bcb86489e19647</srcmd5>
+    <version>8.16</version>
+    <time>1340183249</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>028742262784e4a104343053da0e55c3</srcmd5>
+    <version>8.17</version>
+    <time>1340619845</time>
+    <user>coolo</user>
+    <comment>Update to 8.17</comment>
+    <requestid>125432</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>c4dabaefe01726d6e8fba687ab4d4902</srcmd5>
+    <version>8.17</version>
+    <time>1348381876</time>
+    <user>coolo</user>
+    <comment>fix multithreading patch for sort(1) to respect OMP_NUM_THREADS again.
+the other, &quot;pending&quot; request, #114813, was rejected by aj already (forwarded request 135267 from froh)</comment>
+    <requestid>135275</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>f0bf5d8bafd85e9efef6ccb334c83a53</srcmd5>
+    <version>8.17</version>
+    <time>1351837851</time>
+    <user>coolo</user>
+    <comment>Add upstream patch fixing a cp, mv and install error</comment>
+    <requestid>139627</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>1195d96b4197aef0b27a94e260118935</srcmd5>
+    <version>8.17</version>
+    <time>1354978278</time>
+    <user>namtrac</user>
+    <comment>supersedes request 143406:
+* mention patch name in changelog,
+* fix crash in &quot;df --total&quot; due to bad rootfs hiding</comment>
+    <requestid>144029</requestid>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>5f6f4cbf3d136cce116c23a705645d08</srcmd5>
+    <version>8.17</version>
+    <time>1358863723</time>
+    <user>coolo</user>
+    <comment>- Avoid segmentation fault in &quot;join -i&quot; with long line input (bnc#798541, VUL-1)
+- Avoid segmentation fault in &quot;sort -d&quot; and &quot;sort -M&quot; with long line input
+  (bnc#798538, VUL-1)
+- Avoid segmentation fault in &quot;uniq&quot; with long line input (bnc#796243, VUL-1)
+- Fix test-suite errors (bnc#798261).
+</comment>
+    <requestid>149348</requestid>
+  </revision>
+  <revision rev="85" vrev="7">
+    <srcmd5>5f6f4cbf3d136cce116c23a705645d08</srcmd5>
+    <version>8.17</version>
+    <time>1359108767</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="8">
+    <srcmd5>fc7f0ca1f79eedbf2ba4f8cabf92ad01</srcmd5>
+    <version>8.17</version>
+    <time>1359274712</time>
+    <user>coolo</user>
+    <comment>- do not require texinfo for building, texlive is a bit too heavy</comment>
+    <requestid>150029</requestid>
+  </revision>
+  <revision rev="87" vrev="9">
+    <srcmd5>e297a5fcbdb292d61e512a0ed5baecb1</srcmd5>
+    <version>8.17</version>
+    <time>1364651721</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160428 from m_meister)</comment>
+    <requestid>160435</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>261e290f66c609647836ce04253f30a0</srcmd5>
+    <version>8.21</version>
+    <time>1366955750</time>
+    <user>coolo</user>
+    <comment>- Update to 8.21 (2013-02-14) [stable]
+- Port su(1) deleted upstreams from previous OS package
+- Fix multibyte issue in unexpand (rh#821262) (forwarded request 163146 from bernhard-voelker)</comment>
+    <requestid>163147</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>655bacf50fa67a4c4a45570b7033096a</srcmd5>
+    <version>8.21</version>
+    <time>1369640610</time>
+    <user>coolo</user>
+    <comment>- Try to fix nap() races in gnulib-tests.
+  (coreutils-gnulib-tests-fix-nap-race.patch: add upstream patch)
+  (coreutils-gnulib-tests-fix-nap-race-obs.patch: add openSUSE patch for OBS) (forwarded request 176187 from bernhard-voelker)</comment>
+    <requestid>176188</requestid>
+  </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>f13e602da36f59a22bcb856929edf701</srcmd5>
+    <version>8.21</version>
+    <time>1370924776</time>
+    <user>coolo</user>
+    <comment>- longlong-aarch64.patch: fix build on aarch64 (forwarded request 178022 from Andreas_Schwab)</comment>
+    <requestid>178034</requestid>
+  </revision>
+  <revision rev="91" vrev="4">
+    <srcmd5>dbc0349fba83d35a54e1361781358c5b</srcmd5>
+    <version>8.21</version>
+    <time>1371544243</time>
+    <user>coolo</user>
+    <comment>- Explicitly list libattr-devel as BuildRequires (forwarded request 179221 from jengelh)</comment>
+    <requestid>179293</requestid>
+  </revision>
+  <revision rev="92" vrev="5">
+    <srcmd5>8ec243dc1f8998961b5b85b1e79eb013</srcmd5>
+    <version>8.21</version>
+    <time>1374671169</time>
+    <user>coolo</user>
+    <comment>- Undo the previous change.
+  Remove configure options gl_cv_func_printf_directive_n and
+  gl_cv_func_printf_infinite_long_double again because of constant
+  factory build failures on x86_64 and i586.  The argument for
+  adding them was that the fortify checks would be bypassed
+  by the gnulib &quot;reimplementation of printf&quot;, but that is not
+  the case: instead, gnulib just adds some wrapping code to ensure
+  a consistent behaviour on all supported platforms. (forwarded request 184097 from bernhard-voelker)</comment>
+    <requestid>184102</requestid>
+  </revision>
+  <revision rev="93" vrev="6">
+    <srcmd5>ed84f740b3a0f9fdcd13c520cc69fff9</srcmd5>
+    <version>8.21</version>
+    <time>1376384967</time>
+    <user>scarabeus_factory</user>
+    <comment>- Remove &quot;BuildRequires: help2man&quot; as it is included. (forwarded request 186183 from bernhard-voelker)</comment>
+    <requestid>186198</requestid>
+  </revision>
+  <revision rev="94" vrev="8">
+    <srcmd5>ed84f740b3a0f9fdcd13c520cc69fff9</srcmd5>
+    <version>8.21</version>
+    <time>1379662146</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="9">
+    <srcmd5>b10869b463e7f65ce191c7b4b6115765</srcmd5>
+    <version>8.21</version>
+    <time>1386334298</time>
+    <user>coolo</user>
+    <comment>- Update I18N patch from Fedora:
+  (coreutils-i18n.patch)
+  * sort: fix multibyte incompabilities (rh#821264)
+  * pr -e, with a mix of backspaces and TABs, could corrupt the
+    heap in multibyte locales (analyzed by J.Koncicky)
+  * path in the testsuite to cover i18n regressions
+  * Enable cut and sort-merge perl tests for multibyte as well
+- Refresh longlong-aarch64.patch. (forwarded request 209118 from bernhard-voelker)</comment>
+    <requestid>209317</requestid>
+  </revision>
+  <revision rev="96" vrev="10">
+    <srcmd5>25004708e1204c4391d07c33c927dd79</srcmd5>
+    <version>8.21</version>
+    <time>1386604445</time>
+    <user>coolo</user>
+    <comment>- Require valgrind only when it exists (forwarded request 209799 from AndreasSchwab)</comment>
+    <requestid>209856</requestid>
+  </revision>
+  <revision rev="97" vrev="11">
+    <srcmd5>ff2e055993b709e00bba841b3a1bfe54</srcmd5>
+    <version>8.21</version>
+    <time>1386932184</time>
+    <user>coolo</user>
+    <comment>Avoid false sort test failure (coreutils-i18n.patch):
+As for the C locale, skip the multi-byte test case
+'output-is-input-mb.p'. (forwarded request 210653 from bernhard-voelker)</comment>
+    <requestid>210654</requestid>
+  </revision>
+  <revision rev="98" vrev="12">
+    <srcmd5>7cb7ed14daf805206c5b1013be599025</srcmd5>
+    <version>8.21</version>
+    <time>1387914360</time>
+    <user>coolo</user>
+    <comment>The &quot;gnulib&quot; package contains a number of floating-point test cases
+that do not work correctly with the PowerPC long double (&quot;double double&quot;)
+format.  These tests &quot;accidentally&quot; succeeded anyway in the big-endian
+variant, but are now actually failing in little-endian mode.
+
+As is usual for gnulib, those tests end up copied into the source code
+of various packages that use gnulib, including coreutils, findutils,
+grep, and libunistring.
+
+A patch to fix the tests for ppc64le has been submitted to upstream
+to the bug-gnulib mailing list.  We'll work with upstream of the
+other affected packages to make sure the copies are refreshed.
+
+- coreutils-gnulib-tests-ppc64le.patch: Fix imported gnulib long double
+  math tests for little-endian PowerPC. (forwarded request 211829 from uweigand)</comment>
+    <requestid>212043</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>6055cbc15aba20e7537a9c82864b23f1</srcmd5>
+    <version>8.22</version>
+    <time>1389384922</time>
+    <user>coolo</user>
+    <comment>* Update to 8.22.
+* Pull in two I18N fixes for cut and sort from Fedora.
+* Add new SELinux patch for cp from upstream.
+* Avoid some testsuite failures by adding 4 other patches.
+
+Supersedes 
+https://build.opensuse.org/request/show/212842</comment>
+    <requestid>213255</requestid>
+  </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>0c94d9d276ee379936960d8e75e433be</srcmd5>
+    <version>8.22</version>
+    <time>1391082706</time>
+    <user>coolo</user>
+    <comment>- Testsuite: avoid a failure of tests/mkdir/p-acl.sh on armv7l.
+- Refresh patches with QUILT_REFRESH_ARGS=&quot;-p0 --no-timestamps&quot;
+ (forwarded request 215037 from bernhard-voelker)</comment>
+    <requestid>215038</requestid>
+  </revision>
+  <revision rev="101" vrev="3">
+    <srcmd5>46383e65f3dd202cd482521ef023cd6e</srcmd5>
+    <version>8.22</version>
+    <time>1393600919</time>
+    <user>scarabeus_factory</user>
+    <comment>Add three patches from SLES</comment>
+    <requestid>223708</requestid>
+  </revision>
+  <revision rev="102" vrev="4">
+    <srcmd5>436853b2365f222ccdcac5b9d377f0ed</srcmd5>
+    <version>8.22</version>
+    <time>1395146221</time>
+    <user>coolo</user>
+    <comment>- Add upstream patch (gnu#16855):
+  * coreutils-shuf-repeat-avoid-crash-when-input-empty.patch: Add
+  patch for shuf: with -r, don't dump core if the input is empty.
+
+- Add upstream patch (gnu#16872):
+  * coreutils-date-avoid-crash-in-TZ-parsing.patch: Add patch for
+  date: fix crash or infinite loop when parsing a malformed TZ=&quot;&quot;.
+
+- Add upstream patch (gnu#17010):
+  * coreutils-ln-avoid-segfault-for-empty-target.patch: Add patch
+  to avoid that ln(1) segfaults for an empty, relative target.</comment>
+    <requestid>226325</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>cbcdc64868c2fb3016eb0602332fd4a7</srcmd5>
+    <version>8.23</version>
+    <time>1407072938</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243414</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>cbcdc64868c2fb3016eb0602332fd4a7</srcmd5>
+    <version>8.23</version>
+    <time>1409300675</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>10271d7195c212962ddf6ee9a98f91ea</srcmd5>
+    <version>8.23</version>
+    <time>1411926813</time>
+    <user>coolo</user>
+    <comment>Make testsuite succeed again</comment>
+    <requestid>250219</requestid>
+  </revision>
+  <revision rev="106" vrev="5">
+    <srcmd5>24a0d4d841c75c8f863d5bd8d2df9117</srcmd5>
+    <version>8.23</version>
+    <time>1413382772</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>254465</requestid>
+  </revision>
+  <revision rev="107" vrev="6">
+    <srcmd5>bdd89adf03d72ff03dc566c0d5d1555a</srcmd5>
+    <version>8.23</version>
+    <time>1415365629</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>259216</requestid>
+  </revision>
+  <revision rev="108" vrev="7">
+    <srcmd5>3b70f788e0f1cb518f1c6cbc6177dc9d</srcmd5>
+    <version>8.23</version>
+    <time>1422594155</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282919</requestid>
+  </revision>
+  <revision rev="109" vrev="8">
+    <srcmd5>335412aa196ac62235d914e3673a5817</srcmd5>
+    <version>8.23</version>
+    <time>1426485168</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289954</requestid>
+  </revision>
+  <revision rev="110" vrev="9">
+    <srcmd5>bc993ff0290421f6887f126823c9e991</srcmd5>
+    <version>8.23</version>
+    <time>1427652853</time>
+    <user>dimstar_suse</user>
+    <comment>update testsuite.spec, too</comment>
+    <requestid>293274</requestid>
+  </revision>
+  <revision rev="111" vrev="10">
+    <srcmd5>dd16f4f5c6c9347b159141eaa9636bd9</srcmd5>
+    <version>8.23</version>
+    <time>1429186252</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294936</requestid>
+  </revision>
+  <revision rev="112" vrev="11">
+    <srcmd5>d6f6e7c89cc99c7abcbcba4dd0a57f74</srcmd5>
+    <version>8.23</version>
+    <time>1431753128</time>
+    <user>coolo</user>
+    <comment>- Fix memory handling error with case insensitive sort using UTF-8
+  (boo#928749): coreutils-i18n.patch
+
+- Download keyring file from Savannah; prefer HTTPS over FTP
+  for remote sources.</comment>
+    <requestid>306722</requestid>
+  </revision>
+  <revision rev="113" vrev="12">
+    <srcmd5>f0ac22b55bc27fea16bab6c6826c8ebc</srcmd5>
+    <version>8.23</version>
+    <time>1434003610</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310290</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>e932f7c4fca4f0dd333084e82bac3d31</srcmd5>
+    <version>8.24</version>
+    <time>1440135307</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>318007</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>94e5e7ae37fa2fd4fae65c81be4f7d78</srcmd5>
+    <version>8.24</version>
+    <time>1441726517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328053</requestid>
+  </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>55a71d4b28d57c74e742bae089e43e77</srcmd5>
+    <version>8.24</version>
+    <time>1444130587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334151</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>49aa7343f32db76bb637436b1df146e3</srcmd5>
+    <version>8.25</version>
+    <time>1455190305</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356784</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>46950b4575fe48ca55e0e396df7b119d</srcmd5>
+    <version>8.25</version>
+    <time>1468869430</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>408626</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>7e3ba20c728c5e6214591bd8ba87ba83</srcmd5>
+    <version>8.25</version>
+    <time>1470413507</time>
+    <user>dimstar_suse</user>
+    <comment>- coreutils-maint-fix-dependency-of-man-arch.1.patch: Add Upstream
+  patch to fix the build dependency between src/arch -&gt; man/arch.1
+  which lead to spurious build failures.
+- coreutils-df-hash-in-filter.patch: Refresh with -p0.
+- Add coreutils-df-hash-in-filter.patch that speeds up df.
+</comment>
+    <requestid>416999</requestid>
+  </revision>
+  <revision rev="120" vrev="4">
+    <srcmd5>e50807015d2db6326b44ae381946c5f9</srcmd5>
+    <version>8.25</version>
+    <time>1478288966</time>
+    <user>dimstar_suse</user>
+    <comment>- coreutils-m5sum-sha-sum-fix-ignore-missing-with-00-checksums.patch:
+  Add upstream patch to fix &quot;md5sum --check --ignore-missing&quot; which
+  treated files with checksums starting with &quot;00&quot; as missing.</comment>
+    <requestid>438136</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>ffae56fef0cf6a9cd2ae3adb4aec5c42</srcmd5>
+    <version>8.26</version>
+    <time>1480951720</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443481</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>d79d5d280e65e086b42ff074eb058978</srcmd5>
+    <version>8.27</version>
+    <time>1490132523</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>478478</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>1447b825cd336408e32bcab439874e9e</srcmd5>
+    <version>8.27</version>
+    <time>1495010729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492649</requestid>
+  </revision>
+  <revision rev="124" vrev="3">
+    <srcmd5>07a5809887757266cc147081c378dc42</srcmd5>
+    <version>8.27</version>
+    <time>1503307892</time>
+    <user>dimstar_suse</user>
+    <comment>Drop coreutils-ocfs2_reflinks.patch,OCFS2 file system has supported file clone ioctls like btrfs,
+then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded request 517127 from ganghe)</comment>
+    <requestid>517144</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>3800cd5071ce3c6adaefa7683cbfd30d</srcmd5>
+    <version>8.28</version>
+    <time>1505331207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.28
+  (for details see included NEWS file)
+- Refresh patches:
+  * coreutils-disable_tests.patch
+  * coreutils-i18n.patch
+  * coreutils-remove_hostname_documentation.patch
+  * coreutils-remove_kill_documentation.patch
+  * coreutils-skip-gnulib-test-tls.patch
+  * coreutils-tests-shorten-extreme-factor-tests.patch
+- coreutils.keyring: Update from upstream (Savannah).
+- Remove now-upstream patches:
+  * coreutils-cve-2017-7476-out-of-bounds-with-large-tz.patch
+  * coreutils-tests-port-to-timezone-2017a.patch
+- coreutils.spec: Add &quot;BuildRequires: user(bin)&quot; for the tests.</comment>
+    <requestid>521679</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>e2898d3296320fe2614ed12443bc8de6</srcmd5>
+    <version>8.29</version>
+    <time>1516221916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560437</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>bf99c53376fdc36d3cb399cc5f944fb4</srcmd5>
+    <version>8.29</version>
+    <time>1519844150</time>
+    <user>dimstar_suse</user>
+    <comment>Use %license (boo#1082318). Please forward to SLE, if possible (forwarded request 580080 from favogt)</comment>
+    <requestid>580175</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>9c013cfeaf94c702223f1a26c74b5e3b</srcmd5>
+    <version>8.30</version>
+    <time>1530993178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620564</requestid>
+  </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5d03d8b094913b94ecfb19dea9672754</srcmd5>
+    <version>8.31</version>
+    <time>1552599729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683716</requestid>
+  </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>a6208b97cbf333329e5170d10a56c217</srcmd5>
+    <version>8.31</version>
+    <time>1569522954</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend lang package. The lang package already has a
+  supplements. (forwarded request 731937 from lnussel)</comment>
+    <requestid>732000</requestid>
+  </revision>
+  <revision rev="131" vrev="3">
+    <srcmd5>fa133ce0dea5b980c431a749e2ce4607</srcmd5>
+    <version>8.31</version>
+    <time>1581585047</time>
+    <user>dimstar_suse</user>
+    <comment>another try (forwarded request 769872 from lnussel)</comment>
+    <requestid>769873</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>f559c2dcc5e9950b526d255c15dc8b5a</srcmd5>
+    <version>8.32</version>
+    <time>1585176104</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786157</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>b37675e1ecf6fe40dd19a98cfb3c1804</srcmd5>
+    <version>8.32</version>
+    <time>1589196342</time>
+    <user>dimstar_suse</user>
+    <comment>- add coreutils-use-python3.patch to minimally port away from
+  python 2.x use of pyinotify in the testsuite</comment>
+    <requestid>799984</requestid>
+  </revision>
+  <revision rev="134" vrev="3">
+    <srcmd5>7c7a354d384b556ee43f4386f3d1a1dd</srcmd5>
+    <version>8.32</version>
+    <time>1593292819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816056</requestid>
+  </revision>
+  <revision rev="135" vrev="4">
+    <srcmd5>a83b8cb1397b39ddc288560e254339ca</srcmd5>
+    <version>8.32</version>
+    <time>1596364049</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821545</requestid>
+  </revision>
+  <revision rev="136" vrev="5">
+    <srcmd5>73f5c522b20379223a1fe2c1491ce74e</srcmd5>
+    <version>8.32</version>
+    <time>1599209513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830741</requestid>
+  </revision>
+</revisionlist>

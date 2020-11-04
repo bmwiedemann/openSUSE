@@ -1,0 +1,142 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e87d030a685fa571307648898f13a856</srcmd5>
+    <version>0.106</version>
+    <time>1271669715</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Data-OptList based on submit request 37705 from user computersalat
+</comment>
+    <requestid>37705</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e87d030a685fa571307648898f13a856</srcmd5>
+    <version>0.106</version>
+    <time>1278667377</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e87d030a685fa571307648898f13a856</srcmd5>
+    <version>0.106</version>
+    <time>1278678609</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9749617a1de07fb668d6fada57d394af</srcmd5>
+    <version>0.106</version>
+    <time>1291581987</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54507 from user coolo
+</comment>
+    <requestid>54507</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a893b17d4db539444173f1831746e72c</srcmd5>
+    <version>0.106</version>
+    <time>1291581992</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54507
+</comment>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>a893b17d4db539444173f1831746e72c</srcmd5>
+    <version>0.106</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a893b17d4db539444173f1831746e72c</srcmd5>
+    <version>0.106</version>
+    <time>1319182257</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>85468e61ed7020c169c1865221fc2285</srcmd5>
+    <version>0.107</version>
+    <time>1321875466</time>
+    <user>coolo</user>
+    <comment>- update to 0.107
+      mkopt now prefers named parameters; docs updated
+      added the name_test parameter to mkopt</comment>
+    <requestid>92505</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>73f76d6cc74c49df49fe05b4d3ce2056</srcmd5>
+    <version>0.107</version>
+    <time>1323193190</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>5ed7c403279cc7b42aed4133a284080a</srcmd5>
+    <version>0.107</version>
+    <time>1331039164</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>108078</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>34165b72d929ef05d43844cb8d7e190d</srcmd5>
+    <version>0.107</version>
+    <time>1332769073</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>111081</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>34165b72d929ef05d43844cb8d7e190d</srcmd5>
+    <version>0.107</version>
+    <time>1340183825</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>34165b72d929ef05d43844cb8d7e190d</srcmd5>
+    <version>0.107</version>
+    <time>1359109639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7a1b5d59f6f5d27e210e8801e6efe0ea</srcmd5>
+    <version>0.108</version>
+    <time>1374127227</time>
+    <user>coolo</user>
+    <comment>- updated to 0.108
+ repackage, new bug tracker</comment>
+    <requestid>183232</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>7a1b5d59f6f5d27e210e8801e6efe0ea</srcmd5>
+    <version>0.108</version>
+    <time>1379663621</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d4a128138dbb3b2f4643c8f191e7fc2</srcmd5>
+    <version>0.109</version>
+    <time>1387737435</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 0.109
+ update bugtracker and repo links</comment>
+    <requestid>211373</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9d4a128138dbb3b2f4643c8f191e7fc2</srcmd5>
+    <version>0.109</version>
+    <time>1409302241</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>be238b824a7e0a12962f22de9e571376</srcmd5>
+    <version>0.110</version>
+    <time>1459422183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>381117</requestid>
+  </revision>
+</revisionlist>

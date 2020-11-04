@@ -1,0 +1,298 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>568d724b31ec614a20c59690d7c5721c</srcmd5>
+    <version>MACRO</version>
+    <time>1476779930</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for chromium 54+</comment>
+    <requestid>425308</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5caffe8004c4f43a1250288368253d19</srcmd5>
+    <version>MACRO</version>
+    <time>1477313076</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>436963</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>0a364c02a3d926456058da2ecb00a50d</srcmd5>
+    <version>MACRO</version>
+    <time>1480860487</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443558</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>e8f33bcd0e0124b4604cf5c7a867c08e</srcmd5>
+    <version>MACRO</version>
+    <time>1484660189</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>450315</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>96c8451909532faf1ce391e20a0cfa90</srcmd5>
+    <version>MACRO</version>
+    <time>1490026194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>480937</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>9317b968f48b5c45d73c6869a12a2a96</srcmd5>
+    <version>MACRO</version>
+    <time>1492714504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017-04-01
+  * No upstream changelog available</comment>
+    <requestid>487835</requestid>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>9c54df2024e9aacbe8ac7d3165481be1</srcmd5>
+    <version>MACRO</version>
+    <time>1495268059</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>496525</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>4b134ccbe05fa9bc820207358adfba85</srcmd5>
+    <version>MACRO</version>
+    <time>1497362938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>503083</requestid>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>42900b76226e9d83a6cb6b46c407a034</srcmd5>
+    <version>MACRO</version>
+    <time>1501406846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>513010</requestid>
+  </revision>
+  <revision rev="10" vrev="11">
+    <srcmd5>474e1be19735f31855c8d6a25328b026</srcmd5>
+    <version>MACRO</version>
+    <time>1504617573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017-07-01
+  * No upstream changelog available</comment>
+    <requestid>520998</requestid>
+  </revision>
+  <revision rev="11" vrev="12">
+    <srcmd5>c9da85eb36fc56491d374a438f0794cd</srcmd5>
+    <version>MACRO</version>
+    <time>1509820177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017-11-01
+  * No upstream changelog available</comment>
+    <requestid>538625</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>7d31aff00e11f2ed6a57e875d5a7a2bc</srcmd5>
+    <version>MACRO</version>
+    <time>1513677561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017-12-01
+  * No upstream changelog available</comment>
+    <requestid>558181</requestid>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>9092ce0cee9f8abd770ccec1c04fb51c</srcmd5>
+    <version>MACRO</version>
+    <time>1515260815</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018-01-01
+  * No upstream changelog available 
+
+- Add baselibs.conf: create libre2-0-32bit, dependency to
+  libqt5-qtwebengine-32bit.</comment>
+    <requestid>561443</requestid>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>a0e059d5ea56f5fd4a86632496f8a202</srcmd5>
+    <version>MACRO</version>
+    <time>1517823983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571990</requestid>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>4f8e7ada063cffae9f70119a34da671e</srcmd5>
+    <version>MACRO</version>
+    <time>1521904055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589669</requestid>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>ebbe05a46d7cdff644a77d9992d3663d</srcmd5>
+    <version>MACRO</version>
+    <time>1523127269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2018-04-01
+  * developer visible changes only</comment>
+    <requestid>593984</requestid>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>cc7637c03fdedb99c6cae09f653f9372</srcmd5>
+    <version>MACRO</version>
+    <time>1532361462</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify spec file a bit
+
+- update to 2018-07-01:
+  * Fix a &quot;DFA out of memory&quot; error
+  * Update Unicode data to 11.0.0
+  * Fix `-Wclass-memaccess' warnings and fallthrough macros
+  * Use the standard first-byte analysis for the DFA too</comment>
+    <requestid>624283</requestid>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>811fb6d87da856c544826ae13682054a</srcmd5>
+    <version>MACRO</version>
+    <time>1536678856</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>633471</requestid>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>6c7d3709943cf1e12deef00fb187e6de</srcmd5>
+    <version>MACRO</version>
+    <time>1540319642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2018-10-01:
+  * developer visible changes only</comment>
+    <requestid>642579</requestid>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>098403cec5baaa9b080741e0c375a6dd</srcmd5>
+    <version>MACRO</version>
+    <time>1547211615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662780</requestid>
+  </revision>
+  <revision rev="21" vrev="22">
+    <srcmd5>de6c9dd60b2a7acfeb8f5a5fa4b7a4a8</srcmd5>
+    <version>MACRO</version>
+    <time>1552989925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2019-03-01:
+  * developer visible changes only</comment>
+    <requestid>684736</requestid>
+  </revision>
+  <revision rev="22" vrev="23">
+    <srcmd5>9f64af6e93fc0c5eabda279f56ee5297</srcmd5>
+    <version>MACRO</version>
+    <time>1564413740</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url
+
+- Update to 2019-07-01:
+  * developer visible changes</comment>
+    <requestid>717636</requestid>
+  </revision>
+  <revision rev="23" vrev="24">
+    <srcmd5>a35be8bc0d45ecca85fa55178a7726dd</srcmd5>
+    <version>MACRO</version>
+    <time>1565179131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720560</requestid>
+  </revision>
+  <revision rev="24" vrev="25">
+    <srcmd5>97f351134774d314a2d6c96316ad4bb8</srcmd5>
+    <version>MACRO</version>
+    <time>1569232798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>730281</requestid>
+  </revision>
+  <revision rev="25" vrev="26">
+    <srcmd5>acdb186f12aa4c7cf2169cc2fd019fbd</srcmd5>
+    <version>MACRO</version>
+    <time>1575282428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749044</requestid>
+  </revision>
+  <revision rev="26" vrev="27">
+    <srcmd5>5adb543196a6bd270bcd053f243de608</srcmd5>
+    <version>MACRO</version>
+    <time>1576062231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754865</requestid>
+  </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>29ec3e41b5ec4b769f861a1c5a014866</srcmd5>
+    <version>MACRO</version>
+    <time>1578867347</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020-01-01:
+  * various developer visible changes</comment>
+    <requestid>761763</requestid>
+  </revision>
+  <revision rev="28" vrev="29">
+    <srcmd5>43fefafce675220d561a7deaa97c56f1</srcmd5>
+    <version>MACRO</version>
+    <time>1582394328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>777715</requestid>
+  </revision>
+  <revision rev="29" vrev="30">
+    <srcmd5>86fd888a4b30d6baa214e9aae8dd27ff</srcmd5>
+    <version>MACRO</version>
+    <time>1584964161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-03-03:
+  * various developer visible changes</comment>
+    <requestid>786732</requestid>
+  </revision>
+  <revision rev="30" vrev="31">
+    <srcmd5>8310305b23c4f06c949455a76c088226</srcmd5>
+    <version>MACRO</version>
+    <time>1586247951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791498</requestid>
+  </revision>
+  <revision rev="31" vrev="32">
+    <srcmd5>12283ceb8bbaae0820f77f61cec25105</srcmd5>
+    <version>MACRO</version>
+    <time>1591209037</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810179</requestid>
+  </revision>
+  <revision rev="32" vrev="33">
+    <srcmd5>f9cb57e8b029f5eab917fdb3b00435ba</srcmd5>
+    <version>MACRO</version>
+    <time>1591742033</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-06-01:
+  * Various internal changes</comment>
+    <requestid>812181</requestid>
+  </revision>
+  <revision rev="33" vrev="34">
+    <srcmd5>3800448a67646ee166d36d49590772ed</srcmd5>
+    <version>MACRO</version>
+    <time>1597390255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2020-08-01:
+  * Various internal changes</comment>
+    <requestid>825790</requestid>
+  </revision>
+  <revision rev="34" vrev="35">
+    <srcmd5>d1a92af4fc0c867fd23e1a6b497e9d1d</srcmd5>
+    <version>MACRO</version>
+    <time>1602503207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840948</requestid>
+  </revision>
+</revisionlist>

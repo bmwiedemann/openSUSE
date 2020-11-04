@@ -1,0 +1,6 @@
+<package name="python-MarkupSafe" project="openSUSE:Factory">
+  <title>Implements a XML/HTML/XHTML Markup safe string for Python</title>
+  <description>Implements a unicode subclass that supports HTML strings. This can be used to
+safely encode strings for dynamically generated we pages.</description>
+  <devel project="devel:languages:python" package="python-MarkupSafe"/>
+</package>

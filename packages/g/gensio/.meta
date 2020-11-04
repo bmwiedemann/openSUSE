@@ -1,0 +1,5 @@
+<package name="gensio" project="openSUSE:Factory">
+  <title>gensio</title>
+  <description></description>
+  <devel project="devel:libraries:c_c++" package="gensio"/>
+</package>

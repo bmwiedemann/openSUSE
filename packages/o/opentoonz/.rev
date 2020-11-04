@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9539cff4df424734daac1036e66cc2db</srcmd5>
+    <version>1.1.2</version>
+    <time>1485939117</time>
+    <user>dimstar_suse</user>
+    <comment>2D animation software previously known as Toonz.</comment>
+    <requestid>452540</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e550946a98db007fcc7639ad61b2c196</srcmd5>
+    <version>1.1.2</version>
+    <time>1486465236</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453989</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>36c0ce271f1956728868e16de47d0645</srcmd5>
+    <version>1.1.2</version>
+    <time>1502892729</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pkgconfig(liblz4)</comment>
+    <requestid>514495</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa7326bed1a6dbb4520f1f1d91144845</srcmd5>
+    <version>1.3.0</version>
+    <time>1573771593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738629</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a97540b7b65d3919fd5d6a3e75fca052</srcmd5>
+    <version>1.4.0</version>
+    <time>1580724866</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.4.0</comment>
+    <requestid>769266</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d936adbdccc500ef5c8729eebe3f51a3</srcmd5>
+    <version>1.4.0</version>
+    <time>1583949221</time>
+    <user>dimstar_suse</user>
+    <comment>- Require freeglut-devel instead of pkgconfig(freeglut).
+  The pkgconfig name changed in Tumbleweed.</comment>
+    <requestid>783712</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>82a25d925c4ee487bc3abc823f7674eb</srcmd5>
+    <version>1.4.0</version>
+    <time>1585342905</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable RPATH to fix the leap build.</comment>
+    <requestid>789066</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>aa1edbc231fa767adb4b7374a54f8803</srcmd5>
+    <version>1.4.0</version>
+    <time>1587162710</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop p_add-zlo-to-cmake-include-path-suffixes.patch, no
+  longer needed
+- Add patches:
+  * 0001-Fix-linker-errors-on-Linux.patch
+  * 0001-Use-the-system-mypaint-brushes.patch
+- Small spec cleanup
+</comment>
+    <requestid>794840</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>68095475b21a9551febbd02159a5eca8</srcmd5>
+    <version>1.4.0</version>
+    <time>1591743006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812827</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>c32e5d8f6c46f9e98ef929bad645f946</srcmd5>
+    <version>1.4.0</version>
+    <time>1602762659</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix the factory build:
+  * 0001-System-depend-code-deduplication.patch</comment>
+    <requestid>841809</requestid>
+  </revision>
+</revisionlist>

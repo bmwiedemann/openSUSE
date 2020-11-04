@@ -1,0 +1,6 @@
+<package name="cert-manager" project="openSUSE:Factory">
+  <title></title>
+  <description>Automatically provision and manage TLS certificates in Kubernetes.
+https://cert-manager.io</description>
+  <devel project="devel:kubic" package="cert-manager"/>
+</package>

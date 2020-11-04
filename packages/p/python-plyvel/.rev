@@ -1,0 +1,78 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee996dd04039efea62e70153593b204f</srcmd5>
+    <version>0.9</version>
+    <time>1415016708</time>
+    <user>coolo</user>
+    <comment>It would be nice to have this package in factory</comment>
+    <requestid>259144</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8503c656743a322e5ece05c845776c26</srcmd5>
+    <version>0.9</version>
+    <time>1454353009</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests
+- Update dependencies</comment>
+    <requestid>356911</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f80b7dd0bf314fee2dedc10c6919f2f1</srcmd5>
+    <version>0.9</version>
+    <time>1497274486</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to python singlespec</comment>
+    <requestid>502857</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5b7901d09f6fa890c44476cb09a30486</srcmd5>
+    <version>0.9</version>
+    <time>1498120803</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>505249</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83b0b2f64cf2097673d87db9b5484f99</srcmd5>
+    <version>1.0.0</version>
+    <time>1515876550</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>563870</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a1b3446fc84dcdda18b2edb494fdcac3</srcmd5>
+    <version>1.0.4</version>
+    <time>1524144514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4:
+  * No relevant change for package users</comment>
+    <requestid>593922</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b5d51015f51f2091a1ea8ec560d2b50f</srcmd5>
+    <version>1.0.5</version>
+    <time>1539342664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5:
+  * Rebuild wheels: build against Snappy 1.1.7, and produce Python
+    3.7 wheels</comment>
+    <requestid>641277</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>50afa75414d9f70204834123d76820d5</srcmd5>
+    <version>1.1.0</version>
+    <time>1558516546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704382</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4c1d7715ed213a2f2ebdf80683c1790e</srcmd5>
+    <version>1.2.0</version>
+    <time>1584531915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786088</requestid>
+  </revision>
+</revisionlist>

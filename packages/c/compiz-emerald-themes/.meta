@@ -1,0 +1,5 @@
+<package name="compiz-emerald-themes" project="openSUSE:Factory">
+  <title>Various themes for Emerald decorator</title>
+  <description>Various themes to be used with Emerald decorator of Compiz window/compositing manager.</description>
+  <devel project="X11:Compiz" package="compiz-emerald-themes"/>
+</package>

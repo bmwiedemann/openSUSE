@@ -1,0 +1,291 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8303c26e067fde4dbf549228dbc91b7a</srcmd5>
+    <version>5.420</version>
+    <time>1168903866</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c95603a2c69b835de6e62a59833a07c3</srcmd5>
+    <version>5.423</version>
+    <time>1191839271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>096a4bedf3a35d79c6638449ee9c6dad</srcmd5>
+    <version>5.424</version>
+    <time>1194901096</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55cd2ae5eb52aca8a6cbfe85c2e53d76</srcmd5>
+    <version>5.425</version>
+    <time>1195682375</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>919a8e542d2ad415633e53c0573f1f2c</srcmd5>
+    <version>5.426</version>
+    <time>1206545383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dc3f5c999163b0afbc9e7788387344e</srcmd5>
+    <version>5.427</version>
+    <time>1216998036</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0a24ea1e8690e49b488e41543e348287</srcmd5>
+    <version>5.427</version>
+    <time>1232067091</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="23">
+    <srcmd5>b60148efa3b7ab0b8e8d89e391e37d4e</srcmd5>
+    <version>5.427</version>
+    <time>1248728069</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="24">
+    <srcmd5>c0a1345c2c375b810cfa6b4e5b1118a1</srcmd5>
+    <version>5.427</version>
+    <time>1249942074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="26">
+    <srcmd5>c0a1345c2c375b810cfa6b4e5b1118a1</srcmd5>
+    <version>5.427</version>
+    <time>1249942074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="27">
+    <srcmd5>455d4f852359ada2715360a92d6ece11</srcmd5>
+    <version>5.427</version>
+    <time>1263294068</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MIME-tools based on submit request 29240 from user coolo
+</comment>
+  </revision>
+  <revision rev="12" vrev="28">
+    <srcmd5>3447aa406843a2d80ca31001ad185603</srcmd5>
+    <version>5.427</version>
+    <time>1268925521</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="29">
+    <srcmd5>f2930a01819b4e22eb22fa965f4cc5a6</srcmd5>
+    <version>5.427</version>
+    <time>1269566259</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MIME-tools based on submit request 35745 from user coolo
+</comment>
+    <requestid>35745</requestid>
+  </revision>
+  <revision rev="14" vrev="31">
+    <srcmd5>f2930a01819b4e22eb22fa965f4cc5a6</srcmd5>
+    <version>5.427</version>
+    <time>1278667379</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="32">
+    <srcmd5>f2930a01819b4e22eb22fa965f4cc5a6</srcmd5>
+    <version>5.427</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3c82e22b0290c9876bfa7c9c22d7d55e</srcmd5>
+    <version>5.428</version>
+    <time>1279543168</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-MIME-tools based on submit request 43059 from user anicka
+</comment>
+    <requestid>43059</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fa100212b3d84e5f0e5f9d91776a30cc</srcmd5>
+    <version>5.428</version>
+    <time>1291582986</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54590 from user coolo
+</comment>
+    <requestid>54590</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>0aa563c6f83587adab018629b2f3e5ab</srcmd5>
+    <version>5.428</version>
+    <time>1291582991</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54590
+</comment>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6ef038690ea9bf231d48b569e33e2c64</srcmd5>
+    <version>5.500</version>
+    <time>1294825670</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57814 from user vitezslav_cizek
+</comment>
+    <requestid>57814</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7340c50ec01afbdde0743d2bed94f2a2</srcmd5>
+    <version>5.500</version>
+    <time>1294825678</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57814
+</comment>
+  </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>7340c50ec01afbdde0743d2bed94f2a2</srcmd5>
+    <version>5.500</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>47493e54e2e0ea99dc90450b5ce698d0</srcmd5>
+    <version>5.501</version>
+    <time>1298285761</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62245 from user vitezslav_cizek
+</comment>
+    <requestid>62245</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1ef1a16d4f6450862a39b98fa4a6dbf9</srcmd5>
+    <version>5.501</version>
+    <time>1298285769</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62245
+</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>336235819741a084cfe113d16f21d8e7</srcmd5>
+    <version>5.502</version>
+    <time>1299752723</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63711 from user vitezslav_cizek
+</comment>
+    <requestid>63711</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>336235819741a084cfe113d16f21d8e7</srcmd5>
+    <version>5.502</version>
+    <time>1319182285</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>a293c6b044f6029236c10f97e9a9a7c2</srcmd5>
+    <version>5.502</version>
+    <time>1323193459</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>a293c6b044f6029236c10f97e9a9a7c2</srcmd5>
+    <version>5.502</version>
+    <time>1340183871</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>a293c6b044f6029236c10f97e9a9a7c2</srcmd5>
+    <version>5.502</version>
+    <time>1359109730</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4fdd02b142467ffad5d3f9bff9074186</srcmd5>
+    <version>5.504</version>
+    <time>1371544472</time>
+    <user>coolo</user>
+    <comment>- updated to 5.504
+     * Fix encoding of MIME parameters that contain a quoted
+       string:  &quot;like \&quot;this&quot;
+       https://rt.cpan.org/Public/Bug/Display.html?id=80433
+     * Suppress useless warnings from tests
+       https://rt.cpan.org/Public/Bug/Display.html?id=80679
+     * Fix long-standing bug in encode_mimewords that can
+       break multibyte-encodings (eg, utf-8)
+       https://rt.cpan.org/Public/Bug/Display.html?id=5462
+     * Avoid inappropriately untainting data
+       https://rt.cpan.org/Public/Bug/Display.html?id=67119
+     * Localise $\ to avoid parsing problems if it's set elsewhere
+       https://rt.cpan.org/Public/Bug/Display.html?id=71041
+     * Improve exorcising of filenames
+       https://rt.cpan.org/Public/Bug/Display.html?id=71677
+     * Fix potential race condition in t/Smtpsend.t
+       https://rt.cpan.org/Public/Bug/Display.html?id=68879
+     * Allow native I/O on File::Handle objects
+       https://rt.cpan.org/Public/Bug/Display.html?id=72538
+     * Add &quot;recommends Convert::BinHex&quot; clause to Makefile.PL
+       https://rt.cpan.org/Public/Bug/Display.html?id=72223
+     * Add module_name to Makefile.PL
+       https://rt.cpan.org/Public/Bug/Display.html?id=77138
+     * Fix &quot;Uninitialized value&quot; warning
+       https://rt.cpan.org/Public/Bug/Display.html?id=77190
+     * Don't run t/Smtpsend.t on systems that lack fork()
+       https://rt.cpan.org/Public/Bug/Display.html?id=77351
+     * Add &quot;use strict&quot; everywhere</comment>
+    <requestid>179240</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>4fdd02b142467ffad5d3f9bff9074186</srcmd5>
+    <version>5.504</version>
+    <time>1379663737</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>4fdd02b142467ffad5d3f9bff9074186</srcmd5>
+    <version>5.504</version>
+    <time>1409302366</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>15e566bbfe683dae2e7b3e4517881cca</srcmd5>
+    <version>5.506</version>
+    <time>1430576211</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305036</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>03f5b14142658eb86074d7e6cf1a452f</srcmd5>
+    <version>5.507</version>
+    <time>1443897022</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>335987</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8ee8800c89c217aec1d0f1f66641d0ab</srcmd5>
+    <version>5.507</version>
+    <time>1464690319</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398971</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7b59af24f48689cfadbfa63ad4d96d39</srcmd5>
+    <version>5.508</version>
+    <time>1474886180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424605</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>43613c21e1d01d10b7680070a4608f54</srcmd5>
+    <version>5.509</version>
+    <time>1492011385</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486682</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3ad30da94ed82d578675114fd10224bf</srcmd5>
+    <version>0.8.3</version>
+    <time>1579557327</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain s-tui in Factory</comment>
+    <requestid>765739</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bdc246dcb20a162460c2630fc620720e</srcmd5>
+    <version>1.0.0</version>
+    <time>1579731839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766412</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7effd5a3656fc4d54901edf41dc0229</srcmd5>
+    <version>1.0.1</version>
+    <time>1592307977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814849</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>76cdeadd1437cbbd2313936e2ba41c29</srcmd5>
+    <version>1.0.1</version>
+    <time>1592398437</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct license: GPL-2.0-only -&gt; GPL-2.0-or-later
+</comment>
+    <requestid>815316</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>efc92db0f48e7394aec7af62721315c7</srcmd5>
+    <version>1.0.2</version>
+    <time>1595011912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821424</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="discord-rpc" project="openSUSE:Factory">
+  <title>Discord RPC</title>
+  <description>This is a library for interfacing your game with a locally running Discord desktop client.</description>
+  <devel project="games:tools" package="discord-rpc"/>
+</package>

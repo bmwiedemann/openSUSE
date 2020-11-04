@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b11d5f009eee5dc8614e8e4a275b17ad</srcmd5>
+    <version>4.2.0</version>
+    <time>1575373376</time>
+    <user>dimstar_suse</user>
+    <comment>needed for boo#1153514</comment>
+    <requestid>753068</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c660fbfee81e76825e32243b79372646</srcmd5>
+    <version>4.2.2</version>
+    <time>1583613643</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773866</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d15727897a01bc94aad8998dd0bbc853</srcmd5>
+    <version>0.8.0~rc1</version>
+    <time>1485382740</time>
+    <user>dimstar_suse</user>
+    <comment>Statistical modeling in python.
+Needed by python-seaborn, see request 436927</comment>
+    <requestid>437680</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ed9c709735f60b757310fc1c6705640</srcmd5>
+    <version>0.8.0</version>
+    <time>1494262984</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492925</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3b828ee6d62fa9ca4e57eef7f41d51e9</srcmd5>
+    <version>0.9.0</version>
+    <time>1534543417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629451</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05f2618db606bf60d656052b5d2b9005</srcmd5>
+    <version>0.10.1</version>
+    <time>1564302127</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718917</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8687cfd3e9cdca7ab76f86562df710ff</srcmd5>
+    <version>0.10.1</version>
+    <time>1564414327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719557</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e964e364feb443749ca739f8bfd2ac3b</srcmd5>
+    <version>0.10.2</version>
+    <time>1574932411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750719</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>124743ba297e52f8f2785f29fa7b2f88</srcmd5>
+    <version>0.11.1</version>
+    <time>1586248252</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to not take ages on running tests and
+  blocking all depending packages
+
+- Update to 0.11.1:
+  * Bugfixes all around
+  * upstream declare dropped support for python2</comment>
+    <requestid>791743</requestid>
+  </revision>
+</revisionlist>

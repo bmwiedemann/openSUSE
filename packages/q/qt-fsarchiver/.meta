@@ -1,0 +1,5 @@
+<package name="qt-fsarchiver" project="openSUSE:Factory">
+  <title>Qt GUI for fsarchiver</title>
+  <description>GUI for the program fsarchiver to backup/save/restore partitions, folders and MBR/GPT. Clone from harddisk and partitions is possible.</description>
+  <devel project="Archiving:Backup" package="qt-fsarchiver"/>
+</package>

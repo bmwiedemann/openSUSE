@@ -1,0 +1,10 @@
+<package name="nfdump" project="openSUSE:Factory">
+  <title>CLI tools to collect and process netflow data</title>
+  <description>The nfdump tools collect and process netflow data on the command line.
+They are part of the NFSEN project which is explained more detailed at
+http://www.terena.nl/tech/task-forces/tf-csirt/meeting12/nfsen-Haag.pdf
+
+</description>
+  <devel project="server:monitoring" package="nfdump"/>
+  <url>https://github.com/phaag/nfdump</url>
+</package>

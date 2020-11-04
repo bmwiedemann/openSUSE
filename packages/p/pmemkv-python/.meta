@@ -1,0 +1,6 @@
+<package name="pmemkv-python" project="openSUSE:Factory">
+  <title>pmemkv-python</title>
+  <description>Python bindings for pmemkv. Currently functionally equal to pmemkv in version 1.0. Some of the new functionalities (from pmemkv 1.1) are not yet available.
+</description>
+  <devel project="hardware:nvdimm" package="pmemkv-python"/>
+</package>

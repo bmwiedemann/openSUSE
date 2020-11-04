@@ -1,0 +1,5 @@
+<package name="python-watchgod" project="openSUSE:Factory">
+  <title></title>
+  <description>Python file watching and code reload</description>
+  <devel project="devel:languages:python" package="python-watchgod"/>
+</package>

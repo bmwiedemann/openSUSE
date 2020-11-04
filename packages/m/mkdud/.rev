@@ -1,0 +1,259 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4f0d1dfc78a4f2f9b243b29688528e3</srcmd5>
+    <version>1.10</version>
+    <time>1421874840</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>282187</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>326317b209b756314f3248a6d554d4f2</srcmd5>
+    <version>1.13</version>
+    <time>1422346158</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>282881</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4886bffc049b200b920cf737de94b56c</srcmd5>
+    <version>1.14</version>
+    <time>1423596188</time>
+    <user>dimstar_suse</user>
+    <comment>- support creating signed driver updates
+- 1.14</comment>
+    <requestid>284853</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d8c2ec3b1c4cacf400589956fb931d49</srcmd5>
+    <version>1.15</version>
+    <time>1423669566</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>285565</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f4f115c8e236b562b88c25ace0b5a10</srcmd5>
+    <version>1.16</version>
+    <time>1423918592</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>285931</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53fdb3222b1c96a38396a8e8b29e2e74</srcmd5>
+    <version>1.17</version>
+    <time>1425566588</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>288863</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e90d5f8975c0688fcaa0942d746dcf8</srcmd5>
+    <version>1.18</version>
+    <time>1430576079</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>304824</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afd9a94f1f30d229caef78eb74f334d2</srcmd5>
+    <version>1.19</version>
+    <time>1444636940</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>337237</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8e6fe89e700ee2a33808190680f8244</srcmd5>
+    <version>1.21</version>
+    <time>1452721579</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>353421</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>82eaaa8c3fce7aec774963361d5356fe</srcmd5>
+    <version>1.22</version>
+    <time>1452941817</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>353701</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4993d0af8f24676ed20563651b2c89a2</srcmd5>
+    <version>1.23</version>
+    <time>1453280112</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>354785</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b46ffcee603756a106701f5865b8fdbe</srcmd5>
+    <version>1.24</version>
+    <time>1453416304</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>355214</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a0d829e0aa761860a4557ba03b15a673</srcmd5>
+    <version>1.25</version>
+    <time>1455610718</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>358969</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6f17b76a0a46b9c4495afd26735397f7</srcmd5>
+    <version>1.26</version>
+    <time>1480420158</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>442375</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5196309731eb90371fd7c05cf64217df</srcmd5>
+    <version>1.27</version>
+    <time>1480693347</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>442889</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03e6188faa268bb3ada6c29d3687434a</srcmd5>
+    <version>1.28</version>
+    <time>1481794983</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>445687</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3554682710a9e64115334cbcd848c0f1</srcmd5>
+    <version>1.29</version>
+    <time>1484475620</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>450096</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e8101f8cdfe9f18abeae696ec59606b7</srcmd5>
+    <version>1.30</version>
+    <time>1494345848</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>493466</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3ec024214e6e36928d753e6316024231</srcmd5>
+    <version>1.31</version>
+    <time>1521716852</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>589771</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>57cd89e9ed2a0233e203b09515ba588c</srcmd5>
+    <version>1.32</version>
+    <time>1523448067</time>
+    <user>maxlin_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>595135</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8ce25cbec1ea9c7eca21b01fd91f8486</srcmd5>
+    <version>1.34</version>
+    <time>1524838152</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>601617</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3694062952b31bb800b893beaca1be83</srcmd5>
+    <version>1.35</version>
+    <time>1525960155</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>605373</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>341f59b617a8481acdcabb7f51448784</srcmd5>
+    <version>1.36</version>
+    <time>1535441080</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>631800</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c65800b0413840d4f7d66ec111f846de</srcmd5>
+    <version>1.38</version>
+    <time>1542580234</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>649287</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>463d9878831b7cefbc87f02fd88c6ae1</srcmd5>
+    <version>1.40</version>
+    <time>1544632176</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>657244</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>565cf506893197fd937bb7118fe3159c</srcmd5>
+    <version>1.43</version>
+    <time>1545376950</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>660261</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a720972fe4cb3720d1948b989e5a5638</srcmd5>
+    <version>1.44</version>
+    <time>1547130057</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>663616</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2183e0ff83d93e7690d1589c2e3e6fee</srcmd5>
+    <version>1.45</version>
+    <time>1554458698</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>691525</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>94c67fc63f8cf46520453f0fd489e1ec</srcmd5>
+    <version>1.47</version>
+    <time>1569392448</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>732741</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>23478bdeb7670cdc343c4268aa32d6b8</srcmd5>
+    <version>1.48</version>
+    <time>1583446869</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>781547</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>cd955ac22aada3153e739698060639c9</srcmd5>
+    <version>1.49</version>
+    <time>1593090486</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>816867</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d4d4b3da472467c187221d3a95c2ba56</srcmd5>
+    <version>1.50</version>
+    <time>1594623981</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>819996</requestid>
+  </revision>
+</revisionlist>

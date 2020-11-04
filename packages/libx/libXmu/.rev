@@ -1,0 +1,80 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3cffa78139954fc6d4546f349a1a323a</srcmd5>
+    <version>1.1.0</version>
+    <time>1329476654</time>
+    <user>coolo</user>
+    <comment>- Split xorg-x11-libs into separate packages</comment>
+    <requestid>105462</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6178304f77a7708e6a894bdac7bbec18</srcmd5>
+    <version>1.1.1</version>
+    <time>1336471068</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115356</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6178304f77a7708e6a894bdac7bbec18</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183558</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>6178304f77a7708e6a894bdac7bbec18</srcmd5>
+    <version>1.1.1</version>
+    <time>1359109234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>0d073e5147844ea8e89a41bd5d385806</srcmd5>
+    <version>1.1.1</version>
+    <time>1363949786</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160097</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>e6c5c8cfe8a1805b65047b37fc8859d5</srcmd5>
+    <version>1.1.1</version>
+    <time>1377855749</time>
+    <user>coolo</user>
+    <comment>- added requires to xbitmaps/-devel packages (bnc#836530)</comment>
+    <requestid>196752</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>de2544cfb4b022ae4b93649cd62d39fa</srcmd5>
+    <version>1.1.2</version>
+    <time>1379076420</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to version 1.1.2 (forwarded request 198750 from Zaitor)</comment>
+    <requestid>198889</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>de2544cfb4b022ae4b93649cd62d39fa</srcmd5>
+    <version>1.1.2</version>
+    <time>1379662886</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>de2544cfb4b022ae4b93649cd62d39fa</srcmd5>
+    <version>1.1.2</version>
+    <time>1409301489</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>45e055f507c5319039a452b1d5ab583b</srcmd5>
+    <version>1.1.3</version>
+    <time>1553635754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.3
+  * This minor maintenance release includes some small bug fixes,
+    build configuration improvements and janitorial cleanups.</comment>
+    <requestid>687390</requestid>
+  </revision>
+</revisionlist>

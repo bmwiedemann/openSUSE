@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57443043d650d04b9176cd5f205a246d</srcmd5>
+    <version>0.3.3</version>
+    <time>1563914585</time>
+    <user>dimstar_suse</user>
+    <comment>Filesystem specification package.
+
+Required by the latest version of python-gcsfs</comment>
+    <requestid>717932</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0115526eed2569333ed6b6b7657b0f47</srcmd5>
+    <version>0.3.6</version>
+    <time>1564576176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719840</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd885786a8bd4f950a23c21725f342e8</srcmd5>
+    <version>0.4.0</version>
+    <time>1564994214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * No upstream changelog</comment>
+    <requestid>720167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f43f940d8213379317821a206205d266</srcmd5>
+    <version>0.5.1</version>
+    <time>1569588659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.1:
+  * no upstream changelog
+
+- Update to 0.4.4:
+  * no upstream changelog</comment>
+    <requestid>732921</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>04206d94fb8ca15c1455ac005918d0ea</srcmd5>
+    <version>0.5.2</version>
+    <time>1571307739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.2:
+  * no upstream changelog</comment>
+    <requestid>738891</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8de836c984c10929a300949425c65f23</srcmd5>
+    <version>0.6.0</version>
+    <time>1574337541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Fixed issues with filesystem instance caching. This was causing authorization errors in downstream libraries like gcsfs and s3fs in multi-threaded code (:pr:`155`, :pr:`181`)
+  * Changed the default file caching strategy to :class:`fsspec.caching.ReadAheadCache` (:pr:`193`)
+  * Moved file caches to the new fsspec.caching module. They're still available from their old location in fsspec.core, but we recommend using the new location for new code (:pr:`195`)
+  * Added a new file caching strategy, :class:`fsspec.caching.BlockCache` for fetching and caching file reads in blocks (:pr:`191`).
+  * Fixed equality checks for file system instance to return False when compared to objects other than file systems (:pr:`192`)
+  * Fixed a bug in :meth:`fsspec.FSMap.keys` returning a generator, which was consumed upon iteration (:pr:`189`).
+  * Removed the magic addition of aliases in AbstractFileSystem.__init__. Now alias methods are always present (:pr:`177`)
+  * Deprecated passing trim to :class:`fsspec.spec.AbstractBufferedFile`. Pass it in storage_options instead (:pr:`188`)
+  * Improved handling of requests for :class:`fsspec.implementations.http.HTTPFileSystem` when the HTTP server responds with an (incorrect) content-length of 0 (:pr:`163`)
+  * Added a detail=True parameter to :meth:`fsspec.spec.AbstractFileSystem.ls` (:pr:`168`)
+  * Fixed handling of UNC/DFS paths (:issue:`154`)</comment>
+    <requestid>749933</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b17651baab44e697ba7835057269bd16</srcmd5>
+    <version>0.7.4</version>
+    <time>1593006567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.4:
+  * No upstream changelog. 
+- Add numpy to BuildRequires.</comment>
+    <requestid>816749</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>77c684153f363bb744377cc840a95dad</srcmd5>
+    <version>0.8.0</version>
+    <time>1599598039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832844</requestid>
+  </revision>
+</revisionlist>

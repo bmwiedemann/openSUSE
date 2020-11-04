@@ -1,0 +1,14 @@
+<package name="python-django-assets" project="openSUSE:Factory">
+  <title>Media asset management for the Django web framework</title>
+  <description>Merges, minifies and compresses Javascript and CSS files, supporting a variety
+of different filters, including YUI, jsmin, jspacker or CSS tidy. Also supports
+URL rewriting in CSS files.
+
+Author:
+--------
+    Michael Elsdoerfer &lt;michael@elsdoerfer.info&gt;
+
+
+</description>
+  <devel project="devel:languages:python:django" package="python-django-assets"/>
+</package>

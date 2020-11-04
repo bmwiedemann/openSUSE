@@ -1,0 +1,215 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5862fdfe9fc7ff0e1708e3bbb31110d0</srcmd5>
+    <version>1.9</version>
+    <time>1190169754</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb74d6f24cc6672e7850fa5f6cfeb867</srcmd5>
+    <version>1.14</version>
+    <time>1200612256</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d8733744127414957442343104df2a2f</srcmd5>
+    <version>1.15</version>
+    <time>1203035842</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>39810fed3b418e661443158fac4100c5</srcmd5>
+    <version>1.15</version>
+    <time>1203957455</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e135b9007e1334da9457dcc3c632cb9b</srcmd5>
+    <version>1.21</version>
+    <time>1216676330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>dfa29ec33161a603508e4e7443f581a9</srcmd5>
+    <version>1.21</version>
+    <time>1220663630</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="24">
+    <srcmd5>d8d99ffacb6756197be6ddd9bb2b0b95</srcmd5>
+    <version>1.21</version>
+    <time>1224693699</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f394b9467327af47d7f1e53548237c8a</srcmd5>
+    <version>1.22</version>
+    <time>1226940568</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c726d7b97c76c637635af56a25bb3737</srcmd5>
+    <version>1.22</version>
+    <time>1233186237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>65f8069652c23c8ec97e083c9e675419</srcmd5>
+    <version>1.26</version>
+    <time>1243205817</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7645a369a578a0e549a7272f18b3170a</srcmd5>
+    <version>1.26</version>
+    <time>1245467146</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e9b8fbd9227f85236cf4f156eed77edc</srcmd5>
+    <version>1.27</version>
+    <time>1249682443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>e9b8fbd9227f85236cf4f156eed77edc</srcmd5>
+    <version>1.27</version>
+    <time>1249682443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>33ed9caa1e3c3c173c16e23a03c53148</srcmd5>
+    <version>1.30</version>
+    <time>1258387398</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pommed based on submit request 24126 from user oertel
+</comment>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>97fefa809c9e2bdbb4a720ad48335a8a</srcmd5>
+    <version>1.30</version>
+    <time>1258542102</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/pommed based on submit request 24569 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>8265ca52b8db27e94a47bd238a252235</srcmd5>
+    <version>1.30</version>
+    <time>1268925745</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>8265ca52b8db27e94a47bd238a252235</srcmd5>
+    <version>1.30</version>
+    <time>1278667381</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>8265ca52b8db27e94a47bd238a252235</srcmd5>
+    <version>1.30</version>
+    <time>1278678611</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="7">
+    <srcmd5>4fa0a7746bd0b2e00cb6783210c05ec4</srcmd5>
+    <version>1.30</version>
+    <time>1288703268</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51840 from user coolo
+</comment>
+    <requestid>51840</requestid>
+  </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>6b92c416c9831a30af425c40c025ddd9</srcmd5>
+    <version>1.30</version>
+    <time>1288703274</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51840
+</comment>
+  </revision>
+  <revision rev="21" vrev="11">
+    <srcmd5>6b92c416c9831a30af425c40c025ddd9</srcmd5>
+    <version>1.30</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d77eb02403d2cd41adc8acb235bd7d35</srcmd5>
+    <version>1.39</version>
+    <time>1307359876</time>
+    <user>saschpe</user>
+    <comment>Version bump to 1.39, complete changelog in the changes file. (forwarded request 72512 from namtrac)</comment>
+    <requestid>72558</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>3ecc2b5605d182dc8f2f566e3e569da2</srcmd5>
+    <version>1.39</version>
+    <time>1307359888</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72558
+</comment>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>3ecc2b5605d182dc8f2f566e3e569da2</srcmd5>
+    <version>1.39</version>
+    <time>1319182363</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>80589920656a76500fd4fa4638327bd7</srcmd5>
+    <version>1.39</version>
+    <time>1323193948</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>80589920656a76500fd4fa4638327bd7</srcmd5>
+    <version>1.39</version>
+    <time>1340184011</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>80589920656a76500fd4fa4638327bd7</srcmd5>
+    <version>1.39</version>
+    <time>1359109939</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="11">
+    <srcmd5>80589920656a76500fd4fa4638327bd7</srcmd5>
+    <version>1.39</version>
+    <time>1379664047</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="13">
+    <srcmd5>80589920656a76500fd4fa4638327bd7</srcmd5>
+    <version>1.39</version>
+    <time>1409302725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>391bcc1b54c5b0864234144d21007e94</srcmd5>
+    <version>1.39</version>
+    <time>1468360238</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400287</requestid>
+  </revision>
+  <revision rev="31" vrev="15">
+    <srcmd5>72a017d00afa2bd5387e8b2f737a28fe</srcmd5>
+    <version>1.39</version>
+    <time>1600801876</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch pommed-1.39-multiple-def-lcd_bck_info.patch
+  to fix link issues in factory. struct is already declared in
+  sysfs_backlight (forwarded request 835947 from oertel)</comment>
+    <requestid>835948</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,159 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f8d85d662762a384ee1411bab1046062</srcmd5>
+    <version>1.0.2</version>
+    <time>1306489729</time>
+    <user>saschpe</user>
+    <comment>Starting to forward a set of useful apps for Django to Factory.</comment>
+    <requestid>67186</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0355286a0afff32299b79e103c6032d1</srcmd5>
+    <version>1.0.2</version>
+    <time>1306489739</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67186
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5dbcf2e21357862695c2a8b7644cbbe6</srcmd5>
+    <version>1.0.3</version>
+    <time>1316618337</time>
+    <user>saschpe</user>
+    <comment>license update: BSD-3-Clause
+SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelworx)</comment>
+    <requestid>83933</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5dbcf2e21357862695c2a8b7644cbbe6</srcmd5>
+    <version>1.0.3</version>
+    <time>1319182386</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>dc83ff812fb0e35b97420697b98a4b3d</srcmd5>
+    <version>1.0.3</version>
+    <time>1329383349</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103923</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1bc8c281e0beb1688f3a7d318667053</srcmd5>
+    <version>1.0.4</version>
+    <time>1331900563</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>109114</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>b1bc8c281e0beb1688f3a7d318667053</srcmd5>
+    <version>1.0.4</version>
+    <time>1340184046</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>b1bc8c281e0beb1688f3a7d318667053</srcmd5>
+    <version>1.0.4</version>
+    <time>1359110018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>b1bc8c281e0beb1688f3a7d318667053</srcmd5>
+    <version>1.0.4</version>
+    <time>1379664160</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d824612f248b0b454ac6ba2a09d7a29</srcmd5>
+    <version>1.1.1</version>
+    <time>1380608936</time>
+    <user>coolo</user>
+    <comment>update (forwarded request 201204 from posophe)</comment>
+    <requestid>201422</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7d824612f248b0b454ac6ba2a09d7a29</srcmd5>
+    <version>1.1.1</version>
+    <time>1409302851</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e6916a8d6b39260b45473ec06096e185</srcmd5>
+    <version>1.2.5</version>
+    <time>1430983341</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305652</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9fd62fb3f2764f94463aaffa7256b278</srcmd5>
+    <version>1.5.0</version>
+    <time>1551455267</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not bother with the locale handling for now, causes
+  conflicts on migration, we really need to properly fix this in
+  macros rather than hacking it in.
+
+- Use single spec syntax, renaming Python 2 package to use python2- prefix
+- Increase minimum Django version to 1.8
+- Adds no-maxsplit.patch to fix a minor Python3-only syntax.
+- Activate test suite
+- from v1.5.0
+  * Updates for compatibility with latest Python and Django versions
+- Update from v1.2.5 to v1.4.9
+  (see CHANGES for full log)</comment>
+    <requestid>680043</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6c13dae4c8a497c48d8330bc589a9263</srcmd5>
+    <version>1.5.1</version>
+    <time>1557170246</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.1:
+  * Restore compatibility with Python 2.7
+- Remove merged patch no-maxsplit.patch</comment>
+    <requestid>701065</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>aa9da8b8618386216821a79836ca469c</srcmd5>
+    <version>2.1.0</version>
+    <time>1568720253</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.1.0:
+  * Drop support for Python 2.7 &amp; 3.4 and Django 1.11 &amp; 2.0
+  * Upgrade to use `django.urls.path` in routing
+  * Auto pre-fetching permission via `GUARDIAN_AUTO_PREFETCH`
+  * Add tests for missing migrations</comment>
+    <requestid>731218</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f79ce4a70a5b1517a0637adce1211f1a</srcmd5>
+    <version>2.2.0</version>
+    <time>1582207137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Django 3.x support</comment>
+    <requestid>777586</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc2385caffb76a10bf2839ecb7dd5dc8</srcmd5>
+    <version>2.3.0</version>
+    <time>1591743092</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0
+ * Drop support for Django 2.1
+ * Fix compatibility with UUIDField primary keys
+ * Fix formatting for pyupgrade
+ * Fix error with get_objects_for_user on PostgreSQL
+ * Modify 'assign_perm' shortcut to treat lists as a queryset
+ * Updated links to Django documentation and django-authority repository
+ * Removed reference to &quot;easy_install&quot; in the documentation
+ * Run migrations check only if required version of django is installed</comment>
+    <requestid>812905</requestid>
+  </revision>
+</revisionlist>

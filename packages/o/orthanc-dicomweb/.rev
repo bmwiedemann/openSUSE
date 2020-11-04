@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d460bf8b1bf1ad6864999c183138f64</srcmd5>
+    <version>1.0</version>
+    <time>1575463799</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission - DICOM plugin for orthanc</comment>
+    <requestid>747346</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2454556efef49ce9ff42fdf9e9fb75a</srcmd5>
+    <version>1.1</version>
+    <time>1586112933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791413</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9d727e9d05c18198a4e9d5c0c21251e</srcmd5>
+    <version>1.2</version>
+    <time>1591101267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809644</requestid>
+  </revision>
+</revisionlist>

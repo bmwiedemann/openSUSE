@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa6a818b49f5ce232709da70ad00fe9b</srcmd5>
+    <version>4.3.2</version>
+    <time>1504102869</time>
+    <user>dimstar_suse</user>
+    <comment>After 3 years of absense: get the package in Factory again...</comment>
+    <requestid>501668</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d53db7055e81ebd641a46bcaf94b869</srcmd5>
+    <version>4.3.4</version>
+    <time>1507755817</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>533189</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cc0f2812a7f84535c31b17907c0de579</srcmd5>
+    <version>4.3.4</version>
+    <time>1508198000</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534166</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4c670593c9cfee057e89640ed2257ce9</srcmd5>
+    <version>4.3.4</version>
+    <time>1512433783</time>
+    <user>dimstar_suse</user>
+    <comment>- fix a possible symlink attack for files/dirs created by root
+  fixes CVE-2016-8641 (bsc#1011630 and bsc#1018047)
+- remove the pre-configured administrative account with fixed 
+  password from the htpasswd file and provide an empty one instead
+  (fixes boo#961115 - CVE-2016-0726)</comment>
+    <requestid>547323</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>fc66756d08827afb26ff522b4e37635f</srcmd5>
+    <version>4.3.4</version>
+    <time>1512547242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548947</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>71c36acc7396969c285668ca7b7edfdf</srcmd5>
+    <version>4.3.4</version>
+    <time>1518188014</time>
+    <user>dimstar_suse</user>
+    <comment>- fix upstream issue #455, memleak introduced with 4.3.3
+  nagios-4.3.4-fix_memleak_4.3.3.diff</comment>
+    <requestid>574641</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>a4a9a0732285fe68c6db70926ce6b4bc</srcmd5>
+    <version>4.3.4</version>
+    <time>1520853144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585448</requestid>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>a04d2cc3fa6f3afaaf3477264da2fbc0</srcmd5>
+    <version>4.3.4</version>
+    <time>1528896964</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>614948</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>296798b9a570d375969528584890405e</srcmd5>
+    <version>4.4.2</version>
+    <time>1539869936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642789</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>acd03db1d49a0f596e3b6d79bc32285c</srcmd5>
+    <version>4.4.2</version>
+    <time>1540320125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643969</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6343445d2e24b26d337870317165c649</srcmd5>
+    <version>4.4.3</version>
+    <time>1548335696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667956</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>8302278dd9aa56aab88d5b601c5c203a</srcmd5>
+    <version>4.4.3</version>
+    <time>1555928794</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696474</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b8dbd602a3809a1dbb76722ab8a6c1cf</srcmd5>
+    <version>4.4.3</version>
+    <time>1567680281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728283</requestid>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>1bf61b78b31fcc80cd6f6dadd328a59a</srcmd5>
+    <version>4.4.3</version>
+    <time>1574249893</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>749850</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>571d47073c0e3aa6c23af17da77587d5</srcmd5>
+    <version>4.4.5</version>
+    <time>1577194218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759028</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>628363739ecdeff414a76966d30ffbc4</srcmd5>
+    <version>4.4.5</version>
+    <time>1580842504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769779</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>432d7ec85440d95258e849aa3310ba11</srcmd5>
+    <version>4.4.5</version>
+    <time>1586248313</time>
+    <user>dimstar_suse</user>
+    <comment>- fix boo#1156309, CVE-2019-3698 : Symbolic Link (Symlink) following vulnerability in the cronjob allows local attackers to cause cause DoS or potentially escalate privileges by winning a race.
+- enhance systemd service: check nagios config before reloading
+- enable build for SLE11 by excluding some special macros and directories via 'sles_version != 11' condition
+- add nagios-archive.service and nagios-archive.timer as replacement for the script in cron.weekly: no need for cron on systemd systems
+- run set_permissions and verifyscript for /etc/cron.weekly on those  distributions that need it
+- enhance rpmlint: ignore empty htpasswd file
+- enable php apache module and not php5 on newer distributions
+- try to harden the rcnagios script</comment>
+    <requestid>791853</requestid>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>6905a265052d7d03f94be7d50d280344</srcmd5>
+    <version>4.4.5</version>
+    <time>1586869766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793008</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2bf410cae6a9a6b1ee46bbdad4e81af0</srcmd5>
+    <version>4.4.6</version>
+    <time>1591286119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811250</requestid>
+  </revision>
+</revisionlist>

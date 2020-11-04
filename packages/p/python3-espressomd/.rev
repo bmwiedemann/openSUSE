@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1a2e5156471de8b8eaada99ed147a29</srcmd5>
+    <version>4.0.0</version>
+    <time>1540447933</time>
+    <user>dimstar_suse</user>
+    <comment>- added change from request #639007
+  - rename package to python3-espressomd
+  - install COPYING for all packages
+  - change license to GPL-3.0-or-later
+  - added sonum define
+- Version bump to 4.0.0
+- Rename pacakge to python-espressomd
+- Dropped 1830.patch - merged upstream
+- Dropped doc package - under rework in 4.0.0
+- New features:
+  - Reaction ensemble methods for the modelling of chemical reactions, including constant pH and Wang-Landau schemes.
+  - Polarisable particles via the Drude-oscillator scheme.
+  - Steepest-descent energy minimization scheme.
+  - Methods for active particles (swimmer_reaction, dipolar swimmers).
+  - GPU-accelerated P3M method for electrostatic interactions.
+  - GPU-accelerated direct summation and Barnes-Hutt schemes for dipolar interactions under open boundary conditions.
+  - Support for the electrostatic and magnetostatics method provided by the ScaFaCoS library.
+  - Immersed boundary method for soft immersed objects in an LB fluid.
+  - Virtual sites acting as inertialess tracers in an LB fluid usable as part of the immersed boundary method or independently.
+  - New bonded quartic and Coulomb interactions.
+  - Possibility to tune the skin parameter.
+  - Support for saving to the h5md file format for molecular dynamics data.
+  - Connection to the MD Analysis Python package.
+  - A rotate_system command was added, which rotates the particle positions around the system’s center of mass.
+- Added 2255.patch to fix numpy issue on i586
+- Added 2259.patch to fix numpy issue on big-endian platforms
+- Added 2265.patch to fix test on i586
+- add 1830.patch to fix install
+- update version 3.3.1+git20180203.f74064d
+  * many many small fixes
+  * support for newer cython
+- adapt to new openlmi package - source mpivars.h during build
+- use individual libboost-*-devel packages instead of boost-devel
+- RPM group fixup
+- switched to cmake build-system
+- build python module
+- dropped header as they are for internal use only
+- dropped pkg-config files as nothing depends on libs yet
+- update version 3.3.1+git20160803.6ed0518.tar.gz
+  * overhaul of buildsystem
+  * many many small fixes
+- fix boo#985147
+  * there's a commit that removed redefinition of malloc and realloc
+    which fixed build for gcc 6. but it's too hard to cherry pick, so 
+    update to the latest git version is a good idea
+- there's no --without-mpi option left in configure.ac, so &quot;-openmpi&quot;
+  sub-package is meaningless now (everything has openmpi support)
+  and since there's no two main packages any more, &quot;-common&quot; sub-package
+  is also meaningless now (and it doesn't contains data), merged.
+- add sub-package: &quot;-devel&quot;, &quot;libEspresso0&quot;, &quot;libEspressoTcl0&quot;
+- add generate_headers.rb to gather those .hpp that're really used
+  into &quot;-devel&quot; sub-package
+- create pkgconfig files
+- add some texlive BuildRequires to build pdf documentation.
+- update version 3.3.1+git20160622.6aa229c:
+  * added edge statistics for meshes used by object-in-fluid
+  * added pos_folded property
+  * Adapted simple LB tests to current interface.
+  * system.part.writevtk()
+  * redesigned exclusions and added slice input
+  * Scafacos: Add long range energy to correct place in energy data structure
+  * Correction to scafacos energy calculation: Check cutoff in near field contrib
+  * Scafacos: Sort out conditional compilation and cython includes
+  * Scafacos: methods shared between electrostatics and dipolar calculations
+- Update to version 3.3.1
+  * A lot of changes; please read the NEWS file
+- version bumped to 3.3.0
+- Highlights of this release include:
+  - Calculation of the electrokinetic equations via the ELECTROKINETICS feature,
+   - the Shan/Chen method for multi component lattice Boltzmann fluids,
+   - the P3M and MMM1D methods can now be computed on a GPU,
+   -  ESPResSo now has a rudimentary Python interface.
+   For a complete list of the changes in the release, please refer to:
+   http://download.savannah.gnu.org/releases/espressomd/NEWS
+- build openmpi and non-mpi version
+- initial commit
+</comment>
+    <requestid>642286</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6101b284408147dde65b955102aec656</srcmd5>
+    <version>4.0.1</version>
+    <time>1549017872</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668739</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93eeb2334faa1cc7002eeb58800441cd</srcmd5>
+    <version>4.0.2</version>
+    <time>1556817600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699890</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65be523be2bb488d6e8725ceeaae5b70</srcmd5>
+    <version>4.1.1</version>
+    <time>1574104151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749184</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1174bf14a0ca3d06e6523ce7f7b5030f</srcmd5>
+    <version>4.1.2</version>
+    <time>1579195314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2:
+  - The interface has not been changed between ESPResSo 4.1.1 and
+    4.1.2.
+  - General corrections and improvements:
+    - Remove correlation between the rotational noise and
+      translational noise in the Langevin thermostat (#3355)
+    - Fix a bug that may cause the wrong temperature to be set by
+      the Langevin and DPD thermostats in the first time step
+      after the system was altered from the Python level, e.g.,
+      by changing particles or interactions (#3341)
+    - Fix a bug that caused the DPD thermostat to generate an
+      incorrect velocity distribution when used together with the
+      Langevin thermostat (#3352)
+    - Fix a bug in MMM2D and ELC with potential boundary
+      conditions, where one of the correction factors was
+      over-counted resulting in wrong energies (#3310)
+    - Fix a bug that caused the wrong bonds to be deleted when
+      removing particles from the system (#3356)
+    - Fix an ambiguity in `ParticleSlice`: the values in the
+      square brackets refer to particle ids, not array indices
+      (#3367). This means the ill-defined syntax
+      `system.part[0:-1]` is no longer valid. See the User Guide
+      section on Setting up particles for more information.
+    - Remove the mass prefactor in the `ComForce` observable and
+      use the correct Particle ids in the
+      `ParticleAngularVelocities` and `ParticleBodyVelocities`
+      observables (#3380)
+    - Fix a rounding error that caused debug builds of ESPResSo
+      running with multiple MPI threads to crash when a particle
+      was placed exactly on the boundary between two cells
+      (#3377)
+    - Fix `espressomd.has_features()` for the corner case where
+      the list of all compiled-in features is passed as argument,
+      returning ``False`` instead of ``True`` (#3318)
+    - Refactor the random number generator code (#3349)
+  - Documentation and tutorials corrections and improvements:
+    - Improve documentation of Monte Carlo methods (#3254, #3330)
+  - Build system and platform-related corrections and
+    improvements:
+    - List all Python dependencies in `requirements.txt` with the
+      supported version numbers (#3300). Please note that most of
+      them are optional.
+    - Add `MPIEXEC_PREFLAGS` and `MPIEXEC_POSTFLAGS` to the
+      command lines of parallel tests (#3221)
+    - Add the `-oversubscribe` flag to the command lines of
+      parallel tests running with OpenMPI v2.X to avoid exiting
+      early from a Python test configured without `MAX_NUM_PROC`
+      on a machine with a hyperthreaded CPU where OpenMPI is
+      configured such that the number of threads cannot exceed
+      the number of cores (#3335)
+    - Refactor the CI, maintainer, Doxygen and pypresso shell
+      scripts to make them more portable and support filepaths
+      containing whitespaces (#3326, #3373)
+    - Fix a nvcc compiler warning on the empty config (#3329)
+  - Improved testing:
+    - Add a test for ELC and MMM2D using analytic expressions of
+      the force and energy (#3331)
+    - Sped-up seven Python tests (#3319)
+    - Fix a test that broke on s390x architectures with Fedora 31
+      (#3312)
+    - Fix tests that broke on i586 architectures with OpenSUSE
+      Tumbleweed (#3327, #3358)
+</comment>
+    <requestid>764825</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4af2c9137b437f5a1d0e5363e265f076</srcmd5>
+    <version>4.1.2</version>
+    <time>1579729495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766150</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a38aae8e91ff25811b8ce2d6786eb556</srcmd5>
+    <version>4.1.2</version>
+    <time>1589315574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802786</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>b2b80141120bdd18bd6f3eddd3802148</srcmd5>
+    <version>4.1.2</version>
+    <time>1590506427</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808075</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ffef0bbb566099440eb6d41d9da150d2</srcmd5>
+    <version>4.1.3</version>
+    <time>1598274313</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828548</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a267c94b7acc4ab4d5686d3c5b693ab</srcmd5>
+    <version>4.1.4</version>
+    <time>1604054865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844905</requestid>
+  </revision>
+</revisionlist>

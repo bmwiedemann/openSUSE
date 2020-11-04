@@ -1,0 +1,9 @@
+<package name="orthanc-wsi" project="openSUSE:Factory">
+  <title>Whole Slide Imaging for Orthanc</title>
+  <description>The Orthanc project provides three official tools to support DICOM for whole-slide microscopic imaging (WSI):
+- A so-called “DICOM-izer” command-line tool that converts whole-slide images to DICOM series, following Supplement 145.
+- A plugin that extends Orthanc with a Web viewer of whole-slide images for digital pathology.
+- Another command-line tool that converts a DICOM series stored inside Orthanc, to a standard hierarchical TIFF image.
+</description>
+  <devel project="graphics" package="orthanc-wsi"/>
+</package>

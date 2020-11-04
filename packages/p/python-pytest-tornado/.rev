@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8fc52071ac23880f688527a17e307de4</srcmd5>
+    <version>0.5.0</version>
+    <time>1528022025</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-jupyter_nbdime</comment>
+    <requestid>603734</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f74b539697ddb80d0da29ba12cacdc5b</srcmd5>
+    <version>0.5.0</version>
+    <time>1531813317</time>
+    <user>dimstar_suse</user>
+    <comment>- no tests in upstream package (forwarded request 622955 from mimi_vx)</comment>
+    <requestid>622956</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4eb31a4833e00e5d8be8e249faf7696a</srcmd5>
+    <version>0.8.0</version>
+    <time>1559581015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Added support for HTTPS testing (#50)
+  * Group commandline options for pytest (#53)
+  * Added support for Tornado 6</comment>
+    <requestid>707087</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ad3d39481e05315784d6ef898431e946</srcmd5>
+    <version>0.8.1</version>
+    <time>1593458309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817718</requestid>
+  </revision>
+</revisionlist>

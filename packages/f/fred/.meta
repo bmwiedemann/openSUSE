@@ -1,0 +1,10 @@
+<package name="fred" project="openSUSE:Factory">
+  <title>Forensic Registry EDitor, a cross-platform Microsoft registry hive editor</title>
+  <description>Forensic Registry EDitor (fred) is a cross-platform M$ registry
+hive editor with special features useful during forensic
+analysis.
+
+</description>
+  <devel project="security:forensics" package="fred"/>
+  <url>https://www.pinguin.lu/fred</url>
+</package>

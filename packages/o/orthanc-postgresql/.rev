@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>baea8a16bab39623df6f5fac5d7b04e0</srcmd5>
+    <version>3.2</version>
+    <time>1575463796</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission - database plugin for Orthanc</comment>
+    <requestid>747331</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6157725fc27d78b0c518f97be171e453</srcmd5>
+    <version>3.2</version>
+    <time>1584350361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785220</requestid>
+  </revision>
+</revisionlist>

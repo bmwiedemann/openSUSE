@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2604fbbc0d7c4d889b51f6d9730b94de</srcmd5>
+    <version>0~git20190911</version>
+    <time>1581456141</time>
+    <user>dimstar_suse</user>
+    <comment>Sega Saturn emulator</comment>
+    <requestid>771813</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>19f38be8a4cd0c8ca8e3d3507a2a9fee</srcmd5>
+    <version>0~git20200526</version>
+    <time>1591558593</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812087</requestid>
+  </revision>
+</revisionlist>

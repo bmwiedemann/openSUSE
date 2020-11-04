@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8aa4b05c10790bffd06e813111ab2a16</srcmd5>
+    <version>2.0.3</version>
+    <time>1450856942</time>
+    <user>dimstar_suse</user>
+    <comment>New package (needed by python-jenkins)</comment>
+    <requestid>348205</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9f9ff04ccec480044fdce87c7f18a56e</srcmd5>
+    <version>2.0.3</version>
+    <time>1504815349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521509</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>17ac95ec6040db74b653d952f1bc3c41</srcmd5>
+    <version>2.0.3</version>
+    <time>1544189861</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package</comment>
+    <requestid>655847</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>165c7c2a2dc26c6077bdf680ce97c522</srcmd5>
+    <version>2.0.3</version>
+    <time>1597306896</time>
+    <user>dimstar_suse</user>
+    <comment>- Run SPEC file through spec-cleaner
+</comment>
+    <requestid>826123</requestid>
+  </revision>
+</revisionlist>

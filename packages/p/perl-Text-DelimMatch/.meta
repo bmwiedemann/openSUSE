@@ -1,0 +1,6 @@
+<package name="perl-Text-DelimMatch" project="openSUSE:Factory">
+  <title>DelimMatch for Locating Delimited Substrings with Proper Nesting</title>
+  <description>DelimMatch is a Perl 5 module that provides functions for locating
+delimited substrings with proper nesting.</description>
+  <devel project="devel:languages:perl" package="perl-Text-DelimMatch"/>
+</package>

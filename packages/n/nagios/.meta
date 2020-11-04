@@ -1,0 +1,20 @@
+<package name="nagios" project="openSUSE:Factory">
+  <title>The Nagios Network Monitor</title>
+  <description>Nagios is a program that will monitor hosts and services on your
+network. It has the ability to email or page you when a problem arises
+and when a problem is resolved. Nagios is written in C and is designed
+to run under Linux (and some other *NIX variants) as a background
+process, intermittently running checks on various services that you
+specify.
+
+The actual service checks are performed by separate &quot;plugin&quot; programs
+which return the status of the checks to Nagios. The plugins are
+available at http://sourceforge.net/projects/nagiosplug
+
+This package provide core programs for nagios. The web interface,
+documentation, and development files are built as separate packages
+
+</description>
+  <devel project="server:monitoring" package="nagios"/>
+  <url>http://www.nagios.org/</url>
+</package>

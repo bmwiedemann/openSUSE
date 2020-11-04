@@ -1,0 +1,6 @@
+<package name="php-pear-MDB2" project="openSUSE:Factory">
+  <title>Database abstraction layer</title>
+  <description>PEAR MDB2 is a merge of the PEAR DB and Metabase php database abstraction layers. It provides a common API for all supported RDBMS.</description>
+  <devel project="server:php:applications" package="php-pear-MDB2"/>
+  <url>http://pear.php.net/package/MDB2/</url>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-django-push-notifications" project="openSUSE:Factory">
+  <title></title>
+  <description>Django package to send push notifications to mobile devices</description>
+  <devel project="devel:languages:python:django" package="python-django-push-notifications"/>
+</package>

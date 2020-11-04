@@ -1,0 +1,5 @@
+<package name="python-django-gravatar2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:django" package="python-django-gravatar2"/>
+</package>

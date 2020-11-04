@@ -1,0 +1,132 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3eeb68514e388e59bf4124408cdda967</srcmd5>
+    <version>2.0.0</version>
+    <time>1509614691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537419</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3879bde7327ba0d11ee8dfbd7f0f20ec</srcmd5>
+    <version>2.0.0</version>
+    <time>1509722948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538554</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3790fdc2a78313bf39132c136e97702e</srcmd5>
+    <version>2.0.0</version>
+    <time>1510045089</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand summary. (forwarded request 538593 from jengelh)</comment>
+    <requestid>538903</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43ccc47a9595c86a24d66471b606e6da</srcmd5>
+    <version>2.0.5.2</version>
+    <time>1513941519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>554954</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82968304ad8cc6d67b9c29e28b63dfdb</srcmd5>
+    <version>2.0.9.11</version>
+    <time>1553611134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.0.9.11
+  * Fix include unistd.h instead of sys/unistd.h
+  * Fix url encoding
+  * Fix compatibility with Qt 5.6
+  * Fix can't get correct disk size in some case
+  * add DRecentManager class
+- Update version to 2.0.9.5
+  * update version number for expermimental 
+  * remove qt symbols
+  * non array type value is wrong on parse josn file
+  * update symbols
+  * add LIBDTKCORESHARED_EXPORT for windows
+  * add symbols 
+- Split cmake-dtkcore
+- Update version to 2.0.7.1
+  * reset short cut not show
+  * cmake link depends
+  * better static lib support
+  * read settings value failed
+  * set default should not use
+  * fix dtk-settings install path
+  * develop package no install the &quot;version.pri&quot; file
+  * awk script failed
+  * set default build version for debian changelog
+  * set its value only if VERSION is empty
+  * add hide support for group
+  * add get option interface
+  * add group interface for DSettingsGroup
+  * support generate cmake with qt function
+  * config pkg config with dtk_module
+  * support qt module
+  * add the &quot;version.pri&quot; file
+  * remove build version from install path
+  * make version parser easier
+  * set verion when build
+  * add .qmake.conf file
+  * add DtkCore and dtkcore_config.h headers
+  * DSettings: support set default value
+- Update version to 2.0.6
+  * Add cmake package search configure
+</comment>
+    <requestid>681580</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4ebccdfd69298dbde4f0dc78e48e29a5</srcmd5>
+    <version>2.0.12.1</version>
+    <time>1556622161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.0.12.1
+  * Cross-builds incorrectly, built packages contain paths from build 
+    architecture
+  * Fix issue#10
+
+- Update version to 2.0.10
+  * Fix crash at application
+  * Add DNotifySender
+  * Deepin-os-release support cpu model and other info query
+  * Fix failed build the deepin-os-release on Qt 5.7.1
+  * Use main project c/cxx/ld flags on build deepin-os-release
+  * Fix missing default constructor
+  * Support connan build (forwarded request 697552 from hillwood)</comment>
+    <requestid>697661</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4b0f03b7ed0d0b0edf96d11f3027347a</srcmd5>
+    <version>2.0.15</version>
+    <time>1562843869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.0.15
+  * Fix DSettings: crash when calling getOption() if option doesn't exist
+  * refactor: use commit count for the package version
+  * feat: allow dtk-settings-tools skip json key translation (forwarded request 714322 from hillwood)</comment>
+    <requestid>714326</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>645c84725cd9aceb78c5cd67c578eb23</srcmd5>
+    <version>2.0.16.1</version>
+    <time>1563701725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>717231</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>73cd0e2b3c04e199c23a959dd42d4732</srcmd5>
+    <version>2.1.1</version>
+    <time>1584744996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 2.1.1
+  * Fix the pkg-config &quot;Requires&quot; values
+  * Adjust responsibility of the prf files
+  * Fix dtk-settings binary location for libdtkcore-bin package</comment>
+    <requestid>786658</requestid>
+  </revision>
+</revisionlist>

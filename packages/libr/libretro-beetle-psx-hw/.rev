@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>788a2f440d0d74a6d638c5867a61a929</srcmd5>
+    <version>0~git20191009</version>
+    <time>1581456139</time>
+    <user>dimstar_suse</user>
+    <comment>PlayStation emulator with Mesa</comment>
+    <requestid>771811</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>353ce57f6ba5583ede6e7f021c15e721</srcmd5>
+    <version>0~git20200529</version>
+    <time>1591558588</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>812086</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c682c77a7c66e46ae6f55d383b48d1b6</srcmd5>
+    <version>0~git20200610</version>
+    <time>1592840675</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816092</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>769d491bbe153e25892e0d40276554b1</srcmd5>
+    <version>0~git20200810</version>
+    <time>1597955329</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>827948</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ee4b0531e22c0e9b682ed358a8c0a577</srcmd5>
+    <version>0~git20200921</version>
+    <time>1601398983</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838376</requestid>
+  </revision>
+</revisionlist>

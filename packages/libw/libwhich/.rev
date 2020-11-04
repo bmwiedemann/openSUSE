@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>80b8e222d400f16ffb06b83043d31644</srcmd5>
+    <version>1.1.0</version>
+    <time>1585484912</time>
+    <user>dimstar_suse</user>
+    <comment>a cli utility to locate shared libs by name
+dependency for julia</comment>
+    <requestid>789458</requestid>
+  </revision>
+</revisionlist>

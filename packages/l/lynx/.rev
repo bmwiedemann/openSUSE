@@ -1,0 +1,319 @@
+<revisionlist>
+  <revision rev="1" vrev="15">
+    <srcmd5>74c4f5c37a1cc540aac09515d064908d</srcmd5>
+    <version>2.8.6_rel2</version>
+    <time>1168903466</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="30">
+    <srcmd5>6c2af5c1de201d13d055191cd167c442</srcmd5>
+    <version>2.8.6_rel2</version>
+    <time>1175185237</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bedac5a1285444b85e2a3f87527ce8c5</srcmd5>
+    <version>2.8.6</version>
+    <time>1175629349</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="24">
+    <srcmd5>4a12de614fe39ae3d42535e91fb55c4d</srcmd5>
+    <version>2.8.6</version>
+    <time>1183584499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="143">
+    <srcmd5>4a12de614fe39ae3d42535e91fb55c4d</srcmd5>
+    <version>2.8.6</version>
+    <time>1183584499</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="144">
+    <srcmd5>63e82641c0915e70295533445b36f693</srcmd5>
+    <version>2.8.6</version>
+    <time>1225711608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="146">
+    <srcmd5>63e82641c0915e70295533445b36f693</srcmd5>
+    <version>2.8.6</version>
+    <time>1225711608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6bf23875ad806912cd8de8549efae947</srcmd5>
+    <version>2.8.7</version>
+    <time>1261140044</time>
+    <user>autobuild</user>
+    <comment>Copy from network/lynx based on submit request 26259 from user anicka
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c8e908a92c47286138f7386953bb3710</srcmd5>
+    <version>2.8.7</version>
+    <time>1262911227</time>
+    <user>autobuild</user>
+    <comment>Copy from network/lynx based on submit request 28262 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>0e0d99a3e37fa744bc06fb8e5d930ad3</srcmd5>
+    <version>2.8.7</version>
+    <time>1268924884</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>0e0d99a3e37fa744bc06fb8e5d930ad3</srcmd5>
+    <version>2.8.7</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>0e0d99a3e37fa744bc06fb8e5d930ad3</srcmd5>
+    <version>2.8.7</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>10e3e3d1973d7cb6f5810312a5961ab1</srcmd5>
+    <version>unknown</version>
+    <time>1284123334</time>
+    <user>autobuild</user>
+    <comment>Copy from network/lynx based on submit request 47264 from user prusnak
+</comment>
+    <requestid>47264</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>10e3e3d1973d7cb6f5810312a5961ab1</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>60f83524a0717704167dbc8c883d95b5</srcmd5>
+    <version>2.8.7</version>
+    <time>1301494690</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65557 from user coolo
+</comment>
+    <requestid>65557</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>e40fb00fd229478d0364f4cd3107cacd</srcmd5>
+    <version>2.8.7</version>
+    <time>1301494698</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65557
+</comment>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>86c58f2566d77255daa1794e109f2b9e</srcmd5>
+    <version>2.8.7</version>
+    <time>1311923623</time>
+    <user>saschpe</user>
+    <comment>- removed the very long list of authors from spec 
+
+- remove x bits from sample windows scripts</comment>
+    <requestid>77368</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>ea24e69c319ef2adbcd50fcd5906fc51</srcmd5>
+    <version>2.8.7</version>
+    <time>1311923632</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77368
+</comment>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>ea24e69c319ef2adbcd50fcd5906fc51</srcmd5>
+    <version>2.8.7</version>
+    <time>1319182166</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>f94d4b1f65723876bd56991701da98f1</srcmd5>
+    <version>2.8.7</version>
+    <time>1323192458</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>11d816711b33c5bb3f374da4da58e18c</srcmd5>
+    <version>2.8.7</version>
+    <time>1325007452</time>
+    <user>coolo</user>
+    <comment>- remove call to suse_update_config (very old work around) (forwarded request 97713 from coolo)</comment>
+    <requestid>98198</requestid>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>11d816711b33c5bb3f374da4da58e18c</srcmd5>
+    <version>2.8.7</version>
+    <time>1340183683</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>11d816711b33c5bb3f374da4da58e18c</srcmd5>
+    <version>2.8.7</version>
+    <time>1359109422</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>5b52616f571cf00f9911d1a909f9114e</srcmd5>
+    <version>2.8.7</version>
+    <time>1360950416</time>
+    <user>coolo</user>
+    <comment>** Might want this in 12.3 ********************
+
+- lynx-openssl.patch : just like in the &quot;links&quot; case, HTTPS
+  clients must not:
+  * Negotiate SSLv2
+  * Attempt to use SSL compression (due to CVE-2012-4929)
+- Fix debuginfo generation. (forwarded request 155073 from elvigia)</comment>
+    <requestid>155492</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>5b52616f571cf00f9911d1a909f9114e</srcmd5>
+    <version>2.8.7</version>
+    <time>1379663236</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>3d6f8f81d594efdfd12c8991355dc2b2</srcmd5>
+    <version>2.8.7</version>
+    <time>1391765216</time>
+    <user>scarabeus_factory</user>
+    <comment>- fix license - there is no 'or later' in the license (forwarded request 213398 from coolo)</comment>
+    <requestid>213424</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e90b52452a26fa1e7985cbff7fd85f60</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1396709390</time>
+    <user>coolo</user>
+    <comment>lynx 2.8.8rel.2 (forwarded request 228200 from AndreasStieger)</comment>
+    <requestid>228261</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>e90b52452a26fa1e7985cbff7fd85f60</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1409301840</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>46691c6b9c3f0a91fcc718ea18e63419</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1417643536</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lynx-2.8.8-expired-cookie-crash.patch: fix invalid read when
+  removing an expired cookie (bnc#907539).</comment>
+    <requestid>263562</requestid>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>5b8c8c14264ffdc16dc9e96547b19c8d</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1486773090</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2016-9179 [bsc#1008642]
+    + lynx-CVE-2016-9179.patch</comment>
+    <requestid>455125</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>bad309452674c070f83cc4e2ebf5ae7b</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1491210245</time>
+    <user>lnussel_factory</user>
+    <comment>- fix typo in url
+
+- Update project Url as well as Url path of source tar ball
+- Add patch lynx-2.8.8-ncurses-6.0-20170318.patch to work
+  around internal header definition of ncurses-6.0-20170318</comment>
+    <requestid>483997</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>49177f3f3114ca9ecb267f04d6f06ac0</srcmd5>
+    <version>2.8.8rel.2</version>
+    <time>1491895760</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>485195</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7a32d8b9752e012e823567cb0c2f007f</srcmd5>
+    <version>2.8.9~dev.14</version>
+    <time>1497687436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.9dev.14 to build with openssl 1.1 [bsc#1042661]
+- dropped patches
+  . lynx-2.8.5.dif
+  . lynx-no-build-date.patch
+  . lynx-2.8.8-expired-cookie-crash.patch
+  . lynx-CVE-2016-9179.patch
+  . lynx-2.8.8-ncurses-6.0-20170318.patch
+- renamed patches
+  . lynx-2.8.7-enable_xli.patch to lynx-enable_xli.patch
+  . lynx-2.8.5-charset.patch to lynx-charset.patch
+  . lynx-2.8.5.dif split to lynx-helpfile.patch and 
+    lynx-proxy-empty-string.patch</comment>
+    <requestid>503050</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>a5bdf1a17f91d4887b5056f33baa34a8</srcmd5>
+    <version>2.8.9~dev.14</version>
+    <time>1504981360</time>
+    <user>dimstar_suse</user>
+    <comment>- Add --with-zlib and --with-bzip2 to configure, to allow
+  decompressing directly via zlib and support bzip2.
+- Add libbz2-devel and zlib-devel to BuildRequires (forwarded request 521539 from mgorse)</comment>
+    <requestid>521668</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c26e85b8eb417c33977f9c6a07ea2f1f</srcmd5>
+    <version>2.8.9~dev.16</version>
+    <time>1511426302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.9dev.16:
+* add a note in the comments for INCLUDE in lynx.cfg regarding the default
+  directory searches LYOpenCFG(), added in 2.8.4dev.20 (Debian #818047) -TD
+* add a check to ensure that HTML_put_string() will not append a chunk onto
+  itself (report by Ned Williamson) -TD
+* add note in lynx.cfg about default values (Debian #408448) -TD
+* amended Backes' change to the COLLAPSE_BR_TAGS feature for compatibility -TD
+  + use ENABLE_LYNXRC to determine whether it is written to the .lynxrc file.
+  + add command-line option, etc., for controlling whether blank lines are
+    trimmed, e.g., trailing lines as well as the special case for collapsing
+    br-tags.  Leading blank lines at the top of the document are untouched.
+  + modify limit for trimmed lines to retain as little as 1 line; previously
+    the trimming would go no smaller than 2 lines.
+* add command-line option and options-menu item for COLLAPSE_BR_TAGS (patch
+  by Peter Backes).
+* correct logic in HTCopy() when re-reading a page (Debian #863008) -TD</comment>
+    <requestid>543854</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>12c9b7442aff7330b8ed6d86473e7d62</srcmd5>
+    <version>2.8.9rel.1</version>
+    <time>1539251662</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.9rel1.1:
+* documentation/metrics updates
+* fix an inconsistency in message for -listonly option
+* update test-packages to use current ncurses test-packages
+* improve portability for sockaddr structures used in HTTP and FTP, for IPv6 and SOCKS configurations
+* fix several minor warnings reported by Coverity
+* build-fix overlooked in 2.8.9dev.3 when INACTIVE_INPUT_STYLE_VH is defined, for problem introduced by 2.8.8dev.17 code-cleanup
+* trim unnecessary intllib symbols from src/chrtrans/makefile.in
+* when cross-compiling, trim LDFLAGS from makefile rule linking makeuctb
+- dropped patches:
+  lynx-helpfile.patch: latest documentation available online</comment>
+    <requestid>640781</requestid>
+  </revision>
+</revisionlist>

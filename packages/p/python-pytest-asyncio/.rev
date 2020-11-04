@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0612937f3a0466d78e5d53c77cd7c859</srcmd5>
+    <version>0.8.0</version>
+    <time>1520253874</time>
+    <user>dimstar_suse</user>
+    <comment>New package python-pytest-asyncio, required by python-pyee, which is
+required by mycroft-core</comment>
+    <requestid>582509</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7bfc90dd8693084a60858e6ad01ee638</srcmd5>
+    <version>0.9.0</version>
+    <time>1536678897</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.9.0
+- use github tarbal due packaging errrors in upstream
+ * Python 3.7 support.
+ * Remove event_loop_process_pool fixture
+     and pytest.mark.asyncio_process_pool marker (forwarded request 633033 from mimi_vx)</comment>
+    <requestid>633035</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce0af76bbd12fdf3e2c0289b01f39c5a</srcmd5>
+    <version>0.10.0</version>
+    <time>1550151262</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0:
+  * support for pytest 4+</comment>
+    <requestid>674560</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f09e7670951d453ba413bd212b6893a1</srcmd5>
+    <version>0.10.0</version>
+    <time>1583750557</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782858</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2342072183b8288b5aa39c86ed31f721</srcmd5>
+    <version>0.12.0</version>
+    <time>1591879539</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Run the event loop fixture as soon as possible.
+
+- Update to 0.11.0:
+  * Fix with pytest 5.4</comment>
+    <requestid>812821</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df7e5d5fe93a3cda63e1dd72299c1c27</srcmd5>
+    <version>0.14.0</version>
+    <time>1593546886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0
+  * Fix #162, and event_loop fixture behavior now is coherent on all scopes.</comment>
+    <requestid>817722</requestid>
+  </revision>
+</revisionlist>

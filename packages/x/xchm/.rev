@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e718b125659cdf549dba13834c006fb</srcmd5>
+    <version>1.31</version>
+    <time>1599343414</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d866b343b9eec2bf80fa7599aeececf3</srcmd5>
+    <version>1.31</version>
+    <time>1599667645</time>
+    <user>dimstar_suse</user>
+    <comment>- Split lang package from main package.</comment>
+    <requestid>833224</requestid>
+  </revision>
+</revisionlist>

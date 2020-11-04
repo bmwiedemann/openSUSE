@@ -1,0 +1,1704 @@
+<revisionlist>
+  <revision rev="1" vrev="24">
+    <srcmd5>6e1f707b2689d5c87216b62752e5ec41</srcmd5>
+    <version>1.0.13</version>
+    <time>1166543820</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="26">
+    <srcmd5>8f06e1c5acbe399443bba55a47df6318</srcmd5>
+    <version>1.0.13</version>
+    <time>1168360893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="28">
+    <srcmd5>5a910c5fda3a2fafa4b60d63d34f0f83</srcmd5>
+    <version>1.0.13</version>
+    <time>1169849038</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="33">
+    <srcmd5>44b1dcc1dfeff39aa971aae97bab69c0</srcmd5>
+    <version>1.0.13</version>
+    <time>1173917506</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="36">
+    <srcmd5>3537cadc990c3af3b283d345e1a4f4f2</srcmd5>
+    <version>1.0.13</version>
+    <time>1175184966</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="39">
+    <srcmd5>063fc1421075b440ddbb9528ae289a6d</srcmd5>
+    <version>1.0.13</version>
+    <time>1176390062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="40">
+    <srcmd5>5615ef90828c1d60ef420807ee2888f8</srcmd5>
+    <version>1.0.13</version>
+    <time>1176762510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="41">
+    <srcmd5>dd55a836e39b7e6a4eac0f757512d2cf</srcmd5>
+    <version>1.0.13</version>
+    <time>1176794916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="42">
+    <srcmd5>6472271dba74eea1ee7dbba09518ad70</srcmd5>
+    <version>1.0.13</version>
+    <time>1176894640</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="46">
+    <srcmd5>1530f4d019f27dbaa7ebe8eda489f306</srcmd5>
+    <version>1.0.13</version>
+    <time>1178231132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="51">
+    <srcmd5>89360c8a4e79c00f160d8cc8752c0986</srcmd5>
+    <version>1.0.13</version>
+    <time>1180046325</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>11f5189b8af4b9a7cd9ba77172a79ff9</srcmd5>
+    <version>1.0.14</version>
+    <time>1180997000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>fb95d0d3a03d34b4e634e6320ac228c2</srcmd5>
+    <version>1.0.14</version>
+    <time>1181316484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>6452bfea3b7c678fdaf635346551c547</srcmd5>
+    <version>1.0.14</version>
+    <time>1181859571</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>c8fa8c8def7bdd4b3dce6eea95f9b646</srcmd5>
+    <version>1.0.14</version>
+    <time>1182464277</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>1846f9b44bc7549507b11e18fcabb789</srcmd5>
+    <version>1.0.14</version>
+    <time>1183588490</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>9d52db27f80b54fab02e99d82a4791c0</srcmd5>
+    <version>1.0.14</version>
+    <time>1186142258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>3f1611bb960e69622d31806ae824f948</srcmd5>
+    <version>1.0.14</version>
+    <time>1186418747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>ff25ae4144806baaf897c6c22c313afe</srcmd5>
+    <version>1.0.14</version>
+    <time>1187202022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="29">
+    <srcmd5>764251ef5c21b9a9b7baa6059988c16c</srcmd5>
+    <version>1.0.14</version>
+    <time>1190220616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>75b132caf6f7528655f66f3b1882ed29</srcmd5>
+    <version>1.0.15</version>
+    <time>1192549432</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>2d0c7157c330f026ca328376089849a9</srcmd5>
+    <version>1.0.15</version>
+    <time>1193704120</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>4d511df45b76c3bb7e8d6b6b4a4a67dc</srcmd5>
+    <version>1.0.15</version>
+    <time>1193789151</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>57424d40bd1856d45a6441ccdfd39f34</srcmd5>
+    <version>1.0.15</version>
+    <time>1194303907</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>2255d6330900beac8b6a08c2f82c71c3</srcmd5>
+    <version>1.0.15</version>
+    <time>1194899915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>3f86c1dd37840d1024cbfaf78a33505c</srcmd5>
+    <version>1.0.15</version>
+    <time>1195464083</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>0d3847b51973ec26f93c99c972035f72</srcmd5>
+    <version>1.0.15</version>
+    <time>1195834547</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="17">
+    <srcmd5>a4881c8c40159dad67aac9b810787868</srcmd5>
+    <version>1.0.15</version>
+    <time>1196893356</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="19">
+    <srcmd5>47596402f1266e7381a5bb58a91adf2b</srcmd5>
+    <version>1.0.15</version>
+    <time>1197572786</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="20">
+    <srcmd5>5e22b594c6d1bb47fdf4ea614fc5a83c</srcmd5>
+    <version>1.0.15</version>
+    <time>1197645788</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="23">
+    <srcmd5>70e38340dada7e12dcd4a0b451215d54</srcmd5>
+    <version>1.0.15</version>
+    <time>1199911697</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="26">
+    <srcmd5>231918a901bb6577f9ceb055e1e05d84</srcmd5>
+    <version>1.0.15</version>
+    <time>1200603443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ba498e1fc0053906ca541ef37341f3af</srcmd5>
+    <version>1.0.16</version>
+    <time>1201116691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>f7f71b332fc619a16f81328322d6c9e4</srcmd5>
+    <version>1.0.16</version>
+    <time>1201893975</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="8">
+    <srcmd5>8065b9c713e7b88d9b46c751b3423a4b</srcmd5>
+    <version>1.0.16</version>
+    <time>1202489027</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="10">
+    <srcmd5>253a7b9370f5e5555c462a105957949b</srcmd5>
+    <version>1.0.16</version>
+    <time>1203034171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="16">
+    <srcmd5>7e3b0bfe81074dbf84f49a6e000ae0b3</srcmd5>
+    <version>1.0.16</version>
+    <time>1204557691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="18">
+    <srcmd5>dab4c1c2d8120f8a6bae69ebe9f36ea2</srcmd5>
+    <version>1.0.16</version>
+    <time>1205255258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="20">
+    <srcmd5>304d3b822a0726869762e29e668cad2a</srcmd5>
+    <version>1.0.16</version>
+    <time>1205511567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="26">
+    <srcmd5>c9f9cc12cf8eedb201298ce5bee6757e</srcmd5>
+    <version>1.0.16</version>
+    <time>1207825520</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="34">
+    <srcmd5>77b0e1342f2adcbffb1c5ab0d197cb38</srcmd5>
+    <version>1.0.16</version>
+    <time>1211555114</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="35">
+    <srcmd5>efa8f8f2d21503369e6b0f1159b8f139</srcmd5>
+    <version>1.0.16</version>
+    <time>1211820124</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="38">
+    <srcmd5>ad51264de107a92d7e740fba7c7d9db5</srcmd5>
+    <version>1.0.16</version>
+    <time>1212678972</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c3d0cfd3fa7fb2b7aa727c659746d135</srcmd5>
+    <version>1.0.16.92</version>
+    <time>1214180014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>907a1b21c2fc14d2262e9c6c987beece</srcmd5>
+    <version>1.0.17</version>
+    <time>1216411155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>7e00a1fc306061df90d11f70baad741e</srcmd5>
+    <version>1.0.17</version>
+    <time>1217636396</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>6ea0ba889c3ee730bf9e774c3557afa4</srcmd5>
+    <version>1.0.17</version>
+    <time>1218064087</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>59d70ab800ada00f008d98b4e92b881a</srcmd5>
+    <version>1.0.17a</version>
+    <time>1219078916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>6405095023449dcb82b66368cace9d2c</srcmd5>
+    <version>1.0.17a</version>
+    <time>1219427312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2dd338dacfa2fadc93325b8ee24db184</srcmd5>
+    <version>1.0.18</version>
+    <time>1221252150</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>92efe3825d306d50530c0edf58ab9f3f</srcmd5>
+    <version>1.0.18</version>
+    <time>1224689484</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>3c4d0b9c3925a58f7f86e525d738644b</srcmd5>
+    <version>1.0.18</version>
+    <time>1224793446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>8bec89992d128d689b3e68eb18378707</srcmd5>
+    <version>1.0.18</version>
+    <time>1225709619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="7">
+    <srcmd5>432e4398796b1ca87355c1c6c23dc155</srcmd5>
+    <version>1.0.18</version>
+    <time>1226936278</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="8">
+    <srcmd5>cb9a67e1e268bb4a0c7c988816f405ce</srcmd5>
+    <version>1.0.18</version>
+    <time>1227190154</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="9">
+    <srcmd5>e8dce2cb1ab45961a9bf130f8b736360</srcmd5>
+    <version>1.0.18</version>
+    <time>1228485775</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="10">
+    <srcmd5>ed6f10914d36c27720b22e3b538f545a</srcmd5>
+    <version>1.0.18</version>
+    <time>1229338686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="11">
+    <srcmd5>c04db4860f170ce5c683c575bf2503ce</srcmd5>
+    <version>1.0.18</version>
+    <time>1231951639</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="12">
+    <srcmd5>ee8846784288228369a4ebef6de30004</srcmd5>
+    <version>1.0.18</version>
+    <time>1232638990</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="14">
+    <srcmd5>3ec4159f31ca296e4ee85604e2e70182</srcmd5>
+    <version>1.0.18</version>
+    <time>1233948857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="15">
+    <srcmd5>fd5dd77c7e00bf4fb84519d34aaeb9b7</srcmd5>
+    <version>1.0.18</version>
+    <time>1234796532</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="17">
+    <srcmd5>5d16797779999a36ebacbd851f0e1046</srcmd5>
+    <version>1.0.18</version>
+    <time>1235061334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="18">
+    <srcmd5>820c03b62a268e33385cdd6a53b2acfa</srcmd5>
+    <version>1.0.18</version>
+    <time>1236174782</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>fc5626866a083d3768461a025c622f14</srcmd5>
+    <version>1.0.19</version>
+    <time>1236554102</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>ea8538e1d9a0f58e6c5e1bf4432e58a9</srcmd5>
+    <version>1.0.19</version>
+    <time>1237916545</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>a1586a2284bd6becad764ac406a4fdef</srcmd5>
+    <version>1.0.19</version>
+    <time>1240516264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>4b45547ac5c29d29271f4b0ab9d8aaaa</srcmd5>
+    <version>1.0.20</version>
+    <time>1241627469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>ee637b734f296a4a9a22ca138c8e46c3</srcmd5>
+    <version>1.0.20</version>
+    <time>1243544039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>1cbce7f0fddc7dbc6a0f858ea278d09c</srcmd5>
+    <version>1.0.20</version>
+    <time>1244235257</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>5cf4adccf95cc5f622a8eaf7de900b83</srcmd5>
+    <version>1.0.20</version>
+    <time>1245449284</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>2be25ab4548b0cd1a23ffb24bb317c21</srcmd5>
+    <version>1.0.20</version>
+    <time>1246630563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>e0241d05ceb0bf6f33fc7059cd959abf</srcmd5>
+    <version>1.0.20</version>
+    <time>1247076789</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>f90cb1dbdfbf5174c1af5651cb43d301</srcmd5>
+    <version>1.0.20</version>
+    <time>1248356603</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>15a2ce0e1d4b2e9867189b44667929ed</srcmd5>
+    <version>1.0.20</version>
+    <time>1249573857</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="75" vrev="9">
+    <srcmd5>fad07453c534d6cded80431f7cf18f3d</srcmd5>
+    <version>1.0.20</version>
+    <time>1250177461</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 17660 from user tiwai
+</comment>
+  </revision>
+  <revision rev="76" vrev="10">
+    <srcmd5>31a0e6fb7fc67ccd64996f853c4753ef</srcmd5>
+    <version>1.0.20</version>
+    <time>1250864612</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 18401 from user tiwai
+</comment>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>0db121da2e84eaeb9bd606efba642642</srcmd5>
+    <version>1.0.21</version>
+    <time>1251908590</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 19343 from user tiwai
+</comment>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>7381a8ade15339926b7df03759085e8a</srcmd5>
+    <version>1.0.21</version>
+    <time>1252585823</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 20205 from user tiwai
+</comment>
+  </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>7381a8ade15339926b7df03759085e8a</srcmd5>
+    <version>1.0.21</version>
+    <time>1252585823</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 20205 from user tiwai
+</comment>
+  </revision>
+  <revision rev="80" vrev="5">
+    <srcmd5>7e1bf5c591b19a3e25196c6bbf90d302</srcmd5>
+    <version>1.0.21</version>
+    <time>1257161673</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 23560 from user tiwai
+</comment>
+  </revision>
+  <revision rev="81" vrev="6">
+    <srcmd5>328f475c147b5039e0162976d2428e8e</srcmd5>
+    <version>1.0.21</version>
+    <time>1257329272</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 23630 from user tiwai
+</comment>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>2740a681bdcb29249edfd4f8fd824e8b</srcmd5>
+    <version>1.0.22</version>
+    <time>1261433716</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 27352 from user tiwai
+</comment>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>f327c708ef0c512faac95e52ff1204f7</srcmd5>
+    <version>1.0.22</version>
+    <time>1262109574</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 27732 from user tiwai
+</comment>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>ecdb4292d33a39846676fe5b3bf7f9df</srcmd5>
+    <version>1.0.22</version>
+    <time>1268922864</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>d8a686d9607f589d01aba502e9542ba4</srcmd5>
+    <version>1.0.22</version>
+    <time>1268950520</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 35100 from user tiwai
+</comment>
+    <requestid>35100</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>22166ece95446546c9ce7c56fb013022</srcmd5>
+    <version>1.0.23</version>
+    <time>1272043223</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 38517 from user tiwai
+</comment>
+    <requestid>38517</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>bcceedc484e05a62ed35b3398ba654e3</srcmd5>
+    <version>1.0.23</version>
+    <time>1272121286</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 38687 from user coolo
+</comment>
+    <requestid>38687</requestid>
+  </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>bcceedc484e05a62ed35b3398ba654e3</srcmd5>
+    <version>1.0.23</version>
+    <time>1278667335</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>bcceedc484e05a62ed35b3398ba654e3</srcmd5>
+    <version>1.0.23</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="90" vrev="5">
+    <srcmd5>a80c057ebddd398b17ba54eb27a42df8</srcmd5>
+    <version>1.0.23</version>
+    <time>1280486814</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 44222 from user coolo
+</comment>
+    <requestid>44222</requestid>
+  </revision>
+  <revision rev="91" vrev="6">
+    <srcmd5>572db9936df03c8d3ea4df1df2e36f8b</srcmd5>
+    <version>1.0.23</version>
+    <time>1283524854</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa based on submit request 47041 from user tiwai
+</comment>
+    <requestid>47041</requestid>
+  </revision>
+  <revision rev="92" vrev="7">
+    <srcmd5>2bbbae44338e6cabfdb2f48c7f6173a2</srcmd5>
+    <version>1.0.23</version>
+    <time>1288262189</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 51384 from user tiwai
+</comment>
+    <requestid>51384</requestid>
+  </revision>
+  <revision rev="93" vrev="8">
+    <srcmd5>78581e3ac3fb74af6f7a00e6ef22785f</srcmd5>
+    <version>1.0.23</version>
+    <time>1288262195</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 51384
+</comment>
+  </revision>
+  <revision rev="94" vrev="9">
+    <srcmd5>c4c4269ecc7c2758a5c139309fe9b7c0</srcmd5>
+    <version>1.0.23</version>
+    <time>1291027986</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54049 from user tiwai
+</comment>
+    <requestid>54049</requestid>
+  </revision>
+  <revision rev="95" vrev="10">
+    <srcmd5>db339b76756fe39d68a40ff38560e87d</srcmd5>
+    <version>1.0.23</version>
+    <time>1291028006</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54049
+</comment>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>149ebd5d626193f126c6b98b4c92dd89</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1296692755</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59786 from user tiwai
+</comment>
+    <requestid>59786</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>91125183065a34b5db82bff9c0bbca63</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1296692760</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59786
+</comment>
+  </revision>
+  <revision rev="98" vrev="5">
+    <srcmd5>91125183065a34b5db82bff9c0bbca63</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="99" vrev="6">
+    <srcmd5>4170a7c38669944ea54a328efb2d169b</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1301469617</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65299 from user coolo
+</comment>
+    <requestid>65299</requestid>
+  </revision>
+  <revision rev="100" vrev="7">
+    <srcmd5>667ca0fe3a2e1a81c70b3de0c2846c72</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1301469623</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65299
+</comment>
+  </revision>
+  <revision rev="101" vrev="8">
+    <srcmd5>fc3d1d8c4e3619a6c600e49287e3c305</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1301578981</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65667 from user coolo
+</comment>
+    <requestid>65667</requestid>
+  </revision>
+  <revision rev="102" vrev="9">
+    <srcmd5>4c806cc1a244884ee2d8aebf636071f0</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1301578989</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65667
+</comment>
+  </revision>
+  <revision rev="103" vrev="10">
+    <srcmd5>e7849f0298b7fa7d429d3a551e9b368d</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1306156805</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>66992</requestid>
+  </revision>
+  <revision rev="104" vrev="11">
+    <srcmd5>05816091ca7cdfe5a239c2bea395c1d7</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1306156839</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66992
+</comment>
+  </revision>
+  <revision rev="105" vrev="12">
+    <srcmd5>39addf2511ab1a80ee0789f384baa015</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1307368793</time>
+    <user>saschpe</user>
+    <comment>- Backport alsa-lib fixes from upstream:
+  0001-Fix-alsa-lib-to-regard-3D-control-Depth-as-Playback-.patch
+  0002-alsa-lib-add-LaCie-Firewire-Speakers-Griffin-FireWav.patch
+  0003-alsa-lib-ucm-allow-values-to-be-read-from-devices.patch
+  0004-UCM-comment-fixes-and-fix-myvalue-initialization-fix.patch
+  0005-UCM-Fix-empty-get_list-initialize-returned-pointer-t.patch
+  0006-Conf-Fix-channels-of-ICE1712-to-10-12.patch
+  0007-UCM-Fix-LGPL-licence-how-to-receive-part-referred-GP.patch
+  0008-configure-Fail-when-the-user-attempts-to-compile-sha.patch
+  0009-Mark-Heaphone-Center-LFE-control-of-emu10k1-conf-as-.patch
+  0010-Fix-typo-in-comment-in-surround71.conf.patch
+  0011-test-latency-print-error-message-when-2-periods-per-.patch
+  0012-EMU10K1.conf-Don-t-lock-hook-controls.patch
+  0013-HDA-Intel.conf-Fix-low-mic-volume-due-to-pulseaudio-.patch
+  0014-alsa-lib-fixed-coverity-reported-issues-under-FORWAR.patch
+  0015-Fix-compile-warnings.patch
+  0016-Fix-printf-for-size_t.patch
+  0018-UCM-fix-memory-leak-when-executing-cset-commands.patch
+  0019-Specficy-subdevice-0-for-front-surround-of-HDA-Intel.patch
+  0020-emu10k1.conf-Fix-no-sound-problem-when-using-SB-Live.patch
+  0021-ctlparse-Respect-softfloat-configure-option.patch
+  0022-UCM-Fix-typo-in-error-message.patch
+  0023-UCM-Fix-deadlock-following-failed-get-_verb.patch
+
+- Fix the wrong path-name check in the previous fix (bnc#684542)</comment>
+    <requestid>72737</requestid>
+  </revision>
+  <revision rev="106" vrev="13">
+    <srcmd5>d2bc9cf08e557a2fde70db2a5ae5e515</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1307368803</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72737
+</comment>
+  </revision>
+  <revision rev="107" vrev="14">
+    <srcmd5>391182892d3d554efd9af58fc20b984d</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1310392691</time>
+    <user>darix</user>
+    <comment>- Add missing Required-Stop in alsasound init script
+
+- Add $local_fs to alsasound init script (for /var/* access)
+  (bnc#700781)
+
+- Call alsactl in alsasound init script when /var is a separate
+  partition (bnc#700781)</comment>
+    <requestid>76045</requestid>
+  </revision>
+  <revision rev="108" vrev="15">
+    <srcmd5>ee9d83cfa8f0afa51e4fa9662eee0e7c</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1310392702</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 76045
+</comment>
+  </revision>
+  <revision rev="109" vrev="16">
+    <srcmd5>1460ae9f831f6f1abd185f429e5dcd50</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1311950889</time>
+    <user>saschpe</user>
+    <comment>- Fix enumeration of default PCM in addition to sysdefault
+
+- Add fallback PCM/control support (for pulse plugin)</comment>
+    <requestid>77434</requestid>
+  </revision>
+  <revision rev="110" vrev="17">
+    <srcmd5>5649195813da52745b6c312947b2d83a</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1311950906</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77434
+</comment>
+  </revision>
+  <revision rev="111" vrev="18">
+    <srcmd5>e8988dbf5c45861b205b4b7fbbfab935</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1315760593</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>81698</requestid>
+  </revision>
+  <revision rev="112" vrev="19">
+    <srcmd5>e4be6361fc1f6c918474eeef1f3be67e</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1315760599</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81698
+</comment>
+  </revision>
+  <revision rev="113" vrev="20">
+    <srcmd5>57aebe73652bc019ba60b70855ca0c83</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1316439292</time>
+    <user>lrupp</user>
+    <comment>- Add alsa-devel to baselibs
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82684 from jengelh)</comment>
+    <requestid>82741</requestid>
+  </revision>
+  <revision rev="114" vrev="21">
+    <srcmd5>d72280eac2e3c81c639e7926d3c47309</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1317132957</time>
+    <user>saschpe</user>
+    <comment>- backport upstream fixes: fix noresample hw_params rule and a few
+  fixes for missing free() (forwarded request 85033 from tiwai)</comment>
+    <requestid>85066</requestid>
+  </revision>
+  <revision rev="115" vrev="22">
+    <srcmd5>b534cc52d5c65d37783c16e07cd31ea8</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1317625916</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85939 from coolo)</comment>
+    <requestid>86076</requestid>
+  </revision>
+  <revision rev="116" vrev="24">
+    <srcmd5>b534cc52d5c65d37783c16e07cd31ea8</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1319181767</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="117" vrev="25">
+    <srcmd5>d63c3fcec2d90c9c101a2bfc9d4606a7</srcmd5>
+    <version>1.0.24.1</version>
+    <time>1323190681</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>02e14d75eb84cd70285c71f83afc6d13</srcmd5>
+    <version>1.0.25</version>
+    <time>1327673768</time>
+    <user>coolo</user>
+    <comment>- Updated to alsa-lib version 1.0.25; including all previous fixes</comment>
+    <requestid>101684</requestid>
+  </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>22212e1d6587bfe740b41ab7d412e48a</srcmd5>
+    <version>1.0.25</version>
+    <time>1338527961</time>
+    <user>coolo</user>
+    <comment>- backport upstream fixes:
+  * Add support for Echo3G devices
+  * Blacklist iec958 for some USB devices
+  * Remove redundant CHECK_ENUM() from snd_mixer_selem_is_enum*()
+  * Document fixes / updates
+  * Add ability to specify TLV data to external control plugins
+  * Fix invalid long long format specifier
+  * Fix missing break in PCM non-interleaved mmap handling
+  * improve robustness of TLV raw value ranges</comment>
+    <requestid>122932</requestid>
+  </revision>
+  <revision rev="120" vrev="4">
+    <srcmd5>22212e1d6587bfe740b41ab7d412e48a</srcmd5>
+    <version>1.0.25</version>
+    <time>1340183169</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="121" vrev="5">
+    <srcmd5>7376b898d47b44e594cd4a25cc78f15d</srcmd5>
+    <version>1.0.25</version>
+    <time>1340624744</time>
+    <user>coolo</user>
+    <comment>- update alsa-info.sh to ver. 0.4.61
+  * Add system firmware version detection
+  * Add roaraudio sound server detection
+  * Cosmetic heading fixup</comment>
+    <requestid>125499</requestid>
+  </revision>
+  <revision rev="122" vrev="6">
+    <srcmd5>8ee4bd7eb4fa95406a66e39f5ebc8021</srcmd5>
+    <version>1.0.25</version>
+    <time>1340725480</time>
+    <user>coolo</user>
+    <comment>- Fix the backward compatibility of ext_ctl plugin (bnc#768742)</comment>
+    <requestid>126118</requestid>
+  </revision>
+  <revision rev="123" vrev="7">
+    <srcmd5>228636c3ff04bf7808342690d4fd6389</srcmd5>
+    <version>1.0.25</version>
+    <time>1341169129</time>
+    <user>coolo</user>
+    <comment>- Use a special modprobe config for loading OSS and sequencer
+  modules automatically (bnc#768361,bnc#768352,bnc#757484,
+  bnc#767738)
+- Remove the automatic module loading part from alsasound init
+  script since modprobe does it now
+- Set LOAD_SEQUENCER=no and LOAD_OSS_EMUL_MODULES=no as default;
+  these were already disabled on 12.1 with systemd.
+  This is only for new installations.  Users upgrading from old
+  distros aren't affected. (forwarded request 126580 from tiwai)</comment>
+    <requestid>126632</requestid>
+  </revision>
+  <revision rev="124" vrev="8">
+    <srcmd5>72592a41571a08fcc84ba5df11c6ddf0</srcmd5>
+    <version>1.0.25</version>
+    <time>1344063590</time>
+    <user>coolo</user>
+    <comment>- Fix useless assert in hctl, backport from upstream (forwarded request 129418 from tiwai)</comment>
+    <requestid>129419</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>31780d74c455337245aac45b003da4d2</srcmd5>
+    <version>1.0.26</version>
+    <time>1348574161</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>135579</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>6671b92ccc7b5b7f418a60f540fcdd92</srcmd5>
+    <version>1.0.26</version>
+    <time>1350565206</time>
+    <user>coolo</user>
+    <comment>- backport from upstream tree:
+  * lots of patches to support the new chmap API
+  * fix segfault in rate plugin error path
+  * add a couple of test programs
+  * fix inifinte loop in htimestamp of dmix &amp;amp; co (forwarded request 138456 from tiwai)</comment>
+    <requestid>138457</requestid>
+  </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>cbd4661f54db5942b25a550db0ec09c5</srcmd5>
+    <version>1.0.26</version>
+    <time>1352880699</time>
+    <user>coolo</user>
+    <comment>- backport fixes from upstream tree:
+  0031-pcm-support-for-audio-timestamps.patch
+  0032-pcm-fix-64-bit-SNDRV_PCM_IOCTL_STATUS-ABI-breakage.patch
+  0033-PCM-Fix-memory-leak-for-pcm-empty-and-asym-plugins.patch
+  0034-Reduce-compilation-warnings.patch
+  0035-PCM-Avoid-busy-loop-in-snd_pcm_write_areas-with-rate.patch (forwarded request 141190 from tiwai)</comment>
+    <requestid>141191</requestid>
+  </revision>
+  <revision rev="128" vrev="4">
+    <srcmd5>330eae6d8c761cd21f813122e77dbf21</srcmd5>
+    <version>1.0.26</version>
+    <time>1354523032</time>
+    <user>coolo</user>
+    <comment>- backport UAPI header fix, chmap extension and comiple warning fix
+  0036-Merge-kernel-uapi-sound-asound.h-and-asequencer.h.patch
+  0037-PCM-Add-more-chmap-definitions-for-UAC2.patch
+  0038-PCM-shut-up-a-compile-unused-parameter-compile-warni.patch
+  0039-Add-workaround-for-conflicting-snd_seq_event_t-defin.patch (forwarded request 143672 from tiwai)</comment>
+    <requestid>143673</requestid>
+  </revision>
+  <revision rev="129" vrev="5">
+    <srcmd5>800ffb465ff36d40bcdc98a03f8e134e</srcmd5>
+    <version>1.0.26</version>
+    <time>1354623347</time>
+    <user>coolo</user>
+    <comment>- 0040-PCM-Fix-conflict-of-_snd_pcm_hw_params-definitions.patch:
+  fix the segfault due to the symbol conflict of _snd_pcm_hw_params (forwarded request 144050 from tiwai)</comment>
+    <requestid>144051</requestid>
+  </revision>
+  <revision rev="130" vrev="6">
+    <srcmd5>0de663a185cf6297b35088c3ec594eb0</srcmd5>
+    <version>1.0.26</version>
+    <time>1355733164</time>
+    <user>coolo</user>
+    <comment>- 0041-configure-Quite-AM_CONDITIONAL-arguments.patch:
+  Fix for the recent automake conditionals
+- 0042-mixer-Don-t-build-simple_abst-when-no-libdl-is-avail.patch:
+  Minor fix for the build without libdl
+- Fix endian check breakage due to the recent UAPI header move:
+  0043-Fix-endian-check-in-local.h.patch (forwarded request 145255 from tiwai)</comment>
+    <requestid>145256</requestid>
+  </revision>
+  <revision rev="131" vrev="8">
+    <srcmd5>0de663a185cf6297b35088c3ec594eb0</srcmd5>
+    <version>1.0.26</version>
+    <time>1359108646</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="132" vrev="9">
+    <srcmd5>af60688a22c5302cdadd1360ce595b7c</srcmd5>
+    <version>1.0.26</version>
+    <time>1359996970</time>
+    <user>coolo</user>
+    <comment>- Backport a few fix patches from upstream, mostly for fixing
+  crashes in multi-thread programs:
+  0044-configure-do-not-detect-incorrect-cross-compiler.patch
+  0045-ucm-Set-uc_mgr-ctl-to-NULL-after-closing-it.patch
+  0046-snd_pcm_direct_parse_open_conf-use-thread-safe-getgr.patch
+  0047-Add-snd_lib_error_set_local-to-install-a-thread-loca.patch
+  0048-snd_device_name_hint-do-not-change-the-global-error-.patch
+  0049-snd_device_name_hint-do-not-use-global-snd_config.patch
+  0050-conf-Fix-a-memory-access-violation-resulting-from-im.patch (forwarded request 150679 from tiwai)</comment>
+    <requestid>150681</requestid>
+  </revision>
+  <revision rev="133" vrev="10">
+    <srcmd5>39fd1910fbe89603fc222c220c3f30b0</srcmd5>
+    <version>1.0.26</version>
+    <time>1363082479</time>
+    <user>coolo</user>
+    <comment>- More backports of fix patches from upstream:
+  0051-Add-sys-types.h-to-include-list.patch
+  0052-control-Simplify-using-snd_config_get_bool.patch
+  0053-Add-workaround-for-conflicting-IEC958-controls-for-H.patch
+  0054-snd_mixer_poll_descriptors_revents-should-loop-over-.patch (forwarded request 158622 from tiwai)</comment>
+    <requestid>158623</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>7c89bc35ce14a49255f629ce68d860a9</srcmd5>
+    <version>1.0.27</version>
+    <time>1365927062</time>
+    <user>coolo</user>
+    <comment>- Updated to version 1.0.27:
+  including all previous fixes; all 00*-* patches dropped (forwarded request 163761 from tiwai)</comment>
+    <requestid>163766</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>95db366e0a13b16444aa07f5e24b649b</srcmd5>
+    <version>1.0.27</version>
+    <time>1366953090</time>
+    <user>coolo</user>
+    <comment>- Upstream fix for dlobj cache crash (bnc#814250)
+  0001-Fix-doubly-call-of-dlclose-in-dlobj-caching-code.patch
+- Upstream patches for support DSD
+  0002-pcm.c-fix-indentation.patch
+  0003-bring-pcm.h-and-pcm.c-in-sync-with-the-kernel-list.patch
+- Fix compile errors with C90 (bnc#817077)
+  0004-Use-__inline__-for-exported-headers.patch
+  0005-Add-definition-of-__inline__-for-non-GCC.patch (forwarded request 173315 from tiwai)</comment>
+    <requestid>173316</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>29c5472f663aa32e9e9c089d06a8088f</srcmd5>
+    <version>1.0.27.1</version>
+    <time>1369718642</time>
+    <user>coolo</user>
+    <comment>- Bump to version 1.0.27.1, including previous fixes, USB config
+  quirks, addition of UCM configs and other misc fix patches
+- Backport upstream fixes:
+  0001-pcm-Fix-typo-in-documentation-PREPARE-PREPARED.patch
+  0002-ucm-Fix-segfault-when-device-argument-is-missing-fro.patch (forwarded request 176489 from tiwai)</comment>
+    <requestid>176494</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>956a9419e08ac49dd5d691d262840c07</srcmd5>
+    <version>1.0.27.1</version>
+    <time>1371542128</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes for plug-in API rewind, a possible memory
+  leak in direct plugins, chmap buffer overflow and some segfaults:
+  0003-Allow-specifying-the-max-number-of-cards.patch
+  0004-pcm_hw-Remove-unused-fields-in-struct.patch
+  0005-pcm_plugin-Fix-return-value-of-snd_pcm_rewind.patch
+  0006-pcm_direct-fix-the-memory-leak-when-parsing-the-slav.patch
+  0007-chmap-Always-succeed-setting-the-map-to-what-it-alre.patch
+  0008-pcm_hw-Fix-buffer-overflow-in-chmap.patch
+  0009-pcm_direct-fix-SEGFAULT-when-getgrnam_r-returns-0-an.patch (forwarded request 179267 from tiwai)</comment>
+    <requestid>179270</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>c10e7e9132befacec3a18df43719ba44</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1373542027</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.27.2:
+  just version bump, including all previous fixes (forwarded request 182665 from tiwai)</comment>
+    <requestid>182666</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>2f60fb13f764aea6116138a0d966ac75</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1378711563</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes:
+  0001-local.h-use-__kernel_off_t-from-linux-types.h.patch
+  0002-conf-cards-add-Audio-Advantage-Micro-II.patch
+  0003-pcm-Fix-a-wrong-value-shown-in-the-error-message-in-.patch
+  0004-UCM-Document-some-standard-values.patch
+  0005-hdspm.h-Update-LTC-ioctl-to-use-struct-hdspm_ltc.patch
+  0006-Update-iatomic.h-functions-definitions-for-mips.patch (forwarded request 197613 from tiwai)</comment>
+    <requestid>197836</requestid>
+  </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>2f60fb13f764aea6116138a0d966ac75</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1379661958</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="141" vrev="5">
+    <srcmd5>79555b52d726579d556ecb49b7ff4ceb</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1380807687</time>
+    <user>scarabeus_factory</user>
+    <comment>- Backport upstream fixes: namehints double-free fix, expansion of
+  more HDMI devices, and a fix for dB conversion
+  0007-Fix-access-of-freed-memory-in-namehints.patch
+  0008-HDA-Intel-present-up-to-8-HDMI-DP-outputs-via-hdmi-d.patch
+  0009-snd_tlv_convert_from_dB-fix-decreasing-gain-across-e.patch (forwarded request 201580 from tiwai)</comment>
+    <requestid>201969</requestid>
+  </revision>
+  <revision rev="142" vrev="6">
+    <srcmd5>b58bac249d3859e91a607f46778084f0</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1385618086</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes: cleanups, non-glibc build fixes, fixes
+  and enhancements of pcm_file plugin, etc.
+  0010-remove-unnecessary-obsolete-compat-hsearch_r.c.patch
+  0011-local.h-include-sys-types.h-to-fix-issues-with-pcm.h.patch
+  0012-test-chmap-Add-missing-usage-text-for-s-option.patch
+  0013-include-global.h-don-t-define-timeval-and-timespec-s.patch
+  0014-conf.c-use-portable-way-to-initialize-recursive-mute.patch
+  0015-pcm_file-fix-SEGFAULT-if-file-option-is-missing-whil.patch
+  0016-pcm_file-fixed-memory-leak.patch
+  0017-pcm_file-don-t-touch-infile-on-playback-and-output-f.patch
+  0018-pcm_file-document-new-argument-to-snd_pcm_file_open.patch
+- Fix aborting in races at closing dmix streams (bnc#852446):
+  0019-dmix-Don-t-use-assert-and-abort.patch
+- Don't include modprobe.d hack for 12.2 and older distros, which
+  seem broken on them (forwarded request 208679 from tiwai)</comment>
+    <requestid>208680</requestid>
+  </revision>
+  <revision rev="143" vrev="7">
+    <srcmd5>fc30341843bdc0948e766992020acacd</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1391777334</time>
+    <user>scarabeus_factory</user>
+    <comment>- Enable runtime PM for HD-audio devices (FATE#315523);
+  install 42-hd-audio-pm.rules udev file (forwarded request 221089 from tiwai)</comment>
+    <requestid>221090</requestid>
+  </revision>
+  <revision rev="144" vrev="8">
+    <srcmd5>a26998615105b51c15d5cd445eac196b</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1392480978</time>
+    <user>coolo</user>
+    <comment>- Remove obsolete init scripts for SLE12 and later (bnc#863506);
+  note that you may get errors at upgrading the package due to the
+  old postun still accessing /etc/init.d/* files.  Nevertheless
+  they are obliged to be removed.  If you see such errors, don't
+  report to Bugzilla.  Relax, enjoy Olympic games instead. (forwarded request 222367 from tiwai)</comment>
+    <requestid>222368</requestid>
+  </revision>
+  <revision rev="145" vrev="9">
+    <srcmd5>72171cd1916ba3036cd40098014733be</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1393342873</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix missing /etc/sysconfig/sound due to the previous change
+  (bnc#865356)
+- Fix the superfluous insserv calls due to the wrong suse_version
+  checks (bnc#863506)</comment>
+    <requestid>223721</requestid>
+  </revision>
+  <revision rev="146" vrev="10">
+    <srcmd5>e2003df40e6a87704b510b41dbffb379</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1394953497</time>
+    <user>coolo</user>
+    <comment>- Update alsa-info.sh to match dmesg with snd_
+- Run spec-cleaner
+- Add missing Loopback.conf manually
+- Upstream fixes: minor clean ups, 2.1 PCM channel config support,
+  portability improvements, PCM float format conversion fix,
+  fix for ioplug 32bit hwptr wrap, etc.
+  0020-minor-malloc-changes.patch
+  0021-alsa-lib-minor-typo-in-pcm-doc.patch
+  0022-control_hw-fix-potential-memory-leak.patch
+  0023-pcm-initialize-pcm_dmix-monotonic-field.patch
+  0024-pcm-initialize-monotonic-field-for-dshare-and-dsnoop.patch
+  0025-pcm-use-CLOCK_REALTIME-for-non-monotonic-ts.patch
+  0026-alsa-lib-heavy-pcm-atomics-cleanup.patch
+  0027-conf-Add-basic-infrastructure-for-2.1-surround-sound.patch
+  0028-conf-Add-surround-2.1-support-to-all-cards.patch
+  0029-Portability-fix-look-for-sys-endian.h-as-well-as-end.patch
+  0030-autotools-update-style.patch
+  0031-pcm-Insert-linear-to-float-conversion-when-rate-or-c.patch
+  0032-pcm-route-Allow-chmap-syntax-for-slave-channels-in-t.patch
+  0033-pcm-route-Select-slave-chmap-based-on-ttable-informa.patch
+  0034-conf-Allow-2.1-surround-to-use-different-number-of-c.patch
+  0035-pcm-Wrap-hw_ptr-to-boundary-in-pcm_ioplug.patch
+  0036-src-conf-cards-Add-missing-entry-for-Loopback.conf.patch (forwarded request 225572 from tiwai)</comment>
+    <requestid>225576</requestid>
+  </revision>
+  <revision rev="147" vrev="11">
+    <srcmd5>60d4238451144b38af56d7b8f5e22656</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1395212509</time>
+    <user>coolo</user>
+    <comment>- Fix the silent output with PulseAudio (bnc#868795)
+  0037-pcm-route-Don-t-handle-no-matching-chmap-as-a-seriou.patch (forwarded request 226606 from tiwai)</comment>
+    <requestid>226607</requestid>
+  </revision>
+  <revision rev="148" vrev="12">
+    <srcmd5>fbfce20a6c3b30384318b2ba42f5ce83</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1396291388</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228035</requestid>
+  </revision>
+  <revision rev="149" vrev="13">
+    <srcmd5>6ee9e8b4dc613d95077ece5aae3d616a</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1396621927</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes:
+  0037-route-Return-NULL-in-case-of-zero-found-channels-in-.patch
+  0038-route-Fix-invalid-pointer-access.patch
+  0039-pcm-ladspa-Delay-LADSPA-plugin-activate-call.patch
+- Remove the temporary fix that has been replaced by the fixes
+  above:
+  0037-pcm-route-Don-t-handle-no-matching-chmap-as-a-seriou.patch (forwarded request 228907 from tiwai)</comment>
+    <requestid>228908</requestid>
+  </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>9c803f23f80a3374489077bc34fcc144</srcmd5>
+    <version>1.0.28</version>
+    <time>1403672249</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237964</requestid>
+  </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>0b7753787d75310ef29808ce10a89b39</srcmd5>
+    <version>1.0.28</version>
+    <time>1406369982</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242199</requestid>
+  </revision>
+  <revision rev="152" vrev="3">
+    <srcmd5>c381f3f7b3b2ade4bf2c55cdf90d1678</srcmd5>
+    <version>1.0.28</version>
+    <time>1407072982</time>
+    <user>coolo</user>
+    <comment>- Remove obsoleted README.SuSE (bnc#889023)
+- Correct SUSE branding names in some texts (bnc#889023,FATE#316521)
+- Properly include time.h for CLOCK_MONOTONIC_RAW:
+  0015-pcm-pcm_local.h-include-time.h-to-enable-CLOCK_MONOT.patch (forwarded request 243338 from tiwai)</comment>
+    <requestid>243339</requestid>
+  </revision>
+  <revision rev="153" vrev="4">
+    <srcmd5>bb9dcce25c99e524f233e8df9bd94ab3</srcmd5>
+    <version>1.0.28</version>
+    <time>1408021063</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244351</requestid>
+  </revision>
+  <revision rev="154" vrev="5">
+    <srcmd5>b8388d29f566646329a3181156d01768</srcmd5>
+    <version>1.0.28</version>
+    <time>1409252705</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246484</requestid>
+  </revision>
+  <revision rev="155" vrev="7">
+    <srcmd5>b8388d29f566646329a3181156d01768</srcmd5>
+    <version>1.0.28</version>
+    <time>1409300480</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="156" vrev="8">
+    <srcmd5>5d17f648ae5869fd643847e4c89907a1</srcmd5>
+    <version>1.0.28</version>
+    <time>1414218769</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257838</requestid>
+  </revision>
+  <revision rev="157" vrev="9">
+    <srcmd5>2271877f1d561439239c5d4195ed7771</srcmd5>
+    <version>1.0.28</version>
+    <time>1416824255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262042</requestid>
+  </revision>
+  <revision rev="158" vrev="10">
+    <srcmd5>453f338a860e2c2e7c5c37ff3a5bf507</srcmd5>
+    <version>1.0.28</version>
+    <time>1418113026</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264361</requestid>
+  </revision>
+  <revision rev="159" vrev="11">
+    <srcmd5>26b70b9474f58d81134d0076d67400a5</srcmd5>
+    <version>1.0.28</version>
+    <time>1422612022</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283206</requestid>
+  </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>b141accc7bf24289b5b07f069aa56bb2</srcmd5>
+    <version>1.0.29</version>
+    <time>1425566149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288089</requestid>
+  </revision>
+  <revision rev="161" vrev="2">
+    <srcmd5>38493090df9c3daa42a952d914fa0449</srcmd5>
+    <version>1.0.29</version>
+    <time>1432378395</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308373</requestid>
+  </revision>
+  <revision rev="162" vrev="3">
+    <srcmd5>1c6f7198453d26e196f0a1eeaeeaa514</srcmd5>
+    <version>1.0.29</version>
+    <time>1436112029</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312592</requestid>
+  </revision>
+  <revision rev="163" vrev="4">
+    <srcmd5>2abe7f304ca1d7d540bfa1b0c0d9563c</srcmd5>
+    <version>1.0.29</version>
+    <time>1440135437</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320497</requestid>
+  </revision>
+  <revision rev="164" vrev="5">
+    <srcmd5>4755e52f41c1d9a8b16ecd9dce7308ee</srcmd5>
+    <version>1.0.29</version>
+    <time>1444833659</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>335924</requestid>
+  </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>3a4a4e1e6e6406a148b832abd11c5083</srcmd5>
+    <version>1.1.0</version>
+    <time>1447353471</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343194</requestid>
+  </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>8cf882294923e063c34a8d74237c5d32</srcmd5>
+    <version>1.1.0</version>
+    <time>1455032915</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357837</requestid>
+  </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>ff721f43ab0554af874ce6422b00a383</srcmd5>
+    <version>1.1.1</version>
+    <time>1459845704</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382608</requestid>
+  </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>56693da1a6075f60052f6c68bf31c73f</srcmd5>
+    <version>1.1.1</version>
+    <time>1463652214</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>395069</requestid>
+  </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>e11bd280102f253778219b7734583edd</srcmd5>
+    <version>1.1.1</version>
+    <time>1465750297</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>400710</requestid>
+  </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>4562c35a2ca2bc5413d936d8c988be5c</srcmd5>
+    <version>1.1.2</version>
+    <time>1470508507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416717</requestid>
+  </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>61e80e8135d2a0e7500be9023d074afb</srcmd5>
+    <version>1.1.2</version>
+    <time>1481459173</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442730</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>cd31b2dd6f199347ed3566e80c52cf0e</srcmd5>
+    <version>1.1.3</version>
+    <time>1483554504</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448017</requestid>
+  </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>ea22e0cf850745488f7b8ab28528d9be</srcmd5>
+    <version>1.1.3</version>
+    <time>1487259850</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456823</requestid>
+  </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>2d4a3e6a919d64daa729a5bcb14b7c3d</srcmd5>
+    <version>1.1.3</version>
+    <time>1492417349</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487147</requestid>
+  </revision>
+  <revision rev="175" vrev="4">
+    <srcmd5>a67b35fc43c02979e9e26cdb4bc36446</srcmd5>
+    <version>1.1.3</version>
+    <time>1494087900</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492619</requestid>
+  </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>7c567e2c8c4b2db091663c0b8314561b</srcmd5>
+    <version>1.1.4</version>
+    <time>1495283507</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495558</requestid>
+  </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>bd50c8ef1accc7ec8795243447100b55</srcmd5>
+    <version>1.1.4.1</version>
+    <time>1496533729</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500331</requestid>
+  </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>d429a5c84af74497ab2d6db629aae7fc</srcmd5>
+    <version>1.1.5</version>
+    <time>1510837140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541844</requestid>
+  </revision>
+  <revision rev="179" vrev="2">
+    <srcmd5>e67089ac1011502024708ac29b00e897</srcmd5>
+    <version>1.1.5</version>
+    <time>1512041737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544735</requestid>
+  </revision>
+  <revision rev="180" vrev="3">
+    <srcmd5>09eb19063b81758b4d22b90f445774fa</srcmd5>
+    <version>1.1.5</version>
+    <time>1514027935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558308</requestid>
+  </revision>
+  <revision rev="181" vrev="4">
+    <srcmd5>ff77fed29e05621a116276df5c42dc43</srcmd5>
+    <version>1.1.5</version>
+    <time>1516545999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567485</requestid>
+  </revision>
+  <revision rev="182" vrev="5">
+    <srcmd5>228c96f0048fd52a04cac76074b3a206</srcmd5>
+    <version>1.1.5</version>
+    <time>1520160784</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581357</requestid>
+  </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>aed490f003a68ba6a661a482d6041493</srcmd5>
+    <version>1.1.6</version>
+    <time>1523346667</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594638</requestid>
+  </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>632ed8246a6077e24dade277adc13bae</srcmd5>
+    <version>1.1.6</version>
+    <time>1525697562</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>603200</requestid>
+  </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>247a74e291afb43396fe21b5d7f2a2e1</srcmd5>
+    <version>1.1.7</version>
+    <time>1540319750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642939</requestid>
+  </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>53b61d05091ee42d4dc93ebe903bf0d2</srcmd5>
+    <version>1.1.7</version>
+    <time>1543223837</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport upstream fix for a PCM regression for audacity
+  (bsc#1116153):
+  0002-pcm-interval-Interpret-x-x-1-correctly-and-return-x-.patch</comment>
+    <requestid>649311</requestid>
+  </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>767f3df2c5ebab4eb53e74f982fdc2f6</srcmd5>
+    <version>1.1.8</version>
+    <time>1547554502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663643</requestid>
+  </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>86d8d0620feddcfba9f623b2c92ee43d</srcmd5>
+    <version>1.1.8</version>
+    <time>1553503636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686495</requestid>
+  </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>7327cbb891a4586dde1bd6505f5c093d</srcmd5>
+    <version>1.1.8</version>
+    <time>1553887973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689242</requestid>
+  </revision>
+  <revision rev="190" vrev="4">
+    <srcmd5>24b6494367edcb15af17e54f877ad9c3</srcmd5>
+    <version>1.1.8</version>
+    <time>1556311409</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697439</requestid>
+  </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>2564a2e5f17acecfe3f4cc721be521ad</srcmd5>
+    <version>1.1.9</version>
+    <time>1557832393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701995</requestid>
+  </revision>
+  <revision rev="192" vrev="2">
+    <srcmd5>ff667695d62e7c5cc4119893009facd0</srcmd5>
+    <version>1.1.9</version>
+    <time>1560337316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>706124</requestid>
+  </revision>
+  <revision rev="193" vrev="3">
+    <srcmd5>c1abb0dd50fea1d45e5ce379bf2d38d0</srcmd5>
+    <version>1.1.9</version>
+    <time>1568190163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728556</requestid>
+  </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>95ba3d3c68757ff09686ba9db3074b7f</srcmd5>
+    <version>1.2.1.1</version>
+    <time>1575282638</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751231</requestid>
+  </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>ee25d040f643c4757a297b2055b3e506</srcmd5>
+    <version>1.2.1.2</version>
+    <time>1577972405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758568</requestid>
+  </revision>
+  <revision rev="196" vrev="2">
+    <srcmd5>27de3982a69fe8c4175a40c495f09d45</srcmd5>
+    <version>1.2.1.2</version>
+    <time>1579867533</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766334</requestid>
+  </revision>
+  <revision rev="197" vrev="3">
+    <srcmd5>88ecc39fdc150623275c17ef75b53cb2</srcmd5>
+    <version>1.2.1.2</version>
+    <time>1582299624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774843</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>e3a410326b7c97c795a59a386f7dcd57</srcmd5>
+    <version>1.2.2</version>
+    <time>1584350182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784667</requestid>
+  </revision>
+  <revision rev="199" vrev="2">
+    <srcmd5>a8cf978a7224e2d2640eb7b3dcea1a70</srcmd5>
+    <version>1.2.2</version>
+    <time>1588023009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796547</requestid>
+  </revision>
+  <revision rev="200" vrev="3">
+    <srcmd5>840c0caead9a5e6c5569b3e0ed4437f3</srcmd5>
+    <version>1.2.2</version>
+    <time>1589046711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800956</requestid>
+  </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>4a9dd6a325a70ca0f7dc825f4746d8a2</srcmd5>
+    <version>1.2.3</version>
+    <time>1591879550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812897</requestid>
+  </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>e2171f3d477a3c383fdf6dfda0683ef8</srcmd5>
+    <version>1.2.3.1</version>
+    <time>1593292822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816057</requestid>
+  </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>6be421478f083a5236b0918863e05c41</srcmd5>
+    <version>1.2.3.2</version>
+    <time>1594623869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819813</requestid>
+  </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>a970711128603eb77c9c20015db3ba38</srcmd5>
+    <version>1.2.3.2</version>
+    <time>1601744187</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable topology support for aarch64
+
+- Backport upstream fixes:
+  0001-ucm-substitution-remove-duplicate-allow_empty-assign.patch
+  0002-ucm-fix-parse_get_safe_name-safe-name-must-be-checke.patch
+  0003-ucm-substitute-the-merged-tree-completely.patch
+  0004-ctl-improve-documentation-for-identifier-of-control-.patch
+  0005-pcm-dmix-make-lockless-operation-optional.patch
+  0006-pcm-dmix-Fix-semaphore-usage-with-lockless-operation.patch
+  0007-pcm-iec958-implement-HDMI-HBR-audio-formatting.patch
+  0008-pcm-iec958-set-channel-status-bits-according-to-rate.patch
+  0009-conf-pcm-USB-Added-S-PDIF-fix-for-Asus-Xonar-SE.patch
+  0010-control-ctlparse-fix-enum-values-in-or.patch
+  0011-conf-USB-Audio-Disable-IEC958-on-Lenovo-ThinkStation.patch
+  0012-pcm-dmix-fix-access-to-sum-buffer-in-non-interleaved.patch
+  0014-control-Add-documentation-for-snd_ctl_elem_list_.patch
+  0015-conf-quote-also-strings-with-and-characters-in-strin.patch
+  0016-topology-decode-Fix-channel-map-memory-allocation.patch
+  0017-topology-decode-Fix-infinite-loop-in-decoding-enum-c.patch
+  0018-topology-decode-Remove-decoding-values-for-enum-cont.patch
+  0019-topology-decode-Add-enum-control-texts-as-separate-e.patch
+  0020-topology-decode-Fix-printing-texts-section.patch
+  0021-topology-decode-Change-declaration-of-enum-decoding-.patch
+  0022-topology-decode-Fix-decoding-PCM-formats-and-rates.patch
+  0023-topology-decode-Print-sig_bits-field-in-PCM-capabili.patch
+  0024-topology-decode-Add-DAI-name-printing.patch
+  0025-topology-Make-buffer-for-saving-dynamic-size.patch
+  0026-topology-return-correct-value-in-tplg_save_printf.patch
+  0027-topology-fix-some-gcc10-warnings-labs-signess.patch
+  0028-topology-fix-sort_config.patch</comment>
+    <requestid>838541</requestid>
+  </revision>
+  <revision rev="205" vrev="3">
+    <srcmd5>9242b92ca637ea2376482c7ccfa47cd1</srcmd5>
+    <version>1.2.3.2</version>
+    <time>1602155361</time>
+    <user>dimstar_suse</user>
+    <comment>- Placeholder for SLE15-SP3 sync (bsc#1171246):
+  the actual fix is found in alsa-ucm-conf updates
+
+- Enable topology support for riscv64</comment>
+    <requestid>839640</requestid>
+  </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>43baa7d3f6df4702cb47eeec84a82464</srcmd5>
+    <version>1.2.4</version>
+    <time>1603545345</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843202</requestid>
+  </revision>
+</revisionlist>

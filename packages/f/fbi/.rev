@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c88d6dd7d9f43e836cb85f2f499626e3</srcmd5>
+    <version>2.09</version>
+    <time>1336653100</time>
+    <user>coolo</user>
+    <comment>This package is required for rapid-photo-downloader. As discussed
+in #bnc#761246 it is removed from openmotif dependency and
+subsequently subpackage ida is not built
+
+Problems mentionend in declined #119508 have been corrected</comment>
+    <requestid>120570</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c88d6dd7d9f43e836cb85f2f499626e3</srcmd5>
+    <version>2.09</version>
+    <time>1340183320</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c88d6dd7d9f43e836cb85f2f499626e3</srcmd5>
+    <version>2.09</version>
+    <time>1359108867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>c88d6dd7d9f43e836cb85f2f499626e3</srcmd5>
+    <version>2.09</version>
+    <time>1379662325</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>c88d6dd7d9f43e836cb85f2f499626e3</srcmd5>
+    <version>2.09</version>
+    <time>1409300858</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ffa4ff5bec750fa0f8f341aa08d5a1cf</srcmd5>
+    <version>2.10</version>
+    <time>1453508198</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355208</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d261a4c7a5a0a1f22d070eceaf0342a2</srcmd5>
+    <version>2.12</version>
+    <time>1463038445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>394831</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6baefdd72c33ad418c0e9952c9b4a845</srcmd5>
+    <version>2.14</version>
+    <time>1566551156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725288</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>ee932186dd39ee54bba39f3887e6c3d0</srcmd5>
+    <version>2.14</version>
+    <time>1567680296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728284</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>04b2a87786fe261d69af9def5071ffbe</srcmd5>
+    <version>2.14</version>
+    <time>1594119588</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>819019</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df40a7ecf661a88568e6039121dd6d4a</srcmd5>
+    <version>1.0</version>
+    <time>1587469062</time>
+    <user>dimstar_suse</user>
+    <comment>New package ttf-converter, part of the solution for boo#1169444</comment>
+    <requestid>796030</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc762a4510b719955478a2ac26a955a5</srcmd5>
+    <version>1.0.3</version>
+    <time>1592938789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816307</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>291221c9cf449ee265aa74d3fa1bfc7e</srcmd5>
+    <version>1.0.6</version>
+    <time>1593727220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818036</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21a15cbc4826ca1ed32b562d90b41687</srcmd5>
+    <version>0.6.1</version>
+    <time>1600180001</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial v0.6.1 greetd package
+* includes greetd service
+* includes agreety text-based greeter </comment>
+    <requestid>834573</requestid>
+  </revision>
+</revisionlist>

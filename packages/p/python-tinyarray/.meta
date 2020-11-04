@@ -1,0 +1,14 @@
+<package name="python-tinyarray" project="openSUSE:Factory">
+  <title>Arrays of numbers for Python, optimized for small sizes</title>
+  <description>Tinyarrays are similar to NumPy arrays, but optimized for small sizes.
+Tinyarrays support mathematical operations like element-wise addition
+and matrix multiplication. Tinyarrays can be used as dictionary keys
+because they are hashable and immutable. Tinyarrays are useful if you
+need many small arrays of numbers, and cannot combine them into a few
+large ones. Common operations on very small arrays are faster than
+with NumPy, and less memory is used to store them.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-tinyarray"/>
+  <url>https://gitlab.kwant-project.org/kwant/tinyarray</url>
+</package>

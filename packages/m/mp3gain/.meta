@@ -1,0 +1,13 @@
+<package name="mp3gain" project="openSUSE:Factory">
+  <title>MP3 Volume Normalizer based on Replay Gain</title>
+  <description>MP3Gain analyzes and adjusts mp3 files so that they have the same volume. It
+does not just do peak normalization, as many normalizers do. Instead, it does
+some statistical analysis to determine how loud the file actually sounds to
+the human ear. Also, the changes MP3Gain makes are completely lossless. There
+is no quality lost in the change because the program adjusts the mp3 file
+directly, without decoding and re-encoding.
+
+</description>
+  <devel project="multimedia:apps" package="mp3gain"/>
+  <url>http://mp3gain.sourceforge.net</url>
+</package>

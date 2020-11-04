@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e5032f524f4e2ba572a6fb2c342d7c4</srcmd5>
+    <version>0.4.2</version>
+    <time>1558515937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2
+  * Re-establish Python 2 compatibility (but the clock is ticking ...)
+- Rename to to match python package naming guidelines.
+- Split jupyter components into own subpackage.
+- Drop dependency on deprecated python-py package as it is not
+  stated anywhere in the upstream sources
+- This is python3-only.
+- Update to Version 0.4.1
+  * Fix issue #266
+- Update to Version 0.4.0
+  * Support for &quot;data-cite&quot; HTML tags in Markdown cells
+  * Add option ``nbsphinx_custom_formats``
+  * LaTeX macros ``\nbsphinxstartnotebook`` and ``\nbsphinxstopnotebook``
+  * Support for cell attachments
+  * Add options ``nbsphinx_input_prompt`` and ``nbsphinx_output_prompt``
+  * Re-design LaTeX output of code cells, fix image sizes
+- Update to 0.3.5
+  * Disable nbconvert version 5.4 to avoid jupyter/nbconvert#878
+- Update to 0.3.4
+  * Fix issue #196 and other minor changes
+- Update to version 0.3.3
+  * Locally linked files are only copied for Jupyter notebooks
+    (and not anymore for other Sphinx source files)
+- Update to version 0.3.2
+  * Links to local files are rewritten for all Sphinx source files (not only
+    Jupyter notebooks)
+- Update to version 0.3.1
+  * Enable notebook translations (NB: The use of reST strings is temporary!)
+- Update to version 0.3.0
+  * Add options ``nbsphinx_prolog`` and ``nbsphinx_epilog``
+  * Links from ``*.rst`` files to notebooks have to start with a slash
+- update to version 0.2.18:
+  * Fix issue #148
+- update to version 0.2.17:
+  * Fix issue #146
+- changes from version 0.2.16:
+  * Fix issue #142
+- changes from version 0.2.15 :
+  * Links to subsections are now possible in all source files
+- Update to 0.2.14
+  * Add option ``nbsphinx_kernel_name``
+- Implement single-spec version.
+- Initial version.
+</comment>
+    <requestid>698308</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>703a065ad39798c52064a446617a6574</srcmd5>
+    <version>0.4.3</version>
+    <time>1575039456</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748489</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>87bff3382e682b8ff031b827531f7e56</srcmd5>
+    <version>0.5.0</version>
+    <time>1579195246</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764734</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7be39758e405cdc1aac1b55cdf459acb</srcmd5>
+    <version>0.5.1</version>
+    <time>1581368171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773155</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0b4e43365f21ba46c7b7fc4be971b652</srcmd5>
+    <version>0.6.1</version>
+    <time>1590506512</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808512</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06ed014d633fc5f8588870a9e8202f43</srcmd5>
+    <version>0.7.0</version>
+    <time>1591743003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Warnings can be suppressed with suppress_warnings.
+  * CSS: prompts protrude into left margin if nbsphinx_prompt_width is
+too small
+  * &lt;img&gt; tags are handled in Markdown cells</comment>
+    <requestid>812828</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e79930c9d6967d0746b2ad1e756a3b75</srcmd5>
+    <version>0.7.1</version>
+    <time>1593606445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818058</requestid>
+  </revision>
+</revisionlist>

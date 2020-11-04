@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>304041b4513ffc65b79521e7135b272a</srcmd5>
+    <version>0.5</version>
+    <time>1323265171</time>
+    <user>coolo</user>
+    <comment>openstack</comment>
+    <requestid>94215</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2dda308c297206f0b44793552d984a79</srcmd5>
+    <version>0.5</version>
+    <time>1339587163</time>
+    <user>coolo</user>
+    <comment>- Spec header cleanup</comment>
+    <requestid>124459</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>42f56523391e3825c195d0166a948080</srcmd5>
+    <version>0.6</version>
+    <time>1340033725</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.6:
+  + Added a workaround for a FreeBSD kernel bug (kern/152036).
+  + Added address_families dictionary to allow code to look up the symbolic
+    name corresponding to a given numeric address family code.</comment>
+    <requestid>125075</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>42f56523391e3825c195d0166a948080</srcmd5>
+    <version>0.6</version>
+    <time>1340184070</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>60759a7c1b3aa1b3fba4227c252b8a00</srcmd5>
+    <version>0.8</version>
+    <time>1340726225</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>126134</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>60759a7c1b3aa1b3fba4227c252b8a00</srcmd5>
+    <version>0.8</version>
+    <time>1359110073</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>60759a7c1b3aa1b3fba4227c252b8a00</srcmd5>
+    <version>0.8</version>
+    <time>1379664224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>0494abaf7fe2010b3811521f3504762f</srcmd5>
+    <version>0.8</version>
+    <time>1382693016</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204602</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>735b2492761a77a381fc2716eeea8139</srcmd5>
+    <version>0.10.4</version>
+    <time>1401108221</time>
+    <user>coolo</user>
+    <comment>- Version bump to 0.10.4:
+  * Various small fixes
+- Fix source download url
+- Fix homepage
+
+- Update to version 0.10.3:
+  - Version 0.10.3
+    + When using Netlink (i.e. Linux), check for the constant
+      NLM_F_DUMP_INTR, since it only appeared in kernel version 3.1
+  - Version 0.10.2
+    + Added a workaround for broken netlink headers on certain Linux
+      distributions (the problem being that the netlink headers fail to
+      include &lt;bits/sockaddr.h&gt;, which causes a build failure).
+  - Version 0.10.1
+    + Fixed a problem with the gateways() function that caused it a
+      crash on PyPy.
+    + The CI system is now set up to build for PyPy as well, so
+      problems will be found sooner.
+  - Version 0.10.0
+    + Python 3 compatibility.
+    + Improved Windows source code compatibility.
+    + Added gateway detection via gateways() function.
+    + New version number format (skipped 0.9.0 due to its use by
+      the netifaces-merged fork).</comment>
+    <requestid>235267</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>735b2492761a77a381fc2716eeea8139</srcmd5>
+    <version>0.10.4</version>
+    <time>1409302923</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>339a341e772f3ffc1d83276b52a3e502</srcmd5>
+    <version>0.10.5</version>
+    <time>1493363531</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>484783</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aae61625697f6f2d33fd61029253d108</srcmd5>
+    <version>0.10.6</version>
+    <time>1500456031</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509012</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0b0271d3431a46ea87e687263270223f</srcmd5>
+    <version>0.10.7</version>
+    <time>1536876056</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 0.10.7:
+  * move to github</comment>
+    <requestid>634718</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2c1ad557e8e6328ae5edf4d0b5040fb9</srcmd5>
+    <version>0.10.9</version>
+    <time>1559375109</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705225</requestid>
+  </revision>
+</revisionlist>

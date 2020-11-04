@@ -1,0 +1,5 @@
+<package name="libosmo-dsp" project="openSUSE:Factory">
+  <title>libosmo-dsp</title>
+  <description>A library with SDR DSP primitives</description>
+  <devel project="network:telephony" package="libosmo-dsp"/>
+</package>

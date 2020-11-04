@@ -1,0 +1,178 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>f997312afc7858538057d1c5e19bc8cc</srcmd5>
+    <version>0.1</version>
+    <time>1168902535</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13c695432eb557afb8788aa93c9ea773</srcmd5>
+    <version>0.2</version>
+    <time>1169134341</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="26">
+    <srcmd5>1cc381a7251af6fbed4841a8a5fdc2a6</srcmd5>
+    <version>0.2</version>
+    <time>1184343964</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fa6db4a6dcfe01e9384311099ae8d1c5</srcmd5>
+    <version>0.3</version>
+    <time>1187910053</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0a3989126bb52b35c22a759b7e99273d</srcmd5>
+    <version>MACRO</version>
+    <time>1212682012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d3c321f7421e552df9559e9d90d32985</srcmd5>
+    <version>MACRO</version>
+    <time>1227880418</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>11d42dd567096dd8caa2741c46b7126c</srcmd5>
+    <version>MACRO</version>
+    <time>1235064162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>11d42dd567096dd8caa2741c46b7126c</srcmd5>
+    <version>MACRO</version>
+    <time>1235064162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>e0640914ec25b6ca5bfc82d52bc7b332</srcmd5>
+    <version>MACRO</version>
+    <time>1268923312</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>e0640914ec25b6ca5bfc82d52bc7b332</srcmd5>
+    <version>MACRO</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>e0640914ec25b6ca5bfc82d52bc7b332</srcmd5>
+    <version>MACRO</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>e0640914ec25b6ca5bfc82d52bc7b332</srcmd5>
+    <version>MACRO</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>a800816da73806b411ceaabd208d7bf7</srcmd5>
+    <version>MACRO</version>
+    <time>1316459298</time>
+    <user>lrupp</user>
+    <comment>- Select libnl-1_1-devel (forwarded request 82434 from jengelh)</comment>
+    <requestid>82449</requestid>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>a800816da73806b411ceaabd208d7bf7</srcmd5>
+    <version>MACRO</version>
+    <time>1319181845</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="16">
+    <srcmd5>f33d1fe2def2d29c031c05d690b1d8c7</srcmd5>
+    <version>MACRO</version>
+    <time>1319205801</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88915</requestid>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>47eb37580e5f0089457c2627b575ed38</srcmd5>
+    <version>MACRO</version>
+    <time>1323191139</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>47eb37580e5f0089457c2627b575ed38</srcmd5>
+    <version>MACRO</version>
+    <time>1340183275</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>47eb37580e5f0089457c2627b575ed38</srcmd5>
+    <version>MACRO</version>
+    <time>1359108806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>cd37b2f25b1228332e7225b064063d85</srcmd5>
+    <version>MACRO</version>
+    <time>1359361804</time>
+    <user>coolo</user>
+    <comment>fix build</comment>
+    <requestid>149981</requestid>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>cd37b2f25b1228332e7225b064063d85</srcmd5>
+    <version>MACRO</version>
+    <time>1379662218</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>7afd356ac460f0cdf7e269a74b75382c</srcmd5>
+    <version>MACRO</version>
+    <time>1403508234</time>
+    <user>coolo</user>
+    <comment>- delayacct-utils-nl.patch DO not attempt to link getdelays 
+  with libnl1, it is a bogus dependency, resulting executable
+  never uses the library. (forwarded request 238067 from elvigia)</comment>
+    <requestid>238077</requestid>
+  </revision>
+  <revision rev="22" vrev="27">
+    <srcmd5>7afd356ac460f0cdf7e269a74b75382c</srcmd5>
+    <version>MACRO</version>
+    <time>1409300754</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="28">
+    <srcmd5>0d1f45e3b1272fedd1401889712f5f17</srcmd5>
+    <version>MACRO</version>
+    <time>1484132644</time>
+    <user>dimstar_suse</user>
+    <comment>- adapt to new kernel version and new location of getdelays.c (forwarded request 449518 from msmeissn)</comment>
+    <requestid>449519</requestid>
+  </revision>
+  <revision rev="24" vrev="29">
+    <srcmd5>8a3d2c24c834bf0ab98d824d3a0aa8f5</srcmd5>
+    <version>MACRO</version>
+    <time>1512734490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555060</requestid>
+  </revision>
+  <revision rev="25" vrev="30">
+    <srcmd5>747a46aadc4ea889b6cac3710fa53a68</srcmd5>
+    <version>MACRO</version>
+    <time>1554276487</time>
+    <user>dimstar_suse</user>
+    <comment>BuildRequire kernel-devel because we want to rebuild when it gets updated
+
+not sure if this will work with Factory's rebuild magic (forwarded request 690604 from bmwiedemann)</comment>
+    <requestid>690628</requestid>
+  </revision>
+</revisionlist>

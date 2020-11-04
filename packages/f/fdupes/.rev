@@ -1,0 +1,268 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>601f85be29a5c3c1c4fc09ecd4aba398</srcmd5>
+    <version>1.40</version>
+    <time>1168902730</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="19">
+    <srcmd5>bf337eee5cedc963fcad0ceace0b753a</srcmd5>
+    <version>1.40</version>
+    <time>1179394480</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="42">
+    <srcmd5>c7f975216c48c07cc4b626968c68adb2</srcmd5>
+    <version>1.40</version>
+    <time>1189701680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="109">
+    <srcmd5>c7f975216c48c07cc4b626968c68adb2</srcmd5>
+    <version>1.40</version>
+    <time>1189701680</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="110">
+    <srcmd5>eea62fcc248fbab37c62bff06c03d1fb</srcmd5>
+    <version>1.40</version>
+    <time>1232625802</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="111">
+    <srcmd5>3ba86b70905405d1c1ec8fafb2e008c1</srcmd5>
+    <version>1.40</version>
+    <time>1251474292</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fdupes based on submit request 18771 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="113">
+    <srcmd5>3ba86b70905405d1c1ec8fafb2e008c1</srcmd5>
+    <version>1.40</version>
+    <time>1251474292</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fdupes based on submit request 18771 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="114">
+    <srcmd5>1995e704d6d37ea428adbbc6a143c2b8</srcmd5>
+    <version>1.40</version>
+    <time>1266973441</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/fdupes based on submit request 33323 from user coolo
+</comment>
+    <requestid>33323</requestid>
+  </revision>
+  <revision rev="9" vrev="115">
+    <srcmd5>9f0c9a7e037bc409a5655e01a32ee42a</srcmd5>
+    <version>1.40</version>
+    <time>1268923517</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="117">
+    <srcmd5>9f0c9a7e037bc409a5655e01a32ee42a</srcmd5>
+    <version>1.40</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="118">
+    <srcmd5>9f0c9a7e037bc409a5655e01a32ee42a</srcmd5>
+    <version>1.40</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="121">
+    <srcmd5>9f0c9a7e037bc409a5655e01a32ee42a</srcmd5>
+    <version>1.40</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="122">
+    <srcmd5>16ff72a194e445fca17048f8762b56ed</srcmd5>
+    <version>1.40</version>
+    <time>1316617473</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83506 from jengelh)</comment>
+    <requestid>83986</requestid>
+  </revision>
+  <revision rev="14" vrev="123">
+    <srcmd5>83cac91853926d4afc19362cf183ef67</srcmd5>
+    <version>1.40</version>
+    <time>1317993539</time>
+    <user>lrupp</user>
+    <comment>- cross-build workaround: fake gcc script to work around build
+  system not honoring CC (forwarded request 86736 from uli_suse)</comment>
+    <requestid>87002</requestid>
+  </revision>
+  <revision rev="15" vrev="125">
+    <srcmd5>83cac91853926d4afc19362cf183ef67</srcmd5>
+    <version>1.40</version>
+    <time>1319181874</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="126">
+    <srcmd5>26cf96446031ae227ef2688dbd4600e6</srcmd5>
+    <version>1.40</version>
+    <time>1329405168</time>
+    <user>coolo</user>
+    <comment>patch license to follow spdx.org standard (forwarded request 104330 from coolo)</comment>
+    <requestid>104682</requestid>
+  </revision>
+  <revision rev="17" vrev="127">
+    <srcmd5>b0667a239dab7876bd19c3baa462abbe</srcmd5>
+    <version>1.40</version>
+    <time>1332885645</time>
+    <user>coolo</user>
+    <comment>fix for red hat based distros (forwarded request 111208 from behrisch)</comment>
+    <requestid>111256</requestid>
+  </revision>
+  <revision rev="18" vrev="129">
+    <srcmd5>b0667a239dab7876bd19c3baa462abbe</srcmd5>
+    <version>1.40</version>
+    <time>1340183324</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>144351ce538d6bae040319f5fec206eb</srcmd5>
+    <version>1.50</version>
+    <time>1351336967</time>
+    <user>coolo</user>
+    <comment>- update to 1.5.0-PR2
+  * new &quot;--summarize&quot; option
+  * new  &quot;--recurse:&quot; selective recursion option
+  * new &quot;--noprompt&quot; option for totally automated deletion of
+  duplicate files.
+  * sorts duplicates (old to new) for consistent order when
+  listing or deleteing duplicate files.
+  * tests for early matching of files, which should help speed up
+  the matching process when large files are involved.
+  * warns whenever a file cannot be deleted.
+  * bugfixes (proper file closing, zero-length files, ...)
+- drop the fdupes-sort-output.diff (upstream uses mtime based)
+- rename and rebase fdupes-speedup.patch to 0008-speedup-the-compare.patch
+- rename and rebase fdupes-endianness.patch to
+  0009-glibc-endianness-check-in-md5.patch
+- add -p/--permissions switch so files with different permissions or uid/gid
+  are not considered as duplicates (bnc#784670)
+  * this mode is a default one for fdupes macro
+  0010-add-permissions-mode.patch
+- imported several fixes from Debian
+  * 0001-restore-pristine-code.patch - some common code fixes, partly obsoletes
+    speedup patch
+  * manual page fixes
+    0002-Added-to-escape-minus-signs-in-manpage-lintian-warni.patch
+    0003-Fix-a-typo-in-a-manpage-bts353789.patch
+    0005-add-summarize-to-manpage-bts481809.patch
+    0006-add-nohidden-support-bts511702.patch
+    0007-Disambiguate-the-options-recurse-and-recurse-bts5371.patch
+  * 0004-Large-file-support-for-2GB-files-bts447601.patch - large file support</comment>
+    <requestid>139254</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>144351ce538d6bae040319f5fec206eb</srcmd5>
+    <version>1.50</version>
+    <time>1359108873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>144351ce538d6bae040319f5fec206eb</srcmd5>
+    <version>1.50</version>
+    <time>1379662333</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>144351ce538d6bae040319f5fec206eb</srcmd5>
+    <version>1.50</version>
+    <time>1409300868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>c7ed0865a7394a519fcc805c62695a33</srcmd5>
+    <version>1.50</version>
+    <time>1418251425</time>
+    <user>dimstar_suse</user>
+    <comment>- sort the output of fdupes by filename to make it deterministic
+  for parallel builds
+  * 0011-add-an-option-to-sort-duplicate-files-by-name.patch</comment>
+    <requestid>264104</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>bbb2615db3de4d35c538ef24c947c078</srcmd5>
+    <version>1.50</version>
+    <time>1419809376</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266339</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1903607ded40bd92ae04557511b12385</srcmd5>
+    <version>1.51</version>
+    <time>1442642183</time>
+    <user>coolo</user>
+    <comment>- By default relink hardlinks too, should fix bnc#940296
+
+- Update to upstream git repo on github
+- Refresh patches:
+  * fdupes-makefile.patch
+  * 0008-speedup-the-file-compare.patch
+  * 0010-add-permissions-mode.patch
+  * 0011-add-an-option-to-sort-duplicate-files-by-name.patch
+  * 50_bts284274_hardlinkreplace.dpatch
+- Upstreamed patch:
+  * 0004-Large-file-support-for-2GB-files-bts447601.patch
+- Remove whitespace from fdupes.macros file
+- Cleanup with spec-cleaner
+  - Obey rpm-opt-flags
+  - run test phase</comment>
+    <requestid>320399</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d9b2729631aa77db10926b9628b1ff1b</srcmd5>
+    <version>1.6.1</version>
+    <time>1478517677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438720</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8b6d6c253949d267105285fecd58f086</srcmd5>
+    <version>1.61</version>
+    <time>1482418749</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>446771</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e279825b78442153d2f03b7cadfa88e3</srcmd5>
+    <version>1.61</version>
+    <time>1558036514</time>
+    <user>dimstar_suse</user>
+    <comment>Move RPM macros to %_rpmmacrodir. (forwarded request 701534 from dimstar)</comment>
+    <requestid>701539</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>da5c6e656f93b8f8b6663f7eea739ca1</srcmd5>
+    <version>1.61</version>
+    <time>1588185659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797870</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ccb29f391b4fcb5db8af354fe2526288</srcmd5>
+    <version>2.1.2</version>
+    <time>1598167115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827523</requestid>
+  </revision>
+</revisionlist>

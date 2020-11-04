@@ -1,0 +1,5 @@
+<package name="perl-FFI-CheckLib" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-FFI-CheckLib"/>
+</package>

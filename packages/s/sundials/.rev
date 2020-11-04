@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7bfc30746d1dfdee4b51d7590119fd6</srcmd5>
+    <version>5.0.0</version>
+    <time>1575106597</time>
+    <user>dimstar_suse</user>
+    <comment>SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers for use in writing mathematical software.</comment>
+    <requestid>746535</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>53eb07b37b720b7f249a8ff399e26672</srcmd5>
+    <version>5.0.0</version>
+    <time>1580511511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768347</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b6c1e79d595dc2e94ba6ae35e5b1832</srcmd5>
+    <version>5.2.0</version>
+    <time>1589315446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802708</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e6987e28d37d988936cdd6c02951ae4</srcmd5>
+    <version>5.3.0</version>
+    <time>1600179879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833701</requestid>
+  </revision>
+</revisionlist>

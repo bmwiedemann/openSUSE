@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c3cb664d87c8c6486077288a998a53f7</srcmd5>
+    <version>5.0.0</version>
+    <time>1582899571</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768425</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e805418230a041068f3e5f2e8ea0f33f</srcmd5>
+    <version>5.0.1</version>
+    <time>1585761240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790567</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>21ed9a675f5ce8ff647d5e6658d4a716</srcmd5>
+    <version>5.1.0</version>
+    <time>1588971860</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801167</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee24ca81e5fa6dd0b07c4c7f29081c29</srcmd5>
+    <version>5.2.0</version>
+    <time>1602155535</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 839787 from glaubitz)</comment>
+    <requestid>839849</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="python-cirq" project="openSUSE:Factory">
+  <title>python-cirq</title>
+  <description>Cirq is a Python library for writing, manipulating, and optimizing quantum circuits and running them against quantum computers and simulators.</description>
+  <devel project="devel:languages:python:numeric" package="python-cirq"/>
+</package>

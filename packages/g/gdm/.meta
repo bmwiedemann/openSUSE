@@ -1,0 +1,6 @@
+<package name="gdm" project="openSUSE:Factory">
+  <title>The GNOME Display Manager</title>
+  <description>The GNOME Display Manager is a system service that is responsible for
+providing graphical log-ins and managing local and remote displays.</description>
+  <devel project="GNOME:Factory" package="gdm"/>
+</package>

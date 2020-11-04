@@ -1,0 +1,8 @@
+<package name="bump2version" project="openSUSE:Factory">
+  <title>Version-bump your software with a single command!</title>
+  <description>Version-bump your software with a single command!
+
+</description>
+  <devel project="devel:tools" package="bump2version"/>
+  <url>https://github.com/c4urself/bump2version</url>
+</package>

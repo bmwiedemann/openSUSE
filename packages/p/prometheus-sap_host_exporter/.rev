@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa64b2beebaf0eb68c2e5b21de77f569</srcmd5>
+    <version>0.1.0</version>
+    <time>1583950112</time>
+    <user>dimstar_suse</user>
+    <comment>new package from SHAP team</comment>
+    <requestid>783972</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b164449916ba5f79156935805c980a84</srcmd5>
+    <version>0.3.0+git.1585067146.33dcd8a</version>
+    <time>1585761118</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>790273</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1413772a8745675a56d7fb8b92f2f9c9</srcmd5>
+    <version>0.4.0+git.1587141635.71f3338</version>
+    <time>1587581652</time>
+    <user>dimstar_suse</user>
+    <comment>New version of prometheus-sap_host_exporter released</comment>
+    <requestid>796049</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3a600a3df270080549314ef613647a02</srcmd5>
+    <version>0.4.0+git.1587141635.71f3338</version>
+    <time>1589992835</time>
+    <user>dimstar_suse</user>
+    <comment>- sync changelog with SLE backport requests</comment>
+    <requestid>807578</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f4f3b6f3be7800f11d7c225b744f4f35</srcmd5>
+    <version>0.5.1+git.1593777035.a5d05f8</version>
+    <time>1593904632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818574</requestid>
+  </revision>
+</revisionlist>

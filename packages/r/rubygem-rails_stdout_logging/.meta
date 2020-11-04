@@ -1,0 +1,6 @@
+<package name="rubygem-rails_stdout_logging" project="openSUSE:Factory">
+  <title>rails_stdout_logging</title>
+  <description>Rails gem to configure your app to log to standard out.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rails_stdout_logging"/>
+  <url>https://github.com/heroku/rails_stdout_logging</url>
+</package>

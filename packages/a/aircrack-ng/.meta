@@ -1,0 +1,7 @@
+<package name="aircrack-ng" project="openSUSE:Factory">
+  <title></title>
+  <description>Aircrack-ng is a complete suite of tools to assess  network security.
+The main capabilities of this is to monitor, attack, test and crack WiFi networks
+for auditing purposes. It should be used only for educational purposes.</description>
+  <devel project="security" package="aircrack-ng"/>
+</package>

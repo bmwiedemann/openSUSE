@@ -1,0 +1,6 @@
+<package name="php-pear-Net_IDNA2" project="openSUSE:Factory">
+  <title>PHP library for Punycode encoding and decoding</title>
+  <description>This package helps you to encode and decode punycode strings easily
+</description>
+  <devel project="server:php:applications" package="php-pear-Net_IDNA2"/>
+</package>

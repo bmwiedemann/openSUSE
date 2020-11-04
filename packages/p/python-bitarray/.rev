@@ -1,0 +1,89 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>39921f00fa42e1f4d949e2ba13b37cb0</srcmd5>
+    <version>1.2.1</version>
+    <time>1585176375</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>788099</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a21bd42d02516dc70415905b1e7fe4b5</srcmd5>
+    <version>1.3.0</version>
+    <time>1594228374</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819132</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2e7e213c7a3eb4e332ccf9c3be72046b</srcmd5>
+    <version>1.4.2</version>
+    <time>1596652101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.2:
+  * C-level:
+      - simplify pack/unpack code
+      - fix memory leak in `~` operation (bitarray_cpinvert)
+  * add official Python 3.9 support
+  * improve many docstrings
+  * add DeprecationWarning for `bitdiff()`
+  * add DeprecationWarning when trying to extend bitarrays
+    from bytes on Python 3 (`bitarrays(b'011')` and `.extend(b'110')`)
+  * C-level:
+      - rewrote `.fromfile()` and `.tofile()` implementation,
+        such that now the same code is used for Python 2 and 3.
+        The new implementation is more memoery efficient on
+        Python 3.
+      - use memcmp() in richcompare to shortcut EQ/NE, when
+        comparing two very large bitarrays for equality the
+        speedup can easily be 100x
+      - simplify how unpacking is handled
+  * add more tests
+  * add `.clear()` method (Python 3.3 added this method to lists)
+  * avoid overallocation when bitarray objects are initially created
+  * raise BufferError when resizing bitarrays which is exporting buffers
+  * add example to study the resize() function
+  * improve some error messages
+  * raise `NotImplementedError` with (useful message) when trying to call
+    the `.fromstring()` or `.tostring()` methods, which have been removed
+    in the last release</comment>
+    <requestid>824394</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94beff9957b4f1c007f00e70e0952444</srcmd5>
+    <version>1.5.2</version>
+    <time>1598885450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.2: 
+  * add PyType_Ready usage, issue #66
+  * speedup search() for bitarrays with length 1 in sparse bitarrays,
+    see issue #67
+  * add tests
+  * support signed integers in `util.ba2int()` and `util.int2ba()`,
+    see issue #85
+  * deprecate `.length()` in favor of `len()`
+  * Use `Py_ssize_t` for bitarray index.  This means that on 32bit
+    systems, the maximun number of elements in a bitarray is 2 GBits.
+    We used to have a special 64bit index type for all architectures, but
+    this prevented us from using Python's sequence, mapping and number
+    methods, and made those method lookups slow.
+  * speedup slice operations when step size = 1 (if alignment allows
+    copying whole bytes)
+  * Require equal endianness for operations: `&amp;`, `|`, `^`, `&amp;=`, `|=`, `^=`.
+    This should have always been the case but was overlooked in the past.
+  * raise TypeError when tring to create bitarray from boolean
+  * This will be last release to still support Python 2.6 (which was retired
+    in 2013).  We do NOT plan to stop support for Python 2.7 anytime soon.</comment>
+    <requestid>830624</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f63466ff82fe0fe727907dc2494258e</srcmd5>
+    <version>1.5.3</version>
+    <time>1601488461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.3:
+  * add optional index parameter to `.index()` to invert single bit
+  * fix `sys.getsizeof(bitarray)` by adding `.__sizeof__()`, see issue #100</comment>
+    <requestid>838633</requestid>
+  </revision>
+</revisionlist>

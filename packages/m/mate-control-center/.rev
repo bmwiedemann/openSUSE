@@ -1,0 +1,230 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dcab7ef33eb0a0125b81e1134329dec5</srcmd5>
+    <version>1.6.1</version>
+    <time>1387391003</time>
+    <user>coolo</user>
+    <comment>Mate for OpenSUSE see http://lists.opensuse.org/opensuse-factory/2013-09/msg00387.html
+
+Submit HEAD</comment>
+    <requestid>200424</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>23c4414c19f81621544f1fa1dd1b960b</srcmd5>
+    <version>1.6.2</version>
+    <time>1388774706</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.6.2
+  + default applications: fix capplet name
+  + Fix some deprecations and remove some unused vars
+  + appearance: Change also titlebar font if Metacity is running 
+    Closes #40 (https://github.com/mate-desktop/mate-control-center/issues/40)
+  + Rename .desktop files to avoid file collision with Gnome2
+  + use MATE defaults for appearance-themes
+  + using mate-default-applications-properties.desktop im gsettings schema
+- Upstream doesn't provide display-properties.desktop, keyboard.desktop
+  at-properties.desktop and window-properties.desktop anymore; remove
+  %suse_update_desktop_file tag for mentioned desktop files
+- Subpackage libslab development files in his own package (forwarded request 212584 from posophe)</comment>
+    <requestid>212585</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d5f98854db01bca72db28c9ea771fd2c</srcmd5>
+    <version>1.8.1</version>
+    <time>1395495918</time>
+    <user>coolo</user>
+    <comment>Update to version 1.8.1 (forwarded request 226080 from posophe)</comment>
+    <requestid>226081</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8c85b985afa8bf943ea527c0a71a230a</srcmd5>
+    <version>1.8.2</version>
+    <time>1405178109</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240758</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8c85b985afa8bf943ea527c0a71a230a</srcmd5>
+    <version>1.8.2</version>
+    <time>1409301863</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>457802b4d04cfd6eba9f385ff62917d1</srcmd5>
+    <version>1.8.3</version>
+    <time>1412533896</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253754</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7485e6963b49559258f11d18a707ac67</srcmd5>
+    <version>1.10.0</version>
+    <time>1435652327</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314240</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9ed5728c21f7d7b09fd26db2e41eaabe</srcmd5>
+    <version>1.10.1</version>
+    <time>1438421697</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>317691</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>74042381b9534ae8cbd0c644ada9b859</srcmd5>
+    <version>1.10.2</version>
+    <time>1444130866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>336557</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d8b30c66ff41354676177562c67fd5f4</srcmd5>
+    <version>1.12.0</version>
+    <time>1447234227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>342770</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe162b8980990cfed006f245322d2dbd</srcmd5>
+    <version>1.12.1</version>
+    <time>1450695853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>348877</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b31a4ef6b9141a6024b50793eacd8584</srcmd5>
+    <version>1.14.0</version>
+    <time>1460740188</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>386781</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8ffce46499da1924b6436429e3f8f3e</srcmd5>
+    <version>1.14.1</version>
+    <time>1471428271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>419244</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>08056ff95f12e0ce211382f83411f7c2</srcmd5>
+    <version>1.16.0</version>
+    <time>1474807369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>429536</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0d85d64dbd56814135fd3952453cdc0a</srcmd5>
+    <version>1.16.1</version>
+    <time>1486635545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>455526</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>af6b2d6615b8c18379e019866fa5dbe0</srcmd5>
+    <version>1.18.0</version>
+    <time>1490026388</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>481152</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dfc2b1f77cb350ea2e8b195f03dc4415</srcmd5>
+    <version>1.18.1</version>
+    <time>1491566190</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>485922</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aed8fe78b92ad130b436e94ae6cf439f</srcmd5>
+    <version>1.18.2</version>
+    <time>1497786665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>504404</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64ab0bb7659330f0eb8ba7d64db8f608</srcmd5>
+    <version>1.20.0</version>
+    <time>1521579507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587062</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5563233d988b81270cc8dce7c01b3311</srcmd5>
+    <version>1.20.2</version>
+    <time>1524238008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595717</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed15fbdb817c8257810503fddee4584d</srcmd5>
+    <version>1.20.3</version>
+    <time>1530866626</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620930</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8fbe3c89e41d41567ef5cbe3d71ed29b</srcmd5>
+    <version>1.20.4</version>
+    <time>1551386597</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679471</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b42e66f5448bb957a1d8c219657c4833</srcmd5>
+    <version>1.22.0</version>
+    <time>1558037031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.0.</comment>
+    <requestid>682562</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b94f7ffa6ca2c84e6425409962f91dbc</srcmd5>
+    <version>1.22.1</version>
+    <time>1560337869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.22.1.</comment>
+    <requestid>704466</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8466b018a9406a0dd9d4ffa757ada4db</srcmd5>
+    <version>1.23.1</version>
+    <time>1564576508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>719956</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2544114c4899d81b7f8ca0fd6e7633f2</srcmd5>
+    <version>1.24.0</version>
+    <time>1583226989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0.</comment>
+    <requestid>780525</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0e3f0c0f3c51bca1d14d1a4055fd03a8</srcmd5>
+    <version>1.24.1</version>
+    <time>1597756331</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.1.</comment>
+    <requestid>827410</requestid>
+  </revision>
+</revisionlist>

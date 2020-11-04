@@ -1,0 +1,105 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9fac4bb06e9eea73f6edd935a2f61770</srcmd5>
+    <version>0.9</version>
+    <time>1332616222</time>
+    <user>coolo</user>
+    <comment>Dependency for python-django-celery</comment>
+    <requestid>110485</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9fac4bb06e9eea73f6edd935a2f61770</srcmd5>
+    <version>0.9</version>
+    <time>1340184093</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>80bb58c5a1711e633d93027fe95efb20</srcmd5>
+    <version>0.10.1</version>
+    <time>1358666298</time>
+    <user>coolo</user>
+    <comment>Update and python3 support (forwarded request 148654 from posophe)</comment>
+    <requestid>148839</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>80bb58c5a1711e633d93027fe95efb20</srcmd5>
+    <version>0.10.1</version>
+    <time>1359110126</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>360e1af0160e2d25509b974268d36769</srcmd5>
+    <version>0.10.1</version>
+    <time>1371650237</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180015</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b078ddbd3551ae5916eee7ecfd296147</srcmd5>
+    <version>0.11</version>
+    <time>1372509294</time>
+    <user>coolo</user>
+    <comment>- update to 0.11:
+  - Send proper user agent in API requests
+  - #4: Respect Github rate limits
+  - #5: Fix compatibility with requests 1.0 (forwarded request 180858 from dirkmueller)</comment>
+    <requestid>180874</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8f87ce95ade6f1e40dc399ec0154045f</srcmd5>
+    <version>0.11</version>
+    <time>1376589818</time>
+    <user>scarabeus_factory</user>
+    <comment>- Drop old tarball (sphinxcontrib-issuetracker-0.10.1.tar.gz)</comment>
+    <requestid>188212</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8f87ce95ade6f1e40dc399ec0154045f</srcmd5>
+    <version>0.11</version>
+    <time>1379664288</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>b4c51a2f85aacf8f961570b4f480797e</srcmd5>
+    <version>0.11</version>
+    <time>1382693578</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204664</requestid>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>b4c51a2f85aacf8f961570b4f480797e</srcmd5>
+    <version>0.11</version>
+    <time>1409302997</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>6f94ab44acc3009779d01a179687ebc0</srcmd5>
+    <version>0.11</version>
+    <time>1505238899</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523069</requestid>
+  </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>f14571883e9aba93e6369aa762d7607b</srcmd5>
+    <version>0.11</version>
+    <time>1507755402</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527256</requestid>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>42eb573e14d742ecde5abef5162b8b4c</srcmd5>
+    <version>0.11</version>
+    <time>1545648272</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659694</requestid>
+  </revision>
+</revisionlist>

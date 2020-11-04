@@ -1,0 +1,5 @@
+<package name="python-python-jsonrpc-server" project="openSUSE:Factory">
+  <title>python-python-jsonrpc-server</title>
+  <description>JSON RPC 2.0 server library</description>
+  <devel project="devel:languages:python" package="python-python-jsonrpc-server"/>
+</package>

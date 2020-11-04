@@ -1,0 +1,8 @@
+<package name="python-PyCondor" project="openSUSE:Factory">
+  <title>Python utility for HTCondor</title>
+  <description>PyCondor (Python HTCondor) is a tool to help build and submit workflows to HTCondor in a straight-forward manner with minimal hassle.
+
+</description>
+  <devel project="devel:languages:python" package="python-PyCondor"/>
+  <url>https://github.com/jrbourbeau/pycondor</url>
+</package>

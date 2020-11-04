@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd0b732ef82964009f5987627b2c4e8e</srcmd5>
+    <version>2008.11.6</version>
+    <time>1225983173</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a99458633b3a96ca7881b576ef5d7381</srcmd5>
+    <version>2009.1.12</version>
+    <time>1231779163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a99458633b3a96ca7881b576ef5d7381</srcmd5>
+    <version>2009.1.12</version>
+    <time>1231779163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>581f776aaf0cf5726669659202a5d832</srcmd5>
+    <version>2009.1.12</version>
+    <time>1268923102</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>581f776aaf0cf5726669659202a5d832</srcmd5>
+    <version>2009.1.12</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>581f776aaf0cf5726669659202a5d832</srcmd5>
+    <version>2009.1.12</version>
+    <time>1278678565</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>581f776aaf0cf5726669659202a5d832</srcmd5>
+    <version>2009.1.12</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>307304c8fb125b7e091858adfcc3abcf</srcmd5>
+    <version>2009.1.12</version>
+    <time>1316616865</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 82912 from jengelh)</comment>
+    <requestid>83830</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>307304c8fb125b7e091858adfcc3abcf</srcmd5>
+    <version>2009.1.12</version>
+    <time>1319181791</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>7a3caf99c51ee61aff500784348f3821</srcmd5>
+    <version>2009.1.12</version>
+    <time>1336472733</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0+ and SUSE-LDPL-2.0
+SPDX format (forwarded request 112151 from babelworx)</comment>
+    <requestid>116509</requestid>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>7a3caf99c51ee61aff500784348f3821</srcmd5>
+    <version>2009.1.12</version>
+    <time>1340183210</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="12" vrev="18">
+    <srcmd5>7a3caf99c51ee61aff500784348f3821</srcmd5>
+    <version>2009.1.12</version>
+    <time>1359108710</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="20">
+    <srcmd5>7a3caf99c51ee61aff500784348f3821</srcmd5>
+    <version>2009.1.12</version>
+    <time>1379662049</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>7a3caf99c51ee61aff500784348f3821</srcmd5>
+    <version>2009.1.12</version>
+    <time>1409300575</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

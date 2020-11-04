@@ -1,0 +1,169 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>473391bb13519e880034df1565b28c35</srcmd5>
+    <version>1.24.0</version>
+    <time>1492169655</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>482736</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34b9a5f3843e5f1e8ece603974a0113b</srcmd5>
+    <version>1.24.0</version>
+    <time>1495011278</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495340</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf3dc50b1b4cd40ee40e2c1593491915</srcmd5>
+    <version>1.25.1</version>
+    <time>1499677186</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507725</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ee17400b6b8748ddddf9da1503e3110</srcmd5>
+    <version>1.25.2</version>
+    <time>1500274883</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509420</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a71c544f45078a1ca5ca873db89d4eea</srcmd5>
+    <version>1.25.3</version>
+    <time>1500804796</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>511320</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f3b4692aee9d06d005c0745d75b5654</srcmd5>
+    <version>1.25.4</version>
+    <time>1501227757</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512250</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2506e588765caf8b1ee368e0aa4e5100</srcmd5>
+    <version>1.25.6</version>
+    <time>1502561980</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>516085</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9aa1759c555f1ab60e9b5d57d9439871</srcmd5>
+    <version>1.25.7</version>
+    <time>1506678794</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(esound) BuildRequires and mpg123-esound
+  sub-package, esound is a long obsoleted sound server.
+- Update to version 1.25.7
+  mpg123:
+  * Do not play with cursor and inverse video for progress bar
+    when TERM=dumb.
+  * Fix parsing of host port for numerical IPv6 addresses (just did
+    not work before, only for textual host names).
+  libmpg123:
+  * Proper fix for the xrpnt overflow problems by correctly
+    initialising certain tables for MPEG 2.x layer III. The checks
+    that catch the resulting overflow are still in place, but
+    likely superfluous now. Note that this means certain valid
+    files would have been misdecoded before, if anyone actually
+    produced them. Thanks to Robert Hegemann for the fix!
+  * Silently handle granules with part2_3_length == 0, but
+    scalefac_compress != 0 (ignore the latter).
+</comment>
+    <requestid>529118</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cc468c959466a8279a8dc6cf3281ef3d</srcmd5>
+    <version>1.25.8</version>
+    <time>1512546723</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>547634</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e61e2134f94b600b26dd1e9eaf0bd3b9</srcmd5>
+    <version>1.25.10</version>
+    <time>1520502856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583087</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7234b59887dc724ada8b4e1b6885c0bc</srcmd5>
+    <version>1.25.10</version>
+    <time>1530191417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618723</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>259cdb235c45b061e2f1329da6dabede</srcmd5>
+    <version>1.25.11</version>
+    <time>1563701448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716250</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d98107e87ecb02745bdf0165345601c</srcmd5>
+    <version>1.25.12</version>
+    <time>1566893444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725861</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e8b4fe159525598271412b7af0fa25e0</srcmd5>
+    <version>1.25.13</version>
+    <time>1572179709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743102</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad450b5eef4c523803ad9c12adfb20a3</srcmd5>
+    <version>1.26.1</version>
+    <time>1591101230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1
+  * Fix cmake build by actually including the read_api_version
+    file in the distro.
+  * Fix big-endian build, stupid omission of a variable
+    declaration, semicolon.
+  * Silence a harmless warning for build without realtime
+    priority.
+- Drop fix-ppc64_1.patch and fix-ppc64_2.patch (merged upstream)
+- Add fix-ppc64_1.patch and fix-ppc64_2.patch
+- Update to version 1.26.0
+  * Too many changes to list, see NEWS
+- Add libsyn123 subpackage
+- Drop Group tag
+- Spec cleanup
+</comment>
+    <requestid>810374</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0c391bc329099e170ece47dd1d8b520d</srcmd5>
+    <version>1.26.2</version>
+    <time>1594293349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818840</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8bb69752c4c7c522c9d4552f54fe1fc7</srcmd5>
+    <version>1.26.3</version>
+    <time>1595338810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821434</requestid>
+  </revision>
+</revisionlist>

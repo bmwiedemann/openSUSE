@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4affce273666629c61c47f94a8c8bef</srcmd5>
+    <version>1.3.1</version>
+    <time>1576062771</time>
+    <user>dimstar_suse</user>
+    <comment>let us see how it goes with newer version</comment>
+    <requestid>755586</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8afd59f61fb7b6a17d197f974a51608e</srcmd5>
+    <version>1.3.1</version>
+    <time>1578675028</time>
+    <user>dimstar_suse</user>
+    <comment>- fix dependency (django_compressor -&gt; django-compressor)</comment>
+    <requestid>762825</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ede92b9d974803f9d73f9eb4e292122</srcmd5>
+    <version>1.3.2</version>
+    <time>1589491666</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.3.2
+  - Remove support for Django 1.11. (Closes #273)
+  - Skip ``Thread.DoesNotExist`` exception when raised within
+    ``rebuild_thread_cache_votes``. (Closes #245)
+  - Send 400 status code for ``ValueError`` when archiving. (Closes #271)
+  - Fix a bug where exception for elasticsearch backend would not be caught. (Closes #263)  
+- added patches
+  https://gitlab.com/mailman/hyperkitty/-/commit/03c99ad5beefeac4474b5a00c840fd9debccba02
+  + python-HyperKitty-remove-legacy-use-of-available_attrs.patch</comment>
+    <requestid>805605</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3eb86acb75c32c4d674ff658ae61c2d1</srcmd5>
+    <version>1.3.3</version>
+    <time>1596565396</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.3.3
+  * Allow SHOW_INACTIVE_LISTS_DEFAULT setting to be configurable. (Closes #276)
+  * Fix a bug where the user couldn’t chose the address to send reply or new post as. (Closes #288)
+  * Improve the Django admin command reference from hyperkitty_import. (Closes #281)
+  * Fix FILTER_VHOST to work with web hosts other than the email host. (Closes #254)
+  * Fixed a bug where export can fail if certain headers are wrapped. (Closes #292)
+  * Fixed hyperkitty_import to allow odd line endings in a folded message subject. (Closes #280)
+  * Fixed a bug that could throw an IndexError when exporting messages. (Closes #293)
+  * Use errors='replace' when encoding attachments. (Closes #294)
+- Drop merged python-HyperKitty-remove-legacy-use-of-available_attrs.patch
+</comment>
+    <requestid>824265</requestid>
+  </revision>
+</revisionlist>

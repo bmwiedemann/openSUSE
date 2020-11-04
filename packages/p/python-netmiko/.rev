@@ -1,0 +1,119 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7a494643f6ee89e1b88e77bfe616a53</srcmd5>
+    <version>2.2.2</version>
+    <time>1532293447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2
+  * Add Dell EMC Isilon Support
+  * Add Citrix NetScaler Support
+  * Add Dell OS10 Support
+  * Add Apresia Systems AEOS Support
+  * Add fast_cli mode to Netmiko to improve performance
+  * Add support for a session_log
+- Correct package name for python-PyYAML (case-sensitive) 
+- Use %license not %doc macro
+- Remove devel as it is not needed. 
+- Remove pytest suggestion. 
+- Disable testing during build as those aren't unit tests. See
+  See https://github.com/ktbyers/netmiko/blob/develop/TESTING.md 
+- Create python-netmiko package. 
+</comment>
+    <requestid>624012</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ba802136fe8076d3ad368a348e34f61</srcmd5>
+    <version>2.3.0</version>
+    <time>1539252036</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641188</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7ed6763c38b92a4984ebbcea1028f371</srcmd5>
+    <version>2.3.3</version>
+    <time>1552380800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682758</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e253268ce1862f9410689f14da57c39f</srcmd5>
+    <version>2.4.0</version>
+    <time>1563366406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>715437</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8eef3112bfd2d6ff4d5a7dee02802a4c</srcmd5>
+    <version>2.4.1</version>
+    <time>1565105234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Add Genie/pyATS parser support
+  * Fix Huawei telnet login
+  * Fix support for TextFSM &gt;= 1.0.0
+  * Fixes on Mellanox Driver</comment>
+    <requestid>721258</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b6cfe16d313da3d8509d185041a9090</srcmd5>
+    <version>2.4.2</version>
+    <time>1568379500</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 2.4.2:
+  * Fix session_log corruption bug
+  * Add support for ProxyJump in SSH config file
+  * Add support for Linux prompt terminators via environment variables</comment>
+    <requestid>730103</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>290322fe1ca0ebf9849c6c79fa31e257</srcmd5>
+    <version>3.0.0</version>
+    <time>1579195339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764892</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>97ce8c7822df9ad15b75e67792721ab8</srcmd5>
+    <version>3.1.0</version>
+    <time>1585342679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788896</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12e5f27083069597f7fd7a92c80c1333</srcmd5>
+    <version>3.1.1</version>
+    <time>1589993153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807425</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e394a373526cd6173cae28fc458cc22b</srcmd5>
+    <version>3.2.0</version>
+    <time>1596565316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824185</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>dbdc638d5a1cd45a035acce106641ce3</srcmd5>
+    <version>3.3.0</version>
+    <time>1598983805</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830978</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6837c06f0b9b2fda411da59ab067dd8a</srcmd5>
+    <version>3.3.2</version>
+    <time>1603462145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839120</requestid>
+  </revision>
+</revisionlist>

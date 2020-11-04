@@ -1,0 +1,392 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ed9c3edadb2d219e714705cd09024170</srcmd5>
+    <version>3.1</version>
+    <time>1168904273</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8629e48adf81c4be600be7a8f13b217e</srcmd5>
+    <version>3.2</version>
+    <time>1169568533</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>98dd68d6546fb322ded03d7ffec659f1</srcmd5>
+    <version>3.2</version>
+    <time>1175185760</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="12">
+    <srcmd5>7f25d166a6914308b856bc39806faaa1</srcmd5>
+    <version>3.2</version>
+    <time>1175717391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="31">
+    <srcmd5>c5be0ad05f8d77ac4ca3293b5ca0387c</srcmd5>
+    <version>3.2</version>
+    <time>1181086665</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="53">
+    <srcmd5>9d298de4da3d17f1e4dc37b6c8a559e7</srcmd5>
+    <version>3.2</version>
+    <time>1187281527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="57">
+    <srcmd5>4f4229bab6be49d376c61f62bfdb5110</srcmd5>
+    <version>3.2</version>
+    <time>1187914005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="124">
+    <srcmd5>4f4229bab6be49d376c61f62bfdb5110</srcmd5>
+    <version>3.2</version>
+    <time>1187914005</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f375d59cc97006bbe63c611114e0f83</srcmd5>
+    <version>3.99cvs20090225</version>
+    <time>1235649399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>4f375d59cc97006bbe63c611114e0f83</srcmd5>
+    <version>3.99cvs20090225</version>
+    <time>1235649399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a5a1e171625bf30e6ae1660160bd8e62</srcmd5>
+    <version>4.0</version>
+    <time>1266974924</time>
+    <user>autobuild</user>
+    <comment>Copy from filesystems/squashfs based on submit request 33324 from user coolo
+</comment>
+    <requestid>33324</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>60e3856945f389e2b5272e794386d109</srcmd5>
+    <version>4.0</version>
+    <time>1268926221</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>60e3856945f389e2b5272e794386d109</srcmd5>
+    <version>4.0</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>60e3856945f389e2b5272e794386d109</srcmd5>
+    <version>4.0</version>
+    <time>1278678620</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>79b7f2860ca0687aa9b1c2afa939ae32</srcmd5>
+    <version>4.1</version>
+    <time>1289412550</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52040 from user dirkmueller
+</comment>
+    <requestid>52040</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3e7bdfd32ad46dbfca71b3151ee3944c</srcmd5>
+    <version>4.1</version>
+    <time>1289412564</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52040
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>3e7bdfd32ad46dbfca71b3151ee3944c</srcmd5>
+    <version>4.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>3e7bdfd32ad46dbfca71b3151ee3944c</srcmd5>
+    <version>4.1</version>
+    <time>1319182486</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1972931a013cf53bad4d2898c5159a07</srcmd5>
+    <version>4.2</version>
+    <time>1319208007</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>88473</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>21c54ba74353839881af1ef128592d72</srcmd5>
+    <version>4.2</version>
+    <time>1320672714</time>
+    <user>coolo</user>
+    <comment>
+- The ppc64 kernel uses a page size of 64kB but mksquashfs only
+  pads to a 4kB boundary. When we loopback mount a squashfs file
+  that isn't 64kB aligned and access the last sector of the
+  associated loopback device we see a stream of errors.
+  Disk partitioning tools seem to like accessing the last 512
+  bytes of partitions.
+  This should fix warnings seen during starting installation on
+  ppc64 and IA64 (forwarded request 90070 from k0da)</comment>
+    <requestid>90088</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>01bd2c2e9e9bfe866f31cc3b0aeaad33</srcmd5>
+    <version>4.2</version>
+    <time>1323194736</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>e48a97e1c95c65b3cf1090c68a7b34bb</srcmd5>
+    <version>4.2</version>
+    <time>1327404159</time>
+    <user>coolo</user>
+    <comment>- enable support for xz and lzo (kernel has support already)</comment>
+    <requestid>101066</requestid>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>dc445292ffcedb491a7ed73e67c806bb</srcmd5>
+    <version>4.2</version>
+    <time>1338903328</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>123348</requestid>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>dc445292ffcedb491a7ed73e67c806bb</srcmd5>
+    <version>4.2</version>
+    <time>1340184235</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>dc445292ffcedb491a7ed73e67c806bb</srcmd5>
+    <version>4.2</version>
+    <time>1359110431</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>dc445292ffcedb491a7ed73e67c806bb</srcmd5>
+    <version>4.2</version>
+    <time>1379664724</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3e0d8cc4f448c5d68683b3cdcac5c79e</srcmd5>
+    <version>4.3</version>
+    <time>1400388602</time>
+    <user>coolo</user>
+    <comment>- update to 4.3:
+	- unsquashfs: add checks for corrupted data in opendir functions
+	- unsquashfs: completely empty filesystems incorrectly generate an error
+	- unsquashfs: fix open file limit
+	- mksquashfs: Use linked list to store directory entries rather
+	- mksquashfs: Remove qsort and add a bottom up linked list merge sort
+	- mksquashfs: optimise lookup_inode2() for dirs
+	- pseudo: fix handling of modify pseudo files
+	- pseudo: fix handling of directory pseudo files
+	- xattr: Fix ERROR() so that it is synchronised with the progress bar
+	- mksquashfs/sort: Fix INFO() so that it is synced with the progress bar
+	- mksquashfs: Add -progress to force progress bar when using -info
+	- error.h: consolidate the various error macros into one header file
+	- mksquashfs: fix stack overflow in write_fragment_table()
+	- mksquashfs: move list allocation from off the stack
+	- unsquashfs: fix oversight in directory permission setting
+	- mksquashfs: dynamically allocate recovery_file
+	- mksquashfs: dynamically allocate buffer in subpathname()
+	- mksquashfs: dynamically allocate buffer in pathname()
+	- unsquashfs: fix CVE-2012-4024
+	- unsquashfs: fix CVE-2012-4025
+	- mksquashfs: fix potential stack overflow in get_component()
+	- mksquashfs: add parse_number() helper for numeric command line options
+	- mksquasfs: check return value of fstat() in reader_read_file()
+	- mksquashfs: dynamically allocate filename in old_add_exclude()
+	- unsquashfs: dynamically allocate pathname in dir_scan()
+	- unsquashfs: dynamically allocate pathname in pre_scan()
+	- sort: dynamically allocate filename in add_sort_list()
+	- mksquashfs: fix dir_scan() exit if lstat of source directory fails
+	- pseudo: fix memory leak in read_pseudo_def() if exec_file() fails (forwarded request 234303 from duwe)</comment>
+    <requestid>234304</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>1ea4da0abbb9e3152da78cc5b941973d</srcmd5>
+    <version>4.3</version>
+    <time>1403702652</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238457</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>1ea4da0abbb9e3152da78cc5b941973d</srcmd5>
+    <version>4.3</version>
+    <time>1409303407</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>71738476670533e5aaa81ae2dd9ffb5b</srcmd5>
+    <version>4.3</version>
+    <time>1426495301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>289667</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>fc288fb9f9f81ef320ff2832b6dcae5c</srcmd5>
+    <version>4.3</version>
+    <time>1441295982</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328280</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>3dfbdc915d9277b440898458748e6078</srcmd5>
+    <version>4.3</version>
+    <time>1446989714</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342538</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>b846a16f81e706e012a11a9c218ab3b9</srcmd5>
+    <version>4.3</version>
+    <time>1455021012</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>356582</requestid>
+  </revision>
+  <revision rev="34" vrev="9">
+    <srcmd5>cbad9e80c07010894655863e58c85741</srcmd5>
+    <version>4.3</version>
+    <time>1467359676</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>402761</requestid>
+  </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>2d441f34d91e420eed1d584bc2bf0d41</srcmd5>
+    <version>4.3</version>
+    <time>1533627639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627001</requestid>
+  </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>4242ee129c0fe58c360b29166d2f8987</srcmd5>
+    <version>4.3</version>
+    <time>1553262949</time>
+    <user>dimstar_suse</user>
+    <comment>- Use | instead of / that can be part of -L or -I options. (forwarded request 687413 from dsterba)</comment>
+    <requestid>687414</requestid>
+  </revision>
+  <revision rev="37" vrev="12">
+    <srcmd5>edf81d1243402ed2ae950967662144ca</srcmd5>
+    <version>4.3</version>
+    <time>1556207517</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697642</requestid>
+  </revision>
+  <revision rev="38" vrev="13">
+    <srcmd5>327df3719376765a2ba13a29cb6dde71</srcmd5>
+    <version>4.3</version>
+    <time>1565864550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720711</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0d5eab3f0a59f1bf771a0d65aca58f19</srcmd5>
+    <version>4.4</version>
+    <time>1572442877</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.4 - 2019-08-29:
+ * Reproducible builds, new compressors,
+   CVE fixes, security hardening and new options
+   for Mksquashfs/Unsquashfs.
+- Overall improvements:
+ * Mksquashfs now generates reproducible images by default.
+ * Mkfs time and file timestamps can also be specified.
+ * Support for the Zstandard (ZSTD) compression algorithm.
+ * CVE-2015-4645 and CVE-2015-4646 have been fixed.
+- Mksquashfs improvements and major bug fixes:
+ * Pseudo files now support symbolic links.
+ * New -mkfs-time option.
+ * New -all-time option.
+ * New -root-mode option.
+ * New -quiet option.
+ * New -noId option.
+ * New -offset option.
+ * Update lz4 wrapper to use new functions introduced
+   in 1.7.0.
+ * Bug fix, don't allow &quot;/&quot; pseudo filenames.
+ * Bug fix, allow quoting of pseudo files, to
+   better handle filenames with spaces.
+ * Fix compilation with glibc 2.25+.
+- Unsquashfs improvements and major bug fixes:
+ * CVE-2015-4645 and CVE-2015-4646 have been fixed.
+ * Unsquashfs has been further hardened against corrupted
+   filestems.
+ * Unsquashfs is now more strict about error handling.
+ * New -ignore-errors option.
+ * New -strict-errors option.
+ * New -lln[umeric] option.
+ * New -lc option.
+ * New -llc option.
+ * New -mkfs-time option.
+ * New -UTC option.
+ * New -offset option.
+ * New -quiet option.
+ * Update lz4 wrapper to use new functions introduced
+   in 1.7.0.
+ * Bug fix, fatal and non-fatal errors now set the exit
+   code to 1.
+ * Bug fix, fix time setting for symlinks.
+ * Bug fix, try to set sticky-bit when running as a
+   user process.
+ * Fix compilation with glibc 2.25+.
+- build changes:
+* re-created patches to fit squashfs 4.4
+* removed 0001-mksquashfs-fix-rare-race-in-fragment-waiting-in-file.patch
+  (new version includes this change)
+* removed 0002-Fix-2GB-limit-of-the-is_fragment-.-function.patch
+  (new version includes this change)
+* removed 0003-Add-offset-function-to-skip-n-bytes.patch
+  (new version includes this change)
+* removed sysmacros.patch
+  (new version includes this change)
+</comment>
+    <requestid>743375</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>231991f4d638a08e2365791a124f579d</srcmd5>
+    <version>4.4</version>
+    <time>1586973973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792717</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>f66fe257dbb4b5cc114a0fee421fa6f3</srcmd5>
+    <version>4.4</version>
+    <time>1600879123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834325</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="jlatexmath" project="openSUSE:Factory">
+  <title></title>
+  <description>JLaTeXMath - A Java API to render LaTeX</description>
+  <devel project="Java:packages" package="jlatexmath"/>
+  <url>http://forge.scilab.org/index.php/p/jlatexmath/</url>
+</package>

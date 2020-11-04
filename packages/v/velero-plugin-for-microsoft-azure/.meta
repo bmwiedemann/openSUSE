@@ -1,0 +1,5 @@
+<package name="velero-plugin-for-microsoft-azure" project="openSUSE:Factory">
+  <title></title>
+  <description>Plugins to support Velero on Microsoft Azure</description>
+  <devel project="devel:kubic" package="velero-plugin-for-microsoft-azure"/>
+</package>

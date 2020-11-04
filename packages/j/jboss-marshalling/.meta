@@ -1,0 +1,5 @@
+<package name="jboss-marshalling" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jboss-marshalling"/>
+</package>

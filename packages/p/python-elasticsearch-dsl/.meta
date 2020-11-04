@@ -1,0 +1,5 @@
+<package name="python-elasticsearch-dsl" project="openSUSE:Factory">
+  <title></title>
+  <description>Python client for Elasticsearch</description>
+  <devel project="devel:languages:python" package="python-elasticsearch-dsl"/>
+</package>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5411b3b9277cbc5506adb0c98042a2b2</srcmd5>
+    <version>1.10.19</version>
+    <time>1553635959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>687910</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>516cdd620de5c73c81adcdc883a2d512</srcmd5>
+    <version>1.10.19</version>
+    <time>1575282938</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with objenesis 3.x</comment>
+    <requestid>752794</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e702d2a610fe245179196be8ec7c6e79</srcmd5>
+    <version>1.10.19</version>
+    <time>1585176516</time>
+    <user>dimstar_suse</user>
+    <comment>Fetch sources using source service instead of script</comment>
+    <requestid>788310</requestid>
+  </revision>
+</revisionlist>

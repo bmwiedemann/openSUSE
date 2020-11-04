@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d19ac1d615765c8c38427425523d9fbe</srcmd5>
+    <version>1.0.0</version>
+    <time>1600703118</time>
+    <user>dimstar_suse</user>
+    <comment>Get the image containing the Prometheus SNMP webhook into registry.opensuse.org to allow users of https://github.com/SUSE/prometheus-webhook-snmp to download it. The image is also required in SES7.</comment>
+    <requestid>835766</requestid>
+  </revision>
+</revisionlist>

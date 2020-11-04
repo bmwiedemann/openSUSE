@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e921ce47ef518a2de4316b371b147ac</srcmd5>
+    <version>0.8.2</version>
+    <time>1573045622</time>
+    <user>dimstar_suse</user>
+    <comment>reintroduce the package. It was deleted a few days ago because the build failed.</comment>
+    <requestid>745475</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>99e80fc783d96c5efb3b089b6b41c6fa</srcmd5>
+    <version>0.8.2</version>
+    <time>1575464034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>753327</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ca9a16a1fa720810a5843074036d0c1</srcmd5>
+    <version>0.8.3</version>
+    <time>1579346310</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.3
+- remove patches that were merged upstream:
+    python-control-fixtestaugw.patch
+    python-control-pr317.patch
+    python-control-pr345.patch
+- pr365-copy-PR-320-for-robust_array_test.patch
+  upstream PR#365 the former fixtestaugw patch for the new
+  duplicated array test  
+- pr366-ease-precision-tolerance.patch
+  upstream PR#366 to pass the checks on more architectures
+- remove Python 2 package
+- run all tests in xvfb env and prealloc differently for i586
+  architecture
+  
+</comment>
+    <requestid>765399</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>afa975bffde594b09dbb49e655b95a4b</srcmd5>
+    <version>0.8.3</version>
+    <time>1593292959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817307</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5e154e3335b0813525fab87d02098ab4</srcmd5>
+    <version>0.8.3</version>
+    <time>1593606406</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817899</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>529822b5205e91782f7dfaeadb45740e</srcmd5>
+    <version>0.8.3</version>
+    <time>1594383202</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819785</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>8473a31072b613a72eea1c7b3850e114</srcmd5>
+    <version>0.8.3</version>
+    <time>1595339344</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitely require Pillow for tests because of matplotlib
+</comment>
+    <requestid>821990</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>4fdcb479f70c234b69b121261836f1d4</srcmd5>
+    <version>0.8.3</version>
+    <time>1595577943</time>
+    <user>dimstar_suse</user>
+    <comment>- moved Pillow requirement to matplotlib package</comment>
+    <requestid>822358</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>e1249adf68fb4e48ad0aeab383ab43b6</srcmd5>
+    <version>0.8.3</version>
+    <time>1603645571</time>
+    <user>dimstar_suse</user>
+    <comment>(This is for :backports)
+- Skip a test family on Leap because of segfaults in numpy</comment>
+    <requestid>841078</requestid>
+  </revision>
+</revisionlist>

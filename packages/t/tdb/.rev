@@ -1,0 +1,438 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec8a78cc6af6e9a67205b5de4a2520f8</srcmd5>
+    <version>1.2.10</version>
+    <time>1339574744</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>124770</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ec8a78cc6af6e9a67205b5de4a2520f8</srcmd5>
+    <version>1.2.10</version>
+    <time>1340184262</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1bf42ea41ce8f500f3abffb02b1dbb68</srcmd5>
+    <version>1.2.10</version>
+    <time>1340895683</time>
+    <user>coolo</user>
+    <comment>test suite fails in qemu, disable it there for now (forwarded request 125717 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x7fd4ea029c68&amp;gt;&amp;gt;)</comment>
+    <requestid>126413</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>5f080c41e2f5b3721d8858fd046feac3</srcmd5>
+    <version>1.2.10</version>
+    <time>1341833674</time>
+    <user>coolo</user>
+    <comment>- Ignore tdb run transaction expand check on ppc as well (forwarded request 127364 from k0da)</comment>
+    <requestid>127365</requestid>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>8d32280afe118fa07e71c971ac14f498</srcmd5>
+    <version>1.2.10</version>
+    <time>1348427749</time>
+    <user>coolo</user>
+    <comment>The PIE flags build fix merges back an older fix from a different branch
+and therefore is placed at the particular position in time in the
+package change log.
+
+The same package content as this one got merged into openSUSE 12.2 as an
+update.
+
+The package change log is in chronological order.
+
+The change dated from 'Wed Jun 13 10:23:35 UTC 2012' was merged from a
+different repository.
+
+The actual changes are:
+- Ignore tdb run transaction expand check on ppc as well; (bnc#769268). 
+- Build and link binaries with PIE flags.</comment>
+    <requestid>134899</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4fcf174c4c3c74af7898c110de977cb4</srcmd5>
+    <version>1.2.11</version>
+    <time>1354712987</time>
+    <user>namtrac</user>
+    <comment>- Update to version 1.2.11.
+  + Make tdb robust against improper CLEAR_IF_FIRST restart
+  + Make robust against shrinking tdbs
+  + add -e option to tdbdump (and docment it).
+  + tdbdump should log errors, and fail in that case.
+  + add tdb_rescue()
+  + Fix a typo
+  + return unpack error on strdup failure
+  + finish weaning off err.h.
+  + don't use err.h in tests.
+  + make TDB_NOSYNC merely disable sync.
+  + remove unused debug_fprintf() macro that breaks the build
+  + tests: fix use of a non-existent word (existant)</comment>
+    <requestid>143822</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>313b71a66a4b8b3e7e92a6a4bcd4e902</srcmd5>
+    <version>1.2.11</version>
+    <time>1359038745</time>
+    <user>coolo</user>
+    <comment>Refresh ignore-tdb1-run-transaction-expand.diff patch.</comment>
+    <requestid>147839</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>313b71a66a4b8b3e7e92a6a4bcd4e902</srcmd5>
+    <version>1.2.11</version>
+    <time>1359110468</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>51b59fe2a9c43aa2bbcac7b97f759f14</srcmd5>
+    <version>1.2.12</version>
+    <time>1371562609</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>178566</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6ef1bc67118da786293123a57df9bff8</srcmd5>
+    <version>1.2.12</version>
+    <time>1375204314</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184606</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f0db154ae3e2ee9c52b8bde9e3ef6d80</srcmd5>
+    <version>1.2.12</version>
+    <time>1377856267</time>
+    <user>coolo</user>
+    <comment>- PreReq /sbin/ldconfig from python-tdb.
+
+- Add python-tdb to baselibs.conf.</comment>
+    <requestid>196774</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f0db154ae3e2ee9c52b8bde9e3ef6d80</srcmd5>
+    <version>1.2.12</version>
+    <time>1379664779</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>60e53db75ec09dea99a7c8c879226d01</srcmd5>
+    <version>1.2.12</version>
+    <time>1386569983</time>
+    <user>coolo</user>
+    <comment>- Verify source tar ball gpg signature.
+
+- Adapt specfile to ppc64le.</comment>
+    <requestid>209669</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ae2fbbf831805f38f4558af23eca32e</srcmd5>
+    <version>1.2.13</version>
+    <time>1395610164</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 1.2.13.
+  + Reduce freelist contention
+  + Make &quot;tdb_purge_dead&quot; internally public
+  + Make &quot;tdb_find_dead&quot; internally public
+  + Add &quot;last_ptr&quot; to tdb_find_dead
+  + Move adding tailer space to tdb_find_dead
+  + Do a best fit search for dead records
+  + Don't purge records to a blocked freelist
+  + Fix a tdb corruption
+  + always open internal databases with incompatible hash.
+  + in tdb_delete_hash, make lock/unlock bracket more obvious
+  + simplify tdb_delete_hash() a bit
+  + tdbtool: dump record magic with fixed number of 8 hex digits
+  + tdbtool: dump record hash with fixed number of 8 hex digits
+  + Avoid reallocs for lockrecs
+  + Fix some typos in comments.
+  + Fix CID 1034959 Uninitialized scalar variable
+  + Fix CID 1034960 Uninitialized scalar variable
+  + Fix typos.</comment>
+    <requestid>226901</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b1bb80ea4b9ca07b897b825bd452e957</srcmd5>
+    <version>1.3.0</version>
+    <time>1401108012</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.0.
+  + add TDB_MUTEX_LOCKING support
+  + consolidate tdb allocation code - re-use dead records at hash top.
+  + don't alter errno on success of tdb_open_ex()
+  + introduce tdb-&gt;hdr_ofs
+  + introduce TDB_SUPPORTED_FEATURE_FLAGS
+  + return ENOSYS if the tdb was created with spinlocks.
+  + use asprintf() to simplify tdb_summary()
+  + test: add a &quot;skip()&quot; macro.
+     add marklock deadlock test
+     add mutex related tests
+     add PING command to external-agent.c
+     add shutdown_agent() helper function
+     add UNMAP command to external-agent.c
+     always call fflush() after [f]printf() in tap-interface.h
+     avoid const warnings by using 'discard_const_p(uint8_t,' instead of
+	   '(void *)'
+     correctly use stderr, not stdout, in fail()
+     remove &quot;\n&quot; in diag() arguments
+  + tools: add -l option to tdbbackup
+     add -l option to tdbtool
+     add -m option to tdbtorture
+     Allow tdbtool to r/o open mutexed tdbs
+     avoid const warnings in tdbdump.c
+     explicitly use TDB_NOLOCK in tdbdump
+  + tdb_wrap: Remove tdb_wrap_open_ again
+  + wscript: maintain a global list of unit tests
+- Include stdbool.h in tdb.h; (bso#10625).
+  + include_stdbool_bso10625.patch
+
+- Don't require pkg-config from the libtdb package.</comment>
+    <requestid>235284</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b1bb80ea4b9ca07b897b825bd452e957</srcmd5>
+    <version>1.3.0</version>
+    <time>1409303459</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>01777b2ebafeb12015fb7f540b291ddf</srcmd5>
+    <version>1.3.1</version>
+    <time>1411630416</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.1.
+  + tools: fix a compiler warning
+  + defragment the freelist in tdb_allocate_from_freelist()
+  + add &quot;freelist_size&quot; sub-command to tdbtool
+  + use tdb_freelist_merge_adjacent in tdb_freelist_size()
+  + add tdb_freelist_merge_adjacent()
+  + add utility function check_merge_ptr_with_left_record()
+  + simplify tdb_free() using check_merge_with_left_record()
+  + add utility function check_merge_with_left_record()
+  + improve comments for tdb_free().
+  + factor merge_with_left_record() out of tdb_free()
+  + fix debug message in tdb_free()
+  + reduce indentation in tdb_free() for merging left
+  + increase readability of read_record_on_left()
+  + factor read_record_on_left() out of tdb_free()
+  + build: improve detection of srcdir.</comment>
+    <requestid>251713</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>919cd951ecb9b38342e88ac40db92060</srcmd5>
+    <version>1.3.1</version>
+    <time>1415347515</time>
+    <user>coolo</user>
+    <comment>- Use the upstream tar ball, as signature verification is now able to handle
+  compressed archives.
+
+- Remove dependency on gpg-offline as signature checking is implemented in the
+  source validator.</comment>
+    <requestid>260075</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3d4dd032c879689574bd84574669b2da</srcmd5>
+    <version>1.3.3</version>
+    <time>1419331817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.3.
+  + test: TDB_CLEAR_IF_FIRST | TDB_MUTEX_LOCKING, O_RDONLY is a valid
+    combination
+- Update to version 1.3.2.
+  + allow tdb_open_ex() with O_RDONLY of TDB_FEATURE_FLAG_MUTEX tdbs.
+  + Fix a comment
+  + Fix tdb_runtime_check_for_robust_mutexes()
+  + Improve wording in a comment
+  + tdb.h needs bool type; obsoletes include_stdbool_bso10625.patch
+  + tdb_wrap: Make mutexes easier to use
+  + tdb_wrap: Only pull in samba-debug
+  + tdb_wrap: Standalone compile without includes.h
+  + tdb_wrap: tdb_wrap.h doesn't need struct loadparm_context</comment>
+    <requestid>266104</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3ec3733240ddf442c27412155ae8cb63</srcmd5>
+    <version>1.3.4</version>
+    <time>1421873747</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.4.
+  + toos: allow transactions with TDB_MUTEX_LOCKING
+  + test: add tdb1-run-mutex-transaction1 test
+  + allow transactions on on tdb's with TDB_MUTEX_LOCKING</comment>
+    <requestid>281055</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d8cffeac6b6630b8ebc223134f6d816a</srcmd5>
+    <version>1.3.6</version>
+    <time>1436111593</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.6.
+  + Fix runtime detection for robust mutexes in the standalone build;
+    (bso#11326).
+  + Possible fix for the build with robust mutexes on solaris 11; (bso#11319).
+- Update to version 1.3.5.
+  + ABI change: tdb_chainlock_read_nonblock() has been added, a nonblock
+    variant of tdb_chainlock_read()
+  + Do not build test binaries if it's not a standalone build
+  + Fix CID 1034842 Resource leak
+  + Fix CID 1034841 Resource leak
+  + don't let tdb_wrap_open() segfault with name==NULL</comment>
+    <requestid>314209</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>113ff0d0cf9e3a548507d481e50fe12f</srcmd5>
+    <version>1.3.7</version>
+    <time>1437980973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.7.
+  + first fix deadlock in the interaction between fcntl and mutex locking;
+    (bso#11381)
+  + improved python3 bindings</comment>
+    <requestid>317882</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>fdf6b174b2be35bcae3c2101a5c3ea9c</srcmd5>
+    <version>1.3.7</version>
+    <time>1441822812</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329602</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>9953530d790c666e848b1f2e035816db</srcmd5>
+    <version>1.3.7</version>
+    <time>1442638429</time>
+    <user>coolo</user>
+    <comment>Update the Samba Library Distribution Key file 'tdb.keyring'; (bso#945116).</comment>
+    <requestid>330107</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>187e42faad92daf4a40b5d128d86de3e</srcmd5>
+    <version>1.3.7</version>
+    <time>1446049779</time>
+    <user>dimstar_suse</user>
+    <comment>Add python3-tdb; (bsc#951911).</comment>
+    <requestid>340873</requestid>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>9f6784a5abfae31af28857e604463161</srcmd5>
+    <version>1.3.7</version>
+    <time>1447146081</time>
+    <user>dimstar_suse</user>
+    <comment>- Add doxygen at build time to add the development documentation.
+- Disable rpath-install and silent-rules while configure.</comment>
+    <requestid>341822</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>26fb20de5588c8a5ae10155ce86d1326</srcmd5>
+    <version>1.3.8</version>
+    <time>1448400062</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.3.8; (bsc#954658).
+  + Fix broken build with --disable-python
+  + Minor build fixes</comment>
+    <requestid>343927</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>7bae7cd690acba29ff31689fc52de10a</srcmd5>
+    <version>1.3.8</version>
+    <time>1456434010</time>
+    <user>dimstar_suse</user>
+    <comment>- Add conflict between python-tdb and python3-tdb.
+
+- Avoid a file collision for non SUSE build targets; (bsc#966174).</comment>
+    <requestid>360756</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e1d4032cc299393ead3f4b46b72565fa</srcmd5>
+    <version>1.3.11</version>
+    <time>1478167826</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.3.11 (forwarded request 427562 from jmcdough)</comment>
+    <requestid>427567</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>82074b0570c07d14e9f9369c9741074b</srcmd5>
+    <version>1.3.12</version>
+    <time>1486716260</time>
+    <user>dimstar_suse</user>
+    <comment>Specify https URLs. osc service localrun download_files doesn't like
+the http-&amp;gt;https redirect. (forwarded request 452617 from dmdiss)</comment>
+    <requestid>452627</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>b2ec0534ae2c36ed4f40a1c7ed413930</srcmd5>
+    <version>1.3.12</version>
+    <time>1492417327</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.3.12; (bsc#1032915).</comment>
+    <requestid>487100</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2abdc90af54304cf084324e7e036a156</srcmd5>
+    <version>1.3.15</version>
+    <time>1508946367</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530845</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>ee2179bca240dedd5b50ff873f372db8</srcmd5>
+    <version>1.3.15</version>
+    <time>1525209184</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the conflicts between python3-tdb and python-tdb. These packages don't actually conflict, and need to be installed together in order to build samba with python3.
+</comment>
+    <requestid>602076</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b31c91cca7bbf7bebcf1dbe317ff0dcd</srcmd5>
+    <version>1.3.16</version>
+    <time>1533887102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628187</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>842ce28e465eff33cc659d2ad117b564</srcmd5>
+    <version>1.3.16</version>
+    <time>1538672381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638224</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c25c166b18f0b94084e5b900a06e4d01</srcmd5>
+    <version>1.3.18</version>
+    <time>1556311444</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696792</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aea78220b066f2332d55f3ed7e6a94b9</srcmd5>
+    <version>1.4.2</version>
+    <time>1571049300</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>737334</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>15ebfcfe5753211798b3ea50222abb5a</srcmd5>
+    <version>1.4.3</version>
+    <time>1585176239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.3
+  + Upgrade waf to version 2.0.18 to fix a cross-compilation issue;
+    (bso#13846).
+  + lib/tdb/docs/tracing.txt: typo fixes
+</comment>
+    <requestid>786792</requestid>
+  </revision>
+</revisionlist>

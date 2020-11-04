@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2edd8f22d08a20d088099df0ede83fd2</srcmd5>
+    <version>0+git.20181114</version>
+    <time>1544441331</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the previous request, which was messed up somehow.
+
+Add new package for &quot;blktests&quot;, the linux block layer testing framework
+from https://github.com/osandov/blktests
+- 
+</comment>
+    <requestid>653512</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb2b6eeac7342b61fec8410b7ebd96b0</srcmd5>
+    <version>0+20200307.cd11d00</version>
+    <time>1585176442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788233</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>584b2121f570a44c0ae7701f1d8046c7</srcmd5>
+    <version>0+20200307.cd11d00</version>
+    <time>1585842291</time>
+    <user>dimstar_suse</user>
+    <comment>- Add blktrace to recommended as some tests require it</comment>
+    <requestid>790851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>416a690556481d3708e505e0c9ad5f33</srcmd5>
+    <version>0+20200430.bff70b0</version>
+    <time>1588450616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799430</requestid>
+  </revision>
+</revisionlist>

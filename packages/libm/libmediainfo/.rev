@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>43b6634e430ed3f4e0860ecd23dcf847</srcmd5>
+    <version>0.7.92.1</version>
+    <time>1490707314</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>479907</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>092bfa1bd6c34b1aed15fbd340bfb6fc</srcmd5>
+    <version>0.7.94</version>
+    <time>1490965827</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>484000</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1cc5114c088fcddd496631f76de6c9c</srcmd5>
+    <version>0.7.95</version>
+    <time>1494088244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492995</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>260bc9dc173d2a06480c7a6c2df20e41</srcmd5>
+    <version>0.7.96</version>
+    <time>1496392473</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>500496</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f8a11f5cc0b416720adad8a3695d40ab</srcmd5>
+    <version>0.7.97</version>
+    <time>1498840995</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507337</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f1a9fe7b83419e793fa8e2c757b75ea</srcmd5>
+    <version>0.7.98</version>
+    <time>1502366768</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>515321</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3128f3a98ce9f289218600faeb955517</srcmd5>
+    <version>0.7.99</version>
+    <time>1505238943</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523278</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f751aab1a78cde203d79c6d150be611b</srcmd5>
+    <version>17.10</version>
+    <time>1509722915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538494</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5456791d66a6c37b70d70a2b0311c30b</srcmd5>
+    <version>17.12</version>
+    <time>1514679185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559137</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>eab5304ef1bfbde6ee02299dd418c238</srcmd5>
+    <version>18.03</version>
+    <time>1521716617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>589140</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d87c0644b824f11477b061afb9be27dc</srcmd5>
+    <version>18.05</version>
+    <time>1526022907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605752</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f8f4cbe951c17f4e7a28d1daa9fdcd0d</srcmd5>
+    <version>18.08</version>
+    <time>1535963749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632534</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c294724697d2802d284eda77712d91ed</srcmd5>
+    <version>18.08.1</version>
+    <time>1536679148</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634744</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a2eaa0fa15a0c0165c34afb10c007dbc</srcmd5>
+    <version>18.12</version>
+    <time>1544632195</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657291</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9ac4efb9428b35757279b06be73b6592</srcmd5>
+    <version>19.04</version>
+    <time>1556107072</time>
+    <user>maxlin_factory</user>
+    <comment>- Fixes bsc#1133156 (CVE-2019-11373) and bsc#1133157 (CVE-2019-11372)
+
+- Update to version 19.04
+  Added:
+  * USAC: DRC effect types, Sample peak level, True peak level,
+    Program loudness
+  * HDR: SMPTE ST 2094 App 4 (including HDR10+) support
+  * HDR: move HDR10, Dolby Vision and SL-HDR meta to specific
+    generic &quot;HDR Format&quot; lines
+  * Matroska: SMPTE ST 2086 (HDR10) support
+  * Matroska: FieldOrder support
+  * HEIF image format support
+  * AV1: support of AV1 in MP4, HEIF, IVF
+  * MOV: Add a lot more countries to AppleStoreCountry field
+    internal list
+  * MXF: Fix memory leak when fully parsing big file with
+    acquisition metadata
+  * HEVC: more HEVC profiles (Multiview, Scalable, Screen
+    Content...)
+  * AAC: better handling of corrupted streams
+  * AAC: better handling of unknown channel layouts
+  * AVC in MP4: better support of corrupted streams
+  Corrected:
+  * B1101, AVI: fix crash with some invalid streams
+  * B1101, SMPTE ST 337: fix crash with some invalid streams
+  * Matroska: chapters timestamp were not display if chapters
+    have no name
+  * MXF: Fix false positive truncated file detection when there
+    is no Random Index Pack
+  * AAC: channel layout typos (Rls instead of Lrs, Lr instead of
+    Rb)
+  * ProRes: correctly show color space if alpha plane is present
+  * MPEG Audio: some VBR files use &quot;Info&quot; Xing header, so we
+    ignore the  difference between &quot;Info&quot; and &quot;Xing&quot;
+  * I943, MPEG-4: wrong display aspect ratio in some corner
+    cases (32-bit release only)
+  * I1096, OGG: assign METADATA_BLOCK_PICTURE tag to cover
+  * I339, text in square brackets stripped in $if() section
+Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
+- Added CVE-2019-11372_CVE-2019-11373.patch
+  * fixes bsc#1133156 (CVE-2019-11373)
+  * fixes bsc#1133157 (CVE-2019-11372)
+</comment>
+    <requestid>697452</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c1d6828241236e92b7c1326d273e5e93</srcmd5>
+    <version>19.07</version>
+    <time>1563456147</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>716087</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8652072e8080a94410a804263d6fa8fd</srcmd5>
+    <version>19.09</version>
+    <time>1568379536</time>
+    <user>lnussel_factory</user>
+    <comment></comment>
+    <requestid>730153</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cf415cd4e4d999e242bec0e4dfb710b8</srcmd5>
+    <version>20.03</version>
+    <time>1585996018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.03
+  Added features:
+  * AC-4 full featured support (presentations, groups,
+    substreams)
+  * MPEG-H 3D Audio basic support
+  * MPEG-TS: audio preselection descriptor support
+  * Dolby Vision v2 detection
+  * MPEG-4: support of colr/nclx (color information) box
+  Bugs fixed:
+  * URL encoding option fixes, permitting to use URL encoded or
+    non URL encoded links
+  * AAC: fix SBR frequency when in ADIF
+  * DPX: ColorimetricSpecification and TransferCharacteristic
+    were inverted
+  * Some API calls were not thread safe
+  * Several crash and memory leaks fixes
+- Dropped Group tag
+</comment>
+    <requestid>791272</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c790e6f089e64d55fe51fa2b2852b366</srcmd5>
+    <version>20.08</version>
+    <time>1597221315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825780</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d53496d735d05d70f3deac0cd123b8bd</srcmd5>
+    <version>20.09</version>
+    <time>1602349458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840462</requestid>
+  </revision>
+</revisionlist>

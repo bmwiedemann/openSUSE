@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e140d6fd520e3b57eda85d3ef8ffca0</srcmd5>
+    <version>1.11.3</version>
+    <time>1573772227</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2dd7cec3040cb3b235850f9548d34e44</srcmd5>
+    <version>1.11.3</version>
+    <time>1575282900</time>
+    <user>dimstar_suse</user>
+    <comment>increase memory constraint</comment>
+    <requestid>752787</requestid>
+  </revision>
+</revisionlist>

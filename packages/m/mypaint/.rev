@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83f3c07526de67acdc6651937a0ca1ba</srcmd5>
+    <version>2.0.0</version>
+    <time>1583007846</time>
+    <user>dimstar_suse</user>
+    <comment>A simple drawing and painting program that works well with Wacom-style graphics tablets</comment>
+    <requestid>779359</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e9fb0d48acca39b91400f4dcbbb9c842</srcmd5>
+    <version>2.0.0</version>
+    <time>1590780216</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809936</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2105cc9ed92d244eabad317a011477d9</srcmd5>
+    <version>2.0.1</version>
+    <time>1591101506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810384</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>189ee96a80203a14b38136f48012bb73</srcmd5>
+    <version>2.0.1</version>
+    <time>1599507401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832761</requestid>
+  </revision>
+</revisionlist>

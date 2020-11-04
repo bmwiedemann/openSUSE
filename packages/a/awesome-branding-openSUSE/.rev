@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7d0bb7b28e95712c306c986caf4d88b6</srcmd5>
+    <version>3.4.13</version>
+    <time>1357217046</time>
+    <user>namtrac</user>
+    <comment>This is the openSUSE branding for awesome windowmanager</comment>
+    <requestid>145010</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7d0bb7b28e95712c306c986caf4d88b6</srcmd5>
+    <version>3.4.13</version>
+    <time>1359108688</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>8e5ed54282a81d439db84735ec7884cb</srcmd5>
+    <version>3.4.13</version>
+    <time>1359997025</time>
+    <user>coolo</user>
+    <comment>The openSUSE-branding package for awesome fixes the typos
+where the name of the configuration file and the background
+picture are affected, resulting an unpleasent experience for
+the user. 
+
+Please include in 12.3
+
+- Upgraded to 3.4.13-v0.2 git version
+  * Fixes bnc#798460 and bnc#798289 
+  * Added some widgets to show how they can be used
+    + keyboard
+    + weather
+    + ethernet network
+    + battery
+  * Documentation for branding
+  * Provide option to use personal theme if available
+  * Use local in prepartion for awesome 3.5 migration (forwarded request 150426 from toganm)</comment>
+    <requestid>150427</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6d4600598deb92aecdcc098218fa28c9</srcmd5>
+    <version>3.4.15</version>
+    <time>1373228219</time>
+    <user>coolo</user>
+    <comment>- Upgraded to 3.4.15-v0.1
+  * Use wallpaper-branding-openSUSE 1920x1080 image as default (forwarded request 182414 from toganm)</comment>
+    <requestid>182415</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6d4600598deb92aecdcc098218fa28c9</srcmd5>
+    <version>3.4.15</version>
+    <time>1379662018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>4e8e59442bdc84afcca361c428673fb1</srcmd5>
+    <version>3.4.15</version>
+    <time>1400822851</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>235092</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4e8e59442bdc84afcca361c428673fb1</srcmd5>
+    <version>3.4.15</version>
+    <time>1409300543</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3e37968e92ba0f9c4e6d07914871d2ef</srcmd5>
+    <version>3.5</version>
+    <time>1447353662</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343750</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7b49ac31361773c8e90487cf61b134de</srcmd5>
+    <version>4.0</version>
+    <time>1484132694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449567</requestid>
+  </revision>
+</revisionlist>

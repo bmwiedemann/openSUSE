@@ -1,0 +1,6 @@
+<package name="opentyrian" project="openSUSE:Factory">
+  <title>OpenTyrian</title>
+  <description>An arcade-style vertical scrolling shooter</description>
+  <devel project="games" package="opentyrian"/>
+  <url>https://github.com/opentyrian</url>
+</package>

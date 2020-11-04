@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b1ec95a9523158b2ca43bfc95901ef0</srcmd5>
+    <version>0~git20190620</version>
+    <time>1581456150</time>
+    <user>dimstar_suse</user>
+    <comment>Another Segam MegaDrive/Gensis emulator</comment>
+    <requestid>771822</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec11c226a3137a7bb870af1b5d257eb4</srcmd5>
+    <version>0~git20190620</version>
+    <time>1582112497</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix i586 build
+</comment>
+    <requestid>776253</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ffab1eb341bedc8b23d226a792ab7fae</srcmd5>
+    <version>0~git20190620</version>
+    <time>1591558744</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude android source
+- Add fix-enum-syntax.patch to fix Tumbleweed build
+- Exclude unsupported CPU architecture
+</comment>
+    <requestid>812219</requestid>
+  </revision>
+</revisionlist>

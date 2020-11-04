@@ -1,0 +1,7 @@
+<package name="libretro-crocods" project="openSUSE:Factory">
+  <title>CrocoDS libretro core for Amstrad emulation</title>
+  <description>CrocoDS is the Amstrad emulator that boots fast and doesn't rely on keyboard.
+
+This package is for RetroArch/libretro front-end.</description>
+  <devel project="Emulators" package="libretro-crocods"/>
+</package>

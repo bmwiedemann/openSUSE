@@ -1,0 +1,374 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f1bc66499cc5358f44b1ca18ed0009b</srcmd5>
+    <version>0.62</version>
+    <time>1168903942</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17de858778e6f5012a6db21cd991ec26</srcmd5>
+    <version>0.65</version>
+    <time>1186471710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="74">
+    <srcmd5>17de858778e6f5012a6db21cd991ec26</srcmd5>
+    <version>0.65</version>
+    <time>1186471710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d810781e14c41632fc53f9c84406de9e</srcmd5>
+    <version>0.66</version>
+    <time>1225123656</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>db730cb9305df47baabe919100d32410</srcmd5>
+    <version>0.68</version>
+    <time>1248879998</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b81b4f96fa52a9373ed4c1a824b935e6</srcmd5>
+    <version>0.68</version>
+    <time>1252579962</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 20062 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>b81b4f96fa52a9373ed4c1a824b935e6</srcmd5>
+    <version>0.68</version>
+    <time>1252579962</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 20062 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be7cedd6867c6e6f516b5c2f9fe6a0d4</srcmd5>
+    <version>0.70</version>
+    <time>1263221805</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 28949 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>318322532cc62edf084a1b41099220fb</srcmd5>
+    <version>0.70</version>
+    <time>1264432808</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 30361 from user coolo
+</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>653abd9978c63f925a71c7dcbd5b471f</srcmd5>
+    <version>0.70</version>
+    <time>1268150749</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 34406 from user coolo
+</comment>
+    <requestid>34406</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>30bf78e1f0f662a101d16ee072fb911d</srcmd5>
+    <version>0.70</version>
+    <time>1268925673</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b8716fe4c57f48159c57471869c56501</srcmd5>
+    <version>0.71</version>
+    <time>1271435970</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 38065 from user computersalat
+</comment>
+    <requestid>38065</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b8716fe4c57f48159c57471869c56501</srcmd5>
+    <version>0.71</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>b8716fe4c57f48159c57471869c56501</srcmd5>
+    <version>0.71</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>9a293d45fbc1ee6eeb0e88d6415ced37</srcmd5>
+    <version>unknown</version>
+    <time>1283788646</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-YAML based on submit request 47134 from user computersalat
+</comment>
+    <requestid>47134</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>9feab6f17873842c9b0f14a5b4ad7e1b</srcmd5>
+    <version>0.72</version>
+    <time>1291997440</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55372 from user coolo
+</comment>
+    <requestid>55372</requestid>
+  </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>bb68bac616605d4563c64f4da1d09928</srcmd5>
+    <version>0.72</version>
+    <time>1291997447</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55372
+</comment>
+  </revision>
+  <revision rev="18" vrev="9">
+    <srcmd5>bb68bac616605d4563c64f4da1d09928</srcmd5>
+    <version>0.72</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c78df9c196b8a062677598b9ab2f8267</srcmd5>
+    <version>0.73</version>
+    <time>1305638330</time>
+    <user>saschpe</user>
+    <comment>- updated to 0.73
+  * Apply ANDK's patch for 5.14.0</comment>
+    <requestid>70452</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7335e828e9ee5ee694e842f527237b63</srcmd5>
+    <version>0.73</version>
+    <time>1305638344</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 70452
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>23c6eb6f44b2057015cd5a0949d6adea</srcmd5>
+    <version>0.77</version>
+    <time>1317626673</time>
+    <user>lrupp</user>
+    <comment>minor enhancements</comment>
+    <requestid>86146</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>23c6eb6f44b2057015cd5a0949d6adea</srcmd5>
+    <version>0.77</version>
+    <time>1319182325</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>d636a6283c083af9d2650bdeb225e70e</srcmd5>
+    <version>0.77</version>
+    <time>1323193805</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>95d34993e55cf4564fc81260aaefbae8</srcmd5>
+    <version>0.81</version>
+    <time>1336452460</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116225</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>95d34993e55cf4564fc81260aaefbae8</srcmd5>
+    <version>0.81</version>
+    <time>1340183957</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>95d34993e55cf4564fc81260aaefbae8</srcmd5>
+    <version>0.81</version>
+    <time>1359109858</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>95d34993e55cf4564fc81260aaefbae8</srcmd5>
+    <version>0.81</version>
+    <time>1379663928</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4d3c71efcb05df152a00c0f68f473c95</srcmd5>
+    <version>0.88</version>
+    <time>1391604336</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>220708</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>60fd5275c2129527b8cecd01ab58cebe</srcmd5>
+    <version>0.97</version>
+    <time>1406521861</time>
+    <user>coolo</user>
+    <comment>- fixing license - GPL-1.0 is part of it
+- updated to 0.97
+  - Move remaining docs to Swim
+ 
+ 0.96 Sun Jul 13 22:54:08 PDT 2014
+  - Fix Metadata and add Contributing file
+  - Change Kwim to Swim
+ 
+ 0.95 Sat Jun 14 10:32:08 PDT 2014
+  - Fix dumping blessed globs.
+ 
+ 0.94 Sat Jun 14 10:32:08 PDT 2014
+  - Skip a failing test on 5.8 introduced in 0.93
+ 
+ 0.93 Fri Jun 13 22:32:18 PDT 2014
+  - Switch to Zilla::Dist
+  - Add badges to doc
+  - @thorsteneckel++ fixed #18
+  - @karenetheridge++ fixed #19
+ 
+ 0.92 Wed May 28 23:04:26 EDT 2014
+  - https://github.com/ingydotnet/yaml-pm/pull/23
+ 
+ 0.91 Tue May 27 17:14:12 EDT 2014
+  - https://github.com/ingydotnet/yaml-pm/pull/22
+ 
+ 0.90 Mon Feb 10 08:42:31 PST 2014
+  - Revert Mo from 0.38 to 0.31 - zefram++ reported it breaking cpan client
+ 
+ 0.89 Sat Nov  8 12:51:48 PST 2014</comment>
+    <requestid>242326</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>60fd5275c2129527b8cecd01ab58cebe</srcmd5>
+    <version>0.97</version>
+    <time>1409302580</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bdf3a86c13a933543abc9fec70c8b516</srcmd5>
+    <version>1.15</version>
+    <time>1429989439</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>297991</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f7e65fb82229afb982f496b129c8642b</srcmd5>
+    <version>1.17</version>
+    <time>1468169163</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407130</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>63524c430cb465a631bb5bef0ffb2d16</srcmd5>
+    <version>1.18</version>
+    <time>1468869744</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>407683</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>183f3d4856aa3fc0af84060539cce8b6</srcmd5>
+    <version>1.19</version>
+    <time>1479837448</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>440992</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>63f0e5d40fbc12446aa4403abc554687</srcmd5>
+    <version>1.20</version>
+    <time>1480951842</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>443515</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>05064244a5bdcbdfa120985b75531b63</srcmd5>
+    <version>1.21</version>
+    <time>1484475135</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>448579</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>88861a129353ddba9ff01a65f15d41f1</srcmd5>
+    <version>1.22</version>
+    <time>1487384141</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457531</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>73f481267307d5f098c7fed35e3a88a4</srcmd5>
+    <version>1.23</version>
+    <time>1487767512</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459310</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>aedd3a48edc06c6d85e6a8ad236e2732</srcmd5>
+    <version>1.24</version>
+    <time>1510505800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539959</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>cda3bb92131fb90f4713f52c6b507eab</srcmd5>
+    <version>1.25</version>
+    <time>1526737159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610505</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c8311c8c5117e03f5505a705a82253a0</srcmd5>
+    <version>1.26</version>
+    <time>1526926899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610762</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>34f267ea37bcf5eb212448661c21c1b6</srcmd5>
+    <version>1.27</version>
+    <time>1542122896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647332</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>eb95d8b1349675ffeb3e728e1825a92c</srcmd5>
+    <version>1.28</version>
+    <time>1557170004</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700726</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0f9c61dd3d05839234636c2748c65f25</srcmd5>
+    <version>1.29</version>
+    <time>1558128931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702492</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>82efcf7e88185bfe0164ad5ce5240fb8</srcmd5>
+    <version>1.30</version>
+    <time>1580299892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768197</requestid>
+  </revision>
+</revisionlist>

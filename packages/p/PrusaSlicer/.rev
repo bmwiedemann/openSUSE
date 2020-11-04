@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88c5c810b8dd6dbaac214fa9f880d2e5</srcmd5>
+    <version>2.2.0</version>
+    <time>1587581083</time>
+    <user>dimstar_suse</user>
+    <comment>PrusaSlicer takes 3D models (STL, OBJ, AMF) and converts them into G-code instructions for FFF printers or PNG layers for mSLA 3D printers. It's compatible with any modern printer based on the RepRap toolchain, including all those based on the Marlin, Prusa, Sprinter and Repetier firmware. It also works with Mach3, LinuxCNC and Machinekit controllers.
+
+Resubmitting in the hope that all bots and maintainers pick it up this time. The old request was stale for almost a month.</comment>
+    <requestid>795483</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4a9db7273f126662cc1dbafd98f9c54f</srcmd5>
+    <version>2.2.0</version>
+    <time>1588450662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799505</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>12f96797d66706fe6d32c9ee17ef89f4</srcmd5>
+    <version>2.2.0</version>
+    <time>1592398268</time>
+    <user>dimstar_suse</user>
+    <comment>- This is mainly a cosmetic update so that the package gets rebuilt
+  in Factory. Rebuild is needed because of wxWidgets - boo#1172750
+- Add openvdb-tools package for better cmake reporting.
+- Make the 32-bit floating point workaround more readable.
+  gh#prusa3d/PrusaSlicer#3781
+</comment>
+    <requestid>815263</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0bcc28b5ea6deca28eee7b5646f4f711</srcmd5>
+    <version>2.2.0</version>
+    <time>1597755954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825425</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bb9b72183cbebbc405de79ebcf95519c</srcmd5>
+    <version>2.2.0</version>
+    <time>1598029708</time>
+    <user>dimstar_suse</user>
+    <comment>- revert the memoryperjob change. The build process really acquires
+  that much memory per job and the workers cannot provide 3GB per
+  CPU core. Sadly, we are limited by memory not by CPU cores.
+- require 11 GB of RAM. This allows us to run 3 jobs in parallel and
+  can be provided by all architectures
+- Use memoryperjob constraint instead of %limit_build macro.
+- Use only 1GB for memoryperjob.
+</comment>
+    <requestid>828307</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>27fc2929b0739eb02b9f0277f991e019</srcmd5>
+    <version>2.2.0</version>
+    <time>1598983899</time>
+    <user>dimstar_suse</user>
+    <comment>- enforce GDK_BACKEND=x11 by indroducing the same wrapper as Fedora
+  gh#prusa3d/PrusaSlicer#4691</comment>
+    <requestid>831122</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>59c68dd2992777831570d3bd833e9451</srcmd5>
+    <version>2.2.0</version>
+    <time>1599088586</time>
+    <user>dimstar_suse</user>
+    <comment>- support boost &gt;= 1.73
+  * PrusaSlicer-pr4340-boost-1-73.patch gh#prusa3d/PrusaSlicer#4340
+  * fixes gh#prusa3d/PrusaSlicer#4264
+</comment>
+    <requestid>831314</requestid>
+  </revision>
+</revisionlist>

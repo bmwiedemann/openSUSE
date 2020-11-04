@@ -1,0 +1,13 @@
+<package name="xsom" project="openSUSE:Factory">
+  <title>XML Schema Object Model (XSOM)</title>
+  <description>XML Schema Object Model (XSOM) is a Java library that allows applications to
+easily parse XML Schema documents and inspect information in them. It is
+expected to be useful for applications that need to take XML Schema as an
+input.  The library is a straight-forward implement of &quot;schema components&quot; as
+defined in the XML Schema spec part 1.  Refer to this specification of how this
+object model works.
+
+</description>
+  <devel project="Java:packages" package="xsom"/>
+  <url>http://xsom.java.net</url>
+</package>

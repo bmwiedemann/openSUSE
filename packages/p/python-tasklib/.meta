@@ -1,0 +1,6 @@
+<package name="python-tasklib" project="openSUSE:Factory">
+  <title>Python Task Warrior library</title>
+  <description>Tasklib is a Python library for interacting with taskwarrior
+databases, using a queryset API similar to that of Django's ORM.</description>
+  <devel project="devel:languages:python" package="python-tasklib"/>
+</package>

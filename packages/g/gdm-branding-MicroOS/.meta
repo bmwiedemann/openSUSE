@@ -1,0 +1,6 @@
+<package name="gdm-branding-MicroOS" project="openSUSE:Factory">
+  <title>openSUSE MicroOS branding of gdm</title>
+  <description>This package provides openSUSE MicroOS Look and Feel and SUSE theme for gdm.
+</description>
+  <devel project="devel:kubic" package="gdm-branding-MicroOS"/>
+</package>

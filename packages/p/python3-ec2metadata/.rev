@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b3a79526fd3ffd1b1889cae842b925bc</srcmd5>
+    <version>3.0.2</version>
+    <time>1575563630</time>
+    <user>dimstar_suse</user>
+    <comment>- Latest version</comment>
+    <requestid>754194</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2601dd1ddde176134cbac55960be1233</srcmd5>
+    <version>3.0.3</version>
+    <time>1596565373</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3 (bsc#1174743, bsc#1174837)
+  + Prefer IMDSv2 and switch all IMDS access requests to support v2 token
+    based access method.</comment>
+    <requestid>824207</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e44a95cad8e7763fae1f422b51732887</srcmd5>
+    <version>0~20130402</version>
+    <time>1367486504</time>
+    <user>coolo</user>
+    <comment>Joachim Metz has created a set of c libraries used by security tools.  The libxxx packages often include basic applications sub-packages which are useful by themselves.</comment>
+    <requestid>173852</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>508bbb5f0e9cf972ef3a9aee3404d5dd</srcmd5>
+    <version>0~20130402</version>
+    <time>1375728468</time>
+    <user>coolo</user>
+    <comment>Minor specfile cleanup
+part of summer 2013 libyal refresh for opensuse 13.1</comment>
+    <requestid>185878</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>508bbb5f0e9cf972ef3a9aee3404d5dd</srcmd5>
+    <version>0~20130402</version>
+    <time>1379663093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1d4db7a933e60f9049c54a99fdfff107</srcmd5>
+    <version>0~20140728</version>
+    <time>1408021098</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244644</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3e2ff9aaa56f03175e3befe69f79fe20</srcmd5>
+    <version>0~20140728</version>
+    <time>1408957461</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>245983</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3e2ff9aaa56f03175e3befe69f79fe20</srcmd5>
+    <version>0~20140728</version>
+    <time>1409301719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90c26ae45c478409369ffbdee7672e3a</srcmd5>
+    <version>0~20140817</version>
+    <time>1411926845</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>252560</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32e0e614949e132a4b38e3389326cceb</srcmd5>
+    <version>0~20150105</version>
+    <time>1422626345</time>
+    <user>dimstar_suse</user>
+    <comment>part of libyal 2015 refresh</comment>
+    <requestid>280657</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bf0ebd98c59832f49a338eaff2ceb023</srcmd5>
+    <version>0~20160424</version>
+    <time>1487681293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>458567</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d828bc988bfb891d91b48e66443767a6</srcmd5>
+    <version>0~20170803</version>
+    <time>1507197477</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530604</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>82d182876d3db03dc4b0712c819765b5</srcmd5>
+    <version>0~20170803</version>
+    <time>1509722602</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>535313</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>181ce0fc79de77e033c03e692e86174b</srcmd5>
+    <version>0~20181227</version>
+    <time>1560337684</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695353</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d74a35f25f62508761d5b3ab2b016755</srcmd5>
+    <version>0~20181227</version>
+    <time>1588324327</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799060</requestid>
+  </revision>
+</revisionlist>

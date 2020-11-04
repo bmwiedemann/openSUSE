@@ -1,0 +1,8 @@
+<package name="gnome-commander" project="openSUSE:Factory">
+  <title>Nice and Fast File Manager for the GNOME Desktop</title>
+  <description>GNOME Commander is a nice and fast file manager for the GNOME desktop.
+In addition to basic file manager functions, the program is also an FTP
+client and can browse SMB networks.
+</description>
+  <devel project="GNOME:Apps" package="gnome-commander"/>
+</package>

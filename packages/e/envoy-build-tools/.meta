@@ -1,0 +1,6 @@
+<package name="envoy-build-tools" project="openSUSE:Factory">
+  <title>envoy-build-tools</title>
+  <description>Bazel toolchains for Envoy and UDPA build ecosystem</description>
+  <devel project="devel:kubic" package="envoy-build-tools"/>
+  <url>https://github.com/envoyproxy/envoy-build-tools</url>
+</package>

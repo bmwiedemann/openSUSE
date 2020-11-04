@@ -1,0 +1,297 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59a0558b346983458eef8d906810b610</srcmd5>
+    <version>0.6.1</version>
+    <time>1248820662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5080e4766e8dbcf45f4d5fba0431a841</srcmd5>
+    <version>0.6.6</version>
+    <time>1249917652</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5080e4766e8dbcf45f4d5fba0431a841</srcmd5>
+    <version>0.6.6</version>
+    <time>1249917652</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a5fa765c908fee782e54937ea6e57464</srcmd5>
+    <version>0.6.6</version>
+    <time>1268923185</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>a5fa765c908fee782e54937ea6e57464</srcmd5>
+    <version>0.6.6</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>a5fa765c908fee782e54937ea6e57464</srcmd5>
+    <version>0.6.6</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e84a7f93ebeee8c371877c94014963c2</srcmd5>
+    <version>0.9.90+svn1171227</version>
+    <time>1284768730</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/choqok based on submit request 48248 from user wstephenson
+</comment>
+    <requestid>48248</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b52078f1ad0eb2469cacf1a2717b0614</srcmd5>
+    <version>0.9.90+svn1177624</version>
+    <time>1285067461</time>
+    <user>autobuild</user>
+    <comment>Copy from KDE:Distro:Factory/choqok based on submit request 48627 from user rwooninck
+</comment>
+    <requestid>48627</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1cf9e99591459c6c5f2bc76af5cca008</srcmd5>
+    <version>1.0</version>
+    <time>1296582257</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59281 from user tittiatcoke
+</comment>
+    <requestid>59281</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>135929579a5f9cc47fd8c6256bb5489b</srcmd5>
+    <version>1.0</version>
+    <time>1296582270</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59281
+</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>135929579a5f9cc47fd8c6256bb5489b</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>0a6178398c681bf8c71ad52f837514de</srcmd5>
+    <version>1.0</version>
+    <time>1300812278</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64790 from user licensedigger
+</comment>
+    <requestid>64790</requestid>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>21dd6a5c4b71cb65797ee996a37b15b5</srcmd5>
+    <version>1.0</version>
+    <time>1300812287</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64790
+</comment>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>df712aa3ec990a76bfeac39211739b67</srcmd5>
+    <version>1.1</version>
+    <time>1302521682</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66264 from user babelworx
+</comment>
+    <requestid>66264</requestid>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>3310199b810948d59b392a400bdacc57</srcmd5>
+    <version>1.1</version>
+    <time>1302521692</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66264
+</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>2e826ccf20a35b2274bef10a635a2336</srcmd5>
+    <version>1.1</version>
+    <time>1312207714</time>
+    <user>saschpe</user>
+    <comment>Add user friends list bugfix (bko#275185) (forwarded request 77399 from javierllorente)</comment>
+    <requestid>77400</requestid>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>8932145919201df4429231eb5c7dd947</srcmd5>
+    <version>1.1</version>
+    <time>1312207722</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77400
+</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>33e1a8b195f371ae966817e3f583d4c3</srcmd5>
+    <version>1.1</version>
+    <time>1318344709</time>
+    <user>lrupp</user>
+    <comment>- Removed commented files (fix for RPMLINT warning)
+- Cleaned up spec file formatting (forwarded request 87139 from TheBlackCat)</comment>
+    <requestid>87155</requestid>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>33e1a8b195f371ae966817e3f583d4c3</srcmd5>
+    <version>1.1</version>
+    <time>1319181810</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="13">
+    <srcmd5>6bd3b9aa22e76ada38d6277c61a0554d</srcmd5>
+    <version>1.1</version>
+    <time>1323190980</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ad93125271ff9350d42c4199dd13aadf</srcmd5>
+    <version>1.3</version>
+    <time>1331124096</time>
+    <user>coolo</user>
+    <comment>Update to version 1.3, also someguy request that in bnc#750363 (forwarded request 108120 from mlin7442)</comment>
+    <requestid>108123</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ad93125271ff9350d42c4199dd13aadf</srcmd5>
+    <version>1.3</version>
+    <time>1340183235</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>ad93125271ff9350d42c4199dd13aadf</srcmd5>
+    <version>1.3</version>
+    <time>1359108745</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="6">
+    <srcmd5>d21b92405d8cc935cc07042cee7e4996</srcmd5>
+    <version>1.3</version>
+    <time>1366289854</time>
+    <user>coolo</user>
+    <comment>- remove file conflicting with kdepimlibs4 (forwarded request 171339 from coolo)</comment>
+    <requestid>171345</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>42587aaa4fc1e8bd40f7ed846beac591</srcmd5>
+    <version>1.4</version>
+    <time>1378531902</time>
+    <user>coolo</user>
+    <comment>- Update to 1.4:
+  * Support for Twitter API v1.1.
+  * &quot;Mark timeline as read&quot; menu item added to tabs context menu.
+  * Show &quot;In reply to&quot; in twitter search timelines.
+  * Identi.ca support removed from StatusNet plugin.
+  * And some other minor fixes
+- Drop twitter-api.diff: fixed upstream. (forwarded request 197456 from Fisiu)</comment>
+    <requestid>197498</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>42587aaa4fc1e8bd40f7ed846beac591</srcmd5>
+    <version>1.4</version>
+    <time>1379662107</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>5d5b0932b3c733426adb65443b06500a</srcmd5>
+    <version>1.4</version>
+    <time>1391852042</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add choqok-1.4-twitter-favorities-fix.patch: fix bnc#862467.
+- Add choqok-1.4-plugin-yourls-fix.patch: fix yourls shortener plugin,
+  kde#265219. (forwarded request 221130 from Fisiu)</comment>
+    <requestid>221156</requestid>
+  </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>5d5b0932b3c733426adb65443b06500a</srcmd5>
+    <version>1.4</version>
+    <time>1409300639</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="7">
+    <srcmd5>dda2c5f719a6e35ca9ce23e1008997f2</srcmd5>
+    <version>1.4</version>
+    <time>1418737652</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264987</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5d48569d0e014cbbd07a9dc4fd9dc22d</srcmd5>
+    <version>1.5</version>
+    <time>1425031601</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287499</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>310efc31821339270820727d20421629</srcmd5>
+    <version>1.5</version>
+    <time>1454628618</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356697</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>95870d0df9862491af9e8c2859f5f36b</srcmd5>
+    <version>1.5</version>
+    <time>1480693047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442636</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>4b61bf5a896a9c5e77fcae4144afd926</srcmd5>
+    <version>1.6.0</version>
+    <time>1486773382</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>455552</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ebe484211653994094e7229f5311bca3</srcmd5>
+    <version>1.6.0</version>
+    <time>1487259775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>456641</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>333a5424aa5ecdfcec45c0e631763c32</srcmd5>
+    <version>1.6.0</version>
+    <time>1565695361</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with Qt5.13</comment>
+    <requestid>722602</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>330e921f1e7bf38ea784df3d62c5945b</srcmd5>
+    <version>1.7.0</version>
+    <time>1580990951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0
+- Drop Fix-build-with-Qt-5_13.patch, merged upstream
+- Update BuildRequires, switch to cmake() style
+- Update URL (forwarded request 770458 from wolfi323)</comment>
+    <requestid>770471</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>59b0184b9cf9a9f70c0e36eda9d441c0</srcmd5>
+    <version>1.7.0</version>
+    <time>1584176219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784818</requestid>
+  </revision>
+</revisionlist>

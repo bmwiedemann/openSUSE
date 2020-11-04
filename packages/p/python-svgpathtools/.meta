@@ -1,0 +1,6 @@
+<package name="python-svgpathtools" project="openSUSE:Factory">
+  <title>Tools for manipulating and analyzing SVG Path objects and Bézier curves</title>
+  <description>Svgpathtools is a collection of tools for manipulating and
+analyzing SVG Path objects and Bézier curves.</description>
+  <devel project="devel:languages:python" package="python-svgpathtools"/>
+</package>

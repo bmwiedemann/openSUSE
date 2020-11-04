@@ -1,0 +1,166 @@
+<revisionlist>
+  <revision rev="1" vrev="40">
+    <srcmd5>e7e0fefd536214b81e2be7dc468536b0</srcmd5>
+    <version>2.0.1</version>
+    <time>1168904638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="221">
+    <srcmd5>e7e0fefd536214b81e2be7dc468536b0</srcmd5>
+    <version>2.0.1</version>
+    <time>1168904638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="222">
+    <srcmd5>cbc0dd1cc25d26636dceb03f868b4fc8</srcmd5>
+    <version>2.0.1</version>
+    <time>1245276671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="224">
+    <srcmd5>cbc0dd1cc25d26636dceb03f868b4fc8</srcmd5>
+    <version>2.0.1</version>
+    <time>1245276671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18625d57f159e43c551e0f5feecc72ea</srcmd5>
+    <version>2.2</version>
+    <time>1262892629</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xteddy based on submit request 28256 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>44b2db4adfd4ab34814db7437c4ac1a4</srcmd5>
+    <version>2.2</version>
+    <time>1268926700</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>44b2db4adfd4ab34814db7437c4ac1a4</srcmd5>
+    <version>2.2</version>
+    <time>1278667397</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>44b2db4adfd4ab34814db7437c4ac1a4</srcmd5>
+    <version>2.2</version>
+    <time>1278678631</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>44b2db4adfd4ab34814db7437c4ac1a4</srcmd5>
+    <version>2.2</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="10" vrev="9">
+    <srcmd5>c0bdc97657a669a86b9999eab61c181e</srcmd5>
+    <version>2.2</version>
+    <time>1314629374</time>
+    <user>saschpe</user>
+    <comment>- link to Xext too, you need it (forwarded request 80033 from coolo)</comment>
+    <requestid>80034</requestid>
+  </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>8a899892c030116623cd1d396fa4c996</srcmd5>
+    <version>2.2</version>
+    <time>1314629388</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 80034
+</comment>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>8a899892c030116623cd1d396fa4c996</srcmd5>
+    <version>2.2</version>
+    <time>1319182617</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>cb635edc5ec75fcd70344282f3e0dae5</srcmd5>
+    <version>2.2</version>
+    <time>1319823971</time>
+    <user>coolo</user>
+    <comment>- fix path to xteddy in xtoys (forwarded request 89622 from lnussel)</comment>
+    <requestid>89656</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>41908117650e3bb9da24329d1c5f2559</srcmd5>
+    <version>2.2</version>
+    <time>1322757572</time>
+    <user>coolo</user>
+    <comment>add automake as buildrequire to avoid implicit dependency</comment>
+    <requestid>94608</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>e8cd91fbf2a01052b8ce020f6a7ad6be</srcmd5>
+    <version>2.2</version>
+    <time>1323195495</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>e8cd91fbf2a01052b8ce020f6a7ad6be</srcmd5>
+    <version>2.2</version>
+    <time>1340184387</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>e8cd91fbf2a01052b8ce020f6a7ad6be</srcmd5>
+    <version>2.2</version>
+    <time>1359110700</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="21">
+    <srcmd5>e8cd91fbf2a01052b8ce020f6a7ad6be</srcmd5>
+    <version>2.2</version>
+    <time>1379665124</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="22">
+    <srcmd5>e320afe492852c490a3af3fb2fc2f0d3</srcmd5>
+    <version>2.2</version>
+    <time>1401899953</time>
+    <user>coolo</user>
+    <comment>- Drop unused build-time requirements on libgif, libtiff, libpng (forwarded request 235957 from jengelh)</comment>
+    <requestid>235997</requestid>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>e320afe492852c490a3af3fb2fc2f0d3</srcmd5>
+    <version>2.2</version>
+    <time>1409303811</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>4e18267d44c07b2ccd545e5f37b75d86</srcmd5>
+    <version>2.2</version>
+    <time>1415636905</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260129</requestid>
+  </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>86dbeb83cd144dc280856e2f8a0dca29</srcmd5>
+    <version>2.2</version>
+    <time>1435172308</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313292</requestid>
+  </revision>
+  <revision rev="23" vrev="27">
+    <srcmd5>34c0a8022964afa8c9d648602130caa4</srcmd5>
+    <version>2.2</version>
+    <time>1516970395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>569565</requestid>
+  </revision>
+</revisionlist>

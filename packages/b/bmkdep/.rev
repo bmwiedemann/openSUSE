@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8ed9fcb31fbc9c439188ae95731d6c7f</srcmd5>
+    <version>20140112</version>
+    <time>1584447116</time>
+    <user>dimstar_suse</user>
+    <comment>bmkdep (NetBSD version of mkdep utility) constructs Makefile dependency list. It takes a set of flags for the C compiler and a list of C source files as arguments and constructs a set of include file dependencies which are written into the file &quot;.depend&quot;.</comment>
+    <requestid>785864</requestid>
+  </revision>
+</revisionlist>

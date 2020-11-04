@@ -1,0 +1,11 @@
+<package name="apache-commons-daemon" project="openSUSE:Factory">
+  <title>Jakarta Commons Daemon Package</title>
+  <description>The scope of this package is to define an API in line with the current
+Java(tm) Platform APIs to support an alternative invocation mechanism
+that could be used instead of the public static void main(String[])
+method.  This specification covers the behavior and life cycle of what
+is defined as Java(tm) daemons or, in other words, noninteractive
+Java(tm) applications.
+</description>
+  <devel project="Java:packages" package="apache-commons-daemon"/>
+</package>

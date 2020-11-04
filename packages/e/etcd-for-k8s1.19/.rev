@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>903808e7b191d22846ed60c99d8ff2c7</srcmd5>
+    <version>3.4.9</version>
+    <time>1599088494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831385</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>77630f8bd456c5439218f77c396d2ca7</srcmd5>
+    <version>3.4.13</version>
+    <time>1600078958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.13:
+  * version: 3.4.13
+  * pkg: file stat warning
+  * Automated cherry pick of #12243 on release 3.4
+  * version: 3.4.12
+  * etcdserver: Avoid panics logging slow v2 requests in integration tests
+  * version: 3.4.11
+  * Revert &quot;etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs&quot;
+  * *: fix backport of PR12216
+  * *: add experimental flag for watch notify interval
+  * clientv3: remove excessive watch cancel logging
+  * etcdserver: add OS level FD metrics
+  * pkg/runtime: optimize FDUsage by removing sort
+  * clientv3: log warning in case of error sending request
+  * etcdserver/api/v3rpc: &quot;MemberList&quot; never return non-empty ClientURLs
+  * version: 3.4.10
+  * Documentation: note on data encryption
+  * etcdserver: change protobuf field type from int to int64 (#12000)
+  * pkg: consider umask when use MkdirAll
+  * etcdmain: let grpc proxy warn about insecure-skip-tls-verify
+  * etcdmain: fix shadow error
+  * pkg/fileutil: print desired file permission in error log
+  * pkg: Fix dir permission check on Windows
+  * auth: Customize simpleTokenTTL settings.
+  * mvcc: chanLen 1024 is to biger,and it used more memory. 128 seems to be enough. Sometimes the consumption speed is more than the production speed.
+  * auth: return incorrect result 'ErrUserNotFound' when client request without username or username was empty.
+  * etcdmain: fix shadow error
+  * doc: add TLS related warnings
+  * etcdserver:FDUsage set ticker to 10 minute from 5 seconds. This ticker will check File Descriptor Requirements ,and count all fds in used. And recorded some logs when in used &gt;= limit/5*4. Just recorded message. If fds was more than 10K,It's low performance due to FDUsage() works. So need to increase it.
+  * clientv3: cancel watches proactively on client context cancellation</comment>
+    <requestid>833434</requestid>
+  </revision>
+</revisionlist>

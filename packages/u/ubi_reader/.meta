@@ -1,0 +1,21 @@
+<package name="ubi_reader" project="openSUSE:Factory">
+  <title>Extract files from UBI and UBIFS images</title>
+  <description>Collection of Python scripts for reading information about and extracting
+data from UBI and UBIFS images.
+
+The following tools are included:
+ - ubireader_display_info:
+   Show information about UBI or UBIFS image.  
+ - ubireader_extract_files:
+   Extract contents of a UBI or UBIFS image.
+ - ubireader_extract_images:
+   Extract UBI or UBIFS images from file containing UBI data in it.
+ - ubireader_list_files:
+   List and Extract files of a UBI or UBIFS image.
+ - ubireader_utils_info:
+   Determine settings for recreating UBI image.
+
+</description>
+  <devel project="devel:tools" package="ubi_reader"/>
+  <url>https://github.com/jrspruitt/ubi_reader</url>
+</package>

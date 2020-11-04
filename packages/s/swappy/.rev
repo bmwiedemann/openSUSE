@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd00831be2ea29beba0e08a6146c4214</srcmd5>
+    <version>1.2.0</version>
+    <time>1594046125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818999</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a47686aa801eaaeb6a01267731dd661</srcmd5>
+    <version>1.2.1</version>
+    <time>1594706406</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  Bug Fixes:
+  * text: properly handle utf-8 chars (717ab0c), closes #43</comment>
+    <requestid>820629</requestid>
+  </revision>
+</revisionlist>

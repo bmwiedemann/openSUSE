@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>555515fdeabe84ef6376d27c6bcab192</srcmd5>
+    <version>1.15.6</version>
+    <time>1590506162</time>
+    <user>maxlin_factory</user>
+    <comment>New package: python-PyCBC - A core library to analyze gravitational-wave data in python</comment>
+    <requestid>807035</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81cd2e7212750162f965df089e2fb567</srcmd5>
+    <version>1.16.1</version>
+    <time>1591653534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810052</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9233bbd09c30c154388e680adc17078</srcmd5>
+    <version>1.16.4</version>
+    <time>1594228610</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819293</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cfbc2d1b73f07ab6d0381cb8b3d4e8a4</srcmd5>
+    <version>1.16.7</version>
+    <time>1596652080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824366</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a6ea7f6f10e51dc1bddf712d021e453</srcmd5>
+    <version>1.16.8</version>
+    <time>1597860196</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827921</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4d08b09cc7b268c7700af5554cb18a5b</srcmd5>
+    <version>1.16.9</version>
+    <time>1601044446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836167</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>994110ff1e8d7b862535cc9dee0ec590</srcmd5>
+    <version>1.16.11</version>
+    <time>1603545469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843542</requestid>
+  </revision>
+</revisionlist>

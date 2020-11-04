@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5c5bee8a600fe41fc6ed25c69d7de74b</srcmd5>
+    <version>0.32.0</version>
+    <time>1599862231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833781</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6872205b46a603ff1d2cee1bcf338f22</srcmd5>
+    <version>0.33.0</version>
+    <time>1600277717</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0:
+  * Enhance operator functional tests to validate pods are torn down after kv cr is deleted
+  * Unit tests to validate finalizer functionality on kubevirt objects
+  * Restore ability to set finalizer on kubevirt objects
+  * Unit tests to verify operator injected labels remain consistent
+  * Restores operator managed by label for backwards/forwards compability during updates
+  * tests, migration: Validate dual stack VMI and Pod IP/s
+  * tests, make primary_pod_network dual stack compatible
+  * tests, Create ValidateVMIandPodIPMatch helper
+  * Turn off modules for staging.
+  * Fix verifying make targets
+  * Give migration kill pods a name not based on their node name
+  * Fix another flaky ertificate related unit test
+  * Fix matching of Makefile vars to env for goveralls
+  * Output what the new error is when an api violation occurs
+  * tests: adapt test-id:4153 to dual-stack cluster
+  * sriov-tests, checkMacAddress: remove sequential expecter cases
+  * sriov tests: Add CNI version to sriov NAD
+  * removeNamespaces: add informative failure reason
+  * cluster-deploy.sh: cancel cdi deployment on sriov-lane
+  * remove version from go.mod
+  * Use PingFromVMConsole for ipv6 instead of trace route
+  * tests, make test 1780 dual stack compatible
+  * refactor virtctl image-upload args
+  * tests,libvmi: Append passed options
+  * Rebase on Goveralls
+  * Export -mod=vendor to always use vendor
+  * Update ldflag to point to right package
+  * Increase memory limit for iscsi pod
+  * deps-update to reflect state after rebase</comment>
+    <requestid>834714</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84a655db2bc37242a96e03d1e84fb2e3</srcmd5>
+    <version>0.34.0</version>
+    <time>1602155614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.34.0:
+  * jsc#ECO-2411
+  * Add mirrored dependencies to WORKSPACE
+  * Mark networking conformance tests
+  * restore backwards compatiblity with api group/version on DataVolumeTemplates spec
+  * Revert &quot;move all tests to use kv config&quot;
+  * Revert &quot;update config message to specify which resource type it is using&quot;
+  * Revert &quot;test usage of configmap configuration&quot;
+  * Revert &quot;update build file&quot;
+  * Revert &quot;convert postcopy tests to use KubeVirt CR&quot;
+  * Rework logic so it is easier to understand what is happening
+  * Allow PVC as volume source with a DV populating the PVC. Before this was not allowed because we could not be sure that the PVC was fully populated. This commit checks the DV to ensure the PVC is fully populated.
+  * vmi, sriov: Enable to set the PCI address on a SRIOV iface
+  * Don't discard bazel platform cache on virtctl cross-compilation
+  * convert postcopy tests to use KubeVirt CR
+  * fix autoconverge test
+  * remove using BeforeAll in vmi configuration tests
+  * generated openapi spec
+  * clean up
+  * start prom server earlier in the virt-handler process so health check returns without EOF error
+  * change kubevirt config type MemBalloon
+  * dump kubevirt cr in ci artifacts
+  * cpuRequest can not be type string since when the resource is patched it will fail to parse the units
+  * change bool to pointer to know unset vs value set to false
+  * update build file
+  * test usage of configmap configuration
+  * update config message to specify which resource type it is using
+  * move all tests to use kv config
+  * virt-launcher, Add mechanism to guard add/delete events channel
+  * Generated artifacts</comment>
+    <requestid>840134</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>900da8b3a1459d407e6c4a2cb7c69725</srcmd5>
+    <version>0.34.0</version>
+    <time>1604412970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845454</requestid>
+  </revision>
+</revisionlist>

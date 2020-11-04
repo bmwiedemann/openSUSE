@@ -1,0 +1,10 @@
+<package name="php-pear-Mail_Mime" project="openSUSE:Factory">
+  <title>PHP classes to create MIME messages</title>
+  <description>Mail_Mime provides classes to deal with the creation and manipulation
+of MIME messages. It allows to create e-mail messages consisting of
+text parts, HTML parts, inline HTML images, attachments and attached
+(embedded) messages. It supports non-ASCII characters in filenames,
+subjects, recipients, etc.</description>
+  <devel project="server:php:applications" package="php-pear-Mail_Mime"/>
+  <url>http://pear.php.net/package/Mail_Mime</url>
+</package>

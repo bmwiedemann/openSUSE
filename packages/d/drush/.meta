@@ -1,0 +1,8 @@
+<package name="drush" project="openSUSE:Factory">
+  <title>Drush</title>
+  <description>Drush is a command line shell and scripting interface for Drupal, a veritable Swiss Army knife designed to make life easier for those of us who spend some of our working hours hacking away at the command prompt.
+
+See http://drush.ws, the homepage for the drush project.</description>
+  <devel project="server:php:applications" package="drush"/>
+  <url>http://drupal.org/project/drush</url>
+</package>

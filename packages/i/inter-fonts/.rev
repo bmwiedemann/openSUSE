@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a6880159a2595e15ba18329475e6f70a</srcmd5>
+    <version>3.12</version>
+    <time>1582394912</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release</comment>
+    <requestid>778124</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ebd4f8da0415efee97107a7ddd48e62</srcmd5>
+    <version>3.13</version>
+    <time>1587070832</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.13:
+  * Improvements to Greek and Cyrillic glyphs #240
+  * New stylistic set ss04 which is almost identical to ss02 with 
+    the exception of no slashed zero #252
+  * Fixes interpolation issues with several diacritics in the light weights
+  * Removes codepoint mappings for some math-related enclosed glyphs 
+    that would be too large when using the circle-enclosed glyphs #250
+  * Various improvements and adjustments to glyph shapes, spacing and kerning
+  * Improves OpenType feature name metadata
+</comment>
+    <requestid>794619</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6428d92a232f4cdd65dae7c771672c48</srcmd5>
+    <version>3.15</version>
+    <time>1598274332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828753</requestid>
+  </revision>
+</revisionlist>

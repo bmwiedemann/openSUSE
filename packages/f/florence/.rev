@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b8bd633fe9c3e1031a16346ac9aa63d</srcmd5>
+    <version>0.6.0</version>
+    <time>1373654720</time>
+    <user>coolo</user>
+    <comment>A nice virtual keyboard app.</comment>
+    <requestid>182763</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2b8bd633fe9c3e1031a16346ac9aa63d</srcmd5>
+    <version>0.6.0</version>
+    <time>1379662349</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>6994b2e70b1bed1bfc577fdc0e702a24</srcmd5>
+    <version>0.6.0</version>
+    <time>1379919464</time>
+    <user>coolo</user>
+    <comment>Fix build with changed changed gnome-doc-utils, post review, again.... SORRY (forwarded request 200065 from Zaitor)</comment>
+    <requestid>200073</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>da4395e174800928499c1d331d18a147</srcmd5>
+    <version>0.6.0</version>
+    <time>1387205527</time>
+    <user>coolo</user>
+    <comment>- Added florence-icondir.patch: set correct svg icon directory in
+  order to not broke the app (bnc#855529).
+- Add florence-rpmlintrc: filter warnings for duplicate files in
+  /usr/share/help/florence. Using fdupes could potentially cause
+  link targets to end up in the -lang package, not being installed
+  by default. As C lang help though is installed from the main
+  package, there is a chance of breakage.</comment>
+    <requestid>210968</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>da4395e174800928499c1d331d18a147</srcmd5>
+    <version>0.6.0</version>
+    <time>1409300885</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7b7707b8078de9c07ae6b410d40c985f</srcmd5>
+    <version>0.6.3</version>
+    <time>1460482491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>385926</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a02c85cfb732d630f4397998ca934997</srcmd5>
+    <version>0.6.3</version>
+    <time>1526646457</time>
+    <user>dimstar_suse</user>
+    <comment>- Add florence-buildfix.patch: Fix reference to libflorence, fixes
+  also parallel build.</comment>
+    <requestid>609849</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5c3f462895b40552e47bfbd1f924d3e4</srcmd5>
+    <version>0.6.3</version>
+    <time>1562843880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714373</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>8f3d70c74c46b7da0bc570cb5a36e446</srcmd5>
+    <version>0.6.3</version>
+    <time>1580511345</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768581 from dimstar)</comment>
+    <requestid>768662</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="pnetcdf" project="openSUSE:Factory">
+  <title>A library providing high-performance I/O with Unidata's NetCDF</title>
+  <description>Parallel netCDF (PnetCDF) is a library providing high-performance I/O while still maintaining file-format compatibility with Unidata's NetCDF.</description>
+  <devel project="science" package="pnetcdf"/>
+</package>

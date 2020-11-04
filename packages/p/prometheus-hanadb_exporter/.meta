@@ -1,0 +1,5 @@
+<package name="prometheus-hanadb_exporter" project="openSUSE:Factory">
+  <title>SAP HANA database metrics exporter</title>
+  <description>SAP HANA database metrics exporter</description>
+  <devel project="server:monitoring" package="prometheus-hanadb_exporter"/>
+</package>

@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>83ed0905eee2f4e1227ab28f5f8ff11a</srcmd5>
+    <version>0.2.4</version>
+    <time>1353513979</time>
+    <user>coolo</user>
+    <comment>Dependency of future OpenStack dashboard</comment>
+    <requestid>141892</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>83ed0905eee2f4e1227ab28f5f8ff11a</srcmd5>
+    <version>0.2.4</version>
+    <time>1359110005</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>98364cd13681272e2e96d73188020885</srcmd5>
+    <version>0.2.5</version>
+    <time>1367487432</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.5:
+  * various small bugfixes (forwarded request 173731 from dirkmueller)</comment>
+    <requestid>173781</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>98364cd13681272e2e96d73188020885</srcmd5>
+    <version>0.2.5</version>
+    <time>1379664146</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1ca245bcf90e73c78dc31dbd2258445</srcmd5>
+    <version>0.2.7</version>
+    <time>1380297596</time>
+    <user>coolo</user>
+    <comment>- update to 0.2.7:
+  * Fix problem under 64-bit windows due to ctypes HANDLE size.
+  * Fix licensing to the source files (forwarded request 200811 from dirkmueller)</comment>
+    <requestid>200813</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c1ca245bcf90e73c78dc31dbd2258445</srcmd5>
+    <version>0.2.7</version>
+    <time>1409302834</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>649a1762be6612fdfbb5e697d9147134</srcmd5>
+    <version>0.3.1</version>
+    <time>1409725818</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247250</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2829c0ebb367431612fd64689f220708</srcmd5>
+    <version>0.3.2</version>
+    <time>1410967522</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249306</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>aeff93d9d9e927f35d0c54a8e7f654ef</srcmd5>
+    <version>0.3.3</version>
+    <time>1429606425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298187</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1bc41577ffc89741c1683d9124e9d8aa</srcmd5>
+    <version>0.3.7</version>
+    <time>1481153369</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>441344</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1c45d9c68845d40c65c664b5743dcdfd</srcmd5>
+    <version>0.3.8</version>
+    <time>1495034274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491169</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8949d1b0e49d3c761f4210ca9d7278aa</srcmd5>
+    <version>0.3.9</version>
+    <time>1503926202</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.9:
+  * Revert fix for issue #103 which causes problems for dependent applications (forwarded request 518787 from tbechtold)</comment>
+    <requestid>518788</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>947f7c1b7ec35b9d779f28e5adb4b5b9</srcmd5>
+    <version>0.4.0</version>
+    <time>1542579737</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to github tarball to get tests
+
+- specfile:
+  * update copyright year
+  * move from tar.gz to zip on pypi
+  * be more specific in %files section
+  * remove devel from noarch
+- update to version 0.4.0:
+  * Fix issue #142: reset LIGHT_EX colors with RESET_ALL. Reported by
+    Delgan
+  * Fix issue #147: ignore invalid &quot;erase&quot; ANSI codes. Reported by
+    shin-
+  * Fix issues #163 and #164: fix stream wrapping under
+    PyCharm. Contributed by veleek and Delgan.
+  * Thanks to jdufresne for various code cleanup and updates to
+    documentation and project metadata.  (pull requests #171, #172,
+    #173, #174, #176, #177, #189, #190, #192)
+  * #186: added contextlib magic methods to ansitowin32.StreamWrapper.
+    Contributed by hoefling.
+  * Fix issue #131: don't cache stdio handles, since they might be
+    closed/changed by fd redirection. This fixes an issue with pytest.
+    Contributed by segevfiner.
+  * #146, #157: Drop support for EOL Python 2.5, 2.6, 3.1, 3.2 and
+    3.3, and add 3.6. Thanks to hugovk.</comment>
+    <requestid>648743</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>49491d3bc51da3167187e4266445a172</srcmd5>
+    <version>0.4.1</version>
+    <time>1544441082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>653418</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>faee00a48391a89b3cf69b673874015e</srcmd5>
+    <version>0.4.3</version>
+    <time>1586112729</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790585</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1924a3304e1edc6b1bdfc78f94fc48b2</srcmd5>
+    <version>0.4.4</version>
+    <time>1603369258</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.4:
+  * Fixes</comment>
+    <requestid>842476</requestid>
+  </revision>
+</revisionlist>

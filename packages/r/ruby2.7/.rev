@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7014f563a06d4c34660d87cf3c4172d</srcmd5>
+    <version>2.7.1</version>
+    <time>1586467050</time>
+    <user>dimstar_suse</user>
+    <comment>Initial ruby 2.7 package</comment>
+    <requestid>792637</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0b10f27a439fd7e8538eae6f62ce7f1e</srcmd5>
+    <version>2.7.1</version>
+    <time>1587581781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796186</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d7b657687deb87ebbf76abc9988289bf</srcmd5>
+    <version>2.7.1</version>
+    <time>1588105997</time>
+    <user>dimstar_suse</user>
+    <comment>- make sure that update-alternative weight for the default
+  distribution is always greater than our normal weight
+
+- make the update-alternative weight based on the ruby version</comment>
+    <requestid>798715</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b9d09162ad333bd275f605909c75628</srcmd5>
+    <version>2.7.2</version>
+    <time>1603202573</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842182</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4b062c176ec074a59f7d0b3b625d84cf</srcmd5>
+    <version>2.7.2</version>
+    <time>1603959738</time>
+    <user>dimstar_suse</user>
+    <comment>- fix typo in ruby macros file
+
+- fix typo in ruby2.7-default.macros which still referenced ruby
+  2.6</comment>
+    <requestid>844279</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="lua-editorconfig-core-lua" project="openSUSE:Factory">
+  <title>EditorConfig Core support for the Lua language</title>
+  <description>EditorConfig makes it easy to maintain the correct coding style when switching between different text editors and between different projects. The EditorConfig project maintains a file format and plugins for various text editors which allow this file format to be read and used by those editors. EditorConfig Lua Core provides the same functionality as the Editorconfig C Core library.</description>
+  <devel project="devel:languages:lua" package="lua-editorconfig-core-lua"/>
+</package>

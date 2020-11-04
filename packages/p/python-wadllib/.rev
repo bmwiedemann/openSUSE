@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1ec677310aab13bd3a965e1de86bd230</srcmd5>
+    <version>1.3.2</version>
+    <time>1364296861</time>
+    <user>coolo</user>
+    <comment>Dependency of python-launchpadlib</comment>
+    <requestid>160203</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>1ec677310aab13bd3a965e1de86bd230</srcmd5>
+    <version>1.3.2</version>
+    <time>1379664309</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>baa40c388a831b7b6ace986f68a5ed81</srcmd5>
+    <version>1.3.2</version>
+    <time>1382693676</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204680</requestid>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>baa40c388a831b7b6ace986f68a5ed81</srcmd5>
+    <version>1.3.2</version>
+    <time>1409303018</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>45cf848dd99dd05c3603cf5e3552fc39</srcmd5>
+    <version>1.3.3</version>
+    <time>1535704913</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.3:
+  * Support python3
+- Switch to singlespec
+- Run tests</comment>
+    <requestid>631072</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>92ee287729e0bf77a9f865dbd710ead9</srcmd5>
+    <version>1.3.4</version>
+    <time>1595577629</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822238</requestid>
+  </revision>
+</revisionlist>

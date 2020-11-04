@@ -1,0 +1,5 @@
+<package name="sbsigntools" project="openSUSE:Factory">
+  <title>Canonical EFI signing tools</title>
+  <description> Utilities for signing and verifying signatures of UEFI binaries for use with secure boot.</description>
+  <devel project="Base:System" package="sbsigntools"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="simtrace2" project="openSUSE:Factory">
+  <title>Osmocom SIMtrace host utility</title>
+  <description>Osmocom SIMtrace 2 is a software and hardware system for passively
+tracing SIM-ME communication between the SIM card and the mobile phone,
+and remote SIM operation.
+
+This package contains SIMtrace 2 host utility.
+
+</description>
+  <devel project="network:telephony" package="simtrace2"/>
+  <url>https://osmocom.org/projects/simtrace2/wiki</url>
+</package>

@@ -1,0 +1,306 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>84b825ef95100893b7d6fc2052f35ed5</srcmd5>
+    <version>3.5.17</version>
+    <time>1168902616</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ab161f1ab9ace7536845d5df465e74e1</srcmd5>
+    <version>3.5.19</version>
+    <time>1175627948</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>91dde9b742c196e167eed26fd3d88d76</srcmd5>
+    <version>3.5.19</version>
+    <time>1177104508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="24">
+    <srcmd5>fbfc3d59078a6b01cfa457942a50acac</srcmd5>
+    <version>3.5.19</version>
+    <time>1181255662</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="27">
+    <srcmd5>49ae61163c60d2fa49090669524f27b7</srcmd5>
+    <version>3.5.19</version>
+    <time>1181578111</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="32">
+    <srcmd5>d748616bd8648d0d5cd73a2cc437c51f</srcmd5>
+    <version>3.5.19</version>
+    <time>1184351222</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="54">
+    <srcmd5>b27d36f84019d6339d24c9b13dbc49a8</srcmd5>
+    <version>3.5.19</version>
+    <time>1189701661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>86277db2fae3ecba3f26cbb691b4a57d</srcmd5>
+    <version>3.5.20</version>
+    <time>1197327108</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0e44d3d5efdf004f83fc81ea7d777dcd</srcmd5>
+    <version>3.5.21</version>
+    <time>1219708370</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>361e5c10964921677c1ec0000198f1e3</srcmd5>
+    <version>3.5.22</version>
+    <time>1245105657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>361e5c10964921677c1ec0000198f1e3</srcmd5>
+    <version>3.5.22</version>
+    <time>1245105657</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>41e9d923fc38a15c81b5df7198b961de</srcmd5>
+    <version>3.5.22</version>
+    <time>1268923353</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>41e9d923fc38a15c81b5df7198b961de</srcmd5>
+    <version>3.5.22</version>
+    <time>1278667342</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>41e9d923fc38a15c81b5df7198b961de</srcmd5>
+    <version>3.5.22</version>
+    <time>1278678571</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f17b97cba4f13079ceb2b5b785e66983</srcmd5>
+    <version>3.5.23</version>
+    <time>1290092875</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53196 from user pgajdos
+</comment>
+    <requestid>53196</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0568bf2d6839a3a6547a4847c846b7fd</srcmd5>
+    <version>3.5.23</version>
+    <time>1290092881</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53196
+</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>0568bf2d6839a3a6547a4847c846b7fd</srcmd5>
+    <version>3.5.23</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d2d542cf86a4e3fa6df9213df069869</srcmd5>
+    <version>3.5.24</version>
+    <time>1299506395</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63537 from user pgajdos
+</comment>
+    <requestid>63537</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>65c2e31fcd83cb0e9cf647a093f5591c</srcmd5>
+    <version>3.5.24</version>
+    <time>1299506404</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63537
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>fcba5bae8e9592afc97d1ee7515811ea</srcmd5>
+    <version>3.5.24</version>
+    <time>1304406347</time>
+    <user>saschpe</user>
+    <comment>Fix compilation with gcc 4.6</comment>
+    <requestid>69238</requestid>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>e04a96c47304545e33c98a36f916369b</srcmd5>
+    <version>3.5.24</version>
+    <time>1304406356</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69238
+</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>1b58fe5e9d374e0d2f0ec44710b5940f</srcmd5>
+    <version>3.5.24</version>
+    <time>1307690942</time>
+    <user>saschpe</user>
+    <comment>- Fix MMX code when using gcc-4.6 [bnc#696824]
+  * adjusted gcc46.patch</comment>
+    <requestid>73099</requestid>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>34e022ee3ec01bfd0fea361f4639d036</srcmd5>
+    <version>3.5.24</version>
+    <time>1307690951</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73099
+</comment>
+  </revision>
+  <revision rev="24" vrev="7">
+    <srcmd5>3516ba0cfd36df4a4bdcc6fae1fd8398</srcmd5>
+    <version>3.5.24</version>
+    <time>1316443370</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83264 from jengelh)</comment>
+    <requestid>83373</requestid>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>3516ba0cfd36df4a4bdcc6fae1fd8398</srcmd5>
+    <version>3.5.24</version>
+    <time>1319181850</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>b9ef1b4c94ff0f3f56a8af0e9f73b216</srcmd5>
+    <version>3.5.24</version>
+    <time>1323191186</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>f7682053a267b1ecfadedff105a5e9f0</srcmd5>
+    <version>3.5.25</version>
+    <time>1332420352</time>
+    <user>coolo</user>
+    <comment>- updated to 3.5.25:
+  * Removed the deprecated djview3 code.
+  * Removed the deprecated cothreads code.
+  * Removed the unmaintained japanese man pages.
+  * Added ddjvu option to skip corrupted pages.
+  * Miniexp API is now reentrant.
+  * Bug fixes all around.
+
+- Add djvulibre-gcc47.patch: Fix build with gcc 4.7.
+
+- fix build for factory (define $QTDIR)</comment>
+    <requestid>109739</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>fc68b4c243f9f0d8df72d76436ad8133</srcmd5>
+    <version>3.5.25</version>
+    <time>1332752453</time>
+    <user>coolo</user>
+    <comment>Provide pkgconfig() style (forwarded request 111005 from dimstar)</comment>
+    <requestid>111010</requestid>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>fc68b4c243f9f0d8df72d76436ad8133</srcmd5>
+    <version>3.5.25</version>
+    <time>1340183282</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>fc68b4c243f9f0d8df72d76436ad8133</srcmd5>
+    <version>3.5.25</version>
+    <time>1359108816</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>945c53ddc7e4c3bc0b6a065c985eaf9b</srcmd5>
+    <version>3.5.25.3</version>
+    <time>1364472611</time>
+    <user>coolo</user>
+    <comment>- updated to 3.5.25.3:
+  * minor fixes 
+  * call autoreconf
+  * do not cp not existing prebuilt icons
+    * not-existing-icons.patch</comment>
+    <requestid>161307</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>945c53ddc7e4c3bc0b6a065c985eaf9b</srcmd5>
+    <version>3.5.25.3</version>
+    <time>1379662234</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>945c53ddc7e4c3bc0b6a065c985eaf9b</srcmd5>
+    <version>3.5.25.3</version>
+    <time>1409300769</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e9bd937dfe193af49c8bc7e84bd64f64</srcmd5>
+    <version>3.5.27</version>
+    <time>1425566254</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288191</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>f0692c994e5c7c39da7fceb23900d16a</srcmd5>
+    <version>3.5.27</version>
+    <time>1495267793</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to make build fully reproducible (forwarded request 494961 from bmwiedemann)</comment>
+    <requestid>494968</requestid>
+  </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>967d770a5c10582e110b8c99a94be5e1</srcmd5>
+    <version>3.5.27</version>
+    <time>1549311439</time>
+    <user>coolo</user>
+    <comment>- Remove rsvg-convert BuildRequires, just use the prebuilt pngs
+  from the source package. (forwarded request 663859 from StefanBruens)</comment>
+    <requestid>665672</requestid>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>84ab8352a0508e2ebb6ce5f254147867</srcmd5>
+    <version>3.5.27</version>
+    <time>1567852480</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim conjecture, bias, and metadata repetitions from description. (forwarded request 727904 from jengelh)</comment>
+    <requestid>727906</requestid>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>a48138f076c29ec2917720c8e0cdd918</srcmd5>
+    <version>3.5.27</version>
+    <time>1571751763</time>
+    <user>dimstar_suse</user>
+    <comment>- do not segfault when mmx enabled [bsc#1154401]
+- added patches
+  https://sourceforge.net/p/djvu/bugs/293/
+  + djvulibre-always-assume-that-cpuid-works-on-x86_64.patch</comment>
+    <requestid>741427</requestid>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>78f40b034b3deb066e1a20ca12220b7b</srcmd5>
+    <version>3.5.27</version>
+    <time>1573421017</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  CVE-2019-18804 [bsc#1156188]
+  + djvulibre-CVE-2019-18804.patch</comment>
+    <requestid>746558</requestid>
+  </revision>
+</revisionlist>

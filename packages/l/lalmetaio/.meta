@@ -1,0 +1,8 @@
+<package name="lalmetaio" project="openSUSE:Factory">
+  <title>LSC Algorithm MetaIO Library</title>
+  <description>The LSC Algorithm MetaIO Library for gravitational wave data analysis.
+
+</description>
+  <devel project="science" package="lalmetaio"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>

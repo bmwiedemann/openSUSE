@@ -1,0 +1,9 @@
+<package name="Fragments" project="openSUSE:Factory">
+  <title>A GTK3 BitTorrent Client</title>
+  <description>Fragments is an easy to use BitTorrent client which follows the
+GNOME HIG and includes well thought-out features.
+
+</description>
+  <devel project="GNOME:Apps" package="Fragments"/>
+  <url>https://gitlab.gnome.org/World/Fragments</url>
+</package>

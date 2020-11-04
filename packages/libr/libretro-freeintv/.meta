@@ -1,0 +1,8 @@
+<package name="libretro-freeintv" project="openSUSE:Factory">
+  <title>FreeIntv libretro core for Mattel Intellivision emulation</title>
+  <description>FreeIntv libretro core for Mattel Intellivision emulation
+
+FreeIntv is a libretro emulation core for the Mattel Intellivision designed to be compatible with joypads from the SNES era forward even if they originally required a number pad.
+</description>
+  <devel project="Emulators" package="libretro-freeintv"/>
+</package>

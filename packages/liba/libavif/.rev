@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>322da85139a5376d30557eafe008007f</srcmd5>
+    <version>0.5.3</version>
+    <time>1579273549</time>
+    <user>dimstar_suse</user>
+    <comment>Library implementing for the AV1-AVIF image file format.
+
+This lib uses rav1e and dav1d for encoding and decoding.</comment>
+    <requestid>765061</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ab04597cf6b7e71fe01144b742e28ae</srcmd5>
+    <version>0.5.5</version>
+    <time>1582018593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.5
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.5
+- Rename libavif-tools to avif-tools
+  This fixes an rpmlint warning
+</comment>
+    <requestid>774727</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47d3b2716e010be228bcf743a59f76c4</srcmd5>
+    <version>0.6.2</version>
+    <time>1584350344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.2
+  https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+- If we want to build with aom, require version &gt;= 1.1.0
+- Removed cbcf62c2200be83b85b48059c819ae708216ccec.patch
+- Update to version 0.5.7
+  https://github.com/AOMediaCodec/libavif/releases/tag/v0.5.7
+</comment>
+    <requestid>785129</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>25537607cf699db41b51ef1389a15187</srcmd5>
+    <version>0.7.1</version>
+    <time>1587839214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796649</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>330cf0b5c3e508b2c2e1c98884605176</srcmd5>
+    <version>0.7.3</version>
+    <time>1588697742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.3
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Removed e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Removed ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Removed e7dcc74b5529da209266020852a72b554461e538.patch
+- Update to version 0.7.2
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+  * Added e4e5d752ece581d6ef9fbb8bab0ab2edfde13fc5.patch
+  * Added ebb29b37711c749681278f8b778f0e6c031c4ca2.patch
+  * Added e7dcc74b5529da209266020852a72b554461e538.patch
+</comment>
+    <requestid>800411</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6a66185ae9304dd16d7c1093e4c3fb70</srcmd5>
+    <version>0.8.0</version>
+    <time>1595577579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>822195</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59448a11d0ea5bf07a352f90e858aadf</srcmd5>
+    <version>0.8.1</version>
+    <time>1597744821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+- Enabled AOM support (default)
+</comment>
+    <requestid>827354</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>191db2ed1d1a82bc35a9bb2d56b1f01b</srcmd5>
+    <version>0.8.2</version>
+    <time>1602762693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  * See https://github.com/AOMediaCodec/libavif/blob/master/CHANGELOG.md
+    for a complete changelog.
+</comment>
+    <requestid>841880</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a111dc373e34c4f880cf2692f64cecc</srcmd5>
+    <version>1.0.0</version>
+    <time>1589892568</time>
+    <user>dimstar_suse</user>
+    <comment>replaces bumpversion</comment>
+    <requestid>807011</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5bf33321c366575601792f84010495af</srcmd5>
+    <version>1.0.0</version>
+    <time>1590506441</time>
+    <user>maxlin_factory</user>
+    <comment>- add minimal version numbers for pytest and testfixtures
+</comment>
+    <requestid>808001</requestid>
+  </revision>
+</revisionlist>

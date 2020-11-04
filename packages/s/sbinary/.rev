@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a49952034733c18dac6c2065f0257e4</srcmd5>
+    <version>0.4.2</version>
+    <time>1574104127</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748927</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a48241173b2daf6ad057a892a7c039f8</srcmd5>
+    <version>0.4.2</version>
+    <time>1574945421</time>
+    <user>dimstar_suse</user>
+    <comment>Build with non-bootstrap scala</comment>
+    <requestid>751505</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>454b5ecd3e82782c888b343fe217b0cb</srcmd5>
+    <version>0.4.2</version>
+    <time>1575373242</time>
+    <user>dimstar_suse</user>
+    <comment>Clean-up the build + require scala 2.10.7 to be able to use jdk11</comment>
+    <requestid>752801</requestid>
+  </revision>
+</revisionlist>

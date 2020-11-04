@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e73c8429d1064c613e202030900254a</srcmd5>
+    <version>2.0.2</version>
+    <time>1586368475</time>
+    <user>dimstar_suse</user>
+    <comment>Initial effort to package the module.</comment>
+    <requestid>790894</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>727f46add15a18cc41f1ffac86fd8a35</srcmd5>
+    <version>2.0.2</version>
+    <time>1594817980</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819817</requestid>
+  </revision>
+</revisionlist>

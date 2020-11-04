@@ -1,0 +1,18 @@
+<package name="msoak" project="openSUSE:Factory">
+  <title>A utility to simultaneously subscribe to MQTT servers/topics</title>
+  <description>msoak is a utility to simultaneously subscribe to an arbitrary
+number of topics on any number of MQTT brokers and optionally
+modify or normalize received payloads before printing them out.
+This utility was created for being able to back up to a central
+location messages received by a number of brokers; instead of
+launching (and having to monitor success of) a large number of
+mosquitto_sub(1) programs, msoak took on the job.
+
+msoak uses asynchronous connects to the MQTT brokers so that it
+can handle situations in which a broker may temporarily be
+unavailable.
+
+</description>
+  <devel project="network:utilities" package="msoak"/>
+  <url>https://github.com/jpmens/msoak</url>
+</package>

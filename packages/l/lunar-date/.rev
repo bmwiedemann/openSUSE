@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bf238187c69edac51d7cdbefe8284ee</srcmd5>
+    <version>2.9.3</version>
+    <time>1580990878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770418</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>976ff771a34e2812ed9d2061428d2090</srcmd5>
+    <version>2.9.3</version>
+    <time>1581087276</time>
+    <user>dimstar_suse</user>
+    <comment>- Need to set %{name}-lang as Recommends tag for library package. (forwarded request 770643 from hillwood)</comment>
+    <requestid>770644</requestid>
+  </revision>
+</revisionlist>

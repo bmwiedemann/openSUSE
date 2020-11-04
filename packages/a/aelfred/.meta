@@ -1,0 +1,7 @@
+<package name="aelfred" project="openSUSE:Factory">
+  <title>Java-based XML parser</title>
+  <description>AElfred is a Java-based XML parser from Microstar Software Ltd. AElfred
+is distributed for free (with full source) for both commercial and
+non-commercial use.</description>
+  <devel project="Java:packages" package="aelfred"/>
+</package>

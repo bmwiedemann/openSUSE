@@ -1,0 +1,1137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea7496364ea66cdf2c295ec81254bf79</srcmd5>
+    <version>2.02.17</version>
+    <time>1166446899</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>40ac86a30ad328692c9bb9a0ed34b185</srcmd5>
+    <version>2.02.17</version>
+    <time>1168275048</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>97c828889508bf5445acbf46b9b993a2</srcmd5>
+    <version>2.02.17</version>
+    <time>1171216268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="11">
+    <srcmd5>5b47d3c58131bc5229535a1514f7b094</srcmd5>
+    <version>2.02.17</version>
+    <time>1172442688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3c974b2d168b85a0450d336fe53418b3</srcmd5>
+    <version>2.02.25</version>
+    <time>1178541626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8596dcb3db762a4b96764c2c81a29fd4</srcmd5>
+    <version>2.02.28</version>
+    <time>1195751200</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>14f81d10ef6a082e005fffed064c89dc</srcmd5>
+    <version>2.02.29</version>
+    <time>1197328865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8edbe0f15ce5bf0a4c5fe80421c7d320</srcmd5>
+    <version>2.02.32</version>
+    <time>1201902865</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>112f789f1579c2288206f62f29162fb6</srcmd5>
+    <version>2.02.33</version>
+    <time>1203035570</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>78b737b8cd8fc078337a01c80cb93a67</srcmd5>
+    <version>2.02.33</version>
+    <time>1203555399</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>5d020e5d56996cd0fa25fc6caeb2e4d3</srcmd5>
+    <version>2.02.33</version>
+    <time>1208907757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>21baa3b61f69f1e4b70edd4dc420fd14</srcmd5>
+    <version>2.02.33</version>
+    <time>1209133958</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>856dfee37a912cff9a0ed02f8dd74f85</srcmd5>
+    <version>2.02.33</version>
+    <time>1209647039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="22">
+    <srcmd5>878f6e5c3d7f1c26ead06258f74d5723</srcmd5>
+    <version>2.02.33</version>
+    <time>1210030804</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1994953a92f3b249f19dc83b124f9a9c</srcmd5>
+    <version>2.02.38</version>
+    <time>1215810633</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>b07be60e03abc8d9915c16f4a913cca6</srcmd5>
+    <version>2.02.38</version>
+    <time>1216945305</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>f1ff42eaf1d5898d798a4dd94128c72c</srcmd5>
+    <version>2.02.38</version>
+    <time>1218671843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>76457baa4412448027f213a4e1f1b552</srcmd5>
+    <version>2.02.38</version>
+    <time>1219431580</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>44fe741639e92a2ee259eac7d8385960</srcmd5>
+    <version>2.02.38</version>
+    <time>1219709711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="24">
+    <srcmd5>7b8063cbd11b3f106be91b26ad39e09f</srcmd5>
+    <version>2.02.38</version>
+    <time>1220372360</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>66c5087b196f7a024d90f78b99d3ebd6</srcmd5>
+    <version>2.02.38</version>
+    <time>1220652951</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7a16edb458887f08b42da66f8c1d1858</srcmd5>
+    <version>2.02.39</version>
+    <time>1221275130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>43a736a13a3b464e32a38fa47ac2fd5e</srcmd5>
+    <version>2.02.39</version>
+    <time>1221300031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>48572186bbee4718c319bba06c974376</srcmd5>
+    <version>2.02.39</version>
+    <time>1222297434</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>3c693bdaabce09e039550cb6fc41ed1f</srcmd5>
+    <version>2.02.39</version>
+    <time>1222690352</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f248d3f26a58a55f924f06767c3ae621</srcmd5>
+    <version>2.02.39</version>
+    <time>1223763575</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>8eb6b4f67e1bb1129124023b0c60a3fc</srcmd5>
+    <version>2.02.39</version>
+    <time>1226938930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>04bfdbd3ea96d808491efe8443515311</srcmd5>
+    <version>2.02.39</version>
+    <time>1228488304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>921a9312de62a1997242d5ec44667201</srcmd5>
+    <version>2.02.39</version>
+    <time>1232626391</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="14">
+    <srcmd5>ef86bb39ab43da1fcff36c10fddf679c</srcmd5>
+    <version>2.02.39</version>
+    <time>1233019171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1241627784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>989f94f8f642d7ddda28dcaa0ad105c6</srcmd5>
+    <version>2.02.45</version>
+    <time>1242417620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1242441088</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>989f94f8f642d7ddda28dcaa0ad105c6</srcmd5>
+    <version>2.02.45</version>
+    <time>1242441852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1242527443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>989f94f8f642d7ddda28dcaa0ad105c6</srcmd5>
+    <version>2.02.45</version>
+    <time>1242528148</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1242613848</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>989f94f8f642d7ddda28dcaa0ad105c6</srcmd5>
+    <version>2.02.45</version>
+    <time>1242614591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1242663339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1242663339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="5">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1278678595</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="9">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="44" vrev="11">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1319182162</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="45" vrev="13">
+    <srcmd5>c0a980c6203dab0cd134a48b79a54ade</srcmd5>
+    <version>unknown</version>
+    <time>1340183679</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="46" vrev="14">
+    <srcmd5>0428264acb9ad00e3cdf99a186b51d8e</srcmd5>
+    <version>2.02.84</version>
+    <time>1350548142</time>
+    <user>coolo</user>
+  </revision>
+  <revision rev="47" vrev="15">
+    <srcmd5>1f5a285a0e9bf366177d79502ea5ca4b</srcmd5>
+    <version>unknown</version>
+    <time>1351014013</time>
+    <user>coolo</user>
+    <comment>- lvm2.spec: merge rules for device-mapper and
+  lvm2-clvm packages, so there is only one
+  spec file and all packages are built consistently.</comment>
+    <requestid>138672</requestid>
+  </revision>
+  <revision rev="48" vrev="16">
+    <srcmd5>4fa376309655ad5c159e6a1ccde72cec</srcmd5>
+    <version>unknown</version>
+    <time>1351159819</time>
+    <user>namtrac</user>
+    <comment>Change the default locking dir to reflect the change in filesystem package (forwarded request 138717 from sumski)</comment>
+    <requestid>139184</requestid>
+  </revision>
+  <revision rev="49" vrev="17">
+    <srcmd5>d2c80a0937fa2a16549accd002f76d1d</srcmd5>
+    <version>unknown</version>
+    <time>1352562895</time>
+    <user>coolo</user>
+    <comment>Adapt mkinitrd scripts to new udev locataion (forwarded request 140202 from sumski)</comment>
+    <requestid>140262</requestid>
+  </revision>
+  <revision rev="50" vrev="18">
+    <srcmd5>369acf2efb07c285073e399f7888aad1</srcmd5>
+    <version>unknown</version>
+    <time>1352803285</time>
+    <user>coolo</user>
+    <comment>fix bnc#789019,bnc#789020,bnc#789021 (forwarded request 140942 from seife)</comment>
+    <requestid>140943</requestid>
+  </revision>
+  <revision rev="51" vrev="19">
+    <srcmd5>102ec33c2be3d48ccf087b74d58bea0b</srcmd5>
+    <version>unknown</version>
+    <time>1354712379</time>
+    <user>namtrac</user>
+    <comment>- udev_sync-cookie_set-1-on-each-dm_task_set_cookie-ca.patch: 
+  cookie_set=1 on each dm_task_set_cookie call (bnc#788882) (forwarded request 143764 from rmilasan)</comment>
+    <requestid>143853</requestid>
+  </revision>
+  <revision rev="52" vrev="21">
+    <srcmd5>102ec33c2be3d48ccf087b74d58bea0b</srcmd5>
+    <version>unknown</version>
+    <time>1359109415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="22">
+    <srcmd5>3f920a03a8dbd33810cf714c314ec4a5</srcmd5>
+    <version>unknown</version>
+    <time>1361633849</time>
+    <user>coolo</user>
+    <comment>- Move all udev releated files in the appropriate udev directory. (forwarded request 156100 from rmilasan)</comment>
+    <requestid>156166</requestid>
+  </revision>
+  <revision rev="54" vrev="23">
+    <srcmd5>bc61f2b0fe2dc4d74a9aa69760118cab</srcmd5>
+    <version>unknown</version>
+    <time>1366232790</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 171105 from m_meister)</comment>
+    <requestid>171237</requestid>
+  </revision>
+  <revision rev="55" vrev="24">
+    <srcmd5>066b25468ba8670706bc176b6e4cbdf4</srcmd5>
+    <version>unknown</version>
+    <time>1366792892</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>172897</requestid>
+  </revision>
+  <revision rev="56" vrev="25">
+    <srcmd5>8ed01bad48d417210d559c787f1fc8d4</srcmd5>
+    <version>unknown</version>
+    <time>1374671349</time>
+    <user>coolo</user>
+    <comment>- Remove usage of absolute paths in mkinitrd scripts
+
+- Fix parsing lvdisplay -c output with more than 10 volumes in 
+  mkinitrd-lvm2-setup.sh (bnc#826727) (forwarded request 183370 from olh)</comment>
+    <requestid>183811</requestid>
+  </revision>
+  <revision rev="57" vrev="26">
+    <srcmd5>7787c51dd57a2e06621c3813615ad87a</srcmd5>
+    <version>2.02.98</version>
+    <time>1377856501</time>
+    <user>coolo</user>
+    <comment>- replace BuildRequires: systemd by pkgconfig(udev) again
+  to avoid cycles.
+
+- add systemd support to lvm2 package
+  split device-mapper to another package.</comment>
+    <requestid>196647</requestid>
+  </revision>
+  <revision rev="58" vrev="27">
+    <srcmd5>32e08582043193b574a5c84b39c0c527</srcmd5>
+    <version>2.02.98</version>
+    <time>1378901736</time>
+    <user>scarabeus_factory</user>
+    <comment>- Add lvm-path.patch: fix lvm binary path in systemd generator.
+- Use %_tmpfilesdir macro for tmpfiles directory. (forwarded request 198442 from fcrozat)</comment>
+    <requestid>198460</requestid>
+  </revision>
+  <revision rev="59" vrev="29">
+    <srcmd5>32e08582043193b574a5c84b39c0c527</srcmd5>
+    <version>2.02.98</version>
+    <time>1379663212</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="60" vrev="30">
+    <srcmd5>b3ae50d483714f111235f5ff95231bdb</srcmd5>
+    <version>2.02.98</version>
+    <time>1382378010</time>
+    <user>scarabeus_factory</user>
+    <comment>bnc#779965, use export before %configure in spec (forwarded request 204099 from deanraccoon)</comment>
+    <requestid>204121</requestid>
+  </revision>
+  <revision rev="61" vrev="31">
+    <srcmd5>02ce276384f2c1122e1e162b68c8fce1</srcmd5>
+    <version>2.02.98</version>
+    <time>1383545263</time>
+    <user>coolo</user>
+    <comment>- Remove /etc/sysconfig/lvm to avoid errors during mkinitrd run
+  LVM_VGS_ACTIVATED_ON_BOOT is not handled anymore with systemd
+- Remove fillup and insserv from PreReq (forwarded request 204931 from olh)</comment>
+    <requestid>205487</requestid>
+  </revision>
+  <revision rev="62" vrev="32">
+    <srcmd5>4120b3fedb047094006f2802745b20f4</srcmd5>
+    <version>2.02.98</version>
+    <time>1392300111</time>
+    <user>coolo</user>
+    <comment>- add autoactivate-lvmetad-with-generator.patch - if use_lvmetad=1,
+  automatically activate lvm2-lvmetad.socket to ensure lvmetad is
+  started when required (bnc#862076) (forwarded request 222055 from arvidjaar)</comment>
+    <requestid>222056</requestid>
+  </revision>
+  <revision rev="63" vrev="33">
+    <srcmd5>188747e1f30b888ef7a0d5b42ab88309</srcmd5>
+    <version>2.02.98</version>
+    <time>1392617904</time>
+    <user>coolo</user>
+    <comment>fate#315092, improve performance of cluster mirror (forwarded request 222267 from deanraccoon)</comment>
+    <requestid>222430</requestid>
+  </revision>
+  <revision rev="64" vrev="34">
+    <srcmd5>a5442f7b97369ff71fb2f1bcb6ce1854</srcmd5>
+    <version>2.02.98</version>
+    <time>1393342879</time>
+    <user>scarabeus_factory</user>
+    <comment>- add 0001-lvmetad-Init-lazily-to-avoid-socket-access-on-config.patch
+  avoid connect to lvmetad.socket too early to prevent deadlock during
+  &quot;systemctl daemon-reload&quot; (bnc#862076) (forwarded request 223260 from arvidjaar)</comment>
+    <requestid>223734</requestid>
+  </revision>
+  <revision rev="65" vrev="35">
+    <srcmd5>808a645b64e481ddb28753895b2ab262</srcmd5>
+    <version>2.02.98</version>
+    <time>1396709412</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>229047</requestid>
+  </revision>
+  <revision rev="66" vrev="36">
+    <srcmd5>b2e425029a19866426affeb3cffa55de</srcmd5>
+    <version>2.02.98</version>
+    <time>1397220029</time>
+    <user>coolo</user>
+    <comment>bnc#862403, modify lvm.conf to add filter to exclude floppy and cdrom (forwarded request 229357 from wanglh)</comment>
+    <requestid>229469</requestid>
+  </revision>
+  <revision rev="67" vrev="37">
+    <srcmd5>617d53bef9ad2939f7534dd8a2c06c70</srcmd5>
+    <version>2.02.98</version>
+    <time>1398524510</time>
+    <user>coolo</user>
+    <comment>- Switch from mkinitrd to dracut
+  - Dracut already has a lvm module and takes care that the right stuff is
+    include into initrd, therefore remove:
+      - mkinitrd-lvm2-boot.sh
+      - mkinitrd-lvm2-setup.sh
+    mkinitrd scripts from sources
+  - Add dracut macros in %post and %posttrans to ensure initrd recreation  
+- Remove unneeded comments in .spec file
+- Do not compile in DATE and TIME to avoid build unneeded retriggering in obs
+  Add: cmirrord_remove_date_time_from_compilation.patch (forwarded request 230307 from trenn)</comment>
+    <requestid>231149</requestid>
+  </revision>
+  <revision rev="68" vrev="38">
+    <srcmd5>fbd8dac28d28dfd26e7fe732fd0297a7</srcmd5>
+    <version>2.02.98</version>
+    <time>1400825113</time>
+    <user>coolo</user>
+    <comment>add 0001-RAID-Make-RAID-4-5-6-display-sync-status-under-headi.patch (forwarded request 233542 from wanglh)</comment>
+    <requestid>234697</requestid>
+  </revision>
+  <revision rev="69" vrev="39">
+    <srcmd5>c1f5546e749e39049a8abbf03c624b91</srcmd5>
+    <version>2.02.98</version>
+    <time>1402403833</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236333</requestid>
+  </revision>
+  <revision rev="70" vrev="40">
+    <srcmd5>918f3631f3ad4b687fa9061f429ce916</srcmd5>
+    <version>2.02.98</version>
+    <time>1402947785</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>236951</requestid>
+  </revision>
+  <revision rev="71" vrev="41">
+    <srcmd5>a2e94c95f8cc66c98d4b2b69ec1ab690</srcmd5>
+    <version>2.02.98</version>
+    <time>1403615729</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238146</requestid>
+  </revision>
+  <revision rev="72" vrev="42">
+    <srcmd5>5f4c9185ac54d714bf8be764e74cbcfd</srcmd5>
+    <version>2.02.98</version>
+    <time>1405573068</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240183</requestid>
+  </revision>
+  <revision rev="73" vrev="44">
+    <srcmd5>5f4c9185ac54d714bf8be764e74cbcfd</srcmd5>
+    <version>2.02.98</version>
+    <time>1409301831</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="45">
+    <srcmd5>5213c102e7ad2721bd75b0d8a7111d19</srcmd5>
+    <version>2.02.98</version>
+    <time>1409998695</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247435</requestid>
+  </revision>
+  <revision rev="75" vrev="46">
+    <srcmd5>8d9b72ecfc3a18e234809f3d5f1eec3d</srcmd5>
+    <version>unknown</version>
+    <time>1415696432</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260602</requestid>
+  </revision>
+  <revision rev="76" vrev="47">
+    <srcmd5>7749281d8d3738b5e2c07825fd131b44</srcmd5>
+    <version>unknown</version>
+    <time>1416824149</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262561</requestid>
+  </revision>
+  <revision rev="77" vrev="48">
+    <srcmd5>c7f1f489e67e8f18b016e8b7951f3e86</srcmd5>
+    <version>unknown</version>
+    <time>1417810050</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>263930</requestid>
+  </revision>
+  <revision rev="78" vrev="49">
+    <srcmd5>c47d3f8561a9f63aaca6758ba2242e90</srcmd5>
+    <version>unknown</version>
+    <time>1418737650</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264976</requestid>
+  </revision>
+  <revision rev="79" vrev="50">
+    <srcmd5>c53c3d6121381eeeef51fab9b207e533</srcmd5>
+    <version>unknown</version>
+    <time>1420429454</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>266803</requestid>
+  </revision>
+  <revision rev="80" vrev="51">
+    <srcmd5>0d758bac80f1c4cc1c1c0dd8d24c9753</srcmd5>
+    <version>unknown</version>
+    <time>1420927619</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>280533</requestid>
+  </revision>
+  <revision rev="81" vrev="52">
+    <srcmd5>aec934268c922519478bf2095a3a582a</srcmd5>
+    <version>unknown</version>
+    <time>1421873754</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>281075</requestid>
+  </revision>
+  <revision rev="82" vrev="53">
+    <srcmd5>c66a323415c012537e68d9cb39d4f686</srcmd5>
+    <version>unknown</version>
+    <time>1422790169</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283449</requestid>
+  </revision>
+  <revision rev="83" vrev="54">
+    <srcmd5>bb4902ce96fb7c45afd07595a8a89cba</srcmd5>
+    <version>unknown</version>
+    <time>1423917967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>285636</requestid>
+  </revision>
+  <revision rev="84" vrev="55">
+    <srcmd5>301b05e243242bb129a0d71a39c3a174</srcmd5>
+    <version>unknown</version>
+    <time>1427652963</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293199</requestid>
+  </revision>
+  <revision rev="85" vrev="56">
+    <srcmd5>df4b782f3396a8664b26c1de337e9493</srcmd5>
+    <version>unknown</version>
+    <time>1428652145</time>
+    <user>dimstar_suse</user>
+    <comment>- fsadm: add support for btrfs(fate#318413) 
+	fsadm-add-support-for-btrfs.patch 
+
+- provides libdevmapper.so.1.02 libdevmapper-event.so.1.02
+  for VirtualBox.</comment>
+    <requestid>295117</requestid>
+  </revision>
+  <revision rev="86" vrev="57">
+    <srcmd5>ac122d150831bd43d241d4406d1312bb</srcmd5>
+    <version>unknown</version>
+    <time>1433845425</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311089</requestid>
+  </revision>
+  <revision rev="87" vrev="58">
+    <srcmd5>93181cc09e72aae738785de959c19c19</srcmd5>
+    <version>unknown</version>
+    <time>1437657719</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317707</requestid>
+  </revision>
+  <revision rev="88" vrev="59">
+    <srcmd5>fe109e28a7eb6d5417efe200ca658ef4</srcmd5>
+    <version>unknown</version>
+    <time>1438548340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319046</requestid>
+  </revision>
+  <revision rev="89" vrev="60">
+    <srcmd5>c11a486c0b25514a03d3fc09fbfbc4ce</srcmd5>
+    <version>unknown</version>
+    <time>1439190562</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320818</requestid>
+  </revision>
+  <revision rev="90" vrev="61">
+    <srcmd5>efa2780aab67acdc229033abe43d5741</srcmd5>
+    <version>unknown</version>
+    <time>1440658445</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326521</requestid>
+  </revision>
+  <revision rev="91" vrev="62">
+    <srcmd5>992ce2ceac2936839f4b15714d4373d4</srcmd5>
+    <version>unknown</version>
+    <time>1450471990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349272</requestid>
+  </revision>
+  <revision rev="92" vrev="63">
+    <srcmd5>1810bec18d2554e09f75c21403430f45</srcmd5>
+    <version>unknown</version>
+    <time>1454491054</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356423</requestid>
+  </revision>
+  <revision rev="93" vrev="64">
+    <srcmd5>65d46b6ee7da0c3286e0328a245af069</srcmd5>
+    <version>unknown</version>
+    <time>1457532956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>367209</requestid>
+  </revision>
+  <revision rev="94" vrev="65">
+    <srcmd5>83dfb66f93249fb8a6126513453ea06b</srcmd5>
+    <version>2.02.152</version>
+    <time>1464852917</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398945</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>620d74b00badbaa9aba19e32af54823c</srcmd5>
+    <version>2.02.165</version>
+    <time>1474115571</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427568</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>5283cd5cee3ab7947cc743bf6c11038f</srcmd5>
+    <version>2.02.168</version>
+    <time>1484040914</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>448708</requestid>
+  </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>99a53f631a0cc7b43f1127b124571389</srcmd5>
+    <version>2.02.168</version>
+    <time>1485250073</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>450910</requestid>
+  </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>6df7ede3980a9029e6758baff1c6b452</srcmd5>
+    <version>2.02.168</version>
+    <time>1486217921</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453572</requestid>
+  </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>c4fa552a99244ff3fa27adbbc0b8a29d</srcmd5>
+    <version>2.02.168</version>
+    <time>1487980036</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460030</requestid>
+  </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>00858340a46db8a2446b73f054552053</srcmd5>
+    <version>2.02.168</version>
+    <time>1488558805</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>461233</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>2925245ae95779ecad2eed30d00e6d2a</srcmd5>
+    <version>2.02.170</version>
+    <time>1493103328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.02.170:
+  * Few smal fixes around; obsoleted 169 release that was removed
+    from mirrors
+- Refresh patch:
+  * display-dm-name-for-lv-name.diff
+
+- Update device mapper version to 1.02.138, see WHATS_NEW_DM for
+  detailed changelogs
+  * Drop obsolete lvmchange files accordingly
+- Refresh libdm-iface-not-output-error-message-inside-retry-loop.patch
+- Refresh make-mirror-legs-on-different-tag-pvs.patch
+- device-mapper-dmsetup-export.patch
+
+- Version update to 2.02.169 release, see WHATS_NEW and WHATS_NEW_DM
+  files for detailed changelogs
+
+- Split configure options to have one per line
+- Pass over with spec-cleaner
+- Enable internal cache
+- Enable lvmpolld
+
+- Add 'lvm2-lockd' subpackage, fate#323203 to lvm2-clvm to not pull
+  corosync and other deps to the core lvm2 package
+
+- Update to 2.02.170:
+  * Few smal fixes around; obsoleted 169 release that was removed
+    from mirrors
+- Refresh patch:
+  * display-dm-name-for-lv-name.diff</comment>
+    <requestid>489075</requestid>
+  </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>996d667c5e42c150a94251279f5e897f</srcmd5>
+    <version>2.02.170</version>
+    <time>1494441175</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492764</requestid>
+  </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>63e1261cc3d65849c9ccf672e2beff42</srcmd5>
+    <version>2.02.170</version>
+    <time>1495283384</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495532</requestid>
+  </revision>
+  <revision rev="104" vrev="4">
+    <srcmd5>0ab6e8496d07a9c1ac7a7e8309533cb7</srcmd5>
+    <version>2.02.170</version>
+    <time>1498202027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>504391</requestid>
+  </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>6d46022fd3826f8f11f6254a0d27f926</srcmd5>
+    <version>2.02.170</version>
+    <time>1499162151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507522</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>0a951832255b3190317906ee93338dc3</srcmd5>
+    <version>2.02.172</version>
+    <time>1499509594</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>508665</requestid>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>aecb0422b5265ad8257bc888648e97b8</srcmd5>
+    <version>2.02.172</version>
+    <time>1500892287</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511662</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>82bae4d00dbeaa4c38ec070e4a286d3e</srcmd5>
+    <version>2.02.173</version>
+    <time>1504981383</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521789</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>799bc2fa3154ca1110a371101871b236</srcmd5>
+    <version>2.02.175</version>
+    <time>1509036014</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>535964</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>521784c1ef8cf6908c5da80aef126b79</srcmd5>
+    <version>2.02.175</version>
+    <time>1510231240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538355</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>accdcae8796729783c71e314c4631036</srcmd5>
+    <version>2.02.176</version>
+    <time>1512042112</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545433</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>cd5c9e6955b53926a360d9741d9db153</srcmd5>
+    <version>2.02.177</version>
+    <time>1513852011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558349</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>bf6fd8893d2f439d117a424fd0771a1c</srcmd5>
+    <version>2.02.177</version>
+    <time>1516091993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563495</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>eb97371dceb81dfeaa6c2d3e2859e923</srcmd5>
+    <version>2.02.177</version>
+    <time>1517668626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570450</requestid>
+  </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>f413151b054b390f10f3d702281b5ba9</srcmd5>
+    <version>2.02.177</version>
+    <time>1518596512</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix detection of clvm that happens on compile time based on
+  CLVM_PIDFILE, as we determine these features on runtime
+  bsc#1080299:
+  + bsc1080299-detect-clvm-properly.patch
+
+- Fix detection of clvm that happens on compile time based on
+  CLVM_PIDFILE, as we determine these features on runtime
+  bsc#1080299:
+  + bsc1080299-detect-clvm-properly.patch
+
+- Fix detection of clvm that happens on compile time based on
+  CLVM_PIDFILE, as we determine these features on runtime
+  bsc#1080299:
+  + bsc1080299-detect-clvm-properly.patch</comment>
+    <requestid>575550</requestid>
+  </revision>
+  <revision rev="116" vrev="5">
+    <srcmd5>65fdba27f77d71116b10e29168b002de</srcmd5>
+    <version>2.02.177</version>
+    <time>1524400493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598475</requestid>
+  </revision>
+  <revision rev="117" vrev="6">
+    <srcmd5>bf1625bb630583514a62fef3fe622f01</srcmd5>
+    <version>2.02.177</version>
+    <time>1528021907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612715</requestid>
+  </revision>
+  <revision rev="118" vrev="7">
+    <srcmd5>da1664814981c8b749067cd2d895660d</srcmd5>
+    <version>2.02.177</version>
+    <time>1532774187</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623586</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>a1f2a1829eaa5ebd1ffdcfe28385fec1</srcmd5>
+    <version>2.02.180</version>
+    <time>1535441025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>631017</requestid>
+  </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>f839d3ff896019487515f9c4f1f36111</srcmd5>
+    <version>2.02.180</version>
+    <time>1536093971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632085</requestid>
+  </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>beec3419718ca7a625d968f8ec38bc5e</srcmd5>
+    <version>2.02.180</version>
+    <time>1542012544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646332</requestid>
+  </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>ebf7459a35b6fe59bb8b88890a34a09c</srcmd5>
+    <version>2.02.180</version>
+    <time>1549629907</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670483</requestid>
+  </revision>
+  <revision rev="123" vrev="5">
+    <srcmd5>c00d7f59113ff9fc917ae40a2c3a8e4b</srcmd5>
+    <version>2.02.180</version>
+    <time>1553262781</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686810</requestid>
+  </revision>
+  <revision rev="124" vrev="6">
+    <srcmd5>f29ed03efaacbca6bd87c2423a2b95d5</srcmd5>
+    <version>2.02.180</version>
+    <time>1561970586</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712188</requestid>
+  </revision>
+  <revision rev="125" vrev="7">
+    <srcmd5>777aad61424cbf9220a65073323e6d47</srcmd5>
+    <version>2.02.180</version>
+    <time>1563223355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714367</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>a8042bb41a8d4af0c2a19dcb0a530e6f</srcmd5>
+    <version>2.03.05</version>
+    <time>1569237340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update lvm2.spec: make baselibs.conf to a common source.
+- Avoid creation of mixed-blocksize PV on LVM volume groups (bsc#1149408)
+  + bug-1149408_Fix-rounding-writes-up-to-sector-size.patch
+  + bug-1149408_vgcreate-vgextend-restrict-PVs-with-mixed-block-size.patch
+- Update lvm.conf files
+  - add devices/allow_mixed_block_sizes item
+- Update to LVM2.2.03.05
+  - To drop lvm2-clvm and lvm2-cmirrord rpms (jsc#PM-1324)
+  - Fix Out of date package (bsc#1111734)
+  - Fix occasional slow shutdowns with kernel 5.0.0 and up (bsc#1137648)
+  - Remove clvmd
+  - Remove lvmlib (api)
+  - Remove lvmetad
+- Drop patches that have been merged into upstream
+  - bug-1114113_metadata-prevent-writing-beyond-metadata-area.patch
+  - bug-1137296_pvremove-vgextend-fix-using-device-aliases-with-lvmetad.patch
+  - bug-1135984_cache-support-no_discard_passdown.patch
+- Drop patches that have been nonexist/unsupport in upstream
+  - bsc1080299-detect-clvm-properly.patch
+  - bug-998893_make_pvscan_service_after_multipathd.patch
+  - bug-978055_clvmd-try-to-refresh-device-cache-on-the-first-failu.patch
+  - bug-950089_test-fix-lvm2-testsuite-build-error.patch
+  - bug-1072624_test-lvmetad_dump-always-timed-out-when-using-nc.patch
+  - tests-specify-python3-as-the-script-interpreter.patch
+- Update spec files
+  - merge device-mapper, lvm2-lockd, lvm2 into one spec file
+  - clvmd/lvmlib (api)/lvmetad had been removed, so delete related context in spec file
+- Update lvm.conf files
+  - remove all lvmetad lines/keywords
+  - add event_activation
+  - remove fallback_to_lvm1 &amp; related items
+  - remove locking_type/fallback_to_clustered_locking/fallback_to_local_locking items
+  - remove locking_library item
+  - remove all special filter rules
+</comment>
+    <requestid>730344</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>70c8c2b03f750f3ee1de273e2d6ff5ec</srcmd5>
+    <version>2.03.05</version>
+    <time>1570284899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734724</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>6431d265453bba376421ef4be95c7bd1</srcmd5>
+    <version>2.03.05</version>
+    <time>1571751806</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741460</requestid>
+  </revision>
+  <revision rev="129" vrev="4">
+    <srcmd5>9c3d1024134ce1270cf7ad433933cf62</srcmd5>
+    <version>2.03.05</version>
+    <time>1572277445</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>742107</requestid>
+  </revision>
+  <revision rev="130" vrev="5">
+    <srcmd5>b4dfb8f0675789c8e145664a2aff231e</srcmd5>
+    <version>2.03.05</version>
+    <time>1577136915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755510</requestid>
+  </revision>
+  <revision rev="131" vrev="6">
+    <srcmd5>ba54ccaac8981d79761bba7b0babc6ea</srcmd5>
+    <version>2.03.05</version>
+    <time>1577450626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>759147</requestid>
+  </revision>
+  <revision rev="132" vrev="7">
+    <srcmd5>3f004b435b6e78b142c54c7e07b83a92</srcmd5>
+    <version>2.03.05</version>
+    <time>1579346001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762036</requestid>
+  </revision>
+  <revision rev="133" vrev="8">
+    <srcmd5>8b21dcc2d05cd224e59325c08dc08002</srcmd5>
+    <version>2.03.05</version>
+    <time>1583311086</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>780796</requestid>
+  </revision>
+  <revision rev="134" vrev="9">
+    <srcmd5>0940af9a2b93251346214b0d678771d5</srcmd5>
+    <version>2.03.05</version>
+    <time>1584446800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784254</requestid>
+  </revision>
+  <revision rev="135" vrev="10">
+    <srcmd5>1e05db32e8c620bde7d129e35b212d0f</srcmd5>
+    <version>2.03.05</version>
+    <time>1589491352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>804894</requestid>
+  </revision>
+  <revision rev="136" vrev="11">
+    <srcmd5>27e470e646305181f0003eee63cef49e</srcmd5>
+    <version>2.03.05</version>
+    <time>1591208922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809718</requestid>
+  </revision>
+  <revision rev="137" vrev="12">
+    <srcmd5>bcf51305a98c161183b43e38969f747d</srcmd5>
+    <version>2.03.05</version>
+    <time>1592397935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814712</requestid>
+  </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>9d0370799a0a73a83a47b1d4c59b1c82</srcmd5>
+    <version>2.03.10</version>
+    <time>1598642012</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829062</requestid>
+  </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>eb06598e0b6906f2b1f4c4cb1d42b5a7</srcmd5>
+    <version>2.03.10</version>
+    <time>1599597819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831970</requestid>
+  </revision>
+  <revision rev="140" vrev="3">
+    <srcmd5>72c071ba024737b721b058eec51f7b78</srcmd5>
+    <version>2.03.10</version>
+    <time>1602762278</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841376</requestid>
+  </revision>
+</revisionlist>

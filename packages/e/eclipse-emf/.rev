@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e644cf5acbf5cfa24cd0411db38bff29</srcmd5>
+    <version>2.15.0~gitd1e5fdd</version>
+    <time>1574167428</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748151</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aaef8dfc7cb2c0284112111adc75994e</srcmd5>
+    <version>2.15.0~gitd1e5fdd</version>
+    <time>1584531128</time>
+    <user>dimstar_suse</user>
+    <comment>Fix launching of eclipse bsc#1166426 jsc#SLE-8786</comment>
+    <requestid>785882</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>08960b44686a2278d179a7bfc11dddc6</srcmd5>
+    <version>2.15.0~gitd1e5fdd</version>
+    <time>1586641553</time>
+    <user>dimstar_suse</user>
+    <comment>jgit-bootstrap will not exist</comment>
+    <requestid>792668</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cd367808148a0a8df83a79fca2fc098d</srcmd5>
+    <version>2.22.0</version>
+    <time>1594894306</time>
+    <user>dimstar_suse</user>
+    <comment>2.22.0</comment>
+    <requestid>818529</requestid>
+  </revision>
+</revisionlist>

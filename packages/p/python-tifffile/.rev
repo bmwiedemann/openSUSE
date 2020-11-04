@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abc3575615ec19263d57801c8b384d6d</srcmd5>
+    <version>2020.5.30</version>
+    <time>1597392273</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for python-cmapfile, python-czifile, python-lfdfiles, python-oiffile, python-roifile, and upcoming python-hyperspy.
+This should fix ERROR: download_files is configured to fail when the upstream file is different than the committed file.</comment>
+    <requestid>826544</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b01156abe7d26235eb08991594b468bb</srcmd5>
+    <version>2020.5.30</version>
+    <time>1598274543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828720</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6bb4ae709b693405c0e43c4c6abb2277</srcmd5>
+    <version>2020.5.30</version>
+    <time>1599210052</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable testsuite
+
+- Match up versioning to whats in setup.py</comment>
+    <requestid>830226</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d8de74679d206dbfde6a9e7ef143e64</srcmd5>
+    <version>2020.9.3</version>
+    <time>1603448307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835701</requestid>
+  </revision>
+</revisionlist>

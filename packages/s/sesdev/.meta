@@ -1,0 +1,11 @@
+<package name="sesdev" project="openSUSE:Factory">
+  <title>CLI tool to deploy and manage SES clusters</title>
+  <description>sesdev is a CLI tool for developers to help with deploying SES clusters.
+This tool uses vagrant and libvirt to create VMs and install Ceph using
+DeepSea. The tool is highly customizable and allows to choose different
+versions of Ceph and SES, as well as, different versions of the openSUSE
+based OS.
+  Some documentation is available at https://github.com/SUSE/sesdev
+  </description>
+  <devel project="filesystems:ceph" package="sesdev"/>
+</package>

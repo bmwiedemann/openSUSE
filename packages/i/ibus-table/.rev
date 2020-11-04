@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f03d73e629e053486e38a38c53558cea</srcmd5>
+    <version>1.2.0.20091113</version>
+    <time>1268992707</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-table based on submit request 34901 from user coolo
+</comment>
+    <requestid>34901</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4bf299da79f5d15227baea5c6d05ad3</srcmd5>
+    <version>1.2.0.20091113</version>
+    <time>1269620582</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/ibus-table based on submit request 35654 from user tiwai
+</comment>
+    <requestid>35654</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d4bf299da79f5d15227baea5c6d05ad3</srcmd5>
+    <version>1.2.0.20091113</version>
+    <time>1278667351</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d4bf299da79f5d15227baea5c6d05ad3</srcmd5>
+    <version>1.2.0.20091113</version>
+    <time>1278678582</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>d4bf299da79f5d15227baea5c6d05ad3</srcmd5>
+    <version>1.2.0.20091113</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2af3ffbf76ae5456a29e6bdedc08ec40</srcmd5>
+    <version>1.3.0.20100621</version>
+    <time>1309251968</time>
+    <user>saschpe</user>
+    <comment>- Update to 1.3.0;
+  major update for ibus-1.3.x infrastructure
+- additional had move to package ibus-table-others</comment>
+    <requestid>74729</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>be7d281b3b3866b03a0405d67d30efc7</srcmd5>
+    <version>1.3.0.20100621</version>
+    <time>1309251981</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74729
+</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>be7d281b3b3866b03a0405d67d30efc7</srcmd5>
+    <version>1.3.0.20100621</version>
+    <time>1319181979</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>590db8b67b6d0adfc041675a09e1754e</srcmd5>
+    <version>1.3.0.20100621</version>
+    <time>1323191924</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>590db8b67b6d0adfc041675a09e1754e</srcmd5>
+    <version>1.3.0.20100621</version>
+    <time>1340183448</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e0664da948080a8488ca3089f631b0d</srcmd5>
+    <version>1.3.9.20110827</version>
+    <time>1340620287</time>
+    <user>coolo</user>
+    <comment>- update to 1.3.9.20110827
+- better compatibility for ibus 1.4</comment>
+    <requestid>125664</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ae899db47db034e63623acd2696a25dd</srcmd5>
+    <version>1.3.9.20110827</version>
+    <time>1341433090</time>
+    <user>coolo</user>
+    <comment>- Add ibus as Requires (forwarded request 127119 from swyear)</comment>
+    <requestid>127130</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>ae899db47db034e63623acd2696a25dd</srcmd5>
+    <version>1.3.9.20110827</version>
+    <time>1359109063</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>076e1d029c8abb7a695d804333f5ffc8</srcmd5>
+    <version>1.4.99.20121112</version>
+    <time>1360772820</time>
+    <user>coolo</user>
+    <comment>- fix bnc#803488
+
+- Update to 1.4.99.20121112
+  * Updated PO files
+
+- Update to 1.4.99.20121012
+  * Updated PO files.
+  * Merge remote-tracking branch 'mozbugbox/page-up-down-config' into
+
+- update to 1.4.99.20121003, upstream did not provide more information.
+
+- update to 1.4.99.20120904
+  Package Maintainer: Please test before include this to your distro. (forwarded request 155328 from hillwood)</comment>
+    <requestid>155329</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>99dbbee4433154f74e6c385157b8f412</srcmd5>
+    <version>1.5.0</version>
+    <time>1373294849</time>
+    <user>coolo</user>
+    <comment>- Update to 1.5.0
+  * Updated PO files.
+  * Make page up/down keys configurable (forwarded request 182459 from hillwood)</comment>
+    <requestid>182460</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>99dbbee4433154f74e6c385157b8f412</srcmd5>
+    <version>1.5.0</version>
+    <time>1379662644</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>916bf7c5e83827d4bde7d882e7eebf09</srcmd5>
+    <version>1.5.0</version>
+    <time>1387174038</time>
+    <user>coolo</user>
+    <comment>- Add Requires: python-curses, ibus-engine-table need this module,
+  but it is not installed in some system, e.g Live KDE (forwarded request 210914 from swyear)</comment>
+    <requestid>210915</requestid>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>efa74f3861b526c18fb10b6fce3e20f3</srcmd5>
+    <version>1.5.0</version>
+    <time>1392789395</time>
+    <user>coolo</user>
+    <comment>- Fix missing capital on devel package group. (forwarded request 222353 from fcrozat)</comment>
+    <requestid>222411</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d06095bd4c9908a4025d2dec51f8e3f2</srcmd5>
+    <version>1.8.3</version>
+    <time>1404459296</time>
+    <user>coolo</user>
+    <comment>- Updateto 1.8.3, ibus-table &gt;= 1.8.x has many improvements over 1.5.x
+  * The database format is simplified which makes better matching
+    possible. But because of the changed database format, the
+    tables have to be rebuilt, i.e. packages like ibus-table-chinese
+    and ibus-table-others have to be rebuilt against  ibus-table &gt; 1.8.0.
+  * Wildcard support added, wildcards like ? for single characters or *
+    for many characters can be used. The wildcards can be configured
+    in the setup tool, for example one can also use 'z' as a single character
+    wildcard if desired.
+  * Setup tool improved, several new options added, works with Gnome3 now.
+  * Prompt characters are supported now, for example when using Cangjie,
+    日, 月, 金, ... are displayed while typing instead of a, b, c, ...
+  * Moving around in the preëdit works correctly now. One can commit
+    the current candidate to preëdit with the left shift key or with
+    the arrow keys, commit more characters to preëdit that way, then
+    move around in the preëdit and see the full key sequences of the
+    characters in the preëdit. This way one can check the
+    key sequences if one used wildcards or pinyin mode to enter the
+    characters.
+  * Fix many bugs</comment>
+    <requestid>239523</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c542a398985c3926f217b3a7be466382</srcmd5>
+    <version>1.8.5</version>
+    <time>1406645288</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242611</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c542a398985c3926f217b3a7be466382</srcmd5>
+    <version>1.8.5</version>
+    <time>1409301199</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ac68702d39d99645fb435328bc525c91</srcmd5>
+    <version>1.8.11</version>
+    <time>1411987229</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>252688</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c9d6db04826d6b92d2a9e78e8f36cc28</srcmd5>
+    <version>1.9.17</version>
+    <time>1513677403</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 557218 from hillwood)</comment>
+    <requestid>557219</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>50a870e796bb620fe853d6eaae30ef31</srcmd5>
+    <version>1.9.21</version>
+    <time>1539589489</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 641901 from hillwood)</comment>
+    <requestid>641902</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a416ea641c1ce7d64058b066718eaeee</srcmd5>
+    <version>1.9.21</version>
+    <time>1582207038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777492</requestid>
+  </revision>
+</revisionlist>

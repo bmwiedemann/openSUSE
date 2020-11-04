@@ -1,0 +1,5 @@
+<package name="python-httptools" project="openSUSE:Factory">
+  <title></title>
+  <description>Python framework independent HTTP protocol utils</description>
+  <devel project="devel:languages:python" package="python-httptools"/>
+</package>

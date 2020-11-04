@@ -1,0 +1,8 @@
+<package name="ldas-tools-al-swig" project="openSUSE:Factory">
+  <title>LDAS (LIGO Data Analysis System) tools abstraction toolkit language bindings</title>
+  <description>This provides different language bindings for the LDAS tools abstaction library.
+
+</description>
+  <devel project="science" package="ldas-tools-al-swig"/>
+  <url>https://wiki.ligo.org/Computing/LDASTools</url>
+</package>

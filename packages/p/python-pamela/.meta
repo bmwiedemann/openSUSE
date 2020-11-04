@@ -1,0 +1,5 @@
+<package name="python-pamela" project="openSUSE:Factory">
+  <title>python-pamela</title>
+  <description>PAM interface using ctypes</description>
+  <devel project="devel:languages:python" package="python-pamela"/>
+</package>

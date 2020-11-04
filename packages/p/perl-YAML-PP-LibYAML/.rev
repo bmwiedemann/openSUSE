@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f674852dcf6d6b8d650053c0d6e132c</srcmd5>
+    <version>0.003</version>
+    <time>1582206868</time>
+    <user>dimstar_suse</user>
+    <comment>We need this as a new dependency for openQA</comment>
+    <requestid>776364</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>650887f59a046017ee8b9b1b9af9add2</srcmd5>
+    <version>0.004</version>
+    <time>1599862276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833736</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7f5519c41e180f6b6c53cbdc95d98d3</srcmd5>
+    <version>0.005</version>
+    <time>1600180464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834622</requestid>
+  </revision>
+</revisionlist>

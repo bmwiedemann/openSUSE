@@ -1,0 +1,13 @@
+<package name="QTalarm" project="openSUSE:Factory">
+  <title>A handy alarm clock Program written in QT</title>
+  <description>A handy alarm clock Program written in QT.
+Features:
+ * Up to 15 Customization alarms
+ * Can wake up using the default sound, or any of audio / video
+   file of your choosing.
+ * Custom Date alarms
+
+</description>
+  <devel project="X11:LXQt:Other" package="QTalarm"/>
+  <url>https://www.random-hackery.net/qtalarm</url>
+</package>

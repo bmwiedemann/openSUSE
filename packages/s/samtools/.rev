@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9aba1c8ff91aa62b4792c7b2c29f6a8b</srcmd5>
+    <version>1.10</version>
+    <time>1582643047</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of python-biopython, which is already in openSUSE:Factory.</comment>
+    <requestid>778773</requestid>
+  </revision>
+</revisionlist>

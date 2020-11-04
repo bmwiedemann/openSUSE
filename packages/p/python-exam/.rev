@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec252297e645b827c7231280af6fb39a</srcmd5>
+    <version>0.10.6</version>
+    <time>1504981621</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python3-raven</comment>
+    <requestid>522419</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a6aa190f8437c8c70cad6a7629b6ca87</srcmd5>
+    <version>0.10.6</version>
+    <time>1544726638</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654042</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>54ca9ecf5ea0ed4e3bcab80f9e4322f8</srcmd5>
+    <version>0.10.6</version>
+    <time>1585265421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788525</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b69513519575054809a08337c2bb0d69</srcmd5>
+    <version>0.10.6</version>
+    <time>1598351820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826992</requestid>
+  </revision>
+</revisionlist>

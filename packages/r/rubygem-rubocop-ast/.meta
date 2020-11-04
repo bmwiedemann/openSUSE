@@ -1,0 +1,8 @@
+<package name="rubygem-rubocop-ast" project="openSUSE:Factory">
+  <title>RuboCop tools to deal with Ruby code AST</title>
+  <description>RuboCop's Node and NodePattern classes.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-rubocop-ast"/>
+  <url>https://github.com/rubocop-hq/rubocop-ast</url>
+</package>

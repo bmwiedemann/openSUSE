@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82b7981c909b8569746736b20545f1d9</srcmd5>
+    <version>0.4.8.2</version>
+    <time>1576014108</time>
+    <user>dimstar_suse</user>
+    <comment>Python histogram library</comment>
+    <requestid>755300</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79c9512365822f547d3c53a14b0eb8e1</srcmd5>
+    <version>0.4.8.3</version>
+    <time>1580511415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768851</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd8b592e7f8bf8c0859788a89df3b478</srcmd5>
+    <version>0.4.9</version>
+    <time>1581368197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773193</requestid>
+  </revision>
+</revisionlist>

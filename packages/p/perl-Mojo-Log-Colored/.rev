@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>58790bcd9284f74962ff3d625d167581</srcmd5>
+    <version>0.02</version>
+    <time>1589993244</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission as used for openQA, see
+https://progress.opensuse.org/issues/34978</comment>
+    <requestid>807547</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc20e30c767ca3ab1bea53292fd8147d</srcmd5>
+    <version>0.03</version>
+    <time>1590506402</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808421</requestid>
+  </revision>
+</revisionlist>

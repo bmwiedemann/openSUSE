@@ -1,0 +1,5 @@
+<package name="python-pytest-djangoapp" project="openSUSE:Factory">
+  <title></title>
+  <description>Pytest plugin for Django pluggable application testing</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-djangoapp"/>
+</package>

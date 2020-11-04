@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0674e66728bf1f299faaa60319be67a1</srcmd5>
+    <version>1.10.4</version>
+    <time>1576235088</time>
+    <user>dimstar_suse</user>
+    <comment>Replacing PHP7 specific packages by PHP version agnostic packages in preparation of PHP8</comment>
+    <requestid>756754</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>63597fdca0a903ffcfcbd2e7f8c6ad44</srcmd5>
+    <version>1.10.6</version>
+    <time>1580928185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770148</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>68c88217a7f3567e0b37fb56460a9d41</srcmd5>
+    <version>1.10.7</version>
+    <time>1584745219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786982</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f42c5e8b1083d4f393751ca1d4d68ba8</srcmd5>
+    <version>1.10.8</version>
+    <time>1592245877</time>
+    <user>dimstar_suse</user>
+    <comment>- new upstream release 1.10.8
+  * Fix encoding issues with ISO-2022-JP-MS input labelled with
+    ISO-2022-JP</comment>
+    <requestid>814598</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ee3d26b3ea90bc12af11b64947171d0</srcmd5>
+    <version>1.10.9</version>
+    <time>1593458195</time>
+    <user>dimstar_suse</user>
+    <comment>- new upstream release 1.10.9
+  * Added a workaround for an opcache bug on OpenSuse 15.1</comment>
+    <requestid>817554</requestid>
+  </revision>
+</revisionlist>

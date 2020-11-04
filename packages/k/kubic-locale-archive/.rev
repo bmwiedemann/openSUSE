@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2572481e896f815c07ea302e74a35429</srcmd5>
+    <version>MACRO</version>
+    <time>1515623932</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission for openSUSE Kubic</comment>
+    <requestid>563334</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ab3d62de82585d88581dea1286bd617</srcmd5>
+    <version>MACRO</version>
+    <time>1516634432</time>
+    <user>dimstar_suse</user>
+    <comment>- Add C.UTF-8 locale 
+  (https://github.com/openSUSE/docker-containers-build/issues/26)</comment>
+    <requestid>568057</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>23d71131f4e080979b8b1b627b7e0ff1</srcmd5>
+    <version>MACRO</version>
+    <time>1519977032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581917</requestid>
+  </revision>
+</revisionlist>

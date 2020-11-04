@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7919e663c5de35e4f3422a81e431649b</srcmd5>
+    <version>0.9.28~21</version>
+    <time>1454352945</time>
+    <user>dimstar_suse</user>
+    <comment>updated License field to show
+- AGPL-3 + BSD-2-Cl for source package
+- AGPL-3 for binary packages (combination of works)</comment>
+    <requestid>356124</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4c1a55e4f8f1218b0380ea230b420db7</srcmd5>
+    <version>0.9.28.9</version>
+    <time>1494088269</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>493113</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8e532d1223c306f3176a57557f1bcbd</srcmd5>
+    <version>0.9.28.14</version>
+    <time>1507570879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream snapshot 0.9.28.14</comment>
+    <requestid>530599</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>28a940cbd935733b26aebeeefa81a314</srcmd5>
+    <version>0.9.28.14</version>
+    <time>1530866798</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621088</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2eb41d6cee6438ce4346ae4aab1a9250</srcmd5>
+    <version>0.9.31</version>
+    <time>1546695706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.31</comment>
+    <requestid>657190</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6167a7e4f82790adc3112fe8e189a972</srcmd5>
+    <version>0.9.32</version>
+    <time>1566463803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.32</comment>
+    <requestid>723415</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6af38215f07d860cd07297194153ce3d</srcmd5>
+    <version>0.9.32</version>
+    <time>1600346536</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove old specfile constructs.
+- Move headers to distinct directory to enforce pkg-config
+  correctness on library users.</comment>
+    <requestid>832607</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7b5f08c7c6947c4cf2c4f58af002ce28</srcmd5>
+    <version>7.0.6</version>
+    <time>1584643711</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00116.html</comment>
+    <requestid>785589</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29d44f5490df4f6b6d54f91ab4ae6824</srcmd5>
+    <version>7.0.7</version>
+    <time>1586555611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v7.0.7 (no changelog) 
+</comment>
+    <requestid>792889</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f8e736f61298cbd6ad09436dae42101</srcmd5>
+    <version>7.0.8</version>
+    <time>1591653905</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.8 (no changelog) 
+</comment>
+    <requestid>812475</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>be6397b535afab8ea189fa3bcb46dfc3</srcmd5>
+    <version>7.0.9</version>
+    <time>1597063921</time>
+    <user>dimstar_suse</user>
+    <comment>- For some reasons (very likely a typo), seaf-cli had python33
+  instead of python3 set as interpreter. An additional 'sed' was
+  added to the spec file
+- Update to 7.0.9 (no changelog) 
+</comment>
+    <requestid>825253</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f8c1214f75bdff8459e92d68b46161ad</srcmd5>
+    <version>7.0.10</version>
+    <time>1602596540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.10 (no changelog) 
+</comment>
+    <requestid>841270</requestid>
+  </revision>
+</revisionlist>

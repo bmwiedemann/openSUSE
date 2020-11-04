@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f3226528f0798c470dedc68423a7512</srcmd5>
+    <version>1.2.1</version>
+    <time>1476997663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>424608</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a41314ba4829c94b4552dd9fffb7099d</srcmd5>
+    <version>1.2.1</version>
+    <time>1486046588</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453891</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6a69efe12f397d4cd2da5c7a775cfb4</srcmd5>
+    <version>1.2.2</version>
+    <time>1488479126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>457587</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f3978c2249c4cfddafaafb7b2c7072b6</srcmd5>
+    <version>1.3.0</version>
+    <time>1597658624</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Deferred serialization for smart pointers (#185)
+  * Initial support for C++17 standard library variant and optional (thanks to @arximboldi, #448)
+  * Support for std::atomic (thanks to @bluescarni, #277)
+  * Vastly improved continuous integration testing (#568, #569)
+  * Fixed several issues related to compilation on newer compilers (#579, #587, #515)
+  * Fixed warnings with -Wconversion and -Wdocumentation (thanks to @WSoptics, #423)
+  * Performance improvements for polymorphic serialization (#354)
+  * Fixed a bug related to CEREAL_REGISTER_DYNAMIC_INIT with shared libraries (thanks to @M2tM, #523)
+  * Avoid unnecessary undefined behavior with StaticObject (thanks to @erichkeane, #470)
+  * New version.hpp file describes cereal version (#444)
+  * Ability to disable size=dynamic attribute in the XML archive (thanks to @hoensr, #401) 
+  remove 8b8f5814e292e03bb5b07333a0e634ef0481c85b.patch: upstream</comment>
+    <requestid>826889</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5bc845e60855156f8d186694b8d02151</srcmd5>
+    <version>0.90</version>
+    <time>1583526524</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>782085</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>324315222443e904f9cbd58cf381af10</srcmd5>
+    <version>0.90</version>
+    <time>1588023351</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on big endian architectures</comment>
+    <requestid>798130</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ec3f84f5bc118c6b9ab5e99ef0b30470</srcmd5>
+    <version>0.9.3_r1246</version>
+    <time>1295307755</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58425 from user a_jaeger
+</comment>
+    <requestid>58425</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>070b2c29cb929616629ce75725bc4c4b</srcmd5>
+    <version>0.9.3_r1246</version>
+    <time>1295307761</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58425
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>070b2c29cb929616629ce75725bc4c4b</srcmd5>
+    <version>0.9.3_r1246</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9de0fe28cb76e005463348c65377dd4</srcmd5>
+    <version>0.9.4_r1394</version>
+    <time>1318428713</time>
+    <user>lrupp</user>
+    <comment>- Update flashrom from 0.9.4-beta to 0.9.4
+  * Fixes for crashes and corruption in corner cases
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+- update to 0.9.3 r1322.
+
+- update to 0.9.3 r1283.</comment>
+    <requestid>87405</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c02554b6bd67938cabf59c237fda68b6</srcmd5>
+    <version>0.9.4_r1450</version>
+    <time>1318761841</time>
+    <user>lrupp</user>
+    <comment>- update to 0.9.4 r1450.
+  * support more devices
+- Fix update-snapshots script when running svn with locales other
+  than english. (forwarded request 87775 from elvigia)</comment>
+    <requestid>87861</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c02554b6bd67938cabf59c237fda68b6</srcmd5>
+    <version>0.9.4_r1450</version>
+    <time>1319181879</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55020943bebd6ec1010e71f27ccdeecd</srcmd5>
+    <version>0.9.4_r1457</version>
+    <time>1319868012</time>
+    <user>coolo</user>
+    <comment>- update to 0.9.4 r1457.
+  * Mark several new boards as supported/unsupported (forwarded request 89724 from elvigia)</comment>
+    <requestid>89726</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e4309db2840023d120b0ce03fe423fb2</srcmd5>
+    <version>0.9.4_r1457</version>
+    <time>1323191378</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>e4309db2840023d120b0ce03fe423fb2</srcmd5>
+    <version>0.9.4_r1457</version>
+    <time>1340183331</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>540fcb62ead2971c8c509a5369a14990</srcmd5>
+    <version>0.9.6.1_r1564</version>
+    <time>1349629070</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137379</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>540fcb62ead2971c8c509a5369a14990</srcmd5>
+    <version>0.9.6.1_r1564</version>
+    <time>1359108881</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2b4607cfb565d593e01667342f40bbbc</srcmd5>
+    <version>0.9.6.1_r1564</version>
+    <time>1363769561</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+No indication of aggregation (forwarded request 159153 from babelworx)</comment>
+    <requestid>159814</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69b1ab68d936f3c0b133f6f3b32ecd7d</srcmd5>
+    <version>0.9.7</version>
+    <time>1376593095</time>
+    <user>scarabeus_factory</user>
+    <comment>update (forwarded request 188220 from posophe)</comment>
+    <requestid>188222</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>69b1ab68d936f3c0b133f6f3b32ecd7d</srcmd5>
+    <version>0.9.7</version>
+    <time>1379662347</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>69b1ab68d936f3c0b133f6f3b32ecd7d</srcmd5>
+    <version>0.9.7</version>
+    <time>1409300883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>a8cd034745c20bd79b256c21e1572e75</srcmd5>
+    <version>0.9.7</version>
+    <time>1415016711</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259174</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f09b62de5cb846fffa9a4a9c02f0805f</srcmd5>
+    <version>0.9.8</version>
+    <time>1428391760</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294302</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>96d011ab3a15d9649630912a48b3e936</srcmd5>
+    <version>0.9.9</version>
+    <time>1469628783</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415220</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>72e22c7d63845326516624794bc58ef2</srcmd5>
+    <version>0.9.9</version>
+    <time>1494938302</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>493055</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a97742dd89441dbc7663a21640036216</srcmd5>
+    <version>1.0</version>
+    <time>1515506199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562855</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eab361675a1931725228cfff05498227</srcmd5>
+    <version>1.0.1</version>
+    <time>1554458779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691709</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f8ac3b4b234651215d26da2df12249d2</srcmd5>
+    <version>1.1</version>
+    <time>1562843307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712510</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8eb0d1cd13711e1d0ef0efa97eb74f31</srcmd5>
+    <version>1.2</version>
+    <time>1582299743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777877</requestid>
+  </revision>
+</revisionlist>

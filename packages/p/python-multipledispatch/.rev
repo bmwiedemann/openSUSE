@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a2785f4f7255337185451e08237e98b4</srcmd5>
+    <version>0.5.0</version>
+    <time>1526371618</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-DataShape, which is needed by python-datashader</comment>
+    <requestid>603727</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b3144a7e6f1c0f52576b0eeb5ad6f4d</srcmd5>
+    <version>0.5.0</version>
+    <time>1528897081</time>
+    <user>maxlin_factory</user>
+    <comment>- Ensure neutrality of description. (forwarded request 615074 from jengelh)</comment>
+    <requestid>615175</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>20fcff8a4c23563343e277a4a016c066</srcmd5>
+    <version>0.5.0</version>
+    <time>1545647998</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659503</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9dbd2e758d4b9a41476ff2a85459e631</srcmd5>
+    <version>0.6.0</version>
+    <time>1557141921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>694224</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="python-pykickstart" project="openSUSE:Factory">
+  <title>Python module for parsing and writing kickstart files</title>
+  <description>Pykickstart is a Python library consisting of a data representation of kickstart files, a parser to read files into that representation, and a writer to generate kickstart files.</description>
+  <devel project="devel:languages:python" package="python-pykickstart"/>
+  <url>https://fedoraproject.org/wiki/Pykickstart</url>
+</package>

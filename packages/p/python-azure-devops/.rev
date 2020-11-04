@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>213838c07cc655f39a45cc23446e17eb</srcmd5>
+    <version>6.0.0b2</version>
+    <time>1580205429</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.0.0b2
+  + No upstream changelog provided</comment>
+    <requestid>767873</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3825f6adf8a4131b7c316b6b3519fee</srcmd5>
+    <version>6.0.0b4</version>
+    <time>1601651889</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.0.0b4
+  + No upstream changelog provided
+- Update Requires from setup.py (forwarded request 830746 from glaubitz)</comment>
+    <requestid>830863</requestid>
+  </revision>
+</revisionlist>

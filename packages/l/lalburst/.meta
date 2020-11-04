@@ -1,0 +1,8 @@
+<package name="lalburst" project="openSUSE:Factory">
+  <title>LSC Algorithm Burst Library</title>
+  <description>The LSC Algorithm Burst Library for gravitational wave data analysis.
+
+</description>
+  <devel project="science" package="lalburst"/>
+  <url>https://wiki.ligo.org/Computing/DASWG/LALSuite</url>
+</package>

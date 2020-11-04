@@ -1,0 +1,202 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3fdc88a963e941802f00c1936ee45706</srcmd5>
+    <version>1.0.4</version>
+    <time>1168903443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="44">
+    <srcmd5>ded39693ed53c0b68e8fe823c18e5467</srcmd5>
+    <version>1.0.4</version>
+    <time>1177542954</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>967765ccd3d6890c34f496573ac11bb6</srcmd5>
+    <version>1.0.7</version>
+    <time>1184788523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>895e4329e37273052d3052a5af17d9e3</srcmd5>
+    <version>1.0.8</version>
+    <time>1203988424</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>114a2e6af6fb6e367638183a8ce9cff5</srcmd5>
+    <version>1.0.9</version>
+    <time>1220275540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a5f8e89f2761009aa63d12b8a542e48b</srcmd5>
+    <version>1.0.10</version>
+    <time>1239106162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>a5f8e89f2761009aa63d12b8a542e48b</srcmd5>
+    <version>1.0.10</version>
+    <time>1239106162</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>364a6b0f5ac748aa6d007c609f105e28</srcmd5>
+    <version>1.0.10</version>
+    <time>1263305684</time>
+    <user>autobuild</user>
+    <comment>Copy from network:utilities/lksctp-tools based on submit request 29028 from user coolo
+</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>51ec275063f2aa12f4e8f3a75985acd4</srcmd5>
+    <version>1.0.10</version>
+    <time>1268924841</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>51ec275063f2aa12f4e8f3a75985acd4</srcmd5>
+    <version>1.0.10</version>
+    <time>1278667365</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>51ec275063f2aa12f4e8f3a75985acd4</srcmd5>
+    <version>1.0.10</version>
+    <time>1278678594</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>51ec275063f2aa12f4e8f3a75985acd4</srcmd5>
+    <version>1.0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>51ec275063f2aa12f4e8f3a75985acd4</srcmd5>
+    <version>1.0.10</version>
+    <time>1319182156</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>8685832cdc82912eed0586e116c873dd</srcmd5>
+    <version>1.0.10</version>
+    <time>1322215940</time>
+    <user>coolo</user>
+    <comment>add libtool to buildrequires (forwarded request 93405 from coolo)</comment>
+    <requestid>93414</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>81627c79ecd37ab94e914dcffbd68d28</srcmd5>
+    <version>1.0.10</version>
+    <time>1323192410</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>ce36773008a5964e0fea72db33a2809c</srcmd5>
+    <version>1.0.10</version>
+    <time>1329750914</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 105919 from prusnak)</comment>
+    <requestid>106023</requestid>
+  </revision>
+  <revision rev="17" vrev="18">
+    <srcmd5>ce36773008a5964e0fea72db33a2809c</srcmd5>
+    <version>1.0.10</version>
+    <time>1340183669</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1dadfecbf2ea4b6b472315fbec7baa47</srcmd5>
+    <version>1.0.11</version>
+    <time>1340621364</time>
+    <user>coolo</user>
+    <comment>- upgraded to 1.0.11
+  T:BUILD fix parallel build warning
+  T:BUILD fix make distcheck for lksctp-tools
+  T:BUILD fix compiler warnings in the libraray, apps and tests
+  T:API   Update the sctp.h header to match the kernel.</comment>
+    <requestid>125492</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9bddc664c6da86370174bf91f6512bed</srcmd5>
+    <version>1.0.12</version>
+    <time>1358875117</time>
+    <user>coolo</user>
+    <comment>- upgraded to 1.0.12
+  T:API Add needed definitions for DTLS/SCTP.
+  T:API Fix data corruption in sctp_send
+  T:API Implement private SCTP_GET_ASSOC_STATS option to fetch addition
+        association data.
+  T:TEST Add more options to conformace test tool.
+  T:APP Add HEARTBEAT command to sctp_darn
+  T:API Obsolete interefaces have been removed
+  T:API Suport for SCTP_SACK_IMMEDIATELY options
+  T:API Support for non-blocking sctp-connectx</comment>
+    <requestid>149415</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>9bddc664c6da86370174bf91f6512bed</srcmd5>
+    <version>1.0.12</version>
+    <time>1359109403</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f9e3372e3aeac29ca2c7a4752bcd8766</srcmd5>
+    <version>1.0.13</version>
+    <time>1359439157</time>
+    <user>coolo</user>
+    <comment>- upgraded to 1.0.13 (bugfixes)
+  T:BUILD Use silent rules
+  T:BUILD Fix build warnings all over the place
+  T:APP Fix memory leak in sctp_xconnect
+  T:TEST Fix deprecated values in test cases
+- lskctp-fixes.patch: implicit warning fix (forwarded request 150002 from msmeissn)</comment>
+    <requestid>150145</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cd999dd30a5d43788d1ac7af971524c1</srcmd5>
+    <version>1.0.15</version>
+    <time>1375641616</time>
+    <user>coolo</user>
+    <comment>upgrade to 1.0.15 (forwarded request 185540 from AndreasStieger)</comment>
+    <requestid>185542</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>cd999dd30a5d43788d1ac7af971524c1</srcmd5>
+    <version>1.0.15</version>
+    <time>1379663171</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>cd999dd30a5d43788d1ac7af971524c1</srcmd5>
+    <version>1.0.15</version>
+    <time>1409301807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>75c0cf2a8b900c111b870fc3dab3c6ab</srcmd5>
+    <version>1.0.16</version>
+    <time>1421873742</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>281045</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3fc8eda0f4c5cd1ef378028d33f9cb7a</srcmd5>
+    <version>1.0.16</version>
+    <time>1556817247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699388</requestid>
+  </revision>
+</revisionlist>

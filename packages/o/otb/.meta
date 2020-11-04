@@ -1,0 +1,6 @@
+<package name="otb" project="openSUSE:Factory">
+  <title>OTB</title>
+  <description>Orfeo Toolbox (OTB) is distributed as an open source library of image processing algorithms. OTB is based on the medical image processing library ITK and offers particular functionalities for remote sensing image processing in general and for high spatial resolution images in particular. OTB is distributed under a free software license CeCILL (similar to GPL) to encourage contribution from users and to promote reproducible research. The library is intensively tested on several platforms as Linux, Unix and Windows. Most functionalities are also adapted to process huge images using streaming and multi-threading as often as possible.</description>
+  <devel project="Application:Geo" package="otb"/>
+  <url>http://www.orfeo-toolbox.org</url>
+</package>

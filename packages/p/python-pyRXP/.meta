@@ -1,0 +1,9 @@
+<package name="python-pyRXP" project="openSUSE:Factory">
+  <title>Python RXP interface - fast validating XML parser</title>
+  <description>PyRXP is a Python language wrapper around the excellent RXP parser, a
+validating, namespace-aware XML parser written in C.
+
+</description>
+  <devel project="devel:languages:python" package="python-pyRXP"/>
+  <url>http://www.reportlab.com</url>
+</package>

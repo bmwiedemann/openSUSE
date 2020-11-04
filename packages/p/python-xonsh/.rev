@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76c5cb97732e5215ce1390973d73c2e5</srcmd5>
+    <version>0.9.14</version>
+    <time>1584446868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784606</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>123108ce70b8c61f1be2b1203847b67f</srcmd5>
+    <version>0.9.15</version>
+    <time>1585085846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787855</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3d77946f84a571ecc599c493d43a44e</srcmd5>
+    <version>0.9.17</version>
+    <time>1587162499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1&amp;:
+  * various minor fixes all around</comment>
+    <requestid>794474</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7886466e109b4c1cd60e3b0d7163bd82</srcmd5>
+    <version>0.9.17</version>
+    <time>1590649600</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>805900</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>5f033bd0866aa7d5bd0692196a38f47c</srcmd5>
+    <version>0.9.17</version>
+    <time>1593200680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816790</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa6d094b68440b0022e85dee2e9fd293</srcmd5>
+    <version>0.9.18</version>
+    <time>1596277756</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822101</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dc9b78ac827c67228ea821f6a0c9bbd4</srcmd5>
+    <version>0.9.20</version>
+    <time>1599210134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.20:
+  * Many bugfixes around
+- Add patch to fix tests:
+  * vox-tests.patch</comment>
+    <requestid>830708</requestid>
+  </revision>
+</revisionlist>

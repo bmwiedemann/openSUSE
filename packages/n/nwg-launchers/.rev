@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7e3c9e9c1c8b39810de036680c5c08e3</srcmd5>
+    <version>0.3.2</version>
+    <time>1598885589</time>
+    <user>dimstar_suse</user>
+    <comment>new-launchers</comment>
+    <requestid>830700</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5f787008492fb6bf09e6928d492d105</srcmd5>
+    <version>0.3.3</version>
+    <time>1600079588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.3:
+  * [nwggrid] support for applications installed with flatpak
+  * fixes to improper displays geometry detection on X11
+  * [nwggrid] new pin/unpin implementation
+  * code optimization</comment>
+    <requestid>834219</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f7d52843f318bbfbf7bd199e70d59c1</srcmd5>
+    <version>0.3.4</version>
+    <time>1600347089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4:
+  * fixed Clang build broken in v0.3.3 #109
+  * [nwggrid] added /usr/share/pixmaps/ path to look for icons #111
+  * fixed crash on $LANG unset (regression in v0.3.3) #114</comment>
+    <requestid>835109</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b15bbe96199ca027a49e506f96caef26</srcmd5>
+    <version>0.4.0</version>
+    <time>1600879507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Respect NoDisplay=true setting in saner way
+  * Separate widgets from data
+  Breaking changes:
+  * Use desktop-id instead of exec to distinguish entries from each other.
+  This breaks existing pins/favs cache. Old caches will be overwritten after 
+  the first launch.</comment>
+    <requestid>836228</requestid>
+  </revision>
+</revisionlist>

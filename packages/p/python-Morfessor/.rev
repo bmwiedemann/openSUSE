@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a33021d22c5a1cf7897bd3411bae219a</srcmd5>
+    <version>2.0.4</version>
+    <time>1545223781</time>
+    <user>dimstar_suse</user>
+    <comment>Unsupervised and semi-supervised morphological segmentation</comment>
+    <requestid>652708</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d050f3263ac6216a3fb98ce109c4c949</srcmd5>
+    <version>2.0.6</version>
+    <time>1566243492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724151</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7bd64be188f0afd1b68e2071db78d5d3</srcmd5>
+    <version>2.0.6</version>
+    <time>1590506630</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808673</requestid>
+  </revision>
+</revisionlist>

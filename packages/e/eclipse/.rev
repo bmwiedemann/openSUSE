@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b29f7fc951a67cd02f592b52fbd592f</srcmd5>
+    <version>4.9.0</version>
+    <time>1574167453</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748955</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f7f835ffe514d8abec452f7a8ce71e3</srcmd5>
+    <version>4.9.0</version>
+    <time>1574783669</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build for ppc64 architecture</comment>
+    <requestid>750484</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b386fab7eb281c8cc16728a30d85e138</srcmd5>
+    <version>4.9.0</version>
+    <time>1574945436</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with objectweb-asm &gt;=  7</comment>
+    <requestid>751516</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d520bf0ef1f64d21dda89818d1301b46</srcmd5>
+    <version>4.9.0</version>
+    <time>1575282905</time>
+    <user>dimstar_suse</user>
+    <comment>increase memory constraint</comment>
+    <requestid>752788</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>43b1d4fead6bee80ea72d1a19c7fb3e7</srcmd5>
+    <version>4.9.0</version>
+    <time>1576506054</time>
+    <user>dimstar_suse</user>
+    <comment>Clean up the spec file</comment>
+    <requestid>757286</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e00eb6ce43a45ac3e6fd4752b2f55b8b</srcmd5>
+    <version>4.9.0</version>
+    <time>1584531041</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against the right bootstrap/non-bootstrap packages (bsc#1166426 jsc#SLE-8786)</comment>
+    <requestid>785650</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>6cb4082458a8c6a2f67a919eef619f5e</srcmd5>
+    <version>4.9.0</version>
+    <time>1585342634</time>
+    <user>dimstar_suse</user>
+    <comment>Miscellaneous fixes for 32-bit platforms</comment>
+    <requestid>789015</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c16fe2e93b1aa054a5ea491639db4f7f</srcmd5>
+    <version>4.9.0</version>
+    <time>1586248087</time>
+    <user>dimstar_suse</user>
+    <comment>symlink the right felix-scr dependencies</comment>
+    <requestid>791542</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>8caaf81f8efd9f4d9f5dc4e9fea78738</srcmd5>
+    <version>4.9.0</version>
+    <time>1586368521</time>
+    <user>dimstar_suse</user>
+    <comment>Conditional patch to allow building against lucene 8</comment>
+    <requestid>791946</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>a3929cadd33c6b92f9ecfb012214dafc</srcmd5>
+    <version>4.9.0</version>
+    <time>1586641557</time>
+    <user>dimstar_suse</user>
+    <comment>jgit-bootstrap will not exist</comment>
+    <requestid>792669</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>6b5ca6fe62b9c20b6d9efb5e7291ec0a</srcmd5>
+    <version>4.9.0</version>
+    <time>1591286154</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with new gcc</comment>
+    <requestid>811347</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d3fc6c2e50943e379f0fe9acb2f0cebb</srcmd5>
+    <version>4.15</version>
+    <time>1594894398</time>
+    <user>dimstar_suse</user>
+    <comment>4.15</comment>
+    <requestid>818887</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>32906179c9745e77144513062fe7e166</srcmd5>
+    <version>4.15</version>
+    <time>1595011798</time>
+    <user>dimstar_suse</user>
+    <comment>Fix use of native keystore on platforms where it is supported</comment>
+    <requestid>821377</requestid>
+  </revision>
+</revisionlist>

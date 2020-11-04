@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e0ce398fb2fdb70e7e70b48481670996</srcmd5>
+    <version>0.22</version>
+    <time>1576014314</time>
+    <user>dimstar_suse</user>
+    <comment>needed by perl-Plack which is already in Factory</comment>
+    <requestid>755575</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7e2649c2c57e8fe93058ea5db0436d2c</srcmd5>
+    <version>0.23</version>
+    <time>1594818292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820831</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e4a115a37263d001835de0d7592ac22</srcmd5>
+    <version>0.24</version>
+    <time>1597064311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824978</requestid>
+  </revision>
+</revisionlist>

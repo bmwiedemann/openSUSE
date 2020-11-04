@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>569cef62b9217bea3b62cec853f40071</srcmd5>
+    <version>1.2.0</version>
+    <time>1540451302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * Fixes Guake hotkey don't working on X11 with another terminus 
+    open
+  * Added missing parameter in the help
+- Initial package
+</comment>
+    <requestid>643573</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>832f736aa730359cbf63e3d44c3222b5</srcmd5>
+    <version>1.3.0</version>
+    <time>1549916617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>672743</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2899d71d5a4260e8883eef4125218dc</srcmd5>
+    <version>1.4.1</version>
+    <time>1553809819</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689409</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5cf2c7681b596dc84611ddcfc7b3868d</srcmd5>
+    <version>1.5.0</version>
+    <time>1557472755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701595</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>798bcb9bfd60411735fe578dd5e2dce2</srcmd5>
+    <version>1.7.0</version>
+    <time>1571049702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737928</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e70abec5ea0b7aca6b62034d86dafbdf</srcmd5>
+    <version>1.7.1</version>
+    <time>1571210328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>738694</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>86a74b4e52f8ff68daebdbfe0149a662</srcmd5>
+    <version>1.8.0</version>
+    <time>1579101385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764491</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2809bff9f825a5ae6d8abc43402805ac</srcmd5>
+    <version>1.10.0</version>
+    <time>1587581963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794628</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0211b9044b8fa3297645bebbcf7ba075</srcmd5>
+    <version>1.12.0</version>
+    <time>1589491555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805377</requestid>
+  </revision>
+</revisionlist>

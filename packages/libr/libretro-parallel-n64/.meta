@@ -1,0 +1,5 @@
+<package name="libretro-parallel-n64" project="openSUSE:Factory">
+  <title>Parallel N64 libretro core for Nintendo 64 emulation</title>
+  <description></description>
+  <devel project="Emulators" package="libretro-parallel-n64"/>
+</package>

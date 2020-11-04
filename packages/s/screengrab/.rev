@@ -1,0 +1,133 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b23fbc6706674bd29981f2686922ec4</srcmd5>
+    <version>1.98</version>
+    <time>1527605370</time>
+    <user>dimstar_suse</user>
+    <comment>- Require Qt &gt;= 5.7.1
+- Rename build.patch to screengrab-1.98-build.patch
+- Add new default config file screengrab.conf
+- cleanup cmake build
+- build.patch: add missing requirements
+- Update to 1.98:
+  * Update translations
+  * A more specific condition for Ctrl+C
+  * Filter out Ctrl+C in Delay box
+  * No window screenshot with shaded windows
+  * Always use contents rect Fixes https://github.com/lxqt/screengrab/issues/67
+  * Never scale up beyond real size
+  * Several fixes, especially for the tray icon
+  * __DATE__ and __TIME__ macro are not very helpful for reproducible builds.
+  * Added a minimum default configuration
+  * Handle invalid window screenshots
+  * Corrected a grammar mistake
+  * Always use native (LXQt) file dialog
+  * Just changed the location of a comment
+  * Cleanup and fixes
+  * Some ui polishing
+  * Improve screengrab app behaviour
+  * Drops Qt foreach
+  * fix some uris
+  * Update references in about dialog
+- Cleanup with spec-cleaner
+- Adjust URL and tarball link
+- Rename screengrab-keyring.gpg to screengrab.keyring
+- Dont require gpg-offline, let OBS do checking
+- Remove icon cache update statements
+- run spec-cleaner
+- build with Qt5
+</comment>
+    <requestid>611226</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6d74d1edfbe92e1b3a106baca596a01a</srcmd5>
+    <version>1.99</version>
+    <time>1532361793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.99:
+  * Update translations
+  * Add X11Extras and Network to link target
+- Remove screengrab-1.98-build.patch: upstreamed</comment>
+    <requestid>624729</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>309e0b247104e0b3ea5295948259779b</srcmd5>
+    <version>1.100</version>
+    <time>1551113412</time>
+    <user>coolo</user>
+    <comment>- Update to 1.100:
+  * Don’t crash with invalid config format
+</comment>
+    <requestid>670404</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>37ed797e1935f60e91559ca8864e622c</srcmd5>
+    <version>1.101</version>
+    <time>1551455388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.101:
+  * Only translations was changed</comment>
+    <requestid>680447</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b2f062c3bb71a86472204fedd98b91ac</srcmd5>
+    <version>2.0.0</version>
+    <time>1579791291</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Improved translations
+  * Improved user experience (less noise with command line, better
+    screen area instructions and better off-screen screenshots).
+  * Code update and clean-up, including the removal of the
+    deprecated class QDesktopWidget.
+  * Bumped screengrab version to 2.0.0
+  * Updated translations
+  * Removed Qxt
+  * Fixed typo in function name
+  * Set min. Qt version to 5.10.0
+  * Removed upload module (#183)
+  * Removed QDesktopWidget
+  * Removed (duplicated) string casts definitions
+  * Deleted useless warning fixes #174
+  * Make CMakeLists.txt a bit more strict
+  * Updated QtXdg minimum required version
+  * Use the new QtXdg XdgMimeApps class
+  * Improved Screen Area instructions (#162)
+  * Don't use automatic string conversions
+  * Avoid char raw strings literals memory allocations</comment>
+    <requestid>766495</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5b5183509d818d69075d3732b8fb53ac</srcmd5>
+    <version>2.0.0</version>
+    <time>1585085785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787761</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>02c2036f2cb99820fd1a2e249233f073</srcmd5>
+    <version>2.0.1</version>
+    <time>1588023735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798292</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a66ee0d10b769198af7ba01a924dd3e2</srcmd5>
+    <version>2.0.1</version>
+    <time>1588610035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>798530</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1a8eedc08fbd07a870ed0a92092c7105</srcmd5>
+    <version>2.1.0</version>
+    <time>1604510932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Fixed screen area and window modes with scale factors &gt; 1.</comment>
+    <requestid>846022</requestid>
+  </revision>
+</revisionlist>

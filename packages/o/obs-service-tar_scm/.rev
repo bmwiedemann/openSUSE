@@ -1,0 +1,1281 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ee9eb96574603f5aa469e48121cfd11</srcmd5>
+    <version>0.2.1</version>
+    <time>1313160401</time>
+    <user>saschpe</user>
+    <comment>fix exclude expansion</comment>
+    <requestid>78644</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0ee9eb96574603f5aa469e48121cfd11</srcmd5>
+    <version>0.2.1</version>
+    <time>1319182209</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>658ce4ca0ad971c6118d52e00e3cd359</srcmd5>
+    <version>0.2.1</version>
+    <time>1325658334</time>
+    <user>coolo</user>
+    <comment>- make svn checkout --trust-server-cert option conditional, since
+  this option is not supported by versions prior to subversion 1.6.
+
+- Trim user prefix from tarball filename.
+  This enables tar_scm service to be used with git and ssh transport
+  (in conjuction with a passphrase less ssh-pubkey). Example Git URL:
+  git@gitrepo.tld:foobar.git
+
+- git 1.6.x and very likely other version only support
+  &quot;show --pretty=format:%at&quot; as parameter with &quot;format:&quot; prefix.
+  git show --pretty=%at is also support by recent git versions. (forwarded request 98423 from dgollub)</comment>
+    <requestid>98583</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29e636dc7ee7ddaa6b385debcadc7c1f</srcmd5>
+    <version>0.2.3</version>
+    <time>1329477518</time>
+    <user>coolo</user>
+    <comment>new ...</comment>
+    <requestid>105543</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8b0ddcd924a9aa3a32442ea031f03a88</srcmd5>
+    <version>0.2.3</version>
+    <time>1330618898</time>
+    <user>coolo</user>
+    <comment>- Remove accidental reference to keep-source parameter
+  which was never pushed upstream (obsoleted by new cache). (forwarded request 107598 from aspiers)</comment>
+    <requestid>107636</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>924e6647109ffbb7d0a34437da48b98e</srcmd5>
+    <version>0.2.3</version>
+    <time>1332239442</time>
+    <user>coolo</user>
+    <comment>- Check that git pull succeeds (forwarded request 109952 from aspiers)</comment>
+    <requestid>109958</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>22dbec8c045a697399e4a7f26168bfe2</srcmd5>
+    <version>0.2.3</version>
+    <time>1337955418</time>
+    <user>coolo</user>
+    <comment>Allow git revision to refer to revs not available from default clone/fetch
+
+Previously, the &quot;revision&quot; parameter must be something reachable after
+doing a default &quot;git clone&quot;.  Remove this limitation.
+
+A primary use-case is to integrate OBS with the gerrit code review tool,
+which stores changes under review in &quot;refs/changes/...&quot;.  Without this
+change, such refs can't be retrieved by the tar_scm service. (forwarded request 122007 from rohanpm)</comment>
+    <requestid>122015</requestid>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>507b3d618ab1365280632202c8144f55</srcmd5>
+    <version>0.2.3</version>
+    <time>1339076340</time>
+    <user>coolo</user>
+    <comment>- Re-iterating the last change once again, 'git rev-parse --verify $REV'
+  will return false even if $REV is a normal branch upon first clone
+  of the repo. Thus 'git fetch $URL +$REV:$REV&quot; is run initially. 
+  However, the 'git checkout $REV' then fails because it's missing 
+  tracking information. Therefore, try a normal checkout first and fetch
+  the specific $REV only when that fails (due to reasons described below). (forwarded request 123669 from saschpe)</comment>
+    <requestid>123792</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>507b3d618ab1365280632202c8144f55</srcmd5>
+    <version>0.2.3</version>
+    <time>1340183744</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>663c096f8c0695af0960d98d6ed7b435</srcmd5>
+    <version>0.2.3</version>
+    <time>1343633472</time>
+    <user>coolo</user>
+    <comment>- Prevent local users from appearing as user/group owner in
+  generated tar files (thanks bmwiedemann for this) (forwarded request 129093 from aspiers)</comment>
+    <requestid>129094</requestid>
+  </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>23b263d9258548335f58e8dbf1f0aa15</srcmd5>
+    <version>0.2.3</version>
+    <time>1348669505</time>
+    <user>coolo</user>
+    <comment>add support of &quot;20120916&quot; as versions in git (forwarded request 135648 from jirislaby)</comment>
+    <requestid>136032</requestid>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>f6444234f04030068832aeb29c0f57ce</srcmd5>
+    <version>0.2.3</version>
+    <time>1349373698</time>
+    <user>coolo</user>
+    <comment>- change default versionformat from author date (%at) to commiter date (%ct)
+  for git, to fix issues with cherry-picked commits resulting in decreased
+  version (forwarded request 136480 from cthiel1)</comment>
+    <requestid>136957</requestid>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>7efc3cee81ddf1788d284ad17dbac66f</srcmd5>
+    <version>0.2.3</version>
+    <time>1351865543</time>
+    <user>coolo</user>
+    <comment>- Fix usage text for submodules option (forwarded request 139926 from aspiers)</comment>
+    <requestid>139964</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>4d5c9811b75b19c2cf95ca4bc772b6d1</srcmd5>
+    <version>0.2.3</version>
+    <time>1354887805</time>
+    <user>namtrac</user>
+    <comment>- Pass --tags to &quot;git describe&quot; for @PARENT_TAG@ (forwarded request 144033 from saschpe)</comment>
+    <requestid>144078</requestid>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>4d5c9811b75b19c2cf95ca4bc772b6d1</srcmd5>
+    <version>0.2.3</version>
+    <time>1359109525</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>efcc1c0ffbb22ee7deca8812e07000ae</srcmd5>
+    <version>0.3.0.1375457512.9de0986</version>
+    <time>1375901164</time>
+    <user>coolo</user>
+    <comment>- Bump version to 0.3.0 and include git timestamp / SHA1 in version.
+- Update to latest git (9de0986):
+  + add git submodule update test
+  + extract submodule_path() method
+  + allow git commands to run from cwd
+  + rename opts to args
+  + annotate cwd
+  + ensure all scm invocations succeed when expected
+  + record revisions per repository path
+  + allow creation of git submodules
+  + Fixtures.create_commits(): add repository path parameter
+  + GitFixtures.create_repo(): add repository path parameter
+  + fix hg tests when run in timezone east of UTC
+  + add hint about running tests quicker
+  + don't hardcode revision in helper method
+  + quoting tweak
+  + make test output more consistent
+  + get line spacing right
+  + Travis: also test with Python 2.6
+  + tweak debugging for mv invocations
+  + a bit more info on the test suite
+  + leave temporary files behind on failure, for debugging
+  + add some docstrings to a few of the more complex tests
+  + make switching to a given git revision more robust
+  + try to make test output a little easier to understand
+  + improve README.md
+  + switch README to markdown and add Travis build status icon
+  + replace XML entities with dollar-curlies
+  + Properly encode XML reserved entities (&amp;,&lt;,&gt;)
+  + add better revision description/documentation for git
+  + We are still not allowed to have dashes inside version. Fix for mercurial.
+  + allow-different-naming-schemes-for-resulting-tar-files
+  + Fix breakage when LANG is not English (issue #8)
+  + Make test.py executable
+  + README: add information about the test suite
+  + Don't rely on git error codes for &quot;git describe&quot;, catch all
+  + Better error handling for @PARENT_TAG@ expansion
+  + the correct tag is 'param', 'parameter' won't work
+  + Tell Travis where to find the tests
+  + Cleanup testing tmp_dir afterwards
+  + Add description for @PARENT_TAG@
+  + Ignore .coverage
+  + Move tests into sub-directory
+  + Last change for some bonus points
+  + Naa, typo
+  + Update package database before installing dependencies
+  + Add initial Travis-CI configuration
+  + Add .gitignore file
+  + Add test for @PARENT_TAG@ (forwarded request 185667 from aspiers)</comment>
+    <requestid>186182</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>efcc1c0ffbb22ee7deca8812e07000ae</srcmd5>
+    <version>0.3.0.1375457512.9de0986</version>
+    <time>1379663399</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ed88931929aa3c68d66c354f77d477bd</srcmd5>
+    <version>0.3.1.1383144507.58d1af8</version>
+    <time>1383313117</time>
+    <user>scarabeus_factory</user>
+    <comment>revert to old basename support</comment>
+    <requestid>205247</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8a1ab29d97565a5e2682737b88932352</srcmd5>
+    <version>0.3.2.1384855776.cc62c54</version>
+    <time>1385490103</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208484</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ccd0b2af9001ab792b1515125e8424ec</srcmd5>
+    <version>0.3.2.1386694317.b85b342</version>
+    <time>1387174110</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.3.2.1386694317.b85b342:
+  + Fix adding to already existing _servicedata case
+  + Don't reverse changes lines with 'tac'
+  + Fix Python FutureWarning about comparison with None
+  + Improve description of the versionformat parameter.
+- Enable changes generation (forwarded request 210486 from saschpe)</comment>
+    <requestid>210731</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c355b6a47bccb8a52ab774ec2ed5d1b2</srcmd5>
+    <version>0.3.2.1404723797.745a470</version>
+    <time>1405053973</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>240226</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c355b6a47bccb8a52ab774ec2ed5d1b2</srcmd5>
+    <version>0.3.2.1404723797.745a470</version>
+    <time>1409302014</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2d37b505f9f4e5ff0b807cca83a2181d</srcmd5>
+    <version>0.4.0.1410288598.7f38281</version>
+    <time>1410361354</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248299</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5199b56dffaf3c317da9d46ea0e2acb5</srcmd5>
+    <version>0.4.2.1412467141.df3329e</version>
+    <time>1412533938</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254010</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2fa9f22c6fd6ffeded6ac41c0c344521</srcmd5>
+    <version>0.5.0.1412769870.6cda976</version>
+    <time>1412851940</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>254780</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bc39deb2d428dee433df0ee6ac39e0da</srcmd5>
+    <version>0.5.1.1426664483.de67b88</version>
+    <time>1427313946</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>292925</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c7171d38b315c52b3c840a9a32e8ee84</srcmd5>
+    <version>0.5.3.1433158390.b0e72e1</version>
+    <time>1433577274</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>310573</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>04ef06a976b8f9fbe5eed24c08bb1264</srcmd5>
+    <version>0.5.3.1434983686.0b4ce51</version>
+    <time>1435172520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313366</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c0f280521c9afe2fa66733704ef124fd</srcmd5>
+    <version>0.6.0~pre.1461681073.57c0bab</version>
+    <time>1464014349</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>396942</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a7d8f9016d7a457ad48a03da775cc397</srcmd5>
+    <version>0.6.0.1467889501.49c9462</version>
+    <time>1468360323</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 0.6.0, will become also a mainteannce update</comment>
+    <requestid>407102</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d48507100af22ad2667f5fd7c14798aa</srcmd5>
+    <version>0.6.0.1469628830.67456b7</version>
+    <time>1470413851</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>416758</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9bcbb57a300d54e4c8c88d52d7460c2d</srcmd5>
+    <version>0.6.1.1471594222.d257927</version>
+    <time>1472477952</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>422739</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>edc04e6d29bc3f5335a18e4605345dbc</srcmd5>
+    <version>0.6.1.1472657181.ff9a5ca</version>
+    <time>1473679522</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>425337</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>83423a2151329a31f264fe2898079011</srcmd5>
+    <version>0.6.1.1473925745.c5264bb</version>
+    <time>1474016528</time>
+    <user>dimstar_suse</user>
+    <comment>fix git cache handling</comment>
+    <requestid>427873</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0fd03b711e7401f6bdae89a02c6ce355</srcmd5>
+    <version>0.7.0.1480000004.4027270</version>
+    <time>1480693429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>443047</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2606e097f656c125a1a78a22a91e37d2</srcmd5>
+    <version>0.7.0.1481203567.804351a</version>
+    <time>1483955527</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447304</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>3d2ae1b6fde622f557d9726de3eb93cb</srcmd5>
+    <version>0.7.0.1484082405.7671be8</version>
+    <time>1485167999</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>451038</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>c38076eebfd276f5a7ca8da8fbf15e4d</srcmd5>
+    <version>0.7.0.1484082405.7671be8</version>
+    <time>1488322286</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>460913</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3ef70dab078a5dfb987ad7b9840f357e</srcmd5>
+    <version>0.7.0.1490358243.8de854e</version>
+    <time>1491896056</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.7.0.1490358243.8de854e:
+  * keep .gitlab/.github directories
+
+- Update to version 0.7.0.1490263157.682db30:
+  * Provide version rewrite using a regex pattern and replacement.
+  * initial appimage support
+  * make pep8 happy again
+  * test cases for version rewrite
+  * new parameter --match-tag to filter tags</comment>
+    <requestid>483229</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3606bbb26fe5d9f4918adabb95abca2f</srcmd5>
+    <version>0.7.0.1492101301.747de50</version>
+    <time>1492714761</time>
+    <user>dimstar_suse</user>
+    <comment>update descriptions</comment>
+    <requestid>489538</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>830e600b6e7043572e799c5c6d636dfa</srcmd5>
+    <version>0.7.0.1492101301.747de50</version>
+    <time>1494938659</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>494609</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>328fbebcbdede29c9c33f772bb049449</srcmd5>
+    <version>0.7.0.1496831936.d960322</version>
+    <time>1497603256</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>503658</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>95e85cdad85f20ae3be226e49824745e</srcmd5>
+    <version>0.7.0.1497870887.fa1750b</version>
+    <time>1498551689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506248</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c3a78895943a6b629f3a0580173ecfd0</srcmd5>
+    <version>0.8.0.1499787575.2419460</version>
+    <time>1500670127</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>511358</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9bfce68aaeb73449ff88d39691bb8626</srcmd5>
+    <version>0.8.0.1507129410.0cb2d44</version>
+    <time>1508323778</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533590</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c62eeaeab3f0a9154ee5facbb6b14e30</srcmd5>
+    <version>0.8.0.1520581079.e26b0ae</version>
+    <time>1524400247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>596964</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>37ff2d06de8125ff0f6982b6c643187b</srcmd5>
+    <version>0.9.0.1523267117.de861d8</version>
+    <time>1524837590</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v0.9.0.1523267117.de861d8:
+  * Removing redundant pass statement
+  * fixing indentation warnings from flake8
+  * fixing flake8 warnings, missing imports
+  * missing import for logging functions.
+  * [backend] Adding http proxy support</comment>
+    <requestid>600981</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5e07b2fbd59e247f6457e375a095f275</srcmd5>
+    <version>0.9.1.1530616709.1329314</version>
+    <time>1530993188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1.1530616709.1329314:
+  * improve handling of corrupt git cache directories
+  * only do git stash save/pop if we have a non-empty working tree (#228)
+  * sort imports
+  * don't allow DEBUG_TAR_SCM to change behaviour (#240)
+  * add stub user docs in lieu of something proper (#238)
+  * [dist] fix build for distros not yet supporting Recommends tag
+  * Remove clone_dir if clone fails
+  * python-unittest2 is only required for the optional make check
+  * move python-unittest2 dep to test suite only part (submission by olh)
+</comment>
+    <requestid>620565</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>09b02994e5b8b7826de28db00454967c</srcmd5>
+    <version>0.9.1.1534504824.0732756</version>
+    <time>1536094143</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>632451</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>6dd9157ba0d5337bb0e3c7e3b7d7fa0b</srcmd5>
+    <version>0.9.4.1537959361.56833cb</version>
+    <time>1539250909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.4.1537959361.56833cb:
+  * enable flake8 in hound
+  * cleanup for pylint and flake8
+  * split pylint2 in GNUmakefile
+  * fix check for &quot;--reproducible&quot;
+  * create reproducible obscpio archives
+  * fix flake warning
+- Update to version 0.9.3.1537869751.51a17c5:
+  * fix regression from 44b3bee
+  * Support also SSH urls for Git
+- Update to version 0.9.2.1537788075.fefaa74:
+  * fix CVE-2018-12474
+  * check name/version option in obsinfo for slashes
+  * check url for remote url
+  * check symlinks in subdir parameter
+  * check filename for slashes
+  * disable follow_symlinks in extract feature
+- switch to obs_scm for this package
+- Update to version 0.9.1.1537341862.5348694:
+  * run download_files in appimage and snapcraft case
+  * check --extract file path for parent dir
+  * Fix parameter descriptions
+</comment>
+    <requestid>639875</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2ddc72fed254b3c1537ebe2c65cc603b</srcmd5>
+    <version>0.10.5.1551309990.79898c7</version>
+    <time>1551385544</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.10.5.1551309990.79898c7:
+  * Prefer UTF-8 locale as output format for changes
+- Update to version 0.10.4.1551193322.b7a79f4:
+  * added KankuFile
+  * fix problems with unicode source files
+  * added python-six to Requires in specfile
+  * better encoding handling
+- Update to version 0.10.1.1550758451.f88bd41:
+  * fixes bsc#1082696 and bsc#1076410
+  * more fixes py3 unicode
+  * fix unicode in containers
+- Update to version 0.10.0.1550647779.25999e8:
+  * fix spec for RH/Fedora - glibc-locale -&gt; glibc-common
+- Update to version 0.10.0.1550589094.e2ae17d:
+  * move to python3
+  * add python 3.6 and 3.7 to testing
+  * added logging for better debugging changesgenerate
+  * raise exception if no changesauthor given
+  * removed python 2.6 from travis
+- Update to version 0.9.5.1548407358.b62685b:
+  * Stop using @opensuse.org addresses to indicate a missing address
+  * move argparse dep to -common package
+  * allow submodule and ssl options in appimage
+  * sync spec file as used in openSUSE:Tools project
+- Update to version 0.9.5.1545082095.8dbc95f:
+  * [dist] fix service files installation in Makefile
+- Update to version 0.9.5.1545064321.5c10ac0:
+  * check encoding problems for svn and print proper error msg
+  * added new param '--locale'
+  * separate service file installation in GNUmakefile
+  * added glibc as Recommends in spec file
+  * cleanup for broken svn caches
+  * another fix for unicode problem in obs_scm
+- Update to version 0.9.5.1544099104.f52adb7:
+  * Final fix for unicode in filenames
+  * Another attempt to fix unicode filenames in prep_tree_for_archive
+- Update to version 0.9.5.1544015491.08dd948:
+  * Another attempt to fix unicode filenames in prep_tree_for_archive
+- Update to version 0.9.5.1543865445.4e2fbad:
+  * fix bug with unicode filenames in prep_tree_for_archive
+  * reuse _service*_servicedata/changes files from previous service runs
+- Update to version 0.9.5.1543588452.b19491f:
+  * fix problems with  unicode characters in commit messages for changeloggenerate
+- Update to version 0.9.5.1543502111.e576bd6:
+  * fix encoding issues if commit message contains utf8 char
+- Update to version 0.9.5.1543424658.8740ef1:
+  * revert encoding for old changes file
+- Update to version 0.9.5.1543418966.30359e4:
+  * change pylint/flake8 back to 2.7 for now
+  * remove hardcoded utf-8 encodings
+- Update to version 0.9.5.1542905297.a6e346a:
+  * make code python3 ready
+  * Add support for extract globbing
+- Update to version 0.9.4.1537959361.56833cb:
+  * enable flake8 in hound
+  * cleanup for pylint and flake8
+  * split pylint2 in GNUmakefile
+  * fix check for &quot;--reproducible&quot;
+  * create reproducible obscpio archives
+  * fix flake warning
+- Update to version 0.9.3.1537869751.51a17c5:
+  * fix regression from 44b3bee
+  * Support also SSH urls for Git
+- Update to version 0.9.2.1537788075.fefaa74:
+  * fix CVE-2018-12473 (bsc#1105361)
+  * fix CVE-2018-12474 (bsc#1107507)
+  * fix CVE-2018-12476 (bsc#1107944)
+  * check name/version option in obsinfo for slashes
+  * check url for remote url
+  * check symlinks in subdir parameter
+  * check filename for slashes
+  * disable follow_symlinks in extract feature
+- switch to obs_scm for this package
+- Update to version 0.9.1.1537341862.5348694:
+  * run download_files in appimage and snapcraft case
+  * check --extract file path for parent dir
+  * Fix parameter descriptions
+- Update to version 0.9.1.1534504824.0732756:
+  * changed os.removedirs -&gt; shutil.rmtree
+  * Adding information regarding the *package-metadata* option for the *tar* service The tar service is highly useful in combination with the *obscpio* service. After the fix for the metadata for the latter one, it is important to inform the users of the *tar* service that metadata is kept only if the flag *package-metadata* is enabled. Add the flag to the .service file for mentioning that.
+  * Allow metadata packing for CPIO archives when desired As of now, metadata are always excluded from *obscpio* packages. This is because the *package-metadata* flag is ignored; this change (should) make *obscpio* aware of it.
+- Update to version 0.9.1.1530616709.1329314:
+  * improve handling of corrupt git cache directories
+  * only do git stash save/pop if we have a non-empty working tree (#228)
+  * sort imports
+  * don't allow DEBUG_TAR_SCM to change behaviour (#240)
+  * add stub user docs in lieu of something proper (#238)
+  * [dist] fix build for distros not yet supporting Recommends tag
+  * Remove clone_dir if clone fails
+  * python-unittest2 is only required for the optional make check
+  * move python-unittest2 dep to test suite only part (submission by olh)
+- Update to version v0.9.0.1523267117.de861d8:
+  * Removing redundant pass statement
+  * fixing indentation warnings from flake8
+  * fixing flake8 warnings, missing imports
+  * missing import for logging functions.
+  * [backend] Adding http proxy support
+- python-unittest2 is only required for the optional make check
+- Update to version 0.8.0.1520581079.e26b0ae:
+  * make installation of scm's optional
+  * add a lot more detail to README
+  * Git clone with --no-checkout in prepare_working_copy
+  * Refactor and simplify git prepare_working_copy
+  * Cleanup flake8 checks
+  * Only use current dir if it actually looks like git (Fixes #202)
+  * reactivate test_obscpio_extract_d
+  * fix broken test create_archive
+  * fix broken tests for broken-links
+  * changed PREFIX in Gnumakefile to /usr
+  * new cli option --skip-cleanup
+  * fix for broken links
+  * fix reference to snapcraft YAML file
+  * fix docstring typo in TarSCM.scm.tar.fetch_upstream
+  * acknowledge deficiencies in dev docs
+  * wrap long lines in README
+- Update to version 0.8.0.1507129410.0cb2d44:
+  * mention _none_ version string for people who need it for kiwi root archives for example
+  * git: Support url change
+  * change ordering so that latest change is on top
+  * also override timestamps of files in cpio
+  * Sort cpio file list
+  * [dist] fix spec file py_compile for fedora
+  * Sort tar file list
+- Update to version 0.8.0.1499787575.2419460:
+  * [test] refactor of fake classes
+  * [bugfix] fix UnboundLocalError: local variable 'parent_tag'
+- Update to version 0.8.0.1499787575.2419460:
+  * [dist] changed to %py_compile in spec file
+  * [bugfix] fixes issue #173
+  * [bugfix] Decoupled self.scm from class name in TarSCM/scm/*
+  * [lint] make tests/unittestcases.py flake8 ready
+  * [lint] more fixes for pylint readiness
+  * [lint] refactor unittestcases.py
+  * [test] increase cov for TarSCM.archive from 61% to 92%
+  * [doc] added comment to --use-obs-scm
+  * [test] refactor of fake classes
+  * [bugfix] fix UnboundLocalError: local variable 'parent_tag'
+- hotfix runtime of obs_scm
+- Update to version 0.8.0.1498846582.8799787:
+  * fix for gh issue #169
+  * new version placeholder for empty version string
+  * fix for bzr locale problem in testsuite
+  * pylint and flake8 in testsuite for better code quality
+  * code cleanup to be more pylint and flake8 compatible
+- Update to version 0.7.0.1497261741.b1aa4cb:
+  * Move spec file to git
+- Update to version 0.7.0.1496831936.d960322:
+  * fix for nonexistant build section in appimage.yml
+  * more documentation for README.md
+  * Update control
+- add python-yaml for debian distros
+- added Requires: python2 for Fedora &gt;= 25 
+- Only BuildRequire packages needed for testsuite if the testsuite
+  is enabled
+- Update to version 0.7.0.1492101301.747de50:
+  * skip broken tests temporarily
+- Update to version 0.7.0.1492095435.eda090e:
+  * revision, repodir and repocachedir as attribute for TarSCM.&lt;scm&gt;
+  * new class TarSCM.cli to make testing easier
+  * testing script name more reliable
+  * fixed arguments for singletask in case of snapcraft
+  * refactored snapcraft code + first tests for snapcraft
+  * added testcase for snapcraft finalize
+  * split classes into several files
+  * track module dependencies in requirements.txt
+  * use unittest2 in Python 2.6
+  * more testing for TarSCM.tasks
+  * clone_dir/repodir/arch_dir(tar_dir)/args now attributes of scm objects
+  * test case for save_run
+  * major refactor of git cache handling
+  * consolidation of archive.obscpio and archive.tar parameters
+  * next test cases
+  * unset CACHEDIRECTORY env variable in unit tests
+  * update atime/mtime of repocachedir if already exists
+  * prevent key errors when $HOME is not set
+  * fix PEP8 problems and reenable PEP8 testing
+  * keep checkout while running with osc
+  * fix local checkout when running in osc
+  * force remove of files while 'make clean'
+  * fix: also exclude directories when called .git
+  * fix problems with generatechanges when ~/.obs/tar_scm exists
+  * initial appimage support
+  * Provide version rewrite using a regex pattern and replacement.
+  * new parameter --match-tag to filter tags
+  * keep .gitlab/.github directories
+- Update to version 0.7.0.1491998613.3890456:
+  * refactor of detect_changes into classes
+  * url as attribute of TarSCM.scm
+  * run_cmd and safe_run moved into class helpers
+  * combine os.path.join statement
+  * refactoring fetch_upstream to be part of TarSCM.scm
+  * new classes for archives
+  * common method 'get_current_commit' to get rid of exception for git
+  * refactored detect_changes to get rid of changesgenerate exception
+  * get_repocachedir -&gt; TarSCM.scm
+  * Add description to the README.md file
+- split services into own rpms
+- Update to version 0.7.0.1490358243.8de854e:
+  * keep .gitlab/.github directories
+- Update to version 0.7.0.1490263157.682db30:
+  * Provide version rewrite using a regex pattern and replacement.
+  * initial appimage support
+  * make pep8 happy again
+  * test cases for version rewrite
+  * new parameter --match-tag to filter tags
+- Replayce python-yaml Requires/Buildrequires with python-PyYAML,
+  which is actually its correct name.
+- Update to version 0.7.0.1484082405.7671be8:
+  * fix problems with generatechanges when ~/.obs/tar_scm exists
+- Update to version 0.7.0.1481203567.804351a:
+  * fix: also exclude directories when called .git
+- Update to version 0.7.0.1480953937.a4b8b09:
+  * fix local checkout when running in osc
+  * force remove of files while 'make clean'
+- Update to version 0.7.0.1480000004.4027270:
+  * fixed pip8 problems
+  * keep checkout while running with osc
+- Update to version 0.7.0.1478249268.e162c66:
+  * prevent key errors when $HOME is not set
+- Update to version 0.7.0.1477858520.51a62fb:
+  * added locking for cachedir in jailed mode
+  * removed setup_tracking_branches and '--dissociate'
+  * inital version of TarSCM classes
+  * scm_object generation moved to singletask
+  * FETCH_UPSTREAM_COMMANDS into classes
+  * moved update_cache_* to classes
+  * moved detect_version into classes and refactored calls of get_timestamp_*
+  * moved get_timestamp functions into scm classes
+  * git_ref_exists -&gt; TarSCM.git._ref_exists
+  * fetch_upstream_git_submodules -&gt; fetch_submodules to get rid of exceptions for git
+  * just moved some functions for better overview
+  * refactor of detect_changes into classes
+  * url as attribute of TarSCM.scm
+  * run_cmd and safe_run moved into class helpers
+  * combine os.path.join statement
+  * refactoring fetch_upstream to be part of TarSCM.scm
+  * new classes for archives
+  *  common method 'get_current_commit' to get rid of execption for git
+  * refactored detect_changes to get rid of changesgenerate exception
+  * get_repocachedir -&gt; TarSCM.scm
+  * revision, repodir and repocachedir as attribute for TarSCM.&lt;scm&gt;
+  * new class TarSCM.cli to make testing easier
+  * testing script name more reliable
+  * fixed arguments for singletask in case of snapcraft
+  * refactored snapcraft code + first tests for snapcraft
+  * added testcase for snapcraft finalize
+  * split classes into serveral files
+  * more testing for TarSCM.tasks
+  * clone_dir/repodir/arch_dir(tar_dir) now attributes of scm objects
+  * test case for save_run
+  * major refactor of git cache handling
+  * consolidation of archive.obscpio and archive.tar parameters
+  * next test cases
+  * sytnax fix for &quot;tar&quot; service
+  * fixed tests for tar
+  * unset CACHEDIRECTORY env variable in unit tests
+  * update atime/mtime of repocachedir if already exists
+- Update to version 0.7.0.1474270818.3e05f80:
+  * 
+- Update to version 0.7.0.1477567374.d44d677:
+  * use '--dissociate' for git if package-meta is set
+  * added locking for cachedir in jailed mode
+  * removed setup_tracking_branches and '--dissociate'
+  * inital version of TarSCM classes
+  * scm_object generation moved to singletask
+  * FETCH_UPSTREAM_COMMANDS into classes
+  * moved update_cache_* to classes
+  * moved detect_version into classes and refactored calls of get_timestamp_*
+  * moved get_timestamp functions into scm classes
+  * git_ref_exists -&gt; TarSCM.git._ref_exists
+  * fetch_upstream_git_submodules -&gt; fetch_submodules to get rid of exceptions for git
+  * just moved some functions for better overview
+  * refactor of detect_changes into classes
+  * url as attribute of TarSCM.scm
+  * run_cmd and safe_run moved into class helpers
+  * combine os.path.join statement
+  * refactoring fetch_upstream to be part of TarSCM.scm
+  * new classes for archives
+  *  common method 'get_current_commit' to get rid of execption for git
+  * refactored detect_changes to get rid of changesgenerate exception
+  * get_repocachedir -&gt; TarSCM.scm
+  * revision, repodir and repocachedir as attribute for TarSCM.&lt;scm&gt;
+  * new class TarSCM.cli to make testing easier
+  * testing script name more reliable
+  * fixed arguments for singletask in case of snapcraft
+  * refactored snapcraft code + first tests for snapcraft
+  * added testcase for snapcraft finalize
+  * split classes into serveral files
+  * more testing for TarSCM.tasks
+  * clone_dir/repodir/arch_dir(tar_dir) now attributes of scm objects
+  * test case for save_run
+  * major refactor of git cache handling
+  * consolidation of archive.obscpio and archive.tar parameters
+  * next test cases
+  * sytnax fix for &quot;tar&quot; service
+- Update to version 0.7.0.1476904507.e88eed1:
+  * fixed arguments for singletask in case of snapcraft
+  * refactored snapcraft code + first tests for snapcraft
+  * added testcase for snapcraft finalize
+  * split classes into serveral files
+  * more testing for TarSCM.tasks
+  * clone_dir/repodir/arch_dir(tar_dir) now attributes of scm objects
+  * test case for save_run
+  * major refactor of git cache handling
+  * consolidation of archive.obscpio and archive.tar parameters
+  * next test cases
+- Update to version 0.6.1.1473925745.c5264bb:
+  * jailed mode for docker integration
+  * added setup of remote branches in jailed mode
+  * new handling for remote/local branches when caching
+  * fix permission problem of .changes files when running jailed in docker
+  * fix problem with outdated git refs in cache
+- Update to version 0.6.1.1472657181.ff9a5ca:
+  * make yaml dependency optional for travis
+  * Add an option 'master' to submodules to fetch the latest mater branch.
+  * tar_scm.py: Always use an absolute path for the 'output' directory
+  * do not set files back to 1970...
+  * transfer mtime via obsinfo
+  * create needed sub directories for cache handling
+  * prefer local cache directory
+  * - weak dependency to mercurial for debian
+  * add python-dateutil require for debian
+  * testing on debian is broken atm
+- Update to version 0.6.1.1472656157.58c52d8:
+  * make yaml dependency optional for travis
+  * Add an option 'master' to submodules to fetch the latest mater branch.
+  * tar_scm.py: Always use an absolute path for the 'output' directory
+  * do not set files back to 1970...
+  * transfer mtime via obsinfo
+  * create needed sub directories for cache handling
+  * prefer local cache directory
+  * - weak dependency to mercurial for debian
+  * add python-dateutil require for debian
+  * testing on debian is broken atm
+- Update to version 0.6.1.1472655284.4930b81:
+  * add python-dateutil require for debian
+  * testing on debian is broken atm
+- fix debian builds
+- Update to version 0.6.1.1472636708.355b59a:
+  * fix some more merge regressions
+  * pep8 fixes/workarounds
+  * make yaml dependency optional for travis
+  * Add an option 'master' to submodules to fetch the latest mater branch.
+  * tar_scm.py: Always use an absolute path for the 'output' directory
+  * do not set files back to 1970...
+  * transfer mtime via obsinfo
+  * create needed sub directories for cache handling
+  * prefer local cache directory
+  * - weak dependency to mercurial for debian
+- Update to version 0.6.1.1471594222.d257927:
+  * prefer local cache directory
+  * jailed mode for docker integration
+  * added setup of remote branches in jailed mode
+  * new handling for remote/local branches when caching
+- cache handling will be refactored to have only one implementation
+  in future.
+- fix mtime handling
+- Update to version 0.6.0.1469628830.67456b7:
+  * pep8 fixes/workarounds
+  * make yaml dependency optional for travis
+  * Add an option 'master' to submodules to fetch the latest mater branch.
+  * do not set files back to 1970...
+  * transfer mtime via obsinfo
+  * create needed sub directories for cache handling
+- update to official version 0.6.0
+  (latest package became official)
+- Update to version 0.6.0.1467889501.49c9462:
+  + very first obs_scm implementation
+  + allow extracting of (spec) files
+  + allow to include local changes when using &quot;obs_scm&quot; service via local osc commands.
+  + make obsinfo parameter for tar service optional
+  + support filtering on creation of cpio archives
+  + - add debian provides
+  + - make cleaning message a debug message
+  + report error when specified revision got not found
+  + add snapcraft.yaml support
+  + merge upstream
+  + minor cleanup
+  + fix typo, wrong file name of new snapcraft.yaml
+  + fix some more merge regressions
+  + pep8 fixes/workarounds
+  + make yaml dependency optional for travis
+- added snapcraft support via own service
+- Update to version 0.6.0~pre.1467126663.ec976d1:
+  * Allow to manually specify a base for @TAG_OFFSET@
+  * - make cleaning message a debug message
+  * Honour &quot;subdir&quot; param for changesgenerate
+  * report error when specified revision got not found
+  * Extend fixture to create commits with a specific timestamp
+  * Use commit timestamp as mtime for files and directories in tarball
+  * Workaround bug in Mercurial localdate filter
+  * fix breakage from conflict of #63 and #85
+  * Provide test for git tag fetching
+  * Add ability to generate changes file when using svn
+  * add snapcraft.yaml support
+- Update to version 0.6.0~pre.1461678268.e8b5d73:
+  * fix TESTING.md link in CONTRIBUTING.md
+  * Use correct level 2 bullet point (*)
+  * very first obs_scm implementation
+  * allow extracting of (spec) files
+  * allow to include local changes when using &quot;obs_scm&quot; service via local osc commands.
+  * make obsinfo parameter for tar service optional
+  * support filtering on creation of cpio archives
+  * - add debian provides
+- add debian provides
+- fix dependency on SLE 11 to python-argparse
+- Correctly reference patch in previous entry
+- Update to version 0.6.0~pre.1460377105.35a4ea4:
+  * support filtering on creation of cpio archives
+- Update to version 0.6.0~pre.1460098798.dda5411:
+  + make obsinfo parameter for tar service optional
+- Update to version 0.6.0.1460017418.4e4b2d6:
+  + Correct error message about lack of git tags
+  + GNUmakefile: Use default python in $PATH unless it is a python 3.
+  + fix TESTING.md link in CONTRIBUTING.md
+  + Use correct level 2 bullet point (*)
+  + very first obs_scm implementation
+  + allow extracting of (spec) files
+  + allow to include local changes when using &quot;obs_scm&quot; service via local osc commands.
+- building this pre-version currently from private branch
+  as discussed with Adam
+- only require git-core to not pull in git-web and gitk
+- Fix build on Ubuntu by disabling mercurial tests
+  * 0001-Debianization-disable-running-mercurial-tests.patch
+- Update to version 0.5.3.1434983686.0b4ce51:
+  + Add missing extension parameter to service file
+  + Fix build on Debian 7.0/8.0
+- Update to version 0.5.3.1433158390.b0e72e1:
+  + use the same Python interpreter for testing tar_scm
+  + Split up the steps of git cloning and submodule initialization
+  + fix Makefile test runner for Debian
+- Update to version 0.5.2.1432717816.cff60cf:
+  + be explicit about python2, python may be python3
+  + Fix newline at the end of @PARENT_TAG@
+  + Fix Mercurial version format strings in unittest
+  + Refactoring of package metadata regex matching
+  + Refactor resetting of uid/gid so that it is reusable
+  + Fix handling of --include option
+  + Fix handling of --exclude option
+  + Refactor subdir handling of tarchecker's to prevent code duplication
+  + ignore PEP8's E731 check for lambdas
+  + PEP8 E402 fix: set PYTHONPATH outside code
+  + add @TAG_OFFSET@ support in versionformat for git
+  + fix inconsistencies in tar_scm.service
+  + - fix .service file syntax (OBS 2.6.1 is checking now)
+  + mention need to set PYTHONPATH when running tests
+  + keep STDERR separate
+  + don't allow --subdir to wander outside repo (bsc#927120, #71)
+- Update to version 0.5.1.1426664483.de67b88:
+  + be explicit about python2, python may be python3
+  + Fix newline at the end of @PARENT_TAG@
+  + Fix Mercurial version format strings in unittest
+  + Refactoring of package metadata regex matching
+  + Refactor resetting of uid/gid so that it is reusable
+  + Fix handling of --include option
+  + Fix handling of --exclude option
+  + Refactor subdir handling of tarchecker's to prevent code duplication
+  + ignore PEP8's E731 check for lambdas
+  + PEP8 E402 fix: set PYTHONPATH outside code
+  + add @TAG_OFFSET@ support in versionformat for git
+  + fix inconsistencies in tar_scm.service
+  + - fix .service file syntax (OBS 2.6.1 is checking now)
+- Update to version 0.5.0.1412769870.6cda976:
+  + change default git versionformat to %ct.%h
+  + fix changes generation when version is blank
+  + lots of refactoring
+  + add info and caveats about data persisting between tests
+  + gittests: give default author test a unique name
+- Update to version 0.4.2.1412467141.df3329e.  Many changes,
+  including:
+  + Retrieve tags for a cached git repo
+  + Add PEP8 checking everywhere
+  + Significantly improved tests
+  + Fixed checkout of a hg url that ends with a trailing slash
+  + Fix Debian build dependencies for python
+  + Change Debian package format to 3.0 (native)
+  + Install into /usr on Debian
+  + Honor submodules=disable as before (fixes #38)
+  + Fix directory name of repository clone
+  + Fix handling of symbolic links
+  + Fix crash when changesrevision &lt;param&gt; is missing
+  + Improved usage text
+  + Store git and hg hashes in full
+  + Fix crash during copy of _servicedata
+  + Fix format of new changes to match old shell tar_scm
+  + Fix bug when temp file is on a different filesystem
+  + Fix change generation bug introduced by Python rewrite
+  + Fix retrieval of email address from ~/.oscrc
+  + Refactor changesgenerate code
+- Update to version 0.4.0.1410288598.7f38281:
+  + Python rewrite of tar_scm
+  + Make pep8 happy (except for regex in tar_scm:299)
+  + Address some feedback from pylint
+  + make Python version PEP8-compliant
+  + Let Travis execute pep8
+  + Strip newline ('\n') characters from safe_run output in detect_version()
+  + Make potentially long-running tasks print output in real-time
+  + Improve efficiency of stdout handling in safe_run()
+  + Release obs-service-tar_scm 0.4.0
+- Update to version 0.3.2.1404723797.745a470:
+  + Initial debianization
+  + switch git submodule versions correctly
+  + add some basic documentation to the tests
+  + split off info into TESTING.md
+  + add CONTRIBUTING.md
+  + improve formatting
+  + whitelist accepted chars in arguments.
+  + Correct/update install information
+  + Reverse changes lines again with tac
+- Update to version 0.3.2.1386694317.b85b342:
+  + Fix adding to already existing _servicedata case
+  + Don't reverse changes lines with 'tac'
+  + Fix Python FutureWarning about comparison with None
+  + Improve description of the versionformat parameter.
+- Enable changes generation
+- Bump version to 0.3.2
+  * changes file generation support written by Sascha
+- Bump version to 0.3.1
+  * do not execute tar base file name
+- Bump version to 0.3.0 and include git timestamp / SHA1 in version.
+- Update to latest git (9de0986):
+  + add git submodule update test
+  + extract submodule_path() method
+  + allow git commands to run from cwd
+  + rename opts to args
+  + annotate cwd
+  + ensure all scm invocations succeed when expected
+  + record revisions per repository path
+  + allow creation of git submodules
+  + Fixtures.create_commits(): add repository path parameter
+  + GitFixtures.create_repo(): add repository path parameter
+  + fix hg tests when run in timezone east of UTC
+  + add hint about running tests quicker
+  + don't hardcode revision in helper method
+  + quoting tweak
+  + make test output more consistent
+  + get line spacing right
+  + Travis: also test with Python 2.6
+  + tweak debugging for mv invocations
+  + a bit more info on the test suite
+  + leave temporary files behind on failure, for debugging
+  + add some docstrings to a few of the more complex tests
+  + make switching to a given git revision more robust
+  + try to make test output a little easier to understand
+  + improve README.md
+  + switch README to markdown and add Travis build status icon
+  + replace XML entities with dollar-curlies
+  + Properly encode XML reserved entities (&amp;,&lt;,&gt;)
+  + add better revision description/documentation for git
+  + We are still not allowed to have dashes inside version. Fix for mercurial.
+  + allow-different-naming-schemes-for-resulting-tar-files
+  + Fix breakage when LANG is not English (issue #8)
+  + Make test.py executable
+  + README: add information about the test suite
+  + Don't rely on git error codes for &quot;git describe&quot;, catch all
+  + Better error handling for @PARENT_TAG@ expansion
+  + the correct tag is 'param', 'parameter' won't work
+  + Tell Travis where to find the tests
+  + Cleanup testing tmp_dir afterwards
+  + Add description for @PARENT_TAG@
+  + Ignore .coverage
+  + Move tests into sub-directory
+  + Last change for some bonus points
+  + Naa, typo
+  + Update package database before installing dependencies
+  + Add initial Travis-CI configuration
+  + Add .gitignore file
+  + Add test for @PARENT_TAG@
+- Pass --tags to &quot;git describe&quot; for @PARENT_TAG@
+- Disable testsuite on SLE_11_SP2 to fix build
+- Use upstream github repository and download via _service file
+- Add custom git versionformat extensions:
+  + @PARENT_TAG@: Replaced by first tag that is reachable from the
+                  current commit (see 'git describe')
+  Future custom additions could follow the @NAME@ scheme
+- Fix usage text for submodules option
+- change default versionformat from author date (%at) to commiter date (%ct)
+  for git, to fix issues with cherry-picked commits resulting in decreased
+  version
+- add --date=short to get_vesion of git and remove '-' chars
+  by sed. This allows us to use %ad as versionformat and
+  have something like &quot;20120916&quot; as version instead of
+  terrible Unix timestamps.
+- Prevent local users from appearing as user/group owner in
+  generated tar files (thanks bmwiedemann for this)
+- fix option for submodule update
+- Fixed error with cache 
+- Added an option to disable git submodules
+- Replaced --exclude=.$MYSCM with --exclude-vcs tar option 
+- Added support for git submodules
+- Re-iterating the last change once again, 'git rev-parse --verify $REV'
+  will return false even if $REV is a normal branch upon first clone
+  of the repo. Thus 'git fetch $URL +$REV:$REV&quot; is run initially. 
+  However, the 'git checkout $REV' then fails because it's missing 
+  tracking information. Therefore, try a normal checkout first and fetch
+  the specific $REV only when that fails (due to reasons described below).
+- Allow git revision to refer to revisions not available from a
+  default clone/fetch (i.e. refs other than refs/heads/* or
+  refs/tags/*)
+- Check that git pull succeeds
+- Remove accidental reference to keep-source parameter
+  which was never pushed upstream (obsoleted by new cache).
+- When the cache is used, output location of repo in the cache
+- add new 'versionformat' option to determine how version is
+  extracted via git show --pretty=...
+- support caching of cloned repositories to speed up fetch
+  from upstream
+Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
+- Add test suite
+- Fix --subdir with --scm svn
+- Fix --scm bzr
+- patch license to follow spdx.org standard
+- add new option to specify a subset of files/subdirectories to
+  pack in the tar ball
+- Checking out a specific revision cannot work when only the latest
+  version is cloned.
+- make svn checkout --trust-server-cert option conditional, since
+  this option is not supported by versions prior to subversion 1.6.
+- Trim user prefix from tarball filename.
+  This enables tar_scm service to be used with git and ssh transport
+  (in conjuction with a passphrase less ssh-pubkey). Example Git URL:
+  git@gitrepo.tld:foobar.git
+- git 1.6.x and very likely other version only support
+  &quot;show --pretty=format:%at&quot; as parameter with &quot;format:&quot; prefix.
+  git show --pretty=%at is also support by recent git versions.
+- make it possible to create tar balls without version tag (#714542)
+- support old tar bar lookup also for OBS 2.3 bs_service using .old/ directory
+- drop broken code for same-commit-detection as suggested by Markus
+- history-depth parameter: use hackish depth=999999999 if &quot;full&quot; is
+  given so that a shallow clone will be fully deepened if the
+  _service file is changed. Also, fix git clone cmd line (remove
+  a pair of quotes that cause problems).
+- add support for (git) checkout depth, original patch by
+  Markus Lehtonen &lt;markus.lehtonen@linux.intel.com&gt;
+- make packaging of meta data optional to reduce tar ball size
+- fix exclude expansion
+- add support for bzr 
+- Fix: recompressed tars were never reused
+- cleanup mercurial commands
+- always trust svn server certificate. We don't have a secure handling
+  for it anyway. Trust needs to established via extra service.
+- fix subdir usage for git
+- add option exclude files/directories when creating the tar ball
+- git clone runs now with --depth 1 option
+- support mercurial repositories
+- Fix --filename parameter use
+- initial version to checkout/update svn or git repos and create a tar
+</comment>
+    <requestid>679987</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8b5c0534badfec7a0227dea5e878a5ed</srcmd5>
+    <version>0.10.6.1551887937.e42c270</version>
+    <time>1552571585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.6.1551887937.e42c270:
+  * Require packages to get the en_US.UTF-8 locales
+- Update to version 0.10.6.1551448746.2759df2:
+  * enforce bytes for cpio file list
+  * fixes boo#1127907
+</comment>
+    <requestid>683897</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5d0f9a189033fe28ae7a6b6098c99338</srcmd5>
+    <version>0.10.9.1557261720.32a1cdb</version>
+    <time>1559029205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705415</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>45574eed4c06f68864a2e49453bf8517</srcmd5>
+    <version>0.10.9.1559745964.22c86cd</version>
+    <time>1561557660</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>709510</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>1918347f4643bdd87a8ee76037bdf785</srcmd5>
+    <version>0.10.10.1566390389.9f923f8</version>
+    <time>1567423335</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>727035</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>31c7f14b94ac4d1ffacf95c45d54a7e2</srcmd5>
+    <version>0.10.10.1566390389.9f923f8</version>
+    <time>1571751817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741502</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c94c9770ca31453fa92958f0377c9b79</srcmd5>
+    <version>0.10.11.1579870213.888e79c</version>
+    <time>1580724654</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>769085</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>ff8fba901d53fe01abe33b1570c89820</srcmd5>
+    <version>0.10.14.1584463383.06b0455</version>
+    <time>1585176088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.14.1584435160.d912143:
+  * [dist] don't install gbp files by default
+  * [dist] remove python-keyring* from dependcies
+  * [dist] make gbp switchable in spec file
+- Update to version 0.10.14.1583853599.ccbb399:
+  * support server side credentials for SCM repos
+- Update to version 0.10.12.1582901608.a1c02c1:
+  * simplify osc git update case a lot
+  * fixing revision usage on a commit hash
+- Update to version 0.10.12.1582709176.d82a692:
+  * fix lost commits on local run
+  * fix breakage when working on a specific tag/commit
+  * git-lfs should not be mandatory as tar_scm will never use it
+  * Allow use of git-lfs only when running obs_scm
+  * Document _none_ special version in .service
+  * Version cleanup: don't strip hyphen when building Debian packages
+  * Add new archive option for Debian: git-buildpackage
+  * call git stash with LANG=C
+  * improved comment for method get_changesrevision
+  * Add debian package dep to git-lfs
+  * Implement git LFS blobs retrieval
+</comment>
+    <requestid>786001</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c2d6577091f262fffb2776cef4bb01bb</srcmd5>
+    <version>0.10.15.1588842879.5c43eef</version>
+    <time>1589046731</time>
+    <user>dimstar_suse</user>
+    <comment>Incl. multibuild</comment>
+    <requestid>801101</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2c9adb5dcc5bba5067355e17785f95f8</srcmd5>
+    <version>0.10.16.1590752286.5c27247</version>
+    <time>1591652611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811252</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>025a2d8d1c2b365656e6741784755a3b</srcmd5>
+    <version>0.10.16.1595245235.15a0df2</version>
+    <time>1595773039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822116</requestid>
+  </revision>
+</revisionlist>

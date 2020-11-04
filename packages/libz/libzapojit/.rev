@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e4023edae5806be476260f6218d1a3e</srcmd5>
+    <version>0.0.2</version>
+    <time>1349368870</time>
+    <user>coolo</user>
+    <comment>New package: will be needed for GNOME 3.6</comment>
+    <requestid>133732</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>0e4023edae5806be476260f6218d1a3e</srcmd5>
+    <version>0.0.2</version>
+    <time>1359109390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7f3aebe58ebf7e9f794cc3f74780862f</srcmd5>
+    <version>0.0.3</version>
+    <time>1364928092</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162192</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7f3aebe58ebf7e9f794cc3f74780862f</srcmd5>
+    <version>0.0.3</version>
+    <time>1379663153</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7f3aebe58ebf7e9f794cc3f74780862f</srcmd5>
+    <version>0.0.3</version>
+    <time>1409301785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d280d507a266e2d94938ec70b7beed6f</srcmd5>
+    <version>0.0.3</version>
+    <time>1520502528</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581282 from dimstar)</comment>
+    <requestid>582849</requestid>
+  </revision>
+</revisionlist>

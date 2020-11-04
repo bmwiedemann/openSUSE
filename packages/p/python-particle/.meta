@@ -1,0 +1,9 @@
+<package name="python-particle" project="openSUSE:Factory">
+  <title>PDG particle data and identification codes</title>
+  <description>Particle provides a pythonic interface to the Particle Data Group (PDG)
+particle data tables and particle identification codes.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-particle"/>
+  <url>https://github.com/scikit-hep/particle</url>
+</package>

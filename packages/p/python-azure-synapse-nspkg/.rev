@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee207e5f59c407f6fdada8f99e227611</srcmd5>
+    <version>1.0.0</version>
+    <time>1601652808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Provides and Obsoletes for the python-azure-synapse package</comment>
+    <requestid>838964</requestid>
+  </revision>
+</revisionlist>

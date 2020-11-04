@@ -1,0 +1,5 @@
+<package name="python-pywebpush" project="openSUSE:Factory">
+  <title></title>
+  <description>WebPush publication library</description>
+  <devel project="devel:languages:python" package="python-pywebpush"/>
+</package>

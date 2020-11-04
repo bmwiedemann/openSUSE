@@ -1,0 +1,7 @@
+<package name="libretro-bluemsx" project="openSUSE:Factory">
+  <title>BlueMSX libretro core for MSX emulation</title>
+  <description>BlueMSX is the most advanced and feature rich MSX emulator.
+
+This package is for RetroArch/libretro front-end.</description>
+  <devel project="Emulators" package="libretro-bluemsx"/>
+</package>

@@ -1,0 +1,9 @@
+<package name="cryptsetup" project="openSUSE:Factory">
+  <title>Set Up dm-crypt Based Encrypted Block Devices</title>
+  <description>cryptsetup is used to conveniently set up dm-crypt based device-mapper
+targets. It allows to set up targets to read cryptoloop compatible
+volumes as well as LUKS formatted ones. The package additionally
+includes support for automatically setting up encrypted volumes at boot
+time via the config file /etc/crypttab.</description>
+  <devel project="security" package="cryptsetup"/>
+</package>

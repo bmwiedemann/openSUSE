@@ -1,0 +1,12 @@
+<package name="rtrlib" project="openSUSE:Factory">
+  <title>Small extensible RPKI-RTR-Client C library</title>
+  <description>RTRlib is an open-source C implementation of the  RPKI/Router Protocol
+client. The library allows one to fetch and store validated prefix origin
+data from a RTR-cache and performs origin verification of prefixes. It
+supports different types of transport sessions (e.g., SSH, unprotected TCP)
+and is easily extendable.
+
+</description>
+  <devel project="devel:libraries:c_c++" package="rtrlib"/>
+  <url>https://rpki.realmv6.org/</url>
+</package>

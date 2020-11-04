@@ -1,0 +1,5 @@
+<package name="kubernetes1.17" project="openSUSE:Factory">
+  <title>Manage a cluster of Linux containers</title>
+  <description>Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops with Kubernetes by Google.</description>
+  <devel project="devel:kubic" package="kubernetes1.17"/>
+</package>

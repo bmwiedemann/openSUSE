@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fcd0ccab259d050ea1af40723fe65fd1</srcmd5>
+    <version>0.6.2</version>
+    <time>1587467599</time>
+    <user>dimstar_suse</user>
+    <comment>New package to enable OpenImageIO &gt; 2.0.0 to build to enable OpenShadingLanguage to be updated and build with LLVM10.</comment>
+    <requestid>795971</requestid>
+  </revision>
+</revisionlist>

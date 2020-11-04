@@ -1,0 +1,6 @@
+<package name="kucero" project="openSUSE:Factory">
+  <title></title>
+  <description>KUbernetes CErtificate ROtation
+https://github.com/jenting/kucero</description>
+  <devel project="devel:kubic" package="kucero"/>
+</package>

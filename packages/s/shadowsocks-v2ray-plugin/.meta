@@ -1,0 +1,5 @@
+<package name="shadowsocks-v2ray-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:proxy" package="shadowsocks-v2ray-plugin"/>
+</package>

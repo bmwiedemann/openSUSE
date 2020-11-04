@@ -1,0 +1,5 @@
+<package name="yast2-firstboot-wsl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:WSL" package="yast2-firstboot-wsl"/>
+</package>

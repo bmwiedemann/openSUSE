@@ -1,0 +1,22 @@
+<package name="dwz" project="openSUSE:Factory">
+  <title>DWARF debugging info optimizer</title>
+  <description>
+Dwz is a program that attempts to optimize DWARF debugging information
+contained in ELF shared libraries and ELF executables for size, by
+replacing DWARF information representation with equivalent smaller
+representation where possible and by reducing the amount of duplication
+using techniques from the DWARF standard appendix E - creating
+DW_TAG_partial_unit compilation units (CUs) for duplicated information and using
+DW_TAG_imported_unit to import it into each CU that needs it.
+
+The tool handles DWARF 32-bit format debugging sections of versions
+2, 3 and 4 and GNU extensions on top of those, though using DWARF 4
+or worst case DWARF 3 is strongly recommended.
+
+When not using the -m option (multifile mode), GDB CVS snapshot (soon to be
+7.5) is sufficient, when using -m option, GDB from a git branch
+http://sources.redhat.com/git/?p=archer.git;a=shortlog;h=refs/heads/archer-tromey-dwz-multifile
+is needed.
+  </description>
+  <devel project="devel:tools:compiler" package="dwz"/>
+</package>

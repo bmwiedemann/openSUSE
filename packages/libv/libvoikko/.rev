@@ -1,0 +1,266 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>cef16f76b5eace2ec2c5443807cfe426</srcmd5>
+    <version>1.7</version>
+    <time>1217472046</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ace5cdb86902999d831b7101b3d74ebe</srcmd5>
+    <version>1.7</version>
+    <time>1217629666</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>ec4045eee234b86fb8fa1deb525be965</srcmd5>
+    <version>1.7</version>
+    <time>1217844308</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4072eccfb922005b6cbba02d09ef0ac8</srcmd5>
+    <version>2.0</version>
+    <time>1220889836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0097ccd16395537fa74444903a369925</srcmd5>
+    <version>2.0</version>
+    <time>1224717984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8e13ec0c7b6daaced52e7c9ed9712539</srcmd5>
+    <version>2.0</version>
+    <time>1233698368</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05566f9b186cd89e57dc0e2467239111</srcmd5>
+    <version>2.1</version>
+    <time>1246285285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>05566f9b186cd89e57dc0e2467239111</srcmd5>
+    <version>2.1</version>
+    <time>1246285285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>1c1006f0527c13069b4d16fb6e6897b6</srcmd5>
+    <version>2.1</version>
+    <time>1268924760</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>1c1006f0527c13069b4d16fb6e6897b6</srcmd5>
+    <version>2.1</version>
+    <time>1278667364</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>1c1006f0527c13069b4d16fb6e6897b6</srcmd5>
+    <version>2.1</version>
+    <time>1278678593</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>1c1006f0527c13069b4d16fb6e6897b6</srcmd5>
+    <version>2.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>b256ec19887b3122926f49719006e3dc</srcmd5>
+    <version>2.1</version>
+    <time>1298402817</time>
+    <user>darix</user>
+    <comment>Accepted submit request 62512 from user elvigia
+</comment>
+    <requestid>62512</requestid>
+  </revision>
+  <revision rev="14" vrev="12">
+    <srcmd5>ed13ed549c7c4ae120a481b674a8f654</srcmd5>
+    <version>2.1</version>
+    <time>1298402840</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 62512
+</comment>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>ed13ed549c7c4ae120a481b674a8f654</srcmd5>
+    <version>2.1</version>
+    <time>1319182144</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>be62a6effd2dbaa51849b1581f3ad1c3</srcmd5>
+    <version>2.1</version>
+    <time>1322481263</time>
+    <user>coolo</user>
+    <comment>- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+- add libtool as buildrequire to avoid implicit dependency</comment>
+    <requestid>93397</requestid>
+  </revision>
+  <revision rev="17" vrev="16">
+    <srcmd5>91b39133d993be4510329b6c4408a9a0</srcmd5>
+    <version>2.1</version>
+    <time>1323192371</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>66d9b24293cc31d08e1fb4be7fa14b1e</srcmd5>
+    <version>2.1</version>
+    <time>1325348403</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size parameter in memset call (forwarded request 98278 from namtrac)</comment>
+    <requestid>98297</requestid>
+  </revision>
+  <revision rev="19" vrev="18">
+    <srcmd5>0bcef6832dcf1c126d3e7cb469ac2ea0</srcmd5>
+    <version>2.1</version>
+    <time>1329318991</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103996</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>61a3f9fe8912e24cfd82c0405dde0bfc</srcmd5>
+    <version>3.4.1</version>
+    <time>1330583143</time>
+    <user>coolo</user>
+    <comment>- Upgrade to version 3.4.1:
+  * Many new features, improvements and bug fixes. See ChangeLog
+    for details.
+  * Handle embedded null input characters in Python and Java
+    interfaces. (bnc#699707) (forwarded request 107468 from sbrabec)</comment>
+    <requestid>107469</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>61a3f9fe8912e24cfd82c0405dde0bfc</srcmd5>
+    <version>3.4.1</version>
+    <time>1340183651</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>61a3f9fe8912e24cfd82c0405dde0bfc</srcmd5>
+    <version>3.4.1</version>
+    <time>1359109372</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>61a3f9fe8912e24cfd82c0405dde0bfc</srcmd5>
+    <version>3.4.1</version>
+    <time>1379663127</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>62791fd3a67e329a32c084f98b809eaf</srcmd5>
+    <version>3.7</version>
+    <time>1391082714</time>
+    <user>coolo</user>
+    <comment>- Version bump to 3.7:
+  * Many bugfixes. See ChangeLog
+  * Upstream moved location so update accordingly. (forwarded request 215173 from scarabeus_iv)</comment>
+    <requestid>215243</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>62791fd3a67e329a32c084f98b809eaf</srcmd5>
+    <version>3.7</version>
+    <time>1409301756</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b4e6b0b0239fb942ae4f99b7e2204632</srcmd5>
+    <version>3.7.1</version>
+    <time>1416823862</time>
+    <user>dimstar_suse</user>
+    <comment>- Version bump to 3.7.1:
+  * New dictionary format 5 for VFST.</comment>
+    <requestid>261398</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>cd42ddeb56df9bcb0f75a3208cd8ee40</srcmd5>
+    <version>3.7.1</version>
+    <time>1438899368</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320746</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cbbb4295743cf0a8d9977d9d231a0437</srcmd5>
+    <version>3.8</version>
+    <time>1448957784</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>346092</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e0beb175e60657b0c0e69ede5e2382cb</srcmd5>
+    <version>4.1.1</version>
+    <time>1495133171</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492491</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>109a813c6fd3a272f3809b0baebf2cda</srcmd5>
+    <version>4.1.1</version>
+    <time>1507628301</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>532811</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>c8d6fc943cf9a289606f8e810df873bf</srcmd5>
+    <version>4.1.1</version>
+    <time>1526646384</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601138</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1aefe665a713213b8df535b84628ff66</srcmd5>
+    <version>4.2</version>
+    <time>1552464311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.2
+  * Support for Malaga dictionary format removed
+  * hfst-ospell dependency updated
+  * Java, Python, Javascript wrapper improvements
+- Drop libvoikko-hfst-namespace.patch</comment>
+    <requestid>681669</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>dc96e638b2dbc8e1800b3776e3539631</srcmd5>
+    <version>4.3</version>
+    <time>1573049690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.3
+  * New API function voikkoGetAttributeValues to list possible values for an analysis attribute.
+  * Improved spelling correction for Finnish words containing a hyphen.
+  * Improvements for Common Lisp interface.
+  * Fix compilation of JavaScript port on MacOS and with latest Emscripten.
+</comment>
+    <requestid>744648</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>7795858d955042cba27841e62089770c</srcmd5>
+    <version>4.3</version>
+    <time>1578677981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761354</requestid>
+  </revision>
+</revisionlist>

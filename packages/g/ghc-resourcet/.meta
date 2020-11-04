@@ -1,0 +1,5 @@
+<package name="ghc-resourcet" project="openSUSE:Factory">
+  <title>Deterministic allocation and freeing of scarce resources.</title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-resourcet"/>
+</package>

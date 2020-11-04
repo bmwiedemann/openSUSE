@@ -1,0 +1,5 @@
+<package name="python-pre-commit" project="openSUSE:Factory">
+  <title></title>
+  <description>A framework for managing and maintaining multi-language pre-commit hooks</description>
+  <devel project="devel:languages:python" package="python-pre-commit"/>
+</package>

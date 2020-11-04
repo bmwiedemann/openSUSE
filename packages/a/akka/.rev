@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>462d20aaf8f4d907ffef3d6dfc2f61fa</srcmd5>
+    <version>2.3.16</version>
+    <time>1583446786</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>781767</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34a5ee9cac40dab75008de01f067a9a1</srcmd5>
+    <version>2.3.16</version>
+    <time>1586641540</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid fat dependencies</comment>
+    <requestid>792661</requestid>
+  </revision>
+</revisionlist>

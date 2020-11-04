@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f511bb52c09d2c6f21ff07837262deb</srcmd5>
+    <version>1.5.3</version>
+    <time>1583446755</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>781447</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff5051a80dca0ba443a94c215dda8d42</srcmd5>
+    <version>1.5.3</version>
+    <time>1585761540</time>
+    <user>dimstar_suse</user>
+    <comment>migrate from felix-osgi implementation to OSGi 7</comment>
+    <requestid>790526</requestid>
+  </revision>
+</revisionlist>

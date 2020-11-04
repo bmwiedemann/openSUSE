@@ -1,0 +1,5 @@
+<package name="suse-xsl-stylesheets" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Documentation:Tools" package="suse-xsl-stylesheets"/>
+</package>

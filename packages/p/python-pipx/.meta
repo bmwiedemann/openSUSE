@@ -1,0 +1,5 @@
+<package name="python-pipx" project="openSUSE:Factory">
+  <title>python-pipx</title>
+  <description>Install and run Python applications in isolated environments</description>
+  <devel project="devel:languages:python" package="python-pipx"/>
+</package>

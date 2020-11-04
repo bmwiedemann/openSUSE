@@ -1,0 +1,5 @@
+<package name="ttf-converter" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="M17N" package="ttf-converter"/>
+</package>

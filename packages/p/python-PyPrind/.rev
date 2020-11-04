@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1e5524a3297b80f3b7042b59c2881b89</srcmd5>
+    <version>2.11.1</version>
+    <time>1501840753</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>510526</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a059de40fa2754bafe5ba6167045a610</srcmd5>
+    <version>2.11.2</version>
+    <time>1552380797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11.2:
+  * Fixes issue where new lines are printed upon iterating over a completed progress bar object.
+- Run tests</comment>
+    <requestid>682062</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dda19ea2680a9ade4da1bceefdcee29a</srcmd5>
+    <version>2.11.2</version>
+    <time>1571210058</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738308</requestid>
+  </revision>
+</revisionlist>

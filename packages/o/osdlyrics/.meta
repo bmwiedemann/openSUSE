@@ -1,0 +1,7 @@
+<package name="osdlyrics" project="openSUSE:Factory">
+  <title>osdlyrics</title>
+  <description>OSD Lyrics is a lyrics show compatible with various media players. It is not a plugin but a standalone program. OSD Lyrics shows lyrics on your desktop, in the style similar to KaraOK. It also provides another displaying style, in which lyrics scroll from bottom to top. OSD Lyrics can download lyrics from the network automatically.
+
+OSD Lyrics is released under GPL v3. </description>
+  <devel project="multimedia:apps" package="osdlyrics"/>
+</package>

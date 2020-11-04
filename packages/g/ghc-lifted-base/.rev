@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9a2cdaf0521f67bdccb1836091858343</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1396451940</time>
+    <user>coolo</user>
+    <comment>New packages for pandoc. See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00341.html</comment>
+    <requestid>227652</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>9a2cdaf0521f67bdccb1836091858343</srcmd5>
+    <version>0.2.1.0</version>
+    <time>1409300965</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>913290f47943736d6d3d57c2145ed216</srcmd5>
+    <version>0.2.3.6</version>
+    <time>1432188774</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>306427</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6b32256a9da47db13976597f79e318ca</srcmd5>
+    <version>0.2.3.6</version>
+    <time>1469081100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>411381</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28ba5ed2a4bc94c3ff7a43db62a0e0e2</srcmd5>
+    <version>0.2.3.7</version>
+    <time>1472026067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.3.7 revision 0 with cabal2obs. (forwarded request 412693 from mimi_vx)</comment>
+    <requestid>412694</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cfcd978f0af6203aa9985df60f2a668</srcmd5>
+    <version>0.2.3.8</version>
+    <time>1473103212</time>
+    <user>dimstar_suse</user>
+    <comment>version update (forwarded request 421651 from psimons)</comment>
+    <requestid>421744</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>dcc1025389d37a76ecd57e2009b3fc17</srcmd5>
+    <version>0.2.3.10</version>
+    <time>1489482328</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>461655</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dcb26ee736563cf890098681da8ec43d</srcmd5>
+    <version>0.2.3.11</version>
+    <time>1498120689</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>504084</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1b323fe60ee51bf5cc018137d4d001ce</srcmd5>
+    <version>0.2.3.11</version>
+    <time>1505505319</time>
+    <user>dimstar_suse</user>
+    <comment>re-format spec file with latest spec-cleaner and cabal2obs</comment>
+    <requestid>524948</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff75bb86a5b3ed402b797f545f4aa377</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1527675034</time>
+    <user>dimstar_suse</user>
+    <comment>Update ghc-lifted-base to the latest version.</comment>
+    <requestid>607832</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c23ea98e1404487af78b85a26dbb1afb</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1532161243</time>
+    <user>dimstar_suse</user>
+    <comment>- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.</comment>
+    <requestid>623803</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>02a5ad53a22ff0d7a3b3249b4d5ade4d</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1540448816</time>
+    <user>dimstar_suse</user>
+    <comment>trivial cosmetic change in comments</comment>
+    <requestid>643415</requestid>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>a9c81056cde3793513e8362bdca4ed40</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1577451281</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>759440</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>31665b379ba0a7326512be5c2d0104df</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1592579670</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815125</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>bdddf14c573268b7134de9c35a0814db</srcmd5>
+    <version>0.2.3.12</version>
+    <time>1598643278</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829337</requestid>
+  </revision>
+</revisionlist>

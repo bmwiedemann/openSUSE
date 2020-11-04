@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd2b71d0be17cedd62084945c7f0a69e</srcmd5>
+    <version>0.3</version>
+    <time>1356703249</time>
+    <user>namtrac</user>
+    <comment>new package</comment>
+    <requestid>146104</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>bd2b71d0be17cedd62084945c7f0a69e</srcmd5>
+    <version>0.3</version>
+    <time>1359109042</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>bd2b71d0be17cedd62084945c7f0a69e</srcmd5>
+    <version>0.3</version>
+    <time>1379662605</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>bd2b71d0be17cedd62084945c7f0a69e</srcmd5>
+    <version>0.3</version>
+    <time>1409301155</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>09c540fa1a7b1587588ca2f11b8a3e0d</srcmd5>
+    <version>0.3</version>
+    <time>1426680509</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291210</requestid>
+  </revision>
+</revisionlist>

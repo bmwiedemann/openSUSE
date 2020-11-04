@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d27ec2ee11bf5f2167542340301b500</srcmd5>
+    <version>0.5.0+git20200526.ga926bac9e6c2</version>
+    <time>1590650070</time>
+    <user>maxlin_factory</user>
+    <comment>b4 downloads patches from kernel.org.</comment>
+    <requestid>809127</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c89ac8c29a6c8382231e61c9b565d70f</srcmd5>
+    <version>0.5.0+git20200528.g204416b80fbb</version>
+    <time>1592245976</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814692</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a18a1e0b0dc07609788585b284bb1b4</srcmd5>
+    <version>0.5.0+git20200612.g5c4ec14b</version>
+    <time>1592307944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git20200612.g5c4ec14b:
+  * Fix crash with unbalanced [] in subject
+  * Fix regression with oddball charsets
+  * Fix mbox naming inconsistencies
+  * Output less confusing trailer mismatch messages
+  * Fix bug with threading when cover ref is missing
+  * Fix body part parsing when '---' is not used
+  * Use proper charset when reading back mailinfo</comment>
+    <requestid>814833</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>625e9a1c166a7e8b948b7bb47b068620</srcmd5>
+    <version>0.5.2</version>
+    <time>1596036039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2:
+  * Prepare for 0.5.2 release
+  * Fix handling of single-paragraph commit message bodies
+  * Fix basement detection for empty commit message bodies
+  * Support mbox -m to be a maildir
+  * man: Update commit url mask to contain 12 chars of ID
+  * Fix attestation error messages
+  * Deal with [PATCHvX] subjects
+  * Fix crash when -c used with incomplete series
+  * man: Drop the apostrophe from the linkmask configuration
+  * Fix crash with unbalanced [] in subject
+  * Fix regression with oddball charsets
+  * Up the version to 0.5.2-dev
+  * Prepare for 0.5.1 release
+  * Fix mbox naming inconsistencies
+  * Output less confusing trailer mismatch messages
+  * Fix bug with threading when cover ref is missing
+  * Fix body part parsing when '---' is not used
+  * Use proper charset when reading back mailinfo
+  * Don't output git am suggestion for -o -
+  * Add --no-cover and -o - to output to stdout
+  * Use unicode escape sequences
+  * Up the version to 0.5.1-dev
+- switch to obs_scm
+- switch to 0.5 stable branch</comment>
+    <requestid>823294</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8895516f2c29f8cde12823dfa02195da</srcmd5>
+    <version>0.5.2+2</version>
+    <time>1597955389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2+2:
+  * Require that a trailer is at least 2 chars long
+  * Cover letters may not have a diffstat
+- add requests to Requires</comment>
+    <requestid>827997</requestid>
+  </revision>
+</revisionlist>

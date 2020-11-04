@@ -1,0 +1,6 @@
+<package name="xmvn-connector-gradle" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="xmvn"/>
+  <bcntsynctag>xmvn</bcntsynctag>
+</package>

@@ -1,0 +1,10 @@
+<package name="ugrep" project="openSUSE:Factory">
+  <title>Universal grep: a feature-rich grep implementation with focus on speed</title>
+  <description>Ugrep supports an interactive query UI and can search file systems, source
+code, text, binary files, archives, compressed files, documents and use
+fuzzy search.
+
+</description>
+  <devel project="utilities" package="ugrep"/>
+  <url>https://github.com/Genivia/ugrep</url>
+</package>

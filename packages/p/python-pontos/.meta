@@ -1,0 +1,11 @@
+<package name="python-pontos" project="openSUSE:Factory">
+  <title>Common utilities and tools maintained by Greenbone Networks</title>
+  <description>The pontos Python package is a collection of utilities, tools, classes
+and functions maintained by Greenbone Networks.
+Pontos is the German name of the Greek titan Pontus, the titan of the
+sea.
+
+</description>
+  <devel project="devel:languages:python" package="python-pontos"/>
+  <url>https://github.com/greenbone/pontos</url>
+</package>

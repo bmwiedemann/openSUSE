@@ -1,0 +1,69 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4052a0609fdb75c0cdfdd52e63dc7e2</srcmd5>
+    <version>2.2.0</version>
+    <time>1591742822</time>
+    <user>dimstar_suse</user>
+    <comment>onefetch</comment>
+    <requestid>796226</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>91d533d83fe26a50f703de5ed534801f</srcmd5>
+    <version>2.3.0</version>
+    <time>1597751693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  Language:
+  * Added support for Docker File
+  * Added support for Jupyter Notebooks
+  New feature:
+  * Add exclude OPTION (#178)
+  Misc:
+  * Accept LICENCE... as license file name
+  * Better descriptions for flags and options
+  * Remove Bright Colors (#179)</comment>
+    <requestid>824098</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9eb4a3a063e0927b62b57b0a5c262ecc</srcmd5>
+    <version>2.3.0</version>
+    <time>1599088689</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831376</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fb01d5fb35fbae6ee379622192f9298b</srcmd5>
+    <version>2.5.0</version>
+    <time>1603545425</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  Bug Fixes:
+  * Identify author by email
+  * Fix #180
+  * Fix layout with sixel image backend
+  New features:
+  * Show number of Tags and Branches
+  Misc:
+  * Reduce size of Lua, Clojure, Jupyter-Notebooks, Tex, Zig ASCII logo
+  * Reduce size of Swift, Objective-C ASCII logo
+  * Reduce size of Php
+  * Reduce size of Nim
+  * Better CI/CD
+  * New Go and Rust ASCII logo
+
+- Update to 2.4.0:
+  Language:
+  * Added support for Crystal
+  New feature:
+  * Use async/await to improve performance
+  * Refacto language.rs with the introduction of a macro
+  * Refacto info.rs to use git log once #198
+  Misc:
+  * Add info for cargo-deb
+  * Enable stale bot #184
+  * Enable dependabot
+  * Improved ci/cd actions</comment>
+    <requestid>843372</requestid>
+  </revision>
+</revisionlist>

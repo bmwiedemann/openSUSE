@@ -1,0 +1,8 @@
+<package name="clutter-gst" project="openSUSE:Factory">
+  <title>GStreamer integration for Clutter</title>
+  <description>Clutter is an open source software library for creating fast, visually
+rich and animated graphical user interfaces.
+
+Clutter GStreamer enables the use of GStreamer with Clutter.</description>
+  <devel project="GNOME:Factory" package="clutter-gst"/>
+</package>

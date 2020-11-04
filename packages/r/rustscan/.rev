@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>509eb46db434f4f3e9b2e9e9fdfaa96d</srcmd5>
+    <version>1.7.1</version>
+    <time>1598642463</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain rustscan in Factory</comment>
+    <requestid>828658</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a4dbe2bb21e2047794bf2b3e765a718a</srcmd5>
+    <version>1.8.0</version>
+    <time>1599598240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832931</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a6072f463a171a85ddd9f080a668f22e</srcmd5>
+    <version>1.10.0</version>
+    <time>1603545416</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839311</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="672">
+    <srcmd5>c86f068ad89d1be300dfec33a3b42b65</srcmd5>
+    <version>2000.11.03</version>
+    <time>1168903080</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="702">
+    <srcmd5>42fb893e09b243ada7044b807571570d</srcmd5>
+    <version>2000.11.03</version>
+    <time>1175162674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="805">
+    <srcmd5>42fb893e09b243ada7044b807571570d</srcmd5>
+    <version>2000.11.03</version>
+    <time>1175162674</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="806">
+    <srcmd5>82601fe7ffbb2984d7c9fc12683984de</srcmd5>
+    <version>2000.11.03</version>
+    <time>1224729251</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="807">
+    <srcmd5>81c06ea281176b575ea7ebcf0633b286</srcmd5>
+    <version>2000.11.03</version>
+    <time>1245364248</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="808">
+    <srcmd5>e30ff6a76da74be09e13ce470081e99b</srcmd5>
+    <version>2000.11.03</version>
+    <time>1251475156</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/iso_ent based on submit request 18799 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="7" vrev="810">
+    <srcmd5>e30ff6a76da74be09e13ce470081e99b</srcmd5>
+    <version>2000.11.03</version>
+    <time>1251475156</time>
+    <user>autobuild</user>
+    <comment>Copy from Publishing/iso_ent based on submit request 18799 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="8" vrev="811">
+    <srcmd5>bd707cd3e563ce1c4a2a4e58f4477603</srcmd5>
+    <version>2000.11.03</version>
+    <time>1268924051</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="813">
+    <srcmd5>bd707cd3e563ce1c4a2a4e58f4477603</srcmd5>
+    <version>2000.11.03</version>
+    <time>1278667353</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="814">
+    <srcmd5>bd707cd3e563ce1c4a2a4e58f4477603</srcmd5>
+    <version>2000.11.03</version>
+    <time>1278678584</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="817">
+    <srcmd5>bd707cd3e563ce1c4a2a4e58f4477603</srcmd5>
+    <version>2000.11.03</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="819">
+    <srcmd5>bd707cd3e563ce1c4a2a4e58f4477603</srcmd5>
+    <version>2000.11.03</version>
+    <time>1319181995</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="820">
+    <srcmd5>01e37b86f7a7ed498254d86bf05e2af9</srcmd5>
+    <version>2000.11.03</version>
+    <time>1340138703</time>
+    <user>coolo</user>
+    <comment>- change license to some spdx.org form - this a standard from w3.org,
+  so it can be distributed pretty much freely (forwarded request 125267 from coolo)</comment>
+    <requestid>125352</requestid>
+  </revision>
+  <revision rev="14" vrev="822">
+    <srcmd5>01e37b86f7a7ed498254d86bf05e2af9</srcmd5>
+    <version>2000.11.03</version>
+    <time>1340183470</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="824">
+    <srcmd5>01e37b86f7a7ed498254d86bf05e2af9</srcmd5>
+    <version>2000.11.03</version>
+    <time>1359109093</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="826">
+    <srcmd5>01e37b86f7a7ed498254d86bf05e2af9</srcmd5>
+    <version>2000.11.03</version>
+    <time>1379662686</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="828">
+    <srcmd5>01e37b86f7a7ed498254d86bf05e2af9</srcmd5>
+    <version>2000.11.03</version>
+    <time>1409301252</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>051111c5fc1b99912aaa1dae019d22a9</srcmd5>
+    <version>1.1.5</version>
+    <time>1574167438</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748154</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>91786a845049ac84ab74899e576bbd2a</srcmd5>
+    <version>1.1.5</version>
+    <time>1594894276</time>
+    <user>dimstar_suse</user>
+    <comment>Build on architectures that have eclipse only</comment>
+    <requestid>818518</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,428 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8749bad167f7339454aa40a16a4ce11b</srcmd5>
+    <version>1.0.7a</version>
+    <time>1168902757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="49">
+    <srcmd5>8a703db8371a7d6ca3c9939f9694e587</srcmd5>
+    <version>1.0.7a</version>
+    <time>1176849309</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d4b5607df6f17ebb9a04ff5d0295b19</srcmd5>
+    <version>1.0.8</version>
+    <time>1195555209</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="37">
+    <srcmd5>4da7259b36cbf56d952696ec33ae95a7</srcmd5>
+    <version>1.0.8</version>
+    <time>1208194386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="79">
+    <srcmd5>4da7259b36cbf56d952696ec33ae95a7</srcmd5>
+    <version>1.0.8</version>
+    <time>1208194386</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="80">
+    <srcmd5>c9c54bdeee8a5f3de3e9db0a7e255b86</srcmd5>
+    <version>1.0.8</version>
+    <time>1245338673</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c836113b99237d361c53c6694644d5bf</srcmd5>
+    <version>1.0.9</version>
+    <time>1248727417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>c836113b99237d361c53c6694644d5bf</srcmd5>
+    <version>1.0.9</version>
+    <time>1248727417</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>5ec1dfcdc4409318efd92dafc906c506</srcmd5>
+    <version>1.0.9</version>
+    <time>1268923549</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9c15a3e20a17a431ecfcc8c983b5482a</srcmd5>
+    <version>1.1.1</version>
+    <time>1270246613</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/fluidsynth based on submit request 36761 from user plater
+</comment>
+    <requestid>36761</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9c15a3e20a17a431ecfcc8c983b5482a</srcmd5>
+    <version>1.1.1</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>9c15a3e20a17a431ecfcc8c983b5482a</srcmd5>
+    <version>1.1.1</version>
+    <time>1278678575</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d37e9d99958569cc8d0402797c61467c</srcmd5>
+    <version>unknown</version>
+    <time>1283789118</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/fluidsynth based on submit request 47235 from user coolo
+</comment>
+    <requestid>47235</requestid>
+  </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>2154d9d77e24f14ed8bc914b610f765e</srcmd5>
+    <version>1.1.3</version>
+    <time>1287010200</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/fluidsynth based on submit request 50339 from user plater
+</comment>
+    <requestid>50339</requestid>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>1e582c39ad7468d032f25350fa1d3ecb</srcmd5>
+    <version>1.1.3</version>
+    <time>1294048394</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56961 from user plater
+</comment>
+    <requestid>56961</requestid>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>ad4506c8e479044c67fa0f45c9eeb457</srcmd5>
+    <version>1.1.3</version>
+    <time>1294048405</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56961
+</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>ad4506c8e479044c67fa0f45c9eeb457</srcmd5>
+    <version>1.1.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>26049af783ef2af6e8efa6e61e0bbc9f</srcmd5>
+    <version>1.1.4</version>
+    <time>1312899883</time>
+    <user>saschpe</user>
+    <comment>- Updated to version 1.1.4:
+  Improvements to the API for playing MIDI files, several bug fixes
+  in the engine itself; for details, see:
+    http://sourceforge.net/apps/trac/fluidsynth/wiki/ChangeLog1_1_4
+- Use cmake for build
+- Re-add a symbol dropped from 1.1.3
+- Clean up spec file</comment>
+    <requestid>78360</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>8c86525de6e6a1d0dd66b63fed5a2b8e</srcmd5>
+    <version>1.1.4</version>
+    <time>1312899891</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78360
+</comment>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f69db01be3ed011a7f4c352f5748bec5</srcmd5>
+    <version>1.1.4</version>
+    <time>1316681083</time>
+    <user>saschpe</user>
+    <comment>- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.) (forwarded request 83532 from jengelh)</comment>
+    <requestid>83642</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>f69db01be3ed011a7f4c352f5748bec5</srcmd5>
+    <version>1.1.4</version>
+    <time>1319181880</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3235f8e2590a8f1e0723443e03335258</srcmd5>
+    <version>1.1.4</version>
+    <time>1323191388</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>12819c3d8bc9223a831688a4ee9d21f4</srcmd5>
+    <version>1.1.5</version>
+    <time>1326292581</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.1.5
+  + Autotools build resulted in the wrong version number for
+    libfluidsynth.so
+  + One symbol was dropped from libfluidsynth.so - this symbol was
+    not part of the public API though
+  + JACK: Using jack_free instead of free when needed
+  + Update Free Software Foundation address
+- Run spec-cleaner</comment>
+    <requestid>99689</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ae683a3fec47061f3b4bd5b317901e52</srcmd5>
+    <version>1.1.5</version>
+    <time>1338903029</time>
+    <user>coolo</user>
+    <comment>- Added 32-bit compatibility library (needed by gstreamer-0_10-plugins-buzztard-32bit ) (forwarded request 123505 from TheBlackCat)</comment>
+    <requestid>123573</requestid>
+  </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>ae683a3fec47061f3b4bd5b317901e52</srcmd5>
+    <version>1.1.5</version>
+    <time>1340183333</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>030e3829ccc0c416788d631ef4ec5eb1</srcmd5>
+    <version>1.1.6</version>
+    <time>1348380248</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.1.6 (forwarded request 135334 from Zaitor)</comment>
+    <requestid>135335</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4cc3e418b1604d466e7405063945c38e</srcmd5>
+    <version>1.1.6</version>
+    <time>1348558911</time>
+    <user>coolo</user>
+    <comment>- Use %{optflags} (forwarded request 135604 from AndreasSchwab)</comment>
+    <requestid>135606</requestid>
+  </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>4cc3e418b1604d466e7405063945c38e</srcmd5>
+    <version>1.1.6</version>
+    <time>1359108883</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>4cc3e418b1604d466e7405063945c38e</srcmd5>
+    <version>1.1.6</version>
+    <time>1379662351</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>4cc3e418b1604d466e7405063945c38e</srcmd5>
+    <version>1.1.6</version>
+    <time>1409300887</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>468c788b2709370d9223017791b1d994</srcmd5>
+    <version>1.1.6</version>
+    <time>1449145566</time>
+    <user>dimstar_suse</user>
+    <comment>- Add baselibs.conf as a source file 
+
+- Added jackmulti.diff to fix inverse logic of audio.jack.multi option
+- Added reverb_mixer.diff to workaround reverb issue,
+  see: http://sourceforge.net/p/fluidsynth/tickets/137/</comment>
+    <requestid>345756</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9b0143716f77585e2ca8ab7c87ffb759</srcmd5>
+    <version>1.1.7</version>
+    <time>1505502221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522987</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5ddcf6b07f034220f125860adb10c815</srcmd5>
+    <version>1.1.8</version>
+    <time>1508769447</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533988</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6499a2a5150fa5230a73bf46c2ddfc23</srcmd5>
+    <version>1.1.9</version>
+    <time>1516091700</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561643</requestid>
+  </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b0d03e6ef24f89a99500c4452bc4c6ec</srcmd5>
+    <version>1.1.9</version>
+    <time>1519557615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>578385</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>341009484d310371ca71badaf0d7715f</srcmd5>
+    <version>1.1.10</version>
+    <time>1520329469</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582072</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>2cf1551e3db3aae5a18f32b1ba4ad1b5</srcmd5>
+    <version>1.1.10</version>
+    <time>1520588041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583645</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a028415d81c3b1412551ba590b4ab392</srcmd5>
+    <version>1.1.11</version>
+    <time>1525779156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>604598</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9eae2d4bff5b2a9bfc97df11ffd2e3d4</srcmd5>
+    <version>2.0.0</version>
+    <time>1537970514</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636367</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>fd568b86d65c0ceba2b47feb378dc043</srcmd5>
+    <version>2.0.1</version>
+    <time>1539251053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640547</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d6364e08375c010db9a768c4f797cfaf</srcmd5>
+    <version>2.0.2</version>
+    <time>1542749347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650127</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>fa95af05a446f4f9a1f0e9b5eb6c6f75</srcmd5>
+    <version>2.0.3</version>
+    <time>1546946289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662426</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>4c5f3b2c73a3ff31066b3d4954d72980</srcmd5>
+    <version>2.0.4</version>
+    <time>1551385608</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678418</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>139c712f97158248741cd58a113d8c31</srcmd5>
+    <version>2.0.5</version>
+    <time>1556022833</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696464</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9bd9a5b12796993f3422d48d1470648d</srcmd5>
+    <version>2.0.6</version>
+    <time>1566912123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724606</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ed2c3adc8dd95ef098571faf34427c72</srcmd5>
+    <version>2.0.7</version>
+    <time>1571049154</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>737235</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>dd5f4c4a794cc2bc4d27cac9fe49bc57</srcmd5>
+    <version>2.0.8</version>
+    <time>1572617598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743582</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>847870c41ff845aca6239fca01416626</srcmd5>
+    <version>2.1.0</version>
+    <time>1578867327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760234</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>737114d0d9e9f0a92bcb680eb11806ed</srcmd5>
+    <version>2.1.1</version>
+    <time>1583007620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>779543</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>220b46ae596f47c9a63cd2c1b16e0288</srcmd5>
+    <version>2.1.2</version>
+    <time>1587324911</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793920</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0182bd65ca04cefc8b6513c28dbec0f2</srcmd5>
+    <version>2.1.3</version>
+    <time>1591101203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809159</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a1d3970a5c694fd99a1bbf993616e261</srcmd5>
+    <version>2.1.4</version>
+    <time>1595011502</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820949</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>cf0392766d96f880e3e783afa96ee5dc</srcmd5>
+    <version>2.1.5</version>
+    <time>1600956783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835812</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>507469be83f6c58ddc14ca7c9b0be61e</srcmd5>
+    <version>2.1.5</version>
+    <time>1603821498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843570</requestid>
+  </revision>
+</revisionlist>

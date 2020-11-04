@@ -1,0 +1,7 @@
+<package name="redfish-finder" project="openSUSE:Factory">
+  <title>redfish-finder</title>
+  <description>Scans Smbios information for type 42 management controller information, and uses
+that to configure the appropriate network interface so that the bmc is
+canonically accessible via the hostname redfish-localhost</description>
+  <devel project="systemsmanagement" package="redfish-finder"/>
+</package>

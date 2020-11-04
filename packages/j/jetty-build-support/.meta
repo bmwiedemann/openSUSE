@@ -1,0 +1,5 @@
+<package name="jetty-build-support" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jetty-build-support"/>
+</package>

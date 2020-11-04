@@ -1,0 +1,5 @@
+<package name="python-pytest-responsemock" project="openSUSE:Factory">
+  <title></title>
+  <description>Simplified requests calls mocking for pytest</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-responsemock"/>
+</package>

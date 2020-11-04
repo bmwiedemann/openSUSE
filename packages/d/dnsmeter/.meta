@@ -1,0 +1,5 @@
+<package name="dnsmeter" project="openSUSE:Factory">
+  <title>dnsmeter</title>
+  <description></description>
+  <devel project="network" package="dnsmeter"/>
+</package>

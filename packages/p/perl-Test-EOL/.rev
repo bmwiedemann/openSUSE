@@ -1,0 +1,126 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bd6be1647baac0606088d69aacec3ec</srcmd5>
+    <version>0.9</version>
+    <time>1304074320</time>
+    <user>saschpe</user>
+    <comment>new perl package, based on this list: is in devel:languages:perl without additional dependencies against O:F, has non-trivial test suite and is included in debian stable and has standard perl license</comment>
+    <requestid>66773</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d3face7ba057555b23ae669ba0c5c7ab</srcmd5>
+    <version>0.9</version>
+    <time>1304074340</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 66773
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8ba683685ddd5006e5714f7ba2c6d065</srcmd5>
+    <version>0.9</version>
+    <time>1316437866</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82395</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>8ba683685ddd5006e5714f7ba2c6d065</srcmd5>
+    <version>0.9</version>
+    <time>1319182310</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>5a4d48159940f9229fb823117b8d10ae</srcmd5>
+    <version>0.9</version>
+    <time>1321876030</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92142</requestid>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>66b937abb9b8fd0d4050040295378a00</srcmd5>
+    <version>0.9</version>
+    <time>1323193682</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4a8302d3f15457c367fc31dad7edcfa2</srcmd5>
+    <version>1.1</version>
+    <time>1329400809</time>
+    <user>coolo</user>
+    <comment>- updated to 1.1
+    - Fix test fails on &lt; 5.8 perls
+    - Fix t/13-latin1.t failures on Win32 and under TB1.5
+    - Fix misleading test failure diagnostics when only issue are
+      trailing whitespaces
+    - No longer blindly assume utf8 on input files (RT#59877)
+    - Properly document testing options
+    - Fix warnings on very old perls (paul@city-fan.org)
+      (Closes: RT#58442)
+    - Fix warnings on very old perls (paul@city-fan.org)
+      (Closes: RT#58442)</comment>
+    <requestid>105347</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>4a8302d3f15457c367fc31dad7edcfa2</srcmd5>
+    <version>1.1</version>
+    <time>1340183929</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>4a8302d3f15457c367fc31dad7edcfa2</srcmd5>
+    <version>1.1</version>
+    <time>1359109813</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f29646aabbab8e4c755a0e23f4d7fbc</srcmd5>
+    <version>1.5</version>
+    <time>1370516242</time>
+    <user>coolo</user>
+    <comment>- updated to 1.5
+    - Change to default to searching for trailing whitespace from the
+      current directory downwards (as tests are run from the top of a dist
+      normally), rather than one directory above the test file, as then
+      we don't work as expected if tests are in t/author or similar.
+  
+     - Fix to ignore inc/ directory used by Module::Install.
+  
+     - Fix bad regex matching directories containing 'svn', not just .svn'
+       directories. RT#75968</comment>
+    <requestid>177563</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7f29646aabbab8e4c755a0e23f4d7fbc</srcmd5>
+    <version>1.5</version>
+    <time>1379663867</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>7f29646aabbab8e4c755a0e23f4d7fbc</srcmd5>
+    <version>1.5</version>
+    <time>1409302511</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6432eb95552ef28f0d0664147df23e1b</srcmd5>
+    <version>1.6</version>
+    <time>1439274366</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320507</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c4e5df60788f653cc824bb5238fdc141</srcmd5>
+    <version>2.00</version>
+    <time>1494938279</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492946</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f53505d393cb72a02ae160a2c5e85c6e</srcmd5>
+    <version>0.121.1</version>
+    <time>1595577297</time>
+    <user>dimstar_suse</user>
+    <comment>Introduction of new package helmfile to Factory</comment>
+    <requestid>822108</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc83f210f6e858ebe1631adf177a520e</srcmd5>
+    <version>0.125.0</version>
+    <time>1595864363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822748</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0e366bbab03d2c5d1bd93325496e0d5e</srcmd5>
+    <version>0.125.3</version>
+    <time>1596703401</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824634</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2c1bf62033577b100572bd323ef014b3</srcmd5>
+    <version>0.125.7</version>
+    <time>1597744810</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827382</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>878562aa356a26edcd94474a163a1024</srcmd5>
+    <version>0.125.9</version>
+    <time>1598983705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830800</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b687456261661339c624b7f8caaeed4d</srcmd5>
+    <version>0.129.3</version>
+    <time>1600180432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834593</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe9b49455c52b13314faed0503142a79</srcmd5>
+    <version>0.129.4</version>
+    <time>1600703164</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835799</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35adabd0ee9ceeb8a996c70c550d98db</srcmd5>
+    <version>0.130.3</version>
+    <time>1603031751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842373</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a510f5ba6562b5470efef2fef60f5b24</srcmd5>
+    <version>0.132.0</version>
+    <time>1603448509</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843377</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>93e3d743d6044d22e46a2b8c70a2b84b</srcmd5>
+    <version>0.132.1</version>
+    <time>1603875532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844397</requestid>
+  </revision>
+</revisionlist>

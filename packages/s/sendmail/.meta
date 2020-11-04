@@ -1,0 +1,13 @@
+<package name="sendmail" project="openSUSE:Factory">
+  <title>BSD Sendmail</title>
+  <description>The &quot;Unix System Administration Handbook&quot; calls sendmail &quot;The most
+complex and complete mail delivery system in common use...&quot; .
+
+Ready-made configuration files are included for systems connected by
+TCP/IP (with or without a name server) and for systems using UUCP.
+
+'procmail' is used as a local mail agent.
+
+&quot;sendmail&quot; is a trademark of Sendmail, Inc.</description>
+  <devel project="server:mail" package="sendmail"/>
+</package>

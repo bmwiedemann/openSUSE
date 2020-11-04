@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db06dd588bfb141935b2cf13c547c5c1</srcmd5>
+    <version>1.1.0</version>
+    <time>1575382841</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>752907</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dcb1c434a69e0bf51ccaed2a0d7f77f9</srcmd5>
+    <version>1.1.0</version>
+    <time>1579346313</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in SLE-15: set en_US.UTF-8 encoding</comment>
+    <requestid>765428</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f68cf97450beab979dce68f636acd1ce</srcmd5>
+    <version>1.1.0</version>
+    <time>1579557392</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in SLE-15: set en_US.UTF-8 encoding by exporting LANG
+- call spec-cleaner
+- initial version 1.1.0, requires by python-authheaders [SLE-7686]
+</comment>
+    <requestid>765866</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>91e974f26fcd92bccf9981089426624c</srcmd5>
+    <version>1.1.1</version>
+    <time>1584643853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786370</requestid>
+  </revision>
+</revisionlist>

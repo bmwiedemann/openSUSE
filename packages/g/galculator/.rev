@@ -1,0 +1,191 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fa8ba3fd9a5b45649707757d40d8360</srcmd5>
+    <version>1.3.4</version>
+    <time>1262967795</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:lxde/galculator based on submit request 26287 from user anubisg1
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>46e8814c56e4caaf9a858fa38a5d5401</srcmd5>
+    <version>1.3.4</version>
+    <time>1268923615</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>46e8814c56e4caaf9a858fa38a5d5401</srcmd5>
+    <version>1.3.4</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>46e8814c56e4caaf9a858fa38a5d5401</srcmd5>
+    <version>1.3.4</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>46e8814c56e4caaf9a858fa38a5d5401</srcmd5>
+    <version>1.3.4</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>18dfb7734d4b4ee6b125d17110f901bb</srcmd5>
+    <version>1.3.4</version>
+    <time>1304353159</time>
+    <user>darix</user>
+    <comment></comment>
+    <requestid>67095</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>a7d6dd94c226fdbb72084bee8a904a3b</srcmd5>
+    <version>1.3.4</version>
+    <time>1304353167</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 67095
+</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>2926f4069c9c355e150ae5b4a5ead389</srcmd5>
+    <version>1.3.4</version>
+    <time>1312188062</time>
+    <user>saschpe</user>
+    <comment>spec file fixes</comment>
+    <requestid>77502</requestid>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>e3ae5fccf126120b8495d411f3c871cd</srcmd5>
+    <version>1.3.4</version>
+    <time>1312188078</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 77502
+</comment>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>809134c4fc9b73e26c5ddddf62a19ac1</srcmd5>
+    <version>1.3.4</version>
+    <time>1316459365</time>
+    <user>lrupp</user>
+    <comment>- added Patch0 (gcalculator-ld_fix.diff) to fix the build for factory
+  (this patch requires a autoreconf call) (forwarded request 82810 from Marcus_H)</comment>
+    <requestid>82945</requestid>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>a9f9eab5e2a58eed65b979e86d4e1164</srcmd5>
+    <version>1.3.4</version>
+    <time>1317744613</time>
+    <user>oertel</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 86017 from coolo)</comment>
+    <requestid>86235</requestid>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>a9f9eab5e2a58eed65b979e86d4e1164</srcmd5>
+    <version>1.3.4</version>
+    <time>1319181892</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>fdb03527d0edaf44cb07732ac875edb7</srcmd5>
+    <version>1.3.4</version>
+    <time>1323191448</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>fdb03527d0edaf44cb07732ac875edb7</srcmd5>
+    <version>1.3.4</version>
+    <time>1340183346</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>bc6de782021c9252d67f02a964539b6d</srcmd5>
+    <version>2.0</version>
+    <time>1350415909</time>
+    <user>coolo</user>
+    <comment>new upstream version</comment>
+    <requestid>138405</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7d98dd06713421069f3896e78c3d2d20</srcmd5>
+    <version>2.0.1</version>
+    <time>1355910909</time>
+    <user>coolo</user>
+    <comment>new upstream versin 2.0.1</comment>
+    <requestid>145830</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>7d98dd06713421069f3896e78c3d2d20</srcmd5>
+    <version>2.0.1</version>
+    <time>1359108900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e8303a8eaae7f36ccee380551a4af1bc</srcmd5>
+    <version>2.1</version>
+    <time>1363270808</time>
+    <user>coolo</user>
+    <comment>update to 2.1 (forwarded request 157088 from Lazy_Kent)</comment>
+    <requestid>159393</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ec5986361553e9070f4599a8f4a6441b</srcmd5>
+    <version>2.1.2</version>
+    <time>1367236659</time>
+    <user>coolo</user>
+    <comment>new upstream version 2.1.2</comment>
+    <requestid>173656</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>ec5986361553e9070f4599a8f4a6441b</srcmd5>
+    <version>2.1.2</version>
+    <time>1379662380</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ba9025d6e6d4c4e15f061cf4cbb34091</srcmd5>
+    <version>2.1.3</version>
+    <time>1400006745</time>
+    <user>coolo</user>
+    <comment>new upstream version 2.1.3</comment>
+    <requestid>233575</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ba9025d6e6d4c4e15f061cf4cbb34091</srcmd5>
+    <version>2.1.3</version>
+    <time>1409300916</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6db6264ea3ecbe4aae9813fcc7e02b0b</srcmd5>
+    <version>2.1.4</version>
+    <time>1514842560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560956</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ea73fa67dc5023abfe8df89ba10fc073</srcmd5>
+    <version>2.1.4</version>
+    <time>1577803748</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760160</requestid>
+  </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>62cae4f9ae8e7aa175001ce13ccb62ab</srcmd5>
+    <version>2.1.4</version>
+    <time>1592245884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814645</requestid>
+  </revision>
+</revisionlist>

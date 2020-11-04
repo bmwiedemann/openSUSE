@@ -1,0 +1,5 @@
+<package name="python-prestring" project="openSUSE:Factory">
+  <title></title>
+  <description>Python source code generation library (with overuse with-syntax)</description>
+  <devel project="devel:languages:python" package="python-prestring"/>
+</package>

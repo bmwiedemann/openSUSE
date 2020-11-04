@@ -1,0 +1,10 @@
+<package name="ldas-tools-cmake" project="openSUSE:Factory">
+  <title>A collection of CMake functions used by LDAS (LIGO Data Analysis System) Tools</title>
+  <description>LDAS (LIGO Data Analysis System) is a collection of libraries and executables
+aid in the processing of gravitation wave data sets. ldas-tools-cmake provides the
+a collection of cmake functions used by LDAS.
+
+</description>
+  <devel project="science" package="ldas-tools-cmake"/>
+  <url>http://software.ligo.org</url>
+</package>

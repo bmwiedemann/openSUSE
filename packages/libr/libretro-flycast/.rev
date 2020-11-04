@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d6e04dab873c4813dd9842749d75b7ba</srcmd5>
+    <version>0~git20190923</version>
+    <time>1581456177</time>
+    <user>dimstar_suse</user>
+    <comment>DreamCast emulator</comment>
+    <requestid>771860</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e790efcb643aaf24118ecec17377e37</srcmd5>
+    <version>0~git20200609</version>
+    <time>1592939165</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816503</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0be95d98f2efd76f962242fa052c926c</srcmd5>
+    <version>0~git20200609</version>
+    <time>1597955650</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828233</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c5f52e627fd7edf68dbbe26e9ccbfe25</srcmd5>
+    <version>0~git20201013</version>
+    <time>1602857672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841968</requestid>
+  </revision>
+</revisionlist>

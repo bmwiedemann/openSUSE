@@ -1,0 +1,9 @@
+<package name="mcds" project="openSUSE:Factory">
+  <title>Mutt Carddav search program</title>
+  <description>mcds is a command line tool primarily used as a search query plugin
+for mutt to query a carddav server.
+
+</description>
+  <devel project="server:mail" package="mcds"/>
+  <url>https://github.com/t-brown/mcds</url>
+</package>

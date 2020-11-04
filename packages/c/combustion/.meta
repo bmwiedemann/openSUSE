@@ -1,0 +1,14 @@
+<package name="combustion" project="openSUSE:Factory">
+  <title>System for initial configuration of appliances</title>
+  <description>Combustion is a minimal module for dracut, which runs a user provided script on
+the first boot of a transactional system.
+
+You can use this to create additional files, install packages, set up devices
+or even re-partition the hard disk. The configuration can be provided as a
+shell script, loaded from an external storage media and is run during boot in a
+new system snapshot. On success, the system will directly boot into that new
+snapshot, so that no reboot is needed.
+
+</description>
+  <devel project="devel:kubic:ignition" package="combustion"/>
+</package>

@@ -1,0 +1,96 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>05742a99cff289954a273d80d87edc2b</srcmd5>
+    <version>19.08</version>
+    <time>1574783485</time>
+    <user>dimstar_suse</user>
+    <comment>Add armnn to Factory</comment>
+    <requestid>743532</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>06e761674340a322ea2b0b2a49874dba</srcmd5>
+    <version>19.08</version>
+    <time>1574859298</time>
+    <user>dimstar_suse</user>
+    <comment>- tensorflow-devel package now includes *.pb.* files, so 
+  remove TensorFlow parser build workaround:
+  * armnn-fix_tensorflow_link.patch</comment>
+    <requestid>751086</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f5ec18d6d1640ca7e55beb5f4f391635</srcmd5>
+    <version>19.08</version>
+    <time>1579557066</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ArmnnConverter and ArmnnQuantizer packaging by default as it requires libQuantizer.so to be packaged, which is not yet
+- Package ArmnnConverter and ArmnnQuantizer
+- ExcludeArch %ix86: Parts of the build deps (tensorflow/bazel) are not supported on ix86</comment>
+    <requestid>765890</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4861605a2d66f550708e540c11a02f9f</srcmd5>
+    <version>19.11</version>
+    <time>1583094436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>773364</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad10d101557b3e9d44c32cfde1b392e4</srcmd5>
+    <version>20.02</version>
+    <time>1583949008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783721</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>12c7080d701114d818f42622d7b4e780</srcmd5>
+    <version>20.02</version>
+    <time>1585085835</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787844</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>ba221865acff7ffd81c1bdce5a6b15eb</srcmd5>
+    <version>20.02</version>
+    <time>1585761051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790253</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>be6f3c723d39b2eccda698046f763588</srcmd5>
+    <version>20.02</version>
+    <time>1590780254</time>
+    <user>maxlin_factory</user>
+    <comment>- Apply boost link fixes only for armnn_extra_tests
+- Apply patches for armnn_extra_tests only when 
+  armnn_extra_tests is built</comment>
+    <requestid>810035</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2ae0b6fcc84c2d7643236d20c97cbc59</srcmd5>
+    <version>20.05</version>
+    <time>1591990752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812530</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6716f469ad3906a7805ed19c4e375674</srcmd5>
+    <version>20.05</version>
+    <time>1592398585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815376</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1933f0368363a432545ad32a22d55610</srcmd5>
+    <version>20.08</version>
+    <time>1599597986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832531</requestid>
+  </revision>
+</revisionlist>

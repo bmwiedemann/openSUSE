@@ -1,0 +1,87 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c285be97e47ee2aabe396f6d9b214de2</srcmd5>
+    <version>6.0.4</version>
+    <time>1575373286</time>
+    <user>dimstar_suse</user>
+    <comment>eternalterminal</comment>
+    <requestid>752817</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9986ec9049bb69b3f136c0ca42f60716</srcmd5>
+    <version>6.0.5</version>
+    <time>1577451685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.5:
+  * Fix SSH config parsing bug when Hostname is specified (#235) 
+  * Expand tilde before parsing include file (#244)
+  * Add a build option to disable easylogging's default
+    crash handler (#246)
+  * Several bug fixes</comment>
+    <requestid>759672</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6c15462d135dfc8a6573ff8a3b3a3212</srcmd5>
+    <version>6.0.6</version>
+    <time>1582018708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.6:
+  * Generate passkeys on server (#280)</comment>
+    <requestid>774819</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9043e01f94ddc6f8f50841b0b90a28ad</srcmd5>
+    <version>6.0.7</version>
+    <time>1583311722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.7:
+  * Add Match Host support to ssh config</comment>
+    <requestid>781390</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>682b3a42e76129af50961c649073b0b0</srcmd5>
+    <version>6.0.7</version>
+    <time>1593090435</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with DISABLE_CRASH_LOG=ON to prevent segfault upon abort
+  See https://github.com/MisterTea/EternalTerminal/issues/324</comment>
+    <requestid>816851</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74f53001a2a2fea89629d086ca0e9ee0</srcmd5>
+    <version>6.0.8</version>
+    <time>1596096188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.8:
+  * TSAN/ASAN fixes
+  * Parse named socket port forwards (#293)
+  * Fix input for forward tunnels (#319)
+  * Revert back to write/read instead of send/recv on unix (#323, #322)
+  * Handle SIGINT manually (#333, #324)
+- Build with DISABLE_CRASH_LOG=OFF since SIGINT is now not handled
+  by easylogging++ anymore, thus ctrl+c won't lead to crash</comment>
+    <requestid>823519</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1cd1f5046168600e76e2b42e72bb8a7a</srcmd5>
+    <version>6.0.9</version>
+    <time>1596203784</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.9:
+  * TSAN fixes
+  * Pass errno correctly from ::read</comment>
+    <requestid>823688</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ff392b5c8869834eca9c18892b89f550</srcmd5>
+    <version>6.0.11</version>
+    <time>1596457121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.11:
+  * Fix version number
+
+- Update to 6.0.10:
+  * Fix --help and --version flags</comment>
+    <requestid>824072</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>905789bc5ab7b5da20d3bb12a59b82d5</srcmd5>
+    <version>1.1.2</version>
+    <time>1596116633</time>
+    <user>dimstar_suse</user>
+    <comment>Packages linstor/linstor-client/python-linstor as a replacement of drbdmanage to manage DRBD solution in distributed environment. drbdmanage removed from Factory in request 798685 due to deprecated by upstream and lack of support of python3. New method of linstor is popular in many distributions and tested in Tumbleweed already. Change the firewalld from 700 to 755 for the issue of request 822891</comment>
+    <requestid>822947</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24d7249f0c77e804b92db35e9f523354</srcmd5>
+    <version>1.3.0</version>
+    <time>1600802067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836004</requestid>
+  </revision>
+</revisionlist>

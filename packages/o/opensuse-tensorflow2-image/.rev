@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b855de2c70ac9003b998505018874e79</srcmd5>
+    <version>1.0.0</version>
+    <time>1583948963</time>
+    <user>dimstar_suse</user>
+    <comment>A container image carrying Tensorflow v2 to fruition.</comment>
+    <requestid>783440</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>303c5869c1fecf42f10cdd17ba7261d3</srcmd5>
+    <version>1.0.0</version>
+    <time>1585176407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788180</requestid>
+  </revision>
+</revisionlist>

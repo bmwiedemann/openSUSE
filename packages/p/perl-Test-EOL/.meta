@@ -1,0 +1,6 @@
+<package name="perl-Test-EOL" project="openSUSE:Factory">
+  <title>Check the correct line endings in your project</title>
+  <description>This module scans your project/distribution for any perl files (scripts,
+modules, etc) for the presence of windows line endings.</description>
+  <devel project="devel:languages:perl" package="perl-Test-EOL"/>
+</package>

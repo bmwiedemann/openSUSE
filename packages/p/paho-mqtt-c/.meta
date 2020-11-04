@@ -1,0 +1,5 @@
+<package name="paho-mqtt-c" project="openSUSE:Factory">
+  <title>MQTT C Client</title>
+  <description>The Paho MQTT C Client is a fully featured MQTT client written in ANSI standard C.</description>
+  <devel project="devel:libraries:c_c++" package="paho-mqtt-c"/>
+</package>

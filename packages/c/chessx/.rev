@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>afd216846a326a6172448331f8dfedc4</srcmd5>
+    <version>1.4.0</version>
+    <time>1490707240</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>460809</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2dae8a868660475e78aa0bb22a5ccda3</srcmd5>
+    <version>1.4.0</version>
+    <time>1491566129</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>483138</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>898bf3a61df3897bc3933452183989ba</srcmd5>
+    <version>1.4.4</version>
+    <time>1491896802</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486444</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f831628049f3d4e285a32feb8a5b3431</srcmd5>
+    <version>1.4.6</version>
+    <time>1493020088</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487946</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>550a29126ff14d28cf6544c572b08ab8</srcmd5>
+    <version>1.4.6</version>
+    <time>1529402113</time>
+    <user>maxlin_factory</user>
+    <comment>- Added chessx-Qt511.patch to fix build failure with Qt 5.11
+</comment>
+    <requestid>616006</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>79d1407ead40eb6bb79b85d1e693cd0c</srcmd5>
+    <version>1.5.0</version>
+    <time>1557084156</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700872</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec3acd4e9697dfc56e399842e8653d34</srcmd5>
+    <version>1.5.0</version>
+    <time>1557142126</time>
+    <user>dimstar_suse</user>
+    <comment>- New tarball with Qt 5.9 fix (no version change)
+</comment>
+    <requestid>700987</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>908ffe4898a2575ec38ee18b83bdc9d2</srcmd5>
+    <version>1.5.4</version>
+    <time>1589046772</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.4
+  * New feature: blunder checking
+  * New feature: Speak moves
+  * New feature: Refactor complete database
+  * Changed: Command-Key to force query for promotion dialog
+    (instead of Meta)
+  * Bugfix: Undo setting up board required two steps
+  * Bugfix: Clearing database was broken
+  * Bugfix: entering nags/null movees via keyboard
+- Add chessx-translations.patch, chessx-install.patch and
+  chessx-use_system_quazip.patch
+</comment>
+    <requestid>802027</requestid>
+  </revision>
+</revisionlist>

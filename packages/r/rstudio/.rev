@@ -1,0 +1,124 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>012aac1894070f2749bf55c1d4b8b7cc</srcmd5>
+    <version>1.2.5033</version>
+    <time>1579346257</time>
+    <user>dimstar_suse</user>
+    <comment>resurrection of the RStudio IDE</comment>
+    <requestid>764076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f6168d8dec9717f8704586b924f369d9</srcmd5>
+    <version>1.2.5033</version>
+    <time>1579557238</time>
+    <user>dimstar_suse</user>
+    <comment>- Set RStudio versions properly via `ENV` variables
+- Fix shebangs on Leap 15
+- Lower ram and disk in `_constraints` to match requirements
+- Add patch to skip the installation of the bundled `mathjax` and `pandoc` as we `rm -rf` them again</comment>
+    <requestid>765713</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9e81e04a990dbf1baa3720947f2fcb47</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580152737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767798</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>18b65a9496ed1c627307d78504a7afaf</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580300186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767977</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f4a8b4ca4ed8bbc7d2ca33e55186dffd</srcmd5>
+    <version>1.2.5033</version>
+    <time>1580511319</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd &amp; pam &amp; user for rstudio-server
+</comment>
+    <requestid>769041</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>65e4dd80ea1e2b4c620d509c6b813877</srcmd5>
+    <version>1.2.5033</version>
+    <time>1581694842</time>
+    <user>okurz-factory</user>
+    <comment></comment>
+    <requestid>774290</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d7063b7c6267aac247f4e8e498337355</srcmd5>
+    <version>1.2.5033</version>
+    <time>1583948933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783402</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>757b980099327f790d53277db5d0751f</srcmd5>
+    <version>1.2.5042</version>
+    <time>1591879897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799122</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5225a618d6821a8fbb2c824aa5e312d8</srcmd5>
+    <version>1.3.959</version>
+    <time>1596035985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>815461</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>ccc62ad85743ae689751047be40d8cd8</srcmd5>
+    <version>1.3.959</version>
+    <time>1596277936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823781</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>45722e15b9653295add9c0eee189f706</srcmd5>
+    <version>1.3.1056</version>
+    <time>1597064298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824998</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>13696d8a2b89a214d758e135f47dc88e</srcmd5>
+    <version>1.3.1073</version>
+    <time>1598726301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829915</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eb6f20a5719637b2aa60fed0be88bdc5</srcmd5>
+    <version>1.3.1073</version>
+    <time>1599054968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831471</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>18ed1329c9f001f7074095548777e80a</srcmd5>
+    <version>1.3.1073</version>
+    <time>1600701503</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow to build on Leap 15.2
+- Add use-system-hunspell.patch to make compatible with newer versions of hunspell, replace bundled version by system library.
+- Add fix-libclang-usage.patch to make compatible with newer versions, unbundle clang-c headers and use system headers instead. Also make sure we find the library and the required builtin headers.
+- Most users won't need pandoc and mathjax, and since they have quite some dependencies of their own, we only recommend them.
+- Remove bundled zlib files that we don't need.
+- Put executables specific to -desktop and -server into the subpackages to reduce the number of dependencies if only one of them is needed. (Most notably users installing the server variant won't need Qt libraries.)
+</comment>
+    <requestid>835196</requestid>
+  </revision>
+</revisionlist>

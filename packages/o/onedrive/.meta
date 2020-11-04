@@ -1,0 +1,5 @@
+<package name="onedrive" project="openSUSE:Factory">
+  <title>onedrive</title>
+  <description>OneDrive Client for Linux.</description>
+  <devel project="network" package="onedrive"/>
+</package>

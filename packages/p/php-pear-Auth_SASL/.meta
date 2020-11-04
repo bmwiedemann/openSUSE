@@ -1,0 +1,11 @@
+<package name="php-pear-Auth_SASL" project="openSUSE:Factory">
+  <title>Abstraction of various SASL mechanism responses</title>
+  <description>Provides code to generate responses to common SASL mechanisms, including:
+  - Digest-MD5
+  - CramMD5
+  - Plain
+  - Anonymous
+  - Login (Pseudo mechanism)</description>
+  <devel project="server:php:applications" package="php-pear-Auth_SASL"/>
+  <url>http://pear.php.net/package/Auth_SASL</url>
+</package>

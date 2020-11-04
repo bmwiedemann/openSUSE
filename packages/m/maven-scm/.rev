@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a25292eac96ee3501593de0806042b26</srcmd5>
+    <version>1.11.2</version>
+    <time>1584643686</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>783250</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3449c0f6fb8d622123791adfc8bb28c</srcmd5>
+    <version>1.11.2</version>
+    <time>1594894284</time>
+    <user>dimstar_suse</user>
+    <comment>fix build against jgit 5.8.0</comment>
+    <requestid>818519</requestid>
+  </revision>
+</revisionlist>

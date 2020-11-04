@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f9fd5134603d01747447257ba955d397</srcmd5>
+    <version>0.1.1</version>
+    <time>1585667731</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>789961</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b20d3ec0f82eddee4210b0c24e7aff4a</srcmd5>
+    <version>0.1.2</version>
+    <time>1588610431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.3:
+  - DRF 3.10 support
+  - Drop support for python 2.7 and python 3.4
+  - Add support for python 3.8
+  - Add support for django 3.0
+- Drop merged patches:
+  * merged_pr_11.patch
+  * fix-test-middleware-classes.patch</comment>
+    <requestid>799969</requestid>
+  </revision>
+</revisionlist>

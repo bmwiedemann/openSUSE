@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7bcf80dbae8c71d4819b98a5b973655</srcmd5>
+    <version>0.6.3</version>
+    <time>1485511195</time>
+    <user>dimstar_suse</user>
+    <comment>Another liberated classic.
+
+(New version compared to SR#420936)</comment>
+    <requestid>440884</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5958d6378831d7d9935273ff0d3e5c54</srcmd5>
+    <version>0.6.5</version>
+    <time>1503592206</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>503226</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>28dac655354eb37582540ec7dff2ce92</srcmd5>
+    <version>0.6.6</version>
+    <time>1510045321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539247</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c2ead0a42be9731fcbd02b4aaff968b</srcmd5>
+    <version>0.6.7</version>
+    <time>1530866957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621185</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8bb7df4d007caf1260ba6ad01197d09</srcmd5>
+    <version>0.7.1</version>
+    <time>1575463820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>750564</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0cefc37578fe9815b906fd222a5747c3</srcmd5>
+    <version>0.7.2</version>
+    <time>1577137523</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758849</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2c3703391c8a2389985cc7bc64d9accc</srcmd5>
+    <version>0.7.3</version>
+    <time>1578606754</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762183</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cbc3959c6582a904fbb35f933cc16e0a</srcmd5>
+    <version>0.9.1</version>
+    <time>1601919390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839041</requestid>
+  </revision>
+</revisionlist>

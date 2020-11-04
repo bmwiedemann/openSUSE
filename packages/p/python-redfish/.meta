@@ -1,0 +1,10 @@
+<package name="python-redfish" project="openSUSE:Factory">
+  <title>Redfish Python Library</title>
+  <description>The Redfish library performs the basic HTTPS operations GET, POST,
+PUT, PATCH and DELETE on resources using the HATEOAS (Hypermedia as
+the Engine of Application State) Redfish architecture.
+
+</description>
+  <devel project="devel:languages:python" package="python-redfish"/>
+  <url>https://github.com/DMTF/python-redfish-library</url>
+</package>

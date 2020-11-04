@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>253e479d05d4cfdc009e23c8dfc45f68</srcmd5>
+    <version>2.9.2</version>
+    <time>1573223229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746445</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b20e31b42b4933ba04e1b2ef75e9a80</srcmd5>
+    <version>2.9.3</version>
+    <time>1588697782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.3:
+  * Fixed cmake-fedora-fedpkg failed to push to bodhi.
+  * Target tag_pre now depends on target module-only.</comment>
+    <requestid>800239</requestid>
+  </revision>
+</revisionlist>

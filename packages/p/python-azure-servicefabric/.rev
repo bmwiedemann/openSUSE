@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a41d2c970b9a90e0ff0510cc7e894784</srcmd5>
+    <version>6.0.1</version>
+    <time>1507755656</time>
+    <user>dimstar_suse</user>
+    <comment>breaking up the Azure SDK</comment>
+    <requestid>531864</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>324eeea801ffdbf4bc7313d3dfc8ad33</srcmd5>
+    <version>6.0.2</version>
+    <time>1517323520</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>571027</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f0f314cefdb7083dc649148f74a02a77</srcmd5>
+    <version>6.1.2.9</version>
+    <time>1526219966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599343</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e966b515786382c692432e108557375</srcmd5>
+    <version>6.3.0.0</version>
+    <time>1537971365</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>638004</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8c6b095859d2658682e86ffc406c25a5</srcmd5>
+    <version>6.4.0.0</version>
+    <time>1557833916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694343 from glaubitz)</comment>
+    <requestid>694551</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3f88df39761539afb1b869e8b31f97e</srcmd5>
+    <version>6.5.0.0</version>
+    <time>1570710840</time>
+    <user>dimstar_suse</user>
+    <comment>- Resubmit with corrected changelog entry</comment>
+    <requestid>735801</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0045f846dd0fa5a4631e7463d71cd98c</srcmd5>
+    <version>7.0.0.0</version>
+    <time>1580205419</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767758 from glaubitz)</comment>
+    <requestid>767846</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1bd59ca38281fa991d18bfc10a145d2</srcmd5>
+    <version>7.1.0.45</version>
+    <time>1601652433</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.1.0.45
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 833098 from glaubitz)</comment>
+    <requestid>833120</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f999de49cffe86e1d8311288971030fe</srcmd5>
+    <version>4.1</version>
+    <time>1485511930</time>
+    <user>dimstar_suse</user>
+    <comment>New package: form - A Symbolic Manipulation System</comment>
+    <requestid>451016</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d7384730eb6390d2c9df5df3f652252</srcmd5>
+    <version>4.2.0</version>
+    <time>1499880990</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>509635</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e4887e95f6660a5408043a6767e07c12</srcmd5>
+    <version>4.2.0</version>
+    <time>1508946484</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536485</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>c606ca0615fd84cd64f64d2d29949a00</srcmd5>
+    <version>4.2.0</version>
+    <time>1531232217</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>621828</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68eff17b6ed5abe614df157d32ffa57b</srcmd5>
+    <version>4.2.1</version>
+    <time>1553635878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686430</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>23a6c37ffef71810c91e063919a9889f</srcmd5>
+    <version>4.2.1</version>
+    <time>1573045549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>745380</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d3823c4b705382a592909db826057ffe</srcmd5>
+    <version>3.6.12</version>
+    <time>1597955498</time>
+    <user>dimstar_suse</user>
+    <comment>Leap python interpreter, we can keep it as long as leap is alive for build-testing purposes (and if someone needs it)</comment>
+    <requestid>828084</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57755b90990a4db639a83027e04a5500</srcmd5>
+    <version>3.6.12</version>
+    <time>1598340800</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv64-support.patch: bpo-33377: add triplets for mips-r6 and riscv
+  (#6655)
+- riscv64-ctypes.patch: bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK
+  (GH-11694)
+- Update list of tests to exclude under qemu linux-user
+</comment>
+    <requestid>828928</requestid>
+  </revision>
+</revisionlist>

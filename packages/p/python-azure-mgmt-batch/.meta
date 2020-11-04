@@ -1,0 +1,7 @@
+<package name="python-azure-mgmt-batch" project="openSUSE:Factory">
+  <title>Microsoft Azure Batch Management Client Library</title>
+  <description>This is the Microsoft Azure Batch Management Client Library.
+
+This package has been tested with Python 2.7, 3.3, 3.4 and 3.5.</description>
+  <devel project="devel:languages:python:azure" package="python-azure-mgmt-batch"/>
+</package>

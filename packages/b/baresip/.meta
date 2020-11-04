@@ -1,0 +1,5 @@
+<package name="baresip" project="openSUSE:Factory">
+  <title>Modular SIP useragent</title>
+  <description>Baresip is a portable and modular SIP User-Agent with audio and video support</description>
+  <devel project="network:telephony" package="baresip"/>
+</package>

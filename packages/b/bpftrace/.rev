@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>49cdf4f3e337478ae0d8d79f88c46c0d</srcmd5>
+    <version>0.9.3</version>
+    <time>1577450956</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of bpftrace.</comment>
+    <requestid>759279</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f41918edfda6511f961586d564489a15</srcmd5>
+    <version>0.9.3</version>
+    <time>1580511449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769016</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ad79a39c112dfbebba562e87ec30f468</srcmd5>
+    <version>0.9.4</version>
+    <time>1580928135</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770113</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a29cbcca3a74dd9d13a9235f11071751</srcmd5>
+    <version>0.10.0</version>
+    <time>1586869921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793815</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4aa73069fd182f7b48d879f3091fbd53</srcmd5>
+    <version>0.11.0</version>
+    <time>1594894672</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821169</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b7ebcfe38af34db39dcaee2f6a5d4993</srcmd5>
+    <version>0.11.2</version>
+    <time>1604306541</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845156</requestid>
+  </revision>
+</revisionlist>

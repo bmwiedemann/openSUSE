@@ -1,0 +1,6 @@
+<package name="budgie-desktop" project="openSUSE:Factory">
+  <title>Budgie Desktop</title>
+  <description>a modern desktop designed to keep out the way of the user.</description>
+  <devel project="X11:Solus" package="budgie-desktop"/>
+  <url>https://solus-project.com/budgie/</url>
+</package>

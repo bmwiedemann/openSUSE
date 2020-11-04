@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c6154f59e64af6b8360a37ed8559b0c</srcmd5>
+    <version>2.4</version>
+    <time>1573772841</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>748539</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24e9d73fa7b76784ac5e4c96243235ef</srcmd5>
+    <version>2.4</version>
+    <time>1574784049</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750675</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ba4d00667e81ddcafddb1d9ddf362b0</srcmd5>
+    <version>2.4</version>
+    <time>1576506051</time>
+    <user>dimstar_suse</user>
+    <comment>Adapt to groovy18</comment>
+    <requestid>757284</requestid>
+  </revision>
+</revisionlist>

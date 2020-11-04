@@ -1,0 +1,9 @@
+<package name="maven-checkstyle-plugin" project="openSUSE:Factory">
+  <title>Plugin that generates a report regarding the code style used by the developers</title>
+  <description>Generates a report on violations of code style and optionally fails the build
+if violations are detected.
+
+</description>
+  <devel project="Java:packages" package="maven-checkstyle-plugin"/>
+  <url>https://maven.apache.org/plugins/%{name}</url>
+</package>

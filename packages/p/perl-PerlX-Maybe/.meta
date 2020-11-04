@@ -1,0 +1,32 @@
+<package name="perl-PerlX-Maybe" project="openSUSE:Factory">
+  <title>perl-PerlX-Maybe - Return a Pair Only If They Are Both Defined</title>
+  <description>Moose classes (and some other classes) distinguish between an attribute being unset and the attribute being set to undef. Supplying a constructor arguments like this:
+
+ my $bob = Person-&gt;new(
+    name =&gt; $name,
+    age =&gt; $age,
+ );
+
+Will result in the 'name' and 'age' attributes possibly being set to undef (if the corresponding '$name' and '$age' variables are not defined), which may violate the Person class' type constraints.
+
+(Note: if you are the _author_ of the class in question, you can solve this using MooseX::UndefTolerant. However, some of us are stuck using non-UndefTolerant classes written by third parties.)
+
+To ensure that the Person constructor does not try to set a name or age at all when they are undefined, ugly looking code like this is often used:
+
+ my $bob = Person-&gt;new(
+    defined $name ? (name =&gt; $name) : (),
+    defined $age ? (age =&gt; $age) : (),
+ );
+
+or:
+
+ use PerlX::Maybe;
+
+ my $bob = Person-&gt;new(
+    (name =&gt; $name) x!!(defined $name),
+    (age  =&gt; $age)  x!!(defined $age),
+ );
+
+A slightly more elegant solution is the 'maybe' function.</description>
+  <devel project="devel:languages:perl" package="perl-PerlX-Maybe"/>
+</package>

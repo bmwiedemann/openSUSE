@@ -1,0 +1,9 @@
+<package name="mathomatic" project="openSUSE:Factory">
+  <title>Mathomatic computer algebra system</title>
+  <description>Mathomatic is a free, portable, general-purpose Computer Algebra System (CAS) that can automatically solve, differentiate, simplify, combine, and compare algebraic equations, perform standard, complex number, modular, and polynomial arithmetic, etc. It does some calculus and is very easy to learn and use. Plotting expressions with gnuplot is also supported.
+
+If you want to participate in development or report a bug in Mathomatic, you can contact the primary author: George Gesslein II at &quot;gesslein@mathomatic.org&quot; or use the report bug function available here.
+</description>
+  <devel project="science" package="mathomatic"/>
+  <url>http://www.mathomatic.org</url>
+</package>

@@ -1,0 +1,7 @@
+<package name="liblcf" project="openSUSE:Factory">
+  <title>liblcf</title>
+  <description>Library to handle RPG Maker 2000/2003 and EasyRPG projects
+
+https://github.com/EasyRPG/liblcf</description>
+  <devel project="Emulators" package="liblcf"/>
+</package>

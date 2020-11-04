@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1d6f1b251b33e7ccd19a90368f67843</srcmd5>
+    <version>0.4.0</version>
+    <time>1599210558</time>
+    <user>dimstar_suse</user>
+    <comment>Initial package; version 0.4.0</comment>
+    <requestid>824102</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b47fbb2fc2078cbc911f4646e72384c</srcmd5>
+    <version>0.4.0</version>
+    <time>1599343340</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>832043</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>39284a872fd1674d5c521436d8a4c362</srcmd5>
+    <version>0.4.0</version>
+    <time>1600802168</time>
+    <user>dimstar_suse</user>
+    <comment>- Pin Golang version to 1.14
+- Add requires for fillup, groupadd, useradd, systemd (bsc#1175946)
+</comment>
+    <requestid>836068</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>45bc08713f8400fdb50e0a7d55e5c08d</srcmd5>
+    <version>0.4.0</version>
+    <time>1602155664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840195</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b9af7e01deca20b6ce9a4d128179f1a9</srcmd5>
+    <version>0.4.0</version>
+    <time>1603202973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842514</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a3bf133bf366574caea1f1c3943c034f</srcmd5>
+    <version>0.4.0</version>
+    <time>1604054948</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844886</requestid>
+  </revision>
+</revisionlist>

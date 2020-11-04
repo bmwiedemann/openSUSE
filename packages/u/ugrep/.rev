@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2756bb1c4749421d7f43b773dc20ef6b</srcmd5>
+    <version>2.3.2</version>
+    <time>1593727674</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep, an interactive grep alternative</comment>
+    <requestid>817922</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>aa13f92b6aabd179732253142c6075c9</srcmd5>
+    <version>2.3.2</version>
+    <time>1594045757</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable avx
+- Add reproducible.patch to drop march=native
+  to make package build reproducible (boo#1100677)
+</comment>
+    <requestid>818824</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>050ce7e8e91c9f04e29a478a0d9818f6</srcmd5>
+    <version>2.4.0</version>
+    <time>1594706288</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 2.4.0</comment>
+    <requestid>820435</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>313d85ff615724002089f379fbdf2ba7</srcmd5>
+    <version>2.5.0</version>
+    <time>1595950094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823149</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c38daf83fbc065809a10ce5d2474a4b7</srcmd5>
+    <version>2.5.1</version>
+    <time>1597221413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825776</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53737be76182ee2abce0a4eaf7c2ff42</srcmd5>
+    <version>2.5.2</version>
+    <time>1597658756</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 2.5.2</comment>
+    <requestid>826999</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e5b285370f7a5070663998ccf236e2c</srcmd5>
+    <version>2.5.3</version>
+    <time>1597955598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828148</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6973d470160abd86c4ac6ee5f4248866</srcmd5>
+    <version>2.5.5</version>
+    <time>1599210742</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>831660</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afc3f98a73abba52e441245fbefae96e</srcmd5>
+    <version>2.5.6</version>
+    <time>1600879363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836117</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>905ff0961f55fb813f9b90d1203722f3</srcmd5>
+    <version>3.0.2</version>
+    <time>1603456083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843588</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>25e6ec208c2aa1455b1f046010c069d7</srcmd5>
+    <version>3.0.4</version>
+    <time>1603725650</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 3.0.4</comment>
+    <requestid>843906</requestid>
+  </revision>
+</revisionlist>

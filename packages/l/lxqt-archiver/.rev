@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e3ab7b9a6a1e7a409c4a33ea35a41661</srcmd5>
+    <version>0.2.0</version>
+    <time>1589892293</time>
+    <user>dimstar_suse</user>
+    <comment>Submit to Factory</comment>
+    <requestid>806786</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>158476f8d936422a0e2d990592cf4d5b</srcmd5>
+    <version>0.2.0</version>
+    <time>1593727960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818310</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0117f1acfc51e57a9dd5b72433df054c</srcmd5>
+    <version>0.3.0</version>
+    <time>1604510883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Avoid memory leak in &quot;java-utils.c&quot;.
+  * Fixed comparison of integer expressions of different signedness.
+  * Removed &quot;g_ptr_array_free_full&quot; from &quot;glib-utils.c&quot; and used
+    GLib's &quot;g_ptr_array_free&quot; instead.
+  * Use bsdtar to handle RPM packages.</comment>
+    <requestid>846000</requestid>
+  </revision>
+</revisionlist>

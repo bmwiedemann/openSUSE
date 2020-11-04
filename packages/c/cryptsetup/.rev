@@ -1,0 +1,962 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a83156f904e1935886d4f38841154f5f</srcmd5>
+    <version>1.0.5</version>
+    <time>1181010556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>8378b34d3cca570a7e508ca9c3af48f1</srcmd5>
+    <version>1.0.5</version>
+    <time>1181559464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="8">
+    <srcmd5>99ab4a3bf99410cdd16d21048b8d1665</srcmd5>
+    <version>1.0.5</version>
+    <time>1182448319</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="24">
+    <srcmd5>127c60b5efddbd883a24c0b4b774fb54</srcmd5>
+    <version>1.0.5</version>
+    <time>1188228877</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>afe1cc3c0cb80e8344d95ed58a0a6a35</srcmd5>
+    <version>1.0.5_SVNr31</version>
+    <time>1192549785</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0636c3b5e90c34f8c51b3a7fa7e0211f</srcmd5>
+    <version>1.0.5_SVNr31</version>
+    <time>1194642765</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d049d45a8a1d5644ab5a428a186d670</srcmd5>
+    <version>1.0.5_SVNr38</version>
+    <time>1196356801</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0e11dd46d5d4a8ce15f8f8c99aef4d0f</srcmd5>
+    <version>1.0.5_SVNr42</version>
+    <time>1199912244</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>ace527619407a6f76bbdf43ffcb604bc</srcmd5>
+    <version>1.0.5_SVNr42</version>
+    <time>1202142921</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ac161769168d48a594ef35b1fa61151d</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1204159963</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>87483115b8cd2c9d7db2ee985993bb49</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1207769807</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>75cc41ce33aaa9f871efc356759dfe6f</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1210092896</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="28">
+    <srcmd5>ae46e775d527264711b14a66213a7857</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1216933592</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="36">
+    <srcmd5>1313e54b76af8a66245c681b6c14cd74</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1218208748</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="39">
+    <srcmd5>fa46913ffabb1d02e87dc9c8d79b6c0a</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1218671215</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="45">
+    <srcmd5>88568554e6edcce680d3f0b143af0e62</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1219350925</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="50">
+    <srcmd5>8061af6d8b5ca7be3b6494c79daeb70b</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1220645995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="56">
+    <srcmd5>c05c354e87becfe762e68b61a324cddd</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1221489141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="57">
+    <srcmd5>fb838b1a8ff48caacb7f0a8056f39c9c</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1225719686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="58">
+    <srcmd5>faaefaca150a4d2cc39060afd6c0a560</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1229340227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="59">
+    <srcmd5>620c814d2781e17459d95da25d85f2c9</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1235648916</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="60">
+    <srcmd5>da124af5b2659538e7181f29d73559e6</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1235663012</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="61">
+    <srcmd5>40b53cba94c7dd7306d781b27a221cf3</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1236176947</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="62">
+    <srcmd5>36769da6aed9219fb932e525abb4f43e</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1236554316</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="63">
+    <srcmd5>1228cc35b6564e9abafa2537835dd7ac</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1239101171</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="64">
+    <srcmd5>9e5af1f5de98be1ec12bf2ee874b3f80</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1244822339</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="65">
+    <srcmd5>1c50444137bf6085ddba0b996ad5bdcb</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1245245876</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="66">
+    <srcmd5>6f2b3c31adbf5cf4c2f8aa0fbe26a305</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1247498366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="67">
+    <srcmd5>ff8a2605282ade32cb94d56563ca5087</srcmd5>
+    <version>1.0.5_SVNr46</version>
+    <time>1250866258</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 18191 from user lnussel
+</comment>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>17fa414082a70f9c715b5b756a68c99f</srcmd5>
+    <version>1.0.7</version>
+    <time>1251484402</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 19101 from user lnussel
+</comment>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>3492c4e7f88e9c7974221ca809011573</srcmd5>
+    <version>1.0.7</version>
+    <time>1252108698</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 19898 from user lnussel
+</comment>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>d4d7f1666bedc0300d64cb5b26b59a02</srcmd5>
+    <version>1.0.7</version>
+    <time>1253137130</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 20514 from user lnussel
+</comment>
+  </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>3709f40465fffdba0e0a6c2759068f9d</srcmd5>
+    <version>1.0.7</version>
+    <time>1253559359</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 20637 from user lnussel
+</comment>
+  </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>33fa48d196fe05576ca22f1af73fe556</srcmd5>
+    <version>1.0.7</version>
+    <time>1253829750</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 21031 from user lnussel
+</comment>
+  </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>fa9214cc1c41e254fed460608444911c</srcmd5>
+    <version>1.0.7</version>
+    <time>1254002538</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 21094 from user lnussel
+</comment>
+  </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>b739d91f42050a42bfb5c1bc851edf24</srcmd5>
+    <version>1.0.7</version>
+    <time>1254523384</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 21407 from user lnussel
+</comment>
+  </revision>
+  <revision rev="37" vrev="8">
+    <srcmd5>83285fed0321904a9a96633551d8c2a0</srcmd5>
+    <version>1.0.7</version>
+    <time>1254958565</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 21919 from user lnussel
+</comment>
+  </revision>
+  <revision rev="38" vrev="9">
+    <srcmd5>ed3b38b8c2f9ff7a066b8e363cfb36df</srcmd5>
+    <version>1.0.7</version>
+    <time>1255018614</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 22064 from user lnussel
+</comment>
+  </revision>
+  <revision rev="39" vrev="11">
+    <srcmd5>ed3b38b8c2f9ff7a066b8e363cfb36df</srcmd5>
+    <version>1.0.7</version>
+    <time>1255018614</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 22064 from user lnussel
+</comment>
+  </revision>
+  <revision rev="40" vrev="12">
+    <srcmd5>81598714e2a1cc530a2c3566dc24630e</srcmd5>
+    <version>1.0.7</version>
+    <time>1256208387</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 22637 from user lnussel
+</comment>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>d3cb8d3712d5358b13221ae05c5a4828</srcmd5>
+    <version>1.1.0</version>
+    <time>1264070030</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 29937 from user lnussel
+</comment>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>23dde597fa37e4ba9e2688bfad3cb4c1</srcmd5>
+    <version>1.1.0</version>
+    <time>1265269586</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 31331 from user lnussel
+</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>6ec12de8350ffa64164d953048b2b9e3</srcmd5>
+    <version>1.1.0</version>
+    <time>1267752225</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 33773 from user lnussel
+</comment>
+    <requestid>33773</requestid>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>c244092e3561776afca83e458c14b260</srcmd5>
+    <version>1.1.0</version>
+    <time>1268176980</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 34439 from user lnussel
+</comment>
+    <requestid>34439</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>1aef6e519ba7ab7dd39f4c94f240b4c2</srcmd5>
+    <version>1.1.0</version>
+    <time>1268923262</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>462bc19994a0724c91d6c39eca645050</srcmd5>
+    <version>1.1.2</version>
+    <time>1275322490</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 40924 from user lnussel
+</comment>
+    <requestid>40924</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c30941b80e91ec335b30af37f0c63d41</srcmd5>
+    <version>1.1.2</version>
+    <time>1278079385</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 42377 from user lnussel
+</comment>
+    <requestid>42377</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>c30941b80e91ec335b30af37f0c63d41</srcmd5>
+    <version>1.1.2</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>c30941b80e91ec335b30af37f0c63d41</srcmd5>
+    <version>1.1.2</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>39ee9b1248427740e4cffc8641dd9db7</srcmd5>
+    <version>1.1.3</version>
+    <time>1280502402</time>
+    <user>autobuild</user>
+    <comment>Copy from security/cryptsetup based on submit request 44180 from user coolo
+</comment>
+    <requestid>44180</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>5bc9e4002a712d1a77065b1ab0819321</srcmd5>
+    <version>1.1.3</version>
+    <time>1290093331</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53167 from user lnussel
+</comment>
+    <requestid>53167</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>867acb313ac4e4116f895083a3d6db9e</srcmd5>
+    <version>1.1.3</version>
+    <time>1290093336</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53167
+</comment>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>7ef778117ffc83455af22d7694214730</srcmd5>
+    <version>1.1.3</version>
+    <time>1291302103</time>
+    <user>darix</user>
+    <comment>Accepted submit request 54179 from user lnussel
+</comment>
+    <requestid>54179</requestid>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>5c52aea8eeac9894e12069441b409092</srcmd5>
+    <version>1.1.3</version>
+    <time>1291302111</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 54179
+</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>9e6fbfbd051389098baff29040b4e8c3</srcmd5>
+    <version>1.2.0</version>
+    <time>1293577065</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56499 from user lnussel
+</comment>
+    <requestid>56499</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>5eadee6586af306df80c69cd006b8c61</srcmd5>
+    <version>1.2.0</version>
+    <time>1293577074</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56499
+</comment>
+  </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>17c7dcd4e92ebba80045067c0ca2a409</srcmd5>
+    <version>1.2.0</version>
+    <time>1296606895</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59530 from user lnussel
+</comment>
+    <requestid>59530</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>e99664113ec85670984be577e66f1b6b</srcmd5>
+    <version>1.2.0</version>
+    <time>1296606912</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59530
+</comment>
+  </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>e99664113ec85670984be577e66f1b6b</srcmd5>
+    <version>1.2.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="60" vrev="8">
+    <srcmd5>c9a65f7f390b78b55610dc4ef1a3ba8d</srcmd5>
+    <version>1.2.0</version>
+    <time>1298027639</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61554 from user lnussel
+</comment>
+    <requestid>61554</requestid>
+  </revision>
+  <revision rev="61" vrev="9">
+    <srcmd5>7c12c760e9efca53ac6f6f6d679ce42c</srcmd5>
+    <version>1.2.0</version>
+    <time>1298027650</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61554
+</comment>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8f7c8f2ad74026fc2a1b4297105d437a</srcmd5>
+    <version>1.3.0</version>
+    <time>1302602543</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 66862 from user coolo
+</comment>
+    <requestid>66862</requestid>
+  </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>6d9b5c745c70e991596fc4e304dca58f</srcmd5>
+    <version>1.3.1</version>
+    <time>1306398589</time>
+    <user>saschpe</user>
+    <comment>- new version 1.3.1:
+ * Fix keyfile=- processing in create command (regression in 1.3.0).
+ * Simplify device path status check (use /sys and do not scan /dev).
+ * Do not ignore device size argument for create command (regression in 1.2.0).
+ * Fix error paths in blockwise code and lseek_write call.</comment>
+    <requestid>71270</requestid>
+  </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>b34d9ec1f6574bd2b82e66e9fe421c84</srcmd5>
+    <version>1.3.1</version>
+    <time>1306740577</time>
+    <user>saschpe</user>
+    <comment>- boot.crypto:
+  * don't hard require boot.device-mapper in boot.crypto</comment>
+    <requestid>71707</requestid>
+  </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>f1e9d4ac46d3c9c691cdb837bf9dfdab</srcmd5>
+    <version>1.3.1</version>
+    <time>1306740588</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 71707
+</comment>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>7b0b4fae838e15f3acfe2fbcd7bfa724</srcmd5>
+    <version>1.3.1</version>
+    <time>1317025803</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 83185 from jengelh)</comment>
+    <requestid>84790</requestid>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>44d110ae75ada83ea17b2b2244ce9823</srcmd5>
+    <version>1.3.1</version>
+    <time>1317626112</time>
+    <user>lrupp</user>
+    <comment>add libtool as buildrequires so we no longer rely on libtool in the project config of factory - it's only needed by &lt;10% of all packages (forwarded request 85975 from coolo)</comment>
+    <requestid>86094</requestid>
+  </revision>
+  <revision rev="68" vrev="7">
+    <srcmd5>44d110ae75ada83ea17b2b2244ce9823</srcmd5>
+    <version>1.3.1</version>
+    <time>1319181835</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="69" vrev="8">
+    <srcmd5>e2e5ab60a365cb501ee7c57f2cda734c</srcmd5>
+    <version>1.3.1</version>
+    <time>1319736731</time>
+    <user>coolo</user>
+    <comment>- on update convert noauto to nofail and turn on fsck (bnc#724113)
+
+- cryptsetup-boot: Rescan LVM volumes after opening crypto (bnc#722916).</comment>
+    <requestid>89562</requestid>
+  </revision>
+  <revision rev="70" vrev="9">
+    <srcmd5>4e2dc40ebe5351bdd2514ec1ccb7db93</srcmd5>
+    <version>1.3.1</version>
+    <time>1323191085</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>0843b0203bd3e33e046dc5a875634078</srcmd5>
+    <version>1.4.1</version>
+    <time>1325007290</time>
+    <user>coolo</user>
+    <comment>Update to new upstream release 1.4.1; trim support, amongst it (forwarded request 96862 from jengelh)</comment>
+    <requestid>96970</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>47d6eb35d9d10e93085adc74d81eb9ed</srcmd5>
+    <version>1.4.2</version>
+    <time>1334692664</time>
+    <user>coolo</user>
+    <comment>- boot.crypto:
+  * prefer physdev from crypttab
+  * fix non-plymouth use
+
+- new version 1.4.2
+  * Fix header check to support old (cryptsetup 1.0.0) header alignment. (1.4.0)
+  * Add --keyfile-offset and --new-keyfile-offset parameters to API and CLI.
+  * Add repair command and crypt_repair() for known LUKS metadata problems repair.
+  * Allow to specify --align-payload only for luksFormat.
+  * Unify password verification option.
+  * Support password verification with quiet flag if possible. (1.2.0)
+  * Fix retry if entered passphrases (with verify option) do not match.
+  * Support UUID=&lt;LUKS_UUID&gt; format for device specification.
+  * Add --master-key-file option to luksOpen (open using volume key).
+  * Fix use of empty keyfile.
+  * Fix error message for luksClose and detached LUKS header.
+  * Allow --header for status command to get full info with detached header.
+
+- boot.crypto:
+  * avoid warning about module 'kernel' (bnc#741468)
+  * incorporate plymouth support</comment>
+    <requestid>114171</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>1ca197fdd2398ac7a85941ee2b7bd93c</srcmd5>
+    <version>1.4.2</version>
+    <time>1339781942</time>
+    <user>coolo</user>
+    <comment>- boot.crypto:
+  * update man page to mention systemd and wiki article
+  * sanitize dm target names (bnc#716240)</comment>
+    <requestid>125109</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>1ca197fdd2398ac7a85941ee2b7bd93c</srcmd5>
+    <version>1.4.2</version>
+    <time>1340183261</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>f8ab7b843554564be54269493e6e2e57</srcmd5>
+    <version>1.4.2</version>
+    <time>1341920391</time>
+    <user>coolo</user>
+    <comment>- license update: SUSE-GPL-2.0-with-openssl-exception and LGPL-2.0+
+  cryptsetup developers use a special exception to link against openSSL</comment>
+    <requestid>127439</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>edf2ce0641416e88075e36856c6f35d1</srcmd5>
+    <version>1.5.0</version>
+    <time>1347882504</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>134107</requestid>
+  </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>447ceef6cb1baec77df3f21ad4cb797d</srcmd5>
+    <version>1.5.0</version>
+    <time>1351927097</time>
+    <user>coolo</user>
+    <comment>- Remove crypttab manpage, it is now provided by systemd.</comment>
+    <requestid>140034</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>5e5fc99e3303070dffb4b7bf8c769520</srcmd5>
+    <version>1.5.1</version>
+    <time>1356096777</time>
+    <user>coolo</user>
+    <comment>ATTENTION: wait for cryptsetup-mkinitrd before checkin, otherwise installation
+with root on crypto no longer boot
+
+- version 1.5.1:
+  * Added keyslot checker
+  * Add crypt_keyslot_area() API call.
+  * Optimize seek to keyfile-offset (Issue #135, thx to dreisner).
+  * Fix luksHeaderBackup for very old v1.0 unaligned LUKS headers.
+  * Allocate loop device late (only when real block device needed).
+  * Rework underlying device/file access functions.
+  * Create hash image if doesn't exist in veritysetup format.
+  * Provide better error message if running as non-root user (device-mapper, loop).
+- split off hashalot and boot.crypto
+- move to /usr (forwarded request 145274 from lnussel)</comment>
+    <requestid>145279</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>5e5fc99e3303070dffb4b7bf8c769520</srcmd5>
+    <version>1.5.1</version>
+    <time>1359108786</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>721a7cc2ca3464bb6ee3da22258e9916</srcmd5>
+    <version>1.6.0</version>
+    <time>1363254957</time>
+    <user>coolo</user>
+    <comment>- version 1.6.0
+ * Change LUKS default cipher to to use XTS encryption mode,
+   aes-xts-plain64 (i.e. using AES128-XTS).
+ * license change to GPL-2.0+ from GPL-1.0
+ * new unified command open and close.
+ * direct support for TCRYPT (TrueCrypt and compatible tc-play) on-disk format
+ * new benchmark command (forwarded request 159200 from lnussel)</comment>
+    <requestid>159201</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>82c2831545dc41999cef556f76ff6524</srcmd5>
+    <version>1.6.0</version>
+    <time>1364303144</time>
+    <user>coolo</user>
+    <comment>- Remove excessive dependencies of libcryptsetup-devel
+  (it does not require any of these)
+- Mark 2.6.38 as needed
+
+N.B.: You can now use the tilde syntax when procuring beta versions
+in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from jengelh)</comment>
+    <requestid>161166</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>ff8907756aaaf3a81a57b40ee9801753</srcmd5>
+    <version>1.6.1</version>
+    <time>1372861777</time>
+    <user>coolo</user>
+    <comment>- cryptsetup 1.6.1
+ * Fix loop-AES keyfile parsing.
+ * Fix passphrase pool overflow for too long TCRYPT passphrase.
+ * Fix deactivation of device when failed underlying node disappeared.
+- There is a bug in the released tarball, due to HAVE_BYTESWAP_H
+  and HAVE_ENDIAN_H not properly handled by the buildsystem. A
+  patch with permanent solution was sent and accepted upstream
+  and will appear in the next release, for now an spec file workaround
+  is in place, remove in the next update. (forwarded request 181807 from elvigia)</comment>
+    <requestid>181818</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>69fbdc08042171cd5cad84498799036d</srcmd5>
+    <version>1.6.2</version>
+    <time>1377855197</time>
+    <user>coolo</user>
+    <comment>- cryptsetup 1.6.2
+* Print error and fail if more device arguments 
+  are present for isLuks command.
+* Fix cipher specification string parsing 
+(found by gcc -fsanitize=address option).
+* Try to map TCRYPT system encryption through partitions
+* Workaround for some recent changes in automake (forwarded request 185875 from lnussel)</comment>
+    <requestid>196348</requestid>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>69fbdc08042171cd5cad84498799036d</srcmd5>
+    <version>1.6.2</version>
+    <time>1379662183</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>92f8e4f2890b86d55e0625dcbfc9746b</srcmd5>
+    <version>1.6.3</version>
+    <time>1387453174</time>
+    <user>coolo</user>
+    <comment>- version 1.6.3 
+* Fix cryptsetup reencryption tool to work properly 
+  with devices using 4kB sectors.
+* Rewrite cipher benchmark loop which was unreliable on very fast machines.
+* Support activation of old TrueCrypt containers (requires kernel 3.13)
+* Other bugfixes. (forwarded request 210973 from lnussel)</comment>
+    <requestid>211316</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>c35d26e46048b22b888162e2133df26c</srcmd5>
+    <version>1.6.3</version>
+    <time>1398524514</time>
+    <user>coolo</user>
+    <comment>- remove dependency on gpg-offline (source_validator already
+  checks for gpg integrity) (forwarded request 231181 from lnussel)</comment>
+    <requestid>231183</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>190119f2fd42caa2ceaed7e9a50d2482</srcmd5>
+    <version>1.6.4</version>
+    <time>1405264527</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>239882</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d957fca8aa69b626fbba0a082959ded8</srcmd5>
+    <version>1.6.5</version>
+    <time>1408089325</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244510</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>1edf60d1deb7d6731ba8b10dea4a4a1e</srcmd5>
+    <version>1.6.5</version>
+    <time>1409170686</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246424</requestid>
+  </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>1edf60d1deb7d6731ba8b10dea4a4a1e</srcmd5>
+    <version>1.6.5</version>
+    <time>1409300719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>12bf4c18edea56c9f9de0c502d03d2d0</srcmd5>
+    <version>1.6.6</version>
+    <time>1410981878</time>
+    <user>coolo</user>
+    <comment>version 1.6.6 (forwarded request 249180 from adra)</comment>
+    <requestid>249222</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a5df1a2a605d2da18d84c25a61d0cfe2</srcmd5>
+    <version>1.6.7</version>
+    <time>1428651894</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294961</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>9d087532a4de6f1715b53eefd47beebe</srcmd5>
+    <version>1.6.7</version>
+    <time>1429610533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295656</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>9784647b354ba9d4d9b3a84dcf500596</srcmd5>
+    <version>1.6.8</version>
+    <time>1445350889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>338019</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>47cea09ba2665d2415e57c058fec9b94</srcmd5>
+    <version>1.6.8</version>
+    <time>1450860979</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>350182</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>f18cebac28baf3ca7dbea12aed6b1827</srcmd5>
+    <version>1.7.0</version>
+    <time>1455272459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>357344</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>496e4376a645e8f0879b131f273ea946</srcmd5>
+    <version>1.7.2</version>
+    <time>1472379440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>423052</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>549d18d2e6295bba4572b05dc0ba7617</srcmd5>
+    <version>1.7.4</version>
+    <time>1491567448</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>481749</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>046e4d3a1c27e8d87267b06157333434</srcmd5>
+    <version>1.7.5</version>
+    <time>1494441243</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492821</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>7bc7f7626c0dfb7cbdcebbf62ad55eb8</srcmd5>
+    <version>2.0.0</version>
+    <time>1517424496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0:
+  * Add support for new on-disk LUKS2 format
+  * Enable to use system libargon2 instead of bundled version
+  * Install tmpfiles.d configuration for LUKS2 locking directory
+  * New command integritysetup: support for the new dm-integrity kernel target
+  * Support for larger sector sizes for crypt devices
+  * Miscellaneous fixes and improvements</comment>
+    <requestid>562805</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>e8ca61fda72774826c68751e9fef0cbc</srcmd5>
+    <version>2.0.1</version>
+    <time>1518513918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>574742</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>d4ec602e512da0e38e03ed02b922850c</srcmd5>
+    <version>2.0.4</version>
+    <time>1535440951</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 2.0.4
+  Changes since version 2.0.3
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * Use the libblkid (blockid) library to detect foreign signatures
+    on a device before LUKS format and LUKS2 auto-recovery.
+    This change fixes an unexpected recovery using the secondary
+    LUKS2 header after a device was already overwritten with
+    another format (filesystem or LVM physical volume).
+    LUKS2 will not recreate a primary header if it detects a valid
+    foreign signature. In this situation, a user must always
+    use cryptsetup repair command for the recovery.
+    Note that libcryptsetup and utilities are now linked to libblkid
+    as a new dependence.
+    To compile code without blockid support (strongly discouraged),
+    use --disable-blkid configure switch.
+  * Add prompt for format and repair actions in cryptsetup and
+    integritysetup if foreign signatures are detected on the device
+    through the blockid library.
+    After the confirmation, all known signatures are then wiped as
+    part of the format or repair procedure.
+  * Print consistent verbose message about keyslot and token numbers.
+    For keyslot actions: Key slot &lt;number&gt; unlocked/created/removed.
+    For token actions: Token &lt;number&gt; created/removed.
+  * Print error, if a non-existent token is tried to be removed.
+  * Add support for LUKS2 token definition export and import.
+    The token command now can export/import customized token JSON file
+    directly from command line. See the man page for more details.
+  * Add support for new dm-integrity superblock version 2.
+  * Add an error message when nothing was read from a key file.
+  * Update cryptsetup man pages, including --type option usage.</comment>
+    <requestid>630730</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b4f2677e51ccc8d514844c421ab482f3</srcmd5>
+    <version>2.0.5</version>
+    <time>1541514337</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645684</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>570d124821f1d382a88e6ddf6f32e4ef</srcmd5>
+    <version>2.1.0</version>
+    <time>1550668116</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>677121</requestid>
+  </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>b945028f0b1e5f0abf66e65ab8f70e85</srcmd5>
+    <version>2.1.0</version>
+    <time>1557833388</time>
+    <user>dimstar_suse</user>
+    <comment>retrofit bug number</comment>
+    <requestid>701789</requestid>
+  </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>7856e97fe090c2d0ad9881655245e21f</srcmd5>
+    <version>2.1.0</version>
+    <time>1576585749</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755886</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>265de0421d995b987f165279a7d4d905</srcmd5>
+    <version>2.3.0</version>
+    <time>1581278538</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770054</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>0d31918ee3fbd7427c76597c000d46bf</srcmd5>
+    <version>2.3.1</version>
+    <time>1586112544</time>
+    <user>dimstar_suse</user>
+    <comment>- Split translations to -lang package
+- New version to 2.3.1
+  * Support VeraCrypt 128 bytes passwords.
+    VeraCrypt now allows passwords of maximal length 128 bytes
+    (compared to legacy TrueCrypt where it was limited by 64 bytes).
+  * Strip extra newline from BitLocker recovery keys
+    There might be a trailing newline added by the text editor when
+    the recovery passphrase was passed using the --key-file option.
+  * Detect separate libiconv library.
+    It should fix compilation issues on distributions with iconv
+    implemented in a separate library.
+  * Various fixes and workarounds to build on old Linux distributions.
+  * Split lines with hexadecimal digest printing for large key-sizes.
+  * Do not wipe the device with no integrity profile.
+    With --integrity none we performed useless full device wipe.
+  * Workaround for dm-integrity kernel table bug.
+    Some kernels show an invalid dm-integrity mapping table
+    if superblock contains the &quot;recalculate&quot; bit. This causes
+    integritysetup to not recognize the dm-integrity device.
+    Integritysetup now specifies kernel options such a way that
+    even on unpatched kernels mapping table is correct.
+  * Print error message if LUKS1 keyslot cannot be processed.
+    If the crypto backend is missing support for hash algorithms
+    used in PBKDF2, the error message was not visible.
+  * Properly align LUKS2 keyslots area on conversion.
+    If the LUKS1 payload offset (data offset) is not aligned
+    to 4 KiB boundary, new LUKS2 keyslots area in now aligned properly.
+  * Validate LUKS2 earlier on conversion to not corrupt the device
+    if binary keyslots areas metadata are not correct.</comment>
+    <requestid>790921</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>718713f83bd65f121dd9fb623dda63c9</srcmd5>
+    <version>2.3.3</version>
+    <time>1591208982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>810247</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>f160a937815a4908d2aac741ce744755</srcmd5>
+    <version>2.3.4</version>
+    <time>1599597865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832027</requestid>
+  </revision>
+</revisionlist>

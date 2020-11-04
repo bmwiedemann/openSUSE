@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16f9792b3d24a2ee9f8d4913e3ef01b4</srcmd5>
+    <version>3.28.0</version>
+    <time>1524238132</time>
+    <user>dimstar_suse</user>
+    <comment>New package in the 3.28 stack</comment>
+    <requestid>597477</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a77064b4714d3500eb09ea1a7fa08e56</srcmd5>
+    <version>3.28.1</version>
+    <time>1529402065</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>615309</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6713347ea9701c21d79c76d79a1b6db</srcmd5>
+    <version>3.30.1</version>
+    <time>1533214656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>625578</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c93d4eca51cefedba5db3097b7f57de</srcmd5>
+    <version>3.30.2</version>
+    <time>1533627756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.30.2:
+  + Close crowdfunding. (forwarded request 627551 from iznogood)</comment>
+    <requestid>627607</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9641f6bb999c1abe987c676e483d0462</srcmd5>
+    <version>3.32.0</version>
+    <time>1554458402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689474</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>746481320f31dde3d55953537a71eee6</srcmd5>
+    <version>3.36.0</version>
+    <time>1587659478</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795050 from iznogood)</comment>
+    <requestid>795203</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>79a1be36f2d6ea8bf406131d4e9e1cc8</srcmd5>
+    <version>27.1</version>
+    <time>1589993230</time>
+    <user>dimstar_suse</user>
+    <comment>new package, will add the new user</comment>
+    <requestid>807491</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7bc27902b9415c81834742fef7b89ca4</srcmd5>
+    <version>27.1</version>
+    <time>1592939221</time>
+    <user>dimstar_suse</user>
+    <comment>- fix compile with gcc10 by using -fcommon</comment>
+    <requestid>816577</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,418 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0119aa73fd09f3c2c0c7f55861a8621b</srcmd5>
+    <version>9.05</version>
+    <time>1335190033</time>
+    <user>coolo</user>
+    <comment>Plain upstream Ghostscript 9.05 (bnc#735824). It contains additional ghostscript-mini.spec which requires a link package ghostscript-mini which points to its parent package ghostscript in openSUSE:Factory. For most packages which need to only run Ghostscript during build, a single BuildRequires ghostscript-mini should be sufficient. For most packages which need Ghostscript development files to build, a single BuildRequires ghostscript-mini-devel should be sufficient. The openSUSE:Factory project config contains conflicts regarding ghostscript-mini which are no longer needed and let installing the build system fail so that those conflicts should be either removed from the project config or invalidated as in the project config of the Printing project. Furthermore please check the openSUSE:Factory project config regarding automated or preferred installation of ghostscript-library which is no longer valid and could even cause a broken build system when new ghostscript 9.05 packages are mixed up installed with old ghostscript-library packages.</comment>
+    <requestid>114410</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>475aa569ddacee52be294ed46350ae53</srcmd5>
+    <version>9.05</version>
+    <time>1336579765</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>116915</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4cbb812367d52fa62f5a0f2f2805435a</srcmd5>
+    <version>9.05</version>
+    <time>1337674201</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>121594</requestid>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4cbb812367d52fa62f5a0f2f2805435a</srcmd5>
+    <version>9.05</version>
+    <time>1340183363</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>50909f2ed6288a80847a766dfe4b1195</srcmd5>
+    <version>9.05</version>
+    <time>1348574225</time>
+    <user>coolo</user>
+    <comment>- Disable -Wl,--as-needed, see upstream bug report
+  http://bugs.ghostscript.com/show_bug.cgi?id=693100
+
+- Disable -Wl,--as-needed, see upstream bug report
+  http://bugs.ghostscript.com/show_bug.cgi?id=693100</comment>
+    <requestid>135635</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd3ff5211c81c3b6b0474d3b17f64726</srcmd5>
+    <version>9.06</version>
+    <time>1349629132</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>137350</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>447dc50a88fa958a393307be8c9a4064</srcmd5>
+    <version>9.06</version>
+    <time>1351837884</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>139828</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5ed311c10e4689365ba9d4ce0f0355c1</srcmd5>
+    <version>9.06</version>
+    <time>1357813003</time>
+    <user>coolo</user>
+    <comment>Provide libijs to be prepared for the PDF printing workflow via a new package cups-filters where libijs is needed by the pdftoijs filter (regardless whether or not the PDF printing workflow would be actually used in openSUSE 12.3 Ghostscript in openSUSE 12.3 should provide libijs to be prepared)</comment>
+    <requestid>147790</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>5ed311c10e4689365ba9d4ce0f0355c1</srcmd5>
+    <version>9.06</version>
+    <time>1359108933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4c0f431f7e7ab25cac2770ca5a56caab</srcmd5>
+    <version>9.07</version>
+    <time>1361548268</time>
+    <user>coolo</user>
+    <comment>Ghostscript version upgrade to 9.07 (forwarded request 155898 from jsmeix)</comment>
+    <requestid>155899</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>96e8a8755167fe1dd87c04f408bd4241</srcmd5>
+    <version>9.07</version>
+    <time>1365927264</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>163418</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>96e8a8755167fe1dd87c04f408bd4241</srcmd5>
+    <version>9.07</version>
+    <time>1379662443</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b6bdeafc89208db7a0b4891094348060</srcmd5>
+    <version>9.10</version>
+    <time>1387737163</time>
+    <user>scarabeus_factory</user>
+    <comment>Added explanatory info what ppc64le-support.patch is about and added RPM recommends for cups-filters-ghostscript (forwarded request 211702 from jsmeix)</comment>
+    <requestid>211704</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b3d98becf79774184c8270184dedff2c</srcmd5>
+    <version>9.14</version>
+    <time>1396291385</time>
+    <user>coolo</user>
+    <comment>Version upgrade to 9.14 (forwarded request 227763 from jsmeix)</comment>
+    <requestid>227764</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b3d98becf79774184c8270184dedff2c</srcmd5>
+    <version>9.14</version>
+    <time>1409300980</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>390ecc8ce05c36ba8b4e34bde18ca000</srcmd5>
+    <version>9.14</version>
+    <time>1409407414</time>
+    <user>coolo</user>
+    <comment>- gs does not seem to require libopenssl-devel for building. (forwarded request 245148 from msmeissn)</comment>
+    <requestid>246182</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9f62bd7413c913a09d1e6323786acc1e</srcmd5>
+    <version>9.15</version>
+    <time>1411627348</time>
+    <user>coolo</user>
+    <comment>Ghostscript version upgrade to 9.15 (primarily a maintenance release, as of this writing there are no recorded incompatible changes). (forwarded request 251627 from jsmeix)</comment>
+    <requestid>251628</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>db2910176f88f88a27f0740500129761</srcmd5>
+    <version>9.15</version>
+    <time>1412142020</time>
+    <user>coolo</user>
+    <comment>More descriptive texts and upstream bug regarding re-added ppc64le-support.patch (forwarded request 253097 from jsmeix)</comment>
+    <requestid>253098</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c8f8ba9a818fc7f801c5a0985b4953ae</srcmd5>
+    <version>9.16</version>
+    <time>1428192216</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.16 (forwarded request 293795 from jsmeix)</comment>
+    <requestid>293796</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a62613f45f7fe2def8298a46cb6dfd2f</srcmd5>
+    <version>9.16</version>
+    <time>1439190711</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed CVE-2015-3228 (bsc#939342) (forwarded request 319418 from jsmeix)</comment>
+    <requestid>319420</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>214b70f7b8a2681de9fdb5c4d0438b65</srcmd5>
+    <version>9.18</version>
+    <time>1447766438</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344035</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cc67bc0175050d582c74fb205032110a</srcmd5>
+    <version>9.18</version>
+    <time>1450363953</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347469</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>db7f3512fd84ab5673930776f2bfc852</srcmd5>
+    <version>9.19</version>
+    <time>1459717513</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>382032</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a6ab60e84f50d202d796cfe133c960c2</srcmd5>
+    <version>9.20</version>
+    <time>1476350620</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>433745</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>afdeac1747bc70dfe24f1abc83fc5231</srcmd5>
+    <version>9.20</version>
+    <time>1477134116</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript security update that fixes (CVE-2013-5653 is already fixed in the 9.20 sources) CVE-2016-7976 CVE-2016-7977 CVE-2016-7978 CVE-2016-7979 (all bsc#1001951) and CVE-2016-8602 (bsc#1004237) (forwarded request 435738 from jsmeix)</comment>
+    <requestid>435739</requestid>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>43736ee7e27e5f19801f786cfa0bfce1</srcmd5>
+    <version>9.20</version>
+    <time>1486217733</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453438</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ebd914c9ffe086336ed913c976b97cb6</srcmd5>
+    <version>9.21</version>
+    <time>1493819618</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2017-8291.patch fixes a type confusion in .rsdparams and .eqproc see https://bugs.ghostscript.com/show_bug.cgi?id=697808 and https://bugs.ghostscript.com/show_bug.cgi?id=697799 (bsc#1036453) (forwarded request 492484 from jsmeix)</comment>
+    <requestid>492485</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>59a1fe2e97a54b25af8f3572847eb941</srcmd5>
+    <version>9.21</version>
+    <time>1497687565</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2017-7207.patch fixes a NULL pointer dereference in mem_get_bits_rectangle
+  see https://bugs.ghostscript.com/show_bug.cgi?id=697676
+  (bsc#1030263)
+- CVE-2017-9216.patch fixes a NULL pointer dereference in jbig2_huffman_get
+  see https://bugs.ghostscript.com/show_bug.cgi?id=697934
+  (bsc#1040643) (forwarded request 501324 from dmolkentin)</comment>
+    <requestid>501328</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a3639483731ec52c4c580b778ef14f12</srcmd5>
+    <version>9.22</version>
+    <time>1512926009</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>554966</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>cf0093314bab596c3baac90acb5f2999</srcmd5>
+    <version>9.22</version>
+    <time>1520588090</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>583719</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f07ecd104f35ecf2b97d92c329ec2f9d</srcmd5>
+    <version>9.23</version>
+    <time>1523956504</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.23 (boo#1082896 and boo#1074266) (forwarded request 590295 from jsmeix)</comment>
+    <requestid>590297</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>780139c2873f6b95f9e09aa43777e42f</srcmd5>
+    <version>9.23</version>
+    <time>1528492291</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2018-10194.patch fixes stack-based buffer overflow (bsc#1090099) (forwarded request 614286 from jsmeix)</comment>
+    <requestid>614287</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cd82b9349a0bf1a29827cbd9bffcdf73</srcmd5>
+    <version>9.25</version>
+    <time>1537970375</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.25 which provides fixes for regressions in Ghostscript 9.24 and more security bufgixes, see https://www.ghostscript.com/doc/9.25/News.htm (forwarded request 635772 from jsmeix)</comment>
+    <requestid>635773</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>05d89206c6b3af3d47e560f60f2b605c</srcmd5>
+    <version>9.26</version>
+    <time>1543999056</time>
+    <user>dimstar_suse</user>
+    <comment>Version upgrade to 9.26 (Purely security and a few bug fixes) (forwarded request 652826 from jsmeix)</comment>
+    <requestid>652827</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>768e996f42c5516c0baffc9f77eba713</srcmd5>
+    <version>9.26a</version>
+    <time>1548537570</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript security fix upgrade (purely a security fix) to fix CVE-2019-6116 bsc#1122319 (forwarded request 668140 from jsmeix)</comment>
+    <requestid>668141</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>d63b95622c399f6f3f0321053a1e2be0</srcmd5>
+    <version>9.26a</version>
+    <time>1551468328</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>679465</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>bbdb7b3d76a6370f4b2c32331da5e6d8</srcmd5>
+    <version>9.26a</version>
+    <time>1552380490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682815</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>9fb52baca4c93eeaf2fb9a6ef006199f</srcmd5>
+    <version>9.26a</version>
+    <time>1553611037</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed AppArmor profile for Ghostscript plus required changes in Ghostscript to still run hpijs (bsc#1127934 bsc#1128697 bsc#1128467 bsc#1128607 bsc#1128608)</comment>
+    <requestid>687694</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>64cb81303cf97621eddf209fa57e55ea</srcmd5>
+    <version>9.27</version>
+    <time>1557263497</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.27 (bsc#1131863)</comment>
+    <requestid>700982</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>89361599b15e637f2b1d2748eaf07dc6</srcmd5>
+    <version>9.27</version>
+    <time>1557833337</time>
+    <user>dimstar_suse</user>
+    <comment>- Set AA profile to complain and added fixes for ps2epsi (boo#1134327) (forwarded request 701733 from jsegitz)</comment>
+    <requestid>701738</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>af48324df5e7f04bddeac43040386d2a</srcmd5>
+    <version>9.27</version>
+    <time>1566664776</time>
+    <user>dimstar_suse</user>
+    <comment>- Use update-alternatives to get the real ghostscript binary from
+  /usr/bin/gs to /usr/bin/gs.bin and allow the gswrap package to
+  use this with ist wrapper script
+
+- Use update-alternatives to get the real ghostscript binary from
+  /usr/bin/gs to /usr/bin/gs.bin and allow the gswrap package to
+  use this with ist wrapper script (forwarded request 724711 from WernerFink)</comment>
+    <requestid>724779</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>2cbb31864c074acfa9b3225cd87aecc4</srcmd5>
+    <version>9.27</version>
+    <time>1568983691</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch gs-CVE-2019-14811-885444fc.patch to fix bsc#1146882
+  for CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+- Add patch gs-CVE-2019-14817-cd1b1cac.patch to fix bsc#1146884
+  for CVE-2019-14817
+
+- Add patch openjpeg4gs-CVE-2018-6616-8ee33522.patch to fix bsc#1140359
+  for CVE-2019-12973
+
+- Update RPM groups.
+
+  use this with its wrapper script
+
+- CVE-2019-10216.patch fixes CVE-2019-10216
+  forceput/superexec in .buildfont1 is still accessible
+  https://bugzilla.suse.com/show_bug.cgi?id=1144621 bsc#1144621
+  https://bugs.ghostscript.com/show_bug.cgi?id=701394
+- Add patch gs-CVE-2019-14811-885444fc.patch to fix bsc#1146882
+  for CVE-2019-14811,CVE-2019-14812,CVE-2019-14813
+- Add patch gs-CVE-2019-14817-cd1b1cac.patch to fix bsc#1146884
+  for CVE-2019-14817
+
+- Add patch openjpeg4gs-CVE-2018-6616-8ee33522.patch to fix bsc#1140359
+  for CVE-2019-12973
+
+- Update RPM groups.
+
+  use this with its wrapper script 
+
+- CVE-2019-10216.patch fixes CVE-2019-10216
+  forceput/superexec in .buildfont1 is still accessible</comment>
+    <requestid>731293</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>a137f64b99d12e58570c1b0fef442e80</srcmd5>
+    <version>9.27</version>
+    <time>1569851454</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>732862</requestid>
+  </revision>
+  <revision rev="44" vrev="6">
+    <srcmd5>c7ee2059e167bcf6576c97db0b4967ea</srcmd5>
+    <version>9.27</version>
+    <time>1580990817</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769481</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ea42da010d7772917a930ee5e2ba37c8</srcmd5>
+    <version>9.52</version>
+    <time>1588971776</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.52 which is primarily a general security upgrade that fixes in particular CVE-2020-12268 (bsc#1170603)</comment>
+    <requestid>800666</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>84d4d32a3fd469d7611095aeb90fdca5</srcmd5>
+    <version>9.52</version>
+    <time>1596203538</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript security fix CVE-2020-15900 (bsc#1174415) (forwarded request 823076 from jsmeix)</comment>
+    <requestid>823078</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2c917412c8cc9bba9443e75a02254d64</srcmd5>
+    <version>9.53.3</version>
+    <time>1603448349</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript version upgrade to 9.53.3 that fixes boo#1177922 and fixes compilation with FreeType 2.10.3+ (forwarded request 843001 from jsmeix)</comment>
+    <requestid>843002</requestid>
+  </revision>
+</revisionlist>

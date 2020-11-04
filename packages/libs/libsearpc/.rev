@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>7f3b874ceeb77e6a899614f6eee889fa</srcmd5>
+    <version>3.2+20191101</version>
+    <time>1583948981</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00116.html</comment>
+    <requestid>783615</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a8f924d64938522405e89c9c279101ec</srcmd5>
+    <version>3.2.0.20200320</version>
+    <time>1586555609</time>
+    <user>dimstar_suse</user>
+    <comment>- Use _service and _servicedata since upstream has the bad habit
+  of issuing a new release by overwriting the old one
+</comment>
+    <requestid>792888</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f2aca22e5a1fe2e1375a1fb48f4db52</srcmd5>
+    <version>3.2.0.20200618</version>
+    <time>1593090579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.0.20200618 (no changelog) 
+</comment>
+    <requestid>816978</requestid>
+  </revision>
+</revisionlist>

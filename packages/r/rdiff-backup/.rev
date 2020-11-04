@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>208dea6d3b2cf905d52e563cd5fad10e</srcmd5>
+    <version>1.9.0~b0</version>
+    <time>1580724849</time>
+    <user>dimstar_suse</user>
+    <comment>Reinstate rdiff-backup, it now uses python3 and has a maintainer (me)
+Develproject is Archiving. Thanks.</comment>
+    <requestid>769264</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a613f6fdb50b22aaf1f6c76159e40871</srcmd5>
+    <version>1.9.1~b0</version>
+    <time>1583007896</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.9.1b0, third beta before 2.0.0 (forwarded request 780485 from seife)</comment>
+    <requestid>780486</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4fccc350297098c28e5d5a7641e2e399</srcmd5>
+    <version>2.0.0</version>
+    <time>1585342604</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.0 (forwarded request 785259 from seife)</comment>
+    <requestid>785260</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0d839eb178dbbb1dd843308456eb39b</srcmd5>
+    <version>2.0.3</version>
+    <time>1593727542</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.3 (forwarded request 814846 from seife)</comment>
+    <requestid>815291</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb2a5b6a9331c06f1be3fe7929593059</srcmd5>
+    <version>2.0.5</version>
+    <time>1600347871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835167</requestid>
+  </revision>
+</revisionlist>

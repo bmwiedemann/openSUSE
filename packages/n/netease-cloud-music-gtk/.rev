@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>563442817843c03aeba19fcf1a486afb</srcmd5>
+    <version>1.1.0</version>
+    <time>1587581153</time>
+    <user>dimstar_suse</user>
+    <comment>This is a NetEase Cloud Music Linux client developed using Rust+GTK.</comment>
+    <requestid>793793</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c64eb93de5564a301414cb42e0d21d8a</srcmd5>
+    <version>1.1.1</version>
+    <time>1588023517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+ + Removing useless dependencies.
+ + Add an indication of the status of the request.
+ + Fix the cloud disc music playback error.
+ + Remember the volume.</comment>
+    <requestid>797798</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>45387d51cf76306b4affe367eba278d1</srcmd5>
+    <version>1.1.2</version>
+    <time>1592152445</time>
+    <user>dimstar_suse</user>
+    <comment>- Updata to version 1.1.2:
+ + Improving Mpris2 support.
+ + Fix bug.</comment>
+    <requestid>814495</requestid>
+  </revision>
+</revisionlist>

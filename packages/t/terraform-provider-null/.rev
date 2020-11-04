@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a8615bc1ffc61c30e0817058691b01a7</srcmd5>
+    <version>2.1.2</version>
+    <time>1591743206</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812994</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>54691432311e8c899ea3bbbf8882d64e</srcmd5>
+    <version>2.1.2</version>
+    <time>1597221406</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner run</comment>
+    <requestid>825753</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a1117a2387865cf2bfe2a274e669465f</srcmd5>
+    <version>3.0.0</version>
+    <time>1603726033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844104</requestid>
+  </revision>
+</revisionlist>

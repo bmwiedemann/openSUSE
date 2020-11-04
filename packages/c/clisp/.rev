@@ -1,0 +1,388 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>0e1288127b61c55c3d1df986b9bf6254</srcmd5>
+    <version>2.39</version>
+    <time>1168902442</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="18">
+    <srcmd5>ae3f2f6c051c33a88eb9c52be2341622</srcmd5>
+    <version>2.39</version>
+    <time>1169651912</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="30">
+    <srcmd5>d1ee7dd83a46a3567c7c2f633d45083e</srcmd5>
+    <version>2.39</version>
+    <time>1177362833</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1ca4c56f8018661c533ae9a3bfa4e84e</srcmd5>
+    <version>2.41</version>
+    <time>1179843750</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48e7df14da4e544478b0acd1d875d9e0</srcmd5>
+    <version>2.43</version>
+    <time>1197925654</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b48c42dcf7ea494be35c0f5a85c4e568</srcmd5>
+    <version>2.43</version>
+    <time>1197998893</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e151c2e17a54c136befa9fe2a35a7ee1</srcmd5>
+    <version>2.43</version>
+    <time>1200232317</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>112781b7f6e96c01b484a51c2c206f44</srcmd5>
+    <version>2.43</version>
+    <time>1201712523</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe9325331ed2ae6cfd51a7b7d5cccfed</srcmd5>
+    <version>2.44.1</version>
+    <time>1204069104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="62">
+    <srcmd5>fe9325331ed2ae6cfd51a7b7d5cccfed</srcmd5>
+    <version>2.44.1</version>
+    <time>1204069104</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="63">
+    <srcmd5>d0727d2ce4858850aa1580aa55e530c0</srcmd5>
+    <version>2.44.1</version>
+    <time>1236267536</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="64">
+    <srcmd5>599360595344747ded74314e36bd9fb1</srcmd5>
+    <version>2.44.1</version>
+    <time>1251294222</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 18757 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="13" vrev="66">
+    <srcmd5>599360595344747ded74314e36bd9fb1</srcmd5>
+    <version>2.44.1</version>
+    <time>1251294222</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 18757 from user mlschroe
+</comment>
+  </revision>
+  <revision rev="14" vrev="67">
+    <srcmd5>318aa1fda7ba017a79bace6c723333cf</srcmd5>
+    <version>2.44.1</version>
+    <time>1258723707</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 24707 from user coolo
+</comment>
+  </revision>
+  <revision rev="15" vrev="68">
+    <srcmd5>2272944893091548f6d195b29ad3d9ce</srcmd5>
+    <version>2.44.1</version>
+    <time>1268923197</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="16" vrev="69">
+    <srcmd5>584c22a186e725d2b23033562c09f2b9</srcmd5>
+    <version>2.44.1</version>
+    <time>1271979245</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 38539 from user coolo
+</comment>
+    <requestid>38539</requestid>
+  </revision>
+  <revision rev="17" vrev="71">
+    <srcmd5>584c22a186e725d2b23033562c09f2b9</srcmd5>
+    <version>2.44.1</version>
+    <time>1278667339</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="72">
+    <srcmd5>584c22a186e725d2b23033562c09f2b9</srcmd5>
+    <version>2.44.1</version>
+    <time>1278678567</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>53514dcf0db8f88516a3f4adfa30029d</srcmd5>
+    <version>2.49</version>
+    <time>1279564040</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 43037 from user WernerFink
+</comment>
+    <requestid>43037</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>32c3059eaee43be7087a0fde4aecafdc</srcmd5>
+    <version>2.49</version>
+    <time>1286802874</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:misc/clisp based on submit request 50182 from user coolo
+</comment>
+    <requestid>50182</requestid>
+  </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>32c3059eaee43be7087a0fde4aecafdc</srcmd5>
+    <version>2.49</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="22" vrev="7">
+    <srcmd5>32c3059eaee43be7087a0fde4aecafdc</srcmd5>
+    <version>2.49</version>
+    <time>1319181813</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="23" vrev="8">
+    <srcmd5>d3fde046f611e841207d9f527f99d016</srcmd5>
+    <version>2.49</version>
+    <time>1323341294</time>
+    <user>coolo</user>
+    <comment>- Use _service to avoid silly osc checks 
+
+- Avoid download of ffcall-1.10+2.43 
+- Convert libsigsegv-2.6.tar from bz2 to gz as build system is not
+  smart enough to detect and change the compression format
+
+- add automake as buildrequire to avoid implicit dependency
+
+- Remove redundant tags/sections from specfile</comment>
+    <requestid>95438</requestid>
+  </revision>
+  <revision rev="24" vrev="9">
+    <srcmd5>1f93cc29585f1c910bb6489ad1ee7fc0</srcmd5>
+    <version>2.49</version>
+    <time>1324830812</time>
+    <user>coolo</user>
+    <comment>minor portability fixes, see ChangeLog,
+you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</comment>
+    <requestid>97466</requestid>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>0ae2ba070d97689ed59e58c12a2f13be</srcmd5>
+    <version>2.49</version>
+    <time>1326988475</time>
+    <user>coolo</user>
+    <comment>- don't use deprecated macro suse_update_config
+  (It did nothing useful so won't be missed.)
+- remove berkeley-db.dif
+  (not really needed for opensuse but not portable)
+- strip needs writable files (forwarded request 100552 from rudi_m)</comment>
+    <requestid>100637</requestid>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>dc6ad2ff2a3c5b33c06c98cdfb13a2f1</srcmd5>
+    <version>2.49</version>
+    <time>1336035260</time>
+    <user>coolo</user>
+    <comment>- fix libsigsegv link. To make service run happy (forwarded request 115227 from k0da)</comment>
+    <requestid>115241</requestid>
+  </revision>
+  <revision rev="27" vrev="13">
+    <srcmd5>dc6ad2ff2a3c5b33c06c98cdfb13a2f1</srcmd5>
+    <version>2.49</version>
+    <time>1340183238</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="28" vrev="14">
+    <srcmd5>8e0a640a3579cfd68fe70641918f0814</srcmd5>
+    <version>2.49</version>
+    <time>1343162501</time>
+    <user>namtrac</user>
+    <comment>- disable stackoverflow tests in qemu builds (fixes arm) (forwarded request 128863 from dirkmueller)</comment>
+    <requestid>128871</requestid>
+  </revision>
+  <revision rev="29" vrev="15">
+    <srcmd5>239c44a75ba647ecfae2bdf79119ccd1</srcmd5>
+    <version>2.49</version>
+    <time>1343734166</time>
+    <user>coolo</user>
+    <comment>Fix build with glibc 2.16 (clisp-linux.patch taken from Fedora). (forwarded request 129132 from a_jaeger)</comment>
+    <requestid>129385</requestid>
+  </revision>
+  <revision rev="30" vrev="16">
+    <srcmd5>58479e8e6dada7e9db5fb68883f49c41</srcmd5>
+    <version>2.49</version>
+    <time>1354177330</time>
+    <user>coolo</user>
+    <comment>- Fix build with glibc 2.17 (clisp-glibc-fix.patch)
+  * rebase patches to -p1 as stated in the patching guidelines
+  * update to libsegsev-2.10 (forwarded request 143477 from toganm)</comment>
+    <requestid>143493</requestid>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>58479e8e6dada7e9db5fb68883f49c41</srcmd5>
+    <version>2.49</version>
+    <time>1359108751</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>a9a5a9131f6477b7e7c79c441b852467</srcmd5>
+    <version>2.49</version>
+    <time>1365139608</time>
+    <user>coolo</user>
+    <comment>- src/socket.d (get_hostname): turn into a function and allocate the
+   array in the caller to support gcc 4.7 [patch#3474660] 
+  fixes ppc socket.d failing test. (clisp-hostname.patch) (forwarded request 162509 from k0da)</comment>
+    <requestid>162535</requestid>
+  </revision>
+  <revision rev="33" vrev="20">
+    <srcmd5>b0e995961d1c04066e2342300dfae0e9</srcmd5>
+    <version>2.49</version>
+    <time>1369640591</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>176281</requestid>
+  </revision>
+  <revision rev="34" vrev="21">
+    <srcmd5>78318680da4191fb87d21e023de6400f</srcmd5>
+    <version>2.49</version>
+    <time>1372740295</time>
+    <user>coolo</user>
+    <comment>- Add clisp-db6.diff to resolve compile abort with libdb-6.0 (forwarded request 181095 from jengelh)</comment>
+    <requestid>181141</requestid>
+  </revision>
+  <revision rev="35" vrev="23">
+    <srcmd5>78318680da4191fb87d21e023de6400f</srcmd5>
+    <version>2.49</version>
+    <time>1379662116</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="36" vrev="25">
+    <srcmd5>78318680da4191fb87d21e023de6400f</srcmd5>
+    <version>2.49</version>
+    <time>1409300648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="37" vrev="26">
+    <srcmd5>d9a49b8412ddc3ac54e291faf667a4a9</srcmd5>
+    <version>2.49</version>
+    <time>1439818520</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>323257</requestid>
+  </revision>
+  <revision rev="38" vrev="27">
+    <srcmd5>087dc2f67b970ee78f5dc05e7e128791</srcmd5>
+    <version>2.49</version>
+    <time>1477644446</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch modules_readline_readline.lisp.patch to reflect the
+  API change in libreadline in rl_readline_state(3) (boo#1007196)</comment>
+    <requestid>437505</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fbddf3db6c0f584668e6f8c2307f2f9a</srcmd5>
+    <version>2.49+</version>
+    <time>1481885766</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>445461</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>9a8f64b59ee39a0271394b5d79750f15</srcmd5>
+    <version>2.49+</version>
+    <time>1485598037</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452709</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>3d3be0b2ce061b9623f83ebe6c6c47aa</srcmd5>
+    <version>2.49+</version>
+    <time>1486968608</time>
+    <user>dimstar_suse</user>
+    <comment>- Collect some informations on the build system for debugging
+  a random error on sockets during test suite</comment>
+    <requestid>456039</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>576db31776ffa3e38f430c39e690fe88</srcmd5>
+    <version>2.49.60+</version>
+    <time>1502366735</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>515027</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>ac3298ab73ef6e29209c216ff2ba02ba</srcmd5>
+    <version>2.49.60+</version>
+    <time>1505416800</time>
+    <user>dimstar_suse</user>
+    <comment>- cfree() is missed now in (g)libc</comment>
+    <requestid>526111</requestid>
+  </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>9a1a4e2a2a1f73e34ee48c8ca65fdec0</srcmd5>
+    <version>2.49.60+</version>
+    <time>1510506186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540676</requestid>
+  </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>69fc0a934ca0ac99072114989660b660</srcmd5>
+    <version>2.49.60+</version>
+    <time>1512734549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>555152</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>686ae65ce34e6de9ed140fb70fcbc2c7</srcmd5>
+    <version>2.49.92</version>
+    <time>1520329614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>581741</requestid>
+  </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>3ddfc86abc1074bcc66d6a9b7ea0a588</srcmd5>
+    <version>2.49.92</version>
+    <time>1521716524</time>
+    <user>dimstar_suse</user>
+    <comment>- Be aware that source tree of gnulib is GPL-3.0 or later 
+
+- change xorg-x11-devel --&gt; pkgconfig(x11), pkgconfig(xaw6)
+  pkgconfig(xext), pkgconfig(xpm)
+- Add explicit buildrequires on pkgconfig(zlib), glib2-devel,
+  ncurses-devel.</comment>
+    <requestid>586678</requestid>
+  </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>aa7f2f1dc2787b2787541db7c00b117f</srcmd5>
+    <version>2.49.92</version>
+    <time>1530866678</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>620953</requestid>
+  </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>583eb5708371acba7bdfa2332c304d7c</srcmd5>
+    <version>2.49.92</version>
+    <time>1568025482</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use LTO for clisp images</comment>
+    <requestid>729347</requestid>
+  </revision>
+</revisionlist>

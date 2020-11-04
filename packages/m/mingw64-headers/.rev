@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87f4fde07e57863bba407748da1d7f22</srcmd5>
+    <version>6.0.0</version>
+    <time>1578502397</time>
+    <user>dimstar_suse</user>
+    <comment>new package for win64 cross compilation</comment>
+    <requestid>749670</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb3cf519b692db494f4b9baae5efd3ce</srcmd5>
+    <version>7.0.0</version>
+    <time>1578674940</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>761926</requestid>
+  </revision>
+</revisionlist>

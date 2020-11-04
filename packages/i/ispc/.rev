@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ebe9aae4a2d7b94fedd0aab915447f33</srcmd5>
+    <version>1.13.0</version>
+    <time>1591879885</time>
+    <user>dimstar_suse</user>
+    <comment>Libraries start to require this, first one is the current release of OpenImageDenoise,
+as found in https://build.opensuse.org/package/show/home:frispete:blender/OpenImageDenoise
+
+Now as full llvm build using thin lto, thanks to Ismail.
+</comment>
+    <requestid>798009</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>be607e9076f69609e8bcfd78dbab4c07</srcmd5>
+    <version>1.13.0</version>
+    <time>1594706342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820556</requestid>
+  </revision>
+</revisionlist>

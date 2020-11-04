@@ -1,0 +1,151 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e693efed54407b61809a41b170d7e93</srcmd5>
+    <version>1.5010</version>
+    <time>1393455699</time>
+    <user>coolo</user>
+    <comment>needed for Task-Kensho-CLI]</comment>
+    <requestid>223939</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3347f463865f3cb79416308164ed9205</srcmd5>
+    <version>1.7004</version>
+    <time>1402946992</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>237290</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ade795c8ca53df82e7ed3e195bc2e8bb</srcmd5>
+    <version>1.7004</version>
+    <time>1403724013</time>
+    <user>coolo</user>
+    <comment>- fix one more require
+
+- fix provides/obsoletes of cpanm
+
+- borrow fedora's solution to unpack the fat script into its dependencies</comment>
+    <requestid>238610</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ade795c8ca53df82e7ed3e195bc2e8bb</srcmd5>
+    <version>1.7004</version>
+    <time>1409302160</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d5db8b34a12d1d40e41d6ddfce8f785a</srcmd5>
+    <version>1.7027</version>
+    <time>1429186375</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296876</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a872dbcaa80acfeb2cc66be0f44224f</srcmd5>
+    <version>1.7030</version>
+    <time>1429606372</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>298107</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2609f652c35a5ad0e8b67043b62131bf</srcmd5>
+    <version>1.7031</version>
+    <time>1429948360</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>298698</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>629090bf8c801aed659b5efbdff87f97</srcmd5>
+    <version>1.7032</version>
+    <time>1430387496</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304794</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fbbf6895bc9c4b3aad30e6a4a63b2a6d</srcmd5>
+    <version>1.7033</version>
+    <time>1430576177</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305009</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7da5b18719c28ec7d68fdd1978acd25c</srcmd5>
+    <version>1.7034</version>
+    <time>1431247632</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305904</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>51a6fe777bbe2fdb2986e39ecaeaf6ef</srcmd5>
+    <version>1.7036</version>
+    <time>1433845515</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>311240</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b860e3391e356103e99fb59d05293676</srcmd5>
+    <version>1.7038</version>
+    <time>1435171988</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>313226</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c3b3c11b6d0d07ebb03f305564aa1ba5</srcmd5>
+    <version>1.7039</version>
+    <time>1435870221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314646</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43d1dd6234f3c64f72241ba9c592df84</srcmd5>
+    <version>1.7040</version>
+    <time>1452850927</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>353503</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3744a097ca2482c49708d00a031bd0a1</srcmd5>
+    <version>1.7042</version>
+    <time>1464595034</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398540</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7f34c27e8357497888e12be0247a62ec</srcmd5>
+    <version>1.7043</version>
+    <time>1491907431</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486138</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>fcf8a439f4d56e4549a142333f5bd9e3</srcmd5>
+    <version>1.7043</version>
+    <time>1499754280</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>506097</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1a0f809f09a4590d8a55cd7e86b11840</srcmd5>
+    <version>1.7044</version>
+    <time>1603959766</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.7044
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+</comment>
+    <requestid>844625</requestid>
+  </revision>
+</revisionlist>

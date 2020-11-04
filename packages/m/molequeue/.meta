@@ -1,0 +1,19 @@
+<package name="molequeue" project="openSUSE:Factory">
+  <title>molequeue</title>
+  <description>MoleQueue is an open-source, cross-platform, system-tray resident desktop
+application for abstracting, managing, and coordinating the execution of tasks
+both locally and on remote computational resources. Users can set up local and
+remote queues that describe where the task will be executed. Each queue can
+have programs, with templates to facilitate the execution of the program. Input
+files can be staged, and output files collected using a standard interface.
+Some highlights:
+
+* Open source distributed under the liberal 3-clause BSD license
+* Cross platform with nightly builds on Linux, Mac OS X and Windows
+* Intuitive interface designed to be useful to whole community
+* Support for local executation and remote schedulers (SGE, PBS, SLURM)
+* System tray resident application managing queue of queues and job lifetime
+* Simple, lightweight JSON-RPC 2.0 based communication over local sockets
+* Qt 5 client library for simple integration in Qt applications</description>
+  <devel project="science" package="molequeue"/>
+</package>

@@ -1,0 +1,16 @@
+<package name="glorytun" project="openSUSE:Factory">
+  <title>A small, simple and secure VPN</title>
+  <description>Glorytun is a small, simple and secure VPN over MUD.
+MUD (Multipath UDP Deflector) is a secure, multipath network protocol
+over UDP.
+
+The key features of Glorytun come directly from MUD:
+ * Fast and highly secure
+ * Multipath and failover
+ * Traffic shaping
+ * Path MTU discovery without ICMP
+
+</description>
+  <devel project="network" package="glorytun"/>
+  <url>https://github.com/angt/glorytun</url>
+</package>

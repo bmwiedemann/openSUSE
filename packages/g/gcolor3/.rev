@@ -1,0 +1,59 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e98d2c09abc08a90e953d75a5ea919c5</srcmd5>
+    <version>2.3.1</version>
+    <time>1544441333</time>
+    <user>dimstar_suse</user>
+    <comment>- Generalize description.
+- Use %meson_* instead of calling ninja directly.
+- Use %meson macro
+- Disabled build for openSUSE Leap 42.3 as its gettext version is to
+  old (the --xml switch is absent and build faild)
+- Updated to 2.3.1
+  * import deprecated GtkColorSelection and GtkHSV
+  * fix crashing GNOME Shell on Wayland
+  * port Gcolor3 to the Meson build system
+  * gcolor3ColorStore: mention that warnings are harmless on first run
+  * fix CTRL-C and other keyboard shortcuts
+  * redesigned saved color page
+  * redesigned header bar
+  * add a GtkShortcutswindow
+  * bumps the required version of GTK+ 3 to 3.20.
+  * add a manual page
+  * new translations: Norwegian Bokmål, Indonesian, Russian, Spanish
+  * updated translations: Dutch, British English, German, Serbian
+- Updated patch gcolor3-suse.patch
+- Updated rpm structure to use %{_datadir}/metainfo and
+  newx upstream &quot;nl.hjdskes&quot; prefix
+- Project is now hosted at gitlab.gnome.org
+- rpmlinting
+- First build with git-20170322 version
+    * added patch for Suse desktop file compliance
+</comment>
+    <requestid>655652</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>178337fe4791500294bdc6d5bdd8edf2</srcmd5>
+    <version>2.3.1</version>
+    <time>1545648468</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>660719</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3c74427fd961ad88ecb7234ad08b8f68</srcmd5>
+    <version>2.3.1</version>
+    <time>1572443310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>744087</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22e1386c0994e9fcf53f3fe643c56e2b</srcmd5>
+    <version>2.3.1+git78</version>
+    <time>1579101353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764468</requestid>
+  </revision>
+</revisionlist>

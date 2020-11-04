@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>54d77dbfb85fa0dfd9b2391a86164b3d</srcmd5>
+    <version>2.00</version>
+    <time>1391540230</time>
+    <user>coolo</user>
+    <comment>Please add font for Lao script.</comment>
+    <requestid>220696</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c1e669e2c2981f3b395f97df1f2d3550</srcmd5>
+    <version>2.00</version>
+    <time>1392186180</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221924</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>c1e669e2c2981f3b395f97df1f2d3550</srcmd5>
+    <version>2.00</version>
+    <time>1409302602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

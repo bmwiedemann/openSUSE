@@ -1,0 +1,95 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7251471230f79907f69762d42f620a6</srcmd5>
+    <version>1.6.0</version>
+    <time>1574783463</time>
+    <user>dimstar_suse</user>
+    <comment>Initial version for Factory</comment>
+    <requestid>743499</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0147179dbf202fdba63d0887ccf75400</srcmd5>
+    <version>1.6.0</version>
+    <time>1578502617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761796</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>503e05b65b05baf915b3e8ab41a084b9</srcmd5>
+    <version>1.6.0</version>
+    <time>1582725834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependencies and enable testsuite
+
+- Force onnx static build in cmake round to ensure we do not
+  end up with unresolvable pkg
+
+- Remove testing fluff from previous change and properly loop
+  the cmake call for each python variant
+- Enable python2 (well rather not explicitly disable it as there
+  is no need for that at the momment)
+
+- Force building with system cmake to respect system definitions
+  and to provide debug information for later on</comment>
+    <requestid>779106</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f9f8237c8d3b746add94a9d2fcde37ca</srcmd5>
+    <version>1.6.0</version>
+    <time>1584350377</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with new protobuf:
+  * protobuf.patch</comment>
+    <requestid>785234</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>243bf105c5cbd9a85c9e466d720afa39</srcmd5>
+    <version>1.6.0</version>
+    <time>1585085697</time>
+    <user>dimstar_suse</user>
+    <comment>- Do also provide/obsolete for the devel to support migration
+
+- provide also python-onnx-devel for backcompat 
+
+- created just one package, as other packages require the 
+  source file within the package</comment>
+    <requestid>787522</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>5095b05e41d04d6583e4c7df6ea76569</srcmd5>
+    <version>1.6.0</version>
+    <time>1587659732</time>
+    <user>dimstar_suse</user>
+    <comment>- Force the interpreter to match the one during build
+- Mypy should use python3 to generate stuff not python2
+  * no-python2.patch
+
+- Do not pull in py2 devel of pybind11</comment>
+    <requestid>796524</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>65acf9982f8fb48c07227cb80af43fe2</srcmd5>
+    <version>1.6.0</version>
+    <time>1590247671</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807935</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e180c30c842cdaf9d115f6163630f4b8</srcmd5>
+    <version>1.7.0</version>
+    <time>1594228615</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819171</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4f1fdc50e63454a4de500fa068f5b834</srcmd5>
+    <version>1.7.0</version>
+    <time>1597658915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827232</requestid>
+  </revision>
+</revisionlist>

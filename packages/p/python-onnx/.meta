@@ -1,0 +1,5 @@
+<package name="python-onnx" project="openSUSE:Factory">
+  <title>open source format for AI models, both deep learning and traditional ML</title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-onnx"/>
+</package>

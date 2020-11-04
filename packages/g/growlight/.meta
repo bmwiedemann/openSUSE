@@ -1,0 +1,12 @@
+<package name="growlight" project="openSUSE:Factory">
+  <title>Disk manipulation and system setup tool</title>
+  <description>growlight can manipulate both physical (NVMe, SATA, etc.) and virtual (mdadm,
+device-mapper, etc.) block devices, help identify bottlenecks in a storage
+topology, create and destroy filesystems, and prepare a machine for initial
+boot when run in an installer context. Both full-screen and REPL readline UIs
+are available.
+
+</description>
+  <devel project="filesystems" package="growlight"/>
+  <url>https://nick-black.com/dankwiki/index.php/Growlight</url>
+</package>

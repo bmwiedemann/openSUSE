@@ -1,0 +1,5 @@
+<package name="python-moreorless" project="openSUSE:Factory">
+  <title></title>
+  <description>Python diff wrapper</description>
+  <devel project="devel:languages:python" package="python-moreorless"/>
+</package>

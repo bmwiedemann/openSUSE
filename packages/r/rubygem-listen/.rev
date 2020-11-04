@@ -1,0 +1,101 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95edf32adb0c8975689331e3a0c0b75e</srcmd5>
+    <version>2.7.5</version>
+    <time>1415696369</time>
+    <user>dimstar_suse</user>
+    <comment>Submitted as direct dependency for package rubygem-vagrant. Please review after sr #259387, sr #259388, and sr #259388.
+
+rubygem-vagrant submission was announced to opensuse-factory at http://lists.opensuse.org/opensuse-factory/2013-11/msg00877.html .</comment>
+    <requestid>259390</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76caac7b2b1af54b7ed82d8e86b7ff8a</srcmd5>
+    <version>2.8.5</version>
+    <time>1422024429</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282341</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>07bac425d5bbd0be2f16d2fecf6e284c</srcmd5>
+    <version>2.8.6</version>
+    <time>1426174727</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290286</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a215ae4b0b1647c1cd344d6341304593</srcmd5>
+    <version>2.9.0</version>
+    <time>1426485636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290609</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>571c3a9a81dbafec93fbc979c7c1da24</srcmd5>
+    <version>2.10.0</version>
+    <time>1427445713</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>293371</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f260e56564ec7fb47db0c8220a6f2fb</srcmd5>
+    <version>2.10.1</version>
+    <time>1435053587</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312979</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0e7cd7b53b0612ac9eaf4b9385afceb5</srcmd5>
+    <version>3.0.1</version>
+    <time>1435870224</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>314665</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c2ee410dc80d0a70375eb596a9467e17</srcmd5>
+    <version>3.0.3</version>
+    <time>1438750231</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318522</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4530fc01ace83cac8c795f3f8b1df844</srcmd5>
+    <version>3.0.5</version>
+    <time>1450084429</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>345819</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7ec493cffac00cb6afea5a7788367ef1</srcmd5>
+    <version>3.0.6</version>
+    <time>1457353617</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>365361</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>033a279f72df9df211f656041ca2260a</srcmd5>
+    <version>3.1.5</version>
+    <time>1469080651</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 3.1.5
+ see installed CHANGELOG.md</comment>
+    <requestid>406335</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c30853d643beca84d69a55cbe761a50f</srcmd5>
+    <version>3.2.1</version>
+    <time>1583613519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773780</requestid>
+  </revision>
+</revisionlist>

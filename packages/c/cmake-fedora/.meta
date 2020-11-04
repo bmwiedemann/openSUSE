@@ -1,0 +1,10 @@
+<package name="cmake-fedora" project="openSUSE:Factory">
+  <title>CMake modules and scripts</title>
+  <description>cmake-fedora consists a set of scripts and cmake modules that simply the
+release process of a *nix software package,  especially for
+Fedora and EPEL.
+
+</description>
+  <devel project="devel:tools:building" package="cmake-fedora"/>
+  <url>https://pagure.io/cmake-fedora</url>
+</package>

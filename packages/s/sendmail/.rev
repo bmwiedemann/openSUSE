@@ -1,0 +1,929 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>475224e3f5b590b0ebc8f6c776d1b408</srcmd5>
+    <version>8.13.8</version>
+    <time>1166483868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="28">
+    <srcmd5>9766e6b5588115652c02640ebbd1afd9</srcmd5>
+    <version>8.13.8</version>
+    <time>1169231169</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="29">
+    <srcmd5>337b5b5d05805231e6f423471ebf3744</srcmd5>
+    <version>8.13.8</version>
+    <time>1170609915</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="31">
+    <srcmd5>31932d6bdf6a304dc92a6671f31dd9e2</srcmd5>
+    <version>8.13.8</version>
+    <time>1171607322</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="32">
+    <srcmd5>75b7945a5fe162a16c5277a3403c33c1</srcmd5>
+    <version>8.13.8</version>
+    <time>1171650138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>568152b6e98b8c9a8c7c675596bcfa03</srcmd5>
+    <version>8.14.1</version>
+    <time>1175812231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5b7ced82444e2d962a8aa864bf1a5ab4</srcmd5>
+    <version>8.14.1</version>
+    <time>1176718324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>8273af9c391a2c1818141077076103b3</srcmd5>
+    <version>8.14.1</version>
+    <time>1177450475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="12">
+    <srcmd5>1e07b2f71fd0419336c9c482c2e0b987</srcmd5>
+    <version>8.14.1</version>
+    <time>1178798743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="26">
+    <srcmd5>382822b7d28cec72dd33ef46c5c2d3cf</srcmd5>
+    <version>8.14.1</version>
+    <time>1181830544</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="27">
+    <srcmd5>8e69c2ac4f889a963734f88c32594f9e</srcmd5>
+    <version>8.14.1</version>
+    <time>1182294902</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="32">
+    <srcmd5>f9e07a6424f918016cd0274492341709</srcmd5>
+    <version>8.14.1</version>
+    <time>1185034258</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c73de6a13ca9bd4a316d803f15a738db</srcmd5>
+    <version>8.14.2</version>
+    <time>1197893219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>9148b23c370b5c5ab7f66935bcbf195f</srcmd5>
+    <version>8.14.2</version>
+    <time>1203384871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>d4d62273c5c1270a25a140cd38dce654</srcmd5>
+    <version>8.14.2</version>
+    <time>1203641440</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="23">
+    <srcmd5>f2c7853dbe56013e5fdaca5812ffe945</srcmd5>
+    <version>8.14.2</version>
+    <time>1203957686</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>266a8e77b651cfc5b72fe40ffe9568cf</srcmd5>
+    <version>8.14.3</version>
+    <time>1210377813</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>c843ec3e1759c9fc0ea64b5a8a2ad997</srcmd5>
+    <version>8.14.3</version>
+    <time>1214428872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="14">
+    <srcmd5>403a45c74632b3798e7f8b744483156e</srcmd5>
+    <version>8.14.3</version>
+    <time>1216242221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>f32949082c6a009a8d5c10ff0c2e0a5c</srcmd5>
+    <version>8.14.3</version>
+    <time>1217648543</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="26">
+    <srcmd5>045c63022706670d2605c09d7df9c2f4</srcmd5>
+    <version>8.14.3</version>
+    <time>1218065727</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="38">
+    <srcmd5>d096ee6014237ffba82dc785b8e798ca</srcmd5>
+    <version>8.14.3</version>
+    <time>1219617138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="49">
+    <srcmd5>447e52f5e7273bbaf2b17fe9bcf54787</srcmd5>
+    <version>8.14.3</version>
+    <time>1223307313</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="50">
+    <srcmd5>8c78bee745ab48b336d2335045840191</srcmd5>
+    <version>8.14.3</version>
+    <time>1227011938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="52">
+    <srcmd5>8c78bee745ab48b336d2335045840191</srcmd5>
+    <version>8.14.3</version>
+    <time>1227011938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f23eedd9c59742bb7ae216a198be373c</srcmd5>
+    <version>8.14.4</version>
+    <time>1265914732</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/sendmail based on submit request 31650 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>ecd4f92aaca7510c936a7a5ed2142b52</srcmd5>
+    <version>8.14.4</version>
+    <time>1268926142</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>b6381c2590336059f1710853845858df</srcmd5>
+    <version>8.14.4</version>
+    <time>1272915195</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/sendmail based on submit request 39206 from user WernerFink
+</comment>
+    <requestid>39206</requestid>
+  </revision>
+  <revision rev="29" vrev="53">
+    <srcmd5>b6381c2590336059f1710853845858df</srcmd5>
+    <version>8.14.4</version>
+    <time>1272915195</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="30" vrev="55">
+    <srcmd5>b6381c2590336059f1710853845858df</srcmd5>
+    <version>8.14.4</version>
+    <time>1278667389</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="56">
+    <srcmd5>b6381c2590336059f1710853845858df</srcmd5>
+    <version>8.14.4</version>
+    <time>1278678619</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="57">
+    <srcmd5>d82b99c3957f2fc66c27c9670c03206b</srcmd5>
+    <version>8.14.4</version>
+    <time>1279541649</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/sendmail based on submit request 43069 from user WernerFink
+</comment>
+    <requestid>43069</requestid>
+  </revision>
+  <revision rev="33" vrev="58">
+    <srcmd5>65db664c4d01bea02a7f8911cd2bd22c</srcmd5>
+    <version>8.14.4</version>
+    <time>1286483363</time>
+    <user>autobuild</user>
+    <comment>Copy from server:mail/sendmail based on submit request 49918 from user gladiac
+</comment>
+    <requestid>49918</requestid>
+  </revision>
+  <revision rev="34" vrev="59">
+    <srcmd5>830f93f6bf70acdc104441eb139891f5</srcmd5>
+    <version>unknown</version>
+    <time>1291993380</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55246 from user elvigia
+</comment>
+    <requestid>55246</requestid>
+  </revision>
+  <revision rev="35" vrev="60">
+    <srcmd5>d39b2991f99ed817be56a0252847f172</srcmd5>
+    <version>unknown</version>
+    <time>1291993392</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55246
+</comment>
+  </revision>
+  <revision rev="36" vrev="63">
+    <srcmd5>d39b2991f99ed817be56a0252847f172</srcmd5>
+    <version>unknown</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="37" vrev="64">
+    <srcmd5>694b46563e54adf11c33f0e12e83f40b</srcmd5>
+    <version>unknown</version>
+    <time>1300092269</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63907 from user WernerFink
+</comment>
+    <requestid>63907</requestid>
+  </revision>
+  <revision rev="38" vrev="65">
+    <srcmd5>b12460b9661b4d5655d4f35bf231d8ae</srcmd5>
+    <version>unknown</version>
+    <time>1300092282</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63907
+</comment>
+  </revision>
+  <revision rev="39" vrev="66">
+    <srcmd5>0adf370dd53cc0c6fc25f7afd4363bd3</srcmd5>
+    <version>unknown</version>
+    <time>1306912379</time>
+    <user>saschpe</user>
+    <comment>- Update to sendmail 8.14.5
+  * Do not cache SMTP extensions across connections as the cache is
+    based on hostname which may not be a unique identifier for a
+    server, i.e., different machines may have the same hostname but
+    provide different SMTP extensions.  Problem noted by Jim Hermann.
+  * Avoid an out-of-bounds access in case a resolver reply for a DNS
+    map lookup returns a size larger than 1K.  Based on a patch
+    from Dr. Werner Fink of SuSE.
+  * If a job is aborted using the interrupt signal (e.g., control-C
+    from the keyboard), perform minimal cleanup to avoid invoking
+    functions that are not signal-safe. Note: in previous versions
+    the mail might have been queued up already and would be
+    delivered subsequently, now an interrupt will always remove the
+    queue files and thus prevent delivery.
+  * Per RFC 6176, when operating as a TLS client, do not offer SSLv2.
+  * Since TLS session resumption is never used as a client, disable
+    use of RFC 4507-style session tickets.
+  * Work around gcc4 versions which reverse 25 years of history and
+    no longer align char buffers on the stack, breaking calls to
+    resolver functions on strict alignment platforms.
+    Found by Stuart Henderson of OpenBSD.
+  * Read at most two AUTH lines from a server greeting (up to two
+    lines are read because servers may use &quot;AUTH mechs&quot; and
+    &quot;AUTH=mechs&quot;). Otherwise a malicious server may exhaust the
+    memory of the client.  Bug report by Nils of MWR InfoSecurity.
+  * Avoid triggering an assertion in the OpenLDAP code when the
+    connection to an LDAP server is lost while making a query.
+    Problem noted and patch provided by Andy Fiddaman.
+  * If ConnectOnlyTo is set and sendmail is compiled with NETINET6
+    it would try to use an IPv6 address if an IPv4 (or unparseable)</comment>
+    <requestid>72244</requestid>
+  </revision>
+  <revision rev="40" vrev="67">
+    <srcmd5>792d42a0c2a394e28cb70b794ec55a15</srcmd5>
+    <version>unknown</version>
+    <time>1306912390</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72244
+</comment>
+  </revision>
+  <revision rev="41" vrev="68">
+    <srcmd5>a1f3f238f5ee21fd36e1db7926997355</srcmd5>
+    <version>unknown</version>
+    <time>1313395158</time>
+    <user>saschpe</user>
+    <comment>- Use Pre exec files for configuration on the fly
+
+- Socket activation does not work for sendmail even with -bs
+  on the command line of sendmail and StandardInput=socket
+
+- The approach of using makefiles requires make for sendmail 
+
+- Make /var7run a ghost entry in spec as this is a tmpfs now and
+  create it at start of sendmail if it does not exist (bnc#710279)
+- First try of using systemd unit configration files for both
+  sendmail MTA and sendmail MT client.  Try to start them on
+  demand using systemd unit socket files for both local and remote
+  network as well as systemd unit path file for local mail queue</comment>
+    <requestid>78682</requestid>
+  </revision>
+  <revision rev="42" vrev="69">
+    <srcmd5>b1e00dbdc47e15b6397dbc15ecdd79fd</srcmd5>
+    <version>unknown</version>
+    <time>1313395170</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78682
+</comment>
+  </revision>
+  <revision rev="43" vrev="70">
+    <srcmd5>b57438e2c55ec5c6c4a10703c71a418c</srcmd5>
+    <version>unknown</version>
+    <time>1313737747</time>
+    <user>saschpe</user>
+    <comment>- Expand systemd configuration at build time</comment>
+    <requestid>79251</requestid>
+  </revision>
+  <revision rev="44" vrev="71">
+    <srcmd5>07affc9890ddc2ec78520f52fb7b569b</srcmd5>
+    <version>unknown</version>
+    <time>1313737762</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79251
+</comment>
+  </revision>
+  <revision rev="45" vrev="73">
+    <srcmd5>07affc9890ddc2ec78520f52fb7b569b</srcmd5>
+    <version>unknown</version>
+    <time>1319182462</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="46" vrev="74">
+    <srcmd5>79f5dd568e1faebb2003ab0666027e25</srcmd5>
+    <version>unknown</version>
+    <time>1321887001</time>
+    <user>coolo</user>
+    <comment>- Allow sendmail to authenticate as client to various mail servers
+  in TLS mode even if servers send 2 headers (bnc#731658)</comment>
+    <requestid>92834</requestid>
+  </revision>
+  <revision rev="47" vrev="75">
+    <srcmd5>dfe46ef10065e1c00fc30c07e7f76e9f</srcmd5>
+    <version>unknown</version>
+    <time>1323194610</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="48" vrev="76">
+    <srcmd5>caa14c4d812597bb0abe0e3c58f33d31</srcmd5>
+    <version>unknown</version>
+    <time>1327093672</time>
+    <user>coolo</user>
+    <comment>Fix uucp build. (forwarded request 100365 from a_jaeger)</comment>
+    <requestid>100633</requestid>
+  </revision>
+  <revision rev="49" vrev="77">
+    <srcmd5>31df5a96dcbd8b80129f7352fded01e9</srcmd5>
+    <version>unknown</version>
+    <time>1329405823</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-Sendmail
+SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license at http://www.spdx.org/licenses (forwarded request 103605 from babelworx)</comment>
+    <requestid>104773</requestid>
+  </revision>
+  <revision rev="50" vrev="78">
+    <srcmd5>27d3fd8d02d763a597927970da91a1e0</srcmd5>
+    <version>unknown</version>
+    <time>1332148010</time>
+    <user>coolo</user>
+    <comment>- Add missing linkerflags to make it build w/ -fPIE properly (forwarded request 109081 from mweckbecker)</comment>
+    <requestid>109099</requestid>
+  </revision>
+  <revision rev="51" vrev="79">
+    <srcmd5>91a90959d461c4721b5a6af11d9e1627</srcmd5>
+    <version>unknown</version>
+    <time>1338284261</time>
+    <user>coolo</user>
+    <comment>- Help to do systemctl the obvoisly (bnc#754544) 
+
+- Job creation scheme (bnc#764107)</comment>
+    <requestid>122425</requestid>
+  </revision>
+  <revision rev="52" vrev="81">
+    <srcmd5>91a90959d461c4721b5a6af11d9e1627</srcmd5>
+    <version>unknown</version>
+    <time>1340184208</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="53" vrev="82">
+    <srcmd5>1a9b0ce274296a27cdce9e7a20dd2917</srcmd5>
+    <version>unknown</version>
+    <time>1342264527</time>
+    <user>coolo</user>
+    <comment>- Make if build even with older distributions 
+
+- Use UTF-8 messages 
+
+- Do not depend on broken umask in rpm scriptlets
+
+- Make SuSEconfig.sendmail a standalone update script (fate#313548)
+
+- Make /var/run a ghost entry in spec as this is a tmpfs now and</comment>
+    <requestid>127856</requestid>
+  </revision>
+  <revision rev="54" vrev="83">
+    <srcmd5>c1f2d8977cb853763d64baa5b6278a9b</srcmd5>
+    <version>unknown</version>
+    <time>1350153183</time>
+    <user>coolo</user>
+    <comment>- buildrequire netcfg explicitly (forwarded request 137831 from coolo)</comment>
+    <requestid>137840</requestid>
+  </revision>
+  <revision rev="55" vrev="84">
+    <srcmd5>7a8e6594a95ea06fad97f40f16a71db4</srcmd5>
+    <version>unknown</version>
+    <time>1351316843</time>
+    <user>coolo</user>
+    <comment>- explicit buildrequire on groff, called from spec file (forwarded request 139461 from coolo)</comment>
+    <requestid>139470</requestid>
+  </revision>
+  <revision rev="56" vrev="86">
+    <srcmd5>7a8e6594a95ea06fad97f40f16a71db4</srcmd5>
+    <version>unknown</version>
+    <time>1359110395</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="57" vrev="87">
+    <srcmd5>37051fcbf868444514aa9efea81fb67f</srcmd5>
+    <version>8.14.7</version>
+    <time>1366812725</time>
+    <user>coolo</user>
+    <comment>- Remove FAQ.sendmail-8.14 but use a html link to upstream support
+
+- Update to sendmail 8.14.7
+  * Drop support for IPv4-mapped IPv6 addresses to prevent the MTA
+    from using a mapped address over a legitimate IPv6 address
+    and to enforce the proper semantics over the IPv6
+    connection.  Problem noted by Ulrich Sporlein.
+  * Fix a regression introduced in 8.14.6: the wrong list of
+    macros was sent to a milter in the EHLO stage.
+    Problem found by Fabrice Bellet, reported via RedHat
+    (Jaroslav Skarvada).
+  * Fix handling of ORCPT parameter for DSNs: xtext decoding
+    was not performed and a wrong syntax check was applied
+    to the &quot;addr-type&quot; field.  Problem noted by Dan Lukes
+    of Obludarium.
+  * Fix handling of NUL characters in the MIME conversion functions
+    so that message bodies containing them will be sent
+    on properly. Note: this usually also affects mails
+    that are not converted as those functions are used
+    for other purposes too.  Problem noted by Elchonon
+    Edelson of Lockheed Martin.
+  * Do not perform &quot;duplicate&quot; elimination of recipients if they
+    resolve to the error mailer using a temporary failure
+    (4xy) via ruleset 0.  Problem noted by Akira Takahashi
+    of IIJ.
+  * CONTRIB: Updated version of etrn.pl script from John Beck
+    of Oracle.
+- Update to sendmail 8.14.6
+  * Fix a regression introduced in 8.14.5: if a server offers
+    two AUTH lines, the MTA would not read them after</comment>
+    <requestid>173074</requestid>
+  </revision>
+  <revision rev="58" vrev="88">
+    <srcmd5>730d5f4623fc62e19f203277c968a8b4</srcmd5>
+    <version>8.14.7</version>
+    <time>1370453718</time>
+    <user>coolo</user>
+    <comment>- buildrequire makeinfo (automake 1.13 no longer requires it) (forwarded request 177027 from coolo) (forwarded request 177170 from coolo)</comment>
+    <requestid>177217</requestid>
+  </revision>
+  <revision rev="59" vrev="89">
+    <srcmd5>6883bfe2dfb026f599440c1d66096237</srcmd5>
+    <version>8.14.7</version>
+    <time>1371460244</time>
+    <user>coolo</user>
+    <comment>- sendmail-8.14.7.dif forces the use of SSL and SASL libraries,
+  so make sure the BuildRequires are there (forwarded request 179119 from jengelh)</comment>
+    <requestid>179160</requestid>
+  </revision>
+  <revision rev="60" vrev="90">
+    <srcmd5>480b97443243b24b42c220b713c02d3f</srcmd5>
+    <version>8.14.7</version>
+    <time>1373984619</time>
+    <user>coolo</user>
+    <comment>- New rpm had removed &quot;prereq&quot; flag from installation script bits
+  that is that `Requires(prereq)' is not valid anymore :(((</comment>
+    <requestid>183116</requestid>
+  </revision>
+  <revision rev="61" vrev="91">
+    <srcmd5>348397784d45b890147eb475010697a7</srcmd5>
+    <version>8.14.7</version>
+    <time>1376295407</time>
+    <user>scarabeus_factory</user>
+    <comment>- Use /etc/os-release instead of /etc/SuSE-release (bnc#833953)</comment>
+    <requestid>186375</requestid>
+  </revision>
+  <revision rev="62" vrev="93">
+    <srcmd5>348397784d45b890147eb475010697a7</srcmd5>
+    <version>8.14.7</version>
+    <time>1379664647</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="63" vrev="94">
+    <srcmd5>31f9fdb623a686ba6d680e274ee96d8e</srcmd5>
+    <version>8.14.7</version>
+    <time>1380299444</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>200800</requestid>
+  </revision>
+  <revision rev="64" vrev="95">
+    <srcmd5>f97985ebf6a731ea28ba5f81db832df1</srcmd5>
+    <version>8.14.7</version>
+    <time>1382259223</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>203831</requestid>
+  </revision>
+  <revision rev="65" vrev="96">
+    <srcmd5>b048fb1ee1bc2038f60226130e0710b8</srcmd5>
+    <version>8.14.7</version>
+    <time>1384943293</time>
+    <user>coolo</user>
+    <comment>- Drop obsolted ftime (drop_ftime.patch) 
+  Broken under PowerKVM (forwarded request 206953 from k0da)</comment>
+    <requestid>207566</requestid>
+  </revision>
+  <revision rev="66" vrev="97">
+    <srcmd5>c5f8048f74f0ae725228f55f0c77a17e</srcmd5>
+    <version>8.14.7</version>
+    <time>1388075976</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>212243</requestid>
+  </revision>
+  <revision rev="67" vrev="98">
+    <srcmd5>f7d26e6130990b6708fd9c40fad7ccd7</srcmd5>
+    <version>8.14.7</version>
+    <time>1396291485</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>228222</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>616a92848631cd7cb62293da18a816e6</srcmd5>
+    <version>8.14.8</version>
+    <time>1396452348</time>
+    <user>coolo</user>
+    <comment>- In systemd mail-transfer-agent.target is gone even if there are
+  MTAs around which will be started without socket/bus activation 
+
+- Update to sendmail 8.14.8 (bnc#871258)
+  * Properly initialize all OpenSSL algorithms for versions before
+    OpenSSL 0.9.8o. Without this SHA2 algorithms may not
+    work properly, causing for example failures for certs
+    that use sha256WithRSAEncryption as signature algorithm.
+  * When looking up hostnames, ensure only to return those records
+    for the requested family (AF_INET or AF_INET6).
+    On system that have NEEDSGETIPNODE and NETINET6
+    this may have failed and cause delivery problems.
+    Problem noted by Kees Cook.
+  * A new mailer flag '!' is available to suppress an MH hack
+    that drops an explicit From: header if it is the
+    same as what sendmail would generate.
+  * Add an FFR (for future release) to use uncompressed IPv6 addresses,
+    i.e., they will not contain &quot;::&quot;.  For example, instead
+    of ::1 it will be 0:0:0:0:0:0:0:1.  This means that
+    configuration data (including maps, files, classes,
+    custom ruleset, etc) have to use the same format.
+    This will be turned on in 8.15.  It can be enabled in 8.14
+    by compiling with:
+    APPENDDEF(`conf_sendmail_ENVDEF', `-D_FFR_IPV6_FULL')
+    in your devtools/Site/site.config.m4 file.
+  * Add an additional case for the WorkAroundBrokenAAAA check when
+    dealing with broken nameservers by ignoring SERVFAIL
+    errors returned on T_AAAA (IPv6) lookups at delivery time.
+    Problem noted by Pavel Timofeev of OCS.
+  * If available, pass LOGIN_SETCPUMASK and LOGIN_SETLOGINCLASS to</comment>
+    <requestid>228713</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>e6da2ad523610fe33acca6ffb719c946</srcmd5>
+    <version>8.14.9</version>
+    <time>1401184982</time>
+    <user>coolo</user>
+    <comment>- Add patch sendmail-fd-passing-libmilter.patch from Debian sendmail
+  maintainer Mikhail Gusarov to support systemd socket activation
+  support also in libmilter (bnc#879790)
+- Be aware that /var/run is a symbolic link to /run a tmpfs file
+  system
+
+- Update to sendmail 8.14.9
+  * Properly set the close-on-exec flag for file descriptors
+    (except stdin, stdout, and stderr) before executing mailers.
+  * Fix a misformed comment in conf.c: &quot;/*&quot; within comment
+    which may cause a compilation error on some systems.
+    Problem reported by John Beck of Oracle.
+  * Fix regression in auto-detection of libraries when only
+    shared libraries are available.  Problem reported by
+    Bryan Costales.
+- Modify patch sendmail-8.14.8.dif which is now sendmail-8.14.9.dif</comment>
+    <requestid>235382</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>e6da2ad523610fe33acca6ffb719c946</srcmd5>
+    <version>8.14.9</version>
+    <time>1409303348</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>80a40fd3b94f2f8973506467c49ca57f</srcmd5>
+    <version>8.14.9</version>
+    <time>1412533862</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253626</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>f90da04d05d993d7d01f714766acfbd3</srcmd5>
+    <version>8.14.9</version>
+    <time>1425377714</time>
+    <user>dimstar_suse</user>
+    <comment>- Make makeinfo less restrict 
+
+- Add uucp-texinfo-5.0.patch: Fix build with texinfo 5.0.</comment>
+    <requestid>288421</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>6a1e8efd61f229c4c5af5737e1a89d34</srcmd5>
+    <version>8.15.2</version>
+    <time>1469742326</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412250</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>d8112b7a159eef5755d134556ddc0300</srcmd5>
+    <version>8.15.2</version>
+    <time>1475589619</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>432962</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>877d33e24ba8830d58e33998c7fd5532</srcmd5>
+    <version>8.15.2</version>
+    <time>1487980365</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459225</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>acc4c8065aedc831f0f260daf2c6d8ee</srcmd5>
+    <version>8.15.2</version>
+    <time>1489415646</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>478959</requestid>
+  </revision>
+  <revision rev="77" vrev="5">
+    <srcmd5>3dd352407eb6da7868c32c362c87a586</srcmd5>
+    <version>8.15.2</version>
+    <time>1492073155</time>
+    <user>maxlin_factory</user>
+    <comment>- Add bitdomain and uudomain to possible targets for refresh 
+
+- Change spec file name scheme used for getting soname down into
+  libmilter
+
+- Replace a find|xargs rm by -delete
+
+- New package libmilter1_0 for the shared library version of
+  libmilter, the  Sendmail Content Management API 
+- Also new package libmilter-doc for the substantial documentation
+  about Sendmail Content Management API (milter)
+- Make sendmail-tls a noarch package</comment>
+    <requestid>487576</requestid>
+  </revision>
+  <revision rev="78" vrev="6">
+    <srcmd5>6b5008f456d49099725146b7b3f6c933</srcmd5>
+    <version>8.15.2</version>
+    <time>1495267965</time>
+    <user>dimstar_suse</user>
+    <comment>- Require user and group mail</comment>
+    <requestid>494519</requestid>
+  </revision>
+  <revision rev="79" vrev="7">
+    <srcmd5>f1d49901bb669cdfca6f3d70f34aca93</srcmd5>
+    <version>8.15.2</version>
+    <time>1502366590</time>
+    <user>maxlin_factory</user>
+    <comment>-  Change requirements for libmilter and sendmail-devel as
+   the library is also used by other MTA like postfix (boo#1049188)</comment>
+    <requestid>511381</requestid>
+  </revision>
+  <revision rev="80" vrev="8">
+    <srcmd5>a34883f549c0fcf0b7498b389893b6bf</srcmd5>
+    <version>8.15.2</version>
+    <time>1503061506</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libnsl-devel build requires for glibc obsoleting libnsl (forwarded request 517315 from kukuk)</comment>
+    <requestid>517321</requestid>
+  </revision>
+  <revision rev="81" vrev="9">
+    <srcmd5>3a9810315230a3115b6b4e6d4d66e045</srcmd5>
+    <version>8.15.2</version>
+    <time>1510322253</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply former patches only if openssl 1.1.0+ are installed 
+
+- support build with openssl 1.1 (bsc#1067222)
+  * add patches from Fedora:
+    sendmail-8.15.2-openssl-1.1.0-fix.patch
+    sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch (rh#1473971)</comment>
+    <requestid>540178</requestid>
+  </revision>
+  <revision rev="82" vrev="10">
+    <srcmd5>c72bae73c0d67f1a2f3bcbd910f14f47</srcmd5>
+    <version>8.15.2</version>
+    <time>1511595791</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545110</requestid>
+  </revision>
+  <revision rev="83" vrev="11">
+    <srcmd5>7817d4173ea89a1d5ca550ad0764ec12</srcmd5>
+    <version>8.15.2</version>
+    <time>1512042351</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _FFR_TLS_EC m4 macro definition for site configuration as
+  well (boo#1070065)</comment>
+    <requestid>546424</requestid>
+  </revision>
+  <revision rev="84" vrev="12">
+    <srcmd5>2af4bbf0bc66b6e492fc7248d970f375</srcmd5>
+    <version>8.15.2</version>
+    <time>1513762843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558694</requestid>
+  </revision>
+  <revision rev="85" vrev="13">
+    <srcmd5>adad52fe479401eda8981d02885ff4a5</srcmd5>
+    <version>8.15.2</version>
+    <time>1531813334</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove left over from last patch
+- Group daemon is required</comment>
+    <requestid>623084</requestid>
+  </revision>
+  <revision rev="86" vrev="14">
+    <srcmd5>556ff424f8330bc3c0517ba7c4a58489</srcmd5>
+    <version>8.15.2</version>
+    <time>1533045841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626642</requestid>
+  </revision>
+  <revision rev="87" vrev="15">
+    <srcmd5>031ed9ca5274c10e2eb10e8cc4d0652b</srcmd5>
+    <version>8.15.2</version>
+    <time>1546946935</time>
+    <user>dimstar_suse</user>
+    <comment>-  Remove alias to mail-transfer-agent.target (boo#1116675)</comment>
+    <requestid>663280</requestid>
+  </revision>
+  <revision rev="88" vrev="16">
+    <srcmd5>892f4076245d1726ff7b7c2c587c5836</srcmd5>
+    <version>8.15.2</version>
+    <time>1564994486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720718</requestid>
+  </revision>
+  <revision rev="89" vrev="17">
+    <srcmd5>55f1bacf7c27c4d31dad9cdcfe0c8b1f</srcmd5>
+    <version>8.15.2</version>
+    <time>1568025503</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FAT LTO objects in order to provide proper static library.</comment>
+    <requestid>729353</requestid>
+  </revision>
+  <revision rev="90" vrev="18">
+    <srcmd5>d9d0e3f9cc22b4ee0ad76258d7309b36</srcmd5>
+    <version>8.15.2</version>
+    <time>1569851971</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch sendmail-8.15.2-glibc-2.30.patch
+  * The former deprecated macro RES_USE_INET6 is gone with glibc 2.30</comment>
+    <requestid>733805</requestid>
+  </revision>
+  <revision rev="91" vrev="19">
+    <srcmd5>bddb675c1fa1731cac9000b6119a09c7</srcmd5>
+    <version>8.15.2</version>
+    <time>1571751879</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>741483</requestid>
+  </revision>
+  <revision rev="92" vrev="20">
+    <srcmd5>bb20d752e5f7ac74672830f56485c11b</srcmd5>
+    <version>8.15.2</version>
+    <time>1576928011</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758500</requestid>
+  </revision>
+  <revision rev="93" vrev="21">
+    <srcmd5>ab41fb3400dcf318aa19d71cb369996d</srcmd5>
+    <version>8.15.2</version>
+    <time>1580397599</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch 8.15.2.mci.p0
+  * If sendmail tried to reuse an SMTP session which had already been
+    closed by the server, then the connection cache could have invalid
+    information about the session.  One possible consequence was that
+    STARTTLS was not used even if offered.</comment>
+    <requestid>768562</requestid>
+  </revision>
+  <revision rev="94" vrev="22">
+    <srcmd5>f37ba8a691b5dd1895f2871113d9f037</srcmd5>
+    <version>8.15.2</version>
+    <time>1582643253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>779008</requestid>
+  </revision>
+  <revision rev="95" vrev="23">
+    <srcmd5>88c391bc0c478a384819edd8c388eca5</srcmd5>
+    <version>8.15.2</version>
+    <time>1592840511</time>
+    <user>dimstar_suse</user>
+    <comment>- sendmail-suse.tar.bz2: fix rpmlint warning W: permissions-dir-without-slash
+  for /var/spool/clientmqueue. This wasn't noticed before, because the
+  directory is not packaged by sendmail but by system-user-mail. (forwarded request 813250 from mgerstner)</comment>
+    <requestid>814660</requestid>
+  </revision>
+  <revision rev="96" vrev="24">
+    <srcmd5>a9bba2db9fbae312dd9e391a28476ea3</srcmd5>
+    <version>8.15.2</version>
+    <time>1593292865</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec
+- Spec file cleanups (forwarded request 816723 from gmbr3)</comment>
+    <requestid>816802</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>66464e14f89058dd27577bbb4a99ce7d</srcmd5>
+    <version>8.16.1</version>
+    <time>1596203578</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix same strange permissions below /usr/share/sendmail 
+
+- Update to sendmail 8.16.1 2020/07/05 (boo#1174572)
+   SECURITY: If sendmail tried to reuse an SMTP session which had
+           already been closed by the server, then the connection
+           cache could have invalid information about the session.
+           One possible consequence was that STARTTLS was not
+           used even if offered.  This problem has been fixed
+           by clearing out all relevant status information
+           when a closed session is encountered.
+   OpenSSL versions before 0.9.8 are no longer supported.
+   OpenSSL version 1.1.0 and 1.1.1 are supported.
+   Initial support for DANE (see RFC 7672 et.al.) is available if
+           the compile time option DANE is set.  Only TLSA RR 3-1-x
+           is currently implemented.
+   New options SSLEngine and SSLEnginePath to support OpenSSL engines.
+           Note: this feature has so far only been tested with the
+           &quot;chil&quot; engine; please report problems with other engines
+           if you encounter any.
+   New option CRLPath to specify a directory which contains
+           hashes pointing to certificate revocations files.
+           Based on patch from Al Smith.
+   New rulesets tls_srv_features and tls_clt_features which
+           can return a (semicolon separated) list of TLS related
+           options, e.g., CipherList, CertFile, KeyFile,
+           see doc/op/op.me for details.
+   To automatically handle TLS interoperability problems for outgoing
+           mail, sendmail can now immediately try a connection again
+           without STARTTLS after a TLS handshake failure.
+           This can be configured globally via the option</comment>
+    <requestid>823136</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>117542934bde37fe2cf4f281ddb8ed89</srcmd5>
+    <version>8.16.1</version>
+    <time>1602349318</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust permissions.d entries to new %libexedir location (bsc#1171164). (forwarded request 840191 from mgerstner)</comment>
+    <requestid>840227</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>8a5d2a90075245b23580fce796de9976</srcmd5>
+    <version>8.16.1</version>
+    <time>1604306250</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup the sendmail permissions profile:
+  - /var/run/sendmail was last used in SLE-11 with systemv init, is no longer
+    required.
+  - /var/spool/clientmqueue is now owned by the system-user-mail package.
+    Nobody is calling %set_permissions and %verify_permissions on this
+    directory anymore, therefore the permissions entry is useless.
+  - /var/spool/mail is the same for all permissions profiles and also managed
+    by systemd-tmpfiles via the filesystem package (fs-var.conf). (forwarded request 844363 from mgerstner)</comment>
+    <requestid>844507</requestid>
+  </revision>
+</revisionlist>

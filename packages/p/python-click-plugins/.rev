@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bd20e81a9ad95935dabeeff0cec0e2a9</srcmd5>
+    <version>1.0.3</version>
+    <time>1499754315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>508343</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e976658eaaccb454e380f74114b213ee</srcmd5>
+    <version>1.0.3</version>
+    <time>1520164328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>582254</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1663d8b6ad160b24ce43cf3b2c7f6956</srcmd5>
+    <version>1.0.4</version>
+    <time>1537883027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>637767</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>fdfb2fc48c95f547d7c190901b64cda6</srcmd5>
+    <version>1.0.4</version>
+    <time>1544726477</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653972</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82828074487539418f2682acfcbb9dfa</srcmd5>
+    <version>1.1.1</version>
+    <time>1555574234</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.1:
+ - Fixed a version mismatch in `click_plugins/__init__.py`  See `1.1`.
+- update to version 1.1:
+ - Fix an issue where a broken command's traceback would not be emitted - https://github.com/click-contrib/click-plugins/issues/25
+ - Bump required click version to `click&gt;=4` - https://github.com/click-contrib/click-plugins/pull/28
+ - Runs Travis tests for the latest release of click versions 4 -&gt; 7 - https://github.com/click-contrib/click-plugins/pull/28
+</comment>
+    <requestid>695327</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>56fde07ac21aa3cbc1d659e755bdab20</srcmd5>
+    <version>1.1.1</version>
+    <time>1598030140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828441</requestid>
+  </revision>
+</revisionlist>

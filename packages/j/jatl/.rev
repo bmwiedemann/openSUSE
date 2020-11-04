@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9b2cd781c57cdb5995d8c1e13613e7ba</srcmd5>
+    <version>0.2.2</version>
+    <time>1573648091</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>747893</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a66c9c00d15e9176f20d721f920411c</srcmd5>
+    <version>0.2.2</version>
+    <time>1574783845</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with new maven-javadoc-plugin</comment>
+    <requestid>750547</requestid>
+  </revision>
+</revisionlist>

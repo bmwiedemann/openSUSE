@@ -1,0 +1,5 @@
+<package name="osmo-iuh" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="network:telephony" package="osmo-iuh"/>
+</package>

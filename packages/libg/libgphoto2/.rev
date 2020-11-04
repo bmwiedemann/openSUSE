@@ -1,0 +1,1472 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>20ecbd04e6dce9de227e74d7cff32bbf</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1168274738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>da2d34aa2d051e31f699f4659bbec726</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1168293213</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>5d366fcf4abd23c81fbe38663111b646</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1168689074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>284fb325747ae0184e80d10a10760958</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1168732491</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>50315887464b19b0d5cd47d47812b383</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1172231380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>81da9dba67aa56cb53e4dd2614286295</srcmd5>
+    <version>2.3.1.3.trunk</version>
+    <time>1172778608</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb4a2e886986b318f8ad31fbabaf47b5</srcmd5>
+    <version>2.3.1.4.trunk</version>
+    <time>1179419014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="17">
+    <srcmd5>42f4d05745730efb86b523c207cb4d8c</srcmd5>
+    <version>2.3.1.4.trunk</version>
+    <time>1181774371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="19">
+    <srcmd5>8a697d7b7fa5b34cd2ccdb4b0df06130</srcmd5>
+    <version>2.3.1.4.trunk</version>
+    <time>1182786492</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a9b3cc9243fab1d7c0a32416ad578157</srcmd5>
+    <version>2.4.0</version>
+    <time>1186073033</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1404d62b7066098d7d5f5121c316b6e3</srcmd5>
+    <version>2.4.0</version>
+    <time>1186667366</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>cc65af94b9690017a2ce4131db532af3</srcmd5>
+    <version>2.4.0</version>
+    <time>1189702097</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="78">
+    <srcmd5>efe78813376e19d9fba9e5c404c0c152</srcmd5>
+    <version>2.4.0</version>
+    <time>1204296711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="80">
+    <srcmd5>fa2e6ec5bbba89c4f4a2cdbe22d30e73</srcmd5>
+    <version>2.4.0</version>
+    <time>1204323938</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="83">
+    <srcmd5>6d7c1829c22ba92d3ac5e428537be777</srcmd5>
+    <version>2.4.0</version>
+    <time>1204752609</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="85">
+    <srcmd5>6ab80dfa91602993d51358981976f260</srcmd5>
+    <version>2.4.0</version>
+    <time>1205318872</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7d7c398376628b6cc1aa99654833d1cb</srcmd5>
+    <version>2.4.0.99</version>
+    <time>1206065438</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2feca5488a796c3deb43a1142de8d565</srcmd5>
+    <version>2.4.1</version>
+    <time>1206871508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>474baeed0ced31866cdead934021dd3f</srcmd5>
+    <version>2.4.1.1</version>
+    <time>1207164811</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>1abb3ff2bd052942a47f7e9efd1a9ddf</srcmd5>
+    <version>2.4.1.1</version>
+    <time>1207830440</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a0d66d6626777e2ce67210b24dd212ae</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1208026208</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>543e22780ac1a6037ff66953ce8c02e4</srcmd5>
+    <version>2.4.1.2</version>
+    <time>1208129682</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bf5084d0046ff8a17b80807609197e20</srcmd5>
+    <version>2.4.1.3</version>
+    <time>1214843145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>3fc686cc2739bf587d3cf38c7f7b4a79</srcmd5>
+    <version>2.4.1.3</version>
+    <time>1215546067</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>45fd39ffa1f197f241afbac4d3dcad95</srcmd5>
+    <version>2.4.2</version>
+    <time>1216052738</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>15923dfa1c4385e5c2a79e4b3d0b85b9</srcmd5>
+    <version>2.4.2</version>
+    <time>1216329691</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="28">
+    <srcmd5>2f374b16152304cdcd65dee4a9b00623</srcmd5>
+    <version>2.4.2</version>
+    <time>1219346327</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c5f0757425593b55543e5026a6541b2e</srcmd5>
+    <version>2.4.2.1</version>
+    <time>1221249572</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>7a557538ebdbb1c66010a9a7e4ec3215</srcmd5>
+    <version>2.4.2.1</version>
+    <time>1223309181</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6845730ef64c70111abdd88afdc19e23</srcmd5>
+    <version>2.4.3</version>
+    <time>1224692013</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>7805f0f62c437f4a5f1dd9f3733c929d</srcmd5>
+    <version>2.4.3</version>
+    <time>1225636982</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>0f9738eb1b122a31a4ddb52277de333e</srcmd5>
+    <version>2.4.3</version>
+    <time>1229343000</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fbab2eb8980d0bc9c1cc6cfa300f6842</srcmd5>
+    <version>2.4.3.2</version>
+    <time>1231781493</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>674066a07f388d0bd728c224a566edb1</srcmd5>
+    <version>2.4.3.3</version>
+    <time>1232626355</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f2584dc56578f5395100eb9542f31ffb</srcmd5>
+    <version>2.4.4</version>
+    <time>1232639464</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>7327b18ad638f2c821667c12a255a24b</srcmd5>
+    <version>2.4.4.3</version>
+    <time>1237306330</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2af6e98f55053578f01c0a2fb70110cd</srcmd5>
+    <version>2.4.5</version>
+    <time>1238702045</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4f97c4a9549c00be9dfd4492682365a3</srcmd5>
+    <version>2.4.5.3</version>
+    <time>1242420540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>36fed16c71524fe090eda03ca196cb0c</srcmd5>
+    <version>2.4.6</version>
+    <time>1242687379</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>febb28a4119dbb2c522bb935b9500896</srcmd5>
+    <version>2.4.6.1</version>
+    <time>1243471658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7b238e5b7f4010c407274c56ed0c057e</srcmd5>
+    <version>2.4.6.4</version>
+    <time>1248876166</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f83fcab9cd5f4075d3056c779f9620d3</srcmd5>
+    <version>2.4.6.6</version>
+    <time>1250179839</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 17487 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2d5435e67054dfd4e455c47c15fe41d7</srcmd5>
+    <version>2.4.7</version>
+    <time>1250865793</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 18170 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ab4b887d3b212d350d965e9942625b7d</srcmd5>
+    <version>2.4.7.1</version>
+    <time>1254150790</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 21165 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>ab4b887d3b212d350d965e9942625b7d</srcmd5>
+    <version>2.4.7.1</version>
+    <time>1254150790</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 21165 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>3dbad233516c3cb6cc77cfe2b4e01c33</srcmd5>
+    <version>2.4.7.1</version>
+    <time>1256080428</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 22516 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>f9fa577b14d70a32cc9005f3baece762</srcmd5>
+    <version>2.4.8</version>
+    <time>1264610212</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 30378 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>04ec7a197d653ec91a01aac7f2ec6688</srcmd5>
+    <version>2.4.8</version>
+    <time>1268924589</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f5fb1823482138abe4353dc1821fefca</srcmd5>
+    <version>2.4.8.1</version>
+    <time>1269562456</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 35719 from user msmeissn
+</comment>
+    <requestid>35719</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>5551bdce44cf27fd54f51765c8cc3974</srcmd5>
+    <version>2.4.9</version>
+    <time>1271372115</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 37697 from user msmeissn
+</comment>
+    <requestid>37697</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>dab814a685065a605997e0d033bd9a13</srcmd5>
+    <version>2.4.9</version>
+    <time>1272372997</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 38908 from user msmeissn
+</comment>
+    <requestid>38908</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>00d6797d957a7aeb18617767ce1705fc</srcmd5>
+    <version>2.4.9</version>
+    <time>1277142264</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 41844 from user msmeissn
+</comment>
+    <requestid>41844</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>00d6797d957a7aeb18617767ce1705fc</srcmd5>
+    <version>2.4.9</version>
+    <time>1278667359</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="54" vrev="5">
+    <srcmd5>00d6797d957a7aeb18617767ce1705fc</srcmd5>
+    <version>2.4.9</version>
+    <time>1278678590</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>784e59183af61319dbe9d268bfff17ff</srcmd5>
+    <version>2.4.10</version>
+    <time>1282570160</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 45617 from user msmeissn
+</comment>
+    <requestid>45617</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>275e01bc5f5606da98df921f39172357</srcmd5>
+    <version>2.4.10</version>
+    <time>1283515757</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/libgphoto2 based on submit request 46837 from user coolo
+</comment>
+    <requestid>46837</requestid>
+  </revision>
+  <revision rev="57" vrev="5">
+    <srcmd5>275e01bc5f5606da98df921f39172357</srcmd5>
+    <version>2.4.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>d0f87ad39132cf1f905cd263ba64ebeb</srcmd5>
+    <version>2.4.11</version>
+    <time>1303380311</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67902 from user licensedigger
+</comment>
+    <requestid>67902</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>2b1c58748cdc34a675cf08476ca87826</srcmd5>
+    <version>2.4.11</version>
+    <time>1303380333</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67902
+</comment>
+  </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>e63f798323e56ab81408fa3fb3f0bcf5</srcmd5>
+    <version>2.4.11</version>
+    <time>1306839956</time>
+    <user>saschpe</user>
+    <comment>hal sectomy</comment>
+    <requestid>72190</requestid>
+  </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>ae33f657f854f23e7c52942bfc4c8832</srcmd5>
+    <version>2.4.11</version>
+    <time>1306839964</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72190
+</comment>
+  </revision>
+  <revision rev="62" vrev="7">
+    <srcmd5>ae33f657f854f23e7c52942bfc4c8832</srcmd5>
+    <version>2.4.11</version>
+    <time>1319182100</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="63" vrev="8">
+    <srcmd5>7e05ec29ae5c99d080547cd32806fafc</srcmd5>
+    <version>2.4.11</version>
+    <time>1321875276</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92493 from coolo)</comment>
+    <requestid>92523</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>efc6a8ba13cd3b4ee264ef0dfd2ac7ea</srcmd5>
+    <version>2.4.11.2</version>
+    <time>1323190766</time>
+    <user>coolo</user>
+    <comment>updated to 2.4.11.2 temp snapshot</comment>
+    <requestid>95056</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>28475b756190c36c817729fd3706686c</srcmd5>
+    <version>2.4.11.2</version>
+    <time>1323869635</time>
+    <user>coolo</user>
+    <comment>- do not explicitly require libusb 0.1 in pkgconfig file
+- some more bugfixes</comment>
+    <requestid>96262</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>9a8b86b52a09a6500525fdc7d4b6922d</srcmd5>
+    <version>2.4.12</version>
+    <time>1327674083</time>
+    <user>coolo</user>
+    <comment>updated to 2.4.12</comment>
+    <requestid>101510</requestid>
+  </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>fbb237ae3d51fbbdb5862e18d9e7412e</srcmd5>
+    <version>2.4.12</version>
+    <time>1329805926</time>
+    <user>coolo</user>
+    <comment>Fix libusb usage... gphoto2 --auto-detect crashes without this patch.. as well as shotwell startup in some cases... (forwarded request 105827 from dimstar)</comment>
+    <requestid>105831</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>eaf30aed7df7d76a05f313ce989b4448</srcmd5>
+    <version>2.4.12.1</version>
+    <time>1329934304</time>
+    <user>coolo</user>
+    <comment>Updated to 2.4.12.1 temp snapshot to fix various libusb1.0 bugs</comment>
+    <requestid>106423</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>c5eb5480c50c7bdfd1e9216f2b2d7d63</srcmd5>
+    <version>2.4.14</version>
+    <time>1334692748</time>
+    <user>coolo</user>
+    <comment>update to 2.4.14</comment>
+    <requestid>113722</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>c5eb5480c50c7bdfd1e9216f2b2d7d63</srcmd5>
+    <version>2.4.14</version>
+    <time>1340183592</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>6106d1bc124c63c8888b88fa826ff7ff</srcmd5>
+    <version>2.4.14</version>
+    <time>1342252282</time>
+    <user>coolo</user>
+    <comment>- generate v 175 udev rules (basically will use internal usb_id now)</comment>
+    <requestid>127766</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>8574ce56a63e8af3d10ffe0b9b4a17ee</srcmd5>
+    <version>2.4.14</version>
+    <time>1343031197</time>
+    <user>coolo</user>
+    <comment>- added 2.4 branch fixes
+  - libusb1: do not crash immediately (avoid global context usage)
+  - canon: --wait-for-event append \0 to filename
+  - ptp2: new USB ids, fixed Canon EOS thumbnail retrieval</comment>
+    <requestid>128433</requestid>
+  </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>89da362beb35b2d5821dd848e3395dd7</srcmd5>
+    <version>2.5.0</version>
+    <time>1347626791</time>
+    <user>namtrac</user>
+    <comment>- Updated to major release 2.5.0
+  - more dynamic lists (no more fixed limits)
+  - libgphoto2 api adjustments to make it more sane, 
+    binary incompatible
+  - new .so version 6
+
+- fixed one missed gp_devs = NULL which led to more crashes
+  bnc#771743</comment>
+    <requestid>134172</requestid>
+  </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>d06bfc4b3daa668e419bc186bd4f689a</srcmd5>
+    <version>2.5.0</version>
+    <time>1348381821</time>
+    <user>coolo</user>
+    <comment>- Parallel build with %_smp_mflags
+- .la files for plugins are useless - remove them (forwarded request 135340 from jengelh)</comment>
+    <requestid>135350</requestid>
+  </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>44e0587c801d2a22ff85c7aa0e85261b</srcmd5>
+    <version>2.5.0</version>
+    <time>1349243899</time>
+    <user>coolo</user>
+    <comment>- split to libgphoto2-6 to allow parallel installation
+  with old libgphoto2 (2.4) and to follow shared lib convention. (forwarded request 136124 from msmeissn)</comment>
+    <requestid>136125</requestid>
+  </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>33184a455b29b2775b50b23d6216af77</srcmd5>
+    <version>2.5.0</version>
+    <time>1349295996</time>
+    <user>coolo</user>
+    <comment>- fix previous change (forwarded request 136862 from coolo)</comment>
+    <requestid>136969</requestid>
+  </revision>
+  <revision rev="77" vrev="5">
+    <srcmd5>1e6b0f6d607439913059af1163f50ab3</srcmd5>
+    <version>2.5.0</version>
+    <time>1350590029</time>
+    <user>coolo</user>
+    <comment>- fix build with new udev rules location (forwarded request 138502 from fcrozat)</comment>
+    <requestid>138505</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>1875c89aa08100694a806d5865942419</srcmd5>
+    <version>2.5.0.2</version>
+    <time>1357819668</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.0.2 temp snapshot
+  - various new ids
+  - various bugfixes
+  - Canon driver fixes
+  - PTP driver fixes: Canon EOS thumbnail fixes
+  - translation updates</comment>
+    <requestid>147800</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>1875c89aa08100694a806d5865942419</srcmd5>
+    <version>2.5.0.2</version>
+    <time>1359109282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>eb4d8c41ac7ebb75b2c889479396e83b</srcmd5>
+    <version>2.5.1.1</version>
+    <time>1362730702</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157784</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>414dfa55615c7bcf0926fcf67af750ef</srcmd5>
+    <version>2.5.1.1</version>
+    <time>1366175604</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 164041 from m_meister)</comment>
+    <requestid>164116</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>9d0a57eb8d41a0f8c2cd7254d3789675</srcmd5>
+    <version>2.5.2</version>
+    <time>1367827802</time>
+    <user>coolo</user>
+    <comment>- Updated to 2.5.2
+  ptp2:
+  * Fixed Raspberry Pi and USB 3.0 &quot;connect only once&quot; problem.
+  * Experimental Olympus E-series (not Pen) remote control support. Try in &quot;Control&quot; mode.
+  * Nikon DSLR: real movie capture! (use --set-config movie=1/0 and --wait-event)
+  * New ids:
+    Sony: DSC-A900, SLT-A350, DSC-RX1, HX300, NEX-3N
+    Nikon Coolpix: P80, L820, S9500, S620, P520, S2500, S2600
+    Nikon Coolpix A
+    Nikon DSLR: D2Xs, D4, D7100
+    Nikon J2
+    Canon Powershot: S100, A1300IS, A2300IS, 
+    Canon EOS: 700D, 100D
+    Fuji FinePix: H20EXR, X20
+    Samsung: NX1000, EK-GC100
+    Also various MTP device ids merged from libmtp.
+  * ptpip: major/minor number was switched in init packet.
+  * Nikon DSLR: out of focus during capture fixed, various bugfixes
+  * Nikon &quot;controlmode&quot; config for unlocking the camera.
+  * Canon DSLR: &quot;keepdeviceon&quot; pinging in get_config, liveview
+  * Canon thumbnail retrieval fixed.
+  * Lots of work on getting Olympus E-series DSLRs in Control mode
+    to run.
+  canon:
+  * wait-for-event: handle when camera goes offline during waiting.
+  * fixed mtime 0 (Jan 1 1970) issue when downloading files and using --filename
+  sierra:
+  * Fixed the Nikon Coolpix 4300 and 2500 USB over SCSI capture mode.
+  * Ignore register 4 read errors after capture as Nikon does not supply them.
+  * added commented code on how to switch the Coolpix 2500 to RAW DIAG mode.</comment>
+    <requestid>174584</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>26030c7c5a0cf55956765593bb2e843a</srcmd5>
+    <version>2.5.2</version>
+    <time>1367932448</time>
+    <user>coolo</user>
+    <comment>- buildrequire libxml2-devel for olympus e-series.</comment>
+    <requestid>174650</requestid>
+  </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>f057cea5137b435d353555b8db78f35d</srcmd5>
+    <version>2.5.2.1</version>
+    <time>1376948608</time>
+    <user>scarabeus_factory</user>
+    <comment>- updated to 2.5.2.1 temporary snapshot
+  - new udev hwdb
+  - new Nikon capture functions for newer Nikons
+  - Olympus 3030 fixed
+  - several new USB ids
+  - translation updates
+  - lots of other bugfixes
+- disabled gpg key checking for snapshot</comment>
+    <requestid>195615</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>f057cea5137b435d353555b8db78f35d</srcmd5>
+    <version>2.5.2.1</version>
+    <time>1379662967</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>53849972e38b52411d03c255f4c7e83a</srcmd5>
+    <version>2.5.2.1</version>
+    <time>1380713463</time>
+    <user>coolo</user>
+    <comment>- Replace udev rules with udev hwdb for openSUSE 13.1 or later
+  (more efficient).
+- Fix udev hwdb installation and ensure udev hwdb is updated when
+  package is installed / updated / uninstalled. (forwarded request 201502 from fcrozat)</comment>
+    <requestid>201554</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a613708758a403b3e86a0ef692de6202</srcmd5>
+    <version>2.5.3</version>
+    <time>1389606804</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.3 final
+  - bugfixes, Coverity and other fixes
+  - new USB ids
+  - hwdb support fixed (bnc#852551)
+  - unified all names, especiall Canon S100 (bnc#856828)
+  - pentax updates
+- reenabled gpg checking</comment>
+    <requestid>213549</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>1a4c0990a1962baaaa0ae36214dd0187</srcmd5>
+    <version>2.5.3.1</version>
+    <time>1389725530</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.3.1 final hotfix
+  - fixed ptp matcher
+  - updated french, dutch, russian, ukrain translation</comment>
+    <requestid>213698</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>2fc88fedcdf2ad99ecac6bb41cf18fc7</srcmd5>
+    <version>2.5.4</version>
+    <time>1395750223</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.4 release
+  - sony slt support
+  - nikon bulb support
+  - other nikon, canon, olympus improvements
+  - lots of bugfixes and various new ids</comment>
+    <requestid>227250</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>66aa602893d738fe19693949a13eee1f</srcmd5>
+    <version>2.5.4</version>
+    <time>1398485162</time>
+    <user>coolo</user>
+    <comment>- remove dependency on gpg-offline (blocks rebuilds and
+  tarball integrity is checked by source-validator anyway, plus
+  it was commented out) (forwarded request 231382 from dirkmueller)</comment>
+    <requestid>231401</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>2eca79476e413f411125dc4c3d705272</srcmd5>
+    <version>2.5.4.1</version>
+    <time>1399377713</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>232613</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>e0d04fc143c9dab7c9c6fa967298f24f</srcmd5>
+    <version>2.5.4.1</version>
+    <time>1404157367</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.4.1 snapshot 2014/06/27
+  - fixed generation of udev rules bnc#884514
+  - new D7100 configuration tables
+  - Nikon D5300 id added
+
+- updated to 2.5.4.1 snapshot 2014/06/13
+  - Nikon 1 capture working
+  - various canon eos fixes and improvements
+  - readded PTP matcher rule to UDEV rules
+  - translation updates</comment>
+    <requestid>238952</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>073f26f3c57c6bae6a688bb232777115</srcmd5>
+    <version>2.5.5</version>
+    <time>1408549886</time>
+    <user>lnussel</user>
+    <comment>- ptp2:
+  Nikon 1 support. Final fix to get it running by Raj Kumar of archive.org.
+  Nikon: liveview capture without autofocus enhanced, now also for card
+  Nikon: restart liveview after capture
+  Canon EOS: New property reporting method (OLC Info) implemented.
+  Print read-only values in configuration table lookup (for Canon EOS mostly)
+  Sony: Fixed Sony SLT-A900v capture
+  Fixed the various &quot;datetime&quot; hooks for PTP generic, Canon Powershot and Canon EOS
+  to hopefully work better. --set-config datetime=now sets the camera to the current time.
+  CHDK: some changes
+  New ids:
+  Nikon DSC D3x, D5300
+  Nikon Coolpix P330
+  Canon PowerShot S95, S120, SX260HS, SX280HS, SX160IS, A2500, A2600, Elph135, IXUS 300HS, IXUS 255HS
+  Canon EOS 1200D
+  Sony DSC-A900, Alpha 6000, DSC-HX5V
+  Casio EX-ZR700, 
+  Fuji FinePix AV-150, T200
+  Massive logging and error handling cleanup by Axel Waggershauser
+  cleanup of the USB data handling
+  Bugfixes
+- st2205:
+  add support for a new type of 240x320 picture frames
+- all:
+  Massive logging and error handling cleanup by Axel Waggershauser.
+  Various cleanups from David Berrange for mingw32 builds.
+  fixed libgd detection and linking.
+- print-camera-list
+  add a mode to print udev rules for the non-standard USB support (usbscsi/usbdisk),
+  needed additional to HWDB databases.</comment>
+    <requestid>245005</requestid>
+  </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>073f26f3c57c6bae6a688bb232777115</srcmd5>
+    <version>2.5.5</version>
+    <time>1409301579</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>79e38a29c9e270845e8883d4cd65b313</srcmd5>
+    <version>2.5.5.1</version>
+    <time>1411220947</time>
+    <user>coolo</user>
+    <comment>- 2.5.5.1 release
+  - regression with nikon coolpix s fixed
+  - canon eos has no zoom
+  - more fixes and translation updates
+
+- 2.5.5 release</comment>
+    <requestid>250216</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>8bffd9b225224316823e866e4d466342</srcmd5>
+    <version>2.5.6</version>
+    <time>1419331812</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.5.6 release 
+  ptp2:
+  * Nikon D3000/D3100/D3200: It hides the &quot;good&quot; capture opcodes from the
+    DeviceInfo. Override and add them. If you see capture bugs, please report
+    with debuglogfile.
+  * &quot;exposurecompensation&quot; now in correct size (-3.0 &lt;-&gt; 3.0 usually)
+  * Canon EOS: decode and report &quot;focusinfo&quot; variable that outputs the focus information of the camera.
+  * Canon EOS: autofocusdrive=0 and cancelautofocus=1 added to cancel autofocusing,
+    to avoid blocking the camera.
+  * Canon EOS: &quot;eosviewfinder&quot; renamed to &quot;viewfinder&quot;
+  * Sony SLT: Make property setting work for &quot;iso&quot;, &quot;exposurecompensation&quot;,
+    &quot;f-number&quot;, &quot;shutterspeed&quot;
+  * Canon EOS: crash on 700D fixed
+  * Nikon DSLR: race condition on object addition handled better
+  * Nikon DSLR: make sure we make a pause a bit during polling after capture.
+  * IDs added:
+    Nikon: Coolpix P7800, S1, J4
+    Nikon: D3300, D610, D4s, D810, D750
+    Canon: IXUS 125HS, PowerShot Elph340HS
+    Leica M9
+  * various bugfixes
+  libgphoto2_port/usb1:
+  * fixed a memory leak
+  * api changed for gp_log_data to make smaller debuglogs possible</comment>
+    <requestid>266095</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>f774a154e6addf47cf7b8af6e032042f</srcmd5>
+    <version>2.5.7</version>
+    <time>1421959707</time>
+    <user>dimstar_suse</user>
+    <comment>- 2.5.7 release
+  ptp2:
+  * Canon EOS focusinfo crash fixed (affected all config operations)
+  * wait_for_event sleep backoff increased (50 - 100 - 150 - 200ms)
+  * Nikon: fixes to make Nikon Coolpix S9700 over PTPIP work better
+  * Nikon: WLAN GUID setting
+  * Sony: tighten event loop to avoid loss of objectadded events
+  * New USB ids: Nikon Coolpix 9400, Nikon S9700, Pentax K3 (in PTP).
+  pentax:
+  * added Pentax K100Ds
+  * added raw capture support
+  packaging:
+  * fixed missing libexif in pkgconfig 
+  translations:
+  * updated ukrainian, vietnamese, french, polish</comment>
+    <requestid>281910</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>58858d562c3908f1b4ba5d45f105b94c</srcmd5>
+    <version>2.5.7</version>
+    <time>1422346127</time>
+    <user>dimstar_suse</user>
+    <comment>- remove all the .la files, improves startup time.</comment>
+    <requestid>282810</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>73860ea09bd4e70cf8c5c0ad87bbb2d1</srcmd5>
+    <version>2.5.7</version>
+    <time>1430983237</time>
+    <user>coolo</user>
+    <comment>- disable libusb 0.1, as it is no longer needed and will cause 
+  hangs. bsc#926862</comment>
+    <requestid>304927</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>65a24a5c170ab4298ecadf0e6aaa0189</srcmd5>
+    <version>2.5.8</version>
+    <time>1437059907</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.8 release
+- all:
+  * Missing COPYRIGHT headers added.
+  * Bug fixes for issues detected by Coverity.
+- ptp2:
+  * Canon Powershot/IXUS CHDK support
+    Install the CHDK firmware and then use &quot;gphoto2 --set-config chdk=On&quot; to enable.
+  * Canon EOS: Implemented new capture method for new Canon EOS to avoid hangs.
+  * Canon EOS: New configuration variable: continuousaf
+  * Canon EOS: event output for focusinfo / focusmask
+  * Nikon DSLR: New configuration variables: movieiso, movieshutterspeed, moviehighisonr
+  * Nikon Coolpix A: also manually add override opcodes for capture (please report if it works)
+  * New USB ids:
+  Sony: DSC-HX60V, Alpha-A7S, Alpha-A77 M2, Alpha A5100
+  Panasonic: DMC-LS2
+  Canon EOS 7D Mark II, Canon EOS M3
+  Canon Powershot SX520 HS
+  Fuji Fujifilm X-E2
+  Samsung NX1
+  * Media Player IDs synced with the libmtp ID database.
+  * Lots of bugfixes.
+- libgphoto2_port/libusb1:
+  * Prefer libusb1 over libusb0 if both are present.
+  * Asynchronous interrupt handling, to avoid losing usb interrupts during other
+    operations.
+- libgphoto2.keyring: replaced by my new 4096 bit key</comment>
+    <requestid>315144</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>2b3bda9749e18402dab07bd9dbb3830c</srcmd5>
+    <version>2.5.8</version>
+    <time>1440135466</time>
+    <user>dimstar_suse</user>
+    <comment>Minor change in identifying the udev version, fixes issues like https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:A:DVD/libgphoto2/standard/ppc64le, where sometimes udev-mini is installed in the buildenv (to avoid build cycles) (forwarded request 321028 from dimstar)</comment>
+    <requestid>321029</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>d4d1fcd5f83321825458a3b344ba19a3</srcmd5>
+    <version>2.5.8</version>
+    <time>1443793015</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>333993</requestid>
+  </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>6aab7c00d733b590375cbd1a7bcca7f1</srcmd5>
+    <version>2.5.9</version>
+    <time>1448400623</time>
+    <user>coolo</user>
+    <comment>- updated to 2.5.9 release
+  Now maintained (source and issue tracker) in GIT at https://github.com/gphoto/libgphoto2
+  ptp2:
+  * PTP/IP: fixes to support Ricoh Theta and Sony Alpha over WLAN better
+  * unification of timeout with backoff handling
+  * Canon EOS: fixed a timeout bug on wait_event
+  * Canon EOS: report protection status correctly
+  * Canon EOS: unlock the ui on close
+  * Sony: bulb mode support (in manual mode, shutterspeed and bulb option)
+  * Hook up PTP OpenCapture opcode
+  * Nikon J5 support. Nikon now hides prop and opcodes even differently.
+  * Added USB IDs:
+    - Sony SLT A77V, A7R2, HDR-PJ260VE
+    - Nikon DSLR D5500
+    - Canon EOS 760D, 5Ds, 5Ds R
+    - Nikon Coolpix AW110, S6300, S6800, S3700, S2900
+    - Nikon 1 S2, J5  
+    - Ricoh Theta m15 (USB and WLAN)
+    - GoProp Hero 4
+  canon: readd old Canon IXUS 30.
+  translations: updated ukrainian, vietnamese, polish, italian</comment>
+    <requestid>345130</requestid>
+  </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>3e83df6aefa0cd1433e5187a1bb040fc</srcmd5>
+    <version>2.5.9</version>
+    <time>1451895680</time>
+    <user>dimstar_suse</user>
+    <comment>- Several changes/fixes to packaging:
+  * API documentation was packaged twice, once in the -devel package
+    and once in the main package (under different paths), split off
+    to separate libgphoto2-devel-doc package
+  * Use apidocs from source tar instead of using doxygen
+  * package user documentation in separate libgphoto2-doc package
+  * remove obsolete hotplug scripts</comment>
+    <requestid>351301</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>7e6c64594b50197a3696027ae1581585</srcmd5>
+    <version>2.5.10</version>
+    <time>1459237861</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.10 release
+  libgphoto2:
+  * added gp_camera_list_config, gp_camera_get_single_config, gp_camera_set_single_config
+    additional configuration APIs for faster access to single configuration values.
+  ptp2:
+  * allow generic opcode commands with parameters, config variable &quot;opcode&quot;
+  * fixed pretending that Nikon Coolpix S series is a Nikon 1 S.
+  * Nikon: fixed problem with SDRAM capture
+  * Canon EOS: handle &quot;no focus&quot; during capture
+  * Canon EOS: handle --new correctly
+  * Canon Powershot: handle lack of object protection setting
+  * Ricoh Theta: support shutterspeed configuration
+  * added size checking to PTP unpacking primitives
+  * various bugfixes
+  * New ids:
+    * Imported Media Players and Android phones from libmtp
+    * Sony Alpha A7S II, ILCE 7M2
+    * Kodak Z990
+    * Nikon Coolpix L840, S3600
+    * Leica SL
+    * Olympus TG-620, E-M5 Mark 2
+    * Canon EOS 1D C, 750D
+    * Canon IXUS 160
+    * Fuji Film X-T1, X-T10, A-610
+  pentax:
+  * fixed some crashes on non-existing config variables
+  * use portable directory api (helps Visual Studio)
+  libgphoto2_port/vusb:
+  * Implemented a virtual PTP camera for test purposes.
+  libgphoto2_port/disk:</comment>
+    <requestid>379059</requestid>
+  </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>91baa59bb6d74e997c2d505168f4c97d</srcmd5>
+    <version>2.5.10</version>
+    <time>1465847364</time>
+    <user>dimstar_suse</user>
+    <comment>- require: udev in the library package for the hwdb refresher
+  bsc#982339
+
+- libgphoto2-newjpeg.patch: jpeg_mem_src gets a const buffer now
+  in new libjpeg-turbo.</comment>
+    <requestid>401539</requestid>
+  </revision>
+  <revision rev="107" vrev="3">
+    <srcmd5>9d1048c6c00092ab16dac9c610e3124e</srcmd5>
+    <version>2.5.10</version>
+    <time>1468578546</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Group tag. (forwarded request 406860 from TheBlackCat)</comment>
+    <requestid>406876</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>58b38a18412cd3de108434c6382c794d</srcmd5>
+    <version>2.5.11</version>
+    <time>1479837381</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.11 release
+  * canon:
+    * not experimental anymore, for some years
+    * some bugfixes in configuration handling
+  * ptp2:
+    * canon: EOS capture improvements, also supporting new EOS
+    * sony: tethering and trigger capture implemented, capture stability improvements
+    * sony: exposure compensation setting fixed
+    * sony: capture and autofocus configurations, similar to eosremoterelease
+    * generic: fixed serialnumber retrieval
+    * nikon: &quot;autofocus&quot; config variable for global autofocus enable/disable (default on, default liveview off)
+    * various bugs fixed, stability improved
+    * ptpip: allow different event ports. --port ptpip:IP:dataport:eventport
+    * New ids reported:
+      - Sony Alpha 7, DSC-RX100M4, NEX-7, DSC-HX20V, Alpha 6300, A7S II, A7, 
+      - Nikon DSC Df, D7200, D5, D810A, 1 V3
+      - Canon EOS 1Dx Mark 3, 80D, 5D Mark IV
+      - Canon Digital IXUS 180
+      - various music players / android phones imported from libmtp 
+    
+  * libgphoto2:
+    * Speed up initial startup.
+    * Win32: store settings in the &quot;User Profile\.gphoto\settings&quot; and not in C:\\Windows anymore.
+    * gp_widget_changed() no longer clears the &quot;changed&quot; state to make this API more consistent.
+      Use gp_widget_set_changed(widget,FALSE) to do so.
+  * examples:
+    * sample-photobooth: a sample program handling tethering, SIGUSR1 driven capture and SIGUSR2
+      based configuration reading.
+    * sample-afl: code to inject afl fuzzing data</comment>
+    <requestid>441099</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>0e8d9cdbe31d2623268d21f8ad01939e</srcmd5>
+    <version>2.5.12</version>
+    <time>1484041066</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.12 release
+  ptp2:
+  * Canon EOS: more fixes for Canon EOS 5D Mark IV and Canon EOS 80D.
+  * Parrot Sequoia support and property decoding
+  * Nikon 1: Fixed Nikon 1 capture
+  * Sony Alpha: various bugfixes.
+  * New USB IDs:
+    * Nikon Coolpix AW130
+    * Nikon DSC D3400
+    * Parrot Sequoia
+    * GoPro Hero, Hero4 Silver, Hero + 
+  * bugfixes and cleanups
+  canon:
+  * fixed zoom on some older Canon Powershots
+  translations:
+  * updated polish, ukrainian, vietnamese, danish, french, svensk</comment>
+    <requestid>448921</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>6e300c14496cf7a8e3544325e9d078f1</srcmd5>
+    <version>2.5.12.1</version>
+    <time>1490965271</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 2.5.12.1 temporary snapshot
+  ptp2:
+  * iPhone iOS 10.2 storage handling fixed, added dynamic storage handling
+  * Sony Alpha Live View support.
+  * Canon EOS M series capture enabled. (might not fully work yet)
+  * Various crashes and endless loops fixed that were found by the AFL fuzzer.
+  * Various bugfixes in Nikon, Canon capture
+  * New USB Ids:
+    * Sony: SLT A37, DSC-RX100M5
+    * Nikon KeyMission 360
+    * Canon PowerShot G16
+    * Canon EOS M5
+    * Fuji Fujifilm XT-2
+    * GoPro Hero 5 Black</comment>
+    <requestid>481925</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>6f189c0681c647c19a97ec7271aa68df</srcmd5>
+    <version>2.5.13</version>
+    <time>1492417421</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 2.5.13 release
+  See below in 2.5.12.1 pre relase, also:
+  
+  pentax: 
+  * Now using the pktriggercord codebase
+  * lots of improvements
+  * Please report missing Pentax K USB ids that are supported by pktriggercord!</comment>
+    <requestid>486751</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>1077d79b66af7cb36245a8836e7ff6f5</srcmd5>
+    <version>2.5.14</version>
+    <time>1497109874</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.14 release
+  * ptp2:
+    * Canon EOS M remote control / capture support (M3, M5, M10 ... but not the original EOS M currently)
+    * fix for Canon EOS camera crash bug introduced in 2.5.13.
+    * Fuji XT-2 capture support (firmware update needed, might work for other Fuji XT too)
+    * Canon EOS 77D added.
+    * various bugfixes
+    * added USB IDs:
+      * Sony DSC-RX10M3, DSC-HX90V
+      * Sony UMC-R10C
+      * Nikon D5600,
+      * Canon EOS 77D
+      * Fuji XT-20
+    * synced MTP device ids from libmtp
+    * more issues fixed that were found by the AFL fuzzer
+  * pentax:
+    * Added Pentax K5-II, Pentax K3-II
+  * libgphoto2_port:
+    * fixed gp_log_remove_func
+  * libgphoto2_port/vusb:
+    * support f-number, shutterspeed, and exposurebias in the virtual PTP camera
+  * all:
+    * several issues found by gcc 7 fixed
+  * translations:
+    * updated ukrainian, polish, vietnamese, french, swedish</comment>
+    <requestid>501208</requestid>
+  </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>1a990f4295b7f4bbd99331eebd0752e0</srcmd5>
+    <version>2.5.14</version>
+    <time>1500274812</time>
+    <user>dimstar_suse</user>
+    <comment>- libgphoto2-fix-fuji.patch: check before using a ptp property that
+  is only available in some updated Fuji cameras (bsc#1048853)</comment>
+    <requestid>510594</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>00e4f98a15ed5637f1f485a1f58ccb19</srcmd5>
+    <version>2.5.15</version>
+    <time>1507197270</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.15 release
+  - ptp2:
+    * fuji: Fix cameras without new capture properties.
+    * Canon EOS: config aspectratio, highisonr
+    * Canon EOS: emit CAPTURECOMPLETE event
+    * Canon EOS: whitebalanaceadjustment is 32bit signed, not 16bit signed
+    * usb: better error feedback
+    * fixed some bugs found by AFL fuzzing
+    * Added USB ids:
+      * Sony: A6500, HX400V
+      * Nikon: D500, D7500
+      * Olympus: VR360
+      * Canon PowerShot: ELPH 350 HS
+      * Canon EOS: 200D, Rebel T7i
+      * Fuji: GFX 50 S
+      * Ricoh Theta S, Theta SC
+  - libgphoto2_port/vusb:
+    * now default disabled as it confused people, enable with --enable-vusb
+- libgphoto2-fix-fuji.patch: upstreamed</comment>
+    <requestid>530520</requestid>
+  </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>e742b2508e65f86635f593833e7d9a2d</srcmd5>
+    <version>2.5.15</version>
+    <time>1507896213</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid running fdupes across partitions. Replace old tar
+  options, old RPM shell variables by new constructs.
+  Rectify RPM groups. Make macro style consistent again. (forwarded request 530540 from jengelh)</comment>
+    <requestid>532161</requestid>
+  </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>d7d183cb12d4503ff2bc3cc5c5caef98</srcmd5>
+    <version>2.5.16</version>
+    <time>1508769495</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.16 release
+  - ptp2: emergency bugfix as a previous bugfix broke some detection features</comment>
+    <requestid>534205</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>cf39c03e15b02d4464a033e5c3086ca5</srcmd5>
+    <version>2.5.17</version>
+    <time>1523956475</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.17 release
+  - ptp2:
+    * Apple iOSX: handle root directory objects that have ParentObject==StorageID instead of 0
+    * implement PTP 1.1 Manifest reading and hook into filesystem. currently only supported by Apple iOS.
+    * Canon PowerShot CHDK live view support.
+    * Canon EOS: prepare capture needs to wait a bit on a crucial place to get all events.
+      might fix some PTP Device Busy reports.
+    * Canon EOS: split bulk downloads into pieces of partial downloads. This might cure the Error 70.
+    * Canon EOS: Improved EOS M capture
+    * Canon CHDK: live preview capture support added
+    * Added USB IDs:
+      * Sony A7r III
+      * Nikon CoolPix L430
+      * Nikon D850
+      * Canon EOS M2, M6, M100
+      * Canon EOS 6D Mark II
+      * Fuji Film X-Pro 2
+  - pentax:
+    * Code updates imported from pkremote
+  - libgphoto2:
+    * Report file changes via GP_EVENT_FILE_CHANGED (hooked up for Canon EOS currently)
+  - translations:
+    * updates spanish, chinese</comment>
+    <requestid>597212</requestid>
+  </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>bc343144007d849ff1480165560095fb</srcmd5>
+    <version>2.5.18</version>
+    <time>1526462486</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.18 release (bsc#1091309)
+  - ptp2:
+    Canon EOS: Fixed file download on several EOS brands, broken by 2.5.17 release.
+  - pentax:
+    Added K01 and K70 models.</comment>
+    <requestid>606836</requestid>
+  </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>bb4f4148a6e7188ecc0f4a879a9f3e28</srcmd5>
+    <version>2.5.18.1</version>
+    <time>1531813156</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to a 2.5.18.1 snapshot after Hackweek:
+  - newer EOS cameras better OLC information support
+  - better support for Fuji X series cameras, liveview and capture</comment>
+    <requestid>622466</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>8af853379d651df77a230c374b165ff6</srcmd5>
+    <version>2.5.19</version>
+    <time>1532681520</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.19 release
+  - ptp2:
+    * Canon EOS: handle OLC versions of newer models, which gave incorrect aperture/shutterspeed values
+    * Fuji X series capture improvements.
+    * Fuji X series live view support added.
+    * Panasonic GH5 liveview and capture support. (Needs camera firmware 2.3 or newer)
+    * Olympus E-M5 Mark II and E-M1 Mark II liveview and capture support added.
+    * USB IDs added:
+      * Sony Alpha A99 M2, A7 III, A9
+      * Nikon Coolpix A900
+      * Panasonic GH5
+      * Olympus E-M1 Mark 2
+      * Fuji X-H1, X-M1, X70, X30
+  - all: various fixes for warnings from compilers and the coverity scanner</comment>
+    <requestid>624594</requestid>
+  </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a810f74a5b37fe29d9542f6173180fc1</srcmd5>
+    <version>2.5.20</version>
+    <time>1541666433</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.20 release
+  - ptp2:
+    * Canon EOS: fixed regression for some EOS series in OLC decoding
+    * Apple iPhone: disabled PTP Manifest reading again, as IOS seems not to follow the standard
+    * bugfixes
+    * new IDs added:
+      * Sony Alpha-RX10M4
+      * Canon EOS M50, 4000D
+      * Fuji XT-3
+      * synced new MTP ids from libmtp
+  - pentax:
+    * refreshed from pktriggercord
+  - translations:
+    * updated polish, ukrainian, swedish, danish</comment>
+    <requestid>645042</requestid>
+  </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>b67187c6008eadf6ef95cc0fd307c6b6</srcmd5>
+    <version>2.5.21</version>
+    <time>1544441057</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.21 release
+  ptp2:
+  * Nikon Z series support added
+  * New Canon Powershot SX / GX also support capture, ALPHA support added
+  * Canon EOS bugfixes
+  * imported IDs from libmtp
+  * Added:
+    * Nikon Z6, Z7
+    * Canon Powershot SX720HS, G5X
+    * Canon IXUS 185</comment>
+    <requestid>656425</requestid>
+  </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>eeeaeee0c32ebcefbfa11797ef99aed0</srcmd5>
+    <version>2.5.22</version>
+    <time>1546946293</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.22 release
+  - ptp2:
+    * Canon EOS M / PowerShot capture problem solved
+    * Sony shutterspeed - provide a static list as the camera does not provide one, you can set also different values
+    * Canon SDRAM capture, try to support more than 500MB of images at once
+    * New USB Ids added:
+      * Canon EOS R, 800D
+      * Canon PowerShot SX600HS, SX740HS
+      * Sony DSC RX0, RX100-M5A
+      * Nikon DSC D3500
+  - generic:
+    * handle new &quot;bind&quot; udev event in udev rule generator.
+  - translations:
+    * updated polish, ukrainian</comment>
+    <requestid>662459</requestid>
+  </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>ed047115573ce7196893991f58ba7067</srcmd5>
+    <version>2.5.23</version>
+    <time>1563790538</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.23 release
+  - ptp2:
+    * Sony capture stability and speed improvements
+    * Canon EOS capture stability improvements, reduce partial read blobs from 5MB to 1MB
+    * Canon EOS M image format unpacking adjustments
+    * Olympus OMD: bulb capture added, trigger capture capable
+    * Panasonic GH5: added manualfocusdrive, capturetarget
+    * Canon PowerShot X work ... trying to support / improve stability of capture
+    * PTP string packing adjusted to standard (empty and null strings)
+    * New ids added:
+      * Sony Alpha A68, RX100M6, DSC-WX350
+      * Nikon Coolpix L100
+      * Canon PowerShot G7X, G9X Mark II
+      * Canon Rebel T6, EOS 2000D
+      * Fuji X-A2, GFX 50R, XT-30
+      * Ricoh WG-M2
+    * libmtp ids synced.
+  - pentax:
+    * synced smaller parts with pktriggercord
+  - translations:
+    * updated danish
+  - fuzzing:
+    * vusb and sample-afl now able to fuzz all USB cameras (even if slow)
+  - all:
+    * Various crashes fixed that were found during AFL fuzzing the USB drivers</comment>
+    <requestid>713857</requestid>
+  </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>e929114488b7d6455cd34bb590fedda0</srcmd5>
+    <version>2.5.23</version>
+    <time>1581278549</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer recommend -lang: supplements are in use. (forwarded request 770107 from iznogood)</comment>
+    <requestid>770135</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ce6d57ad8a6dc72424edc266b88cadd6</srcmd5>
+    <version>2.5.24</version>
+    <time>1582725701</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.24 release
+  - ptp2:
+    * GoPro: fixed all images not visible bug
+    * Canon EOS: lock/unlock ui before more operations
+    * Canon Powershot SX / EOS M: some setup adjustments to make powershot sx work better
+    * Nikon Keymission 170: try override opcodes to allow capture
+    * Nikon DSLR: fixed a regression where 5 seconds was longer image capture shutterspeed
+    * Sony: adjusted manualfocusing not to autofocus
+    * Fuji: access ISO config
+    * Sony: fixed manual focusing
+    * Sony: specify capturetarget on camera, available on current 2019/2020 Sony
+    * bugfixes
+    * New ids added:
+      * Sony Alpha RX100V, A7s, RX0 II,
+      * Nikon Z50, Coolpix L810, KeyMission 170
+      * Canon PowerShot SX530HS, SX 620HS, 
+      * Canon EOS 2000D, 1500D, R2, M6 Mark 2, 250D,
+      * Fuji X-A5, X-E3, GFX100
+      * GoPro Hero 7 White, 7 Silver, 7 Black, 8 Black
+    
+  - lumix:
+    * New WIFI Lumix camera driver was added, using curl and libxml2.
+      Lots of abilities supported already, also capture preview.
+      However capture itself is not yet working.
+      This driver needs libxml2 and libcurl to be built.
+  - all:
+    * Selecting camera libraries has changed a bit.
+    --camlibs=everything will select all and outdated drivers
+    --camlibs=standard  will select &quot;current day&quot; drivers
+    --camlibs=standard,outdated  will select &quot;current day&quot; and &quot;outdated&quot; drivers</comment>
+    <requestid>778604</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>8793c782d3521037edfe8c549ce693b5</srcmd5>
+    <version>2.5.25</version>
+    <time>1590649774</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 2.5.25 release
+  - ptp2:
+    * Liveview support for Leica SL
+    * PTP 1.1 Streaming parameters added. 
+    * Olympus OMD capture fixes
+    * Nikon DSLR/Z:
+      * various improvements to liveview error reporting.
+      * much more properties added, some values added
+      * allow downloading of &quot;large thumbnails&quot; instead of &quot;regular thumbnails&quot;,
+	can be selected by &quot;thumbsize&quot; gphoto2 local setting.
+      * fixes for D3000, D3100 methods
+      * maximum capture wait extended to 1000 seconds (as the D870 has 900 seconds max now)
+    * Canon EOS
+      * initialization fixes (if it breaks your EOS M or PowerShot, please report)
+      * liveview enablement fixed
+      * maximum capture wait extended to 90seconds
+      * EOS R shutterspeed , aperture reporting fixed
+    * various bugfixes
+    * Cameras added to id list:
+      * Sony NEX 5
+      * Canon EOS 90D
+      * Fuji XT-4
+      * Sanyo VPC-FH1
+      * Leica SL Typ 601
+  - lumix:
+    * fixed initialisation, might help capture
+  - all:
+    * ongoing stability fixes from AFL fuzzing
+  - translation updates:
+    * sv</comment>
+    <requestid>808540</requestid>
+  </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>2b46ffb22c024cd9121fdffd871fa390</srcmd5>
+    <version>2.5.26</version>
+    <time>1602682634</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.26 release 
+  ptp2:
+  * Olympus OMD: fixed the 65 second wait after capture.
+  * Canon EOS:
+    * bugfixes
+  * Nikon 
+    * D3000, D3100, and D3200 &quot;static opcode list&quot; reduced after reports what works and what not
+    * Nikon 1 series cameras had some commands listed too much.
+    * Nikon 1 J5 improvements
+    * &quot;liveviewsize&quot; can change liveviewsize
+  * Sony:
+    * Modern Sony cameras seem to require a 3 second wait on startup. Seems needed on ZV-1, A7 R4, RX100 M7 so far... Unsure why.
+    * correct shutterspeed, iso and exposurebias decoding for Sony A7r4 and other new models
+    * some bugfixes in property settings, trying to speed it up
+    * ZV-1 support, some additional startup wait hack to make it work.
+    * partial Sony QX support added, can do preview... close to having capture (but not there yet) (also added &quot;liveviewsize&quot;)
+    * report read/write and read/only of properties correctly
+  * Fuji X:
+    * stabilized normal capture code
+    * added bulb capture, added autofocusdrive
+    * lots of properties listed now, some also decoded
+    * added &quot;liveviewsize&quot;, &quot;shuttercounter&quot;, &quot;colortemperature&quot;,
+      &quot;lensname&quot;, &quot;devicename&quot;, &quot;imagecomment&quot;, &quot;filmsimulation&quot;, &quot;colorspace&quot;
+    * Added very experimental Wifi support.
+  * synced new libmtp device ids
+  * Cameras added to id list: 
+    * Sony QX30U, ZV-1, DSC-RX100M7
+    * Nikon D780, Z5, Coolpix B700
+    * Panasonic GMC-GX8
+    * Canon EOS 1D X Mark III, R5, R6</comment>
+    <requestid>841075</requestid>
+  </revision>
+</revisionlist>

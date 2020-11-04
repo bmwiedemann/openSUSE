@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48d51590d4ec462e19e9b14e7013d6af</srcmd5>
+    <version>1.0</version>
+    <time>1536327402</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial packaging
+</comment>
+    <requestid>633000</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9dc741dd832a0cc36310a32bc8c90677</srcmd5>
+    <version>1.0</version>
+    <time>1544189785</time>
+    <user>dimstar_suse</user>
+    <comment>- Run %fdupes call properly
+- Shorten the link for the LICENSE file</comment>
+    <requestid>655703</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>50263d5f4ebc504cde76193f30372c92</srcmd5>
+    <version>1.0</version>
+    <time>1573223195</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746342</requestid>
+  </revision>
+</revisionlist>

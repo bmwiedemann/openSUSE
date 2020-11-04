@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f87e4516632dcf4067875dccc8b4632e</srcmd5>
+    <version>10.4.0</version>
+    <time>1502562295</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>508558</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a409afadf49ab516493833e520e50fd</srcmd5>
+    <version>10.4.0</version>
+    <time>1503999918</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519124</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>cc27a9b5c45b498738de02459c0f4d38</srcmd5>
+    <version>10.4.0</version>
+    <time>1504981513</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521604</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e3dc6be6085fa04e8c4b4cfffc14decb</srcmd5>
+    <version>10.4.0</version>
+    <time>1505238861</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522979</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>112abf9b7ad51518adce6dffc56b908c</srcmd5>
+    <version>10.5.0</version>
+    <time>1505920345</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527303</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ec827b1b3e491aa02fd1299528f3da5</srcmd5>
+    <version>10.6.0</version>
+    <time>1511274943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544092</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>964dae2adf52ccce28e30b0d8f8e07e1</srcmd5>
+    <version>10.6.0</version>
+    <time>1520164271</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup install section
+- Install and package missing libopamgt (bsc#1083499)</comment>
+    <requestid>581792</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>295645839234999a4fde3df5e12290f6</srcmd5>
+    <version>10.6.0</version>
+    <time>1522225993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>591589</requestid>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>3eadab509f1b0b9547d39c77c2d0e077</srcmd5>
+    <version>10.6.0</version>
+    <time>1527583238</time>
+    <user>dimstar_suse</user>
+    <comment>- Update opa-adress-resolution and libopasadb descriptions (bsc#1093880)</comment>
+    <requestid>611476</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d466c6f094a3044d80a0c62f1bc5e089</srcmd5>
+    <version>10.7.0</version>
+    <time>1529501171</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617427</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1fe7b3f5dce6ee47da52d21a30d00f7d</srcmd5>
+    <version>10.7.0</version>
+    <time>1533214747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626801</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>41298ede61f76dcefe9a5be09f103545</srcmd5>
+    <version>10.8.0</version>
+    <time>1542123384</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase.
+- Fix RPM groups.
+
+- Update to v10.8.0.0.201 (fate#325855)
+  * No changelog available.
+* Rebase opa-ff-suse-build-fixes.patch and opa-ff-add-shebang-for-exp-files.patch
+  to the latest sources</comment>
+    <requestid>646393</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2e31a5b716a0aa312863c2b658460a34</srcmd5>
+    <version>10.8.0</version>
+    <time>1548064728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>666633</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0725a3fe77ef462d628128e7fe2bee8f</srcmd5>
+    <version>10.9.3</version>
+    <time>1571401879</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733595</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5052a2cf11aa8b81378d45daace2ecab</srcmd5>
+    <version>10.10.1</version>
+    <time>1592245697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813053</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e6a75a1f0b65ad375af67b4b5dd1f9e0</srcmd5>
+    <version>10.10.3.0.11</version>
+    <time>1596456858</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823144</requestid>
+  </revision>
+</revisionlist>

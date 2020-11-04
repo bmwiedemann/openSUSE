@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b00bb416cf01a79fe9c84e315e983b9</srcmd5>
+    <version>0.2.2</version>
+    <time>1575039383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2
+- Rename to python-jupyter-sphinx to match upstream rename.</comment>
+    <requestid>747944</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b3e4f18b3b38f242d5664d4820012e3</srcmd5>
+    <version>0.2.3</version>
+    <time>1578069482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760532</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>67bc28c0b4f43b3f84dabc670929d87d</srcmd5>
+    <version>0.2.4</version>
+    <time>1591743024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.4:
+  * Documentation updates
+  * Test fixes</comment>
+    <requestid>812840</requestid>
+  </revision>
+</revisionlist>

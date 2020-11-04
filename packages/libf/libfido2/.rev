@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>48874a40104927b3f4050044de892aa3</srcmd5>
+    <version>1.4.0</version>
+    <time>1590780154</time>
+    <user>maxlin_factory</user>
+    <comment>Will be needed by openssh</comment>
+    <requestid>808953</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e26ebb4c249872f384745473eb4e8b06</srcmd5>
+    <version>1.4.0</version>
+    <time>1594045103</time>
+    <user>dimstar_suse</user>
+    <comment>- Create a udev subpackage and ship the udev rule 
+
+- Don't build with hidapi support to fix issues with Yubikey 5Ci
+  https://github.com/Yubico/libfido2/issues/190</comment>
+    <requestid>818558</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>64cb8ef311919bc1c8ff184b1461707f</srcmd5>
+    <version>1.4.0</version>
+    <time>1596095830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823318</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bedb5ac09cfe2036397b7c2905091c8b</srcmd5>
+    <version>1.5.0</version>
+    <time>1600879044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834290</requestid>
+  </revision>
+</revisionlist>

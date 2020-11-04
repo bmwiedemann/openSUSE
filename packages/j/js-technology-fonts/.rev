@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d415f4b6eebb8dfcf9bb19cbf16f9283</srcmd5>
+    <version>0.0+git.1515043414.01c39b7</version>
+    <time>1579195188</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo in .changes. Fix spec file. Replace revision master with github hash number, add revisionformat. Generate .tar.xz file and disable services. Remove forked repository. Use _servive file to fetch source.
+
+JS Technology fonts was initially created to support Thai language for desktop publishing in Windows operating system. Which later was adapted for sewing machine patterns.
+</comment>
+    <requestid>752537</requestid>
+  </revision>
+</revisionlist>

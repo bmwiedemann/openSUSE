@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>948ba12f982b50e3d31507082b629f7b</srcmd5>
+    <version>1.0.0</version>
+    <time>1578069282</time>
+    <user>dimstar_suse</user>
+    <comment>new dependency after ghc-8.8.1</comment>
+    <requestid>760272</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>667a98cc094fc8aaab97eb89e6645bf1</srcmd5>
+    <version>1.1.4</version>
+    <time>1589196922</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>801030</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c9d03a939f7ca23ac584c519862855f7</srcmd5>
+    <version>1.1.4</version>
+    <time>1592579652</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>815120</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c56c0031e96d65c6e055cde5e35d9813</srcmd5>
+    <version>1.3.2</version>
+    <time>1594293563</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>819580</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3169a3cfd35f065b893f5cbd9817a2ff</srcmd5>
+    <version>1.3.2</version>
+    <time>1598643249</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>829325</requestid>
+  </revision>
+</revisionlist>

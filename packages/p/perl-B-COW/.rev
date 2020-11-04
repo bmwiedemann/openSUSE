@@ -1,0 +1,39 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b0b348c4d4e3483428af74dd8b2e7a6c</srcmd5>
+    <version>0.001</version>
+    <time>1574015041</time>
+    <user>dimstar_suse</user>
+    <comment>needed for Clone</comment>
+    <requestid>749129</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6af49936c380ff5d32afe16196fbfcb5</srcmd5>
+    <version>0.002</version>
+    <time>1580725600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768648</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>41ac782d50f1c81ccbae25cab62f4389</srcmd5>
+    <version>0.003</version>
+    <time>1587838355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796188</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d40015b371d95161cc1e450b23926fe1</srcmd5>
+    <version>0.004</version>
+    <time>1588185843</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.004
+   see /usr/share/doc/packages/perl-B-COW/Changes
+  0.004     2020-04-23 14:41:21-06:00 America/Denver
+  
+  fix CowREFCNT issues on big endian
+</comment>
+    <requestid>798648</requestid>
+  </revision>
+</revisionlist>

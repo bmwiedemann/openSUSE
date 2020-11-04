@@ -1,0 +1,5 @@
+<package name="lua-loadkit" project="openSUSE:Factory">
+  <title>Loadkit allows you to load arbitrary files within the Lua package path</title>
+  <description>Loadkit lets you register new file extension handlers that can be opened with require, or you can just search for files of any extension using the current search path.</description>
+  <devel project="devel:languages:lua" package="lua-loadkit"/>
+</package>

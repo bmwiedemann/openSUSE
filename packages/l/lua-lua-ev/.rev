@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d24b797e734085ca1ff481c867805c87</srcmd5>
+    <version>1.5</version>
+    <time>1586368480</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>790896</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>757361028e5226251f065cc3a1cee454</srcmd5>
+    <version>1.5</version>
+    <time>1597220589</time>
+    <user>dimstar_suse</user>
+    <comment>- Currently tests fail, and they are temporarily ignored.
+
+- Add lua54.patch to make package building with Lua 5.4
+  (gh#brimworks/lua-ev#24).
+
+- Add lua54 as new build target</comment>
+    <requestid>825743</requestid>
+  </revision>
+</revisionlist>

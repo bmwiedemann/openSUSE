@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4b38339dad8c47aeb4744ca963f0ef61</srcmd5>
+    <version>3.8.4</version>
+    <time>1595772835</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>821072</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f92c266a279814cc37f60bef294c959e</srcmd5>
+    <version>3.8.5</version>
+    <time>1597232474</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>823033</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6aa85405825074fb76f754ecc6e9b929</srcmd5>
+    <version>3.8.5</version>
+    <time>1599598500</time>
+    <user>dimstar_suse</user>
+    <comment>- Just cleanup and reordering items to synchronize with python39</comment>
+    <requestid>831136</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>7c799a276fbb85e454ccfef2bd11576b</srcmd5>
+    <version>3.8.5</version>
+    <time>1602762200</time>
+    <user>dimstar_suse</user>
+    <comment>- Buildrequire timezone only for general flavor. It's used in this
+  flavor for the test suite.
+
+- This release also fixes CVE-2020-26116 (bsc#1177211).</comment>
+    <requestid>840193</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e4689d2db52bbe5ffde872a138a40c5a</srcmd5>
+    <version>3.8.5</version>
+    <time>1603369218</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842170</requestid>
+  </revision>
+</revisionlist>

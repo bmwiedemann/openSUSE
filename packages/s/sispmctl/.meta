@@ -1,0 +1,5 @@
+<package name="sispmctl" project="openSUSE:Factory">
+  <title>SiS-PM Control for Linux</title>
+  <description>This projects adds support for the GEMBIRD SIS-PM device to linux.</description>
+  <devel project="hardware" package="sispmctl"/>
+</package>

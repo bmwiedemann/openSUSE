@@ -1,0 +1,5 @@
+<package name="rubygem-sassc-2.2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-sassc-2.2"/>
+</package>

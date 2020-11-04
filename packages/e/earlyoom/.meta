@@ -1,0 +1,6 @@
+<package name="earlyoom" project="openSUSE:Factory">
+  <title>Early OOM Daemon for Linux</title>
+  <description>earlyoom checks the amount of available memory and free swap, and if both are below critical level, it will kill the largest process (highest oom_score).</description>
+  <devel project="Base:System" package="earlyoom"/>
+  <url>https://github.com/rfjakob/earlyoom</url>
+</package>

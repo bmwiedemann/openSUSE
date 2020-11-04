@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fc23ea484523607a0ff2764ca755804d</srcmd5>
+    <version>4.3.1</version>
+    <time>1591742468</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>797648</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6dbe895162c2e5bd8fef4827740608f</srcmd5>
+    <version>4.4.0</version>
+    <time>1596456886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0.</comment>
+    <requestid>823434</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="zathura-plugin-pdf-mupdf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Utilities" package="zathura-plugin-pdf-mupdf"/>
+</package>

@@ -1,0 +1,21 @@
+<package name="spglib" project="openSUSE:Factory">
+  <title>Spglib / libsymspg</title>
+  <description>Spglib is a C library to find and handle crystal symmetries.
+
+Features
+    Find symmetry operations
+    Identify space-group type
+    Wyckoff position assignment
+    Refine crystal structure
+    Search irreducible k-points
+    Find a primitive cell
+
+Algorithms
+    Space-group type finding algorithm: R. W. Grosse-Kunstleve, Acta Cryst., A55, 383-395 (1999)
+    Crystal refinement algorithm: R. W. Grosse-Kunstleve and P. D. Adams, Acta Cryst., A58, 60-65 (2002)
+
+There is also a python module called pyspglib.
+
+http://spglib.sourceforge.net/</description>
+  <devel project="science" package="spglib"/>
+</package>

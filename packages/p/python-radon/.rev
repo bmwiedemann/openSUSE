@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70815ba96ad889dbc2b14a96c3f8cf16</srcmd5>
+    <version>2.2.0</version>
+    <time>1527933737</time>
+    <user>dimstar_suse</user>
+    <comment>Code Metrics in Python</comment>
+    <requestid>612056</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>21607eade3e0d1bb91091513d7a02d18</srcmd5>
+    <version>2.2.0</version>
+    <time>1548335654</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>667866</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a78713fb610cdf4dd888825f4a9553f</srcmd5>
+    <version>2.4.0</version>
+    <time>1549017904</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.0
+  * No upstream changelog</comment>
+    <requestid>669486</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>506c3192fc1958b435eec59aab4d9322</srcmd5>
+    <version>3.0.1</version>
+    <time>1551284883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674885</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5352b98c5fb0f5ebe6a6ca61e49b16c9</srcmd5>
+    <version>3.0.1</version>
+    <time>1552039230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681735</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62fe5bffb9339525d3234318334961ab</srcmd5>
+    <version>3.0.3</version>
+    <time>1558938644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705252</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>649c36e82339ef4b5c9f834d0c35c96b</srcmd5>
+    <version>4.0.0</version>
+    <time>1570285100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734364</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a93cfb707c373b4d09967af73b485429</srcmd5>
+    <version>4.0.0</version>
+    <time>1576062594</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude some tests cases because of gh#rubik/radon#183</comment>
+    <requestid>754479</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a077e61f2ae146af672a6897e1a2e5fe</srcmd5>
+    <version>4.1.0</version>
+    <time>1581087147</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>770005</requestid>
+  </revision>
+</revisionlist>

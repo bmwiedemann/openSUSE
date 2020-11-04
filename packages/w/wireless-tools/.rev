@@ -1,0 +1,355 @@
+<revisionlist>
+  <revision rev="1" vrev="6">
+    <srcmd5>931a91111b4ae2b27bd21316115beb00</srcmd5>
+    <version>29pre10</version>
+    <time>1168904479</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ec24333b8a0603294e5e250f8b3e1a0</srcmd5>
+    <version>29pre17</version>
+    <time>1174375995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9f2efd194ba80a3dfa7e1a8efa9fc047</srcmd5>
+    <version>29pre17</version>
+    <time>1174593721</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>c13392e32143067a68c6ee5834183d88</srcmd5>
+    <version>29pre17</version>
+    <time>1175185900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>8f110d89d04535558b803f063440b4f8</srcmd5>
+    <version>29pre17</version>
+    <time>1175710290</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>21fec3f85e8bd0d4ad02a04e24b773a0</srcmd5>
+    <version>29pre21</version>
+    <time>1181830793</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4d8d91e2c61a8c259f2029bf272885db</srcmd5>
+    <version>29pre22</version>
+    <time>1186100471</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7d8ff04cc5e94fb798f04f6bb0f3c3da</srcmd5>
+    <version>29pre22</version>
+    <time>1186702913</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>f8dc7f41e2aa3b7db889691161a15cab</srcmd5>
+    <version>29pre22</version>
+    <time>1189464509</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>46255f4fed822e002526630242625cb7</srcmd5>
+    <version>29pre22</version>
+    <time>1189469297</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="30">
+    <srcmd5>83eea2aebb69586800b96975a7d63cb7</srcmd5>
+    <version>29pre22</version>
+    <time>1198229068</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="34">
+    <srcmd5>d2c227a98b32c50c33cbdd5132974912</srcmd5>
+    <version>29pre22</version>
+    <time>1200104562</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>337dfa0fc1f39c5c75841bb17e0f90e0</srcmd5>
+    <version>29</version>
+    <time>1202083867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="51">
+    <srcmd5>337dfa0fc1f39c5c75841bb17e0f90e0</srcmd5>
+    <version>29</version>
+    <time>1202083867</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>89ccfe43441c0bd77d0c0d1a290282ee</srcmd5>
+    <version>30.pre7</version>
+    <time>1226071943</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f309ca8c7ce97e6b00be567ac0cd39aa</srcmd5>
+    <version>30.pre7</version>
+    <time>1226274041</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>6b5af8ea2888d89ec876deb45d982218</srcmd5>
+    <version>30.pre7</version>
+    <time>1236789702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>81bf1f56d5c5a7338c6105bb1e47f67b</srcmd5>
+    <version>30.pre8</version>
+    <time>1238604926</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>0a800eb23459795d063c6b7b4e917a19</srcmd5>
+    <version>30.pre8</version>
+    <time>1245283733</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>29925049d479ad38731222a4b324ef3e</srcmd5>
+    <version>30.pre8</version>
+    <time>1245471210</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>3debc1dcbde12e69d923d2478f50d531</srcmd5>
+    <version>30.pre8</version>
+    <time>1251410344</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-tools based on submit request 18904 from user vbotka
+</comment>
+  </revision>
+  <revision rev="22" vrev="6">
+    <srcmd5>3debc1dcbde12e69d923d2478f50d531</srcmd5>
+    <version>30.pre8</version>
+    <time>1251410344</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-tools based on submit request 18904 from user vbotka
+</comment>
+  </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>44a82836a871a58cc5e716fa7006c4a8</srcmd5>
+    <version>30.pre8</version>
+    <time>1261832358</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-tools based on submit request 27541 from user coolo
+</comment>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>be72bfc4e478c32da2d9652591e44127</srcmd5>
+    <version>30.pre8</version>
+    <time>1263483087</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-tools based on submit request 29321 from user coolo
+</comment>
+  </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>d8fc0a9b5a6d539678ed536d7368abf1</srcmd5>
+    <version>30.pre8</version>
+    <time>1265913459</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/wireless-tools based on submit request 32314 from user coolo
+</comment>
+  </revision>
+  <revision rev="26" vrev="10">
+    <srcmd5>89d8958da571f6d8ec333f97946deff1</srcmd5>
+    <version>30.pre8</version>
+    <time>1268926497</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>89d8958da571f6d8ec333f97946deff1</srcmd5>
+    <version>30.pre8</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="28" vrev="13">
+    <srcmd5>89d8958da571f6d8ec333f97946deff1</srcmd5>
+    <version>30.pre8</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="29" vrev="14">
+    <srcmd5>7e667724b2bd0bb54847d15a29643946</srcmd5>
+    <version>30.pre8</version>
+    <time>1293579364</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56591 from user a_jaeger
+</comment>
+    <requestid>56591</requestid>
+  </revision>
+  <revision rev="30" vrev="15">
+    <srcmd5>b8ef46bc7ede98bf62139c4a12bda2e8</srcmd5>
+    <version>30.pre8</version>
+    <time>1293579369</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56591
+</comment>
+  </revision>
+  <revision rev="31" vrev="18">
+    <srcmd5>b8ef46bc7ede98bf62139c4a12bda2e8</srcmd5>
+    <version>30.pre8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="32" vrev="19">
+    <srcmd5>fe641e556e4ba004a6ee5b7cee0de86a</srcmd5>
+    <version>30.pre8</version>
+    <time>1303505394</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 66975 from user coolo
+</comment>
+    <requestid>66975</requestid>
+  </revision>
+  <revision rev="33" vrev="20">
+    <srcmd5>c0efa61c04e0b6d5b08800f69465439d</srcmd5>
+    <version>30.pre8</version>
+    <time>1303505413</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 66975
+</comment>
+  </revision>
+  <revision rev="34" vrev="19">
+    <srcmd5>1a727a22aaa24088bb23838ab5d6df74</srcmd5>
+    <version>30.pre9</version>
+    <time>1314186487</time>
+    <user>saschpe</user>
+    <comment>- update to 30.pre9:
+  o Create iwlib-private.h to minimise namespace pollution [iwlib]
+  o More fix to the 64-&gt;32bit band-aid for encode [iwlib]
+  o Update udev rule to remove a warning [19-udev-ifrename.rules]
+    (from Ritesh Raj Sarraf &lt;rrs@researchut.com&gt; and Guus Sliepen)
+  o Propagate error codes out of main for get [iwconfig/iwlist/iwspy]
+   (From Guus Sliepen &lt;guus@debian.org&gt;)
+  o Remove spurious commands from Czech iwconfig manpage. (forwarded request 79608 from dirkmueller)</comment>
+    <requestid>79610</requestid>
+  </revision>
+  <revision rev="35" vrev="20">
+    <srcmd5>0f0c00cd1ed8e99e15e9f8a4f7c46ab6</srcmd5>
+    <version>30.pre9</version>
+    <time>1314186499</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79610
+</comment>
+  </revision>
+  <revision rev="36" vrev="22">
+    <srcmd5>0f0c00cd1ed8e99e15e9f8a4f7c46ab6</srcmd5>
+    <version>30.pre9</version>
+    <time>1319182569</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="37" vrev="23">
+    <srcmd5>4f98d8752b95cf8f6d74def489a87106</srcmd5>
+    <version>30.pre9</version>
+    <time>1323195190</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="38" vrev="24">
+    <srcmd5>df9b3b3ab91ee1b26da1b5436f927b4f</srcmd5>
+    <version>30.pre9</version>
+    <time>1340134690</time>
+    <user>coolo</user>
+    <comment>- Remove redundant tags/sections from specfile (forwarded request 125208 from jengelh)</comment>
+    <requestid>125220</requestid>
+  </revision>
+  <revision rev="39" vrev="26">
+    <srcmd5>df9b3b3ab91ee1b26da1b5436f927b4f</srcmd5>
+    <version>30.pre9</version>
+    <time>1340184324</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="40" vrev="27">
+    <srcmd5>865bb8b4c352ba0caf77e2a2cfac8dac</srcmd5>
+    <version>30.pre9</version>
+    <time>1341834171</time>
+    <user>coolo</user>
+    <comment>license update: GPL-2.0
+See line 22 of ifrename.c (forwarded request 127282 from babelworx)</comment>
+    <requestid>127309</requestid>
+  </revision>
+  <revision rev="41" vrev="29">
+    <srcmd5>865bb8b4c352ba0caf77e2a2cfac8dac</srcmd5>
+    <version>30.pre9</version>
+    <time>1359110571</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="30">
+    <srcmd5>fbb6d04952b1a2736992c958459d5224</srcmd5>
+    <version>30.pre9</version>
+    <time>1360950790</time>
+    <user>coolo</user>
+    <comment>- Move iwlwifi-led.sh to where udev is installed using pkg-config.
+  Apply the same thing also for 99-iwlwifi-led.rules (only 
+  openSUSE 12.3 and up). (forwarded request 155491 from rmilasan)</comment>
+    <requestid>155498</requestid>
+  </revision>
+  <revision rev="43" vrev="31">
+    <srcmd5>4b7d87112210dc7250a087af3a427f9f</srcmd5>
+    <version>30.pre9</version>
+    <time>1365948728</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 162740 from namtrac)</comment>
+    <requestid>162875</requestid>
+  </revision>
+  <revision rev="44" vrev="33">
+    <srcmd5>4b7d87112210dc7250a087af3a427f9f</srcmd5>
+    <version>30.pre9</version>
+    <time>1379664962</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="34">
+    <srcmd5>88198bb73a0103160ed6ce8bec75584b</srcmd5>
+    <version>30.pre9</version>
+    <time>1392481420</time>
+    <user>coolo</user>
+    <comment>- Remove superfluous iwlagn module config (bnc#831819)
+- Fix build with openSUSE 12.2 and SLE11 (forwarded request 221084 from tiwai)</comment>
+    <requestid>221713</requestid>
+  </revision>
+  <revision rev="46" vrev="36">
+    <srcmd5>88198bb73a0103160ed6ce8bec75584b</srcmd5>
+    <version>30.pre9</version>
+    <time>1409303641</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="47" vrev="37">
+    <srcmd5>318004a6ff04eb8c80a3bfd7614a33de</srcmd5>
+    <version>30.pre9</version>
+    <time>1416823855</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261362</requestid>
+  </revision>
+  <revision rev="48" vrev="38">
+    <srcmd5>d86496c046ac8fa1995a10fa3a6533cd</srcmd5>
+    <version>30.pre9</version>
+    <time>1517323161</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>570627</requestid>
+  </revision>
+  <revision rev="49" vrev="39">
+    <srcmd5>c704cea7ce8c4fc8401d497e1448edc6</srcmd5>
+    <version>30.pre9</version>
+    <time>1575631334</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>752811</requestid>
+  </revision>
+</revisionlist>

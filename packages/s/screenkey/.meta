@@ -1,0 +1,6 @@
+<package name="screenkey" project="openSUSE:Factory">
+  <title>screenkey</title>
+  <description>A screencast tool to display your keys</description>
+  <devel project="multimedia:apps" package="screenkey"/>
+  <url>https://www.thregr.org/~wavexx/software/screenkey/</url>
+</package>

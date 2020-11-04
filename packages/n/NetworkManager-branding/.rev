@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>febf3fc78cd661c5467549aed63d7bc2</srcmd5>
+    <version>42.1</version>
+    <time>1579346225</time>
+    <user>dimstar_suse</user>
+    <comment>Replace NetworkManager-branding-* (same content, just multibuild now)</comment>
+    <requestid>764750</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7c41416a690f0a7a2b6f4cb8223137da</srcmd5>
+    <version>42.1</version>
+    <time>1593292965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817322</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d6d736148aa2ef57db2ec793848bbb4f</srcmd5>
+    <version>42.1</version>
+    <time>1593458211</time>
+    <user>dimstar_suse</user>
+    <comment>Resub fixed
+
+- Also fix variable expansion in %description (boo#1172773). (forwarded request 817545 from iznogood)</comment>
+    <requestid>817615</requestid>
+  </revision>
+</revisionlist>

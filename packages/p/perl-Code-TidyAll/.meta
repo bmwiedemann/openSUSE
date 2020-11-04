@@ -1,0 +1,7 @@
+<package name="perl-Code-TidyAll" project="openSUSE:Factory">
+  <title>perl-Code-TidyAll - Engine for tidyall, your all-in-one code tidier and validator</title>
+  <description>This is the engine used by tidyall - read that first to get an overview.
+
+You can call this API from your own program instead of executing 'tidyall'.</description>
+  <devel project="devel:languages:perl" package="perl-Code-TidyAll"/>
+</package>

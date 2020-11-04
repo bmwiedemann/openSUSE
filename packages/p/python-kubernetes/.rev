@@ -1,0 +1,130 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3d34af917daf2c3fe412163f41bc6c53</srcmd5>
+    <version>4.0.0</version>
+    <time>1520588184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576025</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>acef32d09b8f69a908fd78a9b097c377</srcmd5>
+    <version>5.0.0</version>
+    <time>1522225959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.0:
+  - Update to Kubernetes 1.9 cluster
+  - Label selector for pods is now required and must match the pod template's
+    labels for v1beta2 StatefulSetSpec, ReplicaSetSpec, DaemonSetSpec and
+    DeploymentSpec kubernetes/kubernetes#55357
+  - The dynamic admission webhook is split into two kinds, mutating and
+    validating. The kinds have changed completely and old code must be ported to
+    admissionregistration.k8s.io/v1beta1 - MutatingWebhookConfiguration and
+    ValidatingWebhookConfiguration kubernetes/kubernetes#55282
+  - DaemonSet, Deployment, ReplicaSet, and StatefulSet have been promoted to GA
+    and are available in the apps/v1 group version kubernetes/kubernetes#53679
+  - Introduce new storage.k8s.io/v1alpha1 VolumeAttachment object
+    kubernetes/kubernetes#54463
+  - Introduce core/v1 RBDPersistentVolumeSource kubernetes/kubernetes#54302
+  - StatefulSet status now has support for conditions
+    kubernetes/kubernetes#55268
+  - DaemonSet status now has support for conditions kubernetes/kubernetes#55272</comment>
+    <requestid>591518</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ed78ff588259e54608271c0610a902ee</srcmd5>
+    <version>5.0.0</version>
+    <time>1545647945</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659468</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f7606ea2e20e848ba2486edd89caa811</srcmd5>
+    <version>8.0.1</version>
+    <time>1549624528</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672558</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fec6a6cd92a675a5bebf60a679670714</srcmd5>
+    <version>8.0.1</version>
+    <time>1550668251</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>676210</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>51031bd03753d9759a699bf5ed7ad066</srcmd5>
+    <version>8.0.1</version>
+    <time>1551468747</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>680476</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>56c52effe133624a628f226ac9989aff</srcmd5>
+    <version>9.0.0</version>
+    <time>1558129264</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703256</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5f57cd2e3d990e3ef3592ad4af7fd899</srcmd5>
+    <version>9.0.0</version>
+    <time>1560457848</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused dep on Sphinx</comment>
+    <requestid>708350</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2748a6a1ecd11642366d4b157ac5c8f0</srcmd5>
+    <version>10.0.0</version>
+    <time>1564302003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.0.0:
+  * Fix base64 padding for kube config kubernetes-client/python-base#79
+  * Fix websocket client decoding binary message. Replace non-utf8 data instead of failing kubernetes-client/python-base#104
+  * Add email scope to GCP provided credential refresh kubernetes-client/python-base#110
+  * Fix broken urllib3 dependencies kubernetes-client/python#816
+  * Add method to dynamically set namespace in yaml utility kubernetes-client/python#782
+  * Add json-patch to custom object patch method kubernetes-client/gen#119</comment>
+    <requestid>718121</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>69afadfc03cd393df0808cea9bca5d26</srcmd5>
+    <version>10.0.1</version>
+    <time>1565962098</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.0.1:
+  * Fix content type regression in custom object patch API
+  * Bump urllib3 version to pick up security fix for CVE-2019-11324</comment>
+    <requestid>722990</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>4d7729b89ac6b079fac40d7ac07f12b3</srcmd5>
+    <version>10.0.1</version>
+    <time>1578162026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies to match up what is in requirements.txt</comment>
+    <requestid>760417</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>38647192345726daedba68e209634f8d</srcmd5>
+    <version>10.0.1</version>
+    <time>1585265150</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>785578</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d09aff1e32a322647ee085dd89ca165e</srcmd5>
+    <version>11.0.0</version>
+    <time>1587162515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794512</requestid>
+  </revision>
+</revisionlist>

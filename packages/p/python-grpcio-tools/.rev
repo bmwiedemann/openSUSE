@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad4a3bdcc621d4fa7da84eb3c373542</srcmd5>
+    <version>1.30.0</version>
+    <time>1602762508</time>
+    <user>dimstar_suse</user>
+    <comment>a python-based Protobuf code generator for gRPC (depends on sr#825367)</comment>
+    <requestid>828190</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>120c0c8e765a8dd85548f7196af59ae8</srcmd5>
+    <version>1.33.1</version>
+    <time>1603821577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844102</requestid>
+  </revision>
+</revisionlist>

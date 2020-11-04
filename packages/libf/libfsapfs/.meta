@@ -1,0 +1,29 @@
+<package name="libfsapfs" project="openSUSE:Factory">
+  <title>Library and tools to access the Apple File System (APFS)</title>
+  <description>libfsapfs is a library to access the Apple File System (APFS).
+
+Project information:
+
+* Status: experimental
+* Licence: LGPLv3+
+
+Read-only supported APFS formats:
+
+* version 2
+
+Supported APFS format features:
+
+* ZLIB (DEFLATE) compression
+* LZVN compression
+* encryption
+
+Unsupported APFS format features:
+
+* APFS version 1
+* Fusion drive (NX_INCOMPAT_FUSION)
+* snapshots
+* LZFSE compression, compression methods 11 and 12
+* &quot;uncompressed&quot;, compression methods 1, 9 and 10
+* T2 encryption</description>
+  <devel project="security:forensics" package="libfsapfs"/>
+</package>

@@ -1,0 +1,12 @@
+<package name="pipewire0_2" project="openSUSE:Factory">
+  <title>Old version of pipewire, an audio and video server, for WebRTC compatibility</title>
+  <description>PipeWire is a server and user space API to deal with multimedia pipelines.
+ 
+This is the old version 0.2 of pipewire, maintained only to provide
+compatibility with apps supporting WebRTC in Wayland that have not yet been
+ported to use pipewire &gt;= 0.3, e.g. google-chrome.
+
+</description>
+  <devel project="X11:Wayland" package="pipewire0_2"/>
+  <url>https://pipewire.org/</url>
+</package>

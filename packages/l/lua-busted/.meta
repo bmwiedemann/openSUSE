@@ -1,0 +1,9 @@
+<package name="lua-busted" project="openSUSE:Factory">
+  <title>Unit testing framework with a focus on being easy to use</title>
+  <description>busted is a unit testing framework with a focus on being easy to use. busted works with lua &gt;= 5.1, moonscript, terra, and LuaJIT &gt;= 2.0.0.
+
+busted test specs read naturally without being too verbose. You can even chain asserts and negations, such as assert.not.equals. Nest blocks of tests with contextual descriptions using describe, and add tags to blocks so you can run arbitrary groups of tests.
+
+An extensible assert library allows you to extend and craft your own assert functions specific to your case with method chaining. A modular output library lets you add on your own output format, along with the default pretty and plain terminal output, JSON with and without streaming, and TAP-compatible output that allows you to run busted specs within most CI servers. You can even register phrases for internationaliation with custom or built-in language packs.</description>
+  <devel project="devel:languages:lua" package="lua-busted"/>
+</package>

@@ -1,0 +1,26 @@
+<package name="epson-inkjet-printer-escpr" project="openSUSE:Factory">
+  <title>Epson ESC/P-R Inkjet Printer Driver</title>
+  <description>The ESC/P-R driver works as a filter program used with CUPS.
+
+It offers high quality printing with Seiko Epson color ink jet printers.
+
+This driver can only be used with printers that support the Epson ESC/P-R language.
+
+For a list of supported printers by a currently installed package see the PPD files in this directory:
+
+/usr/share/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr
+
+For a list of supported printers by the newest available version at the upstream project visit:
+
+http://avasys.jp/english/linux_e/
+
+In particular regarding the ESC/P-R driver see:
+
+http://avasys.jp/eng/linux_driver/download/lsb/epson-inkjet/escpr/
+
+Regarding &quot;What's ESC/P-R?&quot; have a look at:
+
+http://global.epson.com/innovation/universal_printing/index.html
+</description>
+  <devel project="Printing" package="epson-inkjet-printer-escpr"/>
+</package>

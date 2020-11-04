@@ -1,0 +1,5 @@
+<package name="python-path" project="openSUSE:Factory">
+  <title>A module wrapper for os.path</title>
+  <description>The path package implements a path objects as first-class entities, allowing common operations on files to be invoked on those path objects directly.</description>
+  <devel project="devel:languages:python" package="python-path"/>
+</package>

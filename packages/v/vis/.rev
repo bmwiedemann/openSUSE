@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27a32caf48e7bc52901f7f92ad8c932c</srcmd5>
+    <version>0.5+git.1582699959.bdfea7e</version>
+    <time>1582810592</time>
+    <user>dimstar_suse</user>
+    <comment>New package for Factory.</comment>
+    <requestid>779685</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1096dd2e41156e9346a298058a5daf15</srcmd5>
+    <version>0.5+git.1584517720.08a550d</version>
+    <time>1587162620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794694</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c2baf07352a3be974c58ca4ce64b3358</srcmd5>
+    <version>0.5+git.1590819266.c37f09e</version>
+    <time>1591381449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5+git.1590819266.c37f09e:
+  * test: update
+  * vis: fix implicit enum conversion warning
+  * build: update alpine in docker build to version 3.12
+  * doc: update outdated version information
+  * doc: update sphinx configuration to python 3
+  * test: update
+  * text: introduce text_save_method, remove text_save_range
+  * test: update
+  * build: use -O2 by default
+  * vis: cleanup pre-processing of :-commands
+  * Tweak README
+  * vt100: do not crash if termkey is not yet initialized
+  * ui: fix line number drawing
+  * build: fix _XOPEN_SOURCE redefinition warning
+  * vis: make &lt;Escape&gt; reset count in visual modes
+  * vis: make &lt;Escape&gt; reset count in normal mode
+  * lexers: prioritize markdown list rule
+  * lexers: make markdown white space rule less greedy
+  * man: document theme location
+  * Avoid use of VLAs
+  * vt100: use shorter escape sequence to clear screen
+  * Add Julia lexer
+</comment>
+    <requestid>811839</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>140a661cd50f338934d54ee41b943f9a</srcmd5>
+    <version>0.6</version>
+    <time>1592245914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the released version 0.6 (all changes since 0.5):
+  - bounded time syntax highlighting using the :set redrawtime
+    option
+  - support optional count for sam's text commands e.g. :i3/-/
+  - make &lt;C-n&gt; in visual mode match next occurence of existing
+    selection
+  - warn when attempting to write to an existing file
+  - improved file change detection based on inode instead of path
+    information
+  - fix file saves with modifications in file pre-save events
+  - fix save on file systems without fsync(2) support on
+    directory descriptors
+  - do not unlink file~ when saving file
+  - introduce distinct vis-menu(1) exit codes
+  - modify Lua package.path to include /init.lua
+  - performance improvements for the HTML, XML and YAML lexers
+  - new Julia and Elm lexers, better defaults for standard text
+    lexer
+  - support optional exit status in :q and :qall commands
+  - better temporary file creation using mkstemp(2)
+  - performance improvements in highlight matching parentheses
+  - improved behavior of ^ and $ in searches and looping commands
+  - improved search wrap around behavior
+  - new :set layout option to specify window orientation
+  - improved filetype detection by matching known filenames
+    exactly
+  - support DragonFly BSD in configure script
+  - better manual page, fixed warnings
+  - removed gp, gP, gq
+  - implement g~, gu and gU using tr(1), they are no longer</comment>
+    <requestid>814686</requestid>
+  </revision>
+</revisionlist>

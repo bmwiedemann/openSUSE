@@ -1,0 +1,240 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad29b19c733beb2154ae52a46564ebb</srcmd5>
+    <version>0.66</version>
+    <time>1431406006</time>
+    <user>coolo</user>
+    <comment>needed for perl-Task-Kensho-Async</comment>
+    <requestid>304782</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ccc30917de53f6152764a5ffed8e71f3</srcmd5>
+    <version>0.77</version>
+    <time>1603725755</time>
+    <user>dimstar_suse</user>
+    <comment>- add IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch
+  to fix IO-Async-0.77-Adjust-t-50resolver.t-test-for-an-unavailable-DNS-se.patch
+- updated to 0.77
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+  0.77    2020-05-13
+          [CHANGES]
+           * Updated for Metrics::Any 0.05
+           * Report an info-type gauge metric to track loop types
+           * Loop processing time should be a timer metric, not a distribution
+           * Don't bother reporting zero-byte stream read/write metrics
+          [BUGFIXES]
+           * Skip metrics-related unit tests if metrics aren't active, even
+             though we depend on Test::Metrics::Any
+           * Account for MSWin32's EWOULDBLOCK in t/70future-io.t
+  
+  0.76    2020-05-05
+          [CHANGES]
+           * Initial attempt at providing metrics via Metrics::Any
+           * Renamed -&gt;(un)watch_child API to -&gt;(un)watch_process
+           * Renamed 'child' LoopTests suite to 'process'
+  
+  0.75    2019-11-26 00:06:59
+          [CHANGES]
+           * Remember to keep O_NONBLOCK off on IO::Async::Channel sync mode
+             filehandles
+           * Added IO::Async::Process-&gt;finish_future
+           * Added IO::Async::Routine-&gt;result_future
+           * Future-returning version of IO::Async::Function-&gt;stop
+           * Don't load IO::Socket or Sereal modules unless required
+          [BUGFIXES]
+           * Refresh the sigpipe in -&gt;post_fork if required (RT128588)
+           * Fix some spelling mistakes (RT130087)
+           * Skip the async getprotobyname() test if it doesn't work
+             synchronously (RT131029)
+  
+  0.74    2019-06-27 18:44:38
+          [CHANGES]
+           * Warn about IO::Async::Stream using autoflush on a blocking handle
+           * Implement queuing priorities for IO::Async::Function calls (RT129918)
+           * Send a terminating signal to a -&gt;run_process process on cancellation
+             (RT129225)
+           * Optionally make -&gt;run_process future fail when process exits non-zero
+             (RT129225)
+           * Implement the Future::IO-&gt;syswrite API
+          [BUGFIXES]
+           * Skip t/70future-io.t unless Future::IO is available (RT129807)
+           * Remember to set O_NONBLOCK on IO::Async::Channel async mode
+             filehandles (RT129879)
+           * Handle Windows 7 which returns ENETDOWN to failed AF_UNIX connect()
+             (RT129806)
+  
+  0.73    2019-06-12 16:49:28
+          [CHANGES]
+           * Provide an IO::Async implementation of Future::IO
+           * Added $loop-&gt;run_process (RT129225)
+           * Clear $ONE_TRUE_LOOP in $loop-&gt;fork so that child processes can do
+             IO::Async::Loop-&gt;new successfully
+           * Added $notifier-&gt;adopted_futures accessor (RT127818)
+           * Various docs fixes
+  
+  0.72    2018-04-02 19:34:27
+          [CHANGES]
+           * Expanded docs on Stream's on_read sub return values
+           * Overridable timeout for IO::Async::Test::wait_for
+           * Hide IO::Async::ChildManager as an internal implementation detail;
+             move the docs into main IO::Async::Loop
+           * Added $loop-&gt;open_process; suggest using that instead of
+             -&gt;open_child
+           * Begin implementation of $loop-&gt;is_running method (part of RT123780)
+          [BUGFIXES]
+           * Make IO::Async::Future-&gt;await wait until it's ready
+           * Fix calculation of periodic timer in 'skip' mode (RT124414)
+           * Perform synchronous getaddrinfo shortcut even for service-less
+             lookups
+           * Make sure that errors from underlying read/write functions are
+             debug-logged by IO::Async::Stream
+  
+  0.71    2016/12/22 15:05:50
+          [CHANGES]
+           * Added 'prefork' option to IO::Async::Channel (RT115920) - thanks
+             GMARLER
+           * Prefer Sereal Channel encoding if that module is available
+           * Ensure that IaFunction still prints debug information on futures
+           * Miscellaneous spelling fixes in docs - thanks genio
+          [BUGFIXES]
+           * 'use lib &quot;.&quot;;' for perl 5.24
+           * Make t/50resolver.t less sensitive to EAI_NONAME vs EAI_NODATA
+             because some resolvers lie (RT113429)
+           * Fix error message linefeed tests in t/50resolver.t (RT119369)
+           * Ensure that SIGPIPE is ignored if it's still at its default value
+  
+  0.70    2015/12/15 18:17:43
+          [CHANGES]
+           * Support perl 5.8.x (tested on 5.8.9, presumed working as far as
+             5.8.4)
+  
+  0.69    2015/11/09 19:56:58
+          [CHANGES]
+           * Use Future-&gt;catch instead of poorly-implemented string-eq test
+           * Use L&lt;...&gt; instead of C&lt;...&gt; in docs where appropriate (RT107417)
+             (thanks Arthur Axel 'fREW' Schmidt)
+  
+          [BUGFIXES]
+           * Don't silently swallow Listener acceptor failures (RT107806)
+           * Don't silently swallow other -&gt;connect errors
+           * Remember to -&gt;unwatch_io before setting IaHandle's handle to undef
+  
+  0.68    2015/07/31 20:07:48
+          [CHANGES]
+           * Allow IO::Async::Function body to 'die' with an ARRAYref to set
+             more details on failed Future
+           * Have IO::Async::Resolver calls indicate the failed resolver name
+           * Have IO::Async::Resolver's getaddrinfo and getnameinfo resolvers
+             give error numbers in failure result
+           * Added 'init_code' parameter to IO::Async::Function (RT104127)
+           * Added IO::Async::Channel-&gt;encode, -&gt;send_encoded; deprecate the old
+             -&gt;send_frozen method
+           * Added IO::Async::Test::wait_for_future
+          [BUGFIXES]
+           * Clean up after 'on_hangup' loop tests (RT106061)
+           * Make -&gt;stop + -&gt;start on IO::Async::Timer::Periodic not forget the
+             first_interval (RT100927)
+  
+  0.67    2015/06/01 15:06:13
+          [CHANGES]
+           * Add a -&gt;post_fork method to IO::Async::Loop in case subclasses
+             should take specific action (RT104130)
+           * Remove IO::Async::MergePoint entirely
+           * Add debug_printf() calls to IO::Async::Process
+           * Various documentation additions
+          [BUGFIXES]
+           * Remember to actually delete unused filehandles from the pollmask
+             (RT103922)
+- updated to 0.66
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+  0.66    2015/04/17 20:36:39
+          [CHANGES]
+           * Created IO::Async::Debug
+           * Ignore SIGPIPE by default (RT92024)
+           * IaSocket-&gt;bind now returns a Future
+           * Added IaSocket-&gt;bind resolver support and neatened up UDP examples
+             in synopsis/documentation
+  
+          [BUGFIXES]
+           * Correct call to unpack() in IaStream example (RT103143)
+           * Don't silently eat accept() failures in IaListener (RT102677)
+           * Remember to add the new resolver instance to $loop in
+             -&gt;set_resolver (RT103446)
+           * Correct implementation of -&gt;unwatch_io on IaLoop::Poll to prevent
+             100% CPU spin (RT103445)
+           * Ensure that an exception thrown by Timer::Periodic's on_tick
+             doesn't prevent rescheduling
+- updated to 0.65
+   see /usr/share/doc/packages/perl-IO-Async/Changes
+  0.65    2015/02/15 14:28:02
+          [CHANGES]
+           * Optionally allow IO::Async::Channel to use 'Sereal' serialisation
+           * Added documentation about the 'env' Child Manager key and copying
+             %ENV
+           * Take OS &quot;preferred loop subclass&quot; hints from IO::Async::OS directly
+  
+          [BUGFIXES]
+           * Nested $stream-&gt;read_* inside read_* cause double-completion of
+             Future (RT101774)
+           * Implement IO::Async::Loop::Poll directly on _poll() syscall
+             wrapper, thus avoiding many bugs in IO::Poll (RT93141)
+           * Ensure that IO::Async::Loop::Select can cope with callbacks that
+             remove other IO handle watches (RT101919)
+           * Silently upgrade watched IO handles to O_NONBLOCK (RT102044)
+           * Complain about unrecognised keys to -&gt;extract_addrinfo (RT101453)
+  
+  0.64    2014/10/17 17:51:07
+          [CHANGES]
+           * Make specific mention of 'TCP' and 'UDP' around socket examples
+             where appropriate
+           * Allow construction of an IO::Async::Handle using fileno integers
+             directly
+           * Provide a better search for 'all open filehandles' via IO::Async::OS
+             on Linux (RT97942)
+           * Allow IO::Async::Listener to have handle_constructor or handle_class
+             as a subclass method (RT97208)
+           * Clarify documentation on how to use IO::Async::Process's
+             on_exception event (RT98929)
+  
+          [BUGFIXES]
+           * Ensure that Stream's write Futures are also informed of write errors
+             (RT97433)
+           * Remember to -&gt;remove_child the individual workers of an
+             IO::Async::Function (RT99552)
+           * Fix IO::Async::Function synopsis example (RT97713)
+  
+  0.63    2014/07/11 15:09:08
+          [CHANGES]
+           * Allow Notifier subclasses to last-ditch handle unrecognised
+             -&gt;configure() params
+           * Added $notifier-&gt;adopt_future
+           * Added $notifier-&gt;invoke_error and 'on_error' event
+           * Ensure that TimeQueue inserts in FIFO order for equal timestamps
+           * Kill remaining docs to long-dead IO::Async::Sequencer
+  
+          [BUGFIXES]
+           * Cygwin needs the SELECT_CONNECT_EVEC OS hint as well
+           * Probe for a broken port to perform listen() tests on by using
+             ReuseAddr =&gt; 1 so it matches what IO::Async will do (RT84051)
+  
+  0.62    2014/03/27 23:15:25
+          [CHANGES]
+           * Added IO::Async::Future-&gt;{done,fail}_later
+           * Allow overriding of debug log file or file descriptor
+           * Avoid Future's and_then/or_else methods
+           * Allow Channel-&gt;recv in async mode to return a Future (RT91180)
+           * Ensure that Function -&gt;call Futures cancel correctly
+           * Added $routine-&gt;kill
+           * Kill the 'getaddrinfo' =&gt; 'getaddrinfo_array' legacy redirection
+           * Allow Loop's resolver to be changed to a different object
+  
+          [BUGFIXES]
+           * Avoid relying on strong forward references in Future, by creating
+             intentional cycles on pending Futures. Workaround for bugfix in
+             upcoming Future release.
+- initial package 0.61
+    * created by cpanspec 1.78.07
+</comment>
+    <requestid>842978</requestid>
+  </revision>
+</revisionlist>

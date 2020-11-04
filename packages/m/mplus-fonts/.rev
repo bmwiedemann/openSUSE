@@ -1,0 +1,192 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>390ab18ea24794e9d2b632e3d76b197c</srcmd5>
+    <version>1.0.25</version>
+    <time>1256145036</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/mplus-fonts based on submit request 22340 from user tiwai
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8299640b16f50fc0e35d447bd3495d97</srcmd5>
+    <version>1.0.25</version>
+    <time>1263305181</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/mplus-fonts based on submit request 29040 from user coolo
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>423c4bf6b123530ccb5a31627a20b042</srcmd5>
+    <version>1.0.25</version>
+    <time>1268924998</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b564352a77f908a3f1a27463ba8afab</srcmd5>
+    <version>1.0.29</version>
+    <time>1270137881</time>
+    <user>autobuild</user>
+    <comment>Copy from M17N/mplus-fonts based on submit request 36480 from user tiwai
+</comment>
+    <requestid>36480</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9b564352a77f908a3f1a27463ba8afab</srcmd5>
+    <version>1.0.29</version>
+    <time>1278667369</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9b564352a77f908a3f1a27463ba8afab</srcmd5>
+    <version>1.0.29</version>
+    <time>1278678598</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>9b564352a77f908a3f1a27463ba8afab</srcmd5>
+    <version>1.0.29</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a3d5138b3b2c83c32cf6273f139025b4</srcmd5>
+    <version>1.0.42</version>
+    <time>1317293566</time>
+    <user>saschpe</user>
+    <comment>updated to TESTFLIGHT 042 (forwarded request 85336 from ftake)</comment>
+    <requestid>85356</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a3d5138b3b2c83c32cf6273f139025b4</srcmd5>
+    <version>1.0.42</version>
+    <time>1319182187</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2fe6b83cc1370ecc70df92ba6ad6cc92</srcmd5>
+    <version>1.0.42</version>
+    <time>1334927919</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>113750</requestid>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>932ab8fd85804b3c628ef5b575a1f5d1</srcmd5>
+    <version>1.0.42</version>
+    <time>1338030249</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122171</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>892aeb9c1754e90b8f3fa7acd59d7e00</srcmd5>
+    <version>1.0.49</version>
+    <time>1339352292</time>
+    <user>coolo</user>
+    <comment>upstream update (forwarded request 123893 from ftake)</comment>
+    <requestid>124004</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>892aeb9c1754e90b8f3fa7acd59d7e00</srcmd5>
+    <version>1.0.49</version>
+    <time>1340183711</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>43929087e32764d3c8bf406e4ee934dc</srcmd5>
+    <version>1.0.51</version>
+    <time>1344319900</time>
+    <user>coolo</user>
+    <comment>Updated to testflight 051; see changelog for details</comment>
+    <requestid>130094</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b7fc6e2844d542817eeecb9bf4c31dc4</srcmd5>
+    <version>1.0.52</version>
+    <time>1349455088</time>
+    <user>coolo</user>
+    <comment>upstream update (forwarded request 137175 from ftake)</comment>
+    <requestid>137201</requestid>
+  </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b7fc6e2844d542817eeecb9bf4c31dc4</srcmd5>
+    <version>1.0.52</version>
+    <time>1359109466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>4d2f84b60e4855f8e8483a428de73ecf</srcmd5>
+    <version>1.0.52</version>
+    <time>1366232876</time>
+    <user>coolo</user>
+    <comment>- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 171070 from namtrac)</comment>
+    <requestid>171080</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3aed22eb604ef78f6eebe53f0cc35321</srcmd5>
+    <version>1.0.55</version>
+    <time>1373985907</time>
+    <user>coolo</user>
+    <comment>Updated to testflight 056, see .changes for details</comment>
+    <requestid>183212</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>82f7ef2cf4414df88b9e681ca07c4721</srcmd5>
+    <version>1.0.56</version>
+    <time>1374611029</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184107</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>82f7ef2cf4414df88b9e681ca07c4721</srcmd5>
+    <version>1.0.56</version>
+    <time>1379663317</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5c05a6ed7629008e0bd63b35fc23e0e8</srcmd5>
+    <version>1.0.58</version>
+    <time>1394806633</time>
+    <user>coolo</user>
+    <comment>upstream update (forwarded request 225483 from ftake)</comment>
+    <requestid>225592</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5c05a6ed7629008e0bd63b35fc23e0e8</srcmd5>
+    <version>1.0.58</version>
+    <time>1409301933</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>036235fcab2784f057f386bd525a2431</srcmd5>
+    <version>1.0.61</version>
+    <time>1462051911</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>392975</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6af5960334ebb493348ef2ce0432a26a</srcmd5>
+    <version>1.0.63</version>
+    <time>1521716556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588739</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>645b39add97fb4e3c9a3538e1e1ce0ff</srcmd5>
+    <version>1.0.63a</version>
+    <time>1597658549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826848</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4ef1266f949ad52a158450b6e02a6016</srcmd5>
+    <version>0.16</version>
+    <time>1505334969</time>
+    <user>dimstar_suse</user>
+    <comment>singlespec version of python3-bpython</comment>
+    <requestid>523724</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2f7e28f6384c86535792b39073c4c473</srcmd5>
+    <version>0.17</version>
+    <time>1524838148</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>601613</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d76a6345abd73c202a1774caa026a41c</srcmd5>
+    <version>0.17.1</version>
+    <time>1525779536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605128</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>455bd7c7a09b7a09915c1d02642dd9f0</srcmd5>
+    <version>0.17.1</version>
+    <time>1544726423</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653954</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>077d2544af35af8098cd622f87293d62</srcmd5>
+    <version>0.18</version>
+    <time>1557141686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>693126</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>00b7d8f2e4f1f8ecef0b50e12209ee90</srcmd5>
+    <version>0.18</version>
+    <time>1574859086</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>745360</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e79dca19594087e69c38aa67a7a0106</srcmd5>
+    <version>0.19</version>
+    <time>1586775189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793338</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1257ef2f2b24b10a3d10ead9b0127c13</srcmd5>
+    <version>0.20</version>
+    <time>1604412973</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845468</requestid>
+  </revision>
+</revisionlist>

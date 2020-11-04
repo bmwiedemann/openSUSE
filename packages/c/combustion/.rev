@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2876f9b5a11085d588c6c7089af5fa7a</srcmd5>
+    <version>0.1</version>
+    <time>1595577573</time>
+    <user>dimstar_suse</user>
+    <comment>New package, to be used by openSUSE-MicroOS</comment>
+    <requestid>822194</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf9dc560694aee937199605b18df611e</srcmd5>
+    <version>0.1</version>
+    <time>1599862255</time>
+    <user>dimstar_suse</user>
+    <comment>- Add combustion-prepare.service to enable network if needed:
+  M combustion
+  A combustion-prepare.service
+  M combustion.service
+  M module-setup.sh
+- Don't fail if no config drive found to not break ignition with
+  fw_cfg
+</comment>
+    <requestid>833734</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8d64d03edf0c7ab760790b53a731e922</srcmd5>
+    <version>0.1</version>
+    <time>1600079796</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>834262</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9d6d09f87c63e7c65f09cd8108ba176d</srcmd5>
+    <version>0.2</version>
+    <time>1600701903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>835349</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>67d393ce9b6b7f7277f995e90f02bb93</srcmd5>
+    <version>0.2</version>
+    <time>1602073060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>839821</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>51f3416162276dd5a66ef7d7d7f60b63</srcmd5>
+    <version>0.2</version>
+    <time>1602596851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841545</requestid>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9d96cd9ccc5df0fc2eb9d531a69eaf3d</srcmd5>
+    <version>0.2</version>
+    <time>1603961364</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>844727</requestid>
+  </revision>
+</revisionlist>

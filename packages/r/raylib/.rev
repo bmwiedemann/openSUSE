@@ -1,0 +1,149 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0812cfbce12d66adb5865805c9976e4d</srcmd5>
+    <version>1.8.0</version>
+    <time>1510150187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * New Image generation functions: Gradient, Checked, Noise, Cellular...
+  * New Mesh generation functions: Cube, Sphere, Cylinder, Torus, Knot...
+  * New Shaders and Materials systems to support PBR materials
+  * Custom Android APK build pipeline with simple Makefile
+  * Complete review of rlgl layer functionality
+  * Complete review of raymath functionality
+- Remove root-meson.build and src-meson.build: contained in new
+  release
+- Update package summaries and RPM category.
+- BuildRequires:  libglfw-devel &gt;= 3.2
+  because glfwSetWindowMonitor etc only come in 3.2
+- Add option to meson file to build with gnu99 because:
+  * CLOCK_MONOTONIC macro
+  * var init in for loops (c99)
+- Remove raylig-use-optflags.patch: Using meson for build
+- Use meson to build raylib:
+  * Takes care of creating proper so versioning
+  * Install works (where their makefiles didnt)
+- Add root-meson.build
+- Add src-meson.build
+  Meson files will be in next release, see:
+  https://github.com/raysan5/raylib/pull/297
+- Move Requires openal-soft-devel to devel package
+- Add Requires: openal-soft-devel
+  It will be needed when one uses raylib
+- Add OpenAL to BuildRequires
+- Add raylig-use-optflags.patch: allow passing of optflags
+  See: https://github.com/raysan5/raylib/pull/295
+- Inital package of raylib version 1.7.0
+</comment>
+    <requestid>535929</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5fe1f2da15b73d2480935783c7c7f32b</srcmd5>
+    <version>1.8.0</version>
+    <time>1510506138</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>540482</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d77bf553e88ddc46a50f0315a3c491e3</srcmd5>
+    <version>2.0.0~rc1</version>
+    <time>1527582668</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>610473</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>144024ff41494028459e85ceadb4d7bb</srcmd5>
+    <version>2.0.0</version>
+    <time>1532774532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.0:
+  * Full redesign of audio module to use the mini_al audio library
+  * Refactor all #define SUPPORT_* into a single config.h
+  * Reviewed raymath.h for better consistency and performance (inlining)
+  * New font rendering
+  * STB support
+  * New functions for CPU image data manipulation
+- Remove raylib-2.0.0-api-version.patch: upstreamed
+- Remove BuildRequires libglfw-devel:
+  Using intern libraries now. They want raylib to be like this.
+- Adding BR for libXcursor-devel, libXinerama-devel, libXrandr-devel
+  and cmake explicitly now.</comment>
+    <requestid>625046</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ce8837f5b327aea0ba17d67ea4c462b2</srcmd5>
+    <version>2.5.0</version>
+    <time>1560970947</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5.0:
+  * New window management and filesystem functions to query monitor
+    information, deal with clipboard, check directory files info and
+    even launch a URL with default system web browser. Experimental
+    High-DPI monitor support has also been added through a compile flag.
+  * Redesigned Gamepad mechanism, now generic for all platforms and
+    gamepads, no more specific gamepad configurations.
+  * Redesigned UWP input system, now raylib supports UWP seamlessly,
+    previous implementation required a custom input system implemented
+    in user code.
+  * rlgl module has been redesigned to support a unique buffer for
+    shapes drawing batching, including LINES, TRIANGLES, QUADS in the
+    same indexed buffer, also added support for multi-buffering if required.
+    Additionally, rlPushMatrix()/rlPopMatrix() functionality has been
+    reviewed to behave exactly like OpenGL 1.1, models_rlgl_solar_system
+    example has been added to illustrate this behaviour.
+  * VR simulator has been reviewed to allow custom configuration of
+    Head-Mounted-Device parameters and distortion shader, core_vr_simulator
+    has been properly adapted to showcase this new functionality, now
+    the VR simulator is a generic configurable stereo rendering system
+    that allows any VR device simulation with just a few lines of code
+    or even dynamic tweaking of HMD parameters.
+  * Support for Unicode text drawing; now raylib processes UTF8
+    strings on drawing, supporting Unicode codepoints, allowing rendering
+    mostly any existent language (as long as the font with the glyphs is provided).
+  * Brand new text management API, with the addition of multiple functions
+    to deal with string data
+  * Multiple new shapes and textures drawing functions 
+  * Experimental cubemap support, to automatically load multiple
+    cubemap layouts (LoadTextureCubemap()). (forwarded request 706634 from jubalh)</comment>
+    <requestid>706635</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa6572cfa9dd8c4c12983b39021d29bf</srcmd5>
+    <version>3.0.0</version>
+    <time>1588324239</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to noexamples tarball as requested in:
+  https://github.com/raysan5/raylib/issues/1180
+  So we don't ship examples with various licenses that we don't
+  install anyways.
+- Add raylib-3.0.0-noexamples.patch: dont try to install examples
+  Raysan seems to have forgotten that.
+
+- Added missing development header files.
+
+- Update to 3.0.0:
+  * All global variables from the multiple raylib modules have
+    been moved to a global context state, it has several benefits, first, better
+    code readability with more comprehensive variables naming and categorization
+    (organized by types, i.e. CORE.Window.display.width,
+    CORE.Input.Keyboard.currentKeyState or RLGL.State.modelview). Second, it allows
+    better memory management to load global context state dynamically when required
+    (not at the moment), making it easy to implement a hot-reloading mechanism if
+    desired.
+  * All memory allocations on raylib and its dependencies now use
+    RL_MALLOC, RL_FREE and similar macros. Now users can easely hook their own
+    memory allocations mechanism if desired, having more control over memory
+    allocated internally by the library. Additionally, it makes it easier to port
+    the library to embedded devices where memory control is critical. For more info
+    check raylib issue #1074.
+  * All I/O file accesses from raylib are being moved
+    to memory data access, now all I/O file access is centralized into just four
+    functions: LoadFileData(), SaveFileData(), LoadFileText(), SaveFileText().
+    Users can just update those functions to any I/O file system. This change makes
+    it easier to integrate raylib with Virtual File Systems or custom I/O file
+    implementations.</comment>
+    <requestid>799028</requestid>
+  </revision>
+</revisionlist>

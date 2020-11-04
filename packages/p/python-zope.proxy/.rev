@@ -1,0 +1,76 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff00891e392b07d3765282b6a3f55fb5</srcmd5>
+    <version>4.1.3</version>
+    <time>1376991912</time>
+    <user>scarabeus_factory</user>
+    <comment>Will replace python-zope-proxy</comment>
+    <requestid>195424</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ff00891e392b07d3765282b6a3f55fb5</srcmd5>
+    <version>4.1.3</version>
+    <time>1379664324</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ff00891e392b07d3765282b6a3f55fb5</srcmd5>
+    <version>4.1.3</version>
+    <time>1409303033</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>998401965f65c03c4f63528c2563648d</srcmd5>
+    <version>4.1.4</version>
+    <time>1431980566</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.4
+- point the source URL to pypi
+- pass -q to test to avoid spamming the build log (forwarded request 307326 from benoit_monin)</comment>
+    <requestid>307501</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4ca42598df538919a52b09caf981be76</srcmd5>
+    <version>4.2.1</version>
+    <time>1506870082</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>528615</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cd6db79d22dcf6f88d3b5668555e160e</srcmd5>
+    <version>4.3.1</version>
+    <time>1554749607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691814</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5b891aff90c1ab6dbdd928c774da9f85</srcmd5>
+    <version>4.3.2</version>
+    <time>1563808743</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3.2:
+  * Fix error handling in ProxyBase.__setattr__: any the exception raised by
+    PyString_AsString/PyUnicode_AsUTF8 would be silently swallowed up and ignored. See issue 31.</comment>
+    <requestid>717545</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>78baa7929f4fc9c97596b156d36515cf</srcmd5>
+    <version>4.3.3</version>
+    <time>1579792259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766056</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72108832e72cd5034da592831269a220</srcmd5>
+    <version>4.3.5</version>
+    <time>1585265347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787839</requestid>
+  </revision>
+</revisionlist>

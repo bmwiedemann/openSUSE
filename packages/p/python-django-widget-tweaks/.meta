@@ -1,0 +1,5 @@
+<package name="python-django-widget-tweaks" project="openSUSE:Factory">
+  <title></title>
+  <description>Django form field rendering in templates</description>
+  <devel project="devel:languages:python:django" package="python-django-widget-tweaks"/>
+</package>

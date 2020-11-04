@@ -1,0 +1,5 @@
+<package name="accel-config" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="accel-config"/>
+</package>

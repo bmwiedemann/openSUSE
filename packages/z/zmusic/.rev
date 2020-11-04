@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b9ce0dad213e88b83133db6c342d9291</srcmd5>
+    <version>1.1.2</version>
+    <time>1593904413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813319</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32d200875c65675168237360b00291b5</srcmd5>
+    <version>1.1.2</version>
+    <time>1600277794</time>
+    <user>dimstar_suse</user>
+    <comment>- Demote Recommends to Suggests.</comment>
+    <requestid>834728</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="libretro-database" project="openSUSE:Factory">
+  <title>RetroArch Database</title>
+  <description>RetroArch incoporates a ROM scanning system to automatically produce playlists. Each ROM that is scanned by the playlist generator is checked against a database of ROMs that are known to be good copies.
+
+This package provides data to allow RetroArch identify ROMs and generate playlists.</description>
+  <devel project="Emulators" package="libretro-database"/>
+</package>

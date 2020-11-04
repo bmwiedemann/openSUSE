@@ -1,0 +1,5 @@
+<package name="python-coreapi" project="openSUSE:Factory">
+  <title></title>
+  <description>Python client library for Core API,  a format-independent Document Object Model for representing Web APIs.</description>
+  <devel project="devel:languages:python" package="python-coreapi"/>
+</package>

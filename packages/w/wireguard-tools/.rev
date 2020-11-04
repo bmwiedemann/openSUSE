@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d3ead4b7310667a2f46c32fca04f23a</srcmd5>
+    <version>1.0.20200102</version>
+    <time>1579636839</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain wireguard-tools in Factory</comment>
+    <requestid>765949</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c786d2bfa54bb48e55089855ca319a3</srcmd5>
+    <version>1.0.20200121</version>
+    <time>1579729544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766168</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab18750539c5d7b682778b5bf279767a</srcmd5>
+    <version>1.0.20200206</version>
+    <time>1581368051</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>772554</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5325abd0f62a3eaa25ee26d3a019d317</srcmd5>
+    <version>1.0.20200319</version>
+    <time>1584883107</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>787157</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3b5731c54b8f74d271ad18fddfe8fc02</srcmd5>
+    <version>1.0.20200510</version>
+    <time>1589207444</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802650</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ff55eea5e207cb9739f3146487e6bb9e</srcmd5>
+    <version>1.0.20200513</version>
+    <time>1589491676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805627</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e03e9fdab5d8bc2cd75989cb5f130db5</srcmd5>
+    <version>1.0.20200820</version>
+    <time>1598274653</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828736</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>62a3060a8b6c95af68e9ed1bd0fa6111</srcmd5>
+    <version>1.0.20200827</version>
+    <time>1598726346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829934</requestid>
+  </revision>
+</revisionlist>

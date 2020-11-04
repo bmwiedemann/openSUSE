@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e6dbf70c94ff4f4b903cf352e3c4dba</srcmd5>
+    <version>0.3.2</version>
+    <time>1576014171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755468</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad147f4a7bdfc9569fc9f3b775d72e0b</srcmd5>
+    <version>0.3.4</version>
+    <time>1582394819</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix py2/py3 dependencies
+
+- Update to 0.3.4:
+  - Require future only for Python 2</comment>
+    <requestid>778017</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e4f20333b08fc3d0a1e7fabb54b4d94f</srcmd5>
+    <version>0.3.4</version>
+    <time>1584176127</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in py2 dependencies at all since we disabled the
+  python2 build
+
+- Switch off python2 build, broken dependencies.
+
+- Add remove_testing_warnings.patch to remove some warnings
+  in the test suite run log (gh#palantir/python-jsonrpc-serveri#34).
+- Switch off some tests which fail with Python 3.8
+  (gh#palantir/python-jsonrpc-server#33)</comment>
+    <requestid>784806</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>949d0fc04ff7f888528969b79cec3dea</srcmd5>
+    <version>0.3.4</version>
+    <time>1584744847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785451</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>e8bd15d1814ae90fc5b6199cc71c7c92</srcmd5>
+    <version>0.3.4</version>
+    <time>1588538808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>799808</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d80ef8bc09e51f6aca2d55fdbb272f9d</srcmd5>
+    <version>0.4.0</version>
+    <time>1600702214</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>835431</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="kuberlr" project="openSUSE:Factory">
+  <title>kuberlr</title>
+  <description>A tool that simplifies the management of multiple versions of kubectl </description>
+  <devel project="devel:kubic" package="kuberlr"/>
+</package>

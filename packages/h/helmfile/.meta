@@ -1,0 +1,11 @@
+<package name="helmfile" project="openSUSE:Factory">
+  <title>Deploy Kubernetes Helm Charts</title>
+  <description>Helmfile is a declarative spec for deploying helm charts. It lets you...
+
+* Keep a directory of chart value files and maintain changes in version control.
+* Apply CI/CD to configuration changes.
+* Periodically sync to avoid skew in environments.
+
+To avoid upgrades for each iteration of helm, the helmfile executable delegates to helm - as a result, helm must be installed.</description>
+  <devel project="devel:kubic" package="helmfile"/>
+</package>

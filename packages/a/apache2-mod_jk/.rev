@@ -1,0 +1,341 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0caba005953331d55ccf55ba184b8857</srcmd5>
+    <version>4.1.30</version>
+    <time>1168901473</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ad53f4b57f13ff3597422293ca3e1d1</srcmd5>
+    <version>1.2.20</version>
+    <time>1169080138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3047ff6ef869ca93078811b6306edc66</srcmd5>
+    <version>1.2.21</version>
+    <time>1173105841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0be0cad30fc37ffc5f5f1ce64dd42863</srcmd5>
+    <version>1.2.26</version>
+    <time>1221473560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0be0cad30fc37ffc5f5f1ce64dd42863</srcmd5>
+    <version>1.2.26</version>
+    <time>1221473560</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>c16cd636c7d71ad3e22679af35ad6199</srcmd5>
+    <version>1.2.26</version>
+    <time>1256075136</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache:Modules/apache2-mod_jk based on submit request 22309 from user mvyskocil
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>c4132b7fa50ba706f6e452f29712ddb9</srcmd5>
+    <version>1.2.26</version>
+    <time>1268922887</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>c4132b7fa50ba706f6e452f29712ddb9</srcmd5>
+    <version>1.2.26</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>c4132b7fa50ba706f6e452f29712ddb9</srcmd5>
+    <version>1.2.26</version>
+    <time>1278678563</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4a818a18b3125e9eb5536b14e74ccae5</srcmd5>
+    <version>1.2.30</version>
+    <time>1281312506</time>
+    <user>autobuild</user>
+    <comment>Copy from Apache:Modules/apache2-mod_jk based on submit request 44715 from user mvyskocil
+</comment>
+    <requestid>44715</requestid>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>4a818a18b3125e9eb5536b14e74ccae5</srcmd5>
+    <version>1.2.30</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>2100612c6edb372ad34346fabedbb11d</srcmd5>
+    <version>1.2.30</version>
+    <time>1315760656</time>
+    <user>saschpe</user>
+    <comment>Update of README.SUSE file: now reflects configuration steps for mod_jk with tomcat6 server. It was referring tomcat5 configuration. (forwarded request 72893 from paskov)</comment>
+    <requestid>81728</requestid>
+  </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>f35c075971fb352e1fd202a9140c1c91</srcmd5>
+    <version>1.2.30</version>
+    <time>1315760661</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81728
+</comment>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>cf4c76e8fde308fcfb74a6d8d939d6ea</srcmd5>
+    <version>1.2.30</version>
+    <time>1316688425</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 82762 from jengelh)</comment>
+    <requestid>84342</requestid>
+  </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>cf4c76e8fde308fcfb74a6d8d939d6ea</srcmd5>
+    <version>1.2.30</version>
+    <time>1319181771</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>9689909b2893399e3352fc726d78fdcf</srcmd5>
+    <version>1.2.30</version>
+    <time>1323190713</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>9689909b2893399e3352fc726d78fdcf</srcmd5>
+    <version>1.2.30</version>
+    <time>1340183175</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>9689909b2893399e3352fc726d78fdcf</srcmd5>
+    <version>1.2.30</version>
+    <time>1359108656</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2826d4aa4bcb584a415f1fd594365d2f</srcmd5>
+    <version>1.2.37</version>
+    <time>1359534316</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.37:
+  + Fix compatibility with apache 2.4
+- Introduce apxs variable, based on apache_branch. With apache 2.4,
+  apxs2 moved from %{_sbindir} to %{_bindir}. (forwarded request 150221 from dimstar)</comment>
+    <requestid>150269</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2826d4aa4bcb584a415f1fd594365d2f</srcmd5>
+    <version>1.2.37</version>
+    <time>1379661975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>106aa1953412bf349bece81e987dc400</srcmd5>
+    <version>1.2.40</version>
+    <time>1401899972</time>
+    <user>coolo</user>
+    <comment>- Cleanup with spec-cleaner
+
+- Version bump to 1.2.40:
+ * Fix forwarding of chunked requests, which is broken in version 1.2.39. (rjung)
+ * 56352: Fix regression in memory release. (mturk)
+ * Fix status worker display of worker IP address after name or port was changed. (rjung)
+ * 56297: Improve key hash function. Copied from APR. (rjung)
+ * 55683: Remove quotes from quoted session cookies. (rjung)
+ * 53542: ISAPI: Fix grammar in 503 error page. (rjung)
+ * 55696: Crash on Mac OS X 10.9 during config parsing. (rjung)
+ * Deprecate nt_service from Tomcat Connectors. (mturk)
+ * 56133: Fix possible crash when a request fails during request body transfer to the back end and reply_timeout was set. Patch contributed by Hiroto Shimizu. (rjung)
+ * Fix status worker not updating parameters for all members. (mturk)
+ * 55853: HTTPD: Use the correct API for setting Content-Length. Patch contributed by areese yahoo-inc.com. (rjung)
+ * Add IPV6 support for connection to webserver. New directive prefer_ipv6 has been added to control the hostname resolution and preserve backward compatibility. (mturk)
+ * Add --disable-sock-cloexec to configure to disable use of SOCK_CLOEXEC (using FD_CLOEXEC + fnctl instead) so built modules will work with Linux kernels prior to 2.6.27. (timw)
+ * Clean up config file parsing. Worker names are now restricted to 60 bytes. (rjung)
+ * Allow to set a stickyness cookie in case a web framework breaks Tomcat's adding of the routing ID to the end of the JSESSIONID cookie. (rjung)
+ * Use max_packet_size also for request body forwarding. (rjung)
+ * Apache 2.4: By default forward logical client address as provided by mod_remoteip. When setting JkOptions ForwardPhysicalAddress mod_jk will instead forward the physical peer address. (rjung)
+ * Minor documentation improvements. (rjung)</comment>
+    <requestid>236046</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>106aa1953412bf349bece81e987dc400</srcmd5>
+    <version>1.2.40</version>
+    <time>1409300500</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>e9322faba2be3b00b95e7199acf129c3</srcmd5>
+    <version>1.2.40</version>
+    <time>1409761327</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>246734</requestid>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>b355f915a0cf767c6c5d88038fa5d9cb</srcmd5>
+    <version>1.2.40</version>
+    <time>1415636912</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>260215</requestid>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>80c5c87622b9a8eb252cbfe0fcf4e327</srcmd5>
+    <version>1.2.40</version>
+    <time>1416994407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>262863</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>609c85a0c6849a302410fb0fae189c19</srcmd5>
+    <version>1.2.40</version>
+    <time>1428652224</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the asc again to make dimstar happy
+
+- Add asc signature file.
+- Fix URL for homepage</comment>
+    <requestid>291268</requestid>
+  </revision>
+  <revision rev="27" vrev="8">
+    <srcmd5>3558ad13f1cbb3efd7383c87cd9b7f19</srcmd5>
+    <version>1.2.40</version>
+    <time>1433920584</time>
+    <user>dimstar_suse</user>
+    <comment>- Apply patch to fix bnc#927845 CVE-2014-8111 VUL-1: apache2-mod_jk: Tomcat
+  mod_jk information leak due to incorrect JkMount/JkUnmount directives
+  processing:
+  * apache2-mod_jk-CVE-2014-8111.patch</comment>
+    <requestid>311304</requestid>
+  </revision>
+  <revision rev="28" vrev="9">
+    <srcmd5>b008305df56aa9dd32a0e0007f0420a0</srcmd5>
+    <version>1.2.40</version>
+    <time>1437384038</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>317146</requestid>
+  </revision>
+  <revision rev="29" vrev="10">
+    <srcmd5>cd6ddfb9644868e2c4a0ea23acb46bad</srcmd5>
+    <version>1.2.40</version>
+    <time>1443068030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>330036</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>6092cc5d02bbd165132033c4f598ed3e</srcmd5>
+    <version>1.2.41</version>
+    <time>1453416279</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.2.41:
+  * remove merged patch apache2-mod_jk-CVE-2014-8111.patch
+  * many small bugfixes all around:
+    + http://tomcat.apache.org/connectors-doc/miscellaneous/changelog.html</comment>
+    <requestid>354885</requestid>
+  </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a1e05f3c5136168948352f3286ef24ce</srcmd5>
+    <version>1.2.41</version>
+    <time>1495442892</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>497000</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>43285a56da993344fa9b3cbd1a284f60</srcmd5>
+    <version>1.2.42</version>
+    <time>1518601902</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests for now as the default profile is not working
+  properly to load up and upstream should update the sample
+
+- Version update to 1.2.42:
+  * Many small fixes
+  * Optimalization for new gccs
+  * Minor code cleanups</comment>
+    <requestid>576297</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>31bd728cfd6dfb3286a1f11e8c421539</srcmd5>
+    <version>1.2.43</version>
+    <time>1521579522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>587592</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f125636e9cfc8352677ab289ccb876ba</srcmd5>
+    <version>1.2.44</version>
+    <time>1537971124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636861</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>56ae8190dd84550778967985b477028b</srcmd5>
+    <version>1.2.46</version>
+    <time>1541511522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>646387</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>20b031f41d72965886c0fd685ed21749</srcmd5>
+    <version>1.2.46</version>
+    <time>1582018616</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>774743</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4c879fcae089cc04b07f95fed0235418</srcmd5>
+    <version>1.2.48</version>
+    <time>1589403393</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix Aliases to be compatible with the tomcat example URLs [bsc#1167896]
+
+- Changes for 1.2.47 and 1.2.48 updates:
+  * Add: Apache: Extend trace level logging of method entry/exit to
+    aid debugging of request mapping issues.
+  * Fix: Apache: Fix a bug in the normalization checks that prevented
+    file based requests, such as SSI file includes, from being processed.
+  * Fix: Apache: When using JkAutoAlias, ensure that files that include
+    spaces in their name are accessible.
+  * Update: Common: Update the documentation to reflect that the source
+    code for the Apache Tomcat Connectors has moved from Subversion to Git.
+  * Fix: Common: When using set_session_cookie, ensure that an updated session
+    cookie is issued if the load-balancer has to failover to a different worker.
+  * Update: Common: Update config.guess and config.sub from
+    https://git.savannah.gnu.org/git/config.git.
+  * Update: Common: Update release script for migration to git. (forwarded request 802752 from pmonrealgonzalez)</comment>
+    <requestid>805247</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0698da72b719d8ed3c3acc8085c8349e</srcmd5>
+    <version>1.2.48</version>
+    <time>1589892542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update jk.conf: [bsc#1167896]
+  * Specify the location of JkShmFile.
+  * Update tomcat-webapps paths. (forwarded request 806860 from pmonrealgonzalez)</comment>
+    <requestid>806981</requestid>
+  </revision>
+</revisionlist>

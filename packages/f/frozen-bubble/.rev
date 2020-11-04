@@ -1,0 +1,231 @@
+<revisionlist>
+  <revision rev="1" vrev="9">
+    <srcmd5>eca281f43f563a59bac4c3124a59a8d0</srcmd5>
+    <version>2.1.0</version>
+    <time>1166485574</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="74">
+    <srcmd5>8dff53938980110263f9270cc789df1d</srcmd5>
+    <version>2.1.0</version>
+    <time>1189701702</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="80">
+    <srcmd5>3863c16c69a559286e790c751e056723</srcmd5>
+    <version>2.1.0</version>
+    <time>1191365566</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="93">
+    <srcmd5>3f5e9526480773ab3a328dd4d3fddf55</srcmd5>
+    <version>2.1.0</version>
+    <time>1194183868</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="108">
+    <srcmd5>59d4b471271db6c421570f61a9b526b4</srcmd5>
+    <version>2.1.0</version>
+    <time>1200309975</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="114">
+    <srcmd5>cc86eb8c38bc45f6ef284c2da31d7ba6</srcmd5>
+    <version>2.1.0</version>
+    <time>1201660066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="126">
+    <srcmd5>45c97ef567f8b1695876d7a5cf302c07</srcmd5>
+    <version>2.1.0</version>
+    <time>1203955701</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b8460ed6f5b58b7cbf39244ef305a55e</srcmd5>
+    <version>2.1.0_20080623</version>
+    <time>1214592956</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c13c0c6f4050e1a82265109c9336c8e2</srcmd5>
+    <version>2.2.0rc1</version>
+    <time>1226066829</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af39994cf0133386c1b633b602439b62</srcmd5>
+    <version>2.2.0</version>
+    <time>1244368236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>af39994cf0133386c1b633b602439b62</srcmd5>
+    <version>2.2.0</version>
+    <time>1244368236</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>fc27c989be0735696e55d959e466cee5</srcmd5>
+    <version>2.2.0</version>
+    <time>1256036558</time>
+    <user>autobuild</user>
+    <comment>Copy from games/frozen-bubble based on submit request 22461 from user lrupp
+</comment>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>64c41931b84833298d0edcc45956fc97</srcmd5>
+    <version>2.2.0</version>
+    <time>1268923595</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>64c41931b84833298d0edcc45956fc97</srcmd5>
+    <version>2.2.0</version>
+    <time>1278667345</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>64c41931b84833298d0edcc45956fc97</srcmd5>
+    <version>2.2.0</version>
+    <time>1278678576</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>f0d6610275070b902bdd624c700f4a62</srcmd5>
+    <version>2.2.0</version>
+    <time>1293577396</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56774 from user dimstar
+</comment>
+    <requestid>56774</requestid>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>913e311f93b1a82556db3f63c176ae81</srcmd5>
+    <version>2.2.0</version>
+    <time>1293577404</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56774
+</comment>
+  </revision>
+  <revision rev="18" vrev="13">
+    <srcmd5>913e311f93b1a82556db3f63c176ae81</srcmd5>
+    <version>2.2.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>913e311f93b1a82556db3f63c176ae81</srcmd5>
+    <version>2.2.0</version>
+    <time>1319181886</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>f7f43b9acdc6889508bf3351e16fb55e</srcmd5>
+    <version>2.2.0</version>
+    <time>1329823116</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>106240</requestid>
+  </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>f7f43b9acdc6889508bf3351e16fb55e</srcmd5>
+    <version>2.2.0</version>
+    <time>1340183341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a864fd53942b22456b9e6d3f07448d7b</srcmd5>
+    <version>2.212</version>
+    <time>1356078517</time>
+    <user>coolo</user>
+    <comment>Added missing BuildRequirements
+Created unused-result patch
+Build manifest (forwarded request 146106 from worldcitizen)</comment>
+    <requestid>146190</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a864fd53942b22456b9e6d3f07448d7b</srcmd5>
+    <version>2.212</version>
+    <time>1359108893</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>a864fd53942b22456b9e6d3f07448d7b</srcmd5>
+    <version>2.212</version>
+    <time>1379662370</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="6">
+    <srcmd5>8aa049bfb914069fdeffb823db1cfb89</srcmd5>
+    <version>2.212</version>
+    <time>1386693756</time>
+    <user>coolo</user>
+    <comment>Fix user.</comment>
+    <requestid>210059</requestid>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>f8d22119b9670a65362451e354adc19b</srcmd5>
+    <version>2.212</version>
+    <time>1407227066</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243615</requestid>
+  </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>f8d22119b9670a65362451e354adc19b</srcmd5>
+    <version>2.212</version>
+    <time>1409300907</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>569bce0ba345b058773b368096075bf5</srcmd5>
+    <version>2.212</version>
+    <time>1422974099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283843</requestid>
+  </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>0fa06cf34fbc265b5e482aa4651e27f7</srcmd5>
+    <version>2.212</version>
+    <time>1441054749</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>327857</requestid>
+  </revision>
+  <revision rev="30" vrev="12">
+    <srcmd5>91ed120354adfc14b611407b9f395f86</srcmd5>
+    <version>2.212</version>
+    <time>1479150731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>424632</requestid>
+  </revision>
+  <revision rev="31" vrev="13">
+    <srcmd5>acf75439267ec73898982e778d98819a</srcmd5>
+    <version>2.212</version>
+    <time>1520853098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>585289</requestid>
+  </revision>
+  <revision rev="32" vrev="14">
+    <srcmd5>ed394deb7779efbb465138c80250f8d2</srcmd5>
+    <version>2.212</version>
+    <time>1529501422</time>
+    <user>maxlin_factory</user>
+    <comment>- fix build for Tumbleweed (add silencebadsnprintfcheck.patch)
+
+In my opinion the check is wrong. snprintf already checks target buffer overflow. Why test if the amount of possible outputs of individual components exceeds the target buffer. That's common practice. With this check defining a large intermediate buffer leads to an error, using short intermediate buffers has no error, but is more dangerous - That makes no sense!
+</comment>
+    <requestid>617546</requestid>
+  </revision>
+</revisionlist>

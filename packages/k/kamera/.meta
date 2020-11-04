@@ -1,0 +1,6 @@
+<package name="kamera" project="openSUSE:Factory">
+  <title>Base package for kdegraphics apps</title>
+  <description>This package suggests the packages which are built from the kdegraphics
+module.</description>
+  <devel project="KDE:Applications" package="kamera"/>
+</package>

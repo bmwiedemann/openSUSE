@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f334e686fbefbba20c6e0b47efddb08c</srcmd5>
+    <version>1.13.0</version>
+    <time>1531947174</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>621705</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b5365c6baaadc6d92efa27e6d9b0530a</srcmd5>
+    <version>1.13.0</version>
+    <time>1534543381</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrasing. (forwarded request 629407 from jengelh)</comment>
+    <requestid>629412</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5b159f33e6d1dd64471a64939266f1ae</srcmd5>
+    <version>1.14.0</version>
+    <time>1551024638</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>670277</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22a6dac50c07828c63d7bc39a44ba623</srcmd5>
+    <version>1.16.0</version>
+    <time>1568623808</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>730671</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9fb5d79e303980f776e07f13fcc992f7</srcmd5>
+    <version>1.17.1</version>
+    <time>1590506443</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808357</requestid>
+  </revision>
+</revisionlist>

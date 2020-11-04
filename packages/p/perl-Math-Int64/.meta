@@ -1,0 +1,6 @@
+<package name="perl-Math-Int64" project="openSUSE:Factory">
+  <title>perl-Math-Int64: Manipulate 64 bits integers in Perl</title>
+  <description>This module adds support for 64 bit integers, signed and unsigned, to Perl.</description>
+  <devel project="devel:languages:perl" package="perl-Math-Int64"/>
+  <url>https://metacpan.org/release/Math-Int64</url>
+</package>

@@ -1,0 +1,571 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>44b3e79973ed6ccc62c88b106ace458c</srcmd5>
+    <version>5.1.0</version>
+    <time>1380608001</time>
+    <user>coolo</user>
+    <comment>New Package for Qt 5.1</comment>
+    <requestid>185791</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79127820759a8a347a86c540437898f8</srcmd5>
+    <version>5.1.1</version>
+    <time>1380887528</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to 5.1.1, resubmitted due to factory-repo-checker bug</comment>
+    <requestid>201948</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>781abba573493437550b9181ef934495</srcmd5>
+    <version>5.2.0~beta1</version>
+    <time>1383552750</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 beta1</comment>
+    <requestid>204737</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dbcc74b3a369e4d3e5d1ca30920265a2</srcmd5>
+    <version>5.2.0~rc1</version>
+    <time>1385976809</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 rc1</comment>
+    <requestid>209079</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e55aae125f56acf1fe264522ee81adc</srcmd5>
+    <version>5.2.0</version>
+    <time>1387259559</time>
+    <user>coolo</user>
+    <comment>Update to 5.2.0 final</comment>
+    <requestid>210881</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bf2bc5dac5bbc9a2b956cd63363c088b</srcmd5>
+    <version>5.2.0</version>
+    <time>1387453271</time>
+    <user>coolo</user>
+    <comment>Move away from pkgconfig(...) BuildRequires and just use libqt5-$upstreammodulename-(devel|private-headers-devel)
+
+
+
+No hurry to checkin ;-) but it is needed for QtLocation</comment>
+    <requestid>211343</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>35c9be4a84ed4c49ae309eec3c88ca9a</srcmd5>
+    <version>5.2.1</version>
+    <time>1392736651</time>
+    <user>coolo</user>
+    <comment>install license files to %doc (forwarded request 221612 from mlin7442)</comment>
+    <requestid>221697</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3a02b68cf649801087edcd4f7bd3141d</srcmd5>
+    <version>5.2.1</version>
+    <time>1395475681</time>
+    <user>coolo</user>
+    <comment>Build examples</comment>
+    <requestid>227074</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ce52cba3e30238ba338e49645e7a64b8</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1395908981</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 beta</comment>
+    <requestid>227520</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>5370e6e099e07de59bd0176cb21dbddf</srcmd5>
+    <version>5.3.0~beta</version>
+    <time>1399438516</time>
+    <user>coolo</user>
+    <comment>Explicitly BuildRequire python-base</comment>
+    <requestid>232878</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ddfb31ea1480fd8e3acb8dacebb0681a</srcmd5>
+    <version>5.3.0~rc</version>
+    <time>1400091940</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 rc</comment>
+    <requestid>233117</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>78caac6e86ab29e1262e31077c5340ca</srcmd5>
+    <version>5.3.0</version>
+    <time>1400733468</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.0 final</comment>
+    <requestid>234779</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0774dc074c87dadf77001b4ce420ac2b</srcmd5>
+    <version>5.3.0</version>
+    <time>1401899908</time>
+    <user>coolo</user>
+    <comment>- Added baselibs.conf
+- Make private headers noarch</comment>
+    <requestid>236092</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>24fe48626d597db5aff2da8603d7931a</srcmd5>
+    <version>5.3.1</version>
+    <time>1404157461</time>
+    <user>coolo</user>
+    <comment>- Update to 5.3.1
+  * Bugfix release, for more details please see:
+    http://blog.qt.digia.com/blog/2014/06/25/qt-5-3-1-released/
+- Added pkgconfig(Qt5Xml) BuildRequires</comment>
+    <requestid>238713</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>518195b716e7cfc44b3e4a73fb1d4839</srcmd5>
+    <version>5.3.1</version>
+    <time>1407744417</time>
+    <user>lnussel</user>
+    <comment>Create tools subpackage</comment>
+    <requestid>243921</requestid>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>518195b716e7cfc44b3e4a73fb1d4839</srcmd5>
+    <version>5.3.1</version>
+    <time>1409301677</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>2e839421da4b56882fe19a02452770bb</srcmd5>
+    <version>5.3.1</version>
+    <time>1409638928</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>247019</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d16cece421e192853e6c0701e4304496</srcmd5>
+    <version>5.3.2~git20140904</version>
+    <time>1410204499</time>
+    <user>coolo</user>
+    <comment>- Update to 5.3.2~git20140904 (r05670f5):
+  * Tip of the bugfix 5.3.2 branch
+
+Please copy to 13.2 if possible, as can be seen from the changelog, it contains many useful bugfixes. The 'snapshot' is artificial, as the probably won't be any commits between now and 5.3.2, but release is waiting on some bureaucratic procedures. Thanks!</comment>
+    <requestid>247846</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>51fb8b586cf6e381dc462256b5127bcc</srcmd5>
+    <version>5.3.2</version>
+    <time>1411019795</time>
+    <user>coolo</user>
+    <comment>Update to 5.3.2 final</comment>
+    <requestid>249654</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>d892aad02a5fe807ff86aecec7f939b3</srcmd5>
+    <version>5.3.2</version>
+    <time>1411630401</time>
+    <user>coolo</user>
+    <comment>- Add sse2_nojit.patch: enable JIT and sse2 only on sse2 case
+- Build QtQML module twice on ix86, without and with sse2 (sse2 library is placed to %_libdir/sse2/ (bnc#897758)
+
+
+depends on sr#251413</comment>
+    <requestid>251482</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>171245fc90d7b26946ace0e3c5228542</srcmd5>
+    <version>5.4.0</version>
+    <time>1419159443</time>
+    <user>coolo</user>
+    <comment>Update to 5.4.0</comment>
+    <requestid>264855</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcf80590c8546d2fc7ed29194f088fec</srcmd5>
+    <version>5.4.1</version>
+    <time>1425220078</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.1</comment>
+    <requestid>287878</requestid>
+  </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0c6112940f1ff7112eebdd1414b3604d</srcmd5>
+    <version>5.4.1</version>
+    <time>1429657845</time>
+    <user>dimstar_suse</user>
+    <comment>Adjust usage of latest %qmake5_install macro</comment>
+    <requestid>296826</requestid>
+  </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>e8d6d820fa2b3e4c59f0c29c5383983a</srcmd5>
+    <version>5.4.1</version>
+    <time>1431365081</time>
+    <user>coolo</user>
+    <comment>- Add avoid-calling-potentially-pure-virtual-method.patch, QTBUG#45753
+
+- Extend sse2_nojit.patch to warn users without SSE2 extension that
+  their processor is officially not supported.
+  Also pass -msse2 -mfpmath=sse flags when we are building with SSE2</comment>
+    <requestid>304230</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2c12ffb9a69e031b09545d481cc9613c</srcmd5>
+    <version>5.4.2</version>
+    <time>1433577050</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.4.2</comment>
+    <requestid>310367</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a2f747f8b6ab202cdf59ad33d6c50f76</srcmd5>
+    <version>5.5.0</version>
+    <time>1443335779</time>
+    <user>coolo</user>
+    <comment>Update to 5.5.0</comment>
+    <requestid>323351</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>daffa7c709efacba96a72e6b0966c845</srcmd5>
+    <version>5.5.1</version>
+    <time>1445287494</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix 5.5.1 update</comment>
+    <requestid>339520</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>8205c38c0929fb75bd849613d23efdba</srcmd5>
+    <version>5.5.1</version>
+    <time>1455611261</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359195</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4112193cc2cb2dd15c3d06c7c8b6828a</srcmd5>
+    <version>5.6.0</version>
+    <time>1463497484</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.6.0</comment>
+    <requestid>379806</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>8fda6329c9265b61939c89bef05ae6ea</srcmd5>
+    <version>5.6.0</version>
+    <time>1464689499</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Workaround-for-crashes-in-QtQml-code-relating-to-null-this-pointers.patch
+  to prevent issues with GCC 6</comment>
+    <requestid>398282</requestid>
+  </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>26dfa7f82098705c3bcd5c24052da7bb</srcmd5>
+    <version>5.6.0</version>
+    <time>1466515953</time>
+    <user>dimstar_suse</user>
+    <comment>- Add qtdeclarative-opensource-src-5.6.0-qml_no-lifetime-dse.patch
+  - Fix crashes with i686 and QML loader (boo#985768)</comment>
+    <requestid>403815</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e44dbddf299e87d586f31d1aac8b3041</srcmd5>
+    <version>5.6.1</version>
+    <time>1466812561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.6.1
+  * For more details please see:
+    http://blog.qt.io/blog/2016/06/08/qt-5-6-1-released/
+- Drop upstreamed
+  Workaround-for-crashes-in-QtQml-code-relating-to-null-this-pointers.patch
+  &quot;Statement might be overflowing a buffer&quot; post-build-check error</comment>
+    <requestid>403878</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>86576148d93aab0fc29b06010e75aac0</srcmd5>
+    <version>5.7.0</version>
+    <time>1475358551</time>
+    <user>dimstar_suse</user>
+    <comment>The Time Has Come to Shoot You Down... What a Sound</comment>
+    <requestid>429989</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>89bceacdfcec6b5a2d56adea0a6649ec</srcmd5>
+    <version>5.7.0</version>
+    <time>1475749563</time>
+    <user>dimstar_suse</user>
+    <comment>- Add new version of V4-Free-up-2-address-bits-in-64bit-mode.patch
+  * Fix testcase failure (boo#989341, QTBUG#54822)
+- Only apply patch on AArch64 to avoid regressions where patch not
+  needed (it's experimental)
+
+- Add upstream patches for aarch64 with VA_BITS=48 (boo#989341, QTBUG#54822)
+  * V4-Always-set-the-tag-when-boxing-a-pointer.patch
+  * Add-a-facility-to-version-type-information.patch
+  * V4-Free-up-2-address-bits-in-64bit-mode.patchv4-set-tag.patch</comment>
+    <requestid>433174</requestid>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>49321418193d1883d66f4ba53d252578</srcmd5>
+    <version>5.7.0</version>
+    <time>1476777821</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-crash-on-exit-when-using-default-property-aliases-with-layouts.patch:
+  fix Plasma screenlocker crash on unlock (boo#999548, QTBUG#51927)
+
+- masm-unaligned-stack-pointer.patch: align stack on 16 byte boundaries in
+  the YarrJIT (bsc#1003880)</comment>
+    <requestid>435736</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>faaaf4b19c5e2ae7e9767bdb713153af</srcmd5>
+    <version>5.7.1</version>
+    <time>1482419175</time>
+    <user>lnussel_factory</user>
+    <comment>Update to 5.7.1</comment>
+    <requestid>446437</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8e7b70d0abeabaeaa3347e9c2883cb29</srcmd5>
+    <version>5.9.0</version>
+    <time>1497362527</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.0 final</comment>
+    <requestid>499987</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>274c12effbf27b6c04af0c2c6cb52c0f</srcmd5>
+    <version>5.9.0</version>
+    <time>1498840715</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch support-non-integer-pixel-ratios-qquickwidget.patch
+  * Add support for non-integer scaling to QQuickWidget (QTBUG-61502)</comment>
+    <requestid>505873</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>8d86d41719c05b3880479686c5939657</srcmd5>
+    <version>5.9.1</version>
+    <time>1499509431</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.1</comment>
+    <requestid>507687</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>c9c82ebc5592a0d3dba554c5933f4aa8</srcmd5>
+    <version>5.9.1</version>
+    <time>1500975341</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix crash related to shared QQmlEngine instances
+  (QTBUG-61681, kde#381525):
+  * rebuild-qqmldata-propertycache-if-deleted.patch</comment>
+    <requestid>511037</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>e25617f3508d00661c27849eb0e52d02</srcmd5>
+    <version>5.9.1</version>
+    <time>1501227638</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to revert upstream commit introducing a massive memory
+  leak (QTBUG-62117):
+  * revert-delay-deletion-of-qsgtextures.patch</comment>
+    <requestid>512501</requestid>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>dc8734f26fefc62995005e382b1cc1be</srcmd5>
+    <version>5.9.1</version>
+    <time>1503589272</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't special case sse2 libs on i586 for SLE-15, it supports
+  only SSE2 capable CPUs. (forwarded request 515779 from oertel)</comment>
+    <requestid>515804</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>409e6b60cea0de6280c303a52389fe00</srcmd5>
+    <version>5.9.2</version>
+    <time>1508768372</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.2</comment>
+    <requestid>533796</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e16a82c67b961c0d6fbd1d5d7eda110e</srcmd5>
+    <version>5.9.3</version>
+    <time>1512733901</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.9.3</comment>
+    <requestid>545940</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>75ab299c953373879e2b3f622f83c016</srcmd5>
+    <version>5.10.0</version>
+    <time>1514027569</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.10.0</comment>
+    <requestid>557384</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>2d121902b7910374f7cdb49246729e35</srcmd5>
+    <version>5.10.0</version>
+    <time>1517234177</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570357</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>627ea9b17227052546a0e01fe474a186</srcmd5>
+    <version>5.11.0</version>
+    <time>1527933147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.11.0
+  * New bugfix release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.0/?h=v5.11.0
+
+- Update to 5.11.0-rc
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.11.0-beta4
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.11.0-beta3
+  * New bugfix release
+  * No changelog available
+
+- Update to 5.11.0-beta2
+  * New bugfix release
+  * No changelog available
+
+- Fix the license tag.
+
+- Update to 5.11.0-beta1
+  * New feature release
+  * For more details please see:
+  * http://code.qt.io/cgit/qt/qtdeclarative.git/plain/dist/changes-5.11.0-beta1/?h=v5.11.0-beta1
+
+- Update to 5.11.0-alpha
+  * New feature release (forwarded request 611662 from Vogtinator)</comment>
+    <requestid>611699</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>698069757f40a0cb7743aee06279d7f7</srcmd5>
+    <version>5.11.1</version>
+    <time>1530001824</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.1</comment>
+    <requestid>618668</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>83a9a55fd104cc1431132fafd6e1b917</srcmd5>
+    <version>5.11.2</version>
+    <time>1538374303</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.11.2</comment>
+    <requestid>637832</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>f144be11e661ab6944a8b89c8d63ab8e</srcmd5>
+    <version>5.12.0</version>
+    <time>1544817047</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.0 final</comment>
+    <requestid>656553</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>40791094cf40074b7708659e590f632b</srcmd5>
+    <version>5.12.2</version>
+    <time>1553157610</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.12.2</comment>
+    <requestid>685629</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>290d6f74ab5a1c08df5e0f30f43c6508</srcmd5>
+    <version>5.12.3</version>
+    <time>1556311942</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.12.3</comment>
+    <requestid>697060</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>42c1591fe495716d912c3d74282efa62</srcmd5>
+    <version>5.12.3</version>
+    <time>1559923292</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix crash (QTBUG-75203):
+  * Dont-crash-when-accessing-invalid-properties.patch</comment>
+    <requestid>707637</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>377c293f0cad7dc16fbe39da99127066</srcmd5>
+    <version>5.13.0</version>
+    <time>1561732073</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.0</comment>
+    <requestid>711180</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>4a2837f2c1151ffae6295c2e66fcd4c3</srcmd5>
+    <version>5.13.0</version>
+    <time>1565940471</time>
+    <user>dimstar_suse</user>
+    <comment>- QtQuick.LocalStorage needs libQt5Sql5-sqlite</comment>
+    <requestid>723913</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6d8074b58e8c3f35b1d4c1e1f547d218</srcmd5>
+    <version>5.13.1</version>
+    <time>1568024977</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.13.1</comment>
+    <requestid>729203</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5c3fb6348fbb28c11d73a0da61edd939</srcmd5>
+    <version>5.14.0</version>
+    <time>1579463658</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.0</comment>
+    <requestid>757291</requestid>
+  </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>26788c6fb72cffae1d1c31e382f64b54</srcmd5>
+    <version>5.14.0</version>
+    <time>1579791300</time>
+    <user>dimstar_suse</user>
+    <comment>- Only force-enable the QML JIT for 32-bit x86</comment>
+    <requestid>766554</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>a6848ec20a7e1a58e37a4b67f82fb9b7</srcmd5>
+    <version>5.14.1</version>
+    <time>1580373531</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.14.1</comment>
+    <requestid>768108</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ff2307cbeb2095592d1d573ba9e9a81c</srcmd5>
+    <version>5.15.0</version>
+    <time>1590779642</time>
+    <user>maxlin_factory</user>
+    <comment>Qt 5.15.0</comment>
+    <requestid>809291</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>262a7bcfb697a89737f902d414eef3a1</srcmd5>
+    <version>5.15.1</version>
+    <time>1600078006</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.1</comment>
+    <requestid>833639</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>69f323822c836fb54f4c32aaa244f718</srcmd5>
+    <version>5.15.1</version>
+    <time>1600435286</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints with 4GB min disk space</comment>
+    <requestid>834634</requestid>
+  </revision>
+</revisionlist>

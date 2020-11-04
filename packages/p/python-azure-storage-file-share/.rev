@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>de8096c530885cf9029a2bf95bbbbecc</srcmd5>
+    <version>12.0.0</version>
+    <time>1582899577</time>
+    <user>dimstar_suse</user>
+    <comment>- New azure-sdk component</comment>
+    <requestid>768436</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb252e55f893d3573065902613eb4f0e</srcmd5>
+    <version>12.1.1</version>
+    <time>1588971970</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>801203</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55a094d62e59b88f9539345831c1ab74</srcmd5>
+    <version>12.2.0</version>
+    <time>1598726101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829775</requestid>
+  </revision>
+</revisionlist>

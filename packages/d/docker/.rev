@@ -1,0 +1,1019 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>90db8e15d16621df5a1595d98c65f81d</srcmd5>
+    <version>1.1.1</version>
+    <time>1405611088</time>
+    <user>coolo</user>
+    <comment>Fix ExclusiveArch statement</comment>
+    <requestid>241204</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5efc088af0ede6a1a65c6355891d335</srcmd5>
+    <version>1.1.2</version>
+    <time>1406886511</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>243336</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7649204ef37c916e4315fbc8ad257575</srcmd5>
+    <version>1.1.2</version>
+    <time>1408196281</time>
+    <user>lnussel</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>244864</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7649204ef37c916e4315fbc8ad257575</srcmd5>
+    <version>1.1.2</version>
+    <time>1409300780</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00e3398a1e5c999f01706b9a10ba0b38</srcmd5>
+    <version>1.2.0</version>
+    <time>1409583561</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>247056</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9ff2d09095f8cc29b86eb62287aea6fd</srcmd5>
+    <version>1.2.0</version>
+    <time>1410509018</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>248639</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cb75339e6916a51b8153be0f8ca7b3dd</srcmd5>
+    <version>1.2.0</version>
+    <time>1410534258</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>248981</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>28b98661ebc753ed1cf1988d728e44d4</srcmd5>
+    <version>1.3.0</version>
+    <time>1414613394</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>258484</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0d61ee49b9404b8c4787eaa96c86f761</srcmd5>
+    <version>1.3.1</version>
+    <time>1415636913</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>260217</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d8344e72dc114e749969e86b2f3e67cb</srcmd5>
+    <version>1.3.2</version>
+    <time>1417643312</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263863</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>18393c49d836260570eba11794f9fcff</srcmd5>
+    <version>1.4.0</version>
+    <time>1419159902</time>
+    <user>coolo</user>
+    <comment>- Updated to 1.4.0 (2014-12-11):
+  * Notable Features since 1.3.0:
+    - Set key=value labels to the daemon (displayed in `docker info`), applied with
+      new `-label` daemon flag
+    - Add support for `ENV` in Dockerfile of the form: 
+      `ENV name=value name2=value2...`
+    - New Overlayfs Storage Driver
+    - `docker info` now returns an `ID` and `Name` field
+    - Filter events by event name, container, or image
+    - `docker cp` now supports copying from container volumes
+    - Fixed `docker tag`, so it honors `--force` when overriding a tag for existing
+      image.
+- Changes introduced by 1.3.3 (2014-12-11):
+  * Security:
+    - Fix path traversal vulnerability in processing of absolute symbolic links (CVE-2014-9356) - (bnc#909709)
+    - Fix decompression of xz image archives, preventing privilege escalation (CVE-2014-9357) - (bnc#909710)
+    - Validate image IDs (CVE-2014-9358) - (bnc#909712)
+  * Runtime:
+    - Fix an issue when image archives are being read slowly
+  * Client:
+    - Fix a regression related to stdin redirection
+    - Fix a regression with `docker cp` when destination is the current directory</comment>
+    <requestid>265920</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>32133c565c7ffb2e78c931551f8e9b63</srcmd5>
+    <version>1.4.1</version>
+    <time>1421959778</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>282380</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bca8e70958e34e295c8a4965184250e2</srcmd5>
+    <version>1.5.0</version>
+    <time>1424288213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>286657</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>333e4d042bfbc40074415bb430b7cd8f</srcmd5>
+    <version>1.5.0</version>
+    <time>1428652251</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294716</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77f243e4fad2574a0c1e1e6e9a1c45f4</srcmd5>
+    <version>1.6.1</version>
+    <time>1431668664</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>307100</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cf34a509fd183ed76a7c20901a3f2d5c</srcmd5>
+    <version>1.6.2</version>
+    <time>1432636419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>308633</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>486e78ea57b319389270975f240a6a1f</srcmd5>
+    <version>1.6.2</version>
+    <time>1432799775</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>308888</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>baaac57f821bf6db235cf40acd976fb1</srcmd5>
+    <version>1.7.0</version>
+    <time>1436888623</time>
+    <user>coolo</user>
+    <comment>- Exclude init scripts other than systemd from the test-package 
+
+- Exclude intel 32 bits arch. Docker does not built on that. Let's
+  make it explicit. 
+
+- rediff ignore-dockerinit-checksum.patch, gcc-go-build-static-libgo.patch
+  to make them apply again.
+- introduce go_arches for architectures that use the go compiler
+  instead of gcc-go
+- add docker-netns-aarch64.patch: Add support for AArch64
+- enable build for aarch64
+
+- Build man pages only on platforms where gc compiler is available.
+
+- Updated to 1.7.0 (2015-06-16) - bnc#935570
+  * Runtime
+    - Experimental feature: support for out-of-process volume plugins
+    - The userland proxy can be disabled in favor of hairpin NAT using the daemon’s `--userland-proxy=false` flag
+    - The `exec` command supports the `-u|--user` flag to specify the new process owner
+    - Default gateway for containers can be specified daemon-wide using the `--default-gateway` and `--default-gateway-v6` flags
+    - The CPU CFS (Completely Fair Scheduler) quota can be set in `docker run` using `--cpu-quota`
+    - Container block IO can be controlled in `docker run` using`--blkio-weight`
+    - ZFS support
+    - The `docker logs` command supports a `--since` argument
+    - UTS namespace can be shared with the host with `docker run --uts=host`
+  * Quality
+    - Networking stack was entirely rewritten as part of the libnetwork effort
+    - Engine internals refactoring
+    - Volumes code was entirely rewritten to support the plugins effort
+    - Sending SIGUSR1 to a daemon will dump all goroutines stacks without exiting</comment>
+    <requestid>315847</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f51d8f35c285e631c4841eacb57377d7</srcmd5>
+    <version>1.7.1</version>
+    <time>1437657788</time>
+    <user>coolo</user>
+    <comment>fix build fail with debuginfo enabled by running fdupes
+and...
+
+- Update to 1.7.1 (2015-07-14) (bnc#938156)
+Runtime
+    Fix default user spawning exec process with docker exec
+    Make --bridge=none not to configure the network bridge
+    Publish networking stats properly
+    Fix implicit devicemapper selection with static binaries
+    Fix socket connections that hung intermittently
+    Fix bridge interface creation on CentOS/RHEL 6.6
+    Fix local dns lookups added to resolv.conf
+    Fix copy command mounting volumes
+    Fix read/write privileges in volumes mounted with --volumes-from
+Remote API
+    Fix unmarshalling of Command and Entrypoint
+    Set limit for minimum client version supported
+    Validate port specification
+    Return proper errors when attach/reattach fail
+Distribution
+    Fix pulling private images
+    Fix fallback between registry V2 and V1</comment>
+    <requestid>317983</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1c42523028e489be1cb253c9d44a512d</srcmd5>
+    <version>1.7.1</version>
+    <time>1437803073</time>
+    <user>coolo</user>
+    <comment>- Exclude archs where docker does not build. Otherwise it gets into
+  and infinite loop when building.
+  We'll fix that later if we want to release for those archs.</comment>
+    <requestid>318457</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8c4432db922a02a3365b1d0d5426485c</srcmd5>
+    <version>1.8.1</version>
+    <time>1440135705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to docker 1.8.1(bsc#942369 and bsc#942370):
+  - Fix a bug where pushing multiple tags would result in invalid images
+- Update to docker 1.8.0:
+  see detailed changelog in
+  https://github.com/docker/docker/releases/tag/v1.8.0 
+- remove docker-netns-aarch64.patch: This patch was adding 
+   vendor/src/github.com/vishvananda/netns/netns_linux_arm64.go
+  which is now included upstream, so we don't need this patch anymore</comment>
+    <requestid>324525</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>7ecd3672c55ccc2295daa2879c521ab0</srcmd5>
+    <version>1.8.1</version>
+    <time>1440337436</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324799</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2a669c0273708fb1139cbed335a52a49</srcmd5>
+    <version>1.8.2</version>
+    <time>1442474433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update docker to 1.8.2 version
+  see detailed changelog in
+  https://github.com/docker/docker/releases/tag/v1.8.2 
+- devicemapper: fix zero-sized field access 
+  Fix issue #15279: does not build with Go 1.5 tip
+  Due to golang/go@7904946
+  the devices field is dropped.
+  This solution works on go1.4 and go1.5
+  See more in https://github.com/docker/docker/pull/15404
+  
+  This fix was not included in v1.8.2. See previous link
+  on why.
+  fix_15279.patch: contains the patch for issue#15279</comment>
+    <requestid>330936</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2edb73c99bf336fb3dddc46f489d554b</srcmd5>
+    <version>1.8.2</version>
+    <time>1443585205</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>334778</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6d27b3efd609d34fb5f8e3e90fd48561</srcmd5>
+    <version>1.8.3</version>
+    <time>1445350951</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>339966</requestid>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>13fbb77da9836db0ebaba65d935e27c4</srcmd5>
+    <version>1.8.3</version>
+    <time>1446049833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>341053</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>85ffc58a7ea6a4a547894d489083e512</srcmd5>
+    <version>1.9.0</version>
+    <time>1448400826</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>345481</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1f5047ed5b633479e9b3cf4d47d9c0b9</srcmd5>
+    <version>1.9.1</version>
+    <time>1449384047</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>347073</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>52d1817794782446ba3136dbba7cace5</srcmd5>
+    <version>1.9.1</version>
+    <time>1449687151</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>347720</requestid>
+  </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>1afefff0f02257d09888871587a06e56</srcmd5>
+    <version>1.9.1</version>
+    <time>1451674112</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>351322</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>10bc3e494e64498e7e7bce2d54480d04</srcmd5>
+    <version>1.10.3</version>
+    <time>1459422199</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>381303</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>a7aa701279d300b96d35f239e020760b</srcmd5>
+    <version>1.10.3</version>
+    <time>1460482707</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>387351</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b3a83d14d483e94d95620812f0b928f4</srcmd5>
+    <version>1.11.1</version>
+    <time>1462342815</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Docker 1.11.1. The changelog changes are due to OBS and IBS being
+synced, and were ok'd by maintainence. From this point onwards, all updates to
+Docker packages will be sourced from Virtualization:containers. This request
+goes together with request 392078 and 393249.
+
+In addition, this includes a patch to fix a vulnerability in Docker &lt;= 1.11.1.
+This patch is upstream but was merged after the 1.11.x merge window.
+CVE-2016-3697. bsc#976777.</comment>
+    <requestid>393252</requestid>
+  </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>16bfb6ac84f3472844ea3a2b571f35ba</srcmd5>
+    <version>1.11.1</version>
+    <time>1464014351</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix udev files ownership (forwarded request 396996 from jordimassaguerpla)</comment>
+    <requestid>396998</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>6021839ce51be93e4bfb63ce89c7cfa6</srcmd5>
+    <version>1.11.2</version>
+    <time>1466326168</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>402450</requestid>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>46c866fe4cf672cff50bd25925bce195</srcmd5>
+    <version>1.11.2</version>
+    <time>1467359922</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404911</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>2acc1baa8532ccc54426a4e0f43c3c6e</srcmd5>
+    <version>1.11.2</version>
+    <time>1468360298</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>406837</requestid>
+  </revision>
+  <revision rev="38" vrev="4">
+    <srcmd5>b89e3e6812fa25c2495f7cc332360da2</srcmd5>
+    <version>1.11.2</version>
+    <time>1468580053</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>408446</requestid>
+  </revision>
+  <revision rev="39" vrev="5">
+    <srcmd5>20ebead01de59c854b46713fdab27782</srcmd5>
+    <version>1.11.2</version>
+    <time>1470217358</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>412200</requestid>
+  </revision>
+  <revision rev="40" vrev="6">
+    <srcmd5>64fbf0c3fde63409d4cc75ffefd9ebc3</srcmd5>
+    <version>1.11.2</version>
+    <time>1470773750</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>417964</requestid>
+  </revision>
+  <revision rev="41" vrev="7">
+    <srcmd5>173cc74ab549bb7c73139a2127508322</srcmd5>
+    <version>1.11.2</version>
+    <time>1471428361</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>419596</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8519bfa407434d67a4ce8ecdd4fcc2cb</srcmd5>
+    <version>1.12.1</version>
+    <time>1474476591</time>
+    <user>dimstar_suse</user>
+    <comment>- fix go_arches definition: use global instead of define, otherwise
+  it fails to build 
+
+- Add dockerd(8) man page.
+
+- add missing patch to changelog
+
+- fix integration test case
+- add integration-cli-fix-TestInfoEnsureSucceeds.patch
+
+- update rpmlintrc
+
+- make test timeout configurable
+
+- Remove noarch from docker-test, which was causing lots of fun issues when
+  trying to run them.
+
+- Fix build for ppc64le: use static libgo for dockerd and docker-proxy
+  as in docker build.
+
+- Update docker to 1.12.1 (bsc#996015)
+  see changelog in https://github.com/docker/docker/releases/tag/v1.12.1
+
+- Add asaurin@suse.com's test.sh test script.
+- Add integration test binary in docker.spec file. This is work done by
+  asaurin@suse.com.
+
+- Package docker-proxy (which was split out of the docker binary in 1.12).
+  boo#995620</comment>
+    <requestid>428793</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>594dcc8e2ba58cbdc7e4e7bb73568d9f</srcmd5>
+    <version>1.12.1</version>
+    <time>1476351099</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>434286</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>861211750458080dd5b3a24a61271ba7</srcmd5>
+    <version>1.12.2</version>
+    <time>1477481353</time>
+    <user>dimstar_suse</user>
+    <comment>update to docker-1.12.2</comment>
+    <requestid>437085</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d6467c8891d65f4520732afe9ea4ee59</srcmd5>
+    <version>1.12.3</version>
+    <time>1477904189</time>
+    <user>dimstar_suse</user>
+    <comment>- update docker to 1.12.3
+ - fix bsc#1007249 - CVE-2016-8867: Fix ambient capability usage in containers
+ - other fixes:
+   https://github.com/docker/docker/releases/tag/v1.12.3
+
+- Fix go version to 1.5 (bsc#977394)</comment>
+    <requestid>437554</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>645437fd044f00405a1841a0505e34a4</srcmd5>
+    <version>1.12.3</version>
+    <time>1480420127</time>
+    <user>dimstar_suse</user>
+    <comment>this should go here
+https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:117</comment>
+    <requestid>441892</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>bff6d6646198fe7567d2916eb0ce600d</srcmd5>
+    <version>1.12.3</version>
+    <time>1480693329</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>442805</requestid>
+  </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>360706d58981ccf0f00858db12f99bac</srcmd5>
+    <version>1.12.3</version>
+    <time>1481543231</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>445286</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3a755d72640ca6f6036971c38feb7173</srcmd5>
+    <version>1.12.5</version>
+    <time>1484041405</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>447306</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0cd6c16f2e537df0309dad69b5b06f5a</srcmd5>
+    <version>1.12.6</version>
+    <time>1485167783</time>
+    <user>dimstar_suse</user>
+    <comment>** This should go together with https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:160&quot; **
+
+- fix CVE-2016-9962 bsc#1012568 . Fix it by updating to 1.12.6
+  plus an extra commit to fix liverestore:
+  https://github.com/docker/docker/commit/97cd32a6a9076306baa637a29bba84c3f1f3d218 
+
+- add &quot;a wait&quot; when starting docker service to fix
+  bsc#1019251</comment>
+    <requestid>450492</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>bec67a5e4777d06a29d61dc1d6631f57</srcmd5>
+    <version>1.12.6</version>
+    <time>1485863210</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453400</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7b33e2cf213ba030aabe0e8f80b8acfd</srcmd5>
+    <version>1.13.0</version>
+    <time>1490221094</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480841</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>02f85cdbddf4144dd61abb8831093051</srcmd5>
+    <version>1.13.0</version>
+    <time>1492417594</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>487506</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ce74dd82e4f4087b49a3af748893044c</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1495527533</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495655</requestid>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>0cc4659b07cc99ff4f569db4620b545a</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1496392328</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>499667</requestid>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>45ab63d5444a00c6daa95ffe2d3666d1</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1498045930</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1029630: docker does not wait for lvm on system startup
+I added &quot;lvm2-monitor.service&quot; as an &quot;After dependency&quot; of the docker systemd
+unit. (forwarded request 504626 from jordimassaguerpla)</comment>
+    <requestid>504651</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>bf9c76b66541e7f3d1b01e26d8d7eac9</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1501406774</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512811</requestid>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>d86c9fd9d53023c531a9bc8a3d96a7ec</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1502963042</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>516137</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>9964caaf0538b03e26fb79bf52936bb0</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1504815116</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521899</requestid>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>b973191471676c3b2c64cb583ea5c587</srcmd5>
+    <version>17.04.0_ce</version>
+    <time>1505989913</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>526985</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5516bb84ef02720d0aa77443c4333cc7</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1508503196</time>
+    <user>dimstar_suse</user>
+    <comment>Update Docker to v17.07.0_ce. This SR is in conjunction with:
+
+* request#535047
+* request#535048
+* request#535049</comment>
+    <requestid>535075</requestid>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>c78757823dd2469068d7fb5604c15842</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1508946318</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536271</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>d353c9528eb370d5ab2d863c3407ac26</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1510321369</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a backport of https://github.com/moby/moby/pull/35424, which fixes a
+  security issue where a maliciously crafted image could be used to crash a
+  Docker daemon. bsc#1066210 CVE-2017-14992
+  + bsc1066210-0001-vendor-update-to-github.com-vbatts-tar-split-v0.10.2.patch
+- Add a backport of https://github.com/moby/moby/pull/35399, which fixes a
+  security issue where a Docker container (with a disabled AppArmor profile)
+  could write to /proc/scsi/... and subsequently DoS the host. bsc#1066801
+  CVE-2017-16539
+  + bsc1066801-0001-oci-add-proc-scsi-to-masked-paths.patch
+- Fix bsc#1059011
+  The systemd service helper script used a timeout of 60 seconds to
+  start the daemon, which is insufficient in cases where the daemon
+  takes longer to start. Instead, set the service type from 'simple' to
+  'notify' and remove the now superfluous helper script.
+- fix bsc#1057743: Add a Requires: fix_bsc_1057743 which is provided by the
+  newer version of docker-libnetwork. This is necessary because of a versioning
+  bug we found in bsc#1057743.</comment>
+    <requestid>540195</requestid>
+  </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>4b86c62de4a8f12d0ba3ef529118dec0</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1512042095</time>
+    <user>dimstar_suse</user>
+    <comment>This is an update of the Docker package, mostly just including packaging fixes.
+It also drops all of the v1.10.x migration logic we added a while ago. The
+delete request for docker-image-migrator was submitted in parallel.</comment>
+    <requestid>545292</requestid>
+  </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>91a69c522e7a80730b904ae60cbe64c3</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1512291984</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>546698</requestid>
+  </revision>
+  <revision rev="66" vrev="6">
+    <srcmd5>16c159877033f983d1e89dd284a13cb8</srcmd5>
+    <version>17.07.0_ce</version>
+    <time>1512734041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>548181</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>ebd621c166fb2cc09138acedac985686</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1513851914</time>
+    <user>dimstar_suse</user>
+    <comment>Docker v17.09.1_ce upgrade.</comment>
+    <requestid>558281</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>c7d639dfff4c8e25576a517fada6f8d7</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1515875670</time>
+    <user>dimstar_suse</user>
+    <comment>Minor changelog update.</comment>
+    <requestid>563290</requestid>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>49db4ca7d274101172dec1ff53ab2b9a</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1516546098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>567740</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>439d9f65d001032babbe851ec2f5400d</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1518813602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576049</requestid>
+  </revision>
+  <revision rev="71" vrev="5">
+    <srcmd5>e691129bc752784d74ce83e403d5d8de</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1522934969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593664</requestid>
+  </revision>
+  <revision rev="72" vrev="6">
+    <srcmd5>f3e1b5e75fdb90fbd0efc0c8b196abc5</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1523956393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>595995</requestid>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>e897898977b8d1584660450e199b353f</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1524400527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598552</requestid>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>edbc50d06e56dd6e4c1b5c182fd819a2</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1526371829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605682</requestid>
+  </revision>
+  <revision rev="75" vrev="9">
+    <srcmd5>d4fff40875c05c5d89336a6a6a2a2488</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1528021721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update secrets patch to not log incorrect warnings when attempting to inject
+  non-existent host files. bsc#1065609
+  * secrets-0001-daemon-allow-directory-creation-in-run-secrets.patch
+  * secrets-0002-SUSE-implement-SUSE-container-secrets.patch</comment>
+    <requestid>612961</requestid>
+  </revision>
+  <revision rev="76" vrev="10">
+    <srcmd5>8709089e13a4b12e14a0fb4b05374b14</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1528492305</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>614829</requestid>
+  </revision>
+  <revision rev="77" vrev="11">
+    <srcmd5>6a9da89cecf5040028ae5c7d25fd1871</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1529666119</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616513</requestid>
+  </revision>
+  <revision rev="78" vrev="12">
+    <srcmd5>9efe08630c08ce9fcc2b221909afcab1</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1530566964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619750</requestid>
+  </revision>
+  <revision rev="79" vrev="13">
+    <srcmd5>63e03978b4261300b48e7b84f476a112</srcmd5>
+    <version>17.09.1_ce</version>
+    <time>1533292151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>626556</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>2cd7de98a56d0121f1243b1854a96369</srcmd5>
+    <version>18.06.1_ce</version>
+    <time>1536148000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632984</requestid>
+  </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>fd022b93f203992d1c28a636c013ee3d</srcmd5>
+    <version>18.06.1_ce</version>
+    <time>1539342528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>640569</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>688174b32a19b21499749d5f098d1cce</srcmd5>
+    <version>18.06.1_ce</version>
+    <time>1541455011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update changelogs to mention bsc#1113313.
+- Add backport of https://github.com/containerd/containerd/pull/2764, which is
+  required for us to build containerd on i586 SLE-12 (where /bin/sh doesn't
+  like emoji in shell scripts). bsc#1102522 bsc#1113313</comment>
+    <requestid>646380</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>21b7db051fc1a5a591364f28b3567c94</srcmd5>
+    <version>18.09.0_ce</version>
+    <time>1543999144</time>
+    <user>dimstar_suse</user>
+    <comment>Docker 18.09 upgrade.</comment>
+    <requestid>653739</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>a84077fa8f58a67a57b267f8e54e9b71</srcmd5>
+    <version>18.09.0_ce</version>
+    <time>1545376750</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>659073</requestid>
+  </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>7b4812a2bdcd0584c275849e61332e5f</srcmd5>
+    <version>18.09.0_ce</version>
+    <time>1548061611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>664600</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>cda58c7d0f8348ee70ccdd8e18ebcde0</srcmd5>
+    <version>18.09.1_ce</version>
+    <time>1550048305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 18.09.1-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1124308</comment>
+    <requestid>673384</requestid>
+  </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>82580db5fa7f36c1ea97a427725595f4</srcmd5>
+    <version>18.09.1_ce</version>
+    <time>1551298301</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>679242</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>7f2a3b1c5ffa79a92a862612efdc1fa3</srcmd5>
+    <version>18.09.3_ce</version>
+    <time>1553635690</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>688119</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>06356ad2a5345a3aa88fc343be135331</srcmd5>
+    <version>18.09.6_ce</version>
+    <time>1557170071</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Docker 18.09.6-ce.</comment>
+    <requestid>701147</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>ef6b215210b4cd8a1988a7374bc374bd</srcmd5>
+    <version>18.09.6_ce</version>
+    <time>1561405637</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708941</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>7a6d2448e67cb4ba9e0f1a858bf940dd</srcmd5>
+    <version>18.09.7_ce</version>
+    <time>1561882753</time>
+    <user>dimstar_suse</user>
+    <comment>Docker v18.09.7 update.</comment>
+    <requestid>712298</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>b9e219cec6534842737e47c4ce345c7c</srcmd5>
+    <version>19.03.0_ce</version>
+    <time>1564301804</time>
+    <user>dimstar_suse</user>
+    <comment>Docker v19.03.0-ce update.</comment>
+    <requestid>717727</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>1811232499f2de3c8675ee890d3a277d</srcmd5>
+    <version>19.03.1_ce</version>
+    <time>1564483023</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719750</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>0514c747752f48fa556fec533b800bc7</srcmd5>
+    <version>19.03.2_ce</version>
+    <time>1570285140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734439</requestid>
+  </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>081c3a4a9edb0983e1e2027fd460b64b</srcmd5>
+    <version>19.03.3_ce</version>
+    <time>1571838456</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop containerd.service workaround (we've released enough versions without
+  containerd.service -- there's no need to support package upgrades that old).
+- Update to Docker 19.03.3-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1153367</comment>
+    <requestid>736409</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>1f0d21b9084e2a5cf360bea146a4beb1</srcmd5>
+    <version>19.03.4_ce</version>
+    <time>1573556040</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.4-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.</comment>
+    <requestid>742814</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>d243402496d427af244f9cfd904dbd4a</srcmd5>
+    <version>19.03.5_ce</version>
+    <time>1574164728</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749316</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>b77201f842f292badec20337fc9d986f</srcmd5>
+    <version>19.03.5_ce</version>
+    <time>1576062176</time>
+    <user>dimstar_suse</user>
+    <comment>Add bug reference (bsc#1158590).</comment>
+    <requestid>754552</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>232c2d79c33567bc8919cce9a42f9cc1</srcmd5>
+    <version>19.03.5_ce</version>
+    <time>1576676598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>756079</requestid>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>755771d3621ac3430882f1c086679eb9</srcmd5>
+    <version>19.03.5_ce</version>
+    <time>1578950103</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758650</requestid>
+  </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>4539c2e8cc63779f35518cb41650173a</srcmd5>
+    <version>19.03.11_ce</version>
+    <time>1591380342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.11-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1172377 CVE-2020-13401
+- Backport https://github.com/gotestyourself/gotest.tools/pull/169 so that we
+  can build Docker with Go 1.14 (upstream uses Go 1.13).
+  + bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch</comment>
+    <requestid>811118</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>764675d95c7af0a785f304ede4b000ca</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1593458110</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Docker 19.03.12-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md.
+- Use Go 1.13 instead of Go 1.14 because Go 1.14 can cause all sorts of
+  spurrious errors due to Go returning -EINTR from I/O syscalls much more often
+  (due to Go 1.14's pre-emptive goroutine support).
+  - bsc1172377-0001-unexport-testcase.Cleanup-to-fix-Go-1.14.patch
+- Add BuildRequires for all -git dependencies so that we catch missing
+  dependencies much more quickly.</comment>
+    <requestid>817374</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>74a159003cb88553abeb8749c281f064</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1593550969</time>
+    <user>dimstar_suse</user>
+    <comment>- Emergency fix: %requires_eq does not work with provide symbols,
+  only effective package names. Convert back to regular Requires.</comment>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>62efcabb941b0658e878f85bcd6a06ab</srcmd5>
+    <version>19.03.12_ce</version>
+    <time>1597602369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826658</requestid>
+  </revision>
+</revisionlist>

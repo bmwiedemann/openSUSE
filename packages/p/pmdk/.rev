@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b37dff32c9397f3bc8f20141a27eccd4</srcmd5>
+    <version>1.3.1</version>
+    <time>1516444000</time>
+    <user>dimstar_suse</user>
+    <comment>nvml package was renamed to pmdk upstream</comment>
+    <requestid>566450</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>13639fe0f1f29f90df024add1e676c83</srcmd5>
+    <version>1.3.1</version>
+    <time>1517167952</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>570198</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e345f19898673493c73f844a6d8441d0</srcmd5>
+    <version>1.4</version>
+    <time>1530303890</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4 (FATE#325145):
+  - build-fix.patch
+  * doc: update ChangeLog for 1.4 release
+  * common: SRCVERSION for out of git tree builds
+  * doc: mark experimental APIs in man pages
+  * doc: rephrase paragraphs mentioning eADR
+  * doc: update man page version numbers
+  * doc: automatic master docs update
+  * doc: update README (forwarded request 615933 from morbidrsa)</comment>
+    <requestid>615936</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5eab67c7a53802b51f7df14655d12df5</srcmd5>
+    <version>1.4.2</version>
+    <time>1536833456</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to new upstream release 1.4.2</comment>
+    <requestid>634920</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f66d8a6ba926e99981ad453a48d9fc7f</srcmd5>
+    <version>1.5</version>
+    <time>1541666938</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to PMDK 1.5 (FATE#326234)</comment>
+    <requestid>646643</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>68019123b8d68c4239964566800313bb</srcmd5>
+    <version>1.5</version>
+    <time>1556915818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>698275</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>eedce19520f33b88ab96aea48e3271eb</srcmd5>
+    <version>1.6</version>
+    <time>1558782871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703121</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>07f48da22f77e7902124fb9b35694384</srcmd5>
+    <version>1.7</version>
+    <time>1572021633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>741998</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>699d111b55b30de7fa6f1b6b8dbaf502</srcmd5>
+    <version>1.8</version>
+    <time>1583446664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781100</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4e5d9d4fb965385809374ae59e1ed7c</srcmd5>
+    <version>1.9</version>
+    <time>1597390304</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825930</requestid>
+  </revision>
+</revisionlist>

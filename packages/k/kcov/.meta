@@ -1,0 +1,5 @@
+<package name="kcov" project="openSUSE:Factory">
+  <title>kcov</title>
+  <description>Code coverage tool for compiled programs, Python and Bash which uses debugging information to collect and report data without special compilation options</description>
+  <devel project="devel:tools" package="kcov"/>
+</package>

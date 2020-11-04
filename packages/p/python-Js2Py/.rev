@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ccb835271655b82eaa91035cae639033</srcmd5>
+    <version>0.60</version>
+    <time>1553611267</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>685033</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d7381e899be4d5aa7e4c967e41b457e</srcmd5>
+    <version>0.60</version>
+    <time>1554115248</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove wrong statements from description.
+
+- initial commit</comment>
+    <requestid>690277</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0c68907b531a67e3d22ee7a9e5237971</srcmd5>
+    <version>0.66</version>
+    <time>1564575295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718764</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2b1e205b50cbf9e1f50c2b08ed90f73e</srcmd5>
+    <version>0.67</version>
+    <time>1579194912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764189</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90c49f07e2c81599c6d9e6a84449527d</srcmd5>
+    <version>0.68</version>
+    <time>1585265415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788505</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dcbc557622d04eed58ed36d354e1cb3a</srcmd5>
+    <version>0.70</version>
+    <time>1587580931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794845</requestid>
+  </revision>
+</revisionlist>

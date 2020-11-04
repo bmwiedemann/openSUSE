@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c226eb0f5f338d04becb1b32e8398c0a</srcmd5>
+    <version>6.03.99+20171123</version>
+    <time>1577450639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755503</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bbdaf029d542826c96959d26dfc61470</srcmd5>
+    <version>6.03.99+20171123</version>
+    <time>1585085779</time>
+    <user>dimstar_suse</user>
+    <comment>Add reproducible.patch to sort the file list (boo#1041090) (forwarded request 759820 from bmwiedemann)</comment>
+    <requestid>787731</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5588c0495eae581d0605e34a93099f7</srcmd5>
+    <version>1.12</version>
+    <time>1573774333</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748704</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8757a4f3b116c48ffb98db3e41e95e3d</srcmd5>
+    <version>1.12</version>
+    <time>1583227086</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests that fail with pytest 5.x series</comment>
+    <requestid>780870</requestid>
+  </revision>
+</revisionlist>

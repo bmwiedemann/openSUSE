@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e08a7aafcb6c3b54ec0dba83ef4b8d91</srcmd5>
+    <version>0.02.02</version>
+    <time>1474476378</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain health-check in Factory</comment>
+    <requestid>416309</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>98c78a33dd4ab6c503356357375d8457</srcmd5>
+    <version>0.02.06</version>
+    <time>1496327505</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495764</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>000b89518ec9d7e2a61f1fb25a46574f</srcmd5>
+    <version>0.02.08</version>
+    <time>1509394734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>537435</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>086659a53748a68cce5ecc18e1951680</srcmd5>
+    <version>0.02.09</version>
+    <time>1515506034</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562317</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7281f322e3e5a5382d99decf6b6447ab</srcmd5>
+    <version>0.03.00</version>
+    <time>1531379980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622037</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>30e177f9c56588ec024a2ee598b7a6d9</srcmd5>
+    <version>0.03.01</version>
+    <time>1560760446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710106</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d5dcdd228debd36ea8539a2b3545402</srcmd5>
+    <version>0.03.04</version>
+    <time>1576676779</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757631</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ee594876ca6f302d825176acc3757d86</srcmd5>
+    <version>0.03.06</version>
+    <time>1583702692</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782692</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0fdda8e6efaea67f98471b59ab07c256</srcmd5>
+    <version>0.03.07</version>
+    <time>1588023276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>797640</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ded042817b87e141a3f86649a77323bb</srcmd5>
+    <version>0.03.09</version>
+    <time>1596703376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824540</requestid>
+  </revision>
+</revisionlist>

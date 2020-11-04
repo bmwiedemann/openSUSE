@@ -1,0 +1,164 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dad1b366b3e8e72ff36858bd8212664f</srcmd5>
+    <version>1.28</version>
+    <time>1312460904</time>
+    <user>saschpe</user>
+    <comment>Please add the package hdjmod to Factory.
+
+I have posted an introducing mail to the factory mailinglist. You can find it at http://lists.opensuse.org/opensuse-factory/2011-06/msg00664.html .</comment>
+    <requestid>74842</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>badd1890db9c154ce86117502a75777d</srcmd5>
+    <version>1.28</version>
+    <time>1312460941</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 74842
+</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2f56c3c4484e6e3c9b8f73a912a18e31</srcmd5>
+    <version>1.28</version>
+    <time>1314277521</time>
+    <user>saschpe</user>
+    <comment>- license update: GPL-2.0+
+  Specify the license more accurately using the appropriate syntax</comment>
+    <requestid>79755</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>95388e9fe1e7dba19f68d3f45ec5760e</srcmd5>
+    <version>1.28</version>
+    <time>1314277531</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79755
+</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>95388e9fe1e7dba19f68d3f45ec5760e</srcmd5>
+    <version>1.28</version>
+    <time>1319181964</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>655555e18af5f9a877b44e0b77de25c4</srcmd5>
+    <version>1.28</version>
+    <time>1323191872</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>35dab5b23defa65a580a704c71895aa2</srcmd5>
+    <version>1.28</version>
+    <time>1332757077</time>
+    <user>coolo</user>
+    <comment>- Fixed USB hotplugging (bnc#746358)
+  Previously the module also loaded for devices of other vendors. (forwarded request 110981 from theMarix)</comment>
+    <requestid>110982</requestid>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>28c7610c6d53857273734ff13b40b999</srcmd5>
+    <version>1.28</version>
+    <time>1334215590</time>
+    <user>coolo</user>
+    <comment>Fix build on SLE 11 SP 2 (forwarded request 112928 from theMarix)</comment>
+    <requestid>112929</requestid>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>28c7610c6d53857273734ff13b40b999</srcmd5>
+    <version>1.28</version>
+    <time>1340183433</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="12">
+    <srcmd5>036ec7f149d88292ff74854ab52a28b9</srcmd5>
+    <version>1.28</version>
+    <time>1351013842</time>
+    <user>coolo</user>
+    <comment>- Fixed build on kernel 3.6 (forwarded request 138423 from theMarix)</comment>
+    <requestid>138454</requestid>
+  </revision>
+  <revision rev="11" vrev="13">
+    <srcmd5>d2b738a2be977a0cd9ae5d8737a0fabd</srcmd5>
+    <version>1.28</version>
+    <time>1356703278</time>
+    <user>namtrac</user>
+    <comment>- Fixed build on kernel 3.7 (forwarded request 146313 from theMarix)</comment>
+    <requestid>146314</requestid>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>d2b738a2be977a0cd9ae5d8737a0fabd</srcmd5>
+    <version>1.28</version>
+    <time>1359109043</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>d2b738a2be977a0cd9ae5d8737a0fabd</srcmd5>
+    <version>1.28</version>
+    <time>1379662608</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>d2b738a2be977a0cd9ae5d8737a0fabd</srcmd5>
+    <version>1.28</version>
+    <time>1409301158</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="20">
+    <srcmd5>ed4d895717d77b98b935cc8dcf7fbdd9</srcmd5>
+    <version>1.28</version>
+    <time>1410941466</time>
+    <user>coolo</user>
+    <comment>- Fixed build on kernel 3.16
+  The required patch is hdjmod_kernel_3.16.patch
+
+- Fixed build on kernel 3.7</comment>
+    <requestid>242443</requestid>
+  </revision>
+  <revision rev="16" vrev="21">
+    <srcmd5>b26537afb0a548dfc22fc71392d365af</srcmd5>
+    <version>1.28</version>
+    <time>1498995521</time>
+    <user>dimstar_suse</user>
+    <comment>This fixes the build versus the current factory kernel and fixes a potential buffer overrun in the device name handling (which cause the previous request to be declined).</comment>
+    <requestid>507550</requestid>
+  </revision>
+  <revision rev="17" vrev="22">
+    <srcmd5>65a2fc1e1281ef97b3713abf1ad34266</srcmd5>
+    <version>1.28</version>
+    <time>1511817472</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hdjmod_kernel_4.14.patch: Fixes build on Kernel 4.14 and
+  up.</comment>
+    <requestid>545757</requestid>
+  </revision>
+  <revision rev="18" vrev="23">
+    <srcmd5>058a62f2ebc20ecf03358cddee618b89</srcmd5>
+    <version>1.28</version>
+    <time>1518514310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575867</requestid>
+  </revision>
+  <revision rev="19" vrev="24">
+    <srcmd5>d8241a3e6b71465142caacd21df007e9</srcmd5>
+    <version>1.28</version>
+    <time>1529501586</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617785</requestid>
+  </revision>
+  <revision rev="20" vrev="25">
+    <srcmd5>14540e570261f1a36674fd354309c5ad</srcmd5>
+    <version>1.28</version>
+    <time>1552986060</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with kernel 5.0:
+  * hdjmod_kernel_5.0.patch</comment>
+    <requestid>686088</requestid>
+  </revision>
+</revisionlist>

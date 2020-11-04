@@ -1,0 +1,6 @@
+<package name="python-easy-thumbnails" project="openSUSE:Factory">
+  <title>Easy thumbnails for Django</title>
+  <description>The powerful, yet easy to implement thumbnailing application for Django.
+</description>
+  <devel project="devel:languages:python:django" package="python-easy-thumbnails"/>
+</package>

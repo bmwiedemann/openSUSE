@@ -1,0 +1,8 @@
+<package name="dfc" project="openSUSE:Factory">
+  <title>Display file system space usage using graphs and colors</title>
+  <description>
+dfc is a simple tool that displays file system space usage using graphs and
+colors.
+</description>
+  <devel project="devel:openSUSE:Factory" package="dfc"/>
+</package>

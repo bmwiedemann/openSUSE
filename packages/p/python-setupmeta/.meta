@@ -1,0 +1,5 @@
+<package name="python-setupmeta" project="openSUSE:Factory">
+  <title></title>
+  <description>Simplify your setup.py</description>
+  <devel project="devel:languages:python" package="python-setupmeta"/>
+</package>

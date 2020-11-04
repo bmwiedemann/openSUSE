@@ -1,0 +1,5 @@
+<package name="python-volatile" project="openSUSE:Factory">
+  <title></title>
+  <description>A small Python extension for the tempfile module.</description>
+  <devel project="devel:languages:python" package="python-volatile"/>
+</package>

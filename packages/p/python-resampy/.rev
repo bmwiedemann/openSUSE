@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a7d3ee1f2dbe448c5fe63174cb825efe</srcmd5>
+    <version>0.2.1</version>
+    <time>1541152454</time>
+    <user>dimstar_suse</user>
+    <comment>audio resampling for python</comment>
+    <requestid>645967</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6483726733f38dfb5e505ef864fbc15d</srcmd5>
+    <version>0.2.1</version>
+    <time>1541511127</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim bias from description.
+</comment>
+    <requestid>646080</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>117d2290a5e6a9b30b5653b03fc9da51</srcmd5>
+    <version>0.2.2</version>
+    <time>1567423585</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727556</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>f5d308e86d1609bc3981ef5388877b30</srcmd5>
+    <version>0.2.2</version>
+    <time>1586466925</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792580</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7cb4a402704358aff73e459e248affd5</srcmd5>
+    <version>4.0~20191021git51cf8f4</version>
+    <time>1583311128</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>780917</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ec7c1cfc6c609be73bebb773014d8e40</srcmd5>
+    <version>4.0~20191021git51cf8f4</version>
+    <time>1604510768</time>
+    <user>dimstar_suse</user>
+    <comment>Fix builds</comment>
+    <requestid>845704</requestid>
+  </revision>
+</revisionlist>

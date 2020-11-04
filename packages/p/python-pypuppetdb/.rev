@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf663b99db7a48cedfd5e83b2bc9f5fc</srcmd5>
+    <version>0.3.3</version>
+    <time>1551216089</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit same rev, reset reviews</comment>
+    <requestid>679229</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>52a146ce7bf13454bb59657b9c0c979a</srcmd5>
+    <version>0.3.3</version>
+    <time>1554458219</time>
+    <user>dimstar_suse</user>
+    <comment>- Use noun phrase in summary.
+
+    fact.
+    api_version attribute from pypuppetdb.connect()</comment>
+    <requestid>687606</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b373e49a85b36a58196e3545b39eae4f</srcmd5>
+    <version>1.0.0</version>
+    <time>1567010194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>726605</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21ecb07048737af233746ca2afe5c930</srcmd5>
+    <version>1.1.0</version>
+    <time>1568190996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * deduplicate dependencylist
+  * QueryBuilder.py: Use native data structures for internal representation
+  * Add support for the Command API</comment>
+    <requestid>729838</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6e62b945205c0c9062fa728e8ffa847</srcmd5>
+    <version>2.1.0</version>
+    <time>1584964204</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786903</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7554fc5ac2327b7b8e3fdf07678d663a</srcmd5>
+    <version>2.2.0</version>
+    <time>1597403434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824847</requestid>
+  </revision>
+</revisionlist>

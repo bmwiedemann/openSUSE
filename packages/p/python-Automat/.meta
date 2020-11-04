@@ -1,0 +1,5 @@
+<package name="python-Automat" project="openSUSE:Factory">
+  <title>Self-service finite-state machines for the programmer on the go</title>
+  <description>Automat is a library for concise, idiomatic Python expression of finite-state automata (particularly deterministic finite-state transducers).</description>
+  <devel project="devel:languages:python" package="python-Automat"/>
+</package>

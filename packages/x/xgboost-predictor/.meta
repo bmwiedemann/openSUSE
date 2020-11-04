@@ -1,0 +1,8 @@
+<package name="xgboost-predictor" project="openSUSE:Factory">
+  <title>Pure Java implementation of Xgboost predictor for online prediction tasks</title>
+  <description>Pure Java implementation of XGBoost predictor for online prediction tasks.
+
+</description>
+  <devel project="Java:packages" package="xgboost-predictor"/>
+  <url>https://github.com/komiya-atsushi/xgboost-predictor-java</url>
+</package>

@@ -1,0 +1,1359 @@
+<revisionlist>
+  <revision rev="1" vrev="7">
+    <srcmd5>956a32a3bfe2e82e06d87182affbef7c</srcmd5>
+    <version>0.9.5</version>
+    <time>1168904018</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>be54341115c49f522fa677f8c5bf2aff</srcmd5>
+    <version>0.9.5</version>
+    <time>1177415840</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="53">
+    <srcmd5>14300a8ec7382009fb088e84d8757510</srcmd5>
+    <version>0.9.5</version>
+    <time>1180480607</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e23063abcbc18954ca7884292e2b6f3</srcmd5>
+    <version>0.9.6</version>
+    <time>1181317467</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>74176fcf3c2ebaa57b5239be1bfda9b4</srcmd5>
+    <version>0.9.6</version>
+    <time>1181666371</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>e7925957ddaf66c718bf9a2182d93a46</srcmd5>
+    <version>0.9.6</version>
+    <time>1182276264</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="43">
+    <srcmd5>cd4cb0dd404978564ce39cbca31e91aa</srcmd5>
+    <version>0.9.6</version>
+    <time>1192133836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa5963729a73ff9bf7537c9073e78fc3</srcmd5>
+    <version>0.9.7</version>
+    <time>1193847282</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>1684a8240819403cf1a648a4d461539c</srcmd5>
+    <version>0.9.7</version>
+    <time>1197391432</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="15">
+    <srcmd5>2f6bca9611d2ff4c18057bccec791bae</srcmd5>
+    <version>0.9.7</version>
+    <time>1198599967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="16">
+    <srcmd5>8891bc0620d9c20225f3c2fbc2b1ba21</srcmd5>
+    <version>0.9.7</version>
+    <time>1199883346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>83e206d8c395f180da1df7ca23d94b8e</srcmd5>
+    <version>0.9.7</version>
+    <time>1200104412</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>63a5f3f6a54acfcfccf8e4bfc2beb309</srcmd5>
+    <version>0.9.8</version>
+    <time>1201127469</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7b39d7391bb873360e154134dfdf8703</srcmd5>
+    <version>0.9.8</version>
+    <time>1201194207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>102866eaf0439c575acf53383e4c5231</srcmd5>
+    <version>0.9.8</version>
+    <time>1201301304</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a18d6d30d8c2e5b2339b286e9423a9b</srcmd5>
+    <version>0.9.9</version>
+    <time>1205348900</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>5fff0cbe648d9fb818835c46abb3d7c4</srcmd5>
+    <version>0.9.9</version>
+    <time>1207471405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>056a172a5739dfc692049f87787f741a</srcmd5>
+    <version>0.9.10</version>
+    <time>1207821984</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="12">
+    <srcmd5>b419653339813a1c7d14fe2598a8a9d5</srcmd5>
+    <version>0.9.10</version>
+    <time>1210111408</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>ee4d8ca4e42045b39f55b38e68ec8dd3</srcmd5>
+    <version>0.9.10</version>
+    <time>1210942385</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>645c4b7a789108a465fcd3f12f8d6b55</srcmd5>
+    <version>0.9.10</version>
+    <time>1211413503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>ab73afe5e9a6ca8f25900787a6d6b55d</srcmd5>
+    <version>0.9.10</version>
+    <time>1211578437</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="21">
+    <srcmd5>6eb54d7d266d2d8e3728c3be885bbd83</srcmd5>
+    <version>0.9.10</version>
+    <time>1211821620</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>6cc0b828073485f78d35107d04b09690</srcmd5>
+    <version>0.9.10</version>
+    <time>1212268004</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="29">
+    <srcmd5>719edceed5b0509b2e9bda56b8aaa3a7</srcmd5>
+    <version>0.9.10</version>
+    <time>1214424769</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="30">
+    <srcmd5>2ac0c05763dc4fc522ef4b8b78704f97</srcmd5>
+    <version>0.9.10</version>
+    <time>1214909093</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4819f89e80a3a1d3a0838f65f7d526da</srcmd5>
+    <version>0.9.11</version>
+    <time>1216413744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="20">
+    <srcmd5>fded468c8f836c8905f4b18ae95075ed</srcmd5>
+    <version>0.9.11</version>
+    <time>1218632798</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="26">
+    <srcmd5>3a09456864bb50a0f92f1bae566beaac</srcmd5>
+    <version>0.9.11</version>
+    <time>1218995142</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="33">
+    <srcmd5>93e4a33db09eea0333f1aba0b20e9418</srcmd5>
+    <version>0.9.11</version>
+    <time>1219966994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>97ed78dc2bfb4cba5448e80c04de1ce1</srcmd5>
+    <version>0.9.12</version>
+    <time>1221306406</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>d6e95c9d08aa9f282f0fc4ef89bc9161</srcmd5>
+    <version>0.9.12</version>
+    <time>1221573343</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>f0a7a28b7f75f245260cb3765fcb060c</srcmd5>
+    <version>0.9.12</version>
+    <time>1221581541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>1de831fda5a58e5bef8e3d0fab3ca294</srcmd5>
+    <version>0.9.12</version>
+    <time>1222099969</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>7185aef8cc61e656e0eecb5d488af132</srcmd5>
+    <version>0.9.12</version>
+    <time>1224160444</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="6">
+    <srcmd5>7dbc0d5d754bb19a554fcf54962ba309</srcmd5>
+    <version>0.9.12</version>
+    <time>1225123839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>0a70af8ff1fc8529f4909595b4e58525</srcmd5>
+    <version>0.9.12</version>
+    <time>1226940757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="8">
+    <srcmd5>d0f8a2d0c08f805f40d176b332685c32</srcmd5>
+    <version>0.9.12</version>
+    <time>1227194246</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="9">
+    <srcmd5>d84181ada789a8e4d5aa03496af0015c</srcmd5>
+    <version>0.9.12</version>
+    <time>1227883994</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="10">
+    <srcmd5>64d199e7c40bf4697ad7ae651e94cdfe</srcmd5>
+    <version>0.9.12</version>
+    <time>1228489105</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>30eda8f9bd90c2c03d0e1b49b3192bba</srcmd5>
+    <version>0.9.14</version>
+    <time>1234179502</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b456d60b96d410be391187e0be88524a</srcmd5>
+    <version>0.9.14</version>
+    <time>1234474631</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>705af418d842cf8381587c14f898bc65</srcmd5>
+    <version>0.9.15</version>
+    <time>1243467539</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f49ceffb711c9ceb5320b9548e3b5a00</srcmd5>
+    <version>0.9.15</version>
+    <time>1247847747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>c9cf4e5f915b6312a700077f6460db84</srcmd5>
+    <version>0.9.15</version>
+    <time>1248358125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="4">
+    <srcmd5>89163f08e525efd41c571ab1a59eaec8</srcmd5>
+    <version>0.9.15</version>
+    <time>1249059128</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="5">
+    <srcmd5>adca06a819e931c28aa16b4195100f1c</srcmd5>
+    <version>0.9.15</version>
+    <time>1251908800</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 19391 from user tiwai
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2a6648e4ecd8915659c7a6c0acf467b6</srcmd5>
+    <version>0.9.16</version>
+    <time>1252111764</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 19981 from user sreeves1
+</comment>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3ec1c323c727f7895cbe6d82a9e97f09</srcmd5>
+    <version>0.9.17</version>
+    <time>1253561278</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 20624 from user sreeves1
+</comment>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>137d9233e4590facdf1c9772e6fc36bc</srcmd5>
+    <version>0.9.19</version>
+    <time>1255017230</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 21941 from user sreeves1
+</comment>
+  </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>137d9233e4590facdf1c9772e6fc36bc</srcmd5>
+    <version>0.9.19</version>
+    <time>1255017230</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 21941 from user sreeves1
+</comment>
+  </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>485ed558479181d2d3e50306eb40d1eb</srcmd5>
+    <version>0.9.19</version>
+    <time>1257174577</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 23563 from user tiwai
+</comment>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>93a3b92c69e0b82fb4d59ae2f8be1892</srcmd5>
+    <version>0.9.19</version>
+    <time>1257844185</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 23957 from user tiwai
+</comment>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>dd0fba521464d1bfa9f420b9a1f9cc05</srcmd5>
+    <version>0.9.21</version>
+    <time>1261831326</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 27638 from user vuntz
+</comment>
+  </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>6a8c45ad70fb9ab21200d53163e6f800</srcmd5>
+    <version>0.9.21</version>
+    <time>1265913093</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 32001 from user sreeves1
+</comment>
+  </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>84b9e444de214f5d9866fedd8ed6efec</srcmd5>
+    <version>0.9.21</version>
+    <time>1268068872</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 34263 from user coolo
+</comment>
+    <requestid>34263</requestid>
+  </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>415c71f4b3d99b091f1810b1a0c9e523</srcmd5>
+    <version>0.9.21</version>
+    <time>1268925811</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>1e379d1d4c85c43a0600f5c5c9fd592a</srcmd5>
+    <version>0.9.21</version>
+    <time>1270084167</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 36441 from user vuntz
+</comment>
+    <requestid>36441</requestid>
+  </revision>
+  <revision rev="59" vrev="6">
+    <srcmd5>2b80fa751e245570698c6cfadc03a8bc</srcmd5>
+    <version>0.9.21</version>
+    <time>1270656201</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 37212 from user oertel
+</comment>
+    <requestid>37212</requestid>
+  </revision>
+  <revision rev="60" vrev="7">
+    <srcmd5>111eddbd9b35741b41d70c4b0cc1d731</srcmd5>
+    <version>0.9.21</version>
+    <time>1271375121</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 38020 from user sreeves1
+</comment>
+    <requestid>38020</requestid>
+  </revision>
+  <revision rev="61" vrev="8">
+    <srcmd5>8b2b7815b1e522517edf5bed96a1204c</srcmd5>
+    <version>0.9.21</version>
+    <time>1274033729</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 40078 from user prusnak
+</comment>
+    <requestid>40078</requestid>
+  </revision>
+  <revision rev="62" vrev="10">
+    <srcmd5>8b2b7815b1e522517edf5bed96a1204c</srcmd5>
+    <version>0.9.21</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="63" vrev="11">
+    <srcmd5>8b2b7815b1e522517edf5bed96a1204c</srcmd5>
+    <version>0.9.21</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="64" vrev="12">
+    <srcmd5>b9a9c9e95e598cb4231ae1008a7c30a7</srcmd5>
+    <version>0.9.21</version>
+    <time>1280675711</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 44077 from user tiwai
+</comment>
+    <requestid>44077</requestid>
+  </revision>
+  <revision rev="65" vrev="13">
+    <srcmd5>cf95972ec351581cdb03ca8be3e73e5d</srcmd5>
+    <version>0.9.21</version>
+    <time>1282922253</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 46332 from user vuntz
+</comment>
+    <requestid>46332</requestid>
+  </revision>
+  <revision rev="66" vrev="14">
+    <srcmd5>bf16a34291ee90c28688dbbff9406aff</srcmd5>
+    <version>0.9.21</version>
+    <time>1285970256</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/pulseaudio based on submit request 49435 from user elvigia
+</comment>
+    <requestid>49435</requestid>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>57e0d665c0d9990a4d83b5e33d0a7796</srcmd5>
+    <version>0.9.22</version>
+    <time>1291587756</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54705 from user plater
+</comment>
+    <requestid>54705</requestid>
+  </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>d7dff8085aadb8b06c93c5cccd7f7c05</srcmd5>
+    <version>0.9.22</version>
+    <time>1291587764</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54705
+</comment>
+  </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>700b11ff94eeca3744e3fce05429654f</srcmd5>
+    <version>0.9.22</version>
+    <time>1295947152</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 59059 from user sreeves1
+</comment>
+    <requestid>59059</requestid>
+  </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>9be128a283d37cc4fa063b2a5e984ee9</srcmd5>
+    <version>0.9.22</version>
+    <time>1295947159</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 59059
+</comment>
+  </revision>
+  <revision rev="71" vrev="7">
+    <srcmd5>9be128a283d37cc4fa063b2a5e984ee9</srcmd5>
+    <version>0.9.22</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="72" vrev="8">
+    <srcmd5>d8bb98ace92e11ffde943ba04fdd0f08</srcmd5>
+    <version>0.9.22</version>
+    <time>1298026689</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61643 from user tiwai
+</comment>
+    <requestid>61643</requestid>
+  </revision>
+  <revision rev="73" vrev="9">
+    <srcmd5>6e4a8329706dcf610c3b3582aca8f829</srcmd5>
+    <version>0.9.22</version>
+    <time>1298026701</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61643
+</comment>
+  </revision>
+  <revision rev="74" vrev="10">
+    <srcmd5>db9db1fdc4bbc9142704dc59b20cb007</srcmd5>
+    <version>0.9.22</version>
+    <time>1300892726</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 65013 from user licensedigger
+</comment>
+    <requestid>65013</requestid>
+  </revision>
+  <revision rev="75" vrev="11">
+    <srcmd5>c1f440da281713ab42c138f6a2e6c97e</srcmd5>
+    <version>0.9.22</version>
+    <time>1300892734</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 65013
+</comment>
+  </revision>
+  <revision rev="76" vrev="12">
+    <srcmd5>d75b833b2f384a2bfe9fef7302de0bac</srcmd5>
+    <version>0.9.22</version>
+    <time>1311576257</time>
+    <user>saschpe</user>
+    <comment>bnc#707703: call setup-pulseaudio in %post</comment>
+    <requestid>76813</requestid>
+  </revision>
+  <revision rev="77" vrev="13">
+    <srcmd5>c9f90356abcd5bc9caeda61cc9e25416</srcmd5>
+    <version>0.9.22</version>
+    <time>1311576265</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76813
+</comment>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>94b59540263365326fbd528b2a348242</srcmd5>
+    <version>0.9.23</version>
+    <time>1312184398</time>
+    <user>saschpe</user>
+    <comment>- Updated to version 0.9.23:
+  Bugfix only update, see changelog at
+    http://pulseaudio.org/milestone/0.9.23
+- Suppress too verbose error message at socket connection failure
+  from a client; this is annoying when alsa-plugins-pulse fallback
+  is used (forwarded request 77429 from tiwai)</comment>
+    <requestid>77448</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>5b9907390f5f10225dccc58ece4fac04</srcmd5>
+    <version>0.99.2</version>
+    <time>1314621625</time>
+    <user>saschpe</user>
+    <comment>Update to 0.99.2 (forwarded request 79818 from dimstar)</comment>
+    <requestid>79827</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ee6885296205b7125a2181c269b964d9</srcmd5>
+    <version>1.0</version>
+    <time>1317212758</time>
+    <user>saschpe</user>
+    <comment>Update to 1.0 (forwarded request 85215 from dimstar)</comment>
+    <requestid>85255</requestid>
+  </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>ee6885296205b7125a2181c269b964d9</srcmd5>
+    <version>1.0</version>
+    <time>1319182374</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>4ee7dabb28eaff7c11e277a779c4ec2f</srcmd5>
+    <version>1.1</version>
+    <time>1319554904</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.1:
+  + Reintroduce a 3 point version string in various API calls,
+    fixing PulseAudio with Skype.
+  + Fix some linking errors that accidentally linked libpulse to
+    libpulsecore which could under some circumstance &quot;downgrade&quot;
+    libpulse to GPL (rather than LGPL) which could in turn cause
+    problems with non-GPL compatible apps which link to libpulse.
+  + Fix a problem where starting PA without X11 would fail due to
+    dbus problems.
+
+- Made descriptions consistent
+- Added %suse_update_desktop_file for pulseaudio-kde
+  (fix for RPMLINT warning)
+- Added check for duplicate files (fix for RPMLINT warning)
+- Cleaned up spec file formatting with spec-cleaner</comment>
+    <requestid>88932</requestid>
+  </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>7cd48fe2a0539e755c175d08c0e305dd</srcmd5>
+    <version>1.1</version>
+    <time>1323194033</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>2ea9cb61518d025c4c6038b08f0e1c39</srcmd5>
+    <version>1.1</version>
+    <time>1325007496</time>
+    <user>coolo</user>
+    <comment>- Fix wrong size argument in memset call (forwarded request 98300 from namtrac)</comment>
+    <requestid>98301</requestid>
+  </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>913da894b420147b79b20ad1b0c8dab1</srcmd5>
+    <version>1.1</version>
+    <time>1326962654</time>
+    <user>coolo</user>
+    <comment>- Remove libatomic-ops-devel buildrequires since it has been
+  dropped from Factory (for x86/x86-64 it wasn't being used
+  anyway)</comment>
+    <requestid>100111</requestid>
+  </revision>
+  <revision rev="86" vrev="5">
+    <srcmd5>77ba8cdfbc7d06cad4902d5c59ea0a9c</srcmd5>
+    <version>1.1</version>
+    <time>1331538845</time>
+    <user>coolo</user>
+    <comment>- add pulseaudio-remove_broken_assert.patch to remove a broken assert that
+  makes pulseaudio crash when playing audio from Firefox when having to
+  resample, especially in combination with the jack sink
+- add libcap-devel build dependency for capabilities support
+- add fftw3-devel build dependency for builtin equalizer support
+- add orc build dependency for better performance</comment>
+    <requestid>108664</requestid>
+  </revision>
+  <revision rev="87" vrev="7">
+    <srcmd5>77ba8cdfbc7d06cad4902d5c59ea0a9c</srcmd5>
+    <version>1.1</version>
+    <time>1340184023</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>d3fef65064d3a764a81979d06bdea079</srcmd5>
+    <version>2.0</version>
+    <time>1340627006</time>
+    <user>coolo</user>
+    <comment>- Add kmix setup to setup-pulseaudio script (forwarded request 125323 from tiwai)</comment>
+    <requestid>125327</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>937328fbb5e902a38515576022c63739</srcmd5>
+    <version>2.1</version>
+    <time>1343031318</time>
+    <user>coolo</user>
+    <comment>Update to ver 2.1 (forwarded request 128582 from Zaitor)</comment>
+    <requestid>128625</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>a4bfe06f572ace05fb05c47804a3e703</srcmd5>
+    <version>2.1</version>
+    <time>1347283433</time>
+    <user>coolo</user>
+    <comment>- Fix the broken setup by setup-pulseaudio when alsa-plugins-pulse
+  doesn't exist (bnc#779039) (forwarded request 132941 from tiwai)</comment>
+    <requestid>132943</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>ac6259884a345639bd9bd18538349470</srcmd5>
+    <version>2.1</version>
+    <time>1351155587</time>
+    <user>namtrac</user>
+    <comment>buildrequire systemd through pkgconfig provides to remove cycle (forwarded request 138921 from fcrozat)</comment>
+    <requestid>139063</requestid>
+  </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>2789cc3334cb53040d7fd441fb9a7653</srcmd5>
+    <version>2.1</version>
+    <time>1352094424</time>
+    <user>coolo</user>
+    <comment>- Place udev rules in the proper place (forwarded request 140061 from elvigia)</comment>
+    <requestid>140070</requestid>
+  </revision>
+  <revision rev="93" vrev="5">
+    <srcmd5>5c90b3dd8440d29480b364d283bc2964</srcmd5>
+    <version>2.1</version>
+    <time>1353133630</time>
+    <user>coolo</user>
+    <comment>- Enable systemd integration (following the distribution):
+  + Add systemd-devel BuildRequires.
+  + Pass --enable-systemd to configure.</comment>
+    <requestid>141430</requestid>
+  </revision>
+  <revision rev="94" vrev="6">
+    <srcmd5>ddbbe80febac78d78fd091b5474270e4</srcmd5>
+    <version>2.1</version>
+    <time>1353267028</time>
+    <user>namtrac</user>
+    <comment>- disable all HAL compat/support since it is long gone. (forwarded request 141608 from elvigia)</comment>
+    <requestid>141690</requestid>
+  </revision>
+  <revision rev="95" vrev="7">
+    <srcmd5>73c72ad592cbb510dc4863a806daff16</srcmd5>
+    <version>2.1</version>
+    <time>1354116479</time>
+    <user>coolo</user>
+    <comment>- Add the audio setup for qemu/kvm to setup-pulseaudio script
+  (bnc#737070) (forwarded request 143255 from tiwai)</comment>
+    <requestid>143354</requestid>
+  </revision>
+  <revision rev="96" vrev="9">
+    <srcmd5>73c72ad592cbb510dc4863a806daff16</srcmd5>
+    <version>2.1</version>
+    <time>1359109965</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>bd601b985396b76d80ce87b2f141b001</srcmd5>
+    <version>3.0</version>
+    <time>1360062834</time>
+    <user>coolo</user>
+    <comment>Pulseaudio 3.0</comment>
+    <requestid>149974</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>828df96c17c741c0e783907e39c67cbb</srcmd5>
+    <version>3.0</version>
+    <time>1362983162</time>
+    <user>coolo</user>
+    <comment>- remove fno-strict-aliasing from CFLAGS
+- do not export SUSE_ASNEEDED=0, problem already fixed. (forwarded request 157325 from elvigia)</comment>
+    <requestid>158006</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>833be281f81c87eb159e2aad17010b05</srcmd5>
+    <version>3.0</version>
+    <time>1366954974</time>
+    <user>coolo</user>
+    <comment>- explicitely disable building NEON for armv5/6 (forwarded request 173395 from dirkmueller)</comment>
+    <requestid>173397</requestid>
+  </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>3e47e8e1b4179809e264ea014e129617</srcmd5>
+    <version>4.0</version>
+    <time>1370430505</time>
+    <user>coolo</user>
+    <comment>update to PA 4.0
+
+- some patches obsoleted
+- build requirements updated according to PA release notes
+- tested on Tumbleweed and 12.3 since RC1 (forwarded request 177334 from oholecek)</comment>
+    <requestid>177609</requestid>
+  </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>5ce370f5eb44c47c768509fbe651f6f7</srcmd5>
+    <version>4.0</version>
+    <time>1371562369</time>
+    <user>coolo</user>
+    <comment>- require the same liborc version which was used to build against
+-- fix crash on missing symbol when user adds multimedia:libs repo to standard openSUSE 12.3 installation (forwarded request 178939 from oholecek)</comment>
+    <requestid>178940</requestid>
+  </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>ef51e15cd8feb4bb74bf7f8c54177916</srcmd5>
+    <version>4.0</version>
+    <time>1372509025</time>
+    <user>coolo</user>
+    <comment>- add SUSEfirewall service definition (bnc#607614) (forwarded request 180826 from oholecek)</comment>
+    <requestid>181226</requestid>
+  </revision>
+  <revision rev="103" vrev="4">
+    <srcmd5>2530f46034f6f515c83cf9b448a20253</srcmd5>
+    <version>4.0</version>
+    <time>1377090574</time>
+    <user>scarabeus_factory</user>
+    <comment>- Fix fdupes call on doxygen/html: use hardlinks instead of
+  softlinks (bnc#835683). (forwarded request 195796 from dimstar)</comment>
+    <requestid>195806</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>b0ad303258cc61be702aba4d6d976d96</srcmd5>
+    <version>4.0+git</version>
+    <time>1379315981</time>
+    <user>coolo</user>
+    <comment>- Update to git snapshot (rev: gbf9b3)/ bluez5 branch.
+  Note: this is not HEAD of the bluez5 branch, as in local tests,
+  this did fail to load the bluetooth modules. (forwarded request 197820 from dimstar)</comment>
+    <requestid>197980</requestid>
+  </revision>
+  <revision rev="105" vrev="5">
+    <srcmd5>f881b8dcd9198aaf9f947a96f8e347af</srcmd5>
+    <version>4.0</version>
+    <time>1379426979</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:pulseaudio revision:103</comment>
+  </revision>
+  <revision rev="106" vrev="7">
+    <srcmd5>f881b8dcd9198aaf9f947a96f8e347af</srcmd5>
+    <version>4.0</version>
+    <time>1379664086</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>bfc4170bfbf0fd0b44fc5ea841ae13e2</srcmd5>
+    <version>4.0+git</version>
+    <time>1380475695</time>
+    <user>coolo</user>
+    <comment>- bnc#840845: Update to git master (PA 5.0 on the way) (6f94c).
+  + Various code cleanups for inclusion of bluez5 stack.
+- No longer pass --enable-bluez5 --disable-bluez4 to configure:
+  master only speaks bluez5. (forwarded request 201099 from dimstar)</comment>
+    <requestid>201139</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>e0b757ce856324d00b2e5e35e604d4f4</srcmd5>
+    <version>4.0.git.265.g35fe</version>
+    <time>1381229536</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to git mastere (PA 5.0 on the way) (265-g35fe):
+  + The more extensive bluez5 branch was merged
+  + PA allows to build bluez4 and bluez5 modules in parallel.
+    Note: this does not mean that bluez4 and bluez5 can co-exist,
+    only that PA can decide at runtime which bluez-daemon is
+    available.
+- Pass --disable-bluez4 to configure: we know that we run bluez5.
+
+WANTED for 13.1 - Part of the BLUEZ5 stack (forwarded request 202417 from dimstar)</comment>
+    <requestid>202454</requestid>
+  </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>114b550dab57ad380407a02b9c6de263</srcmd5>
+    <version>4.0.git.265.g35fe</version>
+    <time>1381474929</time>
+    <user>scarabeus_factory</user>
+    <comment>- support for system wide mode (separate subpackage with service) (forwarded request 198642 from -miska-)</comment>
+    <requestid>202901</requestid>
+  </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>39ce5277a728b50ad94d89147c5718b5</srcmd5>
+    <version>4.0.git.270.g9490a</version>
+    <time>1382259214</time>
+    <user>scarabeus_factory</user>
+    <comment>Bugfixing... also for 13.1
+
+- Update to git master (PA 5.0) (4.0-270-g9490a):
+  + alsa: fix crash when loading bare alsa sink (bnc#846532).
+  + sndfile-util: fir format for 24bit depth wav files.
+  + bluetooth: track discovery modules by index.
+  + build system fixes. (forwarded request 203833 from dimstar)</comment>
+    <requestid>204000</requestid>
+  </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>240fc0bf58af36e69cac0fce56ca8819</srcmd5>
+    <version>4.0.git.270.g9490a</version>
+    <time>1382616706</time>
+    <user>scarabeus_factory</user>
+    <comment>- enable bluez4 support for older openSUSE releases (forwarded request 204426 from oholecek)</comment>
+    <requestid>204444</requestid>
+  </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>8fa9a4dda14ba027aa45a4cc40f7b595</srcmd5>
+    <version>4.0.git.270.g9490a</version>
+    <time>1385442792</time>
+    <user>coolo</user>
+    <comment>- pulseaudio-introspect-Fix-ABI-break.patch:
+  Fix the incompatible size of pa_card_profile_info that leads to
+  a crash of pavucontrol (bnc#851872) (forwarded request 208261 from tiwai)</comment>
+    <requestid>208299</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>53706efeed20902bae108ae737a0ae51</srcmd5>
+    <version>4.99.2</version>
+    <time>1390919904</time>
+    <user>coolo</user>
+    <comment>- Update to version 5.0 RC2 (4.99.2):
+  + This is finally an officially released tarball on the road to
+    pulseaudio 5.0.
+- Drop pulseaudio-introspect-Fix-ABI-break.patch: fixed upstream.
+- Bump drvver to 4.99, following upstream.
+- Pass --disable-orc to configure in order to avoid build failures
+  due to orc files missing from the tarball.
+- Drop call to autogen.sh: no longer required, as we are building a
+  bootstrapped tarball. (forwarded request 214986 from dimstar)</comment>
+    <requestid>215023</requestid>
+  </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>f9f67bfdff26d8995ee39055053b72ea</srcmd5>
+    <version>4.99.3</version>
+    <time>1391165098</time>
+    <user>coolo</user>
+    <comment>- update to version 5.0 RC3 (4.99.3)
+- reenable orc (forwarded request 215605 from oholecek)</comment>
+    <requestid>215628</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>662ddfe2b9f1f8a86690d8260ac983ef</srcmd5>
+    <version>4.99.4</version>
+    <time>1393342883</time>
+    <user>scarabeus_factory</user>
+    <comment>- Update to version 4.99.4:
+  + sink-input, source-output: Don't crash if format negotiation
+    fails.
+  + man:
+    - pulse-cli-syntax: Document the &quot;journal&quot; log target.
+    - Improve man page and help for cmdline options.
+  + dbus: Use correct idxset when getting sources.
+  + source: Increase max outputs per source
+  + protocol-native: Fix a crash
+  + thread-win32: Implement pa_thread_free_nojoin()
+  + Updated translations.
+- Add pulseaudio-revert-protocol-native.patch: Don't enumerate
+  unlinked sinks and sources&quot;. (forwarded request 223580 from Zaitor)</comment>
+    <requestid>223736</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>5041168d8f6e69d037d657df35a69db2</srcmd5>
+    <version>4.99.4</version>
+    <time>1393605990</time>
+    <user>coolo</user>
+    <comment>relax the bluez dependency of pulseaudio-module-bluetooth (forwarded request 223937 from seife)</comment>
+    <requestid>223951</requestid>
+  </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>72d6a485d7a915450034e3b7361bfef6</srcmd5>
+    <version>5.0</version>
+    <time>1394030193</time>
+    <user>scarabeus_factory</user>
+    <comment>update to final PA 5.0 (forwarded request 224544 from oholecek)</comment>
+    <requestid>224588</requestid>
+  </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>a10a1dfa26f65bc583efa6492900dd33</srcmd5>
+    <version>5.0</version>
+    <time>1395610180</time>
+    <user>scarabeus_factory</user>
+    <comment>-  build: do not depend on tcpd-devel which is unmaintained
+- pulseaudio.service: Use the new journal log target. (forwarded request 226905 from elvigia)</comment>
+    <requestid>226941</requestid>
+  </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>abfbefc95419cb26ef93bd0f2ab3033c</srcmd5>
+    <version>5.0</version>
+    <time>1408089335</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244666</requestid>
+  </revision>
+  <revision rev="120" vrev="5">
+    <srcmd5>abfbefc95419cb26ef93bd0f2ab3033c</srcmd5>
+    <version>5.0</version>
+    <time>1409302766</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="121" vrev="6">
+    <srcmd5>42db4d38402663092ad606c50c9f03c3</srcmd5>
+    <version>5.0</version>
+    <time>1410981813</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>249524</requestid>
+  </revision>
+  <revision rev="122" vrev="7">
+    <srcmd5>baa4169caace4505a6f72fc98202599b</srcmd5>
+    <version>5.0</version>
+    <time>1414218751</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257729</requestid>
+  </revision>
+  <revision rev="123" vrev="8">
+    <srcmd5>590e0f66520c81bb221ae35ac7a7dd08</srcmd5>
+    <version>5.0</version>
+    <time>1415288995</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>259817</requestid>
+  </revision>
+  <revision rev="124" vrev="9">
+    <srcmd5>f89e26ae9481af942596feefaeff919c</srcmd5>
+    <version>5.0</version>
+    <time>1416823999</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert yet another one due to still lost headphone handling
+  (bnc#905418):
+  alsa-mixer-recognize-Dock-headphone-jack.patch (forwarded request 262529 from tiwai)</comment>
+    <requestid>262530</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>7e6c480b186bf47ee3f1299df46ec2c7</srcmd5>
+    <version>5.99.3</version>
+    <time>1422026385</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>282361</requestid>
+  </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>dd5bc4e46ae45779d218307b386ad6ce</srcmd5>
+    <version>6.0</version>
+    <time>1424255874</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>286229</requestid>
+  </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>f4ea94ddbbf6678a35787ea2f51c1ae2</srcmd5>
+    <version>6.0</version>
+    <time>1428790098</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294912</requestid>
+  </revision>
+  <revision rev="128" vrev="3">
+    <srcmd5>d174cf871640eece0609c30510476125</srcmd5>
+    <version>6.0</version>
+    <time>1435170399</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312213</requestid>
+  </revision>
+  <revision rev="129" vrev="4">
+    <srcmd5>0aa58abdf57366c74e18404891a2d2c3</srcmd5>
+    <version>6.0</version>
+    <time>1437803030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>318189</requestid>
+  </revision>
+  <revision rev="130" vrev="5">
+    <srcmd5>6710f869fee663aa57d4d53dec12ee53</srcmd5>
+    <version>6.0</version>
+    <time>1440135339</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319726</requestid>
+  </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>cdbb7bbb67335e3c2dd7b15459a04f57</srcmd5>
+    <version>7.0</version>
+    <time>1443896940</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>333441</requestid>
+  </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>4b4b98d71150df36b8e0c1232b7b2163</srcmd5>
+    <version>7.0</version>
+    <time>1445287706</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>339365</requestid>
+  </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>e3d1302874d65968b8d3217a64325213</srcmd5>
+    <version>7.0</version>
+    <time>1445782250</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>340198</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>bb38d5c270da5cdee62186ea554b2a9b</srcmd5>
+    <version>7.1</version>
+    <time>1446765047</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342216</requestid>
+  </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>608d0e406f1119cff1c5a414876a6b35</srcmd5>
+    <version>8.0</version>
+    <time>1453997901</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>355356</requestid>
+  </revision>
+  <revision rev="136" vrev="2">
+    <srcmd5>f14b7ba9405c708a886d2eff2489eb82</srcmd5>
+    <version>8.0</version>
+    <time>1456622800</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>361220</requestid>
+  </revision>
+  <revision rev="137" vrev="3">
+    <srcmd5>acbb3e6410a36c10b0a2d2dbc95afac4</srcmd5>
+    <version>8.0</version>
+    <time>1459237965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>377565</requestid>
+  </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>49589d19e1ced6f3fae9c1c0bf4fdafe</srcmd5>
+    <version>8.0</version>
+    <time>1462051669</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>390290</requestid>
+  </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>8c72688c4d76b898d4c3739167e38619</srcmd5>
+    <version>9.0</version>
+    <time>1467359719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404796</requestid>
+  </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>23f49262f8b0c51aede6eac5b463864a</srcmd5>
+    <version>9.0</version>
+    <time>1473241398</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424811</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>115c54a96609f576bd43ac7030426c8e</srcmd5>
+    <version>9.99.1</version>
+    <time>1484132055</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>449297</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>7d74d49701b49f0f1cc5919eb9d9e71a</srcmd5>
+    <version>10.0</version>
+    <time>1485379935</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>451461</requestid>
+  </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>48767b56cd6eb713f9fe648ae307cd0d</srcmd5>
+    <version>10.0</version>
+    <time>1490220203</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>480783</requestid>
+  </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>9df2a19a6ef55da677e277e2f75ed5c3</srcmd5>
+    <version>10.99.1</version>
+    <time>1502011897</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>512920</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>ac1d7a5ea00790815ad4e29bfd888bef</srcmd5>
+    <version>11.0</version>
+    <time>1504896027</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521547</requestid>
+  </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>5e7e0f8794b5523e43bd2942c59b33e4</srcmd5>
+    <version>11.1</version>
+    <time>1505989677</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>527284</requestid>
+  </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>092dd303d8b327646c7aeffce6924854</srcmd5>
+    <version>11.1</version>
+    <time>1512042008</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>545044</requestid>
+  </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>b76068e5f0be7fc015cee1dac9c144fe</srcmd5>
+    <version>11.1</version>
+    <time>1518950238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576994</requestid>
+  </revision>
+  <revision rev="149" vrev="4">
+    <srcmd5>4f54ee969d997f5004a2ac49da7d6deb</srcmd5>
+    <version>11.1</version>
+    <time>1520160800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>581684</requestid>
+  </revision>
+  <revision rev="150" vrev="5">
+    <srcmd5>374eff4b4ae54309f9215eee5a057b1b</srcmd5>
+    <version>11.1</version>
+    <time>1520502971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583453</requestid>
+  </revision>
+  <revision rev="151" vrev="6">
+    <srcmd5>4cbe27a441d9d00c3f3504ecf2c63f00</srcmd5>
+    <version>11.1</version>
+    <time>1524400522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>598543</requestid>
+  </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>a27ee7ba9462e0e43743f314cc470a49</srcmd5>
+    <version>11.99.1</version>
+    <time>1526737293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>607630</requestid>
+  </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>c38c040496c9f1056ed75448ddfee02e</srcmd5>
+    <version>11.99.1</version>
+    <time>1529066178</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>616861</requestid>
+  </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>1926d8e13078ec88309bff26b7970e6c</srcmd5>
+    <version>11.99.1</version>
+    <time>1529500894</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617690</requestid>
+  </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>9a62987ec5761c5617c8b41838fbac20</srcmd5>
+    <version>12.0</version>
+    <time>1529919229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>618257</requestid>
+  </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>6e638699d27b872747b2cccf21abd314</srcmd5>
+    <version>12.2</version>
+    <time>1532527565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623452</requestid>
+  </revision>
+  <revision rev="157" vrev="2">
+    <srcmd5>e10939088a731cfe6d10998ec20a12f4</srcmd5>
+    <version>12.2</version>
+    <time>1542749331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>650126</requestid>
+  </revision>
+  <revision rev="158" vrev="3">
+    <srcmd5>6099972c145a1be95d9d2d82db43b4d6</srcmd5>
+    <version>12.2</version>
+    <time>1555488331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689137</requestid>
+  </revision>
+  <revision rev="159" vrev="4">
+    <srcmd5>5db2067492be164e0e59b1fffc66bae5</srcmd5>
+    <version>12.2</version>
+    <time>1556022826</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>696463</requestid>
+  </revision>
+  <revision rev="160" vrev="5">
+    <srcmd5>f912fa9520e88963504a3a3a4f623f58</srcmd5>
+    <version>12.2</version>
+    <time>1556474341</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698173</requestid>
+  </revision>
+  <revision rev="161" vrev="6">
+    <srcmd5>acacc3bb3cb4649b42cd6b74797b2582</srcmd5>
+    <version>12.2</version>
+    <time>1561405783</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709906</requestid>
+  </revision>
+  <revision rev="162" vrev="7">
+    <srcmd5>34b8bc774782d3756c1cccb02734ec18</srcmd5>
+    <version>12.2</version>
+    <time>1563259094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714703</requestid>
+  </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>4bb263a0ff8602908a07bd9902eb1277</srcmd5>
+    <version>13.0</version>
+    <time>1569079630</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>731255</requestid>
+  </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>a46007bfe0a381ff068bb72db1692eef</srcmd5>
+    <version>13.0</version>
+    <time>1570701038</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>736452</requestid>
+  </revision>
+  <revision rev="165" vrev="3">
+    <srcmd5>edbb2b3064b4aa10c3f0483d43df6ffe</srcmd5>
+    <version>13.0</version>
+    <time>1577972403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>758496</requestid>
+  </revision>
+  <revision rev="166" vrev="4">
+    <srcmd5>481b7995f78271df121e8fb0ef8b19cf</srcmd5>
+    <version>13.0</version>
+    <time>1581278505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>769523</requestid>
+  </revision>
+  <revision rev="167" vrev="5">
+    <srcmd5>03b33e6f73ca7d6fa5859c730ebe255d</srcmd5>
+    <version>13.0</version>
+    <time>1582299633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774846</requestid>
+  </revision>
+  <revision rev="168" vrev="6">
+    <srcmd5>39cec9d29b563556dc1b1138d0476efe</srcmd5>
+    <version>13.0</version>
+    <time>1586112566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>791097</requestid>
+  </revision>
+  <revision rev="169" vrev="7">
+    <srcmd5>e866b752387d72aeec833d84b9847db3</srcmd5>
+    <version>13.0</version>
+    <time>1591101200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>809156</requestid>
+  </revision>
+  <revision rev="170" vrev="8">
+    <srcmd5>22c24ceeabb3b37094ee1fac3c5ed951</srcmd5>
+    <version>13.0</version>
+    <time>1591879547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812894</requestid>
+  </revision>
+  <revision rev="171" vrev="9">
+    <srcmd5>3ebed38560b3847205b944146eb6bf5f</srcmd5>
+    <version>13.0</version>
+    <time>1593378346</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817267</requestid>
+  </revision>
+</revisionlist>

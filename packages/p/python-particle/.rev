@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5cf416e9a1b20f4e024e8c88a70f7489</srcmd5>
+    <version>0.10.0</version>
+    <time>1597306646</time>
+    <user>dimstar_suse</user>
+    <comment>Particle provides a pythonic interface to the Particle Data Group (PDG) particle data tables and particle identification codes.</comment>
+    <requestid>825365</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cbbda16095c87ea82045da8e89791d27</srcmd5>
+    <version>0.13.0</version>
+    <time>1604412979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>845475</requestid>
+  </revision>
+</revisionlist>

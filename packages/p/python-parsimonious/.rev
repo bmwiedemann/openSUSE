@@ -1,0 +1,20 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>59a5a215c50cf884147c7df921f6a26e</srcmd5>
+    <version>0.8.1</version>
+    <time>1586869793</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>792932</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>00808d7e6d30a58cf6179e7fc5b46ea3</srcmd5>
+    <version>0.8.1</version>
+    <time>1587467546</time>
+    <user>dimstar_suse</user>
+    <comment>- Add replace-nose.patch which replaces use of nose with the
+  standard library (gh#erikrose/parsimonious#160)
+- Switch from using nose runner to pytest</comment>
+    <requestid>795886</requestid>
+  </revision>
+</revisionlist>

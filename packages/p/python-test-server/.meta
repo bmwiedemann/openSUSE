@@ -1,0 +1,5 @@
+<package name="python-test-server" project="openSUSE:Factory">
+  <title>python-test-server</title>
+  <description>Server to test HTTP clients</description>
+  <devel project="devel:languages:python" package="python-test-server"/>
+</package>

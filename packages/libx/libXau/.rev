@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ab13a3ade2ba3a5ae366abb83a973297</srcmd5>
+    <version>1.0.6</version>
+    <time>1329476542</time>
+    <user>coolo</user>
+    <comment>- Rename xorg-x11-libXau to libXau and utilize shlib policy</comment>
+    <requestid>105445</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4661569663f071707e32fbc9e8b907cf</srcmd5>
+    <version>1.0.7</version>
+    <time>1336471033</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115347</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4661569663f071707e32fbc9e8b907cf</srcmd5>
+    <version>1.0.7</version>
+    <time>1340183554</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4661569663f071707e32fbc9e8b907cf</srcmd5>
+    <version>1.0.7</version>
+    <time>1359109230</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>e816fd582c98fac327248b1647b7c8f5</srcmd5>
+    <version>1.0.7</version>
+    <time>1363949590</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>160083</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>12089f34fce50040d697a01bfbd52cf3</srcmd5>
+    <version>1.0.8</version>
+    <time>1370426150</time>
+    <user>coolo</user>
+    <comment>update to version 1.0.8 (forwarded request 176969 from tobijk)</comment>
+    <requestid>177053</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>12089f34fce50040d697a01bfbd52cf3</srcmd5>
+    <version>1.0.8</version>
+    <time>1379662878</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e63b97e15419a6b58aba13d86c2703b5</srcmd5>
+    <version>1.0.8</version>
+    <time>1380557521</time>
+    <user>scarabeus_factory</user>
+    <comment>- U_0001-XauFileName-reset-bsize-when-malloc-failed.patch/
+  U_0002-XauFileName-always-go-through-buf-allocation-if-buf-.patch
+  * fixes regression in libXau 1.0.8, which resulted in a crash in
+    Mozilla (bnc#831620,fdo#69929)</comment>
+    <requestid>201452</requestid>
+  </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>e63b97e15419a6b58aba13d86c2703b5</srcmd5>
+    <version>1.0.8</version>
+    <time>1409301482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>418a65d7934cb347a54fac4b0ff8b0d8</srcmd5>
+    <version>1.0.9</version>
+    <time>1551023928</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.0.9:
+  * Update configure.ac bug URL for gitlab migration
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * XauFileName: always go through buf allocation if buf is NULL
+  * XauFileName: reset bsize when malloc failed
+  * AuDispose.c:remove redundant null check on calling free()
+  * AuFileName.c: remove redundant null check on calling free()
+  * AuRead.c: remove redundant null check on calling free()
+  * Avoid out of boundary read access
+- supersedes U_0001-XauFileName-reset-bsize-when-malloc-failed.patch,
+  U_0002-XauFileName-always-go-through-buf-allocation-if-buf-.patch</comment>
+    <requestid>673353</requestid>
+  </revision>
+</revisionlist>

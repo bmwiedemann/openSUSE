@@ -1,0 +1,285 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>70e62d045b90b12ca3e3fba5beeadef5</srcmd5>
+    <version>2.3.0</version>
+    <time>1440658511</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>321239</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>df787b9f9ec0095b36ccdb5de067682d</srcmd5>
+    <version>2.5.0</version>
+    <time>1440871503</time>
+    <user>coolo</user>
+    <comment>- update to 2.5.0:
+  * Updated from global requirements
+  * Updated from global requirements
+  * Use oslo_utils reflection to get 'f' callable name
+  * flake8 - remove unused rules
+  * Imported Translations from Transifex
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>327702</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cbeba19269d44e7951a948d053925e7d</srcmd5>
+    <version>2.6.0</version>
+    <time>1446208949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Removes unused posix-ipc requirement
+  * Updated from global requirements
+- Adjust Requires according to requirements.txt</comment>
+    <requestid>337157</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a66f63a5c69bbe223d8e08d5ca86042</srcmd5>
+    <version>3.7.0</version>
+    <time>1462342803</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.0:
+  * Updated from global requirements
+  * Update .gitreview for stable/mitaka
+- Adjust Requires
+
+- Add python-enum34 as BuildRequires to fix tests
+
+- update to 3.6.0:
+  * Updated from global requirements
+  * Update translation setup
+  * Add prlimit parameter to execute()
+  * Imported Translations from Zanata
+  * Remove unnecessary package in setup.cfg
+
+- update to 3.2.0:
+  * Updated from global requirements
+  * Trival: Remove 'MANIFEST.in'
+  * Add complementary remove lock with prefix function
+  * Drop python 2.6 support
+  * Updated from global requirements
+  * Remove python 2.6 classifier
+  * Use versionadded and versionchanged in doc
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * Fix Tests to run under OSX
+  * Fix coverage configuration and execution
+  * Imported Translations from Zanata
+  * Move 'history' -&gt; release notes section
+  * add auto-generated docs for config options
+  * Change ignore-errors to ignore_errors</comment>
+    <requestid>392938</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>87b5566764471947d95d1e5462bff274</srcmd5>
+    <version>3.14.0</version>
+    <time>1475242520</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.14.0
+  * Fix external lock tests on Windows
+  * Updated from global requirements
+
+- update to version 3.13.0
+  * Add Python 3.5 classifier and venv
+  * Imported Translations from Zanata
+  * Fix parameters of assertEqual are misplaced
+  * Updated from global requirements
+  * Add reno for releasenotes management
+
+- update to 3.9.0:
+  * Add doc/ to pep8 check
+  * Remove unused import statement
+  * Add timeout option to ssh_execute
+  * Fix wrong import example in docstring
+  * Trivial: ignore openstack/common in flake8 exclude list
+  * Updated from global requirements
+  * Imported Translations from Zanata
+  * processutils: add support for missing process limits
+  * Remove direct dependency on babel
+  * Updated from global requirements
+  * Updated from global requirements
+  * Updated from global requirements
+  * Add a few usage examples for lockutils
+  * Revert &quot;Use tempfile.tempdir for lock_path if OSLO_LOCK_PATH is not set&quot;
+  * Updated from global requirements
+  * Use tempfile.tempdir for lock_path if OSLO_LOCK_PATH is not set
+
+- use renderspec source service</comment>
+    <requestid>431484</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>66bda2eaedee788fdf093977d5786d52</srcmd5>
+    <version>3.14.0</version>
+    <time>1476350950</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to stable/newton</comment>
+    <requestid>433110</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>294efe145152e8f8d2f7c5fa5985b265</srcmd5>
+    <version>3.18.0</version>
+    <time>1487680917</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.18.0:
+  - [TrivialFix] Replace 'assertTrue(a in b)' with 'assertIn(a, b)'
+  - Update reno for stable/newton
+  - Automatically convert process_input to bytes
+  - Imported Translations from Zanata
+  - Change assertTrue(isinstance()) by optimal assert
+  - Updated from global requirements
+  - Add Constraints support
+  - Remove unnecessary requirements
+  - Show team and repo badges on README
+  - Changed the home-page link
+  - Enable release notes translation
+  - Ignore prlimit argument on Windows</comment>
+    <requestid>456656</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d665153ff3d1195becad4f5e850ab87d</srcmd5>
+    <version>3.21.0</version>
+    <time>1503927083</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.21.0
+  - Imported Translations from Zanata
+  - Remove log translations
+  - turn on warning-is-error for sphinx
+  - Check reStructuredText documents for common style issues
+  - Using fixtures.MockPatch instead of mockpatch.Patch
+  - [Fix gate]Update test requirement
+  - Update URLs in documents according to document migration
+  - Remove support for py34
+  - rearrange existing documentation to follow the new layout standard
+  - pbr.version.VersionInfo needs package name (oslo.xyz and not oslo_xyz)
+  - Update reno for stable/ocata
+  - Check for SubprocessError by name on Python 3.x
+  - Updated from global requirements
+  - switch from oslosphinx to openstackdocstheme</comment>
+    <requestid>514990</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9c7a50da408b8ba58714fec8d2751b9</srcmd5>
+    <version>3.24.0</version>
+    <time>1516222707</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.24.0
+  - Imported Translations from Zanata
+  - Remove setting of version/release from releasenotes
+  - Remove -U from pip install
+  - Updated from global requirements
+  - Avoid tox_install.sh for constraints support
+
+- update to version 3.23.0
+  - Add debug log to indicate when external lock is taken
+  - Update reno for stable/pike
+  - Minor correction to docstrings
+  - Windows: ensure exec calls don't block other greenthreads
+  - Updated from global requirements
+
+- update to version 3.21.1
+  - Update .gitreview for stable/pike
+  - Windows: ensure exec calls don't block other greenthreads
+  - Updated from global requirements
+  - Update UPPER_CONSTRAINTS_FILE for stable/pike</comment>
+    <requestid>566504</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2e26225a990aa69248b5907f86b66f36</srcmd5>
+    <version>3.25.0</version>
+    <time>1518601900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.25.0
+  - Add python_exec kwarg to processutils.execute()
+  - Updated from global requirements
+  - add bandit to pep8 job</comment>
+    <requestid>576276</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9086c6b06d3ef65233ab049676f8c955</srcmd5>
+    <version>3.25.0</version>
+    <time>1521498937</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to stable/queens spec template</comment>
+    <requestid>583335</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>125f4960ab9d48099d09f7f5f5fa2928</srcmd5>
+    <version>3.27.0</version>
+    <time>1536327523</time>
+    <user>dimstar_suse</user>
+    <comment>Initial Rocky clients submission. please combine all in one staging project otherwise this will never build</comment>
+    <requestid>633096</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5a05806db2e28463195cd7387d8f6cff</srcmd5>
+    <version>3.29.1</version>
+    <time>1556916124</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.29.1
+  - Switch to stestr
+  - Imported Translations from Zanata
+  - Update mailinglist from dev to discuss
+  - Remove PyPI downloads
+  - Change python3.5 job to python3.7 job on Stein+
+  - import zuul job settings from project-config
+  - ignore warning from bandit for using shell=
+  - Always build universal wheels
+  - Update reno for stable/rocky
+  - Reorganize that 'Release Notes' in README
+  - Don't quote {posargs} in tox.ini
+  - add python 3.6 unit test job
+  - add lib-forward-testing-python3 test job
+  - Remove stale pip-missing-reqs tox test
+  - Trivial: Update pypi url to new url
+  - Add support for fair locks
+  - fix tox python3 overrides
+  - Update hacking version
+  - Clean up .gitignore references to personal tools
+  - Stop using setup.py build_sphinx
+  - Add release notes link to README
+  - add python 3.7 unit test job
+  - Use templates for cover and lower-constraints</comment>
+    <requestid>692853</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8732520141ef2cd83d0d06d48e4ad274</srcmd5>
+    <version>3.30.0</version>
+    <time>1582018839</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.30.0
+  - Update master for stable/stein
+  - Replace git.openstack.org URLs with opendev.org URLs
+  - Dropping the py35 testing
+  - Add Python 3 Train unit tests
+  - Cap Bandit below 1.6.0 and update Sphinx requirement
+  - OpenDev Migration Patch
+  - Follow the new PTI for document build</comment>
+    <requestid>774909</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>477df26f9c97f3c2c85d91afa5248412</srcmd5>
+    <version>3.30.0</version>
+    <time>1585085565</time>
+    <user>dimstar_suse</user>
+    <comment>- add obsoletes
+
+- switch to python 3.x only builds</comment>
+    <requestid>787443</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5244b8ca5195aa70ecf038e80ed006e3</srcmd5>
+    <version>4.0.2</version>
+    <time>1591380827</time>
+    <user>dimstar_suse</user>
+    <comment>Ussuri Update</comment>
+    <requestid>803587</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>621109a88a94e30f17d088bc5434a076</srcmd5>
+    <version>4.3.0</version>
+    <time>1603725387</time>
+    <user>dimstar_suse</user>
+    <comment>switch to victoria</comment>
+    <requestid>841205</requestid>
+  </revision>
+</revisionlist>

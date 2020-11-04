@@ -1,0 +1,10 @@
+<package name="cp210x-program" project="openSUSE:Factory">
+  <title>EEPROM tool for Silabs CP210x USB-Serial adapters</title>
+  <description>The CP210x is an USB-to-serial chip used in a lot of USB devices (similar to
+FTDIs and PL2303). The CP210x has a EEPROM on the chip which can be programmed
+with this tool via USB.
+
+</description>
+  <devel project="hardware" package="cp210x-program"/>
+  <url>http://cp210x-program.sourceforge.net/</url>
+</package>

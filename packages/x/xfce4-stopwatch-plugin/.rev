@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="100">
+    <srcmd5>a7373b768d98f4551a5398ed2775fd3e</srcmd5>
+    <version>0.3.1</version>
+    <time>1566291523</time>
+    <user>dimstar_suse</user>
+    <comment>Xfce 4.14 upgrade</comment>
+    <requestid>724093</requestid>
+  </revision>
+  <revision rev="2" vrev="101">
+    <srcmd5>892d31c6e14e5e206fb26b974fa11954</srcmd5>
+    <version>0.3.1</version>
+    <time>1566665424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725812</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb371c44161093272b08918de017307e</srcmd5>
+    <version>0.4.0</version>
+    <time>1591381252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811624</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,7 @@
+<package name="php-pear-XML_Parser" project="openSUSE:Factory">
+  <title>XML parsing class based on PHP's bundled expat</title>
+  <description>This is an XML parser based on PHPs built-in xml extension.
+It supports two basic modes of operation: &quot;func&quot; and &quot;event&quot;. In &quot;func&quot; mode, it will look for a function named after each element (xmltag_ELEMENT for start tags and xmltag_ELEMENT_ for end tags), and in &quot;event&quot; mode it uses a set of generic callbacks.
+  </description>
+  <devel project="server:php:applications" package="php-pear-XML_Parser"/>
+</package>

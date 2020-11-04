@@ -1,0 +1,5 @@
+<package name="goxel" project="openSUSE:Factory">
+  <title>goxel</title>
+  <description></description>
+  <devel project="graphics" package="goxel"/>
+</package>

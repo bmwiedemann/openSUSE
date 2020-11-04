@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>95acfbe3c6f6e55df97e9d08d1f14aa3</srcmd5>
+    <version>2.1.2</version>
+    <time>1575630697</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754606</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>df37fec2b2e1ef7c086e955737637fe3</srcmd5>
+    <version>2.1.2</version>
+    <time>1575923787</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete/provide lua51-luajit as it was the old luajit name</comment>
+    <requestid>755235</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0937b3f9dc93e8e55c325392661b3b6f</srcmd5>
+    <version>2.1.2</version>
+    <time>1576676674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757694</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>34509451dee8ce2f1258eb3616a86e84</srcmd5>
+    <version>2.2.0</version>
+    <time>1584643506</time>
+    <user>dimstar_suse</user>
+    <comment>- No need to namespace luajit with update-alternatives, we really
+  want just one version of it to be provided to keep things
+  simple
+
+- Update to 2.2.0:
+  * The v2.2 release of moonjit brings many new features that bring the
+    project closer to its aim of unifying LuaJIT forks and compatibility
+    with Lua. 
+- Do not suffix the version anymore as we support all lua variants,
+  removes the patch:
+  * luajit-lua-versioned.patch</comment>
+    <requestid>784307</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>48e8ee278a17b11d556bbc264a6e307c</srcmd5>
+    <version>2.2.0</version>
+    <time>1585995503</time>
+    <user>dimstar_suse</user>
+    <comment>- Add moonjit105-string_gsub.patch to fix gsub method, which breaks
+  other packages (namely neovim). (forwarded request 789856 from mcepl)</comment>
+    <requestid>789857</requestid>
+  </revision>
+</revisionlist>

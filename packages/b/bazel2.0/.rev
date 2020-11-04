@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5652b366764b53c3053431cd6c669a45</srcmd5>
+    <version>2.0.0</version>
+    <time>1580205256</time>
+    <user>dimstar_suse</user>
+    <comment>the newest version of Bazel</comment>
+    <requestid>761595</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>707b892938b276a959436e8231f384ec</srcmd5>
+    <version>2.0.0</version>
+    <time>1580420172</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768524</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bf8e4d13b709edd9494e0b1fa0755450</srcmd5>
+    <version>2.0.0</version>
+    <time>1588866550</time>
+    <user>dimstar_suse</user>
+    <comment>- use java 11 for building on s390x</comment>
+    <requestid>800012</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,369 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2bd021182b89cd921581ef02cd3f4153</srcmd5>
+    <version>2.1.7</version>
+    <time>1317546782</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>85000</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2bd021182b89cd921581ef02cd3f4153</srcmd5>
+    <version>2.1.7</version>
+    <time>1319182404</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f65d1371cab56d2ee28573fa9301ac4</srcmd5>
+    <version>2.1.11</version>
+    <time>1329476946</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>103943</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>744d11661f64510f8ab825d87a8b78a1</srcmd5>
+    <version>2.1.11</version>
+    <time>1336423845</time>
+    <user>coolo</user>
+    <comment>Fixed typo in python3_sitearch define for 11.4, py3_ver for 11.4 and older proveded, so now it builds fine on 11.4 (forwarded request 115865 from HighwayStar)</comment>
+    <requestid>116007</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3bbf628e26dbb0c1ded1b174e6775cdb</srcmd5>
+    <version>2.1.11</version>
+    <time>1337588879</time>
+    <user>coolo</user>
+    <comment>Fix rpmlint warnings (forwarded request 121381 from TheBlackCat)</comment>
+    <requestid>121382</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>3bbf628e26dbb0c1ded1b174e6775cdb</srcmd5>
+    <version>2.1.11</version>
+    <time>1340184087</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>84b1b334a14bc02f3886726fc3a01a30</srcmd5>
+    <version>2.1.11</version>
+    <time>1354109682</time>
+    <user>coolo</user>
+    <comment>Removed openSUSE 11.4 spec file workarounds (forwarded request 142755 from TheBlackCat) (forwarded request 142786 from TheBlackCat)</comment>
+    <requestid>142800</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>84b1b334a14bc02f3886726fc3a01a30</srcmd5>
+    <version>2.1.11</version>
+    <time>1359110110</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7dca223d7aedfbb13c9ea22b04bbb96d</srcmd5>
+    <version>13.0.0</version>
+    <time>1365232633</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-3.0+ and BSD-3-Clause
+the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forwarded request 162829 from babelworx)</comment>
+    <requestid>162857</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3fd79771d16275fe3bdbce81010164fe</srcmd5>
+    <version>13.0.0</version>
+    <time>1366088133</time>
+    <user>coolo</user>
+    <comment>- Add python3 requires and buildrequires.  It will not work without them
+- Changes suggests to recommends since there is no way to install suggets currently (forwarded request 163858 from TheBlackCat)</comment>
+    <requestid>163859</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>6b7b7fa0e9e2ed91e06009f9d2126d97</srcmd5>
+    <version>13.0.0</version>
+    <time>1371649976</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>179987</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>6b7b7fa0e9e2ed91e06009f9d2126d97</srcmd5>
+    <version>13.0.0</version>
+    <time>1379664271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7491776b97d60898b50fab863d7f3614</srcmd5>
+    <version>14.0.0</version>
+    <time>1385388300</time>
+    <user>coolo</user>
+    <comment>- Update to version 14.0.0
+  + Update bundled libzmq to current (4.0.1).
+  + Backends are now implemented in ``zmq.backend`` instead of ``zmq.core``.
+    This has no effect on public APIs.
+  + Various build improvements for Cython and CFFI backends (PyPy
+    compiles at build time).
+  + Various GIL-related performance improvements - the GIL is no longer
+    touched from a zmq IO thread.
+  + Adding a constant should now be a bit easier - only zmq/sugar/constant
+   _names should need updating,
+    all other constant-related files should be automatically updated by
+    ``setup.py constants``.
+  + add support for latest libzmq-4.0.1
+    (includes ZMQ_CURVE security and socket event monitoring).
+- Changes from version 13.1.0
+  + The main new feature is improved tornado 3 compatibility.
+    PyZMQ ships a 'minitornado' submodule, which contains a small
+    subset of tornado 3.0.1,
+    in order to get the IOLoop base class.  zmq.eventloop.ioloop.IOLoop
+    is now a simple subclass, and if the system tornado is ≥ 3.0, then
+    the zmq IOLoop is a proper registered subclass of the tornado one itself,
+    and minitornado is entirely unused.
+- Changes from version 13.0.2
+  + EAGAIN was unconditionally turned into KeyboardInterrupt
+  + fix use of totally deprecated ctypes_configure to generate constants in CFFI backend
+  + fix memory leak in CFFI backend for PyPy
+  + typo prevented IPC_PATH_MAX_LEN from ever being defined
+  + various build fixes - linking with librt, Cython compatibility, etc. (forwarded request 208192 from posophe)</comment>
+    <requestid>208193</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>c9beed705fa48b64a256d39122367809</srcmd5>
+    <version>14.0.0</version>
+    <time>1392233350</time>
+    <user>coolo</user>
+    <comment>- disable testsuite for qemu-linux-user builds (forwarded request 222028 from dirkmueller)</comment>
+    <requestid>222033</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>e1769beec8b50b16020107f8bb52e248</srcmd5>
+    <version>14.0.0</version>
+    <time>1407236411</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>243448</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>e1769beec8b50b16020107f8bb52e248</srcmd5>
+    <version>14.0.0</version>
+    <time>1409302974</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>df22d0db247964ccbb2ad4a2be75e30a</srcmd5>
+    <version>14.3.1</version>
+    <time>1412252030</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>253529</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>688a314f79bc24b210fcdeebd832bd36</srcmd5>
+    <version>14.5.0</version>
+    <time>1426680415</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>291118</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70a4d9011b17b9eecb8b26785c615cc0</srcmd5>
+    <version>14.7.0</version>
+    <time>1437384118</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316898</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>a02855038827ac46d3f4bc3df5ec56fe</srcmd5>
+    <version>14.7.0</version>
+    <time>1438421893</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319236</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>c041189433346e6ca57a19d7919ce5ee</srcmd5>
+    <version>14.7.0</version>
+    <time>1442474323</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>329765</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>93e4922152d3f00b0d6f5f52f6dd6944</srcmd5>
+    <version>15.2.0</version>
+    <time>1453998257</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>356041</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6d0ccdbb4d2d515ae5608086785784bf</srcmd5>
+    <version>16.0.2</version>
+    <time>1493368967</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>489468</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>aa5a303c4aac8c6d24b0ed5d38eeeb36</srcmd5>
+    <version>16.0.2</version>
+    <time>1502562378</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>514750</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a6d87b1916540d17255e5de28bb765b5</srcmd5>
+    <version>16.0.3</version>
+    <time>1510150226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538784</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>182a291563afd0fd66a5ebc8a62b4585</srcmd5>
+    <version>16.0.4</version>
+    <time>1517824382</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>572412</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>addcda03aaf250ef0aa0200adb131b63</srcmd5>
+    <version>17.0.0</version>
+    <time>1518597884</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>575266</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>0e58847e65957c3db1b8319b171cc8d4</srcmd5>
+    <version>17.0.0</version>
+    <time>1520253429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>580798</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>74b286e3ece040a12edc0a2ab53b7a51</srcmd5>
+    <version>17.0.0</version>
+    <time>1520503139</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>583920</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>27815ad351479f4cfa29da9206a0d74a</srcmd5>
+    <version>17.1.0</version>
+    <time>1531592734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622509</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bf4ecde84876b42336bd2e9c4af0256b</srcmd5>
+    <version>17.1.2</version>
+    <time>1535440809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630382</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3bb269564d5848c7c73cea9ba1febf4b</srcmd5>
+    <version>18.0.1</version>
+    <time>1552380364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>683644</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8f7800cf3512042b95f0ab3892743864</srcmd5>
+    <version>18.0.2</version>
+    <time>1564484407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713879</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e08813ace52e034c6e4c60611c05ef74</srcmd5>
+    <version>18.1.0</version>
+    <time>1566893513</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725983</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>7bde47455b77c0baa4ce1a8467b732b8</srcmd5>
+    <version>18.1.1</version>
+    <time>1574414702</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749104</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>10d25d9d5cd5181b121b52018529f810</srcmd5>
+    <version>19.0.0</version>
+    <time>1583948559</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782792</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fe1bb496c659ef0b6a2e551416c506e3</srcmd5>
+    <version>19.0.1</version>
+    <time>1589196365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802283</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4b6384edffbed0c3982a50be58afb832</srcmd5>
+    <version>19.0.2</version>
+    <time>1596727918</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 19.0.2:
+  - Regenerate Cython sources with 0.29.21 in sdists for compatibility with Python 3.9
+  - Handle underlying socket being closed in ZMQStream with warning instead of error
+  - Improvements to socket cleanup during process teardown
+  - Fix debug-builds on Windows
+  - Avoid importing ctypes during startup on Windows
+  - Documentation improvements
+  - Raise ``AttributeError`` instead of ``ZMQError(EINVAL)`` on attempts to read write-only attributes,
+    for compatibility with mocking</comment>
+    <requestid>824350</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>5ce4d88620e156e8a7c1a9f2e3bbbb2e</srcmd5>
+    <version>19.0.2</version>
+    <time>1598351780</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826796</requestid>
+  </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>c3eb39b36b57b53d012b3bc851fa6a6a</srcmd5>
+    <version>19.0.2</version>
+    <time>1599770792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>832907</requestid>
+  </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>312d551d79c5da939d8f0b20735317fe</srcmd5>
+    <version>19.0.2</version>
+    <time>1601398752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837381</requestid>
+  </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>66ba25b4a0d9201256c015e5acc71479</srcmd5>
+    <version>19.0.2</version>
+    <time>1603961321</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843235</requestid>
+  </revision>
+</revisionlist>

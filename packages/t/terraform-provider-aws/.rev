@@ -1,0 +1,63 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9e56b752c6a5290342f6a4a4f1ff5cfb</srcmd5>
+    <version>2.59.0</version>
+    <time>1589579501</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>802659</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b0fa0ea43b8ab14badcf60a2f3235614</srcmd5>
+    <version>2.59.0</version>
+    <time>1592246026</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>814713</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f55c4b0685dc901b5193ff0f782a71e0</srcmd5>
+    <version>2.69.0</version>
+    <time>1597064800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.69.0:
+  * resource/aws_customer_gateway: Allow 4-byte ASNs (#14030)
+  * awsproviderlint: Add missing AWSR002 link and docs to add these links to README (#14034)
+  * Add hardcoded AMI ID check
+  * docs: Fix broken ec2_tag resource link in resource tagging guide (#14023)
+  * docs/resource/aws_vpc: Change instance_tenancy to default (#14026)
+  * Update CHANGELOG for #13927
+  * resource/aws_db_instance_role_association: Prevent immediate read after creation panic (#13927)
+  * Update CHANGELOG for #12005
+  * resource/aws_sfn_state_machine: Handle IAM role eventual consistency on creation + wait for delete + add `arn` attribute (#12005)
+  * Update CHANGELOG for #13012
+  * tests/resource/aws_route53_record: Add covering tests for updates involving health_check_id
+  * Update CHANGELOG for #11335
+  * tests/resource/aws_route53_record: Filter Local Zones from aws_availability_zones usage
+  * Update CHANGELOG for #13922
+  * resource/aws_spot_fleet_request: Increase default delete timeout to 15 minutes (#13922)
+  * Update CHANGELOG for #13912
+  * resource/aws_autoscaling_group: Prevent unexpected differences in `tags` for Terraform 0.11 and earlier with boolean `propagate_at_launch` values (#13912)
+  * tests/service/iam: Implement aws_iam_group and aws_iam_policy sweepers, catch additional aws_iam_role and aws_iam_user (#13901)
+  * tests/resource/aws_cloudtrail: Ensure covering test for removing of all event_selector configuration blocks
+  * awsproviderlint: Enforce kms_key_id as ARN attribute in AWSAT001 check (#13996)
+  * docs/resource/aws_cognito_user_pool_domain: terrafmt fix
+  * Added the creation of the aws_route53_record to the Custom Cognito Domain example (#10196)
+  * Update CHANGELOG for #10452
+  * tests/provider: Ensure terrafmt check runs on website updates (#13997)
+  * add misspell job
+  * Update module aws/aws-sdk-go to v1.32.12 (#13803)
+  * docs/resource/aws_cognito_user_pool: Remove &quot;it's&quot; contraction due to format error in website (#13993)
+  * docs/provider: Fix various typos (#13991)
+  * docs/service/docdb: Fix typos on aws_docdb_cluster/instance doc (#13987)</comment>
+    <requestid>825333</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5c9d328dbc0377bc1b35f3c6d0519196</srcmd5>
+    <version>3.11.0</version>
+    <time>1603204975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842616</requestid>
+  </revision>
+</revisionlist>

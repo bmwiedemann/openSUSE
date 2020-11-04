@@ -1,0 +1,57 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fa54f22ea61767ba3d4d660bab2f044f</srcmd5>
+    <version>0.11</version>
+    <time>1465481512</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submit of package to factory, dependancy for ovrit-guest-agent package.</comment>
+    <requestid>400366</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4958d34bb1c374b5bf76a2269b6ddbba</srcmd5>
+    <version>0.11</version>
+    <time>1503593108</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>514464</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6e04f01c3c13722687a7013a86babc72</srcmd5>
+    <version>0.11</version>
+    <time>1508316860</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>534451</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f34b4d40e5a6c720ce529f9edb0d4c95</srcmd5>
+    <version>0.13</version>
+    <time>1509722734</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>538142</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb58b4d5fdc5bae8a3ae1917ebb42808</srcmd5>
+    <version>0.14</version>
+    <time>1551455391</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14:
+  * Declared project as bugfix only from now on
+  * Support Python 3.7
+  * Fix important issues reported by static analysis
+  * Fix installation on non-UTF-8 locales on Python 3.5 and 3.6
+  * Added set_gso(), get_gro() and set_gro() functions
+  * Added installation instructions</comment>
+    <requestid>680454</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>564001db6a99f165f21432726a133124</srcmd5>
+    <version>0.14</version>
+    <time>1590650319</time>
+    <user>maxlin_factory</user>
+    <comment>- %python3_only -&gt; %python_alternative
+</comment>
+    <requestid>809511</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8d2201766a35fe32e012fb708567ec64</srcmd5>
+    <version>2.143.0</version>
+    <time>1602349423</time>
+    <user>dimstar_suse</user>
+    <comment>Required to run containers on a SELinux enabled system.</comment>
+    <requestid>840502</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9f669d8fe1bb9cd03f2a7fe24ed22fad</srcmd5>
+    <version>2.145.0</version>
+    <time>1603202425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>842071</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>22ede7e8f88ebc3cfc18073f8c6f3f91</srcmd5>
+    <version>2.150.0</version>
+    <time>1604306420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844834</requestid>
+  </revision>
+</revisionlist>

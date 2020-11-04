@@ -1,0 +1,523 @@
+<revisionlist>
+  <revision rev="1" vrev="8">
+    <srcmd5>80fd46f876d1b1a2b9dbecdd63af79c4</srcmd5>
+    <version>394</version>
+    <time>1166483814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="41">
+    <srcmd5>5da03b641a11a5863c8a1d162a2e3eae</srcmd5>
+    <version>394</version>
+    <time>1174952475</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8aa311d7ef3a54d64e23d0c6d6ba51aa</srcmd5>
+    <version>406</version>
+    <time>1185533764</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f2ad219c5728ef6fa2576170e5dc6b2c</srcmd5>
+    <version>406</version>
+    <time>1187369767</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="12">
+    <srcmd5>f3f69d93d8e46eae08ddbcc8508abebb</srcmd5>
+    <version>406</version>
+    <time>1189608792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35939c0b1dfc47dde9953e65cb11e2c9</srcmd5>
+    <version>409</version>
+    <time>1193846836</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a31c505017ccac14836831336ae20d2f</srcmd5>
+    <version>409</version>
+    <time>1195074626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>0754b419a01db86b03a56c0d50644c53</srcmd5>
+    <version>409</version>
+    <time>1195136388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5aed2f45ba28ff890508db772864504b</srcmd5>
+    <version>416</version>
+    <time>1198165411</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2ce8aa8107e24a3766b0e1eb55443f87</srcmd5>
+    <version>418</version>
+    <time>1203035285</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="23">
+    <srcmd5>f42353c66009afc32e7537703c0912bf</srcmd5>
+    <version>418</version>
+    <time>1216593638</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1dbddc4c81024e49e6487fc54b9a43e</srcmd5>
+    <version>424b</version>
+    <time>1219959303</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>33c04829a8419295d26ffb82683c1d63</srcmd5>
+    <version>424b</version>
+    <time>1229519936</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>70a4329321f7a0f57a8fa9fa761cc19e</srcmd5>
+    <version>429</version>
+    <time>1244238786</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>866e768218a3d78cb106ef7c45f981d8</srcmd5>
+    <version>435.9</version>
+    <time>1247275655</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e79386d1e46ce640a9f99e849909934a</srcmd5>
+    <version>436</version>
+    <time>1248728714</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b887a91386604b5c880d5d133ef2f353</srcmd5>
+    <version>436</version>
+    <time>1254530759</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/less based on submit request 21491 from user puzel
+</comment>
+  </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>b887a91386604b5c880d5d133ef2f353</srcmd5>
+    <version>436</version>
+    <time>1254530759</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/less based on submit request 21491 from user puzel
+</comment>
+  </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>693386e46020c886f872d78e61184272</srcmd5>
+    <version>436</version>
+    <time>1268924479</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>693386e46020c886f872d78e61184272</srcmd5>
+    <version>436</version>
+    <time>1278667356</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>693386e46020c886f872d78e61184272</srcmd5>
+    <version>436</version>
+    <time>1278678587</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>3954d89890588fbbae001b31979d0515</srcmd5>
+    <version>436</version>
+    <time>1279652450</time>
+    <user>autobuild</user>
+    <comment>Copy from Base:System/less based on submit request 43449 from user coolo
+</comment>
+    <requestid>43449</requestid>
+  </revision>
+  <revision rev="23" vrev="12">
+    <srcmd5>3954d89890588fbbae001b31979d0515</srcmd5>
+    <version>436</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>c1e2e5193067c67b4a23a6e9ee907137</srcmd5>
+    <version>436</version>
+    <time>1306486489</time>
+    <user>saschpe</user>
+    <comment>lessopen.sh, support xz compressed data (forwarded request 71420 from rudi_m)</comment>
+    <requestid>71524</requestid>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>a7d240b911fc2d83fcbe265748ace4d4</srcmd5>
+    <version>436</version>
+    <time>1306488638</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>45d7f525622390aa6f01d7a481be0fde</srcmd5>
+    <version>443</version>
+    <time>1306845884</time>
+    <user>saschpe</user>
+    <comment>- bump version 443
+  * Change search behavior such that when a search is given an explicit pattern,
+    the entire displayed screen is included in the search and not just the
+    portion after the target line.
+  * Add -A option to change search behavior to the old way: only the portion of
+    the screen after the target line is searched.
+  * Add %F formatting to prompt strings, replaced by the last component of the
+    input file.
+  * Control-G while editing a command exits the command.
+  * Less now exits with status 2 if control-C is pressed and -K is in effect.
+  * Fix &quot;ungetc overflow&quot; when passing long commands via the -p option.
+  * Fix bug in using line filtering via the &amp; command in combination with -i and
+    -I.
+  * Fix bug in handling negative arguments to the -j option.
+  * Fix bug in handling %t in prompt strings.
+  * Improve handling of long option names.
+  * Improve percentage calculation for very large files.
+- remove mouse patch because
+  * conflicting short opt -A since version 443, see changes above
+  * was working for xterm only so probably nobody is using it (forwarded request 71702 from rudi_m)</comment>
+    <requestid>71853</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2a21df791d60561f787eb7e090783190</srcmd5>
+    <version>444</version>
+    <time>1308299184</time>
+    <user>saschpe</user>
+    <comment>- Update to version 444
+  * Fix bug in unget handling that can cause strange effects on the command line.
+  * Remove vestiges of obsolete -l option that can cause a crash. (forwarded request 73808 from namtrac)</comment>
+    <requestid>73835</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>6b651c1b5f0e3d51fe7a04638d6b3b41</srcmd5>
+    <version>444</version>
+    <time>1308299194</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73835
+</comment>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>6b651c1b5f0e3d51fe7a04638d6b3b41</srcmd5>
+    <version>444</version>
+    <time>1319182067</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>8a0a126fbe85d702d9c58b21bc08479e</srcmd5>
+    <version>444</version>
+    <time>1320488360</time>
+    <user>coolo</user>
+    <comment>Not critical, but simple and visible - if possible, please take into 12.1. Thx.
+
+- correctly recognize xz compressed data (bnc#728033)</comment>
+    <requestid>90095</requestid>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>a994cb0ecdcb046bda6652784c8bbcf3</srcmd5>
+    <version>444</version>
+    <time>1323113602</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94457 from coolo)</comment>
+    <requestid>94521</requestid>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>b31dafa3c2eead853f75557b9f3789aa</srcmd5>
+    <version>444</version>
+    <time>1323175937</time>
+    <user>coolo</user>
+    <comment>license update: GPL-3.0+ or BSD-2-Clause
+The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). Use SPDX format (forwarded request 95473 from babelworx)</comment>
+    <requestid>95494</requestid>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>392b68fcfcf40db598ba097076fb7520</srcmd5>
+    <version>444</version>
+    <time>1323192147</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="34" vrev="10">
+    <srcmd5>392b68fcfcf40db598ba097076fb7520</srcmd5>
+    <version>444</version>
+    <time>1340183550</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>94fcc154d0ad8219664c87cc590f50be</srcmd5>
+    <version>455</version>
+    <time>1352562871</time>
+    <user>coolo</user>
+    <comment>- Update to version 455 
+  * Bugfixes in buildsystem and option parser
+
+- Update to version 453
+  * Allow backslash escaping of metacharacters in LESS environment
+    variable.
+  * Don't quit if syntax errors are found in command line options.
+  * Increase sizes of some internal buffers.
+  * Fix configure bug with --with-regex=none.
+  * Fix crash with &quot;stty rows 0&quot;.
+
+- Update to version 451
+    * Add ESC-F command to keep reading data until a pattern is
+    * found.
+    * Use exit code of LESSOPEN script if LESSOPEN starts with
+    * &quot;||&quot;.
+    * When up/down arrow is used on the command line immediately
+    * after typing text, the next command starting with that text is
+      found.
+    * Add support for GNU regex.
+    * Add configure option --with-regex=none and fix compile
+    * errors when compiling with no regex library.
+    * Fix possible crashes caused by malformed LESSOPEN or 
+      LESSCLOSE variables.
+    * Fix bug highlighting text which is discontiguous in the
+    * file due to backspace processing.
+    * Fix bug in displaying status column when scrolling
+    * backwards with -J and -S in effect.
+- Remove speed patch.
+- Remove less-429-lessecho-man.patch</comment>
+    <requestid>140323</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c0ee7b90b885e5fba582b4893453f017</srcmd5>
+    <version>456</version>
+    <time>1352802913</time>
+    <user>coolo</user>
+    <comment>- Update to version 456 
+  * Yet another bugfix in option string parser</comment>
+    <requestid>141020</requestid>
+  </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>c0ee7b90b885e5fba582b4893453f017</srcmd5>
+    <version>456</version>
+    <time>1359109224</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>fbf2bd27896a33aca0e8daaaad9d10fc</srcmd5>
+    <version>457</version>
+    <time>1364239908</time>
+    <user>coolo</user>
+    <comment>- Update to version 457
+  * Allow backslash escaping of metacharacters in LESS environment
+    variable if the --use-backslash option is set.
+  * Don't quit if syntax errors are found in command line options.
+  * Increase sizes of some internal buffers.
+  * Fix configure bug with --with-regex=none.
+  * Fix crash with &quot;stty rows 0&quot;.
+
+  isupper, many thanks to BjÃ¶rn Jacke for hint and patch [#29827] (forwarded request 160301 from namtrac)</comment>
+    <requestid>160924</requestid>
+  </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>98a77a6d8132ae4d9fc2aff2fc7bd72b</srcmd5>
+    <version>457</version>
+    <time>1368450439</time>
+    <user>coolo</user>
+    <comment>- make sure that -R or --RAW-CONTROL-CHARS is set in LESS
+  environment variable
+
+- add support for colordiff in lessopen.sh (forwarded request 174863 from sleep_walker)</comment>
+    <requestid>174959</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0515eaf53789641d926348b152b58456</srcmd5>
+    <version>458</version>
+    <time>1375288285</time>
+    <user>coolo</user>
+    <comment>- Update to version 458
+  * Fix Win32 attribute display bug.
+  * Fix display bug when using up/down arrow on the command line. (forwarded request 184965 from rudi_m)</comment>
+    <requestid>185069</requestid>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>0515eaf53789641d926348b152b58456</srcmd5>
+    <version>458</version>
+    <time>1379662868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>335e14e3064215212f0dddeadece1df2</srcmd5>
+    <version>458</version>
+    <time>1384518260</time>
+    <user>coolo</user>
+    <comment>- Fix lesspipe.sh for removing properly the leftover tmp files
+  when viewing patch files without colordiff (bnc#850225) (forwarded request 206730 from tiwai)</comment>
+    <requestid>206864</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>827c24a5ea5849b1fc081138c6b394bf</srcmd5>
+    <version>458</version>
+    <time>1406785285</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>242874</requestid>
+  </revision>
+  <revision rev="44" vrev="7">
+    <srcmd5>827c24a5ea5849b1fc081138c6b394bf</srcmd5>
+    <version>458</version>
+    <time>1409301472</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="45" vrev="8">
+    <srcmd5>9f3a34c1a7f4d55f4cdb2192ed40d84b</srcmd5>
+    <version>458</version>
+    <time>1417643609</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>263651</requestid>
+  </revision>
+  <revision rev="46" vrev="9">
+    <srcmd5>e3d3b01706318492cb83f4894e6d21c5</srcmd5>
+    <version>458</version>
+    <time>1419159735</time>
+    <user>coolo</user>
+    <comment>- build with PIE</comment>
+    <requestid>265949</requestid>
+  </revision>
+  <revision rev="47" vrev="10">
+    <srcmd5>83795bd708f923618772c71380a23234</srcmd5>
+    <version>458</version>
+    <time>1427109244</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291312</requestid>
+  </revision>
+  <revision rev="48" vrev="11">
+    <srcmd5>ae3400c5c9fd2890a54b0e5b886b6e7f</srcmd5>
+    <version>458</version>
+    <time>1436887199</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>313676</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d958d9829021ee32bcb9b7476096b6b8</srcmd5>
+    <version>481</version>
+    <time>1446765033</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>342088</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>fc9530432030e902f81006086e620118</srcmd5>
+    <version>487</version>
+    <time>1491907340</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486149</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>5408bba80f9fa8f187343912cf6d61ad</srcmd5>
+    <version>487</version>
+    <time>1494345497</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend lesskey with mappings for 8-bit controls key escape sequences</comment>
+    <requestid>491822</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>dec2bddfc5f001c8ec8e19346f340ca4</srcmd5>
+    <version>487</version>
+    <time>1510320988</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>538587</requestid>
+  </revision>
+  <revision rev="53" vrev="4">
+    <srcmd5>5763dc5949421e5082ef2033bb6c6914</srcmd5>
+    <version>487</version>
+    <time>1523029277</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593210</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>883f716dc7a7fc4d3ffd196eaa0f9e26</srcmd5>
+    <version>530</version>
+    <time>1525611353</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602385</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c9dd1e258e040e632d2db6c0aecb0061</srcmd5>
+    <version>551</version>
+    <time>1569851354</time>
+    <user>dimstar_suse</user>
+    <comment>- less 551:
+  * Add --mouse option
+  * Add --wheel-lines option
+  * Add --no-histdups option
+  * Add --save-marks option
+  * Support PCRE2 regular expression library
+  * Redraw screen on SIGWINCH even if screen size doesn't change
+  * Shell-escape filenames in history so they can be used again
+  * Ring bell if user enters invalid long option name
+  * Use PCRE_UTF8 flag for pcre regular expressions when in UTF-8 mode
+  * Don't count lines in initial screen if using -X with -F
+  * Fix bug in v command on empty file
+  * Fix bug in v command when filename contains shell metacharacters
+- refresh less-429-shell.patch
+</comment>
+    <requestid>732670</requestid>
+  </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>6531e9d2c2547afe402c4b5eb3f535d9</srcmd5>
+    <version>551</version>
+    <time>1577137312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757748</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>5ab57d513f5ccb5663f5db5fa6c6cbdd</srcmd5>
+    <version>557</version>
+    <time>1587659100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>794657</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>9fff29c9b0afb2bfc0becdc291ab42bf</srcmd5>
+    <version>562</version>
+    <time>1591285707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807900</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>3aa4e980b6b1bba52e3d1cd4a36fe418</srcmd5>
+    <version>563</version>
+    <time>1597855437</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 563:
+  * Update Unicode tables.
+  * Treat Hangul Jamo medial vowels and final consonants as zero width.
+  * Display error message immediately when -o is toggled and 
+    input is not a pipe.
+  * Fix regression: make screen repaint when &quot;squished&quot; and 
+    a no-movement command is given.
+  * Fix erroneous EOF calculation when F command is interrupted.
+  * Make WIN32C version include this fix from 551:
+    Don't count lines in initial screen if using -X with -F.
+  * Fix display bug in WIN32C version.
+  * Fix memory corruption when built with libtermcap.
+  * Support libtinfow.</comment>
+    <requestid>826860</requestid>
+  </revision>
+</revisionlist>

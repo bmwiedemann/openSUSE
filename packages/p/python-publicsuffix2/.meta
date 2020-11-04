@@ -1,0 +1,5 @@
+<package name="python-publicsuffix2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-publicsuffix2"/>
+</package>

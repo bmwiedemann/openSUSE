@@ -1,0 +1,5 @@
+<package name="python-simplekml" project="openSUSE:Factory">
+  <title>python-simplekml</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-simplekml"/>
+</package>

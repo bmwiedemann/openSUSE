@@ -1,0 +1,6 @@
+<package name="cilium-proxy" project="openSUSE:Factory">
+  <title>cilium-proxy</title>
+  <description>L7 proxy and communication bus for Cilium</description>
+  <devel project="devel:kubic" package="cilium-proxy"/>
+  <url>https://github.com/cilium/proxy</url>
+</package>

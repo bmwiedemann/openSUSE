@@ -1,0 +1,11 @@
+<package name="paper" project="openSUSE:Factory">
+  <title></title>
+  <description>The paper package enables users to indicate their preferred paper
+size, provides the paper(1) utility to find the user's preferred
+default paper size and give information about known sizes, and
+specifies system-wide and per-user paper size catalogues, which can be
+can also be used directly (see paperspecs(5)).
+
+Paper is based on libpaper: see AUTHORS for more information.</description>
+  <devel project="Publishing" package="paper"/>
+</package>

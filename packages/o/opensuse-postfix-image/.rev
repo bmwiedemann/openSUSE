@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cc115134540cc434601d11f71f101f54</srcmd5>
+    <version>1.0.0</version>
+    <time>1594818425</time>
+    <user>dimstar_suse</user>
+    <comment>Initial postfix relay container</comment>
+    <requestid>820906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f679cc7b84591bdcf2345dbb22c2004a</srcmd5>
+    <version>1.0.0</version>
+    <time>1595271807</time>
+    <user>dimstar_suse</user>
+    <comment>- Implement and document virtual mailbox support (forwarded request 821854 from kukuk)</comment>
+    <requestid>821855</requestid>
+  </revision>
+</revisionlist>

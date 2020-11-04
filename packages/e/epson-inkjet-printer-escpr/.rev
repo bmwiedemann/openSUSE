@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2cb16f8aeedea04bb1eb85e3d0be1a56</srcmd5>
+    <version>1.1.0</version>
+    <time>1317941189</time>
+    <user>lrupp</user>
+    <comment>New package epson-inkjet-printer-escpr: The free Epson ESC/P-R Inkjet Printer Driver</comment>
+    <requestid>86505</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2cb16f8aeedea04bb1eb85e3d0be1a56</srcmd5>
+    <version>1.1.0</version>
+    <time>1319181868</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>edf0ddc313559ce85beb37facdb8517b</srcmd5>
+    <version>1.1.0</version>
+    <time>1323191304</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49ec90ad4077a470a27c609a4b464e9c</srcmd5>
+    <version>1.1.1</version>
+    <time>1329400550</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105239</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>49ec90ad4077a470a27c609a4b464e9c</srcmd5>
+    <version>1.1.1</version>
+    <time>1340183309</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>49ec90ad4077a470a27c609a4b464e9c</srcmd5>
+    <version>1.1.1</version>
+    <time>1359108855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>b6c95c25b35e7a15b298258a813ef8bc</srcmd5>
+    <version>1.1.1</version>
+    <time>1362730151</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157681</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f503c6c0f72c29c3314e962315a9d74</srcmd5>
+    <version>1.2.3</version>
+    <time>1375363614</time>
+    <user>coolo</user>
+    <comment>epson-inkjet-printer-escpr version upgrade to 1.2.3 (forwarded request 185411 from jsmeix)</comment>
+    <requestid>185414</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>0f503c6c0f72c29c3314e962315a9d74</srcmd5>
+    <version>1.2.3</version>
+    <time>1379662303</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a38c96d47ce6cddd5993027c1d44c3e6</srcmd5>
+    <version>1.4.0</version>
+    <time>1402946761</time>
+    <user>coolo</user>
+    <comment>epson-inkjet-printer-escpr version upgrade to 1.4.0 (forwarded request 236961 from jsmeix)</comment>
+    <requestid>236962</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a38c96d47ce6cddd5993027c1d44c3e6</srcmd5>
+    <version>1.4.0</version>
+    <time>1409300837</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bea80a9e418d41099750179e605a28f7</srcmd5>
+    <version>1.4.4</version>
+    <time>1421232275</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.4.4 (forwarded request 265214 from NicoK)</comment>
+    <requestid>265217</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2009546182ef83b0953bfb9acaf4862e</srcmd5>
+    <version>1.4.4</version>
+    <time>1427736769</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293392</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>06c69a1cad7fe60c62de465b0b5e34ee</srcmd5>
+    <version>1.4.5</version>
+    <time>1429606376</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.4.5 (forwarded request 296596 from NicoK)</comment>
+    <requestid>298110</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>55796f1c8747b87fabe3ef46eea2ca43</srcmd5>
+    <version>1.5.0</version>
+    <time>1440337420</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324671</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>883e735d9476ade8d67e94ac2218defa</srcmd5>
+    <version>1.6.1</version>
+    <time>1447454176</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>344172</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3b0811b7908b162b5a70867a2f22a91b</srcmd5>
+    <version>1.6.1</version>
+    <time>1470217393</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>415246</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4658d0ed85ebe9ae3998aaa9060e8df2</srcmd5>
+    <version>1.6.1</version>
+    <time>1471009382</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>418285</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>62a0d9ea9b71d71a6e3bd2ca81ce1daf</srcmd5>
+    <version>1.6.9</version>
+    <time>1477410275</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>437244</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f668ebf7b270ec91390fa57c0e1b2d7c</srcmd5>
+    <version>1.6.13</version>
+    <time>1493580216</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491777</requestid>
+  </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>403dab3e1bc5e5c65c5081928a006f82</srcmd5>
+    <version>1.6.13</version>
+    <time>1498551693</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506265</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dde127f5b7d841aa7ae6c2ce70f8f62e</srcmd5>
+    <version>1.6.17</version>
+    <time>1513941641</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559081</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65f42e328734390068394cb38bde2657</srcmd5>
+    <version>1.6.18</version>
+    <time>1518601922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>576315</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>980d10fafae4c32a0271de99c2313ff8</srcmd5>
+    <version>1.6.25</version>
+    <time>1536327746</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>633841</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ba0465e9be82f27ae51906da534dc93d</srcmd5>
+    <version>1.6.29</version>
+    <time>1537787531</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636859</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ff03dbec68572e5b45c60487118ad844</srcmd5>
+    <version>1.6.33</version>
+    <time>1544539773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657096</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a6c82d890a0621d0231e0e59071c6312</srcmd5>
+    <version>1.6.35</version>
+    <time>1549624372</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672300</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bfd4bcc3ade05f24b25bea609e1419dc</srcmd5>
+    <version>1.7.7</version>
+    <time>1589579477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.7:
+  * Supported new models:
+    + ET-M2120_Series
+- Changes from 1.6.36 to 1.7.6:
+  * Suppored new models:
+    + EC-C110_Series
+    + EP-712A_Series
+    + EP-812A_Series
+    + EP-M552T_Series
+    + ET-2720_Series
+    + ET-2760_Series
+    + EW-052A_Series
+    + L3160_Series
+    + M2110_Series
+    + M2120_Series
+    + PX-S06_Series
+    + WF-110_Series
+    + WF-2810_Series
+    + WF-2830_Series
+    + WF-2850_Series
+    + XP-2100_Series
+    + XP-3100_Series
+    + XP-4100_Series
+- Drop obsolete conditional build requirement for SLE10.</comment>
+    <requestid>805661</requestid>
+  </revision>
+</revisionlist>

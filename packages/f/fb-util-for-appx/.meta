@@ -1,0 +1,5 @@
+<package name="fb-util-for-appx" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:WSL" package="fb-util-for-appx"/>
+</package>

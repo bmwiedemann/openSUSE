@@ -1,0 +1,6 @@
+<package name="fdupes" project="openSUSE:Factory">
+  <title>Identifying or deleting duplicate files</title>
+  <description>FDUPES is a program for identifying or deleting duplicate files
+residing within specified directories</description>
+  <devel project="utilities" package="fdupes"/>
+</package>

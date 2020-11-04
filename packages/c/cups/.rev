@@ -1,0 +1,1150 @@
+<revisionlist>
+  <revision rev="1" vrev="11">
+    <srcmd5>56fb4cc8e5bf5492f7cddfb3a80c7f49</srcmd5>
+    <version>1.2.7</version>
+    <time>1168902496</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>e3371a47bc27196e3edc19e5e31b6d3a</srcmd5>
+    <version>1.2.7</version>
+    <time>1168963971</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="14">
+    <srcmd5>d762d8480c3716754e2fa9361c1a0a9f</srcmd5>
+    <version>1.2.7</version>
+    <time>1169511229</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="17">
+    <srcmd5>a6bb29e6cf8e424cf6df11847282a928</srcmd5>
+    <version>1.2.7</version>
+    <time>1171559014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9b2307706aecbd3db7951697c01447f</srcmd5>
+    <version>1.2.8</version>
+    <time>1172230143</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>52b226dc371f4dba053e355524ae711a</srcmd5>
+    <version>1.2.10</version>
+    <time>1175812567</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>03e8d133ec267f961d02c07ebcc00fa3</srcmd5>
+    <version>1.2.10</version>
+    <time>1177606852</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1882cc201ba66a0305f58cab3bb308a2</srcmd5>
+    <version>1.2.11</version>
+    <time>1178872556</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>38b1862df2d766aaa63b23d0ec04031e</srcmd5>
+    <version>1.2.11</version>
+    <time>1180046410</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="18">
+    <srcmd5>f0cd980a9a52ba926ef8b232b8551782</srcmd5>
+    <version>1.2.11</version>
+    <time>1182464312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="19">
+    <srcmd5>b85878c39f66e5125bdd8c990565de10</srcmd5>
+    <version>1.2.11</version>
+    <time>1182786158</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a6652a7d7c7abb8a50259ffad03cb689</srcmd5>
+    <version>1.2.12</version>
+    <time>1186142940</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>288e7fbd84bfdc5bd152bf5f56b81177</srcmd5>
+    <version>1.2.12</version>
+    <time>1186153740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>142fcd64b4b438eb56ba496e2b338fb5</srcmd5>
+    <version>1.2.12</version>
+    <time>1186179324</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>046e63c60d82852b47bfd4871a70e1b6</srcmd5>
+    <version>1.2.12</version>
+    <time>1186676839</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="17">
+    <srcmd5>e58df39a2666ce4522ab91a99caa900a</srcmd5>
+    <version>1.2.12</version>
+    <time>1189701637</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="19">
+    <srcmd5>0c60c9d4549332cefcd3a5d4e62e128f</srcmd5>
+    <version>1.2.12</version>
+    <time>1190221600</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6250d263000dd05e3a0b1ba222a01189</srcmd5>
+    <version>1.3.3</version>
+    <time>1192495155</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>41764e1d71b644e919df8db622167c0b</srcmd5>
+    <version>1.3.3</version>
+    <time>1194102892</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b645d397ff26b055898014ec863cf07f</srcmd5>
+    <version>1.3.4</version>
+    <time>1194986743</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="9">
+    <srcmd5>03116dc23ebf37b61d72d8b2413d0adc</srcmd5>
+    <version>1.3.4</version>
+    <time>1197998978</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>ed6fcf69009855b3bcb2fb548886ab8e</srcmd5>
+    <version>1.3.4</version>
+    <time>1198086541</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>65a455e952a6c87abbfd74e0a37d7324</srcmd5>
+    <version>1.3.5</version>
+    <time>1200102503</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>0b150aba20a4f7201a27ac7b40201de0</srcmd5>
+    <version>1.3.5</version>
+    <time>1200605443</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>95842fcd7f3b04b9fd58dd36148b7d6e</srcmd5>
+    <version>1.3.6</version>
+    <time>1204320882</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="7">
+    <srcmd5>77a1dcaea929b31652b7cf81b342d1cd</srcmd5>
+    <version>1.3.6</version>
+    <time>1206059871</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0c71fee35f6cc083b033fb76a9c2ab81</srcmd5>
+    <version>1.3.7</version>
+    <time>1207449881</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>fc7a6e41abb2e34effa2da7c08778670</srcmd5>
+    <version>1.3.7</version>
+    <time>1207687055</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>e056da71f8ebdd8328f8f8cafe3ac596</srcmd5>
+    <version>1.3.7</version>
+    <time>1207768059</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>9a6589e43274374821ff02a070d2e52f</srcmd5>
+    <version>1.3.7</version>
+    <time>1207825904</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>90f251aac6ac4223b9103d5b9c450a18</srcmd5>
+    <version>1.3.7</version>
+    <time>1207842197</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>f1fb8638bfdb498dfcc514b6714139f9</srcmd5>
+    <version>1.3.7</version>
+    <time>1207854977</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="8">
+    <srcmd5>a867a51924c29b2eb6c695c0a632b1a1</srcmd5>
+    <version>1.3.7</version>
+    <time>1207908231</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="11">
+    <srcmd5>e3c88ccc9a34f6e49a454ca7d0f8ca64</srcmd5>
+    <version>1.3.7</version>
+    <time>1209132101</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="15">
+    <srcmd5>dad6598a56b3a56b8985e5a9fd27f6ab</srcmd5>
+    <version>1.3.7</version>
+    <time>1210190525</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="18">
+    <srcmd5>9c057f67301c8a203d72ef7b582002c9</srcmd5>
+    <version>1.3.7</version>
+    <time>1210970130</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="37" vrev="20">
+    <srcmd5>7d2dd9ce7519e2da43e5da4339d248e5</srcmd5>
+    <version>1.3.7</version>
+    <time>1211821202</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="38" vrev="24">
+    <srcmd5>0b650c588661d39103af3f2c86ad2580</srcmd5>
+    <version>1.3.7</version>
+    <time>1212679177</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="39" vrev="29">
+    <srcmd5>b9c83f86644695c84935f89b1232943a</srcmd5>
+    <version>1.3.7</version>
+    <time>1215553810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="40" vrev="30">
+    <srcmd5>ec6171aaa525fc1ecf446af114ce4d57</srcmd5>
+    <version>1.3.7</version>
+    <time>1215803268</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="41" vrev="32">
+    <srcmd5>9a2230e690ff901a7246a929cbc42b62</srcmd5>
+    <version>1.3.7</version>
+    <time>1216052221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cc78372fccd31a128ffe156c2c8f9266</srcmd5>
+    <version>1.3.8</version>
+    <time>1216935312</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="43" vrev="20">
+    <srcmd5>230b9fa81b8256e4ecbeb3561c5b8f45</srcmd5>
+    <version>1.3.8</version>
+    <time>1219567863</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="44" vrev="30">
+    <srcmd5>098bef03dd6963b440136a4ae7bfd4f9</srcmd5>
+    <version>1.3.8</version>
+    <time>1221256659</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="45" vrev="33">
+    <srcmd5>7bd208e6c376cf50bd4775f48b160f7f</srcmd5>
+    <version>1.3.8</version>
+    <time>1222433227</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="46" vrev="34">
+    <srcmd5>3d51ac964f67ceccd4d13cc4802aa2fc</srcmd5>
+    <version>1.3.8</version>
+    <time>1223304203</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>62dd827b47f2f497aa690cc4c5360e4d</srcmd5>
+    <version>1.3.9</version>
+    <time>1223907784</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>6bc182ea9228cacf5d97bbf43178b9f1</srcmd5>
+    <version>1.3.9</version>
+    <time>1224793692</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>05d14e082831a7ab83adb3764ded212c</srcmd5>
+    <version>1.3.9</version>
+    <time>1225709989</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="50" vrev="4">
+    <srcmd5>2896e87256b9470ba9067a5e0d2c1379</srcmd5>
+    <version>1.3.9</version>
+    <time>1226066762</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="51" vrev="5">
+    <srcmd5>56b3e2f0b85e78a02dafca66f0162a8f</srcmd5>
+    <version>1.3.9</version>
+    <time>1227190797</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="52" vrev="6">
+    <srcmd5>660901481c196122814a421c19b0816b</srcmd5>
+    <version>1.3.9</version>
+    <time>1227885792</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="53" vrev="7">
+    <srcmd5>ed09316a7865d3fd411e2325bd4dc2aa</srcmd5>
+    <version>1.3.9</version>
+    <time>1229340253</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>38cf8aa443e5207df753a3c131fe1a65</srcmd5>
+    <version>1.3.9</version>
+    <time>1231951732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="55" vrev="9">
+    <srcmd5>e03f1633094ee40670693182589f60e1</srcmd5>
+    <version>1.3.9</version>
+    <time>1232626014</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="56" vrev="11">
+    <srcmd5>a91dc11909d354a02f1647455ca8bf12</srcmd5>
+    <version>1.3.9</version>
+    <time>1240514107</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="57" vrev="12">
+    <srcmd5>db129d51315e5294d3111f314cc69d54</srcmd5>
+    <version>1.3.9</version>
+    <time>1244234837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="58" vrev="13">
+    <srcmd5>ba768b044843d9d0481862c629bf6ae5</srcmd5>
+    <version>1.3.9</version>
+    <time>1244820271</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b996855cae6228c60fe89fa9cecb3f58</srcmd5>
+    <version>1.3.10</version>
+    <time>1247076022</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>e3b6429de8b8b962fdf1359d9455d30f</srcmd5>
+    <version>1.3.10</version>
+    <time>1247234967</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c5d81162fbce13d19bcb8d7d8a5e8e88</srcmd5>
+    <version>1.3.11</version>
+    <time>1248880831</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>edfbb8feaf0c0f9e18522257302d8148</srcmd5>
+    <version>1.3.11</version>
+    <time>1249059886</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>149c0f6919f0ed51f201c3a823caeede</srcmd5>
+    <version>1.3.11</version>
+    <time>1253559528</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 20573 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="64" vrev="5">
+    <srcmd5>149c0f6919f0ed51f201c3a823caeede</srcmd5>
+    <version>1.3.11</version>
+    <time>1253559528</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 20573 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="65" vrev="6">
+    <srcmd5>a3c4582581af742b1620968c49b5b42b</srcmd5>
+    <version>1.3.11</version>
+    <time>1258364173</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 24139 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="66" vrev="7">
+    <srcmd5>c8aa44d16fb23d051b30c7b454797c18</srcmd5>
+    <version>1.3.11</version>
+    <time>1259918519</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 25420 from user coolo
+</comment>
+  </revision>
+  <revision rev="67" vrev="8">
+    <srcmd5>0744358b0b02774760c55fa11c61fe41</srcmd5>
+    <version>1.3.11</version>
+    <time>1260951965</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 26600 from user jsmeix
+</comment>
+  </revision>
+  <revision rev="68" vrev="9">
+    <srcmd5>e18805ac2a9ae0b36e7e55d66f0b057b</srcmd5>
+    <version>1.3.11</version>
+    <time>1262968172</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 28254 from user coolo
+</comment>
+  </revision>
+  <revision rev="69" vrev="10">
+    <srcmd5>d3a4543d554237aef31d0ec88dda2e66</srcmd5>
+    <version>1.3.11</version>
+    <time>1268923271</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d64e0807616601b2fcb36d04e62fee25</srcmd5>
+    <version>1.4.2</version>
+    <time>1268950134</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 34936 from user coolo
+</comment>
+    <requestid>34936</requestid>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>ca40ebd2844a133963900609436e810d</srcmd5>
+    <version>1.4.3</version>
+    <time>1270058269</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 36238 from user jsmeix
+</comment>
+    <requestid>36238</requestid>
+  </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>f1442feebe173424a532b852d5790a49</srcmd5>
+    <version>1.4.3</version>
+    <time>1272486098</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 38923 from user jsmeix
+</comment>
+    <requestid>38923</requestid>
+  </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>c978a00fd06d194909f253845dceb85a</srcmd5>
+    <version>1.4.3</version>
+    <time>1273239359</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 39558 from user jsmeix
+</comment>
+    <requestid>39558</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>935de905803002a1bee7d46ff82673a1</srcmd5>
+    <version>1.4.3</version>
+    <time>1274776610</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 40280 from user jsmeix
+</comment>
+    <requestid>40280</requestid>
+  </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>9ac30db2857526bf749e1101509617d0</srcmd5>
+    <version>1.4.3</version>
+    <time>1275495052</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 40998 from user jsmeix
+</comment>
+    <requestid>40998</requestid>
+  </revision>
+  <revision rev="76" vrev="6">
+    <srcmd5>278d8184b35ac132fd51f92f814aa951</srcmd5>
+    <version>1.4.3</version>
+    <time>1276831954</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 41480 from user jsmeix
+</comment>
+    <requestid>41480</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>30d5967db834c07a14aec09d885d2e95</srcmd5>
+    <version>1.4.4</version>
+    <time>1277195411</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 41699 from user jsmeix
+</comment>
+    <requestid>41699</requestid>
+  </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>a59c7d3389ccfbf14ae1cc947f90e397</srcmd5>
+    <version>1.4.4</version>
+    <time>1277491752</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 42045 from user jsmeix
+</comment>
+    <requestid>42045</requestid>
+  </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>a59c7d3389ccfbf14ae1cc947f90e397</srcmd5>
+    <version>1.4.4</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="80" vrev="4">
+    <srcmd5>a59c7d3389ccfbf14ae1cc947f90e397</srcmd5>
+    <version>1.4.4</version>
+    <time>1278678569</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="81" vrev="5">
+    <srcmd5>a36875be149fd2ad669a51e18ee05541</srcmd5>
+    <version>1.4.4</version>
+    <time>1279539176</time>
+    <user>autobuild</user>
+    <comment>Copy from Printing/cups based on submit request 42970 from user jsmeix
+</comment>
+    <requestid>42970</requestid>
+  </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>e00d0076945d6e370c735b467effa168</srcmd5>
+    <version>1.4.5</version>
+    <time>1289568701</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52898 from user jsmeix
+</comment>
+    <requestid>52898</requestid>
+  </revision>
+  <revision rev="83" vrev="4">
+    <srcmd5>3b864e5780d79bde017f4d2497c2b854</srcmd5>
+    <version>1.4.5</version>
+    <time>1289568709</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52898
+</comment>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>729a5faa3468c6f6dd696e5e27aebeea</srcmd5>
+    <version>1.4.5</version>
+    <time>1291992783</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55384 from user jsmeix
+</comment>
+    <requestid>55384</requestid>
+  </revision>
+  <revision rev="85" vrev="6">
+    <srcmd5>f601c9ea9b3c293b09094ec3140ad36d</srcmd5>
+    <version>1.4.5</version>
+    <time>1291992788</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55384
+</comment>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>0af33a33b9cb20078add43f12d9c5058</srcmd5>
+    <version>1.4.6</version>
+    <time>1295018139</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58237 from user jsmeix
+</comment>
+    <requestid>58237</requestid>
+  </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>8837f12efeb04dba47130be28345cc34</srcmd5>
+    <version>1.4.6</version>
+    <time>1295018155</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58237
+</comment>
+  </revision>
+  <revision rev="88" vrev="4">
+    <srcmd5>7dfe94cf5563b7e3a72e610a5ff967fc</srcmd5>
+    <version>1.4.6</version>
+    <time>1297387207</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 60508 from user jsmeix
+</comment>
+    <requestid>60508</requestid>
+  </revision>
+  <revision rev="89" vrev="5">
+    <srcmd5>1c0d5ed315c3d92d724f85e2af27d2c2</srcmd5>
+    <version>1.4.6</version>
+    <time>1297387231</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 60508
+</comment>
+  </revision>
+  <revision rev="90" vrev="8">
+    <srcmd5>1c0d5ed315c3d92d724f85e2af27d2c2</srcmd5>
+    <version>1.4.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="91" vrev="9">
+    <srcmd5>760f63af3d9b0256bce189d76a5f1833</srcmd5>
+    <version>1.4.6</version>
+    <time>1316459268</time>
+    <user>lrupp</user>
+    <comment></comment>
+    <requestid>82445</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>7825ee3a40040f1b5658fba95e202a3c</srcmd5>
+    <version>1.4.8</version>
+    <time>1317542101</time>
+    <user>lrupp</user>
+    <comment>Upgrade to CUPS 1.4.8 and have the fix for bnc#628233 in 11.4 also in Factory (bnc#718707) and reverted the change for baselibs.conf so that it is again as before (bnc#721194) </comment>
+    <requestid>85447</requestid>
+  </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>1975d64cecc6b36da1f3391460ebbe15</srcmd5>
+    <version>1.4.8</version>
+    <time>1317744514</time>
+    <user>oertel</user>
+    <comment>Added &quot;BuildRequires: libtool&quot; to cups.spec so that we do no longer rely on a &quot;hidden&quot; requirement for libtool in the project config</comment>
+    <requestid>86532</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>5687f48023d3bea00ca82aee0325de5b</srcmd5>
+    <version>1.5.0</version>
+    <time>1317909668</time>
+    <user>lrupp</user>
+    <comment>cups: upgrade to version 1.5.0 (bnc#722057)</comment>
+    <requestid>86888</requestid>
+  </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>5687f48023d3bea00ca82aee0325de5b</srcmd5>
+    <version>1.5.0</version>
+    <time>1319181837</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="96" vrev="4">
+    <srcmd5>caf0124fed3ccb0514808a375fba3437</srcmd5>
+    <version>1.5.0</version>
+    <time>1327093614</time>
+    <user>coolo</user>
+    <comment>Various fixes - get it building again.</comment>
+    <requestid>100368</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>ddef9b3543219b0e2e6c9959cbf2f2f7</srcmd5>
+    <version>1.5.2</version>
+    <time>1329405139</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>105238</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>c95e41f1493374a4436a66a470a106c6</srcmd5>
+    <version>1.5.2</version>
+    <time>1335190175</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>114992</requestid>
+  </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>1ae827ea04c40fa20b456c7de7c9107d</srcmd5>
+    <version>1.5.3</version>
+    <time>1338284196</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122203</requestid>
+  </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>1ae827ea04c40fa20b456c7de7c9107d</srcmd5>
+    <version>1.5.3</version>
+    <time>1340183265</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="101" vrev="4">
+    <srcmd5>019a2a5dec0d9e33317a141f9a018c78</srcmd5>
+    <version>1.5.3</version>
+    <time>1347283264</time>
+    <user>coolo</user>
+    <comment>license update: SUSE-GPL-2.0-with-openssl-exception and LGPL-2.1
+Apple grant an openssl linking exception (and an exception for linking on Apple owned operating systems) (forwarded request 132553 from babelworx)</comment>
+    <requestid>132581</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>3546b2187ca4c5dc3bbb5939fbe7a3bb</srcmd5>
+    <version>1.5.4</version>
+    <time>1348734745</time>
+    <user>coolo</user>
+    <comment>- Version upgrade to 1.5.4 (mainly a bugfix release) that fixes
+  some IPP printing issues.
+  Excerpt:
+  * The IPP backend no longer tries to get the job status for 
+    printers that do not implement the required operation 
+    (STR #4083).
+  * Sending a document in an unsupported format to an IPP printer 
+    now automatically cancels the job (STR #4093).
+  * The IPP backend now treats the client-error-not-possible
+    status code as a job history issue, allowing IPP printing to 
+    Windows to work(STR #4047).
+  For a complete list see the CHANGES.txt file.
+- revert_cups-ssl.m4_to_1.5.2.patch is now obsolete because of
+  an upstream fix.
+
+  Apple grant an openssl linking exception (and an exception for
+  linking on Apple owned operating systems). (forwarded request 136162 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x84b954c&amp;gt;&amp;gt;)</comment>
+    <requestid>136163</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>accb5bb321e056baa6f0e861139506fe</srcmd5>
+    <version>1.5.4</version>
+    <time>1350629118</time>
+    <user>coolo</user>
+    <comment>- buildrequire systemd through the pkgconfig provide to get 
+  systemd-mini in build environment (to break cycle) (forwarded request 138709 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x85b950c&amp;gt;&amp;gt;)</comment>
+    <requestid>138729</requestid>
+  </revision>
+  <revision rev="104" vrev="3">
+    <srcmd5>20163b2ca811df4af4e0d3a22844e3ff</srcmd5>
+    <version>1.5.4</version>
+    <time>1353133234</time>
+    <user>coolo</user>
+    <comment>- Add cups-provides-cupsd.service: ensure cupsd.service is provided
+  by cups.service.
+ (this is also valid for 12.2 btw) (forwarded request 141170 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x853954c&amp;gt;&amp;gt;)</comment>
+    <requestid>141563</requestid>
+  </revision>
+  <revision rev="105" vrev="4">
+    <srcmd5>7e2b53a7b17b0ac7563908274fc88a3d</srcmd5>
+    <version>1.5.4</version>
+    <time>1356096847</time>
+    <user>coolo</user>
+    <comment>BuildRequires poppler-tools fixes bnc#776080 (forwarded request 146146 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x858062c&amp;gt;&amp;gt;)</comment>
+    <requestid>146147</requestid>
+  </revision>
+  <revision rev="106" vrev="6">
+    <srcmd5>7e2b53a7b17b0ac7563908274fc88a3d</srcmd5>
+    <version>1.5.4</version>
+    <time>1359108790</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="107" vrev="7">
+    <srcmd5>25d203544efab24719b0f16c6eb20d92</srcmd5>
+    <version>1.5.4</version>
+    <time>1360227654</time>
+    <user>coolo</user>
+    <comment>Added explanation why pid, socket and lock files are moved to /run by cups-move-everything-to-run.patch and have it as Patch108 unconditioned in the spec file. (forwarded request 151489 from &amp;lt;bound method Request.get_creator of &amp;lt;osc.core.Request instance at 0x854062c&amp;gt;&amp;gt;)</comment>
+    <requestid>151491</requestid>
+  </revision>
+  <revision rev="108" vrev="8">
+    <srcmd5>27dabc13cf3a0f2c1f50c1ca54b19ff3</srcmd5>
+    <version>1.5.4</version>
+    <time>1363982922</time>
+    <user>coolo</user>
+    <comment>- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls (forwarded request 160550 from m_meister)</comment>
+    <requestid>160618</requestid>
+  </revision>
+  <revision rev="109" vrev="9">
+    <srcmd5>f21180a4f3865fca3fa195f3abde00c8</srcmd5>
+    <version>1.5.4</version>
+    <time>1372428145</time>
+    <user>coolo</user>
+    <comment>Use BuildRequires krb5-mini-devel to avoid build cycle (was OBS request 180870) but still using BuildRequires krb5-devel for SLE11 where no krb5-mini-devel exists. Additionally fixed Source0 URL in cups.spec to supersede request 180981 where check script errors out with message: Source URLs are not valid.</comment>
+    <requestid>181125</requestid>
+  </revision>
+  <revision rev="110" vrev="10">
+    <srcmd5>d8278eb8a1d6d63afc9695fe28f04756</srcmd5>
+    <version>1.5.4</version>
+    <time>1372686799</time>
+    <user>coolo</user>
+    <comment>- Fix endless loop if IPP server does not accect job (bnc#827418)
+  see also https://www.cups.org/str.php?L4190 (STR#4190,
+  patch str4190.patch)</comment>
+    <requestid>181561</requestid>
+  </revision>
+  <revision rev="111" vrev="11">
+    <srcmd5>824dced3b3c44d2be1ba125501c47df1</srcmd5>
+    <version>1.5.4</version>
+    <time>1373395722</time>
+    <user>coolo</user>
+    <comment>cups-polld_avoid_busy_loop.patch fixes bnc#828228 (forwarded request 182308 from jsmeix)</comment>
+    <requestid>182309</requestid>
+  </revision>
+  <revision rev="112" vrev="13">
+    <srcmd5>824dced3b3c44d2be1ba125501c47df1</srcmd5>
+    <version>1.5.4</version>
+    <time>1379662191</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="113" vrev="14">
+    <srcmd5>ea810118496972c231dad29db2811638</srcmd5>
+    <version>1.5.4</version>
+    <time>1381321069</time>
+    <user>scarabeus_factory</user>
+    <comment>********* RECOMMENDED FOR 13.1 *************
+
+- patch cups-move-everything-to-run.patch missed to move 
+  CUPS_STATEDIR to run, so systemd sockets are still created
+  in /var/run 
+-  Add required tmpfiles.d config snippet to ensure /run/cups
+   is always available. (forwarded request 202658 from elvigia)</comment>
+    <requestid>202672</requestid>
+  </revision>
+  <revision rev="114" vrev="15">
+    <srcmd5>d79be172cdc80afe44805abe0ae9543c</srcmd5>
+    <version>1.5.4</version>
+    <time>1389284645</time>
+    <user>coolo</user>
+    <comment>cups fixes for bnc#857372 and bnc#856731 (forwarded request 213204 from jsmeix)</comment>
+    <requestid>213206</requestid>
+  </revision>
+  <revision rev="115" vrev="16">
+    <srcmd5>87fe8493802eb96255dac5b2ff65f911</srcmd5>
+    <version>1.5.4</version>
+    <time>1391765141</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221008</requestid>
+  </revision>
+  <revision rev="116" vrev="17">
+    <srcmd5>ca580b7877898576de1de307b01fc781</srcmd5>
+    <version>1.5.4</version>
+    <time>1392797383</time>
+    <user>coolo</user>
+    <comment>CUPS security fix for CVE-2012-5519 to have better default protection against misuse of CUPS admin privileges (bnc#789566) plus clean up of cups.spec by having strictly separated sections how cupsd is launched (either via SysVinit or via systemd) (forwarded request 222281 from jsmeix)</comment>
+    <requestid>222282</requestid>
+  </revision>
+  <revision rev="117" vrev="18">
+    <srcmd5>64ee74198af71195da0cdf2989cab73b</srcmd5>
+    <version>1.5.4</version>
+    <time>1393098267</time>
+    <user>coolo</user>
+    <comment>In any case cups.socket and cups.path are stopped and disabled now because cautious clean up would leave a messsed up systemd setup for cupsd when YaST was used before (bnc#857372) plus CUPS upstream fix for STR #4351 cups-lpd hugh jobs (&amp;gt;2G) fail (bnc#864782) (forwarded request 223231 from jsmeix)</comment>
+    <requestid>223233</requestid>
+  </revision>
+  <revision rev="118" vrev="19">
+    <srcmd5>f678343867ff9141d0614ce606b0ad62</srcmd5>
+    <version>1.5.4</version>
+    <time>1397450601</time>
+    <user>coolo</user>
+    <comment>cups-1.5.4-strftime.patch fixes STR #4388 (bnc#873030) (forwarded request 229700 from jsmeix)</comment>
+    <requestid>229702</requestid>
+  </revision>
+  <revision rev="119" vrev="20">
+    <srcmd5>9e3960a1641b8a70471097982b24cf85</srcmd5>
+    <version>1.5.4</version>
+    <time>1401167344</time>
+    <user>coolo</user>
+    <comment>- Add build require pkgconfig(libsystemd-daemon) to allow to move
+  systemd.pc back to systemd package</comment>
+    <requestid>235082</requestid>
+  </revision>
+  <revision rev="120" vrev="22">
+    <srcmd5>9e3960a1641b8a70471097982b24cf85</srcmd5>
+    <version>1.5.4</version>
+    <time>1409300725</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="121" vrev="23">
+    <srcmd5>5d43fefa05c1edbf4c0c42d72690fac0</srcmd5>
+    <version>1.5.4</version>
+    <time>1409810150</time>
+    <user>coolo</user>
+    <comment>CUPS additional fix for bnc#892587 a regression of the security fix bnc#887240 (forwarded request 247233 from jsmeix)</comment>
+    <requestid>247234</requestid>
+  </revision>
+  <revision rev="122" vrev="24">
+    <srcmd5>d51d9598b779987e970b7a283ebc9d4d</srcmd5>
+    <version>1.5.4</version>
+    <time>1413263396</time>
+    <user>coolo</user>
+    <comment>use the desktop file categories Settings;Printing;HardwareSettings designated for printer managers in the fdo spec (forwarded request 255610 from gberh)</comment>
+    <requestid>255618</requestid>
+  </revision>
+  <revision rev="123" vrev="25">
+    <srcmd5>017a90d6ffa213e8e8dddfb8bc48e9f1</srcmd5>
+    <version>1.5.4</version>
+    <time>1416048050</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>260876</requestid>
+  </revision>
+  <revision rev="124" vrev="26">
+    <srcmd5>6f87cc3210064839a3752119f8246ccb</srcmd5>
+    <version>1.5.4</version>
+    <time>1417246784</time>
+    <user>coolo</user>
+    <comment>use %posttrans in cups RPM to clean up systemd units (boo#904215) (forwarded request 263014 from jsmeix)</comment>
+    <requestid>263015</requestid>
+  </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>5658309206dca78b7dd264c7a02f274f</srcmd5>
+    <version>2.0.2</version>
+    <time>1424436645</time>
+    <user>dimstar_suse</user>
+    <comment>- Add back the posttrans cleanup script as it is needed
+- Add patch cups-systemd-socket.patch to fix socket activation
+  and to match socket approach Fedora has.
+- Version bump to 2.0.2:
+  * Security: cupsRasterReadPixels buffer overflow with invalid page header and
+    compressed raster data (STR #4551)
+  * Mapping of PPD keywords to IPP keywords did not work if the PPD keyword was
+    already an IPP keyword (&lt;rdar://problem/19121005&gt;)
+  * cupsGetPPD* sent bad requests (STR #4567)
+  * For detailed list see CHANGES.txt file
+- Enable PIE for build
+- Remove legacy paralel-port support as it is not really needed
+  as most do not want it
+- Update descriptions to just state what changed and let user
+  find it out.
+- Add back comment about %fdupes
+- Remove exit 0 on scriptlets as it is provided by the %service bla
+  ones already
+- Fix the comment about openSUSE version on tmpfilesdir declaration
+- cups-2.0.1 update:
+  * lengthy list of changes see the upstream CHANGES.txt that is
+    distributed with the package
+  * Disabling of sslv3 to mitigate poodle
+- Use gnutls to provide SSLOPtions configuration directive
+  * openssl is no longer supported upstream
+  * Remove the with-openssl-exception from license
+- Remove cups.sysconfig as it is not used with systemd based distros
+- Purposely lose support for SLE11 as it doubles size of some of the
+  sections and keep suppor for openSUSE+SLE12
+  * even with the conditions we would have to go unencrypted only</comment>
+    <requestid>286370</requestid>
+  </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>a106330c5fbc02a413d578f9dfc39e5d</srcmd5>
+    <version>2.0.2</version>
+    <time>1428391604</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>294497</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>f27ed30c860c02b1ff8443f8303e696b</srcmd5>
+    <version>2.0.3</version>
+    <time>1434006579</time>
+    <user>dimstar_suse</user>
+    <comment>CUPS version upgrade to 2.0.3 that fixes in particular CERT VU #810572 CVE-2015-1158 CVE-2015-1159 (bsc#924208) (forwarded request 311253 from jsmeix)</comment>
+    <requestid>311257</requestid>
+  </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>d1795c290729e80b10681b8c7498c425</srcmd5>
+    <version>2.0.3</version>
+    <time>1435652124</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the previous commit by using direct systemd call and ensuring we
+  work even on older distros (forwarded request 313641 from scarabeus_iv)</comment>
+    <requestid>313642</requestid>
+  </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>b8c902b7416312957f5c252ccd2e724f</srcmd5>
+    <version>2.0.3</version>
+    <time>1437059720</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>315599</requestid>
+  </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>956d0d100191f54d7c0515a93b2148d9</srcmd5>
+    <version>2.0.4</version>
+    <time>1440479866</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>324745</requestid>
+  </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>83fe4b9d6c479f99b504722cda6ada2c</srcmd5>
+    <version>2.0.4</version>
+    <time>1441296072</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bnc#943950, escape the macro call %systemd-tmpfiles in comment</comment>
+    <requestid>328249</requestid>
+  </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>4b2ecdc09c3309c0d3eab4d1e78ba97d</srcmd5>
+    <version>2.1.0</version>
+    <time>1442392601</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>330372</requestid>
+  </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>c10485f430f961a5e3021a309ba8baaf</srcmd5>
+    <version>2.1.0</version>
+    <time>1443684440</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>332233</requestid>
+  </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>3e68a6db4948a93b441b97043a067e0b</srcmd5>
+    <version>2.1.3</version>
+    <time>1458120234</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>368190</requestid>
+  </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>3743852e12fb8fdbc935d1baf87df459</srcmd5>
+    <version>2.1.3</version>
+    <time>1467896933</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove CUPS.desktop and pixmap
+  * Obsoletes patch cups-1.3.9-desktop_file.patch</comment>
+    <requestid>405989</requestid>
+  </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>c5c9b6b5824716ab8dd00ba3f730e41e</srcmd5>
+    <version>2.1.3</version>
+    <time>1484474172</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>447189</requestid>
+  </revision>
+  <revision rev="137" vrev="4">
+    <srcmd5>7fabbacf914664c42e4cbc4c0420d6ee</srcmd5>
+    <version>2.1.3</version>
+    <time>1492009742</time>
+    <user>maxlin_factory</user>
+    <comment>- Add /etc/cups to cups-libs package [bsc#1025689] (forwarded request 483861 from kukuk)</comment>
+    <requestid>484073</requestid>
+  </revision>
+  <revision rev="138" vrev="5">
+    <srcmd5>d369aa376bd3a1830961d3ee50f878cd</srcmd5>
+    <version>2.1.3</version>
+    <time>1493819585</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>491776</requestid>
+  </revision>
+  <revision rev="139" vrev="6">
+    <srcmd5>fe2f400923b2f30bce58ee4a5e6ddd6b</srcmd5>
+    <version>2.1.3</version>
+    <time>1496821867</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>499607</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>1d4ab4c9785e648e5ab956f7b0a076b5</srcmd5>
+    <version>2.2.3</version>
+    <time>1499167933</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>506209</requestid>
+  </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>897726800ae2043093aa58d2fd208a32</srcmd5>
+    <version>2.2.3</version>
+    <time>1506340382</time>
+    <user>dimstar_suse</user>
+    <comment>- Pre-require user(lp) in cups-libs (forwarded request 527482 from Andreas_Schwab)</comment>
+    <requestid>527512</requestid>
+  </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>26830f86341f96e4d200788d63317956</srcmd5>
+    <version>2.2.5</version>
+    <time>1509614602</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>537070</requestid>
+  </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>1a51a14cbef0c244e7da8e4d24ca9370</srcmd5>
+    <version>2.2.6</version>
+    <time>1510406262</time>
+    <user>dimstar_suse</user>
+    <comment>CUPS version upgrade to 2.2.6 that fixes in particular bsc#1061066 (upstream issue https://github.com/apple/cups/issues/5143) (forwarded request 539582 from jsmeix)</comment>
+    <requestid>539583</requestid>
+  </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>ba22269d60f5327c93610045228f0ed3</srcmd5>
+    <version>2.2.6</version>
+    <time>1510837163</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure cups-libs-&amp;lt;targettype&amp;gt; is removed (forwarded request 541811 from cgiboudeaux)</comment>
+    <requestid>541864</requestid>
+  </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>944673729a8c643ec2052cd636fdcad6</srcmd5>
+    <version>2.3b4</version>
+    <time>1524643046</time>
+    <user>dimstar_suse</user>
+    <comment>CUPS bugfix for https://github.com/apple/cups/issues/5296 (follow-up of boo#936309 and bsc#577936 starting at comment 13) (forwarded request 597767 from jsmeix)</comment>
+    <requestid>597768</requestid>
+  </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>35f4a891c4bc74715900bad90d57f4a7</srcmd5>
+    <version>2.3b4</version>
+    <time>1537966400</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>636596</requestid>
+  </revision>
+  <revision rev="147" vrev="3">
+    <srcmd5>00511c86b044ca8db18e0a5b95f84792</srcmd5>
+    <version>2.3b4</version>
+    <time>1541509800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>644487</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0be09018788a63d674919469b6e70e2c</srcmd5>
+    <version>2.3b6</version>
+    <time>1560337159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>705931</requestid>
+  </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>7e4c3c7b9ee1e434700624f26a5d755a</srcmd5>
+    <version>2.3b6</version>
+    <time>1591742093</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812607</requestid>
+  </revision>
+  <revision rev="150" vrev="3">
+    <srcmd5>ea515d525f58891e3a3d53adea204d55</srcmd5>
+    <version>2.3b6</version>
+    <time>1593904209</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>818329</requestid>
+  </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>b9ede6ccea4aa6e3f44823b1212fcc95</srcmd5>
+    <version>2.3.3</version>
+    <time>1603725113</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843399</requestid>
+  </revision>
+</revisionlist>

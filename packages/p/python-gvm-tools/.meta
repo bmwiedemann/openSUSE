@@ -1,0 +1,5 @@
+<package name="python-gvm-tools" project="openSUSE:Factory">
+  <title>python-gvm-tools</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-gvm-tools"/>
+</package>

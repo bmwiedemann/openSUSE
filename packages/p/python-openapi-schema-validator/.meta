@@ -1,0 +1,5 @@
+<package name="python-openapi-schema-validator" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-openapi-schema-validator"/>
+</package>

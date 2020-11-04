@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57027465792a2742333eb1c71a2b5e5a</srcmd5>
+    <version>0.0~git.20190905T053100~3cdfe1ff</version>
+    <time>1570020959</time>
+    <user>dimstar_suse</user>
+    <comment>arcanist is the command line tool for Phabricator</comment>
+    <requestid>734561</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ff95f587050b64994e2e7d7552a2ff91</srcmd5>
+    <version>0.0~git.20190905T053100~3cdfe1ff</version>
+    <time>1573044759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>739619</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6f36fdc19ef2970bb28e5f93b6bc7fa</srcmd5>
+    <version>0.0~git.20191118T203151~cc850163</version>
+    <time>1578950555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0~git.20191118T203151~cc850163:
+  * When &quot;arc close-revision --finalize ...&quot; skips closing a revision, print a message
+  * When generating diffs in &quot;arc diff&quot;, disable Git config option &quot;diff.suppressBlankEmpty&quot;
+  * Make &quot;arc land --merge&quot; an explicit error when targeting a Perforce remote
+  * In &quot;arc land&quot;, when &quot;remote/onto&quot; does not exist locally, try to fetch it before giving up
+  * Update &quot;arc help land&quot; to reference Perforce support
+  * Support Perforce/Git repositories in &quot;arc land&quot;
+  * Move Git-specific &quot;arc land&quot; parsing of &quot;--onto&quot; and &quot;--remote&quot; into GitLandEngine
+  * Add a lint check for deprecated argument order to &quot;implode()&quot;
+  * When running &quot;arc land&quot; from a detached HEAD, don't try to delete the source ref
+  * Fix two &quot;msort()&quot; vs &quot;msortv()&quot; issues in &quot;arc land&quot;
+- Change LICENSE to %license section and update template
+</comment>
+    <requestid>764032</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>544b33662bd12c613182d11a58c8152c</srcmd5>
+    <version>0.0~git.20200426T084008~b81818b2</version>
+    <time>1588023488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0~git.20200426T084008~b81818b2:
+  * Accommodate PHP 7.4 changes to certain &quot;preg_match_all()&quot; calls
+  * Make &quot;arc &lt;workflow&gt; --help&quot; work again for workflows which haven't updated yet
+  * Allow HTTPFuture callers to disable processing of &quot;Content-Encoding&quot; response headers
+  * If the Conduit server asserts it has the &quot;gzip&quot; capability, compress requests
+  * If the Conduit client supports gzip, make calls with &quot;Accept-Encoding: gzip&quot;
+  * In &quot;phutil_loggable_string()&quot;, encode every byte above 0x7F
+  * Only inject legacy Arcanist workflows into &quot;help&quot; if run from the context of an Arcanist runtime
+  * Update &quot;arc paste&quot; for Toolsets
+  * Crudely bridge legacy workflows into &quot;arc help&quot;
+  * Remove &quot;backout&quot;, &quot;close&quot;, &quot;flag&quot;, &quot;start&quot;, &quot;stop&quot;, &quot;time&quot;, and &quot;revert&quot; workflows
+  * Upgrade (most) Differential API callsites to &quot;differential.revision.search&quot;
+  * Restore &quot;%d&quot; support to &quot;tsprintf()&quot;
+  * Upgrade &quot;arc download&quot; to Toolsets
+  * Update &quot;arc call-conduit&quot; for Toolsets
+  * Update &quot;arc amend&quot; for Toolsets
+  * Add a &quot;SymbolEngine&quot; to support top-level ref resolution by symbol
+  * Add some support code for printing refs to stdout
+  * Add ref lookup for username symbols
+  * Add a &quot;RevisionSymbolRef&quot;, revision commit messages, and make &quot;--explore&quot; recursive
+  * Add a &quot;CommitSymbolRef&quot; for resolving symbolic commits into stable commit hashes
+  * Add a mode to &quot;ExecFuture&quot; that makes &quot;resolvex()&quot; semantics the default
+  * Allow &quot;loadHardpoints()&quot; to accept a single ref and/or a single hardpoint
+  * Remove obsolete definitions of &quot;defineHardpoints()&quot; in older Ref objects
+  * Update &quot;feature&quot;, &quot;branch&quot;, and &quot;bookmark&quot; flows to report properly in &quot;arc help&quot;
+  * Port &quot;arc prompts&quot; from wilds and fix a path issue in shell completion
+  * Restore &quot;arc alias&quot; shell aliases
+  * Remove &quot;RefQuery&quot; and all &quot;HardpointLoader&quot; code
+  * Reroute all RefQuery callers to HardpointEngine
+  * Bring &quot;pro&quot; browse queries from modern hardpoint code
+  * Bring a &quot;pro&quot; WorkingCopyState ref to &quot;master&quot;
+  * Introduce &quot;arc inspect&quot; and some of the new ref/hardpoint classes
+  * Rename &quot;getWorkingCopy()&quot; to &quot;getWorkingCopyIdentity()&quot; in Arcanist
+  * Trivially update &quot;arc branch/feature&quot; and &quot;arc browse&quot; for Toolsets
+  * Revert &quot;Compress requests from the Conduit client to Phabricator&quot;
+  * Compress requests from the Conduit client to Phabricator
+  * Remove onboard future bulk-resolution from ConduitEngine
+  * Add new &quot;Hardpoint&quot; classes to support request parallelization
+  * Update the &quot;WorkingCopy&quot; API and create a fallback &quot;Filesystem&quot; working copy
+  * Fix improper XHPAST parsing of namespace grammar like &quot;use x as private;&quot;
+  * Fix XHPAST parsing of variadic calls
+  * Update XHPAST &quot;expect&quot; test blocks to the new stable, human-readable format
+  * Make XHPAST unit test &quot;expect&quot; blocks stable and human-readable
+  * Remove duplication of XHPAST version in PHP and C code
+  * Revert xhpast changes that impacted builds under Bison 2.3
+  * Allow &quot;phage&quot; to print execution status on SIGINT
+  * Move Phage to FuturePool
+  * Introduce &quot;FuturePool&quot; to make it easier to manage an ongoing pool of futures
+  * Update some ancient &quot;set X=Y&quot; environment code for new Windows execution without a shell
+  * Make Windows escaping preserve &quot;%&quot; symbols in arguments
+  * Fix error behavior of &quot;arc version&quot; when it encounters a library which is not a working copy
+  * Fix three Windows subprocess issues
+  * Fix two issues with Future key selection inside FutureIterator
+  * Integrate &quot;ServiceProfiler&quot; into the base &quot;Future&quot;
+  * Make &quot;FutureIterator&quot; queue management more formal
+  * Make &quot;exception&quot; on Future a private property
+  * Make the &quot;result&quot; property on Future private
+  * Resolve all futures inside FutureIterator
+  * Remove the &quot;timeout&quot; parameter from &quot;Future-&gt;resolve()&quot;
+  * Run ls-files from the root of the directory
+  * Treat all PHP language-level errors as exceptions by default
+  * Switch file uploader in &quot;arc diff&quot; to use ConduitEngine
+  * Use a named remote and branches for staging to help git-lfs
+  * Remove the &quot;preg_quote()&quot; lint rule and update the &quot;__CLASS__&quot; lint rule
+  * Fix an issue where &quot;arc&quot; may fail on startup when trying to read older &quot;default&quot; config
+  * When &quot;ArcanistRuntime&quot; exits with a nonzero exit code, emit that exit code
+  * Update &quot;arc upload&quot; for Toolsets
+  * Improve error handling in ArcanistRuntime when failing to load libraries
+  * Update Phage for toolsets and restore library loading behaviors
+  * Fix two &quot;implode()&quot; order issues arising from wilds/experimental collapse
+  * Port &quot;arc upgrade&quot; to Toolsets
+  * Remove obscure features no longer supported by Toolsets from &quot;classic&quot; Arcanist
+  * Restore old expanded include path rules for workflows which fall through
+  * Require &quot;--&quot; as an argument terminator when running noninteractively
+  * Port &quot;arc weld&quot; and &quot;arc anoid&quot; to Toolsets workflows, plus minor fixes
+  * Port &quot;arc shell-complete&quot; to Toolsets
+  * Update &quot;arc alias&quot; to modern workflows
+  * Port &quot;arc version&quot; to Toolsets
+  * Port &quot;arc liberate&quot; to Toolsets
+  * Port &quot;arc help&quot; to Toolsets
+  * Collapse Arcanist toolsets from &quot;wilds&quot; into &quot;master&quot;, as an overlay layer
+  * Merge utility/support changes from &quot;wilds&quot; to &quot;master&quot;
+  * Don't depend on &quot;XMLWriter&quot; to load the lint renderer class tree
+  * Merge the remainder of the &quot;experimental&quot; branch
+  * Merge Arcanist lint changes from &quot;experimental&quot; branch
+  * Merge &quot;--draft&quot; flag and related changes from &quot;experimental&quot; to &quot;master&quot;
+  * Make &quot;arcanist/&quot; unit tests pass
+  * Merge &quot;phage&quot; from &quot;experimental&quot;
+  * Fully merge &quot;libphutil/&quot; into &quot;arcanist/&quot;
+  * Move HTML-only intraline diff code to Phabricator
+  * Omit &quot;--&quot; in older fallback commands for Git remote URIs
+  * In Git, fall back across versions more cleanly when trying to get the URI for a remote
+</comment>
+    <requestid>798129</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>203bce9b1c016716f9678abea5ab965a</srcmd5>
+    <version>0.0~git.20201026T090106~f713656a</version>
+    <time>1603821639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844164</requestid>
+  </revision>
+</revisionlist>

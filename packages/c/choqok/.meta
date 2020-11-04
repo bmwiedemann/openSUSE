@@ -1,0 +1,7 @@
+<package name="choqok" project="openSUSE:Factory">
+  <title>Micro-Blogging Client for KDE</title>
+  <description>A Free/Open Source micro-blogging client for the K Desktop Environment.
+The name comes from an ancient Persian word which means Sparrow.
+It currently supports twitter.com and identi.ca services.</description>
+  <devel project="KDE:Extra" package="choqok"/>
+</package>

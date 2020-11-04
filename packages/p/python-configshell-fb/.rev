@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51022f59ed181b9efd97a35c88538f42</srcmd5>
+    <version>1.20</version>
+    <time>1463652883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>393988</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6dab32bfcc5512e457e059ee2f21e5e6</srcmd5>
+    <version>1.20</version>
+    <time>1467205831</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>404553</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93a9ee5cda81f8de76aaad5d493aeb37</srcmd5>
+    <version>1.22</version>
+    <time>1491469225</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>461310</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95e04a7151921a4d39b7611dae0c9510</srcmd5>
+    <version>1.23</version>
+    <time>1505238790</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>521002</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cf08322b4896c8f9dba1ce55b8573649</srcmd5>
+    <version>1.1.fb23</version>
+    <time>1514502194</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>557437</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>aa4b9652a88a6ff0b4019edd1291d513</srcmd5>
+    <version>1.1.fb23</version>
+    <time>1515505928</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build epydoc documentation to allow py3 only build</comment>
+    <requestid>561436</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fe1c79daad32254ff43123961033e458</srcmd5>
+    <version>1.1.fb23</version>
+    <time>1519747094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579976</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ca67d8920e4ef3074bfe422af9093452</srcmd5>
+    <version>1.1.fb25</version>
+    <time>1540200289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643262</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bd041f2e62bbd85096f7341334be35d0</srcmd5>
+    <version>1.1.fb25</version>
+    <time>1544726505</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653987</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>23f79e522b92e97ff9134263ca437e2f</srcmd5>
+    <version>1.1.25</version>
+    <time>1552380839</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>682854</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e8d5352b800d5f999c1f7edbef267052</srcmd5>
+    <version>1.1.26</version>
+    <time>1569851942</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733703</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cabc6b74d3c7232783ea287e1f0807ca</srcmd5>
+    <version>1.1.27</version>
+    <time>1583311677</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781302</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>86431003b5afc7b370f9a6d3f07f9f95</srcmd5>
+    <version>1.1.27</version>
+    <time>1583446917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781621</requestid>
+  </revision>
+</revisionlist>

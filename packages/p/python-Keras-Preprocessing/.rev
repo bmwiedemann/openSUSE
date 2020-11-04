@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ee29778f6e88cd3d480c822dc37460ba</srcmd5>
+    <version>1.0.5</version>
+    <time>1543591963</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by python-Keras</comment>
+    <requestid>652742</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>92bfa509f25f6e1e536701fada3d0cb9</srcmd5>
+    <version>1.1.0</version>
+    <time>1583613663</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-keras as a recommend only to not create cycle
+
+- Match up exclude archs with tensorflow
+
+- Update to 1.1.0:
+  * Various fixes for new keras and tensorflow
+- Switch to multibuild and enable tests</comment>
+    <requestid>779125</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2ea308ecbf1e3a191a30fcf59ab91806</srcmd5>
+    <version>1.1.0</version>
+    <time>1590780258</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not run doc tests as they require old TF</comment>
+    <requestid>810154</requestid>
+  </revision>
+</revisionlist>

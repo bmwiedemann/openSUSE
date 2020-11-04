@@ -1,0 +1,5 @@
+<package name="opennlp-chunk-models" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="opennlp-chunk-models"/>
+</package>

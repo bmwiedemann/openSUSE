@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>756127e58415e33631abccca239d2a47</srcmd5>
+    <version>2004.30</version>
+    <time>1589892278</time>
+    <user>dimstar_suse</user>
+    <comment>New monospace font from Microsoft</comment>
+    <requestid>805737</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f7c4862d1139a2b3090dc745e4be13a3</srcmd5>
+    <version>2005.15</version>
+    <time>1589993119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2005.15
+  * This release of Cascadia Code adjusts the Windows GDI metrics
+    to reduce line spacing and fix some vertical alignment issues
+    in legacy applications.</comment>
+    <requestid>807380</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53c5eb2f6f112f887524744c4a5b50cf</srcmd5>
+    <version>2007.01</version>
+    <time>1594228340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2007.01
+  * The double-equals ligature == has been updated to improve
+    visual clarity
+  * The diacritics on IJacute are no longer malformed
+  * We've introduced a set of compatibility features to improve
+    the rendering of powerline glyphs in legacy GDI applications</comment>
+    <requestid>819314</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>36a6f49533b9aee71b9dd1d7e95b33e1</srcmd5>
+    <version>2008.25</version>
+    <time>1598726288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2008.25
+  * We've temporarily stopped shipping variable OTFs due to some
+    concerns about overlapping and psautohint
+  * The heaviest weight of Cascadia has been made a little lighter
+  * We have aligned the Powerline glyphs and the box-/line-drawing
+    glyphs better to their metrics and to the letter glyphs
+  * Diacritic anchors have been added to all alphabetic characters (#282, #330)
+  * The font now ships with decomposed fi and fl ligatures
+  * The horn combining diacritic has had its weight fixed somewhat for Bold
+  * Primes have been redesigned to give them a more &quot;angled&quot; feel (#294)
+  * Acute and grave have been given additional weight to help
+    differentiate them from dot (#268)
+  * The contextual alternate for x used to signify hexadecimal
+    numbers has been disabled (#285)</comment>
+    <requestid>829903</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ec89c07e5e580e69db5511055d0b0465</srcmd5>
+    <version>2009.14</version>
+    <time>1600277706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2009.14
+  * Cascadia now has support for the Salishan languages of the
+    Pacific Northwest and other coastal scripts!
+  * We've fixed an issue in the -&lt;&lt; ligature that caused it to
+    overlap itself at certain font weights (#355)
+  * We remastered mark positioning for glyphs with existing
+    diacritics for improved design for letters with multiple
+    diacritics above
+  * We have implemented a workaround for a freetype rendering
+    issue that resulted in chunky rendering for certain glyphs
+    (#350)
+- Package variable fonts instead of static ones</comment>
+    <requestid>834781</requestid>
+  </revision>
+</revisionlist>

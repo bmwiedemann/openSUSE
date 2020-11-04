@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ff854559c4f9395b6fa55e84c83174c</srcmd5>
+    <version>unknown</version>
+    <time>1595339287</time>
+    <user>dimstar_suse</user>
+    <comment>Initial packaging of repository definition for dnf, so that dnf gets a comparable out of the box experience to zypper</comment>
+    <requestid>822097</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1687d3120b0c089282c44b03aa51ad0c</srcmd5>
+    <version>unknown</version>
+    <time>1596036011</time>
+    <user>dimstar_suse</user>
+    <comment>- Install repo files for 64-bit RISC-V</comment>
+    <requestid>823285</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>848619c11b05606f339169efdab4cc66</srcmd5>
+    <version>unknown</version>
+    <time>1600277677</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix openSUSE Leap update repo paths</comment>
+    <requestid>834682</requestid>
+  </revision>
+</revisionlist>

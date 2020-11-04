@@ -1,0 +1,19 @@
+<package name="wireguard-tools" project="openSUSE:Factory">
+  <title>WireGuard userspace tools</title>
+  <description>WireGuard is a novel VPN that runs inside the Linux Kernel and uses
+state-of-the-art cryptography (the &quot;Noise&quot; protocol). It aims to be
+faster, simpler, leaner, and more useful than IPSec, while avoiding
+the massive headache. It intends to be considerably more performant
+than OpenVPN. WireGuard is designed as a general purpose VPN for
+running on embedded interfaces and super computers alike, fit for
+many different circumstances. It runs over UDP.
+
+This package contains command-line tools to interact with the
+WireGuard kernel module.  Currently, it provides only a single tool:
+
+wg: set and retrieve configuration of WireGuard interfaces
+
+</description>
+  <devel project="network:vpn:wireguard" package="wireguard-tools"/>
+  <url>https://www.wireguard.com/</url>
+</package>

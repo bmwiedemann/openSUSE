@@ -1,0 +1,5 @@
+<package name="libretro-blastem" project="openSUSE:Factory">
+  <title>BlastEm libretro core for Sega Genesis emulation</title>
+  <description>BlastEm is an open source, higly accurate emulator for the Genesis/Megadrive that runs on modest hardware. This package is for RetroArch/libretro front-end.</description>
+  <devel project="Emulators" package="libretro-blastem"/>
+</package>

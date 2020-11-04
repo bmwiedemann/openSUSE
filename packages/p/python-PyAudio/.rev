@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a2db551d7701b01bf32e452e484b71e</srcmd5>
+    <version>0.2.8</version>
+    <time>1445287798</time>
+    <user>dimstar_suse</user>
+    <comment>Please accept this new RPM. Is needed for Education anki </comment>
+    <requestid>337931</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a28c1c859a3ccb9a092b2187af7ea76</srcmd5>
+    <version>0.2.11</version>
+    <time>1504000018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.11
+  * Fix use-after-free memory issue in callback handler.
+  * Fix docstring for get_output_latency().
+- Update to 0.2.10
+  * Release the GIL during PortAudio I/O calls to avoid potential deadlock.
+  * Add a few automated unit tests.
+- Update to PyAudio 0.2.9
+  * Fix overflow error handling logic for pa_read_stream.
+  * Fix IOError arguments.
+  * Python library surfaces issues with importing low-level C module.
+  * Code formatting update.
+  * Updates to examples for Python 3 compatibility.
+- Implement single-spec version
+- Fix source URL
+</comment>
+    <requestid>519239</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6357dfa0ba0b364e6598d38df6b99874</srcmd5>
+    <version>0.2.11</version>
+    <time>1573647279</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746314</requestid>
+  </revision>
+</revisionlist>

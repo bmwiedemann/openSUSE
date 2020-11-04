@@ -1,0 +1,17 @@
+<package name="python-netpbmfile" project="openSUSE:Factory">
+  <title>python-netpbmfile</title>
+  <description>Netpbmfile is a Python library to read and write image files in the Netpbm format as specified at http://netpbm.sourceforge.net/doc/.
+
+The following Netpbm and Portable FloatMap formats are supported:
+
+    PBM (bi-level)
+    PGM (grayscale)
+    PPM (color)
+    PAM (arbitrary)
+    XV thumbnail (RGB332, read-only)
+    PF (float32 RGB, read-only)
+    Pf (float32 grayscale, read-only)
+
+No gamma correction is performed. Only one image per file is supported.</description>
+  <devel project="devel:languages:python:numeric" package="python-netpbmfile"/>
+</package>

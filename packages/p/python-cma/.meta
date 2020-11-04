@@ -1,0 +1,7 @@
+<package name="python-cma" project="openSUSE:Factory">
+  <title>CMA-ES, Covariance Matrix Adaptation Evolution Strategy for non-linear numerical optimization in Python</title>
+  <description>A stochastic numerical optimization algorithm for difficult
+(non-convex, ill-conditioned, multi-modal, rugged, noisy) optimization
+problems in continuous search spaces, implemented in Python. </description>
+  <devel project="devel:languages:python:numeric" package="python-cma"/>
+</package>

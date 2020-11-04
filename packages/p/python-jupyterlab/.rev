@@ -1,0 +1,114 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a8ea8c2d432f3763b497dfacc0054db</srcmd5>
+    <version>1.2.3</version>
+    <time>1575923840</time>
+    <user>dimstar_suse</user>
+    <comment>Renamed jupyter-jupyterlab</comment>
+    <requestid>755333</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4b30ebd7fe433ad84dee2a8bf8ad3a46</srcmd5>
+    <version>1.2.3</version>
+    <time>1576189108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755892</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2092ab55800c81178dc40d7041f1c75a</srcmd5>
+    <version>1.2.4</version>
+    <time>1579195255</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764775</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6377308a031764b8eb5c52a38650b485</srcmd5>
+    <version>1.2.6</version>
+    <time>1580300338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768087</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fff6a300132c8c104f136593335f89f5</srcmd5>
+    <version>2.0.0</version>
+    <time>1583311646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>781253</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2d77cfe14f21bf1726cc5efd5d1b51ce</srcmd5>
+    <version>2.0.0</version>
+    <time>1583837711</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782989</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>242224320bd6f743565e95c1065f84c2</srcmd5>
+    <version>2.0.0</version>
+    <time>1585761665</time>
+    <user>dimstar_suse</user>
+    <comment>- We should work with tornado 4, 5 and 6.
+- The bugs were found in tornado 6.0.1 and 6.0.2 were fixed
+  by upstream developers</comment>
+    <requestid>790533</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>55dd320b05f594a85621659db9f81f3f</srcmd5>
+    <version>2.1.3</version>
+    <time>1590506518</time>
+    <user>maxlin_factory</user>
+    <comment>- Fix download url
+- Fix the deps to match setup.py
+
+- update to version 2.1.3:
+  * Fix Jupyterlab manager extension handling of missing package
+    metadata (#8463)
+  * Python 3.10 compatibility (#8446)
+  * Fix extension compatibility checks (#8434)
+- changes from version 2.1.2:
+  * Fix icon sidebar height for third party extensions (#8333)
+  * Pin JupyterLab server requirement more tightly (#8330)
+  * Scrolls cells into view after deletion (#8287)
+  * Sets data attribute on file type in filebrowser (#8275)
+
+- update to version 2.1.1:
+  * Pin puppeteer to fix ci (#8260)
+  * Fix Save As for files without sessions (#8248)
+  * fix sed commands for /usr/bin/env
+- changes from version 2.1.0:
+  * See the JupyterLab 2.1 milestone on GitHub for the full list of
+    pull requests and issues closed.
+  * User-facing changes
+    + Display the extension manager in the left sidebar by
+      default. Users will need to acknowledge the disclaimer in the
+      extension manager before using it. (#8050, #8145)
+    + Added blacklist and whitelist support for the extension manager
+      (#7989)
+    + Automatically link URLs in notebook output text (#8075, #7393)
+    + Added a “Restart Kernel and Run All Cells…” button to the
+      notebook toolbar (#8024)</comment>
+    <requestid>808519</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cde805165bf2fd36034810ad21a3049d</srcmd5>
+    <version>2.1.4</version>
+    <time>1591743019</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.4:
+  * Various minor fixes</comment>
+    <requestid>812839</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6034b40cefe997a8f7da3b08cadedb06</srcmd5>
+    <version>2.2.0</version>
+    <time>1595011725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821358</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6ee006bafbc9b1f558dad248a46d147</srcmd5>
+    <version>0.16.0</version>
+    <time>1589315489</time>
+    <user>dimstar_suse</user>
+    <comment>apache2-mod_auth_mellon package requested via jsc#SLE-8957 and jsc#SLE-8958</comment>
+    <requestid>802733</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5159a21a8aede17cde5836e7a1d94096</srcmd5>
+    <version>0.16.0</version>
+    <time>1591286189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811402</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b8de779f9cf4c32392a1225f2fdb0af7</srcmd5>
+    <version>0.17.0</version>
+    <time>1599771230</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>833494</requestid>
+  </revision>
+</revisionlist>

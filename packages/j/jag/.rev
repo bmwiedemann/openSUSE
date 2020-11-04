@@ -1,0 +1,48 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0bde3bb8d9dc140202c4dd355f4a1a4</srcmd5>
+    <version>0.3.5</version>
+    <time>1585602309</time>
+    <user>dimstar_suse</user>
+    <comment>Add jag back to factory</comment>
+    <requestid>789748</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0418fb38ff3e8bae8e8015d71787272b</srcmd5>
+    <version>0.3.6</version>
+    <time>1585761012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.6
+  * Project files cleanup
+  * Renamed PNG image from editor.
+  * Added manpage and desktop files</comment>
+    <requestid>790255</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9e6a258aaf74d09be49c5b363c5d5bc3</srcmd5>
+    <version>0.3.7</version>
+    <time>1591101396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.7
+  * Fixed integrated qmake support for pkg-config
+  * jag-editor: Removing extra file after running the compiled binary.
+- Update URL.</comment>
+    <requestid>810255</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1802de9549534c4695d1f6b34977d45</srcmd5>
+    <version>0.3.8</version>
+    <time>1599598261</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.8
+* Warning and deprecated functions fixed in GCC.
+  * game.pro: Changed to '-std=gnu++17' review.
+  * src/editor/jag-editor.pro: Changed to '-std=gnu++17' review.
+  * All themes have been removed, except the default theme for reasons that
+    are &quot;freeware&quot;, but with additional Fasticon restrictions.
+  * Game configuration path changed.
+  * Changed the position of the XCloseDisplay line.
+  * About: Added contributor nickname.</comment>
+    <requestid>832957</requestid>
+  </revision>
+</revisionlist>

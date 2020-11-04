@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1fd6a5cbd43e7a1bb17c8490d49d7027</srcmd5>
+    <version>3.5.0</version>
+    <time>1553263095</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>680343</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>66a01a31780b46493eac5c1c2b19b481</srcmd5>
+    <version>3.5.0</version>
+    <time>1553700159</time>
+    <user>dimstar_suse</user>
+    <comment>Fix duplicate artifact alias error</comment>
+    <requestid>689056</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>67c83001e12f21f288e8acadbf7e19a4</srcmd5>
+    <version>3.5.0</version>
+    <time>1554458636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>690941</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>885672706916902a0e8ddf6b4a19fc5a</srcmd5>
+    <version>3.5.0</version>
+    <time>1562056720</time>
+    <user>dimstar_suse</user>
+    <comment>- Add aliases for the aqute-bnd artifact
+</comment>
+    <requestid>712778</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>743370f44a2605cb9f8a93482740a38b</srcmd5>
+    <version>3.5.0</version>
+    <time>1585761513</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build against OSGi 7</comment>
+    <requestid>790521</requestid>
+  </revision>
+</revisionlist>

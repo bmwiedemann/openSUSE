@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d75286798f8a1c2bde6437526de2bb8e</srcmd5>
+    <version>2.4.8</version>
+    <time>1574167478</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>749220</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cbd43c1b075a20cae4759129eecf140c</srcmd5>
+    <version>2.4.8</version>
+    <time>1575282915</time>
+    <user>dimstar_suse</user>
+    <comment>Fix s390x build</comment>
+    <requestid>752789</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d43fc9f25c8998e34120cae6bf51f0e2</srcmd5>
+    <version>2.4.16</version>
+    <time>1575923780</time>
+    <user>dimstar_suse</user>
+    <comment>Allow buildign with Java 11</comment>
+    <requestid>755232</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ea1f4ce39b1d82f673313435e148992d</srcmd5>
+    <version>2.4.16</version>
+    <time>1586641571</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid bogus eclipse-platform dependencies</comment>
+    <requestid>792672</requestid>
+  </revision>
+</revisionlist>

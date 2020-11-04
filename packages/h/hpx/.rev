@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bff1641eba50867005c0314dbd148442</srcmd5>
+    <version>1.4.0</version>
+    <time>1580373687</time>
+    <user>dimstar_suse</user>
+    <comment>Re-add fixed and updated version of hpx</comment>
+    <requestid>768301</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>273b57695d061a4ddb972c765404b638</srcmd5>
+    <version>1.4.0</version>
+    <time>1582018761</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774852</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fed564b3e7750efce5251d081688cf08</srcmd5>
+    <version>1.4.1</version>
+    <time>1591862981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813267</requestid>
+  </revision>
+</revisionlist>

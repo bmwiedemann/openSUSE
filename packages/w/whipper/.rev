@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a0c01e764582bd84487d98a714059798</srcmd5>
+    <version>0.9.0</version>
+    <time>1576063487</time>
+    <user>dimstar_suse</user>
+    <comment>Reintroduce whipper</comment>
+    <requestid>755771</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31239eae9ed72cb3afe5ead34c39f6e0</srcmd5>
+    <version>0.9.0</version>
+    <time>1576505984</time>
+    <user>dimstar_suse</user>
+    <comment>- Run testsuite</comment>
+    <requestid>757193</requestid>
+  </revision>
+</revisionlist>

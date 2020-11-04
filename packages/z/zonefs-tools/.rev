@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8ad977af621f9d2442dedc19118826e</srcmd5>
+    <version>0.1</version>
+    <time>1586248274</time>
+    <user>dimstar_suse</user>
+    <comment>Zonefs is a very simple file system exposing each zone of a zoned block device as a file. Zonefs does not have complex on-disk metadata and relies solely on a super block stored at LBA 0 of the device.
+
+This package contains the user-space tools for zonefs.</comment>
+    <requestid>791786</requestid>
+  </revision>
+</revisionlist>

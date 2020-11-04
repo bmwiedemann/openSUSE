@@ -1,0 +1,146 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4507b2a7b8d95e6dde408b72f57a2e8c</srcmd5>
+    <version>16.0.0</version>
+    <time>1468482281</time>
+    <user>dimstar_suse</user>
+    <comment>Here's the missing module for python-service_identity</comment>
+    <requestid>407021</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e2d340fc5d0fcf813c214b740484bfe</srcmd5>
+    <version>17.2.0</version>
+    <time>1499754302</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>507971</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>88073c80cfd134e8479a04795f70bf2e</srcmd5>
+    <version>17.3.0</version>
+    <time>1510505968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>540454</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3740897721c695634c10e076e0cd821f</srcmd5>
+    <version>17.3.0</version>
+    <time>1514027500</time>
+    <user>dimstar_suse</user>
+    <comment>- add test requirements, run tests conditionally
+  (not BuildRequiring pytest fixes bsc#1073845)</comment>
+    <requestid>559130</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>748c9740b9398323e4bca1695abed617</srcmd5>
+    <version>17.4.0</version>
+    <time>1516091685</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>561518</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d323be2a321c821f66ef6c42cac4e715</srcmd5>
+    <version>18.1.0</version>
+    <time>1526030755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605119</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>28190378a0cd470ab8d4c0b49d4ce888</srcmd5>
+    <version>18.2.0</version>
+    <time>1536148027</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632660</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2cda78f95c94ad1df2fccda826504683</srcmd5>
+    <version>18.2.0</version>
+    <time>1544816726</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes call</comment>
+    <requestid>655564</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c294e63e2c4a561fff6556e8f06ca0e8</srcmd5>
+    <version>19.1.0</version>
+    <time>1552048117</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 19.1.0
+ * Fixed a bug where deserialized objects with cache_hash=True could have
+    incorrect hash code values
+ * Add is_callable, deep_iterable, and deep_mapping validators.
+ * Fixed stub files to prevent errors raised by mypy's
+    disallow_any_generics = True option.
+ * Attributes with init=False now can follow after kw_only=True attributes.
+ * attrs now has first class support for defining exception classes.
+ * Clarified documentation for hashing to warn that hashable objects should
+    be deeply immutable</comment>
+    <requestid>681547</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7a63b234714f299f814459cb3c574bb8</srcmd5>
+    <version>19.1.0</version>
+    <time>1565775442</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to multibuild to enable tests</comment>
+    <requestid>722713</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fee468c76549b026f61ba93f12d404cb</srcmd5>
+    <version>19.3.0</version>
+    <time>1572883686</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 19.3.0
+ * Fixed auto_attribs usage when default values cannot be compared directly
+     with ==, such as numpy arrays.
+
+- update to version 19.2.0:
+  * Backward-incompatible Changes
+    + Removed deprecated &quot;Attribute&quot; attribute &quot;convert&quot; per scheduled
+      removal on 2019/1.  This planned deprecation is tracked in issue
+      `#307 &lt;https://github.com/python-attrs/attrs/issues/307&gt;`_.
+      `#504 &lt;https://github.com/python-attrs/attrs/issues/504&gt;`_
+    + &quot;__lt__&quot;, &quot;__le__&quot;, &quot;__gt__&quot;, and &quot;__ge__&quot; do not consider
+      subclasses comparable anymore.  This has been deprecated since
+      18.2.0 and was raising a &quot;DeprecationWarning&quot; for over a year.
+      `#570 &lt;https://github.com/python-attrs/attrs/issues/570&gt;`_
+  * Deprecations
+    + The &quot;cmp&quot; argument to &quot;attr.s()&quot; and &quot;attr.ib()&quot; is now
+      deprecated.  Please use &quot;eq&quot; to add equality methods (&quot;__eq__&quot;
+      and &quot;__ne__&quot;) and &quot;order&quot; to add ordering methods (&quot;__lt__&quot;,
+      &quot;__le__&quot;, &quot;__gt__&quot;, and &quot;__ge__&quot;) instead – just like with
+      `dataclasses
+      &lt;https://docs.python.org/3/library/dataclasses.html&gt;`_.  Both
+      are effectively &quot;True&quot; by default but it's enough to set
+      &quot;eq=False&quot; to disable both at once.  Passing &quot;eq=False,
+      order=True&quot; explicitly will raise a &quot;ValueError&quot; though.  Since
+      this is arguably a deeper backward-compatibility break, it will
+      have an extended deprecation period until 2021-06-01.  After
+      that day, the &quot;cmp&quot; argument will be removed.  &quot;attr.Attribute&quot;
+      also isn't orderable anymore.  `#574
+      &lt;https://github.com/python-attrs/attrs/issues/574&gt;`_
+  * Changes</comment>
+    <requestid>741439</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a092a892011447ac213d2a8ae8e784cd</srcmd5>
+    <version>19.3.0</version>
+    <time>1590649660</time>
+    <user>maxlin_factory</user>
+    <comment>- Do not restrict us to new setuptools, we generate stuff
+  even with the older variants</comment>
+    <requestid>807115</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b3424c2ceb9e794d09ff9c3a74e08996</srcmd5>
+    <version>20.2.0</version>
+    <time>1601398727</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>837189</requestid>
+  </revision>
+</revisionlist>

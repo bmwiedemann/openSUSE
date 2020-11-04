@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ae79a277c09dc4fe2e152417852e9e3a</srcmd5>
+    <version>1.0.3</version>
+    <time>1336471250</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115404</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>ae79a277c09dc4fe2e152417852e9e3a</srcmd5>
+    <version>1.0.3</version>
+    <time>1340184339</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>ae79a277c09dc4fe2e152417852e9e3a</srcmd5>
+    <version>1.0.3</version>
+    <time>1359110598</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ce77ad2b546fb2ba1ee246d722c1cae8</srcmd5>
+    <version>1.0.4</version>
+    <time>1374498256</time>
+    <user>coolo</user>
+    <comment>Update to ver 1.0.4 (forwarded request 183938 from Zaitor)</comment>
+    <requestid>183969</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>ce77ad2b546fb2ba1ee246d722c1cae8</srcmd5>
+    <version>1.0.4</version>
+    <time>1379665003</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>906d6b540cad1947f5607f586b11e513</srcmd5>
+    <version>1.0.4</version>
+    <time>1391770587</time>
+    <user>scarabeus_factory</user>
+    <comment>- fixed license to X11 in specfile</comment>
+    <requestid>221111</requestid>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>906d6b540cad1947f5607f586b11e513</srcmd5>
+    <version>1.0.4</version>
+    <time>1409303686</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>29a4d1f3bcc5c8bceb6049e3e83d6164</srcmd5>
+    <version>1.0.5</version>
+    <time>1523875612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5:
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * config: replace deprecated use of AC_OUTPUT with AC_CONFIG_FILES
+  * Add copyright files for redglass and whiteglass themes.
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>593565</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc286533a59cfa54e9aacf300c322d15</srcmd5>
+    <version>1.0.6</version>
+    <time>1587660026</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796584</requestid>
+  </revision>
+</revisionlist>

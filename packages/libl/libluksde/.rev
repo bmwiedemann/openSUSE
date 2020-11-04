@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a88cb7ac134d53a80555ff3612ddc545</srcmd5>
+    <version>0~20200205</version>
+    <time>1586248166</time>
+    <user>dimstar_suse</user>
+    <comment>This is a new dependency of python-dfVFS.  It provides access to LUKS encrypted volumes.</comment>
+    <requestid>791586</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>260022ea17ba887d6f818967fa568670</srcmd5>
+    <version>0~20200205</version>
+    <time>1588324349</time>
+    <user>dimstar_suse</user>
+    <comment>- remove python2 submodule 
+</comment>
+    <requestid>799067</requestid>
+  </revision>
+</revisionlist>

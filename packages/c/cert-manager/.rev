@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8e4c74c951b4c01b35cb89b275c91790</srcmd5>
+    <version>0.15.1</version>
+    <time>1603202680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatically provision and manage TLS certificates in Kubernetes</comment>
+    <requestid>841647</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a9313aeb4fa0f09de10d9e8aede6f52f</srcmd5>
+    <version>0.15.1</version>
+    <time>1603283992</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>843182</requestid>
+  </revision>
+</revisionlist>

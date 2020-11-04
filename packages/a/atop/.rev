@@ -1,0 +1,73 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63836ade84755f173fe102364e96e139</srcmd5>
+    <version>2.2</version>
+    <time>1485511710</time>
+    <user>dimstar_suse</user>
+    <comment>Want to set this as devel repo for this package. Aim is to get it into PackgageHub.  Customer request.</comment>
+    <requestid>449765</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>29152bc1bbc6f9eabbec153815d723ad</srcmd5>
+    <version>2.3.0</version>
+    <time>1530087714</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619041</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>69a115136274bf9a6884bb9b55a46534</srcmd5>
+    <version>2.4.0</version>
+    <time>1554372464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>691020</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>34997c1b862d898bd4d26f39982bd03a</srcmd5>
+    <version>2.4.0</version>
+    <time>1566464009</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724885</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b49ee5ddc474f311a6554abfc330fd4a</srcmd5>
+    <version>2.5.0</version>
+    <time>1598726006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0 
+  Modifications for atop:
+  * Avoid using perf counters in VM
+    New option 'perfevents' in the atoprc file to define if the Instructions
+	Per Cycle (IPC) should be retrieved via the 'perf' counters. Specify
+	value 'auto' (default), 'enable' or 'disable'. In case of 'auto', the
+	Instructions Per Cycle counter will not be retrieved on VMs due to the
+	overhead of reading this counter in a guest.
+  * Improve daily rotation of logfile for systemd-based systems.
+    Exchange the files /etc/cron.d/atop, /etc/logrotate.d/psaccs_atop,
+	/etc/logrotate.d/psaccu_atop, /usr/share/atop/atop.daily,
+	/var/log/atop/dummy_after and /var/log/atop/dummy_before by
+	atop-rotate.service and atop-rotate.timer.
+  * Bug fixes:
+    Correction of PSI value 'io full'.
+    Use smaps_rollup (if present) instead of smaps for better performance.
+    Use writev instead of 3 single writes to avoid logfile corruption.
+    Modified handling of error messages (remain visible after window is
+	closed).
+    Correct CID for containers created by Kubernetes.
+    Allow reading a logfile via a named pipe (non-seekable).
+  Modifications for atopconvert:
+  * Show version of input file (even if only one parameter specified).
+  General:
+  * The format of the raw file is compatible with version 2.4.
+- Run spec-cleaner
+- Remove requires for cron and logrotate now that there is systemd service
+  and timers handling logrotation
+- Remove Requires(post) for permissions since atop does not use cron files anymore
+- Refresh patch:
+  * atop-makefile.patch
+- Add atop defaults in /etc/default/atop (forwarded request 823802 from elimat)</comment>
+    <requestid>829616</requestid>
+  </revision>
+</revisionlist>

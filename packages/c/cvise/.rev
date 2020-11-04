@@ -1,0 +1,329 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e61ace1af4dd2cbbd17b8955ca27e72</srcmd5>
+    <version>1.0.0+git.20200423.15ffa09</version>
+    <time>1587839249</time>
+    <user>dimstar_suse</user>
+    <comment>A new package submission.</comment>
+    <requestid>796667</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba0b4f7d258f8390170e52d512f144ea</srcmd5>
+    <version>1.0.0+git.20200426.be575d6</version>
+    <time>1588023477</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0+git.20200426.be575d6:
+  * Update build matrix.
+  * Test both LLVM 9 and LLVM 10.
+  * Enable non-type-temp-arg.cpp test (csmith-project/creduce#212).
+  * handle DREs coming from template instantiations
+  * don't call EvaluateAsInt on dependent expressions
+  * Update documentation for latest FreeBSD.
+  * Change logic deciding which clang libs to link with clang_delta
+  * Switch to lib names exported from ClangConfig.cmake
+  * Support multiple passes for --remove-pass option.
+  * Add 2 tests for clang_delta's try-catch pass.
+</comment>
+    <requestid>798063</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f1d307d40e3905dcaeb9bc23002cf4b</srcmd5>
+    <version>1.0.0+git.20200429.99a7004</version>
+    <time>1588186438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0+git.20200429.99a7004:
+  * Refactor script_path and programs in cvise.py.
+  * Finish usage of GNUInstallDirs (#16).
+  * Rapidly improve Pass statistics:
+  * Update wording in COPYING.
+  * Run tests with ${PYTHON_EXECUTABLE} -m pytest.
+  * Respect -DCLANG_FORMAT cmake variable (#15).
+  * Use GNUInstallDirs for configurable install locations
+  * Add ctest for the project (#14).
+  * Remove one more documentation reference of delta.
+</comment>
+    <requestid>798964</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>473d6b5489cebf8f9ee686150b286aed</srcmd5>
+    <version>1.1.0+git.20200430.e8d954e</version>
+    <time>1588324502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0+git.20200430.e8d954e:
+  * Bump to version 1.1.0.
+  * Remove unused YYTEXT_POINTER.
+  * README: remove a section about temporary directories.
+  * Use console for markdown parts.
+  * Add usage example (#18).
+  * Docker: Do not depend on delta.
+  * Allow skipping of passes that miss a prerequisite (#17).
+  * Refactor checking of external programs.
+  * Fix and enable 2 rename-fun tests.
+  * Remove 2 lit files.
+  * Use -W* only for GNU and Clang compilers.</comment>
+    <requestid>799231</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1f4938ef27b4adf1f3c9cc153f2c0241</srcmd5>
+    <version>1.2.0+git.20200507.7cf63b5</version>
+    <time>1588971991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0+git.20200507.7cf63b5:
+  * Fix cvise --version - unknown git version.
+
+- Update to version 1.2.0+git.20200507.9fa4330:
+  * Fix argument parsing of cvise-delta.
+  * Remove unused files in .gitattributes.
+
+- Update to version 1.1.0+git.20200507.c12db9c:
+  * Bump to 1.2.0.
+
+- Update to version 1.1.0+git.20200507.b467807:
+  * Update cvise-delta documentation entry.
+  * Add cvise-delta.
+  * Add delta.json group file.
+  * Fix different argument name error.
+  * Fix crash when we reach enf of reduction.
+  * Add clang_delta piggybacking test.
+  * Skip git hash for cvise --version of a release build.
+  * Do not re-count instances  for clangbinarysearch passes.
+  * Start using psutil and improve CPU count detection.
+  * Remove 2 lit leftovers.
+  * Change timing-related options.
+  * Update CREDUCE_MERGE.
+  * Port to python tests.
+  * correctly remove unused deleted/defaulted functions
+  * Update copyright years.
+  * Port to Python tests.
+  * handle namespace declared by macros
+  * Port to Python tests.
+  * added several tests for remove-namespace pass</comment>
+    <requestid>801271</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>36b13436e5fb4feb774e9ee5451aa5ba</srcmd5>
+    <version>1.2.1+git.20200509.57058d4</version>
+    <time>1589055599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0+git.20200509.57058d4:
+  * Add assert about shell argument.
+  * Prevent no change in RenameParam pass.
+  * Move Peep::a to slow passes.
+  * Fix weird version in Docker example.
+  * Test fedora 32 and rawhide.
+  * Use shell=True only for test script.
+  * Run test-scrupt in subprocess with shell=True (#20).</comment>
+    <requestid>802281</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d62764e4f5d4c6892be00c1a251cc841</srcmd5>
+    <version>1.3.0+git.20200511.50c821f</version>
+    <time>1589197449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0+git.20200511.50c821f:
+  * Bump to 1.3.0.
+  * Decrease pebble.SLEEP_UNIT for faster responsiveness.
+  * Do not parse test_script stdout and stderr outputs.</comment>
+    <requestid>802603</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a7ecc4b971a948861cfe4a0000778132</srcmd5>
+    <version>1.4.0+git.20200601.4173fa7</version>
+    <time>1591101258</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0+git.20200601.4173fa7:
+  * Bump to 1.4.0.
+  * Remove superfluous debugging message.
+
+- Use LLVM 10.
+
+- Update to version 1.3.0+git.20200530.444f5f0:
+  * Add C++ std auto-detection of clangbinarysearch passes.
+
+- Update to version 1.3.0+git.20200528.9dbe6d9:
+  * Fix bash shebin.
+
+- Update to version 1.3.0+git.20200527.46d9394:
+  * Add new argument --commands that can replace script.
+  * Improve wording of error message.
+  * Support Debug/Release subfolder for Windows builds.
+  * Report missing external program.
+  * Document what is expected from interestingness script.
+  * Port test to PyTest.
+  * get real location for angle locs
+  * Add Speed Comparison.
+  * Mention Gentoo linux package installation.</comment>
+    <requestid>810608</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>22663fcf36d93af74d9b9c6f00f0b72c</srcmd5>
+    <version>1.4.0+git.20200601.4173fa7</version>
+    <time>1591742979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812799</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>192ad8b4e32cf05976651bafcde8d592</srcmd5>
+    <version>1.4.0+git.20200617.20d10d4</version>
+    <time>1592398608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git.20200617.20d10d4:
+  * Add --no-renaming option.
+  * Fix interestingness test error message.
+  * Record LLVM version in Bug report.
+  * Fix use of uninitialized members.</comment>
+    <requestid>815407</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>605a9d963ddae75c60cc165da59cf647</srcmd5>
+    <version>1.4.0+git.20200630.58375a7</version>
+    <time>1593547149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git.20200630.58375a7:
+  * Fix crash in unifdef pass with float indices.</comment>
+    <requestid>817860</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>026dca8686a38ba2288e1252fb196f01</srcmd5>
+    <version>1.4.0+git.20200701.2dbaf41</version>
+    <time>1593606459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git.20200701.2dbaf41:
+  * Fix up RemoveUnusedEnumMember constructor.
+
+- Update to version 1.4.0+git.20200701.485b700:
+  * Add new tests for remove-unused-enum-member.
+  * Make remove-unused-enum-member clangbinarypass.
+  * Make RemoveUnusedEnumMember to accept --to-counter.</comment>
+    <requestid>818074</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bbca4aac9aa36ecd5a1775c727c1f506</srcmd5>
+    <version>1.5.0+git.20200707.c1ebd48</version>
+    <time>1594228263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0+git.20200707.c1ebd48:
+  * Bump to 1.5.0.
+
+- Update to version 1.4.0+git.20200707.1195f4f:
+  * Fix crash when reducing multiple files.
+
+- Add python3-psutil to Requires.
+
+- Update to version 1.4.0+git.20200706.369bc31:
+  * Port test-case.
+  * retrieve InvalidIdx only for definitions
+
+- Update to version 1.4.0+git.20200703.e2dcfaa:
+  * Update merged revision.
+  * Port tests to python.
+  * update Copyright year
+  * skip cases where the TemplateArg has the same name as the parameter
+  * fixed a crash in rewriteNamedDecls
+  * RemoveUnusedEnumMember: sync up from master.</comment>
+    <requestid>819230</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>42f0020323dedddfcfd3a8d53d67cce3</srcmd5>
+    <version>1.6.0+git.20200726.1b1be7c</version>
+    <time>1595864716</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0+git.20200726.1b1be7c:
+  * Bump to v1.6.0.
+
+- Update to version 1.5.0+git.20200724.686d1e9:
+  * clex: correctly exit when file does not exist.
+  * Clean up ignores a bit.
+  * Add ignores.
+  * One more fix to ignores.
+  * Add more ignores.
+  * Fix mapping and add ignores.
+  * Replace coverage badge.
+  * Rename codecov.yml file.
+  * Add .codecov.yml file with prefix fix.
+  * Switch to codecov.
+  * LGMT: exclude cpp/fixme-comment type.
+  * Fix 2 LGTM CPP warnings.
+  * LGTM: Do not build with debug info enabled.
+  * Remove object files for LGTM.
+  * Add coverage badge.
+  * Update build script.
+  * Add missing python3 package.
+  * Add exclude pattern.
+  * cvise/utils/testing.py: print full backtrace for test failure
+  * cvise/passes/clangbinarysearch.py: add missing imports
+  * Fix usage of BUILD_TYPE.
+  * Pass BUILD_TYPE to build_and_test.sh.
+  * Add missing sqlite3.
+  * Add special coverage build.
+  * Add argument to build_and_test.sh.
+  * Install python3-pip package.</comment>
+    <requestid>822878</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>55b57d768d7858afbcecbf389ce0b91f</srcmd5>
+    <version>1.6.0+git.20200728.98d731e</version>
+    <time>1596108846</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop using zstd compression.
+- Update to version 1.6.0+git.20200728.98d731e:
+  * Catch proper exception in readkey.py.
+  * Add missing dependency.
+  * Add first integration test.
+- Support building on Leap 15.
+</comment>
+    <requestid>823550</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b61f91b91f9edada62f8c6c692c8d00e</srcmd5>
+    <version>1.7.0+git.20200929.17345b8</version>
+    <time>1601488435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0+git.20200929.17345b8:
+  * Bump to v1.7.0.
+
+- Update to version 1.6.0+git.20200929.a12db89:
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * build_and_test.sh: resolve bash via /usr/bin/env
+  * passes/ifs.py: fix infinite loop in IfPass
+  * Fix a small type.</comment>
+    <requestid>838595</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>73651d3fa6b4cc2bc56dc22cf40917cd</srcmd5>
+    <version>1.8.0+git.20201021.07d465a</version>
+    <time>1603369534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0+git.20201021.07d465a:
+  * Bump to v1.8.0.
+
+- Update to version 1.8.0+git.20201021.39657be:
+  * Disable renaming passes by default.
+  * Fix LinesPass for Fortran &quot;Standard Fixed Format&quot;.
+  * Use proper openSUSE package in Docker image.
+  * Bump to v1.7.0.
+  * Fix psutil core count detection code.
+  * Add OBS image at the beginning.
+  * Add icon.
+  * Add OBS master following project.
+  * Update last update Creduce commit.
+  * Fix a small type.</comment>
+    <requestid>843248</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e487b9d45bc8d0c4b3ce39928ec697cd</srcmd5>
+    <version>1.8.0+git.20201029.d32ab1b</version>
+    <time>1604054950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0+git.20201029.d32ab1b:
+  * Fix verbose output for sanity check.
+  * Improve wording for transformation opportunities.
+  * Improve debugging for InsaneTestCaseError.</comment>
+    <requestid>844890</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="enlightenment-theme-openSUSE-neon" project="openSUSE:Factory">
+  <title>e-theme-openSUSE</title>
+  <description>Default openSUSE theme for enlightenment </description>
+  <devel project="X11:Enlightenment:Factory" package="enlightenment-theme-openSUSE-neon"/>
+</package>

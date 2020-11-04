@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0d35531b01ca080eb05acfa67c6b857a</srcmd5>
+    <version>1.1.0</version>
+    <time>1575463802</time>
+    <user>dimstar_suse</user>
+    <comment>This is a new dependency of Blender 2.81.</comment>
+    <requestid>750185</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a8443e5055668cd6aeb7053bdb868d7</srcmd5>
+    <version>1.1.0</version>
+    <time>1576014290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755548</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>387c9231eea971cf1b75bbd3b31d85f9</srcmd5>
+    <version>1.1.0</version>
+    <time>1579195387</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only for x86_64 as it is the only supported platform (forwarded request 764919 from Guillaume_G)</comment>
+    <requestid>764957</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6e20c00d29f24075a2a2623c8db07fae</srcmd5>
+    <version>1.2.2</version>
+    <time>1601044087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830276</requestid>
+  </revision>
+</revisionlist>

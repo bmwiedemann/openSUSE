@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acc8de67b4ceec0450e80703a0a1d296</srcmd5>
+    <version>0~git20190902</version>
+    <time>1581456201</time>
+    <user>dimstar_suse</user>
+    <comment>Removed windows sources with legal issues</comment>
+    <requestid>772147</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0c022f20da4fb2f59ed8b4634456e0fa</srcmd5>
+    <version>0~git20190902</version>
+    <time>1591862951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>813248</requestid>
+  </revision>
+</revisionlist>

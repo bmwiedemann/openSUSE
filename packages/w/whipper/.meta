@@ -1,0 +1,7 @@
+<package name="whipper" project="openSUSE:Factory">
+  <title>Whipper</title>
+  <description>Whipper is a Python 2 CD-DA ripper, fork of the morituri project (CDDA ripper for *nix systems aiming for accuracy over speed). It improves morituri which development seems to have halted merging old ignored pull requests, improving it with bugfixes and new features.
+
+https://github.com/JoeLametta/whipper</description>
+  <devel project="multimedia:apps" package="whipper"/>
+</package>

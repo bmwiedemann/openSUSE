@@ -1,0 +1,242 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>151321f04da49e84a6706fcb42ebb79b</srcmd5>
+    <version>1.1</version>
+    <time>1208226988</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="6">
+    <srcmd5>b54382a4c232e1d5629f74351c556cb4</srcmd5>
+    <version>1.1</version>
+    <time>1208439700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="9">
+    <srcmd5>516cbb956228abcaa7a32bcbcc5d6fc0</srcmd5>
+    <version>1.1</version>
+    <time>1208818446</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="91">
+    <srcmd5>39f2b59587f59964925fbccff582caa3</srcmd5>
+    <version>1.1</version>
+    <time>1219708599</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="92">
+    <srcmd5>f1535729cb438f1303a60f60d6beaada</srcmd5>
+    <version>1.1</version>
+    <time>1219881837</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="104">
+    <srcmd5>636f92a8b7dc3138759196aadae9b7ea</srcmd5>
+    <version>1.1</version>
+    <time>1228317835</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7118ae1f2fdbf596c447ccf76867d533</srcmd5>
+    <version>1.2</version>
+    <time>1242420710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7118ae1f2fdbf596c447ccf76867d533</srcmd5>
+    <version>1.2</version>
+    <time>1242420710</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>35f7bcb7e66c49da6797b6135b6b7ba8</srcmd5>
+    <version>1.2</version>
+    <time>1268923699</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>35f7bcb7e66c49da6797b6135b6b7ba8</srcmd5>
+    <version>1.2</version>
+    <time>1278667346</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>35f7bcb7e66c49da6797b6135b6b7ba8</srcmd5>
+    <version>1.2</version>
+    <time>1278678577</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="10">
+    <srcmd5>35f7bcb7e66c49da6797b6135b6b7ba8</srcmd5>
+    <version>1.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>62e3c301bf3f1cf50b81344e78751114</srcmd5>
+    <version>1.2</version>
+    <time>1316445278</time>
+    <user>lrupp</user>
+    <comment>- fix a typo in alternatives --install call causing a build failure</comment>
+    <requestid>83565</requestid>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>62e3c301bf3f1cf50b81344e78751114</srcmd5>
+    <version>1.2</version>
+    <time>1319181901</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>15faf9d862dc5134387289e5bd207617</srcmd5>
+    <version>1.2</version>
+    <time>1323191531</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>15faf9d862dc5134387289e5bd207617</srcmd5>
+    <version>1.2</version>
+    <time>1340183360</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>6d52eeb58fa2341adc84f19fa524ef95</srcmd5>
+    <version>1.2</version>
+    <time>1355910954</time>
+    <user>coolo</user>
+    <comment>- drop useless excalibur-avalon from build requires</comment>
+    <requestid>145647</requestid>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>6d52eeb58fa2341adc84f19fa524ef95</srcmd5>
+    <version>1.2</version>
+    <time>1359108921</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="20">
+    <srcmd5>ef9ba8fbf9be635b33454a44ce9b20b7</srcmd5>
+    <version>1.2</version>
+    <time>1378899594</time>
+    <user>coolo</user>
+    <comment>- use add_maven_depmap from javapackages-tools</comment>
+    <requestid>197289</requestid>
+  </revision>
+  <revision rev="20" vrev="21">
+    <srcmd5>3c25d18aa28679dc18343b47641111b1</srcmd5>
+    <version>1.2</version>
+    <time>1378998314</time>
+    <user>scarabeus_factory</user>
+    <comment>jpackage-utils collison fix</comment>
+    <requestid>198684</requestid>
+  </revision>
+  <revision rev="21" vrev="23">
+    <srcmd5>3c25d18aa28679dc18343b47641111b1</srcmd5>
+    <version>1.2</version>
+    <time>1379662415</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="24">
+    <srcmd5>2b810b5572eafc9ec520faefc75325b8</srcmd5>
+    <version>1.2</version>
+    <time>1407236398</time>
+    <user>coolo</user>
+    <comment>- Do not mess with defattr as it is pointless.
+
+- Try to use the update-alternatives properly.
+
+Hope everyone find this sattisfactory now.</comment>
+    <requestid>243370</requestid>
+  </revision>
+  <revision rev="23" vrev="26">
+    <srcmd5>2b810b5572eafc9ec520faefc75325b8</srcmd5>
+    <version>1.2</version>
+    <time>1409300946</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="27">
+    <srcmd5>9e3e14d57d97c1392c561b9dce21a702</srcmd5>
+    <version>1.2</version>
+    <time>1427982946</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools update</comment>
+    <requestid>292613</requestid>
+  </revision>
+  <revision rev="25" vrev="28">
+    <srcmd5>7564634e9844e60234d66b92e29c5dfe</srcmd5>
+    <version>1.2</version>
+    <time>1496230357</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>498498</requestid>
+  </revision>
+  <revision rev="26" vrev="29">
+    <srcmd5>2c7153ee23c730fdf460b916661599d5</srcmd5>
+    <version>1.2</version>
+    <time>1505333996</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 9</comment>
+    <requestid>522245</requestid>
+  </revision>
+  <revision rev="27" vrev="30">
+    <srcmd5>1e3af5b61a6eaf020d861f4206ae2bc7</srcmd5>
+    <version>1.2</version>
+    <time>1532446397</time>
+    <user>dimstar_suse</user>
+    <comment>build-conflict with jdk11+</comment>
+    <requestid>623105</requestid>
+  </revision>
+  <revision rev="28" vrev="31">
+    <srcmd5>87a041a35ee6c0db1b73b7e2ca3b13af</srcmd5>
+    <version>1.2</version>
+    <time>1544189449</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653642</requestid>
+  </revision>
+  <revision rev="29" vrev="32">
+    <srcmd5>591c2a0adc3f845dbab85ffe8c1415af</srcmd5>
+    <version>1.2</version>
+    <time>1545866669</time>
+    <user>dimstar_suse</user>
+    <comment>Add maven artifact alias</comment>
+    <requestid>658039</requestid>
+  </revision>
+  <revision rev="30" vrev="33">
+    <srcmd5>c4424015da2f4bd858206370f694c390</srcmd5>
+    <version>1.2</version>
+    <time>1553262807</time>
+    <user>dimstar_suse</user>
+    <comment>Add conflicts and obsoletes in order to make upgrade even smoother</comment>
+    <requestid>686896</requestid>
+  </revision>
+  <revision rev="31" vrev="34">
+    <srcmd5>28e2fe60264adf6d3b4d6091dc7b3b41</srcmd5>
+    <version>1.2</version>
+    <time>1555588516</time>
+    <user>dimstar_suse</user>
+    <comment>A bigger cleanup</comment>
+    <requestid>694669</requestid>
+  </revision>
+  <revision rev="32" vrev="35">
+    <srcmd5>4828a4cf92baec7959ec0e1c4af35a5b</srcmd5>
+    <version>1.2</version>
+    <time>1577136955</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with new rpm</comment>
+    <requestid>755693</requestid>
+  </revision>
+  <revision rev="33" vrev="36">
+    <srcmd5>ed722012ec14299a17ef4455a7785fcd</srcmd5>
+    <version>1.2</version>
+    <time>1580373208</time>
+    <user>dimstar_suse</user>
+    <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
+    <requestid>767559</requestid>
+  </revision>
+</revisionlist>

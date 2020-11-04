@@ -1,0 +1,9 @@
+<package name="reaim" project="openSUSE:Factory">
+  <title>A tool to benchmark overall system performance</title>
+  <description>This tool benchmarks overall system speed by mixing measurements of
+file system speed and execution speed under VM and CPU pressure.
+
+</description>
+  <devel project="benchmark" package="reaim"/>
+  <url>http://sourceforge.net/projects/re-aim-7</url>
+</package>

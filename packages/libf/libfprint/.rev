@@ -1,0 +1,351 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>0205e3a425ba1f1757e12e3123fdd983</srcmd5>
+    <version>0.0.6</version>
+    <time>1221532622</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8d3db63786e77754816a03fd660c1eb8</srcmd5>
+    <version>0.0.6</version>
+    <time>1223388188</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>76babcd4751c736261693b1d38798708</srcmd5>
+    <version>0.0.6</version>
+    <time>1223571073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>d23c86e0755a8ed654a9a786cb05cee9</srcmd5>
+    <version>0.0.6</version>
+    <time>1223908540</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>67f72054d51e1cae6ce282a0c57f824a</srcmd5>
+    <version>0.0.6</version>
+    <time>1225123073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>c1af876b9fba0a4c6771357ba93f7bd6</srcmd5>
+    <version>0.0.6</version>
+    <time>1225711331</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="8">
+    <srcmd5>a9178d5e385da4953ed1fbe2a8fdbe6a</srcmd5>
+    <version>0.0.6</version>
+    <time>1225928834</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="10">
+    <srcmd5>897e9fe9301c8deff7603b8e7f618765</srcmd5>
+    <version>0.0.6</version>
+    <time>1233184626</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="11">
+    <srcmd5>9d2a6f3d917f5fc924dc7111f7625b81</srcmd5>
+    <version>0.0.6</version>
+    <time>1242423221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="13">
+    <srcmd5>9d2a6f3d917f5fc924dc7111f7625b81</srcmd5>
+    <version>0.0.6</version>
+    <time>1242423221</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="14">
+    <srcmd5>5b168b7dafbe0dc28e3589c33357c9df</srcmd5>
+    <version>0.0.6</version>
+    <time>1265751206</time>
+    <user>autobuild</user>
+    <comment>Copy from home:hennevogel:TODO/libfprint based on submit request 31733 from user a_jaeger
+</comment>
+  </revision>
+  <revision rev="12" vrev="15">
+    <srcmd5>5cf04882a138ffa62d8ce59d75403a61</srcmd5>
+    <version>0.0.6</version>
+    <time>1268924562</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="13" vrev="17">
+    <srcmd5>5cf04882a138ffa62d8ce59d75403a61</srcmd5>
+    <version>0.0.6</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="14" vrev="18">
+    <srcmd5>5cf04882a138ffa62d8ce59d75403a61</srcmd5>
+    <version>0.0.6</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8601484adcd7e406ca3a747f342a1853</srcmd5>
+    <version>0.1.0</version>
+    <time>1282914737</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libfprint based on submit request 46179 from user oertel
+</comment>
+    <requestid>46179</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e5dcf276d0b6cdde73403f3f87e318d3</srcmd5>
+    <version>0.1.0</version>
+    <time>1285971356</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libfprint based on submit request 49526 from user prusnak
+</comment>
+    <requestid>49526</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4bdca3ec428d411cf07570580a4b04ff</srcmd5>
+    <version>0.3.0</version>
+    <time>1286489999</time>
+    <user>autobuild</user>
+    <comment>Copy from hardware/libfprint based on submit request 49992 from user coolo
+</comment>
+    <requestid>49992</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>593e2bdbe4dde5ad0767f8f413da8cb4</srcmd5>
+    <version>0.3.0</version>
+    <time>1289832100</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53020 from user a_jaeger
+</comment>
+    <requestid>53020</requestid>
+  </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>d8f69dac7333b7481d32fb9f5af89e33</srcmd5>
+    <version>0.3.0</version>
+    <time>1289832109</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53020
+</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>d8f69dac7333b7481d32fb9f5af89e33</srcmd5>
+    <version>0.3.0</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>d8f69dac7333b7481d32fb9f5af89e33</srcmd5>
+    <version>0.3.0</version>
+    <time>1319182091</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>7c8e5a4023db126ea7a2d676d5a60163</srcmd5>
+    <version>0.3.0</version>
+    <time>1323085459</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95071 from coolo)</comment>
+    <requestid>95097</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>aa287f29c7e4020a366ef122f7b318fe</srcmd5>
+    <version>0.3.0</version>
+    <time>1323192211</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="11">
+    <srcmd5>aaacacfe1aec31aa0ef4c1013ed5637e</srcmd5>
+    <version>0.3.0</version>
+    <time>1338030704</time>
+    <user>coolo</user>
+    <comment>Forward.</comment>
+    <requestid>121756</requestid>
+  </revision>
+  <revision rev="25" vrev="13">
+    <srcmd5>aaacacfe1aec31aa0ef4c1013ed5637e</srcmd5>
+    <version>0.3.0</version>
+    <time>1340183584</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="26" vrev="14">
+    <srcmd5>f086e150a3627270efd8c1e1971141ac</srcmd5>
+    <version>0.3.0</version>
+    <time>1346179679</time>
+    <user>coolo</user>
+    <comment>license update: LGPL-2.1+
+No LGPL-2.1 &quot;only&quot; licenses found in the package (forwarded request 131784 from babelworx)</comment>
+    <requestid>131785</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>560833e0ee6a638df9472127feccec2d</srcmd5>
+    <version>0.4.0</version>
+    <time>1346914672</time>
+    <user>coolo</user>
+    <comment> (forwarded request 132613 from posophe)</comment>
+    <requestid>132840</requestid>
+  </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>560833e0ee6a638df9472127feccec2d</srcmd5>
+    <version>0.4.0</version>
+    <time>1359109268</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c2e9f347d7ccd0e351d8677ca3c08ac3</srcmd5>
+    <version>0.5.0</version>
+    <time>1366214390</time>
+    <user>coolo</user>
+    <comment>- Fix file conflicts 
+
+- fix -devel package requires,nowhere this library requires 
+ pkgconfig(ImageMagick), pkgconfig(glib-2.0), pkgconfig(libusb-1.0)
+ pkgconfig(openssl), pkgconfig(zlib), not at linking time, not at
+ the headers..
+
+- Place udev rules in the correct directory. 
+
+- Update to version 0.5.0:
+  + Drivers:
+    - New VFS300/VFS301 driver
+    - New AES2550/AES2810 drivers
+    - New AES1660 driver
+    - New AES2660 driver
+    - New DigitalPersona URU4500 driver
+    - Avoid empty capture and improve image contrast in the
+      AES2501 and AES2550 drivers
+    - Update upektc driver, add support for Eikon Touch 300
+    - Fix UrU4000 image capture on ARM
+  + Library:
+    - Fix global variable collisions with libusb and other system
+      headers
+    - Fix possible crash in NBIS image processing with some
+      fingerprints
+  + Udev rules:
+    - Fix power control path for newer kernels
+    - Move udev rules to the correct directory
+    - Don't print duplicated udev rules
+    - Include udev rules in the tarball</comment>
+    <requestid>171254</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>35ae0338c3e3f4e7e63add630129b68a</srcmd5>
+    <version>0.5.0</version>
+    <time>1369641117</time>
+    <user>coolo</user>
+    <comment>Add support for 147e:2020 ID to upeke2 (fdo#59320) (forwarded request 176181 from jritzerfeld)</comment>
+    <requestid>176327</requestid>
+  </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>35ae0338c3e3f4e7e63add630129b68a</srcmd5>
+    <version>0.5.0</version>
+    <time>1379662949</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c0e2c7a70c4e3a9171ba3bca6d8a9f19</srcmd5>
+    <version>0.5.1</version>
+    <time>1381127480</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.5.1:
+  + Add support for 147e:2020 to upeke2 driver
+  + Fix possible race condition, and cancellation in uru4000 driver
+  + Add Microsoft keyboard to the suspend blacklist
+  + Plenty of build fixes
+- Adhere to https://en.opensuse.org/SourceUrls
+- Rebased libfprint-install_examples.patch
+- Removed libfprint-upeke2_add_147e_2020_id_support.patch as it is included now.
+
+
+- install examples correctly
+- add examples subpackage (forwarded request 202057 from Mailaender)</comment>
+    <requestid>202435</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1964711aea9b6bba9593c4d5482fc789</srcmd5>
+    <version>0.5.1</version>
+    <time>1386757727</time>
+    <user>coolo</user>
+    <comment>-  define _udevrulesdir only if not already in place.
+- run %udev_rules_update if such macro is defined (forwarded request 208179 from elvigia)</comment>
+    <requestid>209901</requestid>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>1964711aea9b6bba9593c4d5482fc789</srcmd5>
+    <version>0.5.1</version>
+    <time>1409301559</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f23ac1792f84383bd12f5804a3455c47</srcmd5>
+    <version>0.6.0</version>
+    <time>1423397039</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>284685</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9f41f6179331566c6dbbd339bc41a0c3</srcmd5>
+    <version>0.6.0</version>
+    <time>1423688811</time>
+    <user>coolo</user>
+    <comment>replace by package fprintd</comment>
+    <requestid>248580</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9f41f6179331566c6dbbd339bc41a0c3</srcmd5>
+    <version>0.6.0</version>
+    <time>1423742828</time>
+    <user>dimstar_suse</user>
+    <comment>Still needed by fprintd</comment>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2a2ccfb6a9d08b3699134da5fcad236e</srcmd5>
+    <version>0.99.0</version>
+    <time>1546946624</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658714</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>eb28cea9ec82fe99302c8650e8d9c28c</srcmd5>
+    <version>1.0</version>
+    <time>1578437545</time>
+    <user>dimstar_suse</user>
+    <comment>fixed the download url</comment>
+    <requestid>761270</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b9caf6f6192c5c802c10144a29620e17</srcmd5>
+    <version>1.90.1</version>
+    <time>1584446954</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785591</requestid>
+  </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>f5d81a3480f23b5ae93717bed172a07c</srcmd5>
+    <version>1.90.1</version>
+    <time>1588697759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800182</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2deb1e69e6ad655ef5b6989c9b113672</srcmd5>
+    <version>1.90.3</version>
+    <time>1601399063</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838358</requestid>
+  </revision>
+</revisionlist>

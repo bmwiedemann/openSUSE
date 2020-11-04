@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfc828f00bf0fd2d41398b9d9c100edf</srcmd5>
+    <version>1.7.3</version>
+    <time>1582299766</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain jc in Factory</comment>
+    <requestid>777769</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6e9bbd03381868f5ee39e0031fd0b5d1</srcmd5>
+    <version>1.11.1</version>
+    <time>1590650460</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809693</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db91ce39c2faa919126c5dd1ab46ce37</srcmd5>
+    <version>1.13.4</version>
+    <time>1598029471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>828196</requestid>
+  </revision>
+</revisionlist>

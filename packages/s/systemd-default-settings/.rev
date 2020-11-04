@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f85a150ce0d5143ad20455661b4527b2</srcmd5>
+    <version>0.2</version>
+    <time>1602762408</time>
+    <user>dimstar_suse</user>
+    <comment>Release 0.2</comment>
+    <requestid>841475</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72c9137589bbcfe64da593666835dc0f</srcmd5>
+    <version>0.4</version>
+    <time>1604306264</time>
+    <user>dimstar_suse</user>
+    <comment>- rpm file lists are now generated from the spec file.
+
+- Make sure the release number between the main and the branding
+  packages match
+
+- Import 0.3
+  d299248 List drop-in directories in SUSE.list exclusively
+  e4651a7 Disable memory accounting by default for all distros (jsc#PM-2229 jsc#PM-2230)
+
+- Import 0.2</comment>
+    <requestid>844519</requestid>
+  </revision>
+</revisionlist>

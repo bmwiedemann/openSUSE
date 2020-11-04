@@ -1,0 +1,5 @@
+<package name="ki18n" project="openSUSE:Factory">
+  <title>ki18n</title>
+  <description>Ki18n</description>
+  <devel project="KDE:Frameworks5" package="ki18n"/>
+</package>

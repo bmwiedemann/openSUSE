@@ -1,0 +1,12 @@
+<package name="ldas-tools-framecpp" project="openSUSE:Factory">
+  <title>Toolkit providing C++ bindings for dealing with frame data</title>
+  <description>LDAS (LIGO Data Analysis System) is a collection of libraries and executables
+aid in the processing of gravitation wave data sets. %{name} provides the
+tools abstraction toolkit for LDAS.
+
+This package provides C++ bindings for libframe for dealing with frame files.
+
+</description>
+  <devel project="science" package="ldas-tools-framecpp"/>
+  <url>http://software.ligo.org</url>
+</package>

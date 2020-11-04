@@ -1,0 +1,6 @@
+<package name="python-hypothesis-auto" project="openSUSE:Factory">
+  <title></title>
+  <description>An extension for the Hypothesis project that enables fully automatic tests for type annotated functions.</description>
+  <devel project="devel:languages:python" package="python-hypothesis-auto"/>
+  <url>https://timothycrosley.github.io/hypothesis-auto/</url>
+</package>

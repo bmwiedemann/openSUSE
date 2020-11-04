@@ -1,0 +1,738 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>226b08b9a46b2c8b8eaaf31a1afa13be</srcmd5>
+    <version>0.5.12</version>
+    <time>1501572302</time>
+    <user>maxlin_factory</user>
+    <comment>renamed from python3-xonsh, See Request#512644</comment>
+    <requestid>512645</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e534ec3a6e95cbfd22cc38e695657fec</srcmd5>
+    <version>0.6.0</version>
+    <time>1515876259</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>557311</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1141e615bdeb4d33c719bf6f3daead98</srcmd5>
+    <version>0.6.2</version>
+    <time>1525779400</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.2:
+ * Added:
+  * Release tarballs now include licenses and minimal documentation for xonsh and ply
+  * Wizard now has a FileInserter node that allows blocks to be inserted and replaced inside of a file. This adheres to conversion rules fordumping as provided on this node.
+  * New xonsh.wizard.StateVisitor.flatten() method for flattening the current state.
+ * Changed:
+  * The xonsh startup wizard will only be triggered if no xonshrc files exist and the file ~/.local/config/xonsh/no-wizard is not present.
+  * The xonfig wizard command will now run write out to the xonshrc file.
+  * Wizard nodes Save and Load had their names changed to SaveJSON and LoadJSON.
+ * Removed:
+  * Static configuration is dead (config.json), long live run control (xonshrc)!
+  * The following evironment variables have been removed as they are no longer needed: $LOADED_CONFIG and $XONSHCONFIG.
+  * Many support functions for static configuration have also been removed.
+ * Fixed:
+  * Files starting with # are auto-escaped by TAB completion
+- update to version 0.6.1:
+ * Added:
+  * Support for MSYS2.
+  * New ``xonsh.main.setup()`` function for starting up xonsh in 3rd party
+    packages.
+ * Changed:
+  * Updated CircleCI to use circle version 2.0
+  * Replaced StopIteration with return in CommandPipeline.iterraw.
+  * Xonsh run control now also looks for the XDG-compliant file
+    ``~/.config/xonsh/rc.xsh`` at startup.
+ * Fixed:
+  * Clean out ``$LINES`` and ``$COLUMNS`` if set, preventing some programs from drawing weirdly
+  * cat from xoreutils now outputs in configured encoding
+  * Fixed hanging issue with pipelines whose middle processes exit before the
+    first or last process.
+  * Fixed issue where xonsh would deduplicate spaces from bash autocompletions.
+  * Fixed failing redirections from stderr to stdout when the command
+    being executed was a callable alias.
+  * Ensure that the ``free_cwd`` contrib can only be active on pure Windows.
+  * Made an exceptional case in ``iglobpath()`` more robust when Python globbing
+    fails for due to strange scrandir issue.
+  * Unexpected process suspension on Cygwin and MSYS2.
+  * ``$XONSH_APPEND_NEWLINE`` will now default to True when in interactive mode.
+  * Fixed issue with uncalled lambdas being run in subproc mode.
+  * Lambda nodes not have proper line and column numbers in AST.
+  * Properly throw ``SyntaxError`` when no kwargs are defined
+    in a kwarg-only function. This used to throw a
+    ``TypeError: 'NoneType' object is not iterable``.
+  * Addressed issue where encoding and errors were None when teeing output.
+  * Commands like ``git c`` would complete to ``git 'checkout '`` because git adds an extra space
+    to the end of the completion, which was being captured in the completion. Xonsh now fixes the git issue
+    while retaining all whitespace when there is other internal whitespace.
+</comment>
+    <requestid>603097</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>733ee7942898474296ab1c07d4b73b7d</srcmd5>
+    <version>0.6.3</version>
+    <time>1526023148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.3:
+ * Added:
+  * Docs for using ``@(&lt;expr&gt;)`` as a way to run commands and a gotcha about
+    list of strings vs single string expressions.
+  * Ubuntu versions which xonsh is packaged for (with xonsh versions)
+ * Changed:
+  * When reporting errors without a traceback (i.e. ``$XONSH_SHOW_TRACEBACK = False``) and the error is a ``XonshError``
+    the exception type is not longer printed.
+  * ``CommandPipeline.proc`` may now be ``None``, to accomodate when the process
+    fails to even start (i.e. a missing command or incorrect permisions).
+ * Fixed:
+  * The ``curl`` command will now be run in a thread, which prevents documents that
+    do not end in a newline from writing over the next prompt and vice versa.
+  * Fix bug on Windows when ``PATHEXT`` environment variable did not exist.
+    This also fixes building the xonsh documentation on Windows.
+  * Fixed a bug in the `free_cwd &lt;http://xon.sh/xontribs.html#free-cwd&gt;`__ Windows Xontrib, which caused the prompt to error if the current directory is 
+    deleted/renamed from an other process.
+  * Fixed issue with ``$XONSH_SHOW_TRACEBACK`` not being respected in subprocess
+    mode when the command could not be found or had incorrect permissions.
+</comment>
+    <requestid>606300</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ed9ffb77fba693c64da052a15a86f9e</srcmd5>
+    <version>0.6.4</version>
+    <time>1527583081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.4:
+ * Changed:
+  * Error message improved for sourcing foreign shells, when file cannot be found
+    or there is a syntax error.
+ * Fixed:
+  * Fixed issues with readline completer tab completing entries
+    with spaces.
+  * Fixed ``xonsh.tools.columnize()`` bug the prevented single-row
+    input from being columnized correctly.
+  * Now honor ASYNC and AWAIT as keywords in tokenizer on
+    Python 3.7.
+</comment>
+    <requestid>611051</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>baeb5ade1ee804a7393f3ce1659fa386</srcmd5>
+    <version>0.6.6</version>
+    <time>1530304026</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.6:
+ * Added:
+  * A multipurpose add method to EnvPath.
+  * Added ``pygments-cache`` project in order to reduce startup time.
+ * Changed:
+  * built_ins.py, corrected a typo.
+  * test/test_news.py
+    It now uses regex to verify the format of rst files
+  * Mercurial (``hg``) will no longer run in a threadable subprocess when
+    it is run in interactive mode.
+ * Fixed:
+  * issue 2313
+- update to version 0.6.5:
+ * Added:
+  * Wizard ``FileInsterter`` node class now has ``dumps()`` method for
+    converting a mapping to a string to insert in a file.
+ * Fixed:
+  * Fixed issue with ``xonfig wizard`` writer failing to write valid run control
+    files for environment variables that are containter types. In particular,
+    the storage of ``$XONSH_HISTORY_SIZE`` has been fixed.
+</comment>
+    <requestid>617152</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>41d997d7d1f857e74883663058378219</srcmd5>
+    <version>0.6.9</version>
+    <time>1531947277</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>622801</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dcef0b035caa88ba6086643fc3c17c4d</srcmd5>
+    <version>0.7.3</version>
+    <time>1535123523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>631175</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d4cd41ea267a9b14a1b3bf5c5a965a6</srcmd5>
+    <version>0.7.7</version>
+    <time>1537787610</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.7.7:
+ - Added:
+  - A xontrib which adds support for autojump to xonsh
+  - Added new env-var ``XONSH_HISTORY_MATCH_ANYWHERE``. If set to ``True`` then
+    up-arrow history matching will match existing history entries with the search
+    term located anywhere, not just at the beginning of the line. Default value is
+    ``False``
+ - Changed:
+  - Improved iteration over virtual environments in Vox.__iter__
+ - Fixed:
+  - Fix for ``Enter`` not returning from Control-R search buffer
+  - Fixed automatic wrapping of many subprocesses that spanned multiple lines via
+    line continuation characters with logical operators separating the commands.
+    For example, the following now works:
+    .. code-block:: sh
+          echo 'a' \
+          and echo 'b'
+  - Environment swapping would not properly reraise errors due to weird
+    Python name binding issue.
+- update to version 0.7.6:
+ - Added:
+  - Callable aliases may now accept a ``stack`` argument. If they do, then the
+    stack, as computed from the aliases call site, is provided as a list of
+    ``FrameInfo`` objects (as detailed in the standard library ``inspect``
+    module). Otherwise, the ``stack`` parameter is ``None``.
+  - ``SubprocSpec`` now has a ``stack`` attribute, for passing the call stack
+    to callable aliases. This defaults to ``None`` if the spec does not
+    need the stack. The ``resolve_stack()`` method computes the ``stack``
+    attribute.
+ - Changed:
+  - xonsh/environ.py
+    Exceptions are caught in the code executed under Env.swap()
+ - Fixed:
+  - Scripts are now cached by their realpath, not just abspath.
+  - Fixed a potential crash (``AssertionError: wrong color format``) on Python 3.5 and prompt_toolkit 1.
+  - The ``completer`` command now correctly finds completion functions
+    when nested inside of other functions.
+  - Fixed a crash when using the ``$XONSH_STDERR_PREFIX/POSTFIX`` with
+    prompt_toolkit and Pygments 2.2.
+- update to version 0.7.5:
+ - Fixed:
+  - Recent command history in ptk2 prompt now returns most recently executed
+    commands first (as expected)
+  - Fixed a regression taat prevented the readline backend from beeing used. This
+    regression was caused by the new ansi-color names, which are incompatible with
+    pygments 2.2.
+- update to version 0.7.4:
+ - Added:
+  - New ``xonsh-cat`` command line utility, which is a xonsh replacement
+    for the standard UNIX ``cat`` command.
+  - The new ``xonsh.xoreutils.cat.cat_main()`` enables the ``xonsh.xoreutils.cat``
+    module to be run as a command line utility.
+  - New ``CommandsCache.is_only_functional_alias()`` and
+    ``CommandsCache.lazy_is_only_functional_alias()`` methods for determining if
+    if a command name is only implemented as a function, and thus has no
+    underlying binary command to execute.
+  - ``xonsh.xontribs.xontribs_load()`` is a new first-class API for loading
+    xontribs via a Python function.
+  - ``$COMPLETIONS_DISPLAY`` now supports readline-like behavior on
+    prompt-toolkit v2.
+ - Changed:
+  - The xonsh Jupyter kernel now will properly redirect the output of commands
+    such as ``git log``, ``man``, ``less`` and other paged commands to the client.
+    This is done by setting ``$PAGER = 'cat'``. If ``cat`` is not available
+    on the system, ``xonsh-cat`` is used instead.
+  - The ``setup()`` function for starting up a working xonsh has ``aliases``,
+    ``xontribs``, and ``threadable_predictors`` as new additional keyword
+    arguments for customizing the loading of xonsh.
+ - Fixed:
+  - Fixed a bug with converting new PTK2 colors names to old names when using PTK1 or Jupyter
+      as the shell type.
+  - ``CommandsCache.locate_binary()`` will now properly return None when
+    ``ignore_alias=False`` and the command is only a functional alias,
+    such as with ``cd``. Previously, it would return the name of the
+    command.
+  - Fixed issue with ``$COMPLETIONS_DISPLAY`` raising an error on
+    prompt-toolkit v2 when the value was not set to ``multi``.
+  - ValueError when executing ``vox list``
+</comment>
+    <requestid>637174</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>474947cbd6a0237df2c417cd67e5253b</srcmd5>
+    <version>0.8.1</version>
+    <time>1541666910</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.1
+ - Added:
+  - ``SubprocSpec`` has a new ``pipeline_index`` integer attribute that indicates
+    the commands position in a pipeline. For example, in
+    .. code-block:: sh
+      p = ![ls -l | grep x]
+    The ``ls`` command would have a pipeline index of 0
+    (``p.specs[0].pipeline_index == 0``) and ``grep`` would have a pipeline index
+    of 1 (``p.specs[1].pipeline_index == 1``).  This may be usefule in callable
+    alaises which recieve the spec as an argument.
+ - Changed:
+  - Removed ``fish`` from list of supported foreign shells in the wizard.
+  - Circle CI config updated to use a pinned version of ``black`` (18.9b0)
+  - Pytest plugin now uses ``xonsh.main.setup()`` to setup test environment.
+  - Linux platform discovery will no longer use ``platform.linux_distribution()``
+    on Python &gt;=3.6.6. due to pending deprecation warning.
+  - Updated Linux Guide as Xonsh is now available in Arch Linux official repositories.
+ - Fixed:
+  - Builtin dynamic proxies and deprecation warning proxies were not deleting
+    attributes and items properly.
+  - Fixed stdout/sdterr writing infinite recurssion error that would occur in
+    long pipelines of callable aliases.
+  - Fixed a bug which under very rare conditions could cause the shell
+    to die with PermissionError exception while sending SIGSTOP signal
+    to a child process.
+  - Fixed further raw string deprecation warnings thoughout the code base.
+- update to version 0.8.0
+ - Added:
+- changelog.sh is an internal script for generating changelog.</comment>
+    <requestid>646484</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5d45446c57b758de966dd17e2b9b2a66</srcmd5>
+    <version>0.8.2</version>
+    <time>1544817226</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>653698</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>61c8408b9b26694cb3cdd5110868ad00</srcmd5>
+    <version>0.8.8</version>
+    <time>1548335661</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.8
+ - Added:
+  - ``vox new`` has an added ``-p --interpreter`` flag for choosing the python interpreter to use for virtualenv creation
+  - The default Python intrepreter vox uses to create virtual environments can be set using the ``$VOX_DEFAULT_INTERPRETER`` environment variable.
+ - Changed:
+  - ``lib.ChainDB`` now resolves results to the type of the inputs if possible
+- update to version 0.8.7
+ - Added:
+  - New xonsh syntax ``pf`` strings -- combining path strings with f-strings.
+    Usage:
+    .. code-block:: bash
+         gil@bad_cat ~ $ repos = 'github.com'
+         gil@bad_cat ~ $ pf&quot;~/{repos}&quot;
+         PosixPath('/home/gil/github.com')
+         gil@bad_cat ~ $ pf&quot;{$HOME}&quot;
+         PosixPath('/home/gil')
+         gil@bad_cat ~ $ pf&quot;/home/${'US' + 'ER'}&quot;
+         PosixPath('/home/gil')
+ - Fixed:
+  - Set ``ls`` to ``predict_true`` in ``default_threadable_predictors``.  This prevents ``ls`` on OSX
+    from being flagged on OSX as unthreadable (incorrectly) because it relies on ``ncurses``.
+- update to version 0.8.6
+ - Added:
+  - Doco about how to update xonsh and how to set and unset environment variables
+ - Fixed:
+  - Updated behavior of the ``cat`` coreutils function so that it properly
+    handles as vareity of cases such as:
+      * Exits after concatenating normal files which have a finite size
+      * Continues to run for special files which do not have a size,
+        such as ``/dev/random``
+      * Is interruptable in all cases with Crtl-C.
+  - Callable aliases were not properly raising a ``CalledProcessError`` when they
+    returned a non-zero exist status when ``$RAISE_SUBPROC_ERROR = True``. This has
+    been fixed.
+  - Fixed interpretation of color names with PTK2 and Pygments 2.3.1.
+- update to version 0.8.5
+ - Added:
+  - Add alias to `base16 shell &lt;https://github.com/chriskempson/base16-shell&gt;`_
+  - Installation / Usage
+      1. To install use pip
+      .. code-block:: bash
+          python3 -m pip install xontrib-base16-shell
+      2. Add on ``~/.xonshrc``
+      .. code:: python
+          :number-lines:
+          $BASE16_SHELL = $HOME + &quot;/.config/base16-shell/&quot;
+          xontrib load base16_shell
+      3. See image
+      .. image:: https://raw.githubusercontent.com/ErickTucto/xontrib-base16-shell/master/docs/terminal.png
+          :width: 600px
+          :alt: terminal.png
+  - New ``DumbShell`` class that kicks in whenever ``$TERM == &quot;dumb&quot;``.
+    This usually happens in emacs. Currently, this class inherits from
+    the ``ReadlineShell`` but adds some light customization to make
+    sure that xonsh looks good in the resultant terminal emulator.
+  - Aliases from foreign shells (e.g. Bash) that are more than single expressions,
+    or contain sub-shell executions, are now evaluated and run in the foreign shell.
+    Previously, xonsh would attempt to translate the alias from sh-lang into
+    xonsh. These restrictions have been removed.  For example, the following now
+    works:
+    .. code-block:: sh
+        $ source-bash 'alias eee=&quot;echo aaa \$(echo b)&quot;'
+        $ eee
+        aaa b
+  - New ``ForeignShellBaseAlias``, ``ForeignShellFunctionAlias``, and
+    ``ForeignShellExecAlias`` classes have been added which manage foreign shell
+    alias execution.
+ - Changed:
+  - String aliases will now first be checked to see if they contain sub-expressions
+    that require evaluations, such as ``@(expr)``, ``$[cmd]``, etc. If they do,
+    then an ``ExecAlias`` will be constructed, rather than a simple list-of-strs
+    substitutiuon alias being used. For example:
+    .. code-block:: sh
+        $ aliases['uuu'] = &quot;echo ccc $(echo ddd)&quot;
+        $ aliases['uuu']
+        ExecAlias('echo ccc $(echo ddd)\n', filename='&lt;exec-alias:uuu&gt;')
+        $ uuu
+        ccc ddd
+  - The ``parse_aliases()`` function now requires the shell name.
+  - ``ForeignShellFunctionAlias`` now inherits from ``ForeignShellBaseAlias``
+    rather than ``object``.
+ - Fixed:
+  - Fixed issues where the prompt-toolkit v2 shell would print an extra newline
+    after Python evaluations in interactive mode.
+- update to version 0.8.4
+ - Added:
+  - Added the possibility of arbitrary paths to the help strings in ``vox activate`` and
+    ``vox remove``; also updated the documentation accordingly.
+  - New ``xonsh.aliases.ExecAlias`` class enables multi-statement aliases.
+  - New ``xonsh.ast.isexpression()`` function will return a boolean of whether
+    code is a simple xonsh expression or not.
+  - Added top-level ``run-tests.xsh`` script for safely running the test suite.
+ - Changed:
+  - String aliases are no longer split with ``shlex.split()``, but instead use
+    ``xonsh.lexer.Lexer.split()``.
+  - Update xonsh/prompt/cwd.py _collapsed_pwd to print 2 chars if a directory begins with &quot;.&quot;
+  - test which determines whether a directory is a virtualenv
+    previously it used to check the existence of 'pyvenv.cfg'
+    now it checks if 'bin/python' is executable
+ - Fixed:
+  - Fixed issue with ``and`` &amp; ``or`` being incorrectly tokenized in implicit
+    subprocesses. Auto-wrapping of certain subprocesses will now correctly work.
+    For example::
+        $ echo x-and-y
+        x-and-y
+  - Fix EOFError when press `control+d`
+  - fix no candidates if no permission files in PATH
+  - Fixed interpretation of color names with PTK2 and Pygments 2.3.
+  - Several ResourceWarnings: unclosed file in tests
+  - AttributeError crash when using --timings flag
+  - issue #2929
+- update to version 0.8.3
+ - Added:
+  - Dociumentation paragrapgh about gow to run xonsh in Emacs shell
+ - Changed:
+  - Updated what pip requirements are needed to build the documnetaion
+  - ``$XONSH_TRACEBACK_LOGFILE`` now beside strings also accepts ``os.PathLike``
+    objects.
+  - Updated vended version of ``ply`` to 3.11
+  - Deprecation warnings now print from stacklevel 3.
+ - Fixed:
+  - Annotation assignment statements (e.g. ``x : int = 42``) are now supported.
+  - Fixed error output wording for fg and bg commands
+  - Flake8 errors
+  - xonsh can now properly parse import statements with trailing comma within
+    parentheses, e.g.::
+      from x import (y, z,)
+  - ResourceWarning: unclosed scandir iterator in imphooks.py
+  - Removed use of deprecated ``inspect.formatargspec()`` for ``inspect.signature()``
+  - ``Makefile`` directive that updates vended version of ``ply``
+</comment>
+    <requestid>667871</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f05f0a8efc9dad6b8b22801e720d8987</srcmd5>
+    <version>0.8.10</version>
+    <time>1551216034</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.10
+ - Added:
+  - New ``xonsh.aliases.partial_eval_alias()`` function and related classes
+    for dispatching and evaluating partial alias applications for callable
+    aliases.
+ - Changed:
+  - Subprocesses will no longer close file descriptors automatically.
+    This was causing issues with other commands that expected file
+    descriptors to remain open, such as ``make``.
+  - The ``xonsh.Aliases.eval_alaises()`` method updated to use
+    ``xonsh.aliases.partial_eval_alias()``.
+ - Fixed:
+  - Fixed ``xonsh.completers.base.complete_base()`` to no longer throw an
+    error caused by ``complete_python()`` sometimes returning a tuple.
+    This fixes cases such as ``ls &amp;&amp;&lt;TAB&gt;``.
+  - Fixed regression with line continuations in implicit subprocess mode within
+    indented blocks of code, such as if-statements.
+  - Resolved issue where setting empty signal masks was causing the
+    terminal to close. This was problematic for certain command
+    pipelines. For example, ``pv /dev/urandom | head`` now works.
+  - Prevents recurssive errors from being raised when there is no child process
+    in ``xonsh.jobs.wait_for_active_job()``.
+  - Tweaked ``xonsh.completers.commands.complete_skipper()`` to insert a space following
+    certain tokens (``&amp;&amp;``, ``||``, ``|``, ``and``, ``or``) to avoid overwriting existing tokens
+    with completer output.
+  - Fixed bug with evaluating recurssive aliases that did not implement
+    the full callable alias signature.
+ - Security:
+  - &lt;news item&gt;,
+ - Authors:
+  - Anthony Scopatz
+  - Gil Forsyth
+  - Troy de Freitas
+- update to version 0.8.9
+ - Added:
+  - New ``env_prefix`` &amp; ``env_postfix`` prompt fields for rendering the pre- and
+    post-fix characters of the an active virtual environment.
+  - ON_WSL attribute in platform.py
+  - Rendering of ``{env_name}`` in ``$PROMPT`` is now suppressed if
+    the ``$VIRTUAL_ENV_DISABLE_PROMPT`` environment variable is
+    defined and truthy.
+  - Rendering of ``{env_name}`` in ``$PROMPT`` is now overridden by
+    the value of ``str($VIRTUAL_ENV_PROMPT)`` if that environment variable
+    is defined and ``not None``. ``$VIRTUAL_ENV_DISABLE_PROMPT`` takes precedence
+    over ``$VIRTUAL_ENV_PROMPT``.
+  - A xontrib which adds support for `direnv &lt;https://direnv.net/&gt;`_
+ - Changed:
+  - ``env_name`` prompt field now looks up the pre- and post-fix characters,
+    rather than relying on hard-coded values.
+  - Some minor ``history show`` efficiency improvements.
+  - If we are on wsl, avoid to use xonsh_preexec_fn when pipe.
+ - Fixed:
+  - Made ``$PATH`` searching more robust to broken symlinks on Windows.
+  - undesirable SIGSTOP by putting in a SIGCONT
+  - Fixed issue with recursive aliases not being passes all keyword arguments
+    that are part of the callable alias spec. This allows commands like
+    ``aliases['hsa'] = &quot;history show all&quot;; hsa | head`` to no longer fail
+    with strange errors.
+ - Authors:
+  - Anthony Scopatz
+  - Sagar Tewari
+  - Brian Skinn
+  - Yohei Tamura
+  - anatoly techtonik
+  - 74th
+  - Chad Kennedy
+</comment>
+    <requestid>679043</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2c106773496546c97ee0bbbc6483a4c2</srcmd5>
+    <version>0.8.11</version>
+    <time>1554458213</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.8.11
+ - Added:
+  - New ``xonsh.color_tools.short_to_ints()`` function for directly
+    converting a short (0 - 256) color into a 3-tuple of ints
+    represeting its RGB value.
+  - New ``xonsh.ansi_colors.ansi_reverse_style()`` function for
+    converting a mapping of color names to ANSI escape codes into
+    a mapping from escape codes into color names. This is not a
+    round-trippable operation.
+  - New ``xonsh.ansi_colors.ansi_color_escape_code_to_name()`` function
+    for converting an ANSI color escape code into the closest xonsh
+    color name for a given style.
+  - New ``xonsh.events.EventManager.exists()`` method enables the checking
+    of whether events actually exist with out making the event if it
+    doesn't exist.
+  - New command-specific event categories called ``on_pre_spec_run_&lt;cmd-name&gt;``
+    and ``on_post_spec_run_&lt;cmd-name&gt;`` will be fired before and after
+    ``SubpocSpec.run()`` is called.  This allows for command specific
+    events to be executed.  For example, ``on_pre_spec_run_ls`` would
+    be run prior to an invocation of ``ls``.
+  - New ``xonsh.environ.LsColors`` class for managing the ``$LS_COLORS``
+    environment variable. This ensures that the ``ls`` command respects the
+    ``$XONSH_COLOR_STYLE`` setting. An instance of this class is added to the
+    environment when either the ``$LS_COLORS`` class is first accessed or
+    the ``ls`` command is executed.
+  - The ``on_pre_spec_run_ls`` event is initialized with a default handler
+    that ensures that ``$LS_COLORS`` is set in the actual environment prior
+    to running an ``ls`` command.
+  - New ``xonsh.tools.detype()`` function that simply calls an objects own
+    ``detype()`` method in order to detype it.</comment>
+    <requestid>687599</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>704b1c0c65786b5f3421cde2e75efbbd</srcmd5>
+    <version>0.9.5</version>
+    <time>1560459801</time>
+    <user>dimstar_suse</user>
+    <comment>- remove docroot from a documentation file, workaround for rpmlint error file-contains-buildroot
+- update to version 0.9.5:
+ - Fixed:
+  - Style 'bw'. Background colors was added in the style description.
+  - Fix causing error in ``get_predictor_threadable`` on windows when try to run not exist command
+  - ``pip`` completer no longer fires when ``pip`` happens to appear within a word
+    like ``bagpipes``
+  - Fixed issue with ``history gc`` command not running properly.
+- update to version 0.9.4:
+ - Added:
+  - Add processing ``%d`` for avoid overwriting in ``run-tests.xsh``
+ - Changed:
+  - Xonsh now does not attempt to expand raw strings, so now::
+      $ echo &quot;$HOME&quot;
+      /home/user
+      $ echo r&quot;$HOME&quot;
+      $HOME
+  - sudoedit now runs unthreaded
+ - Fixed:
+  - threadable predictor for 'env' command based on predictor from the executed
+    command. Fixes #2759 and #3103.
+  - An error in the 'xon.sh' executable that only popped up during testing has
+    been fixed.  Specifically: It now directly calls 'python3' without invoking
+    'env'.
+  - bashisms extension can be used again with prompt_toolkit v1
+  - Fix a crash when setting ``$INTENSIFY_COLORS_ON_WIN`` in certain situations.
+  - Fix issue with bashsisms xontrib causing syntax errors for some Python statements
+  - portable trick to pass args which replace '/usr/bin/env' is removed and
+    '/usr/bin/env' is used. Fixes bug when a python3 used is outside the default
+    'PATH'.
+- update to version 0.9.3:
+ - Deprecated:
+  - Python v3.4 has been fully, completely, and (hopefully) correctly
+    deprecated. Please migrate to an officially supported version of Python.
+- update to version 0.9.2:
+ - Changed:
+  - For aliases, predictor is build with the predictor of original command, in
+    place of default predictor.
+ - Fixed:
+  - Updated setup.py to require Python 3.4 using the ``python_requires`` keyword.
+    This rectifies issues with pip installing xonsh. Python 3.4 support will
+    be removed on the following release.
+- update to version 0.9.1:
+ - Changed:
+  - We no longer manually check the Python version in ``setup.py``,
+    but instead use the setuptools ``python_requires`` feature.
+ - Fixed:
+  - Updates for integrating with new colors styles in Pygments v2.4.0.
+- update to version 0.9.0:
+ - Added:
+  - Implemented the following &quot;bang command&quot; bashisms: ``!$``, ``$*``, ``!^``,
+    and ``!&lt;str&gt;``.  These are in addition to ``!!``, which was already
+    implemented.
+  - asciinema (terminal recorder) added in not threadable commands.
+  - tput added in not threadable commands.
+  - New ``color_tools.KNOWN_XONSH_COLORS`` frozenset.
+  - New ``pyghooks.PYGMENTS_MODIFIERS`` mapping from color modifier names to
+    pygments colors.
+  - New ``pyghooks.color_name_to_pygments_code()`` function for converting
+    color names into pygments color codes.
+ - Changed:
+  - Circle now runs ``black`` checks on contents of bundled xontribs
+  - The ``black`` checks no longer skip some files buried deeper in the directory
+    tree.
+  - Errors while formatting the prompt are highlighted for easier debugging.
+  - Pygments styles only define the standard set of colors, by default.
+    Additional colors are computed as needed.
+  - PTYs created for running threadable command have now size set to same size
+    than main terminal.
+  - Update documentation pointing to the minimal required version of
+    Python (3.5).
+ - Deprecated:
+  - Drop support for Python 3.4.
+ - Removed:
+  - ``pyghooks.KNOWN_COLORS`` is no longer needed or useful as pygments colors
+    are computed automatically.
+  - ``style_tools.KNOWN_COLORS`` was never used, redundant with
+    ``pyghooks.KNOWN_COLORS`` and has thus been removed.
+ - Fixed:
+  - Fixed a DeprecationWarning that would show up during an import of MutableSet.
+  - Fixed error with aliases composed of functions wrapped in functools.partial.
+  - ``black`` formatted all xontribs
+  - deleting a non existing environement variable with default value do nothing
+    instead of raising a exception trying to deleting it in existing values dict.
+  - Fixed crash while converting ANSI color codes with leading zeroes
+  - Fixed crash while parsing invalid ANSI color code
+  - fix causing infinite loop when doing ``cat`` empty file
+  - Fixed issue which occurs when user doesn't have access to parent directory and
+    xonsh scan all parents directory to find if we are in a Hg repository.
+  - Fixed issue with pygments-cache not properly generating a cache the first
+    time when using prompt-toolkit when using ``ptk2``.
+    This was due to a lingering lazy import of ``pkg_resources``
+    that has been removed.
+  - Minor update for Python v3.8.
+  - Fixed a &quot;'NoneType' object is not iterable&quot; bug when looking up ``stty``
+    in command cache.
+  - The release tarball now includes all test files.
+  - Arguments passed to python in 'scripts/xonsh' and in 'scripts/xonsh-cat' are
+    now passed by a portable hack in sh, not anymore by /usr/bin/env.
+</comment>
+    <requestid>709544</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>26dda1580566f853feff50c48d68a257</srcmd5>
+    <version>0.9.7</version>
+    <time>1562591516</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>713860</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6097199c387f49104b4232f7e4b72536</srcmd5>
+    <version>0.9.8</version>
+    <time>1563456003</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>715542</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e90882b2b5a2e0f50057802741bb90a5</srcmd5>
+    <version>0.9.9</version>
+    <time>1564994313</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>720288</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>112b9de49424feaf77f26c956522d8cc</srcmd5>
+    <version>0.9.10</version>
+    <time>1565695623</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.9.10:
+ - Added:
+  - $PROMPT_REFRESH_INTERVAL: Automatically invalidate the PROMPT every so many seconds.
+  - Allow disabling individual items in gitstatus prompt
+ - Fixed:
+  - Fix ``cat`` can't read pseudo files with zero size such as /proc/\* or /sys/\* (#3182, #3199)
+  - command-not-found: now works on non-Debian bansed distributions
+  - Implemented ``'target'`` psuedo-color in ``$LS_COLORS`` for link coloring based
+    off of the link target. This was causing issues on some systems where this is
+    the default.</comment>
+    <requestid>722839</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>6974b7300ed9421b5396bdbe4eb1622b</srcmd5>
+    <version>0.9.14</version>
+    <time>1583613681</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>782247</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f42cee7d12c65461b49308d68b95e1d</srcmd5>
+    <version>0.9.15</version>
+    <time>1586248117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>791562</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f0eb897fcc0194e6176c7cf812dc08ac</srcmd5>
+    <version>0.9.18</version>
+    <time>1589660798</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>805663</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>55584182a490fa390de1b528e158991d</srcmd5>
+    <version>0.9.21</version>
+    <time>1599771174</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>833392</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2b069feb1515a4cb088f5aeabf94322a</srcmd5>
+    <version>0.9.22</version>
+    <time>1601488466</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>838684</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>1ab50a8f0738bb853e2b135c65eff421</srcmd5>
+    <version>0.9.23</version>
+    <time>1603031800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>842364</requestid>
+  </revision>
+</revisionlist>

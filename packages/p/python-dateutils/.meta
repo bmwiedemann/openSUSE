@@ -1,0 +1,5 @@
+<package name="python-dateutils" project="openSUSE:Factory">
+  <title></title>
+  <description>Various utilities for working with date and datetime objects</description>
+  <devel project="devel:languages:python" package="python-dateutils"/>
+</package>

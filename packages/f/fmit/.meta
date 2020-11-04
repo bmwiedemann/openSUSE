@@ -1,0 +1,19 @@
+<package name="fmit" project="openSUSE:Factory">
+  <title>A free musical instrument tuner</title>
+  <description>fmit is a free musical instrument tuner. It works with JACK, Alsa,
+OSS and PortAudio audio input devices. It currently has the
+following features:-
+* Error history
+* Volume history
+* Statistics
+* Tunning scales
+* (Werckmeister III, Kirnberger III, Diatonic and Meantone)
+* Microtonal tuning (with Scala file support)
+* Harmonic ratios
+* Wave shape
+* Discrete Fourier Transform view
+
+</description>
+  <devel project="multimedia:apps" package="fmit"/>
+  <url>https://gillesdegottex.github.io/fmit</url>
+</package>

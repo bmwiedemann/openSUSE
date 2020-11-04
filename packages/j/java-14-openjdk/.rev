@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d5ef9120fee225f6bfd5751ef9cd3ea0</srcmd5>
+    <version>14.0.0.0</version>
+    <time>1584643738</time>
+    <user>dimstar_suse</user>
+    <comment>OpenJDK 14</comment>
+    <requestid>786007</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f90584d6cf7bb86d56c7d1aa0049a4f</srcmd5>
+    <version>14.0.1.0</version>
+    <time>1587467244</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle April 2020 CPU</comment>
+    <requestid>795959</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>989801d83fed79155b5d84bd135d5789</srcmd5>
+    <version>14.0.2.0</version>
+    <time>1595577589</time>
+    <user>dimstar_suse</user>
+    <comment>July 2020 CPU</comment>
+    <requestid>822233</requestid>
+  </revision>
+</revisionlist>

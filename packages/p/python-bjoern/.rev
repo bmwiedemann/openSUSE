@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b055060327f98e4022d57c2080573da</srcmd5>
+    <version>1.2</version>
+    <time>1354109553</time>
+    <user>coolo</user>
+    <comment>Dependecy for python-bottle update</comment>
+    <requestid>142422</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7b055060327f98e4022d57c2080573da</srcmd5>
+    <version>1.2</version>
+    <time>1359109998</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7b055060327f98e4022d57c2080573da</srcmd5>
+    <version>1.2</version>
+    <time>1379664133</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>7b055060327f98e4022d57c2080573da</srcmd5>
+    <version>1.2</version>
+    <time>1409302823</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5068e051660122a66591147490387a26</srcmd5>
+    <version>1.4.2</version>
+    <time>1422974121</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>283853</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>295b52442508fb8284370413ca02b1d2</srcmd5>
+    <version>1.4.2</version>
+    <time>1520933113</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>586168</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f02712293fb947ad723d9191feb65aa2</srcmd5>
+    <version>3.0.0</version>
+    <time>1558690419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705184</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd07bb1a4be094e6aa96200b1cf7da3b</srcmd5>
+    <version>3.0.1</version>
+    <time>1562591574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>714016</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b68284539e96e94b3c2e36876740c29c</srcmd5>
+    <version>3.1.0</version>
+    <time>1593006558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * #169 Fix blocking accept() (Ionut Negru)
+  * #164 Add support for statsd metrics/events (Mohammad Gufran)
+  * #162 Fix Expect: 100-Continue support (Tom Brennan)</comment>
+    <requestid>816735</requestid>
+  </revision>
+</revisionlist>

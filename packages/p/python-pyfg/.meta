@@ -1,0 +1,18 @@
+<package name="python-pyfg" project="openSUSE:Factory">
+  <title>Python API for fortigate</title>
+  <description>This API allows you to interact with a device runnine FortiOS in a sane way.
+With this API you can:
+
+ * Connect to the device, retrieve the running config (the entire config or
+   some blocks, whatever you want) and build a model
+ * Build the same model from a file
+ * Do changes in the candidate configuration locally
+ * Create a candidate configuration from a file
+ * Do a diff between the running config and the local candidate config
+ * Generate the necessary commands to go from the running configuration to
+   the candidate configuration
+
+</description>
+  <devel project="devel:languages:python" package="python-pyfg"/>
+  <url>https://github.com/spotify/pyfg</url>
+</package>

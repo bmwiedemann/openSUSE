@@ -1,0 +1,5 @@
+<package name="python-Flask-Caching" project="openSUSE:Factory">
+  <title>python-Flask-Caching</title>
+  <description>Adds easy cache support to Flask. Continuation of the Flask-Cache Extension.</description>
+  <devel project="devel:languages:python:flask" package="python-Flask-Caching"/>
+</package>

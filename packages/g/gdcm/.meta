@@ -1,0 +1,5 @@
+<package name="gdcm" project="openSUSE:Factory">
+  <title>An open-source implementation of the DICOM standard with advanced features for image decoding</title>
+  <description></description>
+  <devel project="graphics" package="gdcm"/>
+</package>

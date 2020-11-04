@@ -1,0 +1,355 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1c28f6d835bade9703f0b758079cda15</srcmd5>
+    <version>16.0.0</version>
+    <time>1557751780</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename to MicroOS:
+- New flavors: bare, ContainerHost and Kubic-kubeadm
+- Remove workaround for kiwi bug
+- Merge XEN into kvm-and-xen
+- Remove unneeded sections in config.sh:
+  * cloud.cfg change was a noop
+  * RPi HDMI hotplug is implemented now
+- Bump version to 16.0.0
+- Remove -x86_64 suffixes, arch is part of the filename already
+- Don't set DHCLIENT_SET_HOSTNAME to yes, cloud-init takes care of the hostname
+- Workaround gh#SUSE/kiwi#1053 by adding grub2-*-efi explicitly
+- Use the new microos and containers patterns and release pkg
+- Remove xfsprogs from OpenStack - leftover from JeOS
+- Merge bootstrap package sections
+- Remove unpartitioned space, no longer needed
+- Use more kiwi-friendly container-runtime and container-runtime-kubernetes patterns
+  [boo#1125949]
+- Drop the data partition, disable quotas entirely instead
+  (we'd need a seperate /var partition, but kiwi can't do it)
+- Change profile configuration: MicroOS+podman and MicroOS+cri-o+kubeadm
+- Use glibc-locale-base instead of glibc-locale
+- Fix etc overlay with new transactional-update and read-only-root-fs
+- Add cloud-init and cloud-init-config-casp directly
+- VMware image was apparently not read-only, fixed
+- Add apparmor pattern to cri-o profile directly
+- correct owner for vagrant home directory
+  
+- unpredictable kernel-native ethX naming for Vagrant box to come up for 
+  ssh config
+- Remove docker profiles
+- Only install cri-o-kubeadm-criconfig on kubeadm
+- Enable systemd-timesyncd
+- Enable kubelet service for images
+- Rename from kubic-images to openSUSE-Tumbleweed-Kubic
+- Use the net.ifnames=0 in the kernel cmdline args for KVM/Xen
+- Don't install kernel-firmware for the Vagrant flavour
+- Add Vagrant flavour (from jan.fajerski@suse.com)
+- Resolve criconfig dependency choice 
+- Avoid kernel-default-base:
+  * Missing important kernel modules for kubernetes
+- Remove cloud-init-config subvolume (boo#1107283)
+- Replace CaaSP-Stack flavour with kubeadm flavour
+- Introduce seperate crio and docker profiles
+- Decouple from CaaSP: It goes a separate path from now
+- Enable btrfs_quota_groups (bsc#1093518) (still broken in kiwi as of now)
+- Don't remove /etc/localtime in config.sh
+- Set bootloader_console=&quot;gfxterm&quot; unless tty is on serial console
+- Remove systemd.show_status=0 from the kernel cmdline (bsc#1089826)
+- Fix VMware capitalization
+- Fix (kvm-and-)xen driver inclusion on non-MicroOS
+- Don't use import=true:
+  * OBS doesn't handle it correctly
+  * No effect in combination with _multibuild
+- Use legacy MBR instead of GPT for Pine64 due to boo#1098550
+- Don't setup data_part on Pine64
+- Don't setup data_part on RPi, it breaks the MBR
+- Add patterns-caasp-apparmor to the Stack profile
+- Add pine64 flavour
+- Add sections to allow building against CaaSP
+- Add pre_checkin.sh to generate both caasp and kubic image descriptions
+- Update schema to version 6.7
+- Don't try to enable quotas here, it's wrong (bsc#1093518)
+- /var/lib/docker on a separate partition with btrfs
+- Adjust snapper configuration to enable quotas, disable timeline
+  snapshots and keep fewer number snapshots
+- Only call add-yast-repos if available
+- Adjust zypp.conf to disable multiversion and recommends and enable
+  excludedocs
+- Use set -exo pipefail for good measure
+- Add hardware-x86_64 flavor with kernel-default
+- Include live-add-yast-repos
+- Add new flavors and targets for patterns-caasp-Stack and patterns-caasp-onlyDVD
+- Add _constraints
+- New image, based on SLE 15 JeOS and CaaSP 3.0 descriptions
+</comment>
+    <requestid>701121</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c8023a808fa81fea2966bbdc93bbba90</srcmd5>
+    <version>16.0.0</version>
+    <time>1566464166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725103</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>68fcf35d90964101ea66626179fd735c</srcmd5>
+    <version>16.0.0</version>
+    <time>1566665123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725570</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>43728e149021cf15dd773e32d8ececf0</srcmd5>
+    <version>16.0.0</version>
+    <time>1569234802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>731673</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7d4deafa1cd38f0c2f8d63b3cf2a130d</srcmd5>
+    <version>16.0.0</version>
+    <time>1569852174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>734023</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>59c9651ea498e8cc3c039e1744bfe828</srcmd5>
+    <version>16.0.0</version>
+    <time>1570285287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>735314</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>35952d3917ea2b10ebb26ccef18ab61e</srcmd5>
+    <version>16.0.0</version>
+    <time>1572859292</time>
+    <user>dimstar_suse</user>
+    <comment>- New kiwi uses grub2-mkconfig now, so drop the hack in replacebootconfig.sh
+  and editbootinstall_*.sh
+- Now the kernel cmdline can be escaped properly as well</comment>
+    <requestid>745120</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>59c9651ea498e8cc3c039e1744bfe828</srcmd5>
+    <version>16.0.0</version>
+    <time>1572883043</time>
+    <user>dimstar_suse</user>
+    <comment>Reverting, together with kiwi, which breaks live images</comment>
+    <requestid>745221</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>35952d3917ea2b10ebb26ccef18ab61e</srcmd5>
+    <version>16.0.0</version>
+    <time>1573504648</time>
+    <user>dimstar_suse</user>
+    <comment>- New kiwi uses grub2-mkconfig now, so drop the hack in replacebootconfig.sh
+  and editbootinstall_*.sh
+- Now the kernel cmdline can be escaped properly as well</comment>
+    <requestid>747371</requestid>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>8d714371d19ed4f39752f8ec1395faa1</srcmd5>
+    <version>16.0.0</version>
+    <time>1573774291</time>
+    <user>dimstar_suse</user>
+    <comment>- Add VirtualBox flavor
+- Make /var a separate autoexpanding partition for VMX flavors:
+  * Allows enabling qgroups on / again
+  * On OEM this would result in &gt;15GiB images, so skip those
+- Drop hardware flavor, meanwhile there's no difference anymore
+- Todo:
+  * Make /var no-COW once
+    https://github.com/OSInside/kiwi/issues/1233 is implemented
+- Use grub2-x86_64-xen instead of just grub2-xen</comment>
+    <requestid>748700</requestid>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>402f161d2247627590039d84b1d5e2b9</srcmd5>
+    <version>16.0.0</version>
+    <time>1576014361</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>755634</requestid>
+  </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>c177ddfca8f19f2d9d6d37d404d5b53e</srcmd5>
+    <version>16.0.0</version>
+    <time>1576927773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>757891</requestid>
+  </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>fa8c431b73fcc1b6ba9831e8eeeda78b</srcmd5>
+    <version>16.0.0</version>
+    <time>1578675064</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762841</requestid>
+  </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>1dcafc2c2d62c60f3eaefe468cc9f711</srcmd5>
+    <version>16.0.0</version>
+    <time>1579032528</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;quiet&quot; to kernelcmdline</comment>
+    <requestid>764229</requestid>
+  </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>91c989c800ed32d4da99a90be083f1de</srcmd5>
+    <version>16.0.0</version>
+    <time>1579557231</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765708</requestid>
+  </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>34efd5ef8f5688cd05b2ba9d927d288a</srcmd5>
+    <version>16.0.0</version>
+    <time>1580152698</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>767674</requestid>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>ce0d18ac09be5b14835bab1f4c361fea</srcmd5>
+    <version>16.0.0</version>
+    <time>1582206992</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>777388</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>b3a3b2686d55f5ca310dd1fb656122da</srcmd5>
+    <version>16.0.0</version>
+    <time>1582556121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778766</requestid>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>69871426c60085c24181ed4df552538a</srcmd5>
+    <version>16.0.0</version>
+    <time>1582643108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>778822</requestid>
+  </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>b221e261c450a792d3bc4f25f505bbb6</srcmd5>
+    <version>16.0.0</version>
+    <time>1583526536</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782111</requestid>
+  </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>7a57bf9894cdd92b13ca341efa02f1a4</srcmd5>
+    <version>16.0.0</version>
+    <time>1584050922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784349</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>d4cd45ce95323df9324c3b88362987c4</srcmd5>
+    <version>16.0.0</version>
+    <time>1584532112</time>
+    <user>dimstar_suse</user>
+    <comment>- Make check for kubelet in config.sh more generic to work after
+  the package rename</comment>
+    <requestid>786124</requestid>
+  </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>851c4ffe301056b7546eceabdc610667</srcmd5>
+    <version>16.0.0</version>
+    <time>1589579564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>805878</requestid>
+  </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>9691554c07a5d277bafb3851a2ecb0a3</srcmd5>
+    <version>16.0.0</version>
+    <time>1590247635</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>807738</requestid>
+  </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>3a64f55038ec110950ef519213fc552f</srcmd5>
+    <version>16.0.0</version>
+    <time>1591209244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811010</requestid>
+  </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>93ee6245459702cdc8964ecfbbc52dd9</srcmd5>
+    <version>16.0.0</version>
+    <time>1591286171</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811350</requestid>
+  </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>288b49f701069db68d9b4c8f5b2e2cd8</srcmd5>
+    <version>16.0.0</version>
+    <time>1593200886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817049</requestid>
+  </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>33294bf36537408b68955d403edf25b2</srcmd5>
+    <version>16.0.0</version>
+    <time>1593620597</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>818109</requestid>
+  </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>ef850f7483c0f7d6beebf0f21cacfa92</srcmd5>
+    <version>16.0.0</version>
+    <time>1595229865</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace openSUSE-MicroOS-release-dvd with MicroOS-release-dvd:
+  the product has been renamed.</comment>
+  </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>1080f18eac69d724c415256e1ee21286</srcmd5>
+    <version>16.0.0</version>
+    <time>1595865020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823003</requestid>
+  </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>692a0896ee5cd2287f3102e3161d61da</srcmd5>
+    <version>16.0.0</version>
+    <time>1597220981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>825773</requestid>
+  </revision>
+  <revision rev="32" vrev="32">
+    <srcmd5>ba54dd48919400850021b3eccab52e2c</srcmd5>
+    <version>16.0.0</version>
+    <time>1597856421</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix whitespace
+- Drop grub2-x86_64-xen and xen-libs, not needed
+- Switch to kernel-firmware-all everywhere</comment>
+    <requestid>827901</requestid>
+  </revision>
+  <revision rev="33" vrev="33">
+    <srcmd5>189451aa61169e61945c584e3cedc22e</srcmd5>
+    <version>16.0.0</version>
+    <time>1600701911</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop rd.neednet=0, the dracut bug is fixed and network is opt-in now</comment>
+    <requestid>835362</requestid>
+  </revision>
+</revisionlist>

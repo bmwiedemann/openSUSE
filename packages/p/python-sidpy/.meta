@@ -1,0 +1,5 @@
+<package name="python-sidpy" project="openSUSE:Factory">
+  <title>python-sidpy</title>
+  <description>Python utilities for storing, visualizing, and processing Spectroscopic and Imaging Data (SID)</description>
+  <devel project="devel:languages:python:numeric" package="python-sidpy"/>
+</package>

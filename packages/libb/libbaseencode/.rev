@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25e1d5c4a164d05c38ba7710a407ef67</srcmd5>
+    <version>1.0.9</version>
+    <time>1584643926</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00221.html</comment>
+    <requestid>786457</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7db380cb4b6b9c3619eb61e0a591c88e</srcmd5>
+    <version>1.0.9</version>
+    <time>1587659987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>796552</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb2924e14c4e09e809f80530a8d03f01</srcmd5>
+    <version>1.0.10</version>
+    <time>1600879235</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>836088</requestid>
+  </revision>
+</revisionlist>

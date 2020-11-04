@@ -1,0 +1,97 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0eae2db543b4e66e8197d5e66149a668</srcmd5>
+    <version>1.4.50</version>
+    <time>1264436488</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/dvbsnoop based on submit request 30298 from user msmeissn
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>63f8d40e72194e352efe457060ad3660</srcmd5>
+    <version>1.4.50</version>
+    <time>1268923408</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>63f8d40e72194e352efe457060ad3660</srcmd5>
+    <version>1.4.50</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>63f8d40e72194e352efe457060ad3660</srcmd5>
+    <version>1.4.50</version>
+    <time>1278678572</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>63f8d40e72194e352efe457060ad3660</srcmd5>
+    <version>1.4.50</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4055e30895ac974701b058dc8e0e2e17</srcmd5>
+    <version>1.4.50</version>
+    <time>1316617258</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83307 from jengelh)</comment>
+    <requestid>83975</requestid>
+  </revision>
+  <revision rev="7" vrev="11">
+    <srcmd5>4055e30895ac974701b058dc8e0e2e17</srcmd5>
+    <version>1.4.50</version>
+    <time>1319181858</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>8317df9983e032fa989a4b35957ff121</srcmd5>
+    <version>1.4.50</version>
+    <time>1323961559</time>
+    <user>coolo</user>
+    <comment>- license seems to be GPL-2.0+ (forwarded request 95921 from coolo)</comment>
+    <requestid>96018</requestid>
+  </revision>
+  <revision rev="9" vrev="14">
+    <srcmd5>8317df9983e032fa989a4b35957ff121</srcmd5>
+    <version>1.4.50</version>
+    <time>1340183294</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="10" vrev="16">
+    <srcmd5>8317df9983e032fa989a4b35957ff121</srcmd5>
+    <version>1.4.50</version>
+    <time>1359108830</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="18">
+    <srcmd5>8317df9983e032fa989a4b35957ff121</srcmd5>
+    <version>1.4.50</version>
+    <time>1379662260</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="20">
+    <srcmd5>8317df9983e032fa989a4b35957ff121</srcmd5>
+    <version>1.4.50</version>
+    <time>1409300798</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="21">
+    <srcmd5>73886fb2b7e24dc9f3e9c7bf25f55e66</srcmd5>
+    <version>1.4.50</version>
+    <time>1488322240</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>459062</requestid>
+  </revision>
+</revisionlist>

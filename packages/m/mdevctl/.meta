@@ -1,0 +1,6 @@
+<package name="mdevctl" project="openSUSE:Factory">
+  <title>mdevctl</title>
+  <description>mdevctl is a utility for managing and persisting devices in the mediated device framework of the Linux kernel. Mediated devices are sub-devices of a parent device (e.g. a vGPU) which can be dynamically created and potentially used by drivers like vfio-mdev for assignment to virtual machines.
+</description>
+  <devel project="Virtualization" package="mdevctl"/>
+</package>

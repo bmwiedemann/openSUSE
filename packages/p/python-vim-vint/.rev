@@ -1,0 +1,68 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57b42fab809c9cd2eff898e9cbd4b423</srcmd5>
+    <version>0.3.19</version>
+    <time>1551113864</time>
+    <user>coolo</user>
+    <comment>- Add missing dependencies for Python 2, enum34 and pathlib and add
+  missing test dependency mock
+- Remove unnecessary build dependency python-devel
+- Remove %bcond test
+- Fix CLI tests with test-sys-executable.patch
+- Change version == pins to &gt;= in setup.py and test-requirements.txt
+- Update to v0.3.19
+  * New features
+    + Initial support for stdin
+  * Bug fixes
+    + Disable ProhibitImplicitScopeVariable
+    + Suppress warnings caused by map([], ' &quot;x&quot; ')
+    + Fix linting autocmd
+    + Fix acceptance tests
+  * Optimize
+    + ProhibitUnusedVariable
+    + get_asset_path
+    + ConfigProjectSource
+  * Documentation
+    + Link to default config
+    + Fix a broken code block for example
+- Initial version v0.3.18
+</comment>
+    <requestid>678762</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2d81df0f0b51de3710a2fe829ff8162b</srcmd5>
+    <version>0.3.19</version>
+    <time>1552986018</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix hardcoded versions
+- Add patch to build with new PyYAML 5:
+  * yaml5.patch</comment>
+    <requestid>686039</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e9374948491cc91b5f001b1879b3a4a</srcmd5>
+    <version>0.3.21</version>
+    <time>1568720335</time>
+    <user>maxlin_factory</user>
+    <comment>- Updat eto 0.3.21:
+  * various bugfixes only
+- Drop upstream merged patch yaml5.patch</comment>
+    <requestid>731250</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>666b5eb7e871a053bdd3db0f064b3899</srcmd5>
+    <version>0.3.21</version>
+    <time>1587467220</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795681</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1c8bfce17c66206920c4a23ad5072671</srcmd5>
+    <version>0.3.21</version>
+    <time>1589892393</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806802</requestid>
+  </revision>
+</revisionlist>

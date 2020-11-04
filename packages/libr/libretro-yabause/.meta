@@ -1,0 +1,5 @@
+<package name="libretro-yabause" project="openSUSE:Factory">
+  <title>Yabause libretro core for Sega Saturn emulation</title>
+  <description></description>
+  <devel project="Emulators" package="libretro-yabause"/>
+</package>
