@@ -164,6 +164,7 @@ buildignore yast2-sudo
 
 # systemd-coredump makes no sense on a live image: there are no debuginfo installed
 buildignore systemd-coredump
+buildignore systemd-doc
 
 # VPNC is no longer
 buildignore NetworkManager-vpnc-gnome

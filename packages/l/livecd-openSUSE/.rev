@@ -995,4 +995,17 @@
     <user>dimstar_suse</user>
     <comment>Shrink xfce live</comment>
   </revision>
+  <revision rev="123" vrev="123">
+    <srcmd5>c03b186733068d60e5a3a86db7f9bc75</srcmd5>
+    <version>unknown</version>
+    <time>1604477908</time>
+    <user>dimstar_suse</user>
+    <comment>- Block systemd-doc from all flavors, not only xfce.
+
+- Do only use set -u: set -e causes issues with stepping out of the
+  for loop using continue.
+- Skip the for loop early: no reason to calculate the PACKAGES list
+  and then not consume it.
+- Use tr [:lower:] [:upper:] instead of tr a-z A-Z.</comment>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eu
+set -u
 
 install() {
 	if [ -n "${2-}" ]; then
@@ -42,7 +42,8 @@ for distro in leap tumbleweed; do
 	fi
 
 	for flavor in gnome kde xfce x11; do
-		uppercaseflavor="$(echo "${flavor}" | tr a-z A-Z)"
+		[ "${flavor}" = "xfce" -a "${distro}" = "leap" ] && continue # Prevent creation of livecd-leap-xfce.kiwi
+		uppercaseflavor="$(echo "${flavor}" | tr [:lower:] [:upper:])"
 	
 		if [ "${flavor}" = "x11" ]; then
 			name="${distroname} Rescue CD"
@@ -55,7 +56,6 @@ for distro in leap tumbleweed; do
 		PACKAGES="$PACKAGES\n\n    <!-- list-${flavor}.sh -->"
 		. "$PWD/list-${flavor}.sh"
 
-		[ "${flavor}" = "xfce" -a "${distro}" = "leap" ] && continue # Prevent creation of livecd-leap-xfce.kiwi
 		sed "s#@FLAVOR@#${flavor}#g;\
 		     s#@NAME@#${name// /-}#g;\
 		     s#@DISPLAYNAME@#${name}#g;\
