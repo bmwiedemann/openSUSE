@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-disks
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,28 +20,28 @@
 %bcond_without lang
 
 Name:           plasma5-disks
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
-Url:            http://www.kde.org
-Source:         plasma-disks-%{version}.tar.xz
+URL:            http://www.kde.org
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz
 %if %{with lang}
-Source1:        plasma-disks-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  cmake(KF5Auth) >= %{kf5_version}
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
-BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
-BuildRequires:  cmake(KF5Service) >= %{kf5_version}
-BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
-BuildRequires:  cmake(KF5Auth) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5Service) >= %{kf5_version}
+BuildRequires:  cmake(KF5Solid) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
