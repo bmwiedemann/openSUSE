@@ -430,4 +430,15 @@
     <comment></comment>
     <requestid>817616</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b6592f9aad7544ec3c8b620102bc59f2</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Added a Power keys section for customizing actions of power,
+    suspend and hibernate keys.
+  * Dropped QProcess deprecated methods.</comment>
+    <requestid>846006</requestid>
+  </revision>
 </revisionlist>
