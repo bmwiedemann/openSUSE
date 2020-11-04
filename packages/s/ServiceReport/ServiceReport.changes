@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:37:00 UTC 2020 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to upstream git (jsc#SLE-13288).
+  + 0001-Add-active-dump-check-in-kdump-and-FADump-plugin.patch
+  + 0002-Introduce-a-new-option-to-mark-plugins-optional.patch
+  + 0003-HTX-Mark-HTX-plugin-as-optional.patch
+  + 0004-Add-new-option-to-run-all-applicable-plugins.patch
+  + 0005-Allow-distro-classes-to-redefine-the-capture-kernel-.patch
+  + 0006-utils-remove-the-invalid-function-call-to-walk_packa.patch
+  + 0007-Update-data-files-of-the-project.patch
+  + 0008-Run-servicereport-using-python3-binary.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 13:10:23 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
 
 - Run throuhg spec-cleaner and split off changelog.

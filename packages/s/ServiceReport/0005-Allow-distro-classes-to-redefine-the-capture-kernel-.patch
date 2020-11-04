@@ -1,0 +1,125 @@
+From f3b3c1c4e39ba77c41776ecfe5d82bb1b745bcfb Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Thu, 18 Jun 2020 11:14:53 +0530
+Subject: [PATCH 5/8] Allow distro classes to redefine the capture kernel
+ memory reservation
+
+Upstream: accepted - expected 2.2.3
+Git-commit: f3b3c1c4e39ba77c41776ecfe5d82bb1b745bcfb
+
+The amount of memory reservation needed for the capture kernel is dependent on
+the distro type. But the variable that defines the capture kernel memory
+reservation is defined inside a function that restricts the distro-specific
+classes to redefine the capture kernel memory reservations.
+
+This patch moves the variable used to define the capture kernel memory
+reservation table to a class level so that distro classes can redefine it.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/validate/plugins/fadump.py | 29 ++++++++++-----------
+ servicereportpkg/validate/plugins/kdump.py  | 26 ++++++++++--------
+ 2 files changed, 29 insertions(+), 26 deletions(-)
+
+diff --git a/servicereportpkg/validate/plugins/fadump.py b/servicereportpkg/validate/plugins/fadump.py
+index e411d4efe8fe..2d9396121a74 100644
+--- a/servicereportpkg/validate/plugins/fadump.py
++++ b/servicereportpkg/validate/plugins/fadump.py
+@@ -34,7 +34,20 @@ class FADump(Dump):
+         self.description = FADump.__doc__
+         self.dump_service_name = "kdump"
+         self.dump_comp_name = "kdump"
++        # (system mem, mem reservation needed)
++        # (GB, MB)
+         self.log = get_default_logger()
++        self.capture_kernel_mem = [(4, 0),
++                                   (64, 1024),
++                                   (128, 2048),
++                                   (1024, 4096),
++                                   (2048, 6144),
++                                   (4096, 12288),
++                                   (8192, 20480),
++                                   (16384, 36864),
++                                   (32786, 65536),
++                                   (65536, 131072),
++                                   (sys.maxsize, 184320)]
+ 
+     @classmethod
+     def is_applicable(cls):
+@@ -164,21 +177,7 @@ class FADump(Dump):
+         # change from KB to MB
+         ram = ram / 1024 / 1024
+ 
+-        # (system mem, mem reservation needed)
+-        # (GB, MB)
+-        crashkernel_mem_table = [(4, 0),
+-                                 (64, 1024),
+-                                 (128, 2048),
+-                                 (1024, 4096),
+-                                 (2048, 6144),
+-                                 (4096, 12288),
+-                                 (8192, 20480),
+-                                 (16384, 36864),
+-                                 (32786, 65536),
+-                                 (65536, 131072),
+-                                 (sys.maxsize, 184320)]
+-
+-        for (sys_mem, mem_reservation_needed) in crashkernel_mem_table:
++        for (sys_mem, mem_reservation_needed) in self.capture_kernel_mem:
+             if ram <= sys_mem:
+                 return mem_reservation_needed
+ 
+diff --git a/servicereportpkg/validate/plugins/kdump.py b/servicereportpkg/validate/plugins/kdump.py
+index 34ec0b4ef684..3d47df60b254 100644
+--- a/servicereportpkg/validate/plugins/kdump.py
++++ b/servicereportpkg/validate/plugins/kdump.py
+@@ -121,6 +121,15 @@ class Kdump(Dump):
+         self.kdump_etc_conf = "/etc/kdump.conf"
+         self.kdump_conf_file = "/etc/sysconfig/kdump"
+         self.log = get_default_logger()
++        self.capture_kernel_mem = [(2048, 128),
++                                   (4096, 320),
++                                   (32768, 512),
++                                   (65536, 1024),
++                                   (131072, 2048),
++                                   (1048576, 8192),
++                                   (8388608, 16384),
++                                   (16777216, 32768),
++                                   (sys.maxsize, 65536)]
+ 
+     @classmethod
+     def is_applicable(cls):
+@@ -143,17 +152,7 @@ class Kdump(Dump):
+             # Change from KB to MB
+             ram = ram / 1024
+ 
+-        capture_kernel_mem = [(2048, 128),
+-                              (4096, 320),
+-                              (32768, 512),
+-                              (65536, 1024),
+-                              (131072, 2048),
+-                              (1048576, 8192),
+-                              (8388608, 16384),
+-                              (16777216, 32768),
+-                              (sys.maxsize, 65536)]
+-
+-        for (total_mem, need_reservation_mem) in capture_kernel_mem:
++        for (total_mem, need_reservation_mem) in self.capture_kernel_mem:
+             if ram <= total_mem:
+                 return need_reservation_mem
+ 
+@@ -397,6 +396,11 @@ class KdumpRHEL(Kdump, Plugin, RHELScheme):
+         self.initial_ramdisk = "/boot/initramfs-" \
+                                + self.kernel_release \
+                                + "kdump.img"
++        self.capture_kernel_mem = [(4096, 384),
++                                   (16384, 512),
++                                   (65536, 1024),
++                                   (131072, 2048),
++                                   (sys.maxsize, 4096)]
+ 
+ 
+ class KdumpSuSE(Kdump, Plugin, SuSEScheme):
+-- 
+2.29.1
+

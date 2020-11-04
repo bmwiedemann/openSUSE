@@ -1,0 +1,48 @@
+From f142977319114b5f3f4aa711df8c5c247ed0d312 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Sun, 3 May 2020 15:59:28 +0530
+Subject: [PATCH 3/8] [HTX] Mark HTX plugin as optional
+
+Upstream: accepted - expected 2.2.3
+Git-commit: f142977319114b5f3f4aa711df8c5c247ed0d312
+
+HTX plugin has limited use case in testing OpenPower systems and we may not
+need to run this plugin by default.
+
+$ ./servicereport -l
+
+servicereport 2.2.1
+
+The following plugins are applicable:
+
+   Name                Tags                Description
+
+   daemon              M                   Daemon availability checks
+   fadump              M                   FADump configuration check
+   htx                 O                   HTX configuration check
+   package             M                   Package availability check
+
+Tag Info:
+M: Mandatory plugin (runs by default)
+O: Optional plugin (use -o option to enable)
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/validate/plugins/htx.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/servicereportpkg/validate/plugins/htx.py b/servicereportpkg/validate/plugins/htx.py
+index f5f491c7e11b..74497892b9b6 100644
+--- a/servicereportpkg/validate/plugins/htx.py
++++ b/servicereportpkg/validate/plugins/htx.py
+@@ -22,6 +22,7 @@ class HTX(Plugin, PowerPCScheme):
+         Plugin.__init__(self)
+         self.name = HTX.__name__
+         self.description = HTX.__doc__
++        self.optional = True
+         self.service_name = "htxd"
+         self.installation_path = "/var/log/htx_install_path"
+ 
+-- 
+2.29.1
+

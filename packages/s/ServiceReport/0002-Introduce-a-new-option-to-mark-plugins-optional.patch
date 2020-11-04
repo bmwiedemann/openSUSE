@@ -1,0 +1,265 @@
+From 59b372c58c8de0034d7d3b0c307208ae1e5ee9e7 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Sun, 3 May 2020 15:58:49 +0530
+Subject: [PATCH 2/8] Introduce a new option to mark plugins optional
+
+Upstream: accepted - expected 2.2.3
+Git-commit: 59b372c58c8de0034d7d3b0c307208ae1e5ee9e7
+
+ServiceReport by default runs all the plugins available inside the
+validate package. The validate package does have some workload specific
+plugin which may not required to run all the time. For example HTX plugin
+has limited use case (in testing OpenPOWER systems) and we may not
+required to test HTX configuration on every machine by default.
+
+This patch adds an infrastructure to mark plugins optional which are
+specific to a particular workload and may not required to run by default.
+If a plugin is marked optional then it will not get executed by default.
+
+The format of listing the applicable plugins using -l (--list) option has
+changed. A new column (Tag) has been introduced that shows a plugin is
+optional or mandatory.
+
+Listing applicable plugins:
+
+$ ./servicereport -l
+
+servicereport 2.2.1
+
+The following plugins are applicable:
+
+   Name                Tags                Description
+
+   daemon              M                   Daemon availability checks
+   fadump              M                   FADump configuration check
+   htx                 M                   HTX configuration check
+   package             M                   Package availability check
+
+Tag Info:
+M: Mandatory plugin (runs by default)
+O: Optional plugin (use -o option to enable)
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/__init__.py                  |   9 ++
+ servicereportpkg/validate/__init__.py         | 117 +++++++++++++-----
+ servicereportpkg/validate/plugins/__init__.py |   6 +
+ 3 files changed, 100 insertions(+), 32 deletions(-)
+
+diff --git a/servicereportpkg/__init__.py b/servicereportpkg/__init__.py
+index 8f4f72b7a62f..945b6ece56c7 100644
+--- a/servicereportpkg/__init__.py
++++ b/servicereportpkg/__init__.py
+@@ -48,6 +48,10 @@ def parse_commandline_args(args):
+                         nargs='+', default=None,
+                         help="validates the specified plugins only")
+ 
++    parser.add_argument("-o", "--optional", dest="optional",
++                        nargs='+', default=None,
++                        help="run the specified optional plugins")
++
+     parser.add_argument("-q", "--quiet", action="store_true",
+                         dest="quite", default=False,
+                         help="no output on console")
+@@ -64,6 +68,11 @@ def parse_commandline_args(args):
+                         dest="verbose", default=0,
+                         help="increase the logging verbosity")
+ 
++    parsed_argument = parser.parse_args(args)
++
++    if parsed_argument.plugins and parsed_argument.optional:
++        parser.error("-o(--optional) is not allowed with -p(--pluigns)\n"
++                     "\t\t\tList all the plugins against -p option only.")
+     return parser.parse_args(args)
+ 
+ 
+diff --git a/servicereportpkg/validate/__init__.py b/servicereportpkg/validate/__init__.py
+index 0efa92042d45..0d94e7ea392f 100644
+--- a/servicereportpkg/validate/__init__.py
++++ b/servicereportpkg/validate/__init__.py
+@@ -27,45 +27,99 @@ class Validate(object):
+         self.plugin_handler = PluginHandler(self.scheme_handler)
+         self.validation_results = OrderedDict()
+ 
+-    def get_plugin_dir(self, plugins=None):
+-        """Returns an ordered directory of list of executable plugins"""
++    def get_applicable_plugins(self):
++        """Returns a dictionary of applicable plugins"""
+ 
+-        plugin_dir_tmp = OrderedDict()
++        plugins = {}
+ 
+         for plugin in self.plugin_handler.get_applicable_plugins():
+             plugins_obj = plugin()
+             plugin_name = plugins_obj.get_name().lower()
+-            if plugin_name not in plugin_dir_tmp.keys():
+-                plugin_dir_tmp[plugin_name] = []
+-            plugin_dir_tmp[plugin_name].append(plugins_obj)
+-
+-        # By default plugins are executed in sorted order but If plugins
+-        # are specified using -p option then the execution order should be
+-        # same as specified on command line
+-        if plugins:
+-            plugin_dir = OrderedDict()
+-            for plugin in plugins:
+-                plugin = plugin.lower()
+-                if plugin in plugin_dir_tmp.keys():
+-                    if plugin not in plugin_dir.keys():
+-                        plugin_dir[plugin] = plugin_dir_tmp[plugin]
+-                else:
+-                    print("%s plugin is not applicable" % plugin)
+-
+-            return plugin_dir
+-
+-        return OrderedDict(sorted(plugin_dir_tmp.items(),
+-                                  key=lambda tmp: tmp[0]))
++
++            if plugin_name not in plugins:
++                plugins[plugin_name] = []
++
++            plugins[plugin_name].append(plugins_obj)
++
++        return plugins
++
++    def is_plugin_executable(self, plugin_name, plugin_obj):
++        """Check whether the give plugin is executable in current system
++        environment"""
++
++        if self.cmd_opts.plugins:
++            return plugin_name in self.cmd_opts.plugins
++
++        if plugin_obj.is_optional():
++            if self.cmd_opts.optional:
++                return plugin_name in self.cmd_opts.optional
++
++            return False
++
++        return True
++
++    def arrange_execution_order(self, exe_plugins):
++        """Decides the plugin execution order"""
++
++        # Obey the order in which plugin are listed against -p or
++        # --plugins option
++        if self.cmd_opts.plugins:
++            od_exe_plugin = OrderedDict()
++            for plugin in self.cmd_opts.plugins:
++                if plugin in exe_plugins:
++                    od_exe_plugin[plugin] = exe_plugins[plugin]
++
++            return od_exe_plugin
++
++        return OrderedDict(sorted(exe_plugins.items()))
++
++    def verify_listed_plugins(self, applicable_plugins, plugins):
++        """Find and print if any invalid plugin is listed by user"""
++
++        for plugin in plugins:
++            if plugin not in applicable_plugins:
++                print("Warning: %s plugin is either invalid or not applicable "
++                      "to this system.\n" % plugin)
++
++    def get_executable_plugins(self):
++        """Return a dictionary of executable plugins"""
++
++        exe_plugins = {}
++
++        applicable_plugins = self.get_applicable_plugins()
++
++        if self.cmd_opts.plugins:
++            self.verify_listed_plugins(applicable_plugins,
++                                       self.cmd_opts.plugins)
++
++        if self.cmd_opts.optional:
++            self.verify_listed_plugins(applicable_plugins,
++                                       self.cmd_opts.optional)
++
++        for plugin in applicable_plugins:
++            plugin_objs = applicable_plugins[plugin]
++            if self.is_plugin_executable(plugin, plugin_objs[0]):
++                exe_plugins[plugin] = plugin_objs
++
++        return self.arrange_execution_order(exe_plugins)
+ 
+     def list_applicable_plugins(self):
+         """List all the applicable plugins"""
+ 
+-        plugins = self.get_plugin_dir()
++        plugins = self.get_applicable_plugins()
+         print("The following plugins are applicable:\n")
++        print("   {0:20}{1:20}{2}\n".format("Name", "Tags", "Description"))
+         for plugin in plugins:
+-            print("   {0:25}{1}".format(plugin,
+-                                        plugins[plugin][0].get_description()))
++            if not plugins[plugin][0].is_optional():
++                print("   {0:20}{1:20}{2}".format(plugin, "M",
++                      plugins[plugin][0].get_description()))
++            else:
++                print("   {0:20}{1:20}{2}".format(plugin, "O",
++                      plugins[plugin][0].get_description()))
+ 
++        print("\n{0}\n{1}\n{2}".format("Tag Info: ",
++              "M: Mandatory plugin (runs by default)",
++              "O: Optional plugin (use -o option to enable)"))
+ 
+     def do_execute_plugin(self, plugin):
+         """Execute the plugin"""
+@@ -82,7 +136,7 @@ class Validate(object):
+         handler identifier and execute the plugin"""
+ 
+         successful_plugin_obj = []
+-        plugin_dir = self.get_plugin_dir(self.cmd_opts.plugins)
++        plugin_dir = self.get_executable_plugins()
+ 
+         for plugin in plugin_dir:
+             change_log_identifier(TOOL_NAME + '.' + plugin, self.log)
+@@ -95,7 +149,6 @@ class Validate(object):
+                 self.do_execute_plugin(plugin_obj)
+                 successful_plugin_obj.append(plugin_obj)
+ 
+-
+         change_log_identifier(TOOL_NAME, self.log)
+         for plugin_obj in successful_plugin_obj:
+             if plugin_obj.get_name() not in self.validation_results.keys():
+@@ -108,11 +161,11 @@ class Validate(object):
+ 
+         # Make sure that if -d (--dump) is provided then only
+         # dump plugin should run
+-        if self.cmd_opts.dump and self.cmd_opts.plugins is None:
++        if self.cmd_opts.dump:
+             if is_string_in_file("fadump=on", "/proc/cmdline"):
+-                self.cmd_opts.plugins = ["FADump"]
++                self.cmd_opts.plugins = ["fadump"]
+             else:
+-                self.cmd_opts.plugins = ["Kdump"]
++                self.cmd_opts.plugins = ["kdump"]
+ 
+         self.execute_plugins()
+         return self.validation_results
+diff --git a/servicereportpkg/validate/plugins/__init__.py b/servicereportpkg/validate/plugins/__init__.py
+index e9db8d9d8af5..c6a9e83dcd04 100644
+--- a/servicereportpkg/validate/plugins/__init__.py
++++ b/servicereportpkg/validate/plugins/__init__.py
+@@ -16,6 +16,7 @@ class Plugin(object):
+     def __init__(self):
+         self.name = Plugin.__name__
+         self.description = Plugin.__doc__
++        self.optional = False
+         self.log = get_default_logger()
+         self.checks = []
+ 
+@@ -31,6 +32,11 @@ class Plugin(object):
+ 
+         return self.description
+ 
++    def is_optional(self):
++        """Return True if plugin is optional else False"""
++
++        return self.optional
++
+     def get_plugin_status(self):
+         """Returns the overall status of the plugin. Returns True only if all
+         the checks succeed else False"""
+-- 
+2.29.1
+

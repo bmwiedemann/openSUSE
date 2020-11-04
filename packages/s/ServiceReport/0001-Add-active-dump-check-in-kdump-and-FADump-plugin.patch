@@ -1,0 +1,91 @@
+From c9feebe21448e1e2691c4195c15009ef85e9d4e8 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Wed, 15 Jul 2020 13:19:19 +0530
+Subject: [PATCH 1/8] Add active dump check in kdump and FADump plugin
+
+Upstream: accepted - expected 2.2.3
+Git-commit: c9feebe21448e1e2691c4195c15009ef85e9d4e8
+
+When the kernel panics it generates /proc/vmcore file that contains
+physical memory of crashed kernel. If the kdump/FADump is configured,
+system boots with secondary/capture kernel and detects the /proc/vmcore
+file to collect the dump. Now for some reason if kdump service failed to
+collect dump the it remains active in the system until we reboot the system.
+
+If system has an active dump then it may create problem during next kernel
+crash. This patch adds a check in kdump and fadump plugin to ensure that
+there is no active dump in the system and if found raise flag to reboot
+the system.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/repair/plugins/fadump_repair.py | 6 ++++++
+ servicereportpkg/repair/plugins/kdump_repair.py  | 6 ++++++
+ servicereportpkg/validate/plugins/kdump.py       | 9 +++++++++
+ 3 files changed, 21 insertions(+)
+
+diff --git a/servicereportpkg/repair/plugins/fadump_repair.py b/servicereportpkg/repair/plugins/fadump_repair.py
+index 4d7ba70f301d..bb7692b59a1a 100644
+--- a/servicereportpkg/repair/plugins/fadump_repair.py
++++ b/servicereportpkg/repair/plugins/fadump_repair.py
+@@ -229,3 +229,9 @@ class FadumpRepair(RepairPlugin):
+                                       dump_comp_initrd_check)
+         elif dump_comp_initrd_check.get_status() is None:
+             dump_comp_initrd_check.set_note(Notes.FAIL_TO_FIX)
++
++        active_dump = check_dir["Active dump"]
++        if active_dump.get_status() is False:
++            active_dump.add_note("Active dump found, needs reboot")
++        if active_dump.get_status() is None:
++            active_dump.add_note(Notes.FAIL_TO_FIX)
+diff --git a/servicereportpkg/repair/plugins/kdump_repair.py b/servicereportpkg/repair/plugins/kdump_repair.py
+index ad734200cee8..812c2d39e337 100644
+--- a/servicereportpkg/repair/plugins/kdump_repair.py
++++ b/servicereportpkg/repair/plugins/kdump_repair.py
+@@ -320,3 +320,9 @@ class KdumpRepair(DumpRepair, RepairPlugin):
+                                                           init_ramdisk_comp)
+             elif init_ramdisk_comp.get_status() is None:
+                 init_ramdisk_comp.set_note(Notes.FAIL_TO_FIX)
++
++        active_dump = check_dir["Active dump"]
++        if active_dump.get_status() is False:
++            active_dump.add_note("Active dump found, needs reboot")
++        if active_dump.get_status() is None:
++            active_dump.add_note(Notes.FAIL_TO_FIX)
+diff --git a/servicereportpkg/validate/plugins/kdump.py b/servicereportpkg/validate/plugins/kdump.py
+index 90af3cbbcc41..34ec0b4ef684 100644
+--- a/servicereportpkg/validate/plugins/kdump.py
++++ b/servicereportpkg/validate/plugins/kdump.py
+@@ -18,6 +18,7 @@ from servicereportpkg.utils import get_file_content, get_total_ram
+ from servicereportpkg.utils import get_file_size, is_string_in_file
+ from servicereportpkg.check import PackageCheck, ServiceCheck, Check
+ from servicereportpkg.check import SysfsCheck, ConfigurationFileCheck
++from servicereportpkg.check import FileCheck
+ from servicereportpkg.utils import get_service_status, execute_command
+ from servicereportpkg.validate.schemes.schemes import FedoraScheme, SuSEScheme
+ from servicereportpkg.validate.schemes.schemes import RHELScheme, UbuntuScheme
+@@ -32,6 +33,7 @@ class Dump(object):
+         self.initial_ramdisk = ""
+         self.log = get_default_logger()
+         self.kernel_release = platform.release()
++        self.active_dump = "/proc/vmcore"
+ 
+     def check_is_dump_service_active(self):
+         """Service status"""
+@@ -99,6 +101,13 @@ class Dump(object):
+         return PackageCheck(self.check_kexec_package.__doc__,
+                             package, status)
+ 
++    def check_active_dump(self):
++        """Active dump"""
++
++        status = not os.path.isfile(self.active_dump)
++        return FileCheck(self.check_active_dump.__doc__,
++                         self.active_dump, status)
++
+ 
+ class Kdump(Dump):
+     """Kdump configuration check"""
+-- 
+2.29.1
+

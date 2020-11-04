@@ -1,0 +1,84 @@
+From a1d474d81a516407d4354218abd4f9b24f463711 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Thu, 10 Sep 2020 14:10:56 +0530
+Subject: [PATCH 8/8] Run servicereport using python3 binary
+
+Upstream: accepted - expected 2.2.3
+Git-commit: a1d474d81a516407d4354218abd4f9b24f463711
+
+To execute servicereport we either need python binary or python
+symlink to python2/python3 binary. After python2 sunset most of the
+distros have made python3 as default python and removed the python symlink
+that used to point python2/python3 binary. Due to the unavailability of
+python, servicereport fails to execute.
+
+This patch solves the above issue by removing the servicereport dependency on
+python (binary/symlink) and executes servicereport script using the python3
+binary. Additionally, a note is added in the README file about how to run
+servicereport using python2.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ Makefile      | 10 ++++++----
+ README.md     |  4 ++++
+ servicereport |  2 +-
+ 3 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 965b61e13bc4..4ded1f197f6a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,19 +3,21 @@
+ # (C) Copyright IBM Corp. 2018, 2019
+ # Author: Sourabh Jain <sourabhjain@linux.ibm.com>
+ 
++PYTHON:=python3
++
+ 
+ # build everything needed to install
+ build:
+-	python setup.py build
++	$(PYTHON) setup.py build
+ 
+ # install everything from build directory
+ install:
+-	python setup.py install
++	$(PYTHON) setup.py install
+ 
+ # build the rpm package
+ build_rpm:
+-	python setup.py bdist_rpm
++	$(PYTHON) setup.py bdist_rpm
+ 
+ # clean up temporary files from 'build' command
+ clean:
+-	python setup.py clean --all
++	$(PYTHON) setup.py clean --all
+diff --git a/README.md b/README.md
+index 13d8b1b7acfb..f66dd24fe84a 100644
+--- a/README.md
++++ b/README.md
+@@ -59,6 +59,10 @@ make install
+ 
+ ### Running
+ 
++NOTE: servicereport by default runs with python3, if you want to run
++      servicereport with python2 consider chaging the shebang in servicereport
++      script to python2.
++
+ Runs and print the status of all the applicable plugins in current system
+ ```
+ $ servicereport
+diff --git a/servicereport b/servicereport
+index 87e450770c04..40e6a1754745 100755
+--- a/servicereport
++++ b/servicereport
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ 
+ # SPDX-License-Identifier: GPL-2.0-only
+ #
+-- 
+2.29.1
+
