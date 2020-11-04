@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:48:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Don't use deprecated QProcess methods.
+  * Don't use 0/nullptr to initialize QFlags.
+  * Removed Default Applications page.
+
+-------------------------------------------------------------------
 Mon Jun 29 07:09:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Dont BuildRequire Openbox and add %dir %{_sysconfdir}/xdg/openbox

@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-session
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -35,11 +35,11 @@ Patch2:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
+BuildRequires:  pkgconfig(Qt5UiTools) >= 5.12
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= %{version}

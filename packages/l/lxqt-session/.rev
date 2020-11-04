@@ -1282,4 +1282,15 @@ comply with openSUSE policy
 - BuildRequires openbox to provide /etc/xdg/openbox</comment>
     <requestid>817620</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5971a62f0833617c7dfc1cdb1fe80d8c</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Don't use deprecated QProcess methods.
+  * Don't use 0/nullptr to initialize QFlags.
+  * Removed Default Applications page.</comment>
+    <requestid>846008</requestid>
+  </revision>
 </revisionlist>
