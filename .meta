@@ -1,0 +1,21 @@
+<package name="kshutdown" project="openSUSE:Factory">
+  <title>Graphical shutdown utility for KDE</title>
+  <description>KShutDown is an advanced graphical shutdown utility for KDE.
+
+Features:
+
+- Turn Off Computer (logout and halt the system)
+- Restart Computer (logout and reboot the system)
+- Hibernate to disk or Suspend
+- Lock Screen (lock the screen using a screen saver)
+- End Current Session (end the current KDE session and logout the user)
+- Various time and delay options (time from now, inactivity detection, ...)
+- Command line support
+- Extras (external user commands)
+- System tray and panel applet
+- Visual and sound notifications
+- Simple, easy-to-use User Interface
+- Works with many Desktop Environments</description>
+  <devel project="KDE:Extra" package="kshutdown"/>
+  <url>http://kde-apps.org/content/show.php/KShutdown?content=9754</url>
+</package>
