@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Nov  4 08:32:39 UTC 2020 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to version 7.2.0:
+  * Command line tools
+    - Add multi-line PROJ string export capability, and use it by
+      default in projinfo (unless --single-line is specified)
+      (#2381)
+  * Coordinate operations
+    - +proj=col_urban projection, implementing a EPSG projection
+      method used by a number of projected CRS in Colombia
+      (#2395)
+    - +proj=tinshift for triangulation-based transformations
+      (#2344)
+    - Added ellipsoidal formulation of +proj=ortho (#2361)
+  * Database
+    - Update to EPSG 10.003 and make code base robust to dealing
+      with WKT CRS with DatumEnsemble (#2370)
+    - Added Finland tinshift operations (#2392)
+    - Added transformation from JGD2011 Geographic 3D to JGD2011
+      height using GSIGEO2011 (#2393)
+    - Improve CompoundCRS identification and name morphing in
+      VerticalCRS with ESRI WKT1 (#2386)
+    - Added OGC:CRS27 and OGC:CRS83 CRS entries for NAD27 and
+      NAD83 in longitude, latitude order (#2350)
+  * API
+    - Added temporal, engineering, and parametric datum
+      PJ_TYPE enumerations (#2274)
+    - Various improvements to context handling (#2329, #2331)
+    - proj_create_vertical_crs_ex(): add a ACCURACY option to
+      provide an explicit accuracy, or derive it from the grid
+      name if it is known (#2342)
+    - proj_crs_create_bound_crs_to_WGS84(): make it work on
+      verticalCRS/compoundCRS such as EPSG:4326+5773 and
+      EPSG:4326+3855 (#2365)
+    - promoteTo3D(): add a remark with the original CRS
+      identifier (#2369)
+    - Added proj_context_clone (#2383)
+  * Bug fixes
+    - Avoid core dumps when copying contexts in certain scenarios
+      (#2324)
+    - proj_trans(): reset errno before attemptying a retry with a
+      new coordinate operation (#2353)
+    - PROJJSON schema corrected to allow prime meridians values
+      with explicitly stating a unit (degrees assumed) (#2354)
+    - Adjust createBoundCRSToWGS84IfPossible() and operation
+      filtering (for POSGAR 2007 to WGS84 issues) (#2357)
+    - createOperations(): several fixes affecting NAD83 ->
+      NAD83(2011) (#2364)
+    - WKT2:2019 import/export: handle DATUM (at top level object)
+      with PRIMEM
+    - WKT1_ESRI: fix import and export of CompoundCRS (#2389)
+
+-------------------------------------------------------------------
 Tue Sep 15 13:44:26 UTC 2020 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to version 7.1.1:
