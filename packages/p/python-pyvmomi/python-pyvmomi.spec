@@ -19,13 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyvmomi
-Version:        7.0
+Version:        7.0.1
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/vmware/pyvmomi
-Source:         https://files.pythonhosted.org/packages/source/p/pyvmomi/pyvmomi-%{version}.tar.gz
+Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/pyvmomi-%{version}.tar.gz
 BuildRequires:  %{python_module fixtures >= 1.3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module requests >= 2.3.0}
