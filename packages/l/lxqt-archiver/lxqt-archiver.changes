@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:33:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * Avoid memory leak in "java-utils.c".
+  * Fixed comparison of integer expressions of different signedness.
+  * Removed "g_ptr_array_free_full" from "glib-utils.c" and used
+    GLib's "g_ptr_array_free" instead.
+  * Use bsdtar to handle RPM packages.
+
+-------------------------------------------------------------------
 Mon Jun 29 07:17:31 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Revert BuildRequires hicolor-icon-theme for icon dirs
