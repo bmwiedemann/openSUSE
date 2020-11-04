@@ -144,4 +144,24 @@
     <comment></comment>
     <requestid>798531</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2f29e6e3f83bda1488150009619a7262</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Use qAsConst.
+  * Don't search application dir for keyboard and scheme data.
+  * Use Q_EMIT to call signals, instead of the emit keyword.
+  * Dropped the deprecated class QLinkedList.
+  * Don't use 0/nullptr to initialize QFlags.
+  * Fixed ColorEntry copy operator.
+  * Disabled the use of copy constructors and assignment operators.
+  * Check for successful ioctl() calls by testing that the call
+    did not return -1.
+  * Fix find_package() developer warning in cmake.
+  * Use const references wherever possible.
+  * Handle keyboard commands properly.</comment>
+    <requestid>846013</requestid>
+  </revision>
 </revisionlist>
