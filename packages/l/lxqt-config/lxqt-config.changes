@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:37:30 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Better UI for lxqt-config-brightness.
+  * Avoid C++11 range for possible container detachment.
+  * Only use QStringLiteral where it avoids allocations.
+  * Initialize monitor settings config in "lxqt-config-monitor/monitor.h".
+  * Use QFlags default constructor.
+  * Fixed a crash in lxqt-config-monitor.
+  * Fixed type associations and added "Default Application".
+  * Detailed palette customization in lxqt-config-appearance.
+  * Remember sizes of appearance and file associations dialogs.
+
+-------------------------------------------------------------------
 Mon Apr 27 10:50:54 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-config.keyring to tsujan's key
