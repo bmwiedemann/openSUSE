@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Do not reset widget palettes on changing style.
+  * Support more palette colors for better customization.
+
+-------------------------------------------------------------------
 Mon Jun  1 05:54:21 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.1:
