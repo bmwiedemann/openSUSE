@@ -1,0 +1,5 @@
+<package name="csi-external-snapshotter" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems:ceph" package="csi-external-snapshotter"/>
+</package>
