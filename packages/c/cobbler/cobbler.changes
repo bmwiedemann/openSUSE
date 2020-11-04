@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:57:09 UTC 2020 - Jochen Breuer <jbreuer@suse.de>
+
+- Fixes usage of str.join()
+- Added:
+  * fix-for-old-str.join-usage.diff
+
+-------------------------------------------------------------------
 Tue Sep 22 09:39:25 UTC 2020 - Dominik Gedon <dominik.gedon@suse.com>
 
 - Add fence-agents package as requirement

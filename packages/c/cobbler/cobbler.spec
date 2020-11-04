@@ -134,6 +134,7 @@ BuildArch:      noarch
 Patch0:         cgi_parse_qs_is_deprecated.diff
 Patch1:         refactored_auth_module.diff
 Patch2:         load_module_apache_suse_fix.diff
+Patch3:         fix-for-old-str.join-usage.diff
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -269,6 +270,7 @@ Unit test files from the Cobbler project
 %if 0%{?suse_version}
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions

@@ -1,0 +1,35 @@
+From 72e3bb2b07f300c7848a4e7da1e84f8952e80fb9 Mon Sep 17 00:00:00 2001
+From: Jochen Breuer <jbreuer@suse.de>
+Date: Tue, 3 Nov 2020 10:51:35 +0100
+Subject: [PATCH] Fix for old str.join usage
+
+Fixes #2624
+---
+ cobbler/tftpgen.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cobbler/tftpgen.py b/cobbler/tftpgen.py
+index 5c5b1efb..c054eded 100644
+--- a/cobbler/tftpgen.py
++++ b/cobbler/tftpgen.py
+@@ -975,7 +975,7 @@ class TFTPGen(object):
+         # out the path based on where the kernel is stored. We do this because some distros base future downloads on the
+         # initial URL passed in, so all of the files need to be at this location (which is why we can't use the images
+         # link, which just contains the kernel and initrd).
+-        distro_mirror_name = str.join(distro.kernel.split('/')[-2:-1], '')
++        distro_mirror_name = ''.join(distro.kernel.split('/')[-2:-1])
+ 
+         blended = utils.blender(self.api, False, obj)
+ 
+@@ -1068,7 +1068,7 @@ class TFTPGen(object):
+         # out the path based on where the kernel is stored. We do this because some distros base future downloads on the
+         # initial URL passed in, so all of the files need to be at this location (which is why we can't use the images
+         # link, which just contains the kernel and initrd).
+-        distro_mirror_name = str.join('', distro.kernel.split('/')[-2:-1])
++        distro_mirror_name = ''.join(distro.kernel.split('/')[-2:-1])
+ 
+         blended = utils.blender(self.api, False, obj)
+ 
+-- 
+2.28.0
+
