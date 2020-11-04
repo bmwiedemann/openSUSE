@@ -26,6 +26,14 @@ License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
 Source0:        https://github.com/linux-ras/%{name}/archive/v%{version}/%{name}-v%{version}.tar.gz
+Patch1:         0001-Add-active-dump-check-in-kdump-and-FADump-plugin.patch
+Patch2:         0002-Introduce-a-new-option-to-mark-plugins-optional.patch
+Patch3:         0003-HTX-Mark-HTX-plugin-as-optional.patch
+Patch4:         0004-Add-new-option-to-run-all-applicable-plugins.patch
+Patch5:         0005-Allow-distro-classes-to-redefine-the-capture-kernel-.patch
+Patch6:         0006-utils-remove-the-invalid-function-call-to-walk_packa.patch
+Patch7:         0007-Update-data-files-of-the-project.patch
+Patch8:         0008-Run-servicereport-using-python3-binary.patch
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools
 BuildRequires:  systemd-rpm-macros
@@ -41,6 +49,7 @@ the incorrect configuration
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %{python} setup.py build
@@ -61,6 +70,7 @@ the incorrect configuration
 %service_del_postun servicereport.service
 
 %files
+%license COPYING
 %{_mandir}/man8/*
 %doc %{_datadir}/doc/*
 %{_bindir}/servicereport

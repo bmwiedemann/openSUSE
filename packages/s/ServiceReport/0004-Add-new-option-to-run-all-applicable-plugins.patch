@@ -1,0 +1,62 @@
+From d3e790d21c7dd7043bb405a752fe210bfaf3332b Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Sun, 3 May 2020 16:25:19 +0530
+Subject: [PATCH 4/8] Add new option to run all applicable plugins
+
+Upstream: accepted - expected 2.2.3
+Git-commit: d3e790d21c7dd7043bb405a752fe210bfaf3332b
+
+Introducing a new option -a (--all) that will allow user to run
+all applicable plugins regardless whether a plugin is optional or not.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/__init__.py          | 10 ++++++++++
+ servicereportpkg/validate/__init__.py |  3 +++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/servicereportpkg/__init__.py b/servicereportpkg/__init__.py
+index 945b6ece56c7..2d44bd1cebd6 100644
+--- a/servicereportpkg/__init__.py
++++ b/servicereportpkg/__init__.py
+@@ -32,6 +32,10 @@ def parse_commandline_args(args):
+     parser = ArgumentParser(description="Validation tool to \
+                                         verify the system configurations")
+ 
++    parser.add_argument("-a", "--all", action="store_true",
++                        dest="all", default=False,
++                        help="Execute all plugins applicable to the system")
++
+     parser.add_argument("-d", "--dump", action="store_true",
+                         dest="dump", default=False,
+                         help="Trigger a dump")
+@@ -73,6 +77,12 @@ def parse_commandline_args(args):
+     if parsed_argument.plugins and parsed_argument.optional:
+         parser.error("-o(--optional) is not allowed with -p(--pluigns)\n"
+                      "\t\t\tList all the plugins against -p option only.")
++
++    if parsed_argument.all and (parsed_argument.plugins or
++                                parsed_argument.optional):
++        parser.error("-a(--all) option is not allowd with -p(--plugins)\n"
++                     "\t\t\tor -o(--optional) option.")
++
+     return parser.parse_args(args)
+ 
+ 
+diff --git a/servicereportpkg/validate/__init__.py b/servicereportpkg/validate/__init__.py
+index 0d94e7ea392f..6f441fa6e373 100644
+--- a/servicereportpkg/validate/__init__.py
++++ b/servicereportpkg/validate/__init__.py
+@@ -47,6 +47,9 @@ class Validate(object):
+         """Check whether the give plugin is executable in current system
+         environment"""
+ 
++        if self.cmd_opts.all:
++            return True
++
+         if self.cmd_opts.plugins:
+             return plugin_name in self.cmd_opts.plugins
+ 
+-- 
+2.29.1
+

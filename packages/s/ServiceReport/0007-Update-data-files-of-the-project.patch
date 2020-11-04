@@ -1,0 +1,47 @@
+From ab4a7c6fbc789eeab2462a04679d3d8ac0082ac9 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Thu, 2 Jul 2020 11:44:10 +0530
+Subject: [PATCH 7/8] Update data files of the project
+
+Upstream: accepted - expected 2.2.3
+Git-commit: ab4a7c6fbc789eeab2462a04679d3d8ac0082ac9
+
+Let's keep the README.md install directory name similar to the package
+name to avoid conflicts during package build. Also add license file
+(COPYING) to data files of the project.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ ServiceReport.spec | 1 +
+ setup.py           | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/ServiceReport.spec b/ServiceReport.spec
+index a57625caa12b..1a817ad73277 100644
+--- a/ServiceReport.spec
++++ b/ServiceReport.spec
+@@ -43,6 +43,7 @@ systemctl enable servicereport.service
+ %defattr(-,root,root)
+ %doc /usr/share/man/man8/*
+ %doc /usr/share/doc/*
++%doc /usr/share/licenses/*
+ /usr/lib/*
+ /usr/bin/*
+ 
+diff --git a/setup.py b/setup.py
+index 6217831be088..a716c710804b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -17,7 +17,8 @@ setup(packages=find_packages(),
+       scripts=['servicereport'],
+       version=get_version(),
+       data_files=[('share/man/man8', ['man/servicereport.8']),
+-                  ('share/doc/servicereport', ['README.md']),
++                  ('share/doc/ServiceReport', ['README.md']),
++                  ('share/licenses/ServiceReport', ['COPYING']),
+                   ('/usr/lib/systemd/system',
+                    ['service/servicereport.service'])],
+       classifiers=[
+-- 
+2.29.1
+

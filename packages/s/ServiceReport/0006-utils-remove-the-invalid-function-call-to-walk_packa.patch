@@ -1,0 +1,38 @@
+From 32c56462ae6a0488b0b2c017ca2e10cdec42e2b1 Mon Sep 17 00:00:00 2001
+From: Sourabh Jain <sourabhjain@linux.ibm.com>
+Date: Mon, 5 Oct 2020 13:02:24 +0530
+Subject: [PATCH 6/8] [utils] remove the invalid function call to walk_packages
+
+Upstream: accepted - expected 2.2.3
+Git-commit: 32c56462ae6a0488b0b2c017ca2e10cdec42e2b1
+
+Logger class instance in install_package function is calling walk_packages
+function instead of warning. There is no member name walk_packages in Logger
+class and on execution it lead to following error:
+
+AttributeError: 'Logger' object has no attribute 'walk_packages'
+
+This patch updates the function to log the warning message if package
+manager is not available.
+
+Signed-off-by: Sourabh Jain <sourabhjain@linux.ibm.com>
+---
+ servicereportpkg/utils.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/servicereportpkg/utils.py b/servicereportpkg/utils.py
+index fcf62e781a6c..279750971d1c 100644
+--- a/servicereportpkg/utils.py
++++ b/servicereportpkg/utils.py
+@@ -293,7 +293,7 @@ def install_package(package):
+     log = get_default_logger()
+ 
+     if package_manager is None:
+-        log.walk_packages("Unable to locate the package manager")
++        log.warning("Unable to locate the package manager")
+         return None
+ 
+     command = package_manager["installer"]+" "+package_manager["install_option"]+" "+package
+-- 
+2.29.1
+
