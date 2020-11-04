@@ -143,4 +143,14 @@
     <comment></comment>
     <requestid>798542</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>420812d149ed24143117c9a69f5f9621</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * This is the last release, which includes some translation
+    updates. compton-conf will receive no more updates.</comment>
+    <requestid>846019</requestid>
+  </revision>
 </revisionlist>

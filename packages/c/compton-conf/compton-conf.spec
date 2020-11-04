@@ -1,7 +1,7 @@
 #
 # spec file for package compton-conf
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           compton-conf
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Compositor Configuration
 License:        LGPL-2.1-or-later
@@ -31,12 +31,12 @@ BuildRequires:  cmake >= 3.1.0
 # Adding it as BR so that checks detect the file
 BuildRequires:  compton
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.12.0
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(lxqt)
 Requires:       compton
