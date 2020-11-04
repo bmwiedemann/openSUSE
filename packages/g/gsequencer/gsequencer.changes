@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  3 13:49:16 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.6.
+- added some getter/setter functions to AgsPiano, to set either
+  vertical or horizontal layout and to set mouse button state.
+- minor improvements, fixed non generic code with mixed GtkWidget
+  and AgsLineMember implementation of GtkContainer's children.
+
+-------------------------------------------------------------------
+Sat Oct 31 19:20:55 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.6.3 removed pthread remains.
+- since 3.6.2 implemented ags_fast_pitch_util.[ch] and use it in
+  ags_sf2_synth_util.c and ags_sfz_synth_util.c.
+- implemented more get_type() functions of enum values.
+
+-------------------------------------------------------------------
 Sun Oct 25 06:46:01 UTC 2020 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.6.1 implemented gstreamer file IO, read/write
