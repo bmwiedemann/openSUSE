@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:52:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Don't use QProcess deprecates methods.
+  * Silenced the warnings about unused function parameters.
+  * Drop the obsolete classs QDesktopWidget.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:01:48 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed lxqt-runner.keyring to tsujan's key

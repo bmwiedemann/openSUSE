@@ -269,4 +269,15 @@
     <comment></comment>
     <requestid>798543</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4761c706d926e3f85740bae5f2ff20c2</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Don't use QProcess deprecates methods.
+  * Silenced the warnings about unused function parameters.
+  * Drop the obsolete classs QDesktopWidget.</comment>
+    <requestid>846010</requestid>
+  </revision>
 </revisionlist>
