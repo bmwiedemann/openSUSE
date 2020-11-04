@@ -17,7 +17,7 @@
 
 
 Name:           liblxqt
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later
@@ -30,19 +30,18 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5xdg-devel >= 3.5.0
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 3.1.0
+BuildRequires:  pkgconfig(Qt5Xdg) >= 3.5.0
 BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
 Obsoletes:      liblxqt-qt5 < %{version}
 Provides:       liblxqt-qt5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 liblxqt represents the core library of LXQt providing essential
@@ -53,8 +52,8 @@ functionality needed by nearly all of its components.
 %package -n liblxqt0
 Summary:        LXQt core library
 Group:          System/Libraries
-Provides:       liblxqt
 Recommends:     %{name}-lang
+Provides:       liblxqt
 
 %description -n liblxqt0
 liblxqt represents the core library of LXQt providing essential
@@ -79,7 +78,7 @@ applications that want to make use of liblxqt.
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -87,7 +86,6 @@ make %{?_smp_mflags}
 %find_lang %{name} --with-qt
 
 %post -n liblxqt0 -p /sbin/ldconfig
-
 %postun -n liblxqt0 -p /sbin/ldconfig
 
 %files -n liblxqt0
@@ -107,7 +105,7 @@ make %{?_smp_mflags}
 %{_libdir}/pkgconfig/lxqt.pc
 %{_libdir}/%{name}.so
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/liblxqt

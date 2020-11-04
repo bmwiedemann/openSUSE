@@ -281,4 +281,18 @@
   * Remove dead codes.</comment>
     <requestid>810159</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b506cd5dde51eb61bb6609e11c68fddc</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510934</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated recommends on lang package
+
+- Update to 0.16.0:
+  * Use QFlags default constructor
+  * Added an action for showing LXQt leave dialog
+    (to be used when the power button is pressed).
+  * Don't use deprecated QProcess methods.</comment>
+    <requestid>846026</requestid>
+  </revision>
 </revisionlist>
