@@ -22,60 +22,42 @@
 
 #---[ Packaging ]-----------------------------------------------------------------------------------------------------
 
-Name:           pw3270
-Version:        5.3
-Release:        0
-Summary:        IBM 3270 Terminal emulator for GTK
-License:        GPL-2.0
-Group:          System/X11/Terminals
-Url:            https://portal.softwarepublico.gov.br/social/pw3270/
+Name:			pw3270
+Version:		5.3
+Release:		0
+Summary:		IBM 3270 Terminal emulator for GTK
+License:		GPL-2.0
+Group:			System/X11/Terminals
+Url:			https://github.com/PerryWerneck/pw3270
 
-Source:         pw3270-%{version}.tar.xz
-Patch1:         optional_optipng.patch
+Source:		pw3270-%{version}.tar.xz
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRoot:		%{_tmppath}/%{name}-%{version}-build
 
-Requires:       shared-mime-info
-Requires:	%{name}-branding = %{version}
+Requires:		shared-mime-info
+Requires:		%{name}-branding = %{version}
 
-#--[ Setup by distribution ]------------------------------------------------------------------------------------------
-# 
-# References:
-#
-# https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto#Detect_a_distribution_flavor_for_special_code
-#
+BuildRequires:	update-desktop-files
 
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(libv3270) >= %{version}
+%glib2_gsettings_schema_requires
 
-%if 0%{?is_opensuse}
-
-BuildRequires:  optipng
-
-%endif
-
-%if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
-BuildRequires:  ImageMagick-config-7-upstream
-%endif
-
-#---------------------------------------------------------------------------------------------------------------------
-
-BuildRequires:  autoconf >= 2.61
-BuildRequires:  automake
-BuildRequires:  binutils
-BuildRequires:  coreutils
-BuildRequires:  desktop-file-utils
-BuildRequires:  findutils
-BuildRequires:  gcc-c++
-BuildRequires:  gettext-devel
-BuildRequires:  gettext-tools
-BuildRequires:  m4
-BuildRequires:  pkgconfig
+BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(libv3270) >= 5.3
+BuildRequires:	autoconf >= 2.61
+BuildRequires:	automake
+BuildRequires:	binutils
+BuildRequires:	coreutils
+BuildRequires:	desktop-file-utils
+BuildRequires:	findutils
+BuildRequires:	gcc-c++
+BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
+BuildRequires:	m4
+BuildRequires:	pkgconfig
 BuildRequires:  sed
-BuildRequires:  fdupes
-BuildRequires:  ImageMagick
-BuildRequires:  autoconf-archive
+BuildRequires:	fdupes
+BuildRequires:	autoconf-archive
 %glib2_gsettings_schema_requires
 
 %description
@@ -88,18 +70,34 @@ Based on the original x3270 code, pw3270 was originally created for Banco do Bra
 %package branding
 Summary:        Default branding for %{name}
 Group:          System/X11/Terminals
-Requires:       %{name} = %{version}
+
+Requires:       	%{name} = %{version}
+Requires(post):	desktop-file-utils
+Requires(postun):	desktop-file-utils
 
 %description branding
 GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
 
 This package contains the default branding for %{name}.
 
+%package keypads
+Summary:	Keypads for %{name}
+Group:		System/X11/Terminals
+Requires:	%{name} = %{version}
+BuildArch:	noarch
+
+Conflicts:	otherproviders(pw3270-keypads)
+Enhances:	%{name}
+
+%description keypads
+GTK-based IBM 3270 terminal emulator with many advanced features. It can be used to communicate with any IBM host that supports 3270-style connections over TELNET.
+
+This package contains the keypads for %{name}.
+
 #---[ Build & Install ]-----------------------------------------------------------------------------------------------
 
 %prep
 %setup
-%patch1 -p0
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 NOCONFIGURE=1 ./autogen.sh
@@ -119,33 +117,45 @@ make all -j1
 
 %fdupes %{buildroot}/%{_prefix}
 
-#---[ Files ]---------------------------------------------------------------------------------------------------------
-
 %files -f langfiles
+%defattr(-,root,root)
 %license LICENSE
 %doc AUTHORS README.md
 
 # Main application
 %dir %{_datadir}/%{_product}
 %dir %{_datadir}/%{_product}/ui
+%dir %{_datadir}/%{_product}/keypad
 %dir %{_libdir}/%{_product}-plugins
+%dir %{_datadir}/%{_product}/icons
 
 %{_bindir}/%{_product}
-%{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/*.png
 
+# Configuration & Themes
 %{_datadir}/glib-2.0/schemas/*.xml
+%{_datadir}/%{_product}/icons/gtk-*.svg
+%{_datadir}/%{_product}/icons/connect-*.svg
+%{_datadir}/%{_product}/icons/disconnect-*.svg
+
+%{_datadir}/applications/*.desktop
+%{_datadir}/appdata/%{_product}.appdata.xml
+
+%{_datadir}/mime/packages/*.xml
 
 %files branding
+%defattr(-,root,root)
+
 %{_datadir}/%{_product}/ui/*
-%{_datadir}/%{_product}/*.png
+%{_datadir}/%{_product}/*.svg
+%{_datadir}/%{_product}/icons/%{_product}.svg
 
-#---[ Scripts ]-------------------------------------------------------------------------------------------------------
+%files keypads
+%{_datadir}/%{_product}/keypad/*
 
-%post
-%glib2_gsettings_schema_post
+%posttrans
+/usr/bin/update-desktop-database
 
 %postun
-%glib2_gsettings_schema_postun
+/usr/bin/update-desktop-database
 
 %changelog
