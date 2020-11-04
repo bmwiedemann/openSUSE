@@ -1,7 +1,7 @@
 #
-# spec file for package glue
+# spec file for package lscsoft-glue
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define modname glue
 Name:           lscsoft-glue
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Grid LSC User Environment
 License:        GPL-2.0-only
@@ -25,10 +26,19 @@ URL:            http://software.ligo.org/lscsoft
 Source:         http://software.ligo.org/lscsoft/source/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-ligo-segments
+Requires:       python-numpy
 Provides:       python-glue = %{version}
 Obsoletes:      python-glue < %{version}
+# SECTION Test Requirements
+BuildRequires:  %{python_module lal}
+BuildRequires:  %{python_module ligo-segments}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+# /SECTION
+
 %python_subpackages
 
 %description
@@ -52,6 +62,17 @@ rm -fr %{buildroot}%{_prefix}%{_localstatedir}
 # /SECTION
 
 %python_expand %fdupes -s %{buildroot}%{$python_sitearch}
+
+# Tests known to fail on 32 bit due to fp precision
+%ifnarch %ix86
+%check
+export PYTHON=%{__python3}
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+pushd test
+%make_build check
+popd
+%endif
 
 %files %{python_files}
 %doc README.md

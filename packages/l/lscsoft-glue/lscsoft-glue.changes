@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 31 11:43:40 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * Test release with deprecations.
+- Run tests as part of %check section (64-bit and python3 only);
+  entails additional BuildRequires: python-ligo-segments,
+  python-matplotlib, and python-numpy.
+- Add python-numpy and python-ligo-segments to Requires as they
+  are needed for any meaningful usage of the module.
+
+-------------------------------------------------------------------
 Thu Apr 23 09:48:12 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package (source name change from python-glue).
