@@ -218,6 +218,8 @@
     <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
     <package name="aaa_base" replaces="xorg-x11-fonts"/>
     <ignore name="xorg-x11-fonts"/>
+    <package name="aaa_base" replaces="xorg-x11-fonts-legacy"/>
+    <ignore name="xorg-x11-fonts-legacy"/>
     <package name="aaa_base" replaces="strace"/>
     <ignore name="strace"/>
     <package name="aaa_base" replaces="tcsh"/>

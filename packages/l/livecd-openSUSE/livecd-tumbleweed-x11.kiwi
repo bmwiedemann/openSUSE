@@ -218,6 +218,8 @@
     <ignore name="intlfonts-chinese-big-bitmap-fonts"/>
     <package name="aaa_base" replaces="xorg-x11-fonts"/>
     <ignore name="xorg-x11-fonts"/>
+    <package name="aaa_base" replaces="xorg-x11-fonts-legacy"/>
+    <ignore name="xorg-x11-fonts-legacy"/>
     <package name="aaa_base" replaces="strace"/>
     <ignore name="strace"/>
     <package name="aaa_base" replaces="tcsh"/>
@@ -514,8 +516,6 @@
     <ignore name="xfdesktop-lang"/>
     <package name="aaa_base" replaces="xfce4-power-manager-lang"/>
     <ignore name="xfce4-power-manager-lang"/>
-    <package name="aaa_base" replaces="xorg-x11-fonts-legacy"/>
-    <ignore name="xorg-x11-fonts-legacy"/>
     <package name="aaa_base" replaces="noto-sans-cjk-fonts"/>
     <ignore name="noto-sans-cjk-fonts"/>
     <package name="aaa_base" replaces="cyrus-sasl"/>

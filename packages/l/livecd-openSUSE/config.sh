@@ -36,6 +36,9 @@ rpm -qa | grep "^cpp" | xargs -r rpm -e --nodeps
 # which has its own icons and we have breeze for the rest.
 [ "$desktop" = "kde" -o "$desktop" = "x11" ] && rpm -e --nodeps adwaita-icon-theme
 
+# Workaround until dropped from xfce4-branding-openSUSE
+[ "$desktop" = "x11" -o "$desktop" = "xfce" ] && rpm -e --nodeps noto-coloremoji-fonts
+
 #--------------------------------------
 # enable and disable services
 

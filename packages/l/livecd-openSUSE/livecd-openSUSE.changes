@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 09:30:39 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Forcibly remove noto-coloremoji-fonts until it can be replaced with
+  a buildignore
+- Ignore xorg-x11-fonts-legacy everywhere
+
+-------------------------------------------------------------------
 Wed Nov  4 08:17:48 UTC 2020 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Block systemd-doc and man-pages from all flavors, not only xfce.
