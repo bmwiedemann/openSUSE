@@ -1,0 +1,5 @@
+<package name="librealsense" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="librealsense"/>
+</package>
