@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Nov 03 03:49:23 UTC 2020 - maurizio.galli@gmail.com
+
+- Update to version 2.0+git8.9dde49c:
+  * Gnome-shell: Fix calendar issues in gnome v3.38 related to #82
+  * KDE: Improve logout screen appearance
+  * Gnome: Fix dark background in gnucash entries
+  * Xfce: Fix panel background issue
+  * KDE: Fix misplaced password input on lockscreen
+  * Feat: add icons download link
+  * Cinnamon: Fix invisible screenshot area grab related to #77
+  * Add cinnamon DE support
+  * Pantheon desktop: Redefine color variables to avoid issues with some apps
+
+-------------------------------------------------------------------
+Tue Nov  3 03:42:46 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Initial package at version 2.0 
