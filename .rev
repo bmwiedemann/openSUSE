@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5ee6d407db9679c1c485cc5cf3f7b6b0</srcmd5>
+    <version>1.0+git.20160805</version>
+    <time>1485040430</time>
+    <user>dimstar_suse</user>
+    <comment>New package, usefull opencl benchmark</comment>
+    <requestid>440174</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1845bf55c79fb6a60f2d6c1bf673484f</srcmd5>
+    <version>1.0+git.20160805</version>
+    <time>1485862978</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>453234</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4642f622ee9c1f4abd3744269d3f835</srcmd5>
+    <version>1.0+git.20170525</version>
+    <time>1496225982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20170525:
+  * Add GTX 1080 Ti results
+  * Remove non printable chars from log file
+  * Add One Plus 3T results
+  * Macbook pro results submitted by Harry Mallon
+  * Rename Macbook_Pro_2013.log to Mac_Pro_Late_2013_.log
+  * Not passing half as kernel argument
+  * Fix uninitialized variable
+  * Ignore ignored-attributes warning in g++, clang++
+  * Enable support for FreeBSD.</comment>
+    <requestid>499612</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>142cdd80004152eae7a8e7134e566412</srcmd5>
+    <version>1.0+git.20170625</version>
+    <time>1521904548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590365</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aac5212f5487440d5277fe43e49780c7</srcmd5>
+    <version>1.0+git.20191206</version>
+    <time>1576322288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git.20191206:
+  * enqueueWriteBuffer: Initialize host buffer to obtain accurate measurement
+  * Move jetson result to pocl folder
+  * [snap] use new cmake file for versions
+  * Add AMD Ryzen 7 3700X
+  * Bump rc
+  * [travis] remove explicit branch
+  * [src] auto format cpp files
+  * Bump version to rc1
+  * [android] cosmetic changes
+  * [travis] add deploy section
+  * [travis] use cmake to invoke cpack
+  * [travis] explicitly specify configuration to cpack
+  * Update travis file
+  * [cmake] fix a string in set
+  * Add cpack
+  * Add suffix to version
+  * remove int kernel restriction for apple
+  * [cmake] fix extra libs for static version
+  * [travis] add arm64
+  * skip exit code for no platform error
+  * [travis] call ctest
+  * [cmake] add a test run
+  * Create Jeston Nano (Tegra X1)
+  * Undo disabling of int kernels for intel
+  * Reduce register usage in kernels
+  * [android] update cmake to include version
+  * Create Intel_UHD_Graphics_620.log
+  * Update README.md
+  * Print half-precision with a capital letter</comment>
+    <requestid>756813</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>da1eb999af12b4384156278850802891</srcmd5>
+    <version>1.1.0</version>
+    <time>1585761375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790376</requestid>
+  </revision>
+</revisionlist>
