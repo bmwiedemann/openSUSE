@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:44:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Added a Power keys section for customizing actions of power,
+    suspend and hibernate keys.
+  * Dropped QProcess deprecated methods.
+
+-------------------------------------------------------------------
 Wed Jun 24 12:00:07 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Don't package icon dirs

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-powermanagement
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -30,20 +30,25 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-globalkeys-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5IdleTime)
 BuildRequires:  cmake(KF5Solid)
-BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Gui) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5UiTools)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
-%requires_eq    libQt5Gui5
 #BuildRequires:  pkgconfig(xcb)
 Requires:       upower
+%requires_eq    libQt5Gui5
 Recommends:     %{name}-lang
 
 %description
@@ -58,7 +63,7 @@ LXQt daemon for power management and auto-suspend
 
 %build
 %cmake  -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -74,7 +79,7 @@ make %{?_smp_mflags}
 %{_datadir}/icons/hicolor/scalable/devices/*.svg
 %{_sysconfdir}/xdg/autostart/lxqt-powermanagement.desktop
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %{_datadir}/lxqt/translations/lxqt-powermanagement
