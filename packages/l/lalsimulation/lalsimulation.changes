@@ -1,0 +1,133 @@
+-------------------------------------------------------------------
+Fri Oct 23 05:58:27 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.1:
+  * NRSur7dq4: Fix memory leak when omega0 is too low.
+
+-------------------------------------------------------------------
+Sat Aug 15 09:32:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Implement tests in %check section; BuildRequires: python3-pytest
+  required for python tests.
+- ExcludeArch 32-bit, as tests fail and upstream confirms that it
+  is not supported
+  (https://git.ligo.org/lscsoft/lalsuite/-/issues/371).
+
+-------------------------------------------------------------------
+Tue Aug 11 13:33:01 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.0:
+  * No release notes.
+
+-------------------------------------------------------------------
+Tue Jul  7 00:28:13 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * No release notes.
+- Re-enable octave bindings: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Jun 30 09:56:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass "-Wno-enum-conversion" to CFLAGS to workaround build errors
+  because XLAL_ERROR implictly converts to different function
+  return types.
+- Disable octave support as compilation error with current swig.
+
+-------------------------------------------------------------------
+Fri May 29 12:05:57 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix Requires for python package: %{name}-data expands to
+  python-lalsimulation-data whereas we really need
+  lalsimulation-data.
+
+-------------------------------------------------------------------
+Wed May 27 21:39:31 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split out separate package %{name}-data which installs the data
+  files needed for analyses using lalsimulation; these data files
+  are required whether running analyses in C/C++
+  (lalsimulation-devel), python (python-lalsimulation), or octave
+  (octave-lalsimulation).
+- Fix incorrect Summary for package octave-lalsimulation.
+- Drop Group tag from packages.
+
+-------------------------------------------------------------------
+Wed Apr 22 17:57:39 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- BuildRequires: python-xml only for openSUSE <= 15.2 since
+  python2 is disabled for newer openSUSE.
+
+-------------------------------------------------------------------
+Fri Apr  3 23:43:51 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.0
+- Drop lalsimulation-build-octave44-with-swig3.patch: incorporated
+  upstream.
+- Enable acceleration using openmp.
+- Generate man files (BuildRequires: help2man).
+
+-------------------------------------------------------------------
+Sun Feb  2 23:51:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.10.1
+  * Add a fix to aligned-spin limit
+  * NRHybSur3dq8: Use XLAL_EDOM for extrapolation errors
+  * Fix Bh1-Bh2 swap bug in NRSur7dq4 when m1 < m2
+- Changes from version 1.10.0:
+  * O3b release
+- Rebase lalsimulation-build-octave44-with-swig3.patch for updated
+  version.
+
+-------------------------------------------------------------------
+Mon Sep 30 16:22:29 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build packages for both python2 and python3.
+
+-------------------------------------------------------------------
+Mon Jul 22 14:19:29 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.9.1:
+  * O3 point release
+- Changes from version 1.9.0:
+  * O3 release.
+- Update shared lib package names in keeping with upstream so
+  versioning.
+- Rebase lalsimulation-build-octave44-with-swig3.patch to conform
+  to upstream's reworking for swig and octave version tests.
+
+-------------------------------------------------------------------
+Fri Feb  8 13:32:42 UTC 2019 - badshah400@gmail.com
+
+- Switch builds to python2; add python-xml to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Feb  7 15:09:50 UTC 2019 - badshah400@gmail.com
+
+- Update Requires for %{name}-devel, octave-%{name}, and python-%{name}.
+
+-------------------------------------------------------------------
+Sun Jan 27 21:10:07 UTC 2019 - badshah400@gmail.com
+
+- Fix env variable scripts: extract pkg specific env variables
+  and install them in %{_sysconfdir}/profile.d/ instead of using
+  upstream's which mess with standard env variables (PATH, etc.)
+
+-------------------------------------------------------------------
+Sun Jan 27 20:31:25 UTC 2019 - badshah400@gmail.com
+
+- Add lalsimulation-build-octave44-with-swig3.patch: allow
+  building octave bindings with swig 3.0.x rather than requiring
+  swig 4.x.
+- Enable octave binding and include in new subpackage
+  octave-%{name}.
+
+-------------------------------------------------------------------
+Sat Jan 26 21:23:10 UTC 2019 - badshah400@gmail.com
+
+- Update to version 1.8.1
+
+-------------------------------------------------------------------
+Wed Nov 28 18:03:47 UTC 2018 - badshah400@gmail.com
+
+- Initial Package.
