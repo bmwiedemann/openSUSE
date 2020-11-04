@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-themes
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-themes
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,7 +30,7 @@ BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildArch:      noarch
 
 %description

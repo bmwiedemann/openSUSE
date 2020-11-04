@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>798538</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>681187696c8ff87a4ab706054c3202ec</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510909</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Added the themes Clearlooks, Leech and Kvantum.</comment>
+    <requestid>846011</requestid>
+  </revision>
 </revisionlist>
