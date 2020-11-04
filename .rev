@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>794eb3f1d0b6018e6d6a790e4291f594</srcmd5>
+    <version>7.0.0</version>
+    <time>1597755971</time>
+    <user>dimstar_suse</user>
+    <comment>The LSC Algorithm Library Suite (LALSuite) is comprised of various gravitational wave data analysis routines written in C.</comment>
+    <requestid>825822</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c4b413a8413e5c2623e58316677d1022</srcmd5>
+    <version>7.0.0</version>
+    <time>1604306486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>844988</requestid>
+  </revision>
+</revisionlist>
