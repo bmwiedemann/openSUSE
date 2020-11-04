@@ -1,0 +1,5 @@
+<package name="perl-Specio-Library-Path-Tiny" project="openSUSE:Factory">
+  <title>perl-Specio-Library-Path-Tiny - Path::Tiny types and coercions for Specio</title>
+  <description>This library provides a set of Path::Tiny types and coercions for Specio. These types can be used with Moose, Moo, Params::ValidationCompiler, and other modules.</description>
+  <devel project="devel:languages:perl" package="perl-Specio-Library-Path-Tiny"/>
+</package>
