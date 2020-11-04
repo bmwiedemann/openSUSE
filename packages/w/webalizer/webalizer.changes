@@ -1,0 +1,421 @@
+-------------------------------------------------------------------
+Mon Jun  8 08:39:47 UTC 2020 - pgajdos@suse.com
+
+- fix build
+- added patches
+  fix static variables
+  + webalizer-static.patch
+
+-------------------------------------------------------------------
+Fri Nov  8 06:41:45 UTC 2019 - pgajdos@suse.com
+
+- remove GeoIP support [bsc#1156197]
+
+-------------------------------------------------------------------
+Thu Apr 27 22:51:04 UTC 2017 - chris@computersalat.de
+
+- update flags pkg
+  * add missing EU flag (from special flags)
+  * noarch pkg
+  * remove deps to webalizer -> webalizer requires flags
+
+-------------------------------------------------------------------
+Thu Mar 26 09:27:31 UTC 2015 - dimstar@opensuse.org
+
+- Drop mm BuildRequires: unneeded dependency (that no longer is
+  satisfied in Tumbleweed).
+
+-------------------------------------------------------------------
+Sun Oct 19 01:09:56 UTC 2014 - crrodriguez@opensuse.org
+
+- webalizer-overlinking.patch: Remove use of xorg-x11-devel 
+  its need was the product of overlinking. X libraries are
+  never directly used.
+
+-------------------------------------------------------------------
+Thu Nov 14 22:31:51 UTC 2013 - chris@computersalat.de
+
+- update to update to 2.23-08
+  * Fix sporadic eol problem with some IIS/W3C logs
+  * Fix compiler directive syntax error (broke some 64 bit systems)
+ - Changes/Additions:
+  * Modest speed improvements in hash table code
+- rebase patches
+- fix spec
+  * package flags too, not only the DIR 
+
+-------------------------------------------------------------------
+Thu Jun 21 21:06:03 UTC 2012 - chris@computersalat.de
+
+- add missing Group to subpkg
+
+-------------------------------------------------------------------
+Wed Dec 21 13:51:33 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:52 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Thu May 12 12:23:54 UTC 2011 - chris@computersalat.de
+
+- update to 2.23-05
+  o several fixes for catalan lang
+
+-------------------------------------------------------------------
+Sun Mar 20 21:28:14 UTC 2011 - chris@computersalat.de
+
+- add world flags (sub-pkg)
+  o add missing link for uk.png
+  o add missing su.png
+  o add license file (CC BY-SA 3.0)
+    http://creativecommons.org/licenses/by-sa/3.0/legalcode
+- rework configuration patch > conf patch
+  o fix path to GeoIP.dat
+
+-------------------------------------------------------------------
+Sat Mar 19 18:17:06 UTC 2011 - chris@computersalat.de
+
+- update to 2.23
+  o Fix sporadic eol problem with some IIS/W3C logs
+  o Fix compiler directive syntax error (broke some 64 bit systems)
+  o Modest speed improvements in hash table code
+ - for further changes please see CHANGES file
+- fix License: GPLv2+
+- spec-cleaner
+- remove obsolete define patch
+- add Makefile patch
+  o fix for data-/mandir
+- remove Obsoletes/Provides webalize
+- remove author from spec
+- preun: do not remove var/lib/webalizer/*
+
+-------------------------------------------------------------------
+Wed Sep  1 15:55:56 CEST 2010 - anicka@suse.cz
+
+- fix build with zlib
+- enable geoip (bnc#635762) 
+
+-------------------------------------------------------------------
+Thu May 27 17:02:27 CEST 2010 - anicka@suse.cz
+
+- enable bzip2 (bnc#606239) 
+
+-------------------------------------------------------------------
+Mon Sep  7 21:01:21 CEST 2009 - anicka@suse.cz
+
+- fixed resource leak (bnc#531678) 
+
+-------------------------------------------------------------------
+Sun Apr 19 21:20:46 CEST 2009 - crrodriguez@suse.de
+
+- remove db1-devel buildrequire, not used anymore 
+
+-------------------------------------------------------------------
+Mon Mar  9 17:18:28 CET 2009 - anicka@suse.cz
+
+- update to 2.20 
+ * Added missing memory deallocation call in DNS lookup code.
+ * Minor fixes to configure script
+ * Added "YearTotals" config option for main index page totals
+
+-------------------------------------------------------------------
+Mon Jul 28 19:07:05 CEST 2008 - anicka@suse.cz
+
+- update to 2.20
+ * Fixed problem with timing totals.
+ * Fixed referrer linking to avoid possible xss injection.
+ * Fixed month change detection error that caused incorrect report
+   dates when logs had a 'gap' longer than a year.
+ * Fixed buffer overrun possibility in parsing code and user agent
+   mangle logic.
+ * Added symbolic link checks for file I/O to prevent possible
+   privilege escalation exploits.  Disallows reading from or writing
+   to any file that is a symlink.  Thanks to Julien Danjou.
+ * Added code to preserve the history and incremental data files in
+   the event of a crash before writing to them completely.  Thanks
+   to Robert Millan for the idea and initial code.
+ * Added native geolocation services, which fully supports both IPv4
+   and IPv6 lookups.  Adds the configuration keywords 'GeoDB' and
+   'GeoDBDatabase' along with the '-j' and '-J' command line options.
+ * Added 'wcmgr', "The Webalizer (DNS) Cache file Manager" to the
+   distribution to provide cache file maintenance.  See the supplied
+   man page for a description and usage information.
+ * Changed history code and main index page to allow for more than
+   12 months of reports to be displayed.  Added the config keywords
+   'IndexMonths' (-K command line option), 'GraphMonths' (-k command
+   line option) and 'YearHeaders' to control how index is displayed.
+ * Changed Berkeley DB code to use current 4.x APIs.
+ * Added support for bzip2 compressed log files (.bz2) as a compile
+   time option (--enable-bz2).  If enabled, bzipped files will be
+   decompressed automatically during processing.
+ * Added support for W3C formatted logs.  Based on code submitted
+   by Klaus Reimer.
+ * Added GeoIP support as compile time option (--enable-geoip). Adds
+   'GeoIP' and 'GeoIPDatabase' config keywords, '-w' and '-W'
+   command line options. (http://www.maxmind.com/)
+ * Added IPv6 support.  Based on initial code by Jose Carlos Meneiros
+   and modified to support Solaris and other problematic platforms.
+ * Added 'CacheIPs' config option to allow saving unresolved addresses
+   in the DNS cache.
+ * Added 'CacheTTL' config option which allows the DNS cache time to
+   live (TTL) value to be specified at run-time.
+ * Added 'SearchCaseI' config option to specify if search strings
+   should be treated as case insensitive or not.  The default value,
+   'yes', causes search strings to be treated as case insensitive.
+ * Added 'HTAccess' config option.  Allows writing a default .htaccess
+   file to the output directory.
+ * Added ability to display flags in the top country table.  Adds the
+   config keywords 'CountryFlags' and 'FlagDir', and -z command line
+   option.
+ * Added 'StripCGI' config option to configure how CGI variables on
+   the end of URLs are treated (can now be stripped or left in place).
+ * Added 'DefaultIndex' config option to enable/disable the use of
+   "index." as a default index name to be stripped from the end of URLs.
+ * Added 'TrimSquidURL' config option to allow squid log URLs to be
+   reduced in granularity by a user definable amount.  Thanks to code
+   submitted by Stuart Gall.
+ * Added 'OmitPage' config option (and the '-O' command line switch)
+   to prevent specified URLs from being counted as pages even if they
+   otherwise would be.  Thanks to code submitted by Adam Morton.
+ * Added 'IgnoreState' config option (and the -b command line switch)
+   to allow ignoring any existing incremental data file (similar to
+   the IgnoreHist/-i option).
+ * Changed logic to always generate summary report (index.html),
+   even if no records were processed.
+ * Added color support to allow changing graph colors.  Based on the
+   Webalizer-usecolor code submitted by Benoit Rouits.  Adds 11 new
+   config options, see the README file for complete descriptions.
+ * Added language 'lang=' specification in generated HTML files.
+ * Added 'LinkReferrer' config option to allow/disallow links in the
+   top referrers table.
+ * Added 'PagePrefix' config option to allow URL prefix matches to
+   be counted as pages, regardless of file extension or type.  Thanks
+   to code submitted by Remco Van de Meent.
+ * Enabled large file support (LFS) to support logs greater than 2Gb
+   in size on systems that support LFS.  Also increased the size of
+   most internal counters to handle larger sites.
+ * Minor changes to generated HTML output
+ * Updated language files country codes for current IANA TLDs
+ * Changed the meaning of the -v command line switch.  It now
+   causes verbose information to be displayed at run-time
+   (Informational and Debug messages).
+ * Changed Group* config options to allow a quoted string for
+   the match string.  This allows spaces to be embedded in the
+   string.
+ * Changed log record parsing logic to allow spaces in URLs.
+ * Made configuration keywords, boolean configuration values
+   (yes/no), and log file types case insensitive.  Also fixed
+   defaults for invalid values to reflect documented defaults.
+ * Changed configure script to use --sysconfdir to specify the
+   location of the default webalizer.conf configuration file.
+   Also added support for DESTDIR during install to aid binary
+   package builds.
+- remove ipv6 and overflow patches
+
+-------------------------------------------------------------------
+Mon Mar 12 14:37:42 CET 2007 - anicka@suse.cz
+
+- fix processing IPv6 addresses [#219403] 
+
+-------------------------------------------------------------------
+Fri Dec  8 17:34:17 CET 2006 - anicka@suse.cz
+
+- add IPv6 patch from Arkadiusz Miskiewicz [#219403] 
+
+-------------------------------------------------------------------
+Thu Mar 16 14:47:55 CET 2006 - anicka@suse.cz
+
+- change LogFile to /var/log/apache2/access_log (#157931)
+- create separate patch with configuration changes
+
+-------------------------------------------------------------------
+Tue Mar 14 16:07:28 CET 2006 - anicka@suse.cz
+
+- change OutputDir to /srv/www/htdocs/webalizer (#157932) 
+
+-------------------------------------------------------------------
+Fri Feb 10 19:50:55 CET 2006 - anicka@suse.cz
+
+- fix array subscript out of range (#135607) 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:47 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon May 23 17:52:06 CEST 2005 - mjancar@suse.cz
+
+- increase MAXAGENT (#84040)
+
+-------------------------------------------------------------------
+Thu Apr 21 09:18:34 CEST 2005 - tcrhak@suse.de
+
+- added db1 and db1-devel to neededforbuild
+  in order to enable DNS lookup (bug #59003)
+
+-------------------------------------------------------------------
+Mon May 10 18:00:37 CEST 2004 - hmacht@suse.de
+
+- building as non-root user
+- changed command apxs2 to /usr/sbin/apxs2
+
+-------------------------------------------------------------------
+Mo Mai 10 18:00:37 CEST 2004
+Mon Apr 19 01:41:22 CEST 2004 - ro@suse.de
+
+- build with apache2
+
+-------------------------------------------------------------------
+Thu Jan 09 13:22:38 CET 2003 - tcrhak@suse.cz
+
+- added LFS support
+
+-------------------------------------------------------------------
+Sun Dec 22 15:54:19 CET 2002 - tcrhak@suse.cz
+
+- update to version 2.01-10
+- buffer overflow security fix (patch overflow)
+
+-------------------------------------------------------------------
+Fri Aug  2 01:29:06 CEST 2002 - ro@suse.de
+
+- adapt server root 
+
+-------------------------------------------------------------------
+Fri Feb  1 00:26:10 CET 2002 - ro@suse.de
+
+- changed neededforbuild <libpng> to <libpng-devel-packages>
+
+-------------------------------------------------------------------
+Thu Jan 31 16:03:49 CET 2002 - tcrhak@suse.cz
+
+- fixed security patch (don't break search strings at chars
+  with ascii > 127
+- used macros %{_libdir} and %{_lib}
+
+-------------------------------------------------------------------
+Tue Oct 30 10:32:48 CEST 2001 - tcrhak@suse.cz
+
+- update to 2.01-9 (includes sec-fix.patch)
+
+-------------------------------------------------------------------
+Wed Jul 18 11:24:54 CEST 2001 - adostal@suse.cz
+
+- fixed neededforbuild
+- clear requires  
+
+-------------------------------------------------------------------
+Wed Jun  6 15:39:19 CEST 2001 - schwab@suse.de
+
+- Remove stupid casts.
+
+-------------------------------------------------------------------
+Wed May 23 11:58:00 CEST 2001 - cihlar@suse.cz
+
+- fixed cast warnings on ia64
+
+-------------------------------------------------------------------
+Wed Mar 21 23:31:06 CET 2001 - ro@suse.de
+
+- added freetype2 to neededforbuild 
+
+-------------------------------------------------------------------
+Fri Feb 23 16:24:25 CET 2001 - ro@suse.de
+
+- changed neededforbuild <apache> to <apache apache-devel>
+
+-------------------------------------------------------------------
+Thu Nov 16 10:49:49 CET 2000 - cihlar@suse.cz
+
+- renamed webalize -> webalizer
+- update to version 2.01-6
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Wed Nov 15 18:29:49 CET 2000 - ro@suse.de
+
+- fixed neededforbuild gdlib -> gd gd-devel
+
+-------------------------------------------------------------------
+Thu Oct  5 10:28:23 CEST 2000 - cihlar@suse.cz
+
+- update to version 2.01.03
+
+-------------------------------------------------------------------
+Tue Aug 29 15:06:38 CEST 2000 - cihlar@suse.cz
+
+- fixed webalize.conf
+- bzipped sources
+
+-------------------------------------------------------------------
+Wed Apr 26 08:40:02 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Thu Apr 13 11:12:26 CEST 2000 - ro@suse.de
+
+- added mm to neededforbuild
+
+-------------------------------------------------------------------
+Mon Mar 13 17:24:32 CET 2000 - grimmer@suse.de
+
+- fixed path to Apache logfiles (have been moved to
+  /var/log/httpd for SuSE Linux 6.4)
+
+-------------------------------------------------------------------
+Wed Jan 26 13:55:39 MET 2000 - grimmer@suse.de
+
+- specfile updates (added URL, Group)
+- Now uses macro for man page locations
+
+-------------------------------------------------------------------
+Mon Oct 11 18:20:24 CEST 1999 - ro@suse.de
+
+- converted to use png with gdlib 1.7.3
+
+-------------------------------------------------------------------
+Sat Oct  2 09:11:33 MEST 1999 - grimmer@suse.de
+
+- Update to 1.30-04
+- Specfile cleanups
+- added docu
+
+-------------------------------------------------------------------
+Mon Sep 20 18:18:29 CEST 1999 - ro@suse.de
+
+- added requires http_daemon
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Tue May  4 13:31:02 MEST 1999 - grimmer@suse.de
+
+- Update to 1.22-03
+- corrected sample configuration comment
+- specfile tweaks for new version
+
+-------------------------------------------------------------------
+Thu Apr 29 13:29:11 MEST 1999 - grimmer@suse.de
+
+- corrected typo in config-file
+
+-------------------------------------------------------------------
+Tue Oct  6 20:29:12 MEST 1998 - grimmer@suse.de
+
+- new version 1.20-07
+- specfile cleanup
+
+-------------------------------------------------------------------
+Thu Feb 12 14:42:28 MET 1998 - ro@suse.de
+
+- new package by bb for web server log file analysis
+

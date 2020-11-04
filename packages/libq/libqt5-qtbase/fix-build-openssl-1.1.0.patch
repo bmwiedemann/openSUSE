@@ -1,0 +1,51 @@
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Subject: Fix build against OpenSSL 1.1.0
+
+Leap 15.1 still has it and we can't switch away without breaking the world.
+
+Index: qtbase-everywhere-src-5.15.1/src/network/ssl/qsslsocket_openssl_symbols.cpp
+===================================================================
+--- qtbase-everywhere-src-5.15.1.orig/src/network/ssl/qsslsocket_openssl_symbols.cpp
++++ qtbase-everywhere-src-5.15.1/src/network/ssl/qsslsocket_openssl_symbols.cpp
+@@ -146,7 +146,9 @@ DEFINEFUNC2(int, BN_is_word, BIGNUM *a,
+ DEFINEFUNC(int, EVP_CIPHER_CTX_reset, EVP_CIPHER_CTX *c, c, return 0, return)
+ DEFINEFUNC(int, EVP_PKEY_up_ref, EVP_PKEY *a, a, return 0, return)
+ DEFINEFUNC2(EVP_PKEY_CTX *, EVP_PKEY_CTX_new, EVP_PKEY *pkey, pkey, ENGINE *e, e, return nullptr, return)
++#if OPENSSL_VERSION_NUMBER >= 0x10101000L
+ DEFINEFUNC(int, EVP_PKEY_param_check, EVP_PKEY_CTX *ctx, ctx, return 0, return)
++#endif
+ DEFINEFUNC(void, EVP_PKEY_CTX_free, EVP_PKEY_CTX *ctx, ctx, return, return)
+ DEFINEFUNC(int, EVP_PKEY_base_id, EVP_PKEY *a, a, return NID_undef, return)
+ DEFINEFUNC(int, RSA_bits, RSA *a, a, return 0, return)
+@@ -376,7 +378,7 @@ DEFINEFUNC3(void, SSL_set_bio, SSL *a, a
+ DEFINEFUNC(void, SSL_set_accept_state, SSL *a, a, return, DUMMYARG)
+ DEFINEFUNC(void, SSL_set_connect_state, SSL *a, a, return, DUMMYARG)
+ DEFINEFUNC(int, SSL_shutdown, SSL *a, a, return -1, return)
+-DEFINEFUNC(int, SSL_in_init, const SSL *a, a, return 0, return)
++DEFINEFUNC(int, SSL_in_init, SSL *a, a, return 0, return)
+ DEFINEFUNC(int, SSL_get_shutdown, const SSL *ssl, ssl, return 0, return)
+ DEFINEFUNC2(int, SSL_set_session, SSL* to, to, SSL_SESSION *session, session, return -1, return)
+ DEFINEFUNC(void, SSL_SESSION_free, SSL_SESSION *ses, ses, return, DUMMYARG)
+Index: qtbase-everywhere-src-5.15.1/src/network/ssl/qsslsocket_openssl_symbols_p.h
+===================================================================
+--- qtbase-everywhere-src-5.15.1.orig/src/network/ssl/qsslsocket_openssl_symbols_p.h
++++ qtbase-everywhere-src-5.15.1/src/network/ssl/qsslsocket_openssl_symbols_p.h
+@@ -235,7 +235,9 @@ int q_EVP_CIPHER_CTX_reset(EVP_CIPHER_CT
+ Q_AUTOTEST_EXPORT int q_EVP_PKEY_up_ref(EVP_PKEY *a);
+ EVP_PKEY_CTX *q_EVP_PKEY_CTX_new(EVP_PKEY *pkey, ENGINE *e);
+ void q_EVP_PKEY_CTX_free(EVP_PKEY_CTX *ctx);
++#if OPENSSL_VERSION_NUMBER >= 0x10101000L
+ int q_EVP_PKEY_param_check(EVP_PKEY_CTX *ctx);
++#endif
+ int q_EVP_PKEY_base_id(EVP_PKEY *a);
+ int q_RSA_bits(RSA *a);
+ Q_AUTOTEST_EXPORT int q_OPENSSL_sk_num(OPENSSL_STACK *a);
+@@ -519,7 +521,7 @@ void q_SSL_set_bio(SSL *a, BIO *b, BIO *
+ void q_SSL_set_accept_state(SSL *a);
+ void q_SSL_set_connect_state(SSL *a);
+ int q_SSL_shutdown(SSL *a);
+-int q_SSL_in_init(const SSL *s);
++int q_SSL_in_init(SSL *s);
+ int q_SSL_get_shutdown(const SSL *ssl);
+ int q_SSL_set_session(SSL *to, SSL_SESSION *session);
+ void q_SSL_SESSION_free(SSL_SESSION *ses);

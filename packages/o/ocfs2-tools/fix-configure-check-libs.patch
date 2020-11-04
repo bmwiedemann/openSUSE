@@ -1,0 +1,32 @@
+Index: ocfs2-tools/configure.in
+===================================================================
+--- ocfs2-tools.orig/configure.in	2012-08-24 10:22:47.000000000 -0500
++++ ocfs2-tools/configure.in	2012-08-24 10:23:24.000000000 -0500
+@@ -276,9 +276,12 @@ if test "x$cpg_found" = "xyes"; then
+         # TRY="$TRY"
+ 
+         saved_LDFLAGS="$LDFLAGS"
+-        LDFLAGS="$LDFLAGS $TRY -lcpg"
++        saved_LIBS="$LIBS"
++        LDFLAGS="$LDFLAGS $TRY"
++        LIBS="-lcpg"
+         AC_LINK_IFELSE([AC_LANG_CALL([], [cpg_initialize])],
+         	       cpg_found=yes)
++        LIBS="$saved_LIBS"
+         LDFLAGS="$saved_LDFLAGS"
+ 
+         if test "x$cpg_found" = "xyes"; then
+@@ -320,9 +323,12 @@ if test "x$ckpt_found" = "xyes"; then
+         # TRY="$TRY"
+ 
+         saved_LDFLAGS="$LDFLAGS"
+-        LDFLAGS="$LDFLAGS $TRY -lSaCkpt"
++        saved_LIBS="$LIBS"
++        LDFLAGS="$LDFLAGS $TRY"
++        LIBS="-lSaCkpt"
+         AC_LINK_IFELSE([AC_LANG_CALL([], [saCkptInitialize])],
+         	       ckpt_found=yes)
++        LIBS="$saved_LIBS"
+         LDFLAGS="$saved_LDFLAGS"
+ 
+         if test "x$ckpt_found" = "xyes"; then

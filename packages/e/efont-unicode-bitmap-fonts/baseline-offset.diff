@@ -1,0 +1,29 @@
+--- tools/hex2bdf.in.~1~	2004-09-15 13:50:10.000000000 +0200
++++ tools/hex2bdf.in	2004-12-27 19:58:50.915999184 +0100
+@@ -33,9 +33,15 @@ if ($pxlsz_x == $pxlsz_y) {
+   $family_name = "Fixed";
+   $default_char = 0x0020; # SPACE
+ }
++my $nprops = 17;
++my $_MULE_BASELINE_OFFSET = '';
++if ($pxlsz_y == 24) {
++  $nprops++;
++  $_MULE_BASELINE_OFFSET = "_MULE_BASELINE_OFFSET -3\n";
++}
+ print "SIZE $pxlsz_y 75 75
+ FONTBOUNDINGBOX $pxlsz_x $pxlsz_y 0 -2
+-STARTPROPERTIES 18
++STARTPROPERTIES $nprops
+ COPYRIGHT \"(c) Copyright 2000-2003 /efont/ The Electronic Font Open Laboratory.\"
+ FOUNDRY \"Efont\"
+ FAMILY_NAME \"$family_name\"
+@@ -50,8 +56,7 @@ RESOLUTION_Y 75
+ AVERAGE_WIDTH $avgWdth
+ CHARSET_REGISTRY \"ISO10646\"
+ CHARSET_ENCODING \"1\"
+-_MULE_BASELINE_OFFSET -3
+-FONT_ASCENT $ascent
++${_MULE_BASELINE_OFFSET}FONT_ASCENT $ascent
+ FONT_DESCENT 2
+ DEFAULT_CHAR $default_char
+ ENDPROPERTIES

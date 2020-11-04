@@ -1,0 +1,23 @@
+Author: Lars Mueller <lmuelle@suse.com>
+Subject: Deal with added two whitespaces in more recent oui.txt versions
+
+Index: arpwatch-2.1a15/massagevendor
+===================================================================
+--- arpwatch-2.1a15.orig/massagevendor
++++ arpwatch-2.1a15/massagevendor
+@@ -10,12 +10,12 @@
+ # - Deal with duplicates in oui.txt (concatenate company names)
+ #
+ (sed -n \
+-    -e 's/^\([0-9A-F][0-9A-F]\)-\([0-9A-F][0-9A-F]\)-\([0-9A-F][0-9A-F]\)  *(hex)[ 	]*\(..*\)/\1\2\3	\4/p' \
++    -e 's/\([0-9A-F][0-9A-F]\)-\([0-9A-F][0-9A-F]\)-\([0-9A-F][0-9A-F]\)  *(hex)[ 	]*\(..*\)/\1\2\3	\4/p' \
+     $* | \
+     awk -f euppertolower.awk | \
+     sed -n \
+-    -e 's/^\([0-9A-Za-z][0-9A-Za-z]\)\([0-9A-Za-z][0-9A-Za-z]\)\([0-9A-Za-z][0-9A-Za-z]\)[ 	]\(.*\)$/\1:\2:\3	\4/' \
+-    -e 's/^0//' -e 's/:0\([0-9A-Za-z]\)/:\1/g' -e p | \
++    -e 's/\([0-9A-Za-z][0-9A-Za-z]\)\([0-9A-Za-z][0-9A-Za-z]\)\([0-9A-Za-z][0-9A-Za-z]\)[ 	]\(.*\)$/\1:\2:\3	\4/' \
++    -e 's/0//' -e 's/:0\([0-9A-Za-z]\)/:\1/g' -e p | \
+     sort | \
+     awk -f duplicates.awk ) | \
+     awk -f p.awk | \

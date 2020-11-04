@@ -1,0 +1,34 @@
+[AArch64] Fix erroneous use of spu architecture bfd
+
+While investigating some SVE code, i noticed the use of two spu bfd variables.
+
+This looks like an oversight, as the "id" field is available for non-spu
+architectures as well, even though its primary use was the Cell BE
+architecture.
+
+gdb/ChangeLog:
+
+2020-01-05  Luis Machado  <luis.machado@linaro.org>
+
+	* aarch64-linux-nat.c
+	(aarch64_linux_nat_target::thread_architecture): Use bfd_arch_aarch64
+	and bfd_mach_aarch64.
+
+---
+ gdb/ChangeLog           | 6 ++++++
+ gdb/aarch64-linux-nat.c | 2 +-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/aarch64-linux-nat.c b/gdb/aarch64-linux-nat.c
+index 62f5cdb1fc..4e712ebfb7 100644
+--- a/gdb/aarch64-linux-nat.c
++++ b/gdb/aarch64-linux-nat.c
+@@ -970,7 +970,7 @@ aarch64_linux_nat_target::thread_architecture (ptid_t ptid)
+      unavailable, to distinguish from an unset value of 0.  */
+   struct gdbarch_info info;
+   gdbarch_info_init (&info);
+-  info.bfd_arch_info = bfd_lookup_arch (bfd_arch_spu, bfd_mach_spu);
++  info.bfd_arch_info = bfd_lookup_arch (bfd_arch_aarch64, bfd_mach_aarch64);
+   info.id = (int *) (vq == 0 ? -1 : vq);
+   return gdbarch_find_by_info (info);
+ }

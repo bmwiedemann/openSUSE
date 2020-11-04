@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Sep 15 15:44:34 UTC 2014 - coolo@suse.com
+
+- updated to 0.03
+ - bump IO::File dep, since it fails with earlier versions (plack/#460)
+
+-------------------------------------------------------------------
+Tue Jul  9 07:52:01 UTC 2013 - coolo@suse.com
+
+- initial package 0.02
+    * created by cpanspec 1.78.06
+

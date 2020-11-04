@@ -1,0 +1,22 @@
+From b5f67968332fa680e8af51be41d26aa47cfd3a67 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 19 Sep 2019 10:43:03 +0200
+Subject: [PATCH] Use qdbus-qt5
+
+---
+ startkde/startplasma-wayland.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: plasma-workspace-5.15.80git.20200711T203602~d68c16b27/startkde/startplasma-wayland.cpp
+===================================================================
+--- plasma-workspace-5.15.80git.20200711T203602~d68c16b27.orig/startkde/startplasma-wayland.cpp	2020-07-11 22:36:02.000000000 +0200
++++ plasma-workspace-5.15.80git.20200711T203602~d68c16b27/startkde/startplasma-wayland.cpp	2020-07-12 10:44:19.999795526 +0200
+@@ -72,7 +72,7 @@
+     runEnvironmentScripts();
+ 
+     if (!qEnvironmentVariableIsSet("DBUS_SESSION_BUS_ADDRESS")) {
+-        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus?\n";
++        out << "startplasmacompositor: Could not start D-Bus. Can you call qdbus-qt5?\n";
+         return 1;
+     }
+     setupPlasmaEnvironment();

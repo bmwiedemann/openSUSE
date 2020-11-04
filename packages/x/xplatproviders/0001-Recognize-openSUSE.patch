@@ -1,0 +1,42 @@
+From 4f34946c73bf3ae9131646695c49a0ac9cfb8a1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 19 Sep 2011 08:59:00 +0200
+Subject: [PATCH 1/4] Recognize openSUSE
+
+---
+ build/xplatproviders/config.guess |    9 ++++++++-
+ 1 files changed, 8 insertions(+), 1 deletions(-)
+ mode change 100644 => 100755 build/xplatproviders/config.guess
+
+diff --git a/build/xplatproviders/config.guess b/build/xplatproviders/config.guess
+old mode 100644
+new mode 100755
+index bb76ad6..d5c5314
+--- a/build/xplatproviders/config.guess
++++ b/build/xplatproviders/config.guess
+@@ -72,7 +72,7 @@ IsLinux="false"         # Used by the discovery wizard for workflow
+    GetLinuxInfo() {
+    IsLinux="true"
+    ## Initial support for Red Hat, Fedora, SUSE, and Ubuntu
+-     OSName=`/bin/egrep -o 'Red Hat Enterprise Linux|Fedora|CentOS|Ubuntu|SUSE Linux Enterprise|SUSE LINUX Enterprise Server' $1`
++     OSName=`/bin/egrep -o 'Red Hat Enterprise Linux|Fedora|CentOS|Ubuntu|SUSE Linux Enterprise|SUSE LINUX Enterprise Server|openSUSE' $1`
+      ## Extract Version from file
+      ## Could also use /etc/*release (not Ubuntu)
+      if [ "${OSName}" == "Red Hat Enterprise Linux" ]
+@@ -145,6 +145,13 @@ IsLinux="false"         # Used by the discovery wizard for workflow
+        then
+          OSAlias="Ubuntu"
+        fi
++     elif [ "${OSName}" == "openSUSE" ]
++     then
++       Version=`grep 'openSUSE' $1 | sed s/.*openSUSE\ // | sed s/\ \(.*//`
++       if [ "${Version}" != "" ]
++       then
++         OSAlias="openSUSE"
++       fi
+      fi
+    }
+ 
+-- 
+1.7.6.1
+

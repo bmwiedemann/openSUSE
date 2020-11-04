@@ -1,0 +1,15 @@
+Index: casacore-3.3.0/fits/FITS/blockio.h
+===================================================================
+--- casacore-3.3.0.orig/fits/FITS/blockio.h
++++ casacore-3.3.0/fits/FITS/blockio.h
+@@ -32,8 +32,8 @@
+ 
+ //# Make sure that cfitsio does not declare the wcs headers.
+ extern "C"{
+-#include <fitsio.h>  //# header file from cfitsio
+-#include <fitsio2.h> //# using core functions of cfitsio
++#include <cfitsio/fitsio.h>  //# header file from cfitsio
++#include <cfitsio/fitsio2.h> //# using core functions of cfitsio
+ }
+ 
+ #include <stdlib.h>

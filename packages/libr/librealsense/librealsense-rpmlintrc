@@ -1,0 +1,2 @@
+# We are not a library, dammit
+addFilter("librealsense[^0-9].* shlib-policy-")

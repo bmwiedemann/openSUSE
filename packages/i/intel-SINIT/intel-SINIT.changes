@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Fri Oct 30 12:13:37 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to current zipfiles available from
+  https://software.intel.com/content/www/us/en/develop/articles/intel-trusted-execution-technology.html
+
+  - it seems 7th_gen_i5_i7-SINIT_74.zip was replaced by
+    6th_7th_gen_i5_i7-SINIT_79.zip. The old variant is still packaged though.
+  - new 8th_9th_gen_i5_i7-SINIT_81.zip for Coffee Lake platforms.
+
+-------------------------------------------------------------------
+Mon Nov 27 09:36:15 UTC 2017 - matthias.gerstner@suse.com
+
+- Correctly install SINIT files ending in lower case .bin into /usr/lib/sinit,
+  instead of into the documentation dirs.
+
+-------------------------------------------------------------------
+Wed May 10 12:48:57 UTC 2017 - matthias.gerstner@suse.com
+
+- Updated to current zipfiles available from
+  https://software.intel.com/en-us/articles/intel-trusted-execution-technology
+
+  (new: 5th - 7th gen series broadwell/skylake/kaby lake)
+
+- Rewrote package description and summary (was partly copied from tboot, and
+  thus wrong), to be more clear and descriptive.
+
+-------------------------------------------------------------------
+Tue Oct 14 07:41:08 UTC 2014 - jengelh@inai.de
+
+- Specfile cleanup: avoid %fdupes on buildroot, simplify %install.
+
+-------------------------------------------------------------------
+Wed Feb 19 11:24:05 UTC 2014 - meissner@suse.com
+
+- Updated to current zipfiles available from
+  http://software.intel.com/en-us/articles/intel-trusted-execution-technology/
+
+-------------------------------------------------------------------
+Wed Feb 19 11:08:06 UTC 2014 - meissner@suse.com
+
+- fixed license to be SUSE-Firmware
+
+-------------------------------------------------------------------
+Wed Jun  8 08:56:31 UTC 2011 - coolo@novell.com
+
+- fix license (seems autobuild overwritten)
+
+-------------------------------------------------------------------
+Fri Apr 29 13:09:20 UTC 2011 - meissner@novell.com
+
+- imported SINITS from http://sourceforge.net/projects/tboot/
+  FATE#311820
+

@@ -1,0 +1,20 @@
+diff -U 3 -H -w -E -d -r -x .osc -- a/sip/cpp/sip_corewxTextCtrl.cpp b/sip/cpp/sip_corewxTextCtrl.cpp
+--- a/sip/cpp/sip_corewxTextCtrl.cpp
++++ b/sip/cpp/sip_corewxTextCtrl.cpp
+@@ -55,12 +55,16 @@
+     {
+         #ifdef __WXMSW__
+             return self->ShowNativeCaret(show);
++        #else
++            return false;
+         #endif
+     }
+     bool _wxTextCtrl_HideNativeCaret(wxTextCtrl* self)
+     {
+         #ifdef __WXMSW__
+             return self->HideNativeCaret();
++        #else
++            return false;
+         #endif
+     }
+     void _wxTextCtrl_write(wxTextCtrl* self, const wxString* text)

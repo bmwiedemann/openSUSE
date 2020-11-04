@@ -1,0 +1,26 @@
+--- examples/texture.c
++++ examples/texture.c
+@@ -12,6 +12,7 @@
+  */
+ 
+ #include <math.h>
++#include <float.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "texture.h"
+@@ -217,11 +218,11 @@
+    niter ++;
+    printf ("diffusion-reaction iteration %d \n", niter);
+ 
+-   cpmax = -1.0e50;
+-   cpmin = +1.0e50;
++   cpmax = -FLT_MAX;
++   cpmin = +FLT_MAX;
+ 
+-   cmmax = -1.0e50;
+-   cmmin = +1.0e50;
++   cmmax = -FLT_MAX;
++   cmmin = +FLT_MAX;
+ 
+    if (reset) {
+       niter = 0;

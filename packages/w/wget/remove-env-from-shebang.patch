@@ -1,0 +1,8 @@
+--- a/util/rmold.pl.orig	2020-03-12 16:35:43.520481987 +0100
++++ b/util/rmold.pl	        2020-03-12 16:35:49.244490296 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl -w
++#!/usr/bin/perl -w
+ 
+ # Copyright (C) 1995-1997, 2007-2011, 2015, 2018-2019 Free Software
+ # Foundation, Inc.

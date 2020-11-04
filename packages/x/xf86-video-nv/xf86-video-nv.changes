@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon May 29 14:06:57 UTC 2017 - sndirsch@suse.com
+
+- commented out modalias lines in specfile in order to no longer
+  install xf86-video-nv driver by default (bnc#868732, bsc#1041416)
+- covers missing SLE entry fate#320388 (bsc#1041416)
+
+-------------------------------------------------------------------
+Thu Jan 19 14:08:59 UTC 2017 - sndirsch@suse.com
+
+- Update to version 2.1.21:
+  * Remove mibstore.h
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * init: Initialize VGA IOBase before using it
+  * Include xf86Modes.h to use functions from hw/xfree86/modes/xf86Modes.c.
+  * Fix shadow framebuffer implementation.
+- supersedes U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch,
+  U_Include-xf86Modes.h-to-use-functions-from-hw-xfree86.patch,
+  U_Remove-mibstore.h.patch,
+  U_init-Initialize-VGA-IOBase-before-using-it.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 15:25:14 UTC 2016 - sndirsch@suse.com
+
+- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23
+
+-------------------------------------------------------------------
+Mon Dec  2 15:21:46 UTC 2013 - sndirsch@suse.com
+
+- U_Include-xf86Modes.h-to-use-functions-from-hw-xfree86.patch
+  * Include xf86Modes.h to use functions from 
+    hw/xfree86/modes/xf86Modes.c.
+- U_init-Initialize-VGA-IOBase-before-using-it.patch 
+  * init: Initialize VGA IOBase before using it; The NV driver did
+    never set the VGA IOBase for those registers which have
+    different addresses dependent whether the VGA engine is running
+    in mono or color mode. This has not been detected as the VGA
+    mode and font save/restore functions initialize this value
+    themselves.
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:32 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 15:22:59 CET 2013 - sndirsch@suse.de
+
+- Add mibstore.patch, fixes build with xorg-server 1.14
+
+-------------------------------------------------------------------
+Wed Mar 20 14:31:58 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Wed Jul 25 19:20:55 UTC 2012 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 2.1.20:
+  + Make failure to XAA non-fatal
+  + Fix for new vgahw ABI (bnc#770560)
+  + Sun's copyrights now belong to Oracle
+  + nv: port to new compat API.
+  + nv: make XAA optional.
+  + nv: add missing fbman includes.
+  + remove duplicated includes
+
+-------------------------------------------------------------------
+Fri Apr 20 07:37:50 UTC 2012 - vuntz@opensuse.org
+
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-nv from xorg-x11-driver-video.
+  Initial version: 2.1.18.
+

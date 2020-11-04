@@ -1,0 +1,61 @@
+--- jettison-jettison-1.3.7/src/main/java/org/codehaus/jettison/mapped/MappedNamespaceConvention.java	2014-11-27 22:58:28.000000000 +0100
++++ jettison-jettison-1.3.7/src/main/java/org/codehaus/jettison/mapped/MappedNamespaceConvention.java	2018-12-18 10:37:55.479442551 +0100
+@@ -39,8 +39,8 @@
+  */
+ public class MappedNamespaceConvention implements Convention, NamespaceContext {
+ 	private static final String DOT_NAMESPACE_SEP = ".";
+-    private Map<Object, Object> xnsToJns = new HashMap<Object, Object>();
+-    private Map<Object, Object> jnsToXns = new HashMap<Object, Object>();
++    private Map<String, String> xnsToJns = new HashMap<String, String>();
++    private Map<String, String> jnsToXns = new HashMap<String, String>();
+     private List<?> attributesAsElements;
+     private List<?> ignoredElements;
+     private List<String> jsonAttributesAsElements;
+@@ -72,8 +72,8 @@
+         this.ignoreEmptyArrayValues = config.isIgnoreEmptyArrayValues();
+         this.escapeForwardSlashAlways = config.isEscapeForwardSlashAlways();
+         this.jsonNamespaceSeparator = config.getJsonNamespaceSeparator();
+-        for (Iterator<Map.Entry<Object, Object>> itr = xnsToJns.entrySet().iterator(); itr.hasNext();) {
+-            Map.Entry<?, ?> entry = itr.next();
++        for (Iterator<Map.Entry<String, String>> itr = xnsToJns.entrySet().iterator(); itr.hasNext();) {
++            Map.Entry<String, String> entry = itr.next();
+             jnsToXns.put(entry.getValue(), entry.getKey());
+         }
+         
+@@ -173,7 +173,7 @@
+             return "";
+         }
+         else {
+-            return (String) jnsToXns.get( prefix );
++            return jnsToXns.get( prefix );
+         }
+     }
+ 
+@@ -187,14 +187,15 @@
+             return "";
+         }
+         else {
+-            return (String) xnsToJns.get( namespaceURI );
++            return xnsToJns.get( namespaceURI );
+         }
+     }
+ 
+-    public Iterator<Object> getPrefixes( String arg0 ) {
++    public Iterator<String> getPrefixes( String arg0 ) {
+ 
+         if ( ignoreNamespaces ) {
+-            return Collections.emptySet().iterator();
++            Set<String> s = Collections.emptySet();
++            return s.iterator();
+         }
+         else {
+             return jnsToXns.keySet().iterator();
+@@ -266,7 +267,7 @@
+         if ( ns == null || ns.length() == 0 || ignoreNamespaces )
+             return "";
+ 
+-        String jns = (String) xnsToJns.get( ns );
++        String jns = xnsToJns.get( ns );
+         if (jns == null && providedPrefix != null && providedPrefix.length() > 0) {
+         	jns = providedPrefix;
+         }

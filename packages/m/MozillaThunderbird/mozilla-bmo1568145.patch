@@ -1,0 +1,30 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2019-07-22
+
+Allow to override build date with SOURCE_DATE_EPOCH
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbuild/mozbuild/action/langpack_manifest.py
+index 6f72697..d4cca96 100644
+--- a/python/mozbuild/mozbuild/action/langpack_manifest.py
++++ b/python/mozbuild/mozbuild/action/langpack_manifest.py
+@@ -16,6 +16,7 @@ import os
+ import json
+ import io
+ import datetime
++import time
+ import requests
+ import mozversioncontrol
+ import mozpack.path as mozpath
+@@ -100,7 +101,7 @@ def get_timestamp_for_locale(path):
+         dt = get_dt_from_hg(path)
+ 
+     if dt is None:
+-        dt = datetime.datetime.utcnow()
++        dt = datetime.datetime.utcfromtimestamp(int(os.environ.get('SOURCE_DATE_EPOCH', time.time())))
+ 
+     dt = dt.replace(microsecond=0)
+     return dt.strftime("%Y%m%d%H%M%S")

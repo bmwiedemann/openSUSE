@@ -1,0 +1,405 @@
+-------------------------------------------------------------------
+Wed Oct 21 12:44:19 UTC 2020 - dmueller@suse.com
+
+- Update to version 10.1+1602850462:
+  * Compress kernel modules in batch and in parallel
+  * Forward _binary_payload to the repackaged rpm (bsc#1175882)
+- remove 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch,
+  parallel-compression.patch (upstream)
+
+-------------------------------------------------------------------
+Thu Oct 15 21:13:24 UTC 2020 - dmueller@suse.com
+
+- Sync from git master directly
+- drop 0001-Add-support-for-kernel-module-compression.patch
+  0001-Enable-find_provides-and-requires.patch
+  0001-Initialize-compress-variable.patch
+  0001-Keep-the-files-in-the-OTHER-directory.patch
+  0001-Passthrough-license-tag.patch
+  0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
+  pesign-sign-s390x-kernel.patch (upstream)
+- add parallel-compression.patch
+
+-------------------------------------------------------------------
+Wed Sep  2 03:39:46 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Forward-_binary_payload-to-the-repackaged-rpm.patch to
+  forward _binary_payload to the repackaged rpm (bsc#1175882)
+
+-------------------------------------------------------------------
+Fri Jul 17 07:25:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Enable-find_provides-and-requires.patch (bsc#1114605)
+  + Enable this patch again since virtualbox-kmp is split from
+    the main package so the customized %find_provides for
+    virtualbox-x11-guest won't be affected anymore.
+
+-------------------------------------------------------------------
+Wed Feb 26 13:35:18 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- pesign-sign-s390x-kernel.patch: Sign also the non-PE (e.g. s390x)
+  kernels with just kernel-sign-file (bsc#1163524)
+
+-------------------------------------------------------------------
+Wed Feb 19 14:25:32 UTC 2020 - Marcus Meissner <meissner@suse.com>
+
+- 0001-sign-stage3.bin-from-s390-tools-with-sign-files-bsc-.patch
+  Hard code signing of stage3.bin of s390-tools (bsc#1163524)
+
+-------------------------------------------------------------------
+Wed Nov  6 09:58:34 UTC 2019 - Jiri Slaby <jslaby@suse.com>
+
+- 0001-brp-99-compress-vmlinux-support-xz-compressed-vmlinu.patch
+  to support xz-compressed vmlinux (bnc#1155921)
+
+-------------------------------------------------------------------
+Wed Nov  6 03:52:16 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- 0001-Keep-the-files-in-the-OTHER-directory.patch to keep the
+  files in the OTHER directory (boo#1155474)
+
+-------------------------------------------------------------------
+Wed Sep  4 12:18:39 UTC 2019 - Michal Suchanek <msuchanek@suse.com>
+
+- Require pesign on arm (boo#1134303).
+
+-------------------------------------------------------------------
+Thu Aug  1 02:41:28 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Initialize-compress-variable.patch to initialize
+  $compress in pesign-gen-repackage-spec to avoid warning
+
+-------------------------------------------------------------------
+Wed May 29 06:01:20 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add 0001-Add-support-for-kernel-module-compression.patch to
+  support kernel module compression (bsc#1135854)
+
+-------------------------------------------------------------------
+Fri May 17 14:00:08 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- pesign is also available on %arm (boo#1134303).
+
+-------------------------------------------------------------------
+Tue Apr 16 03:53:05 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Drop 0002-Enable-find_provides-and-requires.patch due to the
+  build failure of virtualbox-guest-x11
+
+-------------------------------------------------------------------
+Thu Apr 11 03:45:03 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
+
+- rpm: forward the missing rpm bits (bsc#1114605)
+  + 0001-Passthrough-license-tag.patch
+  + 0002-Enable-find_provides-and-requires.patch
+
+-------------------------------------------------------------------
+Tue Dec 11 10:19:44 UTC 2018 - glin@suse.com
+- Version 10.1
+- Add modsign-verify for the signature verification (bsc#1118953)
+
+-------------------------------------------------------------------
+Wed Oct 31 10:11:48 UTC 2018 - glin@suse.com
+
+- rpm: properly forward dep flags (bsc#1114605)
+- Fix new Lintian Error from Debian 10
+
+-------------------------------------------------------------------
+Tue Jun 12 03:30:33 UTC 2018 - glin@suse.com
+
+- debhelper: restrict wildcard package unpacking
+
+-------------------------------------------------------------------
+Mon Jun 11 03:17:37 UTC 2018 - glin@suse.com
+
+- debhelper: fix conffiles corner case
+
+-------------------------------------------------------------------
+Fri Jun  8 03:08:29 UTC 2018 - glin@suse.com
+
+- Remove the unstable source url
+- Update the debian scripts
+
+-------------------------------------------------------------------
+Mon Jun  4 10:23:24 UTC 2018 - glin@suse.com
+
+- Switch to tarball release
+
+-------------------------------------------------------------------
+Thu Feb 22 09:16:35 UTC 2018 - glin@suse.com
+
+- Provide password file for 'certutil -A' due to the change in
+  mozilla-nss 3.35 (boo#1082235)
+
+-------------------------------------------------------------------
+Wed Nov  8 04:35:57 UTC 2017 - jlee@suse.com
+
+- Modified modsign-repackage, using certificate to try to decrypt
+  the signature of kernel module. It can be used to verify the
+  integrity of signature.
+
+-------------------------------------------------------------------
+Wed Sep 27 10:53:39 UTC 2017 - jlee@suse.com
+
+- Michael Schröder improved the original kernel-sign-file script to
+  support PKCS#7 kernel module signing. Replacing sign-file.c with
+  new kernel-sign-file script. (bsc#1049122)
+
+-------------------------------------------------------------------
+Sun Sep 24 09:20:31 UTC 2017 - coolo@suse.com
+
+- escape regexp in pesign-gen-repackage-spec for perl 5.26
+
+-------------------------------------------------------------------
+Wed Sep  6 02:47:26 UTC 2017 - jlee@suse.com
+
+- To support PKCS#7 kernel module signing, copy sign-file.c from
+  SLE-15 v4.12 kernel source to replace the kernel-sign-file script
+  to align upstream. (bsc#1049122) 
+
+-------------------------------------------------------------------
+Tue Nov 29 08:29:36 UTC 2016 - mmarek@suse.cz
+
+- Copy over any *.log files from the first build (bsc#1012422)
+
+-------------------------------------------------------------------
+Thu Mar  3 10:17:32 UTC 2016 - glin@suse.com
+
+- Add aarch64 support since pesign also build on aarch64
+
+-------------------------------------------------------------------
+Thu Jan 22 15:56:41 UTC 2015 - mmarek@suse.cz
+
+- Add support for file verify flags (bnc#905420).
+
+-------------------------------------------------------------------
+Thu Jan 22 15:55:26 UTC 2015 - mmarek@suse.cz
+
+- Sort the parts of the repackage spec file for easier debugging.
+
+-------------------------------------------------------------------
+Tue Sep 16 17:08:36 CEST 2014 - mls@suse.de
+
+- fall back to project cert in the followup spec if it
+  exists
+
+-------------------------------------------------------------------
+Wed Sep  3 01:41:37 CEST 2014 - ro@suse.de
+
+- sanitize release line in specfile
+
+-------------------------------------------------------------------
+Wed Aug 20 15:09:50 UTC 2014 - mmarek@suse.cz
+
+- brp-99-compress-vmlinux: Compress the vmlinux image after
+  find-debuginfo (bnc#880848, bnc#884459)
+
+-------------------------------------------------------------------
+Tue Aug 12 13:38:14 UTC 2014 - meissner@suse.com
+
+- switch gen-hmac to use fipscheck instead of sha256hmac
+
+-------------------------------------------------------------------
+Mon Aug  4 12:52:40 UTC 2014 - mmarek@suse.cz
+
+- Set BRP_PESIGN_FILES="" in the repackage build to avoid loops.
+
+-------------------------------------------------------------------
+Wed Jul 30 09:32:58 UTC 2014 - mmarek@suse.cz
+
+- Accept also rpmlintrc files without any <package>- prefix.
+
+-------------------------------------------------------------------
+Mon Jul 28 14:14:39 UTC 2014 - mmarek@suse.cz
+
+- Use package's rpmlintrc files in the second build.
+
+-------------------------------------------------------------------
+Thu Jul  3 14:01:24 UTC 2014 - mmarek@suse.cz
+
+- Drop support for signing firmware files (bnc#867199)
+
+-------------------------------------------------------------------
+Thu Apr 24 09:25:18 UTC 2014 - mmarek@suse.cz
+
+- Fix matching /boot and /lib/firmware in pesign-repackage.spec
+
+-------------------------------------------------------------------
+Wed Apr 23 22:28:05 UTC 2014 - mmarek@suse.com
+
+- Do not store the buildroot in the .*.hmac file.
+
+-------------------------------------------------------------------
+Wed Apr 23 21:48:04 UTC 2014 - mmarek@suse.com
+
+- Regenerate the HMAC checksum when signing and EFI binary with
+  a checksum (fate#316930, bnc#856310).
+
+-------------------------------------------------------------------
+Wed Apr 23 21:38:42 UTC 2014 - mmarek@suse.com
+
+- Update README.
+
+-------------------------------------------------------------------
+Wed Apr 23 19:49:09 UTC 2014 - mmarek@suse.cz
+
+- Add /usr/lib/rpm/pesign/gen-hmac tool to generate a hmac checksum
+  for a given file (fate#316930, bnc#856310).
+
+-------------------------------------------------------------------
+Thu Apr  3 12:01:54 CEST 2014 - ro@suse.de
+
+- pesign-gen-repackage-spec: switch to new rpm style handling
+  of weak dependencies 
+
+-------------------------------------------------------------------
+Thu Jan 16 15:12:22 UTC 2014 - mmarek@suse.cz
+
+- Do not sign any files if BRP_PESIGN_FILES is set not an empty
+  string (bnc#857599).
+
+-------------------------------------------------------------------
+Tue Jan  7 09:50:58 UTC 2014 - mmarek@suse.cz
+
+- Fix a typo in the last change.
+
+-------------------------------------------------------------------
+Mon Jan  6 22:08:41 UTC 2014 - mmarek@suse.cz
+
+- Default to BRP_PESIGN_FILES="*.ko /lib/firmware" (bnc#857599).
+
+-------------------------------------------------------------------
+Mon Jan  6 16:35:30 UTC 2014 - mmarek@suse.cz
+
+- Add --signatures=<directory> option to modsign-repackage
+  (bnc#841627).
+
+-------------------------------------------------------------------
+Fri Jun 14 12:19:47 UTC 2013 - mmarek@suse.cz
+
+- Put debuginfo packages to %_topdir/OTHER (bnc#824971).
+
+-------------------------------------------------------------------
+Thu Mar 28 15:55:10 UTC 2013 - mmarek@suse.cz
+
+- Version 10
+- Add modsign-repackage tool to repackage RPMs outside the buildservice
+
+-------------------------------------------------------------------
+Tue Mar 26 06:19:45 UTC 2013 - glin@suse.com
+
+- Calculate the digest of the padded data section to be consistent
+  with the output file (bnc#808594, bnc#811325)
+
+-------------------------------------------------------------------
+Fri Mar 15 06:19:39 UTC 2013 - coolo@suse.com
+
+- correct the license of the generated package to fix build
+
+-------------------------------------------------------------------
+Tue Mar  5 08:23:48 UTC 2013 - mmarek@suse.cz
+
+- Do not repackage debuginfo package (bnc#806637)
+
+-------------------------------------------------------------------
+Mon Mar  4 16:08:34 UTC 2013 - mmarek@suse.cz
+
+- Version 9
+- Add support for triggers (bnc#806737)
+
+-------------------------------------------------------------------
+Wed Feb 20 09:16:24 UTC 2013 - mmarek@suse.cz
+
+- Do not fail the build if %_topdir/OTHER cannot be created
+
+-------------------------------------------------------------------
+Wed Feb 13 14:51:47 UTC 2013 - mmarek@suse.cz
+
+- Version 8
+- Hide baselibs from post-build-checks
+
+-------------------------------------------------------------------
+Wed Feb 13 09:34:27 UTC 2013 - mmarek@suse.cz
+
+- Do not repackage baselibs
+
+-------------------------------------------------------------------
+Wed Feb 13 08:28:31 UTC 2013 - mmarek@suse.cz
+
+- Version 7
+- Fix for scriptlets with empty body
+
+-------------------------------------------------------------------
+Tue Feb 12 15:42:22 CET 2013 - mls@suse.de
+
+- reduce debugging as pesign is now fixed
+
+-------------------------------------------------------------------
+Tue Feb 12 12:33:41 CET 2013 - mls@suse.de
+
+- add a bit of debug output to find out why the kernel signatures
+  are bad
+
+-------------------------------------------------------------------
+Wed Feb  6 13:24:14 CET 2013 - mls@suse.de
+
+- switch to normal brp hook
+- mv stuff in pesign directory instead of cluttering /usr/lib/rpm
+
+-------------------------------------------------------------------
+Fri Feb  1 17:18:32 CET 2013 - mls@suse.de
+
+- fix pesign calls
+
+-------------------------------------------------------------------
+Fri Feb  1 10:19:52 UTC 2013 - mmarek@suse.cz
+
+- Add some preliminary code to sign EFI binaries, marked with
+  FIXMEs.
+
+-------------------------------------------------------------------
+Wed Jan 30 09:47:25 UTC 2013 - mmarek@suse.cz
+
+- Version 6
+- Fix handling packages with NoSource
+- Fix for multiple patterns in %sign_files
+
+-------------------------------------------------------------------
+Tue Jan 29 13:44:43 UTC 2013 - mmarek@suse.cz
+
+- Version 5
+- Use newc-style cpio archives, as required by the buildservice.
+- Use signing certificates provided by the buildservice.
+- Minor fixes.
+
+-------------------------------------------------------------------
+Mon Jan 28 15:01:17 UTC 2013 - mmarek@suse.cz
+
+- Version 4
+- Support for firmware signatures.
+- Expect the correct archive with signatures (<name>.cpio.rsasign.sig).
+- Minor fixes.
+
+-------------------------------------------------------------------
+Wed Jan 23 22:01:40 UTC 2013 - mmarek@suse.cz
+
+- Version 3
+- Switch to storing whole files in the *.cpio.rsasign archive.
+- Append the signatures to kernel modules.
+
+-------------------------------------------------------------------
+Fri Jan 18 12:51:17 UTC 2013 - mmarek@suse.cz
+
+- Version 2
+- Generates another specfile in pesign-repackage.spec to
+  be able to copy nearly all RPM tags from the original packages.
+- Changed to only store sha256 hashes in the *.cpio.rsasign file,
+  instead of whole files.
+
+-------------------------------------------------------------------
+Thu Dec 13 12:06:00 UTC 2012 - mmarek@suse.com
+
+- Created package with macros and scripts to integrate kernel and
+  bootloader signing into OBS (fate#314552).
+

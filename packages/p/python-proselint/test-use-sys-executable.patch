@@ -1,0 +1,29 @@
+From f6950839960354cf7986f2dcd73195cdb9588dc8 Mon Sep 17 00:00:00 2001
+From: John Vandenberg <jayvdb@gmail.com>
+Date: Fri, 8 Mar 2019 14:18:47 +0700
+Subject: [PATCH] test_version: Use sys.executable
+
+---
+ tests/_test_version.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/_test_version.py b/tests/_test_version.py
+index 7eb0d96f..2324b2ae 100644
+--- a/tests/_test_version.py
++++ b/tests/_test_version.py
+@@ -5,6 +5,7 @@
+ from .check import Check
+ from proselint.version import __version__
+ import subprocess
++import sys
+ 
+ 
+ class TestCheck(Check):
+@@ -14,5 +15,6 @@ class TestCheck(Check):
+ 
+     def test_version(self):
+         """Make sure the version number is correct."""
+-        out = subprocess.check_output(["proselint", "--version"])
++        out = subprocess.check_output(
++            [sys.executable, "-m", "proselint", "--version"])
+         assert out.decode('utf-8') == __version__ + "\n"

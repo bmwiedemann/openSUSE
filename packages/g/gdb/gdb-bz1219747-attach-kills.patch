@@ -1,0 +1,178 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-bz1219747-attach-kills.patch
+
+;; Never kill PID on: gdb exec PID (Jan Kratochvil, RH BZ 1219747).
+;;=push+jan
+
+http://sourceware.org/ml/gdb-patches/2015-10/msg00301.html
+
+Hi,
+
+in some cases with deleted main executable GDB will want to kill the inferior.
+
+$ cp /bin/sleep /tmp/sleep;/tmp/sleep 1h&p=$!
+$ rm /tmp/sleep
+$ gdb /tmp/sleep $p
+GNU gdb (GDB) 7.10.50.20151016-cvs
+/tmp/sleep: No such file or directory.
+Attaching to process 9694
+/tmp/sleep (deleted): No such file or directory.
+A program is being debugged already.  Kill it? (y or n) _
+
+The first attachment of "/tmp/sleep" commandline argument errors at:
+
+267               if (scratch_chan < 0)
+268                 perror_with_name (filename);
+1051          if (catch_command_errors_const (exec_file_attach, execarg,
+1052                                          !batch_flag))
+
+Then GDB tries to attach to the process $p:
+
+1082              if (catch_command_errors (attach_command, pid_or_core_arg,
+1083                                        !batch_flag) == 0)
+
+This succeeds and since this moment GDB has a valid inferior.  But despite that
+the lines
+1082              if (catch_command_errors (attach_command, pid_or_core_arg,
+1083                                        !batch_flag) == 0)
+still fail because consequently attach_command() fails to find the associated
+executable file:
+
+267               if (scratch_chan < 0)
+268                 perror_with_name (filename);
+1082              if (catch_command_errors (attach_command, pid_or_core_arg,
+1083                                        !batch_flag) == 0)
+
+and therefore GDB executes the following:
+
+(gdb) bt
+2179	  if (have_inferiors ())
+2180	    {
+2181	      if (!from_tty
+2182		  || !have_live_inferiors ()
+2183		  || query (_("A program is being debugged already.  Kill it? ")))
+2184		iterate_over_inferiors (dispose_inferior, NULL);
+2185	      else
+2186		error (_("Program not killed."));
+2187	    }
+1084		    catch_command_errors (core_file_command, pid_or_core_arg,
+1085					  !batch_flag);
+
+No regressions on {x86_64,x86_64-m32,i686}-fedora24pre-linux-gnu.
+
+Thanks,
+Jan
+
+gdb/ChangeLog
+2015-10-16  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* main.c (captured_main): Run core_file_command for pid_or_core_arg
+	only if not have_inferiors ().
+
+gdb/testsuite/ChangeLog
+2015-10-16  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* gdb.base/attach-kills.c: New.
+	* gdb.base/attach-kills.exp: New.
+
+diff --git a/gdb/main.c b/gdb/main.c
+--- a/gdb/main.c
++++ b/gdb/main.c
+@@ -1148,7 +1148,10 @@ captured_main_1 (struct captured_main_args *context)
+ 	{
+ 	  ret = catch_command_errors (attach_command, pid_or_core_arg,
+ 				      !batch_flag);
+-	  if (ret == 0)
++	  if (ret == 0
++	      /* attach_command could succeed partially and core_file_command
++		 would try to kill it.  */
++	      && !have_inferiors ())
+ 	    ret = catch_command_errors (core_file_command,
+ 					pid_or_core_arg,
+ 					!batch_flag);
+diff --git a/gdb/testsuite/gdb.base/attach-kills.c b/gdb/testsuite/gdb.base/attach-kills.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/attach-kills.c
+@@ -0,0 +1,25 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2015 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 3 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++
++   You should have received a copy of the GNU General Public License
++   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++
++#include <unistd.h>
++
++int
++main (void)
++{
++  sleep (600);
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/attach-kills.exp b/gdb/testsuite/gdb.base/attach-kills.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/attach-kills.exp
+@@ -0,0 +1,49 @@
++# Copyright (C) 2015 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++if { ![can_spawn_for_attach] } {
++    return 0
++}
++
++standard_testfile
++
++if { [build_executable ${testfile}.exp $testfile] == -1 } {
++    return -1
++}
++
++# Start the program running and then wait for a bit, to be sure
++# that it can be attached to.
++
++set test_spawn_id [spawn_wait_for_attach $binfile]
++set testpid [spawn_id_get_pid $test_spawn_id]
++
++remote_exec target "cp -pf -- $binfile $binfile-copy"
++remote_exec target "rm -f -- $binfile"
++
++set test "start gdb"
++set res [gdb_spawn_with_cmdline_opts \
++	 "-iex \"set height 0\" -iex \"set width 0\" /DoEsNoTeXySt $testpid"]
++if { $res != 0} {
++    fail "$test (spawn)"
++    kill_wait_spawned_process $test_spawn_id
++    return -1
++}
++gdb_test_multiple "" $test {
++    -re "\r\nAttaching to .*\r\n$gdb_prompt $" {
++	pass $test
++    }
++}
++
++kill_wait_spawned_process $test_spawn_id

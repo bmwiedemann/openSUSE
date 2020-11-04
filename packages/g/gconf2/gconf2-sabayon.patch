@@ -1,0 +1,24 @@
+Index: gconf/default.path.in
+===================================================================
+--- gconf/default.path.in.orig
++++ gconf/default.path.in
+@@ -13,6 +13,9 @@ xml:readonly:@sysgconfdir@/gconf.xml.man
+ # wide sources in this file.
+ include @sysgconfdir@/2/local-mandatory.path
+ 
++# Sabayon mandatory path
++include "$(HOME)/.gconf.path.mandatory"
++
+ # Now see where users want us to look - basically the user can stick arbitrary 
+ # sources in a ~/.config/gconf.path file and they're inserted here
+ include "$(USERCONFIGDIR)/gconf/path"
+@@ -26,6 +29,9 @@ xml:readwrite:$(DEFAULTUSERSOURCE)
+ # Then look at the systemwide customizations
+ xml:readonly:@sysgconfdir@/gconf.xml.defaults
+ 
++# Sabayon optional path
++include "$(HOME)/.gconf.path.defaults"
++
+ # To read in any defaults settings that the Sys Admin may have created
+ # prior to a desktop system upgrade. The SysAdmin can stick default values
+ # system-wide in this file.

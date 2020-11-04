@@ -1,0 +1,132 @@
+[gdb] Fix range loop index in find_method
+
+With target board debug-types, we have:
+...
+FAIL: gdb.cp/cpexprs.exp: list policy1::function
+...
+
+This is a regression triggered by commit 770479f223e "gdb: Fix toplevel types
+with -fdebug-types-section".
+
+However, the FAIL is caused by commit 4dedf84da98 "Change
+decode_compound_collector to use std::vector" which changes a VEC_iterate loop
+into a range loop:
+...
+-  for (ix = 0; VEC_iterate (symbolp, sym_classes, ix, sym); ++ix)
++  unsigned int ix = 0;
++  for (const auto &sym : *sym_classes)
+...
+but fails to ensure that the increment of ix happens every iteration.
+
+Fix this by calculating the index variable at the start of the loop body:
+...
+  for (const auto &elt : *sym_classes)
+    {
+      unsigned int ix = &elt - &*sym_classes->begin ();
+...
+
+Tested on x86_64-linux, with native and target board debug-types.
+
+gdb/ChangeLog:
+
+2020-04-29  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/25889
+	* linespec.c (find_method): Fix ix calculation.
+
+gdb/testsuite/ChangeLog:
+
+2020-04-29  Tom de Vries  <tdevries@suse.de>
+
+	PR symtab/25889
+	* gdb.cp/cpexprs.exp: Adapt for inclusion.
+	* gdb.cp/cpexprs-debug-types.exp: New file.  Set -fdebug-types-section
+	and include cpexprs.exp.
+
+---
+ gdb/linespec.c                               |  3 +--
+ gdb/testsuite/gdb.cp/cpexprs-debug-types.exp | 20 ++++++++++++++++++++
+ gdb/testsuite/gdb.cp/cpexprs.exp             | 14 ++++++++++++--
+ 5 files changed, 45 insertions(+), 4 deletions(-)
+
+Index: gdb-9.1/gdb/linespec.c
+===================================================================
+--- gdb-9.1.orig/gdb/linespec.c
++++ gdb-9.1/gdb/linespec.c
+@@ -3670,12 +3670,12 @@ find_method (struct linespec_state *self
+      because we collect data across the program space before deciding
+      what to do.  */
+   last_result_len = 0;
+-  unsigned int ix = 0;
+   for (const auto &elt : *sym_classes)
+     {
+       struct type *t;
+       struct program_space *pspace;
+       struct symbol *sym = elt.symbol;
++      unsigned int ix = &elt - &*sym_classes->begin ();
+ 
+       /* Program spaces that are executing startup should have
+ 	 been filtered out earlier.  */
+@@ -3706,7 +3706,6 @@ find_method (struct linespec_state *self
+ 
+ 	  superclass_vec.clear ();
+ 	  last_result_len = result_names.size ();
+-	  ++ix;
+ 	}
+     }
+ 
+Index: gdb-9.1/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
+===================================================================
+--- /dev/null
++++ gdb-9.1/gdb/testsuite/gdb.cp/cpexprs-debug-types.exp
+@@ -0,0 +1,20 @@
++# Copyright 2020 Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# This file is part of the gdb testsuite.
++
++# Run cpexprs.exp with -fdebug-types-section.
++set flags {additional_flags=-fdebug-types-section}
++source $srcdir/$subdir/cpexprs.exp
+Index: gdb-9.1/gdb/testsuite/gdb.cp/cpexprs.exp
+===================================================================
+--- gdb-9.1.orig/gdb/testsuite/gdb.cp/cpexprs.exp
++++ gdb-9.1/gdb/testsuite/gdb.cp/cpexprs.exp
+@@ -685,13 +685,23 @@ if {[skip_cplus_tests]} { continue }
+ # test running programs
+ #
+ 
+-standard_testfile .cc
++standard_testfile cpexprs.cc
+ 
+ if {[get_compiler_info "c++"]} {
+     return -1
+ }
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile {debug c++}]} {
++if { [info exists flags] } {
++    # Already set externally.
++} else {
++    # Initialize to empty.
++    set flags {}
++}
++
++# Include required flags.
++set flags "$flags debug c++"
++
++if {[prepare_for_testing "failed to prepare" $testfile $srcfile "$flags"]} {
+     return -1
+ }
+ 

@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Aug 18 10:44:37 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Thu Jul 23 02:00:26 UTC 2020 - psimons@suse.com
+
+- Update data-fix to version 0.3.0.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
+Wed Jul  8 16:48:01 UTC 2020 - psimons@suse.com
+
+- Add data-fix at version 0.2.1.
+

@@ -1,0 +1,18 @@
+diff --git a/cmake/CuraTests.cmake b/cmake/CuraTests.cmake
+index c0762e2b9..29c34c0b6 100644
+--- a/cmake/CuraTests.cmake
++++ b/cmake/CuraTests.cmake
+@@ -67,13 +67,6 @@ foreach(_plugin ${_plugins})
+     endif()
+ endforeach()
+ 
+-#Add code style test.
+-add_test(
+-    NAME "code-style"
+-    COMMAND ${Python3_EXECUTABLE} run_mypy.py
+-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-)
+-
+ #Add test for whether the shortcut alt-keys are unique in every translation.
+ add_test(
+     NAME "shortcut-keys"

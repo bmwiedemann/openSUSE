@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Feb 15 12:56:56 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- BuildRequire libqt5-qttools-doc instead of cmake(...) as
+  the cmake file only got added in Qt 5.14
+
+-------------------------------------------------------------------
+Sun Feb  9 13:13:24 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Initial package

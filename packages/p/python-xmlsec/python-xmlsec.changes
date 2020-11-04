@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Tue Jun  2 06:38:20 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.3.8:
+  * No upstream changelog.
+- Drop reproducible.patch, included upstream.
+- Switch to PyPI tarball due to use of setuptools_scm.
+- Update BuildRequires. 
+
+-------------------------------------------------------------------
+Mon Jun 24 04:32:51 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort dir entries (boo#1041090)
+
+-------------------------------------------------------------------
+Fri Dec  7 12:07:04 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Version update to 1.3.6:
+  * Various installation issue fxes
+- Make sure the tests are really run and skipped for now
+- Make sure to pick up at least one xmlsec backend
+
+-------------------------------------------------------------------
+Wed Nov 21 08:06:32 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Nov 19 19:04:47 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial build
+  + Version 1.3.3

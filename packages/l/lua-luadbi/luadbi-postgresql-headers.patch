@@ -1,0 +1,8 @@
+--- luadbi-0.7.2/dbd/postgresql/dbd_postgresql.h.orig	2019-01-14 12:39:17.000000000 +0300
++++ luadbi-0.7.2/dbd/postgresql/dbd_postgresql.h	2020-10-04 08:26:13.372785212 +0300
+@@ -1,4 +1,4 @@
+-#include <libpq-fe.h>
++#include <pgsql/libpq-fe.h>
+ #include <dbd/common.h>
+ 
+ /* 

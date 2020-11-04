@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Jul  5 09:30:40 UTC 2018 - idonmez@suse.com
+
+- Update to version 1.2
+  * Fixes CVE-2018-11724, CVE-2018-11725 and CVE-2018-11726
+
+-------------------------------------------------------------------
+Mon Jun  4 09:46:32 UTC 2018 - idonmez@suse.com
+
+- Update to version 1.1
+  * Remove a hack used for broken mobi files
+  * Update libmobi for better compatibility
+
+-------------------------------------------------------------------
+Tue Nov 21 15:53:49 UTC 2017 - jengelh@inai.de
+
+- Remove filler wording from description.
+
+-------------------------------------------------------------------
+Fri Nov 17 08:53:16 UTC 2017 - idonmez@suse.com
+
+- Initial release

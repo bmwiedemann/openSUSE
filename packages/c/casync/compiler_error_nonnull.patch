@@ -1,0 +1,10 @@
+--- casync-2/meson.build	2017-07-26 11:55:38.000000000 +0200
++++ casync-2/meson.build	2017-09-17 14:24:41.820171774 +0200
+@@ -53,6 +53,7 @@
+         -fstack-protector-strong
+         -fPIE
+         --param=ssp-buffer-size=4
++        -Wno-nonnull
+ '''.split()
+ 
+ foreach arg : c_args

@@ -1,0 +1,30 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-container-rh-pkg.patch
+
+;; Add messages suggesting more recent RHEL gdbserver (RH BZ 1321114).
+;;=fedora
+
+diff --git a/gdb/remote.c b/gdb/remote.c
+--- a/gdb/remote.c
++++ b/gdb/remote.c
+@@ -13916,7 +13916,17 @@ remote_target::pid_to_exec_file (int pid)
+   char *annex = NULL;
+ 
+   if (packet_support (PACKET_qXfer_exec_file) != PACKET_ENABLE)
+-    return NULL;
++    {
++      warning (_("Remote gdbserver does not support determining executable "
++		 "automatically.\n"
++"RHEL <=6.8 and <=7.2 versions of gdbserver do not support such automatic executable detection.\n"
++"The following versions of gdbserver support it:\n"
++"- Upstream version of gdbserver (unsupported) 7.10 or later\n"
++"- Red Hat Developer Toolset (DTS) version of gdbserver from DTS 4.0 or later (only on x86_64)\n"
++"- RHEL-7.3 versions of gdbserver (on any architecture)"
++));
++      return NULL;
++    }
+ 
+   inf = find_inferior_pid (pid);
+   if (inf == NULL)

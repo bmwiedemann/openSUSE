@@ -1,0 +1,327 @@
+commit 179a418ea5063785a23e4faf35134f063a6f3e1c
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Fri Mar 13 13:00:35 2020 -0500
+
+    LINUX: Properly revert creds in osi_UFSTruncate
+    
+    Commit cd3221d3 (Linux: use override_creds when available) caused us
+    to force the current process's creds to the creds of afsd during
+    osi_file.c file ops, to avoid access errors in some cases.
+    
+    However, in osi_UFSTruncate, one code path was missed to revert our
+    creds back to the original user's creds: when the afs_osi_Stat call
+    fails or deems the truncate unnecessary. In this case, the calling
+    process keeps the creds for afsd after osi_UFSTruncate returns,
+    causing our subsequent access-checking code to think that the current
+    process is in the same context as afsd (typically uid 0 without a
+    pag).
+    
+    This can cause the calling process to appear to transiently have the
+    same access as non-pag uid 0; typically this will be unauthenticated
+    access, but could be authenticated if uid 0 has tokens.
+    
+    To fix this, modify the early return in osi_UFSTruncate to go through
+    a 'goto done' destructor instead, and make sure we revert our creds in
+    that destructor.
+    
+    Thanks to cwills@sinenomine.net for finding and helping reproduce the
+    issue.
+    
+    Reviewed-on: https://gerrit.openafs.org/14098
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Jeffrey Hutzelman <jhutz@cmu.edu>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+    (cherry picked from commit 57b4f4f9be1e25d5609301c10f717aff32aef676)
+    
+    Change-Id: I714eb2dea9645ffe555f26b5d69707a7afbe8d81
+    Reviewed-on: https://gerrit.openafs.org/14099
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Jeffrey Hutzelman <jhutz@cmu.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit ee578e92d9f810d93659a9805d0c12084fe2bb95
+Author: Jeffrey Hutzelman <jhutz@cmu.edu>
+Date:   Thu May 2 16:02:47 2019 -0400
+
+    Linux: use override_creds when available
+    
+    Linux may perform some access control checks at the time of an I/O
+    operation, rather than relying solely on checks done when the file is
+    opened. In some cases (e.g. AppArmor), these checks are done based on
+    the current tasks's creds at the time of the I/O operation, not those
+    used when the file was open.
+    
+    Because of this, we must use override_creds() / revert_creds() to make
+    sure we are using privileged credentials when performing I/O operations
+    on cache files. Otherwise, cache I/O operations done in the context of
+    a task with a restrictive AppArmor profile will fail.
+    
+    Reviewed-on: https://gerrit.openafs.org/13751
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit cd3221d3532a28111ad22d4090ec913cbbff40da)
+    
+    Change-Id: I8955ff6150462fecba9a10a8f99bce9ee8163435
+    Reviewed-on: https://gerrit.openafs.org/14082
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Jeffrey Hutzelman <jhutz@cmu.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit facff58b840a47853592510617ba7a1da2e3eaa9
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:35:06 2020 -0600
+
+    LINUX 5.8: use lru_cache_add
+    
+    With Linux-5.8-rc1 commit 'mm: fold and remove lru_cache_add_anon() and
+    lru_cache_add_file()' (6058eaec), the lru_cache_add_file function is
+    removed since it was functionally equivalent to lru_cache_add.
+    
+    Replace lru_cache_add_file with lru_cache_add.
+    
+    Introduce a new autoconf test to determine if lru_cache_add is present
+    
+    For reference, the Linux changes associated with the lru caches:
+    
+      __pagevec_lru_add introduced before v2.6.12-rc2
+    
+      lru_cache_add_file introduced in v2.6.28-rc1
+      __pagevec_lru_add_file replaces __pagevec_lru_add in v2.6.28-rc1
+         vmscan: split LRU lists into anon & file sets (4f98a2fee)
+    
+      __pagevec_lru_add removed in v5.7 with a note to use lru_cache_add_file
+         mm/swap.c: not necessary to export __pagevec_lru_add() (bde07cfc6)
+    
+      lru_cache_add_file removed in v5.8
+         mm: fold and remove lru_cache_add_anon() and lru_cache_add_file()
+          (6058eaec)
+      lru_cache_add exported
+         mm: fold and remove lru_cache_add_anon() and lru_cache_add_file()
+          (6058eaec)
+    
+    Openafs will use:
+      lru_cache_add on 5.8 kernels
+      lru_cache_add_file from 2.6.28 through 5.7 kernels
+      __pagevec_lru_add/__pagevec_lru_add_file on pre 2.6.28 kernels
+    
+    Reviewed-on: https://gerrit.openafs.org/14249
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Yadavendra Yadav <yadayada@in.ibm.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 7d85ce221d6ccc19cf76ce7680c74311e4ed2632)
+    
+    Change-Id: Iba6ef4441687dbf60d227a708e2a032c2c0dc79f
+    Reviewed-on: https://gerrit.openafs.org/14269
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 335f37be13d2ff954e4aeea617ee66502170805e
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:34:42 2020 -0600
+
+    LINUX 5.8: do not set name field in backing_dev_info
+    
+    Linux-5.8-rc1 commit 'bdi: remove the name field in struct
+    backing_dev_info' (1cd925d5838)
+    
+    Do not set the name field in the backing_dev_info structure if it is
+    not available. Uses an existing config test
+        'STRUCT_BACKING_DEV_INFO_HAS_NAME'
+    
+    Note the name field in the backing_dev_info structure was added in
+    Linux-2.6.32
+    
+    Reviewed-on: https://gerrit.openafs.org/14248
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit d8ec294534fcdee77a2ccd297b4b167dc4d5573d)
+    
+    Change-Id: I3d9e18092db998a4c4f26bd63ee3b75383a53d4c
+    Reviewed-on: https://gerrit.openafs.org/14268
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit d7fc5bf9bf031089d80703c48daf30d5b15a80ca
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Jul 3 10:33:51 2020 -0600
+
+    LINUX 5.8: Replace kernel_setsockopt with new funcs
+    
+    Linux 5.8-rc1 commit 'net: remove kernel_setsockopt' (5a892ff2facb)
+    retires the kernel_setsockopt function. In prior kernel commits new
+    functions (ip_sock_set_*) were added to replace the specific functions
+    performed by kernel_setsockopt.
+    
+    Define new config test 'HAVE_IP_SOCK_SET' if the 'ip_sock_set' functions
+    are available. The config define 'HAVE_KERNEL_SETSOCKOPT' is no longer
+    set in Linux 5.8.
+    
+    Create wrapper functions that replace the kernel_setsockopt calls with
+    calls to the appropriate Linux kernel function(s) (depending on what
+    functions the kernel supports).
+    
+    Remove the unused 'kernel_getsockopt' function (used for building with
+    pre 2.6.19 kernels).
+    
+    For reference
+        Linux 2.6.19 introduced kernel_setsockopt
+        Linux 5.8 removed kernel_setsockopt and replaced the functionality
+                  with a set of new functions (ip_sock_set_*)
+    
+    Reviewed-on: https://gerrit.openafs.org/14247
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit c48072b9800759ef1682b91ff1e962f6904a2594)
+    
+    Change-Id: I2724fad06b1882149d2066d13eced55eff5ee695
+    Reviewed-on: https://gerrit.openafs.org/14267
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Laß <lass@mail.uni-paderborn.de>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 0f67e733e82a9001f3f9253c5e1880be845d537b
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Thu Apr 2 13:27:50 2020 -0600
+
+    LINUX: Include linux/time.h for linux/errqueue.h
+    
+    The configuration test for errqueue.h fails with an undefined structure
+    error on a Linux 3.17 (or higher) system.  This prevents setting
+    HAVE_LINUX_ERRQUEUE_H, which is used to define AFS_RXERRQ_ENV.
+    
+    Linux commit f24b9be5957b38bb420b838115040dc2031b7d0c (net-timestamp:
+    extend SCM_TIMESTAMPING ancillary data struct) - which was picked up in
+    linux 3.17 added a structure that uses the timespec structure.  After
+    this commit, we need to include linux/time.h to pull in the definition
+    of the timespec struct.
+    
+    Reviewed-on: https://gerrit.openafs.org/13950
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 086d185872da5f19447cf5ec7846e7ce5104563f)
+    
+    Change-Id: I67d01b11c5ea95b8b87832fc833f8fc850ade684
+    Reviewed-on: https://gerrit.openafs.org/14130
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 5a14bd0abe83b580f0cc7a200ae963399ab7de5f
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue May 26 12:11:28 2020 -0600
+
+    vol: Fix format-truncation warning with gcc-10.1
+    
+    Building with gcc-10.1 produces a warning (error if --enable-checking)
+    in vol-salvage.c
+    
+    error: ‘%s’ directive output may be truncated writing up to 755 bytes
+           into a region of size 255 [-Werror=format-truncation=]
+      809 |     snprintf(inodeListPath, 255, "%s" OS_DIRSEP "salvage.inodes.%s.%d", tdir, name,
+    
+    Use strdup/asprintf to allocate the buffer dynamically instead of using
+    a buffer with a hardcoded size.
+    
+    Reviewed-on: https://gerrit.openafs.org/14207
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit d73680c5f70ee5aeb634a9ec88bf1097743d0f76)
+    
+    Change-Id: I8d3bf244a70f723f585738905deea7ddfb1bb862
+    Reviewed-on: https://gerrit.openafs.org/14232
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit d5fc5283e91ea94a67df8364a5b8bf8970ffe934
+Author: Michael Meffie <mmeffie@sinenomine.net>
+Date:   Mon Oct 9 22:16:09 2017 -0400
+
+    afsmonitor: remove unused LWP_WaitProcess
+    
+    Remove the unimplemented once-only flag and the unused LWP_WaitProcess
+    call.
+    
+    Reviewed-on: https://gerrit.openafs.org/12745
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 7c27365ea24aed5787f6fc03f30f6085c78ece51)
+    
+    Change-Id: I3b61f9fb4f45564304b0e35878d3535a10e31d02
+    Reviewed-on: https://gerrit.openafs.org/14226
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit a2eec64374d6b754b29c509b554573cb6e53eb46
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri May 22 12:16:48 2020 -0600
+
+    Avoid duplicate definitions of globals
+    
+    GCC 10 changed a default flag from -fcommon to -fno-common.  See
+    https://gcc.gnu.org/bugzilla/show_bug.cgi?id=85678 for some background.
+    
+    The change in gcc 10 results in build link-time errors. For example:
+       ../../src/xstat/.libs/liboafs_xstat_cm.a(xstat_cm.o):(.bss+0x2050):
+           multiple definition of `numCollections';
+    
+    Ensure that only one definition for global data objects exist and change
+    references to use "extern" as needed.
+    
+    To ensure that future changes do not introduce duplicated global
+    definitions, add the -fno-common flag to XCFLAGS when using the
+    configure --enable-checking setting.
+    
+    [cwills@sinenomine.net: Note for 1.8.x: renamed terminationEvent
+    to cm_terminationEvent/fs_terminationEvent instead of deleting it.]
+    
+    Reviewed-on: https://gerrit.openafs.org/14106
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 0e2072ae386d4111bef161eb955964b649c31386)
+    
+    Change-Id: I54ca61d372cf763e4a28c0b0829ea361219f6203
+    Reviewed-on: https://gerrit.openafs.org/14217
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 278592ef2d766c77de821b9da80359f24fec5b62
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Mon Jan 27 12:26:41 2020 -0500
+
+    uss: more gcc9 truncation warning appeasement
+    
+    uss_procs_PickADir needs a larger buffer to avoid a truncation warning.
+    While here, replace some magic numbers with existing symbols.
+    
+    Reviewed-on: https://gerrit.openafs.org/14049
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 6c54bc9e121b923ec5fdd60ee510171987e55017)
+    
+    Change-Id: I5cb76a8a9b2a9b342a1ddae2f41ecab82f762326
+    Reviewed-on: https://gerrit.openafs.org/14140
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>

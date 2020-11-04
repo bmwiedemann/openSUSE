@@ -1,0 +1,229 @@
+-------------------------------------------------------------------
+Thu Mar 12 07:27:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Jan  2 13:03:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable keyring and one contrib test as they are broken with
+  python 3.8
+  * the library is deprecated, not worth fixing up, consumers should
+    really migrate from this
+
+-------------------------------------------------------------------
+Fri Mar 15 11:15:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop patch o2c_reauth.patch as it was never described why it is needed
+  (not even in the bug)
+- Drop not needed oauth2client-init-django-settings.patch
+- Drop django subpkg, sadly it does not work with new djangos
+
+-------------------------------------------------------------------
+Fri Mar 15 10:56:31 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.1.3:
+  * Changed OAuth2 endpoints to use oauth2.googleapis.com variants. (#742)
+- Execute tests
+
+-------------------------------------------------------------------
+Thu Jun 14 01:41:53 UTC 2018 - rjschwei@suse.com
+
+- Do not build Django extension on SLES
+
+-------------------------------------------------------------------
+Sat Jul  8 04:20:23 UTC 2017 - dmueller@suse.com
+
+- remove tox dependency
+
+-------------------------------------------------------------------
+Sat Jul  1 12:31:26 UTC 2017 - mc@suse.com
+
+- update to version 4.1.2
+  * New features:
+    * Allow passing prompt='consent' via the flow_from_clientsecrets. (#717)
+    * Allow customizing the GCE metadata service address via an env var. (#704)
+    * Store original encoded and signed identity JWT in OAuth2Credentials. (#680)
+    * Use jsonpickle in django contrib, if available. (#676)
+  * Bug fixes:
+    * Fix packaging issue had erroneously installed the test package. (#688)
+    * Typo fixes. (#668, #697)
+    * Remove b64 padding from PKCE values, per RFC7636. (#683)
+    * Include LICENSE in Manifest.in. (#694)
+    * Fix tests and CI. (#705, #712, #713)
+    * Escape callback error code in flask_util. (#710)
+- package python3 in singlespec
+- remove o2c_hide-deprecation-warning.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Jan 30 20:33:27 UTC 2017 - rjschwei@suse.com
+
+- Add o2c_hide-deprecation-warning.patch
+- Add o2c_reauth.patch (bsc#1002895)
+
+-------------------------------------------------------------------
+Fri Oct 21 04:32:30 UTC 2016 - arun@gmx.de
+
+- update to version 4.0.0:
+  * New features:
+    + New Django samples. (#636)
+    + Add support for RFC7636 PKCE. (#588)
+    + Release as a universal wheel. (#665)
+  * Bug fixes:
+    + Fix django authorization redirect by correctly checking validity
+      of credentials. (#651)
+    + Correct query loss when using parse_qsl to dict. (#622)
+    + Switch django models from pickle to jsonpickle. (#614)
+    + Support new MIDDLEWARE Django 1.10 aetting. (#623)
+    + Remove usage of os.environ.setdefault. (#621)
+    + Handle missing storage files correctly. (#576)
+    + Try to revoke token with POST when getting a 405. (#662)
+  * Internal changes:
+    + Use transport module for GCE environment check. (#612)
+    + Remove author lines and add contributors.md. (#627)
+    + Clean up imports. (#625)
+    + Use transport.request in tests. (#607)
+    + Drop unittest2 dependency (#610)
+    + Remove backslash line continuations. (#608)
+    + Use transport helpers in system tests. (#606)
+    + Clean up usage of HTTP mocks in tests. (#605)
+    + Remove all uses of MagicMock. (#598)
+    + Migrate test runner to pytest. (#569)
+    + Merge util.py and _helpers.py. (#579)
+    + Remove httplib2 imports from non-transport modules. (#577)
+  * Breaking changes:
+    + Drop Python 3.3 support. (#603)
+    + Drop Python 2.6 support. (#590)
+    + Remove multistore_file. (#589)
+
+-------------------------------------------------------------------
+Wed Oct 12 21:29:55 UTC 2016 - rjschwei@suse.com
+
+- Add missing dependency on python-fasteners
+
+-------------------------------------------------------------------
+Wed Oct  5 15:21:32 UTC 2016 - rjschwei@suse.com
+
+- Update to version 3.0.0 (bsc#1002895)
+  + Add patch oauth2client-init-django-settings.patch (#661)
+  + Package tests again, but remain disabled due to Django issue (#661)
+  + Populate token_expiry for GCE credentials. (#473)
+  + Move GCE metadata interface to a separate module. (#520)
+  + Populate scopes for GCE credentials. (#524)
+  + Fix Python 3.5 compatibility. (#531)
+  + Add oauth2client.contrib.sqlalchemy, a SQLAlchemy-based credential
+    store. (#527)
+  + Improve error when an invalid client secret is provided. (#530)
+  + Add oauth2client.contrib.multiprocess_storage. This supersedes the
+    functionality in oauth2client.contrib.multistore_file. (#504)
+  + Pull httplib2 usage into a separate transport module. (#559, #561)
+  + Refactor all django-related code into oauth2client.contrib.django_util.
+    Add DjangoORMStorage, remove FlowField. (#546)
+  + Fix application default credentials resolution order. (#570)
+  + Add configurable timeout for GCE metadata server check. (#571)
+  + Add warnings when using deprecated approval_prompt='force'. (#572)
+  + Add deprecation warning to oauth2client.contrib.multistore_file. (#574)
+  + (Hygiene) PEP8 compliance and various style fixes (#537, #540, #552, #562)
+  + (Hygiene) Remove duplicated exception classes in
+    oauth2client.contrib.appengine. (#533)
+- From 2.2.0
+  + Added support to override token_uri and revoke_uri in
+    oauth2client.service_account.ServiceAccountCredentials. (#510)
+  + oauth2client.contrib.multistore_file now handles OSError in addition
+    to IOError because Windows may raise OSError where other platforms
+    will raise IOError.
+  + oauth2client.contrib.django_util and oauth2client.contrib.django_orm
+    have been updated to support Django 1.8 - 1.10. Versions of Django
+    below 1.8 will not work with these modules.
+- From 2.1.0
+  + Add basic support for JWT access credentials. (#503)
+  + Fix oauth2client.client.DeviceFlowInfo to use UTC instead of the
+    system timezone when calculating code expiration.
+- From 2.0.2
+  + Fix issue where flask_util.UserOAuth2.required would accept expired
+    credentials (#452).
+  + Fix issue where flask_util would fill the session with Flow objects (#498).
+  + Fix issue with Python 3 binary strings in Flow.step2_exchange (#446).
+  + Improve test coverage to 100%.
+
+-------------------------------------------------------------------
+Fri Mar 11 10:46:08 UTC 2016 - tbechtold@suse.com
+
+- update to 2.0.1:
+  * Making scopes optional on Google Compute Engine `AppAssertionCredentials`
+    and adding a warning that GCE won't honor scopes (#419)
+  * Adding common `sign_blob()` to service account types and a
+    `service_account_email` property. (#421)
+  * Improving error message in P12 factory
+    `ServiceAccountCredentials.from_p12_keyfile` when pyOpenSSL is
+     missing. (#424)
+  * Allowing default flags in `oauth2client.tools.run_flow()`
+    rather than forcing users to create a dummy argparser (#426)
+  * Removing `oauth2client.util.dict_to_tuple_key()` from public
+    interface (#429)
+  * Adding `oauth2client.contrib._appengine_ndb` helper module
+    for `oauth2client.contrib.appengine` and moving most code that
+    uses the `ndb` library into the helper (#434)
+  * Fix error in `django_util` sample code (#438)
+  * Fix Google Compute Engine breakage (#411, breakage introduced in #387) that
+    made it impossible to obtain access tokens
+  * Implement `ServiceAccountCredentials.from_p12_keyfile_buffer()`
+    to allow passing a file-like object in addition to the factory
+    constructor that uses a filename directly (#413)
+  * Implement `ServiceAccountCredentials.create_delegated()`
+    to allow upgrading a credential to one that acts on behalf
+    of a given subject (#420)
+  * Add django_util (#332)
+  * Avoid OAuth2Credentials `id_token` going out of sync after a token
+    refresh (#337)
+  * Move to a `contrib` sub-package code not considered a core part of
+    the library (#346, #353, #370, #375, #376, #382)
+  * Add `token_expiry` to `devshell` credentials (#372)
+  * Move `Storage` locking into a base class (#379)
+  * Added dictionary storage (#380)
+  * Added `to_json` and `from_json` methods to all `Credentials`
+    classes (#385)
+  * Fall back to read-only credentials on EACCES errors (#389)
+  * Coalesced the two `ServiceAccountCredentials`
+    classes (#395, #396, #397, #398, #400)
+  * Add access token refresh error class that includes HTTP status (#310)
+  * Python3 compatibility fixes for Django (#316, #318)
+  * Fix incremental auth in flask_util (#322)
+  * Fall back to credential refresh on EDEADLK in multistore_file (#336)
+- Remove test package. tests are no longer shipped by upstream.
+- Remove hidePythonDeps.patch
+- Some imports moved from oauth2client to oauth2client.contrib
+
+-------------------------------------------------------------------
+Sat Jan  2 12:58:25 UTC 2016 - rjschwei@suse.com
+
+- Do not build the -django subpackage on SLE 12 in IBS
+  + libwebp in SLE 12 is too old nad has issues on s390x. libwebp is a
+    dependency for python-Pillow, which in turn is a dependncy for
+    python-Django
+  + .changes file changes in OBS only as we have access to fixed libwebp
+    for SLE 12
+
+-------------------------------------------------------------------
+Tue Dec  1 17:14:33 UTC 2015 - rjschwei@suse.com
+
+- Remove -django subpackage requirements for SLE 11
+
+-------------------------------------------------------------------
+Tue Dec  1 16:58:47 UTC 2015 - rjschwei@suse.com
+
+- Do not build the -django subpackage on SLE 11
+  + The latest version of Django no longer builds on SLE 11, Python
+    is too old
+
+-------------------------------------------------------------------
+Tue Dec  1 14:57:13 UTC 2015 - rjschwei@suse.com
+
+- Include in SLE 12 (FATE#319904, bsc#954690)
+
+-------------------------------------------------------------------
+Sat Nov 21 13:42:14 UTC 2015 - rjschwei@suse.com
+
+- Initial build
+  + Version 1.5.1
+

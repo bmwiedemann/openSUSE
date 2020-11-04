@@ -1,0 +1,18 @@
+Index: nut-2.7.4/docs/Makefile.am
+===================================================================
+--- nut-2.7.4.orig/docs/Makefile.am
++++ nut-2.7.4/docs/Makefile.am
+@@ -46,11 +46,13 @@ EXTRA_DIST = $(ALL_TXT_SRC) $(SHARED_DEP
+ ASCIIDOC_HTML_SINGLE = user-manual.html \
+ 	developer-guide.html \
+ 	packager-guide.html \
++	cables.html \
+ 	FAQ.html
+ 
+ ASCIIDOC_HTML_CHUNKED = user-manual.chunked \
+ 	developer-guide.chunked \
+ 	packager-guide.chunked \
++	cables.html \
+ 	FAQ.html
+ 
+ ASCIIDOC_PDF = user-manual.pdf \

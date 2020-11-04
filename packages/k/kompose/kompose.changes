@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Mon Jul 27 10:45:49 UTC 2020 - Richard Brown <rbrown@suse.com>
+
+- Require python3-PyYAML 
+
+-------------------------------------------------------------------
+Wed Nov 27 09:32:58 UTC 2019 - Stefan Weiberg <sweiberg@suse.com>
+
+- Update to version 1.19.0:
+  * Updated dependencies for Docker Compose 3.5+ (#1120)
+  * Fixed parser bug (#1121)
+  * Made Kompose go get-able again (#1139)
+  * Bug fix for container name (#1141)
+  * Includes the ability to build a Snap (#1153)
+  * Added Dockerfile (#1101)
+  * Copied Service Labels to Deployment Pod Spec thanks to @alanjds (#1166)
+  * Binaries are now statically built (#1169)
+  * Updated help output for kompose convert (#1171)
+
+-------------------------------------------------------------------
+Mon Apr  1 14:30:50 UTC 2019 - limux <sweiberg@suse.com>
+
+- Update to version 1.18.0:
+  * 1.18.0 Release (#1108)
+  * Add kompose.image-pull-secret and kompose.image-pull-policy (#1091)
+  * Support multiple hostnames on expose label in service for Kubernetes (#1092)
+  * Update introduction.md (#1090)
+  * Add label support to named volumes in docker compose v3 to Kubernetes (#1083)
+  * Fix log output specific warning info (#1084)
+  * fix typo: generting -> generating
+  * delete excess code
+  * Fix typos: accecpts -> accepts
+
+-------------------------------------------------------------------
+Thu Sep 13 09:43:07 UTC 2018 - Stefan Weiberg <sweiberg@suse.com>
+
+- Update to version 1.16.0:
+  * 1.16.0 Release (#1055)
+  * Add installation instructions for openSUSE/SLE (#1050)
+  * Fix environment with env_file bug
+  * Add surajnarwade in OWNER file (#1047)
+  * Unit Test added to Placement Constraints Custom Labels
+  * 1.15.0 Release (#1044)
+  * Typo fix in maven-example.md (#1021)
+  * support node.labels at placement
+
+-------------------------------------------------------------------
+Tue Jul 10 08:30:51 UTC 2018 - sweiberg@suse.com
+
+- applying fixes for building package in Virtualization:containers
+- drop set_version in obs-scm to support SLE
+
+-------------------------------------------------------------------
+Mon Jul  9 13:28:13 UTC 2018 - sweiberg@suse.com
+
+- following packaging guidelines for openSUSE
+- still based on kompose-v1.15.0
+
+-------------------------------------------------------------------
+Mon Jul  9 13:09:17 UTC 2018 - sweiberg@suse.com
+
+- initial package for openSUSE
+- kompose v1.15.0

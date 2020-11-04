@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Tue Oct  6 08:55:51 UTC 2020 - psimons@suse.com
+
+- Update generic-deriving to version 1.14.
+  # 1.14 [2020.09.30]
+  * Remove instances for `Data.Semigroup.Option`, which is deprecated as of
+    `base-4.15.0.0`.
+  * Allow building with `template-haskell-2.17.0.0` (GHC 9.0).
+  * Fix a bug in which `deriveAll1` would needlessly reject data types whose last
+    type parameter appears as an oversaturated argument to a type family.
+
+-------------------------------------------------------------------
+Fri Sep  4 10:49:28 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Wed Nov 27 03:00:49 UTC 2019 - psimons@suse.com
+
+- Update generic-deriving to version 1.13.1.
+  # 1.13.1 [2019.11.26]
+  * Backport the `Generic(1)` instances for `Kleisli` introduced in `base-4.14`.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:13:47 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Wed Aug 28 02:02:35 UTC 2019 - psimons@suse.com
+
+- Update generic-deriving to version 1.13.
+  # 1.13 [2019.08.27]
+  * Make `GSemigroup` a superclass of `GMonoid`. Similarly, make
+    `GSemigroup'` a superclass of `GMonoid'`.
+  * In the instance `GMonoid (Maybe a)`, relax the constraint on `a` from
+    `GMonoid` to `GSemigroup`.
+
+-------------------------------------------------------------------
+Tue Jun 11 14:29:10 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Update Cabal file for more accurate build dependencies.
+
+-------------------------------------------------------------------
+Tue Apr 30 09:23:03 UTC 2019 - psimons@suse.com
+
+- Update generic-deriving to version 1.12.4.
+  # 1.12.4 [2019.04.26]
+  * Support `th-abstraction-0.3.0.0` or later.
+
+-------------------------------------------------------------------
+Sun Feb 10 03:02:15 UTC 2019 - psimons@suse.com
+
+- Update generic-deriving to version 1.12.3.
+  # 1.12.3 [2019.02.09]
+  * Support `template-haskell-2.15`.
+  * Add a `gshowList` method to `GShow`, which lets us avoid the need for
+    `OverlappingInstances` in `Generics.Deriving.TH`. As a consequence, the
+    `GShow String` instance has been removed, as it is now fully subsumed by
+    the `GShow [a]` instance (with which it previously overlapped).
+  * Functions in `Generics.Deriving.TH` now balance groups of `(:*:)` and `(:+:)`
+    as much as possible (`deriving Generic` was already performing this
+    optimization, and now `generic-deriving` does too).
+  * Add a `Generics.Deriving.Default` module demonstrating and explaining
+    how and why to use `DerivingVia`. There is also a test suite with
+    further examples.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:33 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Wed Jul 18 14:26:25 UTC 2018 - psimons@suse.com
+
+- Cosmetic: replace tabs with blanks, strip trailing white space,
+  and update copyright headers with spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Jul 13 14:31:34 UTC 2018 - psimons@suse.com
+
+- Update generic-deriving to version 1.12.2.
+  # 1.12.2 [2018.06.28]
+  * Backport the `Generic(1)` instances for `Data.Ord.Down`, introduced in
+    `base-4.12`. Add `GEq`, `GShow`, `GSemigroup`, `GMonoid`, `GFunctor`,
+    `GFoldable`, `GTraversable`, and `GCopoint` instances for `Down`.
+  * Refactor internals using `th-abstraction`.
+  * Adapt to `Maybe` moving to `GHC.Maybe` in GHC 8.6.
+
+-------------------------------------------------------------------
+Mon May 14 17:02:11 UTC 2018 - psimons@suse.com
+
+- Update generic-deriving to version 1.12.1 revision 1.
+  * Adapt to the `EmptyDataDeriving` proposal (introduced in GHC 8.4):
+    * `Generics.Deriving.TH` now derives `to(1)` and `from(1)` implementations
+      for empty data types that are strict in the argument.
+    * Introduce an `EmptyCaseOptions` field to `Options` in
+      `Generics.Deriving.TH`, which controls whether generated `from(1)`/`to(1)`
+      implementations for empty data types should use the `EmptyCase` extension
+      or not (as is the case in GHC 8.4).
+    * Add `mkFrom0Options`, `mkFrom1Options`, `mkTo0Options`, and `mkTo1Options`
+      functions to `Generics.Deriving.TH`, which take `EmptyCaseOptions` as
+      arguments.
+    * The backported instances for `V1` are now maximally lazy, as per
+      `EmptyDataDeriving`. (Previously, some instances would unnecessarily force
+      their argument, such as the `Eq` and `Ord` instances.)
+    * Add instances for `V1` in `Generics.Deriving.Copoint`, `.Eq`, `.Foldable`,
+      `.Functor`, `.Show`, and `.Traversable`.
+  * Remove the bitrotting `simplInstance` function from `Generics.Deriving.TH`.
+
+-------------------------------------------------------------------
+Thu Aug  3 15:38:38 UTC 2017 - psimons@suse.com
+
+- Updated with latest spec-cleaner version 0.9.8-8-geadfbbf.
+
+-------------------------------------------------------------------
+Wed Apr 19 13:32:43 UTC 2017 - psimons@suse.com
+
+- Update to version 1.11.2 with cabal2obs.
+
+-------------------------------------------------------------------
+Fri Apr  7 10:28:59 UTC 2017 - psimons@suse.com
+
+- Update to version 1.11.1 revision 1 with cabal2obs.
+
+-------------------------------------------------------------------
+Thu Sep 15 06:48:32 UTC 2016 - psimons@suse.com
+
+- Update to version 1.11.1 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jul 10 17:06:54 UTC 2016 - psimons@suse.com
+
+- Update to version 1.10.5 revision 0 with cabal2obs.
+
+-------------------------------------------------------------------
+Sun Jun 19 14:47:57 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.10.5
+* Apply an optimization to generated to(1)/from(1) instances that factors
+    out common occurrences of M1
+* Export internal typeclass names
+* Fix Haddock issues with GHC 7.8
+
+-------------------------------------------------------------------
+Mon May 23 21:09:37 UTC 2016 - mimi.vx@gmail.com
+
+- update to 1.10.4.1
+* Fix Haddock parsing issue on GHC 8.0
+* Backported MonadPlus and MonadZip instances for U1, and made the Functor,
+         Foldable, Traversable, Alternative, and Monad instances for U1 lazier to
+         correspond with base-4.9
+* Backported Enum, Bounded, Ix, Functor, Applicative, Monad, MonadFix, MonadPlus,
+         MonadZip, Foldable, Traversable, and Data instances (introduced in base-4.9)
+         for datatypes in the Generics.Deriving.Base module
+* Added Generics.Deriving.Semigroup
+* Added GMonoid instance for Data.Monoid.Alt
+* Fixed a bug in the GEnum instances for unsigned Integral types
+* Added Safe/Trustworthy pragmas
+* Made instances polykinded where possible
+* On GHC 8.0 and up, Generics.Deriving.TH uses the new type literal-based machinery
+* Rewrote the Template Haskell code to be robust. Among other things, this fixes
+         a bug with deriving Generic1 instances on GHC 7.8, and makes it easier to
+         derive Generic1 instances for datatypes that utilize GHC 8.0's
+         -XTypeInType extension.
+* Added deriveAll0 and makeRep0 for symmetry with deriveAll1 and makeRep1
+* AddedmakeRep0FromType and makeRep1FromType to make it easier to pass in the type
+         instance
+* Added functions with the suffix -WithKindSigs to allow generating type synonyms
+         with explicit kind signatures in the presence of kind-polymorphic type
+         variables. This is necessary for some datatypes that use -XTypeInType to have
+         derived Generic(1) instances, but is not turned on by default since the TH
+         kind inference is not perfect and would cause otherwise valid code to be
+         rejected. Use only if you know what you are doing.
+* Fixed bug where a datatype with a single, nullary constructor would generate
+         incorrect Generic instances
+* More sensible GEnum instances for fixed-size integral types
+* Added GCopoint, GEnum, GEq, GFoldable, GFunctor, GMonoid, GShow, and GTraversable
+         instances for datatypes introduced in GHC 8.0
+* Backported Generic(1) instances added in GHC 8.0. Specifically, Generic instances
+         for Complex (base-4.4 and later) ExitCode, and Version; and Generic1 instances
+         for Complex (base-4.4 and later) and Proxy (base-4.7 and later). Added GEnum,
+         GEq, GFoldable, GFunctor, GIx, GShow, and GTraversable instances for these
+         datatypes where appropriate.
+
+-------------------------------------------------------------------
+Mon May 16 11:06:21 UTC 2016 - mimi.vx@gmail.com
+
+- package ghc-generic-deriving updated by st2obs
+
+-------------------------------------------------------------------
+Wed May 11 19:06:19 UTC 2016 - mimi.vx@gmail.com
+
+- package ghc-generic-deriving updated by st2obs
+
+-------------------------------------------------------------------
+Sat Feb 13 18:24:02 UTC 2016 - mimi.vx@gmail.com
+
+- ghc-generic-deriving generated by st2obs scritpt

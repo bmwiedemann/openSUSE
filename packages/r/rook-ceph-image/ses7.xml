@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/ses/7/ceph/ceph#sle15.2.octopus</image>
+  <tags>sle15.2.octopus</tags>
+  <name>ses/7/rook/ceph</name>
+  <prefix>com.suse.ses</prefix>
+  <title>SUSE Enterprise Storage 7.0</title>
+  <url>https://registry.suse.com/ses/7/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</url>
+  <reference>registry.suse.com/ses/7/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%</reference>
+  <labels>
+	<label>
+		<name>com.suse.ses.version</name>
+		<value>7.0</value>
+	</label>
+	<label>
+		<name>com.suse.ses.url</name>
+		<value>https://www.suse.com/solutions/software-defined-storage/</value>
+	</label>
+	<label>
+		<name>com.suse.rook.version</name>
+		<value>%PKG_VERSION%</value>
+	</label>
+	<label>
+		<name>com.suse.rook.url</name>
+		<value>https://rook.io/</value>
+	</label>
+	<label>
+		<name>com.suse.rook.created</name>
+		<value>%BUILDTIME%</value>
+	</label>
+  </labels>
+</param>

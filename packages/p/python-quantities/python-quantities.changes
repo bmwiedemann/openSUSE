@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Jan 30 15:29:29 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.4
+  * Fix broken support for `pq.Quanitty('mbar')`
+  * Add a `__format__` implementation for Quantity
+  * Fix `np.arctan2` regression due to newer numpy version
+  * Fix "<ufunc 'clip'> not supported" error
+  * Test against Python 3.8 and NumPy 1.17
+- Update to 0.12.3
+  * Updates to support NumPy up to version 1.16.1, and Python 3.7.
+  * Added microcoulomb and millicoulomb units.
+- Drop upstream-included no_ufunc_clip.patch
+
+-------------------------------------------------------------------
+Wed Dec  4 14:30:31 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
+- Add no_ufunc_clip.patch
+  Fixes: https://github.com/python-quantities/python-quantities/issues/158
+  From: https://github.com/python-quantities/python-quantities/pull/165

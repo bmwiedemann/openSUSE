@@ -1,0 +1,40 @@
+From 8a053986b4c43a133f6824f839bd78a476d183e3 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 19 Feb 2020 11:42:06 +0100
+Subject: [PATCH] Don't white-list recent Mesa versions for multithreading
+
+It's not stable.
+---
+ .../gl_integrations/xcb_glx/qglxintegration.cpp  | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp b/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp
+index 75189a9c80..e328ea2d4b 100644
+--- a/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp
++++ b/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp
+@@ -764,22 +764,6 @@ void QGLXContext::queryDummyContext()
+             m_supportsThreading = false;
+         }
+ 
+-        if (mesaVersionStr) {
+-            // The issue was fixed in Xcb 1.11, but we can't check for that
+-            // at runtime, so instead assume it fixed with recent Mesa versions
+-            // released several years after the Xcb fix.
+-#if QT_CONFIG(regularexpression)
+-            QRegularExpression versionTest(QStringLiteral("Mesa (\\d+)"));
+-            QRegularExpressionMatch result = versionTest.match(QString::fromLatin1(mesaVersionStr));
+-            int versionNr = 0;
+-            if (result.hasMatch())
+-                versionNr = result.captured(1).toInt();
+-            if (versionNr >= 17) {
+-                // White-listed
+-                m_supportsThreading = true;
+-            }
+-#endif
+-        }
+         if (!m_supportsThreading) {
+             qCDebug(lcQpaGl).nospace() << "Multithreaded OpenGL disabled: "
+                                           "blacklisted vendor \"Mesa Project\"";
+-- 
+2.23.0
+

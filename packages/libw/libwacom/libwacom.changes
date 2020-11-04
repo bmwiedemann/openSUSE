@@ -1,0 +1,377 @@
+-------------------------------------------------------------------
+Mon Oct  5 08:38:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use official %%meson_test macro for the %check section.
+- Do not crrate empty %check section when not using meson.
+
+-------------------------------------------------------------------
+Mon Oct  5 07:21:03 UTC 2020 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix Leap build.
+
+-------------------------------------------------------------------
+Sun Sep 13 19:38:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5:
+  - New devices:
+  - Acer Spin 5 / Acer Spin SP513-54N
+  - Dell Latitude 7410,
+  - GAOMON S620
+  - HP Pavilion x360 Convertible 14-dh0xxx
+  - Huawei MateBook HZ-W19
+  - Lenovo ThinkPad X1 Yoga 3rd
+  - Wacom Cintiq 16, DTK-1660E
+
+-------------------------------------------------------------------
+Sat Aug 22 06:36:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4.1:
+- New devices:
+  - HP ZBook Studio x360 G5
+  - Dell Latitude 7285
+  - Dell Latitude 7200 2-in-1, Dell Latitude 7400 2-in-1
+  - Elan 2415
+  - HP ENVY x360 Convertible 13,
+  - Huion 420, 1060 Plus,
+  - GAOMON S56K
+  - Wacom FT-0405
+  - Many AES stylus definitions added
+  - New API: libwacom_stylus_get_eraser_type()
+  - udev rules are now using hwdb entries
+ 
+-------------------------------------------------------------------
+Thu May  7 13:10:58 UTC 2020 - pgajdos@suse.com
+
+- use %{_udevrulesdir}, %{_libexecdir} now expands to /usr/libexec
+
+-------------------------------------------------------------------
+Thu Mar 26 02:11:22 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Update to 1.3
+- Add a dependency on doxygen
+- Remove 174.patch
+  + The changes were merged upstream
+
+-------------------------------------------------------------------
+Wed Nov 20 15:13:38 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Pass b_lto option to meson, otherwise the previous patch has no
+  effect (meson does not derive the b_lto value from the FLAGS).
+
+-------------------------------------------------------------------
+Wed Nov 20 10:06:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 174.patch
+  (https://patch-diff.githubusercontent.com/raw/linuxwacom/libwacom/pull/174.patch):
+  + Disable deprecated symbol test when using LTO.
+
+-------------------------------------------------------------------
+Thu Nov 14 00:46:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
+
+- Update to 1.1: 
+  New devices: Wacom HID 5115
+  Other change:
+  * Button codes defined for the 3rd gen Intuos S
+  Changes from version 1.0:
+  - udev rules are now installed by default
+  Changes from version 0.99.901:
+  New devices
+    * Lenovo YOGA 720, YOGA 520, IdeaPad FLEX 5, MIIX 520
+  * Dell XPS 15 9570, Latitude 5175
+  * HP Spectre x360, Envy x360 Convertible
+  * Wacom Intuos Pro 2 S, Cintiq 22, DTK-1660E
+  * Huion 610 Pro v2
+  * Samsung 930QAA
+  Other changes:
+  * New API: libwacom_get_model_name()
+  * meson build system support
+  * fixed symbol versioning
+  * EKR button ordering fixed
+  * Stylus grouping added
+  Changes from version 0.33:
+  - New devices:
+  * Wacom Bamboo Fun 4x5, Bamboo Fun 6x8, Bamboo1 5x8, Cintiq 16
+  * HP EliteBook x360, x2, HP Envy x360
+  * Acer Switch SA5
+  * Huion H420
+  * Lenovo Thinkpad L380 Yoga, L390 Yoga, Ideapad Flex, Yoga 730
+  * Dell Latitude 7390
+- Switch to meson for 15.2/tumbleweed
+- Remove URI from keyring: file is no longer there.
+- Add libxml2 to BuildRequires.
+- Don't manually install udev rules: now done by install.
+- Switch URL to github.
+  
+-------------------------------------------------------------------
+Tue Jan 29 08:42:16 UTC 2019 - cornelis@solcon.nl
+
+- Run through spec-cleaner 
+
+-------------------------------------------------------------------
+Mon Jan 28 19:54:10 UTC 2019 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 0.32
+  Support for the following devices has been added:
+  * Lenovo Yoga 730, X380, 300e
+  * Dell XPS 15 9575
+  * HP Spectre x360
+  * Toshiba Portege X20W-D
+  * DTU-1141B
+  * Graphire4 6x8
+  * ISDv4 50fd, 4807
+  Other change:
+  * tools: provide a man page for libwacom-list-local-devices
+
+-------------------------------------------------------------------
+Thu Jun  7 07:23:42 UTC 2018 - astieger@suse.com
+
+- update to 0.30 to support the following devices (boo#1096292):
+  * Lenovo X1 Yoga 3rd
+  * HP Spectre x360, HP Elite x1012 G2, HP Envy x360
+  * Turcom TS-6610
+  * ISDv4 50b4
+  * Cintiq Pro 24, Cintiq Pro 32
+  * ISDV4 5099, 50b6, 509d, 5090, 50f1, 50f8, 5110, 508b
+  * Bamboo Pad
+  * DTK-2451, 2452
+  * One by Wacom (2nd gen)
+  * Dell Canvas 27
+  * Pro Pen 3D stylus
+  * XP-Pen Star 03
+  * ISDv4 4831 (Dell XPS 13 9365)
+  * DTH-1152
+  * Wireless Intuos Pro 2nd Generation
+  * ISDV4 4809, 481a 4822, 4824, 484c, 5010
+  * ISDV4 104, 10E, 117, 124, 4814, 5013, 5014, 503E, 503F, 5048, 5044
+  * USB Graphire
+  * Cintiq Pro 13, 16
+  * Second generation Intuos Pro M
+  * Second generation Intuos Pro L
+- verify source signatures
+
+-------------------------------------------------------------------
+Fri Jun  2 15:11:10 UTC 2017 - msuchanek@suse.com
+
+- Build wacom udev rules (boo#1041714)
+  fixes libinput error: libinput bug: Device 'Wacom BambooPT 2FG Small Pad'
+  does not meet tablet criteria. Ignoring this device.
+
+-------------------------------------------------------------------
+Tue Jan 31 12:02:46 UTC 2017 - adrien.plazas@suse.com
+
+- Update to version 0.23
+  + New devices:
+    - ISDV4 5040, MobileStudio Pro
+  + The 22HD(T) is now marked as having strip modes
+- Changes from version 0.22
+  + New API: libwacom_get_paired_device()
+  + The EKR has the modes enabled now
+  + Fixes to the show-svg-image tool
+- Changes from version 0.21
+  + New devices:
+    - MTE-450 "Bamboo", Lenovo ThinkPad Tablet 10
+  + Layout fixes for the Express Key Remote, Intuos series
+- Changes from version 0.20
+  + New devices: "One by wacom"
+  + Layout fixes, especially for the Express Key Remote
+- Changes from version 0.19
+  + New devices:
+    - DTK-1651, ISDv4 0x504a
+  + Quirk added to prevent udev tagging HUION Consumer Control devices as
+    tablets
+- Changes from version 0.18
+  + Renamed ".tablet" files for Bamboo devices
+  + Modified user-visible names of Bamboo devices
+    - "Wacom Bamboo 16FG 4x5" -> "Wacom Bamboo Capture"
+    - "Wacom Bamboo 2FG 4x5" -> "Wacom Bamboo (2FG)"
+    - "Wacom Bamboo 2FG 6x8" -> "Wacom Bamboo Fun medium (2FG)"
+    - "Wacom Bamboo 2FG" -> "Wacom Bamboo Touch (2FG)"
+    - "Wacom Bamboo Craft" -> "Wacom Bamboo Fun small (2FG)"
+    - "Wacom Bamboo Pen" -> "Wacom Bamboo Pen small"
+  + New devices:
+    - Missing gen-1 Bamboo (0xd5)
+    - Missing gen-2.5 Bamboos (0xd6, 0xd7, 0xd8, 0xd9, 0xda, 0xdb)
+    - Missing gen-3 Bamboos (0xdc, 0xdd, 0dxf)
+- Changes from version 0.17
+  + New devices:
+    - Cintiq Companion 2 (DTH-1310)
+    - ExpressKey Remote
+  + New WacomClass: WCLASS_REMOTE
+- Changes from version 0.16
+  + Data files for Intuos and Intuos 2 series added
+  + New stylus ID 0x8e2
+
+-------------------------------------------------------------------
+Sun Aug 16 14:34:15 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.15
+  * Support added for ISDv4 0x4800 (Dell Venue 10 5050 Android tablet)
+  * Bustype i2c is now supported
+- Changes from version 0.14
+  * Support added for Cintiq 13HD touch
+  * Fixes to the udev rule set to tag uinput devices correctly too
+  * Integrated tabled are not marked as ID_INPUT_TOUCHPAD anymore now
+
+-------------------------------------------------------------------
+Sat Apr 25 07:30:56 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.13:
+  + New devices:
+    - DTU-1141.
+    - Huion H610 Pro.
+  + Several memory leak fixes.
+  + Added libwacom_match_get_name() to allow data-file matching on
+    the name as well as the pid/vid.
+
+-------------------------------------------------------------------
+Fri Mar 27 16:07:47 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 0.12:
+  + Added libwacom_stylus_has_wheel() for relative wheel detection.
+  + Added libwacom_stylus_get_axes() for a list of supported axes.
+  + New devices:
+    - Cintiq 27QHD, Cintiq 27QHD Touch.
+    - DTU-1031X.
+    - Intuos Pen Medium.
+  + Reworked udev rules:
+    - be more restrictive when to set ID_INPUT_TOUCHPAD.
+    - unset ID_INPUT_JOYSTICK on tablet devices.
+    - tag the Pad device as ID_INPUT_TABLET_PAD.
+
+-------------------------------------------------------------------
+Wed Jan 28 09:47:02 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 0.11:
+  + Better detection of wireless tablets on kernels 3.18.
+  + New devices: Cintiq Companion.
+
+-------------------------------------------------------------------
+Sat Aug 23 21:19:55 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.10:
+  + Fixed bus detection of Bluetooth tablets on kernels 3.14 and
+    later.
+  + New devices: ISDV4 0x12C, 116, 4004, 5000, 5002.
+
+-------------------------------------------------------------------
+Sat Mar  8 13:14:07 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 0.9:
+  + Add support for TouchSwitch keyword.
+  + New devices:
+    - Intuos series.
+    - Pen&Touch (2nd gen).
+    - DTU-1031.
+    - Cintiq Companion Hybri.
+
+-------------------------------------------------------------------
+Thu Oct 10 10:51:40 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.8 (bnc#845267):
+  + New devices:
+    - Cintiq 13HD, 22HD touch.
+    - DTH-2242, DTU-1931.
+    - ISDv4 EC, ED, 10F.
+    - Intuos Pro.
+
+-------------------------------------------------------------------
+Tue Apr 16 08:32:30 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.7.1:
+  + New devices: ISDv4 10d.
+  + Better checks to prevent bad databases.
+
+-------------------------------------------------------------------
+Tue Jan  8 21:38:45 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.7:
+  + New devices:
+    - Cintiq 22HD, 24HD touch,
+    - ISDv4 E5, 100, 101
+  + Support for SVG layouts of the tablets
+  + New APIs for:
+    - list status LEDs
+    - list integration flags (differ between builtin and
+      screen-tablets)
+
+-------------------------------------------------------------------
+Fri Nov  9 19:16:34 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.6.1:
+  + More/corrected metadata for:
+    - Cintiq 22HD, 24HD, 24HD touch.
+    - DTI 520.
+    - ISDv4 E5, 100, 101.
+
+-------------------------------------------------------------------
+Sat Jul 14 07:33:49 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 0.6:
+  + More metadata for:
+    - NTrig tablet PC
+    - ISDv4 0x93, 0x90, 0xED, 0xEF
+    - Bamboo Pen, Fun, Craft, Touch
+  + Support for debugging with uinput devices.
+
+-------------------------------------------------------------------
+Mon May 14 11:17:29 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.5:
+  + Add support for multiple match statements
+  + Add support for bluetotooth devices
+  + Add libwacom-list-local-devices helper tool
+  + Add list-devices helper tool
+  + Rename udev generation tool to generate-udev-rules
+  + More metadata description updates
+- Create a tools subpackage for the new libwacom-list-local-devices
+  helper tool.
+
+-------------------------------------------------------------------
+Tue Mar 27 10:57:26 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.4:
+  + More metadata for:
+    - Intuos4 WL
+    - Bamboo One
+    - Intuos5 series
+  + Don't fail to create a WacomDevice for Touch devices
+  + Add API to access all items in the database
+  + Add helper tool to generate udev rules from the database
+
+-------------------------------------------------------------------
+Tue Feb  7 15:40:45 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.3:
+  + Loads of new and updated tablet definition files
+  + Add and correct information about styli
+  + Update wacom.example with loads of documentation about adding
+    new tablet definitions
+  + Handle Puck device type
+  + Support enumerating touchstrips, touchrings and buttons
+  + Get device name from the kernel for generic tablets
+  + Add support for the WACf004 serial tablet
+  + Build fixes (exported symbols, soname)
+- Remove xz BuildRequires now that it comes for free in the build
+  system.
+- Rename libwacom0 subpackage to libwacom2, following upstream
+  soversion change.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:30:10 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 0.2:
+  + Don't add devices that lack DeviceMatch
+  + Get whether a device is builtin from udev
+  + Fix definitions for Reversible property
+  + Add definition for Cintiq 21UX2
+  + Add test for serial devices
+  + Fix Intuos4 styli's number of buttons
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Thu Jan  5 07:49:30 UTC 2012 - vuntz@opensuse.org
+
+- Initial package (version 0.1).
+

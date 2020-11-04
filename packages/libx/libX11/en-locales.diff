@@ -1,0 +1,11 @@
+--- ../libX11-1.1.4.orig//nls/locale.alias.pre	2008-05-09 15:11:32.000000000 +0000
++++ nls/locale.alias.pre	2008-05-09 15:38:41.000000000 +0000
+@@ -309,7 +320,8 @@
+ en_CA.ISO-8859-1:				en_CA.ISO8859-1
+ en_CA.ISO_8859-1:				en_CA.ISO8859-1
+ en_CA.utf8:					en_CA.UTF-8
++en_DK.utf8:					en_DK.UTF-8
+ en_DL.utf8:					en_DL.UTF-8
+ en_GB:						en_GB.ISO8859-1
+ en_GB.88591:					en_GB.ISO8859-1
+ en_GB.88591.en:					en_GB.ISO8859-1

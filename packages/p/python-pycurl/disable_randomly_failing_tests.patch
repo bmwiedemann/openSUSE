@@ -1,0 +1,58 @@
+Index: pycurl-7.43.0.2/tests/memory_mgmt_test.py
+===================================================================
+--- pycurl-7.43.0.2.orig/tests/memory_mgmt_test.py	2018-06-02 06:29:03.000000000 +0200
++++ pycurl-7.43.0.2/tests/memory_mgmt_test.py	2018-11-02 15:06:49.831677767 +0100
+@@ -9,6 +9,7 @@ import unittest
+ import gc
+ import flaky
+ from . import util
++import nose
+ 
+ debug = False
+ 
+@@ -17,6 +18,7 @@ if sys.platform == 'win32':
+ else:
+     devnull = '/dev/null'
+ 
++@nose.plugins.attrib.attr('occasionally_failing')
+ @flaky.flaky(max_runs=3)
+ class MemoryMgmtTest(unittest.TestCase):
+     def maybe_enable_debug(self):
+Index: pycurl-7.43.0.2/tests/multi_memory_mgmt_test.py
+===================================================================
+--- pycurl-7.43.0.2.orig/tests/multi_memory_mgmt_test.py	2018-05-22 05:44:40.000000000 +0200
++++ pycurl-7.43.0.2/tests/multi_memory_mgmt_test.py	2018-11-02 15:07:13.703835912 +0100
+@@ -7,11 +7,13 @@ import unittest
+ import gc
+ import flaky
+ import weakref
++import nose
+ 
+ from . import util
+ 
+ debug = False
+ 
++@nose.plugins.attrib.attr('occasionally_failing')
+ @flaky.flaky(max_runs=3)
+ class MultiMemoryMgmtTest(unittest.TestCase):
+     def test_opensocketfunction_collection(self):
+Index: pycurl-7.43.0.2/tests/multi_timer_test.py
+===================================================================
+--- pycurl-7.43.0.2.orig/tests/multi_timer_test.py	2018-06-02 06:14:57.000000000 +0200
++++ pycurl-7.43.0.2/tests/multi_timer_test.py	2018-11-02 15:07:26.263919115 +0100
+@@ -5,6 +5,7 @@
+ from . import localhost
+ import pycurl
+ import unittest
++import nose
+ 
+ from . import appmanager
+ from . import util
+@@ -23,6 +24,7 @@ def teardown_module(mod):
+     teardown_module_2(mod)
+     teardown_module_1(mod)
+ 
++@nose.plugins.attrib.attr('occasionally_failing')
+ class MultiSocketTest(unittest.TestCase):
+     def test_multi_timer(self):
+         urls = [

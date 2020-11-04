@@ -1,0 +1,12 @@
+Index: wcmgr.c
+===================================================================
+--- wcmgr.c.orig
++++ wcmgr.c
+@@ -848,6 +848,7 @@ void import_cache()
+             exit(1);
+          }
+       }
++      fclose(in_fp);
+    }
+    else fprintf(stderr,"Error: File not found: %s\n",out_file);
+    dns_db->close(dns_db,0);

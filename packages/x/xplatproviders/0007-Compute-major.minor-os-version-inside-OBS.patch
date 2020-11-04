@@ -1,0 +1,27 @@
+From efe0e3bcf3f0e09c134312e1b6707f4f01f8f360 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 26 Sep 2011 11:06:57 +0200
+Subject: [PATCH 1/2] Compute major.minor os version inside OBS
+
+---
+ build/Makefile.pf.Linux |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/build/Makefile.pf.Linux b/build/Makefile.pf.Linux
+index 5199171..3906851 100644
+--- a/build/Makefile.pf.Linux
++++ b/build/Makefile.pf.Linux
+@@ -82,8 +82,8 @@ else
+ # Open Build Service
+ ifneq (,$(SUSE_VERSION))
+ 	PF_DISTRO=SUSE
+-	PF_MAJOR=$(shell echo $[$SUSE_VERSION / 100])
+-	PF_MINOR=$(shell echo $[$SUSE_VERSION - $[$PF_MAJOR * 100]])
++	PF_MAJOR=$(shell echo $$(($(SUSE_VERSION) / 100)))
++	PF_MINOR=$(shell echo $$(( $$(($(SUSE_VERSION) - $$(($(PF_MAJOR) * 100)) )) / 10)) )
+ endif
+ endif
+ endif
+-- 
+1.7.6.1
+

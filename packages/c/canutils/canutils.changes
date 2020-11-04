@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Oct 29 09:03:15 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2020.04.02.g192 (4573e852f9)
+  * isotpsend: add support for blocking write flag
+  * add cansequence tool
+
+-------------------------------------------------------------------
+Tue Sep  1 10:09:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to version 2020.04.02.g119 (ea844bdc5e)
+  * Rename jcat et al to j1939cat
+  * j1939cat: add broadcast support
+
+-------------------------------------------------------------------
+Mon Aug 24 08:05:00 UTC 2020 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to version v2020.04.02
+  * jcat: provide errqueue support
+  * jcat: add repeat support
+  * Add uds output functionality
+  * cangw: add new command line option -X to handle CAN FD rules
+  * cangw: add CAN FD support
+- Drop 0001-fix-include-to-find-SIOCGSTAMP-with-latest-kernel.patch
+
+-------------------------------------------------------------------
+Mon Aug 26 08:48:53 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-fix-include-to-find-SIOCGSTAMP-with-latest-kernel.patch
+  to unbreak build with modern linux-glibc-devel.
+
+-------------------------------------------------------------------
+Sat Aug 25 06:41:34 UTC 2018 - jengelh@inai.de
+
+- Rename canutils-linuxcan to canutils
+
+-------------------------------------------------------------------
+Wed Aug 15 09:05:03 UTC 2018 - tuukka.pasanen@ilmi.fi
+
+- Update to official release 2018.02.0
+
+-------------------------------------------------------------------
+Mon Nov 21 23:43:48 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 0~g296) for build.opensuse.org

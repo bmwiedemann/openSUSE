@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Jun 12 11:47:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix floating point precission issue that made tests
+  fail depending on where the package is built
+  * fix-fp-issue.patch
+
+-------------------------------------------------------------------
+Wed May 20 10:25:48 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-fontPens

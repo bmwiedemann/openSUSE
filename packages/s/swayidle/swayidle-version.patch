@@ -1,0 +1,12 @@
+diff -urEbw swayidle-1.6/meson.build swayidle-1.6.new/meson.build
+--- swayidle-1.6/meson.build	2020-01-22 17:20:22.000000000 +0100
++++ swayidle-1.6.new/meson.build	2020-01-23 10:11:31.860055800 +0100
+@@ -1,7 +1,7 @@
+ project(
+ 	'swayidle',
+ 	'c',
+-	version: '1.5',
++	version: '1.6',
+ 	license: 'MIT',
+ 	meson_version: '>=0.48.0',
+ 	default_options: [

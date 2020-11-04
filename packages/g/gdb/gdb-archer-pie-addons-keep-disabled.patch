@@ -1,0 +1,102 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-archer-pie-addons-keep-disabled.patch
+
+;;=push+jan: Breakpoints disabling matching should not be based on address.
+
+diff --git a/gdb/breakpoint.c b/gdb/breakpoint.c
+--- a/gdb/breakpoint.c
++++ b/gdb/breakpoint.c
+@@ -15396,6 +15396,51 @@ static struct cmd_list_element *enablebreaklist = NULL;
+ 
+ cmd_list_element *commands_cmd_element = nullptr;
+ 
++void
++breakpoints_relocate (struct objfile *objfile, struct section_offsets *delta)
++{
++  struct bp_location *bl, **blp_tmp;
++  int changed = 0;
++
++  gdb_assert (objfile->separate_debug_objfile_backlink == NULL);
++
++  ALL_BP_LOCATIONS (bl, blp_tmp)
++    {
++      struct obj_section *osect;
++
++      /* BL->SECTION can be correctly NULL for breakpoints with multiple
++         locations expanded through symtab.  */
++
++      ALL_OBJFILE_OSECTIONS (objfile, osect)
++	{
++	  CORE_ADDR relocated_address;
++	  CORE_ADDR delta_offset;
++
++	  delta_offset = ANOFFSET (delta, osect->the_bfd_section->index);
++	  if (delta_offset == 0)
++	    continue;
++	  relocated_address = bl->address + delta_offset;
++
++	  if (obj_section_addr (osect) <= relocated_address
++	      && relocated_address < obj_section_endaddr (osect))
++	    {
++	      if (bl->inserted)
++		remove_breakpoint (bl);
++
++	      bl->address += delta_offset;
++	      bl->requested_address += delta_offset;
++
++	      changed = 1;
++	    }
++	}
++    }
++
++  if (changed)
++    std::sort (bp_locations, bp_locations + bp_locations_count,
++	       bp_location_is_less_than);
++}
++
++void _initialize_breakpoint (void);
+ void
+ _initialize_breakpoint (void)
+ {
+diff --git a/gdb/breakpoint.h b/gdb/breakpoint.h
+--- a/gdb/breakpoint.h
++++ b/gdb/breakpoint.h
+@@ -1696,6 +1696,9 @@ extern const char *ep_parse_optional_if_clause (const char **arg);
+    UIOUT iff debugging multiple threads.  */
+ extern void maybe_print_thread_hit_breakpoint (struct ui_out *uiout);
+ 
++extern void breakpoints_relocate (struct objfile *objfile,
++				  struct section_offsets *delta);
++
+ /* Print the specified breakpoint.  */
+ extern void print_breakpoint (breakpoint *bp);
+ 
+diff --git a/gdb/objfiles.c b/gdb/objfiles.c
+--- a/gdb/objfiles.c
++++ b/gdb/objfiles.c
+@@ -816,6 +816,11 @@ objfile_relocate1 (struct objfile *objfile,
+ 				obj_section_addr (s));
+     }
+ 
++  /* Final call of breakpoint_re_set can keep breakpoint locations disabled if
++     their addresses match.  */
++  if (objfile->separate_debug_objfile_backlink == NULL)
++    breakpoints_relocate (objfile, delta);
++
+   /* Data changed.  */
+   return 1;
+ }
+diff --git a/gdb/value.c b/gdb/value.c
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -2840,7 +2840,7 @@ value_static_field (struct type *type, int fieldno)
+     case FIELD_LOC_KIND_PHYSADDR:
+       retval = value_at_lazy (TYPE_FIELD_TYPE (type, fieldno),
+ 			      TYPE_FIELD_STATIC_PHYSADDR (type, fieldno)
+-			      + (TYPE_OBJFILE (type) == NULL ? 0 : TYPE_OBJFILE (type)->section_offsets[SECT_OFF_TEXT (TYPE_OBJFILE (type))]));
++			      + (TYPE_OBJFILE (type) == NULL ? 0 : ANOFFSET (TYPE_OBJFILE (type)->section_offsets, SECT_OFF_TEXT (TYPE_OBJFILE (type)))));
+       break;
+     case FIELD_LOC_KIND_PHYSNAME:
+     {

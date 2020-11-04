@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Wed May 20 08:00:40 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Packaging cleanup:
+  * Use modern macros
+  * Use latests SPDX style of license strings
+
+-------------------------------------------------------------------
+Fri Feb  9 10:03:53 UTC 2018 - mpluskal@suse.com
+
+- Use pkgconfig style dependencies
+- Mark license as such
+
+-------------------------------------------------------------------
+Mon Nov 13 22:01:34 UTC 2017 - jengelh@inai.de
+
+- Remove bias from descriptions.
+
+-------------------------------------------------------------------
+Sat Nov 11 18:35:11 UTC 2017 - mpluskal@suse.com
+
+- Use cmake for building
+- Run tests during build
+
+-------------------------------------------------------------------
+Sat Nov 11 15:56:14 UTC 2017 - aavindraa@gmail.com
+
+- update to 1.0.4:
+  * Added CMake build support
+  * Assorted minor updates
+- clean with spec-cleaner
+- remove patches
+  * lzop-1.03-gcc5_ppc64.patch
+  * lzop-1.03-gcc6.patch
+
+-------------------------------------------------------------------
+Fri Apr  1 17:48:00 UTC 2016 - normand@linux.vnet.ibm.com
+
+- new lzop-1.03-gcc5_ppc64.patch:
+  use static inlines as the external inline definition has
+  changed with gcc5
+
+-------------------------------------------------------------------
+Wed Feb 10 15:14:14 UTC 2016 - rguenther@suse.com
+
+- Add lzop-1.03-gcc6.patch to fix undefined behavior in its ACC test
+  uncovered by GCC 6.
+
+-------------------------------------------------------------------
+Fri Mar 13 13:06:40 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+- Cleanup dependencies
+- Remove _DATE_ and _TIME_ usage
+
+-------------------------------------------------------------------
+Tue Jan  3 22:25:10 UTC 2012 - joop.boonen@opensuse.org
+
+- Build lzop version 1.03 
+
+-------------------------------------------------------------------
+Wed Jun  6 00:00:00 UTC 2007 - guru@unixtech.be
+
+- update to 1.02rc1
+
+-------------------------------------------------------------------
+Thu May 31 00:00:00 UTC 2007 - guru@unixtech.be
+
+- initial submission to openSUSE Build Service
+- patch to compile against lzo 2
+
+-------------------------------------------------------------------

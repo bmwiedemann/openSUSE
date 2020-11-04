@@ -1,0 +1,19 @@
+Index: amavisd.conf
+===================================================================
+--- a/amavisd.conf.orig	2012-08-30 17:00:16.000000000 +0200
++++ b/amavisd.conf	2013-10-03 17:55:16.010474859 +0200
+@@ -376,10 +376,10 @@ $banned_filename_re = new_RE(
+ # settings for the SAVAPI3.conf: ArchiveScan=1, HeurLevel=2, MailboxScan=1
+ 
+ # ### http://www.clamav.net/
+-# ['ClamAV-clamd',
+-#   \&ask_daemon, ["CONTSCAN {}\n", "/var/run/clamav/clamd.sock"],
+-#   qr/\bOK$/m, qr/\bFOUND$/m,
+-#   qr/^.*?: (?!Infected Archive)(.*) FOUND$/m ],
++['ClamAV-clamd',
++   \&ask_daemon, ["CONTSCAN {}\n", "/var/run/clamav/clamd-socket"],
++   qr/\bOK$/m, qr/\bFOUND$/m,
++   qr/^.*?: (?!Infected Archive)(.*) FOUND$/m ],
+ # # NOTE: run clamd under the same user as amavisd - or run it under its own
+ # #   uid such as clamav, add user clamav to the amavis group, and then add
+ # #   AllowSupplementaryGroups to clamd.conf;

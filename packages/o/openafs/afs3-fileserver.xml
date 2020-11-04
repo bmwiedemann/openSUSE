@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>afs3-fileserver</short>
+  <description>OpenAFS file server</description>
+  <port protocol="udp" port="7000"/>
+</service>

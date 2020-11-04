@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Nov 20 15:41:09 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 0.9.0+git.0.1b15280:
+  * Release version 0.9.0
+  * doc: add missing samba_data_tool_path.xml(.in) to EXTRA_DIST
+  * doc: explain how to force password reset
+  * Do not use arcfour-hmac-md5 when discovering the salt
+  * Fix for issue found by Coverity
+  * adenroll: use only enctypes permitted by Kerberos config
+  * adenroll: add adcli_enroll_get_permitted_keytab_enctypes with tests
+  * adconn: add adcli_conn_set_krb5_context
+  * adenroll: make sure only allowed enctypes are used in FIPS mode
+  * tools: computer - remove errx from parse_option
+
+-------------------------------------------------------------------
+Tue Oct  2 09:41:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Make doc noarch and stop requiring packages that are not
+  technically needed.
+
+-------------------------------------------------------------------
+Mon Oct  1 15:06:01 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 21 14:28:21 UTC 2018 - ckowalczyk@suse.com
+
+- Initial build.
+

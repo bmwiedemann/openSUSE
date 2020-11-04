@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Aug  5 15:27:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.10.1
+  * allow accepting "ms[0-9]+" game nums
+  * add single\_deal\_args\_parse
+  * better PySol compat: fix reset()
+  * better PySol compat: str2int+int2str
+
+-------------------------------------------------------------------
+Sat Mar 14 14:59:47 UTC 2020 - malcolmlewis@opensuse.org
+
+- Initial build at version 0.8.8.
+

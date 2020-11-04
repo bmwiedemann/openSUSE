@@ -1,0 +1,11 @@
+--- kompose/Makefile.orig	2018-07-09 14:27:48.356008199 +0200
++++ kompose/Makefile	2018-07-09 14:28:02.963940044 +0200
+@@ -15,7 +15,7 @@
+ 
+ 
+ GITCOMMIT := $(shell git rev-parse --short HEAD)
+-BUILD_FLAGS := -ldflags="-w -X github.com/kubernetes/kompose/pkg/version.GITCOMMIT=$(GITCOMMIT)"
++BUILD_FLAGS := -buildmode=pie -ldflags="-w -X github.com/kubernetes/kompose/pkg/version.GITCOMMIT=$(GITCOMMIT)"
+ PKGS = $(shell glide novendor)
+ TEST_IMAGE := kompose/tests:latest
+ 

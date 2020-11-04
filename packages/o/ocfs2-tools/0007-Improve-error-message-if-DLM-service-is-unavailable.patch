@@ -1,0 +1,28 @@
+From 15891da74943b0f878b486741ff67507b9bd6177 Mon Sep 17 00:00:00 2001
+From: Goldwyn Rodrigues <rgoldwyn@suse.com>
+Date: Fri, 23 May 2014 11:41:24 -0500
+Subject: [PATCH 7/7] Improve error message if DLM service is unavailable
+
+o2dlm_initialize_fsdlm to return O2DLM_ET_SERVICE_UNAVAILABLE if
+DLM service is not running (ENOTCONN).
+---
+ libo2dlm/o2dlm.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libo2dlm/o2dlm.c b/libo2dlm/o2dlm.c
+index dbc642b..c0fbb21 100644
+--- a/libo2dlm/o2dlm.c
++++ b/libo2dlm/o2dlm.c
+@@ -1035,6 +1035,9 @@ static errcode_t o2dlm_initialize_fsdlm(const char *domain_name,
+ 			case EPERM:
+ 				ret = O2DLM_ET_BAD_DOMAIN_DIR;
+ 				break;
++			case ENOTCONN:
++				ret = O2DLM_ET_SERVICE_UNAVAILABLE;
++				break;
+ 			default:
+ 				ret = O2DLM_ET_INTERNAL_FAILURE;
+ 				break;
+-- 
+1.8.4.5
+

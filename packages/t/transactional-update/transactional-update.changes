@@ -1,0 +1,665 @@
+-------------------------------------------------------------------
+Fri Oct 30 08:45:46 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.28.2
+  - SELinux: Exclude security.selinux attribute from rsyncing (again)
+
+-------------------------------------------------------------------
+Thu Oct 29 15:05:24 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.28.1
+  - SELinux: Fixed changing the wrong grub configuration file
+  - SELinux: Move /.autorelabel file to writeable location
+
+-------------------------------------------------------------------
+Thu Oct 22 12:20:38 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.28
+  - Add 'setup-selinux' command for easy setup of a SELinux system
+  - Allow complex commands for the 'run' command
+  - SELinux: Fix /etc / overlay labeling
+
+-------------------------------------------------------------------
+Wed Oct 14 09:32:15 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.27
+  - Add support for network systemd-resolvd network connections in t-u
+    environment
+  - Mount /var/lib/ca-certificates read-write to prevent SELinux error
+  - Prevent calling transactional-update from within transactional-update
+
+-------------------------------------------------------------------
+Sat Sep 26 14:50:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.26
+  - Fix broken sync for second snapshot [boo#1176989]
+  - Add new options to allow separate cleanup of snapshots and overlays
+  - Check for existence of inotifywait before using it
+  - Check that mount options don't exceed maximum length
+
+-------------------------------------------------------------------
+Mon Sep 21 16:17:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.25.1
+  - Fix inotify watcher setup
+  - Use log_{info,error} for more messages to avoid messing up Salt logs
+
+-------------------------------------------------------------------
+Mon Sep 21 14:09:41 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.25
+  - Reduce number of overlays:
+    Instead of using transparent overlays for all previous layers only add the
+    previous snapshot's overlay; this will greatly reduce the number of
+    overlays while still making sure that /etc changes in the running system
+    will be visible in the next snapshot
+  - When using --drop-if-no-change synchronize potential /etc changes with
+    running system
+  - Exclude all non-root-fs mounts from inotify watcher
+
+-------------------------------------------------------------------
+Wed Aug 12 10:06:11 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.24.1
+  - SELinux: adjust labels for etc, fstab and grub.cfg
+
+-------------------------------------------------------------------
+Thu Aug  6 08:32:11 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.24
+  - Add partial SELinux support
+
+-------------------------------------------------------------------
+Fri Jul 31 16:11:04 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.23
+  - Add "run" command to be able to execute a single command in a new snapshot
+  - Add "--drop-if-no-change" option to discard snapshots if no changes were
+    perfomed (BETA, required for Salt integration)
+  - Removed previous CaaSP Salt support (gh#openSUSE/transactional-update#33)
+  - Avoid "file not found" message on systems without /var subvol
+
+-------------------------------------------------------------------
+Thu Jul 23 13:17:47 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused attr requires
+- Change bc to file requires
+
+-------------------------------------------------------------------
+Tue Jun 23 15:39:12 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.22
+  - Use pkgconf to determine installation paths
+  - Enable SSL connections in update shell
+    [boo#1149131] & [boo#1133891]
+
+-------------------------------------------------------------------
+Mon Apr  6 08:02:55 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Version 2.21.1
+  - Rework error messages on failing umount [boo#1168389]
+
+-------------------------------------------------------------------
+Mon Mar 30 12:09:34 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.21
+  - Use slave mounts for /proc, /sys & /dev
+
+-------------------------------------------------------------------
+Thu Mar 26 08:21:24 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.4
+  - Mount efivarfs on EFI systems to make sure the bootloader will be installed
+    correctly [boo#1162320]
+  - Fix removal of existing overlay directories
+
+-------------------------------------------------------------------
+Fri Mar 13 12:10:02 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Add dependencies to btrfsprogs, zypper and snapper - most of the
+  functionality is not usable if those applications are not
+  installed. [boo#1166502]
+
+-------------------------------------------------------------------
+Tue Mar  3 16:34:26 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.3
+  - Reintroduce compatibility with RPM < 4.15 for inclusion in
+    SLE / Leap 15.2
+  - Prepare for removal of /var/lib/alternatives [jsc#SLE-9101]
+
+-------------------------------------------------------------------
+Wed Feb 26 09:58:23 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.2
+  - Use full names for zypper options [bsc#1164543]
+  - Ignore /var/lib/rpm in shadowed file output
+  - Optimize create-dirs-from-rpmdb
+
+-------------------------------------------------------------------
+Tue Jan  7 10:52:39 UTC 2020 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20.1
+  - Add missing documentation about --continue option
+  - Avoid error message about missing fstab file on first snapshot creation.
+    [boo#1160213]
+
+-------------------------------------------------------------------
+Fri Nov  8 10:27:10 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.20
+  - Add the option `--continue` to extend an existing snapshot. This can be
+    used to perform multiple operations before rebooting into the new state.
+    [gh#openSUSE/transactional-update#16]
+  - Make sure the dracut service to print warnings on /etc overlay conflicts
+    also runs in the pre-made images.
+  - Add "none" reboot method
+  - Remove conflicting overlay artifacts in case an existing overlay directory
+    will be reused
+
+-------------------------------------------------------------------
+Wed Sep 25 15:13:35 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.17
+  - Provide network in shell on systems where resolv.conf is pointing to /run
+    directly [boo#1151081]
+  - Print new snapshot number at the end
+  - Always mount /root subvolume when using shell command to preserve history
+
+-------------------------------------------------------------------
+Mon Sep  9 19:36:59 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.16
+  - Use default command if options, but no command was given [boo#1146116]
+  - Make sure only one process appears in `ps` output [boo#1111897]
+  - Move update check: If a new repository is added (and
+    ZYPPER_AUTO_IMPORT_KEYS is set) adding the new repository key won't fail
+    any more
+  - Avoid unnecessary snapshots / reboots by detecting zypper operations
+    without changes more reliably (e.g. when installing an already installed
+    package)
+  - Update the manpage accordingly
+  - Bugfixes:
+    - Ignore commented lines in fstab when checking for shadowed files
+    - Avoid warning when copying network config
+- Remove Perl dependency
+- Building documentation requires Python 3 now
+
+-------------------------------------------------------------------
+Wed Jun  5 15:15:09 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.15
+  - Move description of interactiveness [boo#1132438]
+  - Enable network during update [boo#1137890]
+  - Add compatibilty with new overlayfs versions [boo#1140057]
+  - Allow updates of the bootloader on EFI systems [boo#1139015]
+  - Add support for /boot/writable [boo#1138725]
+
+-------------------------------------------------------------------
+Mon Apr 29 12:20:51 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.14.2
+  - Prevent unnecessary error message on systems not installed with
+    YaST (e.g. KIWI)
+
+-------------------------------------------------------------------
+Wed Apr 17 08:37:18 CEST 2019 - kukuk@suse.de
+
+- Add requires for bc, needed for some calculations
+
+-------------------------------------------------------------------
+Mon Mar 25 14:53:12 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.14.1
+  - Improve non-root fs changes checker based on feedback
+  - Disable snapper's zypper plugin during transactional-update run
+- Allow parallel installation with snapper's zypper plugin (useful on
+  read-write systems).
+
+-------------------------------------------------------------------
+Fri Mar 15 10:45:52 UTC 2019 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.14
+  - Warn user if contents of /var have been changed during update
+  - Noteworthy: swapped position of upperdir and lowerdir in fstab for better
+    readability
+  - Major update to the transactional-update guide
+
+-------------------------------------------------------------------
+Mon Mar  4 10:40:21 CET 2019 - kukuk@suse.de
+
+- Update to version 2.13.2
+  - add hooks for telemetrics
+
+-------------------------------------------------------------------
+Thu Feb 14 16:26:54 UTC 2019 - iforster@suse.com
+
+- Update to version 2.13.1
+  - Bugfix: Clean up empty /etc snapshot directories again
+- Use official release files from GitHub for building
+
+-------------------------------------------------------------------
+Thu Feb 14 12:14:47 UTC 2019 - iforster@suse.com
+
+- Update to version 2.13
+  - Fix a serious data loss problem (deleting all files in /etc
+    overlays) in case /var/lib/overlay/etc is not part of any
+    snapshot any more.
+  - Avoid error message in case a system has no /etc/fstab.sys
+
+-------------------------------------------------------------------
+Mon Jan 28 19:05:42 UTC 2019 - iforster@suse.com
+
+- Update to version 2.12
+  - Implements support for needs-restart (Fate#326451)
+  - Adds easy rollback to last known working snapshot by using "last"
+    as the snapshot number
+  - Migrate /etc/fstab.sys entires to /etc/fstab for systemd being
+    able to create mount units; this will prevent errors on unmount
+  - Remove implicit --no-allow-vendor-change - this option can be
+    configured in zypper's configuration file now
+  - Add support for mounting the /etc overlay file system as a systemd
+    unit in /etc/fstab on a read-only system (replacing /etc/fstab.sys
+    in the long run)
+  - Various bugfixes:
+    - Only remove /etc overlays on read-only root file systems
+      [boo#1122455]
+    - Disable "Persistent" flag in systemd timer unit to prevent
+      updates during or immediately after the boot phase
+    - Don't set global zypper options during migration - this is not
+      supported by the migration plugin
+    - Fix error handling when interrupting while rsync is running
+    - Filter out security.selinux attributes during rsync
+
+-------------------------------------------------------------------
+Sat Nov 17 09:06:44 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Mon Nov 12 14:27:24 UTC 2018 - iforster@suse.com
+
+- Update to version 2.11
+  - Update man page to explain new /etc overlay handling
+  - Add special handling for migrating away from old overlay directory
+  - Read default update method for systemd service from config file
+- Add package "transactional-update-zypp-config" to prevent accidental
+  transactional-update uninstallation on transactional systems
+  (boo#1111319)
+- Use "up" for systemd service on non-rolling release distributions
+  (boo#1111321)
+
+-------------------------------------------------------------------
+Thu Oct  4 12:42:35 UTC 2018 - iforster@suse.com
+
+- Update to version 2.10
+  - Introduce /etc overlays
+    - Each root file system snapshot now has a dedicated /etc overlay in
+      /var/lib/snapshots/<snapshot number>/etc
+    - Changes in older snapshots will be visible in newer snapshots (if
+      the file hasn't been changed in both snapshots), but not the other
+      way around; this makes it possible to roll back to a previous
+      snapshot even if the configuration is broken
+    - The /etc state of the oldest active snapshot will be synchronized
+      into the new snapshot to prevent ever growing overlays
+    - Removed creation of /etc backup snapshots
+    - Removed complex overlayfs cleanup handling during dracut early boot;
+      only thing left is to output a warning if files have been changed
+      in old and new overlay after snapshot creation
+    - Unused overlays will be removed during "cleanup" operation
+  - Add compatibility with snapper >= 0.7.0
+  - Correctly detect BTRFS ID when using multiple snapper configurations
+  - Fix disappearing prompt in "shell" command when application was updated
+  - Prevent accidental rollback on fast reboots (boo#1111786)
+  - Use zypper attribute packages-to-change if available (boo#1105992 &
+    boo#1097619)
+  - Add kexec as reboot alternative
+  - Added explicit --with-doc / --without-doc build configure opttions for
+    enforcing or excluding documentation build
+  - Removed precompiled documentation (boo#1088676)
+  - Added more dependency checks to configure script
+  - Small improvements to documentation
+  - Restored compatibility with older rsync versions not supporting the -x
+    filter
+  - Small bugfixes for cleanup in error situations
+  - Fix possible incorrect detection of snapshots numbers during cleanup
+  - Mention parent in snapshot description
+- Add dependencies for documentation build (boo#1088676)
+
+-------------------------------------------------------------------
+Mon Aug 20 15:09:44 UTC 2018 - iforster@suse.com
+
+- Update to version 2.6
+  - Add --interactive and --non-interactive options to change the default
+    interactivity for zypper calls. For previously non-interactive calls (e.g.
+    dup) these options makes it possible to pick the correct solution in case
+    of conflicts or make sure that a script will never be stuck at an input
+    prompt.
+  - Add kured reboot support
+  - Tries to clean up temporary files and mount points if transactional-update
+    quits unexpectedly
+  - Remove trancactional-update-helper (replaced by zypper options)
+  - Create /var/lib/zypp if not available (boo#1104452)
+  - Robustify parsing zypper output (boo#1105992)
+  - Various small fixes
+- Changed permissions of systemd script again
+
+-------------------------------------------------------------------
+Fri Jun 15 12:05:24 UTC 2018 - iforster@suse.com
+
+- Update to version 2.5
+  - Support for overlayfs attributes like trusted.overlay.opaque - this will
+    avoid disappearing configuration files on system updates
+  - Documentation update
+  - Only sync /etc if it's on an overlayfs mount
+  - Use correct locale for zypper - thus updating locale specific packages and
+    avoiding "empty" updates where transactional-update didn't see the change
+- Add dependency to attr
+- Fix permissions of systemd script
+
+-------------------------------------------------------------------
+Tue Jun  5 17:07:25 CEST 2018 - kukuk@suse.de
+
+- Update to version 2.4
+  - Bug fix release
+
+-------------------------------------------------------------------
+Mon May 14 16:16:08 UTC 2018 - iforster@suse.com
+
+- Update to version 2.3
+  - Reformat help text / synopsis
+  - More detailled output (use --quiet for less output)
+  - Log all error messages into log file
+  - Avoid potential lock file race condition on self update
+  - Accept package names with whitespace
+  - Don't wait for user input during self-update
+  - Fix broken error message output when creating new snapshot without reboot
+  - Fix erroneous mounting of stale grub mounts
+
+-------------------------------------------------------------------
+Wed May  2 08:39:18 UTC 2018 - iforster@suse.com
+
+- Update to version 2.2
+  - Fix security issue in self update [boo#1091316]
+  - Create dirs in /var more reliably by sorting the list
+- Rebuild initrd (needed since 2.0)
+
+-------------------------------------------------------------------
+Thu Apr 26 15:14:36 CEST 2018 - kukuk@suse.de
+
+- Update to version 2.1
+  - Cleanup the code cleaning up /etc
+
+-------------------------------------------------------------------
+Tue Apr 24 14:23:41 CEST 2018 - kukuk@suse.de
+
+- Update to version 2.0
+  - Create missing directories from rpm database during boot
+  - Merge /etc overlay with root subvolume during update
+
+-------------------------------------------------------------------
+Fri Apr 20 15:57:21 CEST 2018 - kukuk@suse.de
+
+- Update to version 1.29
+  - Implement self-update
+  - Disable optical media on dup
+  - Ignore certain zypper return codes
+
+-------------------------------------------------------------------
+Tue Apr  3 08:51:33 UTC 2018 - rbrown@suse.com
+
+- Add conflicts with snapper-zypp-plugin 
+
+-------------------------------------------------------------------
+Sat Mar 17 19:48:44 UTC 2018 - rbrown@suse.com
+
+- Require perl-HTML-Parser (needed since 1.26) [boo#1085764] 
+
+-------------------------------------------------------------------
+Mon Mar 12 13:19:49 CET 2018 - kukuk@suse.de
+
+- Update to version 1.28
+  - Adjust for latest grub2
+
+-------------------------------------------------------------------
+Tue Mar  6 13:32:38 CET 2018 - kukuk@suse.de
+
+- Update to version 1.27
+  - Fallback to snapper without dbus support if dbus fails
+  - Add workaround for update-alternatives
+  - Add support for /usr/etc/transactional-update.conf
+
+-------------------------------------------------------------------
+Fri Feb 23 12:01:53 UTC 2018 - kukuk@suse.com
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Wed Jan 31 16:14:14 CET 2018 - kukuk@suse.de
+
+- Update to version 1.26
+  - Auto accept repo keys config option
+  - Detect broken snapshots after abort
+  - Ignore user deleted snapshots
+  - Include all error messages in main log file
+  - Add configuration file
+  - Correctly implement migration of major OS versions
+  - Default reboot strategy is configuration option
+  - Salt option is deprecated
+
+-------------------------------------------------------------------
+Tue Jan  9 11:42:20 CET 2018 - kukuk@suse.de
+
+- Update to version 1.25
+  - preliminary SELinux support
+  - support for seperate /var subvolume
+
+-------------------------------------------------------------------
+Tue Dec  5 19:38:47 UTC 2017 - kukuk@suse.de
+
+- Update to version 1.24
+  - Don't save unused snapshots if we may delete them again.
+    Partly fixes [bsc#1071038]
+  - Copy passwd, group and shadow to /usr/etc if modified
+
+-------------------------------------------------------------------
+Fri Nov 17 14:54:33 CET 2017 - kukuk@suse.de
+
+- Update to version 1.23
+  - Fix re-registration in rollback case
+  - Fix problems with updating the grub2 bootloader
+  - Add support for migration of products with SCC/SMT
+  - Re-add support to re-write bootloader
+  [bsc#1068933]
+
+-------------------------------------------------------------------
+Tue Nov  7 16:34:28 CET 2017 - kukuk@suse.de
+
+- Update to version 1.22
+  - Rewrite cleanup code to be more aggressive
+
+-------------------------------------------------------------------
+Fri Oct 27 13:52:56 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.21
+  - Reset salt grains even if no update was found
+
+-------------------------------------------------------------------
+Wed Sep 13 11:24:28 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.20
+  - Improve documentation
+  - Add pkg update option
+
+-------------------------------------------------------------------
+Fri Jun 30 09:58:51 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.19
+  - Add 'shell' option for debugging and testing
+
+-------------------------------------------------------------------
+Wed Jun 28 14:13:27 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.18
+  - Auto accept product license in non-interactive mode
+
+
+-------------------------------------------------------------------
+Tue Jun 27 09:12:58 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.17
+  - copy modified bootloader config into snapshot
+  - unit file cleanup, no change of behavior
+
+-------------------------------------------------------------------
+Mon Jun 26 14:21:38 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.16
+  - internal changes [bsc#1045942]
+
+-------------------------------------------------------------------
+Thu Jun  1 15:56:56 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.15
+  - Rename option ptf to pkg
+  - Add option to set salt grains
+
+-------------------------------------------------------------------
+Fri Apr 21 11:24:54 CEST 2017 - kukuk@suse.de
+
+- Update to version 1.14
+  - Fix check of return values of commands in pipes [bsc#1034900]
+
+-------------------------------------------------------------------
+Tue Mar 21 10:35:17 CET 2017 - kukuk@suse.de
+
+- Update to version 1.12
+  - minor bug fixes
+
+-------------------------------------------------------------------
+Thu Mar  2 13:20:36 CET 2017 - kukuk@suse.de
+
+- Update to version 1.11
+  - use --no-allow-vendor-change with "zypper dup"
+  - update manual page
+
+-------------------------------------------------------------------
+Mon Feb 13 14:33:13 CET 2017 - kukuk@suse.de
+
+- Update to version 1.10
+  - implement and document rollback option
+
+-------------------------------------------------------------------
+Tue Feb  7 08:04:50 CET 2017 - kukuk@suse.de
+
+- Update to version 1.9
+  - fix umounting of special filesystems and subvolumes
+  - fix interactive installation of PTFs [bsc#1023026]
+  - fix dependencies of systemd service
+
+-------------------------------------------------------------------
+Wed Feb  1 17:51:32 CET 2017 - kukuk@suse.de
+
+- Add Requires for lsof and fuser
+
+-------------------------------------------------------------------
+Wed Feb  1 14:50:37 CET 2017 - kukuk@suse.de
+
+- Update to version 1.8
+  - fix references in html docu
+  - build kdump initrd if we build standard initrd, too
+
+-------------------------------------------------------------------
+Mon Jan 30 11:20:26 CET 2017 - kukuk@suse.de
+
+- Update to version 1.7
+  - build html docu, too
+
+-------------------------------------------------------------------
+Sun Jan 29 13:27:08 UTC 2017 - kukuk@suse.de
+
+- Update to version 1.6
+  - Add support for kdump [bsc#1018098]
+
+-------------------------------------------------------------------
+Thu Jan 19 10:24:13 CET 2017 - kukuk@suse.de
+
+- Update to version 1.5
+  - Install PTFs in interactive mode
+  - Sync state file between current and new snapshot
+
+-------------------------------------------------------------------
+Tue Jan 17 11:30:19 CET 2017 - kukuk@suse.de
+
+- Update to version 1.4
+  - Fix wrong error messages
+  - More debug output if umount fails
+  - Try a second time if umount fails
+
+-------------------------------------------------------------------
+Mon Dec 19 10:37:59 CET 2016 - kukuk@suse.de
+
+- Update to version 1.3
+  - Add initrd option
+
+-------------------------------------------------------------------
+Thu Dec 15 10:38:58 CET 2016 - kukuk@suse.de
+
+- Do some spec file cleanup
+
+-------------------------------------------------------------------
+Mon Dec 12 10:18:28 CET 2016 - kukuk@suse.de
+
+- Update to version 1.2
+  - suppport ro-subvolume with overlayfs
+
+-------------------------------------------------------------------
+Tue Dec  6 10:24:19 CET 2016 - kukuk@suse.de
+
+- Update to version 1.1
+  - bug fix release
+  - implement lock
+
+-------------------------------------------------------------------
+Wed Nov 23 16:36:20 CET 2016 - kukuk@suse.de
+
+- Update to version 1.0
+  - implement and document PTF options
+
+-------------------------------------------------------------------
+Mon Nov 21 13:35:50 CET 2016 - kukuk@suse.de
+
+- Update to version 0.99
+  - Support for rebootmgr
+  - Write real manual page
+
+-------------------------------------------------------------------
+Mon Nov 21 12:02:44 CET 2016 - kukuk@suse.de
+
+- Add empty directory 
+  /etc/systemd/system/transactional-update.timer.d/
+  so to make it easier to override transactional-update.timer 
+  entries.
+
+-------------------------------------------------------------------
+Thu Nov 17 15:53:00 CET 2016 - kukuk@suse.de
+
+- Update to version 0.90
+  - Finish normal options
+  - Implement support for PTFs
+
+-------------------------------------------------------------------
+Sun Nov  6 12:52:50 UTC 2016 - kukuk@suse.com
+
+- Disable restart on update for post install scripts
+
+-------------------------------------------------------------------
+Sun Nov  6 10:27:01 UTC 2016 - kukuk@suse.de
+
+- Implement activating the new snapshot as new root filesystem
+
+-------------------------------------------------------------------
+Fri Nov  4 14:19:49 CET 2016 - kukuk@suse.de
+
+- Initial version
+

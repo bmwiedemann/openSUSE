@@ -1,0 +1,194 @@
+From f48278682d9552670b7d5cb9e99a7e0a74bdd689 Mon Sep 17 00:00:00 2001
+From: Julen Landa Alustiza <jlanda@fedoraproject.org>
+Date: Fri, 7 Aug 2020 12:35:32 +0200
+Subject: [PATCH 1/9] Display real line numbers on pull request's diff view
+ Fixes #724
+
+---
+ pagure/templates/_repo_renderdiff.html |   1 -
+ pagure/ui/filters.py                   | 101 ++++++++++---------------
+ tests/test_pagure_flask_ui_fork.py     |  24 +++++-
+ 3 files changed, 64 insertions(+), 62 deletions(-)
+
+diff --git a/pagure/templates/_repo_renderdiff.html b/pagure/templates/_repo_renderdiff.html
+index a0922169..aa9a062e 100644
+--- a/pagure/templates/_repo_renderdiff.html
++++ b/pagure/templates/_repo_renderdiff.html
+@@ -164,7 +164,6 @@
+                       commit=patchstats["new_id"],
+                       prequest=pull_request,
+                       index=loop.index,
+-                      isprdiff=True,
+                       tree_id=diff_commits[0].tree.id)}}
+           </div>
+           {% endautoescape %}
+diff --git a/pagure/ui/filters.py b/pagure/ui/filters.py
+index 73799ed7..98b2741f 100644
+--- a/pagure/ui/filters.py
++++ b/pagure/ui/filters.py
+@@ -149,38 +149,33 @@ def format_loc(
+     for key in comments:
+         comments[key] = sorted(comments[key], key=lambda obj: obj.date_created)
+ 
+-    if not index:
+-        index = ""
++    if isinstance(filename, str) and six.PY2:
++        filename = filename.decode("UTF-8")
+ 
+     cnt = 1
+     for line in loc.split("\n"):
+-        if filename and commit:
+-            if isinstance(filename, str) and six.PY2:
+-                filename = filename.decode("UTF-8")
+-
+-            if isprdiff and (
+-                line.startswith("@@")
+-                or line.startswith("+")
+-                or line.startswith("-")
+-            ):
+-                if line.startswith("@@"):
+-                    output.append(
+-                        '<tr class="stretch-table-column bg-light"\
+-                    id="c-%(commit)s-%(cnt_lbl)s">'
+-                        % ({"cnt_lbl": cnt, "commit": commit})
+-                    )
+-                elif line.startswith("+"):
+-                    output.append(
+-                        '<tr class="stretch-table-column alert-success" \
+-                    id="c-%(commit)s-%(cnt_lbl)s">'
+-                        % ({"cnt_lbl": cnt, "commit": commit})
+-                    )
+-                elif line.startswith("-"):
+-                    output.append(
+-                        '<tr class="stretch-table-column alert-danger" \
+-                    id="c-%(commit)s-%(cnt_lbl)s">'
+-                        % ({"cnt_lbl": cnt, "commit": commit})
+-                    )
++        if line.startswith("@@"):
++            output.append(
++                '<tr class="stretch-table-column bg-light"\
++            id="c-%(commit)s-%(cnt_lbl)s">'
++                % ({"cnt_lbl": cnt, "commit": commit})
++            )
++            output.append(
++                '<td class="cell1"></td><td class="prc border-right"></td>'
++            )
++        else:
++            if line.startswith("+"):
++                output.append(
++                    '<tr class="stretch-table-column alert-success" \
++                id="c-%(commit)s-%(cnt_lbl)s">'
++                    % ({"cnt_lbl": cnt, "commit": commit})
++                )
++            elif line.startswith("-"):
++                output.append(
++                    '<tr class="stretch-table-column alert-danger" \
++                id="c-%(commit)s-%(cnt_lbl)s">'
++                    % ({"cnt_lbl": cnt, "commit": commit})
++                )
+             else:
+                 output.append(
+                     '<tr id="c-%(commit)s-%(cnt_lbl)s">'
+@@ -211,13 +206,6 @@ def format_loc(
+                     }
+                 )
+             )
+-        else:
+-            output.append(
+-                '<tr><td class="cell1">'
+-                '<a id="%(cnt)s" href="#%(cnt)s" data-line-number='
+-                '"%(cnt_lbl)s"></a></td>'
+-                % ({"cnt": "%s_%s" % (index, cnt), "cnt_lbl": cnt})
+-            )
+ 
+         cnt += 1
+         if not line:
+@@ -254,29 +242,24 @@ def format_loc(
+                         + 'title="Open changed file"></span></a>'
+                     )
+ 
+-        if isprdiff and (
+-            line.startswith("@@")
+-            or line.startswith("+")
+-            or line.startswith("-")
+-        ):
+-            if line.startswith("@@"):
+-                output.append(
+-                    '<td class="cell2 stretch-table-column">\
+-                    <pre class="text-muted"><code>%s</code></pre></td>'
+-                    % line
+-                )
+-            elif line.startswith("+"):
+-                output.append(
+-                    '<td class="cell2 stretch-table-column">\
+-                    <pre class="alert-success"><code>%s</code></pre></td>'
+-                    % escape(line)
+-                )
+-            elif line.startswith("-"):
+-                output.append(
+-                    '<td class="cell2 stretch-table-column">\
+-                    <pre class="alert-danger"><code>%s</code></pre></td>'
+-                    % escape(line)
+-                )
++        if line.startswith("@@"):
++            output.append(
++                '<td class="cell2 stretch-table-column">\
++                <pre class="text-muted"><code>%s</code></pre></td>'
++                % line
++            )
++        elif line.startswith("+"):
++            output.append(
++                '<td class="cell2 stretch-table-column">\
++                <pre class="alert-success"><code>%s</code></pre></td>'
++                % escape(line)
++            )
++        elif line.startswith("-"):
++            output.append(
++                '<td class="cell2 stretch-table-column">\
++                <pre class="alert-danger"><code>%s</code></pre></td>'
++                % escape(line)
++            )
+         else:
+             output.append(
+                 '<td class="cell2"><pre><code>%s</code></pre></td>'
+diff --git a/tests/test_pagure_flask_ui_fork.py b/tests/test_pagure_flask_ui_fork.py
+index 21ecd7df..8e8dce1c 100644
+--- a/tests/test_pagure_flask_ui_fork.py
++++ b/tests/test_pagure_flask_ui_fork.py
+@@ -302,11 +302,31 @@ class PagureFlaskForktests(tests.Modeltests):
+         )
+ 
+         self.assertIn(
+-            '<span class="btn btn-success btn-sm font-weight-bold disabled opacity-100">+3</span>',
++            '<span class="btn btn-success btn-sm font-weight-bold disabled'
++            ' opacity-100">+3</span>',
+             output_text,
+         )
+         self.assertIn(
+-            '<span class="btn btn-danger btn-sm font-weight-bold disabled opacity-100">-1</span>',
++            '<span class="btn btn-danger btn-sm font-weight-bold disabled '
++            'opacity-100">-1</span>',
++            output_text,
++        )
++
++        # Test if hunk headline is rendered without line numbers
++        self.assertIn(
++            '<td class="cell1"></td><td class="prc border-right"></td>\n<td '
++            'class="cell2 stretch-table-column">                <pre class='
++            '"text-muted"><code>@@ -1,2 +1,4 @@',
++            output_text,
++        )
++        # Tests if line number 1 is displayed
++        self.assertNotIn(
++            '<td class="cell1"><a id="_1__1" href="#_1__1" data-line-number="1" data-file-number="1"></a></td>',
++            output_text,
++        )
++        # Test if line number 2 is displayed
++        self.assertIn(
++            '<td class="cell1"><a id="_1__2" href="#_1__2" data-line-number="2" data-file-number="1"></a></td>',
+             output_text,
+         )
+ 
+-- 
+2.26.2
+

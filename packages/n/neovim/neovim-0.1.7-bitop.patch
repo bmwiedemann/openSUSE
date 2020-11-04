@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -488,7 +488,7 @@ endforeach()
+ 
+ # Find Lua interpreter
+ include(LuaHelpers)
+-set(LUA_DEPENDENCIES lpeg mpack bit)
++set(LUA_DEPENDENCIES lpeg mpack bit32)
+ if(NOT LUA_PRG)
+   foreach(CURRENT_LUA_PRG luajit lua5.1 lua5.2 lua)
+     # If LUA_PRG is set find_program() will not search
+--- a/src/nvim/ex_cmds.lua
++++ b/src/nvim/ex_cmds.lua
+@@ -1,4 +1,4 @@
+-local bit = require 'bit'
++local bit = require 'bit32'
+ 
+ -- Description of the values below is contained in ex_cmds_defs.h file.
+ local RANGE      =    0x001

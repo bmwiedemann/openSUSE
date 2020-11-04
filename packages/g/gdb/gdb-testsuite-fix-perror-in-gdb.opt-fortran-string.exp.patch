@@ -1,0 +1,39 @@
+Fix perror in gdb.opt/fortran-string.exp
+
+When running the test-case gdb.opt/fortran-string.exp from
+gdb-archer-vla-tests.patch, we run into:
+...
+ERROR: couldn't run to breakpoint MAIN__
+...
+The test case attempts to set a breakpoint on a line containing an "s = s"
+assignment and when that doesn't work, it error out with above error message.
+
+The test-case executable is optimized, and the "s = s" assignment is optimized
+away, so there's not really an error, it's just that the test-case is
+unsupported due to the optimizations done by the compiler.
+
+Fix this by replacing the ERROR with UNSUPPORTED.
+
+gdb/testsuite/ChangeLog:
+
+2019-07-26  Tom de Vries  <tdevries@suse.de>
+
+	* gdb.opt/fortran-string.exp: Replace error with unsupported.
+
+---
+ gdb/testsuite/gdb.opt/fortran-string.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.opt/fortran-string.exp b/gdb/testsuite/gdb.opt/fortran-string.exp
+index 90a2bdf212..6e5f37d439 100644
+--- a/gdb/testsuite/gdb.opt/fortran-string.exp
++++ b/gdb/testsuite/gdb.opt/fortran-string.exp
+@@ -30,7 +30,7 @@ if { [prepare_for_testing ${test}.exp ${test} ${srcfile} {debug f90 additional_f
+ }
+ 
+ if ![runto $srcfile:[gdb_get_line_number "s = s"]] then {
+-    perror "couldn't run to breakpoint MAIN__"
++    unsupported "couldn't run to breakpoint s = s in optimized executable"
+     continue
+ }
+ 

@@ -1,0 +1,33 @@
+From 61f710f401a340600df2e3c4758c2fe156ad1f04 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Fri, 5 Jun 2020 09:02:12 +0800
+Subject: [PATCH] plugin-loader: handle offline update errors properly
+
+Fix the issue that no notification after a failed offline update.
+
+https://gitlab.gnome.org/GNOME/gnome-software/-/issues/666
+---
+ lib/gs-plugin-loader.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/lib/gs-plugin-loader.c b/lib/gs-plugin-loader.c
+index 979f3d5d..585353ba 100644
+--- a/lib/gs-plugin-loader.c
++++ b/lib/gs-plugin-loader.c
+@@ -410,6 +410,13 @@ gs_plugin_error_handle_failure (GsPluginLoaderHelper *helper,
+ 		return FALSE;
+ 	}
+ 
++	/* offline updates */
++	if (gs_plugin_job_get_action (helper->plugin_job) == GS_PLUGIN_ACTION_GET_UPDATES_HISTORICAL) {
++		if (error != NULL)
++			*error = g_error_copy (error_local);
++		return FALSE;
++	}
++
+ 	/* create event which is handled by the GsShell */
+ 	event = gs_plugin_job_to_failed_event (helper->plugin_job, error_local);
+ 
+-- 
+2.26.2
+

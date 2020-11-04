@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Tue Jan  2 19:32:00 UTC 2018 - jason.record@suse.com
+
+- Removed unnecessary %clean from spec
+
+-------------------------------------------------------------------
+Mon Dec 18 19:03:53 UTC 2017 - jason.record@suse.com
+
+- Updated spec file with spec-cleaner suggestions
+- Removed COPYING.GPLv2
+
+-------------------------------------------------------------------
+Thu Mar  3 20:16:33 UTC 2016 - jrecord@suse.com
+
+- Update Makefile
+
+-------------------------------------------------------------------
+Tue Feb 23 19:40:00 UTC 2016 - jrecord@suse.com
+
+- Updated patterns (bsc#953203)
+
+-------------------------------------------------------------------
+Fri Dec  5 21:53:43 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle9all/bind_SUSE-SU-2011_1270-3_9.0.py
+  sle9all/java_SUSE-SU-2011_0863-2_9.0.py
+  sle9all/java_SUSE-SU-2011_0966-1_9.0.py
+
+-------------------------------------------------------------------
+Fri Dec  5 20:11:44 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle9all/bind_SUSE-SU-2012_0741-6_9.0.py
+  sle9all/freetype2_SUSE-SU-2012_0521-1_9.0.py
+  sle9all/heimdal_SUSE-SU-2012_0024-1_9.0.py
+  sle9all/heimdal_SUSE-SU-2012_0056-1_9.0.py
+  sle9all/samba_SUSE-SU-2012_0338-1_9.0.py
+  sle9all/samba_SUSE-SU-2012_0501-2_9.0.py
+
+-------------------------------------------------------------------
+Thu Dec  4 23:01:51 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  sle9all/sdk_SUSE-SU-2013_0440-5_9.0.py
+  sle9all/sdk_SUSE-SU-2013_0478-1_9.0.py
+  sle9all/sdk_SUSE-SU-2013_1293-1_9.0.py
+
+-------------------------------------------------------------------
+Wed Jun 25 20:21:57 UTC 2014 - jrecord@suse.com
+
+- New Patterns
+  gnutls-SUSE-SU-2014_0800-1.pl
+  openssl-SUSE-SU-2014_0768-1.pl
+
+-------------------------------------------------------------------
+Tue Apr 22 16:31:46 UTC 2014 - jrecord@suse.com
+
+- Fixed Use of uninitialized value in addition in bhc-cpucs-00001.pl
+- Fixed Argument "like:" isn't numeric in bhc-cpuint-00001.pl
+- Fixed bhc-kerneltaint-00001.pl to check for invalid taint
+
+-------------------------------------------------------------------
+Wed Apr  2 21:18:24 UTC 2014 - jrecord@suse.com
+
+- New Security Patterns
+  sle9all/gnutls-SUSE-SU-2014_0324-1.pl
+  sle9all/javaibm-SUSE-SU-2014_0266-1.pl
+
+-------------------------------------------------------------------
+Thu Mar 13 17:30:52 UTC 2014 - jrecord@suse.com
+
+- Fixed FSF address in all patterns
+- Change to System/Monitoring spec Group
+
+-------------------------------------------------------------------
+Tue Mar  4 21:27:32 UTC 2014 - jrecord@suse.com
+
+- Fixed out of range index errors
+  sle9all/bhc-memused-00001.pl
+
+-------------------------------------------------------------------
+Sat Feb  8 22:25:50 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
+Fri Jan 31 19:40:49 UTC 2014 - jrecord@suse.com
+
+- includes pertinent patterns from sca-patterns-basic
+
+-------------------------------------------------------------------
+Thu Jan 16 10:13:41 MST 2014 jrecord@suse.com
+
+- relocated files according to FHS
+
+-------------------------------------------------------------------
+Wed Dec 20 10:13:41 MST 2013 jrecord@suse.com
+
+- separated as individual RPM package
+- added
+  javaibm-SUSE-SU-2013_1677-1.pl sle9
+
+

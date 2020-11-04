@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Jun 25 02:48:37 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add deepin-editor-Qt-5_15.patch
+  * Support Qt 5.15
+
+-------------------------------------------------------------------
+Wed Jul 10 08:25:04 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.2.9
+  * Should call showNormal() to raise window
+  * Fix do not overwrite the cursorFlashTime of QGuiApplication
+  * Fix crash if DDE file select dialog is not available to use
+  * No longer designate clang++ as compiler
+  * Set default open dir as QStandardPaths::DocumentsLocation
+  * Activate window when opening files
+  * Display word count from status bar 
+  * Fix reduce minimum window size
+
+-------------------------------------------------------------------
+Tue Mar 26 12:41:05 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 1.2.6.3

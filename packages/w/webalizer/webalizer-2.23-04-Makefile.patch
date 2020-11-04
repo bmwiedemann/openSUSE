@@ -1,0 +1,47 @@
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig
++++ Makefile.in
+@@ -21,7 +21,7 @@ exec_prefix     = @exec_prefix@
+ datadir         = @datarootdir@
+ 
+ BINDIR          = @bindir@
+-MANDIR          = @mandir@/man1
++MANDIR          = @mandir@
+ ETCDIR          = @sysconfdir@
+ GEODB           = @GEODB_LOC@
+ CC              = @CC@
+@@ -92,25 +92,25 @@ distclean: clean
+ 
+ install: all
+ 	mkdir -p ${DESTDIR}${BINDIR}
+-	mkdir -p ${DESTDIR}${MANDIR}
++	mkdir -p ${DESTDIR}${MANDIR}/man1
+ 	mkdir -p ${DESTDIR}${ETCDIR}
+ 	$(INSTALL_PROGRAM) webalizer ${DESTDIR}${BINDIR}/webalizer
+ 	$(INSTALL_PROGRAM) wcmgr ${DESTDIR}${BINDIR}/wcmgr
+ 	rm -f ${DESTDIR}${BINDIR}/webazolver
+ 	@LN_S@ webalizer ${DESTDIR}${BINDIR}/webazolver
+-	$(INSTALL_DATA) webalizer.1 ${DESTDIR}${MANDIR}/webalizer.1
+-	$(INSTALL_DATA) wcmgr.1 ${DESTDIR}${MANDIR}/wcmgr.1
+-	rm -f ${DESTDIR}${MANDIR}/webazolver.1
+-	@LN_S@ webalizer.1 ${DESTDIR}${MANDIR}/webazolver.1
++	$(INSTALL_DATA) webalizer.1 ${DESTDIR}${MANDIR}/man1/webalizer.1
++	$(INSTALL_DATA) wcmgr.1 ${DESTDIR}${MANDIR}/man1/wcmgr.1
++	rm -f ${DESTDIR}${MANDIR}/man1/webazolver.1
++	@LN_S@ webalizer.1 ${DESTDIR}${MANDIR}/man1/webazolver.1
+ 	$(INSTALL_DATA) sample.conf ${DESTDIR}${ETCDIR}/webalizer.conf.sample
+ 
+ uninstall:
+ 	rm -f ${DESTDIR}${BINDIR}/webalizer
+ 	rm -f ${DESTDIR}${BINDIR}/webazolver
+ 	rm -f ${DESTDIR}${BINDIR}/wcmgr
+-	rm -f ${DESTDIR}${MANDIR}/webalizer.1
+-	rm -f ${DESTDIR}${MANDIR}/webazolver.1
+-	rm -f ${DESTDIR}${MANDIR}/wcmgr.1
++	rm -f ${DESTDIR}${MANDIR}/man1/webalizer.1
++	rm -f ${DESTDIR}${MANDIR}/man1/webazolver.1
++	rm -f ${DESTDIR}${MANDIR}/man1/wcmgr.1
+ 	rm -f ${DESTDIR}${ETCDIR}/webalizer.conf.sample
+ 	rm -f webalizer_lang.h
+ 	@LN_S@ lang/webalizer_lang.${DEFLANG} webalizer_lang.h

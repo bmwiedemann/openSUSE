@@ -1,0 +1,27 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.5-bz218379-solib-trampoline-lookup-lock-fix.patch
+
+;; Fix lockup on trampoline vs. its function lookup; unreproducible (BZ 218379).
+;;=fedora
+
+https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=218379
+
+diff --git a/gdb/symtab.c b/gdb/symtab.c
+--- a/gdb/symtab.c
++++ b/gdb/symtab.c
+@@ -3166,6 +3166,13 @@ find_pc_sect_line (CORE_ADDR pc, struct obj_section *section, int notcurrent)
+ 	     msymbol->linkage_name ()); */
+ 	  ;
+ 	/* fall through */
++	/* `msymbol' trampoline may be located before its .text symbol
++	   but this text symbol may be the address we were looking for.
++	   Avoid `find_pc_sect_line'<->`find_pc_line' infinite loop.
++	   Red Hat Bug 218379.  */
++	else if (BMSYMBOL_VALUE_ADDRESS (mfunsym) == pc)
++	  warning ("In stub for %s (0x%s); interlocked, please submit the binary to http://bugzilla.redhat.com", msymbol.minsym->linkage_name (), paddress (target_gdbarch (), pc));
++	/* fall through */
+ 	else
+ 	  return find_pc_line (BMSYMBOL_VALUE_ADDRESS (mfunsym), 0);
+       }

@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Tue Jul 19 17:05:38 UTC 2016 - dimstar@opensuse.org
+
+- Update hyena-dotnet4.patch: move to .Net 4.5.
+
+-------------------------------------------------------------------
+Tue Jan 29 20:10:56 UTC 2013 - dimstar@opensuse.org
+
+- Add hyena-dotnet4.patch: Build for .Net 4.0 target.
+- Call autoreconf, as above patch touches the build system.
+
+-------------------------------------------------------------------
+Tue Mar 15 09:08:07 UTC 2011 - coolo@novell.com
+
+- version 0.5
+ General:
+ * Update to build on Windows with MonoDevelop 2.2.1
+ * Disable CheckForOverflowUnderflow in many .csproj
+ * Can now include hyena as a git submodule within other projects
+
+ Hyena:
+ * Bind gtk_show_uri (bgo#587320)
+ * Add StringUtil.EscapeLike
+ * Add stream based hashing
+ * Add an ApplicationName property to ApplicationContext
+ * New SafeUri class
+ * New Hyena.Downloader namespace/API
+ * New Paths class (bgo#605891)
+ * Handle bad indices in MemoryListModel
+ * Fix LruCache item expiration
+ * Add thread id to Hyena.Log when debugging.
+ * Fix file location queries (bgo#612152)
+ * Make CryptoUtil.Md5Encode thread-safe
+ * [Json] Add serializer
+ * New Hyena.Metrics classes for instrumenting apps
+ * More extensive platform detection probing
+ * Bundle HttpUtility; dependency on System.Web (bgo#607713)
+ 
+ Hyena.Gui
+ * New ListView grid mode
+ * Fix ListView a11y crasher (bgo#615892).
+ * [Hyena.Gui] Fix ActionManager toolitem icon sizing bgo#609265
+ 
+ Hyena.Data.Sqlite:
+ * Add HYENA_MD5 method
+ * Extend SqliteConnection to handle double and nullable values.
+ * Case-insensitive column checks
+ * Add BinaryFunction class; Lets extensions etc call custom methods
+   from SQL even if they're not loaded initially
+ * Fix exception handling (bgo#609799)
+
+-------------------------------------------------------------------
+Thu May  6 18:01:39 PDT 2010 - gburt@suse.de
+
+- Version 0.3
+  * Fixes and enhancements from Banshee
+
+-------------------------------------------------------------------
+Wed Sep  9 12:27:59 PDT 2009 - gburt@suse.de
+
+- Version 0.2
+   * Fixes libdir expansion issue
+   * Fixes dll mappings for *bsd
+
+-------------------------------------------------------------------
+Tue Aug 18 14:44:51 PDT 2009 - gburt@suse.de
+
+- Version 0.1
+
+-------------------------------------------------------------------
+Thu Aug 13 12:47:52 PDT 2009 - gburt@suse.de
+
+- Initial release
+

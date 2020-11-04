@@ -1,0 +1,12 @@
+diff -up ./src/coolkey/slot.cpp.max-cpu-bug ./src/coolkey/slot.cpp
+--- ./src/coolkey/slot.cpp.max-cpu-bug	2016-06-30 14:36:10.502785885 -0700
++++ ./src/coolkey/slot.cpp	2016-06-30 14:36:15.812876256 -0700
+@@ -1875,6 +1875,8 @@ SlotList::waitForSlotEvent(CK_FLAGS flag
+ 	if (status != CKYSUCCESS) {
+ 	    if ((CKYCardContext_GetLastError(context) ==
+ 						 SCARD_E_READER_UNAVAILABLE) ||
++	       (CKYCardContext_GetLastError(context) ==
++						 SCARD_E_UNKNOWN_READER) ||
+ 	       (CKYCardContext_GetLastError(context) == SCARD_E_TIMEOUT)) {
+ 		OSSleep(timeout*PKCS11_CARD_ERROR_LATENCY);
+ 	    }

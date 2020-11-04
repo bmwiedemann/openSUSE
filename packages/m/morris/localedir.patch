@@ -1,0 +1,13 @@
+diff --git a/po/Makefile.in.in b/po/Makefile.in.in
+index 402a25f..2747b3d 100644
+--- a/po/Makefile.in.in
++++ b/po/Makefile.in.in
+@@ -34,7 +34,7 @@ datadir = @datadir@
+ datarootdir = @datarootdir@
+ libdir = @libdir@
+ DATADIRNAME = @DATADIRNAME@
+-itlocaledir = $(prefix)/$(DATADIRNAME)/locale
++itlocaledir = $(prefix)/share/locale
+ subdir = po
+ install_sh = @install_sh@
+ # Automake >= 1.8 provides @mkdir_p@.

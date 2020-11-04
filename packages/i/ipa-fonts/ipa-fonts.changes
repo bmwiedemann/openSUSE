@@ -1,0 +1,219 @@
+-------------------------------------------------------------------
+Sun Sep 11 08:15:49 UTC 2016 - ftake@geeko.jp
+
+- add %reconfigure_fonts_prereq to each sub-package (boo#976921)
+
+-------------------------------------------------------------------
+Sat Sep  1 15:54:29 UTC 2012 - ftake@geeko.jp
+
+- updated to version 003.02
+ * glyphs of 55 characters are updated for the new daily-use
+   characters table 
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Tue Jun 12 10:55:49 CEST 2012 - tiwai@suse.de
+
+- Drop ipsa-hinting.conf since the default config is included in
+  fontconfig package itself
+
+-------------------------------------------------------------------
+Mon Jun 11 17:08:11 CEST 2012 - tiwai@suse.de
+
+- Fix ipa-hinting.conf priority from 21 to 51 for avoiding the
+  override by suse-hinting.conf (bnc#766319)
+
+-------------------------------------------------------------------
+Thu May 17 09:10:15 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Thu Mar 29 14:33:22 UTC 2012 - pgajdos@suse.com
+
+- IPA license
+
+-------------------------------------------------------------------
+Wed Dec 21 17:49:34 CET 2011 - tiwai@suse.de
+
+- Renamed IPAPGothic -> ipa-pgothic-fonts,
+  IPAGothic -> ipa-gohtic-fonts, IPAMincho -> ipa-mincho-fonts,
+  and IPAPMincho -> ipa-pmincho-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+- Add prereq macro
+
+-------------------------------------------------------------------
+Fri Dec  2 12:07:03 UTC 2011 - coolo@suse.com
+
+- move common files into a sub package to avoid files packaged twice
+
+-------------------------------------------------------------------
+Sat Sep 17 09:29:15 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Wed Jul 28 07:49:12 CEST 2010 - tiwai@suse.de
+
+- Use hintnone as default hintstyle
+
+-------------------------------------------------------------------
+Fri Jul 23 18:18:38 CEST 2010 - tiwai@suse.de
+
+- removed ipa-globaladvance-fix.conf; this looks no longer needed
+
+-------------------------------------------------------------------
+Fri Jul 23 15:18:55 CEST 2010 - tiwai@suse.de
+
+- updated to version 003.02:
+  Added bitmap fonts, changed em unit from 1000 to 2048,
+  added 4 OTF glyphs, a few glyph fixes
+
+-------------------------------------------------------------------
+Thu Apr  8 16:51:09 CEST 2010 - tiwai@suse.de
+
+- removed unneeded buildrequires for too old distros
+
+-------------------------------------------------------------------
+Mon Jun 29 14:44:25 CEST 2009 - tiwai@suse.de
+
+- Use OTF (as conversion to TTF can be a license problem);
+  Set globaladvance to false for IPA fonts in fonts configuration
+  instead as a workaround for Qt3.
+
+-------------------------------------------------------------------
+Mon Jun 22 16:33:40 CEST 2009 - tiwai@suse.de
+
+- convert to TTF fonts via fontforge (workaround for Qt3 problems)
+
+-------------------------------------------------------------------
+Thu May 14 18:12:10 CEST 2009 - tiwai@suse.de
+
+- updated to 003.01:
+  * This version contains the fonts licensed under OSI-compatible
+    "IPA Font License v1.0".
+  * Now OpenType fonts
+  * Based on JIS X 0213:2004
+  * No UIGothic is included
+
+-------------------------------------------------------------------
+Thu Apr 03 17:53:38 CEST 2008 - mfabian@suse.de
+
+- bnc#374441: add *inofficial* English translation of the license.
+
+-------------------------------------------------------------------
+Thu Mar 06 11:23:33 CET 2008 - mfabian@suse.de
+
+- update to 002.003. From the release notes
+  http://ossipedia.ipa.go.jp/ipafont/releasenote.html:
+  • fixed width flag set to “no” for IPAPGothic (ipagp.ttf),
+   IPAPMincho (ipamp.ttf), and IPAUIGothic (ipagui.ttf).
+   See also bnc359984. In Qt4 the problems have already been
+   fixed by ignoring the “global advance width” when loading the
+   font using freetype2, but in many other applications
+   e.g. Qt3, these fonts were still handled as fixed width.
+  • Glyphs for the following characters have been added:
+   U+2014 EM DASH, U+2016 DOUBLE VERTICAL LINE, U+203E OVERLINE,
+   U+00AC NOT SIGN, U+00A5 YEN SIGN, U+00A2 CENT SIGN,
+   U+00A3 POUND SIGN.
+
+-------------------------------------------------------------------
+Wed Jan 23 17:08:13 CET 2008 - ro@suse.de
+
+- remove dependency on grass.
+
+-------------------------------------------------------------------
+Wed Jan 09 15:47:03 CET 2008 - mfabian@suse.de
+
+- update to 002.001
+  * now supports JIS X 0213:2004 (needed for bug #343820)
+  * new, better license
+- remove dependency on grass.
+
+-------------------------------------------------------------------
+Tue Aug 08 13:20:11 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts because of the move to Xorg X11R7.
+- use "run_suseconfig_fonts -c" macro.
+- cleanup .spec file
+
+-------------------------------------------------------------------
+Tue Feb 28 15:23:47 CET 2006 - mfabian@suse.de
+
+- add "Provides: locale(ja)".
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Nov 10 11:54:28 CET 2005 - ro@suse.de
+
+- use mesa-devel-packages in nfb 
+
+-------------------------------------------------------------------
+Fri Oct 28 11:54:44 CEST 2005 - adrian@suse.de
+
+- make font packages noarch
+
+-------------------------------------------------------------------
+Mon Jun 13 14:37:00 CEST 2005 - ro@suse.de
+
+- do not redefine fgets 
+
+-------------------------------------------------------------------
+Thu May 12 12:34:11 CEST 2005 - meissner@suse.de
+
+- fixed all critical warnings, buffer overflows and lots
+  of implicit warnings.
+
+-------------------------------------------------------------------
+Wed May 11 17:20:25 CEST 2005 - meissner@suse.de
+
+- gcc4 fixes.
+
+-------------------------------------------------------------------
+Mon Mar 21 11:15:58 CET 2005 - mfabian@suse.de
+
+- Bugzilla #72784: "grass does not start from the KDE menu":
+  fix program name in grass.desktop.
+
+-------------------------------------------------------------------
+Fri Feb 25 16:48:37 CET 2005 - mfabian@suse.de
+
+- make IPA fonts require grass, not vice versa
+  (because of the license of the IPA fonts).
+
+-------------------------------------------------------------------
+Thu Nov 18 15:47:27 CET 2004 - ro@suse.de
+
+- use kerberos-devel-packages 
+
+-------------------------------------------------------------------
+Mon Nov 15 10:38:52 CET 2004 - ro@suse.de
+
+- fix last change ...
+
+-------------------------------------------------------------------
+Fri Nov 12 00:12:06 CET 2004 - ro@suse.de
+
+- fixed file list (needs revisiting) 
+
+-------------------------------------------------------------------
+Tue Sep 14 18:31:25 CEST 2004 - mfabian@suse.de
+
+- use correct version numbers for font sub-packages.
+
+-------------------------------------------------------------------
+Mon Sep 13 21:26:20 CEST 2004 - mfabian@suse.de
+
+- new package: grass 5.0.3 (i18n version).
+
+

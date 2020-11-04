@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. /usr/lib/pm-utils/functions
+
+case "$1" in
+	hibernate)
+		stopservice upsd
+		sleep 2
+		if test -n "$POWERDOWNFLAG" -a -f "$POWERDOWNFLAG" ; then
+			export UPSD_POWERDOWN_CONDITION=1
+			/etc/init.d/upsd try-powerdown
+		fi
+		;;
+	suspend)
+		stopservice upsd
+		;;
+	thaw|resume)
+		restartservice upsd
+		;;
+	*)
+		;;
+esac

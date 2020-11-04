@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Wed Jul  8 11:41:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.17.3
+  * Fix offline dependency with chart_studio
+  * new colorscale
+  * few bugfixes
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
+Tue Nov 19 21:21:37 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.17
+  * Add support for hovertext in annotations
+  * Add support for opacity in annotations
+  * Compatiblity with Plotly 4.x
+  * Fix misc. issues for plotly v4.
+  * Removed bestfit test
+  * Update requirements.txt
+  * Update tests.py
+  * fix bestfit case when index is datetimeindex
+  * fix imports and warnings with plotly v4
+  * plotly 4.0.0 had a bad bug
+  * re-enable bestfit test
+  * remove statsmodels from reqs
+  
+-------------------------------------------------------------------
+Tue Jul 23 01:14:08 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.16
+  * Fix issue with multiple y-axis datapoints
+  * make the theme parameter case insensitive.
+
+-------------------------------------------------------------------
+Mon Jun  3 18:58:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 0.15
+  * Fix for offline mode. 
+  * Fix for colorchange in qf.add_volume
+  * Fix scatter3d without categories. 
+  * Markers for categories.
+  * Categories with timeseries arrays.
+  * Shared axes in subplots
+  * Shared axes with no shape specified. 
+  * Support for offline_config
+  * Support for lists in heatmaps.
+  * opacity for bars
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Mon Jun  3 18:31:35 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Fix jupyter dependencies.
+
+-------------------------------------------------------------------
+Tue Jan  8 19:30:01 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- initial version

@@ -1,0 +1,128 @@
+-------------------------------------------------------------------
+Fri Sep  4 11:20:02 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to version 0.3.1:
+  * Include $STEAMTRICKS_DATA_REPO_DIR/00-common in PATH for fix scripts.
+  * Include SyslogIdentifier in steamtricksd.service.
+
+-------------------------------------------------------------------
+Mon Apr  6 20:33:30 UTC 2020 - Alexey Svistunov <svalx@svalx.net>
+
+- Add recommends for ca-certificates-steamtricks
+- Apply spec-cleaner
+
+-------------------------------------------------------------------
+Thu May 18 22:09:27 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 0.3.0:
+  * Suspend event processing while apps are running.
+  * Check if new packages are available before prompting the user.
+  * Escape single quotes in strip_quotes() to resolve parsing issues.
+  * Look for an installable data package for each app.
+  * Add strip_name() to clean app_name before trying as package name.
+  * Rework command line parsing to pave the way for commands.
+  * Add apply command to force apply fixes to an app.
+  * Correct dependency cache read so that both variables are loaded.
+  * Disable openssl replacement when nvidia binary driver detected.
+  * Allow for multi-part .so version numbers and .bin files in dep list regex.
+  * Update README to include more information.
+
+-------------------------------------------------------------------
+Tue Feb 14 23:19:21 UTC 2017 - jimmy@boombatower.com
+
+- Update to version 0.2.1:
+  * Increment applied when steamtricks_fix_script() script is executed.
+
+-------------------------------------------------------------------
+Sun Oct 16 05:39:59 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0.2.0:
+  * Include systemd daemon-reload in dist steam patch.
+  * Import DISPLAY and XDG_CURRENT_DESKTOP into systemctl.
+  * Expand fix_deps() find to utilize a regex.
+  * fix_deps(): Provide a file list cache in addition to needs cache.
+  * fix_deps(): Only sleep on failure to allow reading of error.
+  * fix_deps(): Include steamtricks in the message to be clear.
+  * fix_deps(): Provide a notification before evaluating binaries.
+  * Utilize -F instead of -f in tail to handle log rotation.
+  * Guard openssl replacement with steam-runtime directory check.
+  * Workaround konsole oddity by providing a fake stdin.
+  * Strip comments from steamtricksd.service file during install.
+  * Respect source files and apply sed command to installed.
+  * Prefix keyvalue_parse() variables with local to prevent leaking.
+
+-------------------------------------------------------------------
+Sun Oct 09 03:46:55 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0.1.1:
+  * Disable FIX_FETCH notifications by default.
+  * Refactor buildid based fix directory detection.
+  * Do not depend on zypper result for sleep.
+  * Guard fix_deps() with check for zypper.
+  * Add a comment about why deps cannot be checked before hand.
+  * Provide a user-friendly message preceding sudo request.
+  * Create $PREFIX/share/steamtricks directory in Makefile.
+
+-------------------------------------------------------------------
+Sun Oct  9 03:40:44 UTC 2016 - jimmy@boombatower.com
+
+- Add proper list of dependencies.
+- Handle <= Leap 42.1 systemd user service packaging.
+- Remove manual creation of data dir as upstream now handles.
+- Remove systemd pre/post/preun/postun since they cannot handle a
+  user service.
+
+-------------------------------------------------------------------
+Sat Oct 08 05:32:59 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0.1.0:
+  * Prefix remove with 00- to be consistent.
+  * Add COPYING: GPLv2 just as the Linux kernel.
+  * Add AUTHORS: only creator for now.
+  * Default FIX_APPLY_PRE to false.
+  * Rework app state change detection.
+  * Ignore app state changes during validation.
+  * Break out data directory application into separate function.
+  * Correct typo st[r]eamtricks_fix_script().
+  * Allow revision specific fixes.
+  * Correct unexecutable `rm` cleanup in fix_deps().
+  * Prints all local variables instead of declaring.
+  * No need to include installation file name in Makefile.
+  * Swap out `tee /dev/stderr` for /dev/shm for systemd.
+  * Remove self daemonization in favor of systemd user daemon.
+  * Fix oversight after reworking stderr output for systemd.
+
+-------------------------------------------------------------------
+Thu Oct 06 09:53:36 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0~git20161006.ca85dd1:
+  * Provide C_DATA_DIR to easily allow overriding data dir.
+  * Only attempt to use developement data dir when present.
+  * Alter notify() to echo message into log.
+  * Add notification when fix_apply() begins.
+  * Refactor $appid to $app_id in steam_app_manifest() for consistency.
+  * Initial fix dependencies implementation.
+  * Always include dependencies in notification.
+  * Provide FIX_APPLY_NONE notification.
+  * Include steamtricks in already running message.
+  * Provide --daemon flag with log rotation.
+  * Document --version flag.
+  * Update dist patch to use --daemon flag.
+
+-------------------------------------------------------------------
+Wed Oct 05 02:40:46 UTC 2016 - jimmy@boombatower.com
+
+- Update to version 0~git20161004.e77dcfe:
+  * Add VERSION to Makefile build.
+- Set VERSION to rpm version.
+
+-------------------------------------------------------------------
+Wed Oct  5 01:59:15 UTC 2016 - jimmy@boombatower.com
+
+- Remove steam requirement as steam require steamtricks.
+
+-------------------------------------------------------------------
+Wed Oct  5 01:54:00 UTC 2016 - jimmy@boombatower.com
+
+- Initial package.
+

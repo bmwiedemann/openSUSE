@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Oct 21 12:57:00 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.4:
+  hda-dsp: Remove srcintc module from HDA DSP topology
+
+-------------------------------------------------------------------
+Tue Jun  9 11:26:25 CEST 2020 - tiwai@suse.de
+
+- Update to alsa-topology-conf 1.2.3:
+  Add topology file for generic HDA DSP machine driver
+
+-------------------------------------------------------------------
+Fri Mar 13 14:45:26 CET 2020 - tiwai@suse.de
+
+- Update to 1.2.2 tarball;
+  just a version bump
+
+-------------------------------------------------------------------
+Fri Nov 15 17:53:55 CET 2019 - tiwai@suse.de
+
+- New package, split from ALSA tarball since 1.2.1
+

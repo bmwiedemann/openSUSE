@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Wed Apr  8 02:27:24 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Don't use post and preun scriptlets to avoid dependency issues.
+- Fix broken extension enabling.
+
+-------------------------------------------------------------------
+Mon Mar 23 22:57:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- remove the post and preun dependency of the python module          
+  in the jupyter component
+  because it prevents resolving during python ABI change
+- the python module should not require the python component
+  for proper installation and removal order
+
+-------------------------------------------------------------------
+Tue Nov 12 17:38:51 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Drop python2 support due to python-notebook dropping python2 support
+
+-------------------------------------------------------------------
+Wed May  1 18:52:09 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Split jupyter components into own package
+
+-------------------------------------------------------------------
+Sun Jul 29 17:56:30 UTC 2018 - jengelh@inai.de
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Sun Jun 10 11:04:44 UTC 2018 - jengelh@inai.de
+
+- Avoid bashism in scriptlet.
+
+-------------------------------------------------------------------
+Tue May 29 14:59:34 UTC 2018 - toddrme2178@gmail.com
+
+- Use || true syntax instead of exit 0
+
+-------------------------------------------------------------------
+Thu May  3 14:07:08 UTC 2018 - toddrme2178@gmail.com
+
+- Use %license tag
+
+-------------------------------------------------------------------
+Thu Apr 19 05:45:18 UTC 2018 - toddrme2178@gmail.com
+
+- Update to version 0.2.0
+  * remove overlay from all cells, not just those now in view
+  * optionally hide selections in edit-mode non-focussed cells
+  * name overlays to facilitate removal
+  * abandon editing standalone css
+
+-------------------------------------------------------------------
+Tue Nov  7 18:24:06 UTC 2017 - toddrme2178@gmail.com
+
+- initial version

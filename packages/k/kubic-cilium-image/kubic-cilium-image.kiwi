@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- OBS-ExclusiveArch: aarch64 x86_64 -->
+<image schemaversion="6.5" name="kubic-cilium-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>SUSE Containers Team</author>
+    <contact>containers@suse.com</contact>
+    <specification>Cilium running on an openSUSE Kubic container guest</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/tumbleweed#latest">
+      <containerconfig
+        name="kubic/cilium"
+        tag="latest"
+        maintainer="SUSE Containers Team &lt;containers@suse.com&gt;"
+        additionaltags="%%LONG_VERSION%%,%%LONG_VERSION%%-%RELEASE%">
+        <entrypoint execute="/usr/bin/cilium-agent"/>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.kubic.cilium">
+            <label name="org.opencontainers.image.title" value="Cilium Container"/>
+            <label name="org.opencontainers.image.description" value="Image containing Cilium - software for providing and securing network connectivity and load balancing between containers"/>
+            <label name="org.opencontainers.image.version" value="%%LONG_VERSION%%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/kubic/cilium:%%LONG_VERSION%%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Michal Rostecki &lt;mrostecki@opensuse.org&gt;">Cilium Container</history>
+      </containerconfig>
+    </type>
+    <version>4.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-force>true</rpm-force>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+    <hwclock>utc</hwclock>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image">
+    <package name="cilium"/>
+    <package name="cilium-cni"/>
+    <package name="cilium-proxy"/>
+  </packages>
+</image>

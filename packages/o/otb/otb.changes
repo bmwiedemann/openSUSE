@@ -1,0 +1,613 @@
+-------------------------------------------------------------------
+Wed Apr  1 08:53:41 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to OTB version 7.1.0
+  Full release notes at:
+  https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/-/blob/7.1.0/RELEASE_NOTES.txt
+  Main changes are:
+  * Features added:
+   * !681: ENH: allow HTTP GDAL datasets by Laurențiu Nicola
+   * !673: Smoothing application enhancement by Cédric Traizet
+   * !655: BUG: migrate to QOpenGLWidget by Victor Poughon
+   * !644: Fast nlmeans filter by Carole Amiot
+   * !642: Resolve ExtractROI: keep GCPs by Guillaume Pasero
+   * !628: Added 'double' application parameter type. by guillaume pernot
+   * !618: Integration of the multiImageFileWriter in the application engine by Cédric Traizet
+  * Bugs fixed:
+   * !701: Error when opening ENVI datasets by Cédric Traizet
+   * !699: Fix listview parameter in TrainImagesClassifier
+   * !679: COMP: Remove RemoteSensingRegion assignment operator by Laurențiu Nicola
+   * !678: BUG: Fix warnings and possible UB in `VariadicInputsImageFilter::SetInputsImpl` by Laurențiu Nicola
+   * !677: Fix debian build by Cédric Traizet
+   * !674: BUG: Fix nodata handling in StreamingStatisticsMapFromLabelImageFilter by Laurențiu Nicola
+   * !667: Short Integer overflow in tests by Cédric Traizet
+   * !662: Update netcdf version in Superbuild to 4.7.3 by Cédric Traizet
+   * !660: COMP: Fix Variadic Input Image Filters for g++8.2.0 by Luc Hermitte
+   * !658: Allow UserValue modification from within application's DoExecute by guillaume pernot
+   * !656: input centroid should not be mandatory in TrainVectorClassifier and TrainImagesClassifier by Cédric Traizet
+   * !655: BUG: migrate to QOpenGLWidget by Victor Poughon
+   * !654: Missing RAM parameter in StereoRectificationGridGenerator application by Julien Michel
+   * !653: Warning cleaning by Guillaume Pasero
+   * !649: Resolve \Mosaic do not work anymore with rgb mode\ by Rémi Cresson
+   * !647: Fixed lookup table stacking order by guillaume pernot
+   * !646: removed duplicate Scene.png by guillaume pernot
+   * !641: FIX PCA transformation matrix computation by Cédric Traizet
+   * !640: Fixed lost reference of \buffer\ in VectorPrediction update mode by guillaume pernot
+   * !637: BUG: better check for TIXML_USE_STL by Victor Poughon
+   * !636: Fix gcc8 compilation by guillaume pernot
+   * !634: COMP: Added gcc9 support for ITK by guillaume pernot
+   * !633: Added otb_opencv_api.h in packages by guillaume pernot
+   * !626: FIX: check that input image is not null by Rémi Cresson
+   * !624: Fix GEOS errors from self intersecting polygons in and fix OPENCV path in debian CI build by Cédric Traizet
+   * !617: TEST: Force ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=4 by guillaume pernot
+   * !616: TEST: rename ToulousePoints-examples.shp to toulousepoints_examples.shp by guillaume pernot
+   * !613: Additional tests for the ExtractROI application by Cédric Traizet
+   * !606: Check band index on each pixel by guillaume pernot
+  * Refactoring updates
+  * Documentation updates
+
+-------------------------------------------------------------------
+Tue Nov 19 15:17:32 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to OTB version 7.0.0
+
+  * Documentation:
+    * The Cookbook has been refactored !
+    * The Software guide has been removed, most of its content has been migrated
+      to the Cookbook.
+  * New applications:
+    * ZonalStatistics : Object based statistics computation
+    * TrainVectorRegression , TrainImagesRegression , VectorRegression and
+      ImageRegression : Refactoring of the regression framework, based on
+      the classification framework.
+    * LocalRxDetection and EndmemberNumberEstimation: Hyperspectral image processing.
+  * Other changes includes:
+    * The minimum CMake version required to compile OTB is now 3.10.2 .
+    * The Mosaic Remote Module has been moved inside the OTB.
+    * The Python wrapper support logging.
+    * Python 2 is not supported by the wrapper anymore
+    * The Java wrapper has been removed.
+    * Support for GDAL 3.X has been added, support for GDAL 1.X has been removed.
+    * Support for OpenCV 4 has been added.
+    * OTB has a new continuous integration system.
+    * New SAR sensor Model : CosmoSkymed
+    * A generic functorImageFilter has been added.
+ * Drop obsolete patch: otb-fix_VERSION_file_install.patch
+ * Cleanup spec file a lot
+
+-------------------------------------------------------------------
+Thu Oct 31 23:14:04 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Add otb-6.6.1-reproducible.patch: Make build more reproducible.
+
+-------------------------------------------------------------------
+Mon Aug 12 20:56:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use openCV <= 3.x, otb is not yet compatible with openCV 4
+  https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/issues/1954
+
+-------------------------------------------------------------------
+Tue Jul 23 13:35:37 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- enforce GDAL2 when using OTB
+
+-------------------------------------------------------------------
+Mon Jul  8 17:20:54 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- require GDAL < 3 for build
+
+-------------------------------------------------------------------
+Sat Jul  6 10:41:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid name repetition in summary.
+- Remove redundancies from descriptions.
+- Adjust RPM groups.
+- Limit fdupes to only run on the /usr subvolume.
+
+-------------------------------------------------------------------
+Tue Mar 26 19:05:41 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Monteverdi needs otb-qt
+
+-------------------------------------------------------------------
+Thu Dec 13 17:01:12 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix installation path of VERSION file:
+  * otb-fix_VERSION_file_install.patch
+
+-------------------------------------------------------------------
+Thu Dec 13 14:57:06 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 6.6.1:
+  * Bugs fixed:
+    - 314: Add lib openMP to packages
+    - 305: BUG: compat of QgisDescriptor with old params
+    - 304: BUG: Quick fix for Mellin test
+    - 303: BUG: missing ComplexImage params in QGis wrapper
+    - 302: TEST: use different test output names
+    - 301: ENH: initialize the number of openMP threads after any modification by command line
+    - 300: PKG: enable diapotb in SuperBuild with RemoteModules
+    - 297: COMP: fix compilation of examples with clang 7
+    - 296: Integrate diapotb as official remote module
+    - 294: PKG: declare libomp as system lib in macOS package
+    - 293: COMP: fix OverlapSave filter on Windows
+    - 292: FFTW upgrade
+    - 287: Filtering warnings for clang7
+    - 288: BUG: #1761: make sure OpenMP runtime is loaded by the main executable
+    - 285: SuperBuild: the Ossim issue 2354 now affects all platforms
+    - 284: COMP: fix ossim to build with clang7
+    - 283: OpenMP fixes
+    - 282: DOC: suggested changes to the documentation
+    - 279: BUG: #1623: fix doxygen search bar
+    - 278: BUG #1757 fix installation of Siftfast
+    - 277: Resolve \
+    - 280: Bump GRM version to integrate fix for #1750
+    - 274: BUG: #1734: warn users when producing an ENVI dataset with positive Y spacing
+    - 272: BUG: #1753: adding options OTB_USE_MPI and OTB_USE_SPTW for superbuild
+    - 271: Monteverdi: fix band numbering in color setup widget
+    - 270: BUG: #1691: clarifications on binary packages
+    - 266: BUG: #1734: replace envi format with TIF
+    - 265: Resolve \
+    - 263: BUG: update hdf5 url
+    - 262: Composite application bugfix
+    - 252: Resolve \
+    - 250: BUG: fix ITK version number for packaging
+    - 248: Resolve \
+    - 247: Resolve \
+    - 239: ENH: Update superbuild to ITK 4.13.1 so that it builds with gcc 8
+    - 238: Typo in cookbook
+    - 232: BUG: #1582: detect empty training data
+    - 225: WRG: fix warnings declaration shadows a previous local seen with gcc 8
+    - 219: Warnings fixes (clang and OSSIM)
+    - 218: Resolve \
+    - 217: DOC: dmci edits to cookbook and installation tex file
+    - 216: Resolve \
+    - 206: Some warning fixes
+    - 205: Resolve \
+    - 204: Resolve \
+    - 203: Resolve \
+    - 201: Resolve \
+    - 196: Resolve \
+    - 195: Resolve \
+    - 186: PKG: install openCV libraries to lib
+    - 182: Resolve \
+    - 181: Resolve \
+    - 180: Resolve \
+    - 178: Resolve \
+    - 175: #1611 - Document ParameterType_Bool
+    - 170: WRG: add missing overrides
+    - 169: Resolve \
+    - 168: Resolve \
+    - 159: BUG: Improve Convert and DynamicConvert mask handling (fix #1647)
+    - 157: Resolve \
+    - 155: BUG: Be compliant with new cmake policy CMP0072 with cmake \u003e 3.11
+    - 145: Resolve \
+    - 142: BUG: fix issue #1639 Update UserValue flag in QtWidgetParameterList
+    - 139: SuperBuild: Upgrade to OpenCV 3.4.1
+    - 137: DOC: Set of proposed edits to the documentation
+    - 126: BUG: Remove workaround for QT bug 22829
+    - 124: Document third party environment variables
+
+  * Small patches made: 
+    - 207: DOC: add missing packages needed to compile otb with superbuild on ubuntu 18.04
+    - 140: DOC: Minor fixes in Software Guide
+
+  * Other changes: 
+    - 253: BUG: clear temporary validation filename when validation ratio is set to 0
+    - 245: ENH: update phenotb remote module git tag
+    - 234: BUG: fix qt5 compilation on ubuntu 18.04
+    - 228: Document output of training applications
+    - 208: More warning fixes for Shark
+    - 185: DOC: update list of contributors
+    - 177: Remove mantis 1427 workaround
+    - 156: BUG fix issue 1656 related to eratic behavior of cmake configuration
+    - 127: COMP: fix gcc 7 'defined' warnings
+
+-------------------------------------------------------------------
+Thu Nov 29 17:03:59 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase required RAM in _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Mon Aug  6 13:05:25 UTC 2018 - nrochard@gmail.com
+
+- Update License (CeCILL v2.0 => Apache v2.0) see https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb/blob/develop/LICENSE
+
+-------------------------------------------------------------------
+Fri Jul 20 10:13:56 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add patch to fix lib64 handling:
+  * otb-fix_lib64_handling.patch
+
+-------------------------------------------------------------------
+Wed Jul 18 12:13:41 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Enable openMP
+
+-------------------------------------------------------------------
+Wed Jun 27 08:53:05 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Upgrade to 6.6.0 version
+  * Features added:
+    - 4: Dimensionality reduction algorithms
+    - 5: Enhance otb sar sensor model adapter
+    - 7: Enhance cookbook extended filename section
+    - 8: App engine flags
+    - 12: Complex image integration
+    - 15: Parameter bool
+    - 22: Register Pipeline Services (ProcessObjects and DataObjects)
+    - 24: Handle extended filename for DataSource class
+    - 25: Data augmentation
+    - 26: Update Shark Random Forest implementation
+    - 29: ApplicationEngine new services
+    - 33: Multi writer
+    - 34: Stop button for graphic applications
+    - 53: Resolve "add Wrapper/QGIS to generate qgis descriptors for processing
+      plugin"
+    - 63: Background value for VectorDataToLabelImageFilter
+    - 71: New Itk modules
+  * Bugs fixed:
+    - 11: Resolve "Compilation error in Debug in ossimSarSensorModel"
+    - 13: Resolve "Inconsistent behaviour of geom file loading"
+    - 19: Splitting cxx file for InputImageParameter
+    - 27: Remove README (copy/paste error) from MPIConfig module
+    - 30: Fix clang missing override warnings
+    - 32: Bugfix RAM parameter not used
+    - 35: WIP: Bugfix writer box
+    - 38: Support GDAL Python binding for release 6.4
+    - 39: Resolve "API change in HoughTransform2DLinesImageFilter (itk 4.13)"
+    - 40: Resolve "Python3 OTB application bindings available in the OTB 
+      package don't work on Linux"
+    - 41: Resolve "OTB Python code in the CookBook is not compatible with
+      Python3"
+    - 43: Resolve "Remove deprecated instructions to compile Monteverdi"
+    - 44: Resolve "Fix some warnings with gcc 7.3 and clang 5.0"
+    - 45: Resolving ExtractROI default behavior bug
+    - 47: Resolve "skipcarto not working in Orthorectification?"
+    - 48: Resolve "SampleSelection strategy "byclass", csv parser not working"
+    - 52: Resolve "Mention CCLA and ICLA in Contribute.md"
+    - 58: Resolve "General log information appear several time in composite
+      applications"
+    - 65: Use OGRSpatialReference class to compare projref
+    - 67: Packaging install fonts
+    - 70: Resolve : Application can't be launch through monteverdi
+    - 73: Resolve "wrong default RGB composition for Pleiades image"
+    - 78: Fix installation of GDAL bindings in standalone packages
+    - 79: BUG: #1567: fix compilation with GDAL 2.3.0
+    - 80: OpenGL problem in monteverdi
+    - 81: Solve drag and drop issue
+    - 82: Resolve "Error during OTB SuperBuild compilation on Ubuntu 16.04"
+    - 83: Fix itk packaging
+    - 86: Solve linking problem due to ABI change
+    - 94: BUG: change ParameterFile ext to None
+    - 95: BUG: #1580: update tag for FFSforGMM
+    - 96: Cookbook fixes for release 6.6
+    - 108: Update FindQwt
+    - 114: Resolve "Remove QT4 patch directory in the superbuild?"
+    - 116: Monteverdi Delete Layer
+    - 120: Resolve "monteverdi and mapla segfault at startup"
+    - 134: Shark and OpenMP
+  * Small patches made:
+    - 50: TEST: fix ingroup test and doxygen section
+    - 54: Fix warnings on develop build
+    - 55: Update contribution guide with a new label (patch)
+    - 56: DOC: Complex types from MR !12 are not listed in cli help
+    - 61: ENH: Support Geopackage OGR driver
+    - 69: COMP: missing parenthesis in packaging script
+    - 74: Review: add Wrapper/QGIS to generate qgis descriptors for 
+      processing plugin"
+    - 76: DOC: allow the configure step to print detected Qt5 version
+    - 84: PKG: small exception for check on /usr path with libdrm
+    - 85: PKG: disable dl test for python wrappings (GDAL)
+    - 97: Fonts download
+    - 100: Update shark version
+    - 101: Fix GDALAdapters test
+    - 103: ENH: add an editorconfig file for IDE code formatting
+    - 124: Document third party environment variables
+    - 129: Update screenshots in Monteverdi Cookbook section with wrong RGB 
+      color composition
+    - 135: COMP: handle Shark dependency to openmp using REQUIRED_FLAGS
+  * Other changes:
+    - 1: DOC: Add CONTRIBUTING and PSC docs
+    - 2: DOC: try to add bug label in the gitlab template
+    - 3: Qt4to5
+    - 10: Update CONTRIBUTING.md to explain how to register branches for 
+      dashboard testing.
+    - 14: Dogfooding PolygonClassStatistics application
+    - 16: Param dict python
+    - 18: Contrast enhancement corrections
+    - 20: Refactor logging for the whole library
+    - 21: New rules for Merge Request acceptance (PSC meeting 2018-02-22)
+    - 28: Review OTB application recipe
+    - 42: LogSetupInformation in CreateInstance is too invasive
+    - 49: Command line options for Monteverdi
+    - 51: Resolve "Add in Contributing.md that only  compilation fixes are 
+      allowed in develop branch"
+    - 93: ENH: install share dir share/OTB-X.Y -> share/otb
+    - 99: Update tag for FFSforGMM
+    - 104: Update SoftwareGuide
+    - 110: BUG: #1607 - remove inline declaration
+    - 117: On Revert shark
+    - 119: Monteverdi black screen after app execution
+    - 121: Resolve "Cannot launch monteverdi if .ini config file is invalid"
+    
+- Remove upstreamed patch:
+  * fix_build_with_gdal_2.3.0.patch
+
+-------------------------------------------------------------------
+Mon May 14 16:00:30 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Add patch to be able to use GDAL 2.3.0:
+  * fix_build_with_gdal_2.3.0.patch
+
+-------------------------------------------------------------------
+Thu Mar  1 13:09:09 UTC 2018 - guillaume@opensuse.org
+
+- Fix source URL to not break on new upstream release
+- Fix build for Leap 42.3
+
+-------------------------------------------------------------------
+Sun Feb 11 15:23:39 UTC 2018 - bruno@ioda-net.ch
+
+- Upgrade to 6.4.0 version
+  + Changes 
+    - changes-104: Refactor OTB-applications input/output 
+      string/filename lists (adopted, merged)
+    - 110: Histogram Equalization
+    - 117: Merge Convert and Rescale applications
+    - 118: Enable use of ossimSarSensorModel through geom file
+    - 119: Install ossimPlugins headers related to 
+      ossimSarSensorModel
+    - 120: Replacing itk::TimeProbe
+    - 122: Positive spacing enforcement
+    - 123: Improve OTB Applications documentation (part 2)
+    - 124: Add GSL to Superbuild
+    - 126: Support python 2.7 and 3 wrappings
+  + Bugfixes:
+    * Orfeo Toolbox (OTB)
+    * 0001508: ExtractROI does not work with mode.fit.vect
+    * 0001509: Patch to fix spelling errors in 6.4.0-rc1
+    * 0001482: In 6.2, otbcli_Convert with MPI produces invalid 
+      tiff files
+    * 0001507: Segmentation segfault
+    * 0001488: OTB apps sometime do not appear in the widget
+    * 0001501: Does Java wrapping works on Windows?
+    * 0001495: Crash when setting Orthorectification input field
+    * 0001489: BandMath and BandMathX are missing important 
+      documentation on expression syntax
+    * 0001479: Monteverdi try to create overviews with /vsicurl file
+    * 0001502: OTB configuration step does not properly check for 
+      c++14 availability
+    * 0001497: Some optional parameters are ON by default in otbgui
+    * 0001483: Monteverdi shows a pop up terminal on windows
+    * 0001496: Monteverdi 'build overviews' pop-up trigger condition
+      is unclear or incorrect
+    * 0001494: Segmentation app shows 'Select parameters' instead of
+      'Running'
+    * 0001492: Monteverdi 6.2 is missing some French translations
+    * 0001499: OSSIMAdapters fails to build with OSSIM 2.2.0 
+      (error: 'class ossimRpcSolver' has no member named 
+      'createRpcProjection')
+    * 0001498: ExtractROI Channel list empty when application is 
+      chained in memory
+    * 0001476: Python wrapping not working with Python >= 3.
+    * 0001504: OTB does not compile with ITK last stable release 4.13
+    * 0001503: Fix new coverity issues in release 6.4
+  + Documentation
+    * 0001500: Application example in OTB software guide is confusing
+  + OTB-applications
+    * 0001481: KMeansClassification application should be compiled 
+      only if OTB_USE_SHARK=ON
+- Packaging : 
+  + Move to normalized group Productivity/Scientific/Other
+  + Remove remove_string_literals.patch merged upstream
+  + Remote Module temporalgapfilling : change to tar.xz format
+    Pick git clone as expected hash 4fc4a71
+  + Double escape macros in comment
+  + Fix some spurious executable bits in .desktop and .xpm
+  + Build also python3
+
+-------------------------------------------------------------------
+Sun Jan  7 15:09:26 UTC 2018 - guillaume@opensuse.org
+
+- Disable MPI since OTB apps will not start easily (since it does 
+  not find libmpi*.so* in libdir)
+
+-------------------------------------------------------------------
+Tue Nov 21 11:51:44 UTC 2017 - guillaume@opensuse.org
+
+- Enable remote module OTBTemporalGapFilling
+- Fix MPI find for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Nov 16 13:51:34 UTC 2017 - guillaume@opensuse.org
+
+- Add _constraints to avoid build failure due to low memory workers
+
+-------------------------------------------------------------------
+Tue Nov  7 13:56:29 UTC 2017 - guillaume@opensuse.org
+
+- Enable MPI and SPTW support
+
+-------------------------------------------------------------------
+Tue Oct 31 12:48:51 UTC 2017 - guillaume@opensuse.org
+
+- Update to 6.2.0:
+  * Better help, doc and logs
+  * Improvements and refactoring of several applications
+  * Improved build, superbuild, and packages
+- Remove obsolete patch:
+  * qwt-find.patch
+- Add a new patch:
+  * remove_string_literals.patch : Fix build on GCC 4.8
+
+-------------------------------------------------------------------
+Wed Jun 28 08:45:19 UTC 2017 - guillaume@opensuse.org
+
+- Enable openCV
+- Bump libversion from 5 to 6 and use a define for the lib version to ease
+  next updates
+
+-------------------------------------------------------------------
+Tue Jun 27 13:47:48 UTC 2017 - guillaume@opensuse.org
+
+- Update to 6.0.0
+- Fix build by adding '-std=c++11' flag to cmake
+
+----------------------------------------------------------------------------
+Wed May  2 11:00:00 UTC 2017 Dirk Stöcker <opensuse@dstoecker.de> - 5.10.1
+
+- Update to 5.10.1
+
+----------------------------------------------------------------------------
+Sun Jan 22 11:00:00 UTC 2017 Angelos Tzotsos <tzotsos@opensuse.org> - 5.8.0
+
+- Update to 5.8.0
+
+----------------------------------------------------------------------------
+Wed Oct  5 21:00:00 UTC 2016 Angelos Tzotsos <tzotsos@opensuse.org> - 5.6.1
+
+- Enabled internal OTB Ice by adding GLEW
+
+----------------------------------------------------------------------------
+Mon Oct  3 19:00:00 UTC 2016 Angelos Tzotsos <tzotsos@opensuse.org> - 5.6.1
+
+- Update to 5.6.1
+
+----------------------------------------------------------------------------
+Fri Feb 26 11:47:00 UTC 2016 Angelos Tzotsos <tzotsos@opensuse.org> - 5.2.1
+
+- Update to 5.2.1
+
+-------------------------------------------------------------------
+Fri Jan  1 08:38:59 UTC 2016 - mpluskal@suse.com
+
+- Use url for source
+- Cleanup spec file with spec-cleaner
+- Use cmake macros
+
+----------------------------------------------------------------------------
+* Wed Dec 30 23:33:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 5.2.0
+
+- Fixed attributes of otb-bin files
+
+----------------------------------------------------------------------------
+* Sat Dec 26 17:36:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 5.2.0
+
+- Update to 5.2.0
+
+----------------------------------------------------------------------------
+* Sat Aug 15 08:30:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 5.0.0
+
+- Update to 5.0.0
+
+----------------------------------------------------------------------------
+* Fri Feb 27 22:30:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Renamed package to otb
+
+----------------------------------------------------------------------------
+* Wed Jan 14 02:00:00 UTC 2015 Angelos Tzotsos <tzotsos@opensuse.org> - 4.2.1
+
+- Update to 4.2.1
+
+----------------------------------------------------------------------------
+* Sat Mar 01 18:13:00 UTC 2014 Angelos Tzotsos <tzotsos@opensuse.org> - 4.0-rc1
+
+- Update to 4.0 RC1
+- Rename to OTB
+
+----------------------------------------------------------------------------
+* Tue Nov 12 18:21:57 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org> - 3.20.0
+
+- Update to 3.20.0
+
+----------------------------------------------------------------------------
+* Sun Nov  3 13:36:10 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- Minor fix with libpng version needed for the devel package
+
+----------------------------------------------------------------------------
+* Sat Jul 27 20:35:14 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org> - 3.18.1
+
+- Update to 3.18.1
+
+----------------------------------------------------------------------------
+* Fri Jul  5 21:36:40 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org> - 3.18.0
+
+- Update to 3.18.0
+
+----------------------------------------------------------------------------
+* Mon Feb  4 18:41:10 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org> - 3.16.0
+
+- Update to 3.16.0
+
+----------------------------------------------------------------------------
+* Mon Feb  4 14:02:09 UTC 2013 Angelos Tzotsos <tzotsos@opensuse.org>
+
+- fltk is provided by fltk-devel now 
+
+----------------------------------------------------------------------------
+* Wed Oct  3 17:04:50 UTC 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.14.1
+
+- Update to 3.14.1
+
+----------------------------------------------------------------------------
+* Mon Jul  9 16:09:50 UTC 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.14.0
+
+- Update to 3.14.0
+
+----------------------------------------------------------------------------
+* Fri Jul  6 23:37:47 UTC 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.14.0-RC2
+
+- Update to 3.14.0-RC2
+
+----------------------------------------------------------------------------
+* Sat Jun 30 18:07:22 UTC 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.14.0-RC1
+
+- Update to 3.14.0-RC1
+
+----------------------------------------------------------------------------
+* Fri Jun 15 12:23:00 UTC 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.13.0
+
+- Testing Mercurial Tip before 3.14 RC1
+
+----------------------------------------------------------------------------
+* Mon May 28 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.12.0
+
+- Added FFTW support
+
+----------------------------------------------------------------------------
+* Mon Mar 26 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.12.0
+
+- Fixed issue with /etc/ld.so.conf.d/otb.conf
+
+----------------------------------------------------------------------------
+* Wed Feb 01 2012 Angelos Tzotsos <tzotsos@opensuse.org> - 3.12.0
+
+- Updated to 3.12.0
+
+----------------------------------------------------------------------------
+* Fri Dec 09 2011 Sebastien Dinot <sebastien.dinot@c-s.fr> - 3.11.0-1
+
+- Packaging OTB 3.11 for CentOS 5.5
+
+----------------------------------------------------------------------------
+* Mon Sep 26 2011 Angelos Tzotsos <tzotsos@opensuse.org> - 3.10.0
+
+- Reverted fltk version to 1.1 for compatibility
+
+----------------------------------------------------------------------------
+* Sat Jul 02 2011 Angelos Tzotsos <tzotsos@opensuse.org> - 3.10.0
+
+- Updated to 3.10.0
+
+----------------------------------------------------------------------------
+* Thu Dec 09 2010 Angelos Tzotsos <tzotsos@opensuse.org> - 3.8.0-2
+
+- Updated to 3.8.0
+
+----------------------------------------------------------------------------
+* Thu Dec 09 2010 Angelos Tzotsos <tzotsos@opensuse.org> - 3.6.0-1
+
+- Initial build

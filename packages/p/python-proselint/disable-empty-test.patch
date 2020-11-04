@@ -1,0 +1,31 @@
+diff --git a/tests/test_weasel_words_misc.py b/tests/test_weasel_words_misc.py
+deleted file mode 100644
+index 3f93e8f..0000000
+--- a/tests/test_weasel_words_misc.py
++++ /dev/null
+@@ -1,25 +0,0 @@
+-"""Tests for weasel_words.misc check."""
+-from __future__ import absolute_import
+-
+-from .check import Check
+-
+-from proselint.checks.weasel_words import misc as chk
+-from nose import SkipTest
+-
+-
+-class TestCheck(Check):
+-    """The test class for weasel_words.misc."""
+-
+-    raise SkipTest
+-
+-    __test__ = True
+-
+-    @property
+-    def this_check(self):
+-        """Boilerplate."""
+-        return chk
+-
+-    def test_smoke(self):
+-        """Basic smoke test for weasel_words.misc."""
+-        assert self.passes("""Smoke phrase with nothing flagged.""")
+-        # FIXME add test when check is implemented

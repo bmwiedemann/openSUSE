@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Thu Feb 20 07:51:09 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.0.0:
+  * Added isort and adapted imports
+  * Adapted code base to align with other supported addons
+  * Adapted README.rst instructions
+  * Added support for Django 3.0
+  * Added support for Python 3.8
+
+-------------------------------------------------------------------
+Mon May 20 08:43:34 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.9.0:
+  * Fix with new python/django
+- Remove merged django2.patch
+
+-------------------------------------------------------------------
+Fri Jan  4 14:38:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description.
+
+-------------------------------------------------------------------
+Thu Jan  3 11:10:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop patch django-classy-tags_disable-test.patch
+- Remove debian rules
+- Use github tarball to get tests
+- Add patch to work with current django releases:
+  * django2.patch
+- Make sure the tests are run
+- Install license
+
+-------------------------------------------------------------------
+Thu Nov  1 21:14:55 UTC 2018 - appleonkel@opensuse.org
+
+- upgrade to 0.8.0
+
+-------------------------------------------------------------------
+Tue Mar 18 10:57:50 UTC 2014 - oliver.bengs@opensuse.org
+
+- initial build 
+
+- added patches:
+  * django-classy-tags_disable-test.patch

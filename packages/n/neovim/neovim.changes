@@ -1,0 +1,746 @@
+-------------------------------------------------------------------
+Wed Aug  5 13:31:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.4:
+  bugfixes only
+
+-------------------------------------------------------------------
+Tue Jun  2 07:31:15 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable -fcommon in order to fix gh#neovim/neovim#12423.
+
+-------------------------------------------------------------------
+Tue May 19 16:42:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- For compatibility with Leap 15.2 add libuv-compat.patch
+  (applied conditionally only on the appropriate distribution),
+  which works around too old version of libuv on Leap 15.*
+  by not using UV_FS_COPYFILE_FICLONE flag to uv_fs_copyfile,
+  and not using uv_stream_get_write_queue_size at all.
+  sr#793088 gh#neovim/neovim#12108
+
+-------------------------------------------------------------------
+Mon Apr  6 11:12:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary fix-buf_set_term_title.patch, which actually
+  breaks the build.
+
+-------------------------------------------------------------------
+Tue Jan 21 20:45:43 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Add fix-buf_set_term_title.patch in order to fix build issue.
+- Set CFLAGS and CXXFLAGS in order to respect $optflags.
+
+-------------------------------------------------------------------
+Fri Dec 13 11:42:39 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Unconditionally use luajit-devle instead of sometimes
+  luajit-devel and sometimes lua51-luajit-devel.
+
+-------------------------------------------------------------------
+Sun Nov 10 20:54:57 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.4.3.
+
+-------------------------------------------------------------------
+Thu Sep 19 12:25:08 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.4.2. There is toooooo many changes to list
+  it there. Also fixes boo#1151203.
+- Reapplied patches:
+  - neovim-0.1.7-bitop.patch
+  - neovim-0.2.0-gcc-prototype.patch
+  - neovim.patch
+
+-------------------------------------------------------------------
+Thu Sep 19 07:02:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Remove neovim-0.2.0-gcc-prototype.patch patch.
+- Add run-time dependency to lua51-luv.
+
+-------------------------------------------------------------------
+Mon Jul  8 08:31:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.8:
+
+  * 5b47e4d #10341 security: 'modeline', 'modelineexpr'
+  * e4ecb70 #10345 Disallow API calls in the sandbox.
+
+-------------------------------------------------------------------
+Wed May 29 09:39:42 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.7:
+
+  * 4553fc5 #10082 vim-patch:8.1.1365: :source should check sandbox
+    (CVE-2019-12735 boo#1137443)
+  * 877d539 #10027 genappimage.sh: migrate to linuxdeploy
+
+-------------------------------------------------------------------
+Mon Apr 29 13:06:58 UTC 2019 - Chris Coutinho <c.coutinho@redstack.nl>
+
+- Update to version 0.3.5:
+
+Maintenance release to fix issues found in v0.3.4:
+
+	* f891131 #9894 options: properly reset directories on 'autochdir'
+	* 9a5488c Remove MSVC optimization workaround for SHM_ALL
+	* 1793ba8 Make SHM_ALL to a variable instead of a compound literal #define
+	* 947069b doc: mention "pynvim" module rename
+	* 46c7e12 #9629 screen: don't crash when drawing popupmenu with 'rightleft' option
+	* f1843c0 vim-patch:8.1.0677: look-behind match may use the wrong line number
+	* 1204421 #8325 :terminal : set topline based on window height
+	* aaa8c3d #9504 :recover : Fix crash on non-existent *.swp
+
+-------------------------------------------------------------------
+Mon Apr 29 07:15:32 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.3.5.
+
+-------------------------------------------------------------------
+Sun Jan 13 20:39:11 UTC 2019 - seanlew@opensuse.org
+
+- Update to version 0.3.4:
+  * Merge pull request #9492 from bfredl/cul_cole
+  * test: add tests for conceal cursor movement
+  * display: unify ursorline and concealcursor redraw logic
+  * Merge pull request #9490 from bfredl/vim-patch-8.1.0726
+
+-------------------------------------------------------------------
+Sun Jan  6 03:27:02 UTC 2019 - sean@suspend.net
+
+- Update to version 0.3.3:
+  * Fixes
+    - Merge pull request from jamessan/revert-pynvim
+    - health/provider: Check for available pynvim when neovim mod
+      is missing
+    - python#CheckForModule: Use the given module string instead 
+      of hard-coding pynvim
+    - (health.provider)/python: Import the neovim, rather than 
+      pynvim, module
+    - #9423 TUI: Konsole DECSCUSR fixup
+
+-------------------------------------------------------------------
+Wed Jan  2 07:59:39 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Remove not used neovim-0.3.1.tar.gz.
+
+-------------------------------------------------------------------
+Mon Dec 31 18:07:11 UTC 2018 - sean@suspend.net
+
+- Update to version 0.3.2:
+  * Features
+    - clipboard: support Custom VimL functions (#9304)
+    - win/TUI: improve terminal/console support (#9401)
+    - startup: Use $XDG_CONFIG_DIRS/nvim/sysinit.vim if exists (#9077)
+    - support mapping in more places (#9299)
+    - diff/highlight: show underline for low-priority CursorLine (#9028)
+    - signs: Add "nuhml" argument (#9113)
+    - clipboard: support Wayland (#9230)
+    - TUI: add support for undercurl and underline color (#9052)
+    - man.vim: soft (dynamic) wrap (#9023)
+  * API
+    - API: implement object namespaces (#6920)
+    - API: implement nvim_win_set_buf() (#9100)
+    - API: virtual text annotations (nvim_buf_set_virtual_text) (#8180)
+    - API: add nvim_buf_is_loaded() (#8660)
+    - API: nvm_buf_get_offset_for_line (#8221)
+    - API/UI: ext_newgrid, ext_histate (#8221)
+  * UI
+    - TUI: use BCE again more often (smoother resize) (#8806)
+    - screen: add missing status redraw when redraw_later(CLEAR) was used (#9315)
+    - TUI: clip invalid regions on resize (#8779)
+    - TUI: improvements for scrolling and clearing (#9193)
+    - TUI: disable clearing almost everywhere (#9143)
+    - TUI: always use safe cursor movement after resize (#9079)
+    - ui_options: also send when starting or from OptionSet (#9211)
+    - TUI: Avoid reset_color_cursor_color in old VTE (#9191)
+    - Don't erase screen on :hi Normal during startup (#9021)
+    - TUI: Hint wrapped lines to terminals (#8915) 
+  * FIXES
+    - RPC: turn errors from async calls into notifications
+    - TUI: Restore terminal title via "title stacking" (#9407)
+    - genappimage: Unset $ARGV0 at invocation (#9376)
+    - TUI: Konsole 18.07.70 supports DECSCUSR (#9364)
+    - provider: improve error message (#9344) 
+    - runtime/syntax: Fix highlighting of autogroup contents (#9328)
+    - VimL/confirm(): Show dialog even if :silent (#9297)
+    - clipboard: prefer xclip (#9302)
+    - provider/nodejs: fix npm, yarn detection
+    - channel: avoid buffering output when only terminal is active (#9218)
+    - ruby: detect rbenv shims for other versions (#8733)
+    - third party/unibilium: Fix parsing of extended capabilitiy entries (#9123)
+    - jobstart(): Fix hang on non-executable cwd (#9204)
+    - provide/nodejs: Simultaneously query npm and yarn (#9054)
+    - undo: Fix infinite loop if undo_read_byte returns EOF (#2880) 
+    - 'swapfile: always show dialog' (#9034) 
+
+-------------------------------------------------------------------
+Thu Dec 20 00:11:35 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Add to the system-wide configuration file extension of runtimepath by
+  /usr/share/vim/site, so that neovim uses other Vim plugins installed
+  from packages.
+- Add /usr/share/vim/site tree of directories to be owned by neovim as
+  well.
+
+-------------------------------------------------------------------
+Thu Dec  6 09:12:15 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Use cmake macro for building
+
+-------------------------------------------------------------------
+Tue Oct  2 12:26:23 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Switch used to LuaJIT and run SPEC file through spec-cleaner.
+
+-------------------------------------------------------------------
+Sat Aug 25 20:15:52 UTC 2018 - mcepl@suse.com
+
+- Put the system-wide config in /etc, and just a symlink to $VIM
+  (hopefully finally fixes boo#1098800)
+
+-------------------------------------------------------------------
+Sat Aug 18 15:04:51 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Proper name of the systemwide configuration file is sysinit.vim not
+  init.vim and it should be stored in /usr/share/nvim/sysinit.vim not in
+  /etc/xdg/nvim.
+
+-------------------------------------------------------------------
+Thu Aug 16 15:18:26 UTC 2018 - mcepl@suse.com
+
+- Add default system-wide configuration file to /etc/xdg/nvim/init.vim (boo#1098800)
+- Add proper location of the default SPEC file templates
+- Add some packages needed for more robust builds
+  * neovim.patch fix building system
+  * neovim-0.1.7-bitop.patch for use external bit module
+  * neovim-0.2.0-gcc-prototype.patch fix build issue on ppc64
+
+-------------------------------------------------------------------
+Sun Jul 22 17:45:11 UTC 2018 - ronisbr@gmail.com
+
+- Update to version 0.3.1:
+  * Features
+    - 07499a8 #8709 man.vim: C highlighting for EXAMPLES section
+    - 07f82ad #8699 TUI: urxvt: also send xterm focus-reporting
+      seqs
+    - 40911e4 #8616 API: emit nvim_buf_lines_event from :terminal
+    - c46997a #8546 fillchars: Add "eob" flag
+  * Fixes
+    - 74d19f6 #8576 startup: avoid blank stdin buffer if other
+      files were opened
+    - 4874214 #8737 Only waitpid() for processes that we care about
+    - cd6e7e8 #8743 Check all child processes for exit in SIGCHLD
+      handler
+    - c230ef2 #8746 channel.c: Prevent channel_destroy_early() from
+      freeing uninitialized rpc stuff
+    - 0ed8b12 #8681 transstr_buf: fix length comparison
+    - d241f27 #8708 TUI: Fix standout mode
+    - 9afed40 #8698 man.vim: fix for mandoc
+    - e889640 #8682 provider/node: npm --loglevel silent
+    - 1cbc830 #8613 API: nvim_win_set_cursor: set curswant
+    - bf6048e #8628 checkhealth: Python: fix VIRTUAL_ENV check
+    - 3cc3506 #8528 checkhealth: node.js: also search yarn
+  * Changes
+    - b751449 #8619 defaults: shortmess+=F
+    - 1248178 #8578 highlight: high-priority CursorLine if fg is
+      set.
+    - 01570f1 #8726 terminal: handle &confirm and :confirm on
+      unloading
+    - 56065bb #8721 screen: truncate showmode messages
+    - bf2460e #7551 buffer: fix copying :setlocal options
+    - c1c14fa #8520 Ex mode: always "improved" (gQ)
+    - 050f397 #7992 options: remove 'maxcombine` option (always 6)
+  * Internal
+    - 463da84 #7992 screen: use UTF-8 representation
+
+-------------------------------------------------------------------
+Mon Jul 16 14:33:03 UTC 2018 - mliska@suse.cz
+
+- Require exact version of libtermkey1 because it does not
+  bump SONAME (boo#1100496).
+
+-------------------------------------------------------------------
+Tue Jun 12 10:37:29 UTC 2018 - mliska@suse.cz
+
+- Remove update-alternatives as it's not 1:1.
+  Upstream is not willing to do that:
+  https://github.com/neovim/neovim/issues/8535
+
+-------------------------------------------------------------------
+Mon Jun 11 09:14:24 UTC 2018 - asn@cryptomilk.org
+
+- Update to version 0.3.0
+
+-------------------------------------------------------------------
+Thu Jun  7 13:25:23 UTC 2018 - michal.vyskocil@gmail.com
+
+- Add a support for update-alternatives, so users can change their
+  "vim" to neovim
+- Mark LICENSE file as %license
+
+-------------------------------------------------------------------
+Fri May 25 07:37:55 UTC 2018 - mliska@suse.cz
+
+- The library bump fixes boo#1094627.
+
+-------------------------------------------------------------------
+Wed May 23 08:54:56 UTC 2018 - mliska@suse.cz
+
+- Require libtermkey version >= 0.20.
+
+-------------------------------------------------------------------
+Sun Dec  3 21:23:18 UTC 2017 - bwiedemann@suse.com
+
+- Make build result independent from build hostname and username
+
+-------------------------------------------------------------------
+Mon Nov 20 16:54:24 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 0.2.2:
+  * Features
+    + 'viewoptions': add "curdir" flag
+    + node.js remote-plugin support
+    + :checkhealth : validate 'runtimepath'
+  * Fixes
+    + :terminal : fix crash on resize
+    + work around gnome-terminal memory leak
+    + 'guicursor': use DECSCUSR for xterm-likes
+    + 'os_open: UV_EINVAL on NULL filename'
+    + :checkhealth : fix check for npm and yarn
+    + health.vim: normalize slashes for script path
+    + cmake: install runtime/rgb.txt
+    + runtime: syntax error in `runtime/syntax/tex.vim`
+    + tutor: some fixes
+    + windows: provider: Detect(): return *.cmd path
+  * Changes
+    + remove legacy alias to `v:count`
+    + runtime: revert netrw update
+    + defaults: scrollback=10000
+    + process_close(): uv_unref() detached processes
+
+-------------------------------------------------------------------
+Thu Nov 16 15:48:29 UTC 2017 - ronisbr@gmail.com
+
+- Change license to `Apache-2.0 AND Vim` as per babelworx request.
+
+-------------------------------------------------------------------
+Mon Nov 13 15:05:43 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Remove files `neovim.svg` and `neovim.desktop` since upstream
+  included `nvim.png` and `nvim.desktop` that provide the same
+  functionality.
+- Update to version 0.2.1:
+  * Features
+    - 0e873a3 Lua(Jit) built-in #4411
+    - 5b32bce Windows: `:terminal` #7007
+    - 7b0ceb3 UI/API: externalize cmdline #7173
+    - b67f58b UI/API: externalize wildmenu #7454
+    - b23aa1c UI: 'winhighlight' #6597
+    - 17531ed UI: command-line coloring (`:help input()-highlight`)
+      #6364
+    - 244a1f9 API: execute lua directly from the remote api #6704
+    - 45626de API: `get_keymap()` #6236
+    - db99982 API: `nvim_get_hl_by_name()`, `nvim_get_hl_by_id()`
+      #7082
+    - dc68538 menu_get() function #6322
+    - 9db42d4 :cquit : take an error code argument #7336
+    - 9cc185d job-control: serverstart(): support ipv6 #6680
+    - 1b7a9bf job-control: sockopen() #6594
+    - 6efe84a clipboard: fallback to tmux clipboard #6894
+    - 6016ac2 clipboard: customize clipboard with `g:clipboard`
+      #6030
+    - 3a86dd5 ruby: override ruby host via `g:ruby_host_prog` #6841
+    - 16cce1a debug: $NVIM_LOG_FILE #6827
+    - 0cba3da `:checkhealth` built-in, validates $VIMRUNTIME #7399
+  * Fixes
+    - 105d680 TUI: more terminals, improve scroll/resize #6816
+    - cb912a3 :terminal : handle F1-F12, other keys #7241
+    - 619838f inccommand: improve performance #6949
+    - 04b3c32 inccommand: Fix matches for zero-width #7487
+    - 60b1e8a inccommand: multiline, other fixes #7315
+    - f1f7f3b inccommand: Ignore leading modifiers in the command
+      #6967
+    - 1551f71 inccommand: fix 'gdefault' lockup #7262
+    - 6338199 API: bufhl: support creating new groups #7414
+    - 541dde3 API: allow K_EVENT during operator-pending
+    - 8c732f7 terminal: adjust for 'number' #7440
+    - 5bec946 UI: preserve wildmenu during jobs/events #7110
+    - c349083 UI: disable 'lazyredraw' during ui_refresh. #6259
+    - 51808a2 send FocusGained/FocusLost event instead of pseudokey
+      #7221
+    - 133f8bc shada: preserve unnamed register on restart #4700
+    - 1b70a1d shada: avoid assertion on corrupt shada file #6958
+    - 9f534f3 mksession: Restore tab-local working directory #6859
+    - de1084f fix buf_write() crash #7140
+    - 7f76986 syntax: register 'Normal' highlight group #6973
+    - 6e7a8c3 RPC: close channel if stream was closed #7081
+    - 85f3084 clipboard: disallow recursion; show hint only once
+      #7203
+    - 8d1ccb6 clipboard: performance, avoid weird edge-cases #7193
+    - 01487d4 'titleold' #7358
+    - 01e53a5 Windows: better path-handling, separator (slash)
+      hygiene #7349
+    - 0f2873c Windows: multibyte startup arguments #7060
+  * Changes
+    - 9ff0cc7 :terminal : start in normal-mode #6808
+    - 032b088 lower priority of 'cursorcolumn', 'colorcolumn' #7364
+    - 2a3bcd1 RPC: Don't delay notifications when request is
+      pending #6544
+    - 023f67c :terminal : Do not change 'number', 'relativenumber'
+      #6796
+    - 1ef2d76 socket.c: Disable Nagle's algorithm on TCP sockets
+      #6915
+    - 6720fe2 help: `K` tries Vim help instead of manpage #3104
+    - 7068370 help, man.vim: change "outline" map to `gO` #7405
+
+-------------------------------------------------------------------
+Fri Sep 15 12:30:47 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Add `libnsl` as a build requirement.
+  The new glibc version in Factory deprecated support to libnsl.
+
+-------------------------------------------------------------------
+Fri May  5 16:10:32 UTC 2017 - ronisbr@gmail.com
+
+- Run spec-cleaner.
+- Update to version 0.2.0:
+  * Features
+    - bc4a2e1 help, man.vim: "outline" (TOC) feature #5169
+    - 58422f1 'guicursor' works in the TUI (and sends info to UIs)
+      #6423
+    - 129f107 api: nvim_get_mode() #6247
+    - 0b59f98 api/ui: externalize tabline #6583
+    - bc6d868 'listchars': Whitespace highlight group #6367
+    - 6afa7d6 writefile() obeys 'fsync' option #6427
+    - c60e409 eval.c refactor (also improves some error messages)
+      #5119
+    - 9d200cd getcompletion("cmdline") #6376
+    - 2ea7bfc terminal: Support extra arguments in 'shell'. #4504
+    - bf51102 DirChanged autocmd #5928 #6262
+    - 1743df8 'cpoptions': "_" flag to toggle cw behaviour #6235
+    - 22337b1 CTRL-R omits trailing ^M when pasting to cmdline
+      #6137
+    - 0e44916 :edit allows unescaped spaces in filename #6119
+    - abdbfd2 eval: Add id() function and make printf("%p") useful
+      #6095
+    - bdfa147 findfile(), :find, gf work in :terminal. #6009
+    - 2f38ed1 providers: Disable if g:loaded_* exists.
+    - b5560a6 setpos() can set lowercase marks in other buffers
+      #5753
+    - 7c513d6 Throttle :! output, pulse "..." message. #5396
+    - d2e8c76 v:exiting #5651
+    - :terminal improvements #6185 #6142
+      * cursor keeps position after leaving insert-mode.  4ceec30
+      * Follows output only if cursor is at end of buffer.  e7bbd35
+      * new option: 'scrollback' fedb844 quasi-support for undo and
+      * 'modifiable' b45ddf7 disables 'list' by default disables
+      * 'relativenumber' by default
+    - :help now contains full API documentation at :help api.
+    - man.vim saw numerous improvements.
+    - Windows support:
+      * Windows is no longer "experimental", it is fully supported.
+      * Windows package includes a GUI, curl.exe and other
+        utilities.
+      * :terminal is not supported on Windows, yet. (Planned for
+        0.2.1)
+  * Security fixes
+    - CVE-2017-5953
+    - CVE-2017-6349
+    - CVE-2017-6350
+    - #6485
+  * Changes
+    - NVIM_TUI_ENABLE_CURSOR_SHAPE was removed. Use 'guicursor'
+      instead. See
+      https://github.com/neovim/neovim/wiki/Following-HEAD#20170402
+    - 81525dc 'mouse=a' is no longer the default. (This may change
+      again after it is improved.) #6022
+    - 0c1f783 defaults: 'showcmd', 'belloff', 'ruler' #6087
+    - eb0e94f api: {get,set}_option update local options as
+      appropriate #6405
+    - bdcb2a3 "Reading from stdin..." message was removed. #6298
+  * Fixes
+    - 12fc1de ops: fix i<c-r> with multi-byte text #6524
+    - dd391bf Windows: system() and friends #6497
+    - 13352c0 Windows: os_get_hostname() #6413
+    - 16babc6 tui: Less-noisy mouse seqs #6411
+    - 3a9dd13 (vim bug) folding edge-cases #6207
+    - f6946c6 job-control: set CLOEXEC on pty processes. #5986
+    - d1afd43 rplugin: Call s:LoadRemotePlugins() on startup.
+    - 1215084 backtick-expansion works with shell=fish #6224
+    - e32ec03 tui: Improved behavior after resize. #6202
+    - 86c2adc edit.c: CTRL-SPC: Insert previously-inserted text.
+      #6090
+    - c318d8e b:changedtick now follows VimL rules #6112
+    - 34e24cb terminal: Initialize colors in reverse order #6160
+    - e889917 undo: Don't set b_u_curhead in ex_undojoin() #5869
+    - d25649f undo: :earlier, g-: Set b_u_seq_cur correctly.
+      (#6016)
+    - 043d8ba 'Visual-mode put from @. register' #5782
+    - 42c922b open_buffer(): Do BufEnter for directories.
+    - 50d0d89 inccommand: Preview :sub commands only after
+      delimiter #5932
+    - 1420e10 CheckHealth improvements #5519
+    - c8d5e92 jobstart(): Return -1 if cmd is not executable. #5671
+
+-------------------------------------------------------------------
+Mon Nov 28 11:22:34 UTC 2016 - ronisbr@gmail.com
+
+- Update to version 0.1.7:
+  * Features
+    - 0213e99 PR #5561 'inccommand'
+  * Fixes
+    - c685879 PR #5632 SECURITY FIX
+    - d28d108 CheckHealth: Fix version comparison.
+    - 7be113d PR #5670 shell_write_cb: Schedule error message.
+    - 1d45637 jobs: ensure calling jobclose() on a pty job sends
+      SIGHUP.
+    - 36c0ec6 tui/suspend_event(): set STDIN to "blocking"
+    - 7a4d069, cf52b88 man.vim: avoid errors in unusual
+      circumstances
+    - ed19873 PR #5546 ex_global: Catch CTRL-C even if it is
+      mapped.
+  * Changes
+    - 9147331 PR #2905 encoding: only allow encoding=utf-8
+    - 5f02608 PR #5636 build: Upgrade jemalloc
+    - f1fed42 PR #5567 l10n: Update Ukrainian translation
+
+-------------------------------------------------------------------
+Mon Oct 31 11:43:43 UTC 2016 - ronisbr@gmail.com
+
+- Update to version 0.1.6:
+  * Features:
+    - 0b5a7e4 #4432 API: external UIs can render custom popupmenu
+    - c6ac4f8 #4934 API: call any API method from vimscript
+    - 31df051 #4568 API: nvim_call_atomic(): multiple calls in a
+      single request
+    - b268ba3 #5424 API: nvim_win_get_number(),
+      nvim_tabpage_get_number()
+    - e7e2844 has("nvim-1.2.3") checks for a specific Nvim version
+    - 522b885 #5295, #5493 `:CheckHealth` checks tmux, terminfo,
+      performance
+    - 719dae2 #5384 events: allow event processing in getchar()
+    - f25797f #5386 API: metadata: Nvim version & API level
+    - 22dfe69 #5389 API: metadata: "since", "deprecated_since"
+    - 605e743 Added QuickFixLine highlight group
+  * Changes:
+    - 4af6ec7 #5253 perf: Disable clipboard in do_cmdline()
+    - 6e9f329 #5299 perf: Skip foldUpdate() in insert-mode.
+    - 9d4fcec #5426 perf: Do not auto-update folds for some
+      foldmethods.
+    - eeec0ca #5419 tui: Default to normal-mode cursor shape.
+  * Fixes:
+    - e838452 #5436 tui: Fix "weird characters" / "bleeding
+      termcodes"
+    - 10a54ad #5243 signal_init: Always unblock SIGCHLD.
+    - bccb49b #5316 eval.c: Fix memory leak for detached pty job
+    - 626065d #5227 tchdir: New tab should inherit CWD.
+    - cd321b7 #5292 getcwd(): Return empty string if CWD is
+      invalid.
+    - 6127eae shada: Fix non-writeable ShaDa directory handling
+    - ca65514 #2789 system(): Respect shellxescape, shellxquote
+    - 2daf54e #4874 Restore vim-like tab dragging
+    - 0c536b5 #5319 syntax.c: Support bg/fg special color-names.
+    - 3c53371 #4972 from justinmk/schedule-ui_refresh
+    - 68bcb32 #4789 tui.c: Do not wait for tui loop on teardown.
+    - c8b6ec2 #5409 v:count broken in command-line window
+    - 6bc3bce #5461 fix emoji display
+    - 51937e1 #5470 fix :terminal with :argadd, :argu
+    - 79d77da #5481 external UIs: opening multiple files from
+      command-line
+    - 657ba62 #5501 rplugin: resolve paths in manifest file
+    - 6a6f188 #5502 system('foo &', 'bar'): Show error, don't
+      crash.
+    - 1ff162c #5515 os_nodetype: open fd with O_NONBLOCK
+    - 2a6c5bb #5450 modeline: Handle version number overflow.
+    - 0ade1bb #5225 CI tests now run against Windows!
+- Add gperf as a build dependency.
+
+-------------------------------------------------------------------
+Mon Aug 29 22:45:13 UTC 2016 - sor.alexei@meowr.ru
+
+- Update to version 0.1.5:
+  * Breaking changes:
+    + 'termguicolors' option enables "true color".
+       NVIM_TUI_ENABLE_TRUE_COLOR is now ignored.
+    + Remove ":oldfiles!", replaced by Vim's ":browse oldfiles".
+  * Features:
+    + Full :ruby support!
+    + timers: timer_start(), timer_stop().
+    + :CheckHealth command.
+    + file: Add buffered reading and writing.
+      Much faster shada file reading (important for startup time).
+    + jobstart() learned 'rpc':
+      - jobs and RPC channel IDs share the same "namespace".
+      - jobstart() can start RPC channels, which allows scripts to
+        handle 'stderr' on a RPC channel, like a typical non-RPC
+        job.
+      - jobpid()/jobstop() works on RPC jobs.
+      - Deprecates rpcstart().
+    + man.vim rewrite:
+      - :Man command is enabled by default.
+      - New features: completion, window handling, better parsing,
+        and more.
+    + capture() function (renamed to execute())
+      - Supports nesting, including nested :redir.
+    + rplugin manifest: default to XDG dir.
+    + Better handling of mouse-clicks on concealed chars.
+    + terminal: Ensure b:term_title always has a value.
+    + tui: Assume 256 colours in most cases.
+    + Always resize the :terminal.
+    + api_info().
+    + allow setting cwd in jobstart(), termopen().
+    + support "special" highlight (undercurl).
+    + mouse: Implement horizontal scroll.
+  * Fixes:
+    + Prevent data loss for process output streams.
+    + 'process.c: Fix block in teardown'.
+    + Prevent endless loop in printdigraph() (gh#neovim/neovim#5215).
+    + timers: Avoid crash after processing events.
+    + Set the default value for 'packpath'.
+    + Restore double click.
+    + readfile(): Less-disruptive readonly check.
+      Fixes an issue where nvim unnecessarily "touched" open files.
+    + Handle very long $XDG_DATA_DIRS.
+    + option: Do not expand options in XDG vars.
+    + server_init: Handle server_address_new() failure.
+    + Fix v:register for clipboard=unnamed,unnamedplus.
+    + 'Trigger TabNewEntered with T'.
+    + synIDattr(): Return RRGGBB value for fg#.
+- Correct group: Productivity/Text/Editors.
+- Separate locales into neovim-lang.
+- Some spec cleanup.
+
+-------------------------------------------------------------------
+Thu Apr 28 15:58:15 UTC 2016 - ronisbr@gmail.com
+
+- Update to version 0.1.4.
+- Run spec-cleaner in `neovim.spec`.
+- Replace lua51-MessagePack build dependency to lua51-mpack.
+- Changelog:
+    Features:
+      * 5ebffaa :tcd for tab-local working directory (like :lcd,
+        but for tabs)
+      * d835c03 remote/define.vim: support remote function "range"
+      * 007d573 json_encode/json_decode (with sophisticated error
+        detection) #4131
+      * b50afb4 clipboard: support "lemonade" tool
+
+    Fixes:
+      * cc1beec eval.c: Fix heap corruption error. #4592
+      * 4043725 mbyte.c: Fix invalid memory access in
+        utfc_ptr2char_len #4574
+      * 4eb5827 Enable syntax/filetype by default. #4558
+
+    Changes:
+      * 5c6592f v:windowid is writeable (useful for GUIs) #4608A
+
+-------------------------------------------------------------------
+Thu Apr 14 01:44:02 UTC 2016 - ronisbr@gmail.com
+
+- Change icon 'neovim.svg' installation directory from
+    %{_datadir}/pixmaps/%{name}.svg
+  to
+    %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+  as per dimstar request.
+- Fix neovim.changes indentation.
+
+-------------------------------------------------------------------
+Sat Apr  9 22:09:40 UTC 2016 - ronisbr@gmail.com
+
+- Remove unneeded patches that were applied by upstream:
+    * neovim_fix_locale_dir_01.patch
+    * neovim_fix_locale_dir_02.patch
+- Update to version 0.1.3.
+- Changelog:
+    Features:
+      * f2ae5a9 Add TextYankPost and TextDeletePost autocmds
+      * 44b2cef bufhl: new mechanism for plugins to add highlights
+        to a buffer
+      * 39c3842 Make set{qf,loc}list() take {title}
+      * 77a7ca4 'shortmess': Add "F" flag. #4446
+      * 99d4c8c keymap: Support <D-...> (super/command key).
+    Fixes:
+      * 14c9b30 terminal.c: temporary fix for incorrect paste
+        handling
+    Notable changes:
+      * 50e129f defaults: Enable syntax and filetype plugins.
+      * 4e39eee upgrade libvterm (improves terminal reflow)
+
+-------------------------------------------------------------------
+Tue Mar  8 13:25:23 UTC 2016 - ronisbr@gmail.com
+
+- Backport two patches that fix translations in Neovim:
+    * neovim_fix_locale_dir_01.patch
+    * neovim_fix_locale_dir_02.patch
+- Update to version 0.1.2.
+- Changelog:
+    Features:
+      * ef66249 tabline: Add %[] atom to the tabline, for random
+        commands on click
+      * f338ea7 job control: implement jobpid() to get PID of job
+      * d0d5d17 job control: add 'detach' option to jobstart
+      * 7ad3f07 Add support for binary numbers
+
+    Fixes:
+      * 291495a regexp_nfa.c: Speed up find_match_text()
+      * 317d5ca input: Do not set high-bit; preserve ALT modifier.
+      * 3b7c409 shell: Unquote &shell* options before using them
+
+    Notable changes:
+      * 49b06a8 encoding: Always use "utf-8" as default for
+        &encoding
+      * 79a6983 ui: revert "gui_running" hack
+
+    Other changes:
+      * b4b4536 version: semver.org compliance
+      * c6aa716 reproducible builds: Stop using __{DATE,TIME}__
+      * 46bd3c0 clipboard: Check $DISPLAY. Prefer xsel. #4150
+      * f6ecd12 job control: don't kill PTY processes on exit
+      * 49f0417 clipboard: Detach clipboard helper, so contents is
+        kept after nvim exit
+      * 38435e8 python: Add missing I/O methods to RedirectStream
+      * d26b01d eval: Use better error messages when failing to
+        dump values
+      * 62d137c Remove swapsync.
+
+-------------------------------------------------------------------
+Fri Jan 22 16:02:49 UTC 2016 - ronisbr@gmail.com
+
+- Add neovim desktop file.
+
+-------------------------------------------------------------------
+Mon Jan 11 17:37:45 UTC 2016 - ronisbr@gmail.com
+
+- Add neovim logo to the package.
+
+-------------------------------------------------------------------
+Sat Dec  5 20:17:17 UTC 2015 - ronisbr@gmail.com
+
+- Update to version 0.1.1.
+- Changelog:
+    * shada/msgpack editor plugin #3270
+    * VimL Dict notifications #3603
+    * Note: API for this feature may change.
+    * :profile dump, :profile stop #2427
+    * :oldfiles! #3611
+    * TermOpen, TermClose events #3653
+    * fix: shada/viminfo: Do not save unlisted and quickfix buffers
+      #3581
+
+-------------------------------------------------------------------
+Thu Dec  3 11:36:38 UTC 2015 - ronisbr@gmail.com
+
+- Remove xclip of recommended packages list.
+
+-------------------------------------------------------------------
+Thu Dec  3 00:04:27 UTC 2015 - ronisbr@gmail.com
+
+- Add python-neovim and python3-neovim as recommended packages.
+
+-------------------------------------------------------------------
+Wed Dec  2 13:05:59 UTC 2015 - ronisbr@gmail.com
+
+- Initial version based on home:darix:neovim/neovim

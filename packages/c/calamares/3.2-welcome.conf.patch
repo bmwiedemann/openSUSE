@@ -1,0 +1,30 @@
+Calamares is often used in openSUSE based appliances, thus 
+it is better not to show URLs at first dialog.
+Internet connection is not mandatory for installation.
+
+diff -ur a/src/modules/welcome/welcome.conf b/src/modules/welcome/welcome.conf
+--- a/src/modules/welcome/welcome.conf
++++ b/src/modules/welcome/welcome.conf
+@@ -12,10 +12,10 @@
+ # The setting can also be a full URL which will then be used
+ # instead of the one from the branding file, or empty or not-set
+ # which will hide the button.
+-showSupportUrl:         true
+-showKnownIssuesUrl:     true
++showSupportUrl:         false
++showKnownIssuesUrl:     false
+ showReleaseNotesUrl:    false
+-showDonateUrl:          https://kde.org/community/donations/
++#showDonateUrl:         https://kde.org/community/donations/
+ 
+ # Requirements checking. These are general, generic, things
+ # that are checked. They may not match with the actual requirements
+
+@@ -42,7 +42,6 @@
+         - storage
+         - ram
+         - power
+-        - internet
+         - root
+         - screen
+     # List conditions that **must** be satisfied (from the list

@@ -1,0 +1,49 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 6 May 2020 10:02:22 -0700
+Subject: gdb-rhbz1818011-bfd-gcc10-error.patch
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+;; Fix int conversion error from bfd/elf.c when compiling with gcc 10
+
+Original commit message from H.J. Lu <hjl.tools@gmail.com> is below:
+
+bfd: Change num_group to unsigned int
+
+elf.c failed with to with GCC 10 as of
+
+commit 906b3eb9df6c577d3f6e9c3ea5c9d7e4d1e90536
+Author: Martin Liska <mliska@suse.cz>
+Date:   Tue Mar 24 11:40:10 2020 +0100
+
+    Improve endianess detection.
+
+            PR lto/94249
+            * plugin-api.h: Add more robust endianess detection.
+
+binutils-gdb/bfd/elf.c: In function ‘setup_group’:
+binutils-gdb/bfd/elf.c:740:35: error: overflow in conversion from ‘unsigned int’ to ‘int’ changes value from ‘num_group = 4294967295’ to ‘-1’ [-Werror=overflow]
+  740 |     elf_tdata (abfd)->num_group = num_group = -1;
+      |                                   ^~~~~~~~~
+cc1: all warnings being treated as errors
+make[2]: *** [Makefile:1608: elf.lo] Error 1
+
+Change num_group in elf_obj_tdata to unsigned int to compile with GCC 10.
+
+	PR binutils/25717
+	* elf-bfd.h (elf_obj_tdata): Change num_group to unsigned int.
+
+diff --git a/bfd/elf-bfd.h b/bfd/elf-bfd.h
+--- a/bfd/elf-bfd.h
++++ b/bfd/elf-bfd.h
+@@ -1937,7 +1937,7 @@ struct elf_obj_tdata
+   struct sdt_note *sdt_note_head;
+ 
+   Elf_Internal_Shdr **group_sect_ptr;
+-  int num_group;
++  unsigned int num_group;
+ 
+   /* Index into group_sect_ptr, updated by setup_group when finding a
+      section's group.  Used to optimize subsequent group searches.  */

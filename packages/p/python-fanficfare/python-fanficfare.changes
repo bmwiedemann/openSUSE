@@ -1,0 +1,637 @@
+-------------------------------------------------------------------
+Thu Oct 15 17:14:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.24.0:
+  - fiction.live - handle api returning non-int values for votes
+    PR gh#JimmXinu/FanFicFare#550, thanks muchtea
+  - adapter_scribblehubcom: Include author notes/news in chapters
+    unless in exclude_notes - thanks, Epicpkmn11!
+  - archive.hpfanfictalk.com -> fanfictalk.com plus site changes
+    for same.
+  - Change ponyfictionarchive.net to https by default
+  - Making eFiction series name/desc collection work with more
+    sites.
+  - Apply CLI --json-meta to --list to see series name/desc.
+  - Fix adapter_storiesonlinenet login. Closes
+    gh#JimmXinu/FanFicFare#550
+  - Add AO3 Series 'status'.
+  - Don't save cover image size for dedup_img_files - Calibre
+    might replace it. Also fixes gh#JimmXinu/FanFicFare#550
+  - Better GUI for series anthology
+  - Adding eFiction series parsing attempt to base_adapter.
+  - ensure_text plugin-example.ini for py3
+  - New site: www.the-sietch.com XenForo2 site with weird URL
+    scheme. Closes gh#JimmXinu/FanFicFare#550
+  - Add get_urls_from_page() and get_series_from_page() to
+    adapters, add support. AO3 and TtH only so far.
+  - Add include_author_notes option (defaults on) to
+    adapter_royalroadcom Closes gh#JimmXinu/FanFicFare#550
+  - adapter_fictionlive: Handle stories with missing
+    contentRating, storyStatus & support beta.fictionlive.com
+    domain, thanks HazelSh!
+  - Add setting remove_tags:script,style replacing script remove
+    hardcode, adding style remove. Closes
+    gh#JimmXinu/FanFicFare#550.
+  - New Site: novelupdates.cc (possible transition dest for
+    wuxiaworld.co?) - Thanks ElminsterAU!
+  - Fix for adapter_wuxiaworldsite not setting authorUrl.
+  - Add dedup_img_files option(default:false).
+    gh#JimmXinu/FanFicFare#550
+  - wuxiaworld.co and novelupdates.cc don't author links after
+    all?
+
+-------------------------------------------------------------------
+Tue Sep 15 16:45:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.23.1:
+  - Fix -s site list for adapter_hpfanficarchivecom.
+  - adapter_valentchambercom - requires SSL and only allows w/o www.
+  - adapter_hpfanficarchivecom - SSL cert SSL_ERROR_RX_RECORD_TOO_LONG,
+    back to http
+  - Update translations.
+  - fiction.live - add support for multi route stories, thanks muchtea!
+  - New Site: wuxiaworld.site, thanks, Kolbo5!
+  - Handle more fiction.live URLs -- closes #541, thanks HazelSh!
+  - fiction.live: null handling in format_readerposts -- closes #539,
+    thanks HazelSh!
+  - fiction.live: changed time formats for livetime metadata, chunk
+    timestamps to avoid localized names -- fixes #538, thanks HazelSh!
+  - adapter_occlumencysycophanthexcom needed another 'needs login'
+    string.
+  - Fix anthology comments for changes in how Calibre handles them.
+  - Display number of URLs found for an anthology.
+  - New site fiction.live, thanks HazelSh!
+  - Fix for Anthology bug when no story has a series.
+  - Added a string for translation.
+  - Add a 'shouldn't happen' error check for anthology merge.
+  - Add note about anthologies and epub3 to plugin-defaults.ini
+  - Show busy cursor during anthology merge & update.
+  - adapter_literotica: Fix for language domain name links on author
+    page.
+  - Fix chapter URLs in wuxiaworld.co.
+  - Update for site changes, wuxiaworld.co update -- thanks, teffalump!
+  - More fixes for wuxiaworld.co update -- thanks, teffalump!
+  - Added wuxiaworld.co specific setting dedup_order_chapter_list to
+    optionally apply teffalump's chapter dedup and ordering code.
+    Defaults to false.
+
+-------------------------------------------------------------------
+Wed Aug 19 13:13:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.22.1:
+  - Accept storyUrl with title in it for
+    adapter_webnovelcom. Addresses #520
+  - Fix adapter_mcstoriescom getSiteExampleURLs()
+  - Remove outdated rejecturls from plugin prefs--replaced by
+    rejecturls_date last 18+ month back.
+  - Fix for adapter_quotevcom site changes.
+  - Fix adapter_harrypotterfanfictioncom desc parse for
+    site change.
+  - Changes for Python3 deprecation warnings (mostly) from
+    eschwartz
+  - Normalize literotica.com URLs to www.literotica.com
+  - New Site: scribblehub.com - Thanks, mavi0!
+  - Fixes for site changes: adapter_ficbooknet
+  - Change INI error link blue color in dark mode.
+  - Add 'Series [0]' option for new anthologies.
+  - For anthologies, look for common val in numbered series00
+    if not all share 'series'.
+
+-------------------------------------------------------------------
+Sat Aug  1 13:50:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.21.0:
+  - New site: chireads.com -- Thanks, Kolbo!
+  - Fix for recursion in add_genre_when_multi_category caching bad
+    value.
+  - Change INI edit highlight colors when dark theme.
+  - Add cover_min_size setting.
+  - Fix add_genre_when_multi_category so it can include_in_ without
+    breaking and move above doreplacements.
+  - Add .SHOW_EMPTY feature for titlepage_entries.
+  - Check for epub before polishing cover into it.
+  - Change site efiction.esteliel.de to faerie-archive.com, also changed
+    siteabbrev eesd->fae
+  - Allow for no genre stories in adapter_fanficauthorsnet.
+  - Fix adapter_webnovelcom sitetags for site changes.
+
+-------------------------------------------------------------------
+Sun Jun 21 20:37:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 3.20.1:
+  - Add more URLs to cover_exclusion_regexp for
+    base_xenforoforum.
+  - Fix for is_adult needing &showRestricted URL in
+    adapter_harrypotterfanfictioncom.
+  - Better auth page parsing due to own-favorite story in
+    adapter_harrypotterfanfictioncom.
+  - Add characters and increased category collection for
+    adapter_fanfiktionde.
+  - Suppress output_css on CLI -z
+  - Fix numWords parsing in adapter_fanficsme.
+  - Update translations, add Russian.
+  - Fix broken series parsing in adapter_adastrafanficcom
+    & adapter_lotrgficcom.
+  - New Site: www.silmarillionwritersguild.org, thanks Alistair!
+  - Allow /post/ story URLs with adapter_gravitytalescom.
+  - Change to
+  - in chapter text adapter_adultfanfictionorg
+  - Now actually use translated strings in prefs.py.
+  - Need to include prefs.py in messages.pot for translation.
+  - Update Translations.
+  - Catch exception in exception handling for French user.
+  - Remove '.' from numWords in adapter_fanfiktionde
+  - Fix for adapter_bloodshedversecom site changes.
+  - Find both 'Translator' and 'TranslatorS', except in Russian.
+    adapter_fanficsme
+
+-------------------------------------------------------------------
+Sun May  3 21:18:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 3.19.0:
+  - Comment out a debug, user_agent for wuxiaworld.com
+  - Fix adapter_fictionmaniatv image page parsing, thanks smutandrea
+  - Fix adapter_fanficsme for date tags change.
+  - Change inject_chapter_title back to h3.
+  - Allow for author without link & id in XF2.
+  - Change inject_chapter_title code in adapter_storiesonlinenet
+    due to clean up weirdness.
+  - Change defaults.ini recommendations for inject_chapter_title
+    and change injected titles to h4--had problems with
+    epub update.
+  - Fix for py2/3 differences in final strip-non-ASCII decode
+    fall back.
+  - Remove some 'watermarking' tags from adapter_webnovelcom
+  - De-obfuscate emails in XenForo posts.
+  - Add scifistories.com to valid site list for
+    universe_as_series setting.
+  - New Site: scifistories.com (extends finestories.com).
+
+-------------------------------------------------------------------
+Sat Apr 04 20:32:27 UTC 2020 - mcepl@suse.com
+
+- Update to version 3.18.0+git.1586013122.54f843ec:
+  * Bump Test Version 3.18.1
+  * New Site: scifistories.com (extends finestories.com).
+  * Bump Release Version 3.18.0
+  * Update translations
+  * Bump Test Version 3.17.9
+  * Change fanfiction.tenhawkpresents.com to fanfic.tenhawkpresents.ink
+  * Revert "Remove defunct site fanfiction.tenhawkpresents.com"
+  * Bump Test Version 3.17.8
+  * Changes to adapter_archiveofourownorg for AO3 changes re: view_adult=true
+
+-------------------------------------------------------------------
+Tue Mar 31 20:32:37 UTC 2020 - mcepl@suse.com
+
+- Update to version 3.17.0+git.1585684191.22d2ad45:
+  * fictionalley.org needs a slow_down_sleep_time or it starts rejecting conns.
+  * Bump Test Version 3.17.7
+  * Fix Description parsing with series/universe/contest links in adapter_storiesonlinenet.
+  * Revert PR#478
+  * Add support for fictionalley.ikeran.org
+  * Remove extra spaces from replace_metadata examples
+  * Accept https URLs for adapter_wwwutopiastoriescom, but don't use https--doesn't work with python.
+  * Bump Test Version 3.17.6
+  * Fix for adapter_ficbooknet when no ships/characters.
+  * Bump Test Version 3.17.5
+
+-------------------------------------------------------------------
+Mon Mar  2 18:34:01 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update 3.16.0:
+  - New Site: archive.hpfanfictalk.com (eFiction non-base)
+  - Reduce debug output in base_xenforoforum_adapter.
+  - Add replace_xbr_with_hr feature.
+  - Update translations.
+  - Fix for adapter_storiesonlinenet requiring 'v' from
+    login.php.
+  - Add more domains for AO3.
+  - Use storyUrl from metadata for checking library, for
+    those sites that make canonical storyUrl difficult, like
+    adapter_literotica. Closes #461. Plugin only.
+  - Optional EPUB 3.0 output
+
+-------------------------------------------------------------------
+Mon Jan 20 20:38:40 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.15.0:
+  - Remove site nfacommunity.com, parked domain, last worked
+    Dec2018.
+  - Remove site fannation.shades-of-moonlight.com, parked domain,
+    last worked Dec2018.
+  - Kludge fix for incorrect HTTP response 500 code from
+    trekfanfiction.net.
+  - trekfanfiction.net uses utf8 now
+  - Make sure storyUrl has &->& and then change it back for
+    Calibre. Matches how authorUrl is handled(in all_metadata).
+    Closes #460 for adapter_sugarquillnet .
+  - adapter_sugarquillnet change chapter text td to div. Issue
+    #460
+  - Update adapter_alternatehistorycom for XenForo2. Issue #457
+  - Order custom columns in config page.
+  - Add -U/--update-epub-always option to CLI.
+  - Don't do URL quoting on file: URLs. Fix for spaces->+
+    breaking default cover.
+  - Catch ',' in front of 'Thread' in forum titles.
+  - Reduce minimum_calibre_version to v2.85.1, last of 2 series.
+  - Changes for Python3 compatibility, thanks eschwartz!
+
+-------------------------------------------------------------------
+Fri Jan 10 22:15:59 CET 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.14.0:
+  - Different email URL for royalroad.com. Closes #452
+  - Update adapter_fictionmaniatv to use HTML versions containing
+    images and fall back if not found.
+  - Update adapter_fictionmaniatv to use HTML versions vs text by
+    default.
+  - Update Translations
+  - New Site fanfics.me (Russian language site).
+  - Base_eFiction - Get Rating/Rated from TOC page if not found
+    on print page. Remove from 2 individual adapters.
+  - Failsafe for max_zalgo setting. Closes #449.
+  - Add plugin option for toolbar button to pop menu.
+  - Fix AO3 chapterstotal replace_metadata for multi digits.
+  - Add
+  - around AO3 chapter head/foot notes. Issue 447
+  - Remove feature to save cookiejar between downloads and BG
+    jobs--causes some obscure problems with QQ at least. Closes
+    #466
+
+-------------------------------------------------------------------
+Thu Jan  2 10:03:47 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip python2 build as it is no longer resolvable
+
+-------------------------------------------------------------------
+Fri Nov 15 20:46:24 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.13.0:
+  - Add some code to handle 24 hr clocks w/o changing adapters.
+  - Don't escape # in URLs, causes problems with ficbook.net.
+  - Bypass expired SSL cert by not using SSL.
+    adapter_thehookupzonenet
+  - Bypass expired SSL cert by not using SSL.
+    adapter_spikeluvercom
+  - Remove site twilightarchives.com - Closed as per web site.
+  - Remove site lotrfanfiction.com - Closed as per web site.
+  - Remove site www.13hours.org. Moved to AO3.
+  - Add site specific chapterslashtotal and chapterstotal for
+    adapter_archiveofourownorg.
+  - Fixes for adapter_webnovelcom site changes to JSON.
+  - Add parentforums site specific metadata for base_xenforo,
+    include partial list in category.
+  - Add user/pass to adapter_fictionhuntcom, required to see
+    chapter text now.
+  - Discard cookie cache on library change--might use different
+    users/settings.
+  - At least one efiction site said Completed: Completed instead
+    of Yes.
+  - Adding some html class attrs to epub output for ease of CSS.
+  - Add --no-output CLI option. Closes #443
+  - Save cookiejar between downloads during same calibre session,
+    including BG jobs.
+  - Avoid post URLs in XenForo notification emails for QQ & AH
+    too.
+  - Avoid post URLs in XenForo notification emails better w/o
+    catching post in thread title. Probably.
+  - Fix for 404 error on XF always_login. Closes #438
+  - Fix for CLI update fail on one story causing all subsequent
+    to also skip update. Issue #438
+  - Avoid post URLs in XenForo notification emails better.
+  - Treat spacebattles /post/ URLs in emails the same as
+    sufficientvelocity to avoid extra URLs in thread
+    notifications.
+
+-------------------------------------------------------------------
+Fri Nov 15 07:53:21 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.12.0:
+  - Update Translations
+  - Add defaults.ini CSS for ficbook.net to preserve line breaks.
+  - Changes for adapter_forumsspacebattlescom to use
+    base_xenforo2forum.
+  - Correct AO3 author parsing for high-byte characters.
+  - Additional warnings about imaptags added to manually added
+    story URLs.
+  - Fix for adapter_trekfanfictionnet URL change. Closes #433.
+  - Add 'Restricted to Registered Users'(restricted) metadata to
+    AO3.
+  - Fix for unicode chars in url params, fixes 427
+  - Add feature to automatically add optional tags for stories
+    downloaded from email URLs.
+  - New Russian Site added: www.swi.org.ru - Thanks gunmetal313
+  - Fix for wordcount in adapter_fanfiktionde when max_zalgo:1
+
+-------------------------------------------------------------------
+Fri Sep 13 07:48:06 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.11.0:
+  * Install attached plugin zip file, or use Calibre's 'Get plugins' feature.
+  * Add URL prefix for XF2 authorUrl if relative. Circa Aug 23, 2019 SV changed the author URL FFF collects to a relative link and I didn't notice it until now.
+  * Add dedup_chapter_list option for buggy chapter lists. Optional in case they're not buggy.
+  * Add fetch_last_page for base_xenforo--SB doesn't send notice emails if user not up-to-date now.
+  * Fix for corner-case with deleting Rejects.
+  * Fix for XF1 regression caused by XF2 threadmarks metadata code.
+  * Add XF2 threadmarks_cover/status/desc/title options.
+
+-------------------------------------------------------------------
+Tue Aug  6 14:32:05 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.5:
+  - Fixes for IMAP folder parsing.
+  - ensure_str on IMAP4 folder name for Python3. Fixes #419
+  - Fix adapter_inkbunnynet incorrect example URL, caused
+    problems with get URLs from page.
+
+-------------------------------------------------------------------
+Tue Jul 30 09:15:07 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.10.1
+  * Additional error checking and output for IMAP4 fetch.
+  * Add always_include_first_post_chapters to base_xenforoforum_adapter
+  * XF posts can include a tags without href, look for href searching for links. Closes #417
+  * Add work around to fix XF2 issue with multiple '...' in threadmarks.
+  * Tweak getting URLs from email for SV XF2 changes, don't get post URLs.
+  * Changes to adapter_forumssufficientvelocitycom for XenForo2 migration.
+  * Fix for Plugin: Group reported results better for meta-only updates.
+  * Plugin: Group reported results better.
+  * Add a de-dup check to XF threadmark collection due to at least one SB story having TM bug.
+  * Adjust reader_posts_per_page for forum.questionablequesting.com.
+  * adapter_wuxiaworldco: Don't include grayed out 'In preparation' chapters
+  * Move BS version debug so it doesn't appear in CLI without -d.
+  * Fix for regression on XF not-first index post.
+  * Fix for a corner-case global_cache written by py2, then read by py3 bug.
+  * Update included dependencies -- mostly for Calibre 2.85.1.
+  * adapter_asianfanficscom json fixes - thanks oh45454545
+  * adapter_asianfanficscom foreword json fix - thanks oh45454545
+  * Change metadata separator to ' & ' when filling 'Contains names' custom columns.
+  * Fix for adapter_asianfanficscom change for views metadata
+  * Fix for site change adapter_novelonlinefullcom
+  * More fixes for adapter_asianfanficscom site now giving different HTML to FFF.
+  * Fix for some(older?) adapter_asianfanficscom stories not have json links.
+  * Fixes for site changes adapter_asianfanficscom
+  * Fix for extended chars in text email imap fetchs on py3.
+  * Show debug output BeautifulSoup version.
+  * adapter_mediaminerorg: Fix for not finding a block in chapter download.
+  * Fix for newer BS4/soupsieve enforcing CSS selector rules about :/ chars.
+  * Fix for site date change adapter_wuxiaworldcom
+
+-------------------------------------------------------------------
+Fri Jun  7 12:38:47 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 3.8.0
+  * Removing all filter()/map() calls--not consistent between Py2/Py3.
+  * Various adapter fixes.
+  * Some new translations.
+
+-------------------------------------------------------------------
+Fri May  3 08:45:55 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.7.6:
+  - Fix CLI Upload to have correct version.
+  - Fix for BS halping with string conversions on PI update from
+    Saved Meta Column.
+  - More improvements for adapter_asianfanficscom, including
+    auto_sub feature, thanks oh45454545
+  - Improvements for adapter_asianfanficscom, thanks oh45454545
+  - Update adapter_asianfanficscom to fetch chapter texts from
+    JSON url.
+  - Ad wall indicator has changed for adapter_webnovelcom.
+  - Fix use_archived_author in AO3.
+
+-------------------------------------------------------------------
+Sun Apr 28 07:26:14 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.7.0:
+  - Update translations
+  - Revert "Remove defunct site www.destinysgateway.com"
+  - Recognize destinysgateway.com and www.destinysgateway.com
+  - Remove ncisfic.com -- moved to AO3.
+  - Fix date format for adapter_gluttonyfictioncom
+  - Comment out some old debugs.
+  - Add debug output for encoding used.
+  - Fix some comments.
+  - Add another StoryDoesNotExist string for
+    adapter_fanfictionnet
+  - Closes #390 - RoyalRoad click link in emails.
+  - Update a comment link in setup.py.
+  - Include status 'Hiatus' for adapter_royalroadcom.
+  - Correct a comment in defaults.ini.
+  - Fix for saved custom column metadata and boolean values.
+  - Add bookmarked site specific metadata for
+    adapter_archiveofourownorg.
+  - Fix for PI saved metadata not reading False & empty strings.
+  - More fixing for bool metadata values--convert to string when
+    set.
+  - Add remove_authorfootnotes_on_update feature for AO3.
+  - Update Translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 15:20:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.6.0:
+  * Install attached plugin zip file, or use Calibre's 'Get plugins' feature.
+- Use dos2unix for file conversions
+- Add missing runtime dependencies
+
+-------------------------------------------------------------------
+Thu Mar  7 07:39:41 UTC 2019 - Matěj Cepl <mcepl@suse.com>
+
+- Update to version 3.5.0 (from 3.3.0):
+  - Update Translations.
+  - Remove firefly.populli.org -- now on AO3.
+  - Remove fhsarchive.com -- now on AO3.
+  - Add www.mugglenetfanfiction.com as replacement for removed
+    fanfiction.mugglenet.com.
+  - Fix for int(pages) in adapter_adultfanfictionorg. Closes #375
+  - Fix author parsing at webnovelcom - pull request #372 from Rikkitp
+  - Remember original href in data-orighref attr with epub
+    internalize_text_links so inserted 'earlier' chapters don't break
+    internal links.
+  - Add always_login setting to base_xenforo for SV login-required story
+    with 404 result.
+  - Ignore current Virtual Library when checking for existing story ID.
+  - Fix defaults.ini add_to_titlepage_entries for hentai-foundry.com
+  - Fix metadata parsing for adapter_siyecouk
+  - Fix adapter_whoficcom for site changes.
+  - Update translations.
+  - Fix AO3 logout url used to detect when already logged in.
+  - Add conditionals_use_lists(default:true) setting for
+    replace_metadata & Include/Exclude metadata conditionals. *Might
+    change existing behavior for some users.*
+  - Remove outdated comment.
+  - Allow ==, !=, =~ and !~ in replace_metadata conditionals like
+    in/exclude_metadata.
+  - Additional metadata edit recursion proofing.
+  - Allow animated gifs through Calibre Image proc -- need to remove
+    gif.py later.
+  - Update some comments in adapter_archiveofourownorg
+  - Additional fix for AO3 login site changes.
+  - Fix for AO3 login site changes.
+  - Add bookmarkprivate and bookmarkrec site-specific metadata to
+    adapter_archiveofourownorg
+
+-------------------------------------------------------------------
+Thu Jan 03 13:32:26 UTC 2019 - opensuse-packaging@opensuse.org
+
+- Update to version 3.3.9:
+  * Fix metadata parsing for adapter_siyecouk
+  * Fix adapter_whoficcom for site changes.
+  * Update translations.
+  * Fix AO3 logout url used to detect when already logged in.
+  * Add conditionals_use_lists(default:true) setting for
+    replace_metadata & Include/Exclude metadata conditionals.
+    Might change existing behavior for some users.
+  * Remove outdated comment.
+  * Allow ==, !=, =~ and !~ in replace_metadata conditionals like
+    in/exclude_metadata.
+  * Additional metadata edit recursion proofing.
+  * Allow animated gifs through Calibre Image proc -- need to
+    remove gif.py later.
+  * Update some comments in adapter_archiveofourownorg
+  * Additional fix for AO3 login site changes.
+  * Fix for AO3 login site changes.
+  * Update translations
+  * Force Translation Update
+  * Add bookmarkprivate and bookmarkrec site-specific metadata to
+    adapter_archiveofourownorg
+  * Accept archiveofourown.com for archiveofourown.org.
+    archiveofourown.org remains the 'canonical' domain.
+  * Update translations.
+  * Workaround for adapter_hentaifoundrycom bad dateUpdated
+    value.
+  * New Site: www.hentai-foundry.com - Stories only.
+  * Improve recursion-proofing of replace_metadata for
+    performance and duplicate lines.
+  * Don't cache file: URLs.  Option --save-cache can mask changes
+    to _filelist files while debugging.
+  * Don't sleep when fetching file: URLs.
+  * Remove defunct site www.artemis-fowl.com
+  * Remove defunct site asr3.slashzone.org
+  * Remove defunct site tolkienfanfiction.com
+  * Remove defunct site fanfiction.tenhawkpresents.com
+  * Remove defunct site unknowableroom.org
+  * Remove defunct site mujaji.net
+  * Update adapter_harrypotterfanfictioncom for site change.
+  * Change for adapter_storiesonlinenet for 'Full Access' stories.
+- Switch from pull commits to the released tarballs again.
+
+-------------------------------------------------------------------
+Mon Dec 03 06:50:01 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 3.2.1+git.1543262085.5eb1f1f3:
+  * Bump Test Version 3.2.1
+  * base_xenforoforum_adapter - Fix for buggy threadmarks on SV thread 46020.
+  * Bump Release Version 3.2.0
+  * Update example.ini.
+  * Bump Test Version 3.1.10
+  * Add background_color ini verbiage and check before image conversion.
+  * Bump Test Version 3.1.9
+  * Refactor busy_cursor, busy cursor around saving rejects & settings, bump copyright years.
+  * Move rejectlisturls_data out of settings in to own 'namedspaced' for efficiency. PI Only.
+  * Use saved rejectlist_data.
+  * Reject list changes: show numbers, edit title/author, incomplete save rejects as data.
+  * Add feature for manually editing settings JSON.  Only shown in debug mode.
+  * Add verbiage to [www.asianfanfics.com] about site censoring words when not logged in.
+  * Bump Test Version 3.1.8
+  * Detect 'fake' 404 page (with HTTP 200) for adapter_royalroadcom
+  * Fix defaults.ini order
+  * Bump Test Version 3.1.7
+  * Fix for adapter_wuxiaworldco for Python3.
+  * Added volumes to chapter titles
+  * Bump Test Version 3.1.6
+  * Fix adapter_wuxiaworldco description decomposition
+  * Bump Test Version 3.1.5
+  * Fix for adapter_wuxiaworldcom site change.
+  * Minor improvement to adapter_asianfanficscom logging.
+  * Bump Test Version 3.1.4
+  * adapter_fanfiktionde login doesn't use ssl.fanfiktion.de anymore.
+  * Bump Test Version 3.1.3
+  * Update for adapter_storiesonlinenet(& finestories) for login change.
+  * Use a default chapter name when none is given.  Problem with adapter_novelonlinefullcom
+  * Bump Test Version 3.1.2
+  * Story URLs from email notice for royalroad contain clicktracker links that redirect to actual story URLs.  Hit those to get story URL. Issue #349
+  * Bump Test Version 3.1.1
+  * Fix for problem with new collision code and rejected URL.
+  * Bump Release Version 3.1.0
+  * Bump Test Version 3.0.11
+  * Fix for Calibre Metadata update called with URLs not in library.
+  * Add a debug to see when adapter_test1 extractChapterUrlsAndMetadata called.
+  * Update translations.
+
+-------------------------------------------------------------------
+Sun Oct 14 22:44:11 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 3.0.10+git.1539286261.2b549c5a:
+  * Bump Test Version 3.0.10
+  * Update strings to translate.
+  * Change adapter_lightnovelgatecom to adapter_novelonlinefullcom for site change.  Closes #346
+  * Bump Test Version 3.0.9
+  * Fix adapter_wuxiaworldco date formate for 24 hour clock.  Closes #345
+  * Bump Test Version 3.0.8
+  * Add max_zalgo feature.
+  * Bump Test Version 3.0.7
+  * Handle stories without cover correctly adapter_wwwlushstoriescom. Closes #344
+  * Bump Test Version 3.0.6
+
+-------------------------------------------------------------------
+Tue Oct  9 21:13:03 UTC 2018 - Matěj Cepl <mcepl@suse.com>
+
+- Update to 3.0.0:
+    * Update support for various sites
+    * adapter_chosentwofanficcom: use pagecache and
+      extracategories:Buffy the Vampire Slayer
+    * Add --no-meta-chapters/-z CLI option.
+    * Restore cursor in finally: clauses in case of issues.(plugin)
+    * Update Translations
+    * Tweak mobi output--move TOC to end.
+    * Improve CLI --save-cache, save on each fetch/post, fix a py2/py3
+      cross bug.
+    * Small fix for <> appearing in text format.
+    * Add latestonly option to mark_new_chapters feature to remove
+      pre-existing (new) chpater marks on update and only mark chapters
+      that are new in this update. Closes #330
+    * Attempting to get password protected stories in FimF working
+      again.
+    * Fix mobi output -- Fix an encoding issue, Kindle Goto-TOC works,
+      TOC links are more accurate
+    * Many, many changes to make code run on both python 2.7 and python
+      3.
+
+-------------------------------------------------------------------
+Wed Aug 15 20:37:00 UTC 2018 - mcepl@suse.com
+
+- Package also LICENSE and README.md
+
+-------------------------------------------------------------------
+Wed Aug 15 20:22:27 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2.28.0+git.1534354069.445b74bc:
+  * Bump Test Version 2.37.7
+  * Include LICENSE, etc differently to not end up installed in /usr/local
+  * Bump Test Version 2.37.6
+  * Cleanup Web Service HTML & CSS a bit. Email ebooks disabled.
+  * Bump Test Version 2.37.4
+  * Add DESCRIPTION.rst, LICENSE, README.md to pip package.  Closes #329
+
+-------------------------------------------------------------------
+Tue Aug 14 16:53:01 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 2.28.0+git.1534190226.9694cfa8:
+  * Use chapters collected, not all chapter count for determining TOC inclusion.  Closes #328
+  * Web: stripHTML() on allrecent descriptions.
+  * Web: Save output format setting in cookie.
+  * Put Nook STR Cover 'fix' back in.
+  * Bump Test Version 2.37.3
+  * MOBI Debug output
+  * Fix for mobi output--link to TOC works again--was broken by html5lib enforcing html5 rules.
+  * Fix for mobi broken page breaks at 'file' boundries and inline 'TOC' links.
+  * Fix for mobi issue with 0 byte record markers being misplaced.
+  * Fix a stray print to log in mobihtml.py
+
+-------------------------------------------------------------------
+Tue Aug 14 16:42:25 UTC 2018 - mcepl@suse.com
+
+- Initial packaging effort

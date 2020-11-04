@@ -1,0 +1,5011 @@
+--- README.SUSE
++++ README.SUSE	2005-10-21 15:05:34.000000000 +0200
+@@ -0,0 +1,23 @@
++
++           Dvgt for TeXLive with kpathsea
++           ==============================
++
++This is an adjusted version of dvgt. Therefore
++all obsolate options have been removed and
++other options are changed to work with the
++kpathsea library comming with TeXLive.
++
++             Your SUSE-Team
++
++-------------------------------------------------------------
++
++           Dvgt fuer TeXLive mit kpathsea
++           ==============================
++
++Es handelt sich hier um eine veraenderte version von
++dvgt.  Darum sind alle veralteten Optionen entfernt
++worden bzw. die ueberigen Optionen wurden an die
++Kpathsea-Bibliotheken, die in TeXLive enthalten sind,
++angepasst.
++
++             Ihr SUSE-Team
+--- doc/tripvdu.tex
++++ doc/tripvdu.tex	2005-10-21 15:05:34.000000000 +0200
+@@ -198,7 +198,7 @@ This is \TeX\ page [-11].
+ \font\Fs=cmr5 scaled 3000
+ \font\Ft=cmr10 scaled 200
+ \font\Fu=cmr10 scaled 5000
+-\font\Fv=cmsl10 scaled 49
++\font\Fv=cmsl10 scaled 100
+ \font\Fw=cmsl10 scaled 10000
+ 
+ \leftline{\Fr CMR5 at mag 500 does not exist.}
+@@ -207,7 +207,7 @@ This is \TeX\ page [-11].
+ \leftline{\Ft CMR10 at mag 200 does not exist.}
+ \leftline{\tenrm These characters are from CMR10 at mag 1000.}
+ \leftline{\Fu CMR10 at mag 5000 does not exist.}
+-\leftline{\Fv CMSL10 at mag 49 does not exist.}
++\leftline{\Fv CMSL10 at mag 100 does not exist.}
+ \leftline{\Fj These characters are from CMSL10 at mag 1000.}
+ \leftline{\Fw CMSL10 at mag 10000 does not exist.}
+ \vfil\eject
+--- doc/userguide.tex
++++ doc/userguide.tex	2005-10-21 15:05:34.000000000 +0200
+@@ -119,31 +119,31 @@ Option&  Program&   Environment&   Defau
+ \noalign{\medskip}
+ |-e|&   |dummy_tfm|& |DV_DUMMY_TFM|&  |DEF_DUMMY_TFM|&  Dummy TFM, used when\cr
+ &&&&                                                   correct TFM's absent.\cr
+-\noalign{\medskip}
+-|-f|&   |pkdir|&    |TEXPKS|&     |DEF_PK_DIR|&  PK fonts' directory.\cr
+-&&                   else&&\cr
+-&&                  |PKFONTS|&&\cr
+-&&                   else&&\cr
+-&&                  |TEXFONTS|&&\cr
+-\noalign{\medskip}
+-|-h|&   |cmd_help|& |DV_HELP|&     |DEF_CMD_HELP|&  Command help file read\cr
+-&&&&                                                by `?' command.\cr
+-\noalign{\medskip}
+-|-i|&   |immed_help|& |DV_IMMED_HELP|& |DEF_IMMED_HELP|&  Help file displayed\cr
+-&&&&                                                    at startup.\cr
++%\noalign{\medskip}
++%|-f|&   |pkdir|&    |TEXPKS|&     |DEF_PK_DIR|&  PK fonts' directory.\cr
++%&&                   else&&\cr
++%&&                  |PKFONTS|&&\cr
++%&&                   else&&\cr
++%&&                  |TEXFONTS|&&\cr
++%\noalign{\medskip}
++%|-h|&   |cmd_help|& |DV_HELP|&     |DEF_CMD_HELP|&  Command help file read\cr
++%&&&&                                                by `?' command.\cr
++%\noalign{\medskip}
++%|-i|&   |immed_help|& |DV_IMMED_HELP|& |DEF_IMMED_HELP|&  Help file displayed\cr
++%&&&&                                                    at startup.\cr
+ \noalign{\medskip}
+ |-l|&   |landscape|& ---&           (portrait)&     Landscape page\cr
+ &&&&                                               (swaps |-x| and |-y|).\cr
+ \noalign{\medskip}
+ |-m|&   mag&        ---&           (DVI mag)&      Magnification.\cr
+-\noalign{\medskip}
+-|-p|&   |psprefix|& |DV_PSPREFIX|&  |DEF_PS_PREFIX|&  PS font name prefix.\cr
++%\noalign{\medskip}
++%|-p|&   |psprefix|& |DV_PSPREFIX|&  |DEF_PS_PREFIX|&  PS font name prefix.\cr
+ \noalign{\medskip}
+ |-r|&   |xres|,&    |DV_RES|&      |DEF_XRES|,&    X and Y resolutions,\cr
+ &       |yres|&&                     |DEF_YRES|&     in dots per inch (dpi).\cr
+ \noalign{\medskip}
+-|-t|&   |tfmdir|&   |TEXFONTS|&    |DEF_TFM_DIR|&  TFM files' directory.\cr
+-\noalign{\medskip}
++%|-t|&   |tfmdir|&   |TEXFONTS|&    |DEF_TFM_DIR|&  TFM files' directory.\cr
++%\noalign{\medskip}
+ |-v|&   |vdu|&      |DV_TERM|&     ---&            Type of VDU.\cr
+ &&                   else&&\cr
+ &&                  |TERM|&&\cr
+@@ -156,7 +156,8 @@ Option&  Program&   Environment&   Defau
+ \noalign{\medskip}
+ \enddisplay
+ 
+-Options -d -e -f -h -i -p -r -t are really for system wizards;
++%Options -d -e -f -h -i -p -r -t are really for system wizards;
++Options -d -e -r are really for system wizards;
+ their default values have been set up so that most users need never worry
+ about changing them.
+ % SYSDEP: take note system wizards!
+@@ -169,13 +170,13 @@ about changing them.
+ \bigskip
+ \noindent Default values in the supplied `defaults.h'.
+ 
+-The default TFM and PK directories are:
+-\begindisplay
+-|.:/usr/local/lib/tex/fonts|\cr
+-|.:/usr/local/lib/tex/fonts/tmp|\cr
+-\enddisplay
+-These cause {\dvgt} to look first in the current directory, then in the
+-directories that are standard for Karl Berry's TeX distribution.
++%The default TFM and PK directories are:
++%\begindisplay
++%|.:/usr/local/lib/tex/fonts|\cr
++%|.:/usr/local/lib/tex/fonts/tmp|\cr
++%\enddisplay
++%These cause {\dvgt} to look first in the current directory, then in the
++%directories that are standard for Karl Berry's TeX distribution.
+ 
+ The default dummy TFM metric and PK font files are:
+ \begindisplay
+@@ -188,20 +189,20 @@ printers at present.
+ 
+ Consequently, the default resolution is 300,300 (dots per inch).
+ 
+-In Karl Berry's font naming convention, PostScript fonts' TFM files
+-are prefixed with the letter `p'.  By default, {\dvgt} follows this
+-convention.
+-Several PS font prefixes can be separated by the `:' character,
+-as with the PK and TFM directories.  The `:' character was chosen
+-because it seems easy to remember.
+-If no PS font prefixes are specified, as when the list of prefixes is
+-an empty string, `', then {\it no\/} fonts are considered PS fonts.
+-
+-The command and immediate help files default to:
+-\begindisplay
+-|/usr/local/lib/tex/dvgt/cmd.hlp|\cr
+-|/usr/local/lib/tex/dvgt/immed.hlp|\cr
+-\enddisplay
++%In Karl Berry's font naming convention, PostScript fonts' TFM files
++%are prefixed with the letter `p'.  By default, {\dvgt} follows this
++%convention.
++%Several PS font prefixes can be separated by the `:' character,
++%as with the PK and TFM directories.  The `:' character was chosen
++%because it seems easy to remember.
++%If no PS font prefixes are specified, as when the list of prefixes is
++%an empty string, `', then {\it no\/} fonts are considered PS fonts.
++
++%The command and immediate help files default to:
++%\begindisplay
++%|/usr/local/lib/tex/dvgt/cmd.hlp|\cr
++%|/usr/local/lib/tex/dvgt/immed.hlp|\cr
++%\enddisplay
+ 
+ Since most of the industrial world uses metric paper, the default
+ paper size is A4 (approximately 210 mm wide by 297 mm high).
+@@ -251,44 +252,44 @@ for Bounding Boxes.
+ If a TFM file is missing, then a dummy TFM is sought in the TFM paths.
+ The dummy TFM filename may be set using the |-e| option.
+ 
+-\bigskip
+-\noindent |-f| {\it dir\/}
+-
+-{\dvgt} gets all its bit-mapped font information from PK files stored
+-in the specified directory (which can, but need not, end with |/|).
+-
+-\TeX\ gets all its font information from TFM files.  A particular TFM file
+-usually has a number of corresponding bit-mapped font files, each one
+-corresponding to the same set of ideal character shapes, but at a
+-different size.
+-Although \TeX\ allows you to scale a font to virtually any size,
+-it is obviously impossible to provide an infinite number of bit-mapped fonts.
+-That is why it is best to stick to the pre-defined |\magstep| values when
+-scaling such fonts---you're much more likely to stay within the range of
+-existing PK files.
+-
+-The above warning does not apply to TFM files for resident
+-PostScript or other scalable fonts.  Such fonts can be used at any
+-desired size.
+-However, since no bit-map information is available, \dvgt\ cannot
+-show characters from such fonts in a Full display.
+-Instead, it shows those characters as outline rectangles, using the
+-TFM files to determine their bounding boxes, just as in Box mode.
+-
+-\bigskip
+-\noindent |-h| {\it file\/}
+-
+-The |?| command reads the help file specified by this option.
+-The default help file contains a brief summary of all the commands.
+-If no help file can be found, then a pre-compiled help text is shown.
+-
+-\bigskip
+-\noindent |-i|
+-
+-This `option' only displays the current immediate help file's pathname
+-and the name of the corresponding environment variable (|DV_IMMED_HELP|).
+-The immediate help file is displayed when {\tt dvgt} is typed alone
+-on the command line.
++%\bigskip
++%\noindent |-f| {\it dir\/}
++%
++%{\dvgt} gets all its bit-mapped font information from PK files stored
++%in the specified directory (which can, but need not, end with |/|).
++%
++%\TeX\ gets all its font information from TFM files.  A particular TFM file
++%usually has a number of corresponding bit-mapped font files, each one
++%corresponding to the same set of ideal character shapes, but at a
++%different size.
++%Although \TeX\ allows you to scale a font to virtually any size,
++%it is obviously impossible to provide an infinite number of bit-mapped fonts.
++%That is why it is best to stick to the pre-defined |\magstep| values when
++%scaling such fonts---you're much more likely to stay within the range of
++%existing PK files.
++%
++%The above warning does not apply to TFM files for resident
++%PostScript or other scalable fonts.  Such fonts can be used at any
++%desired size.
++%However, since no bit-map information is available, \dvgt\ cannot
++%show characters from such fonts in a Full display.
++%Instead, it shows those characters as outline rectangles, using the
++%TFM files to determine their bounding boxes, just as in Box mode.
++%
++%\bigskip
++%\noindent |-h| {\it file\/}
++%
++%The |?| command reads the help file specified by this option.
++%The default help file contains a brief summary of all the commands.
++%If no help file can be found, then a pre-compiled help text is shown.
++%
++%\bigskip
++%\noindent |-i|
++%
++%This `option' only displays the current immediate help file's pathname
++%and the name of the corresponding environment variable (|DV_IMMED_HELP|).
++%The immediate help file is displayed when {\tt dvgt} is typed alone
++%on the command line.
+ 
+ \bigskip
+ \noindent |-m| {\it i\/}
+@@ -321,12 +322,12 @@ that will be used to print your document
+ The Apple LaserWriter, for instance, has a resolution of 300 dots per
+ inch, so {\tt dvgt -r 300} suits it.
+ 
+-\bigskip
+-\noindent |-t| {\it dir\/}
+-
+-If a font name does not include an explicit directory, and requires
+-a TFM file, then \dvgt\ will use the |-t| value to locate the file.
+-The given value can, but need not, end with |/|.
++%\bigskip
++%\noindent |-t| {\it dir\/}
++%
++%If a font name does not include an explicit directory, and requires
++%a TFM file, then \dvgt\ will use the |-t| value to locate the file.
++%The given value can, but need not, end with |/|.
+ 
+ \bigskip
+ \noindent |-v| {\it string\/}
+@@ -346,6 +347,7 @@ values in upper or lower case:
+ \begindisplay
+ |aed512|&    (AED 512 with 512 by 512 screen)\cr
+ |kermit|&    (MS-Kermit, in Tek4010 emulation: same as ncsatel below)\cr
++|linux|&     (Linux SVGA driver)\cr
+ |ncsatel|&   (NCSA Telnet, in Tek4010 emulation)\cr
+ |regis|&     (any ReGIS compatible VDU;
+               synonyms = |gigi|, |vk100|, |vt125|, |vt240|)\cr
+@@ -444,7 +446,7 @@ and display
+ |Window at (|$h$|,|$v$|) |$wwd$| by |$wht
+    $|   Page at (|$minh$|,|$minv$|) |$pwd$| by |$pht$|   IN|\cr
+ |This is dvgt 3.51 (DVItoVDU, v. 3.0, gt mod 5 rev. 1) - Wed 25 Aug 93|\cr
+-|Command: |\cr
++|Command: (? for help) |\cr
+ \enddisplay
+ These lines represent the ``dialog region''; the rest of the screen is
+ called the ``window region'' and should be blank at this stage.
+--- src/Makefile.linux
++++ src/Makefile.linux	2005-10-21 15:05:34.000000000 +0200
+@@ -8,6 +8,16 @@
+ 
+ SHELL = /bin/sh
+ .SUFFIXES: .h
++VGA	= $(shell test -s /usr/include/vga.h && echo -DVGA)
++L64	= $(shell test -d /usr/lib64 && echo -L/usr/lib64)
++
++ifeq ($(VGA),-DVGA)
++linuxobj = linuxvdu.o
++linuxsrc = linuxvdu.c
++else
++linuxobj =
++linuxsrc =
++endif
+ 
+ # INC = -I/usr/local/include	# Where stdlib.h lives?
+ # INC = -I/usr/local/lib/gcc-include	# Where gcc's stdlib.h lives?
+@@ -21,13 +31,17 @@ SHELL = /bin/sh
+ #			NOGL set on.
+ 
+ CC = gcc
+-CFLAGS = -ansi -DNOLOG #-DNOGL
+-DEBUG = #-g  
++CFLAGS = -DNOLOG -DNOGL $(VGA)
++DEBUG = -g  
+ DEFN =
+ INC =
+-LDFLAGS = -s 
+-LIB = -lm -lvgagl -lvga
+-OPT = -O2 -ffast-math -finline-functions -fomit-frame-pointer 
++LDFLAGS =
++ifeq ($(VGA),-DVGA)
++LIB = -lm -lvgagl -lvga -lkpathsea
++else
++LIB = -lm -lkpathsea
++endif
++OPT = $(RPM_OPT_FLAGS)
+ 
+ USUALS = config.h globals.h
+ 
+@@ -47,7 +61,7 @@ objs =  dvireader.o dvitovdu.o fontreade
+ 
+ termobjs = \
+ 	aed512vdu.o \
+-	linuxvdu.o \
++	$(linuxobj) \
+ 	ncsatelvdu.o \
+ 	regisvdu.o \
+ 	tek4010emu.o \
+@@ -69,7 +83,7 @@ srcs =  dvireader.c dvitovdu.c fontreade
+ 
+ termsrcs = \
+ 	aed512vdu.c \
+-	linuxvdu.c \
++	$(linuxsrc) \
+ 	ncsatelvdu.c \
+ 	regisvdu.c \
+ 	tek4010emu.c \
+@@ -109,7 +123,7 @@ depend: $(CSRCS)
+ 
+ 
+ dvgt: $(objects)
+-	$(CC) $(LDFLAGS) $(DEBUG) $(objects) $(LIB) -o dvgt
++	$(CC) $(LDFLAGS) $(DEBUG) $(objects) $(L64) $(LIB) -o dvgt
+ # Only strip when not DEBUG-ging.
+ #	strip dvgt
+ 
+--- src/config.h
++++ src/config.h	2008-03-13 12:46:24.051230964 +0100
+@@ -5,6 +5,7 @@
+ 
+ #ifdef __linux__
+ #define _POSIX_SOURCE 1
++#define _BSD_SOURCE 1
+ #define USE_WAITPID
+ #endif
+ 
+@@ -12,6 +13,14 @@
+ #include <math.h>
+ #include <stdio.h>
+ 
++#include <kpathsea/c-auto.h>
++
++#include <kpathsea/debug.h>      /* debug */
++#include <kpathsea/progname.h>   /* program_invocation_name */
++#include <kpathsea/c-pathch.h>   /* DIR_SEP_STRING */
++#include <kpathsea/types.h>      /* boolean */
++#include <kpathsea/lib.h>        /* FATAL */
++
+ /* Word must be 32 bits.  Word is used in the PK bitmap operations. */
+ /* For an Architecture with 32-bit ints, Word can be int. */
+ 
+@@ -30,8 +39,9 @@ typedef int Word;    /* SYSDEP:  ASSUMES
+    LITTLE_ENDIAN prevails.
+ */
+ 
+-#define LITTLE_ENDIAN     /* As God intended */
++/* #define LITTLE_ENDIAN */	/* As God intended */
+ /* #define BIG_ENDIAN */	/* Otherwise*/
++#include <endian.h>
+ 
+ /* MakeTeXPK support */
+ #define MAKETEXPK "MakeTeXPK" /* command to call MakeTeXPK */
+@@ -67,12 +77,14 @@ typedef int Word;    /* SYSDEP:  ASSUMES
+ # define __(X) ()
+ #endif /* __STDC__ */
+ 
++#include <unistd.h>           /* defines intptr_t */
++
+ #ifdef __STDC__
+ # define Void       void      /* Void f() = procedure */
+ # define VOID       void      /* f (VOID) */
+ #else /* not __STDC__ */
+-# define void int
+-# define Void int
++# define void intptr_t
++# define Void intptr_t
+ # define VOID
+ #endif /* __STDC__ */
+ 
+@@ -132,12 +144,6 @@ typedef int Word;    /* SYSDEP:  ASSUMES
+ 
+ typedef Void (*VFP) (VOID);
+ typedef Void *Anyptr;
+-typedef unsigned char boolean;
+-
+-#ifndef true
+-# define true    1
+-# define false   0
+-#endif /* not defined true */
+ 
+ /* GT - Has Extern any advantage over extern ? */
+ #ifndef Extern
+@@ -145,7 +151,7 @@ typedef unsigned char boolean;
+ #endif /* not defined Extern */
+ 
+ Extern int P_argc;
+-Extern char **P_argv;
++Extern Char **P_argv;
+ 
+ /* Memory allocation */
+ extern int OutMem(VOID);
+@@ -158,7 +164,12 @@ extern int OutMem(VOID);
+ #endif
+ 
+ #ifdef GNUC_LIB
+-#  define Malloc(n)  (malloc(n) ?: (Anyptr)OutMem())
++inline static void * Malloc(size_t n)
++{
++  void *ret = malloc(n);
++  if (!ret) (void)OutMem();
++  return ret;
++}
+ #else /* not GNUC_LIB */
+   Extern Anyptr __MallocTemp__;
+ # ifdef ORIGINAL
+--- src/defaults.h
++++ src/defaults.h	2005-10-21 15:05:34.000000000 +0200
+@@ -5,27 +5,23 @@
+ 
+ /* Initial default values for various DVItoVDU quantities */
+ 
++#define DEF_MFMODE "cx"
++
+ #define DEF_XRES  300.0  /* Horizontal resolution in dpi */
+ #define DEF_YRES  300.0  /* Vertical   resolution in dpi */
+ 
++#if 0
+ #define DEF_PAPERWD  "8.5in"      /* American letter-size paper width  */
+ #define DEF_PAPERHT  "11in"       /* American letter-size paper height */
+-
+-#if 0
++#else
+ #define DEF_PAPERWD  "210mm"      /* A4 paper width  */
+ #define DEF_PAPERHT  "297mm"      /* A4 paper height */
+ #endif
+ 
+-#define DEF_PK_DIR  ".:/usr/TeX/lib/tex/fonts"
+-#define DEF_TFM_DIR  ".:/usr/TeX/lib/tex/fonts"
+     /* PK and TFM of last resort; assumed in resp. usual font directory: */
+ #define DEF_DUMMY_PK  "cmr10.300pk"
+ #define DEF_DUMMY_TFM  "cmr10.tfm"
+-   /* PS font prefix, by Karl Berry's convention. */
+-#define DEF_PS_PREFIX  "p"
+-
+-#define DEF_CMD_HELP  "/usr/TeX/bin/cmd.hlp"
+-#define DEF_IMMED_HELP  "/usr/TeX/bin/immed.hlp"
++#define DEF_DUMMY  "cmr10"
+ 
+ #endif /* DEFAULTS_H */
+ 
+--- src/dvgt.1
++++ src/dvgt.1	2005-10-21 15:05:34.000000000 +0200
+@@ -12,21 +12,12 @@ dvgt \- interactive TeX page previewer
+ .IR dummy_pk \|]  
+ .RB [\| \-e 
+ .IR dummy_tfm \|] 
+-.RB [\| \-f 
+-.IR pk_directory \|]  
+-.RB [\| \-h 
+-.IR helpfile \|]  
+-.RB [\| \-i \|]  
+ .RB [\| \-l \|]
+ .RB [\| \-m 
+ .IR magnification \|] 
+-.RB [\| \-p 
+-.IR postscript_font_prefix \|] 
+ .RB [\| \-r 
+ .IR xres 
+ .IR yres \|]  
+-.RB [\| \-t 
+-.IR tfm_directory \|] 
+ .RB [\| \-v 
+ .IR vdu \|]  
+ .RB [\| \-x 
+@@ -75,24 +66,6 @@ Default TFM file, similar to
+ option.  (default is system dependent; environment: DV_DUMMY_TFM)
+ 
+ .TP
+-.I \-f file   
+-.B dvgt
+-gets all its font information from PK files.  These files are kept within the
+-directory specified by this option.  (default is system dependent;
+-environment: PKFONTS or TEXFONTS) 
+-
+-.TP
+-.I \-h file
+-The ? command reads the help text file specified by this option. (default is
+-system dependent; environment: DV_HELP)   
+-
+-.TP
+-.I \-i
+-Display the path name of the immediate help file.  Typing "dvgt" by itself
+-displays the immediate help file.  (default is system dependent; environment:
+-DV_IMMED_HELP) 
+-
+-.TP
+ .I \-l
+ Set landscape mode:  exchange x and y dimensions.  (This does NOT rotate the
+ page, sorry.) The default is portrait mode.
+@@ -110,17 +83,6 @@ you are doing you should avoid using
+ especially if your TeX source file uses \magnification AND true
+ dimensions.  (default = DVI magnification) 
+ 
+-.TP
+-.I \-p postscript_font_prefix 
+-.B dvgt
+-will search the TFM search paths for TFM metric files with this prefix.  
+-.B dvgt
+-cannot interpret PostScript, but TFM files for PS fonts will allow 
+-.B dvgt
+-to leave sufficient space for PS font characters, which will then be displayed
+-as filled (Full mode) or outline (Box mode) blocks of that size.  (default is
+-system dependent; environment: DV_PSPREFIX)
+-
+ .TP 
+ .I \-r x,y, \-r x
+ .B dvgt 
+@@ -137,11 +99,6 @@ used as the resolution both horizontally
+ system dependent) 
+ 
+ .TP
+-.I \-t tfm_directory 
+-This sets the directory where dvgt will look for TFM (TeX Font Metric) files,
+-such as "cmr10.tfm". (default is system dependent; environment: TEXFONTS)
+-
+-.TP
+ .I \-v string
+ This option is used to tell 
+ .B dvgt
+--- src/dvireader.c
++++ src/dvireader.c	2008-03-13 12:55:37.386098252 +0100
+@@ -24,6 +24,7 @@ fontinfo * fontlist, * currfont;
+ specialinfo * speciallist;
+ boolean pageempty;
+ int minhp, minvp, maxhp, maxvp;
++double alpha = 0.0;
+ 
+ 
+ /*******************************************************************************
+@@ -371,7 +372,7 @@ Static Void ProcessFontDefs (VOID)
+   int f, c, s, d, a, l;   /* hold fntdef parameters */
+   int i;
+   Char ch;   /* for getting farea and fname */
+-  string farea, fname;   /* a and l bytes long respectively */
++  String farea, fname;   /* a and l bytes long respectively */
+ 
+   totalfonts = 0;   /* number of nodes in font list */
+   fontlist = (fontinfo *) NULL;
+@@ -383,6 +384,7 @@ Static Void ProcessFontDefs (VOID)
+       switch (DVIcommand - fntdef1)
+       {
+       case 0:
++      default:
+         f = GetDVIByte();
+         break;
+ 
+@@ -457,8 +459,8 @@ Static Void ProcessFontDefs (VOID)
+       if (DVIcommand != postpost)
+       {
+         /* gt - hope outstring has room enough - it should have. */
+-        string outstring;
+-        sprintf (outstring,
++        String outstring;
++        snprintf (outstring, maxstring,
+           "Unexpected DVI command in postamble = %d", DVIcommand);
+         MesgString (outstring);
+         MesgLine();
+@@ -522,7 +524,7 @@ Void OpenDVIFile (name)
+   {
+     int i;
+ 
+-    if (logfile != NULL)
++    if (logfile)
+       fprintf (logfile, "Opened DVI file `%s'\n", DVIname);
+   
+     /* get offset of last DVI byte */
+@@ -548,8 +550,10 @@ Void OpenDVIFile (name)
+        writeln ('total bytes = ', DVIoffset:1);
+      GUBED */
+ 
+-    fprintf (logfile, "Total DVI bytes = %d\n", DVIoffset);
+-    fflush (logfile);
++    if (logfile) {
++       fprintf (logfile, "Total DVI bytes = %d\n", DVIoffset);
++       fflush (logfile);
++    }
+ 
+     DVIoffset--;
+ 
+@@ -594,8 +598,8 @@ Void OpenDVIFile (name)
+     /* gt - I suppose this is correct for length */
+     int length = strlen (name);
+     /* gt - hope outstr has sufficient room */
+-    string outstr;
+-    sprintf (outstr, "Couldn't open DVI file: `%.*s'\n", length, name);
++    String outstr;
++    snprintf (outstr, maxstring, "Couldn't open DVI file: `%.*s'\n", length, name);
+     MesgString (outstr);
+     MesgLine();
+ 
+@@ -621,6 +625,7 @@ Static Void SkipFntdef (which)
+   switch (which)   /* which = DVIcommand - fntdef1 */
+   {
+   case 0:
++  default:
+     dummy = GetDVIByte();
+     break;
+ 
+@@ -928,7 +933,7 @@ boolean MoveToTeXPage (newTeXpage)
+ 
+   boolean Result;
+ 
+-  int savecurrbop, savecurrDVIpage, nextbop, i;
++  int savecurrbop = currbop, savecurrDVIpage, nextbop, i;
+   boolean atleastone;
+ 
+   /* save away current page and DVI position */
+@@ -1000,8 +1005,9 @@ Void SetConversionFactors (xres, yres, m
+   /* GT - The "254000.0" corresponds to ten thousand units per mm. */
+   /* Refer to TUG's DVI Driver standard. */
+ 
+-  xconv = ( num / 254000.0 * xres / den * magnification );
+-  yconv = ( num / 254000.0 * yres / den * magnification );
++  xconv = ( (double)num / 254000.0 * xres / (double)den * magnification );
++  yconv = ( (double)num / 254000.0 * yres / (double)den * magnification );
++  alpha = (((double)den / 7227.0) / 0x100000) * (25400000.0 / (double)num);
+ }
+ /* SetConversionFactors */
+ 
+@@ -1167,6 +1173,8 @@ Inline int YPixelRound (DVIunits)
+ 
+ /******************************************************************************/
+ 
++Static Void DoPutChar (int ch);
++
+ #ifdef __STDC__
+ Static Void DoSetChar (int ch)
+ #else
+@@ -1180,8 +1188,8 @@ Static Void DoSetChar (ch)
+ 
+   if (ch > maxTeXchar)
+   { /* ignore ch */
+-    string codestr;
+-    sprintf (codestr, "%d", ch);
++    String codestr;
++    snprintf (codestr, maxstring, "%d", ch);
+     MesgString ("Unknown character (code ");
+     MesgString (codestr);
+     MesgString (") from ");
+@@ -1209,8 +1217,25 @@ Static Void DoSetChar (ch)
+     char_tab = &char_info->chartable[char_info->charcount];
+     char_tab->hp = hh;
+     char_tab->vp = vv;
++    switch(ch) {
++	/*   DC -> ISO latin 8859-1 */
++	case 255: ch = 223; break;  /* LATIN SMALL LETTER SHARP S */
++	case 184: ch = 255; break;  /* LATIN SMALL LETTER Y WITH DIAERESI */
++	case 190: ch = 191; break;  /* INVERTED QUESTION MARK */
++	case 189: ch = 161; break;  /* INVERTED EXCLAMATION MARK */
++	case 191: ch = 163; break;  /* POUND SIGN */
++	case 159: ch = 167; break;  /* SECTION SIGN */
++	/*   DC Ligatures */
++	case 223: DoPutChar('S'); ch = 'S'; break;  /* UPPER LETTER SHARP S */
++	case 247: DoPutChar('o'); ch = 'e'; break;  /* Dane/Norw oe */ 
++	case 215: DoPutChar('O'); ch = 'E'; break;  /* Dane/Norw OE */ 
++	case 188: DoPutChar('i'); ch = 'j'; break;  /* Ligature ij  */
++	case 156: DoPutChar('I'); ch = 'J'; break;  /* Ligature IJ  */
++	/*   DC -> ISO latin 8859-2 */
++	/* Sorry, skipped */
++	default : break;
++    }
+     char_tab->code = ch;
+-
+     pix_tab = &currfont->pixelptr[ch];
+ 
+     /* do page edges increase? */
+@@ -1276,8 +1301,8 @@ Static Void DoPutChar (ch)
+ 
+   if (ch > maxTeXchar)
+   { /* ignore ch */
+-    string codestr;
+-    sprintf (codestr, "%d", ch);
++    String codestr;
++    snprintf (codestr, maxstring, "%d", ch);
+     MesgString ("Unknown character (code ");
+     MesgString (codestr);
+     MesgString (") from ");
+@@ -1304,6 +1329,24 @@ Static Void DoPutChar (ch)
+     char_tab = &char_info->chartable[char_info->charcount];
+     char_tab->hp = hh;
+     char_tab->vp = vv;
++    switch(ch) {
++	/*   DC -> ISO latin 8859-1 */
++	case 255: ch = 223; break;  /* LATIN SMALL LETTER SHARP S */
++	case 184: ch = 255; break;  /* LATIN SMALL LETTER Y WITH DIAERESI */
++	case 190: ch = 191; break;  /* INVERTED QUESTION MARK */
++	case 189: ch = 161; break;  /* INVERTED EXCLAMATION MARK */
++	case 191: ch = 163; break;  /* POUND SIGN */
++	case 159: ch = 167; break;  /* SECTION SIGN */
++	/*   DC Ligatures */
++	case 223: DoPutChar('S'); ch = 'S'; break;  /* UPPER LETTER SHARP S */
++	case 247: DoPutChar('o'); ch = 'e'; break;  /* Dane/Norw oe */ 
++	case 215: DoPutChar('O'); ch = 'E'; break;  /* Dane/Norw OE */ 
++	case 188: DoPutChar('i'); ch = 'j'; break;  /* Ligature ij  */
++	case 156: DoPutChar('I'); ch = 'J'; break;  /* Ligature IJ  */
++	/*   DC -> ISO latin 8859-2 */
++	/* Sorry, skipped */
++	default : break;
++    }
+     char_tab->code = ch;
+     pix_tab = &currfont->pixelptr[ch];
+ 
+@@ -1961,6 +2004,7 @@ Void InterpretPage (VOID)
+       switch (DVIcommand - put1)
+       {
+       case 0:
++      default:
+         DoPutChar (GetDVIByte());
+         break;
+ 
+@@ -1983,6 +2027,7 @@ Void InterpretPage (VOID)
+       switch (DVIcommand - set1)
+       {
+       case 0:
++      default:
+         DoSetChar (GetDVIByte());
+         break;
+ 
+@@ -2005,6 +2050,7 @@ Void InterpretPage (VOID)
+       switch (DVIcommand - fnt1)
+       {
+       case 0:
++      default:
+         DoFont (GetDVIByte());
+         break;
+ 
+@@ -2027,6 +2073,7 @@ Void InterpretPage (VOID)
+       switch (DVIcommand - xxx1)
+       {
+       case 0:
++      default:
+         param = GetDVIByte();
+         break;
+ 
+--- src/dvireader.h
++++ src/dvireader.h	2005-10-21 15:05:34.000000000 +0200
+@@ -91,11 +91,11 @@ typedef struct fontinfo
+   int fontnum;       /* DVI font number: -2^31 .. 2^30 - 1 */
+   int scaledsize;    /* scaled font size in DVI units      */
+   int designsize;    /* design size in DVI units           */
+-  string fontarea;   /* explicit font directory            */
++  String fontarea;   /* explicit font directory            */
+   int fontarealen;   /* length of fontarea                 */
+-  string fontname;   /* font name; e.g., "cmr10"           */
++  String fontname;   /* font name; e.g., "cmr10"           */
+   int fontnamelen;   /* length of font name                */
+-  string fontspec;   /* complete font file pathname        */
++  String fontspec;   /* complete font file pathname        */
+   int fontspeclen;   /* length of fontspec                 */
+   boolean fontexists;   /* can fontspec be opened?         */
+   boolean honest;     /* true (and not substitute) font    */
+@@ -106,6 +106,17 @@ typedef struct fontinfo
+   struct fontinfo * nextfont;   /* next node in font list  */
+ } fontinfo;   /* a node in list of fonts            */
+ 
++/* For reading VF files */
++typedef unsigned char bytes;
++#define one(fp)         ((bytes) getc(fp))
++#define four(fp)        (rbytes (fp, 4))
++inline static unsigned long int rbytes(FILE *fp, int size)
++{
++  unsigned long int x = 0;
++  while (size--) x = (x << 8) | one(fp);
++  return x;
++}
++
+ /* For the parameter in MoveToTeXPage: */
+ typedef int TeXcounters[10];
+ 
+@@ -120,7 +131,7 @@ typedef struct TeXpageinfo
+ 
+ typedef struct specialinfo
+ {
+-  string special;
++  String special;
+   int hp, vp;
+   struct specialinfo *nextspecial;
+ } specialinfo;
+@@ -148,6 +159,7 @@ Extern int minhp;   /* minimum horizonta
+ Extern int minvp;   /* minimum vertical pixel coordinate       */
+ Extern int maxhp;   /* maximum horizontal pixel coordinate     */
+ Extern int maxvp;   /* maximum vertical pixel coordinate       */
++Extern double alpha; /* conversion ratio, DVI unit per TFM unit */
+ 
+ extern Void InitDVIReader (VOID);
+ extern Void OpenDVIFile __((Char *name));
+--- src/dvitovdu.c
++++ src/dvitovdu.c	2009-07-22 15:04:15.806401407 +0200
+@@ -3,6 +3,7 @@
+ /* From input file "dvitovdu.p" */
+ 
+ #include <signal.h>
++#include <values.h>
+ 
+ #ifdef __STDC__
+ # include <time.h>
+@@ -14,6 +15,10 @@
+ 
+ #include "config.h"
+ 
++#include <kpathsea/c-ctype.h>
++#include <kpathsea/proginit.h>
++#include <kpathsea/tex-file.h>
++
+ #include "defaults.h"
+ #include "globals.h"
+ #include "help.h"
+@@ -33,7 +38,7 @@
+ /* Variables Exported, via config.h */
+ 
+ int P_argc = 0;
+-char ** P_argv = (char **) NULL;
++Char ** P_argv = (Char **) NULL;
+ Anyptr __MallocTemp__ = (Anyptr) NULL;
+ 
+ 
+@@ -47,6 +52,7 @@ FILE * logfile = (FILE *) NULL;
+ int DVIstatusl, windowstatusl, messagel, commandl, bottoml;
+ int windowh, windowv, windowwd, windowht;
+ 
++extern boolean xterm;
+ 
+ Static Void DisplayPage (VOID);
+ Static Void NextCommandLine (VOID);
+@@ -123,10 +129,10 @@ static FILE * def_log = (FILE *) NULL;
+ #define Quit            "Q"
+     /* have a guess                                         */
+ 
+-#define commprompt      "Command: "
++#define commprompt      "Command (? for help): "
+ 
+ 
+-Static string commstring;   /* holds user responses                   */
++Static String commstring;   /* holds user responses                   */
+ Static int commpos;   /* current position in commstring         */
+ Static int commlen;   /* length of commstring                   */
+ Static Char command;   /* starting character of command          */
+@@ -251,7 +257,7 @@ Static char * TimeString (VOID)
+ Void PadMesg (VOID)
+ {
+   /* Pad current text line with spaces. */
+-  string padding;
++  String padding;
+   int i;
+   for (i=0; i < maxstring; i++)
+     padding[i] = ' ';
+@@ -325,8 +331,10 @@ Static Void ClearMessageLine (VOID)
+      immediately after calling this routine.
+   */
+ 
+-  fprintf (logfile, "\n");
+-  fflush (logfile);
++  if (logfile) {
++    fprintf (logfile, "\n");
++    fflush (logfile);
++  }
+ 
+   ClearTextLine (messagel);
+   MoveToTextLine (messagel);
+@@ -366,8 +374,10 @@ Static Void UpdateDVIStatusLine ()
+ 
+   int i, lastnonzero;
+ 
+-  fprintf (logfile, "\n");
+-  fflush (logfile);
++  if (logfile) {
++    fprintf (logfile, "\n");
++    fflush (logfile);
++  }
+ 
+   ClearTextLine  (DVIstatusl);
+   MoveToTextLine (DVIstatusl);
+@@ -426,9 +436,9 @@ Static Void UpdateDVIStatusLine ()
+     MesgString (" ");
+ 
+   {
+-    string msgstring;
++    String msgstring;
+     /* gt - this is surely safe from overflow of msgstring - yes? */
+-    sprintf (msgstring, " Zoom=%.2f", zoomfactor);
++    snprintf (msgstring, maxstring, " Zoom=%.2f", zoomfactor);
+     MesgString (msgstring);
+   }
+ 
+@@ -448,7 +458,7 @@ Static Void WriteDimension (precision, r
+ {
+   /* Show the given pixel dimension in terms of currentunits. */
+ 
+-  double realdim;
++  double realdim = 0.0;
+   int fracpart;
+ 
+   switch (currentunits)
+@@ -635,13 +645,13 @@ Static boolean GetInteger (str_in, slen,
+      Note that a + or - by itself is valid and sets n to 0.
+   */
+ 
+-  string str;
++  String str;
+ 
+   int absval, last, sign;
+   boolean inttoobig;
+   boolean intfound = false;
+ 
+-  (void) memcpy (str, str_in, sizeof (string));
++  (void) memcpy (str, str_in, sizeof (String));
+ 
+   while (*pos < slen  && str[*pos] == ' ')  /* skip any leading spaces */
+   {
+@@ -720,12 +730,12 @@ Static boolean GetReal (str_in, slen, po
+   */
+ 
+   boolean Result;
+-  string str;
++  String str;
+ 
+   int sign, intpart, fracpart, divisor;
+   double absreal;
+ 
+-  (void) memcpy (str, str_in, sizeof (string));
++  (void) memcpy (str, str_in, sizeof (String));
+ 
+   /* GetInteger does not remember a sign by itself, so we need to check
+      for -ve dimensions like -.5 first.
+@@ -819,13 +829,13 @@ Static boolean GetDimension (res, str_in
+   */
+ 
+   boolean Result;
+-  string str;
++  String str;
+ 
+   int sign, intdim, fracpart, divisor;
+   double absrealdim;
+   boolean intpresent, dimtoobig;
+ 
+-  (void) memcpy (str, str_in, sizeof (string));
++  (void) memcpy (str, str_in, sizeof (String));
+ 
+   /* GetInteger does not remember a sign by itself, so we need to check
+      for -ve dimensions like -.5 first.
+@@ -989,8 +999,10 @@ Static Void BadCommandMessage (VOID)
+ 
+   badcommand = true;
+ 
+-  fprintf (logfile, "\n");
+-  fflush (logfile);
++  if (logfile) {
++    fprintf (logfile, "\n");
++    fflush (logfile);
++  }
+ 
+   ClearTextLine (commandl);
+   MoveToTextLine (commandl);
+@@ -1467,7 +1479,7 @@ Static Void ZoomWindow (VOID)
+      (and should be I or O).
+   */
+ 
+-  string zs;    /* Zoom command string */
++  String zs;    /* Zoom command string */
+   char zch2, zch3;    /* Zoom command characters 2 and 3 */
+   double zoomf;    /* Zoom Factor */
+   boolean zin = true;    /* flag for Zoom direction; default = Zoom in */
+@@ -1478,6 +1490,7 @@ Static Void ZoomWindow (VOID)
+   zs[1] = '\0';  /* properly terminate zs */
+ 
+   /* read second command character, which should be 'I' or 'O'. */
++  zch2 = 0;
+   if (commpos < commlen)
+   {
+     zch2 = Cap (commstring[commpos++]);
+@@ -1496,6 +1509,7 @@ Static Void ZoomWindow (VOID)
+       zin = false;
+       break;
+     case 'C':
++      zch3 = 0;
+       if (commpos < commlen)
+       {
+ 	zch3 = Cap (commstring[commpos++]);
+@@ -1524,9 +1538,9 @@ Static Void ZoomWindow (VOID)
+ 
+   if (!zok)
+   { /* invalid Z* command */
+-    string got;
++    String got;
+     ClearMessageLine();
+-    sprintf (got, "Read `%s', ", zs);
++    snprintf (got, maxstring, "Read `%s', ", zs);
+     MesgString (got);
+     MesgString ("ZI, ZO, ZCI or ZCO expected!");
+     BadCommandMessage();
+@@ -1562,10 +1576,10 @@ Static Void ZoomWindow (VOID)
+ 	zoomfactor = zoomf;
+       else  /* Zooms of unity or less are rejected */
+       {     /* this covers zero, and avoids ZI/ZO confusion for user */
+-	string msgstring;
++	String msgstring;
+ 
+ 	/* !! GT - dangerous, as msgstring may overflow - unlikely, though */
+-	sprintf (msgstring,
++	snprintf (msgstring, maxstring,
+ 	  "zoom factor must > 1, so keeping old factor of %.2f\n",
+ 	  zoomfactor);
+ 
+@@ -1580,10 +1594,10 @@ Static Void ZoomWindow (VOID)
+ #ifdef DEBUG
+     else /* no number; use the previous Zoom Factor */
+     {
+-      string msgstring;
++      String msgstring;
+ 
+       /* !! GT - dangerous, as msgstring may overflow - unlikely, though */
+-      sprintf (msgstring,
++      snprintf (msgstring, maxstring,
+ 	"no zoom argument, so retaining old factor of %.2f", zoomfactor);
+ 
+       ClearMessageLine();
+@@ -1829,7 +1843,7 @@ Static Void ProcessPage (VOID)
+      data structures imported from DVIReader.  This routine will also: set the
+      window size and location to useful values (if autoviewing), update
+      pageoffpaper (after checking to see if it was TRUE for the previous page
+-     processed as part of a multiple command string), set screenjustcleared,
++     processed as part of a multiple command String), set screenjustcleared,
+      paintwindow and paintWindowStatus to TRUE, set paintDVIStatus to
+      FALSE. */
+ 
+@@ -1931,7 +1945,7 @@ Static Void ChangeUnits (VOID)
+   */
+ 
+   Char nextch1, nextch2;
+-  string cstr;
++  String cstr;
+ 
+   /* skip any spaces between 'C' command and following unit */
+ 
+@@ -1951,7 +1965,7 @@ Static Void ChangeUnits (VOID)
+   else
+     nextch2 = ' ';
+ 
+-  sprintf (cstr, "%c%c", nextch1, nextch2);
++  snprintf (cstr, maxstring, "%c%c", nextch1, nextch2);
+ 
+   if (!strcmp (cstr, "IN"))
+     currentunits = ic;
+@@ -2189,18 +2203,18 @@ Static Void ShowStatistics (VOID)
+     goto _L999;
+ 
+   { /* beginblock */
+-    string realstring;
++    String realstring;
+ 
+     MesgString ("X Resolution (dpi) = ");
+     /* xres is unlikely to overflow realstring */
+-    sprintf (realstring, "%f", xres);
++    snprintf (realstring, maxstring, "%f", xres);
+     MesgString (realstring);
+     if (UserHitsReturn (&linecount))
+       goto _L999;
+ 
+     MesgString ("Y Resolution (dpi) = ");
+     /* yres is unlikely to overflow realstring */
+-    sprintf (realstring, "%f", yres);
++    snprintf (realstring, maxstring, "%f", yres);
+     MesgString (realstring);
+     if (UserHitsReturn (&linecount))
+       goto _L999;
+@@ -2222,20 +2236,6 @@ Static Void ShowStatistics (VOID)
+   if (UserHitsReturn (&linecount))
+     goto _L999;
+ 
+-  MesgString ("PK Font directory  = ");
+-  MesgString (LeftStr);
+-  MesgString (pkdir);
+-  MesgString (RightStr);
+-  if (UserHitsReturn (&linecount))
+-    goto _L999;
+-
+-  MesgString ("TFM directory      = ");
+-  MesgString (LeftStr);
+-  MesgString (tfmdir);
+-  MesgString (RightStr);
+-  if (UserHitsReturn (&linecount))
+-    goto _L999;
+-
+   MesgString ("Dummy PK font      = ");
+   MesgString (LeftStr);
+   MesgString (dummy_pk);
+@@ -2250,20 +2250,6 @@ Static Void ShowStatistics (VOID)
+   if (UserHitsReturn (&linecount))
+     goto _L999;
+ 
+-  MesgString ("PS font prefix     = ");
+-  MesgString (LeftStr);
+-  MesgString (psprefix);
+-  MesgString (RightStr);
+-  if (UserHitsReturn (&linecount))
+-    goto _L999;
+-
+-  MesgString ("Command Help file  = ");
+-  MesgString (LeftStr);
+-  MesgString (cmd_help);
+-  MesgString (RightStr);
+-  if (UserHitsReturn (&linecount))
+-    goto _L999;
+-
+   MesgString ("Horizontal offset  = ");
+   WriteXDim (precision, hoffset);
+   WriteUnits();
+@@ -2320,7 +2306,7 @@ Static Void ShowStatistics (VOID)
+        thisfontinfo != (fontinfo *) NULL;
+        thisfontinfo = thisfontinfo->nextfont)
+   {
+-    string msgstr;  /* output string for messages */
++    String msgstr;  /* output string for messages */
+     int len;        /* length of a displayed message */
+     int maxptroom = 7;  /* room for point size message */
+     int i;
+@@ -2332,7 +2318,7 @@ Static Void ShowStatistics (VOID)
+     }
+ 
+     /* most font names have at most 8 characters, for ms-dos! */
+-    sprintf (msgstr, "%-8s", thisfontinfo->fontname);
++    snprintf (msgstr, maxstring, "%-8s", thisfontinfo->fontname);
+     MesgString (msgstr);
+ 
+     MesgString (" ");
+@@ -2454,7 +2440,7 @@ _L999: ;
+ /******************************************************************************/
+ 
+ #define maxline         80
+-    /* SYSDEP: cmd_help should have <= maxline chars/line */
++    /* SYSDEP: cmd_help_strings should have <= maxline chars/line */
+ 
+ /******************************************************************************/
+ 
+@@ -2474,7 +2460,7 @@ Static boolean PrintText (text)
+   else
+   {
+     /* Print each text string */
+-    for (;  *text != (char *) NULL;  text++)
++    for (;  *text != (Char *) NULL;  text++)
+     {
+       printf ("%s", *text);
+       /* If there's no newline in *text, print one. */
+@@ -2516,7 +2502,7 @@ Static boolean PrintFile (filename)
+       if (strchr (outline, '\n') == (char *) NULL)
+         printf ("\n");
+     }
+-    retval = true;
++    retval = (fclose (filep) == 0);
+   }
+   return retval;
+ }
+@@ -2566,8 +2552,10 @@ Static boolean ShowFile (filename)
+ 
+     if ((ch = getc (filep)) == EOF)  /* SYSDEP: end of file */
+     {
+-      fprintf (logfile, "\n");
+-      fflush (logfile);
++      if (logfile) {
++	fprintf (logfile, "\n");
++	fflush (logfile);
++      }
+ 
+       ClearTextLine (bottoml);
+       MoveToTextLine (bottoml);
+@@ -2584,8 +2572,10 @@ Static boolean ShowFile (filename)
+     {
+       /* blank line before prompt */
+ 
+-      fprintf (logfile, "\n");
+-      fflush (logfile);
++      if (logfile) {
++	fprintf (logfile, "\n");
++	fflush (logfile);
++      }
+ 
+       ClearTextLine (bottoml);
+       MoveToTextLine (bottoml);
+@@ -2671,8 +2661,10 @@ Static boolean ShowText (text)
+   {
+     if (text[lines] == (Char *) NULL)  /* end of text */
+     {
+-      fprintf (logfile, "\n");
+-      fflush (logfile);
++      if (logfile) {
++	fprintf (logfile, "\n");
++	fflush (logfile);
++      }
+ 
+       ClearTextLine (bottoml);
+       MoveToTextLine (bottoml);
+@@ -2689,8 +2681,10 @@ Static boolean ShowText (text)
+     {
+       /* blank line before prompt */
+ 
+-      fprintf (logfile, "\n");
+-      fflush (logfile);
++      if (logfile) {
++	fprintf (logfile, "\n");
++	fflush (logfile);
++      }
+ 
+       ClearTextLine (bottoml);
+       MoveToTextLine (bottoml);
+@@ -2736,7 +2730,7 @@ Static boolean ShowCmdHelp (VOID)
+      maxline characters wide.
+   */
+ 
+-  return  (ShowFile (cmd_help)  ||  ShowText (cmd_help_strings));
++  return ShowText (cmd_help_strings);
+ }
+ /* ShowCmdHelp */
+ 
+@@ -3238,10 +3232,7 @@ Static boolean FullChar (VOID)
+ 	    if (!OpenFontFile (thisfontinfo->fontspec))
+ 	      NotFound (thisfontinfo->fontspec);
+ 	  } else {
+-	    string dummyspec;
+-	    BuildFileSpec (pkdir, dummy_pk, dummyspec);
+-	    if (!OpenFontFile (dummyspec))
+-	      NotFound (dummyspec);
++	      NotFound (dummy_pk);
+ 	  }
+ 	  fontopen = true;   /* only open font once */
+ 	}
+@@ -3296,6 +3287,7 @@ Static boolean FullChar (VOID)
+ 	  wordpos = 0;
+ 
+ 	  /* only consider visible bits; thisbit := left to right */
++	  scaledh = 0;
+ 	  thisbit = left;
+ 	  while (true)  /* bit loop */
+ 	  {
+@@ -3644,8 +3636,10 @@ Static Void DisplayPage (VOID)
+     }
+   }
+ 
+-  fprintf (logfile, "\n");
+-  fprintf (logfile, "Displayed Page.\n");
++  if (logfile) {
++    fprintf (logfile, "\n");
++    fprintf (logfile, "Displayed Page.\n");
++  }
+   MesgFlush();
+ }
+ /* DisplayPage */
+@@ -3654,10 +3648,10 @@ Static Void DisplayPage (VOID)
+ /******************************************************************************/
+ 
+ #ifdef __STDC__
+-Void ProcessCommandLine (string commstring)
++Void ProcessCommandLine (String commstring)
+ #else
+ Void ProcessCommandLine (commstring)
+-   string commstring;
++   String commstring;
+ #endif
+ {
+   /* Parse commstring, and call the appropriate command handler
+@@ -3918,8 +3912,10 @@ Static Void Finish (VOID)
+   ResetVDU();
+   RestoreTerminal();
+ 
+-  fprintf (logfile, "Closed DVI file, reset VDU, and restored terminal.\n");
+-  fflush (logfile);
++  if (logfile) {
++    fprintf (logfile, "Closed DVI file, reset VDU, and restored terminal.\n");
++    fflush (logfile);
++  }
+ }
+ /* Finish */
+ 
+@@ -4030,6 +4026,11 @@ Void TrapInterrupts (VOID)
+ 
+ /******************************************************************************/
+ 
++#ifdef __linux__
++uid_t saveuid;
++gid_t savegid;
++#endif
++
+ #ifdef  __STDC__
+ int main (int argc, Char *argv[])
+ #else
+@@ -4037,14 +4038,19 @@ int main (argc, argv)
+     int argc;  Char * argv[];
+ #endif
+ {
+-  P_argv = argv;
+-  P_argc = argc;
+-
+ #ifdef __linux__
+-  setreuid(geteuid(),getuid()); /* Temporarily give up privs */
+-  setregid(getegid(),getgid()); 
++  saveuid=geteuid();
++  savegid=getegid();
++  seteuid(getuid());
++  setegid(getgid());
+ #endif
+ 
++  kpse_set_program_name  (argv[0], "dvgt");
++  kpse_set_program_enabled (kpse_pk_format, true, kpse_src_compile);
++
++  P_argv = argv;
++  P_argc = argc;
++
+   save_init_tty();  /* save initial terminal settings, early */
+ 
+   textlinewidth = 80;  /* for the initial screen type */ 
+@@ -4053,21 +4059,15 @@ int main (argc, argv)
+ 
+   if (argc <= 1)  /* No commandline arguments: assume user is new */
+   {
+-    char * env;
+-    stringcopy (immed_help, (!(env = getenv ("DV_IMMED_HELP")) ?
+-			  DEF_IMMED_HELP : env));
+-    /* If this file cannot be printed, print the precompiled information */
+-    if (!PrintFile (immed_help))
+-      PrintText (immed_help_strings);
++    PrintText (immed_help_strings);
+   }
+   else
+   {
+-
+ #ifndef NOLOG
+     DefaultLog();  /* until a DVI-file-specific log's established */
+ #endif /* NOLOG */
+     InitOptions();   /* initialise DVIname and command options */
+-    if (DVIname == (char *) NULL ||  strlen (DVIname) == 0
++    if (DVIname == (Char *) NULL ||  strlen (DVIname) == 0
+ 				 ||  DVIname[0] == ' ')
+     {
+       /* gt - Eventually, I want to load DVI files interactively. */
+@@ -4128,6 +4128,14 @@ int main (argc, argv)
+       if (mag == 0)   /* use DVImag */
+ 	mag = DVImag;
+       SetConversionFactors (xres, yres, mag/1000.0);   /* for DVIReader */
++      if (xterm) {
++	WriteChar(ESC);
++	WriteChar('[');
++	WriteChar('?');
++	WriteChar('3');
++	WriteChar('8');
++	WriteChar('h');
++      }
+       InitVDU();   /* init windowwd/ht etc. */
+       InitWinVars();
+       StartText();
+@@ -4143,6 +4151,10 @@ int main (argc, argv)
+ 	NextCommandLine();   /* parse and execute command(s) */
+       } while (strcmp ((sprintf (STR1, "%c", command), STR1), Quit));
+       Finish();
++      if (xterm) {
++	WriteChar(ESC);
++	WriteChar('\003');
++      }
+     }  /* if */
+   }  /* if */
+   return 0;  /* OK */
+--- src/fontreader.c
++++ src/fontreader.c	2008-03-13 13:05:17.352948854 +0100
+@@ -1,8 +1,15 @@
+-/* fontreader.c - 19:53 GMT +10:00 Thu 29 July 1993 - modifier Geoffrey Tobin */
+-
+-/* From input file "../include/globals.p" */
++/* fontreader.c - functions for reading PK fonts
++   $Id: fontreader.c,v 0.2 1997/03/28 03:16:59 tjchol01 Exp $
++   Authors: Andrew Trevorrow, Ian Dall, Geoffrey Tobin, Tomasz J. Cholewo
++ */
+ 
+ #include "config.h"
++
++#include <kpathsea/config.h>
++#include <kpathsea/tex-file.h>
++#include <kpathsea/tex-glyph.h>
++#include <kpathsea/tex-make.h>
++
+ #include "globals.h"
+ #include "files.h"
+ #include "screenio.h"
+@@ -10,1025 +17,334 @@
+ #include "options.h"
+ #include "dvireader.h"
+ #include "fontreader.h"
+-#include "defaults.h"
+-
+-#include "new.h"
+-#include "lstring.h"
+-
+-#ifdef USE_WAITPID
+-	/* ashtray, 13/10/1993 */
+-#	include <sys/wait.h>
+-#	include	<unistd.h>
+-#endif
+-
+ 
+ typedef struct _REC_TFMinfo
+-{
+-  int wdindex, htindex, dpindex;
+-} _REC_TFMinfo;
++  {
++    int wdindex, htindex, dpindex;
++  }
++_REC_TFMinfo;
+ 
+ typedef struct _REC_charmetrics
+-{
+-  int width[4], height[4], depth[4];
+-} _REC_charmetrics;
++  {
++    int width[4], height[4], depth[4];
++  }
++_REC_charmetrics;
+ 
+ 
+-Static int PTfile;        /* PK/TFM file descriptor              */
+-Static int PToffset;      /* current byte offset in PTfile       */
+-Static int currPTbuff;    /* starting byte offset in buffer      */
+-Static buffer PTbuffer;   /* input buffer                        */
+-Static int gpower[33];    /* 0,1,11,111,1111,...                 */
+-Static boolean turnon;    /* is current run black?               */
+-Static int dynf;          /* dynamic packing variable            */
+-Static int repeatcount;   /* times to repeat the next row        */
+-Static int bitweight;     /* for bits or nybbles from inputbyte  */
+-Static int inputbyte;     /* the current input byte              */
+-Static int lf, lh, bc, ec, nw, nh;  /* TFM file data; lf unused  */
+-Static _REC_TFMinfo TFMinfo[maxTeXchar+1];
+-Static _REC_charmetrics charmetrics[maxTeXchar+1];
+-
+-
+-/******************************************************************************/
+-
+-#ifdef __STDC__
+-boolean CheckFontPtr (fontinfo * fontptr)
+-#else
+-boolean CheckFontPtr (fontptr)
+-    fontinfo * fontptr;
+-#endif
++static int PTfile;		/* PK/TFM file descriptor              */
++static int PToffset;		/* current byte offset in PTfile       */
++static int currPTbuff;		/* starting byte offset in buffer      */
++static buffer PTbuffer;		/* input buffer                        */
++static int gpower[33];		/* 0,1,11,111,1111,...                 */
++static boolean turnon;		/* is current run black?               */
++static int dynf;		/* dynamic packing variable            */
++static int repeatcount;		/* times to repeat the next row        */
++static int bitweight;		/* for bits or nybbles from inputbyte  */
++static int inputbyte;		/* the current input byte              */
++static int lf, lh, bc, ec, nw, nh;	/* TFM file data; lf unused  */
++static _REC_TFMinfo TFMinfo[maxTeXchar + 1];
++static _REC_charmetrics charmetrics[maxTeXchar + 1];
++
++/*--------------------------------------------------------------------*/
++boolean 
++CheckFontPtr (fontinfo * fontptr)
+ {
+   boolean check = false;
+   if (fontptr == (fontinfo *) NULL)
+-  {
+-    MesgString ("NULL font info passed to CheckFontPtr!");
+-    MesgLine();
+-    check = false;
+-  }
++    {
++      MesgString ("NULL font info passed to CheckFontPtr!");
++      MesgLine ();
++      check = false;
++    }
+   else if (fontptr->fontnamelen == 0)
+-  {
+-    MesgString ("Zero length font name in font info passed to CheckFontPtr!");
+-    MesgLine();
+-    check = false;
+-  }
+-  else if (!strcmp (fontptr->fontname, ""))
+-  {
+-    MesgString ("Empty font name in font info passed to CheckFontPtr!");
+-    MesgLine();
+-    check = false;
+-  }
+-  else
+-  {
+-    check = true;
+-  }
+-  return check;
+-}
+-/* CheckFontPtr */
+-
+-/******************************************************************************/
+-
+-#ifdef __STDC__
+-boolean BuildFileSpec (const char * areas, const char * name, string spec)
+-#else
+-boolean BuildFileSpec (areas, name, spec)
+-    char * areas, * name;
+-    string spec;
+-#endif
+-{
+-  /* Build a complete file specification in spec.
+-     Firstly, test for valid areas and name.
+-  */
+-
+-  boolean found = false, more = false;
+-  string paths;
+-  char * s = (char *) NULL;
+-  LString * Lspec = NewLString (maxfontspec);
+-
+-  if (areas == (char *) NULL)
+-  {
+-    MesgString ("NULL areas passed to BuildFileSpec!");
+-    MesgLine();
+-    return false;
+-  }
+-  else if (strlen (areas) == 0)
+-  {
+-    MesgString ("Zero length areas passed to BuildFileSpec!");
+-    MesgLine();
+-    return false;
+-  }
+-
+-  if (name == (char *) NULL)
+-  {
+-    MesgString ("NULL file name passed to BuildFileSpec!");
+-    MesgLine();
+-    return false;
+-  }
+-  else if (strlen (name) == 0)
+-  {
+-    MesgString ("Zero length file name passed to BuildFileSpec!");
+-    MesgLine();
+-    return false;
+-  }
+-
+-  /* copy areas to paths because strtok() overwrites */
+-  strncpy (paths, areas, maxfontspec);
+-  paths[maxfontspec] = '\0';  /* to be careful */
+-
+-  found = false;
+-  more = true;
+-
+-  /* loop for each directory listed in paths */
+-  for (s = paths; !found && more; s = (char *) NULL)
+-  {
+-    /* NOTE:  strtok returns NULL if all characters of s occur in DIRSEP */
+-    char * onepath = strtok (s, DIRSEP);  /* Hope strtok is common in C's */
+-    if (onepath == (char *) NULL)
+     {
+-      more = false;
++      MesgString ("Zero length font name in font info passed to CheckFontPtr!");
++      MesgLine ();
++      check = false;
+     }
+-    else
++  else if (!strcmp (fontptr->fontname, ""))
+     {
+-      /* start file spec. with one directory */
+-      Scopys (Lspec, onepath);
+-      Scats (Lspec, "/");
+-
+-      /* append name */
+-      Scats (Lspec, name);
+-
+-      strncpy (spec, Lspec->s, maxfontspec);
+-      spec[maxfontspec] = '\0';  /* to be careful */
+-
+-      /* check whether file exists where spec indicates */
+-      { /* start block */
+-        FILE * fp = fopen (spec, "r");
+-        if (fp != (FILE *) NULL)
+-        {
+-          fclose (fp);
+-          found = true;
+-        }
+-      } /* end block */
+-    } /* fi */
+-  } /* loop for each directory listed in paths */
+-
+-  FreeLString (Lspec);
+-
+-  return found;
+-}
+-/* BuildFileSpec */
+-
+-/******************************************************************************/
+-
+-#ifdef __STDC__
+-Static boolean BuildTFMSpec (fontinfo *tfmptr)
+-#else
+-Static boolean BuildTFMSpec (tfmptr)
+-    fontinfo *tfmptr;
+-#endif
+-{
+-  /* Build a complete TFM file specification in tfmptr->fontspec.
+-     This will be done at most once per font.
+-     Test for valid tfmptr->fontname.
+-     ASSUMPTIONS:
+-       tfmptr->fontname contains the basename of the font.
+-     SIDE EFFECTS on success:
+-       tfmptr->fontspec will be set.
+-       tfmptr->fontspeclen will no longer be 0.
+-       tfmptr->fontexists becomes TRUE if the TFM file can be opened,
+-                                  FALSE, if it cannot.
+-       tfmptr->pkfont becomes FALSE.
+-       (tfmptr->psfont is unaffected.)
+-     SIDE EFFECTS on failure:
+-         EITHER:
+-       tfmptr is NULL.
+-         OR:
+-       tfmptr->fontspec will be unset (holds empty string "").
+-       tfmptr->fontspeclen will be 0.
+-       tfmptr->fontexists becomes FALSE.
+-       tfmptr->pkfont becomes FALSE.
+-       tfmptr->psfont becomes FALSE.
+-  */
+-
+-  boolean found = false, more = false;
+-  string tfmdirs;
+-  char * s = (char *) NULL;
+-  LString * Ltfmspec = NewLString (maxfontspec);
+-
+-  if (!CheckFontPtr (tfmptr))
+-    return false;
+-
+-  /* Initialise correctly */
+-  strncpy (tfmptr->fontspec, "", maxfontspec);
+-  tfmptr->fontspeclen = 0;
+-  tfmptr->fontexists = false;
+-  tfmptr->pkfont = false;
+-
+-  /* tfmptr->fontarea has been read from DVI file. */
+-  /* See "dvireadr.c". */
+-  /* We normally expect fontarea to be empty, for portability. */
+-
+-  if (tfmptr->fontarealen > 0)
+-  {
+-    /* start TFM spec. with fontarea as read from DVI file */
+-    strncpy (tfmdirs, tfmptr->fontarea, maxfontspec);
+-    tfmdirs[maxfontspec] = '\0';  /* to be careful */
+-  }
+-  else
+-  {
+-    /* start TFM spec. with each directory from tfmdir, */
+-    /* as set in "options.c" */
+-    strncpy (tfmdirs, tfmdir, maxfontspec);
+-    tfmdirs[maxfontspec] = '\0';  /* to be careful */
+-  }
+-
+-  found = false;
+-  more = true;
+-
+-  /* loop for each TFM directory listed in tfmdirs */
+-  for (s = tfmdirs; !found && more; s = (char *) NULL)
+-  {
+-    /* NOTE:  strtok returns NULL if all characters of s occur in DIRSEP */
+-    char * onetfmdir = strtok (s, DIRSEP);
+-    if (onetfmdir == (char *) NULL)
+-    {
+-      more = false;
+-    }
+-    else
+-    {
+-      /* start TFM spec. with one TFM directory */
+-      Scopys (Ltfmspec, onetfmdir);
+-      Scats (Ltfmspec, "/");
+-
+-      /* append <fontname>.tfm */
+-      Scats (Ltfmspec, tfmptr->fontname);
+-      Scats (Ltfmspec, ".tfm");
+-
+-      strncpy (tfmptr->fontspec, Ltfmspec->s, maxfontspec);
+-      tfmptr->fontspec[maxfontspec] = '\0';  /* to be careful */
+-      tfmptr->fontspeclen = strlen (tfmptr->fontspec);  /* quite important */
+-
+-      /* check whether TFM file exists where tfmptr->fontspec indicates */
+-      { /* start block */
+-        FILE * fp = fopen (tfmptr->fontspec, "r");
+-        if (fp != (FILE *) NULL)
+-        {
+-          fclose (fp);
+-          tfmptr->fontexists = true;
+-          tfmptr->pkfont = false;
+-          found = true;
+-        }
+-      } /* end block */
+-    } /* fi */
+-  } /* loop for each TFM directory listed in tfmdirs */
+-
+-  FreeLString (Ltfmspec);
+-
+-  /* Finalise correctly */
+-  if (!found)
+-  {
+-    strncpy (tfmptr->fontspec, "", maxfontspec);
+-    tfmptr->fontspeclen = 0;
+-    tfmptr->fontexists = false;
+-    tfmptr->pkfont = false;
+-    tfmptr->psfont = false;
+-  }
+-
+-  return found;
+-}
+-/* BuildTFMSpec */
+-
+-/******************************************************************************/
+-
+-#ifdef __STDC__
+-Static boolean
+-FndFileInDir (Char *area, Char *name, int mag, fontinfo *pkfp)
+-#else
+-Static boolean
+-FndFileInDir (area, name, mag, pkfp)
+-    Char *area; Char *name; int mag; fontinfo *pkfp;
+-#endif
+-{
+-  /* Seek file <name>.<mag>pk in directory <area>/<name> or <area> .
+-     If it's found, then store that file spec. in pkfp->fontspec,
+-     set pkfp->fontspeclen to the length of that file spec,
+-     and return true.
+-     If the file spec. is truncated, or the file is not found,
+-     then return false.
+-  */
+-
+-  boolean status = false;
+-  char  s[BUFSIZ];
+-  int len;
+-
+-  /* Does file exist? */
+-  (Void) sprintf (s, "%s/%s/%s.%dpk", area, name, name, mag);
+-  if (access (s, F_OK))
+-    (Void) sprintf (s, "%s/%s.%dpk", area, name, mag);
+-
+-  (Void) strncpy (pkfp->fontspec, s, maxfontspec);
+-  pkfp->fontspec[maxfontspec] = '\0';  /* to be careful */
+-  pkfp->fontspeclen = strlen (pkfp->fontspec);
+-
+-  len = strlen (s);
+-  if (len > maxfontspec)
+-  {
+-    fprintf (logfile, "PK font's spec. length = %d\n", pkfp->fontspeclen);
+-    fprintf (logfile, "PK font's spec. = %s\n", pkfp->fontspec);
+-    fprintf (logfile, "That PK font's spec. was truncated!\n");
+-    fflush (logfile);
+-
+-    status = false;
+-  }
++      MesgString ("Empty font name in font info passed to CheckFontPtr!");
++      MesgLine ();
++      check = false;
++    }
+   else
+-  {
+-    /* Can file be read? */
+-    if (!access (pkfp->fontspec, R_OK))
+-      status = true;
+-    else
+-      status = false;
+-  }
+-  return status;
++    {
++      check = true;
++    }
++  return check;
+ }
+-/* FndFileInDir */
++/* CheckFontPtr */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#define PK_MAGIC 4
++#define fntdef1		243
++    /* fntdef2,fntdef3,fntdef4 = 244,245,246 */
+ 
+-#ifdef __STDC__
+-Static boolean BuildPKSpec (fontinfo * pkptr)
+-#else
+-Static boolean BuildPKSpec (pkptr)
+-fontinfo * pkptr;
+-#endif
++/* Scalewidth is code of dvips */
++static int scalewidth (int a, int b)
+ {
+-  /* Build a complete PK file specification in pkptr->fontspec.
+-     This will be done at most once per font.
+-     Test for valid pkptr->fontname.
+-     Rounding error in resolution requires an off-by-one check.
+-     ASSUMPTIONS:
+-       The global variables  mag  and  xres  must be defined.
+-       pkptr->scaledsize  and  pkptr->designsize  must be defined.
+-       pkptr->fontname contains the basename of the font.
+-     SIDE EFFECTS on success:
+-       pkptr->fontspec will be set.
+-       pkptr->fontspeclen will no longer be 0.
+-       pkptr->fontexists becomes TRUE if the PK file can be opened,
+-                                 FALSE, if it cannot.
+-       pkptr->pkfont becomes TRUE if the PK file can be opened,
+-                             FALSE, if it cannot.
+-       pkptr->psfont becomes FALSE;
+-     SIDE EFFECTS on failure:
+-         EITHER:
+-       pkptr is NULL.
+-         OR:
+-       pkptr->fontspec will be unset (holds empty string "").
+-       pkptr->fontspeclen will be 0.
+-       pkptr->fontexists becomes FALSE.
+-       pkptr->pkfont becomes FALSE.
+-       pkptr->psfont becomes FALSE;
+-  */
+-
+-  extern string pkdir;
+-
+-  boolean found = false, more = true;
+-  string pkdir2;
+-  char * s = (char *) NULL;
+-
+-  if (!CheckFontPtr (pkptr))
+-    return false;
+-
+-  /* Initialise correctly */
+-  strncpy (pkptr->fontspec, "", maxfontspec);
+-  pkptr->fontspeclen = 0;
+-  pkptr->fontexists = false;
+-  pkptr->pkfont = false;
+-  pkptr->psfont = false;
+-
+-  stringcopy (pkdir2, pkdir);
+-
+-  found = false;
+-  more = true;
+-
+-  /* loop for each directory in pkdir2 */
+-  for (s = pkdir2; !found && more; s = (char *) NULL)
+-  {
+-    char * onepkdir = (char *) NULL;
+-    int fontsize;
+-    int tempsize, tempsizelen;
+-    int i;
+-
+-    /* NOTE:  strtok returns NULL if all characters of s occur in DIRSEP */
+-    onepkdir = strtok (s, DIRSEP);
+-    if (onepkdir == (char *) NULL)
+-    {
+-      more = false;
+-    }
+-    else
+-    {
+-      string fontname;
+-      int onepkdirlen = strlen (onepkdir);
+-
+-      /* To be careful: */
+-      if (onepkdirlen >= maxfontspec)
+-      {
+-        onepkdirlen = maxfontspec - 1;
+-
+-        fprintf (logfile, "The PK directory `%s' was just truncated!\n",
+-                          onepkdir);
+-        fflush (logfile);
+-      }
+-
+-      strncpy (fontname, pkptr->fontname, maxfontspec);
+-      fontname[maxfontspec] = '\0';  /* to be careful */
+-
+-      /* start PK spec. with one PK dir */
+-      strncpy (pkptr->fontspec, onepkdir, maxfontspec-1);
+-      pkptr->fontspec[maxfontspec] = '\0';  /* to be careful */
+-      pkptr->fontspeclen = strlen (pkptr->fontspec);
+-
+-      pkptr->fontspec[onepkdirlen] = '/';
+-      pkptr->fontspec[onepkdirlen + 1] = '\0';
+-
+-      /* gt - I hope "xres" is the right thing to use for the font size */
+-      fontsize = (int) (mag / 1000.0
+-          * (double) pkptr->scaledsize / pkptr->designsize
+-          * xres
+-        + 0.5);
+-
+-      if (fontsize == 0)  /* allow for subtracting 1 */
+-        ++ fontsize;
+-
+-      tempsize = fontsize;
+-
+-      for (i=0; true; i++)  /* loop for adjacent font sizes */
+-      {
+-        /* Complete rest of fontspec,
+-           and return the position of first digit for fontsize.
+-           We have to try fontsize +/- 1 before giving up because
+-           rounding problems can occur in the above fontsize calculation.
+-         */
+-
+-        { /* start block for tempsizelen */
+-          /* count decimal digits in tempsize */
+-          int j = tempsize;
+-          tempsizelen = 0;
+-          while (j > 0)
+-          {
+-            ++ tempsizelen;
+-            j /= 10;
+-          }
+-        } /* end block for tempsizelen */
+-
+-        /* gt - WHAT and WHY is this MAGIC NUMBER (4) here? */
+-        if ((pkptr->fontnamelen + tempsizelen + PK_MAGIC)
+-            > sizeof (fontname))
+-        {
+-          break;
+-        }
+-
+-        if (FndFileInDir (onepkdir, fontname, tempsize, pkptr))
+-        {
+-          pkptr->fontexists = true;  /* specified PK file exists */
+-          pkptr->pkfont = true;
+-          pkptr->psfont = false;
+-          found = true;
+-          break;
+-        }
+-        else if (i > 2)  /* original fontsize has been restored */
+-        {
+-          break;
+-        }
+-        else
+-        {
+-          if (i == 0)
+-            tempsize = fontsize - 1;  /* try fontsize-1 */ 
+-          else if (i == 1)
+-            tempsize = fontsize + 1;  /* try fontsize+1 */
+-          else /* i == 2 */
+-            tempsize = fontsize;      /* restore original fontsize */
+-        } /* inner if */
+-      } /* inner loop for adjacent font sizes */
+-    } /* outer if */
+-  } /* end loop for each directory in pkdir2 */
+-
+-  /* Finalise correctly */
+-  if (!found)
+-  {
+-    strncpy (pkptr->fontspec, "", maxfontspec);
+-    pkptr->fontspeclen = 0;
+-    pkptr->fontexists = false;
+-    pkptr->pkfont = false;
+-    pkptr->psfont = false;
+-  }
++  int al, bl ;
+ 
+-  return found;
++  if (a < 0) return -scalewidth(-a, b);
++  if (b < 0) return -scalewidth(a, -b);
++  al = a & 32767;
++  bl = b & 32767;
++  a >>= 15;
++  b >>= 15;
++  return (((al*bl/32768) + a*bl+al*b)/32 + a*b*1024);
+ }
+-/* BuildPKSpec */
+ 
+-#undef PK_MAGIC
+-
+-/******************************************************************************/
+-
+-#ifdef __STDC__
+-boolean BuildFontSpec (fontinfo * fontptr)
+-#else
+-boolean BuildFontSpec (fontptr)
+-    fontinfo * fontptr;
+-#endif
++boolean 
++BuildFontSpec (fontinfo * fontptr)
+ {
+   /* Build a complete PK or TFM font file specification in fontptr->fontspec.
+      (May end up with a dummy PK font's or TFM metric's file spec.
+-      ShowStatistics() in "dvitovdu.c" will show any font substitutions.)
++     ShowStatistics() in "dvitovdu.c" will show any font substitutions.)
+      This will be done at most once per font.
+      Test for valid fontptr->fontname.
+      ASSUMPTIONS:
+-       fontptr->fontname contains the basename of the font.
++     fontptr->fontname contains the basename of the font.
+      SIDE EFFECTS on success:
+-       fontptr->fontspec will be set.
+-       fontptr->fontspeclen will no longer be 0.
+-       fontptr->fontexists becomes TRUE if the real or dummy PK or TFM
+-                                           file can be opened,
+-                                   FALSE, otherwise.
+-       fontptr->pkfont becomes TRUE if the real or dummy PK file
+-                                       can be opened,
+-                               FALSE, otherwise.
+-       fontptr->psfont becomes TRUE if the font's a PS or pure TFM font
+-                                       file that can be opened,
+-                               FALSE, otherwise.
+-       fontptr->honest becomes TRUE if the true font is used,
+-                               FALSE otherwise.
++     fontptr->fontspec will be set.
++     fontptr->fontspeclen will no longer be 0.
++     fontptr->fontexists becomes TRUE if the real or dummy PK or TFM
++     file can be opened, FALSE, otherwise.
++     fontptr->pkfont becomes TRUE if the real or dummy PK file
++     can be opened, FALSE, otherwise.
++     fontptr->honest becomes TRUE if the true font is used, FALSE otherwise.
+      SIDE EFFECTS on failure:
+-         EITHER:
+-       fontptr is NULL.
+-         OR:
+-       fontptr->fontspec will be unset (holds empty string "").
+-       fontptr->fontspeclen will be 0.
+-       fontptr->fontexists becomes FALSE.
+-       fontptr->pkfont becomes FALSE.
+-       fontptr->psfont becomes FALSE;
+-       fontptr->honest becomes FALSE.
+-  */
++     EITHER:
++     fontptr is NULL.
++     OR:
++     fontptr->fontspec will be unset (holds empty string "").
++     fontptr->fontspeclen will be 0.
++     fontptr->fontexists becomes FALSE.
++     fontptr->pkfont becomes FALSE.
++     fontptr->honest becomes FALSE.
++   */
+ 
+-  boolean status = false;  /* success? */
++  kpse_glyph_file_type font_ret;
++  string name;
++  unsigned dpi;
++  int m_ret;
+ 
+   if (!CheckFontPtr (fontptr))
+     return false;
+ 
+-  /**** Correct PK ? ****/
+-
+-  if (fontptr->fontspeclen == 0)
+-  {
+-    /* Try PK bitmap font. */
+-    status = BuildPKSpec (fontptr);
+-  }
+-  
+-  if (fontptr->fontexists)
+-  {
+-    fontptr->pkfont = true;
+-    fontptr->psfont = false;
+-    fontptr->honest = true;
+-
+-    fprintf (logfile, "Loading PK font file `%s'.\n", fontptr->fontspec);
+-    fflush (logfile);
+-  }
+-  else
+-  {
+-    /* PK font file doesn't exist. */
+-
+-    fontptr->pkfont = false;
+-    fontptr->psfont = false;
+-    fontptr->honest = false;
+-
+-#ifdef DEBUG
+-    fprintf (logfile, "Couldn't fopen PK font file `%s'!\n",
+-             (fontptr->fontspeclen == 0 ?
+-                  fontptr->fontname : fontptr->fontspec));
+-    fflush (logfile);
+-#endif /* DEBUG */
+-
+-  } /* fi */
+-
+-  /* POSTSCRIPT OR PURE TFM ? */
+-
+-  /* Check for a PostScript font; if font is PS, then psfont becomes TRUE.
+-     NOTE that strtok skips sequences of separators, and does not make
+-     empty tokens.  Therefore, we cannot set an empty PS prefix in order
+-     to treat all missing PK fonts as PS fonts.
+-  */
++  /* Initialise correctly */
++  stringcopy (fontptr->fontspec, "");
++  fontptr->fontspeclen = 0;
++  fontptr->fontexists = false;
++  fontptr->pkfont = false;
++  fontptr->psfont = false;
++  fontptr->honest = false;
++
++#if 0
++  dpi = kpse_magstep_fix ((unsigned) (mag / 5.0 + .5),
++			  xres, NULL);
++  tfontptr->font_mag = dpi * 5;	/* save correct dpi */
++#endif
++  dpi = (int) (mag / 1000.0 *
++	   (double) fontptr->scaledsize / fontptr->designsize * xres + 0.5);
+ 
+-  if (!fontptr->fontexists)
+-  {
+-    string prefixes;
+-    char * seps = DIRSEP;  /* use same separators as (PK and TFM) dir's! */
+-    char * ptr = (char *) NULL;
+-    boolean more;
+-
+-    strncpy (prefixes, psprefix, maxstring);  /* !May TRUNCATE! */
+-    ptr = prefixes;
+-
+-    do
+-    {
+-      char * prefix = strtok (ptr, seps);  /* Hope strtok is common in C's */
+-      more = (prefix != (char *) NULL);
+-      if (more)
+-      {
+-        ptr = (char *) NULL;  /* ready for next iteration */
+-        if (strncmp (fontptr->fontname, prefix, strlen (prefix)) == 0
+-            && (status = BuildTFMSpec (fontptr)) == true
+-            && fontptr->fontexists)
+-        {
+-          fontptr->psfont = true;
+-          fontptr->honest = true;
+-          fontptr->pkfont = false;
+-        }
+-        else
+-        {
+-          fontptr->psfont = false;
+-          fontptr->pkfont = false;
+-          fontptr->honest = false;
+-        } /* if */
+-      } /* if */
+-    }while (more && !fontptr->psfont);
+-    if (fontptr->psfont)
+-    {
+-      fprintf (logfile, "Loading PostScript font TFM `%s'.\n",
+-               fontptr->fontspec);
+-      fflush (logfile);
+-    }
+-    else
+-    {
+-
+-#ifdef DEBUG
+-      fprintf (logfile, "`%s' is not a PostScript font.\n",
+-               fontptr->fontname);
+-      fflush (logfile);
+-#endif /* DEBUG */
+-
+-    }
+-  } /* if */
+-
+-#ifdef MAKETEXPK
+-  /**** Can we build the font with MakeTeXPK? ****/
+-  if (!fontptr->fontexists)
+-  {
+-    /* Execute MakeTeXPK on font. */
++  if (dpi == 0)			/* allow for subtracting 1 */
++    ++dpi;
+ 
+-    char MakeTeXPK[200];
+-    double scale;
++  name = kpse_find_vf (fontptr->fontname);
+ 
+-    BreakGraphics ();
++  if (name) { /* This is a virtual font, e.g. a PostScript font */
++    FILE *f = NULL;
++    bytes x;
++
++    f = fopen (name, "r");
++    if (!f)
++	return false;
++
++    /* Strip magic */
++    one(f); one(f);
++    /* Strip comments */
++    fseek(f, (long)one(f), 1);
++    /* Skip checksum */
++    four(f);
++    /* Skip design size */
++    four(f);
++
++    while (((x = one(f)) >= fntdef1) && (x <= fntdef1 + 3)) {
++	size_t n, r;
++	int d, s, ps, pd;
++	rbytes(f, (int)x - fntdef1 + 1);	/* Skip TeXnumber */
++	four(f);			/* Skip checksum */
++	s = (int)four(f);		/* Skip scale */
++	d = (int)four(f);		/* Skip design */
++	ps = scalewidth(fontptr->scaledsize, s);
++	pd = (int)(alpha * (double)(d));
++	n =  one(f);
++	n += one(f);			/* Length of fontname */
++	if (n > maxstring)
++	    break;
++	r = fread(fontptr->fontname, sizeof(char), n, f);
++	fontptr->fontname[r] = '\0';
++	fontptr->psfont = true;
++	fontptr->pkfont = false;
++	if (ps == fontptr->scaledsize && pd == fontptr->designsize)
++	    break;
++    }
++    fclose(f);
++  }
+ 
+-    scale=(int)((double)fontptr->scaledsize/fontptr->designsize*1000.0+0.5)/1000.0;
++  free(name);
++  kpse_make_tex_discard_errors = true;
++  name = kpse_find_pk (fontptr->fontname, dpi, &font_ret);
++  kpse_make_tex_discard_errors = false; 
+ 
+-    sprintf(MakeTeXPK, "%s %s %d %d %.4f %s", MAKETEXPK, fontptr->fontname,
+-	    (int)((double) mag / 1000.0 * scale * xres + 0.5), 
+-	    (int)(DEF_XRES), (mag / 1000.0 * scale), MFMODE);
+-    fprintf(stderr, "%s\n",MakeTeXPK);
+-    fflush(stderr);
+-    fprintf(logfile, "%s\n",MakeTeXPK);
+-    fflush(logfile);
+-
+-#ifndef USE_WAITPID
+-     system(MakeTeXPK);
+-#else
+-    /* if we are using svgalib, we may need to restart the waitpid() call,
+-       which is impossible with the system() routine
+-       ashtray, 13/10/94
+-       */
++  if (name)
+     {
+-      pid_t child;
+-      int status, result;
+-      char *MFname, *MFfont, *MFdpi, *MFbdpi, *MFmag, *MFmode;
+-
+-      switch (child = fork())
++      if (!STREQ (fontptr->fontname, font_ret.name))
+ 	{
+-	case -1:   /* error */
+-	  status = errno;
+-	  fprintf(stderr, "fork failed (%d): substituting fonts\n", status);
+-	  fprintf(logfile, "fork failed (%d): substituting fonts\n", status);
+-	  break;
+-	case 0:	  /* child */
+-	  MFname = strtok(MakeTeXPK, " ");     
+-	  MFfont = strtok(NULL, " ");
+-	  MFdpi = strtok(NULL, " ");
+-	  MFbdpi = strtok(NULL, " ");
+-	  MFmag = strtok(NULL, " ");
+-	  MFmode = strtok(NULL, " ");
+-	  execlp(MFname, MFname, MFfont, MFdpi, MFbdpi, MFmag, MFmode, NULL);
+-	  status = errno;
+-	  fprintf(stderr, "exec failed (%d): substituting fonts\n", status);
+-	  fprintf(logfile, "exec failed (%d): substituting fonts\n", status);
+-	  exit(status);
+-	default: /* parent */
+-	  for (;;) {
+-	    result = waitpid(child, &status, 0);
+-	    if (result > 0) {
+-	      if (WIFEXITED(status))
+-		if (WEXITSTATUS(status)) {
+-		  fprintf(stderr, 
+-			  "error %d from MakeTeXPK: substituting fonts\n",
+-			  WEXITSTATUS(status));
+-		  fprintf(logfile, 
+-			  "error %d from MakeTeXPK: substituting fonts\n",
+-			  WEXITSTATUS(status));
+-		} else if (WIFSIGNALED(status)) {
+-		  fprintf(stderr,
+-			  "MakeTeXPK exited on signal %d: substituting fonts\n", 
+-			  WTERMSIG(status));
+-		  fprintf(logfile, 
+-			  "MakeTeXPK exited on signal %d: substituting fonts\n",
+-			  WTERMSIG(status));
+-		}
+-	      break;
+-	    } else if (result == -1) {
+-	      if (errno == EINTR || errno == ERESTART)	
+-		/* probably got interupted by an IO signal re: svgalib */
+-		/* so keep waiting */
+-		continue;
+-	      else {
+-		fprintf(stderr, 
+-			"error %d waiting for MakeTeXPK: substituting fonts\n",
+-			errno);
+-		fprintf(stderr, 
+-			"error %d waiting for MakeTeXPK: substituting fonts\n",
+-			errno);
+-	      }
+-	      break;
+-	    } else {
+-	      fprintf(stderr, "waitpid() returned early:  huh?\n");
+-	      fprintf(logfile, "waitpid() returned early:  huh?\n");
+-	      break;
+-	    }
+-	  }
++#if 0
++	  WARNING3 ("dvgt: Font %s not found, using %s at %d instead.\n",
++		    fontptr->fontname, font_ret.name, font_ret.dpi);
++#endif
+ 	}
+-      fflush(stderr);
+-      fflush(logfile);
+-    }
+-#endif /* USE_WAITPID */
+-
+-    RestoreGraphics ();
+-
+-    /* Try PK bitmap font. */
+-    status = BuildPKSpec (fontptr);
+-  
+-    if (fontptr->fontexists)
+-      {
+-	fontptr->pkfont = true;
+-	fontptr->psfont = false;
++      else if (!kpse_bitmap_tolerance ((double) font_ret.dpi, (double) dpi))
++	{
++#if 0
++	  WARNING3 ("dvilj: Font %s at %d not found, using %d instead.\n",
++		    fontptr->fontname, dpi, font_ret.dpi);
++#endif
++	}
++      else
+ 	fontptr->honest = true;
+ 
+-	fprintf (logfile, "Loading PK font file `%s'.\n", fontptr->fontspec);
+-	fflush (logfile);
+-      }
+-    else
+-      {
+-	/* PK font file doesn't exist. */
+-
+-	fontptr->pkfont = false;
+-	fontptr->psfont = false;
+-	fontptr->honest = false;
+-
+-#ifdef DEBUG
+-	fprintf (logfile, "Couldn't fopen PK font file `%s'!\n",
+-		 (fontptr->fontspeclen == 0 ?
+-                  fontptr->fontname : fontptr->fontspec));
+-	fflush (logfile);
+-#endif /* DEBUG */
+-      }
+-  }
+-#endif /* MAKETEXPK */
+-
+-
+-
+-
+-
+-
+-  /**** Dummy PK? ****/
+-
+-  if (!fontptr->fontexists)
+-  {
+-    /* Try dummy PK font. */
+-
+-    string dummyspec;
+-
+-    if (BuildFileSpec (pkdir, dummy_pk, dummyspec))
+-    {
+-      /* Fill pixeltable with dummy_pk values. */
+-
+-      fontptr->fontexists = true;
++      fontptr->fontspeclen = strlen (name);
++      stringcopy(fontptr->fontspec, name);
++      free (name);
++      fontptr->fontexists = true;	/* specified PK file exists */
+       fontptr->pkfont = true;
+-      fontptr->psfont = false;
+-      fontptr->honest = false;
+-
+-      strncpy (fontptr->fontspec, dummyspec, maxfontspec);
+-      fontptr->fontspeclen = strlen (fontptr->fontspec);
+-      status = true;
+-
+-      fprintf (logfile, "Using dummy PK font `%s'\n", dummyspec);
+-      fflush (logfile);
+-    }
+-    else
+-    { 
+-      /* dummy PK font file doesn't exist. */
+-
+-      fontptr->fontexists = false;
+-
+-      fontptr->pkfont = false;
+-      fontptr->psfont = false;
+-      fontptr->honest = false;
+-
+-#ifdef DEBUG
+-      fprintf (logfile, "Couldn't fopen dummy PK font file `%s'!\n",
+-               (fontptr->fontspeclen == 0 ?
+-                    fontptr->fontname : fontptr->fontspec));
+-      fflush (logfile);
+-#endif /* DEBUG */
+ 
++      return true;
+     }
+-  } /* fi */
+-
+-  /**** Correct TFM? ****/
+-
+-  if (!fontptr->fontexists)
+-  {
+-    /* Try the correct font's TFM metric. */
+-
+-    status = BuildTFMSpec (fontptr);
+-
+-    if (fontptr->fontexists)
+-    {
+-      fontptr->pkfont = false;
+-      fontptr->psfont = false;
+-      fontptr->honest = true;
+-
+-      fprintf (logfile, "Loading TFM metric file for `%s'.\n",
+-	       fontptr->fontname);
+-      fflush (logfile);
+-    }
+-    else
+-    {
+-      fontptr->pkfont = false;
+-      fontptr->psfont = false;
+-      fontptr->honest = false;
+-
+-#ifdef DEBUG
+-      fprintf (logfile, "Couldn't fopen TFM metric file `%s'!\n",
+-               (fontptr->fontspeclen == 0 ?
+-                    fontptr->fontname : fontptr->fontspec));
+-      fflush (logfile);
+-#endif /* DEBUG */
+-
+-    }
+-  } /* fi */
+-
+-  /**** Dummy TFM? ****/
+-
+-  if (!fontptr->fontexists)
+-  {
+-    /* Try dummy TFM metric. */
+-
+-    string dummyspec;
+-
+-    if (BuildFileSpec (pkdir, dummy_tfm, dummyspec))
+-    {
+-      status = true;
+-      fontptr->fontexists = true;
+-
+-      fontptr->pkfont = false;
+-      fontptr->psfont = false;
+-      fontptr->honest = false;
+-
+-      strncpy (fontptr->fontspec, dummyspec, maxfontspec);
+-      fontptr->fontspeclen = strlen (fontptr->fontspec);
+-
+-      fprintf (logfile, "Using dummy TFM `%s'.\n", dummyspec);
+-      fflush (logfile);
+-    }
+-    else
++  else
+     {
+-      status = false;
+-      fontptr->fontexists = false;
+-
+-      fontptr->pkfont = false;
+-      fontptr->psfont = false;
+-      fontptr->honest = false;
+-
+-#ifdef DEBUG
+-      fprintf (logfile, "Couldn't fopen dummy TFM metric file `%s'!\n",
+-               (fontptr->fontspeclen == 0 ?
+-                    fontptr->fontname : fontptr->fontspec));
+-      fflush (logfile);
+-#endif /* DEBUG */
++      /* PK font file doesn't exist. */
++      name = kpse_find_tfm (fontptr->fontname);
++      if (name)
++	{
++	  fontptr->fontspeclen = strlen (name);
++	  stringcopy(fontptr->fontspec, name);
++	  free (name);
+ 
++	  fontptr->fontexists = true;
++	  fontptr->honest = true;
++	}
++      else
++	{
++	  name = kpse_find_tfm (dummy_tfm);
++	  if (name)
++	    {
++	      fontptr->fontspeclen = strlen (name);
++	      stringcopy(fontptr->fontspec, name);
++	      free (name);
++	      fontptr->fontexists = true;
++	    }
++	}
+     }
+-  } /* fi */
+-
+-  /**** Resort to Terse display of this font, using DVI info. ****/
+-
+-  if (!fontptr->fontexists)
+-  {
+-    /* Ran out of options. */
+-
+-    fontptr->pkfont = false;
+-    fontptr->psfont = false;
+-    fontptr->honest = false;
+ 
+-    status = false;
+-
+-#ifdef DEBUG
+-    fprintf (logfile, "No correct PK or TFM for `%s'\n", fontptr->fontname);
+-    fprintf (logfile, "  nor dummy PK `%s'\n", dummy_pk);
+-    fprintf (logfile, "  nor dummy TFM `%s'\n", dummy_tfm);
+-    fflush (logfile);
+-#endif /* DEBUG */
+-
+-    fprintf (logfile, "Using DVI Terse display for `%s'\n", fontptr->fontname);
+-    fflush (logfile);
+-
+-  } /* fi */
+-
+-  return status;
++  return true;
+ }
+ /* BuildFontSpec */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#ifdef __STDC__
+-boolean OpenFontFile (Char *name)
+-#else
+-boolean OpenFontFile (name)
+-Char *name;
+-#endif
++boolean 
++OpenFontFile (Char *name)
+ {
+   /* Return TRUE if given file can be (unix-specifically) open-ed.
+      Only one font file will be open at any given time.
+-  */
++   */
+ 
+   extern int currPTbuff;
+   extern int PTfile;
+ 
+-  currPTbuff = -1;   /* impossible value for first GetPTByte */
+-  PTfile = open (name, O_RDONLY, 0);  /* unix "open" returns -1 if fails */
++  currPTbuff = -1;		/* impossible value for first GetPTByte */
++  PTfile = open (name, O_RDONLY, 0);	/* unix "open" returns -1 if fails */
+   return (PTfile >= 0);
+ }
+ /* OpenFontFile */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Void CloseFontFile (VOID)
++void
++CloseFontFile ()
+ {
+   /* If there is a currently open font file, then close it. */
+ 
+   if (PTfile >= 0)
+-  {
+-    (Void) close (PTfile);
+-    /* Be cautious:  ensure PTfile is negative, after this function. */
+-    if (PTfile >= 0)
+-      PTfile = -1;
+-  }
++    {
++      close (PTfile);
++      /* Be cautious:  ensure PTfile is negative, after this function. */
++      if (PTfile >= 0)
++	PTfile = -1;
++    }
+ }
+ /* CloseFontFile */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int GetPTByte (VOID)
++static int
++GetPTByte ()
+ {
+   /* Returns the value (unsigned) of the byte at PToffset and
+      advances PToffset for the next GetPTByte.
+-  */
++   */
+ 
+   int Result, buffstart, result;
+-  int t;
+ 
+-  buffstart = PToffset / bufflen * bufflen;   /* 0, bufflen, 2*bufflen... */
++  buffstart = PToffset / bufflen * bufflen;	/* 0, bufflen, 2*bufflen... */
+   if (buffstart != currPTbuff)
+-  {
+-    currPTbuff = buffstart;
++    {
++      currPTbuff = buffstart;
+ 
+-    if (PTfile < 0)
+-      FatalError ("PTfile not open in GetPTByte!");
++      if (PTfile < 0)
++	{
++	  StartText ();
++	  ResetVDU ();		/* let message stay */
+ 
+-    result = lseek (PTfile, buffstart, 0);
+-    if (result != buffstart)
+-      FatalError ("lseek failed in GetPTByte!");
+-    
+-    result = read (PTfile, PTbuffer, bufflen);
+-    if (result == -1)
+-      FatalError ("Read failed in GetPTByte!");
+-  }
++	  FATAL ("PTfile not open in GetPTByte!");
++	}
++      result = lseek (PTfile, buffstart, 0);
++      if (result != buffstart)
++	{
++	  StartText ();
++	  ResetVDU ();		/* let message stay */
++
++	  FATAL ("lseek failed in GetPTByte!");
++	}
++      result = read (PTfile, PTbuffer, bufflen);
++      if (result == -1)
++	{
++	  StartText ();
++	  ResetVDU ();		/* let message stay */
++
++	  FATAL ("Read failed in GetPTByte!");
++	}
++    }
+   Result = PTbuffer[PToffset - buffstart];
+   PToffset++;
+   return Result;
+ }
+ /* GetPTByte */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int SignedPTByte (VOID)
++static int
++SignedPTByte ()
+ {
+   /* the next byte, signed */
+   int b;
+ 
+-  b = GetPTByte();
++  b = GetPTByte ();
+   if (b < 128)
+     return b;
+   else
+@@ -1036,28 +352,30 @@ Inline Static int SignedPTByte (VOID)
+ }
+ /* SignedPTByte */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int GetTwoPTBytes (VOID)
++static int
++GetTwoPTBytes ()
+ {
+   /* the next 2 bytes, unsigned */
+   int a, b;
+ 
+-  a = GetPTByte();
+-  b = GetPTByte();
++  a = GetPTByte ();
++  b = GetPTByte ();
+   return (a * 256 + b);
+ }
+ /* GetTwoPTBytes */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int SignedPTPair (VOID)
++static int
++SignedPTPair ()
+ {
+   /* the next 2 bytes, signed */
+   int a, b;
+ 
+-  a = GetPTByte();
+-  b = GetPTByte();
++  a = GetPTByte ();
++  b = GetPTByte ();
+   if (a < 128)
+     return (a * 256 + b);
+   else
+@@ -1065,309 +383,294 @@ Inline Static int SignedPTPair (VOID)
+ }
+ /* SignedPTPair */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+ /* UNUSED: */
+ #ifdef GET_THREE_PT_BYTES
+-Inline Static int GetThreePTBytes (VOID)
++static int
++GetThreePTBytes ()
+ {
+   /* the next 3 bytes, unsigned */
+   int a, b, c;
+ 
+-  a = GetPTByte();
+-  b = GetPTByte();
+-  c = GetPTByte();
++  a = GetPTByte ();
++  b = GetPTByte ();
++  c = GetPTByte ();
+   return ((a * 256 + b) * 256 + c);
+ }
+ /* GetThreePTBytes */
+ #endif /* GET_THREE_PT_BYTES */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+ typedef struct int_or_bytes
+ {
+   boolean b;
+   union
+-  {
+-    int int_;
+-    Char byt[4];
+-  } UU;
+-} int_or_bytes;
++    {
++      int int_;
++      char byt[4];
++    }
++  UU;
++}
++int_or_bytes;
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int SignedPTQuad (VOID)
++static int
++SignedPTQuad ()
+ {
+   /* the next 4 bytes, signed */
+   int w;
+ 
+-  byte3(w) = GetPTByte();
+-  byte2(w) = GetPTByte();
+-  byte1(w) = GetPTByte();
+-  byte0(w) = GetPTByte();
++  byte3 (w) = GetPTByte ();
++  byte2 (w) = GetPTByte ();
++  byte1 (w) = GetPTByte ();
++  byte0 (w) = GetPTByte ();
+   return (w);
+ }
+ /* SignedPTQuad */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Inline Static int GetNyb (VOID)
++static int
++GetNyb ()
+ {
+   /* Return next nybble in PK file. */
+ 
+   if (bitweight == 0)
+-  {
+-    inputbyte = GetPTByte();
+-    bitweight = 16;   /* for next call of GetNyb */
+-    return (inputbyte / 16);   /* high nybble */
+-  }
++    {
++      inputbyte = GetPTByte ();
++      bitweight = 16;		/* for next call of GetNyb */
++      return (inputbyte / 16);	/* high nybble */
++    }
+   else
+-  {
+-    bitweight = 0;   /* for next call of GetNyb */
+-    return (inputbyte & 15);   /* low nybble */
+-  }
++    {
++      bitweight = 0;		/* for next call of GetNyb */
++      return (inputbyte & 15);	/* low nybble */
++    }
+ }
+ /* GetNyb */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Static int PackedNum (VOID)
++static int
++PackedNum ()
+ {
+   /* Return next run count using algorithm given in section 23 of PKtype.
+      A possible side-effect is to set the global repeatcount value used
+      to duplicate the current row.
+-  */
++   */
+ 
+   int i, j;
+ 
+-  i = GetNyb();
++  i = GetNyb ();
+   if (i == 0)
+-  {
+-    do
+-    {
+-      j = GetNyb();
+-      i++;
+-    } while (j == 0);
+-    while (i > 0)
+     {
+-      j = j * 16 + GetNyb();
+-      i--;
++      do
++	{
++	  j = GetNyb ();
++	  i++;
++	}
++      while (j == 0);
++      while (i > 0)
++	{
++	  j = j * 16 + GetNyb ();
++	  i--;
++	}
++      return (j + (13 - dynf) * 16 + dynf - 15);
+     }
+-    return (j + (13 - dynf) * 16 + dynf - 15);
+-  }
+   else if (i <= dynf)
+     return i;
+   else if (i < 14)
+-    return ((i - dynf - 1) * 16 + GetNyb() + dynf + 1);
++    return ((i - dynf - 1) * 16 + GetNyb () + dynf + 1);
+   else
+-  {
+-    if (i == 14)   /* nybble = 15 */
+-      repeatcount = PackedNum();   /* recursive */
+-    else
+-      repeatcount = 1;
+-    return (PackedNum());   /* recursive */
+-  }
++    {
++      if (i == 14)		/* nybble = 15 */
++	repeatcount = PackedNum ();	/* recursive */
++      else
++	repeatcount = 1;
++      return (PackedNum ());	/* recursive */
++    }
+ }
+ /* PackedNum */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#ifdef __STDC__
+-boolean GetBitmap (int ht, int wd, int mapadr, int_or_mptr *bitmap)
+-#else
+-boolean GetBitmap (ht, wd, mapadr, bitmap)
+-    int ht;  int wd;  int mapadr;  int_or_mptr * bitmap;
+-#endif
++boolean 
++GetBitmap (int ht, int wd, int mapadr, int_or_mptr * bitmap)
+ {
+   /* Allocate space for bitmap and fill it in using information from
+-     character definition starting at mapadr in currently open PK file.
+-     Note that the memory used by a loaded bitmap is never deallocated.
+-     Each bitmap row uses an integral number of words (each 32 bits).
+-     Byte-aligned rows would use about 35% less memory but
+-     would increase the processing time needed to display each bitmap.
+-     It was felt that speed is more important than memory.
+-     Return true if the bitmap is obtained, false if function fails.
+-  */
++     character definition starting at mapadr in currently open PK
++     file.  Note that the memory used by a loaded bitmap is never
++     deallocated.  Each bitmap row uses an integral number of words
++     (each 32 bits).  Byte-aligned rows would use about 35% less
++     memory but would increase the processing time needed to display
++     each bitmap.  It was felt that speed is more important than
++     memory.  Return true if the bitmap is obtained, false if function
++     fails.
++   */
+ 
+-  extern int bitweight;  /* local to "fontreader.c" */
++  extern int bitweight;		/* local to "fontreader.c" */
+ 
+   int_or_bptr wordptr, rowptr;
+-  int i, j, flagbyte, wordwidth, wordweight, rowsleft, hbit, count,
+-      bitmapwords;
++  int i, j, flagbyte, wordwidth, wordweight, rowsleft, hbit, count, bitmapwords;
+   int word;
+-  Word * bitmapptr = (Word *) NULL;
++  Word *bitmapptr = (Word *) NULL;
+ 
+-  wordwidth = (wd + 31) / 32;   /* words in one row of bitmap */
+-  bitmapwords = ht * wordwidth;   /* memory required by bitmap */
++  wordwidth = (wd + 31) / 32;	/* words in one row of bitmap */
++  bitmapwords = ht * wordwidth;	/* memory required by bitmap */
+ 
+-  bitmapptr = (Word *) malloc (bitmapwords * sizeof(Word));
+-/*  bitmapptr = cnew (bitmapwords, Word);*/
++  bitmapptr = (Word *) calloc (bitmapwords, sizeof (Word));
+   if (bitmapptr == (Word *) NULL)
+-  {
+-    MesgString ("Character too big!  size=");
+-    MesgInt (bitmapwords);
+-    MesgLine();
+-
+-    OutMem();
+-
+-    return false;    /* Not Reached */
+-  }
+-
+-  bitmap->UU.mptr = bitmapptr;   /* return start of bitmap */
++    {
++      StartText ();
++      ResetVDU ();		/* do before message since it might erase screen! */
++      FATAL1 ("Out of memory.  Character too big!  size = %d", bitmapwords);
++      return false;		/* Not Reached */
++    }
++  bitmap->UU.mptr = bitmapptr;	/* return start of bitmap */
+   wordptr.UU.int_ = bitmap->UU.int_;
+-  PToffset = mapadr;   /* mapadr = flagbyte offset in PK file */
++  PToffset = mapadr;		/* mapadr = flagbyte offset in PK file */
+ 
+-  flagbyte = GetPTByte();   /* assume < 240 */
+-  dynf = flagbyte / 16;   /* dynamic packing variable */
+-  turnon = ((flagbyte & 15) >= 8);   /* is 1st pixel black? */
+-  flagbyte &= 7;   /* value of bottom 3 bits */
+-  if (flagbyte < 4)   /* skip short char preamble */
++  flagbyte = GetPTByte ();	/* assume < 240 */
++  dynf = flagbyte / 16;		/* dynamic packing variable */
++  turnon = ((flagbyte & 15) >= 8);	/* is 1st pixel black? */
++  flagbyte &= 7;		/* value of bottom 3 bits */
++  if (flagbyte < 4)		/* skip short char preamble */
+     PToffset += 10;
+   else if (flagbyte < 7)
+     PToffset += 16;
+   else
+     PToffset += 36;
+ 
+-  bitweight = 0;   /* to get 1st inputbyte */
++  bitweight = 0;		/* to get 1st inputbyte */
+   if (dynf == 14)
+-  {
+-    /* raster info is a string of bits in the next (wd * ht + 7) DIV 8 bytes */
+-
+-    for (i = 1; i <= ht; i++)
+     {
+-      word = 0;   /* set all bits to 0 */
+-      wordweight = 31;   /* leftmost bit */
+-      for (j = 1; j <= wd; j++)
+-      {
+-        if (bitweight == 0)
+-        {
+-          inputbyte = GetPTByte();
+-          bitweight = 8;
+-        }
+-        bitweight--;   /* 7..0 */
+-        if ((unsigned)bitweight < 32 && ((1 << bitweight) & inputbyte))
+-              /* set bit */
+-                word |= 1 << wordweight;
+-        if (wordweight > 0)
+-          wordweight--;
+-        else
+-        {
+-          *wordptr.UU.bptr = word;
+-          wordptr.UU.int_ += 4;
+-          word = 0;
+-          wordweight = 31;
+-        }
+-      }
+-      if (wordweight < 31)
+-      {
+-        *wordptr.UU.bptr = word;
+-        wordptr.UU.int_ += 4;   /* start of next word */
+-      }
++      /* raster info is a string of bits in the next (wd * ht + 7) DIV 8 bytes */
++
++      for (i = 1; i <= ht; i++)
++	{
++	  word = 0;		/* set all bits to 0 */
++	  wordweight = 31;	/* leftmost bit */
++	  for (j = 1; j <= wd; j++)
++	    {
++	      if (bitweight == 0)
++		{
++		  inputbyte = GetPTByte ();
++		  bitweight = 8;
++		}
++	      bitweight--;	/* 7..0 */
++	      if ((unsigned) bitweight < 32 && ((1 << bitweight) & inputbyte))
++		/* set bit */
++		word |= 1 << wordweight;
++	      if (wordweight > 0)
++		wordweight--;
++	      else
++		{
++		  *wordptr.UU.bptr = word;
++		  wordptr.UU.int_ += 4;
++		  word = 0;
++		  wordweight = 31;
++		}
++	    }
++	  if (wordweight < 31)
++	    {
++	      *wordptr.UU.bptr = word;
++	      wordptr.UU.int_ += 4;	/* start of next word */
++	    }
++	}
+     }
+-  }
+   else
+-  {
+-    /* raster info is encoded as run and repeat counts */
++    {
++      /* raster info is encoded as run and repeat counts */
+ 
+-    rowsleft = ht;
+-    hbit = wd;
+-    repeatcount = 0;
+-    wordweight = 32;
+-    word = 0;
+-    rowptr = wordptr;   /* remember start of row */
+-    while (rowsleft > 0)
+-    {
+-      count = PackedNum();
+-      while (count > 0)
+-      {
+-        if (count < wordweight && count < hbit)
+-        {
+-          if (turnon)
+-            word = (word | gpower[wordweight]) & (~gpower[wordweight - count]);
+-          hbit -= count;
+-          wordweight -= count;
+-          count = 0;
+-          continue;
+-        }
+-        if (count >= hbit && hbit <= wordweight)
+-        {
+-          if (turnon)
+-            word = (word | gpower[wordweight]) & (~gpower[wordweight - hbit]);
+-          *wordptr.UU.bptr = word;
+-          /* end of current row, so duplicate repeatcount times */
+-          for (i = 1; i <= repeatcount; i++)
+-          {
+-            for (j = 1; j <= wordwidth; j++)
+-            {
+-              wordptr.UU.int_ += 4;
+-              *wordptr.UU.bptr = *rowptr.UU.bptr;
+-              rowptr.UU.int_ += 4;
+-            }
+-          }
+-          rowsleft += -repeatcount - 1;
+-          repeatcount = 0;
+-          word = 0;
+-          wordptr.UU.int_ += 4;
+-          rowptr = wordptr;   /* remember start of next row */
+-          wordweight = 32;
+-          count -= hbit;
+-          hbit = wd;
+-        }
+-        else
+-        {
+-          if (turnon)
+-            word |= gpower[wordweight];
+-          *wordptr.UU.bptr = word;
+-          wordptr.UU.int_ += 4;
+-          word = 0;
+-          count -= wordweight;
+-          hbit -= wordweight;
+-          wordweight = 32;
+-        }
+-      }
+-      turnon = !turnon;
++      rowsleft = ht;
++      hbit = wd;
++      repeatcount = 0;
++      wordweight = 32;
++      word = 0;
++      rowptr = wordptr;		/* remember start of row */
++      while (rowsleft > 0)
++	{
++	  count = PackedNum ();
++	  while (count > 0)
++	    {
++	      if (count < wordweight && count < hbit)
++		{
++		  if (turnon)
++		    word = (word | gpower[wordweight]) & (~gpower[wordweight - count]);
++		  hbit -= count;
++		  wordweight -= count;
++		  count = 0;
++		  continue;
++		}
++	      if (count >= hbit && hbit <= wordweight)
++		{
++		  if (turnon)
++		    word = (word | gpower[wordweight]) & (~gpower[wordweight - hbit]);
++		  *wordptr.UU.bptr = word;
++		  /* end of current row, so duplicate repeatcount times */
++		  for (i = 1; i <= repeatcount; i++)
++		    {
++		      for (j = 1; j <= wordwidth; j++)
++			{
++			  wordptr.UU.int_ += 4;
++			  *wordptr.UU.bptr = *rowptr.UU.bptr;
++			  rowptr.UU.int_ += 4;
++			}
++		    }
++		  rowsleft += -repeatcount - 1;
++		  repeatcount = 0;
++		  word = 0;
++		  wordptr.UU.int_ += 4;
++		  rowptr = wordptr;	/* remember start of next row */
++		  wordweight = 32;
++		  count -= hbit;
++		  hbit = wd;
++		}
++	      else
++		{
++		  if (turnon)
++		    word |= gpower[wordweight];
++		  *wordptr.UU.bptr = word;
++		  wordptr.UU.int_ += 4;
++		  word = 0;
++		  count -= wordweight;
++		  hbit -= wordweight;
++		  wordweight = 32;
++		}
++	    }
++	  turnon = !turnon;
++	}
+     }
+-  }
+   return true;
+ }
+ /* GetBitmap */
+ 
+-/*****************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#ifdef __STDC__
+-Inline Static int FixToDVI (int scale, int b0, int b1, int b2, int b3)
+-#else
+-Inline Static int FixToDVI (scale, b0, b1, b2, b3)
+-    /* scale = currfont->scaledsize; */
+-    int scale;
+-    /* fix width: 4 bytes */
+-    int b0, b1, b2, b3;
+-#endif
++static int 
++FixToDVI (int scale, int b0, int b1, int b2, int b3)
++/* scale = currfont->scaledsize; */
++/* fix width: 4 bytes */
+ {
+   /* Convert the given fix width (made up of 4 bytes) into DVI units
+      using the method recommended in DVITYPE.
+      Added local scale to avoid changing scaledsize; thanks to Niel Kempson
+      for reporting this bug.
+-  */
++   */
+ 
+   int dviwidth = 0;
+   int alpha, beta, temp;
+ 
+   alpha = scale * 16;
+   beta = 16;
+-
+-  while (scale >= 0x800000)  /* 2^23sp = 128pt */
+-  {
+-    scale /= 2;
+-    beta /= 2;
+-  }
+-
+-  if (beta == 0)
+-  {
+-    fprintf (logfile, "FixToDVI:  beta = 0, so divide by zero imminent!\n");
+-    fflush (logfile);
+-  }
+-
++  while (scale >= 0x800000)
++    {				/* 2^23sp = 128pt */
++      scale /= 2;
++      beta /= 2;
++    }
+   temp = ((b3 * scale / 0x100 + b2 * scale) / 0x100 + b1 * scale) / beta;
+ 
+   if (b0 <= 0)
+@@ -1375,195 +678,160 @@ Inline Static int FixToDVI (scale, b0, b
+   else if (b0 == 255)
+     dviwidth = (temp - alpha);
+   else
+-  {
+-    dviwidth = 0;  /* keep compiler happy, if necessary */
+-
+-    StartText();
+-    ResetVDU();  /* let message stay */
++    {
++      dviwidth = 0;		/* keep compiler happy, if necessary */
+ 
+-    MesgString ("Bad TFM width! 1st byte=");
+-    MesgInt (b0);
+-    MesgLine();
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
+-    RestoreTerminal();
+-    exit (1);
+-  }
++      FATAL1 ("Bad TFM width! 1st byte = %d.", b0);
++    }
+ 
+   return dviwidth;
+ }
+ /* FixToDVI */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+ #define pkid            89
+ #define pkpost          245
+ #define pknoop          246
+ #define pkpre           247
+ 
+-#ifdef __STDC__
+-Static Void PKFillPixelTable (fontinfo * currfont)
+-#else
+-Static Void PKFillPixelTable (currfont)
+-    fontinfo * currfont;
+-#endif
++static void 
++PKFillPixelTable (fontinfo * currfont)
+ {
+   /* Fill the pixeltable for currfont^ using the font directory info
+      in the currently open PK file.
+-  */
++   */
+ 
+   int i, j, flagbyte, flagpos;
+-  int chcode;   /* char. code, assumed to be <= maxTeXchar */
+-  int packetlen, endofpacket, b0, b1, b2, b3;   /* 4 bytes in TFM width */
++  int chcode;			/* char. code, assumed to be <= maxTeXchar */
++  int packetlen, endofpacket, b0, b1, b2, b3;	/* 4 bytes in TFM width */
+   _REC_pixeltable *pix_tab;
+ 
+-  PToffset = 0;   /* move to first byte */
+-
+-  if (GetPTByte() != pkpre)
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    MesgString ("Bad PK pre command in `");
+-    MesgString (currfont->fontspec);
+-    MesgString ("'");
+-    MesgLine();
++  PToffset = 0;			/* move to first byte */
+ 
+-    RestoreTerminal();
+-    exit (1);
+-  }
+-
+-  if (GetPTByte() != pkid)
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    MesgString ("Bad PK id byte in `");
+-    MesgString (currfont->fontspec);
+-    MesgString ("'");
+-    MesgLine();
++  if (GetPTByte () != pkpre)
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
+-    RestoreTerminal();
+-    exit (1);
+-  }
++      FATAL1 ("Bad PK pre command in `%s'.", currfont->fontspec);
++    }
++  if (GetPTByte () != pkid)
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
+-  j = GetPTByte();   /* length of comment */
+-  PToffset += j + 16;   /* skip rest of preamble */
++      FATAL1 ("Bad PK id byte in `%s'.", currfont->fontspec);
++    }
++  j = GetPTByte ();		/* length of comment */
++  PToffset += j + 16;		/* skip rest of preamble */
+ 
+   for (i = 0; i <= maxTeXchar; i++)
+-  {
+-    pix_tab = &currfont->pixelptr[i];
+-    pix_tab->mapadr = 0;   /* all chars absent initially */
+-    pix_tab->bitmap.UU.mptr = (Word *) NULL;
+-  }
++    {
++      pix_tab = &currfont->pixelptr[i];
++      pix_tab->mapadr = 0;	/* all chars absent initially */
++      pix_tab->bitmap.UU.mptr = (Word *) NULL;
++    }
+ 
+   while (true)
+-  {
+-    flagpos = PToffset;   /* remember position of flagbyte */
+-    flagbyte = GetPTByte();
+-    if (flagbyte < 240)
+-    {  /* read character definition */
+-
+-      int scale = currfont->scaledsize;  /* For FixToDVI */
+-
+-      flagbyte &= 7;   /* value of bottom 3 bits */
+-      if (flagbyte < 4)
+-      {  /* short char preamble */
+-        packetlen = flagbyte * 256 + GetPTByte();
+-        chcode = GetPTByte();
+-        endofpacket = packetlen + PToffset;
+-        pix_tab = &currfont->pixelptr[chcode];
+-        b1 = GetPTByte();
+-        b2 = GetPTByte();
+-        b3 = GetPTByte();
+-        pix_tab->dwidth = FixToDVI (scale, 0, b1, b2, b3);   /* b0 = 0 */
+-        pix_tab->pwidth = GetPTByte();
+-        pix_tab->wd = GetPTByte();
+-        pix_tab->ht = GetPTByte();
+-        pix_tab->xo = SignedPTByte();
+-        pix_tab->yo = SignedPTByte();
+-      }
+-      else if (flagbyte < 7)
+-      {
+-        packetlen = (flagbyte - 4) * 65536 + GetTwoPTBytes();
+-        chcode = GetPTByte();
+-        endofpacket = packetlen + PToffset;
+-        pix_tab = &currfont->pixelptr[chcode];
+-        b1 = GetPTByte();
+-        b2 = GetPTByte();
+-        b3 = GetPTByte();
+-        pix_tab->dwidth = FixToDVI (scale, 0, b1, b2, b3);   /* b0 = 0 */
+-        pix_tab->pwidth = GetTwoPTBytes();
+-        pix_tab->wd = GetTwoPTBytes();
+-        pix_tab->ht = GetTwoPTBytes();
+-        pix_tab->xo = SignedPTPair();
+-        pix_tab->yo = SignedPTPair();
+-      }
+-      else
+-      {
+-        packetlen = SignedPTQuad();
+-        chcode = SignedPTQuad();
+-        endofpacket = packetlen + PToffset;
+-        pix_tab = &currfont->pixelptr[chcode];
+-        b0 = GetPTByte();
+-        b1 = GetPTByte();
+-        b2 = GetPTByte();
+-        b3 = GetPTByte();
+-        pix_tab->dwidth = FixToDVI (scale, b0, b1, b2, b3);
+-        pix_tab->pwidth = SignedPTQuad() / 65536;   /* dx in pixels */
+-        PToffset += 4;   /* skip dy */
+-        pix_tab->wd = SignedPTQuad();
+-        pix_tab->ht = SignedPTQuad();
+-        pix_tab->xo = SignedPTQuad();
+-        pix_tab->yo = SignedPTQuad();
+-      }
+-      pix_tab = &currfont->pixelptr[chcode];   /* position of flagbyte */
+-      if (pix_tab->wd == 0 || pix_tab->ht == 0)
+-        pix_tab->mapadr = 0;   /* no bitmap */
+-      else
+-        pix_tab->mapadr = flagpos;
+-      PToffset = endofpacket;   /* skip raster info */
+-      continue;
+-    }
+-
+-    switch (flagbyte)
+-    {
+-    case 240:
+-    case 241:
+-    case 242:
+-    case 243:
+-      i = 0;
+-      for (j = 240; j <= flagbyte; j++)
+-        i = i * 256 + GetPTByte();
+-      PToffset += i;   /* skip special parameter */
+-      break;
+-
+-    case 244:   /* skip numspecial param */
+-      PToffset += 4;
+-      break;
+-
+-    case pknoop:   /* do nothing */
+-      break;
+-
+-    case pkpost:   /* no more char defs */
+-      goto _L888;
+-      break;
+-
+-    default:
+-      StartText();
+-      ResetVDU();  /* let message stay */
+-
+-      MesgString ("Bad PK flag byte in `");
+-      MesgString (currfont->fontspec);
+-      MesgString ("'");
+-      MesgLine();
++    {
++      flagpos = PToffset;	/* remember position of flagbyte */
++      flagbyte = GetPTByte ();
++      if (flagbyte < 240)
++	{			/* read character definition */
++
++	  int scale = currfont->scaledsize;	/* For FixToDVI */
++
++	  flagbyte &= 7;	/* value of bottom 3 bits */
++	  if (flagbyte < 4)
++	    {			/* short char preamble */
++	      packetlen = flagbyte * 256 + GetPTByte ();
++	      chcode = GetPTByte ();
++	      endofpacket = packetlen + PToffset;
++	      pix_tab = &currfont->pixelptr[chcode];
++	      b1 = GetPTByte ();
++	      b2 = GetPTByte ();
++	      b3 = GetPTByte ();
++	      pix_tab->dwidth = FixToDVI (scale, 0, b1, b2, b3);	/* b0 = 0 */
++	      pix_tab->pwidth = GetPTByte ();
++	      pix_tab->wd = GetPTByte ();
++	      pix_tab->ht = GetPTByte ();
++	      pix_tab->xo = SignedPTByte ();
++	      pix_tab->yo = SignedPTByte ();
++	    }
++	  else if (flagbyte < 7)
++	    {
++	      packetlen = (flagbyte - 4) * 65536 + GetTwoPTBytes ();
++	      chcode = GetPTByte ();
++	      endofpacket = packetlen + PToffset;
++	      pix_tab = &currfont->pixelptr[chcode];
++	      b1 = GetPTByte ();
++	      b2 = GetPTByte ();
++	      b3 = GetPTByte ();
++	      pix_tab->dwidth = FixToDVI (scale, 0, b1, b2, b3);	/* b0 = 0 */
++	      pix_tab->pwidth = GetTwoPTBytes ();
++	      pix_tab->wd = GetTwoPTBytes ();
++	      pix_tab->ht = GetTwoPTBytes ();
++	      pix_tab->xo = SignedPTPair ();
++	      pix_tab->yo = SignedPTPair ();
++	    }
++	  else
++	    {
++	      packetlen = SignedPTQuad ();
++	      chcode = SignedPTQuad ();
++	      endofpacket = packetlen + PToffset;
++	      pix_tab = &currfont->pixelptr[chcode];
++	      b0 = GetPTByte ();
++	      b1 = GetPTByte ();
++	      b2 = GetPTByte ();
++	      b3 = GetPTByte ();
++	      pix_tab->dwidth = FixToDVI (scale, b0, b1, b2, b3);
++	      pix_tab->pwidth = SignedPTQuad () / 65536;	/* dx in pixels */
++	      PToffset += 4;	/* skip dy */
++	      pix_tab->wd = SignedPTQuad ();
++	      pix_tab->ht = SignedPTQuad ();
++	      pix_tab->xo = SignedPTQuad ();
++	      pix_tab->yo = SignedPTQuad ();
++	    }
++	  pix_tab = &currfont->pixelptr[chcode];	/* position of flagbyte */
++	  if (pix_tab->wd == 0 || pix_tab->ht == 0)
++	    pix_tab->mapadr = 0;	/* no bitmap */
++	  else
++	    pix_tab->mapadr = flagpos;
++	  PToffset = endofpacket;	/* skip raster info */
++	  continue;
++	}
++      switch (flagbyte)
++	{
++	case 240:
++	case 241:
++	case 242:
++	case 243:
++	  i = 0;
++	  for (j = 240; j <= flagbyte; j++)
++	    i = i * 256 + GetPTByte ();
++	  PToffset += i;	/* skip special parameter */
++	  break;
++	case 244:		/* skip numspecial param */
++	  PToffset += 4;
++	  break;
++	case pknoop:		/* do nothing */
++	  break;
++	case pkpost:		/* no more char defs */
++	  goto _L888;
++	  break;
+ 
+-      RestoreTerminal();
+-      exit (1);
++	default:
++	  StartText ();
++	  ResetVDU ();		/* let message stay */
+ 
+-      break;
+-    }
+-  }  /* of LOOP; flagbyte = pkpost */
+-_L888: ;
++	  FATAL1 ("Bad PK flag byte in `%s'.", currfont->fontspec);
++	}
++    }				/* of LOOP; flagbyte = pkpost */
++_L888:;
+ 
+   /* extended short char preamble */
+   /* long char preamble */
+@@ -1575,537 +843,307 @@ _L888: ;
+ #undef pknoop
+ #undef pkpre
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Static Void ReadTFMIntegers (VOID)
++static void
++ReadTFMIntegers ()
+ {
+   /* Read the first 6 (six) 16-bit integers in the TFM file. */
+   /* These give the dimensions of the arrays that constitute the rest */
+   /* of the TFM file. */
+   /* See TFtoPL section 8. */
+ 
+-  string out;  /* output string for messages */
+-
+-  PToffset = 0;   /* start reading at 1st byte in TFM file */
+-
+-  lf = GetTwoPTBytes();  /* length of TFM file, in words:  0 <= lf < 2^15. */
+-  lh = GetTwoPTBytes();  /* length of header, in words:  2 <= lh. */
+-  bc = GetTwoPTBytes();  /* smallest character code in font */
+-  ec = GetTwoPTBytes();  /* largest character code in font */
+-  nw = GetTwoPTBytes();  /* number of words in width table */
+-  nh = GetTwoPTBytes();  /* number of words in height table */
++  PToffset = 0;			/* start reading at 1st byte in TFM file */
++  lf = GetTwoPTBytes ();	/* length of TFM file, in words:  0 <= lf < 2^15. */
++  lh = GetTwoPTBytes ();	/* length of header, in words:  2 <= lh. */
++  bc = GetTwoPTBytes ();	/* smallest character code in font */
++  ec = GetTwoPTBytes ();	/* largest character code in font */
++  nw = GetTwoPTBytes ();	/* number of words in width table */
++  nh = GetTwoPTBytes ();	/* number of words in height table */
+ 
+   /* sanity check of lf */
+-  if ( ! (0 <= lf  &&  lf < 1<<15))
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (out, "TFM file length given as:  lf = %d words.", lf);
+-    MesgString (out);
+-    MesgLine();
+-    sprintf (out, "  Should have 0 <= lf < %d words.", 1<<15);
+-    MesgString (out);
+-    MesgLine();
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++  if (!(0 <= lf && lf < 1 << 15))
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL2 ("TFM file length given as:  lf = %d words.  Should have 0 <= lf < %d words.", lf, 1 << 15);
++    }
+   /* sanity check of lh */
+-  if (! (2 <= lh))
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (out, "TFM's Header length given as:  lh = %d words.", lh);
+-    MesgString (out);
+-    MesgLine();
+-    MesgString ("  Should have lh >= 2 (two) words.");
+-    MesgLine();
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++  if (!(2 <= lh))
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL1 ("TFM's Header length given as:  lh = %d words.   Should have lh >= 2 (two) words.", lh);
++    }
+   /* sanity check of bc and ec */
+-  if ( ! (0 <= bc  &&  bc-1 <= ec  &&  ec <= maxTeXchar))
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (out, "First & last char codes = (bc, ec) = (%d, %d).", bc, ec);
+-    MesgString (out);
+-    MesgLine();
+-    MesgString ("  Should have 0 <= bc <= ec <= maxTeXchar = 255.");
+-    MesgLine();
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++  if (!(0 <= bc && bc - 1 <= ec && ec <= maxTeXchar))
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL2 ("First & last char codes = (bc, ec) = (%d, %d).  Should have 0 <= bc <= ec <= maxTeXchar = 255.", bc, ec);
++    }
+   /* sanity check of nw */
+-  if ( ! (0 <= nw  &&  nw < 1<<15))
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (out, "Number of Width Table words given as:  nw = %d.", nw);
+-    MesgString (out);
+-    MesgLine();
+-    sprintf (out, "  Should have 0 <= nw < %d words.", 1<<15);
+-    MesgString (out);
+-    MesgLine();
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++  if (!(0 <= nw && nw < 1 << 15))
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL2 ("Number of Width Table words given as: nw = %d.  Should have 0 <= nw < %d words.", nw, 1 << 15);
++    }
+   /* sanity check of nh */
+-  if ( ! (0 <= nh  &&  nh < 1<<15))
+-  {
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (out, "Number of Height Table words given as:  nh = %d", nh);
+-    MesgString (out);
+-    MesgLine();
+-    sprintf (out, "  Should have 0 <= nh < %d.", 1<<15);
+-    MesgString (out);
+-    MesgLine();
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++  if (!(0 <= nh && nh < 1 << 15))
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL2 ("Number of Height Table words given as:  nh = %d.  Should have 0 <= nh < %d.", nh, 1 << 15);
++    }
+ }
+ /* ReadTFMIntegers */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Static Void ReadTFMCharInfo (VOID)
++static void
++ReadTFMCharInfo ()
+ {
+   /* Read the TFMinfo array.  See TFtoPL section 11. */
+ 
+   int c, i;
+   _REC_TFMinfo *tfm_inf;
+ 
+-  PToffset = (6 + lh) * 4;   /* offset of TFMinfo array (in bytes) */
+-                             /* 6 words of dimension info, plus header */
++  PToffset = (6 + lh) * 4;	/* offset of TFMinfo array (in bytes) */
++  /* 6 words of dimension info, plus header */
+   for (c = bc; c <= ec; c++)
+-  {
+-    tfm_inf = &TFMinfo[c];
+-    tfm_inf->wdindex = GetPTByte() * 4;   /* offset from start of width array */
+-    i = GetPTByte();   /* 2nd byte contains htindex and dpindex */
+-    tfm_inf->htindex = i / 16 * 4;   /* offset from start of height array */
+-    tfm_inf->dpindex = (i & 15) * 4;   /* offset from start of depth array */
+-    PToffset += 2;   /* skip itindex and remainder bytes */
+-  }
++    {
++      tfm_inf = &TFMinfo[c];
++      tfm_inf->wdindex = GetPTByte () * 4;	/* offset from start of width array */
++      i = GetPTByte ();		/* 2nd byte contains htindex and dpindex */
++      tfm_inf->htindex = i / 16 * 4;	/* offset from start of height array */
++      tfm_inf->dpindex = (i & 15) * 4;	/* offset from start of depth array */
++      PToffset += 2;		/* skip itindex and remainder bytes */
++    }
+ }
+ /* ReadTFMCharInfo */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Static Void ReadTFMCharMetrics (VOID)
++static void
++ReadTFMCharMetrics ()
+ {
+   /* Read the charmetrics array using the indices in TFMinfo. */
+ 
+-  int wdbase = lh * 4 + (ec - bc + 1) * 4 + 24;   /* offset of width array */
+-  int htbase = wdbase + nw * 4;   /* offset of height array */
+-  int dpbase = htbase + nh * 4;   /* offset of depth array */
++  int wdbase = lh * 4 + (ec - bc + 1) * 4 + 24;		/* offset of width array */
++  int htbase = wdbase + nw * 4;	/* offset of height array */
++  int dpbase = htbase + nh * 4;	/* offset of depth array */
+   int c;
+ 
+   for (c = bc; c <= ec; c++)
+-  {
+-    _REC_TFMinfo * tfm_inf = &TFMinfo[c];
+-    _REC_charmetrics * char_met = &charmetrics[c];
+-    int b;
+-
+-    PToffset = wdbase + tfm_inf->wdindex;
+-    for (b = 0; b <= 3; b++)
+-      char_met->width[b] = GetPTByte();
+-    PToffset = htbase + tfm_inf->htindex;
+-    for (b = 0; b <= 3; b++)
+-      char_met->height[b] = GetPTByte();
+-    PToffset = dpbase + tfm_inf->dpindex;
+-    for (b = 0; b <= 3; b++)
+-      char_met->depth[b] = GetPTByte();
+-  }
++    {
++      _REC_TFMinfo *tfm_inf = &TFMinfo[c];
++      _REC_charmetrics *char_met = &charmetrics[c];
++      int b;
++
++      PToffset = wdbase + tfm_inf->wdindex;
++      for (b = 0; b <= 3; b++)
++	char_met->width[b] = GetPTByte ();
++      PToffset = htbase + tfm_inf->htindex;
++      for (b = 0; b <= 3; b++)
++	char_met->height[b] = GetPTByte ();
++      PToffset = dpbase + tfm_inf->dpindex;
++      for (b = 0; b <= 3; b++)
++	char_met->depth[b] = GetPTByte ();
++    }
+ }
+ /* ReadTFMCharMetrics */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#ifdef __STDC__
+-Static Void TFMFillPixelTable (fontinfo * currfont)
+-#else
+-Static Void TFMFillPixelTable (currfont)
+-    fontinfo * currfont;
+-#endif
++static void 
++TFMFillPixelTable (fontinfo * currfont)
+ {
+   /* Fill the pixeltable for  * currfont
+      (a PostScript or other font for which the PK file is missing),
+      using information in the currently open TFM file.
+-  */
++   */
+ 
+   int c;
+ 
+-  ReadTFMIntegers();   /* read lf..nh */
+-  ReadTFMCharInfo();   /* fill TFMinfo array */
+-  ReadTFMCharMetrics();   /* fill charmetrics array */
++  ReadTFMIntegers ();		/* read lf..nh */
++  ReadTFMCharInfo ();		/* fill TFMinfo array */
++  ReadTFMCharMetrics ();	/* fill charmetrics array */
+ 
+-  for (c = 0; c < bc; c++)   /* chars < bc don't exist */
++  for (c = 0; c < bc; c++)	/* chars < bc don't exist */
+     currfont->pixelptr[c].mapadr = 0;
+ 
+-  for (c = ec + 1; c <= maxTeXchar; c++)   /* chars > ec don't exist */
++  for (c = ec + 1; c <= maxTeXchar; c++)	/* chars > ec don't exist */
+     currfont->pixelptr[c].mapadr = 0;
+ 
+   for (c = bc; c <= ec; c++)
+-  {
+-    _REC_pixeltable * pix_tab = &currfont->pixelptr[c];
+-    _REC_charmetrics * char_met = &charmetrics[c];
+-    int scale = currfont->scaledsize;  /* For FixToDVI */
+-    int dheight, pheight, ddepth, pdepth;
+-
+-    pix_tab->dwidth = FixToDVI (scale,
+-                                char_met->width[0], char_met->width[1],
+-                                char_met->width[2], char_met->width[3]);
+-
+-    dheight = FixToDVI (scale,
+-                        char_met->height[0], char_met->height[1],
+-                        char_met->height[2], char_met->height[3]);
+-
+-    ddepth = FixToDVI (scale,
+-                       char_met->depth[0], char_met->depth[1],
+-                       char_met->depth[2], char_met->depth[3]);
+-
+-    /* convert DVI units to pixels */
+-
+-    pix_tab->pwidth = XPixelRound (pix_tab->dwidth);
+-    pheight = YPixelRound (dheight);
+-    pdepth = YPixelRound (ddepth);
+-
+-    /* Since we don't have access to PK bitmap info,
+-       we will have to use the TFM width/height/depth info
+-       to approximate wd, ht, xo, yo.
+-    */
+-
+-    pix_tab->wd = pix_tab->pwidth;
+-    pix_tab->wd -= pix_tab->wd / 8;   /* better approximation */
+-    pix_tab->ht = pheight + pdepth;
+-    pix_tab->xo = 0;
+-    pix_tab->yo = pheight - 1;
+-    if (pix_tab->wd == 0 || pix_tab->ht == 0)   /* anything but 0 */
+-      pix_tab->mapadr = 0;   /* char blank or not in font */
+-    else
+-      pix_tab->mapadr = 1;
+-    pix_tab->bitmap.UU.mptr = (Word *) NULL;
+-  }
++    {
++      _REC_pixeltable *pix_tab = &currfont->pixelptr[c];
++      _REC_charmetrics *char_met = &charmetrics[c];
++      int scale = currfont->scaledsize;		/* For FixToDVI */
++      int dheight, pheight, ddepth, pdepth;
++
++      pix_tab->dwidth = FixToDVI (scale,
++				  char_met->width[0], char_met->width[1],
++				  char_met->width[2], char_met->width[3]);
++
++      dheight = FixToDVI (scale,
++			  char_met->height[0], char_met->height[1],
++			  char_met->height[2], char_met->height[3]);
++
++      ddepth = FixToDVI (scale,
++			 char_met->depth[0], char_met->depth[1],
++			 char_met->depth[2], char_met->depth[3]);
++
++      /* convert DVI units to pixels */
++
++      pix_tab->pwidth = XPixelRound (pix_tab->dwidth);
++      pheight = YPixelRound (dheight);
++      pdepth = YPixelRound (ddepth);
++
++      /* Since we don't have access to PK bitmap info,
++         we will have to use the TFM width/height/depth info
++         to approximate wd, ht, xo, yo.
++       */
++
++      pix_tab->wd = pix_tab->pwidth;
++      pix_tab->wd -= pix_tab->wd / 8;	/* better approximation */
++      pix_tab->ht = pheight + pdepth;
++      pix_tab->xo = 0;
++      pix_tab->yo = pheight - 1;
++      if (pix_tab->wd == 0 || pix_tab->ht == 0)		/* anything but 0 */
++	pix_tab->mapadr = 0;	/* char blank or not in font */
++      else
++	pix_tab->mapadr = 1;
++      pix_tab->bitmap.UU.mptr = (Word *) NULL;
++    }
+ }
+ /* TFMFillPixelTable */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-/* number of characters in CM fonts */
+-#define CMSIZE  128
+ 
+-#ifndef OLD_CHARDIM
+-  /* Data taken from cmr10.pl = most common font (so usual dummy font) : */
+-  /* (width, height, depth, italic correction) of each cmr10 character */
+-  struct {double wd, ht, dp, ic;} cmr10[CMSIZE] =
+-  {
+-    {0.625002, 0.683332, 0, 0},  /* 00 */
+-    {0.833336, 0.683332, 0, 0},  /* 01 */
+-    {0.777781, 0.683332, 0, 0},  /* 02 */
+-    {0.694446, 0.683332, 0, 0},  /* 03 */
+-    {0.666669, 0.683332, 0, 0},  /* 04 */
+-    {0.750002, 0.683332, 0, 0},  /* 05 */
+-    {0.722224, 0.683332, 0, 0},  /* 06 */
+-    {0.777781, 0.683332, 0, 0},  /* 07 */
+-    {0.722224, 0.683332, 0, 0},  /* 08 */
+-    {0.777781, 0.683332, 0, 0},  /* 09 */
+-    {0.722224, 0.683332, 0, 0},  /* 0A */
+-    {0.583336, 0.694445, 0, 0.077779},  /* 0B */
+-    {0.555557, 0.694445, 0, 0},  /* 0C */
+-    {0.555557, 0.694445, 0, 0},  /* 0D */
+-    {0.833336, 0.694445, 0, 0},  /* 0E */
+-    {0.833336, 0.694445, 0, 0},  /* 0F */
+-    {0.277779, 0.430555, 0, 0},  /* 10 */
+-    {0.305557, 0.430555, 0.194445, 0},  /* 11 */
+-    {0.500002, 0.694445, 0, 0},  /* 12 */
+-    {0.500002, 0.694445, 0, 0},  /* 13 */
+-    {0.500002, 0.628473, 0, 0},  /* 14 */
+-    {0.500002, 0.694445, 0, 0},  /* 15 */
+-    {0.500002, 0.567777, 0, 0},  /* 16 */
+-    {0.750002, 0.694445, 0, 0},  /* 17 */
+-    {0.444446, 0, 0.170138, 0},  /* 18 */  /* sic : no height, only depth */
+-    {0.500003, 0.694445, 0, 0},  /* 19 */
+-    {0.722224, 0.430555, 0, 0},  /* 1A */
+-    {0.777781, 0.430555, 0, 0},  /* 1B */
+-    {0.500002, 0.527779, 0.097223, 0},  /* 1C */
+-    {0.902781, 0.683332, 0, 0},  /* 1D */
+-    {1.013891, 0.683332, 0, 0},  /* 1E */
+-    {0.777781, 0.731944, 0.048612, 0},  /* 1F */
+-    {0.277779, 0.430555, 0, 0},  /* 20 */
+-    {0.277779, 0.694445, 0, 0},  /* 21 */
+-    {0.500002, 0.694445, 0, 0},  /* 22 */
+-    {0.833336, 0.694445, 0.194443, 0},  /* 23 */
+-    {0.500002, 0.75, 0.055555, 0},  /* 24 */
+-    {0.833336, 0.75, 0.055555, 0},  /* 25 */
+-    {0.777781, 0.694445, 0, 0},  /* 26 */
+-    {0.277779, 0.694445, 0, 0},  /* 27 */
+-    {0.388889, 0.75, 0.25, 0},  /* 28 */
+-    {0.388889, 0.75, 0.25, 0},  /* 29 */
+-    {0.500002, 0.75, 0, 0},  /* 2A */
+-    {0.777781, 0.583334, 0.194443, 0},  /* 2B */
+-    {0.277779, 0.105556, 0.055555, 0},  /* 2C */
+-    {0.333334, 0.430555, 0, 0},  /* 2D */
+-    {0.277779, 0.105556, 0, 0},  /* 2E */
+-    {0.500002, 0.75, 0.25, 0},  /* 2F */
+-    {0.500002, 0.644444, 0, 0},  /* '0' */
+-    {0.500002, 0.644444, 0, 0},  /* '1' */
+-    {0.500002, 0.644444, 0, 0},  /* '2' */
+-    {0.500002, 0.644444, 0, 0},  /* '3' */
+-    {0.500002, 0.644444, 0, 0},  /* '4' */
+-    {0.500002, 0.644444, 0, 0},  /* '5' */
+-    {0.500002, 0.644444, 0, 0},  /* '6' */
+-    {0.500002, 0.644444, 0, 0},  /* '7' */
+-    {0.500002, 0.644444, 0, 0},  /* '8' */
+-    {0.500002, 0.644444, 0, 0},  /* '9' */
+-    {0.277779, 0.430555, 0, 0},  /* 3A */
+-    {0.277779, 0.430555, 0.194445, 0},  /* 3B */
+-    {0.277779, 0.5, 0.194445, 0},  /* 3C */
+-    {0.777781, 0.366875, -0.133125, 0},  /* 3D */
+-    {0.472224, 0.5, 0.194445, 0},  /* 3E */
+-    {0.472224, 0.694445, 0, 0},  /* 3F */
+-    {0.777781, 0.694445, 0, 0},  /* 40 */
+-    {0.750002, 0.683332, 0, 0},  /* 'A' */
+-    {0.708336, 0.683332, 0, 0},  /* 'B' */
+-    {0.722224, 0.683332, 0, 0},  /* 'C' */
+-    {0.763891, 0.683332, 0, 0},  /* 'D' */
+-    {0.680557, 0.683332, 0, 0},  /* 'E' */
+-    {0.652781, 0.683332, 0, 0},  /* 'F' */
+-    {0.784724, 0.683332, 0, 0},  /* 'G' */
+-    {0.750002, 0.683332, 0, 0},  /* 'H' */
+-    {0.361112, 0.683332, 0, 0},  /* 'I' */
+-    {0.51389,  0.683332, 0, 0},  /* 'J' */
+-    {0.777781, 0.683332, 0, 0},  /* 'K' */
+-    {0.625002, 0.683332, 0, 0},  /* 'L' */
+-    {0.916669, 0.683332, 0, 0},  /* 'M' */
+-    {0.750002, 0.683332, 0, 0},  /* 'N' */
+-    {0.777781, 0.683332, 0, 0},  /* 'O' */
+-    {0.680557, 0.683332, 0, 0},  /* 'P' */
+-    {0.777781, 0.683332, 0.194445, 0},  /* 'Q' */
+-    {0.736113, 0.683332, 0, 0},  /* 'R' */
+-    {0.555557, 0.683332, 0, 0},  /* 'S' */
+-    {0.722224, 0.683332, 0, 0},  /* 'T' */
+-    {0.750002, 0.683332, 0, 0},  /* 'U' */
+-    {0.750002, 0.683332, 0, 0.013888},  /* 'V' */
+-    {1.027781, 0.683332, 0, 0.013888},  /* 'W' */
+-    {0.750002, 0.683332, 0, 0},  /* 'X' */
+-    {0.750002, 0.683332, 0, 0.025},  /* 'Y' */
+-    {0.611113, 0.683332, 0, 0},  /* 'Z' */
+-    {0.277779, 0.75, 0.25, 0},  /* 5B */
+-    {0.500002, 0.694445, 0, 0},  /* 5C */
+-    {0.277779, 0.75, 0.25, 0},  /* 5D */
+-    {0.500002, 0.694445, 0, 0},  /* 5E */
+-    {0.277779, 0.667859, 0, 0},  /* 5F */
+-    {0.277779, 0.694445, 0, 0},  /* 60 */
+-    {0.500002, 0.430555, 0, 0},  /* 'a' */
+-    {0.555557, 0.694445, 0, 0},  /* 'b' */
+-    {0.444446, 0.430555, 0, 0},  /* 'c' */
+-    {0.555557, 0.694445, 0, 0},  /* 'd' */
+-    {0.444446, 0.430555, 0, 0},  /* 'e' */
+-    {0.305557, 0.694445, 0, 0.077779},  /* 'f' */
+-    {0.500002, 0.430555, 0.194445, 0},  /* 'g' */
+-    {0.555557, 0.694445, 0, 0},  /* 'h' */
+-    {0.277779, 0.667859, 0, 0},  /* 'i' */
+-    {0.305557, 0.667859, 0.194445, 0},  /* 'j' */
+-    {0.527781, 0.694445, 0, 0},  /* 'k' */
+-    {0.277779, 0.430555, 0, 0},  /* 'l' */
+-    {0.833336, 0.430555, 0, 0},  /* 'm' */
+-    {0.555557, 0.430555, 0, 0},  /* 'n' */
+-    {0.500002, 0.430555, 0, 0},  /* 'o' */
+-    {0.555557, 0.430555, 0.194445, 0},  /* 'p' */
+-    {0.527779, 0.430555, 0.194445, 0},  /* 'q' */
+-    {0.391668, 0.430555, 0, 0},  /* 'r' */
+-    {0.394445, 0.430555, 0, 0},  /* 's' */
+-    {0.38889,  0.61508,  0, 0},  /* 't' */
+-    {0.555557, 0.430555, 0, 0},  /* 'u' */
+-    {0.527781, 0.430555, 0, 0.013888},  /* 'v' */
+-    {0.722224, 0.430555, 0, 0.013888},  /* 'w' */
+-    {0.527781, 0.430555, 0, 0},  /* 'x' */
+-    {0.527781, 0.430555, 0.194445, 0.013888},  /* 'y' */
+-    {0.444446, 0.430555, 0, 0},  /* 'z' */
+-    {0.500002, 0.430555, 0, 0.027779},  /* 7B */
+-    {1.000003, 0.430555, 0, 0.027779},  /* 7C */
+-    {0.500002, 0.694445, 0, 0},  /* 7D */
+-    {0.500002, 0.667859, 0, 0},  /* 7E */
+-    {0.500002, 0.667859, 0, 0},  /* 7F */
+-  };
+-#endif /* Not OLD_CHARDIM */
+-
+-
+-#ifdef __STDC__
+-Static Void AbsentFillPixelTable (fontinfo * currfont)
+-#else
+-Static Void AbsentFillPixelTable (currfont)
+-    fontinfo * currfont;
+-#endif
++static void 
++AbsentFillPixelTable (fontinfo * currfont)
+ {
+-  /* Fill the pixeltable for  * currfont
+-   * (a PostScript or other font that is missing and cannot be replaced),
+-   * using information in the DVI file, since we have nothing else.
+-   *
+-   * Updated (Wed 9 June 1993) to use cmr10 info., as that is the most
+-   * common font in most present-day documents.
++  /* Fill the pixeltable for *currfont
++     * (a PostScript or other font that is missing and cannot be replaced),
++     * using information in the DVI file, since we have nothing else.
++     *
++     * Updated (Wed 9 June 1993) to use cmr10 info., as that is the most
++     * common font in most present-day documents.
+    */
+ 
+   int c;
+ 
+   for (c = 0; c <= maxTeXchar; c++)
+-  {
+-    _REC_pixeltable * pix_tab = &currfont->pixelptr[c];
+-
+-    /* scaled size of font in DVI units */
+-    int scale = currfont->scaledsize;  /* For character size estimate */
+-    int dheight, ddepth;  /* estimated height and depth, in DVI units */
+-    int pheight, pdepth;  /* same, in pixels */
+-
+-#ifdef OLD_CHARDIM
+-    /* Let character be a square, scaledsize high and wide, zero depth. */
+-    /* For "example.tex", this width and height are not too bad. */
+-    pix_tab->dwidth = scale/2;  /* wild, hazardous guess */
+-    dheight = scale;
+-    ddepth = 0;
+-#else /* Not OLD_CHARDIM */
+-    if (c < CMSIZE)  /* 0 <= c < CMSIZE */
+-    {
+-      pix_tab->dwidth = scale * cmr10[c].wd;
+-      dheight = scale * cmr10[c].ht;
+-      ddepth = scale * cmr10[c].dp;
+-    }
+-    else  /* CMSIZE <= c <= maxTeXchar */
+     {
+-      pix_tab->dwidth = 0;
+-      dheight = 0;
++      _REC_pixeltable *pix_tab = &currfont->pixelptr[c];
++
++      /* scaled size of font in DVI units */
++      int scale = currfont->scaledsize;		/* For character size estimate */
++      int dheight, ddepth;	/* estimated height and depth, in DVI units */
++      int pheight, pdepth;	/* same, in pixels */
++
++      /* Let character be a square, scaledsize high and wide, zero depth. */
++      /* For "example.tex", this width and height are not too bad. */
++      pix_tab->dwidth = scale / 2;	/* wild, hazardous guess */
++      dheight = scale;
+       ddepth = 0;
+-    }
+-#endif /* OLD_CHARDIM */
+ 
+-    /* convert DVI units to pixels */
++      /* convert DVI units to pixels */
++      pix_tab->pwidth = XPixelRound (pix_tab->dwidth);
++      pheight = YPixelRound (dheight);
++      pdepth = YPixelRound (ddepth);
++
++      /* Since we don't have access to PK bitmap or to TFM metric info,
++         we will have to use the guessed (DVI) width/height/depth info
++         to approximate wd, ht, xo, yo.
++       */
+ 
+-    pix_tab->pwidth = XPixelRound (pix_tab->dwidth);
+-    pheight = YPixelRound (dheight);
+-    pdepth = YPixelRound (ddepth);
+-
+-    /* Since we don't have access to PK bitmap or to TFM metric info,
+-       we will have to use the guessed (DVI) width/height/depth info
+-       to approximate wd, ht, xo, yo.
+-    */
+-
+-    pix_tab->wd = pix_tab->pwidth;
+-    pix_tab->wd -= pix_tab->wd / 8;   /* better approximation */
+-    pix_tab->ht = pheight + pdepth;
+-    pix_tab->xo = 0;
+-    pix_tab->yo = pheight - 1;
+-    if (pix_tab->wd == 0 || pix_tab->ht == 0)   /* anything but 0 */
+-      pix_tab->mapadr = 0;   /* char blank or not in font */
+-    else
+-      pix_tab->mapadr = 1;
+-    pix_tab->bitmap.UU.mptr = (Word *) NULL;
+-  }
++      pix_tab->wd = pix_tab->pwidth;
++      pix_tab->wd -= pix_tab->wd / 8;	/* better approximation */
++      pix_tab->ht = pheight + pdepth;
++      pix_tab->xo = 0;
++      pix_tab->yo = pheight - 1;
++      if (pix_tab->wd == 0 || pix_tab->ht == 0)		/* anything but 0 */
++	pix_tab->mapadr = 0;	/* char blank or not in font */
++      else
++	pix_tab->mapadr = 1;
++      pix_tab->bitmap.UU.mptr = (Word *) NULL;
++    }
+ }
+ /* AbsentFillPixelTable */
+ 
+-#undef CMSIZE
+-
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-#ifdef __STDC__
+-Void PixelTableRoutine (fontinfo * currfont)
+-#else
+-Void PixelTableRoutine (currfont)
+-  fontinfo * currfont;
+-#endif
++void 
++PixelTableRoutine (fontinfo * currfont)
+ {
+-  /* DVIReader has just allocated a new pixeltable for currfont^, and
++  /* DVIReader has just allocated a new pixeltable for currfont, and
+      calls this routine from InterpretPage only ONCE per font
+      (the first time the font is used).
+      If this is the first time we've seen the font,
+      then we build fontspec first.
+      (Note that ShowStatistics, in the main program, may call BuildFontSpec
+-      first.)
++     first.)
+      If we can't open the font file, we return dummy_pk or dummy_tfm values,
+      but using the current font's scaledsize.
+-  */
+-
+-#ifdef CURRFONT_TRACE
+-  fprintf (logfile, "PixelTableRoutine\n");
+-  fprintf (logfile, "currfont = %p\n", currfont);
+-  fprintf (logfile, "currfont->fontname = `%s'\n", currfont->fontname);
+-  fprintf (logfile, "currfont->fontspec = `%s'\n", currfont->fontspec);
+-  fprintf (logfile, "currfont->fontspeclen = %d\n", currfont->fontspeclen);
+-  fflush (logfile);
+-#endif /* CURRFONT_TRACE */
++   */
+ 
+   if (!CheckFontPtr (currfont))
+     return;
+ 
+   /* Try to find and fopen (& fclose) PK file; if that fails, try TFM file. */
+   if (currfont->fontspeclen == 0)
+-    (Void) BuildFontSpec (currfont);
++    BuildFontSpec (currfont);
+ 
+   if (currfont->fontexists && !OpenFontFile (currfont->fontspec))
+-  {
+-    string mesg;
+-
+-    StartText();
+-    ResetVDU();  /* let message stay */
+-
+-    sprintf (mesg, "fopen-ed but couldn't open file `%s' for font `%s'",
+-             currfont->fontspec, currfont->fontname);
+-    MesgString (mesg);
+-    MesgLine();
+-    fprintf (logfile, "That shouldn't happen.\n");
+-    fflush (logfile);
+-
+-    RestoreTerminal();
+-    exit (1);
+-  }
++    {
++      StartText ();
++      ResetVDU ();		/* let message stay */
+ 
++      FATAL2 ("fopen-ed but couldn't open file `%s' for font `%s'",
++	      currfont->fontspec, currfont->fontname);
++    }
+   /* gt - is this right when a dummy font is used? */
+ 
+   if (currfont->fontexists)
+-  {
+-    if (currfont->pkfont)
+-      PKFillPixelTable (currfont);
+-    else
+-      TFMFillPixelTable (currfont);
++    {
++      if (currfont->pkfont)
++	PKFillPixelTable (currfont);
++      else
++	TFMFillPixelTable (currfont);
+ 
+-    CloseFontFile();
+-  }
++      CloseFontFile ();
++    }
+   else
+-  {
+-    AbsentFillPixelTable (currfont);
+-  }
++    {
++      AbsentFillPixelTable (currfont);
++    }
+ }
+ /* PixelTableRoutine */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+-Void InitFontReader (VOID)
++void
++InitFontReader ()
+ {
+   /* This routine initializes some global variables. */
+ 
+   int i;
+ 
+   gpower[0] = 0;
+-  for (i = 1; i <= 32; i++)   /* used in GetBitmap */
++  for (i = 1; i <= 32; i++)	/* used in GetBitmap */
+     gpower[i] = gpower[i - 1] | (1 << (i - 1));
+ }
+ /* InitFontReader */
+ 
+-/******************************************************************************/
++/*--------------------------------------------------------------------*/
+ 
+ /* end fontreader.c */
+--- src/fontreader.h
++++ src/fontreader.h	2005-10-21 15:05:34.000000000 +0200
+@@ -10,7 +10,7 @@
+ extern Void InitFontReader (VOID);
+ extern Void PixelTableRoutine __((fontinfo * currfont));
+ extern boolean GetBitmap __((int ht, int wd, int mapadr, int_or_mptr *bitmap));
+-extern boolean BuildFileSpec __((const char * areas, const char * name, string spec));
++extern boolean BuildFileSpec __((const char * areas, const char * name, String spec));
+ extern boolean BuildFontSpec __((fontinfo *fontptr));
+ extern boolean OpenFontFile __((Char *name));
+ extern Void CloseFontFile (VOID);
+--- src/globals.h
++++ src/globals.h	2005-10-21 15:05:34.000000000 +0200
+@@ -22,9 +22,9 @@
+  - See AAAREAD.ME for revision history.
+  - Debugging code is bracketed by { DEBUG } ... { GUBED }.
+    This code will be commented out in the final working version.
+- - System-dependent code is indicated by the string "SYSDEP".
+- - Uncertain code is indicated by the string "???".
+- - Unfinished code is indicated by the string "!!!".
++ - System-dependent code is indicated by the String "SYSDEP".
++ - Uncertain code is indicated by the String "???".
++ - Unfinished code is indicated by the String "!!!".
+  - Goto 999 is used to emulate a RETURN (from procedure) statement.
+  - Goto <= 888 is used to emulate an EXIT (from loop) statement.
+  - The above notes are also true for all separately compiled modules.
+@@ -40,7 +40,7 @@ extern FILE * logfile;
+ #define maxstring       80
+ 
+ 
+-typedef Char string[maxstring + 1]; /* Allow space for null terminator */
++typedef Char String[maxstring + 1]; /* Allow space for null terminator */
+ 
+ /* pointer to 32-bit word */
+ 
+--- src/help.h
++++ src/help.h	2005-10-21 15:05:34.000000000 +0200
+@@ -10,7 +10,7 @@
+ #define NULL  (char *) 0;
+ #endif
+ 
+-char * immed_help_strings[] =
++static Char * immed_help_strings[] =
+ {
+ dvgt_version,
+ "dvgt interactively views TeX-generated DVI files on some common VDUs.",
+@@ -19,9 +19,8 @@ dvgt_version,
+ "USAGE:",
+ "  dvgt  filename[.dvi]",
+ "        [-H x_offset]  [-V y_offset]  [-d dummy_pk]  [-e dummy_tfm]",
+-"        [-f pk_directory]  [-h helpfile]  [-i]  [-l]",
+-"        [-m magnification]  [-p ps_prefix]  [-r xres[,yres]]",
+-"        [-t tfm_directory]  [-v vdu]  [-x paperwd]  [-y paperht]",
++"        [-l] [-m magnification]  [-r xres[,yres]], [-v vdu]",
++"        [-x paperwidth]  [-y paperheight]",
+ "",
+ "-H horizontal_offset   (default = 0.0 in)",
+ "-V vertical_offset     (default = 0.0 in)",
+@@ -29,15 +28,14 @@ dvgt_version,
+ "-m magnification   (default= DVI file's intrinsic magnification)",
+ "-v vdu   (default value = value of TERM)   where  vdu  may be one of:",
+ "",
+-"   aed512 gigi kermit ncsatel regis tek4010 vis240 vis241 vis500 vis550",
++"   aed512 gigi kermit linux ncsatel regis tek4010 vis240 vis241 vis500 vis550",
+ "   vis603 vis630 vk100 vt100 vt100132 vt102 vt125 vt200 vt220 vt240 vt640",
+ "",
+ "The other parameters' default values are system dependent.",
+-"Try `dvgt -f', for example, to find the current default PK font directory.",
+ NULL
+ };
+ 
+-char * cmd_help_strings[] =
++static Char * cmd_help_strings[] =
+ {
+ "MISCELLANEOUS                         CHANGING PAGE DISPLAY (TOGGLES)",
+ "?  Display this command help info     T  Terse - fast but inaccurate",
+--- src/linuxvdu.c
++++ src/linuxvdu.c	2005-10-21 15:05:34.000000000 +0200
+@@ -362,6 +362,9 @@ Void LINUXResetVDU (VOID)
+ 
+ /*****************************************************************************/
+ 
++extern uid_t saveuid;
++extern gid_t savegid;
++
+ Void InitLINUX (VOID)
+ {
+   int vgamode, i;
+@@ -373,12 +376,15 @@ Void InitLINUX (VOID)
+   restore_init_tty();
+   
+   /* Get SVGA mode */
+-  setreuid(geteuid(),getuid()); /* Temporarily give up privs */
+-  setregid(getegid(),getgid());
++  seteuid(saveuid);
++  setegid(savegid);
+ 
+   vga_init();
+   vgamode = vga_getdefaultmode();
+ 
++  setuid(getuid());
++  setgid(getgid());
++
+ #ifndef NOGL
+   if (vga_hasmode(vgamode)) {
+     modeinfo = vga_getmodeinfo(vgamode);
+@@ -422,7 +428,7 @@ Void InitLINUX (VOID)
+   gl_disableclipping();
+   
+   /* Set up font */
+-  font = malloc(256 * 8 * FONT_LINES * BYTESPERPIXEL);
++  font = Malloc(256 * 8 * FONT_LINES * BYTESPERPIXEL);
+   gl_expandfont(8, FONT_LINES, FORE_COLOR, font_bits, font);
+   gl_setfont(8, FONT_LINES, font);
+ #endif /* NOGL */
+--- src/options.c
++++ src/options.c	2005-10-21 15:12:52.000000000 +0200
+@@ -12,6 +12,9 @@
+ #include "options.h"
+ #include "defaults.h"
+ 
++#include <kpathsea/c-ctype.h>
++#include <kpathsea/proginit.h>
++#include <kpathsea/tex-file.h>
+ 
+ /* Variables Exported, via "options.h" */
+ 
+@@ -25,14 +28,13 @@ int mag;
+ int hoffset, voffset;
+ int paperwd, paperht;
+ 
+-string dummy_pk, dummy_tfm;
+-string pkdir, tfmdir;
+-string psprefix;
+-string cmd_help, immed_help;
+-string vdu;
++String dummy_pk, dummy_tfm;
++String pkdir, tfmdir;
++String vdu;
++boolean xterm = false;
+ 
+ /* DVI file's name */
+-string DVIname;
++String DVIname;
+ 
+ 
+ typedef struct
+@@ -60,10 +62,10 @@ size_t ldans = sizeof (dans) / sizeof (D
+ 
+ Static int Inint __((double f));
+ 
+-Static string clarg;  /* current command line argument */
++Static String clarg;  /* current command line argument */
+ Static int clen;      /* command line argument's length */
+ Static char option;   /* current command option */
+-Static string value;  /* current option's value */
++Static String value;  /* current option's value */
+ Static int vlength;   /* current value's length */
+ Static int argnum;   /* 0..argc-1; used in argv calls */
+ 
+@@ -78,15 +80,15 @@ Static int argnum;   /* 0..argc-1; used
+ /* This ASSUMES that s has memory >= n+1 characters. */
+ 
+ #ifdef __STDC__
+-char * strMcpy (char * s, const char * ct, size_t n)
++Char * strMcpy (Char * s, const Char * ct, size_t n)
+ #else
+-char * strMcpy (s, ct, n)
+-  char * s;
+-  char * ct;
++Char * strMcpy (s, ct, n)
++  Char * s;
++  Char * ct;
+   size_t  n;
+ #endif
+ {
+-  strncpy (s, ct, n);
++  strncpy ((char*)s, (const char*)ct, n);
+   s[n] = '\0';
+   return s;
+ }
+@@ -98,16 +100,16 @@ char * strMcpy (s, ct, n)
+ /* set s[maxstring] = NUL character. */
+ 
+ #ifdef __STDC__
+-char * stringcopy (string s, const char * ct)
++Char * stringcopy (Char * s, const Char * ct)
+ #else
+-char * stringcopy (s, ct)
+-  string s;
+-  char * ct;
++Char * stringcopy (s, ct)
++  Char * s;
++  Char * ct;
+ #endif
+ {
+-  strncpy (s, ct, maxstring);
++  strncpy ((char*)s, (const char*)ct, maxstring);
+   s[maxstring] = '\0';
+-  return (char *) &s;
++  return s;
+ }
+ /* stringcopy */
+ 
+@@ -406,7 +408,7 @@ Static Void ToDimen (option, value, r, u
+   */
+ 
+   int check;
+-  string nun;  /* name of unit - ample space in a string for it */
++  String nun;  /* name of unit - ample space in a string for it */
+ 
+   int vlen;
+   char * sval;
+@@ -574,9 +576,9 @@ Void WriteCardinal (name, value)
+   int value;
+ #endif
+ {
+-  string outstring;
++  String outstring;
+ 
+-  sprintf (outstring, "%s= %d", name, value);
++  snprintf (outstring, maxstring, "%s= %d", name, value);
+   MesgString (outstring);
+   MesgLine();
+ }
+@@ -585,16 +587,16 @@ Void WriteCardinal (name, value)
+ /******************************************************************************/
+ 
+ #ifdef __STDC__
+-Void WriteReal (char * name, double value)
++Void WriteReal (Char * name, double value)
+ #else
+ Void WriteReal (name, value)
+-  char * name;
++  Char * name;
+   double value;
+ #endif
+ {
+-  string outstring;
++  String outstring;
+ 
+-  sprintf (outstring, "%s= %f", name, value);
++  snprintf (outstring, maxstring, "%s= %f", name, value);
+   MesgString (outstring);
+   MesgLine();
+ }
+@@ -607,11 +609,11 @@ Void WriteReal (name, value)
+ /* That is, data-driven may be more flexible. */
+ 
+ #ifdef __STDC__
+-Void NameUnit (units un, string nun)
++Void NameUnit (units un, String nun)
+ #else
+ Void NameUnit (un, nun)
+   units un;
+-  string nun;
++  String nun;
+ #endif
+ /* Interface:  un (I),  *nun (O). */
+ {
+@@ -643,11 +645,11 @@ Void WriteDimen (varname, r, un)
+   units un;
+ #endif
+ {
+-  string outstring, nun;
++  String outstring, nun;
+ 
+   NameUnit (un, nun);
+   /* !! gt - this line is unsafe, as outstring may overflow! */
+-  sprintf (outstring, "%s= %f %s", varname, r, nun);
++  snprintf (outstring, maxstring, "%s= %f %s", varname, r, nun);
+   MesgString (outstring);
+   MesgLine();
+ }
+@@ -663,9 +665,9 @@ Void WriteName (varname, svalue)
+   char * svalue;
+ #endif
+ {
+-  string outstring;
++  String outstring;
+ 
+-  sprintf (outstring, "%s= %s", varname, svalue);
++  snprintf (outstring, maxstring, "%s= %s", varname, svalue);
+   MesgString (outstring);
+   MesgLine();
+ }
+@@ -690,8 +692,8 @@ double Unit2Value (unit)
+     per_inch = dans[j].per_inch;
+   else
+   {
+-    string ustr;
+-    sprintf (ustr, "%d", unit);
++    String ustr;
++    snprintf (ustr, maxstring, "%d", unit);
+     MesgString ("Bad unit, enumeration value = ");
+     MesgString (ustr);
+     MesgLine();
+@@ -761,8 +763,13 @@ Void InitOptions (VOID)
+   /* Display type:  default is SYSDEP; see the dv script */
+   /* gt - no "dv" script provided with version 3.0, sadly for us! */
+ 
+-  if (!(env = getenv ("DV_TERM")))
++  if (!(env = getenv ("DV_TERM"))) {
+     env = getenv ("TERM");
++    if (strcmp (env, "xterm") == 0 && getenv("WINDOWID")) {
++       xterm = true;
++       env = "tek4010";
++    }
++  }
+ 
+   stringcopy (vdu,
+     !env ? "" : env);
+@@ -775,19 +782,6 @@ Void InitOptions (VOID)
+   ToPosDimen ("", !(env = getenv ("DV_PAPERHT")) ? DEF_PAPERHT : env,
+               &yr, &yu);
+ 
+-  /* location of PK files */
+-
+-  if (!(env = getenv ("TEXPKS")) && !(env = getenv ("PKFONTS")))
+-    env = getenv ("TEXFONTS");
+-
+-  stringcopy (pkdir,
+-    !env ? DEF_PK_DIR : env);
+-
+-  /* location of TFM files */
+-
+-  stringcopy (tfmdir,
+-    ! (env = getenv ("TEXFONTS")) ? DEF_TFM_DIR : env);
+-
+   /* fall-back PK font */
+ 
+   stringcopy (dummy_pk,
+@@ -798,21 +792,8 @@ Void InitOptions (VOID)
+   stringcopy (dummy_tfm,
+     ! (env = getenv ("DV_DUMMY_TFM")) ? DEF_DUMMY_TFM : env);
+ 
+-  /* prefix in PS font names */
+-
+-  stringcopy (psprefix,
+-    ! (env = getenv("DV_PS_PREFIX")) ? DEF_PS_PREFIX : env);
+-
+   /* command help file read by ? command */
+ 
+-  stringcopy (cmd_help,
+-    ! (env = getenv ("DV_CMD_HELP")) ? DEF_CMD_HELP : env);
+-
+-  /* immediate help file read when dvgt has no arguments */
+-
+-  stringcopy (immed_help,
+-    ! (env = getenv ("DV_IMMED_HELP")) ? DEF_IMMED_HELP : env);
+-
+   /* DVI file name */
+ 
+   stringcopy (DVIname, "");  /* no DVI file yet */
+@@ -845,7 +826,7 @@ Void InitOptions (VOID)
+         {
+           MesgString ("Valid options are:");
+           MesgLine();
+-          MesgString ("  H V d e f h i l m p r t v x y");
++          MesgString ("  H V d e l m r v x y");
+           MesgLine();
+         }
+         RestoreTerminal();
+@@ -899,36 +880,6 @@ Void InitOptions (VOID)
+           }
+           break;
+ 
+-        case 'f':
+-          GetValue();
+-          if (vlength > 0)
+-            stringcopy (pkdir, value);
+-          else
+-          {
+-            WriteName ("pk font directory", pkdir);
+-            MesgString ("environment variable = TEXPKS or PKFONTS or TEXFONTS");
+-            MesgLine();
+-          }
+-          break;
+-
+-        case 'h':
+-          GetValue();
+-          if (vlength > 0)
+-            stringcopy (cmd_help, value);
+-          else
+-          {
+-            WriteName ("command help file", cmd_help);
+-            MesgString ("environment variable = DV_CMD_HELP");
+-            MesgLine();
+-          }
+-          break;
+-
+-        case 'i':
+-          WriteName ("immediate help file", immed_help);
+-          MesgString ("environment variable = DV_IMMED_HELP");
+-          MesgLine();
+-          break;
+-
+         case 'l':
+           landscape = true;
+           MesgString ("In landscape orientation now.  (Default is portrait.)");
+@@ -943,18 +894,6 @@ Void InitOptions (VOID)
+             WriteCardinal ("magnification", mag);
+           break;
+ 
+-        case 'p':
+-          GetValue();
+-          if (vlength > 0)
+-            stringcopy (psprefix, value);
+-          else
+-          {
+-            WriteName ("postscript font prefix", psprefix);
+-            MesgString ("environment variable = DV_PS_PREFIX");
+-            MesgLine();
+-          }
+-          break;
+-
+         case 'r':
+           GetValue();
+           /* gt - resolutions should allow non-integral dpi */
+@@ -974,22 +913,13 @@ Void InitOptions (VOID)
+           }
+           break;
+ 
+-        case 't':
+-          GetValue();
+-          if (vlength > 0)
+-            stringcopy (tfmdir, value);
+-          else
+-          {
+-            WriteName ("tfm directory", tfmdir);
+-            MesgString ("environment variable = TEXFONTS");
+-            MesgLine();
+-          }
+-          break;
+-
+         case 'v':
+           GetValue();
+-          if (vlength > 0)
++          if (vlength > 0) {
+             stringcopy (vdu, value);
++	    if (strcmp (vdu, "tek4010"))
++	      xterm = false;
++	  }
+           else
+           {
+             WriteName ("vdu", vdu);
+@@ -1030,7 +960,7 @@ Void InitOptions (VOID)
+ 
+           MesgString ("Valid options are:");
+           MesgLine();
+-          MesgString ("  H V d e f h i l m p r t v x y");
++          MesgString ("  H V d e l m r v x y");
+           MesgLine();
+ 
+           RestoreTerminal();
+@@ -1069,7 +999,7 @@ Void InitOptions (VOID)
+   }  /* while */
+ 
+ #ifdef CHECK_ON_DVIname
+-  if (DVIname == (char *) NULL || strlen (DVIname) == 0 || DVIname[0] == ' ')
++  if (DVIname == (Char *) NULL || strlen (DVIname) == 0 || DVIname[0] == ' ')
+   {
+     /* no file name on command line */
+ 
+@@ -1095,6 +1025,19 @@ Void InitOptions (VOID)
+     paperwd = paperht;
+     paperht = temp;
+   }
++
++  if (strcmp(dummy_pk, DEF_DUMMY_PK))
++  {
++    char * end = strchr(dummy_pk, '.');
++    if (end)
++      *end = '\0';
++    kpse_init_prog ("DVItoVDU", (unsigned int)DEF_XRES, (const_string)DEF_MFMODE, dummy_pk);
++  }
++  else
++  {
++    kpse_init_prog ("DVItoVDU", (unsigned int)DEF_XRES, (const_string)DEF_MFMODE, (const_string)DEF_DUMMY);
++  }
++  kpse_set_program_enabled (kpse_pk_format, true, kpse_src_compile);
+ }
+ /* InitOptions */
+ 
+--- src/options.h
++++ src/options.h	2005-10-21 15:09:33.000000000 +0200
+@@ -26,22 +26,21 @@ Extern int hoffset;        /* horizontal
+ Extern int voffset;        /* vertical   margin shift in pixels */
+ Extern int paperwd;        /* paper width in pixels             */
+ Extern int paperht;        /* paper height in pixels            */
+-Extern string vdu;         /* type of terminal                  */
+-Extern string tfmdir;      /* location of TFM files             */
+-Extern string pkdir;       /* location of PK  files             */
+-Extern string dummy_tfm;   /* dummy TFM file                    */
+-Extern string dummy_pk;    /* dummy PK  file                    */
+-Extern string psprefix;    /* Prefix for PS & pure TFM fonts    */
+-Extern string immed_help;  /* immediate help file name          */
+-Extern string cmd_help;    /* command   help file name          */
+-Extern string DVIname;     /* DVI file name                     */
++Extern String vdu;         /* type of terminal                  */
++Extern String tfmdir;      /* location of TFM files             */
++Extern String pkdir;       /* location of PK  files             */
++Extern String dummy_tfm;   /* dummy TFM file                    */
++Extern String dummy_pk;    /* dummy PK  file                    */
++Extern String psprefix;    /* Prefix for PS & pure TFM fonts    */
++Extern String immed_help;  /* immediate help file name          */
++Extern String DVIname;     /* DVI file name                     */
+ 
+ 
+ extern Void InitOptions (VOID);
+ 
+ extern int Len __((Char *str));
+ 
+-extern Char * stringcopy __((string s, const Char * ct));
++extern Char * stringcopy __((Char * s, const Char * ct));
+ extern Char * strMcpy __((Char * s, const Char * ct, size_t maxlen));
+ 
+ extern Void WriteReal __((Char * name, double value));
+--- src/screenio.c
++++ src/screenio.c	2005-10-21 15:05:34.000000000 +0200
+@@ -53,9 +53,11 @@ int MesgChar (ch)
+     ++ textcolumn;
+   }
+ #ifdef COLUMN_LOG
+-  fflush (logfile);
+-  fprintf (logfile, "%% MesgChar:  textcolumn = %d\n", textcolumn);
+-  fflush (logfile);
++  if (logfile) {
++    fflush (logfile);
++    fprintf (logfile, "%% MesgChar:  textcolumn = %d\n", textcolumn);
++    fflush (logfile);
++  }
+ #endif
+   return status;
+ }
+@@ -71,7 +73,7 @@ int MesgString (s)
+ #endif
+ {
+   int i, status = 0;
+-  string message;
++  String message;
+   /* maxcol <= both size of a string, and width of a line */
+   int maxcol = (maxstring < textlinewidth ? maxstring : textlinewidth);
+ 
+@@ -103,9 +105,11 @@ int MesgString (s)
+ 
+   textcolumn += strlen (message);
+ #ifdef COLUMN_LOG
+-  fflush (logfile);
+-  fprintf (logfile, "%% MesgString:  textcolumn = %d\n", textcolumn);
+-  fflush (logfile);
++  if (logfile) {
++    fflush (logfile);
++    fprintf (logfile, "%% MesgString:  textcolumn = %d\n", textcolumn);
++    fflush (logfile);
++  }
+ #endif
+   return status;
+ }
+@@ -388,7 +392,7 @@ Void ReadString (s)
+     Char * s;
+ #endif
+ {
+-  /* Read a string of characters.
++  /* Read a String of characters.
+      The routine is terminated upon carriage return.
+   */
+ 
+@@ -564,8 +568,16 @@ Static Void InitTeXtoASCII (VOID)
+     TeXtoASCII[i] = '-';
+   for (i = 0x7d; i <= 0x7f; i++)   /* more accents */
+     TeXtoASCII[i] = '~';
++#if 0
+   for (i = 0x80; i <= 0xff; i++)   /* non-ASCII, but 8-bit: 128 to 255 */
+     TeXtoASCII[i] = '?';
++#else
++  for (i = 0x80; i <= 0x9f; i++)   /* non-ASCII, but 8-bit: 128 to 239 */
++    TeXtoASCII[i] = '?';
++  /* These codes are remapped in dvireader.c */
++  for (i = 0xa0; i <= 0xff; i++)   /* Mostly ISO Latin 8859-1/8859-2 8bit ??? */
++    TeXtoASCII[i] = i;
++#endif
+ }
+ /* InitTeXtoASCII */
+ 
+--- src/screenio.h
++++ src/screenio.h	2005-10-21 15:05:34.000000000 +0200
+@@ -17,7 +17,7 @@
+  - WriteFlush or WriteLine must be called to explicitly update the terminal
+    (e.g., just before a read) or to synchronize output with writes
+    from other modules that don't use ScreenIO.
+- - WriteString assumes the end of a string is the first blank (if not full),
++ - WriteString assumes the end of a String is the first blank (if not full),
+    so clients need to replace calls like WriteString('xxx = ') with
+    WriteString('xxx ='); WriteChar(' ').
+ */
+--- src/tek4010emu.c
++++ src/tek4010emu.c	2005-10-21 15:05:34.000000000 +0200
+@@ -22,7 +22,6 @@
+ int maxy, lineht, dragdown;
+ boolean havesentxy;
+ 
+-
+ Static int oldhiy;   /* for remembering old address in SendXY */
+ Static int oldhix, oldloy, charwidth;
+     /* set by TEK4010LoadFont and used in TEK4010ShowChar */
+@@ -421,13 +420,13 @@ int screenh; int screenv; Char ch;
+       /* only simulate rest of ligature if room at right edge */
+       if (screenh + charwidth * 3 <= 1023) 
+       {
+-        string outstr;  /* ample size */
++        String outstr;  /* ample size */
+ 
+ 	Graphic();
+ 	SendXY (screenh + charwidth * 2, maxy - screenv);
+         Alpha();
+ 
+-        sprintf (outstr, "%.2x", ch);
++        snprintf (outstr, maxstring, "%.2x", ch);
+         WriteChar (outstr[0]);
+         WriteChar (outstr[1]);
+       }
+--- src/unixio.c
++++ src/unixio.c	2005-10-21 15:05:34.000000000 +0200
+@@ -114,7 +114,7 @@ static Void reportio (iostat)
+   if (iostat < 0)  /* an ioctl error */
+   {
+     char * str = "";
+-    string cstr;
++    String cstr;
+     switch (errno)
+     {
+       /* generic errors */
+@@ -154,7 +154,7 @@ static Void reportio (iostat)
+ #endif
+       /* gt - should be ample space in cstr. */ 
+       default:
+-        sprintf (cstr, "Unknown error %d !", errno);
++        snprintf (cstr, maxstring, "Unknown error %d !", errno);
+         str = cstr;
+       break;
+     }
+--- src/vdu.c
++++ src/vdu.c	2005-10-21 15:05:34.000000000 +0200
+@@ -11,9 +11,9 @@
+ 
+ extern Void InitNCSATEL(), InitVT100(), InitVT100132(), InitAED512(),
+   InitVT640(), InitVIS500(), InitVIS550(), InitVIS630(), InitVIS603(),
+-  InitREGIS(), InitVIS240(), InitVT220();
++  InitREGIS(), InitVIS240(), InitVT220(), InitGeneric();
+ 
+-#ifdef __linux__
++#if  defined(__linux__) && defined(VGA)
+ extern Void InitLINUX();
+ #endif
+ 
+@@ -68,7 +68,7 @@ struct vdu_block InitVDUlist[] =
+   {"vt220", InitVT220, true},
+   {"vt240", InitREGIS, true},
+   {"vt640", InitVT640, true},
+-#ifdef __linux__
++#if defined(__linux__) && defined(VGA)
+   {"linux", InitLINUX, true},  /* Linux SVGA driver */
+ #endif
+   {"kermit", InitNCSATEL, false},  /* temporarily for MS-Kermit Tek4010 emu. */
+@@ -76,7 +76,8 @@ struct vdu_block InitVDUlist[] =
+   {"tek4010", InitNCSATEL, false},  /* temporarily? */
+   {"vt100", InitVT100, true},
+   {"vt100132", InitVT100132, true},  /* I think vt100132 can clear a line */
+-  {"vt102", InitVT100, true}  /* I think vt102 can clear a line */
++  {"vt102", InitVT100, true},  /* I think vt102 can clear a line */
++/*  {"curses", InitGeneric, true}  */
+ };
+ 
+ /*******************************************************************/
+@@ -98,19 +99,27 @@ Void InitVDU (VOID)
+       break;
+     }
+   }
++
++  if (i) {
++    if (strcmp("linux", vdu_block_p->vdu_name)) {
++	setuid(getuid());
++	setgid(getgid());
++    }
++  }
++
+   /* If i == 0 then invalid VDU.
+    * If any of the function pointers are still NULL, then invalid driver.
+    */
+   if (i == 0)
+   {
+-    string msgstr;
++    String msgstr;
+     RestoreTerminal();
+-    sprintf (msgstr, "Terminal type \"%s\" not supported.", vdu);
++    snprintf (msgstr, maxstring, "Terminal type \"%s\" not supported.", vdu);
+     MesgString (msgstr);  MesgLine();
+-    sprintf (msgstr,
++    snprintf (msgstr, maxstring,
+       "Either use the \"-v\" option or the TERM environment variable");
+     MesgString (msgstr);  MesgLine();
+-    sprintf (msgstr, "to specify one of the following terminal types:");
++    snprintf (msgstr, maxstring, "to specify one of the following terminal types:");
+     MesgString (msgstr);  MesgLine();
+ #define TERMS_PER_LINE (5)
+     for (vdu_block_p = InitVDUlist, i = n ;i > 0;)
+@@ -119,7 +128,7 @@ Void InitVDU (VOID)
+       for (j = i < TERMS_PER_LINE? i: TERMS_PER_LINE;
+            j > 0; j--, vdu_block_p++)
+       {
+-        sprintf (msgstr,  "\t%s", vdu_block_p->vdu_name);
++        snprintf (msgstr, maxstring, "\t%s", vdu_block_p->vdu_name);
+         MesgString (msgstr);
+       } /* endfor */
+       i -= TERMS_PER_LINE;
+@@ -131,7 +140,7 @@ Void InitVDU (VOID)
+   }
+   else
+   {
+-    string msgstr;
++    String msgstr;
+     /* gt - specialised types for the following comparisons */
+ 
+     typedef Void (*TLFP) __((int line));
+@@ -152,7 +161,7 @@ Void InitVDU (VOID)
+         || ResetVDU == (VFP) NULL)
+     {
+       RestoreTerminal();
+-      sprintf (msgstr,  "Error in configuration for \"%s\" vdu.", vdu);
++      snprintf (msgstr, maxstring, "Error in configuration for \"%s\" vdu.", vdu);
+       MesgString (msgstr);  MesgLine();
+       RestoreTerminal();  /* GT - to be safe */
+       exit (1);
+--- src/version.h
++++ src/version.h	2005-10-21 15:05:34.000000000 +0200
+@@ -4,7 +4,8 @@
+ #define VERSION_H
+ 
+ #define dvgt_version  \
+-"This is dvgt 3.51L3 (DVItoVDU, v. 3.0, gt mod 5 rev 1 Linux 3) - 10 Jul 95"
++"This is dvgt 3.51L3 (DVItoVDU, v. 3.0, gt mod 5 rev 1 Linux 3) - 10 Jul 95\n" \
++"Adjusted to TeXLive 2007 (kpathsea version 3.5.6) on SuSE Linux - 13 Mar 2008"
+ 
+ #endif /* VERSION_H */
+ 

@@ -1,0 +1,28 @@
+--- configure.ac-orig	2020-03-03 10:46:46.352038934 +0100
++++ configure.ac	2020-03-03 10:47:23.932583111 +0100
+@@ -534,25 +534,12 @@
+ AM_CONDITIONAL(BUILD_AZURE_EVENTS, test $BUILD_AZURE_EVENTS -eq 1)
+ 
+ BUILD_GCP_PD_MOVE=1
+-if test -z "$PYTHON" || test "x${HAVE_PYMOD_GOOGLEAPICLIENT}" != xyes || test $BUILD_OCF_PY -eq 0; then
+-    BUILD_GCP_PD_MOVE=0
+-    AC_MSG_WARN("Not building gcp-pd-move")
+-fi
+ AM_CONDITIONAL(BUILD_GCP_PD_MOVE, test $BUILD_GCP_PD_MOVE -eq 1)
+ 
+ BUILD_GCP_VPC_MOVE_ROUTE=1
+-if test -z "$PYTHON" || test "x${HAVE_PYMOD_GOOGLEAPICLIENT}" != xyes || \
+-   test "x${HAVE_PYMOD_PYROUTE2}" != xyes || test $BUILD_OCF_PY -eq 0; then
+-    BUILD_GCP_VPC_MOVE_ROUTE=0
+-    AC_MSG_WARN("Not building gcp-vpc-move-route")
+-fi
+ AM_CONDITIONAL(BUILD_GCP_VPC_MOVE_ROUTE, test $BUILD_GCP_VPC_MOVE_ROUTE -eq 1)
+ 
+ BUILD_GCP_VPC_MOVE_VIP=1
+-if test -z "$PYTHON" || test "x${HAVE_PYMOD_GOOGLEAPICLIENT}" != xyes || test $BUILD_OCF_PY -eq 0; then
+-    BUILD_GCP_VPC_MOVE_VIP=0
+-    AC_MSG_WARN("Not building gcp-vpc-move-vip")
+-fi
+ AM_CONDITIONAL(BUILD_GCP_VPC_MOVE_VIP, test $BUILD_GCP_VPC_MOVE_VIP -eq 1)
+ 
+ AC_PATH_PROGS(ROUTE, route)

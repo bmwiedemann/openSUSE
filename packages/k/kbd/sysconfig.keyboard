@@ -1,0 +1,56 @@
+## Path:        Hardware/Keyboard
+## Description: Keyboard settings for the text console
+## ServiceRestart: kbdsettings
+#
+
+## Type:        integer
+## Default:
+#
+# Keyboard delay time in ms (250, 500, 750, 1000)
+KBD_DELAY=""
+
+## Type:	string(2.0,2.1,2.3,2.5,2.7,3.0,3.3,3.7,4.0,4.3,4.6,5.0,5.5,6.0,6.7,7.5,8.0,8.6,9.2,10.0,10.9,12.0,13.3,15.0,16.0,17.1,18.5,20.0,21.8,24.0,26.7,30.0)
+## Default:
+#
+# Keyboard repeat rate (2.0 - 30.0)
+KBD_RATE=""
+
+## Type:        list(bios,yes,no)
+## Default:     bios
+#
+# NumLock on? ("yes" or "no" or "bios" for BIOS setting)
+# This setting may interfere with GNOME /org/gnome/settings-daemon/peripherals/keyboard/remember-numlock-state DConf key.
+KBD_NUMLOCK="bios"
+
+## Type:        yesno
+## Default:     no
+#
+# ScrollLock on? ("yes" or "no")
+KBD_SCRLOCK="no"
+
+## Type:        yesno
+## Default:     no
+#
+# CapsLock on? ("yes" or "no")
+KBD_CAPSLOCK="no"
+
+## Type:        yesno
+## Default:     no
+#
+# Disable CAPS LOCK and make it a normal Shift key?
+# (Ctrl Caps Lock will still toggle Caps Lock functionality)
+# Note that you need to tweak the xkb maps or use xmodmap
+# if you want to do the same under X-Windows. In ~/.Xmodmap:
+# keycode 0x42 = Shift_L Shift_L
+#
+KBD_DISABLE_CAPS_LOCK="no"
+
+## Type:        string
+## Default:
+#
+# ttys for the above settings 
+# Example: "tty1 tty2"
+# "" for tty's 1-6
+#
+KBD_TTY=""
+

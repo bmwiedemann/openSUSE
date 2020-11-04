@@ -1,0 +1,22 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="url">https://gitlab.freedesktop.org/realmd/adcli.git</param>
+		<param name="scm">git</param>
+		<param name="revision">0.9.0</param>
+		<param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
+		<param name="filename">adcli</param>
+		<param name="exclude">.git</param>
+	</service>
+
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">gz</param>
+	</service>
+
+	<service name="set_version" mode="disabled">
+		<param name="basename">adcli</param>
+		<param name="file">adcli.spec</param>
+	</service>
+
+	<service name="source_validator" mode="disabled"/>
+</services>

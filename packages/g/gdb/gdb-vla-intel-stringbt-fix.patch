@@ -1,0 +1,167 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Jan Kratochvil <jan.kratochvil@redhat.com>
+Date: Fri, 1 Aug 2014 23:02:17 +0200
+Subject: gdb-vla-intel-stringbt-fix.patch
+
+;;=push+jan
+
+http://sourceware.org/ml/gdb-patches/2014-08/msg00025.html
+
+On Fri, 01 Aug 2014 09:20:19 +0200, Keven Boell wrote:
+> I just tried it on Fedora 20 i686.  Applied the patch, you mentioned, on top of
+> the Fortran VLA series and executed your dynamic-other-frame test.  Everything
+> is working fine here, I cannot reproduce the crash.
+
+I have it reproducible on Fedora 20 i686 with plain
+CFLAGS=-g ./configure;make;cd gdb/testsuite;make site.exp;runtest gdb.fortran/dynamic-other-frame.exp
+
+Besides that I have updated the testcase with
+	gdb_test_no_output "set print frame-arguments all"
+so that there is no longer needed the patch:
+	[patch] Display Fortran strings in backtraces
+	https://sourceware.org/ml/gdb-patches/2014-07/msg00709.html
+
+The fix below has no regressions for me.  Unfortunately I do not see why you
+cannot reproduce it.
+
+Thanks,
+Jan
+
+diff --git a/gdb/dwarf2loc.c b/gdb/dwarf2loc.c
+--- a/gdb/dwarf2loc.c
++++ b/gdb/dwarf2loc.c
+@@ -2154,6 +2154,20 @@ dwarf2_evaluate_loc_desc_full (struct type *type, struct frame_info *frame,
+   ctx.per_cu = per_cu;
+   ctx.obj_address = 0;
+ 
++frame_id old_frame_id (get_frame_id (deprecated_safe_get_selected_frame ()));
++class RestoreCall {
++private:
++  const std::function<void ()> func;
++public:
++  RestoreCall(std::function<void ()> func_):func(func_) {}
++  ~RestoreCall() { func(); }
++} restore_frame([=]() {
++  frame_info *old_frame (frame_find_by_id (old_frame_id));
++  if (old_frame != NULL)
++    select_frame (old_frame);
++});
++if (frame != NULL) select_frame (frame);
++
+   scoped_value_mark free_values;
+ 
+   ctx.gdbarch = get_objfile_arch (objfile);
+diff --git a/gdb/testsuite/gdb.fortran/dynamic-other-frame-stub.f90 b/gdb/testsuite/gdb.fortran/dynamic-other-frame-stub.f90
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.fortran/dynamic-other-frame-stub.f90
+@@ -0,0 +1,24 @@
++! Copyright 2010 Free Software Foundation, Inc.
++!
++! This program is free software; you can redistribute it and/or modify
++! it under the terms of the GNU General Public License as published by
++! the Free Software Foundation; either version 2 of the License, or
++! (at your option) any later version.
++!
++! This program is distributed in the hope that it will be useful,
++! but WITHOUT ANY WARRANTY; without even the implied warranty of
++! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++! GNU General Public License for more details.
++!
++! You should have received a copy of the GNU General Public License
++! along with this program; if not, write to the Free Software
++! Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++!
++! Ihis file is the Fortran source file for dynamic.exp.
++! Original file written by Jakub Jelinek <jakub@redhat.com>.
++! Modified for the GDB testcase by Jan Kratochvil <jan.kratochvil@redhat.com>.
++
++subroutine bar
++  real :: dummy
++  dummy = 1
++end subroutine bar
+diff --git a/gdb/testsuite/gdb.fortran/dynamic-other-frame.exp b/gdb/testsuite/gdb.fortran/dynamic-other-frame.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.fortran/dynamic-other-frame.exp
+@@ -0,0 +1,39 @@
++# Copyright 2010 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++# 
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++# 
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++
++set testfile "dynamic-other-frame"
++set srcfile1 ${testfile}.f90
++set srcfile2 ${testfile}-stub.f90
++set objfile2 [standard_output_file ${testfile}-stub.o]
++set executable ${testfile}
++set binfile [standard_output_file ${executable}]
++
++if { [gdb_compile "${srcdir}/${subdir}/${srcfile2}" "${objfile2}" object {f90}] != ""
++     || [gdb_compile "${srcdir}/${subdir}/${srcfile1} ${objfile2}" "${binfile}" executable {debug f90}] != "" } {
++    untested "Couldn't compile ${srcfile1} or ${srcfile2}"
++    return -1
++}
++
++clean_restart ${executable}
++
++gdb_test_no_output "set print frame-arguments all"
++
++if ![runto bar_] then {
++    perror "couldn't run to bar_"
++    continue
++}
++
++gdb_test "bt" {foo \(string='hello'.*}
+diff --git a/gdb/testsuite/gdb.fortran/dynamic-other-frame.f90 b/gdb/testsuite/gdb.fortran/dynamic-other-frame.f90
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.fortran/dynamic-other-frame.f90
+@@ -0,0 +1,36 @@
++! Copyright 2010 Free Software Foundation, Inc.
++!
++! This program is free software; you can redistribute it and/or modify
++! it under the terms of the GNU General Public License as published by
++! the Free Software Foundation; either version 2 of the License, or
++! (at your option) any later version.
++!
++! This program is distributed in the hope that it will be useful,
++! but WITHOUT ANY WARRANTY; without even the implied warranty of
++! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++! GNU General Public License for more details.
++!
++! You should have received a copy of the GNU General Public License
++! along with this program; if not, write to the Free Software
++! Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++!
++! Ihis file is the Fortran source file for dynamic.exp.
++! Original file written by Jakub Jelinek <jakub@redhat.com>.
++! Modified for the GDB testcase by Jan Kratochvil <jan.kratochvil@redhat.com>.
++
++subroutine foo (string)
++  interface
++    subroutine bar
++    end subroutine
++  end interface
++  character string*(*)
++  call bar                                ! stop-here
++end subroutine foo
++program test
++  interface
++    subroutine foo (string)
++    character string*(*)
++    end subroutine
++  end interface
++  call foo ('hello')
++end

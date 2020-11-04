@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Jan 16 15:52:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.15.0
+  * server: use explicit mapping of available commands for security reasons
+  * client: add socks proxy support via siosocks
+  * client: add custom list parser
+
+-------------------------------------------------------------------
+Thu Nov  7 16:12:05 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul 23 17:00:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

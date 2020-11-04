@@ -1,0 +1,15 @@
+diff -Naur raqm-0.7.0.orig/tests/Makefile.in raqm-0.7.0/tests/Makefile.in
+--- raqm-0.7.0.orig/tests/Makefile.in	2019-05-27 20:51:18.000000000 +0200
++++ raqm-0.7.0/tests/Makefile.in	2020-05-11 15:56:46.357998026 +0200
+@@ -592,11 +592,9 @@
+     cursor_position_GB3.test \
+     cursor_position_GB4.test \
+     cursor_position_GB5.test \
+-    cursor_position_GB8a.test \
+     cursor_position_GB9.test \
+     cursor_position_GB9a.test \
+     invisible_glyph_hidden.test \
+-    invisible_glyph_space.test \
+     invisible_glyph_explicit.test
+ 
+ TEST_EXTENSIONS = \

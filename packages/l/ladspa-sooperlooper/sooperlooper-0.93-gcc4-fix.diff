@@ -1,0 +1,10 @@
+--- SooperLooper.c-dist	2005-04-11 11:20:22.299653687 +0200
++++ SooperLooper.c	2005-04-11 11:20:30.826669276 +0200
+@@ -2539,6 +2539,7 @@ runSooperLooper(LADSPA_Handle Instance,
+      
+      
+     loopend:
++	;
+   }
+   
+   // keep track of time between triggers to ignore settling issues

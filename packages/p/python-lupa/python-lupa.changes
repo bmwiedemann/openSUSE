@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sat Mar 21 18:05:45 UTC 2020 - Andreas Schwab <schwab@suse.de>
+
+- No LuaJIT on riscv64
+
+-------------------------------------------------------------------
+Thu Mar  5 13:50:57 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.9
+  * Build against Lua 5.3 if available.
+  * GH#129: Fix Lua module loading in Python 3.x.
+  * GH#126: Fix build on Linux systems that install Lua as "lua52" package.
+
+-------------------------------------------------------------------
+Tue Dec 10 20:52:28 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Use pkgconf instead of directly defining required development
+  packages.
+
+-------------------------------------------------------------------
+Tue Dec 10 10:34:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix dependency on the luajit to pull any implementation
+
+-------------------------------------------------------------------
+Sat Feb 16 16:23:10 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.8

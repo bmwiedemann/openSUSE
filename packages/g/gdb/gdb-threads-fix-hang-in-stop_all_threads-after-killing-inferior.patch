@@ -1,0 +1,41 @@
+Index: gdb-9.1/gdb/infrun.c
+===================================================================
+--- gdb-9.1.orig/gdb/infrun.c
++++ gdb-9.1/gdb/infrun.c
+@@ -4354,7 +4354,12 @@ stop_all_threads (void)
+ 
+ 		  /* The thread may be not executing, but still be
+ 		     resumed with a pending status to process.  */
+-		  t->resumed = 0;
++		  if (t->suspend.waitstatus.kind == TARGET_WAITKIND_SIGNALLED
++		      && t->suspend.waitstatus.value.sig == GDB_SIGNAL_KILL
++		      && t->suspend.waitstatus_pending_p)
++		    ;
++		  else
++		    t->resumed = 0;
+ 		}
+ 	    }
+ 
+@@ -4376,10 +4381,18 @@ stop_all_threads (void)
+ 				  target_pid_to_str (event_ptid).c_str ());
+ 	    }
+ 
+-	  if (ws.kind == TARGET_WAITKIND_NO_RESUMED
+-	      || ws.kind == TARGET_WAITKIND_THREAD_EXITED
+-	      || ws.kind == TARGET_WAITKIND_EXITED
+-	      || ws.kind == TARGET_WAITKIND_SIGNALLED)
++	  if (ws.kind == TARGET_WAITKIND_SIGNALLED
++	      && ws.value.sig == GDB_SIGNAL_KILL)
++	    {
++	      thread_info *t = find_thread_ptid (event_ptid);
++	      save_waitstatus (t, &ws);
++	      t->resumed = 1;
++	      t->executing = 0;
++	    }
++	  else if (ws.kind == TARGET_WAITKIND_NO_RESUMED
++		   || ws.kind == TARGET_WAITKIND_THREAD_EXITED
++		   || ws.kind == TARGET_WAITKIND_EXITED
++		   || ws.kind == TARGET_WAITKIND_SIGNALLED)
+ 	    {
+ 	      /* All resumed threads exited
+ 		 or one thread/process exited/signalled.  */

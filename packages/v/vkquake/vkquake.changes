@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Sun Sep 13 17:03:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix the factory build:
+  * 0001-Remove-use-of-VK_DYNAMIC_STATE_RANGE_SIZE.patch
+
+-------------------------------------------------------------------
+Fri Mar 27 23:05:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.04.1. Changes since 1.02.0:
+  * Lots of Vulkan fixes
+  * Frame rates over 72 Hz don't break physics anymore
+  * Default maximum frame rate raised to 200 Hz.
+  * Fix crashes with some Intel drivers and anti aliasing
+  * Fix crash "out of dynamic vertex buffer space"
+    in some very large custom maps
+  * Fix gun position being different than in QuakeSpasm
+    when status bar alpha is 0
+  * Fixed alpha tested alias models
+  * Fixed too large dynamic buffer allocations
+  * Lightmaps are now dynamically allocated (from QuakeSpasm)
+  * Particles are now rendered as quads instead of triangles
+    by default (r_quadparticles) like in QuakeSpasm.
+  * Fix alpha tested geo not testing depth
+  * Fix issue where wrong push constants were being
+    set if render size is smaller than window
+  * Fixed certain UI elementes being rendered with alpha
+    blending instead of alpha testing like in QS
+  * Fix issue with Intel GPUs crashing when leaving full screen
+  * Updated to latest QuakeSpasm code
+  * Fix particle alpha being affected by fog
+
+-------------------------------------------------------------------
+Mon Jun 17 19:34:23 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.02.0
+  + Frame rates over 72 Hz don't break physics anymore (from
+    QuakeSpasm spiked)
+  + Default maximum frame rate raised to 200 Hz.
+  + Fix crashes with some Intel drivers and anti aliasing
+  + Fix crash "out of dynamic vertex buffer space" in some very
+    large custom maps
+  + Fix gun position being different than in QuakeSpasm when status
+    bar alpha is 0
+  + Other minor Vulkan fixes
+
+- Update to version 1.01.0
+  + Extremely large textures should now work
+  + Fixed alpha blending issue in some maps
+    (e.g. xmasjam2018_bloodshot)
+  + Partial support for r_showTris (world and particles)
+  + Update to latest QuakeSpasm code
+
+-------------------------------------------------------------------
+Sun Oct 14 06:16:10 UTC 2018 - sean@suspend.net
+
+- Update to 1.00.0
+  + Peformance optimizations (use function pointer instead of loader)
+  + Compute shader water texture update
+  + Update to latest QuakeSpasm code
+
+-------------------------------------------------------------------
+Tue Jun 27 22:45:25 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Update to 0.96.2
+  + Fix for AMD hang
+
+- Changes from 0.96.1
+  + Bump limits for Arcane Dimensions 1.60 (ad_sepulcher)
+  + Fix for broken dynamic lights since version 0.92
+  + Add fence between command buffer completion and present
+    (required by Vulkan spec)
+  + Potential optimization for some drivers: Mark command buffers as
+    VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT
+
+-------------------------------------------------------------------
+Thu Jun 15 00:21:19 UTC 2017 - boris@steki.net
+
+- update Source url to work as intended  
+
+-------------------------------------------------------------------
+Tue Jun 13 02:02:17 UTC 2017 - luke.nukem.jones@gmail.com
+
+- Initial packaging

@@ -1,0 +1,196 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.6-buildid-locate-core-as-arg.patch
+
+;;=push+jan
+
+http://sourceware.org/ml/gdb-patches/2010-01/msg00558.html
+
+[ Fixed up since the mail.  ]
+
+On Thu, 21 Jan 2010 18:17:15 +0100, Doug Evans wrote:
+> Not an exhaustive list, but if we go down the path of converting "gdb
+> corefile" to "gdb -c corefile", then we also need to think about "file
+> corefile" being converted to "core corefile" [or "target core
+> corefile", "core" is apparently deprecated in favor of "target core"]
+> and "target exec corefile" -> "target core corefile".  Presumably
+> "file corefile" (and "target exec corefile") would discard the
+> currently selected executable.  But maybe not.  Will that be confusing
+> for users?  I don't know.
+
+While thinking about it overriding some GDB _commands_ was not my intention.
+
+There is a general assumption if I have a shell COMMAND and some FILE I can do
+$ COMMAND FILE
+and COMMAND will appropriately load the FILE.
+
+FSF GDB currently needs to specify also the executable file for core files
+which already inhibits this intuitive expectation.  OTOH with the build-id
+locating patch which could allow such intuitive start  notneeding the
+executable file.  Still it currently did not work due to the required "-c":
+$ COMMAND -c COREFILE
+
+Entering "file", "core-file" or "attach" commands is already explicit enough
+so that it IMO should do what the command name says without any
+autodetections.  The second command line argument
+(captured_main->pid_or_core_arg) is also autodetected (for PID or CORE) but
+neither "attach" accepts a core file nor "core-file" accepts a PID.
+
+The patch makes sense only with the build-id patchset so this is not submit
+for FSF GDB inclusion yet.  I am fine with your patch (+/- Hui Zhu's pending
+bfd_check_format_matches) as the patch below is its natural extension.
+
+Sorry for the delay,
+Jan
+
+2010-01-25  Jan Kratochvil  <jan.kratochvil@redhat.com>
+
+	* exceptions.h (enum errors <IS_CORE_ERROR>): New.
+	* exec.c: Include exceptions.h.
+	(exec_file_attach <bfd_core>): Call throw_error (IS_CORE_ERROR, ...).
+	* main.c (exec_or_core_file_attach): New.
+	(captured_main <optind < argc>): Set also corearg.
+	(captured_main <strcmp (execarg, symarg) == 0>): New variable func.
+	Call exec_or_core_file_attach if COREARG matches EXECARG.  Call
+	symbol_file_add_main only if CORE_BFD remained NULL.
+
+Http://sourceware.org/ml/gdb-patches/2010-01/msg00517.html
+2010-01-20  Doug Evans  <dje@google.com>
+
+	* exec.c (exec_file_attach): Print a more useful error message if the
+	user did "gdb core".
+
+diff --git a/gdb/exec.c b/gdb/exec.c
+--- a/gdb/exec.c
++++ b/gdb/exec.c
+@@ -18,6 +18,8 @@
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+ 
+ #include "defs.h"
++#include "arch-utils.h"
++#include "exceptions.h"
+ #include "frame.h"
+ #include "inferior.h"
+ #include "target.h"
+@@ -345,12 +347,27 @@ exec_file_attach (const char *filename, int from_tty)
+ 
+       if (!bfd_check_format_matches (exec_bfd, bfd_object, &matching))
+ 	{
++	  int is_core;
++
++	  /* If the user accidentally did "gdb core", print a useful
++	     error message.  Check it only after bfd_object has been checked as
++	     a valid executable may get recognized for example also as
++	     "trad-core".  */
++	  is_core = bfd_check_format (exec_bfd, bfd_core);
++
+ 	  /* Make sure to close exec_bfd, or else "run" might try to use
+ 	     it.  */
+ 	  exec_close ();
+-	  error (_("\"%s\": not in executable format: %s"),
+-		 scratch_pathname,
+-		 gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
++
++	  if (is_core != 0)
++	    throw_error (IS_CORE_ERROR,
++			 _("\"%s\" is a core file.\n"
++			   "Please specify an executable to debug."),
++			 scratch_pathname);
++	  else
++	    error (_("\"%ss\": not in executable format: %s"),
++		   scratch_pathname,
++		   gdb_bfd_errmsg (bfd_get_error (), matching).c_str ());
+ 	}
+ 
+       if (build_section_table (exec_bfd, &sections, &sections_end))
+diff --git a/gdb/gdbsupport/common-exceptions.h b/gdb/gdbsupport/common-exceptions.h
+--- a/gdb/gdbsupport/common-exceptions.h
++++ b/gdb/gdbsupport/common-exceptions.h
+@@ -106,6 +106,9 @@ enum errors {
+      "_ERROR" is appended to the name.  */
+   MAX_COMPLETIONS_REACHED_ERROR,
+ 
++  /* Attempt to load a core file as executable.  */
++  IS_CORE_ERROR,
++
+   /* Add more errors here.  */
+   NR_ERRORS
+ };
+diff --git a/gdb/main.c b/gdb/main.c
+--- a/gdb/main.c
++++ b/gdb/main.c
+@@ -467,6 +467,34 @@ struct cmdarg
+   char *string;
+ };
+ 
++/* Call exec_file_attach.  If it detected FILENAME is a core file call
++   core_file_command.  Print the original exec_file_attach error only if
++   core_file_command failed to find a matching executable.  */
++
++static void
++exec_or_core_file_attach (const char *filename, int from_tty)
++{
++  gdb_assert (exec_bfd == NULL);
++
++  try
++    {
++      exec_file_attach (filename, from_tty);
++    }
++  catch (gdb_exception_error &e)
++    {
++      if (e.error == IS_CORE_ERROR)
++	{
++	  core_file_command ((char *) filename, from_tty);
++
++	  /* Iff the core file found its executable suppress the error message
++	     from exec_file_attach.  */
++	  if (exec_bfd != NULL)
++	    return;
++	}
++      throw_exception (std::move (e));
++    }
++}
++
+ static void
+ captured_main_1 (struct captured_main_args *context)
+ {
+@@ -907,6 +935,8 @@ captured_main_1 (struct captured_main_args *context)
+ 	{
+ 	  symarg = argv[optind];
+ 	  execarg = argv[optind];
++	  if (optind + 1 == argc && corearg == NULL)
++	    corearg = argv[optind];
+ 	  optind++;
+ 	}
+ 
+@@ -1063,12 +1093,25 @@ captured_main_1 (struct captured_main_args *context)
+       && symarg != NULL
+       && strcmp (execarg, symarg) == 0)
+     {
++      catch_command_errors_const_ftype *func;
++
++      /* Call exec_or_core_file_attach only if the file was specified as
++	 a command line argument (and not an a command line option).  */
++      if (corearg != NULL && strcmp (corearg, execarg) == 0)
++	{
++	  func = exec_or_core_file_attach;
++	  corearg = NULL;
++	}
++      else
++	func = exec_file_attach;
++
+       /* The exec file and the symbol-file are the same.  If we can't
+          open it, better only print one error message.
+-         catch_command_errors returns non-zero on success!  */
+-      ret = catch_command_errors (exec_file_attach, execarg,
+-				  !batch_flag);
+-      if (ret != 0)
++         catch_command_errors returns non-zero on success!
++	 Do not load EXECARG as a symbol file if it has been already processed
++	 as a core file.  */
++      ret = catch_command_errors (func, execarg, !batch_flag);
++      if (ret != 0 && core_bfd == NULL)
+ 	ret = catch_command_errors (symbol_file_add_main_adapter,
+ 				    symarg, !batch_flag);
+     }

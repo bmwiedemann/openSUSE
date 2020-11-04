@@ -1,0 +1,107 @@
+-------------------------------------------------------------------
+Wed Jun 10 15:57:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary dependency on unittest2
+
+-------------------------------------------------------------------
+Mon Jun  1 11:01:45 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.2.3
+  * Fixes #179
+  * allow use of nargs with action=append (#177)
+  * Merged ConfigparserConfigFileParser - PR #173 - which adds support
+    for python's Configparser config file format
+
+-------------------------------------------------------------------
+Thu Apr 23 11:15:11 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Feb 20 11:25:43 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.
+  * Dash supported as first char of argument
+
+-------------------------------------------------------------------
+Thu Nov 21 15:24:10 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- When setting the environmental variable COLUMNS=80
+  test case test_help_with_metavar works again.
+  gh#bw2/ConfigArgParse#146
+
+-------------------------------------------------------------------
+Wed Oct 23 13:07:43 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.15.1
+  * Drop support for EOL Python 2.6, 3.2-3.3
+  * Add Python 3.6
+  * sudo no longer needed
+  * travis: Add latest Python versions.
+  * Drop support for EOL Python 3.4
+  * Fix DeprecationWarning: invalid escape sequence \[
+- dropped skip-test.patch
+  * https://github.com/bw2/ConfigArgParse/commit/6267759da55c87508394314292c6c5286220d99d
+
+-------------------------------------------------------------------
+Tue Sep 17 09:14:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Skip failing tests that were reported upstream with no reaction
+
+-------------------------------------------------------------------
+Fri Mar  1 13:20:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.14.0:
+  * Fixes for python3.6 and 3.7
+  * Various lint fixes
+- Make sure we run tests
+- add patch skip-test.patch that skips test that does not work
+  in our test enviroment
+
+-------------------------------------------------------------------
+Fri May 18 08:54:47 UTC 2018 - mcepl@suse.com
+
+- Cleanup SPEC file and add check section
+
+-------------------------------------------------------------------
+Thu Aug 24 13:34:40 UTC 2017 - jmatejek@suse.com
+
+- singlespec auto-conversion
+
+-------------------------------------------------------------------
+Thu Dec 17 17:05:23 UTC 2015 - jweberhofer@weberhofer.at
+
+- Updated to version 0.10.0
+  * config file syntax is now easier to override or extend using the new
+    constructor arg: config_file_parser (via merged gh#bw2/ConfigArgParse#28 - thanks @lahwaacz )
+  * support for python 2.6 (via merged gh#bw2/ConfigArgParse#18 - thanks @kuba )
+  * replace dashes with underscores in env. var names when using the
+    auto-env-var feature (via merged gh#bw2/ConfigArgParse#29 - thanks @helgi )
+
+- Fixed download-link and homepage
+
+- Fixed license
+
+-------------------------------------------------------------------
+Mon Mar  9 15:30:11 UTC 2015 - freitag@owncloud.com
+
+- Add LICENSE file to doc section of the package
+- Use python-setuptools as dependency
+- Use full link to source. 
+
+-------------------------------------------------------------------
+Wed Mar  4 10:33:38 UTC 2015 - freitag@owncloud.com
+
+- Some minor cleanups. 
+
+-------------------------------------------------------------------
+Wed Mar  4 09:49:46 UTC 2015 - freitag@owncloud.com
+
+- Update to upstream version 0.9.3 to make mitmproxy work. 
+
+-------------------------------------------------------------------
+Tue Mar  3 07:07:25 UTC 2015 - freitag@opensuse.org
+
+- Initial package release 
+
+

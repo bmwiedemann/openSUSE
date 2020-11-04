@@ -1,0 +1,39 @@
+Index: libb64-1.2.1/base64/Makefile
+===================================================================
+--- libb64-1.2.1.orig/base64/Makefile
++++ libb64-1.2.1/base64/Makefile
+@@ -21,7 +21,7 @@ TARGETS = $(BINARIES)
+ 
+ LINK.o = g++
+ 
+-CFLAGS += -Werror -pedantic
++CFLAGS += -pedantic
+ CFLAGS += -DBUFFERSIZE=$(BUFFERSIZE)
+ CFLAGS += -I../include
+ 
+Index: libb64-1.2.1/examples/Makefile
+===================================================================
+--- libb64-1.2.1.orig/examples/Makefile
++++ libb64-1.2.1/examples/Makefile
+@@ -9,7 +9,7 @@ TARGETS = $(BINARIES)
+ DEBRIS = encoded.txt decoded.txt
+ 
+ # only because we use ANSI C, not required to use libb64!
+-CFLAGS += -Werror -pedantic
++CFLAGS += -pedantic
+ CFLAGS += -I../include
+ 
+ CXXFLAGS += $(CFLAGS)
+Index: libb64-1.2.1/src/Makefile
+===================================================================
+--- libb64-1.2.1.orig/src/Makefile
++++ libb64-1.2.1/src/Makefile
+@@ -15,7 +15,7 @@ TARGETS = $(LIBRARIES)
+ 
+ LINK.o = gcc
+ 
+-CFLAGS += -Werror -pedantic
++CFLAGS += -pedantic
+ CFLAGS += -I../include
+ 
+ vpath %.h ../include/b64

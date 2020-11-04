@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Jun 21 07:58:12 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 1.2.1.
+  * No visible changes for Linux users. For other changes see
+    /usr/share/doc/packages/meslo-lg-fonts/README.textile.
+  * Add README.textile as a source and install it to docs.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:19 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Tue Apr 24 08:29:13 UTC 2012 - pgajdos@suse.com
+
+- added COPYING
+
+-------------------------------------------------------------------
+Thu Nov 24 17:30:38 UTC 2011 - lazy.kent@opensuse.org
+
+- Spec clean up.
+
+-------------------------------------------------------------------
+Tue Jun 14 21:43:21 UTC 2011 - lazy.kent@opensuse.org
+
+- Build requires xorg-x11-devel to provide font(:lang=*)
+
+-------------------------------------------------------------------
+Mon Jun 13 08:34:58 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 1.0
+

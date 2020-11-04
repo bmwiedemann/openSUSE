@@ -1,0 +1,15 @@
+diff --git a/src/rewriter/date_rewriter.cc b/src/rewriter/date_rewriter.cc
+index d3bc7f0..375639f 100644
+--- a/src/rewriter/date_rewriter.cc
++++ b/src/rewriter/date_rewriter.cc
+@@ -1239,6 +1239,10 @@ const YearData kEraData[] = {
+     1989,
+     "平成",
+     "へいせい",
++  }, {
++    2019,
++    "令和",
++    "れいわ",
+   }
+ };
+ 

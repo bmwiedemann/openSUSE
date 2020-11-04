@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Fri Jun 12 07:20:34 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix building with gcc10
+- Use modern macros in spec file
+
+-------------------------------------------------------------------
+Mon Jul 23 09:20:34 UTC 2018 - guillaume.gardet@opensuse.org
+
+- According to the readme.txt file, it is only working on x86*
+
+-------------------------------------------------------------------
+Tue May 15 08:56:27 UTC 2018 - tchvatal@suse.com
+
+- Disable one errornous warning/error from brp as it is gcc bug
+
+-------------------------------------------------------------------
+Mon May 14 14:17:33 UTC 2018 - tchvatal@suse.com
+
+- Enable tests
+
+-------------------------------------------------------------------
+Mon May 14 13:14:44 UTC 2018 - tchvatal@suse.com
+
+- Add patch cuneiform-brp.patch to fix all the brp fails
+
+-------------------------------------------------------------------
+Mon May 14 13:08:46 UTC 2018 - tchvatal@suse.com
+
+- Drop GM patch as we stick with ImageMagick mostly:
+  * cuneiform-1.1.0-graphicsmagick.patch
+
+-------------------------------------------------------------------
+Mon May 14 12:57:30 UTC 2018 - tchvatal@suse.com
+
+- Add patches from other distributions:
+  * cuneiform-1.1.0-c-assert.patch
+  * cuneiform-1.1.0-fix_buffer_overflow.patch
+  * cuneiform-1.1.0-fix_buffer_overflow_2.patch
+  * cuneiform-1.1.0-gcc6.patch
+  * cuneiform-1.1.0-gcc7.patch
+  * cuneiform-1.1.0-graphicsmagick.patch
+  * cuneiform-1.1.0-libm.patch
+  * cuneiform-1.1.0-strings.patch
+  * cuneiform-1.1.0-typos.patch
+
+-------------------------------------------------------------------
+Thu Jan  4 15:11:21 UTC 2018 - mpluskal@suse.com
+
+- Cleanup with spec-cleaner
+- Use cmake macros
+
+-------------------------------------------------------------------
+Sun Nov  6 13:53:04 UTC 2011 - lazy.kent@opensuse.org
+
+- Provides ocr-engine (required by yagf and others).
+- Corrected License tag.
+- man marked as doc.
+- spec cleanup.
+
+-------------------------------------------------------------------
+Fri Jun  3 11:12:04 UTC 2011 - lazy.kent@opensuse.org
+
+- provides cuneiform-ocr (required by yagf)
+
+-------------------------------------------------------------------
+Tue Apr 19 17:22:42 UTC 2011 - lazy.kent@opensuse.org
+
+- update to 1.1.0
+- dropped 64bit_issue patch
+
+-------------------------------------------------------------------
+Mon Jul  5 18:06:47 UTC 2010 - lazy.kent.suse@gmail.com
+
+- update to 1.0.0
+
+-------------------------------------------------------------------
+Thu Feb 25 08:34:32 UTC 2010 - lazy.kent.suse@gmail.com
+
+- moved man to man1
+
+-------------------------------------------------------------------
+Tue Feb 23 22:41:07 UTC 2010 - lazy.kent.suse@gmail.com
+
+- fixed build with GCC 4.5
+- added man page from Debian project
+
+-------------------------------------------------------------------
+Sun Feb  7 16:36:57 UTC 2010 - lazy.kent.suse@gmail.com
+
+- update to 0.9.0
+- splitted shared libraries and development files
+- removed obsolete libdir patch
+
+-------------------------------------------------------------------
+Fri Jan 22 01:03:34 UTC 2010 - lazy.kent.suse@gmail.com
+
+- shared libraries moved to a subdirectory
+- gccwarnings.patch renamed according to the real patch version
+
+-------------------------------------------------------------------
+Sat Oct  3 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- added supported languages to description
+- corrected date in changelog section
+
+-------------------------------------------------------------------
+Wed Sep 30 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- corrected BuildRequires: cmake >= 2.6.2
+
+-------------------------------------------------------------------
+Tue Sep 29 00:00:00 MSD 2009 - lazy.kent.suse@gmail.com
+
+- update to 0.8.0
+- spec-file corrected
+- added license.txt to docs
+
+-------------------------------------------------------------------
+Mon Feb  2 00:00:00 MSK 2009 - lazy.kent.suse@gmail.com
+
+- initial package created
+

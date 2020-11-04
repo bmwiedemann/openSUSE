@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Thu Aug 27 13:37:06 UTC 2015 - hsk@imb-jena.de
+
+- add CGI to Requires:, BuildRequires:, as that module is not in
+  perl core since perl 5.22
+
+-------------------------------------------------------------------
+Wed Oct 15 15:34:31 UTC 2014 - lars@linux-schulserver.de
+
+- updated to 1.06:
+  - Work better with batch requests: Now responses are properly returned
+    as list as long as the request is a list as well (Arata Makoto)
+
+-------------------------------------------------------------------
+Mon Sep 15 15:44:36 UTC 2014 - coolo@suse.com
+
+- updated to 1.04
+    - Work with notifications, which are procedures without an id
+      (Kirill Bogdanov)
+
+-------------------------------------------------------------------
+Mon Jun 17 11:54:43 UTC 2013 - coolo@suse.com
+
+- updated to 1.03
+   - Allow die \%hash from handlers (ka2u)
+   - Fix the finalization of the response (0xAF)
+   - Use require instead of Class::Load. Subclass in your app if you need
+     that kind of ability, but it seems unlikely that we'd need anything
+     more than eval require here.
+   - JSON::RPC::Dispatcher already existed on CPAN. s/Dispatcher/Dispatch/g
+   - New maintainer, completely new code for PSGI apps and JSON RPC 2.0
+   - If you are using old JSON::RPC code (up to 0.96), DO NOT EXPECT
+     YOUR CODE TO WORK. THIS VERSION IS BACKWARDS INCOMPATIBLE
+
+-------------------------------------------------------------------
+Fri Nov 18 11:07:44 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:10 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Thu Nov 11 15:09:30 UTC 2010 - chris@computersalat.de
+
+- created by cpanspec 1.78
+  o fixed deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Fri Aug  7 15:24:05 CEST 2009 - lars@linux-schulserver.de
+
+- beautify specfile
+
+-------------------------------------------------------------------
+Fri May 01 00:00:00 CET 2009 - - jw@suse.de
+
+- Initial package 0.96
+

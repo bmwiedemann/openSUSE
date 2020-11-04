@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Mon Oct 05 14:32:49 UTC 2020 - kukuk@suse.de
+
+- Update to version 0.6.0+git20200928.d002e54:
+  * docs/example: Add RemainAfterExit=yes
+  * docs: Rename Migrating... to Upgrading Configs
+  * docs: Add ToC to some long pages
+  * docs: Move latest stable config spec to the top
+  * test: Rework 'fedora-coreos-config' test marker in docs
+  * docs: Update all examples to spec 1.1.0
+  * docs: Improve new specification page
+  * docs: Add Jekyll front matter
+  * base/v0_3_exp: add LUKS
+  * docs: Add initial GitHub pages support
+  * travis: test container build
+  * base: Make gzip auto-compression skipable
+  * vendor: bump Ignition to 2.5.0
+  * docs: s/2.3.1/2.4.0/g
+  * docs: update link to Ignition filesystem documentation
+  * docs/migrating-configs: fix file mode
+  * NEWS: add news for 0.6.0
+  * docs/development: add spec bump instructions
+  * docs/migrating-configs: add FCC-specific features
+  * docs/migrating-configs: move section
+  * docs: add migrating-configs.md
+  * docs: update for 1.2.0-experimental
+  * docs: copy config 1.2-exp from 1.1
+  * config: enable spec 1.2.0-experimental
+  * config/v1_2_exp: code changes for new package
+  * config/v1_2_exp: copy from config/v1_1
+  * distro/fcos/v0_1: add translation function for spec 3.2.0
+  * vendor: vendor Ignition config/v3_2_experimental/types
+  * config/v1_1_exp: stabilize
+  * base/v0_3_exp: code changes for new package
+  * base/v0_3_exp: copy from base/v0_2
+  * base/v0_2_exp: stabilize
+  * gitignore: ignore scratch directory created by ./test
+  * docs/examples: add example of including a local file
+  * docs/examples: use with_mount_unit instead of handwriting one
+  * docs/examples: clarify that hashes cover the uncompressed contents
+  * docs/examples: move misplaced section
+  * docs: document Ignition versions that support CA bundles
+  * docs: wording fixes
+  * docs: add CA bundle support information
+  * docs: document storage.trees section
+  * base/v0_2: add storage.trees section
+  * test: clean out tmpdir between docs
+  * base/v0_2: add helper function to check for path traversal
+  * base/v0_2: apply auto_skip to with_mount_unit
+  * translate: add struct tag to skip input field during auto translation
+  * base/v0_2: pretty-print failing subtree on test failure
+  * *: switch to final version of spec 3.1.0
+  * go.mod: bump Ignition to 2.3.0
+  * base/v0_2: auto-select encoding for inline/local file contents
+  * translate: fix Prefix() mangling the To side of translations
+  * docs: clarify semantics of `overwrite` and `mode` fields
+  * base/v0_2: add sugar to embed Resource from a local file
+  * translate: pass translation options to custom translators
+  * translate: have custom translators return a Report
+  * translate: add helpers to translate, prefix, and merge
+  * *: convert high-level translation functions to returning Report
+  * base/v0_2: drop unneeded custom translators
+  * base/v0_2: include mount options in generated mount unit
+  * docs: support sha256 verification in 1.1.0-exp
+  * base/v0_2: add inline resource tests for all resources
+  * base/v0_2: unify resource fetching type
+  * base: comment fixes
+  * go.mod: update to latest Ignition commit
+  * config/common: validate duplicate keys
+  * Update vendor
+  * config/common: Replace "encoding/json" with "github.com/clarketm/json"
+  * main: append newline to output
+  * base/v0_2_exp: translate httpHeaders fields
+  * go.mod: update to Ignition with httpHeaders support
+  * news: add news for 0.5.0
+  * docs: document inline property on files[].append[]
+  * release-checklist: add instructions for updating Fedora RPM
+  * main: accept input filename as bare argument; deprecate --input
+  * docs: clarify a comment
+  * main: add short option flags
+  * main: add --help to help
+  * docs: switch to Fedora signing keys
+  * docs: use double-dash long options
+  * main: Switch from flag to pflag
+
+-------------------------------------------------------------------
+Tue Jan 28 12:16:44 UTC 2020 - kukuk@suse.de
+
+- Update to version 0.4.0+git20200124.846a5a4:
+  * news: add news for 0.4.0
+  * base/v0_2_exp: translate filesystem.mountOptions field
+  * go.mod: bump Ignition to 2.1.1
+  * docs: fix versions for 1.1.0-experimental
+  * build*: use vendored dependencies
+  * test: don't gofmt vendored packages
+  * vendor: vendor dependencies
+  * {docs,release-checklist}: add Quay tag pointing to latest release
+  * release-checklist: fix caps
+  * news: add news for 0.3.0
+
+-------------------------------------------------------------------
+Sat Jan 18 20:51:27 UTC 2020 - kukuk@suse.de
+
+- Update to version 0.2.0+git20191111.daeb3de:
+  * docs: add docs for storage.fs.with_mount_unit
+  * vendor: update go.{mod,sum}
+  * base/v0_2: add filesystem.with_mount_unit
+  * config: split errors to common
+  * translate: allow translations from a common source
+  * translate: split helper fns to their own file
+  * translate: split TranslationSet to own file
+  * translate: minor refactor, add tests, fix bug
+  * base/v0_2: add field to create mount units for fs
+  * base/v0_2: add new fields from ign spec 3.1.0-exp
+  * docs: add docs for v1.1.0-experimental
+  * config,distro: Start using v1.1.0-experimental
+  * config/v1_1_exp: add package
+  * base/v0_2_exp: translate to v3.1.0-experimental
+  * base/v0_2_exp: add package
+  * *: use new translation tracking
+  * translate: keep track of translations
+  * translate: add translate from ignition
+  * distro: add to config, do not create a new one
+  * docs: document inline file contents
+  * *: return reports, print reports to stderr
+  * Removed -t flag for podman run using stdin
+  * main: use O_TRUNC when opening output file
+  * docs/getting-started: document absolute path for config bind mount
+  * docs/getting-started: add fcct container docs
+  * [docs] passwords are hashed not encrypted
+  * news: add news for 0.2.0
+  * go.mod: bump ignition to 2.0.1
+
+-------------------------------------------------------------------
+Mon Aug 26 06:41:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Thu Jul 25 09:26:57 CEST 2019 - kukuk@suse.de
+
+- Initial version
+

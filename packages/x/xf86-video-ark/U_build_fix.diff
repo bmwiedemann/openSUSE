@@ -1,0 +1,11 @@
+--- orig.xf86-video-ark-0.7.5git/src/ark_driver.c	2013-02-25 11:50:41.546252955 +0100
++++ xf86-video-ark-0.7.5git/src/ark_driver.c	2013-02-25 11:51:49.239406674 +0100
+@@ -39,7 +39,6 @@
+ #include "compiler.h"
+ #include "mipointer.h"
+ #include "micmap.h"
+-#include "mibstore.h"
+ #include "fb.h"
+ #include "ark.h"
+ 
+ 

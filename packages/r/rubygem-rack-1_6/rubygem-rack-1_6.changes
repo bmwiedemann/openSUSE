@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Mon Feb 10 15:27:04 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.6.13
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Thu Nov 22 05:29:29 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 1.6.11
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Mon Apr 23 18:18:48 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.6.10
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Wed Feb 28 05:32:02 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 1.6.9
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Tue May 23 10:12:19 UTC 2017 - coolo@suse.com
+
+- updated to version 1.6.8
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Fri Nov 11 05:49:18 UTC 2016 - coolo@suse.com
+
+- updated to version 1.6.5
+ see installed HISTORY.md
+
+  Sun Dec 4 18:48:03 2015  Jeremy Daer <jeremydaer@gmail.com>
+  
+  	* First-party "SameSite" cookies. Browsers omit SameSite cookies
+  	from third-party requests, closing the door on many CSRF attacks.
+  
+  	Pass `same_site: true` (or `:strict`) to enable:
+  	    response.set_cookie 'foo', value: 'bar', same_site: true
+  	or `same_site: :lax` to use Lax enforcement:
+  	    response.set_cookie 'foo', value: 'bar', same_site: :lax
+  
+  	Based on version 7 of the Same-site Cookies internet draft:
+  	https://tools.ietf.org/html/draft-west-first-party-cookies-07
+  
+  	Thanks to Ben Toews (@mastahyeti) and Bob Long (@bobjflong) for
+  	updating to drafts 5 and 7.
+  
+  Wed Jun 24 12:13:37 2015  Aaron Patterson <tenderlove@ruby-lang.org>
+  
+  	* Fix Ruby 1.8 backwards compatibility
+
+-------------------------------------------------------------------
+Mon Jul  4 09:32:45 UTC 2016 - coolo@suse.com
+
+- split off 1.6 in preparation of 2.0
+
+-------------------------------------------------------------------
+Fri Jun 19 04:32:19 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.4
+ see installed HISTORY.md
+
+  Fri Jun 19 07:14:50 2015  Matthew Draper <matthew@trebex.net>
+  
+  	* Work around a Rails incompatibility in our private API
+
+-------------------------------------------------------------------
+Wed Jun 17 04:37:32 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.2
+ see installed HISTORY.md
+
+  Fri Jun 12 11:37:41 2015  Aaron Patterson <tenderlove@ruby-lang.org>
+  
+  	* Prevent extremely deep parameters from being parsed. CVE-2015-3225
+
+-------------------------------------------------------------------
+Thu May  7 04:29:35 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Feb  6 18:18:15 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.0
+
+-------------------------------------------------------------------
+Sat Nov  1 23:17:03 UTC 2014 - tboerger@suse.com
+
+- Fixed all rpmlintrc errors to prevent failing builds with
+  multiple ruby versions
+
+-------------------------------------------------------------------
+Mon Sep 29 20:13:50 UTC 2014 - mrueckert@suse.de
+
+- added rpmlintrc to ignore the rackup shebang line in a test case
+- updated to new packaging scheme and add gem2rpm.yml
+
+-------------------------------------------------------------------
+Tue May 28 05:28:04 UTC 2013 - coolo@suse.com
+
+- new template version
+
+-------------------------------------------------------------------
+Tue Feb 12 13:45:09 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.2
+ * February 7th, Thirty fifth public release 1.5.2
+   * Fix CVE-2013-0263, timing attack against Rack::Session::Cookie
+   * Fix CVE-2013-0262, symlink path traversal in Rack::File
+   * Add various methods to Session for enhanced Rails compatibility
+   * Request#trusted_proxy? now only matches whole stirngs
+   * Add JSON cookie coder, to be default in Rack 1.6+ due to security concerns
+   * URLMap host matching in environments that don't set the Host header fixed
+   * Fix a race condition that could result in overwritten pidfiles
+   * Various documentation additions
+
+-------------------------------------------------------------------
+Sun Feb  3 17:14:19 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.1
+
+-------------------------------------------------------------------
+Thu Jan 24 06:34:01 UTC 2013 - coolo@suse.com
+
+- update to version 1.5.0, remove suffix
+  * Introduced hijack SPEC, for before-response and after-response hijacking
+  * SessionHash is no longer a Hash subclass
+  * Rack::File cache_control parameter is removed, in place of headers options
+  * Rack::Auth::AbstractRequest#scheme now yields strings, not symbols
+  * Rack::Utils cookie functions now format expires in RFC 2822 format
+  * Rack::File now has a default mime type
+  * rackup -b 'run Rack::File.new(".")', option provides command line configs
+  * Rack::Deflater will no longer double encode bodies
+  * Rack::Mime#match? provides convenience for Accept header matching
+  * Rack::Utils#q_values provides splitting for Accept headers
+  * Rack::Utils#best_q_match provides a helper for Accept headers
+  * Rack::Handler.pick provides convenience for finding available servers
+  * Puma added to the list of default servers (preferred over Webrick)
+  * Various middleware now correctly close body when replacing it
+  * Rack::Request#params is no longer persistent with only GET params
+  * Rack::Request#update_param and #delete_param provide persistent operations
+  * Rack::Request#trusted_proxy? now returns true for local unix sockets
+  * Rack::Response no longer forces Content-Types
+  * Rack::Sendfile provides local mapping configuration options
+  * Rack::Utils#rfc2109 provides old netscape style time output
+  * Updated HTTP status codes
+  * Ruby 1.8.6 likely no longer passes tests, and is no longer fully supported
+
+-------------------------------------------------------------------
+Tue Jan  8 20:26:44 UTC 2013 - coolo@suse.com
+
+- updated to version 1.4.3
+  * Add warnings when users do not provide a session secret
+  * Fix parsing performance for unquoted filenames
+  * Updated URI backports
+  * Fix URI backport version matching, and silence constant warnings
+  * Correct parameter parsing with empty values
+  * Correct rackup '-I' flag, to allow multiple uses
+  * Correct rackup pidfile handling
+  * Report rackup line numbers correctly
+  * Fix request loops caused by non-stale nonces with time limits
+  * Fix reloader on Windows
+  * Prevent infinite recursions from Response#to_ary
+  * Various middleware better conforms to the body close specification
+  * Updated language for the body close specification
+  * Additional notes regarding ECMA escape compatibility issues
+  * Fix the parsing of multiple ranges in range headers
+  * Prevent errors from empty parameter keys
+  * Added PATCH verb to Rack::Request
+  * Various documentation updates
+  * Fix session merge semantics (fixes rack-test)
+  * Rack::Static :index can now handle multiple directories
+  * All tests now utilize Rack::Lint (special thanks to Lars Gierth)
+  * Rack::File cache_control parameter is now deprecated, and removed by 1.5
+  * Correct Rack::Directory script name escaping
+  * Rack::Static supports header rules for sophisticated configurations
+  * Multipart parsing now works without a Content-Length header
+  * New logos courtesy of Zachary Scott!
+  * Rack::BodyProxy now explicitly defines #each, useful for C extensions
+  * Cookies that are not URI escaped no longer cause exceptions
+  * Security: Prevent unbounded reads in large multipart boundaries
+
+-------------------------------------------------------------------
+Tue Jul 31 13:13:42 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions 
+
+-------------------------------------------------------------------
+Mon Apr  2 12:41:39 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Prepare for Factory submission
+
+-------------------------------------------------------------------
+Fri Mar 30 13:10:03 UTC 2012 - adrian@suse.de
+
+- handle /usr/bin/rackup via update-alternatives
+
+-------------------------------------------------------------------
+Thu Jan 26 16:06:57 UTC 2012 - mrueckert@suse.de
+
+- initial package of the 1.4 branch
+

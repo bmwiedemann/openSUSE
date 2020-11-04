@@ -1,0 +1,10 @@
+--- src/knockd.c
++++ src/knockd.c
+@@ -41,6 +41,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/ioctl.h>
++#include <sys/param.h>
+ #include <arpa/inet.h>
+ #include <netdb.h>
+ #include <getopt.h>

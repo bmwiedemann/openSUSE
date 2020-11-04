@@ -1,0 +1,33 @@
+[gdbserver] Fix build with make 3.81
+
+---
+ gdb/gdbserver/Makefile.in | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/gdb/gdbserver/Makefile.in b/gdb/gdbserver/Makefile.in
+index 16a9f2fd38..687bee2658 100644
+--- a/gdb/gdbserver/Makefile.in
++++ b/gdb/gdbserver/Makefile.in
+@@ -580,9 +580,22 @@ ax.o: ax.c
+ 	$(COMPILE) $(WARN_CFLAGS_NO_FORMAT) $<
+ 	$(POSTCOMPILE)
+ 
++ifeq ($(WORKAROUND_ALLOC_IPA),)
++ifeq ($(MAKE_VERSION),3.81)
++WORKAROUND_ALLOC_IPA = 1
++else
++WORKAROUND_ALLOC_IPA = 0
++endif
++endif
++
++ifeq ($(WORKAROUND_ALLOC_IPA),0)
+ alloc-ipa.o: ../alloc.c
+ 	$(IPAGENT_COMPILE) $(WARN_CFLAGS_NO_FORMAT) $<
+ 	$(POSTCOMPILE)
++else
++alloc-ipa.o: ../alloc.c
++	@$(MAKE) $(FLAGS_TO_PASS) WORKAROUND_ALLOC_IPA=0 alloc-ipa.o
++endif
+ 
+ # Rules for objects that go in the in-process agent.
+ 

@@ -1,0 +1,24 @@
+Index: ocfs2-tools/vendor/common/ocfs2.init
+===================================================================
+--- ocfs2-tools.orig/vendor/common/ocfs2.init
++++ ocfs2-tools/vendor/common/ocfs2.init
+@@ -107,9 +107,6 @@ FUSER=`which fuser`
+ 
+ case "$1" in
+     start|reload)
+-        if [ -d /var/lock/subsys ] ; then
+-            touch /var/lock/subsys/ocfs2
+-        fi
+         if [ -n "`ocfs2fstab`" ] ; then
+             echo -n "Starting Oracle Cluster File System (OCFS2) "
+             mount -at ocfs2
+@@ -143,9 +140,6 @@ case "$1" in
+             retry=$(($retry - 1))
+             sig=-9
+         done
+-        if [ -z "$remaining" ] && [ -e /var/lock/subsys/ocfs2 ] ; then
+-                rm /var/lock/subsys/ocfs2
+-        fi
+         [ -z "$remaining" ] && success_status
+         ;;
+     restart|force-reload)

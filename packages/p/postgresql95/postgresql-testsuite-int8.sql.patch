@@ -1,0 +1,46 @@
+commit a210bee6273041cf9773383e2dda58a7d7c84be4
+Author: yac <yac@blesmrt.net>
+Date:   Fri Mar 8 17:56:58 2013 +0100
+
+    + SET LC_
+
+--- src/test/regress/expected/int8.out.orig
++++ src/test/regress/expected/int8.out
+@@ -580,6 +580,7 @@ SELECT '' AS to_char_12, to_char(q2, 'FM
+             | -4567890123456789.000
+ (5 rows)
+ 
++SET LC_MONETARY='C';
+ SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
+  to_char_13 |        to_char         
+ ------------+------------------------
+--- src/test/regress/expected/numeric.out.orig
++++ src/test/regress/expected/numeric.out
+@@ -1055,6 +1055,7 @@ SELECT '' AS to_char_15, to_char(val, 'F
+             | -24926804.04504742
+ (10 rows)
+ 
++SET LC_MONETARY='C';
+ SELECT '' AS to_char_16, to_char(val, 'L9999999999999999.099999999999999')	FROM num_data;
+  to_char_16 |              to_char               
+ ------------+------------------------------------
+--- src/test/regress/sql/int8.sql.orig
++++ src/test/regress/sql/int8.sql
+@@ -116,6 +116,7 @@ SELECT '' AS to_char_9,  to_char(q2, '09
+ SELECT '' AS to_char_10, to_char(q2, 'S0999999999999999')      FROM INT8_TBL;
+ SELECT '' AS to_char_11, to_char(q2, 'FM0999999999999999')     FROM INT8_TBL;
+ SELECT '' AS to_char_12, to_char(q2, 'FM9999999999999999.000') FROM INT8_TBL;
++SET LC_MONETARY='C';
+ SELECT '' AS to_char_13, to_char(q2, 'L9999999999999999.000')  FROM INT8_TBL;
+ SELECT '' AS to_char_14, to_char(q2, 'FM9999999999999999.999') FROM INT8_TBL;
+ SELECT '' AS to_char_15, to_char(q2, 'S 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 9 9 9') FROM INT8_TBL;
+--- src/test/regress/sql/numeric.sql.orig
++++ src/test/regress/sql/numeric.sql
+@@ -763,6 +763,7 @@ SELECT '' AS to_char_12, to_char(val, 'F
+ SELECT '' AS to_char_13, to_char(val, 'FM9999999999990999.990999999999999') 	FROM num_data;
+ SELECT '' AS to_char_14, to_char(val, 'FM0999999999999999.999909999999999') 	FROM num_data;
+ SELECT '' AS to_char_15, to_char(val, 'FM9999999990999999.099999999999999') 	FROM num_data;
++SET LC_MONETARY='C';
+ SELECT '' AS to_char_16, to_char(val, 'L9999999999999999.099999999999999')	FROM num_data;
+ SELECT '' AS to_char_17, to_char(val, 'FM9999999999999999.99999999999999')	FROM num_data;
+ SELECT '' AS to_char_18, to_char(val, 'S 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 . 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9') FROM num_data;

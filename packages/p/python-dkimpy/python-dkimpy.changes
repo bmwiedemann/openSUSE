@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Tue May 26 07:22:41 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Fri Apr  3 07:55:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 1.0.3
+  * dknewkey: On posix operating systems set file permissions to 600 for
+    ed25519 private key files (as is already done for RSA) (LP: #1857827)
+  * Set minimum dnspython version to 1.16 because previous versions can not
+    support the timeout parameter (LP: #1856546)
+  * Follow CNAMES when looking up key records when using DNS (pydns)
+  * Add support for RFC 8460 tlsrpt DKIM signature processing (LP: #1847020)
+  * Add async support with aiodns for DKIM verification (ARC not supported)
+  * Add new timeout parameter to enable DNS lookup timeouts to be adjusted
+  * Add new DKIM.present function to allow applications to test if a DKIM
+    signature is present without doing validation (LP: #1851141)
+  * Support signature verification with RSAPublicKey formatted keys
+    since, although rare, they are RFC 6376 specified (LP: #1851862)
+  * Drop usage of pymilter Milter.dns in dnsplug since it doesn't support
+    having a timeout passed to it
+  * Catch binascii related key format errors (LP: #1854477)
+  * Ignore unknown service types in key records (LP: #1847020)
+  * Add LICENSE to MANIFEST.in so it is included in the tarball
+- Drop shipped LICENSE file
+- Reapplied patch no-optional.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 10:47:11 UTC 2019 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Sep 25 14:24:39 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop the pynacl workaround as fix was submitted to the TW
+  integration
+
+-------------------------------------------------------------------
+Wed Sep 25 11:55:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to not optionaly import stuff, as it hides import
+  errors and we want those to be hard enabled anyway:
+  * no-optional.patch
+
+-------------------------------------------------------------------
+Wed Sep 25 09:07:37 UTC 2019 - pgajdos@suse.com
+
+- initial version 0.9.3, required by pyton-authheaders [SLE-7686]
+

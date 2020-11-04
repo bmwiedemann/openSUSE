@@ -1,0 +1,13 @@
+<services>
+	<service mode="localonly" name="tar_scm">
+		<param name="url">git://github.com/Cloudef/chck</param>
+		<param name="scm">git</param>
+		<param name="filename">chck</param>
+		<param name="versionformat">0.0.%cd</param>
+	</service>
+	<service mode="localonly" name="recompress">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service mode="localonly" name="set_version"/>
+</services>

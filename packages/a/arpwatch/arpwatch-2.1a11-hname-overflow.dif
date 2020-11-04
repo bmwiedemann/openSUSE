@@ -1,0 +1,38 @@
+--- arpwatch-2.1a11/db.c
++++ arpwatch-2.1a11/db.c
+@@ -62,7 +62,11 @@
+ /* Ethernet info */
+ struct einfo {
+ 	u_char e[6];		/* ether address */
+-	char h[34];		/* simple hostname */
++	/* DNS name components can be up to 63 octets, and 
++	 * that's not counting non-alphanumerics that may
++	 * get expanded to \nnn. --okir
++	 */
++	char h[64];		/* simple hostname */
+ 	time_t t;		/* timestamp */
+ };
+ 
+@@ -283,8 +287,10 @@
+ 	BCOPY(e, ep->e, 6);
+ 	if (h == NULL && !initializing)
+ 		h = getsname(a);
+-	if (h != NULL && !isdigit((int)*h))
+-		strcpy(ep->h, h);
++	if (h != NULL && !isdigit((int)*h)) {
++		memset(ep->h, 0, sizeof(ep->h));
++		strncpy(ep->h, h, sizeof(ep->h)-1);
++	}
+ 	ep->t = t;
+ 	return (ep);
+ }
+@@ -304,7 +310,8 @@
+ 	if (!isdigit((int)*h) && strcmp(h, ep->h) != 0) {
+ 		syslog(LOG_INFO, "hostname changed %s %s %s -> %s",
+ 		    intoa(ap->a), e2str(ep->e), ep->h, h);
+-		strcpy(ep->h, h);
++		memset(ep->h, 0, sizeof(ep->h));
++		strncpy(ep->h, h, sizeof(ep->h)-1);
+ 	}
+ }
+ 

@@ -1,0 +1,21 @@
+From 2c573ad269776ee1bc54f6fb2464c1919ce5a2fa Tue  7  7 12:32:57 2020
+From: Simon Vogl <simon.vogl@gmx.net>
+Date: Tue,  7 Jul 2020 12:32:57 UTC
+Subject: [PATCH] Fix compilation failure of QMPlay2 on openSUSE Leap 15.1
+
+This patch is required for QMPlay2 to work with QT < 5.12.
+openSUSE Leap 15.1 is still supported and at QT version 5.9, which means this patch is necessary.
+
+diff --git a/src/qmplay2/QMPlay2Core.cpp b/src/qmplay2/QMPlay2Core.cpp
+index 092dcde1..b5ce8d7c 100644
+--- a/src/qmplay2/QMPlay2Core.cpp
++++ b/src/qmplay2/QMPlay2Core.cpp
+@@ -403,7 +403,7 @@ bool QMPlay2CoreClass::canSuspend()
+         p.start("dbus-send", args);
+         if (!p.waitForStarted() || !p.waitForFinished())
+             return false;
+-        return (p.readAllStandardOutput().split('\n').value(1).simplified().replace("\"", "").split(' ').value(1).compare("yes", Qt::CaseInsensitive) == 0);
++        return (p.readAllStandardOutput().split('\n').value(1).simplified().replace("\"", "").split(' ').value(1).toLower() == "yes");
+     };
+     if (checkSuspendDBus(getDBusSuspendArgs("CanSuspend", "login1")))
+     {

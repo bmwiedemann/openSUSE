@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Aug 17 13:33:29 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 5GB min disk space to avoid build failure
+  for ppc64,ppc64le, s390x architectures.
+
+-------------------------------------------------------------------
+Thu Aug  6 21:23:34 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add casacore-drop-fftpak.patch: Drop fftpak as it no longer
+  compiles with recent gcc-fortran; taken from upstream commits.
+- Add casacore-lawson_f-fortran-errors.patch: Fix fortran errors
+  and warnings with lawson_f; taken from upstream commits.
+- Add casacore-fitsio-header.patch: Fix location of cfitsio
+  headers used in sources.
+
+-------------------------------------------------------------------
+Thu Aug  6 19:54:03 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.

@@ -1,0 +1,10 @@
+Index: chrony-2.3/examples/chrony.logrotate
+===================================================================
+--- chrony-2.3.orig/examples/chrony.logrotate
++++ chrony-2.3/examples/chrony.logrotate
+@@ -1,4 +1,5 @@
+ /var/log/chrony/*.log {
++    su chrony chrony
+     missingok
+     nocreate
+     sharedscripts

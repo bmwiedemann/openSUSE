@@ -1,0 +1,412 @@
+-------------------------------------------------------------------
+Sat Aug 08 09:38:48 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200804:
+  * fixed autofire for trackball using keyboard fire event
+  * Finalize AVox CTS support.  Now more testing is needed ...
+  * minor change in Inputdialog (AtariVox)
+  * Add SerialPort::isCTS() to all ports, and connect it to AtariVox.
+  * refined texts for WhatsNewDialog
+  * Add missing files to Xcode project.
+  * Forgot comment in last commit.
+  * Tie CTS signal from the serial port to the appropriate AVox pin. Still TODO is actually implement this in the platform-specific serial code.
+  * Fix compile errors in gcc/clang.
+  * added 'What's New' button to 'About' dialog
+  * removed magic number in WhatsNewDialog
+  * fixed #686 (launcher losing navigation)
+  * added missing files
+  * added static What's New" popup (see #581) (to get things going :-)
+  * added option to display detected settings info when a ROM is loaded (resolves #684)
+  * Make FSNodeZIP::exists() actually inspect the ZIP contents, and not just the ZIP file itself. This fixes issues with checking for a .pro file in a ZIP file always being true, even if there isn't one.
+  * I guess we're far enough along to move the version number.
+  * libretro: Fix compile error with recent sound code changes.
+  * Fix warnings from clang.
+  * added option to select audio device (resolves #682)
+  * fixed missing log file saving
+  * AtariVox controller was mistakenly reported as SaveKey in the logs.
+  * Remove misleading comment.
+  * Fixed popup widget text limits
+  * minor doc update
+  * added emulation speed change to 'direct only' hotkeys
+  * added emulation speed hotkeys
+  * added docs for TM playback
+  * Fix bug with accessing files as text using binary I/O. This doesn't seem to matter for Linux and macOS, but breaks Windows CRLF endings.
+  * Fixed snapshots being cut off in fullscreen mode (fixes #674).
+  * Almost all file I/O now goes through FilesystemNode::read/write, instead of raw C++ fstreams. This allows data to be stored in a ZIP archive and for Stella to use it as if it were a normal file. Still TODO is add ZIP write support.
+  * Fix documentation warning from clang.
+  * added missing hotkey doc for autofire
+  * added autofire (resolves #676)
+  * enhanced debugger option "Re-disassemble" into "Disassemble @ current line" (resolves #652)
+  * Two minor fixes
+  * removed GZIP from doc and rephrased ZIP text
+  * started adding playback mode (see #678)
+  * updated doc and changes
+  * use mapped keys instead of fixed keys in TM UI (resolves #679)
+  * support F12 (snapshot) in TM UI too (implements #679)
+  * Converted CartDebug to use new FSNode I/O.  This means we can load from sym/list files stored in a ZIP file.
+  * Begin the process of converting all file open/close operations to be done in FSNode.
+  * minor hotkey fix (avoids mapping clash)
+  * Prevent enabling phosphor when cycling through global options (fixes #672)
+  * Add ability to use .pro file stored in a ZIP file (containing the ROM, with the same name).
+  * added numpad keys as defaults for global hotkeys
+  * added numpad keys as defaults for global hotkeys
+  * Moved 'max ROM size' function to more appropriate place.
+  * reordered and grouped event handling
+  * Added global hot keys for debug options
+  * Refactor Cart::getImage, always return a ByteBuffer. Most classes did this already, but some didn't.  So we standardize on this, and eliminate raw pointers.
+  * suppress fullscreen mode switches in Time Machine mode (fixes #670)
+  * allow breakpoints in data areas (fixes #668)
+  * Added new interface palette 'Dark'
+  * minor wording fix
+  * Last minute update to docs before the 6.2.1 release.
+  * updated screenshots
+  * Revert "Remove superfluous 'deltax' parameter in drawString; I have no idea what it was doing there."
+  * Updated various files for 6.2.1 release.
+  * Added 'Save' button to GameInfoDialog, to save current properties to a separate .pro file.
+  * Remove superfluous 'deltax' parameter in drawString; I have no idea what it was doing there.
+  * Make sure long messages overlaid on framebuffer don't overflow display surface.
+  * fix missing key mapping when event version has changed
+  * Fix TIA images saved in '1x' mode to not use TV effects (fixes #643).
+  * Updated changelog, and bumped state number for recent changes in M6532 class.
+  * simple fix for #667 (minimized window)
+  * fixed crash in Audio & Video dialog when opened from debugger
+  * Fix reads and writes during timer wrap. Fixes #606 .
+  * Fix reading from TIA registers when D6 is not used.  Also fix randomization with 'tiadriven' to always fully randomize, with no relationship to what was on the data bus (fixes #664).
+  * Fix ROM dir for profiling.
+  * Eliminate magic number.
+  * Attempt to gain a little speed on frequently used functions.
+  * fix #663 (illegal segment access)
+  * Handle creation of 2K/Sub2K and all other cart types separately. This simplifies the logic in both cases, and fixes a few corner cases.
+  * updated snapshot snapshot :)
+  * changed all adjustable steps to 1% updated changes
+  * Updated docs: modified text for saving "pixel-exact" images, and Cart.VCenter range.
+  * Fix compile error from last commit.
+  * Fixed #662 (3E+ initialization description)
+  * Fix Pitfall II not working (fixes #661).
+  * Make first 3 segments of 3E+ point to random banks, according to the documentation (fixes #660).
+  * Updated changelog and minimum compiler requirements in the docs.
+  * Remove focus from description in debugger CartRAM widget.
+  * Revert "take care of odd ROM sizes (fixes #653)"
+  * Fixed interaction with ideal ROM size between 3E and 3E+.
+  * Make sure 3E+ ROMs are always internally sized as a multiple 1024 bytes.
+  * Make sure to use correct 'virtual' size of ROM when creating the internal buffer.
+  * fixed palette/tv-effects slider rounding issue
+  * allow changing TV hue in 1% steps update palette display when defaulting
+  * Updated documentation with changes to properties key names.
+  * make NTSC custom phase shift not affect Yellow anymore (fixes #656)
+  * Updated changelog; I forgot something for the 6.2 release.
+  * A small reprieve for gcc6 users.  Fixed codebase so it compiles in g++6 again. Note that we're moving to gcc7 fairly soon, so this won't be for long.
+  * And it never ends.  Fix broken support for 2K ROMs.
+  * Update warning message when truncating ROMs in the ROM buffer.
+  * Fix some common errors causing crashes when ROM sizes aren't what we expect (fixes #654).
+  * fix ROMs >= 64K (partially addresses #654)
+  * And as usual, some last minute updates.
+  * Final commit before branching for 6.2 release.
+  * add odd sized test ROM
+  * take care of odd ROM sizes (fixes #653)
+  * Shorten error messages in ROM launcher, to fix overflow of buffer width.
+  * fix #648 (focus problem in debugger)
+  * updated doc
+  * improved keyboard detection (JamLoopy demo)
+  * Updated version number for upcoming release.
+  * Save old state for "RunTo" and "RunToPC" debugger commands (fixes #650)
+  * Some small API changes for FSNode::getChildren(); it should only include the parent if requested.
+  * Update Xcode project for CartCreator class.
+  * Add CartCreator to VS project, and fix a few warnings.
+  * libretro: Add CartCreator class.
+  * Split logic for cart creation from CartDetector into new CartCreator class. Besides simplifying the class, this allows the code to be more easily integrated into HarmonyCart.
+  * Updated changelog, removing highscore stuff until 6.3.
+  * minor doc update
+  * added analog input filtering in UI (fixes #578)
+  * Add support for loading grayscale PNG.  Fixes #644. If I'd known it would be that easy, I'd have done it long ago.
+  * fixed #645
+  * added two more TV Boy dumps and their properties
+  * libretro: Use ROM size from core, update formatting and add const.
+  * Move 'max rom size' into a const method, and make use of it elsewhere in the code.
+  * libretro: Allow ROMs that are max size for Stella (instead of requiring 1 byte less).
+  * Add TVBoy properties to database.
+  * reorder 512K bankswitching detection
+  * fix cart detection for 512K ROMs add new event & hotkey for selecting previous multicart ROM
+  * disable scanlines by default add default pause key for macOS
+  * enhanced TVBoy widget
+  * updated docs for TV Boy bankswitching
+  * Fix paddle autodetect in a ROM; it actually uses joysticks.
+  * add TV Boy ROMs
+  * Updated Xcode project for TVBoy class.
+  * updated VS project file
+  * libretro: Add TVBoy cart class.
+  * Unify Cartridge::bank() and CartEnhanced::bank() (take 2). Otherwise, gcc complains of methods mirroring another with the same name.
+  * Added TV Boy bankswitching
+  * Revert "Merge branch 'master' of https://github.com/stella-emu/stella"
+  * add TV Boy test ROMs
+  * Unify Cartridge::bank() and CartEnhanced::bank(). Otherwise, gcc complains of methods mirroring another with the same name.
+  * Shorten error messages in ROM launcher, to fix overflow of buffer width.
+  * Fix compile error.
+  * updated doc (adapting refresh not available for macOS) added event and hotkey for adapting refresh rate fixed endless loop in global hotkeys
+  * Add 'ADAPTABLE_REFRESH_SUPPORT', and enable it on non-Mac systems. Cleaned up some dead code. Made MacOS toggle from windowed to fullscreen work the same as all other systems.
+  * updated doc for fullscreen refresh rate adaption removed debug output
+  * handle rounded refresh rates like 59.94 Hz disable refresh adjust option for macOS
+  * Fix minor warnings from clang.
+  * more compact available video modes logging
+  * Fix compilation in Xcode.
+  * Remove extra quote for audio presets
+  * added refresh rate adapt for integer factors of the game's refresh rate
+  * added avoiding switching refresh rate when going back to launcher improved error logging messages
+  * try to create renderer only when required (needs testing)
+  * oops
+  * fix window position saving when switching from/to fullscreen mode suppress fullscreen UI message outside emulation mode
+  * improved refresh rate code
+  * added optional refresh rate adaption in fullscreen mode
+  * minor fix, make sure that a message is displayed when switching TV format
+  * Revert "Very small optimization for const char* instead of strings."
+  * Revert "removed audio dialog screenshot"
+  * added two more methods to global hotkeys updated and restructured hotkey documentation
+  * added four global hotkeys which allow selecting and changing several adjustable settings (addresses #631)
+  * Very small optimization for const char* instead of strings.
+  * Partially revert previous commit: fix ROM launcher not showing properties in certain cases.
+  * libretro: Return nullptr when necessary.
+  * libretro: Fix sound code for latest refactoring.
+  * added global hotkeys (pageup/down) for current displayed setting (or volume)
+  * a little bit of polishing
+  * added gauge bars display when selecting settings too
+  * make sure that debugger command 'stepwhile' doesn't run forever.
+  * increase maximum iterations and performance of RunToPC command
+  * fix #635 (<=2K ROMs rewind broken)
+  * added UI messages with gauge bars for variable values (partially addresses #631)
+  * update default keys and doc for palette adjustments
+  * libretro: Remove redundant code.
+  * Some more header file cleanups, hopefully resulting in faster compile times.
+  * libretro: Fixed #634.
+  * removed audio dialog screenshot
+  * added missing screen shots
+  * updated doc
+  * renamed palette settings prefix
+  * Moved two more mouse settings to Mouse tab
+  * Fixed minimal zoom and message area width
+  * Don't include some header files when we don't need to.
+  * Update Xcode project for class changes.
+  * Fixes for warnings in latest g++ and clang, and update libretro port to latest changes.
+  * bugfix audio widgets enabling
+  * refactored Video and Audio dialogs into common dialog created new EmulationDialog (re)moved some includes to reduce compile time
+  * code cleanup and bug fixing
+  * some transformation code cleanup
+  * add hue adjustment code to PaletteHandler
+  * added interactive palette display to VideoDialog
+  * improved VideoDialog alignment moved "Center Windows" to UIDialog
+  * started refactoring VideoDialog fixed selecting adjustable in NTSCFilter
+  * remove palette functionality from NTSCFilter load and save config values in PaletteHandler
+  * Don't create an array of size 0.
+  * refactor palette handling into own class convert brightness, contrast, saturation and gamma
+  * Use our own version of PI, since M_PI isn't defined everywhere.  Fixes #630. Also, consistently use float instead of mixing float and double (compiler complains otherwise).
+  * fix window position saving when changing zoom via hotkey
+  * fixed palette cycling updated doc for phase shift hotkeys improved scanlines hotkey messages
+  * libretro: Fix compilation error when including unnecessary header file.  Fixes #628.
+  * initial commit
+  * Added '_scanend' pseudo-register to track scanlines at end of last frame.  Fixes #624.
+  * libretro: Fix #627.
+  * minor UI alignment fixes
+  * small optimizations of detection code
+  * add properties for test ROM "spin4a50"
+  * fixed 3E bankswitching
+  * Fix crash in cart autodetect; if we can't find a match, use 4K.
+  * libretro: Fix Makefile for recent cart refactoring.
+  * Fix warnings from clang.
+  * libretro: Fix #625.
+  * Changelog update for "Make windows positioning independent for launcher, emulator and debugger"
+  * Make windows positioning independent for launcher, emulator and debugger (resolves #615)
+  * added some more MDM test ROMs and their properties
+  * fix #613 (debugger focus)
+  * small fix in debugger dialog
+  * fix disassembly for segmented bankswitching types
+  * fix disassembly for segmented bankswitching types
+  * Two minor formatting fixes
+  * adjust minimal launcher size based on dialog font
+  * update documentation
+  * Part 3 of the changes for #600 (UI fonts)
+  * Part 2 of the changes for #600 (UI fonts)
+  * libretro: Fix compile error; conditionally include Font class.
+  * Part 1 of the changes for #600 (UI fonts)
+  * improved Rom info size check
+  * fix #623 (Rom info too large)
+  * Use getPathWithExt() method correctly.
+  * Automaticall load a properties file with the same name as the ROM from the ROM directory. Still TODO is support loading if the properties file is in a ZIP file.
+  * replace broken test ROM
+  * Synchronize 6.1.2 changelog to master.
+  * replaced "slice" with "bank" in many Cart(Widget) classes minor UI fixed for CartDPCWidget
+  * refactored CartDPC class replaced DPC ROM
+  * Fixed error in ROM properties; a ROM was misconfigured for Mindlink controller.
+  * Fix loading of ROM twice on each selection in the ROM launcher. It was being opened once for the snapshots, and again for the controllers.
+  * refactored Cart3EPlus widget
+  * refactored CartMDM and CartSB widget classes
+  * refactored Cart3EWidget (also supports 3EX) added RAM bank support to CartEnhancedWidget
+  * 3EX now reads number of RAM banks - 1 from 0xfffa
+  * add 3EX bankswitching type (addresses #619) (TODO: debugger details)
+  * another final fix for #620
+  * 2nd attempt to fix #620
+  * removed forgotten debug code
+  * fix checking for existing mapping when applying default mappings (fixes #620)
+  * order KeyMap and JoyMap when saving
+  * fix checking for existing mapping when applying default mappings (fixes #620)
+  * order KeyMap and JoyMap when saving
+  * remove dynamic casting
+  * renamed CartridgeEnhancedWidget class
+  * refactored CartFA(2), CartFC and CartFE widget classes
+  * refactored CartWDWidget and CartX07Widget improved cart info formatting
+  * refactored CartDF(SC)Widget and CartEF(SC)Widget classes
+  * Improved 3E auto detection
+  * sort single file ZIP files correctly (fixes #612)
+  * sort single file ZIP files correctly (fixes #612)
+  * add large test ROMs for 3F and 3E bank switching
+  * added 'Turbo" mode
+  * some cleanup in CartCVWidget
+  * added 'Turbo" mode
+  * Updated copyright date in Makefile.
+  * Update Windows appveyor build to use latest SDL (2.0.12).
+  * refactored Cart3F, CartCV and CartBF(SC) widgets
+  * improve bankswitching masking in CartEnhanced
+  * fix display of changed PopUpWidget in debugger allow using IDs with PopUpWidget's ContextMenu
+  * renamed 'Exit' button in debugger into 'Run' (TODO: update screenshots) (fixes #614)
+  * fix #617 (3E RAM banks)
+  * refactored multiple CartXXWidget classes
+  * fixed description background color in CartRamWidget
+  * fix display of changed PopUpWidget in debugger allow using IDs with PopUpWidget's ContextMenu
+  * enable directPokeBase for RAM banks in CartridgeEnhanced
+  * Fix clang compile warning.
+  * refactored CartWD fixed CartEnhanced for multi-segment ROMs with extra RAM improved CartEnhanced by enabling directPoke for extra RAM
+  * small naming alignment between CartBUS and CartCDF
+  * Fix compile error for UNIX builds.
+  * fix some Clang-Tidy warnings small bugfix for CartFA2
+  * removed DASH type (incl. doc update)
+  * refactored Cart3E+
+  * add RAM bank support to CartEnhanced refactor Cart3E differentiate between ROM and RAM banks (TODO: check debugger)
+  * Fix 'ovveride' warning from clang. Convert 'template class' to the more modern 'template typename'.
+  * removed CV+ type (incl. doc update)
+  * fix 3E disassembly (bankSize() override)
+  * intermediate commit for refactoring 3E (something got broken in disassembly before)
+  * Fixed some warnings from clang. Just checking on the progress; looking good so far.
+  * improve CartEnhanced to allow swapped RAM read/write ports refactor CartCV add more CV test ROMs
+  * remove superfluous code in Cart2K
+  * refactor CartFA(2).cxx
+  * X07 MegaBoy test ROM
+  * refactor CartX07
+  * fix carts >= 64K
+  * Fix 'saveconfig' not saving file correctly (fixes #602).
+  * refactor Cart2K and Cart4K(SC)
+  * refactor CartSB
+  * refactor CartMDM make sure the banks are updated when stepping back
+  * update changes.txt
+  * remove new default path button replace with an UI option, which lets "romdir" automatically follow the launcher path
+  * add configurable driving controller sensitivity
+  * update test ROMs
+  * one missing file
+  * refactor Cart0840
+  * add get current segment from cart for debug widgets
+  * Fixed compilation in Linux.
+  * refactor Cart3F improve CartEnhanced for segmented types
+  * allow changing default ROM path directly in launcher (resolves #610)
+  * add support for multi segment banking into CartEnhanced class refactor more cart classes
+  * initial commit
+  * Synchronize changelog from 6.1.1.
+  * A little more optimization to 3E scheme.
+  * 3E: improve debugger handling for writes to ROM space.
+  * 3E: fix invalid access on write to ROM.
+  * fix M6532 access counters make stack pops result into DATA access
+  * fix right diff action on Command menus
+  * fix poke access counter offset add a few more bank switching types
+  * fix CartFE to update access flags and counters
+  * add access counting to many more bankswitching types
+  * Fix minor warning with clang (possible dangling else).
+  * differentiate ROM read/write access (done for Atari standard and 3E bankswitching)
+  * Fix warnings from clang.
+  * first shot at #586 (Heat Map) (TODO: differentiate cartridge read/write access) add Cartridge::bankSize method (TODO: varying bank sizes) add Cartridge::bankOrigin detection method (TODO: banks smaller 4K)
+  * Synchronize wil upcoming 6.1.1 release.
+  * fix non-VS warning
+  * fix last commit
+  * Enhance disassembly (determine correct bank offset, preliminary solution for simple 4K bankswitching, e.g. standard Atari)
+  * Updated changelog, before we forget about the details.
+  * Fix snapshots on retina displays.
+  * enhance debugger disassemblies, 'savedis' now allows multi-bank ROMs
+  * some progress with multi-bank games disassembly (it now works, but still requires a bit of manual action before)
+  * fix color value disassembly add ORG/RORG for multi-bank ROM disassembly
+  * rename code access into ROM access to better reflect the usage
+  * fix compiler error without debugger support create VS configuration (without debugger support)
+  * add some more DEBUGGER_SUPPORT defines
+  * fix CPU destination display
+  * fix savedis output
+  * fix DiStella configuration output
+  * update debugger docs add missing debugger commands for enhanced DiStella data detection
+  * add detection of audio data in DiStella (see #596)
+  * libretro: Fix core on Debian Buster (fixes #598)
+  * replace some magic numbers in Distella
+  * And we start again ...
+  * refactored access flags used for disassembly
+  * use defined type for disassembly flags
+  * add detection of color data in DiStella (see #596)
+  * Fix some minor warnings from Clang.
+  * display write destination address in debugger (implements #74)
+  * split X and Y center of paddles add definition of paddles centers via game properties
+  * fixes #595 (debugger BK color)
+  * First shot at configurable paddle input (#522)
+  * improve alignment of some sliders and labels in InputDialog
+  * fixed #537 (writes to read ports)
+  * libretro: Pass the filename to the underlying emulation, since we can detect things based on what it contains.
+  * (Semi) Final update for 6.1 release.  I'm sure there's something we've missed.
+  * update 6.1 date in doc to March 2020
+  * minor debugger doc update
+  * R77: use QIS for scanlines w/o TV effects.
+  * Add fonts to Visual Studio project file.
+  * StellaSettingsDialog sizes fine tuning
+  * larger infoFont for minimal UI dialogs
+  * StellaSettingsDialog font parameter cleanup
+  * Updated Changelog for a patch that was recently added.
+  * More fixes for DPC+ jitter issues, thanks to Spiceware.
+  * Added "Stay Frosty 2" to properties database, and have it default to joysticks.
+  * Fix 'ROM Audit' mode not getting current active directory.
+  * Fix a few compile warnings in Xcode, and add missing files.
+  * use R77 screen size as maximum for StellaSettingsDialog
+  * Make a few games that offer a choice of Joystick/Genesis to use Joystick by default. Remove redundant 'Display.Format' stuff from properties, since it can now be deduced from the ROM name.
+  * doc and usage() update for new launcher font sizes
+  * Fixed minor compile warnings, including incorrect output from convbdf tool.
+  * add 3 large fonts (Terminus 12x24, 14x28 and 16x32) use 12x24 font for R77 (launcher and dialogs) improve font selection for ROM info viewer minor fix for convbdf.c
+  * trying to fix compile issues
+  * Revert "add one more intermediate font option to ROM info viewer"
+  * add one more intermediate font option to ROM info viewer
+  * replace launcher font value "small medium" with "small_medium"
+  * replace launcher's small font with bold version add 'small medium' font to launcher font options doc update for variable ROM viewer widths and new launcher font size
+  * refine ROM viewer font size calculation define zoom factor for R77
+  * aligned ROM viewer's UI default to Settings.cxx default
+  * UI now allows to select ROM info width as 0..100% (the actual limits and ROM info fonts are determined when the launcher is created)
+  * Changed 'romviewer' option to be treated as a multiplier for the zoom level of snapshots. Old settings will still work (0 means off, 1 or 2 mean 1x and 2x zoom).  Floats are now supported too, so we get fractional scaling.
+  * Handle GCC versions after 9
+  * Update TIA surface settings after making changes in the mini settings.
+  * update doc for Trackball and Light Gun fire button
+  * allow remapping of fire button for trackball and light gun games
+  * add Sadistroids to properties
+  * add Overscan info text to R77 settings
+  * add a bit more R77 help
+  * Disable QIS on the R77 when scanlines and / or TV effects are enabled.
+  * allow paddle detection for games which also support joysticks
+  * define R77 paddle mapping for front ports AND OTA adapter use "Grab Mouse" to switch mouse cursor in light gun games
+  * fix part 1 of #583
+  * fix #582
+
+-------------------------------------------------------------------
+Wed Feb 19 13:10:38 UTC 2020 - i@guoyunhe.me
+
+- Remove stella.libretro which is now provided by libretro-core-info package
+- Update to version 0~git20200216:
+  * Take titlebar into account when calculating max desktop window size (fixes #577).
+  * fix overscan issue (fixes #576)
+  * attempt to fix #575
+  * Apply changes to DefProps based on latest 'const' vs. 'constexpr' refactoring.
+  * Use 'const' instead of 'constexpr' when generating properties file.
+  * change zero value for phosphor into "0" (not "Off")
+  * Wrap std::stoi inside BSPF::stringToInt, and handle its exceptions.
+  * fix Exit ROM from debugger (fixes #513)
+  * disable user palette option if no file exists (resolves #572)
+
+-------------------------------------------------------------------
+Mon Sep 18 15:03:41 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170916.979e4ac (no proper versioning
+  done by upstream).

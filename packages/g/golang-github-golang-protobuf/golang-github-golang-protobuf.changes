@@ -1,0 +1,255 @@
+-------------------------------------------------------------------
+Mon Dec 16 21:07:22 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Fix name of the rpmlintrc file.
+
+-------------------------------------------------------------------
+Fri Nov 22 11:49:51 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove unnecessary bazel-gazelle call.
+
+-------------------------------------------------------------------
+Wed Nov  6 16:19:28 UTC 2019 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Add patches which make it possible to build golang-org-x-tools
+  with Bazel by other projects like i.e. envoy-proxy. Those patches
+  are developed as a part of bazel-rules-go project. For now we are
+  consuming those patches from Github, but in future we should be
+  able to generate files for Bazel ourselves.
+  * com_github_golang_protobuf-gazelle.patch
+  * com_github_golang_protobuf-extras.patch
+
+-------------------------------------------------------------------
+Tue Nov 05 11:34:00 UTC 2019 - mrostecki@opensuse.org
+
+- Update to version 1.3.0:
+  * ptypes: More cleanly construct a Timestamp (#797)
+  * ptypes: Avoid assuming time.Duration is nanoseconds (#796)
+  * protoc-gen-go: fix oneof name mangling regression (#782)
+  * README.md: document how to build a specific version of protoc-gen-go (#764)
+  * protoc-gen-go: generate XXX_OneofWrappers instead of XXX_OneofFuncs (#760)
+  * all: update to v3.6.1 (#757)
+  * proto: store extension values according to protobuf data model (#746)
+  * proto: deprecate {Unm,M}arshalMessageSet{JSON} (#741)
+  * all: increase minimum supported version to go1.9 (#742)
+  * protoc-gen-go: reference publicly imported symbols directly
+
+-------------------------------------------------------------------
+Tue Mar 19 07:29:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Drop %gotest, fix build 
+
+-------------------------------------------------------------------
+Wed Mar 01 09:58:32 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170217.69b215d:
+  * protoc-gen-go: Add Filename to ExtensionDesc.
+  * Regenerate pb.go files after https://github.com/golang/protobuf/commit/24f28ae800abfde9310e779f94be606b1a98a3fc
+  * Add a benchmark demonstrating lock contention when Marshaling/Unmarshaling maps.
+  * Generate pb.go files after https://github.com/golang/protobuf/commit/cb9b7771abc2a63ab206dde76539f08f66ab994d
+  * jsonpb: treat `null` JSON values for `Timestamp` and `Duration` as defaults (#255)
+  * proto: Fix a Marshal race on messages with extensions.
+  * proto: Add a descriptor subpackage.
+  * jsonpb: merge https://github.com/golang/protobuf/pull/255
+  * descriptor: rename generated protobuf package on import.
+  * fix import path
+- Update rpmlintrc
+- Update requirements
+
+-------------------------------------------------------------------
+Thu Dec 08 08:36:04 UTC 2016 - tboerger@suse.com
+
+- Update to version 0.0.0+git20161116.8ee7999:
+  * Run 'make generate-test-pbs' in proto/ to regenerate proto3.pb.go testdata
+  * protoc-gen-go: Add Filename to ExtensionDesc.
+  * Regenerate pb.go files after https://github.com/golang/protobuf/commit/24f28ae800abfde9310e779f94be606b1a98a3fc
+  * Add a benchmark demonstrating lock contention when Marshaling/Unmarshaling maps.
+  * Generate pb.go files after https://github.com/golang/protobuf/commit/cb9b7771abc2a63ab206dde76539f08f66ab994d
+  * jsonpb: treat `null` JSON values for `Timestamp` and `Duration` as defaults (#255)
+  * proto: Fix a Marshal race on messages with extensions.
+  * proto: Add a descriptor subpackage.
+  * jsonpb: merge https://github.com/golang/protobuf/pull/255
+  * descriptor: rename generated protobuf package on import.
+
+-------------------------------------------------------------------
+Thu Dec  8 08:35:26 UTC 2016 - tboerger@suse.com
+
+- Renamed the subpackage for the protoc-gen-go binary
+
+-------------------------------------------------------------------
+Wed Aug 17 11:26:14 UTC 2016 - tboerger@suse.com
+
+- Refactoed spec with a new unified layout
+- Added rpmlintrc for common golang linting
+
+-------------------------------------------------------------------
+Sun Apr  3 19:05:32 UTC 2016 - i@marguerite.su
+
+- add xz dependency for SLE
+- get rid of -source subpackage, no one use it
+
+-------------------------------------------------------------------
+Sat Dec 26 11:52:14 UTC 2015 - matwey.kornilov@gmail.com
+
+- Update to version 0.0.0+git20151207.68415e7:
+  + Unexport proto.MessageSet, and remove a bunch of its support.
+  + Add compressed file descriptor code generation.
+  + Remove a test that has outlived its usefulness.
+  + Generate correct service name for gRPC services without a package name.
+  + Document parameters in README
+  + Fix unmarshaling code to properly handle multiple instances of the same extension appearing in the wire format. Prior to this change, multiple custom options would result in all but the first being discarded when processed using the proto.GetExtension() facilities.
+  + Regenerate protos.
+  + Generate sizer functions for oneofs.
+  + By popular demand, rename README to README.md and make Markdown consistent.
+  + Add some more Markdown annotations.
+
+-------------------------------------------------------------------
+Sat Jul 11 05:41:19 UTC 2015 - i@marguerite.su
+
+- rename golang-github-golang-protobuf
+- update version 0.0.0+git20150708.ab974be
+- use golang-packaging for packaging
+
+-------------------------------------------------------------------
+Sat Mar 21 05:23:18 UTC 2015 - i@marguerite.su
+
+- remove go_disable_brp_strip_static_archive usage
+- name changed to go-protobuf
+- source changed from google code to github.com/golang/protobuf
+- version update to 0.0.0+git20150320.de8c523
+
+-------------------------------------------------------------------
+Tue Aug  6 00:47:10 CEST 2013 - ro@suse.de
+
+- use ExclusiveArch to limit build to the same architectures as go
+
+-------------------------------------------------------------------
+Sat Jun 29 11:28:41 UTC 2013 - graham@andtech.eu
+
+- Update pacakge to latest upstream mercurial version
+
+-------------------------------------------------------------------
+Mon Jun 11 10:36:10 UTC 2012 - graham@andtech.eu
+
+- Update spec with new package path locations
+- Add documentation sub-package
+
+-------------------------------------------------------------------
+Thu Feb 16 17:43:20 UTC 2012 - graham@andtech.eu
+
+- Update for weekly 2012-02-12
+- Remove uses of runtime.MemStats.
+- Correctly generate extension names for .proto files that don't declare a
+  package.
+- Better error handling for invalid input that mentions tag 0.
+- Weak import/field handling.
+- Fix proto.Equal to consider empty and nil repeated fields as equal.
+- Avoid generating a struct that uses the same name for a field and a method.
+- update to loss of unsafe.Unreflect, unsafe.New
+
+-------------------------------------------------------------------
+Wed Feb  8 10:37:57 UTC 2012 - graham@andtech.eu
+
+- patch for encode/decode update runtime.MemStats use for weekly
+
+-------------------------------------------------------------------
+Wed Jan 25 08:31:50 UTC 2012 - graham@andtech.eu
+
+- Update for weekly.2012-01-20
+- update to go 1 import strings
+- Fix panic in SetDefaults for nil sub-messages
+- Fix a couple of instances where bad input could cause a panic
+- GetExtension now returns a specific error when the requested extension is
+  missing
+
+-------------------------------------------------------------------
+Wed Dec 14 12:43:43 UTC 2011 - saschpe@suse.de
+
+- Adjust to Go weekly.2011-12-02 changes
+
+-------------------------------------------------------------------
+Thu Sep  8 15:15:24 UTC 2011 - saschpe@suse.de
+
+- Update to 08/09/2011 mercurial version:
+  * Follow changes of weekly Go release
+
+-------------------------------------------------------------------
+Fri Jun 24 20:37:56 UTC 2011 - saschpe@gmx.de
+
+- Update to 24/06/2011 mercurial version
+  * goprotobuf: update for Alignof/Sizeof returning uintptr, and
+    goto restriction
+  * goprotobuf: sync from Google internal version
+
+-------------------------------------------------------------------
+Tue Jun 14 19:09:31 UTC 2011 - saschpe@gmx.de
+
+- Update to 14/06/2011 mercurial release
+  * Adapted reflect API changes
+  * Safer unmarshalling
+- Added goprotobuf-fix-imports patch
+- Added goprotobuf-fix-proto-testsuite patch
+- Also build and install goproto-gen-go binary
+- Use new %go_disable_brp_strip_static_archive macro
+
+-------------------------------------------------------------------
+Sat May 21 13:09:14 UTC 2011 - saschpe@gmx.de
+
+- Switch to %{go_make_test} macro
+
+-------------------------------------------------------------------
+Fri May 20 12:55:09 UTC 2011 - saschpe@suse.de
+
+- Use Go RPM macros instead of custom ones
+- Use proper package versioning scheme (needs reinstall)
+- Drop provides/obsoletes of old package, needs reinstall anyway
+
+-------------------------------------------------------------------
+Thu May 19 14:37:28 UTC 2011 - saschpe@suse.de
+
+- Remove rpmlintrc, not needed anymore
+
+-------------------------------------------------------------------
+Thu May 19 12:08:09 UTC 2011 - saschpe@suse.de
+
+- Simpler build
+
+-------------------------------------------------------------------
+Wed May 18 14:00:12 UTC 2011 - saschpe@suse.de
+
+- Don't require 'go'
+- Disable brp-strip-static-archive on Fedora, breaks build
+- Provide devel and devel-static packages
+- Remove devel-file-in-non-devel-package rpmlint filter
+
+-------------------------------------------------------------------
+Mon Mar 21 15:25:36 UTC 2011 - saschpe@suse.de
+
+- Removed authors from description
+- Removed pkg_version macro, use %%{version} directly
+
+-------------------------------------------------------------------
+Wed Mar  9 12:43:07 UTC 2011 - graham@andtech.eu
+
+- Updated to 09/03/2001 upstream
+
+-------------------------------------------------------------------
+Thu Feb  3 16:50:20 UTC 2011 - graham@andtech.eu
+
+- Updated to 01/02/2011 upstream
+
+-------------------------------------------------------------------
+Thu Dec  2 08:21:34 UTC 2010 - speilicke@novell.com
+
+- Updated to 02/12/2010 upstream version
+
+-------------------------------------------------------------------
+Tue Nov 16 08:30:28 UTC 2010 - speilicke@novell.com
+
+- Updated to 16/11/2010 upstream version
+
+-------------------------------------------------------------------
+Tue Nov  9 19:42:26 UTC 2010 - speilicke@novell.com
+
+- Initial commit
+

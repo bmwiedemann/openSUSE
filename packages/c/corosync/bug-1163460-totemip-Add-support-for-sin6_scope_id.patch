@@ -1,0 +1,200 @@
+From d963c2ab6cac0bf18355159afd815c0eb78e4aa8 Mon Sep 17 00:00:00 2001
+From: Jan Friesse <jfriesse@redhat.com>
+Date: Mon, 27 Jul 2020 16:10:54 +0200
+Subject: [PATCH] totemip: Add support for sin6_scope_id
+
+sin6_scope_id is not present in totemip structure making impossible to
+use link-local ipv6 address.
+
+Patch adds new call totemip_totemip_to_sockaddr_convert_with_scopeid
+which can be instructed to fill scope id. This function calls
+totemip_getif_scopeid which walks local addresses and returns
+scope id if interface matches.
+
+Main difference between this patch and
+934c47ed4384daf2819c26306bebba3225807499 is fact, that totemip
+structure keeps unchanged so corosync stays wire compatible.
+
+This makes corosync work with link-local addresses fine for both UDPU
+and UDP transport as long as there is only one matching interface with
+this patch.
+
+Big thanks to Aleksei Burlakov <aburlakov@suse.com> who brought idea
+(and implementation) of using totemip_getif_scopeid.
+
+Signed-off-by: Jan Friesse <jfriesse@redhat.com>
+Reviewed-by: Christine Caulfield <ccaulfie@redhat.com>
+---
+ exec/totemip.c                   | 69 ++++++++++++++++++++++++++++++--
+ exec/totemudp.c                  |  7 ++--
+ exec/totemudpu.c                 |  6 ++-
+ include/corosync/totem/totemip.h |  4 ++
+ 4 files changed, 77 insertions(+), 9 deletions(-)
+
+diff --git a/exec/totemip.c b/exec/totemip.c
+index f89c70a04..4f08f5375 100644
+--- a/exec/totemip.c
++++ b/exec/totemip.c
+@@ -50,6 +50,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <ifaddrs.h>
++#include <corosync/logsys.h>
+ 
+ #include <corosync/totem/totemip.h>
+ #include <corosync/swab.h>
+@@ -267,11 +268,58 @@ const char *totemip_print(const struct totem_ip_address *addr)
+ 	return (inet_ntop(addr->family, addr->addr, buf, sizeof(buf)));
+ }
+ 
+-/* Make a totem_ip_address into a usable sockaddr_storage */
+-int totemip_totemip_to_sockaddr_convert(struct totem_ip_address *ip_addr,
+-					uint16_t port, struct sockaddr_storage *saddr, int *addrlen)
++static int totemip_getif_scopeid(const unsigned char *addr16, unsigned int *scopeid)
++{
++	struct ifaddrs *ifa;
++	const struct sockaddr_in6 *sin6;
++	const socklen_t addr_len = sizeof(struct in6_addr);
++	int rc = -1; // 0 = found 1 match; -1 = found 0 matches; -2 = found >1 matches
++	struct ifaddrs *totemip_getif_scopeid_ifap;
++
++	if (getifaddrs(&totemip_getif_scopeid_ifap) != 0) {
++		return (-1);
++	}
++
++	for (ifa = totemip_getif_scopeid_ifap; ifa; ifa = ifa->ifa_next) {
++		if (ifa->ifa_addr == NULL || ifa->ifa_netmask == NULL)
++			continue ;
++
++		if ((ifa->ifa_addr->sa_family != AF_INET6) ||
++		    (ifa->ifa_netmask->sa_family != AF_INET6 &&
++		     ifa->ifa_netmask->sa_family != 0))
++			continue ;
++
++		sin6 = (const struct sockaddr_in6 *)ifa->ifa_addr;
++
++		if (memcmp(&sin6->sin6_addr, addr16, addr_len) == 0) {
++			*scopeid = sin6->sin6_scope_id;
++
++			if (rc == -1) {
++				rc = 0;
++			} else {
++				rc = -2;
++			}
++		}
++	}
++
++	if (rc == -2) {
++		log_printf(LOGSYS_LEVEL_WARNING, "(%s) exists on several interfaces."
++		  " Use 'ip a' to see details.",
++		    totemip_sa_print(ifa->ifa_addr));
++	}
++
++	freeifaddrs(totemip_getif_scopeid_ifap);
++
++	return rc;
++}
++
++
++int totemip_totemip_to_sockaddr_convert_with_scopeid(const struct totem_ip_address *ip_addr,
++					uint16_t port, struct sockaddr_storage *saddr, int *addrlen,
++					int fill_scopeid)
+ {
+ 	int ret = -1;
++	unsigned int scopeid;
+ 
+ 	if (ip_addr->family == AF_INET) {
+ 		struct sockaddr_in *sin = (struct sockaddr_in *)saddr;
+@@ -296,7 +344,11 @@ int totemip_totemip_to_sockaddr_convert(struct totem_ip_address *ip_addr,
+ #endif
+ 		sin->sin6_family = ip_addr->family;
+ 		sin->sin6_port = ntohs(port);
+-		sin->sin6_scope_id = 2;
++		if (fill_scopeid) {
++			if (totemip_getif_scopeid(ip_addr->addr, &scopeid) == 0) {
++				sin->sin6_scope_id = scopeid;
++			}
++		}
+ 		memcpy(&sin->sin6_addr, ip_addr->addr, sizeof(struct in6_addr));
+ 
+ 		*addrlen = sizeof(struct sockaddr_in6);
+@@ -306,6 +358,15 @@ int totemip_totemip_to_sockaddr_convert(struct totem_ip_address *ip_addr,
+ 	return ret;
+ }
+ 
++/* Make a totem_ip_address into a usable sockaddr_storage */
++int totemip_totemip_to_sockaddr_convert(struct totem_ip_address *ip_addr,
++					uint16_t port, struct sockaddr_storage *saddr, int *addrlen)
++{
++
++	return (totemip_totemip_to_sockaddr_convert_with_scopeid(ip_addr, port, saddr, addrlen, 0));
++}
++
++
+ /* Converts an address string string into a totem_ip_address.
+    family can be AF_INET, AF_INET6 or 0 ("for "don't care")
+ */
+diff --git a/exec/totemudp.c b/exec/totemudp.c
+index 4b644aee3..c11bbe8e6 100644
+--- a/exec/totemudp.c
++++ b/exec/totemudp.c
+@@ -834,8 +834,8 @@ static int totemudp_build_sockets_ip (
+ 		return (-1);
+ 	}
+ 
+-	totemip_totemip_to_sockaddr_convert(bound_to, instance->totem_interface->ip_port - 1,
+-		&sockaddr, &addrlen);
++	totemip_totemip_to_sockaddr_convert_with_scopeid(bound_to, instance->totem_interface->ip_port - 1,
++		&sockaddr, &addrlen, 1);
+ 
+ 	retries = 0;
+ 	while (1) {
+@@ -890,7 +890,8 @@ static int totemudp_build_sockets_ip (
+ 	 * Bind to unicast socket used for token send/receives
+ 	 * This has the side effect of binding to the correct interface
+ 	 */
+-	totemip_totemip_to_sockaddr_convert(bound_to, instance->totem_interface->ip_port, &sockaddr, &addrlen);
++	totemip_totemip_to_sockaddr_convert_with_scopeid(bound_to, instance->totem_interface->ip_port,
++	    &sockaddr, &addrlen, 1);
+ 
+ 	retries = 0;
+ 	while (1) {
+diff --git a/exec/totemudpu.c b/exec/totemudpu.c
+index f9d50af26..1d9410f65 100644
+--- a/exec/totemudpu.c
++++ b/exec/totemudpu.c
+@@ -824,7 +824,9 @@ static int totemudpu_build_sockets_ip (
+ 	 * Bind to unicast socket used for token send/receives
+ 	 * This has the side effect of binding to the correct interface
+ 	 */
+-	totemip_totemip_to_sockaddr_convert(bound_to, instance->totem_interface->ip_port, &sockaddr, &addrlen);
++	totemip_totemip_to_sockaddr_convert_with_scopeid(bound_to, instance->totem_interface->ip_port,
++	    &sockaddr, &addrlen, 1);
++
+ 	while (1) {
+ 		res = bind (instance->token_socket, (struct sockaddr *)&sockaddr, addrlen);
+ 		if (res == 0) {
+@@ -1331,7 +1333,7 @@ static int totemudpu_create_sending_socket(
+ 	/*
+ 	 * Bind to sending interface
+ 	 */
+-	totemip_totemip_to_sockaddr_convert(&instance->my_id, 0, &sockaddr, &addrlen);
++	totemip_totemip_to_sockaddr_convert_with_scopeid(&instance->my_id, 0, &sockaddr, &addrlen, 1);
+ 	res = bind (fd, (struct sockaddr *)&sockaddr, addrlen);
+ 	if (res == -1) {
+ 		LOGSYS_PERROR (errno, instance->totemudpu_log_level_warning,
+diff --git a/include/corosync/totem/totemip.h b/include/corosync/totem/totemip.h
+index 891a0524b..2a63317b1 100644
+--- a/include/corosync/totem/totemip.h
++++ b/include/corosync/totem/totemip.h
+@@ -97,6 +97,10 @@ extern int totemip_totemip_to_sockaddr_convert(struct totem_ip_address *ip_addr,
+ 					       uint16_t port, struct sockaddr_storage *saddr, int *addrlen);
+ extern int totemip_parse(struct totem_ip_address *totemip, const char *addr,
+ 			 int family);
++extern int totemip_totemip_to_sockaddr_convert_with_scopeid(const struct totem_ip_address *ip_addr,
++					        uint16_t port, struct sockaddr_storage *saddr, int *addrlen,
++					        int fill_scopeid);
++
+ extern int totemip_iface_check(struct totem_ip_address *bindnet,
+ 			       struct totem_ip_address *boundto,
+ 			       int *interface_up,

@@ -1,0 +1,25 @@
+From 6a08ad36663e461f6561a52f341d1bc8cb75a03f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 26 Sep 2011 11:07:25 +0200
+Subject: [PATCH 2/2] untab indentation for
+
+---
+ build/Makefile.pf.Linux |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/build/Makefile.pf.Linux b/build/Makefile.pf.Linux
+index 3906851..5dd8e53 100644
+--- a/build/Makefile.pf.Linux
++++ b/build/Makefile.pf.Linux
+@@ -94,7 +94,7 @@ ifeq (,$(PF_DISTRO))
+ 	PF_DISTRO=UNKNOWN
+ 	PF_MAJOR=UNKNOWN
+ 	PF_MINOR=UNKNOWN
+-	$(warning "Unmatched version string")
++  $(warning "Unmatched version string")
+ endif
+ 
+ #--------------------------------------------------------------------------------
+-- 
+1.7.6.1
+

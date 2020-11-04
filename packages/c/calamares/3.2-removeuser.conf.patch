@@ -1,0 +1,15 @@
+Usually "linux" is default user in LiveCD/LiveDVD/LiveUSB of
+openSUSE and openSUSE based appliances.
+By default this module is disabled, because Calamares crash 
+if indicated used does not exist. See:
+https://github.com/calamares/calamares/issues/577
+
+diff -ur a/src/modules/removeuser/removeuser.conf b/src/modules/removeuser/removeuser.conf
+--- a/src/modules/removeuser/removeuser.conf
++++ b/src/modules/removeuser/removeuser.conf
+@@ -7,4 +7,4 @@
+ # continues as normal.
+ ---
+ # Username in the target system to be removed.
+-username: live
++username: linux

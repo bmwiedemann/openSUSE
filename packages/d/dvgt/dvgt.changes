@@ -1,0 +1,125 @@
+-------------------------------------------------------------------
+Thu Nov  9 10:38:49 UTC 2017 - lcavajani@suse.com
+
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Thu Nov  9 09:08:25 UTC 2017 - dimstar@opensuse.org
+
+- Update dvgt-3.51L3.dif: adjust the spelling for README.SUSE (in
+  place of README.SuSE).
+
+-------------------------------------------------------------------
+Mon Jul 23 13:05:55 UTC 2012 - werner@suse.de
+
+- Make it build with latest TeXLive 2012 
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Wed Jul 22 15:04:39 CEST 2009 - werner@suse.de
+
+- Add missed fclose (bnc#524231)
+
+-------------------------------------------------------------------
+Thu Mar 13 13:11:52 CET 2008 - werner@suse.de
+
+- Minor adoption on new gcc
+
+-------------------------------------------------------------------
+Sun Apr 22 23:11:54 CEST 2007 - ro@suse.de
+
+- use texlive for building 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Sat Jan 14 22:27:26 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Fri Oct 21 12:58:48 CEST 2005 - werner@suse.de
+
+- Return address not of array but the first element (bug #129945)
+
+-------------------------------------------------------------------
+Sun Jan 11 11:19:01 CET 2004 - adrian@suse.de
+
+- add %defattr
+
+-------------------------------------------------------------------
+Fri Jun 13 09:55:52 CEST 2003 - coolo@suse.de
+
+- package docdir 
+
+-------------------------------------------------------------------
+Tue May 27 09:36:50 CEST 2003 - coolo@suse.de
+
+- use BuildRoot
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Tue May 14 18:56:04 CEST 2002 - werner@suse.de
+
+- Do not strip in debugging case
+
+-------------------------------------------------------------------
+Mon Nov 12 12:05:23 CET 2001 - ro@suse.de
+
+- no svgalib 
+
+----------------------------------------------------------------------------
+Mon Mar  5 16:22:35 CET 2001 - werner@suse.de
+
+- Avoid svga/vga if not available on the current architecture
+
+-------------------------------------------------------------------
+Sat Dec  9 18:32:48 MET 2000 - nashif@suse.de
+
+-  sorted
+
+-------------------------------------------------------------------
+Mon Jun  5 17:53:38 MEST 2000 - uli@suse.de
+
+- moved docs to %{_docdir}
+
+-------------------------------------------------------------------
+Wed Mar  1 16:45:24 CET 2000 - uli@suse.de
+
+- moved man page to /usr/share
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jul 15 08:56:15 MEST 1999 - ro@suse.de
+
+- fixed filelist
+
+----------------------------------------------------------------------------
+Wed Jul 14 23:41:29 CEST 1999 - werner@suse.de
+
+	- Elementary fixes againsat buffer overflows
+
+----------------------------------------------------------------------------
+Wed Jul 14 00:13:54 CEST 1999 - werner@suse.de
+
+	- New package of an old tool (dvi viewer for tek and other terminals)
+	- A few changes to support kpatsea and (some) virtual fonts.
+	- Fix 8 bit handling of characters
+	- Implement rudimentary DC to latin 1 mapping

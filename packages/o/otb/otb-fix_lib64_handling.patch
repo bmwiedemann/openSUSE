@@ -1,0 +1,26 @@
+--- OTB-release-6.6.orig/CMakeLists.txt	2018-07-16 20:53:42.680091190 +0200
++++ OTB-release-6.6/CMakeLists.txt	2018-07-20 10:43:45.231233188 +0200
+@@ -268,10 +268,10 @@ if(NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
+   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${OTB_BINARY_DIR}/bin)
+ endif()
+ if(NOT CMAKE_LIBRARY_OUTPUT_DIRECTORY)
+-  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OTB_BINARY_DIR}/lib)
++  set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OTB_BINARY_DIR}/lib${LIB_SUFFIX})
+ endif()
+ if(NOT CMAKE_ARCHIVE_OUTPUT_DIRECTORY)
+-  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OTB_BINARY_DIR}/lib)
++  set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OTB_BINARY_DIR}/lib${LIB_SUFFIX})
+ endif()
+ set(OTB_MODULES_DIR "${OTB_BINARY_DIR}/${OTB_INSTALL_PACKAGE_DIR}/Modules")
+ 
+--- OTB-release-6.6.orig/Modules/Wrappers/QGIS/src/CMakeLists.txt	2018-07-16 20:53:44.348101904 +0200
++++ OTB-release-6.6/Modules/Wrappers/QGIS/src/CMakeLists.txt	2018-07-20 11:01:56.042829185 +0200
+@@ -37,7 +37,7 @@ set(generate_descriptor_cmd "$<TARGET_FI
+ #see gitlab #1593
+ #if( "${CMAKE_SYSTEM_NAME}"  MATCHES "Linux")
+ if(CMAKE_SKIP_RPATH AND "${CMAKE_SYSTEM_NAME}"  MATCHES "Linux")
+-  set(generate_descriptor_cmd "env;LD_LIBRARY_PATH=${OTB_BINARY_DIR}/lib;$<TARGET_FILE:otbQgisDescriptor>")
++  set(generate_descriptor_cmd "env;LD_LIBRARY_PATH=${OTB_BINARY_DIR}/lib${LIB_SUFFIX};$<TARGET_FILE:otbQgisDescriptor>")
+ endif()
+ foreach(app_name ${app_names})
+   add_dependencies(otbQgisDescriptor otbapp_${app_name})

@@ -1,0 +1,13 @@
+Index: b/vncviewer/CConn.cxx
+===================================================================
+--- a/vncviewer/CConn.cxx
++++ b/vncviewer/CConn.cxx
+@@ -388,6 +388,8 @@ void CConn::dataRect(const Rect& r, int
+ 
+   if (encoding != encodingCopyRect)
+     lastServerEncoding = encoding;
++  if (encoding == pseudoEncodingDesktopSize)
++    setDesktopSize( r.width(), r.height() );
+ 
+   CConnection::dataRect(r, encoding);
+ 

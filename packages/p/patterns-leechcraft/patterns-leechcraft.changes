@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Apr 28 16:03:43 UTC 2017 - jengelh@inai.de
+
+- Compact %install routine; replace old RPM shell vars by macros.
+
+-------------------------------------------------------------------
+Thu Mar 16 06:15:40 UTC 2017 - sflees@suse.de
+
+- Create new package from old unified patterns package

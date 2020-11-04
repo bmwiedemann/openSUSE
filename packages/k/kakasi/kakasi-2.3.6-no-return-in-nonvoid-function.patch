@@ -1,0 +1,23 @@
+Index: kakasi-2.3.6/lib/libhh2.c
+===================================================================
+--- kakasi-2.3.6.orig/lib/libhh2.c
++++ kakasi-2.3.6/lib/libhh2.c
+@@ -848,5 +848,6 @@ H2H(c, n)
+ 	n[0].c2 = 0;
+ 	return 1;
+     }
++    return 0;
+ }
+ #endif /* WAKATIGAKI */
+Index: kakasi-2.3.6/src/hh2.c
+===================================================================
+--- kakasi-2.3.6.orig/src/hh2.c
++++ kakasi-2.3.6/src/hh2.c
+@@ -848,5 +848,7 @@ H2H(c, n)
+ 	n[0].c2 = 0;
+ 	return 1;
+     }
++    return 0;
+ }
++
+ #endif /* WAKATIGAKI */

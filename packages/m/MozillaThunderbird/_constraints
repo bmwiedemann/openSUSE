@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">24</size>
+    </disk>
+    <memory>
+      <size unit="G">9</size>
+    </memory>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">12</size>
+      </disk>
+      <memory>
+        <size unit="G">5</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">12</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">16</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>

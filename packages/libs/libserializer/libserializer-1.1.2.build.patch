@@ -1,0 +1,15 @@
+--- libserializer-1.1.2/build.properties	2009-11-20 09:34:31.000000000 +0000
++++ libserializer-1.1.2/build.properties	2009-11-20 09:34:37.000000000 +0000
+@@ -1,7 +1,11 @@
+-project.revision=TRUNK-SNAPSHOT
++project.revision=1.1.2
+ ivy.artifact.group=pentaho-library
+ ivy.artifact.id=libserializer
+ impl.title=LibSerializer
+ impl.productID=libserializer
+ src.dir=${basedir}/source
+ dependency.libbase.revision=1.1.2
++
++antcontrib.available=true
++
++build.cache.dir=lib

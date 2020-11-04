@@ -1,0 +1,13 @@
+Index: HTML-TableExtract-2.15/lib/HTML/TableExtract.pm
+===================================================================
+--- HTML-TableExtract-2.15.orig/lib/HTML/TableExtract.pm
++++ HTML-TableExtract-2.15/lib/HTML/TableExtract.pm
+@@ -438,7 +438,7 @@ sub _reset_state {
+   $self->{_counts}        = [];
+   $self->{_in_a_table}    = 0;
+   $self->{_parsing}       = 0;
+-  $self->tree->delete_content() if TREE();
++  #$self->tree->delete_content() if TREE();
+ }
+ 
+ sub _emsg {
