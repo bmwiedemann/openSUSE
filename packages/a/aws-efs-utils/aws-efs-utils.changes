@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  3 15:03:24 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Drop '-f' option with %service_del_preun/%service_del_postun
+
+  With %service_del_preun, the option is already ignored with as
+  support for DISABLE_STOP_ON_REMOVAL has been dropped.
+
+  With %service_del_postun, this option shouldn't be needed besides
+  very few special cases. But this package doesn't seem to belong to
+  this category.
+
+-------------------------------------------------------------------
 Mon Feb  3 12:03:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(systemd) instead of systemd: allow OBS to

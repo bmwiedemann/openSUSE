@@ -88,10 +88,10 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %service_add_post amazon-efs-mount-watchdog.service
 
 %preun
-%service_del_preun -f amazon-efs-mount-watchdog.service
+%service_del_preun amazon-efs-mount-watchdog.service
 
 %postun
-%service_del_postun -f amazon-efs-mount-watchdog.service
+%service_del_postun amazon-efs-mount-watchdog.service
 
 %files
 %defattr(-,root,root,-)
