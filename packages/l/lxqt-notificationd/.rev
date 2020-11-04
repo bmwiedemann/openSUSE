@@ -286,4 +286,16 @@
     <comment></comment>
     <requestid>798548</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>14a5f62e0a45bc4a5cc492d3e0b1c351</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510891</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Avoided container detachment.
+  * Dropped deprecated QProcess method.
+  * Added an option for showing notifications in the screen with
+    the mouse pointer.</comment>
+    <requestid>846004</requestid>
+  </revision>
 </revisionlist>
