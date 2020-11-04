@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  4 14:04:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Safely iterate over card profile info array.
+  * Fall back to default icon when no candidate is found.
+  * Elide playback name label if needed
+  * Don't force a height on progressbars.
+  * Remove warnings about unused function parameters.
+  * Wrapped the text of connecting error label.
+
+-------------------------------------------------------------------
 Mon Apr 27 11:06:40 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Changed pavucontrol-qt.keyring to tsujan's key

@@ -92,4 +92,18 @@
     <comment></comment>
     <requestid>798536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69b961d4f1a2f68c05fed1810aa95410</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Safely iterate over card profile info array.
+  * Fall back to default icon when no candidate is found.
+  * Elide playback name label if needed
+  * Don't force a height on progressbars.
+  * Remove warnings about unused function parameters.
+  * Wrapped the text of connecting error label.</comment>
+    <requestid>846016</requestid>
+  </revision>
 </revisionlist>
