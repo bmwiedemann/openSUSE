@@ -37,7 +37,7 @@
 +            "Topic :: Utilities"
 +        ],
 +        scripts = ["bin/git-fixup"],
-+        # packages = "git_deps",
++        packages = ["git_deps", "git_deps/listener"],
 +        # data_files = "share/git_deps = share/gitfile-handler.desktop",
          setup_requires=[
              'six',

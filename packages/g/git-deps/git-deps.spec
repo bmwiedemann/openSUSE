@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           git-deps
@@ -26,13 +27,14 @@ Group:          Development/Tools/Version Control
 URL:            https://github.com/aspiers/git-deps
 Source:         %{name}-%{version}.tar.xz
 Patch0:         dont-use-st-markdown.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  fdupes
-BuildRequires:  %{python_module setuptools}
+Patch1:         Fix-issue-with-unbuffered-text-I-O-under-python3.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module pygit2}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pygit2
 # for html subpackage
 Requires:       python-Flask
@@ -48,6 +50,7 @@ file bugs at https://github.com/aspiers/git-deps/issues
 
 %package html
 Summary:        Tool to analyze git deps - HTML parts
+Group:          Development/Tools/Version Control
 
 %description html
 Documentation for git-deps.

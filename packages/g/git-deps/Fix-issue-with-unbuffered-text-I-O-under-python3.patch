@@ -1,0 +1,29 @@
+From 8d9a7d6dacad4a033f2a4c800ff32137e6e894da Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Wed, 28 Oct 2020 18:09:24 -0600
+Subject: [PATCH] Fix issue with unbuffered text I/O under python3
+
+This fix is in an upstream pull request, as shown here:
+https://github.com/aspiers/git-deps/pull/93/commits/6beebe034b5c6fd19d73edd774dbf424ea183fee
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ git_deps/cli.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/git_deps/cli.py b/git_deps/cli.py
+index 9e8b0ab..7882088 100755
+--- a/git_deps/cli.py
++++ b/git_deps/cli.py
+@@ -135,7 +135,7 @@ def main(args):
+     if options.serve:
+         serve(options)
+     else:
+-        sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
++        sys.stdout = os.fdopen(sys.stdout.fileno(), 'w')
+         try:
+             cli(options, args)
+         except InvalidCommitish as e:
+-- 
+2.29.0
+

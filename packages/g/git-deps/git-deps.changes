@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 29 15:48:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix setup.py to correctly identify the project packages git_deps
+  and git_deps/listener. These were not being packaged and as a
+  result the git-deps command was simply failing
+- Add Fix-issue-with-unbuffered-text-I-O-under-python3.patch,
+  which fixes the issue with unbuffered text I/O under python3,
+  (gh#aspiers/git-deps#93).
+
+-------------------------------------------------------------------
 Mon Jun  1 17:25:50 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Extend dont-use-st-markdown.patch to include full setup()
