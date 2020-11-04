@@ -194,4 +194,13 @@
     <comment></comment>
     <requestid>798547</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f3d0420cfd32f511c2eed47a56a72908</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Bumped version to 0.16.0</comment>
+    <requestid>846015</requestid>
+  </revision>
 </revisionlist>
