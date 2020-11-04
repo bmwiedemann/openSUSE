@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 15:58:16 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Remove ridiculously wide find commands in %prep, which break a lot
+  (binary) files.
+
+-------------------------------------------------------------------
 Wed Jul  8 07:31:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 1.77

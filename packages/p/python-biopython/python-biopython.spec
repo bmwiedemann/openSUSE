@@ -53,12 +53,10 @@ available Python tools for computational molecular biology.
 
 %prep
 %setup -q -n biopython-%{version}
-# remove all execute bits from documentation and fix line endings
-find -type f -exec chmod -x {} 2>/dev/null ';'
-find -type f -exec sed -i 's/\r//' {} 2>/dev/null ';'
-# remove she-bang lines in .py files to keep rpmlint happy
 find -type f -name "*.py" -exec sed -i '/^#![ ]*\/usr\/bin\/.*$/ d' {} 2>/dev/null ';'
 sed -i '/^#![ ]*\/usr\/bin\/.*$/ d' Scripts/Structure/hsexpo
+# Example scripts cannot be in a subdirectory
+mv -v Doc/examples examples 
 
 %build
 export LANG=en_US.UTF-8
@@ -77,7 +75,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %doc CONTRIB.rst DEPRECATED.rst NEWS.rst README.rst
-%doc Doc/
+%doc Doc/ examples/
 %license LICENSE.rst
 %{python_sitearch}/Bio/
 %{python_sitearch}/BioSQL/
