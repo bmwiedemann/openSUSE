@@ -17,7 +17,7 @@
 
 
 Name:           adriconf
-Version:        1.7
+Version:        2.4
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
