@@ -1,0 +1,767 @@
+<revisionlist>
+  <revision rev="1" vrev="37">
+    <srcmd5>0678c5c0c58e8d82648d5bde47fcafd6</srcmd5>
+    <version>0.8.0</version>
+    <time>1168447334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="38">
+    <srcmd5>004f45120de251bfadcd99dc76141aa8</srcmd5>
+    <version>0.8.0</version>
+    <time>1169163744</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="43">
+    <srcmd5>a98b69137cd1a626a87e79fdd95f5bc9</srcmd5>
+    <version>0.8.0</version>
+    <time>1171917165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="57">
+    <srcmd5>fea54e5dd8e554ec5f187746769206c1</srcmd5>
+    <version>0.8.0</version>
+    <time>1178230125</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="67">
+    <srcmd5>2f6c9fb851b40a3a74ced0bf8f590337</srcmd5>
+    <version>0.8.0</version>
+    <time>1179494794</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="71">
+    <srcmd5>383af99705e0e203074b9eaae1c3071c</srcmd5>
+    <version>0.8.0</version>
+    <time>1179929814</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="92">
+    <srcmd5>ddd780ff93a136b43ce5074bd5749cfb</srcmd5>
+    <version>0.8.0</version>
+    <time>1185631823</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="99">
+    <srcmd5>ab64bdb1935dc46d6ec816db8e3bcd8f</srcmd5>
+    <version>0.8.0</version>
+    <time>1186669787</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8551cf5e3722f65f71559eafd3c514a</srcmd5>
+    <version>0.9.1</version>
+    <time>1193356700</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>d8e6cd5268ac95d93e688dcfd6e6095e</srcmd5>
+    <version>0.9.1</version>
+    <time>1193736225</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2405354883112b91033469ac1ee0e2b2</srcmd5>
+    <version>0.11.0</version>
+    <time>1201897970</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="25">
+    <srcmd5>0c6ee696e0c7e95c8e865ab6a3dddf1f</srcmd5>
+    <version>0.11.0</version>
+    <time>1206544315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="93">
+    <srcmd5>0c6ee696e0c7e95c8e865ab6a3dddf1f</srcmd5>
+    <version>0.11.0</version>
+    <time>1206544315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe1e1c4bffbd0aa5643ec3d2ba7bac26</srcmd5>
+    <version>0.12.0</version>
+    <time>1235389779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1789fa32f4ee76d2bf53be10e3f575ec</srcmd5>
+    <version>2.27.1</version>
+    <time>1239101759</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f9dcaf0b25dc36ada079e89c252e4af3</srcmd5>
+    <version>2.27.4</version>
+    <time>1240594850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>75cf4c477bc7f07241020c1a3bbf2acd</srcmd5>
+    <version>2.27.5</version>
+    <time>1242850409</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>58f7757aed66292ba42cf64d1ae27f5c</srcmd5>
+    <version>2.27.8</version>
+    <time>1249118791</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>eebc9cd865f74746fcd40cebd258b24e</srcmd5>
+    <version>2.27.9</version>
+    <time>1249674613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ceb6ecac2f823aee8a5ab554c0121f2d</srcmd5>
+    <version>2.27.90</version>
+    <time>1251993726</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 19724 from user vuntz
+</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bd62dfc2a761569c42a0fbf57ee076c0</srcmd5>
+    <version>2.28.1</version>
+    <time>1254787822</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 21752 from user vuntz
+</comment>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>bd62dfc2a761569c42a0fbf57ee076c0</srcmd5>
+    <version>2.28.1</version>
+    <time>1254787822</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 21752 from user vuntz
+</comment>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>05cb863f81715478c27d082d0f0b0203</srcmd5>
+    <version>2.29.3</version>
+    <time>1260264823</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 25817 from user vuntz
+</comment>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>b28a66e70e9dc70111dc5e91fe1bb637</srcmd5>
+    <version>2.29.3</version>
+    <time>1261141086</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 26997 from user vuntz
+</comment>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2f3016bb2965d6f8c61cc1b1c7801565</srcmd5>
+    <version>2.29.91</version>
+    <time>1266501368</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 32696 from user vuntz
+</comment>
+  </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>4c23957022e98a17ca32e676063a2cf1</srcmd5>
+    <version>2.29.91</version>
+    <time>1268923756</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>213c79cbe52b340a0d823a5a4aa23a46</srcmd5>
+    <version>2.30.0</version>
+    <time>1270118892</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 36311 from user vuntz
+</comment>
+    <requestid>36311</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e58e4c89763032df1b0ef21c12e58166</srcmd5>
+    <version>2.30.0</version>
+    <time>1275734782</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 41175 from user vuntz
+</comment>
+    <requestid>41175</requestid>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>e86edd0a65abd2d894a84338e981f236</srcmd5>
+    <version>2.30.0</version>
+    <time>1277136875</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 41826 from user vuntz
+</comment>
+    <requestid>41826</requestid>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>e86edd0a65abd2d894a84338e981f236</srcmd5>
+    <version>2.30.0</version>
+    <time>1278667347</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>e86edd0a65abd2d894a84338e981f236</srcmd5>
+    <version>2.30.0</version>
+    <time>1278678578</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>20cf9afa6a6c5cecf030bb38a20e9c91</srcmd5>
+    <version>2.31.6</version>
+    <time>1281389544</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 45065 from user vuntz
+</comment>
+    <requestid>45065</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>1d04ac05d6dc9cc8582b202628bbbc00</srcmd5>
+    <version>2.31.6</version>
+    <time>1283163795</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 46527 from user vuntz
+</comment>
+    <requestid>46527</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>bf2fec99667940198419a1aab59c0fd7</srcmd5>
+    <version>unknown</version>
+    <time>1284374140</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 47743 from user vuntz
+</comment>
+    <requestid>47743</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>52ed33c14ea5f4ecb7592d3e9c263ded</srcmd5>
+    <version>2.31.90</version>
+    <time>1285280723</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 48912 from user vuntz
+</comment>
+    <requestid>48912</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>51c3211df4bfe99edf7708fafba821d2</srcmd5>
+    <version>2.32.0</version>
+    <time>1287153884</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/gnome-bluetooth based on submit request 50686 from user vuntz
+</comment>
+    <requestid>50686</requestid>
+  </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>1dd5e7c37871902714d433c973f8686f</srcmd5>
+    <version>2.32.0</version>
+    <time>1297642355</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 61033 from user vuntz
+</comment>
+    <requestid>61033</requestid>
+  </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>3e491ade7ec0fa4f6682ff9eb41c025f</srcmd5>
+    <version>2.32.0</version>
+    <time>1297642364</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 61033
+</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>3e491ade7ec0fa4f6682ff9eb41c025f</srcmd5>
+    <version>2.32.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>45b1b65d3aadc4b4c7b6784fd2c4ce90</srcmd5>
+    <version>2.32.0</version>
+    <time>1298245889</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 62073 from user vuntz
+</comment>
+    <requestid>62073</requestid>
+  </revision>
+  <revision rev="41" vrev="8">
+    <srcmd5>0af6b61a40fece8ed378804afa1da7eb</srcmd5>
+    <version>2.32.0</version>
+    <time>1298245895</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 62073
+</comment>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>7aac527a5123d99bee41ba17782e5b26</srcmd5>
+    <version>3.0.0</version>
+    <time>1304597686</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F (including GNOME3)</comment>
+    <requestid>69052</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>c1e415fe54091a63d0db2f0ecd7e11ba</srcmd5>
+    <version>3.0.0</version>
+    <time>1304597698</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 69052
+</comment>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>528119d1f6dfa58e4b01e5cc319a8dde</srcmd5>
+    <version>3.0.1</version>
+    <time>1306843816</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F</comment>
+    <requestid>71989</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c7c51109efe3710454aaa73a76c61f8e</srcmd5>
+    <version>3.1.3</version>
+    <time>1310391658</time>
+    <user>saschpe</user>
+    <comment>Pushing G:F, including GNOME 3.1.3</comment>
+    <requestid>75736</requestid>
+  </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ed2d2c7be3ad83ad4e5ca8b14923436b</srcmd5>
+    <version>3.1.3</version>
+    <time>1312735847</time>
+    <user>saschpe</user>
+    <comment>Fix build with new gnome-control-center</comment>
+    <requestid>78017</requestid>
+  </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>d539f5c724a8a2a0a7468684abf5468b</srcmd5>
+    <version>3.1.3</version>
+    <time>1312735856</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 78017
+</comment>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c4edd09d7e5d5e00b4080229af9b4b37</srcmd5>
+    <version>3.1.4</version>
+    <time>1315559849</time>
+    <user>saschpe</user>
+    <comment>Pushing most of G:F</comment>
+    <requestid>81478</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>09ddb2cf4b9d2fc53db429a156714173</srcmd5>
+    <version>3.2.0</version>
+    <time>1317542697</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85651</requestid>
+  </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>6471de4056ff7eb43ad1648bd1930037</srcmd5>
+    <version>3.2.0</version>
+    <time>1318501292</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>87636</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>aff17da83001e46c39c33a5ec4a4602e</srcmd5>
+    <version>3.2.1</version>
+    <time>1318939529</time>
+    <user>saschpe</user>
+    <comment>Update to 3.2.1 (forwarded request 88246 from dimstar)</comment>
+    <requestid>88305</requestid>
+  </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>aff17da83001e46c39c33a5ec4a4602e</srcmd5>
+    <version>3.2.1</version>
+    <time>1319181914</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1a7c48347a4d57cc9ee814e07a65b139</srcmd5>
+    <version>3.3.3</version>
+    <time>1326109200</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>99028</requestid>
+  </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>5f5084936312011615f1a3b4be538d34</srcmd5>
+    <version>3.3.3</version>
+    <time>1326988531</time>
+    <user>coolo</user>
+    <comment>Try to fix build loop</comment>
+    <requestid>99731</requestid>
+  </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>6f8c30eaae3c877bc4ff8e30746baa88</srcmd5>
+    <version>3.3.4</version>
+    <time>1327582951</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>101597</requestid>
+  </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>26672f4696b143adc1086c89ce1bfc05</srcmd5>
+    <version>3.4.0</version>
+    <time>1333021932</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111706</requestid>
+  </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>f71d258d3358122a54cf8f864e3d52ec</srcmd5>
+    <version>3.4.0</version>
+    <time>1339076307</time>
+    <user>coolo</user>
+    <comment>Push G:F</comment>
+    <requestid>123640</requestid>
+  </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>f71d258d3358122a54cf8f864e3d52ec</srcmd5>
+    <version>3.4.0</version>
+    <time>1340183375</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ea1589e2896bcc6b4a7c24bd1bcf587c</srcmd5>
+    <version>3.4.1</version>
+    <time>1340620089</time>
+    <user>coolo</user>
+    <comment>Update to 3.4.1 (forwarded request 125334 from dimstar)</comment>
+    <requestid>125559</requestid>
+  </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>4f0080715ca1c7524fe6bb5257f01a28</srcmd5>
+    <version>3.4.1</version>
+    <time>1341218927</time>
+    <user>coolo</user>
+    <comment>* Added gnome-bluetooth-fix-pairing.patch and
+  gnome-bluetooth-fix-stuck-finish-page.patch to enable pairing of
+  devices again (bnc#769536, bgo#679190, rh#819203).
+
+Should be copied to 12.2 if possible (it actually makes the bt stack work) (forwarded request 126762 from dimstar)</comment>
+    <requestid>126764</requestid>
+  </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b751def54f8e11806ad369fe7a2aef4c</srcmd5>
+    <version>3.4.2</version>
+    <time>1342082601</time>
+    <user>namtrac</user>
+    <comment>Update to 3.4.2 - mostly the same as we had with 3.4.1+patches; just some more unrefing fixes included. Safe for 12.2 (forwarded request 127147 from vuntz)</comment>
+    <requestid>127647</requestid>
+  </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f9d00b7e196baa95e87875e1874ad3e6</srcmd5>
+    <version>3.6.0</version>
+    <time>1349368753</time>
+    <user>coolo</user>
+    <comment>Pushing GNOME:Factory towards openSUSE:Factory</comment>
+    <requestid>136678</requestid>
+  </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>63131eb1642a66cd78079fe609d9bd68</srcmd5>
+    <version>3.6.0</version>
+    <time>1350021838</time>
+    <user>coolo</user>
+    <comment>- own udev directories to avoid udev buildrequire (forwarded request 137749 from dimstar)</comment>
+    <requestid>137830</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5bb65ac98728efccde1800b68b976b23</srcmd5>
+    <version>3.6.1</version>
+    <time>1353413036</time>
+    <user>coolo</user>
+    <comment>Update to 3.6.1 (forwarded request 141496 from Zaitor)</comment>
+    <requestid>141742</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>7fb9b5c78f92cd98298fe429474b4322</srcmd5>
+    <version>3.6.1</version>
+    <time>1354711963</time>
+    <user>namtrac</user>
+    <comment>move udev files to where they belong</comment>
+    <requestid>144054</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>7fb9b5c78f92cd98298fe429474b4322</srcmd5>
+    <version>3.6.1</version>
+    <time>1359108950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>64684561e56a52e58f0c4de430c22f3e</srcmd5>
+    <version>3.8.0</version>
+    <time>1364986333</time>
+    <user>coolo</user>
+    <comment>Push G:Factory</comment>
+    <requestid>162166</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>50a1ed76132116c6533bbccc16c673cd</srcmd5>
+    <version>3.9.3</version>
+    <time>1372527613</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.9.3, as announced</comment>
+    <requestid>181273</requestid>
+  </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>dac633737a7de7ad5428bfc6ebebe586</srcmd5>
+    <version>3.9.91</version>
+    <time>1378892378</time>
+    <user>coolo</user>
+    <comment>Update to 3.9.91</comment>
+    <requestid>198111</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>dac633737a7de7ad5428bfc6ebebe586</srcmd5>
+    <version>3.9.91</version>
+    <time>1379662473</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>fa25a7683c5830c154bac716eebdf494</srcmd5>
+    <version>3.10.0</version>
+    <time>1380294816</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.10.0</comment>
+    <requestid>200911</requestid>
+  </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>bb119898576a9804de5e0fca249bdb83</srcmd5>
+    <version>3.12.0</version>
+    <time>1399317292</time>
+    <user>coolo</user>
+    <comment>Push GNOME:Factory - GNOME 3.12.1</comment>
+    <requestid>231702</requestid>
+  </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>fe5be1acbf9d265654620d9559512d55</srcmd5>
+    <version>3.12.0</version>
+    <time>1401167348</time>
+    <user>coolo</user>
+    <comment>- Require the udev library for build to allow the move
+  of udev.pc back to udev (forwarded request 235096 from RBrownCCB)</comment>
+    <requestid>235365</requestid>
+  </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>fe5be1acbf9d265654620d9559512d55</srcmd5>
+    <version>3.12.0</version>
+    <time>1409301010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5d24feb975e760a88183a56d2b6cd476</srcmd5>
+    <version>3.14.0</version>
+    <time>1412098744</time>
+    <user>coolo</user>
+    <comment>Push GNOME 3.14.0 (forwarded request 251877 from Zaitor)</comment>
+    <requestid>252120</requestid>
+  </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>3aba0f2fbefa81c5c28fca14ebbf6788</srcmd5>
+    <version>3.16.0</version>
+    <time>1427735956</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 292763 from dimstar)</comment>
+    <requestid>292956</requestid>
+  </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>5b804c1aeddf1b3f982ff4c362df7301</srcmd5>
+    <version>3.16.1</version>
+    <time>1429768643</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Factory</comment>
+    <requestid>298422</requestid>
+  </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0c3494aa42cc7f2a20af5cf1a6540edf</srcmd5>
+    <version>3.18.0</version>
+    <time>1444141499</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.18.0 (forwarded request 332735 from dimstar)</comment>
+    <requestid>332863</requestid>
+  </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>178f3f81adc05f77b83c79f88436d23c</srcmd5>
+    <version>3.18.0</version>
+    <time>1445092701</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>337217</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>b58370e5c56c680ff8fbe69156c66199</srcmd5>
+    <version>3.18.1</version>
+    <time>1447587956</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343508</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>de1dda7a3d4c121ab032522fae1e46c0</srcmd5>
+    <version>3.18.2</version>
+    <time>1453507420</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>354702</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>1f6af480cf4f1afcba65e805ce954b3c</srcmd5>
+    <version>3.18.3</version>
+    <time>1459254978</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.20.0 (forwarded request 376686 from dimstar)</comment>
+    <requestid>376854</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>c8e612b2ff971dff46e978c2913cf94a</srcmd5>
+    <version>3.20.0</version>
+    <time>1468360162</time>
+    <user>dimstar_suse</user>
+    <comment>Versionbump and SLE sync</comment>
+    <requestid>405874</requestid>
+  </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>a7c7b81bda4a0fdb37cd9de87087ceb3</srcmd5>
+    <version>3.20.0</version>
+    <time>1476779228</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>435364</requestid>
+  </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>7e92bd6d0fb3b9f008b4b18a75f13676</srcmd5>
+    <version>3.20.1</version>
+    <time>1487461097</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457383</requestid>
+  </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>a89b27433781997a0f119a7cea71b480</srcmd5>
+    <version>3.26.0</version>
+    <time>1505332200</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>523319</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>86e5952fcb87b1b1cae0cde456f14c12</srcmd5>
+    <version>3.26.1</version>
+    <time>1505989856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.26.1:
+  + Fix installation of Bluetooth icons.
+  + Fix Bluetooth icon names for bluetooth-sendto in various
+    translations. (forwarded request 526439 from Zaitor)</comment>
+    <requestid>526970</requestid>
+  </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fda8aca9963e74601d7f3a036eb9b2e7</srcmd5>
+    <version>3.28.0</version>
+    <time>1521052336</time>
+    <user>dimstar_suse</user>
+    <comment>can't really mix &quot;the&quot; with a &quot;'s&quot;. (forwarded request 586293 from jengelh)</comment>
+    <requestid>586337</requestid>
+  </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>8ff7816abd086efb7c4b9da1839adb1b</srcmd5>
+    <version>3.28.0</version>
+    <time>1522061418</time>
+    <user>dimstar_suse</user>
+    <comment>t-u-u / boo#1086036 (forwarded request 589335 from dimstar)</comment>
+    <requestid>590022</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b22531bca7123f072a53ff06bbca4691</srcmd5>
+    <version>3.28.1</version>
+    <time>1533045276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>624855</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>4c38b64a5e844daddc82a9a0984e434f</srcmd5>
+    <version>3.28.2</version>
+    <time>1533627684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.28.2:
+  + Use feature of BlueZ 5.51 to avoid Bluetooth adapters being
+    left discoverable if the Settings panel exits suddenly.
+  + Build warning fixes.
+- Add pkgconfig(gio-unix-2.0), pkgconfig(gmodule-2.0) and
+  pkgconfig(libnotify) BuildRequires and drop pkgconfig(udev)
+  BuildRequires, align with what meson checks for. (forwarded request 626948 from iznogood)</comment>
+    <requestid>627097</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>974f9f8c1cea4ccabbc70f9788a5bc99</srcmd5>
+    <version>3.28.2</version>
+    <time>1546695550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662633</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0ebff4a5e60b96b856b0c8d540369716</srcmd5>
+    <version>3.32.1</version>
+    <time>1556914559</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 695590 from dimstar)</comment>
+    <requestid>695757</requestid>
+  </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>edbe2b495d57230b2f8816576d01bfd0</srcmd5>
+    <version>3.34.0</version>
+    <time>1571309954</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from {project}</comment>
+    <requestid>736527</requestid>
+  </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>0f4c02085891e33afab6d21935a5590a</srcmd5>
+    <version>3.34.0</version>
+    <time>1580204957</time>
+    <user>dimstar_suse</user>
+    <comment>Eliminate the -lang recommends (forwarded request 767125 from dimstar)</comment>
+    <requestid>767393</requestid>
+  </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>a74fba63d09cd88356e54b1eeeec4dd5</srcmd5>
+    <version>3.34.1</version>
+    <time>1584176065</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>784039</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>beb7b8d31b32cc110f198cfa98723387</srcmd5>
+    <version>3.34.2</version>
+    <time>1601743919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.34.2:
+  + Work-around intermittent connection problems by disabling
+    discovery when connecting to devices.
+  + Hide pairing dialogue when pairing fails.
+  + Allow $HOME to be the Downloads dir.
+  + Better handling of the 8bitdo Zero gamepad.
+  + Updated translations. (forwarded request 837834 from iznogood)</comment>
+    <requestid>838195</requestid>
+  </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>b8626808545447cd159f22481a862d25</srcmd5>
+    <version>3.34.3</version>
+    <time>1602155440</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 839400 from iznogood)</comment>
+    <requestid>839603</requestid>
+  </revision>
+</revisionlist>
