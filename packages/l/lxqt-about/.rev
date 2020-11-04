@@ -255,4 +255,15 @@
     <comment></comment>
     <requestid>798550</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6f32b36064523fc0ac07a2543cf5f19e</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Bumped version to 0.16.0.
+  * Fixed Razor-qt link.
+  * Fixed Weblate links.</comment>
+    <requestid>846017</requestid>
+  </revision>
 </revisionlist>
