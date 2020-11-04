@@ -18,25 +18,25 @@
 
 %bcond_without lang
 Name:           plasma5-workspace-wallpapers
-Version:        5.20.1
+Version:        5.20.2
 Release:        0
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  extra-cmake-modules >= 0.0.12
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-Summary:        Aditional Plasma Wallpapers
+Summary:        Additional Plasma Wallpapers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         plasma-workspace-wallpapers-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-wallpapers-%{version}.tar.xz
 %if %{with lang}
-Source1:        plasma-workspace-wallpapers-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-wallpapers-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildArch:      noarch
 
 %description
-Aditional wallpapers for Plasma Workspace.
+Additional wallpapers for Plasma Workspace.
 
 %prep
 %setup -q -n plasma-workspace-wallpapers-%{version}
