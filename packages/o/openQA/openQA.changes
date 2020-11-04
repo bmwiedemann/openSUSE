@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 03 23:05:07 UTC 2020 - coolo@suse.com
+
+- Update to version 4.6.1604426047.91baf7934:
+  * Docker: Fix worker dockerfile
+  * Makefile: Add back retries for full-stack.t after sporadic failure
+  * t: Remove unused debug code to ensure 100% statement coverage in 34-developer-mode-unit.t
+
+-------------------------------------------------------------------
 Sat Oct 31 07:26:51 UTC 2020 - coolo@suse.com
 
 - Update to version 4.6.1604127002.7df8de5ee:
