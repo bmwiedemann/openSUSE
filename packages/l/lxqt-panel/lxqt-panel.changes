@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:46:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * Use a stylesheet for progress-bars of Sensors plugin.
+  * Implemented auto-hiding for Status Notifier.
+  * Added option to task button for moving the window to
+    next monitor.
+  * Added option to place task buttons of new windows next to the
+    existing ones of same class when task buttons are ungrouped.
+  * Removed incorrect and redundant explanation of milliseconds
+    from World Clock.
+  * Don't call non-const member functions on temporaries.
+  * Prevent possible C++11 range loop container detachment.
+  * Fixed the sizes and alignments of some plugins at startup.
+  * Added right-click menu to main menu items.
+  * Address deprecation warnings/errors.
+  * Added XF86Eject button action.
+
+-------------------------------------------------------------------
 Wed May 20 12:37:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.1:

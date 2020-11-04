@@ -1090,4 +1090,26 @@
     be at virtual screen edges but not between screens.</comment>
     <requestid>807715</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a58f988eb67464bca845ed1bb0253cb1</srcmd5>
+    <version>0.16.0</version>
+    <time>1604510898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * Use a stylesheet for progress-bars of Sensors plugin.
+  * Implemented auto-hiding for Status Notifier.
+  * Added option to task button for moving the window to
+    next monitor.
+  * Added option to place task buttons of new windows next to the
+    existing ones of same class when task buttons are ungrouped.
+  * Removed incorrect and redundant explanation of milliseconds
+    from World Clock.
+  * Don't call non-const member functions on temporaries.
+  * Prevent possible C++11 range loop container detachment.
+  * Fixed the sizes and alignments of some plugins at startup.
+  * Added right-click menu to main menu items.
+  * Address deprecation warnings/errors.
+  * Added XF86Eject button action.</comment>
+    <requestid>846007</requestid>
+  </revision>
 </revisionlist>

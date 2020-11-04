@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -31,13 +31,13 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.7.0
+BuildRequires:  lxqt-build-tools-devel >= 0.8.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Solid) >= 5.5.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.5.0
+BuildRequires:  cmake(KF5Solid) >= 5.36.0
+BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.12.0
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -45,8 +45,8 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 0.15.0
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= 0.15.0
+BuildRequires:  pkgconfig(lxqt) >= 0.16.0
+BuildRequires:  pkgconfig(lxqt-globalkeys) >= 0.16.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(sysstat-qt5)
 BuildRequires:  pkgconfig(x11)
