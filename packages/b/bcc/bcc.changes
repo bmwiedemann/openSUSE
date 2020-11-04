@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov  4 07:23:22 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.17.0
+  + Support for kernel up to 5.9
+  + usdt: add uprobe refcnt support
+  + add bpf iterator C++ support
+  + new bcc tools: tcprtt, netqtop, swapin, tcpsynbl, threadsnoop
+  + tcpconnect: add DNS correlation to connect tracking
+  + new libbpf-tools: llcstat, numamove, runqlen, runqlat,
+    softirgs, hardirqs
+  + doc update, bug fixes and some additional arguments for tools
+- Update libbpf to 0.2
+  + full support for BPF-to-BPF function calls, no more need for
+    __always_inline;
+  + support for multiple BPF programs with the same section name;
+  + support for accessing in-kernel per-CPU variables;
+  + support for type and enum value CO-RE relocations;
+  + libbpf will auto-adjust CO-RE direct memory loads to adjust
+    to 32-bit host architecture;
+  + BPF_PROG_BIND_MAP support, .rodata will be bound automatically
+    if kernel supports it;
+  + new APIs for programmatic generation of BTF;
+  + support for big-endian and little-endian endianness in BTF;
+  + sleepable fentry/fexit/fmod_ret/lsm BPF program.
+- Enable lua support only for Tumbleweed to close the gap between
+  SLE and openSUSE Leap
+
+-------------------------------------------------------------------
 Fri Sep 25 06:40:16 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.16.0
