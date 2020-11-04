@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3148802e1e3cb4e665ca7fdb79eab7aa</srcmd5>
+    <version>1.0.8</version>
+    <time>1560337900</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705596</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07b2ff116cb2208edd204c3ebb7cdbc6</srcmd5>
+    <version>1.0.8</version>
+    <time>1598726668</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075) (forwarded request 829995 from gmbr3)</comment>
+    <requestid>830430</requestid>
+  </revision>
+</revisionlist>
