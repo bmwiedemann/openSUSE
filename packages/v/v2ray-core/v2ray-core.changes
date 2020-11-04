@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  1 12:26:08 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.32.0
+  * loads JSON internally by default @forever8938
+  * Refine UNIX domain socket @lucifer9
+  * Fix mKCP sending window @p4gefau1t
+  * Fix JSON parsing dependency introduced by mutijson config @xiaokangwang
+  * Fix proto.go ProtoFilesUsingProtocGenGoFast on Windows @JimhHan
+- other changes before this version
+  * Add full VLESS fallbacks support to Trojan
+  * Add Trojan over XTLS support @maskedeken
+  * Add XTLS Direct Mode
+  * Add XTLS support to mKCP
+  * Add padding to abstract UNIX domain socket in fallbacks
+  * Add XTLS support to DomainSocket @rprx
+
+-------------------------------------------------------------------
 Mon Sep 28 08:35:06 UTC 2020 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.29.0
