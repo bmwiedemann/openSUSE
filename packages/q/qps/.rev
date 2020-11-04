@@ -165,4 +165,14 @@
     <comment></comment>
     <requestid>813179</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eb6ecef7d1d6b4f3159b941d32163c2c</srcmd5>
+    <version>2.2.0</version>
+    <time>1604510929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Avoided compiler warnings.
+  * Avoided overflow in &quot;proc.cpp&quot;.</comment>
+    <requestid>846020</requestid>
+  </revision>
 </revisionlist>
