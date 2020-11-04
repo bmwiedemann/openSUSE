@@ -157,4 +157,13 @@
     <comment></comment>
     <requestid>798552</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b6598a2914a41b73a0d0c0b76307fd12</srcmd5>
+    <version>0.4.4</version>
+    <time>1604510885</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  * Bumped version to 0.4.4</comment>
+    <requestid>846001</requestid>
+  </revision>
 </revisionlist>
