@@ -1,7 +1,7 @@
 #
 # spec file for package fonehome
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -51,7 +51,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Source:         %{name}-%{version}.tar.gz
 Source1:        %{servicefile}.in
-Url:            https://github.com/archiecobbs/%{name}/
+URL:            https://github.com/archiecobbs/%{name}/
 Requires:       bc
 Requires:       findutils
 Requires:       openssh
@@ -146,7 +146,7 @@ install /dev/null %{buildroot}%{authkeys}
 
 %postun
 # No restart_on_update - don't kill the connection we might be using to update this RPM with!
-%service_del_postun -n %{name}.service
+%service_del_postun_without_restart %{name}.service
 
 %pre
 %service_add_pre %{name}.service

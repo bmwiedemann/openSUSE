@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:09:43 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
 Fri Oct 25 14:38:52 UTC 2019 -  <archie.cobbs@gmail.com>
 
 - Upgrade to version 1.1.1
