@@ -1,0 +1,303 @@
+<revisionlist>
+  <revision rev="1" vrev="20">
+    <srcmd5>64fa453e59b957cfc5caa3b7f0056381</srcmd5>
+    <version>1.5</version>
+    <time>1166746583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>56863b0b2ee628a3f298d51cde68be41</srcmd5>
+    <version>1.5</version>
+    <time>1170719275</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="29">
+    <srcmd5>c809737a02d990b5cdf50fc5d5893d7f</srcmd5>
+    <version>1.5</version>
+    <time>1170922145</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe598571f1caa590c6707cfefee30fac</srcmd5>
+    <version>1.6.1</version>
+    <time>1178583810</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>f7e01517a39d17a7d55d1ce38266ee25</srcmd5>
+    <version>1.6.1</version>
+    <time>1181085465</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="20">
+    <srcmd5>31a4eff475264cdb288f50f84994f1c2</srcmd5>
+    <version>1.6.1</version>
+    <time>1181666315</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>09371cdd692fcc99fbb8998acc6dedea</srcmd5>
+    <version>1.6.2</version>
+    <time>1186434711</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0f4f04714d87c2d85435bc95f1826659</srcmd5>
+    <version>1.6.2</version>
+    <time>1186702007</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>6c3da7909542336446672a2bae9a7742</srcmd5>
+    <version>1.6.2</version>
+    <time>1188231074</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="52">
+    <srcmd5>c68624f48b4d271174d8ab54d55985f4</srcmd5>
+    <version>1.6.2</version>
+    <time>1196900468</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff2f9017f20e8e0a01e3e65464d96c93</srcmd5>
+    <version>1.6.4</version>
+    <time>1208204383</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b884a732e2cd09a4aac822aa900c1c56</srcmd5>
+    <version>1.6.5</version>
+    <time>1221281850</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b66e70b1a8fe48cdde5ca26756d3eed8</srcmd5>
+    <version>1.6.5</version>
+    <time>1231722679</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5a8c56efba6df867a380d7a13b6a5d63</srcmd5>
+    <version>1.8.1</version>
+    <time>1249938062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5a8c56efba6df867a380d7a13b6a5d63</srcmd5>
+    <version>1.8.1</version>
+    <time>1249938062</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>40eee2bfe271b5f1056b438142c97223</srcmd5>
+    <version>1.8.1</version>
+    <time>1267783274</time>
+    <user>autobuild</user>
+    <comment>Copy from graphics/pfstools based on submit request 34005 from user prusnak
+</comment>
+    <requestid>34005</requestid>
+  </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>df46b12253b4c9158dfa268a7a3d5894</srcmd5>
+    <version>1.8.1</version>
+    <time>1268925692</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>df46b12253b4c9158dfa268a7a3d5894</srcmd5>
+    <version>1.8.1</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>df46b12253b4c9158dfa268a7a3d5894</srcmd5>
+    <version>1.8.1</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="20" vrev="11">
+    <srcmd5>df46b12253b4c9158dfa268a7a3d5894</srcmd5>
+    <version>1.8.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="21" vrev="13">
+    <srcmd5>df46b12253b4c9158dfa268a7a3d5894</srcmd5>
+    <version>1.8.1</version>
+    <time>1319182330</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="22" vrev="14">
+    <srcmd5>4796432bcb052b395953af849fb038da</srcmd5>
+    <version>1.8.1</version>
+    <time>1321886966</time>
+    <user>coolo</user>
+    <comment>- add libtool as buildrequire to avoid implicit dependency (forwarded request 92663 from coolo)</comment>
+    <requestid>92710</requestid>
+  </revision>
+  <revision rev="23" vrev="15">
+    <srcmd5>7ba9ae1a6431cfeb79c72cdd0ca89d0b</srcmd5>
+    <version>1.8.1</version>
+    <time>1323193818</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>42b5d86bee4e18bac36fd44383a1c9db</srcmd5>
+    <version>1.8.4</version>
+    <time>1331124274</time>
+    <user>coolo</user>
+    <comment>- refreshed pfstools-octave.patch
+- Update to version 1.8.4
+  * fixed: SegFault from pfsview when switching channels
+  * fixed: quoted arguments in pfsin/pfsout/pfsv/pfsindcraw/
+    pfsinmulti (fixes bug 3279342)
+- Changes from version 1.8.3
+  * fixed: pfsdisplayfunction properly interpolates display LUT
+  * fixed: bug #3080304 - configure uses non-portable test(1) syntax
+  * fixed: bug #1766263 - pfsinhdrgen fails silently on pfsin
+    failure. - partially
+  * fixed: pfsview the entire code converted from qt3 to qt4 (fixes
+    bug #3127946)
+  * fixed: &quot;Fit window to content&quot; works again in pfsview
+  * added: window icon in pfsview
+  * added: improved image file saving in pfsview
+- Changes from version 1.8.2
+  * fixed: compiler incompatibility issue in pfspanoramic.cpp
+  * fixed: bug #2953028 &quot;gcc 4.4.1 const cast error&quot;
+  * fixed: spaces were improperly escaped in pfsin / pfsout (thanks 
+    to Timo)
+  * added: new improved hdrhtml template from hdrlabs.com (thanks 
+    to Christian)</comment>
+    <requestid>108245</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>91ead88b7cf57e5ba74cdf0e83e05280</srcmd5>
+    <version>1.8.4</version>
+    <time>1337005072</time>
+    <user>coolo</user>
+    <comment>fix build (forwarded request 120794 from Ansus)</comment>
+    <requestid>120803</requestid>
+  </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>91ead88b7cf57e5ba74cdf0e83e05280</srcmd5>
+    <version>1.8.4</version>
+    <time>1340183964</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>8039b1be60bd8d127cf933081660cb34</srcmd5>
+    <version>1.8.4</version>
+    <time>1348380550</time>
+    <user>coolo</user>
+    <comment>Fat fingers, fix build for Factory.</comment>
+    <requestid>135082</requestid>
+  </revision>
+  <revision rev="28" vrev="7">
+    <srcmd5>8039b1be60bd8d127cf933081660cb34</srcmd5>
+    <version>1.8.4</version>
+    <time>1359109868</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="29" vrev="8">
+    <srcmd5>b6a77c1b44ba44da078b41b8814c1549</srcmd5>
+    <version>1.8.4</version>
+    <time>1366789641</time>
+    <user>coolo</user>
+    <comment>- Add pfstools-no-debug-mangling.patch: don't drop occurences of
+  &quot;-g&quot; from CFLAGS. It destroys -grecord-gcc-flags. (forwarded request 172913 from dimstar)</comment>
+    <requestid>172915</requestid>
+  </revision>
+  <revision rev="30" vrev="10">
+    <srcmd5>b6a77c1b44ba44da078b41b8814c1549</srcmd5>
+    <version>1.8.4</version>
+    <time>1379663944</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="31" vrev="12">
+    <srcmd5>b6a77c1b44ba44da078b41b8814c1549</srcmd5>
+    <version>1.8.4</version>
+    <time>1409302599</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6e474395b148b652fb1da8a5bf236b60</srcmd5>
+    <version>2.0.4</version>
+    <time>1451674046</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>349476</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>34ba830da2599176a415e8f873520386</srcmd5>
+    <version>2.0.4</version>
+    <time>1458228873</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>371310</requestid>
+  </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>81cb116172e2256369d867e2e171f32f</srcmd5>
+    <version>2.0.4</version>
+    <time>1491567636</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>483254</requestid>
+  </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>1ffe0e2ccbf68a00dbeceb43f18db511</srcmd5>
+    <version>2.0.4</version>
+    <time>1492714293</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>487151</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>99b7a6afabcaba11a31160b233653923</srcmd5>
+    <version>2.0.6</version>
+    <time>1508876663</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>536219</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>63dc0afad15a01f98191b194e37ca840</srcmd5>
+    <version>2.1.0</version>
+    <time>1539758523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Added support for .yuv files encoded as PQ2020 or HLG2020
+  * Use Qt5 instead of Qt4
+- Update the URL
+- Refresh patches, use %autosetup -p1
+- Drop pfstools-Qt5.patch. Fixed upstream.
+- Run spec-cleaner
+- Refresh pfstools-1.8.1-fix-return-in-nonvoid.patch to handle more
+  cases.</comment>
+    <requestid>642273</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>87b43b8fd56ca5fbcc2945d9f5cf7915</srcmd5>
+    <version>2.1.0</version>
+    <time>1549361917</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>671150</requestid>
+  </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>486bb4ef00ad52e4f430da2a0085befd</srcmd5>
+    <version>2.1.0</version>
+    <time>1584531996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786115</requestid>
+  </revision>
+</revisionlist>
