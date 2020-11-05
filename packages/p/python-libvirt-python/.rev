@@ -416,4 +416,21 @@ file to use singlespec. Req#512843 sent to delete libvirt-python.</comment>
     <comment></comment>
     <requestid>844156</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bad92b3b5da10a9bd9fc5942a14dea91</srcmd5>
+    <version>6.9.0</version>
+    <time>1604609584</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 6.9.0. Supersedes req#845544 to
+fix a jira reference in the changelog.
+
+- Update to 6.9.0
+  - Add all new APIs and constants in libvirt 6.9.0
+  - jsc#SLE-13688, jsc#SLE-16754
+  - Dropped patches:
+    61341150-fix-constructor-param-name.patch
+- Add new file _service for tar_scm source service
+- Remove signature file and python-libvirt-python.keyring</comment>
+    <requestid>845550</requestid>
+  </revision>
 </revisionlist>

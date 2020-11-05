@@ -23,15 +23,12 @@
 %define srcname libvirt-python
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 Source0:        %{srcname}-%{version}.tar.gz
-Source1:        %{srcname}-%{version}.tar.gz.asc
-Source2:        python-libvirt-python.keyring
-Patch0:         61341150-fix-constructor-param-name.patch
 BuildRequires:  fdupes
 BuildRequires:  libvirt-devel = %{version}
 BuildRequires:  python-rpm-macros
@@ -54,7 +51,6 @@ of recent versions of Linux (v2.6.20+).
 
 %prep
 %setup -q -n %{srcname}-%{version}
-%patch0 -p1
 
 # Unset execute bit for example scripts; it can introduce spurious
 # RPM dependencies, like /usr/bin/python which can pull in python2
@@ -73,7 +69,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch
 
 %files %{python_files}
-%doc ChangeLog AUTHORS README COPYING COPYING.LESSER examples/
+%doc README COPYING COPYING.LESSER examples/
 %{python_sitearch}/libvirt*
 %{python_sitearch}/libvirt_python-%{version}*info
 %pycache_only %{python_sitearch}/__pycache__/libvirt*
