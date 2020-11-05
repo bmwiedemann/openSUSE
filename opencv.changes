@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 20:16:43 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split library package, move all libraries with external
+  dependencies (Qt5, ffmpeg, gstreamer) into separate packages
+- Move haar and LBP cascades into separate package, pull in from
+  objdetect and face (detect) libraries.
+
+-------------------------------------------------------------------
 Wed Oct 28 21:15:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.5.0, see

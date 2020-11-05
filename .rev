@@ -1309,4 +1309,15 @@
     <comment></comment>
     <requestid>844945</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>ca07ad3702bc8d8dc0af554151ee824d</srcmd5>
+    <version>4.5.0</version>
+    <time>1604609586</time>
+    <user>dimstar_suse</user>
+    <comment>- Split library package, move all libraries with external
+  dependencies (Qt5, ffmpeg, gstreamer) into separate packages
+- Move haar and LBP cascades into separate package, pull in from
+  objdetect and face (detect) libraries</comment>
+    <requestid>845561</requestid>
+  </revision>
 </revisionlist>

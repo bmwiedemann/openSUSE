@@ -99,6 +99,17 @@ OpenCV means Intel Open Source Computer Vision Library. It is a collection of C
 functions and a few C++ classes that implement some popular Image Processing and
 Computer Vision algorithms.
 
+%package -n %{name}4-cascades-data
+Summary:        Classifier cascades for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{name} < %{version}-%{release}
+Provides:       %{name}:%{_datadir}/opencv4/lbpcascades/lbpcascade_silverware.xml
+BuildArch:      noarch
+
+%description -n %{name}4-cascades-data
+Haar and LBP cascades for face and object detecton
+
 %package -n %{libname}%{soname}
 Summary:        Libraries to use OpenCV computer vision
 License:        BSD-3-Clause
@@ -109,11 +120,93 @@ The Open Computer Vision Library is a collection of algorithms and sample code
 for various computer vision problems. The library is compatible with IPL and
 utilizes Intel Integrated Performance Primitives for better performance.
 
+%package -n libopencv_face%{soname}
+Summary:        Face detection libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+Requires:       %{name}4-cascades-data
+
+%description -n libopencv_face%{soname}
+Face detection libraries for OpenCV
+
+%package -n libopencv_highgui%{soname}
+Summary:        Higlevel GUI libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_highgui%{soname}
+Higlevel GUI libraries for OpenCV
+
+%package -n libopencv_imgcodecs%{soname}
+Summary:        Image codec libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_imgcodecs%{soname}
+Image codec libraries for OpenCV
+
+%package -n libopencv_superres%{soname}
+Summary:        Superresolution libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_superres%{soname}
+Superresolution libraries for OpenCV
+
+%package -n libopencv_objdetect%{soname}
+Summary:        Face detection libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+Requires:       %{name}4-cascades-data
+
+%description -n libopencv_objdetect%{soname}
+Object detection libraries for OpenCV
+
+%package -n libopencv_videoio%{soname}
+Summary:        Video IO libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_videoio%{soname}
+Video IO libraries for OpenCV
+
+%package -n libopencv_videostab%{soname}
+Summary:        Video stabilization libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_videostab%{soname}
+Video stabilization libraries for OpenCV
+
+%package -n libopencv_ximgproc%{soname}
+Summary:        Image processing libraries for OpenCV
+License:        BSD-3-Clause
+Group:          System/Libraries
+Conflicts:      %{libname}%{soname} < %{version}-%{release}
+
+%description -n libopencv_ximgproc%{soname}
+Image processing libraries for OpenCV
+
 %package devel
 Summary:        Development files for using the OpenCV library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{soname} = %{version}
+Requires:       libopencv_face%{soname} = %{version}
+Requires:       libopencv_highgui%{soname} = %{version}
+Requires:       libopencv_imgcodecs%{soname} = %{version}
+Requires:       libopencv_objdetect%{soname} = %{version}
+Requires:       libopencv_superres%{soname} = %{version}
+Requires:       libopencv_videoio%{soname} = %{version}
+Requires:       libopencv_videostab%{soname} = %{version}
+Requires:       libopencv_ximgproc%{soname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glu)
@@ -230,7 +323,7 @@ rm -f doc/packaging.txt
       -DOPENCV_DOWNLOAD_TRIES_LIST:STRING="" \
       -DWITH_JASPER=OFF \
 
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %check
 %if %{with tests}
@@ -257,40 +350,76 @@ sed -i -e 's|//usr||g' %{buildroot}%{_libdir}/pkgconfig/opencv4.pc
 
 %post -n %{libname}%{soname} -p /sbin/ldconfig
 %postun -n %{libname}%{soname} -p /sbin/ldconfig
+%post -n libopencv_face%{soname} -p /sbin/ldconfig
+%postun -n libopencv_face%{soname} -p /sbin/ldconfig
+%post -n libopencv_highgui%{soname} -p /sbin/ldconfig
+%postun -n libopencv_highgui%{soname} -p /sbin/ldconfig
+%post -n libopencv_imgcodecs%{soname} -p /sbin/ldconfig
+%postun -n libopencv_imgcodecs%{soname} -p /sbin/ldconfig
+%post -n libopencv_objdetect%{soname} -p /sbin/ldconfig
+%postun -n libopencv_objdetect%{soname} -p /sbin/ldconfig
+%post -n libopencv_superres%{soname} -p /sbin/ldconfig
+%postun -n libopencv_superres%{soname} -p /sbin/ldconfig
+%post -n libopencv_videoio%{soname} -p /sbin/ldconfig
+%postun -n libopencv_videoio%{soname} -p /sbin/ldconfig
+%post -n libopencv_videostab%{soname} -p /sbin/ldconfig
+%postun -n libopencv_videostab%{soname} -p /sbin/ldconfig
+%post -n libopencv_ximgproc%{soname} -p /sbin/ldconfig
+%postun -n libopencv_ximgproc%{soname} -p /sbin/ldconfig
+
 
 %files
 %license LICENSE LICENSE.contrib
 %license %{_licensedir}/opencv/*
 %{_bindir}/opencv_*
-%{_datadir}/opencv4
+%dir %{_datadir}/opencv4
 %exclude %{_datadir}/opencv4/valgrind*
+
+%files -n %{name}4-cascades-data
+%{_datadir}/opencv4/*cascades
 
 %files -n %{libname}%{soname}
 %license LICENSE LICENSE.contrib
 %{_libdir}/libopencv_calib3d.so.*
 %{_libdir}/libopencv_core.so.*
 %{_libdir}/libopencv_dnn.so.*
-%{_libdir}/libopencv_face.so.*
 %{_libdir}/libopencv_features2d.so.*
 %{_libdir}/libopencv_flann.so.*
 %if %{with gapi}
 %{_libdir}/libopencv_gapi.so.*
 %endif
-%{_libdir}/libopencv_highgui.so.*
-%{_libdir}/libopencv_imgcodecs.so.*
 %{_libdir}/libopencv_imgproc.so.*
 %{_libdir}/libopencv_ml.so.*
-%{_libdir}/libopencv_objdetect.so.*
 %{_libdir}/libopencv_optflow.so.*
 %{_libdir}/libopencv_photo.so.*
 %{_libdir}/libopencv_plot.so.*
 %{_libdir}/libopencv_shape.so.*
 %{_libdir}/libopencv_stitching.so.*
-%{_libdir}/libopencv_superres.so.*
 %{_libdir}/libopencv_tracking.so.*
 %{_libdir}/libopencv_video.so.*
+
+%files -n libopencv_face%{soname}
+%{_libdir}/libopencv_face.so.*
+
+%files -n libopencv_highgui%{soname}
+%{_libdir}/libopencv_highgui.so.*
+
+%files -n libopencv_imgcodecs%{soname}
+%{_libdir}/libopencv_imgcodecs.so.*
+
+%files -n libopencv_objdetect%{soname}
+%{_libdir}/libopencv_objdetect.so.*
+
+%files -n libopencv_superres%{soname}
+%{_libdir}/libopencv_superres.so.*
+
+%files -n libopencv_videoio%{soname}
 %{_libdir}/libopencv_videoio.so.*
+
+%files -n libopencv_videostab%{soname}
 %{_libdir}/libopencv_videostab.so.*
+
+%files -n libopencv_ximgproc%{soname}
 %{_libdir}/libopencv_ximgproc.so.*
 
 %files devel
