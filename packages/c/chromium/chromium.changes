@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  3 09:37:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Update to 86.0.4240.183 bsc#1178375
+  - CVE-2020-16004: Use after free in user interface.
+  - CVE-2020-16005: Insufficient policy enforcement in ANGLE.
+  - CVE-2020-16006: Inappropriate implementation in V8
+  - CVE-2020-16007: Insufficient data validation in installer.
+  - CVE-2020-16008: Stack buffer overflow in WebRTC.
+  - CVE-2020-16009: Inappropriate implementation in V8.
+  - CVE-2020-16011: Heap buffer overflow in UI on Windows.
+
+-------------------------------------------------------------------
 Thu Oct 22 06:06:13 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - Update to 86.0.4240.111 bsc#1177936

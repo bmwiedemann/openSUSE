@@ -3279,4 +3279,20 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
   - CVE-2020-16003: Use after free in printing. (forwarded request 843351 from msmeissn)</comment>
     <requestid>843389</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>e62a3ef7d1913d287795aecf183483d3</srcmd5>
+    <version>86.0.4240.183</version>
+    <time>1604609599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 86.0.4240.183 bsc#1178375
+  - CVE-2020-16004: Use after free in user interface.
+  - CVE-2020-16005: Insufficient policy enforcement in ANGLE.
+  - CVE-2020-16006: Inappropriate implementation in V8
+  - CVE-2020-16007: Insufficient data validation in installer.
+  - CVE-2020-16008: Stack buffer overflow in WebRTC.
+  - CVE-2020-16009: Inappropriate implementation in V8.
+  - CVE-2020-16011: Heap buffer overflow in UI on Windows.
+</comment>
+    <requestid>845666</requestid>
+  </revision>
 </revisionlist>
