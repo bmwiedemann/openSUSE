@@ -16,8 +16,10 @@
 #
 
 
+# Tests fails due to the way PYTHONPATH is set up for the test-suite [gh#kpeeters/cadabra2#211, gh#kpeeters/cadabra2#212]
+%bcond_with tests
 Name:           cadabra2
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -25,10 +27,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
 Source0:        https://github.com/kpeeters/cadabra2/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-gtk.appdata.xml
-# PATCH-FIX-UPSTREAM -- https://github.com/kpeeters/cadabra2/commit/4df3e7cba29a9bb25a70badbc9de8aeef3693933 (gh#kpeeters/cadabra2#202)
-Patch2:         Fix-linking-of-cadabra-module.patch
-# PATCH-FIX-UPSTREAM cadabra2-python-modules-location.patch gh#kpeeters/cadabra2#203 badshah400@gmail.com -- Move python modules to standard python modules path
-Patch3:         cadabra2-python-modules-location.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -46,6 +44,7 @@ BuildRequires:  libuuid-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  python3-ipykernel
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-sympy
 BuildRequires:  update-desktop-files
@@ -54,6 +53,11 @@ BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(sqlite3)
 Recommends:     %{name}-doc
+# SECTION For test
+%if %{with tests}
+BuildRequires:  python3-gmpy2
+%endif
+# /SECTION
 Recommends:     %{name}-examples
 
 %description
@@ -115,10 +119,20 @@ the solution of problems encountered in field theory.
 
 This package provides html documentation for %{name}.
 
+%package -n jupyter-cadabra2-kernel
+Summary:        Jupyter kernel for cadabra2
+Group:          Productivity/Scientific/Math
+Requires:       %{name} = %{version}
+Requires:       jupyter-notebook
+
+%description -n jupyter-cadabra2-kernel
+Cadabra2 is a computer algebra system (CAS) designed specifically for
+the solution of problems encountered in field theory.
+
+This package provides a jupyter kernel for %{name}.
+
 %prep
-%setup -q
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 rm examples/.gitignore
 # Remove timestamps from Doxygen HTML files
 echo "HTML_TIMESTAMP = NO" >> config/Doxyfile
@@ -130,13 +144,13 @@ sed -i "1{/#!\/usr\/bin\/env python/d}" libs/appdirs/cdb_appdirs.py
   -DCMAKE_MANDIR:PATH=%{_mandir} \
   -DINSTALL_LATEX_DIR:PATH=%{_datadir}/texmf \
   -DENABLE_FRONTEND:BOOL=ON \
-  -DENABLE_SYSTEM_JSONPP:BOOL=ON \
+  -DENABLE_SYSTEM_JSONCPP:BOOL=ON \
   -DENABLE_MATHEMATICA:BOOL=OFF \
-  -DBUILD_TESTS:BOOL=ON
+  -DBUILD_TESTS:BOOL=%{?_with_tests:ON}%{!?_with_tests:OFF}
 
 %cmake_build
 cd ..
-make %{?_smp_mflags} doc
+%make_build doc
 
 %install
 %cmake_install
@@ -152,9 +166,13 @@ sed -E -i "s|^#!/usr/bin/env python3|#!/usr/bin/python3|" %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%if %{with tests}
+%check
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+export PATH=${PATH}:%{buildroot}%{_bindir}
+export PYTHONDONTWRITEBYTECODE=1
+%ctest
+%endif
 
 %files
 %doc README.rst
@@ -168,15 +186,25 @@ ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/la
 %{_bindir}/%{name}html
 %{_datadir}/%{name}/
 %{_datadir}/texmf
-%{python3_sitearch}/*
+%{python3_sitearch}/cadabra2.so
+%{python3_sitearch}/cadabra2_defaults.py
+%{python3_sitearch}/cdb_appdirs.py
+%{python3_sitearch}/cdb/
 %{_mandir}/man1/cadabra*.1%{?ext_man}
 
 %files gui
+%license doc/license.txt
 %{_bindir}/%{name}-gtk
 %{_datadir}/icons/hicolor/*/apps/cadabra2-gtk.*
 %{_datadir}/applications/cadabra2-gtk.desktop
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*.appdata.xml
+
+%files -n jupyter-cadabra2-kernel
+%license doc/license.txt
+%{python3_sitearch}/cadabra2_jupyter/
+%{python3_sitearch}/notebook/
+%{_jupyter_kernel_dir}/cadabra2/
 
 %files examples
 %doc examples/

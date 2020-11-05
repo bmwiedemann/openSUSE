@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Nov  1 09:55:08 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.2:
+  * Fixed bug in pattern matching logic used in
+    integrate_by_parts.
+  * Fixed bug which would prevent assignment to node multiplier
+    from Python.
+  * Tab-completion on command line and in the notebook.
+  * Install the cadabra2 python module in a standard location.
+  * Fixes for the Mathematica scalar backend.
+  * Make expand_delta much faster when the Kronecker delta is
+    contracted with objects which have anti-symmetry.
+  * Make meld work correctly with non/anti-commuting objects.
+  * Make numbered indices like a1 display with a subscript
+    automatically a<sub>1</sub>.
+  * Provide pickle functionality for expressions.
+  * Fixes for compatibility with newer SymPy versions.
+  * Added a 'find' function in the notebook, to search input
+    cells.
+  * New Jupyter kernel (enabled by default) which does not require
+    Xeus.
+  * Various improvements and fixed for handling and display of
+    Young tableaux.
+  * Added ExNode::ex() to obtain an Ex object from an ExNode
+    iterator.
+- Drop patches incorporated upstream:
+  * cadabra2-python-modules-location.patch.
+  * Fix-linking-of-cadabra-module.patch.
+- Split out a separate package - jupyter-cadabra2-kernel - for the
+  new jupyter notebook kernel.
+- Fix typo in `ENABLE_SYSTEM_JSONCPP` option passed to `%cmake`.
+- Set up but disable building and running tests until issues with
+  the test-suite are sorted out [gh#kpeeters/cadabra2#211,
+  gh#kpeeters/cadabra2#212].
+
+-------------------------------------------------------------------
 Fri Aug 28 20:52:48 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Refresh Fix-linking-of-cadabra-module.patch with fix for same
