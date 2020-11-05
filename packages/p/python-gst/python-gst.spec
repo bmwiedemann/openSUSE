@@ -18,15 +18,13 @@
 
 %define _name gst-python
 Name:           python-gst
-Version:        1.16.2
+Version:        1.18.0
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gst-python/%{_name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM python-gst-fix-py38-build.patch -- Fix build with py 3.8
-Patch0:         python-gst-fix-py38-build.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler
