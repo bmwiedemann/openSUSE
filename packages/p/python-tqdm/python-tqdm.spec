@@ -17,7 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
+%define         allpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define test 1
@@ -60,9 +60,26 @@ any iterable with "tqdm(iterable)".
 tqdm's overhead is one order of magnitude less than python-progressbar
 and does not require ncurses.
 
+%package -n %allpython-tqdm-bash-completion
+Summary:        Bash completion for python-tqdm
+Requires:       bash-completion
+Supplements:    ((%{lua: print(string.sub(rpm.expand("%{python_module tqdm or}"),0,-4))}) and bash)
+
+%description -n %allpython-tqdm-bash-completion
+tqdm lets you output a progress meter from within loops by wrapping
+any iterable with "tqdm(iterable)".
+tqdm's overhead is one order of magnitude less than python-progressbar
+and does not require ncurses.
+
+This package provides the completion file for bash
+
+
 %prep
 %setup -q -n tqdm-%{version}
 %patch0 -p1
+# remove bash shebang for completion script
+sed -i '1 s/^#!.*/# bash completion for tqdm       -*- shell-script -*-/' tqdm/completion.sh
+chmod a-x tqdm/completion.sh
 
 %build
 %python_build
@@ -77,7 +94,7 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 
 %if !%{with test}
 %post
-%{python_install_alternative tqdm tqdm.1}
+%python_install_alternative tqdm
 
 %postun
 %python_uninstall_alternative tqdm
@@ -99,8 +116,11 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 %doc examples/
 %license LICENCE
 %{python_sitelib}/tqdm/
-%{python_sitelib}/tqdm-%{version}-py*.egg-info
+%{python_sitelib}/tqdm-%{version}*-info
 %python_alternative %{_bindir}/tqdm
+
+%files -n %allpython-tqdm-bash-completion
+%license LICENCE
 %{_datadir}/bash-completion/completions/tqdm
 %endif
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:06:32 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- move bash completion into separate package to avoid conflicts
+  with multiple python flavors gh#openSUSE/python-rpm-macros#66 
+
+-------------------------------------------------------------------
 Fri Oct 23 13:47:03 UTC 2020 - pgajdos@suse.com
 
 - added patches
