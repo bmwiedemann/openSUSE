@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  4 05:53:35 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Disable the signature attachment for AArch64 temporarily until
+  we get a real one.
+
+-------------------------------------------------------------------
+Mon Nov  2 06:52:13 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1177315-verify-eku-codesign.patch to check CodeSign
+  in the signer's EKU (bsc#1177315)
+- Add shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
+  to fix NULL pointer dereference in AuthenticodeVerify()
+  (bsc#1177789, CVE-2019-14584)
+- shim-install: Support changing default shim efi binary in
+  /usr/etc/default/shim and /etc/default/shim (bsc#1177315)
+- Add shim-bsc1177315-fix-buffer-use-after-free.patch to fix buffer
+  use-after-free at the end of the EKU verification (bsc#1177315)
+
+-------------------------------------------------------------------
 Wed Oct 14 07:34:18 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1177404-fix-a-use-of-strlen.patch to fix the length

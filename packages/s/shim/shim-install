@@ -25,6 +25,15 @@ update_boot=no
 def_grub_efi="${source_dir}/grub.efi"
 def_boot_efi=
 
+[ ! -r /usr/etc/default/shim ] || . /usr/etc/default/shim
+[ ! -r /etc/default/shim ] || . /etc/default/shim
+
+if [ -z "$def_shim_efi" ] ; then
+	def_shim_efi="shim.efi"
+fi
+
+source_shim_efi="${source_dir}/${def_shim_efi}"
+
 if [ x${arch} = xx86_64 ] ; then
 	grub_install_target="x86_64-efi"
 	def_boot_efi="bootx64.efi"
@@ -288,14 +297,14 @@ echo "copying $source_grub_efi to ${efidir}/grub.efi"
 cp "$source_grub_efi" "${efidir}/grub.efi"
 
 if test "$efidir" != "$efibootdir" ; then 
-    cp "${source_dir}/shim.efi" "${efidir}"
+    cp "${source_shim_efi}" "${efidir}/shim.efi"
     if test -n "$bootloader_id"; then
         echo "shim.efi,${bootloader_id}" | iconv -f ascii -t ucs2 > "${efidir}/boot.csv"
     fi
 fi
 
 if test "$update_boot" = "yes"; then
-    cp "${source_dir}/shim.efi" "${efibootdir}/${def_boot_efi}"
+    cp "$source_shim_efi" "${efibootdir}/${def_boot_efi}"
     if test "$removable" = "no"; then
         cp "${source_dir}/fallback.efi" "${efibootdir}"
         # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes

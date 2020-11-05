@@ -91,6 +91,12 @@ Patch12:        shim-do-not-write-string-literals.patch
 Patch13:        shim-bsc1177404-fix-a-use-of-strlen.patch
 # PATCH-FIX-UPSTREAM shim-bsc1175509-more-tpm-fixes.patch bsc#1175509 glin@suse.com -- Fix the file path in tpm event log
 Patch14:        shim-bsc1175509-more-tpm-fixes.patch
+# PATCH-FIX-SUSE shim-bsc1177315-verify-eku-codesign.patch bsc#1177315 glin@suse.com -- Verify CodeSign in the signer's EKU
+Patch15:        shim-bsc1177315-verify-eku-codesign.patch
+# PATCH-FIX-UPSTREAM shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch bsc#1177789 glin@suse.com -- Fix the NULL pointer dereference in AuthenticodeVerify()
+Patch16:        shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
+# PATCH-FIX-SUSE shim-bsc1177315-fix-buffer-use-after-free.patch bsc#1177315 glin@suse.com -- Fix buffer use-after-free at the end of the EKU verification
+Patch17:        shim-bsc1177315-fix-buffer-use-after-free.patch
 # PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:       shim-opensuse-cert-prompt.patch
 BuildRequires:  gnu-efi >= 3.0.3
@@ -146,6 +152,9 @@ The source code of UEFI shim loader
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
 %if 0%{?is_opensuse} == 1
 %patch100 -p1
 %endif
@@ -186,7 +195,9 @@ for suffix in "${suffixes[@]}"; do
 	signature=%{SOURCE1}
 %else
 	# AArch64 signature
-	signature=%{SOURCE12}
+	# Disable AArch64 signature attachment temporarily
+	# until we get a real one.
+	#signature=%{SOURCE12}
 %endif
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE4}
@@ -195,7 +206,9 @@ for suffix in "${suffixes[@]}"; do
 	signature=%{SOURCE11}
 %else
 	# AArch64 signature
-	signature=%{SOURCE13}
+	# Disable AArch64 signature attachment temporarily
+	# until we get a real one.
+	#signature=%{SOURCE13}
 %endif
     elif test "$suffix" = "devel"; then
 	cert=%{_sourcedir}/_projectcert.crt
