@@ -17,6 +17,9 @@
 #
 
 
+#This test doesn't work right in build service, but does outside of it
+%bcond_with session_info_test
+
 Name:           spice-vdagent
 Version:        0.20.0
 Release:        0
@@ -29,6 +32,22 @@ Source1:        http://spice-space.org/download/releases/%{name}-%{version}.tar.
 Source2:        %{name}.keyring
 Patch1:         vdagentd-work-around-GLib-s-fork-issues.patch
 Patch2:         vdagentd-init-static-uinput-before-fork.patch
+Patch3:         systemd-login-Avoid-a-crash-on-container.patch
+Patch4:         vdagentd-Use-bool-for-agent_owns_clipboard-and-clien.patch
+Patch5:         vdagentd-Automatically-release-agent_data.patch
+Patch6:         vdagent-connection-Pass-err-to-g_credentials_get_uni.patch
+Patch7:         vdagentd-Better-check-for-vdagent_connection_get_pee.patch
+Patch8:         vdagentd-Avoid-calling-chmod.patch
+Patch9:         Avoids-unchecked-file-transfer-IDs-allocation-and-us.patch
+Patch10:        Avoids-uncontrolled-active_xfers-allocations.patch
+Patch11:        Avoids-unlimited-agent-connections.patch
+Patch12:        Avoids-user-session-hijacking.patch
+Patch13:        Better-check-for-sessions.patch
+Patch14:        vdagentd-Limit-number-of-agents-per-session-to-1.patch
+Patch15:        cleanup-active_xfers-when-the-client-disconnects.patch
+Patch16:        vdagentd-do-not-allow-to-use-an-already-used-file-xf.patch
+Patch17:        Add-a-test-for-session_info.patch
+
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel
@@ -65,12 +84,33 @@ Features:
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%if %{with session_info_test}
+%patch17 -p1
+%endif
 
 %build
+autoreconf
 %configure \
   --with-session-info=systemd \
   --with-init-script=systemd
 make %{?_smp_mflags} V=2
+
+%check
+make check V=2
 
 %install
 make install DESTDIR=%{buildroot} V=2

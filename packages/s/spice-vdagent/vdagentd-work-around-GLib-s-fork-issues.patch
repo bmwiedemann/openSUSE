@@ -6,6 +6,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
+Git-commit: 9b8c0ebb9fb573e6ce3c5416371509f416503d0c
+
 Creating threads is not compatible with forking as only the thread
 that calls fork() is inherited.
 

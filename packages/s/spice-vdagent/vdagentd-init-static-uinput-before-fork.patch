@@ -6,6 +6,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
+Git-commit: 7b0435ef66af088c1a1be20b6bc6b0fcb76e4e1a
+
 Otherwise the caller doesn't know that the init failed
 because we're returning 0 in the parent and 1 in child.
 

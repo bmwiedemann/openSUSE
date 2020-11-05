@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  2 23:11:32 UTC 2020 - Bruce Rogers <brogers@suse.com>
+
+- Fix multiple security issues as outlined in bsc#1173749
+  bsc#1177780 bsc#1177781 bsc#1177782 bsc#1177783
+  CVE-2020-25650 CVE-2020-25651 CVE-2020-25652 CVE-2020-25653
+  systemd-login-Avoid-a-crash-on-container.patch
+  vdagentd-Use-bool-for-agent_owns_clipboard-and-clien.patch
+  vdagentd-Automatically-release-agent_data.patch
+  vdagent-connection-Pass-err-to-g_credentials_get_uni.patch
+  vdagentd-Better-check-for-vdagent_connection_get_pee.patch
+  vdagentd-Avoid-calling-chmod.patch
+  Avoids-unchecked-file-transfer-IDs-allocation-and-us.patch
+  Avoids-uncontrolled-active_xfers-allocations.patch
+  Avoids-unlimited-agent-connections.patch
+  Avoids-user-session-hijacking.patch
+  Better-check-for-sessions.patch
+  vdagentd-Limit-number-of-agents-per-session-to-1.patch
+  cleanup-active_xfers-when-the-client-disconnects.patch
+  vdagentd-do-not-allow-to-use-an-already-used-file-xf.patch
+  Add-a-test-for-session_info.patch
+- Add a check section to run internal tests. Note that by default
+  the added session_info test is not run, as it doesn't work in
+  context of build service
+
+-------------------------------------------------------------------
 Wed Aug 19 08:23:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix invalid usage of %{_libexecdir} to reference udev/rules.d.
