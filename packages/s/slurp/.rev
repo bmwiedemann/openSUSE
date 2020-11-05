@@ -60,4 +60,17 @@
   * The new -r option forces the user to select one of the choice boxes</comment>
     <requestid>842187</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb677cda34dc14939d3127598a2731c0</srcmd5>
+    <version>1.3.1</version>
+    <time>1604609755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Fix off-by-one error in in_box function
+  * Print output into buffer, print result late
+  * Safe printf usage
+  * readme: simplify &quot;select output&quot; example
+  * readme: clarify that -f &quot;%o&quot; prints the output name</comment>
+    <requestid>846224</requestid>
+  </revision>
 </revisionlist>
