@@ -1,7 +1,7 @@
 #
 # spec file for package cpanspec
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name cpanspec
 Name:           cpanspec
-Version:        1.78.09.1554211595.43afd0f
+Version:        1.79.01.1604075292.b7fe6d3
 Release:        0
 Summary:        Generate a SUSE spec file for a CPAN module
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -40,7 +40,9 @@ Requires:       perl(Algorithm::Diff)
 Requires:       perl(Archive::Tar)
 Requires:       perl(Archive::Zip)
 Requires:       perl(Class::Accessor::Chained)
+Requires:       perl(File::ShareDir::Install)
 Requires:       perl(LWP::UserAgent)
+Requires:       perl(Module::Build::Tiny)
 Requires:       perl(Parse::CPAN::Packages)
 Requires:       perl(Perl::PrereqScanner)
 Requires:       perl(Pod::POM)

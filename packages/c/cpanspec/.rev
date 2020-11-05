@@ -387,4 +387,19 @@ Stephan Kulow (7):
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705967</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>eb01fcf28927d234a127523b521db2f0</srcmd5>
+    <version>1.79.01.1604075292.b7fe6d3</version>
+    <time>1604609694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.79.01
+ * smaller bug-fixes
+ * add add_doc and skip_doc to allow changing docs handling
+ * ignore some more unwanted files in doc handling
+ * fix package requires
+ * reduce changelog space wasting, document option --old-file
+ * update copyrights
+</comment>
+    <requestid>846057</requestid>
+  </revision>
 </revisionlist>

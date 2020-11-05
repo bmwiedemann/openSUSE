@@ -1,10 +1,10 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="versionprefix">1.78.09</param>
+    <param name="versionprefix">1.79.01</param>
     <param name="url">git://github.com/openSUSE/cpanspec</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">coolo@suse.com</param>
+    <param name="changesauthor">github@dstoecker.de</param>
     <param name="revision">master</param>
   </service>
   <service name="set_version" mode="disabled"/>
