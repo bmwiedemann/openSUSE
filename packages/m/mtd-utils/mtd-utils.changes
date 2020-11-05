@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:52:38 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.2:
+  * Features:
+    + flashcp: Add option -A/--erase-all
+    + mtd-utils: add optional offset parameter to flash_otp_dump
+    + ubi-utils: Implement a ubihealthd
+    + mkfs.ubifs: Add authentication support
+  * Fixes:
+    + ubifs-media: Update to Linux-5.3-rc3
+    + mtd-utils: Fix return value of ubiformat
+    + ubiupdatevol: Prevent null pointer dereference
+    + libubigen: remove unnecessary include
+    + libubi: remove private kernel header from includes
+    + mkfs.ubifs: fscrypt: bail from encrypt_block if gen_essiv_salt fails
+    + mkfs.ubifs: abort add_directory if readdir fails
+    + mkfs.ubifs: close file descriptor in add_file error path
+    + mkfs.ubifs: don't leak copied command line arguments
+    + mkfs.ubifs: free derived fscrypt context in add_directory error paths
+    + mkfs.ubifs: don't leak hastable iterators
+    + mkfs.ubifs: don't leak temporary buffers
+    + mkfs.ubifs: propperly cleanup in ALL interpret_table_entry error paths
+    + mkfs.jffs2: don't leak temporary buffer if readlink fails
+    + libmtd: don't leak temporary buffers
+    + ftl_check: don't leak temporary buffers
+    + ftl_format: don't leak temporary buffers
+    + ubiformat: don't leak file descriptors
+    + nanddump: don't leak copied command line arguments
+    + mtd_debug: cleanup error handling in flash_to_file
+    + jittertest: fix error check for open system call
+    + fs-tests: don't leak temporary buffers
+    + mtd-utils: Fix printf format specifiers with the wrong type
+    + mtd-utils: Fix potential negative arguments passed to close(2)
+    + mtd-utils: Fix various TOCTOU issues
+    + mtd-utils: Fix some simple cases of uninitialized value reads
+    + mtd-utils: Fix wrong argument to sizeof in nanddump
+    + mtd-utils: Fix "are we really at EOF" test logic in libubi read_data
+    + mtd-utils: Fix potentially unterminated strings
+    + mtd-utils: Add checks to code that copies strings into fixed sized buffers
+    + mkfs.ubifs: fix broken build if fscrtyp is disabled
+
+-------------------------------------------------------------------
 Mon Feb  3 16:22:01 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.1:

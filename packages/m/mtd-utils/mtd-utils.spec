@@ -17,7 +17,7 @@
 
 
 Name:           mtd-utils
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Tools for maintaining Memory Technology Devices
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ This package contains tools for erasing and formatting flash devices,
 including JFFS2, M-Systems DiskOnChip devices, etc.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
@@ -88,6 +88,7 @@ including JFFS2, M-Systems DiskOnChip devices, etc.
 %{_sbindir}/ubiblock
 %{_sbindir}/ubicrc32
 %{_sbindir}/ubidetach
+%{_sbindir}/ubihealthd
 %{_sbindir}/ubiformat
 %{_sbindir}/ubimkvol
 %{_sbindir}/ubinfo
