@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:27:41 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
+Mon Nov  2 17:41:55 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 6.9.0
+  - jsc#SLE-13688, jsc#SLE-16754
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+
+-------------------------------------------------------------------
+Mon Nov  2 11:11:11 UTC 2020 - ohering@suse.de
+
+- bsc#1177950 - adjust help for --max_iters, default is 5
+  libxl-set-migration-constraints.patch
+
+-------------------------------------------------------------------
 Wed Oct 28 06:37:22 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop use of $DISABLE_RESTART_ON_UPDATE in %postrans

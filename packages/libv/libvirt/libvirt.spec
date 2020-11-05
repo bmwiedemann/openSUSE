@@ -55,10 +55,8 @@
 
 # A few optional bits off by default, we enable later
 %define with_numad         0%{!?_without_numad:0}
-%define with_firewalld     0%{!?_without_firewalld:0}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
 %define with_libssh        0%{!?_without_libssh:0}
-%define with_bash_completion 0%{!?_without_bash_completion:0}
 
 # Set the OS / architecture specific special cases
 
@@ -77,11 +75,6 @@
     %define with_vbox      0
 %endif
 
-# Enable firewalld support in newer code bases
-%if 0%{?suse_version} >= 1500
-    %define with_firewalld 1
-%endif
-
 # The 'libvirt' zone must be used with firewalld >= 0.7.0
 %if 0%{?suse_version} >= 1550
     %define with_firewalld_zone 1
@@ -90,10 +83,6 @@
 # Enable libssh support in newer code bases
 %if 0%{?suse_version} >= 1500
     %define with_libssh    1
-%endif
-
-%if 0%{?suse_version} >= 1500
-    %define with_bash_completion  0%{!?_without_bash_completion:1}
 %endif
 
 # rbd enablement is a bit tricky. For x86_64
@@ -144,11 +133,7 @@
 %define qemu_user          qemu
 %define qemu_group         qemu
 
-%if %{with_firewalld}
-    %define _fwdefdir %{_prefix}/lib/firewalld/services
-%else
-    %define _fwdefdir /etc/sysconfig/SuSEfirewall2.d/services
-%endif
+%define _fwdefdir %{_prefix}/lib/firewalld/services
 
 %if %{with_wireshark}
     %define wireshark_plugindir %(pkg-config --variable plugindir wireshark)/epan
@@ -156,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -203,9 +188,7 @@ BuildRequires:  libacl-devel
 # For qemu-bridge-helper, qemu-pr-helper
 BuildRequires:  qemu-tools
 %endif
-%if %{with_bash_completion}
 BuildRequires:  bash-completion-devel >= 2.0
-%endif
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.48
 BuildRequires:  libattr-devel
@@ -279,7 +262,7 @@ BuildRequires:  libssh2-devel
 BuildRequires:  libcurl-devel
 %endif
 %if %{with_hyperv}
-BuildRequires:  libwsman-devel >= 2.2.3
+BuildRequires:  libwsman-devel >= 2.6.3
 %endif
 BuildRequires:  audit-devel
 # we need /usr/sbin/dtrace
@@ -293,7 +276,8 @@ BuildRequires:  wireshark-devel >= 2.4.0
 %if %{with_libssh}
 BuildRequires:  libssh-devel >= 0.7.0
 %endif
-%if %{with_firewalld}
+# Needed for the firewalld_reload macro
+%if %{with_firewalld_zone}
 BuildRequires:  firewall-macros
 %endif
 
@@ -760,9 +744,7 @@ Requires:       gettext-runtime
 # Needed by virt-pki-validate script.
 Requires:       cyrus-sasl
 Requires:       gnutls
-%if %{with_bash_completion}
 Recommends:     %{name}-bash-completion = %{version}-%{release}
-%endif
 
 %description client
 The client binaries needed to access the virtualization
@@ -785,9 +767,7 @@ Shared libraries for accessing the libvirt daemon.
 Summary:        Set of tools to control libvirt daemon
 Group:          System/Management
 Requires:       %{name}-libs = %{version}-%{release}
-%if %{with_bash_completion}
 Recommends:     %{name}-bash-completion = %{version}-%{release}
-%endif
 
 %description admin
 The client side utilities to control the libvirt daemon.
@@ -930,6 +910,16 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %else
     %define arg_storage_iscsi_direct -Dstorage_iscsi_direct=disabled
 %endif
+%if %{with_libssh}
+    %define arg_libssh -Dlibssh=enabled
+%else
+    %define arg_libssh -Dlibssh=disabled
+%endif
+%if %{with_libssh2}
+    %define arg_libssh2 -Dlibssh2=enabled
+%else
+    %define arg_libssh2 -Dlibssh2=disabled
+%endif
 %if %{with_numactl}
     %define arg_numactl -Dnumactl=enabled
 %else
@@ -951,11 +941,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_sanlock -Dsanlock=enabled
 %else
     %define arg_sanlock -Dsanlock=disabled
-%endif
-%if %{with_firewalld}
-    %define arg_firewalld -Dfirewalld=enabled
-%else
-    %define arg_firewalld -Dfirewalld=disabled
 %endif
 %if %{with_firewalld_zone}
     %define arg_firewalld_zone -Dfirewalld_zone=enabled
@@ -1022,6 +1007,8 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_storage_iscsi_direct} \
            -Dstorage_zfs=disabled \
            -Dstorage_vstorage=disabled \
+           %{?arg_libssh} \
+           %{?arg_libssh2} \
            %{?arg_numactl} \
            %{?arg_numad} \
            -Dcapng=enabled \
@@ -1036,10 +1023,9 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dyajl=enabled \
            %{?arg_sanlock} \
            -Dlibpcap=enabled \
-           -Dmacvtap=enabled \
            -Daudit=enabled \
            -Ddtrace=enabled \
-           %{?arg_firewalld} \
+           -Dfirewalld=enabled \
            %{?arg_firewalld_zone} \
            %{?arg_wireshark} \
            -Dnss=enabled \
@@ -1048,6 +1034,9 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            %{?arg_loader_nvram} \
            -Dlogin_shell=disabled \
            -Dinit_script=systemd \
+           -Ddocs=enabled \
+           -Dtests=enabled \
+           -Drpath=disabled \
 	   %{nil}
 
 %meson_build
@@ -1155,12 +1144,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
 
 # install firewall services for migration ports
 mkdir -p %{buildroot}/%{_fwdefdir}
-%if %{with_firewalld}
 install -m 644 %{S:6} %{buildroot}/%{_fwdefdir}/libvirtd-relocation-server.xml
-%else
-# Format described in /usr/share/SuSEfirewall2/services/TEMPLATE
-install -m 644 %{S:3} %{buildroot}/%{_fwdefdir}/libvirtd-relocation-server
-%endif
 
 # install supportconfig plugin
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
@@ -1190,9 +1174,6 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 /sbin/ldconfig
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
-%endif
-%if %{with_firewalld}
-%firewalld_reload
 %endif
 %service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 %{fillup_only -n libvirtd}
@@ -1389,7 +1370,7 @@ if [ $1 = 0 ]; then
 fi
 
 %postun client
-%service_del_postun -n libvirt-guests.service
+%service_del_postun_without_restart libvirt-guests.service
 
 %post libs -p /sbin/ldconfig
 
@@ -1494,13 +1475,9 @@ fi
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.libvirt.virt-aa-helper
 %{_libdir}/%{name}/virt-aa-helper
 %endif
-%if %{with_firewalld}
 %dir %{_prefix}/lib/firewalld
 %dir %{_fwdefdir}
 %{_fwdefdir}/libvirtd-relocation-server.xml
-%else
-%config %{_fwdefdir}/libvirtd-relocation-server
-%endif
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 /usr/lib/supportconfig/plugins/libvirt
@@ -1780,9 +1757,7 @@ fi
 %{_bindir}/virt-xml-validate
 %{_bindir}/virt-pki-validate
 %{_bindir}/virt-host-validate
-%if %{with_bash_completion}
 %{_datadir}/bash-completion/completions/virsh
-%endif
 %dir %{_libdir}/%{name}
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
 %{_fillupdir}/sysconfig.libvirt-guests
@@ -1801,42 +1776,17 @@ fi
 %dir %{_datadir}/%{name}/cpu_map/
 %dir %attr(0755, root, root) %{_localstatedir}/lib/%{name}/
 
-%{_datadir}/%{name}/schemas/basictypes.rng
-%{_datadir}/%{name}/schemas/capability.rng
-%{_datadir}/%{name}/schemas/cputypes.rng
-%{_datadir}/%{name}/schemas/domain.rng
-%{_datadir}/libvirt/schemas/domainbackup.rng
-%{_datadir}/%{name}/schemas/domaincaps.rng
-%{_datadir}/%{name}/schemas/domaincheckpoint.rng
-%{_datadir}/%{name}/schemas/domaincommon.rng
-%{_datadir}/%{name}/schemas/domainsnapshot.rng
-%{_datadir}/%{name}/schemas/interface.rng
-%{_datadir}/%{name}/schemas/network.rng
-%{_datadir}/%{name}/schemas/networkcommon.rng
-%{_datadir}/%{name}/schemas/networkport.rng
-%{_datadir}/%{name}/schemas/nodedev.rng
-%{_datadir}/%{name}/schemas/nwfilter.rng
-%{_datadir}/%{name}/schemas/nwfilter_params.rng
-%{_datadir}/%{name}/schemas/nwfilterbinding.rng
-%{_datadir}/%{name}/schemas/secret.rng
-%{_datadir}/%{name}/schemas/storagecommon.rng
-%{_datadir}/%{name}/schemas/storagepool.rng
-%{_datadir}/%{name}/schemas/storagepoolcaps.rng
-%{_datadir}/%{name}/schemas/storagevol.rng
+%{_datadir}/%{name}/schemas/*.rng
 %{_datadir}/%{name}/cpu_map/*.xml
 %{_datadir}/%{name}/test-screenshot.png
 
 %files admin
 %doc %{_mandir}/man1/virt-admin.1*
 %{_bindir}/virt-admin
-%if %{with_bash_completion}
 %{_datadir}/bash-completion/completions/virt-admin
-%endif
 
-%if %{with_bash_completion}
 %files bash-completion
 %{_datadir}/bash-completion/completions/vsh
-%endif
 
 %files devel
 %{_libdir}/libvirt.so
