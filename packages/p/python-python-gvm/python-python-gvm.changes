@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:54:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.11.0
+  Added
+  * Added clone_report_format() and import_report_format()
+  * Added the get_x_from_string() functions to latest
+  * Added the ReportFormatType that can be used instead of a
+    report_format_id.
+  * Added tests for constructor of SSHConnection, TLSConnection,
+    UnixSocketConnection and GvmConnection.
+  Fixed
+  * Corrected seconds_active parameter to days_active for notes
+    and overrides.
+  * Fixed SSHConnection throws TypeError if port is None.
+  * Fixed GvmConnection timeout set to None if None is passed.
+  * Fixed TLSConnection values set to None instead of default
+    values when None is passed for these values.
+  * Fixed UnixSocketConnection values set to None instead of
+    default when None is passed for these values.
+
+-------------------------------------------------------------------
+Sun Oct 25 18:56:10 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.9.1
+  Added
+  * Added modify_config_set_name. #295
+  * Added logic to accept the new AlertEvents TICKET_RECEIVED,
+    ASSIGNED_TICKET_CHANGED and OWNED_TICKET_CHANGED and the new
+    Condition SEVERITY_CHANGED.
+  * Added create_config_from_osp_scanner. #298
+  Changed
+  * Added the details parameter to get_tls_certificate and
+    get_tls_certificates.
+  * Added the comment parameter to create_config.
+  Fixed
+  * Fix ScannerType check for newer protocols.
+
+-------------------------------------------------------------------
+Thu Sep 17 19:02:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.9.0
+  Changed
+  * Added the tasks parameter to get_config().
+  * Renamed no_details to details in get_reports() so it is
+    uniform with all the other calls.
+  Fixed
+  * Force garbage clean up when disconnect.
+
+-------------------------------------------------------------------
+Tue Sep  1 16:27:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20.8.1
+  Added
+  * Added AlertMethods: Alemba vFire, Tippingpoint SMS
+  * Added AlertConditions: Error, SeverityChanged
+  * Added AlertEvents: Assigned ticket changed, Owned ticket
+    changed.
+  Changed
+  * pretty_print() has a new argument that can optionally handle a
+    file. The output is redirected to this file. default is
+    sys.stdout, as it is for build-in print().
+  Fixed
+  * ARP_PING is now a field of AliveTypes, the old APR_PING name
+    is still available.
+
+-------------------------------------------------------------------
 Sat Aug 22 21:55:48 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versin 20.8.0
