@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 31 19:57:48 UTC 2020 - Michal Kubeček <mkubecek@suse.cz>
+
+- update to upstream version 3.0.7
+  * better diagnostic for the 'Missing security context' error
+    (CORE-6362)
+  * disconnect from the security database when missing plugin data
+    structures cause an error (CORE-6339)
+  * multiple important bug fixes
+
+-------------------------------------------------------------------
 Sat Oct 17 11:52:16 UTC 2020 - Michal Kubeček <mkubecek@suse.cz>
 
 - update to upstream version 3.0.6

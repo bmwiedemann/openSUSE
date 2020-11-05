@@ -444,4 +444,12 @@ Changes against the original submit request:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843769</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>1bed0d0c84a7afc8ab091f40622ce907</srcmd5>
+    <version>3.0.7.33374</version>
+    <time>1604609642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to upstream version 3.0.7</comment>
+    <requestid>845694</requestid>
+  </revision>
 </revisionlist>
