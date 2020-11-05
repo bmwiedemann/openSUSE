@@ -1,7 +1,7 @@
 #
 # spec file for package abcde
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ Recommends:     vorbis-tools
 BuildArch:      noarch
 %if %{with musicbrainz}
 Requires:       perl(MusicBrainz::DiscID)
-Requires:       perl(WebService::MusicBrainz) = 1.0.4
+Requires:       perl(WebService::MusicBrainz) >= 1.0.4
 %endif
 
 %description

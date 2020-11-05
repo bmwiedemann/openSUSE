@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 20:46:16 UTC 2020 - Martin Wilck <mwilck@suse.com>
+
+- Fix dependency on perl(WebService::MusicBrainz) to work with
+  1.0.5 (boo#1178312)
+
+-------------------------------------------------------------------
 Thu Oct 17 12:47:27 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

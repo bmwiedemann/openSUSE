@@ -218,4 +218,13 @@
     <comment></comment>
     <requestid>739378</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>318fd71cd7c47103cf06bf7043089704</srcmd5>
+    <version>2.9.3</version>
+    <time>1604609704</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependency on perl(WebService::MusicBrainz) to work with
+  1.0.5 (boo#1178312) (forwarded request 846087 from mwilck)</comment>
+    <requestid>846088</requestid>
+  </revision>
 </revisionlist>
