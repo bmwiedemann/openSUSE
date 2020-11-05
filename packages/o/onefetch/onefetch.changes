@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov  5 07:23:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.6.0:
+  Language:
+  * Added support for Zsh, bash, JSX and TSX
+  New features:
+  * Support COLORTERM for TrueColor ASCII
+  * CLI flag to use more color (16 -> 256) in sixel graphics
+  * Add Text Coloring via CLI flag
+  * Add CLI flag to disable ASCII art (or image) and only
+    display info lines
+  * Extend image backend support to ITerm2 Inline Images Protocol
+  * Replace ASCII logo with shell command output
+  Misc:
+  * clean up python script from wiki
+  * make build fail when deprecated dependencies
+  * remove async/await
+
+-------------------------------------------------------------------
 Thu Oct 22 08:40:35 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.0:

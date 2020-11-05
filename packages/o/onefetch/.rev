@@ -66,4 +66,26 @@
   * Improved ci/cd actions</comment>
     <requestid>843372</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6393d1983dddd0d621297f5f57306330</srcmd5>
+    <version>2.6.0</version>
+    <time>1604609710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.0:
+  Language:
+  * Added support for Zsh, bash, JSX and TSX
+  New features:
+  * Support COLORTERM for TrueColor ASCII
+  * CLI flag to use more color (16 -&gt; 256) in sixel graphics
+  * Add Text Coloring via CLI flag
+  * Add CLI flag to disable ASCII art (or image) and only
+    display info lines
+  * Extend image backend support to ITerm2 Inline Images Protocol
+  * Replace ASCII logo with shell command output
+  Misc:
+  * clean up python script from wiki
+  * make build fail when deprecated dependencies
+  * remove async/await</comment>
+    <requestid>846133</requestid>
+  </revision>
 </revisionlist>
