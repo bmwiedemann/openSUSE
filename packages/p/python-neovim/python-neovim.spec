@@ -22,16 +22,13 @@
 %define python_module() python34-%{**}
 %endif
 Name:           python-neovim
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
 Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
 Source:         https://github.com/neovim/%{modname}/archive/%{version}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM setup_version.patch gh#neovim/pynvim#431 mcepl@suse.com
-# Upstream setup.py has incorrect version.
-Patch0:         setup_version.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

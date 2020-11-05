@@ -174,4 +174,19 @@
     <comment></comment>
     <requestid>796595</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c5aa9f1bb45afe3e597e4ded182b6218</srcmd5>
+    <version>0.4.2</version>
+    <time>1604609768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  - Refactor: IOError was deprecated. Replace with OSError
+  - refactor: Reduce usage of deprecated imp module
+  - Modify all imports in the repository to absolute imports
+  - Set unicode_errors in Unpacker
+  - import vim module by default
+- Remove setup_version.patch which has been included upstream.
+</comment>
+    <requestid>846266</requestid>
+  </revision>
 </revisionlist>

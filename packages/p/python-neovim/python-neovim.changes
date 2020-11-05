@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:04:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.2:
+  - Refactor: IOError was deprecated. Replace with OSError
+  - refactor: Reduce usage of deprecated imp module
+  - Modify all imports in the repository to absolute imports
+  - Set unicode_errors in Unpacker
+  - import vim module by default
+- Remove setup_version.patch which has been included upstream.
+
+-------------------------------------------------------------------
 Thu Apr 23 13:36:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Rewrite the package into proper single-spec style.
