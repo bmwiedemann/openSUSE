@@ -1,20 +1,4 @@
 --------------------------------------------------------------------
-Fri Oct 30 14:25:39 UTC 2020 - aschnell@suse.com
-
-- merge gh#openSUSE/libstorage-ng#776
-- probe btrfs quota and qgroups
-- allow actions for holders next to devices
-- added actions to set quota and qgroup limits
-- added actions to assign and unassign qgroups
-- 4.3.54
-
---------------------------------------------------------------------
-Thu Oct 29 06:30:59 UTC 2020 - opensuse-packaging@opensuse.org
-
-- Translated using Weblate (Italian) (bsc#1149754)
-- 4.3.53
-
---------------------------------------------------------------------
 Fri Oct 23 12:00:28 UTC 2020 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#775

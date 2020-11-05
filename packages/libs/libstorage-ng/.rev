@@ -775,4 +775,11 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>845052</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>f902560343c825082d7fd89ae2bc0fd4</srcmd5>
+    <version>4.3.52</version>
+    <time>1604567396</time>
+    <user>dimstar_suse</user>
+    <comment>Revert - https://openqa.opensuse.org/tests/1460184#step/start_install/4</comment>
+  </revision>
 </revisionlist>
