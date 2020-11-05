@@ -11,7 +11,7 @@ Index: amavisd.conf
 -#   qr/\bOK$/m, qr/\bFOUND$/m,
 -#   qr/^.*?: (?!Infected Archive)(.*) FOUND$/m ],
 +['ClamAV-clamd',
-+   \&ask_daemon, ["CONTSCAN {}\n", "/var/run/clamav/clamd-socket"],
++   \&ask_daemon, ["CONTSCAN {}\n", "/run/clamav/clamd-socket"],
 +   qr/\bOK$/m, qr/\bFOUND$/m,
 +   qr/^.*?: (?!Infected Archive)(.*) FOUND$/m ],
  # # NOTE: run clamd under the same user as amavisd - or run it under its own

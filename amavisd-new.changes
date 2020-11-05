@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 26 21:43:51 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to version 2.12.0
+  * Upstream changed to GitLab
+  * Introduce Rspamd client extension
+    With this extension, Amavis can use Rspamd either running on the same
+    server or remotely. Connections are made using HTTP/HTTPS depending on
+    configuration, the latter requiring a HTTPS-capable proxy (like NGINX or
+    Apache) for Rspamd, which does not natively support HTTPS. Basic
+    authentication with name/password pairs is also available.
+  * Treat "not an OLE file" as a successful result
+    Amavis supports calling the ripOLE program to extract embedded objects
+    from Microsoft OLE documents. However, not all Microsoft documents
+    contain said objects, and the underlying file format changes when they
+    do. Since Amavis can't tell the difference, it passes everything to
+    ripOLE unconditionally.  Amavis now treats the "not an OLE file" error
+    code of ripOLE as a successful result, proceeds normally and scans the
+    file as a whole.
+  * Fix unix socket path extraction that has prevented a socket based
+    policy bank to be loaded;
+  * Fix DKIM signing for outbound messages (remove dkim-signing.diff)
+  * Fix unescaped left brace regex warning in run_av() subroutine.
+  * Mention default value for $myprogram_name in minimal amavisd.conf.
+- cleanup spec
+  * remove unused rc.amavis SysV initscript
+  * remove unused /usr/lib/tmpfiles.d
+
+-------------------------------------------------------------------
 Sun Feb  2 08:19:17 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - pwdutils is gone since ages

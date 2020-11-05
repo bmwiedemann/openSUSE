@@ -16,28 +16,21 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-%define _buildshell /bin/bash
-
-%define avspool        /var/spool/amavis
-%define avdb           /var/spool/amavis/db
-%define avquarantine   /var/spool/amavis/virusmails
+%define avspool        %{_localstatedir}/spool/amavis
+%define avdb           %{_localstatedir}/spool/amavis/db
+%define avquarantine   %{_localstatedir}/spool/amavis/virusmails
 %define logmsg         logger -t %{name}/rpm
 %define avuser         vscan
 %define avgroup        vscan
 Name:           amavisd-new
-Version:        2.11.1
+Version:        2.12.0
 Release:        0
 Summary:        High-Performance E-Mail Virus Scanner
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-URL:            https://amavis.org/
-Source0:        https://amavis.org/%{name}-%{version}.tar.bz2
+URL:            https://gitlab.com/amavis/amavis/
+Source0:        https://gitlab.com/amavis/amavis/-/archive/v%{version}/amavis-v%{version}.tar.bz2
 Source1:        sysconfig.amavis
-Source2:        rc.amavis
 Source3:        amavisd-new-rpmlintrc
 Source4:        amavisd-milter-1.6.1.tar.gz
 Source5:        amavis.service
@@ -45,11 +38,10 @@ Source6:        amavisd-milter.sh
 Patch1:         activate_virus_scanner.diff
 # PATCH-FIX-UPSTREAM -- detect myhostname via Net::Domain::hostfqdn()
 Patch2:         amavisd-new-2.10.1-myhostname.patch
-# PATCH-FIX-UPSTREAM -- originating was not recognized for DKIM signing
-Patch3:         dkim-signing.diff
 BuildRequires:  sed
 BuildRequires:  sendmail
 BuildRequires:  sendmail-devel
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       bzip2
 Requires:       file
@@ -57,10 +49,8 @@ Requires:       gzip
 Requires:       perl-Archive-Tar
 Requires:       perl-Archive-Zip
 Requires:       perl-BerkeleyDB
-Requires:       perl-Compress-Zlib
 Requires:       perl-Convert-BinHex
 Requires:       perl-Convert-TNEF
-Requires:       perl-Convert-UUlib
 Requires:       perl-IO-stringy
 Requires:       perl-MIME-tools
 Requires:       perl-Mail-DKIM
@@ -73,26 +63,25 @@ Requires:       sharutils
 Requires:       smtp_daemon
 Requires:       spamassassin
 Requires:       zoo
-Recommends:     unar
-Recommends:     clamav perl-spamassassin
-Recommends:     perl-DBI
-Recommends:     perl-ldap
-Recommends:     perl-Authen-SASL
-Recommends:     perl-Mail-ClamAV
-Recommends:     p7zip
-Recommends:     binutils
-Recommends:     %{name}-docs = %{version}
-Requires(pre):  util-linux-systemd
-Requires(post): util-linux-systemd
-Requires(pre):  shadow
 Requires(post): %fillup_prereq
 Requires(post): grep
-OrderWithRequires(post): /usr/bin/newaliases
-BuildRequires:  systemd-rpm-macros
+Requires(post): util-linux-systemd
+Requires(pre):  shadow
+Requires(pre):  util-linux-systemd
+Recommends:     %{name}-docs = %{version}
+Recommends:     binutils
+Recommends:     clamav
+Recommends:     p7zip
+Recommends:     perl-Authen-SASL
+Recommends:     perl-DBI
+Recommends:     perl-Mail-ClamAV
+Recommends:     perl-ldap
+Recommends:     perl-spamassassin
+Recommends:     unar
+Provides:       amavisd-milter = 1.6.1
+Obsoletes:      amavisd-milter < 1.6.1
+OrderWithRequires(post): %{_bindir}/newaliases
 %{?systemd_ordering}
-Provides:       amavisd-milter = 1.6.0
-Obsoletes:      amavisd-milter <= 1.5.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Amavisd-new is a high-performance interface between mailer (MTA) and
@@ -103,7 +92,6 @@ following MTAs:
 - postfix
 - sendmail (sendmail-milter)
 - exim
-
 
 %package docs
 Summary:        Documentation for the High-Performance E-Mail Virus Scanner
@@ -118,10 +106,9 @@ via (E)SMTP, LMTP.
 This package contains the documentation and Release-Notes.
 
 %prep
-%setup -q -a 4
+%setup -q -n amavis-v%{version} -a 4
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 for i in $(find -maxdepth 1 -name "amavisd*" | sed s#./##); do
     if [[ $i == *patch ]] ; then continue; fi
     if [[ $i == *patch ]] ; then continue; fi
@@ -141,7 +128,7 @@ done
 %build
 cd amavisd-milter*
 %configure --localstatedir="%{avspool}"
-make %{?_smp_mflags}
+%make_build
 
 # ---------------------------------------------------------------------------
 
@@ -151,22 +138,21 @@ mkdir -p %{buildroot}%{avspool}/{tmp,var}
 mkdir -p %{buildroot}%{avdb}
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_fillupdir}
-mkdir -p %{buildroot}/etc/openldap/schema
+mkdir -p %{buildroot}%{_sysconfdir}/openldap/schema
 mkdir -p %{buildroot}%{perl_vendorlib}
-mkdir -p %{buildroot}/usr/lib/tmpfiles.d
 install -m 644 $RPM_SOURCE_DIR/sysconfig.amavis %{buildroot}%{_fillupdir}
 install -m 755 amavisd %{buildroot}/%{_sbindir}/amavisd
 install -m 755 amavisd-agent %{buildroot}/%{_sbindir}/amavisd-agent
 install -m 755 amavisd-nanny %{buildroot}/%{_sbindir}/amavisd-nanny
 install -m 755 amavisd-release %{buildroot}/%{_sbindir}/amavisd-release
 install -m 755 p0f-analyzer.pl %{buildroot}/%{_sbindir}/p0f-analyzer.pl
-install -m 644 amavisd.conf %{buildroot}/etc/amavisd.conf
-install -m 644 LDAP.schema %{buildroot}/etc/openldap/schema/amavisd-new.schema
+install -m 644 amavisd.conf %{buildroot}%{_sysconfdir}/amavisd.conf
+install -m 644 LDAP.schema %{buildroot}%{_sysconfdir}/openldap/schema/amavisd-new.schema
 install -m 644 JpegTester.pm %{buildroot}/%{perl_vendorlib}/JpegTester.pm
 mkdir -p %{buildroot}%{_unitdir}
-install -m 644 %{S:5} %{buildroot}%{_unitdir}
+install -m 644 %{SOURCE5} %{buildroot}%{_unitdir}
 ln -s service %{buildroot}/%{_sbindir}/rcamavis
-install -m 755 %{S:6} %{buildroot}%{_sbindir}/
+install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/
 cd amavisd-milter*
 %make_install
 
@@ -195,7 +181,7 @@ else
   if [ -r etc/aliases ]; then
     if ! grep -q "^virusalert:" etc/aliases; then
       echo "virusalert:	root" >> etc/aliases
-      %{logmsg} "Added alias for user virusalert to /etc/aliases"
+      %{logmsg} "Added alias for user virusalert to %{_sysconfdir}/aliases"
       if [ -x usr/bin/newaliases ]; then
           usr/bin/newaliases >/dev/null 2>&1 || true
       else
@@ -209,17 +195,13 @@ fi
 %service_del_postun amavis.service
 
 %files
-%defattr(-,root,root)
-%doc AAAREADME.first LICENSE
+%license LICENSE
+%doc AAAREADME.first
 %doc LDAP.ldif
-%dir /etc/openldap
-%dir /etc/openldap/schema
-%dir /usr/lib/tmpfiles.d
-%if 0%{?suse_version} < 1230
-%config /etc/init.d/amavis
-%endif
-%config(noreplace) /etc/amavisd.conf
-%config(noreplace) /etc/openldap/schema/amavisd-new.schema
+%dir %{_sysconfdir}/openldap
+%dir %{_sysconfdir}/openldap/schema
+%config(noreplace) %{_sysconfdir}/amavisd.conf
+%config(noreplace) %{_sysconfdir}/openldap/schema/amavisd-new.schema
 %{_fillupdir}/sysconfig.amavis
 %{_sbindir}/*
 %{perl_vendorlib}/JpegTester.pm
@@ -240,6 +222,6 @@ fi
 %doc amavisd.conf-*
 %doc MANIFEST TODO
 %doc test-messages
-%doc %{_mandir}/man8/amavisd-milter*
+%{_mandir}/man8/amavisd-milter*
 
 %changelog
