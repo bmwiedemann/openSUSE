@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  3 03:08:21 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.17
+   see /usr/share/doc/packages/perl-Alien-Libxml2/Changes
+
+  0.17      2020-11-02 12:03:28 -0700
+    - Bump required version of AB for bug fixes (gh#23, gh#24)
+
+-------------------------------------------------------------------
 Thu Apr 23 03:08:19 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.16
