@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:47:26 UTC 2020 - chris@computersalat.de
+
+- Update to 6.0.30
+  https://community.otrs.com/otrs-community-edition-6-patch-level-30/
+- fix for boo#1178434
+  * (CVE-2020-11022, CVE-2020-11023, OSA-2020-14)
+  Vulnerability in third-party library - jquery
+  OTRS uses jquery version 3.4.1, which is vulnerable to cross-site
+  scripting (XSS). For more information, please read following article
+  https://snyk.io/test/npm/jquery/3.4.1
+
+-------------------------------------------------------------------
 Mon Aug  3 14:25:06 UTC 2020 - chris@computersalat.de
 
 - Update to 6.0.29
