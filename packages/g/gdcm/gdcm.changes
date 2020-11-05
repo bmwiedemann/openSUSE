@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 09:38:14 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- typo corrected: fix_charls_2.patch removed
+
+-------------------------------------------------------------------
+Tue Nov  3 15:45:11 UTC 2020 - Axel Braun <axel.braun@gmx.de>
+
+- fixed build system
+  fix_charls2_patch removed
+  0001-Fix-build-with-CharLS-2.1.0.patch added
+
+-------------------------------------------------------------------
 Sat Oct 17 12:29:26 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.0.8

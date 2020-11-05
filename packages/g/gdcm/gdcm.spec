@@ -27,8 +27,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            http://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        http://sourceforge.net/projects/gdcm/files/gdcm%203.x/GDCM%20%{version}/%{name}-%{version}.tar.bz2
-Patch1:         gdcm-2.4.0-usecopyright.patch
-Patch2:         fix_charls_2.patch
+Patch1:         0001-Fix-build-with-CharLS-2.1.0.patch
+Patch2:         gdcm-2.4.0-usecopyright.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets
