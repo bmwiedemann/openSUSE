@@ -1,0 +1,18 @@
+<package name="pgaudit" project="openSUSE:Factory">
+  <title>An auditing module for PostgreSQL</title>
+  <description>This is the initial version of an auditing module for Postgres.
+
+It collects audit events from various sources and logs them in CSV format
+including a timestamp, user information, details of objects affected (if any),
+and the fully-qualified command text (whenever available).
+
+All DDL, DML (including SELECT), and utility commands are supported. These
+are categorised as described below, and audit logging for each group of
+commands may be enabled or disabled by the superuser. Once enabled, however,
+audit logging may not be disabled by a user.
+
+
+</description>
+  <devel project="server:database:postgresql" package="pgaudit"/>
+  <url>https://github.com/pgaudit/pgaudit</url>
+</package>

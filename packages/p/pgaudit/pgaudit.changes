@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Wed Nov  4 14:36:40 UTC 2020 - pgajdos@suse.com
+
+- try to make factory bot happy
+
+-------------------------------------------------------------------
+Tue Nov  3 08:59:08 UTC 2020 - pgajdos@suse.com
+
+- revert last change, keep flavours unresolved
+
+-------------------------------------------------------------------
+Wed Oct 21 07:24:08 UTC 2020 - pgajdos@suse.com
+
+- do not build favours that would be unresolved in standard repos
+
+-------------------------------------------------------------------
+Tue Oct 20 08:53:43 UTC 2020 - pgajdos@suse.com
+
+- version update
+  - 1.0.8: https://github.com/pgaudit/pgaudit/releases/tag/1.0.8
+  - 1.1.3: https://github.com/pgaudit/pgaudit/releases/tag/1.1.3
+  - 1.2.2: https://github.com/pgaudit/pgaudit/releases/tag/1.2.2
+  - 1.3.3: https://github.com/pgaudit/pgaudit/releases/tag/1.3.2
+  - 1.4.1: https://github.com/pgaudit/pgaudit/releases/tag/1.4.1
+
+-------------------------------------------------------------------
+Fri Sep 25 15:47:07 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- added pg 13 support by adding 1.5.0 
+  https://github.com/pgaudit/pgaudit/releases/tag/1.5.0
+
+-------------------------------------------------------------------
+Wed May  6 17:41:27 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- we added support for newer pg versions but never enabled them in
+  the multibuild
+
+-------------------------------------------------------------------
+Tue Oct 22 18:43:40 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump package for existing versions and add support for newer pg
+  versions:
+  - 1.0.7: https://github.com/pgaudit/pgaudit/releases/tag/1.0.7
+  - 1.1.2: https://github.com/pgaudit/pgaudit/releases/tag/1.1.2
+  - 1.2.1: https://github.com/pgaudit/pgaudit/releases/tag/1.2.1
+  - 1.3.1: https://github.com/pgaudit/pgaudit/releases/tag/1.3.1
+  - 1.4.0: https://github.com/pgaudit/pgaudit/releases/tag/1.4.0
+
+-------------------------------------------------------------------
+Fri Sep  8 23:09:48 UTC 2017 - mrueckert@suse.de
+
+- make the file lists less broad:
+  - BR the -server package so we get the owner of
+    %{_datadir}/postgresql*/extension/
+  - only own files really from this package
+
+-------------------------------------------------------------------
+Fri Aug  4 21:06:27 UTC 2017 - mrueckert@suse.de
+
+- use multibuild
+- update to 1.0.6 and 1.1.1 respectively
+
+-------------------------------------------------------------------
+Thu Feb 19 11:33:56 UTC 2015 - mrueckert@suse.de
+
+- update to git HEAD: (adds HEAD.patch)
+  - 9bdc2e8 Use bms_{copy,first_member,free} on
+    rte->{selected,modified}Cols
+  - 869f4e7 Take column-level privileges into account too
+  - 715b653 If audit has been granted permissions, we log the event
+  - 7d9313c Make should_be_logged() authoritative by itself
+  - 58aa1f4 Describe the current behaviour more precisely
+  - 43f9baf If no roles are given, all roles are audited
+  - c0b4e6d Add pgaudit.roles setting
+  - fe5219f Rename T_AlterTableSpaceMoveStmt to
+    T_AlterTableMoveAllStmt following 3c4cf08
+  - 98eb0ed We don't need the [] wrapper
+  - ab43873 Remove GUC source checking altogether
+  - 7782701 Fixes for META.json
+
+-------------------------------------------------------------------
+Tue Oct  7 12:50:24 UTC 2014 - darin@darins.net
+
+- fixed %files path for SLES 
+
+-------------------------------------------------------------------
+Mon Oct  6 19:48:13 UTC 2014 - darin.perusich@ctg.com
+
+- Initial packaging of pgaudit 
+
