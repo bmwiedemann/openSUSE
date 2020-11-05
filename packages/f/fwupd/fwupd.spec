@@ -23,8 +23,14 @@
 %bcond_with efi_fw_update
 %endif
 
+%if 0%{?suse_version} > 1500
+%bcond_without fish_support
+%else
+%bcond_with fish_support
+%endif
+
 Name:           fwupd
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,7 +46,9 @@ Patch1:         fwupd-bsc1130056-change-shim-path.patch
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
 
 BuildRequires:  dejavu-fonts
+%if %{with fish_support}
 BuildRequires:  fish
+%endif
 BuildRequires:  gcab
 # for certtool
 BuildRequires:  gnutls
@@ -188,6 +196,7 @@ done
 %ifnarch %{ix86} x86_64
   -Dplugin_dell=false \
   -Dplugin_synaptics=false \
+  -Dplugin_msr=false \
 %endif
   -Dgtkdoc=true \
   -Dtests=false
@@ -214,6 +223,10 @@ rm -fr %{buildroot}%{_datadir}/installed-tests
 # link fwupd*.efi.signed to fwupd*.efi (bsc#1129466)
 FWUPD_EFI=`basename %{buildroot}/%{_libexecdir}/fwupd/efi/fwupd*.efi`
 ln -s %{_libexecdir}/fwupd/efi/$FWUPD_EFI %{buildroot}/%{_libexecdir}/fwupd/efi/$FWUPD_EFI.signed
+%endif
+
+%if %{without fish_support}
+rm -fr %{buildroot}%{_datadir}/fish
 %endif
 
 %post   -n libfwupd2 -p /sbin/ldconfig
@@ -258,7 +271,9 @@ fi
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
+%if %{with efi_fw_update}
 %{_bindir}/dbxtool
+%endif
 %{_bindir}/fwupdagent
 %if %{with efi_fw_update}
 %{_bindir}/fwupdate
@@ -288,7 +303,9 @@ fi
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
 %{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
+%if %{with efi_fw_update}
 %{_mandir}/man1/dbxtool.1%{?ext_man}
+%endif
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
 %if %{with efi_fw_update}
 %{_mandir}/man1/fwupdate.1%{?ext_man}
@@ -296,7 +313,9 @@ fi
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
 %{_mandir}/man1/fwupdtool.1%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.fwupd.policy
+%ifarch %{ix86} x86_64
 %{_sysconfdir}/modules-load.d/fwupd-msr.conf
+%endif
 %{_sysconfdir}/modules-load.d/fwupd-platform-integrity.conf
 %config %{_sysconfdir}/%{name}/
 %dir %{_sysconfdir}/pki
@@ -317,7 +336,9 @@ fi
 %{_datadir}/bash-completion/completions/fwupdmgr
 %{_datadir}/bash-completion/completions/fwupdtool
 %{_datadir}/bash-completion/completions/fwupdagent
+%if %{with fish_support}
 %{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
+%endif
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset

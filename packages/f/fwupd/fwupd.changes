@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov  3 07:22:31 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Amend the spec file (jsc#SLE-16818)
+  + Only enable fish support for Tumbleweed
+  + Only enable the MSR plugin for x86
+  + Only install dbxtool in the architectures with UEFI support
+
+-------------------------------------------------------------------
+Mon Nov 02 15:57:37 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 1.5.1:
+  + Use UDisks to find out if swap devices are encrypted.
+  + Show a link to discover more information about a specific
+    plugin failure.
+  + updated fish completions to 1.5.0.
+  + Remove the duplicate parent-child data in FwupdDevice and
+    FuDevice.
+  + Show a less scary fwupdate output for devices without info.
+  + thunderbolt: recognize authorized value of '2' as well.
+  + bcm57xx: Make hotplug more reliable.
+  + Use a different Device ID for the OptionROM devices.
+  + contrib/ci: switch TPM simulator from ibmswtpm to swtpm.
+  + Delete unused EFI variables when deploying firmware.
+  + Fix probe warning for the Logitech Unifying device.
+  + Include the amount of NVRAM size in use in the LVFS failure
+    report.
+  + Add external interface messages.
+
+-------------------------------------------------------------------
 Mon Oct 26 12:18:38 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 1.5.0:
