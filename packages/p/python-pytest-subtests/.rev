@@ -25,4 +25,12 @@
   * Fix pytest 5.4 support.</comment>
     <requestid>812805</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>31dbc83262513aef546bfc36a7d65171</srcmd5>
+    <version>0.3.2</version>
+    <time>1604609766</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846267</requestid>
+  </revision>
 </revisionlist>

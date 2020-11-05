@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:02:17 UTC 2020 - Marketa Machova <mmachova@suse.com>
+
+- Update to 0.3.2
+  * Fix pytest 6.0 support.
+
+-------------------------------------------------------------------
 Tue Jun  9 07:43:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3.1:
